@@ -3,12 +3,12 @@ title: Az Azure Management áttekintése – Azure-irányítás
 description: Az Azure-alkalmazások és-erőforrások kezelésével kapcsolatos területek áttekintése, amelyek az Azure felügyeleti eszközein található tartalmakra mutató hivatkozásokat tartalmaznak.
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 00e42f05e07a6aba2fcada973d57c11e0ab98ca7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 81d655db706a7330fc541724d490a4885cc2fe8b
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956339"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86041914"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Mik az Azure felügyeleti területei?
 
@@ -26,7 +26,7 @@ A következő szakaszok röviden ismertetik az egyes felügyeleti területeket, 
 
 ## <a name="monitor"></a>Figyelés
 
-A monitorozás az adatok összegyűjtésére és elemzésére szolgál az erőforrások teljesítményének, állapotának és rendelkezésre állásának naplózása érdekében. Egy hatékony figyelési stratégia segíti az összetevők működésének megértését és az értesítésekkel való üzemidő növelését. A monitoring áttekintése, amely az [Azure-alkalmazások és-erőforrások figyeléséhez](../monitoring/monitoring-overview.md)használt különböző szolgáltatásokat fedi le.
+A monitorozás az adatok összegyűjtésére és elemzésére szolgál az erőforrások teljesítményének, állapotának és rendelkezésre állásának naplózása érdekében. Egy hatékony figyelési stratégia segíti az összetevők működésének megértését és az értesítésekkel való üzemidő növelését. A monitoring áttekintése, amely az [Azure-alkalmazások és-erőforrások figyeléséhez](../azure-monitor/overview.md)használt különböző szolgáltatásokat fedi le.
 
 ## <a name="configure"></a>Konfigurálás
 
@@ -46,12 +46,12 @@ Kezelheti erőforrásai és adatai biztonságát. A biztonsági program magában
 
 ## <a name="protect"></a>Védelem
 
-A védelem arra utal, hogy az alkalmazások és az adatszolgáltatások elérhetők maradnak, még a szabályozáson kívüli kimaradások esetén is. Az Azure-ban erről a védelemről két szolgáltatás gondoskodik. Az [Azure Backup](../backup/backup-introduction-to-azure-backup.md) helyreállítható biztonsági másolatokat készít az adatokról, és azokat a felhőben vagy helyszíni gépeken tárolja. A [Azure site Recovery](../site-recovery/site-recovery-overview.md) az üzletmenet folytonosságát és az azonnali helyreállítást biztosítja a katasztrófák során.
+A védelem arra utal, hogy az alkalmazások és az adatszolgáltatások elérhetők maradnak, még a szabályozáson kívüli kimaradások esetén is. Az Azure-ban erről a védelemről két szolgáltatás gondoskodik. Az [Azure Backup](../backup/backup-overview.md) helyreállítható biztonsági másolatokat készít az adatokról, és azokat a felhőben vagy helyszíni gépeken tárolja. A [Azure site Recovery](../site-recovery/site-recovery-overview.md) az üzletmenet folytonosságát és az azonnali helyreállítást biztosítja a katasztrófák során.
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrate (Áttelepítés)
 
 A migrálás a helyszíni gépen futó számítási feladatok átvitelét jelenti az Azure-fehőbe.
-A [Azure Migrate](../migrate/migrate-overview.md) egy olyan szolgáltatás, amely segít a helyszíni virtuális gépek Azure-ba való áttelepítésének értékelésében. [A Azure site Recovery a](../site-recovery/migrate-tutorial-on-premises-azure.md) virtuális gépeket a helyszíni rendszerből vagy [Amazon Web Servicesból](../site-recovery/migrate-tutorial-aws-azure.md)telepíti át. Az [Azure Database Migration](../dms/dms-overview.md) segítséget nyújt az adatbázis-források Azure-beli adatplatformokra való áttelepítésében.
+A [Azure Migrate](../migrate/migrate-services-overview.md) egy olyan szolgáltatás, amely segít a helyszíni virtuális gépek Azure-ba való áttelepítésének értékelésében. [A Azure site Recovery a](../site-recovery/migrate-tutorial-on-premises-azure.md) virtuális gépeket a helyszíni rendszerből vagy [Amazon Web Servicesból](../site-recovery/migrate-tutorial-aws-azure.md)telepíti át. Az [Azure Database Migration](../dms/dms-overview.md) segítséget nyújt az adatbázis-források Azure-beli adatplatformokra való áttelepítésében.
 
 ## <a name="next-steps"></a>Következő lépések
 
