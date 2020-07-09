@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: 70d84516e2d7a42b1c6a3714d9060bedf6535f58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71f4209b4af9c5bb5f171cf3c8e35b0fbc05fac9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79366296"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134781"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Tudnivalók a VMware-ről az Azure-ra való Azure Site Recovery Deployment Planner
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -63,7 +64,7 @@ Az eszköz a következő részleteket biztosítja:
 
 | | **VMware – Azure** |**Hyper-V – Azure**|**Azure – Azure**|**Hyper-V – másodlagos hely**|**VMware – másodlagos hely**
 --|--|--|--|--|--
-Támogatott esetek |Igen|Igen|Nem|Igen*|No
+Támogatott esetek |Igen|Igen|Nem|Igen*|Nem
 Támogatott verzió | vCenter 6,7, 6,5, 6,0 vagy 5,5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
 Támogatott konfiguráció|vCenter, ESXi| Hyper-V fürt, Hyper-V gazdagép|NA|Hyper-V fürt, Hyper-V gazdagép|NA|
 Azon kiszolgálók száma, amelyek profilozhatók a Site Recovery Deployment Planner futó példányaihoz |Egyszeres (az egy vCenter Serverhez vagy egy ESXi-kiszolgálóhoz tartozó virtuális gépek profilozhatók egyszerre)|Többszörös (több gazdagéphez vagy gazdagépfürthöz tartozó virtuális gépek profilozhatók egyszerre)| NA |Többszörös (több gazdagéphez vagy gazdagépfürthöz tartozó virtuális gépek profilozhatók egyszerre)| NA
@@ -73,7 +74,7 @@ Azon kiszolgálók száma, amelyek profilozhatók a Site Recovery Deployment Pla
 ## <a name="prerequisites"></a>Előfeltételek
 Az eszköz két fő fázisból áll: a profil- és jelentéskészítésből. Van egy harmadik lehetőség, amely csak az átviteli sebességet számítja ki. Az alábbi táblázatban láthatók annak a kiszolgálónak a követelményei, ahonnan a profilkészítés/átviteli sebesség mérését kezdeményezi.
 
-| Kiszolgálókövetelmények | Description|
+| Kiszolgálókövetelmények | Leírás|
 |---|---|
 |Profilkészítés és az átviteli sebesség mérése| <ul><li>Operációs rendszer: Windows Server 2016 vagy Windows Server 2012 R2<br>(ideális esetben legalább a [konfigurációs kiszolgáló javasolt méretével egyezik](https://aka.ms/asr-v2a-on-prem-components))</li><li>Gépkonfiguráció: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[.NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[A Visual Studio 2012 szoftverhez készült Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-hoz (*. blob.core.windows.net) erről a kiszolgálóról, 443-es portról<br>[Ez nem kötelező. Megadhatja, hogy a jelentés létrehozásakor a rendelkezésre álló sávszélességet manuálisan adja meg.]</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A VMware vCenter statisztikai szintjének beállítása 1 vagy magasabb szintű lehet</li><li>VCenter-port engedélyezése (alapértelmezett 443): a Site Recovery Deployment Planner ezt a portot használja a vCenter-kiszolgáló/ESXi-gazdagéphez való csatlakozáshoz.</ul></ul>|
 | Jelentéskészítés | Windows rendszerű számítógép vagy Windows Server Excel 2013 vagy újabb verzióval.<li>[.NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6,0 R3](https://aka.ms/download_powercli) megadása csak akkor szükséges, ha a jelentés generálására szolgáló parancs pass-User beállításával beolvassa a virtuális gépek legújabb virtuálisgép-konfigurációs információit. A Deployment Planner csatlakozik a vCenter-kiszolgálóhoz. A vCenter port (alapértelmezett 443) portjának engedélyezése a vCenter-kiszolgálóhoz való csatlakozáshoz.</li>|
@@ -119,7 +120,7 @@ Ha a Deployment Planner korábbi verziójával rendelkezik, tegye az alábbiak e
 
 ## <a name="version-history"></a>Verzióelőzmények
 A legújabb Site Recovery Deployment Planner eszköz verziója 2,5.
-Az egyes frissítésekben hozzáadott javításokról a [Site Recovery Deployment Planner verzióelőzményeinek oldalán](https://docs.microsoft.com/azure/site-recovery/site-recovery-deployment-planner-history) lehet tájékozódni.
+Az egyes frissítésekben hozzáadott javításokról a [Site Recovery Deployment Planner verzióelőzményeinek oldalán](./site-recovery-deployment-planner-history.md) lehet tájékozódni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A Site Recovery Deployment Planner futtatása](site-recovery-vmware-deployment-planner-run.md)

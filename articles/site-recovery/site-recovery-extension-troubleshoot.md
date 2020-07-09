@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190725"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133753"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Azure-beli virtuálisgép-bővítményekkel kapcsolatos problémák elhárítása
 
@@ -68,14 +69,14 @@ Lehet, hogy a virtuálisgép-ügynök sérült, vagy a szolgáltatást leállít
 1. Győződjön meg arról, hogy a Windows Azure Guest Agent szolgáltatás megjelenik a szolgáltatások között.
 1. Indítsa újra a védelmi feladatot.
 
-Ellenőrizze azt is, hogy a [Microsoft .NET 4,5 telepítve van](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) -e a virtuális gépen. A szolgáltatással való kommunikációhoz a virtuálisgép-ügynökhöz .NET 4,5 szükséges.
+Ellenőrizze azt is, hogy a [Microsoft .NET 4,5 telepítve van](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) -e a virtuális gépen. A szolgáltatással való kommunikációhoz a virtuálisgép-ügynökhöz .NET 4,5 szükséges.
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>A virtuális gépen telepített ügynök elavult (Linux rendszerű virtuális gépek esetén)
 
 #### <a name="solution"></a>Megoldás
 A Linux rendszerű virtuális gépek esetében a legtöbb ügynökkel kapcsolatos vagy kiterjesztéssel kapcsolatos hibát az elavult virtuálisgép-ügynököt érintő problémák okozzák. A probléma megoldásához kövesse az alábbi általános irányelveket:
 
-1. Kövesse a Linux rendszerű [virtuális gép ügynökének frissítésével](../virtual-machines/linux/update-agent.md)kapcsolatos utasításokat.
+1. Kövesse a Linux rendszerű [virtuális gép ügynökének frissítésével](../virtual-machines/extensions/update-linux-agent.md)kapcsolatos utasításokat.
 
    > [!NOTE]
    > Javasoljuk *, hogy csak* terjesztési tárházon keresztül frissítse az ügynököt. Nem javasoljuk, hogy közvetlenül a GitHubról töltse le az ügynököt, és frissítse azt. Ha a disztribúcióhoz tartozó legújabb ügynök nem érhető el, a telepítésével kapcsolatos útmutatásért forduljon az elosztási támogatáshoz. A legutóbbi ügynök kereséséhez nyissa meg a [Windows Azure Linux Agent](https://github.com/Azure/WALinuxAgent/releases) lapot a GitHub-tárházban.
@@ -106,6 +107,6 @@ A bővítmény eltávolítása:
 1. Válassza ki **site Recovery bővítményt**.
 1. Válassza az **Eltávolítás** lehetőséget.
 
-Linux rendszerű virtuális gépek esetén, ha a VMSnapshot bővítmény nem jelenik meg a Azure Portalban, [frissítse az Azure Linux-ügynököt](../virtual-machines/linux/update-agent.md). Ezután futtassa a védelmet.
+Linux rendszerű virtuális gépek esetén, ha a VMSnapshot bővítmény nem jelenik meg a Azure Portalban, [frissítse az Azure Linux-ügynököt](../virtual-machines/extensions/update-linux-agent.md). Ezután futtassa a védelmet.
 
 A lépések végrehajtásakor a bővítmény újratelepítése a védelem során történik.

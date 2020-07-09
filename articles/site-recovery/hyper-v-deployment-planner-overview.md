@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
-ms.openlocfilehash: 07c1f7f258dbea7bcf7a6e7ea51fdcfdfaa006aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db3d619118be74ec1429ace70f580558c0a6c9d
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79368723"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134364"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Az Azure-ba irányuló Hyper-V vész-helyreállítás Azure Site Recovery Deployment Planner
 
@@ -71,7 +72,7 @@ Az eszköz a következő részleteket biztosítja:
 
 | | **VMware – Azure** |**Hyper-V – Azure**|**Azure – Azure**|**Hyper-V – másodlagos hely**|**VMware – másodlagos hely**
 --|--|--|--|--|--
-Támogatott esetek |Igen|Igen|Nem|Igen*|No
+Támogatott esetek |Igen|Igen|Nem|Igen*|Nem
 Támogatott verzió | vCenter 6,7, 6,5, 6,0 vagy 5,5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
 Támogatott konfiguráció|vCenter, ESXi| Hyper-V fürt, Hyper-V gazdagép|NA|Hyper-V fürt, Hyper-V gazdagép|NA|
 Azon kiszolgálók száma, amelyek profilozhatók az Azure Site Recovery Deployment Planner futó példányaihoz |Egyszeres (az egy vCenter Serverhez vagy egy ESXi-kiszolgálóhoz tartozó virtuális gépek profilozhatók egyszerre)|Többszörös (több gazdagéphez vagy gazdagépfürthöz tartozó virtuális gépek profilozhatók egyszerre)| NA |Többszörös (több gazdagéphez vagy gazdagépfürthöz tartozó virtuális gépek profilozhatók egyszerre)| NA
@@ -81,7 +82,7 @@ Azon kiszolgálók száma, amelyek profilozhatók az Azure Site Recovery Deploym
 ## <a name="prerequisites"></a>Előfeltételek
 Az eszköz Hyper-V esetén három fő fázisból áll: virtuálisgép-lista lekérése, valamint profilkészítés és jelentéskészítés. Van egy negyedik lehetőség, amely csak az átviteli sebességet számítja ki. Az alábbi táblázatban találhatók annak a kiszolgálónak a követelményei, amelyen az egyes fázisokat futtatni kell:
 
-| Kiszolgálókövetelmények | Description |
+| Kiszolgálókövetelmények | Leírás |
 |---|---|
 |Virtuálisgép-lista lekérésre, profilkészítés és az átviteli sebesség mérése |<ul><li>Operációs rendszer: Microsoft Windows Server 2016 vagy Microsoft Windows Server 2012 R2 </li><li>Gépkonfiguráció: 8 vCPU, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET-keretrendszer 4.5](https://aka.ms/dotnet-framework-45)</li><li>[A Visual Studio 2012 szoftverhez készült Microsoft Visual C++ terjeszthető változata](https://aka.ms/vcplusplus-redistributable)</li><li>Internet-hozzáférés az Azure-hoz (*. blob.core.windows.net) erről a kiszolgálóról, 443-es portról<br>[Ez nem kötelező. Megadhatja, hogy a jelentés létrehozásakor a rendelkezésre álló sávszélességet manuálisan adja meg.]</li><li>Azure Storage-fiók</li><li>Rendszergazdai hozzáférés a kiszolgálón</li><li>Minimális szabad lemezterület 100 GB (feltéve, hogy 1000 virtuális gépen átlagosan gépenként három lemezről 30 napig készít profilokat)</li><li>A virtuális gépet, ahol az Azure Site Recovery Deployment Planner fut, hozzá kell adni az összes Hyper-V-kiszolgáló TrustedHosts listájához.</li><li>A felvenni kívánt Hyper-V-kiszolgálókat hozzá kell adni az ügyfél virtuális TrustedHosts listájához, amelyből az eszköz fut. [További információ kiszolgálók a TrustedHosts listához való hozzáadásáról](#steps-to-add-servers-into-trustedhosts-list). </li><li> Az eszközt rendszergazdai jogosultságokkal kell futtatni a PowerShellből vagy az ügyfél parancssori konzoljáról.</ul></ul>|
 | Jelentéskészítés | 2013-as vagy újabb Microsoft Excellel rendelkező Windows PC vagy Windows Server |
@@ -138,5 +139,5 @@ A legújabb Azure Site Recovery Deployment Planner eszköz verziója 2,5.
 Tekintse meg az egyes frissítésekben hozzáadott javítások [Azure site Recovery Deployment Planner korábbi verziók](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) lapját.
 
 
-## <a name="next-steps"></a>További lépések
-* [Az üzembehelyezés-tervező futtatása](site-recovery-hyper-v-deployment-planner-run.md).
+## <a name="next-steps"></a>Következő lépések
+* [Az üzembehelyezés-tervező futtatása](./hyper-v-deployment-planner-run.md).

@@ -8,11 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ce3afb533aa33b88b15510eacc88c0884811cc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1349052488cb520f5866b5b0d238a223f2ceb68
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792598"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135087"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Azure Disk Encryption engedélyezése az Azure AD-vel Linux rendszerű virtuális gépeken (korábbi kiadás)
 
@@ -210,20 +211,28 @@ Javasoljuk, hogy legyen egy LVM-on-Crypt beállítás. Az alábbi példákban cs
 
     1. Formázza az újonnan hozzáadott lemezt. Az Azure által generált symlink-ket itt fogjuk használni. A symlink-EK használata elkerüli az eszközök nevének változásával kapcsolatos problémákat. További információ: az [eszközök neveivel kapcsolatos problémák elhárítása](troubleshoot-device-names-problems.md).
     
-             `mkfs -t ext4 /dev/disk/azure/scsi1/lun0`
-        
+        ```console
+        mkfs -t ext4 /dev/disk/azure/scsi1/lun0
+        ```
+
     2. Csatlakoztassa a lemezeket.
-         
-             `mount /dev/disk/azure/scsi1/lun0 /mnt/mountpoint`    
-        
+
+        ```console
+        mount /dev/disk/azure/scsi1/lun0 /mnt/mountpoint
+        ```
+
     3. Hozzáadás az fstab-hoz.
-         
-            `echo "/dev/disk/azure/scsi1/lun0 /mnt/mountpoint ext4 defaults,nofail 1 2" >> /etc/fstab`
-        
+
+        ```console
+        echo "/dev/disk/azure/scsi1/lun0 /mnt/mountpoint ext4 defaults,nofail 1 2" >> /etc/fstab
+        ```
+
     4. Futtassa a set-AzVMDiskEncryptionExtension PowerShell-parancsmagot a-EncryptFormatAll használatával a lemezek titkosításához.
-             ```azurepowershell-interactive
-             Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl "https://mykeyvault.vault.azure.net/" -EncryptFormatAll
-             ```
+
+       ```azurepowershell-interactive
+        Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl "https://mykeyvault.vault.azure.net/" -EncryptFormatAll
+        ```
+
     5. Az LVM beállítása az új lemezek felett. Figyelje meg, hogy a titkosított meghajtók zárolása a virtuális gép elindítása után megtörtént. Ezért az LVM csatlakoztatását is el kell halasztani.
 
 
@@ -337,7 +346,7 @@ A titkosítást letilthatja Azure PowerShell, az Azure CLI vagy egy Resource Man
      3. Válassza a **vásárlás** lehetőséget a lemez titkosításának letiltásához egy futó WINDOWSOS virtuális gépen. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Linux Azure Disk Encryption áttekintése](disk-encryption-overview-aad.md)
 - [Kulcstartó létrehozása és konfigurálása az Azure AD-vel való Azure Disk Encryptionhoz (előző kiadás)](disk-encryption-key-vault-aad.md)

@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641713"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135321"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-névfeloldási lehetőségek Linux rendszerű virtuális gépekhez az Azure-ban
 Az Azure alapértelmezés szerint DNS-névfeloldást biztosít az egyetlen virtuális hálózatban lévő összes virtuális géphez. Saját DNS-névfeloldási megoldást is alkalmazhat saját DNS-szolgáltatásainak konfigurálásával az Azure-gazdagépeken futó virtuális gépeken. A következő forgatókönyvek segíthetnek kiválasztani az adott helyzetnek megfelelőt.
@@ -91,7 +92,9 @@ A DNS elsődlegesen UDP protokoll. Mivel az UDP protokoll nem garantálja az üz
 
 Ha szeretné megtekinteni a Linux rendszerű virtuális gépek aktuális beállításait, a "Cat/etc/resolv.conf", és megtekintheti a "beállítások" sort, például:
 
-    options timeout:1 attempts:5
+```config-conf
+options timeout:1 attempts:5
+```
 
 A resolv. conf fájl automatikusan jön létre, és nem szerkeszthető. A "beállítások" sort hozzáadó konkrét lépések eloszlás szerint változnak:
 

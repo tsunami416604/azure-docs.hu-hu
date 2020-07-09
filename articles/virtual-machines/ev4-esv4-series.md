@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 967df2022166936df71b30fbe9d49798663ce962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccb6bbcddaa5ce76e9dbb04d737830fbaf5c2d9f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783602"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134322"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 és Esv4 sorozat
 
@@ -30,7 +30,7 @@ A Ev4-sorozat méretei az Intel Xeon &reg; Platinum 8272CL (Cascade-tó) futnak.
 A távoli adatlemezek tárterületét a rendszer külön számlázza a virtuális gépektől. A Premium Storage-lemezek használatához használja a Esv4-méreteket. A Esv4-méretek díjszabása és számlázási mérőszámai azonosak a Ev4 sorozattal.
 
 > [!IMPORTANT]
-> Ezek az új méretek jelenleg csak nyilvános előzetes verzióban érhetők el. [Itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)regisztrálhatja ezeket a DV4 és Dsv4-sorozatot. 
+> Ezek az új méretek jelenleg csak nyilvános előzetes verzióban érhetők el. [Itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)regisztrálhatja ezeket a Ev4 és Esv4-sorozatot. 
 
 ACU: 195 – 210
 
@@ -59,7 +59,7 @@ Memória megőrzésének frissítései: támogatott
 A Esv4-sorozat méretei az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade-tó) futnak. A Esv4 sorozat példányai ideálisak a nagyvállalati igényű vállalati alkalmazásokhoz. Az Evs4 sorozatú virtuális gépek Intel &reg; Hyper-Threading technológiával rendelkeznek. A távoli adatlemezek tárterületét a rendszer külön számlázza a virtuális gépektől.
 
 > [!IMPORTANT]
-> Ezek az új méretek jelenleg csak nyilvános előzetes verzióban érhetők el. [Itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)regisztrálhatja ezeket a DV4 és Dsv4-sorozatot. 
+> Ezek az új méretek jelenleg csak nyilvános előzetes verzióban érhetők el. [Itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)regisztrálhatja ezeket a Ev4 és Esv4-sorozatot. 
 
 ACU: 195-210
 
@@ -95,6 +95,6 @@ Memória megőrzésének frissítései: támogatott
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

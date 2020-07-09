@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190796"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133707"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Vész-helyreállítás beállítása többrétegű SAP NetWeaver-alkalmazások telepítéséhez
 
@@ -27,9 +28,9 @@ A [Azure site Recovery](site-recovery-overview.md)használatával biztosíthatja
 
 Mielőtt elkezdené, győződjön meg arról, hogy tudja, hogyan végezheti el a következő feladatokat:
 
-* [Virtuális gép replikálása az Azure-ba](azure-to-azure-walkthrough-enable-replication.md)
-* [Helyreállítási hálózat kialakítása](site-recovery-azure-to-azure-networking-guidance.md)
-* [Végezzen feladatátvételi tesztet az Azure-ba](azure-to-azure-walkthrough-test-failover.md)
+* [Virtuális gép replikálása az Azure-ba](./azure-to-azure-tutorial-enable-replication.md)
+* [Helyreállítási hálózat kialakítása](./azure-to-azure-about-networking.md)
+* [Végezzen feladatátvételi tesztet az Azure-ba](./azure-to-azure-tutorial-dr-drill.md)
 * [Feladatátvétel az Azure-ba](site-recovery-failover.md)
 * [Tartományvezérlő replikálása](site-recovery-active-directory.md)
 * [SQL Server példány replikálása](site-recovery-sql.md)
@@ -110,7 +111,7 @@ Az alábbiakban az ebben a példában használt egyes szintek vész-helyreállí
 
 ## <a name="replicate-virtual-machines"></a>Virtuális gépek replikálása
 
-Az összes SAP-alkalmazás virtuális gép Azure vész-helyreállítási adatközpontba történő replikálásának megkezdéséhez kövesse a [virtuális gépek Azure](azure-to-azure-walkthrough-enable-replication.md)-ba történő replikálásának útmutatóját.
+Az összes SAP-alkalmazás virtuális gép Azure vész-helyreállítási adatközpontba történő replikálásának megkezdéséhez kövesse a [virtuális gépek Azure](./azure-to-azure-tutorial-enable-replication.md)-ba történő replikálásának útmutatóját.
 
 * A Active Directory és a DNS védelméről a [Active Directory és a DNS védelméről](site-recovery-active-directory.md)szóló útmutatóban olvashat.
 
@@ -165,6 +166,6 @@ További információ: a [feladatátvétel tesztelése az Azure-ban site Recover
 
 További információ: [feladatátvétel site Recoveryban](site-recovery-failover.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a vész-helyreállítási megoldás létrehozásáról az SAP NetWeaver-telepítésekhez Site Recovery használatával. Tekintse meg a letölthető tanulmányi [SAP NetWeaver: vész-helyreállítási megoldás létrehozása a site Recovery](https://aka.ms/asr_sap). A tanulmány a különböző SAP-architektúrákkal kapcsolatos ajánlásokat tárgyalja. A támogatott alkalmazások és virtuálisgép-típusok az Azure-beli SAP-ben láthatók. A vész-helyreállítási megoldás tesztelésére is lehetőség van.
 * További információ [más számítási feladatok replikálásáról](site-recovery-workload.md) site Recovery használatával.

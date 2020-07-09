@@ -4,12 +4,12 @@ description: Áttekintést nyújt az Azure Site Recovery szolgáltatásról, és
 ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
-ms.openlocfilehash: ee387682e935522b37a5b4f9f32e53712bfb9150
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067538"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135225"
 ---
 # <a name="about-site-recovery"></a>Tudnivalók a Site Recovery szolgáltatásról
 
@@ -20,7 +20,7 @@ Szervezetként olyan üzletmenet-folytonossági és vész-helyreállítási (BCD
 Az Azure Recovery Services hozzájárul a BCDR stratégiához:
 
 - **Site Recovery szolgáltatás**: A Site Recovery azzal segít fenntartani az üzletmenet folytonosságát, hogy leállás esetén tovább futtatja az üzleti alkalmazásokat és a számítási feladatokat. A Site Recovery képes a fizikai és virtuális gépeken futó számítási feladatok replikálására egy elsődleges helyről egy másodlagos helyre. Ha az elsődleges helyen kimaradás történik, a rendszer átadja a feladatokat a másodlagos helynek, és az alkalmazások onnan lesznek elérhetők. Amint az elsődleges hely megint elérhetővé válik, visszatérhet hozzá.
-- **Backup szolgáltatás**: a [Azure Backup](/azure/backup/) szolgáltatás gondoskodik az adatai biztonságáról és helyreállításáról.
+- **Backup szolgáltatás**: a [Azure Backup](../backup/index.yml) szolgáltatás gondoskodik az adatai biztonságáról és helyreállításáról.
 
 A Site Recovery a következők replikációját képes kezelni:
 
@@ -54,7 +54,7 @@ A Site Recovery a következők replikációját képes kezelni:
 **Replikált gépek** | Áttekintheti az [Azure-beli virtuális gépeknek](azure-to-azure-support-matrix.md#replicated-machine-operating-systems), a [helyszíni VMware virtuális gépeknek és fizikai kiszolgálóknak](vmware-physical-azure-support-matrix.md#replicated-machines), valamint a [helyszíni Hyper-V virtuális gépeknek](hyper-v-azure-support-matrix.md#replicated-vms) a replikációs követelményeit.
 **Számítási feladatok** | A támogatott replikációs gépeken futó bármilyen számítási feladat replikálható. És a Site Recovery csapata [számos](site-recovery-workload.md#workload-summary)alkalmazáshoz adott meg alkalmazásspecifikus teszteket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a számítási [feladatok támogatásáról](site-recovery-workload.md).
 - Első lépések: [Azure-beli virtuális gép replikálása régiók között](azure-to-azure-quickstart.md).

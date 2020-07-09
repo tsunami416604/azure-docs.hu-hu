@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: d5a82aa3aca55622308cae5816c95df9766048da
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: baa132589f5242ab480c9caa55ca793e0652ad6e
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049926"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135012"
 ---
 # <a name="streaming-ingestion-throughput-limits"></a>Adatfolyam-betöltési átviteli sebesség korlátai
 
 A Azure Time Series Insights adatfolyam-továbbítási korlátozások alább olvashatók.
 
 > [!TIP]
-> Tekintse meg az előzetes verzióra vonatkozó összes korlát átfogó listáját az [előnézeti környezet megtervezése](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits) című cikkből. Ha a cikk címének frissítése megtörtént, távolítsa **el a** "Preview" szót.
+> Tekintse meg az előzetes verzióra vonatkozó összes korlát átfogó listáját az [előnézeti környezet megtervezése](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-plan#review-preview-limits) című cikkből.
 
 ## <a name="per-environment-limitations"></a>/Környezet korlátozásai
 
@@ -96,6 +96,6 @@ Az alábbi forrásokból tájékozódhat a hub átviteli sebességének és part
 * [Event hub-skála](https://docs.microsoft.com/azure/event-hubs/event-hubs-scalability#throughput-units)
 * [Event hub-partíciók](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#partitions)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [adattárolásról](concepts-storage.md)

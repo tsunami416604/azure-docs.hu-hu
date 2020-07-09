@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 44cafd4ce7e36c34082ff3c5498c5bbc35282221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263313"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135074"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -106,7 +106,7 @@ Ha nem ad meg VNET-tulajdonságokat, akkor a rendszerkép-szerkesztő létrehozz
         "resourceGroupName": "<vnetRgName>"
     }
 ```
-## <a name="tags"></a>Címkék
+## <a name="tags"></a>Tags
 
 Ezek a generált rendszerképhez megadható kulcs/érték párok.
 
@@ -391,7 +391,8 @@ A fájl-testreszabó fájljai az [MSI](https://github.com/danielsollondon/azvmim
 
 ### <a name="windows-update-customizer"></a>Windows Update testreszabása
 Ez a testreszabó a Packer [közösségi Windows Update-kiépítési](https://packer.io/docs/provisioners/community-supported.html) csomagjára épül, amely egy nyílt forráskódú projekt, amelyet a csomagoló Közösség tart fenn. A Microsoft a rendszerkép-készítő szolgáltatással teszteli és érvényesíti a kiépítő szolgáltatást, és támogatja a problémák megoldását, a Microsoft pedig hivatalosan nem támogatja a nyílt forráskódú projektet. A Windows Update-létesítéssel kapcsolatos részletes dokumentációt és segítséget a Project adattárában talál.
- 
+
+```json
      "customize": [
             {
                 "type": "WindowsUpdate",
@@ -403,7 +404,8 @@ Ez a testreszabó a Packer [közösségi Windows Update-kiépítési](https://pa
                 "updateLimit": 20
             }
                ], 
-Operációs rendszer támogatása: Windows
+OS support: Windows
+```
 
 Tulajdonságok testreszabása:
 - **típus** – windowsupdate.
@@ -601,7 +603,7 @@ az resource show \
 > [!NOTE]
 > A virtuális merevlemez létrehozása után a lehető leghamarabb másolja át egy másik helyre. A virtuális merevlemezt az ideiglenes erőforráscsoport tárolja, amely akkor jön létre, amikor a rendszer elküldi a képsablont az Azure rendszerkép-szerkesztő szolgáltatásba. Ha törli a képsablont, akkor elveszíti a VHD-t. 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Azure rendszerkép-készítő githubon](https://github.com/danielsollondon/azvmimagebuilder)különböző forgatókönyvekhez készült minta. JSON fájlok találhatók.
  

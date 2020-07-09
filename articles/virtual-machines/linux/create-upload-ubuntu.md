@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: abd357808cd0213e92eaba478fb861110bcf9f39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c70a6049596aa38e9ae6118517fc471becbc1676
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84666723"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134640"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Ubuntu rendszerű virtuális gép előkészítése az Azure-beli használatra
 
@@ -42,31 +43,36 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 2. Kattintson a **Kapcsolódás** gombra a virtuális gép ablakának megnyitásához.
 
 3. Cserélje le a rendszerkép aktuális tárházait az Ubuntu Azure-tárházának használatára.
-   
+
     A Szerkesztés előtt `/etc/apt/sources.list` ajánlott biztonsági másolatot készíteni:
-   
-        # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+
+    ```console
+    # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+    ```
 
     Ubuntu 16,04 és Ubuntu 18,04:
-   
-        # sudo sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
-        # sudo sed -i 's/http:\/\/[a-z][a-z]\.archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
-        # sudo apt-get update
 
+    ```console
+    # sudo sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
+    # sudo sed -i 's/http:\/\/[a-z][a-z]\.archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
+    # sudo apt-get update
+    ```
 
 4. Az Ubuntu Azure-lemezképek mostantól az [Azure-ra szabott kernelt](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)használják. Frissítse az operációs rendszert a legújabb Azure-ra szabott kernelre, és telepítse az Azure Linux-eszközöket (beleértve a Hyper-V-függőségeket) az alábbi parancsok futtatásával:
 
     Ubuntu 16,04 és Ubuntu 18,04:
 
-        # sudo apt update
-        # sudo apt install linux-azure linux-image-azure linux-headers-azure linux-tools-common linux-cloud-tools-common linux-tools-azure linux-cloud-tools-azure
-        (recommended) # sudo apt full-upgrade
+    ```console
+    # sudo apt update
+    # sudo apt install linux-azure linux-image-azure linux-headers-azure linux-tools-common linux-cloud-tools-common linux-tools-azure linux-cloud-tools-azure
+    (recommended) # sudo apt full-upgrade
 
-        # sudo reboot
+    # sudo reboot
+    ```
 
 5. Módosítsa a grub kernel-rendszerindítási sorát, hogy további kernel-paramétereket tartalmazzon az Azure-hoz. Ehhez nyissa meg `/etc/default/grub` egy szövegszerkesztőben, keresse meg a nevű változót `GRUB_CMDLINE_LINUX_DEFAULT` (vagy adja hozzá, ha szükséges), és szerkessze úgy, hogy tartalmazza a következő paramétereket:
-   
-    ```
+
+    ```text
     GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 quiet splash"
     ```
 
@@ -76,21 +82,25 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 
 7. Telepítse a Cloud-init (a kiépítési ügynököt) és az Azure Linux-ügynököt (a vendég bővítmények kezelőjét). A Cloud-init a netplan használatával konfigurálja a rendszerhálózati konfigurációt a kiépítés és az egyes későbbi rendszerindítások során.
 
-        # sudo apt update
-        # sudo apt install cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
+    ```console
+    # sudo apt update
+    # sudo apt install cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
+    ```
 
    > [!Note]
    >  `walinuxagent`Előfordulhat, hogy a csomag eltávolítja a `NetworkManager` és a `NetworkManager-gnome` csomagokat, ha azok telepítve vannak.
 
 8. Távolítsa el a Cloud-init alapértelmezett konfigurációit és a maradék netplan-összetevőket, amelyek ütközhetnek a Cloud-init kiépítés az Azure-ban:
 
-        # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
-        # rm -f /etc/cloud/ds-identify.cfg
-        # rm -f /etc/netplan/*.yaml
+    ```console
+    # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
+    # rm -f /etc/cloud/ds-identify.cfg
+    # rm -f /etc/netplan/*.yaml
+    ```
 
 9. A Cloud-init konfigurálásával a rendszer kiépíthető az Azure-adatforrással:
 
-    ```
+    ```console
     # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
     datasource_list: [ Azure ]
     EOF
@@ -123,27 +133,31 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
 
 10. Konfigurálja az Azure Linux-ügynököt úgy, hogy a kiépítés elvégzéséhez a Cloud-init-t használja. A beállításokkal kapcsolatos további információkért tekintse meg a [WALinuxAgent projektet](https://github.com/Azure/WALinuxAgent) .
 
-        sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
-        sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
-        sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
-        sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
+    ```console
+    sed -i 's/Provisioning.Enabled=y/Provisioning.Enabled=n/g' /etc/waagent.conf
+    sed -i 's/Provisioning.UseCloudInit=n/Provisioning.UseCloudInit=y/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
+    sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
 
-        cat >> /etc/waagent.conf << EOF
-        # For Azure Linux agent version >= 2.2.45, this is the option to configure,
-        # enable, or disable the provisioning behavior of the Linux agent.
-        # Accepted values are auto (default), waagent, cloud-init, or disabled.
-        # A value of auto means that the agent will rely on cloud-init to handle
-        # provisioning if it is installed and enabled, which in this case it will.
-        Provisioning.Agent=auto
-        EOF
+    cat >> /etc/waagent.conf << EOF
+    # For Azure Linux agent version >= 2.2.45, this is the option to configure,
+    # enable, or disable the provisioning behavior of the Linux agent.
+    # Accepted values are auto (default), waagent, cloud-init, or disabled.
+    # A value of auto means that the agent will rely on cloud-init to handle
+    # provisioning if it is installed and enabled, which in this case it will.
+    Provisioning.Agent=auto
+    EOF
+    ```
 
 11. A Cloud-init és az Azure Linux Agent futásidejű összetevőinek és naplóinak tisztítása:
 
-        # sudo cloud-init clean --logs --seed
-        # sudo rm -rf /var/lib/cloud/
-        # sudo systemctl stop walinuxagent.service
-        # sudo rm -rf /var/lib/waagent/
-        # sudo rm -f /var/log/waagent.log
+    ```console
+    # sudo cloud-init clean --logs --seed
+    # sudo rm -rf /var/lib/cloud/
+    # sudo systemctl stop walinuxagent.service
+    # sudo rm -rf /var/lib/waagent/
+    # sudo rm -f /var/log/waagent.log
+    ```
 
 12. Futtassa a következő parancsokat a virtuális gép megszüntetéséhez, és készítse elő az Azure-beli üzembe helyezéshez:
 
@@ -153,16 +167,18 @@ Ez a cikk azt feltételezi, hogy már telepített egy Ubuntu Linux operációs r
     > [!WARNING]
     > A fenti parancs használatával történő megszüntetés nem garantálja, hogy a rendszerkép törlődik az összes bizalmas adatról, és alkalmas az újraterjesztésre.
 
-        # sudo waagent -force -deprovision+user
-        # rm -f ~/.bash_history
-        # export HISTSIZE=0
-        # logout
+    ```console
+    # sudo waagent -force -deprovision+user
+    # rm -f ~/.bash_history
+    # export HISTSIZE=0
+    # logout
+    ```
 
 13. Kattintson a **művelet – > leállítás** a Hyper-V kezelőjében elemre.
 
 14. Az Azure csak rögzített méretű VHD-ket fogad el. Ha a virtuális gép operációsrendszer-lemeze nem rögzített méretű VHD, használja a `Convert-VHD` PowerShell-parancsmagot, és válassza a `-VHDType Fixed` lehetőséget. Tekintse meg az `Convert-VHD` alábbi dokumentumokat: [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd?view=win10-ps).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már készen áll a Ubuntu Linux virtuális merevlemez használatára az Azure-beli új virtuális gépek létrehozásához. Ha első alkalommal tölti fel a. vhd-fájlt az Azure-ba, tekintse meg a Linux rendszerű [virtuális gép létrehozása egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd)című témakört.
 

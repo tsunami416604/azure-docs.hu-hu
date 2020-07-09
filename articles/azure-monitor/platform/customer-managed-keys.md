@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 607f622bc484883ecbeae0552eecc9561cf4c3ef
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969602"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134621"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor ügyfél által felügyelt kulcs 
 
@@ -461,26 +461,27 @@ A CMK forgatásához explicit frissítés szükséges a *fürterőforrás* szám
 
 Az összes adatai elérhetők maradnak a kulcs elforgatási művelete után, mivel az adatai mindig titkosítva vannak a fiók titkosítási kulcsával (AEK), míg a AEK mostantól titkosítva van az új kulcs titkosítási kulcs (KEK) verziójával Key Vaultban.
 
-## <a name="saving-queries-protected-with-cmk"></a>A CMK-mel védett lekérdezések mentése
+## <a name="cmk-for-queries"></a>Lekérdezések CMK
 
-A Log Analyticsben használt lekérdezési nyelv kifejező, és bizalmas információkat tartalmazhat a lekérdezésekben vagy a lekérdezési szintaxisban hozzáadott megjegyzésekben. Egyes szervezetek megkövetelik, hogy az ilyen információk védelme a CMK szabályzat részeként történjen, és a kulcsával titkosított lekérdezéseket kell mentenie. A Azure Monitor lehetővé teszi a *mentett keresések* és a *log-riasztási* lekérdezések tárolását a saját, a munkaterülethez kapcsolódó Storage-fiókban. 
+A Log Analyticsben használt lekérdezési nyelv kifejező, és bizalmas információkat tartalmazhat a lekérdezésekben vagy a lekérdezési szintaxisban hozzáadott megjegyzésekben. Egyes szervezetek megkövetelik, hogy az ilyen információk védelme a CMK szabályzat részeként történjen, és a kulcsával titkosított lekérdezéseket kell mentenie. A Azure Monitor lehetővé teszi, hogy a munkaterülethez való csatlakozáskor a saját kulcsával titkosított *mentett kereséseket* és *napló-riasztásokat* tartalmazó lekérdezéseket tárolja. 
 
-> Megjegyzés: a munkafüzetekben és az Azure-irányítópultokon használt lekérdezések CMK még nem támogatott. Ezek a lekérdezések a Microsoft-kulccsal titkosítva maradnak.  
+> [!NOTE]
+> A munkafüzetekben és az Azure-irányítópultokon használt lekérdezések CMK még nem támogatott. Ezek a lekérdezések a Microsoft-kulccsal titkosítva maradnak.  
 
-A saját tárolóval (BYOS) a szolgáltatás feltölti a lekérdezéseket az Ön által vezérelt Storage-fiókba. Ez azt jelenti, hogy a [titkosítás-nyugalmi házirendet](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) a log Analytics fürtben lévő adatok titkosításához használt kulccsal vagy más kulccsal kell vezérelni. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie. 
+Ha [saját tárolót](https://docs.microsoft.com/azure/azure-monitor/platform/private-storage) (BYOS) használ, és hozzárendeli azt a munkaterülethez, a szolgáltatás feltölti a *mentett-kereséseket* és a *log-riasztási* lekérdezéseket a Storage-fiókjába. Ez azt jelenti, hogy a Storage-fiókot és a [titkosítás-nyugalmi szabályzatot](https://docs.microsoft.com/azure/storage/common/encryption-customer-managed-keys) a log Analytics fürtben lévő adatok titkosításához használt kulcs vagy egy másik kulcs használatával szabályozhatja. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie. 
 
 **Szempontok a lekérdezések CMK beállítása előtt**
 * A munkaterület és a Storage-fiók "Write" engedélyekkel kell rendelkeznie
 * Győződjön meg arról, hogy a Storage-fiókot ugyanabban a régióban hozza létre, mint ahol a Log Analytics munkaterület található.
 * A tárolóban végzett *keresések* szolgáltatásbeli összetevőknek számítanak, és a formátumuk változhat
-* A meglévő *mentett keresések* el lesznek távolítva a munkaterületről. A konfiguráció előtt másolja és mentse a szükséges *kereséseket* . A *mentett kereséseket* a [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch?view=azps-4.2.0) használatával tekintheti meg
+* A meglévő *mentett keresések* el lesznek távolítva a munkaterületről. A konfiguráció előtt másolja és mentse a szükséges *kereséseket* . A *mentett keresések* megtekinthetők a [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/Get-AzOperationalInsightsSavedSearch) használatával
 * A lekérdezési előzmények nem támogatottak, és nem láthatja a futtatott lekérdezéseket
-* A lekérdezések mentése céljából egyetlen Storage-fiókot is hozzárendelhet a munkaterülethez, de a *mentett keresések* és a *log-riasztások* lekérdezése is felhasználható.
+* A lekérdezések mentése céljából egyetlen Storage-fiókot rendelhet a munkaterülethez, de a *mentett keresések* és a *log-riasztások* lekérdezése is felhasználható.
 * A rögzítés az irányítópulton nem támogatott
 
-**BYOS konfigurálása lekérdezésekhez**
+**BYOS konfigurálása mentett keresési lekérdezésekhez**
 
-Rendeljen hozzá egy Storage-fiókot a *lekérdezési* dataSourceType a munkaterülethez. 
+A Storage-fiók *hozzárendelése a* munkaterülethez – a *mentett keresési* lekérdezések a Storage-fiókba lesznek mentve. 
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"
@@ -505,9 +506,9 @@ Content-type: application/json
 
 A konfiguráció után a rendszer minden új *mentett keresési* lekérdezést ment a tárolóba.
 
-**A BYOS konfigurálása a naplókhoz – riasztások**
+**BYOS konfigurálása a log-riasztási lekérdezésekhez**
 
-Rendeljen hozzá egy olyan Storage-fiókot, amely a *riasztások* dataSourceType a munkaterületre. 
+Storage-fiók hozzárendelése a munkaterülethez a *riasztásokhoz* – a *log-riasztási* lekérdezések a Storage-fiókba lesznek mentve. 
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "resource-group-name"storage-account-name"resource-group-name"

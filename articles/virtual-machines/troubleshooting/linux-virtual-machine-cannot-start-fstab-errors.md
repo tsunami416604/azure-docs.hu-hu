@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: f68221666f370f87af7539d9302aaa3ed472d5e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: daf3e3aaa95734c79e513c16e5d41aeb0bf894dc
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82883141"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135267"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Linuxos virtuális gép hibáinak elhárítása az fstab-hibák miatt
 
@@ -191,16 +192,16 @@ A probléma megoldásához indítsa el a virtuális gépet vészhelyzeti módban
 
 2. Miután a rendszerlemezt adatlemezként csatlakoztatta a helyreállítási virtuális gépen, készítsen biztonsági másolatot az fstab-fájlról a módosítások végrehajtása előtt, majd kövesse a következő lépéseket az fstab-fájl kijavítani.
 
-3.    Keresse meg azt a hibát, amely azt jelzi, hogy a lemez nincs csatlakoztatva. A következő példában a rendszer olyan lemezt próbált csatolni, amely már nem volt jelen:
+3. Keresse meg azt a hibát, amely azt jelzi, hogy a lemez nincs csatlakoztatva. A következő példában a rendszer olyan lemezt próbált csatolni, amely már nem volt jelen:
 
-    ```
-    [DEPEND] Dependency failed for /datadisk1.
-    [DEPEND] Dependency failed for Local File Systems.
-    [DEPEND] Dependency failed for Relabel all filesystems, if necessary.
-    [DEPEND] Dependency failed for Migrate local... structure to the new structure.
-    Welcome to emergency mode! After logging in, type "journalctl -xb" to view system logs, "systemctl reboot" to reboot, "systemctl default" or ^D to try again to boot into default mode.
-    Give root password for maintenance (or type Control-D to continue):
-    ```
+   ```output
+   [DEPEND] Dependency failed for /datadisk1.
+   [DEPEND] Dependency failed for Local File Systems.
+   [DEPEND] Dependency failed for Relabel all filesystems, if necessary.
+   [DEPEND] Dependency failed for Migrate local... structure to the new structure.
+   Welcome to emergency mode! After logging in, type "journalctl -xb" to view system logs, "systemctl reboot" to reboot, "systemctl default" or ^D to try again to boot into default mode.
+   Give root password for maintenance (or type Control-D to continue):
+   ```
 
 4. Kapcsolódjon a virtuális géphez a legfelső szintű jelszó (Red Hat-alapú virtuális gépek) használatával.
 
@@ -237,7 +238,7 @@ A probléma megoldásához indítsa el a virtuális gépet vészhelyzeti módban
     * A virtuális gép újraindítása előtt tesztelje az fstab-módosításokat. Ehhez használja a következő parancsot:``$ sudo mount -a``
     * Hozzon létre egy további másolatot a helyesbített fstab-fájlról a jövőbeli helyreállítási forgatókönyvekben való használathoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Linux rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez az Azure CLI 2,0-vel való csatlakoztatásával](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
 * [Linux rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez csatolásával a Azure Portal használatával](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)

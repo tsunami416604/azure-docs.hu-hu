@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: rajanaki
-ms.openlocfilehash: 208177d10e9002fafe2495710da229541a11a43e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 501cf161a22aaa1ec37abda2b750106b6eaf3dc4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77661670"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135207"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Az ügyfél által felügyelt webhelyek (VMM) közötti vész-helyreállítás elavult Azure Site Recovery használatával
 
@@ -38,7 +39,7 @@ Az alábbiakban azokat az alternatívákat láthatja, amelyekkel az ügyfél kiv
 - 1. lehetőség (ajánlott): dönthet úgy, hogy [Az Azure-t használja Dr célként](hyper-v-vmm-azure-tutorial.md).
 
 
-- 2. lehetőség: válassza ki a helyek közötti replikálást a mögöttes [Hyper-V replika megoldás](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)használatával, de nem tudja kezelni a Dr-konfigurációkat a Azure Portal Azure site Recovery használatával. 
+- 2. lehetőség: válassza ki a helyek közötti replikálást a mögöttes [Hyper-V replika megoldás](/windows-server/virtualization/hyper-v/manage/set-up-hyper-v-replica)használatával, de nem tudja kezelni a Dr-konfigurációkat a Azure Portal Azure site Recovery használatával. 
 
 
 ## <a name="remediation-steps"></a>Szervizelési lépések
@@ -61,6 +62,6 @@ Ha a Hyper-V replika használatának 2. lehetőségét választja, hajtsa végre
 
     Ezzel eltávolítja a replikált elemet a Azure Site Recoveryról (a számlázás leállt). A helyszíni virtuális gépen a replikálási konfiguráció **nem** lesz törölve. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tervezze meg az elavult alkalmazást, és válasszon egy alternatív lehetőséget, amely az infrastruktúra és a vállalat számára legmegfelelőbb. Ha bármilyen kérdése van, forduljon Microsoft ügyfélszolgálata
 

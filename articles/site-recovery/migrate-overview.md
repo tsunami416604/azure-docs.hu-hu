@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f42942d0e112aad147f78d62b5f5b43587eca9b3
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80388899"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135606"
 ---
 # <a name="about-migration"></a>A migrálás ismertetése
 
@@ -30,7 +30,7 @@ A Site Recovery használatával áttelepíthetők:
 - **AWS áttelepítése**: AWS Windows-példányok áttelepítése Azure IaaS virtuális gépekre. 
 
 > [!NOTE]
-> Mostantól áttelepítheti a helyszínről az Azure-ba a Azure Migrate szolgáltatás használatával. [További információk](../migrate/migrate-overview.md).
+> Mostantól áttelepítheti a helyszínről az Azure-ba a Azure Migrate szolgáltatás használatával. [További információk](../migrate/migrate-services-overview.md).
 
 ## <a name="what-do-we-mean-by-migration"></a>Mit értünk áttelepítés alatt?
 
@@ -48,7 +48,7 @@ A helyszíni és az Azure-beli virtuális gépek vész-helyreállítási Site Re
 **Áttelepítés Azure-régiók között** | Azure-beli virtuális gépeket áttelepíthet egyik Azure-régióból a másikba. Az áttelepítés befejezése után az Azure-beli virtuális gépek vész-helyreállítását már a másodlagos régióban is konfigurálhatja, amelyre áttelepítette.
 **AWS áttelepítése az Azure-ba** | AWS-példányokat is áttelepíthet Azure virtuális gépekre. Site Recovery az AWS-példányokat fizikai kiszolgálóként kezeli áttelepítési célokra. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Helyszíni gépek áttelepítése az Azure-ba](migrate-tutorial-on-premises-azure.md)
 - [Virtuális gépek áttelepítése egyik Azure-régióból a másikba](azure-to-azure-tutorial-migrate.md)

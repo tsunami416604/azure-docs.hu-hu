@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299782"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134033"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vész-helyreállítás
 
@@ -88,7 +89,7 @@ A Site Recovery nem támogatja a lemez "gyors eltávolítását" egy replikált 
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Milyen gyakran lehet replikálni az Azure-ba?
 
-Az Azure-beli virtuális gépek másik Azure-régióba történő replikálásakor a replikáció folyamatos. További információkért lásd az [Azure – Azure replikálási architektúrát](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process).
+Az Azure-beli virtuális gépek másik Azure-régióba történő replikálásakor a replikáció folyamatos. További információkért lásd az [Azure – Azure replikálási architektúrát](./azure-to-azure-architecture.md#replication-process).
 
 ### <a name="can-i-replicate-virtual-machines-within-a-region-i-need-this-functionality-to-migrate-vms"></a>Replikálható a virtuális gépek egy adott régión belül? A virtuális gépek áttelepítéséhez szükség van erre a funkcióra.
 
@@ -96,17 +97,17 @@ Nem használhat Azure – Azure lemezes helyreállítási megoldást a virtuáli
 
 ### <a name="can-i-replicate-vm-instances-to-any-azure-region"></a>Replikálhat virtuálisgép-példányokat bármely Azure-régióba?
 
-Site Recovery használatával replikálhatja és helyreállíthatja a virtuális gépeket az ugyanazon földrajzi fürtön belüli két régió között. A földrajzi fürtök adatkéséssel és szuverenitással vannak meghatározva. További információ: Site Recovery [régió támogatási mátrixa](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#region-support).
+Site Recovery használatával replikálhatja és helyreállíthatja a virtuális gépeket az ugyanazon földrajzi fürtön belüli két régió között. A földrajzi fürtök adatkéséssel és szuverenitással vannak meghatározva. További információ: Site Recovery [régió támogatási mátrixa](./azure-to-azure-support-matrix.md#region-support).
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Az Site Recovery internetkapcsolat szükséges?
 
-Nem, Site Recovery nem igényel internetkapcsolatot. Azonban szükség van a Site Recovery URL-címek és IP-címtartományok elérésére, ahogy azt a [hálózatkezelés az Azure-beli virtuális gép](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)vész-helyreállítási szolgáltatásában.
+Nem, Site Recovery nem igényel internetkapcsolatot. Azonban szükség van a Site Recovery URL-címek és IP-címtartományok elérésére, ahogy azt a [hálózatkezelés az Azure-beli virtuális gép](./azure-to-azure-about-networking.md#outbound-connectivity-for-urls)vész-helyreállítási szolgáltatásában.
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>Lehet replikálni egy olyan alkalmazást, amely külön erőforráscsoporthoz tartozik a különálló rétegek számára?
 
 Igen, replikálhatja az alkalmazást, és megtarthatja a vész-helyreállítási konfigurációt egy külön erőforráscsoporthoz is.
 
-Ha például az alkalmazás egy különálló erőforráscsoport alkalmazásával, adatbázisával és webhelyével rendelkezik, akkor a [replikálási varázslót](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) háromszor kell kiválasztania az összes szinten való védelem érdekében. Site Recovery a három szintet három különböző erőforráscsoporthoz fogja replikálni.
+Ha például az alkalmazás egy különálló erőforráscsoport alkalmazásával, adatbázisával és webhelyével rendelkezik, akkor a [replikálási varázslót](./azure-to-azure-how-to-enable-replication.md#enable-replication) háromszor kell kiválasztania az összes szinten való védelem érdekében. Site Recovery a három szintet három különböző erőforráscsoporthoz fogja replikálni.
 
 ### <a name="can-i-move-storage-accounts-across-resource-groups"></a>Át lehet helyezni a Storage-fiókokat az erőforráscsoportok között?
 
@@ -121,7 +122,7 @@ A replikációs házirend határozza meg a helyreállítási pontok megőrzési 
 - 24 óra a helyreállítási pontok megőrzési előzményeihez.
 - 60 perc az alkalmazás-konzisztens Pillanatképek gyakoriságához.
 
-[További információ a replikációs beállításokról](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings).
+[További információ a replikációs beállításokról](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Mi az összeomlás-konzisztens helyreállítási pont?
 
@@ -182,7 +183,7 @@ Igen, ha 24 óra és 72 óra között növeli a megőrzési időtartamot, Site R
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Engedélyezhető a replikáció az App-konzisztencia használatával a Linux-kiszolgálókon?
 
-Igen. A Linux operációs rendszer Azure Site Recovery támogatja az alkalmazások egyéni parancsfájljait az alkalmazás-konzisztencia számára. Az előzetes és utáni beállításokkal rendelkező egyéni szkriptet a Azure Site Recovery mobilitási ügynök fogja használni az alkalmazások konzisztenciája során. [További információ](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
+Igen. A Linux operációs rendszer Azure Site Recovery támogatja az alkalmazások egyéni parancsfájljait az alkalmazás-konzisztencia számára. Az előzetes és utáni beállításokkal rendelkező egyéni szkriptet a Azure Site Recovery mobilitási ügynök fogja használni az alkalmazások konzisztenciája során. [További információ](./site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>Több virtuális gépre kiterjedő konzisztencia
 
@@ -194,7 +195,7 @@ A Site Recovery egy **több virtuális gépre kiterjedő konzisztencia-** beáll
 
 Ha a virtuális gépek feladatátvételét hajtja végre, az összeomlás-konzisztens és az alkalmazás-konzisztens helyreállítási pontokat fogja tartalmazni.
 
-Ugorjon végig az oktatóanyagban a [több virtuális gépre kiterjedő konzisztencia engedélyezéséhez](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication-for-a-vm).
+Ugorjon végig az oktatóanyagban a [több virtuális gépre kiterjedő konzisztencia engedélyezéséhez](./azure-to-azure-tutorial-enable-replication.md#enable-replication-for-a-vm).
 
 ### <a name="can-i-fail-over-a-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>A több virtuális GÉPRE kiterjedő konzisztencia-replikációs csoporton belül egyetlen virtuális gép feladatátvétele végezhető el?
 
@@ -290,11 +291,11 @@ Igen, integrálhatja Azure Automation runbookok a helyreállítási tervbe. Tov�
 
 ### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>Átadottam az elsődleges régióból a vész-helyreállítási régióba. A DR régióban lévő virtuális gépek automatikusan védettek?
 
-Nem. Ha az Azure-beli virtuális gépeket az egyik régióból a másikba hajtja végre, a virtuális gépek [nem](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) védett állapotban kezdődnek a Dr régióban. Ahhoz, hogy a virtuális gépeket az elsődleges régióba lehessen visszaadni, újra kell [védetté](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect) tenni a virtuális gépeket a másodlagos régióban.
+Nem. Ha az Azure-beli virtuális gépeket az egyik régióból a másikba hajtja végre, a virtuális gépek [nem](./azure-to-azure-tutorial-failover-failback.md) védett állapotban kezdődnek a Dr régióban. Ahhoz, hogy a virtuális gépeket az elsődleges régióba lehessen visszaadni, újra kell [védetté](./azure-to-azure-how-to-reprotect.md) tenni a virtuális gépeket a másodlagos régióban.
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>Az ismételt védelem során a Site Recovery replikálja a teljes adatmennyiséget a másodlagos régióból az elsődleges régióba?
 
-Ez a helyzettől függ. Ha a forrásoldali virtuális gép létezik, akkor a rendszer csak a forrásfájl és a céllemez közötti változásokat szinkronizálja. Site Recovery kiszámítja a különbségeket a lemezek összehasonlításával, majd átviszi azokat. Ez a folyamat általában néhány órát vesz igénybe. További információ arról, hogy mi történik az ismételt védelem során: [Az Azure-beli virtuálisgép-példányok ismételt védelme az elsődleges régióban](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection).
+Ez a helyzettől függ. Ha a forrásoldali virtuális gép létezik, akkor a rendszer csak a forrásfájl és a céllemez közötti változásokat szinkronizálja. Site Recovery kiszámítja a különbségeket a lemezek összehasonlításával, majd átviszi azokat. Ez a folyamat általában néhány órát vesz igénybe. További információ arról, hogy mi történik az ismételt védelem során: [Az Azure-beli virtuálisgép-példányok ismételt védelme az elsődleges régióban](./azure-to-azure-how-to-reprotect.md#what-happens-during-reprotection).
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Mennyi ideig tart a feladat-visszavétel?
 
@@ -320,10 +321,10 @@ A Site Recovery ISO 27001:2013, 27018, HIPAA és DPA tanúsítvánnyal rendelkez
 
 ### <a name="does-site-recovery-encrypt-replication"></a>A Site Recovery titkosítja a replikációt?
 
-Igen, az Azure-ban az átvitelben és a [titkosításban](https://docs.microsoft.com/azure/storage/storage-service-encryption) egyaránt támogatott a titkosítás.
+Igen, az Azure-ban az átvitelben és a [titkosításban](../storage/common/storage-service-encryption.md) egyaránt támogatott a titkosítás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tekintse át az Azure-ról Azure-ra vonatkozó támogatási követelményeket](azure-to-azure-support-matrix.md).
 - [Azure – Azure replikálás beállítása](azure-to-azure-tutorial-enable-replication.md).
-- Ha a cikk elolvasása után kérdése merülne fel, tegye fel őket a [Microsoft Q&az Azure Recovery Services kérdéseit tartalmazó oldalra](https://docs.microsoft.com/answers/topics/azure-site-recovery.html).
+- Ha a cikk elolvasása után kérdése merülne fel, tegye fel őket a [Microsoft Q&az Azure Recovery Services kérdéseit tartalmazó oldalra](/answers/topics/azure-site-recovery.html).

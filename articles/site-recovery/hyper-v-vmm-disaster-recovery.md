@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437510"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134014"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Másodlagos helyszíni helyre irányuló vészhelyreállítás beállítása Hyper-V virtuális gépekhez
 
@@ -48,10 +48,10 @@ A [hálózatleképezés](hyper-v-vmm-network-mapping.md) kapcsolatot hoz létre 
 
 A VMM előkészítését a következőképpen végezze el:
 
-1. Győződjön meg arról, hogy rendelkezik [VMM logikai hálózatokkal](https://docs.microsoft.com/system-center/vmm/network-logical) a forrás- és céloldali VMM-kiszolgálókon.
+1. Győződjön meg arról, hogy rendelkezik [VMM logikai hálózatokkal](/system-center/vmm/network-logical) a forrás- és céloldali VMM-kiszolgálókon.
     - A forrásoldali kiszolgálón található logikai hálózatnak ahhoz a forrásfelhőhöz kell tartoznia, amelyikben a Hyper-V gazdagépek találhatók.
     - A céloldali kiszolgálón található logikai hálózatnak a célfelhőhöz kell tartoznia.
-1. Győződjön meg arról, hogy rendelkezik [virtuálisgép-hálózatokkal](https://docs.microsoft.com/system-center/vmm/network-virtual) a forrás- és céloldali VMM-kiszolgálókon. A virtuálisgép-hálózatokat minden helyen össze kell kapcsolni a logikai hálózattal.
+1. Győződjön meg arról, hogy rendelkezik [virtuálisgép-hálózatokkal](/system-center/vmm/network-virtual) a forrás- és céloldali VMM-kiszolgálókon. A virtuálisgép-hálózatokat minden helyen össze kell kapcsolni a logikai hálózattal.
 2. A forrásoldali Hyper-V gazdagépeken található virtuális gépeket a forrásoldali virtuálisgép-hálózathoz kell csatlakoztatni. 
 
 
@@ -153,6 +153,6 @@ Mielőtt hozzálátna, győződjön meg róla, hogy a szabályzatot használó �
 
 A **Védelem engedélyezése** művelet előrehaladását a **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeztével a kezdeti replikálás is befejeződik, a virtuális gép pedig készen áll a feladatátvételre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Vészhelyreállítási próba végrehajtása](hyper-v-vmm-test-failover.md)

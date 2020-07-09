@@ -1,5 +1,5 @@
 ---
-title: Események elindítása ML-munkafolyamatokban
+title: Események elindítása ML-munkafolyamatokban (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: Eseményvezérelt alkalmazások, folyamatok vagy CI/CD gépi tanulási munkafolyamatok beállítása Azure Machine Learningban.
 services: machine-learning
@@ -10,11 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5aeec1c2dae1d8a8cc11b5e8b3181d9b22069a43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338308"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135965"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Alkalmazások, folyamatok vagy CI/CD-munkafolyamatok elindítása Azure Machine Learning események alapján (előzetes verzió)
 
@@ -46,7 +47,7 @@ További információ az eseményforrás és az eseménykezelők használatáró
 
 A Azure Machine Learning a gépi tanulási életciklus különböző pontjain biztosít eseményeket: 
 
-| Eseménytípus | Description |
+| Eseménytípus | Leírás |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | Gépi tanulási kísérlet futtatásának befejeződése után következik be |
 | `Microsoft.MachineLearningServices.ModelRegistered` | Akkor következik be, amikor egy Machine learning-modell van regisztrálva a munkaterületen |
@@ -242,7 +243,7 @@ Az Azure Machine Learning Model objektum olyan paramétereket tartalmaz, amelyek
 
 Példaként tekintse meg a [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) tárházat, és kövesse a **readme** fájlban található lépéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Event Gridről és a Azure Machine Learning események megadásáról:
 

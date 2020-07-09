@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 011904d7ce14f346b678c753c10a8f3258730ee1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f41e1d8843783addf601becfda87607253e0a18
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014519"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135914"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver számára
 
@@ -458,7 +459,9 @@ A folyamat csak néhány percet vesz igénybe. A következő lépések végrehaj
 
 A kívánt eredménynek a következőhöz hasonlóan kell kinéznie:
 
-    Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
+```output
+Latin1-General, binary code point comparison sort for Unicode Data, SQL Server Sort Order 40 on Code Page 850 for non-Unicode Data
+```
 
 Ha az eredmény eltérő, állítsa le az SAP telepítését, és vizsgálja meg, miért nem a várt módon működik a telepítési parancs. Az SAP NetWeaver-alkalmazások üzembe helyezése SQL Server példányra, amely a fent említettnél több SQL Server kódlap használata esetén **nem** támogatott.
 

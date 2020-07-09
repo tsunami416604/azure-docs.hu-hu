@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 085647c392bb6cec51fba8b6e42cb8f03707223c
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77920161"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134576"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>A Windows aktiválása sikertelen a kényszerített bújtatási forgatókönyvben
 
@@ -78,7 +79,9 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
     ```
 3. Lépjen az aktiválási problémákkal rendelkező virtuális gépre. A [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) használatával ellenőrizze, hogy a KMS-kiszolgáló elérheti-e a következőt:
 
-        psping kms.core.windows.net:1688
+    ```console
+    psping kms.core.windows.net:1688
+    ```
 
 4. Próbálja meg aktiválni a Windowst, és ellenőrizze, hogy megoldódott-e a probléma.
 
@@ -106,11 +109,13 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
 3. Lépjen az aktiválási problémákkal rendelkező virtuális gépre. A [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) használatával ellenőrizze, hogy a KMS-kiszolgáló elérheti-e a következőt:
 
-        psping kms.core.windows.net:1688
+    ```console
+    psping kms.core.windows.net:1688
+    ```
 
 4. Próbálja meg aktiválni a Windowst, és ellenőrizze, hogy megoldódott-e a probléma.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [KMS-ügyfél telepítési kulcsai](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
 )

@@ -3,11 +3,12 @@ title: Lemezek kizárása a replikációból a Azure Site Recovery
 description: Lemezek kizárása a replikációból az Azure-ba Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: aa2e3ef3906a03be649a1978c1d662056c4d0f25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740518"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135697"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Lemezek kizárása a vész-helyreállításból
 
@@ -256,10 +257,9 @@ Az Azure-beli virtuális gépen elérhető lapozófájl-beállítások a követk
 ![Lapozófájl-beállítások az Azure virtuális gépen](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az ideiglenes Storage-lemezre vonatkozó irányelvekről:
-    - [További](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) tudnivalók az SSD-k Azure-beli virtuális gépeken való használatáról SQL Server tempdb és puffer-bővítmények tárolásához
-    - [Tekintse át](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance) az Azure-beli virtuális gépek SQL Serverinak teljesítményére vonatkozó ajánlott eljárásokat.
+    - [További](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) tudnivalók az SSD-k Azure-beli virtuális gépeken való használatáról SQL Server tempdb és puffer-bővítmények tárolásához
+    - [Tekintse át](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) az Azure-beli virtuális gépek SQL Serverinak teljesítményére vonatkozó ajánlott eljárásokat.
 - Ha sikerült beállítania és elindítani az üzemelő példányt, [ismerkedjen meg részletesebben](failover-failback-overview.md) a feladatátvételi különféle típusaival.
-

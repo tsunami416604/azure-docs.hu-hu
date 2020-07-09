@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan támogatja a MARS-ügynök a biztonsági menté
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 5656c113a6823a1708854a547b199bd16c521b04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f43f42fc23b1ca9591b6a49c3acce6c52c09d6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611483"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134978"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Tudnivalók a Microsoft Azure Recovery Services (MARS) ügynökről
 
@@ -42,7 +42,7 @@ A MARS-ügynök a következő visszaállítási forgatókönyveket támogatja:
 1. A Azure Portal hozzon létre egy [Recovery Services](install-mars-agent.md#create-a-recovery-services-vault)-tárolót, majd a **biztonsági mentési célokból**válassza a fájlok, mappák és a rendszerállapot lehetőséget.
 2. [Töltse le a Recovery Services-tároló hitelesítő adatait és az ügynök telepítőjét](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) egy helyszíni gépre.
 
-3. [telepítse az ügynököt](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) , és a letöltött tároló hitelesítő adataival regisztrálja a gépet a Recovery Services-tárolóba.
+3. [Telepítse az ügynököt](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) , és a letöltött tároló hitelesítő adataival regisztrálja a gépet a Recovery Services-tárolóba.
 4. A-ügyfél ügynök-konzolján [konfigurálja a biztonsági mentést](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy) , és adja meg a biztonsági mentést, a biztonsági mentés idejét (az ütemezést), a biztonsági másolatok megőrzésének idejét az Azure-ban (az adatmegőrzési szabályzatban), és a védelem megkezdéséhez.
 
 ![Azure Backup-ügynök diagramja](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
@@ -53,7 +53,7 @@ A MARS-ügynök a következő visszaállítási forgatókönyveket támogatja:
 
 - A **növekményes biztonsági mentések** (az azt követő biztonsági másolatok) a megadott ütemezés szerint futnak. A növekményes biztonsági mentések során a módosított fájlok azonosíthatók, és létrejön egy új VHD. A virtuális merevlemez tömörítve és titkosítva van, majd a rendszer elküldje a tárolónak. A növekményes biztonsági mentés befejeződése után az új VHD a kezdeti replikáció után létrehozott VHD-vel lesz egyesítve. Ez az egyesített VHD biztosítja a legújabb, a folyamatban lévő biztonsági mentéshez való összehasonlításhoz használt állapotot.
 
-- A MARS-ügynök **optimalizált módban** futtathatja a biztonsági mentési FELADATOT az USN (frissítési sorszám) módosítási napló használatával, vagy nem optimalizált **módban** , ha a címtárakban vagy fájlokban lévő módosításokat ellenőrzi a teljes kötet vizsgálatával. Az optimalizálatlan mód lassabb, mert az ügynöknek a köteten lévő összes fájlt be kell olvasnia, és össze kell hasonlítani a metaadatokkal a módosított fájlok meghatározásához.  A **kezdeti biztonsági mentés** mindig nem optimalizált módban fog futni. Ha az előző biztonsági mentés sikertelen volt, a következő ütemezett biztonsági mentési feladatokra nem optimalizált módban fog futni.
+- A MARS-ügynök **optimalizált módban** futtathatja a biztonsági mentési FELADATOT az USN (frissítési sorszám) módosítási napló használatával, vagy nem optimalizált **módban** , ha a címtárakban vagy fájlokban lévő módosításokat ellenőrzi a teljes kötet vizsgálatával. Az optimalizálatlan mód lassabb, mert az ügynöknek a köteten lévő összes fájlt be kell olvasnia, és össze kell hasonlítani a metaadatokkal a módosított fájlok meghatározásához.  A **kezdeti biztonsági mentés** mindig nem optimalizált módban fog futni. Ha az előző biztonsági mentés sikertelen volt, a következő ütemezett biztonsági mentési feladatokra nem optimalizált módban fog futni. Ha többet szeretne megtudni ezekről a módokról és azok ellenőrzéséről, tekintse meg [ezt a cikket](backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-job-running-in-unoptimized-mode).
 
 ### <a name="additional-scenarios"></a>További helyzetek
 
@@ -61,7 +61,7 @@ A MARS-ügynök a következő visszaállítási forgatókönyveket támogatja:
 
 - **Offline előkészítés**: az Azure-ba irányuló adatok kezdeti teljes biztonsági mentése általában nagy mennyiségű adat átvitelét és nagyobb hálózati sávszélességet igényel. A következő biztonsági másolatok csak a különbözetet, vagy növekményes adatmennyiséget továbbítanak. Azure Backup tömöríti a kezdeti biztonsági mentéseket. Az *Offline kivetés*folyamatán keresztül a Azure Backup lemezek használatával feltölthetik a tömörített kezdeti biztonsági mentési adatok az Azure-ba. További információ: [Azure Backup offline biztonsági mentés Azure Data Box használatával](offline-backup-azure-data-box.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A MARS-ügynök támogatási mátrixa](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)
 

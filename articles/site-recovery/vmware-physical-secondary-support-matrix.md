@@ -8,11 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711884"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135141"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>A VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre való vész-helyreállításának támogatási mátrixa
 
@@ -67,14 +68,14 @@ Csak a következő tárterülettel rendelkező Linux rendszerű gépek replikál
 
 **Konfigurálás** | **Támogatott**  
 --- | --- 
-Gazdagép – hálózati adapterek összevonása | Yes 
-Gazdagép – VLAN | Yes 
-Gazdagép – IPv4 | Yes 
-Gazdagép – IPv6 | No 
-Vendég virtuális hálózati adapterek összevonása | No
-Vendég virtuális gép – IPv4 | Yes
-Vendég virtuális gép – IPv6 | No
-Vendég virtuális gép – Windows/Linux – statikus IP-cím | Yes
+Gazdagép – hálózati adapterek összevonása | Igen 
+Gazdagép – VLAN | Igen 
+Gazdagép – IPv4 | Igen 
+Gazdagép – IPv6 | Nem 
+Vendég virtuális hálózati adapterek összevonása | Nem
+Vendég virtuális gép – IPv4 | Igen
+Vendég virtuális gép – IPv6 | Nem
+Vendég virtuális gép – Windows/Linux – statikus IP-cím | Igen
 Vendég virtuális gép – több hálózati adapter | Igen
 
 
@@ -84,37 +85,37 @@ Vendég virtuális gép – több hálózati adapter | Igen
 
 **Storage (gazdagép)** | **Támogatott** 
 --- | --- 
-NFS | Yes 
+NFS | Igen 
 SMB 3.0 | N.A. 
-SAN (ISCSI) | Yes 
-Több elérési út (MPIO) | Yes 
+SAN (ISCSI) | Igen 
+Több elérési út (MPIO) | Igen 
 
 ### <a name="guest-or-physical-server-storage"></a>Vendég vagy fizikai kiszolgáló tárterülete
 
 **Konfigurálás** | **Támogatott** 
 --- | --- 
-VMDK | Yes 
+VMDK | Igen 
 VHD/VHDX | N.A. 
 2. generációs VM | N.A. 
-Megosztott fürtözött lemez | Yes 
-Titkosított lemez | No 
-UEFI| Yes 
-NFS | No 
-SMB 3.0 | No 
-RDM | Yes 
-Lemez > 1 TB | Yes 
-Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Yes 
-Tárolóhelyek | No 
-Lemez gyors hozzáadása/eltávolítása | Yes 
-Lemez kizárása | Yes 
+Megosztott fürtözött lemez | Igen 
+Titkosított lemez | Nem 
+UEFI| Igen 
+NFS | Nem 
+SMB 3.0 | Nem 
+RDM | Igen 
+Lemez > 1 TB | Igen 
+Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Igen 
+Tárolóhelyek | Nem 
+Lemez gyors hozzáadása/eltávolítása | Igen 
+Lemez kizárása | Igen 
 Több elérési út (MPIO) | N.A. 
 
 ## <a name="vaults"></a>Tárolók
 
 **Művelet** | **Támogatott** 
 --- | --- 
-Tárolók áthelyezése az erőforráscsoportok között (vagy az előfizetések között) | No 
-Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között (vagy az előfizetések között) | No 
+Tárolók áthelyezése az erőforráscsoportok között (vagy az előfizetések között) | Nem 
+Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között (vagy az előfizetések között) | Nem 
 
 ## <a name="mobility-service-and-updates"></a>Mobilitási szolgáltatás és frissítések
 
@@ -126,9 +127,9 @@ A mobilitási szolgáltatás koordinálja a helyszíni VMware-kiszolgálók, a f
 |Összetevő frissítései | A Scout frissítései tartalmazzák az összes összetevő frissítéseit, beleértve az RX-kiszolgálót, a konfigurációs kiszolgálót, a folyamat-és fő célkiszolgáló, a vContinuum-kiszolgálók és a használni kívánt forráskiszolgáló-kiszolgálókat.<br/><br/> [További információk](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Inmage Scout felhasználói útmutatójának](https://aka.ms/asr-scout-user-guide) letöltése
 
-- [VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](tutorial-vmm-to-vmm.md)
-- [VMware-alapú virtuális gépek és fizikai kiszolgálók replikálása másodlagos helyre](tutorial-vmware-to-vmware.md)
+- [VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](./hyper-v-vmm-disaster-recovery.md)
+- [VMware-alapú virtuális gépek és fizikai kiszolgálók replikálása másodlagos helyre](./vmware-physical-secondary-disaster-recovery.md)

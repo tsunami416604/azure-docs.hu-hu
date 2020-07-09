@@ -5,11 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfa3c108d00aeba9c7d42e96e7a40736a087a508
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75941587"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133824"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Vész-helyreállítás beállítása többplatformos Dynamics AX-alkalmazáshoz   
 
@@ -68,7 +69,7 @@ Az ügyfél nagy számú alkalmazással rendelkezik, és egy Active Directory er
 Az SQL-csomag védelmének ajánlott beállításával kapcsolatos technikai útmutatásért lásd: [alkalmazások replikálása SQL Server és Azure site Recovery](site-recovery-sql.md).
 
 ### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. a Dynamics AX-ügyfél és az Application Object Server-alapú virtuális gépek védelmének engedélyezése
-Végezze el a megfelelő Site Recovery konfigurációt annak alapján, hogy a virtuális gépek telepítve vannak-e a [Hyper-V-n](site-recovery-hyper-v-site-to-azure.md) vagy [VMware](site-recovery-vmware-to-azure.md)-en.
+Végezze el a megfelelő Site Recovery konfigurációt annak alapján, hogy a virtuális gépek telepítve vannak-e a [Hyper-V-n](./hyper-v-azure-tutorial.md) vagy [VMware](./vmware-azure-tutorial.md)-en.
 
 > [!TIP]
 > Javasoljuk, hogy állítsa be az összeomlás-konzisztens gyakoriságot 15 percre.
@@ -175,10 +176,10 @@ A feladat-visszavétel során SQL Server vonatkozó szempontokat lásd: [alkalma
 6. A feladat-visszavételi folyamat elindításához válassza a **✓** lehetőséget.
 
 
-A feladat-visszavétel végrehajtásával kapcsolatos további információkért lásd: [VMWare virtuális gépek visszavétele az Azure-ból a](site-recovery-failback-azure-to-vmware.md)helyszíni rendszerbe.
+A feladat-visszavétel végrehajtásával kapcsolatos további információkért lásd: [VMWare virtuális gépek visszavétele az Azure-ból a](./vmware-azure-failback.md)helyszíni rendszerbe.
 
 ## <a name="summary"></a>Összefoglalás
 Site Recovery használatával létrehozhat egy teljes automatikus vész-helyreállítási tervet a Dynamics AX-alkalmazáshoz. Megszakítás esetén másodpercek alatt kezdeményezheti a feladatátvételt, és percek alatt üzembe helyezheti és futtathatja az alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a vállalati munkaterhelések Site Recovery használatával történő védelméről, tekintse meg a [milyen számítási feladatokat?](site-recovery-workload.md)című témakört.

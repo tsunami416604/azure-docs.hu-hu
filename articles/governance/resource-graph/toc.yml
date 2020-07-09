@@ -65,6 +65,10 @@
     - name: Útmutatás szabályozott kérésekhez
       displayName: 'pagination, batching, throttling, parallel'
       href: ./concepts/guidance-for-throttled-requests.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció az Azure biztonsági teljesítményteszthez
+          href: ./concepts/azure-security-benchmark-baseline.md
 - name: Útmutatók
   items:
     - name: Erőforrás-módosítások lekérése

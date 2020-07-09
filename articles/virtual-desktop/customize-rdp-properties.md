@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9bc2116120f05db9cad63cc945df0ea4367fc3a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cbfe03c48c6d971c140dc332c38a47bc9234173
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207209"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135105"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Gazdagépek RDP protokoll tulajdonságainak testreszabása
 
@@ -53,7 +53,7 @@ Az RDP-tulajdonságok konfigurálása a Azure Portalban:
 4. A Windows rendszerű virtuális asztal lapon a képernyő bal oldalán található menüben válassza a **gazdagép-készletek** elemet.
 5. Válassza ki a frissíteni kívánt **gazdagép-készlet nevét** .
 6. A képernyő bal oldalán található menüben válassza a **Tulajdonságok** lehetőséget.
-7. Az RDP-tulajdonságok szerkesztésének megkezdéséhez a **Tulajdonságok** lapon válassza az **RDP-beállítások lehetőséget** . A tulajdonságokat vesszővel tagolt formátumban kell megadni, például a PowerShell-példákat.
+7. Az RDP-tulajdonságok szerkesztésének megkezdéséhez a **Tulajdonságok** lapon válassza az **RDP-beállítások lehetőséget** . A tulajdonságokat pontosvesszővel tagolt formátumban kell megadni, például a PowerShell-példákat.
 8. Ha elkészült, kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 A következő szakaszban megtudhatja, hogyan szerkesztheti manuálisan az egyéni RDP-tulajdonságokat a PowerShellben.
@@ -128,7 +128,7 @@ Name              : <hostpoolname>
 CustomRdpProperty : <CustomRDPpropertystring>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy testreszabta az adott címkészlet RDP-tulajdonságait, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, hogy egy felhasználói munkamenet részeként tesztelje őket. A következő útmutatókból megtudhatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél használatával:
 

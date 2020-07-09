@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 7b43105d23de516b994521ad46bb45737798717c
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971079"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133774"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Hibák elhárítása VMware virtuális gépen vagy fizikai gépen az Azure-ba történő feladatátvétel során
 
@@ -90,7 +90,7 @@ Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Connect (csa
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Nem lehet csatlakozni/RDP/SSH-VM-csatlakozás gomb elérhető
 
-Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Csatlakozás** gomb elérhető (nem szürkén jelenik meg), akkor ellenőrizze a **rendszerindítási diagnosztikát** a virtuális gépen, és ellenőrizze a hibákat a [jelen cikkben](../virtual-machines/windows/boot-diagnostics.md)leírtak szerint.
+Ha az Azure-ban a feladatátvételen átesett virtuális gépen a **Csatlakozás** gomb elérhető (nem szürkén jelenik meg), akkor ellenőrizze a **rendszerindítási diagnosztikát** a virtuális gépen, és ellenőrizze a hibákat a [jelen cikkben](../virtual-machines/troubleshooting/boot-diagnostics.md)leírtak szerint.
 
 1. Ha a virtuális gép nem indult el, próbálja meg a feladatátvételt egy régebbi helyreállítási pontra.
 2. Ha a virtuális gépen belüli alkalmazás nem működik, próbálja meg végrehajtani a feladatátvételt egy alkalmazás-konzisztens helyreállítási pontra.
@@ -173,8 +173,8 @@ A hiba megoldása érdekében:
      - Tiltsa le a proxyt a fő célkiszolgálón. 
 
 
-## <a name="next-steps"></a>További lépések
-- [Windows rendszerű virtuális gép RDP-kapcsolatának](../virtual-machines/windows/troubleshoot-rdp-connection.md) hibáinak megoldása
-- Linux rendszerű [virtuális géppel létesített SSH-kapcsolatok](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md) hibáinak megoldása
+## <a name="next-steps"></a>Következő lépések
+- [Windows rendszerű virtuális gép RDP-kapcsolatának](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md) hibáinak megoldása
+- Linux rendszerű [virtuális géppel létesített SSH-kapcsolatok](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md) hibáinak megoldása
 
-Ha további segítségre van szüksége, tegye közzé a lekérdezését a [Microsoft Q&egy kérdés oldalát, site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html) vagy hagyjon megjegyzést a dokumentum végén. Van egy aktív közösségünk, amelynek segítenie kell a segítségét.
+Ha további segítségre van szüksége, tegye közzé a lekérdezését a [Microsoft Q&egy kérdés oldalát, site Recovery](/answers/topics/azure-site-recovery.html) vagy hagyjon megjegyzést a dokumentum végén. Van egy aktív közösségünk, amelynek segítenie kell a segítségét.

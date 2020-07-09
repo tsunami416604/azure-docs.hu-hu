@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74091243"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135357"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server felderítési hibák elhárítása
 
@@ -23,12 +24,14 @@ A 9,20 előtti verziókban a vCenter leválasztja a kapcsolatot, amikor a virtu�
 
 Ezt a problémát a 95126-es AZONOSÍTÓJÚ hiba azonosítja.
 
-    ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
-    System.FormatException: Input string was not in a correct format.
-       at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
-       at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
-       at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
-    
+```output
+ERROR :: Hit an exception while fetching the required informationfrom vCenter/vSphere.Exception details:
+System.FormatException: Input string was not in a correct format.
+    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+    at VMware.VSphere.Management.InfraContracts.VirtualMachineInfo.get_MaxSnapshots()
+```
+
 A hiba megoldása érdekében:
 
 - Azonosítsa a virtuális gépet, és állítsa be az értéket egy numerikus értékre (a virtuális gép szerkesztési beállításai a vCenter-ben).
@@ -76,6 +79,6 @@ DRA-proxy konfigurálásához:
 
 4. Indítsa újra a DRA Provider szolgáltatást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[A VMware virtuális gép vész-helyreállítási konfigurációs kiszolgálójának kezelése](https://docs.microsoft.com/azure/site-recovery/vmware-azure-manage-configuration-server#refresh-configuration-server) 
+[A VMware virtuális gép vész-helyreállítási konfigurációs kiszolgálójának kezelése](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 

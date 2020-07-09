@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 763e948f58dfc76c3aa7ba67f461438fc752c689
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71057543"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135279"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure teljesítménydiagnosztikai virtuálisgép-bővítmény Windowsra
 
@@ -253,6 +253,6 @@ A zip-fájlt közvetlenül a portálról is letöltheti a bővítmény kiválasz
     Ez a probléma nyugodtan figyelmen kívül hagyható, ha a bővítmény állapota azt jelzi, hogy a bővítmény sikeresen kiépítve.
 - A telepítés során bizonyos hibákat a bővítményi naplók használatával lehet kezelni. A bővítmény-végrehajtás kimenete a következő könyvtárban található fájlokra van naplózva:
 
-        C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
+    `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>`
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

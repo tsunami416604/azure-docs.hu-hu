@@ -6,11 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 83535fde7f577c4cd5d0b3866afcc0a916c16337
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80672738"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134815"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>A VMware virtuális gép/fizikai kiszolgáló vész-helyreállítási konfigurációs kiszolgálójának kezelése
 
@@ -21,7 +22,7 @@ Ha [Azure site Recoveryt](site-recovery-overview.md) használ a VMWare virtuáli
 
 ## <a name="update-windows-license"></a>Windows-licenc frissítése
 
-A OVF sablonnal megadott licenc 180 napig érvényes próbaverziós licenc. A folyamatos használat érdekében aktiválnia kell a Windowst egy beszerzett licenccel. A licencek frissítése történhet önálló kulcs vagy KMS standard kulcs használatával. Az útmutató a [DISM Windows-parancssorban érhető el az operációs rendszer futtatásához](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options). A kulcsok beszerzéséhez tekintse meg a [KMS-ügyfél beállítása](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys)című témakört.
+A OVF sablonnal megadott licenc 180 napig érvényes próbaverziós licenc. A folyamatos használat érdekében aktiválnia kell a Windowst egy beszerzett licenccel. A licencek frissítése történhet önálló kulcs vagy KMS standard kulcs használatával. Az útmutató a [DISM Windows-parancssorban érhető el az operációs rendszer futtatásához](/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options). A kulcsok beszerzéséhez tekintse meg a [KMS-ügyfél beállítása](/windows-server/get-started/kmsclientkeys)című témakört.
 
 ## <a name="access-configuration-server"></a>Hozzáférési konfigurációs kiszolgáló
 
@@ -211,7 +212,7 @@ Futtassa a telepítőfájlt a következőképpen:
 
 ### <a name="parameters"></a>Paraméterek
 
-|Paraméter neve| Típus | Description| Értékek|
+|Paraméter neve| Típus | Leírás| Értékek|
 |-|-|-|-|
 | /ServerMode|Kötelező|Megadja, hogy a konfigurációs és folyamatkiszolgálót is, vagy csak a folyamatkiszolgálót kell-e telepíteni.|CS<br>PS|
 |/InstallLocation|Kötelező|Az összetevők telepítési mappája| A számítógép bármely mappája|
@@ -265,7 +266,7 @@ ProxyPassword="Password"
 
 A konfigurációs kiszolgálót szükség esetén a PowerShell használatával is törölheti.
 
-1. [Telepítse](https://docs.microsoft.com/powershell/azure/install-Az-ps) a Azure PowerShell modult.
+1. [Telepítse](/powershell/azure/install-Az-ps) a Azure PowerShell modult.
 2. Jelentkezzen be az Azure-fiókjába a következő parancs használatával:
 
     `Connect-AzAccount`
@@ -308,6 +309,6 @@ Az ismételt védelem és a feladat-visszavétel során a helyszíni konfigurác
 
 Győződjön meg arról, hogy a konfigurációs kiszolgáló rendszeres ütemezett biztonsági mentést készít. Ha katasztrófa következik be, és a konfigurációs kiszolgáló elvész, először vissza kell állítania a konfigurációs kiszolgálót egy biztonsági másolatból, és biztosítania kell, hogy a visszaállított konfigurációs kiszolgáló ugyanazzal az IP-címmel legyen ellátva, amellyel a tárolóban regisztrálva volt. A feladat-visszavétel nem fog működni, ha a visszaállított konfigurációs kiszolgálóhoz másik IP-cím van használatban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át az oktatóanyagokat a [VMWare virtuális gépek](vmware-azure-tutorial.md) Azure-ba történő helyreállításának beállításához.

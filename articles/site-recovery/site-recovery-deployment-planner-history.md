@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: site-recovery
 ms.date: 6/4/2020
 ms.author: dapatil
-ms.openlocfilehash: 74b02da51603366f5ec18aa4733117bc2c59faf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feb4f6a24653aca8da825af90341c8016255e8b6
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84417854"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133799"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Azure Site Recovery Deployment Planner korábbi verziók
 
@@ -168,7 +169,7 @@ További információ a [Nagyméretű lemezek támogatásáról az Azure Site Re
 
 **Ismert korlátozások:**
 
-- Csak a VMware – Azure vész-helyreállítási forgatókönyvek esetében támogatott. A Hyper-V – Azure vész-helyreállítási forgatókönyvek esetén használja a [Hyper-v Capacity Planner eszközt](./site-recovery-capacity-planning-for-hyper-v-replication.md).
+- Csak a VMware – Azure vész-helyreállítási forgatókönyvek esetében támogatott. A Hyper-V – Azure vész-helyreállítási forgatókönyvek esetén használja a [Hyper-v Capacity Planner eszközt](./hyper-v-deployment-planner-overview.md).
 - Nem támogatja a GetThroughput műveletet az Egyesült Államok kormánya és Kína Microsoft Azure régióiban.
 - Az eszköz Cann 't-profil virtuális gépeket tartalmaz, ha a vCenter-kiszolgálón két vagy több virtuális gép található ugyanazzal a névvel vagy IP-címmel különböző ESXi-gazdagépek között.
 Ebben a verzióban az eszköz kihagyja a profilkészítést abban az esetben, ha a VMListFile fájlban ismétlődik egy virtuális gép neve vagy IP-címe. Ez áthidalható úgy, hogy a vCenter-kiszolgáló helyett az ESXi-gazdagéppel készíti el a virtuális gépek profilját. Győződjön meg arról, hogy az egyes ESXi-gazdagépek egyetlen példányát futtatják.

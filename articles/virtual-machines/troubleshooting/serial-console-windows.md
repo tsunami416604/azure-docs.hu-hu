@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: c555b058e6d0b8c110a3273525b5a8c58baaff61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309781"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135242"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows rendszerhez készült Azure soros konzol
 
@@ -101,15 +102,15 @@ Ha engedélyezni szeretné a Windows rendszerindítási kérések megjelenítés
 
     ![Kapcsolódás SAC-hez](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.    Adja meg a `cmd` parancsot egy olyan csatorna létrehozásához, amely rendelkezik cmd-példánnyal.
+1. Adja meg a `cmd` parancsot egy olyan csatorna létrehozásához, amely rendelkezik cmd-példánnyal.
 
-1.    Adja meg `ch -si 1` vagy nyomja le a `<esc>+<tab>` gyorsbillentyűket a cmd-példányt futtató csatornára való váltáshoz.
+1. Adja meg `ch -si 1` vagy nyomja le a `<esc>+<tab>` gyorsbillentyűket a cmd-példányt futtató csatornára való váltáshoz.
 
-1.    Nyomja le az **ENTER**billentyűt, majd adja meg a bejelentkezési hitelesítő adatokat rendszergazdai engedélyekkel.
+1. Nyomja le az **ENTER**billentyűt, majd adja meg a bejelentkezési hitelesítő adatokat rendszergazdai engedélyekkel.
 
-1.    Az érvényes hitelesítő adatok megadása után megnyílik a CMD-példány.
+1. Az érvényes hitelesítő adatok megadása után megnyílik a CMD-példány.
 
-1.    PowerShell-példány elindításához írja be `PowerShell` a parancsot a cmd-példányba, majd nyomja le az **ENTER**billentyűt.
+1. PowerShell-példány elindításához írja be `PowerShell` a parancsot a cmd-példányba, majd nyomja le az **ENTER**billentyűt.
 
     ![PowerShell-példány megnyitása](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
@@ -146,7 +147,7 @@ A soros konzolhoz való hozzáférés csak azokra a felhasználókra korlátozó
 ### <a name="channel-security"></a>Csatorna biztonsága
 A visszaadott és oda továbbított összes adatforgalom titkosítva van a huzalon.
 
-### <a name="audit-logs"></a>Auditnaplók
+### <a name="audit-logs"></a>Naplók
 A soros konzolhoz való összes hozzáférés jelenleg a virtuális gép [rendszerindítási diagnosztikai](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) naplóiban van naplózva. A naplókhoz való hozzáférést az Azure-beli virtuális gép rendszergazdája birtokolja és felügyeli.
 
 > [!CAUTION]
@@ -216,7 +217,7 @@ A. A rendszerkép valószínűleg helytelenül van konfigurálva a soros konzolh
 
 A. igen! Lásd [a Virtual Machine Scale sets soros konzolját](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Windows SAC szolgáltatásban használható CMD-és PowerShell-parancsok részletes útmutatója [: Windows-parancsok: cmd és PowerShell](serial-console-cmd-ps-commands.md).
 * A soros konzol [Linux](serial-console-linux.md) rendszerű virtuális gépekhez is elérhető.
 * További információ a [rendszerindítási diagnosztika](boot-diagnostics.md)szolgáltatásról.

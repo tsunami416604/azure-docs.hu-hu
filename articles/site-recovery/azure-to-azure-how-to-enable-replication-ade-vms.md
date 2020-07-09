@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81408639"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135793"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption-kompatibilis virtuális gépek replikálása egy másik Azure-régióba
 
@@ -93,7 +93,7 @@ Ebben a példában az elsődleges Azure-régió Kelet-Ázsia, a másodlagos rég
     - **Cél helye**: a forrásként szolgáló virtuális gép adatai replikálásának helye. Site Recovery a kiválasztott gép helyétől függően a megfelelő célcsoportok listáját jeleníti meg. Azt javasoljuk, hogy ugyanazt a helyet használja, mint a Recovery Services tároló helye.
     - **Cél-előfizetés**: a vész-helyreállítási célra használt cél-előfizetés. Alapértelmezés szerint a cél-előfizetés megegyezik a forrás-előfizetéssel.
     - **Cél erőforráscsoport**: az az erőforráscsoport, amelyhez a replikált virtuális gépek tartoznak. Alapértelmezés szerint a Site Recovery új erőforráscsoportot hoz létre a célként megadott régióban. A név megkapja az "ASR" utótagot. Ha már létezik olyan erőforráscsoport, amelyet Azure Site Recovery hozott létre, a rendszer újra felhasználja. Azt is megteheti, hogy testreszabja, ahogy az a következő szakaszban is látható. A célként megadott erőforráscsoport helye bármely Azure-régió lehet, kivéve a forrásként szolgáló virtuális gépeket tároló régiót.
-    - **Cél virtuális hálózat**: alapértelmezés szerint a site Recovery új virtuális hálózatot hoz létre a céltartományban. A név megkapja az "ASR" utótagot. Ez a forrás-hálózatra van leképezve, és minden jövőbeli védelemhez használatos. [További](site-recovery-network-mapping-azure-to-azure.md) információ a hálózati leképezésről.
+    - **Cél virtuális hálózat**: alapértelmezés szerint a site Recovery új virtuális hálózatot hoz létre a céltartományban. A név megkapja az "ASR" utótagot. Ez a forrás-hálózatra van leképezve, és minden jövőbeli védelemhez használatos. [További](./azure-to-azure-network-mapping.md) információ a hálózati leképezésről.
     - **Cél Storage-fiókok (ha a forrás virtuális gép nem használ felügyelt lemezeket)**: alapértelmezés szerint a site Recovery egy új célként megadott Storage-fiókot hoz létre a forrásként szolgáló virtuális gép tárolási konfigurációjának használatával. Ha már létezik egy Storage-fiók, az újra felhasználható.
     - **Replikált felügyelt lemezek (ha a forrás virtuális gép felügyelt lemezeket használ)**: a site Recovery új replika felügyelt lemezeket hoz létre a céltartományban, hogy a forrás virtuális gép felügyelt lemezeit a forrásként szolgáló virtuális gép felügyelt lemezei alapján tükrözze (standard vagy prémium).
     - **Gyorsítótár-tárolási fiókok**: site Recovery a forrás régióban a *cache Storage* nevű további Storage-fiókra van szükség. A rendszer a forrásként szolgáló virtuális gépek összes módosítását nyomon követi és továbbítja a gyorsítótárbeli Storage-fiókba. Ezután a rendszer replikálja őket a célhelyre.
@@ -155,6 +155,6 @@ A [célként megadott Key vaulthoz](#required-user-permissions) szükséges enge
 
 **A javítás módja:** Lépjen a **Home**kulcstartók  >  **Keyvaults**  >  **ContosotargetKeyvault**  >  **hozzáférési szabályzatok lehetőségre** , és adja hozzá a megfelelő engedélyeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További](site-recovery-test-failover-to-azure.md) információ a feladatátvételi teszt futtatásáról.

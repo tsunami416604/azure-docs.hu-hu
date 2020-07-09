@@ -7,22 +7,27 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 261b288154dddacf91f3cb3ba6dec99e3a3534cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 895e33a111fe5bb881d198ee4995b9534ca3d528
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725800"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135882"
 ---
-# <a name="create-custom-sdks-for-azure-digital-twins-with-autorest"></a>Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest szolgáltatással
+# <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Egyéni SDK-k létrehozása az Azure Digital Twins-hoz az autorest használatával
 
 Jelenleg csak az Azure Digital Twins API-kkal való interakcióhoz közzétett adatközpont-SDK van a .NET (C#) rendszerhez. A .NET SDK-val és az API-kkal kapcsolatban általában a [útmutató: az Azure digitális Twins API-k és SDK](how-to-use-apis-sdks.md)-k használata című témakörben olvashat. Ha más nyelven dolgozik, ez a cikk bemutatja, hogyan hozhatja ki saját SDK-t az Ön által választott nyelven az autorest használatával.
 
-## <a name="set-up-the-sdk"></a>Az SDK beállítása
+## <a name="set-up-your-machine"></a>A gép beállítása
 
 Az SDK létrehozásához a következőkre lesz szüksége:
 * Az [autorest](https://github.com/Azure/autorest), a Version 2.0.4413 (3-as verzió jelenleg nem támogatott)
 * [Node.js](https://nodejs.org) az autorest előfeltétele
-* Az [Azure digitális Twins OpenAPI (hencegés) fájlja](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview/digitaltwins.json)
+* Az [Azure Digital Twins hencegő (OpenAPI) fájl](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) , amely a *digitaltwins.js*, valamint a hozzá tartozó, a példákhoz kapcsolódó mappájában található. Töltse le a hencegő fájlt és a hozzá tartozó mappát a helyi gépre.
+
+Ha a gép a fenti listából mindent megtesz, készen áll az autorest használatára az SDK létrehozásához.
+
+## <a name="create-the-sdk-with-autorest"></a>Az SDK létrehozása az autorest használatával 
 
 Ha Node.js van telepítve, futtathatja ezt a parancsot, hogy ellenőrizze, van-e telepítve az autorest megfelelő verziója:
 ```cmd/sh
@@ -30,31 +35,33 @@ npm install -g autorest@2.0.4413
 ```
 
 Az Azure digitális Twins hencegő fájlján az autorest futtatásához kövesse az alábbi lépéseket:
-1. Másolja az Azure Digital Twins hencegő fájlt egy munkakönyvtárba.
-2. A parancssorban váltson erre a munkakönyvtárra.
-3. Futtassa az autorest parancsot a következő paranccsal.
+1. Másolja az Azure digitális Twins hencegő fájlját és a hozzá tartozó kapcsolódó mappát egy munkakönyvtárba.
+2. Egy parancssori ablak használatával váltson át erre a munkakönyvtárra.
+3. Futtassa az autorest parancsot a következő paranccsal. Cserélje le a `<language>` helyőrzőt az Ön által választott nyelvre:,, `--python` `--java` `--go` stb. (a beállítások teljes listáját megtalálja az [autorest readme](https://github.com/Azure/autorest)-ban).
 
 ```cmd/sh
-autorest --input-file=adtApiSwagger.json --csharp --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-Ennek eredményeképpen egy új, *ADTApi* nevű mappa jelenik meg a munkakönyvtárban. A generált SDK-fájlok a névtér *ADTApi*lesznek, amelyet a további példákon keresztül továbbra is használni fog.
+Ennek eredményeképpen egy új, *ADTApi* nevű mappa jelenik meg a munkakönyvtárban. A generált SDK-fájlok a névtér *ADTApi*lesznek, amelyeket a jelen cikkben található további használati példákon keresztül továbbra is használni fog.
 
 Az autorest számos nyelvi kód generátort támogat.
 
 ## <a name="add-the-sdk-to-a-visual-studio-project"></a>Az SDK hozzáadása egy Visual Studio-projekthez
 
-Az autorest által létrehozott fájlokat közvetlenül egy .NET-megoldásba is felveheti. Mivel azonban valószínűleg szüksége lesz az Azure Digital Twins SDK-ra több különálló projektben (az ügyfélalkalmazások, Azure Functions alkalmazások stb.), javasoljuk, hogy hozzon létre egy külön projektet (.NET-osztály könyvtára) a generált fájlokból. Ezt követően a projektre vonatkozó hivatkozásként belefoglalhatja ezt az osztály-függvénytár-projektet a többi megoldásba.
+Az autorest által létrehozott fájlokat közvetlenül egy .NET-megoldásba is felveheti. Mivel azonban valószínűleg szüksége lesz az Azure Digital Twins SDK-ra számos különálló projektben (az ügyfélalkalmazások, Azure Functions alkalmazások stb.), hasznos lehet egy különálló projekt (.NET-osztály könyvtára) létrehozása a generált fájlokból. Ezt az osztály-függvénytár-projektet több megoldásba is felhasználhatja projekt-referenciáként.
 
-Ebből a szakaszból megtudhatja, hogyan hozhatja létre az SDK-t egy olyan osztály-függvénytárként, amely a saját projektje, és más projektekben is szerepelhet. A lépések a következők:
+Ebből a szakaszból megtudhatja, hogyan hozhatja létre az SDK-t egy olyan osztály-függvénytárként, amely a saját projektje, és más projektekben is szerepelhet. Ezek a lépések a **Visual studióra** támaszkodnak ( [innen](https://visualstudio.microsoft.com/downloads/)telepítheti a legújabb verziót).
+
+A lépések a következők:
 
 1. Új Visual Studio-megoldás létrehozása az osztály könyvtára számára
-2. A "ADTApi" név használata projekt neveként
+2. A *ADTApi* használata projekt neveként
 3. A Solutions Explorerben kattintson a jobb gombbal a generált megoldás *ADTApi* projektre, és válassza a *> meglévő elem hozzáadása..* . lehetőséget.
 4. Keresse meg azt a mappát, ahová létrehozta az SDK-t, és válassza ki a legfelső szintű fájlokat.
 5. Nyomja meg az "OK" gombot
 6. Adjon hozzá egy mappát a projekthez (kattintson a jobb gombbal a projektre Megoldáskezelő, majd válassza a *> új mappa hozzáadása*) lehetőséget.
-7. Nevezze el a "models" mappát
+7. A mappa *modelljeinek* neve
 8. Kattintson a jobb gombbal a *modellek* mappára a Solutions Explorerben, és válassza a *> meglévő elem hozzáadása..* . lehetőséget.
 9. Válassza ki a generált SDK *models (modellek* ) mappájában található fájlokat, és nyomja meg az "OK" gombot.
 
@@ -178,7 +185,7 @@ try
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Végigvezeti egy ügyfélalkalmazás létrehozásának lépésein, ahol az SDK-t használhatja:
 * [Oktatóanyag: ügyfélalkalmazás kódolása](tutorial-code.md)

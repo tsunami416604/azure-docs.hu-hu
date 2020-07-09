@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86094fd7ff9550946e1b1c13e0773f025a0e977c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f43ba78bc9c48b003d4718945dc47b0a076a048f
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77623817"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134525"
 ---
 # <a name="utilize-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-an-sap-system"></a>Az Azure-infrastruktúra virtuális gépek újraindításának kihasználása egy SAP-rendszer "magasabb rendelkezésre állásának" eléréséhez
 
@@ -266,7 +267,7 @@ Az SAP olyan beállítást kínál, amely lehetővé teszi az SAP-példányok az
 
 Feltételezve, hogy egy virtuális gépen egy SAP Application Server-példány tipikus Azure-forgatókönyve van, és az újraindítást követően egyetlen virtuális gép már nem kritikus. A következő paramétert azonban engedélyezheti a SAP Advanced Business Application Programming (ABAP) vagy a Java-példány indítási profiljában:
 
-      Autostart = 1
+`Autostart = 1`
 
 
   > [!NOTE]
@@ -279,6 +280,6 @@ Feltételezve, hogy egy virtuális gépen egy SAP Application Server-példány t
   * [Az SAP elindítása vagy leállítása a UNIX-kiszolgáló indításával/leállításával együtt](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
   * [Az SAP NetWeaver felügyeleti ügynökök elindítása és leállítása](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A teljes SAP NetWeaver alkalmazással kapcsolatos magas rendelkezésre állással kapcsolatos információkért lásd: [SAP-alkalmazások magas rendelkezésre állása az Azure IaaS][sap-high-availability-architecture-scenarios-sap-app-ha].

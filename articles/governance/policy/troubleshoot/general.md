@@ -3,12 +3,12 @@ title: Gyakori hibák elhárítása
 description: Ismerje meg, hogy miként lehet elhárítani a szabályzat-definíciókat, a különböző SDK-t és a Kubernetes bővítményét.
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 868b8c53a120ebdb6a35806538e02af39e25c338
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 6d23a148521506adf0c0fc16913a32aab5eb7a30
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970841"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135574"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Hibák elhárítása a Azure Policy használatával
 
@@ -95,7 +95,7 @@ A hatókörhöz tartozó szabályzat-hozzárendelés az új vagy frissített er�
 
 #### <a name="resolution"></a>Megoldás:
 
-Egy megtagadási szabályzat-hozzárendelés hibaüzenete tartalmazza a szabályzat-definíciót és a szabályzat-hozzárendelési azonosítókat. Ha az üzenetben szereplő hibaüzenetek nem maradnak meg, akkor a [tevékenység naplójában](../../../azure-monitor/platform/activity-log-view.md)is elérhető. Ezekkel az információkkal további részleteket tudhat meg az erőforrás-korlátozásokról, és módosíthatja a kérésben szereplő erőforrás-tulajdonságokat az engedélyezett értékek egyeztetéséhez.
+Egy megtagadási szabályzat-hozzárendelés hibaüzenete tartalmazza a szabályzat-definíciót és a szabályzat-hozzárendelési azonosítókat. Ha az üzenetben szereplő hibaüzenetek nem maradnak meg, akkor a [tevékenység naplójában](../../../azure-monitor/platform/activity-log.md#view-the-activity-log)is elérhető. Ezekkel az információkkal további részleteket tudhat meg az erőforrás-korlátozásokról, és módosíthatja a kérésben szereplő erőforrás-tulajdonságokat az engedélyezett értékek egyeztetéséhez.
 
 ## <a name="template-errors"></a>Sablon hibái
 
@@ -148,7 +148,7 @@ A (z) nevű Helm `azure-policy-addon` -diagram már telepítve van vagy részben
 
 Kövesse az utasításokat a [Kubernetes-bővítmény Azure Policy eltávolításához](../concepts/policy-for-kubernetes.md#remove-the-add-on), majd futtassa újra a `helm install azure-policy-addon` parancsot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

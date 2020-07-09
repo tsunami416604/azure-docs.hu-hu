@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 3e81e353d2912f56a932ce118a0424e45e758df7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbd11c279708cd828693baab3f9f6df91515bc48
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74133012"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133908"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektúra – Hyper-V replikáció másodlagos helyre
 
@@ -35,7 +36,7 @@ A következő táblázat és ábra a Hyper-V-replikáció másodlagos helyre tö
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
-1. A kezdeti replikáció indításakor a rendszer a [Hyper-V virtuális gép pillanatképének](https://technet.microsoft.com/library/dd560637.aspx) pillanatképét is elvégzi.
+1. A kezdeti replikáció indításakor a rendszer a [Hyper-V virtuális gép pillanatképének](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560637(v=ws.10)) pillanatképét is elvégzi.
 2. A virtuális GÉPEN lévő virtuális merevlemezeket egy-egy, a másodlagos helyre replikálja a rendszer.
 3. Ha a lemez megváltozik, miközben a kezdeti replikálás folyamatban van, a Hyper-V replika replikációs nyomon követése a változásokat Hyper-V replikációs naplókként (. HRL) követi nyomon. Ezek a naplófájlok ugyanabban a mappában találhatók, mint a lemezek. Minden lemezhez tartozik egy. HRL fájl, amelyet a rendszer a másodlagos helyre továbbít. A pillanatkép- és a naplófájlok a kezdeti replikáció végrehajtása közben is lemezerőforrásokat használnak.
 4. A kezdeti replikálás befejezésekor a rendszer törli a virtuális gép pillanatképét, és megkezdi a különbözeti replikációt.
@@ -55,7 +56,7 @@ A következő táblázat és ábra a Hyper-V-replikáció másodlagos helyre tö
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 [Ezt az oktatóanyagot](hyper-v-vmm-disaster-recovery.md) követve engedélyezheti a Hyper-V replikálását a VMM-felhők között.

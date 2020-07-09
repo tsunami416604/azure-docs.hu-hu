@@ -1,6 +1,6 @@
 ---
 title: 'Azure Resource Manager: egyetlen adatbázis létrehozása'
-description: Hozzon létre egyetlen adatbázist Azure SQL Database a Azure Resource Manager sablonnal.
+description: Hozzon létre egyetlen adatbázist a Azure SQL Database egy Azure Resource Manager sablon használatával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,20 +11,20 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/24/2020
-ms.openlocfilehash: 2975b98306b7019022799d5ba69b9d7af5797a2b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: a766d61c49fe23645c232432198eb4aa0eedb98b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368039"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135645"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Gyors útmutató: önálló adatbázis létrehozása Azure SQL Database a Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>Rövid útmutató: önálló adatbázis létrehozása Azure SQL Database ARM-sablon használatával
 
-[Egyetlen adatbázis](single-database-overview.md) létrehozása a leggyorsabb és legegyszerűbb lehetőség egy adatbázis létrehozásához Azure SQL Databaseban. Ez a rövid útmutató bemutatja, hogyan hozhat létre egyetlen adatbázist a Azure Resource Manager sablonnal.
+[Egyetlen adatbázis](single-database-overview.md) létrehozása a leggyorsabb és legegyszerűbb lehetőség egy adatbázis létrehozásához Azure SQL Databaseban. Ez a rövid útmutató bemutatja, hogyan hozhat létre egyetlen adatbázist egy Azure Resource Manager sablonnal (ARM-sablon).
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az üzembe helyezés az Azure-ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
 
 [![Üzembe helyezés az Azure-ban](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-database%2Fazuredeploy.json)
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 Egyetlen adatbázis a számítási, a memória-, az IO-és a tárolási erőforrások meghatározott készletével rendelkezik, és a két [vásárlási modell](purchasing-models.md)egyikét használja. Egyetlen adatbázis létrehozásakor meg kell adnia egy [kiszolgálót](logical-servers.md) is a kezeléséhez, és egy adott régióban lévő [Azure-erőforráscsoporthoz](../../active-directory-b2c/overview.md) helyezheti azt.
 
-Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/101-sql-logical-server/) származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-sql-database/)származik.
 
 :::code language="json" source="~/quickstart-templates/101-sql-database/azuredeploy.json" range="1-67" highlight="41-65":::
 
@@ -69,7 +69,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 Az adatbázis lekérdezéséhez tekintse meg [az adatbázis lekérdezése](single-database-create-quickstart.md#query-the-database)című témakört.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Tartsa meg ezt az erőforráscsoportot, kiszolgálót és önálló adatbázist, ha a [következő lépésekre](#next-steps)szeretne lépni. A következő lépések bemutatják, hogyan csatlakozhat az adatbázishoz, és hogyan kérdezheti le azokat különböző módszerekkel.
 
@@ -88,4 +88,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
   - [Kapcsolódás és lekérdezés az Azure Data Studióval](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
 - Ha egyetlen adatbázist szeretne létrehozni az Azure CLI használatával, tekintse meg az [Azure CLI-minták](az-cli-script-samples-content-guide.md)című témakört.
 - Ha Azure PowerShell használatával szeretne önálló adatbázist létrehozni, tekintse meg a [Azure PowerShell mintákat](powershell-script-content-guide.md).
-- A Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [az első sablon létrehozása](../../azure-resource-manager/templates/template-tutorial-create-first-template.md).
+- Az ARM-sablonok létrehozásával kapcsolatos információkért lásd: [az első sablon létrehozása](../../azure-resource-manager/templates/template-tutorial-create-first-template.md).

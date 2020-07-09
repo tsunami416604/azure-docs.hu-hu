@@ -1,18 +1,18 @@
 ---
 title: Vezető felügyelet a Microsoft kereskedelmi piactérről
 description: Ismerje meg, hogyan hozhat létre és fogadhat ügyfeleinek vezetőit a Microsoft AppSource és az Azure Marketplace-ajánlatokból
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 89b73fd98ca773668d2eb53892d0c21397e9abf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca6e9a66d6c4daa4706813f945850b51505adeca
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559585"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133444"
 ---
 # <a name="customer-leads-from-your-commercial-marketplace-offer"></a>A kereskedelmi piactér ajánlatának ügyfelei
 
@@ -109,18 +109,21 @@ A válasz a közzétett ajánlat típusától függ. A szolgáltatott szoftverk�
 Keresse meg a kifejezést az `"MSFT_TEST"` érdeklődő célhelyén. Íme egy példa a Microsoft tesztelési folyamatára:
 
 ```
-company = MSFT_TEST_636573304831318844
-country = US
-description = MSFT_TEST_636573304831318844
-email = MSFT_TEST_636573304831318844@test.com
-encoding = UTF-8
-encoding = UTF-8
-first_name = MSFT_TEST_636573304831318844
-last_name = MSFT_TEST_636573304831318844
-lead_source = MSFT_TEST_636573304831318844-MSFT_TEST_636573304831318844|<Offer Name>
-oid = 00Do0000000ZHog
-phone = 1234567890
-title = MSFT_TEST_636573304831318844
+{
+    "UserDetails": {
+      "FirstName": "MSFT_TEST_636573304831318844",
+      "LastName": "MSFT_TEST_636573304831318844",
+      "Email": "MSFT_TEST_636573304831318844@test.com",
+      "Phone": "1234567890",
+      "Country": "US",
+      "Company": "MSFT_TEST_636573304831318844",
+      "Title": "MSFT_TEST_636573304831318844"
+    },
+    "LeadSource": "AzureMarketplace",
+    "ActionCode": "INS",
+    "OfferTitle": "Contoso Test"
+    "Description": "MSFT_TEST_636573304831318844"
+}
 ```
 
 ### <a name="i-have-a-live-offer-but-why-am-i-not-seeing-any-leads"></a>Élő ajánlatom van, de miért nem látok semmilyen érdeklődőt?
@@ -163,6 +166,6 @@ Ha a kérdés nem válaszol, lépjen kapcsolatba Microsoft ügyfélszolgálata a
 
 Nyissa meg az ajánlatát a partner Centerben, és nyissa meg az **ajánlat beállítása** lapot > az **érdeklődői felügyelet**  >  **szerkesztése**lehetőséget. Frissítse a **kapcsolattartási e-mail** mezőben szereplő e-mail-címeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A technikai beállítás bevezetését követően az aktuális értékesítési és marketing stratégia és működési folyamatok részeként építse be ezeket az érdeklődőket. Fontos, hogy jobban megértse a teljes értékesítési folyamatot, és szeretne szorosan együttműködni Önnel, hogy kiváló minőségű érdeklődőket és elegendő adatmennyiséget biztosítson a siker érdekében. Örömmel vesszük visszajelzését arról, hogy miként optimalizálható és növelhető az érdeklődők számára elérhető további információk, amelyek segítenek az ügyfelek sikerességében. Tudassa velünk, ha szeretne [visszajelzést](mailto:AzureMarketOnboard@microsoft.com) küldeni, és javaslatokat tesz arra, hogy az értékesítési csapat sikeresebb legyen a kereskedelmi piactéren.

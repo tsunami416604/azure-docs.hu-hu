@@ -7,18 +7,22 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 78b38f5059d50d56158e31c65299e5f747c8c073
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: fd560658a20a5b58d582332a88bf031d0e56ac91
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84323601"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134108"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Gyors útmutató: Azure Database for MariaDB-kiszolgáló létrehozása ARM-sablonnal
 
-A Azure Database for MariaDB felügyelt szolgáltatás, amellyel a felhőben futtathatja, kezelheti és méretezheti a magasan elérhető MariaDB-adatbázisokat. Ebben a rövid útmutatóban egy ARM-sablonnal hoz létre Azure Database for MariaDB-kiszolgálót a Azure Portal, a PowerShell vagy az Azure CLI használatával.
+A Azure Database for MariaDB felügyelt szolgáltatás, amellyel a felhőben futtathatja, kezelheti és méretezheti a magasan elérhető MariaDB-adatbázisokat. Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) használatával hoz létre egy Azure Database for MariaDB-kiszolgálót a Azure Portal, a PowerShell vagy az Azure CLI-ben.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mariadb-with-vnet%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,11 +42,9 @@ Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](htt
 
 ---
 
-## <a name="create-an-azure-database-for-mariadb-server"></a>Azure Database for MariaDB-kiszolgáló létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Az Azure Database for MariaDB-kiszolgálót számítási és tárolási erőforrások egy meghatározott készletével együtt fogja létrehozni. További információ: [Azure Database for MariaDB díjszabási szintek](concepts-pricing-tiers.md). A kiszolgálót egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül hozza létre.
-
-### <a name="review-the-template"></a>A sablon áttekintése
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/)származik.
 
@@ -58,7 +60,7 @@ A sablon öt Azure-erőforrást határoz meg:
 
 További Azure Database for MariaDB-sablonok találhatók az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -173,7 +175,7 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
 
@@ -207,7 +209,7 @@ read -p "Press [ENTER] to continue: "
 
 ## <a name="next-steps"></a>Következő lépések
 
-A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
+Az ARM-sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

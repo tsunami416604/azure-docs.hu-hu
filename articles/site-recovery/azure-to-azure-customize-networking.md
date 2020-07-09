@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: ce3bfd85656972cb93b74a85a1bd6d469837ce22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 848234417099c0a31bd0c9e84722b6221aec3aa9
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84236302"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135821"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>A cél Azure-beli virtuális gép hálózati konfigurációjának testreszabása
 
@@ -26,9 +27,9 @@ Ez a cikk útmutatást nyújt a hálózati konfigurációk testreszabásához a 
 
 Az Azure-beli virtuális gépek replikálásakor a következő fő erőforrás-konfigurációkat adhatja meg a feladatátvételi virtuális géphez:
 
-- [Belső terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
+- [Belső terheléselosztó](../load-balancer/load-balancer-overview.md)
 - [Nyilvános IP-cím](../virtual-network/public-ip-addresses.md)
-- [Hálózati biztonsági csoport](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) mind az alhálózathoz, mind a hálózati adapterhez
+- [Hálózati biztonsági csoport](../virtual-network/manage-network-security-group.md) mind az alhálózathoz, mind a hálózati adapterhez
 
 ## <a name="prerequisites"></a>Előfeltételek
 

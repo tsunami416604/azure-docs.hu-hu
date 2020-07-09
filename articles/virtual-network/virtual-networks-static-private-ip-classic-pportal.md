@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 22b60fc900886e76d66f66776adeed96334cdd3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5ae587438e2cc3c583307c3d6b41ec986193216
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696046"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134775"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-portal"></a>Magánhálózati IP-címek konfigurálása virtuális géphez (klasszikus) a Azure Portal használatával
 
@@ -68,7 +69,7 @@ A fenti lépésekkel létrehozott virtuális gép statikus magánhálózati IP-c
 
 Az **IP-címek**területen válassza a **dinamikus** lehetőséget az **IP-cím hozzárendeléstől**jobbra, válassza a **Mentés**lehetőséget, majd válassza az **Igen**lehetőséget, ahogy az alábbi képen látható:
    
-    ![Create VM in Azure portal](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
+![Virtuális gép létrehozása Azure Portalban](./media/virtual-networks-static-ip-classic-pportal/figure07.png)
 
 ## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Statikus magánhálózati IP-cím hozzáadása meglévő virtuális géphez
 
@@ -79,7 +80,7 @@ Az **IP-címek**területen válassza a **dinamikus** lehetőséget az **IP-cím 
 
 Azt javasoljuk, hogy a virtuális gép operációs rendszerén belül ne rendeljen statikusan az Azure-beli virtuális géphez rendelt magánhálózati IP-címet, ha szükséges. Ha a magánhálózati IP-címet manuálisan állítja be az operációs rendszeren belül, győződjön meg arról, hogy a cím megegyezik az Azure-beli virtuális géphez rendelt magánhálózati IP-címmel, vagy megszakadhat a kapcsolat a virtuális géppel. Soha ne rendeljen hozzá manuálisan egy Azure-beli virtuális géphez hozzárendelt nyilvános IP-címet a virtuális gép operációs rendszerén belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [fenntartott nyilvános IP-](virtual-networks-reserved-public-ip.md) címekről.
 * További információ a [példány szintű nyilvános IP-címekről (ILPIP)](virtual-networks-instance-level-public-ip.md) .
 * Forduljon a [fenntartott IP REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)-khoz.

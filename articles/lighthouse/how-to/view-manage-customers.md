@@ -3,22 +3,22 @@ title: Ügyfelek és delegált erőforrások megtekintése és kezelése
 description: Az Azure Lighthouse szolgáltatást használó szolgáltatóként megtekintheti az összes delegált ügyfél-erőforrást és-előfizetést, ha a Azure Portalban lévő ügyfelekre kerül.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: a850dc8cfe7667a75ced64ef0bd0afc352b20daa
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f509a91d71caa3ab1ec8282f4151556f7c10d52c
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026270"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86133273"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Ügyfelek és delegált erőforrások megtekintése és kezelése
 
-Az Azure Lighthouse szolgáltatást használó szolgáltatók használhatják a [Azure Portal](https://portal.azure.com) **saját ügyfelek** lapját a delegált ügyfelek erőforrásainak és előfizetésének megtekintéséhez. Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a több bérlőt kezelő vállalatok ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
+Az [Azure Lighthouse](../overview.md) szolgáltatást használó szolgáltatók használhatják a [Azure Portal](https://portal.azure.com) **saját ügyfelek** lapját a delegált ügyfelek erőforrásainak és előfizetésének megtekintéséhez. Noha a szolgáltatók és az ügyfelekre is hivatkozunk, a több bérlőt kezelő vállalatok ugyanazt a folyamatot használhatják a kezelési élményük megszilárdítására.
 
 Ha a Azure Portal **saját ügyfelek** lapját szeretné elérni, válassza a **minden szolgáltatás**lehetőséget, majd keresse meg az **ügyfeleket** , és válassza ki azt. Azt is megteheti, hogy beírja az "ügyfelek" kifejezést a Azure Portal tetején található keresőmezőbe.
 
-Ne feledje, hogy a **saját ügyfelek** lap legfontosabb **ügyfelek** szakasza csak a delegált előfizetéseket vagy erőforráscsoportokat használó ügyfelek adatait jeleníti meg. Ha más ügyfelekkel dolgozik (például a [Cloud Solution Provider programon](/partner-center/csp-overview)keresztül), akkor nem fogja látni az ügyfelekkel kapcsolatos információkat a **Customers (ügyfelek** ) szakaszban, hacsak nem telepítette az erőforrásokat az Azure-beli [delegált erőforrás-kezeléshez](../concepts/azure-delegated-resource-management.md).
+Ne feledje, hogy a **saját ügyfelek** lap legfontosabb **ügyfelek** szakasza csak a delegált előfizetéseket vagy erőforráscsoportokat használó ügyfelek adatait jeleníti meg. Ha más ügyfelekkel dolgozik (például a [Cloud Solution Provider programon](/partner-center/csp-overview)keresztül), akkor nem fogja látni az ügyfelekkel kapcsolatos információkat a **Customers (ügyfelek** ) szakaszban, hacsak nem telepítette az [erőforrásait az Azure Lighthouse](onboard-customer.md)szolgáltatásba.
 
-A lap alsó részén, a **Cloud Solution Provider (előzetes verzió)** nevű külön szakasz a számlázási adatokat és erőforrásokat jeleníti meg a CSP azon ügyfelei számára, akik [aláírták a Microsoft Customer szerződést (MCA)](/partner-center/confirm-customer-agreement) , és [Az Azure-csomag alatt](/partner-center/azure-plan-get-started)találhatók. További információ: Ismerkedés a [Microsoft partneri szerződés számlázási fiókjával](../../billing/mpa-overview.md). Vegye figyelembe, hogy az ilyen CSP-ügyfelek ebben a szakaszban jelennek meg, függetlenül attól, hogy az Azure-beli delegált erőforrás-kezeléshez is felvette őket. Hasonlóképpen, a CSP-ügyfélnek nem kell megjelennie az **ügyfelek** **felhőalapú megoldás-szolgáltató (előzetes verzió)** szakaszában, hogy az Azure-beli delegált erőforrás-kezeléshez be lehessen őket készíteni.
+A lap alsó részén, a **Cloud Solution Provider (előzetes verzió)** nevű külön szakasz a számlázási adatokat és erőforrásokat jeleníti meg a CSP azon ügyfelei számára, akik [aláírták a Microsoft Customer szerződést (MCA)](/partner-center/confirm-customer-agreement) , és [Az Azure-csomag alatt](/partner-center/azure-plan-get-started)találhatók. További információ: Ismerkedés a [Microsoft partneri szerződés számlázási fiókjával](../../cost-management-billing/understand/mpa-overview.md). Vegye figyelembe, hogy az ilyen CSP-ügyfelek ebben a szakaszban jelennek meg, függetlenül attól, hogy az Azure Lighthouse-ban is felvette őket. Hasonlóképpen, a CSP-ügyfélnek nem kell megjelennie az **ügyfelek** **Cloud Solution Provider (előzetes verzió)** szakaszában, hogy az Azure világítótoronyba bekerüljön.
 
 > [!NOTE]
 > Az ügyfelek megtekinthetik a szolgáltatók adatait úgy, hogy a Azure Portalban **lévő szolgáltatókra** navigálnak. További információ: szolgáltatók [megtekintése és kezelése](view-manage-service-providers.md).
@@ -52,7 +52,7 @@ Az egyes delegálásokhoz társított felhasználók és engedélyek a szerepkö
 
 ### <a name="remove-delegations"></a>Delegálások eltávolítása
 
-Ha a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörrel](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) rendelkező felhasználók számára felvette az ügyfelet az Azure-beli delegált erőforrás-kezeléshez, a felhasználók eltávolíthatnak egy delegálást úgy, hogy kiválasztja az adott delegálás sorában megjelenő Kuka ikont. Ha igen, a szolgáltató bérlője egyik felhasználója sem férhet hozzá a korábban delegált erőforrásokhoz.
+Ha a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörrel](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) rendelkező felhasználók számára bevezet egy ügyfelet az Azure Lighthouse-ba, akkor ezek a felhasználók eltávolíthatnak egy delegálást, ha kiválasztja az adott delegálás sorában megjelenő Kuka ikont. Ha igen, a szolgáltató bérlője egyik felhasználója sem férhet hozzá a korábban delegált erőforrásokhoz.
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>Meghatalmazott előfizetés kontextusában működik
 
@@ -68,7 +68,7 @@ Ha ezt követően olyan szolgáltatáshoz fér hozzá, amely támogatja a [több
 
 A delegált előfizetésekhez vagy erőforráscsoportokhöz kapcsolódó funkciókat a több-bérlős felügyeletet támogató szolgáltatásokon belül is elérheti, ha kijelöli az előfizetést vagy az erőforráscsoportot a szolgáltatáson belül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [bérlők közötti felügyeleti élményekről](../concepts/cross-tenant-management-experience.md).
 - Ismerje meg, hogy az ügyfelek hogyan [tekinthetik meg és kezelhetik a szolgáltatókat](view-manage-service-providers.md) a Azure Portalban **található szolgáltatók** használatával.

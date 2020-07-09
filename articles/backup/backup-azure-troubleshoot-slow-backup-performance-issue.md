@@ -1,15 +1,14 @@
 ---
 title: Fájlok és mappák lassú biztonsági mentésének hibáinak megoldása
 description: Hibaelhárítási útmutatót biztosít a Azure Backup teljesítményproblémák okának diagnosztizálásához
-ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: d65eca685748499f52a990c7ac588bf44cbbba31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f596f0900fbd92391a383678ade99df30592f1
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194025"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135037"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
 
@@ -50,13 +49,13 @@ A Windows a [teljesítmény figyelője](https://techcommunity.microsoft.com/t5/a
 
 | Számláló | Állapot |
 | --- | --- |
-| Logikai lemez (fizikai lemez) –% tétlen |* 100% üresjárati állapot: 50% Idle = kifogástalan</br>* 49% üresjáratban 20% tétlen = figyelmeztetés vagy figyelő</br>* 19% üresjáratban 0% tétlen = kritikus vagy a spec |
-| Logikai lemez (fizikai lemez) –% AVG. lemez olvasása vagy írása (mp) |* 0,001 MS – 0,015 MS = kifogástalan</br>* 0,015 MS – 0,025 MS = figyelmeztetés vagy figyelő</br>* 0,026 MS vagy több = kritikus vagy nem a spec |
+| Logikai lemez (fizikai lemez) –% tétlen |<li> 100% tétlen – 50% tétlen = kifogástalan</br><li> 49% tétlen: 20% tétlen = figyelmeztetés vagy figyelő</br><li> 19% üresjáratban 0% tétlen = kritikus vagy a spec |
+| Logikai lemez (fizikai lemez) –% AVG. lemez olvasása vagy írása (mp) |<li> 0,001 MS – 0,015 MS = kifogástalan</br><li> 0,015 MS – 0,025 MS = figyelmeztetés vagy figyelő</br><li> 0,026 MS vagy több = kritikus vagy nem a spec |
 | Logikai lemez (fizikai lemez) – a lemez aktuális várólistájának hossza (az összes példány esetében) |80 kérelem 6 percnél hosszabb ideig |
-| Memória – nem lapozható készlet (bájt) |* Kevesebb, mint 60%-a felhasznált készlet = kifogástalan<br>* 61% – 80% a készlet felhasználva = figyelmeztetés vagy figyelő</br>* Nagyobb, mint 80%-os készlet felhasználva = kritikus vagy a spec |
-| Memória – a készlet lapozható bájtjai |* Kevesebb, mint 60%-a felhasznált készlet = kifogástalan</br>* 61% – 80% a készlet felhasználva = figyelmeztetés vagy figyelő</br>* Nagyobb, mint 80%-os készlet felhasználva = kritikus vagy a spec |
-| Memória – rendelkezésre álló megabájt |* a rendelkezésre álló szabad memória 50%-a vagy több = kifogástalan</br>* a rendelkezésre álló szabad memória 25%-a = figyelő</br>* a rendelkezésre álló szabad memória 10%-a = figyelmeztetés</br>* Kevesebb, mint 100 MB vagy 5% szabad memória érhető el = kritikus vagy a spec |
-| Processzor – \% processzoridő (minden példány) |* Kevesebb mint 60% felhasznált = kifogástalan</br>* 61% – 90% felhasználva = figyelő vagy figyelmeztetés</br>* 91% – 100% felhasználva = kritikus |
+| Memória – nem lapozható készlet (bájt) |<li> Kevesebb mint 60%-a felhasznált készlet = kifogástalan<br><li> 61% – 80% a készlet felhasználva = figyelmeztetés vagy figyelő</br><li> Nagyobb, mint 80%-os készlet felhasználva = kritikus vagy a spec |
+| Memória – a készlet lapozható bájtjai |<li> Kevesebb mint 60%-a felhasznált készlet = kifogástalan</br><li> 61% – 80% a készlet felhasználva = figyelmeztetés vagy figyelő</br><li> Nagyobb, mint 80%-os készlet felhasználva = kritikus vagy a spec |
+| Memória – rendelkezésre álló megabájt |<li> a rendelkezésre álló szabad memória 50%-a vagy több = kifogástalan</br><li> a rendelkezésre álló szabad memória 25%-a = figyelő</br><li>rendelkezésre álló szabad memória 10%-a = figyelmeztetés</br><li> Kevesebb, mint 100 MB vagy 5% szabad memória érhető el = kritikus vagy a spec |
+| Processzor – \% processzoridő (minden példány) |<li> Kevesebb mint 60% felhasznált = kifogástalan</br><li> 61% – 90% felhasználva = figyelő vagy figyelmeztetés</br><li> 91% – 100% felhasználva = kritikus |
 
 > [!NOTE]
 > Ha azt állapítja meg, hogy az infrastruktúra a bűnös, javasoljuk, hogy a lemezeket a jobb teljesítmény érdekében rendszeresen töredezettségmentesíteni.
@@ -98,6 +97,6 @@ A következő mutatók segítségével megismerheti a szűk keresztmetszeteket, 
 
 Ha nagyméretű lemezekről szeretne biztonsági mentést készíteni, ajánlott [Azure Data Box](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box) használni az első biztonsági mentéshez (kezdeti replikáció).  Ha nem tudja használni a Data Boxt, akkor a környezetben előforduló, hosszú adatátvitelt okozó átmeneti hálózati problémák a biztonsági mentési hibákhoz vezethetnek.  Ezeknek a hibáknak a védelme érdekében hozzáadhat néhány mappát a kezdeti biztonsági mentéshez, és további mappák növekményes hozzáadásával megőrizheti az Azure-ba történő biztonsági mentést.  A további növekményes biztonsági mentések viszonylag gyorsabbak lesznek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések](backup-azure-file-folder-backup-faq.md)

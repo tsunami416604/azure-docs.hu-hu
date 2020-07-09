@@ -10,19 +10,18 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
 ms.custom: mqtt
-ms.openlocfilehash: 620e0213733d278a28ec1bcad4b031f5764ccda9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91cebee1196dc38af8ece4086b6e6ab66fdc14da
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733137"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135558"
 ---
 # <a name="get-started-with-device-twins-net"></a>Ismerkedés az eszközökhöz készült ikrek (.NET) használatával
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
 Ebben az oktatóanyagban a következő .NET-konzolos alkalmazásokat hozza létre:
-
-* **CreateDeviceIdentity**. Ez az alkalmazás létrehoz egy eszköz identitást és egy hozzá tartozó biztonsági kulcsot a szimulált eszközhöz való kapcsolódáshoz.
 
 * **AddTagsAndQuery**. Ez a háttérbeli alkalmazás címkéket hoz létre, és lekérdezi az eszközökhöz tartozó ikreket.
 
@@ -245,7 +244,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a **myDe
 
     ![Az eszköz kapcsolata sikeresen jelezve](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy új IoT Hubot konfigurált az Azure-portálon, majd létrehozott egy eszközidentitást az IoT Hub identitásjegyzékében. Az eszköz metaadatait címkékként adta hozzá egy háttérbeli alkalmazáshoz, és írt egy szimulált eszközt, amely az eszköz kapcsolati adatait jelenti a Twin-ben. Azt is megtanulta, hogyan lehet lekérdezni ezeket az adatokat az SQL-Like IoT Hub lekérdezési nyelv használatával.
 

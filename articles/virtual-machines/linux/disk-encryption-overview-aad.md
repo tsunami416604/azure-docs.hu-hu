@@ -8,11 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: cc9f3b54d427a30b587d8335f6ce9b013f407374
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbd44c5a90a656b804ff4e3bb9984a059ec3a89a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792564"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135422"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure Disk Encryption az Azure AD-vel (előző kiadás)
 
@@ -34,16 +35,17 @@ Ha engedélyezni szeretné a Azure Disk Encryption funkciót a régebbi HRE para
   - A IaaS virtuális gépnek képesnek kell lennie csatlakozni egy Azure Storage-végponthoz, amely az Azure-bővítmény adattárát és a VHD-fájlokat tároló Azure Storage-fiókot tartalmazza.
   -  Ha a biztonsági házirend korlátozza az Azure-beli virtuális gépekről az internetre való hozzáférést, az előző URI-t megoldhatja, és konfigurálhat egy adott szabályt, hogy engedélyezze a kimenő kapcsolatot az IP-címekkel. További információ: [Azure Key Vault tűzfal mögött](../../key-vault/general/access-behind-firewall.md).
   - Windows rendszeren, ha a TLS 1,0 explicit módon le van tiltva, és a .NET verziója nem frissül 4,6 vagy újabb verzióra, a következő beállításjegyzék-módosítás lehetővé teszi, hogy Azure Disk Encryption válassza ki a legújabb TLS-verziót:
+
+  ```config-registry
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+  "SystemDefaultTlsVersions"=dword:00000001
+  "SchUseStrongCrypto"=dword:00000001
     
-            [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-            "SystemDefaultTlsVersions"=dword:00000001
-            "SchUseStrongCrypto"=dword:00000001
-    
-            [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-            "SystemDefaultTlsVersions"=dword:00000001
-            "SchUseStrongCrypto"=dword:00000001` 
-         
-    
+  [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+  "SystemDefaultTlsVersions"=dword:00000001
+  "SchUseStrongCrypto"=dword:00000001` 
+  ```
+
 ### <a name="group-policy"></a>Csoportházirend
  - A Azure Disk Encryption megoldás a BitLocker külső kulcstartót használja a Windows IaaS virtuális gépekhez. A tartományhoz csatlakoztatott virtuális gépek esetében ne küldjön le olyan csoportházirendeket, amelyek kikényszerítik a TPM-védőket. További információ a **BitLocker kompatibilis TPM nélküli engedélyezése**beállításának Csoportházirendáról: a [BitLocker csoportházirend referenciája](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
@@ -55,7 +57,7 @@ Azure Disk Encryption a lemez titkosítási kulcsainak és titkainak szabályoz�
 
 További információ: [Key Vault létrehozása és konfigurálása Azure Disk Encryption az Azure ad-vel (korábbi kiadás)](disk-encryption-key-vault-aad.md).
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kulcstartó létrehozása és konfigurálása az Azure AD-vel való Azure Disk Encryptionhoz (előző kiadás)](disk-encryption-key-vault-aad.md)
 - [Azure Disk Encryption engedélyezése az Azure AD-vel Linux rendszerű virtuális gépeken (korábbi kiadás)](disk-encryption-linux-aad.md)

@@ -3,11 +3,12 @@ title: VMware-Migrálás támogatása Azure Migrateban
 description: További információ a VMware virtuális gépek áttelepítésének támogatásáról Azure Migrateban.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: c4184628739b6c47b35263fe99285b05b9e0a190
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b026d07c6ac1630048d8aee6778215f3a99dddb
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769727"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134997"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-Migrálás támogatási mátrixa
 
@@ -50,7 +51,7 @@ A táblázat összefoglalja a VMware virtuális gépek ügynök nélküli áttel
 
 **Támogatás** | **Részletek**
 --- | ---
-**Támogatott operációs rendszerek** | Áttelepítheti az Azure által támogatott [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -és [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -operációs rendszereket.
+**Támogatott operációs rendszerek** | Áttelepítheti az Azure által támogatott [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -és [Linux](../virtual-machines/linux/endorsed-distros.md) -operációs rendszereket.
 **Windows rendszerű virtuális gépek az Azure-ban** | Előfordulhat, hogy a Migrálás előtt [módosításokat kell végeznie](prepare-for-migration.md#verify-required-changes-before-migrating) a virtuális gépeken. 
 **Linux rendszerű virtuális gépek az Azure-ban** | Előfordulhat, hogy egyes virtuális gépek módosításokat igényelnek, hogy az Azure-ban is futtathatók legyenek.<br/><br/> A Linux rendszerben a Azure Migrate automatikusan végrehajtja a módosításokat a következő operációs rendszereken:<br/> -Red Hat Enterprise Linux 6.5 +, 7.0 +<br/> -CentOS 6.5 +, 7.0 +</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8. Más operációs rendszerekhez manuálisan végezze el a [szükséges módosításokat](prepare-for-migration.md#verify-required-changes-before-migrating) .
 **Linux rendszerű rendszerindítás** | Ha a/boot dedikált partíción van, akkor az operációsrendszer-lemezen kell lennie, és nem szabad több lemezre osztania.<br/> Ha a/boot a gyökér (/) partíció része, akkor a "/" partíciónak az operációsrendszer-lemezen kell lennie, és nem szabad más lemezekre kiterjednie.
@@ -171,6 +172,6 @@ Kapcsolat az áttelepítés után – Windows | Kapcsolódás a Windows rendszer
 Kapcsolat Migrálás után – Linux | Kapcsolódás az Azure-beli virtuális gépekhez az SSH használatával történő áttelepítés után:<br/><br/> Az áttelepítés előtt a helyszíni gépen győződjön meg arról, hogy a Secure Shell szolgáltatás indításra van beállítva, és hogy a tűzfalszabályok engedélyezik az SSH-kapcsolatokat.<br/><br/> A feladatátvételt követően az Azure-beli virtuális gépen engedélyezze az SSH-porthoz való bejövő kapcsolatokat a hálózati biztonsági csoportra vonatkozó szabályokra vonatkozóan a feladatátvételen átesett virtuális gépen, valamint azt az Azure-alhálózatot, amelyhez csatlakoztatva van.<br/><br/> Továbbá adjon hozzá egy nyilvános IP-címet a virtuális géphez.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Válassza ki](server-migrate-overview.md) a VMware áttelepítési lehetőséget.

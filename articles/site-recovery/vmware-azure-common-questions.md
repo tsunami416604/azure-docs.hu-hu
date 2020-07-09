@@ -3,11 +3,12 @@ title: Gyakori kérdések a VMware vész-helyreállítással kapcsolatban Azure 
 description: Választ kaphat a helyszíni VMware virtuális gépek Azure-ba való vész-helyreállításával kapcsolatos gyakori kérdésekre Azure Site Recovery használatával.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: d551cef7037c0b6d7286cbb4b70d8f7a8f7f5cae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259510"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135164"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Gyakori kérdések VMware-ből az Azure-ba történő replikációról
 
@@ -121,7 +122,7 @@ Az új virtuális gépek Storage-fiókba való replikálása csak a PowerShell v
 
 ### <a name="can-i-change-the-managed-disk-type-after-a-machine-is-protected"></a>Módosíthatom a felügyelt lemez típusát a gép védelme után?
 
-Igen, egyszerűen [módosíthatja a felügyelt lemez típusát](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) a folyamatos replikáláshoz. A típus módosítása előtt győződjön meg arról, hogy a felügyelt lemezen nem jön létre közös hozzáférésű aláírási URL-cím:
+Igen, egyszerűen [módosíthatja a felügyelt lemez típusát](../virtual-machines/windows/convert-disk-storage.md) a folyamatos replikáláshoz. A típus módosítása előtt győződjön meg arról, hogy a felügyelt lemezen nem jön létre közös hozzáférésű aláírási URL-cím:
 
 1. Nyissa meg a **felügyelt lemez** erőforrást a Azure Portalon, és győződjön meg arról, hogy rendelkezik-e közös hozzáférési aláírási URL-címmel az **Áttekintés** panelen.
 1. Ha a szalagcím megtalálható, válassza ki azt a folyamatban lévő exportálás megszakításához.
@@ -356,7 +357,7 @@ Igen. A REST API, a PowerShell vagy az Azure SDK használatával automatizálhat
 
 Igen. [További információk](site-recovery-plan-capacity-vmware.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tekintse át](vmware-physical-azure-support-matrix.md) a támogatási követelményeket.
 - [Beállítás](vmware-azure-tutorial.md) VMware – Azure replikálás.

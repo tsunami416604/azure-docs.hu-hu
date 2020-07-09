@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: rajanaki
-ms.openlocfilehash: b2f5faea3df695500ea245d1dc71cb96a84c3643
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b57ce89979225015dc87bbfb17f9603897ef6d6b
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985601"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135835"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>A mobilitási szolgáltatás automatikus frissítése az Azure-ról az Azure-ba történő replikációra
 
@@ -90,7 +90,7 @@ Ha nem tudja engedélyezni az automatikus frissítéseket, tekintse meg az aláb
 
 - **Hiba**: nincs engedélye Azure-beli futtató fiók (egyszerű szolgáltatásnév) létrehozására, és adja meg a közreműködői szerepkört az egyszerű szolgáltatásnak.
 
-  **Javasolt művelet**: Ellenőrizze, hogy a bejelentkezett fiók hozzá van-e rendelve közreműködőként, és próbálkozzon újra. Az engedélyek kiosztásával kapcsolatos további információkért tekintse meg a szükséges engedélyek című szakaszt, [útmutató: a portál használatával létrehozhat egy Azure ad-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions).
+  **Javasolt művelet**: Ellenőrizze, hogy a bejelentkezett fiók hozzá van-e rendelve közreműködőként, és próbálkozzon újra. Az engedélyek kiosztásával kapcsolatos további információkért tekintse meg a szükséges engedélyek című szakaszt, [útmutató: a portál használatával létrehozhat egy Azure ad-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
   Az automatikus frissítések engedélyezése után a legtöbb probléma kijavításához válassza a **javítás**lehetőséget. Ha a javítás gomb nem érhető el, tekintse meg a bővítmény frissítési beállításai ablaktáblájában megjelenő hibaüzenetet.
 
@@ -98,11 +98,11 @@ Ha nem tudja engedélyezni az automatikus frissítéseket, tekintse meg az aláb
 
 - **Hiba**: a futtató fiók nem jogosult a Recovery Services-erőforrás elérésére.
 
-  **Javasolt művelet**: törölje, majd [hozza létre újra a futtató fiókot](/azure/automation/automation-create-runas-account). Vagy ellenőrizze, hogy az Automation futtató fiók Azure Active Directory alkalmazása hozzáférhet-e a Recovery Services-erőforráshoz.
+  **Javasolt művelet**: törölje, majd [hozza létre újra a futtató fiókot](../automation/manage-runas-account.md). Vagy ellenőrizze, hogy az Automation futtató fiók Azure Active Directory alkalmazása hozzáférhet-e a Recovery Services-erőforráshoz.
 
 - **Hiba**: a futtató fiók nem található. Ezek egyike törölve lett vagy nem lett létrehozva – Azure Active Directory alkalmazás, szolgáltatásnév, szerepkör, Automation-tanúsítvány eszköze, Automation-kapcsolati eszköz –, vagy az ujjlenyomat nem azonos a tanúsítvány és a kapcsolat között.
 
-  **Javasolt művelet**: törölje, majd [hozza létre újra a futtató fiókot](/azure/automation/automation-create-runas-account).
+  **Javasolt művelet**: törölje, majd [hozza létre újra a futtató fiókot](../automation/manage-runas-account.md).
 
 - **Hiba**: az Automation-fiók által használt Azure-beli futtató tanúsítvány hamarosan lejár.
 

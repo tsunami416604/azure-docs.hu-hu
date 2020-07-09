@@ -1,5 +1,5 @@
 ---
-title: Az Azure privát hivatkozásának konfigurálása
+title: Privát végpont konfigurálása (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: Az Azure Private link használatával biztonságosan férhet hozzá a Azure Machine Learning-munkaterülethez egy virtuális hálózatról.
 services: machine-learning
@@ -10,11 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 49565624cee70e40141ca7e8b57b2c26b950d20b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed3b59b9e6aecb91f4ecb9d569b989b6b2396c48
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84666929"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134881"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Private-hivatkozás konfigurálása Azure Machine Learning munkaterülethez (előzetes verzió)
 
@@ -1160,6 +1161,6 @@ A virtuális hálózaton belüli Azure Container Registry biztonságossá tétel
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Machine Learning munkaterület biztonságossá tételével kapcsolatos további információkért tekintse meg a [nagyvállalati biztonsági](concept-enterprise-security.md) cikket.

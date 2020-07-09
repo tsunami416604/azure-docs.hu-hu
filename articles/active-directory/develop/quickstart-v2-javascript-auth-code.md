@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 0ba4531ed15630a8887cb7be843a00ba23a439cc
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0eaa4a828716f1a52161726e768acc817d1fde17
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682020"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134180"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési token beszerzése egy JavaScript SPA-ban az Auth Code flow használatával
 
@@ -26,7 +26,7 @@ ms.locfileid: "83682020"
 
 Ebben a rövid útmutatóban egy kódrészletet fog futtatni, amely bemutatja, hogyan jelentkezhet be a JavaScript egyoldalas alkalmazás (SPA) a személyes fiókok, a munkahelyi fiókok és az iskolai fiókok felhasználói számára az engedélyezési kód folyamatának használatával. A kód minta azt is bemutatja, hogyan szerezhet be egy hozzáférési jogkivonatot a webes API meghívásához, ebben az esetben a Microsoft Graph API-t. Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
-Ez a rövid útmutató a MSAL. js 2,0-et használja az engedélyezési kód folyamatával. Egy hasonló, a MSAL. js 1,0-et használó gyors útmutatóhoz az implicit folyamattal kapcsolatban lásd: gyors üzembe helyezés [a felhasználók számára a JavaScript egyoldalas alkalmazásokban](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
+Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folyamatával. A MSAL.js 1,0-et az implicit folyamattal használó gyors útmutató: gyors üzembe helyezés a [felhasználók között JavaScript egyoldalas alkalmazásokban](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -76,10 +76,10 @@ Ez a rövid útmutató a MSAL. js 2,0-et használja az engedélyezési kód foly
 #### <a name="step-2-download-the-project"></a>2. lépés: A projekt letöltése
 
 > [!div renderon="docs"]
-> Ha a projektet a Node. js használatával webkiszolgálóval szeretné futtatni, [töltse le az alapprojekt fájljait](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/master.zip).
+> Ha Node.js használatával szeretné futtatni a projektet egy webkiszolgálóval, [töltse le az alapprojekt fájljait](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/master.zip).
 
 > [!div renderon="portal" class="sxs-lookup"]
-> A projekt futtatása webkiszolgálóval a Node. js használatával
+> A projekt futtatása webkiszolgálóval Node.js használatával
 
 > [!div renderon="portal" class="sxs-lookup" id="autoupdate" class="nextstepaction"]
 > [A mintakód letöltése](https://github.com/Azure-Samples/ms-identity-javascript-v2/archive/master.zip)
@@ -87,7 +87,7 @@ Ez a rövid útmutató a MSAL. js 2,0-et használja az engedélyezési kód foly
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-javascript-app"></a>3. lépés: a JavaScript-alkalmazás konfigurálása
 >
-> Az *alkalmazás* mappájában nyissa meg a *authConfig. js* fájlt, és frissítse a `clientID` , `authority` , és `redirectUri` értékeket az `msalConfig` objektumban.
+> Az *alkalmazás* mappájában nyissa meg a *authConfig.js* fájlt, és frissítse a `clientID` , `authority` , és `redirectUri` értékeket az `msalConfig` objektumban.
 >
 > ```javascript
 > // Config object to be passed to Msal on creation
@@ -121,7 +121,7 @@ Ez a rövid útmutató a MSAL. js 2,0-et használja az engedélyezési kód foly
 >   - A *személyes Microsoft-fiókok*támogatásának korlátozásához cserélje le ezt az értéket a következőre: `consumers` .
 > - A `Enter_the_Redirect_Uri_Here` értéke `http://localhost:3000/`.
 >
-> `authority`Ha a fő (globális) Azure-felhőt használja, a *authConfig. js* fájlban a következőhöz hasonló értéknek kell megjelennie:
+> `authority`Ha a fő (globális) Azure-felhőt használja, a *authConfig.jsban* a következőhöz hasonló értéknek kell megjelennie:
 >
 > ```javascript
 > authority: "https://login.microsoftonline.com/common",
@@ -136,7 +136,7 @@ Ez a rövid útmutató a MSAL. js 2,0-et használja az engedélyezési kód foly
 
 > [!div renderon="docs"]
 >
-> Ezután továbbra is ugyanabban a mappában szerkessze a *graphConfig. js* fájlt, és frissítse `graphMeEndpoint` az `graphMailEndpoint` objektumot és az értékeket `apiConfig` .
+> Ezután továbbra is ugyanabban a mappában szerkessze a *graphConfig.js* fájlt, és frissítse `graphMeEndpoint` az `graphMailEndpoint` objektumot és az értékeket `apiConfig` .
 >
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
@@ -155,7 +155,7 @@ Ez a rövid útmutató a MSAL. js 2,0-et használja az engedélyezési kód foly
 >
 > `Enter_the_Graph_Endpoint_Here`a végpont az API-hívásokat fogja elvégezni. A fő (globális) Microsoft Graph API szolgáltatásnál adja meg a `https://graph.microsoft.com/` következőt: (a záró továbbítási perjelet is beleértve). Az országos felhők Microsoft Graphával kapcsolatos további információkért lásd: [országos Felhőbeli üzembe helyezés](https://docs.microsoft.com/graph/deployments).
 >
-> `graphMeEndpoint` `graphMailEndpoint` Ha a fő (globális) Microsoft Graph API-szolgáltatást használja, a *graphConfig. js* fájlban a következőhöz hasonló értéknek kell szerepelnie:
+> `graphMeEndpoint`Ha a `graphMailEndpoint` fő (globális) Microsoft Graph API-szolgáltatást használja, a *graphConfig.js* fájlban a következőhöz hasonló értéknek kell szerepelnie:
 >
 > ```javascript
 > graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
@@ -164,7 +164,7 @@ Ez a rövid útmutató a MSAL. js 2,0-et használja az engedélyezési kód foly
 >
 > #### <a name="step-4-run-the-project"></a>4. lépés: a projekt futtatása
 
-Futtassa a projektet egy webkiszolgálóval a Node. js használatával:
+A projekt futtatása webkiszolgálóval Node.js használatával:
 
 1. A kiszolgáló elindításához futtassa a következő parancsokat a projekt könyvtárából:
     ```console
@@ -181,18 +181,18 @@ Futtassa a projektet egy webkiszolgálóval a Node. js használatával:
 
 ### <a name="how-the-sample-works"></a>A minta működése
 
-:::image type="content" source="media/quickstart-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="Egy egyoldalas alkalmazás engedélyezési kódjának folyamatát ábrázoló diagram":::
+![Egy egyoldalas alkalmazás engedélyezési kódjának folyamatát ábrázoló diagram.](media/quickstart-v2-javascript-auth-code/diagram-01-auth-code-flow.png)
 
-### <a name="msaljs"></a>msal. js
+### <a name="msaljs"></a>msal.js
 
-A MSAL. js függvénytár aláírja a felhasználókat, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kéri. A minta *index. html* fájlja a könyvtárra mutató hivatkozást tartalmaz:
+A MSAL.js kódtár bejelentkezik a felhasználók számára, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kéri. A minta *index.html* fájl a könyvtárra mutató hivatkozást tartalmaz:
 
 ```html
 <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.0.0-beta.0/js/msal-browser.js" integrity=
 "sha384-r7Qxfs6PYHyfoBR6zG62DGzptfLBxnREThAlcJyEfzJ4dq5rqExc1Xj3TPFE/9TH" crossorigin="anonymous"></script>
 ```
 
-Ha a Node. js telepítve van, a legújabb verziót a Node. js csomagkezelő (NPM) használatával töltheti le:
+Ha Node.js van telepítve, a legújabb verziót a Node.js Package Manager (NPM) segítségével töltheti le:
 
 ```console
 npm install @azure/msal-browser

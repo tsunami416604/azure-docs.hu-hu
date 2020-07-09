@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 9cd59fdf81e9b5d56872d20c76e8ea177b3c8577
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0637716b5f9970ff8c6d550f138fb7d21a26b81a
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79470894"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134460"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Gyors útmutató: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
 
@@ -43,14 +43,6 @@ Az oktatóanyag elvégzéséhez:
 3. [A Maven 3,0-es vagy újabb verziójának telepítése](https://maven.apache.org/download.cgi)
 4. [Az Azure CLI 2.0.67 vagy újabb verziójának telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
-
-## <a name="install-the-azure-cli-extension"></a>Az Azure CLI-bővítmény telepítése
-
-Telepítse az Azure CLI-hez készült Azure Spring Cloud-bővítményt az alábbi paranccsal
-
-```azurecli
-az extension add --name spring-cloud
-```
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Szolgáltatási példány kiépítése a Azure Portal
 
@@ -101,7 +93,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 1. Lépjen a szolgáltatás **áttekintése** lapra, és válassza a **konfigurációs kiszolgáló**lehetőséget.
 
-2. Az **alapértelmezett adattár** szakaszban állítsa be az **URI** -thttps://github.com/Azure-Samples/piggymetrics-config"" értékre.
+2. Az **alapértelmezett adattár** szakaszban állítsa be az **URI** -t "" értékre https://github.com/Azure-Samples/piggymetrics-config .
 
 3. A módosítások mentéséhez válassza az **Alkalmaz** elemet.
 
@@ -112,7 +104,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 ## <a name="build-and-deploy-microservice-applications"></a>Service-alkalmazások készítése és üzembe helyezése
 
-1. Nyisson meg egy [Azure Cloud Shell](https://shell.azure.com) , és klónozása a minta alkalmazás-tárházat a helyi gépre.  Először hozzunk létre egy ideiglenes könyvtárat, amely `source-code` az alkalmazás klónozása előtt lett meghívva.
+1. Nyisson meg egy [Azure Cloud Shell](https://shell.azure.com) vagy a helyi rendszerhéjt az Azure CLI-vel. Először létre kell hozni egy ideiglenes könyvtárat, amely `source-code` a minta alkalmazás klónozása előtt lett meghívva.
 
     ```console
     mkdir source-code
@@ -127,21 +119,33 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
     mvn clean package -DskipTests
     ```
 
-3. Neveket rendelhet hozzá az erőforráscsoporthoz és a szolgáltatáshoz. Ügyeljen arra, hogy az alábbi helyőrzőket az oktatóanyag korábbi részében kiépített erőforráscsoport-névvel és szolgáltatás nevével helyettesítse.
+3. Telepítse az Azure CLI-hez készült Azure Spring Cloud-bővítményt az alábbi paranccsal
+
+    ```azurecli
+    az extension add --name spring-cloud
+    ```
+
+4. Neveket rendelhet hozzá az erőforráscsoporthoz és a szolgáltatáshoz. Ügyeljen arra, hogy az alábbi helyőrzőket az oktatóanyag korábbi részében kiépített erőforráscsoport-névvel és szolgáltatás nevével helyettesítse.
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-4. Hozza létre `gateway` az alkalmazást, és telepítse a jar-fájlt.
+5. Hozza létre az `gateway` alkalmazást, és telepítse a jar-fájlt.  A következő lépésekhez a Spring Cloud bővítmény szükséges. Ha nem telepítette az előfeltételeket, futtassa a következő parancsot:
+
+    ```azurecli
+    az extension add --name spring-cloud
+    ```
+
+    A Spring Cloud bővítmény használatával hozza létre az alkalmazást:
 
     ```azurecli
     az spring-cloud app create -n gateway
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-5. Ugyanezt a mintát követve hozza `account-service` létre `auth-service` a és az alkalmazásokat, és telepítse a jar-fájljaikat.
+6. Ugyanezt a mintát követve hozza létre a `account-service` és az `auth-service` alkalmazásokat, és telepítse a jar-fájljaikat.
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -150,7 +154,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-6. Az alkalmazások üzembe helyezésének befejezése néhány percet vesz igénybe. Annak ellenőrzéséhez, hogy telepítve vannak-e, nyissa meg az **alkalmazások** panelt a Azure Portal. A három alkalmazás sorát kell látnia.
+7. Az alkalmazások üzembe helyezésének befejezése néhány percet vesz igénybe. Annak ellenőrzéséhez, hogy telepítve vannak-e, nyissa meg az **alkalmazások** panelt a Azure Portal. A három alkalmazás sorát kell látnia.
 
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
@@ -159,7 +163,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 
 1. Nyissa meg a bal oldali menü **alkalmazások** lapját.
 
-2. Válassza ki `gateway` az alkalmazást az **Áttekintés** oldal megjelenítéséhez.
+2. Válassza ki az `gateway` alkalmazást az **Áttekintés** oldal megjelenítéséhez.
 
 3. Válassza a **végpont társítása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez eltarthat néhány percig.
 
@@ -172,7 +176,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=public-endpoint)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

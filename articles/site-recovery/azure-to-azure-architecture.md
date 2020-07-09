@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: d941f3e13e99accadc59c5836d88a824182329b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629710"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86135854"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -166,11 +167,11 @@ HTTPS-kimenő engedélyezése: 443-es port | Azure Automation vezérlőnek megfe
 
 #### <a name="control-access-with-nsg-rules"></a>Hozzáférés szabályozása NSG-szabályokkal
 
-Ha a virtuális gép kapcsolatát úgy szabályozza, hogy az Azure-hálózatokra/alhálózatokra irányuló hálózati forgalmat [NSG-szabályok](https://docs.microsoft.com/azure/virtual-network/security-overview)használatával szűri, vegye figyelembe a következő követelményeket:
+Ha a virtuális gép kapcsolatát úgy szabályozza, hogy az Azure-hálózatokra/alhálózatokra irányuló hálózati forgalmat [NSG-szabályok](../virtual-network/security-overview.md)használatával szűri, vegye figyelembe a következő követelményeket:
 
 - A forrásként szolgáló Azure-régió NSG-szabályainak engedélyezniük kell a kimenő hozzáférést a replikálási forgalom számára.
 - Javasoljuk, hogy hozzon létre szabályokat tesztkörnyezetben, mielőtt éles környezetbe helyezné őket.
-- Az egyes IP-címek engedélyezése helyett használja a [szolgáltatás címkéit](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) .
+- Az egyes IP-címek engedélyezése helyett használja a [szolgáltatás címkéit](../virtual-network/security-overview.md#service-tags) .
     - A szolgáltatás címkéi az IP-címek egy csoportját alkotják, amelyek a biztonsági szabályok létrehozásakor a bonyolultságuk csökkentése érdekében vannak összegyűjtve.
     - A Microsoft az idő múlásával automatikusan frissíti a szolgáltatás címkéit. 
  
@@ -192,6 +193,6 @@ Feladatátvétel kezdeményezése esetén a virtuális gépek a célként megado
 
 ![Feladatátvételi folyamat](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyorsan replikálhat](azure-to-azure-quickstart.md) egy Azure-beli virtuális gépet egy másodlagos régióba.

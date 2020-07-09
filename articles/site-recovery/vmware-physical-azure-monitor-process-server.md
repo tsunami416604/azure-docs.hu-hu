@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 296254db83a065623b692d7947c130dfd71cd413
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eebaa70cee99380ac67b8f6516a5b08ff2832c86
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835053"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134744"
 ---
 # <a name="monitor-the-process-server"></a>A folyamat kiszolgálójának figyelése
 
@@ -92,10 +93,10 @@ A folyamat-kiszolgálók állapotát a következőképpen figyelheti:
 A **site Recovery infrastruktúra**alatt figyelheti a tárolóban lévő folyamat-kiszolgálókat is. A **site Recovery-infrastruktúra kezelése**területen kattintson a **konfigurációs kiszolgálók**elemre. Válassza ki a Process Serverhez társított konfigurációs kiszolgálót, és bontsa ki a folyamat kiszolgálójának adatait.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha problémái vannak a folyamatok kiszolgálóival, kövesse a [hibaelhárítási útmutatót](vmware-physical-azure-troubleshoot-process-server.md)
-- Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](https://docs.microsoft.com/answers/topics/azure-site-recovery.html). 
+- Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](/answers/topics/azure-site-recovery.html). 
 
 [green]: ./media/vmware-physical-azure-monitor-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-monitor-process-server/yellow.png

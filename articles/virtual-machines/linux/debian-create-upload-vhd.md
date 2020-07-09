@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: d54f7a11d929c31fee29a788eb3a2ae2cc8f2703
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebd20b6187fd4f04ac525e0152d805d9d81de3ab
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066718"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134607"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Debian VHD előkészítése az Azure-hoz
 ## <a name="prerequisites"></a>Előfeltételek
@@ -27,16 +27,18 @@ Ez a szakasz azt feltételezi, hogy már telepített egy Debian Linux operáció
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>Debian virtuális merevlemezek létrehozása az Azure-Manage használatával
 Elérhetők az Azure-hoz készült Debian virtuális merevlemezek, például az [Azure-Credativ-parancsfájlok kezeléséhez](https://github.com/credativ/azure-manage) használható eszközök. [Credativ](https://www.credativ.com/) Ez az ajánlott megközelítés, illetve a rendszerkép teljesen új létrehozása. Ha például egy Debian 8 VHD-t szeretne létrehozni, futtassa a következő parancsokat a `azure-manage` segédprogram (és a függőségek) letöltéséhez, és futtassa a `azure_build_image` szkriptet:
 
-    # sudo apt-get update
-    # sudo apt-get install git qemu-utils mbr kpartx debootstrap
+```console
+# sudo apt-get update
+# sudo apt-get install git qemu-utils mbr kpartx debootstrap
 
-    # sudo apt-get install python3-pip python3-dateutil python3-cryptography
-    # sudo pip3 install azure-storage azure-servicemanagement-legacy azure-common pytest pyyaml
-    # git clone https://github.com/credativ/azure-manage.git
-    # cd azure-manage
-    # sudo pip3 install .
+# sudo apt-get install python3-pip python3-dateutil python3-cryptography
+# sudo pip3 install azure-storage azure-servicemanagement-legacy azure-common pytest pyyaml
+# git clone https://github.com/credativ/azure-manage.git
+# cd azure-manage
+# sudo pip3 install .
 
-    # sudo azure_build_image --option release=jessie --option image_size_gb=30 --option image_prefix=debian-jessie-azure section
+# sudo azure_build_image --option release=jessie --option image_size_gb=30 --option image_prefix=debian-jessie-azure section
+```
 
 
 ## <a name="manually-prepare-a-debian-vhd"></a>Debian virtuális merevlemez manuális előkészítése
@@ -45,59 +47,73 @@ Elérhetők az Azure-hoz készült Debian virtuális merevlemezek, például az 
 3. Ha ISO-vel telepítette az operációs rendszert, akkor megjegyzésbe helyezi a (z `deb cdrom` ) "" elemhez kapcsolódó összes sort `/etc/apt/source.list` .
 
 4. Szerkessze a `/etc/default/grub` fájlt, és módosítsa a **GRUB_CMDLINE_LINUX** paramétert az alábbiak szerint, hogy további kernel-paramétereket tartalmazzon az Azure-hoz.
-   
-        GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
+
+    ```config-grub
+    GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200"
+    ```
 
 5. Hozza létre újra a grub-t, és futtassa a következőket:
 
-        # sudo update-grub
+    ```console
+    # sudo update-grub
+    ```
 
 6. Adja hozzá a Debian Azure-tárházait a/etc/apt/sources.list-hez vagy a Debian 8 vagy 9 rendszerhez:
 
     **Debian 8. x "Jessie"**
 
-        deb http://debian-archive.trafficmanager.net/debian jessie main
-        deb-src http://debian-archive.trafficmanager.net/debian jessie main
-        deb http://debian-archive.trafficmanager.net/debian-security jessie/updates main
-        deb-src http://debian-archive.trafficmanager.net/debian-security jessie/updates
-        deb http://debian-archive.trafficmanager.net/debian jessie-updates main
-        deb-src http://debian-archive.trafficmanager.net/debian jessie-updates main
-        deb http://debian-archive.trafficmanager.net/debian jessie-backports main
-        deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
+    ```config-grub
+    deb http://debian-archive.trafficmanager.net/debian jessie main
+    deb-src http://debian-archive.trafficmanager.net/debian jessie main
+    deb http://debian-archive.trafficmanager.net/debian-security jessie/updates main
+    deb-src http://debian-archive.trafficmanager.net/debian-security jessie/updates
+    deb http://debian-archive.trafficmanager.net/debian jessie-updates main
+    deb-src http://debian-archive.trafficmanager.net/debian jessie-updates main
+    deb http://debian-archive.trafficmanager.net/debian jessie-backports main
+    deb-src http://debian-archive.trafficmanager.net/debian jessie-backports main
+    ```
 
     **Debian 9. x "stretch"**
 
-        deb http://debian-archive.trafficmanager.net/debian stretch main
-        deb-src http://debian-archive.trafficmanager.net/debian stretch main
-        deb http://debian-archive.trafficmanager.net/debian-security stretch/updates main
-        deb-src http://debian-archive.trafficmanager.net/debian-security stretch/updates main
-        deb http://debian-archive.trafficmanager.net/debian stretch-updates main
-        deb-src http://debian-archive.trafficmanager.net/debian stretch-updates main
-        deb http://debian-archive.trafficmanager.net/debian stretch-backports main
-        deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
+    ```config-grub
+    deb http://debian-archive.trafficmanager.net/debian stretch main
+    deb-src http://debian-archive.trafficmanager.net/debian stretch main
+    deb http://debian-archive.trafficmanager.net/debian-security stretch/updates main
+    deb-src http://debian-archive.trafficmanager.net/debian-security stretch/updates main
+    deb http://debian-archive.trafficmanager.net/debian stretch-updates main
+    deb-src http://debian-archive.trafficmanager.net/debian stretch-updates main
+    deb http://debian-archive.trafficmanager.net/debian stretch-backports main
+    deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
+    ```
 
 
 7. Az Azure Linux-ügynök telepítése:
-   
-        # sudo apt-get update
-        # sudo apt-get install waagent
+
+    ```console
+    # sudo apt-get update
+    # sudo apt-get install waagent
+    ```
 
 8. A Debian 9 + esetében ajánlott az új Debian Cloud kernelt használni az Azure-beli virtuális gépekhez. Az új kernel telepítéséhez először hozzon létre egy/etc/apt/Preferences.d/Linux.pref nevű fájlt a következő tartalommal:
-   
-        Package: linux-* initramfs-tools
-        Pin: release n=stretch-backports
-        Pin-Priority: 500
-   
+
+    ```config-pref
+    Package: linux-* initramfs-tools
+    Pin: release n=stretch-backports
+    Pin-Priority: 500
+    ```
+
     Ezután futtassa a "sudo apt-get install Linux-rendszerkép-Cloud-amd64" parancsot az új Debian Cloud kernel telepítéséhez.
 
 9. A virtuális gép kiépítése és előkészítése az Azure-ban való üzembe helyezéshez és futtatásához:
-   
-        # sudo waagent –force -deprovision
-        # export HISTSIZE=0
-        # logout
+
+    ```console
+    # sudo waagent –force -deprovision
+    # export HISTSIZE=0
+    # logout
+    ```
 
 10. Kattintson a **művelet** – > leállítás a Hyper-V kezelőjében elemre. A linuxos virtuális merevlemez most már készen áll az Azure-ba való feltöltésre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már készen áll a Debian-beli virtuális merevlemez használatára az új virtuális gépek létrehozásához az Azure-ban. Ha első alkalommal tölti fel a. vhd-fájlt az Azure-ba, tekintse meg a Linux rendszerű [virtuális gép létrehozása egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd)című témakört.
 
