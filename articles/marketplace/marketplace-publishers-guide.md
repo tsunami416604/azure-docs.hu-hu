@@ -1,17 +1,18 @@
 ---
 title: Microsoft kereskedelmi piactér – közzétételi útmutató
 description: A Microsoft partnereinek a kereskedelmi piactér áttekintése, akik a Microsoft AppSource és az Azure Marketplace-en szeretnének közzétenni ajánlatokat.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/12/2020
-ms.author: dsindona
-ms.openlocfilehash: 7ddea556ea4a9c7c0306ebdf1eca1f60769c5318
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2ce8767092fb1b93f743e8a5b81a9fbfb01468bf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958174"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120823"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>Kereskedelmi piactér – közzétételi útmutató
 
@@ -65,6 +66,6 @@ Miután [elküldte megoldását](https://partner.microsoft.com/dashboard/account
 
 További információ a [kereskedelmi piactér előnyeiről](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a Felhőbeli piactérrel kapcsolatos témakörök részletes információit, ha a tartalomjegyzéket a bal oldalon vizsgálja. 

@@ -1,17 +1,18 @@
 ---
 title: Vezető felügyelet a Dynamics 365 Customer engagement-Microsoft kereskedelmi piactéren
 description: Ismerje meg, hogyan állíthatja be a Dynamics 365-ügyfelek részvételét a Microsoft AppSource és az Azure Marketplace-en található érdeklődők kezeléséhez.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 555002284b2665a357a28319a400710d66be4604
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 92f4bde31af2a7bb4c658141964f238a8c077eef
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957239"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120375"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Az érdeklődők felügyeletének konfigurálása a Dynamics 365 Customer engagement szolgáltatáshoz
 

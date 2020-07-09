@@ -3,12 +3,12 @@ title: Azure Lighthouse és Azure Managed Applications
 description: Az Azure Lighthouse és az Azure által felügyelt alkalmazások...
 ms.date: 05/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9923d31e78675927b4ca235607b2a61b24ccc41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e1477de18b24cf5099cd4479a82169e3ecada26
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82783629"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121605"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse és Azure Managed Applications
 
@@ -44,7 +44,7 @@ Előfordulhat például, hogy egy ügyfél a szolgáltató által az Azure Vilá
 
 Előfordulhat, hogy az ügyfelek több szolgáltató által felügyelt alkalmazások is érdeklik, függetlenül attól, hogy a felügyelt szolgáltatásokat is használják-e az Azure Lighthouse-n keresztül ezen szolgáltatók bármelyikén. Emellett a Cloud Solution Provider (CSP) program partnerei olyan felügyelt alkalmazásokat is megadhatnak, amelyeket az Azure Lighthouse-n keresztül támogatnak más ISV-ket. Számos lehetőség közül a szolgáltatók kiválaszthatják a megfelelő egyensúlyt az ügyfelek igényeinek kielégítéséhez, miközben szükség esetén korlátozzák az erőforrásokhoz való hozzáférést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure által felügyelt alkalmazásokról](../../azure-resource-manager/managed-applications/overview.md).
-- Ismerje meg, hogyan lehet [előfizetést bevezetni az Azure-beli delegált erőforrás-kezelésbe](../how-to/onboard-customer.md).
+- Ismerje meg, hogyan lehet [előfizetést bevezetni az Azure Lighthouse](../how-to/onboard-customer.md)szolgáltatásba.

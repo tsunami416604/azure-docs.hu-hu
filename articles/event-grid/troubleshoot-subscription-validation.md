@@ -1,17 +1,14 @@
 ---
 title: Azure Event Grid – előfizetés-ellenőrzés hibaelhárítása
 description: Ez a cikk bemutatja, hogyan lehet elhárítani az előfizetés érvényességét.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.author: spelluru
-ms.openlocfilehash: f292d70eaaca29e714ea35b4f61a141b2d5cd2b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 48844859013507ab684ef8879b7b85dd6b6fe8cd
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83778719"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118987"
 ---
 # <a name="troubleshoot-azure-event-grid-subscription-validations"></a>Azure Event Grid előfizetés érvényességének hibáinak megoldása
 Ez a cikk tájékoztatást nyújt az esemény-előfizetés érvényességének hibaelhárításáról. 
@@ -77,5 +74,5 @@ Ha a webhook 403 (tiltott) értékkel tér vissza a válaszban, ellenőrizze, ho
   - 942130 (SQL injection támadás: az SQL-tautológia észlelve.)
   - 931130 (lehetséges távoli fájlok felvételének (RFI) támadása = off-domain Reference/link)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha további segítségre van szüksége, tegye fel a problémát a [stack overflow fórumba](https://stackoverflow.com/questions/tagged/azure-eventgrid) , vagy nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/). 

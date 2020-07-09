@@ -1,17 +1,16 @@
 ---
 title: Az Azure apps-ajánlatok visszajelzésének áttekintése – Microsoft kereskedelmi piactér
 description: Az Azure-alkalmazással kapcsolatos visszajelzések kezelése a Microsoft Azure Marketplace felülvizsgálati csapattól. Az Azure DevOps-ben a partner Center hitelesítő adataival férhet hozzá a visszajelzésekhez.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: c9e441512177d731c5ad47b66b454e5722483507
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8d90f5238ea312602d2142d25b9ae226aa34c84
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659852"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119021"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Az Azure-alkalmazások ajánlati felülvizsgálati visszajelzésének feldolgozása
 
@@ -54,6 +53,6 @@ A következő eljárással ellenőrizheti a lekéréses kérelemben dokumentált
 
    ![Első javítás és Megjegyzés válasza](./media/first-comment-reply.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután javította a PR (k) felülvizsgálatával kapcsolatos kritikus problémákat, újra közzé kell tennie az [Azure-alkalmazás ajánlatát](./create-new-azure-apps-offer.md#publish).

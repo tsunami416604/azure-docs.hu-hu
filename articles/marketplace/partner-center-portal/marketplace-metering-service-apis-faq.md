@@ -1,18 +1,16 @@
 ---
 title: Mérési szolgáltatás API-jai – gyakori kérdések – Microsoft kereskedelmi piactér
 description: Gyakori kérdések a Microsoft AppSource és az Azure Marketplace-en található SaaS-ajánlatokkal kapcsolatos mérési szolgáltatás API-król.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 361e35aea90a9817e365d66014faf5f23433c1dc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: bdd540ad6c7ef1954936e4fb74bade2458e50927
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964787"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120789"
 ---
 # <a name="marketplace-metered-billing-apis---faq"></a>Marketplace mért számlázási API-k – GYIK
 
@@ -86,6 +84,6 @@ Ha például a közzétevő olyan SaaS-csomagot határoz meg, amely tartalmazza 
 
 Amikor az ügyfél megvásárolja és aktiválja az előfizetést január 6-án, az átalányban foglalt 1000-os e-mailt a rendszer ettől a naptól kezdve számítja fel. Tehát ha február 5-ig (az előfizetés első hónapjának végén) csak az 900 e-mailt küldi el, az ügyfél csak az előfizetés első hónapjára fizeti ki a rögzített díjat, és a kiadó a közzétételi eseményeket a közzétevőnek a január 6. és február 5. között fogja kiadni. Február 6-án az előfizetés automatikusan megújul, a szám pedig újra elindul. Ha február 15-én az ügyfél elérte az elküldött 1000 e-maileket, az 5. március 5-ig elküldött e-mailek fennmaradó részét a kiadó által kibocsátott túlhasználati események alapján ($1/e-mailben) számítjuk fel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ: Marketplace- [mérési szolgáltatás API](./marketplace-metering-service-apis.md)-k.

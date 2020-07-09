@@ -1,18 +1,16 @@
 ---
 title: A Microsoft kereskedelmi piactér Analytics-irányítópultjának letöltések a partner Centerben
 description: Megtudhatja, hogyan érheti el a Piactéri ajánlatokhoz tartozó letöltési kérelmeket.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 136a65e47327007d7a28c2777051be61f475323e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fde95e3b6d1b4d1cdfb060c11e1e67241d3329f8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82732718"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121707"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>A Letöltések irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -29,7 +27,7 @@ Az **elemzés** menü **letöltések** irányítópultján minden olyan letölt�
 
 Egy előugró értesítést és e-mailt fog kapni, amely tartalmazza a **letöltések** irányítópultra mutató hivatkozást, ha több mint 1000 sornyi adatra vonatkozó letöltést kér. Ezek az adatletöltések egy 30 napos időszakra lesznek elérhetők, majd törlődnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

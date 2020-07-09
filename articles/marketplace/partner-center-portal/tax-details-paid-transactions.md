@@ -2,15 +2,14 @@
 title: A Microsoft kereskedelmi piactérre vonatkozó adózási adatok
 Description: Az árak kiválasztásával, a kifizetési szempontokkal és az adózással kapcsolatos megfontolások megismeréséhez tekintse meg az alábbi táblázatokban a terjesztési országokat/régiókat.
 ms.topic: conceptual
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.date: 05/04/2020
-ms.openlocfilehash: c58f66ac06cca7146a28813406e74932046f6ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0949bd1234b28a9683e194d3b3f08511f7f17a26
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83746684"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120687"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Kereskedelmi piactér-közzétevők adózási adatai
 
@@ -286,6 +285,6 @@ A következők csak az Azure Marketplace-közzétevők esetében érvényesek:
 | Brazília (a CSP kivételével az összes ügyfél-vásárlási forgatókönyvön keresztül lebonyolított vásárlások esetén) |
 | Mexikó (csak az Nagyvállalati Szerződés ügyfél-vásárlási forgatókönyvön keresztül lebonyolított vásárlások esetén) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Kifizetési számla és űrlapok beállítása](set-up-your-payout-account-tax-forms.md)

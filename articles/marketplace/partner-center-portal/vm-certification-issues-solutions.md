@@ -1,18 +1,18 @@
 ---
 title: A virtuális gép hitelesítése – problémák és megoldások
 description: Ez a cikk a virtuálisgép-lemezképekkel kapcsolatos gyakori hibaüzeneteket ismerteti. Emellett a kapcsolódó megoldásokat is tárgyalja
-author: v-miegge
-ms.author: v-krmall
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
+author: v-miegge
+ms.author: v-krmall
 ms.date: 06/16/2020
-ms.openlocfilehash: 71577a52ed1b528bc330d4c8e1f4c34ab6e1d81f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e73ff612aa07016f69c717a74678d5d1923e87b8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087044"
+ms.locfileid: "86120653"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Problémák és megoldások a virtuális gépek minősítése során 
 
@@ -94,7 +94,7 @@ Töltse le a [Microsoft minősítési eszközkészletet](azure-vm-image-certific
 
 A következő táblázat felsorolja az eszközkészlet által futtatott Linux-tesztelési eseteket. A teszt érvényesítése a leírásban van megadva.
 
-|Forgatókönyv|Teszteset|Description|
+|Forgatókönyv|Teszteset|Leírás|
 |---|---|---|
 |1|Bash-előzmények|A rendszer a virtuális gép rendszerképének létrehozása előtt törli a bash-előzmények fájljait.|
 |2|Linux-ügynök verziója|Telepíteni kell az Azure Linux Agent 2.2.41 vagy újabb verzióját.|
@@ -122,7 +122,7 @@ A következő táblázat felsorolja a korábbi tesztelési esetek végrehajtása
 
 A következő táblázat felsorolja az eszközkészlet által futtatott Windows-tesztelési eseteket, valamint a tesztek ellenőrzésének leírását:
 
-|Forgatókönyv |Tesztelési esetek|Description|
+|Forgatókönyv |Tesztelési esetek|Leírás|
 |---|---|---|---|
 |1|Operációs rendszer architektúrája|Az Azure csak a 64 bites operációs rendszereket támogatja.|
 |2|Felhasználói fióktól való függőség|Az alkalmazás végrehajtása nem függhet a rendszergazdai fióktól.|
@@ -315,6 +315,6 @@ Ha a Windows-rendszerképhez nincs engedélyezve a RDP protokoll (RDP) beállít
 
 Az RDP-hozzáférés engedélyezése a Windows-rendszerképekhez a beküldése előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha kérdése vagy visszajelzése van a fejlesztéssel kapcsolatban, forduljon a [partner Center ügyfélszolgálatához](https://partner.microsoft.com/support/v2/?stage=1).

@@ -1,19 +1,14 @@
 ---
 title: SDK-k Azure Event Grid
 description: A Azure Event Grid SDK-kat ismerteti. Ezek az SDK-k felügyeletet, közzétételt és felhasználást biztosítanak.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: reference
-ms.date: 01/19/2019
-ms.author: spelluru
-ms.openlocfilehash: 7f05665f4bcc5449c1a81fa24582b333b0a944e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2019
+ms.openlocfilehash: 2b21d8bf2c393b096e9046765e6cfadc76baffbf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60822847"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119106"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>SDK-k Event Grid a felügyelethez és a közzétételhez
 
@@ -41,7 +36,7 @@ Az adatközponti SDK-k lehetővé teszik események küldését a témakörökbe
 * [Python](https://pypi.python.org/pypi/azure-eventgrid)
 * [Ruby](https://rubygems.org/gems/azure_event_grid)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Példa az alkalmazásokra: [Event Grid a kód mintáit](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid).
 * A Event Grid bemutatása: [Mi az Event Grid?](overview.md)

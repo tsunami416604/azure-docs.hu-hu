@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 308958f00a3658196f124ac911d4d0195ebeb228
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73953285"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119837"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>A VMware vész-helyreállítás Deployment Planner futtatása
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -39,18 +40,24 @@ Először létre kell hoznia a profillal ellátni kívánt virtuális gépek lis
 2. Nyissa meg a VMware vSphere PowerCLI-konzolt.
 3. Ellenőrizze, hogy a végrehajtási szabályzat engedélyezve van-e a szkript esetében. Ha a szabályzat le van tiltva, indítsa el a VMware vSphere PowerCLI-konzolt rendszergazdai módban, és futtassa a következő parancsot az engedélyezéséhez:
 
-            Set-ExecutionPolicy –ExecutionPolicy AllSigned
+    ```powershell
+    Set-ExecutionPolicy –ExecutionPolicy AllSigned
+    ```
 
 4. Előfordulhat, hogy a következő parancsot kell futtatnia, ha a VIServer nem ismeri fel a parancsmag nevét.
 
-            Add-PSSnapin VMware.VimAutomation.Core
+    ```powershell
+    Add-PSSnapin VMware.VimAutomation.Core
+    ```
 
 5. Futtassa az alábbi két parancsot a vCenter-kiszolgálón vagy a vSphere ESXi-gazdagépen található összes virtuális gép nevének lekéréséhez és a nevek egy szöveges dokumentumba (.txt) mentéséhez.
 Cserélje le a &lsaquo;server name&rsaquo; (kiszolgáló neve), a &lsaquo;user name&rsaquo; (felhasználónév), a &lsaquo;password&rsaquo; (jelszó), az &lsaquo;outputfile.txt&rsaquo; (kimenetifájl.txt) paramétereket saját értékeire.
 
-            Connect-VIServer -Server <server name> -User <user name> -Password <password>
+    ```powershell
+    Connect-VIServer -Server <server name> -User <user name> -Password <password>
 
-            Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
+    Get-VM |  Select Name | Sort-Object -Property Name >  <outputfile.txt>
+    ```
 
 6. Nyissa meg a kimeneti fájlt a Jegyzettömbben, és másolja egy másik fájlba (pl. ProfileVMList.txt) minden olyan virtuális gép nevét, amelyről profilt kíván készíteni. Minden virtuális gép nevét külön sorba írja. A rendszer ezt a fájlt használja majd bemenetként a parancssori eszköz *-VMListFile* paraméteréhez.
 
@@ -64,7 +71,7 @@ Ha megvan azon virtuális gépek listája, amelyekről profilt szeretne készít
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| Paraméter neve | Description |
+| Paraméter neve | Leírás |
 |---|---|
 | -Művelet | StartProfiling |
 | -Kiszolgáló | Azon vCenter-kiszolgáló vagy vSphere ESXi-gazdagép teljes tartományneve vagy IP-címe, amelynek virtuális gépeiről profilt szeretne készíteni.|
@@ -144,7 +151,7 @@ A profilkészítés befejezése után futtathatja az eszközt jelentéskészít�
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
-|Paraméter neve | Description |
+|Paraméter neve | Leírás |
 |-|-|
 | -Művelet | Jelentés készítése |
 | -Kiszolgáló |  Annak a vCenter- vagy vSphere-kiszolgálónak a teljes tartományneve vagy IP-címe, ahol azon virtuális gépek találhatók, amelyekről profilt készített, és amelyekről most jelentést szeretne készíteni. (Használja a profilkészítéskor használt nevet vagy IP-címet.) Ügyeljen arra, hogy ha vCenter-kiszolgálót használt a profilkészítés során, akkor nem használhat vSphere-kiszolgálót a jelentéskészítéshez, és fordítva.|
@@ -256,7 +263,7 @@ Nyisson meg egy parancssori konzolt, és keresse meg a Site Recovery üzembehely
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
-|Paraméter neve | Description |
+|Paraméter neve | Leírás |
 |-|-|
 | -Művelet | Átviteli sebesség lekérdezése |
 |-Virtualization|Itt adhatja meg a virtualizálás típusát (VMware vagy Hyper-V).|
@@ -289,5 +296,5 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 >
 >  4. Módosítsa a Site Recovery beállításait a folyamatkiszolgálón [a replikációhoz használt hálózati sávszélesség növelésével](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A generált jelentés elemzése](site-recovery-vmware-deployment-planner-analyze-report.md).

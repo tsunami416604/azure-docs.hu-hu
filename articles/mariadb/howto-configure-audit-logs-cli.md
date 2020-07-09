@@ -4,16 +4,16 @@ description: Ez a cikk bemutatja, hogyan konfigurálhatja és érheti el a Azure
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: 1dcad61ed94926aa2aa2237ea735287cd9c9f137
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0f5f71ed636cc67e742198436b48a09d291e798
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362696"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120058"
 ---
-# <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Eseménynaplók konfigurálása és elérése az Azure CLI-ben
+# <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>Az Azure Database for Maria DB-napló konfigurálása és elérése az Azure CLI-ben
 
 Az [Azure Database for MariaDB naplókat](concepts-audit-logs.md) az Azure CLI-ből is konfigurálhatja.
 
@@ -55,7 +55,7 @@ A naplózást a következő lépésekkel engedélyezheti és konfigurálhatja:
     az mariadb server configuration set --name audit_log_include_users --resource-group myresourcegroup --server mydemoserver --value "sampleuser"
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure Database for MariaDB [naplózási naplóiról](concepts-audit-logs.md)
 - Ismerje meg, hogyan konfigurálhatja a naplókat a [Azure Portal](howto-configure-audit-logs-portal.md)

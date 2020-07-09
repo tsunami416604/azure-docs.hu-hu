@@ -1,18 +1,18 @@
 ---
 title: Az Azure Marketplace ajánlat és szolgáltatás listázási követelményei
 description: Ez a cikk az Azure Marketplace-en elérhető új ajánlatok és szolgáltatások listázásával kapcsolatos követelményeket és irányelveket ismerteti.
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 06/22/2020
-ms.author: dsindona
-ms.openlocfilehash: 6c95f510ce83f924a58b0844285f4142131db3eb
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 2b0954941ba6b6b7ce3697889305dc5bbd299590
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027137"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119378"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Az Azure Marketplace listázási irányelvei
 
@@ -28,7 +28,7 @@ A speciális listaelemekhez további követelmények és ellenőrzőlisták tart
 
 ## <a name="listing-requirements-for-all-offers"></a>Az összes ajánlatra vonatkozó követelmények listázása
 
-|  | Elem listázása | Alapkövetelmény | Optimális követelmény |
+| Szám | Elem listázása | Alapkövetelmény | Optimális követelmény |
 |:--- |:--- |:--- |:--- |
 | 1 | Érdeklődő célhelye | Egy vezető célhely van konfigurálva.| Az egyik kereskedelmi partneri (OCP-) katalógus a partneri megoldás lapon is szerepel a vezető cél CRM-információkkal. | 
 | 2 | Ajánlat címe | Röviden leírja a megoldás ajánlatát. Megfelel a megoldás online promóciójának a partner webhelyén. | A legfontosabb keresési szavakat tartalmazza. |
@@ -47,15 +47,15 @@ A speciális listaelemekhez további követelmények és ellenőrzőlisták tart
 
 ## <a name="trial-offer-requirements"></a>Próbaverziós ajánlatra vonatkozó követelmények
 
-|  | Elem listázása | Alapkövetelmény | Optimális követelmény | 
+| Szám | Elem listázása | Alapkövetelmény | Optimális követelmény | 
 |:--- |:--- |:--- |:--- |
-|  | Lista állapota (művelet meghívása) | A hivatkozásnak az ügyfél által vezetett *próbaidőszakot* kell eredményeznie. | Más műveletekre irányuló hívások (például a *vásárlás most*) is elérhetők. | 
+| 1 | Lista állapota (művelet meghívása) | A hivatkozásnak az ügyfél által vezetett *próbaidőszakot* kell eredményeznie. | Más műveletekre irányuló hívások (például a *vásárlás most*) is elérhetők. | 
 
 ---
 
 ## <a name="saas-application-requirements"></a>SaaS-alkalmazásokra vonatkozó követelmények
 
-|  | Elem listázása | Alapkövetelmény | Optimális követelmény | 
+| Szám | Elem listázása | Alapkövetelmény | Optimális követelmény | 
 |:--- |:--- |:--- |:--- |
 | 1 | Ajánlat címe |<ul><li>Csak kisbetűket, alfanumerikus karaktereket, kötőjeleket vagy aláhúzásokat tartalmazhat. A cím közzététele után nem módosítható.</li><li>A megoldás ajánlatát ismerteti.</li><li>A megoldás online előléptetésének felel meg a partner webhelyén. | A legfontosabb keresési szavakat tartalmazza. |
 | 2 | Technikai információ: konfiguráció |<ul><li>SaaS-alkalmazások esetén válassza ki, hogy csak az alkalmazást kívánja-e listázni, vagy hogy az ügyfelek megvásárolhatják az alkalmazást az Azure-ban.</li><li>Válassza ki az ajánlat beszerzése gombjának kívánt szövegét: *ingyenes*, *ingyenes próbaverzió*vagy *Kapcsolatfelvétel*.</li><li>Az előugró ablakban válassza ki a csak egy megfelelő terméket, ha az alkalmazás a technológiát használja: Cortana Intelligence, Power BI megoldás-sablonok vagy a Power apps. |  |
@@ -73,7 +73,7 @@ A speciális listaelemekhez további követelmények és ellenőrzőlisták tart
 
 ## <a name="container-offer-requirements"></a>A Container-ajánlat követelményei
 
-|  | Elem listázása | Alapkövetelmény | Optimális követelmény | 
+| Szám | Elem listázása | Alapkövetelmény | Optimális követelmény | 
 |:--- |:--- |:--- |:--- |
 |1 |Ajánlat beállításai | <ul><li>Ajánlat azonosítója: max. 50 karakter.</li><li>Közzétevő azonosítója: válassza ki a legördülő listából.</li><li>Név: max. 50 karakter. | A leírásban már elérhető Cím stílusát tükrözi. Kerülje a hosszú címek használatát. | 
 | 2 | Termékváltozatok | A partner kiválasztja az új SKU-ket.| A cím a leírásban már elérhető Cím stílusát tükrözi. Kerülje a hosszú címek használatát.  |
@@ -84,7 +84,7 @@ A speciális listaelemekhez további követelmények és ellenőrzőlisták tart
 
 ## <a name="consulting-offer-requirements"></a>A tanácsadási ajánlat követelményei
 
-|  | Elem listázása | Alapkövetelmény | Optimális követelmény |
+| Szám | Elem listázása | Alapkövetelmény | Optimális követelmény |
 |:--- |:--- |:--- |:--- |
 | 1 | Ajánlat címe  |  Egyértelműen fel kell sorolni a szolgáltatás típusát és időtartamát a formátumnév *: időtartam típusa mezőben* (például "ajánlat bevonása: 1 hetes megvalósíthatóság").  | <ul><li>A nem ismétli meg a közzétevő nevét.</li><li>A cím a leírásban már elérhető Cím stílusát tükrözi. Kerülje a hosszú címek használatát. | 
 | 2 | Ajánlat leírása  |<ul><li>A [Microsoft-termékek nevének](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/en-us.aspx)megfelelő használatának biztosítása.</li><li>A (z) *árként* megjelölt ajánlatok: a becsült értéknek meg kell egyeznie a felső vagy az alsó megjegyzéssel, hogy ismertesse a változékonyságt (az ügyfélre való utazás, a migrált kiszolgálók száma stb.).</li><li>Az egyes ajánlati típusok leírási követelményekkel rendelkeznek, az alábbiak szerint: <ul><li>A tájékoztatóknak legalább négy vagy öt felsorolásjelre van szükségük, és meg kell adni a tárgyalt témakörökre vonatkozó információkat.</li><li>Az összes workshopnak napirendre van szüksége.</li><li>Az összes napirendet naponta vagy hetente, a workshop időtartamától függően kell lebontani.</li><li>Az értékelés, a POC, a nem betanítási workshopok és a megvalósítási ajánlatok szükségesek.</li><li>A képzési workshopoknak nincs szükségük a termékekre, de részletesebb napirendre van szükségük, amelyekkel foglalkozni fog.</li></ul></ul> | <ul><li>Minden ajánlatnak van napirendje és teljesítése.</li><li>Az ajánlat tartalmaz egy olyan bekezdést, amely a szolgáltatást a felső szakaszban biztosító vállalattal kapcsolatos környezettel rendelkezik.</li><li>Az ajánlat tartalmaz egy, a szolgáltatás értékével kapcsolatos bekezdést, amely a legfelső szakasz. |
@@ -101,7 +101,7 @@ A speciális listaelemekhez további követelmények és ellenőrzőlisták tart
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg az Azure Marketplace különböző ajánlati típusait:
   * [SaaS-alkalmazások](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)
   * [Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers)

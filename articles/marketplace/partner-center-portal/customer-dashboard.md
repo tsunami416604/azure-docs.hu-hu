@@ -1,18 +1,16 @@
 ---
 title: Ügyfél-irányítópult a Microsoft kereskedelmi piactéren a partner Centerben
 description: Megtudhatja, hogyan érheti el az ügyfelekkel kapcsolatos információkat, beleértve a növekedési trendeket, a kereskedelmi Piactéri elemzésekben az ügyfél irányítópultjának használatával.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.openlocfilehash: 77541cc9f8a90335aedae0806981cbd8cca1f84d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f71a668b3473521e9d8d7c9318ab2e557380845
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807782"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121758"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Az Ügyfél irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -108,7 +106,7 @@ Az **ügyfelek oldal** szűrői az ügyfelek oldal szintjén lesznek alkalmazva.
 >[!NOTE]
 > Az ügyfél rácsa, az oldal szűrői és a lehetséges kijelölések részletes definíciói a [kereskedelmi piactér-elemzések gyakori kérdéseiben és terminológiájában](./faq-terminology.md)találhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

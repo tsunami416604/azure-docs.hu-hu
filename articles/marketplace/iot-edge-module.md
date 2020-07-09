@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace IoT Edge modul ajánlatok
 description: Tudnivalók az Azure Marketplace-en elérhető IoT Edge-modulok közzétételéről.
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/15/2020
-ms.author: dsindona
-ms.openlocfilehash: 9783eb1dbcbfc3ee01008dfa33ff2429a87cf62a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 0b707b2aed68359f8c04f6cd6bee6c95b495178b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963376"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119480"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
 
@@ -77,7 +77,7 @@ Az IoT Edge modul elsődleges műszaki követelményei, hogy az informatikai tá
 
 [Hozzon létre egy IoT Edge modul-ajánlatot](./partner-center-portal/azure-iot-edge-module-creation.md) – ez a lépés egy új IoT Edge modul ajánlatának közzétételéhez a partner Centerben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg,
 

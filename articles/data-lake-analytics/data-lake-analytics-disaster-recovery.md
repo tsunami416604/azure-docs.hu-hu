@@ -6,13 +6,14 @@ author: MikeRys
 ms.author: mrys
 ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/03/2019
-ms.openlocfilehash: f9b22e6b806f76189134ec63c83d48f48bf95587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba231c4a68d92b3f6f35542d739ad9daedd65776
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889768"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121401"
 ---
 # <a name="disaster-recovery-guidance-for-azure-data-lake-analytics"></a>Vész-helyreállítási útmutató a Azure Data Lake Analytics
 
@@ -42,6 +43,6 @@ Egy ismétlődő U-SQL-feladatot futtathat egy ADLA-fiókban egy olyan régióba
 
 Leállás közben frissítenie kell a parancsfájlokat, hogy a bemeneti elérési utak a másodlagos végpontra mutassanak. Ezután a felhasználók elküldik a feladatait a ADLA-fióknak a másodlagos régióban. A rendszer ezután a ADLA és a ADLS-fiókba írja a feladatot a másodlagos régióban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Vész-helyreállítási útmutató a Azure Data Lake Storage Gen1 lévő adatkezeléshez](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)

@@ -7,15 +7,15 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 42e58125fcbc3ab411c0d7503c42c14c28178428
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49d8918fc0f17431ae5bbca87f1157b571220840
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "62113935"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120143"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>U-SQL-parancsfájlok futtatása a helyi gépen
 
@@ -27,7 +27,7 @@ A következő diagramon a helyi Futtatás összetevői láthatók, valamint hogy
 
 |Összetevő|Helyi futtatás|Felhőbeli Futtatás|
 |---------|---------|---------|
-|Tárolás|Helyi adatgyökér mappa|Alapértelmezett Azure Data Lake Store fiók|
+|Storage|Helyi adatgyökér mappa|Alapértelmezett Azure Data Lake Store fiók|
 |Compute|U-SQL helyi futtatási motor|Azure Data Lake Analytics szolgáltatás|
 |Környezet futtatása|Munkahelyi könyvtár a helyi gépen|Azure Data Lake Analytics fürt|
 
@@ -106,7 +106,7 @@ A Visual Studióban helyileg futtathatja az U-SQL-parancsfájlokat, és a Azure 
 
 További információ a [Azure Data Lake U-SQL SDK-](data-lake-analytics-u-sql-sdk.md)ról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [CI/CD-folyamat beállítása Azure Data Lake Analyticshoz](data-lake-analytics-cicd-overview.md).
 - [A Azure Data Lake Analytics kód tesztelése](data-lake-analytics-cicd-test.md).

@@ -3,12 +3,12 @@ title: Sablonok – Áttekintés
 description: A Azure Resource Manager-sablonok használatának előnyeit ismerteti az erőforrások üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 4cdd0751feea6a3ade7183311831c7ed2b0f1b70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1c61d5eac012f2b807c0121460804c46b12c8d0
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210218"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119361"
 ---
 # <a name="what-are-arm-templates"></a>Mik azok az ARM-sablonok?
 
@@ -54,7 +54,7 @@ Ha az ARM-sablonok és a Code Services egyik másik infrastruktúrája között 
 
 * **Exportálható kód**: egy meglévő erőforráscsoport sablonjának lekéréséhez exportálja az erőforráscsoport aktuális állapotát, vagy tekintse meg az adott központi telepítéshez használt sablont. Az [exportált sablon](export-template-portal.md) megtekintése hasznos módszer a sablon szintaxisának megismerésére.
 
-* Szerzői **eszközök**: a sablonok a [Visual Studio Code](use-vs-code-to-create-template.md) és a Template Tool bővítménnyel hozhatók létre. Az IntelliSense, a szintaxis kiemelése, a beágyazott Súgó és számos más nyelvi funkció is elérhető. A Visual Studio Code mellett a [Visual studiót](create-visual-studio-deployment-project.md)is használhatja.
+* Szerzői **eszközök**: a sablonok a [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) és a Template Tool bővítménnyel hozhatók létre. Az IntelliSense, a szintaxis kiemelése, a beágyazott Súgó és számos más nyelvi funkció is elérhető. A Visual Studio Code mellett a [Visual studiót](create-visual-studio-deployment-project.md)is használhatja.
 
 ## <a name="template-file"></a>Sablonfájl
 
@@ -124,7 +124,7 @@ Ha elképzeli, hogy a rétegek külön életciklusokkal rendelkeznek, akkor a h�
 
 A beágyazott sablonokkal kapcsolatos további információkért lásd: [Kapcsolt sablonok használata az Azure Resource Manager eszközben](linked-templates.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd [: oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](template-tutorial-create-first-template.md).
 * A sablonfájlok tulajdonságairól további információt az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakörben talál.

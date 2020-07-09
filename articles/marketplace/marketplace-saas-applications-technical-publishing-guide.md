@@ -2,18 +2,16 @@
 title: SaaS-alkalmazások – közzétételi útmutató – Microsoft kereskedelmi piactér
 description: Az SaaS-alkalmazások Microsoft AppSource és az Azure Marketplace-en való közzétételéhez szükséges követelmények és erőforrások.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.author: dsindona
-ms.openlocfilehash: 46f8da8b2b688900e50548bbece01117a7a47e24
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c19799265679eeead96bf95943f274aa32c75ff2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963835"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121571"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>Az SaaS-alkalmazások ajánlat-közzétételi útmutatója
 
@@ -29,8 +27,8 @@ Az SaaS-alkalmazások Microsoft AppSource és az Azure Marketplace-en érhetők 
 | SaaS-alkalmazások ajánlata | Üzleti követelmények | Technikai követelmények |  
 | --- | --- | --- |  
 | **Kapcsolatfelvétel** | Igen | Nem |  
-| **Power BI/Dynamics** | Yes | Igen (Azure AD-integráció) |  
-| **SaaS-alkalmazások**| Yes | Igen (Azure AD-integráció) |     
+| **Power BI/Dynamics** | Igen | Igen (Azure AD-integráció) |  
+| **SaaS-alkalmazások**| Igen | Igen (Azure AD-integráció) |     
 
 ## <a name="saas-list"></a>SaaS-lista
 
@@ -134,7 +132,7 @@ A Microsoft üzemelteti a kereskedelmi tranzakciót. A Microsoft az Ön nevében
 >[!Note]
 >A Cloud Solution Providers (CSP) Partner Channel opt-in mostantól elérhető.  Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](./cloud-solution-providers.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha még nem tette meg,
 
 * [További](https://azuremarketplace.microsoft.com/sell) információ a Piactérről.

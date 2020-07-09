@@ -1,18 +1,18 @@
 ---
 title: A Cloud Partner Portalról a partneri központba való áttéréssel kapcsolatos gyakori kérdések – Microsoft kereskedelmi piactér
 description: Válaszok az ajánlatok Cloud Partner Portalról a partneri központba való átváltásával kapcsolatos gyakori kérdésekre.
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 06/29/2020
+author: anbene
 ms.author: mingshen
-ms.openlocfilehash: 349306a8bcdffda8511436540acde92129ff8662
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 06/29/2020
+ms.openlocfilehash: 2192b3757281bf6796fbf93f83cab6e71deb29f6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964940"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120554"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Gyakori kérdések az Cloud Partner Portalról a partneri központba való áttérésről
 
@@ -62,21 +62,21 @@ A Cloud Partner Portal által korábban támogatott összes típusú ajánlat t�
 
 A partner Centerben támogatott ajánlati típusok esetében az összes ajánlat az állapotuktól függetlenül mozgott. a draft, de a List és a Preview-only ajánlat is át lett helyezve.
 
-| Csomag típusa <img src="" width=150px>| Áthelyezte a partneri központba? <img src="" width=100px>| További lépések |
+| Csomag típusa <img src="" width=150px>| Áthelyezte a partneri központba? <img src="" width=100px>| Következő lépések |
 | --- | --- | --- |
-| SaaS | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [új SaaS-ajánlat létrehozása a kereskedelmi piactéren](partner-center-portal/create-new-saas-offer.md). |
-| Virtuális gép | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace](partner-center-portal/azure-vm-create-offer.md)-en. |
-| Azure-alkalmazás | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt az [Azure-alkalmazás ajánlatának létrehozása](partner-center-portal/create-new-azure-apps-offer.md)című témakörben olvashat. |
+| SaaS | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [új SaaS-ajánlat létrehozása a kereskedelmi piactéren](partner-center-portal/create-new-saas-offer.md). |
+| Virtuális gép | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace](partner-center-portal/azure-vm-create-offer.md)-en. |
+| Azure-alkalmazás | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt az [Azure-alkalmazás ajánlatának létrehozása](partner-center-portal/create-new-azure-apps-offer.md)című témakörben olvashat. |
 | Dynamics 365 Business Central | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Dynamics 365 Business Central ajánlat](partner-center-portal/create-new-business-central-offer.md). |
-| Dynamics 365 a Customer engagement & PowerApps | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Dynamics 365 for Customer Engagement & PowerApps ajánlat](partner-center-portal/create-new-customer-engagement-offer.md). |
-| Dynamics 365 for Operations | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt a [Dynamics 365 for Operations ajánlat létrehozása](partner-center-portal/create-new-operations-offer.md)című témakörben olvashat. |
-| Power BI alkalmazás | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [Power bi alkalmazás létrehozása a AppSource](partner-center-portal/create-power-bi-app-offer.md). |
-| IoT Edge modul | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [IoT Edge modul létrehozása, konfigurálása és közzététele az Azure Marketplace-](partner-center-portal/azure-iot-edge-module-creation.md)en. |
-| Tároló | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [Azure Container-ajánlat létrehozása](partner-center-portal/create-azure-container-offer.md). |
-| Tanácsadói szolgáltatás | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Consulting Service ajánlat](partner-center-portal/create-consulting-service-offer.md). |
-| Felügyelt szolgáltatás | Yes | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt a [felügyelt szolgáltatás ajánlatának létrehozása](partner-center-portal/create-new-managed-service-offer.md)című témakörben olvashat. |
-| Dynamics NAV – felügyelt szolgáltatás | No | A Microsoft a Dynamics [365 Business Central](https://docs.microsoft.com/dynamics365/business-central/)platformon fejlesztette ki a Dynamics NAV által felügyelt szolgáltatást, ezért a Dynamics NAV felügyelt szolgáltatásának élő ajánlatai a AppSource-től vannak felsorolva. Ezeket az ajánlatokat az ügyfelek már nem tudják feltárni, és nem helyezték át a partner központba. Ha elérhetővé kívánja tenni ajánlatait a AppSource-ben, a Dynamics 365 Business Central-ajánlatokhoz igazíthatja őket, és beküldheti őket a [partner Centerben](https://partner.microsoft.com/). További információ: [create a Dynamics 365 Business Central ajánlat](partner-center-portal/create-new-business-central-offer.md). |
-| Cortana Intelligence | No | A Microsoft megalakította a Cortana Intelligence termékhez tartozó országúti térképet, ezért a AppSource-től származó, Cortana Intelligence élő ajánlatokat már nem tartalmazza. Ezeket az ajánlatokat az ügyfelek már nem tudják feltárni, és nem helyezték át a partner központba. Ha elérhetővé kívánja tenni ajánlatait a kereskedelmi piactéren, az ajánlatait szolgáltatásként (SaaS) biztosíthatja, és beküldheti őket a [partner Centerben](hhttps://partner.microsoft.com/). További információ: [SaaS-ajánlat létrehozása ellenőrzőlista a partner Centerben](partner-center-portal/offer-creation-checklist.md). |
+| Dynamics 365 a Customer engagement & PowerApps | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Dynamics 365 for Customer Engagement & PowerApps ajánlat](partner-center-portal/create-new-customer-engagement-offer.md). |
+| Dynamics 365 for Operations | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt a [Dynamics 365 for Operations ajánlat létrehozása](partner-center-portal/create-new-operations-offer.md)című témakörben olvashat. |
+| Power BI alkalmazás | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [Power bi alkalmazás létrehozása a AppSource](partner-center-portal/create-power-bi-app-offer.md). |
+| IoT Edge modul | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [IoT Edge modul létrehozása, konfigurálása és közzététele az Azure Marketplace-](partner-center-portal/azure-iot-edge-module-creation.md)en. |
+| Tároló | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [Azure Container-ajánlat létrehozása](partner-center-portal/create-azure-container-offer.md). |
+| Tanácsadói szolgáltatás | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információ: [create a Consulting Service ajánlat](partner-center-portal/create-consulting-service-offer.md). |
+| Felügyelt szolgáltatás | Igen | Jelentkezzen be a partner Centerbe, és hozzon létre új ajánlatokat, és kezelje a Cloud Partner Portal-ben létrehozott ajánlatokat. További információt a [felügyelt szolgáltatás ajánlatának létrehozása](partner-center-portal/create-new-managed-service-offer.md)című témakörben olvashat. |
+| Dynamics NAV – felügyelt szolgáltatás | Nem | A Microsoft a Dynamics [365 Business Central](https://docs.microsoft.com/dynamics365/business-central/)platformon fejlesztette ki a Dynamics NAV által felügyelt szolgáltatást, ezért a Dynamics NAV felügyelt szolgáltatásának élő ajánlatai a AppSource-től vannak felsorolva. Ezeket az ajánlatokat az ügyfelek már nem tudják feltárni, és nem helyezték át a partner központba. Ha elérhetővé kívánja tenni ajánlatait a AppSource-ben, a Dynamics 365 Business Central-ajánlatokhoz igazíthatja őket, és beküldheti őket a [partner Centerben](https://partner.microsoft.com/). További információ: [create a Dynamics 365 Business Central ajánlat](partner-center-portal/create-new-business-central-offer.md). |
+| Cortana Intelligence | Nem | A Microsoft megalakította a Cortana Intelligence termékhez tartozó országúti térképet, ezért a AppSource-től származó, Cortana Intelligence élő ajánlatokat már nem tartalmazza. Ezeket az ajánlatokat az ügyfelek már nem tudják feltárni, és nem helyezték át a partner központba. Ha elérhetővé kívánja tenni ajánlatait a kereskedelmi piactéren, az ajánlatait szolgáltatásként (SaaS) biztosíthatja, és beküldheti őket a [partner Centerben](hhttps://partner.microsoft.com/). További információ: [SaaS-ajánlat létrehozása ellenőrzőlista a partner Centerben](partner-center-portal/offer-creation-checklist.md). |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>Nem találom a Cloud Partner Portal ajánlatokat a partner Centerben
 

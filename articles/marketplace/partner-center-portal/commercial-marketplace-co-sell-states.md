@@ -1,18 +1,18 @@
 ---
 title: Állami és tartományi kódok közös értékesítése az Azure Marketplace-en
 description: Szerezze be a rendelkezésre álló állam-és tartományi kódokat, amikor az Azure Marketplace-en az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat biztosít.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: palanis-MSFT
+ms.author: palanis
 ms.date: 04/01/2020
-ms.openlocfilehash: a39cb5f49c9f038f567b7f3322b5962bc1dc9fc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dd28ab23894988a1ee193f2f8d72cb83b7aafe8
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744706"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120517"
 ---
 # <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Állami és tartományi kódok közös értékesítése az Azure Marketplace-en
 
@@ -113,6 +113,6 @@ Ez a cikk felsorolja a rendelkezésre álló állam-és tartományi kódokat, am
 | Északi terület                  |  AU-NT    |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [partneri központ közös értékesítéssel kapcsolatos lehetőségéről](./commercial-marketplace-co-sell.md).

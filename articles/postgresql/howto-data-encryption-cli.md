@@ -4,13 +4,14 @@ description: Megtudhatja, hogyan állíthatja be és kezelheti az Azure Database
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: f7621867aad6baf517462983e35afb0b28223756
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 731827fb63f8b23d21ea2eddaef3fa9b796d14bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341301"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119582"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>Adattitkosítás Azure Database for PostgreSQL önálló kiszolgáló számára az Azure CLI használatával
 
@@ -21,28 +22,28 @@ Ismerje meg, hogyan állíthatja be és kezelheti az Azure Database for PostgreS
 * Rendelkeznie kell egy Azure-előfizetéssel, és rendszergazdának kell lennie az előfizetésben.
 * Hozzon létre egy Key vaultot és egy, az ügyfél által felügyelt kulcshoz használandó kulcsot. A Key vaulton engedélyezze a kiürítést és a helyreállítható törlést is.
 
-    ```azurecli-interactive
-    az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
-    ```
+   ```azurecli-interactive
+   az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
+   ```
 
 * A létrehozott Azure Key Vault hozzon létre egy kulcsot, amelyet a rendszer a Azure Database for PostgreSQL egyetlen kiszolgáló adattitkosításához fog használni.
 
-    ```azurecli-interactive
-    az keyvault key create --name <key_name> -p software --vault-name <vault_name>
-    ```
+   ```azurecli-interactive
+   az keyvault key create --name <key_name> -p software --vault-name <vault_name>
+   ```
 
 * Meglévő kulcstartó használatához a következő tulajdonságokkal kell rendelkeznie az ügyfél által felügyelt kulcsként való használathoz:
   * [Helyreállítható törlés](../key-vault/general/overview-soft-delete.md)
 
-    ```azurecli-interactive
-    az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
-    ```
+      ```azurecli-interactive
+      az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
+      ```
 
   * [Védett kiürítés](../key-vault/general/overview-soft-delete.md#purge-protection)
 
-    ```azurecli-interactive
-    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
-    ```
+      ```azurecli-interactive
+      az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
+      ```
 
 * A kulcsnak a következő attribútumokkal kell rendelkeznie, amelyeket ügyfél által felügyelt kulcsként kell használni:
   * Nincs lejárati dátum
@@ -87,36 +88,37 @@ Miután Azure Database for PostgreSQL egy kiszolgálót a Key Vault tárolt ügy
 
 ### <a name="creating-a-restoredreplica-server"></a>Visszaállított/replika kiszolgáló létrehozása
 
-  *  [Visszaállítási kiszolgáló létrehozása](howto-restore-server-cli.md) 
-  *  [Olvasási replika kiszolgáló létrehozása](howto-read-replicas-cli.md) 
+* [Visszaállítási kiszolgáló létrehozása](howto-restore-server-cli.md)
+* [Olvasási replika kiszolgáló létrehozása](howto-read-replicas-cli.md)
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>A kiszolgáló visszaállítása után ellenőrizze újra a visszaállított kiszolgáló adattitkosítását.
 
-    ```azurecli-interactive
-    az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key create –name  <server name> -g <resource_group> --kid <key url>
+```
 
 ## <a name="additional-capability-for-the-key-being-used-for-the-azure-database-for-postgresql-single-server"></a>További képesség a Azure Database for PostgreSQL egyetlen kiszolgálóhoz használt kulcshoz
 
 ### <a name="get-the-key-used"></a>A használt kulcs lekérése
 
-    ```azurecli-interactive
-    az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
-    ```
+```azurecli-interactive
+az postgres server key show --name <server name>  -g <resource_group> --kid <key url>
+```
 
-    Key url:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+Kulcs URL-címe:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>A használt kulcs listázása
 
-    ```azurecli-interactive
-    az postgres server key list --name  <server name>  -g <resource_group>
-    ```
+```azurecli-interactive
+az postgres server key list --name  <server name>  -g <resource_group>
+```
 
 ### <a name="drop-the-key-being-used"></a>A használt kulcs eldobása
 
-    ```azurecli-interactive
-    az postgres server key delete -g <resource_group> --kid <key url> 
-    ```
+```azurecli-interactive
+az postgres server key delete -g <resource_group> --kid <key url> 
+```
+
 ## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Adattitkosítás engedélyezése Azure Resource Manager sablon használatával
 
 A Azure Portalon kívül a Azure Database for PostgreSQL egyetlen kiszolgálón is engedélyezheti az adattitkosítást az új és a meglévő kiszolgálók Azure Resource Manager sablonjaival.
@@ -241,6 +243,6 @@ Emellett Azure Resource Manager-sablonokkal is engedélyezheti az adattitkosít�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  További információ az adattitkosításról: [Azure Database for PostgreSQL egykiszolgálós adattitkosítás az ügyfél által felügyelt kulccsal](concepts-data-encryption-postgresql.md).

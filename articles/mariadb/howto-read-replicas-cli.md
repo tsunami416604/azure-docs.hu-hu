@@ -4,13 +4,14 @@ description: Ez a cikk bemutatja, hogyan állíthatja be és kezelheti az olvas�
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: ddcfea684a22c9ad06197086b3e74700df755da1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aff8eb27b1488f06edbc3ebd8c91b0a777837f91
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707991"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121112"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB az Azure CLI és a REST API használatával
 
@@ -40,7 +41,7 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 
 A `az mariadb server replica create` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Description  |
+| Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
 | name | mydemoreplicaserver | A létrehozott új replika-kiszolgáló neve. |
@@ -70,7 +71,7 @@ az mariadb server replica list --server-name mydemoserver --resource-group myres
 
 A `az mariadb server replica list` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Description  |
+| Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az az erőforráscsoport, amelybe a replika-kiszolgáló létre lesz hozva.  |
 | server-name | mydemoserver | A főkiszolgáló neve vagy azonosítója. |
@@ -88,7 +89,7 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 
 A `az mariadb server replica stop` parancshoz a következő paraméterek szükségesek:
 
-| Beállítás | Példaérték | Description  |
+| Beállítás | Példaérték | Leírás  |
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Az erőforráscsoport, amelyben a replika-kiszolgáló létezik.  |
 | name | mydemoreplicaserver | Annak a replika-kiszolgálónak a neve, amelyen a replikálást le kell állítani. |
@@ -177,6 +178,6 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [olvasási replikáról](concepts-read-replicas.md)

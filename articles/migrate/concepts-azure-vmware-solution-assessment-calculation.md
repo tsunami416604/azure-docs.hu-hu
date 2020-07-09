@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: 200a6ba333d283b6a82f1eb228a0fc586b5b1fab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4d2e810144e7c3d36545cb1e965aec40980c1d2
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568611"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118817"
 ---
 # <a name="avs-assessments-in-azure-migrate-server-assessment"></a>AVS-értékelések Azure Migrateban: kiszolgáló értékelése
 
@@ -29,7 +29,7 @@ A kiszolgáló-értékeléssel létrehozott értékelések az adatok időpontra 
 **Értékelés típusa** | **Részletek**
 --- | --- 
 **Azure VM** | Értékelések a helyszíni kiszolgálók Azure-beli virtuális gépekre való átköltöztetéséhez. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md), a [Hyper-V virtuális gépeket](how-to-set-up-appliance-hyper-v.md)és a [fizikai kiszolgálókat](how-to-set-up-appliance-physical.md) felhasználhatja az Azure-ba való áttelepítéshez ezzel az értékelési típussal. [További információ](concepts-assessment-calculation.md)
-**Azure VMware Solution (AVS)** | A helyszíni kiszolgálók [Azure VMware-megoldásba (AVS)](https://docs.microsoft.com/azure/azure-vmware/introduction)való átköltöztetésének felmérése. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) az értékelés típusának használatával értékelheti az Azure VMware-megoldásba (AVS) való áttelepítésre. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VMware Solution (AVS)** | A helyszíni kiszolgálók [Azure VMware-megoldásba (AVS)](../azure-vmware/introduction.md)való átköltöztetésének felmérése. <br/><br/> A helyszíni [VMWare virtuális gépeket](how-to-set-up-appliance-vmware.md) az értékelés típusának használatával értékelheti az Azure VMware-megoldásba (AVS) való áttelepítésre. [További információ](concepts-azure-vmware-solution-assessment-calculation.md)
 
 Az Azure VMware Solution (AVS) értékelése a kiszolgáló értékelése során két méretezési feltétel közül választhat:
 
@@ -121,7 +121,7 @@ A kiszolgáló értékelése során a következő, az AVS-értékelés részét 
 | **Célhely** | Megadja azt az AVS saját Felhőbeli helyet, amelyre az áttelepítést szeretné végezni.<br/><br/> A Server Assessment szolgáltatásban az AVS Assessment jelenleg a következő célcsoportokat támogatja: USA keleti régiója, Nyugat-Európa, USA nyugati régiója. 
 | **Tárolás típusa** | Megadja az AVS-ben használni kívánt tárolási motort.<br/><br/> Az AVS-értékelések csak a vSAN támogatják alapértelmezett tárolási típusként. 
 **Fenntartott példányok (RIs)** | Ez a tulajdonság segít a fenntartott példányok megadásában az AVS-ben. A RIs jelenleg nem támogatott az AVS-csomópontok esetében. 
-**Csomópont típusa** | Megadja a helyszíni virtuális gépek leképezéséhez használt [AVS-csomópont típusát](https://docs.microsoft.com/azure/azure-vmware/concepts-private-clouds-clusters) . Az alapértelmezett csomópont típusa AV36. <br/><br/> Azure Migrate a virtuális gépek AVS-re való áttelepítéséhez szükséges csomópontok számát javasolja. 
+**Csomópont típusa** | Megadja a helyszíni virtuális gépek leképezéséhez használt [AVS-csomópont típusát](../azure-vmware/concepts-private-clouds-clusters.md) . Az alapértelmezett csomópont típusa AV36. <br/><br/> Azure Migrate a virtuális gépek AVS-re való áttelepítéséhez szükséges csomópontok számát javasolja. 
 **TRANZAKCIÓs beállítás, RAID-szint** | Meghatározza a megfelelő meghibásodást az eltűriés és a RAID-kombinációk esetében. A helyszíni virtuálisgép-lemezre vonatkozó követelményekkel együtt a kiválasztott TRANZAKCIÓs beállítás határozza meg az AVS-ben szükséges teljes vSAN-tárolót. 
 **Méretezési feltétel** | Az AVS *-hez megfelelő méretű* virtuális gépekhez használandó feltételek beállítása. A teljesítmény *-alapú* méretezést vagy *a helyszínen* is dönthet úgy, hogy figyelembe venné a teljesítménnyel kapcsolatos előzményeket. 
 **Teljesítményelőzmények** | Beállítja a gépek teljesítményi adatai kiértékeléséhez szükséges időtartamot. Ez a tulajdonság csak akkor alkalmazható, ha a méretezési feltétel *teljesítmény-alapú*. 
@@ -249,16 +249,16 @@ A méretezési javaslatok befejezését követően a Azure Migrate kiszámítja 
 - A teljes havi költség kiszámításához összesíti a költségeket az összes csomóponton.
 - A költségek az értékelési beállításokban megadott pénznemben jelennek meg.
 
-Mivel az Azure VMware-megoldás (AVS) díjszabása csomópontos, a teljes költség nem rendelkezik számítási költséggel és a tárolási költség eloszlásával. [További információ](https://docs.microsoft.com/azure/azure-vmware/introduction)
+Mivel az Azure VMware-megoldás (AVS) díjszabása csomópontos, a teljes költség nem rendelkezik számítási költséggel és a tárolási költség eloszlásával. [További információ](../azure-vmware/introduction.md)
 
 Vegye figyelembe, hogy mivel az Azure VMware-megoldás (AVS) előzetes verzióban érhető el, az értékelésben szereplő csomóponti árak előzetes árak. Útmutatásért forduljon a helyi MSFT AVS GBB csapatához.
 
 ## <a name="migration-tool-guidance"></a>Áttelepítési eszköz – útmutató
 
 Az Azure VMware megoldással (AVS) kapcsolatos Azure-készültségi jelentésekben a következő javasolt eszközök láthatók: 
-- **VMware HCX vagy Enterprise**: VMware-es gépek esetén a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. [További információ](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+- **VMware HCX vagy Enterprise**: VMware-es gépek esetén a VMware Hybrid Cloud Extension (HCX) megoldás a javasolt áttelepítési eszköz, amellyel áttelepítheti a helyszíni számítási feladatokat az Azure VMware-megoldás (AVS) privát felhőbe. [További információ](../azure-vmware/hybrid-cloud-extension-installation.md).
 - **Ismeretlen**: a CSV-fájlon keresztül importált gépek esetében az alapértelmezett áttelepítési eszköz ismeretlen. A VMware-es gépek esetében azonban ajánlott a VMWare Hybrid Cloud Extension (HCX) megoldás használata.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre egy értékelést az [AVS VMWare virtuális gépekhez](how-to-create-azure-vmware-solution-assessment.md).

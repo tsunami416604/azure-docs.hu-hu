@@ -1,18 +1,18 @@
 ---
 title: Virtuálisgép-lemezképek közös hozzáférés-aláírási URI-ja – Azure Marketplace
 description: Közös hozzáférésű aláírás (SAS) URI létrehozása a virtuális merevlemezekhez (VHD) az Azure Marketplace-en.
-author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/09/2020
+author: anbene
 ms.author: mingshen
-ms.openlocfilehash: 24ba593a56d4d12211d10f143261caaf6d901bfc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 04/09/2020
+ms.openlocfilehash: 0fbd7aa42bf65ee0e553282b9961f1a9302b7903
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964668"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121724"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>A virtuálisgép-rendszerkép közös hozzáférésű aláírási URI-azonosítójának beolvasása
 

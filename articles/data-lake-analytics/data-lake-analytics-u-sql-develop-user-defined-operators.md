@@ -7,14 +7,14 @@ author: saveenr
 ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 9ff20235834fdd2fafc43383c1ea3f0dd7288fce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 771590a145d4da0a3a81050e6bbe8a9a4d528b30
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555701"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121214"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Felhasználó által definiált U-SQL-operátorok fejlesztése (Udo)
 Ez a cikk azt ismerteti, hogyan lehet felhasználó által definiált operátorokat feldolgozni egy U-SQL-feladatokban.
@@ -126,7 +126,7 @@ Ez a cikk azt ismerteti, hogyan lehet felhasználó által definiált operátoro
 
 2. Bontsa ki a minták, majd a kimenetek csomópontot, majd kattintson duplán a **Drivers.csv**elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [U-SQL-kifejezések kiterjesztése felhasználói kóddal](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
 * [A Visual studióhoz készült Data Lake Tools használata az U-SQL-alkalmazások fejlesztéséhez](data-lake-analytics-data-lake-tools-get-started.md)

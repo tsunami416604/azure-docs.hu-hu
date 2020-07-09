@@ -1,17 +1,16 @@
 ---
 title: Használati irányítópult a Microsoft kereskedelmi piactér elemzésében
 description: Ismerje meg, hogyan érheti el az összes virtuális gép használati és mért számlázási metrikákat. Nyissa meg a használati irányítópultot a partner Centerben a kereskedelmi piactéren.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: b60475c56b18e81b082e7552fec789b06adeff27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8747ff98cd2b53773d9e0a95436d90fef74fda55
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83746659"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120670"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Használati irányítópult a Microsoft kereskedelmi piactér elemzésében
 

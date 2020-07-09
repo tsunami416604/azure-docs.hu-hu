@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan lehet konfigurálni a MariaDB Serve
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: ae9878ba17f05b2d843e18c921c87c44b9396827
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53ba3c71679ebda1e8e2bf0a59a6ef69d051df4f
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738311"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120415"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>Kiszolgálói paraméterek konfigurálása Azure Database for MariaDB a Azure Portal használatával
 
@@ -77,6 +77,6 @@ SET time_zone = 'US/Pacific';
 
 A [dátum-és Időfüggvényekhez](https://mariadb.com/kb/en/library/convert_tz/)tekintse meg a MariaDB dokumentációját.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [kiszolgálói paraméterekről](concepts-server-parameters.md)

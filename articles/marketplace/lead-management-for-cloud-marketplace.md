@@ -1,17 +1,18 @@
 ---
 title: Vezető felügyelet a kereskedelmi piactéren | Azure Marketplace és AppSource
 description: Az Azure Marketplace-en és a AppSource-on közzétett ajánlatokkal és technikai összetevőkkel kapcsolatos különböző témakörök áttekintése
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 04/14/2020
-ms.author: dsindona
-ms.openlocfilehash: 0d16a2fa91b498888ae5dafd1b254b51eca94ebc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2abbef88ed7bac41b84eb06c8c0ec9c8a906b2f6
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801410"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119446"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Vezető felügyelet a kereskedelmi piactéren
 

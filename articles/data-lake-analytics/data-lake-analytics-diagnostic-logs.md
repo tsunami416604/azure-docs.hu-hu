@@ -5,14 +5,14 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: ba0311da88f1fe0cbc0bf885197785db10b1bac2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d389c433cb8a049671668cb58b3d80691ff0d16
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564856"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121435"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics diagnosztikai naplóinak elérése
 
@@ -128,7 +128,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="request-log-schema"></a>Kérelem naplózási sémája
 
-| Name | Típus | Description |
+| Name | Típus | Leírás |
 | --- | --- | --- |
 | time |Sztring |A napló időbélyegzője (UTC) |
 | resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a művelet került |
@@ -142,7 +142,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="request-log-properties-schema"></a>Kérelem naplójának tulajdonságai sémája
 
-| Name | Típus | Description |
+| Name | Típus | Leírás |
 | --- | --- | --- |
 | HttpMethod |Sztring |A művelethez használt HTTP-metódus. Például: GET. |
 | Elérési út |Sztring |A művelet végrehajtásának elérési útja |
@@ -151,7 +151,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 | StartTime |Sztring |Az az idő, amikor a kiszolgáló megkapta a kérést |
 | EndTime |Sztring |Az az idő, amikor a kiszolgáló választ küldött |
 
-### <a name="audit-logs"></a>Auditnaplók
+### <a name="audit-logs"></a>Naplók
 
 Íme egy minta bejegyzés a JSON-formátumú naplóban. Mindegyik blob egyetlen **, a log** objektumokat tartalmazó tömböt tartalmazó főobjektummal rendelkezik.
 
@@ -178,7 +178,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="audit-log-schema"></a>Auditnapló sémája
 
-| Name | Típus | Description |
+| Name | Típus | Leírás |
 | --- | --- | --- |
 | time |Sztring |A napló időbélyegzője (UTC) |
 | resourceId |Sztring |Annak az erőforrásnak az azonosítója, amelyre a művelet került |
@@ -196,7 +196,7 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 #### <a name="audit-log-properties-schema"></a>Naplózási napló tulajdonságai sémája
 
-| Name | Típus | Description |
+| Name | Típus | Leírás |
 | --- | --- | --- |
 | JobId |Sztring |A feladathoz rendelt azonosító |
 | JobName |Sztring |A feladatokhoz megadott név |
@@ -213,6 +213,6 @@ A naplózási és a kérési naplók strukturált JSON formátumúak.
 
 Azure Data Lake Analytics a naplófájlok feldolgozásának és elemzésének módját mutatja be. A minta a következő címen található: [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)

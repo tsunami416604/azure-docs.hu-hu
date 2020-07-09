@@ -7,14 +7,14 @@ author: yanancai
 ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/30/2017
-ms.openlocfilehash: 292ceccd5a3687488c0e8b03f4a8cd351d611dce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c1c36d146b4370962fc6328f6b75ef7160e28b5
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564906"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121452"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felhasználó által definiált C# kód hibakeresése a sikertelen U-SQL-feladatokhoz
 
@@ -105,7 +105,7 @@ A sikertelen feladatok újraküldése:
 
 3. Küldje el újra az U-SQL-feladatot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A U-SQL programozható útmutatója](data-lake-analytics-u-sql-programmability-guide.md)
 - [A felhasználó által definiált U-SQL-operátorok fejlesztése Azure Data Lake Analytics feladatokhoz](data-lake-analytics-u-sql-develop-user-defined-operators.md)

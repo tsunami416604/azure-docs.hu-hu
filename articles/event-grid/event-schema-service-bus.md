@@ -1,17 +1,14 @@
 ---
 title: Azure Service Bus Event Grid forrásként
 description: A Service Bus eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
-services: event-grid
-author: femila
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
-ms.author: femila
-ms.openlocfilehash: 5152c1579d46bfbff6c85b2cd19425aee0dd3290
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 81293321b3a8fb989023a231c905996b4059bd81
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559496"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121134"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Azure Service Bus Event Grid forrásként
 
@@ -23,7 +20,7 @@ Ez a cikk a Service Bus eseményeinek tulajdonságait és sémáját ismerteti.A
 
 Service Bus a következő típusú eseményeket bocsátja ki:
 
-| Eseménytípus | Description |
+| Eseménytípus | Leírás |
 | ---------- | ----------- |
 | Microsoft. ServiceBus. ActiveMessagesAvailableWithNoListeners | Akkor következik be, amikor aktív üzenetek vannak egy várólistában vagy előfizetésben, és nincsenek figyelő fogadók. |
 | Microsoft. ServiceBus. DeadletterMessagesAvailableWithNoListener | Akkor következik be, amikor aktív üzenetek vannak egy kézbesítetlen levelek várólistájában, és nincsenek aktív figyelők. |
@@ -106,7 +103,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | [Oktatóanyag: Azure Service Bus Azure Event Grid integrációs példák](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid üzeneteket küld Service Bus témakörből az alkalmazás és a logikai alkalmazás működéséhez. |
 | [Azure Service Bus az integráció Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | A Service Bus és a Event Grid integrálásának áttekintése. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

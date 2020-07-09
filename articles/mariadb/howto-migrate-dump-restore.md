@@ -4,13 +4,14 @@ description: Ez a cikk két gyakori módszert ismertet a Azure Database for Mari
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 2/27/2020
-ms.openlocfilehash: 72735e83af97fde8377e27daa45501704ef5a3c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 674622e6210c3cceda5af3b53bf4ba1851f7179b
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78164542"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118851"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>A MariaDB-adatbázis migrálása Azure Database for MariaDB a dump és a Restore használatával
 Ez a cikk két gyakori módszert ismertet a Azure Database for MariaDB adatbázisainak biztonsági mentésére és visszaállítására
@@ -118,7 +119,7 @@ Az adatbázis importálása hasonló az exportáláshoz. Hajtsa végre a követk
 5. Az adatbázisfájl megkereséséhez használja a **Tallózás** gombot. 
 6. Kattintson a **Go (ugrás** ) gombra a biztonsági mentés exportálásához, hajtsa végre az SQL-parancsokat, majd hozza létre újra az adatbázist.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Alkalmazások Összekötése Azure Database for MariaDBhoz](./howto-connection-string.md).
  
 <!--

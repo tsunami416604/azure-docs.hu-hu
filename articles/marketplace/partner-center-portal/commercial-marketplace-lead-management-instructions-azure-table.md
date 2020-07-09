@@ -1,17 +1,18 @@
 ---
 title: Vezető felügyelet az Azure Table Storage szolgáltatással – Microsoft kereskedelmi piactér
 description: Ismerje meg, hogyan konfigurálhatja az Azure Table Storage-t a Microsoft AppSource és az Azure Marketplace-hez készült érdeklődők konfigurálásához
-author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: keferna
+ms.author: keferna
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: fb53b0fe28f48f5f240e470aa5256ac1c277686e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 485da8549175af8813a9d0c3052d1e77f336e619
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957341"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120840"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Table Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 

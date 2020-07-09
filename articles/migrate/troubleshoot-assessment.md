@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: e5e55e3bfa5d30c74041b834483bc78875e7ce05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611373"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121673"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
@@ -36,10 +36,10 @@ Microsoft Visual Studio-előfizetést igényel | A gép Windows-ügyfél operác
 Nem található virtuális gép a szükséges tárolási teljesítményhez | A géphez szükséges tárolási teljesítmény (bemeneti/kimeneti műveletek száma másodpercenként [IOPS] és átviteli sebesség) meghaladja az Azure-beli virtuális gépek támogatását. Csökkentse a gép tárolási követelményeit az áttelepítés előtt.
 Nem található virtuális gép a szükséges hálózati teljesítményhez | A gép számára szükséges hálózati teljesítmény (be/ki) meghaladja az Azure-beli virtuális gépek támogatását. Csökkentse a gép hálózati követelményeit.
 A virtuális gép nem található a megadott helyen | A Migrálás előtt használjon másik célhelyet.
-Egy vagy több nem megfelelő lemez | A virtuális géphez csatolt egy vagy több lemez nem felel meg az Azure követelményeinek. Egy<br/><br/> Azure Migrate: a kiszolgáló értékelése jelenleg nem támogatja ultra SSD lemezek használatát, és a prémium szintű felügyelt lemezekre vonatkozó korlátok alapján értékeli a lemezeket (32 TB).<br/><br/> Győződjön meg arról, hogy a virtuális géphez csatolt minden egyes lemez mérete < 64 TB (ultra SSD-lemezek által támogatott).<br/><br/> Ha nem, csökkentse a lemez méretét az Azure-ba való Migrálás előtt, vagy használjon több lemezt az Azure-ban, és [csoportosítsa őket](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) a nagyobb tárolási korlátok eléréséhez. Győződjön meg arról, hogy az egyes lemezek által igényelt teljesítmény (IOPS és átviteli sebesség) támogatott az Azure által [felügyelt virtuálisgép-lemezek](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits)esetében.
+Egy vagy több nem megfelelő lemez | A virtuális géphez csatolt egy vagy több lemez nem felel meg az Azure követelményeinek. Egy<br/><br/> Azure Migrate: a kiszolgáló értékelése jelenleg nem támogatja ultra SSD lemezek használatát, és a prémium szintű felügyelt lemezekre vonatkozó korlátok alapján értékeli a lemezeket (32 TB).<br/><br/> Győződjön meg arról, hogy a virtuális géphez csatolt minden egyes lemez mérete < 64 TB (ultra SSD-lemezek által támogatott).<br/><br/> Ha nem, csökkentse a lemez méretét az Azure-ba való Migrálás előtt, vagy használjon több lemezt az Azure-ban, és [csoportosítsa őket](../virtual-machines/windows/premium-storage-performance.md#disk-striping) a nagyobb tárolási korlátok eléréséhez. Győződjön meg arról, hogy az egyes lemezek által igényelt teljesítmény (IOPS és átviteli sebesség) támogatott az Azure által [felügyelt virtuálisgép-lemezek](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)esetében.
 Egy vagy több nem megfelelő hálózati adapter. | A nem használt hálózati adapterek eltávolítása a gépről az áttelepítés előtt.
 A lemezek száma meghaladja a korlátot | Az áttelepítés előtt távolítsa el a nem használt lemezeket a gépről.
-A lemez mérete meghaladja a korlátot | Azure Migrate: a kiszolgáló értékelése jelenleg nem támogatja ultra SSD lemezek használatát, és a prémium szintű lemezes korlátok alapján értékeli a lemezeket (32 TB).<br/><br/> Az Azure azonban a legfeljebb 64 TB méretű lemezeket támogatja (ultra SSD lemezek által támogatott). A lemezeket az áttelepítés előtt kevesebb mint 64 TB-ra csökkenti, vagy több lemezt is használhat az Azure-ban [, és a](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) nagyobb tárolási korlátok eléréséhez.
+A lemez mérete meghaladja a korlátot | Azure Migrate: a kiszolgáló értékelése jelenleg nem támogatja ultra SSD lemezek használatát, és a prémium szintű lemezes korlátok alapján értékeli a lemezeket (32 TB).<br/><br/> Az Azure azonban a legfeljebb 64 TB méretű lemezeket támogatja (ultra SSD lemezek által támogatott). A lemezeket az áttelepítés előtt kevesebb mint 64 TB-ra csökkenti, vagy több lemezt is használhat az Azure-ban [, és a](../virtual-machines/windows/premium-storage-performance.md#disk-striping) nagyobb tárolási korlátok eléréséhez.
 A lemez nem érhető el a megadott helyen | A Migrálás előtt ellenőrizze, hogy a lemez a célhelyen van-e.
 A lemez nem érhető el a megadott redundancia esetén | A lemeznek az értékelési beállításokban definiált redundancia-tárolási típust kell használnia (alapértelmezés szerint LRS).
 Belső hiba miatt nem sikerült meghatározni a lemez alkalmasságát | Próbálja meg létrehozni a csoport új értékelését.
@@ -52,7 +52,7 @@ Feltételesen kész Internet Protocol | Csak az Azure VMware Solution (AVS) ért
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Javasolt áttelepítési eszköz az importálási alapú AVS-felmérésben ismeretlenként megjelölve
 
-A CSV-fájlon keresztül importált gépek esetében ismeretlen az alapértelmezett áttelepítési eszköz és az AVS Assessment. A VMware-gépek esetében azonban ajánlott a VMWare Hybrid Cloud Extension (HCX) megoldás használata. [További információ](https://docs.microsoft.com/azure/azure-vmware/hybrid-cloud-extension-installation).
+A CSV-fájlon keresztül importált gépek esetében ismeretlen az alapértelmezett áttelepítési eszköz és az AVS Assessment. A VMware-gépek esetében azonban ajánlott a VMWare Hybrid Cloud Extension (HCX) megoldás használata. [További információ](../azure-vmware/hybrid-cloud-extension-installation.md).
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>A Linux rendszerű virtuális gépek feltételesen készen állnak egy Azure-beli virtuális gép értékelésére
 
@@ -64,7 +64,7 @@ VMware és Hyper-V rendszerű virtuális gépek esetén a kiszolgáló értékel
 - Megtekintheti, hogy a helyszíni virtuális gépen futó Linux operációs rendszer az Azure [Linux-támogatás](https://aka.ms/migrate/selfhost/azureendorseddistros)áttekintésével van-e jóváhagyva az Azure-ban.
 -  A támogatott terjesztés ellenőrzése után figyelmen kívül hagyhatja ezt a figyelmeztetést.
 
-Ezt a rést a VMware virtuális gépeken az [alkalmazások felderítésének](https://docs.microsoft.com/azure/migrate/how-to-discover-applications) engedélyezésével lehet megoldani. A kiszolgáló értékelése a virtuális gépről a megadott vendég hitelesítő adatok használatával észlelt operációs rendszert használja. Ez az operációsrendszer-adat a Windows és Linux rendszerű virtuális gépek esetén a megfelelő operációsrendszer-információkat azonosítja.
+Ezt a rést a VMware virtuális gépeken az [alkalmazások felderítésének](./how-to-discover-applications.md) engedélyezésével lehet megoldani. A kiszolgáló értékelése a virtuális gépről a megadott vendég hitelesítő adatok használatával észlelt operációs rendszert használja. Ez az operációsrendszer-adat a Windows és Linux rendszerű virtuális gépek esetén a megfelelő operációsrendszer-információkat azonosítja.
 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure SKU-ban nagyobb, mint a helyszíni Azure-beli virtuális gépek felmérése
@@ -101,7 +101,7 @@ A kiszolgáló-értékelési jelentések "PercentageOfCoresUtilizedMissing" vagy
 - Ez akkor fordulhat elő, ha a virtuális gépek ki vannak kapcsolva az értékelés időtartama alatt. A készülék nem tud teljesítményadatokat gyűjteni a virtuális gép számára, ha ki van kapcsolva.
 - Ha csak a teljesítményszámlálók hiányoznak, és a Hyper-V virtuális gépeket próbálja értékelni, ellenőrizze, hogy a dinamikus memória engedélyezve van-e ezeken a virtuális gépeken. Csak a Hyper-V virtuális gépek ismert hibája van, amelyben egy Azure Migrate berendezés nem tudja gyűjteni a memória-kihasználtsági adatokat olyan virtuális gépek számára, amelyeken nincs engedélyezve a dinamikus memória.
 - Ha a teljesítményszámlálók bármelyike hiányzik, Azure Migrate kiszolgáló értékelése visszaesik a lefoglalt magokra és a memóriára, és a virtuális gép megfelelő méretét javasolja.
-- Ha az összes teljesítményszámláló hiányzik, ellenőrizze, hogy teljesülnek-e az értékeléshez szükséges port hozzáférési követelményei. További információ a [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access), a [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access) és a [fizikai](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) kiszolgáló értékeléséhez szükséges portokra vonatkozó hozzáférési követelményekről.
+- Ha az összes teljesítményszámláló hiányzik, ellenőrizze, hogy teljesülnek-e az értékeléshez szükséges port hozzáférési követelményei. További információ a [VMware](./migrate-support-matrix-vmware.md#port-access-requirements), a [Hyper-V](./migrate-support-matrix-hyper-v.md#port-access) és a [fizikai](./migrate-support-matrix-physical.md#port-access) kiszolgáló értékeléséhez szükséges portokra vonatkozó hozzáférési követelményekről.
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Az operációs rendszer licence egy Azure-beli virtuális gép értékelésében szerepel?
 
@@ -120,11 +120,11 @@ Ez akkor fordulhat elő, ha a fizikai kiszolgálón engedélyezve van a Hyper-V-
 
 ## <a name="recommended-azure-vm-sku-for-my-physical-server-is-oversized"></a>A fizikai kiszolgálóhoz ajánlott Azure VM SKU túl van méretezve
 
-Ez akkor fordulhat elő, ha a fizikai kiszolgálón engedélyezve van a Hyper-V-virtualizálás. Ezeken a kiszolgálókon Azure Migrate jelenleg a fizikai és a virtuális hálózati adaptereket is felfedi. Ezért a nem. a felderített hálózati adapterek száma magasabb a ténylegesnél. Mivel a kiszolgáló értékelése olyan Azure-beli virtuális gépet választ, amely képes támogatni a szükséges számú hálózati adaptert, ez potenciálisan túlméretezett virtuális gépet eredményezhet. [További](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) információ a nem hatásáról. a méretezés alatt álló hálózati adapterek. Ez egy olyan termékbeli hézag, amelyet a rendszer továbbít.
+Ez akkor fordulhat elő, ha a fizikai kiszolgálón engedélyezve van a Hyper-V-virtualizálás. Ezeken a kiszolgálókon Azure Migrate jelenleg a fizikai és a virtuális hálózati adaptereket is felfedi. Ezért a nem. a felderített hálózati adapterek száma magasabb a ténylegesnél. Mivel a kiszolgáló értékelése olyan Azure-beli virtuális gépet választ, amely képes támogatni a szükséges számú hálózati adaptert, ez potenciálisan túlméretezett virtuális gépet eredményezhet. [További](./concepts-assessment-calculation.md#calculating-sizing) információ a nem hatásáról. a méretezés alatt álló hálózati adapterek. Ez egy olyan termékbeli hézag, amelyet a rendszer továbbít.
 
 ## <a name="readiness-category-not-ready-for-my-physical-server"></a>A (z) "nem kész" készültségi kategória a fizikai kiszolgálóhoz
 
-Előfordulhat, hogy a készültségi kategória helytelenül van megjelölve "nem üzemkész" állapotban olyan fizikai kiszolgáló esetén, amelyen engedélyezve van a Hyper-V virtualizálása. Ezekben a kiszolgálókon a termékekkel kapcsolatos hézagok miatt Azure Migrate jelenleg a fizikai és a virtuális adaptereket is felfedi. Ezért a nem. a felderített hálózati adapterek száma magasabb a ténylegesnél. A kiszolgáló értékelése mind a helyszíni, mind a teljesítmény alapú felmérésekben olyan Azure-beli virtuális gépet választ, amely támogatja a szükséges számú hálózati adaptert. Ha a hálózati adapterek száma meghaladja a 32-as értéket, a maximális szám nem. Az Azure-beli virtuális gépeken támogatott hálózati adapterek esetében a gép "nem üzemkész" jelöléssel fog megjelenni.  [További](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#calculating-sizing) információ a nem hatásáról. a méretekben lévő hálózati adapterek.
+Előfordulhat, hogy a készültségi kategória helytelenül van megjelölve "nem üzemkész" állapotban olyan fizikai kiszolgáló esetén, amelyen engedélyezve van a Hyper-V virtualizálása. Ezekben a kiszolgálókon a termékekkel kapcsolatos hézagok miatt Azure Migrate jelenleg a fizikai és a virtuális adaptereket is felfedi. Ezért a nem. a felderített hálózati adapterek száma magasabb a ténylegesnél. A kiszolgáló értékelése mind a helyszíni, mind a teljesítmény alapú felmérésekben olyan Azure-beli virtuális gépet választ, amely támogatja a szükséges számú hálózati adaptert. Ha a hálózati adapterek száma meghaladja a 32-as értéket, a maximális szám nem. Az Azure-beli virtuális gépeken támogatott hálózati adapterek esetében a gép "nem üzemkész" jelöléssel fog megjelenni.  [További](./concepts-assessment-calculation.md#calculating-sizing) információ a nem hatásáról. a méretekben lévő hálózati adapterek.
 
 
 ## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>A fizikai kiszolgálók esetében a ténylegesnél magasabban felderített hálózati adapterek száma
@@ -154,18 +154,18 @@ Linux rendszerű virtuális gépek esetén győződjön meg arról, hogy az MMA 
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-- **MMS-ügynök**: Tekintse át a támogatott [Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)és [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) operációs rendszereket.
+- **MMS-ügynök**: Tekintse át a támogatott [Windows](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)és [Linux](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) operációs rendszereket.
 - **Függőségi ügynök**: a támogatott [Windows-és Linux-](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) operációs rendszerek.
 
 ## <a name="visualize-dependencies-for--hour"></a>> óra függőségeinek megjelenítése
 
 Az ügynök nélküli függőségek elemzésével megjelenítheti a függőségeket, és akár 30 napig is exportálhatja őket egy térképen.
 
-Ügynök-alapú függőségi elemzéssel, bár a Azure Migrate lehetővé teszi, hogy visszalépjen egy adott dátumra az elmúlt hónapban, a függőségek megjelenítésének maximális időtartama egy óra. A függőségi Térkép időidőtartam funkciójának használatával például megtekintheti a tegnapi függőségeket, de csak egy órás időszakra megtekintheti őket. [A függőségi adat](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) hosszabb időtartamon keresztül történő lekérdezéséhez azonban Azure monitor naplókat is használhat.
+Ügynök-alapú függőségi elemzéssel, bár a Azure Migrate lehetővé teszi, hogy visszalépjen egy adott dátumra az elmúlt hónapban, a függőségek megjelenítésének maximális időtartama egy óra. A függőségi Térkép időidőtartam funkciójának használatával például megtekintheti a tegnapi függőségeket, de csak egy órás időszakra megtekintheti őket. [A függőségi adat](./how-to-create-group-machine-dependencies.md) hosszabb időtartamon keresztül történő lekérdezéséhez azonban Azure monitor naplókat is használhat.
 
 ## <a name="visualized-dependencies-for--10-machines"></a>Vizualizációs függőségek > 10 gép esetén
 
-Azure Migrate Server Assessment esetében az ügynök-alapú függőségi elemzéssel akár 10 virtuális géppel rendelkező [csoportok függőségeit is megjelenítheti](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) . Nagyobb csoportok esetén azt javasoljuk, hogy a függőségek megjelenítéséhez ossza fel a virtuális gépeket kisebb csoportokra.
+Azure Migrate Server Assessment esetében az ügynök-alapú függőségi elemzéssel akár 10 virtuális géppel rendelkező [csoportok függőségeit is megjelenítheti](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping) . Nagyobb csoportok esetén azt javasoljuk, hogy a függőségek megjelenítéséhez ossza fel a virtuális gépeket kisebb csoportokra.
 
 
 ## <a name="machines-show-install-agent"></a>Gépek "telepítési ügynök"
@@ -209,6 +209,6 @@ Gyűjtsön hálózati forgalmi naplókat a következőképpen:
 - Hyper-V virtuális gépek esetén az operációs rendszer adatait a Hyper-V gazdagépről gyűjti a rendszer.
 - Fizikai kiszolgálók esetében a rendszer beolvassa a kiszolgálót a kiszolgálóról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Értékelés [létrehozása](how-to-create-assessment.md) vagy [testreszabása](how-to-modify-assessment.md) .

@@ -4,13 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja az alkalmazást, h
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: ae61f58f2ac44db77db496dd5d3e38fad268129f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45d93797b72b3b35dd44cddc22124acb73eb3454
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84613053"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121095"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Kapcsolódás Azure Database for MariaDBhoz átirányítás használatával
 
@@ -160,5 +161,5 @@ $db_name = 'testdb';
 ?>
  ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a kapcsolatok karakterláncáról: a [kapcsolatok karakterláncai](howto-connection-string.md).

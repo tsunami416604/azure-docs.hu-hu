@@ -3,11 +3,12 @@ title: Érvénytelenek a sablon hibái
 description: Ismerteti, Hogyan oldhatók fel a sablon érvénytelen hibái Azure Resource Manager sablonok telepítésekor.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: 2902a6d82c32192bb241697825a31d759d5c7b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324062"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86118885"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Érvénytelen sablonnal kapcsolatos hibák elhárítása
 
@@ -47,7 +48,7 @@ Ez a hiba könnyen elvégezhető, mert a sablon kifejezései bonyolultak lehetne
 
 Ha nem adja meg a megfelelő szintaxist, a sablon olyan értéket hoz létre, amely eltér a szándéktól.
 
-Ha ilyen típusú hibát kap, körültekintően tekintse át a kifejezés szintaxisát. Érdemes lehet egy JSON-szerkesztőt használni, például a [Visual studiót](create-visual-studio-deployment-project.md) vagy a [Visual Studio Code](use-vs-code-to-create-template.md)-ot, ami figyelmeztetheti a szintaktikai hibákra.
+Ha ilyen típusú hibát kap, körültekintően tekintse át a kifejezés szintaxisát. Érdemes lehet egy JSON-szerkesztőt használni, például a [Visual studiót](create-visual-studio-deployment-project.md) vagy a [Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md)-ot, ami figyelmeztetheti a szintaktikai hibákra.
 
 <a id="incorrect-segment-lengths"></a>
 

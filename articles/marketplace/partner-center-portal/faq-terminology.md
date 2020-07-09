@@ -1,17 +1,16 @@
 ---
 title: Kereskedelmi piactér Analytics – gyakori kérdések & terminológia – partneri központ
 description: Választ kaphat a partner Center kereskedelmi Marketplace Analytics szolgáltatásával kapcsolatos gyakori kérdésekre. Ez a cikk az Analytics-terminológia adatszótárát tartalmazza.
-author: dsindona
-ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: eb91e498fa757c5cec7bd466c60aaf7e8758304c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ece7fa64c64d4c2f771be61984485cf9b1c4abaf
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744567"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121741"
 ---
 # <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Kereskedelmi piactér analitikai terminológiája és gyakori kérdések
 
@@ -91,7 +90,7 @@ Ha ezt az üzenetet kapja, az azt jelenti, hogy rendelkezik elemzési adatokkal,
 | Termékváltozat| Rendelés| A közzététel során definiált SKU-név. Egy ajánlat több SKU-val is rendelkezhet, de egy SKU csak egyetlen ajánlattal társítható.||
 | Próbaverzió befejezési dátuma| Rendelés| Az a dátum, ameddig a rendelés próbaidőszaka lejár vagy véget ér.||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

@@ -5,14 +5,14 @@ ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/02/2017
-ms.openlocfilehash: 2d33a6ec5ff6b687913914e9433b85765aaa7aec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0db5482a48819074fc0552417aa79dbc2e5cf66
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71309940"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120177"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>A feladatböngésző és a Feladat nézet használata az Azure Data Lake Analyticsben
 A Azure Data Lake Analytics szolgáltatás archivált feladatokat küld egy lekérdezési tárolóban. Ebből a cikkből megtudhatja, hogyan használhatja a feladatok böngészőjét és a feladatok nézetét a Visual studióhoz készült Azure Data Lake-eszközökben a korábbi feladatok adatainak megkereséséhez. 

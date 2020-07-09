@@ -1,19 +1,16 @@
 ---
 title: Hálózati kapcsolattal kapcsolatos problémák elhárítása – Azure Event Grid | Microsoft Docs
 description: Ez a cikk a Azure Event Gridával kapcsolatos hálózati kapcsolódási problémák elhárításával kapcsolatos információkat tartalmaz.
-services: event-grid
-documentationcenter: na
 author: batrived
-ms.service: event-grid
-ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 28a570c5fdd3de6f1a3d23b3589c46f7457cabfe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eb40d464fb718f0bd6dffe0d00f6420f4ea4995
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392921"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119004"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Kapcsolódási problémák elhárítása – Azure Event Grid
 
@@ -119,6 +116,6 @@ Az átmeneti kapcsolódási problémák a háttérrendszer frissítése és újr
 
 Ezeknek az átmeneti hibáknak a kifogása, a biztonsági mentés és a hívás újbóli kipróbálása biztosítja, hogy a kód rugalmasan kezelje ezeket az átmeneti problémákat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége, tegye fel a problémát a [stack overflow fórumba](https://stackoverflow.com/questions/tagged/azure-eventgrid) , vagy nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).

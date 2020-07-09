@@ -1,18 +1,16 @@
 ---
 title: Azure Event Grid erőforrások hálózati biztonsága
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a hozzáférés a privát végpontokról
-services: event-grid
 author: VidyaKukke
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 07/07/2020
 ms.author: vkukke
-ms.openlocfilehash: f3b3877ae3278e12eec43843dbed6ac686227860
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1887b6b5919a8b0f6e8f570b2471d74d9541df31
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414249"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119242"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid erőforrások hálózati biztonsága
 Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Event Grid használatával: 
@@ -85,10 +83,10 @@ A következő táblázat ismerteti a magánhálózati végponti kapcsolatok kül
 
 | Kapcsolatok állapota   |  Sikeres közzététel (igen/nem) |
 | ------------------ | -------------------------------|
-| Approved           | Yes                            |
-| Elutasítva           | No                             |
-| Függőben            | No                             |
-| Leválasztott       | No                             |
+| Approved           | Igen                            |
+| Elutasítva           | Nem                             |
+| Függőben            | Nem                             |
+| Leválasztott       | Nem                             |
 
 Ahhoz, hogy a közzététel sikeres legyen, **jóvá**kell hagyni a privát végponti kapcsolatok állapotát. Ha a rendszer visszautasítja a kapcsolatokat, a Azure Portal használatával nem lehet jóváhagyni. Az egyetlen lehetőség, hogy törölje a kapcsolódást, és hozzon létre egy újat.
 
@@ -97,7 +95,7 @@ A **privát végpontok** a Event Grid alapszintű és prémium szintű csomagjai
 
 Az **IP-tűzfal** funkció a Event Grid alapszintű és prémium szintjein is elérhető. Egy témakör vagy tartomány alapján legfeljebb 16 IP-tűzfalszabály hozható létre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Event Grid erőforrás IP-tűzfalát úgy is beállíthatja, hogy a nyilvános interneten keresztül csak az IP-címek és az IP-címtartományok egyetlen kiválasztott készletével korlátozza a hozzáférést. Részletes útmutatásért lásd: az [IP-tűzfal konfigurálása](configure-firewall.md).
 
 A privát végpontokat úgy is beállíthatja, hogy csak a kiválasztott virtuális hálózatokról korlátozza a hozzáférést. Részletes útmutatásért lásd: [privát végpontok konfigurálása](configure-private-endpoints.md).

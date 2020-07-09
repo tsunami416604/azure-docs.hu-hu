@@ -1,18 +1,18 @@
 ---
 title: Vállalati munkahelyi fiókok és partner központ
 description: Hogyan ellenőrizhető, hogy a vállalata rendelkezik-e a Microsofttal beállított munkahelyi fiókkal, hozzon létre egy új munkahelyi fiókot, vagy állítson be több munkahelyi fiókot a partner centerrel való használatra.
-author: dsindona
-ms.author: parthp
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 05/30/2019
-ms.openlocfilehash: 27a51a1203b0c25474bdb292c467a40b67309757
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 6fca3429ab96a63b01eaa7e9d1f0ae83dc46e9c7
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964430"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119752"
 ---
 # <a name="company-work-accounts-and-partner-center"></a>Vállalati munkahelyi fiókok és partner központ
 
@@ -52,6 +52,6 @@ Ha nem sikerül bejelentkeznie a munkahelyi fiókjába (más néven az Azure AD-
 
 ![A munkahelyi fiók bejelentkezési hibaelhárításának ábrája](./media/onboarding-aad-flow.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A kereskedelmi piactér-fiók kezelése a partner Centerben](./manage-account.md) 

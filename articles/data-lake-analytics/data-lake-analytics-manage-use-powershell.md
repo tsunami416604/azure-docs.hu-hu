@@ -7,14 +7,14 @@ author: matt1883
 ms.author: mahi
 ms.reviewer: jasonwhowell
 ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/29/2018
-ms.openlocfilehash: 4273828c9c2bdb75fcbc1de45da55c5a03dd615f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a197ef645b4b3ba2cb656e93778d6546462f431a
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "66156430"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86121333"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -555,7 +555,7 @@ foreach ($sub in $subs)
 
 Azure-erőforráscsoport-sablont is használhat a következő minta használatával: [Data Lake Analytics fiók létrehozása sablon használatával](https://github.com/Azure-Samples/data-lake-analytics-create-account-with-arm-template)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * A Data Lake Analytics használatának első lépései az [Azure portal](data-lake-analytics-get-started-portal.md)  |  [Azure PowerShell](data-lake-analytics-get-started-powershell.md)  |  [Azure parancssori](data-lake-analytics-get-started-cli.md) felületének Azure Portal Azure PowerShell
 * Azure Data Lake Analytics kezelése [Azure Portal](data-lake-analytics-manage-use-portal.md)  |  [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)  |  [CLI](data-lake-analytics-manage-use-cli.md) használatával 

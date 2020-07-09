@@ -7,14 +7,14 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.assetid: 019c1d53-4e61-4cad-9b2c-7a60307cbe19
 ms.service: data-lake-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/05/2018
-ms.openlocfilehash: 406eb1c9153e1ddbdc196cd64378c17cfa986dac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c417004e4abeda12b444ea4143ef1262f480d348
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71672714"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119548"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Ismerkedés az U-SQL kognitív képességeivel
 
@@ -31,7 +31,7 @@ A következő minták állnak rendelkezésre kognitív képességek használatá
 ## <a name="registering-cognitive-extensions-in-u-sql"></a>Kognitív bővítmények regisztrálása U-SQL-ben
 Mielőtt elkezdené, kövesse az ebben a cikkben ismertetett lépéseket a kognitív bővítmények az U-SQL-ben való regisztrálásához: az [u-SQL kognitív bővítményeinek regisztrálása](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [U-SQL/kognitív minták](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
 * [U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával](data-lake-analytics-data-lake-tools-get-started.md)
 * [A U-SQL Window functions használata Azure Data Lake Analytics feladatokhoz](data-lake-analytics-use-window-functions.md)

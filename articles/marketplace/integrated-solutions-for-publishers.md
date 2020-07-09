@@ -1,17 +1,18 @@
 ---
 title: Integrált megoldás közzététele – Microsoft kereskedelmi piactér
 description: Ismerje meg az integrált megoldások Microsoft AppSource és az Azure Marketplace-en való közzétételének követelményeit és lépéseit.
-author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: vikrambmsft
+ms.author: vikramb
 ms.date: 04/16/2020
-ms.author: dsindona
-ms.openlocfilehash: a2bce05288d0085306a59f3ff5ee62939941bbaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1fcaced7783d09f1733fbee8744ba725b639a02
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83800601"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119531"
 ---
 # <a name="publish-an-integrated-solution"></a>Integrált megoldás közzététele
 
@@ -64,7 +65,7 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
     * Ügyfelek megcélzása
     * Érték kiosztása
     * Díjszabás
-    * Licencek
+    * Licencelés
     * használati feltételei
     * Támogatási megközelítés
     * Marketing tevékenységek
@@ -111,6 +112,6 @@ Bár öt szolgáltatási típus érhető el a tanácsadási szolgáltatásokhoz,
 
 Ha a megoldás a Microsoft AppSource vagy az Azure Marketplace-en él, érdemes lehet a marketing-tevékenységekkel kapcsolatos ismereteket és igényt vezetnie. Tekintse át a [projekt tervében és idővonalában](https://aka.ms/AA5qiuc)felsorolt tevékenységeket. Ez az erőforrás olyan tevékenységeket tartalmaz, amelyeket a partnerek a saját csapatában és egymással tudnak vezetni. Ezután elérheti a piactéren közzétett partnereink piacra jutási [előnyeit](./gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) . Minden integrált megoldási ajánlat próbaverziós ellátásra alkalmas.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az integrált megoldásoknak a piactéren való megvásárlásával kapcsolatos információkért lásd: [integrált megoldások](./integrated-solutions.md).

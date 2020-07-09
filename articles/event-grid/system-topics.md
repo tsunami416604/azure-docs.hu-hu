@@ -1,18 +1,14 @@
 ---
 title: Rendszertémakörök a Azure Event Grid
 description: A Azure Event Grid rendszertémaköreinek ismertetése.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.author: spelluru
-ms.openlocfilehash: 190c6ccb13a0853913c96ac5d2d3f5faf4594433
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: 655ec5f0ad23b3902c1c99ba75eef2ef428911eb
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887913"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119922"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Rendszertémakörök a Azure Event Grid
 A Event Grid rendszertémaköre egy vagy több olyan eseményt jelent, amelyet az Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs tesznek közzé. Előfordulhat például, hogy egy rendszertémakör az **összes blob-eseményt** vagy csak a **blob által létrehozott** és a blob által **törölt** , **adott Storage-fiók**számára közzétett eseményeket jelöli. Ebben a példában, amikor egy blobot töltenek fel a Storage-fiókba, az Azure Storage szolgáltatás **létrehoz egy blobot létrehozott** eseményt a Event grid rendszer témakörében, amely ezután továbbítja az eseményt a témakör azon [előfizetőknek](event-handlers.md) , akik megkapják és feldolgozzák az eseményt. 
@@ -63,7 +59,7 @@ Egy adott régióban/helyen található Azure-beli eseményforrás esetén a ren
 
 Általánosságban elmondható, hogy a rendszertémakör ugyanabban az erőforráscsoportban jön létre, amelyben az Azure-esemény forrása található. Az Azure-előfizetések hatókörében létrehozott esemény-előfizetések esetén a rendszertémakört az erőforráscsoport **alapértelmezett-EventGrid**alatt hozza létre a rendszer. Ha az erőforráscsoport nem létezik, Azure Event Grid létrehozza azt a rendszertémakör létrehozása előtt. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket: 
 
 - [Rendszertémakörök létrehozása, megtekintése és kezelése Azure Portal használatával](create-view-manage-system-topics.md).

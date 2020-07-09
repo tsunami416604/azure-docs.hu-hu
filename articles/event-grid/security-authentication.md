@@ -1,18 +1,14 @@
 ---
 title: Események kézbesítésének hitelesítése az eseménykezelők számára (Azure Event Grid)
 description: Ez a cikk bemutatja, hogyan hitelesíthető a kézbesítés az eseménykezelők számára a Azure Event Gridban.
-services: event-grid
-author: spelluru
-ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.author: spelluru
-ms.openlocfilehash: 46b1aa500f00046dd4d6e318b270982e8b747a79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/07/2020
+ms.openlocfilehash: d48930ac9cfdd1ecd3e7d6c64067d5389323f8bc
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412821"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119939"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Események kézbesítésének hitelesítése az eseménykezelők számára (Azure Event Grid)
 Ez a cikk tájékoztatást nyújt az események az eseménykezelők számára történő hitelesítéséről. Azt is bemutatja, hogyan védheti meg az Event Grid események fogadására használt webhook-végpontokat Azure Active Directory (Azure AD) vagy közös titok használatával.
@@ -47,5 +43,5 @@ További információ az események webhookok általi kézbesítéséről: [webh
 A Azure Event Grid csak a **https** webhook-végpontokat támogatja. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a [közzétételi ügyfelek hitelesítése](security-authenticate-publishing-clients.md) című témakört, amelyből megtudhatja, hogyan hitelesítheti az ügyfeleket a témakörök vagy tartományok számára 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: bb23484903ac3ce129c6e7a7a27e0765c227fb1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc77f3267813bd049274f44e43c4d64b0eb3801e
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68297786"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86120279"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP teljesítmény-hangolás Azure-beli virtuális gépekhez
 
@@ -136,7 +136,7 @@ Ez a táblázat a két helyszín közötti egyenes távolságot mutatja. A hál�
 
 `minimum RTT = 2 * (Distance in kilometers / Speed of propagation)`
 
-A propagálás sebességét 200-re használhatja. Ez a távolság (méterben), amely a fény 1 ezredmásodpercen át halad.
+A propagálás sebességét 200-re használhatja. Ez a távolság (kilométerben), amely a fény 1 ezredmásodpercen át halad.
 
 Vegyük példaként a New York-i San Francisco-ot. Az egyenes vonal hossza 4 148 km. Ha ezt az értéket az egyenletbe csatlakoztatja, a következőkhöz juthat:
 
@@ -373,6 +373,6 @@ Azt is vegye figyelembe, hogy egyes újraküldési és ismétlődő nyugták a h
 
 Ezek a csomagok azonban arra utalnak, hogy a TCP-átviteli sebesség nem tudja elérni a maximális teljesítményt, a cikk más részeiben tárgyalt okok miatt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az Azure-beli virtuális gépek TCP/IP-teljesítményének finomhangolását, érdemes elolvasnia a [virtuális hálózatok megtervezésével](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) kapcsolatos egyéb szempontokat, vagy többet is [megtudhat a virtuális hálózatok csatlakoztatásáról és konfigurálásáról](https://docs.microsoft.com/azure/virtual-network/).

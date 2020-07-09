@@ -4,13 +4,14 @@ description: Ismerje meg, hogyan állíthatja be a TLS-konfigurációt a Azure D
 author: kummanish
 ms.author: manishku
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 06/02/2020
-ms.openlocfilehash: bdf2d2756db8e24c158c5571277986ac2a590048
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46eaa6a3b97967da9c4743d0cf1f6edc8f90b1ce
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418658"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86119784"
 ---
 # <a name="configuring-tls-settings-in-azure-database-for-mysql-using-azure-portal"></a>A TLS-beállítások konfigurálása a Azure Database for MySQL a Azure Portal használatával
 
@@ -42,6 +43,6 @@ A MySQL-kiszolgáló minimális TLS-verziójának beállításához kövesse az 
 
     ![Azure Database for MySQL TLS-konfiguráció sikeres](./media/howto-tls-configurations/setting-tls-value-success.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md)
