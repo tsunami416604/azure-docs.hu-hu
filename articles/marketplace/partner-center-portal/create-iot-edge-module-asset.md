@@ -1,17 +1,18 @@
 ---
 title: A IoT Edge modul technikai eszközeinek előkészítése – Azure Marketplace
 description: Ismerje meg az eszközök internetes hálózata (IoT) Edge-modul technikai eszközeinek technikai és konfigurációs követelményeit, mielőtt közzéteszi őket az Azure Marketplace-en.
-author: anbene
-ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
+author: anbene
+ms.author: mingshen
 ms.date: 04/03/2020
-ms.openlocfilehash: 36b56cdf5a2aaa57cc452db9054380528fa8c68b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 685ac2a383bcc0b85121112b9b5df4aa7650ab59
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958582"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101171"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>A IoT Edge modul technikai eszközeinek előkészítése
 
@@ -107,7 +108,7 @@ A IoT modul SDK-t használó moduloknak az egyedi modul azonosítóját kell be�
 A IoT modul SDK-k használatával az alábbi módszerek egyikével állíthatja be a productinfo olvasása erre az azonosítóra:
 
 - [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
-- [C#](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
+- [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
@@ -140,6 +141,6 @@ Az ajánlat a frissítése után is újra lesz hitelesítve, például új képc
 
 IoT Edge moduljának Azure Marketplace-re való feltöltéséhez először egy [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR-ben) kell üzemeltetni. A modulnak tartalmaznia kell az összes közzétenni kívánt címkét, beleértve a jegyzékfájl által hivatkozott képcímkéket is. További információkért tekintse meg az [Azure Container Registry létrehozása és a tároló rendszerképének leküldése](../../container-instances/container-instances-tutorial-prepare-acr.md)című oktatóanyagot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [IoT Edge-modulajánlat létrehozása](azure-iot-edge-module-creation.md)

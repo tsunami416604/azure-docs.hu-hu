@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: 906bcf97ad070eb8c2dfe3266bccf05db1598935
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: e4b4b6f21d158a758c2ff77db6660bbb44696d90
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708892"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86086687"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>Gyors útmutató: felügyelt SQL-példány felügyelt példányának létrehozása
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -36,8 +36,8 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Válassza az **Azure SQL** lehetőséget a Azure Portal bal oldali menüjében. Ha az **Azure SQL** nem szerepel a listában, válassza a **minden szolgáltatás**lehetőséget, majd írja be az **Azure SQL** kifejezést a keresőmezőbe.
-1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. A felügyelt Azure SQL-példányra vonatkozó további információkat az **SQL felügyelt példányának** csempén látható **Részletek megjelenítése** lehetőség választásával tekintheti meg.
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **+ Hozzáadás** lehetőséget az **SQL-telepítés kiválasztása** lap megnyitásához. Az Azure SQL felügyelt példányával kapcsolatos további információkat az **SQL felügyelt példányok** csempén látható **Részletek megjelenítése** lehetőség választásával tekintheti meg.
+1. Válassza a **Létrehozás** lehetőséget.
 
    ![Felügyelt példány létrehozása](./media/instance-create-quickstart/create-managed-instance.png)
 
@@ -173,7 +173,7 @@ A felügyelt SQL-példányhoz való kapcsolódáshoz kövesse az alábbi lépés
 
    A másolt érték egy teljes tartománynevet (FQDN) jelöl, amely az SQL felügyelt példányhoz való kapcsolódáshoz használható. A következőhöz hasonló példa: *your_host_name. a1b2c3d4e5f6. database. Windows. net*.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a felügyelt SQL-példányokhoz való kapcsolódásról:
 - Az alkalmazások csatlakozási lehetőségeinek áttekintését lásd: [alkalmazások csatlakoztatása SQL felügyelt példányhoz](connect-application-instance.md).

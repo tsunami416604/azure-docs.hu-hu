@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 28eb88a40139352b475851003a1092954a97ef64
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954315"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86083559"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Azure Portal
 > [!div class="op_single_selector"]
@@ -158,7 +158,7 @@ A **Search Explorer** csak [REST API kérelmek](https://docs.microsoft.com/rest/
 
    ![Lekérdezési karakterlánc és Keresés gomb](media/search-get-started-portal/search-explorer-query-string-example.png)
 
-## <a name="example-queries"></a>Példák lekérdezésekre
+## <a name="example-queries"></a>Példa a lekérdezésekre
 
 Megadhatja a kifejezéseket és kifejezéseket, hasonlóan a Bing vagy a Google Search szolgáltatáshoz, vagy teljesen meghatározott lekérdezési kifejezésekhez. Az eredményeket a rendszer részletes JSON-dokumentumként adja vissza.
 
@@ -270,9 +270,14 @@ A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscso
 
 Ha ingyenes szolgáltatást használ, ne feledje, hogy Ön legfeljebb három indexet, indexelő és adatforrást használhat. A portálon törölheti az egyes elemeket, hogy a korlát alatt maradjon. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy portál varázsló segítségével előkészítheti a böngészőben futó, használatra kész webalkalmazást. Ezt a varázslót kipróbálhatja az imént létrehozott kis indexen, vagy használhatja a beépített mintaadatok egyikét egy gazdagabb keresési élményhez.
 
 > [!div class="nextstepaction"]
 > [Bemutató alkalmazás létrehozása a portálon](search-create-app-portal.md)
+
+Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
+
+> [!div class="nextstepaction"]
+> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

@@ -1,7 +1,5 @@
 - name: Az IoT Edge-en futó Live Video Analytics (előzetes verzió) dokumentációja
   href: index.yml
-- name: Az Azure Media Services v3-ra történő váltás dokumentációja
-  href: ../latest/index.yml
 - name: Áttekintés
   items:
     - name: Tudnivalók az IoT Edge-en futó Live Video Analyticsről
@@ -34,7 +32,7 @@
       href: playback-multi-day-recordings-tutorial.md
 - name: Példák
   items:
-    - name: 'Az IoT Edge-en futó Live Video Analytics C#-mintái'
+    - name: Az IoT Edge-en futó Live Video Analytics C#-mintái
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
 - name: Alapelvek
   items:

@@ -1,20 +1,14 @@
 ---
 title: Az Azure üzenetküldő szolgáltatásainak összehasonlítása
 description: A három Azure Messaging Services – Azure Event Grid, Event Hubs és Service Bus ismertetése. Javaslat a megfelelő szolgáltatás használatára különböző forgatókönyvek esetén.
-services: event-grid
-author: spelluru
-manager: timlt
-ms.service: event-grid
 ms.topic: overview
-ms.date: 10/22/2019
-ms.author: spelluru
-ms.custom: seodec18
-ms.openlocfilehash: 6122f17637e76f42cc4fbcc87ac9f48da3cdca36
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/07/2020
+ms.openlocfilehash: 9c539accbc41f56e4421b9e793c25496987363aa
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76122202"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101375"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Válasszon az Azure Messaging Services – Event Grid, Event Hubs és Service Bus között
 
@@ -22,7 +16,7 @@ Az Azure három olyan szolgáltatást kínál, amely segít kézbesíteni az ese
 
 * [Event Grid](/azure/event-grid/)
 * [Event Hubs](/azure/event-hubs/)
-* [Service Bus](/azure/service-bus-messaging/)
+* [Szolgáltatásbusz](/azure/service-bus-messaging/)
 
 Annak ellenére, hogy valamelyest hasonlítanak egymásra, minden szolgáltatás adott forgatókönyvekhez készült. Ez a cikk a szolgáltatások közötti különbséget ismerteti, és segít az alkalmazásához megfelelő szolgáltatás kiválasztásában. Az üzenetkezelési szolgáltatások sok esetben kiegészítik egymást és együtt használhatók.
 
@@ -44,7 +38,7 @@ Az üzenetek felhasználható vagy máshol tárolható nyers adatok, amelyeket s
 
 ## <a name="comparison-of-services"></a>A szolgáltatások összehasonlítása
 
-| Szolgáltatás | Cél | Típus | A következő esetekben használja |
+| Szolgáltatás | Szerep | Típus | A következő esetekben használja |
 | ------- | ------- | ---- | ----------- |
 | Event Grid | Reaktív programozás | Események terjesztése (különálló) | Állapotváltozásokra való reakció |
 | Event Hubs | Big data folyamat | Eseménystreamelés (sorozat) | Telemetria és elosztott adatok streamelése |
@@ -96,7 +90,7 @@ Más esetekben összekapcsolhatja őket, hogy egy esemény- és adatfolyamatot a
 
 ![Adatok streamelése – áttekintés](./media/compare-messaging-services/overview.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket: 
 - [Aszinkron üzenetkezelési lehetőségek az Azure-ban](/azure/architecture/guide/technology-choices/messaging)
 - [Események, adatpontok és üzenetek – a megfelelő Azure Messaging szolgáltatás kiválasztása az adataihoz](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/).

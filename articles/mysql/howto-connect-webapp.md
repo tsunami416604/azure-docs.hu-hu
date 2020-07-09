@@ -4,14 +4,14 @@ description: A meglévő Azure App Service megfelelő összekapcsolásának lép
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: ba75daa47ca1f77cd5828d13877238a64deeeb41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3f3daa56c782d84cf6ba07223f8cfea15daa8a4
+ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062460"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86101624"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Meglévő Azure App Service összekötése Azure Database for MySQL-kiszolgálóval
 Ez a témakör azt ismerteti, hogyan csatlakoztatható egy meglévő Azure App Service a Azure Database for MySQL-kiszolgálóhoz.
@@ -66,5 +66,5 @@ DATABASES = {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A kapcsolódási karakterláncokkal kapcsolatos további információkért tekintse meg a [kapcsolódási karakterláncokat](howto-connection-string.md).
