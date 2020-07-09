@@ -1,19 +1,19 @@
 ---
 title: 'Oktatóanyag: alkalmazások méretezése az Azure Spring Cloud-ban | Microsoft Docs'
-description: Ebből az oktatóanyagból megtudhatja, hogyan méretezheti az alkalmazásokat az Azure Spring Cloudtel a Azure Portal
+description: Ismerje meg, hogyan méretezheti az alkalmazásokat az Azure Spring Cloudtel a Azure Portal
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
-ms.openlocfilehash: 93cefd0c71e2d51187e68c6f5f02777d158e95a4
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: ca889e48510ec20b4823c6ec5e4e0149d5aaaa62
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792064"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141882"
 ---
-# <a name="scale-an-application-in-azure-spring-cloud"></a>Alkalmazások méretezése az Azure Spring Cloud-ban
+# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Oktatóanyag: alkalmazások méretezése az Azure Spring Cloud-ban
 
 Ez az oktatóanyag bemutatja, hogyan méretezheti a Service-alkalmazásokat a Azure Portal Azure Spring Cloud irányítópultján.
 
@@ -23,10 +23,10 @@ A befejezést követően tudni fogja, hogyan végezheti el a gyors manuális mó
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+Az alábbi eljárások követéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
-* Egy üzembe helyezett Azure Spring Cloud Service-példány.  Az első lépésekhez kövesse [az alkalmazások Azure CLI-n keresztüli üzembe helyezését ismertető](spring-cloud-quickstart-launch-app-cli.md) útmutatót.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd. 
+* Egy üzembe helyezett Azure Spring Cloud Service-példány.  Az első lépésekhez kövesse az [alkalmazások Azure CLI-n keresztüli üzembe helyezésével](spring-cloud-quickstart-launch-app-cli.md) foglalkozó rövid útmutatót.
 * Legalább egy alkalmazás már létre van hozva a szolgáltatási példányban.
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Navigáljon a méretezés lapra a Azure Portal
@@ -64,7 +64,7 @@ Ha az alapszintű csomaggal rendelkezik, és egy vagy több ilyen [korláttal](s
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan méretezheti manuálisan az Azure Spring Cloud-alkalmazásait. Az alkalmazás figyelésének megismeréséhez folytassa a következő oktatóanyaggal.
+Ebben az oktatóanyagban megtanulta, hogyan lehet manuálisan méretezni egy Azure Spring Cloud-alkalmazást. Ha meg szeretné tudni, hogyan figyelheti az alkalmazást riasztások beállításával, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Útmutató az alkalmazások figyeléséhez](spring-cloud-tutorial-distributed-tracing.md)
+> [Tudnivalók a riasztások beállításáról](spring-cloud-tutorial-alerts-action-groups.md)

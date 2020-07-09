@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: de7cf57d177902efdbb44524703481e8c65c75c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 33548df0b8eb73d28dfe6348f057266cca4c0290
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72991472"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168541"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>Oktatóanyag: a RingCentral és a Azure Active Directory integrálása
 
@@ -92,17 +92,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet:
 
-    | |
-    |--|
-    |  `https://sso.ringcentral.com` |
-    | `https://ssoeuro.ringcentral.com` |
+    - `https://sso.ringcentral.com`
+    - `https://ssoeuro.ringcentral.com`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet:
 
-    | |
-    |--|
-    | `https://sso.ringcentral.com/sp/ACS.saml2` |
-    | `https://ssoeuro.ringcentral.com/sp/ACS.saml2` |
+    - `https://sso.ringcentral.com/sp/ACS.saml2`
+    - `https://ssoeuro.ringcentral.com/sp/ACS.saml2`
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
@@ -116,9 +112,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -172,7 +168,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     c. Az **attribútum-hozzárendelés** szakaszban válassza **az e-mail attribútum** leképezése a következőre lehetőséget`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
     e. A **2. lépésben** kattintson a **Letöltés** gombra a **szolgáltatói metaadat-fájl** letöltéséhez, és töltse fel azt az **SAML alapszintű konfigurációs** szakaszba az **azonosító** és a **Válasz URL-cím** értékének automatikus kitöltéséhez Azure Portalban.
 
@@ -186,7 +182,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     * Jelölje be az **SSO vagy RingCentral hitelesítő adatokkal való bejelentkezés engedélyezése a felhasználóknak**jelölőnégyzetet.
 
-    * Kattintson a **Save** (Mentés) gombra.
+    * Kattintson a **Mentés** gombra.
 
 ### <a name="create-ringcentral-test-user"></a>RingCentral-tesztelési felhasználó létrehozása
 

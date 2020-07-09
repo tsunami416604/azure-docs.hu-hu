@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3f715af835df6783ae5d59dd073a042a553fba4d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c7efc94bcde18e7b6ff43726602fa87641f3e76
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75498048"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86130629"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek áthelyezése másik Azure-régióba
 
@@ -51,11 +51,11 @@ Ez a szakasz az Azure-beli többrétegű alkalmazások leggyakoribb telepítési
 
      ![Egypéldányos virtuális gép üzembe helyezése rétegek között](media/move-vm-overview/regular-deployment.png)
 
-* **Virtuális gépek a rendelkezésre állási csoportokban üzembe helyezett egyes szinteken**: egy adott szinten lévő minden virtuális gép egy rendelkezésre állási csoportban van konfigurálva. A [rendelkezésre állási](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) csoportok biztosítják, hogy az Azure-ban üzembe helyezett virtuális gépek a fürt több elkülönített hardveres csomópontján keresztül legyenek elosztva. Ez biztosítja, hogy ha az Azure-ban hardveres vagy szoftveres hiba történik, a rendszer csak a virtuális gépek egy részhalmazát érinti, és a teljes megoldás továbbra is elérhető és működőképes marad.
+* **Virtuális gépek a rendelkezésre állási csoportokban üzembe helyezett egyes szinteken**: egy adott szinten lévő minden virtuális gép egy rendelkezésre állási csoportban van konfigurálva. A [rendelkezésre állási](../virtual-machines/windows/tutorial-availability-sets.md) csoportok biztosítják, hogy az Azure-ban üzembe helyezett virtuális gépek a fürt több elkülönített hardveres csomópontján keresztül legyenek elosztva. Ez biztosítja, hogy ha az Azure-ban hardveres vagy szoftveres hiba történik, a rendszer csak a virtuális gépek egy részhalmazát érinti, és a teljes megoldás továbbra is elérhető és működőképes marad.
 
      ![VIRTUÁLIS gépek üzembe helyezése rendelkezésre állási csoportokon keresztül](media/move-vm-overview/avset.png)
 
-* **Az egyes szinteken üzembe helyezett virtuális gépek Availability Zones**: az egyes szinteken lévő összes virtuális gép [Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview)között van konfigurálva. Az Azure-régiók rendelkezésre állási zónái egy tartalék tartomány és egy frissítési tartomány kombinációja. Ha például három vagy több virtuális gépet hoz létre három zónában egy Azure-régióban, a virtuális gépeket a rendszer gyakorlatilag három tartalék tartományba és három frissítési tartományba terjeszti. Az Azure platform felismeri ezt az eloszlást a frissítési tartományok között, hogy megbizonyosodjon róla, hogy a különböző zónákban lévő virtuális gépek nem frissülnek egyidőben.
+* **Az egyes szinteken üzembe helyezett virtuális gépek Availability Zones**: az egyes szinteken lévő összes virtuális gép [Availability Zones](../availability-zones/az-overview.md)között van konfigurálva. Az Azure-régiók rendelkezésre állási zónái egy tartalék tartomány és egy frissítési tartomány kombinációja. Ha például három vagy több virtuális gépet hoz létre három zónában egy Azure-régióban, a virtuális gépeket a rendszer gyakorlatilag három tartalék tartományba és három frissítési tartományba terjeszti. Az Azure platform felismeri ezt az eloszlást a frissítési tartományok között, hogy megbizonyosodjon róla, hogy a különböző zónákban lévő virtuális gépek nem frissülnek egyidőben.
 
      ![Rendelkezésre állási zónák üzembe helyezése](media/move-vm-overview/zone.png)
 

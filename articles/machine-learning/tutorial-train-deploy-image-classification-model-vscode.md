@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 04/13/2020
+ms.date: 07/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 05857641df22e03362eeee1590fef62fa3a45530
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 1d7b712e27ad73516606564ea125298cb3dea314
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857713"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143230"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Képbesorolási TensorFlow modell betanítása és üzembe helyezése a Visual Studio Code Azure Machine Learning használatával
 
@@ -91,7 +91,7 @@ Számítási cél létrehozása:
 1. A Visual Studio Code tevékenység sávján válassza az **Azure** ikont. Megjelenik a Azure Machine Learning nézet. 
 1. Bontsa ki az előfizetési csomópontot. 
 1. Bontsa ki a **TeamWorkspace** csomópontot. 
-1. A munkaterület csomópontban kattintson a jobb gombbal a **számítási** csomópontra, majd válassza a **számítás létrehozása**lehetőséget. 
+1. A munkaterület csomópontban kattintson a jobb gombbal a **számítási fürtök** csomópontra, majd válassza a **számítás létrehozása**lehetőséget. 
 
     > [!div class="mx-imgBorder"]
     > ![Számítási cél létrehozása](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
@@ -115,17 +115,8 @@ Számítási cél létrehozása:
                 "scaleSettings": {
                     "maxNodeCount": 4,
                     "minNodeCount": 0,
-                    "nodeIdleTimeBeforeScaleDown": 120
-                },
-                "userAccountCredentials": {
-                    "adminUserName": "",
-                    "adminUserPassword": "",
-                    "adminUserSshPublicKey": ""
-                },
-                "subnetName": "",
-                "vnetName": "",
-                "vnetResourceGroupName": "",
-                "remoteLoginPortPublicAccess": ""
+                    "nodeIdleTimeBeforeScaleDown": "PT120S"
+                }
             }
         }
     }
@@ -138,7 +129,7 @@ Számítási cél létrehozása:
     Azure ML: Save and Continue
     ```
 
-Néhány perc elteltével megjelenik az új számítási cél a munkaterület *számítási* csomópontján.
+Néhány perc elteltével az új számítási cél a munkaterület *számítási fürtök* csomópontjában jelenik meg.
 
 ## <a name="create-a-run-configuration"></a>Futtatási konfiguráció létrehozása
 
@@ -148,7 +139,7 @@ Futtatási konfiguráció létrehozása:
 
 1. A Visual Studio Code tevékenység sávján válassza az **Azure** ikont. Megjelenik a Azure Machine Learning nézet. 
 1. Bontsa ki az előfizetési csomópontot. 
-1. Bontsa ki a **TeamWorkspace > számítási** csomópontot. 
+1. Bontsa ki a **TeamWorkspace > számítási fürtök** csomópontot. 
 1. A számítási csomópont alatt kattintson a jobb gombbal a **TeamWkspc-com** számítási csomópontra, majd válassza a **futtatási konfiguráció létrehozása**parancsot.
 
     > [!div class="mx-imgBorder"]
@@ -158,7 +149,7 @@ Futtatási konfiguráció létrehozása:
 1. Ezután válassza az **új Azure ml-környezet létrehozása**lehetőséget. A környezetek a parancsfájlok futtatásához szükséges függőségeket határozzák meg.
 1. Nevezze el a környezetet "MNIST-env" néven, majd nyomja le az **ENTER**billentyűt.
 1. Válassza ki a **Conda függőségek fájlt** a listából.
-1. Nyomja le az **ENTER** billentyűt a Conda-függőségek fájl tallózásához. Ebben az esetben a függőségek fájl a `env.yml` `vscode-tools-for-ai/mnist-vscode-docs-sample` könyvtárban található fájl.
+1. Nyomja le az **ENTER** billentyűt a Conda-függőségek fájl tallózásához. Ebben az esetben a függőségek fájl a `env.yml` könyvtárban található fájl `vscode-tools-for-ai/mnist-vscode-docs-sample` .
 
     A VS Code-ban egy fájl jelenik meg az alábbihoz hasonló tartalommal:
 
@@ -214,13 +205,15 @@ Futtatási konfiguráció létrehozása:
     Azure ML: Save and Continue
     ```
 
-1. Nyomja le az **ENTER** billentyűt, és tallózással keresse meg a parancsfájlt a számításhoz. Ebben az esetben a modell betanítására szolgáló parancsfájl a `train.py` `vscode-tools-for-ai/mnist-vscode-docs-sample` könyvtáron belül található fájl.
+1. Ez a minta nem használ Azure Machine Learningban regisztrált adatkészletet. Ehelyett betöltődik a *Train.py* futtatásakor. Amikor a rendszer arra kéri, hogy hozzon létre egy adathivatkozást a képzési futtatásához, írja be az "n" kifejezést a parancssorba, **és nyomja le**az
+1. Nyomja le az **ENTER** billentyűt, és tallózással keresse meg a parancsfájlt a számításhoz. Ebben az esetben a modell betanítására szolgáló parancsfájl a `train.py` könyvtáron belül található `vscode-tools-for-ai/mnist-vscode-docs-sample` fájl.
 
-    A VS Code `MNIST-rc.runconfig` nevű fájl az alábbihoz hasonló tartalommal jelenik meg:
+    A VS Code nevű fájl az `MNIST-rc.runconfig` alábbihoz hasonló tartalommal jelenik meg:
 
     ```json
     {
         "script": "train.py",
+        "arguments": [],
         "framework": "Python",
         "communicator": "None",
         "target": "TeamWkspc-com",
@@ -332,7 +325,7 @@ A modell regisztrálása:
 
 1. Nevezze el az "MNIST-TensorFlow-Model" modellt, majd nyomja le az **ENTER**billentyűt.
 1. A TensorFlow modellek több fájlból állnak. A lehetőségek listájából válassza a modell **mappa** lehetőséget a modell elérési útjaként. 
-1. Válassza ki `azureml_outputs/Run_1/outputs/outputs/model` a könyvtárat.
+1. Válassza ki a `azureml_outputs/Run_1/outputs/outputs/model` könyvtárat.
 
     A modell konfigurációit tartalmazó fájl a Visual Studio Code-ban jelenik meg, az alábbihoz hasonló tartalommal:
 
@@ -376,8 +369,8 @@ Webszolgáltatás üzembe helyezése ACI-ként:
 
 1. Válassza a **Azure Container instances**lehetőséget.
 1. Nevezze el a szolgáltatást "mnist-tensorflow-SVC" néven, majd nyomja le az **ENTER**billentyűt.
-1. Válassza ki a tárolóban futtatni kívánt parancsfájlt az **ENTER billentyű** lenyomásával a beviteli mezőben, `score.py` és tallózással `mnist-vscode-docs-sample` keresse meg a fájlt a címtárban.
-1. Adja meg a parancsfájl futtatásához szükséges függőségeket az **ENTER billentyű** lenyomásával a beviteli mezőben, `env.yml` és tallózással `mnist-vscode-docs-sample` keresse meg a fájlt a címtárban.
+1. Válassza ki a tárolóban futtatni kívánt parancsfájlt az **ENTER billentyű** lenyomásával a beviteli mezőben, és tallózással keresse meg a `score.py` fájlt a `mnist-vscode-docs-sample` címtárban.
+1. Adja meg a parancsfájl futtatásához szükséges függőségeket az **ENTER billentyű** lenyomásával a beviteli mezőben, és tallózással keresse meg a `env.yml` fájlt a `mnist-vscode-docs-sample` címtárban.
 
     A modell konfigurációit tartalmazó fájl a Visual Studio Code-ban jelenik meg, az alábbihoz hasonló tartalommal:
 

@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 145ae5f6f9204366052d9a182c61d76ff7ffa715
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: e7f7535cf66da721e1738da6d0efbf335d97a6da
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871509"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86134507"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Vész-helyreállítás beállítása Azure-beli virtuális gépekhez
 
@@ -31,15 +31,15 @@ Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az Azure-beli vir
 
 Az oktatóanyag elvégzéséhez:
 
-- Tekintse át [a forgatókönyv-architektúrát és -összetevőket](concepts-azure-to-azure-architecture.md).
-- Mielőtt elkezdené, tekintse át a [támogatási követelményeket](site-recovery-support-matrix-azure-to-azure.md) .
+- Tekintse át [a forgatókönyv-architektúrát és -összetevőket](./azure-to-azure-architecture.md).
+- Mielőtt elkezdené, tekintse át a [támogatási követelményeket](./azure-to-azure-support-matrix.md) .
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
 A forrásrégió kivételével bármelyik régióban létrehozhat tárolót.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet. Ezután válassza ki **& felügyeleti eszközök** > **biztonsági mentése és site Recovery**.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet. Ezután válassza ki **& felügyeleti eszközök**  >  **biztonsági mentése és site Recovery**.
 1. A **Név** mezőben adja meg a tárolót azonosító rövid nevet. Ha egynél több előfizetéssel rendelkezik, válassza ki ezek közül a megfelelőt.
 1. Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy meglévőt. Válassza ki a kívánt Azure-régiót. A támogatott régiók kereséséhez tekintse meg a földrajzi elérhetőség [Azure site Recovery díjszabását](https://azure.microsoft.com/pricing/details/site-recovery/).
 1. Ha a tárolót az irányítópultról szeretné elérni, válassza a **rögzítés az irányítópulton** lehetőséget, majd válassza a **Létrehozás**lehetőséget.
@@ -66,7 +66,7 @@ Ahhoz, hogy a Site Recovery a várt módon működjön, módosítania kell a kim
 
 Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, engedélyezze az alábbi URL-címek elérését:
 
-| **URL** | **Részletek** |
+| **URL-cím** | **Részletek** |
 | ------- | ----------- |
 | `*.blob.core.windows.net` | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | `login.microsoftonline.com` | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
@@ -75,7 +75,7 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 
-Ha hálózati biztonsági csoportot (NSG) használ, hozzon létre az Azure Storage-hoz, Azure Active Directoryhoz, Site Recovery szolgáltatáshoz és Site Recovery figyeléshez való hozzáféréshez használható, szolgáltatás-címkézési szabályokat. [További információ](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags).
+Ha hálózati biztonsági csoportot (NSG) használ, hozzon létre az Azure Storage-hoz, Azure Active Directoryhoz, Site Recovery szolgáltatáshoz és Site Recovery figyeléshez való hozzáféréshez használható, szolgáltatás-címkézési szabályokat. [További információk](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags).
 
 ## <a name="verify-azure-vm-certificates"></a>Azure-beli virtuális gép tanúsítványainak ellenőrzése
 
@@ -137,10 +137,10 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
    | **Célhely** | A vész-helyreállításhoz használt cél régió.<br/><br/> Javasoljuk, hogy a célhely és a Site Recovery-tároló helye ugyanaz legyen. |
    | **Cél erőforráscsoport** | Az Azure-beli virtuális gépeket a feladatátvételt követően tároló erőforráscsoport.<br/><br/> Alapértelmezés szerint a Site Recovery egy új erőforráscsoportot hoz létre a célként megadott régióban `asr` utótaggal. A cél erőforráscsoport helye bármely régió lehet, kivéve azt a régiót, amelyben a forrásként szolgáló virtuális gépek futnak. |
    | **Célként megadott virtuális hálózat** | A célként megadott régióban található, a virtuális gépeket a feladatátvételt követően tároló hálózat.<br/><br/> Alapértelmezés szerint a Site Recovery egy új virtuális hálózatot (és alhálózatokat) hoz létre a célként megadott régióban `asr` utótaggal. |
-   | **Gyorsítótár-tárolási fiókok** | Site Recovery egy Storage-fiókot használ a forrás régióban. A forrás virtuális gépekre vonatkozó módosítások ebbe a fiókba érkeznek a célhelyre történő replikáció előtt.<br/><br/> Ha tűzfallal védett gyorsítótáras Storage-fiókot használ, győződjön meg arról, hogy engedélyezi a **megbízható Microsoft-szolgáltatások engedélyezését**. [További információ](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions). Győződjön meg arról is, hogy engedélyezi a hozzáférést a forrás vnet legalább egy alhálózatához. |
+   | **Gyorsítótár-tárolási fiókok** | Site Recovery egy Storage-fiókot használ a forrás régióban. A forrás virtuális gépekre vonatkozó módosítások ebbe a fiókba érkeznek a célhelyre történő replikáció előtt.<br/><br/> Ha tűzfallal védett gyorsítótáras Storage-fiókot használ, győződjön meg arról, hogy engedélyezi a **megbízható Microsoft-szolgáltatások engedélyezését**. [További információk](../storage/common/storage-network-security.md#exceptions). Győződjön meg arról is, hogy engedélyezi a hozzáférést a forrás vnet legalább egy alhálózatához. |
    | **Cél Storage-fiókok (a forrásoldali virtuális gép nem felügyelt lemezeket használ)** | Alapértelmezés szerint a Site Recovery új Storage-fiókot hoz létre a célként megadott régióban a forrásként szolgáló virtuális gép tárolási fiókjának tükrözéséhez.<br/><br/> Engedélyezze a **megbízható Microsoft-szolgáltatások engedélyezését** , ha tűzfallal védett gyorsítótáras Storage-fiókot használ. |
    | **Replika által felügyelt lemezek (ha a forrás virtuális gép felügyelt lemezeket használ)** | Alapértelmezés szerint a Site Recovery replika felügyelt lemezeket hoz létre a célhelyen a forrásként szolgáló virtuális gép felügyelt lemezeit ugyanazzal a tárolási típussal (standard vagy prémium), mint a forrás virtuális gép felügyelt lemezével. Csak a lemez típusát lehet testreszabni. |
-   | **Cél rendelkezésre állási csoportok** | Alapértelmezés szerint a Azure Site Recovery egy új rendelkezésre állási készletet hoz létre a céltartományban, `asr` amelynek a neve a rendelkezésre állási csoportnak a forrásoldali régióban lévő virtuális gépek részében utótaggal rendelkezik. Ha a Azure Site Recovery által létrehozott rendelkezésre állási csoport már létezik, az újra használatban van. |
+   | **Cél rendelkezésre állási csoportok** | Alapértelmezés szerint a Azure Site Recovery egy új rendelkezésre állási készletet hoz létre a céltartományban, amelynek a neve a `asr` rendelkezésre állási csoportnak a forrásoldali régióban lévő virtuális gépek részében utótaggal rendelkezik. Ha a Azure Site Recovery által létrehozott rendelkezésre állási csoport már létezik, az újra használatban van. |
    | **Cél rendelkezésre állási zónák** | Alapértelmezés szerint a Site Recovery ugyanazt a zónát rendeli hozzá, mint a célként megadott régióban lévő forrástartomány, ha a cél régió támogatja a rendelkezésre állási zónákat.<br/><br/> Ha a célként megadott régió nem támogatja a rendelkezésre állási zónák használatát, a célként megadott virtuális gépek alapértelmezés szerint önálló példányként vannak konfigurálva.<br/><br/> Válassza a **Testreszabás** lehetőséget, hogy a virtuális gépeket egy rendelkezésre állási csoport részeként konfigurálja a célként megadott régióban.<br/><br/> A replikáció engedélyezése után nem módosíthatja a rendelkezésre állási típust (egy példány, rendelkezésre állási csoport vagy rendelkezésre állási zóna). A rendelkezésre állási típus módosításához tiltsa le és engedélyezze a replikálást. |
 
 1. A replikációs házirend beállításainak testreszabásához válassza a **replikációs házirend**melletti **Testreszabás** lehetőséget, és szükség szerint módosítsa a beállításokat.
@@ -152,7 +152,7 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
    | **Alkalmazás-konzisztens pillanatkép gyakorisága** | Alapértelmezés szerint a Site Recovery 4 óránként végrehajtja az alkalmazás-konzisztens pillanatképet. 1 és 12 óra közötti értéket konfigurálhat.<br/><br/> Az alkalmazás-konzisztens pillanatkép a virtuális gépen belüli alkalmazásadatok időponthoz tartozó pillanatképe. A kötet árnyékmásolata szolgáltatás (VSS) biztosítja, hogy a virtuális gépen található alkalmazás konzisztens állapotban legyen a pillanatkép készítésekor. |
    | **Replikációs csoport** | Ha az alkalmazás több virtuális gépre kiterjedő konzisztenciát igényel a virtuális gépek között, létrehozhat egy replikációs csoportot ezekhez a virtuális gépekhez. Alapértelmezés szerint a kijelölt virtuális gépek nem részei semmilyen replikációs csoportnak sem. |
 
-1. A **Testreszabás**területen válassza az **Igen** lehetőséget a több virtuális gépre kiterjedő konzisztencia esetén, ha új vagy meglévő replikációs csoportba kívánja hozzáadni a virtuális gépeket. Ezután kattintson az **OK** gombra.
+1. A **Testreszabás**területen válassza az **Igen** lehetőséget a több virtuális gépre kiterjedő konzisztencia esetén, ha új vagy meglévő replikációs csoportba kívánja hozzáadni a virtuális gépeket. Ezután válassza az **OK** gombot.
 
    > [!NOTE]
    > - A replikálási csoportban lévő összes gép megosztott összeomlási konzisztens és alkalmazás-konzisztens helyreállítási pontokat tartalmaz a feladatátvétel során.
@@ -166,7 +166,7 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
 Ha a forrásoldali virtuális gépnek engedélyezve van az Azure Disk Encryption (ADE), tekintse át a beállításokat.
 
 1. Ellenőrizze a beállításokat:
-   1. **Lemezes titkosítási kulcstartók**: alapértelmezés szerint a site Recovery egy új kulcstárolót hoz létre a forrásként szolgáló `asr` virtuális gép lemezének titkosítási kulcsain, utótaggal. Ha a kulcstartó már létezik, a rendszer újra felhasználja.
+   1. **Lemezes titkosítási kulcstartók**: alapértelmezés szerint a site Recovery egy új kulcstárolót hoz létre a forrásként szolgáló virtuális gép lemezének titkosítási kulcsain, `asr` utótaggal. Ha a kulcstartó már létezik, a rendszer újra felhasználja.
    1. **Key encryption Key vaultok**: alapértelmezés szerint a site Recovery egy új kulcstartót hoz létre a céltartományban. A név `asr` utótagot tartalmaz, és a forrás virtuális gép kulcsának titkosítási kulcsain alapul. Ha a Site Recovery által létrehozott Key Vault már létezik, a rendszer újra felhasználja.
 1. Válassza a **Testreszabás** lehetőséget az egyéni kulcstartók kiválasztásához.
 
@@ -179,8 +179,8 @@ A replikáció engedélyezése után nyomon követheti a feladatok állapotát.
 
 1. A **Beállítások**területen válassza a **frissítés** lehetőséget a legutóbbi állapot lekéréséhez.
 1. Nyomon követheti a folyamat előrehaladását és állapotát a következőképpen:
-   1. A **védelem engedélyezése** feladat előrehaladásának nyomon követése a **Beállítások** > **feladatok** > **site Recovery feladatok**részen.
-   1. A **Beállítások** > **replikált elemek**területen megtekintheti a virtuális gépek állapotát és a kezdeti replikálás folyamatát. Válassza ki a virtuális gépet a beállítások részletezéséhez.
+   1. A **védelem engedélyezése** feladat előrehaladásának nyomon követése a **Beállítások**  >  **feladatok**  >  **site Recovery feladatok**részen.
+   1. A **Beállítások**  >  **replikált elemek**területen megtekintheti a virtuális gépek állapotát és a kezdeti replikálás folyamatát. Válassza ki a virtuális gépet a beállítások részletezéséhez.
 
 ## <a name="next-steps"></a>További lépések
 

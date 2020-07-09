@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd01c86086c7491d22f655fcba5da237286412f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dbe6aed8ae0403f6ab4a7f9e0ba8b9a2c5d61617
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68347798"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86168558"
 ---
 # <a name="tutorial-integrate-sap-analytics-cloud-with-azure-active-directory"></a>Oktatóanyag: SAP Analytics-felhő integrálása Azure Active Directory
 
@@ -85,17 +85,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
-    | |
-    |-|-|
-    | `https://<sub-domain>.sapanalytics.cloud/` |
-    | `https://<sub-domain>.sapbusinessobjects.cloud/` |
+    - `https://<sub-domain>.sapanalytics.cloud/`
+    - `https://<sub-domain>.sapbusinessobjects.cloud/`
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
-    
-    | |
-    |-|-|
-    | `<sub-domain>.sapbusinessobjects.cloud` |
-    | `<sub-domain>.sapanalytics.cloud` |
+
+    - `<sub-domain>.sapbusinessobjects.cloud`
+    - `<sub-domain>.sapanalytics.cloud`
 
     > [!NOTE] 
     > Ezekben az URL-címekben szereplő értékek csak a bemutatóra vonatkoznak. Frissítse az értékeket a tényleges bejelentkezési URL-címmel és az azonosító URL-címével. A bejelentkezési URL-cím beszerzéséhez lépjen kapcsolatba az [SAP Analytics Cloud Client támogatási csapatával](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/). Az azonosító URL-cím lekéréséhez töltse le az SAP Analytics felhőalapú metaadatait a felügyeleti konzolról. Ezt az oktatóanyag későbbi részében ismertetjük.
@@ -112,7 +108,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként az SAP Analytics felhőalapú vállalati webhelyére.
 
-2. Válassza a menü**System** > **rendszerfelügyelet** **menüpontot** > .
+2. Válassza a **menü**  >  **System**  >  **rendszerfelügyelet**menüpontot.
     
     ![Válassza a menü, majd a rendszer, majd az adminisztráció lehetőséget.](./media/sapboc-tutorial/config1.png)
 
@@ -152,9 +148,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -182,11 +178,11 @@ Felhasználói fiók kiépítése:
 
 1. Jelentkezzen be rendszergazdaként az SAP Analytics felhőalapú vállalati webhelyére.
 
-2. Válassza a **menü** > **biztonsági** > **felhasználók**lehetőséget.
+2. Válassza a **menü**  >  **biztonsági**  >  **felhasználók**lehetőséget.
 
     ![Alkalmazott hozzáadása](./media/sapboc-tutorial/user1.png)
 
-3. A **felhasználók** lapon új felhasználói adatok hozzáadásához válassza a elemet **+**. 
+3. A **felhasználók** lapon új felhasználói adatok hozzáadásához válassza a elemet **+** . 
 
     ![Felhasználók hozzáadása lap](./media/sapboc-tutorial/user4.png)
 
@@ -200,13 +196,13 @@ Felhasználói fiók kiépítése:
 
     d. A **megjelenítendő név** mezőbe írja be a felhasználó teljes nevét, például: **B. Simon**.
 
-    e. Az **e-mail** mezőbe írja be a felhasználó e-mail-címét, például `b.simon@contoso.com`:.
+    e. Az **e-mail** mezőbe írja be a felhasználó e-mail-címét, például: `b.simon@contoso.com` .
 
     f. A **szerepkörök kiválasztása** lapon válassza ki a megfelelő szerepkört a felhasználó számára, majd kattintson az **OK gombra**.
 
-      ![Szerepkör kiválasztása](./media/sapboc-tutorial/user3.png)
+      ![Válasszon szerepkört](./media/sapboc-tutorial/user3.png)
 
-    g. Válassza a **Mentés** ikont.
+    : Válassza a **Mentés** ikont.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

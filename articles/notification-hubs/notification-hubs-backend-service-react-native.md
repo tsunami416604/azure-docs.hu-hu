@@ -6,11 +6,12 @@ ms.service: notification-hubs
 ms.topic: tutorial
 ms.date: 06/11/2020
 ms.author: alstrakh
-ms.openlocfilehash: 30cf22d99a675d4525d972aeb889cec30a2e9b94
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 007be386b7b64fd3461fa508d35a4ef9be377c1f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060506"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170910"
 ---
 # <a name="tutorial-send-push-notifications-to-react-native-apps-using-azure-notification-hubs-via-a-backend-service"></a>Oktatóanyag: leküldéses értesítések küldése a natív alkalmazások az Azure Notification Hubs használatával való Reagálásához egy háttér-szolgáltatáson keresztül  
 
@@ -19,7 +20,8 @@ ms.locfileid: "86060506"
 > [!div class="op_single_selector"]
 >
 > * [Xamarin.Forms](notification-hubs-backend-service-xamarin-forms.md)
-> * [Natív reagálás](notification-hubs-backend-service-react-native.md)
+> * [Flutter](notification-hubs-backend-service-flutter.md)
+> * [React Native](notification-hubs-backend-service-react-native.md)
 
 Ebben az oktatóanyagban az [Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-overview) használatával leküldheti az értesítéseket egy olyan [natív](https://reactnative.dev/) alkalmazásra, amely az **Androidot** és az **iOS**-t célozza meg.  
 
@@ -61,9 +63,9 @@ Az első elvekben ismertetett lépéseket a korábbi tapasztalatok nélkül is k
 
 * [Apple fejlesztői portál](https://developer.apple.com)
 * [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1)
+* [Azure Notification Hubs](notification-hubs-push-notification-overview.md)
 * [Google Firebase-konzol](https://console.firebase.google.com/u/0/)
-* [Microsoft Azure](https://portal.azure.com) [Leküldéses értesítések Microsoft Azure és küldése iOS-alkalmazásokba az Azure Notification Hubs használatával](ios-sdk-get-started.md).
-* [React Native](https://reactnative.dev/docs/getting-started).
+* [React Native](https://reactnative.dev/docs/getting-started)
 
 A megadott lépések a [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/) és a [Visual Studio Code](https://code.visualstudio.com/download) -hoz készültek, de a [Visual Studio 2019](https://visualstudio.microsoft.com/vs)-es használatával követhető.
 

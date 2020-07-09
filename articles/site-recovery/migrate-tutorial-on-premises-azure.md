@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: b978190776aee3c89d3beadde76d20c4327b012f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ccf83bacedb667e52e9865b6d451641faa0ac414
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80388916"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86131186"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
@@ -20,7 +20,7 @@ ms.locfileid: "80388916"
 Ez a cikk bemutatja, hogyan telepítheti át a helyszíni gépeket az Azure-ba a [Azure site Recovery](site-recovery-overview.md)használatával. 
 
 > [!TIP]
-> A Azure Site Recovery szolgáltatás helyett a Azure Migrate használatával kell áttelepítenie a helyszíni gépeket az Azure-ba. [További információ](../migrate/migrate-services-overview.md).
+> A Azure Site Recovery szolgáltatás helyett a Azure Migrate használatával kell áttelepítenie a helyszíni gépeket az Azure-ba. [További információk](../migrate/migrate-services-overview.md).
 
 
 Az oktatóanyag bemutatja, hogyan migrálhatja a helyszíni virtuális gépeket és a fizikai kiszolgálókat az Azure-ba. Az alábbiak végrehajtásának módját ismerheti meg:
@@ -51,7 +51,7 @@ A paravirtualizált illesztőprogramok által exportált eszközök nem támogat
 
 Válassza ki, hogy mit szeretne replikálni, és hová.
 1. Kattintson a **Helyreállítási tárak** > tár elemre.
-2. Az erőforrás menüben kattintson **site Recovery** > az**infrastruktúra** > előkészítése**védelmi cél**elemre.
+2. Az erőforrás menüben kattintson site Recovery az **Site Recovery**  >  **infrastruktúra előkészítése**  >  **védelmi cél**elemre.
 3. A **Védelmi cél** ablakban válassza ki, hogy mit szeretne migrálni.
     - **VMware**: Válassza az **Azure-ba** > **Igen, a következővel: VMWare vSphere hipervizorral** lehetőséget.
     - **Fizikai gép**: Válassza az **Azure-ba** > **Nem virtualizált/egyéb** lehetőséget.
@@ -70,7 +70,7 @@ Hyper-V | A [forrás környezet](hyper-v-azure-tutorial.md#set-up-the-source-env
 
 Válassza ki és ellenőrizze a célerőforrásokat.
 
-1. Kattintson az **infrastruktúra** > előkészítése**cél**elemre, majd válassza ki a használni kívánt Azure-előfizetést.
+1. Kattintson az **infrastruktúra előkészítése**  >  **cél**elemre, majd válassza ki a használni kívánt Azure-előfizetést.
 2. Adja meg a Resource Manager-alapú üzemi modell beállítást.
 3. Site Recovery ellenőrzi az Azure-erőforrásokat.
     - Ha VMware virtuális gépeket vagy fizikai kiszolgálókat telepít át, Site Recovery ellenőrzi, hogy van-e olyan Azure-hálózat, amelyben az Azure-beli virtuális gépek a feladatátvétel után jönnek létre.
@@ -103,8 +103,8 @@ A [rest failover](tutorial-dr-drill-azure.md) parancs Azure-ban történő futta
 
 Futtasson egy feladatátvételt a migrálni kívánt gépen.
 
-1. A **Beállítások** > **replikált elemek** elemnél kattintson a gép > **feladatátvétel**elemre.
-2. A feladatátvétel területen válassza ki azt a **helyreállítási pontot** , amelyhez át szeretné adni a **feladatátvételt** . Válassza a legutóbbi helyreállítási pontot.
+1. A **Beállítások**  >  **replikált elemek** elemnél kattintson a gép > **feladatátvétel**elemre.
+2. A **Feladatátvétel** területen válassza ki a **Helyreállítási pontot** a feladatok átvételéhez. Válassza a legutóbbi helyreállítási pontot.
 3. Ehhez a forgatókönyvhöz nem kell figyelembe venni a titkosítási kulcs beállítását.
 4. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget. A Site Recovery a feladatátvitel indítása előtt megkísérli leállítani a virtuális gépeket. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamat a **feladatok** lapon követhető.
 5. Ellenőrizze, hogy az Azure-beli virtuális gép a várt módon jelenik-e meg az Azure-ban.
@@ -132,21 +132,21 @@ Egyes lépések automatikusan is végrehajthatók az áttelepítési folyamat r�
 
 - Hajtson végre minden áttelepítés utáni módosítást az alkalmazáson (például adatbázis-kapcsolati sztringek frissítése és webes kiszolgálók konfigurálása). 
 - Végezze el a végső alkalmazás- és áttelepítés-elfogadás teszteket az Azure-on jelenleg futó alkalmazásoknál.
-- Az [Azure virtuálisgép-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) kezeli a virtuális gépek kommunikációját az Azure-hálóvezérlővel. Erre egyes Azure-szolgáltatások, például az Azure Backup, a Site Recovery és az Azure Security esetében van szükség.
+- Az [Azure virtuálisgép-ügynök](../virtual-machines/extensions/agent-windows.md) kezeli a virtuális gépek kommunikációját az Azure-hálóvezérlővel. Erre egyes Azure-szolgáltatások, például az Azure Backup, a Site Recovery és az Azure Security esetében van szükség.
     - VMware-alapú gépek és fizikai kiszolgálók áttelepítése esetében a mobilitási szolgáltatástelepítő telepíti az elérhető Azure virtuálisgép-ügynököt a Windows-rendszerű gépekre. Linux-rendszerű virtuális gépek esetében azt javasoljuk, hogy feladatátvétel után telepítse az ügynököt.
     - Ha Azure-beli virtuális gépeket telepít át egy másodlagos régióba, az áttelepítés előtt az Azure virtuálisgép-ügynököt a virtuális gépen kell kiépíteni.
     - Ha a Hyper-V virtuális gépeket az Azure-ba telepíti át, az áttelepítés után telepítse az Azure virtuálisgép-ügynököt az Azure-beli virtuális gépre.
 - Manuálisan távolítson el minden Site Recovery-szolgáltatót/ügynököt a virtuális gépről. Ha VMware virtuális gépeket vagy fizikai kiszolgálókat telepít át, távolítsa el a mobilitási szolgáltatást a virtuális gépről.
 - A nagyobb rugalmasság érdekében:
-    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információ]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
-    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információ](azure-to-azure-quickstart.md).
+    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk](../backup/quick-backup-vm-portal.md).
+    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](azure-to-azure-quickstart.md).
 - A biztonság fokozása érdekében:
-    - Zárolja és korlátozza a beérkező forgalom hozzáférését az Azure Security Center [igény szerinti felügyelet]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time) funkciójával
-    - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview) használatával.
-    - Az [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) üzembe helyezésével biztonságba helyezheti a lemezeket, és megóvhatja az adatokat a lopási kísérletektől és a jogosulatlan hozzáféréstől.
+    - Zárolja és korlátozza a beérkező forgalom hozzáférését az Azure Security Center [igény szerinti felügyelet](../security-center/security-center-just-in-time.md) funkciójával
+    - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](../virtual-network/security-overview.md) használatával.
+    - Az [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) üzembe helyezésével biztonságba helyezheti a lemezeket, és megóvhatja az adatokat a lopási kísérletektől és a jogosulatlan hozzáféréstől.
     - Látogasson el a [az Azure Security Center](https://azure.microsoft.com/services/security-center/ ) webhelyére, és tudjon meg többet az [IaaS-erőforrások biztosításáról]( https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/ ).
 - Figyelési és felügyeleti eszközök:
-    - Fontolja meg az [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
+    - Fontolja meg az [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
 
 ### <a name="post-migration-steps-on-premises"></a>Áttelepítést követő helyszíni lépések
 

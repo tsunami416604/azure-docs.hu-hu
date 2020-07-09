@@ -4,12 +4,12 @@ description: Ez a cikk az AWS virtuális gépek Azure-ba történő áttelepít�
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 6eeff73bdcac214eb3836731fcbfd2f9410c6045
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5d697c2146144ca7f4b9a8739b6863ba31845f4e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102803"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165430"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek felderítése, felmérése és migrálása az Azure-ba
 
@@ -31,7 +31,7 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 > * Futtasson egy teszt-áttelepítést, és győződjön meg róla, hogy minden a várt módon működik-e.
 > * Futtasson teljes áttelepítést az Azure-ba.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 ## <a name="discover-and-assess-aws-vms"></a>AWS virtuális gépek felderítése és értékelése  
 
@@ -60,7 +60,7 @@ Tekintse át a [Windows](prepare-for-migration.md#windows-machines) -és [Linux]
 
 Készítse elő az Azure-t a Azure Migrate: Server áttelepítési eszközzel történő áttelepítéshez.
 
-**Tevékenység** | **Részletek**
+**Feladat** | **Részletek**
 --- | ---
 **Azure Migrate projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához.
 **Azure-fiók engedélyeinek ellenőrzése** | Az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
@@ -77,9 +77,9 @@ Készítse elő az Azure-t a Azure Migrate: Server áttelepítési eszközzel t�
 
 Rendelje hozzá a virtuális gépi közreműködő szerepkört az Azure-fiókhoz. Ez a következő engedélyekkel rendelkezik:
 
-    - Virtuális gépek létrehozása a kiválasztott erőforráscsoportban.
-    - Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
-    - Írás egy Azure-beli felügyelt lemezre. 
+- Virtuális gépek létrehozása a kiválasztott erőforráscsoportban.
+- Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
+- Írás egy Azure-beli felügyelt lemezre. 
 
 ### <a name="create-an-azure-network"></a>Azure-hálózat létrehozása
 
@@ -162,7 +162,7 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. Az A
 9. Futtassa a replikációs berendezés telepítési fájlját a következő eljárásban leírtak szerint.  
     9.1. Az **Előkészületek** területen válassza **A konfigurációs kiszolgáló és a folyamatkiszolgáló telepítése** lehetőséget, majd válassza a **Tovább** lehetőséget.   
     9,2 **harmadik féltől származó**szoftverlicenc esetében válassza **az Elfogadom a harmadik féltől származó licencszerződést**lehetőséget, majd kattintson a **tovább**gombra.   
-    9,3 a **regisztráció**lapon válassza a **Tallózás**lehetőséget, majd nyissa meg a tároló regisztrációs kulcsát tartalmazó fájlt. Válassza a **Tovább** lehetőséget.  
+    9,3 a **regisztráció**lapon válassza a **Tallózás**lehetőséget, majd nyissa meg a tároló regisztrációs kulcsát tartalmazó fájlt. Kattintson a **Tovább** gombra.  
     9,4 az **Internetbeállítások**területen válassza a **Csatlakozás Azure site Recovery proxykiszolgáló nélkül**lehetőséget, majd kattintson a **tovább**gombra.  
     9,5 az **Előfeltételek ellenőrzése** lap több elemre vonatkozó ellenőrzéseket futtat. Ha befejeződött, válassza a **Tovább** lehetőséget.  
     9,6 a **MySQL-konfigurációban**adjon meg egy jelszót a MySQL-adatbázishoz, majd kattintson a **tovább**gombra.  
@@ -170,7 +170,7 @@ Az áttelepítés első lépése a replikációs berendezés beállítása. Az A
     9,8 a **telepítés helye**területen a **tovább** gombra kattintva fogadja el az alapértelmezett értéket.  
     9,9 a **hálózat kiválasztása**területen válassza a **tovább** lehetőséget az alapértelmezett érték elfogadásához.  
     9,10 az **Összefoglalás**területen válassza a **telepítés**lehetőséget.   
-    9,11 a **telepítési** folyamat adatai a telepítési folyamattal kapcsolatos információkat jelenítenek meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Válassza az **OK** lehetőséget.   
+    9,11 a **telepítési** folyamat adatai a telepítési folyamattal kapcsolatos információkat jelenítenek meg. Ha befejeződött, válassza a **Befejezés** lehetőséget. Egy ablakban megjelenik egy újraindítással kapcsolatos üzenet. Kattintson az **OK** gombra.   
     9,12 következő lépésként egy ablak egy üzenetet jelenít meg a konfigurációs kiszolgáló hozzáférési jelszavával kapcsolatban. Másolja a jelszót a vágólapra, és mentse a jelszót egy ideiglenes szövegfájlba a forrásként szolgáló virtuális gépeken. Ezt a jelszót később kell megadnia a mobilitási szolgáltatás telepítési folyamata során.
 10. A telepítés befejezése után a berendezés konfigurálása varázsló automatikusan elindul (a varázslót manuálisan is elindíthatja a berendezés asztalán létrehozott cspsconfigtool-parancsikon használatával). A varázsló fiókok kezelése lapján adhatja meg a mobilitási szolgáltatás leküldéses telepítéséhez szükséges fiók adatait. Ebben az oktatóanyagban manuálisan telepítjük a mobilitási szolgáltatást a forrásként szolgáló virtuális gépekre a replikáláshoz, ezért ebben a lépésben hozzon létre egy dummy-fiókot, és folytassa a következővel:.
 11. Miután a készülék újraindult a telepítés után, a **számítógépek felderítése**lapon válassza ki az új készüléket a **konfigurációs kiszolgáló kiválasztása**területen, majd kattintson a **regisztráció véglegesítése**lehetőségre. A regisztráció véglegesítése a replikációs berendezés előkészítésének néhány utolsó feladatát hajtja végre.
@@ -354,7 +354,7 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 - Figyelési és felügyeleti eszközök:
     - Fontolja meg az [Azure Cost Management](../cost-management-billing/cloudyn/overview.md) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.
 

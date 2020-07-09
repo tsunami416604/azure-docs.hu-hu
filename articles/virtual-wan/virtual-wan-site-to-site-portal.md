@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 13949bef7b26058c577a3ab85b4fb2e736bba8f5
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6c6620a83be2eade3b449553824116a4bea7e4d8
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562965"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144100"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Oktatóanyag: Helyek közötti kapcsolat létrehozása az Azure Virtual WAN használatával
 
@@ -57,7 +57,7 @@ Egy böngészőből lépjen az Azure Portalra, majd jelentkezzen be az Azure-fi�
 2. Válassza ki a **virtuális WAN** elemet az eredmények közül. A virtuális WAN lapon kattintson a **Létrehozás** elemre a WAN létrehozása lap megnyitásához.
 3. A **WAN létrehozása** lap **alapok** lapján töltse ki a következő mezőket:
 
-   ![Virtual WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
+   ![Virtuális WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
 
    * **Előfizetés** – Válassza ki a használni kívánt előfizetést.
    * **Erőforráscsoport** – új létrehozása vagy meglévő használata.
@@ -262,7 +262,7 @@ A **VPN Gateway szerkesztése** lapon a következő beállításokat tekintheti 
 * VPN Gateway nyilvános IP-cím (az Azure által hozzárendelt)
 * VPN Gateway magánhálózati IP-cím (az Azure által hozzárendelt)
 * Alapértelmezett BGP IP-cím VPN Gateway (az Azure által hozzárendelt)
-* Egyéni BGP IP-cím konfigurációs beállítása: Ez a mező az APIPA (automatikus magánhálózati IP-címzés) számára van fenntartva. Az Azure támogatja a BGP IP-címet a 169.254.21. * és a 169.254.22. * tartományban. *
+* Egyéni BGP IP-cím konfigurációs beállítása: Ez a mező az APIPA (automatikus magánhálózati IP-címzés) számára van fenntartva. Az Azure támogatja a BGP IP-címet a 169.254.21. * és a 169.254.22. * tartományokban. Az Azure elfogadja a BGP-kapcsolatokat ezekben a tartományokban, de az alapértelmezett BGP-IP-címmel fogja tárcsázni a kapcsolatot.
 
    :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Konfiguráció megtekintése" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
