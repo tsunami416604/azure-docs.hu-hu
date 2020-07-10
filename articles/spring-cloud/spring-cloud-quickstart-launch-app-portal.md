@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 0637716b5f9970ff8c6d550f138fb7d21a26b81a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 118e1e49393a797a065f1e9968a83a6d4464868e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134460"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171040"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Gyors útmutató: meglévő Azure Spring Cloud-alkalmazás elindítása a Azure Portal használatával
 
@@ -132,11 +132,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-5. Hozza létre az `gateway` alkalmazást, és telepítse a jar-fájlt.  A következő lépésekhez a Spring Cloud bővítmény szükséges. Ha nem telepítette az előfeltételeket, futtassa a következő parancsot:
-
-    ```azurecli
-    az extension add --name spring-cloud
-    ```
+5. Hozza létre az `gateway` alkalmazást, és telepítse a jar-fájlt.
 
     A Spring Cloud bővítmény használatával hozza létre az alkalmazást:
 
@@ -176,7 +172,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe.  A tel
 > [!div class="nextstepaction"]
 > [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=public-endpoint)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

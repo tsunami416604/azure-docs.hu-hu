@@ -2,14 +2,16 @@
 title: Az Azure Active Directory Azure Kubernetes Service-szel való integrálása
 description: Megtudhatja, hogyan használhatja az Azure CLI-t az Azure Kubernetes Service (ak) fürt létrehozásához és Azure Active Directoryéhez
 services: container-service
+author: TomGeske
 ms.topic: article
-ms.date: 04/16/2019
-ms.openlocfilehash: 85441b53b22b4d33ee2ff967d777cc3267e171da
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/08/2020
+ms.author: thomasge
+ms.openlocfilehash: 0465c54df2095cff7647e974765e61fa9b9ff3e1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106101"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169459"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure Active Directory integrálása az Azure Kubernetes szolgáltatással az Azure CLI használatával
 
@@ -19,9 +21,9 @@ Ez a cikk bemutatja, hogyan hozhatja létre a szükséges Azure AD-összetevőke
 
 Az ebben a cikkben használt teljes minta szkripttel kapcsolatban lásd: [Azure CLI-minták – AK-integráció az Azure ad-vel][complete-script].
 
-Az alábbi korlátozások érvényesek:
+## <a name="the-following-limitations-apply"></a>Az alábbi korlátozások érvényesek:
 
-- Az Azure AD csak akkor engedélyezhető, ha új, RBAC-kompatibilis fürtöt hoz létre. Az Azure AD nem engedélyezhető egy meglévő AK-fürtön.
+- Az Azure AD-t csak RBAC-kompatibilis fürtön lehet engedélyezni.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -241,7 +243,7 @@ error: You must be logged in to the server (Unauthorized)
 * A felhasználó nem tagja több mint 200 csoportnak.
 * Az alkalmazás regisztrálásakor megadott titkos kód megegyezik a használatával konfigurált értékkel`--aad-server-app-secret`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a cikkben látható parancsokat tartalmazó teljes parancsfájl esetében tekintse meg az [Azure ad-integrációs parancsfájlt az AK-minták][complete-script]tárházában.
 

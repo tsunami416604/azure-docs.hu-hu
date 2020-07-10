@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 09a7a28716e437bab71c7386bd332712a4d192dd
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 75c6f8ec8410ff90b3da4fb6a50c9ef8ba7d1618
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196379"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184619"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 
@@ -39,8 +39,8 @@ A Redis készült Azure cache a következő szinteknél érhető el:
 
 | Szint | Leírás |
 |---|---|
-Basic | Egy csomópontos gyorsítótár. Ez a szint több memóriát támogat (250 MB-53 GB), és ideális fejlesztési, tesztelési és nem kritikus fontosságú számítási feladatokhoz. Az alapszintű csomag nem rendelkezik szolgáltatásszint-szerződéssel (SLA) |
-| Standard | Egy két csomópontos, elsődleges/másodlagos, az Azure által felügyelt, magas rendelkezésre állást biztosító SLA-val (99,9%) rendelkező replikált gyorsítótár |
+Alapszintű | Egy csomópontos gyorsítótár. Ez a szint több memóriát támogat (250 MB-53 GB), és ideális fejlesztési, tesztelési és nem kritikus fontosságú számítási feladatokhoz. Az alapszintű csomag nem rendelkezik szolgáltatásszint-szerződéssel (SLA) |
+| Standard | Replikált gyorsítótár egy kétcsomópontos, elsődleges/replika, az Azure által kezelt konfigurációban magas rendelkezésre állású SLA-val (99,9%) |
 | Prémium | A prémium szint a nagyvállalati használatra kész szint. A prémium szintű gyorsítótárak több funkciót támogatnak, és nagyobb átviteli sebességgel, valamint gyorsabb válaszidőkkel rendelkeznek. A prémium szintű gyorsítótárakat nagyobb teljesítményű hardvereken helyezik üzembe, és az alapszintű vagy a standard szintnél jobb teljesítményt biztosítanak. Ez az előny azt jelenti, hogy az azonos méretű gyorsítótár esetében a standard szinthez képest magasabb lesz a prémium szintű kapacitás. |
 
 > [!TIP]
@@ -53,7 +53,7 @@ A gyorsítótárat a létrehozása után akár magasabb szinten is méretezheti.
 
 Az [Azure cache for Redis díjszabási](https://azure.microsoft.com/pricing/details/cache/) oldala az egyes szintek részletes összehasonlítását tartalmazza. Az alábbi táblázat a szintek által támogatott néhány funkciót írja le:
 
-| Funkció leírása | Prémium | Standard | Basic |
+| Funkció leírása | Prémium | Standard | Alapszintű |
 | ------------------- | :-----: | :------: | :---: |
 | [Szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/cache/v1_0/) |✔|✔|-|
 | [Redis-adatmegőrzés](cache-how-to-premium-persistence.md) |✔|-|-|
@@ -66,11 +66,11 @@ Az [Azure cache for Redis díjszabási](https://azure.microsoft.com/pricing/deta
 | [Georeplikáció](cache-how-to-geo-replication.md) |✔|-|-|
 | [Újraindítás](cache-administration.md#reboot) |✔|✔|✔|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [ASP.net-webalkalmazás](cache-web-app-howto.md) – rövid útmutató Hozzon létre egy egyszerű ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.
 * [.Net](cache-dotnet-how-to-use-azure-redis-cache.md) gyors útmutató Hozzon létre egy .NET-alkalmazást, amely egy Azure cache-t használ a Redis.
 * [.Net Core](cache-dotnet-core-quickstart.md) gyors útmutató Hozzon létre egy .NET Core-alkalmazást, amely egy Azure cache-t használ a Redis.
-* [Node. js](cache-nodejs-get-started.md) rövid útmutató Hozzon létre egy egyszerű Node. js-alkalmazást, amely egy Azure cache-t használ a Redis.
+* [Node.js](cache-nodejs-get-started.md) rövid útmutató Hozzon létre egy egyszerű Node.js alkalmazást, amely egy Azure cache-t használ a Redis.
 * [Java](cache-java-get-started.md) rövid útmutató Hozzon létre egy egyszerű Java-alkalmazást, amely egy Azure cache-t használ a Redis.
 * [Python](cache-python-get-started.md) rövid útmutató Hozzon létre egy olyan Python-alkalmazást, amely egy Azure cache-t használ a Redis.

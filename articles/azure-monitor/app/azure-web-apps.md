@@ -3,12 +3,12 @@ title: Az Azure app Services teljesítményének figyelése | Microsoft Docs
 description: Az alkalmazások teljesítményének figyelése az Azure app Servicesben. A diagram betöltésének és a válaszidő, a függőségi adatok és a riasztások beállítása a teljesítményre.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 0f4d4dedab30839db56cb47ac7ac103413f2d4be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 574aefa4d554be7b0027c921289d8d15cffb8e49
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733448"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169935"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -58,7 +58,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
  
  Az alábbiakban az egyes útvonalakon összegyűjtött adatok összegzése látható:
         
-|  | .NET alapszintű gyűjtemény | .NET ajánlott gyűjtemény |
+| Adatok | .NET alapszintű gyűjtemény | .NET ajánlott gyűjtemény |
 | --- | --- | --- |
 | Processzor-, memória- és I/O-használati trendek hozzáadása |Igen |Igen |
 | Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Igen |
@@ -116,7 +116,7 @@ Az ügyféloldali figyelés ASP.NET. Az ügyféloldali figyelés engedélyezése
 * **Beállítások** kiválasztása > * * * * alkalmazás beállításai * * * *
    * Az Alkalmazásbeállítások területen adjon hozzá egy új **alkalmazás-beállítási nevet** és **értéket**:
 
-     név:`APPINSIGHTS_JAVASCRIPT_ENABLED`
+     Név: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Érték: `true`
 
@@ -376,7 +376,7 @@ Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Ser
 
 Az alábbi táblázat részletesen ismerteti, hogy mit jelentenek ezek az értékek, a kiváltó okok és az ajánlott javítások:
 
-|Probléma értéke|Magyarázat|Hibajavítás
+|Probléma értéke|Magyarázat|Javítás
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Ez az érték azt jelzi, hogy a bővítmény azt észlelte, hogy az SDK bizonyos aspektusai már szerepelnek az alkalmazásban, és a szolgáltatás vissza fog térni. Ennek oka lehet a következőre való hivatkozás `System.Diagnostics.DiagnosticSource` , `Microsoft.AspNet.TelemetryCorrelation` vagy`Microsoft.ApplicationInsights`  | Távolítsa el a hivatkozásokat. A hivatkozások némelyike alapértelmezés szerint a Visual Studio-sablonokból adódik hozzá, és a Visual Studio régebbi verziói is hozzáadhatnak hivatkozásokat a alkalmazáshoz `Microsoft.ApplicationInsights` .
 |`AppAlreadyInstrumented:true` | Ha az alkalmazás a .NET Core 2,1-es vagy a 2,2-es verzióra vonatkozik, és a [Microsoft. AspNetCore. All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta-csomagra hivatkozik, akkor Application Insights, és a bővítmény vissza fog térni. | A .NET Core 2.1-es és 2.2-es ügyfeleinek [ajánlott](https://github.com/aspnet/Announcements/issues/287) a Microsoft. AspNetCore. app meta-Package használata.|

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: ed105ce6bd1d7d8980799049649b8d5b95dcb761
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e13d5f3421f3c0d4f3e14da29581ca585e7f9438
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536114"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145857"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Java-webalkalmazásba
 
@@ -53,11 +53,11 @@ A minta futtatásához a következőkre lesz szüksége:
 > 1. Válassza az **új regisztráció**lehetőséget.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `java-webapp`).
->    - Kattintson a **Register** (Regisztrálás) elemre.
+>    - Válassza a **Regisztráció** lehetőséget.
 > 1. Az **Áttekintés** oldalon keresse meg az alkalmazás **(ügyfél) azonosítóját** és a **könyvtár (bérlő) azonosító** értékeit. Másolja ezeket az értékeket később.
 > 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
->    - Adja hozzá **a** webplatform-konfigurációt.  Adja hozzá `https://localhost:8080/msal4jsample/secure/aad` ezeket `https://localhost:8080/msal4jsample/graph/me` és az **átirányítási URI-ket**.
->    - Kattintson a **Mentés** gombra.
+>    - Adja hozzá **a** webplatform-konfigurációt.  Adja hozzá ezeket `https://localhost:8443/msal4jsample/secure/aad` és `https://localhost:8443/msal4jsample/graph/me` az **átirányítási URI-ket**.
+>    - Válassza a **Mentés** lehetőséget.
 > 1. Válassza ki a **tanúsítványokat & a titkokat** a menüben, majd az **ügyfél titkai** szakaszban kattintson az **új ügyfél titka**lehetőségre:
 >
 >    - Írja be a kulcs leírását (például az alkalmazás titkos kulcsaként).
@@ -70,7 +70,7 @@ A minta futtatásához a következőkre lesz szüksége:
 >
 > Ahhoz, hogy a rövid útmutatóhoz tartozó mintakód működjön, a következőket kell tennie:
 >
-> 1. Adja hozzá a válasz `https://localhost:8080/msal4jsample/secure/aad` URL `https://localhost:8080/msal4jsample/graph/me`-címeit és a-t.
+> 1. Válasz URL-címek hozzáadása a `https://localhost:8443/msal4jsample/secure/aad` és a`https://localhost:8443/msal4jsample/graph/me`
 > 1. Hozzon létre egy ügyfél titkot.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [A módosítások elvégzése]()
@@ -115,11 +115,11 @@ A minta futtatásához a következőkre lesz szüksége:
 >    aad.clientId=Enter_the_Application_Id_here
 >    aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
 >    aad.secretKey=Enter_the_Client_Secret_Here
->    aad.redirectUriSignin=https://localhost:8080/msal4jsample/secure/aad
->    aad.redirectUriGraph=https://localhost:8080/msal4jsample/graph/me
+>    aad.redirectUriSignin=https://localhost:8443/msal4jsample/secure/aad
+>    aad.redirectUriGraph=https://localhost:8443/msal4jsample/graph/me
 >    aad.msGraphEndpointHost="https://graph.microsoft.com/"
 >    ```
-> Az elemek magyarázata:
+> Ebben a példában:
 >
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 > - `Enter_the_Client_Secret_Here`– a **tanúsítványokban létrehozott &** **titkos kulcs** a regisztrált alkalmazáshoz.
@@ -149,11 +149,11 @@ Futtassa közvetlenül az IDE-ből a beágyazott rugós rendszerindítási kiszo
 
 ##### <a name="running-from-ide"></a>Futtatás IDE-ből
 
-Ha IDE-ből futtatja a webalkalmazást, kattintson a Futtatás gombra, és keresse meg a projekt kezdőlapját. Ehhez a mintához a standard Kezdőlap URL-címe https://localhost:8080:.
+Ha IDE-ből futtatja a webalkalmazást, kattintson a Futtatás gombra, és keresse meg a projekt kezdőlapját. Ehhez a mintához a szabványos Kezdőlap URL-címehttps://localhost:8443
 
 1. A kezdőlapon kattintson a **Bejelentkezés** gombra a Azure Active Directory átirányításához, és kérje meg a felhasználót a hitelesítő adataik megadására.
 
-1. A felhasználó hitelesítése után a rendszer átirányítja a következőre: *https://localhost:8080/msal4jsample/secure/aad*. Most bejelentkeznek, és az oldalon megjelennek a bejelentkezett fiókra vonatkozó információk. A minta felhasználói felület a következő gombokkal rendelkezik:
+1. A felhasználó hitelesítése után a rendszer átirányítja a következőre: *https://localhost:8443/msal4jsample/secure/aad* . Most bejelentkeznek, és az oldalon megjelennek a bejelentkezett fiókra vonatkozó információk. A minta felhasználói felület a következő gombokkal rendelkezik:
     - *Kijelentkezés*: aláírja az aktuális felhasználót az alkalmazásból, és átirányítja őket a kezdőlapra.
     - *Felhasználói információk megjelenítése*: jogkivonatot kér Microsoft Graph és meghívja Microsoft Graph a tokent tartalmazó kérelemmel, amely a bejelentkezett felhasználó alapvető információit adja vissza.
 
@@ -161,17 +161,8 @@ Ha IDE-ből futtatja a webalkalmazást, kattintson a Futtatás gombra, és keres
 
 Ha a webes mintát a Tomcat szolgáltatásban szeretné üzembe helyezni, néhány módosítást is el kell végeznie a forráskódban.
 
-1. Nyissa meg a MS-Identity-Java-WebApp/Pom. xml fájlt
+1. Nyissa meg az MS-Identity-Java-WebApp/pom.xml
     - A `<name>msal-web-sample</name>` Hozzáadás alatt`<packaging>war</packaging>`
-    - Függőség hozzáadása:
-
-         ```xml
-         <dependency>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-tomcat</artifactId>
-          <scope>provided</scope>
-         </dependency>
-         ```
 
 2. Nyissa meg a MS-Identity-Java-WebApp/src/Main/Java/com. microsoft. Azure. msalwebsample/MsalWebSampleApplication
 
@@ -199,13 +190,26 @@ Ha a webes mintát a Tomcat szolgáltatásban szeretné üzembe helyezni, néhá
     }
    ```
 
-3. Nyisson meg egy parancssort, lépjen a projekt gyökérkönyvtárára, és futtassa a parancsot.`mvn package`
+3.   A Tomcat alapértelmezett HTTP-portja 8080, de a 8443-es porton keresztül HTTPS-kapcsolat szükséges. A konfigurálásához:
+        - Ugrás a Tomcat/conf/server.xml
+        - Keresse meg a `<connector>` címkét, és cserélje le a meglévő összekötőt a következőre:
+        ```
+        <Connector
+                   protocol="org.apache.coyote.http11.Http11NioProtocol"
+                   port="8443" maxThreads="200"
+                   scheme="https" secure="true" SSLEnabled="true"
+                   keystoreFile="C:/Path/To/Keystore/File/keystore.p12" keystorePass="KeystorePassword"
+                   clientAuth="false" sslProtocol="TLS"/>
+        ``` 
+       
+4. Nyisson meg egy parancssort, lépjen a minta gyökérkönyvtárára (ahol a pom.xml fájl található), és futtassa a parancsot a `mvn package` projekt felépítéséhez.
     - Ekkor létrejön egy `msal-web-sample-0.1.0.war` fájl a/Targets könyvtárban.
-    - A fájl átnevezése`ROOT.war`
+    - A fájl átnevezése`msal4jsample.war`
     - A War-fájlt a Tomcat vagy bármely más J2EE-tároló megoldás használatával helyezheti üzembe.
-        - A Tomcat-tárolón való üzembe helyezéshez másolja a. War fájlt a Tomcat-telepítés alá tartozó webapps mappába, majd indítsa el a Tomcat-kiszolgálót.
+        - A telepítéséhez másolja a msal4jsample. War fájlt a `/webapps/` tomcat-telepítés könyvtárába, majd indítsa el a Tomcat-kiszolgálót.
 
-A háború automatikusan a következő helyen lesz https://localhost:8080/üzemeltetve:.
+5. Üzembe helyezés után lépjen a https://localhost:8443/msal4jsample böngészőben
+
 
 > [!IMPORTANT]
 > Ez a rövid útmutató alkalmazás egy ügyfél titkos kulcsát használja, amely bizalmas ügyfélként azonosítja magát. Mivel a rendszer az ügyfél titkos kulcsát egyszerű szövegként adja hozzá a projektfájlok számára, biztonsági okokból javasolt a tanúsítvány használata az ügyfél titkos kulcsa helyett, mielőtt az alkalmazást éles alkalmazásként venné fontolóra. A tanúsítványok használatáról a [tanúsítvány hitelesítő adatai az alkalmazás hitelesítéséhez](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)című témakörben olvashat bővebben.
@@ -219,9 +223,9 @@ A háború automatikusan a következő helyen lesz https://localhost:8080/üzeme
 
 A MSAL for Java (MSAL4J) a Microsoft Identity platform által védett API-hoz való hozzáféréshez használt Java-könyvtár.
 
-Vegyen fel MSAL4J az alkalmazásba a Maven vagy a Gradle használatával a függőségek kezeléséhez azáltal, hogy az alkalmazás Pom. XML (Maven) vagy Build. Gradle (Gradle) fájljában módosítja a következő módosításokat.
+Vegyen fel MSAL4J az alkalmazásba a Maven vagy a Gradle használatával a függőségek kezeléséhez azáltal, hogy az alábbi módosításokat hajtja végre az alkalmazás pom.xml (Maven) vagy a Build. Gradle (Gradle) fájlon.
 
-A Pom. xml fájlban:
+pom.xml:
 
 ```XML
 <dependency>

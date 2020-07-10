@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9202eae49175615c4fffcd0b006ddda6e8281292
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb5eb18351f6411a8049e962deed35e5d8f181d9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718308"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185245"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbookok kezelése Azure Automation
 
@@ -34,7 +35,7 @@ Hozzon létre egy új runbook a Azure Automation a Azure Portal vagy a Windows P
 
 ### <a name="create-a-runbook-with-powershell"></a>Runbook létrehozása a PowerShell-lel
 
-Üres runbook létrehozásához használja a [New-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) parancsmagot. A `Type` paraméter használatával megadhatja a számára definiált runbook-típusok egyikét `New-AzAutomationRunbook` .
+Üres runbook létrehozásához használja a [New-AzAutomationRunbook](/powershell/module/az.automation/new-azautomationrunbook?view=azps-3.5.0) parancsmagot. A `Type` paraméter használatával megadhatja a számára definiált runbook-típusok egyikét `New-AzAutomationRunbook` .
 
 Az alábbi példa bemutatja, hogyan hozhat létre új üres runbook.
 
@@ -76,7 +77,7 @@ A parancsfájlokat a következő eljárással importálhatja Azure Automationba.
 
 ### <a name="import-a-runbook-with-windows-powershell"></a>Runbook importálása a Windows PowerShell használatával
 
-Az [import-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) parancsmag használatával importálhat egy parancsfájlt a runbook vázlatként. Ha a runbook már létezik, az importálás meghiúsul, ha a `Force` paramétert használja a parancsmaggal.
+Az [import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook?view=azps-3.5.0) parancsmag használatával importálhat egy parancsfájlt a runbook vázlatként. Ha a runbook már létezik, az importálás meghiúsul, ha a `Force` paramétert használja a parancsmaggal.
 
 Az alábbi példa bemutatja, hogyan importálhat egy parancsfájlt egy runbook.
 
@@ -191,7 +192,7 @@ Ha a runbook általában egy adott időkorláton belül fut, a parancsfájl impl
 
 ## <a name="work-with-multiple-subscriptions"></a>Több előfizetés használata
 
-A runbook képesnek kell lennie az [előfizetésekkel](automation-runbook-execution.md#subscriptions)való együttműködésre. Több előfizetés kezeléséhez például a runbook a [disable-AzContextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) parancsmagot használja. Ez a parancsmag biztosítja, hogy a hitelesítési környezet ne legyen lekérve egy másik, ugyanazon a homokozóban futó runbook. A runbook a `Get-AzContext` parancsmaggal is lekéri az aktuális munkamenet környezetét, és hozzárendeli azt a változóhoz `$AzureContext` .
+A runbook képesnek kell lennie az [előfizetésekkel](automation-runbook-execution.md#subscriptions)való együttműködésre. Több előfizetés kezeléséhez például a runbook a [disable-AzContextAutosave](/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) parancsmagot használja. Ez a parancsmag biztosítja, hogy a hitelesítési környezet ne legyen lekérve egy másik, ugyanazon a homokozóban futó runbook. A runbook a `Get-AzContext` parancsmaggal is lekéri az aktuális munkamenet környezetét, és hozzárendeli azt a változóhoz `$AzureContext` .
 
 ```powershell
 # Ensures that you do not inherit an AzContext in your runbook
@@ -256,7 +257,7 @@ Az egyes [runbook-típusok](automation-runbook-types.md) tesztelési eljárása 
 
 ### <a name="publish-a-runbook-using-powershell"></a>Runbook közzététele a PowerShell használatával
 
-A runbook közzétételéhez használja a [publish-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) parancsmagot. 
+A runbook közzétételéhez használja a [publish-AzAutomationRunbook](/powershell/module/Az.Automation/Publish-AzAutomationRunbook?view=azps-3.5.0) parancsmagot. 
 
 ```azurepowershell-interactive
 $automationAccountName =  "AutomationAccount"
@@ -304,7 +305,7 @@ Azt is megteheti, hogy megtekinti az adott runbook tartozó feladat összegzés�
 
 ### <a name="retrieve-job-statuses-using-powershell"></a>Feladatok állapotának beolvasása a PowerShell használatával
 
-A [Get-AzAutomationJob](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) parancsmaggal kérheti le a runbook létrehozott feladatokat, valamint egy adott feladat részleteit. Ha a használatával indít el egy runbook `Start-AzAutomationRunbook` , az a létrejövő feladatot adja vissza. A [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) használatával kérheti le a feladatok kimenetét.
+A [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) parancsmaggal kérheti le a runbook létrehozott feladatokat, valamint egy adott feladat részleteit. Ha a használatával indít el egy runbook `Start-AzAutomationRunbook` , az a létrejövő feladatot adja vissza. A [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) használatával kérheti le a feladatok kimenetét.
 
 A következő példa beolvassa a minta runbook utolsó feltételét, és megjeleníti annak állapotát, a runbook paraméterekhez megadott értékeket, valamint a feladatok kimenetét.
 

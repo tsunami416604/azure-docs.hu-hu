@@ -5,15 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: d08afc6e501fd76167e0939633442213958f0d49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2d16bdca18b7fc0afab2a3deb325d1a75be3bb8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834628"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185160"
 ---
 # <a name="manage-updates-for-multiple-vms"></a>Frissítések kezelése több virtuális gép esetén
 
-A Windows-és Linux-alapú virtuális gépek frissítéseinek és javításának kezeléséhez Azure Automation Update Management is használhatja. Az [Azure Automation](automation-offering-get-started.md)-fiókból a következőket végezheti el:
+A Windows-és Linux-alapú virtuális gépek frissítéseinek és javításának kezeléséhez Azure Automation Update Management is használhatja. Az [Azure Automation](./index.yml)-fiókból a következőket végezheti el:
 
 - Engedélyezze a virtuális gépeket az Update Management szolgáltatásban.
 - Az elérhető frissítések állapotának felmérése.
@@ -73,12 +74,12 @@ A virtuális gépekre és számítógépekre telepített ügynökök adatokat gy
 
 A következő táblázat ismerteti a Update Management által támogatott csatlakoztatott forrásokat:
 
-| Csatlakoztatott forrás | Támogatott | Description |
+| Csatlakoztatott forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| Windows-ügynökök |Yes |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
-| Linux-ügynökök |Yes |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd kezdeményezi a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
-| Az Operations Manager felügyeleti csoportja |Yes |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről. |
-| Azure Storage-fiók |No |Az Azure Storage szolgáltatás nem tartalmaz információkat a rendszerfrissítésekről. |
+| Windows-ügynökök |Igen |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
+| Linux-ügynökök |Igen |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd kezdeményezi a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
+| Az Operations Manager felügyeleti csoportja |Igen |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről. |
+| Azure Storage-fiók |Nem |Az Azure Storage szolgáltatás nem tartalmaz információkat a rendszerfrissítésekről. |
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 
@@ -143,7 +144,7 @@ Az **új frissítés központi telepítése** ablaktáblán a következő inform
 
 - **Újraindítás vezérlése** – ez a beállítás határozza meg, hogy a rendszer hogyan kezeli az újraindításokat a frissítés központi telepítéséhez.
 
-   |Beállítás|Description|
+   |Beállítás|Leírás|
    |---|---|
    |Újraindítás szükség esetén| **(Alapértelmezett)** Ha szükséges, a rendszer újraindítást kezdeményez, ha a karbantartási időszak lehetővé teszi.|
    |Mindig induljon újra|A rendszer újraindítást kezdeményez, függetlenül attól, hogy szükség van-e rá. |

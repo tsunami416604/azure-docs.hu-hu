@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 0631bc0e3e83564b2d77d4f67b418780d933215e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d7eaff980b50cc463efc09e49febd4a947a7543c
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212904"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142844"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure webalkalmazási tűzfal az Azure Application Gateway
 
@@ -24,7 +24,7 @@ A WAF on Application Gateway az Open Web Application Security Project (OWASP) [a
 Az alább felsorolt WAF-funkciók egy WAF szabályzaton belül találhatók. Több házirend is létrehozható, és társítható egy Application Gatewayhoz, az egyes figyelőkhöz vagy egy Application Gateway elérésiút-alapú útválasztási szabályaihoz. Így szükség esetén külön házirendeket hozhat a Application Gateway mögött lévő helyekhez. A WAF-szabályzatokkal kapcsolatos további információkért lásd: [WAF szabályzat létrehozása](create-waf-policy-ag.md).
 
    > [!NOTE]
-   > A helyszíni és az URI-WAF szabályzatok nyilvános előzetes verzióban érhetők el. Ez azt jelenti, hogy ez a funkció a Microsoft kiegészítő használati feltételeinek hatálya alá tartozik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > Az URI-WAF szabályzatok nyilvános előzetes verzióban érhetők el. Ez azt jelenti, hogy ez a funkció a Microsoft kiegészítő használati feltételeinek hatálya alá tartozik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Application Gateway WAF diagram](../media/ag-overview/waf1.png)
 
@@ -46,7 +46,7 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 
 * A webalkalmazások rosszindulatú robotoktól való ellátása az IP hírnévre vonatkozó szabályrendszert (előzetes verzió)
 
-### <a name="monitoring"></a>Figyelés
+### <a name="monitoring"></a>Monitorozás
 
 * Valós idejű WAF-napló használatával figyelheti a webalkalmazások elleni támadásokat. A napló integrálva van [Azure monitor](../../azure-monitor/overview.md) a WAF-riasztások nyomon követésére és a trendek egyszerű figyelésére.
 
@@ -60,7 +60,7 @@ Ez a szakasz a Application Gateway által nyújtott WAF alapvető előnyeit isme
 
 * Egyéni szabályok létrehozása az alkalmazás igényeinek megfelelően
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 - SQL-befecskendezéses védelem.
 - Helyek közötti parancsfájlok elleni védelem.
@@ -123,7 +123,7 @@ Hagyományos módban a szabályoknak megfelelő forgalom a többi szabálytól f
 
 A anomália pontozási módban a szabályoknak megfelelő forgalom nem lesz azonnal letiltva, ha a tűzfal megelőzési módban van. A szabályok bizonyos súlyossággal rendelkeznek: *kritikus*, *hiba*, *Figyelmeztetés*vagy *Figyelmeztetés*. Ez a súlyosság befolyásolja a kérelem numerikus értékét, amelyet az anomália pontszámnak nevezünk. Egy *Figyelmeztetési* szabály például a következőhöz járul hozzá: 3 – a pontszám. Egy *kritikus* szabály egyezése 5.
 
-|Severity  |Érték  |
+|Súlyosság  |Érték  |
 |---------|---------|
 |Kritikus     |5|
 |Hiba        |4|

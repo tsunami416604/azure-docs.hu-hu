@@ -5,18 +5,16 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 5c23b9ef280a4a4e3458d279ecf060d2e3d50295
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f39d22fe58d4375b3b68bacd237c1b200328c4b1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72992144"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171329"
 ---
-# <a name="module-twin-json-schema"></a>Modul Twin JSON-sémája
+# <a name="module-twin-json-schema-azure-event-grid"></a>Modul Twin JSON-sémája (Azure Event Grid)
 
 A Event Grid on IoT Edge integrálódik a IoT Edge ökoszisztémával, és támogatja a témakörök és előfizetések létrehozását a Twin modulon keresztül. Azt is jelenti, hogy az összes témakör és esemény-előfizetés aktuális állapota a (z) Twin modul jelentett tulajdonságaira mutat.
 

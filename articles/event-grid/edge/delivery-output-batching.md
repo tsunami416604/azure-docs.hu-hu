@@ -5,15 +5,14 @@ author: HiteshMadan
 manager: rajarv
 ms.author: himad
 ms.reviewer: spelluru
-ms.date: 10/06/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ae2261f8278c4d5e1944b01a9731afd293df20b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841747"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171635"
 ---
 # <a name="output-batching"></a>Kimenet kötegelése
 
@@ -76,7 +75,7 @@ A Event Grid batching viselkedése előfizetőként testreszabható, az alábbi 
 
 A következő üzembe helyezési idő beállítások az esemény-előfizetés létrehozásakor engedélyezett maximális értéket vezérlik.
 
-| Tulajdonság neve | Description |
+| Tulajdonság neve | Leírás |
 | ------------- | ----------- | 
 | `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | A forgatógomb számára engedélyezett maximális érték `PreferredBatchSizeInKilobytes` Alapértelmezett érték `1033` .
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | A forgatógomb számára engedélyezett maximális érték `MaxEventsPerBatch` Alapértelmezett érték `50` .
@@ -85,7 +84,7 @@ A következő üzembe helyezési idő beállítások az esemény-előfizetés l�
 
 A következő üzembe helyezési idő beállításai vezérlik az egyes gombok futásidejű alapértelmezett értékét, ha az esemény-előfizetésben nincs megadva. Az ismételt próbálkozáshoz be kell állítani legalább egy gombot az esemény-előfizetésre, hogy bekapcsolja a kötegelt működést.
 
-| Tulajdonság neve | Description |
+| Tulajdonság neve | Leírás |
 | ------------- | ----------- |
 | `broker__defaultMaxBatchSizeInBytes` | A kézbesítési kérelmek maximális mérete, ha csak meg `MaxEventsPerBatch` van adva. Alapértelmezett érték `1_058_576` .
 | `broker__defaultMaxEventsPerBatch` | A köteghez hozzáadandó események maximális száma, ha csak meg `MaxBatchSizeInBytes` van adva. Alapértelmezett érték `10` .

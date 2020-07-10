@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 3114c19ecff1a8ae70012592592078302d4a6222
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 2d919640431ce014d34372812d9c07bb84d750b2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800023"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184055"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Gyakran ismételt kérdések (GYIK) a Bing Image Search API
 
@@ -25,7 +25,7 @@ Válaszok az Azure-beli Microsoft Cognitive Services Bing Image Search API kapcs
 
 A következő fejlécek fordulhatnak elő a Bing Image Search API válaszában.
 
-| `Attribute`         | `Description` |
+| Attribútum           | Leírás   |
 | ------------------- | ------------- |
 | `X-MSEdge-ClientID` |A Bing által a felhasználóhoz hozzárendelt egyedi azonosító |
 | `BingAPIs-Market`   |A kérelem teljesítéséhez használt piac |
@@ -62,10 +62,10 @@ Az előző válaszban leírt CORS-proxy módszer a fejlesztés, a tesztelés és
 
 Ez a megközelítés az API-kulcs védelmét is védi a nyilvánosság számára, mivel csak a kiszolgálóoldali parancsfájlra van szükség. A parancsfájl egy másik módszert is használhat (például a HTTP-hivatkozót), hogy a kérelem engedélyezve legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy hiányzó funkcióval vagy funkcióval kapcsolatos kérdése van? Javasoljuk, hogy a [felhasználói hang webhelyére](https://cognitive.uservoice.com/forums/555907-bing-search)kérje vagy szavazzon rá.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
  [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

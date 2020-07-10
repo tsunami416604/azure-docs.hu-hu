@@ -12,18 +12,18 @@ ms.date: 05/26/2020
 ms.author: erhopf
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: bac8ab3da806927c588d3dc9cd06b83feb904a67
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 017cb7dbc3e81584905530d819de680e79e2282b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606547"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147151"
 ---
 # <a name="quickstart-use-the-translator-to-determine-sentence-length"></a>Rövid útmutató: a fordító használata a mondat hosszának meghatározásához
 
 Ebből a rövid útmutatóból megtudhatja, hogyan határozhatja meg a mondatok hosszát a fordító használatával.
 
-Ehhez a rövid útmutatóhoz egy fordítói erőforrással rendelkező [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
+Ehhez a rövid útmutatóhoz egy fordítói erőforrással rendelkező [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) van szükség. 
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/sentences-csharp.md)]

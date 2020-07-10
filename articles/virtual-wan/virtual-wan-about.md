@@ -8,11 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: bae8fa97d075784bba1d2f75cc06cfa3f801c052
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 909f120275c58b04d8674f0610c40e13b96804b6
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027205"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143909"
 ---
 # <a name="about-azure-virtual-wan"></a>Tudnivalók az Azure Virtual WAN-ról
 
@@ -57,7 +58,7 @@ Végpontok közötti virtuális WAN konfigurálásához a következő erőforrá
 
 * **Elosztó virtuális hálózati kapcsolata:** Az elosztó virtuális hálózati kapcsolata erőforrás az elosztó a virtuális hálózathoz való zökkenőmentes kapcsolódását biztosítja.
 
-* **(Előzetes verzió) a hub és a hub közötti kapcsolat** – a virtuális WAN-ban mind csatlakoznak egymáshoz. Ez azt jelenti, hogy egy helyi hubhoz csatlakozó ág, felhasználó vagy VNet a csatlakoztatott hubok teljes rácsvonal-architektúrájának használatával kommunikálhat egy másik fiókteleppel vagy VNet. A virtuális hálózatok egy, a virtuális központon keresztül áthaladó hubhoz, valamint az virtuális hálózatok-n keresztül is csatlakoztathatja a hub – hub kapcsolati keretrendszer használatával.
+* **Központ – központ kapcsolatok:** A hubok egy virtuális WAN-kapcsolaton keresztül csatlakoznak egymáshoz. Ez azt jelenti, hogy egy helyi hubhoz csatlakozó ág, felhasználó vagy VNet a csatlakoztatott hubok teljes rácsvonal-architektúrájának használatával kommunikálhat egy másik fiókteleppel vagy VNet. A virtuális hálózatok egy, a virtuális központon keresztül áthaladó hubhoz, valamint az virtuális hálózatok-n keresztül is csatlakoztathatja a hub – hub kapcsolati keretrendszer használatával.
 
 * **Elosztó útválasztási táblázata:** Létrehozhat egy virtuális elosztási útvonalat, és alkalmazhatja az útvonalat a virtuális elosztó útválasztási táblázatára. A virtuális központ útválasztási táblázatán több útvonalat is alkalmazhat.
 
@@ -127,10 +128,10 @@ Az útválasztási táblák mostantól társítási és propagálási funkciókk
 
 * **Alapszintű virtuális WAN-ügyfelek meglévő útvonalakkal a Virtual hub-ban**: az útválasztási táblázat új funkcióinak használatához várjon, amíg az Azure-ba való bevezetéshez a 3. augusztusi hét befejeződik. Ha az Útválasztás szakaszban már meglévő útvonalak találhatók a Azure Portal található hubhoz, először törölnie kell őket, majd **frissítenie** kell az alapszintű virtuális WAN-t a standard virtuális WAN-ra. Lásd: [virtuális WAN frissítése alapszintről standard verzióra](upgrade-virtual-wan.md).
 
-## <a name="faq"></a><a name="faq"></a>GYIK
+## <a name="faq"></a><a name="faq"></a>– GYAKORI kérdések
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Helyek közötti kapcsolat létrehozása virtuális WAN használatával](virtual-wan-site-to-site-portal.md)

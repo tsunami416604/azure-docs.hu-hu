@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa0b3a05fb26f6be951b697145d7b22e03b7792d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841712"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171618"
 ---
 # <a name="delivery-and-retry"></a>Teljesítés és újrapróbálkozás
 
@@ -28,12 +27,12 @@ Egy üzenet kézbesítése után a Event Grid legfeljebb 60 másodpercet vár a 
 
 Két előre konfigurált várólista van, amelyek meghatározzák azt az ütemezést, amelyen az újrapróbálkozási kísérlet történik. Ezek a következők:
 
-| Ütemezés | Description |
+| Ütemezés | Leírás |
 | ---------| ------------ |
 | 1 perc | Az itt bekövetkező üzenetek percenként próbálkoznak.
 | 10 perc | Az itt megjelenő üzeneteket 10 percenként kísérli meg a rendszer.
 
-### <a name="how-it-works"></a>Működés
+### <a name="how-it-works"></a>A működési elv
 
 1. Üzenet érkezik a Event Grid modulba. Kísérlet történt az azonnali kézbesítésre.
 1. Ha a kézbesítés sikertelen, akkor az üzenet 1 percenként várólistán lévő, és egy perc múlva újra próbálkozik.
@@ -53,7 +52,7 @@ Egy esemény el lesz dobva, ha az újrapróbálkozási szabályzat korlátai bá
 
 Két tulajdonság létezik: `brokers__defaultMaxDeliveryAttempts` és `broker__defaultEventTimeToLiveInSeconds` a Event Grid központi telepítés részeként konfigurálható, amely az összes előfizető újrapróbálkozási szabályzatának alapértelmezett értékeit szabályozza.
 
-| Tulajdonság neve | Description |
+| Tulajdonság neve | Leírás |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Egy eseményt kézbesítő kísérletek maximális száma. Alapértelmezett érték: 30.
 | `broker__defaultEventTimeToLiveInSeconds` | Az esemény ÉLETTARTAMa másodpercben, amely után az esemény el lesz dobva, ha nem érkezik meg. Alapértelmezett érték: **7200** másodperc

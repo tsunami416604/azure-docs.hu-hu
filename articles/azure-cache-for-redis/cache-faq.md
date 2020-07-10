@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: f0fba815cdc8425f016b74be7df36e5b28dfee3d
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 9a6ee4f5b18c6747796f33bc433d1d40982205a3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856972"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185007"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg az Azure cache-hez készült Redis kapcsolatos gyakori kérdésekre, mintákra és ajánlott eljárásokra adott válaszokat.
@@ -41,6 +41,7 @@ A következő gyakori kérdések a Redis készült Azure cache alapfogalmait és
 * [Milyen Azure cache-t használ a Redis-ajánlat és-méret használatához?](#what-azure-cache-for-redis-offering-and-size-should-i-use)
 * [Azure cache a Redis teljesítményéhez](#azure-cache-for-redis-performance)
 * [Milyen régióban érdemes megkeresni a gyorsítótárat?](#in-what-region-should-i-locate-my-cache)
+* [Hol találhatók a gyorsítótárazott adataim?](#where-do-my-cached-data-reside)
 * [Mennyit kell fizetnem az Azure cache Redis?](#how-am-i-billed-for-azure-cache-for-redis)
 * [Használhatom az Azure cache-t a Redis Azure Government Cloud, az Azure China Cloud vagy a Microsoft Azure Germany használatával?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
@@ -149,6 +150,13 @@ A stunnel beállításával vagy a Redis-eszközök (például) letöltésével 
 ### <a name="in-what-region-should-i-locate-my-cache"></a>Milyen régióban érdemes megkeresni a gyorsítótárat?
 A legjobb teljesítmény és a legalacsonyabb késés érdekében keresse meg az Azure-gyorsítótárat a Redis ugyanabban a régióban, ahol a gyorsítótár-ügyfélalkalmazás található.
 
+### <a name="where-do-my-cached-data-reside"></a>Hol találhatók a gyorsítótárazott adataim?
+A Redis készült Azure cache a virtuális gép vagy a virtuális gépek RAM memóriájában tárolja az alkalmazás adatait, attól függően, hogy milyen szintű a gyorsítótár. Az adatai szigorúan abban az Azure-régióban találhatók, amelyet alapértelmezés szerint kiválasztott. Az adatközpont két esetben hagyhatja el a régiót:
+  1. Ha engedélyezi az adatmegőrzést a gyorsítótárban, az Azure cache for Redis az Ön tulajdonában lévő Azure Storage-fiókba készít biztonsági másolatot az adatairól. Ha az Ön által megadott Storage-fiók egy másik régióban található, akkor az adatai egy másolata fog történni.
+  1. Ha a Geo-replikációt állítja be, és a másodlagos gyorsítótár egy másik régióban található, amely normál esetben az, hogy az adatait a rendszer replikálja az adott régióba.
+
+Ezen funkciók használatához explicit módon konfigurálnia kell az Azure cache-t a Redis. Emellett teljes körűen szabályozhatja azt a régiót, amelyhez a Storage-fiók vagy a másodlagos gyorsítótár található.
+
 <a name="cache-billing"></a>
 
 ### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Mennyit kell fizetnem az Azure cache Redis?
@@ -177,7 +185,7 @@ További információ az Azure cache Redis való használatáról a PowerShell h
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Mi a StackExchange. Redis konfigurációs beállításai?
 A StackExchange. Redis számos lehetőséget kínál. Ez a szakasz néhány gyakori beállításról beszél. További információ a StackExchange. Redis beállításokról: [StackExchange. Redis konfiguráció](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-| ConfigurationOptions | Description | Ajánlás |
+| ConfigurationOptions | Leírás | Ajánlás |
 | --- | --- | --- |
 | AbortOnConnectFail |Ha igaz értékre van állítva, a kapcsolat hálózati hiba után nem fog újracsatlakozni. |Állítsa hamis értékre, és hagyja, hogy a StackExchange. Redis automatikusan újracsatlakozik. |
 | ConnectRetry |A kapcsolódási kísérletek megismétlésének száma a kezdeti csatlakozás során. |Útmutatásért tekintse meg az alábbi megjegyzéseket. |
@@ -215,20 +223,20 @@ Nincs helyi emulátor az Azure cache-hez a Redis-hez, de a redis-server.exe MSOp
 
 ```csharp
 private static Lazy<ConnectionMultiplexer>
-      lazyConnection = new Lazy<ConnectionMultiplexer>
-    (() =>
+    lazyConnection = new Lazy<ConnectionMultiplexer> (() =>
     {
-        // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
+        // Connect to a locally running instance of Redis to simulate
+        // a local cache emulator experience.
         return ConnectionMultiplexer.Connect("127.0.0.1:6379");
     });
 
-    public static ConnectionMultiplexer Connection
+public static ConnectionMultiplexer Connection
+{
+    get
     {
-        get
-        {
-            return lazyConnection.Value;
-        }
+        return lazyConnection.Value;
     }
+}
 ```
 
 Ha kívánja, beállíthatja, hogy a [Redis. conf](https://redis.io/topics/config) fájl jobban illeszkedjen az online Azure cache [alapértelmezett gyorsítótár-beállításaihoz](cache-configure.md#default-redis-server-configuration) a Redis, ha szükséges.
@@ -367,11 +375,11 @@ Alapvetően azt jelenti, hogy ha a foglalt szálak száma nagyobb, mint a minim�
 
 Ha egy példa a StackExchange. Redis (build 1.0.450 vagy újabb) hibaüzenetet jelenít meg, látni fogja, hogy most kinyomtatja a szálkészlet munkaszála belépett statisztikáit (lásd a olvasóhoz és a feldolgozó adatait alább).
 
-```output
-    System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
-    queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
-    IOCP: (Busy=6,Free=994,Min=4,Max=1000),
-    WORKER: (Busy=3,Free=997,Min=4,Max=1000)
+```
+System.TimeoutException: Timeout performing GET MyKey, inst: 2, mgr: Inactive,
+queue: 6, qu: 0, qs: 6, qc: 0, wr: 0, wq: 0, in: 0, ar: 0,
+IOCP: (Busy=6,Free=994,Min=4,Max=1000),
+WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 ```
 
 Az előző példában látható, hogy a olvasóhoz szál esetében hat foglalt szál van, és a rendszer úgy van konfigurálva, hogy négy minimális szálat engedélyezzen. Ebben az esetben az ügyfél valószínűleg 2 500 – MS késéssel fog rendelkezni, mivel 6 > 4.
@@ -386,20 +394,20 @@ A beállítás konfigurálása:
 
 * Azt javasoljuk, hogy programozottan módosítsa ezt a beállítást a [szálkészlet munkaszála belépett. SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) metódussal a alkalmazásban `global.asax.cs` . Például:
 
-```cs
-private readonly int minThreads = 200;
-void Application_Start(object sender, EventArgs e)
-{
-    // Code that runs on application startup
-    AreaRegistration.RegisterAllAreas();
-    RouteConfig.RegisterRoutes(RouteTable.Routes);
-    BundleConfig.RegisterBundles(BundleTable.Bundles);
-    ThreadPool.SetMinThreads(minThreads, minThreads);
-}
-```
+    ```csharp
+    private readonly int minThreads = 200;
+    void Application_Start(object sender, EventArgs e)
+    {
+        // Code that runs on application startup
+        AreaRegistration.RegisterAllAreas();
+        RouteConfig.RegisterRoutes(RouteTable.Routes);
+        BundleConfig.RegisterBundles(BundleTable.Bundles);
+        ThreadPool.SetMinThreads(minThreads, minThreads);
+    }
+    ```
 
-  > [!NOTE]
-  > A metódus által megadott érték globális beállítás, amely hatással van a teljes alkalmazástartomány. Ha például egy 4 magos géppel rendelkezik, és a *minWorkerThreads* és a *minIoThreads* processzort 50-ra szeretné beállítani, akkor a **szálkészlet munkaszála belépett. SetMinThreads (200, 200)** értéket kell használnia.
+    > [!NOTE]
+    > A metódus által megadott érték globális beállítás, amely hatással van a teljes alkalmazástartomány. Ha például egy 4 magos géppel rendelkezik, és a *minWorkerThreads* és a *minIoThreads* processzort 50-ra szeretné beállítani, akkor a **szálkészlet munkaszála belépett. SetMinThreads (200, 200)** értéket kell használnia.
 
 * A szálak minimális beállítása a [ *minIoThreads* vagy a *minWorkerThreads* konfigurációs beállítással](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx) is megadható a alkalmazásban `<processModel>` `Machine.config` , általában a következő helyen: `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` . **A szálak minimális számának beállítása így általában nem ajánlott, mert ez egy rendszerszintű beállítás.**
 
@@ -455,7 +463,7 @@ A gyorsítótár leválasztásának néhány gyakori oka a következő:
   * Elérte a sávszélességre vonatkozó küszöbértéket.
   * A CPU-kötésű műveletek végrehajtása túl sokáig tartott.
 * Kiszolgálóoldali okok
-  * A standard szintű gyorsítótár-ajánlat esetében az Azure cache for Redis szolgáltatás egy feladatátvételt kezdeményezett az elsődleges csomópontról a másodlagos csomópontra.
+  * A standard szintű gyorsítótár-ajánlat esetében az Azure cache for Redis szolgáltatás egy feladatátvételt kezdeményezett az elsődleges csomópontról a replika csomópontra.
   * Az Azure a gyorsítótár üzembe helyezési példányának javítását használta
     * Ez lehet a Redis-kiszolgáló frissítései vagy az általános virtuális gép karbantartása.
 

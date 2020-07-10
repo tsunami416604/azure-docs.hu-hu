@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: fa518900b05ba552cb066fbf55e4dbeaa6c681e2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84710167"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183205"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>A Bing Custom Search-élmény konfigurálása
 
@@ -27,7 +27,7 @@ A webes szeletek definiálásához használja az alábbiakat:
 
 | Szelet neve | Leírás                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | A tartományi szeletek az internetes tartományon belül található összes tartalmat tartalmazzák. Például: `www.microsoft.com`. A kihagyás `www.` azt eredményezi, hogy a Bing a tartomány altartományait is keresi. Ha például a értéket adja meg `microsoft.com` , a Bing a vagy a eredményeit is visszaadja `support.microsoft.com` `technet.microsoft.com` . |
+| Tartomány     | A tartományi szeletek az internetes tartományon belül található összes tartalmat tartalmazzák. Például: `www.microsoft.com`. A kihagyás `www.` azt eredményezi, hogy a Bing a tartomány altartományait is keresi. Ha például a értéket adja meg `microsoft.com` , a Bing a vagy a eredményeit is visszaadja `support.microsoft.com` `technet.microsoft.com` . |
 | Aloldalt    | Az aloldali szeletek a aloldalon és az alatta lévő elérési utakon található összes tartalmat tartalmazzák. Az elérési úton legfeljebb két aloldal adható meg. Például: `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Weblap    | A weblap szeletek csak az adott weboldalt tartalmazhatják egyéni keresésekben. Opcionálisan megadhatja, hogy megjelenjenek-e az allapok.                                                                                                                                                                                  |
 
@@ -92,8 +92,8 @@ A keresési példány teszteléséhez használja a portál jobb oldalán találh
 
 A portál lehetővé teszi a tartalom keresési rangsorolásának módosítását adott tartományokból, allapokból és weblapokból. Miután elküldte a keresési lekérdezést a betekintő ablaktáblán, minden keresési eredmény tartalmazza az általa elérhetővé tenni kívánt beállítások listáját:  
 
-|            |                                                                                                                                                                      |
-|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Idő beállítása | Leírás |
+|------------|-------------|
 | Letiltás      | Áthelyezi a tartományt, az allapot vagy a weblapot a blokkolt listára. A Bing kizárja a kijelölt helyről származó tartalmat a keresési eredmények között.                    |
 | Boost      | Fokozza a tartalmat a tartományból vagy az aloldalról, hogy magasabb legyen a keresési eredmények között.                                                                                        |
 | Lefokozás     | A keresési eredményekben a tartomány vagy az aloldal tartalmának lefokozása. Kiválaszthatja, hogy le kívánja-e fokozni a tartalmat a tartományból vagy aloldalból, amelyhez a weblap tartozik. |

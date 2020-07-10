@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 044c55e64c6532bf08d31b2c052e4ee9f5069ff1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f93a25854bc8b93e9bd75ea71037f6363d143914
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956100"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145726"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás hozzáadása a Azure Active Directory (Azure AD) bérlőhöz
 
-Az Azure Active Directory (Azure AD) rendelkezik egy katalógussal, amely több ezer előre integrált alkalmazást tartalmaz. A szervezet által használt alkalmazások többsége valószínűleg már szerepel a katalógusban. Ez a rövid útmutató a Azure Portal használatával adja hozzá a katalógus-alkalmazást az Azure AD-bérlőhöz. Ez a rövid útmutató egy olyan alkalmazás hozzáadására koncentrál, amely már része a gyűjteménynek. A katalógusban nem szereplő alkalmazások is integrálhatók az Azure AD-be, de ez a rövid útmutató nem tárgyalja. 
+Az Azure Active Directory (Azure AD) rendelkezik egy katalógussal, amely több ezer előre integrált alkalmazást tartalmaz. A szervezet által használt alkalmazások többsége valószínűleg már szerepel a katalógusban.
 
 Miután hozzáadta az alkalmazást az Azure AD-bérlőhöz, a következőket teheti:
 
@@ -41,7 +41,7 @@ Ha alkalmazást szeretne hozzáadni az Azure AD-bérlőhöz, a következőkre le
 
 ## <a name="add-an-app-to-your-azure-ad-tenant"></a>Alkalmazás hozzáadása az Azure AD-bérlőhöz
 
-Katalógusbeli alkalmazás hozzáadása az Azure AD-bérlőhöz:
+Alkalmazás hozzáadása az Azure AD-bérlőhöz:
 
 1. A [Azure Portal](https://portal.azure.com)a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
 2. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások**lehetőséget. Megnyílik a **minden alkalmazás** panel, és az Azure ad-bérlőben található alkalmazások véletlenszerű mintája jelenik meg.
@@ -50,8 +50,10 @@ Katalógusbeli alkalmazás hozzáadása az Azure AD-bérlőhöz:
 4. Váltson az új katalógus előzetes verziójára: az **alkalmazás hozzáadása lap**tetején található szalagcímen válassza ki azt a hivatkozást, amely az **új és továbbfejlesztett alkalmazás-katalógus kipróbálásához kattintson ide**.
 5. Megnyílik a **Tallózás Azure ad-katalógus (előzetes verzió)** panel, amelyen a Felhőbeli platformok, a helyszíni alkalmazások és a Kiemelt alkalmazások csempéi láthatók. A **Kiemelt alkalmazások** szakaszban felsorolt alkalmazások rendelkeznek ikonokkal, amelyek azt jelzik, hogy támogatják-e az összevont egyszeri bejelentkezést (SSO) és a létesítést.
     ![Alkalmazás keresése név vagy kategória szerint](media/add-application-portal/browse-gallery.png)
-6. Böngészhet a katalógusban a hozzáadni kívánt alkalmazáshoz, vagy megkeresheti az alkalmazást úgy, hogy beírja a nevét a keresőmezőbe. Ezután válassza ki az alkalmazást az eredmények közül. Az űrlapon szerkesztheti az alkalmazás nevét, hogy megfeleljen a szervezet igényeinek. Ebben a példában a nevet a **GitHub-test**értékre módosították.
+6. Böngészhet a katalógusban a hozzáadni kívánt alkalmazáshoz, vagy megkeresheti az alkalmazást úgy, hogy beírja a nevét a keresőmezőbe. Ezután válassza ki az alkalmazást az eredmények közül. Az űrlapon szerkesztheti az alkalmazás nevét, hogy megfeleljen a szervezet igényeinek. Ebben a példában a GitHubot választottuk, és a nevet a **GitHub-test**értékre módosították.
     ![Bemutatja, hogyan adhat hozzá egy alkalmazást a katalógusból](media/add-application-portal/create-application.png)
+    >[!TIP]
+    >Ha a keresett alkalmazás nem szerepel a katalógusban, akkor kattintson a **saját alkalmazás létrehozása**lehetőségre. A Microsoft már dolgozott számos alkalmazás-fejlesztővel, hogy előre konfigurálja őket az Azure AD-vel való együttműködéshez. Ezek azok az alkalmazások, amelyek megjelennek a katalógusban. Ha azonban a hozzáadni kívánt alkalmazás nem szerepel a listáján, létrehozhat egy új, általános, alkalmazást, és konfigurálhatja saját maga, vagy az azt létrehozó fejlesztő útmutatásával.
 7. Válassza a **Létrehozás** lehetőséget. Megjelenik az első lépések lap, amelyen a beállításokkal konfigurálhatja az alkalmazást a vállalat számára.
 
 Elkészült egy alkalmazás hozzáadásával. A következő rövid útmutató bemutatja, hogyan módosíthatja az emblémát, és szerkesztheti az alkalmazás egyéb tulajdonságait.

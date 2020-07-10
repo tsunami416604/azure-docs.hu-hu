@@ -9,11 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: ca5c8fdd14f155163dd55d944cafd2e209e7a94b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af14d4770d032c23216b805045eb27fadded5954
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84450660"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170258"
 ---
 # <a name="train-pytorch-model"></a>Pytorch-modell betanítása
 
@@ -26,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan használható a **Pytorch Model** modul a Azure 
 2. Adja hozzá a **Train Pytorch Model** modult a folyamathoz. Ez a modul a **modell betanítása** kategóriában található. Bontsa ki a **vonat**elemet, majd húzza a **vonat Pytorch modell** modult a folyamatba.
 
    > [!NOTE]
-   > A **Pytorch Model** modul csak **GPU** típusú számítási műveleteken futtatható, ellenkező esetben a folyamat sikertelen lesz. A modul jobb oldali ablaktábláján kiválaszthatja a számítási lehetőséget, ha **más számítási célt használ**.
+   > A **Pytorch Model** modul a nagyméretű adatkészletek esetében jobb, ha **GPU** típusú számítási kapacitást futtat, ellenkező esetben a folyamat sikertelen lesz. A modul jobb oldali ablaktábláján kiválaszthatja a számítási lehetőséget, ha **más számítási célt használ**.
 
 3.  A bal oldali bemeneten csatoljon egy nem betanított modellt. Csatolja a betanítási adatkészletet és az érvényesítési adatkészletet a **Pytorch-modell**középső és jobb oldali bemenetéhez.
 
@@ -50,14 +51,14 @@ Ez a cikk azt ismerteti, hogyan használható a **Pytorch Model** modul a Azure 
 
 9.  A folyamat elküldése. Ha az adatkészlet mérete nagyobb, akkor eltarthat egy ideig.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A folyamat futásának befejezése után a modell a pontozáshoz való használatához a [Pytorch modellt](train-pytorch-model.md) a [képmodellhez](score-image-model.md)kell kapcsolni az új bemeneti példák értékének előrejelzéséhez.
 
 ## <a name="technical-notes"></a>Technikai megjegyzések
 ###  <a name="expected-inputs"></a>Várt bemenetek  
 
-| Name               | Típus                    | Description                              |
+| Név               | Típus                    | Leírás                              |
 | ------------------ | ----------------------- | ---------------------------------------- |
 | Nem betanított modell    | UntrainedModelDirectory | Nem betanított modell, pytorch megkövetelése         |
 | Betanítási adatkészlet   | ImageDirectory          | Betanítási adatkészlet                         |
@@ -65,7 +66,7 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name          | Tartomány            | Típus    | Alapértelmezett | Description                              |
+| Név          | Tartomány            | Típus    | Alapértelmezett | Leírás                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Korszakok        | >0               | Egész szám | 5       | A címke vagy eredmény oszlopot tartalmazó oszlop kiválasztása |
 | Köteg mérete    | >0               | Egész szám | 16      | Egy kötegbe tartozó példányok számának betanítása   |
@@ -75,7 +76,7 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="outputs"></a>Kimenetek  
 
-| Name          | Típus           | Description   |
+| Név          | Típus           | Leírás   |
 | ------------- | -------------- | ------------- |
 | Betanított modell | ModelDirectory | Betanított modell |
 

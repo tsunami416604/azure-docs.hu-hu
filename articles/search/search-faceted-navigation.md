@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4d2ee2bccf94dca933981c3070323b659eab6cfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836090"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171941"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Sokoldalú navigáció megvalósítása az Azure-ban Cognitive Search
 
@@ -283,10 +284,12 @@ A részletes részletezés során általában csak olyan dokumentumokat szeretne
 
 A dimenziós eredmények olyan keresési eredményekben található dokumentumok, amelyek megfelelnek egy aspektus kifejezésének. A következő példában a *felhőalapú számítástechnika*keresési eredményeiben a 254-es elemek *belső specifikációval* is rendelkeznek, mint a tartalom típusa. Az elemek nem feltétlenül kölcsönösen kizárják egymást. Ha egy elem megfelel mindkét szűrő feltételeinek, akkor a rendszer minden egyesnek számít. Ez az ismétlődés akkor lehetséges, ha a `Collection(Edm.String)` mezőkre van szükség, amelyek gyakran a dokumentumok címkézésének megvalósítására használatosak.
 
-        Search term: "cloud computing"
-        Content type
-           Internal specification (254)
-           Video (10) 
+```output
+Search term: "cloud computing"
+Content type
+   Internal specification (254)
+   Video (10)
+```
 
 Általánosságban elmondható, hogy ha úgy találja, hogy a dimenziók eredményei túl nagyok, javasoljuk, hogy adjon hozzá további szűrőket, hogy a felhasználók további lehetőségeket adjanak a keresés szűkítéséhez.
 
@@ -344,7 +347,7 @@ Numerikus adatok esetében az értékek listáját használhatja.  Vegye fontol�
 
 Ha meg szeretné adni az előző képernyőképen látható egyik dimenziót, használja az értékek listát:
 
-    facet=listPrice,values:10|25|100|500|1000|2500
+> `facet=listPrice,values:10|25|100|500|1000|2500`
 
 Az egyes tartományok kiindulási pontként, a listában szereplő értékekkel és végpontként, majd az előző tartományból kivágással, különálló időközök létrehozásához lettek létrehozva. Az Azure Cognitive Search a sokoldalú Navigálás részeként teszi ezeket a dolgokat. Az egyes intervallumok strukturálásához nem kell kódot írnia.
 
@@ -394,7 +397,7 @@ Amikor a keresési eredményekkel dolgozik, tekintse meg az URL-címet a lekérd
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 Tekintse meg az [Azure Cognitive Search a Deep Dive](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)szolgáltatást. A 45:25-es verzióban egy bemutató mutatja be, hogyan valósíthatók meg a dimenziók.
 
 A részletes Navigálás tervezési alapelveivel kapcsolatos további információk a következő hivatkozásokat ajánljuk:

@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c7efccf35ddb47bf349d9a21628e9445e37b7699
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c1b640fa5104ceb0f330c9aee9813ed8b3914d33
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211306"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166042"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása és lekérdezése a Azure Portal használatával
 
@@ -70,7 +70,7 @@ Az alábbi lépéseket követve létrehozhat egy SQL-készletet, amely tartalmaz
 
     ![meglévő adathasználat kiválasztása](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
 
-6. Most, hogy végrehajtotta az Azure szinapszis Analytics űrlapjának alapismeretek lapját, válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget az SQL-készlet létrehozásához. Az üzembe helyezés eltarthat néhány percig.
+6. Most, hogy végrehajtotta az Azure szinapszis Analytics űrlapjának alapismeretek lapját, válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget az SQL-készlet létrehozásához. A kiépítés eltarthat néhány percig.
 
    ![Válassza a felülvizsgálat + létrehozás lehetőséget](./media/create-data-warehouse-portal/create-sql-pool-review-create.png)
 
@@ -95,7 +95,7 @@ Az Azure szinapszis szolgáltatás egy tűzfalat hoz létre a kiszolgáló szint
 
    ![kiszolgálónév keresése](./media/create-data-warehouse-portal/find-server-name.png)
 
-4. Válassza a **tűzfalbeállítások megjelenítése**lehetőséget.
+4. Válassza a **Tűzfalbeállítások megjelenítése** lehetőséget.
 
    ![kiszolgáló beállításai](./media/create-data-warehouse-portal/server-settings.png)
 
@@ -137,7 +137,7 @@ Ez a szakasz [SQL Server Management Studio](/sql/ssms/download-sql-server-manage
    | Beállítás | Ajánlott érték | Leírás |
    | :------ | :-------------- | :---------- |
    | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
-   | Kiszolgáló neve | A teljes kiszolgálónév | Íme egy példa: **sqlpoolservername.database.Windows.net**. |
+   | Kiszolgálónév | A teljes kiszolgálónév | Íme egy példa: **sqlpoolservername.database.Windows.net**. |
    | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
    | Bejelentkezés | A kiszolgálói rendszergazdafiók | A kiszolgáló létrehozásakor megadott fiók. |
    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | A kiszolgáló létrehozásakor megadott jelszó. |
@@ -178,7 +178,7 @@ Az SQL Data Warehouse a T-SQL nyelvet használja lekérdezési nyelvként. A lek
 
    ![A dbo.dimCustomer lekérdezés](./media/create-data-warehouse-portal/query-customer.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az adatraktár-egységek és az SQL-készletben tárolt adatmennyiség után kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
@@ -190,7 +190,7 @@ Kövesse az alábbi lépéseket a már nem szükséges erőforrások törléséh
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az SQL-készletet.
 
-   ![Erőforrások felszabadítása](./media/create-data-warehouse-portal/clean-up-resources.png)
+   ![Az erőforrások eltávolítása](./media/create-data-warehouse-portal/clean-up-resources.png)
 
 2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az SQL-készlet fel van függesztve, a **Folytatás** gomb jelenik meg. A számítás folytatásához válassza a **Folytatás**lehetőséget.
 
@@ -199,6 +199,10 @@ Kövesse az alábbi lépéseket a már nem szükséges erőforrások törléséh
 4. A létrehozott kiszolgáló eltávolításához válassza a **sqlpoolservername.database.Windows.net** lehetőséget az előző képen, majd válassza a **Törlés**lehetőséget. A törléssel bánjon óvatosan, mivel a kiszolgálóval együtt a hozzá rendelt összes adatbázis is törölve lesz.
 
 5. Az erőforráscsoport eltávolításához válassza a **myResourceGroup**lehetőséget, majd válassza az **erőforráscsoport törlése**lehetőséget.
+
+Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
 ## <a name="next-steps"></a>További lépések
 

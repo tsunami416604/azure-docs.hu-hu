@@ -1,25 +1,24 @@
 ---
 title: Rendszerállapot visszaállítása Windows Serverre
 description: Részletes útmutató a Windows Server rendszerállapotának az Azure-beli biztonsági másolatból történő visszaállításához.
-ms.reviewer: saurse
 ms.topic: conceptual
-ms.date: 08/18/2017
-ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 06/30/2020
+ms.openlocfilehash: 5212e5ea0ed3a8c0e0a8e9d4fa45f1eb6c901bf5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610785"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184462"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Rendszerállapot visszaállítása a Windows Server rendszerre
 
-Ez a cikk azt ismerteti, hogyan lehet visszaállítani a Windows Server rendszerállapotának biztonsági másolatait egy Azure Recovery Services-tárolóból. A rendszerállapot visszaállításához a rendszerállapot biztonsági mentésére van szükség (amelyet a rendszerállapot [biztonsági mentése](backup-azure-system-state.md#back-up-windows-server-system-state)című részben talál, és ellenőrizze, hogy telepítve van- [e a Microsoft Azure Recovery Services (MARS) ügynök legújabb verziója](https://aka.ms/azurebackup_agent). A Windows Server rendszerállapot-adatainak egy Azure Recovery Services-tárolóból történő helyreállítása kétlépéses folyamat:
+Ez a cikk azt ismerteti, hogyan lehet visszaállítani a Windows Server rendszerállapotának biztonsági másolatait egy Azure Recovery Services-tárolóból. A rendszerállapot visszaállításához a rendszerállapot biztonsági mentésére van szükség (amelyet a rendszerállapot [biztonsági mentése](backup-azure-system-state.md#back-up-windows-server-system-state)című részben talál, és ellenőrizze, hogy telepítette-e a [Microsoft Azure Recovery Services-(MARS-) ügynök legújabb verzióját](https://aka.ms/azurebackup_agent). A Windows Server rendszerállapot-adatainak egy Azure Recovery Services-tárolóból történő helyreállítása kétlépéses folyamat:
 
 1. A rendszer állapotának visszaállítása Azure Backup fájlból. Ha a rendszerállapotot fájlok Azure Backupból való visszaállításakor, a következőkre van lehetősége:
    * Állítsa vissza a rendszerállapotot ugyanarra a kiszolgálóra, ahol a biztonsági másolatok készültek, vagy
    * Rendszerállapot-fájl visszaállítása egy másik kiszolgálóra.
 
-2. Alkalmazza a visszaállított rendszerállapot-fájlokat egy Windows Serverre.
+2. Alkalmazza a visszaállított rendszerállapot-fájlokat a Windows Serverre a Windows Server biztonsági másolat segédprogram használatával.
 
 ## <a name="recover-system-state-files-to-the-same-server"></a>Rendszerállapotfájlok visszaállítása ugyanarra a kiszolgálóra
 
@@ -51,7 +50,7 @@ A következő lépések bemutatják, hogyan állíthatja vissza a Windows Server
 
     Azure Backup csatlakoztatja a helyi helyreállítási pontot, és helyreállítási kötetként használja.
 
-7. A következő ablaktáblán adja meg a helyreállított rendszerállapot-fájlok célhelyét, és a **Tallózás** gombra kattintva nyissa meg a Windows Intézőt, és keresse meg a kívánt fájlokat és mappákat. A **példányok létrehozása, hogy mindkét verzióval rendelkezzen**, másolatot készít az egyes fájlokról egy meglévő rendszerállapot-archívumban a teljes rendszerállapot-Archívum másolatának létrehozása helyett.
+7. A következő ablaktáblán adja meg a helyreállított rendszerállapot-fájlok célhelyét. Ezután a **Tallózás** gombra kattintva nyissa meg a Windows Intézőt, és keresse meg a kívánt fájlokat és mappákat. A **példányok létrehozása, hogy mindkét verzióval rendelkezzen**, másolatot készít az egyes fájlokról egy meglévő rendszerállapot-archívumban a teljes rendszerállapot-Archívum másolatának létrehozása helyett.
 
     ![Helyreállítási beállítások](./media/backup-azure-restore-system-state/recover-as-files.png)
 
@@ -61,7 +60,7 @@ A következő lépések bemutatják, hogyan állíthatja vissza a Windows Server
 
 9. Másolja a helyreállítási célhelyen található *WindowsImageBackup* könyvtárat a kiszolgáló nem kritikus kötetére. A Windows operációsrendszer-kötet általában a kritikus kötet.
 
-10. A helyreállítás sikeres végrehajtása után kövesse a rendszerállapot-helyreállítási folyamat befejezéséhez szükséges, a [visszaállított rendszerállapot-fájlok alkalmazása a Windows Serverre](backup-azure-restore-system-state.md)című szakasz lépéseit.
+10. A helyreállítás sikeres végrehajtása után kövesse a rendszerállapot-helyreállítási folyamat végrehajtásához a [visszaállított rendszerállapot alkalmazása Windows Serveren](#apply-restored-system-state-on-a-windows-server)című szakasz lépéseit.
 
 ## <a name="recover-system-state-files-to-an-alternate-server"></a>Rendszerállapot-fájlok helyreállítása egy másik kiszolgálóra
 
@@ -71,7 +70,7 @@ A következő lépésekben használt terminológiák a következők:
 
 * *Forrásoldali gép* – az eredeti gép, amelyről a biztonsági mentés készült, és amely jelenleg nem érhető el.
 * *Célszámítógép* – az a gép, amelyre az Adathelyreállítás történik.
-* *Minta* -tár – az a Recovery Services tároló, amelybe a *forrásszámítógép* és a *célszámítógép* regisztrálva van. <br/>
+* *Minta* -tár – az a Recovery Services tároló, amelybe a *forrásszámítógép* és a *célszámítógép* regisztrálva van.
 
 > [!NOTE]
 > Az egyik gépről származó biztonsági másolatok nem állíthatók vissza olyan gépre, amely az operációs rendszer korábbi verzióját futtatja. Egy Windows Server 2016 rendszerű gépről készített biztonsági másolatok például nem állíthatók vissza a Windows Server 2012 R2-re. Az inverz azonban lehetséges. A Windows Server 2012 R2 biztonsági másolatait a Windows Server 2016 visszaállítására használhatja.
@@ -115,6 +114,61 @@ A következő lépésekben használt terminológiák a következők:
 
 Ha az Azure Recovery Services Agent használatával helyreállítja a rendszerállapotot, az Windows Server biztonsági másolat segédprogrammal alkalmazza a helyreállított rendszerállapotot a Windows Serverre. A Windows Server biztonsági másolat segédprogram már elérhető a kiszolgálón. A következő lépések azt ismertetik, hogyan alkalmazhatja a helyreállított rendszerállapotot.
 
+1. Nyissa meg a Windows Server biztonsági másolat beépülő modult. Ha nem tudja, hol telepítette a beépülő modult, keresse meg **Windows Server biztonsági másolat**a számítógépet vagy a kiszolgálót.
+
+    Az asztali alkalmazás megjelenik a keresési eredmények között. Ha nem jelenik meg, vagy ha az alkalmazás megnyitásakor hibákba ütközik, telepítenie kell a **Windows Server biztonsági másolat-szolgáltatásokat**és az alatta lévő függő összetevőket, amelyek a Kiszolgálókezelő **szolgáltatások hozzáadása varázslójával** érhetők **Server Manager**el.
+
+1. A beépülő modulban válassza a **helyi biztonsági mentés**lehetőséget.
+
+    ![Válassza ki a helyi biztonsági mentést a visszaállításhoz](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
+
+1. A helyi biztonsági mentési konzol **műveletek paneljén**kattintson a **helyreállítás** elemre a helyreállítási varázsló megnyitásához.
+
+1. Válassza a lehetőséget, **egy másik helyen tárolt biztonsági másolatot**, és kattintson a **tovább**gombra.
+
+   ![másik kiszolgálóra történő helyreállítás kiválasztása](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
+
+1. A hely típusának megadásakor válassza a **távoli megosztott mappa** lehetőséget, ha a rendszerállapot biztonsági mentése egy másik kiszolgálóra lett helyreállítva. Ha a rendszerállapot helyi helyre lett állítva, válassza a **helyi meghajtók**lehetőséget.
+
+    ![Válassza ki, hogy a helyreállítás a helyi kiszolgálóról vagy más](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
+
+1. Adja meg a *WindowsImageBackup* könyvtár elérési útját, vagy válassza ki a könyvtárat tartalmazó helyi meghajtót (például D:\WindowsImageBackup), amely a rendszerállapot-fájlok helyreállításának részeként lett helyreállítva az Azure Recovery Services Agent használatával, és kattintson a **tovább**gombra.
+
+    ![a megosztott fájl elérési útja](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
+
+1. Válassza ki a visszaállítani kívánt rendszerállapot-verziót, és kattintson a **tovább**gombra.
+
+1. A helyreállítási típus kiválasztása panelen válassza a **rendszerállapot** lehetőséget, majd kattintson a **tovább**gombra.
+
+1. A rendszerállapot-helyreállítás helyeként válassza az **eredeti hely**lehetőséget, majd kattintson a **tovább**gombra.
+
+    Ha egy tartományvezérlőt állít helyre, a következő további lehetőségek jelennek meg:
+
+    ![Rendszerállapot-helyreállítás helye](./media/backup-azure-restore-system-state/location-for-system-state-recovery.png)
+
+    >[!NOTE]
+    >Ha kifejezetten az összes Active Directory adat mérvadó visszaállítását kívánja elvégezni, csak a "Active Directory fájlok mérvadó visszaállításának" lehetőséget válassza.
+
+1. Tekintse át a megerősítő adatokat, ellenőrizze az újraindítási beállításokat, majd kattintson a **helyreállítás** elemre a visszaállított rendszerállapot-fájlok alkalmazásához.
+
+    ![Indítsa el a rendszerállapot-fájlok visszaállítását](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
+
+    >[!NOTE]
+    >Ne jelölje be a **kiszolgáló automatikus újraindítása** beállítást, ha a VISSZAÁLLÍTÁST címtárszolgáltatások helyreállító módjában végzi.
+
+1. Miután sikeresen elvégezte a visszaállítást, a kiszolgálót normál módban kell újraindítani. Nyisson meg egy parancssort, és írja be a következőt:`bcdedit /deletevalue safeboot`
+1. Indítsa újra a kiszolgálót.
+
+## <a name="special-considerations-for-system-state-recovery-on-a-domain-controller"></a>A rendszerállapot-helyreállításra vonatkozó különleges szempontok a tartományvezérlőn
+
+A rendszerállapot biztonsági másolata Active Directory-adattal rendelkezik. A következő lépésekkel állíthatja vissza Active Directory-tartomány szolgáltatást (AD DS) az aktuális állapotból egy korábbi állapotba. Ezt a visszaállítási típust két esetben lehet elvégezni:
+
+* Az összes Active Directory-információ visszaállítása, ha nincs működő tartományvezérlő az erdőben.
+* A Active Directory-adatmennyiség egy részének visszaállítása, ha ezek az objektumok törölve lettek vagy sérültek
+
+Ez a cikk csak az első forgatókönyvet tárgyalja, amely az AD DS nonauthorative visszaállítását és a SYSVOL mappa mérvadó visszaállítását hívja meg.  Ha végre kell hajtania a második forgatókönyvet (ahol a tartományvezérlők továbbra is működőképesek, de bizonyos AD-objektumokat kell visszaállítani), tekintse meg [ezeket az utasításokat](https://support.microsoft.com/help/840001/how-to-restore-deleted-user-accounts-and-their-group-memberships-in-ac).
+
+1. A [rendszerállapot-fájlok másik kiszolgálóra történő helyreállításához](#recover-system-state-files-to-an-alternate-server)kövesse az alábbi lépéseket.
 1. A következő parancsok segítségével indítsa újra a kiszolgálót a *Címtárszolgáltatások helyreállító módjában*. Rendszergazdai jogú parancssorban:
 
     ```cmd
@@ -122,48 +176,35 @@ Ha az Azure Recovery Services Agent használatával helyreállítja a rendszerá
     Shutdown /r /t 0
     ```
 
-2. Az újraindítás után nyissa meg a Windows Server biztonsági másolat beépülő modult. Ha nem tudja, hol telepítette a beépülő modult, keresse meg **Windows Server biztonsági másolat**a számítógépet vagy a kiszolgálót.
+1. Ha a rendszerállapot-visszaállítás részeként kívánja helyreállítani Active Directory, két módszer közül választhat:
 
-    Az asztali alkalmazás megjelenik a keresési eredmények között. Ha ez nem jelenik meg, vagy ha az alkalmazás megnyitásakor hibákba ütközik, telepítenie kell a **Windows Server biztonsági másolat-szolgáltatásokat**és az alatta lévő függő összetevőket, amelyek a **Kiszolgálókezelő** **szolgáltatások hozzáadása varázslójával** érhetők el.
+    * A fenti utasításokat követve [alkalmazza a visszaállított rendszerállapotot egy Windows Serveren](#apply-restored-system-state-on-a-windows-server) a Windows Server biztonsági másolat segédprogrammal.
 
-3. A beépülő modulban válassza a **helyi biztonsági mentés**lehetőséget.
+        >[!NOTE]
+        >Ha az összes Active Directory-adat visszaállítása (és nincsenek működő tartományvezérlők az erdőben), a fenti 9. lépésben jelölje be a **Active Directory fájlok mérvadó visszaállításának elvégzése**jelölőnégyzetet.
 
-    ![Válassza ki a helyi biztonsági mentést a visszaállításhoz](./media/backup-azure-restore-system-state/win-server-backup-local-backup.png)
+    * A [Wbadmin](https://docs.microsoft.com/windows-server/administration/windows-commands/wbadmin-start-systemstaterecovery) segédprogram használatával hajtsa végre a visszaállítást a parancssorból.
 
-4. A helyi biztonsági mentési konzol **műveletek paneljén**kattintson a **helyreállítás** elemre a helyreállítási varázsló megnyitásához.
+        Szüksége lesz a használni kívánt biztonsági másolat verziószámára. A verziószámok listáját a következő parancs futtatásával kérheti le:
 
-5. Válassza a lehetőséget, **egy másik helyen tárolt biztonsági másolatot**, és kattintson a **tovább**gombra.
+        ```cmd
+        wbadmin get versions -backuptarget <servername\sharename>
+        ```
 
-   ![másik kiszolgálóra történő helyreállítás kiválasztása](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
+        Ezután használja ezt a verziószámot a visszaállítás futtatásához.
 
-6. A hely típusának megadásakor válassza a **távoli megosztott mappa** lehetőséget, ha a rendszerállapot biztonsági mentése egy másik kiszolgálóra lett helyreállítva. Ha a rendszerállapot helyi helyre lett állítva, válassza a **helyi meghajtók**lehetőséget.
+        Ha például el szeretné végezni az [AD DS nonauthorative visszaállítását, és a SYSVOL mappa mérvadó visszaállítását](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) a 04/30/2020-es és 9:00-es verzióról származó biztonsági mentéssel, akkor a következőt kell `\\servername\share` beírnia a megosztott erőforrásban `server01` :
 
-    ![Válassza ki, hogy a helyreállítás a helyi kiszolgálóról vagy más](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
+        ```cmd
+        wbadmin start systemstaterecovery -version:04/30/2020-09:00 -backupTarget:\\servername\share -machine:server01 -authsysvol
+        ```
 
-7. Adja meg a *WindowsImageBackup* könyvtár elérési útját, vagy válassza ki a könyvtárat tartalmazó helyi meghajtót (például D:\WindowsImageBackup), amely a rendszerállapot-fájlok helyreállításának részeként lett helyreállítva az Azure Recovery Services Agent használatával, és kattintson a **tovább**gombra.
-
-    ![a megosztott fájl elérési útja](./media/backup-azure-restore-system-state/ss-recovery-remote-folder.png)
-
-8. Válassza ki a visszaállítani kívánt rendszerállapot-verziót, és kattintson a **tovább**gombra.
-
-9. A helyreállítási típus kiválasztása panelen válassza a **rendszerállapot** lehetőséget, majd kattintson a **tovább**gombra.
-
-10. A rendszerállapot-helyreállítás helyeként válassza az **eredeti hely**lehetőséget, majd kattintson a **tovább**gombra.
-
-11. Tekintse át a megerősítő adatokat, ellenőrizze az újraindítási beállításokat, majd kattintson a **helyreállítás** elemre a visszaállított rendszerállapot-fájlok alkalmazásához.
-
-    ![Indítsa el a rendszerállapot-fájlok visszaállítását](./media/backup-azure-restore-system-state/launch-ss-recovery.png)
-
-## <a name="special-considerations-for-system-state-recovery-on-active-directory-server"></a>A rendszerállapot-helyreállításra vonatkozó különleges szempontok Active Directory kiszolgálón
-
-A rendszerállapot biztonsági másolata Active Directory-adattal rendelkezik. A következő lépésekkel állíthatja vissza Active Directory-tartomány szolgáltatást (AD DS) az aktuális állapotból egy korábbi állapotba.
-
-1. Indítsa újra a tartományvezérlőt a Címtárszolgáltatások helyreállító módjában.
-2. A AD DS helyreállításához kövesse az [alábbi lépéseket Windows Server biztonsági másolat](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) parancsmagok használatához.
+1. Miután sikeresen elvégezte a visszaállítást, indítsa újra a kiszolgálót normál módban. Nyisson meg egy parancssort, és írja be a következőt:`bcdedit /deletevalue safeboot`
+1. Indítsa újra a kiszolgálót.
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Sikertelen rendszerállapot-visszaállítás hibaelhárítása
 
-Ha a rendszerállapot alkalmazásának előző folyamata nem fejeződik be sikeresen, a Windows-kiszolgáló helyreállításához használja a Windows helyreállítási környezetét (Win RE). A következő lépések bemutatják, hogyan lehet helyreállítani a Win RE használatával. Ezt a lehetőséget csak akkor használja, ha a Windows Server nem indul el rendesen a rendszerállapot visszaállítása után. A következő folyamat törli a nem rendszerértékeket, körültekintően járjon el.
+Ha a rendszerállapot alkalmazásának előző folyamata nem fejeződött be sikeresen, a Windows-kiszolgáló helyreállításához használja a Windows helyreállítási környezetét (Win RE). A következő lépések bemutatják, hogyan lehet helyreállítani a Win RE használatával. Ezt a lehetőséget csak akkor használja, ha a Windows Server nem indul el rendesen a rendszerállapot visszaállítása után. A következő folyamat törli a nem rendszerértékeket, körültekintően járjon el.
 
 1. Indítsa el a Windows Servert a Windows helyreállítási környezetbe (Win RE).
 
