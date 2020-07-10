@@ -6,11 +6,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7edb632559dc8da2de32c58d994a7c51b1b09e8
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78255151"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169971"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure-beli alkalmazás visszaállítása pillanatképből
 Ebből a cikkből megtudhatja, hogyan állíthat vissza egy alkalmazást [Azure app Service](../app-service/overview.md) egy pillanatképből. Az alkalmazás egy korábbi állapotba állítható vissza az alkalmazás pillanatképei alapján. Nem kell engedélyeznie a pillanatképek biztonsági mentését, a platform automatikusan elmenti az összes alkalmazás pillanatképét az adatok helyreállításához.
@@ -36,15 +37,15 @@ A pillanatképek visszaállítása a **prémium** szintű vagy magasabb szintű 
 
 1. Az alkalmazás **Beállítások** lapján a [Azure Portalban](https://portal.azure.com)kattintson a **biztonsági** mentések elemre a **biztonsági mentések** lap megjelenítéséhez. Ezután kattintson a **visszaállítás** elemre a **Pillanatkép (előzetes verzió)** szakaszban.
    
-    ![](./media/app-service-web-restore-snapshots/1.png)
+    ![Képernyőkép, amely bemutatja, hogyan lehet visszaállítani egy alkalmazást egy pillanatkép biztonsági másolatából.](./media/app-service-web-restore-snapshots/1.png)
 
 2. A **visszaállítás** lapon válassza ki a visszaállítani kívánt pillanatképet.
    
-    ![](./media/app-service-web-restore-snapshots/2.png)
+    ![Képernyőkép, amely bemutatja, hogyan választhatja ki a visszaállítani kívánt pillanatképet. ](./media/app-service-web-restore-snapshots/2.png)
    
 3. Adja meg az alkalmazás visszaállításának célhelyét a **visszaállítási célhelyen**.
    
-    ![](./media/app-service-web-restore-snapshots/3.png)
+    ![A visszaállítás célhelyének megadását bemutató képernyőkép.](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
    > Ha a **felülírás**lehetőséget választja, a rendszer az alkalmazás aktuális fájlrendszerében lévő összes meglévő adat törlődik és felülíródik. Mielőtt rákattintott az **OK**gombra, győződjön meg arról, hogy az, amit kíván tenni.
@@ -60,6 +61,6 @@ A pillanatképek visszaállítása a **prémium** szintű vagy magasabb szintű 
 
 4. Dönthet úgy, hogy visszaállítja a hely konfigurációját.
    
-    ![](./media/app-service-web-restore-snapshots/4.png)
+    ![A hely konfigurációjának visszaállítását bemutató képernyőkép.](./media/app-service-web-restore-snapshots/4.png)
 
 5. Kattintson az **OK** gombra.

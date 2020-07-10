@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 06/30/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 94a2f77326487aa4bb180dd62ec05f4e23ca6218
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 35938ca3b9d8f3aedd0892740a3dbfa0fb5b036a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057791"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186860"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Hálózati elkülönítés a betanítás során & privát virtuális hálózatokkal való következtetés
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,6 +67,9 @@ Az [Azure privát hivatkozását is engedélyezheti](how-to-configure-private-li
 
 Ha az adatok virtuális hálózaton vannak tárolva, egy munkaterület által [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) kell használnia ahhoz, hogy a stúdió hozzáférjen az adatokhoz.
 
+> [!IMPORTANT]
+> Habár a legtöbb Studio a virtuális hálózaton tárolt adattal működik, az integrált jegyzetfüzetek __nem__. Az integrált jegyzetfüzetek nem támogatják a virtuális hálózatban lévő tárolók használatát. Ehelyett Jupyter jegyzetfüzeteket használhat egy számítási példányból. További információkért tekintse meg a [hozzáférési adatokat egy számítási példányú jegyzetfüzet](#access-data-in-a-compute-instance-notebook) szakaszban.
+
 Ha nem sikerül a Studio-hozzáférés megadása, akkor ezt a hibaüzenetet kapja, `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` és letiltja a következő műveleteket:
 
 * A Studióban tárolt előzetes verzió.
@@ -85,7 +88,7 @@ A Studio a következő adattár-típusokból származó adatok olvasását támo
 
 Adja hozzá a munkaterületét és a Storage-fiókját ugyanahhoz a virtuális hálózathoz, hogy hozzáférhessenek egymáshoz.
 
-1. Ha a munkaterületet a virtuális hálózathoz szeretné csatlakoztatni, [engedélyezze az Azure privát hivatkozását](how-to-configure-private-link.md).
+1. Ha a munkaterületet a virtuális hálózathoz szeretné csatlakoztatni, [engedélyezze az Azure privát hivatkozását](how-to-configure-private-link.md). Ez a funkció jelenleg előzetes verzióban érhető el, és az USA keleti régiójában, az USA 2. nyugati régiójában, az USA déli középső régiójában érhető el.
 
 1. A Storage-fiók virtuális hálózathoz való összekapcsolásához [konfigurálja a tűzfalak és a virtuális hálózatok beállításait](#use-a-storage-account-for-your-workspace).
 
@@ -157,7 +160,7 @@ Ha egy virtuális hálózatban lévő munkaterülethez Azure Storage szolgáltat
    ![A Azure Portal Azure Storage lapjának "tűzfalak és virtuális hálózatok" területén](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
 1. A __tűzfalak és virtuális hálózatok__ oldalon hajtsa végre a következő műveleteket:
-    - Válassza a __Kiválasztott hálózatok__ lehetőséget.
+    - Válassza a __Kijelölt hálózatok__ lehetőséget.
     - A __virtuális hálózatok__területen válassza a __meglévő virtuális hálózati kapcsolat hozzáadása__ elemet. Ez a művelet hozzáadja azt a virtuális hálózatot, ahol a számítás található (lásd: 1. lépés).
 
         > [!IMPORTANT]
@@ -635,7 +638,7 @@ További információ a Azure Machine Learning és a Azure Firewall használatá
 
 1. A munkaterület Azure Container Registry nevének megkereséséhez használja az alábbi módszerek egyikét:
 
-    __Azure Portalra__
+    __Azure Portal__
 
     A munkaterület Áttekintés szakaszában a __beállításjegyzék__ értéke a Azure Container Registryra hivatkozik.
 
@@ -765,7 +768,7 @@ A Azure Databricks virtuális hálózattal való használatáról a [Azure Datab
 
 Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a munkaterülettel rendelkező virtuális hálózatban, kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy virtuális GÉPET vagy HDInsight-fürtöt a Azure Portal vagy az Azure CLI használatával, és helyezze üzembe a fürtöt egy Azure-beli virtuális hálózaton. További információért tekintse át a következő cikkeket:
+1. Hozzon létre egy virtuális GÉPET vagy HDInsight-fürtöt a Azure Portal vagy az Azure CLI használatával, és helyezze üzembe a fürtöt egy Azure-beli virtuális hálózaton. További információkért tekintse át a következő cikkeket:
     * [Azure Virtual Networks létrehozása és kezelése Linux rendszerű virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [HDInsight kiterjesztése Azure Virtual Network használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)

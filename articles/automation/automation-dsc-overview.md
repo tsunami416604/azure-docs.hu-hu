@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bdb387739be65b761c773ca13b7a407d7aebf738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85206886"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186384"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation állapot konfigurációjának áttekintése
 
@@ -23,7 +23,7 @@ Azure Automation állapot-konfiguráció egy [Azure-beli](/powershell/scripting/
 
 A Azure Automation állapot-konfiguráció számos különböző gép kezelésére használható:
 
-- Azure virtuális gépek
+- Azure-beli virtuális gépek
 - Azure-beli virtuális gépek (klasszikus)
 - Fizikai/virtuális Windowsos gépek a helyszínen vagy az Azure-tól eltérő felhőben (beleértve az AWS EC2-példányokat)
 - Fizikai/virtuális Linux rendszerű számítógépek a helyszínen, az Azure-ban vagy az Azure-tól eltérő felhőben
@@ -77,7 +77,7 @@ A Linux rendszerű csomópontok esetében a DSC linuxos bővítmény a [támogat
 
 ### <a name="dsc-requirements"></a>DSC-követelmények
 
-Az Azure-ban futó összes Windows-csomópont esetében a [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) telepítve van, ha a gépek engedélyezve vannak. A Windows Server 2012 és Windows 7 rendszert futtató csomópontok esetén a [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) engedélyezve van.
+Az Azure-ban futó összes Windows-csomópont esetében a [WMF 5,1](/powershell/scripting/wmf/setup/install-configure) telepítve van, ha a gépek engedélyezve vannak. A Windows Server 2012 és Windows 7 rendszert futtató csomópontok esetén a [WinRM](/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) engedélyezve van.
 
 Az Azure-ban futó összes Linux-csomópont esetében a [POWERSHELL DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) telepítve van, ha a gépek engedélyezve vannak.
 
@@ -90,7 +90,7 @@ Ha a csomópontok egy magánhálózaton találhatók, a következő portok és U
 * US Gov Virginia globális URL-címe: ***. Azure-Automation.us**
 * Ügynök szolgáltatás: **https:// \<workspaceId\> . agentsvc.Azure-Automation.net**
 
-Ha olyan DSC-erőforrásokat használ, amelyek a csomópontok között kommunikálnak, például a [waitfor * erőforrásai](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)között, akkor is engedélyeznie kell a csomópontok közötti forgalmat. A hálózati követelmények megismeréséhez tekintse meg az egyes DSC-erőforrások dokumentációját.
+Ha olyan DSC-erőforrásokat használ, amelyek a csomópontok között kommunikálnak, például a [waitfor * erőforrásai](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)között, akkor is engedélyeznie kell a csomópontok közötti forgalmat. A hálózati követelmények megismeréséhez tekintse meg az egyes DSC-erőforrások dokumentációját.
 
 A TLS 1,2-hez szükséges ügyfél-követelmények megismeréséhez lásd: [tls 1,2 kényszerítés Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -114,5 +114,4 @@ A kivételek meghatározásakor a [DNS-rekordok](how-to/automation-region-dns-re
 - Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg [a DSC-konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
 - Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse [meg a folyamatos üzembe helyezés a chocolatey](automation-dsc-cd-chocolatey.md)használatával című témakört.
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
-- A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+- A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

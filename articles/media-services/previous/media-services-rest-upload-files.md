@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa7dca62ed51c52b704c199ca04eadb6306be4df
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73888604"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170785"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése Media Services-fiókba a REST használatával  
 > [!div class="op_single_selector"]
@@ -41,7 +42,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan tölthet fel egy fájlt és egyé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
 - [Hozzon létre egy Azure Media Services fiókot a Azure Portal használatával](media-services-portal-create-account.md).
 - Tekintse át a [hozzáférés Azure Media Services API-t a HRE-hitelesítés áttekintésével foglalkozó](media-services-use-aad-auth-to-access-ams-api.md) cikkben.
 - További információkért tekintse át az [Azure ad-hitelesítés használata a Media Services API Rest-mel való elérését](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) ismertető cikket.
@@ -149,7 +150,7 @@ A tényleges feltöltési URL-cím megszerzéséhez hozzon létre egy SAS-lokát
 
 A SAS URL-cím formátuma a következő:
 
-    {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
+`{https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}`
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
@@ -172,7 +173,7 @@ Vegye figyelembe a következőket:
 
 ### <a name="overview"></a>Áttekintés
 
-Most, hogy már rendelkezik a feltöltési URL-címmel, írnia kell egy kódot az Azure Blob API-k használatával közvetlenül a fájlnak a SAS-tárolóba való feltöltéséhez. További információért tekintse át a következő cikkeket:
+Most, hogy már rendelkezik a feltöltési URL-címmel, írnia kell egy kódot az Azure Blob API-k használatával közvetlenül a fájlnak a SAS-tárolóba való feltöltéséhez. További információkért tekintse át a következő cikkeket:
 
 - [Az Azure Storage REST API használata](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [BLOB elhelyezése](https://docs.microsoft.com/rest/api/storageservices/put-blob)
@@ -212,15 +213,17 @@ Annak ellenőrzéséhez, hogy a fájl feltöltése sikeresen megtörtént-e, ér
 
 A következő **beolvasási** művelet például az adatfájlhoz tartozó adatfájlok (vagy a BigBuckBunny.mp4 fájl) adatait hozza meg. A lekérdezés a korábban beállított [környezeti változókat](postman-environment.md) használja.
 
-    {{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files
+`{{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files`
 
 A válasz a méretet, a nevet és az egyéb adatokat fogja tartalmazni.
 
-    "Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
-    "Name": "BigBuckBunny.mp4",
-    "ContentFileSize": "3186542",
-    "ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
-            
+```console
+"Id": "nb:cid:UUID:69e72ede-2886-4f2a-8d36-80a59da09913",
+"Name": "BigBuckBunny.mp4",
+"ContentFileSize": "3186542",
+"ParentAssetId": "nb:cid:UUID:0b8f3b04-72fb-4f38-8e7b-d7dd78888938",
+```
+  
 ## <a name="next-steps"></a>További lépések
 
 Most már kódolhatja a feltöltött adategységeket. További információ: [Encode Assets](media-services-portal-encode.md) (Adategységek kódolása).

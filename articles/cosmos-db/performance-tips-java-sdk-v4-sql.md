@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: c6ff105a03181b588a9074675c97930696ac5e87
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 30573eb3b35152ab5769c1aab9c4af052cb454a6
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850207"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171023"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB Java SDK v4-hez
 
@@ -37,52 +37,46 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 * **Csatlakoztatási mód: közvetlen mód használata**
 <a id="direct-connection"></a>
     
-    Az ügyfél Azure Cosmos DBhoz való csatlakozásának módja fontos hatással van a teljesítményre, különösen az ügyféloldali késések tekintetében. A *ConnectionMode* az ügyfél *ConnectionPolicy*konfigurálásához rendelkezésre álló kulcsfontosságú konfigurációs beállítás. Azure Cosmos DB Java SDK v4 esetén a két elérhető *ConnectionMode*-k a következők:  
-      
-    * [Átjáró (alapértelmezett)](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
-    * [Direct](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
+    Az ügyfél Azure Cosmos DBhoz való csatlakozásának módja fontos hatással van a teljesítményre, különösen az ügyféloldali késések tekintetében. A csatlakozás mód az ügyfél konfigurálásához rendelkezésre álló legfontosabb konfigurációs beállítás. Azure Cosmos DB Java SDK v4 esetén a két elérhető kapcsolattípus a következő:  
 
-    Ezek a *ConnectionMode*-k lényegében feltétele azt az útvonalat, amelyet a kérések az ügyfélszámítógépről a Azure Cosmos db háttérbe tartozó partíciók számára igényelnek. A legjobb teljesítmény érdekében általában a közvetlen mód az előnyben részesített megoldás, amely lehetővé teszi, hogy az ügyfél közvetlenül a Azure Cosmos DB háttérbeli partíciókkal nyissa meg a TCP-kapcsolatokat, és küldje el a *Direct*ly-t, és ne legyen közvetítő. Ezzel szemben az átjáró módban az ügyfél által kért kérelmek átirányítva egy úgynevezett "átjáró" kiszolgálóra a Azure Cosmos DB előtér-kiszolgálón, amely a Azure Cosmos DB háttérbeli megfelelő partíció (k) re küldi a kéréseit. Ha az alkalmazása szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül fut, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen végpontot használ. A teljesítmény-kompromisszum azonban az, hogy az átjáró mód egy további hálózati ugrást (ügyfél – átjáró és partíciós átjáró) is magában foglal minden alkalommal, amikor az összes adat beolvasása vagy írása Azure Cosmos DB. Emiatt a közvetlen mód jobb teljesítményt nyújt kevesebb hálózati ugrás miatt.
+    * Közvetlen mód (alapértelmezett)      
+    * Átjáró üzemmód
 
-    A *ConnectionMode* az Azure Cosmos db-ügyfél példányának az *ConnectionPolicy* paraméterrel való létrehozásakor van konfigurálva:
+    Ezek a kapcsolódási módok lényegében feltétele az adatsík által igényelt útvonalakat – a dokumentumok olvasását és írását – az ügyfélszámítógépről a Azure Cosmos DB háttérbe tartozó partícióknak kell elvégeznie. A legjobb teljesítmény érdekében általában a közvetlen mód az előnyben részesített megoldás, amely lehetővé teszi, hogy az ügyfél közvetlenül a Azure Cosmos DB háttérbeli partíciókkal nyissa meg a TCP-kapcsolatokat, és küldje el a *Direct*ly-t, és ne legyen közvetítő. Ezzel szemben az átjáró módban az ügyfél által kért kérelmek átirányítva egy úgynevezett "átjáró" kiszolgálóra a Azure Cosmos DB előtér-kiszolgálón, amely a Azure Cosmos DB háttérbeli megfelelő partíció (k) re küldi a kéréseit. Ha az alkalmazása szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül fut, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen végpontot használ. A teljesítmény-kompromisszum azonban az, hogy az átjáró mód egy további hálózati ugrást (ügyfél – átjáró és partíciós átjáró) is magában foglal minden alkalommal, amikor az összes adat beolvasása vagy írása Azure Cosmos DB. Emiatt a közvetlen mód jobb teljesítményt nyújt kevesebb hálózati ugrás miatt.
+
+    Az adatsík-kérelmek csatlakoztatási módja a *directMode ()* vagy a *gatewayMode ()* metódusok használatával van konfigurálva a Azure Cosmos db ügyfél-szerkesztőben az alább látható módon. Mindkét mód alapértelmezett beállításokkal való konfigurálásához a metódus argumentum nélkül hívható meg. Ellenkező esetben adja át a konfigurációs beállítások osztály példányát argumentumként (*DirectConnectionConfig* for *directMode ()*, *GatewayConnectionConfig* for *gatewayMode (*).)
     
-   #### <a name="async"></a>[Aszinkron](#tab/api-async)
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK
 
-   ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
+    # <a name="async"></a>[Aszinkron](#tab/api-async)
 
-    ```java
-    public ConnectionPolicy getConnectionPolicy() {
-        ConnectionPolicy policy = new ConnectionPolicy();
-        policy.setMaxPoolSize(1000);
-        return policy;
-    }
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    CosmosAsyncClient client = new CosmosClientBuilder()
-        .setEndpoint(HOST)
-        .setKey(MASTER)
-        .setConnectionPolicy(connectionPolicy)
-        .buildAsyncClient();
-    ```
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientConnectionModeAsync)]
 
-    #### <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
+    # <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
 
-    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-sync-api"></a><a id="java4-connection-policy-sync"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
 
-    ```java
-    public ConnectionPolicy getConnectionPolicy() {
-        ConnectionPolicy policy = new ConnectionPolicy();
-        policy.setMaxPoolSize(1000);
-        return policy;
-    }
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceClientConnectionModeSync)]
 
-    ConnectionPolicy connectionPolicy = new ConnectionPolicy();
-    CosmosClient client = new CosmosClientBuilder()
-        .setEndpoint(HOST)
-        .setKey(MASTER)
-        .setConnectionPolicy(connectionPolicy)
-        .buildClient();
-    ```
+    --- 
+
+    A *directMode ()* metódus további felülbírálást tartalmaz a következő ok miatt. A vezérlési sík műveletei, például az adatbázis és a Container szifilisz *mindig* az átjáró módot használják; Ha a felhasználó közvetlen módot konfigurált az adatsíkok műveleteihez, a vezérlési sík műveletei az alapértelmezett átjáró üzemmód beállításait használják. Ez a legtöbb felhasználónak megfelel. Azonban az adatsík-műveletek közvetlen üzemmódját, valamint a tunability átjáró üzemmódjának paramétereinek használatát a következő *directMode ()* felülbírálással lehet ellátni:
+
+    ### <a name="java-v4-sdk"></a><a id="override-default-consistency-javav4"></a>Java v4 SDK
+
+    # <a name="async"></a>[Aszinkron](#tab/api-async)
+
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=PerformanceClientDirectOverrideAsync)]
+
+    # <a name="sync"></a>[Szinkronizálás](#tab/api-sync)
+
+    Java SDK v4 (Maven com. Azure:: Azure-Cosmos) Sync API
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=PerformanceClientDirectOverrideSync)]
 
     --- 
 
@@ -156,7 +150,7 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
 * **ConnectionPolicy finomhangolása**
 
-    Alapértelmezés szerint a közvetlen üzemmódú Cosmos DB kérelmek TCP protokollon keresztül történnek Azure Cosmos DB Java SDK v4 használata esetén. Belsőleg az SDK egy speciális közvetlen üzemmódú architektúrát használ a hálózati erőforrások dinamikus kezeléséhez és a legjobb teljesítmény eléréséhez.
+    Alapértelmezés szerint a közvetlen üzemmódú Cosmos DB kérelmek TCP protokollon keresztül történnek Azure Cosmos DB Java SDK v4 használata esetén. A belső közvetlen mód speciális architektúrát használ a hálózati erőforrások dinamikus kezelésére és a legjobb teljesítmény elérésére.
 
     Azure Cosmos DB Java SDK v4-ben a közvetlen mód a legjobb választás az adatbázis teljesítményének növelésére a legtöbb munkaterheléssel. 
 
@@ -166,30 +160,21 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
         A közvetlen módban alkalmazott ügyféloldali architektúra előre jelezhető hálózati kihasználtságot és többszörös hozzáférést biztosít Azure Cosmos DB replikához. A fenti ábrán látható, hogy a Direct Mode hogyan irányítja az ügyfelek kérelmeit a Cosmos DB háttérbeli replikára. A közvetlen módú architektúra legfeljebb 10 **csatornát** foglal le az ügyféloldali replikán. A csatornák egy TCP-kapcsolatok, amely előtt egy kérelem-puffer található, amely 30 kérelem mélyét képezi. A replikához tartozó csatornák dinamikusan vannak lefoglalva a replika **szolgáltatási végpontja**által igényelt módon. Amikor a felhasználó közvetlen módban bocsát ki egy kérést, a **TransportClient** a megfelelő szolgáltatási végpontra irányítja a kérést a partíciós kulcs alapján. A kérelmek **várólistájának** pufferei a szolgáltatási végpont előtt érkeznek.
 
-    * ***ConnectionPolicy-konfigurációs beállítások közvetlen módban***
+    * ***A közvetlen mód konfigurációs beállításai***
 
-        Ezek a konfigurációs beállítások vezérlik a RNTBD architektúra viselkedését, amely a Direct Mode SDK viselkedését szabályozza.
-        
-        Első lépésként használja az alábbi ajánlott konfigurációs beállításokat. Ezek a *ConnectionPolicy* beállítások olyan speciális konfigurációs beállítások, amelyek nem várt módon befolyásolhatják az SDK teljesítményét. Javasoljuk, hogy a felhasználók ne módosíthassák őket, hacsak nem érzik nagyon kényelmesnek a kompromisszumok megismerését, és elengedhetetlenek. Ha az adott témakörben problémákba ütközik, forduljon a [Azure Cosmos db csapatához](mailto:CosmosDBPerformanceSupport@service.microsoft.com) .
+        Ha nem az alapértelmezett közvetlen mód viselkedését szeretné használni, hozzon létre egy *DirectConnectionConfig* -példányt, és szabja testre a tulajdonságait, majd adja át a testreszabott *directMode ()* metódusnak a Azure Cosmos db ügyfél-szerkesztőben.
 
-        Ha a Azure Cosmos DBt hivatkozási adatbázisként használja (azaz az adatbázist sok pont olvasási művelethez és kevés írási művelethez használja), akkor elfogadható lehet a *idleEndpointTimeout* 0 értékre (azaz nincs időkorlát) beállítani.
+        Ezek a konfigurációs beállítások vezérlik a fent ismertetett közvetlen üzemmódú architektúra viselkedését.
 
+        Első lépésként használja az alábbi ajánlott konfigurációs beállításokat. Ezek a *DirectConnectionConfig* beállítások olyan speciális konfigurációs beállítások, amelyek nem várt módon befolyásolhatják az SDK teljesítményét. Javasoljuk, hogy a felhasználók ne módosíthassák őket, hacsak nem érzik nagyon kényelmesnek a kompromisszumok megismerését, és elengedhetetlenek. Ha az adott témakörben problémákba ütközik, forduljon a [Azure Cosmos db csapatához](mailto:CosmosDBPerformanceSupport@service.microsoft.com) .
 
         | Konfigurációs beállítás       | Alapértelmezett    |
         | :------------------:       | :-----:    |
-        | bufferPageSize             | 8192       |
-        | connectionTimeout          | "PT1M"     |
-        | idleChannelTimeout         | "PT0S"     |
-        | idleEndpointTimeout        | "PT1M10S"  |
-        | maxBufferCapacity          | 8388608    |
-        | maxChannelsPerEndpoint     | 10         |
-        | maxRequestsPerChannel      | 30         |
-        | receiveHangDetectionTime   | "PT1M5S"   |
-        | requestExpiryInterval      | "PT5S"     |
-        | requestTimeout             | "PT1M"     |
-        | requestTimerResolution     | "PT 0.5 S"   |
-        | sendHangDetectionTime      | "PT10S"    |
-        | shutdownTimeout            | "PT15S"    |
+        | idleConnectionTimeout      | "PT1M"     |
+        | maxConnectionsPerEndpoint  | "PT0S"     |
+        | connectTimeout             | "PT1M10S"  |
+        | idleEndpointTimeout        | 8388608    |
+        | maxRequestsPerConnection   | 10         |
 
 * **A particionált gyűjtemények párhuzamos lekérdezésének finomhangolása**
 
@@ -326,21 +311,15 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
  
 * **Nem használt útvonalak kizárása az indexelésből a gyorsabb írás érdekében**
 
-    Azure Cosmos DB indexelési házirendje lehetővé teszi annak meghatározását, hogy mely dokumentum-elérési utakat kell belefoglalni vagy kizárni az indexelésből az indexelési útvonalak (setIncludedPaths és setExcludedPaths) használatával. Az indexelési útvonalak használata javíthatja az írási teljesítményt és az alacsonyabb indexű tárolást olyan helyzetekben, amikor a lekérdezési mintákat előre ismerték, mivel az indexelési költségek közvetlenül az indexelt egyedi útvonalak számával vannak összekapcsolva. Az alábbi kód például azt mutatja be, hogyan zárható ki a dokumentumok (más néven részfa) teljes szakasza az indexelésből a "*" helyettesítő karakter használatával.
+    Azure Cosmos DB indexelési házirendje lehetővé teszi annak meghatározását, hogy mely dokumentum-elérési utakat kell belefoglalni vagy kizárni az indexelésből az indexelési útvonalak (setIncludedPaths és setExcludedPaths) használatával. Az indexelési útvonalak használata javíthatja az írási teljesítményt és az alacsonyabb indexű tárolást olyan helyzetekben, amikor a lekérdezési mintákat előre ismerték, mivel az indexelési költségek közvetlenül az indexelt egyedi útvonalak számával vannak összekapcsolva. Az alábbi kód például azt mutatja be, hogyan lehet belefoglalni és kizárni a dokumentumok (más néven részfa) teljes részét az indexelésből a "*" helyettesítő karakter használatával.
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos"></a><a id="java4-indexing"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos)
-    ```java
-    Index numberIndex = Index.Range(DataType.Number);
-    indexes.add(numberIndex);
-    includedPath.setIndexes(indexes);
-    includedPaths.add(includedPath);
-    indexingPolicy.setIncludedPaths(includedPaths);        
-    containerProperties.setIndexingPolicy(indexingPolicy);
-    ``` 
+
+    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/sync/SampleDocumentationSnippets.java?name=MigrateIndexingAsync)]
 
     További információ: [Azure Cosmos db indexelési házirendek](indexing-policies.md).
 
-## <a name="throughput"></a>Teljesítmény
+## <a name="throughput"></a>Átviteli sebesség
 <a id="measure-rus"></a>
 
 * **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**

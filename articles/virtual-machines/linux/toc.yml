@@ -511,6 +511,8 @@
                       href: ../vm-specialized-image-version-powershell.md
                 - name: Rendszerkép-erőforrások frissítése
                   href: ../update-image-resources-powershell.md
+                - name: Alkalmazásregisztráció megosztás céljából
+                  href: ../windows/share-images-across-tenants.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Portál
               items:
                 - name: 'Katalógus, rendszerkép és virtuális gép létrehozása'
@@ -947,8 +949,6 @@
           items:
             - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel
               href: migrate-to-premium-storage-using-azure-site-recovery.md
-            - name: Konvertálás kiszolgálóoldali titkosításra
-              href: disks-ade-sse-conversion-cli.md
             - name: Konvertálás felügyelt lemezekké
               href: convert-unmanaged-to-managed-disks.md
             - name: Lemez konvertálása a standard és a prémium szint között

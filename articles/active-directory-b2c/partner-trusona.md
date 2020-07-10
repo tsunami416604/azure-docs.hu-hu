@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 78de242cb6fd1d670dc9564a2725070b7424b5b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc0bcd4a978912dccc9f08802acbf2ec1151b3a1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385552"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170105"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>A Trusona integrálása Azure Active Directory B2C
 
@@ -40,8 +40,7 @@ Ebben az esetben a Trusona identitás-szolgáltatóként viselkedik a Azure AD B
 
 ![Trusona architektúra diagram](media/partner-trusona/trusona-architecture-diagram.png)
 
-
-|  |  |
+| Lépés | Leírás |
 |------|------|
 |1     | A felhasználó megpróbál bejelentkezni az alkalmazásba, vagy regisztrálja az alkalmazást. A felhasználó hitelesítése a Azure AD B2C regisztrációs és bejelentkezési szabályzaton keresztül történik. A regisztráció során a rendszer a felhasználó korábban ellenőrzött e-mail-címét használja a Trusona alkalmazásban.     |
 |2     | Az Azure B2C az implicit folyamat használatával átirányítja a felhasználót a Trusona OpenID Connect (OIDC) identitás-szolgáltatóhoz.     |

@@ -3,12 +3,12 @@ title: AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatójában | Mi
 description: A Azure Service Bus és Event Hubs AMQP 1,0-es kifejezésekre és leírására vonatkozó protokoll-útmutató
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 17f2f6da88e585d770a0a04825dc817f870089f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337883"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186911"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatója
 
@@ -264,8 +264,8 @@ Minden kapcsolatnak meg kell indítania a saját vezérlési hivatkozását, hog
 
 A tranzakciós munka megkezdéséhez. a vezérlőnek a koordinátortól kell beszereznie `txn-id` . Ez egy típusú üzenet küldésével történik `declare` . Ha a deklaráció sikeres, a koordinátor a hozzárendelt művelettel ellátott törlési eredménnyel válaszol `txn-id` .
 
-| Ügyfél (vezérlő) | | Service Bus (koordinátor) |
-| --- | --- | --- |
+| Ügyfél (vezérlő) | Irány | Service Bus (koordinátor) |
+| :--- | :---: | :--- |
 | csatolja<br/>név = {hivatkozás neve},<br/>... ,<br/>szerepkör =**Feladó**,<br/>Target =**koordinátor**<br/>) | ------> |  |
 |  | <------ | csatolja<br/>név = {hivatkozás neve},<br/>... ,<br/>Target = koordinátor ()<br/>) |
 | transzfer<br/>kézbesítési azonosító = 0,...)<br/>{AmqpValue (**deklarálás ()**)}| ------> |  |
@@ -277,8 +277,8 @@ A vezérlő a tranzakciós munkát arra a következtetésre jut `discharge` , ho
 
 > Megjegyzés: a sikertelen = igaz érték egy tranzakció visszaállítására utal, és a sikertelen = hamis a véglegesítés.
 
-| Ügyfél (vezérlő) | | Service Bus (koordinátor) |
-| --- | --- | --- |
+| Ügyfél (vezérlő) | Irány | Service Bus (koordinátor) |
+| :--- | :---: | :--- |
 | transzfer<br/>kézbesítési azonosító = 0,...)<br/>{AmqpValue (deklarálás ())}| ------> |  |
 |  | <------ | törlése <br/> első = 0, utolsó = 0, <br/>állapot = deklarált (<br/>tranzakció-ID = {tranzakció azonosítója}<br/>))|
 | | . . . <br/>Tranzakciós munka<br/>egyéb hivatkozásokon<br/> . . . |
@@ -289,8 +289,8 @@ A vezérlő a tranzakciós munkát arra a következtetésre jut `discharge` , ho
 
 Az összes tranzakciós tevékenység a `transactional-state` tranzakció-azonosítóval ellátott tranzakciós kézbesítési állapottal történik. Üzenetek küldése esetén a tranzakciós állapotot az üzenet adatátviteli kerete végzi. 
 
-| Ügyfél (vezérlő) | | Service Bus (koordinátor) |
-| --- | --- | --- |
+| Ügyfél (vezérlő) | Irány | Service Bus (koordinátor) |
+| :--- | :---: | :--- |
 | transzfer<br/>kézbesítési azonosító = 0,...)<br/>{AmqpValue (deklarálás ())}| ------> |  |
 |  | <------ | törlése <br/> első = 0, utolsó = 0, <br/>állapot = deklarált (<br/>tranzakció-ID = {tranzakció azonosítója}<br/>))|
 | transzfer<br/>Handle = 1,<br/>kézbesítés-azonosító = 1, <br/>**állapot = <br/> TransactionalState ( <br/> tranzakció-ID = 0)**)<br/>adattartalom| ------> |  |
@@ -300,8 +300,8 @@ Az összes tranzakciós tevékenység a `transactional-state` tranzakció-azonos
 
 Az üzenet-törlés olyan műveleteket tartalmaz, mint a `Complete`  /  `Abandon`  /  `DeadLetter`  /  `Defer` . Ha egy tranzakción belül szeretné elvégezni ezeket a műveleteket, adja át a-nek a `transactional-state` rendelkezésére álló műveletet.
 
-| Ügyfél (vezérlő) | | Service Bus (koordinátor) |
-| --- | --- | --- |
+| Ügyfél (vezérlő) | Irány | Service Bus (koordinátor) |
+| :--- | :---: | :--- |
 | transzfer<br/>kézbesítési azonosító = 0,...)<br/>{AmqpValue (deklarálás ())}| ------> |  |
 |  | <------ | törlése <br/> első = 0, utolsó = 0, <br/>állapot = deklarált (<br/>tranzakció-ID = {tranzakció azonosítója}<br/>))|
 | | <------ |transzfer<br/>Handle = 2,<br/>kézbesítés-azonosító = 11, <br/>állapot = null)<br/>adattartalom|  
@@ -359,14 +359,14 @@ A kérelem üzenete a következő alkalmazás-tulajdonságokkal rendelkezik:
 
 | Kulcs | Választható | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| művelet |No |sztring |**Put-token** |
-| típus |No |sztring |A felhelyezni kívánt jogkivonat típusa. |
-| name |No |sztring |A "hallgatóság", amelyre a jogkivonat vonatkozik. |
-| lejárati |Yes |időbélyeg |A jogkivonat lejárati ideje. |
+| művelet |Nem |sztring |**Put-token** |
+| típus |Nem |sztring |A felhelyezni kívánt jogkivonat típusa. |
+| name |Nem |sztring |A "hallgatóság", amelyre a jogkivonat vonatkozik. |
+| lejárati |Igen |időbélyeg |A jogkivonat lejárati ideje. |
 
 A *Name (név* ) tulajdonság azonosítja azt az entitást, amelyhez a token társítva van. Service Bus a várólista elérési útja, vagy témakör/előfizetés. A *Type* tulajdonság azonosítja a jogkivonat típusát:
 
-| Jogkivonat típusa | Jogkivonat leírása | Törzs típusa | Jegyzetek |
+| Jogkivonat típusa | Jogkivonat leírása | Törzs típusa | Megjegyzések |
 | --- | --- | --- | --- |
 | amqp: JWT |JSON Web Token (JWT) |AMQP érték (karakterlánc) |Még nem érhető el. |
 | amqp: SWT |Egyszerű webes jogkivonat (SWT) |AMQP érték (karakterlánc) |Csak a HRE/ACS által kiállított SWT-tokenek esetében támogatott |
@@ -378,8 +378,8 @@ A válaszüzenet a következő *alkalmazás-tulajdonságok* értékekkel rendelk
 
 | Kulcs | Választható | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| állapot kódja |No |int |HTTP-válasz kódja **[RFC2616]**. |
-| állapot – Leírás |Yes |sztring |Az állapot leírása. |
+| állapot kódja |Nem |int |HTTP-válasz kódja **[RFC2616]**. |
+| állapot – Leírás |Igen |sztring |Az állapot leírása. |
 
 Az ügyfél többször is meghívhatja a *put-tokent* , illetve az üzenetkezelési infrastruktúra bármely entitására. A jogkivonatok hatóköre az aktuális ügyfél, és az aktuális kapcsolatra van rögzítve, ami azt jelenti, hogy a kiszolgáló eldobja a megőrzött jogkivonatokat, amikor a kapcsolat megszakad.
 
@@ -399,8 +399,8 @@ Ezzel a funkcióval létre kell hoznia egy küldőt, és létre kell hoznia a hi
 
 > Megjegyzés: a hivatkozás létrehozása előtt el kell indítani a hitelesítést mind az *entitások* , mind a *rendeltetési entitás* számára.
 
-| Ügyfél | | Service Bus |
-| --- | --- | --- |
+| Ügyfél | Irány | Service Bus |
+| :--- | :---: | :--- |
 | csatolja<br/>név = {hivatkozás neve},<br/>szerepkör = feladó,<br/>forrás = {ügyfél-hivatkozási azonosító},<br/>Target =**{on-Entity}**,<br/>**Properties = Térkép [( <br/> com. Microsoft: átvitel-cél-címe = <br/> {cél-entitás})]** ) | ------> | |
 | | <------ | csatolja<br/>név = {hivatkozás neve},<br/>szerepkör = fogadó,<br/>forrás = {ügyfél-hivatkozási azonosító},<br/>Target = {on-Entity},<br/>tulajdonságok = Térkép [(<br/>com. Microsoft: átvitel-cél-címe =<br/>{cél-entitás})] ) |
 

@@ -1,5 +1,5 @@
 ---
-title: Application Gateway-összetevők
+title: Az Application Gateway összetevői
 description: Ez a cikk az Application Gateway különböző összetevőivel kapcsolatos információkat tartalmaz
 services: application-gateway
 author: abshamsft
@@ -7,14 +7,14 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 46ef67e5ede1ea41469a8dcc78244e74c0bffc45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254327"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186758"
 ---
-# <a name="application-gateway-components"></a>Application Gateway-összetevők
+# <a name="application-gateway-components"></a>Az Application Gateway összetevői
 
  Az Application Gateway az ügyfelek számára egyetlen kapcsolódási pontként szolgál. A bejövő alkalmazások forgalmát több háttér-készlet között osztja el, többek között az Azure-beli virtuális gépeket, a virtuálisgép-méretezési csoportokat, a Azure App Servicet és a helyszíni/külső kiszolgálókat. A forgalom terjesztéséhez az Application Gateway számos, a jelen cikkben ismertetett összetevőt használ.
 
@@ -59,7 +59,7 @@ HTTPS-figyelő használata a TLS-lezáráshoz. Egy HTTPS-figyelő kiszervezi a t
 
 ### <a name="custom-error-pages"></a>Egyéni hibalapok
 
-Application Gateway lehetővé teszi, hogy egyéni hibaüzeneteket hozzon létre az alapértelmezett hibaüzenetek megjelenítése helyett. Az egyéni hibaoldalakon feltüntetheti saját védjegyeit, és egyéni elrendezést használhat. Application Gateway egy egyéni hibaüzenetet jelenít meg, ha egy kérelem nem tudja elérni a hátteret.
+Application Gateway lehetővé teszi, hogy egyéni hibaüzeneteket hozzon létre az alapértelmezett hibaüzenetek megjelenítése helyett. Az egyéni hibalapokon feltüntetheti saját védjegyeit, és egyéni elrendezést használhat. Application Gateway egy egyéni hibaüzenetet jelenít meg, ha egy kérelem nem tudja elérni a hátteret.
 
 További információ: [az Application Gateway egyéni hibáinak lapja](custom-error.md).
 
@@ -144,7 +144,7 @@ Különböző háttér-készleteket hozhat létre különböző típusú kérelm
 
 Alapértelmezés szerint az Application Gateway a háttér-készlet összes erőforrásának állapotát figyeli, és automatikusan eltávolítja a nem megfelelő állapotú fájlokat. Ezután figyeli a nem megfelelő állapotú példányokat, és visszaadja azokat az egészséges háttérrendszer-készlethez, amikor elérhetővé válnak, és reagálnak az állapotra.
 
-Amellett, hogy az alapértelmezett állapot mintavételi figyelését is használja, testre is szabhatja az állapot-mintavételt az alkalmazás követelményeinek megfelelően. Az egyéni mintavételek részletesebb szabályozást tesznek lehetővé az állapot figyelése során. Az egyéni mintavételek használatakor beállíthatja a mintavételi intervallumot, a teszt URL-címét és elérési útját, valamint azt, hogy hány sikertelen választ fogadjon el a rendszer, mielőtt a háttér-készlet példánya nem megfelelőként van megjelölve. Javasoljuk, hogy az egyes háttérrendszer-készletek állapotának figyeléséhez egyéni mintavételt állítson be.
+Amellett, hogy az alapértelmezett állapot mintavételi figyelését is használja, testre is szabhatja az állapot-mintavételt az alkalmazás követelményeinek megfelelően. Az egyéni mintavételek részletesebb szabályozást tesznek lehetővé az állapot figyelése során. Egyéni mintavétel használatakor beállíthatja az egyéni állomásnév, az URL-cím és a mintavételi időköz értékét, valamint azt, hogy hány sikertelen választ fogadjon el a rendszer, mielőtt a háttérrendszer-példányt nem Kifogástalan állapotba állítja, egyéni állapotkódot és a válasz törzsének megfelelőt, stb. Javasoljuk, hogy az egyes háttérrendszer-készletek állapotának figyeléséhez egyéni mintavételt állítson be.
 
 További információ: [az Application Gateway állapotának figyelése](../application-gateway/application-gateway-probe-overview.md).
 
@@ -152,6 +152,6 @@ További információ: [az Application Gateway állapotának figyelése](../appl
 
 Application Gateway létrehozása:
 
-* [A Azure Portal](quick-create-portal.md)
+* [Az Azure Portalon](quick-create-portal.md)
 * [Azure PowerShell használatával](quick-create-powershell.md)
 * [Az Azure CLI használatával](quick-create-cli.md)

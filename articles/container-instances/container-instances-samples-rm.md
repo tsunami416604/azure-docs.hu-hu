@@ -3,11 +3,12 @@ title: Azure Resource Manager sablon mintái
 description: Azure Container Instances különböző konfigurációkban való üzembe helyezéséhez Azure Resource Manager sablon mintáinak megkeresése
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: 7208e1b4b67879979507cc451d40a188a84373de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c487087b39244178643fd81364150ceb3ac4a63
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299757"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169646"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances Azure Resource Manager sablonjai
 
@@ -17,7 +18,7 @@ Az üzembe helyezési lehetőségekért tekintse meg a [központi telepítés](#
 
 ## <a name="sample-templates"></a>Példasablonok
 
-| | |
+| Sablon | Leírás |
 |-|-|
 | **Alkalmazások** ||
 | [WordPress][app-wp] | Létrehoz egy WordPress-webhelyet és a MySQL-adatbázisát egy tároló csoportban. A WordPress-webhely tartalma és a MySQL-adatbázis egy Azure Files megosztásban marad. Létrehoz egy Application Gateway-t is, amely nyilvános hálózati hozzáférést tesz elérhetővé a WordPress számára. |
@@ -41,7 +42,7 @@ Az erőforrások Resource Manager-sablonokkal való üzembe helyezésének szám
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure Portalra][deploy-portal]
+[Azure Portal][deploy-portal]
 
 [REST API][deploy-rest]
 

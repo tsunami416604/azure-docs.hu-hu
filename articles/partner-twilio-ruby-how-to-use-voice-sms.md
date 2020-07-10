@@ -12,12 +12,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 4822e6feb29f5a17c653a60937b895ec584e0ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19372b30a5e56738230216777897c08b07a0a86a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69637202"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170700"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>A Twilio használata a hang-és SMS-funkciókhoz a Rubyban
 Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure Twilio API szolgáltatásával. A tárgyalt forgatókönyvek közé tartozik a telefonhívás kezdeményezése és egy rövid üzenetküldési szolgáltatás (SMS) üzenet küldése. A Twilio és a hang-és SMS-alkalmazások alkalmazásokban való használatáról további információt a [következő lépések](#NextSteps) című szakaszban talál.
@@ -38,10 +38,12 @@ A TwiML olyan XML-alapú utasításokat tartalmaz, amelyek tájékoztatják a Tw
 
 Példaként a következő TwiML konvertálja a szöveget **"Helló világ!" alkalmazás** beszédre.
 
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <Response>
-       <Say>Hello World</Say>
-    </Response>
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<Response>
+    <Say>Hello World</Say>
+</Response>
+```
 
 Minden TwiML-dokumentum `<Response>` legfelső szintű eleme. Innentől kezdve a Twilio-műveletek használatával határozhatja meg az alkalmazás viselkedését.
 
@@ -82,28 +84,36 @@ Az alábbi példákban az [Sinatra][sinatra]és a Ruby egy egyszerű webes keret
 
 SSH-t az új virtuális gépre, és hozzon létre egy könyvtárat az új alkalmazáshoz. A könyvtáron belül hozzon létre egy Gemfile nevű fájlt, és másolja a következő kódot:
 
-    source 'https://rubygems.org'
-    gem 'sinatra'
-    gem 'thin'
+```bash
+source 'https://rubygems.org'
+gem 'sinatra'
+gem 'thin'
+```
 
 A parancssorban futtassa a parancsot `bundle install` . Ez a fenti függőségeket fogja telepíteni. Ezután hozzon létre egy nevű fájlt `web.rb` . Ez lesz a webalkalmazáshoz tartozó kód. Illessze be a következő kódot:
 
-    require 'sinatra'
+```ruby
+require 'sinatra'
 
-    get '/' do
-        "Hello Monkey!"
-    end
+get '/' do
+    "Hello Monkey!"
+end
+```
 
 Ezen a ponton el kell tudnia érni a parancsot `ruby web.rb -p 5000` . Ez egy kisméretű webkiszolgálót hoz létre a 5000-as porton. Az Azure-beli virtuális géphez beállított URL-cím megkeresésével böngészhet a böngészőben az alkalmazásban. Ha elérheti a webalkalmazást a böngészőben, készen áll a Twilio-alkalmazások létrehozásának megkezdésére.
 
 ## <a name="configure-your-application-to-use-twilio"></a><a id="configure_app"></a>Az alkalmazás konfigurálása a Twilio használatára
 A webalkalmazást úgy is beállíthatja, hogy a Twilio-függvénytárat használja a következő `Gemfile` sor belefoglalásával:
 
-    gem 'twilio-ruby'
+```bash
+gem 'twilio-ruby'
+```
 
 A parancssorban futtassa a parancsot `bundle install` . Most nyissa meg és válassza ki `web.rb` a következő sort:
 
-    require 'twilio-ruby'
+```ruby
+require 'twilio-ruby'
+```
 
 Most már készen áll a Ruby Twilio segítő könyvtárának használatára a webalkalmazásban.
 
@@ -112,33 +122,35 @@ A következő ábrán látható, hogyan lehet kimenő hívást kezdeményezni. A
 
 Adja hozzá ezt a függvényt a következőhöz `web.md` :
 
-    # Set your account ID and authentication token.
-    sid = "your_twilio_account_sid";
-    token = "your_twilio_authentication_token";
+```ruby
+# Set your account ID and authentication token.
+sid = "your_twilio_account_sid";
+token = "your_twilio_authentication_token";
 
-    # The number of the phone initiating the call.
-    # This should either be a Twilio number or a number that you've verified
-    from = "NNNNNNNNNNN";
+# The number of the phone initiating the call.
+# This should either be a Twilio number or a number that you've verified
+from = "NNNNNNNNNNN";
 
-    # The number of the phone receiving call.
-    to = "NNNNNNNNNNN";
+# The number of the phone receiving call.
+to = "NNNNNNNNNNN";
 
-    # Use the Twilio-provided site for the TwiML response.
-    url = "http://yourdomain.cloudapp.net/voice_url";
+# Use the Twilio-provided site for the TwiML response.
+url = "http://yourdomain.cloudapp.net/voice_url";
 
-    get '/make_call' do
-      # Create the call client.
-      client = Twilio::REST::Client.new(sid, token);
+get '/make_call' do
+    # Create the call client.
+    client = Twilio::REST::Client.new(sid, token);
 
-      # Make the call
-      client.account.calls.create(to: to, from: from, url: url)
-    end
+    # Make the call
+    client.account.calls.create(to: to, from: from, url: url)
+end
 
-    post '/voice_url' do
-      "<Response>
-         <Say>Hello Monkey!</Say>
-       </Response>"
-    end
+post '/voice_url' do
+    "<Response>
+        <Say>Hello Monkey!</Say>
+    </Response>"
+end
+```
 
 Ha egy böngészőben nyitja meg a programot, a elindítja a hívást a Twilio API-nak a telefonhívás meghívásához `http://yourdomain.cloudapp.net/make_call` . Az első két paraméter `client.account.calls.create` meglehetősen magától értetődő: a hívás száma `from` és a hívás száma `to` . 
 
@@ -151,11 +163,13 @@ Először jelentkezzen be a Twilio- [irányítópultra][twilio_account]. Kattint
 
 Szeretnénk feldolgozni a beérkező SMS-üzeneteket, ezért frissítsük az URL-címet a következőre: `http://yourdomain.cloudapp.net/sms_url` . A lap alján kattintson a módosítások mentése gombra. Most térjünk vissza a `web.rb` programba, hogy kezelje az alkalmazást:
 
-    post '/sms_url' do
-      "<Response>
-         <Message>Hey, thanks for the ping! Twilio and Azure rock!</Message>
-       </Response>"
-    end
+```ruby
+post '/sms_url' do
+    "<Response>
+        <Message>Hey, thanks for the ping! Twilio and Azure rock!</Message>
+    </Response>"
+end
+```
 
 A módosítás elvégzése után indítsa újra a webalkalmazást. Most vegye fel a telefont, és küldjön SMS-t a Twilio-számra. Azonnal küldjön egy SMS-választ, amely szerint a "Hey, thanks for the ping!" üzenet jelenik meg. Twilio és az Azure rock! ".
 

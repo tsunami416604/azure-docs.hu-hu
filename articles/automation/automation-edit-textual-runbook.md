@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d388162738930030ba311a04a0dce1db15590c79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836838"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186350"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Szöveges runbookok szerkesztése Azure Automation
 
@@ -56,7 +57,7 @@ Ez a cikk részletesen ismerteti a különböző függvények a szerkesztővel v
 1. A szöveges szerkesztő vászon vezérlőjében vigye a kurzort arra a helyre, ahová a gyermek runbook kódot kívánja helyezni.
 2. Bontsa ki az **eszközök** csomópontot a könyvtár vezérlőben.
 3. Bontsa ki a kívánt eszköz típusának csomópontját.
-4. Kattintson a jobb gombbal a beszúrandó eszköz nevére, majd válassza a **Hozzáadás a vászonhoz**lehetőséget. [Változó eszközök](automation-variables.md)esetén válassza a **"változó beolvasása" lehetőséget a vászonhoz** , vagy **adja hozzá a "változó beállítása" beállítást a vászonhoz**, attól függően, hogy szeretné-e lekérni vagy beállítani a változót.
+4. Kattintson a jobb gombbal a beszúrandó eszköz nevére, majd válassza a **Hozzáadás a vászonhoz**lehetőséget. [Változó eszközök](./shared-resources/variables.md)esetén válassza a **"változó beolvasása" lehetőséget a vászonhoz** , vagy **adja hozzá a "változó beállítása" beállítást a vászonhoz**, attól függően, hogy szeretné-e lekérni vagy beállítani a változót.
 5. Vegye figyelembe, hogy az eszköz kódját a rendszer beszúrja a runbook.
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Azure Automation runbook szerkesztése a Windows PowerShell használatával
@@ -95,9 +96,9 @@ Publish-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automatio
 * [A Azure Automation Runbookok kezelése](manage-runbooks.md).
 * [PowerShell-munkafolyamat betanítása](automation-powershell-workflow.md).
 * [Grafikus szerzői műveletek Azure Automationban](automation-graphical-authoring-intro.md).
-* [Tanúsítványok](automation-certificates.md).
+* [Tanúsítványok](./shared-resources/certificates.md).
 * [Kapcsolatok](automation-connections.md).
-* [Azonosító adatok](automation-credentials.md).
-* [Ütemtervek](automation-schedules.md).
-* [Változók](automation-variables.md).
-* [PowerShell-parancsmagok leírása](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* [Azonosító adatok](./shared-resources/credentials.md).
+* [Ütemtervek](./shared-resources/schedules.md).
+* [Változók](./shared-resources/variables.md).
+* [PowerShell-parancsmagok leírása](/powershell/module/az.automation/?view=azps-3.7.0#automation).

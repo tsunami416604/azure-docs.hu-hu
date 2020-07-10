@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 88f92117dc07fc241ca714851956e386cd10d617
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d2e4b07c97e09fce5cdaa034e2fe67a18ef0d7f1
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135021"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171159"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL felügyelt példányok – gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,12 +33,38 @@ A felügyelt SQL-példány támogatott funkcióinak listáját lásd: az [Azure 
 A felügyelt Azure SQL-példány és a SQL Server szintaxisának és viselkedésének különbségeit lásd: a [T-SQL eltérései SQL Server](transact-sql-tsql-differences-sql-server.md).
 
 
-## <a name="tech-spec--resource-limits"></a>Technikai spec & erőforrás-korlátok
+## <a name="technical-specification-resource-limits-and-other-limitations"></a>Technikai specifikáció, erőforrás-korlátozások és egyéb korlátozások
  
 **Hol találhatók a felügyelt SQL-példányok technikai jellemzői és erőforrás-korlátai?**
 
 Az elérhető hardver-létrehozási jellemzőkkel kapcsolatban lásd: [technikai különbségek a hardveres generációkban](resource-limits.md#hardware-generation-characteristics).
 A rendelkezésre álló szolgáltatási szintek és azok jellemzői a [szolgáltatási szintek közötti technikai különbségek](resource-limits.md#service-tier-characteristics)című részben olvashatók.
+
+**Milyen szolgáltatási szintet vehetek igénybe?**
+
+Bármely ügyfél bármely szolgáltatási szinten jogosult. Ha azonban a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával szeretné kicserélni a meglévő licenceket az Azure SQL felügyelt példányának kedvezményes díjszabására, vegye figyelembe, hogy a frissítési garanciával rendelkező SQL Server Enterprise Edition-ügyfelek jogosultak a [általános célú](../database/service-tier-general-purpose.md) vagy [üzletileg kritikus](../database/service-tier-business-critical.md) teljesítményi szintjeire, valamint a frissítési garanciával rendelkező SQL Server Standard Edition ügyfelekre csak a általános célú teljesítmény szintjére jogosultak. További részletekért tekintse meg [a AHB adott jogosultságait](../azure-hybrid-benefit.md?tabs=azure-powershell#what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server).
+
+**Milyen előfizetési típusokat támogat az SQL felügyelt példánya?**
+
+A támogatott előfizetési típusok listáját a [támogatott előfizetési típusok](resource-limits.md#supported-subscription-types)című részben tekintheti meg. 
+
+**Mely Azure-régiók támogatottak?**
+
+A felügyelt példányok a legtöbb Azure-régióban létrehozhatók; Lásd: [az SQL felügyelt példányainak támogatott régiói](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Ha olyan régióban felügyelt példányra van szüksége, amely jelenleg nem támogatott, [küldjön egy támogatási kérést a Azure Portalon keresztül](../database/quota-increase-request.md).
+
+**Van-e kvóta-korlátozás a felügyelt SQL-példányok üzembe helyezéséhez?**
+
+A felügyelt példány két alapértelmezett korláttal rendelkezik: a használható alhálózatok számának korlátozása és a kiépíthető virtuális mag számának korlátozása. A korlátok az előfizetési típusok és régiók között változnak. Az előfizetés típusa szerint a regionális erőforrásokra vonatkozó korlátozások listáját a következő témakörben tekintheti meg: táblázat a [regionális erőforrások korlátozása](resource-limits.md#regional-resource-limitations)alapján. Ezek olyan enyhe korlátok, amelyek igény szerint növelhetők. Ha az aktuális régiókban több felügyelt példányt kell kiépíteni, küldjön egy támogatási kérést a kvóta növeléséhez a Azure Portal használatával. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](../database/quota-increase-request.md).
+
+**Megnövelhető az adatbázis-korlát (100) száma a felügyelt példányon igény szerint?**
+
+Nem, és jelenleg nincsenek véglegesítve a felügyelt SQL-példányon található adatbázisok számának növelésére vonatkozó véglegesített csomagok. 
+
+**Hol lehet migrálni, ha több mint 8TB tárhely van?**
+Érdemes lehet áttelepíteni más Azure-beli ízekre, amelyek megfelelnek a számítási feladatnak: [Azure SQL Database nagy kapacitású](../database/service-tier-hyperscale.md) vagy [SQL Server az Azure Virtual Machineson](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
+
+**Hol lehet migrálni, ha bizonyos hardverkövetelmények, például nagyobb RAM-virtuális mag arány vagy több processzor?**
+Érdemes lehet áttelepíteni [SQL Serverre az Azure Virtual Machines](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) vagy az optimalizált memória/CPU [Azure SQL Database](../database/sql-database-paas-overview.md) .
 
 ## <a name="known-issues--bugs"></a>Ismert problémák & hibák
 
@@ -52,19 +78,45 @@ A hibákkal és az ismert problémákkal kapcsolatban lásd: [ismert problémák
 
 Az új és az előzetes verziójú funkciókhoz lásd: [kibocsátási megjegyzések](../database/doc-changes-updates-release-notes.md?tabs=managed-instance).
 
-## <a name="deployment-times"></a>Üzembe helyezési idők 
+## <a name="create-update-delete-or-move-sql-managed-instance"></a>SQL felügyelt példány létrehozása, frissítése, törlése vagy áthelyezése
 
-**Mennyi idő szükséges a példány létrehozásához vagy frissítéséhez, vagy egy adatbázis visszaállításához?**
+**Hogyan lehet SQL felügyelt példányt kiépíteni?**
 
-A felügyelt példány létrehozásához vagy a szolgáltatási szint (virtuális mag, tárterület) módosításához szükséges idő számos tényezőtől függ. Vessen egy pillantást a [kezelési műveletekre](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations). 
+Üzembe helyezhet egy példányt az [Azure Portal](instance-create-quickstart.md), a [PowerShell](scripts/create-configure-managed-instance-powershell.md), az [Azure CLI](https://techcommunity.microsoft.com/t5/azure-sql-database/create-azure-sql-managed-instance-using-azure-cli/ba-p/386281) és az [ARM sablonok](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/creating-azure-sql-managed-instance-using-arm-templates)használatával.
 
+**Létrehozhatok felügyelt példányokat egy meglévő előfizetésben?**
+
+Igen, egy meglévő előfizetésben is kiépítheti a felügyelt példányokat, ha az előfizetés a [támogatott előfizetési típusok](resource-limits.md#supported-subscription-types)közé tartozik.
+
+**Miért nem sikerült olyan felügyelt példányt kiépíteni az alhálózatban, amelyben a név számjegytel kezdődik?**
+
+Ez az alapul szolgáló összetevő aktuális korlátozása, amely ellenőrzi az alhálózat nevét a regex ^ [a-za-Z_] [^ \\ \/ \: \* \? \" \<\> \| \` \' \^ ] * (? <! [ \. \s]) $. A regexnek átadott nevek és az érvényes alhálózatok nevei jelenleg támogatottak.
+
+**Hogyan lehet méretezni a felügyelt példányt?**
+
+Felügyelt példányát az [Azure Portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation), a [PowerShell](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell), az [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update) vagy az [ARM sablonok](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)segítségével méretezheti.
+
+**Áthelyezhetem a felügyelt példányt az egyik régióból a másikba?**
+
+Igen, írhat. Útmutatásért lásd: [erőforrások áthelyezése régiók között](../database/move-resources-across-regions.md).
+
+**Hogyan törölhetem a felügyelt példányt?**
+
+A felügyelt példányokat az Azure Portal, a [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance?view=azps-4.3.0), az [Azure CLI](https://docs.microsoft.com/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete) vagy a [Resource Manager REST API](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)-k használatával törölheti.
+
+**Mennyi ideig tart egy példány létrehozása vagy frissítése, vagy egy adatbázis visszaállítása?**
+
+Az új felügyelt példány létrehozásához vagy a szolgáltatási szintek (virtuális mag, tárolás) módosításához szükséges idő számos tényezőtől függ. Lásd: [felügyeleti műveletek](sql-managed-instance-paas-overview.md#management-operations).
+ 
 ## <a name="naming-conventions"></a>Elnevezési konvenciók
 
 **A felügyelt példányok neve megegyezik egy SQL Server helyszíni példánnyal?**
 
 A felügyelt példány nevének módosítása nem támogatott.
 
-A felügyelt példányok alapértelmezett DNS-zónája módosítható. *Database.Windows.net* . 
+**Módosíthatom a DNS-zóna előtagját?**
+
+Igen, felügyelt példány alapértelmezett DNS-zónája *. a Database.Windows.net* módosítható. 
 
 Ha egy másik DNS-zónát szeretne használni az alapértelmezett helyett, például: *. contoso.com*: 
 - Alias definiálása CliConfig használatával. Az eszköz csak a beállításjegyzék-beállítások burkolója, így a csoportházirend vagy egy parancsfájl használatával is elvégezhető.
@@ -179,45 +231,6 @@ Ez nem kötelező. [Létrehozhat egy virtuális hálózatot az Azure SQL felügy
 
 Nem. Jelenleg nem támogatott olyan felügyelt példány elhelyezése olyan alhálózatban, amely már tartalmaz más típusú erőforrásokat.
 
-## <a name="connectivity"></a>Kapcsolatok 
-
-**Tudok csatlakozni a felügyelt példányhoz IP-cím használatával?**
-
-Nem, ez nem támogatott. A felügyelt példány állomásneve a felügyelt példány virtuális fürtje előtt leképezi a terheléselosztó nevét. Mivel egy virtuális fürt több felügyelt példányt is tárolhat, a kapcsolat nem irányítható át a megfelelő felügyelt példányra a név megadása nélkül.
-További információ az SQL felügyelt példányának virtuális fürtjének architektúráról: [virtuális fürt kapcsolati architektúrája](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture).
-
-**Rendelkezhetnek felügyelt példányok statikus IP-címmel?**
-
-Ez jelenleg nem támogatott.
-
-Ritka, de szükséges helyzetekben előfordulhat, hogy egy felügyelt példány online áttelepítését egy új virtuális fürtre kell elvégezni. Ha szükséges, az áttelepítés a technológiai verem változásai miatt a szolgáltatás biztonságának és megbízhatóságának javítását célozza. Az új virtuális fürtre való Migrálás a felügyelt példány állomásneve számára leképezett IP-cím módosítását eredményezi. A felügyelt példány szolgáltatás nem igényel statikus IP-cím támogatását, és fenntartja a jogot arra, hogy a rendszeres karbantartási ciklusok részeként előzetes értesítés nélkül módosítsa.
-
-Ezért erősen visszatartjuk az IP-cím módosíthatatlansági, mivel ez szükségtelen állásidőt eredményezhet.
-
-**A felügyelt példány nyilvános végponttal rendelkezik?**
-
-Igen. A felügyelt példány olyan nyilvános végponttal rendelkezik, amelyet alapértelmezés szerint csak a Service Management szolgáltatáshoz használ, de az ügyfél is engedélyezheti az adatelérést. További részletek: [SQL felügyelt példány használata nyilvános végpontokkal](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely). A nyilvános végpont konfigurálásához nyissa meg a [nyilvános végpont konfigurálása az SQL felügyelt példányban című részt](public-endpoint-configure.md).
-
-**Hogyan szabályozza a felügyelt példány a nyilvános végponthoz való hozzáférést?**
-
-A felügyelt példány a hálózat és az alkalmazás szintjén szabályozza a nyilvános végpont elérését.
-
-A felügyeleti és központi telepítési szolgáltatások egy felügyelt példányhoz csatlakoznak egy olyan [felügyeleti végpont](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#management-endpoint) használatával, amely egy külső terheléselosztó számára van leképezve. A rendszer csak akkor irányítja a forgalmat a csomópontokhoz, ha egy előre meghatározott porton érkezik, amely csak a felügyelt példány felügyeleti összetevői által használt. A csomópontokon a beépített tűzfal úgy van beállítva, hogy csak a Microsoft IP-címtartományok forgalmát engedélyezze. A tanúsítványok kölcsönösen hitelesítik a felügyeleti összetevők és a felügyeleti sík közötti összes kommunikációt. További részletek: [az SQL felügyelt példányának kapcsolati architektúrája](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connectivity-architecture#virtual-cluster-connectivity-architecture).
-
-**Használhatom a nyilvános végpontot a felügyelt példányok adatbázisaiban lévő adathozzáféréshez?**
-
-Igen. Az ügyfélnek engedélyeznie kell a nyilvános végponti adatok elérését az [Azure Portal](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) /ARM-ből, és konfigurálnia kell a NSG az adatporthoz való hozzáférés zárolásához (3342-es portszám). További információkért lásd: [nyilvános végpont konfigurálása az Azure SQL felügyelt példányában](public-endpoint-configure.md) , és az [Azure SQL felügyelt példány biztonságos használata nyilvános végponttal](public-endpoint-overview.md). 
-
-**Megadhatok egyéni portot az SQL-adatvégpont (ok) hoz?**
-
-Nem, ez a lehetőség nem érhető el.  A privát adatvégpont esetében a felügyelt példány a 1433 alapértelmezett portszámot használja, a nyilvános adatvégpont esetében pedig a felügyelt példány a 3342-as alapértelmezett portszámot használja.
-
-**Mi a javasolt módszer a különböző régiókba helyezett felügyelt példányok összekapcsolására?**
-
-Az Express Route Circuit-társítás az előnyben részesített módszer. Ez nem keverhető a belső terheléselosztással kapcsolatos [korlátozás](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)miatt nem támogatott régiók közötti virtuális hálózattal.
-
-Ha az expressz útvonal-összevonási kapcsolat nem lehetséges, az egyetlen lehetőség, hogy helyek közötti VPN-kapcsolatot ([Azure Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal), [POWERSHELL](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell), [Azure CLI](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)) hozzon létre.
-
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Az adatkiszűrése kockázatok enyhítése  
 
@@ -266,6 +279,20 @@ A DNS-konfigurációt a rendszer végül frissíti:
 Megkerülő megoldásként az SQL felügyelt példányát 4 virtuális mag, majd később frissítse. Ez a DNS-konfiguráció frissítésének mellékhatása.
 
 
+## <a name="ip-address"></a>IP-cím
+
+**Csatlakozhatok az SQL felügyelt példányhoz egy IP-cím használatával?**
+
+Az SQL felügyelt példányhoz való csatlakozás IP-cím használatával nem támogatott. A felügyelt SQL-példány állomásneve az SQL felügyelt példányának virtuális fürtje előtt leképezi a terheléselosztó nevét. Mivel egy virtuális fürt több felügyelt példányt is tárolhat, a kapcsolatok nem irányíthatók át a megfelelő felügyelt példányra anélkül, hogy explicit módon megadta a nevet.
+
+További információ az SQL felügyelt példányának virtuális fürtjének architektúráról: [virtuális fürt kapcsolati architektúrája](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture).
+
+**A felügyelt SQL-példányok statikus IP-címmel rendelkeznek?**
+
+Ritka, de szükséges helyzetekben szükség lehet az SQL felügyelt példány online áttelepítésére egy új virtuális fürtre. Ha szükséges, az áttelepítés a technológiai verem változásai miatt a szolgáltatás biztonságának és megbízhatóságának javítását célozza. Az új virtuális fürtre való Migrálás az SQL felügyelt példány állomásneve számára leképezett IP-cím módosítását eredményezi. A felügyelt SQL-példányok szolgáltatás nem igényel statikus IP-cím-támogatást, és fenntartja a jogot arra, hogy a normál karbantartási ciklusok részeként előzetes értesítés nélkül módosítsa azt.
+
+Ezért erősen visszatartjuk az IP-cím módosíthatatlansági, mivel ez szükségtelen állásidőt eredményezhet.
+
 ## <a name="change-time-zone"></a>Időzóna módosítása
 
 **Módosíthatom egy meglévő felügyelt példány időzónáját?**
@@ -275,16 +302,29 @@ Az időzóna-konfiguráció akkor állítható be, ha a felügyelt példányok e
 A megkerülő megoldások közé tartozik egy új felügyelt példány létrehozása a megfelelő időzónával, majd manuális biztonsági mentés és visszaállítás végrehajtása, vagy az általunk ajánlott megoldás, amely egy [példányos időpontra történő visszaállítást](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/)végez.
 
 
-## <a name="resolve-performance-issues"></a>Teljesítménnyel kapcsolatos problémák megoldása
+## <a name="security-and-database-encryption"></a>Biztonság és adatbázis-titkosítás
 
-**Hogyan az SQL felügyelt példányával kapcsolatos teljesítményproblémák megoldását?**
+**Elérhető-e az SQL felügyelt példányának sysadmin kiszolgálói szerepköre?**
 
-A felügyelt SQL-példány és a SQL Server közötti teljesítmény-összehasonlításhoz jó kiindulási pont az [Azure SQL felügyelt példánya és a SQL Server közötti teljesítmény-összehasonlítás ajánlott eljárásai](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210).
+Igen, az ügyfelek létrehozhatnak olyan bejelentkezéseket, amelyek a sysadmin (rendszergazda) szerepkör tagjai.  A sysadmin (rendszergazda) jogosultságot feltételező ügyfelek a példány üzemeltetésének felelősségét is feltételezik, amely negatív hatással lehet az SLA-ra. A sysadmin (rendszergazda) kiszolgálói szerepkörbe való bejelentkezéshez lásd: [Azure ad-hitelesítés](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-aad-security-tutorial#azure-ad-authentication).
 
-Az adatok betöltése gyakran lassabb a felügyelt SQL-példányon, mint SQL Server a kötelező teljes helyreállítási modell és a tranzakciós napló írási sebességének [korlátai](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) miatt. Néha ez a megoldás az átmeneti adatoknak a felhasználói adatbázis helyett a tempdb való betöltésével, vagy fürtözött oszlopcentrikus vagy memóriára optimalizált táblák használatával történő betöltésével végezhető el.
+**Támogatott az SQL felügyelt példánya transzparens adattitkosítás?**
 
+Igen, transzparens adattitkosítás támogatott az SQL felügyelt példányain. Részletekért lásd: [transzparens adattitkosítás a felügyelt SQL-példányhoz](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?tabs=azure-portal).
 
-## <a name="restore-encrypted-backup"></a>Titkosított biztonsági mentés visszaállítása
+**Kihasználhatom a "saját kulcs használata" modellt a TDE?**
+
+Igen, a BYOK forgatókönyvhöz Azure Key Vault érhető el az Azure SQL felügyelt példányaihoz. Részletekért lásd: [transzparens adattitkosítás ügyfél által felügyelt kulccsal](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql?view=sql-server-ver15&tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key).
+
+**Áttelepíthetek egy titkosított SQL Server adatbázist?**
+
+Igen, írhat. Titkosított SQL Server-adatbázis átirányításához exportálnia és importálnia kell a meglévő tanúsítványokat a felügyelt példányba, majd készítsen egy teljes adatbázis biztonsági mentést, és állítsa vissza a felügyelt példányban. 
+
+[Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) használatával is áttelepítheti a TDE titkosított adatbázisait.
+
+**Hogyan állíthatom be a TDE Protector rotációját az SQL felügyelt példányaihoz?**
+
+Azure Cloud Shell használatával elforgathatja a felügyelt példányhoz tartozó TDE-védőt. Útmutatásért lásd: [transzparens adattitkosítás az SQL felügyelt példányában a saját kulcsának használatával Azure Key Vault](scripts/transparent-data-encryption-byok-powershell.md).
 
 **Visszaállíthatom a titkosított adatbázist a felügyelt SQL-példányra?**
 

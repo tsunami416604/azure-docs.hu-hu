@@ -5,11 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0eebd626013614bb6240fc0e6530a358a2b86d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781191"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185602"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>A Change Tracking és az Inventory kezelése
 
@@ -78,10 +79,10 @@ A következő lépésekkel konfigurálhatja a fájlok követését a Linux rends
 
 ## <a name="track-file-contents"></a>Fájl tartalmának követése
 
-A fájl tartalmának nyomon követése lehetővé teszi egy fájl tartalmának megtekintését a követett változások előtt és után. A szolgáltatás minden változás után menti a fájl tartalmát egy [Storage-fiókba](https://docs.microsoft.com/azure/storage/common/storage-account-overview) . Íme néhány, a fájl tartalmának követésére szolgáló szabály:
+A fájl tartalmának nyomon követése lehetővé teszi egy fájl tartalmának megtekintését a követett változások előtt és után. A szolgáltatás minden változás után menti a fájl tartalmát egy [Storage-fiókba](../storage/common/storage-account-overview.md) . Íme néhány, a fájl tartalmának követésére szolgáló szabály:
 
 * A fájl tartalmának tárolásához a Resource Manager-alapú üzemi modellt használó standard Storage-fiók szükséges. 
-* Ne használja a prémium és a klasszikus telepítési modell Storage-fiókokat. Lásd: [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md).
+* Ne használja a prémium és a klasszikus telepítési modell Storage-fiókokat. Lásd: [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-account-create.md).
 * A Storage-fiókot csak egy Automation-fiókhoz lehet kapcsolni.
 * Az Automation-fiókban engedélyezni kell a [change Tracking és a leltárt](change-tracking.md) .
 
@@ -140,7 +141,7 @@ A következő lépésekkel konfigurálhatja a beállításjegyzék-kulcsok nyomo
 
 A változási rekordok esetében különböző kereséseket végezhet a Azure Monitor naplókon. Ha megnyitotta a Change Tracking (változások nyomon követése) lapot, kattintson **log Analytics** a naplók lap megnyitásához. A következő táblázat a változási rekordokra vonatkozó példákat tartalmaz.
 
-|Lekérdezés  |Description  |
+|Lekérdezés  |Leírás  |
 |---------|---------|
 |`ConfigurationData`<br>&#124;`where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Megjeleníti az automatikusra beállított és a leállítottként jelentett Microsoft-szolgáltatások legújabb leltározási rekordjait. Az eredmények a megadott számítógépnév és számítógép legutóbbi rekordjára korlátozódnak.    |
 |`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|Megjeleníti a törölt szoftverek módosítási rekordjait.|
@@ -169,7 +170,7 @@ Ezt a példát követve megtudhatja, hogyan hozhat létre riasztásokat a válto
 ## <a name="next-steps"></a>További lépések
 
 * A hatókör-konfigurációkkal kapcsolatos további információkért lásd: a [change Tracking és a leltár központi telepítési hatókörének korlátozása](automation-scope-configurations-change-tracking.md).
-* Ha a Log Analytics munkaterületen tárolt naplókra van szüksége, tekintse meg a következő témakört: [keresések Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md).
+* Ha a Log Analytics munkaterületen tárolt naplókra van szüksége, tekintse meg a következő témakört: [keresések Azure monitor naplókban](../azure-monitor/log-query/log-query-overview.md).
 * Ha a telepítésekkel fejeződött be, tekintse [meg az Automation-fiók összekapcsolása a Change Tracking és a leltárhoz](automation-unlink-workspace-change-tracking.md)című témakört.
 * A virtuális gépek Change Tracking és leltárból való törléséhez lásd: [virtuális gépek eltávolítása Change Tracking és leltárból](automation-remove-vms-from-change-tracking.md).
 * A szolgáltatási hibák elhárításáról lásd: [change Tracking és leltározási problémák elhárítása](troubleshoot/change-tracking.md).

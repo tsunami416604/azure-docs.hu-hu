@@ -5,16 +5,16 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 35d408c636e20aef9495e72bc8535e0d7a99431e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8a68c793d9aaf94ad28f2e478254e42ede4800de
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955268"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170360"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools használata
 
-Azure Functions Core Tools lehetővé teszi a függvények fejlesztését és tesztelését a helyi számítógépen a parancssorból vagy a terminálból. A helyi függvények csatlakozhatnak az élő Azure-szolgáltatásokhoz, és a függvények a teljes functions Runtime használatával hibakeresést végezhetnek a helyi számítógépen. Az Azure-előfizetésben is üzembe helyezhet egy Function alkalmazást.
+Az Azure Functions Core Tools segítségével a helyi számítógépén, a parancssorban vagy a terminálban fejleszthet és futtathat függvényeket. A helyi függvények csatlakozhatnak az élő Azure-szolgáltatásokhoz, és a függvények a teljes functions Runtime használatával hibakeresést végezhetnek a helyi számítógépen. Az Azure-előfizetésben is üzembe helyezhet egy Function alkalmazást.
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
@@ -116,15 +116,15 @@ Az alábbi [lépések segítségével telepítheti az alapvető](https://wiki.de
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-1. Az APT-frissítés végrehajtása előtt állítsa be a .NET-fejlesztői források listáját.
+1. Az apt-források listájának beállítása az APT-frissítés végrehajtása előtt.
 
-   A következő parancs futtatásával állíthatja be az APT-forrásokhoz tartozó Ubuntu-listát:
+    ##### <a name="ubuntu"></a>Ubuntu
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
-   A Debian APT-forráslista beállításához futtassa a következő parancsot:
+    ##### <a name="debian"></a>Debian
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs | cut -d'.' -f 1)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
@@ -136,6 +136,7 @@ Az alábbi [lépések segítségével telepítheti az alapvető](https://wiki.de
     | --------------- | ----------- |
     | Debian 10 | `buster`  |
     | Debian 9  | `stretch` |
+    | Ubuntu 20,04    | `focal`     |
     | Ubuntu 19,04    | `disco`     |
     | Ubuntu 18,10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
@@ -204,24 +205,19 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init`a a következő beállításokat támogatja, amelyek a 3. x/2. x-only, kivéve, ha másként jelezzük:
 
-| Beállítás     | Description                            |
+| Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
-| **`--csharp`**<br/> **`--dotnet`** | Egy [C# szintű függvénytár-(. cs) projekt](functions-dotnet-class-library.md)inicializálása. |
-| **`--csx`** | Egy [C# parancsfájl-(. CSX) projekt](functions-reference-csharp.md)inicializálása. `--csx`A következő parancsokban meg kell adni. |
-| **`--docker`** | Hozzon létre egy Docker a tárolóhoz a kiválasztott alaprendszerkép használatával `--worker-runtime` . Akkor használja ezt a beállítást, ha egyéni Linux-tárolóba szeretne közzétenni. |
+| **`--csx`** | C#-parancsfájlként hozza létre a .NET-függvényeket, amely az 1. x verzió viselkedése. Csak a esetében érvényes `--worker-runtime dotnet` . |
+| **`--docker`** | Egy Docker hoz létre egy tárolóhoz a kiválasztott alaprendszerkép használatával `--worker-runtime` . Akkor használja ezt a beállítást, ha egyéni Linux-tárolóba szeretne közzétenni. |
 | **`--docker-only`** |  Egy meglévő projekthez hozzáadja a Docker. Ha nincs megadva, vagy a local.settings.jsbe van állítva, a rendszer kéri a munkavégző-futtatókörnyezetet. Akkor használja ezt a beállítást, ha egy meglévő projektet szeretne közzétenni egy egyéni Linux-tárolón. |
 | **`--force`** | A projekt inicializálása akkor is, ha vannak meglévő fájlok a projektben. Ez a beállítás felülírja a meglévő fájlokat ugyanazzal a névvel. A Project mappában található egyéb fájlok nem érintettek. |
-| **`--java`**  | Egy Java- [projekt](functions-reference-java.md)inicializálása. |
-| **`--javascript`**<br/>**`--node`**  | Egy JavaScript- [projekt](functions-reference-node.md)inicializálása. |
-| **`--no-source-control`**<br/>**`-n`** | Megakadályozza a git-tárház alapértelmezett létrehozását az 1. x verzióban. A 3. x/2. x verzióban a git-tárház alapértelmezés szerint nincs létrehozva. |
-| **`--powershell`**  | Egy PowerShell- [projekt](functions-reference-powershell.md)inicializálása. |
-| **`--python`**  | Egy Python- [projekt](functions-reference-python.md)inicializálása. |
+| **`--language`** | Egy adott nyelvspecifikus projekt inicializálása. Jelenleg támogatott, ha a értékre van `--worker-runtime` állítva `node` . A lehetőségek a következők: `typescript` és `javascript` . Használhatja a vagy a `--worker-runtime javascript` -t is `--worker-runtime typescript` .  |
+| **`--managed-dependencies`**  | Felügyelt függőségeket telepít. Jelenleg csak a PowerShell Worker futtatókörnyezet támogatja ezt a funkciót. |
 | **`--source-control`** | Meghatározza, hogy a git-tárház létrejött-e. Alapértelmezés szerint a tárház nem jön létre. Amikor `true` létrejön egy adattár. |
-| **`--typescript`**  | Egy géppel rendelkező [projekt](functions-reference-node.md#typescript)inicializálása. |
-| **`--worker-runtime`** | Beállítja a projekt nyelvi futtatókörnyezetét. A támogatott értékek a következők:,,, `csharp` `dotnet` `java` `javascript` , `node` (JavaScript), `powershell` , `python` és `typescript` . Ha nincs beállítva, a rendszer arra kéri, hogy válassza ki a futtatókörnyezetet az inicializálás során. |
-
+| **`--worker-runtime`** | Beállítja a projekt nyelvi futtatókörnyezetét. A támogatott értékek a következők: `csharp` ,, `dotnet` `javascript` , `node` (JavaScript), `powershell` , `python` és `typescript` . A Javához használja a [mavent](functions-reference-java.md#create-java-functions). Ha nincs beállítva, a rendszer arra kéri, hogy válassza ki a futtatókörnyezetet az inicializálás során. |
+|
 > [!IMPORTANT]
-> Alapértelmezés szerint a Core Tools 3. x/2. x verziója a .NET futtatókörnyezethez a [C# Class projects](functions-dotnet-class-library.md) (. csproj) használatával hoz létre Function app-projekteket. Ezek a C#-projektek, amelyek a Visual Studióval vagy a Visual Studio Code-ban használhatók, a tesztelés során és az Azure-ba való közzétételkor vannak lefordítva. Ha ehelyett ugyanazt a C# parancsfájl-(. CSX) fájlt szeretné létrehozni és használni, amelyet az 1. x verzióban és a portálon hozott létre, akkor a `--csx` függvények létrehozásakor és telepítésekor meg kell adnia a paramétert.
+> Alapértelmezés szerint a Core Tools 2. x vagy újabb verziója a .NET-futtatókörnyezethez [C#](functions-dotnet-class-library.md) -csproj (. Ezek a C#-projektek, amelyek a Visual Studióval vagy a Visual Studio Code-ban használhatók, a tesztelés során és az Azure-ba való közzétételkor vannak lefordítva. Ha ehelyett ugyanazt a C# parancsfájl-(. CSX) fájlt szeretné létrehozni és használni, amelyet az 1. x verzióban és a portálon hozott létre, akkor a `--csx` függvények létrehozásakor és telepítésekor meg kell adnia a paramétert.
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
@@ -235,6 +231,8 @@ A Function app Settings értékeit környezeti változókként is beolvashatja a
 * [C#-szkript (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
+* [PowerShell](functions-reference-powershell.md#environment-variables)
+* [Python](functions-reference-python.md#environment-variables)
 
 Ha nincs beállítva érvényes tárolási kapcsolódási karakterlánc [`AzureWebJobsStorage`] , és az emulátor nincs használatban, a következő hibaüzenet jelenik meg:
 
@@ -305,12 +303,13 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 Ezeket a beállításokat a paranccsal is megadhatja a következő argumentumok használatával:
 
-| Argumentum     | Description                            |
+| Argumentum     | Leírás                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | (3. x/2. x verzió) Ugyanazokat a C#-szkripteket (. CSX) hozza létre, amelyek az 1. x verzióban és a portálon használatosak. |
-| **`--language`**, **`-l`**| A sablon programozási nyelve, például C#, F # vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 3. x/2. x verzióban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |
+| **`--csx`** | (2. x vagy újabb verzió.) Ugyanazokat a C#-szkripteket (. CSX) hozza létre, amelyek az 1. x verzióban és a portálon használatosak. |
+| **`--language`**, **`-l`**| A sablon programozási nyelve, például C#, F # vagy JavaScript. Ez a beállítás az 1. x verzióban szükséges. A 2. x vagy újabb verziókban ne használja ezt a kapcsolót, vagy válasszon olyan nyelvet, amely megfelel a munkavégző futtatókörnyezetnek. |
 | **`--name`**, **`-n`** | A függvény neve. |
 | **`--template`**, **`-t`** | A `func templates list` parancs használatával megtekintheti az elérhető sablonok teljes listáját az egyes támogatott nyelvekhez.   |
+
 
 Ha például JavaScript HTTP-triggert szeretne létrehozni egyetlen parancsban, futtassa a következőt:
 
@@ -364,14 +363,13 @@ npm start
 
 `func start`a a következő lehetőségeket támogatja:
 
-| Beállítás     | Description                            |
+| Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | A Futtatás előtt ne hozzon létre aktuális projektet. Csak a DotNet-projektekhez. Az alapértelmezett érték false (hamis). Az 1. x verzió esetében nem támogatott. |
-| **`--cert`** | A titkos kulcsot tartalmazó. pfx-fájl elérési útja. Csak a alkalmazásban használatos `--useHttps` . Az 1. x verzió esetében nem támogatott. |
 | **`--cors-credentials`** | A több forrásból származó hitelesített kérelmek (azaz a cookie-k és a hitelesítési fejléc) engedélyezése az 1. x verzió esetében nem támogatott. |
 | **`--cors`** | A CORS-eredetek vesszővel tagolt listája, szóközök nélkül. |
 | **`--language-worker`** | A nyelv feldolgozójának konfigurálásához szükséges argumentumok. Engedélyezheti például a nyelvi feldolgozó hibakeresését a [hibakeresési port és egyéb szükséges argumentumok](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)megadásával. Az 1. x verzió esetében nem támogatott. |
-| **`--nodeDebugPort`**, **`-n`** | A Node.js hibakereső által használandó port. Default (alapértelmezett): launch.json vagy 5858 értékű érték. Csak 1. x verzió. |
+| **`--cert`** | A titkos kulcsot tartalmazó. pfx-fájl elérési útja. Csak a alkalmazásban használatos `--useHttps` . Az 1. x verzió esetében nem támogatott. |
 | **`--password`** | A jelszó vagy egy olyan fájl, amely egy. pfx fájl jelszavát tartalmazza. Csak a alkalmazásban használatos `--cert` . Az 1. x verzió esetében nem támogatott. |
 | **`--port`**, **`-p`** | A figyelni kívánt helyi port. Alapértelmezett érték: 7071. |
 | **`--pause-on-error`** | A folyamat bezárása előtt szüneteltesse a további adatokat. Csak akkor használható, ha egy integrált fejlesztői környezetből (IDE) indít alapszintű eszközöket.|
@@ -405,7 +403,7 @@ A tesztelési funkciókkal kapcsolatos általánosabb információkért lásd: [
 
 A következő végpontot hívja meg helyileg a HTTP és a webhook által aktivált függvények futtatásához:
 
-```http
+```
 http://localhost:{port}/api/{function_name}
 ```
 
@@ -441,7 +439,7 @@ Szükség esetén a POST kérelem törzsében is elvégezheti a tesztelési cél
 
 A nem HTTP-függvények elindításához a következő rendszergazdai végpontot kell meghívni:
 
-```http
+```
 http://localhost:{port}/admin/functions/{function_name}
 ```
 
@@ -474,7 +472,7 @@ Az 1. x verzióban a függvényt közvetlenül is meghívhatja `func run <Functi
 
 `func run`a a következő lehetőségeket támogatja:
 
-| Beállítás     | Description                            |
+| Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | Beágyazott tartalom. |
 | **`--debug`**, **`-d`** | A függvény futtatása előtt csatoljon egy hibakeresőt a gazdagéphez.|
@@ -488,7 +486,7 @@ Ha például egy HTTP-triggert használó függvényt szeretne meghívni, és ta
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
 
-## <a name="publish-to-azure"></a><a name="publish"></a>Közzététel az Azure platformon
+## <a name="publish-to-azure"></a><a name="publish"></a>Közzététel az Azure-ban
 
 A Azure Functions Core Tools kétféle telepítési típust támogat: a Function-projektfájlok közvetlen üzembe helyezése a Function alkalmazásban a [zip üzembe helyezésével](functions-deployment-technologies.md#zip-deploy) és az [Egyéni Docker-tároló üzembe helyezésével](functions-deployment-technologies.md#docker-container). Már létre kell hoznia [egy Function alkalmazást az Azure-előfizetésében](functions-cli-samples.md#create), amelyre telepíteni fogja a kódot. A fordítást igénylő projekteket úgy kell felépíteni, hogy a bináris fájlok üzembe helyezhetők legyenek.
 
@@ -511,16 +509,16 @@ Ez a parancs egy meglévő Function alkalmazásba tesz közzé az Azure-ban. Hib
 > Ha a Azure Portalban hoz létre egy Function alkalmazást, a függvény alapértelmezés szerint a Function Runtime 3. x verzióját használja. Ha azt szeretné, hogy a Function app a futtatókörnyezet 1. x verzióját használja, kövesse az [1. x verzió futtatásának](functions-versions.md#creating-1x-apps)utasításait.
 > Egy meglévő függvényt tartalmazó Function alkalmazás futásidejű verziója nem módosítható.
 
-A 3. x, 2. x és 1. x verziók esetében a következő közzétételi beállítások érvényesek:
+A következő közzétételi beállítások minden verzióra érvényesek:
 
-| Beállítás     | Description                            |
+| Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  A beállítások közzététele az Azure-ban local.settings.js, ha a beállítás már létezik, a rendszer megkéri a felülírását. Ha a Microsoft Azure Storage Emulator használja, először módosítsa az alkalmazás beállításait egy [tényleges tárolási kapcsolatban](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | A használatakor a rendszer letiltja az Alkalmazásbeállítások felülírására vonatkozó kérést `--publish-local-settings -i` .|
 
-A következő közzétételi beállítások csak a 3. x és 2. x verzióban támogatottak:
+A következő közzétételi beállítások csak a 2. x vagy újabb verziókban támogatottak:
 
-| Beállítás     | Description                            |
+| Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  Csak a beállítások közzététele és a tartalom kihagyása. Az alapértelmezett érték a prompt. |
 |**`--list-ignored-files`** | A közzététel során figyelmen kívül hagyott fájlok listáját jeleníti meg, amely a. funcignore fájlon alapul. |
@@ -528,10 +526,10 @@ A következő közzétételi beállítások csak a 3. x és 2. x verzióban tám
 | **`--nozip`** | Kikapcsolja az alapértelmezett `Run-From-Package` üzemmódot. |
 | **`--build-native-deps`** | Kihagyja a generálás. Wheels mappát a Python-függvények alkalmazásainak közzétételekor. |
 | **`--build`**, **`-b`** | Build műveletet hajt végre Linux-Function alkalmazás telepítésekor. A következőket fogadja el: `remote` és `local` . |
-| **`--additional-packages`** | A natív függőségek kiépítésekor telepítendő csomagok listája. Példa: `python3-dev libevent-dev`. |
+| **`--additional-packages`** | A natív függőségek kiépítésekor telepítendő csomagok listája. Például: `python3-dev libevent-dev`. |
 | **`--force`** | Bizonyos helyzetekben figyelmen kívül hagyhatja a közzététel előtti ellenőrzést. |
 | **`--csx`** | C# parancsfájl-(. CSX) projekt közzététele. |
-| **`--no-build`** | Ne hozzon létre .NET-osztálybeli függvénytár-függvényeket. |
+| **`--no-build`** | A projekt nincs felépítve a közzététel során. A Python esetében `pip install` nincs elvégezve. |
 | **`--dotnet-cli-params`** | A lefordított C#-(. csproj) függvények közzétételekor a Core Tools a "DotNet Build-output bin/publish" metódust hívja meg. Az erre átadott paraméterek a parancssorhoz lesznek hozzáfűzve. |
 
 ### <a name="deploy-custom-container"></a>Egyéni tároló üzembe helyezése
@@ -544,7 +542,7 @@ func deploy
 
 A következő egyéni tároló üzembe helyezési lehetőségei érhetők el:
 
-| Beállítás     | Description                            |
+| Beállítás     | Leírás                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | Annak a Docker-beállításjegyzéknek a neve, amelyre az aktuális felhasználó bejelentkezett. |
 | **`--platform`** | Üzemeltetési platform a Function alkalmazáshoz. Az érvényes beállítások a következők`kubernetes` |
@@ -582,7 +580,7 @@ Egy hiba vagy szolgáltatás kérésének megkereséséhez [Nyisson meg egy GitH
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portalra]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage

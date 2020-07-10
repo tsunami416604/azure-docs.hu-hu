@@ -3,12 +3,12 @@ title: A fejlesztői környezet beállítása Linuxon
 description: Telepítse a futtatókörnyezetet és az SDK-t, majd hozzon létre egy helyi fejlesztési fürtöt Linuxon. A beállítás befejezése után készen áll az alkalmazások létrehozására.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: cfc97a540ed8c4c17ca4030c45b16021b926d7c5
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 8610feb68e16646c73c132c0577fd3ff198d74b8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85854791"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186894"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -161,8 +161,8 @@ Az SDK-telepítéssel együtt érkező Service Fabric-futtatókörnyezet az alá
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1,8 | Implicit módon az npm-ből | legújabb |
-RHEL | - | OpenJDK 1.8 | Implicit módon az npm-ből | legújabb |
+**Ubuntu** | 2.0.0 | AzulJDK 1,8 | Implicit módon az npm-ből | legújabb |
+**RHEL** | - | OpenJDK 1.8 | Implicit módon az npm-ből | legújabb |
 
 ## <a name="set-up-a-local-cluster"></a>Helyi fürt beállítása
 Ha a telepítés befejeződött, indítson egy helyi fürtöt.

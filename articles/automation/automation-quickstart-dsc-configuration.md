@@ -7,12 +7,12 @@ keywords: dsc, konfigurálás, automatizálás
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 28e8f921fa7620d1fec7dec1788ed769026624d7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: e7fec2bee61844ac294e5463bd5bc88ec3fb5e98
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836719"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186078"
 ---
 # <a name="configure-a-vm-with-desired-state-configuration"></a>Virtuális gép konfigurálása a kívánt állapot-konfigurációval
 
@@ -23,7 +23,7 @@ A Azure Automation állapot-konfiguráció engedélyezésével felügyelheti és
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
-* Egy Azure Automation-fiókra. Azure Automation futtató fiók létrehozásával kapcsolatos információkért tekintse meg az [Azure-beli futtató fiókkal](automation-sec-configure-azure-runas-account.md) kapcsolatos részt.
+* Egy Azure Automation-fiókra. Azure Automation futtató fiók létrehozásával kapcsolatos információkért tekintse meg az [Azure-beli futtató fiókkal](./manage-runas-account.md) kapcsolatos részt.
 * Red Hat Enterprise Linux, CentOS vagy Oracle Linux rendszert futtató Azure Resource Manager virtuális gép (klasszikus). A virtuális gépek létrehozásával kapcsolatos útmutatásért tekintse meg [az első Linux virtuális gép Azure Portallal való létrehozását](../virtual-machines/linux/quick-create-portal.md) bemutató cikket.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -31,7 +31,7 @@ Jelentkezzen be az Azure-ba https://portal.azure.com .
 
 ## <a name="enable-a-virtual-machine"></a>Virtuális gép engedélyezése
 
-Számos különböző módszerrel engedélyezheti a gép számára az állapot-konfigurálási funkciót. Ebből a rövid útmutatóból megtudhatja, hogyan engedélyezheti a virtuális gép szolgáltatását egy Automation-fiók használatával. A gépek állapot-konfigurálásának engedélyezéséhez további információkat tudhat meg a [számítógépek Azure Automation állapotának konfigurálásával történő felügyeletének engedélyezéséhez](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding).
+Számos különböző módszerrel engedélyezheti a gép számára az állapot-konfigurálási funkciót. Ebből a rövid útmutatóból megtudhatja, hogyan engedélyezheti a virtuális gép szolgáltatását egy Automation-fiók használatával. A gépek állapot-konfigurálásának engedélyezéséhez további információkat tudhat meg a [számítógépek Azure Automation állapotának konfigurálásával történő felügyeletének engedélyezéséhez](./automation-dsc-onboarding.md).
 
 1. Az Azure Portal bal oldali panelén válassza az **Automation-fiókok** elemet. Ha a bal oldali ablaktáblában nem látható, kattintson a **minden szolgáltatás** elemre, és keresse meg az eredményül kapott nézetet.
 1. Válasszon egy Automation-fiókot a listában.
@@ -39,7 +39,7 @@ Számos különböző módszerrel engedélyezheti a gép számára az állapot-k
 2. Kattintson a **Hozzáadás** elemre a virtuális gép kiválasztását lehetővé tevő oldal megnyitásához.
 3. Keresse meg azt a virtuális gépet, amely számára engedélyezni kívánja a DSC-t. A keresőmező és a szűrési lehetőségek használatával kereshet meg egy adott virtuális gépet.
 4. Kattintson a virtuális gépre, majd a **kapcsolat** lehetőségre.
-5. Válassza ki a virtuális géphez megfelelő DSC-beállításokat. Ha már előkészített egy konfigurációt, megadhatja azt `Node Configuration Name` . Beállíthatja a [konfigurációs módot](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig) a gép konfigurációs viselkedésének vezérléséhez.
+5. Válassza ki a virtuális géphez megfelelő DSC-beállításokat. Ha már előkészített egy konfigurációt, megadhatja azt `Node Configuration Name` . Beállíthatja a [konfigurációs módot](/powershell/scripting/dsc/managing-nodes/metaConfig) a gép konfigurációs viselkedésének vezérléséhez.
 6. Kattintson az **OK** gombra. Amíg a DSC-bővítmény telepítve van a virtuális gépen, az állapot a következőképpen jelenik meg: `Connecting` .
 
 ![Azure-beli virtuális gép engedélyezése DSC-hez](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -57,9 +57,9 @@ A modulok DSC-erőforrásokat tartalmaznak, és számos megtalálható a [PowerS
 
 ## <a name="import-the-configuration"></a>A konfiguráció importálása
 
-Ez a rövid útmutató a gépen Apache HTTP-kiszolgálót, MySQL-t és PHP-t konfiguráló DSC-konfigurációt használ. Lásd: [DSC-konfigurációk](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations).
+Ez a rövid útmutató a gépen Apache HTTP-kiszolgálót, MySQL-t és PHP-t konfiguráló DSC-konfigurációt használ. Lásd: [DSC-konfigurációk](/powershell/scripting/dsc/configurations/configurations).
 
-Egy szövegszerkesztőben írja be a következőt, és mentse helyileg **AMPServer. ps1**néven.
+Egy szövegszerkesztőben írja be a következőt, és mentse helyileg **AMPServer.ps1ként **.
 
 ```powershell-interactive
 configuration LAMPServer {
@@ -95,7 +95,7 @@ configuration LAMPServer {
 A konfiguráció importálása:
 
 1. Az Automation-fiók bal oldali panelén válassza az **Állapotkonfiguráció (DSC)** elemet, majd kattintson a **Konfigurációk** lapra.
-2. Kattintson a **+Hozzáadás** gombra.
+2. Kattintson a **+ Hozzáadás** gombra.
 3. Válassza ki az előző lépésben mentett konfigurációs fájlt.
 4. Kattintson az **OK** gombra.
 

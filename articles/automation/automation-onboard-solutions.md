@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 95370a45b9fce69e5c1d06ac9bb987e1bfcfba4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d55a47e4eb921c71ff3539d34b6db514684da073
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204072"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186129"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Az Update Management engedélyezése runbookból
 
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan használható a runbook a virtuális gépek [Upd
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Egy [Automation-fiók](automation-offering-get-started.md) a gépek kezeléséhez.
+* Egy [Automation-fiók](./index.yml) a gépek kezeléséhez.
 * Egy [virtuális gép](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="enable-update-management"></a>Az Update Management engedélyezése
@@ -50,7 +50,7 @@ Ha a Update Management engedélyezve van, hozzáadhat egy Azure-beli virtuális 
 
 ## <a name="install-and-update-modules"></a>Modulok telepítése és frissítése
 
-Frissíteni kell a legújabb Azure-modulokra, és importálnia kell az az [. OperationalInsights](https://docs.microsoft.com/powershell/module/az.operationalinsights/?view=azps-3.7.0) modult, hogy sikeresen engedélyezze Update Management a virtuális gépek számára.
+Frissíteni kell a legújabb Azure-modulokra, és importálnia kell az az [. OperationalInsights](/powershell/module/az.operationalinsights/?view=azps-3.7.0) modult, hogy sikeresen engedélyezze Update Management a virtuális gépek számára.
 
 1. Az Automation-fiókban válassza a **megosztott erőforrások**alatt található **modulok** elemet. 
 2. Az Azure-modulok a legújabb verzióra frissítéséhez válassza az **Azure-modulok frissítése** lehetőséget. 

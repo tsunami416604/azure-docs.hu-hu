@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, állapot-konfiguráció, Update Man
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: e02cfdaac602adfe455c26d9e87939586fd9738a
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 30cfadcec1f0c28a463740ddaefa8fc76f04af3f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835274"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186180"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Az Azure Automation bemutatása
 
@@ -53,14 +53,14 @@ Azure Automation számos megosztott képességet kínál, többek között a meg
 
 Az Azure Automation megosztott erőforrásainak segítségével könnyebben automatizálhatja és konfigurálhatja a nagy méretű környezeteket.
 
-* **[Menetrendek](automation-schedules.md)** – automatizálási műveletek elindítása előre megadott időpontokban.
-* **[Modulok](automation-integration-modules.md)** – az Azure és más rendszerek kezelése. Modulokat importálhat a Microsoft, harmadik féltől származó, közösségi és egyéni által definiált parancsmagok és DSC-erőforrások Automation-fiókjába.
+* **[Menetrendek](./shared-resources/schedules.md)** – automatizálási műveletek elindítása előre megadott időpontokban.
+* **[Modulok](./shared-resources/modules.md)** – az Azure és más rendszerek kezelése. Modulokat importálhat a Microsoft, harmadik féltől származó, közösségi és egyéni által definiált parancsmagok és DSC-erőforrások Automation-fiókjába.
 * **[Modulok gyűjteménye](automation-runbook-gallery.md)** – támogatja a natív integrációt a PowerShell-Galéria segítségével, így megtekintheti a runbookok, és importálhatja azokat az Automation-fiókba. A katalógus segítségével gyorsan megkezdheti a folyamatok integrálását és készítését a PowerShell-galériából és a Microsoft Script Centerből.
 * **[Python 2 csomagok](python-packages.md)** – támogatja a Python 2 Runbookok az Automation-fiókhoz.
-* **[Hitelesítő adatok](automation-credentials.md)** – biztonságosan tárolhatja azokat a bizalmas adatokat, amelyeket a runbookok és a konfigurációk használhatnak futásidőben.
+* **[Hitelesítő adatok](./shared-resources/credentials.md)** – biztonságosan tárolhatja azokat a bizalmas adatokat, amelyeket a runbookok és a konfigurációk használhatnak futásidőben.
 * **[Kapcsolatok](automation-connections.md)** – a rendszerekkel létesített kapcsolatokra vonatkozó közös információk tároló név-érték párok. A modul szerzője definiálja a runbookok-ben és a konfigurációkban a futtatáskor használandó kapcsolatokat.
-* **[Tanúsítványok](automation-certificates.md)** – a hitelesítéshez és a telepített erőforrások biztonságossá tételéhez használandó információk meghatározása a RUNBOOKOK vagy DSC-konfigurációk futásakor. 
-* **[Változók](automation-variables.md)** – a runbookok és a konfigurációkon használható tartalmak tárolására szolgáló tartalom. A változók értékeit módosíthatja anélkül, hogy módosítani kellene a rájuk hivatkozó runbookok vagy konfigurációkat.
+* **[Tanúsítványok](./shared-resources/certificates.md)** – a hitelesítéshez és a telepített erőforrások biztonságossá tételéhez használandó információk meghatározása a RUNBOOKOK vagy DSC-konfigurációk futásakor. 
+* **[Változók](./shared-resources/variables.md)** – a runbookok és a konfigurációkon használható tartalmak tárolására szolgáló tartalom. A változók értékeit módosíthatja anélkül, hogy módosítani kellene a rájuk hivatkozó runbookok vagy konfigurációkat.
 
 ### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
@@ -76,7 +76,7 @@ Az automatizálás úgy lett kialakítva, hogy a hibrid felhőalapú környezet 
 
 ## <a name="common-scenarios-for-automation"></a>Általános példák az Automation használatára
 
-Azure Automation támogatja a felügyeletet az infrastruktúra és az alkalmazások életciklusa során. A gyakori forgatókönyvek a következők:
+Azure Automation támogatja a felügyeletet az infrastruktúra és az alkalmazások életciklusa során. Gyakori forgatókönyvek például a következők:
 
 * **Runbookok írása** – a PowerShell, a PowerShell-munkafolyamat, a grafikus, a Python 2 és a DSC runbookok közös nyelveken. 
 * **Erőforrások létrehozása és üzembe helyezése** – virtuális gépek üzembe helyezése hibrid környezetekben runbookok és Azure Resource Manager-sablonok használatával. Integrálhatja a fejlesztési eszközöket, például a Jenkinst és az Azure DevOps-t.

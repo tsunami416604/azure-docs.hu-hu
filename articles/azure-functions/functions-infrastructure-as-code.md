@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81382525"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170394"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A Function alkalmazás erőforrás-telepítésének automatizálása Azure Functions
 
@@ -26,12 +26,12 @@ A példákat lásd:
 
 Az Azure Functions üzemelő példányok általában az alábbi erőforrásokból állnak:
 
-| Erőforrás                                                                           | Követelmény | Szintaxis és tulajdonságok – hivatkozás                                                         |   |
-|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Function-alkalmazás                                                                     | Kötelező    | [Microsoft. Web/Sites](/azure/templates/microsoft.web/sites)                             |   |
-| [Azure Storage](../storage/index.yml) -fiók                                   | Kötelező    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
-| [Application Insights](../azure-monitor/app/app-insights-overview.md) összetevő | Választható    | [Microsoft. bepillantások/összetevők](/azure/templates/microsoft.insights/components)         |   |
-| [Üzemeltetési csomag](./functions-scale.md)                                             | Opcionális<sup>1</sup>    | [Microsoft. Web/kiszolgálófarmok](/azure/templates/microsoft.web/serverfarms)                 |   |
+| Erőforrás                                                                           | Követelmény | Szintaxis és tulajdonságok – hivatkozás                                                         |
+|------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|
+| Function-alkalmazás                                                                     | Kötelező    | [Microsoft. Web/Sites](/azure/templates/microsoft.web/sites)                             |
+| [Azure Storage](../storage/index.yml) -fiók                                   | Kötelező    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
+| [Application Insights](../azure-monitor/app/app-insights-overview.md) összetevő | Választható    | [Microsoft. bepillantások/összetevők](/azure/templates/microsoft.insights/components)         |
+| [Üzemeltetési csomag](./functions-scale.md)                                             | Opcionális<sup>1</sup>    | [Microsoft. Web/kiszolgálófarmok](/azure/templates/microsoft.web/serverfarms)                 |
 
 <sup>1</sup> A szolgáltatási csomagra csak akkor van szükség, ha úgy dönt, hogy prémium szintű [csomagon](./functions-premium-plan.md) vagy [app Service csomagon](../app-service/overview-hosting-plans.md)futtatja a Function alkalmazást.
 
@@ -112,7 +112,7 @@ Emellett a kialakítási kulcsot is meg kell adni a Function alkalmazásnak az `
 A üzemeltetési csomag definíciója változó, és a következők egyike lehet:
 * [Felhasználási terv](#consumption) (alapértelmezett)
 * [Prémium szintű csomag](#premium)
-* [App Service terv](#app-service-plan)
+* [App Service-csomag](#app-service-plan)
 
 ### <a name="function-app"></a>Függvényalkalmazás
 
@@ -643,13 +643,13 @@ A Function app számos alárendelt erőforrással rendelkezik, amelyek használh
 > [!TIP]
 > Ez a sablon a [Project](https://github.com/projectkudu/kudu/wiki/Customizing-deployments#using-app-settings-instead-of-a-deployment-file) app Settings (projekt alkalmazás beállításai) értéket használja, amely azt az alapkönyvtárat állítja be, amelyben a functions Deployment Engine (kudu) megkeresi a telepíthető kódot. A tárházban a függvények a **src** mappa almappájában találhatók. Tehát az előző példában az Alkalmazásbeállítások értékét a következőre állítja be: `src` . Ha a függvények a tárház gyökerében találhatók, vagy ha nem a verziókövetés alapján végzik el a telepítést, akkor eltávolíthatja ezt az Alkalmazásbeállítások értékét.
 
-## <a name="deploy-your-template"></a>A sablon telepítése
+## <a name="deploy-your-template"></a>A sablon üzembe helyezése
 
 A következő módokon végezheti el a sablon üzembe helyezését:
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure Portalra](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Üzembe helyezés az Azure-ban gomb

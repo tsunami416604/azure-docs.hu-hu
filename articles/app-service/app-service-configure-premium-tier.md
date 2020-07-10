@@ -6,11 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 07/25/2018
 ms.custom: seodec18
-ms.openlocfilehash: f7f9f6d5617ad0f9be69c47ce514d395534fd892
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fa64562f8d26297d2b2c8a13cd8b6a513c2c630
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74672207"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170020"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service PremiumV2-szintjeinek konfigurálása
 
@@ -42,7 +43,7 @@ Ha a App Service csomagot a <a href="https://portal.azure.com" target="_blank">A
 
 Válassza az **éles környezet**, majd az **P1V2**, a **P2V2**vagy a **P3V2**lehetőséget, majd kattintson az **alkalmaz**gombra.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![Képernyőkép az alkalmazás ajánlott díjszabási szintjeiről.](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
 > Ha nem látja a **P1V2**, a **P2V2**és a **P3V2** lehetőséget, vagy ha a beállítások szürkén jelennek meg, akkor a **PremiumV2** valószínűleg nem érhető el a app Service csomagot tartalmazó mögöttes app Service-telepítésben. További részletekért tekintse meg a nem [támogatott erőforráscsoport és régió kombinációjának skálázása](#unsupported) című témakört.
@@ -57,15 +58,15 @@ A <a href="https://portal.azure.com" target="_blank">Azure Portal</a>nyissa meg 
 
 A App Service alkalmazás lap bal oldali navigációs sávján válassza a vertikális **felskálázás (App Service terv)** lehetőséget.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
+![Az App Service-csomag vertikális felskálázását bemutató képernyőkép.](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
 Válassza az **éles környezet**, majd az **P1V2**, a **P2V2**vagy a **P3V2**lehetőséget, majd kattintson az **alkalmaz**gombra.
 
-![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
+![Képernyőkép az alkalmazás ajánlott díjszabási szintjeiről.](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 Ha a művelet sikeresen befejeződik, az alkalmazás áttekintő lapja azt mutatja, hogy most már **PremiumV2** szinten van.
 
-![](media/app-service-configure-premium-tier/finished.png)
+![Képernyőfelvétel: az PremiumV2 díjszabási szintje az alkalmazás Áttekintés oldalán.](media/app-service-configure-premium-tier/finished.png)
 
 ### <a name="if-you-get-an-error"></a>Ha hibaüzenetet kap
 
@@ -80,7 +81,7 @@ Ha az alkalmazás olyan App Service üzemelő példányban fut, ahol a **Premium
 - Hozzon létre egy **új** erőforráscsoportot, majd hozzon létre egy **új** alkalmazást, és app Service tervezze meg az **új** erőforráscsoportot, majd válassza ki a kívánt Azure-régiót a létrehozási folyamat során.  Az új App Service-csomag létrehozásakor ki **kell** választania a **PremiumV2** tervet.  Ezzel biztosítható, hogy az erőforráscsoport, a App Service-csomag és az Azure-régió kombinációja a **PremiumV2**-t támogató app Service-telepítésben a app Service tervet hozza létre.  Ezután telepítse újra az alkalmazás kódját az újonnan létrehozott alkalmazás-és app Service-csomagba. Ha azt szeretné, hogy a későbbiekben a **PremiumV2** -től megtakarítsa a app Service tervet, a költségek megtakarítása érdekében továbbra is sikeresen átméretezheti a biztonsági mentést a jövőben a **PremiumV2**használatával.
 - Ha az alkalmazás már egy meglévő **prémium** szinten fut, akkor az alkalmazás a **PremiumV2**használó új App Service-csomagba az alkalmazás összes beállításával, a kapcsolódási karakterláncokkal és a telepítési konfigurációval is klónozott.
 
-    ![](media/app-service-configure-premium-tier/clone-app.png)
+    ![Az alkalmazás klónozását bemutató képernyőkép.](media/app-service-configure-premium-tier/clone-app.png)
 
     A **klónozási alkalmazás** oldalon létrehozhat egy app Service tervet a **PremiumV2** használatával a kívánt régióban, és megadhatja a klónozott alkalmazás beállításait és konfigurációját.
 

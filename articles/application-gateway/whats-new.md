@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: dd6ec2057ede076511b567c013fc1b6fa12d8281
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: ebb3e6ba777646d39e3732215aa6c8fdd12ca40a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669732"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186690"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Az Azure Application Gateway újdonságai
 
@@ -25,9 +25,10 @@ Az Azure Application Gateway frissítése folyamatosan történik. A legfrissebb
 
 ## <a name="new-features"></a>Új funkciók
 
-|Funkció  |Description  |Hozzáadás dátuma  |
+|Szolgáltatás  |Leírás  |Hozzáadás dátuma  |
 |---------|---------|---------|
-| Application Gateway inporting Controller (AGIC) AK-bővítmény (előzetes verzió) |A Application Gateway beléptetési vezérlő mostantól egy sorban, az Azure CLI-n keresztül is telepíthető natív AK-bővítményként. Az AK-bővítmény lehetővé teszi, hogy a AGIC teljes körűen felügyelt szolgáltatás legyen, miközben továbbra is fut az ügyfél AK-beli fürtjében. További információ: [AGIC-bővítmények különbségei](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). |Június 2020 |
+| Egyéni port az állapot-mintavételhez | A Application Gateway v2 SKU mostantól lehetővé teszi egyéni port megadását az állapot mintavételi konfigurációjában. További információ: állapot-mintavételi [Áttekintés](application-gateway-probe-overview.md) | 2020. július
+| Application Gateway inporting Controller (AGIC) AK-bővítmény (előzetes verzió) |A Application Gateway beléptetési vezérlő mostantól egy sorban, az Azure CLI-n keresztül is telepíthető natív AK-bővítményként. Az AK-bővítmény lehetővé teszi, hogy a AGIC teljes körűen felügyelt szolgáltatás legyen, miközben továbbra is fut az ügyfél AK-beli fürtjében. További információ: [AGIC-bővítmények különbségei](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on). |2020. június |
 | Felhasználó által megadott útvonalak (UDR) a v2-ben (előzetes verzió) |A felhasználó által megadott útvonalak mostantól támogatottak a Application Gateway v2 SKU-ban lévő egyes forgatókönyvekben. További információ: [Application Gateway konfiguráció áttekintése](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet). |2020. március |
 |Affinitási cookie-változások |Ha engedélyezve van a cookie-alapú affinitás, Application Gateway befecskendez egy *ApplicationGatewayAffinityCORS* nevű másik azonos cookie-t a meglévő ApplicationGatewayAffinity-cookie mellett. A *ApplicationGatewayAffinityCORS* két további attribútummal bővült (*SameSite = none; Biztonságos*), hogy a Sticky-munkamenetek még a származási kérelmek esetében is fennmaradnak. További információért tekintse meg [Application Gateway cookie-alapú affinitást](configuration-overview.md#cookie-based-affinity) . |2020. február |
 |Mintavételi fejlesztések |A Application Gateway v2 SKU-ban az egyéni mintavételi fejlesztések segítségével egyszerűsítettük a mintavételi [konfigurációt](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#create-probe-for-application-gateway-v2-sku), az [igény szerinti háttér-tesztelést](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal#test-backend-health-with-the-probe) és a háttér-állapottal kapcsolatos problémák elhárításához szükséges [további diagnosztikai információkat](https://docs.microsoft.com/azure/application-gateway/application-gateway-backend-health-troubleshooting#error-messages) .  |2019. október |
@@ -42,6 +43,6 @@ Az Azure Application Gateway frissítése folyamatosan történik. A legfrissebb
 |Egyéni hibalapok     |Az egyéni hibaüzenetek oldalain a webhely többi részének formátumán belüli hibaüzenetet hozhat létre. Ennek engedélyezéséhez tekintse meg az [egyéni hibaüzenetek Application Gateway létrehozása](custom-error.md)című témakört.|2018. szeptember|
 |Mérőszámok továbbfejlesztései     |Jobb áttekintést kaphat a Application Gateway állapotáról a továbbfejlesztett metrikákkal. A Application Gateway metrikáinak engedélyezéséhez tekintse meg a [háttér állapota, a diagnosztikai naplók és a metrikák Application Gatewayhoz](application-gateway-diagnostics.md)című témakört.|2018. június|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure Application Gatewayról: [Mi az az azure Application Gateway?](overview.md)

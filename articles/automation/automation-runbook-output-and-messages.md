@@ -5,20 +5,20 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 387e100a05cb51eb034f737b259bad4e5812465c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4be7934002730253b77b1c129165ad9f19f23b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557883"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185976"
 ---
 # <a name="monitor-runbook-output"></a>Runbook kimenetének monitorozása
 
 A legtöbb Azure Automation runbookok valamilyen típusú kimenettel rendelkezik. Ez a kimenet hibaüzenetet kaphat a felhasználónak vagy egy másik runbook használni kívánt összetett objektumnak. A Windows PowerShell [több streamet](/powershell/module/microsoft.powershell.core/about/about_redirection) biztosít a kimenetek parancsfájlokból vagy munkafolyamatokból való küldéséhez. A Azure Automation az egyes streamek esetében különbözőképpen működik. Ha runbook hoz létre, kövesse az ajánlott eljárásokat a streamek használatához.
 
-Az alábbi táblázat röviden leírja, hogy az egyes streamek milyen viselkedéssel rendelkeznek Azure Portal a közzétett runbookok és a [runbook tesztelése](automation-testing-runbook.md)során. A kimeneti adatfolyam a runbookok közötti kommunikáció fő adatfolyama. A többi stream üzenet-adatfolyamként van besorolva, amely a felhasználó felé irányuló információk közlésére szolgál. 
+Az alábbi táblázat röviden leírja, hogy az egyes streamek milyen viselkedéssel rendelkeznek Azure Portal a közzétett runbookok és a [runbook tesztelése](./manage-runbooks.md)során. A kimeneti adatfolyam a runbookok közötti kommunikáció fő adatfolyama. A többi stream üzenet-adatfolyamként van besorolva, amely a felhasználó felé irányuló információk közlésére szolgál. 
 
-| Adatfolyam | Description | Közzétett | Tesztelés |
+| Adatfolyam | Leírás | Közzétett | Teszt |
 |:--- |:--- |:--- |:--- |
 | Hiba |A felhasználónak szóló hibaüzenet. A kivételtől eltérően a runbook alapértelmezés szerint egy hibaüzenet után is folytatódik. |A feladatok előzményeibe írva |Megjelenítés a test output (kimenet) panelen |
 | Hibakeresés |Interaktív felhasználó számára készült üzenetek. Nem használható a runbookok. |Nem írt a feladatok előzményeire |Nem jelenik meg a test output (kimenet) ablaktáblán |
@@ -33,7 +33,7 @@ A kimeneti adatfolyam a parancsfájlok vagy a munkafolyamat megfelelő futtatás
 
 A runbook a kimeneti adatfolyam használatával közli az általános információkat az ügyféllel, ha azt más runbook nem hívja meg. Az ajánlott eljárás szerint azonban a [részletes streamet](#monitor-verbose-stream) általában a runbookok kell használnia az általános információk a felhasználóhoz való továbbításához.
 
-Írja be a runbook az adatokat a kimeneti adatfolyamba [írási kimenet](https://technet.microsoft.com/library/hh849921.aspx)használatával. Azt is megteheti, hogy az objektumot a parancsfájl saját sorába helyezi.
+Írja be a runbook az adatokat a kimeneti adatfolyamba [írási kimenet](/powershell/module/microsoft.powershell.utility/write-output)használatával. Azt is megteheti, hogy az objektumot a parancsfájl saját sorába helyezi.
 
 ```powershell
 #The following lines both write an object to the output stream.
@@ -133,7 +133,7 @@ A figyelmeztetési és hiba-adatfolyamok naplózása a runbook előforduló hib�
 
 Alapértelmezés szerint a runbook figyelmeztetés vagy hiba után folytatja a végrehajtást. Megadhatja, hogy a runbook figyelmeztessen egy figyelmeztetésre vagy hibára, ha a runbook az üzenet létrehozása előtt beállít egy [preferencia változót](#work-with-preference-variables) . Ha például egy kivétel miatt a runbook felfüggeszti a hibát, állítsa a `ErrorActionPreference` változót leállításra.
 
-Figyelmeztetés vagy hibaüzenet létrehozása a [Write-Warning](https://technet.microsoft.com/library/hh849931.aspx) vagy a [Write-Error](https://technet.microsoft.com/library/hh849962.aspx) parancsmag használatával. A tevékenységek a figyelmeztetési és a hiba-adatfolyamokra is írhatnak.
+Figyelmeztetés vagy hibaüzenet létrehozása a [Write-Warning](/powershell/module/microsoft.powershell.utility/write-warning) vagy a [Write-Error](/powershell/module/microsoft.powershell.utility/write-error) parancsmag használatával. A tevékenységek a figyelmeztetési és a hiba-adatfolyamokra is írhatnak.
 
 ```powershell
 #The following lines create a warning message and then an error message that will suspend the runbook.
@@ -153,9 +153,9 @@ A részletes üzenetküldési adatfolyam a runbook művelet általános informá
 
 Alapértelmezés szerint a feladatok előzményei nem tárolnak részletes üzeneteket a közzétett runbookok, a teljesítménnyel kapcsolatos okokból. A részletes üzenetek tárolásához használja a Azure Portal **Konfigurálás** lapot a részletes **rekordok naplózása** beállítással a közzétett runbookok konfigurálásához a részletes üzenetek naplózásához. Ezt a beállítást csak akkor érdemes bekapcsolni, ha hibát keres a runbookban, vagy ha hibaelhárításra van szükség. A legtöbb esetben érdemes megtartani a részletes rekordok naplózásának alapértelmezett beállítását.
 
-[Runbook tesztelésekor](automation-testing-runbook.md)a részletes üzenetek akkor sem jelennek meg, ha a runbook a részletes rekordok naplózására van konfigurálva. A [runbook tesztelésekor](automation-testing-runbook.md)a részletes üzenetek megjelenítéséhez be kell állítania a `VerbosePreference` változót a folytatáshoz. Ha ez a változó be van állítva, a részletes üzenetek a Azure Portal teszt kimenet paneljén jelennek meg.
+[Runbook tesztelésekor](./manage-runbooks.md)a részletes üzenetek akkor sem jelennek meg, ha a runbook a részletes rekordok naplózására van konfigurálva. A [runbook tesztelésekor](./manage-runbooks.md)a részletes üzenetek megjelenítéséhez be kell állítania a `VerbosePreference` változót a folytatáshoz. Ha ez a változó be van állítva, a részletes üzenetek a Azure Portal teszt kimenet paneljén jelennek meg.
 
-A következő kód egy részletes üzenetet hoz létre a [Write-verbose](https://technet.microsoft.com/library/hh849951.aspx) parancsmag használatával.
+A következő kód egy részletes üzenetet hoz létre a [Write-verbose](/powershell/module/microsoft.powershell.utility/write-verbose) parancsmag használatával.
 
 ```powershell
 #The following line creates a verbose message.
@@ -170,11 +170,11 @@ A Azure Portal configure ( **Konfigurálás** ) lapján konfigurálhatja a runbo
 Ha engedélyezi a folyamat naplózását, a runbook az egyes tevékenységek futtatása előtt és után rekordokat ír a feladatok előzményeihez. A runbook tesztelése nem jeleníti meg az előrehaladási üzeneteket még akkor sem, ha a runbook naplózása folyamatban van.
 
 >[!NOTE]
->A [Write-Progress](https://technet.microsoft.com/library/hh849902.aspx) parancsmag nem érvényes egy runbook, mert ez a parancsmag interaktív felhasználóval való használatra készült.
+>A [Write-Progress](/powershell/module/microsoft.powershell.utility/write-progress) parancsmag nem érvényes egy runbook, mert ez a parancsmag interaktív felhasználóval való használatra készült.
 
 ## <a name="work-with-preference-variables"></a>Preferencia-változók használata
 
-A runbookok bizonyos Windows PowerShell-beállításokat állíthat [be a különböző](https://technet.microsoft.com/library/hh847796.aspx) kimeneti adatfolyamoknak küldött adatválaszok szabályozására. A következő táblázat felsorolja a runbookok használható preferencia-változókat az alapértelmezett és érvényes értékekkel. Ha a Windows PowerShellben a Azure Automationon kívülre használja, további értékek érhetők el.
+A runbookok bizonyos Windows PowerShell-beállításokat állíthat [be a különböző](/powershell/module/microsoft.powershell.core/about/about_preference_variables) kimeneti adatfolyamoknak küldött adatválaszok szabályozására. A következő táblázat felsorolja a runbookok használható preferencia-változókat az alapértelmezett és érvényes értékekkel. Ha a Windows PowerShellben a Azure Automationon kívülre használja, további értékek érhetők el.
 
 | Változó | Alapértelmezett érték | Érvényes értékek |
 |:--- |:--- |:--- |
@@ -198,7 +198,7 @@ Egy runbook-feladat részleteit a Azure Portal **feladatok** lapján tekintheti 
 
 ### <a name="retrieve-runbook-output-and-messages-in-windows-powershell"></a>Runbook-kimenet és-üzenetek lekérése a Windows PowerShellben
 
-A Windows PowerShellben a runbook kimenetét és üzeneteit a [Get-AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) parancsmag használatával kérheti le. Ehhez a parancsmaghoz szükség van a feladatokhoz tartozó AZONOSÍTÓra, és egy paramétert kell `Stream` megadnia, amelyben meg kell adnia a beolvasandó adatfolyamot. A paraméter értékének megadásával lekérheti a feladatokhoz tartozó összes adatfolyamot.
+A Windows PowerShellben a runbook kimenetét és üzeneteit a [Get-AzAutomationJobOutput](/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0) parancsmag használatával kérheti le. Ehhez a parancsmaghoz szükség van a feladatokhoz tartozó AZONOSÍTÓra, és egy paramétert kell `Stream` megadnia, amelyben meg kell adnia a beolvasandó adatfolyamot. A paraméter értékének megadásával lekérheti a feladatokhoz tartozó összes adatfolyamot.
 
 A következő példában elindul a runbook, majd a rendszer megvárja, amíg annak végrehajtása befejeződik. Miután a runbook befejezte a végrehajtást, a parancsfájl gyűjti a runbook kimeneti adatfolyamot a feladatokból.
 
@@ -260,6 +260,5 @@ További információ a Azure Monitor naplókkal való integráció konfigurál�
 ## <a name="next-steps"></a>További lépések
 
 * A runbookok használatával kapcsolatban lásd: [Runbookok kezelése a Azure Automationban](manage-runbooks.md).
-* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview).
-* * A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](/powershell/scripting/overview).
+* * A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

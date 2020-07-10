@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: aab0de11972f7d1abaaa0140da002f838e319fdf
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4fb593f303eea0f4866dc248412af2f261993e92
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134621"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170343"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor ügyfél által felügyelt kulcs 
 
@@ -23,7 +23,7 @@ Javasoljuk, hogy a konfiguráció előtt tekintse át [az alábbi korlátozások
 
 [Titkosítás nyugalmi](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)   állapotban gyakori adatvédelmi és biztonsági követelmények a szervezetekben.Lehetővé teheti, hogy az Azure teljes mértékben kezelhesse a titkosítást, míg számos különböző lehetőség áll rendelkezésre a titkosítási vagy titkosítási kulcsok szoros kezeléséhez.
 
-Azure Monitor biztosítja, hogy az összes adatok titkosítva legyenek az Azure által felügyelt kulcsok használatával.A Azure Monitor emellett lehetőséget biztosít az adattitkosításra, amely a saját [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)tárolja a saját kulcsát,   és a tárolók segítségével a rendszer által hozzárendelt [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)-   hitelesítéssel fér hozzá.Ez a kulcs lehet [szoftveres vagy hardveres HSM-védelemmel ellátott](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+Azure Monitor biztosítja, hogy az összes adatok és mentett lekérdezések a Microsoft által felügyelt kulcsok (MMK-EK) használatával titkosítva legyenek. A Azure Monitor a saját [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) tárolt és a rendszer által hozzárendelt [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) -hitelesítéssel hozzáférő saját kulcs használatával is lehetőséget nyújt a titkosításra. Ez a kulcs (CMK) lehet [szoftveres vagy hardveres HSM-védelemmel ellátott](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
 
 Azure Monitor a titkosítás használata azonos az [Azure Storage-titkosítás](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)   működésének módjával.
 

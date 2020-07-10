@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 57dbec2b91d313c9c93c141c9f3ec839a299d47d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 840d2afa72de290d5534adc766f8634efa6926e8
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385484"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170054"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Twilio-ellenőrzési alkalmazás integrálása Azure Active Directory B2C
 
@@ -42,7 +42,7 @@ A következő összetevők alkotják a Twilio megoldást:
 
     ![twilio folyamat](media/partner-twilio/twilio-flow.png)
 
-|      |      |
+| Lépés | Leírás |
 |------|------|
 | 1     | A felhasználó kezdeményezi a bejelentkezést, vagy bejelentkezik a PSD2 bemutató alkalmazásba. A felhasználó hitelesítése a Azure AD B2C összevont bejelentkezés és a regisztrálási szabályzat használatával történik. A rendszer tokent ad vissza az alkalmazásnak. A regisztráláskor a rendszer az SMS/telefon használatával ellenőrzi a felhasználó telefonszámát, és rögzíti őket a Azure AD B2C-fiókjában.     |
 | 2     | A felhasználó magas kockázatú tranzakciót kezdeményez, például $50,00-es átvitelt. A rendszer kiértékeli a felhasználó aktuális hozzáférési jogkivonatát, hogy a PolicyId meg tudja határozni, hogy a felhasználó már hitelesítette-e egy lépésre szabott egyéni szabályzaton keresztül.     |

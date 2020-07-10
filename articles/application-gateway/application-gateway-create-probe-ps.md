@@ -6,19 +6,19 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/14/2019
+ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 1a244cd17ecf1f6165936d86791f9b2e320666c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a269137508feb8a2d2cc0710986e1b74b91c0ea
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807174"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186741"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Egyéni mintavétel létrehozása az Azure Application Gatewayhoz a PowerShell használatával Azure Resource Manager
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](application-gateway-create-probe-portal.md)
+> * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klasszikus Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -90,8 +90,8 @@ Az Application Gateway létrehozása előtt minden konfigurációs elemet be kel
 | **Összetevő** | **Leírás** |
 |---|---|
 | **Átjáró IP-konfigurációja** | Egy Application Gateway IP-konfigurációja.|
-| **Háttér-készlet** | IP-címek, FQDN-k vagy hálózati adapterek készlete, amelyek a webalkalmazást futtató alkalmazás-kiszolgálókhoz tartoznak.|
-| **Állapotadat-mintavétel** | A háttérbeli készlet tagjai állapotának figyelésére szolgáló egyéni mintavétel|
+| **Háttérkészlet** | IP-címek, FQDN-k vagy hálózati adapterek készlete, amelyek a webalkalmazást futtató alkalmazás-kiszolgálókhoz tartoznak.|
+| **Állapotteszt** | A háttérbeli készlet tagjai állapotának figyelésére szolgáló egyéni mintavétel|
 | **HTTP-beállítások** | Beállítások gyűjteménye, beleértve a portot, a protokollt, a cookie-alapú affinitást, a mintavételt és az időkorlátot.  Ezek a beállítások határozzák meg, hogy a rendszer hogyan irányítja át a forgalmat a háttér-készlet tagjai számára|
 | **Előtér-port** | Az a port, amelyre az Application Gateway figyeli a forgalmat|
 | **Figyelő** | Egy protokoll, a előtér-IP-konfiguráció és a frontend-port kombinációja. Ez az, ami figyeli a bejövő kérelmeket.

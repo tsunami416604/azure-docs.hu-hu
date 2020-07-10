@@ -3,12 +3,12 @@ title: Gyakori kérdések – SAP HANA-adatbázisok biztonsági mentése Azure-b
 description: Ebből a cikkből megismerheti a SAP HANA adatbázisok a Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: ddc4af9a164de3a822e8aebd6c0a4db769ec62a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512075a24cf9400415f2367ead16b57f8b31c038
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262582"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170326"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -59,15 +59,19 @@ Jelenleg nincs lehetőség arra, hogy a megoldást a virtuális IP-címekre áll
 
 ### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>Hogyan helyezhetek át egy igény szerinti biztonsági mentést a helyi fájlrendszerbe az Azure-tároló helyett?
 
-1. Várja meg, amíg a jelenleg futó biztonsági mentés készen áll a kívánt adatbázisra (a studióból való bejelentkezés befejezéséhez)
+1. Várja meg, amíg a jelenleg futó biztonsági mentés készen áll a kívánt adatbázisra (a telepítés befejezéséhez keresse meg a stúdiót).
 1. Tiltsa le a naplók biztonsági mentését, és állítsa be a katalógus biztonsági mentését a **fájlrendszerre** a kívánt adatbázisra a következő lépések segítségével:
 1. Kattintson duplán a **SYSTEMDB**  ->  **konfigurálása**  ->  **adatbázis**  ->  **-szűrő kiválasztása (napló)** elemre.
     1. Enable_auto_log_backup beállítása **nem** értékre
-    1. Log_backup_using_backint beállítása **hamis** értékre
-1. Igény szerinti biztonsági mentést készíthet a kívánt adatbázisról, és megvárhatja, hogy a biztonsági mentés és a katalógus biztonsági mentése befejeződjön.
+    1. Catalog_backup_using_backint beállítása **hamis** értékre
+1. Készítsen egy igény szerinti biztonsági mentést (teljes/különbözeti/növekményes) a kívánt adatbázison, és várjon, amíg a biztonsági mentés és a katalógus biztonsági mentése befejeződik.
+1. Ha a napló biztonsági másolatait is át szeretné helyezni a fájlrendszerbe, állítsa a enable_auto_log_backup **értéket igen** értékre.
 1. Térjen vissza az előző beállításokra, hogy a biztonsági mentések az Azure-tárolóba haladjanak:
     1. Enable_auto_log_backup beállítása **Igen** értékre
-    1. Log_backup_using_backint beállítása **true (igaz** ) értékre
+    1. Catalog_backup_using_backint beállítása **true (igaz** ) értékre
+
+>[!NOTE]
+>Ha a biztonsági mentéseket a helyi fájlrendszerbe helyezi át, és ismét visszavált az Azure-tárolóra, előfordulhat, hogy a rendszer naplózza a tárolóban lévő biztonsági másolatok naplózási láncát. A művelet elindít egy teljes biztonsági mentést, amely a sikeres befejezést követően elindítja a naplók biztonsági mentését.
 
 ### <a name="how-can-i-use-sap-hana-backup-with-my-hana-replication-set-up"></a>Hogyan használhatom a SAP HANA biztonsági mentést a HANA-replikálási beállítással?
 

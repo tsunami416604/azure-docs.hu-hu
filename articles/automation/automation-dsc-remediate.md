@@ -9,11 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: ff785bf3ace7c65f83fe8e505f0544edd24776d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4430b8cdfe9414ddbfd7aad3c3fe7827adbc8705
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836855"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186367"
 ---
 # <a name="remediate-noncompliant-azure-automation-state-configuration-servers"></a>Nem megfelelő Azure Automation állapot-konfigurációs kiszolgálók szervizelése
 
@@ -24,7 +25,7 @@ Ez a dokumentum példákat tartalmaz a szolgáltatáshoz, amikor manuálisan kij
 
 ## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>Windows rendszerű virtuális gépek helyes elsodródása a PowerShell használatával
 
-A Windows rendszerű virtuális gépeket a parancs funkció használatával lehet kijavítani `Run` . Lásd: [PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Run paranccsal](/azure/virtual-machines/windows/run-command).
+A Windows rendszerű virtuális gépeket a parancs funkció használatával lehet kijavítani `Run` . Lásd: [PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Run paranccsal](../virtual-machines/windows/run-command.md).
 
 Egy Azure Automation állapot-konfigurációs csomópont kényszerítéséhez a legújabb konfiguráció letöltéséhez és alkalmazásához használja az [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) parancsmagot.
 
@@ -42,5 +43,5 @@ Hibrid csomópontok esetén a Python-szkriptek használatával kiválaszthatja a
 
 ## <a name="next-steps"></a>További lépések
 
-- A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
 - Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse [meg a folyamatos üzembe helyezés a chocolatey](automation-dsc-cd-chocolatey.md)használatával című témakört.

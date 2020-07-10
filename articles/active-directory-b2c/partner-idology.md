@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d34bb14dd0f474ff9350fec513c02fbb470d6738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7567302be8d717cda3627af303128bfb704bd014
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385654"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170139"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Oktatóanyag a IDology konfigurálásához a Azure Active Directory B2C 
 
@@ -41,7 +41,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ![IDology architektúra diagram](media/partner-idology/idology-architecture-diagram.png)
 
-|      |      |
+| Lépés | Leírás |
 |------|------|
 |1     | A felhasználó megérkezik a bejelentkezési oldalra. |
 |2     | A felhasználó kiválasztja a regisztrációs lehetőséget egy új fiók létrehozásához, és beírja az adatokat az oldalra. A Azure AD B2C a felhasználói attribútumokat gyűjti. |
@@ -75,7 +75,7 @@ Szüksége lesz az üzembe helyezett szolgáltatás URL-címére az Azure AD kon
 
 Az Alkalmazásbeállítások [konfigurálhatók app Service az Azure-ban](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Ezzel a módszerrel a beállítások biztonságosan konfigurálhatók egy adattárba való ellenőrzés nélkül. A REST API-hoz a következő beállításokat kell megadnia:
 
-| Alkalmazásbeállítások | Forrás | Jegyzetek |
+| Alkalmazásbeállítások | Forrás | Megjegyzések |
 | :-------- | :------------| :-----------|
 |IdologySettings:ApiUsername | IDology-fiók konfigurálása |     |
 |IdologySettings:ApiPassword | IDology-fiók konfigurálása |     |

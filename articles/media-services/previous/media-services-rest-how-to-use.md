@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 288b7302b12d607c9090f699af83691b832256a3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76773660"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170819"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API áttekintése 
 
@@ -38,21 +39,23 @@ A REST használatakor a következő szempontokat kell figyelembe venni.
 
 * Az entitások lekérdezése esetén a rendszer egy legfeljebb 1000 entitást ad vissza, mert a nyilvános REST v2 a lekérdezés eredményét 1000 eredményre korlátozza. A **kihagyás** és a végrehajtás (.net)/ **Top** **(REST** ) használata szükséges a [jelen .net-Példa](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities) és [a REST API példa](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)szerint. 
 * Ha JSON-t használ, és megadja, hogy az **__metadata** kulcsszót használja a kérelemben (például egy csatolt objektumra való hivatkozáshoz), be kell állítania az **Accept** fejlécet a [JSON részletes formátumba](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (lásd a következő példát). A OData nem érti a kérelemben szereplő **__metadata** tulajdonságot, kivéve, ha azt részletesre állítja.  
-  
-        POST https://media.windows.net/API/Jobs HTTP/1.1
-        Content-Type: application/json;odata=verbose
-        Accept: application/json;odata=verbose
-        DataServiceVersion: 3.0
-        MaxDataServiceVersion: 3.0
-        x-ms-version: 2.19
-        Authorization: Bearer <ENCODED JWT TOKEN> 
-        Host: media.windows.net
-  
-        {
-            "Name" : "NewTestJob", 
-            "InputMediaAssets" : 
-                [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
-        . . . 
+
+    ```console
+    POST https://media.windows.net/API/Jobs HTTP/1.1
+    Content-Type: application/json;odata=verbose
+    Accept: application/json;odata=verbose
+    DataServiceVersion: 3.0
+    MaxDataServiceVersion: 3.0
+    x-ms-version: 2.19
+    Authorization: Bearer <ENCODED JWT TOKEN> 
+    Host: media.windows.net
+
+    {
+        "Name" : "NewTestJob", 
+        "InputMediaAssets" : 
+            [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3Aba5356eb-30ff-4dc6-9e5a-41e4223540e7')"}}]
+    . . . 
+   ```
 
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>A Media Services által támogatott szabványos HTTP-kérelmek fejlécei
 A Media Servicesban megjelenő minden egyes híváshoz meg kell adni a szükséges fejléceket, amelyeket fel kell vennie a kérelembe, valamint a választható fejléceket is, amelyeket érdemes felvennie. Az alábbi táblázat felsorolja a szükséges fejléceket:
@@ -96,7 +99,7 @@ A következőkben egy olyan fejléc található, amely a kért erőforrástól �
 ## <a name="standard-http-verbs-supported-by-media-services"></a>A Media Services által támogatott szabványos HTTP-műveletek
 A következő lista a http-kérelmekhez használható HTTP-műveletek teljes listáját tartalmazza:
 
-| Művelet | Description |
+| Művelet | Leírás |
 | --- | --- |
 | GET |Egy objektum aktuális értékét adja vissza. |
 | POST |Létrehoz egy objektumot a megadott információk alapján, vagy elküld egy parancsot. |

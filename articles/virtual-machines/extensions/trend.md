@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 874e6f9b1c0bebedb5f50ca38d0703420be69de5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919923"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186962"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security telepítése és konfigurálása Windows rendszerű virtuális gépen
 
@@ -61,10 +62,12 @@ Az ügynök meglévő virtuális gépen való telepítéséhez a következő ele
 
 Először ellenőrizze, hogy a virtuálisgép-ügynök már telepítve van-e. Adja meg a felhőalapú szolgáltatás nevét és a virtuális gép nevét, majd futtassa a következő parancsokat egy rendszergazda szintű Azure PowerShell parancssorban. Cserélje le az idézőjelek közé eső összes karaktert, beleértve a < és a > karaktereket is.
 
-    $CSName = "<cloud service name>"
-    $VMName = "<virtual machine name>"
-    $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
-    write-host $vm.VM.ProvisionGuestAgent
+```azurepowershell
+$CSName = "<cloud service name>"
+$VMName = "<virtual machine name>"
+$vm = Get-AzureVM -ServiceName $CSName -Name $VMName
+write-host $vm.VM.ProvisionGuestAgent
+```
 
 Ha nem ismeri a Cloud Service-t és a virtuális gépet, futtassa a **Get-AzureVM** parancsot a jelenlegi előfizetésben lévő összes virtuális gép adatainak megjelenítéséhez.
 
@@ -72,9 +75,11 @@ Ha a **Write-Host** parancs **igaz**értéket ad vissza, a rendszer telepíti a 
 
 Ha a virtuálisgép-ügynök telepítve van, futtassa ezeket a parancsokat.
 
-    $Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
+```azurepowershell
+$Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
 
-    Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
+Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
+```
 
 ## <a name="next-steps"></a>További lépések
 Néhány percet vesz igénybe, amíg az ügynök elindul a telepítéskor. Ezt követően aktiválnia kell a mély biztonságot a virtuális gépen, hogy azt egy Deep Security Manager kezelje. További útmutatásért tekintse meg a következő cikkeket:

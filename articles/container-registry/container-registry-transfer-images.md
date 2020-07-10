@@ -4,11 +4,12 @@ description: Lemezképek vagy más összetevők gyűjteményének átvitele egy 
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: fd551671422931a51f5aa6468de87e28e3a81b5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83006325"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186928"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Összetevők átvitele másik beállításjegyzékbe
 
@@ -57,7 +58,7 @@ A Storage-hitelesítés SAS-jogkivonatokat használ, amelyeket a Key vaultban ti
 * **[PipelineRun](#create-pipelinerun-for-export-with-resource-manager)** – egy ExportPipeline-vagy ImportPipeline-erőforrás meghívására szolgáló erőforrás.  
   * A ExportPipeline manuálisan futtathatja egy PipelineRun-erőforrás létrehozásával és az exportálandó összetevők megadásával.  
   * Ha engedélyezve van egy importálási trigger, a ImportPipeline automatikusan lefut. A PipelineRun használatával manuálisan is futtatható. 
-  * Jelenleg legfeljebb **10** összetevő helyezhető át az egyes PipelineRun.
+  * Jelenleg legfeljebb **50** összetevő helyezhető át az egyes PipelineRun.
 
 ### <a name="things-to-know"></a>Tudnivalók
 * A ExportPipeline és a ImportPipeline általában a forrás és a cél felhőkhöz társított különböző Active Directory-bérlők között lesznek. Ehhez a forgatókönyvhöz külön felügyelt identitások és kulcstartók szükségesek az Exportálás és az importálás erőforrásaihoz. Tesztelési célból ezek az erőforrások ugyanahhoz a felhőhöz, megosztási identitásokhoz is helyezhetők.
@@ -336,7 +337,7 @@ az deployment group delete \
 * **AzCopy kapcsolatos problémák**
   * Lásd: [AzCopy kapcsolatos problémák elhárítása](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues).  
 * **Összetevők átvitelével kapcsolatos problémák**
-  * Nem minden összetevő, vagy nincs, át van adva. Győződjön meg róla, hogy az exportálási folyamatban lévő összetevők helyesírása és a blob neve az exportálási és importálási futtatásokban. Erősítse meg, hogy legfeljebb 10 összetevőt helyez át.
+  * Nem minden összetevő, vagy nincs, át van adva. Győződjön meg róla, hogy az exportálási folyamatban lévő összetevők helyesírása és a blob neve az exportálási és importálási futtatásokban. Erősítse meg, hogy legfeljebb 50 összetevőt helyez át.
   * Lehet, hogy a folyamat futása nem fejeződött be. Az exportálási vagy importálási Futtatás hosszabb időt is igénybe vehet. 
   * Az egyéb folyamatokkal kapcsolatos problémák esetén adja meg az Exportálás futtatásának vagy importálásának a Azure Container Registry csapatnak való futtatásához szükséges telepítési [korrelációs azonosítót](../azure-resource-manager/templates/deployment-history.md) .
 

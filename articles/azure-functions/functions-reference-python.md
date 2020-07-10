@@ -4,11 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 26da89628360783e4507c83c3aeaddfc2b0510b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730747"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170377"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -16,7 +17,7 @@ Ez a cikk bemutatja, hogyan fejlesztheti Azure Functions a Python használatáva
 
 A Pythonban futó önálló függvények esetében tekintse meg a [Python függvények mintáit](/samples/browse/?products=azure-functions&languages=python).
 
-## <a name="programming-model"></a>A programozási modell
+## <a name="programming-model"></a>Programozási modell
 
 A Azure Functions egy olyan állapot nélküli metódust vár a Python-parancsfájlban, amely feldolgozza a bemenetet, és kimenetet hoz létre. Alapértelmezés szerint a futtatókörnyezet azt várja, hogy a metódus a fájlban megadott globális metódusként legyen implementálva `main()` `__init__.py` . [Alternatív belépési pontot is megadhat](#alternate-entry-point).
 
@@ -250,7 +251,7 @@ def main(req):
 
 További naplózási módszerek érhetők el, amelyek lehetővé teszik a konzolra való írást különböző nyomkövetési szinteken:
 
-| Metódus                 | Description                                |
+| Módszer                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | KRITIKUS szintű üzenetet ír a gyökérszintű naplózó számára.  |
 | **`error(_message_)`**   | A legfelső szintű naplózó üzenetbe írja a Level hibát.    |
@@ -427,17 +428,15 @@ Ha készen áll a közzétételre, győződjön meg arról, hogy az összes nyil
 
 A közzétételből kizárt projektfájlok és mappák, beleértve a virtuális környezet mappáját is, a. funcignore fájlban vannak felsorolva.
 
-A Python-projekt az Azure-ba való közzétételéhez három Build művelet támogatott:
+A Python-projektek Azure-ba való közzétételéhez három Build művelet támogatott: távoli Build, helyi Build és buildek egyéni függőségek használatával.
 
-+ Távoli Build: a függőségek a requirements.txt fájl tartalma alapján érhetők el. A [távoli Build](functions-deployment-technologies.md#remote-build) a javasolt Build módszer. A távoli az Azure-eszközök alapértelmezett Build-beállítása is.
-+ Helyi Build: a függőségek a requirements.txt fájl tartalmától függően helyi szinten szerezhetők be.
-+ Egyéni függőségek: a projekt nem nyilvánosan elérhető csomagokat használ az eszközeink számára. (A Docker szükséges.)
-
-A függőségek létrehozásához és a folyamatos kézbesítés (CD) rendszer használatával történő közzétételhez [használja az Azure-folyamatokat](functions-how-to-azure-devops.md).
+Az Azure-folyamatok használatával is felépítheti a függőségeket, és közzéteheti a folyamatos kézbesítés (CD) használatával. További információ: [folyamatos kézbesítés az Azure DevOps használatával](functions-how-to-azure-devops.md).
 
 ### <a name="remote-build"></a>Távoli Build
 
-Alapértelmezés szerint a Azure Functions Core Tools távoli buildet kér, amikor az alábbi, az [Azure functionapp Publishing](functions-run-local.md#publish) parancs használatával teszi közzé a Python-projektet az Azure-ban.
+Távoli Build használata esetén a kiszolgálón visszaállított függőségek és a natív függőségek egyeznek az éles környezettel. Ez egy kisebb telepítési csomagot eredményez a feltöltéshez. Használjon távoli buildet Python-alkalmazások Windows rendszeren való fejlesztésekor. Ha a projektben egyéni függőségek vannak, a [távoli Build szolgáltatásban további index URL-cím is használható](#remote-build-with-extra-index-url). 
+ 
+A függőségek a requirements.txt fájl tartalmától függően távolról szerezhetők be. A [távoli Build](functions-deployment-technologies.md#remote-build) a javasolt Build módszer. Alapértelmezés szerint a Azure Functions Core Tools távoli buildet kér, amikor az alábbi, az [Azure functionapp Publishing](functions-run-local.md#publish) parancs használatával teszi közzé a Python-projektet az Azure-ban.
 
 ```bash
 func azure functionapp publish <APP_NAME>
@@ -449,7 +448,7 @@ A [Visual Studio Code Azure functions-bővítménye](functions-create-first-func
 
 ### <a name="local-build"></a>Helyi Build
 
-A távoli buildek használatának megakadályozása érdekében az alábbi, az [Azure functionapp publish](functions-run-local.md#publish) parancs használatával teheti közzé a helyi buildet.
+A függőségek a requirements.txt fájl tartalma alapján szerezhetők be. A távoli buildek használatának megakadályozása érdekében az alábbi, az [Azure functionapp publish](functions-run-local.md#publish) parancs használatával teheti közzé a helyi buildet.
 
 ```command
 func azure functionapp publish <APP_NAME> --build local
@@ -457,9 +456,21 @@ func azure functionapp publish <APP_NAME> --build local
 
 Ne felejtse el lecserélni a `<APP_NAME>` Function alkalmazás nevét az Azure-ban.
 
-A beállítás használatával a rendszer `--build local` a requirements.txt fájlból olvassa be a projektek függőségeit, és a függő csomagokat a rendszer helyileg tölti le és telepíti. A Project Files és a függőségek a helyi számítógépről az Azure-ba vannak telepítve. Ennek eredményeképpen egy nagyobb üzembehelyezési csomag tölthető fel az Azure-ba. Ha valamilyen okból kifolyólag a requirements.txt fájlban lévő függőségek nem szerezhetők meg a Core Tools használatával, az egyéni függőségek lehetőséget kell használni a közzétételhez.
+A beállítás használatával a rendszer `--build local` a requirements.txt fájlból olvassa be a projektek függőségeit, és a függő csomagokat a rendszer helyileg tölti le és telepíti. A Project Files és a függőségek a helyi számítógépről az Azure-ba vannak telepítve. Ennek eredményeképpen egy nagyobb üzembehelyezési csomag tölthető fel az Azure-ba. Ha valamilyen okból kifolyólag a requirements.txt fájlban lévő függőségek nem szerezhetők meg a Core Tools használatával, az egyéni függőségek lehetőséget kell használni a közzétételhez. 
+
+Helyi buildek használata nem ajánlott helyileg Windows rendszeren történő fejlesztéshez.
 
 ### <a name="custom-dependencies"></a>Egyéni függőségek
+
+Ha a projekt függőségei nem találhatók a Python- [csomag indexében](https://pypi.org/), kétféleképpen lehet felépíteni a projektet. A Build metódus a projekt felépítésének módjától függ.
+
+#### <a name="remote-build-with-extra-index-url"></a>Távoli Build extra index URL-címmel
+
+Ha a csomagok elérhető egyéni csomag-indexből érhetők el, használjon távoli buildet. A közzététel előtt győződjön meg róla, hogy [létrehoz egy nevű alkalmazást](functions-how-to-use-azure-function-app-settings.md#settings) `PIP_EXTRA_INDEX_URL` . A beállítás értéke az egyéni csomag indexének URL-címe. Ha ezt a beállítást választja, a rendszer a távoli buildet a `pip install` kapcsoló használatával futtatja `--extra-index-url` . További információt a [Python pip telepítési dokumentációjában](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)talál. 
+
+Az alapszintű hitelesítési hitelesítő adatokat is használhatja a további csomagok indexének URL-címeivel. További információért lásd: [alapszintű hitelesítési hitelesítő adatok](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials) a Python dokumentációjában.
+
+#### <a name="install-local-packages"></a>Helyi csomagok telepítése
 
 Ha a projekt nem nyilvánosan elérhető csomagokat használ az eszközeink számára, elérhetővé teheti őket az alkalmazásban, az \_ \_ app \_ \_ /. python_packages könyvtárba helyezve. A közzététel előtt futtassa a következő parancsot a függőségek helyi telepítéséhez:
 
@@ -467,7 +478,7 @@ Ha a projekt nem nyilvánosan elérhető csomagokat használ az eszközeink szá
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
 ```
 
-Egyéni függőségek használatakor a közzétételi lehetőséget kell használnia `--no-build` , mivel már telepítette a függőségeket.
+Egyéni függőségek használatakor a közzétételi lehetőséget kell használnia `--no-build` , mivel már telepítette a függőségeket a projekt mappájába.
 
 ```command
 func azure functionapp publish <APP_NAME> --no-build
@@ -684,7 +695,7 @@ Az összes ismert probléma és szolgáltatás kérését a [GitHub-problémák]
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért lásd a következőket:
+További információkat találhat az alábbi forrásokban:
 
 * [Azure Functions csomag API-dokumentációja](/python/api/azure-functions/azure.functions?view=azure-python)
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)
