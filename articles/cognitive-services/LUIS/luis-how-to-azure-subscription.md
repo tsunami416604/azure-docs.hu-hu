@@ -4,12 +4,12 @@ description: Ha először használja a Language Understanding (LUIS), nem kell l
 services: cognitive-services
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: 7cc53e7105ba08ad33e02775fcfb0791c6cf1310
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: dfe5c416adeb4ff850dfe8f28ae4c61c8bb0844f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055766"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144630"
 ---
 # <a name="create-luis-resources"></a>LUIS-erőforrások létrehozása
 
@@ -24,7 +24,7 @@ A szerzői és lekérdezési előrejelzési futtatókörnyezet erőforrásai hit
 
 A LUIS három típusú Azure-erőforrást és egy nem Azure-erőforrást is lehetővé tesz:
 
-|Kulcs|Szerep|Kognitív szolgáltatás`kind`|Kognitív szolgáltatás`type`|
+|Kulcs|Rendeltetés|Kognitív szolgáltatás`kind`|Kognitív szolgáltatás`type`|
 |--|--|--|--|
 |Szerzői kulcs|A szerzői műveletek, a képzés, a közzététel és a tesztelés segítségével hozzáférhetnek az alkalmazáshoz, és kezelhetik azokat. Hozzon létre egy LUIS authoring-kulcsot, ha a LUIS-alkalmazásokat programozott módon szeretné létrehozni.<br><br>A kulcs célja, `LUIS.Authoring` hogy lehetővé tegye a következőket:<br>* programozott módon felügyelheti Language Understanding alkalmazásokat és modelleket, beleértve a képzést és a közzétételt<br> * a szerzői erőforrásra vonatkozó engedélyek vezérlése [a közreműködő szerepkörhöz](#contributions-from-other-authors)rendelt személyek hozzárendelésével.|`LUIS.Authoring`|`Cognitive Services`|
 |Lekérdezés-előrejelzési kulcs| Lekérdezés-előrejelzési végponti kérelmek. Hozzon létre egy LUIS-előrejelzési kulcsot, mielőtt az ügyfélalkalmazás a kezdő erőforrás által biztosított 1 000-kérelmeknél újabb előrejelzéseket kér. |`LUIS`|`Cognitive Services`|
@@ -102,7 +102,7 @@ Az alkalmazáshoz való hozzáférést a [Luis](luis-reference-regions.md#luis-w
 
 A tulajdonos és az összes közreműködő hozzáfér az alkalmazás létrehozásához.
 
-|A szerzői hozzáférés magában foglalja a|Jegyzetek|
+|A szerzői hozzáférés magában foglalja a|Megjegyzések|
 |--|--|
 |Végponti kulcsok hozzáadása vagy eltávolítása||
 |Verzió exportálása||
@@ -154,9 +154,9 @@ Megadhatja, hogy ki láthatja a LUIS előrejelzési futtatókörnyezet végpontj
 ## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>Jelentkezzen be a LUIS Portalra, és kezdje el a szerzői műveletek
 
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai) , és fogadja el a használati feltételeket.
-1. Indítsa el a LUIS alkalmazást úgy, hogy kiválasztja a használni kívánt LUIS authoring-kulcs típusát: ingyenes próbaverziós kulcs vagy új Azure LUIS authoring Key.
+1. Indítsa el a LUIS alkalmazást az Azure LUIS authoring-kulcs kiválasztásával.
 
-    ![Language Understanding szerzői erőforrás típusának kiválasztása](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+   ![Language Understanding szerzői erőforrás típusának kiválasztása](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
 1. Ha elkészült az erőforrás-kiválasztási folyamattal, [hozzon létre egy új alkalmazást](luis-how-to-start-new-app.md#create-new-app-in-luis).
 
@@ -206,7 +206,7 @@ Létrehozhat egy authoring-erőforrást egyetlen alkalmazáshoz vagy a LUIS öss
 
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai).
 1. A felső navigációs sávon kattintson a jobb szélre, válassza ki a felhasználói fiókját, majd válassza a **Beállítások**lehetőséget.
-1. A **felhasználói beállítások** lapon válassza a **szerzői erőforrás hozzáadása** lehetőséget, majd válasszon ki egy meglévő authoring-erőforrást. Kattintson a **Mentés** gombra.
+1. A **felhasználói beállítások** lapon válassza a **szerzői erőforrás hozzáadása** lehetőséget, majd válasszon ki egy meglévő authoring-erőforrást. Válassza a **Mentés** lehetőséget.
 
 ## <a name="assign-a-resource-to-an-app"></a>Erőforrás kiosztása egy alkalmazáshoz
 

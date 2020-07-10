@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: d459222327ef3535202e82f640f5b513f0426d54
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85609469"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147411"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Elemzés hozzáadása a Bing Search API-khoz
 
@@ -50,10 +50,10 @@ Alapértelmezés szerint a diagramok és a diagramok a hozzájuk tartozó össze
   
 - **Végpontok**: a Bing Search API-végpontok. A lista tartalmazza az összes olyan végpontot, amelyhez fizetős előfizetéssel rendelkezik. Alapértelmezés szerint az összes végpont ki van választva.  
 
-- **Időkeret**: a jelentési időszak. A következőket adhatja meg:
+- **Időkeret**: a jelentési időszak. Megadhatja a következőket:
   - **Összes**: legfeljebb 13 hónapig hasznos adatot tartalmaz  
   - Az **elmúlt 24 óra**: az elmúlt 24 órában elemzést tartalmaz  
-  - **Múlt hét**: az elmúlt hét nap elemzését tartalmazza  
+  - **Múlt hét**: az előző 7 nap elemzését tartalmazza  
   - Az **elmúlt hónapban**: az elmúlt 30 nap elemzését tartalmazza  
   - **Egyéni dátumtartomány**: a megadott dátumtartomány elemzését tartalmazza, ha van ilyen.  
 

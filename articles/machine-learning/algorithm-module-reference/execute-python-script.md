@@ -10,18 +10,18 @@ ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
 ms.date: 06/16/2020
-ms.openlocfilehash: f64c79a970ec54c07c2934a92a9ca349ea56ca40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2115a0bae8b26113fc10648db2584210809441de
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907550"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147257"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
 Ez a cikk a Azure Machine Learning Designerben (előzetes verzió) lévő Python parancsfájl-futtatási modult ismerteti.
 
-Ez a modul a Python-kód futtatására használható. A Python architektúrával és tervezési alapelveivel kapcsolatos további információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts).
+Ez a modul a Python-kód futtatására használható. További információ a Python architektúráról és tervezési alapelveiről: [a Python-kód futtatása Azure Machine learning Designerben](../how-to-designer-python.md).
 
 A Python használatával olyan feladatokat hajthat végre, amelyeket a meglévő modulok nem támogatnak, például a következőket:
 
@@ -252,7 +252,7 @@ A Python-szkript végrehajtása modul olyan minta Python-kódot tartalmaz, amely
 
     Az összes adattal és kóddal betöltődik egy virtuális gépre, és a megadott Python-környezet használatával fut.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A beágyazott Python-kód alapján történő számítások eredményeit a következőként kell megadni `pandas.DataFrame` , amely automatikusan a Azure Machine learning adatkészlet formátumára lesz konvertálva. Ezután az eredményeket a folyamat más moduljaival is használhatja.
 

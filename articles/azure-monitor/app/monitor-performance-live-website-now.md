@@ -3,12 +3,12 @@ title: Élő ASP.NET-webapp figyelése az Azure Application Insights segítség�
 description: Megfigyelheti egy webhely teljesítményét annak ismételt üzembe helyezése nélkül. A helyszíni vagy virtuális gépeken üzemeltetett ASP.NET webalkalmazásokkal működik.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: e30700deaa0121fbe473580d868a79d75a899a1d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f4ce01ea8fc7b6bf1f294071f04e2bebce3e1d27
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107478"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166382"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Az eszköz webalkalmazásai futásidőben Application Insights kód nem csatolhatók
 
@@ -39,14 +39,14 @@ Itt található egy összefoglaló az egyes módszerek eredményeiről:
 
 |  | Felépítési idő | Futási idő |
 | --- | --- | --- |
-| Kérések és kivételek |Igen |Igen |
-| [Részletes kivételek](../../azure-monitor/app/asp-net-exceptions.md) | |Igen |
-| [Függőségek diagnosztikája](../../azure-monitor/app/asp-net-dependencies.md) |.NET 4.6+ esetén, kevésbé részletesen |Igen, teljes részletesség: eredménykódok, SQL-parancsszöveg, HTTP-parancsok|
-| [Rendszerteljesítmény-számlálók](../../azure-monitor/app/performance-counters.md) |Igen |Igen |
-| [API egyéni telemetriához][api] |Igen |Nem |
-| [Nyomkövetési napló integrációja](../../azure-monitor/app/asp-net-trace-logs.md) |Igen |Nem |
-| [Lapmegtekintések és felhasználói adatok](../../azure-monitor/app/javascript.md) |Igen |Nem |
-| Szükség van a kód ismételt felépítésére |Igen | Nem |
+| **Kérelmek & kivételek** |Igen |Igen |
+| **[Részletesebb kivételek](../../azure-monitor/app/asp-net-exceptions.md)** | |Igen |
+| **[Függőségi diagnosztika](../../azure-monitor/app/asp-net-dependencies.md)** |.NET 4.6+ esetén, kevésbé részletesen |Igen, teljes részletesség: eredménykódok, SQL-parancsszöveg, HTTP-parancsok|
+| **[Rendszerteljesítmény-számlálók](../../azure-monitor/app/performance-counters.md)** |Igen |Igen |
+| **[API egyéni telemetria][api]** |Igen |Nem |
+| **[Nyomkövetési napló integrációja](../../azure-monitor/app/asp-net-trace-logs.md)** |Igen |Nem |
+| **[Az oldal nézet & felhasználói](../../azure-monitor/app/javascript.md)** |Igen |Nem |
+| **Szükség van a kód ismételt felépítésére** |Igen | Nem |
 
 
 
@@ -315,7 +315,7 @@ A fordítási során már kiépített alkalmazások esetén:
 - A [Állapotmonitor telepítőjének](https://go.microsoft.com/fwlink/?LinkId=506648) letöltése és futtatása
 - Vagy futtasson [webplatform-telepítőt](https://www.microsoft.com/web/downloads/platform.aspx) , és keressen rá Application Insights állapotfigyelő.
 
-## <a name="next-steps"></a><a name="next"></a>Következő lépések
+## <a name="next-steps"></a><a name="next"></a>További lépések
 
 A telemetriai adatok megtekintése:
 

@@ -5,14 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 5/7/2020
+ms.date: 07/08/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 3f2cb5cbc447dd0483517bef96dbcc7c58cf1af7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 953cdff1f3c067c2d5b9ebd284afe68083d43e66
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101392"
+ms.locfileid: "86141771"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Az SSL-kapcsolat konfigurálása az alkalmazásban a Azure Database for MySQLhoz való biztonságos csatlakozáshoz
 A Azure Database for MySQL támogatja a Azure Database for MySQL-kiszolgáló SSL (SSL) használatával történő ügyfélalkalmazások összekapcsolását. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket.
@@ -20,6 +20,8 @@ A Azure Database for MySQL támogatja a Azure Database for MySQL-kiszolgáló SS
 ## <a name="step-1-obtain-ssl-certificate"></a>1. lépés: SSL-tanúsítvány beszerzése
 Töltse le az SSL protokollon keresztüli kommunikációhoz szükséges tanúsítványt a Azure Database for MySQL-kiszolgálóról [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) , és mentse a tanúsítványt a helyi meghajtóra (ez az oktatóanyag az c:\ssl-t használja például).
 **A Microsoft Internet Explorer és a Microsoft Edge esetében:** A letöltés befejezése után nevezze át a tanúsítványt a BaltimoreCyberTrustRoot. CRT. PEM névre.
+
+Tekintse meg a következő hivatkozásokat a szuverén felhőkben található kiszolgálók tanúsítványainak esetében: [Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem), [Azure China](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)és [Azure Germany](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).
 
 ## <a name="step-2-bind-ssl"></a>2. lépés: SSL kötése
 
@@ -220,5 +222,5 @@ using (var connection = new MySqlConnection(builder.ConnectionString))
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át a különböző alkalmazás-csatlakozási lehetőségeket [a Azure Database for MySQLhoz tartozó kapcsolati kódtárak](concepts-connection-libraries.md) között

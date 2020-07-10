@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0fd2bcfb32524c6911a70157f58cea1e48b7bea9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4f02d92e6264a05ed2cb4021adb5ae6312f58a85
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135242"
+ms.locfileid: "86146637"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows rendszerhez készült Azure soros konzol
 
@@ -100,8 +100,7 @@ Ha engedélyezni szeretné a Windows rendszerindítási kérések megjelenítés
 
 1. Kapcsolódjon a soros konzolhoz. Ha sikeresen kapcsolódott, a kérdés **SAC>**:
 
-    ![Kapcsolódás SAC-hez](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
-
+   ![Kapcsolódás SAC-hez](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 1. Adja meg a `cmd` parancsot egy olyan csatorna létrehozásához, amely rendelkezik cmd-példánnyal.
 
 1. Adja meg `ch -si 1` vagy nyomja le a `<esc>+<tab>` gyorsbillentyűket a cmd-példányt futtató csatornára való váltáshoz.
@@ -112,7 +111,7 @@ Ha engedélyezni szeretné a Windows rendszerindítási kérések megjelenítés
 
 1. PowerShell-példány elindításához írja be `PowerShell` a parancsot a cmd-példányba, majd nyomja le az **ENTER**billentyűt.
 
-    ![PowerShell-példány megnyitása](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+   ![PowerShell-példány megnyitása](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
 ### <a name="use-the-serial-console-for-nmi-calls"></a>A soros konzol használata NMI-hívásokhoz
 A nem maszkolt megszakítás (NMI) úgy van kialakítva, hogy egy olyan jelet hozzon létre, amelyet a virtuális gépen lévő szoftver nem hagy figyelmen kívül. A NMIs korábban a hardveres problémák figyelésére használták az adott válaszidőt igénylő rendszereken. Napjainkban a programozók és a rendszergazdák gyakran használják a NMI-t a nem válaszoló rendszerek hibakeresésére vagy hibaelhárítására.
@@ -147,7 +146,7 @@ A soros konzolhoz való hozzáférés csak azokra a felhasználókra korlátozó
 ### <a name="channel-security"></a>Csatorna biztonsága
 A visszaadott és oda továbbított összes adatforgalom titkosítva van a huzalon.
 
-### <a name="audit-logs"></a>Naplók
+### <a name="audit-logs"></a>Auditnaplók
 A soros konzolhoz való összes hozzáférés jelenleg a virtuális gép [rendszerindítási diagnosztikai](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) naplóiban van naplózva. A naplókhoz való hozzáférést az Azure-beli virtuális gép rendszergazdája birtokolja és felügyeli.
 
 > [!CAUTION]
@@ -181,7 +180,7 @@ A rendszerbetöltővel való interakció | A BCD elérése a soros konzolon kere
 ## <a name="known-issues"></a>Ismert problémák
 Tisztában vagyunk a soros konzollal és a virtuális gép operációs rendszerével kapcsolatos problémákkal. Ezen problémák listája és a Windows rendszerű virtuális gépek enyhítésének lépései. Ezek a problémák és enyhítések mind a virtuális gépek, mind a virtuálisgép-méretezési csoport példányai esetében érvényesek. Ha ezek nem egyeznek a megjelenő hibával, tekintse meg a soros konzol gyakori [hibáival](./serial-console-errors.md)kapcsolatos általános hibákat.
 
-Probléma                             |   Kezelés
+Probléma                             |   Kockázatcsökkentés
 :---------------------------------|:--------------------------------------------|
 Az **ENTER** billentyű lenyomása után a kapcsolódási szalagcím nem eredményezi a bejelentkezési üzenet megjelenítését. | További információ: [ütő ENTER do Nothing](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ez a hiba akkor fordulhat elő, ha egy egyéni virtuális gépet, megerősített készüléket vagy rendszerindítási konfigurációt futtat, amelynek hatására a Windows nem tud megfelelően csatlakozni a soros porthoz. Ez a hiba akkor is előfordulhat, ha Windows 10 rendszerű virtuális gépet futtat, mert csak a Windows Server rendszerű virtuális gépekre van beállítva, hogy az EMS engedélyezve legyen.
 Windows rendszerű virtuális géphez való csatlakozáskor csak állapotadatok jelennek meg| Ez a hiba akkor fordul elő, ha a speciális felügyeleti konzol nincs engedélyezve a Windows-rendszerképhez. Lásd: [a soros konzol engedélyezése egyéni vagy régebbi lemezképekben](#enable-the-serial-console-in-custom-or-older-images) a Windows rendszerű virtuális GÉPEN a SAC manuális engedélyezésével kapcsolatos utasításokért. További információ: [Windows Health Signals](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
@@ -217,7 +216,7 @@ A. A rendszerkép valószínűleg helytelenül van konfigurálva a soros konzolh
 
 A. igen! Lásd [a Virtual Machine Scale sets soros konzolját](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Windows SAC szolgáltatásban használható CMD-és PowerShell-parancsok részletes útmutatója [: Windows-parancsok: cmd és PowerShell](serial-console-cmd-ps-commands.md).
 * A soros konzol [Linux](serial-console-linux.md) rendszerű virtuális gépekhez is elérhető.
 * További információ a [rendszerindítási diagnosztika](boot-diagnostics.md)szolgáltatásról.

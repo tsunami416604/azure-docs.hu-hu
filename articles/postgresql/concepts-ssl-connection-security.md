@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 6660c5d40ffb8ecb338dd9cdf53f24cfe2911713
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 07/08/2020
+ms.openlocfilehash: 615e8c80d194bb37feac1c09af22d2aa5d4aa3fc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043835"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142706"
 ---
 # <a name="configure-tls-connectivity-in-azure-database-for-postgresql---single-server"></a>TLS-kapcsolat konfigurálása Azure Database for PostgreSQL – egyetlen kiszolgálón
 
@@ -51,7 +51,9 @@ Néhány alkalmazás-keretrendszer, amely a PostgreSQL-t használja az adatbázi
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>A TLS-kapcsolat tanúsítvány-ellenőrzését igénylő alkalmazások
 
-Bizonyos esetekben az alkalmazásoknak egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl által létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz. A Azure Database for PostgreSQL kiszolgálóhoz való kapcsolódáshoz szükséges tanúsítvány a következő helyen található: https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . Töltse le a tanúsítványfájl, és mentse a kívánt helyre. (Tekintse meg a következő hivatkozásokat a szuverén felhőkben található kiszolgálók tanúsítványainak esetében: [Azure Government](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem), [Azure China](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)és [Azure Germany](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).) 
+Bizonyos esetekben az alkalmazásoknak egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl által létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz. A Azure Database for PostgreSQL kiszolgálóhoz való kapcsolódáshoz szükséges tanúsítvány a következő helyen található: https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem . Töltse le a tanúsítványfájl, és mentse a kívánt helyre. 
+
+Tekintse meg a következő hivatkozásokat a szuverén felhőkben található kiszolgálók tanúsítványainak esetében: [Azure Government](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem), [Azure China](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)és [Azure Germany](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt).
 
 ### <a name="connect-using-psql"></a>Összekapcsolás a psql használatával
 

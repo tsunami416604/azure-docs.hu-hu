@@ -4,12 +4,12 @@ description: Batch-készlet létrehozása egy Azure-beli virtuális hálózatban
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: seodec18
-ms.openlocfilehash: 22344b5466b0388921a481b1adf41495d66dbfe0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cb5cda16cd9405f0cbe91a3f88be7dc3f582d21b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115411"
+ms.locfileid: "86142760"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton
 
@@ -27,7 +27,7 @@ Ha lehetővé szeretné tenni a számítási csomópontok számára a biztonság
 
 - **Egy Azure-VNet**. A VNet követelményeinek és konfigurációjának megtekintéséhez tekintse meg a következő szakaszt. Egy vagy több alhálózattal rendelkező VNet előkészítéséhez használhatja a Azure Portal, Azure PowerShell, az Azure parancssori felületét (CLI) vagy más metódusokat is.
   - Azure Resource Manager-alapú VNet létrehozásával kapcsolatban lásd: [virtuális hálózat létrehozása](../virtual-network/manage-virtual-network.md#create-a-virtual-network). A Resource Manager-alapú VNet új központi telepítések esetén ajánlott, és csak a virtuális gépek konfigurációját használó készleteken támogatott.
-  - Klasszikus VNet létrehozásával kapcsolatban lásd: [virtuális hálózat (klasszikus) létrehozása több alhálózattal](../virtual-network/create-virtual-network-classic.md). A klasszikus VNet csak Cloud Services konfigurációt használó készleteken támogatott.
+  - Klasszikus VNet létrehozásával kapcsolatban lásd: [virtuális hálózat (klasszikus) létrehozása több alhálózattal](/previous-versions/azure/virtual-network/create-virtual-network-classic). A klasszikus VNet csak Cloud Services konfigurációt használó készleteken támogatott.
 
 ## <a name="vnet-requirements"></a>A virtuális hálózat követelményei
 
@@ -64,7 +64,7 @@ UDR hozzáadásakor adja meg az útvonalat az egyes kapcsolódó batch IP-címek
 > [!WARNING]
 > A Batch szolgáltatás IP-címei idővel módosulhatnak. Az IP-címek változása miatti kimaradások megelőzése érdekében hozzon létre egy folyamatot, amely automatikusan frissíti a Batch szolgáltatás IP-címeit, és naprakészen tartja azokat az útválasztási táblázatban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 - Megtudhatja, hogyan [hozhat létre felhasználó által megadott útvonalat a Azure Portalban](../virtual-network/tutorial-create-route-table-portal.md).

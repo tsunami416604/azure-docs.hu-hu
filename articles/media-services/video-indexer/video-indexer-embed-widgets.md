@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 545dbcfb1db5595ff5b2047ec44afa8a065d816d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d76f3afa3a831f402f93322ecec350bfdb0c788d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594848"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166025"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgetek beágyazása az alkalmazásokba
 
@@ -29,11 +29,11 @@ A 2. verziótól kezdődően a widget alap URL-címe tartalmazza a megadott fió
 
 A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amely a videóindexelési folyamat során lett kinyerve. A kognitív bepillantások widget a következő opcionális URL-paramétereket támogatja:
 
-|Name|Definíció|Leírás|
+|Név|Definíció|Leírás|
 |---|---|---|
 |`widgets` | Vesszővel elválasztott sztringek | Lehetővé teszi a megjeleníteni kívánt adatfelismerések szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` a csak a felhasználók és a kulcsszavak felhasználói felületi felismeréseit jeleníti meg.<br/>Elérhető lehetőségek: személyek, animatedCharacters, kulcsszavak, címkék, érzelmek, érzelmek, témakörök, kulcsképek, átiratok, OCR, hangszórók, jelenetek és namedEntities.|
 |`controls`|Vesszővel elválasztott sztringek|Lehetővé teszi a megjeleníteni kívánt vezérlők szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` csak a keresési lehetőség és a letöltés gomb megjelenítése.<br/>Elérhető lehetőségek: keresés, letöltés, előzetes beállítás, nyelv.|
-|`language`|Rövid nyelvi kód (nyelv neve)|Az ellenőrzési nyelv szabályozása.<br/>Például: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>vagy`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`|Rövid nyelvi kód (nyelv neve)|Az ellenőrzési nyelv szabályozása.<br/>Például: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/> vagy `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | Egy rövid nyelvi kód | A felhasználói felület nyelvének szabályozása. Az alapértelmezett érték `en`. <br/>Példa: `locale=de`.|
 |`tab` | Az alapértelmezett kijelölt lap | Az alapértelmezés **Insights** szerint megjelenített adatvizsgálatok lapot vezérli. <br/>Példa: `tab=timeline` a bepillantást jeleníti meg az **Idősor** lapon.|
 |`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial`a paraméter alapértelmezett értéke `location` .| 
@@ -42,7 +42,7 @@ A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amel
 
 A Player widget Adaptív átviteli sebesség használatával is továbbíthatja a videót. A Player widget a következő opcionális URL-paramétereket támogatja.
 
-|Name|Definíció|Leírás|
+|Név|Definíció|Leírás|
 |---|---|---|
 |`t` | Másodperc az elejétől | A lejátszó a megadott időpontból kezdi a lejátszást.<br/> Példa: `t=60`. |
 |`captions` | Nyelvi kód | A megadott nyelven beolvassa a feliratot a widget betöltésével, hogy elérhető legyen a **feliratok** menüben.<br/> Példa: `captions=en-US`. |
@@ -56,12 +56,12 @@ A Player widget Adaptív átviteli sebesség használatával is továbbíthatja 
 
 A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókban észlelt eredményeket. A szerkesztői widget a következő opcionális URL-paramétereket támogatja.
 
-|Name|Definíció|Leírás|
+|Név|Definíció|Leírás|
 |---|---|---|
 |`accessToken`<sup>*</sup> | Sztring | Hozzáférést biztosít azokhoz a videókhoz, amelyek csak a widget beágyazásához használt fiókban találhatók.<br> A szerkesztő widgethez a `accessToken` paraméter szükséges. |
 |`language` | Nyelvi kód | A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`. |
 |`locale` | Egy rövid nyelvi kód | Az adatfelismerés nyelvét vezérli. Az alapértelmezett érték `en`.<br/>Példa: `language=de`. |
-|`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial`a paramete alapértelmezett értéke `location` .| 
+|`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial`a paraméter alapértelmezett értéke `location` .| 
 
 <sup>*</sup>A tulajdonosnak körültekintően kell megadnia `accessToken` .
 
@@ -69,7 +69,7 @@ A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókb
 
 Ebből a szakaszból megtudhatja, hogyan ágyazhatja be a nyilvános és a magánjellegű tartalmakat az alkalmazásokba.
 
-A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial`a paramete alapértelmezett értéke `location` . Példa: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető el, a `trial` értéket a hely értékére kell használni. `trial`a paraméter alapértelmezett értéke `location` . Például: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
 
 > [!IMPORTANT]
 > Ha megoszt egy hivatkozást a **lejátszóhoz** **vagy az** adatelérési eszközhöz, a hozzáférési jogkivonatot fogja tartalmazni, és megadja a csak olvasási jogosultságokat a fiókjához.
@@ -131,47 +131,48 @@ Ez a szakasz bemutatja, hogyan lehet interakciót elérni egy kognitív bepillan
 1. Video Indexer beépülő modul hozzáadása az AMP-lejátszóhoz:<br/> `<script src="https://breakdown.blob.core.windows.net/public/amp-vb.plugin.js"></script>`
 2. Azure Media Player példánya a Video Indexer beépülő modullal.
 
-        // Init the source.
-        function initSource() {
-            var tracks = [{
-            kind: 'captions',
-            // To load vtt from VI, replace it with your vtt URL.
-            src: this.getSubtitlesUrl("c4c1ad4c9a", "English"),
-            srclang: 'en',
-            label: 'English'
-            }];
-
-            myPlayer.src([
-            {
-                "src": "//amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest",
-                "type": "application/vnd.ms-sstr+xml"
-            }
-            ], tracks);
+    ```javascript
+    // Init the source.
+    function initSource() {
+        var tracks = [{
+        kind: 'captions',
+        // To load vtt from VI, replace it with your vtt URL.
+        src: this.getSubtitlesUrl("c4c1ad4c9a", "English"),
+        srclang: 'en',
+        label: 'English'
+        }];
+        myPlayer.src([
+        {
+            "src": "//amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest",
+            "type": "application/vnd.ms-sstr+xml"
         }
+        ], tracks);
+    }
 
-        // Init your AMP instance.
-        var myPlayer = amp('vid1', { /* Options */
-            "nativeControlsForTouch": false,
-            autoplay: true,
-            controls: true,
-            width: "640",
-            height: "400",
-            poster: "",
-            plugins: {
-            videobreakedown: {}
-            }
-        }, function () {
-            // Activate the plug-in.
-            this.videobreakdown({
-            videoId: "c4c1ad4c9a",
-            syncTranscript: true,
-            syncLanguage: true,
-            location: "trial" /* location option for paid accounts (default is trial) */
-            });
-
-            // Set the source dynamically.
-            initSource.call(this);
+    // Init your AMP instance.
+    var myPlayer = amp('vid1', { /* Options */
+        "nativeControlsForTouch": false,
+        autoplay: true,
+        controls: true,
+        width: "640",
+        height: "400",
+        poster: "",
+        plugins: {
+        videobreakedown: {}
+        }
+    }, function () {
+        // Activate the plug-in.
+        this.videobreakdown({
+        videoId: "c4c1ad4c9a",
+        syncTranscript: true,
+        syncLanguage: true,
+        location: "trial" /* location option for paid accounts (default is trial) */
         });
+
+        // Set the source dynamically.
+        initSource.call(this);
+    });
+    ```
 
 3. Másolja a Kognitív elemzési vezérlő beágyazási kódját.
 
@@ -187,42 +188,46 @@ Ha nem a Azure Media Playert használja, akkor manuálisan kell módosítania a 
 
     Szabványos HTML5-lejátszó például:
 
-        <video id="vid1" width="640" height="360" controls autoplay preload>
-           <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
-           Your browser does not support the video tag.
-        </video>    
+    ```html
+    <video id="vid1" width="640" height="360" controls autoplay preload>
+       <source src="//breakdown.blob.core.windows.net/public/Microsoft%20HoloLens-%20RoboRaid.mp4" type="video/mp4" /> 
+       Your browser does not support the video tag.
+    </video>
+    ```
 
 2. Ágyazza be a Kognitív elemzési vezérlőt.
 3. Implementálja a lejátszóval való kommunikációt az „üzenet” eseményre való figyeléssel. Például:
 
-        <script>
+    ```javascript
+    <script>
     
-            (function(){
-            // Reference your player instance.
-            var playerInstance = document.getElementById('vid1');
+        (function(){
+        // Reference your player instance.
+        var playerInstance = document.getElementById('vid1');
         
-            function jumpTo(evt) {
-              var origin = evt.origin || evt.originalEvent.origin;
+        function jumpTo(evt) {
+          var origin = evt.origin || evt.originalEvent.origin;
         
-              // Validate that the event comes from the videobreakdown domain.
-              if ((origin === "https://www.videobreakdown.com") && evt.data.time !== undefined){
+          // Validate that the event comes from the videobreakdown domain.
+          if ((origin === "https://www.videobreakdown.com") && evt.data.time !== undefined){
                 
-                // Call your player's "jumpTo" implementation.
-                playerInstance.currentTime = evt.data.time;
+            // Call your player's "jumpTo" implementation.
+            playerInstance.currentTime = evt.data.time;
                
-                // Confirm the arrival to us.
-                if ('postMessage' in window) {
-                  evt.source.postMessage({confirm: true, time: evt.data.time}, origin);
-                }
-              }
+            // Confirm the arrival to us.
+            if ('postMessage' in window) {
+              evt.source.postMessage({confirm: true, time: evt.data.time}, origin);
             }
+          }
+        }
         
-            // Listen to the message event.
-            window.addEventListener("message", jumpTo, false);
+        // Listen to the message event.
+        window.addEventListener("message", jumpTo, false);
           
-            }())    
+        }())    
         
-        </script>
+    </script>
+    ```
 
 További információkért tekintse meg a [Azure Media Player + VI bepillantást ismertető bemutatót](https://codepen.io/videoindexer/pen/YEyPLd).
 

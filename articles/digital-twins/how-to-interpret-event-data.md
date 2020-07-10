@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f6794559c2296b02ef61d0e280d29456904ae607
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e2a3e6c7fd5ecd305d00278668ad0bfb9a66001
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609299"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142440"
 ---
 # <a name="understand-event-data"></a>Az események értelmezése
 
@@ -103,7 +103,7 @@ Az életciklussal kapcsolatos értesítések a következők esetén aktiválódn
 
 Az életciklus-értesítés törzsének mezői.
 
-| Name | Érték |
+| Név | Érték |
 | --- | --- |
 | `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id`minden különböző esemény esetében egyedi. |
 | `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -125,6 +125,7 @@ A létrehozási események esetében a hasznos adatok az erőforrás létrehozá
 ```json
 {
   "$dtId": "device-digitaltwin-01",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "thermostat": {
     "temperature": 80,
     "humidity": 45,
@@ -157,6 +158,7 @@ A létrehozási események esetében a hasznos adatok az erőforrás létrehozá
 ```json
 {
   "$dtId": "logical-digitaltwin-01",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "avgTemperature": 70,
   "comfortIndex": 85,
   "$metadata": {
@@ -187,7 +189,7 @@ A **kapcsolat változásával kapcsolatos értesítések** akkor aktiválódnak,
 
 Itt láthatók az Edge Change-értesítések törzsének mezői.
 
-| Name    | Érték |
+| Név    | Érték |
 | --- | --- |
 | `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id`egyedi a különböző eseményekhez |
 | `source` | Az Azure Digital Twins-példány neve, például *mydigitaltwins.westus2.azuredigitaltwins.net* |
@@ -243,7 +245,7 @@ A digitális **kettős változásokról szóló értesítéseket** a rendszer ak
 
 Itt láthatók a digitális kettős változásokról szóló értesítés törzsének mezői.
 
-| Name    | Érték |
+| Név    | Érték |
 | --- | --- |
 | `id` | Az értesítés azonosítója, például egy UUID vagy a szolgáltatás által karbantartott számláló. `source` + `id`egyedi a különböző eseményekhez |
 | `source` | Az IoT hub vagy az Azure Digital Twins-példány neve, például *myhub.Azure-Devices.net* vagy *mydigitaltwins.westus2.azuredigitaltwins.net*

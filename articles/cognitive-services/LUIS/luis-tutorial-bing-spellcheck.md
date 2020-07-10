@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 98f35d0b3f37a7bb181f83b83a48ef113e02f1e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: ee0c659cf510eb0a438ae0c78a554c98dccffa89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344135"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144275"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Helytelenül írt szavak kijavítása Bing Spell Check
 
@@ -24,17 +24,9 @@ A Luis-alkalmazást [Bing Spell Check API v7](https://azure.microsoft.com/servic
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-
-## <a name="create-first-key-for-bing-spell-check-v7"></a>Bing Spell Check v7 első kulcsának létrehozása
-
-Az [első Bing Spell Check API v7-kulcs](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) ingyenes.
-
-![Szabad kulcs létrehozása](./media/luis-tutorial-bing-spellcheck/free-key.png)
-
-<a name="create-subscription-key"></a>
-
 ## <a name="create-endpoint-key"></a>Végponti kulcs létrehozása
-Ha az ingyenes kulcs lejárt, hozzon létre egy végponti kulcsot.
+
+Ha Bing Spell Check erőforrást szeretne létrehozni a Azure Portalban, kövesse az alábbi utasításokat:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 

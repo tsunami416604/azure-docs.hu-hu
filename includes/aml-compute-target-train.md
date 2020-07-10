@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: machine-learning
 author: sdgilley
 ms.service: machine-learning
@@ -26,5 +26,5 @@ A **számítási célok az egyik betanítási feladatokból a következőre hasz
 |[Távoli virtuális gép](../articles/machine-learning/how-to-set-up-training-targets.md#vm) | igen & <br/>hiperparaméter finomhangolása | igen | &nbsp; |
 |[Azure- &nbsp; Databricks](../articles/machine-learning/how-to-create-your-first-pipeline.md#databricks)| Igen (csak SDK helyi mód) | igen | &nbsp; |
 |[Azure Data Lake Analytics](../articles/machine-learning/how-to-create-your-first-pipeline.md#adla) | &nbsp; | igen | &nbsp; |
-|[Azure-HDInsight](../articles/machine-learning/how-to-set-up-training-targets.md#hdinsight) | &nbsp; | igen | &nbsp; |
+|[Azure HDInsight](../articles/machine-learning/how-to-set-up-training-targets.md#hdinsight) | &nbsp; | igen | &nbsp; |
 |[Azure Batch](../articles/machine-learning/how-to-set-up-training-targets.md#azbatch) | &nbsp; | igen | &nbsp; |

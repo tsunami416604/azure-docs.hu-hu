@@ -3,16 +3,16 @@ title: Ismerkedés az Azure Enterprise portállal
 description: Ez a cikk azt ismerteti, hogyan használják az Azure Nagyvállalati Szerződéssel (Azure EA) rendelkező ügyfelek az Azure Enterprise portált.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/29/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 6b31f3cd8ca6baa2d20d0281de51ed83424eca17
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 2d4fbf90afa93f3dbde12a3bc5ce02f9a60b6c5d
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85560364"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044957"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Ismerkedés az Azure Enterprise portállal
 
@@ -372,7 +372,7 @@ Ha az Ön Nagyvállalati Szerződése nem rendelkezik támogatási előfizetéss
 
 ## <a name="view-usage-summary-and-download-reports"></a>Használati adatok összegzésének megtekintése és jelentések letöltése
 
-A vállalati rendszergazdák az Azure Enterprise portálon megtekinthetik a használati adataik összegzését, a felhasznált pénzügyi keretet, valamint a többlethasználattal kapcsolatos díjakat. A díjak minden fióknál és előfizetésnél az összegzés szintjén jelennek meg.
+A vállalati rendszergazdák az Azure Enterprise portálon megtekinthetik a használati adataik összegzését, a felhasznált Azure-előrefizetési keretet, valamint a többlethasználattal kapcsolatos díjakat. A díjak minden fióknál és előfizetésnél az összegzés szintjén jelennek meg.
 
 Az egyes fiókok részletes használati adatainak megtekintéséhez töltse le a használati adatokról szóló jelentést:
 
@@ -390,7 +390,7 @@ A használati adatokat összegző jelentések és ábrák megtekintése:
 
 1. Jelentkezzen be az Azure Enterprise portálra.
 
-1. Válasszon ki egy pénzügyikeret-időtartamot.
+1. Válasszon ki egy előrefizetési időszakot.
 
    Váltson az **M** (Havi) és a **C** (Egyéni) módok között az oldal jobb felső részén, hogy módosítsa a **Használati adatok összegzésének** dátumtartományát, majd adjon meg egyéni kezdő és záró dátumokat.
 
@@ -455,7 +455,7 @@ Az Azure Enterprise portál kiszűri az inaktív regisztrációkat. Az inaktív 
 - **Fiók**: Az Azure Enterprise portálon található szervezeti egység. Az előfizetések felügyeletére, valamint jelentéskészítésre szolgál.
 - **Fióktulajdonos**: Az Azure-ban az előfizetések és a szolgáltatásadminisztrátorok kezeléséhez azonosított személy. Megtekinthetik ezen fiók és a társított előfizetéseinek használati adatait.
 - **Módosítási előfizetés**: A regisztrációs módosítás alá eső egy egyéves vagy egybeeső előfizetés.
-- **Kötelezettségvállalás**: Az Azure-szolgáltatásokra kedvezményes kötelezettségvállalási díjszabással fizetett éves pénzügyi összeg kötelezettségvállalása az előrefizetéssel való használathoz.
+- **Előrefizetés**: Az Azure-szolgáltatásokra kedvezményes előrefizetési díjszabással fizetett éves pénzügyi összeg előrefizetése az előrefizetéssel való használathoz.
 - **Részlegszintű rendszergazda**: A részlegek kezelésére, új fiókok és fióktulajdonosok létrehozására, az általuk kezelt részlegek használati adatainak megtekintésére és megadott engedélyek esetén a költségek megtekintésére jogosult személy.
 - **Regisztrációs szám**: A Microsoft által a Nagyvállalati Szerződéshez társított adott regisztráció azonosítására megadott egyedi azonosító.
 - **Vállalati rendszergazda**: Az Azure-on a részlegek, részlegtulajdonosok, fiókok és fióktulajdonosok kezelésére jogosult személy. Képesek kezelni a vállalati rendszergazdákat, valamint megtekinthetik a használati adatokat, a számlázott mennyiségeket és a nem számlázott díjakat a nagyvállalati regisztrációhoz társított összes fiókra és előfizetésre vonatkozóan.
@@ -478,7 +478,7 @@ Az Azure Enterprise portál kiszűri az inaktív regisztrációkat. Az inaktív 
 
    Mielőtt az Azure EA-regisztráció elérné a Nagyvállalati Szerződés záró dátumát, a regisztrációs rendszergazdának el kell döntenie, hogy az alábbi lehetőségek melyikével szeretne élni:
 
-  - Megújítja a regisztrációt további pénzügyi keret hozzáadásával.
+  - Megújítja a regisztrációt további Azure-előrefizetés hozzáadásával.
   - Áttér egy új regisztrációba.
   - Migrálást végez a Microsoft Online Előfizetési Programba (MOSP).
   - Jóváhagyja a regisztrációhoz társított szolgáltatások letiltását.

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
-ms.openlocfilehash: fd70fe14d3765fb7c21b92f62b4d73564176baa2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b9e6561c1ed9870b669ec5e9825a376f8bd03c4d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201187"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145708"
 ---
 # <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Adatok kinyerése az Excelben a Text Analytics és a Power automatizálás használatával 
 
@@ -33,7 +33,7 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Microsoft Azure-fiók. [Kezdjen egy ingyenes próbaidőszakot](https://azure.microsoft.com/free/), vagy [jelentkezzen be](https://portal.azure.com/).
+- Egy Microsoft Azure-fiók. [Hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/) , vagy [Jelentkezzen be](https://portal.azure.com/).
 - Egy Text Analytics erőforrás. Ha még nem rendelkezik ilyennel, [létrehozhat egyet a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) , és az oktatóanyag elvégzéséhez használhatja az ingyenes szintet is.
 - A regisztráció során létrehozott [kulcs és végpont](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 - Bérlői problémákat tartalmazó táblázat. Példa a GitHubon tárolt információkra
@@ -61,7 +61,7 @@ Az **ütemezett folyamat összeállítása** lapon inicializálja a folyamatot a
 |Mező |Érték  |
 |---------|---------|
 |**Folyamat neve**     | **Ütemezett felülvizsgálat** vagy más név.         |
-|**Indítása**     |  Adja meg az aktuális dátumot és időpontot.       |
+|**Indítás**     |  Adja meg az aktuális dátumot és időpontot.       |
 |**Ismétlés**     | **1 óra**        |
 
 ## <a name="add-variables-to-the-flow"></a>Változók hozzáadása a folyamathoz
@@ -76,7 +76,7 @@ Az Excel-fájlba felvenni kívánt adatokat jelölő változók létrehozása. K
 
 Adja hozzá a következő adatokat a létrehozott változókhoz. Ők képviselik az Excel-fájl oszlopait. Ha a változók összecsukva vannak, a rájuk kattintva kibonthatja őket.
 
-| Műveletek |Name (Név)   | Típus | Érték |
+| Művelet |Név   | Típus | Érték |
 |---------|---------|---|---|
 | Változó inicializálása | var_person | Sztring | Személy |
 | 2. változó inicializálása | var_phone | Sztring | Phone_Number |
@@ -137,7 +137,7 @@ A létrehozást követően keresse meg **text Analytics** és válassza az **ent
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz.":::
 
-Kattintson a **szövegmezőbe** , és válassza ki a megjelenő dinamikus tartalom ablak **Leírás** elemét. Adja `en` meg a nyelvet. (Kattintson a speciális beállítások megjelenítése elemre, ha nem látja a nyelvet)
+Kattintson a **szövegmezőbe** , és válassza ki a megjelenő dinamikus tartalom ablak **Leírás** elemét. Adja meg `en` a nyelvet. (Kattintson a speciális beállítások megjelenítése elemre, ha nem látja a nyelvet)
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz.":::
@@ -160,7 +160,7 @@ A feltétel ablakban kattintson az első szövegmezőre. A dinamikus tartalom ab
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz.":::
 
-Győződjön meg arról, hogy a második mező értéke **egyenlő**. Ezután válassza ki a harmadik mezőt, és keresse `var_person` meg a dinamikus tartalom ablakban. 
+Győződjön meg arról, hogy a második mező értéke **egyenlő**. Ezután válassza ki a harmadik mezőt, és keresse meg a `var_person` dinamikus tartalom ablakban. 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz.":::
@@ -182,7 +182,7 @@ A név gombra kattintva csökkentse a **két művelet hatókörét** . Ezután a
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz.":::
 
-A **3. hatókörön**belül adjon hozzá egy **feltétel** vezérlőelemet. Neve **2. feltételnek**számít. Az első szövegmezőben keresse meg és adja hozzá az **entitások típusát** a dinamikus tartalom ablakból. Győződjön meg arról, hogy a középső mező értéke **egyenlő**. Ezután a jobb oldali szövegmezőbe írja be `var_phone`a szöveget. 
+A **3. hatókörön**belül adjon hozzá egy **feltétel** vezérlőelemet. Neve **2. feltételnek**számít. Az első szövegmezőben keresse meg és adja hozzá az **entitások típusát** a dinamikus tartalom ablakból. Győződjön meg arról, hogy a középső mező értéke **egyenlő**. Ezután a jobb oldali szövegmezőbe írja be a szöveget `var_phone` . 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz.":::
@@ -203,15 +203,15 @@ A név elemre kattintva csökkentse a **3** . Ezután hozzon **létre egy másik
 
 Ezután a folyamat azt vizsgálja, hogy az Excel-táblázatból származó probléma leírása tartalmazza-e a "plumbing" szót. Ha igen, a IssueType oszlopban a "plumbing" értéket fogja hozzáadni. Ha nem, akkor a "másik" értéket adjuk meg.
 
-Az **alkalmazás minden 4** műveleten belül adjon hozzá egy **feltétel** vezérlőelemet. Neve **3. feltétel**. Az első szövegmezőben keresse meg és adja hozzá a **leírást** az Excel-fájlból a dinamikus tartalom ablak használatával. Győződjön meg arról, hogy a Center Box azt **tartalmazza**. Ezután a jobb oldali szövegmezőben keresse meg és válassza ki `var_plumbing`a elemet. 
+Az **alkalmazás minden 4** műveleten belül adjon hozzá egy **feltétel** vezérlőelemet. Neve **3. feltétel**. Az első szövegmezőben keresse meg és adja hozzá a **leírást** az Excel-fájlból a dinamikus tartalom ablak használatával. Győződjön meg arról, hogy a Center Box azt **tartalmazza**. Ezután a jobb oldali szövegmezőben keresse meg és válassza ki a elemet `var_plumbing` . 
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz.":::
 
 
-A **Ha igen** állapotban kattintson a **művelet hozzáadása**lehetőségre, majd válassza **a sor frissítése**lehetőséget. Ezután adja meg a korábban megjelenő adatokat. A IssueType oszlopban válassza a elemet `var_plumbing`. Ez egy "plumbing" címkét fog alkalmazni a sorban.
+A **Ha igen** állapotban kattintson a **művelet hozzáadása**lehetőségre, majd válassza **a sor frissítése**lehetőséget. Ezután adja meg a korábban megjelenő adatokat. A IssueType oszlopban válassza a elemet `var_plumbing` . Ez egy "plumbing" címkét fog alkalmazni a sorban.
 
-A **Ha nincs** feltételben kattintson a **művelet hozzáadása**lehetőségre, majd válassza **a sor frissítése**lehetőséget. Ezután adja meg a korábban megjelenő adatokat. A IssueType oszlopban válassza a elemet `var_other`. Ez egy "másik" címkét fog alkalmazni a sorra.
+A **Ha nincs** feltételben kattintson a **művelet hozzáadása**lehetőségre, majd válassza **a sor frissítése**lehetőséget. Ezután adja meg a korábban megjelenő adatokat. A IssueType oszlopban válassza a elemet `var_other` . Ez egy "másik" címkét fog alkalmazni a sorra.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Text Analytics hitelesítő adatok hozzáadása a folyamathoz.":::

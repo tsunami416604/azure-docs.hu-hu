@@ -4,19 +4,19 @@ description: Ismerje meg a felhasználói fiókok típusait és azok konfigurál
 ms.topic: how-to
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 514a104c879a8d601bb03e2ed1c59b69516bc621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209725"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142687"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Feladatok futtatása a Batch felhasználói fiókjai alatt
 
 > [!NOTE]
 > A cikkben tárgyalt felhasználói fiókok nem egyeznek meg a biztonsági okokból a RDP protokoll (RDP) vagy a Secure Shell (SSH) esetében használt felhasználói fiókokkal.
 >
-> Ha SSH-n keresztül szeretne csatlakozni egy linuxos virtuálisgép-konfigurációt futtató csomóponthoz, tekintse meg a Távoli asztal használata Linux rendszerű virtuális gépre [Az Azure-ban](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)című témakört. Ha RDP-n keresztül szeretne csatlakozni a Windows-csomópontokhoz, tekintse meg [a Kapcsolódás Windows Server rendszerű virtuális géphez](../virtual-machines/windows/connect-logon.md)című témakört.<br /><br />
+> Ha SSH-n keresztül szeretne csatlakozni egy linuxos virtuálisgép-konfigurációt futtató csomóponthoz, tekintse meg a Távoli asztal használata Linux rendszerű virtuális gépre [Az Azure-ban](../virtual-machines/linux/use-remote-desktop.md)című témakört. Ha RDP-n keresztül szeretne csatlakozni a Windows-csomópontokhoz, tekintse meg [a Kapcsolódás Windows Server rendszerű virtuális géphez](../virtual-machines/windows/connect-logon.md)című témakört.<br /><br />
 > Ha a felhőalapú szolgáltatás konfigurációját RDP protokollon keresztül futtató csomóponthoz szeretne csatlakozni, tekintse meg a [Távoli asztali kapcsolat engedélyezése az Cloud Services Azure-beli szerepkörökhöz](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)című témakört.
 
 Egy feladat Azure Batch mindig egy felhasználói fiók alatt fut. Alapértelmezés szerint a feladatok a normál felhasználói fiókok alatt, rendszergazdai jogosultságok nélkül futnak. Bizonyos esetekben előfordulhat, hogy konfigurálni szeretné azt a felhasználói fiókot, amelyben a feladatot futtatni kívánja. Ez a cikk a felhasználói fiókok típusait és a forgatókönyvhöz való konfigurálását ismerteti.

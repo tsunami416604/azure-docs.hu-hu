@@ -3,12 +3,12 @@ title: Azure Batch készlet létrehozási eseménye
 description: A Batch-készlet létrehozási eseményének hivatkozása, amely a készlet létrehozása után lett kibocsátva. A napló tartalma a készlet általános információit fogja közzétenni.
 ms.topic: reference
 ms.date: 04/20/2017
-ms.openlocfilehash: d8e4537e0074b7af1e65ea5f13a9668483abc45e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: eee512bbeed223269c43bde77435fbff2b67b533
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962492"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147327"
 ---
 # <a name="pool-create-event"></a>Készlet létrehozása esemény
 
@@ -49,11 +49,11 @@ ms.locfileid: "85962492"
 }
 ```
 
-|Elem|Típus|Jegyzetek|
+|Elem|Típus|Megjegyzések|
 |-------------|----------|-----------|
 |`id`|Sztring|A készlet azonosítója.|
 |`displayName`|Sztring|A készlet megjelenítendő neve.|
-|`vmSize`|Sztring|A készletben lévő virtuális gépek mérete. A készletben lévő összes virtuális gép mérete azonos. <br/><br/> További információ a Cloud Services készletekhez (cloudServiceConfiguration létrehozott készletek) elérhető virtuális gépek rendelkezésre álló méretéről: [Cloud Services méretei](../cloud-services/cloud-services-sizes-specs.md). A Batch az összes Cloud Services VM-méretet támogatja, a kivételével `ExtraSmall` .<br/><br/> További információ a Virtual Machines piactérről származó rendszerképeket használó készletek számára elérhető virtuálisgép-méretekről (virtualMachineConfiguration létrehozott készletek) a [Virtual Machines](/azure/virtual-machines/linux/sizes?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) (Linux) vagy a Virtual Machines (Windows) [méreteit](/azure/virtual-machines/windows/sizes?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) ismertető témakörben talál. A Batch a `STANDARD_A0`, illetve a Premium Storage típusú méretek (`STANDARD_GS`, `STANDARD_DS` és `STANDARD_DSV2` sorozat) kivételével az összes Azure virtuálisgép-méretet támogatja.|
+|`vmSize`|Sztring|A készletben lévő virtuális gépek mérete. A készletben lévő összes virtuális gép mérete azonos. <br/><br/> További információ a Cloud Services készletekhez (cloudServiceConfiguration létrehozott készletek) elérhető virtuális gépek rendelkezésre álló méretéről: [Cloud Services méretei](../cloud-services/cloud-services-sizes-specs.md). A Batch az összes Cloud Services VM-méretet támogatja, a kivételével `ExtraSmall` .<br/><br/> További információ a Virtual Machines piactérről származó rendszerképeket használó készletek számára elérhető virtuálisgép-méretekről (virtualMachineConfiguration létrehozott készletek) a [Virtual Machines](../virtual-machines/linux/sizes.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json) (Linux) vagy a Virtual Machines (Windows) [méreteit](../virtual-machines/windows/sizes.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) ismertető témakörben talál. A Batch a `STANDARD_A0`, illetve a Premium Storage típusú méretek (`STANDARD_GS`, `STANDARD_DS` és `STANDARD_DSV2` sorozat) kivételével az összes Azure virtuálisgép-méretet támogatja.|
 |`imageType`|Sztring|A rendszerkép központi telepítési módszere. A támogatott értékek a következők, `virtualMachineConfiguration` vagy`cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|Összetett típus|A készlet Cloud Service-konfigurációja.|
 |[`virtualMachineConfiguration`](#bk_vmconf)|Összetett típus|A készlet virtuálisgép-konfigurációja.|
@@ -69,14 +69,14 @@ ms.locfileid: "85962492"
 
 ###  <a name="cloudserviceconfiguration"></a><a name="bk_csconf"></a>cloudServiceConfiguration
 
-|Elem neve|Típus|Jegyzetek|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |`osFamily`|Sztring|A készletben lévő virtuális gépekre telepítendő Azure vendég operációsrendszer-család.<br /><br /> Lehetséges értékek:<br /><br /> **2** – operációsrendszer-család 2, a Windows Server 2008 R2 SP1-gyel egyenértékű.<br /><br /> **3** – operációsrendszer-család 3, a Windows Server 2012-rel egyenértékű.<br /><br /> **4** – operációsrendszer-család 4, a Windows Server 2012 R2-vel egyenértékű.<br /><br /> További információ: [Azure vendég operációs rendszer kiadásai](../cloud-services/cloud-services-guestos-update-matrix.md#releases).|
 |`targetOSVersion`|Sztring|A készletben lévő virtuális gépekre telepítendő Azure vendég operációs rendszer verziója.<br /><br /> Az alapértelmezett érték az, **\*** amely az operációs rendszer legújabb verzióját adja meg a megadott családhoz.<br /><br /> Más megengedett értékekért lásd: az [Azure vendég operációs rendszer kiadásai](../cloud-services/cloud-services-guestos-update-matrix.md#releases).|
 
 ###  <a name="virtualmachineconfiguration"></a><a name="bk_vmconf"></a>virtualMachineConfiguration
 
-|Elem neve|Típus|Jegyzetek|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |[`imageReference`](#bk_imgref)|Összetett típus|A használni kívánt platform vagy Marketplace-rendszerkép adatait adja meg.|
 |`nodeAgentId`|Sztring|A számítási csomóponton kiépített batch-csomóponti ügynök SKU-a.|
@@ -84,7 +84,7 @@ ms.locfileid: "85962492"
 
 ###  <a name="imagereference"></a><a name="bk_imgref"></a>imageReference
 
-|Elem neve|Típus|Jegyzetek|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |`publisher`|Sztring|A rendszerkép közzétevője.|
 |`offer`|Sztring|A rendszerkép ajánlata.|
@@ -93,12 +93,12 @@ ms.locfileid: "85962492"
 
 ###  <a name="windowsconfiguration"></a><a name="bk_winconf"></a>windowsConfiguration
 
-|Elem neve|Típus|Jegyzetek|
+|Elem neve|Típus|Megjegyzések|
 |------------------|----------|-----------|
 |`enableAutomaticUpdates`|Logikai|Azt jelzi, hogy a virtuális gép engedélyezve van-e az automatikus frissítésekhez. Ha ez a tulajdonság nincs megadva, az alapértelmezett érték TRUE (igaz).|
 
 ###  <a name="networkconfiguration"></a><a name="bk_netconf"></a>networkConfiguration
 
-|Elem neve|Típus|Jegyzetek|
+|Elem neve|Típus|Megjegyzések|
 |------------------|--------------|----------|
 |`subnetId`|Sztring|Meghatározza annak az alhálózatnak az erőforrás-azonosítóját, amelyben a készlet számítási csomópontjait létrehozták.|

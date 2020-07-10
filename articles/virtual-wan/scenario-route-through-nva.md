@@ -8,16 +8,22 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0716ca8f0457ca801098c97dd7a5e68751822d4d
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: ed64b9d281cfbbf8202a99335ea2759b27a6fc42
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848091"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142970"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>Forgatókönyv: forgalom irányítása NVA keresztül
 
 A virtuális WAN virtuális hub útválasztásával kapcsolatban igen sok lehetőség áll rendelkezésre. Ebben a NVA-forgatókönyvben a cél az, hogy átirányítsa a forgalmat egy NVA (hálózati virtuális készüléken) a VNet és a VNet ágat. További információ a virtuális központ útválasztásáról: [Tudnivalók a virtuális központ útválasztásáról](about-virtual-hub-routing.md).
+
+> [!NOTE]
+> Az útválasztási funkciók némelyike továbbra is kivezethető. Ha a bevezetés még nem történt meg a régióban, akkor a cikkek ezen verzióiban található lépéseket a következő időpontokban használhatja:
+>* [Azure Portal cikk](virtual-wan-route-table-nva-portal.md)
+>* [PowerShell-cikk](virtual-wan-route-table-nva.md)
+>
 
 ## <a name="scenario-architecture"></a><a name="architecture"></a>Forgatókönyv-architektúra
 

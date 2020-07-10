@@ -4,17 +4,17 @@ description: Azure Batch fiók-erőforrások létrehozása, törlése és módos
 ms.topic: how-to
 ms.date: 04/24/2017
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 1e372ebca9edf1fcbd72edd4f070ba26f87e9e67
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1684a177f139a3acff8a4957c0c1e89f46d8848d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961625"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145031"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Batch-fiókok és kvóták kezelése a Batch Management ügyféloldali kódtáraval a .NET-hez
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](batch-account-create-portal.md)
+> * [Azure Portal](batch-account-create-portal.md)
 > * [Batch Management .NET](batch-management-dotnet.md)
 > 
 > 
@@ -165,7 +165,7 @@ A minta alkalmazás sikeres futtatásához először regisztrálnia kell a Azure
 
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Mi az Azure Active Directory?"
-[aad_adal]: ../active-directory/active-directory-authentication-libraries.md
+[aad_adal]: ../active-directory/azuread-dev/active-directory-authentication-libraries.md
 [aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Hitelesítési forgatókönyvek az Azure AD-hez"
 [aad_integrate]:../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md "Alkalmazások integrálása a Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement

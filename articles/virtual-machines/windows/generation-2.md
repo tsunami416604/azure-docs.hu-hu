@@ -8,11 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 9c16cd4143bc07bf5f3b1d00b890dc54bd5ea318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fef582048d1e1093a4a4d69229185e8a3d8dc229
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659876"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144862"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2. generációs virtuális gépek támogatása az Azure-ban
 
@@ -109,7 +110,7 @@ Az alábbi lépéseket követve hozhat létre 2. generációs (Gen2) virtuális 
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
 1. Kattintson az **összes** megjelenítése lehetőségre a bal oldalon található Azure piactéren.
 1. Válasszon olyan képet, amely támogatja a Gen2.
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Létrehozás** elemre.
 1. A **speciális** lapon, a **virtuális gép létrehozása** szakaszban válassza a 2. **generációs** lehetőséget.
 1. Az **alapvető beállítások** lap **példány részletei**területén válassza a **méret** elemet, és nyissa meg a **virtuális gép méretének kiválasztása panelt** .
 1. Válasszon egy [támogatott 2. generációs virtuális gépet](#generation-2-vm-sizes).
@@ -191,6 +192,9 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
 * **A 2. generációs virtuális gépek támogatják a gyorsított hálózatkezelést?**  
     Igen. További információ: [virtuális gép létrehozása gyorsított hálózatkezeléssel](../../virtual-network/create-vm-accelerated-networking-cli.md).
 
+* **A 2. generációs virtuális gépek támogatják a biztonságos rendszerindítást vagy vTPM az Azure-ban?**
+    Az 1. és a 2. generációs virtuális gépek az Azure-ban nem támogatják a biztonságos rendszerindítást vagy vTPM. 
+    
 * **A VHDX támogatott a 2. generáción?**  
     Nem, a 2. generációs virtuális gépek csak VHD-t támogatnak.
 

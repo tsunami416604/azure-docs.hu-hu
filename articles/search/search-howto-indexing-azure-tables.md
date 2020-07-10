@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0a711b9239e1a76774d8e75f035e6c862218c82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6670966b4cf74510df5dd26c994e0c53b219ba9
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563130"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145254"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Táblázatok indexelése az Azure Table Storage-ból az Azure Cognitive Search
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan használható az Azure Cognitive Search az Azure Tab
 
 Az alábbi erőforrásokkal állíthatja be az Azure Table Storage indexelő szolgáltatását:
 
-* [Azure Portalra](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Cognitive Search [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
@@ -49,6 +49,7 @@ A tábla indexeléséhez az adatforrásnak a következő tulajdonságokkal kell 
 
 Adatforrás létrehozása:
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -59,6 +60,7 @@ Adatforrás létrehozása:
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-table", "query" : "PartitionKey eq '123'" }
     }   
+```
 
 További információ a Create DataSource API-ról: [adatforrás létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
 
@@ -81,6 +83,7 @@ Az index határozza meg a dokumentum, az attribútumok és a keresési élményt
 
 Index létrehozása:
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -92,6 +95,7 @@ Index létrehozása:
             { "name": "SomeColumnInMyTable", "type": "Edm.String", "searchable": true }
           ]
     }
+```
 
 Az indexek létrehozásával kapcsolatos további információkért lásd: [create index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
@@ -100,6 +104,7 @@ Az indexelő Összekapcsol egy adatforrást a cél keresési indexszel, és az A
 
 Az index és az adatforrás létrehozása után készen áll az indexelő létrehozására:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -110,6 +115,7 @@ Az index és az adatforrás létrehozása után készen áll az indexelő létre
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Ez az indexelő két óránként fut. (Az ütemezett időköz értéke "PT2H".) Az indexelő 30 percenkénti futtatásához állítsa az intervallumot "PT30M" értékre. A legrövidebb támogatott időköz öt perc. Az ütemterv nem kötelező; Ha nincs megadva, az indexelő csak egyszer fut a létrehozásakor. Az Indexelő szolgáltatást azonban bármikor futtathatja igény szerint.   
 
@@ -135,6 +141,7 @@ Ha úgy állítja be a tábla-indexelő, hogy az ütemterv szerint fusson, akkor
 
 Ha azt szeretné jelezni, hogy bizonyos dokumentumokat el kell távolítani az indexből, használhat Soft delete stratégiát. Egy sor törlése helyett adjon hozzá egy tulajdonságot, amely jelzi, hogy törölve lett, és állítson be egy törlési észlelési házirendet az adatforráshoz. Az alábbi házirend például azt veszi figyelembe, hogy a sor törölve lett, ha a sor tulajdonsága a következő `IsDeleted` értékkel rendelkezik `"true"` :
 
+```http
     PUT https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -146,6 +153,7 @@ Ha azt szeretné jelezni, hogy bizonyos dokumentumokat el kell távolítani az i
         "container" : { "name" : "table name", "query" : "<query>" },
         "dataDeletionDetectionPolicy" : { "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", "softDeleteColumnName" : "IsDeleted", "softDeleteMarkerValue" : "true" }
     }   
+```
 
 <a name="Performance"></a>
 ## <a name="performance-considerations"></a>A teljesítménnyel kapcsolatos megfontolások

@@ -9,11 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: tracking-python
-ms.openlocfilehash: f5ff33d021f27f2c5dfb86ca87f2579602f0d1cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07708de1326e0aba6485b2cf1fb0610d9710cdf7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559153"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142469"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A Python használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
@@ -93,11 +94,11 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 > [!NOTE]
 > További példákért tekintse meg az [Azure Identity ügyféloldali kódtárat a Python](https://pypi.org/project/azure-identity/) dokumentációjában.
 
-## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
+## <a name="create-a-container"></a>Tároló létrehozása
 
-A fájlrendszer tárolóként működik a fájlok számára. Létrehozhat egyet a **FileSystemDataLakeServiceClient. create_file_system** metódus meghívásával.
+A tároló fájlrendszerként működik a fájlok számára. Létrehozhat egyet a **FileSystemDataLakeServiceClient. create_file_system** metódus meghívásával.
 
-Ez a példa egy nevű fájlrendszert hoz létre `my-file-system` .
+Ez a példa egy nevű tárolót hoz létre `my-file-system` .
 
 ```python
 def create_file_system():
@@ -115,7 +116,7 @@ def create_file_system():
 
 Hozzon létre egy címtár-referenciát a **FileSystemClient. create_directory** metódus meghívásával.
 
-Ez a példa egy nevű könyvtárat helyez `my-directory` el egy fájlrendszerhez. 
+Ez a példa egy nevű könyvtárat helyez `my-directory` el egy tárolóhoz. 
 
 ```python
 def create_directory():

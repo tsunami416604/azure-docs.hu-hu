@@ -9,17 +9,18 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 8fdcad18ccec2748761cf35f2cd0b8efe9749958
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159f3c63a647ff565e838b01dbaaadf947fb8ada
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466136"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142628"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Könyvtárak, fájlok és ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2
 
 Ez a cikk bemutatja, hogyan hozhat létre és kezelhet olyan könyvtárakat, fájlokat és engedélyeket a Storage-fiókokban, amelyek hierarchikus névteret használnak az [Azure parancssori felületének (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) használatával. 
 
-[Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)  |  [Visszajelzés küldése](https://github.com/Azure/azure-cli-extensions/issues)
+[Példák](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)  |  [Visszajelzés küldése](https://github.com/Azure/azure-cli-extensions/issues)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -64,39 +65,39 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelhet olyan könyvtárakat, fá
 > [!NOTE]
 > A cikkben bemutatott példa Azure Active Directory (AD) engedélyezését mutatja. További információ az engedélyezési módszerekről: a [blob-vagy üzenetsor-hozzáférés engedélyezése az Azure CLI-vel](../common/authorize-data-operations-cli.md).
 
-## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
+## <a name="create-a-container"></a>Tároló létrehozása
 
-A fájlrendszer tárolóként működik a fájlok számára. A parancs használatával létrehozhat egyet `az storage fs create` . 
+A tároló fájlrendszerként működik a fájlok számára. A parancs használatával létrehozhat egyet `az storage fs create` . 
 
-Ez a példa egy nevű fájlrendszert hoz létre `my-file-system` .
+Ez a példa egy nevű tárolót hoz létre `my-file-system` .
 
 ```azurecli
 az storage fs create -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="show-file-system-properties"></a>Fájlrendszer tulajdonságainak megjelenítése
+## <a name="show-container-properties"></a>Tároló tulajdonságainak megjelenítése
 
-A parancs használatával kinyomtathatja a fájlrendszer tulajdonságait a konzolra `az storage fs show` .
+A tároló tulajdonságait kinyomtathatja a konzolra a `az storage fs show` parancs használatával.
 
 ```azurecli
 az storage fs show -n my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="list-file-system-contents"></a>A fájlrendszer tartalmának listázása
+## <a name="list-container-contents"></a>Tároló tartalmának listázása
 
 Egy könyvtár tartalmának listázása a parancs használatával `az storage fs file list` .
 
-Ez a példa egy nevű fájlrendszer tartalmát sorolja fel `my-file-system` .
+Ez a példa egy nevű tároló tartalmát sorolja fel `my-file-system` .
 
 ```azurecli
 az storage fs file list -f my-file-system --account-name mystorageaccount --auth-mode login
 ```
 
-## <a name="delete-a-file-system"></a>Fájlrendszer törlése
+## <a name="delete-a-container"></a>Tároló törlése
 
-Törölje a fájlrendszert a parancs használatával `az storage fs delete` .
+Törölje a tárolót a `az storage fs delete` parancs használatával.
 
-Ez a példa egy nevű fájlrendszert töröl `my-file-system` . 
+Ez a példa törli a nevű tárolót `my-file-system` . 
 
 ```azurecli
 az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mode login
@@ -106,7 +107,7 @@ az storage fs delete -n my-file-system --account-name mystorageaccount --auth-mo
 
 Hozzon létre egy címtár-referenciát a `az storage fs directory create` parancs használatával. 
 
-Ez a példa egy nevű könyvtárat vesz `my-directory` fel egy nevű fájlrendszerbe, `my-file-system` amely egy nevű fiókban található `mystorageaccount` .
+Ez a példa egy nevű könyvtárat vesz `my-directory` fel egy nevű tárolóba, `my-file-system` amely egy nevű fiókban található `mystorageaccount` .
 
 ```azurecli
 az storage fs directory create -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login
@@ -124,13 +125,13 @@ az storage fs directory show -n my-directory -f my-file-system --account-name my
 
 Nevezze át vagy helyezze át a könyvtárat a `az storage fs directory move` parancs használatával.
 
-Ez a példa átnevez egy könyvtárat a névben az `my-directory` `my-new-directory` azonos fájlrendszerben található névre.
+Ez a példa átnevez egy könyvtárat a nevéből a `my-directory` `my-new-directory` tárolóban található névre.
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
 ```
 
-Ez a példa egy könyvtárat helyez át egy nevű fájlrendszerbe `my-second-file-system` .
+Ez a példa egy könyvtárat helyez át egy nevű tárolóba `my-second-file-system` .
 
 ```azurecli
 az storage fs directory move -n my-directory -f my-file-system --new-directory "my-second-file-system/my-new-directory" --account-name mystorageaccount --auth-mode login
@@ -148,9 +149,9 @@ az storage fs directory delete -n my-directory -f my-file-system  --account-name
 
 ## <a name="check-if-a-directory-exists"></a>Annak ellenőrzése, hogy létezik-e könyvtár
 
-Annak megállapítása, hogy egy adott könyvtár létezik-e a fájlrendszerben a `az storage fs directory exists` parancs használatával.
+Annak megállapítása, hogy egy adott könyvtár létezik-e a tárolóban a `az storage fs directory exists` parancs használatával.
 
-Ez a példa azt mutatja, hogy létezik-e egy nevű könyvtár `my-directory` a `my-file-system` fájlrendszerben. 
+Ez a példa azt mutatja, hogy létezik-e egy nevű könyvtár `my-directory` a `my-file-system` tárolóban. 
 
 ```azurecli
 az storage fs directory exists -n my-directory -f my-file-system --account-name mystorageaccount --auth-mode login 
@@ -170,7 +171,7 @@ az storage fs file download -p my-directory/upload.txt -f my-file-system -d "C:\
 
 Egy könyvtár tartalmának listázása a parancs használatával `az storage fs file list` .
 
-Ez a példa egy nevű könyvtár tartalmát sorolja fel, `my-directory` amely egy `my-file-system` nevű Storage-fiók fájlrendszerében található `mystorageaccount` . 
+Ez a példa egy nevű könyvtár tartalmát sorolja fel, `my-directory` amely `my-file-system` egy nevű Storage-fiók tárolójában található `mystorageaccount` . 
 
 ```azurecli
 az storage fs file list -f my-file-system --path my-directory --account-name mystorageaccount --auth-mode login
@@ -309,7 +310,7 @@ az storage fs access set --owner xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my-dir
 
 ## <a name="see-also"></a>Lásd még
 
-* [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)
+* [Példák](https://github.com/Azure/azure-cli/blob/dev/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 * [Visszajelzés küldése](https://github.com/Azure/azure-cli-extensions/issues)
 * [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 

@@ -3,16 +3,16 @@ title: Azure nagyvállalati regisztrációs számlák
 description: Ez a cikk az Azure Nagyvállalati számlák kezelését ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5c26af74a392e3e6d3bb5557960b81604de7cdf3
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 5276780d06671b8358f615b1fcb6447c8e1310f9
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807801"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044872"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure nagyvállalati regisztrációs számlák
 
@@ -46,14 +46,14 @@ Az Azure Enterprise Portal automatikusan létrehoz egy alapértelmezett rendelé
 
 ## <a name="azure-enterprise-billing-frequency"></a>Az Azure Enterprise számlázási gyakorisága
 
-A Microsoft a regisztráció hatályba lépésének dátumától kezdve évente számlázza a Microsoft Azure-szolgáltatások költségkeret terhére történő vásárlásait. A kötelezettségvállalás összegét meghaladó használatot a Microsoft utólagosan számlázza.
+A Microsoft a regisztráció hatályba lépésének dátumától kezdve évente számlázza a Microsoft Azure-szolgáltatások előrefizetési keretének terhére történő vásárlásait. Az előrefizetés összegét meghaladó használatot a Microsoft utólagosan számlázza.
 
-- A kötelezettségvállalás díja havidíj alapján van kiszabva, és előre, évente számlázzuk ki.
+- Az előrefizetés díja havidíj alapján van kiszabva, és előre, évente számlázzuk ki.
 - A keretet meghaladó szolgáltatások díját havonta számítjuk ki, és a számlázási időszak végén számlázzuk.
 
 ### <a name="billing-intervals"></a>Számlázási időközök
 
-A számlázási intervallum attól függ, hogyan kívánja teljesíteni a kötelezettségvállalásait. Az Ön éves kötelezettségvállalása egybeesik az alábbiak valamelyikével:
+A számlázási intervallum attól függ, hogyan kívánja teljesíteni az előrefizetéseit. Az Ön éves előrefizetése egybeesik az alábbiak valamelyikével:
 
 - A regisztráció évfordulójának dátuma
 - Az egyéves módosítási előfizetés hatályba lépésének időpontja.
@@ -62,12 +62,12 @@ A túlhasználatról szóló számla kézhezvételének dátuma a regisztráció
 
 - **Közvetlen regisztrációk 2018. május 1. előtti kezdési dátummal**:
   - Ha Ön közvetlen nagyvállalati Azure-ügyfél, akkor éves számlázási ciklusa van az Azure-szolgáltatásokhoz, kivéve az Azure Marketplace-szolgáltatásokat. Számlázási ciklusa az évforduló dátumán alapul: azon az időponton, amikor a szerződése hatályba lépett.
-  - Ha túllépte az EA pénzügyi keret (MC) küszöbének 150%-át, akkor a rendszer automatikusan negyedéves számlázási ciklusra váltja, amely az évforduló dátumán alapul. Emellett kapni fog egy, az Azure-szolgáltatások túlhasználatáról szóló számlát is.
-  - Ha nem haladja meg az MC-küszöbérték 150%-át, a regisztráció az egyéves számlázási ciklusban marad. A túlhasználatról szóló számlát a kötelezettségvállalási év végén kapja meg.
+  - Ha túllépte az Azure EA-előrefizetés küszöbének 150%-át, akkor a rendszer automatikusan negyedéves számlázási ciklusra vált, amely az évforduló dátumán alapul. Emellett kapni fog egy, az Azure-szolgáltatások túlhasználatáról szóló számlát is.
+  - Ha nem haladja meg az Azure-előrefizetés küszöbének 150%-át, a regisztráció az egyéves számlázási ciklusban marad. A túlhasználatról szóló számlát az előrefizetési év végén kapja meg.
 
 - **Közvetlen regisztrációk 2018. május 1. utáni kezdési dátummal**:
   - Az Ön Azure-használatát és -díjait külön, havi számlázási ciklusban kiállított számlákon számlázzuk.
-  - A pénzügyi kerete által nem fedezett díjak túlhasználati díjként lesznek esedékesek.  
+  - Az Azure-előrefizetés által nem fedezett díjakat túlhasználati díjként számoljuk fel.  
 
 - **Közvetett regisztrációk 2018. május 1. előtti kezdési dátummal rendelkező regisztrációval**:
 
@@ -77,21 +77,21 @@ A túlhasználatról szóló számla kézhezvételének dátuma a regisztráció
 
   Költségei havi elszámolási időszakra lesznek vetítve.  
 
-### <a name="increase-your-monetary-commitment"></a>A pénzügyi keret növelése
+### <a name="increase-your-azure-prepayment"></a>Növelje Azure-előrefizetési keretét
 
-Kötelezettségvállalása bármikor megnövelhető. Az adott év kötelezettségvállalási időszakából fennmaradó hónapok száma után állítjuk ki a számlát. Ha például egyéves módosítási előfizetést regisztrál, és a hatodik hónap során növeli a kötelezettségvállalását, akkor az adott időszak hátralévő hat hónapjára szólóan kap számlát. A kötelezettségvállalásban foglalt mennyiségeket a rendszer ezután frissíti a kötelezettségvállalási időszak utolsó hat hónapjára vonatkozóan. A rendszer ezeket az új mennyiségeket használja fel a túlhasználati díjak meghatározásakor.
+Előrefizetési kerete bármikor megnövelhető. Ilyenkor az adott év előrefizetési időszakából fennmaradó hónapok száma után állítjuk ki a számlát. Ha például egyéves módosítási előfizetést regisztrál, és a hatodik hónap során növeli az előrefizetési keretet, akkor az adott időszak hátralévő hat hónapjára szólóan kap számlát. Az előrefizetésben foglalt mennyiségeket a rendszer ezután frissíti az előrefizetési időszak utolsó hat hónapjára vonatkozóan. A rendszer ezeket az új mennyiségeket használja fel a túlhasználati díjak meghatározásakor.
 
 ### <a name="overage"></a>Overage (Kereten túli díjak)
 
-Túlhasználat esetén a kötelezettségvállalását a számlázási időszak során meghaladó használatért vagy foglalásokért kell fizetnie. Ha meg szeretné tekinteni az egyes tételekhez kapcsolódó túlhasználati mennyiségek számításának részletezését, tekintse meg a használati adatokat összegző jelentést, vagy forduljon csatornapartneréhez.
+Túlhasználat esetén fizetnie kell azért a használatért vagy azokért a foglalásokért, amelyek a számlázási időszak során meghaladták az előrefizetési keretet. Ha meg szeretné tekinteni az egyes tételekhez kapcsolódó túlhasználati mennyiségek számításának részletezését, tekintse meg a használati adatokat összegző jelentést, vagy forduljon csatornapartneréhez.
 
 A számla minden tételénél látni fogja:
 
 - **Bővített összeg**: a teljes díj
-- **Kötelezettségvállalási összeg**: a díjak fedezésére felhasznált kötelezettségvállalás díja
-- **Nettó összeg**: a kötelezettségvállalást meghaladó díjak összege
+- **Előrefizetési összeg**: a díjak fedezésére felhasznált előrefizetési keret
+- **Nettó összeg**: az előrefizetési keretet meghaladó díjak összege
 
-A vonatkozó adókat csak a kötelezettségvállalást meghaladó nettó összegre számítjuk ki.
+A vonatkozó adókat csak az előrefizetési keretet meghaladó nettó összegre számítjuk ki.
 
 A túlhasználat számlázása automatikusan történik. Az értesítések és a számlák érkezésének ideje az Ön számlázási időszakának záródátumától függ.
 
@@ -130,18 +130,18 @@ Jóváírások megtekintése:
 1. Az [Azure Enterprise Portalon](https://ea.azure.com) válassza a **Jelentések** szakaszt.
 1. Válassza a **Használati adatok összegzése** lehetőséget.
 1. A jobb felső sarokban módosítsa az **M** nézetet **C** nézetre.
-1. Bontsa ki a helyesbítési mezőt az Azure-szolgáltatás kötelezettségvállalási táblájában.
+1. Bontsa ki a helyesbítési mezőt az Azure-szolgáltatás előrefizetési táblájában.
 1. Láthatja a regisztrációra alkalmazott jóváírásokat és azok rövid magyarázatát. Például: Szolgáltatói szerződésben szereplő jóváírás.
 
-## <a name="pay-your-overage-with-your-monetary-commitment"></a>A túlhasználat kiegyenlítése a pénzügyi keretéből
+## <a name="pay-your-overage-with-your-azure-prepayment"></a>A túlhasználat kiegyenlítése az Azure-előrefizetési keretből
 
-Pénzügyi kötelezettségvállalásának a túlteljesítésre való alkalmazásához meg kell felelnie a következő feltételeknek:
+Ahhoz, hogy az Azure-előrefizetési keretből fizesse ki a túlhasználatot, meg kell felelnie a következő feltételeknek:
 
 - A kiszámlázott szolgáltatás záró dátumától számított egy éven belüli, felmerült, de ki nem fizetett többletköltségekkel kell rendelkeznie.
-- A rendelkezésre álló pénzügyi keret összegének az összes felmerült költségét fedeznie kell, a régebbi ki nem fizetett Azure-számláit is beleértve.
+- A rendelkezésre álló Azure-előrefizetési keretnek az összes felmerült költségét fedeznie kell, a régebbi ki nem fizetett Azure-számláit is beleértve.
 - A teljesítendő számlázási időszaknak teljesen lezártnak kell lennie. A számlázás teljes lezárása minden hónap ötödik napja után történik.
 - A kiegyenlíteni kívánt számlázási időszaknak teljesen lezártnak kell lennie.
-- Azure Hűségkedvezménye (ACD) a tényleges új kereten alapul a korábbi felhasználásra szánt összegek levonásával. Ez a követelmény csak a felmerült többletköltségekre vonatkozik. Csak a pénzügyi keretet felhasználó szolgáltatásoknál működik, ezért az Azure Marketplace díjai esetén nem érvényes. Az Azure Marketplace díjait külön számlázzuk.
+- Azure előrefizetési kedvezménye (Azure Prepayment Discount, APD) a tényleges új előrefizetésen alapul a korábbi felhasználásra szánt összegek levonásával. Ez a követelmény csak a felmerült többletköltségekre vonatkozik. Csak az Azure-előrefizetési keretet használó szolgáltatásoknál működik, ezért az Azure Marketplace díjai esetén nem érvényes. Az Azure Marketplace díjait külön számlázzuk.
 
 Ha ki szeretné egyenlíteni a többletköltségeket, Ön vagy az ügyfélkapcsolati csapat megnyithat egy támogatási kérést. Szükség van egy e-mailes jóváhagyásra az EA-rendszergazdájától vagy a számlázási kapcsolattartótól.
 
@@ -178,13 +178,13 @@ A következő táblázat bemutatja az Azure Enterprise Portal kerekítésre és 
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Konverzió a használati adatokról szóló jelentés és a használati adatokat összegző oldal között
 
-A letöltött használatiadat-jelentésen látható, hogy a nyers erőforrás-használat adatai legfeljebb hat tizedesjegy pontossággal jelennek meg. Az Azure Enterprise Portal azonban négy tizedesjegyre kerekíti a használatot a kötelezettségvállalási egységek esetében, a túlhasználati egységek esetében pedig nulla tizedesjegyre rövidít. Az Azure Enterprise Portalon használt egységekre való átalakítás előtt a rendszer először négy számjegyre kerekíti a nyers használatot. Ezt követően az eredményül kapott nagyvállalati egységeket ismét négy számjegyre kerekíti. Az átalakítás előtt ténylegesen felhasznált órák csak a használati adatokat tartalmazó letöltött jelentésben jelennek meg, magán az Azure Enterprise Portalon nem.
+A letöltött használatiadat-jelentésen látható, hogy a nyers erőforrás-használat adatai legfeljebb hat tizedesjegy pontossággal jelennek meg. Az Azure Enterprise Portal azonban négy tizedesjegyre kerekíti a használatot az előrefizetési egységek esetében, a túlhasználati egységek esetében pedig nulla tizedesjegyre rövidít. Az Azure Enterprise Portalon használt egységekre való átalakítás előtt a rendszer először négy számjegyre kerekíti a nyers használatot. Ezt követően az eredményül kapott nagyvállalati egységeket ismét négy számjegyre kerekíti. Az átalakítás előtt ténylegesen felhasznált órák csak a használati adatokat tartalmazó letöltött jelentésben jelennek meg, magán az Azure Enterprise Portalon nem.
 
 Például: 694,533404 tényleges SQL Server-óra szerepel a használati adatokat tartalmazó jelentésben. Ezeket az egységeket a rendszer 6,94533404 egységére alakítja át 100 üzemórára vonatkozóan, amelyet aztán 6,9453-ra kerekítve jeleníti meg az Azure Enterprise Portalon.
 
-- Ezeket az egységeket a rendszer ezután megszorozza a kötelezettségvállalási egység árával, és az eredményt két tizedesre csonkolja. A japán yen (JPY) és a dél-koreai won (KRW) esetében a kiterjesztett mennyiség nulla tizedesjegyre van kerekítve.
+- Ezeket az egységeket a rendszer ezután megszorozza az előrefizetési egység árával, és az eredményt két tizedesre csonkolja. A japán yen (JPY) és a dél-koreai won (KRW) esetében a kiterjesztett mennyiség nulla tizedesjegyre van kerekítve.
 - A túlhasználati díjak esetén a számlázható egységeket hat számjegyre csonkolja a rendszer, majd a kiterjesztett számlázási mennyiség meghatározása érdekében megszorozza a túlhasználati díjak egységárával.
-- Felügyelt szolgáltatás szolgáltatójának (MSP) számlázása esetén az MSP-ként megjelölt részleghez tartozó összes használat nulla tizedesjegyre van csonkolva az EA mértékegységre való átalakítás után. Ennek eredményeképpen a használat összege alacsonyabb lehet, mint az Azure Enterprise Portalon jelentett összes használat összege. Ez attól függ, hogy az MSP még a pénzügyi keretének egyenlegén belül vagy már a kereten túl van.
+- Felügyelt szolgáltatás szolgáltatójának (MSP) számlázása esetén az MSP-ként megjelölt részleghez tartozó összes használat nulla tizedesjegyre van csonkolva az EA mértékegységre való átalakítás után. Ennek eredményeképpen a használat összege alacsonyabb lehet, mint az Azure Enterprise Portalon jelentett összes használat összege. Ez attól függ, hogy az MSP még az Azure-előrefizetés egyenlegén belül vagy már a kereten túl van.
 
 ### <a name="graduated-pricing"></a>Sávos díjszabás
 
@@ -226,13 +226,13 @@ Azon szolgáltatások esetében, ahol a zóna és a régió befolyásolja a díj
 
 A szolgáltatások közötti, ugyanazon az adatközponton belüli adatforgalomért nem számítunk fel díjat. Például a Microsoft 365 és az Azure esetében.
 
-### <a name="monetary-commitment-and-unbilled-usage"></a>Pénzügyi keret és a ki nem számlázott használat
+### <a name="azure-prepayment-and-unbilled-usage"></a>Az Azure-előrefizetés és a ki nem számlázott használat
 
-Az Azure pénzügyi keret az az összeg, amelyet előre kifizetnek az Azure-szolgáltatásokért. A szolgáltatások használata felhasználja a pénzügyi keretet. A belső Azure-szolgáltatások a pénzügyi keretet terhelik. Néhány díjat azonban külön számlázunk ki, és az Azure Marketplace-szolgáltatások nem használják fel a pénzügyi keretet.
+Az Azure-előrefizetés az az összeg, amelyet előre kifizetnek az Azure-szolgáltatásokért. A szolgáltatások használata során az Azure-előrefizetési keret felhasználódik. A belső Azure-szolgáltatások díja az Azure-előrefizetési keretből vonódik le. Néhány díjat azonban külön számlázunk ki, és az Azure Marketplace-szolgáltatások használati díja nem vonható le az Azure-előrefizetési keretből.
 
 ### <a name="charges-billed-separately"></a>Külön számlázott tételek
 
-Néhány külső féltől származó termék és szolgáltatás nem használja az Azure-beli pénzügyi keretet. Ehelyett az ilyen tételek esetében a számlázás külön történik a standard számlázási ciklus túlhasználati díjának részeként.
+Vannak olyan külső féltől származó termékek és szolgáltatások, amelyeknek a használati díja nem vonható le az Azure-előrefizetési keretből. Ehelyett az ilyen tételek esetében a számlázás külön történik a standard számlázási ciklus túlhasználati díjának részeként.
 
 Az összes Azure- és Azure Marketplace-díjat egyetlen, a regisztráció számlázási ciklusával összhangban álló számlán egyesítettük. Az összevont számla nem vonatkozik az ausztrál, japán vagy szingapúri ügyfelekre.
 
@@ -265,7 +265,7 @@ A számlák kiküldése a számlázási időszak vége utáni hónapban történ
 
    | Cím | Leírás | Fájlnév |
    | --- | --- | --- |
-   | [Felhasználóbarát szolgáltatásnevek](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Felsorolja az összes aktív szolgáltatást, és tartalmazza az alábbiakat: <br>  <ul><li>szolgáltatáskategória</li>   <li>felhasználóbarát szolgáltatásnév</li>   <li>kötelezettségvállalási név és cikkszám</li> <li>felhasználási név és cikkszám</li>   <li>mértékegységek</li>   <li>jelentett használat és a megjelenített Enterprise Portal-használat közötti átváltási tényezők</li></ul> | Friendly\_Service\_Names.xlsx |
+   | [Felhasználóbarát szolgáltatásnevek](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Felsorolja az összes aktív szolgáltatást, és tartalmazza az alábbiakat: <br>  <ul><li>szolgáltatáskategória</li>   <li>felhasználóbarát szolgáltatásnév</li>   <li>Előrefizetési név és cikkszám</li> <li>felhasználási név és cikkszám</li>   <li>mértékegységek</li>   <li>jelentett használat és a megjelenített Enterprise Portal-használat közötti átváltási tényezők</li></ul> | Friendly\_Service\_Names.xlsx |
    | [Szolgáltatásletöltési mezők](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Ez a táblázat felsorolja a használati adatokat tartalmazó letöltött jelentésben szereplő, szolgáltatással kapcsolatos mezők összes lehetséges kombinációját. | Service\_Download\_Fields.xlsx |
 
 - A számla és a díjak értelmezésével kapcsolatos további információkért lásd: [Az Azure Nagyvállalati Szerződés számlájának ismertetése](../understand/review-enterprise-agreement-bill.md).

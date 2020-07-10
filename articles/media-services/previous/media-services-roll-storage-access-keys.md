@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: 2a0d1c5af572c88dc11bed950b46706f0a2f081f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ddf15ffad086bab5ed6c4e2508cd0874f6ee567
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981957"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166178"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>A Media Services frissítése tárelérési kulcsok váltása után 
 
@@ -48,7 +49,7 @@ Media Services a megadott tárolási kulcstól függ. Az eszközök adatfolyamk�
  
     Az alábbi példa bemutatja, hogyan szinkronizálhat kulcsokat a Storage-fiókokhoz.
   
-         Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
+    `Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId`
   
  3. Várjon egy órát. Ellenőrizze, hogy működik-e a folyamatos átviteli forgatókönyvek.
  4. Módosítsa a Storage-fiók másodlagos kulcsát a PowerShell-parancsmag vagy a Azure Portal használatával.
@@ -59,14 +60,15 @@ Media Services a megadott tárolási kulcstól függ. Az eszközök adatfolyamk�
 
 Az alábbi példa bemutatja, hogyan kérheti le a Storage-fiókot, és hogyan szinkronizálhatja azt az AMS-fiókkal.
 
-    $regionName = "West US"
-    $resourceGroupName = "SkyMedia-USWest-App"
-    $mediaAccountName = "sky"
-    $storageAccountName = "skystorage"
-    $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
+```console
+$regionName = "West US"
+$resourceGroupName = "SkyMedia-USWest-App"
+$mediaAccountName = "sky"
+$storageAccountName = "skystorage"
+$storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 
-    Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
-
+Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
+```
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Az AMS-fiókhoz tartozó Storage-fiókok hozzáadásának lépései
 

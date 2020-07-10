@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: 5ad92fe9f243cf9884f29536cf6ebb66202338d5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d205f3ccc0adef7e2390274bb7f4511c6f994027
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299961"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86038004"
 ---
 # <a name="azure-ea-pricing"></a>Az Azure EA díjszabása
 
@@ -24,7 +24,7 @@ Ez a szakasz részletesen ismerteti a használat kiszámításának módját. V�
 
 ### <a name="price-protection"></a>Árvédelem
 
-Ügyfélként vagy csatornapartnerként Önre garantáltan az Ön árlistáján (CPS) szereplő vagy annál alacsonyabb mértékű, illetve az Azure-vásárlás dátumakor érvényes árak érvényesek. Ezt az árat alapdíjnak nevezzük. Az Azure-vásárlást követően bevezetett szolgáltatások esetében a szolgáltatás első bevezetésekor érvényes, a megfelelő mértékű árengedménnyel ellátott árnak megfelelő díjat számlázzuk ki. Ez az árvédelem a kötelezettségvállalása időtartamára vonatkozik, amely a nagyvállalati szerződéstől függően egy vagy három év lehet.
+Ügyfélként vagy csatornapartnerként Önre garantáltan az Ön árlistáján (CPS) szereplő vagy annál alacsonyabb mértékű, illetve az Azure-vásárlás dátumakor érvényes árak érvényesek. Ezt az árat alapdíjnak nevezzük. Az Azure-vásárlást követően bevezetett szolgáltatások esetében a szolgáltatás első bevezetésekor érvényes, a megfelelő mértékű árengedménnyel ellátott árnak megfelelő díjat számlázzuk ki. Ez az árvédelem az előrefizetés időtartamára vonatkozik, amely a Nagyvállalati Szerződéstől függően egy vagy három év lehet.
 
 ### <a name="price-changes"></a>Árváltozások
 

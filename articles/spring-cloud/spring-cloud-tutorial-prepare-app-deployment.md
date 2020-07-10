@@ -1,17 +1,17 @@
 ---
-title: 'Útmutató: Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez'
-description: Ebben a témakörben egy Java Spring-alkalmazást készít elő az Azure Spring Cloud üzembe helyezéséhez.
+title: Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
+description: Ismerje meg, hogyan készíthet egy Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 0cbe91de889b787d6f417afbe74720b40c3026e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1840979fc1380f1e0d14f3a0a74eef5fa6df6538
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833383"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141861"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -222,7 +222,7 @@ Az elosztott konfiguráció engedélyezéséhez vegye fel a következő `spring-
 > [!WARNING]
 > Ne adja meg a `spring.cloud.config.enabled=false` bootstrap konfigurációját. Ellenkező esetben az alkalmazás nem működik a konfigurációs kiszolgálóval.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 Vegye fel a függőséget a `spring-boot-starter-actuator` pom.xml fájl függőségek szakaszába, ahogy az itt látható:
 
@@ -253,7 +253,7 @@ Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-z
 </dependency>
 ```
 
- Emellett engedélyeznie kell egy Azure Application Insights-példány működését az Azure Spring Cloud Service-példányával. Olvassa el az [elosztott nyomkövetéssel foglalkozó oktatóanyagot](spring-cloud-tutorial-distributed-tracing.md) , amelyből megtudhatja, hogyan használhatja a Application Insightst az Azure Spring Cloud használatával.
+ Emellett engedélyeznie kell egy Azure Application Insights-példány működését az Azure Spring Cloud Service-példányával. Az Azure Spring Cloudtel való Application Insights használatáról az [elosztott nyomkövetés dokumentációjában](spring-cloud-tutorial-distributed-tracing.md)talál további információt.
 
 ## <a name="see-also"></a>Lásd még
 * [Alkalmazások naplófájljainak és metrikáinak elemzése](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
@@ -264,9 +264,6 @@ Adja meg a következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-z
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a témakörben megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A konfigurációs kiszolgálópéldány beállításával kapcsolatos további információkért tekintse meg a következő cikket.
-
-> [!div class="nextstepaction"]
-> [Ismerje meg, hogyan állíthat be egy konfigurációs kiszolgálópéldány](spring-cloud-tutorial-config-server.md)
+Ebben a témakörben megtanulta, hogyan konfigurálhatja a Java Spring-alkalmazást az Azure Spring Cloud üzembe helyezéséhez. A konfigurációs kiszolgálópéldány beállításával kapcsolatos további információkért lásd: [konfigurációs kiszolgálói példány beállítása](spring-cloud-tutorial-config-server.md).
 
 További minták érhetők el a GitHubon: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).

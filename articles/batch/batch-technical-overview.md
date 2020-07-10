@@ -3,12 +3,12 @@ title: A Azure Batch nagyméretű párhuzamos feladatokat futtat a felhőben
 description: Megismerheti, hogyan használhatja az Azure Batch szolgáltatást nagyméretű párhuzamos és HPC számítási feladatokhoz.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 134706622655029c6673aea5dd04a9284155be6f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 03c958f44f707e7c5b6ac5c4414bdb5fd4963635
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965076"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142807"
 ---
 # <a name="what-is-azure-batch"></a>Mi az Azure Batch?
 
@@ -34,7 +34,7 @@ Néhány példa a Batchbe bevonható belsőleg párhuzamos számítási feladato
 * Adatbetöltés, -feldolgozás és ETL-műveletek
 * Szoftvertesztek végrehajtása
 
-A Batch használatával [szorosan összekapcsolt számítási feladatokat is futtathat](batch-mpi.md) – ezek olyan számítási feladatok, amelyek során az alkalmazásoknak kommunikálniuk kell egymással, és nem csupán egymástól függetlenül futnak. A szorosan összekapcsolt alkalmazások általában a Message Passing Interface (MPI) API-t használják. A szorosan összekapcsolt számítási feladatokat a Batchben a [Microsoft MPI](/message-passing-interface/microsoft-mpi) vagy az Intel MPI használatával futtathatja. Az alkalmazások teljesítményét specializált [HPC](../virtual-machines/linux/sizes-hpc.md) és [GPU-optimalizált](../virtual-machines/linux/sizes-gpu.md) virtuálisgép-méretek használatával javíthatja.
+A Batch használatával [szorosan összekapcsolt számítási feladatokat is futtathat](batch-mpi.md) – ezek olyan számítási feladatok, amelyek során az alkalmazásoknak kommunikálniuk kell egymással, és nem csupán egymástól függetlenül futnak. A szorosan összekapcsolt alkalmazások általában a Message Passing Interface (MPI) API-t használják. A szorosan összekapcsolt számítási feladatokat a Batchben a [Microsoft MPI](/message-passing-interface/microsoft-mpi) vagy az Intel MPI használatával futtathatja. Az alkalmazások teljesítményét specializált [HPC](../virtual-machines/sizes-hpc.md) és [GPU-optimalizált](../virtual-machines/sizes-gpu.md) virtuálisgép-méretek használatával javíthatja.
 
 Néhány példa szorosan összekapcsolt számítási feladatokra:
 * Végeselem-elemzés
@@ -52,7 +52,7 @@ Magasabb szintű, számításifeladat-specifikus képességek is elérhetők az 
 A Batch feladatokat nagyobb, adatok átalakítását végző Azure-munkafolyamatok részeként is futtathatja az [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md) vagy hasonló eszközök felügyelete alatt.
 
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>A működési elv
 Egy általános Batch-forgatókönyv a belsőleg párhuzamos munkák (például egy 3D jelenet képeinek renderelése) horizontális felskálázása a számítási csomópontok készletén. A számítási csomópontoknak ez a készlete „renderelési farmként” szolgálhat, amely több tíz, több száz vagy akár több ezer magot biztosít a renderelési feladathoz.
 
 Az alábbi diagram egy általános Batch-munkafolyamat lépéseit mutatja be, ahol az ügyfélalkalmazás vagy az üzemeltetett szolgáltatás Batch szolgáltatással futtat egy párhuzamos számítási feladatot.
@@ -83,4 +83,3 @@ Ismerkedjen az Azure Batch használatának első lépéseivel az alábbi rövid 
 * [Az első Batch-feladat futtatása az Azure Portal használatával](quick-create-portal.md)
 * [Az első Azure Batch-feladat futtatása a .NET API használatával](quick-run-dotnet.md)
 * [Az első Azure Batch-feladat futtatása a Python API használatával](quick-run-python.md)
-

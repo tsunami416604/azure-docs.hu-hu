@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 7c2484892f3de3c8eca3f766793be83bc7a29dc8
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: a56e815e3a4ac04d20b29163139ab40332c4bec4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445542"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146963"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Kérelmek hitelesítése az Azure Cognitive Services
 
@@ -28,7 +28,7 @@ Az Azure kognitív szolgáltatás minden kérésének tartalmaznia kell egy hite
 
 A kérelem elkészítése előtt Azure-fiókra és Azure Cognitive Services-előfizetésre van szükség. Ha már rendelkezik fiókkal, ugorjon a következő szakaszra. Ha nem rendelkezik fiókkal, néhány perc alatt bemutatjuk, hogyan [hozhat létre Cognitive Services fiókot az Azure](cognitive-services-apis-create-account.md)-hoz.
 
-Az előfizetési kulcsot a fiók létrehozása után, illetve az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/my-apis)aktiválása után is lekérheti a [Azure Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
+A [fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)után lekérheti az előfizetési kulcsot a [Azure Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
 
 ## <a name="authentication-headers"></a>Hitelesítési fejlécek
 
@@ -75,7 +75,7 @@ Az előfizetési kulcsot minden kérelem fejlécként kell megadnia `Ocp-Apim-Su
 
 ### <a name="supported-regions"></a>Támogatott régiók
 
-Ha a többszolgáltatásos előfizetési kulcsot használja a kérelem elvégzéséhez `api.cognitive.microsoft.com` , a régiót az URL-címben is fel kell vennie. Példa: `westus.api.cognitive.microsoft.com`.
+Ha a többszolgáltatásos előfizetési kulcsot használja a kérelem elvégzéséhez `api.cognitive.microsoft.com` , a régiót az URL-címben is fel kell vennie. Például: `westus.api.cognitive.microsoft.com`.
 
 Ha a Multi-Service előfizetési kulcsot a Translator Service szolgáltatással használja, meg kell adnia az előfizetési régiót a `Ocp-Apim-Subscription-Region` fejlécben.
 

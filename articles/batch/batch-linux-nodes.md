@@ -4,11 +4,12 @@ description: Ismerje meg, hogyan dolgozhat párhuzamos számítási feladatait a
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017, tracking-python
-ms.openlocfilehash: 1a87b72b16c1d41e5569c4ce9e5e1a6e2c51a2e0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 05e23093a00eab70db683c10eae59ef27152d2f7
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960078"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145044"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linuxos számítási csomópontok kiépítése a Batch-készletekben
 
@@ -28,7 +29,7 @@ A **virtuálisgép-konfiguráció** Linux-és Windows-rendszerképeket is biztos
 
 ### <a name="virtual-machine-image-reference"></a>Virtuális gép képének referenciája
 
-A Batch szolgáltatás [virtuálisgép-méretezési csoportokat](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) használ a számítási csomópontok biztosításához a virtuális gép konfigurációjában. Megadhat egy rendszerképet az [Azure piactéren][vm_marketplace], vagy megadhat egy előkészített egyéni rendszerképet. További információ az egyéni lemezképekről: [készlet létrehozása a megosztott rendszerkép](batch-sig-images.md)-katalógussal.
+A Batch szolgáltatás [virtuálisgép-méretezési csoportokat](../virtual-machine-scale-sets/overview.md) használ a számítási csomópontok biztosításához a virtuális gép konfigurációjában. Megadhat egy rendszerképet az [Azure piactéren][vm_marketplace], vagy megadhat egy előkészített egyéni rendszerképet. További információ az egyéni lemezképekről: [készlet létrehozása a megosztott rendszerkép](batch-sig-images.md)-katalógussal.
 
 A virtuálisgép-rendszerképek hivatkozásának konfigurálásakor meg kell adnia a virtuális gép rendszerképének tulajdonságait. A virtuálisgép-rendszerkép hivatkozásának létrehozásakor a következő tulajdonságokat kell megadnia:
 

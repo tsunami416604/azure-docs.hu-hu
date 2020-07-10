@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: 13c55f2a7470a0d33e12e9e6f0da9df3421242fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60f4ed9940c70ed479c3108f3637aa55f2a42811
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556255"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146899"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Cosmos DB-adatok indexelése indexelővel az Azure Cognitive Searchben 
 
@@ -154,6 +154,8 @@ Az **adatforrások** az index, a hitelesítő adatok és az adatok változásain
 
 Adatforrás létrehozásához hozzon létre egy POST-kérést:
 
+```http
+
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -170,10 +172,11 @@ Adatforrás létrehozásához hozzon létre egy POST-kérést:
             "highWaterMarkColumnName": "_ts"
         }
     }
+```
 
 A kérelem törzse tartalmazza az adatforrás definícióját, amelynek tartalmaznia kell a következő mezőket:
 
-| Mező   | Description |
+| Mező   | Leírás |
 |---------|-------------|
 | **név** | Kötelező. Válasszon egy tetszőleges nevet az adatforrás-objektum megjelenítéséhez. |
 |**típusa**| Kötelező. Kell lennie `cosmosdb` . |
@@ -190,6 +193,7 @@ Megadhat egy SQL-lekérdezést a beágyazott tulajdonságok vagy tömbök, a Pro
 
 Példa dokumentumra:
 
+```http
     {
         "userId": 10001,
         "contact": {
@@ -199,30 +203,37 @@ Példa dokumentumra:
         "company": "microsoft",
         "tags": ["azure", "cosmosdb", "search"]
     }
+```
 
 Lekérdezés szűrése:
 
-    SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```sql
+SELECT * FROM c WHERE c.company = "microsoft" and c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 Lekérdezés összeolvasztása:
 
-    SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-    
-    
+```sql
+SELECT c.id, c.userId, c.contact.firstName, c.contact.lastName, c.company, c._ts FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
+
 Leképezési lekérdezés:
 
-    SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT VALUE { "id":c.id, "Name":c.contact.firstName, "Company":c.company, "_ts":c._ts } FROM c WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 Tömb-összeolvasztási lekérdezés:
 
-    SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
-
+```sql
+SELECT c.id, c.userId, tag, c._ts FROM c JOIN tag IN c.tags WHERE c._ts >= @HighWaterMark ORDER BY c._ts
+```
 
 ### <a name="3---create-a-target-search-index"></a>3 – cél keresési index létrehozása 
 
 Ha még nem rendelkezik ilyennel, [hozzon létre egy cél Azure Cognitive Search indexet](/rest/api/searchservice/create-index) . Az alábbi példa egy azonosítót és egy leírás mezőt tartalmazó indexet hoz létre:
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -243,6 +254,7 @@ Ha még nem rendelkezik ilyennel, [hozzon létre egy cél Azure Cognitive Search
          "suggestions": true
        }]
      }
+```
 
 Győződjön meg arról, hogy a célként megadott index sémája kompatibilis a forrás JSON-dokumentumok sémájával vagy az egyéni lekérdezési leképezés kimenetével.
 
@@ -261,12 +273,13 @@ Győződjön meg arról, hogy a célként megadott index sémája kompatibilis a
 | Egyszerű típusok tömbje, például ["a", "b", "c"] |Collection(Edm.String) |
 | A dátumokhoz hasonló karakterláncok |EDM. DateTimeOffset, EDM. String |
 | GeoJSON objektumok, például {"type": "pont", "koordináták": [Long, Lat]} |Edm.GeographyPoint |
-| Egyéb JSON-objektumok |N.A. |
+| Egyéb JSON-objektumok |N/A |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4 – az indexelő konfigurálása és futtatása
 
 Miután létrehozta az indexet és az adatforrást, készen áll az indexelő létrehozására:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -277,6 +290,7 @@ Miután létrehozta az indexet és az adatforrást, készen áll az indexelő l�
       "targetIndexName" : "mysearchindex",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Ez az indexelő két óránként fut (az ütemezett időköz értéke "PT2H"). Az indexelő 30 percenkénti futtatásához állítsa az intervallumot "PT30M" értékre. A legrövidebb támogatott időköz 5 perc. Az ütemterv nem kötelező – ha nincs megadva, az indexelő csak egyszer fut a létrehozáskor. Az indexelő igény szerinti futtatása azonban bármikor elvégezhető.   
 
@@ -299,10 +313,12 @@ Az általánosan elérhető .NET SDK teljes paritással rendelkezik az általán
 
 Az adatváltozás-észlelési szabályzat célja, hogy hatékonyan azonosítsa a módosított adatelemeket. Jelenleg az egyetlen támogatott szabályzat a [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) `_ts` Azure Cosmos db által biztosított (timestamp) tulajdonság, amely a következőképpen van megadva:
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
         "highWaterMarkColumnName" : "_ts"
     }
+```
 
 A szabályzat használata kifejezetten ajánlott a megfelelő indexelő teljesítmény biztosításához. 
 
@@ -318,11 +334,13 @@ Ha egyéni lekérdezés használatakor szeretné engedélyezni a növekményes e
 
 Bizonyos esetekben, még akkor is, ha a lekérdezés tartalmaz egy `ORDER BY [collection alias]._ts` záradékot, előfordulhat, hogy az Azure Cognitive Search nem következtet arra, hogy a lekérdezést a által megrendelte `_ts` . Megadhatja az Azure-Cognitive Search, hogy az eredmények a `assumeOrderByHighWaterMarkColumn` Configuration (konfiguráció) tulajdonság használatával legyenek rendezve. A célzás megadásához az alábbi módon hozza létre vagy frissítse az indexelő: 
 
+```http
     {
      ... other indexer definition properties
      "parameters" : {
             "configuration" : { "assumeOrderByHighWaterMarkColumn" : true } }
     } 
+```
 
 <a name="DataDeletionDetectionPolicy"></a>
 
@@ -330,16 +348,19 @@ Bizonyos esetekben, még akkor is, ha a lekérdezés tartalmaz egy `ORDER BY [co
 
 Ha a sorok törlődnek a gyűjteményből, általában törölni kívánja ezeket a sorokat a keresési indexből is. Az adattörlési észlelési szabályzat célja, hogy hatékonyan azonosítsa a törölt adatelemeket. Jelenleg az egyetlen támogatott házirend a `Soft Delete` házirend (a törlés egy bizonyos rendezési jelzővel van megjelölve), amely a következőképpen van megadva:
 
+```http
     {
         "@odata.type" : "#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",
         "softDeleteColumnName" : "the property that specifies whether a document was deleted",
         "softDeleteMarkerValue" : "the value that identifies a document as deleted"
     }
+```
 
 Ha egyéni lekérdezést használ, győződjön meg arról, hogy a által hivatkozott tulajdonság `softDeleteColumnName` a lekérdezés szerint van-e kiválasztva.
 
 Az alábbi példa egy olyan adatforrást hoz létre, amely egy törlési szabályzattal rendelkezik:
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [Search service admin key]
@@ -361,6 +382,7 @@ Az alábbi példa egy olyan adatforrást hoz létre, amely egy törlési szabál
             "softDeleteMarkerValue": "true"
         }
     }
+```
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>További lépések
 

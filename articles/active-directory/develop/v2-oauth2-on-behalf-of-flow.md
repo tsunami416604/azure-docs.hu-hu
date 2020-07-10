@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 07/8/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9e653469eb5bffbf81a0e09982edcbd1e937ba61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a0d4d205e82f377d6ea02c91fbd6db7820c3868
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553537"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165872"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity platform és OAuth 2,0-alapú folyamat
 
@@ -47,7 +47,7 @@ A követendő lépések az OBO-folyamatot alkotják, és az alábbi ábra segít
 > [!NOTE]
 > Ebben az esetben a középső rétegbeli szolgáltatás nem rendelkezik felhasználói beavatkozással, hogy a felhasználó beleegyezik az alsóbb rétegbeli API eléréséhez. Ezért az alsóbb rétegbeli API-hoz való hozzáférés engedélyezésének lehetősége előzetesen megjelenik a jóváhagyás lépés részeként a hitelesítés során. Ha meg szeretné tudni, hogyan állíthatja be ezt az alkalmazásra, tekintse meg [a a középső rétegbeli alkalmazáshoz](#gaining-consent-for-the-middle-tier-application)való hozzájárulások beszerzése című témakört.
 
-## <a name="service-to-service-access-token-request"></a>Szolgáltatás-szolgáltatás hozzáférési jogkivonat kérése
+## <a name="middle-tier-access-token-request"></a>Közepes szintű hozzáférési jogkivonat kérése
 
 Hozzáférési jogkivonat igényléséhez a következő paraméterekkel hozzon végre egy HTTP-BEJEGYZÉST a bérlő-specifikus Microsoft Identity platform token-végponton.
 
@@ -66,7 +66,7 @@ Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáf
 | `grant_type` | Kötelező | A jogkivonat-kérelem típusa. JWT használó kérelmek esetén az értéknek a következőnek kell lennie: `urn:ietf:params:oauth:grant-type:jwt-bearer` . |
 | `client_id` | Kötelező | Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |
 | `client_secret` | Kötelező | Az Azure Portal-Alkalmazásregisztrációk lapon az alkalmazáshoz generált ügyfél-titkos kulcs. |
-| `assertion` | Kötelező | A kérelemben használt jogkivonat értéke.  Ennek a jogkivonatnak rendelkeznie kell az ehhez az OBO-kérelemhez tartozó alkalmazás célközönségével (ezt az alkalmazást a mező jelöli `client-id` ). |
+| `assertion` | Kötelező | A középső rétegbeli API-nak eljuttatott hozzáférési jogkivonat.  Ennek a jogkivonatnak rendelkeznie kell egy `aud` , az adott OBO-kérelmet készítő alkalmazás célközönségével () `client-id` . Az alkalmazások nem válthatnak ki jogkivonatot egy másik alkalmazás számára (például ha egy ügyfél az MS Graph-hoz készült API-tokent küld, az API nem tudja beváltani az OBO használatával.  Ehelyett a tokent el kell utasítania.  |
 | `scope` | Kötelező | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. További információ: [hatókörök](v2-permissions-and-consent.md). |
 | `requested_token_use` | Kötelező | Megadja a kérelem feldolgozásának módját. Az OBO-flow-ban az értéket a értékre kell beállítani `on_behalf_of` . |
 
@@ -99,7 +99,7 @@ Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogk
 | `client_id` | Kötelező |  Az alkalmazás (ügyfél) azonosítója, amelyhez [az Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lap hozzá van rendelve az alkalmazáshoz. |
 | `client_assertion_type` | Kötelező | Az értéknek a számnak kell lennie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` . |
 | `client_assertion` | Kötelező | Egy, az alkalmazáshoz hitelesítő adatként regisztrált tanúsítvánnyal rendelkező (JSON webes jogkivonat). A tanúsítvány regisztrálásának és az állítás formátumának megismeréséhez lásd: [tanúsítvány hitelesítő adatai](active-directory-certificate-credentials.md). |
-| `assertion` | Kötelező | A kérelemben használt jogkivonat értéke. |
+| `assertion` | Kötelező |  A középső rétegbeli API-nak eljuttatott hozzáférési jogkivonat.  Ennek a jogkivonatnak rendelkeznie kell egy `aud` , az adott OBO-kérelmet készítő alkalmazás célközönségével () `client-id` . Az alkalmazások nem válthatnak ki jogkivonatot egy másik alkalmazás számára (például ha egy ügyfél az MS Graph-hoz készült API-tokent küld, az API nem tudja beváltani az OBO használatával.  Ehelyett a tokent el kell utasítania.  |
 | `requested_token_use` | Kötelező | Megadja a kérelem feldolgozásának módját. Az OBO-flow-ban az értéket a értékre kell beállítani `on_behalf_of` . |
 | `scope` | Kötelező | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. További információ: [hatókörök](v2-permissions-and-consent.md).|
 
@@ -125,7 +125,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 &scope=https://graph.microsoft.com/user.read+offline_access
 ```
 
-## <a name="service-to-service-access-token-response"></a>Szolgáltatás és szolgáltatás hozzáférési jogkivonat válasza
+## <a name="middle-tier-access-token-response"></a>Közepes szintű hozzáférési jogkivonat válasza
 
 A sikeres válasz egy JSON-OAuth 2,0-válasz a következő paraméterekkel.
 

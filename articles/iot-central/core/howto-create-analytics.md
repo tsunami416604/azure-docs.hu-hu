@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 40460b58ede0ca0da8fe25475906bdbe41bfffe0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29605fc2a9094f70c26487691e74a4dd72a85813
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80158282"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147271"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>Az eszköz-adatelemzés használata az eszközökön
 
@@ -86,10 +86,12 @@ Miután lekérdezte az adatait, megkezdheti a megjelenítését a vonalas diagra
 
   ![Nagyítás az adattartalomba](media/howto-create-analytics/zoom.png)
 
-A három pont alatt több diagram vezérlőelemet is használhat az adatkezeléshez.
+A három pont alatt több diagram vezérlőelemet is használhat az adatkezeléshez:
 
 - **Rács megjelenítése:** Az eredmények táblázatos formában érhetők el, így megtekintheti az egyes adatpontok adott értékét.
 
-- **Jelölő eldobása:** A "drop marker" vezérlő lehetővé teszi a diagram bizonyos adatpontjainak rögzítését. Akkor hasznos, ha több sor esetében próbál meg összehasonlítani különböző időszakokban lévő információkat.
+- **Letöltés CSV-fájlként:** Az eredmények vesszővel tagolt (CSV) fájlként exportálhatók. A CSV-fájl minden eszközhöz tartalmaz adatkészletet. Az eredményeket a megadott intervallum és időkeret alapján exportálja a rendszer. 
+
+- **Jelölő eldobása:** A "drop marker" vezérlővel bizonyos adatpontokat lehet rögzíteni a diagramon. Akkor hasznos, ha több sor esetében próbál meg összehasonlítani különböző időszakokban lévő információkat.
 
   ![Az elemzések rács nézetének megjelenítése](media/howto-create-analytics/additionalchartcontrols.png)

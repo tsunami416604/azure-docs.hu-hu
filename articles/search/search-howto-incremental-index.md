@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 75b533368a01b2e98bece0751f45b12f36796658
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6af9db5ed76ecb79f8891895eab52ff71bcab048
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85556270"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146872"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>A növekményes dúsítás gyorsítótárazásának konfigurálása az Azure-ban Cognitive Search
 
@@ -103,11 +103,13 @@ api-key: [YOUR-ADMIN-KEY]
 
 Ha most egy másik GET-kérelmet ad ki az indexelő számára, a szolgáltatás válasza tartalmazni fog egy `ID` tulajdonságot a gyorsítótár objektumban. Az alfanumerikus karakterláncot az indexelő által feldolgozott összes dokumentum gyorsítótárazott eredményeit és köztes állapotát tartalmazó tároló neve fűzi hozzá. A rendszer a gyorsítótár egyedi elnevezésére használja az azonosítót a blob Storage-ban.
 
+```http
     "cache": {
         "ID": "<ALPHA-NUMERIC STRING>",
         "enableReprocessing": true,
         "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<YOUR-STORAGE-ACCOUNT>;AccountKey=<YOUR-STORAGE-KEY>;EndpointSuffix=core.windows.net"
     }
+```
 
 ### <a name="step-5-run-the-indexer"></a>5. lépés: az indexelő futtatása
 

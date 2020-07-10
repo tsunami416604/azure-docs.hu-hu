@@ -12,11 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 28b687577f01d6e83f012a51bd18ad082f2bd48d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db7a1489b877544cd36627f3962b6b4e1b8c462
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433260"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146442"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Fájlok mentése és írása Azure Machine Learning kísérletekhez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +30,9 @@ A képzés indításakor a [számítási célra](how-to-set-up-training-targets.
 
 Mielőtt kísérletet kezdeményezzen egy számítási célra vagy a helyi gépre, gondoskodnia kell arról, hogy a szükséges fájlok elérhetők legyenek a számítási cél számára, például a függőségi fájlok és az adatfájlok, amelyeket a kódnak futtatnia kell.
 
-Azure Machine Learning futtatja a betanítási parancsfájlokat úgy, hogy a teljes parancsfájl-mappát átmásolja a cél számítási környezetbe, majd pillanatképet készít. A kísérletek pillanatképeinél a tárhelykorlát 300 MB és/vagy 2000 fájl.
+Azure Machine Learning a teljes forrás könyvtár másolásával futtatja a betanítási parancsfájlokat. Ha olyan bizalmas adatokkal rendelkezik, amelyeket nem szeretne felvenni, használja a [. ignore fájlt](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) , vagy ne adja meg a forrás könyvtárában. Ehelyett egy [adattár](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)használatával férhet hozzá az adataihoz.
+
+A kísérletek pillanatképeinél a tárhelykorlát 300 MB és/vagy 2000 fájl.
 
 Ezért javasoljuk, hogy:
 

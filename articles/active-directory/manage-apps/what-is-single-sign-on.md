@@ -1,5 +1,5 @@
 ---
-title: Egyszeri bejelentkezés az alkalmazásokba – Azure Active Directory | Microsoft Docs
+title: Mi az Azure egyszeri bejelentkezés (SSO)?
 description: Megtudhatja, hogyan választhat egyszeri bejelentkezési módszert az alkalmazások Azure Active Directory (Azure AD-ben) való konfigurálásakor. Egyszeri bejelentkezés használata, hogy a felhasználóknak ne kelljen megemlékezniük minden alkalmazás jelszavait, és egyszerűbbé kell tenni a fiókok felügyeletének kezelését.
 services: active-directory
 author: kenwith
@@ -12,14 +12,14 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8b20d7d285f30eb0aa9ba5ac22739b57856d6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479708"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144598"
 ---
-# <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba
+# <a name="what-is-single-sign-on-sso"></a>Mi az az egyszeri bejelentkezés (SSO)?
 
 Az egyszeri bejelentkezés (SSO) biztonsági és kényelmi funkciókat biztosít, amikor a felhasználók bejelentkeznek a Azure Active Directory (Azure AD) alkalmazásaiba. Ez a cikk az egyszeri bejelentkezés módszereit ismerteti, és segít kiválasztani a legmegfelelőbb SSO-módszert az alkalmazások konfigurálásakor.
 
@@ -54,7 +54,7 @@ Az alábbi táblázat összefoglalja az egyszeri bejelentkezés módszereit, és
 
 Új alkalmazások fejlesztésekor a modern protokollok, például az OpenID Connect és a OAuth segítségével érheti el a legjobb egyszeri bejelentkezési élményt az alkalmazáshoz több eszköz platformján. A OAuth lehetővé teszi [, hogy a](configure-user-consent.md) felhasználók vagy a rendszergazdák beleegyeznek a védett erőforrások, például a [Microsoft Graph](/graph/overview)számára. Egyszerűen bevezetheti az [SDK](../develop/reference-v2-libraries.md) -kat az alkalmazásához, és emellett az alkalmazás készen áll a [Microsoft Graph](/graph/overview)használatára.
 
-További információkért lásd:
+További információ:
 
 - [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
@@ -99,8 +99,8 @@ A jelszó alapú egyszeri bejelentkezés minden olyan felhőalapú alkalmazás e
 - Microsoft Edge a Windows 10 évfordulós kiadásán vagy később
 - Microsoft Edge iOS és Android rendszerhez
 - Intune Managed Browser
-- Chrome a Windows 7 vagy újabb, illetve MacOS X vagy újabb rendszereken
-- Firefox 26,0 vagy újabb verzió Windows XP SP2 vagy újabb rendszeren, valamint Mac OS X 10,6 vagy újabb verzióban
+- Chrome a Windows 7 vagy újabb, illetve macOS X vagy újabb rendszereken
+- Firefox 26,0 vagy újabb verzió Windows XP SP2 vagy újabb rendszeren, és macOS X 10,6 vagy újabb verzióban
 
 A jelszó-alapú egyszeri bejelentkezéshez használt felhőalapú alkalmazás konfigurálásával kapcsolatban lásd: [jelszó egyszeri bejelentkezésének konfigurálása](configure-password-single-sign-on-non-gallery-applications.md).
 

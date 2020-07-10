@@ -7,19 +7,19 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: fff4fb5707c07098fd7fac261a36909224365cdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060272"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143843"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Az Azure webalkalmazási tűzfal (WAF) szabályzatának áttekintése
 
 A webalkalmazási tűzfal házirendjei a WAF összes beállítását és konfigurációját tartalmazzák. Ide tartoznak a kizárások, az egyéni szabályok, a felügyelt szabályok stb. Ezeket a szabályzatokat ezután egy Application Gateway (Global), egy figyelő (hely) vagy egy elérésiút-alapú szabály (URI) társítják, amelyek érvénybe lépnek.
 
 > [!NOTE]
-> Az Azure webalkalmazási tűzfal (WAF) webhelyenként és URI-alapú házirendek nyilvános előzetes verzióban érhetők el.
+> Az Azure webalkalmazási tűzfal (WAF) URI-házirendjei nyilvános előzetes verzióban érhetők el.
 > 
 > A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 

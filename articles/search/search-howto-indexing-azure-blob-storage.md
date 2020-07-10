@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6c7e1fcaebd415fcacfffcef62ca25cccde3e476
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e3a35d95e7d2a339bf33620c9d1a140fb6a0a1d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563171"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143747"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Dokumentumok indexelése az Azure Blob Storage az Azure-ban Cognitive Search
 
@@ -31,7 +31,7 @@ A blob-indexelő a következő dokumentum-formátumokból tud szöveget kinyerni
 ## <a name="setting-up-blob-indexing"></a>BLOB-indexelés beállítása
 Beállíthat egy Azure Blob Storage indexelő a használatával:
 
-* [Azure Portalra](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Cognitive Search [.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
 
@@ -53,6 +53,7 @@ A blob-indexeléshez az adatforrásnak a következő szükséges tulajdonságokk
 
 Adatforrás létrehozása:
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -63,6 +64,7 @@ Adatforrás létrehozása:
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
     }   
+```
 
 További információ a Create DataSource API-ról: [adatforrás létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
 
@@ -85,6 +87,7 @@ Az index meghatározza a dokumentumok, attribútumok és más, a keresési élm�
 
 Ebből a témakörből megtudhatja, hogyan hozhat létre egy kereshető mezőt tartalmazó indexet `content` a blobokból kinyert szöveg tárolásához:   
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -96,6 +99,7 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre egy kereshető mezőt t
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
+```
 
 További információk az indexek létrehozásáról: [create index](https://docs.microsoft.com/rest/api/searchservice/create-index)
 
@@ -104,6 +108,7 @@ Az indexelő összekapcsolja az adatforrást a cél keresési indexszel, és az 
 
 Miután létrehozta az indexet és az adatforrást, készen áll az indexelő létrehozására:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -114,6 +119,7 @@ Miután létrehozta az indexet és az adatforrást, készen áll az indexelő l�
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Ez az indexelő két óránként fut (az ütemezett időköz értéke "PT2H"). Az indexelő 30 percenkénti futtatásához állítsa az intervallumot "PT30M" értékre. A legrövidebb támogatott időköz 5 perc. Az ütemterv nem kötelező – ha nincs megadva, az indexelő csak egyszer fut a létrehozáskor. Az indexelő igény szerinti futtatása azonban bármikor elvégezhető.   
 
@@ -174,13 +180,16 @@ Alaposan gondolja át, hogy melyik kibontott mező legyen leképezve az index Ke
 
 Ebben a példában válassza ki a `metadata_storage_name` mezőt a dokumentum kulcsaként. Tegyük fel, hogy az indexnek van egy nevű kulcs mezője `key` és egy mező a `fileSize` dokumentum méretének tárolásához. A lehető leggyorsabban, a következő mezők-hozzárendeléseket adja meg az indexelő létrehozásakor vagy frissítésekor:
 
+```http
     "fieldMappings" : [
       { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
       { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
     ]
+```
 
 A következő lépésekkel egyesítheti a mezőket, és engedélyezheti a kulcsok Base-64 kódolását egy meglévő indexelő számára:
 
+```http
     PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -194,6 +203,7 @@ A következő lépésekkel egyesítheti a mezőket, és engedélyezheti a kulcso
         { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
       ]
     }
+```
 
 > [!NOTE]
 > A mezők hozzárendelésével kapcsolatos további tudnivalókért tekintse meg [ezt a cikket](search-indexer-field-mappings.md).
@@ -207,6 +217,7 @@ Megadhatja, hogy mely Blobok indexelve legyenek, és melyeket a rendszer kihagyj
 ### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Csak a Blobok indexelése adott fájlkiterjesztések esetén
 Az indexelő konfigurációs paraméterrel csak azokat a blobokat lehet indexelni, amelyeket az Ön által megadott fájlnévkiterjesztéssel használ `indexedFileNameExtensions` . Az érték egy olyan karakterlánc, amely a fájlkiterjesztés vesszővel tagolt listáját tartalmazza (vezető ponttal). Például csak a érték indexeléséhez. PDF és. DOCX Blobok:
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -215,10 +226,12 @@ Az indexelő konfigurációs paraméterrel csak azokat a blobokat lehet indexeln
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
     }
+```
 
 ### <a name="exclude-blobs-with-specific-file-extensions"></a>Blobok kizárása adott fájlkiterjesztések esetén
 A konfigurációs paraméter használatával kizárhat olyan blobokat, amelyek adott fájlnévkiterjesztéssel rendelkeznek az indexelésből `excludedFileNameExtensions` . Az érték egy olyan karakterlánc, amely a fájlkiterjesztés vesszővel tagolt listáját tartalmazza (vezető ponttal). Például az összes blob indexeléséhez, kivéve a következővel:. PNG és. JPEG-bővítmények:
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -227,6 +240,7 @@ A konfigurációs paraméter használatával kizárhat olyan blobokat, amelyek a
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
     }
+```
 
 Ha mindkettő `indexedFileNameExtensions` és `excludedFileNameExtensions` paraméter szerepel, az Azure Cognitive Search először a következőt tekinti meg: `indexedFileNameExtensions` `excludedFileNameExtensions` . Ez azt jelenti, hogy ha ugyanaz a fájlkiterjesztés szerepel mindkét listán, az indexelésből ki lesz zárva.
 
@@ -241,6 +255,7 @@ Megadhatja, hogy a Blobok mely részei legyenek indexelve a `dataToExtract` konf
 
 Ha például csak a tárolási metaadatokat szeretné indexelni, használja a következőt:
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -249,6 +264,7 @@ Ha például csak a tárolási metaadatokat szeretné indexelni, használja a k�
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "dataToExtract" : "storageMetadata" } }
     }
+```
 
 ### <a name="using-blob-metadata-to-control-how-blobs-are-indexed"></a>BLOB-metaadatok használata a Blobok indexelésének vezérléséhez
 
@@ -264,6 +280,7 @@ A fent ismertetett konfigurációs paraméterek az összes blobra érvényesek. 
 
 Alapértelmezés szerint a blob-indexelő azonnal leáll, ha nem támogatott tartalomtípusú blobot (például egy képet) észlel. Természetesen használhatja a `excludedFileNameExtensions` paramétert bizonyos tartalomtípusok kihagyása érdekében. Előfordulhat azonban, hogy a blobokat a lehetséges tartalomtípusok előzetes ismerete nélkül kell indexelni. Ha nem támogatott tartalomtípust észlel, az indexelés folytatásához állítsa a `failOnUnsupportedContentType` konfigurációs paramétert a következőre `false` :
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -272,21 +289,28 @@ Alapértelmezés szerint a blob-indexelő azonnal leáll, ha nem támogatott tar
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "failOnUnsupportedContentType" : false } }
     }
+```
 
 Egyes Blobok esetében az Azure Cognitive Search nem tudja meghatározni a tartalomtípust, vagy nem tud feldolgozni egy egyébként támogatott tartalomtípusú dokumentumot. A hiba módjának figyelmen kívül hagyásához állítsa hamis értékre a `failOnUnprocessableDocument` konfigurációs paramétert:
 
+```http
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+```
 
 Az Azure Cognitive Search korlátozza az indexelt Blobok méretét. Ezek a korlátok az [Azure Cognitive Search szolgáltatási korlátaiban](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)vannak dokumentálva. A túlméretezett Blobok alapértelmezés szerint hibákként vannak kezelve. Azonban továbbra is indexelheti a túl nagy méretű Blobok tárolási metaadatait, ha `indexStorageMetadataOnlyForOversizedDocuments` a konfigurációs paraméter igaz értékre van állítva: 
 
+```http
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
+```
 
 Folytathatja az indexelést is, ha a hibák bármilyen feldolgozási ponton történnek, vagy a Blobok elemzése vagy a dokumentumok indexbe való felvétele során. Ha egy adott számú hibát szeretne figyelmen kívül hagyni, állítsa a `maxFailedItems` és a `maxFailedItemsPerBatch` konfigurációs paramétereket a kívánt értékekre. Például:
 
+```http
     {
       ... other parts of indexer definition
       "parameters" : { "maxFailedItems" : 10, "maxFailedItemsPerBatch" : 10 }
     }
+```
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Növekményes indexelés és törlés észlelése
 
@@ -345,6 +369,7 @@ Ehhez a következő lépések szükségesek:
 
 Az alábbi szabályzat például egy olyan blobot tekint, amelyet törölni kell, ha a metaadatok tulajdonsága a következő `IsDeleted` értékkel rendelkezik `true` :
 
+```http
     PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -360,6 +385,7 @@ Az alábbi szabályzat például egy olyan blobot tekint, amelyet törölni kell
             "softDeleteMarkerValue" : "true"
         }
     }
+```
 
 #### <a name="reindexing-undeleted-blobs"></a>Nem törölt Blobok újraindexelése
 
@@ -396,6 +422,7 @@ Ahhoz, hogy működjön, minden indexelő és más összetevőnek meg kell egyez
 
 Ha az összes blob egyszerű szöveget tartalmaz ugyanabban a kódolásban, akkor a **szöveges elemzési mód**használatával jelentősen javíthatja az indexelési teljesítményt. A szöveges elemzési mód használatához a következőt állítsa be a `parsingMode` konfigurációs tulajdonságra `text` :
 
+```http
     PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -404,14 +431,16 @@ Ha az összes blob egyszerű szöveget tartalmaz ugyanabban a kódolásban, akko
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "parsingMode" : "text" } }
     }
+```
 
 Alapértelmezés szerint a `UTF-8` rendszer a kódolást feltételezi. Másik kódolás megadásához használja a következő `encoding` konfigurációs tulajdonságot: 
 
+```http
     {
       ... other parts of indexer definition
       "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
     }
-
+```
 
 <a name="ContentSpecificMetadata"></a>
 ## <a name="content-type-specific-metadata-properties"></a>Tartalomtípus-specifikus metaadatok tulajdonságai

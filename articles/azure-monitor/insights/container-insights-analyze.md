@@ -3,11 +3,12 @@ title: Kubernetes-figyelés a Azure Monitor for containers szolgáltatással | M
 description: Ez a cikk azt ismerteti, hogyan tekintheti meg és elemezheti a Kubernetes-fürtök teljesítményét a tárolók Azure Monitorával.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 17efb89e36429f9658759a0ed90d4e7b785fe4b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8b298208794e4ba562a608f22f4d0a539b81b47
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340897"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166637"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>A Kubernetes-fürt teljesítményének figyelése a Azure Monitor for containers szolgáltatással
 
@@ -65,7 +66,7 @@ Az állapot kiszámítja a fürt általános állapotát úgy, hogy a három ál
 
 A következő táblázat a megfigyelt fürt állapotának a többfürtes nézeten belüli állapotát szabályozó számítás részletezését tartalmazza.
 
-| |Állapot |Rendelkezésre állás |
+| Figyelt fürt |Állapot |Rendelkezésre állás |
 |-------|-------|-----------------|
 |**Felhasználói Pod**| | |
 | |Kifogástalan |100% |
@@ -74,7 +75,7 @@ A következő táblázat a megfigyelt fürt állapotának a többfürtes nézete
 | |Ismeretlen |Ha nem jelentett az elmúlt 30 percben |
 |**System Pod**| | |
 | |Kifogástalan |100% |
-| |Figyelmeztetés |N.A. |
+| |Figyelmeztetés |N/A |
 | |Kritikus |<100% |
 | |Ismeretlen |Ha nem jelentett az elmúlt 30 percben |
 |**Csomópont** | | |
@@ -116,7 +117,7 @@ A tárolók Azure Monitor támogatja a Azure Monitor [metrikák Explorert](../pl
 
 A metrikák Explorerben megtekintheti az összesített csomópont-és Pod-kihasználtsági metrikákat Azure Monitor a tárolók számára. A következő táblázat összefoglalja a részleteket, amelyekkel megismerheti, Hogyan jeleníthető meg a metrikai diagramok a tároló metrikáinak megjelenítéséhez.
 
-|Névtér | Metric | Leírás |
+|Névtér | Metrika | Leírás |
 |----------|--------|-------------|
 | bepillantást nyerhet. tároló/csomópontok | |
 | | cpuUsageMillicores | A processzor kihasználtságának összesített mérése a fürtön belül. Ez egy CPU-mag, amely 1000 egységre oszlik (Millet = 1000). A magok olyan tárolóban való használatának megállapítására szolgál, amelyben sok alkalmazás egy mag használatát is felhasználhatja.|
@@ -188,9 +189,9 @@ Ezek az információk segítenek gyorsan megállapítani, hogy megfelelő-e a t�
 
 A **csomópontok** lap megtekintésekor megjelenő információkat az alábbi táblázat ismerteti.
 
-| Oszlop | Description |
+| Oszlop | Leírás |
 |--------|-------------|
-| Name | A gazdagép neve. |
+| Név | A gazdagép neve. |
 | Állapot | A csomópont állapotának Kubernetes. |
 | Min. &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;%  | A csomópontok átlagos százalékos aránya a megadott időtartamon belül a percentilis alapján. |
 | Min, AVG, 50, 90, 95., Max | A csomópontok átlagos tényleges értéke a percentilis alapján a megadott időtartam alatt. Az átlagos értéket a rendszer a csomópont processzor-/memória-korlátja alapján méri. A hüvelyek és a tárolók esetében ez a gazdagép által jelentett átlagos érték. |
@@ -231,9 +232,9 @@ Válassza ki az értéket az adott vezérlő **csomópont** oszlopában.
 
 A vezérlők megtekintésekor megjelenő információkat az alábbi táblázat ismerteti.
 
-| Oszlop | Description |
+| Oszlop | Leírás |
 |--------|-------------|
-| Name | A vezérlő neve.|
+| Név | A vezérlő neve.|
 | Állapot | A tárolók összesítési állapota, miután befejezte az állapotot, például *az OK*, a leállítva *, a* *sikertelen*, a *leállított*vagy a *szüneteltetve*állapotot. Ha a tároló fut, de az állapot nem volt megfelelően megjelenítve, vagy nem az ügynök vette át, és 30 percnél nem válaszolt, az állapot *ismeretlen*. Az állapotjelző ikon további részleteit a következő táblázat tartalmazza.|
 | Min. &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;%| Az egyes entitások átlagos százalékának összesítési átlaga a kiválasztott metrika és a percentilis esetében. |
 | Min, AVG, 50, 90, 95., Max  | A kiválasztott százalékos értékhez tartozó tároló átlagos CPU-millicore vagy memória-teljesítményének összesítése. Az átlagos értéket a hüvely processzor-/memória-korlátja határozza meg. |
@@ -268,9 +269,9 @@ Egy tárolóból megtekintheti a hüvely vagy a csomópont részletezését az a
 
 A tárolók megtekintésekor megjelenő információkat az alábbi táblázat ismerteti.
 
-| Oszlop | Description |
+| Oszlop | Leírás |
 |--------|-------------|
-| Name | A vezérlő neve.|
+| Név | A vezérlő neve.|
 | Állapot | A tárolók állapota, ha van ilyen. Az állapot ikon további részleteket tartalmaz a következő táblázatban.|
 | Min. &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;% | Az egyes entitások átlagos százalékos arányának összesítése a kiválasztott metrika és percentilis esetében. |
 | Min, AVG, 50, 90, 95., Max | A kiválasztott százalékos értékhez tartozó tároló átlagos CPU-millicore vagy memória-teljesítményének összesítése. Az átlagos értéket a hüvely processzor-/memória-korlátja határozza meg. |

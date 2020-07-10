@@ -3,11 +3,12 @@ title: Virtuális fájlrendszer csatlakoztatása egy készlethez
 description: Megtudhatja, hogyan csatlakoztathat egy virtuális fájlrendszert egy batch-készlethez.
 ms.topic: how-to
 ms.date: 08/13/2019
-ms.openlocfilehash: 80acf5df0cf5262249b2eac584152744a4224a35
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3f948f8441208f4a8741949e65afc8032f0a5080
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954672"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144407"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Virtuális fájlrendszer csatlakoztatása batch-készlethez
 
@@ -76,7 +77,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure-Blob fájlrendszer
 
-Egy másik lehetőség az Azure Blob Storage használata a [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)-on keresztül. A blob-fájlrendszer csatlakoztatásához a `AccountKey` vagy `SasKey` a Storage-fiók szükséges. A kulcsok beszerzésével kapcsolatos információkért lásd: a [Storage-fiók hozzáférési kulcsainak kezelése](../storage/common/storage-account-keys-manage.md)vagy [közös hozzáférésű aláírások (SAS) használata](../storage/common/storage-dotnet-shared-access-signature-part-1.md). A blobfuse használatával kapcsolatos további információkért tekintse meg a blobfuse- [hibákkal kapcsolatos gyakori kérdések](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)című témakört. A blobfuse csatlakoztatott könyvtár alapértelmezett hozzáférésének lekéréséhez futtassa **rendszergazdaként**a feladatot. A Blobfuse csatlakoztatja a könyvtárat a felhasználói tárhelyen, a készlet létrehozásakor pedig root-ként van csatlakoztatva. A Linux rendszerben minden **rendszergazdai** feladat a root. A biztosítéki modul összes beállítását a [biztosítéki útmutató lapon](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)találja.
+Egy másik lehetőség az Azure Blob Storage használata a [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md)-on keresztül. A blob-fájlrendszer csatlakoztatásához a `AccountKey` vagy `SasKey` a Storage-fiók szükséges. A kulcsok beszerzésével kapcsolatos információkért lásd: a [Storage-fiók hozzáférési kulcsainak kezelése](../storage/common/storage-account-keys-manage.md)vagy [közös hozzáférésű aláírások (SAS) használata](../storage/common/storage-sas-overview.md). A blobfuse használatával kapcsolatos további információkért tekintse meg a blobfuse- [hibákkal kapcsolatos gyakori kérdések](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)című témakört. A blobfuse csatlakoztatott könyvtár alapértelmezett hozzáférésének lekéréséhez futtassa **rendszergazdaként**a feladatot. A Blobfuse csatlakoztatja a könyvtárat a felhasználói tárhelyen, a készlet létrehozásakor pedig root-ként van csatlakoztatva. A Linux rendszerben minden **rendszergazdai** feladat a root. A biztosítéki modul összes beállítását a [biztosítéki útmutató lapon](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)találja.
 
 A hibaelhárítási útmutatón kívül a blobfuse-tárház GitHub-problémái is hasznosak lehetnek az aktuális blobfuse problémák és megoldások kereséséhez. További információ: blobfuse- [problémák](https://github.com/Azure/azure-storage-fuse/issues).
 

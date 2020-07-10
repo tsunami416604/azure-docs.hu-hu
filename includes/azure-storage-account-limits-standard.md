@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 05/20/2020
+ms.date: 07/08/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e2540bceab17e6f37fd94b28df3814ccffa1c81e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 509568b143c9fbbf236139ca83cb55b0ef39beb0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466902"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145921"
 ---
 Az alábbi táblázat az Azure általános célú v1, v2, blob Storage és a blob Storage-fiókokra vonatkozó alapértelmezett korlátokat ismerteti. A *bejövő* forgalom korlátja a Storage-fiókba küldendő összes adattal vonatkozik. A *kimenő* forgalom korlátja a Storage-fiókból kapott összes adattal vonatkozik.
 
@@ -23,7 +23,7 @@ Az alábbi táblázat az Azure általános célú v1, v2, blob Storage és a blo
 | Storage-fiók maximális kapacitása | 5 PiB <sup>1</sup>|
 | BLOB-tárolók, blobok, fájlmegosztás, táblák, várólisták, entitások vagy üzenetek maximális száma Storage-fiókban | Korlátlan |
 | Kérelmek maximális száma<sup>1</sup> – Storage-fiók | 20 000 kérelem másodpercenként |
-| Maximális belépés<sup>1</sup> /Storage-fiókra (USA, Európa régiói) | 10 Gbps |
+| Maximális belépés<sup>1</sup> /Storage-fiókra (USA, Európa régiói) | 10 Gbit/s |
 | Maximális bejövő forgalom<sup>1</sup> /Storage-fiókban (az USA-beli és európai régión kívül) | 5 GB/s if RA-GRS/GRS engedélyezve, 10 GB/s a LRS/ZRS<sup>2</sup> esetében |
 | Maximális kimenő forgalom az általános célú v2-és blob Storage-fiókokhoz (minden régió) | 50 GB/s |
 | Maximális kimenő forgalom az általános célú v1 Storage-fiókokhoz (USA-régiók) | 20 GB/s if RA-GRS/GRS engedélyezve, 30 GB/s a LRS/ZRS<sup>2</sup> esetében |
@@ -33,11 +33,7 @@ Az alábbi táblázat az Azure általános célú v1, v2, blob Storage és a blo
 
 <sup>1</sup> az Azure Storage standard fiókjai magasabb kapacitási korlátokat és magasabb korlátot támogatnak a bejövő forgalomra vonatkozóan. A fiók korlátozásának növeléséhez forduljon az [Azure ügyfélszolgálatához](https://azure.microsoft.com/support/faq/).
 
-<sup>2</sup> ha a Storage-fiókhoz engedélyezve van a Geo-redundáns tárolás (ra-GRS) vagy a Geo-Zone-redundáns tárolás (ra-GZRS), akkor a másodlagos hely kimenő elérési céljai azonosak az elsődleges helyével. Az [Azure Storage replikációs](https://docs.microsoft.com/azure/storage/common/storage-redundancy) lehetőségei a következők:
-
-[!INCLUDE [azure-storage-redundancy](azure-storage-redundancy.md)]
-
-<sup>3</sup> [Azure Data Lake Storage Gen2](../articles/storage/blobs/data-lake-storage-introduction.md) az Azure Blob Storage-ra épülő, Big Data Analytics szolgáltatáshoz dedikált képességek összessége.
+<sup>2</sup> ha a Storage-fiókhoz engedélyezve van a Geo-redundáns tárolás (ra-GRS) vagy a Geo-Zone-redundáns tárolás (ra-GZRS), akkor a másodlagos hely kimenő elérési céljai azonosak az elsődleges helyével. További információ: [Azure Storage-replikáció](../articles/storage/common/storage-redundancy.md).
 
 > [!NOTE]
 > A Microsoft azt javasolja, hogy a legtöbb forgatókönyv esetén általános célú v2 Storage-fiókot használjon. Az általános célú v1-et vagy az Azure Blob Storage-fiókot egy általános célú v2-fiókra is frissítheti állásidő nélkül, és anélkül, hogy adatmásolásra lenne szükség. További információ: [frissítés általános célú v2 Storage-fiókra](../articles/storage/common/storage-account-upgrade.md).

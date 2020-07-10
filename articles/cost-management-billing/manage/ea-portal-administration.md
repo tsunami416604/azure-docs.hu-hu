@@ -3,16 +3,16 @@ title: A nagyvállalati szerződéses Azure Portal adminisztrációja
 description: Ez a cikk a rendszergazdák Azure EA Portalon elvégzendő gyakori feladatait ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: eefd4a9ddf2150728578a4e058686a3204e34930
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 6169a18148b251540d66bce6e34374a16f697015
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456555"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044889"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 
@@ -33,7 +33,7 @@ A vállalati rendszergazdák a részlegekhez társíthatják a regisztrációban
 
 ## <a name="department-spending-quotas"></a>Részleg költségkvótái
 
-Az EA-ügyfelek megadhatják vagy módosíthatják a részlegek költségkvótáit a regisztráción belül. A költségkvóta összege az aktuális kötelezettségvállalási időszakra állítható be. Az aktuális kötelezettségvállalási időszak végén a rendszer meghosszabbítja a meglévő költségkvótát a következő kötelezettségvállalási időszakra, kivéve, ha az értékek frissülnek.
+Az EA-ügyfelek megadhatják vagy módosíthatják a részlegek költségkvótáit a regisztráción belül. A költségkvóta összege az aktuális előrefizetési időszakra állítható be. Az aktuális előrefizetési időszak végén a rendszer meghosszabbítja a meglévő költségkvótát a következő előrefizetési időszakra, kivéve, ha az értékek frissülnek.
 
 A részlegszintű rendszergazda megtekintheti a költségkvótát, de csak a vállalati rendszergazda frissítheti a kvóta összegét. A vállalati rendszergazda és a részlegszintű rendszergazda értesítést kap a kvóta 50, 75, 90 és 100 százalékának elérésekor.
 
@@ -48,9 +48,9 @@ A részlegszintű rendszergazda megtekintheti a költségkvótát, de csak a vá
     - Jelenleg a Részleg neve és a Költséghely is szerkeszthető.
  1. Kattintson a **Mentés** gombra.
 
-A részleg költségkvótája mostantól megjelenik a Részleg fül részlegek listáját tartalmazó nézetében. A jelenlegi kötelezettségvállalási időszak végén az Azure EA Portal fenntartja a költségkvótákat a következő kötelezettségvállalási időszakra.
+A részleg költségkvótája mostantól megjelenik a Részleg fül részlegek listáját tartalmazó nézetében. A jelenlegi előrefizetési időszak végén az Azure EA Portal fenntartja a költségkvótákat a következő előrefizetési időszakra.
 
-A részlegkvóta összege független az aktuális pénzügyi kötelezettségvállalástól, és a kvóta összege és a riasztások csak belső használatra szolgálnak. A részleg költségkvótái csak tájékoztató jellegűek, és nem kényszerítenek a költségkeretek betartására.
+A részlegkvóta összege független az aktuális Azure-előrefizetéstől, és a kvóta összege és a riasztások csak belső használatra szolgálnak. A részleg költségkvótái csak tájékoztató jellegűek, és nem kényszerítenek a költségkeretek betartására.
 
 ### <a name="department-administrator-to-view-the-quota"></a>A részlegszintű rendszergazda így tekintheti meg a kvótát:
 
@@ -174,7 +174,7 @@ Ez a dokumentum a fiókhoz tartozó előfizetés tulajdonjogával kapcsolatos gy
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Hány Azure-fióktulajdonos lehet előfizetésenként?
 
-Előfizetésenként csak egy fióktulajdonos engedélyezett.  További szerepkörök a [portal.azure.com] webhely bal felső sarkában található előfizetési fülön adhatók hozzá a szerepköralapú hozzáférés vagy a (Hozzáférés-vezérlés (IAM)) használatával (https://portal.azure.com) ).
+Előfizetésenként csak egy fióktulajdonos engedélyezett.  További szerepkörök az [Azure Portal](https://portal.azure.com) bal felső sarkában található előfizetési fülön adhatók hozzá a szerepköralapú hozzáférés vagy a Hozzáférés-vezérlés (IAM) használatával.
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Szerepelhet egy Azure-fiók tulajdonosa több részlegen is?
 

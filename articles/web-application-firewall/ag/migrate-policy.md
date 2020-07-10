@@ -7,15 +7,16 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eccd6b33353e071a66225279f1f1c150d4bdaafc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536624"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143848"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Webalkalmazási tűzfal házirendjeinek migrálása Azure PowerShell használatával
 
-Ez a szkript megkönnyíti az áttérést egy WAF-konfigurációból vagy egyéni szabályokból – csak a teljes WAF házirendre WAF. Előfordulhat, hogy megjelenik egy figyelmeztetés a portálon, amely a *WAF-házirendre való áttérést*írja elő, vagy ha szeretné, hogy az új nyilvános előzetes verziójú WAF-funkciók, például a Geomatch egyéni szabályok, a hely és az URI WAF házirendje, vagy a bot mérséklési szabályai. Ezen funkciók bármelyikének használatához az Application gatewayhez társított teljes WAF szabályzatra van szükség. 
+Ez a szkript megkönnyíti az áttérést egy WAF-konfigurációból vagy egyéni szabályokból – csak a teljes WAF házirendre WAF. Előfordulhat, hogy megjelenik egy figyelmeztetés a portálon, amely a *WAF házirendre való áttérést*írja elő, vagy ha szeretné, hogy az új WAF-funkciók, például a Geomatch egyéni szabályok (előzetes verzió), a site WAF-házirend és az URI WAF-szabályzat (előzetes verzió) vagy a bot-mérséklési szabályok (előzetes verzió). Ezen funkciók bármelyikének használatához az Application gatewayhez társított teljes WAF szabályzatra van szükség. 
 
 Az új WAF szabályzat létrehozásával kapcsolatos további információkért lásd: [webalkalmazási tűzfal házirendjeinek létrehozása a Application Gatewayhoz](create-waf-policy-ag.md). További információ az áttelepítésről: [Migrálás a WAF szabályzatba](create-waf-policy-ag.md#migrate-to-waf-policy).
 

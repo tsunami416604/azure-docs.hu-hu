@@ -10,11 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 03/09/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: a967bb1ac2c29b130ccd5e33b4aad768dd8daa6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 525dd90f37175dc5b2b50bc577a5a4f04649555b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557011"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146390"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit-modellek készítése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -145,6 +146,8 @@ estimator = SKLearn(source_directory=project_folder,
                    )
 ```
 
+> [!WARNING]
+> Azure Machine Learning a teljes forrás könyvtár másolásával futtatja a betanítási parancsfájlokat. Ha olyan bizalmas adatokkal rendelkezik, amelyeket nem szeretne felvenni, használja a [. ignore fájlt](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots) , vagy ne adja meg a forrás könyvtárában. Ehelyett egy [adattár](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)használatával férhet hozzá az adataihoz.
 
 A Python-környezet testreszabásával kapcsolatos további információkért lásd: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md). 
 

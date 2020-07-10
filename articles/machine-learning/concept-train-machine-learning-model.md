@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: tracking-python
-ms.openlocfilehash: a8c70254c7ba7a9525b843240230ac158e29a338
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985735"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147054"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
 
@@ -23,7 +23,7 @@ A Azure Machine Learning számos lehetőséget kínál a modellek betanításár
 
 + [Pythonhoz készült Azure Machine learning SDK](#python-sdk): a Python SDK számos módszert kínál a különböző képességekkel rendelkező modellek betanításához.
 
-    | Betanítási módszer | Description |
+    | Betanítási módszer | Leírás |
     | ----- | ----- |
     | [Konfiguráció futtatása](#run-configuration) | A **modellek betanításának általános módja** egy képzési parancsfájl használata és a konfiguráció futtatása. A futtatási konfiguráció biztosítja a modell betanításához használt képzési környezet konfigurálásához szükséges információkat. Elvégezheti a futtatási konfigurációt, a betanítási szkriptet és a számítási célt (a képzési környezetet) és a betanítási feladatot. |
     | [Automatizált gépi tanulás](#automated-machine-learning) | Az automatizált gépi tanulás lehetővé teszi a **modellek széles körű adatelemzési és programozási ismeretek nélküli tanítását**. Az adatelemzési és-programozási hátterű felhasználók számára lehetővé teszi az idő és az erőforrások megtakarítását az algoritmus kiválasztásának és a hiperparaméter hangolásának automatizálásával. Az automatizált gépi tanulás használatakor nem kell aggódnia a futtatási konfiguráció definiálásával kapcsolatban. |
@@ -96,7 +96,7 @@ A gépi tanulási folyamatok használhatják a korábban említett tanítási m�
 
 Az R SDK lehetővé teszi az R nyelv használatát a Azure Machine Learning. Az SDK a reticulate csomagot használja a Azure Machine Learning Python SDK-hoz való kötéshez. Ez lehetővé teszi a Python SDK-ban megvalósított alapvető objektumok és módszerek elérését bármely R-környezetből.
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
 * [Oktatóanyag: logisztikai regressziós modell létrehozása](tutorial-1st-r-experiment.md)
 * [Az R-hez készült Azure Machine Learning SDK-referenciák](https://azure.github.io/azureml-sdk-for-r/index.html)
@@ -131,6 +131,10 @@ A Machine learning parancssori felület egy bővítmény az Azure CLI-hez. Platf
 
 * [A CLI-bővítmény használata Azure Machine Learning](reference-azure-machine-learning-cli.md)
 * [MLOps az Azure-ban](https://github.com/microsoft/MLOps)
+
+## <a name="vs-code"></a>VS Code
+
+A VS Code bővítmény használatával futtathatja és kezelheti a betanítási feladatokat. További információt a [vs Code erőforrás-kezelési útmutatója](how-to-manage-resources-vscode.md#experiments) című témakörben talál.
 
 ## <a name="next-steps"></a>További lépések
 

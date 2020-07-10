@@ -4,12 +4,12 @@ description: Ismerkedjen meg a Azure Active Directory használatával a Batch Ma
 ms.topic: how-to
 ms.date: 04/27/2017
 ms.custom: has-adal-ref
-ms.openlocfilehash: b82d6b5f166f67752ea809353e074c01ac953a48
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 829a742c144f2bba39f1ca392e80db25640d4dee
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848985"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141970"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch-felügyeleti megoldások hitelesítése Active Directory
 
@@ -23,9 +23,9 @@ Ha többet szeretne megtudni a Batch Management .NET-könyvtár és a AccountMan
 
 ## <a name="register-your-application-with-azure-ad"></a>Az alkalmazás regisztrálása az Azure AD-ben
 
-A [Azure Active Directory Authentication Library](../active-directory/active-directory-authentication-libraries.md) (ADAL) egy programozott felületet biztosít az Azure ad számára az alkalmazásokon belüli használatra. Az ADAL az alkalmazásból való meghívásához regisztrálnia kell az alkalmazást egy Azure AD-bérlőben. Az alkalmazás regisztrálásakor az Azure AD-t az alkalmazással kapcsolatos információkkal látja el, beleértve az Azure AD-bérlőn belüli nevet is. Az Azure AD ezt követően egy alkalmazás-azonosítót biztosít, amelyet az alkalmazás az Azure AD-vel való hozzárendeléséhez használ futásidőben. Az alkalmazás-AZONOSÍTÓval kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
+A [Azure Active Directory Authentication Library](../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) egy programozott felületet biztosít az Azure ad számára az alkalmazásokon belüli használatra. Az ADAL az alkalmazásból való meghívásához regisztrálnia kell az alkalmazást egy Azure AD-bérlőben. Az alkalmazás regisztrálásakor az Azure AD-t az alkalmazással kapcsolatos információkkal látja el, beleértve az Azure AD-bérlőn belüli nevet is. Az Azure AD ezt követően egy alkalmazás-azonosítót biztosít, amelyet az alkalmazás az Azure AD-vel való hozzárendeléséhez használ futásidőben. Az alkalmazás-AZONOSÍTÓval kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
 
-A AccountManagement-minta alkalmazás regisztrálásához kövesse az alkalmazások [hozzáadása](../active-directory/develop/quickstart-register-app.md) című szakasz lépéseit az [alkalmazások integrálása a Azure Active Directorysal](../active-directory/active-directory-integrating-applications.md)című témakörben. **Natív ügyfélalkalmazás** megadása az alkalmazás típusához. Az iparági szabványnak megfelelő OAuth 2,0 URI az **átirányítási URI** -hoz `urn:ietf:wg:oauth:2.0:oob` . Megadhat azonban bármilyen érvényes URI-t (például `http://myaccountmanagementsample` ) az **átirányítási URI**számára, mivel nem kell valódi végpontnak lennie.
+A AccountManagement-minta alkalmazás regisztrálásához kövesse az alkalmazások [hozzáadása](../active-directory/develop/quickstart-register-app.md) című szakasz lépéseit az [alkalmazások integrálása a Azure Active Directorysal](../active-directory/develop/quickstart-register-app.md)című témakörben. **Natív ügyfélalkalmazás** megadása az alkalmazás típusához. Az iparági szabványnak megfelelő OAuth 2,0 URI az **átirányítási URI** -hoz `urn:ietf:wg:oauth:2.0:oob` . Megadhat azonban bármilyen érvényes URI-t (például `http://myaccountmanagementsample` ) az **átirányítási URI**számára, mivel nem kell valódi végpontnak lennie.
 
 ![Alkalmazás hozzáadása](./media/batch-aad-auth-management/app-registration-management-plane.png)
 

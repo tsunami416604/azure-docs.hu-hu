@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 253d2c80f5a6ff96ba9249eddd127abb74f79a33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c87812e665617f3ccfe48db3a0cca2ceac67f0bc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515809"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147437"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -79,7 +79,7 @@ Az alábbi lépésekkel konfigurálhatja ezeket a számítási célokat:
 * [Számítási fürt Azure Machine Learning](#amlcompute)
 * [Azure Machine Learning számítási példány](#instance)
 * [Távoli virtuális gépek](#vm)
-* [Azure-HDInsight](#hdinsight)
+* [Azure HDInsight](#hdinsight)
 
 
 ### <a name="local-computer"></a><a id="local"></a>Helyi számítógép
@@ -207,7 +207,7 @@ Ebben a forgatókönyvben az Azure Data Science Virtual Machine (DSVM) használa
 
 Most, hogy csatlakoztatta a számítási és konfigurálta a futtatást, a következő lépés a [betanítási Futtatás elküldése](#submit).
 
-### <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure-HDInsight 
+### <a name="azure-hdinsight"></a><a id="hdinsight"></a>Azure HDInsight 
 
 Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apache Spark biztosít, amely a modell betanítására használható.
 
@@ -389,7 +389,7 @@ További információ: erőforrás- [kezelés](reference-azure-machine-learning-
 
 ## <a name="set-up-with-vs-code"></a>Beállítás a VS Code-ban
 
-A munkaterülethez társított számítási célokat a Azure Machine Learninghoz tartozó [vs Code bővítménnyel](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets) érheti el, hozhatja létre és kezelheti.
+A munkaterülethez társított számítási célokat a Azure Machine Learninghoz tartozó [vs Code bővítménnyel](how-to-manage-resources-vscode.md#compute-clusters) érheti el, hozhatja létre és kezelheti.
 
 ## <a name="submit-training-run-using-azure-machine-learning-sdk"></a><a id="submit"></a>Betanítási Futtatás beküldése a Azure Machine Learning SDK-val
 

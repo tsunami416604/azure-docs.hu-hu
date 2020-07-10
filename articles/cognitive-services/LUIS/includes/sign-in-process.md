@@ -40,7 +40,7 @@ A LUIS új felhasználójának a következő eljárást kell követnie:
     * **Hely** – a hely kiválasztása az **erőforráscsoport** kiválasztása alapján történik.
     * **Árképzési szint** – az árképzési szint meghatározza a másodpercenkénti és havi maximális tranzakciót.
 
-1. Megjelenik a létrehozandó erőforrás összegzése. Kattintson a **Tovább** gombra.
+1. Megjelenik a létrehozandó erőforrás összegzése. Válassza a **Tovább** gombot.
 
     ![Szerzői erőforrás létrehozása](../media/sign-in/sign-in-confirm-key-selection.png)
 

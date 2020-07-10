@@ -11,11 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab57d48e8bd95f1ce2aec2dde42303d5d991a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa83e295460cc847647e83c7e4e8a9d7ee91f6f4
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444250"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165770"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>A Azure Active Directory eszköz üzembe helyezésének megtervezése
 
@@ -65,7 +66,7 @@ A technológiai projektek meghibásodása esetén általában a hatás, az eredm
 
 Ehhez a csomaghoz adja hozzá a következő érintett feleket a listához:
 
-| Szerepkör| Description |
+| Szerepkör| Leírás |
 | - | - |
 | Eszköz rendszergazdája| Az eszköz csapatának képviselője, amely képes ellenőrizni, hogy a csomag megfelel-e a szervezete igényeinek. |
 | Hálózati rendszergazda| A hálózati csapat képviselője, amely gondoskodik a hálózati követelmények teljesítéséről. |
@@ -101,7 +102,7 @@ A fa használatával meghatározhatja a szervezeti tulajdonú eszközök beáll�
 
 az iOS-és Android-eszközök csak az Azure AD regisztrálva lehetnek. A következő táblázat a Windows-ügyféleszközök magas szintű szempontjait mutatja be. Használja áttekintésként, majd vizsgálja meg a különböző integrációs módszereket részletesen.
 
-| | Az Azure AD-ban regisztrálva| Azure AD-csatlakozás| Hibrid Azure AD-csatlakozás |
+| Megfontolandó | Az Azure AD-ban regisztrálva| Azure AD-csatlakozás| Hibrid Azure AD-csatlakozás |
 | - | - | - | - |
 | **Ügyféloldali operációs rendszerek**| | |  |
 | Windows 10-eszközök| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png)| ![Ellenőrizze](./media/plan-device-deployment/check.png) |

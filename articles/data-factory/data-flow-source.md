@@ -7,12 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/05/2020
-ms.openlocfilehash: e106f5b615cd667551ef3d597a45b522320eed6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/08/2020
+ms.openlocfilehash: 5fc8352caa05a59508df7ada95518a5efb58e7df
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610183"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147464"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamban 
 
@@ -42,9 +43,9 @@ Az adatforgalom leképezése egy kinyerési, betöltési, átalakítási (ELT) m
 
 | Összekötő | Formátum | Adatkészlet/beágyazott |
 | --------- | ------ | -------------- |
-| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
-| [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Common adatmodell (előzetes verzió)](format-common-data-model.md#source-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br>✓/✓ <br/> ✓/- <br> ✓/- |
+| [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br> [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br>✓/✓ <br/> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties)  <br> [Common adatmodell (előzetes verzió)](format-common-data-model.md#source-properties) <br> [Tagolt szöveg](format-delimited-text.md#mapping-data-flow-properties) <br> [Excel](format-excel.md#mapping-data-flow-properties) <br> [JSON](format-json.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/-<br/> -/✓ <br> ✓/- <br> ✓/✓ <br>✓/- <br/> ✓/- |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
@@ -62,7 +63,7 @@ Miután hozzáadta a forrást, konfigurálja a **beállításokat a forrás beá
 **Kimeneti adatfolyam neve:** A forrás-átalakítás neve.
 
 **Forrás típusa:** Válassza ki, hogy egy beágyazott adatkészletet vagy egy meglévő adatkészlet-objektumot szeretne használni.
- 
+
 A **kapcsolatok tesztelése:** Annak ellenőrzése, hogy az adatfolyam Spark-szolgáltatása sikeresen tud-e csatlakozni a forrás-adatkészletben használt társított szolgáltatáshoz. A funkció engedélyezéséhez a hibakeresési módot kell bekapcsolni.
 
 **Séma drift:** a [Schema drift](concepts-data-flow-schema-drift.md) az adatforgalomban lévő rugalmas sémák natív módon történő kezelése, anélkül, hogy explicit módon meg kellene határozni az oszlopok módosításait.

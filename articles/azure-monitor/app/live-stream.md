@@ -4,12 +4,12 @@ description: Valós időben figyelheti a webalkalmazást egyéni metrikákkal, �
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 10818a531a43b50b86a6d413c7a504e2c19c3986
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e554595a7a88e1455f7426636dc69db99a7d3e94
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507346"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166484"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Élő metrikastream: figyelje & diagnosztizálása 1 másodperces késéssel
 
@@ -49,12 +49,12 @@ Győződjön meg arról, hogy a [kimenő portok élő metrikastream](../../azure
 
 | |Élő stream | Metrikaböngésző és elemzés |
 |---|---|---|
-|Késés|Egy másodpercen belül megjelenített adatértékek|Percek alatt összesítve|
-|Nincs megőrzés|Az adatmegőrzési idő a diagramon marad, és a rendszer elveti|[90 napig megőrzött adat](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
-|Igény szerinti|Az adatok csak az élő metrikák ablaktábla megnyitásakor áramlanak. |Ha az SDK telepítve és engedélyezve van, az adatküldés történik|
-|Ingyenes|Élő stream-adatszolgáltatásért nem számítunk fel díjat|A [díjszabás](../../azure-monitor/app/pricing.md) hatálya alá tartozik
-|Mintavételezés|Minden kiválasztott metrika és számláló továbbítva van. A hibák és a verem nyomkövetési mintája. A TelemetryProcessors nincsenek alkalmazva.|Az események [mintavétele](../../azure-monitor/app/api-filtering-sampling.md) megtörténhet|
-|Vezérlési csatorna|A szűrő vezérlő jeleit a rendszer elküldi az SDK-nak. Javasoljuk, hogy gondoskodjon a csatorna biztonságáról.|A kommunikáció egyik módja a portálnak|
+|**Késés**|Egy másodpercen belül megjelenített adatértékek|Percek alatt összesítve|
+|**Nincs megőrzés**|Az adatmegőrzési idő a diagramon marad, és a rendszer elveti|[90 napig megőrzött adat](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|**Igény szerinti**|Az adatok csak az élő metrikák ablaktábla megnyitásakor áramlanak. |Ha az SDK telepítve és engedélyezve van, az adatküldés történik|
+|**Ingyenes**|Élő stream-adatszolgáltatásért nem számítunk fel díjat|A [díjszabás](../../azure-monitor/app/pricing.md) hatálya alá tartozik
+|**Mintavételezés**|Minden kiválasztott metrika és számláló továbbítva van. A hibák és a verem nyomkövetési mintája. A TelemetryProcessors nincsenek alkalmazva.|Az események [mintavétele](../../azure-monitor/app/api-filtering-sampling.md) megtörténhet|
+|**Vezérlési csatorna**|A szűrő vezérlő jeleit a rendszer elküldi az SDK-nak. Javasoljuk, hogy gondoskodjon a csatorna biztonságáról.|A kommunikáció egyik módja a portálnak|
 
 ## <a name="select-and-filter-your-metrics"></a>Metrikák kiválasztása és szűrése
 

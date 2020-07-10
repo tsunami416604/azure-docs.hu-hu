@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 2f61345cd55fc9541f9e1b707389d0b9d06685b0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
+ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873435"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86077158"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
@@ -67,7 +67,7 @@ A Cost Management az alábbi beépített szerepköröket támogatja a következ�
 
 A Cost Management-közreműködő az ajánlott, minimális jogosultsághoz tartozó szerepkör. A költségek hatékonyabb monitorozása és jelentése érdekében hozzáférést biztosít a költségvetések és az exportálások létrehozásához és kezeléséhez. A Cost Management-közreműködőknek további szerepkörökre is szükségük lehet a teljes körű költségkezelési forgatókönyvek támogatásához. Vegyük példaként a következő forgatókönyveket:
 
-- **Jelentéskészítés az erőforrás-használatról** – Az Azure Cost Management megjeleníti a költségeket az Azure Portalon, és használati adatokat is tartalmaz a teljes használat költségeihez, valamint az API és a letöltés díjaihoz kapcsolódóan, azonban a részletesebb áttekintés érdekében érdemes lehet a részletes használati metrikákat is megvizsgálni az Azure Monitorban. Vegye fontolóra [Figyelési olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader) szerepkör biztosítását minden olyan hatókörön, ahol a részletes használati metrikák jelentésére is szükség van.
+- **Jelentéskészítés az erőforrás-használatról** – Az Azure Cost Management megjeleníti a költségeket az Azure Portalon, amely használati adatokat is tartalmaz, mivel a költségek a teljes használati mintához kötődnek. A jelentés az API-k és a letöltés díjait is tartalmazhatja, azonban a részletesebb áttekintés érdekében érdemes lehet a részletes használati metrikákat is megvizsgálni az Azure Monitorban. Vegye fontolóra [Figyelési olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader) szerepkör biztosítását minden olyan hatókörön, ahol a részletes használati metrikák jelentésére is szükség van.
 - **Művelet a költségvetés túllépése esetén** – A Cost Management-közreműködőknek hozzáférésre van szükségük a műveletcsoportok létrehozásához és/vagy kezeléséhez is a túllépésre való automatikus reagálás érdekében. Vegye fontolóra a [Monitorozási közreműködő](../../role-based-access-control/built-in-roles.md#monitoring-contributor) megadását egy olyan erőforráscsoportnak, amely magában foglalja a költségvetési küszöbértékek túllépésekor alkalmazandó műveletcsoportot. A konkrét műveletek automatizálása további szerepköröket igényel a felhasznált konkrét szolgáltatásokhoz, például: Automation és Azure Functions.
 - **Költségadatok exportálásának ütemezése** – A Cost Management-közreműködőknek hozzáférésre van szükségük a tárfiókok kezeléséhez is, hogy beütemezhessék az adatok tárfiókba másolását célzó exportálást. Vegye fontolóra a [Tárfiók-közreműködő](../../role-based-access-control/built-in-roles.md#storage-account-contributor) megadását egy olyan erőforráscsoportnak, amely magában foglalja azt a tárfiókot, ahová a költségadatokat exportálják.
 - **A költségmegtakarítási javaslatok megtekintése** – Alapértelmezés szerint a Cost Management-olvasók és a Cost Management-közreműködők számára is elérhető a költségjavaslatok *megtekintése*. Azonban a költségjavaslatokkal kapcsolatos műveletekhez való hozzáféréshez az egyes erőforrásokhoz kell hozzáféréssel rendelkezni. Vegye fontolóra egy [szolgáltatásspecifikus szerepkör](../../role-based-access-control/built-in-roles.md#all) megadását, ha költségalapú javaslattal kapcsolatos műveletet szeretne elvégezni.

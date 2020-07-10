@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03d4c2e0685ea165cbad524360a3db6e6c809733
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81262434"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146133"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>A hibás helyesírási hibák és az elírások kijavítása a zavaros kereséssel
 
@@ -85,37 +86,49 @@ Tegyük fel, hogy a következő sztring létezik egy `"Description"` keresési d
 
 Kezdje egy fuzzy kereséssel a "speciális" kifejezésre, és vegyen fel találatot kiemelve a Leírás mezőbe:
 
-    search=special~&highlight=Description
+```console
+search=special~&highlight=Description
+```
 
 A válaszban, mivel a találatok kiemelését adta hozzá, a formázás a "speciális" értékre lesz alkalmazva a megfelelő kifejezésként.
 
-    "@search.highlights": {
-        "Description": [
-            "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
-        ]
+```output
+"@search.highlights": {
+    "Description": [
+        "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
+    ]
+```
 
 Próbálja megismételni a kérést, és a "speciális" kifejezés elindításával több betűt ("PE") kell kiírnia:
 
-    search=scial~&highlight=Description
+```console
+search=scial~&highlight=Description
+```
 
 Eddig nem változik a válasz. Az alapértelmezett 2 fokos távolságot használva a "speciális" két karakterből álló "PE" eltávolítása továbbra is lehetővé teszi az adott időszak sikeres egyeztetését.
 
-    "@search.highlights": {
-        "Description": [
-            "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
-        ]
+```output
+"@search.highlights": {
+    "Description": [
+        "Test queries with <em>special</em> characters, plus strings for MSFT, SQL and Java."
+    ]
+```
 
 Még egy kérelem kipróbálása, a keresési kifejezés további módosítása: egy utolsó karakter megadásával összesen három törlésre (a "speciális" értékről a "skálázásra"):
 
-    search=scal~&highlight=Description
+```console
+search=scal~&highlight=Description
+```
 
 Figyelje meg, hogy ugyanazt a választ adja vissza, de mostantól nem a "speciális" értékre, hanem az "SQL" kifejezésre.
 
-            "@search.score": 0.4232868,
-            "@search.highlights": {
-                "Description": [
-                    "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
-                ]
+```output
+        "@search.score": 0.4232868,
+        "@search.highlights": {
+            "Description": [
+                "Mix of special characters, plus strings for MSFT, <em>SQL</em>, 2019, Linux, Java."
+            ]
+```
 
 Ennek a kibővített példának a lényege, hogy illusztrálja, hogy a találatok kiemelése nem egyértelmű eredményeket hoz. A rendszer minden esetben ugyanazt a dokumentumot adja vissza. Ha a dokumentumok azonosítóit használta a egyezés ellenőrzéséhez, lehetséges, hogy kihagyta a "speciális" és "SQL" közötti váltást.
 

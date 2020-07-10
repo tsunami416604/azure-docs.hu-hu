@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b4980ee8ea252b4ce13601501e4bf1f7af97d1b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80295443"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86166365"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>A Media Services API és a REST hozzáférése Azure AD-hitelesítéssel
 
@@ -49,7 +49,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
 - [Hozzon létre egy Azure Media Services fiókot a Azure Portal használatával](media-services-portal-create-account.md).
 - Tekintse át a [hozzáférés Azure Media Services API-t az Azure ad-hitelesítés áttekintésével foglalkozó](media-services-use-aad-auth-to-access-ams-api.md) cikkben.
 - Telepítse a [Poster](https://www.getpostman.com/) Rest-ügyfelet, hogy végrehajtsa a cikkben látható REST API-kat. 
@@ -137,8 +137,10 @@ Ez a szakasz bemutatja, hogyan használható a **Poster** egy olyan REST API vé
 
     Azt is megteheti, hogy a Poster-ablak jobb oldalán található **tömeges szerkesztés** hivatkozásra kattint, és beilleszti a következő kódot.
 
-        Content-Type:application/x-www-form-urlencoded
-        Keep-Alive:true
+    ```javascript
+    Content-Type:application/x-www-form-urlencoded
+    Keep-Alive:true
+    ```
 
 6. Nyomja meg a **törzs** fület.
 7. Adja meg a törzs adatait a "kulcs/érték" adatrács használatával (cserélje le az ügyfél-azonosítót és a titkos értékeket). 
@@ -147,10 +149,12 @@ Ez a szakasz bemutatja, hogyan használható a **Poster** egy olyan REST API vé
 
     Azt is megteheti, hogy a Poster ablak jobb oldalán a **tömeges szerkesztés** elemre kattint, és beilleszti a következő törzset (az ügyfél-azonosító és a titkos értékek helyett):
 
-        grant_type:client_credentials
-        client_id:{Your Client ID that you got from your Azure AD Application}
-        client_secret:{Your client secret that you got from your Azure AD Application's Keys}
-        resource:https://rest.media.azure.net
+    ```javascript
+    grant_type:client_credentials
+    client_id:{Your Client ID that you got from your Azure AD Application}
+    client_secret:{Your client secret that you got from your Azure AD Application's Keys}
+    resource:https://rest.media.azure.net
+    ```
 
 8. Kattintson a **Küldés** gombra.
 
@@ -180,11 +184,13 @@ Ez a szakasz bemutatja, hogyan érheti el az **assets** API-t a **Poster**haszn�
 5. A Poster ablak jobb oldalán kattintson a **tömeges szerkesztés** hivatkozásra.
 6. Illessze be a következő fejléceket:
 
-        x-ms-version:2.19
-        Accept:application/json
-        Content-Type:application/json
-        DataServiceVersion:3.0
-        MaxDataServiceVersion:3.0
+    ```javascript
+    x-ms-version:2.19
+    Accept:application/json
+    Content-Type:application/json
+    DataServiceVersion:3.0
+    MaxDataServiceVersion:3.0
+    ```
 
 7. Kattintson a **Küldés** gombra.
 

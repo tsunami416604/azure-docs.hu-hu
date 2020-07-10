@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatja Azure Batch file Conventions Libr
 ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba1b35bd8f2a4cc58558607581d10b598d23058c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2e06bc90c95f9951895e0434ec8a8a7defaa6156
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965195"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147161"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Feladat-és tevékenységadatok megőrzése az Azure Storage-ban a Batch file Conventions Library for .NET
 
@@ -55,7 +55,7 @@ Ahhoz, hogy a kimeneti adatokat az Azure Storage-ba a file Conventions Library h
 
 Ha a fájl-konvenciók könyvtárával szeretné megőrizni a feladatok és a feladatok kimeneti adatait, hozzon létre egy tárolót az Azure Storage-ban, majd mentse a kimenetet a tárolóba. A feladathoz tartozó [Azure Storage ügyféloldali kódtárat](https://www.nuget.org/packages/WindowsAzure.Storage) használhatja a .net-hez a feladat kimenetének tárolóba való feltöltéséhez.
 
-További információ a tárolók és Blobok Azure Storage-beli használatáról: az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+További információ a tárolók és Blobok Azure Storage-beli használatáról: az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md).
 
 > [!WARNING]
 > A file Conventions függvénytárban megőrzött összes feladat és feladat kimenete ugyanabban a tárolóban van tárolva. Ha nagy számú feladat próbálkozik a fájlok egyidejű megtartásával, az Azure Storage-szabályozás korlátozásai kényszerítve lehetnek. További információ a szabályozás korlátairól: [a blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája](../storage/blobs/storage-performance-checklist.md).

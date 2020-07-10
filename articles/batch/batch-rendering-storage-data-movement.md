@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 6fff0e224aaa6bb247543282ac16fbb33fe7e904
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965263"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147296"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Tárolási és adatáthelyezési lehetőségek az eszköz és a kimeneti fájlok megjelenítéséhez
 
@@ -87,7 +87,7 @@ Mivel a fájlok egyszerűen Blobok az Azure Storage-ban, a standard blob API-kat
 
 A [Azure Files](../storage/files/storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az SMB protokollon keresztül érhető el.  Azure Files az Azure Blob Storage-on alapul; [költséghatékony](https://azure.microsoft.com/pricing/details/storage/files/) , és konfigurálható adatreplikálással egy másik régióba, így globálisan redundáns.  A [méretezési célokat](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets) felül kell vizsgálni annak megállapításához, hogy Azure filest kell-e használni az előrejelzési készlet mérete és az adategységek száma miatt.
 
-Az Azure-fájlmegosztás csatlakoztatására vonatkozó [blogbejegyzések](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) és [dokumentációk](../storage/files/storage-how-to-use-files-windows.md) .
+Az Azure-fájlmegosztás csatlakoztatására vonatkozó [dokumentációt](../storage/files/storage-how-to-use-files-windows.md) tartalmaz.
 
 ### <a name="mounting-an-azure-files-share"></a>Azure Files-megosztás csatlakoztatása
 

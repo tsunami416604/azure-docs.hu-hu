@@ -1,22 +1,22 @@
 ---
-title: Az Azure SQL Database-adatbázisok foglalási kedvezményeinek ismertetése | Microsoft Docs
-description: Megtudhatja, hogy a rendszer hogyan alkalmazza a foglalási kedvezményt a futó Azure SQL Database-adatbázisokra.
+title: Az Azure SQL Database foglalási kedvezményeinek ismertetése | Microsoft Docs
+description: Megtudhatja, hogy a rendszer hogyan alkalmazza a foglalási kedvezményt a futó Azure SQL-adatbázisokra.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: e402eabce5fd7af6ca9f51a1d67175cd8e5e1ce4
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 736e046b5254de9aa18c898994d7df11efc98a9a
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84726060"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86037987"
 ---
-# <a name="how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>A foglalási kedvezmény alkalmazása futó Azure SQL Database-adatbázisokra
+# <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>A foglalási kedvezmény alkalmazása az Azure SQL Database-re
 
-A fenntartott Azure SQL Database-kapacitás megvásárlása után automatikusan alkalmazva lesz a foglalási kedvezmény a foglalás attribútumaival és mennyiségével egyező SQL Database-adatbázisokra. A foglalás az SQL Database-adatbázis számítási költségeit fedezi. A szoftverért, a tárolásért és a hálózatkezelésért a normál díjakat kell fizetnie. Az [Azure Hybrid Benefittel](https://azure.microsoft.com/pricing/hybrid-benefit/) fedezheti az SQL Database-adatbázisok licencelési költségeit.
+A fenntartott Azure SQL Database-kapacitás megvásárlása után a rendszer automatikusan alkalmazza a foglalási kedvezményt a foglalás attribútumaival és mennyiségével egyező SQL-adatbázisokra. A foglalás az SQL Database-adatbázis számítási költségeit fedezi. A szoftverért, a tárolásért és a hálózatkezelésért a normál díjakat kell fizetnie. Az [Azure Hybrid Benefittel](https://azure.microsoft.com/pricing/hybrid-benefit/) fedezheti az SQL Database licencelési költségeit.
 
 A foglalási kedvezmények nem alkalmazhatók a kiszolgáló nélküli Azure SQL Database-re.
 
@@ -28,17 +28,17 @@ A foglalási kedvezmény csak akkor érvényes, ha *folyamatosan igénybe veszi*
 
 Egy erőforrás leállításakor a rendszer a foglalási kedvezményt automatikusan a megadott hatókör egy másik egyező erőforrására alkalmazza. Ha nem találhatók egyező erőforrások a megadott hatókörben, akkor a lefoglalt órák *elvesznek*.
 
-## <a name="discount-applied-to-sql-databases"></a>Az SQL Database-adatbázisokra alkalmazott kedvezmények
+## <a name="discount-applied-to-running-sql-databases"></a>A futó SQL-adatbázisokra alkalmazott kedvezmények
 
- A fenntartott SQL Database-kapacitásra érvényes kedvezményt a rendszer óránként alkalmazza a futó SQL Database-adatbázisokra. A megvásárolt foglalást a rendszer megfelelteti a futó SQL Database-adatbázisok általi számításierőforrás-használatnak. Azon SQL Database-adatbázisok esetében, amelyek nem futnak egy teljes órán át, a rendszer automatikusan a foglalási attribútumokkal egyező egyéb SQL Database-adatbázisokra alkalmazza a foglalást. A kedvezmény párhuzamosan futó SQL Database-adatbázisokra is alkalmazható. Ha nem rendelkezik olyan, a foglalási attribútumokkal egyező SQL Database-adatbázisokkal, amelyek egy teljes órán át futnak, akkor arra az órára nem kapja meg a foglalási kedvezménnyel járó teljes előnyt.
+ A fenntartott SQL Database-kapacitásra vonatkozó kedvezményt a rendszer óránként alkalmazza a futó SQL-adatbázisokra. A megvásárolt foglalást a rendszer megfelelteti a számítási erőforrások futó SQL-adatbázisok általi használatának. Azon SQL-adatbázisok esetében, amelyek nem futnak egy teljes óráig, a rendszer automatikusan a foglalás jellemzőinek megfelelő más SQL-adatbázisokra alkalmazza a foglalást. A kedvezmény párhuzamosan futó SQL-adatbázisokra is alkalmazható. Ha nem rendelkezik olyan, a foglalási attribútumokkal egyező SQL-adatbázisokkal, amelyek egy teljes órán át futnak, akkor arra az órára nem kapja meg a foglalási kedvezménnyel járó teljes előnyt.
 
 Az alábbi példák bemutatják, hogyan lesz alkalmazva a fenntartott SQL Database-kapacitásra érvényes kedvezmény a megvásárolt magok száma alapján, és az alapján, mikor futnak.
 
 - 1\. forgatókönyv: Megvásárol egy fenntartott SQL Database-kapacitást egy 8 magos SQL Database-adatbázishoz. Egy olyan 16 magos SQL Database-adatbázist futtat, amely egyezik a foglalás többi attribútumával. A 8 magos SQL Database-adatbázis számításierőforrás-használatáért használatalapú díjat kell fizetnie. A foglalási kedvezményt a 8 magos SQL-adatbázis egy órányi számításierőforrás-használatára kapja meg.
 
-A többi példa esetében azt feltételezzük, hogy a fenntartott SQL Database-kapacitást egy 16 magos SQL Database-adatbázishoz vásárolta, és a többi foglalási attribútum megegyezik a futó SQL Database-adatbázisokkal.
+A többi példa esetében azt feltételezzük, hogy a fenntartott SQL Database-kapacitást egy 16 magos SQL Database-adatbázishoz vásárolta, és a többi foglalási attribútum megegyezik a futó SQL-adatbázisokkal.
 
-- 2\. forgatókönyv: Két 8 magos SQL Database-adatbázist futtat egy-egy óráig. A 16 magos foglalási kedvezményt a rendszer mindkét 8 magos SQL Database-adatbázis számításierőforrás-használatára alkalmazza.
+- 2\. forgatókönyv: Két 8 magos SQL-adatbázist futtat egy-egy óráig. A 16 magos foglalási kedvezményt a rendszer mindkét 8 magos SQL-adatbázis számításierőforrás-használatára alkalmazza.
 - 3\. forgatókönyv: Egy 16 magos SQL Database-adatbázist futtat 13:00-tól 13:30-ig. Egy másik 16 magos SQL Database-adatbázist 13:30-tól 14:00-ig futtat. A foglalási kedvezmény mindkettőt fedezi.
 - 4\. forgatókönyv: Egy 16 magos SQL Database-adatbázist futtat 13:00-tól 13:45-ig. Egy másik 16 magos SQL Database-adatbázist 13:30-tól 14:00-ig futtat. A 15 perces átfedésért használatalapú díjat kell fizetnie. A fennmaradó idő számításierőforrás-használatára érvényes a foglalási kedvezmény.
 

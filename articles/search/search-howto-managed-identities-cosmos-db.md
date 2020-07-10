@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: c67a5537a74e37473280fbd44fa47c65f2a37806
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 107cd113645a2cbd4b452f9350fa67d734ee6df8
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563142"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143654"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>Indexelő-kapcsolatok beállítása egy Cosmos DB-adatbázishoz felügyelt identitás használatával (előzetes verzió)
 
@@ -85,7 +85,7 @@ api-key: [Search service admin key]
 
 A kérelem törzse tartalmazza az adatforrás definícióját, amelynek tartalmaznia kell a következő mezőket:
 
-| Mező   | Description |
+| Mező   | Leírás |
 |---------|-------------|
 | **név** | Kötelező. Válasszon egy tetszőleges nevet az adatforrás-objektum megjelenítéséhez. |
 |**típusa**| Kötelező. Kell lennie `cosmosdb` . |
@@ -126,6 +126,7 @@ Miután létrehozta az indexet és az adatforrást, készen áll az indexelő l�
 
 Példa indexelő definícióra:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -136,6 +137,7 @@ Példa indexelő definícióra:
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Ez az indexelő két óránként fut (az ütemezett időköz értéke "PT2H"). Az indexelő 30 percenkénti futtatásához állítsa az intervallumot "PT30M" értékre. A legrövidebb támogatott időköz 5 perc. Az ütemterv nem kötelező – ha nincs megadva, az indexelő csak egyszer fut a létrehozáskor. Az indexelő igény szerinti futtatása azonban bármikor elvégezhető.   
 

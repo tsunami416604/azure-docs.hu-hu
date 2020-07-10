@@ -9,15 +9,16 @@ ms.topic: conceptual
 ms.author: larryfr
 author: larryfr
 ms.date: 11/12/2019
-ms.openlocfilehash: 8932640a69ad68e0fd30b8577ba95768dbf8b9b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e41323d05f1a81fbc73a9158cf30c2b0f7953f3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85660810"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147073"
 ---
 # <a name="secure-code-best-practices-with-azure-machine-learning"></a>Ajánlott eljárások a szabályzatok biztonságossá tételéhez Azure Machine Learning
 
-Azure Machine Learning a fájlokat és tartalmakat bármilyen forrásból feltöltheti. A Jupyter-jegyzetfüzeteken vagy-szkripteken belüli tartalmak beolvashatják a munkamenetek adatait, hozzáférhetnek a szervezeten belüli adatokhoz az Azure-ban, vagy kártékony folyamatokat futtathatnak az Ön nevében.
+Azure Machine Learning a fájlokat és tartalmakat bármilyen forrásból feltöltheti az Azure-ba. A Jupyter-jegyzetfüzetek vagy a betöltött parancsfájlok tartalma beolvashatja a munkamenetek adatait, hozzáférhet a szervezeten belüli adatokhoz az Azure-ban, vagy kártékony folyamatokat futtathat az Ön nevében.
 
 > [!IMPORTANT]
 > Csak megbízható forrásból származó jegyzetfüzeteket vagy parancsfájlokat futtasson. Például, ha Ön vagy a biztonsági csapata áttekintette a jegyzetfüzetet vagy a parancsfájlt.

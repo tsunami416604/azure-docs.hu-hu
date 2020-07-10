@@ -11,11 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: aa8fa9ff6973e908d6af700f7c2965a844e87b04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d208a9b9f8e1cc16e2c72aa825a2daf88ad00176
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170987"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145660"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>A Azure SQL Database DNS-aliasa
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -111,6 +112,8 @@ A DNS-aliasok jelenléte a következő korlátozásokkal jár:
 ## <a name="related-resources"></a>Kapcsolódó források (lehet, hogy a cikkek angol nyelvűek)
 
 - [A Azure SQL Database üzleti folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md), beleértve a vész-helyreállítást is.
+- [Azure REST API-referencia](https://docs.microsoft.com/rest/api/azure/)
+- [Kiszolgálói DNS-aliasok API](https://docs.microsoft.com/rest/api/sql/serverdnsaliases)
 
 ## <a name="next-steps"></a>További lépések
 

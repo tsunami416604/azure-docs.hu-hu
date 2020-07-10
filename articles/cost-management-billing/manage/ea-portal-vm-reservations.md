@@ -3,16 +3,16 @@ title: Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példány
 description: Ez a cikk azt foglalja össze, hogyan takaríthat meg pénzt a vállalati regisztrációjában az Azure Reserved VM Instances szolgáltatás segítségével.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/11/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: a06f416ed1d4df33cc6777eba878eee2b4f6b047
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: b78abeaac3066839636918923636f4b7bdf9ee35
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735421"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044855"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Nagyvállalati szerződéses Azure-virtuálisgépek fenntartott példányai
 
@@ -83,9 +83,9 @@ Ha nem az Azure Hybrid Benefittel vásárolt Azure-beli fenntartott virtuálisg�
 
 ### <a name="reserved-instance-billing"></a>Fenntartott példány számlázása
 
-Nagyvállalati ügyfelek esetén a pénzügyi keret használatával vásárolhatók Azure-beli fenntartott virtuálisgép-példányok. Ha a regisztrációban elegendő pénzügyikeret-egyenleg áll rendelkezésre a fenntartott példány megvásárlásához, akkor a rendszer levonja az összeget a pénzügyi keret egyenlegéből, és nem kap számlát a vásárlásról.
+Nagyvállalati ügyfelek esetén Azure-előrefizetés használatával vásárolhatók Azure-beli fenntartott virtuálisgép-példányok. Ha a regisztrációban elegendő Azure-előrefizetési egyenleg áll rendelkezésre a fenntartott példány megvásárlásához, akkor a rendszer levonja az összeget az Azure-előrefizetési egyenlegéből, és nem kap számlát a vásárlásról.
 
-Az olyan forgatókönyvekben, ahol az Azure nagyvállalati szerződéssel rendelkező ügyfelek felhasználták a teljes pénzügyi keretüket, továbbra is vásárolhatók fenntartott példányok, és ezekről a vásárlásokról a következő túlhasználati számlán kap számlát. Ha vannak a fenntartott példányokkal járó túlhasználati díjak, azok a normál túlhasználati számla részét képezik.
+Abban az esetben, ha az Azure Nagyvállalati Szerződéssel rendelkező ügyfelek felhasználták a teljes Azure-előrefizetésüket, továbbra is vásárolhatnak fenntartott példányokat, de ezek a vásárlások fel lesznek számolva a következő túlhasználati számlán. Ha vannak a fenntartott példányokkal járó túlhasználati díjak, azok a normál túlhasználati számla részét képezik.
 
 ### <a name="reserved-instance-expiration"></a>Fenntartott példány lejárata
 

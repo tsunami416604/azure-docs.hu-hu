@@ -3,16 +3,16 @@ title: Azure nagyvállalati szerződések és a módosításaik
 description: Ez a cikk azt ismerteti, hogy milyen hatással vannak az Azure nagyvállalati szerződések és a módosításaik az Azure EA Portal használatára.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 50f7a1bab17b9a98b7ca282387def52b24d448c4
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298142"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86044906"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure nagyvállalati szerződések és a módosításaik
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan milyen hatással lehetnek az Azure nagyvállalati sz
 
 ## <a name="enrollment-provisioning-status"></a>Regisztráció kiépítési állapota
 
-Az új pénzügyi keret kezdő dátumát a regionális műveleti központ általi feldolgozás dátuma határozza meg. Mivel az Azure EA Portalon keresztüli pénzügyikeret-megrendelések feldolgozása az UTC időzónában történik, némi késést tapasztalhat, ha a pénzügyikeret-rendelését egy másik régióban dolgozzák fel. A https://www.explore.ms webhelyen található megrendelésen az érvényesség kezdő dátuma a pénzügyi keret kezdetét mutatja. Az érvényesség kezdő dátuma az az időpont, amikor a pénzügyi keret megjelenik az Azure EA Portalon.
+Az új Azure-előrefizetés kezdő dátumát a regionális műveleti központ általi feldolgozás dátuma határozza meg. Mivel az Azure EA Portalon keresztül leadott Azure-előrefizetési megrendelések feldolgozása az UTC időzónában történik, némi késést tapasztalhat, ha az Azure-előrefizetés megrendelését egy másik régióban dolgozzák fel. A https://www.explore.ms webhelyen található megrendelésen az érvényesség kezdő dátuma az Azure-előrefizetés kezdetét mutatja. Az érvényesség kezdő dátuma az az időpont, amikor az Azure-előrefizetés megjelenik az Azure EA Portalon.
 
 ## <a name="support-for-enterprise-customers"></a>Vállalati ügyfelek támogatása
 
@@ -36,7 +36,7 @@ A regisztrációk az alábbi állapotértékek egyikével rendelkeznek. Ezek az 
 
 **Határozatlan időre meghosszabbítva** – A Határozatlan időre meghosszabbítva állapot a nagyvállalati szerződés záró dátuma után jelenik meg. Mielőtt az EA-regisztráció elérné a nagyvállalati szerződés záró dátumát, a regisztrációs rendszergazdának el kell döntenie, hogy:
 
-- Megújítja a regisztrációt további pénzügyi keret hozzáadásával
+- Megújítja a regisztrációt további Azure-előrefizetés hozzáadásával
 - Átviszi a meglévő regisztrációt egy új regisztrációba
 - Migrálást végez a Microsoft Online Előfizetési Programba (MOSP)
 - Jóváhagyja a regisztrációhoz társított szolgáltatások letiltását
@@ -51,7 +51,7 @@ A regisztrációk az alábbi állapotértékek egyikével rendelkeznek. Ezek az 
 
 Az Azure EA Portal Partnerárrés eleme jobb költségjelentést tesz lehetővé az ügyfelek számára. Az Azure EA Portal megjeleníti a partnerek által az ügyfeleik számára konfigurált használatot és árakat.
 
-Az árrés lehetővé teszi, hogy a partnerek rendszergazdái százalékos haszonkulccsal egészítsék ki a közvetett nagyvállalati szerződéseiket. A százalékos haszonkulcs az Azure EA Portalon található belső Microsoft-szolgáltatások adataira vonatkozik, mint például: fogyasztási díjak, pénzügyi keretek és megrendelések. Miután a partner közzétette az árrést, az ügyfél megtekintheti az Azure-költségeket az Azure EA Portalon. Például használat összegzése, árlisták és a letöltött használati jelentések.
+Az árrés lehetővé teszi, hogy a partnerek rendszergazdái százalékos haszonkulccsal egészítsék ki a közvetett nagyvállalati szerződéseiket. A százalékos haszonkulcs az Azure EA Portalon található belső Microsoft-szolgáltatások adataira vonatkozik, például a fogyasztási díjakra, az Azure-előrefizetésekre és a megrendelésekre. Miután a partner közzétette az árrést, az ügyfél megtekintheti az Azure-költségeket az Azure EA Portalon. Például használat összegzése, árlisták és a letöltött használati jelentések.
 
 2019 szeptemberétől a partnerek az időszak során bármikor alkalmazhatnak árréseket. Nem kell megvárniuk az időszak következő évfordulóját az árrés alkalmazásához.
 
@@ -61,7 +61,7 @@ A Microsoft semmilyen célból sem férhet hozzá a megadott árréshez és a ka
 
 Az LSP megad egy százalékos arányt az EA Portalon.  A portálon található összes kereskedelmi információ az LSP által megadott százalékos arányban lesz megemelve. Példa:
 
-- Az ügyfél aláír egy 100 000 dollár értékű pénzügyi kerettel rendelkező EA-szerződést.
+- Az ügyfél aláír egy 100 000 dollár értékű Azure-előrefizetési kerettel rendelkező EA-szerződést.
 - Az A szolgáltatás fogyasztási díja 10 dollár/óra.
 - Az LSP az EA Portalon 10%-os árrést állít be.
 - Az alábbi példában látható, hogy az ügyfél hogyan látja a kereskedelmi információkat:
@@ -72,10 +72,10 @@ Az LSP megad egy százalékos arányt az EA Portalon.  A portálon található 
 
 ### <a name="when-to-use-a-markup"></a>Mikor érdemes árrést használni?
 
-Akkor használja ezt a funkciót, ha ugyanolyan százalékos arányú árrést állít be az EA ÖSSZES kereskedelmi tranzakciójában, vagyis ha a pénzügyi kerettel kapcsolatos információkra, a fogyasztási árakra, a rendelési adatokra stb. ugyanazt az árrést alkalmazza.
+Akkor használja ezt a funkciót, ha ugyanolyan százalékos arányú árrést állít be az EA ÖSSZES kereskedelmi tranzakciójában, vagyis ha az Azure-előrefizetéssel kapcsolatos információkra, a fogyasztási árakra, a rendelési adatokra stb. ugyanazt az árrést alkalmazza.
 
 Ne használja az árrés funkciót, ha:
-- a pénzügyi keret és a fogyasztási árak esetében eltérő díjszabást használ;
+- az Azure-előrefizetéshez és a fogyasztási árakhoz eltérő díjszabást használ;
 - a különböző fogyasztási árak díjszabása eltérő.
 
 Ha eltérő díjszabást használ a különböző fogyasztási árakhoz, javasoljuk, hogy az ügyfél által is biztosítható API-kulcson alapuló egyéni megoldást fejlesszen, amellyel lekérheti a használati adatokat és jelentéseket készíthet.
@@ -97,11 +97,11 @@ Kérjük, tekintse át a kereskedelmi információkat – pénzügyi egyenleggel
 
 **Második lépés: Áttekintés és ellenőrzés**
 
-Ellenőrizze az árrést tartalmazó árat a _Használati adatok összegzése_ lapon az ügyfélnézetben szereplő kötelezettségvállalási időszakra vonatkozóan. A Microsoft díjszabása továbbra is elérhető lesz a partnernézetben. A nézetek között a jobb felső sarokban található „személyek” váltókapcsolóval válthat.
+Ellenőrizze az árrést tartalmazó árat a _Használati adatok összegzése_ lapon az ügyfélnézetben szereplő előrefizetési időszakra vonatkozóan. A Microsoft díjszabása továbbra is elérhető lesz a partnernézetben. A nézetek között a jobb felső sarokban található „személyek” váltókapcsolóval válthat.
 
 1. Tekintse át az árakat az árlistán.
 1. A közzététel előtt elvégezheti a módosításokat, ha kiválasztja a **Szerkesztés** lehetőséget a _Használati adatok összegzése > Ügyfélnézet_ lapján.  
-  A szolgáltatási árak és a pénzügyi egyenlegek azonos százalékkal lesznek megemelve. Ha eltérő százalékos arány van megadva a pénzügyi egyenlegnél és a fogyasztási árnál, vagy eltérő százalékos arányok vonatkoznak a különböző szolgáltatásokra, ne használja ezt a funkciót.
+  A szolgáltatási árak és az előrefizetési egyenlegek azonos százalékkal lesznek megemelve. Ha eltérő százalékos arány van megadva a pénzügyi egyenlegnél és a fogyasztási árnál, vagy eltérő százalékos arányok vonatkoznak a különböző szolgáltatásokra, ne használja ezt a funkciót.
 
 **Harmadik lépés: Közzététel**
 
@@ -121,7 +121,7 @@ A partnerárrés közzététele után a közvetett ügyfél hozzáfér a havi eg
 A partnerek a csatornapartner módosítása után használhatják az árrés szolgáltatást (az Azure EA Portalon); nem kell kivárniuk a következő évi időszakot.
 
 
-## <a name="resource-commitment-and-requesting-quota-increases"></a>Erőforrásokra vonatkozó kötelezettségvállalás és kvótanövelések kérése
+## <a name="resource-prepayment-and-requesting-quota-increases"></a>Erőforrásokra vonatkozó előrefizetés és kvótanövelések kérése
 
 **A rendszer a következő alapértelmezett kvótákat követeli meg előfizetésenként:**
 
@@ -135,11 +135,11 @@ A partnerek a csatornapartner módosítása után használhatják az árrés szo
 | Hozzáférés-vezérlés | 50 névtér fiókonként. 100 millió hozzáférés-vezérlési tranzakció havonta |   |
 | Service Bus | 50 névtér fiókonként. 40 Service Bus-kapcsolat | Azok az ügyfelek, akik csatlakozási csomagokon keresztül vásárolnak Service Bus-kapcsolatokat, a megvásárolt csatlakozási csomag és a következő legmagasabb csatlakozási csomag közötti középponttal megegyező kvótaszámmal fognak rendelkezni. Az 500-as csomagokat választó ügyfeleknek 750-es kvótája lesz. |
 
-## <a name="resource-commitment"></a>Erőforrásokra vonatkozó kötelezettségvállalás
+## <a name="resource-prepayment"></a>Erőforrás előrefizetése
 
-A Microsoft a vásárlóknak a megvásárolt havi keretben (a szolgáltatásokra vonatkozó kötelezettségvállalásban) foglalt, legalább a kapcsolódó használatszintnek megfelelő szolgáltatásokat nyújt. Ugyanakkor a szolgáltatásokra vonatkozó erőforrások használatszintjének (például a futó számítási példányok számának vagy a használt tárolókapacitásnak) bármilyen növelése a szolgáltatásokra vonatkozó erőforrások rendelkezésre állásának függvényében teljesíthető.
+A Microsoft a vásárlóknak a megvásárolt havi előrefizetésben (a szolgáltatásokra vonatkozó előrefizetésben) foglalt, legalább a kapcsolódó használatszintnek megfelelő szolgáltatásokat nyújt. Ugyanakkor a szolgáltatásokra vonatkozó erőforrások használatszintjének (például a futó számítási példányok számának vagy a használt tárolókapacitásnak) bármilyen növelése a szolgáltatásokra vonatkozó erőforrások rendelkezésre állásának függvényében teljesíthető.
 
-A fentiekben ismertetett kvóták egyike sem jelent szolgáltatásokra vonatkozó kötelezettségvállalást. A Microsoft által a szolgáltatásokra vonatkozó kötelezettségvállalás részeként egyidejűleg nyújtott, kis méretű számítási példányok számának meghatározása a következő módon történik: a kötelezettségvállalásnak megfelelő, havonta megvásárolt kis méretű számítási példányokra vonatkozó üzemórák száma osztva az év legrövidebb hónapjának óraszámával (azaz a februárra vonatkozó 672 órával).
+A fentiekben ismertetett kvóták egyike sem jelent szolgáltatásokra vonatkozó előrefizetést. A Microsoft által a szolgáltatásokra vonatkozó előrefizetés részeként egyidejűleg nyújtott, kis méretű számítási példányok számának meghatározása a következő módon történik: a kötelezettségvállalásnak megfelelő, havonta megvásárolt kis méretű számítási példányokra vonatkozó üzemórák száma osztva az év legrövidebb hónapjának óraszámával (azaz a februárra vonatkozó 672 órával).
 
 ## <a name="requesting-a-quota-increase"></a>Kvótanövelés kérése
 

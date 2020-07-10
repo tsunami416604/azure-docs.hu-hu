@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan használhatja a Batch szolgáltatás API-ját a
 ms.topic: how-to
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9d8eab5b4f4b89a613f5ffc3a7f9c9d9d53dcfc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 24e9f242b3c71965984534ac986031757bbc8420
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965127"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143507"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Tevékenységadatok megőrzése az Azure Storage-ban a Batch szolgáltatás API-val
 
@@ -43,7 +43,7 @@ await container.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>Megosztott hozzáférési aláírás beszerzése a tárolóhoz
 
-A tároló létrehozása után szerezzen be egy közös hozzáférésű aláírást (SAS), amely írási hozzáféréssel rendelkezik a tárolóhoz. A SAS delegált hozzáférést biztosít a tárolóhoz. Az SAS hozzáférést biztosít a megadott engedélyekkel, és egy adott időintervallumon belül. A Batch szolgáltatásnak szüksége van egy írási engedéllyel rendelkező SAS-re a feladat kimenetének tárolóba írásához. Az SAS-vel kapcsolatos további információkért lásd: a [közös hozzáférésű aláírások használata \( \) Az Azure Storage-ban](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+A tároló létrehozása után szerezzen be egy közös hozzáférésű aláírást (SAS), amely írási hozzáféréssel rendelkezik a tárolóhoz. A SAS delegált hozzáférést biztosít a tárolóhoz. Az SAS hozzáférést biztosít a megadott engedélyekkel, és egy adott időintervallumon belül. A Batch szolgáltatásnak szüksége van egy írási engedéllyel rendelkező SAS-re a feladat kimenetének tárolóba írásához. Az SAS-vel kapcsolatos további információkért lásd: a [közös hozzáférésű aláírások használata \( \) Az Azure Storage-ban](../storage/common/storage-sas-overview.md).
 
 Ha az Azure Storage API-k használatával kap SAS-t, az API SAS-jogkivonat karakterláncot ad vissza. Ez a jogkivonat-karakterlánc tartalmazza az SAS összes paraméterét, beleértve az engedélyeket és a SAS érvényességi időtartamát. Ahhoz, hogy az SAS-t egy tároló Azure Storage-beli eléréséhez használja, hozzá kell fűzni az SAS-jogkivonat karakterláncát az erőforrás URI azonosítóhoz. Az erőforrás URI-ja a hozzáfűzött SAS-jogkivonattal együtt hitelesített hozzáférést biztosít az Azure Storage-hoz.
 

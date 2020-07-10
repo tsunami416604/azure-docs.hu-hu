@@ -5,11 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: d6b68a8448d8b644500b62e54ab763838d707c66
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3569e5cc25491fd408f7aec57a51d11f56dbd1fe
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956661"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145268"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC-megoldások létrehozása és üzembe helyezése az Azure-folyamatokkal
 
@@ -48,7 +49,7 @@ Az ebben a példában használt kód szerkezet a következőhöz hasonló:
 Ez a szakasz feltételezi, hogy már ismeri a verziókövetés és a Resource Manager-sablonok tervezését. Ha nem ismeri ezeket a fogalmakat, további információért tekintse meg a következő lapokat.
 
 * [Mi az a verziókövetés?](/azure/devops/user-guide/source-control?view=azure-devops)
-* [Az Azure Resource Manager-sablonok struktúrája és szintaxisa](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 
@@ -188,7 +189,7 @@ A következő sablon egy példát mutat be Azure Batch készlet létrehozásáho
 
 Végezetül egy olyan sablonnal rendelkezünk, amely egy Orchestrator hasonló módon működik. Ez a sablon felelős a képességek sablonjainak telepítéséhez.
 
-További információt a [csatolt Azure Resource Manager-sablonok létrehozásáról](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md) a különálló cikkben talál.
+További információt a [csatolt Azure Resource Manager-sablonok létrehozásáról](../azure-resource-manager/templates/deployment-tutorial-linked-template.md) a különálló cikkben talál.
 
 ```json
 {

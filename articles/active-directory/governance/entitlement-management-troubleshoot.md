@@ -16,11 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7494f8e65f0b92540fec3ddc1f07e59004227625
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338182"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145768"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Az Azure AD-jogosultságok kezelése – problémamegoldás
 
@@ -32,7 +33,7 @@ Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Act
 
 * Ha hozzáférési csomagok létrehozásakor vagy megtekintésekor kap hozzáférés-megtagadási üzenetet, és Ön egy katalógus-létrehozó csoport tagja, létre kell [hoznia egy katalógust](entitlement-management-catalog-create.md) az első hozzáférési csomag létrehozása előtt.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 
 * Az alkalmazások szerepköreit maguk az alkalmazások határozzák meg, a kezelésük pedig az Azure AD-ben történik. Ha egy alkalmazás nem rendelkezik erőforrás-szerepkörökkel, a jogosultságok kezelése a felhasználókat egy **alapértelmezett hozzáférési** szerepkörhöz rendeli.
 
@@ -94,7 +95,9 @@ Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Act
 
 Ha a hozzáférési csomag újrafeldolgozására vonatkozó kérelem elindítását követően hiba történt, meg kell várnia, amíg a rendszer feldolgozza a kérést. A rendszer többször is megpróbál újradolgozni több órán keresztül, így ez idő alatt nem kényszerítheti az újrafeldolgozást. 
 
-Csak olyan kérelmeket lehet újra feldolgozni, amelyeknek a **kézbesítési állapota nem sikerült** , vagy **részlegesen kézbesítve** lett, és egy héttel rövidebb befejezési dátummal rendelkezik.
+Csak olyan kérelmeket lehet újra feldolgozni, amelyeknek a **kézbesítési állapota nem sikerült** , vagy **részlegesen kézbesítve** lett, és egy héttel rövidebb befejezési dátummal rendelkezik. Az **újrafeldolgozás** gomb egyébként szürkén jelenik meg.
+
+![Szürkén jelenik meg a gomb újrafeldolgozása](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
 - Ha a hiba a próbaverziók ablakában van kijavítva, a kérelem állapota a **kézbesítés**értékre változik. A kérés a felhasználó további műveletei nélkül újra fel lesz dolgozva.
 
@@ -116,7 +119,7 @@ Csak olyan kérelmeket lehet újra feldolgozni, amelyeknek a **kézbesítési á
 
 ### <a name="cancel-a-pending-request"></a>Függőben lévő kérelem megszakítása
 
-Csak olyan függőben lévő kérést lehet megszakítani, amely még nem lett kézbesítve, vagy a kézbesítés sikertelen volt.
+Csak olyan függőben lévő kérést lehet megszakítani, amely még nem lett kézbesítve, vagy a kézbesítés sikertelen volt. Ellenkező esetben a **Mégse** gomb szürkén jelenik meg.
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 

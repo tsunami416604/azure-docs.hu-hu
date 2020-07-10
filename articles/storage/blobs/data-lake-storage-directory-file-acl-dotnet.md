@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 1bf21b8714554dcdc52ab6e34041c738ec2653f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1836be2a5feb6dad747d0da9b42cbd31ddc28a63
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105064"
+ms.locfileid: "86142602"
 ---
 # <a name="use-net-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A .NET használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
@@ -91,11 +91,11 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 > [!NOTE]
 > További példákért tekintse meg a [.net-hez készült Azure Identity ügyféloldali kódtár](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity) dokumentációját.
 
-## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
+## <a name="create-a-container"></a>Tároló létrehozása
 
-A fájlrendszer tárolóként működik a fájlok számára. A [DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) metódus meghívásával létrehozhat egyet.
+A tároló fájlrendszerként működik a fájlok számára. A [DataLakeServiceClient. CreateFileSystem](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient.createfilesystemasync) metódus meghívásával létrehozhat egyet.
 
-Ez a példa egy nevű fájlrendszert hoz létre `my-file-system` . 
+Ez a példa egy nevű tárolót hoz létre `my-file-system` . 
 
 ```cs
 public async Task<DataLakeFileSystemClient> CreateFileSystem
@@ -109,7 +109,7 @@ public async Task<DataLakeFileSystemClient> CreateFileSystem
 
 Hozzon létre egy címtár-referenciát a [DataLakeFileSystemClient. CreateDirectoryAsync](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.createdirectoryasync) metódus meghívásával.
 
-Ez a példa egy nevű könyvtárat helyez `my-directory` el egy fájlrendszerhez, majd hozzáadja a nevű alkönyvtárat `my-subdirectory` . 
+Ez a példa egy nevű könyvtárat helyez `my-directory` el egy tárolóhoz, majd hozzáadja a nevű alkönyvtárat `my-subdirectory` . 
 
 ```cs
 public async Task<DataLakeDirectoryClient> CreateDirectory
@@ -201,7 +201,7 @@ public async Task ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient)
 
 ```
 
-Lekérheti és beállíthatja a fájlrendszer gyökérkönyvtárának ACL-listáját is. A gyökérkönyvtár beszerzéséhez adjon át egy üres karakterláncot ( `""` ) a [DataLakeFileSystemClient. GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) metódusba.
+Lekérheti és beállíthatja egy tároló gyökérkönyvtárának ACL-listáját is. A gyökérkönyvtár beszerzéséhez adjon át egy üres karakterláncot ( `""` ) a [DataLakeFileSystemClient. GetDirectoryClient](/dotnet/api/azure.storage.files.datalake.datalakefilesystemclient.getdirectoryclient) metódusba.
 
 ## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba
 

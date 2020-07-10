@@ -5,11 +5,12 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: d147c87e8fb0fa9e01ba2dbaf732adaae082bcd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94a5fd3ae1de0708f0e5550547f7ab2fc9f881cb
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84167791"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146237"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Eltávolított App Service-alkalmazás visszaállítása a PowerShell használatával
 
@@ -17,6 +18,10 @@ Ha véletlenül törölte az alkalmazást Azure App Serviceban, visszaállíthat
 
 > [!NOTE]
 > A törölt alkalmazások a kezdeti törlés után 30 nappal törlődnek a rendszerből. Az alkalmazás kiürítése után nem állítható helyre.
+>
+
+> [!NOTE]
+> A redelete funkció nem támogatott a használati tervben.
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>App Service erőforrás-szolgáltató újbóli regisztrálása

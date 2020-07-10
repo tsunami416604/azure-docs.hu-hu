@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: 2baf2b209cae11f734494c377aebd731f69f514d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b395931d11c7bc7119be0122531908ed680fc3b9
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610863"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145986"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>A DNS-bejegyzések letiltásának és a tartományon belüli átvétel elkerülésének megakadályozása
 
@@ -45,7 +45,7 @@ Egy altartomány átvételének gyakori forgatókönyve:
 
 1. Szinte azonnal a hely törlése után a fenyegetést jelentő színész felfedi a hiányzó helyet, és létrehozza a saját webhelyét a következő helyen: `app-contogreat-dev-001.azurewebsites.net` .
 
-    Mostantól a `greatapp.contoso.com` fenyegetést jelentő színész Azure-webhelyére kerül, és a fenyegetést kezelő személy felügyeli a megjelenő tartalmat. 
+    Most pedig a `greatapp.contoso.com` fenyegetést jelentő színész Azure-webhelyére irányuló forgalom, valamint a fenyegetést kezelő személy felügyeli a megjelenő tartalmat. 
 
     A rendszer kihasználta a DNS-t, és a contoso altartománya ("GreatApp") az altartomány átvételének áldozatává vált. 
 
@@ -61,7 +61,7 @@ A kilógó DNS-bejegyzések révén a fenyegetést jelentő szereplők átveheti
 
 - **Az altartomány tartalmának elvesztése** – negatívan megnyomható, hogy a szervezet nem tudja védeni a tartalmát, valamint a márka sérülését és a megbízhatóság elvesztését.
 
-- **Cookie-k betakarítása a gyanútlan látogatóktól** – gyakori a webalkalmazások számára, hogy a munkamenet-cookie-kat az altartományokra (*. contoso.com) tegyék elérhetővé, ezért bármely altartomány elérheti őket. A fenyegetésekkel rendelkező szereplők az altartományok átvételével hozhatnak létre valódi keresett oldalt, megszerezhetik a gyanútlan felhasználókat a látogatásuk és a cookie-k (akár biztonságos cookie-k) betakarítására is. Gyakori tévhit, hogy az SSL-tanúsítványok használata megvédi a webhelyét és a felhasználók cookie-jait egy átvételből. Egy fenyegetést tartalmazó színész azonban használhatja a eltérített altartományt, hogy érvényes SSL-tanúsítványt kapjon és fogadjon. Ezután hozzáférést biztosít számukra a cookie-k védelméhez, és tovább növelheti a kártékony hely megítélését.
+- **Cookie-k betakarítása a gyanútlan látogatóktól** – gyakori a webalkalmazások számára, hogy a munkamenet-cookie-kat az altartományokra (*. contoso.com) tegyék elérhetővé, ezért bármely altartomány elérheti őket. A fenyegetésekkel rendelkező szereplők az altartományok átvételével hozhatnak létre valódi keresett oldalt, megszerezhetik a gyanútlan felhasználókat a látogatásuk és a cookie-k (akár biztonságos cookie-k) betakarítására is. Gyakori tévhit, hogy az SSL-tanúsítványok használata megvédi a webhelyét és a felhasználók cookie-jait egy átvételből. Egy fenyegetést tartalmazó színész azonban használhatja a eltérített altartományt, hogy érvényes SSL-tanúsítványt kapjon és fogadjon. Az érvényes SSL-tanúsítványok hozzáférést biztosítanak számukra a cookie-k védelméhez, és tovább növelhetik a kártékony webhely vélt legitimitását.
 
 - **Adathalászat-kampányok** – az autentikus megjelenésű altartományok használhatók az adathalászat-kampányok során. Ez a kártékony webhelyekhez és az olyan MX-rekordokhoz is igaz, amelyek lehetővé tennék a veszélyforrások számára, hogy olyan e-maileket kapjanak, amelyek egy ismert biztonságos márka megbízható altartományára irányulnak.
 
@@ -78,14 +78,14 @@ A jelenleg elérhető megelőző intézkedések alább láthatók.
 
 ### <a name="use-azure-dns-alias-records"></a>Azure DNS alias-rekordok használata
 
-Ha szorosan összekapcsolja egy DNS-rekord életciklusát egy Azure-erőforrással, akkor a Azure DNS [alias-rekordjai](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) megakadályozhatják a lelógó hivatkozásokat. Vegyünk például egy olyan DNS-rekordot, amely alias-rekordként van minősítve, hogy egy nyilvános IP-címre vagy egy Traffic Manager profilra mutasson. Ha törli a mögöttes erőforrásokat, a DNS-alias rekord üres halmaz lesz. A továbbiakban nem hivatkozik a törölt erőforrásra. Fontos megjegyezni, hogy az alias-rekordokkal védhető, hogy milyen korlátokat biztosít a védelem. A lista jelenleg a következőre korlátozódik:
+A Azure DNS [alias-rekordjai](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) megakadályozhatja, hogy egy DNS-rekord életciklusát egy Azure-erőforrással összekapcsolja. Vegyünk például egy olyan DNS-rekordot, amely alias-rekordként van minősítve, hogy egy nyilvános IP-címre vagy egy Traffic Manager profilra mutasson. Ha törli a mögöttes erőforrásokat, a DNS-alias rekord üres halmaz lesz. A továbbiakban nem hivatkozik a törölt erőforrásra. Fontos megjegyezni, hogy az alias-rekordokkal védhető, hogy milyen korlátokat biztosít a védelem. A lista jelenleg a következőre korlátozódik:
 
 - Azure Front Door
 - Traffic Manager-profilok
 - Azure Content Delivery Network-(CDN-) végpontok
 - Nyilvános IP-címek
 
-Ha olyan erőforrásokkal rendelkezik, amelyeket az altartományból való átvételhez alias-rekordokkal lehet védeni, javasoljuk, hogy a korlátozott szolgáltatási ajánlatokat még ma is felhasználja.
+A korlátozott szolgáltatási ajánlatok ellenére az alias-rekordok használatát javasoljuk, hogy amikor csak lehetséges, használjon alias-rekordokat.
 
 [További](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) információ a Azure DNS alias-rekordjainak képességeiről.
 
@@ -120,7 +120,7 @@ Ez gyakran a fejlesztők és az operatív csapatok számára a kitakarítási fo
         - **Létezik** – lekérdezheti a DNS-zónákat az Azure altartományokra mutató erőforrásokhoz, például *. azurewebsites.net vagy *. cloudapp.Azure.com (lásd [a hivatkozási listát](azure-domains.md)).
         - **Ön** rendelkezik a saját DNS-altartományai által megcélzott összes erőforrással.
 
-    - Az Azure-beli teljes tartománynevek (FQDN) végpontok és az alkalmazás tulajdonosai szolgáltatás-katalógus karbantartása. A szolgáltatás katalógusának létrehozásához futtassa az alábbi Azure Resource Graph-lekérdezést az alábbi táblázatban szereplő paraméterekkel:
+    - Az Azure-beli teljes tartománynevek (FQDN) végpontok és az alkalmazás tulajdonosai szolgáltatás-katalógus karbantartása. A szolgáltatás katalógusának létrehozásához futtassa az alábbi Azure Resource Graph (ARG) lekérdezést az alábbi táblázatban szereplő paraméterekkel:
     
         >[!IMPORTANT]
         > **Engedélyek** – az összes Azure-előfizetéshez hozzáférő felhasználóként futtathatja a lekérdezést. 
@@ -139,9 +139,12 @@ Ez gyakran a fejlesztők és az operatív csapatok számára a kitakarítási fo
         
         Több erőforrástípust is egyesítheti. Ez a példában szereplő lekérdezés a Azure App Service **és** Azure app Service bővítőhelyből származó erőforrásokat adja vissza:
 
-        ```
+        ```azurepowershell
         Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
         ```
+
+
+        Az ARG-lekérdezés szolgáltatási paramétereinek száma:
 
         |Erőforrás neve  |[ResourceType] típusú és  | [FQDNproperty]  |
         |---------|---------|---------|

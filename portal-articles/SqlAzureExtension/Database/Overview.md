@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 04/09/2019
 ms.author: ninarn
-ms.openlocfilehash: 99f19971eafaa1ddad1f96b187e18b79810560a2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6d4f0c50f57661576f97ddd3772d78b9fa293153
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "61244459"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86040520"
 ---
 # <a name="sql-database-documentation"></a>SQL Database-dokumentáció
 
@@ -29,7 +29,7 @@ Az Azure SQL Database lehetővé teszi alapszintű felügyeleti feladatok egysze
 
 ## <a name="step-by-step-tutorials"></a>Részletes útmutatók
 
-Megtudhatja, hogyan hozhat létre, kezelhet és migrálhat adatbázisokat az SQL DB használatával.
+Tudnivalók adatbázisok létrehozásáról, kezeléséről és migrálásáról az SQL Database használatával.
 
 - Első lépésként ismerkedjen meg az [önálló adatbázisok](/azure/sql-database/sql-database-single-database-quickstart-guide) használatával a rövid útmutatónk alapján
 - Új önálló adatbázis sémájának létrehozása és megtervezése az [SSMS](/azure/sql-database/sql-database-design-first-database) vagy a [.NET](/azure/sql-database/sql-database-design-first-database-csharp) használatával

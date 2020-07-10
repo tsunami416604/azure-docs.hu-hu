@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 35e6690726750e6c9e6dfb0cb62a6732603c3610
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: eb8ec09646fa3f3c226edbe957e19d079fd2607c
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083661"
+ms.locfileid: "86147429"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>SQL Server migrálása az SQL felügyelt példányára PowerShell-& Azure Database Migration Service
 
@@ -121,13 +121,11 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-A következő példa azt mutatja be, hogyan hozható létre a (z) "targetmanagedinstance.database.windows.net" nevű Azure SQL-példányhoz tartozó kapcsolatok adatai az SQL-hitelesítés használatával:
+A következő példa egy "targetmanagedinstance" nevű Azure SQL felügyelt példányhoz tartozó kapcsolatbiztonsági adatok létrehozását mutatja be:
 
 ```powershell
-$targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
-  -DataSource "targetmanagedinstance.database.windows.net" `
-  -AuthType SqlAuthentication `
-  -TrustServerCertificate:$false
+$targetResourceId = (Get-AzSqlInstance -Name "targetmanagedinstance").Id
+$targetConnInfo = New-AzDmsConnInfo -ServerType SQLMI -MiResourceId $targetResourceId
 ```
 
 ### <a name="provide-databases-for-the-migration-project"></a>Adatbázisok biztosítása az áttelepítési projekthez

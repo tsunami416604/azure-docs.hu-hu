@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: e6c766008faa6bbe53a4af69f7da9325cb9ff6a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffbc850c580daee5890f9c75021cc518918d098e
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559872"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145381"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Azure Storage-fiókhoz való kapcsolódás beállítása felügyelt identitás (előzetes verzió) használatával
 
@@ -103,6 +103,7 @@ Az index meghatározza a dokumentumok, attribútumok és más, a keresési élm�
 
 Ebből a témakörből megtudhatja, hogyan hozhat létre egy kereshető mezőt tartalmazó indexet `content` a blobokból kinyert szöveg tárolásához:   
 
+```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -114,6 +115,7 @@ Ebből a témakörből megtudhatja, hogyan hozhat létre egy kereshető mezőt t
             { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
           ]
     }
+```
 
 További információk az indexek létrehozásáról: [create index](https://docs.microsoft.com/rest/api/searchservice/create-index)
 
@@ -125,6 +127,7 @@ Miután létrehozta az indexet és az adatforrást, készen áll az indexelő l�
 
 Példa indexelő definíciója egy blob indexelő számára:
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -135,6 +138,7 @@ Példa indexelő definíciója egy blob indexelő számára:
       "targetIndexName" : "my-target-index",
       "schedule" : { "interval" : "PT2H" }
     }
+```
 
 Ez az indexelő két óránként fut (az ütemezett időköz értéke "PT2H"). Az indexelő 30 percenkénti futtatásához állítsa az intervallumot "PT30M" értékre. A legrövidebb támogatott időköz 5 perc. Az ütemterv nem kötelező – ha nincs megadva, az indexelő csak egyszer fut a létrehozáskor. Az indexelő igény szerinti futtatása azonban bármikor elvégezhető.   
 

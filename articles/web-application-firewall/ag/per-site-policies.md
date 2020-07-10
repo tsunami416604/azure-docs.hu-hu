@@ -8,11 +8,12 @@ ms.service: web-application-firewall
 ms.date: 01/24/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 1301db56cab36ae623bb94cfac97b8e4bdb934e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e40370421214ebe026090007122a641a216c256
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682478"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143944"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Helyi WAF házirendek konfigurálása Azure PowerShell használatával
 
@@ -28,14 +29,14 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * A hálózat beállítása
 > * WAF szabályzat létrehozása
 > * Alkalmazásátjáró létrehozása engedélyezett WAF-fel
-> * A WAF szabályzat globális, webhelyre és URI-ra való alkalmazása
+> * A WAF szabályzat globális, webhelyre és URI-ra való alkalmazása (előzetes verzió)
 > * Virtuálisgép-méretezési csoport létrehozása
 > * Tárfiók létrehozása és diagnosztika konfigurálása
 > * Az alkalmazásátjáró tesztelése
 
 ![Példa webalkalmazási tűzfalra](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -249,7 +250,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy"></a>URI-szabályzat alkalmazása
+### <a name="apply-a-per-uri-policy-preview"></a>URI-házirend alkalmazása (előzetes verzió)
 
 Az URI-szabályzatok alkalmazásához egyszerűen hozzon létre egy új házirendet, és alkalmazza azt az elérésiút-szabály konfigurációjában. 
 
@@ -434,7 +435,7 @@ curl 1.1.1.1/URIAllow?1=1
 
 ![Az alap URL-cím tesztelése az alkalmazásátjáróban](../media/tutorial-restrict-web-traffic-powershell/application-gateway-iistest.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Application Gatewayt és az összes kapcsolódó erőforrást a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával.
 

@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 07/06/2020
 ms.author: banders
-ms.openlocfilehash: a0846a07fd8107a87483753c8dbff1301fda4a0c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: ff10d9ec9b92b85d057e556a21c144b9e8f155cf
+ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299910"
+ms.lasthandoff: 07/07/2020
+ms.locfileid: "86043274"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-átvitelek
 
@@ -49,7 +49,7 @@ Egyéb szempontok, amelyeket érdemes észben tartani a fiókok átvitele előtt
 
 A regisztrációátvitel a következő esetben megfontolandó:
 
-- A jelenlegi regisztráció kötelezettségvállalási időtartama véget ért.
+- A jelenlegi regisztráció előrefizetési időtartama véget ért.
 - A regisztráció lejárt/meghosszabbított állapotban van, és egy új szerződés egyeztetése folyamatban van.
 - Több regisztrációval rendelkezik, és egyetlen regisztráció keretében szeretné összevonni az összes fiókot és számlázást.
 
@@ -60,7 +60,7 @@ Ha egy teljes vállalati regisztráció átvitelét kéri egy regisztrációba, 
 - A rendszer az összes Azure-szolgáltatást, előfizetést, fiókot, részleget, valamint a teljes regisztrációs struktúrát átviszi az új célregisztrációba, az EA-részlegek rendszergazdáival együtt.
 - A regisztráció állapota _Átvitt_ értékre módosul. Az átvitt regisztrációt csak a korábbi használatról szóló jelentések elkészítéséhez lehet elérni.
 - Az átvitt regisztrációkhoz nem adhat hozzá szerepköröket vagy előfizetéseket. Az átvitt állapot megakadályozza a regisztráció további használatának felszámítását.
-- A szerződés pénzügyi keretének fennmaradó egyenlege elveszik, a jövőbeli időszakokkal együtt.
+- A szerződés fennmaradó előrefizetési Azure-egyenlege elveszik, a későbbi időszakokkal együtt.
 -    Ha a regisztráció, amelyről az átvitelt végzi, rendelkezik megvásárolt fenntartott példányokkal, a fenntartott példány vételára továbbra is a forrásregisztrációban marad, azonban a fenntartott példány összes előnye az új regisztrációban lesz elérhető.
 -    A Marketplace-en kifizetett egyszeri vételár és a régi regisztrációban felmerült fix havi díjak nem lesznek áthelyezve az új regisztrációba. A használatalapú Marketplace-díjak átvitele megtörténik.
 
@@ -68,7 +68,7 @@ Ha egy teljes vállalati regisztráció átvitelét kéri egy regisztrációba, 
 
 Az átvitel hatályba lépésének napja a célregisztráció kezdődátuma vagy egy későbbi időpont lehet.
 
-A forrásregisztráció használatának költsége a pénzügyi keretből lesz levonva, vagy túlhasználatként lesz kiszámlázva. Az átvitel dátuma utáni használat átkerül az új regisztrációba, és ennek megfelelően kell majd érte fizetni.
+A forrásregisztráció használatának költsége az Azure-előrefizetési keretből lesz levonva, vagy túlhasználatként lesz kiszámlázva. Az átvitel dátuma utáni használat átkerül az új regisztrációba, és ennek megfelelően kell majd érte fizetni.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -84,9 +84,9 @@ Egyéb szempontok, amelyeket érdemes észben tartani a regisztrációk átvitel
 - Ha egy regisztrációátvitel nem felel meg az elvárásainak, vegye fontolóra a fiókátvitelt.
 - A forrásregisztráció állapota átvitt lesz, és ezt a regisztrációt csak a korábbi használatról szóló jelentések elkészítéséhez lehet majd elérni.
 
-### <a name="monetary-commitment"></a>Pénzügyi keret
+### <a name="azure-prepayment"></a>Azure-előrefizetés
 
-A pénzügyi keretet nem lehet átvinni egyik regisztrációból a másikba. A pénzügyi keret egyenlegeit a szerződés ahhoz a regisztrációhoz köti, amelyhez megrendelték őket. A rendszer nem viszi át a pénzügyi keretet a fiók vagy a regisztráció átviteli folyamatának részeként.
+Az Azure-előrefizetést nem lehet átvinni egyik regisztrációból a másikba. Az Azure-előrefizetési egyenlegeket a szerződés ahhoz a regisztrációhoz köti, amelyhez megrendelték őket. A rendszer nem viszi át az Azure-előrefizetést a fiók vagy a regisztráció átviteli folyamatának részeként.
 
 ### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>A fiókok és a regisztrációk átvitele nem érinti a szolgáltatásokat
 

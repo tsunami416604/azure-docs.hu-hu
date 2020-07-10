@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 15d2a7a2ad00f7f9b5db59d3d4803f60508b7b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561584"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146178"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Keresési eredmények használata az Azure-ban Cognitive Search
 
@@ -55,20 +55,26 @@ A többoldalas lekérdezések eredményei nem garantálják, hogy stabilak legye
  
 Az alábbi példa bemutatja, hogyan lehet ismétlődéseket kapni. Négy dokumentummal rendelkező index feltételezése:
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
-    { "id": "4", "rating": 1 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+{ "id": "4", "rating": 1 }
+```
  
 Most tegyük fel, hogy az eredményeket a rendszer egy időben, a minősítés alapján rendezi. Ezt a lekérdezést kell végrehajtania az eredmények első oldalának beolvasásához: `$top=2&$skip=0&$orderby=rating desc` a következő eredmények előállításával:
 
-    { "id": "1", "rating": 5 }
-    { "id": "2", "rating": 3 }
+```text
+{ "id": "1", "rating": 5 }
+{ "id": "2", "rating": 3 }
+```
  
 A szolgáltatásban tegyük fel, hogy egy ötödik dokumentum kerül a lekérdezési hívások közötti indexbe: `{ "id": "5", "rating": 4 }` .  Röviddel azután, hogy végrehajt egy lekérdezést a második lap beolvasásához: `$top=2&$skip=2&$orderby=rating desc` , és a következő eredményeket kapja:
 
-    { "id": "2", "rating": 3 }
-    { "id": "3", "rating": 2 }
+```text
+{ "id": "2", "rating": 3 }
+{ "id": "3", "rating": 2 }
+```
  
 Figyelje meg, hogy a 2. dokumentum kétszer van beolvasva. Ennek az az oka, hogy az 5. dokumentum új minősítési értéke nagyobb, ezért rendezi a 2. dokumentum és az első oldalon landolás előtt. Habár ez a viselkedés váratlan lehet, jellemző, hogy a keresőmotor hogyan viselkedik.
 
@@ -78,7 +84,7 @@ A teljes szöveges keresési lekérdezések esetében a találatok automatikusan
 
 A keresési eredmények általános jelentőséggel bírnak, amely az azonos eredményhalmaz más dokumentumaihoz képest az egyezés erősségét tükrözi. A pontszámok nem mindig konzisztensek az egyik lekérdezéstől a következőig, így a lekérdezések használatakor előfordulhat, hogy a keresési dokumentumok rendezésének módja kis eltéréseket észlel. A probléma oka több magyarázat is lehet.
 
-| Ok | Description |
+| Ok | Leírás |
 |-----------|-------------|
 | Adatvolatilitás | Az indexelési tartalom a dokumentumok hozzáadása, módosítása vagy törlése során változik. A kifejezés gyakorisága módosul, mert az index frissítései időben lesznek feldolgozva, ami hatással van a megfelelő dokumentumok keresési pontjaira. |
 | Több replika | Több replikát használó szolgáltatások esetén a lekérdezéseket párhuzamosan kell kiadni az egyes replikákkal. A keresési pontszám kiszámításához használt index statisztikáit a rendszer replika alapon számítja ki, a lekérdezési válaszban egyesítve és elrendezve az eredményeket. A replikák többnyire egymást tükrözik, de a statisztikák eltérőek lehetnek az állami különbségek miatt. Előfordulhat például, hogy az egyik replika törölte a statisztikához hozzájáruló dokumentumokat, amelyek más replikából lettek egyesítve. A replikák statisztikái közötti különbségek jellemzően kisebb indexekben figyelhetők meg. |

@@ -4,12 +4,12 @@ description: Az egyéni képkészletek hatékony módszer a számítási csomóp
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 962b3c84e7f3cecc5f4d64febbfca635733a0bae
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 38233bc5d279c1c0ae7789dd06acff78ea26fb89
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851714"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147282"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Egyéni rendszerkép-készlet létrehozása a megosztott rendszerkép-katalógus használatával
 
@@ -30,7 +30,7 @@ A forgatókönyvhöz konfigurált megosztott rendszerkép használata több elő
 - **Alkalmazások telepítése előtt.** Az operációsrendszer-lemezen lévő alkalmazások előzetes telepítése hatékonyabb és kevésbé hasonló, mint az alkalmazások telepítése a számítási csomópontok indítási tevékenységgel való kiépítés után.
 - **Nagyméretű adatmennyiségek másolása egyszer.** A felügyelt megosztott rendszerkép statikus adatokból álló részét a felügyelt rendszerkép adatlemezére másolja. Ezt csak egyszer kell elvégezni, és a készlet minden csomópontja számára elérhetővé kell tenni az adatmennyiséget.
 - **Növelje a készleteket nagyobb méretekre.** A megosztott képkatalógussal nagyobb készleteket hozhat létre a testreszabott rendszerképekkel együtt, és több megosztott lemezkép-replikát is használhat.
-- **Jobb teljesítmény, mint a csak a felügyelt rendszerképek egyéni rendszerképként való használata.** Egy megosztott rendszerkép egyéni rendszerkép-készlete esetében az állandó állapot eléréséhez szükséges idő akár 25% fasterm is lehet, a virtuális gép üresjárati késése pedig akár 30%-kal rövidebb.
+- **Jobb teljesítmény, mint a csak a felügyelt rendszerképek egyéni rendszerképként való használata.** Egy megosztott rendszerkép egyéni rendszerkép-készlete esetében az állandó állapot eléréséhez szükséges idő akár 25%-kal gyorsabb, a virtuális gép üresjárati késése pedig akár 30%-kal rövidebb.
 - **A képek verziószámozása és csoportosítása az egyszerűbb felügyelet érdekében.** A képcsoportosítási definíció információt tartalmaz arról, hogy miért jött létre a rendszerkép, milyen operációs rendszerre és a rendszerképek használatára vonatkozó információkkal rendelkezik. A képek csoportosítása megkönnyíti a képek kezelését. További információ: [képdefiníciók](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -83,7 +83,7 @@ Felügyelt rendszerkép pillanatképből való létrehozásához használja az A
 
 ### <a name="create-a-shared-image-gallery"></a>Shared Image Gallery létrehozása
 
-Miután sikeresen létrehozta a felügyelt rendszerképet, létre kell hoznia egy megosztott képtárat, hogy elérhetővé tegye az egyéni rendszerképet. Ha meg szeretné tudni, hogyan hozhat létre megosztott képtárat a rendszerképekhez, tekintse meg a megosztott lemezkép-katalógus [létrehozása az Azure CLI-vel](../virtual-machines/linux/shared-images.md) vagy [a közös rendszerkép-katalógus létrehozása a Azure Portal használatával](../virtual-machines/linux/shared-images-portal.md)című témakört.
+Miután sikeresen létrehozta a felügyelt rendszerképet, létre kell hoznia egy megosztott képtárat, hogy elérhetővé tegye az egyéni rendszerképet. Ha meg szeretné tudni, hogyan hozhat létre megosztott képtárat a rendszerképekhez, tekintse meg a megosztott lemezkép-katalógus [létrehozása az Azure CLI-vel](../virtual-machines/shared-images-cli.md) vagy [a közös rendszerkép-katalógus létrehozása a Azure Portal használatával](../virtual-machines/linux/shared-images-portal.md)című témakört.
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Készlet létrehozása megosztott rendszerképből az Azure CLI használatával
 
@@ -203,7 +203,7 @@ client.pool.add(new_pool)
 
 A következő lépésekkel hozhat létre készletet egy megosztott rendszerképből a Azure Portal.
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. Nyissa meg a **Batch-fiókokat** , és válassza ki a fiókját.
 1. Válassza a **készletek** lehetőséget, majd a **Hozzáadás** gombra kattintva hozzon létre egy új készletet.
 1. A **rendszerkép típusa** szakaszban válassza a **megosztott képgyűjtemény**lehetőséget.

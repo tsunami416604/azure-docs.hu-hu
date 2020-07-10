@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cf78a2f7d909fb260c5ff99f80c9d1482f2cd08b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 85635ff3a52236d0c53b72c68eda0d71debe1f61
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027307"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145911"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Könyvtárak hozzáadása és kezelése Apache Sparkhoz az Azure szinapszis Analyticsben
 
@@ -34,7 +35,7 @@ A Spark-példány indításakor új virtuális környezet jön létre, amely a t
 
 ### <a name="requirements-format"></a>Követelmények formátuma
 
-A következő kódrészlet a követelmények fájl formátumát mutatja. A PyPi-csomag neve a pontos verzióval együtt jelenik meg. Ez a fájl a [pip Freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) Reference dokumentációjában ismertetett formátumot követi. Ez a példa egy adott verziót PIN-kódra mutat. Ebben a fájlban a "nem nagyobb, mint" és a "kisebb, mint" verziót is megadhatja.
+A következő kódrészlet a követelmények fájl formátumát mutatja. A PyPi-csomag neve a pontos verzióval együtt jelenik meg. Ez a fájl a [pip Freeze](https://pip.pypa.io/en/stable/reference/pip_freeze/) Reference dokumentációjában ismertetett formátumot követi. Ez a példa egy adott verziót PIN-kódra mutat. 
 
 ```
 absl-py==0.7.0

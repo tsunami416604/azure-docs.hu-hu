@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 06/12/2020
+ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: aa961cb94816b50aa515532e69454fce9b370c54
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083080"
+ms.locfileid: "86146551"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése az Azure Machine Learninggel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,9 +25,9 @@ Megtudhatja, hogyan helyezheti üzembe a gépi tanulási modellt webszolgáltat�
 
 A munkafolyamat a modell [üzembe helyezésének helyétől](#target) függetlenül is hasonló:
 
-1. Regisztrálja a modellt.
-1. Felkészülés a telepítésre. (Az eszközök, a használat, a számítási cél meghatározása.)
-1. A modell üzembe helyezése a számítási célra.
+1. A modell regisztrálása.
+1. Felkészülés az üzembe helyezésre. (Az eszközök, a használat, és a számítási cél meghatározása.)
+1. A modell üzembe helyezése a számítási célon.
 1. Tesztelje az üzembe helyezett modellt, más néven webszolgáltatást.
 
 Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos további információkért lásd: [modellek kezelése, üzembe helyezése és figyelése Azure Machine Learningokkal](concept-model-management-and-deployment.md).
@@ -59,7 +59,7 @@ A következő kód bemutatja, hogyan csatlakozhat egy Azure Machine Learning mun
 
 + **A Visual Studio Code használata**
 
-   A Visual Studio Code használatakor a munkaterületet grafikus felületen kell kiválasztania. További információ: [modellek üzembe helyezése és kezelése](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) a Visual Studio Code bővítmény dokumentációjában.
+   A Visual Studio Code használatakor a munkaterületet grafikus felületen kell kiválasztania. További információ: [modellek üzembe helyezése és kezelése](how-to-manage-resources-vscode.md#endpoints) a Visual Studio Code bővítmény dokumentációjában.
 
 ## <a name="register-your-model"></a><a id="registermodel"></a>A modell regisztrálása
 
@@ -216,13 +216,13 @@ myenv.register(workspace=ws)
 
 ### <a name="2-define-scoring-code"></a><a id="script"></a>2. pontozási kód definiálása
 
-A bejegyzési parancsfájl fogadja az üzembe helyezett webszolgáltatásnak küldött és a modellnek átadott adatforrást. Ezután a modell visszaadja a választ, és visszaadja az ügyfélnek. *A szkript a modellre jellemző*. Ismernie kell a modell által várt és visszaadott adatok értékét.
+A bejegyzés parancsfájlja fogadja az üzembe helyezett webszolgáltatásnak küldött adatokat, majd továbbítja azokat a modellnek. Ezután a modell által visszaadott választ visszaküldi az ügyfélnek. *A szkript a modellre jellemző*. Ismernie kell a modell által várt és visszaadott adatok értékét.
 
-A parancsfájl két olyan függvényt tartalmaz, amelyek betöltik és futtatják a modellt:
+A szkript két olyan függvényt tartalmaz, amelyek betöltik és futtatják a modellt:
 
 * `init()`: Ez a függvény általában egy globális objektumba tölti be a modellt. Ez a függvény csak egyszer fut, amikor a webszolgáltatás Docker-tárolója elindult.
 
-* `run(input_data)`: Ez a függvény a modellt használva előre jelez egy értéket a bemeneti adatok alapján. A Futtatás bemenetei és kimenetei általában a JSON-t használják a szerializáláshoz és a deszerializáláshoz. A nyers bináris adatmennyiségeket is használhatja. Az adatokat átalakíthatja a modellbe való küldés előtt, vagy az ügyfélnek való visszatérés előtt.
+* `run(input_data)`: Ez a függvény a modellt használva előre jelez egy értéket a bemeneti adatok alapján. A futtatás be- és kimenetei általában JSON-fájlt használnak a szerializáláshoz és deszerializáláshoz. Nyers bináris adatokkal is dolgozhat. Az adatokat átalakíthatja, mielőtt elküldené őket a modellnek vagy visszaküldené az ügyfélnek.
 
 #### <a name="load-model-files-in-your-entry-script"></a>A modell fájljainak betöltése a bejegyzési parancsfájlba
 
@@ -608,13 +608,13 @@ A modell telepítése során előfordulhat, hogy a szolgáltatás állapota megv
 
 Az alábbi táblázat a különböző szolgáltatás-állapotokat ismerteti:
 
-| Webszolgáltatás állapota | Description | Végső állapot?
+| Webszolgáltatás állapota | Leírás | Végső állapot?
 | ----- | ----- | ----- |
-| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | No |
-| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | No |
-| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | No |
-| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Yes |
-| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Yes |
+| Transitioning | A szolgáltatás üzembe helyezési folyamatban van. | Nem |
+| Nem kifogástalan | A szolgáltatás telepítve van, de jelenleg nem érhető el.  | Nem |
+| Unschedulable | A szolgáltatás jelenleg nem telepíthető az erőforrások hiánya miatt. | Nem |
+| Sikertelen | Hiba vagy összeomlás miatt nem sikerült telepíteni a szolgáltatást. | Igen |
+| Kifogástalan | A szolgáltatás kifogástalan állapotban van, és a végpont elérhető. | Igen |
 
 ### <a name="compute-instance-web-service-devtest"></a><a id="notebookvm"></a>Számítási példány webszolgáltatás (dev/test)
 
@@ -1104,7 +1104,7 @@ A tároló leállításához használja a következő parancsot egy másik rends
 docker kill mycontainer
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Központilag telepített webszolgáltatás törléséhez használja a következőt: `service.delete()` .
 Regisztrált modell törléséhez használja a következőt: `model.delete()` .

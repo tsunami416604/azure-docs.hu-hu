@@ -130,7 +130,7 @@ Az Azure rangsorolt hálózati csatornát használ a lemezes forgalomhoz, ami el
 
 Tekintse meg a [nagy teljesítményű cikk kialakítását](../articles/virtual-machines/windows/premium-storage-performance.md) ismertető cikket, amelyből MEGISMERHETI a virtuális gépek és lemezek konfigurációinak optimalizálásával kapcsolatos ajánlott eljárásokat, hogy elérhető legyen a kívánt teljesítmény
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a felügyelt lemezekről további részleteket szeretne megtudni, tekintse meg a következőt: [Az Azure-beli virtuális gépek rugalmasságának növelése a Managed Disksokkal](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency).
 

@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af5a9b5b5dd8eb6b6bec8440287918d1f8610064
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357919"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144697"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: technikai részletes bemutató
 
@@ -45,6 +45,9 @@ A zökkenőmentes egyszeri bejelentkezés a Azure AD Connect használatával eng
 
 >[!IMPORTANT]
 > `AZUREADSSOACC`Biztonsági okokból szigorúan védeni kell a számítógépfiókot. Csak a Tartománygazdák kezelhetik a számítógépfiókot. Győződjön meg arról, hogy a számítógépfiók Kerberos-delegálása le van tiltva, és nincs más fiók a Active Directory delegálási engedélyekkel rendelkezik a `AZUREADSSOACC` számítógépfiók számára. Tárolja a számítógépfiókot a szervezeti egységben (OU), ahol biztonságos a véletlen törléstől, és csak a Tartománygazdák férhetnek hozzá. A számítógép fiókjában a Kerberos-visszafejtési kulcsot is bizalmasként kell kezelni. Javasoljuk, hogy legalább 30 naponként átadja a számítógépfiók [Kerberos-visszafejtési kulcsát](how-to-connect-sso-faq.md) `AZUREADSSOACC` .
+
+>[!IMPORTANT]
+> A zökkenőmentes egyszeri bejelentkezés támogatja a Kerberos AES256_HMAC_SHA1, AES128_HMAC_SHA1 és RC4_HMAC_MD5 titkosítási típusait. Azt javasoljuk, hogy a AzureADSSOAcc $ fiók titkosítási típusa legyen AES256_HMAC_SHA1, vagy a további biztonság érdekében adja meg az egyik AES-típust a vs. RC4-nek. A titkosítási típust a Active Directory lévő fiók msDS-Supportedencryptiontypes attribútuma alapján attribútuma tárolja.  Ha a AzureADSSOAcc $ fiók titkosítási típusa RC4_HMAC_MD5 értékre van állítva, és módosítani szeretné az AES-titkosítási típusok egyikére, akkor ügyeljen arra, hogy az adott kérdésben a [GYIK-dokumentumban](how-to-connect-sso-faq.md) leírtak szerint először átadja a AzureADSSOAcc $ fiók Kerberos-visszafejtési kulcsát, ellenkező esetben a zökkenőmentes egyszeri bejelentkezés nem fog történni.
 
 A beállítás befejezése után a zökkenőmentes SSO ugyanúgy működik, mint bármely más, integrált Windows-hitelesítést (IWA) használó bejelentkezés.
 

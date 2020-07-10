@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: f0d957c05aded6641377b47c3fe383c141480b30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb18e2b0af6f04cee5b6be11afbb2d2aabdadb4b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504474"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143011"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AzCopy használatába
 
@@ -31,7 +31,7 @@ Először töltse le a AzCopy V10-es végrehajtható fájlt a számítógép bá
 
 - [Windows 64 bites](https://aka.ms/downloadazcopy-v10-windows) (zip)
 - [Windows 32 bites](https://aka.ms/downloadazcopy-v10-windows-32bit) (zip)
-- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
+- [Linux x86-64](https://aka.ms/downloadazcopy-v10-linux) (tar)
 - [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
 
 Ezek a fájlok zip-fájlként (Windows és Mac) vagy tar-fájlként (Linux) vannak tömörítve. A kátrányos fájl Linux rendszeren való letöltéséhez és kibontásához tekintse meg a Linux-disztribúció dokumentációját.
@@ -65,7 +65,7 @@ A táblázat használata útmutatóként:
 
 | Tárolási típus | Jelenleg támogatott hitelesítési módszer |
 |--|--|
-|**BLOB Storage** | Azure AD & SAS |
+|**Blob Storage** | Azure AD & SAS |
 |**BLOB Storage (hierarchikus névtér)** | Azure AD & SAS |
 |**File Storage** | Csak SAS |
 
@@ -255,7 +255,7 @@ A parancsok megkereséséhez tekintse meg a cikkek bármelyikét.
 
 - [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
 
-- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
 
 - [Adatok átvitele a AzCopy és az Amazon S3 gyűjtővel](storage-use-azcopy-s3.md)
 

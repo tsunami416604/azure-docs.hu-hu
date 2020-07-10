@@ -15,12 +15,12 @@ ms.date: 06/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9614def5310bdc6fa8c6f37d7cdcc0a5f081a96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 875c503a9959565d76d46902b5ecb386995ef1e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360299"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144728"
 ---
 # <a name="adsync-service-account"></a>ADSync-szolgáltatásfiók
 Azure AD Connect egy helyszíni szolgáltatást telepít, amely összehangolja Active Directory és Azure Active Directory közötti szinkronizálást.  A Microsoft Azure AD Sync synchronization Service (ADSync) a helyszíni környezetben futó kiszolgálón fut.  A szolgáltatás hitelesítő adatai alapértelmezés szerint az expressz telepítésekben vannak beállítva, de testreszabhatók a szervezeti biztonsági követelmények teljesítéséhez.  Ezek a hitelesítő adatok nem használhatók a helyszíni erdőkhöz vagy Azure Active Directoryhoz való kapcsolódáshoz.
@@ -40,15 +40,15 @@ Ha egy tagkiszolgálón fut, a AdSync szolgáltatás egy Virtual Service-fiók (
 |Tartományvezérlő|Tartomány \ AAD_74dc30c01e80 (lásd: Megjegyzés)|
 
 ## <a name="custom-adsync-service-accounts"></a>Egyéni ADSync-szolgáltatásfiókok
-A Microsoft a ADSync szolgáltatás futtatását javasolja egy virtuális szolgáltatásfiók vagy egy önálló vagy csoportosan felügyelt szolgáltatásfiók kontextusában.  A tartományi rendszergazda dönthet úgy is, hogy az adott szervezeti biztonsági követelményeknek való megfelelés érdekében kiépített szolgáltatásfiókot is létrehoz.   A telepítés során használt szolgáltatásfiók testreszabásához válassza a Testreszabás lehetőséget az alábbi expressz beállítások oldalon.   A következő beállítások érhetők el:
+A Microsoft a ADSync szolgáltatás futtatását javasolja egy virtuális szolgáltatásfiók vagy egy önálló vagy csoportosan felügyelt szolgáltatásfiók kontextusában.  A tartományi rendszergazda dönthet úgy is, hogy az adott szervezeti biztonsági követelményeknek való megfelelés érdekében kiépített szolgáltatásfiókot is létrehoz.   A telepítés során használt szolgáltatásfiók testreszabásához válassza a Testreszabás lehetőséget az alábbi expressz beállítások oldalon.   A következő lehetőségek érhetők el:
 
 - alapértelmezett fiók – a Azure AD Connect a fentiekben leírtak szerint fogja kiépíteni a szolgáltatásfiókot
 - felügyelt szolgáltatásfiók – a rendszergazda által kiépített önálló vagy csoportos MSA használata
 - tartományi fiók – a rendszergazda által kiépített tartományi szolgáltatási fiók használata
 
-![](media/concept-adsync-service-account/adsync1.png)
+![Képernyőfelvétel a Azure AD Connect Express Settings lapról "Testreszabás" vagy "expressz beállítások használata" lehetőséggel.](media/concept-adsync-service-account/adsync1.png)
 
-![](media/concept-adsync-service-account/adsync2.png)
+![Képernyőkép a Azure AD Connect "a szükséges összetevők telepítése" oldalon, a meglévő felügyelt szolgáltatásfiók használatára vonatkozó lehetőséggel.](media/concept-adsync-service-account/adsync2.png)
 
 ## <a name="diagnosing-adsync-service-account-changes"></a>A ADSync-szolgáltatásfiók változásainak diagnosztizálása
 Ha a telepítés után megváltoztatja a ADSync szolgáltatás hitelesítő adatait, a szolgáltatás nem indul el, így elveszti a hozzáférést a szinkronizálási adatbázishoz, és nem tud hitelesíteni a csatlakoztatott címtárakkal (Azure és AD DS).  Az adatbázis-hozzáférés engedélyezése az új ADSync-szolgáltatásfiók számára nem elegendő a probléma helyreállításához. Az eredeti hitelesítő adatok visszaállítása után nem történik szinkronizálás.

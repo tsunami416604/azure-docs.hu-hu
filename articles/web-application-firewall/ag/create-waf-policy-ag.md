@@ -7,11 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 7ab4b60747509dfe56ec2e89b38986de747dab69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84014536"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146599"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Webalkalmazási tűzfal házirendjeinek létrehozása a Application Gatewayhoz
 
@@ -22,7 +23,7 @@ Tetszőleges számú szabályzatot készíthet. Miután létrehozta a szabályza
 Ha a Application Gateway szabályzatot alkalmaz, majd egy másik szabályzatot alkalmaz egy figyelőre az adott Application Gateway, akkor a figyelő házirendje érvénybe lép, csak azokhoz a figyelőkhöz, amelyekhez hozzá van rendelve. A Application Gateway szabályzat továbbra is érvényes minden olyan figyelőre, amely nem rendelkezik a hozzájuk rendelt házirenddel. 
 
    > [!NOTE]
-   > A helyszíni és az URI-WAF szabályzatok nyilvános előzetes verzióban érhetők el. Ez azt jelenti, hogy ez a funkció a Microsoft kiegészítő használati feltételeinek hatálya alá tartozik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > Az URI-WAF szabályzatok nyilvános előzetes verzióban érhetők el. Ez azt jelenti, hogy ez a funkció a Microsoft kiegészítő használati feltételeinek hatálya alá tartozik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
    > [!NOTE]
    > Miután egy tűzfalszabály társítva van egy WAF, mindig az adott WAF tartozó házirendnek kell lennie. Felülírhatja ezt a házirendet, de a WAF teljes mértékben nem támogatja a szabályzatok társítását. 
 

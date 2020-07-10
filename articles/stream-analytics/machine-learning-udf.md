@@ -7,11 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50d6bebd1e38149096b865ad3654a9604d685f5d
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488749"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86141948"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics integrálása Azure Machine Learning (előzetes verzió)
 
@@ -27,7 +28,7 @@ A Machine learning-modellnek a Stream Analytics feladathoz való hozzáadása el
 
 3. Győződjön meg arról, hogy a webszolgáltatás elfogadja és visszaadja a JSON szerializált adatait.
 
-4. A modell üzembe helyezése az [Azure Kubernetes szolgáltatásban](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) nagy léptékű üzemi környezetekben. Ha a webszolgáltatás nem tudja kezelni a feladatból érkező kérések számát, akkor a Stream Analytics feladatának teljesítménye csökken, ami hatással van a késésre. A Azure Container Instanceson üzembe helyezett modellek csak a Azure Portal használata esetén támogatottak.
+4. A modell üzembe helyezése az [Azure Kubernetes szolgáltatásban](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) nagy léptékű üzemi környezetekben. Ha a webszolgáltatás nem tudja kezelni a feladatból érkező kérések számát, akkor a Stream Analytics feladatának teljesítménye csökken, ami hatással van a késésre. A Azure Container Instanceson üzembe helyezett modellek csak a Azure Portal használata esetén támogatottak. A [Azure Machine learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) használatával létrehozott modellek még nem támogatottak a stream Analyticsban.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>Gépi tanulási modell hozzáadása a feladatokhoz
 

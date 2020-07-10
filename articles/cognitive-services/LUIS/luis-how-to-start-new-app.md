@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: 3d6b2b5896242ff85c6fb96071b747083893b03a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 304e76a2bf8bae3e6ee2120b892ef97d89c3decc
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343166"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86144400"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Új LUIS-alkalmazás létrehozása a LUIS portálon
 A LUIS-alkalmazások többféleképpen is létrehozhatók. Luis-alkalmazást a LUIS-portálon vagy a LUIS authoring [API](developer-reference-resource.md)-kon keresztül hozhat létre.
@@ -45,7 +45,7 @@ Több módon is létrehozhat egy új alkalmazást a szerzői API-kkal:
 
 ## <a name="create-new-app-in-luis"></a>Új alkalmazás létrehozása a LUIS-ban
 
-1. A **saját alkalmazások** oldalon válassza ki az **előfizetését**, és **hozzon létre**egy **erőforrást** , majd a + létrehozás elemet. Ha ingyenes próbaverziós kulcsot használ, Ismerje meg, hogyan [hozhat létre authoring-erőforrásokat](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
+1. A **saját alkalmazások** oldalon válassza ki az **előfizetését**, és **hozzon létre**egy **erőforrást** , majd a + létrehozás elemet. 
 
 > [!div class="mx-imgBorder"]
 > ![LUIS-alkalmazások listája](./media/create-app-in-portal.png)
@@ -75,6 +75,6 @@ A környezeti eszköztár más műveleteket is tartalmaz:
 * Végponti naplók exportálása `.csv` Offline elemzéshez
 * Alkalmazás törlése
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha az alkalmazás kialakítása magában foglalja a szándék észlelését, [hozzon létre új leképezéseket](luis-how-to-add-intents.md), és adja hozzá például a hosszúságú kimondott szöveg. Ha az alkalmazás kialakítása csak az kibontást tartalmazza, adjon hozzá például hosszúságú kimondott szöveg a none szándékhoz, majd [hozzon létre entitásokat](luis-how-to-add-example-utterances.md), és címkézze fel a példát a hosszúságú kimondott szöveg.

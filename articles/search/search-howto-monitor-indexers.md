@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 02a0de7760c660a7cce1bbd9cd36d4bb2a1180e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91c799972a21d9205577f0a5672e1182831416b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565789"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145405"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Az Azure Cognitive Search indexelő állapotának és eredményeinek figyelése
 
@@ -82,36 +82,40 @@ További információ az indexelő hibáiról és a figyelmeztetésekről: [Az A
 
 Az indexelő állapotának és végrehajtásának előzményeit az [Indexelő állapotának lekérése paranccsal](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)kérheti le:
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
-    api-key: [Search service admin key]
+```http
+GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
+api-key: [Search service admin key]
+```
 
 A válasz általános indexelő állapotot, az utolsó (vagy folyamatban lévő) indexelő meghívást, valamint a legutóbbi indexelő hívás előzményeit tartalmazza.
 
-    {
-        "status":"running",
-        "lastResult": {
-            "status":"success",
-            "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-         },
-        "executionHistory":[ {
-            "status":"success",
-             "errorMessage":null,
-            "startTime":"2018-11-26T03:37:18.853Z",
-            "endTime":"2018-11-26T03:37:19.012Z",
-            "errors":[],
-            "itemsProcessed":11,
-            "itemsFailed":0,
-            "initialTrackingState":null,
-            "finalTrackingState":null
-        }]
-    }
+```output
+{
+    "status":"running",
+    "lastResult": {
+        "status":"success",
+        "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+     },
+    "executionHistory":[ {
+        "status":"success",
+         "errorMessage":null,
+        "startTime":"2018-11-26T03:37:18.853Z",
+        "endTime":"2018-11-26T03:37:19.012Z",
+        "errors":[],
+        "itemsProcessed":11,
+        "itemsFailed":0,
+        "initialTrackingState":null,
+        "finalTrackingState":null
+    }]
+}
+```
 
 A végrehajtási előzmények akár a 50 legutóbbi futtatását is tartalmazzák, amelyek fordított időrendi sorrendben vannak rendezve (a legutóbbi első).
 
@@ -163,14 +167,16 @@ static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchServic
 
 A konzol kimenete a következőképpen fog kinézni:
 
-    Indexer has run 18 times.
-    Indexer Status: Running
-    Latest run
-      Run Status: Success
-      Total Documents: 7, Failed: 0
-      StartTime: 10:02:46 PM, EndTime: 10:02:47 PM, Elapsed: 00:00:01.0990000
-      ErrorMessage: none
-      Document Errors: 0, Warnings: 0
+```output
+Indexer has run 18 times.
+Indexer Status: Running
+Latest run
+  Run Status: Success
+  Total Documents: 7, Failed: 0
+  StartTime: 10:02:46 PM, EndTime: 10:02:47 PM, Elapsed: 00:00:01.0990000
+  ErrorMessage: none
+  Document Errors: 0, Warnings: 0
+```
 
 Figyelje meg, hogy két különböző állapotüzenetek vannak. A legfelső szintű állapot az indexelő állapota. A **futó** indexelő állapota azt jelenti, hogy az indexelő helyesen van beállítva, és végrehajtásra elérhető, de nem az éppen végrehajtás alatt áll.
 

@@ -3,18 +3,18 @@ title: Lemezes tárolás – áttekintés
 description: Az Azure Managed Disks áttekintése, amely a virtuális gépek használatakor kezelheti a Storage-fiókokat.
 author: roygara
 ms.service: virtual-machines
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c66324841989580712d893ada9121ae40f5161a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d3932047422571399ad0562b2f9f2d19c3e6799b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147766"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145306"
 ---
-# <a name="introduction-to-azure-managed-disks"></a>Az Azure-beli felügyelt lemezek bemutatása
+# <a name="introduction-to-azure-managed-disks"></a>Bevezetés az Azure-beli felügyelt lemezek használatába
 
 Az Azure Managed Disks az Azure által felügyelt és az Azure Virtual Machines-t használó, blokk szintű tárolási kötetek. A felügyelt lemezek olyanok, mint egy fizikai lemez egy helyszíni kiszolgálón, de virtualizált. A felügyelt lemezek esetében mindössze annyit kell tennie, hogy megadja a lemez méretét, a lemez típusát és a lemez kiépítését. A lemez kiépítése után az Azure kezeli a többiet.
 

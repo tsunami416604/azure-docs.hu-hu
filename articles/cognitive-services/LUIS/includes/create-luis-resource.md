@@ -23,11 +23,11 @@ ms.locfileid: "80879204"
 
 1. Adja meg az összes szükséges beállítást:
 
-    |Name (Név)|Cél|
+    |Név|Rendeltetés|
     |--|--|
     |Előfizetés neve| az erőforrásért fizetendő előfizetés.|
     |Erőforráscsoport| Egy kiválasztott vagy létrehozott egyéni erőforráscsoport-név. Az erőforráscsoportok lehetővé teszik az Azure-erőforrások csoportosítását a hozzáféréshez és a felügyelethez.|
-    |Name (Név)| Egyéni név, amelyet az egyéni altartományként használ a szerzői műveletek és előrejelzési végpontok lekérdezéséhez.|
+    |Név| Egyéni név, amelyet az egyéni altartományként használ a szerzői műveletek és előrejelzési végpontok lekérdezéséhez.|
     |Szerzői hely|A modellhez társított régió.|
     |A szerzői díjak szintjei|Az árképzési szint meghatározza a másodpercenkénti maximális tranzakciót és a havi értéket.|
     |Futtatókörnyezet helye|A közzétett előrejelzési végpont futtatókörnyezetéhez társított régió.|

@@ -4,11 +4,12 @@ description: A diagnosztikai napló eseményeinek rögzítése és elemzése Azu
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6e10a4fc6cd13854682f094274c975931b056365
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960724"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145102"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez
  
@@ -86,8 +87,8 @@ Gyakori forgatókönyv egy Azure Storage-fiók kiválasztása a napló célhelyk
 
 Másik lehetőségként a következőket teheti:
 
-- A Batch diagnosztikai napló eseményeinek továbbítása egy [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md)-ba. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat. 
-- Diagnosztikai naplók küldése [Azure monitor naplókba](../log-analytics/log-analytics-overview.md), ahol elemezheti őket, vagy exportálhatja őket elemzésre Power bi vagy Excelben.
+- A Batch diagnosztikai napló eseményeinek továbbítása egy [Azure Event hub](../event-hubs/event-hubs-about.md)-ba. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat. 
+- Diagnosztikai naplók küldése [Azure monitor naplókba](../azure-monitor/log-query/log-query-overview.md), ahol elemezheti őket, vagy exportálhatja őket elemzésre Power bi vagy Excelben.
 
 > [!NOTE]
 > Az Azure-szolgáltatásokkal további költségek is felmerülhetnek a diagnosztikai naplózási információk tárolásához vagy feldolgozásához. 
@@ -134,7 +135,7 @@ Az alábbi példa egy `PoolResizeCompleteEvent` naplófájlban lévő bejegyzés
 { "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
 ```
 
-A Storage-fiókban található diagnosztikai naplók sémájával kapcsolatos további információkért lásd: [Azure-erőforrások naplófájljainak archiválása a Storage-fiókba](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-platform-logs-in-storage-account). A Storage-fiókban lévő naplók programozott módon való eléréséhez használja a Storage API-kat.
+A Storage-fiókban található diagnosztikai naplók sémájával kapcsolatos további információkért lásd: [Azure-erőforrások naplófájljainak archiválása a Storage-fiókba](../azure-monitor/platform/resource-logs.md#send-to-azure-storage). A Storage-fiókban lévő naplók programozott módon való eléréséhez használja a Storage API-kat.
 
 ### <a name="service-log-events"></a>Szolgáltatás-naplózási események
 
@@ -177,4 +178,3 @@ A Batch szolgáltatás által kibocsátott szolgáltatás-naplózási események
 
 - Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 - További információ a [Batch-megoldások figyeléséről](monitoring-overview.md).
-

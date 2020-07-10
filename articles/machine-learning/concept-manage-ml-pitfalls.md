@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: e9e809eb805e891fdf70a85d42eebc3e17da8902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210184"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147107"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Az automatizált gépi tanulással megakadályozhatja a túlilleszkedő és a kiegyensúlyozatlan adatkezelést
 
@@ -31,7 +31,7 @@ Vegye figyelembe a következő betanított modelleket és a hozzájuk kapcsolód
 |-------|----------------|---------------|
 | A | 99.9% | 95% |
 | B | 87% | 87% |
-| C# | 99.9% | 45% |
+| C | 99.9% | 45% |
 
 Az **a**modellt figyelembe véve gyakori tévhit, hogy ha a láthatatlan adatokon a teszt pontossága alacsonyabb, mint a betanítási pontosság, a modell túl van szerelve. A teszt pontosságának azonban mindig kisebbnek kell lennie, mint a kiképzés pontossága, és a túlzottan illeszkedő és a megfelelő illeszkedéshez való különbségtétel nem *sokkal* kevésbé pontos. 
 
@@ -71,7 +71,7 @@ Az automatikus ML emellett explicit módon meggátolja a **modell bonyolultság�
 A többszörös **ellenőrzés (CV)** a teljes betanítási adat több részhalmazának betanítása, valamint az egyes alkészleteken található modellek képzésének folyamata. Az elképzelés az, hogy egy modell "szerencsés" lehet, és nagy pontossággal rendelkezik egy részhalmazsal, de a modell számos részhalmazának használatával nem éri el ezt a nagy pontosságot minden alkalommal. Az önéletrajz használatakor meg kell adnia egy érvényesítési Holdout adatkészletet, meg kell adnia az önéletrajz betöltését (az alkészletek számát) és az automatikus ML-t, majd a modell betanításával és a hiperparaméterek beállítása finomhangolásával csökkentheti az ellenőrzési csoport hibáját Az egyik CV-dobás túl nagy méretű lehet, de a sok közül többen is csökkenti annak a valószínűségét, hogy a végső modellje túlterhelt. A kompromisszum az, hogy az önéletrajz hosszabb időt és így nagyobb költségeket eredményez, mivel a modell betanítása helyett egyszer betanítjuk az egyes *n* CV-alkészletekre. 
 
 > [!NOTE]
-> Alapértelmezés szerint nincs engedélyezve a kereszt-ellenőrzés. az automatikus ML-beállításokban kell konfigurálni. A többszörös ellenőrzés konfigurálása és az érvényesítési adatkészletek megadása után azonban a folyamat automatizálható. Lásd: 
+> Alapértelmezés szerint nincs engedélyezve a kereszt-ellenőrzés. az automatikus ML-beállításokban kell konfigurálni. A többszörös ellenőrzés konfigurálása és az érvényesítési adatkészletek megadása után azonban a folyamat automatizálható. További információ a több [ellenőrzési konfigurációról az automatikus ml-ben](how-to-configure-cross-validation-data-splits.md)
 
 <a name="imbalance"></a>
 
@@ -81,7 +81,7 @@ A rendszer a gépi tanulási besorolási forgatókönyvek esetében általában 
 
 Emellett az automatikus ML-futtatások automatikusan létrehozzák a következő diagramokat, amelyek segítségével megismerheti a modell besorolásának helyességét, és azonosíthatja a kiegyensúlyozatlan adatok által potenciálisan érintett modelleket.
 
-Diagram| Description
+Diagram| Leírás
 ---|---
 [Zavart mátrix](how-to-understand-automated-ml.md#confusion-matrix)| Kiértékeli a helyesen kategorizált címkéket az adatok tényleges címkéjén. 
 [Pontosság – visszahívás](how-to-understand-automated-ml.md#precision-recall-chart)| Kiértékeli a helyes feliratok arányát az adatokban található címkézett példányok arányával. 
@@ -93,7 +93,7 @@ A Machine learning-munkafolyamatok egyszerűsítésének céljaként az **automa
 
 - A **Weight oszlop**: az automatikus ml a súlyok oszlopát támogatja bemenetként, ami az adatokban lévő sorok súlyozását eredményezi, ami felhasználható egy osztály további vagy kisebb "fontos" értékének elvégzésére.
 
-- Az automatikus ML által használt algoritmusok megfelelően kezelhetik az akár 20:1-es egyensúlyhiányt, ami azt jelenti, hogy a leggyakoribb osztály 20 alkalommal több sort tartalmaz az adatmennyiségnél, mint a legkisebb közös osztály.
+- Az automatikus ML-észlelési egyensúlyhiány által használt algoritmusok, ha a kisebbségi osztályban lévő minták száma egyenlő vagy kevesebb mint 20%-a a többségi osztályban található minták számával, ahol a kisebbségi osztály a legkevesebb minta és a többségi osztályra hivatkozik, és a legtöbb mintának megfelelő. Ezt követően a AutoML egy kísérletet fog futtatni a mintavételen alapuló adattal annak ellenőrzésére, hogy az osztályok súlyozása orvosolja-e a problémát, és javítja a teljesítményt. Ha a kísérlet során jobb teljesítményt biztosít, akkor ezt a megoldást alkalmazza a rendszer.
 
 - Használjon olyan teljesítmény-mérőszámot, amely jobban bánik a kiegyensúlyozatlan adatokkal. Például az AUC_weighted egy elsődleges metrika, amely az osztályt jelképező minták relatív száma alapján kiszámítja az egyes osztályok hozzájárulását, ezért a rendszer sokkal megbízhatóbb az egyensúlyhiány ellen.
 

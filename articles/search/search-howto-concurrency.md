@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: edfb2fe5cc37a00335ca7b5be851a88825b03eb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f22e69cbc625d21c398151e413574387a2587790
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72792219"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145287"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Az egyidejűség kezelése az Azure-ban Cognitive Search
 
@@ -22,7 +22,7 @@ Az Azure Cognitive Search-erőforrások, például az indexek és az adatforrás
 > [!Tip]
 > A [mintául szolgáló C#-megoldás](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer) fogalmi kódja azt ismerteti, hogyan működik a Egyidejűség-vezérlés az Azure Cognitive Searchban. A kód olyan feltételeket hoz létre, amelyek a Egyidejűség vezérlését hívják meg. Az [alábbi kódrészlet](#samplecode) beolvasása valószínűleg elegendő a legtöbb fejlesztő számára, de ha futtatni szeretné, szerkessze appsettings.jsa szolgáltatást a szolgáltatás nevének és a felügyeleti API-kulcsnak a hozzáadásához. A szolgáltatás URL-címe `http://myservice.search.windows.net` a szolgáltatás neve `myservice` .
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>A működési elv
 
 Az optimista Egyidejűség az API-hívások indexekre, indexelő anyagokba, adatforrásokra és synonymMap-erőforrásokra való írásával valósítható meg.
 
@@ -46,7 +46,7 @@ A következő kód az accessCondition-ellenőrzéseket mutatja be a legfontosabb
 
 ### <a name="sample-code-from-dotnetetagsexplainer-program"></a>Mintakód a [DotNetETagsExplainer programból](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetETagsExplainer)
 
-```
+```csharp
     class Program
     {
         // This sample shows how ETags work by performing conditional updates and deletes
@@ -173,6 +173,7 @@ Ez a kódrészlet egy olyan synonymMap hozzáadását mutatja be, amely már lé
 
 A kódrészlet beolvassa a "Hotels" indexet, ellenőrzi az objektum verziószámát egy frissítési műveletben, kivételt jelez, ha a feltétel meghiúsul, majd újrapróbálkozik a művelettel (legfeljebb háromszor), a kiszolgálóról a legújabb verzióra való lekéréssel kezdődően.
 
+```csharp
         private static void EnableSynonymsInHotelsIndexSafely(SearchServiceClient serviceClient)
         {
             int MaxNumTries = 3;
@@ -203,7 +204,7 @@ A kódrészlet beolvassa a "Hotels" indexet, ellenőrzi az objektum verziószám
             index.Fields.First(f => f.Name == "tags").SynonymMaps = new[] { "desc-synonymmap" };
             return index;
         }
-
+```
 
 ## <a name="next-steps"></a>További lépések
 
@@ -214,7 +215,7 @@ A következő minták egyikének módosításával Etagek vagy AccessCondition o
 + [REST API minta a GitHubon](https://github.com/Azure-Samples/search-rest-api-getting-started)
 + [.Net SDK minta a githubon](https://github.com/Azure-Samples/search-dotnet-getting-started). Ez a megoldás tartalmazza a cikkben bemutatott kódot tartalmazó "DotNetEtagsExplainer" projektet.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Gyakori HTTP-kérelem és válasz-fejlécek](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) 
  [Http-állapotkódok](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) 

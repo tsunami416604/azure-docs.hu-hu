@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/17/2020
 ms.author: diberry
-ms.openlocfilehash: 338868c954df68fbf43bee9581a6afada58f7e97
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: cc14f1cd60f048ba01060b9ebdbca434af6b9751
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055460"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86145615"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
@@ -57,7 +57,7 @@ Az áttelepítést a LUIS portálról kell elvégezni. Ha például a LUIS CLI h
 * Ha Ön az alkalmazás tulajdonosa, nem kell exportálnia az alkalmazásokat, mert azok automatikusan áttelepülnek. Javasoljuk, hogy mentse az egyes alkalmazások közreműködői listáját. A listát tartalmazó e-mail-sablon opcionálisan az áttelepítési folyamat részeként is elérhető.
 
 
-|Portál|Szerep|
+|Portal|Rendeltetés|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)| Hozzon létre előrejelzési és létrehozási erőforrásokat.<br> Közreműködők kiosztása erőforrásokhoz.|
 |[LUIS](https://www.luis.ai)| Migrálás új szerzői erőforrásokra.<br> Új authoring-erőforrások létrehozása az áttelepítési folyamat során.<br> Az **Manage**  >  **Azure-erőforrások** kezelése oldalon megadhatja vagy megadhatja az alkalmazások előrejelzési és szerzői erőforrásainak hozzárendelését. <br> Alkalmazások áthelyezése egy authoring-erőforrásból egy másikba.  |
@@ -226,7 +226,7 @@ A következő megoldást javasoljuk:
 ## <a name="troubleshooting-the-migration-process"></a>Az áttelepítési folyamat hibaelhárítása
 
 Amikor megkísérli az áttelepítést, de nem találja az Azure-előfizetését a legördülő listában:
-* Győződjön meg arról, hogy rendelkezik olyan érvényes Azure-előfizetéssel, amely jogosult Cognitive Services erőforrások létrehozására. Lépjen a [Azure Portalra](https://ms.portal.azure.com) , és keresse meg az előfizetés állapotát. Ha még nem rendelkezik ilyennel, [hozzon létre egy ingyenes próbaverziót](https://azure.microsoft.com/free/).
+* Győződjön meg arról, hogy rendelkezik olyan érvényes Azure-előfizetéssel, amely jogosult Cognitive Services erőforrások létrehozására. Lépjen a [Azure Portalra](https://ms.portal.azure.com) , és keresse meg az előfizetés állapotát. Ha még nem rendelkezik ilyennel, [hozzon létre egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/cognitive-services/).
 * Győződjön meg arról, hogy az érvényes előfizetéséhez társított megfelelő bérlő van. Ezen az eszköztáron átválthatja a bérlőket az avatárról balra: az ![ eszköztáron, ahol átválthatja a bérlőket](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
 Ha meglévő authoring-erőforrással rendelkezik, de nem találja, akkor a **meglévő authoring Resource használata** lehetőség kiválasztásával:

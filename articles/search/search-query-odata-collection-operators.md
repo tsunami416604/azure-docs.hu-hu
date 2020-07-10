@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47e7e09bae082141efd872d3a90ecc30a3be04e5
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113230"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146060"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>OData-gyűjtemény operátorok az Azure Cognitive Searchban – `any` és`all`
 
@@ -65,23 +66,33 @@ A gyűjtemény szűrőben lévő **lambda kifejezés** olyan, mint egy programoz
 
 Olyan dokumentumok egyeztetése, amelyek `tags` mezője pontosan a "WiFi" karakterláncot tartalmazza:
 
-    tags/any(t: t eq 'wifi')
+```text
+tags/any(t: t eq 'wifi')
+```
 
 Olyan dokumentumok egyeztetése, amelyekben a mező minden eleme `ratings` 3 és 5 közé esik, beleértve a következőket:
 
-    ratings/all(r: r ge 3 and r le 5)
+```text
+ratings/all(r: r ge 3 and r le 5)
+```
 
 Olyan dokumentumok egyeztetése, amelyekben a mező egyik földrajzi koordinátái `locations` a megadott sokszögen belül vannak:
 
-    locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```text
+locations/any(loc: geo.intersects(loc, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))'))
+```
 
 Olyan dokumentumok egyeztetése, amelyekben a `rooms` mező üres:
 
-    not rooms/any()
+```text
+not rooms/any()
+```
 
 A dokumentumok egyeztetése az összes szobában, a `rooms/amenities` mező a "TV" kifejezést tartalmazza, és `rooms/baseRate` kevesebb, mint 100:
 
-    rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```text
+rooms/all(room: room/amenities/any(a: a eq 'tv') and room/baseRate lt 100.0)
+```
 
 ## <a name="limitations"></a>Korlátozások
 

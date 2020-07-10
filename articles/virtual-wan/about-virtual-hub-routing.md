@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6809429b26eea30ca0569044634308d2e4dff9f7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 368440976558730bd7bb9600a0bf45c56d1ee300
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025981"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147384"
 ---
 # <a name="about-virtual-hub-routing"></a>Információ a virtuális központ útválasztásáról
 
@@ -24,6 +24,10 @@ Az Útválasztás konfigurálásával kapcsolatban lásd: [a virtuális központ
 ## <a name="routing-concepts"></a><a name="concepts"></a>Útválasztási fogalmak
 
 A következő szakaszok ismertetik a virtuális központ útválasztásának legfontosabb fogalmait.
+
+> [!NOTE]
+> A központi útválasztási táblázat, a társítás, a terjesztési és a statikus útvonalak egy virtuális hálózati kapcsolaton belüli új fogalmai továbbra is kihasználhatók, és a várhatóan az augusztus 3. hét.
+>
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>Hub-útválasztási táblázat
 
@@ -59,10 +63,6 @@ Minden egyes virtuális központ esetében az **egyik útválasztási tábla sem
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Statikus útvonalak konfigurálása virtuális hálózati kapcsolatban
 
 A statikus útvonalak konfigurálása egy olyan mechanizmust biztosít, amely egy következő ugrási IP-címen keresztül irányítja át a forgalmat, ami egy virtuális hubhoz csatolt küllős VNet kiépített hálózati virtuális berendezés (NVA) lehet. A statikus útvonal egy útvonal neve, a célhelyek előtagjainak listája, valamint egy következő ugrási IP-cím.
-
-> [!NOTE]
-> A virtuális hálózati kapcsolaton belül a társítással, a propagálással és a statikus útvonalakkal kapcsolatos új fogalmak némelyike továbbra is elvégezhető, és a várhatóan augusztus 3-tól a hét végén elkészül.
->
 
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>Az alapszintű és a standard szintű virtuális hálózatok útválasztási táblái a társítási és propagálási funkciók előtt
 
