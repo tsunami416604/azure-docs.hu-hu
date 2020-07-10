@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: ML modellek üzembe helyezése tervezővel'
+title: 'Oktatóanyag: ML modellek üzembe helyezése a tervezővel (előzetes verzió)'
 titleSuffix: Azure Machine Learning
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre prediktív elemzési megoldást Azure Machine Learning Designerben (előzetes verzió). A gépi tanulási modellek betanítása, pontszáma és üzembe helyezése drag-and-drop modulok használatával.
 author: peterclu
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: e10e5050912788732128a8b765716c22fe9e576e
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 1d0cd074f6e4ad836bc5102f3f6edc61b75215e4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517460"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199962"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a Designerben (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -79,7 +79,7 @@ A megjelenő párbeszédpanelen bármelyik meglévő Azure Kubernetes Service-(a
     
 1. Válasszon egy közeli régiót, amely elérhető a **régió**számára.
 
-1. Kattintson a **Létrehozás** gombra.
+1. Válassza a **Létrehozás** lehetőséget.
 
     > [!NOTE]
     > Egy új AK-szolgáltatás létrehozása körülbelül 15 percet vesz igénybe. A kiépítési állapotot megtekintheti a **következtetési fürtök** oldalon.
@@ -121,7 +121,7 @@ Az üzembe helyezés befejeződése után a **végpontok** lapon ellenőrizheti 
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre, helyezhet üzembe és használhat fel gépi tanulási modellt a tervezőben. Ha többet szeretne megtudni arról, hogyan használhatja a tervezőt más típusú problémák megoldására, tekintse meg a többi minta folyamatát.
 

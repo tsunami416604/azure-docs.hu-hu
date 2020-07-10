@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: sample
-ms.date: 01/14/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: d826a40073d243193f87d90ab80333b491a203b2
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 9a9518eb4c8635275b9cbf0467f3091eca10f647
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734215"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223006"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>Azure Active Directory Domain Services felügyelt tartomány létrehozása Azure Resource Manager sablon használatával
 
 Azure Active Directory Domain Services (Azure AD DS) olyan felügyelt tartományi szolgáltatásokat biztosít, mint például a tartományhoz való csatlakozás, a csoportházirend, az LDAP, a Kerberos/NTLM hitelesítés, amely teljes mértékben kompatibilis a Windows Server Active Directoryekkel. Ezeket a tartományi szolgáltatásokat a tartományvezérlők üzembe helyezése, kezelése és javítása nélkül használhatja fel. Az Azure AD DS integrálható a meglévő Azure AD-Bérlővel. Ez az integráció lehetővé teszi, hogy a felhasználók a vállalati hitelesítő adataikkal jelentkezzenek be, és meglévő csoportokat és felhasználói fiókokat is használhatnak az erőforrásokhoz való hozzáférés biztosításához.
 
-Ez a cikk bemutatja, hogyan engedélyezheti az Azure AD DS Azure Resource Manager sablon használatával. A támogatási erőforrások Azure PowerShell használatával jönnek létre.
+Ebből a cikkből megtudhatja, hogyan hozhat létre felügyelt tartományt egy Azure Resource Manager sablon használatával. A támogatási erőforrások Azure PowerShell használatával jönnek létre.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -51,7 +51,7 @@ Azure AD DS felügyelt tartomány létrehozásakor meg kell adnia egy DNS-nevet.
 >
 > Előfordulhat, hogy létre kell hoznia néhány további DNS-rekordot a környezetében lévő más szolgáltatásokhoz, vagy feltételes DNS-továbbítókat a környezet meglévő DNS-neve között. Ha például olyan webkiszolgálót futtat, amely a gyökér DNS-nevet használja, akkor olyan elnevezési ütközések lehetnek, amelyek további DNS-bejegyzéseket igényelnek.
 >
-> Ezekben az oktatóanyagokban és útmutatókban a *aaddscontoso.com* egyéni tartományát használjuk rövid példaként. Az összes parancsban adja meg a saját tartománynevét.
+> Ebben a példában és útmutatókban a *aaddscontoso.com* egyéni tartományát használjuk rövid példaként. Az összes parancsban adja meg a saját tartománynevét.
 
 A DNS-név következő korlátozásai is érvényesek:
 
@@ -88,7 +88,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
 
 Ha létrehozta a *HRE DC-rendszergazdák* csoportot, adjon hozzá egy felhasználót a csoporthoz az [Add-AzureADGroupMember][Add-AzureADGroupMember] parancsmag használatával. Először a Get [-AzureADGroup][Get-AzureADGroup] parancsmaggal szerezheti be a *HRE DC rendszergazdák* csoportjának azonosítóját, majd a kívánt felhasználó objektumazonosítót a [Get-AzureADUser][Get-AzureADUser] parancsmag használatával.
 
-A következő példában a fiók felhasználói objektumának azonosítója egy egyszerű felhasználónévvel `admin@aaddscontoso.onmicrosoft.com` . Cserélje le ezt a felhasználói fiókot annak a felhasználónak a UPN-fiókjára, amelyet hozzá szeretne adni a *HRE DC-rendszergazdák* csoporthoz:
+A következő példában a fiók felhasználói objektumának azonosítója egy egyszerű felhasználónévvel `admin@contoso.onmicrosoft.com` . Cserélje le ezt a felhasználói fiókot annak a felhasználónak a UPN-fiókjára, amelyet hozzá szeretne adni a *HRE DC-rendszergazdák* csoporthoz:
 
 ```powershell
 # First, retrieve the object ID of the newly created 'AAD DC Administrators' group.
@@ -98,7 +98,7 @@ $GroupObjectId = Get-AzureADGroup `
 
 # Now, retrieve the object ID of the user you'd like to add to the group.
 $UserObjectId = Get-AzureADUser `
-  -Filter "UserPrincipalName eq 'admin@aaddscontoso.onmicrosoft.com'" | `
+  -Filter "UserPrincipalName eq 'admin@contoso.onmicrosoft.com'" | `
   Select-Object ObjectId
 
 # Add the user to the 'AAD DC Administrators' group.
@@ -124,9 +124,9 @@ A Resource Manager erőforrás-definíciójának részeként a következő konfi
 | Paraméter               | Érték |
 |-------------------------|---------|
 | domainName              | A felügyelt tartomány DNS-tartományneve, amely figyelembe veszi az előtagok és az ütközések elnevezésére vonatkozó korábbi pontokat. |
-| filteredSync            | Az Azure AD DS lehetővé teszi az Azure AD-ben elérhető *összes* felhasználó és csoport szinkronizálását, vagy csak bizonyos csoportok *hatókörön* belüli szinkronizálását. Ha úgy dönt, hogy az összes felhasználót és csoportot szinkronizálja, később nem dönthet úgy, hogy csak hatókörön belüli szinkronizálást hajt végre.<br /> A hatókörön belüli szinkronizálással kapcsolatos további információkért lásd: [Azure ad Domain Services hatókörön belüli szinkronizálás][scoped-sync].|
-| notificationSettings    | Ha a felügyelt tartományban bármilyen riasztás keletkezik, a rendszer e-mailes értesítéseket küldhet. <br />Az Azure-bérlő *globális rendszergazdái* és a *HRE DC-rendszergazdák* csoport tagjai is *engedélyezhetők* ezekhez az értesítésekhez.<br /> Ha kívánja, további címzetteket is hozzáadhat az értesítésekhez, ha olyan riasztásokra van szükség, amelyeknek figyelmet igényelnek.|
-| domainConfigurationType | Alapértelmezés szerint a felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. Felhasználói erdő létrehozásához nem kell *tartománykonfigurációt* értéket megadnia.<br /> Az *erőforrás* -erdő csak a közvetlenül az Azure ad-ben létrehozott felhasználókat és csoportokat szinkronizálja. Az erőforrás-erdők jelenleg előzetes verzióban érhetők el. Állítsa a *ResourceTrusting* értéket az erőforrás-erdő létrehozásához.<br />Az *erőforrás* -erdőkkel kapcsolatos további információkért, beleértve az egyiket, és hogyan hozhat létre erdőszintű megbízhatósági kapcsolatot a helyszíni AD DS-tartományokkal, tekintse meg az [Azure AD DS Resource Forests – áttekintés][resource-forests]című témakört.|
+| filteredSync            | Az Azure AD DS lehetővé teszi az Azure AD-ben elérhető *összes* felhasználó és csoport szinkronizálását, vagy csak bizonyos csoportok *hatókörön* belüli szinkronizálását.<br /><br /> A hatókörön belüli szinkronizálással kapcsolatos további információkért lásd: [Azure ad Domain Services hatókörön belüli szinkronizálás][scoped-sync].|
+| notificationSettings    | Ha a felügyelt tartományban bármilyen riasztás keletkezik, a rendszer e-mailes értesítéseket küldhet. <br /><br />Az Azure-bérlő *globális rendszergazdái* és a *HRE DC-rendszergazdák* csoport tagjai is *engedélyezhetők* ezekhez az értesítésekhez.<br /><br /> Ha kívánja, további címzetteket is hozzáadhat az értesítésekhez, ha olyan riasztásokra van szükség, amelyeknek figyelmet igényelnek.|
+| domainConfigurationType | Alapértelmezés szerint a felügyelt tartomány *felhasználói* erdőként jön létre. Ez a típusú erdő az Azure AD összes objektumát szinkronizálja, beleértve a helyszíni AD DS környezetben létrehozott felhasználói fiókokat is. Felhasználói erdő létrehozásához nem kell *tartománykonfigurációt* értéket megadnia.<br /><br /> Az *erőforrás* -erdő csak a közvetlenül az Azure ad-ben létrehozott felhasználókat és csoportokat szinkronizálja. Az erőforrás-erdők jelenleg előzetes verzióban érhetők el. Állítsa a *ResourceTrusting* értéket az erőforrás-erdő létrehozásához.<br /><br />Az *erőforrás* -erdőkkel kapcsolatos további információkért, beleértve az egyiket, és hogyan hozhat létre erdőszintű megbízhatósági kapcsolatot a helyszíni AD DS-tartományokkal, tekintse meg az [Azure AD DS Resource Forests – áttekintés][resource-forests]című témakört.|
 
 A következő tömörített paraméterek definíciója az értékek deklarált módját mutatja be. Létrejön egy *aaddscontoso.com* nevű felhasználói erdő az Azure ad-vel a felügyelt tartományba szinkronizált összes felhasználóval:
 
@@ -331,9 +331,9 @@ Ha a Azure Portal azt mutatja, hogy a felügyelt tartomány befejezte az üzembe
 
 * A virtuális hálózat DNS-beállításainak frissítése, hogy a virtuális gépek megtalálják a felügyelt tartományt a tartományhoz való csatlakozáshoz vagy a hitelesítéshez.
     * A DNS konfigurálásához válassza ki a felügyelt tartományt a portálon. Az **Áttekintés** ablakban a rendszer automatikusan konfigurálja ezeket a DNS-beállításokat.
-* [Engedélyezze a jelszó-szinkronizálást Azure ad Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , hogy a végfelhasználók a vállalati hitelesítő adataik használatával bejelentkezhetnek a felügyelt tartományba.
+* [Engedélyezze a jelszó-szinkronizálást az Azure AD DS](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) így a végfelhasználók a vállalati hitelesítő adataikkal jelentkezhetnek be a felügyelt tartományba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felügyelt tartomány működés közbeni megtekintéséhez [tartományhoz csatlakoztathat egy Windows rendszerű virtuális gépet][windows-join], [konfigurálhatja a biztonságos LDAP][tutorial-ldaps]-t, és [konfigurálhatja a jelszó-kivonatok szinkronizálását][tutorial-phs].
 

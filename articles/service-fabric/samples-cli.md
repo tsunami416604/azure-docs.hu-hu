@@ -3,12 +3,12 @@ title: Az Azure parancssori felület (az) és az Azure Service Fabric parancssor
 description: Az Azure CLI (az) és az Azure Service Fabric CLI (sfctl) minták a fürtök, alkalmazások és szolgáltatások kezeléséhez.
 ms.topic: sample
 ms.date: 04/09/2018
-ms.openlocfilehash: 96339f929c25db213fabe5224dd478022ff43427
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b54efcf6ca6ef66beb655c423283ea1ad0a59d72
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75526651"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182814"
 ---
 # <a name="azure-cli-az-and-azure-service-fabric-cli-sfctl-samples"></a>Az Azure parancssori felület (az) és az Azure Service Fabric parancssori felület (sfctl) példái
 
@@ -16,7 +16,7 @@ A következő táblázat olyan hivatkozásokat tartalmaz, amelyek a Service Fabr
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-| | |
+| Sample | Leírás |
 |-|-|
 | **Fürt létrehozása** (az Azure parancssori felülettel)||
 | [Biztonságos Linux-fürt létrehozása](./scripts/cli-create-cluster.md)| Létrehoz egy Azure Service Fabric-fürtöt. |

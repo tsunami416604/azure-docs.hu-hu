@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 92b3489113aff9d48940131c80df00aedcf45325
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2dbd75748d30a67c22ac729a8a2130a2d43aef9b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172784"
+ms.locfileid: "86205210"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Oktatóanyag: végpontok közötti tartalomvédelem az Azure AD használatával
 
@@ -120,18 +120,17 @@ A SPA Player alkalmazás a következő műveleteket hajtja végre:
 * Visszafejtés, dekódolás és megjelenítés.
 * Microsoft Graph API-hívások hibaelhárítási célból. <!--See more details in the subsection Shortest path: testing my protected asset in my subscription with your hosted player app and underlying tenant. -->
 
-<!--
-The screen for sign-in, token acquisition, token renewal, and token display:
+A bejelentkezés, a jogkivonat beszerzése, a jogkivonat-megújítás és a jogkivonat-megjelenítés képernyője:
 
- ![Screen for sign in, token acquisition, token renewal, and token display](media/aad-ams-content-protection/token-acquisition2.png)
+ ![Képernyő a bejelentkezéshez, a jogkivonat-beszerzéshez, a jogkivonat-megújításhoz és a jogkivonat-megjelenítéshez](media/aad-ams-content-protection/token-acquisition.png)
 
-The screen for parsing JWT tokens (access_token or id_token):
+A JWT-tokenek elemzésére szolgáló képernyő (access_token vagy id_token):
 
-![screen for parsing JWT tokens](media/aad-ams-content-protection/parsing-jwt-tokens2.png)
+![JWT-tokenek elemzésére szolgáló képernyő](media/aad-ams-content-protection/parsing-jwt-tokens.png)
 
-The screen for testing protected content with different combinations of DRM/AES vs Streaming Protocols vs Container Format:
+A védett tartalom tesztelésére szolgáló képernyő a DRM/AES vs streaming protokollok és a tároló formátumának különböző kombinációjával:
 
-![screen for parsing JWT tokens](media/aad-ams-content-protection/testing-protected-content2.png)
+![JWT-tokenek elemzésére szolgáló képernyő](media/aad-ams-content-protection/testing-protected-content.png)
 -->
 
 <!-- You can see a hosted version of the sample at [https://aka.ms/ott](https://aka.ms/ott)-->
@@ -342,7 +341,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 
 A *groups* jogcím egy [korlátozott jogcímek készletének](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claim-sets) tagja az Azure ad-ben.
 
-#### <a name="test"></a>Tesztelés
+#### <a name="test"></a>Teszt
 
 1. Jelentkezzen be a *premium_user* -fiókkal. Képesnek kell lennie a védett tartalom lejátszására.
 1. Jelentkezzen be a *basic_user* -fiókkal. Olyan hibaüzenetet kap, amely jelzi, hogy a videó titkosított, de nincs kulcs a visszafejtéshez. Ha megtekinti az eseményeket, a hibákat és a letöltéseket a lejátszó diagnosztikai átfedésének alján lévő legördülő listáról, akkor a hibaüzenetnek jeleznie kell, hogy az Azure AD-jogkivonat végpontja által kiállított JWT esetében a hiányzó jogcím értéke miatt sikertelen volt a licenc.
@@ -372,12 +371,12 @@ Az ügyfél ezután megkeresheti a beállításokat, bejelentkezhet a vendég fi
 
 Előfordulhat, hogy a Microsoft-előfizetéssel rendelkező Microsoft-bérlőben vagy a Microsoft-előfizetéssel rendelkező egyéni bérlőn belül a mintaoldat is be van állítva. Az Azure Media Service-példány a Bérlővel egy másik előfizetésből is származhat.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 > [!WARNING]
 > Ha nem folytatja az alkalmazás használatát, törölje az oktatóanyag követése során létrehozott erőforrásokat. Ellenkező esetben fizetni kell rájuk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Gyors útmutató: tartalom titkosítása](encrypt-content-quickstart.md)

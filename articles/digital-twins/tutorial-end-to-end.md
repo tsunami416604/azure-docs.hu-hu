@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: faad1f812fc5c2cde6847a5208ee4b385f28ab3e
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391927"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206557"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Hozzon létre egy végpontok közötti megoldást
 
@@ -120,7 +120,7 @@ A *függvényalkalmazás (Windows) – új ablak létrehozása* ablakban töltse
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Azure-függvény közzététele a Visual Studióban: függvényalkalmazás (Windows) – új létrehozása":::
 
-Ezután válassza a **Létrehozás**lehetőséget.
+Ezután kattintson a **Létrehozás** elemre.
 
 Ekkor vissza kell térnie a *functions-példány* lapra, ahol az új Function alkalmazás már látható az erőforráscsoport alatt. Nyomja meg a *Finish (Befejezés*).
 
@@ -205,8 +205,9 @@ Ekkor megjelenik az esemény- *előfizetés létrehozása* lap.
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure Portal: esemény-előfizetés létrehozása":::
 
-Töltse ki a mezőket a következő módon:
+Töltse ki a mezőket a következőképpen (az alapértelmezés szerint kitöltött mezők nincsenek megemlítve):
 * *esemény-előfizetés részletei*  >  **Név**: adjon nevet az esemény-előfizetésnek.
+* *témakör részletei*  >  **Rendszertéma neve**: adjon meg egy nevet a rendszer témakörhöz. 
 * *események típusai*  >  **Szűrés az események típusai**között: válassza az *eszközök telemetria* lehetőséget a menüpontok közül.
 * *VÉGPONT részletei*  >  **Végpont típusa**: válassza az *Azure Function* lehetőséget a menüpontok közül.
 * *VÉGPONT részletei*  >  **Végpont**: nyomja meg a *végpont kiválasztása* hivatkozást. Ekkor megnyílik az *Azure-függvény kiválasztása* ablak: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="Azure Portal esemény-előfizetés: válassza az Azure-függvény lehetőséget" border="false"::: .
@@ -361,11 +362,9 @@ A [Azure Portalban](https://portal.azure.com/)keresse meg az Event Grid-témakö
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure Portal: Event Grid esemény-előfizetés":::
 
-Az esemény-előfizetés létrehozásának lépései hasonlóak ahhoz, amikor előfizetett az első Azure-függvényre, hogy IoT Hub az oktatóanyag korábbi részében. A különbség az, hogy ezúttal nem kell megadnia az *eszköz telemetria* a figyelni kívánt esemény típusaként, és egy másik Azure-függvényhez fog csatlakozni.
+Az esemény-előfizetés létrehozásának lépései hasonlóak ahhoz, amikor előfizetett az első Azure-függvényre, hogy IoT Hub az oktatóanyag korábbi részében. Ezúttal nem kell megadnia az *eszköz telemetria* a figyelni kívánt esemény típusaként, és egy másik Azure-függvényhez fog csatlakozni.
 
-Az előfizetés lépései újra:
-
-Az *esemény-előfizetés létrehozása* lapon töltse ki a mezőket a következő módon:
+Az *esemény-előfizetés létrehozása* lapon töltse ki a mezőket a következő módon (alapértelmezés szerint kitöltött mezők nincsenek megemlítve):
 * *esemény-előfizetés részletei*  >  **Név**: adjon nevet az esemény-előfizetésnek.
 * *VÉGPONT részletei*  >  **Végpont típusa**: válassza az *Azure Function* lehetőséget a menüpontok közül.
 * *VÉGPONT részletei*  >  **Végpont**: nyomja meg a *végpont kiválasztása* hivatkozást. Ekkor megnyílik az *Azure-függvény kiválasztása* ablak:

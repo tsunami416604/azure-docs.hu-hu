@@ -10,18 +10,18 @@ ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: a376c5d223121774b6c707b3bdc8edce42649e42
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 53731540c4a2861c77c02b1a4b25b60fd0e23872
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800057"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184140"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 
 A Bing Entity Search API-val *entitásokról* és *helyekről* kereshet információkat a weben. Egy adott lekérdezésben kérheti a helyeket, az entitásokat vagy mindkettőt. A helyek és entitások definícióját az alábbiakban találja.
 
-|||
+| Eredmény | Leírás |
 |-|-|
 |Entitások|Ismert személyek, helyek és dolgok, amelyeket/akiket név alapján talál meg|
 |Helyek|Éttermek, szállodák és egyéb helyi vállalkozások, amelyeket név *vagy* típus alapján talál meg (olasz éttermek)|
@@ -141,7 +141,7 @@ A `<body>` HTML-címke tartalmaz egy `onload` attribútumot, amely a lap betölt
 
 A HTML-űrlap a következő vezérlőket tartalmazza:
 
-| | |
+| Szabályozás | Leírás |
 |-|-|
 |`where`|Legördülő menü a kereséshez használt piac (hely és nyelv) kiválasztásához.|
 |`query`|Szövegmező a keresőkifejezések megadásához.|
@@ -411,7 +411,7 @@ Végül A `sidebar` a kiegészítő keresési eredményeket jelenti. Ezeket megj
 
 A `rankingResponse` gyűjtemények minden eleme a valós keresési eredményekre mutat két különböző, de egyenértékű módon.
 
-| | |
+| Item | Leírás |
 |-|-|
 |`id`|Az `id` úgy néz ki, mint egy URL, de nem célszerű hivatkozásokhoz használni. A rangsoroló eredmények `id` típusa megegyezik egy válaszgyűjtemény keresési eredményeinek eleméhez *vagy* egy teljes válaszgyűjteményhez (mint például `Entities`) tartozó `id` típussal.
 |`answerType`<br>`resultIndex`|Az `answerType` azt a legfelső szintű válaszgyűjteményt jelenti, amely az eredményt tartalmazza (például `Entities`). A `resultIndex` az eredmény adott gyűjteményen belüli indexét jelenti. Ha a `resultIndex` kimarad, a rangsorolási eredmény az egész gyűjteményre vonatkozik.
@@ -452,7 +452,7 @@ searchItemRenderers = {
 
 A leképező függvények a következő paramétereket fogadhatják el:
 
-| | |
+| Paraméter | Leírás |
 |-|-|
 |`item`|A JavaScript-objektum, amely az elem tulajdonságait tartalmazza, például az URL-címét és a leírását.|
 |`index`|Az eredményelem indexe a saját gyűjteményén belül.|
@@ -555,7 +555,7 @@ cors-proxy-server
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Bing Entity Search API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

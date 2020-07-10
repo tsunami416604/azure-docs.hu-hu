@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 79cffa7aedd0fc04dd4a747ef28bc67cacf37905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a701a5a9fd77bd801bb535fe1f26bfa17c97757b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204888"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185789"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 
@@ -151,7 +151,7 @@ A frissítési központi telepítés ütemezése egy olyan [ütemezési](shared-
     > [!NOTE]
     > Ha el szeretné kerülni, hogy a frissítések ne legyenek alkalmazva az Ubuntu karbantartási időszakán kívül, konfigurálja újra a `Unattended-Upgrade` csomagot az automatikus frissítések letiltásához. A csomag konfigurálásával kapcsolatos további információkért tekintse meg az [Ubuntu Server útmutatójának automatikus frissítések témakörét](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
-12. Az újraindítási **Beállítások** mező segítségével megadhatja, hogyan kezelje az újraindítást az üzembe helyezés során. A következő beállítások érhetők el: 
+12. Az újraindítási **Beállítások** mező segítségével megadhatja, hogyan kezelje az újraindítást az üzembe helyezés során. A következő lehetőségek érhetők el: 
     * Újraindítás szükség esetén (alapértelmezett)
     * Mindig induljon újra
     * Soha ne induljon újra
@@ -203,10 +203,10 @@ A frissítés telepítésének befejezésekor a telepítés során megadott rias
 
 ![E-mail konfigurálása műveletcsoport](./media/automation-tutorial-update-management/email-notification.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A hatókör-konfigurációkkal kapcsolatos további információkért lásd: [Update Management központi telepítési hatókör korlátozása](automation-scope-configurations-update-management.md).
-* Ha a Log Analytics munkaterületen tárolt naplókra van szüksége, tekintse meg a következő témakört: [keresések Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md).
+* Ha a Log Analytics munkaterületen tárolt naplókra van szüksége, tekintse meg a következő témakört: [keresések Azure monitor naplókban](../azure-monitor/log-query/log-query-overview.md).
 * Ha a telepítésekkel fejeződött be, tekintse [meg a munkaterületek összekapcsolását az Automation-fiókból a Update Management](automation-unlink-workspace-update-management.md).
 * A virtuális gépek Update Managementból való törléséről lásd: [virtuális gépek eltávolítása Update Managementról](automation-remove-vms-from-update-management.md).
 * Az általános Update Management hibák elhárításával kapcsolatban lásd: [Update Management problémák elhárítása](troubleshoot/update-management.md).

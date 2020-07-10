@@ -46,13 +46,13 @@ A kimenet használatával határozza meg, hogy a következő parancsok melyike f
    az extension update --name azure-iot
    ```
 
-* Ha a lista **nem** tartalmazza a következőt `azure-iot` : telepítenie kell a bővítményt. Használja ezt a parancsot:
+* Ha a lista **nem** tartalmazza a következőt `azure-iot` : telepítenie kell a bővítményt. Használja a következő parancsot:
 
     ```azurecli-interactive
     az extension add --name azure-iot
     ```
 
-* Ha a lista tartalmazza a `azure-iot-cli-ext` következőt: Ez a bővítmény örökölt verziója. Egyszerre csak egy bővítményt kell telepíteni, ezért el kell távolítania az örökölt bővítményt. Használja ezt a parancsot:
+* Ha a lista tartalmazza a `azure-iot-cli-ext` következőt: Ez a bővítmény örökölt verziója. Egyszerre csak egy bővítményt kell telepíteni, ezért el kell távolítania az örökölt bővítményt. Használja a következő parancsot:
 
    ```azurecli-interactive
    az extension remove --name azure-cli-iot-ext

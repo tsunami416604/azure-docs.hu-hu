@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 452dd99ae58858b661892e3f962fce8086d4503c
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: 022e6eb517987207755d31fdb1820e35197d8dc6
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85444658"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202126"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel
 
@@ -174,7 +174,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@conto
 >[!NOTE] 
 > Ha már van olyan kulcstartója, amelynél engedélyezve van a **helyreállított** törlés, akkor előfordulhat, hogy nem rendelkezik helyreállítási és **törlési** engedélyekkel.
 
-#### <a name="secrets"></a>Titkos kulcsok
+#### <a name="secrets"></a>Titkos kódok
 
 A kulcsokhoz hasonlóan a titkos kódok is a saját parancsaikkal kezelhetők:
 
@@ -267,7 +267,7 @@ A törölt Key Vault-objektumok listázása azt is jelzi, hogy mikor Key Vault a
 
 Ha a kiürítési védelem be van kapcsolva, a tároló vagy a törölt állapotban lévő objektum nem törölhető, amíg meg nem adta a megőrzési időszakot. Ilyen tár vagy objektum továbbra is helyreállítható. Ez a funkció biztosítja, hogy egy tár vagy egy objektum soha nem törölhető véglegesen, amíg a megőrzési időszak el nem telik. Az alapértelmezett megőrzési időtartam 90 nap, de a Key Vault létrehozása során lehetséges, hogy a megőrzési házirend intervallumát 7 – 90 nap értékre állítja be. A kiürítési védelem adatmegőrzési szabályzata ugyanazt az intervallumot használja. A beállítás után az adatmegőrzési házirend intervalluma nem módosítható.
 
-Csak akkor engedélyezheti a kiürítést, ha a Soft-delete is engedélyezve van. A kiürítési védelem letiltása jelenleg nem támogatott. 
+Csak akkor engedélyezheti a kiürítést, ha a Soft-delete is engedélyezve van. A kiürítési védelem letiltása nem támogatott. 
 
 Ha be szeretné kapcsolni a törlést és a kiürítést a tár létrehozásakor, használja a [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) parancsmagot:
 

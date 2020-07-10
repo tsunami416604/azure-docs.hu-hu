@@ -17,12 +17,12 @@ ms.date: 04/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 273827e68a81e87dcff15760f0b400b2d5ce8723
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80126880"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220864"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Oktatóanyag: értesítések küldése adott eszközökre Notification Hubs és Google Firebase Cloud Messaging használatával
 
@@ -50,7 +50,7 @@ Ez az oktatóanyag az [oktatóanyag: leküldéses értesítések Android-eszköz
 
 Az első lépésben hozzá kell adni a felhasználói felületi elemeket a meglévő fő tevékenységhez, amelyekkel a felhasználó kiválaszthatja a regisztrálni kívánt kategóriákat. A felhasználó által kiválasztott kategóriákat az eszköz tárolja. Az alkalmazás indításakor egy eszközregisztráció jön létre az értesítési központban, amely címkeként tartalmazza a választott kategóriákat.
 
-1. Nyissa `res/layout/activity_main.xml file`meg a t, és cserélje le a tartalmat a következőre:
+1. Nyissa meg a `res/layout/activity_main.xml file` t, és cserélje le a tartalmat a következőre:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -103,7 +103,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
             />
     </LinearLayout>
     ```
-2. Nyissa `res/values/strings.xml` meg a fájlt, és adja hozzá a következő sorokat:
+2. Nyissa meg a `res/values/strings.xml` fájlt, és adja hozzá a következő sorokat:
 
     ```xml
     <string name="button_subscribe">Subscribe</string>
@@ -117,8 +117,8 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
 
     A `main_activity.xml` grafikus elrendezésnek az alábbi képen láthatóhoz hasonlóan kell kinéznie:
 
-    ![][A1]
-3. Hozzon létre `Notifications` egy osztályt ugyanabban a csomagban `MainActivity` , mint az osztály.
+    ![Képernyőkép az emulátorról, amely megjeleníti, hogy a fő tevékenység X M L grafikus elrendezése hogyan fog kinézni.][A1]
+3. Hozzon létre egy osztályt `Notifications` ugyanabban a csomagban, mint az `MainActivity` osztály.
 
     ```java
     import java.util.HashSet;
@@ -204,7 +204,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     ```
 
     Ez az osztály a helyi tárolóban tárolja a hírkategóriákat, amelyeket ennek az eszköznek meg kell kapnia. Ezenkívül olyan metódusokat is tartalmaz, amelyek az adott kategóriákra való regisztrációra szolgálnak.
-4. A `MainActivity` osztályban adjon hozzá egy mezőt a következőhöz `Notifications`:
+4. A `MainActivity` osztályban adjon hozzá egy mezőt a következőhöz `Notifications` :
 
     ```java
     private Notifications notifications;
@@ -275,7 +275,7 @@ Az alkalmazás most már képes egy kategóriakészlet tárolására az eszköz 
 
 Ezek a lépések végzik az értesítési központban való regisztrációt az indításkor, a helyi tárterületen tárolt kategóriák használatával.
 
-1. Győződjön meg arról, hogy a következő kód a `onCreate` metódus végén található a `MainActivity` osztályban:
+1. Győződjön meg arról, hogy a következő kód a metódus végén található a `onCreate` `MainActivity` osztályban:
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());
@@ -326,7 +326,7 @@ Az alkalmazás ezzel elkészült, és képes egy kategóriakészlet tárolásár
 
     ![Technológiai hírekről szóló értesítések](./media/notification-hubs-aspnet-backend-android-breaking-news/technolgy-news-notification.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban szórásos értesítéseket küldött ki adott Android-eszközökre, amelyeket regisztráltak a kategóriákra. Ha szeretné megtudni, hogyan küldhet leküldéses értesítéseket adott felhasználóknak, lépjen tovább a következő oktatóanyagra:
 

@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: bf06515f98b21c24f5222b51e1b1c97b702c12d4
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e7c73bf45adba0638074b9d2ab1bab28970ed9b8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714491"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185432"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>Oktatóanyag: PowerShell-runbook létrehozása
 
@@ -43,7 +43,7 @@ A PowerShell-runbookok a PowerShell-munkafolyamat runbookok azonos életciklussa
 | Parancs végrehajtása | Csak a soros végrehajtás támogatása. | Támogatja mind a soros, mind a párhuzamos végrehajtást.|
 | RunSpace | Egyetlen RunSpace mindent futtat egy parancsfájlban. | Egy tevékenységhez, parancshoz vagy parancsfájl-blokkhoz külön RunSpace lehet használni. |
 
-Ezen eltérések mellett a PowerShell-runbookok a PowerShell-munkafolyamatok runbookok származó [szintaktikai különbségeket](https://technet.microsoft.com/magazine/dn151046.aspx) is tartalmaz.
+Ezen eltérések mellett a PowerShell-runbookok a PowerShell-munkafolyamatok runbookok származó [szintaktikai különbségeket](/previous-versions/technet-magazine/dn151046(v=msdn.10)) is tartalmaz.
 
 ## <a name="step-1---create-runbook"></a>1. lépés – Runbook létrehozása
 
@@ -131,7 +131,7 @@ A létrehozott runbook még mindig Piszkozat módban van. Az üzemi környezetbe
 
 Most már befejeződött a runbook tesztelése és közzététele, de még nem csinál semmi hasznosat. Azt szeretnénk, hogy Azure-erőforrásokat kezeljen. Ehhez a runbook képesnek kell lennie hitelesíteni az Automation-fiók létrehozásakor automatikusan létrehozott futtató fiók használatával.
 
-Ahogy az alábbi példában is látható, a futtató kapcsolat a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) parancsmaggal történik. Ha több előfizetésen keresztül kezeli az erőforrásokat, a `AzContext` paramétert a [Get-AzContext](https://docs.microsoft.com/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0)használatával kell használnia.
+Ahogy az alábbi példában is látható, a futtató kapcsolat a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) parancsmaggal történik. Ha több előfizetésen keresztül kezeli az erőforrásokat, a `AzContext` paramétert a [Get-AzContext](/powershell/module/Az.Accounts/Get-AzContext?view=azps-3.5.0)használatával kell használnia.
 
 > [!NOTE]
 > A PowerShell-runbookok esetében a `Add-AzAccount` és a `Add-AzureRMAccount` álneve a következőhöz: `Connect-AzAccount` . Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](../automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
@@ -198,7 +198,7 @@ Ahogy az alábbi példában is látható, a futtató kapcsolat a [AzAccount](htt
 
 Most, hogy a runbook hitelesítést végez az Azure-előfizetésében, kezelheti az erőforrásokat. Hozzunk létre egy parancsot egy virtuális gép indításához. Bármelyik virtuális gépet kiválaszthatja az Azure-előfizetésében, és most már csak a runbook található kódot használhatja.
 
-1. A runbook-szkripthez adja hozzá a [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) parancsmagot a virtuális gép elindításához. Ahogy az alábbi ábrán is látható, a parancsmag egy nevű nevű virtuális gépet indít el a névvel `VMName` és egy nevű erőforráscsoportot `ResourceGroupName` .
+1. A runbook-szkripthez adja hozzá a [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) parancsmagot a virtuális gép elindításához. Ahogy az alábbi ábrán is látható, a parancsmag egy nevű nevű virtuális gépet indít el a névvel `VMName` és egy nevű erőforráscsoportot `ResourceGroupName` .
 
    ```powershell
    # Ensures you do not inherit an AzContext in your runbook
@@ -274,9 +274,9 @@ A runbook jelenleg elindítja a virtuális gépet, amelyet a runbook rögzített
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [PowerShell-dokumentumok](/powershell/scripting/overview)
-* [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation)
-* [Grafikus runbook létrehozása](automation-tutorial-runbook-graphical.md)
-* [PowerShell-munkafolyamat runbook létrehozása](automation-tutorial-runbook-textual.md)
-* [Azure Automation runbook-típusok](../automation-runbook-types.md)
-* [Natív PowerShell-parancsfájl támogatása Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
+* A PowerShell-lel kapcsolatos további információk, beleértve a nyelvi referenciákat és a tanulási modulokat, lásd: [PowerShell-dokumentumok](/powershell/scripting/overview).
+* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* A grafikus runbookok megkezdéséhez tekintse meg [a grafikus Runbook létrehozását](automation-tutorial-runbook-graphical.md)ismertető témakört.
+* A PowerShell-munkafolyamat runbookok megkezdéséhez tekintse meg [a PowerShell-munkafolyamat Runbook létrehozása](automation-tutorial-runbook-textual.md)című témakört.
+* Ha többet szeretne megtudni a runbook típusairól és azok előnyeiről és korlátairól, tekintse meg a [Azure Automation runbook-típusok](../automation-runbook-types.md)című témakört.
+* További információ a PowerShell-parancsfájl támogatásáról: [natív PowerShell-parancsfájl-támogatás Azure Automationban](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).

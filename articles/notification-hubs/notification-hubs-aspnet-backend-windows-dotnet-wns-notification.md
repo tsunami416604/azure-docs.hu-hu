@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 914ccc2ac74048abb2a66b61aa65b771f8141d5e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71212060"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220150"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Oktatóanyag: Értesítések küldése adott felhasználóknak az Azure Notification Hubs használatával
 
@@ -118,7 +118,7 @@ Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Wi
         </StackPanel>
     </Grid>
     ```
-9. A Megoldáskezelő nyissa meg `MainPage.xaml.cs` a **(Windows 8,1)** és a **(Windows Phone-telefon 8,1)** projekteket tartalmazó fájlt. Adja hozzá a következő `using` utasításokat mindkét fájl elejéhez:
+9. A Megoldáskezelő nyissa meg a `MainPage.xaml.cs` **(Windows 8,1)** és a **(Windows Phone-telefon 8,1)** projekteket tartalmazó fájlt. Adja hozzá a következő `using` utasításokat mindkét fájl elejéhez:
 
     ```csharp
     using System.Net.Http;
@@ -128,7 +128,7 @@ Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Wi
     using Windows.UI.Popups;
     using System.Threading.Tasks;
     ```
-10. `MainPage.xaml.cs` A **WindowsApp** projektben adja hozzá a következő tagot a `MainPage` osztályhoz. Ne felejtse el az `<Enter Your Backend Endpoint>` karakterláncot a saját háttérrendszere korábban beszerzett végpontjára cserélni. Például: `http://mybackend.azurewebsites.net`.
+10. A `MainPage.xaml.cs` **WindowsApp** projektben adja hozzá a következő tagot a `MainPage` osztályhoz. Ne felejtse el az `<Enter Your Backend Endpoint>` karakterláncot a saját háttérrendszere korábban beszerzett végpontjára cserélni. Például: `http://mybackend.azurewebsites.net`.
 
     ```csharp
     private static string BACKEND_ENDPOINT = "<Enter Your Backend Endpoint>";
@@ -215,14 +215,14 @@ Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Wi
         ApplicationData.Current.LocalSettings.Values["AuthenticationToken"] = token;
     }
     ```
-12. Nyissa meg `App.xaml.cs` az `InitNotificationsAsync()` `OnLaunched()` eseménykezelőt, és keresse meg a hívást. Tegye megjegyzésbe vagy törölje az `InitNotificationsAsync()` meghívását. A gombkezelő inicializálja az értesítések regisztrálását.
+12. Nyissa meg az `App.xaml.cs` eseménykezelőt, és keresse meg a hívást `InitNotificationsAsync()` `OnLaunched()` . Tegye megjegyzésbe vagy törölje az `InitNotificationsAsync()` meghívását. A gombkezelő inicializálja az értesítések regisztrálását.
 
     ```csharp
     protected override void OnLaunched(LaunchActivatedEventArgs e)
     {
         //InitNotificationsAsync();
     ```
-13. Kattintson a jobb gombbal a **WindowsApp** projektre, kattintson az **Add** (Hozzáadás) lehetőségre, majd a **Class** (Osztály) elemre. Nevezze el az `RegisterClient.cs`osztályt, majd kattintson az **OK** gombra az osztály létrehozásához.
+13. Kattintson a jobb gombbal a **WindowsApp** projektre, kattintson az **Add** (Hozzáadás) lehetőségre, majd a **Class** (Osztály) elemre. Nevezze el az osztályt `RegisterClient.cs` , majd kattintson az **OK** gombra az osztály létrehozásához.
 
     Ez az osztály burkolja azon REST-hívásokat, amelyek az alkalmazás háttérrendszeréhez való kapcsolódáshoz szükségesek a leküldéses értesítésekre való regisztrálás érdekében. Emellett helyben tárolja az értesítési központ által a [Regisztráció az alkalmazás háttérrendszeréből](https://msdn.microsoft.com/library/dn743807.aspx) című szakaszban leírtak szerint létrehozott *registrationIds* fájlt. A helyi tárterületen tárolt hitelesítési jogkivonatot használ, amikor a **Login and register** (Bejelentkezés és regisztráció) gombra kattint.
 14. Adja hozzá a következő `using` utasításokat a RegisterClient.cs fájl elejéhez:
@@ -331,13 +331,13 @@ Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Wi
 2. Adjon meg egy **felhasználónevet** és **jelszót** az alábbi képen látható módon. A Windows Phone rendszeren megadott felhasználónévtől és jelszótól eltérőnek kell lenniük.
 3. Kattintson a **Login and register** (Bejelentkezés és regisztráció) gombra, és ellenőrizze, hogy a párbeszédpanel megjeleníti-e a sikeres bejelentkezés tényét. Ez a kód engedélyezi a **Send Push** (Leküldéses értesítés küldése) gombot is.
 
-    ![][14]
+    ![Képernyőkép a Notification Hubs alkalmazásról, amely a Felhasználónév és a jelszó kitöltését mutatja.][14]
 5. Ezt követően adja meg a regisztrált felhasználónevet a **Recipient Username Tag** (Címzett felhasználónév-címke) mezőben. Adjon meg egy értesítési üzenetet, és kattintson a **Send Push** (Leküldéses értesítés küldése) gombra.
 6. Csak az egyező felhasználónév-címkével regisztrált eszközök kapják meg az értesítési üzenetet.
 
-    ![][15]
+    ![Képernyőkép a Notification Hubs-alkalmazásról, amely a leküldett üzenetet mutatja.][15]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott felhasználóknak, akik a regisztrációjukhoz társított címkével rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet helyalapú értesítéseket, lépjen tovább a következő oktatóanyagra:
 

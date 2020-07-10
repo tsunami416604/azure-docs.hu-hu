@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code az Azure Kubernetes Service-ben egy Java-alkalmazás hibakereséséhez és gyors megismétléséhez
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: c71471d1a89188a065bafef2c5b6372aeff35851
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5616e92d64854d145c30aa3fd32bf61d65ca4221
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240539"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224315"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Kubernetes fejlesztői terület létrehozása: a Visual Studio Code és a Java az Azure dev Spaces szolgáltatással
 
@@ -26,7 +26,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 > [!Note]
 > **Ha bármikor elakad** , tekintse meg a [Hibaelhárítás](troubleshooting.md) című szakaszt.
 
-## <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
+## <a name="install-the-azure-cli"></a>Az Azure CLI összetevő telepítése
 Az Azure Dev Spaces használatához minimális helyi gépbeállítás szükséges. A Dev Spaces-tér konfigurációjának legnagyobb része a felhőben van tárolva, és megosztható más felhasználókkal. Első lépésként töltse le és futtassa az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) parancssori felületet.
 
 ### <a name="sign-in-to-azure-cli"></a>Bejelentkezés az Azure CLI-be
@@ -78,7 +78,7 @@ A fürt létrehozása néhány percet vesz igénybe.
    ```
 
 > [!IMPORTANT]
-> Ha létezik, az Azure dev Spaces konfigurációs `azds` folyamata eltávolítja a névteret a fürtben.
+> Ha létezik, az Azure dev Spaces konfigurációs folyamata eltávolítja a `azds` névteret a fürtben.
 
 ## <a name="get-kubernetes-debugging-for-vs-code"></a>Kubernetes-hibakeresés VS Code-hoz
 A VS Code-ot használó .NET Core- és Node.js-felhasználók számára számos funkció érhető el, mint például a Kubernetes-hibakeresés.
@@ -143,18 +143,18 @@ Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890a
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
-Azonosítsa a szolgáltatáshoz tartozó nyilvános URL-címet a `up` parancs kimenetében. A-ben `.azds.io`végződik. A fenti példában a nyilvános URL-cím: `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
+Azonosítsa a szolgáltatáshoz tartozó nyilvános URL-címet a parancs kimenetében `up` . A-ben végződik `.azds.io` . A fenti példában a nyilvános URL-cím: `http://webfrontend.1234567890abcdef1234.eus.azds.io/` .
 
 A webalkalmazás megjelenítéséhez nyissa meg a nyilvános URL-címet egy böngészőben. A figyelmeztetés `stdout` és `stderr` a kimenet a *azds nyomkövetési* terminál ablakba is áramlik a webalkalmazással való interakció során. A HTTP-kérések nyomkövetési információit is megtekintheti, ahogy azok a rendszeren haladnak át. Így könnyebben nyomon követheti az összetett több szolgáltatásra irányuló hívásokat a fejlesztés során. A dev Spaces által hozzáadott kiépítés biztosítja ezt a kérelmek nyomon követését.
 
 > [!Note]
-> A nyilvános URL-címen kívül használhatja a konzol kimenetében megjelenő alternatív `http://localhost:<portnumber>` URL-címet is. Ha a localhost URL-t használja, úgy tűnhet, hogy a tároló helyileg fut, de valójában az AKS-ben fut. Az Azure dev Spaces Kubernetes *-port továbbítási* funkciója használatával képezi le a localhost PORTOT az AK-ban futó tárolóhoz. Ez megkönnyíti a szolgáltatással való interakciót a helyi gépről.
+> A nyilvános URL-címen kívül használhatja a `http://localhost:<portnumber>` konzol kimenetében megjelenő alternatív URL-címet is. Ha a localhost URL-t használja, úgy tűnhet, hogy a tároló helyileg fut, de valójában az AKS-ben fut. Az Azure dev Spaces Kubernetes *-port továbbítási* funkciója használatával képezi le a localhost PORTOT az AK-ban futó tárolóhoz. Ez megkönnyíti a szolgáltatással való interakciót a helyi gépről.
 
 ### <a name="update-a-content-file"></a>Tartalomfájlok frissítése
 Az Azure Dev Spaces nem csupán a Kubernetesben futó kódok lekérésére szolgál – a segítségével gyorsan és iteratívan lehet megtekinteni a kódmódosítások életbe lépését a felhőben lévő Kubernetes-környezetben.
 
 1. A terminálablakban nyomja le a `Ctrl+C` billentyűkombinációt (az `azds up` leállításához).
-1. Nyissa `src/main/java/com/ms/sample/webfrontend/Application.java`meg és szerkessze a 19. [sorban](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19)található üdvözlő üzenetet:
+1. Nyissa meg `src/main/java/com/ms/sample/webfrontend/Application.java` és szerkessze a 19. [sorban](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19)található üdvözlő üzenetet:
 
     ```java
     return "Hello from webfrontend in Azure!";
@@ -171,7 +171,7 @@ Azonban a kódfejlesztésnek van egy még ennél is *gyorsabb módszere*, amelye
 
 Ebben a részben közvetlenül a VS Code-dal végezhet hibakeresést az Azure-ban futó tárolón. Azt is megtudhatja, hogyan végezheti el gyorsabban a szerkesztés-futtatás-tesztelés hurkot.
 
-![](media/common/edit-refresh-see.png)
+![A kód szerkesztését, a tároló frissítését bemutató diagram, lásd: frissítési ciklus.](media/common/edit-refresh-see.png)
 
 > [!Note]
 > **Ha bármikor elakad**, tekintse meg a [Hibaelhárítás](troubleshooting.md) szakaszt, vagy írjon egy hozzászólást erre a lapra.
@@ -183,16 +183,16 @@ Nyissa meg a **parancskatalógust** (**Nézet | Parancskatalógus** menü), és 
 
 Ez hozzáadja az Azure Dev Spaceshez készült hibakeresési konfigurációt a `.vscode` mappához. Ez a parancs nem keverendő össze az `azds prep` paranccsal, amely az üzembe helyezéshez konfigurálja a projektet.
 
-![](media/common/command-palette.png)
+![Képernyőfelvétel: az Azure dev Spaces beállításának megjelenítése a VS Code parancs-raklapon](media/common/command-palette.png)
 
 ### <a name="select-the-azds-debug-configuration"></a>Az AZDS hibakeresési konfiguráció kiválasztása
 1. A hibakeresési nézet megnyitásához kattintson a **tevékenységsáv** Hibakeresés ikonjára a VS Code oldalán.
 1. Válassza a **Launch Java Program (AZDS)** (Java-program indítása (AZDS)) lehetőséget aktív hibakeresési konfigurációként.
 
-![](media/get-started-java/debug-configuration.png)
+![Képernyőkép a VS Code hibakeresési funkcióról, a Java program elindítása beállítás piros színnel.](media/get-started-java/debug-configuration.png)
 
 > [!Note]
-> Ha nem lát Azure Dev Spaces-parancsokat a parancspalettán, győződjön meg róla, hogy a VS Code Azure Dev Spaceshez készült bővítménye telepítve van. Győződjön meg arról, hogy a VS Code-ban megnyitott munkaterület a- `azds.yaml`t tartalmazó mappa.
+> Ha nem lát Azure Dev Spaces-parancsokat a parancspalettán, győződjön meg róla, hogy a VS Code Azure Dev Spaceshez készült bővítménye telepítve van. Győződjön meg arról, hogy a VS Code-ban megnyitott munkaterület a-t tartalmazó mappa `azds.yaml` .
 
 ### <a name="debug-the-container-in-kubernetes"></a>A tároló hibakeresése a Kubernetesben
 Nyomja meg az **F5 billentyűt** a kód hibakereséséhez a Kubernetes-ben.
@@ -202,7 +202,7 @@ Az `up` parancshoz hasonlóan a kód szinkronizálva lesz a Dev Spaces-térbe, t
 > [!Tip]
 > A VS Code állapotsora a narancssárga értékre vált, ami azt jelzi, hogy a hibakereső csatolva van. Emellett egy kattintható URL-címet is megjelenít, amelyet az alkalmazás megnyitásához használhat.
 
-![](media/common/vscode-status-bar-url.png)
+![Képernyőkép a VS Code állapotjelző sávjáról, miután a narancssárga bekapcsolta.](media/common/vscode-status-bar-url.png)
 
 Állítson be egy töréspontot egy kiszolgálóoldali kódfájlban, például a `src/main/java/com/ms/sample/webfrontend/Application.java` forrásfájl `greeting()` függvényében. Az oldal a böngészőben való frissítésével a töréspont érintve lesz.
 
@@ -220,7 +220,7 @@ public String greeting()
 
 Mentse a fájlt, és a **hibakeresési Műveletek ablaktáblán**kattintson az **Újraindítás** gombra.
 
-![](media/common/debug-action-refresh.png)
+![Képernyőkép a VS Code-hibakeresési műveletek panelről, a pirosban vázolt újraindítási lehetőséggel.](media/common/debug-action-refresh.png)
 
 Ahelyett, hogy a kód minden szerkesztése alkalmával újra létrehozna és üzembe helyezne egy új tárolórendszerképet, ami általában sok időt vesz igénybe, az Azure Dev Spaces növekményesen újrafordítja a kódot a meglévő tárolón belül, hogy gyorsabb szerkesztési/hibakeresési ciklust biztosítson.
 
@@ -228,7 +228,7 @@ Frissítse a webalkalmazást a böngészőben. Az egyedi üzenetnek meg kell jel
 
 **Most tehát rendelkezésére áll egy módszer, amellyel gyorsan iterálhatja a kódot, és közvetlenül a Kubernetesben végezheti a hibakeresést.** A következő részből megtudhatja, hogyan hozhat létre és hívhat meg egy második tárolót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók a több szolgáltatás fejlesztéséről](multi-service-java.md)

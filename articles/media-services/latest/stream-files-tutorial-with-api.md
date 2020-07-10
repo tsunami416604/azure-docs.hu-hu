@@ -11,14 +11,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/22/2019
+ms.date: 07/09/2020
 ms.author: juliako
-ms.openlocfilehash: 4e40d26e392219fb751328bc54855d87e80bae19
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c75c5074e8c75a7b2d5b7f141d5104c5cb59726
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80345996"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207572"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Oktatóanyag: videók feltöltése, kódolása és továbbítása a Media Services v3 segítségével
 
@@ -36,13 +36,13 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Vizsgálja meg a feltöltési, kódolási és adatfolyam-kódot.
 > * Futtassa az alkalmazást.
 > * Tesztelje a folyamatos átviteli URL-címet.
-> * Erőforrások karbantartása.
+> * Az erőforrások eltávolítása.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nincs telepítve a Visual Studio, a [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
+- Ha nincs telepítve a Visual Studio, a [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15).
 - [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).<br/>Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
 - Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](access-api-cli-how-to.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
 
@@ -56,7 +56,7 @@ A következő paranccsal klónozott egy GitHub-tárházat, amely a streaming .NE
 
 A minta az [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/UploadEncodeAndStreamFiles) mappában található.
 
-Nyissa meg a [appSettings. JSON](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/appsettings.json) fájlt a letöltött projektben. Cserélje le az értékeket az API-k [eléréséhez](access-api-cli-how-to.md)kapott hitelesítő adatokkal.
+Nyissa meg [appsettings.jsa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/appsettings.json) letöltött projektben. Cserélje le az értékeket az API-k [eléréséhez](access-api-cli-how-to.md)kapott hitelesítő adatokkal.
 
 ## <a name="examine-the-code-that-uploads-encodes-and-streams"></a>A feltöltést, kódolást és streamelést végrehajtó kód vizsgálata
 
@@ -164,7 +164,7 @@ Most, hogy létrejött a [folyamatos átviteli lokátor](https://docs.microsoft.
 
 ### <a name="clean-up-resources-in-your-media-services-account"></a>A Media Service-fiók erőforrásainak eltávolítása
 
-Általában érdemes megtisztítani mindent, kivéve azokat az objektumokat, amelyeket újra fel kíván használni (általában újra kell használni az átalakításokat, és továbbra is meg kell őriznie a StreamingLocators stb.). Ha azt szeretné, hogy a fiókja a kísérletezés után is tiszta legyen, törölje azokat az erőforrásokat, amelyeket nem kíván újra felhasználni. A következő kód például törli a feladatokat:
+Általában érdemes megtisztítani mindent, kivéve azokat az objektumokat, amelyeket újra fel kíván használni (általában újra kell használni az átalakításokat, és továbbra is meg kell őriznie a StreamingLocators stb.). Ha azt szeretné, hogy a fiókja a kísérletezés után is tiszta legyen, törölje azokat az erőforrásokat, amelyeket nem kíván újra felhasználni. A következő kód például törli a feladatot, a létrehozott eszközöket és a tartalmi kulcs házirendjét:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CleanUp)]
 
@@ -184,7 +184,7 @@ Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez
 > [!NOTE]
 > Ha a lejátszót egy HTTPS-hely futtatja, az URL-t módosítsa a HTTPS-protokoll használatára.
 
-1. Nyisson meg egy webböngészőt, [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)és navigáljon a következőhöz:.
+1. Nyisson meg egy webböngészőt, és navigáljon a következőhöz: [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. Az **URL:** mezőben illessze be az alkalmazás futtatásakor kapott streaming URL-értékeket.
 3. Válassza a **lejátszó frissítése**lehetőséget.
 
@@ -208,7 +208,7 @@ A Azure Media Services v3 SDK-k nem a szálon biztonságosak. Többszálas alkal
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már tudja, hogyan tölthet fel, kódolhat és streamelhet videókat, tekintse meg a következő cikket: 
 

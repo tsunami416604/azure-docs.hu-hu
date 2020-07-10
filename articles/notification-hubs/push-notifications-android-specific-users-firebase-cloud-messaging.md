@@ -17,12 +17,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: c2d3789082130cbbc42021a0706249dd3966b9ef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 16191dfd33d5211fbd082bc1f7e458a238bb2138
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75531122"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224230"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott Android-alkalmazásoknak az Azure Notification Hubs
 
@@ -47,7 +47,7 @@ Fejezze be az [oktatóanyagot: leküldéses értesítések az Android-eszközök
 
 A következő lépés az oktatóanyagban létrehozott Android-alkalmazás frissítése [: leküldéses értesítések az Android-eszközökre az Azure Notification Hubs és a Firebase Cloud Messaging használatával](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
-1. Nyissa `res/layout/activity_main.xml` meg a fájlt, cserélje le a következő tartalmi definíciókat:
+1. Nyissa meg a `res/layout/activity_main.xml` fájlt, cserélje le a következő tartalmi definíciókat:
 
     Új EditText vezérlőket ad hozzá a felhasználóként való bejelentkezéshez. Egy felhasználónév-címke számára kijelölt mezőt is hozzáad, amely szerepelni fog az elküldött értesítésekben:
 
@@ -138,7 +138,7 @@ A következő lépés az oktatóanyagban létrehozott Android-alkalmazás friss�
         />
     </RelativeLayout>
     ```
-2. Nyissa `res/values/strings.xml` meg a fájlt, `send_button` és cserélje le a definíciót a következő sorokra, amelyek `send_button` újradefiniálják a karakterláncot a és a más vezérlőkhöz tartozó karakterláncok hozzáadásához:
+2. Nyissa meg a `res/values/strings.xml` fájlt, és cserélje le a `send_button` definíciót a következő sorokra, amelyek újradefiniálják a karakterláncot a `send_button` és a más vezérlőkhöz tartozó karakterláncok hozzáadásához:
 
     ```xml
     <string name="usernameHint">Username</string>
@@ -151,8 +151,8 @@ A következő lépés az oktatóanyagban létrehozott Android-alkalmazás friss�
 
     A `main_activity.xml` grafikus elrendezésnek ekkor az alábbi képhez hasonlóan kell kinéznie:
 
-    ![][A1]
-3. Hozzon létre egy nevű `RegisterClient` új osztályt ugyanabban a csomagban `MainActivity` , mint az osztályt. Használja az alábbi kódot az új osztályfájlhoz.
+    ![Képernyőkép az emulátorról, amely megjeleníti, hogy a fő tevékenység X M L grafikus elrendezése hogyan fog kinézni.][A1]
+3. Hozzon létre egy nevű új osztályt `RegisterClient` ugyanabban a csomagban, mint az `MainActivity` osztályt. Használja az alábbi kódot az új osztályfájlhoz.
 
     ```java
   
@@ -412,7 +412,7 @@ A következő lépés az oktatóanyagban létrehozott Android-alkalmazás friss�
     }
     ```
 
-    A `login` **bejelentkezési** gomb kezelője egy alapszintű hitelesítési tokent hoz létre a bemeneti Felhasználónév és jelszó használatával (ez a hitelesítési séma által használt bármely tokent jelöli) `RegisterClient` , majd a használatával meghívja a háttérrendszer regisztrációját.
+    A `login` **bejelentkezési** gomb kezelője egy alapszintű hitelesítési tokent hoz létre a bemeneti Felhasználónév és jelszó használatával (ez a hitelesítési séma által használt bármely tokent jelöli), majd `RegisterClient` a használatával meghívja a háttérrendszer regisztrációját.
 
     A `sendPush` metódus a háttérrendszer meghívásával aktiválja egy biztonságos értesítés küldését a felhasználónak a felhasználói címke alapján. A `sendPush` által megcélzott platformértesítési szolgáltatás az átadott `pns` sztringtől függ.
 
@@ -467,12 +467,12 @@ A következő lépés az oktatóanyagban létrehozott Android-alkalmazás friss�
         }
     }
     ```
-12. A `build.gradle` fájlban adja hozzá a következő sort `android` a szakaszhoz a `buildTypes` szakasz után.
+12. A `build.gradle` fájlban adja hozzá a következő sort a szakaszhoz a `android` szakasz után `buildTypes` .
 
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. Ha az alkalmazás a 28-as (Android 9,0-as) API-szintet célozza meg, akkor `<application>` a következő `AndroidManifest.xml`deklarációt kell tartalmaznia a elemében:.
+13. Ha az alkalmazás a 28-as (Android 9,0-as) API-szintet célozza meg, akkor a következő deklarációt kell tartalmaznia a `<application>` elemében: `AndroidManifest.xml` .
 
     ```xml
     <uses-library
@@ -487,13 +487,13 @@ A következő lépés az oktatóanyagban létrehozott Android-alkalmazás friss�
 2. Az Android-alkalmazásban adjon meg egy felhasználónevet és jelszót. Mindkettőnek ugyanazon sztringértéknek kell lennie, és nem tartalmazhatnak szóközt vagy különleges karaktert.
 3. Az Android-alkalmazásban kattintson a **Bejelentkezés**elemre. Várjon egy, az állapotba **bejelentkezett és regisztrált Toast-** üzenetet. Ezzel elérhetővé válik a **Send Notification** (Értesítés küldése) gomb.
 
-    ![][A2]
+    ![Képernyőkép egy emulátorról, amely bemutatja, hogy a felhasználók hogyan értesítik a felhasználókat az Notification Hubs a bejelentkezés után.][A2]
 4. Kattintson a váltógombokra az összes olyan platform engedélyezéséhez, amelyen futtatta az alkalmazást és regisztrált felhasználókat.
 5. Adja meg az értesítési üzenet címzettjének felhasználónevét. Ennek feltétele, hogy a felhasználó fel legyen iratkozva az értesítésekre a céleszközökön.
 6. Adjon meg egy üzenetet, amelyet a felhasználó leküldéses értesítés formájában fog megkapni.
 7. Kattintson a **Send Notification** (Értesítés küldése) gombra.  A leküldéses értesítés minden olyan eszközre megérkezik, amely rendelkezik a megfelelő felhasználónév-címkével ellátott regisztrációval.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott felhasználóknak, akik a regisztrációjukhoz társított címkével rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet helyalapú értesítéseket, lépjen tovább a következő oktatóanyagra:
 

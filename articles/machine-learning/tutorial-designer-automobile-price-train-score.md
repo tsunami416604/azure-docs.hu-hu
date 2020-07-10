@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: az autók árának előrejelzése a tervezővel'
+title: 'Oktatóanyag: az autók árának előrejelzése a tervezővel (előzetes verzió)'
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan lehet a gépi tanulási modellt betanítani, bemutatni és üzembe helyezni egy drag-and-drop interfész használatával. Ez az oktatóanyag egy kétrészes sorozat első része, amely az autó árát lineáris regresszió használatával Jósolja meg.
 author: peterclu
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 7068c1e795e7a607776c48d1b026562a1be6b25d
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 2922b5d3aa6cee0f1222c041a0e9728936754c21
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517643"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200036"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,7 +27,7 @@ Az oktatóanyag első részében az alábbiakkal fog elsajátítani:
 > [!div class="checklist"]
 > * Hozzon létre egy új folyamatot.
 > * Importálja az adatimportálást.
-> * Készítse elő az adatfeldolgozást.
+> * Adatok előkészítése.
 > * Gépi tanulási modell betanítása.
 > * A Machine learning-modell kiértékelése.
 
@@ -173,7 +173,7 @@ A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet tov
 
 1. A megjelenő **oszlopok** területen bontsa ki a **Belefoglalás**elem melletti legördülő menüt. Kijelölés, **minden oszlop**
 
-1. Kattintson a **Mentés** gombra
+1. Válassza a **Mentés** lehetőséget
 
 1. A vászontól jobbra található modul részletei ablaktáblán válassza a **teljes sor eltávolítása** a **tisztítási mód**alatt lehetőséget.
 
@@ -321,7 +321,7 @@ Ugorja át ezt a szakaszt, ha folytatni szeretné az oktatóanyag 2. részét, �
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A második részből megtudhatja, hogyan helyezheti üzembe a modellt valós idejű végpontként.
 

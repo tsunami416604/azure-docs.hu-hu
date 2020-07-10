@@ -1,16 +1,16 @@
 ---
 title: Távolról renderelt modell megtekintése
 description: Az Azure távoli renderelés ""Helló világ!"alkalmazás" oktatóanyaga bemutatja, hogyan tekinthetők meg az Azure által távolról megjelenített modellek
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: f0b9bf1c7e085efd86f70f8246214d366265036a
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: bd9e9b6754c8626a8d858b9832a8e3547b72352d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569715"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231904"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Oktatóanyag: távolról renderelt modell megtekintése
 
@@ -101,7 +101,7 @@ A következő lépésekkel biztosíthatja, hogy a projekt a távoli renderelési
 
 1. **Tiszta jelzők** beállítása a *folytonos színre*
 
-1. **Háttér** beállítása *feketére* (#000000), teljes (255) alfa (A) értékkel
+1. **Háttér** beállítása *feketére* (#000000), teljes transzparens (0) alfa (A) értékkel
 
     ![Színkerék](./media/color-wheel-black.png)
 
@@ -816,7 +816,7 @@ Most már minden kód szükséges a távolról renderelt modell megtekintéséhe
 > [!NOTE]
 > A távoli modell soha nem jelenik meg a jelenet nézetben, csak a játék nézetben. Ennek az az oka, hogy az ARR a képkockákat távolról teszi elérhetővé a game View kamera szempontjából, és nem ismeri a szerkesztői kamerát (a jelenet nézet megjelenítéséhez használatos).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ![Modell betöltve](./media/test-model-rendered.png)
 

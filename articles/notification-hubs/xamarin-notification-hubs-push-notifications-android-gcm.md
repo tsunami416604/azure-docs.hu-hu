@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: 06be9e7c4ce41ff01494ecef84a800b52db6b82e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 5f1d12081591b180acca8ee35ecc5a5bf202211e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308132"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223941"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése a Xamarin. Android-alkalmazásoknak Notification Hubs használatával
 
@@ -60,7 +60,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 2. Adja meg a Google Firebase-konzolon megjegyzett **kiszolgáló kulcsát** .
 3. Válassza az eszköztár **Save** (Mentés) elemét.
 
-    ![](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
+    ![Képernyőkép az értesítési központról az Azure Portalon, a Google G C M F C M-vel kiemelve, és piros színnel jelenik meg.](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
 Az értesítési központ konfigurálva van az FCM-mel való együttműködésre, és rendelkezik a kapcsolati sztringekkel az alkalmazás regisztrálására értesítések fogadásához és leküldéses értesítések küldéséhez.
 
@@ -324,7 +324,7 @@ Az [Azure Portal]**Tesztküldés** lehetőségével tesztelheti az alkalmazásba
 
 A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis kódtár használatával, mint a Mobile Services vagy az ASP.NET. Ha egy könyvtár nem érhető el a háttérhez, a REST API közvetlenül is használhatja az értesítési üzenetek küldéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendszerben regisztrált Android-eszközök mindegyikének. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott Android-eszközökre, lépjen tovább a következő oktatóanyagra:
 
@@ -361,7 +361,7 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [Visual Studio és Xamarin]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
-[Azure Portal]: https://portal.azure.com/
+[Azure Portalra]: https://portal.azure.com/
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx

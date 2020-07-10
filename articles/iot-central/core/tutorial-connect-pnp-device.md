@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 42098d54725cc12691839b63c508efbecf042aa0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6727a2c45187e0e6bb583bb65e176024067d81e2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80064415"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219987"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Oktatóanyag: eszköz-képesség modell használata IoT Plug and Play (előzetes verzió) eszköz létrehozásához és a IoT Central alkalmazáshoz csatlakoztatásához
 
@@ -51,7 +51,7 @@ Az alábbi lépésekkel telepítheti az Azure IoT Tools Extension Pack csomagot 
 
 1. A VS Code-ban válassza a **kiterjesztések** lapot.
 1. Keresse meg az **Azure IoT-eszközöket**.
-1. Válassza az **Install** (Telepítés) lehetőséget.
+1. Válassza a **Telepítés** lehetőséget.
 
 ## <a name="prepare-the-development-environment"></a>A fejlesztési környezet előkészítése
 
@@ -86,7 +86,9 @@ Egy eszköz IoT Central alkalmazáshoz való csatlakoztatásához szükség van 
 
 1. Lépjen az **Adminisztráció** lapra, és válassza az **eszköz csatlakoztatása**lehetőséget.
 
-1. Jegyezze fel az **azonosító hatókörét** és a **kulcsok megtekintésekor**megjelenő **elsődleges kulcsot** . Ezeket az értékeket az oktatóanyag későbbi részében használhatja.
+1. Jegyezze fel az **azonosító hatókörét**. Ezt az értéket az oktatóanyag későbbi részében használhatja.
+
+1. Válassza ki az **sas-IoT-Devices** regisztrációs csoportot. Jegyezze fel az **elsődleges kulcsot**. Ezt az értéket az oktatóanyag későbbi részében használhatja.
 
     ![Eszköz csatlakoztatása](./media/tutorial-connect-pnp-device/device-connection.png)
 
@@ -102,11 +104,11 @@ Egy eszköz IoT Central alkalmazáshoz való csatlakoztatásához szükség van 
 
 Ebben az oktatóanyagban a nyilvános DCM-et használja egy MxChip IoT fejlesztői készlet-eszközhöz. A kód futtatásához nincs szükség tényleges fejlesztői készlet-eszközre, ebben az oktatóanyagban pedig a Windows rendszeren való futtatásra fordítja le a kódot.
 
-1. Hozzon létre egy `central_app` nevű mappát, és nyissa meg a vs Code-ban.
+1. Hozzon létre egy nevű mappát `central_app` , és nyissa meg a vs Code-ban.
 
 1. A **CTRL + SHIFT + P** billentyűkombinációval nyissa meg a parancssort, írja be a **IoT Plug and Play**, majd válassza a **modell-adattár megnyitása**lehetőséget. Válassza a **nyilvános tárház**lehetőséget. A VS Code a nyilvános modell tárházában lévő DCMs listáját jeleníti meg.
 
-1. Válassza ki a **MXChip IoT fejlesztői készlet** DCM azonosítót `urn:mxchip:mxchip_iot_devkit:1`. Ezután válassza a **Letöltés**lehetőséget. Most már rendelkezik a DCM-példánnyal a `central_app` mappában.
+1. Válassza ki a **MXChip IoT fejlesztői készlet** DCM azonosítót `urn:mxchip:mxchip_iot_devkit:1` . Ezután válassza a **Letöltés**lehetőséget. Most már rendelkezik a DCM-példánnyal a `central_app` mappában.
 
 ![A Model adattár és a DCM](./media/tutorial-connect-pnp-device/public-repository.png)
 
@@ -134,7 +136,7 @@ Most már rendelkezik a **MXChip IoT fejlesztői készlet** DCM-vel és a hozzá
 
 1. Válassza a **Vcpkg keresztül** lehetőséget az SDK belefoglalásához.
 
-1. A VS Code egy új ablakot nyit meg, amely létrehozta a létrehozott `devkit_device` kódlap-fájlokat a mappában.
+1. A VS Code egy új ablakot nyit meg, amely létrehozta a létrehozott kódlap-fájlokat a `devkit_device` mappában.
 
 ![Generált eszköz kódja](./media/tutorial-connect-pnp-device/generated-code.png)
 
@@ -149,7 +151,7 @@ Az eszköz SDK használatával hozza létre a generált eszköz kódját. Az Ön
     cd cmake
     ```
 
-1. Futtassa a következő parancsokat a generált kód kiépítéséhez. Cserélje le `<directory of your Vcpkg repo>` a helyőrzőt a **Vcpkg** -tárház másolatának elérési útjára:
+1. Futtassa a következő parancsokat a generált kód kiépítéséhez. Cserélje le a `<directory of your Vcpkg repo>` helyőrzőt a **Vcpkg** -tárház másolatának elérési útjára:
 
     ```cmd
     cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
@@ -172,7 +174,7 @@ Az eszköz SDK használatával hozza létre a generált eszköz kódját. Az Ön
     .\Release\devkit_device.exe mxchip-001 <scopeid> <devicekey>
     ```
 
-1. Az eszköz megkezdi az adatok küldését a IoT Hubba. Előfordulhat, hogy az előző `Error registering device for DPS` parancs első futtatásakor a hiba jelenik meg. Ha ezt a hibát látja, próbálja megismételni a parancsot.
+1. Az eszköz megkezdi az adatok küldését a IoT Hubba. Előfordulhat, hogy az `Error registering device for DPS` előző parancs első futtatásakor a hiba jelenik meg. Ha ezt a hibát látja, próbálja megismételni a parancsot.
 
 ## <a name="view-the-device"></a>Az eszköz megtekintése
 
@@ -192,7 +194,7 @@ Miután az eszköz kódja csatlakozik a IoT Centralhoz, megtekintheti az általa
 
     ![Eszközök sablonjai lap](./media/tutorial-connect-pnp-device/device-template.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play (előzetes verzió) eszköz, amely egy DCM-ből jött létre a nyilvános modell adattárában.
 

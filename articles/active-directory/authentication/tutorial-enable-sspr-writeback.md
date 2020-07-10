@@ -11,12 +11,12 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 353bc49ad6a64ff00a8a3ab8594fd76e02ca7913
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85551736"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202553"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Oktatóanyag: Azure Active Directory önkiszolgáló jelszó-visszaállítási visszaírási engedélyezése helyszíni környezetbe
 
@@ -43,7 +43,7 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
     * Ha szükséges, [fejezze be az előző oktatóanyagot az Azure ad-SSPR engedélyezéséhez](tutorial-enable-sspr.md).
 * Egy meglévő helyszíni AD DS-környezet, amely a Azure AD Connect aktuális verziójával van konfigurálva.
     * Ha szükséges, konfigurálja Azure AD Connect az [expressz](../hybrid/how-to-connect-install-express.md) vagy az [Egyéni](../hybrid/how-to-connect-install-custom.md) beállítások használatával.
-    * A jelszó-visszaírási használatához a tartományvezérlőknek Windows Server 2008 R2 vagy újabb verziójúnak kell lenniük.
+    * A jelszó-visszaírási használatához a tartományvezérlőknek Windows Server 2012-es vagy újabb verziójúnak kell lenniük.
 
 ## <a name="configure-account-permissions-for-azure-ad-connect"></a>Fiók engedélyeinek konfigurálása Azure AD Connecthoz
 
@@ -144,9 +144,9 @@ Ha már nem szeretne jelszó-funkciót használni, hajtsa végre a következő l
 1. A **Konfigurálásra kész** lapon kattintson a **Konfigurálás** gombra, és várja meg, amíg a folyamat véget ér.
 1. Ha látja, hogy a konfigurálás befejeződött, kattintson a **Kilépés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban engedélyezte az Azure AD-SSPR visszaírási egy helyszíni AD DS-környezetben. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban engedélyezte az Azure AD-SSPR visszaírási egy helyszíni AD DS-környezetben. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A jelszó visszaírási szükséges engedélyek konfigurálása

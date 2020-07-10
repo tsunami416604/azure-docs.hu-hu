@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: tracking-python
-ms.openlocfilehash: 6621967584ee79dd514b6d9d4a9d0e2d240e7905
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: b70ac801765461401a7bfa1d2f251fb41176dccb
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608111"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232763"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Oktatóanyag: lombik-alkalmazás létrehozása az Azure Cognitive Services
 
@@ -36,7 +36,7 @@ Az oktatóanyag a következőket ismerteti:
 > [!TIP]
 > Ha továbbra is szeretné kihagyni az összes kódot, akkor a teljes minta, valamint a Build utasítások a [githubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial)érhetők el.
 
-## <a name="what-is-flask"></a>Mi a lombik?
+## <a name="what-is-flask"></a>Mi az a Flask?
 
 A lombik a webalkalmazások létrehozásához használható keretrendszer. Ez azt jelenti, hogy a lombik olyan eszközöket, kódtárakat és technológiákat biztosít, amelyek lehetővé teszik egy webalkalmazás összeállítását. Ez a webalkalmazás lehet néhány weblap, egy blog, egy wiki vagy egy webalapú naptári alkalmazás vagy egy kereskedelmi webhely.
 
@@ -61,8 +61,8 @@ Tekintsük át az oktatóanyaghoz szükséges szoftvereket és előfizetési kul
 
 Ahogy korábban említettük, három előfizetési kulcsra lesz szüksége ehhez az oktatóanyaghoz. Ez azt jelenti, hogy létre kell hoznia egy erőforrást az Azure-fiókjában a következőkhöz:
 * Translator
-* Text Analytics
-* Beszédfelismerési szolgáltatások
+* Szövegelemzés
+* Beszédszolgáltatások
 
 Erőforrások létrehozásához használja [a Cognitive Services fiók létrehozása a Azure Portalban](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című témakört.
 
@@ -183,7 +183,7 @@ Ez a kód biztosítja, hogy amikor egy felhasználó navigál a `http://your-web
 
 Habár ezek a minták bemutatják, hogyan lehet HTML-lapokat megjeleníteni egy felhasználó számára, az útvonalak az API-k meghívására is használhatók gomb lenyomásakor, vagy tetszőleges számú művelet elvégzése anélkül, hogy el kellene érni a kezdőlapot. Ez a művelet akkor jelenik meg, ha útvonalakat hoz létre a fordításhoz, a hangulathoz és a beszédfelismeréshez.
 
-### <a name="get-started"></a>Első lépések
+### <a name="get-started"></a>Bevezetés
 
 1. Nyissa meg a projektet az IDE-ben, majd hozzon létre egy nevű fájlt `app.py` a munkakönyvtár gyökerében. Ezután másolja be a kódot a következőre, `app.py` és mentse:
 
@@ -778,7 +778,7 @@ Most, hogy már van egy függvénye szöveg-beszéd átalakításra, és egy út
        <option value="(zh-CN, Kangkang, Apollo)">Chinese (Mainland) | Male | Kangkang, Apollo</option>
        <option value="(zh-HK, Tracy, Apollo)">Chinese (Hong Kong)| Female | Tracy, Apollo</option>
        <option value="(zh-HK, Danny, Apollo)">Chinese (Hong Kong) | Male | Danny, Apollo</option>
-       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yaiting, Apollo</option>
+       <option value="(zh-TW, Yating, Apollo)">Chinese (Taiwan)| Female | Yating, Apollo</option>
        <option value="(zh-TW, Zhiwei, Apollo)">Chinese (Taiwan) | Male | Zhiwei, Apollo</option>
        <option value="(hr-HR, Matej)">Croatian | Male | Matej</option>
        <option value="(en-US, AriaRUS)">English (US) | Female | AriaRUS</option>
@@ -798,7 +798,7 @@ Most, hogy már van egy függvénye szöveg-beszéd átalakításra, és egy út
        <option value="(it-IT, Cosimo, Apollo)">Italian | Male | Cosimo, Apollo</option>
        <option value="(ja-JP, Ichiro, Apollo)">Japanese | Male | Ichiro</option>
        <option value="(ja-JP, HarukaRUS)">Japanese | Female | HarukaRUS</option>
-       <option value="(ko-KR, HeamiRUS)">Korean | Female | Haemi</option>
+       <option value="(ko-KR, HeamiRUS)">Korean | Female | Heami</option>
        <option value="(pt-BR, HeloisaRUS)">Portuguese (Brazil) | Female | HeloisaRUS</option>
        <option value="(pt-BR, Daniel, Apollo)">Portuguese (Brazil) | Male | Daniel, Apollo</option>
        <option value="(pt-PT, HeliaRUS)">Portuguese (Portugal) | Female | HeliaRUS</option>

@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref, tracking-python
-ms.openlocfilehash: 1203feaf6b400e91e6ab5381df0af245db0a2973
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 9c587ad9b791d953dce66df2337cf0e7dca52324
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559561"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185364"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Oktatóanyag: Python-runbook létrehozása
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag végigvezeti egy [Python-runbook](../automation-runbook-types
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 - Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Automation-fiók](../automation-offering-get-started.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
+- [Automation-fiók](../index.yml) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
 - Egy Azure virtuális gép. Ezt a gépet leállítja és elindítja, tehát ne olyan virtuális gépet használjon, amely élesben működik.
 
 ## <a name="create-a-new-runbook"></a>Új runbook létrehozása
@@ -161,7 +161,7 @@ Ehhez a szkriptnek az Automation-fiókja hitelesítő adataival kell hitelesíte
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>Kód hozzáadása a Python számítási ügyfél létrehozásához és a virtuális gép elindításához
 
-Az Azure-beli virtuális gépekkel való együttműködéshez hozzon létre egy példányt a [Pythonhoz készült Azure számítási ügyfélből](https://docs.microsoft.com/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient).
+Az Azure-beli virtuális gépekkel való együttműködéshez hozzon létre egy példányt a [Pythonhoz készült Azure számítási ügyfélből](/python/api/azure-mgmt-compute/azure.mgmt.compute.computemanagementclient).
 
 A virtuális gép elindításához használja a számítási ügyfelet. Adja hozzá a következő kódot a runbook:
 

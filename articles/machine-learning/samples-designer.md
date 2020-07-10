@@ -1,5 +1,5 @@
 ---
-title: Példa tervezői folyamatokra & adatkészletek
+title: Példa folyamatokra & adatkészletek a tervező számára (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: A Azure Machine Learning Designerben mintákat használhat a gépi tanulási folyamatok elindításához.
 services: machine-learning
@@ -10,14 +10,14 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: e40c49cdcaae6fa84a72c645f5fea4bac99ee03f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d2ed9a605b19287c2ea693187c445dc8a4b3b932
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654557"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206319"
 ---
-# <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Példa folyamatokra & adatkészletek Azure Machine Learning Designer számára
+# <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Példa folyamatokra & adatkészletek Azure Machine Learning Designer számára (előzetes verzió)
 
 A Azure Machine Learning Designer beépített példái segítségével gyorsan megkezdheti saját gépi tanulási folyamatainak kialakítását. A Azure Machine Learning Designer [GitHub-tárház](https://github.com/Azure/MachineLearningDesigner) részletes dokumentációt tartalmaz, amely megkönnyíti a gyakori gépi tanulási forgatókönyvek megismerését.
 
@@ -111,7 +111,7 @@ A minta adatkészletek az **adatkészletek** - **mintáinak** kategóriájában 
 |Az autók árát (nyers)|Információk a márka és a modell alapján, beleértve a díjszabást, az olyan szolgáltatásokat, mint például a hengerek száma és az MPG, valamint a biztosítási kockázati pontszám.<br/> A kockázati pontszám kezdetben az automatikus árral van társítva. Ezt követően a rendszer a tényleges kockázatokat egy, a biztosítási matematikusok ismert folyamat során helyesbíti. A + 3 érték azt jelzi, hogy az automatikus kockázatos, a-3 érték pedig valószínűleg biztonságos.<br/>**Használat**: </b> a funkciók kockázati pontszámának előrejelzése regresszió vagy többváltozós besorolás használatával.<br/>**Kapcsolódó kutatás**: </b> Schlimmer, J.C. (1987). [UCI Machine learning adattár](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science. |
 | Megosztott CRM szolgáltatóváltást-Címkék |A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás ([orange_small_train_appetency. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels)) címkéi.|
 |Megosztott CRM-adatforgalom-Címkék|A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás ([orange_small_train_churn. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)) címkéi.|
-|Megosztott CRM-adatkészlet | Ezek az adatok a KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívásról ([orange_small_train. adat. zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)) származnak. <br/>Az adatkészlet 50 000 ügyfelet tartalmaz a francia távközlési cég Orange-től. Minden ügyfél 230-es anonim funkciókkal rendelkezik, amelyek 190 a numerikus és a 40-as számú adat kategorikus. A funkciók nagyon ritkák. |
+|Megosztott CRM-adatkészlet | Ezek az adatok a KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívásról ([orange_small_train.data.zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)) származnak. <br/>Az adatkészlet 50 000 ügyfelet tartalmaz a francia távközlési cég Orange-től. Minden ügyfél 230-es anonim funkciókkal rendelkezik, amelyek 190 a numerikus és a 40-as számú adat kategorikus. A funkciók nagyon ritkák. |
 |Megosztott CRM-Címkék|A KDD Cup 2009 ügyfélkapcsolat-előrejelzési Challenge ([orange_large_train_upselling. labels)](http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels) címkéi|
 |Repülési késések adatvédelme|Az Amerikai Egyesült államokbeli Közlekedési Minisztérium TranStats adatgyűjtési szolgáltatásában[(az időpontnál](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)) üzemelő személyszállító repülési adatok.<br/>Az adatkészlet a 2013. április-október időszakra terjed ki. A tervezőbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva: <br/>– Az adatkészlet úgy lett szűrve, hogy csak a 70-es legforgalmasabb repülőtérre vonatkozzon az USA kontinentális területén <br/>– A megszakított járatok több mint 15 perc késéssel lettek megjelölve <br/>– A kiszűrt járatok kiszűrése megtörtént <br/>-A következő oszlopok lettek kiválasztva: év, hónap, DayofMonth, DayOfWeek, Carrier, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, megszakítva|
 |Német hitelkártya UCI-adatkészlet|Az UCI statlog (német bankkártya) adatkészlete ([statlog + német + kredit + adat](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data))) a német. adatfájl használatával.<br/>Az adatkészlet az attribútumok egy halmaza által leírtak szerint osztályozza a személyeket, alacsony vagy magas hitelezési kockázatként. Mindegyik példa egy személyt jelöl. A rendszer 20 funkciót használ: számszerű és kategorikus, valamint bináris címkét (a kredit kockázati értékét). A magas kockázatú kreditek címkéje = 2, az alacsony kreditek esetében pedig a Label = 1. Az alacsony kockázatú, például a magas kockázatú példa nem megfelelő besorolásának díja 1, míg a magas kockázatú példa alacsony értékkel való megsértésének díja 5.|
@@ -121,7 +121,7 @@ A minta adatkészletek az **adatkészletek** - **mintáinak** kategóriájában 
 |Wikipedia SP 500 adatkészlet|Az adatok a wikipedia-ből származnak (az https://www.wikipedia.org/) egyes S&P 500-es vállalatok cikkei alapján, amelyek XML-adatként vannak tárolva.    <br/>A tervezőbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:    <br/> -Szöveges tartalom kinyerése minden egyes vállalatnál    <br/> – Wiki formázásának eltávolítása    <br/> – Nem alfanumerikus karakterek eltávolítása    <br/> – Az összes szöveg konvertálása kisbetűsre    <br/> – Ismert vállalati kategóriák lettek hozzáadva    <br/>Vegye figyelembe, hogy egyes vállalatok esetében nem található cikk, így a rekordok száma kevesebb, mint 500.|
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 

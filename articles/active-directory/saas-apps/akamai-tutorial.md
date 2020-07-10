@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17d0c91d31f7746c53d62af87670c40e9902554c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9ea2c20a7720cc80b36ff88595aa6ca5c57f6b9a
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026831"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232389"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Akamai
 
@@ -60,13 +61,13 @@ Az Akamai EAA egyetlen alkalmazásként van konfigurálva az Azure AD-ben. A ren
 
 **Profik**:
 
-• Csak egyszer kell konfigurálnia a IDENTITÁSSZOLGÁLTATÓ
+* Csak egyszer kell konfigurálnia a IDENTITÁSSZOLGÁLTATÓ
 
 **Hátrányok**:
 
-• A végfelhasználók két alkalmazás-portálon
+* A felhasználók két alkalmazás-portálon jelennek meg
 
-• Egyetlen közös HITELESÍTÉSSZOLGÁLTATÓI házirend-lefedettség minden alkalmazáshoz.
+* Egyetlen közös HITELESÍTÉSSZOLGÁLTATÓI házirend-lefedettség minden alkalmazáshoz.
 
 ![1. integrációs forgatókönyv](./media/header-akamai-tutorial/scenario1.png)
 
@@ -76,13 +77,14 @@ A Akamai EAA-alkalmazás beállítása külön történik az Azure AD-portálon.
 
 **Profik**:
 
-• Egyéni HITELESÍTÉSSZOLGÁLTATÓI házirendeket is meghatározhat
+* Egyéni HITELESÍTÉSSZOLGÁLTATÓI házirendeket is meghatározhat
 
-• Minden alkalmazás képviselteti magát a O365 Waffle és a myApps.microsoft.com panelen.
+* Az összes alkalmazás a 0365 Waffle és a myApps.microsoft.com panelen jelenik meg.
+
 
 **Hátrányok**:
 
-• Több IDENTITÁSSZOLGÁLTATÓ kell konfigurálnia.
+* Több IDENTITÁSSZOLGÁLTATÓ kell konfigurálnia.
 
 ![2. integrációs forgatókönyv](./media/header-akamai-tutorial/scenario2.png)
 
@@ -171,7 +173,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -449,7 +451,7 @@ Kattintson a Mentés gombra, és lépjen a központi telepítésre
 
 ### <a name="kerberos-authentication"></a>Kerberos-hitelesítés
 
-Az alábbi példában egy belső webkiszolgálót teszünk közzé [http://frp-app1.superdemo.live](http://frp-app1.superdemo.live/) , és engedélyezi az SSO-t a KCD használatával
+Az alábbi példában egy belső webkiszolgálót teszünk közzé <code>http://frp-app1.superdemo.live</code> , és engedélyezi az SSO-t a KCD használatával
 
 #### <a name="general-tab"></a>Általános lap
 

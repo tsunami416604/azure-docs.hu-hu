@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: 6a88ca1f028efcb3b9614df532b6d2dcc9dcfac8
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 3d4ccc6ecf18eb2eecc3ccc69ed97bf1094b2035
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800904"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206457"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Image Search API használatával
 
@@ -118,7 +118,7 @@ Az `onsubmit` kezelő alapértelmezésként `false` értéket ad vissza, ami meg
 
 A Bing Image Search API több [szűrőlekérdezési paramétert](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters) kínál a találatok szűkítéséhez és szűréséhez. Ebben az alkalmazásban a HTML-űrlap az alábbi paraméteres beállításokat használja és jeleníti meg:
 
-|              |                                                                                                                                                                                    |
+| Beállítás | Leírás |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `where`      | Legördülő menü a kereséshez használt piac (hely és nyelv) kiválasztásához.                                                                                             |
 | `query`      | Szövegmező a keresőkifejezések megadásához.                                                                                                                                 |
@@ -405,11 +405,11 @@ cors-proxy-server
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Képadatok kinyerése a Bing Image Search API használatával](tutorial-image-post.md)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

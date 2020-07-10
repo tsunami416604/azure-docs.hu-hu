@@ -6,18 +6,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 3cd5db3736d5eda88e7cad7bda1966efb2b00977
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 53031efa831f788fe0fe58146496b427f4cfb4db
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744736"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185534"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Oktatóanyag: grafikus runbook létrehozása
 
 Egy Azure Automation [grafikus forgatókönyv](../automation-runbook-types.md#graphical-runbooks) létrehozását bemutató oktatóanyag. Grafikus és grafikus PowerShell-munkafolyamati runbookok hozhat létre és szerkeszthet a Azure Portal grafikus szerkesztőjének használatával. 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Egyszerű grafikus runbook létrehozása
@@ -30,7 +30,7 @@ Az oktatóanyag a következőket ismerteti:
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Automation-fiók](../automation-offering-get-started.md) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
+* [Automation-fiók](../index.yml) a forgatókönyv tárolásához és az Azure erőforrásokban való hitelesítéshez. Ennek a fióknak jogosultsággal kell rendelkeznie a virtuális gép elindításához és leállításához.
 * Egy Azure virtuális gép. A gép leállítása és elindítása óta nem lehet üzemi virtuális gép.
 
 ## <a name="step-1---create-runbook"></a>1. lépés – Runbook létrehozása
@@ -146,7 +146,7 @@ Megvizsgálta és közzétette a runbook, de eddig nem csinál semmi hasznosat a
 
 ## <a name="step-6---add-authentication"></a>6. lépés – hitelesítés hozzáadása
 
-Most, hogy már rendelkezik egy változóval az előfizetés-azonosító tárolásához, beállíthatja, hogy a runbook az előfizetés futtató hitelesítő adataival hitelesítse magát. Ezt úgy teheti meg, hogy hozzáad egy eszközként az Azure-beli futtató összekötőt. Emellett hozzá kell adnia a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) parancsmagot és a [set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) parancsmagot a vászonhoz.
+Most, hogy már rendelkezik egy változóval az előfizetés-azonosító tárolásához, beállíthatja, hogy a runbook az előfizetés futtató hitelesítő adataival hitelesítse magát. Ezt úgy teheti meg, hogy hozzáad egy eszközként az Azure-beli futtató összekötőt. Emellett hozzá kell adnia a [AzAccount](/powershell/module/az.accounts/Connect-AzAccount?view=azps-3.5.0) parancsmagot és a [set-AzContext](/powershell/module/az.accounts/Set-AzContext?view=azps-3.5.0) parancsmagot a vászonhoz.
 
 >[!NOTE]
 >A PowerShell-runbookok esetében a `Add-AzAccount` és a `Add-AzureRMAccount` álneve a következőhöz: `Connect-AzAccount` . Vegye figyelembe, hogy ezek az aliasok nem érhetők el a grafikus runbookok. A grafikus runbook csak `Connect-AzAccount` saját maguk használhatják.
@@ -213,7 +213,7 @@ Most, hogy már rendelkezik egy változóval az előfizetés-azonosító tárol�
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>7. lépés – Virtuális gépet elindító tevékenység hozzáadása
 
-Most hozzá kell adnia egy `Start-AzVM` tevékenységet a virtuális gép elindításához. Bármelyik virtuális gépet kiválaszthatja az Azure-előfizetésében, és most már rögzítjük a nevét a [Start-AzVM](https://docs.microsoft.com/powershell/module/az.compute/start-azvm?view=azps-3.5.0) parancsmagba.
+Most hozzá kell adnia egy `Start-AzVM` tevékenységet a virtuális gép elindításához. Bármelyik virtuális gépet kiválaszthatja az Azure-előfizetésében, és most már rögzítjük a nevét a [Start-AzVM](/powershell/module/az.compute/start-azvm?view=azps-3.5.0) parancsmagba.
 
 1. A könyvtár vezérlőben írja be `Start-Az` a kifejezést a Keresés mezőbe.
 
@@ -270,7 +270,7 @@ A runbook jelenleg a parancsmaghoz megadott erőforráscsoporthoz indítja el a 
 
 ## <a name="step-9---create-a-conditional-link"></a>9. lépés – Feltételes hivatkozás létrehozása
 
-Mostantól módosíthatja a runbook, hogy csak akkor próbálja meg elindítani a virtuális gépet, ha még nem indult el. Ezt úgy teheti meg, hogy hozzáad egy [Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) parancsmagot, amely lekéri a virtuális gép példány-szintű állapotát. Ezután hozzáadhat egy PowerShell-kódrészlettel ellátott PowerShell `Get Status` -munkafolyamat-modult annak megállapításához, hogy a virtuális gép állapota fut vagy leállt. A modul feltételes hivatkozása `Get Status` csak akkor fut, `Start-AzVM` Ha az aktuálisan futó állapot le van állítva. Az eljárás végén a runbook a parancsmag használatával küld `Write-Output` egy üzenetet, amely tájékoztatja, hogy a virtuális gép sikeresen elindult-e.
+Mostantól módosíthatja a runbook, hogy csak akkor próbálja meg elindítani a virtuális gépet, ha még nem indult el. Ezt úgy teheti meg, hogy hozzáad egy [Get-AzVM](/powershell/module/Az.Compute/Get-AzVM?view=azps-3.5.0) parancsmagot, amely lekéri a virtuális gép példány-szintű állapotát. Ezután hozzáadhat egy PowerShell-kódrészlettel ellátott PowerShell `Get Status` -munkafolyamat-modult annak megállapításához, hogy a virtuális gép állapota fut vagy leállt. A modul feltételes hivatkozása `Get Status` csak akkor fut, `Start-AzVM` Ha az aktuálisan futó állapot le van állítva. Az eljárás végén a runbook a parancsmag használatával küld `Write-Output` egy üzenetet, amely tájékoztatja, hogy a virtuális gép sikeresen elindult-e.
 
 1. Nyissa meg a **MyFirstRunbook** a grafikus szerkesztőben.
 
@@ -349,10 +349,9 @@ Mostantól módosíthatja a runbook, hogy csak akkor próbálja meg elindítani 
 
 31. Indítsa el a runbook a virtuális gép leállításával, és a számítógépnek el kell indulnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a grafikus létrehozásról: [grafikus runbook készítése Azure Automationban](../automation-graphical-authoring-intro.md).
 * A PowerShell-runbookok megkezdéséhez tekintse meg [a PowerShell-Runbook létrehozása](automation-tutorial-runbook-textual-powershell.md)című témakört.
 * A PowerShell-munkafolyamat runbookok megkezdéséhez tekintse meg [a PowerShell-munkafolyamat Runbook létrehozása](automation-tutorial-runbook-textual.md)című témakört.
-* A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

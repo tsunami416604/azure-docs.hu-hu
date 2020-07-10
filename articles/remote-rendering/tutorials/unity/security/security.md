@@ -1,16 +1,16 @@
 ---
-title: Az Azure távoli renderelés és a modell tárterületének védelme
+title: Az Azure Remote Rendering biztonságossá tétele és a modellek tárolása
 description: Távoli renderelési alkalmazás megerősítése a tartalom biztonságossá tételéhez
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: fa9bc317203a28d8c4302c89ddf536507d747e82
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 4eee6aeaff045264c8d23276ac91a83592ddc601
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569612"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207810"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Oktatóanyag: az Azure távoli renderelés és a modell tárterületének védelme
 
@@ -383,7 +383,7 @@ Ha MSAL használatával hoz létre alkalmazást, a projekt **eszközök** mappá
 
 Kövesse a rövid [útmutatóban található lépéseket: Unity minta üzembe helyezése HoloLens – a HoloLens való kiépítéshez](../../../quickstarts/deploy-to-hololens.md#build-the-sample-project).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag hátralévő része elméleti témákat tartalmaz az Azure távoli renderelést használó, éles használatra kész alkalmazások létrehozásához.
 

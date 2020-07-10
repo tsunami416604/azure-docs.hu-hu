@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: msmbaldwin
 ms.service: virtual-machines
@@ -120,7 +120,7 @@ A Key Vault lemezes titkosításának engedélyezéséhez használja az [az kulc
 1. Válassza ki a kulcstartót, lépjen a **hozzáférési házirendek**elemre, és **kattintson ide a speciális hozzáférési szabályzatok megjelenítéséhez**.
 2. Jelölje be a **Azure Disk Encryptionhoz való hozzáférés engedélyezése a kötetek titkosításához**jelölőnégyzetet.
 3. Ha szükséges, jelölje be az **Azure Virtual Machines való hozzáférés engedélyezése az üzembe helyezéshez** és/vagy az **Azure Resource Manager hozzáférésének engedélyezése a sablonok telepítéséhez**lehetőséget. 
-4. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Mentés** gombra.
 
     ![Azure Key Vault – speciális hozzáférési szabályzatok](../articles/virtual-machines/media/disk-encryption/keyvault-portal-fig4.png)
 

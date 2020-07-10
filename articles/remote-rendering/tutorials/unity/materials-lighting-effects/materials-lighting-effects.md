@@ -1,16 +1,16 @@
 ---
-title: Az anyagok, a világítás és a hatások finomítása
+title: Az anyagok, a megvilágítás és az effektusok finomítása
 description: Modell anyagok és megvilágítás módosítása. További effektusok hozzáadása, például Tagolás és kivágott síkok.
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0379fe460d2bb90d28999a139e3ca9c8b7110eca
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 39560966b542999b2c0c3472075c7497f2146455
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569619"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207354"
 ---
 # <a name="tutorial-refining-materials-lighting-and-effects"></a>Oktatóanyag: az anyagok, a világítás és a hatások finomítása
 
@@ -927,7 +927,7 @@ Mivel csak a háló első anyagát módosítjuk, előfordulhat, hogy nem változ
 
 ![Anyag szerkesztése példa](./media/material-edit-example.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk! Ezzel végrehajtotta az Azure távoli renderelés összes alapvető funkcióját. A következő fejezetben megismerheti az Azure-beli távoli renderelés és a blob-tároló biztonságossá tételét. Ezek az első lépések az Azure távoli renderelést használó kereskedelmi alkalmazások kiadásához.
 

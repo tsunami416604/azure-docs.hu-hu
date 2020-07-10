@@ -1,16 +1,16 @@
 ---
-title: Modellek manipulálása
+title: Modellek módosítása
 description: Távolról renderelt modellek manipulálása áthelyezéssel, méretezéssel és egyebekkel
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: d3ccdc54e50c3b5a722f490e04ce50d4aaf6e2fd
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 182ceca11d6e9b9bbebcf2911de1783cef43dd1a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569597"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207335"
 ---
 # <a name="tutorial-manipulating-models"></a>Oktatóanyag: modellek módosítása
 
@@ -385,7 +385,7 @@ Ugyanez a folyamat programozott módon is elvégezhető, és az adott távoli en
 
 Egy helyi példány létrehozása és az automatikus szinkronizálás beállítása az alentitások manipulálása első lépése. Ugyanazokat a technikákat használjuk, amelyekkel a modell teljes egészében kezelhető az alentitásokon is. Például egy entitás szinkronizált helyi példányának létrehozása után lekérdezheti a határait, és felveheti a manipulációs kezelőket, hogy az a felhasználó által áthelyezhető legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már kezelhet és kezelhet távolról renderelt modelleket! A következő oktatóanyagban az anyagok módosítására, a világítás módosítására és a hatások a távolról renderelt modellekre való alkalmazására fogunk vonatkozni.
 

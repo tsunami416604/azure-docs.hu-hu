@@ -6,18 +6,18 @@ author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: how-to
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbefcec884fcf179c182cd50efeb58a0fc357378
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5db8aed0a47e7d8d928ef3287010d60efbc5e5da
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555121"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200449"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Lista nélküli (nem katalógusos) alkalmazás hozzáadása az Azure AD-szervezethez
 
@@ -30,7 +30,7 @@ Az [Azure ad Application Galleryben](https://azure.microsoft.com/documentation/a
 
 Ez a cikk azt ismerteti, hogyan adhat hozzá egy nem katalógusos alkalmazást a **vállalati alkalmazásokhoz** a Azure Portal kód írása nélkül. Ha ehelyett fejlesztői útmutatóra van szüksége az egyéni alkalmazások Azure AD-vel való integrálásához, tekintse meg az [Azure ad hitelesítési forgatókönyveit](../develop/authentication-scenarios.md). Ha olyan alkalmazást fejleszt ki, amely egy modern protokollt használ, például az [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) -t a felhasználók hitelesítéséhez, akkor a Azure Portal [Alkalmazásregisztrációk](../develop/quickstart-register-app.md) felületének használatával regisztrálhatja azt a Microsoft Identity platformon.
 
-## <a name="add-a-non-gallery-application"></a>Nem Gallery-alkalmazás hozzáadása
+## <a name="add-a-non-gallery-application"></a>Katalógusban nem szereplő alkalmazás hozzáadása
 
 1. Jelentkezzen be a [Azure Active Directory portálra](https://aad.portal.azure.com/) a Microsoft Identity platform rendszergazdai fiókjának használatával.
 
@@ -104,7 +104,7 @@ Ez a cikk azt ismerteti, hogyan adhat hozzá egy nem katalógusos alkalmazást a
 
 4. Ha elkészült, válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy hozzáadta az alkalmazást az Azure AD-szervezethez, [válassza ki a használni kívánt egyszeri bejelentkezési módszert](what-is-single-sign-on.md#choosing-a-single-sign-on-method) , és tekintse meg az alábbi megfelelő cikket:
 

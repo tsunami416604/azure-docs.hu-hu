@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: a Visual Studio Code bővítmény beállítása'
+title: 'Oktatóanyag: a Visual Studio Code bővítmény beállítása (előzetes verzió)'
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan állíthatja be a Visual Studio Code Azure Machine Learning bővítményt.
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/08/2020
-ms.openlocfilehash: 9d85e59e003cffdbe6fe6abe7bb053ae4c574b78
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/09/2020
+ms.openlocfilehash: 48fb2ce3672634af202500ccb256e7730933fff8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143475"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199755"
 ---
-# <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>A Visual Studio Code-bővítmény Azure Machine Learning beállítása
+# <a name="set-up-azure-machine-learning-visual-studio-code-extension-preview"></a>A Visual Studio Code bővítmény Azure Machine Learning beállítása (előzetes verzió)
 
 Megtudhatja, hogyan telepíthet és futtathat parancsfájlokat a Azure Machine Learning Visual Studio Code bővítmény használatával.
 
@@ -38,7 +38,7 @@ Eben az oktatóanyagban az alábbi feladatokkal fog megismerkedni:
 1. Nyissa meg a Visual Studio Code-ot.
 1. Válassza a **bővítmények** ikont a **tevékenység sávján** a bővítmények nézet megnyitásához.
 1. A bővítmények nézetben keressen rá a "Azure Machine Learning" kifejezésre.
-1. Válassza a **Telepítés** gombot.
+1. Válassza a **Telepítés** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![A Azure Machine Learning VS Code bővítmény telepítése](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
@@ -140,6 +140,6 @@ A kísérlet futtatása után a kimenet egy betanított modell. A kimenetek hely
 1. A rendszer helyileg tölti le a Futtatás nevét tartalmazó mappát. Keresse meg.
 1. A modell fájljai a könyvtárban vannak `outputs/outputs/model` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: lemezkép besorolása TensorFlow-modell betanítása és üzembe helyezése a Visual Studio Code Azure Machine learning használatával](tutorial-train-deploy-image-classification-model-vscode.md).

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: a & üzembe helyezési modelljeinek betanítása: VS Code'
+title: 'Oktatóanyag: a betanítási & üzembe helyezési modelljei: VS Code (előzetes verzió)'
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan lehet betanítani és üzembe helyezni a lemezkép-besorolási modellt a TensorFlow és a Azure Machine Learning Visual Studio Code bővítmény használatával
 services: machine-learning
@@ -8,16 +8,16 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/08/2020
+ms.date: 07/09/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 1d7b712e27ad73516606564ea125298cb3dea314
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 7d209b3434eae20b4c9a7b328f5c15032315b178
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143230"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203552"
 ---
-# <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Képbesorolási TensorFlow modell betanítása és üzembe helyezése a Visual Studio Code Azure Machine Learning használatával
+# <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Képbesorolási TensorFlow-modell betanítása és üzembe helyezése a Visual Studio Code-bővítmény (előzetes verzió) Azure Machine Learning
 
 Megtudhatja, hogyan taníthat és helyezhet üzembe egy képbesorolási modellt a kézzel írt számok TensorFlow és a Visual Studio Code Azure Machine Learning használatával való felismeréséhez.
 
@@ -303,7 +303,7 @@ Azure Machine Learning kísérlet futtatása:
 
 Ha a modell elkészült, a Futtatás csomópont frissítései mellett a "befejezett" állapot felirat látható.
 
-## <a name="register-the-model"></a>Regisztrálja a modellt
+## <a name="register-the-model"></a>A modell regisztrálása
 
 Most, hogy betanítta a modellt, regisztrálhatja azt a munkaterületen. 
 
@@ -410,7 +410,7 @@ Webszolgáltatás üzembe helyezése ACI-ként:
 
 Ezen a ponton egy kérést küldünk az Azure-nak a webszolgáltatás üzembe helyezéséhez. Ez a folyamat több percig is eltarthat. A telepítés után az új szolgáltatás megjelenik a *végpontok* csomópont alatt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Visual Studio code-on kívüli Azure Machine Learning betanításával kapcsolatos útmutatóért lásd [: oktatóanyag: modellek Betanítása Azure Machine learning](tutorial-train-models-with-aml.md)használatával.
 * A kódok helyi szerkesztéséről, futtatásáról és hibakereséséről a [Python Hello-World oktatóanyagban](https://code.visualstudio.com/docs/Python/Python-tutorial)talál további információt.

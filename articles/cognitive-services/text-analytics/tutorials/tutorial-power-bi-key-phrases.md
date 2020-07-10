@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: 067a0383c90ce42120269ff40f910805dacfd11a
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4bf2f12ef79f8551291316b5446121f2735d9347
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143876"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206588"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálása a Text Analytics Cognitive Services-szolgáltatásba
 
@@ -91,7 +91,7 @@ Ha szeretné, az Üres elemek eltávolítása szűrővel ki is szűrheti az üre
 
 A Text Analytics szolgáltatás a [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6) útján egy HTTP-kéréssel legfeljebb ezer szöveges dokumentumot tud feldolgozni. A Power BI azonban jobban szereti a rekordokat egyenként kezelni, ezért az oktatóanyagban az API-hívásaink mindig csak egyetlen dokumentumot fognak tartalmazni. A Key Phrases API számára minden feldolgozandó dokumentumra a következő mezőket kell megadni.
 
-| | |
+| Mező | Leírás |
 | - | - |
 | `id`  | A dokumentum egy egyedi azonosítóját a kérésen belül. Ezt a mezőt a válasz is tartalmazza. Így több dokumentum feldolgozásakor könnyen társítani lehet a kinyert kulcskifejezéseket a dokumentummal, amelyből származnak. Az oktatóanyagban, mivel kérésenként csak egy dokumentumot dolgozunk fel, az `id` értéket fixen rögzítheti, hogy mindegyik kérésre ugyanaz legyen.|
 | `text`  | A feldolgozandó szöveg. Ennek a mezőnek az értéke az [előző részben](#PreparingData) létrehozott `Merged` oszlopból származik, amely a tárgysor és a megjegyzés kombinált szövegét tartalmazza. A legfontosabb kifejezések API-nak szüksége van arra, hogy az adathalmaz ne legyen hosszabb 5 120 karakternél.|
@@ -174,7 +174,7 @@ Ezután egy értesítés jelenhet meg, amely arra kéri, hogy szolgáltasson inf
 
 ![[adatvédelmi értesítés]](../media/tutorials/power-bi/privacy-banner.png)
 
-Kattintson a **Folytatás** gombra, és válassza a `Public` beállítást a párbeszédpanelen lévő minden adatforrásra. Ezután kattintson a **Mentés** gombra.
+Kattintson a **Folytatás** gombra, és válassza a `Public` beállítást a párbeszédpanelen lévő minden adatforrásra. Ezután kattintson a **Mentés gombra.**
 
 ![[adatforrás adatvédelmi beállításainak megadása]](../media/tutorials/power-bi/privacy-dialog.png)
 
@@ -287,7 +287,7 @@ Végezetül íme a korábban bemutatott Key Phrases-függvény egy olyan változ
 in  keyphrases
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 <a name="NextSteps"></a>
 
 További információk a Text Analytics szolgáltatásról, a Power Query M képletnyelvről és a Power BI-ról.

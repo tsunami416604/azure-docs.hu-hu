@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 07/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b7864d89cc14a1473fd43e94bfe74c368bcb391d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2ab87990981f08164bb47cef9eaa1876514f1ad6
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80349485"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202845"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Oktatóanyag: videók elemzése Media Services v3-val
 
@@ -34,7 +34,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Vizsgálja meg a megadott videót elemző kódot.
 > * Futtassa az alkalmazást.
 > * Vizsgálja meg a kimenetet.
-> * Erőforrások karbantartása.
+> * Az erőforrások eltávolítása.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,7 +44,7 @@ Fontos megjegyezni, hogy meg kell felelnie a Video Indexer használatának össz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-es frissítést.
+- Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-es frissítést.
 - [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).<br/>Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
 - Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](access-api-cli-how-to.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
 
@@ -58,7 +58,7 @@ Klónozza a gépre a .NET-mintát tartalmazó GitHub-adattárat a következő pa
 
 A minta az [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos) mappában található.
 
-Nyissa meg a [appSettings. JSON](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) fájlt a letöltött projektben. Cserélje le az értékeket az API-khoz [való hozzáféréshez](access-api-cli-how-to.md)kapott hitelesítő adatokkal.
+Nyissa meg [appsettings.jsa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) letöltött projektben. Cserélje le az értékeket az API-khoz [való hozzáféréshez](access-api-cli-how-to.md)kapott hitelesítő adatokkal.
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>A megadott videót elemző kód vizsgálata
 
@@ -110,7 +110,7 @@ A Media Services tartalmának kódolásakor vagy feldolgozásakor gyakori minta 
 
 #### <a name="transform"></a>Átalakítás
 
-Egy új [átalakításpéldány](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor meg kell adnia, milyen kimenetet szeretne létrehozni. A **TransformOutput** egy kötelező paraméter. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. Ebben a példában a rendszer a **VideoAnalyzerPreset** -készletet használja, és a nyelvet ("en-us") adja át a konstruktorának (`new VideoAnalyzerPreset("en-US")`). Ez az előzetes beállítás lehetővé teszi több audio- és videoelemzés elvégzését a videón. Az **AudioAnalyzerPreset** előzetes beállítás akkor lehet hasznos, ha több audioelemzést szeretne elvégezni a videón.
+Egy új [átalakításpéldány](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor meg kell adnia, milyen kimenetet szeretne létrehozni. A **TransformOutput** egy kötelező paraméter. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. Ebben a példában a rendszer a **VideoAnalyzerPreset** -készletet használja, és a nyelvet ("en-us") adja át a konstruktorának ( `new VideoAnalyzerPreset("en-US")` ). Ez az előzetes beállítás lehetővé teszi több audio- és videoelemzés elvégzését a videón. Az **AudioAnalyzerPreset** előzetes beállítás akkor lehet hasznos, ha több audioelemzést szeretne elvégezni a videón.
 
 **Átalakítás**létrehozásakor először ellenőrizze, hogy a **Get** metódus használatával már létezik-e már az alábbi kódban látható módon. A Media Services 3-as verziója esetében a **Get** metódusok **null** értéket adnak vissza, ha az entitás nem létezik (a kis- és nagybetűket meg nem különböztető névellenőrzés történik).
 
@@ -148,7 +148,7 @@ A következő függvény letölti a kimeneti [eszköz](https://docs.microsoft.co
 
 ### <a name="clean-up-resource-in-your-media-services-account"></a>Erőforrások eltávolítása a Media Services-fiókban
 
-Általában érdemes megtisztítani mindent, kivéve azokat az objektumokat, amelyeket újra fel kíván használni (általában újra fogja használni az átalakításokat és megőrzi a StreamingLocators). Ha azt szeretné, hogy a fiókja a kísérletezés után is tiszta legyen, törölje azokat az erőforrásokat, amelyeket nem kíván újra felhasználni. A következő kód például törli a feladatokat:
+Általában érdemes megtisztítani mindent, kivéve azokat az objektumokat, amelyeket újra fel kíván használni (általában újra fogja használni az átalakításokat és megőrzi a StreamingLocators). Ha azt szeretné, hogy a fiókja a kísérletezés után is tiszta legyen, törölje azokat az erőforrásokat, amelyeket nem kíván újra felhasználni. A következő kód például törli a feladatot és a kimeneti eszközt:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
 
@@ -180,7 +180,7 @@ A Azure Media Services v3 SDK-k nem a szálon biztonságosak. Többszálas alkal
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: fájlok feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

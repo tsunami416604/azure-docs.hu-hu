@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/31/2019
 ms.author: aahi
-ms.openlocfilehash: 4778a4089c7374c1ac6a9312064dcfb1e0325b63
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3c331faad3c49b91defc9f081352eda80c701b4a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478496"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205385"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Oktatóanyag: kép körülvágása a C Bing Visual Search SDK-val #
 
@@ -49,7 +49,7 @@ Ez az alkalmazás a Microsoft vezető csapatának ezen rendszerképének egy ter
 
 ![A Microsoft felső vezetése](./media/MS_SrLeaders.jpg)
 
-Ezt a képet a rendszer egy `ImageInfo` objektum létrehozásával vágja le a területről, és `ImageInfo` betölti az `VisualSearchRequest`objektumot a-ba. Az `ImageInfo` objektum a rendszerkép URL-címét is tartalmazza:
+Ezt a képet a rendszer egy objektum létrehozásával vágja `ImageInfo` le a területről, és betölti az objektumot a- `ImageInfo` ba `VisualSearchRequest` . Az `ImageInfo` objektum a rendszerkép URL-címét is tartalmazza:
 
 ```csharp
 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
@@ -61,7 +61,7 @@ VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: ima
 
 ## <a name="search-for-images-similar-to-the-crop-area"></a>A körülvágáshoz hasonló rendszerképek keresése
 
-A változó `VisualSearchRequest` a kép körülvágási felületére és URL-címére vonatkozó információkat tartalmaz. A `VisualSearchMethodAsync()` metódus az eredményeket kapja:
+A változó a `VisualSearchRequest` kép körülvágási felületére és URL-címére vonatkozó információkat tartalmaz. A `VisualSearchMethodAsync()` metódus az eredményeket kapja:
 
 ```csharp
 Console.WriteLine("\r\nSending visual search request with knowledgeRequest that contains URL and crop area");
@@ -81,22 +81,22 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 
 A teljes alkalmazás a következőket adja vissza:
 
-|ActionType  |URL-cím  | |
-|---------|---------|---------|
+|ActionType  |URL-cím  |
+|---------|---------|
 |PagesIncluding WebSearchURL     |         |
 |MoreSizes WebSearchURL     |         |  
 |VisualSearch WebSearchURL    |         |
 |ImageById WebSearchURL     |         |  
 |RelatedSearches WebSearchURL     |         |
-|Entitás – > WebSearchUrl     | https\://www.BING.com/CR?ig=E40D0E1A13404994ACB073504BC937A4&CID = 03DCF882D7386A442137F49BD6596BEF&Rd = 1&h = BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v = 1&r = HTTPS %3 a %2 f %2 f www. Bing. com% 2fsearch% 3Fq% 3DSatya% 2bNadella&p = DevEx, 5380.1        |
-|TopicResults – > WebSearchUrl    |  https\://www.BING.com/CR?ig=E40D0E1A13404994ACB073504BC937A4&CID = 03DCF882D7386A442137F49BD6596BEF&Rd = 1&h = 3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v = 1&r = HTTPS %3 a %2 f %2 f www. Bing. com% 2fdiscover% 2fnadella% 2bsatya&p = DevEx, 5382.1        |
-|ImageResults – > WebSearchUrl    |  https\://www.BING.com/CR?ig=E40D0E1A13404994ACB073504BC937A4&CID = 03DCF882D7386A442137F49BD6596BEF&Rd = 1&h = l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v = 1&r = HTTPS %3 a %2 f %2 f www. Bing. com% 2fimages% 2fsearch% 3Fq% 3DSatya% 2bNadella&p = DevEx, 5384.1        |
+|Entitás – > WebSearchUrl     | https \: //www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID = 03DCF882D7386A442137F49BD6596BEF&Rd = 1&h = BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v = 1&r = HTTPS %3 a %2 f %2 f www. Bing. com% 2fsearch% 3fq% 3dSatya% 2bNadella&p = DevEx, 5380.1        |
+|TopicResults – > WebSearchUrl    |  https \: //www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID = 03DCF882D7386A442137F49BD6596BEF&Rd = 1&h = 3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v = 1&r = HTTPS %3 a %2 f %2 f www. Bing. com% 2fdiscover% 2fnadella% 2bsatya&p = DevEx, 5382.1        |
+|ImageResults – > WebSearchUrl    |  https \: //www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID = 03DCF882D7386A442137F49BD6596BEF&Rd = 1&h = l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v = 1&r = HTTPS %3 a %2 f %2 f www. Bing. com% 2fimages% 2fsearch% 3fq% 3dSatya% 2bNadella&p = DevEx, 5384.1        |
 
-Ahogy az a fentiekben `Entity` is látható, a Művelettípus olyan Bing keresési lekérdezést tartalmaz, amely egy felismerhető személy, hely vagy dolog adatait adja vissza. A `TopicResults` és az `ImageResults` típus a kapcsolódó képekre vonatkozó lekérdezéseket tartalmazza. A listában lévő URL-ek a Bing keresési eredményeire mutatnak.
+Ahogy az a fentiekben is látható, a `Entity` Művelettípus olyan Bing keresési lekérdezést tartalmaz, amely egy felismerhető személy, hely vagy dolog adatait adja vissza. A `TopicResults` és az `ImageResults` típus a kapcsolódó képekre vonatkozó lekérdezéseket tartalmazza. A listában lévő URL-ek a Bing keresési eredményeire mutatnak.
 
-## <a name="get-urls-for-pagesincluding-actiontype-images"></a>`ActionType` Képek URL-címeinek `PagesIncluding` beolvasása
+## <a name="get-urls-for-pagesincluding-actiontype-images"></a>Képek URL-címeinek beolvasása `PagesIncluding` `ActionType`
 
-A képek tényleges URL-jeinek a lekéréséhez szükség van egy olyan átalakításra, amely egy `ActionType` típust egy értéklistával rendelkező `Data` elemet tartalmazó `ImageModuleAction` műveletként olvas be. Minden egyes érték egy kép URL-je. A következő művelet a `PagesIncluding` műveletet írja be, `ImageModuleAction` és beolvassa az értékeket:
+A képek tényleges URL-jeinek a lekéréséhez szükség van egy olyan átalakításra, amely egy `ActionType` típust egy értéklistával rendelkező `Data` elemet tartalmazó `ImageModuleAction` műveletként olvas be. Minden egyes érték egy kép URL-je. A következő `PagesIncluding` művelet a műveletet írja be, `ImageModuleAction` és beolvassa az értékeket:
 
 ```csharp
     if (i.ActionType == "PagesIncluding")
@@ -108,7 +108,7 @@ A képek tényleges URL-jeinek a lekéréséhez szükség van egy olyan átalak�
     }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](tutorial-bing-visual-search-single-page-app.md)
 

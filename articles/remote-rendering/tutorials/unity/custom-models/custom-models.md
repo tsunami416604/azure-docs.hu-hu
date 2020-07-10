@@ -1,16 +1,16 @@
 ---
 title: Felületek és egyéni modellek
 description: A View Controllers hozzáadása és az Azure távoli renderelés által megjelenített egyéni modellek betöltése
-author: michael-house
-ms.author: v-mihous
+author: florianborn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: a3a4892400daa229f5f91d3cc22a9be80cf868c6
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b08670c51b56f01ad1193d2729ecc77821242a19
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569591"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200746"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Oktatóanyag: felületek és egyéni modellek
 
@@ -292,7 +292,7 @@ Kövesse a rövid útmutatóban megadott lépéseket [: modell átalakítása re
 
 1. Távolítsa el az egyéni modell objektumot a jelenetből. Ennek az oktatóanyagnak a legjobb tapasztalata a tesztelési modell használata. Noha az ARR-ben több modell is támogatott, ez az oktatóanyag a lehető legjobb támogatás egyetlen távoli modellhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már betöltheti saját modelljeit az Azure Remote rendering szolgáltatásba, és megtekintheti őket az alkalmazásban. Ezután végigvezeti Önt a modelljeinek kezelésén.
 

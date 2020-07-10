@@ -3,7 +3,7 @@ title: Egyoldalas alkalmazás-oktatóanyag – Azure
 titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogy a szögletes SPA-alkalmazások hogyan hívhatnak meg olyan API-t, amelyhez hozzáférési jogkivonatok szükségesek a Microsoft Identity platform végpontján.
 services: active-directory
-author: hahamil
+author: hamiltonha
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6d869243f7f125ef7a795d6049d0b4f70fc51361
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 7cd2d5d8728e2a0539d5f106ab39c563e6e7c382
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322770"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231692"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy szögletes egyoldalas alkalmazásból
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag azt mutatja be, hogyan használható a szögletes egyoldalas 
 
 ### <a name="more-information"></a>További információ
 
-Az ebben az oktatóanyagban létrehozott minta alkalmazás lehetővé teszi, hogy egy szögletes fürdő lekérdezze a Microsoft Graph API-t vagy egy webes API-t, amely a Microsoft Identity platform végpontjának jogkivonatait fogadja el. A szögletes kódtár MSAL az alapszintű MSAL. js függvénytár burkolója. Lehetővé teszi a szögletes (6 +) alkalmazások számára a vállalati felhasználók hitelesítését Microsoft Azure Active Directory, Microsoft-fiók felhasználók és a közösségi identitást használó felhasználók (például a Facebook, a Google és a LinkedIn) használatával. A kódtár azt is lehetővé teszi, hogy az alkalmazások hozzáférjenek a Microsoft Cloud Serviceshez vagy Microsoft Graphhoz.
+Az ebben az oktatóanyagban létrehozott minta alkalmazás lehetővé teszi, hogy egy szögletes fürdő lekérdezze a Microsoft Graph API-t vagy egy webes API-t, amely a Microsoft Identity platform végpontjának jogkivonatait fogadja el. A szögletes könyvtár MSAL az alapszintű MSAL.js könyvtár burkolója. Lehetővé teszi a szögletes (6 +) alkalmazások számára a vállalati felhasználók hitelesítését Microsoft Azure Active Directory, Microsoft-fiók felhasználók és a közösségi identitást használó felhasználók (például a Facebook, a Google és a LinkedIn) használatával. A kódtár azt is lehetővé teszi, hogy az alkalmazások hozzáférjenek a Microsoft Cloud Serviceshez vagy Microsoft Graphhoz.
 
 Ebben az esetben a felhasználó bejelentkezése után hozzáférési jogkivonatot kér a rendszer, és hozzáadja a HTTP-kérésekhez az engedélyezési fejlécen keresztül. A token beszerzését és megújítását a MSAL kezeli.
 
@@ -45,18 +45,18 @@ Ez az oktatóanyag a következő könyvtárat használja:
 
 |Kódtár|Leírás|
 |---|---|
-|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library JavaScript szögletes Burkolóhoz|
+|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library JavaScript szögletes Burkolóhoz|
 
-A MSAL. js függvénytár forráskódját a GitHubon található [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) adattárban találja.
+A MSAL.js könyvtár forráskódját az [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) adattáron találja a githubon.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag futtatásához a következőkre lesz szüksége:
 
-* Egy helyi webkiszolgálót, például a [Node. js](https://nodejs.org/en/download/)-t. Az oktatóanyag utasításai a Node. js-re épülnek.
+* Helyi webkiszolgáló, például [Node.js](https://nodejs.org/en/download/). Az oktatóanyagban szereplő utasítások a Node.json alapulnak.
 * Integrált fejlesztési környezet (IDE), például a [Visual Studio Code](https://code.visualstudio.com/download)a projektfájlok szerkesztéséhez.
 
-## <a name="create-your-project"></a>A projekt létrehozása
+## <a name="create-your-project"></a>Projekt létrehozása
 
 Új szögletes alkalmazás létrehozása a következő NPM parancsok használatával:
 
@@ -68,7 +68,7 @@ npm install msal @azure/msal-angular             # Install MSAL and MSAL Angular
 ng generate component page-name                  # To add a new page (such as a home or profile page)
 ```
 
-## <a name="register-your-application"></a>Alkalmazás regisztrálása
+## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
 Kövesse az [utasításokat egy egyoldalas alkalmazás regisztrálásához](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration) a Azure Portal.
 
@@ -138,7 +138,7 @@ Regisztrálja az **átirányítási URI** -értéket, **http://localhost:4200/**
 3. Adja hozzá a következő importálási utasításokat a felső részhez `src/app/app.component.ts` :
 
     ```javascript
-    import { MsalService } from '@azure/msal-angular';
+    import { MsalService, BroadcastService } from '@azure/msal-angular';
     import { Component, OnInit } from '@angular/core';
     ```
 ## <a name="sign-in-a-user"></a>Bejelentkezés felhasználóként
@@ -148,6 +148,8 @@ Adja hozzá a következő kódot a `AppComponent` felhasználóhoz való bejelen
 ```javascript
 export class AppComponent implements OnInit {
     constructor(private broadcastService: BroadcastService, private authService: MsalService) { }
+    
+    ngOnInit() { }
 
     login() {
         const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;

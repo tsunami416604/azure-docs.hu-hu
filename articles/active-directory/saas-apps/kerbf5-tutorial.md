@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f06b0b5aa59328d2fe39d501cfdf3ad7524427
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a24ec98e9d5978a6f896715b25bd6b08d4a0262d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75431462"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232185"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel
 
@@ -42,11 +42,11 @@ Első lépésként a következő elemeket kell megadnia:
 * F5 egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
 
 * A közös megoldás üzembe helyezéséhez a következő licenc szükséges:
-    * F5 BIG-IP® legjobb csomag (vagy)
+    * F5 BIG-IP – &reg; legjobb csomag (vagy)
 
-    * F5 BIG-IP Access Policy Manager™ (APM) önálló licenc
+    * F5 BIG-IP Access Policy Manager &trade; (APM) önálló licenc
 
-    * F5 BIG-IP Access Policy Manager™ (APM) bővítmény licence egy meglévő BIG-IP F5 BIG-IP® helyi Traffic Manager™ (LTM).
+    * F5 BIG-IP Access Policy Manager &trade; (APM) bővítmény licence meglévő Big-IP F5 Big-IP &reg; helyi Traffic Manager &trade; (LTM).
 
     * A fenti licencen kívül az F5-es verziójú rendszerek is licenccel rendelkezhetnek a következővel:
 
@@ -177,9 +177,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -223,7 +223,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Emellett **SSL-tanúsítványra lesz szüksége az alkalmazás állomásneve számára. Navigáljon a System > tanúsítványkezelő > adatforgalom-tanúsítvány kezelése > SSL-tanúsítvány listára**. Válassza az **Importálás** lehetőséget a jobb oldali sarokban. AZ **Importálás típusa** **PKCS 12 (IIS)** lesz. Adja meg a **kulcs nevét** (a konfiguráció későbbi részében lesz hivatkozva), majd adja meg a pfx-fájlt. A PFX-fájl **jelszavának** megadása. Kattintson az **Importálás**gombra.
 
     >[!NOTE]
-    >A példában az alkalmazás neve az `Kerbapp.superdemo.live`, hogy egy wild card-tanúsítványt használunk a kulcsnév`WildCard-SuperDemo.live`
+    >A példában az alkalmazás neve az `Kerbapp.superdemo.live` , hogy egy wild card-tanúsítványt használunk a kulcsnév`WildCard-SuperDemo.live`
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure02.png) 
  
@@ -248,7 +248,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure07.png)  
 
-1. A **készlet kiválasztása**területen adja meg az **új létrehozása** elemet (másik lehetőségként válasszon egy már létező készletet). Hagyja, hogy a többi érték legyen alapértelmezett. A készlet-kiszolgálók területen írja be az IP-címet az **IP-cím/csomópont neve**mezőbe. A **portot**határozza meg. Kattintson a **mentés & tovább**gombra.
+1. A **készlet kiválasztása**területen adja meg az **új létrehozása** elemet (másik lehetőségként válasszon egy már létező készletet). Hagyja, hogy a többi érték legyen alapértelmezett.    A készlet-kiszolgálók területen írja be az IP-címet az **IP-cím/csomópont neve**mezőbe. A **portot**határozza meg. Kattintson a **mentés & tovább**gombra.
  
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure08.png)
 
@@ -282,23 +282,23 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót kell konfigurálnia a felhasználók hitelesítéséhez használandó APM-EK és hitelesítő adatok megadásához.
 
-1.  A fő lapon kattintson a **hozzáférési házirend > AAA-kiszolgálók > Active Directory**elemre. Megnyílik a Active Directory Servers List képernyő.
+1.    A fő lapon kattintson a **hozzáférési házirend > AAA-kiszolgálók > Active Directory**elemre. Megnyílik a Active Directory Servers List képernyő.
 
-2.  Kattintson a **Létrehozás**gombra. Megnyílik az új kiszolgáló tulajdonságai képernyő.
+2.    Kattintson a **Létrehozás** elemre. Megnyílik az új kiszolgáló tulajdonságai képernyő.
 
-3.  A **név** mezőbe írjon be egy egyedi nevet a hitelesítési kiszolgálónak.
+3.    A **név** mezőbe írjon be egy egyedi nevet a hitelesítési kiszolgálónak.
 
-4.  A **tartomány neve** mezőbe írja be a Windows-tartomány nevét.
+4.    A **tartomány neve** mezőbe írja be a Windows-tartomány nevét.
 
-5.  A **Kiszolgálói kapcsolatok** beállításnál válassza a következő lehetőségek egyikét:
+5.    A **Kiszolgálói kapcsolatok** beállításnál válassza a következő lehetőségek egyikét:
 
     * Válassza a **készlet használata** lehetőséget az AAA-kiszolgáló magas rendelkezésre állásának beállításához.
 
     * Válassza a **közvetlen** lehetőséget az AAA-kiszolgáló önálló működéshez való beállításához.
 
-6.  Ha a **közvetlen**lehetőséget választotta, adjon meg egy nevet a **tartományvezérlő** mezőben.
+6.    Ha a **közvetlen**lehetőséget választotta, adjon meg egy nevet a **tartományvezérlő** mezőben.
 
-7.  Ha a **készlet**használata lehetőséget választotta, konfigurálja a készletet:
+7.    Ha a **készlet**használata lehetőséget választotta, konfigurálja a készletet:
 
     * Írjon be egy nevet a **tartományvezérlő készletének neve** mezőbe.
 
@@ -306,21 +306,21 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
     * Az AAA-kiszolgáló állapotának figyeléséhez lehetősége van az állapotfigyelő kiválasztására: ebben az esetben csak az **gateway_icmp** figyelő szükséges. kiválaszthatja a **kiszolgálói készlet figyelője** listából.
 
-8.  A rendszergazda **neve** mezőbe írja be a kis-és nagybetűket megkülönböztető nevet egy olyan rendszergazdának, aki Active Directory rendszergazdai jogosultságokkal rendelkezik. Az APM az AD-lekérdezéshez tartozó **rendszergazdai név** és **rendszergazdai jelszó** mezőkben szereplő információkat használja. Ha a Active Directory névtelen lekérdezésekhez van konfigurálva, nem kell megadnia a Rendszergazdá nevét. Ellenkező esetben az APM-nek olyan fiókra van szüksége, amely megfelelő jogosultsággal rendelkezik a Active Directory-kiszolgálóhoz való kötéshez, a felhasználói csoport adatainak beolvasásához, valamint Active Directory jelszóházirend beolvasásához a jelszóval kapcsolatos funkciók támogatásához. (Az APM-nek be kell olvasnia a szabályzatokat, például ha bejelöli a jelszó módosításának kérése a felhasználótól az AD-lekérdezési művelet lejárata előtt beállítást.) Ha nem ad meg rendszergazdai fiókot ebben a konfigurációban, az APM a felhasználói fiók használatával kéri le az adatokat. Ez akkor működik, ha a felhasználói fióknak megfelelő jogosultsága van.
+8.    A rendszergazda **neve** mezőbe írja be a kis-és nagybetűket megkülönböztető nevet egy olyan rendszergazdának, aki Active Directory rendszergazdai jogosultságokkal rendelkezik. Az APM az AD-lekérdezéshez tartozó **rendszergazdai név** és **rendszergazdai jelszó** mezőkben szereplő információkat használja. Ha a Active Directory névtelen lekérdezésekhez van konfigurálva, nem kell megadnia a Rendszergazdá nevét. Ellenkező esetben az APM-nek olyan fiókra van szüksége, amely megfelelő jogosultsággal rendelkezik a Active Directory-kiszolgálóhoz való kötéshez, a felhasználói csoport adatainak beolvasásához, valamint Active Directory jelszóházirend beolvasásához a jelszóval kapcsolatos funkciók támogatásához. (Az APM-nek be kell olvasnia a szabályzatokat, például ha bejelöli a jelszó módosításának kérése a felhasználótól az AD-lekérdezési művelet lejárata előtt beállítást.) Ha nem ad meg rendszergazdai fiókot ebben a konfigurációban, az APM a felhasználói fiók használatával kéri le az adatokat. Ez akkor működik, ha a felhasználói fióknak megfelelő jogosultsága van.
 
-9.  A **rendszergazdai jelszó** mezőbe írja be a tartománynévhez társított rendszergazdai jelszót.
+9.    A **rendszergazdai jelszó** mezőbe írja be a tartománynévhez társított rendszergazdai jelszót.
 
-10. A **rendszergazdai jelszó ellenőrzése** mezőben írja be újra a **tartománynév** beállításhoz társított rendszergazdai jelszót.
+10.    A **rendszergazdai jelszó ellenőrzése** mezőben írja be újra a **tartománynév** beállításhoz társított rendszergazdai jelszót.
 
-11. A **csoport gyorsítótárának élettartama** mezőben adja meg a napok számát. Az alapértelmezett élettartam 30 nap.
+11.    A **csoport gyorsítótárának élettartama** mezőben adja meg a napok számát. Az alapértelmezett élettartam 30 nap.
 
-12. A **jelszó biztonsági objektum gyorsítótárának élettartama** mezőben adja meg a napok számát. Az alapértelmezett élettartam 30 nap.
+12.    A **jelszó biztonsági objektum gyorsítótárának élettartama** mezőben adja meg a napok számát. Az alapértelmezett élettartam 30 nap.
 
-13. A **Kerberos előhitelesítés titkosítási típusa** listából válassza ki a titkosítási típust. Az alapértelmezett érték a **none**. Ha titkosítási típust ad meg, a BIG-IP rendszer az első hitelesítési szolgáltatási kérelem (AS-REQ) csomagján belül Kerberos-előhitelesítést is tartalmaz.
+13.    A **Kerberos előhitelesítés titkosítási típusa** listából válassza ki a titkosítási típust. Az alapértelmezett érték a **none**. Ha titkosítási típust ad meg, a BIG-IP rendszer az első hitelesítési szolgáltatási kérelem (AS-REQ) csomagján belül Kerberos-előhitelesítést is tartalmaz.
 
-14. Az **időtúllépés** mezőben adja meg az AAA-kiszolgáló időtúllépési intervallumát (másodpercben). (Ez a beállítás nem kötelező.)
+14.    Az **időtúllépés** mezőben adja meg az AAA-kiszolgáló időtúllépési intervallumát (másodpercben). (Ez a beállítás nem kötelező.)
 
-15. Kattintson a **kész**gombra. Az új kiszolgáló megjelenik a listán. Ezzel hozzáadja az új Active Directory-kiszolgálót a Active Directory kiszolgálók listájához.
+15.    Kattintson a **kész**gombra. Az új kiszolgáló megjelenik a listán. Ezzel hozzáadja az új Active Directory-kiszolgálót a Active Directory kiszolgálók listájához.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure17.png)
 
@@ -347,7 +347,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 1. Az SAML SP beállításához navigáljon a **hozzáférés > összevonási > SAML-szolgáltató > helyi SP-szolgáltatások** elemre, majd kattintson a **Létrehozás**gombra. Hajtsa végre a következő információkat, majd kattintson **az OK**gombra.
 
     * Típus neve: KerbApp200SAML
-    * Entitás azonosítója *:https://kerbapp200.superdemo.live
+    * Entitás azonosítója *:https://kerb-app.com.cutestat.com
     * SP-név beállításai
     * Séma: https
     * Gazdagép: kerbapp200. redemo. Live
@@ -370,7 +370,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
     >[!Note]
     > Ehhez létre kell hoznia és meg kell adni a Kerberos-delegálási fiókot. Tekintse át a KCD szakaszt (lásd: függelék a változó hivatkozásokhoz)
 
-    * **Username forrás**: Session. SAML. Last. attr. name. http:\//schemas.xmlsoap.org/ws/2005/05/Identity/Claims/givenName
+    * **Username forrás**: Session. SAML. Last. attr. name. http: \/ /schemas.xmlSOAP.org/ws/2005/05/Identity/Claims/givenName
 
     * **Felhasználói tartomány forrása**: Session. Logon. Last. domain
 
@@ -461,7 +461,7 @@ A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót 
 
     * Sam-fiók neve: **Big-ipuser**
 
-    * New-ADUser-Name "APM delegálási fiók"- host/big-ipuser.superdemo.live@superdemo.live userPrincipalName-sAMAccountName "Big-ipuser"-PasswordNeverExpires $True-enabled $True-AccountPassword (read-Host-AsSecureString "password! 1234")
+    * New-ADUser-Name "APM delegálási fiók"-UserPrincipalName host/big-ipuser.superdemo.live@superdemo.live -sAMAccountName "Big-ipuser"-PasswordNeverExpires $True-Enabled $True-AccountPassword (read-Host-AsSecureString "password! 1234")
 
 * **2. lépés:** SPN beállítása (az APM delegálási fiókján)
 
@@ -485,7 +485,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor a hozzáférési panelen az F5 csempére kattint, automatikusan be kell jelentkeznie az F5-be, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

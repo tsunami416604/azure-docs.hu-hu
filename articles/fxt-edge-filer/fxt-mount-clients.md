@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 43223db298e4ad170ea6d0687a342b3aee35500e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80130767"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231352"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Oktatóanyag: a fürt csatlakoztatása
 
@@ -61,7 +61,7 @@ A csatlakoztatási parancsnak három eleme van:
 
 A fürt elérési útja a VServer *IP-cím* és a *névtér-elágazás*elérési útjának kombinációja. A névtér-összekapcsolás egy virtuális elérési út, amelyet [a tárolási rendszer hozzáadásakor](fxt-add-storage.md#create-a-junction)adott meg.
 
-Ha például a névtér elérési ``/fxt/files`` útjaként használta, az ügyfelek csatlakoztatni *IP_address*:/FXT/Files a helyi csatlakoztatási ponthoz.
+Ha például ``/fxt/files`` a névtér elérési útjaként használta, az ügyfelek csatlakoztatni *IP_address*:/FXT/Files a helyi csatlakoztatási ponthoz.
 
 !["Új elágazás hozzáadása" párbeszédpanel a/avere/Files a névtér elérési útja mezőben](media/fxt-mount/fxt-junction-example.png)
 
@@ -93,18 +93,18 @@ A zökkenőmentes ügyfél-csatlakoztatás biztosításához adja át ezeket a b
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Szükséges beállítások | |
+| Szükséges beállítások | Leírás |
 --- | ---
 ``hard`` | Az Azure FXT Edge Filer-fürthöz való Soft mounts az alkalmazás hibáival és az esetleges adatvesztéssel van társítva.
 ``proto=netid`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.
 ``mountproto=netid`` | Ez a beállítás támogatja a hálózati hibák megfelelő kezelését a csatlakoztatási műveletekhez.
-``retry=n`` | Állítsa ``retry=30`` be az átmeneti csatlakoztatási hibák elkerülését. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
+``retry=n`` | Állítsa be ``retry=30`` az átmeneti csatlakoztatási hibák elkerülését. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
 
-| Előnyben részesített beállítások  | |
+| Előnyben részesített beállítások  | Leírás |
 --- | ---
 ``nointr``            | Ha az ügyfelek az ezt a lehetőséget támogató régebbi operációsrendszer-kerneleket (mielőtt április 2008) használják, használja azt. A "intr" beállítás az alapértelmezett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ügyfelek csatlakoztatása után tesztelheti a munkafolyamatot, és megkezdheti a fürt megkezdését.
 

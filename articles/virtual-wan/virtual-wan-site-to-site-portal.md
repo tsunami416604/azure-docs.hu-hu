@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 06/29/2020
+ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 6c6620a83be2eade3b449553824116a4bea7e4d8
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 219551f2bba229fb627092548fe5c5f5ff8798b9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144100"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220602"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Oktatóanyag: Helyek közötti kapcsolat létrehozása az Azure Virtual WAN használatával
 
@@ -87,17 +87,7 @@ Ebben a lépésben a VPN-helyet csatlakoztatja a hubhoz.
 
 ## <a name="connect-the-vnet-to-the-hub"></a><a name="vnet"></a>A VNet összekötése a hubhoz
 
-Ebben a lépésben létrehozza a kapcsolatot a hub és a VNet között. Ismételje meg a fenti lépéseket minden csatlakoztatni kívánt virtuális hálózat esetében.
-
-1. A virtuális WAN lapján kattintson a **Virtuális hálózati kapcsolatok** elemre.
-2. A virtuális hálózati kapcsolat lapján kattintson a **+Kapcsolat hozzáadása** elemre.
-3. A **Kapcsolat hozzáadása** lapon töltse ki a következő mezőket:
-
-    * **Kapcsolat neve** – Nevezze el a kapcsolatot.
-    * **Elosztók** – Válassza ki azt az elosztót, amelyet a kapcsolattal társítani kíván.
-    * **Előfizetés** – Ellenőrizze az előfizetést.
-    * **Virtuális hálózat** – Válassza ki azt a virtuális hálózatot, amelyet az elosztóhoz csatlakoztatni kíván. A virtuális hálózat nem rendelkezhet már meglévő virtuális hálózati átjáróval.
-4. A virtuális hálózati kapcsolatok létrehozásához kattintson **az OK** gombra.
+[!INCLUDE [Connect](../../includes/virtual-wan-connect-vnet-hub-include.md)]
 
 ## <a name="download-vpn-configuration"></a><a name="device"></a>VPN-konfiguráció letöltése
 
@@ -266,6 +256,6 @@ A **VPN Gateway szerkesztése** lapon a következő beállításokat tekintheti 
 
    :::image type="content" source="media/virtual-wan-site-to-site-portal/view-configuration-2.png" alt-text="Konfiguráció megtekintése" lightbox="media/virtual-wan-site-to-site-portal/view-configuration-2-expand.png":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.

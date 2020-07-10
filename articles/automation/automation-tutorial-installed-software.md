@@ -7,12 +7,12 @@ ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: d4acecbc6d1a1d7f617b0da95da1b97dc5a3dd75
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: cad92ef376a14805049772cd0bfdbac04309f6c4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743666"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185823"
 ---
 # <a name="discover-what-software-is-installed-on-your-vms"></a>A virtuális gépeken telepített szoftverek felderítése
 
@@ -32,7 +32,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Egy [Automation-fiók](automation-offering-get-started.md) , amely a megfigyelő és a műveleti runbookok, valamint a figyelő feladatot fogja tárolni.
+* Egy [Automation-fiók](./index.yml) , amely a megfigyelő és a műveleti runbookok, valamint a figyelő feladatot fogja tárolni.
 * A szolgáltatás számára engedélyezni kívánt [virtuális gép](../virtual-machines/windows/quick-create-portal.md) .
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
@@ -48,7 +48,7 @@ Az oktatóanyag első lépéseként engedélyeznie kell a Change Tracking és az
 
 1. Navigáljon az Automation-fiókjához, és válassza a **leltár** vagy a **change Tracking** elemet a **konfiguráció**felügyelete alatt.
 
-2. Válassza ki a [log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) munkaterületet. Ez a munkaterület az olyan szolgáltatások által generált adatokat gyűjti, mint például a Change Tracking és a leltár. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
+2. Válassza ki a [log Analytics](../azure-monitor/log-query/log-query-overview.md) munkaterületet. Ez a munkaterület az olyan szolgáltatások által generált adatokat gyűjti, mint például a Change Tracking és a leltár. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -137,7 +137,7 @@ ConfigurationData
 | summarize by Publisher, SoftwareName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan tekintheti meg a szoftverek leltározását:
 
