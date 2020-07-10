@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 926a1867a77b543057fa1de170cdb64ccfefe7cb
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488790"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218334"
 ---
 A regionális VNet-integráció használata lehetővé teszi, hogy az alkalmazás hozzáférjen:
 
@@ -28,12 +28,12 @@ Ha VNet-integrációt használ az virtuális hálózatok-ben ugyanabban a régi�
 
 Az alkalmazás alapértelmezés szerint csak a RFC1918-forgalmat irányítja át a VNet. Ha az összes kimenő forgalmat át szeretné irányítani a VNet, alkalmazza az alkalmazás beállítását WEBSITE_VNET_ROUTE_ALL az alkalmazásra. Az alkalmazás beállításának konfigurálása:
 
-1. Nyissa meg a **konfigurációs** felhasználói felületet az alkalmazás-portálon. Válassza az **új alkalmazás beállítása**lehetőséget.
+1. Nyissa meg a **konfigurációs** felhasználói felületet az alkalmazás-portálon. Válassza az **Új alkalmazásbeállítás** lehetőséget.
 1. Írja **WEBSITE_VNET_ROUTE_ALL** be a WEBSITE_VNET_ROUTE_ALL **nevet a név** mezőbe, és írja be az **1** **értéket az érték** mezőbe.
 
    ![Alkalmazásbeállítás megadása][4]
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 1. Kattintson a **Mentés** gombra.
 
 Ha az összes kimenő forgalmat átirányítja a VNet, a rendszer az integrációs alhálózatra alkalmazott NSG és UDR vonatkozik. Ha az összes kimenő forgalmat átirányítja a VNet, a kimenő címek továbbra is az alkalmazás tulajdonságaiban felsorolt kimenő címek lesznek, kivéve, ha olyan útvonalakat ad meg, amelyek máshová nem küldik a forgalmat.
@@ -41,7 +41,7 @@ Ha az összes kimenő forgalmat átirányítja a VNet, a rendszer az integráci�
 Bizonyos korlátozások vonatkoznak a VNet-integrációnak az azonos régióban található virtuális hálózatok való használatára:
 
 * A globális társ-összekapcsolási kapcsolatok erőforrásai nem érhetők el.
-* A szolgáltatás csak a PremiumV2 App Service csomagokat támogató újabb Azure App Service skálázási egységekből érhető el.
+* A szolgáltatás csak a PremiumV2 App Service csomagokat támogató újabb Azure App Service skálázási egységekből érhető el. Vegye figyelembe, hogy *Ez nem jelenti azt, hogy az alkalmazásnak egy PremiumV2 díjszabási szinten kell futnia*, csak azt, hogy egy app Service-csomagon kell futnia, ahol a PremiumV2 lehetőség elérhető (ami azt jelenti, hogy ez egy újabb méretezési egység, ahol ez a VNet-integrációs szolgáltatás is elérhető).
 * Az integrációs alhálózatot csak egy App Service csomag használhatja.
 * A funkciót nem lehet használni a App Service Environmentban található elkülönített csomagbeli alkalmazások.
 * A szolgáltatáshoz egy nem használt alhálózat szükséges, amely a/27 32-es vagy nagyobb méretű egy Azure Resource Manager VNet.
@@ -65,7 +65,7 @@ A regionális VNet-integráció lehetővé teszi a szolgáltatási végpontok ha
 1. a regionális VNet-integráció konfigurálása a webalkalmazással
 1. Lépjen a célhely szolgáltatáshoz, és konfigurálja a szolgáltatási végpontokat az integrációhoz használt alhálózattal.
 
-### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+### <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 
 Hálózati biztonsági csoportok használatával blokkolhatja a bejövő és a kimenő forgalmat egy VNet erőforrásaihoz. A regionális VNet-integrációt használó alkalmazások [hálózati biztonsági csoporttal][VNETnsg] letilthatják a VNet vagy az interneten lévő erőforrásokra irányuló kimenő forgalmat. A nyilvános címekre irányuló forgalom letiltásához az alkalmazás beállítását WEBSITE_VNET_ROUTE_ALL 1-re kell beállítani. Egy NSG bejövő szabályai nem érvényesek az alkalmazásra, mert a VNet-integráció csak az alkalmazásból érkező kimenő forgalmat érinti.
 

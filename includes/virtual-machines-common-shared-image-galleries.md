@@ -1,18 +1,18 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ca9d41134bf33a9e007da4b5a56652ccdbd4e22
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84317751"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218425"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a felügyelt lemezképekre épülő struktúrát és szervezetet. A megosztott képtárak a következőket biztosítják:
 
@@ -84,20 +84,7 @@ A speciális virtuális gépek nem a gép specifikus információinak és fiókj
 
 A forrás régiói az alábbi táblázatban láthatók. Az összes nyilvános régió lehet célcsoport, de az ausztráliai közép-és ausztráliai Közép-Ausztrália 2-es verzióra való replikáláshoz az előfizetés engedélyezési listának kell lennie. A következő lépésekkel kérheti le az engedélyezési listát:https://azure.microsoft.com/global-infrastructure/australia/contact/
 
-
-| Forrásoldali régiók        |                   |                    |                    |
-| --------------------- | ----------------- | ------------------ | ------------------ |
-| Ausztrália középső régiója     | Kelet-Kína        | Dél-India        | Nyugat-Európa        |
-| Ausztrália 2. középső régiója   | Kelet-Kína 2      | Délkelet-Ázsia     | Az Egyesült Királyság déli régiója           |
-| Kelet-Ausztrália        | Észak-Kína       | Kelet-Japán         | Az Egyesült Királyság nyugati régiója            |
-| Délkelet-Ausztrália   | Észak-Kína 2     | Nyugat-Japán         | US DoD – Középső régió     |
-| Dél-Brazília          | Kelet-Ázsia         | Dél-Korea középső régiója      | US DoD – Kelet        |
-| Közép-Kanada        | USA keleti régiója           | Dél-Korea déli régiója        | USA-beli államigazgatás – Arizona     |
-| Kelet-Kanada           | USA 2. keleti régiója         | USA északi középső régiója   | USA-beli államigazgatás – Texas       |
-| Közép-India         | USA 2. keleti – EUAP    | Észak-Európa       | USA-beli államigazgatás – Virginia    |
-| USA középső régiója            | Közép-Franciaország    | USA déli középső régiója   | Nyugat-India         |
-| USA középső – EUAP       | Dél-Franciaország      | USA nyugati középső régiója    | USA nyugati régiója            |
-|                       |                   |                    | USA nyugati régiója, 2.          |
+> Ausztrália középső régiója, Kelet-Kína, Dél-India, Nyugat-Európa, Ausztrália középső régiója 2, Kelet-Kína 2, Délkelet-Ázsia, Egyesült Királyság déli régiója, Kelet-Ausztrália, Észak-Kína, Kelet-Japán, Egyesült Királyság nyugati régiója, Délkelet-Ausztrália, Észak-Kína 2, Nyugat-Japán, US DoD – középső régió, Dél-Brazília, Kelet-Ázsia, Korea középső régiója, US DoD – keleti régió, Közép-Kanada, USA keleti régiója, Dél-Korea , US Gov Texas, Közép-India, USA 2. keleti régiója, – EUAP, Észak-Európa, US Gov Virginia, USA középső régiója, Közép-Németország, USA déli középső régiója, Nyugat-India, USA középső régiója, USA 2. nyugati régiója, USA nyugati középső régiója
 
 
 
@@ -139,7 +126,7 @@ Az a régió, amelyet a megosztott rendszerkép replikál, a rendszer a létreho
 
 ![A képek replikálásának módját bemutató ábra](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Access
+## <a name="access"></a>Hozzáférés
 
 Mivel a megosztott képtára, a képdefiníció és a rendszerkép verziója minden erőforrás, a beépített natív Azure RBAC-vezérlőkkel is megoszthatók. A RBAC használatával ezeket az erőforrásokat megoszthatja más felhasználókkal, egyszerű szolgáltatásokkal és csoportokkal is. Akár a bérlőn kívüli személyekhez is megoszthatja a hozzáférést. Miután egy felhasználó hozzáfér a megosztott lemezkép verziójához, üzembe helyezhet egy virtuális gépet vagy egy virtuálisgép-méretezési készletet.  Itt látható a megosztási mátrix, amely segít megérteni, hogy a felhasználó milyen módon férhet hozzá:
 
@@ -218,7 +205,7 @@ Létrehozhat megosztott képkatalógus-erőforrást sablonok használatával. T�
 
 Az alábbi lépéseket követve listázhatja az összes megosztott képkatalógus-erőforrást az előfizetések között, amelyekhez hozzáféréssel rendelkezik a Azure Portalban:
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. Görgessen le az oldalra, és válassza az **összes erőforrás**lehetőséget.
 1. Válassza ki az összes olyan előfizetést, amelyben az összes erőforrást listázni szeretné.
 1. Keresse meg a **megosztott képgyűjtemény**típusú erőforrásokat.

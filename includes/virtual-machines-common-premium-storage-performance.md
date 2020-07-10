@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84017604"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218237"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
 
@@ -27,7 +27,7 @@ A IOPS, illetve a másodpercenkénti bemeneti/kimeneti műveletek száma az, hog
 
 Ha prémium szintű tárolót csatlakoztat a nagy méretű virtuális gépéhez, az Azure a lemez specifikációinak megfelelően kiosztja a garantált IOPS-t. A P50-es lemeznél például 7500 IOPS lesz kiosztva. Minden nagy méretű virtuális gép rendelkezik egy IOPS-korláttal is, amelyet még fenn tud tartani. A standard GS5 virtuális gép például 80 000 IOPS korláttal rendelkezik.
 
-## <a name="throughput"></a>Teljesítmény
+## <a name="throughput"></a>Átviteli sebesség
 
 Az átviteli sebesség vagy a sávszélesség azt az adatmennyiséget adja meg, amelyet az alkalmazás a megadott intervallumban küld a Storage-lemezeknek. Ha az alkalmazás nagy i/o-méretű bemeneti/kimeneti műveleteket végez, nagy átviteli sebességre van szükség. Az adatraktár-alkalmazások általában nagy mennyiségű adathoz hozzáférő, nagyméretű műveleteket végző, nagyszámú adatokhoz hozzáférő, intenzíven végrehajtott ellenőrzéseket adnak ki. Más szóval az ilyen alkalmazások esetében nagyobb átviteli sebességre van szükség. Ha van ilyen alkalmazás, meg kell terveznie az infrastruktúráját az átviteli sebesség optimalizálása érdekében. A következő szakaszban részletesen ismertetjük azokat a tényezőket, amelyeket meg kell valósítania.
 
@@ -72,12 +72,12 @@ Ezután mérje fel az alkalmazás maximális teljesítményre vonatkozó követe
 | Szekvenciális műveletek%-ban | | | |
 | I/o-kérelem mérete | | | |
 | Átlagos átviteli sebesség | | | |
-| Legfeljebb Teljesítmény | | | |
+| Legfeljebb Átviteli sebesség | | | |
 | Min. Késés | | | |
 | Átlagos késés | | | |
 | Legfeljebb CPU | | | |
 | Átlagos CPU | | | |
-| Legfeljebb Memory (Memória) | | | |
+| Legfeljebb Memória | | | |
 | Átlagos memória | | | |
 | Várólista mélysége | | | |
 
@@ -92,11 +92,11 @@ Az alkalmazás teljesítménybeli követelményeinek mérésére a legjobb móds
 
 A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló minden logikai lemeze és fizikai lemeze számára. Ha Premium Storage-lemezeket használ egy virtuális géppel, a fizikai lemezek számlálói a Premium Storage-lemezekhez tartoznak, és a logikai lemezek számlálói a Premium Storage-lemezeken létrehozott minden kötethez tartoznak. Rögzítenie kell az alkalmazás számítási feladatait tároló lemezek értékeit. Ha a logikai és fizikai lemezek között egy hozzárendelés van, akkor a fizikai lemez számlálókat is megtekintheti. egyéb esetben a logikai lemez számlálóit kell megtekinteni. Linux rendszeren a iostat parancs CPU-és lemezhasználat-jelentést hoz létre. A lemezhasználat-jelentés fizikai eszközön vagy partíción jeleníti meg a statisztikát. Ha adatbázis-kiszolgálója van az adatokkal, és külön lemezeket naplóz, gyűjtsön adatokat mindkét lemezre. Az alábbi táblázat a lemezek, processzorok és memória számlálóit ismerteti:
 
-| Számláló | Description | PerfMon | Iostat |
+| Számláló | Leírás | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **IOPS vagy tranzakciók másodpercenként** |A tárolási lemezre másodpercenként kiadott I/O-kérelmek száma. |Olvasási sebesség (lemez/mp) <br> Írási sebesség (írás/mp) |TPS <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |a lemezen végrehajtott olvasási és írási műveletek%-a. |% Lemez olvasási ideje <br> % Lemez írási ideje |r/s <br> w/s |
-| **Teljesítmény** |A lemezre másodpercenként beolvasott vagy írt adatok mennyisége. |Lemez olvasási sebessége (bájt/s) <br> Lemez írási sebessége (bájt/s) |kB_read/s <br> kB_wrtn/s |
+| **Átviteli sebesség** |A lemezre másodpercenként beolvasott vagy írt adatok mennyisége. |Lemez olvasási sebessége (bájt/s) <br> Lemez írási sebessége (bájt/s) |kB_read/s <br> kB_wrtn/s |
 | **Késés** |A lemez i/o-kérések befejezésének teljes ideje. |Átlagos írási idő (mp/olvasás) <br> Átlagos írási idő (mp/írás) |várja <br> svctm |
 | **IO-méret** |Az I/O-kérések mérete a tároló lemezei számára. |Lemez átlagos bájtjai/olvasása <br> Átlagos lemez bájt/írás |avgrq – sz |
 | **Várólista mélysége** |Azon függő I/O-kérések száma, amelyek a Storage-lemezre való olvasásra vagy írásra várnak. |Lemez aktuális várólistájának hossza |avgqu – sz |
@@ -119,10 +119,10 @@ Az alábbi táblázat összefoglalja a teljesítménnyel kapcsolatos tényezőke
 
 A virtuálisgép-méretekről, valamint a IOPS, az átviteli sebességről és a késésről az egyes virtuálisgép-típusok esetében a [Linux VM-méretek](../articles/virtual-machines/linux/sizes.md) vagy a [Windowsos virtuális gépek méretei](../articles/virtual-machines/windows/sizes.md)című témakörben talál további információt.
 
-| &nbsp; | **IOPS** | **Teljesítmény** | **Késés** |
+| | **IOPS** | **Átviteli sebesség** | **Késés** |
 | --- | --- | --- | --- |
 | **Példa forgatókönyvre** |Nagyvállalati OLTP alkalmazás, amely másodpercenként nagy mennyiségű tranzakciót igényel. |Nagyvállalati adattárház-kezelő alkalmazás nagy mennyiségű adattal. |Közel valós idejű alkalmazások, amelyek azonnali válaszokat igényelnek a felhasználói kérésekre, például az online játékokba. |
-| Teljesítménnyel kapcsolatos tényezők | &nbsp; | &nbsp; | &nbsp; |
+| **Teljesítménnyel kapcsolatos tényezők** | &nbsp; | &nbsp; | &nbsp; |
 | **IO-méret** |A kisebb IO-méret magasabb IOPS eredményez. |Nagyobb IO-méret, amely magasabb átviteli sebességet eredményez. | &nbsp;|
 | **Virtuális gép mérete** |Használjon olyan virtuálisgép-méretet, amely IOPS nagyobb, mint az alkalmazásra vonatkozó követelmény. |Használjon olyan virtuálisgép-méretet, amelynek átviteli korlátja nagyobb, mint az alkalmazásra vonatkozó követelmény. |Használjon olyan virtuálisgép-méretet, amely az alkalmazásra vonatkozó követelménynél nagyobb skálázási korlátokat biztosít. |
 | **Lemezméret** |Használjon olyan méretű IOPS, amely nagyobb, mint az alkalmazásra vonatkozó követelmény. |Az alkalmazásra vonatkozó követelménynél nagyobb méretű adatátviteli korláttal rendelkező lemezeket használjon. |Használjon olyan méretű lemezt, amely az alkalmazás követelményeinél nagyobb léptéket biztosít. |
@@ -174,7 +174,7 @@ Amikor elkezd megtervezni egy alkalmazást, az egyik első teendő, válasszon e
 
 A nagy léptékű virtuális gépek különböző méretekben érhetők el, különböző számú CPU-mag, memória, operációs rendszer és ideiglenes lemez mérete miatt. Minden virtuálisgép-mérethez a virtuális géphez csatolható adatlemezek maximális száma is tartozik. Ezért a kiválasztott virtuálisgép-méret befolyásolja, hogy mennyi feldolgozási, memória-és tárolókapacitás érhető el az alkalmazás számára. Emellett a számítási és tárolási költségeket is befolyásolja. Az alábbi példa a DS-sorozatok és a GS-sorozatok legnagyobb virtuálisgép-méretének specifikációit mutatja be:
 
-| Virtuális gép mérete | Processzormagok | Memory (Memória) | VM-lemezek mérete | Legfeljebb adatlemezek | Gyorsítótár mérete | IOPS | Sávszélesség-gyorsítótár i/o-korlátai |
+| Virtuális gép mérete | Processzormagok | Memória | VM-lemezek mérete | Legfeljebb adatlemezek | Gyorsítótár mérete | IOPS | Sávszélesség-gyorsítótár i/o-korlátai |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OPERÁCIÓS RENDSZER = 1023 GB <br> Helyi SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB/másodperc |4 000 IOPS és 33 MB/másodperc |
 | Standard_GS5 |32 |448 GB |OPERÁCIÓS RENDSZER = 1023 GB <br> Helyi SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2 000 MB/másodperc |5 000 IOPS és 50 MB/másodperc |
@@ -195,7 +195,7 @@ Ha azonban ugyanazt az alkalmazást Premium Storage-on üzemelteti, akkor a virt
 
 Az alábbi táblázat összefoglalja a forgatókönyvnek a standard és a Premium Storage szerinti lebontását.
 
-| &nbsp; | **Standard** | **Prémium** |
+| &nbsp; | **Standard** | **Prémium szintű** |
 | --- | --- | --- |
 | **Virtuális gép ára havonta** |$1 570,58 (szabványos \_ D14) |$1 003,66 (szabványos \_ DS13) |
 | **Lemezek havi díja** |$1 638,40 (32 x 1 – TB lemez) |$544,34 (4 x P30-lemez) |
@@ -243,7 +243,7 @@ Ha többet szeretne megtudni a BlobCache működéséről, tekintse meg az [Azur
 
 Fontos, hogy a gyorsítótárat a megfelelő készleten engedélyezze. Azt határozza meg, hogy a lemezes gyorsítótárazást egy prémium szintű lemezen kell-e engedélyezni, vagy nem függ attól, hogy a lemez milyen számítási feladattal lesz kezelve. Az alábbi táblázat az operációs rendszer és az adatlemezek alapértelmezett gyorsítótár-beállításait mutatja be.
 
-| **Lemez típusa** | **Alapértelmezett gyorsítótár-beállítás** |
+| **Lemeztípus** | **Alapértelmezett gyorsítótár-beállítás** |
 | --- | --- |
 | Operációsrendszer-lemez |ReadWrite |
 | Adatlemez |ReadOnly |
@@ -252,7 +252,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| None |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| Nincsenek |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 

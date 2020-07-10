@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 653a481efeeaac83215b1e46309944efab924d2e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5588920c860de09ea1561cf5ed4b28a08085438c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076484"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207767"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Apache Hive lekérdezések futtatása a PowerShell használatával
 
@@ -52,16 +52,20 @@ A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagoka
 
 2. Nyisson meg egy új **Azure PowerShell** parancssort. Módosítsa a könyvtárakat a fájl helyére `hivejob.ps1` , majd futtassa a következő parancsot a szkript futtatásához:
 
-        .\hivejob.ps1
+    ```azurepowershell
+    .\hivejob.ps1
+    ```
 
     A parancsfájl futtatásakor meg kell adnia a fürt nevét és a HTTPS/fürt rendszergazdai fiókjának hitelesítő adatait. A rendszer kérheti, hogy jelentkezzen be az Azure-előfizetésbe.
 
 3. Amikor a feladatok befejeződik, az a következő szöveghez hasonló adatokat ad vissza:
 
-        Display the standard output...
-        2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
-        2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
-        2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
+    ```output
+    Display the standard output...
+    2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
+    2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
+    2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
+    ```
 
 4. Ahogy azt korábban említettük, `Invoke-Hive` használható egy lekérdezés futtatására és a válaszra való várakozásra. A következő parancsfájl használatával megtekintheti, hogyan működik a Meghívási struktúra:
 
@@ -69,9 +73,11 @@ A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagoka
 
     A kimenet a következő szöveghez hasonlít:
 
-        2012-02-03    18:35:34    SampleClass0    [ERROR]    incorrect    id
-        2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
-        2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
+    ```output
+    2012-02-03    18:35:34    SampleClass0    [ERROR]    incorrect    id
+    2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
+    2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
+    ```
 
    > [!NOTE]  
    > A hosszú HiveQL lekérdezések esetében használhatja a Azure PowerShell **itt-Strings** parancsmagot vagy a HiveQL parancsfájl-fájlokat. A következő kódrészlet azt mutatja be, hogyan használható a `Invoke-Hive` parancsmag egy HiveQL parancsfájl futtatásához. A HiveQL parancsfájlt fel kell tölteni a wasbs://-be.
@@ -95,7 +101,7 @@ Get-AzHDInsightJobOutput `
 
 Ez a parancsmag a STDERR írt adatokat adja vissza a feladatok feldolgozásakor.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Amint láthatja, a Azure PowerShell egyszerű módszert kínál a kaptár-lekérdezések futtatására egy HDInsight-fürtben, figyelheti a feladat állapotát, és lekérheti a kimenetet.
 

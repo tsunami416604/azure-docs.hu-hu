@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: a1d411662fd7afe57c714b97ab67b9d490acd40d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076368"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207718"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>MapReduce-feladatok futtatása a HDInsight Apache Hadoop a REST használatával
 
@@ -61,7 +61,7 @@ Vagy:
 
     A következő JSON-hoz hasonló válasz érkezik:
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -83,9 +83,7 @@ Vagy:
      * **osztály**: a MapReduce logikát tartalmazó osztály
      * **ARG**: a MapReduce-feladatoknak átadandó argumentumok. Ebben az esetben a bemeneti szövegfájl és a kimenethez használt könyvtár
 
-    A parancsnak olyan AZONOSÍTÓJÚ feladatot kell visszaadnia, amely a feladatok állapotának vizsgálatára használható:
-
-       job_1415651640909_0026
+    A parancsnak egy olyan AZONOSÍTÓJÚ feladatot kell visszaadnia, amely a következő feladatok állapotának vizsgálatára használható: `job_1415651640909_0026` .
 
 1. A feladatok állapotának megtekintéséhez használja a következő parancsot. A értékét cserélje le az `JOBID` előző lépésben visszaadott **tényleges** értékre. Szükség szerint módosítsa a **jQ** helyét.
 
@@ -105,7 +103,7 @@ Vagy:
     $creds = Get-Credential -UserName admin -Message "Enter the cluster login password"
     ```
 
-1. a következő parancs használatával ellenőrizheti, hogy tud-e csatlakozni a HDInsight-fürthöz:
+1. A következő parancs használatával ellenőrizheti, hogy tud-e csatlakozni a HDInsight-fürthöz:
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clustername.azurehdinsight.net/templeton/v1/status" `
@@ -116,7 +114,7 @@ Vagy:
 
     A következő JSON-hoz hasonló válasz érkezik:
 
-    ```output
+    ```json
     {"version":"v1","status":"ok"}
     ```
 
@@ -146,9 +144,7 @@ Vagy:
     * **osztály**: a MapReduce logikát tartalmazó osztály
     * **ARG**: a MapReduce-feladatoknak átadandó argumentumok. Ebben az esetben a bemeneti szövegfájl és a kimenethez használt könyvtár
 
-   A parancsnak olyan AZONOSÍTÓJÚ feladatot kell visszaadnia, amely a feladatok állapotának vizsgálatára használható:
-
-       job_1415651640909_0026
+   A parancsnak egy olyan AZONOSÍTÓJÚ feladatot kell visszaadnia, amely a következő feladatok állapotának vizsgálatára használható: `job_1415651640909_0026` .
 
 1. A feladatok állapotának megtekintéséhez használja a következő parancsot:
 

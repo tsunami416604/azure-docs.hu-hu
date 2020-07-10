@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 6490292ef898e00c7677c829be41f3b06c638164
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076606"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207826"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari Hive-nézet használata Apache Hadooppal a HDInsightban
 
@@ -60,7 +60,7 @@ Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](.
 
     Ezek az utasítások a következő műveleteket végzik el:
 
-    |Nyilatkozat | Description |
+    |Nyilatkozat | Leírás |
     |---|---|
     |TÁBLÁZAT ELDOBÁSA|Törli a táblát és az adatfájlt arra az esetre, ha a tábla már létezik.|
     |KÜLSŐ TÁBLA LÉTREHOZÁSA|Létrehoz egy új "külső" táblát a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.|
@@ -75,8 +75,10 @@ Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](.
 
 1. A lekérdezés befejeződése után az **eredmények** lap a művelet eredményét jeleníti meg. A lekérdezés eredménye a következő szöveg:
 
-        loglevel       count
-        [ERROR]        3
+    ```output
+    loglevel       count
+    [ERROR]        3
+    ```
 
     A **napló** lapon megtekintheti a feladatok által létrehozott naplózási adatokat.
 

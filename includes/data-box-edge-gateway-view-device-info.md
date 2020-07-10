@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 94c132421f1e113b667341b094acad8047e5f465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3312d1ec7c2535e103cf8959599c0d4c3014f520
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561779"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218445"
 ---
 1. [Kapcsolódjon a PowerShell felületéhez](#connect-to-the-powershell-interface).
 2. Az `Get-HcsApplianceInfo` eszközhöz tartozó információk beszerzéséhez használja a következőt:.
@@ -44,15 +44,15 @@ ms.locfileid: "82561779"
     ```
 
     Itt látható egy táblázat, amely az eszköz néhány fontos adatát összegzi:
-    
-    | Paraméter                             | Leírás                                                                                                                                                  |   |
-    |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
-    | FriendlyName                   | Az eszköz felhasználóbarát neve, amely a helyi webes felületen keresztül van konfigurálva az eszköz telepítése során. Az alapértelmezett felhasználóbarát név az eszköz sorozatszáma.  |   |
-    | Sorozatszám                   | Az eszköz sorozatszáma a gyárban hozzárendelt egyedi szám.                                                                             |   |
-    | Modell                          | Az Azure Stack Edge-vagy Data Box Gateway-eszközhöz tartozó modell. A modell fizikai Azure Stack Edge és a virtuális Data Box Gateway számára.                   |   |
-    | FriendlySoftwareVersion        | Az eszköz szoftverének verziójának megfelelő felhasználóbarát karakterlánc. Az előzetes verziót futtató rendszerek esetében a felhasználóbarát szoftververzió Data Box Edge 1902. |   |
-    | HcsVersion                     | Az eszközön futó HCS FRISSÍTŐÜGYNÖK szoftver verziója. Például a Data Box Edge 1902-nek megfelelő HCS FRISSÍTŐÜGYNÖK-szoftververzió 1.4.771.324.            |   |
-    | LocalCapacityInMb              | Az eszköz teljes helyi kapacitása a megabitben.                                                                                                        |   |
-    | IsRegistered                   | Ez az érték azt jelzi, hogy az eszköz aktiválva van-e a szolgáltatással.                                                                                         |   |
+
+    | Paraméter | Leírás |
+    |-----------|-------------|
+    | FriendlyName                   | Az eszköz felhasználóbarát neve, amely a helyi webes felületen keresztül van konfigurálva az eszköz telepítése során. Az alapértelmezett felhasználóbarát név az eszköz sorozatszáma.  |
+    | Sorozatszám                   | Az eszköz sorozatszáma a gyárban hozzárendelt egyedi szám.                                                                             |
+    | Modell                          | Az Azure Stack Edge-vagy Data Box Gateway-eszközhöz tartozó modell. A modell fizikai Azure Stack Edge és a virtuális Data Box Gateway számára.                   |
+    | FriendlySoftwareVersion        | Az eszköz szoftverének verziójának megfelelő felhasználóbarát karakterlánc. Az előzetes verziót futtató rendszerek esetében a felhasználóbarát szoftververzió Data Box Edge 1902. |
+    | HcsVersion                     | Az eszközön futó HCS FRISSÍTŐÜGYNÖK szoftver verziója. Például a Data Box Edge 1902-nek megfelelő HCS FRISSÍTŐÜGYNÖK-szoftververzió 1.4.771.324.            |
+    | LocalCapacityInMb              | Az eszköz teljes helyi kapacitása a megabitben.                                                                                                        |
+    | IsRegistered                   | Ez az érték azt jelzi, hogy az eszköz aktiválva van-e a szolgáltatással.                                                                                         |
 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 896e69bad9cd75b57ef2bf93048c332ef4d974c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847441"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207697"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
@@ -82,7 +82,7 @@ Ez a forgatókönyv egy speciális teljesítményszámláló-rögzítést futtat
 | IO-méret      | Átlagos bájt/adat kérése       |
 |              | Átlagos bájt/olvasás               |
 |              | Átlagos bájt/írás              |
-| Teljesítmény   | Adatmennyiség (bájt/s)                |
+| Átviteli sebesség   | Adatmennyiség (bájt/s)                |
 |              | Olvasott bájt/mp                |
 |              | Írt bájt/mp               |
 | Processzor-várólista hossza | Átlagos olvasási várólista hossza        |
@@ -101,9 +101,8 @@ Ha speciális teljesítmény-elemzést futtat, a Nyomkövetések lehetőség kiv
 
 A Windows rendszerű virtuális gépekre, lemezekre vagy tárolási készletek konfigurálására, a teljesítményszámlálók, a naplók és a különböző nyomkövetési adatok gyűjtésére vonatkozó információk. Ez a használt teljesítménnyel kapcsolatos forgatókönyvtől függ. A részleteket a következő táblázat tartalmazza:
 
-|Összegyűjtött adatok                              |  |  | Teljesítménnyel kapcsolatos forgatókönyvek |  |  | |
-|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Gyors teljesítmény elemzése | Teljesítménymérésre | Teljesítmény elemzése | Azure Files elemzése | Fejlett teljesítmény-elemzés |
+| Összegyűjtött adatok | Gyors teljesítmény elemzése | Teljesítménymérésre | Teljesítmény elemzése | Azure Files elemzése | Fejlett teljesítmény-elemzés |
+|----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|
 | Az eseménynaplók adatai       | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Rendszer-információ                | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Kötet térképe                        | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
@@ -119,12 +118,12 @@ A Windows rendszerű virtuális gépekre, lemezekre vagy tárolási készletek k
 | SQL Server-konfiguráció          | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Teljesítmény-diagnosztika nyomkövetése *  | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
 | Teljesítményszámláló nyomkövetése * *      |                            |                                    | Igen                      |                      | Igen                  |
-| SMB-számláló nyomkövetése * *              |                            |                                    |                          | Yes                  |                      |
+| SMB-számláló nyomkövetése * *              |                            |                                    |                          | Igen                  |                      |
 | SQL Server számláló nyomkövetése * *       |                            |                                    | Igen                      |                      | Igen                  |
-| XPerf nyomkövetés                       |                            |                                    |                          |                      | Yes                  |
-| StorPort-nyomkövetés                    |                            |                                    |                          |                      | Yes                  |
+| XPerf nyomkövetés                       |                            |                                    |                          |                      | Igen                  |
+| StorPort-nyomkövetés                    |                            |                                    |                          |                      | Igen                  |
 | Hálózati nyomkövetés                     |                            |                                    |                          | Igen                  | Igen                  |
-| Diskspd teljesítményteszt nyomkövetése * * *       |                            | Yes                                |                          |                      |                      |
+| Diskspd teljesítményteszt nyomkövetése * * *       |                            | Igen                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>Teljesítmény-diagnosztika nyomkövetése (*)

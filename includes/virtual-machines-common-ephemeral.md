@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4e31560126919e4c61b176a6eaa62ee7f9b4a624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8d712e4eecb930b52a519a1aaddf97c744a24ab
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85111986"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86218270"
 ---
 Az ideiglenes operációsrendszer-lemezek a helyi virtuális gép (VM) tárolóján jönnek létre, és nem lesznek mentve a távoli Azure-tárolóba. Az időszakos operációsrendszer-lemezek jól működnek az állapot nélküli munkaterhelések esetében, ahol az alkalmazások az egyes virtuálisgép-hibáktól függenek, de a virtuális gép üzembe helyezési ideje vagy az egyes virtuálisgép-példányok újrarendszerképe is befolyásolja. Az elmúló operációsrendszer-lemezzel alacsonyabb olvasási/írási késést kap az operációsrendszer-lemez és a virtuális gép lemezképének gyors alaphelyzetbe állítása. 
  
@@ -30,17 +30,17 @@ Az ideiglenes lemezek legfontosabb funkciói a következők:
  
 Az állandó és az elmúló operációsrendszer-lemezek közötti fő különbségek:
 
-|                             | Állandó operációsrendszer-lemez                          | Rövid élettartamú operációsrendszer-lemez                              |    |
+|                             | Állandó operációsrendszer-lemez                          | Rövid élettartamú operációsrendszer-lemez                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
-| OPERÁCIÓSRENDSZER-lemezre vonatkozó méretkorlát      | 2 TiB                                                                                        | A virtuális gép méretének vagy 2TiB a gyorsítótár mérete, attól függően, hogy melyik a kisebb. A **GIB gyorsítótár-méretének**megtekintéséhez lásd [: DS](../articles/virtual-machines/linux/sizes-general.md), [es](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md)és [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
-| Támogatott VM-méretek          | Mind                                                                                          | DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, M                                               |
-| Lemez típusának támogatása           | Felügyelt és nem felügyelt operációsrendszer-lemez                                                                | Csak felügyelt operációsrendszer-lemez                                                               |
-| Régiós támogatás              | Minden régió                                                                                  | Minden régió                              |
-| Adatmegőrzés            | Az operációsrendszer-lemezre írt operációsrendszer-lemezeket az Azure Storage tárolja                                  | Az operációsrendszer-lemezre írt adatkészleteket a rendszer a helyi virtuálisgép-tárolóba tárolja, és nem őrzi meg az Azure Storage szolgáltatásban. |
-| Lefoglalt állapot leállítása      | A virtuális gépek és a méretezési csoport példányai leállíthatók, és a Leállított állapotból indíthatók újra. | A virtuális gépek és a méretezési csoport példányai nem állíthatók le – nem foglalható le.                                  |
-| Speciális operációsrendszer-lemezek támogatása | Igen                                                                                          | Nem                                                                                 |
-| OPERÁCIÓSRENDSZER-lemez átméretezése              | A virtuális gép létrehozásakor és a virtuális gép leállítása után támogatott                                | Csak a virtuális gépek létrehozásakor támogatott                                                  |
-| Átméretezés új virtuálisgép-méretre   | Az operációsrendszer-lemezre vonatkozó adatmegőrzés                                                                    | Az operációsrendszer-lemezen lévő adatlemez törölve lett, az operációs rendszer újból kiépítve                                      |
+| **OPERÁCIÓSRENDSZER-lemezre vonatkozó méretkorlát**      | 2 tebibájt                                                                                        | A virtuális gép méretének vagy 2TiB a gyorsítótár mérete, attól függően, hogy melyik a kisebb. A **GIB gyorsítótár-méretének**megtekintéséhez lásd [: DS](../articles/virtual-machines/linux/sizes-general.md), [es](../articles/virtual-machines/linux/sizes-memory.md), [M](../articles/virtual-machines/linux/sizes-memory.md), [FS](../articles/virtual-machines/linux/sizes-compute.md)és [GS](/azure/virtual-machines/linux/sizes-previous-gen#gs-series)              |
+| **Támogatott VM-méretek**          | Mind                                                                                          | DSv1, DSv2, DSv3, Esv3, FS, FsV2, GS, M                                               |
+| **Lemez típusának támogatása**           | Felügyelt és nem felügyelt operációsrendszer-lemez                                                                | Csak felügyelt operációsrendszer-lemez                                                               |
+| **Régiós támogatás**              | Minden régió                                                                                  | Minden régió                              |
+| **Adatmegőrzés**            | Az operációsrendszer-lemezre írt operációsrendszer-lemezeket az Azure Storage tárolja                                  | Az operációsrendszer-lemezre írt adatkészleteket a rendszer a helyi virtuálisgép-tárolóba tárolja, és nem őrzi meg az Azure Storage szolgáltatásban. |
+| **Lefoglalt állapot leállítása**      | A virtuális gépek és a méretezési csoport példányai leállíthatók, és a Leállított állapotból indíthatók újra. | A virtuális gépek és a méretezési csoport példányai nem állíthatók le – nem foglalható le.                                  |
+| **Speciális operációsrendszer-lemezek támogatása** | Igen                                                                                          | Nem                                                                                 |
+| **OPERÁCIÓSRENDSZER-lemez átméretezése**              | A virtuális gép létrehozásakor és a virtuális gép leállítása után támogatott                                | Csak a virtuális gépek létrehozásakor támogatott                                                  |
+| **Átméretezés új virtuálisgép-méretre**   | Az operációsrendszer-lemezre vonatkozó adatmegőrzés                                                                    | Az operációsrendszer-lemezen lévő adatlemez törölve lett, az operációs rendszer újból kiépítve                                      |
 
 ## <a name="size-requirements"></a>Méretre vonatkozó követelmények
 
@@ -83,7 +83,7 @@ az vm create \
 
 A méretezési csoportok esetében ugyanazt a paramétert használja az az `--ephemeral-os-disk true` [-vmss-Create](/cli/azure/vmss#az-vmss-create) paranccsal, és állítsa a paramétert a következőre: `--os-disk-caching` `ReadOnly` .
 
-## <a name="portal"></a>Portál   
+## <a name="portal"></a>Portal   
 
 A Azure Portal a **lemezek** lap **speciális** szakaszának megnyitásával kiválaszthatja, hogy a virtuális gépek üzembe helyezése során az ideiglenes lemezeket használja-e. Az **ideiglenes operációsrendszer-lemez használata** beállításnál válassza az **Igen**lehetőséget.
 
