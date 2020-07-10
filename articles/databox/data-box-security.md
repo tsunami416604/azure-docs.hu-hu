@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817718"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200405"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Az Azure Data Box biztonsági és adatvédelmi szolgáltatásai
 
@@ -30,11 +30,14 @@ A Microsoft Azure Data Box megoldást négy, egymással együttműködő fő ös
 - **Az eszközhöz csatlakoztatott ügyfelek/gazdagépek** – az infrastruktúra védeni kívánt adatokat tartalmazó, a Data Box-eszközhöz csatlakozó ügyfelei.
 - **Felhőalapú tároló** – a hely az Azure-felhőben, ahol az adatok tárolása történik. Ez általában a létrehozott Azure Data Box-erőforráshoz csatolt tárfiók.
 
-A következő ábra az adatok áramlását mutatja az Azure Data Box megoldásban a helyszíni rendszerekről az Azure-ba.
+A következő ábra az adatok áramlását mutatja az Azure Data Box megoldásban a helyszíni rendszerekről az Azure-ba. Ez a folyamat a Data Box importálási sorrendje.
 
 ![A Data Box biztonsága](media/data-box-security/data-box-security-2.png)
 
-Mivel az adatforgalom ezen a megoldáson keresztül zajlik, a rendszer naplózza az eseményeket, és létrehozza a naplókat. További információért lépjen a [Azure Data Box nyomon követéséhez és az eseménynaplóhoz](data-box-logs.md).
+Mivel az adatforgalom ezen a megoldáson keresztül zajlik, a rendszer naplózza az eseményeket, és létrehozza a naplókat. További információért keresse fel a következőt:
+
+- [A Azure Data Box importálási rendeléseinek nyomon követése és eseménynaplózása](data-box-logs.md).
+- [A Azure Data Box exportálási rendeléseinek nyomon követése és eseménynaplózása](data-box-export-logs.md)
 
 ## <a name="security-features"></a>Biztonsági funkciók
 
@@ -81,7 +84,7 @@ Az Azure Data Box a szolgáltatás alábbi főbb példányaiban gyűjt és jelen
   - Telefonszám
   - E-mail
   - Utca, házszám
-  - Város
+  - City
   - Irányítószám
   - Állapot
   - Ország/tartomány/régió
@@ -99,7 +102,7 @@ További információkért lásd a Microsoft szabályzatát a [biztonsági és a
 
 A Data Box szolgáltatásra a következő biztonsági irányelvek vonatkoznak: 
 
-|Irányelv   |Description   |
+|Irányelv   |Leírás   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Víz és por elleni védelem         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Ellenállás a kedvezőtlen szállítási körülményeknek          |

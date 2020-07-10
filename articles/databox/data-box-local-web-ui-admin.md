@@ -5,14 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
-ms.date: 06/03/2019
+ms.topic: article
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 4e16f57d7a8ee10ef870ac102c5458cea4946304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608247"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202536"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>A helyi webes felhasználói felület használata a Data Box és Data Box Heavy felügyeletéhez
 
@@ -27,6 +28,8 @@ A cikk az alábbi oktatóanyagokat tartalmazza:
 - ANYAGJEGYZÉK-vagy manifest-fájlok letöltése
 - Az eszköz rendelkezésre álló kapacitásának megtekintése
 - Ellenőrzőösszeg-érvényesítés kihagyása
+
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>Támogatási csomag létrehozása
 
@@ -79,9 +82,9 @@ A Data Box újraindításához hajtsa végre az alábbi lépéseket.
 
 ## <a name="download-bom-or-manifest-files"></a>ANYAGJEGYZÉK-vagy manifest-fájlok letöltése
 
-Az anyagjegyzék (AJ) vagy a manifest-fájlok tartalmazzák a Data Box vagy Data Box Heavyba másolt fájlok listáját. Ezek a fájlok akkor jönnek létre, amikor előkészíti az eszközt a szállításra.
+Az anyagjegyzék (AJ) vagy a manifest-fájlok tartalmazzák a Data Box vagy Data Box Heavyba másolt fájlok listáját. Ezeket a fájlokat a rendszer importálási sorrendben hozza létre, amikor előkészíti az eszközt a szállításra.
 
-Mielőtt elkezdené, győződjön meg arról, hogy az eszköz elvégezte **szállításra való előkészítés** lépést. Az ANYAGJEGYZÉK-vagy jegyzékfájl-fájlok letöltéséhez kövesse az alábbi lépéseket:
+Mielőtt elkezdené, győződjön meg arról, hogy az eszköz elvégezte **szállításra való előkészítés** lépést. Az alábbi lépéseket követve letöltheti az importálási sorrendhez tartozó ANYAGJEGYZÉK-vagy jegyzékfájl-fájlokat:
 
 1. Nyissa meg az eszköz helyi webes FELÜLETét. Látni fogja, hogy az eszköz befejezte a felkészülést a szállításra. Az eszköz előkészítésének befejezése után az eszköz állapota a **szállításra kész**állapotban jelenik meg.
 
@@ -167,6 +170,8 @@ Az eszköz irányítópultján tekintheti meg az eszköz rendelkezésre álló �
 
 A szállításra való felkészüléskor a rendszer alapértelmezés szerint ellenőrzőösszegeket hoz létre az adataihoz. Bizonyos ritka esetekben az adattípustól (kis fájlmérettől függően) a teljesítmény lassú lehet. Ilyen esetben kihagyhatja az ellenőrzőösszeg létrehozását.
 
+Az ellenőrzőösszeg kiszámítása a szállítás előkészítése során csak importálási rendelésekhez, és nem exportálási rendelésekhez történik. 
+
 Határozottan javasoljuk, hogy csak akkor tiltsa le az ellenőrző létrehozását, ha komoly hatással lenne a teljesítményre.
 
 1. Az eszköz helyi webes FELÜLETének jobb felső sarkában válassza a **Beállítások lehetőséget**.
@@ -176,7 +181,8 @@ Határozottan javasoljuk, hogy csak akkor tiltsa le az ellenőrző létrehozás�
 2. Tiltsa le az ellenőrzőösszeg-érvényesítést a **Disable** (Letiltás) paranccsal.
 3. Kattintson az **Alkalmaz** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+> [!NOTE]
+> Az ellenőrzőösszeg-számítás kihagyása beállítás csak akkor érhető el, ha a Azure Data Box fel van oldva. Ez a beállítás nem jelenik meg, ha az eszköz zárolva van.
 
 - Megtudhatja, hogyan [kezelheti a Data Box és Data Box Heavy a Azure Portalon keresztül](data-box-portal-admin.md).
 

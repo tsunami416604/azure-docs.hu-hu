@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 741bf9e2aba6f893f670e86fb8bf5cd6c8b9d803
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113190"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201992"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>OData logikai operátorok az Azure-ban Cognitive Search- `and` , `or` ,`not`
 
@@ -71,7 +72,7 @@ A logikai kifejezések két formája létezik: bináris ( `and` / `or` ), ahol k
 
 A legtöbb logikai kifejezés, például a függvények és az összehasonlítások nem hozhatnak létre `null` értékeket, és a logikai operátorok nem alkalmazhatók `null` közvetlenül a konstansra (például `x and null` nem megengedett). A logikai mezők azonban lehetnek `null` , ezért tisztában kell lennie azzal, hogy a `and` , a `or` és a `not` operátorok hogyan működnek a nullák jelenlétében. Ezt a következő táblázat foglalja össze, ahol a `b` egy típusú mező `Edm.Boolean` :
 
-| Expression | Eredmény `b` , ha`null` |
+| Kifejezés | Eredmény `b` , ha`null` |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -92,19 +93,27 @@ Ha egy logikai mező `b` önmagában egy szűrési kifejezésben jelenik meg, ak
 
 Olyan dokumentumok egyeztetése, amelyekben a `rating` mező 3 és 5 közötti, beleértve a következőket:
 
+```odata-filter-expr
     rating ge 3 and rating le 5
+```
 
 Olyan dokumentumok egyeztetése, amelyekben a mező minden eleme `ratings` kisebb, mint 3, vagy több mint 5:
 
+```odata-filter-expr
     ratings/all(r: r lt 3 or r gt 5)
+```
 
 Egyezteti a dokumentumokat `location` , ahol a mező a megadott sokszögen belül van, és a dokumentum nem tartalmazza a "Public" kifejezést.
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))') and not search.ismatch('public')
+```
 
 A következőhöz tartozó dokumentumok egyeztetése: Vancouver, Kanada, ahol van egy Deluxe szoba, amelynek alapdíja 160-nál kisebb:
 
+```odata-filter-expr
     Address/City eq 'Vancouver' and Address/Country eq 'Canada' and Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 160)
+```
 
 ## <a name="next-steps"></a>További lépések  
 

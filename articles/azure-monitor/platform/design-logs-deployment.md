@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 7cc2b7871c7141a0e466bf8620351c5beed0c684
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed525230315781eeca41956047a173f27b1447e1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82165688"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201297"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>A Azure Monitor naplók üzembe helyezésének megtervezése
 
@@ -62,7 +62,7 @@ A szerepköralapú hozzáférés-vezérlés (RBAC) segítségével a felhasznál
 
 A felhasználóhoz hozzáférő adatok az alábbi táblázatban felsorolt tényezők kombinációjával vannak meghatározva. Mindegyiket az alábbi szakasz ismerteti.
 
-| Factor | Leírás |
+| Szempont | Leírás |
 |:---|:---|
 | [Hozzáférési mód](#access-mode) | A felhasználó által a munkaterület eléréséhez használt metódus.  Meghatározza az elérhető adatmennyiséget és az alkalmazott hozzáférés-vezérlési módot. |
 | [Hozzáférés-vezérlési mód](#access-control-mode) | A munkaterületre vonatkozó beállítás, amely meghatározza, hogy a rendszer az engedélyeket a munkaterületen vagy az erőforrás szintjén alkalmazza-e. |
@@ -97,7 +97,7 @@ A Azure Monitor automatikusan meghatározza a megfelelő módot attól függően
 
 A következő táblázat összefoglalja a hozzáférési módokat:
 
-| | Munkaterület – környezet | Erőforrás-környezet |
+| Probléma | Munkaterület – környezet | Erőforrás-környezet |
 |:---|:---|:---|
 | Kik az egyes modellek? | Központi felügyelet. Azok a rendszergazdák, akiknek olyan adatgyűjtést és felhasználókat kell konfigurálniuk, akiknek számos erőforráshoz kell hozzáféréssel rendelkezniük. Jelenleg olyan felhasználók számára is szükséges, akiknek az Azure-on kívüli erőforrásokhoz is hozzá kell férniük. | Alkalmazás-csapatok. A figyelt Azure-erőforrások rendszergazdái. |
 | Mire van szükség a felhasználók számára a naplók megtekintéséhez? | Engedélyeket a munkaterületre. Lásd: **munkaterület-engedélyek** a [hozzáférés kezelése munkaterület-engedélyek használatával](manage-access.md#manage-access-using-workspace-permissions). | Olvasási hozzáférés az erőforráshoz. Lásd: **erőforrás-engedélyek** a [hozzáférés kezelése Azure-engedélyekkel](manage-access.md#manage-access-using-azure-permissions). Az engedélyek örökölhető (például a tartalmazó erőforráscsoporthoz) vagy közvetlenül az erőforráshoz rendelve. A rendszer automatikusan hozzárendeli az erőforrás naplóihoz tartozó engedélyeket. |
@@ -140,7 +140,7 @@ Operation
 ``` 
 
 
-## <a name="recommendations"></a>Javaslatok
+## <a name="recommendations"></a>Ajánlások
 
 ![Példa erőforrás-környezet kialakítására](./media/design-logs-deployment/workspace-design-resource-context-01.png)
 

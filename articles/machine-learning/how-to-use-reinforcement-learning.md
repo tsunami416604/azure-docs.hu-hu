@@ -1,7 +1,7 @@
 ---
-title: Megerősítő tanulási modell betanítása és üzembe helyezése.
+title: Megerősítő tanulási modell (előzetes verzió) betanítása és üzembe helyezése.
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning-megerősítő tanulást (RL) egy RL-ügynök betanításához a pong játékhoz.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning-megerősítő tanulást (előzetes verzió) egy RL-ügynök betanításához a pong játékhoz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,11 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.custom: tracking-python
-ms.openlocfilehash: f8559733de9b7acfb23e2846e4d92ce6db5e2df0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b918369f68c3b0047213c24f1d4666fd0593cf30
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84556941"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203282"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Megerősítő tanulás (előzetes verzió) Azure Machine Learning
 

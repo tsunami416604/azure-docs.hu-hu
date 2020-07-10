@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09e492ae950003f97ed86355257c97777cd71c1a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113172"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202010"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>OData geo-térbeli függvények az Azure Cognitive Searchban – `geo.distance` és`geo.intersects`
 
@@ -104,21 +105,29 @@ Az Azure Cognitive Search összes többi nem gyűjteményéhez hasonlóan a típ
 
 Az összes Hotel megkeresése egy adott hivatkozási ponttól számított 10 kilométeren belül (ahol a hely egy típusú mező `Edm.GeographyPoint` ):
 
+```odata-filter-expr
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
 A megadott nézetablakban lévő összes Hotel megkeresése sokszögként (ahol a hely egy típusú mező `Edm.GeographyPoint` ). Vegye figyelembe, hogy a sokszög le van zárva (az első és az utolsó pontnak azonosnak kell lennie), és [a pontoknak](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)a következő sorrendben kell szerepelniük.
 
+```odata-filter-expr
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
 ### <a name="order-by-examples"></a>Rendezési példák
 
 Rendezheti a szállodákat csökkenő sorrendben `rating` , majd a megadott koordináták távolsága alapján:
 
+```odata-filter-expr
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 Rendezheti a szállodákat csökkenő sorrendben `search.score` , a és a alapján `rating` , majd növekvő sorrendben, a megadott koordináták távolsága alapján, hogy két, azonos minősítéssel rendelkező, egymással azonos minősítéssel rendelkező Hotel között szerepeljenek a legközelebb:
 
+```odata-filter-expr
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>További lépések  
 

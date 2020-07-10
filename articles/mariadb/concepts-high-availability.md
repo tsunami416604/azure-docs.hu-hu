@@ -1,35 +1,75 @@
 ---
 title: Magas rendelkezésre állás – Azure Database for MariaDB
-description: Ez a témakör a magas rendelkezésre állásról nyújt tájékoztatást a Azure Database for MariaDB használatakor
-author: ajlam
-ms.author: andrela
+description: Ez a cikk a magas rendelkezésre állásról nyújt információkat Azure Database for MariaDB
+author: kummanish
+ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: a87646f6195a06cf0a5382cb248efa5516c953f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/7/2020
+ms.openlocfilehash: bea32b3b60c9013ea223513c95629092b9ab231b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79531991"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203334"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-mariadb"></a>Magas rendelkezésre állással kapcsolatos fogalmak a Azure Database for MariaDB
-A Azure Database for MariaDB szolgáltatás garantált magas szintű rendelkezésre állást biztosít. A pénzügyileg támogatott szolgáltatói szerződés (SLA) az általánosan elérhető 99,99%-os. A szolgáltatás használata során gyakorlatilag nincs alkalmazás-leállási idő.
+# <a name="high-availability-in-azure-database-for-mariadb"></a>Magas rendelkezésre állás a Azure Database for MariaDBban
+A Azure Database for MariaDB szolgáltatás garantált magas szintű rendelkezésre állást biztosít a pénzügyi felelősséggel vállalt szolgáltatói szerződéssel (SLA) [99,99%-os](https://azure.microsoft.com/support/legal/sla/MariaDB) üzemidő mellett. Azure Database for MariaDB magas rendelkezésre állást biztosít a tervezett események (például a megkezdeni skálázási számítási művelet) során, valamint olyan nem tervezett események esetén is, mint például az alapul szolgáló hardver, szoftver vagy hálózati hiba. Azure Database for MariaDB gyorsan helyreállítható a legfontosabb körülmények között, így gyakorlatilag nincs alkalmazás-leállási idő a szolgáltatás használatakor.
 
-## <a name="high-availability"></a>Magas rendelkezésre állás
-A magas rendelkezésre állású (HA) modell a beépített feladatátvételi mechanizmusokon alapul, ha csomópont szintű megszakítás történik. A csomópont-szintű megszakítás hardverhiba miatt vagy egy szolgáltatás központi telepítésére adott válaszként fordulhat elő.
+Azure Database for MariaDB alkalmas olyan kritikus fontosságú adatbázisok futtatására, amelyek nagy üzemidőt igényelnek. Az Azure-architektúrára épülő szolgáltatás magas rendelkezésre állást, redundanciát és rugalmasságot biztosít a tervezett és nem tervezett leállások miatt, anélkül, hogy további összetevőket kellene konfigurálnia. 
 
-Egy Azure Database for MariaDB adatbázis-kiszolgálón végzett módosítások mindig egy tranzakció kontextusában történnek. A módosításokat a rendszer szinkron módon rögzíti az Azure Storage-ban a tranzakció véglegesítése közben. Ha csomópont-szintű megszakítás történik, az adatbázis-kiszolgáló automatikusan létrehoz egy új csomópontot, és az új csomóponthoz csatolja az adattárat. Minden aktív kapcsolat el lesz dobva, és a fedélzeti tranzakciók nincsenek véglegesítve.
+## <a name="components-in-azure-database-for-mariadb"></a>Összetevők a Azure Database for MariaDB
 
-## <a name="application-retry-logic-is-essential"></a>Az alkalmazás újrapróbálkozási logikája elengedhetetlen
-Fontos, hogy a MariaDB adatbázis-alkalmazásai felkészültek legyenek az eldobott kapcsolatok észlelésére és újrapróbálkozására. Az alkalmazás újrapróbálkozásakor az alkalmazás kapcsolata transzparens módon át lesz irányítva az újonnan létrehozott példányra, amely átveszi a sikertelen példányra.
+| **Összetevő** | **Leírás**|
+| ------------ | ----------- |
+| <b>MariaDB adatbázis-kiszolgáló | Azure Database for MariaDB biztosít biztonságot, elkülönítést, erőforrás-védelmet és gyors újraindítási képességet az adatbázis-kiszolgálók számára. Ezek a képességek olyan műveleteket könnyítenek meg, mint például a skálázás és az adatbázis-kiszolgáló helyreállítási művelet másodpercek alatt. <br/> Az adatbázis-kiszolgáló adatmódosításai jellemzően egy adatbázis-tranzakció kontextusában történnek. Az adatbázis összes változását szinkronban kell rögzíteni az Azure Storage-ban (ib_log), az adatbázis-kiszolgálóhoz csatolt naplófájlok formájában. Az adatbázis- [ellenőrzőpont](https://mariadb.com/kb/innodb-redo-log/#checkpoints) folyamata során a rendszer az adatbázis-kiszolgáló memóriájából származó adatlapokat is kiüríti a tárolóba. |
+| <b>Távoli tárterület | Az összes MariaDB fizikai adatfájlt és naplófájlt az Azure Storage tárolja, amely a régión belüli három adatmásolat tárolására szolgál az adatredundancia, a rendelkezésre állás és a megbízhatóság biztosítása érdekében. A tárolási réteg szintén független az adatbázis-kiszolgálótól. Leválasztható egy sikertelen adatbázis-kiszolgálóról, és néhány másodpercen belül újra hozzá lett csatolva egy új adatbázis-kiszolgálóhoz. Emellett az Azure Storage folyamatosan figyeli a tárolási hibákat. Ha a rendszer blokkolja a sérülést, a rendszer automatikusan egy új tárolási példány létrehozásával rögzíti. |
+| <b>Átjáró | Az átjáró adatbázis-proxyként működik, az adatbázis-kiszolgálóval létesített összes ügyfélkapcsolatot irányítja. |
 
-Az Azure-ban belsőleg az átjáró az új példánnyal létesített kapcsolatok átirányítására szolgál. Megszakítás esetén a teljes feladatátvételi folyamat általában több tízezer másodpercig tart. Mivel az átirányítás belsőleg van kezelve az átjárón, a külső kapcsolatok karakterlánca ugyanaz marad az ügyfélalkalmazások számára.
+## <a name="planned-downtime-mitigation"></a>Tervezett leállás-csökkentés
+A Azure Database for MariaDB a tervezett leállási műveletek során magas rendelkezésre állást biztosít. 
 
-## <a name="scaling-up-or-down"></a>Felfelé vagy lefelé skálázás
-A HA-modellhez hasonlóan, amikor egy Azure Database for MariaDB vertikálisan fel-vagy leskálázásra kerül, létrejön egy új kiszolgálópéldány a megadott mérettel. A meglévő adattárolás le van választva az eredeti példányból, és az új példányhoz van csatolva.
+![Rugalmas skálázás megtekintése az Azure MariaDB](./media/concepts-high-availability/elastic-scaling-mariadb-server.png)
 
-A skálázási művelet során az adatbázis-kapcsolatok megszakítása történik. Az ügyfélalkalmazások le vannak választva, és a nyitott nem véglegesített tranzakciók megszakadnak. Miután az ügyfélalkalmazás újrapróbálkozik a kapcsolódással, vagy új kapcsolódást végez, az átjáró irányítja a kapcsolódást az újonnan méretezett példányhoz.
+Néhány tervezett karbantartási forgatókönyv:
+
+| **Forgatókönyv** | **Leírás**|
+| ------------ | ----------- |
+| <b>Számítási felskálázás felfelé/lefelé | Ha a felhasználó számítási vertikális Felskálázási műveletet hajt végre, egy új adatbázis-kiszolgáló lesz kiépítve a méretezett számítási konfiguráció használatával. A régi adatbázis-kiszolgálóban az aktív ellenőrzőpontok befejeződik, az ügyfélkapcsolatok kiürülnek, a nem véglegesített tranzakciók megszakadnak, majd leállnak. A tárterület ezután le lesz választva a régi adatbázis-kiszolgálóról, és az új adatbázis-kiszolgálóhoz van csatolva. Amikor az ügyfélalkalmazás újrapróbálkozik a csatlakozással, vagy új csatlakozást próbál létrehozni, az átjáró a kapcsolódási kérelmet az új adatbázis-kiszolgálóra irányítja.|
+| <b>Tárterület skálázása | A tárterület skálázása online művelet, és nem szakítja meg az adatbázis-kiszolgálót.|
+| <b>Új szoftverek központi telepítése (Azure) | Új szolgáltatások bevezetése vagy hibajavítások automatikusan történnek a szolgáltatás tervezett karbantartásának részeként. További információkért tekintse meg a [dokumentációt](concepts-monitoring.md#planned-maintenance-notification), és tekintse meg a [portált](https://aka.ms/servicehealthpm)is.|
+| <b>Másodlagos verziók frissítése | Azure Database for MariaDB az adatbázis-kiszolgálókat az Azure által meghatározott alverzióra automatikusan kijavításra kerül. A szolgáltatás tervezett karbantartásának részeként történik. Ez rövid állásidőt von maga után másodpercben, és az adatbázis-kiszolgáló automatikusan újraindul az új alverzióval. További információkért tekintse meg a [dokumentációt](concepts-monitoring.md#planned-maintenance-notification), és tekintse meg a [portált](https://aka.ms/servicehealthpm)is.|
+
+
+##  <a name="unplanned-downtime-mitigation"></a>Nem tervezett leállás-csökkentés
+
+A nem tervezett leállás váratlan meghibásodások miatt fordulhat elő, beleértve a mögöttes hardverhiba, a hálózati problémák és a szoftverek hibáit. Ha az adatbázis-kiszolgáló váratlanul leáll, a rendszer automatikusan kiépít egy új adatbázis-kiszolgálót másodpercek alatt. A távoli tárterület automatikusan csatolva lesz az új adatbázis-kiszolgálóhoz. A MariaDB motor a helyreállítási műveletet a WAL-és adatbázisfájlok használatával hajtja végre, és megnyitja az adatbázis-kiszolgálót, amely lehetővé teszi az ügyfelek kapcsolódását. A nem véglegesített tranzakciók elvesznek, és az alkalmazásnak újra kell próbálkoznia. A nem tervezett állásidőt nem lehet elkerülni, Azure Database for MariaDB csökkenti az állásidőt úgy, hogy az adatbázis-kiszolgálón és a tárolási rétegen is automatikusan végrehajtja a helyreállítási műveleteket anélkül, hogy emberi beavatkozásra lenne szükség. 
+
+
+![Magas rendelkezésre állás megtekintése az Azure MariaDB](./media/concepts-high-availability/availability-mariadb-server.png)
+
+### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>Nem tervezett leállás: meghibásodási forgatókönyvek és szolgáltatás-helyreállítás
+Íme néhány meghibásodási forgatókönyv, valamint a Azure Database for MariaDB automatikus helyreállítása:
+
+| **Forgatókönyv** | **Automatikus helyreállítás** |
+| ---------- | ---------- |
+| <B>Adatbázis-kiszolgáló meghibásodása | Ha az adatbázis-kiszolgáló valamilyen mögöttes hardverhiba miatt leáll, a rendszer elveti az aktív kapcsolatokat, és minden fedélzeti tranzakciót megszakít. A rendszer automatikusan telepíti az új adatbázis-kiszolgálót, és a távoli adattároló csatlakozik az új adatbázis-kiszolgálóhoz. Az adatbázis-helyreállítás befejezése után az ügyfelek az átjárón keresztül csatlakozhatnak az új adatbázis-kiszolgálóhoz. <br /> <br /> A MariaDB-adatbázisokat használó alkalmazásokat úgy kell létrehozni, hogy felderítsék és újra elhagyják a kapcsolatokat és a sikertelen tranzakciókat.  Ha az alkalmazás újrapróbálkozik, az átjáró transzparens módon átirányítja a kapcsolódást az újonnan létrehozott adatbázis-kiszolgálóhoz. |
+| <B>Tárolási hiba | Az alkalmazások nem érintik a tárterülettel kapcsolatos problémákat, például a lemez meghibásodását vagy a fizikai blokk sérülését. Mivel az adattárolás 3 példányban történik, az adatmásolatot a túlélő tároló kézbesíti. A rendszer automatikusan kijavítja a blokkolási hibákat. Ha a rendszer elveszi az adatmásolatot, a rendszer automatikusan létrehozza az adatgyűjtés új másolatát. |
+
+Az alábbiakban néhány olyan meghibásodási forgatókönyvet talál, amelyek felhasználói beavatkozást igényelnek a helyreállításhoz:
+
+| **Forgatókönyv** | **Helyreállítási terv** |
+| ---------- | ---------- |
+| <b>Régió meghibásodása | A régió meghibásodása ritka esemény. Ha azonban egy régió meghibásodása elleni védelemre van szüksége, egy vagy több olvasási replikát is beállíthat más régiókban a vész-helyreállításhoz (DR). (A részletekért olvassa el [a következő cikket](howto-read-replicas-portal.md) : olvasási replikák létrehozása és kezelése. Régió szintű meghibásodás esetén manuálisan is előléptetheti a másik régióban konfigurált olvasási replikát az éles adatbázis-kiszolgálóként. |
+| <b>Logikai/felhasználói hibák | A felhasználói hibákból, például a véletlenül eldobott táblákból vagy a helytelenül frissített adatokból történő helyreállításhoz az adott [időponthoz tartozó helyreállítást](concepts-backup.md) (PITR) kell végrehajtania az adatok visszaállításával és helyreállításával egészen a hiba előtt.<br> <br>  Ha az adatbázis-kiszolgáló összes adatbázisa helyett csak adatbázisok vagy meghatározott táblák egy részhalmazát szeretné visszaállítani, az adatbázis-kiszolgálót visszaállíthatja egy új példányban, exportálhatja a táblázat (oka) t a [mysqldump](howto-migrate-dump-restore.md)-on keresztül, majd a [visszaállítás](howto-migrate-dump-restore.md#restore-your-mariadb-database) használatával visszaállíthatja ezeket a táblákat az adatbázisba. |
+
+
+
+## <a name="summary"></a>Összegzés
+
+A Azure Database for MariaDB gyors újraindítási képességet biztosít az adatbázis-kiszolgálók, a redundáns tárolók és a hatékony útválasztás számára az átjáróról. További adatvédelem esetén a biztonsági mentések földrajzilag replikálva konfigurálhatók, és egy vagy több olvasási replika is üzembe helyezhető más régiókban. A magas rendelkezésre állási képességekkel rendelkező Azure Database for MariaDB a leggyakoribb kimaradások miatt védi az adatbázisokat, és piacvezető, pénzügyi támogatású, [99,99%-os üzemidőt](https://azure.microsoft.com/support/legal/sla/MariaDB)biztosít. Mindezek a rendelkezésre állási és megbízhatósági képességek lehetővé teszik az Azure számára, hogy ideális platformot biztosítson a kritikus fontosságú alkalmazások futtatásához.
 
 ## <a name="next-steps"></a>További lépések
-- A szolgáltatás áttekintését lásd: [Azure Database for MariaDB áttekintése](overview.md)
+- Az [Azure-régiók](../availability-zones/az-overview.md) megismerése
+- Tudnivalók az [átmeneti kapcsolódási hibák kezelésére](concepts-connectivity.md)
+- Ismerje meg, hogyan [replikálhatja adatait olvasási replikákkal](howto-read-replicas-portal.md)

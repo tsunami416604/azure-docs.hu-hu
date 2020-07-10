@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: c9978be9182bbb2923fa5db0b4e5ada422ef0da9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05a67ab33c12e9f2bdbc0cd0098c39252db37e8e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511596"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187081"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Az MPIO konfigurálása a CentOS-t futtató StorSimple-gazdagépen
 Ez a cikk ismerteti a többutas i/o (MPIO) szolgáltatásnak a CentOS 6,6-es gazdagép-kiszolgálón való konfigurálásához szükséges lépéseket. Az iSCSI-kezdeményezők használatával a gazdagép-kiszolgáló a magas rendelkezésre állás érdekében csatlakozik a Microsoft Azure StorSimple eszközhöz. Részletesen ismerteti a Többutas eszközök automatikus észlelését és a StorSimple-kötetek adott beállítását.
@@ -70,35 +70,37 @@ Ez a szakasz a CentOS-kiszolgáló és a StorSimple-eszköz konfigurációs elő
    
     A következő példa a kimenetet mutatja be, ha két hálózati adapter ( `eth0` és `eth1` ) van jelen a gazdagépen.
    
-        [root@centosSS ~]# ifconfig
-        eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
-          inet addr:10.126.162.65  Bcast:10.126.163.255  Mask:255.255.252.0
-          inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3341/64 Scope:Global
-          inet6 addr: fe80::215:5dff:fea2:3341/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-         RX packets:36536 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:6312 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:13994127 (13.3 MiB)  TX bytes:645654 (630.5 KiB)
-   
-        eth1  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:42  
-          inet addr:10.126.162.66  Bcast:10.126.163.255  Mask:255.255.252.0
-          inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3342/64 Scope:Global
-          inet6 addr: fe80::215:5dff:fea2:3342/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:25962 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:2597350 (2.4 MiB)  TX bytes:754 (754.0 b)
-   
-        loLink encap:Local Loopback  
-          inet addr:127.0.0.1  Mask:255.0.0.0
-          inet6 addr: ::1/128 Scope:Host
-          UP LOOPBACK RUNNING  MTU:65536  Metric:1
-          RX packets:12 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0
-          RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
+    ```output
+    [root@centosSS ~]# ifconfig
+    eth0  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:41  
+        inet addr:10.126.162.65  Bcast:10.126.163.255  Mask:255.255.252.0
+        inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3341/64 Scope:Global
+        inet6 addr: fe80::215:5dff:fea2:3341/64 Scope:Link
+        UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+        RX packets:36536 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:6312 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:1000
+        RX bytes:13994127 (13.3 MiB)  TX bytes:645654 (630.5 KiB)
+
+    eth1  Link encap:Ethernet  HWaddr 00:15:5D:A2:33:42  
+        inet addr:10.126.162.66  Bcast:10.126.163.255  Mask:255.255.252.0
+        inet6 addr: 2001:4898:4010:3012:215:5dff:fea2:3342/64 Scope:Global
+        inet6 addr: fe80::215:5dff:fea2:3342/64 Scope:Link
+        UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+        RX packets:25962 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:11 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:1000
+        RX bytes:2597350 (2.4 MiB)  TX bytes:754 (754.0 b)
+
+    loLink encap:Local Loopback  
+        inet addr:127.0.0.1  Mask:255.0.0.0
+        inet6 addr: ::1/128 Scope:Host
+        UP LOOPBACK RUNNING  MTU:65536  Metric:1
+        RX packets:12 errors:0 dropped:0 overruns:0 frame:0
+        TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
+        collisions:0 txqueuelen:0
+        RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
+    ```
 1. Telepítse az *iSCSI-kezdeményező-utils* szolgáltatást a CentOS-kiszolgálóra. Az *iSCSI-kezdeményező-utils*telepítéséhez hajtsa végre az alábbi lépéseket.
    
    1. Jelentkezzen be a `root` CentOS-gazdagépre.
@@ -119,8 +121,10 @@ Ez a szakasz a CentOS-kiszolgáló és a StorSimple-eszköz konfigurációs elő
       
        Az alábbiakban egy példa látható a kimenetre.
       
-           iscsi   0:off   1:off   2:on3:on4:on5:on6:off
-           iscsid  0:off   1:off   2:on3:on4:on5:on6:off
+        ```output
+        iscsi   0:off   1:off   2:on3:on4:on5:on6:off
+        iscsid  0:off   1:off   2:on3:on4:on5:on6:off
+        ```
       
        A fenti példát követve láthatja, hogy az iSCSI-környezet a 2., 3., 4. és 5. futtatási szinten fut a rendszerindítás során.
 1. Telepítse az *eszközt – Mapper-többutas*. Típus:
@@ -149,9 +153,11 @@ A StorSimple-eszköznek a következőket kell tartalmaznia:
 * A StorSimple eszközön lévő iSCSI-felületeknek elérhetőnek kell lenniük a CentOS-kiszolgálóról.
       Ennek ellenőrzéséhez meg kell adnia a StorSimple iSCSI-kompatibilis hálózati adapterek IP-címeit a gazdagép kiszolgálóján. A használt parancsok és a DATA2 (10.126.162.25) és DATA3 (10.126.162.26) megfelelő kimenete alább látható:
   
-        [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
-        10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
-        10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
+    ```console
+    [root@centosSS ~]# iscsiadm -m discovery -t sendtargets -p 10.126.162.25:3260
+    10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
+    10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g44mt-target
+    ```
 
 ### <a name="hardware-configuration"></a>Hardverkonfiguráció
 Javasoljuk, hogy a két iSCSI hálózati adaptert külön elérési utakon kapcsolja össze a redundancia érdekében. Az alábbi ábrán a CentOS-kiszolgáló és a StorSimple-eszköz esetében a magas rendelkezésre állás és a terheléselosztás többútvonalos beállítása ajánlott.
@@ -197,11 +203,13 @@ A többutas által támogatott eszközök automatikusan felderíthető és konfi
    
     Ez a beállítás a lent látható alapértelmezett értékeket fogja módosítani `multipath.conf` :
    
-        defaults {
-        find_multipaths yes
-        user_friendly_names yes
-        path_grouping_policy multibus
-        }
+    ```config
+    defaults {
+    find_multipaths yes
+    user_friendly_names yes
+    path_grouping_policy multibus
+    }
+    ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>2. lépés: a StorSimple-kötetek többutas elérésének konfigurálása
 Alapértelmezés szerint a rendszer az összes eszközt a többutas. conf fájlban sorolja fel, és a rendszer figyelmen kívül hagyja. A StorSimple-eszközökről származó kötetek többutas elérésének engedélyezéséhez létre kell hoznia egy feketelistán lévő kivételeket is.
@@ -211,16 +219,18 @@ Alapértelmezés szerint a rendszer az összes eszközt a többutas. conf fájlb
     `vi /etc/multipath.conf`
 1. Keresse meg a blacklist_exceptions szakaszt a többutas. conf fájlban. Ebben a szakaszban a StorSimple-eszköznek feketelistán lévő kivételként kell szerepelnie. A fájl megfelelő sorait a lent látható módon törölheti (csak a használt eszköz adott modelljét használja):
    
-        blacklist_exceptions {
-            device {
-                       vendor  "MSFT"
-                       product "STORSIMPLE 8100*"
-            }
-            device {
-                       vendor  "MSFT"
-                       product "STORSIMPLE 8600*"
-            }
-           }
+    ```config
+    blacklist_exceptions {
+        device {
+                    vendor  "MSFT"
+                    product "STORSIMPLE 8100*"
+        }
+        device {
+                    vendor  "MSFT"
+                    product "STORSIMPLE 8600*"
+        }
+    }
+    ```
 
 ### <a name="step-3-configure-round-robin-multipathing"></a>3. lépés: a ciklikus multiplexelés többszörös elérésének konfigurálása
 Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elérési utakat az aktív vezérlőhöz a kiegyensúlyozott, ciklikus időszeleteléses módon használja.
@@ -230,10 +240,12 @@ Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elér�
     `vi /etc/multipath.conf`
 1. A `defaults` szakasz alatt állítsa be a következőt: `path_grouping_policy` `multibus` . A `path_grouping_policy` meghatározza az alapértelmezett elérési út csoportosítására vonatkozó házirendet, amely a meghatározatlan többutas elemekre vonatkozik. Az Alapértelmezések szakasz az alább látható módon jelenik meg.
    
-        defaults {
-                user_friendly_names yes
-                path_grouping_policy multibus
-        }
+    ```config
+    defaults {
+            user_friendly_names yes
+            path_grouping_policy multibus
+    }
+    ```
 
 > [!NOTE]
 > A következők leggyakoribb értékei `path_grouping_policy` :
@@ -249,21 +261,21 @@ Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elér�
     `service multipathd restart`
 1. A kimenet az alábbi módon jelenik meg:
    
-        [root@centosSS ~]# service multipathd start
-        Starting multipathd daemon:  [OK]
+    ```output
+    [root@centosSS ~]# service multipathd start
+    Starting multipathd daemon:  [OK]
+    ```
 
 ### <a name="step-5-verify-multipathing"></a>5. lépés: a többutas elérés ellenőrzése
 1. Először győződjön meg arról, hogy az iSCSI-kapcsolatok létrejöttek a StorSimple eszközzel a következőképpen:
    
    a. A StorSimple-eszköz felderítése. Típus:
       
-    ```
-    iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>
-    ```
+    `iscsiadm -m discovery -t sendtargets -p  <IP address of network interface on the device>:<iSCSI port on StorSimple device>`
     
     Ha a DATA0 IP-címe 10.126.162.25, és az 3260-as port a StorSimple-eszközön van megnyitva a kimenő iSCSI-forgalomhoz, az alábbi ábrán látható:
     
-    ```
+    ```output
     10.126.162.25:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     10.126.162.26:3260,1 iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target
     ```
@@ -272,13 +284,11 @@ Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elér�
 
    b. Kapcsolódjon az eszközhöz a TARGET IQN használatával. Az StorSimple-eszköz itt az iSCSI-cél. Típus:
 
-    ```
-    iscsiadm -m node --login -T <IQN of iSCSI target>
-    ```
+      `iscsiadm -m node --login -T <IQN of iSCSI target>`
 
     A következő példa a kimenetet mutatja a IQN `iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target` . A kimenet azt jelzi, hogy sikeresen csatlakozott az eszköz két iSCSI-kompatibilis hálózati adapteréhez.
 
-    ```
+    ```output
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
     Logging in to [iface: eth1, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.25,3260] (multiple)
     Logging in to [iface: eth0, target: iqn.1991-05.com.microsoft:storsimple8100-shx0991003g00dv-target, portal: 10.126.162.26,3260] (multiple)
@@ -295,33 +305,31 @@ Ez a terheléselosztási algoritmus a rendelkezésre álló többszörös elér�
 
 1. Ellenőrizze az elérhető elérési utakat. Típus:
 
-      ```
-      multipath -l
-      ```
+    `multipath -l`
 
       A következő példa egy StorSimple-eszköz két hálózati adapterének kimenetét mutatja két elérhető elérési úttal rendelkező egyetlen gazdagép hálózati adapterhez csatlakoztatva.
 
-        ```
-        mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
-        size=100G features='0' hwhandler='0' wp=rw
-        `-+- policy='round-robin 0' prio=0 status=active
-        |- 7:0:0:1 sdc 8:32 active undef running
-        `- 6:0:0:1 sdd 8:48 active undef running
-        ```
+    ```output
+    mpathb (36486fd20cc081f8dcd3fccb992d45a68) dm-3 MSFT,STORSIMPLE 8100
+    size=100G features='0' hwhandler='0' wp=rw
+    `-+- policy='round-robin 0' prio=0 status=active
+    |- 7:0:0:1 sdc 8:32 active undef running
+    `- 6:0:0:1 sdd 8:48 active undef running
+    ```
 
-        The following example shows the output for two network interfaces on a StorSimple device connected to two host network interfaces with four available paths.
+    A következő példa egy StorSimple-eszköz két hálózati adapterének kimenetét mutatja be, amely két, négy elérhető elérési úttal rendelkező gazdagép-hálózati adapterhez csatlakozik.
 
-        ```
-        mpathb (36486fd27a23feba1b096226f11420f6b) dm-2 MSFT,STORSIMPLE 8100
-        size=100G features='0' hwhandler='0' wp=rw
-        `-+- policy='round-robin 0' prio=0 status=active
-        |- 17:0:0:0 sdb 8:16 active undef running
-        |- 15:0:0:0 sdd 8:48 active undef running
-        |- 14:0:0:0 sdc 8:32 active undef running
-        `- 16:0:0:0 sde 8:64 active undef running
-        ```
+    ```output
+    mpathb (36486fd27a23feba1b096226f11420f6b) dm-2 MSFT,STORSIMPLE 8100
+    size=100G features='0' hwhandler='0' wp=rw
+    `-+- policy='round-robin 0' prio=0 status=active
+    |- 17:0:0:0 sdb 8:16 active undef running
+    |- 15:0:0:0 sdd 8:48 active undef running
+    |- 14:0:0:0 sdc 8:32 active undef running
+    `- 16:0:0:0 sde 8:64 active undef running
+    ```
 
-        After the paths are configured, refer to the specific instructions on your host operating system (Centos 6.6) to mount and format this volume.
+    Az elérési utak konfigurálása után a kötet csatlakoztatásához és formázásához tekintse meg a gazdagép operációs rendszerén (CentOS 6,6) megadott utasításokat.
 
 ## <a name="troubleshoot-multipathing"></a>Többútvonalas hibák megoldása
 Ez a szakasz néhány hasznos tippet tartalmaz, ha a többutas konfiguráció során problémákba ütközik.
@@ -330,7 +338,7 @@ K. Nem látom, hogy a fájl módosításai `multipath.conf` érvénybe lépnek.
 
 A. Ha bármilyen módosítást végzett a `multipath.conf` fájlon, újra kell indítania a többutas szolgáltatást. Írja be a következő parancsot:
 
-    service multipathd restart
+`service multipathd restart`
 
 K. Engedélyeztem két hálózati adaptert a StorSimple-eszközön, és két hálózati adaptert a gazdagépen. Ha kilistázza az elérhető elérési utakat, csak két elérési utat látok. Azt vártam, hogy négy elérhető útvonal látható.
 
@@ -362,58 +370,60 @@ A. Általában nem látható, hogy a többutas útvonalak egyike a többutas dé
 
 A kevésbé valószínű, de lehetséges ok is elavult iSCSI-PID. Használja az alábbi parancsot az iSCSI-munkamenetből való kijelentkezéshez:
 
-    iscsiadm -m node --logout -p <Target_IP>
+`iscsiadm -m node --logout -p <Target_IP>`
 
 Ismételje meg ezt a parancsot az iSCSI-tároló összes csatlakoztatott hálózati adapterén, amely a StorSimple-eszköz. Miután kijelentkezett az összes iSCSI-munkamenetből, az iSCSI-tároló IQN használatával hozza létre újra az iSCSI-munkamenetet. Írja be a következő parancsot:
 
-    iscsiadm -m node --login -T <TARGET_IQN>
+`iscsiadm -m node --login -T <TARGET_IQN>`
 
 
 K. Nem biztos benne, hogy az eszközem engedélyezési listán van-e.
 
 A. Annak ellenőrzéséhez, hogy az eszköz engedélyezve van-e, használja a következő hibaelhárítási interaktív parancsot:
 
-    multipathd -k
-    multipathd> show devices
-    available block devices:
-    ram0 devnode blacklisted, unmonitored
-    ram1 devnode blacklisted, unmonitored
-    ram2 devnode blacklisted, unmonitored
-    ram3 devnode blacklisted, unmonitored
-    ram4 devnode blacklisted, unmonitored
-    ram5 devnode blacklisted, unmonitored
-    ram6 devnode blacklisted, unmonitored
-    ram7 devnode blacklisted, unmonitored
-    ram8 devnode blacklisted, unmonitored
-    ram9 devnode blacklisted, unmonitored
-    ram10 devnode blacklisted, unmonitored
-    ram11 devnode blacklisted, unmonitored
-    ram12 devnode blacklisted, unmonitored
-    ram13 devnode blacklisted, unmonitored
-    ram14 devnode blacklisted, unmonitored
-    ram15 devnode blacklisted, unmonitored
-    loop0 devnode blacklisted, unmonitored
-    loop1 devnode blacklisted, unmonitored
-    loop2 devnode blacklisted, unmonitored
-    loop3 devnode blacklisted, unmonitored
-    loop4 devnode blacklisted, unmonitored
-    loop5 devnode blacklisted, unmonitored
-    loop6 devnode blacklisted, unmonitored
-    loop7 devnode blacklisted, unmonitored
-    sr0 devnode blacklisted, unmonitored
-    sda devnode whitelisted, monitored
-    dm-0 devnode blacklisted, unmonitored
-    dm-1 devnode blacklisted, unmonitored
-    dm-2 devnode blacklisted, unmonitored
-    sdb devnode whitelisted, monitored
-    sdc devnode whitelisted, monitored
-    dm-3 devnode blacklisted, unmonitored
+```console
+multipathd -k
+multipathd> show devices
+available block devices:
+ram0 devnode blacklisted, unmonitored
+ram1 devnode blacklisted, unmonitored
+ram2 devnode blacklisted, unmonitored
+ram3 devnode blacklisted, unmonitored
+ram4 devnode blacklisted, unmonitored
+ram5 devnode blacklisted, unmonitored
+ram6 devnode blacklisted, unmonitored
+ram7 devnode blacklisted, unmonitored
+ram8 devnode blacklisted, unmonitored
+ram9 devnode blacklisted, unmonitored
+ram10 devnode blacklisted, unmonitored
+ram11 devnode blacklisted, unmonitored
+ram12 devnode blacklisted, unmonitored
+ram13 devnode blacklisted, unmonitored
+ram14 devnode blacklisted, unmonitored
+ram15 devnode blacklisted, unmonitored
+loop0 devnode blacklisted, unmonitored
+loop1 devnode blacklisted, unmonitored
+loop2 devnode blacklisted, unmonitored
+loop3 devnode blacklisted, unmonitored
+loop4 devnode blacklisted, unmonitored
+loop5 devnode blacklisted, unmonitored
+loop6 devnode blacklisted, unmonitored
+loop7 devnode blacklisted, unmonitored
+sr0 devnode blacklisted, unmonitored
+sda devnode whitelisted, monitored
+dm-0 devnode blacklisted, unmonitored
+dm-1 devnode blacklisted, unmonitored
+dm-2 devnode blacklisted, unmonitored
+sdb devnode whitelisted, monitored
+sdc devnode whitelisted, monitored
+dm-3 devnode blacklisted, unmonitored
+```
 
 
 További információ: [Hibaelhárítás a többutas eléréshez](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot).
 
 ## <a name="list-of-useful-commands"></a>Hasznos parancsok listája
-| Típus | Parancs | Description |
+| Típus | Parancs | Leírás |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |ISCSI szolgáltatás indítása |
 | &nbsp; |`service iscsid stop` |Az iSCSI szolgáltatás leállítása |

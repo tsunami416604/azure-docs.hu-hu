@@ -11,11 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 03af572c94500e046265a5e9affa4f1742fae544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8f712604ae854a1870fe96112db3ae0f2ed60a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782024"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203012"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>A felhasználó kiépítési állapotának megtekintése
 
@@ -76,12 +77,11 @@ Az alábbi táblázat összefoglalja a gyakori kiépítési forgatókönyvek szi
 | Az Azure AD összes felhasználójának szinkronizálása|  < 1 000  | < 30 perc | < 30 perc |
 | Az Azure AD összes felhasználójának szinkronizálása | 1 000 – 10 000  | 43 – 86 perc | < 30 perc |
 
-
 Csak a konfigurációs **szinkronizáláshoz hozzárendelt felhasználók és csoportok**esetében a következő képletek segítségével meghatározhatja a **kezdeti ciklus** várt minimális és maximális idejét:
 
-    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
-    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
-    
+- Minimális perc = 0,01 x [a hozzárendelt felhasználók, csoportok és csoporttagok száma)
+- Maximális perc = 0,08 x [a hozzárendelt felhasználók, csoportok és csoporttagok száma)
+
 A **kezdeti ciklus**végrehajtásához szükséges időt befolyásoló tényezők összefoglalása:
 
 - A kiépítés hatókörében lévő felhasználók és csoportok teljes száma.

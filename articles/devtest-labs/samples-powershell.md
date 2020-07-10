@@ -3,18 +3,18 @@ title: Azure PowerShell minták a Azure Lab Serviceshoz | Microsoft Docs
 description: Azure PowerShell minták – parancsfájlok, amelyek segítenek a laborok kezelésében Azure Lab Services
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d94074acdd4aeef87f322f8e7a9734e5da9a1c32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce7a4f77aa0ea309afb81a54fd2f8f0a8f373e58
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483227"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187727"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>Azure PowerShell minták a Azure Lab Services
 
 A következő táblázat hivatkozásokat tartalmaz a Azure Lab Services Azure PowerShell parancsfájljaira.
 
-| |  |
+| Script | Leírás |
 |---|---|
 |[Külső felhasználó hozzáadása egy laborhoz](scripts/add-external-user-to-lab.md)| Ez a PowerShell-szkript egy külső felhasználót hoz létre egy laborban Azure DevTest Labs. |
 |[Marketplace-rendszerképek hozzáadása egy laborhoz](scripts/add-marketplace-images-to-lab.md)| Ez a PowerShell-parancsfájl hozzáadja a piactér lemezképeit a Azure DevTest Labs egy laborhoz. |

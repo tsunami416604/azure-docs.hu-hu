@@ -6,24 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 07/08/2020
 ms.author: alkohli
-ms.openlocfilehash: 3aa48f42c767a8f1fb1c7bf0ad78fef8b8af1594
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a632e753426def52bb260d7bf01875ec24e2ea9e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85558546"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200140"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és Azure Data Box Heavy kapcsolatos problémák elhárítása
 
-Ez a cikk részletesen ismerteti, hogyan lehet elhárítani a Azure Data Box vagy Azure Data Box Heavy használatakor megjelenő problémákat. A cikk azokat a lehetséges hibákat tartalmazza, amelyeket az adatok a Data Boxba való másolásakor, illetve az adatok Data Boxból való feltöltésekor észleltek.
+Ez a cikk a Azure Data Box vagy Azure Data Box Heavy importálási rendelésekhez való használatakor esetlegesen felmerülő problémák elhárításával kapcsolatos információkat ismerteti. A cikk azokat a lehetséges hibákat tartalmazza, amelyeket az adatok a Data Boxba való másolásakor, illetve az adatok Data Box importálási rendelésre való feltöltésekor észleltek.
+
+A cikkben szereplő információk nem vonatkoznak a Data Boxhoz létrehozott exportálási rendelésekre.
 
 ## <a name="error-classes"></a>Hiba osztályai
 
 A Data Box és Data Box Heavy hibáit a következőképpen összegzi:
 
-| Hiba kategóriája *        | Description        | Javasolt művelet    |
+| Hiba kategóriája *        | Leírás        | Javasolt művelet    |
 |----------------------------------------------|---------|--------------------------------------|
 | Tároló vagy megosztás neve | A tároló vagy a megosztás neve nem követi az Azure elnevezési szabályait.  |Töltse le a hibák listáját. <br> Nevezze át a tárolókat vagy a megosztásokat. [További információk](#container-or-share-name-errors).  |
 | Tároló vagy megosztási méretkorlát | A tárolókban vagy megosztásokban lévő teljes adatmennyiség meghaladja az Azure-korlátot.   |Töltse le a hibák listáját. <br> Csökkentse a tárolóban vagy megosztásban lévő összesített adatmennyiséget. [További információk](#container-or-share-size-limit-errors).|

@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e550489f34d84946d0a9e3df641a1484b85a60f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828933"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187336"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>A verziókövetés integrációjának használata Azure Automation örökölt
 
@@ -55,7 +56,7 @@ Ha már rendelkezik egy GitHub-fiókkal és egy Azure Automationhoz csatolni kí
 5. Miután rákattintott az **OK**gombra, a verziókövetés integrációja már konfigurálva van az Automation-fiókjához, és frissítenie kell a GitHub-információkkal. Erre a részre kattintva megtekintheti a verziókövetés szinkronizálási feladatok előzményeit.  
 
     ![A jelenlegi konfigurált verziókövetés konfigurációjának értékei](media/source-control-integration-legacy/automation-RepoValues.png)
-6. A verziókövetés beállítása után két [változó eszköz](automation-variables.md) jön létre az Automation-fiókban. Emellett a rendszer hozzáad egy, a GitHub-fiókhoz egy erre a jogosultsággal rendelkező alkalmazást.
+6. A verziókövetés beállítása után két [változó eszköz](./shared-resources/variables.md) jön létre az Automation-fiókban. Emellett a rendszer hozzáad egy, a GitHub-fiókhoz egy erre a jogosultsággal rendelkező alkalmazást.
 
    * A **Microsoft. Azure. Automation. SourceControl. link** változó a következő ábrán látható módon tartalmazza a kapcsolatok karakterláncának értékeit.  
 
@@ -83,7 +84,7 @@ Ha már rendelkezik egy GitHub-fiókkal és egy Azure Automationhoz csatolni kí
 
 A Runbook beadásával leküldheti az Azure Automationban végrehajtott módosításokat a Runbook a forrás vezérlő tárházba. A következő lépésekkel ellenőrizheti a runbook:
 
-1. Az Automation-fiókból [hozzon létre egy új szöveges runbook](automation-first-runbook-textual.md), vagy [szerkesszen egy meglévő, szöveges runbook](automation-edit-textual-runbook.md). Ez a runbook egy PowerShell-munkafolyamat vagy egy PowerShell-parancsfájl runbook lehet.  
+1. Az Automation-fiókból [hozzon létre egy új szöveges runbook](./learn/automation-tutorial-runbook-textual.md), vagy [szerkesszen egy meglévő, szöveges runbook](automation-edit-textual-runbook.md). Ez a runbook egy PowerShell-munkafolyamat vagy egy PowerShell-parancsfájl runbook lehet.  
 2. A runbook szerkesztése után mentse a lapot, majd kattintson a **beadás** gombra a szerkesztés oldalon.  
 
     ![A GitHub beadásának gombját megjelenítő ablak](media/source-control-integration-legacy/automation-CheckinButton.png)

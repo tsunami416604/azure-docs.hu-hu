@@ -1,5 +1,5 @@
 ---
-title: Statikus webhely üzemeltetése az Azure Storage-ban
+title: Statikus webhely üzemeltetés az Azure Storage-ban
 description: Azure Storage – statikus webhely üzemeltetése, költséghatékony, méretezhető megoldás a modern webalkalmazások üzemeltetéséhez.
 author: normesta
 ms.service: storage
@@ -8,14 +8,14 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: e2dcc070baa94ecf1ea27100fd49d4cde1dac637
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccad51d18a5e76f68633103af64e9ba6cc3f19c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833346"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203366"
 ---
-# <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
+# <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetés az Azure Storage-ban
 
 A statikus tartalom (HTML-, CSS-, JavaScript-és képfájlok) közvetlenül egy *$web*nevű tárolóból is kiszolgálható. A tartalom Azure Storage-ban való üzemeltetése lehetővé teszi, hogy olyan kiszolgáló nélküli architektúrákat használjon, amelyek a [Azure functions](/azure/azure-functions/functions-overview) és más platformként nyújtott szolgáltatásokat is tartalmazzák.
 
@@ -76,13 +76,15 @@ Módosíthatja a **$web** tároló nyilvános hozzáférési szintjét, de ez ne
 
 Az alábbi képernyőfelvételen a Azure Portal nyilvános hozzáférési szintjének beállítása látható:
 
-![A nyilvános hozzáférési szint megadását bemutató képernyőkép a portálon](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![A nyilvános hozzáférési szint megadását bemutató képernyőkép a portálon](./media/anonymous-read-access-configure/configure-public-access-container.png)
 
 Noha a rendszer nem érinti az elsődleges statikus webhely végpontját, a nyilvános hozzáférési szint módosítása hatással van az elsődleges blob Service-végpontra.
 
 Ha például módosítja a **$web** tároló nyilvános hozzáférési szintjét **(nincs névtelen hozzáférés)** a **blobhoz (névtelen olvasási hozzáférés csak Blobok esetén)**, akkor az elsődleges statikus webhely végpontjának való nyilvános hozzáférés szintje `https://contosoblobaccount.z22.web.core.windows.net/index.html` nem változik.
 
 Az elsődleges blob Service-végponthoz való nyilvános hozzáférés azonban `https://contosoblobaccount.blob.core.windows.net/$web/index.html` magánjellegűről nyilvánosra változik. Most a felhasználók megnyithatja a fájlt a két végpont egyikével.
+
+Ha letiltja a nyilvános hozzáférést a Storage-fiókon, az nem érinti az adott Storage-fiókban üzemeltetett statikus webhelyeket. További információ: [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok](anonymous-read-access-configure.md)számára.
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Egyéni tartomány leképezése statikus webhely URL-címére
 
@@ -105,7 +107,7 @@ Ha fejléceket kíván használni a gyorsítótárazás vezérléséhez, tekints
 
 A statikus webhelyek üzemeltetése díjmentesen engedélyezhető. Csak a hely által használt BLOB Storage-hoz és az üzemeltetési költségekhez kell fizetnie. Az Azure Blob Storage áraival kapcsolatos további információkért tekintse meg az [azure blob Storage díjszabási oldalát](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 
 A metrikák a statikus webhelyek oldalain is engedélyezhetők. A metrikák engedélyezése után a **$web** tárolóban található fájlokra vonatkozó forgalmi statisztikát a metrikák irányítópultján kell jelenteni.
 

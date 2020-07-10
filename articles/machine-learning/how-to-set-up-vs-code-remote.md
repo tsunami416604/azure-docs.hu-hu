@@ -1,5 +1,5 @@
 ---
-title: 'Interaktív hibakeresés: VS Code & ML számítási példányok'
+title: 'Interaktív hibakeresés: VS Code & ML számítási példányok (előzetes verzió)'
 titleSuffix: Azure Machine Learning
 description: Állítsa be a VS Code távirányítót a kód interaktív hibakereséséhez Azure Machine Learning használatával.
 services: machine-learning
@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: jmartens
 author: j-martens
-ms.date: 12/09/2019
-ms.openlocfilehash: 19d4b6e7994450eacacab51e9a01cbf58eab803a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 46aefa62ab00c0b3bc2b90467a9fafd61439a10e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433136"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203447"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktív hibakeresés egy Azure Machine Learning számítási példányon és a VS Code Remote
+# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>Interaktív hibakeresés egy Azure Machine Learning számítási példányon és a VS Code Remote (előzetes verzió)
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a Visual Studio Code Remote-t egy Azure Machine Learning számítási példányon, hogy interaktív módon tudjon **hibakeresést végezni a** vs Code-ból. 
 
@@ -85,9 +86,9 @@ Host azmlci1
 
 További részletek a mezőkről: 
 
-|Mező|Description|
+|Mező|Leírás|
 |----|---------|
-|Gazdagép|Bármilyen gyorsírást használhat a számítási példányhoz |
+|Gazda|Bármilyen gyorsírást használhat a számítási példányhoz |
 |HostName|Ez a számítási példány IP-címe. |
 |Port|Ez a port a fenti SSH-párbeszédablakban látható. |
 |Felhasználó|Ennek a következőnek kell lennie `azureuser` |

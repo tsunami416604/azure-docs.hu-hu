@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: 9072f057059c66d0030c31e649fda6b6ebe3db9d
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2efe05ebb26030720a1af90c4a4de8d48ea37106
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117811"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201481"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>Gyors útmutató: az Azure cache használata a Redis .NET-keretrendszerbeli alkalmazással
 
@@ -90,7 +90,7 @@ using StackExchange.Redis;
 using System.Configuration;
 ```
 
-A Redis készült Azure cache-hez való kapcsolódást a `ConnectionMultiplexer` osztály kezeli. Ennek az osztálynak megoszthatónak és ismét felhasználhatónak kell lennie az ügyfélalkalmazásban. Ne hozzon létre új kapcsolatot minden művelethez. 
+A Redis készült Azure cache-hez való kapcsolódást a `ConnectionMultiplexer` osztály kezeli. Ezt az osztályt kell megosztani és újrafelhasználni az ügyfélalkalmazásban. Ne hozzon létre új kapcsolatot minden művelethez. 
 
 Soha ne tároljon hitelesítő adatokat a forráskódban. Annak érdekében, hogy a minta egyszerű maradjon, csak egy külső titkos kódokat tartalmazó konfigurációs fájlt használok. Ennél még jobb megoldás lenne a [tanúsítványokkal rendelkező Azure Key Vault](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios) használata.
 
@@ -237,7 +237,7 @@ A .NET-objektumok szerializálásának teszteléséhez buildelje és futtassa a 
 ![Kész konzolalkalmazás](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
@@ -268,4 +268,7 @@ Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t e
 > [!div class="nextstepaction"]
 > [Hozzon létre egy ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)
 
+Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
 
+> [!div class="nextstepaction"]
+> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

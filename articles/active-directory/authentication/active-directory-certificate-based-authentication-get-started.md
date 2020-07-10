@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca19ccb925721126f7e7d8495addd0794766f376
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610649"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202879"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>A tanúsítványalapú hitelesítés első lépései az Azure Active Directoryban
 
@@ -69,6 +69,7 @@ A hitelesítésszolgáltatók Azure Active Directoryban való konfigurálásáho
 
 A hitelesítésszolgáltató sémája a következőképpen néz ki:
 
+```csharp
     class TrustedCAsForPasswordlessAuth
     {
        CertificateAuthorityInformation[] certificateAuthorities;
@@ -90,13 +91,16 @@ A hitelesítésszolgáltató sémája a következőképpen néz ki:
         RootAuthority = 0,
         IntermediateAuthority = 1
     }
+```
 
 A konfigurációhoz használhatja a [Azure Active Directory PowerShell 2-es verzióját](/powershell/azure/install-adv2?view=azureadps-2.0):
 
 1. Indítsa el a Windows PowerShellt rendszergazdai jogosultságokkal.
 2. Telepítse az Azure AD-modul [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) vagy újabb verzióját.
 
-        Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+```powershell
+    Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
+```
 
 Első konfigurálási lépésként létre kell hoznia egy kapcsolatot a Bérlővel. Amint létezik a bérlőhöz való kapcsolódás, áttekintheti, hozzáadhatja, törölheti és módosíthatja a címtárban definiált megbízható hitelesítésszolgáltatók listáját.
 
@@ -104,39 +108,49 @@ Első konfigurálási lépésként létre kell hoznia egy kapcsolatot a Bérlőv
 
 Ha kapcsolatot szeretne létesíteni a Bérlővel, használja a [AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) parancsmagot:
 
+```azurepowershell
     Connect-AzureAD
+```
 
 ### <a name="retrieve"></a>Beolvasni
 
 A címtárban definiált megbízható hitelesítésszolgáltatók beolvasásához használja a [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot.
 
+```azurepowershell
     Get-AzureADTrustedCertificateAuthority
+```
 
 ### <a name="add"></a>Hozzáadás
 
-Megbízható hitelesítésszolgáltató létrehozásához használja a [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot, és állítsa be a **vlelérésihelye** attribútumot helyes értékre:
+Megbízható hitelesítésszolgáltató létrehozásához használja a [New-AzureADTrustedCertificateAuthority](/azurepowershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot, és állítsa be a **vlelérésihelye** attribútumot helyes értékre:
 
+```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
     $new_ca.AuthorityType=0
     $new_ca.TrustedCertificate=$cert
     $new_ca.crlDistributionPoint="<CRL Distribution URL>"
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
+```
 
 ### <a name="remove"></a>Eltávolítás
 
 Megbízható hitelesítésszolgáltató eltávolításához használja a [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot:
 
+```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
+```
 
 ### <a name="modify"></a>Módosítás
 
 Egy megbízható hitelesítésszolgáltató módosításához használja a [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) parancsmagot:
 
+```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
+```
 
 ## <a name="step-3-configure-revocation"></a>3. lépés: visszavonás konfigurálása
 
@@ -152,17 +166,23 @@ Az alábbi lépések az engedélyezési jogkivonat frissítésének és érvény
 
 1. Kapcsolódás rendszergazdai hitelesítő adatokkal a MSOL szolgáltatáshoz:
 
+```powershell
         $msolcred = get-credential
         connect-msolservice -credential $msolcred
+```
 
 2. Egy felhasználó aktuális StsRefreshTokensValidFrom-értékének beolvasása:
 
+```powershell
         $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
         $user.StsRefreshTokensValidFrom
+```
 
 3. Új StsRefreshTokensValidFrom-érték konfigurálása a felhasználó számára az aktuális időbélyeggel egyenlő:
 
+```powershell
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
+```
 
 A beállított dátumnak a jövőben kell lennie. Ha a dátum nem a jövőben, a **StsRefreshTokensValidFrom** tulajdonság nincs beállítva. Ha a dátum jövőbeli, a **StsRefreshTokensValidFrom** az aktuális időpontra van állítva (nem a set-MsolUser parancs által jelzett dátumra).
 

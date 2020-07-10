@@ -8,11 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 71df5aa22eb93df6c98eb15f97ab017457946b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099077"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203511"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk korlátok
 
@@ -59,11 +60,11 @@ Az Azure Storage szolgáltatás korlátaival és a megosztások, tárolók és f
 
 ## <a name="azure-storage-account-size-limits"></a>Azure Storage-fiók méretének korlátai
 
-Itt láthatók a Storage-fiókba másolt adatmennyiség korlátai. Győződjön meg arról, hogy a feltöltött adatok megfelelnek a határértékeknek. A korlátozásokkal kapcsolatos legfrissebb információk az [Azure Blob Storage méretezési célok](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage) és [Azure Files méretezési célok](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)című témakörben olvashatók.
+Az alábbiakban megtalálhatja a Storage-fiókba másolható adatméret korlátozásait. Győződjön meg arról, hogy a feltöltött adatok megfelelnek a határértékeknek. 
 
-| Az Azure Storage-fiókba másolt adatmennyiség                      | Alapértelmezett korlát          |
-|---------------------------------------------------------------------|------------------------|
-| BLOB és oldal blobjának letiltása                                            | 500 TB/Storage-fiók. <br> Ide tartoznak az összes forrásból származó adatok, beleértve a Data Box Disk is.|
+| Adatok típusa             | Alapértelmezett korlát          |
+|--------------------------|------------------------|
+| BLOB blokkolása, oldal blobja    | A korlátokkal kapcsolatos aktuális információk: [Azure Blob Storage méretezési célok](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage), [Azure standard Storage méretezési célok](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)és [Azure Files méretezési cél](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets). <br /><br /> A korlátok tartalmazzák az összes forrás adatait, beleértve a Data Box Disk is.|
 
 
 ## <a name="azure-object-size-limits"></a>Azure-objektum méretének korlátai

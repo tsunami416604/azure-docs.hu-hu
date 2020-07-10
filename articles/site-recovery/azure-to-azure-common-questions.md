@@ -5,18 +5,18 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 22848d84896989b1872c55e687c4a5e73da31de8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134033"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201200"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vész-helyreállítás
 
 Ez a cikk az Azure-beli virtuális gépek vész-helyreállításával kapcsolatos gyakori kérdéseket válaszolja meg egy másik Azure-régióba [Azure site Recovery](site-recovery-overview.md)használatakor.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="how-is-site-recovery-priced"></a>Hogyan Site Recovery díjszabása?
 
@@ -120,7 +120,7 @@ Nem, ez egy nem támogatott forgatókönyv. Ha azonban véletlenül más erőfor
 A replikációs házirend határozza meg a helyreállítási pontok megőrzési előzményeinek beállításait. A szabályzat az alkalmazás-konzisztens Pillanatképek gyakoriságát is meghatározza. Alapértelmezés szerint a Azure Site Recovery új replikációs házirendet hoz létre az alapértelmezett beállításokkal:
 
 - 24 óra a helyreállítási pontok megőrzési előzményeihez.
-- 60 perc az alkalmazás-konzisztens Pillanatképek gyakoriságához.
+- az alkalmazás-konzisztens Pillanatképek gyakoriságának 4 óra.
 
 [További információ a replikációs beállításokról](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
 
@@ -323,7 +323,7 @@ A Site Recovery ISO 27001:2013, 27018, HIPAA és DPA tanúsítvánnyal rendelkez
 
 Igen, az Azure-ban az átvitelben és a [titkosításban](../storage/common/storage-service-encryption.md) egyaránt támogatott a titkosítás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tekintse át az Azure-ról Azure-ra vonatkozó támogatási követelményeket](azure-to-azure-support-matrix.md).
 - [Azure – Azure replikálás beállítása](azure-to-azure-tutorial-enable-replication.md).

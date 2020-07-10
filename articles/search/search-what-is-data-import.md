@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 9a4b6bc8ae20789c1420e68f91cee34ac5b3a3ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86982aa418433ecef6a81252363091714185fe22
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554254"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202303"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Az adatimportálás áttekintése – Azure Cognitive Search
 
@@ -52,7 +52,7 @@ A REST API a JSON-kéréseket tartalmazó HTTP POST kérelmeket az Azure Cogniti
 A .NET SDK-ban csomagolja ki az adatait egy `IndexBatch` objektumba. Az egy `IndexBatch` objektumokból álló gyűjteményt ágyaz be `IndexAction` , amely tartalmaz egy dokumentumot és egy olyan tulajdonságot, amely közli az Azure-Cognitive Search, hogy milyen műveletet hajtson végre az adott dokumentumban. A kód például a [C#](search-get-started-dotnet.md)gyors üzembe helyezési útmutatójában található.
 
 
-| @search.action | Description | Az egyes dokumentumok kötelező mezői | Jegyzetek |
+| @search.action | Leírás | Az egyes dokumentumok kötelező mezői | Megjegyzések |
 | -------------- | ----------- | ---------------------------------- | ----- |
 | `upload` |Az `upload` művelet működése hasonló az „upsert” (frissítés/beszúrás) műveletéhez, ahol a rendszer az új dokumentumot beilleszti, ha pedig már létező dokumentumról van szó, akkor frissíti/kicseréli azt. |billentyű, továbbá a meghatározni kívánt egyéb mezők |Létező dokumentum frissítése/cseréje esetén a kérésben nem megadott mezők beállítása a következő lesz: `null`. Ez történik abban az esetben is, ha a mező korábban nem null értékre lett beállítva. |
 | `merge` |Egy meglévő dokumentumot frissít a megadott mezőkkel. Ha a dokumentum nem található az indexben, az egyesítés meg fog hiúsulni. |billentyű, továbbá a meghatározni kívánt egyéb mezők |A rendszer az egyesítési művelet során megadott mezőkre cseréli a dokumentum meglévő mezőit. A .NET SDK-ban a következő típusú mezők szerepelnek: `DataType.Collection(DataType.String)` . A REST API a következő típusú mezőket tartalmazza: `Collection(Edm.String)` . Ha például a dokumentum egy `["budget"]` értékű `tags` mezőt tartalmaz, és egyesítést hajt végre a `tags` mező `["economy", "pool"]` értékével, a `tags` mező végső értéke `["economy", "pool"]` lesz. Nem pedig a következő lesz: `["budget", "economy", "pool"]`. |
@@ -67,7 +67,9 @@ A POST és a GET esetében egyaránt meg kell adnia a *szolgáltatás nevét*, a
 
 A GET esetében a lekérdezési paramétereket az URL-cím végén található *lekérdezési sztringben* kell megadni. Az URL-cím formátuma alább látható:
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2020-06-30
+```http
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
+```
 
 A POST formátuma ugyanaz, de a `api-version` lekérdezési karakterlánc paraméterei között.
 
@@ -75,7 +77,7 @@ A POST formátuma ugyanaz, de a `api-version` lekérdezési karakterlánc param�
 
 A lekéréses modell feltérképezi a támogatott adatforrást, majd automatikusan feltölti az adatokat az indexbe. Az Azure Cognitive Search-ban ez a képesség az *Indexelő*használatával valósul meg, jelenleg a következő platformokon érhető el:
 
-+ [BLOB Storage](search-howto-indexing-azure-blob-storage.md)
++ [Blob Storage](search-howto-indexing-azure-blob-storage.md)
 + [Table Storage](search-howto-indexing-azure-tables.md)
 + [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 + [Azure SQL Database, SQL felügyelt példány és SQL Server Azure-beli virtuális gépeken](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)

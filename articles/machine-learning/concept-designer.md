@@ -1,5 +1,5 @@
 ---
-title: ML modellek készítése tervezővel
+title: ML modellek készítése a tervezővel (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: Ismerje meg a Azure Machine Learning tervezőjét alkotó feltételeket, fogalmakat és munkafolyamatokat.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 184db0280629e07314f9589338a33cdf442e63cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2074b1ecd37fd18a9a0ac9091f05e734765e40b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85517370"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199987"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Mi az az Azure Machine Learning Designer (előzetes verzió)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -90,7 +90,7 @@ Ha segítségre van az elérhető gépi tanulási algoritmusok könyvtárában, 
 
 A munkaterületen lévő számítási erőforrások használatával futtathatja a folyamatot, és üzemeltetheti a telepített modelleket valós idejű végpontok vagy folyamat-végpontok (a Batch-következtetések esetében). A támogatott számítási célok a következők:
 
-| Számítási cél | Képzés | Üzembe helyezés |
+| Számítási cél | Betanítás | Üzembe helyezés |
 | ---- |:----:|:----:|
 | Azure Machine Learning számítás | ✓ | |
 | Azure Machine Learning számítási példány | ✓ | |

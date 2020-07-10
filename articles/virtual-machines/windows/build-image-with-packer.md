@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: ec6fcfbc171b7227c79741c00adbc16be4c7ce87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 194610845d9625139ff826711fc361bd9670a426
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445525"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202660"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Windows rendszerű virtuálisgép-rendszerképek létrehozása a csomagoló használatával az Azure-ban
 Az Azure-ban minden virtuális gép (VM) egy olyan rendszerképből jön létre, amely meghatározza a Windows-disztribúciót és az operációs rendszer verzióját. A képek tartalmazhatnak előre telepített alkalmazásokat és konfigurációkat is. Az Azure Marketplace számos első és harmadik féltől származó rendszerképet biztosít a leggyakoribb operációsrendszer-és alkalmazás-környezetekhez, vagy létrehozhat saját igényeire szabott egyéni rendszerképeket is. Ez a cikk részletesen ismerteti, hogyan lehet egyéni lemezképeket definiálni és létrehozni az Azure-ban a nyílt forráskódú eszköz [csomagoló](https://www.packer.io/) használatával.
@@ -111,6 +111,9 @@ Hozzon létre egy *windows.js* nevű fájlt, és illessze be a következő tarta
     "type": "powershell",
     "inline": [
       "Add-WindowsFeature Web-Server",
+      "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
+      "while ((Get-Service WindowsAzureTelemetryService).Status -ne 'Running') { Start-Sleep -s 5 }",
+      "while ((Get-Service WindowsAzureGuestAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
       "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit",
       "while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 10  } else { break } }"
     ]
@@ -119,6 +122,8 @@ Hozzon létre egy *windows.js* nevű fájlt, és illessze be a következő tarta
 ```
 
 Ez a sablon egy Windows Server 2016 rendszerű virtuális gépet hoz létre, telepíti az IIS-t, majd a Sysprep használatával általánosítja a virtuális gépet. Az IIS-telepítés azt mutatja be, hogyan használható a PowerShell-kiépítés további parancsok futtatásához. A végleges csomagoló-rendszerkép tartalmazza a szükséges szoftverek telepítését és konfigurálását.
+
+A Windows vendég ügynök részt vesz a Sysprep folyamatban. Az ügynököt teljesen telepíteni kell ahhoz, hogy a virtuális gép sysprep'ed. Annak érdekében, hogy ez igaz legyen, az összes ügynök-szolgáltatásnak futnia kell a sysprep.exe végrehajtása előtt. A fenti JSON-kódrészlet az egyik módszert mutatja be a PowerShell-kiépítő használatával. Ezt a kódrészletet csak akkor kell megadni, ha a virtuális gép az ügynök telepítésére van konfigurálva, ami az alapértelmezett.
 
 
 ## <a name="build-packer-image"></a>Csomagoló rendszerkép létrehozása

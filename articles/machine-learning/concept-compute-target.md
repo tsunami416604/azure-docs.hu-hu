@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 06/26/2020
-ms.openlocfilehash: 8b0fa1402452d8e1f348cd353b00d0ef050d866c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95177282ad5b07a600f11f72789e0fc08f4b52c0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483278"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199816"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -48,7 +48,7 @@ Megtudhatja, [hol és hogyan helyezheti üzembe a modellt egy számítási célr
 
 A felügyelt számítási erőforrásokat Azure Machine Learning hozza létre és kezeli. Ez a számítás a gépi tanulási munkaterhelésekre van optimalizálva. Azure Machine Learning számítási fürtök és [számítási példányok](concept-compute-instance.md) az egyetlen felügyelt számítások. A későbbiekben további felügyelt számítási erőforrások is hozzáadhatók.
 
-Létrehozhat Azure Machine Learning számítási példányokat (előzetes verzió) vagy számítási fürtöket a következő helyekről:
+A következő esetekben hozhat létre Azure Machine Learning számítási példányokat vagy számítási fürtöket:
 * Azure Machine Learning Studio
 * Azure Portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) és [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) osztályok
@@ -82,17 +82,17 @@ A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további inform
 
 | **Támogatott VM-sorozat**  | **Korlátozások** |
 |------------|------------|
-| D | None |
-| Dv2 | None |  
-| DSv2 | None |  
-| FSv2 | None |  
+| D | Nincsenek |
+| Dv2 | Nincsenek |  
+| DSv2 | Nincsenek |  
+| FSv2 | Nincsenek |  
 | M | Jóváhagyást igényel |
-| NC | None |    
+| NC | Nincsenek |    
 | NCsv2 | Jóváhagyást igényel |
 | NCsv3 | Jóváhagyást igényel |  
 | NDs | Jóváhagyást igényel |
 | NDv2 | Jóváhagyást igényel |
-| NV | None |
+| NV | Nincsenek |
 | NVv3 | Jóváhagyást igényel | 
 
 

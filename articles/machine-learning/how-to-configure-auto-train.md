@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 519d9f25276ea54fbfd49970ba3c288245ce9653
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 528696daf4bddd1f448266243b511e600351606a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833689"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202595"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,7 +46,7 @@ Az automatizált gépi tanulás a következő algoritmusokat támogatja az autom
 > [!NOTE]
 > Ha úgy tervezi, hogy az automatikus ML által létrehozott modelleket egy [ONNX-modellbe](concept-onnx.md)exportálja, csak a * * értékkel jelzett algoritmusok alakíthatók át a ONNX formátumba. További információ a [modellek ONNX való átalakításáról](concept-automated-ml.md#use-with-onnx). <br> <br> Azt is vegye figyelembe, hogy a ONNX jelenleg csak a besorolási és a regressziós feladatokat támogatja. 
 
-Osztályozás | Regresszió | Idősoros előrejelzés
+Besorolás | Regresszió | Idősoros előrejelzés
 |-- |-- |--
 [Logisztikai regresszió](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Rugalmas háló](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Világos GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
@@ -129,7 +129,7 @@ Ezzel a `validation_size` beállítással megadhatja az érvényesítéshez hasz
 
 ### <a name="custom-validation-dataset"></a>Egyéni ellenőrzési adatkészlet
 
-Használjon egyéni ellenőrzési adatkészletet, ha a véletlenszerű felosztás nem fogadható el, általában idősorozat-vagy kiegyensúlyozatlan adat. Saját ellenőrzési adatkészletet is megadhat. A modell kiértékelése a véletlenszerű adatkészlet helyett megadott ellenőrzési adatkészlet alapján történik.
+Használjon egyéni ellenőrzési adatkészletet, ha a véletlenszerű felosztás nem fogadható el, általában idősorozat-vagy kiegyensúlyozatlan adat. Saját ellenőrzési adatkészletet is megadhat. A modell kiértékelése a véletlenszerű adatkészlet helyett megadott ellenőrzési adatkészlet alapján történik. További információ [az Egyéni érvényesítési csoport SDK-val történő konfigurálásáról](how-to-configure-cross-validation-data-splits.md#provide-validation-data).
 
 ## <a name="compute-to-run-experiment"></a>Számítás a kísérlet futtatásához
 
@@ -183,7 +183,7 @@ Ha el szeretné kerülni a kísérletek időtúllépését, az automatikus ML é
 ### <a name="primary-metric"></a>Elsődleges metrika
 Az elsődleges metrika határozza meg, hogy milyen mérőszámot kell használni az optimalizáláshoz a modell betanításakor. A kiválasztható mérőszámokat a kiválasztott feladattípus határozza meg, az alábbi táblázat pedig az egyes feladattípusok érvényes elsődleges metrikáit tartalmazza.
 
-|Osztályozás | Regresszió | Idősoros előrejelzés
+|Besorolás | Regresszió | Idősoros előrejelzés
 |-- |-- |--
 |accuracy| spearman_correlation | spearman_correlation
 |AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
@@ -199,7 +199,7 @@ Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan 
 
 A kísérletek az objektumban való konfigurálásakor `AutoMLConfig` engedélyezheti vagy letilthatja a beállítást `featurization` . A következő táblázat a featurization elfogadott beállításait mutatja be a [AutoMLConfig osztályban](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
-|Featurization-konfiguráció | Description |
+|Featurization-konfiguráció | Leírás |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Azt jelzi, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](how-to-configure-auto-features.md#featurization) . **Alapértelmezett beállítás**|
 |`"featurization": 'off'`| Azt jelzi, hogy a featurization lépést nem szabad automatikusan elvégezni.|
@@ -422,7 +422,7 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   Ebben a kódban:
+   Ebben a példában:
 
    |Kimenet|Definíció|
    |----|--------|
@@ -433,7 +433,7 @@ A beszerelt modell első lépéseként használja ezt a 2 API-t, hogy jobban meg
    |Átalakítások|A bemenő funkciókra alkalmazott átalakítások listája a mérnöki funkciók létrehozásához.|
 ### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>Skálázás/normalizálás és algoritmus hiperparaméter-értékekkel:
 
-A folyamat skálázási/normalizáló és algoritmus/hiperparaméter értékeinek megismeréséhez használja a fitted_model. Steps. [További információ a méretezéssel/normalizálás](). Itt látható egy mintakimenet:
+A folyamat skálázási/normalizáló és algoritmus/hiperparaméter értékeinek megismeréséhez használja a fitted_model. Steps. [További információ a méretezéssel/normalizálás](how-to-configure-auto-features.md). Itt látható egy mintakimenet:
 
 ```
 [('RobustScaler', RobustScaler(copy=True, quantile_range=[10, 90], with_centering=True, with_scaling=True)), ('LogisticRegression', LogisticRegression(C=0.18420699693267145, class_weight='balanced', dual=False, fit_intercept=True, intercept_scaling=1, max_iter=100, multi_class='multinomial', n_jobs=1, penalty='l2', random_state=None, solver='newton-cg', tol=0.0001, verbose=0, warm_start=False))

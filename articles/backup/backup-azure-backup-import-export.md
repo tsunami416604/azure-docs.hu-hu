@@ -4,12 +4,12 @@ description: Ebből a témakörből megtudhatja, hogy az Azure import/export szo
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 5611b5a6fc9ba8bbff11e35449caf0dd9d33fa21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5761f56106989084f12b80620ffc417b781965d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373302"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187829"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat a Azure Backup
 
@@ -136,7 +136,7 @@ A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure
     | Paraméter | Leírás |
     | --- | --- |
     | s: &lt; *átmeneti hely elérési útja*&gt; |Ez a kötelező bemenet arra szolgál, hogy megadja a munkafolyamatban megadott átmeneti hely elérési útját a "kapcsolat nélküli biztonsági mentés indítása" szakaszban. |
-    | p: &lt; *a PublishSettingsFile elérési útja*&gt; |Ez a választható bemenet a "kapcsolat nélküli biztonsági mentés indítása" szakaszban a munkafolyamatban megadott Azure közzétételi beállítási fájl elérési útjának megadására szolgál. |
+    | p: &lt; *a PublishSettingsFile elérési útja*&gt; |Ez a választható bemenet az Azure publish Settings fájl elérési útjának megadására szolgál.  |
 
     A parancs futtatásakor a segédprogram kéri az Azure importálási feladatoknak a kiválasztását, amely megfelel az előkészíteni kívánt meghajtóknak. Ha csak egyetlen importálási feladattípus van társítva a megadott átmeneti helyhez, a következőhöz hasonló oldal jelenik meg.
 
@@ -212,7 +212,7 @@ Az importálási feladatok sikeres befejezését követően a kezdeti biztonság
 
 A következő ütemezett biztonsági mentés időpontjában a Azure Backup növekményes biztonsági mentést hajt végre.
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A kezdeti biztonsági mentés befejezését követően biztonságosan törölheti az Azure Storage-tárolóba importált és az átmeneti helyen található biztonsági mentési adataikat.
 

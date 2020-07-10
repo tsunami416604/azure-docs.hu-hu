@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 3c6a5e011a536cc9c34565d4f72a9bee6c6a5254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cda729779c333064c91152e8427ce1a05227396e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945168"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201966"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Gyakori kérdések a Linux Virtual Machines
 Ez a cikk az Azure-ban a Resource Manager-alapú üzemi modellel létrehozott Linux rendszerű virtuális gépekkel kapcsolatos gyakori kérdéseket tárgyalja. A témakör Windows-verziójával kapcsolatos [Gyakori kérdések a Windows Virtual Machines](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -55,24 +56,48 @@ A felhasználóneveknek 1-32 karakter hosszúnak kell lenniük.
 
 A következő felhasználónevek nem engedélyezettek:
 
-| | | | |
-|-----------------|-----------|--------------------|----------|
-| `administrator` | `admin`   | `user`             | `user1`  |
-| `test`          | `user2`   | `test1`            | `user3`  |
-| `admin1`        | `1`       | `123`              | `a`      |
-| `actuser`       | `adm`     | `admin2`           | `aspnet` |
-| `backup`        | `console` | `david`            | `guest`  |
-| `john`          | `owner`   | `root`             | `server` |
-| `sql`           | `support` | `support_388945a0` | `sys`    |
-| `test2`         | `test3`   | `user4`            | `user5`  |
-| `video`         |
+- `1`
+- `123`
+- `a`
+- `actuser`
+- `adm`
+- `admin`
+- `admin1`
+- `admin2`
+-`administrator`
+- `aspnet`
+- `backup`
+- `console`
+- `david`
+- `guest`
+- `john`
+- `owner`
+- `root`
+- `server`
+- `sql`
+- `support_388945a0`
+- `support`
+- `sys`
+- `test`
+- `test1`
+- `test2`
+- `test3`
+- `user`
+- `user1`
+- `user2`
+- `user3`
+- `user4`
+- `user5`
+- `video`
+
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>Mik a jelszóra vonatkozó követelmények a virtuális gépek létrehozásakor?
 
 Az Ön által használt eszköztől függően eltérő jelszó-hosszúsági követelmények szükségesek:
  - Portál – 12-72 karakter közötti
  - PowerShell – 8-123 karakter közötti
- - CLI – 12-123 között
+ - CLI – 12-123 karakter közötti
+ - Azure Resource Manager-(ARM-) Sablonok – 12-72 karakter és vezérlő karakter használata nem engedélyezett
  
 
 A jelszónak a következő 4 összetettségi követelménynek is meg kell felelnie:

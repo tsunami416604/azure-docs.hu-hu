@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: 2eb5817a3339494417bb426bfdccb09ae3ac7230
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bd6d02ce1cd60a6d54047139f06fa59f359f9da9
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087775"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202412"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>MapReduce-feladatok futtatása a HDInsight Apache Hadoop a PowerShell használatával
 
@@ -33,7 +33,7 @@ A Azure PowerShell olyan *parancsmagokat* biztosít, amelyek lehetővé teszik a
 
 A következő parancsmagok használhatók a MapReduce-feladatok távoli HDInsight-fürtben való futtatásakor.
 
-|Parancsmag | Description |
+|Parancsmag | Leírás |
 |---|---|
 |Kapcsolat – AzAccount|Azure PowerShell hitelesíti az Azure-előfizetését.|
 |Új – AzHDInsightMapReduceJobDefinition|Új *feladatdefiníció* létrehozása a megadott MapReduce-adatok használatával.|
@@ -49,21 +49,25 @@ A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagoka
 
 2. Nyisson meg egy új **Azure PowerShell** parancssort. Módosítsa a könyvtárakat a **mapreducejob.ps1** fájl helyére, majd futtassa a következő parancsot a szkript futtatásához:
 
-        .\mapreducejob.ps1
+    ```azurepowershell
+    .\mapreducejob.ps1
+    ```
 
     A parancsfájl futtatásakor a rendszer kéri a HDInsight-fürt és a fürt bejelentkezési nevét. Előfordulhat, hogy az Azure-előfizetésében is meg kell adnia a hitelesítést.
 
 3. Amikor a feladatok befejeződik, a következő szöveghez hasonló kimenetet kap:
 
-        Cluster         : CLUSTERNAME
-        ExitCode        : 0
-        Name            : wordcount
-        PercentComplete : map 100% reduce 100%
-        Query           :
-        State           : Completed
-        StatusDirectory : f1ed2028-afe8-402f-a24b-13cc17858097
-        SubmissionTime  : 12/5/2014 8:34:09 PM
-        JobId           : job_1415949758166_0071
+    ```output
+    Cluster         : CLUSTERNAME
+    ExitCode        : 0
+    Name            : wordcount
+    PercentComplete : map 100% reduce 100%
+    Query           :
+    State           : Completed
+    StatusDirectory : f1ed2028-afe8-402f-a24b-13cc17858097
+    SubmissionTime  : 12/5/2014 8:34:09 PM
+    JobId           : job_1415949758166_0071
+    ```
 
     Ez a kimenet azt jelzi, hogy a feladatot sikerült befejezni.
 

@@ -5,14 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: how-to
-ms.date: 08/07/2019
+ms.topic: article
+ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 22fd67797bbec516317aadaa4b33371c5d335b36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23126ebb535af305022114faddad75ca73e258ec
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609454"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201276"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>A Azure Portal használatával felügyelheti Azure Data Box és Azure Data Box Heavy
 
@@ -20,10 +21,14 @@ Ez a cikk a Azure Data Box és a Azure Data Box Heavy is vonatkozik. Ez a cikk a
 
 A cikk az Azure Portalon végrehajtható feladatokra összpontosít. A Azure Portal segítségével kezelheti a rendeléseket, kezelheti Data Box eszközét, és nyomon követheti a sorrend állapotát a befejezésig.
 
+[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
+
 
 ## <a name="cancel-an-order"></a>Rendelés visszavonása
 
-A rendelések azok feladása utáni visszavonása mellett számos különféle okból döntet. A rendelést csak annak feldolgozását megelőzően vonhatja vissza. A megrendelés feldolgozása és Data Box eszköz előkészítése után nem lehet megszakítani a sorrendet.
+A rendelések azok feladása utáni visszavonása mellett számos különféle okból döntet. 
+
+Mind az importálási, mind az exportálási rendelés esetében csak a rendelés feldolgozása után vonható vissza. A megrendelés feldolgozása és Data Box eszköz előkészítése után nem lehet megszakítani a sorrendet.
 
 A rendelés visszavonásához kövesse az alábbi lépéseket.
 
@@ -41,13 +46,16 @@ A rendelés visszavonásához kövesse az alábbi lépéseket.
 
 A klónozás bizonyos helyzetekben hasznosnak bizonyulhat. Például a felhasználó egyes adatokat már átvitt a Data Box használatával. Ahogy egyre több adatok jönnek létre, szükség van egy másik Data Box eszközre az adatok Azure-ba történő átviteléhez. Ebben az esetben egyszerűen klónozhatja az előző rendelést.
 
-A rendelések klónozásához kövesse az alábbi lépéseket.
+> [!IMPORTANT]
+> A klónozás nem érhető el exportálási rendelésekhez. Csak az importálási megrendelések klónozására van lehetőség.
+
+Az importálási sorrend klónozásához hajtsa végre az alábbi lépéseket.
 
 1.  Lépjen az **Áttekintés > Klónozás** menüpontra. 
 
     ![Rendelés klónozása 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás** lehetőségre.
+2.  A rendelés részletei változatlanok maradnak. A rendelés neve az eredeti rendelés neve lesz a *-Klón* utótaggal kiegészítve. Jelölje be a jelölőnégyzetet annak megerősítéséhez, hogy átolvasta az adatvédelmi információkat. Kattintson a **Létrehozás** elemre.
 
 A klón létrehozása néhány percet vesz igénybe, és a portálon megjelenik az új rendelés.
 
@@ -121,9 +129,12 @@ A rendelési előzmények letöltéséhez kövesse az alábbi lépéseket.
 
 2. Kattintson a **Rendelés előzményeinek letöltése** elemre. A letöltött előzmények között a futárcégek nyomkövetési naplóinak rekordjai találhatóak. A Data Box Heavy két csomópontjának megfelelő naplófájlok két csoportba kerülnek. A napló aljára görgetve a következő hivatkozásokat láthatja:
     
-   - A **másolási naplók** a Data Boxból az Azure-tárfiókba történő adatmásolás során hibásként jelzett fájlok listáját tartalmazzák.
+   - **Naplók másolása** – a Data Boxról az Azure Storage-fiókba (importálási sorrendbe) vagy *fordítva* (exportálási sorrendbe) történő Adatmásolás során hibát jelzett fájlok listája.
    - **Naplók** – információt tartalmaz arról, hogyan kapcsolhatja be és érheti el a Data Box megosztásait, ha az Azure-adatközponton kívül van.
-   - A **darabjegyzékfájlok****a szállítás előkészítése** során letölthető fájlok listáját (más néven a fájljegyzéket) tartalmazzák a fájlok neveivel, méretével és a fájlok ellenőrzőösszegeivel.
+   - **Importálási sorrendben lévő AJ-fájlok** – a fájlok (más néven a fájl jegyzékfájlja) listáját is letöltheti a **szállításra való előkészítés** során, valamint fájlneveket, fájlméreteket és a fájl ellenőrzőösszegét.
+   - **Részletes naplók az exportálási sorrendben** – megtalálhatók a fájlnevekkel, fájlméretekkel és ellenőrzőösszeg-számítással rendelkező fájlok listája, amikor az adatok az Azure Storage-fiókokból a Data boxba másolódnak.
+
+   Íme egy példa az importálási sorrendből származó megrendelési előzményekre.
 
        ```
        -------------------------------
@@ -196,7 +207,11 @@ Emellett a felügyeleti naplók láncát, azaz az auditnaplókat és a darabjegy
 
 Az eszköz állapotának a portálon való változásáról a rendszer értesítést küld e-mailben.
 
-|Rendelés állapota |Description |
+### <a name="statuses-for-import-order"></a>Importálási sorrendi állapotok
+
+Az importálási rendelés állapotait itt találja.
+
+|Rendelés állapota |Leírás |
 |---------|---------|
 |Megrendelve     | A rendelés sikeresen fel lett adva. <br>Ha az eszköz elérhető, a Microsoft kiválaszt egy eszközt a szállításhoz, és előkészíti. <br> Ha az eszköz nem érhető el azonnal, a rendelés akkor lesz feldolgozva, amikor az eszköz elérhetővé válik. A rendelés feldolgozása néhány napot, de akár hónapokat is igénybe vehet. Ha a rendelés nem hajtható végre 90 napon belül, akkor a rendszer visszavonja azt, és e-mailben értesíti Önt.         |
 |Feldolgozva     | A rendelés feldolgozása befejeződött. Az eszköz szállításra való előkészítése a rendelésnek megfelelően megtörténik az adatközpontban.         |
@@ -205,11 +220,47 @@ Az eszköz állapotának a portálon való változásáról a rendszer értesít
 |Szállítás alatt     |A visszaküldött csomagot a szállítmányozó átvette és ellenőrizte.         |
 |Megérkezett     | Az eszközt átvették és ellenőrizték az Azure-adatközpontban. <br> Miután a szállítmányt megvizsgálták, elkezdődik az eszköz feltöltése.      |
 |Adatok másolása     | Az adatok másolása folyamatban van. Kövesse nyomon a rendelés másolásának folyamatát az Azure Portalon. <br> Várjon, amíg az adatok másolása befejeződik. |
-|Befejeződött       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
+|Befejezve       |A rendelés sikeresen teljesítve lett.<br> Ellenőrizze, hogy az adatok elérhetők-e az Azure-ban, mielőtt törölné a helyszíni adatokat a kiszolgálókról.         |
 |Befejeződött, hibákkal| Az adatok másolása befejeződött, azonban hibák jelentkeztek a másolás során. <br> Tekintse át a másolási naplókat az Azure Portalon megadott útvonalon. [A másolási naplókra vonatkozó példákat a feltöltés hibával fejeződött](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)be.   |
 |Figyelmeztetésekkel fejeződött be| Az Adatmásolás befejeződött, de az adatai módosultak. Az adatfájl-vagy blob-nevek módosításával kijavított nem kritikus blob-vagy fájlnév-hibák történtek. <br> Tekintse át a másolási naplókat az Azure Portalon megadott útvonalon. Jegyezze fel az adataiban történt módosításokat. Tekintse át [a naplók másolására vonatkozó példákat, ha a feltöltés figyelmeztetésekkel fejeződött](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)be.   |
 |Megszakítva            |A rendelés vissza lett vonva. <br> Vagy visszavonta a rendelést, vagy hiba történt, és a szolgáltatás vonta vissza. Ha a rendelés nem hajtható végre 90 napon belül, akkor a rendszer visszavonja azt, és e-mailben értesíti Önt.     |
 |A fölöslegessé vált elemek eltávolítása | Az eszközlemezeken található összes adat törölve lesz. Az eszköz adatainak törlése akkor fejeződik be, amikor a rendelés előzményei letölthetővé válnak az Azure Portalon.|
+
+### <a name="statuses-for-export-order"></a>Az exportálási sorrend állapota
+
+Az exportálási rendelés állapota.
+
+|Rendelés állapota |Leírás |
+|---------|---------|
+|Megrendelve     | Az exportálási sorrend sikeresen elhelyezve. <br>Ha az eszköz elérhető, a Microsoft kiválaszt egy eszközt a szállításhoz, és előkészíti. <br> Ha az eszköz nem érhető el azonnal, a rendelés akkor lesz feldolgozva, amikor az eszköz elérhetővé válik. A rendelés feldolgozása néhány napot, de akár hónapokat is igénybe vehet. Ha a rendelés nem hajtható végre 90 napon belül, akkor a rendszer visszavonja azt, és e-mailben értesíti Önt.         |
+|Megszakítva            |A rendelés vissza lett vonva. <br> Vagy megszakította a rendelést (csak a rendelés feldolgozását megelőzően lehet megszakítani), vagy hibát észlelt, és a szolgáltatás megszakította a rendelést. Ha a rendelés nem hajtható végre 90 napon belül, akkor a rendszer visszavonja azt, és e-mailben értesíti Önt.     |
+|Feldolgozva     | A rendelés feldolgozása befejeződött. A megrendelés alapján az eszköz készen áll az adatközpontban tárolt adatmásolásra. Létrejönnek az eszközök megosztása.         |
+|Az Adatmásolás folyamatban van     | Folyamatban van a megadott Azure Storage-fiókokból származó adatok másolása az eszközre. Kövesse nyomon a rendelés másolásának folyamatát az Azure Portalon. <br> Várjon, amíg az adatok másolása befejeződik. |
+|A másolás befejeződött     | A megadott Azure Storage-fiókoktól az eszközre történő Adatmásolás befejeződött. Részletes naplófájl (ha a beállítás engedélyezve van a sorrendben), és a rendszer egy másolási naplót hoz létre a Storage-fiókban. A részletes napló tartalmazza az eszközre másolt összes fájl (név, elérési út, számítási ellenőrzőösszeg) adatait. A másolási napló tartalmazza a másolási folyamat összegzését, beleértve azoknak a fájloknak a listáját, amelyek bármilyen hiba miatt nem másolhatók.<br> A Storage-fiókadatok a következőképpen maradnak. |
+|A másolás hibákkal fejeződött be| Az adatok másolása befejeződött, azonban hibák jelentkeztek a másolás során. <br> Tekintse át az Azure Storage-fiók másolási naplóit a Azure Portal megadott elérési úttal. Tekintse át [a naplók másolásának példáit, ha a letöltés hibákkal fejeződött](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)be.   |
+|A másolás figyelmeztetésekkel fejeződött be| Az Azure Storage-fiókból történő Adatmásolás befejeződött, de az adatok nem kritikus hibákkal rendelkeztek. <br> Tekintse át a másolási naplókat az Azure Portalon megadott útvonalon. Jegyezze fel a nem kritikus hibákat. Tekintse át [a másolási naplók példáit, ha a letöltés figyelmeztetésekkel fejeződött](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)be.   |
+|A másolás hibákkal meghiúsult| Az Azure Storage-fiókból történő Adatmásolás meghiúsult, és a rendelés leáll. Az eszköz nem lesz elküldve.<br> Tekintse át az Azure Storage-fiók másolási naplóit a Azure Portal megadott elérési úttal. [Ha a letöltés során hiba történt, tekintse meg a naplók másolására vonatkozó példákat](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors).   |
+|Feladva     |A rendelés fel lett adva. A portálon a rendelésnél feltüntetett követési azonosítóval követheti nyomon a szállítást.        |
+|Kézbesítve     |A rendelés ki lett kézbesítve a rendelésben megadott címre.        |
+|Szállítás alatt     |A visszaküldött csomagot a szállítmányozó átvette és ellenőrizte.         |
+|Megérkezett     | Az eszközt átvették és ellenőrizték az Azure-adatközpontban. <br> A rendszer ellenőrzi a szállítást.      |
+|Befejezve           |A megrendelés befejeződött.     |
+|A fölöslegessé vált elemek eltávolítása | Az eszközlemezeken található összes adat törölve lesz. Az eszköz adatainak törlése akkor fejeződik be, amikor a rendelés előzményei letölthetővé válnak az Azure Portalon.|
+
+> [!NOTE]
+> Ha a másolási feladatot az Azure Storage-fiókokból származó adatoknak a Data Boxba való betöltéséhez hibák vagy figyelmeztetések egészítik ki, az eszköz továbbra is hajókon marad. A rendszer csak a másolási hiba esetén leállítja a sorrendet, és az eszköz kiszállítása nem történik meg.
+
+
+Ha önfelügyelt szállítást használ, akkor a másolás befejeződése után és az eszköz fogadása előtt a következő állapotok jelennek meg (az előző táblázatban említettek helyett):
+
+|Rendelés állapota |Leírás |
+|---------|---------|
+|Készen áll az Azure-adatközpontban való felvételre      |Az eszköz készen áll az Azure-adatközpontba való felvételre.        |
+|Szállítás alatt    |Felvette az eszközt.         |
+|Készen áll az Azure-adatközpontban való fogadásra     |Az eszköz készen áll az Azure-adatközpontban való fogadásra.        |
+|Megérkezett     |Az eszköz az Azure-adatközpontban érkezik.      |
+
+
 
 
 

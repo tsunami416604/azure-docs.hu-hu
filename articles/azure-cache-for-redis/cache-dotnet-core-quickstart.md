@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 4a8353cf38c63e2642c7f76d05b4b7a2764e0706
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2c02f6858711173a2ddd2217bbb9e241a5a2109d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117381"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201468"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Gyors útmutató: az Azure cache használata a Redis .NET Core-alkalmazással
 
@@ -125,7 +125,7 @@ Adja hozzá a következő `using` utasítást a *Program.cs* fájlhoz:
 using StackExchange.Redis;
 ```
 
-A Redis készült Azure cache-hez való kapcsolódást a `ConnectionMultiplexer` osztály kezeli. Ennek az osztálynak megoszthatónak és ismét felhasználhatónak kell lennie az ügyfélalkalmazásban. Ne hozzon létre új kapcsolatot minden művelethez. 
+A Redis készült Azure cache-hez való kapcsolódást a `ConnectionMultiplexer` osztály kezeli. Ezt az osztályt kell megosztani és újrafelhasználni az ügyfélalkalmazásban. Ne hozzon létre új kapcsolatot minden művelethez. 
 
 A *Program.cs* fájlban adja hozzá a következő tagokat a konzolalkalmazás `Program` osztályához:
 
@@ -284,7 +284,7 @@ dotnet run
 ![Kész konzolalkalmazás](./media/cache-dotnet-core-quickstart/cache-console-app-complete.png)
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
@@ -315,6 +315,7 @@ Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t e
 > [!div class="nextstepaction"]
 > [Hozzon létre egy ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)
 
+Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
 
-
-
+> [!div class="nextstepaction"]
+> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

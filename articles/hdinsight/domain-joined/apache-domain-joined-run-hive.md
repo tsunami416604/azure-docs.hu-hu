@@ -8,11 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71c1306d1516d8af3fb16c0ba353ab8144de2562
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78196926"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202589"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-szabályzatok konfigurálása a HDInsightban az Enterprise Security Package csomaggal
 
@@ -55,7 +56,7 @@ Ebben a szakaszban két Ranger-szabályzatot hoz létre a hivesampletable elér�
     |---|---|
     |Házirend neve|Read-hivesampletable-all|
     |Struktúra-adatbázis|alapértelmezett|
-    |tábla|hivesampletable|
+    |table|hivesampletable|
     |Struktúra oszlop|*|
     |Felhasználó kiválasztása|hiveuser1|
     |Engedélyek|Válassza|
@@ -73,7 +74,7 @@ Ebben a szakaszban két Ranger-szabályzatot hoz létre a hivesampletable elér�
     |---|---|
     |Házirend neve|Read-hivesampletable-devicemake|
     |Struktúra-adatbázis|alapértelmezett|
-    |tábla|hivesampletable|
+    |table|hivesampletable|
     |Struktúra oszlop|ClientID, devicemake|
     |Felhasználó kiválasztása|hiveuser2|
     |Engedélyek|Válassza|
@@ -85,13 +86,13 @@ Az utasítások a [Hive ODBC-adatforrás létrehozása](../hadoop/apache-hadoop-
  | Tulajdonság  |Leírás |
  | --- | --- |
  | Adatforrás neve | Adjon nevet az adatforrásának |
- | Gazdagép | Adja meg a CLUSTERNAME.azurehdinsight.net. Például: sajatHDICluster.azurehdinsight.net |
+ | Gazda | Adja meg a CLUSTERNAME.azurehdinsight.net. Például: sajatHDICluster.azurehdinsight.net |
  | Port | Használja a **443** számú portot. (Ez a port megváltozott a 563-ról 443-ra.) |
  | Adatbázis | Használja az **Alapértelmezett** adatbázist. |
  | Hive Server típusa | Válassza ki a **Hive Server 2** típust |
  | Mechanizmus | Válassza ki az **Azure HDInsight szolgáltatást** |
  | HTTP elérési útja | Hagyja üresen. |
- | Felhasználónév | Írja be a hiveuser1@contoso158.onmicrosoft.com (igen) kifejezést. Ha az eltérő, frissítse a tartománynevet. |
+ | Felhasználónév | Írja be a következő szöveget: hiveuser1@contoso158.onmicrosoft.com Ha az eltérő, frissítse a tartománynevet. |
  | Jelszó | Adja meg a hiveuser1 jelszavát. |
 
 Az adatforrás mentése előtt kattintson a **Tesztelés** gombra.
@@ -114,13 +115,15 @@ Az utolsó szakaszban két házirendet konfigurált.  A hiveuser1 nevű felhaszn
 
 1. Válassza a **hivesampletable**lehetőséget, majd kattintson a **tovább**gombra.
 
-1. Válassza a **Befejezés** gombot.
+1. Válassza a **Befejezés** lehetőséget.
 
 1. Az **Adatok importálása** párbeszédpanelen módosíthatja vagy megadhatja a lekérdezést. Ehhez válassza a **Tulajdonságok**lehetőséget. Ez eltarthat néhány másodpercig.
 
 1. Válassza a **definíció** lapot. A parancs szövege:
 
-       SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"`
+    ```
 
    A definiált Ranger-házirendek alapján a hiveuser1 az összes oszlopra vonatkozó kiválasztási engedéllyel rendelkezik.  Így ez a lekérdezés a hiveuser1 hitelesítő adataival működik, de ez a lekérdezés nem működik a hiveuser2 hitelesítő adataival.
 
@@ -135,15 +138,21 @@ A második szabályzat (read-hivesampletable-devicemake) teszteléséhez, amelye
 1. Adjon hozzá egy új munkalapot az Excelben.
 2. Az adatok importálásához kövesse az utolsó eljárást.  Az egyetlen változás, hogy a hiveuser2 hitelesítő adatokat használja a hiveuser1 helyett. Ez a művelet sikertelen, mert a hiveuser2 csak két oszlop megjelenítésére jogosult. A következő hibaüzenetnek kell megjelennie:
 
-        [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
-        
+    ```output
+    [Microsoft][HiveODBC] (35) Error from Hive: error code: '40000' error message: 'Error while compiling statement: FAILED: HiveAccessControlException Permission denied: user [hiveuser2] does not have [SELECT] privilege on [default/hivesampletable/clientid,country ...]'.
+    ```
+
 3. Az adatok importálásához kövesse ugyanazt az eljárást. Ez alkalommal hiveuser2 hitelesítő adatait használja, és módosítsa a kiválasztási utasítást erről:
 
-        SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT * FROM "HIVE"."default"."hivesampletable"
+    ```
 
     erre:
 
-        SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```sql
+    SELECT clientid, devicemake FROM "HIVE"."default"."hivesampletable"
+    ```
 
     Ha elkészült, két, az importált adatoszlop jelenik meg.
 

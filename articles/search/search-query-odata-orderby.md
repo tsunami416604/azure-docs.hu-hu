@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 99ec639b88f3334530243242aadfa0ab52a40df0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68e6ec0af0b24771b21dac35c944fc7fa098b404
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113150"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203119"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData $orderby szintaxis az Azure-ban Cognitive Search
 
@@ -63,19 +64,27 @@ A $orderby szintaxisa a következő `search.score` **$orderby** : `search.score(
 
 A hotelek növekvő sorrendbe állítása alapdíj alapján:
 
+```odata-filter-expr
     $orderby=BaseRate asc
+```
 
 Rendezheti a szállodákat a minősítés alapján csökkenő sorrendben, majd az alaparány szerint növekvő értéket (ne feledje, hogy az emelkedő az alapértelmezett):
 
+```odata-filter-expr
     $orderby=Rating desc,BaseRate
+```
 
 Rendezheti a szállodákat a minősítés alapján csökkenő sorrendben, majd a megadott koordináták távolsága alapján:
 
+```odata-filter-expr
     $orderby=Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 A szállodákat csökkenő sorrendbe rendezheti kereséssel. pontszám és értékelés, majd növekvő sorrendben, a megadott koordináták távolsága alapján. A legközelebb álló pontszámok és minősítések két, egymással azonos vonatkozású, a legközelebb található:
 
+```odata-filter-expr
     $orderby=search.score() desc,Rating desc,geo.distance(Location, geography'POINT(-122.131577 47.678581)') asc
+```
 
 ## <a name="next-steps"></a>További lépések  
 

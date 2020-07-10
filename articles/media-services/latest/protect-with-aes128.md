@@ -12,13 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/21/2019
+ms.date: 07/09/2020
 ms.author: juliako
-ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e5f1e38461b7f229f9eb7559aeb6203563fceb6
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974172"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200200"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Oktatóanyag: videó titkosítása AES-128-mel és a Key Delivery Service használata
 
@@ -46,7 +47,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Konfigurálja a streaming-keresőt a videó AES-vel (ClearKey) való titkosításához.
 > * Teszt token beolvasása.
 > * Hozzon létre egy streaming URL-címet.
-> * Erőforrások karbantartása.
+> * Az erőforrások eltávolítása.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -148,11 +149,11 @@ Most, hogy létrejött a [folyamatos átviteli lokátor](https://docs.microsoft.
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>A Media Service-fiók erőforrásainak eltávolítása
 
-Általában törölni kell mindent, kivéve azokat az objektumokat, amelyeket újra fel kíván használni (általában újra kell használni az átalakításokat, a streaming-Lokátorokat stb.). Ha azt szeretné, hogy a fiókja a kísérletezés után is tiszta legyen, törölje azokat az erőforrásokat, amelyeket nem kíván újra felhasználni. A következő kód például törli a feladatokat:
+Általában törölni kell mindent, kivéve azokat az objektumokat, amelyeket újra fel kíván használni (általában újra kell használni az átalakításokat, a streaming-Lokátorokat stb.). Ha azt szeretné, hogy a fiókja a kísérletezés után is tiszta legyen, törölje azokat az erőforrásokat, amelyeket nem kíván újra felhasználni. A következő kód például törli a feladatot, a létrehozott eszközöket és a tartalmi kulcs házirendjét:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CleanUp)]
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
 

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 837237be636e67f37f5c744cd4863f1eb159652a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72793351"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201400"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>OData teljes szöveges keresési függvények az Azure Cognitive Searchban – `search.ismatch` és`search.ismatchscoring`
 
@@ -98,25 +98,35 @@ A `search.ismatch` és a `search.ismatchscoring` függvények is ugyanabban a sz
 
 Keresse meg a "Waterfront" szót tartalmazó dokumentumokat. Ez a szűrési lekérdezés megegyezik egy [keresési kérelemmel](https://docs.microsoft.com/rest/api/searchservice/search-documents) a következővel: `search=waterfront` .
 
+```odata-filter-expr
     search.ismatchscoring('waterfront')
+```
 
 Keresse meg a "Hostel" szót tartalmazó dokumentumokat, vagy a 4-es vagy annál nagyobb minősítést, vagy a "Motel" szót tartalmazó dokumentumokat, valamint az 5 értékű minősítést. Megjegyzés: Ez a kérés nem fejezhető be a `search.ismatchscoring` függvény nélkül.
 
+```odata-filter-expr
     search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
+```
 
 Dokumentumok keresése a "luxus" szó nélkül.
 
+```odata-filter-expr
     not search.ismatch('luxury')
+```
 
 Megkeresheti az "Ocean View" kifejezéssel vagy 5 értékkel egyenlő minősítéssel rendelkező dokumentumokat. A `search.ismatchscoring` lekérdezés csak a mezőkre és a-ra lesz végrehajtva `HotelName` `Rooms/Description` .
 
 Azok a dokumentumok, amelyek megfelelnek a kivonásnak, csak a második záradékkal lesznek visszaadva `Rating` . Annak egyértelművé tétele érdekében, hogy ezek a dokumentumok nem egyeznek a kifejezés egyik pontján sem, a pontszám értéke nulla lesz.
 
+```odata-filter-expr
     search.ismatchscoring('"ocean view"', 'Rooms/Description,HotelName') or Rating eq 5
+```
 
 Megkeresheti azokat a dokumentumokat, amelyekben a "Hotel" és a "repülőtér" kifejezés a szálloda leírásában szereplő 5 szóból áll, és ahol a dohányzás nem engedélyezett legalább néhány szobában. Ez a lekérdezés a [teljes Lucene lekérdezési nyelvet](query-lucene-syntax.md)használja.
 
+```odata-filter-expr
     search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and Rooms/any(room: not room/SmokingAllowed)
+```
 
 ## <a name="next-steps"></a>További lépések  
 

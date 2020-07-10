@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: f576da01a7d80559419376f1629c0765074065da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2691f63d7bb8c468d065b82c9726e8f7740c20
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262225"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203165"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel big data elemzést az Azure Cosmos DB Connector Apache Spark használatával
 
@@ -31,7 +31,7 @@ Az összekötőt használhatja [Azure Databricks](https://azure.microsoft.com/se
 > Cosmos DB Cassandra API esetén használja a [Cassandra Spark-összekötőt](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="quickstart"></a>Gyorsútmutató
+## <a name="quickstart"></a>Első lépések
 
 * Kövesse az Ismerkedés a [Java SDK-val](sql-api-async-java-get-started.md) című témakör lépéseit Cosmos db fiók beállításához és adatok feltöltéséhez.
 * Azure Databricks munkaterület és fürt beállításához kövesse [Azure Databricks első](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) lépések című szakasz lépéseit.
@@ -233,7 +233,7 @@ Az összekötőt felépítheti a GitHubról a forrásból, vagy letöltheti az �
 Hozzon létre egy tárat a Databricks-munkaterülettel a Azure Databricks útmutatóban > a [Azure Cosmos db Spark-összekötő](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html) használatával.
 
 > [!NOTE]
-> Vegye figyelembe, hogy a **Azure Cosmos db Spark-összekötő használata** lap jelenleg nem naprakész. A hat különálló tégely 6 különböző könyvtárba való letöltése helyett letöltheti az Über jar-t a mavenből, https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.4.0/jar) és telepítheti ezt az egy jar/könyvtárat.
+> A **Azure Cosmos db Spark-összekötő használata** oldal jelenleg nem naprakész. A hat különálló tégely 6 különböző könyvtárba való letöltése helyett letöltheti az Über jar-t a mavenből az [Azure-cosmosdb-spark_lkg_version](https://aka.ms/CosmosDB_OLTP_Spark_2.4_LKG) , és telepítheti ezt az egy jar/könyvtárat.
 > 
 
 ### <a name="using-spark-cli"></a>A Spark-CLI használata
@@ -309,7 +309,7 @@ További információ a `azure-cosmosdb-spark` [wikiben](https://github.com/Azur
 * [Hírcsatorna-bemutatók módosítása](https://github.com/Azure/azure-cosmosdb-spark/wiki/Change-Feed-demos)
 * [Strukturált stream-bemutatók](https://github.com/Azure/azure-cosmosdb-spark/wiki/Structured-Stream-demos)
 
-### <a name="monitoring"></a>Figyelés
+### <a name="monitoring"></a>Monitorozás
 
 * [Spark-feladatok figyelése az Application bepillantást](https://github.com/Azure/azure-cosmosdb-spark/tree/2.3/samples/monitoring)
 

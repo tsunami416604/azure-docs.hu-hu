@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 217b15b4004b1f06ef63414adc25890d4d87b027
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 637db3a0749b5a0738b0ccc5136d26e435a03c7b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557579"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203135"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldás használata az Azure-ban
 
@@ -41,7 +41,7 @@ Service Map a Log Analytics munkaterületen található Azure Portal, és a bal 
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Használati esetek: az informatikai folyamatok függőségének elkészítése
 
-### <a name="discovery"></a>Felderítés
+### <a name="discovery"></a>Felderítés (Discovery)
 
 A Service Map a kiszolgálókon, folyamatokon és harmadik féltől származó szolgáltatások függőségeinek általános hivatkozási térképét hozza létre. Feltérképezi és leképezi az összes TCP-függőséget, azonosíthatja a meglepetésekkel létesített kapcsolatokat, a külső gyártótól származó rendszereket, és a hálózat hagyományos sötét területeire (például Active Directory) való függőségeket. Service Map felderíti a felügyelt rendszerek által megkísérelt hálózati kapcsolatokat, így azonosíthatja a lehetséges kiszolgálók helytelen konfigurálását, a szolgáltatás leállását és a hálózati problémákat.
 
@@ -154,7 +154,7 @@ Kattintson a csoport neve melletti három pont menüre a csoport listában.
 
 Bizonyos folyamatok adott szerepköröket szolgálnak ki a gépeken: webkiszolgálók, alkalmazáskiszolgáló, adatbázis stb. A Service Map megjegyzésekkel láthatja el a folyamatokat és a számítógépeket a szerepkörök ikonjaival, így könnyebben azonosíthatja a folyamat vagy a kiszolgáló szerepét.
 
-| Szerepkör ikonja | Description |
+| Szerepkör ikonja | Leírás |
 |:--|:--|
 | ![Webkiszolgáló](media/service-map/role-web-server.png) | Webkiszolgáló |
 | ![Alkalmazáskiszolgáló](media/service-map/role-application-server.png) | Alkalmazáskiszolgáló |
@@ -345,7 +345,7 @@ A csoportosítás hatásának kiszámításához a csoportosított fizikai kapcs
 | `LinksFailed` |Azon fizikai hálózati kapcsolatok száma, amelyek sikertelenek voltak a jelentéskészítési idő ablakában. Ez az információ jelenleg csak a kimenő kapcsolatok esetében érhető el. |
 | `LinksLive` |A jelentéskészítési idő ablakának végén megnyitott fizikai hálózati kapcsolatok száma|
 
-#### <a name="metrics"></a>Mérőszámok
+#### <a name="metrics"></a>Metrikák
 
 A kapcsolatok számának mérőszámai mellett az adott logikai kapcsolatban vagy hálózati porton küldött és fogadott adatok mennyiségére vonatkozó információk is szerepelni fog a rekord alábbi tulajdonságaiban:
 
@@ -457,43 +457,43 @@ A *ServiceMapProcess_CL* típussal rendelkező rekordok a TCP-hez csatlakoztatot
 
 ### <a name="list-all-known-machines"></a>Az összes ismert gép listázása
 
-ServiceMapComputer_CL | arg_max összefoglalása (TimeGenerated, *) a ResourceId szerint
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Az összes felügyelt számítógép fizikai memória-kapacitásának listázása.
 
-ServiceMapComputer_CL | arg_max (TimeGenerated, *) összegzése a ResourceId alapján | projekt PhysicalMemory_d, ComputerName_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>A számítógép nevének, DNS-címének, IP-címének és operációs rendszerének listázása.
 
-ServiceMapComputer_CL | arg_max (TimeGenerated, *) összegzése a ResourceId alapján | projekt ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Az összes folyamat megkeresése az "SQL" paranccsal a parancssorban
 
-ServiceMapProcess_CL | hol CommandLine_s contains_cs "SQL" | arg_max összefoglalása (TimeGenerated, *) a ResourceId szerint
+`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Számítógép (legfrissebb rekord) keresése erőforrás neve alapján
 
-Keresés itt (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | arg_max összefoglalása (TimeGenerated, *) a ResourceId szerint
+`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Számítógép keresése (legfrissebb rekord) IP-cím szerint
 
-Keresés itt (ServiceMapComputer_CL) "10.229.243.232" | arg_max összefoglalása (TimeGenerated, *) a ResourceId szerint
+`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>A megadott gépen lévő összes ismert folyamat listázása
 
-ServiceMapProcess_CL | ahol MachineResourceName_s = = "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | arg_max összefoglalása (TimeGenerated, *) a ResourceId szerint
+`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-computers-running-sql"></a>Az összes SQL-t futtató számítógép listázása
 
-ServiceMapComputer_CL | hol ResourceName_s a következőben: ((Search in (ServiceMapProcess_CL) " \* SQL \* " | DISTINCT MachineResourceName_s)) | különálló ComputerName_s
+`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>A curl összes egyedi termék-verziójának listázása az adatközpontban
 
-ServiceMapProcess_CL | hol ExecutableName_s = = "curl" | eltérő ProductVersion_s
+`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>A CentOS-t futtató összes számítógép számítógépcsoport létrehozása
 
-ServiceMapComputer_CL | hol OperatingSystemFullName_s contains_cs "CentOS" | eltérő ComputerName_s
+`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>A kimenő kapcsolatok összefoglalása a számítógépek csoportjából
 
@@ -571,7 +571,7 @@ A futásidejű kódtár telepítői a %LOCALAPPDATA%\temp mappában hozzák lét
 
 A következő táblázat felsorolja a kódok számát és a javasolt megoldásokat.
 
-| Code | Description | Megoldás: |
+| Kód | Leírás | Feloldás |
 |:--|:--|:--|
 | 0x17 | A kódtártelepítőhöz olyan Windows-frissítés szükséges, amely még nincs telepítve. | Tekintse meg a legutóbbi kódtártelepítői naplót.<br><br>Ha egy hivatkozást egy olyan `Windows8.1-KB2999226-x64.msu` vonal követ, amely `Error 0x80240017: Failed to execute MSU package,` nem rendelkezik a KB2999226 telepítéséhez szükséges előfeltételekkel. Kövesse az [Universal C-futtatókörnyezet a Windowsban](https://support.microsoft.com/kb/2999226) című cikk előfeltételekről szóló szakaszában foglalt utasításokat. Lehetséges, hogy az előfeltételek telepítéséhez futtatnia kell a Windows Update-et, és többször újra kell indítania a számítógépet.<br><br>Futtassa újra a Microsoft függőségi ügynök telepítőjét. |
 

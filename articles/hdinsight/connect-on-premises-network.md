@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
-ms.openlocfilehash: 13b6753d7c04951839852b3090e99fd8cde1fe2d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0d76bf29efeb40f9f29f80b6e3e6414f5e9b6fc8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079802"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203265"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
 
@@ -80,8 +80,8 @@ Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával lét
     |Virtuális gép neve | Adjon meg egy rövid nevet, amely azonosítja ezt a virtuális gépet. Ez a példa az **DNSProxy**-t használja.|
     |Régió | Válassza ki ugyanazt a régiót, mint a korábban létrehozott virtuális hálózat.  Nem minden virtuálisgép-méret érhető el minden régióban.  |
     |Rendelkezésre állási beállítások |  Válassza ki a kívánt rendelkezésre állási szintet.  Az Azure számos lehetőséget kínál az alkalmazások rendelkezésre állásának és rugalmasságának kezelésére.  A Availability Zones-vagy rendelkezésre állási csoportokban lévő replikált virtuális gépek használatát az adatközpont-kimaradások és a karbantartási események védelme érdekében Ebben a példában **nem szükséges infrastruktúra-redundancia**. |
-    |Kép | Hagyja az **Ubuntu Server 18,04 LTS**-et. |
-    |Hitelesítés típusa | __Jelszó__ vagy __nyilvános SSH-kulcs__: az SSH-fiók hitelesítési módszere. Javasoljuk, hogy használjon nyilvános kulcsokat, mivel azok biztonságosabbak. Ez a példa a **jelszót**használja.  További információ: [ssh-kulcsok létrehozása és használata Linux rendszerű virtuális gépekhez](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentum.|
+    |Rendszerkép | Hagyja az **Ubuntu Server 18,04 LTS**-et. |
+    |Hitelesítéstípus | __Jelszó__ vagy __nyilvános SSH-kulcs__: az SSH-fiók hitelesítési módszere. Javasoljuk, hogy használjon nyilvános kulcsokat, mivel azok biztonságosabbak. Ez a példa a **jelszót**használja.  További információ: [ssh-kulcsok létrehozása és használata Linux rendszerű virtuális gépekhez](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentum.|
     |Felhasználónév |Adja meg a virtuális gép rendszergazdai felhasználónevét.  Ez a példa az **sshuser**-t használja.|
     |Jelszó vagy nyilvános SSH-kulcs | A rendelkezésre álló mező meghatározása a **hitelesítési típus**alapján történik.  Adja meg a megfelelő értéket.|
     |Nyilvános bejövő portok|Válassza a **kiválasztott portok engedélyezése**lehetőséget. Ezután válassza az **SSH (22)** lehetőséget a **bejövő portok kiválasztása** legördülő listából.|
@@ -131,29 +131,31 @@ Miután létrehozta a virtuális gépet, az **üzembe helyezés sikeres** értes
 
 3. Ha úgy szeretné konfigurálni a kötést, hogy a névfeloldási kérelmeket továbbítsa a helyszíni DNS-kiszolgálóra, használja a következő szöveget a fájl tartalmának használatával `/etc/bind/named.conf.options` :
 
-        acl goodclients {
-            10.0.0.0/16; # Replace with the IP address range of the virtual network
-            10.1.0.0/16; # Replace with the IP address range of the on-premises network
-            localhost;
-            localnets;
-        };
+    ```DNS Zone file
+    acl goodclients {
+        10.0.0.0/16; # Replace with the IP address range of the virtual network
+        10.1.0.0/16; # Replace with the IP address range of the on-premises network
+        localhost;
+        localnets;
+    };
 
-        options {
-                directory "/var/cache/bind";
+    options {
+            directory "/var/cache/bind";
 
-                recursion yes;
+            recursion yes;
 
-                allow-query { goodclients; };
+            allow-query { goodclients; };
 
-                forwarders {
-                192.168.0.1; # Replace with the IP address of the on-premises DNS server
-                };
+            forwarders {
+            192.168.0.1; # Replace with the IP address of the on-premises DNS server
+            };
 
-                dnssec-validation auto;
+            dnssec-validation auto;
 
-                auth-nxdomain no;    # conform to RFC1035
-                listen-on { any; };
-        };
+            auth-nxdomain no;    # conform to RFC1035
+            listen-on { any; };
+    };
+    ```
 
     > [!IMPORTANT]  
     > Cserélje le a szakasz értékeit a `goodclients` virtuális hálózat és a helyszíni hálózat IP-címének tartományára. Ez a szakasz azokat a címeket határozza meg, amelyekkel a DNS-kiszolgáló fogadja a kérelmeket.
@@ -184,11 +186,13 @@ Miután létrehozta a virtuális gépet, az **üzembe helyezés sikeres** értes
 
 5. A virtuális hálózaton belüli erőforrások DNS-neveinek feloldásához a kötés konfigurálásához használja a következő szöveget a fájl tartalmának használatával `/etc/bind/named.conf.local` :
 
-        // Replace the following with the DNS suffix for your virtual network
-        zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
-            type forward;
-            forwarders {168.63.129.16;}; # The Azure recursive resolver
-        };
+    ```DNS Zone file
+    // Replace the following with the DNS suffix for your virtual network
+    zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
+        type forward;
+        forwarders {168.63.129.16;}; # The Azure recursive resolver
+    };
+    ```
 
     > [!IMPORTANT]  
     > Le kell cserélnie a `icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net` -t a korábban lekért DNS-utótaggal.
@@ -242,7 +246,7 @@ Ha úgy szeretné konfigurálni a virtuális hálózatot, hogy az egyéni DNS-ki
 
 4. Válassza az __Egyéni__lehetőséget, majd adja meg az egyéni DNS-kiszolgáló **MAGÁNHÁLÓZATI IP-címét** .
 
-5. Kattintson a __Mentés__ gombra.  <br />  
+5. Válassza a __Mentés__ lehetőséget.  <br />  
 
     ![A hálózat egyéni DNS-kiszolgálójának beállítása](./media/connect-on-premises-network/configure-custom-dns.png)
 
@@ -256,10 +260,12 @@ A feltételes továbbítás csak egy adott DNS-utótagra vonatkozó kérelmeket 
 
 A következő szöveg a **kötési** DNS-szoftver feltételes továbbítójának konfigurációját szemlélteti:
 
-    zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
-        type forward;
-        forwarders {10.0.0.4;}; # The custom DNS server's internal IP address
-    };
+```DNS Zone file
+zone "icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net" {
+    type forward;
+    forwarders {10.0.0.4;}; # The custom DNS server's internal IP address
+};
+```
 
 További információ a **Windows Server 2016**DNS használatával kapcsolatban: [Add-DnsServerConditionalForwarderZone](https://technet.microsoft.com/itpro/powershell/windows/dnsserver/add-dnsserverconditionalforwarderzone) dokumentáció...
 

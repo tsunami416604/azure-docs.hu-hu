@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: f4b76bd91a47f14104a9f7f23a4a545ee3d40e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a48467100e396ed1b43544d1b10ae5007415e3e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477855"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201961"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
@@ -71,15 +71,21 @@ A webalkalmazások és webes API-k megkapják és érvényesítik a Microsoft Id
 
 Nézzük meg, hogyan érvényesíti az alkalmazás a Microsoft Identity platformtól kapott jogkivonatokat. Egy bérlői alkalmazás általában a következőhöz hasonló végponti értéket vesz igénybe:
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com
+```
 
 és felhasználja a metaadat-URL-cím (ebben az esetben OpenID Connect) összeállításához, például:
 
+```http
     https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration
+```
 
 a jogkivonatok érvényesítésére szolgáló két kritikus információ letöltéséhez: a bérlő aláíró kulcsai és kiállítói értéke. Mindegyik Azure AD-bérlő egyedi kiállítói értékkel rendelkezik az űrlapon:
 
+```http
     https://sts.windows.net/31537af4-6d77-4bb9-a681-d2394888ea26/
+```
 
 ahol a GUID értéke a bérlő bérlői AZONOSÍTÓjának átnevezéses biztonságos verziója. Ha az előző metaadat-hivatkozást választja `contoso.onmicrosoft.com` , akkor a kiállító értéke a dokumentumban látható.
 
@@ -87,7 +93,9 @@ Ha egy bérlői alkalmazás érvényesít egy jogkivonatot, ellenőrzi a jogkivo
 
 Mivel a/gyakori hibák végpont nem felel meg egy bérlőnek, és nem kiállító, ha a/gyakori hibák metaadataiban megvizsgálja a kibocsátó értékét, akkor a tényleges érték helyett a sablonhoz tartozó URL-cím szerepel:
 
+```http
     https://sts.windows.net/{tenantid}/
+```
 
 Ezért a több-bérlős alkalmazások nem tudják érvényesíteni a jogkivonatokat úgy, hogy a metaadatokban lévő kiállítói értéket a `issuer` tokenben lévő értékkel egyeztetik. A több-bérlős alkalmazásoknak logikával kell eldönteniük, hogy mely kibocsátói értékek érvényesek, és melyek nem a kibocsátó értékének bérlői azonosító részén alapulnak. 
 
@@ -135,7 +143,9 @@ Előfordulhat, hogy az alkalmazásnak több rétege is van, amelyek mindegyike a
 
 Ez akkor lehet probléma, ha a logikai alkalmazás két vagy több alkalmazás-regisztrációból áll, például egy különálló ügyfélről és erőforrásról. Először hogyan szerezheti be az erőforrást az ügyfél bérlője számára? Az Azure AD ezt az esetet mutatja be azáltal, hogy lehetővé teszi az ügyfelek és az erőforrások egyetlen lépésben való hozzájárulását. A felhasználó az ügyfél és az erőforrás által kért engedélyek összegét látja a belefoglalási oldalon. Ennek a viselkedésnek az engedélyezéséhez az erőforrás alkalmazás-regisztrációjának tartalmaznia kell az ügyfél alkalmazás-AZONOSÍTÓját az `knownClientApplications` [alkalmazás jegyzékfájljában][AAD-App-Manifest]. Például:
 
+```aad-app-manifest
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
+```
 
 A jelen cikk végén a [kapcsolódó tartalom](#related-content) szakasza egy többrétegű, natív ügyfél-HÍVÓ webes API-mintáját mutatja be. A következő ábra áttekintést nyújt az egyetlen bérlőben regisztrált többrétegű alkalmazások beleegyezikéről.
 
