@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4868254ffc0448562ff6115a4e6bb030e4353ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11d0af0133a113382ea9ed03eeeb8686ebe0c73b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083309"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203686"
 ---
 # <a name="azure-cli-samples-for-windows-virtual-machines"></a>Azure CLI-minták Windows rendszerű virtuális gépekhez
 
 Az alábbi táblázat a Windows rendszerű virtuális gépeket telepítő Azure CLI használatával létrehozott bash-parancsfájlok hivatkozásait tartalmazza.
 
-| | |
+| Script | Leírás |
 |---|---|
 |**Virtuális gépek létrehozása**||
 | [Virtuális gép létrehozása](./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | Egy minimális konfigurációval rendelkező Windows rendszerű virtuális gépet hoz létre. |

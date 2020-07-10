@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: e833e20085d7cfd8f727acb394851e96e7e19368
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58914709838c72246678ce92005de5ac18695a1f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864366"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204158"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Az ExpressRoute kapcsolatcsoport-kiépítési munkafolyamatai és a kapcsolatcsoportok állapotai
 Ez az oldal végigvezeti a szolgáltatás kiépítési és útválasztási konfigurációs munkafolyamatainak magas szinten való használatával.
@@ -54,33 +55,37 @@ Ez a szakasz a ExpressRoute áramkör lehetséges állapotait sorolja fel.
 
 Az ExpressRoute áramkör a következő állapotokat fogja jelenteni az erőforrások létrehozásakor.
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 **Ha a kapcsolati szolgáltató az áramkör kiépítési folyamatában van**
 
 A ExpressRoute áramkör a következő állapotokat fogja jelenteni, miközben a kapcsolati szolgáltató dolgozik az áramkör kiépítésekor.
 
-    ServiceProviderProvisioningState : Provisioning
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioning
+Status                           : Enabled
+```
 
 **Ha a kapcsolati szolgáltató befejezte a létesítési folyamatot**
 
 A ExpressRoute áramkör a következő állapotokat fogja jelenteni, amint a kapcsolati szolgáltató sikeresen kiépítte az áramkört.
 
-    ServiceProviderProvisioningState : Provisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : Provisioned
+Status                           : Enabled
+```
 
 **Ha a kapcsolat szolgáltatója kiépíti az áramkört**
 
 Ha a ExpressRoute áramkört el kell helyezni, az áramkör a következő állapotokat fogja jelenteni, amint a szolgáltató befejezte a megszüntetési folyamatot.
 
-    ServiceProviderProvisioningState : NotProvisioned
-    Status                           : Enabled
-
+```output
+ServiceProviderProvisioningState : NotProvisioned
+Status                           : Enabled
+```
 
 Igény szerint újra engedélyezheti, vagy PowerShell-parancsmagok futtatásával törölheti az áramkört.  
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: b9bac7b5b23c4e7d4042b53b93347628488be953
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984270"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203803"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
 
@@ -98,12 +98,22 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
 
 3. Ha az **Azure** -t elsődleges termékként választotta, akkor legfeljebb három **megoldási területet**választhat ki. Ezek megkönnyítik az Azure Marketplace-en lévő ügyfelek számára az ajánlat megtalálását. Ha nem az Azure-t választotta, hagyja ki ezt a lépést.
 
-    | Megoldási térség | | | |
-    | --- | --- | --- | --- |
-    | Elemzés | Backup | DevOps | Migrálás |
-    | Alkalmazások modernizálása | Big Data | Vészhelyreállítás | Hálózat |
-    | Archívum | Adatplatform | Identitás | Biztonság |
-    | AI + Machine Learning | Adatközpont-kezelés | Eszközök internetes hálózata | Storage |
+    - Elemzés
+    - Alkalmazások modernizálása
+    - Archív
+    - Mesterséges intelligencia és gépi tanulás
+    - Backup
+    - Big Data
+    - Adatplatform
+    - Adatközpont-kezelés
+    - DevOps
+    - Vészhelyreállítás
+    - Identity
+    - Eszközök internetes hálózata
+    - Migrálás
+    - Hálózatkezelés
+    - Biztonság
+    - Tárolás
 
 1. Ha az **Azure** -t elsődleges termékként választotta, lehetősége van legfeljebb hat **iparág**kiválasztására. Ezek megkönnyítik az Azure Marketplace-en lévő ügyfelek számára az ajánlat megtalálását. Tekintse meg az iparági listán az ajánlott [eljárásokat felsoroló](../gtm-offer-listing-best-practices.md)témakört. Ha nem az Azure-t választotta, hagyja ki ezt a lépést.
 1. Ha az Azure-tól *eltérő* elsődleges terméket jelölt ki, válassza ki a legfeljebb három **alkalmazható terméket**. Ezek megkönnyítik a AppSource ügyfeleinek az ajánlat megtalálását. Részletekért lásd: [Microsoft AppSource Consulting Service listázási irányelvei](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
@@ -126,12 +136,12 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
 1. Embléma
-2. Price
+2. Ár
 3. Megoldási területek
 4. Ágazatok
 5. Ajánlat neve
-6. Összefoglalás
-7. Description
+6. Összegzés
+7. Leírás
 8. Képernyőképek/videók
 
 <br>Íme egy példa arra, hogyan jelennek meg az ajánlati információk a Microsoft AppSourceban (a felsorolt árak kizárólag a tényleges költségekkel kapcsolatos célokat szolgálnak):
@@ -141,16 +151,16 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
 1. Embléma
-2. Price
+2. Ár
 3. Termékek
 4. Ágazatok
 5. Ajánlat neve
-6. Összefoglalás
-7. Description
+6. Összegzés
+7. Leírás
 8. Képernyőképek/videók
 9. Dokumentumok
 
-### <a name="name"></a>Name
+### <a name="name"></a>Név
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -164,7 +174,7 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -229,7 +239,7 @@ Itt olyan elemeket határozhat meg, mint például a díjszabás, a piac és a t
 4. Fizetős ajánlat esetén határozza meg az **árat és a pénznemet** , valamint azt, hogy az ár **rögzített** vagy **becsült**. Ha a becsült érték van megadva, a leírásban meg kell adnia, hogy milyen tényezők befolyásolják a díjszabást.
 5. A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
-## <a name="review-and-publish"></a>Áttekintés és közzététel
+## <a name="review-and-publish"></a>Felülvizsgálat és közzététel
 
 Miután elvégezte az ajánlat összes szükséges részét, elküldheti ajánlatát az áttekintéshez és a közzétételhez.
 

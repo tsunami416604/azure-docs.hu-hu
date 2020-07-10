@@ -1,26 +1,27 @@
 ---
-title: Azure Data Box nyomon követése és naplózása, Azure Data Box Heavy események | Microsoft Docs
-description: Ismerteti, hogyan lehet nyomon követni és naplózni az eseményeket a Azure Data Box különböző szakaszaiban, és Azure Data Box Heavy sorrendet.
+title: Azure Data Box nyomon követése és naplózása, Azure Data Box Heavy az importálási sorrendtel kapcsolatos események | Microsoft Docs
+description: Ismerteti, hogyan lehet nyomon követni és naplózni az eseményeket a Azure Data Box különböző szakaszaiban, és Azure Data Box Heavy importálási sorrendet.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b65d9579686cdf53f1cac35ba47bc5850b45c8e2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81676409"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204295"
 ---
-# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és Azure Data Box Heavy követése és eseménynaplózása
+# <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>A Azure Data Box nyomon követése és eseménynaplózása, valamint Azure Data Box Heavy importálási sorrend
 
-Egy Data Box vagy Data Box Heavy megrendelés a következő lépésekből áll: megrendelés, beállítás, Adatmásolás, visszatérés, feltöltés az Azure-ba, ellenőrzés és adatok törlése. A sorrend egyes lépéseinek megfelelően több műveletet is végrehajthat a rendeléshez való hozzáférés szabályozásához, az események naplózásához, a sorrend nyomon követéséhez és a létrehozott naplók értelmezéséhez.
+A Data Box vagy Data Box Heavy importálási sorrend a következő lépésekből áll: megrendelés, beállítás, adatok másolása, visszaadása, feltöltés az Azure-ba, ellenőrzés és adatok törlése. A sorrend egyes lépéseinek megfelelően több műveletet is végrehajthat a rendeléshez való hozzáférés szabályozásához, az események naplózásához, a sorrend nyomon követéséhez és a létrehozott naplók értelmezéséhez.
 
-Az alábbi táblázat a Data Box vagy Data Box Heavy sorrendtel kapcsolatos lépések összegzését, valamint az egyes lépésekben a sorrend nyomon követésére és naplózására használható eszközöket tartalmazza.
+Az alábbi táblázat a Data Box vagy Data Box Heavy importálási sorrend lépéseinek összegzését, valamint az egyes lépések során a sorrend nyomon követésére és naplózására szolgáló eszközöket tartalmazza.
 
-| Data Box rendelési szakasz       | Nyomon követhető és naplózható eszköz                                                                        |
+| Data Box importálási sorrend szakasza       | Nyomon követhető és naplózható eszköz                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Rendelés létrehozása               | [Hozzáférés-vezérlés beállítása a rendelésen a RBAC használatával](#set-up-access-control-on-the-order)                                                    |
 | Megrendelés feldolgozva            | [A sorrend nyomon követése](#track-the-order) <ul><li> Azure Portal </li><li> Szállítási szolgáltató webhelye </li><li>E-mail-értesítések</ul> |
@@ -30,7 +31,7 @@ Az alábbi táblázat a Data Box vagy Data Box Heavy sorrendtel kapcsolatos lép
 | Adatok feltöltése az Azure-ba       | A hibák [másolási naplóinak áttekintése](#review-copy-log-during-upload-to-azure) az adatok feltöltésekor az Azure-adatközpontban                         |
 | Adatok törlése az eszközről   | [Felügyeleti naplók láncának megtekintése](#get-chain-of-custody-logs-after-data-erasure) , beleértve a naplókat és a sorrendi előzményeket                |
 
-Ez a cikk részletesen ismerteti a Data Box vagy Data Box Heavy sorrend nyomon követésére és naplózására rendelkezésre álló különböző mechanizmusokat vagy eszközöket. A cikkben található információk a következőkre vonatkoznak: Data Box és Data Box Heavy. A következő szakaszban a Data Boxra való hivatkozás a Data Box Heavyra is vonatkozik.
+Ez a cikk részletesen ismerteti a Data Box vagy Data Box Heavy importálási sorrend nyomon követéséhez és naplózásához rendelkezésre álló különböző mechanizmusokat vagy eszközöket. A cikkben található információk mindkét, Data Box és Data Box Heavy importálási rendelésre vonatkoznak. A következő szakaszban a Data Boxra való hivatkozás a Data Box Heavyra is vonatkozik.
 
 ## <a name="set-up-access-control-on-the-order"></a>Hozzáférés-vezérlés beállítása a rendeléshez
 

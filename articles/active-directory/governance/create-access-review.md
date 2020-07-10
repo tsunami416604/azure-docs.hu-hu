@@ -11,15 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 06/29/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661339545f2c3f01ffd2e07b0fad08de8ac90278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cf82080a54075353d2ff1d98a2ea19fc6a96dc7
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078883"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204009"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Csoportok és alkalmazások hozzáférési felülvizsgálatának létrehozása az Azure AD hozzáférési felülvizsgálatokban
 
@@ -105,7 +106,7 @@ További információkért lásd a [licencekre vonatkozó követelményeket](acc
 
 1. További beállítások megadásához bontsa ki a **Speciális beállítások** szakaszt.
 
-    ![Hozzáférési felülvizsgálat létrehozása – speciális beállítások](./media/create-access-review/advanced-settings.png)
+    ![Hozzáférési felülvizsgálat létrehozása – speciális beállítások](./media/create-access-review/advanced-settings-preview.png)
 
 1. Állítsa be a **javaslatok megjelenítése** lehetőséget **, hogy** megjelenjenek a felülvizsgálók a felhasználó hozzáférési adatai alapján.
 
@@ -113,9 +114,14 @@ További információkért lásd a [licencekre vonatkozó követelményeket](acc
 
 1. E- **mail-értesítések** beállításával **engedélyezheti** , hogy az Azure ad e-mailes értesítéseket küldjön a felülvizsgálók számára a hozzáférési felülvizsgálat indításakor, valamint a rendszergazdáknak a felülvizsgálat befejezésekor.
 
-1. Az **emlékeztetők** beállításával **engedélyezheti** , hogy az Azure ad emlékeztetőket küldjön a folyamatban lévő hozzáférési felülvizsgálatokról azon felülvizsgálók számára, akik nem fejezték be a felülvizsgálatot.
+1. Az **emlékeztetők** beállításával **engedélyezheti** , hogy az Azure ad emlékeztetőket küldjön a folyamatban lévő hozzáférési felülvizsgálatokról azon felülvizsgálók számára, akik nem fejezték be a felülvizsgálatot. 
 
-    Alapértelmezés szerint az Azure AD a rendelkezésre álló idő felénél automatikusan emlékeztetőt küld azoknak a felülvizsgálóknak, akik még nem tettek eleget a kérésnek.
+    >[!NOTE]
+    > Alapértelmezés szerint az Azure AD automatikusan emlékeztetőt küld a befejezési dátumig a még nem válaszoló felülvizsgálók felé.
+
+1. Előnézet A felülvizsgálók számára küldött e-mailek tartalma automatikusan létrejön a felülvizsgálati adatok alapján, például a felülvizsgálat neve, az erőforrás neve, a határidő stb. Ha további információk, például további utasítások vagy kapcsolattartási adatok közlésére van szüksége, megadhatja ezeket a részleteket a felülvizsgáló e-mail-címéhez, amely szerepelni fog a meghívóban és a hozzárendelt felülvizsgálók számára küldött emlékeztető e-mailekben. A Kiemelt szakasz az alábbi információkat jeleníti meg.
+
+    ![Felhasználók hozzáférésének áttekintése egy csoporthoz](./media/create-access-review/review-users-access-group.png)
 
 ## <a name="start-the-access-review"></a>A hozzáférési felülvizsgálat elindítása
 

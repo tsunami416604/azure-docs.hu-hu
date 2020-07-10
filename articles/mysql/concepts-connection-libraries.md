@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 5f83f937b8d9ec50ec7dc6ec781bff1f435eb45a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5520072ba16b117c33c2ad172030807e51c7cf7a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537193"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203900"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Azure Database for MySQLhoz tartozó kapcsolatok kódtárai
 Ez a cikk felsorolja az összes olyan könyvtárat vagy illesztőprogramot, amelyet az ügyfélalkalmazások használhatnak Azure Database for MySQLhoz való csatlakozáskor.
@@ -35,5 +35,11 @@ A MySQL szabványos adatbázis-illesztőprogram-kapcsolatot biztosít a MySQL-he
 ## <a name="next-steps"></a>További lépések
 Az alábbi rövid útmutatókból megtudhatja, hogyan csatlakozhat a Azure Database for MySQLhoz, és hogyan kérdezheti le azt a választott nyelv használatával:
 
-[Php](./connect-php.md)  |  [Java](./connect-java.md)  |   [.net (C#)](./connect-csharp.md)  |  [Python](./connect-python.md)  |  [Node.JS](./connect-nodejs.md)  |  [Ruby](./connect-ruby.md)  |  [C++ nyelv](connect-cpp.md)  |  [Ugrás](./connect-go.md)
-
+- [PHP](./connect-php.md)
+- [Java](./connect-java.md)
+- [.NET (C#)](./connect-csharp.md)
+- [Python](./connect-python.md)
+- [Node.JS](./connect-nodejs.md)
+- [Ruby](./connect-ruby.md)
+- [C++](connect-cpp.md)
+- [Ugrás](./connect-go.md)

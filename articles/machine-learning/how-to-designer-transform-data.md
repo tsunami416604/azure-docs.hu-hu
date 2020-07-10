@@ -1,7 +1,7 @@
 ---
-title: Adatok átalakítása
+title: Adatátalakítás a tervezőben (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan alakíthat át adatokat Azure Machine Learning Designerben saját adatkészletek létrehozásához.
+description: Megtudhatja, hogyan alakíthat át adatokat Azure Machine Learning Designerben (előzetes verzió) a saját adatkészletek létrehozásához.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: ea0ba58c3eb38a54be5ff777519ca12d6a2cf9ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68ed1b83b1e82daa9c4578a6b3bec24792a8268d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85517528"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203797"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Az adatátalakítás Azure Machine Learning Designerben (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -164,7 +164,7 @@ A folyamat futásának befejeződése után megtekintheti az eredményeket, ha a
 
 1. Ellenőrizze, hogy a "natív ország" oszlop nem tartalmazza-e az "Egyesült Államok" értéket.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ugorja át ezt a szakaszt, ha továbbra is az útmutató 2. részében kívánja folytatni a [modellek újratanítását Azure Machine learning Designer](how-to-retrain-designer.md)használatával.
 

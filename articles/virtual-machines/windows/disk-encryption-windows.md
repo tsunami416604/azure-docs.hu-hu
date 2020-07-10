@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81ac76ef5eeebd278dc10e03d661bb21469c8f4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b423cc4cd933f84fccae5c2116be7abbdc288c67
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610565"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203665"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-forgatókönyvek Windows rendszerű virtuális gépekhez
 
@@ -138,7 +138,7 @@ A következő táblázat a Resource Manager-sablon paramétereit sorolja fel a m
 | volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes értékek az _operációs rendszer_, _az adatok_és _az összes_. 
 | forceUpdateTag | Adjon meg egy egyedi értéket, például egy GUID-azonosítót, amikor a műveletnek kényszerített futtatást kell futtatnia. |
 | resizeOSDisk | Ha az operációsrendszer-partíciót át szeretné méretezni a teljes operációsrendszer-lemez elfoglalásához a rendszerkötet felosztása előtt. |
-| location | Az összes erőforrás helye. |
+| location | Az összes erőforrás helyei. |
 
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>Az ügyfél által titkosított VHD-és titkosítási kulcsokból létrehozott új IaaS virtuális gépek
@@ -238,6 +238,9 @@ A Azure Disk Encryption a következő forgatókönyvek, funkciók és technológ
 - Gen2 virtuális gépek (lásd: [a 2. generációs virtuális gépek támogatása az Azure](generation-2.md#generation-1-vs-generation-2-capabilities)-ban)
 - Lsv2 sorozatú virtuális gépek (lásd: [Lsv2 sorozat](../lsv2-series.md))
 - Az M sorozatú virtuális gépek írásgyorsító lemezzel.
+- [Kiszolgálóoldali titkosítás alkalmazása az ügyfél által felügyelt kulcsokkal](disk-encryption.md) az ade által titkosított virtuális gépekre, valamint fordítva.
+- Az ADE-sel titkosított virtuális gépek áttelepítése az [ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosításra](disk-encryption.md).
+
 
 ## <a name="next-steps"></a>További lépések
 

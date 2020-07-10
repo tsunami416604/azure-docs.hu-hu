@@ -8,11 +8,12 @@ ms.topic: troubleshooting
 ms.date: 10/31/2019
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 827d68a5f0f35e42acae1fa225646eb509f69c89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4525ea6e23c4f1c2c96ab2beb21e8bfd5b66ca50
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84729319"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204214"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
 Ez a cikk segítséget nyújt az ExpressRoute-kapcsolatok ellenőrzéséhez és hibakereséséhez. A ExpressRoute kiterjeszti a helyszíni hálózatot a Microsoft-felhőbe egy olyan privát kapcsolaton keresztül, amelyet általában egy kapcsolat szolgáltatója is megkönnyít. A ExpressRoute-kapcsolat hagyományosan három különálló hálózati zónát foglal magában, az alábbiak szerint:
@@ -94,7 +95,9 @@ Ahhoz, hogy egy ExpressRoute-áramkör működőképes legyen, *engedélyezni* k
 ### <a name="verification-via-powershell"></a>Ellenőrzés a PowerShell használatával
 Egy erőforráscsoport összes ExpressRoute-áramkörének listázásához használja a következő parancsot:
 
-    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+```azurepowershell
+Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+```
 
 >[!TIP]
 >Ha az erőforráscsoport nevét keresi, a *Get-AzResourceGroup* parancs használatával lekérheti az előfizetésben található összes erőforráscsoport listázásával.
@@ -103,37 +106,43 @@ Egy erőforráscsoport összes ExpressRoute-áramkörének listázásához haszn
 
 Egy adott ExpressRoute-áramkör kiválasztásához használja az alábbi parancsot:
 
-    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+```azurepowershell
+Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+```
 
 A minta válasza:
 
-    Name                             : Test-ER-Ckt
-    ResourceGroupName                : Test-ER-RG
-    Location                         : westus2
-    Id                               : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt
-    Etag                             : W/"################################"
-    ProvisioningState                : Succeeded
-    Sku                              : {
-                                        "Name": "Standard_UnlimitedData",
-                                        "Tier": "Standard",
-                                        "Family": "UnlimitedData"
-                                        }
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
-    ServiceProviderNotes             : 
-    ServiceProviderProperties        : {
-                                        "ServiceProviderName": "****",
-                                        "PeeringLocation": "******",
-                                        "BandwidthInMbps": 100
-                                        }
-    ServiceKey                       : **************************************
-    Peerings                         : []
-    Authorizations                   : []
+```output
+Name                             : Test-ER-Ckt
+ResourceGroupName                : Test-ER-RG
+Location                         : westus2
+Id                               : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt
+Etag                             : W/"################################"
+ProvisioningState                : Succeeded
+Sku                              : {
+                                    "Name": "Standard_UnlimitedData",
+                                    "Tier": "Standard",
+                                    "Family": "UnlimitedData"
+                                    }
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+ServiceProviderNotes             : 
+ServiceProviderProperties        : {
+                                    "ServiceProviderName": "****",
+                                    "PeeringLocation": "******",
+                                    "BandwidthInMbps": 100
+                                    }
+ServiceKey                       : **************************************
+Peerings                         : []
+Authorizations                   : []
+```
 
 Annak ellenőrzéséhez, hogy a ExpressRoute áramkör működik-e, különös figyelmet fordít a következő mezőkre:
 
-    CircuitProvisioningState         : Enabled
-    ServiceProviderProvisioningState : Provisioned
+```output
+CircuitProvisioningState         : Enabled
+ServiceProviderProvisioningState : Provisioned
+```
 
 > [!NOTE]
 > Ha a ExpressRoute áramkör konfigurálása után az *áramkör állapota* nem engedélyezett állapotú, forduljon a [Microsoft ügyfélszolgálatahoz][Support]. Ha viszont a *szolgáltató állapota* nem kiépített állapotban van, forduljon a szolgáltatóhoz.
@@ -167,47 +176,56 @@ Az előző példában látható módon, ahogy az Azure Private-peering kiépítv
 ### <a name="verification-via-powershell"></a>Ellenőrzés a PowerShell használatával
 Az Azure Private peering konfigurációs adatainak beszerzéséhez használja a következő parancsokat:
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+```
 
 A sikeres konfiguráláshoz a következő a válasz:
 
-    Name                       : AzurePrivatePeering
-    Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
-    Etag                       : W/"################################"
-    PeeringType                : AzurePrivatePeering
-    AzureASN                   : 12076
-    PeerASN                    : 123##
-    PrimaryPeerAddressPrefix   : 172.16.0.0/30
-    SecondaryPeerAddressPrefix : 172.16.0.4/30
-    PrimaryAzurePort           : 
-    SecondaryAzurePort         : 
-    SharedKey                  : 
-    VlanId                     : 200
-    MicrosoftPeeringConfig     : null
-    ProvisioningState          : Succeeded
+```output
+Name                       : AzurePrivatePeering
+Id                         : /subscriptions/***************************/resourceGroups/Test-ER-RG/providers/***********/expressRouteCircuits/Test-ER-Ckt/peerings/AzurePrivatePeering
+Etag                       : W/"################################"
+PeeringType                : AzurePrivatePeering
+AzureASN                   : 12076
+PeerASN                    : 123##
+PrimaryPeerAddressPrefix   : 172.16.0.0/30
+SecondaryPeerAddressPrefix : 172.16.0.4/30
+PrimaryAzurePort           : 
+SecondaryAzurePort         : 
+SharedKey                  : 
+VlanId                     : 200
+MicrosoftPeeringConfig     : null
+ProvisioningState          : Succeeded
+```
 
  A sikeresen engedélyezett társítási környezet a felsorolt elsődleges és másodlagos címek előtagjai lennének. A/30 alhálózatot a Msee és a CEs/PE-Msee kapcsolati IP-címéhez használja a rendszer.
 
 Az Azure nyilvános társ-összevonási konfiguráció részleteit az alábbi parancsokkal szerezheti be:
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+```
 
 A Microsoft társközi konfigurációs adatainak beszerzéséhez használja a következő parancsokat:
 
-    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-     Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+```azurepowershell
+$ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+```
 
 Ha nincs konfigurálva egy társítás, hibaüzenet jelenik meg. Egy példa válaszra, ha a megadott (Azure-beli nyilvános) kapcsolat nem az áramkörön belül van konfigurálva:
 
-    Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
-    At line:1 char:1
-        + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
-        + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
-            + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
-
+```azurepowershell
+Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
+At line:1 char:1
+    + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
+    + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
+        + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
+```
 
 > [!NOTE]
 > Ha a társítás engedélyezése sikertelen, ellenőrizze, hogy a hozzárendelt elsődleges és másodlagos alhálózatok megfelelnek-e a társított CE/PE-MSEE konfigurációjának. Ellenőrizze azt is, hogy a megfelelő *VlanId*, *AzureASN*és *PeerASN* használják-e a msee, és hogy ezek az értékek a társított CE/PE-MSEE használt értékekre vannak-e leképezve. Ha az MD5-kivonatolás van kiválasztva, a megosztott kulcsnak meg kell egyeznie a MSEE és a PE-MSEE/CE párokkal. A korábban konfigurált megosztott kulcs biztonsági okokból nem jelenik meg. Ha módosítania kell ezen konfiguráció bármelyikét egy MSEE-útválasztón, tekintse meg az [Útválasztás létrehozása és módosítása egy ExpressRoute áramkörhöz][CreatePeering]című témakört.  
@@ -233,28 +251,31 @@ Lásd: az [ARP-táblák lekérése a Resource Manager-][ARP] alapú üzemi model
 
 Az alábbi paranccsal kérheti le az útválasztási táblázatot a MSEE a *magánhálózati* útválasztási környezet *elsődleges* elérési útjában:
 
-    Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable -DevicePath Primary -ExpressRouteCircuitName ******* -PeeringType AzurePrivatePeering -ResourceGroupName ****
+```
 
 Példa erre a válaszra:
 
-    Network : 10.1.0.0/16
-    NextHop : 10.17.17.141
-    LocPrf  : 
-    Weight  : 0
-    Path    : 65515
+```output
+Network : 10.1.0.0/16
+NextHop : 10.17.17.141
+LocPrf  : 
+Weight  : 0
+Path    : 65515
 
-    Network : 10.1.0.0/16
-    NextHop : 10.17.17.140*
-    LocPrf  : 
-    Weight  : 0
-    Path    : 65515
+Network : 10.1.0.0/16
+NextHop : 10.17.17.140*
+LocPrf  : 
+Weight  : 0
+Path    : 65515
 
-    Network : 10.2.20.0/25
-    NextHop : 172.16.0.1
-    LocPrf  : 
-    Weight  : 0
-    Path    : 123##
-
+Network : 10.2.20.0/25
+NextHop : 172.16.0.1
+LocPrf  : 
+Weight  : 0
+Path    : 123##
+```
 
 > [!NOTE]
 > Ha egy MSEE és egy CE/PE-MSEE közötti eBGP-társítás állapota aktív vagy üresjáratban van, ellenőrizze, hogy az elsődleges és a másodlagos társ-alhálózatok megfelelnek-e a társított CE/PE-MSEE konfigurációjának. Ellenőrizze azt is, hogy a megfelelő *VlanId*, *AzureAsn*és *PeerAsn* használják-e a msee, és ha ezek az értékek a csatolt PE-MSEE/CE-ben használt értékekre vannak leképezve. Ha az MD5-kivonatolás van kiválasztva, a megosztott kulcsnak azonosnak kell lennie a MSEE és a CE/PE-MSEE párban. Ha módosítania kell ezen konfiguráció bármelyikét egy MSEE-útválasztón, tekintse meg az [Útválasztás létrehozása és módosítása egy ExpressRoute áramkörhöz][CreatePeering]című témakört.
@@ -268,24 +289,32 @@ Példa erre a válaszra:
 
 A következő példa egy nem létező társ-létrehozási parancs válaszát mutatja be:
 
-    Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
-    StatusCode: 400
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+StatusCode: 400
+```
 
 ## <a name="confirm-the-traffic-flow"></a>A forgalmi folyamat megerősítése
 A kombinált elsődleges és másodlagos elérési út forgalmi statisztikájának lekéréséhez a következő parancsot használhatja:
 
-    Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
+```azurepowershell
+Get-AzExpressRouteCircuitStats -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering'
+```
 
 A parancs mintájának kimenete:
 
-    PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
-    -------------- --------------- ---------------- -----------------
-         240780020       239863857        240565035         239628474
+```output
+PrimaryBytesIn PrimaryBytesOut SecondaryBytesIn SecondaryBytesOut
+-------------- --------------- ---------------- -----------------
+     240780020       239863857        240565035         239628474
+```
 
 A nem létező társításhoz tartozó parancs mintájának kimenete a következő:
 
-    Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
-    StatusCode: 400
+```azurepowershell
+Get-AzExpressRouteCircuitRouteTable : The BGP Peering AzurePublicPeering with Service Key ********************* is not found.
+StatusCode: 400
+```
 
 ## <a name="next-steps"></a>Következő lépések
 További információért és segítségért tekintse meg az alábbi hivatkozásokat:
