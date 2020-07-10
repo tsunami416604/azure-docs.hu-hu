@@ -8,11 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430566"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169984"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató a Azure App Service Windows rendszerű csomópont-alkalmazásokhoz
 
@@ -169,7 +170,7 @@ Ugrás a hibakeresési konzol webhelyére`https://yoursite.scm.azurewebsites.net
 
 Lépjen be a site/wwwroot könyvtárba. Megjelenik egy parancssor, ahogy az az alábbi példában is látható:
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
+![Képernyőkép, amely megjeleníti a hely/wwwroot könyvtárat és a parancssort.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
 Futtassa a következő parancsot: `npm install v8-profiler`.
 
@@ -202,11 +203,11 @@ http.createServer(function (req, res) {
 
 Az előző kód a WriteConsoleLog függvényt, majd a profil kimenetét írja a "Profile. cpuprofile" fájlba a hely wwwroot. Kérelem küldése az alkalmazásnak. Megjelenik egy "Profile. cpuprofile" fájl, amely a hely wwwroot van létrehozva.
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
+![A profil. cpuprofile fájlt megjelenítő képernyőkép.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
 Töltse le ezt a fájlt, és nyissa meg a Chrome F12-eszközökkel. Nyomja meg az F12 billentyűt a Chrome-on, majd válassza a **profilok** fület. Válassza a **Betöltés** gombot. Válassza ki a letöltött Profile. cpuprofile fájlt. Kattintson az imént betöltött profilra.
 
-![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
+![Képernyőkép, amely megjeleníti a betöltött profil. cpuprofile fájlt.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 
 Láthatja, hogy az idő 95%-ában használták a WriteConsoleLog függvény. A kimenetben a probléma okozta pontos sorszámokat és forrásfájlokat is megjeleníti.
 

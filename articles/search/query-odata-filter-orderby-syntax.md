@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77153876"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165209"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Az `$filter` `$orderby` `$select` Azure Cognitive Search OData nyelvének áttekintése
 
@@ -69,7 +70,7 @@ Az azonosítók egy adott mező nevére vagy egy, a szűrőben lévő [gyűjtem�
 
 A következő táblázat példákat mutat be a mezők elérési útjaira:
 
-| Mező elérési útja | Description |
+| Mező elérési útja | Leírás |
 | --- | --- |
 | `HotelName` | Az index legfelső szintű mezőjére hivatkozik. |
 | `Address/City` | Az `City` index összetett mezőjének almezőjét jelöli. `Address` ebben a példában a típus `Edm.ComplexType` |
@@ -82,7 +83,9 @@ A mező elérési útjának jelentése a környezettől függően eltérő. A sz
 
 Vegye figyelembe a mező elérési útját `Address/City` . Egy szűrőben ez az aktuális dokumentum egyetlen városára vonatkozik, például: "San Francisco". Ezzel szemben `Rooms/Type` a `Type` sok szoba (például a "standard", az első szoba, a "Deluxe" a második Teremnél stb.) almezőjét jelenti. Mivel `Rooms/Type` a nem az almező *egyetlen példányára* hivatkozik `Type` , nem használható közvetlenül szűrőben. Ehelyett a szobatípus szűréséhez egy tartomány-változót használó [lambda kifejezést](search-query-odata-collection-operators.md) kellene használni, például:
 
-    Rooms/any(room: room/Type eq 'deluxe')
+```odata
+Rooms/any(room: room/Type eq 'deluxe')
+```
 
 Ebben a példában a tartomány változó `room` megjelenik a `room/Type` mező elérési útján. Így az aktuális `room/Type` dokumentumban található aktuális helyiség típusára hivatkozik. Ez az almező egyetlen példánya `Type` , így közvetlenül a szűrőben is használható.
 
@@ -92,7 +95,7 @@ A mező elérési útjait az [Azure Cognitive Search REST API](https://docs.micr
 
 | API | Paraméter neve | Korlátozások |
 | --- | --- | --- |
-| Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | None |
+| Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `suggesters/sourceFields` | Nincsenek |
 | Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/text/weights` | Csak **kereshető** mezőkre hivatkozhat |
 | Index [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) vagy [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) | `scoringProfiles/functions/fieldName` | Csak **szűrhető** mezőkre hivatkozhat |
 | [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`Ha `queryType` a`full` | Csak **kereshető** mezőkre hivatkozhat |

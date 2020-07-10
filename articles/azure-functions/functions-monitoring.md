@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 578e1580bdaafb1b309a7af44353602cc31cb5a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207007"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170411"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -64,11 +64,11 @@ A Application Insights használatáról az [Application Insights dokumentációj
 
 Az Application Insights következő területei hasznosak lehetnek a függvények viselkedésének, teljesítményének és hibáinak kiértékelése során:
 
-| Vizsgálat | Description |
+| Vizsgálat | Leírás |
 | ---- | ----------- |
 | **[Hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Diagramok és riasztások létrehozása a függvények hibái és a kiszolgálói kivételek alapján. A **művelet** neve a függvény neve. A függőségek meghibásodása csak akkor jelenik meg, ha egyéni telemetria valósít meg a függőségekhez. |
 | **[Teljesítmény](../azure-monitor/app/performance-counters.md)** | A teljesítménnyel kapcsolatos problémák elemzéséhez tekintse meg az erőforrás-kihasználtságot és az átviteli sebességet a **felhőalapú szerepkör példányain**. Ez az adat hasznos lehet olyan forgatókönyvek hibakereséséhez, ahol a függvények a mögöttes erőforrások leállását végzik. |
-| **[Mérőszámok](../azure-monitor/app/metrics-explorer.md)** | Metrikák alapján létrehozhat diagramokat és riasztásokat. A metrikák közé tartozik a Function meghívások száma, a végrehajtási idő és a sikerességi arány. |
+| **[Metrikák](../azure-monitor/app/metrics-explorer.md)** | Metrikák alapján létrehozhat diagramokat és riasztásokat. A metrikák közé tartozik a Function meghívások száma, a végrehajtási idő és a sikerességi arány. |
 | **[Élő metrikák](../azure-monitor/app/live-stream.md)** | A metrikák adatait a közel valós időben létrehozva tekintheti meg. |
 
 ## <a name="query-telemetry-data"></a>Telemetria-adatbázis lekérdezése
@@ -118,7 +118,7 @@ A Application Insightst egyéni konfiguráció nélkül is használhatja. Az ala
 
 A Azure Functions Logger minden naplóhoz tartalmaz *kategóriát* . A kategória azt jelzi, hogy a futásidejű kód mely része vagy a függvény kódja írta a naplót. A következő diagram a futtatókörnyezet által létrehozott naplók fő kategóriáit ismerteti. 
 
-| Kategória | Description |
+| Kategória | Leírás |
 | ----- | ----- | 
 | Host.Results | Ezek a naplók Application Insights **kérelmekként** jelennek meg. A függvények sikerességét vagy hibáját jelzik. Ezen naplók mindegyike szinten van írva `Information` . Ha a `Warning` -t vagy a fentit szűri, akkor nem jelenik meg ezek az információk. |
 | Host. aggregator | Ezek a naplók a függvények számát és átlagát biztosítják egy [konfigurálható](#configure-the-aggregator) időszakra vonatkozóan. Az alapértelmezett időtartam 30 másodperc vagy 1 000 eredmény, attól függően, hogy melyik következik be először. A naplók a Application Insights **customMetrics** táblájában érhetők el. Ilyenek például a futtatások száma, a sikerességi arány és az időtartam. Ezen naplók mindegyike szinten van írva `Information` . Ha a `Warning` -t vagy a fentit szűri, akkor nem jelenik meg ezek az információk. |
@@ -135,15 +135,15 @@ Ha a függvény kódjában írja be a naplókat, a kategória `Function.<YOUR_FU
 
 A Azure Functions naplózó *naplózási szintet* is tartalmaz minden naplóval. A [naplózási szint](/dotnet/api/microsoft.extensions.logging.loglevel) egy enumerálás, és az egész szám kód relatív fontosságot jelez:
 
-|Naplózási szint    |Code|
+|Naplózási szint    |Kód|
 |------------|---|
 |Nyomkövetés       | 0 |
 |Hibakeresés       | 1 |
-|Információ | 2 |
+|Tájékoztatás | 2 |
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|None        | 6 |
+|Nincsenek        | 6 |
 
 A naplózási szintet `None` a következő szakaszban ismertetjük. 
 
@@ -233,7 +233,7 @@ Egy kategória összes naplójának letiltásához használhatja a naplózási s
 
 ## <a name="configure-the-aggregator"></a>A gyűjtő konfigurálása
 
-Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a függvények végrehajtásával kapcsolatos adatokat egy adott időszakban. Az alapértelmezett időtartam 30 másodperc vagy 1 000 fut, amelyik előbb eléri a értéket. Ezt a beállítást a fájl [host.js] is konfigurálhatja.  Íme egy példa:
+Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a függvények végrehajtásával kapcsolatos adatokat egy adott időszakban. Az alapértelmezett időtartam 30 másodperc vagy 1 000 fut, amelyik előbb eléri a értéket. Ezt a beállítást a fájl [host.js] is konfigurálhatja.  Például:
 
 ```json
 {
@@ -246,7 +246,7 @@ Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a fü
 
 ## <a name="configure-sampling"></a>Mintavételezés konfigurálása
 
-Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.md) funkciót, amely képes arra, hogy túl sok telemetria-adatmennyiséget állítson elő a befejezett végrehajtásokon a maximális terhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, Application Insights véletlenszerűen figyelmen kívül hagyja a bejövő végrehajtások némelyikét. A másodpercenkénti végrehajtások maximális számának alapértelmezett beállítása 20 (öt az 1. x verzióban). A mintavételezésthost.js- [on](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights)is konfigurálhatja.  Íme egy példa:
+Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.md) funkciót, amely képes arra, hogy túl sok telemetria-adatmennyiséget állítson elő a befejezett végrehajtásokon a maximális terhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, Application Insights véletlenszerűen figyelmen kívül hagyja a bejövő végrehajtások némelyikét. A másodpercenkénti végrehajtások maximális számának alapértelmezett beállítása 20 (öt az 1. x verzióban). A mintavételezésthost.js- [on](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights)is konfigurálhatja.  Például:
 
 ### <a name="version-2x-and-later"></a>2. x vagy újabb verzió
 
@@ -626,7 +626,7 @@ Ha Application Insights-integrációval kapcsolatos problémát szeretne jelente
 
 ## <a name="streaming-logs"></a>Folyamatos átviteli naplók
 
-Az alkalmazások fejlesztése során gyakran érdemes megtekinteni, hogy mi történik a naplókba közel valós időben, ha az Azure-ban fut.
+Egy alkalmazás fejlesztése során gyakran érdemes megtekinteni, hogy mi történik a naplókba közel valós időben, amikor az Azure-ban fut.
 
 Kétféle módon lehet megtekinteni a függvények végrehajtásával létrehozott naplófájlok streamjét.
 
@@ -636,7 +636,7 @@ Kétféle módon lehet megtekinteni a függvények végrehajtásával létrehozo
 
 A naplózási streamek a Portálon és a legtöbb helyi fejlesztési környezetben is megtekinthetők. 
 
-### <a name="portal"></a>Portál
+### <a name="portal"></a>Portal
 
 A portálon mindkét típusú naplózási adatfolyamot megtekintheti.
 
@@ -688,27 +688,41 @@ Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscripti
 Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
 ```
 
-## <a name="scale-controller-logs"></a>A vezérlő naplófájljainak méretezése
+## <a name="scale-controller-logs-preview"></a>Kontroller-naplók méretezése (előzetes verzió)
 
-A [Azure functions méretezési vezérlő](./functions-scale.md#runtime-scaling) figyeli az alkalmazást futtató gazdagép-példányokat, és megteszi a szükséges döntéseket a Function Host-példányok hozzáadásához vagy eltávolításához. Ha meg kell ismernie a méretezési vezérlő által az alkalmazásban hozott döntéseket, beállíthatja, hogy a naplókat a Application Insights vagy a Blob Storage lehessen kibocsátani.
+Ez a funkció előzetes verzióban érhető el. 
 
-> [!WARNING]
-> Ez a funkció előzetes verzióban érhető el. Nem javasoljuk, hogy ezt a funkciót határozatlan ideig engedélyezze, és ehelyett engedélyeznie kell, ha szüksége van a gyűjtött információkra, majd letiltja azt.
+A [Azure functions skálázási vezérlő](./functions-scale.md#runtime-scaling) figyeli a Azure functions gazdagép azon példányait, amelyeken az alkalmazás fut. Ez a vezérlő döntéseket hoz a példányok hozzáadásához vagy eltávolításához az aktuális teljesítmény alapján. A méretezési vezérlő kibocsátja a naplókat Application Insights vagy a blob Storage-ba, hogy jobban megértse a méretezési vezérlő által a Function alkalmazásra vonatkozó döntéseket.
 
-A szolgáltatás engedélyezéséhez adjon hozzá egy nevű új Alkalmazásbeállítás-beállítást `SCALE_CONTROLLER_LOGGING_ENABLED` . A beállítás értékének formátumnak kell lennie `{Destination}:{Verbosity}` , ahol:
-* `{Destination}`meghatározza a naplóknak küldendő célhelyet, és a következőnek kell lennie: `AppInsights` vagy `Blob` .
-* `{Verbosity}`meghatározza a kívánt naplózási szintet, és a (,), vagy az egyikének kell lennie `None` `Warning` `Verbose` .
+A szolgáltatás engedélyezéséhez adjon hozzá egy nevű új Alkalmazásbeállítás-beállítást `SCALE_CONTROLLER_LOGGING_ENABLED` . Ennek a beállításnak a formátuma a `<DESTINATION>:<VERBOSITY>` következők alapján kell, hogy legyen:
 
-Ha például részletes információkat szeretne naplózni a méretezési vezérlőről Application Insightsre, használja a értéket `AppInsights:Verbose` .
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
 
-> [!NOTE]
-> Ha engedélyezi a `AppInsights` célhely típusát, győződjön meg róla, hogy konfigurálnia kell a [Application Insights a Function alkalmazáshoz](#enable-application-insights-integration).
+Például a következő Azure CLI-parancs bekapcsolja a méretezési vezérlő részletes naplózását a Application Insightsra:
 
-Ha a célhelyet a értékre állítja `Blob` , a naplók egy nevű blob-tárolóban lesznek létrehozva a `azure-functions-scale-controller` Storage-fiókban, az `AzureWebJobsStorage` alkalmazás beállításai között.
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:Verbose
+```
 
-Ha a részletességi értéket állítja be `Verbose` , a skálázási vezérlő a munkavégzők számának minden változása miatt naplózza a rendszer, valamint a skálázási vezérlő határozataiban részt vevő eseményindítókkal kapcsolatos információkat. Például a naplók eseményindító-figyelmeztetéseket tartalmaznak, valamint az eseményindítók által a skálázási vezérlő futtatása előtt és után használt kivonatokat.
+Ebben a példában cserélje le a `<FUNCTION_APP_NAME>` és a `<RESOURCE_GROUP_NAME>` nevet a Function alkalmazás nevére, illetve az erőforráscsoport nevét. 
 
-A skálázási vezérlő naplózásának letiltásához állítsa be a értéket a értékre, `{Verbosity}` `None` vagy távolítsa el az `SCALE_CONTROLLER_LOGGING_ENABLED` alkalmazás beállításait.
+A következő Azure CLI-parancs letiltja a naplózást a részletesség beállításával `None` :
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings SCALE_CONTROLLER_LOGGING_ENABLED=AppInsights:None
+```
+
+A naplózást a `SCALE_CONTROLLER_LOGGING_ENABLED` következő Azure CLI-parancs használatával is letilthatja a beállítás eltávolításával:
+
+```azurecli-interactive
+az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--setting-names SCALE_CONTROLLER_LOGGING_ENABLED
+```
 
 ## <a name="disable-built-in-logging"></a>Beépített naplózás letiltása
 
@@ -718,7 +732,7 @@ A beépített naplózás letiltásához törölje az `AzureWebJobsDashboard` alk
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért lásd a következőket:
+További információkat találhat az alábbi forrásokban:
 
 * [Application Insights](/azure/application-insights/)
 * [ASP.NET Core naplózás](/aspnet/core/fundamentals/logging/)

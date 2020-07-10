@@ -3,12 +3,12 @@ title: Azure-erőforrások – QnA Maker
 description: QnA Maker számos Azure-forrást használ, amelyek mindegyike más célra szolgál. A használatuk módjának megismerése lehetővé teszi, hogy megtervezze és kiválassza a megfelelő árképzési szintet, vagy tudja, mikor kell módosítania az árképzési szintet. Annak megismerése, hogy a rendszer hogyan használja a kombinációkat, így megkeresheti és elháríthatja a problémákat, amikor azok bekövetkeznek.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 916f5b9b012d233c6a28d5cbb75ea0b4e073d064
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 7d6598510ae75a76e0a4fcaff59297b4c724ba78
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84236088"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171074"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-erőforrások a QnA Makerhoz
 
@@ -44,11 +44,11 @@ Tervezze meg, hogy egyetlen QnA Maker erőforrással rendelkezzen minden olyan t
 
 A következő táblázat néhány magas szintű útmutatást nyújt.
 
-|                        | QnA Maker-kezelés | App Service | Azure Cognitive Search | Korlátozások                      |
-| ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| Kísérletezés        | Ingyenes SKU             | Ingyenes szintű   | Ingyenes szintű    | Legfeljebb 2 Tudásbázis közzététele, 50 MB méretű  |
-| Fejlesztési/tesztelési környezet   | Standard termékváltozat         | Megosztott      | Basic        | Legfeljebb 14 Tudásbázis közzététele, 2 GB méretű méret    |
-| Éles környezet | Standard termékváltozat         | Basic       | Standard     | Közzététel akár 49 Tudásbázis, 25 GB méretű |
+|                            | QnA Maker-kezelés | App Service | Azure Cognitive Search | Korlátozások                      |
+| -------------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
+| **Experimentation**        | Ingyenes SKU             | Ingyenes szintű   | Ingyenes szintű    | Legfeljebb 2 Tudásbázis közzététele, 50 MB méretű  |
+| **Fejlesztési/tesztelési környezet**   | Standard termékváltozat         | Megosztott      | Alapszintű        | Legfeljebb 14 Tudásbázis közzététele, 2 GB méretű méret    |
+| **Éles környezet** | Standard termékváltozat         | Alapszintű       | Standard     | Közzététel akár 49 Tudásbázis, 25 GB méretű |
 
 ## <a name="recommended-settings"></a>Ajánlott beállítások
 
@@ -172,7 +172,7 @@ Ezeket a kulcsokat akkor használja, ha az API-kon keresztül kéri a szolgálta
 
 ![Kulcskezelés](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Name (Név)|Hely|Cél|
+|Név|Hely|Cél|
 |--|--|--|
 |Szerzői kulcs|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](https://go.microsoft.com/fwlink/?linkid=2092179)elérésére szolgálnak. Ezek az API-k lehetővé teszik a tudásbázisban található kérdések és válaszok szerkesztését, valamint a Tudásbázis közzétételét. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **kulcsok** oldalon található **Cognitive Services** erőforrásban.|
 |Lekérdezési végpont kulcsa|[QnA Maker portál](https://www.qnamaker.ai)|Ezekkel a kulcsokkal lekérdezheti a közzétett Tudásbázis-végpontot, hogy választ kapjon a felhasználó kérdéseire. Ezt a lekérdezési végpontot általában a csevegési robotjában vagy a QnA Maker szolgáltatáshoz csatlakozó ügyfélalkalmazás kódjában használja. Ezek a kulcsok akkor jönnek létre, amikor közzéteszi a QnA Maker tudásbázist.<br><br>Keresse meg ezeket a kulcsokat a **szolgáltatás beállításai** lapon. Keresse meg ezt a lapot a legördülő menüben található oldal jobb felső sarkában található felhasználó menüjében.|
