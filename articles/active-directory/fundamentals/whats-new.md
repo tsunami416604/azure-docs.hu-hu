@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f196c21869f4a2f12e28bc4d6c42b8c945ddde71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c6be98eeca4433798ad8ed2bacb9338331b112
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603672"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170445"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>A Azure Active Directory újdonságai
 
@@ -259,10 +259,9 @@ Bevezetünk egy új riskEventsTypes_v2 (string) tulajdonságot a bejelentkezése
 A **termék képességei:** Identitás-biztonsági & védelme
  
 
-A következő módosításokat hajtjuk végre az MFA e-mailes értesítésein a Cloud MFA és az MFA-kiszolgáló esetében:
+A következő módosításokat hajtjuk végre az MFA-ra vonatkozó MFA-e-mail-értesítések esetében:
 
-Az e-mail-értesítések a következő címről lesznek elküldve: azure-noreply@microsoft.com .
-Frissítjük a csalások riasztási e-mailek tartalmát, hogy jobban jelezzék a felhasználás feloldásához szükséges lépéseket.
+Az e-mail-értesítések a következő címről lesznek elküldve: azure-noreply@microsoft.com és msonlineservicesteam@microsoftonline.com . Frissítjük a csalások riasztási e-mailek tartalmát, hogy jobban jelezzék a felhasználás feloldásához szükséges lépéseket.
 
 ---
 

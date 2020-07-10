@@ -4,12 +4,12 @@ description: A Azure Batch alkalmazáscsomag funkciójának használatával egys
 ms.topic: how-to
 ms.date: 04/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cebb7bf001d16e1024ed466268758f0b1bc92c6c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 328b08acbc6d13dd03956bb501b4d4a51310c9c0
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955030"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86147222"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Alkalmazások üzembe helyezése számítási csomópontokhoz batch-alkalmazási csomagokkal
 
@@ -57,7 +57,7 @@ Az alkalmazás csomagjait a készlet és a feladat szintjein is megadhatja. Kés
 ### <a name="benefits-of-application-packages"></a>Az alkalmazáscsomag előnyei
 Az alkalmazáscsomag leegyszerűsítheti a kódot a Batch-megoldásban, és csökkentheti a tevékenységek által futtatott alkalmazások kezeléséhez szükséges terhelést.
 
-Az alkalmazáscsomag esetében a készlet indítási feladatának nem kell megadnia a csomópontokon telepítendő egyes erőforrás-fájlok hosszú listáját. Az alkalmazás fájljainak több verzióját sem kell manuálisan kezelnie az Azure Storage-ban vagy a csomópontjain. Emellett nem kell aggódnia a [sas URL-címeinek](../storage/common/storage-dotnet-shared-access-signature-part-1.md) létrehozásával, hogy hozzáférést biztosítson a Storage-fiókban található fájlokhoz. A Batch az Azure Storage háttérben működik az alkalmazáscsomag tárolásához és a számítási csomópontokon való üzembe helyezéséhez.
+Az alkalmazáscsomag esetében a készlet indítási feladatának nem kell megadnia a csomópontokon telepítendő egyes erőforrás-fájlok hosszú listáját. Az alkalmazás fájljainak több verzióját sem kell manuálisan kezelnie az Azure Storage-ban vagy a csomópontjain. Emellett nem kell aggódnia a [sas URL-címeinek](../storage/common/storage-sas-overview.md) létrehozásával, hogy hozzáférést biztosítson a Storage-fiókban található fájlokhoz. A Batch az Azure Storage háttérben működik az alkalmazáscsomag tárolásához és a számítási csomópontokon való üzembe helyezéséhez.
 
 > [!NOTE] 
 > Az indítási tevékenységek összesített mérete nem lehet nagyobb, mint 32768 karaktert, beleértve az erőforrásfájlokat és a környezeti változókat. Ha az indítási tevékenység meghaladja ezt a korlátot, az alkalmazáscsomag használata egy másik lehetőség. Létrehozhatja az erőforrás-fájlokat tartalmazó tömörített archívumot is, feltöltheti blobként az Azure Storage-ba, majd kicsomagolhatja az indítási feladat parancssorából. 
