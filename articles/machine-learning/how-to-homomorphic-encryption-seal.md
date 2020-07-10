@@ -1,22 +1,23 @@
 ---
-title: Titkosított következtetési szolgáltatás üzembe helyezése
+title: Titkosított következtetési szolgáltatás üzembe helyezése (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan helyezhet üzembe egy titkosított előrejelző szolgáltatást a Microsoft SEAL használatával a lemezképek besorolásához
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 05/18/2020
+ms.date: 07/09/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.custom: tracking-python
-ms.openlocfilehash: b92293973ac9b5027a9f1a10c2d19fd164c41e3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c67ddf2d82a1cebaaa43a90111f4a42edb20058e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560182"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206781"
 ---
-# <a name="how-to-deploy-an-encrypted-inferencing-web-service"></a>Titkosított viszonyítási webszolgáltatás üzembe helyezése
+# <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Titkosított viszonyítási webszolgáltatás üzembe helyezése (előzetes verzió)
 
 Megtudhatja, hogyan helyezhet üzembe egy lemezkép-besorolási modellt titkosított, [Azure Container instances](https://docs.microsoft.com/azure/container-instances/) (ACI) webszolgáltatásként. A webszolgáltatás egy Docker-tároló képe, amely tartalmazza a modell és a pontozási logikát.
 
@@ -27,7 +28,7 @@ Ebben az útmutatóban Azure Machine Learning szolgáltatást használ a követk
 > * Titkosított viszonyítási webszolgáltatás üzembe helyezése
 > * Tesztelési célú adatfeldolgozás
 > * Titkosított előrejelzések készítése
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 Az ACI nagyszerű megoldás a modell üzembe helyezési munkafolyamatának tesztelésére és megismerésére. Skálázható termelési környezetek esetén fontolja meg az Azure Kubernetes Service használatát. További információ: [a telepítés és a hol](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
 
@@ -318,7 +319,7 @@ Titkosított előrejelzések készítése:
     print ( ' Actual Label : ', y_test[sample_index])
     ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A mintában létrehozott webszolgáltatás törlése:
 

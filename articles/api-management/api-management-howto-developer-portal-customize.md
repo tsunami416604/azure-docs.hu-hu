@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 345b4950e25f48eb1a48c5e583908d0f771771ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79244094"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206247"
 ---
 # <a name="access-and-customize-developer-portal"></a>A fejlesztői portál elérése és testreszabása
 
@@ -130,6 +131,7 @@ A portál közzététele után a felügyeleti panellel megegyező URL-címen fé
 Engedélyeznie kell a CORS (több eredetű erőforrás-megosztást) az API-kon, hogy a portál látogatói a beépített interaktív konzolon keresztül tesztelje az API-kat. További részletekért tekintse meg [ezt a dokumentációt](api-management-howto-developer-portal.md#cors) .
 
 ## <a name="next-steps"></a>További lépések
+- [Optimalizálja és mentse a Felhőbeli kiadásait](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 További információ a fejlesztői portálról:
 

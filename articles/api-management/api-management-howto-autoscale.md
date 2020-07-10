@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8c1c96fdb1f4f42c7592791881b855f74d411171
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbdc81789fcd996774090f12523e7404c0aa0111
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70018283"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205852"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Az Azure API Management-példány automatikus skálázása  
 
@@ -81,7 +81,7 @@ Az alábbi lépéseket követve konfigurálhatja az Azure API Management szolgá
     | Idő összesítése      | Átlag           |                                                                                                                                                                                                                                                                                 |
     | Metrika neve           | Kapacitás          | A kapacitás mérőszáma egy Azure API Management metrika, amely az Azure API Management-példány erőforrásainak használatát tükrözi.                                                                                                                                                            |
     | Időfelbontási szint statisztikája  | Átlag           |                                                                                                                                                                                                                                                                                 |
-    | Operátor              | Nagyobb, mint      |                                                                                                                                                                                                                                                                                 |
+    | Művelet              | Nagyobb, mint      |                                                                                                                                                                                                                                                                                 |
     | Küszöbérték             | 80%               | Az átlagos kapacitási metrika küszöbértéke.                                                                                                                                                                                                                                 |
     | Időtartam (perc) | 30                | A TimeSpan átlagosan a kapacitás mérőszáma a használati mintákra jellemző. Minél hosszabb az időszak, annál simább lesz a reakció – az időszakos tüskék kevesebb hatással lesznek a kibővíthető döntésre. Ugyanakkor a kibővíthető triggert is késleltetni fogja. |
     | *Művelet*              |                   |                                                                                                                                                                                                                                                                                 |
@@ -108,7 +108,7 @@ Az alábbi lépéseket követve konfigurálhatja az Azure API Management szolgá
     | Idő összesítése      | Átlag           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Metrika neve           | Kapacitás          | A kibővítő szabályhoz használt metrika.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
     | Időfelbontási szint statisztikája  | Átlag           |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | Operátor              | Kisebb, mint         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | Művelet              | Kevesebb, mint         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Küszöbérték             | 35%               | A Felskálázási szabályhoz hasonlóan ez az érték nagy mértékben függ az Azure-API Management használati szokásaitól. |
     | Időtartam (perc) | 30                | A kibővítő szabályhoz használt érték megegyezik.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *Művelet*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -127,8 +127,9 @@ Az alábbi lépéseket követve konfigurálhatja az Azure API Management szolgá
 
     ![Azure Monitor skálázás a szabályban](media/api-management-howto-autoscale/07.png)
 
-13. Kattintson a **Save** (Mentés) gombra. Az autoskálázás konfigurálva van.
+13. Kattintson a **Mentés** gombra. Az autoskálázás konfigurálva van.
 
 ## <a name="next-steps"></a>További lépések
 
-+ [Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)
+- [Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)
+- [Optimalizálja és mentse a Felhőbeli kiadásait](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

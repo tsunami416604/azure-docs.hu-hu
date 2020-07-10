@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: a96e22ee8d2f9565ae676574e263beae96b5c1f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e00d6b674453f12f94a2859f9b0533aea0e7332c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809407"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207554"
 ---
 # <a name="load-balancer-health-probes"></a>A Load Balancer állapotmintái
 
@@ -29,8 +29,8 @@ Az állapotadatok több protokollt is támogatnak. Egy adott állapot mintavéte
 
 | | Standard termékváltozat | Alapszintű termékváltozat |
 | --- | --- | --- |
-| [Mintavételi típusok](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
-| [Mintavételezési viselkedés](#probedown) | Az összes TCP-folyamat folytatódik. | Az összes TCP-folyamat lejár. | 
+| **[Mintavételi típusok](#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
+| **[Mintavételezési viselkedés](#probedown)** | Az összes TCP-folyamat folytatódik. | Az összes TCP-folyamat lejár. | 
 
 
 >[!IMPORTANT]
@@ -92,8 +92,8 @@ Az elérhető protokollok a használt Load Balancer SKU-tól függnek:
 
 || TCP | HTTP | HTTPS |
 | --- | --- | --- | --- |
-| Standard termékváltozat |    &#9989; |   &#9989; |   &#9989; |
-| Alapszintű termékváltozat |   &#9989; |   &#9989; | &#10060; |
+| **Standard termékváltozat** |    &#9989; |   &#9989; |   &#9989; |
+| **Alapszintű termékváltozat** |   &#9989; |   &#9989; | &#10060; |
 
 ### <a name="tcp-probe"></a><a name="tcpprobe"></a>TCP-mintavétel
 
@@ -249,7 +249,7 @@ Ha több csatoló is van a virtuális gépen, akkor biztosítania kell, hogy vá
 
 Ne engedélyezze a [TCP-időbélyeget](https://tools.ietf.org/html/rfc1323).  A TCP-időbélyegek engedélyezése a virtuális gép vendég operációs rendszerének TCP-verem által eldobott TCP-csomagok meghibásodása esetén az állapot-ellenőrzéseket okozhatja, ami Load Balancer megjelöli a megfelelő végpontot.  A TCP-időbélyegek alapértelmezés szerint engedélyezve vannak a biztonsági megerősített virtuális gépek rendszerképein, és le kell tiltani őket.
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitorozás
 
 Mind a nyilvános, mind a belső [standard Load Balancer](load-balancer-standard-overview.md) a végpontok és a háttérbeli végpontok állapotának tesztelési állapota többdimenziós metrikák Azure monitoron keresztül. Ezeket a metrikákat más Azure-szolgáltatások vagy-partneri alkalmazások is felhasználhatják. 
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: acb7ff5c0862ceff8c73eaca92cc7000220eca41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 675038189fdc9c9626fee409a90e17341cf9b6cd
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738651"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207362"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Az erőforrás-hibaelhárítás bemutatása az Azure Network Watcher
 
@@ -25,7 +25,7 @@ Virtual Network átjárók kapcsolatot biztosítanak a helyszíni erőforrások 
 
 ![portál][2]
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A visszaadott előzetes eredmények átfogó képet adnak az erőforrás állapotáról. Mélyebb információk is megadhatók az erőforrásokhoz az alábbi szakaszban látható módon:
 
@@ -49,40 +49,40 @@ Az alábbi táblázatokban láthatók a különböző típusú hibák (azonosít
 
 | Hibatípus | Ok | Napló|
 |---|---|---|
-| NoFault | Ha nem észlelhető hiba |Yes|
-| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve |No|
-| PlannedMaintenance |  Az átjáró példánya karbantartás alatt áll  |No|
-| UserDrivenUpdate | Ez a hiba akkor lép fel, ha felhasználói frissítés van folyamatban. A frissítés lehet átméretezési művelet. | No |
-| VipUnResponsive | Ez a hiba akkor jelentkezik, ha az átjáró elsődleges példánya az állapotadat-mintavétel hibája miatt nem elérhető. | No |
-| PlatformInActive | A platformmal kapcsolatos probléma áll fenn. | No|
-| ServiceNotRunning | A mögöttes szolgáltatás nem fut. | No|
-| NoConnectionsFoundForGateway | Nem találhatók kapcsolatok az átjárón. Ez a hiba csak figyelmeztetés.| No|
-| ConnectionsNotConnected | A kapcsolatok nincsenek csatlakoztatva. Ez a hiba csak figyelmeztetés.| Yes|
-| GatewayCPUUsageExceeded | Az átjáró jelenlegi CPU-használata > 95%. | Yes |
+| NoFault | Ha nem észlelhető hiba |Igen|
+| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve |Nem|
+| PlannedMaintenance |  Az átjáró példánya karbantartás alatt áll  |Nem|
+| UserDrivenUpdate | Ez a hiba akkor lép fel, ha felhasználói frissítés van folyamatban. A frissítés lehet átméretezési művelet. | Nem |
+| VipUnResponsive | Ez a hiba akkor jelentkezik, ha az átjáró elsődleges példánya az állapotadat-mintavétel hibája miatt nem elérhető. | Nem |
+| PlatformInActive | A platformmal kapcsolatos probléma áll fenn. | Nem|
+| ServiceNotRunning | A mögöttes szolgáltatás nem fut. | Nem|
+| NoConnectionsFoundForGateway | Nem találhatók kapcsolatok az átjárón. Ez a hiba csak figyelmeztetés.| Nem|
+| ConnectionsNotConnected | A kapcsolatok nincsenek csatlakoztatva. Ez a hiba csak figyelmeztetés.| Igen|
+| GatewayCPUUsageExceeded | Az átjáró jelenlegi CPU-használata > 95%. | Igen |
 
 ### <a name="connection"></a>Kapcsolat
 
 | Hibatípus | Ok | Napló|
 |---|---|---|
-| NoFault | Ha nem észlelhető hiba |Yes|
-| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve |No|
-| PlannedMaintenance | Az átjáró példánya karbantartás alatt áll  |No|
-| UserDrivenUpdate | Ez a hiba akkor lép fel, ha felhasználói frissítés van folyamatban. A frissítés lehet átméretezési művelet.  | No |
-| VipUnResponsive | Ez a hiba akkor jelentkezik, ha az átjáró elsődleges példánya az állapotadat-mintavétel hibája miatt nem elérhető. | No |
-| ConnectionEntityNotFound | Hiányzik a kapcsolatok konfigurációja | No |
-| ConnectionIsMarkedDisconnected | A kapcsolat meg van jelölve "leválasztva" |No|
-| ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatáshoz nincs konfigurálva a hálózat. | Yes |
-| ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti állapotban van megjelölve.| Yes|
-| Hitelesítés | Nem megfelelő előmegosztott kulcs | Yes|
-| PeerReachability | A társ-átjáró nem érhető el. | Yes|
-| IkePolicyMismatch | A társ-átjáró olyan IKE-szabályzatokkal rendelkezik, amelyeket az Azure nem támogat. | Yes|
-| WfpParse hiba | Hiba történt a WFP-napló elemzése során. |Yes|
+| NoFault | Ha nem észlelhető hiba |Igen|
+| GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve |Nem|
+| PlannedMaintenance | Az átjáró példánya karbantartás alatt áll  |Nem|
+| UserDrivenUpdate | Ez a hiba akkor lép fel, ha felhasználói frissítés van folyamatban. A frissítés lehet átméretezési művelet.  | Nem |
+| VipUnResponsive | Ez a hiba akkor jelentkezik, ha az átjáró elsődleges példánya az állapotadat-mintavétel hibája miatt nem elérhető. | Nem |
+| ConnectionEntityNotFound | Hiányzik a kapcsolatok konfigurációja | Nem |
+| ConnectionIsMarkedDisconnected | A kapcsolat meg van jelölve "leválasztva" |Nem|
+| ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatáshoz nincs konfigurálva a hálózat. | Igen |
+| ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti állapotban van megjelölve.| Igen|
+| Hitelesítés | Nem megfelelő előmegosztott kulcs | Igen|
+| PeerReachability | A társ-átjáró nem érhető el. | Igen|
+| IkePolicyMismatch | A társ-átjáró olyan IKE-szabályzatokkal rendelkezik, amelyeket az Azure nem támogat. | Igen|
+| WfpParse hiba | Hiba történt a WFP-napló elemzése során. |Igen|
 
 ## <a name="supported-gateway-types"></a>Támogatott átjárók típusai
 
 A következő táblázat felsorolja, hogy mely átjárók és kapcsolatok támogatottak Network Watcher hibaelhárítás esetén:
 
-|  |  |
+| Átjáró vagy a kapcsolatok | Támogatott  |
 |---------|---------|
 |**Átjárótípusok**   |         |
 |VPN      | Támogatott        |

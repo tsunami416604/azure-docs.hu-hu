@@ -1,7 +1,7 @@
 ---
-title: Modul hibáinak elhárítása
+title: A Designer (előzetes verzió) modul hibáinak elhárítása
 titleSuffix: Azure Machine Learning
-description: A modul-kivételek hibakeresése Azure Machine Learning Designerben hibakódok használatával
+description: A modul hibakódjának hibakeresése Azure Machine Learning Designerben (előzetes verzió)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,11 +9,12 @@ ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 2e84d2f7c1a45f1ef18e5dc32b58d75bb17e2516
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b477fbf0744304b28b3f4ef06271ce7728800bf
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213754"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206986"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>A tervezőhöz tartozó kivételek és hibakódok (előzetes verzió)
 
@@ -1077,7 +1078,7 @@ A struktúra hibaüzenetét általában visszaküldi a rendszer a hibanaplóba, 
 + Ellenőrizze, hogy a lekérdezés megfelelően működik-e Azure Machine Learning a Hadoop-fürt kaptár-konzolján való bejelentkezéssel és a lekérdezés futtatásával.  
 + Próbálja meg egy külön sorban elhelyezni a megjegyzéseket a kaptár-parancsfájlban, szemben a végrehajtható utasítások és megjegyzések egyetlen sorba való keverésével.  
 
-### <a name="resources"></a>Erőforrások
+### <a name="resources"></a>Forrásanyagok
 
 A Machine learninghez készült kaptár-lekérdezésekkel kapcsolatos segítségért tekintse meg a következő cikkeket:
 

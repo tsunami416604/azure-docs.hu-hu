@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/6/2020
-ms.openlocfilehash: 130b19f280c69bfbe4ca49abe1bcba5db7f23caa
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 7/9/2020
+ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045960"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206946"
 ---
 # <a name="azure-sql-database-serverless"></a>Kiszolgáló nélküli Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -145,7 +145,7 @@ A fent felsorolt műveletek bármelyikét végző figyelési, felügyeleti és e
 
 Az automatikusan folytatott művelet az egyes szolgáltatási frissítések központi telepítése során is aktiválódik, amelyekhez az adatbázisnak online állapotra van szüksége.
 
-### <a name="connectivity"></a>Kapcsolatok
+### <a name="connectivity"></a>Kapcsolat
 
 Ha egy kiszolgáló nélküli adatbázis szüneteltetve van, akkor az első bejelentkezés folytatja az adatbázist, és egy hibaüzenetet ad vissza, amely azt jelzi, hogy az adatbázis nem érhető el a 40613-as hibakódú kóddal. Az adatbázis újraindítása után a bejelentkezést újra meg kell próbálni a kapcsolat létrehozásához. A kapcsolódási újrapróbálkozási logikával rendelkező adatbázis-ügyfeleket nem szükséges módosítani.
 
@@ -254,7 +254,7 @@ A maximális vagy a minimális virtuális mag, valamint az automatikus szünetel
 A maximális vagy a minimális virtuális mag módosítása, valamint az automatikus szüneteltetés késleltetése az az [SQL db Update](/cli/azure/sql/db#az-sql-db-update) paranccsal hajtható végre az Azure CLI-ben a `capacity` , `min-capacity` , és `auto-pause-delay` argumentumokkal.
 
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitorozás
 
 ### <a name="resources-used-and-billed"></a>Felhasznált erőforrások és számlázás
 
@@ -268,11 +268,11 @@ Az alkalmazáscsomag egy adatbázis külső erőforrás-kezelési határa, függ
 
 A felhasználói erőforráskészlet egy adatbázis belső erőforrás-kezelési határa, függetlenül attól, hogy az adatbázis kiszolgáló nélküli vagy kiépített számítási szinten van-e. A felhasználói erőforráskészlet hatóköre CPU és IO a DDL-lekérdezések által generált felhasználói számítási feladatokhoz, például LÉTREHOZÁSi és MÓDOSÍTÁSi, valamint DML-lekérdezések, például SELECT, INSERT, UPDATE és DELETE. Ezek a lekérdezések általában a kihasználtság legjelentősebb hányadát jelentik az alkalmazáscsomag keretében.
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 A kiszolgáló nélküli adatbázisok alkalmazáscsomag és felhasználói készlete erőforrás-használatának figyelésére szolgáló mérőszámok az alábbi táblázatban láthatók:
 
-|Entitás|Metric|Leírás|Egység|
+|Entitás|Metrika|Leírás|Egység|
 |---|---|---|---|
 |Alkalmazáscsomag|app_cpu_percent|Az alkalmazás által az alkalmazáshoz engedélyezett maximális virtuális mag képest használt virtuális mag százalékos aránya.|Százalék|
 |Alkalmazáscsomag|app_cpu_billed|A jelentési időszak során az alkalmazás számára számlázott számítási mennyiség. Az ebben az időszakban fizetett összeg a metrika terméke és a virtuális mag egység ára. <br><br>A metrika értékeit a rendszer a felhasznált CPU és a másodpercenként felhasznált memória maximális számának időbeli összesítésével határozza meg. Ha a felhasznált mennyiség kevesebb, mint a minimum virtuális mag és a minimális memória által beállított minimális mennyiség, akkor a kiosztott minimális összegért kell fizetnie.Ha a CPU-t számlázási célokra szeretné összehasonlítani a memóriával, a memória a virtuális mag-egységekbe van normalizálva azáltal, hogy a memória mennyiségét GB-ban, virtuális mag 3 GB-onként átméretezni.|Virtuális mag másodpercben|
@@ -324,6 +324,19 @@ A számlázott számítások mennyiségét a következő metrika teszi elérhet�
 - **Jelentéskészítés gyakorisága**: percenként
 
 Ezt a mennyiséget másodpercenként számítjuk ki, és 1 percenként összesítjük.
+
+### <a name="minimum-compute-bill"></a>Minimális számítási számla
+
+Ha egy kiszolgáló nélküli adatbázis szüneteltetve van, akkor a számítási számla nulla.  Ha egy kiszolgáló nélküli adatbázis nincs szüneteltetve, akkor a minimális számítási számla nem kevesebb, mint a Max (min. virtuális mag, minimális memória GB * 1/3) alapján megadott virtuális mag mennyisége.
+
+Példák:
+
+- Tegyük fel, hogy egy kiszolgáló nélküli adatbázis nincs szüneteltetve, és 8 maximális virtuális mag és 1 perc 3,0 GB-os memória-virtuális mag van konfigurálva.  Ezt követően a minimális számítási számla a Max (1 virtuális mag, 3,0 GB * 1 virtuális mag/3 GB) = 1 virtuális mag alapul.
+- Tegyük fel, hogy egy kiszolgáló nélküli adatbázis nincs szüneteltetve, és 4 maximális virtuális mag és 0,5 perces virtuális mag van konfigurálva, amely 2,1 GB-os memóriának felel meg.  Ezután a minimális számítási számla a Max (0,5 virtuális mag, 2,1 GB * 1 virtuális mag/3 GB) = 0,7 virtuális mag alapul.
+
+A kiszolgáló nélküli [Azure SQL Database árképzési számológép](https://azure.microsoft.com/pricing/calculator/?service=sql-database) használatával meghatározható a minimális memória, amely a maximális és a minimális virtuális mag-érték alapján állítható be.  Szabályként, ha a minimálisan konfigurált virtuális mag nagyobb, mint 0,5 virtuális mag, akkor a minimális számítási számla független a minimálisan konfigurált memóriától, és csak a beállított minimális virtuális mag számától függ.
+
+### <a name="example-scenario"></a>Példaforgatókönyv
 
 Vegyünk egy 1 perces virtuális mag és 4 maximális virtuális mag konfigurált kiszolgáló nélküli adatbázist.  Ez körülbelül 3 GB-os memória-és 12 GB-os maximális memória-értéknek felel meg.  Tegyük fel, hogy az automatikus szüneteltetés késleltetése 6 óra, az adatbázis-munkaterhelés pedig aktív a 24 órás időszak első 2 órájában, ellenkező esetben inaktív.    
 

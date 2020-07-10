@@ -5,11 +5,12 @@ description: Megtudhatja, hogyan hozhat létre és használhat statikus nyilván
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80803382"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205778"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-cím használata a kimenő forgalomhoz az Azure Kubernetes szolgáltatásban (ak)
 
@@ -22,6 +23,9 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat egy statikus
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
 Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a telepítésre és konfigurálásra.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+
+> [!IMPORTANT]
+> Ez a cikk az *alapszintű* SKU Load balancert használja egyetlen csomópontos készlettel. Ez a konfiguráció több csomópontos készlet esetében nem érhető el, mivel az *alapszintű* SKU Load Balancer több csomópontos készlet esetében nem támogatott. További információ a *standard* SKU Load Balancer használatáról: [nyilvános standard Load Balancer használata az Azure Kubernetes szolgáltatásban (ak)][slb] .
 
 ## <a name="egress-traffic-overview"></a>Kimenő forgalom áttekintése
 
@@ -92,7 +96,7 @@ Hozza létre a szolgáltatást és az üzembe helyezést a `kubectl apply` paran
 kubectl apply -f egress-service.yaml
 ```
 
-Ez a szolgáltatás egy új előtér-IP-címet konfigurál a Azure Load Balancer. Ha más IP-címek nincsenek konfigurálva, akkor az **összes** kimenő forgalomnak most ezt a címet kell használnia. Ha több cím van konfigurálva a Azure Load Balanceron, a kimenő forgalom a terheléselosztó első IP-címét használja.
+Ez a szolgáltatás egy új előtér-IP-címet konfigurál a Azure Load Balancer. Ha más IP-címek nincsenek konfigurálva, akkor az **összes** kimenő forgalomnak most ezt a címet kell használnia. Ha több cím van konfigurálva a Azure Load Balanceron, akkor ezek közül bármelyik nyilvános IP-cím a kimenő forgalomra jelölt, az egyik pedig véletlenszerűen van kiválasztva.
 
 ## <a name="verify-egress-address"></a>Kimenő forgalom ellenőrzésének ellenőrzése
 
@@ -133,3 +137,4 @@ Ha el szeretné kerülni a Azure Load Balancer több nyilvános IP-cím fenntart
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[slb]: load-balancer-standard.md

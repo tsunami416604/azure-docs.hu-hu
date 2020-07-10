@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: faf77411abca63516b00ac953bc7203da69f3ca9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d08d7a81fddfe70593c31ac3ebd2191679ea1220
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854087"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206364"
 ---
 # <a name="azure-load-balancer-skus"></a>SKU Azure Load Balancer
 
@@ -34,19 +34,19 @@ Az önálló virtuális gépeket, a rendelkezésre állási csoportokat és a Vi
 
 | | standard Load Balancer | Alapszintű Load Balancer |
 | --- | --- | --- |
-| [Háttérbeli készlet mérete](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer) | Legfeljebb 1000 példányt támogat. | Legfeljebb 300 példányt támogat. |
-| Háttérbeli készlet végpontjai | Bármely virtuális gép vagy virtuálisgép-méretezési csoport egyetlen virtuális hálózatban. | Egyetlen rendelkezésre állási csoport vagy virtuálisgép-méretezési csoport virtuális gépei. |
-| [Állapotminták](./load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
-| [Állapot-mintavételi leállási viselkedés](./load-balancer-custom-probe-overview.md#probedown) | A TCP-kapcsolatok egy példányon maradnak életben __, és__ az összes mintavétel le van kapcsolva. | A TCP-kapcsolatok egy példányon maradnak életben. Minden TCP-kapcsolat leáll, ha az összes mintavétel le van állítva. |
-| Rendelkezésre állási zónák | Zóna – redundáns és zónákhoz tartozó előtér a bejövő és kimenő forgalomhoz. | Nem érhető el |
-| Diagnosztika | [Többdimenziós metrikák Azure Monitor](./load-balancer-standard-diagnostics.md) | [Azure Monitor-naplók](./load-balancer-monitor-log.md) |
-| HA portok | [Belső Load Balancer számára elérhető](./load-balancer-ha-ports-overview.md) | Nem érhető el |
-| Alapértelmezés szerint biztonságos | Lezárva a bejövő folyamatokhoz, kivéve, ha a hálózati biztonsági csoport engedélyezi azt. Vegye figyelembe, hogy a VNet belső forgalma a belső terheléselosztó számára engedélyezett. | Alapértelmezés szerint megnyílik. A hálózati biztonsági csoport nem kötelező. |
-| Kimenő szabályok | [Deklaratív kimenő NAT-konfiguráció](./load-balancer-outbound-rules-overview.md) | Nem érhető el |
-| TCP alaphelyzetbe állítása üresjáratban | [Bármely szabályban elérhető](./load-balancer-tcp-reset.md) | Nem érhető el |
-| [Több előtér](./load-balancer-multivip-overview.md) | Bejövő és [kimenő](./load-balancer-outbound-connections.md) | Csak bejövő |
-| Felügyeleti műveletek | A legtöbb művelet < 30 másodperc | 60 – 90 + másodperc átlagos |
-| SLA | [99.99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Nem érhető el | 
+| **[Háttérbeli készlet mérete](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)** | Legfeljebb 1000 példányt támogat. | Legfeljebb 300 példányt támogat. |
+| **Háttérbeli készlet végpontjai** | Bármely virtuális gép vagy virtuálisgép-méretezési csoport egyetlen virtuális hálózatban. | Egyetlen rendelkezésre állási csoport vagy virtuálisgép-méretezési csoport virtuális gépei. |
+| **[Állapotminták](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
+| **[Állapot-mintavételi leállási viselkedés](./load-balancer-custom-probe-overview.md#probedown)** | A TCP-kapcsolatok egy példányon maradnak életben __, és__ az összes mintavétel le van kapcsolva. | A TCP-kapcsolatok egy példányon maradnak életben. Minden TCP-kapcsolat leáll, ha az összes mintavétel le van állítva. |
+| **Rendelkezésre állási zónák** | Zóna – redundáns és zónákhoz tartozó előtér a bejövő és kimenő forgalomhoz. | Nem érhető el |
+| **Diagnosztika** | [Többdimenziós metrikák Azure Monitor](./load-balancer-standard-diagnostics.md) | [Naplók Azure Monitor](./load-balancer-monitor-log.md) |
+| **HA portok** | [Belső Load Balancer számára elérhető](./load-balancer-ha-ports-overview.md) | Nem érhető el |
+| **Alapértelmezés szerint biztonságos** | Lezárva a bejövő folyamatokhoz, kivéve, ha a hálózati biztonsági csoport engedélyezi azt. Vegye figyelembe, hogy a VNet belső forgalma a belső terheléselosztó számára engedélyezett. | Alapértelmezés szerint megnyílik. A hálózati biztonsági csoport nem kötelező. |
+| **Kimenő szabályok** | [Deklaratív kimenő NAT-konfiguráció](./load-balancer-outbound-rules-overview.md) | Nem érhető el |
+| **TCP alaphelyzetbe állítása üresjáratban** | [Bármely szabályban elérhető](./load-balancer-tcp-reset.md) | Nem érhető el |
+| **[Több előtér](./load-balancer-multivip-overview.md)** | Bejövő és [kimenő](./load-balancer-outbound-connections.md) | Csak bejövő |
+| **Felügyeleti műveletek** | A legtöbb művelet < 30 másodperc | 60 – 90 + másodperc átlagos |
+| **SLA** | [99,99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Nem érhető el | 
 
 További információ: [Load Balancer korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). A Standard Load Balancerről további részleteket az [áttekintés](load-balancer-standard-overview.md), a [díjszabás](https://aka.ms/lbpricing) és az [SLA](https://aka.ms/lbsla) szakaszban talál.
 

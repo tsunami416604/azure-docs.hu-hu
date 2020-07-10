@@ -3,12 +3,12 @@ title: A Azure Site Recovery újdonságai
 description: A Azure Site Recovery szolgáltatás új szolgáltatásainak és legújabb frissítéseinek összefoglalása.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: f774dbd3172199e82509301f520eac4e25deb15b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3017be90e84441ad84c6a5a9d54498028388dffe
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131084"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206388"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
@@ -27,14 +27,13 @@ Site Recovery-összetevők esetében az N-4 verziót támogatjuk, ahol N a legú
 [45-es összesítés](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [43-es összesítés](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [42-es összesítés](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
-[41-es összesítés](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 
 [További](service-updates-how-to.md) információ a frissítések telepítéséről és támogatásáról.
 
 > [!NOTE]
 > A 44-es kumulatív frissítés nem jelenik meg a táblázatban, mert nem tartalmazta a Site Recovery szolgáltatók és ügynökök frissítéseit.
 
-## <a name="updates-june-2020"></a>Frissítések (2020. június)
+## <a name="updates-july-2020"></a>Frissítések (2020. július)
 
 ### <a name="update-rollup-47"></a>47-es kumulatív frissítés
 
@@ -244,7 +243,7 @@ A 38-es [kumulatív frissítés](https://support.microsoft.com/help/4513507/) a 
 **Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
 
 
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 
 A Site Recovery mostantól támogatja az általános célú v2 Storage-fiókok használatát a gyorsítótár-tároláshoz vagy a célhelyek tárolásához. Korábban csak a v1 támogatott.
 
@@ -551,6 +550,6 @@ Az ebben a hónapban hozzáadott funkciók összegzése a táblázatban láthat�
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Naprakészen tarthatja frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?product=site-recovery) oldalon.

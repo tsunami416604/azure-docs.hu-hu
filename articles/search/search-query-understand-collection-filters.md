@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 861e011c4bd368a274998859170e78cf444400a8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113070"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206174"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>A OData-gyűjtési szűrők ismertetése az Azure Cognitive Search
 
@@ -49,13 +50,17 @@ Az első ok a OData nyelv és a EDM típusának meghatározása. Az utolsó kett
 
 Ha összetett objektumok gyűjteményéhez több szűrési feltételt alkalmaz, a feltételek **korrelálnak** , mivel azok *a gyűjtemény egyes objektumaira*vonatkoznak. A következő szűrő például olyan szállodákat ad vissza, amelyek legalább egy deluxe szobával rendelkeznek, 100-nál kisebb sebességgel:
 
+```odata-filter-expr
     Rooms/any(room: room/Type eq 'Deluxe Room' and room/BaseRate lt 100)
+```
 
 Ha a szűrés nem *korrelált*, a fenti szűrő olyan szállodákat ad vissza, amelyekben egy szoba Deluxe, egy másik helyiség pedig 100-nál kisebb alapértékkel rendelkezik. Ez nem lenne értelme, mivel a lambda kifejezés mindkét záradéka ugyanarra a tartományra vonatkozik, azaz `room` . Ez az oka, hogy az ilyen szűrők korrelálnak.
 
 A teljes szöveges kereséshez azonban nincs mód arra, hogy egy adott tartomány változóra hivatkozzon. Ha a mezőhöz tartozó kereséssel [teljes Lucene-lekérdezést](query-lucene-syntax.md) szeretne kiadni:
 
+```odata-filter-expr
     Rooms/Type:deluxe AND Rooms/Description:"city view"
+```
 
 Előfordulhat, hogy a rendszer visszaküldi a szállodát, ahol az egyik szoba Deluxe, a leírásban pedig egy másik szoba a "City View" kifejezésre hivatkozik. Az alábbi dokumentum például megfelel `Id` `1` a lekérdezésnek:
 
@@ -148,19 +153,27 @@ Ezt az adatszerkezetet úgy tervezték, hogy nagy sebességgel válaszoljon egy 
 
 Az egyenlőségből való kiépítés után a következő lépésben megvizsgáljuk, hogyan lehet egyszerre több egyenlő ellenőrzést egyesíteni ugyanazon a tartományon belüli változóban `or` . Az algebra és [a mennyiségileg kiterjesztő tulajdonságának](https://en.wikipedia.org/wiki/Existential_quantification#Negation)köszönhetően működik. Ez a kifejezés:
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 egyenértékű a következővel:
 
+```odata-filter-expr
     seasons/any(s: s eq 'winter') or seasons/any(s: s eq 'fall')
+```
 
 a két `any` alkifejezést pedig hatékonyan lehet végrehajtani a fordított index használatával. Emellett a mennyiségi felmondás [törvényének köszönhetően a](https://en.wikipedia.org/wiki/Existential_quantification#Negation)következő kifejezés:
 
+```odata-filter-expr
     seasons/all(s: s ne 'winter' and s ne 'fall')
+```
 
 egyenértékű a következővel:
 
+```odata-filter-expr
     not seasons/any(s: s eq 'winter' or s eq 'fall')
+```
 
 Ezért lehetséges a `all` és a használata `ne` `and` .
 

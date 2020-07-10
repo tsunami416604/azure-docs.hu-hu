@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 2555719e13b0cba38150d3bce7a18f043158d5b5
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: dfce18674f382cb683fa74a1bed964e9f86d72c2
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970960"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206100"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>A rendszer által hozzárendelt felügyelt identitások használata Azure Cosmos DB-adat eléréséhez
 
@@ -40,7 +40,7 @@ Ebben a lépésben hozzárendel egy rendszerhez rendelt felügyelt identitást a
 
 Ebben a lépésben hozzárendel egy szerepkört a Function alkalmazás rendszerhez rendelt felügyelt identitásához. Azure Cosmos DB több beépített szerepkörrel rendelkezik, amelyeket hozzárendelhet a felügyelt identitáshoz. Ebben a megoldásban a következő két szerepkört fogja használni:
 
-|Beépített szerepkör  |Description  |
+|Beépített szerepkör  |Leírás  |
 |---------|---------|
 |[DocumentDB-fiók közreműködői](../role-based-access-control/built-in-roles.md#documentdb-account-contributor)|Felügyelheti Azure Cosmos DB fiókokat. Olvasási/írási kulcsok lekérését teszi lehetővé. |
 |[Cosmos DB fiók-olvasó szerepkör](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB fiókadatok olvasása. Lehetővé teszi az olvasási kulcsok lekérését. |
@@ -52,6 +52,8 @@ Ebben a lépésben hozzárendel egy szerepkört a Function alkalmazás rendszerh
 > Szerepkörök hozzárendeléséhez csak a szükséges hozzáférést rendelje hozzá. Ha a szolgáltatás csak az adatok olvasását igényli, akkor rendelje hozzá a **Cosmos db fiók-olvasó** szerepkört a felügyelt identitáshoz. A minimális jogosultsági szintű hozzáférés fontosságával kapcsolatos további információkért tekintse meg a [privilegizált fiókok alacsonyabb kitettségét](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) ismertető cikket.
 
 Ebben az esetben a Function alkalmazás beolvassa az akvárium hőmérsékletét, majd visszaírja azokat Azure Cosmos DB tárolóba. Mivel a Function alkalmazásnak meg kell írnia az adatfájlokat, hozzá kell rendelnie a **DocumentDB-fiók közreműködői** szerepkört. 
+
+### <a name="assign-the-role-using-azure-portal"></a>Szerepkör kiosztása Azure Portal használatával
 
 1. Jelentkezzen be a Azure Portalba, és lépjen a Azure Cosmos DB-fiókjához. Nyissa meg a **hozzáférés-vezérlés (iam)** ablaktáblát, majd a **szerepkör-hozzárendelések** lapot:
 
@@ -70,6 +72,18 @@ Ebben az esetben a Function alkalmazás beolvassa az akvárium hőmérsékletét
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="A szerepkör-hozzárendelés hozzáadása ablaktábla példákkal való feltöltését bemutató képernyőkép.":::
 
 1. Miután kiválasztotta a Function alkalmazást, válassza a **Mentés**lehetőséget.
+
+### <a name="assign-the-role-using-azure-cli"></a>Szerepkör kiosztása az Azure CLI használatával
+
+Ha a szerepkört az Azure CLI használatával szeretné hozzárendelni, használja a következő parancsokat:
+
+```azurecli-interactive
+$scope = az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id
+
+$principalId = az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId
+
+az role assignment create --assignee $principalId --role "DocumentDB Account Contributor" --scope $scope
+```
 
 ## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>Programozottan férhet hozzá a Azure Cosmos DB kulcsaihoz
 

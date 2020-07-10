@@ -6,11 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523764"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207186"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Rugalmasság és vészhelyreállítás
 
@@ -63,7 +64,11 @@ Figyelje meg, hogy a `optional` függvénynek átadott paraméter `AddAzureAppCo
 
 ## <a name="synchronization-between-configuration-stores"></a>A konfigurációs tárolók közötti szinkronizálás
 
-Fontos, hogy a Geo-redundáns konfiguráció tárolja az összes azonos adathalmazt. Az alkalmazás konfigurációja az **Exportálás** funkcióval az adatok az elsődleges tárolóból a másodlagos igény szerinti másolására használhatók. Ez a függvény a Azure Portal és a parancssori felületen egyaránt elérhető.
+Fontos, hogy a Geo-redundáns konfiguráció tárolja az összes azonos adathalmazt. A következő két módon valósítható meg:
+
+### <a name="backup-manually-using-the-export-function"></a>Manuális biztonsági mentés az exportálási függvény használatával
+
+Az alkalmazás konfigurációja az **Exportálás** funkcióval az adatok az elsődleges tárolóból a másodlagos igény szerinti másolására használhatók. Ez a függvény a Azure Portal és a parancssori felületen egyaránt elérhető.
 
 A Azure Portal az alábbi lépéseket követve elküldheti egy másik konfigurációs tároló módosítását.
 
@@ -71,15 +76,19 @@ A Azure Portal az alábbi lépéseket követve elküldheti egy másik konfigurá
 
 1. A megnyíló új panelen adja meg a másodlagos tároló előfizetés, erőforráscsoport és erőforrás nevét, majd kattintson az **alkalmaz**gombra.
 
-1. A felhasználói felület frissül, így kiválaszthatja, hogy milyen konfigurációs adatait szeretné exportálni a másodlagos tárolóba. Az alapértelmezett időértéket meghagyhatja, és a **címkéből** és a **címkéből** is megadhatja ugyanazt az értéket. Kattintson az **Alkalmaz** gombra.
+1. A felhasználói felület frissül, így kiválaszthatja, hogy milyen konfigurációs adatait szeretné exportálni a másodlagos tárolóba. Meghagyhatja az alapértelmezett időértéket, és a **címkéből** és a **címkéből** is megadhatja ugyanazt az értéket. Kattintson az **Alkalmaz** gombra. Ismételje meg ezt az elsődleges tároló összes címkéjén.
 
-1. Ismételje meg az előző lépéseket az összes konfigurációs módosításnál.
+1. Ha módosítja a konfigurációt, ismételje meg a fenti lépéseket.
 
-Az exportálási folyamat automatizálásához használja az Azure CLI-t. A következő parancs bemutatja, hogyan exportálhat egyetlen konfigurációs változást az elsődleges tárolóból a másodlagosra:
+Az exportálási folyamat az Azure CLI használatával is elérhető. A következő parancs bemutatja, hogyan exportálhatja az összes konfigurációt az elsődleges tárolóból a másodlagosra:
 
 ```azurecli
-    az appconfig kv export --destination appconfig --name {PrimaryStore} --label {Label} --dest-name {SecondaryStore} --dest-label {Label}
+    az appconfig kv export --destination appconfig --name {PrimaryStore} --dest-name {SecondaryStore} --label * --preserve-labels -y
 ```
+
+### <a name="backup-automatically-using-azure-functions"></a>Automatikus biztonsági mentés Azure Functions használatával
+
+A biztonsági mentési folyamat Azure Functions használatával automatizálható. Az alkalmazás konfigurációjában Azure Event Grid integrációját használja. A beállítás után az alkalmazás konfigurációja közzéteszi az eseményeket, hogy Event Grid a konfigurációs tárolóban lévő kulcs-értékekben végrehajtott módosításokat. Így egy Azure Functions alkalmazás ennek megfelelően megfigyelheti ezeket az eseményeket, és biztonsági másolatot készíthet az adatbiztonsági mentésről. További részletekért tekintse meg az [alkalmazás-konfigurációs tárolók automatikus biztonsági mentését](./howto-backup-config-store.md)ismertető oktatóanyagot.
 
 ## <a name="next-steps"></a>További lépések
 

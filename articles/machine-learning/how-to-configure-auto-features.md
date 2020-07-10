@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa348728cd4e9ac0ce5d70cb293ac850cc549666
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11bb692027d8a2e5033c7bdaf8eb2c565d1562b0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817131"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205700"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization az automatizált gépi tanulásban
 
@@ -45,7 +45,7 @@ A Python SDK-val konfigurált kísérletek esetében engedélyezheti vagy letilt
 
 A következő táblázat a `featurization` [AutoMLConfig osztály](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)elfogadott beállításait mutatja be:
 
-|Featurization-konfiguráció | Description|
+|Featurization-konfiguráció | Leírás|
 ------------- | ------------- |
 |`"featurization": 'auto'`| Azt határozza meg, hogy az előfeldolgozás részeként a rendszer automatikusan végrehajtja az [guardrails és a featurization lépéseket](#featurization) . Ez az alapértelmezett beállítás.|
 |`"featurization": 'off'`| Meghatározza, hogy a featurization lépések ne legyenek automatikusan elvégezve.|
@@ -60,7 +60,7 @@ Az alábbi táblázat összefoglalja az adataira automatikusan alkalmazott techn
 > [!NOTE]
 > Ha úgy tervezi, hogy a AutoML által létrehozott modelleket egy [ONNX-modellbe](concept-onnx.md)exportálja, csak a csillaggal ("*") jelölt featurization-beállítások támogatottak a ONNX formátumban. További információ a [modellek ONNX való átalakításáról](concept-automated-ml.md#use-with-onnx).
 
-|Featurization &nbsp; lépések| Description |
+|Featurization &nbsp; lépések| Leírás |
 | ------------- | ------------- |
 |**A nagyfokú és a variancia nélküli funkciók eldobása*** |Ezeket a funkciókat a betanítási és az ellenőrzési készletekből dobja el. Az összes hiányzó értékkel rendelkező szolgáltatásokra vonatkozik, amelyek az összes sorban azonos értékkel rendelkeznek, vagy magas fokú (például kivonatok, azonosítók vagy GUID azonosítók).|
 |**Hiányzó értékek imputált értéke*** |Numerikus funkciók esetében az érték az oszlopban szereplő értékek átlagát tartalmazza.<br/><br/>A kategorikus funkciók esetében a leggyakoribb értékkel kell eltulajdonítani a bevonást.|
@@ -104,7 +104,7 @@ A következő táblázat ismerteti a jelenleg támogatott guardrails, valamint a
 Guardrail|Állapot|Trigger feltétele &nbsp; &nbsp;
 ---|---|---
 **Hiányzó szolgáltatási értékek imputálási** |Telt <br><br><br> Kész| A betanítási adatok nem észleltek hiányzó szolgáltatási értékeket. További információ a [hiányzó értékű imputálási.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> A rendszer hiányzó szolgáltatási értékeket észlelt a betanítási adatokban, és imputáltak voltak.
-**Magas fokú szolgáltatások kezelését** |Telt <br><br><br> Kész| A rendszer elemezte a bemeneteket, és nem észlelt magas szintű funkciókat. További információ a [magas szintű funkciók észleléséről](#automatic-featurization). <br><br> A rendszer a Kiemelt funkciókat észlelte a bemenetekben, és kezelte azokat.
+**Magas fokú szolgáltatások kezelését** |Telt <br><br><br> Kész| A rendszer elemezte a bemeneteket, és nem észlelt magas szintű funkciókat. <br><br> A rendszer a Kiemelt funkciókat észlelte a bemenetekben, és kezelte azokat.
 **Ellenőrzés felosztásának ellenőrzése** |Kész| Az érvényesítési konfiguráció értékre lett állítva `'auto'` , a betanítási adatként pedig *kevesebb, mint 20 000 sor*szerepel. <br> A betanított modell minden egyes iterációját kereszt-ellenőrzéssel érvényesíti a program. További információ az [érvényesítési](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data)információkról. <br><br> Az érvényesítési konfiguráció értékre lett állítva `'auto'` , a betanítási adatként pedig *több mint 20 000 sor*szerepel. <br> A bemeneti adatok egy betanítási adatkészletbe és egy ellenőrzési adatkészletbe vannak osztva a modell érvényesítéséhez.
 **Osztály kiegyensúlyozásának észlelése** |Telt <br><br><br><br><br> Riasztást kap | A rendszer elemezte a bemeneteket, és az összes osztály kiegyensúlyozottan szerepel a betanítási adatokban. Az adatkészletek akkor tekinthetők kiegyensúlyozottnak, ha az egyes osztályok jó ábrázolással rendelkeznek az adatkészletben, a minták számával és arányával mérve. <br><br><br> A rendszer kiegyensúlyozatlan osztályokat észlelt a bemenetekben. A modell torzításának javításához javítsa ki a kiegyenlítési problémát. További információ a [kiegyensúlyozatlan adatvédelemről](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data).
 **Memória-problémák észlelése** |Telt <br><br><br><br> Kész |<br> A kiválasztott értékeket (horizont, lag, gördülő ablak) elemezték, és a rendszer nem észlelt memóriabeli problémákat. További információ az idősorozat- [előrejelzési konfigurációkról](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment). <br><br><br>A kiválasztott értékeket (horizont, lag, gördülő ablak) elemezte a rendszer, és a kísérlet miatt kifogyhat a memória. A késés vagy a működés közbeni ablak konfigurációk ki lettek kapcsolva.

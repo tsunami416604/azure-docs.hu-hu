@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: 29f8a7823207f5571acc345bc6234a318342b173
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207855"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207164"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>A bejövő adatkezelővel kapcsolatos gyakori kérdések és problémák elhárítása
 
 A [Azure Cloud Shell](https://shell.azure.com/) a legkényelmesebb módszer az AK-val és a AGIC-telepítéssel kapcsolatos problémák elhárítására. Indítsa el a rendszerhéjt a [shell.Azure.com](https://shell.azure.com/) , vagy kattintson a hivatkozásra:
 
-[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
+[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)
 
 
 ## <a name="test-with-a-simple-kubernetes-app"></a>Tesztelés egyszerű Kubernetes alkalmazással
@@ -26,7 +26,7 @@ A [Azure Cloud Shell](https://shell.azure.com/) a legkényelmesebb módszer az A
 Az alábbi lépések feltételezik:
   - Van egy AK-fürtje, amelyen engedélyezve van a speciális hálózatkezelés
   - A AGIC telepítve van az AK-fürtön
-  - Már hav egy Application Gatewayt az AK-fürttel megosztott VNET
+  - Már rendelkezik egy Application Gateway az AK-fürttel megosztott VNET
 
 Annak ellenőrzéséhez, hogy a Application Gateway + AK + AGIC telepítése helyesen van-e beállítva, telepítse a legegyszerűbb lehetséges alkalmazást:
 
@@ -118,7 +118,7 @@ Application Gateway a következő konfigurációt fogja alkalmazni:
 Végül a `cURL` parancsot a [Cloud Shellon](https://shell.azure.com/) belül is használhatja az újonnan telepített ALKALMAZÁShoz való http-kapcsolat létesítéséhez:
 
 1. `kubectl get ingress`A Application Gateway nyilvános IP-címének lekéréséhez használja
-2. A(z) `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>` használata
+2. A `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>` használata
 
 ![hüvely](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
 
@@ -236,7 +236,7 @@ Az 5. szint viszont az összes naplót megjeleníti, beleértve az ARM-re alkalm
 A Kubernetes-Közösség 9 naplózási szintet létesített a [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) eszközhöz. Ebben a tárházban ezek közül hármat használunk, hasonló szemantikai megoldásokkal:
 
 
-| Részletesség | Description |
+| Részletesség | Leírás |
 |-----------|-------------|
 |  1        | Alapértelmezett naplózási szint; indítási részletek, figyelmeztetések és hibák megjelenítése |
 |  3        | Részletes információk az eseményekről és a változásokról; létrehozott objektumok listája |

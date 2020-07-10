@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 36f416183bd44180bee59142714e924e0ac8fefe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf41232026fcb51e63cb68d6f42b7b66d14022e1
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830043"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207784"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple-riasztások megtekintése és kezelése a StorSimple Eszközkezelő szolgáltatással
 
@@ -199,8 +199,8 @@ Ha a Felhőbeli kapcsolat nem sikerül a StorSimple éles eszközén, akkor az e
 
 ### <a name="performance-alerts"></a>Teljesítmény-riasztások
 
-| Riasztás szövege | Esemény | További információ/javasolt műveletek | |
-|:--- |:--- |:--- | --- |
+| Riasztás szövege | Esemény | További információ/javasolt műveletek |
+|:--- |:--- |:--- |
 | Az eszköz terhelése túllépte <*küszöbértéket*>. |A vártnál lassabb válaszidő. |Az eszköz egy nagy mennyiségű bemeneti/kimeneti terhelés alatt jelenti a kihasználtságot. Ez azt eredményezheti, hogy az eszköz nem működik, illetve. Tekintse át az eszközhöz csatolt munkaterheléseket, és állapítsa meg, hogy vannak-e olyanok, amelyek áthelyezhetők egy másik eszközre, vagy amelyekre már nincs szükség.|
 | Nem lehetett elindítani a StorSimple szolgáltatás (oka) t. |DataPath hiba |Ha a probléma továbbra is fennáll, forduljon a Microsoft ügyfélszolgálatahoz. |
 

@@ -3,20 +3,20 @@ title: 'Gyors útmutató: leképezés a REST API-kkal – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Ebben a REST API rövid útmutatóban egy elérhető nyilvános LUIS-alkalmazás használatával határozhatja meg, hogy a felhasználó milyen szándéka van a társalgási szövegben.
 services: cognitive-services
-author: roy-har
+author: nitinme
 manager: diberry
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/19/2020
-ms.author: v-royha
-ms.openlocfilehash: 8248d441add1af39ab9d2d08a6dba85055f254b6
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.author: nitinme
+ms.openlocfilehash: 714d76641dd22f566b2464e3470f6a3324f4d758
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119587"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207180"
 ---
 # <a name="quickstart-use-curl-and-rest-to-get-intent"></a>Rövid útmutató: a cURL és a REST használata a szándék beszerzéséhez
 
@@ -79,7 +79,7 @@ A cURL használatával lekérdezheti az [előrejelzési végpontot](https://aka.
 
 1. Cserélje le az értékeket a `***YOUR-` saját értékeivel kezdődő értékekre.
 
-    |Információ|Szerep|
+    |Tájékoztatás|Rendeltetés|
     |--|--|
     |`***YOUR-PREDICTION-ENDPOINT***`| Az előrejelzési URL-végpont. A LUIS-portálon, az alkalmazás Azure-erőforrások lapján található.<br>Például: `https://westus.api.cognitive.microsoft.com/`.|
     |`***YOUR-APP-ID***`|Az alkalmazás azonosítója. A LUIS-portálon, az alkalmazás Alkalmazásbeállítások lapján található.

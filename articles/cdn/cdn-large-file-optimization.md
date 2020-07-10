@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 22ec4058d9485858489162af223bb6d6c381797e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0fb136b6c37c8ef14f85455431fea80099088936
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887654"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206711"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Nagyméretű fájlok letöltésének optimalizálása Azure CDN
 
@@ -107,11 +107,10 @@ A CDN gyorsítótárazza a kapott adattömböket. A teljes fájlt nem kell gyors
 ### <a name="caching"></a>Gyorsítótárazás
 A nagyméretű fájlok optimalizálása az általános webes kézbesítéstől eltérő alapértelmezett gyorsítótárazási lejárati időt használ. Különbséget tesz a pozitív gyorsítótárazás és a negatív gyorsítótárazás között a HTTP-válaszok kódjai alapján. Ha a forráskiszolgáló lejárati időt határoz meg egy gyorsítótár-vezérlőelem vagy a lejárati fejléc között a válaszban, a CDN kiértékeli ezt az értéket. Ha nem adja meg a forrást, és a fájl megfelel az optimalizálási típus típus-és méretének, a CDN a nagyméretű fájlok optimalizálásának alapértelmezett értékeit használja. Ellenkező esetben a CDN az általános webes kézbesítés alapértelmezett értékeit használja.
 
-
-|    | Általános web | Nagyméretű fájlok optimalizálása 
+| Gyorsítótárazás  | Általános web | Nagyméretű fájlok optimalizálása 
 --- | --- | --- 
 Gyorsítótárazás: pozitív <br> HTTP 200, 203, 300, <br> 301, 302 és 410 | 7 nap |1 nap  
-Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | None | 1 másodperc 
+Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | Nincsenek | 1 másodperc 
 
 ### <a name="deal-with-origin-failure"></a>A származási hiba kezelése
 
@@ -123,7 +122,7 @@ Ha a kapcsolat időtúllépés miatt megszakad, a CDN többször próbálkozik, 
 
 A következő táblázat felsorolja a nagyméretű fájl-optimalizáláshoz teljesítendő feltételek készletét:
 
-Állapot | Értékek 
+Feltétel | Érték 
 --- | --- 
 Támogatott fájltípusok | 3g2, 3GP, ASF, AVI, BZ2, DMG, exe, F4V, FLV, <br> GZ, HDP, ISO, jxr, M4V, MKV, MOV, MP4, <br> MPEG, MPG, MTS, pkg, QT, RM, SWF, Tar, <br> tgz, WDP, WebM, WebP, WMA, WMV, zip  
 Minimális fájlméret | 10 MB 

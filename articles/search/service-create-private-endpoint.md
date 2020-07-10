@@ -8,11 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466170"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206897"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Hozzon létre egy privát végpontot biztonságos kapcsolódáshoz az Azure Cognitive Search
 
@@ -45,7 +46,7 @@ Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot
     | ------- | ----- |
     | Előfizetés | Az előfizetés kiválasztása|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra** . |
-    | Name | *MyVirtualNetwork* megadása |
+    | Név | *MyVirtualNetwork* megadása |
     | Régió | Válassza ki a kívánt régiót |
     |||
 
@@ -85,11 +86,11 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | Előfizetés | Válassza ki az előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | Hely | Válassza az **USA nyugati**régiója lehetőséget.|
-    | Name | Adja meg a *myPrivateEndpoint*.  |
+    | Név | Adja meg a *myPrivateEndpoint*.  |
     | Cél alerőforrása | Hagyja meg az alapértelmezett **searchService**. |
     | **HÁLÓZATI** |  |
-    | Virtuális hálózat  | Válassza ki a *MyVirtualNetwork* az erőforráscsoport *myResourceGroup*. |
-    | Alhálózat | Válassza a *mySubnet*lehetőséget. |
+    | Virtuális hálózat  | Válassza ki a *MyVirtualNetwork* az erőforráscsoport *myResourceGroup*. |
+    | Alhálózat | Válassza a *mySubnet*lehetőséget. |
     | **MAGÁNHÁLÓZATI DNS-INTEGRÁCIÓ** |  |
     | Integrálás saját DNS-zónával  | Hagyja meg az alapértelmezett **Igen értéket**. |
     | Privát DNS-zóna  | Hagyja meg az alapértelmezett * * (új) privatelink.search.windows.net * * értéket. |
@@ -97,7 +98,7 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
 
 1. Válassza az **OK** lehetőséget. 
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
+1. Válassza az **Áttekintés és létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
 
 1. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget. 
 
@@ -122,7 +123,7 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | Virtuális gép neve | Adja meg a *myVm*. |
     | Régió | Válassza az **USA nyugati** régiója vagy bármely Ön által használt régiót. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Kép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
+    | Rendszerkép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
     | **RENDSZERGAZDAI FIÓK** |  |
     | Felhasználónév | Adja meg a választott felhasználónevet. |
@@ -151,7 +152,7 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | Bejövő portok kiválasztása | Válassza a **http** és az **RDP**lehetőséget.|
     ||
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
+1. Válassza az **Áttekintés és létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
 
 1. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget. 
 
@@ -164,7 +165,7 @@ Töltse le, majd kapcsolódjon a virtuális gép *myVm* a következőképpen:
 
 1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
 
-1. Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll (*. rdp*) fájlt, és letölti a számítógépre.
+1. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (*. rdp*) fájlt, és letölti a számítógépre.
 
 1. Nyissa meg a letöltött. rdp fájlt.
 
@@ -188,7 +189,7 @@ Ebben a szakaszban ellenőrzi, hogy a magánhálózati hozzáférés a keresési
 
 Ha a keresési szolgáltatás végpontja privát, egyes portál-funkciók le vannak tiltva. Megtekintheti és kezelheti a szolgáltatási szint beállításait, de a portál hozzáférése az indexhez és a szolgáltatás különböző egyéb összetevőihez, például az index, az indexelő és a készségkészlet-definíciók biztonsági okokból korlátozottak.
 
-1. A *myVM*távoli asztal nyissa meg a PowerShellt.
+1. A *myVM*távoli asztal nyissa meg a PowerShellt.
 
 1. Adja meg az "nslookup [Search szolgáltatás neve]. Search. Windows. net" kifejezést.
 
@@ -206,11 +207,11 @@ Ha a keresési szolgáltatás végpontja privát, egyes portál-funkciók le van
 
 1. A virtuális gép gyors üzembe helyezésének befejezésével megerősíti, hogy a szolgáltatás teljesen működőképes.
 
-1. A távoli asztali kapcsolat bezárásával *myVM*. 
+1. A távoli asztali kapcsolat bezárásával *myVM*. 
 
 1. Annak ellenőrzéséhez, hogy a szolgáltatás nem érhető el nyilvános végponton, nyissa meg a Poster szolgáltatást a helyi munkaállomáson, és próbálja meg a gyors útmutató első több feladatát. Ha hibaüzenet jelenik meg arról, hogy a távoli kiszolgáló nem létezik, sikeresen konfigurált egy magánhálózati végpontot a keresési szolgáltatáshoz.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 Ha végzett a privát végpont, a Search szolgáltatás és a virtuális gép használatával, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
 1. Adja meg a *myResourceGroup*a   portál tetején található **keresőmezőbe** , és válassza a *myResourceGroup*lehetőséget   a keresési eredmények közül. 
 1. Válassza az **Erőforráscsoport törlése** elemet. 

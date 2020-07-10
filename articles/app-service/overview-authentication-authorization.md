@@ -3,14 +3,15 @@ title: Hitelesítés és engedélyezés
 description: Ismerje meg a Azure App Service és Azure Functions beépített hitelesítési és engedélyezési támogatását, valamint azt, hogy miként védheti meg alkalmazásait a jogosulatlan hozzáférés ellen.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9588777305ca42603623075b908eee5d76164c84
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196437"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206756"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés Azure App Service és Azure Functions
 
@@ -30,11 +31,11 @@ A biztonságos hitelesítés és az engedélyezés a biztonság alapos megismer�
 
 A natív Mobile apps szolgáltatással kapcsolatos információkért lásd: a [felhasználói hitelesítés és a mobileszközök engedélyezése a Azure app Service](../app-service-mobile/app-service-mobile-auth.md)használatával.
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>A működési elv
 
 A hitelesítési és engedélyezési modul ugyanazon a Sandboxon fut, mint az alkalmazás kódja. Ha engedélyezve van, minden bejövő HTTP-kérelem áthalad az alkalmazás kódjának kezelése előtt.
 
-![](media/app-service-authentication-overview/architecture.png)
+![Architektúra-diagram, amely azt mutatja, hogy egy folyamat által elfogott kérelmeket a rendszer a helyhez tartozó homokozóban, amely az identitás-szolgáltatókkal kommunikál, mielőtt engedélyezi a forgalmat az üzembe helyezett hely felé](media/app-service-authentication-overview/architecture.png)
 
 Ez a modul több dolgot kezel az alkalmazásban:
 
@@ -81,8 +82,11 @@ App Service [összevont identitást](https://en.wikipedia.org/wiki/Federated_ide
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
+| Bármely [OpenID Connect](https://openid.net/connect/) -szolgáltató (előzetes verzió) | `/.auth/login/<providerName>` |
 
-Ha engedélyezi a hitelesítést és az engedélyezést ezen szolgáltatók egyikével, a bejelentkezési végpontja elérhetővé válik a felhasználói hitelesítéshez és a szolgáltatótól származó hitelesítési jogkivonatok érvényesítéséhez. Megadhatja, hogy a felhasználók tetszőleges számú bejelentkezési lehetőséget biztosítson könnyedén. Egy másik identitás-szolgáltatót vagy [saját egyéni identitási megoldást][custom-auth]is integrálhat.
+Ha engedélyezi a hitelesítést és az engedélyezést ezen szolgáltatók egyikével, a bejelentkezési végpontja elérhetővé válik a felhasználói hitelesítéshez és a szolgáltatótól származó hitelesítési jogkivonatok érvényesítéséhez. Megadhatja, hogy a felhasználók tetszőleges számú bejelentkezési lehetőséget biztosítson könnyedén.
+
+Létezik egy [örökölt bővíthetőségi útvonal][custom-auth] , amely integrálható más identitás-szolgáltatókkal vagy egyéni hitelesítési megoldással, de ez nem ajánlott. Ehelyett érdemes lehet az OpenID Connect támogatását használni.
 
 ## <a name="authentication-flow"></a>Hitelesítési folyamat
 
@@ -112,7 +116,7 @@ Az ügyféloldali böngészők esetében a App Service automatikusan irányítha
 
 A [Azure Portalban](https://portal.azure.com)számos viselkedést konfigurálhat app Service engedélyezéshez, ha a bejövő kérelem nincs hitelesítve.
 
-![](media/app-service-authentication-overview/authorization-flow.png)
+![A "végrehajtandó művelet, ha a kérés nem hitelesítve" legördülő lista](media/app-service-authentication-overview/authorization-flow.png)
 
 A következő címsorok leírják a beállításokat.
 
@@ -150,13 +154,14 @@ Szolgáltatóra vonatkozó útmutatók:
 * [Az alkalmazás konfigurálása a Google-bejelentkezés használatára][Google]
 * [Az alkalmazás konfigurálása a Microsoft-fiókbejelentkezés használatára][MSA]
 * [Az alkalmazás konfigurálása a Twitter-bejelentkezés használatára][Twitter]
-* [Útmutató: egyéni hitelesítés használata az alkalmazáshoz][custom-auth]
+* [Az alkalmazás konfigurálása OpenID Connect-szolgáltató használatára a bejelentkezéshez (előzetes verzió)][OIDC]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
 [Google]: configure-authentication-provider-google.md
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
+[OIDC]: configure-authentication-provider-openid-connect.md
 
 [custom-auth]: ../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#custom-auth
 

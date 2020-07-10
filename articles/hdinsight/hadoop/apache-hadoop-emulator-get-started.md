@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: e918740c884f377048febfe2177e2fe956b1d552
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: de2a8e6377ababadc7d42f873a816a01a8f3b77e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085055"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207471"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Ismerkedjen meg egy Apache Hadoop homokozóval, amely egy virtuális gépen futó emulátor
 
@@ -57,7 +57,9 @@ A régebbi verziójú HDP letöltéséhez tekintse meg a **régebbi verziók**al
 
 2. Miután bejelentkezett, adja meg a következő parancsot:
 
-        ambari-admin-password-reset
+    ```bash
+    ambari-admin-password-reset
+    ```
 
     Ha a rendszer kéri, adjon meg egy jelszót a Ambari-rendszergazdai fiókhoz. Ez akkor használatos, amikor hozzáfér a Ambari webes felhasználói felületéhez.
 
@@ -65,13 +67,21 @@ A régebbi verziójú HDP letöltéséhez tekintse meg a **régebbi verziók**al
 
 1. A következő parancs használatával indítsa el a kaptár rendszerhéját egy, a homokozóhoz csatlakozó SSH-kapcsolatban:
 
-        hive
+    ```bash
+    hive
+    ```
+
 2. A rendszerhéj elindítása után a következő paranccsal tekintheti meg a homokozóban elérhető táblákat:
 
-        show tables;
+    ```hiveql
+    show tables;
+    ```
+
 3. A következő paranccsal kérhet le 10 sort a `sample_07` táblából:
 
-        select * from sample_07 limit 10;
+    ```hiveql
+    select * from sample_07 limit 10;
+    ```
 
 ## <a name="next-steps"></a>További lépések
 

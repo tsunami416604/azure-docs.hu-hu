@@ -8,11 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0348461e2a58bd8e71b8dff10667c512125d7b03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9160ab530037da1f24a2f07903b949b42ecbb34b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656709"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207076"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Key Vault létrehozása és konfigurálása az Azure Disk Encryptionhöz
 
@@ -22,6 +23,9 @@ A Azure Disk Encryption a Azure Key Vault használatával vezérli és kezeli a 
 > - Ha korábban már használta Azure Disk Encryption az Azure AD-vel egy virtuális gép titkosításához, akkor továbbra is ezt a beállítást kell használnia a virtuális gép titkosításához. További részletekért lásd: [kulcstartó létrehozása és konfigurálása az Azure Disk Encryptionhoz az Azure ad-vel (előző kiadás)](disk-encryption-key-vault-aad.md) .
 
 A Key Vault létrehozásához és konfigurálásához Azure Disk Encryption a következő három lépésből áll:
+
+> [!Note]
+> A Azure Key Vault hozzáférési házirend beállításainál válassza a beállítás lehetőséget a kötetek titkosításához Azure Disk Encryption való hozzáférés engedélyezéséhez.
 
 1. Ha szükséges, hozzon létre egy erőforráscsoportot.
 2. Kulcstartó létrehozása. 

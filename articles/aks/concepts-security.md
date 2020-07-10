@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: 15bd0791917ca95e61a441b71947b70c81c0598e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0fe0803b0961b3aaa89627823b4867fac0d5d61
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831539"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206314"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) található alkalmazások és fürtök biztonsági fogalmai
 
@@ -19,11 +19,16 @@ Ha az alkalmazás számítási feladatait az Azure Kubernetes szolgáltatásban 
 
 Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyekkel biztonságossá teheti alkalmazásait az AK-ban:
 
-- [Fő összetevők biztonsága](#master-security)
-- [Csomópont biztonsága](#node-security)
-- [Fürt frissítései](#cluster-upgrades)
-- [Hálózati biztonság](#network-security)
-- [A Kubernetes titkos kódjai](#kubernetes-secrets)
+- [Az Azure Kubernetes Service-ben (ak) található alkalmazások és fürtök biztonsági fogalmai](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
+  - [Fő biztonság](#master-security)
+  - [Csomópont biztonsága](#node-security)
+    - [Számítási elkülönítés](#compute-isolation)
+  - [Fürt frissítései](#cluster-upgrades)
+    - [Cordon és Drain](#cordon-and-drain)
+  - [Hálózati biztonság](#network-security)
+    - [Azure-beli hálózati biztonsági csoportok](#azure-network-security-groups)
+  - [A Kubernetes titkos kódjai](#kubernetes-secrets)
+  - [Következő lépések](#next-steps)
 
 ## <a name="master-security"></a>Fő biztonság
 
@@ -46,6 +51,13 @@ A csomópontok magánhálózati virtuális hálózati alhálózatba vannak telep
 A tárolók biztosításához a csomópontok az Azure Managed Disks használják. A virtuálisgép-csomópontok többségének mérete esetén ezek a nagy teljesítményű SSD-k által támogatott prémium lemezek. A felügyelt lemezeken tárolt adatok automatikusan titkosítva maradnak az Azure platformon belül. A redundancia javítása érdekében ezeket a lemezeket az Azure-adatközpontban is biztonságosan replikálja a rendszer.
 
 A Kubernetes-környezetek (ak-ban vagy máshol) jelenleg nem teljesen biztonságosak az ellenséges, több-bérlős használatra. További biztonsági funkciók, például a *Pod biztonsági házirendek* , vagy a csomópontok részletes, szerepköralapú hozzáférés-vezérlése (RBAC) nehezebbé teszik a kihasználat. Azonban az ellenséges, több-bérlős számítási feladatok futtatásakor a megfelelő biztonság érdekében a hypervisor az egyetlen biztonsági szint, amelyet megbízhatónak tart. A Kubernetes biztonsági tartománya a teljes fürtvé válik, nem önálló csomópontként. Az ilyen típusú ellenséges több-bérlős munkaterhelések esetében fizikailag elkülönített fürtöket kell használnia. A számítási feladatok elkülönítésének módjaival kapcsolatos további információkért lásd: [ajánlott eljárások a fürtök elkülönítéséhez az AK-ban][cluster-isolation].
+
+### <a name="compute-isolation"></a>Számítási elkülönítés
+
+ Bizonyos munkaterhelések esetén a megfelelőségi vagy szabályozási követelmények miatt a többi ügyfél-munkaterheléstől való nagyfokú elkülönítésre lehet szükség. Ezekben a számítási feladatokban az Azure [elkülönített virtuális gépeket](../virtual-machines/linux/isolation.md)biztosít, amelyek egy AK-fürt ügynök-csomópontjaiként használhatók. Ezek az elkülönített virtuális gépek egy adott hardver-típushoz vannak elkülönítve, és egyetlen ügyfél számára vannak kijelölve. 
+
+ Ha ezeket az elkülönített virtuális gépeket egy AK-fürttel szeretné használni, válassza ki az [itt](../virtual-machines/linux/isolation.md) felsorolt elkülönített virtuálisgép-méretek egyikét a **csomópont MÉRETEként** az AK-fürt létrehozásakor vagy egy csomópont-készlet hozzáadásakor.
+
 
 ## <a name="cluster-upgrades"></a>Fürt frissítései
 

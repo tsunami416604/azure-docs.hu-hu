@@ -6,13 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: d1455bc65f175970bb741dab4a56aa0aac58fc59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e54b9add52e484a95cf5a8291dec90a6bb258b8
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742999"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207013"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
 
@@ -37,10 +38,10 @@ A.  Az Azure Data Box szolgáltatást offline adatbetöltéshez hoztuk létre. A
 ### <a name="q-what-is-azure-data-box"></a>K. Mi az az Azure Data Box?
 A. A Azure Data Box az Azure-ba való gyors, költséges és biztonságos adatátvitelt tesz lehetővé. A Data Box eszköz az Azure Portalon keresztül rendelhető meg. A Microsoft a 80 – TB felhasználható kapacitású tárolóeszközt a regionális szolgáltatón keresztül üzemelteti. 
 
-Miután az eszköz megérkezett, gyorsan beállítható a helyi webes felhasználói felülettel. Másolja át a kiszolgálóin található adatokat az eszközre, és küldje vissza az eszközt az Azure-nak. Az Azure-adatközpontban az adatok automatikusan feltöltődnek az eszközről az Azure-ba. A teljes folyamatot végigkövetheti a Data Box szolgáltatásban, az Azure Portalon.
+Miután az eszköz megérkezett, gyorsan beállítható a helyi webes felhasználói felülettel. Másolja az adatait a kiszolgálókról az eszközre vagy az eszközről a kiszolgálókra, és az eszközt küldje vissza az Azure-nak. Importálási sorrend esetén az Azure-adatközpontban automatikusan feltölti az adatait az eszközről az Azure-ba. A teljes folyamatot végigkövetheti a Data Box szolgáltatásban, az Azure Portalon.
 
 ### <a name="q-when-should-i-use-data-box"></a>K. Mikor érdemes a Data Boxot használni?
-A. Ha 40 és 500 TB közötti mennyiségű adata van, amelyet szeretne átvinni az Azure-ba, akkor hasznos lehet a Data Box használata. Az 40 TB-nál < adatméretekhez használja a Data Box Disk és az adatméretet > 500 TB-ot, regisztráljon a [Data Box Heavyra](data-box-heavy-overview.md).
+A. Ha 40-500 TB-nyi adatról szeretne átvinni az Azure-ba vagy az-ból, akkor a Data Box használata hasznos. Az 40 TB-nál < adatméretekhez használja a Data Box Disk és az adatméretet > 500 TB-ot, regisztráljon a [Data Box Heavyra](data-box-heavy-overview.md).
 
 ### <a name="q-what-is-the-price-of-data-box"></a>K. Mennyibe kerül a Data Box?
 A. A Data Box 10 napig egy névleges díj fejében érhető el. Amikor az Azure Portalon egy rendelés létrehozásakor kiválaszt egy termékmodellt, megjelenik az eszköz ára. A szállítás is ingyenes, az Azure-tárhely azonban költségekkel jár. További információt [az Azure Data Box díjszabási oldalán](https://azure.microsoft.com/pricing/details/storage/databox/) talál. 
@@ -83,7 +84,7 @@ A. Ez azt jelenti, hogy a Data Box szolgáltatás nem érhető el az ország és
 A. A megrendelések beérkezésekor ellenőrizzük, hogy van-e a rendelésnek megfelelő elérhető eszköz. Ha van, akkor 10 napon belül kiszállítjuk. Elképzelhető, hogy bizonyos időszakokban a kereslet megnövekszik. Ebben az esetben rendelését sorba állítjuk, a rendelés állapotát pedig az Azure Portalon követheti nyomon. Ha a rendelés 90 napon belül sem teljesül, akkor a rendszer automatikusan visszavonja azt.
 
 ### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>K. Feltöltöttem a Data Boxom adatokkal, és rendelnem kell egy másikat. Fel lehet adni gyorsan a megrendelést?
-A. Lehetősége van klónozni az előző megrendelését. A klónozással létrehozhat egy, az előzővel azonos megrendelést, amelynek szerkesztheti a részleteit, anélkül, hogy újra meg kellene adnia a címet vagy az értesítési adatokat.
+A. Lehetősége van klónozni az előző megrendelését. A klónozással létrehozhat egy, az előzővel azonos megrendelést, amelynek szerkesztheti a részleteit, anélkül, hogy újra meg kellene adnia a címet vagy az értesítési adatokat. A klónozás csak importálási rendelésekhez engedélyezett.
 
 ## <a name="configure-and-connect"></a>Konfigurálás és csatlakoztatás
 
@@ -180,18 +181,7 @@ A.  Igen. A Data Boxhoz legfeljebb 10 tárfiók használata támogatott. Ezek le
 A. Ha az eszköz sérülten érkezett, vagy a jelek illetéktelen hozzáférésre utalnak, ne használja az eszközt. Vegye fel a kapcsolatot a [Microsoft támogatási szolgálatával](data-box-disk-contact-microsoft-support.md), és a lehető leghamarabb küldje vissza az eszközt. Létrehozhat egy új Data Box-megrendelést is egy csereeszköz igényléséhez. Ebben az esetben nem számítjuk fel a csereeszköz árát.
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>K. Felvehetem magam is a Data Box rendelést? Visszaadhatom a Data Box a választott szolgáltatón keresztül?
-A. Igen. A Microsoft csak US Gov régióban biztosít önfelügyelt szállítást is. A Data Box rendelés elhelyezésekor kiválaszthatja az önfelügyelt szállítási lehetőséget is. A Data Box eszköz kiválasztásához hajtsa végre a következő lépéseket:
-    
-1. A rendelés elhelyezése után a rendszer feldolgozza a rendelést, és előkészíti a Data Box. E-mailben értesítést küldünk arról, hogy a megrendelés készen áll a felvételre. 
-2. Ha a rendelés készen áll a beléptetésre, lépjen a megrendelésre a Azure Portal, és navigáljon az **Áttekintés** panelre. 
-3. Ekkor megjelenik egy értesítés, amely tartalmazza a kódot a Azure Portalban. Küldjön e-mailt a [Azure Data Box operatív csapatnak](mailto:adbops@microsoft.com) , és adja meg nekik a kódot. A csapat megadja a felvételi dátum és idő helyét és ütemtervét. Az e-mailes értesítés kézhezvételét követően 5 munkanapon belül meg kell hívnia a csapatot.
-
-Az Adatmásolás befejezése után végezze el az alábbi lépéseket az eszköz visszaküldéséhez:
-
-1. Ha az Adatmásolás hibák nélkül fejeződött be, futtassa a **szállításra való előkészítés**. Az előkészítés befejezése után az eszköz helyi webes FELÜLETén egy kódot fog kapni. Másolja ki és mentse a kódot.
-2. Kapcsolja ki az eszközt, és távolítsa el a csatlakozó kábeleket.
-3. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
-4. Küldjön e-mailt a [Azure Data Box operatív csapatnak](mailto:adbops@microsoft.com) , és adja meg a korábban mentett kódot. A felhasználók az eszköz kidobásának helyét és időpontját adják meg.
+A. Igen. A Microsoft a saját üzemeltetésű szállítást is biztosítja. A Data Box rendelés elhelyezésekor kiválaszthatja az önfelügyelt szállítási lehetőséget is. További információ: [önfelügyelt szállítás Data Box számára](data-box-portal-customer-managed-shipping.md).
 
 ### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>K. Az Data Box-eszközök országa/régiója a szállítás során is határokon átnyúlik?
 A. Az összes Data Box eszköz a rendeltetési országon/régión belül, és nem keresztez nemzetközi határokat. Az egyetlen kivétel az Európai Unió (EU) megrendeléseire vonatkozik, ahol az eszközök bármelyik EU-országba/régióba oda tudnak szállítani. Ez a Data Box és a Data Box Heavy eszközre is vonatkozik.
@@ -212,7 +202,7 @@ A.  Az átvitel során a Data Box következő funkciói védik az adatokat.
  - Az eszköz zárolva van, és egy zárolásfeloldási jelszót igényel a belépéshez és az adatok eléréséhez.
 További információ [a Data Box biztonsági funkcióiról](data-box-security.md).  
 
-### <a name="q-i-have-finished-prepare-to-ship-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>K. Előkészítettem a szállításhoz, és leállítottam az eszközt. Hozzáadhatok még adatokat?
+### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>K. Befejeztem az importálási sorrendet, és leállítottam az eszközt. Hozzáadhatok még adatokat?
 A. Igen. Bekapcsolhatja az eszközt, és további adatokat adhat hozzá. A másolás végeztével újra futtatnia kell a **szállításra való előkészítés** műveletet.
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>K. Megkaptam az eszközt, és nem indul el a rendszerindítás? Hogyan az eszköz visszaszállítása?
@@ -252,7 +242,7 @@ A.  A következő típusú jelentések érhetők el a felügyeleti láncokhoz:
 
 - Közlekedési logisztika a UPS-ből.
 - Bekapcsolási naplók és a felhasználói megosztások hozzáférési naplói.
-- Fájljegyzék a Data Boxon sikeresen feldolgozott minden fájlról, 64 bites ciklikus redundancia-ellenőrzéssel (CRC-64) vagy ellenőrzőösszegekkel.
+- AJ-vagy manifest-fájl 64-bites ciklikus redundancia-ellenőrzővel (CRC-64) vagy ellenőrzőösszeggel minden, a Data Box sikeresen betöltött fájlhoz.
 - Jelentések azon fájlokról, amelyeknek sikertelen volt a feltöltése az Azure-tárfiókba.
 - A Data Box (az NIST 800 88R1 szabvány szerinti) megtisztítása az adatok Azure-tárfiókba való átmásolását követően.
 
@@ -260,7 +250,9 @@ A.  A következő típusú jelentések érhetők el a felügyeleti láncokhoz:
 A.  A futárcégek nyomkövetési naplóit a Data Box rendelési előzményei tartalmazzák. Ez a jelentés azt követően érhető el, miután az eszköz visszatért az Azure-adatközpontba, és a lemezeken lévő adatok törölve lettek. Azonnali igény esetén közvetlenül a szolgáltató webhelyére is megtekintheti a megrendelés követési számát, és lekérheti a nyomkövetési adatokat.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Elszállíthatom magam a Data Boxot az Azure-adatközpontba? 
-A.  Nem. Az Azure-adatközpont jelenleg nem fogadja el a Data Box az ügyfelektől vagy a UPS-től eltérő szállítóktól.
+A.  Nem. Ha a Microsoft által felügyelt szállítást választotta, nem tudja elszállítani a dátumot. Az Azure-adatközpont jelenleg nem fogadja el a Data Box az ügyfelektől vagy a UPS-től eltérő szállítóktól.
+
+Ha az önfelügyelt szállítást választotta, akkor a Data Box az Azure-adatközpontból is kiválaszthatja vagy letilthatja.
 
 
 ## <a name="next-steps"></a>További lépések

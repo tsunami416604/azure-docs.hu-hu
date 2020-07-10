@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: pafarley
-ms.openlocfilehash: 0766ad38265368a00272eb8abbe974ce94f5dd72
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: cbc899d1278a2afcdf4948a88b54af81954f1eba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391689"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205598"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Modell használata az előrejelzési API-val
 
@@ -113,24 +113,24 @@ Ebben az útmutatóban egy helyi rendszerképet fog használni, ezért másolja 
    * Cserélje le a helyőrzőt `<Your prediction key>` a korábban lekért kulcs értékére.
    * Cserélje le a helyőrzőt `<Your prediction URL>` a korábban lekért URL-címre.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazás futtatásakor a rendszer felszólítja egy képfájl elérési útjának megadására a konzolon. A rendszer ezután elküldi a rendszerképet az előrejelzési API-nak, és az előrejelzési eredményeket JSON-formátumú karakterláncként adja vissza. A következő egy példa erre a válaszra.
 
 ```json
 {
-    "Id":"7796df8e-acbc-45fc-90b4-1b0c81b73639",
-    "Project":"8622c779-471c-4b6e-842c-67a11deffd7b",
-    "Iteration":"59ec199d-f3fb-443a-b708-4bca79e1b7f7",
-    "Created":"2019-03-20T16:47:31.322Z",
-    "Predictions":[
-        {"TagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","TagName":"cat", "Probability":1.0},
-        {"TagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","TagName":"dog", "Probability":0.1087869}
+    "id":"7796df8e-acbc-45fc-90b4-1b0c81b73639",
+    "project":"8622c779-471c-4b6e-842c-67a11deffd7b",
+    "iteration":"59ec199d-f3fb-443a-b708-4bca79e1b7f7",
+    "created":"2019-03-20T16:47:31.322Z",
+    "predictions":[
+        {"tagId":"d9cb3fa5-1ff3-4e98-8d47-2ef42d7fb373","tagName":"cat", "probability":1.0},
+        {"tagId":"9a8d63fb-b6ed-4462-bcff-77ff72084d99","tagName":"dog", "probability":0.1087869}
     ]
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban megtanulta, hogyan küldhet képeket az egyéni rendszerkép-osztályozó/detektorba, és hogyan kaphat választ programozott módon a C# SDK-val. Következő lépésként megtudhatja, hogyan végezheti el a teljes körű forgatókönyvek megvalósítását a C# használatával, vagy egy másik nyelvi SDK használatának megkezdését.
 

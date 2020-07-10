@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 3294a7b2112e9527041ef343f4452aedb7a2a272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39803ab88e5b252ef119d22a697e135c83f87780
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073465"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205649"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Azure-API Management migrálása régiók között
 API Management példányok az egyik Azure-régióból a másikba való áttelepíthetők a [biztonsági mentés és visszaállítás](api-management-howto-disaster-recovery-backup-restore.md) funkció segítségével. A forrás-és a célcsoportokban ugyanazt a API Management árképzési szintet kell választania. 
@@ -47,3 +47,4 @@ API Management példányok az egyik Azure-régióból a másikba való áttelep�
 ## <a name="next-steps"></a><a name="next-steps"> </a>További lépések
 * A biztonsági mentési és visszaállítási szolgáltatással kapcsolatos további információkért lásd: a vész- [helyreállítás megvalósítása](api-management-howto-disaster-recovery-backup-restore.md).
 * Az Azure-erőforrások áttelepítésével kapcsolatos információkért lásd: az [Azure régiók közötti áttelepítési útmutatója](https://github.com/Azure/Azure-Migration-Guidance).
+* [Optimalizálja és mentse a Felhőbeli kiadásait](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

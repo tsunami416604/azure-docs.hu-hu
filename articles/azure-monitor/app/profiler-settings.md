@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 52391ffc8eb6b6879e5fd90df26d9ccacbfacebb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82188926"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205708"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler konfigurálása
 
@@ -32,10 +32,10 @@ Ekkor megnyílik egy oldal, amely így néz ki:
 
 A **Application Insights Profiler konfigurálása** lapon a következő funkciók szerepelnek:
 
-| | |
+| Szolgáltatás | Leírás |
 |-|-|
 Profil most | A profilkészítési munkamenetek elindítása minden olyan alkalmazáshoz, amely a Application Insights ezen példányához van csatolva.
-Triggerek | Lehetővé teszi olyan eseményindítók konfigurálását, amelyek a Profiler futtatását okozzák. 
+Eseményindítók | Lehetővé teszi olyan eseményindítók konfigurálását, amelyek a Profiler futtatását okozzák. 
 Közelmúltbeli profilkészítési munkamenetek | A korábbi profilkészítési munkamenetekkel kapcsolatos információkat jeleníti meg.
 
 ## <a name="profile-now"></a>Profil most
@@ -48,7 +48,7 @@ Ahhoz, hogy egy felhasználó manuálisan aktiválja a Profiler-munkamenetet, a 
 
 A menüsávon az eseményindítók gombra kattintva megnyílik az eseményindító-beállítások mező. Beállíthatja a triggert a profilkészítés elindításához, amikor a CPU vagy a memória kihasználtsági aránya eléri a beállított szintet.
 
-| | |
+| Beállítás | Leírás |
 |-|-|
 Be/ki gomb | Bekapcsolva: a Profiler elindítható ez a trigger; Kikapcsolva: a Profiler nem indul el ezzel az aktiválással.
 Memória küszöbértéke | Ha a memória ezen százaléka használatban van, a Profiler elindul.
@@ -58,7 +58,7 @@ Hűtő | Azt adja meg, hogy a Profiler mennyi ideig várjon, mielőtt a rendszer
 ## <a name="recent-profiling-sessions"></a>Közelmúltbeli profilkészítési munkamenetek
 Az oldal ezen szakasza a közelmúltbeli profilkészítési munkamenetekkel kapcsolatos információkat jeleníti meg. A profilkészítési munkamenet azt az időtartamot jelenti, amikor a Profiler-ügynök profilt vett az alkalmazást üzemeltető gépek egyikén. A profilokat egy adott munkamenetből is megnyithatja, ha rákattint az egyik sorra. Az egyes munkamenetek esetében a következőt mutatjuk be:
 
-| | |
+| Beállítás | Leírás |
 |-|-|
 Aktiválta: | A munkamenet elindítása a trigger, a profil és az alapértelmezett mintavételezés használatával. 
 Alkalmazásnév | A létrehozott alkalmazás neve.

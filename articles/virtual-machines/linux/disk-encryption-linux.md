@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépekhez
+title: Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépeken
 description: Ez a cikk a Linux rendszerű virtuális gépek Microsoft Azure lemezes titkosításának engedélyezéséhez nyújt útmutatást különböző forgatókönyvek esetén
 author: msmbaldwin
 ms.service: virtual-machines-linux
@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fbbeaeafd8de5a38489034a13738ca3a9b934d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601385"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206163"
 ---
-# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépekhez
+# <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépeken
 
 
 A Linux rendszerű virtuális gépek Azure Disk Encryption a Linux DM-Crypt funkciójának használatával biztosít teljes lemezes titkosítást az operációsrendszer-lemez és az adatlemezek számára. Emellett az ideiglenes lemez titkosítását is biztosítja az EncryptFormatAll szolgáltatás használatakor.
@@ -203,7 +203,7 @@ Az alábbi táblázat a meglévő vagy futó virtuális gépek Resource Manager-
 |  keyEncryptionKeyURL | A titkosítási kulcs titkosításához használt kulcs titkosítási kulcsának URL-címe. Ez a paraméter nem kötelező, ha a UseExistingKek legördülő listában a **nokek** lehetőséget választja. Ha a UseExistingKek legördülő listában a **KEK** elemet választja, meg kell adnia a _keyEncryptionKeyURL_ értéket. |
 | volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes értékek az _operációs rendszer_, _az adatok_és _az összes_. 
 | forceUpdateTag | Adjon meg egy egyedi értéket, például egy GUID-azonosítót, amikor a műveletnek kényszerített futtatást kell futtatnia. |
-| location | Az összes erőforrás helye. |
+| location | Az összes erőforrás helyei. |
 
 A Linux rendszerű virtuális gép lemezének titkosítási sablonjának konfigurálásával kapcsolatos további információkért lásd: [Azure Disk Encryption Linux rendszerhez](https://docs.microsoft.com/azure/virtual-machines/extensions/azure-disk-enc-linux).
 
@@ -413,6 +413,8 @@ A Azure Disk Encryption a következő Linux-forgatókönyvek, funkciók és tech
 - Egy "beágyazott csatlakoztatási ponttal" rendelkező virtuális gép; Ez azt eredményezi, hogy több csatlakoztatási pont van egyetlen elérési úton (például "/1stmountpoint/Data/2stmountpoint").
 - Egy virtuális gép, amely egy operációsrendszer-mappához csatlakoztatott adatmeghajtóval rendelkezik.
 - Az M sorozatú virtuális gépek írásgyorsító lemezzel.
+- [Kiszolgálóoldali titkosítás alkalmazása az ügyfél által felügyelt kulcsokkal](disk-encryption.md) az ade által titkosított virtuális gépekre, valamint fordítva.
+- Az ADE-sel titkosított virtuális gépek áttelepítése az [ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosításra](disk-encryption.md).
 
 ## <a name="next-steps"></a>További lépések
 

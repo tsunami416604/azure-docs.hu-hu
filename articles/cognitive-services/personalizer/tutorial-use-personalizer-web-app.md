@@ -1,21 +1,21 @@
 ---
 title: Webalkalmazás használata – személyre szabás
 description: A C# .NET-webalkalmazások személyre szabási hurokkal való testreszabásával a megfelelő tartalom biztosítható a felhasználók számára a műveletek (szolgáltatások) és a környezeti funkciók alapján.
-ms.topic: troubleshooting
+ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: diberry
-ms.openlocfilehash: 9def69a1540e81b99723c16ad34ba522d1737c7f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 9514e92432c2be5441dec5ff998a9deede35d7f4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84713916"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207596"
 ---
-# <a name="add-personalizer-to-a-net-web-app"></a>Személyre szabás hozzáadása egy .NET-webalkalmazáshoz
+# <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Oktatóanyag: személyre szabás hozzáadása egy .NET-webalkalmazáshoz
 
 A C# .NET-webalkalmazások személyre szabási hurokkal való testreszabásával a megfelelő tartalom biztosítható a felhasználók számára a műveletek (szolgáltatások) és a környezeti funkciók alapján.
 
-**Az oktatóanyag a következőket ismerteti:**
+**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -294,7 +294,7 @@ Ez egy tipikus .NET-webalkalmazás, amely egy ügyfélalkalmazás, és a kazán-
 
 A kiszolgáló **Startup.cs**a személyre szabott végpontot és kulcsot használja a személyre szabott ügyfél létrehozásához. Az ügyfélalkalmazás nem kell kommunikálni a személyre szabással ebben az alkalmazásban ahelyett, hogy az SDK-hívásokat erre a kiszolgálóra támaszkodik.
 
-A webkiszolgáló .NET-indítási kódja a következő:
+A webkiszolgáló .NET indítási kódja a következő:
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Personalizer;
@@ -580,7 +580,7 @@ Többek között a következő további beállítások játszhatók le:
 * Kutatási százalék
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült ezzel az Oktatóanyaggal, törölje a következő erőforrásokat:
 

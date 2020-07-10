@@ -3,20 +3,20 @@ title: 'Gyors útmutató: modell lekérése REST API-kkal – LUIS'
 titleSuffix: Azure Cognitive Services
 description: Ebben a REST API rövid útmutatóban a cURL használatával hosszúságú kimondott szöveg adhat hozzá, és betaníthatja a modelleket.
 services: cognitive-services
-author: roy-har
+author: nitinme
 manager: diberry
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/19/2020
-ms.author: v-royha
-ms.openlocfilehash: 00bc71f76b15455dd8e4f8242c5379e9e97a53f2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.author: nitinme
+ms.openlocfilehash: e5cf3160e6592a48e3a81480480ad8f01cc6af3a
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119584"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206261"
 ---
 # <a name="quickstart-use-curl-and-rest-to-change-model"></a>Rövid útmutató: a cURL és a REST használata a modell módosításához
 
@@ -168,7 +168,7 @@ Ha az entityLabels tömb nem üres, a `startCharIndex` és az `endCharIndex` ind
 
 1. Cserélje le az értékeket a `***YOUR-` saját értékeivel kezdődő értékekre.
 
-    |Információ|Szerep|
+    |Tájékoztatás|Rendeltetés|
     |--|--|
     |`***YOUR-AUTHORING-ENDPOINT***`| Az authoring URL-végpontja. Például: „https://REPLACE-WITH-YOUR-RESOURCE-NAME.api.cognitive.microsoft.com/”. Az erőforrás neve az erőforrás létrehozásakor állítható be.|
     |`***YOUR-APP-ID***`| A LUIS-alkalmazás azonosítója. |
@@ -368,7 +368,7 @@ Ha az entityLabels tömb nem üres, a `startCharIndex` és az `endCharIndex` ind
     ]
     ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a rövid útmutatóval, törölje a `ExampleUtterances.JSON` fájlt a fájlrendszerből.
 

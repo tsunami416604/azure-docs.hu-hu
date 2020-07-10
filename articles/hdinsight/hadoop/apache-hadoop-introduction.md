@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/27/2020
-ms.openlocfilehash: 7e8dd69b7c58e090c30ea1aa59feddab610dd3c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2dc9d5d154c8128e0744e8dd9f08dec6e52381a4
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78244875"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205313"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Mi Apache Hadoop az Azure HDInsight?
 
@@ -48,7 +48,7 @@ A Java és a Java virtuális gép alapú nyelvek vagy keretrendszerek közvetlen
 
 A Hadoop stream a leképező és a redukáló adatátvitelt az STDIN és az STDOUT fölé továbbítja. A leképező és a redukáló adatokat tartalmazó sort olvas az STDIN-ből, és a kimenetet az STDOUT értékre írja. A leképező és a szűkítő által beolvasott vagy kibocsátott soroknak a TAB karakterrel tagolt kulcs/érték párok formátumában kell szerepelniük:
 
-    [key]/t[value]
+`[key]/t[value]`
 
 További információ: [Hadoop streaming](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html).
 

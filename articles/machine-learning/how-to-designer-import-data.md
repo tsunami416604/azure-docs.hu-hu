@@ -1,7 +1,7 @@
 ---
-title: Adatok importálása
+title: Adatimportálás a designerbe (előzetes verzió)
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan importálhat különböző adatforrásokból származó adatok Azure Machine Learning designerbe.
+description: Ismerje meg, hogyan importálhat adatforrásokat a Azure Machine Learning designerbe (előzetes verzió) különböző adatforrásokból.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
 ms.custom: designer
-ms.openlocfilehash: 12473aca589f8a04dd0e09fdc2dc7f0d4e450c5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a204310454cb636e26e6366d4ff7375f4faea8d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610948"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207515"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>Az adatimportálás Azure Machine Learning designerbe (előzetes verzió)
 

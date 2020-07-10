@@ -1,5 +1,5 @@
 ---
-title: A gépi tanulási modellekben a tisztességgel kapcsolatos problémák felmérése és enyhítése
+title: A gépi tanulási modellek kiértékelése és enyhítése (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogy a Fairlearn Python-csomag hogyan hozhat létre tisztességesebb modelleket, és hogyan segíthet a Fair-modellek kiépítésében.
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 06/30/2020
-ms.openlocfilehash: c4e9b8386c8341d076a69e2e81b5e92f296153ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611781"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207294"
 ---
-# <a name="build-fairer-machine-learning-models"></a>Igazságosabb gépi tanulási modellek készítése
+# <a name="build-fairer-machine-learning-models-preview"></a>Igazságosabb gépi tanulási modellek készítése (előzetes verzió)
 
 Ismerje meg a tisztességes működést a gépi tanulásban, valamint azt, hogy a [Fairlearn](https://fairlearn.github.io/) nyílt forráskódú Python-csomag segítségével hogyan hozhat létre igazságosabb modelleket. Ha nem tesz erőfeszítéseket a tisztességgel kapcsolatos problémák megismerésére és a tisztességes értékelésre a gépi tanulási modellek létrehozásakor, létrehozhat olyan modelleket, amelyek tisztességtelen eredményeket hoznak létre. 
 
@@ -83,7 +83,7 @@ A Fairlearn nyílt forráskódú csomag számos, a méltánytalanság enyhítés
 
 A Fairlearn nyílt forráskódú csomagja a következő típusú paritásos korlátozásokat támogatja: 
 
-|Paritásos megkötés  | Szerep  |Gépi tanulási feladat  |
+|Paritásos megkötés  | Rendeltetés  |Gépi tanulási feladat  |
 |---------|---------|---------|
 |Demográfiai paritás     |  A foglalási károsodások enyhítése | Bináris besorolás, regresszió |
 |Equaled odds  | Kiosztási és szolgáltatásminőség-károsodások diagnosztizálása | Bináris besorolás        |
@@ -99,7 +99,7 @@ A Fairlearn nyílt forráskódú csomag utófeldolgozó biztosít, és csökkent
 - Csökkentés: ezek az algoritmusok Standard fekete dobozos gépi tanulási kalkulátort (pl. LightGBM modellt) hoznak létre, és újraképzésen alapuló modelleket állítanak elő, amelyek újrasúlyozott betanítási adatkészletek sorozatával rendelkeznek. Előfordulhat például, hogy egy bizonyos nemhez tartozó pályázók súlyozása vagy csökkentése a modellek újratanítása és a különböző nemi csoportok közötti egyenlőtlenségek csökkentése érdekében. A felhasználók ezután olyan modellt választhatnak, amely a lehető legjobb kompromisszumot biztosítja a pontosság (vagy más teljesítmény mérőszáma) és a különbség között, ami általában üzleti szabályokon és költségszámításokon alapul.  
 - Utómunka: ezek az algoritmusok egy meglévő besorolást és az érzékeny funkciót is felhasználják bemenetként. Ezután származtatják az osztályozó előrejelzését, hogy kikényszerítsék a megadott méltányos korlátozásokat. A küszöbérték-optimalizálás legnagyobb előnye az egyszerűség és a rugalmasság, mivel nem kell átképeznie a modellt. 
 
-| Algoritmus | Description | Gépi tanulási feladat | Bizalmas funkciók | Támogatott paritásos megkötések | Algoritmus típusa |
+| Algoritmus | Leírás | Gépi tanulási feladat | Bizalmas funkciók | Támogatott paritásos megkötések | Algoritmus típusa |
 | --- | --- | --- | --- | --- | --- |
 | `ExponentiatedGradient` | A Fair besorolásra vonatkozó, a [méltányos](https://arxiv.org/abs/1803.02453) besoroláshoz | Bináris besorolás | Kategorikus | [Demográfiai paritás](#parity-constraints), [equald odds](#parity-constraints) | Csökkentése |
 | `GridSearch` | A [valós besorolás csökkentési megközelítésében](https://arxiv.org/abs/1803.02453) leírt fekete négyzetes megközelítés| Bináris besorolás | Bináris | [Demográfiai paritás](#parity-constraints), [equald odds](#parity-constraints) | Csökkentése |

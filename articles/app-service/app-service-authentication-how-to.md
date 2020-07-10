@@ -1,15 +1,15 @@
 ---
-title: A AuthN/AuthO speciális használata
+title: A AuthN/AuthZ speciális használata
 description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedélyezési funkciót App Service különböző forgatókönyvek esetén, valamint felhasználói jogcímeket és különböző jogkivonatokat kaphat.
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6efa5461fab9faf3ce1599a01540cf314b34281b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b217bb1052a16ded205ac216878945fb960d32d
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205645"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205570"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -24,6 +24,7 @@ A gyors kezdéshez tekintse meg a következő oktatóanyagok egyikét:
 * [Az alkalmazás konfigurálása a Google-bejelentkezés használatára](configure-authentication-provider-google.md)
 * [Az alkalmazás konfigurálása a Microsoft-fiókbejelentkezés használatára](configure-authentication-provider-microsoft.md)
 * [Az alkalmazás konfigurálása a Twitter-bejelentkezés használatára](configure-authentication-provider-twitter.md)
+* [Alkalmazás konfigurálása OpenID Connect-szolgáltató használatával történő bejelentkezéshez (előzetes verzió)](configure-authentication-provider-openid-connect.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>Több bejelentkezési szolgáltató használata
 
@@ -277,6 +278,195 @@ Az identitás-szolgáltató bizonyos kulcsrakész engedélyezést is biztosítha
 ### <a name="application-level"></a>Alkalmazás szintje
 
 Ha a többi szint valamelyike nem rendelkezik a szükséges engedélyekkel, vagy ha a platform vagy az identitás szolgáltatója nem támogatott, egyéni kódot kell írnia a felhasználók engedélyezéséhez a [felhasználói jogcímek](#access-user-claims)alapján.
+
+## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>Konfigurálás fájl használatával (előzetes verzió)
+
+Az Auth beállításai opcionálisan konfigurálhatók az üzemelő példány által biztosított fájlon keresztül is. Erre szükség lehet a App Service hitelesítés/engedélyezés bizonyos előzetes verziójú képességeitől.
+
+> [!IMPORTANT]
+> Ne feledje, hogy az alkalmazás hasznos, ezért ez a fájl a környezetek között mozog, a [tárolóhelyek](./deploy-staging-slots.md)esetében. Valószínű, hogy egy másik, az egyes tárolóhelyekre rögzített alkalmazás-regisztrációt szeretne használni, és ezekben az esetekben a konfigurációs fájl használata helyett továbbra is a szabványos konfigurációs módszert kell használnia.
+
+### <a name="enabling-file-based-configuration"></a>A fájl alapú konfiguráció engedélyezése
+
+> [!CAUTION]
+> Az előzetes verzióban a fájl alapú konfiguráció engedélyezésével letilthatja az alkalmazás App Service hitelesítési/engedélyezési funkciójának kezelését bizonyos ügyfeleken, például a Azure Portal, az Azure CLI és a Azure PowerShell használatával.
+
+1. Hozzon létre egy új JSON-fájlt a konfigurációhoz a projekt gyökérkönyvtárában (a web/Function alkalmazás D:\home\site\wwwroot üzembe helyezése). Adja meg a kívánt konfigurációt a [fájl alapú konfigurációs hivatkozás](#configuration-file-reference)alapján. Meglévő Azure Resource Manager konfigurációjának módosításakor ügyeljen arra, hogy a gyűjteményben rögzített tulajdonságokat a `authsettings` konfigurációs fájlba fordítsa.
+
+2. Módosítsa a meglévő konfigurációt, amely a [Azure Resource Manager](../azure-resource-manager/management/overview.md) API-ban van rögzítve `Microsoft.Web/sites/<siteName>/config/authsettings` . Ennek módosításához használhat [Azure Resource Manager sablont](../azure-resource-manager/templates/overview.md) vagy eszközt, például [Azure erőforrás-kezelőt](https://resources.azure.com/). A authsettings elemre gyűjteményben három tulajdonságot kell megadnia (és el is távolíthatja másokat):
+
+    1.  Beállítás értéke `enabled` "true"
+    2.  Beállítás értéke `isAuthFromFile` "true"
+    3.  Állítsa a `authFilePath` fájl nevére (például "auth.json")
+
+Ha elvégezte ezt a konfigurációs frissítést, a rendszer a fájl tartalmát fogja használni App Service hitelesítés/engedélyezés viselkedésének meghatározásához az adott helyen. Ha bármikor vissza szeretne térni Azure Resource Manager konfigurációhoz, a `isAuthFromFile` "false" (hamis) értékre állíthatja vissza.
+
+### <a name="configuration-file-reference"></a>Konfigurációs fájl leírása
+
+A konfigurációs fájlra hivatkozó összes titkot [alkalmazási beállításokként](./configure-common.md#configure-app-settings)kell tárolni. Megadhatja a beállításokat, amelyeket szeretne. Győződjön meg arról, hogy a konfigurációs fájl hivatkozásai ugyanazokat a kulcsokat használják.
+
+Az alábbi kimeríti a fájl lehetséges konfigurációs beállításait:
+
+```json
+{
+    "platform": {
+        "enabled": <true|false>
+    },
+    "globalValidation": {
+        "requireAuthentication": <true|false>,
+        "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|Return401|Return403",
+        "redirectToProvider": "<default provider alias>",
+        "excludedPaths": [
+            "/path1",
+            "/path2"
+        ]
+    },
+    "identityProviders": {
+        "azureActiveDirectory": {
+            "enabled": <true|false>,
+            "registration": {
+                "openIdIssuer": "<issuer url>",
+                "clientId": "<app id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_AAD_SECRET",
+            },
+            "login": {
+                "loginParameters": [
+                    "paramName1=value1",
+                    "paramName2=value2"
+                ]
+            },
+            "validation": {
+                "allowedAudiences": [
+                    "audience1",
+                    "audience2"
+                ]
+            }
+        },
+        "facebook": {
+            "enabled": <true|false>,
+            "registration": {
+                "appId": "<app id>",
+                "appSecretSettingName": "APP_SETTING_CONTAINING_FACEBOOK_SECRET"
+            },
+            "graphApiVersion": "v3.3",
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            },
+        },
+        "gitHub": {
+            "enabled": <true|false>,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_GITHUB_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            }
+        },
+        "google": {
+            "enabled": true,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_GOOGLE_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            },
+            "validation": {
+                "allowedAudiences": [
+                    "audience1",
+                    "audience2"
+                ]
+            }
+        },
+        "twitter": {
+            "enabled": <true|false>,
+            "registration": {
+                "consumerKey": "<consumer key>",
+                "consumerSecretSettingName": "APP_SETTING_CONTAINING TWITTER_CONSUMER_SECRET"
+            }
+        },
+        "openIdConnectProviders": {
+            "provider name": {
+                "enabled": <true|false>,
+                "registration": {
+                    "clientId": "<client id>",
+                    "clientCredential": {
+                        "secretSettingName": "<name of app setting containing client secret>"
+                    },
+                    "openIdConnectConfiguration": {
+                        "authorizationEndpoint": "<url specifying authorization endpoint>",
+                        "tokenEndpoint": "<url specifying token endpoint>",
+                        "issuer": "<url specifying issuer>",
+                        "certificationUri": "<url specifying jwks endpoint>",
+                        "wellKnownOpenIdConfiguration": "<url specifying .well-known/open-id-configuration endpoint - if this property is set, the other properties of this object are ignored, and authorizationEndpoint, tokenEndpoint, issuer, and certificationUri are set to the corresponding values listed at this endpoint>"
+                    }
+                },
+                "login": {
+                    "nameClaimType": "<name of claim containing name>",
+                    "loginScopes": [
+                        "profile",
+                        "email"
+                    ],
+                    "loginParameterNames": [
+                        "paramName1=value1",
+                        "paramName2=value2"
+                    ],
+                }
+            },
+            //...
+        },
+        "login": {
+            "routes": {
+                "logoutEndpoint": "<logout endpoint>"
+            },
+            "tokenStore": {
+                "enabled": <true|false>,
+                "tokenRefreshExtensionHours": "<double>",
+                "fileSystem": {
+                    "directory": "<directory to store the tokens in if using a file system token store (default)>"
+                },
+                "azureBlobStorage": {
+                    "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
+                }
+            },
+            "preserveUrlFragmentsForLogins": <true|false>,
+            "allowedExternalRedirectUrls": [
+                "https://uri1.azurewebsites.net/",
+                "https://uri2.azurewebsites.net/"
+            ],
+            "cookieExpiration": {
+                "convention": "FixedTime|IdentityProviderDerived",
+                "timeToExpiration": "<timespan>"
+            },
+            "nonce": {
+                "validateNonce": <true|false>,
+                "nonceExpirationInterval": "<timespan>"
+            }
+        },
+        "httpSettings": {
+            "requireHttps": <true|false>,
+            "routes": {
+                "apiPrefix": "<api prefix>"
+            },
+            "forwardProxy": {
+                "convention": "NoProxy|Standard|Custom",
+                "customHostHeaderName": "<host header value>",
+                "customProtoHeaderName": "<proto header value>"
+            }
+        }
+    }
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,11 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
-ms.openlocfilehash: ed8a46683d79211559b4af7972c6d1bb784e1f02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ef7614b32dd88e804b1a74749ee87504f9cea40
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434175"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205464"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Az Azure Spring Cloud metrikáinak ismertetése
 
@@ -87,65 +88,43 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 
 ### <a name="error"></a>Hiba
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
->| Tomcat globális hiba (elavult)<br><br>(a 2020. július 1. után el kell távolítani)  | tomcat. Global. error | Darabszám | A feldolgozott kérelmekben előforduló hibák száma |
 >| tomcat. Global. error | tomcat. Global. error | Darabszám | A feldolgozott kérelmekben előforduló hibák száma |
 
 ### <a name="performance"></a>Teljesítmény
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
->| Rendszercpu-használat százalékos aránya (elavult)<br><br>(a 2020. július 1. után el kell távolítani) | System. CPU. használat | Százalék | A legújabb CPU-használat a teljes rendszer számára. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy az összes CPU tétlen volt a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta az idő 100%-át az elmúlt időszak során.|
 >| System. CPU. használat | System. CPU. használat | Százalék | A legújabb CPU-használat a teljes rendszer számára. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy az összes CPU tétlen volt a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta az idő 100%-át az elmúlt időszak során.|
->| Alkalmazás CPU-kihasználtságának százalékos aránya (elavult)<br><br>(eltávolítva július 1-től 2020) | Alkalmazás CPU-kihasználtságának százalékos aránya | Százalék | A Java virtuális gép folyamat legutóbbi CPU-használata. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy egyik processzor sem futtatott szálakat a JVM folyamat során a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta a szálakat a JVM 100%-ában az elmúlt időszak során. A JVM található szálak közé tartoznak az alkalmazási szálak, valamint a JVM belső szálak.|
 >| Process. CPU. használat | Alkalmazás CPU-kihasználtságának százalékos aránya | Százalék | A Java virtuális gép folyamat legutóbbi CPU-használata. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy egyik processzor sem futtatott szálakat a JVM folyamat során a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta a szálakat a JVM 100%-ában az elmúlt időszak során. A JVM található szálak közé tartoznak az alkalmazási szálak, valamint a JVM belső szálak.|
->| Az alkalmazáshoz hozzárendelt memória (elavult)<br><br>(a 2020. július 1. után el kell távolítani) | JVM. Memory. véglegesített | Bájt | A JVM számára elérhetővé tett memória mennyiségét jelöli. Előfordulhat, hogy a JVM memóriát szabadít fel a rendszeren, és az előjegyzett memória a kezdeti memóriánál kisebb lehet. A lefoglalt memória mindig nagyobb vagy egyenlő a felhasznált memóriával. |
 >| JVM. Memory. véglegesített | JVM. Memory. véglegesített | Bájt | A JVM számára elérhetővé tett memória mennyiségét jelöli. Előfordulhat, hogy a JVM memóriát szabadít fel a rendszeren, és a véglegesítése kisebb lehet, mint az init. a véglegesítés mindig nagyobb vagy egyenlő, mint a használat. |
->| Alkalmazáshoz használt memória (elavult)<br><br>(a 2020. július 1. után el kell távolítani) | JVM. Memory. felhasználva | Bájt | A bájtban jelenleg használt memória mennyiségét jelöli. |
 >| JVM. Memory. felhasználva | JVM. Memory. felhasználva | Bájt | A bájtban jelenleg használt memória mennyiségét jelöli. |
->| Az alkalmazás memóriájának maximális száma (elavult)<br><br>(a 2020. július 1. után el kell távolítani) | JVM. Memory. max | Bájt | A memória-kezeléshez használható maximális memóriát jelöli. A felhasznált és az előjegyzett memória mennyisége mindig kisebb vagy egyenlő, ha a maximális érték meg van adva. Előfordulhat, hogy a memória kiosztása meghiúsul, ha a használt memóriát úgy próbálja megjavítani, hogy az <= Max használata esetén is igaz legyen (például ha a rendszer kevés a virtuális memóriában), ha a használni próbált >. |
 >| JVM. Memory. max | JVM. Memory. max | Bájt | A memória-kezeléshez használható maximális memóriát jelöli. A felhasznált és az előjegyzett memória mennyisége mindig kisebb vagy egyenlő, ha a maximális érték meg van adva. Előfordulhat, hogy a memória kiosztása meghiúsul, ha a használt memóriát úgy próbálja megjavítani, hogy az <= Max használata esetén is igaz legyen (például ha a rendszer kevés a virtuális memóriában), ha a használni próbált >. |
->| Az elérhető régi létrehozási adatméret maximális száma (elavult)<br><br>(a 2020. július 1. után el kell távolítani) | JVM. GC. max. az adatméret | Bájt | A régi generációs memória maximális kihasználtsága a Java virtuális gép elindítása óta. |
 >| JVM. GC. max. az adatméret | JVM. GC. max. az adatméret | Bájt | A régi generációs memória maximális kihasználtsága a Java virtuális gép elindítása óta. |
->| A régi generációs adatméret (elavult)<br><br>(a 2020. július 1. után el kell távolítani) | JVM. GC. Live. Resize | Bájt | A régi generációs memória-készlet mérete teljes GC után. |
 >| JVM. GC. Live. Resize | JVM. GC. Live. Resize | Bájt | A régi generációs memória-készlet mérete teljes GC után. |
->| A régi generációs adatméret (elavult)<br><br>(a 2020. július 1. után el kell távolítani) | JVM. GC. Memory. előléptetve | Bájt | A régi generációs memória-készlet méretének pozitív növekedésének száma, mielőtt a GC-t a GC után. |
 >| JVM. GC. Memory. előléptetve | JVM. GC. Memory. előléptetve | Bájt | A régi generációs memória-készlet méretének pozitív növekedésének száma, mielőtt a GC-t a GC után. |
->| Előléptetés a fiatal generáció adatméretére (elavult)<br><br>(a 2020. július 1. után el kell távolítani) | JVM. GC. Memory. lefoglalt | Bájt | Növekszik a fiatal generációs memória-készlet méretének növekedésével, miután az egyik GC a következőre kerül. |
 >| JVM. GC. Memory. lefoglalt | JVM. GC. Memory. lefoglalt | Bájt | Növekszik a fiatal generációs memória-készlet méretének növekedésével, miután az egyik GC a következőre kerül. |
->| GC-szüneteltetések száma (elavult)<br><br>(a 2020. július 1. után el kell távolítani) | JVM. GC. pause (összesen-Count) | Darabszám | A JMV elindítását követő összes GC-szám, beleértve a fiatal és a régi GC-t. |
 >| JVM. GC. pause. Total. Count | JVM. GC. pause (összesen-Count) | Darabszám | A JMV elindítását követő összes GC-szám, beleértve a fiatal és a régi GC-t. |
->| GC felfüggesztésének teljes ideje (elavult)<br><br>(a 2020. július 1. után el kell távolítani) | JVM. GC. pause (teljes idő) | Ezredmásodpercben | A JMV elindítását követően felhasznált teljes GC-idő, beleértve a fiatal és a régi GC-t. |
 >| JVM. GC. pause. Total. Time | JVM. GC. pause (teljes idő) | Ezredmásodpercben | A JMV elindítását követően felhasznált teljes GC-idő, beleértve a fiatal és a régi GC-t. |
 
 ### <a name="request"></a>Kérés
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
->| Tomcat teljes elküldési bájtjai (elavult)<br><br>(eltávolítva július 1-től 2020) | tomcat. Global. elküldve | Bájt | Elküldve a Tomcat-webkiszolgálók mennyisége |
 >| tomcat. Global. elküldve | tomcat. Global. elküldve | Bájt | Elküldve a Tomcat-webkiszolgálók mennyisége |
->| Tomcat összesen fogadott bájt (elavult)<br><br>(eltávolítva július 1-től 2020) | tomcat. Global. Received | Bájt | A lekéréses tomcat-webkiszolgáló mennyisége |
 >| tomcat. Global. Received | tomcat. Global. Received | Bájt | A lekéréses tomcat-webkiszolgáló mennyisége |
->| Tomcat-kérelem teljes ideje (elavult)<br><br>(eltávolítva július 1-től 2020) | tomcat. Global. Request (teljes idő) | Ezredmásodpercben | A Tomcat webkiszolgáló teljes ideje a kérelmek feldolgozására |
->| Tomcat-kérelem teljes száma (elavult)<br><br>(eltávolítva július 1-től 2020) | tomcat. Global. Request (összesen-Count) | Darabszám | A Tomcat webkiszolgáló által feldolgozott kérelmek teljes száma |
 >| tomcat. Global. Request. Total. Count | tomcat. Global. Request (összesen-Count) | Darabszám | A Tomcat webkiszolgáló által feldolgozott kérelmek teljes száma |
->| Tomcat-kérelem maximális ideje (elavult)<br><br>(eltávolítva július 1-től 2020) | tomcat. Global. Request. max | Ezredmásodpercben | A Tomcat-webkiszolgáló maximális ideje a kérelem feldolgozására |
 >| tomcat. Global. Request. max | tomcat. Global. Request. max | Ezredmásodpercben | A Tomcat-webkiszolgáló maximális ideje a kérelem feldolgozására |
 
 ### <a name="session"></a>Munkamenet
 >[!div class="mx-tdCol2BreakAll"]
->| Name | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
->| Tomcat-munkamenet maximális aktív száma (elavult)<br><br>(eltávolítva július 1-től 2020) | tomcat. Sessions. Active. max | Darabszám | Egy időben aktív munkamenetek maximális száma |
 >| tomcat. Sessions. Active. max | tomcat. Sessions. Active. max | Darabszám | Egy időben aktív munkamenetek maximális száma |
->| Tomcat-munkamenet maximális élettartama (elavult)<br><br>(eltávolítva július 1-től 2020) | tomcat. Sessions. Alive. max | Ezredmásodpercben | A lejárt munkamenet élettartamának leghosszabb ideje (másodpercben) |
 >| tomcat. Sessions. Alive. max | tomcat. Sessions. Alive. max | Ezredmásodpercben | A lejárt munkamenet élettartamának leghosszabb ideje (másodpercben) |
->| Tomcat-munkamenet létrehozva száma (elavult)<br><br>(eltávolítva július 1-től 2020) | tomcat. Sessions. created | Darabszám | A létrehozott munkamenetek száma |
 >| tomcat. Sessions. created | tomcat. Sessions. created | Darabszám | A létrehozott munkamenetek száma |
->| A Tomcat-munkamenet lejárt száma (elavult)<br><br>(eltávolítva július 1-től 2020) | tomcat. Sessions. lejárt | Darabszám | Lejárt munkamenetek száma |
 >| tomcat. Sessions. lejárt | tomcat. Sessions. lejárt | Darabszám | Lejárt munkamenetek száma |
->| Tomcat-munkamenet visszautasítva darabszáma (elavult)<br><br>(eltávolítva július 1-től 2020) | tomcat. Sessions. elutasítva | Darabszám | Azon munkamenetek száma, amelyek nem lettek létrehozva, mert elérte az aktív munkamenetek maximális számát. |
 >| tomcat. Sessions. elutasítva | tomcat. Sessions. elutasítva | Darabszám | Azon munkamenetek száma, amelyek nem lettek létrehozva, mert elérte az aktív munkamenetek maximális számát. |
 >| tomcat. Sessions. Active. Current | tomcat. Sessions. Active. Current | Darabszám | Tomcat-munkamenet aktív száma |
 

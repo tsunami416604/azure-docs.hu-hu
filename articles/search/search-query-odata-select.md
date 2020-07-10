@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64f15bf3d262249cdda2760c7ddf768be2590419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfe438f6940d3ccd5632a47be1389a30748716b0
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113104"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206894"
 ---
 # <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData $select szintaxis az Azure-ban Cognitive Search
 
@@ -62,7 +63,9 @@ Ha az almezők explicit módon való megadása nélkül listáz egy összetett m
 
 Adja `HotelId` meg a, `HotelName` és a `Rating` legfelső szintű mezőket az eredmények között, valamint az `City` almezőjét `Address` :
 
+```odata-filter-expr
     $select=HotelId, HotelName, Rating, Address/City
+```
 
 Egy példa eredménye a következőképpen néz ki:
 
@@ -79,7 +82,9 @@ Egy példa eredménye a következőképpen néz ki:
 
 Adja `HotelName` meg az eredmények legfelső szintű mezőjét, valamint az összes almezőjét, valamint `Address` a `Type` `BaseRate` gyűjtemény minden objektumának és almezőjét `Rooms` :
 
+```odata-filter-expr
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
+```
 
 Egy példa eredménye a következőképpen néz ki:
 

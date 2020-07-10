@@ -19,21 +19,26 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b43c46599cbacaf40bc9583e364d088fa27a3ac9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1748a334c024401d845145947ecd55519f61e5e3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74113116"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206925"
 ---
 # <a name="odata-searchin-function-in-azure-cognitive-search"></a>OData `search.in` függvény az Azure Cognitive Search
 
 A [OData szűrési kifejezések](query-odata-filter-orderby-syntax.md) egyik gyakori forgatókönyve, hogy az egyes dokumentumok egyetlen mezője egyenlő-e a lehetséges értékek valamelyikével. Például, hogy egyes alkalmazások hogyan valósítják meg a [biztonsági körülvágást](search-security-trimming-for-azure-search.md) – egy vagy több egyszerű azonosítót tartalmazó mező ellenőrzésével a lekérdezést kiállító felhasználót jelölő egyszerű azonosítók listájára. A (z) és az operátorok használata az alábbi módon írható le [`eq`](search-query-odata-comparison-operators.md) [`or`](search-query-odata-logical-operators.md) :
 
+```odata-filter-expr
     group_ids/any(g: g eq '123' or g eq '456' or g eq '789')
+```
 
 Ezt azonban a függvény használatával rövidebb idő alatt írhatja `search.in` :
 
+```odata-filter-expr
     group_ids/any(g: search.in(g, '123, 456, 789'))
+```
 
 > [!IMPORTANT]
 > Amellett, hogy rövidebb és könnyebben olvasható is, a használata `search.in` [teljesítménybeli előnyöket](#bkmk_performance) biztosít, és elkerüli a [szűrők bizonyos méretre vonatkozó korlátozásait](search-query-odata-filter.md#bkmk_limits) , ha több száz vagy akár több ezer érték szerepel a szűrőben. Ezért javasoljuk, hogy `search.in` az egyenlőségi kifejezések összetettebb leválasztása helyett használja a használatát.
@@ -69,7 +74,7 @@ A függvénynek két túlterhelése van `search.in` :
 
 A paraméterek a következő táblázatban vannak meghatározva:
 
-| Paraméter neve | Típus | Description |
+| Paraméter neve | Típus | Leírás |
 | --- | --- | --- |
 | `variable` | `Edm.String` | Egy karakterlánc-mezőre mutató hivatkozás (vagy egy tartománybeli változó egy karakterlánc-gyűjtési mezőn keresztül abban az esetben, ha az `search.in` egy `any` vagy kifejezésen belül használatos `all` ). |
 | `valueList` | `Edm.String` | A paraméternek megfelelő értékek tagolt listáját tartalmazó karakterlánc `variable` . Ha a `delimiters` paraméter nincs megadva, az alapértelmezett határolójelek a szóköz és a vessző. |
@@ -85,23 +90,33 @@ Ha használja `search.in` , akkor várható, hogy a második paraméterben a má
 
 Az összes olyan Hotel megkeresése, amelynek neve egyenlő a "Sea View Motel" vagy a "Budget Hotel" névvel. A kifejezések szóközöket tartalmaznak, amelyek alapértelmezett határolójelek. Az idézőjelek között egy alternatív határolójelet is megadhat a harmadik sztring paraméterként:  
 
+```odata-filter-expr
     search.in(HotelName, 'Sea View motel,Budget hotel', ',')
+```
 
 Az összes olyan Hotel megkeresése, amelynek neve egyenlő a "Sea View Motel" vagy a "Budget Hotel" névvel, a következővel elválasztva: "|".
 
+```odata-filter-expr
     search.in(HotelName, 'Sea View motel|Budget hotel', '|')
+```
 
 A "WiFi" vagy a "kád" címkével rendelkező összes Hotel megkeresése:
 
+```odata-filter-expr
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub')))
+```
 
 Megtalálhatja a gyűjteményen belüli kifejezéseket, például a "fűtött törölköző állványok" vagy a "hajszárító" címkét.
 
+```odata-filter-expr
     Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
+```
 
 A "Motel" vagy a "cabin'" címke nélküli összes Hotel megkeresése:
 
+```odata-filter-expr
     Tags/all(tag: not search.in(tag, 'motel, cabin'))
+```
 
 ## <a name="next-steps"></a>További lépések  
 

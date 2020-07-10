@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 6edb639cacc48e8b59c458bcf0ac9c9c5e07b030
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93c686fb2688a7a8ae71d8156e6e5c7915d6c604
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203564"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205762"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management-példány frissítése és méretezése  
 
@@ -74,7 +74,7 @@ Bármely szintre frissítheti és visszaléphet. A verziófrissítés vagy a vis
 1. A [Azure Portalban](https://portal.azure.com/)navigáljon a API Management szolgáltatáshoz.
 2. Kattintson a menü **díjszabási szintjére** .
 3. Válassza ki a kívánt szolgáltatási szintet a legördülő listából. A csúszka segítségével megadhatja a API Management szolgáltatás méretezését a módosítás után.
-4. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Mentés** gombra.
 
 ## <a name="downtime-during-scaling-up-and-down"></a>Leállás a felfelé és lefelé skálázás során
 Ha a fejlesztői szinten vagy a-ból végez méretezést, a rendszer leállást eredményez. Ellenkező esetben nincs leállás. 
@@ -84,3 +84,4 @@ Ha a fejlesztői szinten vagy a-ból végez méretezést, a rendszer leállást 
 
 - [Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)
 - [Azure API Management Service-példány automatikus méretezése](api-management-howto-autoscale.md)
+- [Optimalizálja és mentse a Felhőbeli kiadásait](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

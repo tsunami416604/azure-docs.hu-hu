@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: e8917a0a5678c4c6b72352a0d4c1523bfea3c96d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3cf2603dec7e921159824f565336cd91a575731
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537210"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205668"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>A Azure Database for MySQL-kompatibilis MySQL-illesztőprogramok és-felügyeleti eszközök
 Ez a cikk a Azure Database for MySQL kompatibilis illesztőprogramokat és felügyeleti eszközöket ismerteti.
@@ -19,7 +19,7 @@ Ez a cikk a Azure Database for MySQL kompatibilis illesztőprogramokat és felü
 ## <a name="mysql-drivers"></a>MySQL-illesztőprogramok
 Azure Database for MySQL a MySQL-adatbázis világ legnépszerűbb közösségi kiadását használja. Ezért kompatibilis a programozási nyelvek és illesztőprogramok széles választékával. A cél az, hogy támogassa a legújabb MySQL-illesztőprogramokat, és a nyílt forráskódú Közösségből származó szerzőkkel folytatott erőfeszítésekkel folyamatosan javítsa a MySQL-illesztőprogramok funkcióit és használhatóságát. A tesztelt és a Azure Database for MySQL 5,6-es és 5,7-es verzióval kompatibilis illesztőprogramok listáját az alábbi táblázat tartalmazza:
 
-| **Programozási nyelv** | **Illesztőprogram** | **Hivatkozások** | **Kompatibilis verziók** | **Nem kompatibilis verziók** | **Megjegyzések** |
+| **Programozási nyelv** | **Illesztő** | **Hivatkozások** | **Kompatibilis verziók** | **Nem kompatibilis verziók** | **Megjegyzések** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |
 | PHP | mysqli, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5,5, 5,6, 7. x | 5.3 | Az SSL-MySQLi rendelkező PHP 7,0-kapcsolathoz adja hozzá a MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERTt a kapcsolati karakterláncban. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> OEM set: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` beállítás hamis értékre.|
 | .NET | Aszinkron MySQL-összekötő a .NET-hez | https://github.com/mysql-net/MySqlConnector <br> [Telepítőcsomag a Nuget](https://www.nuget.org/packages/MySqlConnector/) | 0,27 és utána | 0.26.5 és előtte | |
@@ -45,14 +45,14 @@ A kompatibilitási előny az adatbázis-felügyeleti eszközökre is kiterjed. A
 
 |                                     | **MySQL Workbench 6. x és fel** | **Navicat 12** | **PHPMyAdmin 4. x és fel** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| Létrehozás, frissítés, olvasás, írás, törlés | X | X | X |
-| SSL-kapcsolat | X | X | X |
-| SQL-lekérdezés automatikus befejezése | X | X |  |
-| Az adatimportálás és-exportálás | X | X | X | 
-| Exportálás több formátumba | X | X | X |
-| Biztonsági mentés és visszaállítás |  | X |  |
-| Kiszolgáló paramétereinek megjelenítése | X | X | X |
-| Ügyfélkapcsolatok megjelenítése | X | X | X |
+| **Létrehozás, frissítés, olvasás, írás, törlés** | X | X | X |
+| **SSL-kapcsolat** | X | X | X |
+| **SQL-lekérdezés automatikus befejezése** | X | X |  |
+| **Az adatimportálás és-exportálás** | X | X | X |
+| **Exportálás több formátumba** | X | X | X |
+| **Biztonsági mentés és visszaállítás** |  | X |  |
+| **Kiszolgáló paramétereinek megjelenítése** | X | X | X |
+| **Ügyfélkapcsolatok megjelenítése** | X | X | X |
 
 ## <a name="next-steps"></a>További lépések
 

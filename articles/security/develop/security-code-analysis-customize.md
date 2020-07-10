@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 744b186b32927f81be21ff067c9195bddb33c416
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4c7f82b729355e59ff05d5513e22fa143d53a5e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362091"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206857"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>A Build-feladatok konfigurálása és testreszabása
 
@@ -64,9 +64,11 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
     - A könyvtár specifikációinak mindig a * értékkel kell végződnie \\ .
     - Példák:
 
+```binskim-targets
            *.dll;*.exe
            $(BUILD_STAGINGDIRECTORY)\*
            $(BUILD_STAGINGDIRECTORY)\*.dll;$(BUILD_STAGINGDIRECTORY)\*.exe;
+```
 
 - Ha a **Type (típus** ) listában kiválasztja a **parancssort** , binskim.exe kell futtatnia:
      - Győződjön meg arról, hogy az binskim.exe első argumentumai a műveletek **elemzését** , majd egy vagy több elérésiút-specifikációt követnek. Minden elérési út lehet teljes elérési út vagy a forrás könyvtárhoz viszonyított elérési út.
@@ -74,11 +76,13 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
      - Kihagyhatja az **/o** vagy a **/output** beállítást. A kimeneti érték hozzá lesz adva vagy lecserélve.
      - A standard parancssori konfigurációk a következőképpen láthatók.
 
+```binskim-line-args
            analyze $(Build.StagingDirectory)\* --recurse --verbose
            analyze *.dll *.exe --recurse --verbose
+```
 
-          > [!NOTE]
-          > A záró \\ * fontos, ha a célként megadott könyvtárakat ad meg.
+> [!NOTE]
+> A záró \\ * fontos, ha a célként megadott könyvtárakat ad meg.
 
 További információ a BinSkim parancssori argumentumokról, a szabályok azonosító alapján vagy kilépési kódokról: [BinSkim felhasználói útmutató](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md).
 

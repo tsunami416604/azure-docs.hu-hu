@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: 1f8dc5ef89c70cebce1d59fc389300b30dc828f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edc2198cff360b6f0d2f6ace3b76d35bf77fab97
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887605"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206700"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Médiaadatfolyam-továbbítás optimalizálása Azure CDN 
  
@@ -82,12 +82,11 @@ A végpont létrehozása után alkalmazza az optimalizálást az összes olyan f
 Ha **Azure CDN standard from Akamai** azt észleli, hogy az eszköz egy folyamatos átviteli jegyzékfájl vagy töredék, az általános webes kézbesítéstől eltérő gyorsítótárazási lejárati időt használ. (Lásd a következő táblázat teljes listáját.) Mint mindig, a gyorsítótár-vezérlés vagy a lejárati fejlécek a forrásból való elküldése után teljesülnek. Ha az eszköz nem adathordozó-eszköz, az az általános webes kézbesítés lejárati idejét használva gyorsítótárazza.
 
 A rövid negatív gyorsítótárazási idő hasznos a forrás kiszervezésében, ha sok felhasználó olyan töredéket kér, amely még nem létezik. Ilyen például egy élő stream, ahol a csomagok nem érhetők el a második forrásból. A hosszú gyorsítótárazási időköz segíti a kérelmek kiszervezését is a forrástól, mert a videó tartalma általában nem módosul.
- 
 
-|   | Általános webes kézbesítés | Általános médiaadatfolyam-továbbítás | Igény szerinti video-adatfolyam  
---- | --- | --- | ---
-Gyorsítótárazás: pozitív <br> HTTP 200, 203, 300, <br> 301, 302 és 410 | 7 nap |365 nap | 365 nap   
-Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | None | 1 másodperc | 1 másodperc
+| Gyorsítótárazás  | Általános webes kézbesítés | Általános médiaadatfolyam-továbbítás | Igény szerinti video-adatfolyam  
+|--- | --- | --- | ---
+| Gyorsítótárazás: pozitív <br> HTTP 200, 203, 300, <br> 301, 302 és 410 | 7 nap |365 nap | 365 nap   
+| Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | Nincsenek | 1 másodperc | 1 másodperc
  
 ### <a name="deal-with-origin-failure"></a>A származási hiba kezelése  
 
