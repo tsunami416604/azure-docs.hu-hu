@@ -8,13 +8,14 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
-ms.date: 05/19/2020
+ms.date: 07/09/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 39c694f4e2afbf5d781a8fde43a7db9c4a255466
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ba48e5beb8ce4b4ae126dd23acbe0dec650f655
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392666"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232151"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -31,15 +32,12 @@ További információ: [alkalmazások központi telepítése Azure Resource Mana
 
 * Ha a parancssori felületről szeretne sablont használni, [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t kell használnia.
 
-## <a name="resource-manager-template"></a>Resource Manager-sablon
+## <a name="workspace-resource-manager-template"></a>Munkaterület Resource Manager-sablon
 
-A következő Resource Manager-sablon használatával létrehozhat egy Azure Machine Learning munkaterületet és a hozzá tartozó Azure-erőforrásokat:
-
-[!code-json[create-azure-machine-learning-service-workspace](~/quickstart-templates/101-machine-learning-create/azuredeploy.json)]
+Az ebben a dokumentumban használt Azure Resource Manager sablon az Azure Gyorsindítás sablonok GitHub-tárházának [201-Machine-learning-Advanced](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json) könyvtárában található.
 
 Ez a sablon a következő Azure-szolgáltatásokat hozza létre:
 
-* Azure-erőforráscsoport
 * Azure Storage-tárfiók neve
 * Azure Key Vault
 * Azure Application Insights
@@ -48,13 +46,13 @@ Ez a sablon a következő Azure-szolgáltatásokat hozza létre:
 
 Az erőforráscsoport az a tároló, amely a szolgáltatásokat tárolja. A Azure Machine Learning munkaterület különböző szolgáltatásokat igényel.
 
-A példában szereplő sablonnak két paramétere van:
+A példa sablon két **kötelező** paraméterrel rendelkezik:
 
-* A **hely** , ahol az erőforráscsoport és a szolgáltatások létre lesznek hozva.
+* A **hely** , ahol az erőforrások létre lesznek hozva.
 
     A sablon a legtöbb erőforráshoz kiválasztott helyet fogja használni. A kivétel a Application Insights szolgáltatás, amely nem érhető el a többi szolgáltatás összes helyén. Ha olyan helyet választ, ahol nem érhető el, a szolgáltatás az USA déli középső régiójában lesz létrehozva.
 
-* A **munkaterület neve**, amely a Azure Machine learning munkaterület rövid neve.
+* A **workspaceName**, amely a Azure Machine learning munkaterület rövid neve.
 
     > [!NOTE]
     > A munkaterület neve megkülönbözteti a kis-és nagybetűket.
@@ -74,7 +72,82 @@ A sablonokkal kapcsolatos további információkért tekintse meg a következő 
 * [Alkalmazás üzembe helyezése Azure Resource Manager-sablonokkal](../azure-resource-manager/templates/deploy-powershell.md)
 * [Microsoft. MachineLearningServices erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
-### <a name="advanced-template"></a>Speciális sablon
+## <a name="deploy-template"></a>Sablon üzembe helyezése
+
+A sablon üzembe helyezéséhez létre kell hoznia egy erőforráscsoportot.
+
+Ha inkább a grafikus felhasználói felületet használja, tekintse meg a [Azure Portal](#use-the-azure-portal) szakaszt.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az group create --name "examplegroup" --location "eastus"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroup -Name "examplegroup" -Location "eastus"
+```
+
+---
+
+Az erőforráscsoport sikeres létrehozása után telepítse a sablont a következő paranccsal:
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" location="eastus"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus"
+```
+
+---
+
+Alapértelmezés szerint a sablon részeként létrehozott összes erőforrás új. Lehetősége van azonban meglévő erőforrások használatára is. Ha további paramétereket biztosít a sablonhoz, használhatja a meglévő erőforrásokat. Ha például egy meglévő Storage-fiókot szeretne használni, állítsa a **storageAccountOption** értéket **meglévő** értékre, és adja meg a Storage-fiók nevét a **storageAccountName** paraméterben.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      storageAccountOption="existing" \
+      storageAccountName="existingstorageaccountname"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -storageAccountOption "existing" `
+  -storageAccountName "existingstorageaccountname"
+```
+
+---
+
+## <a name="deploy-an-encrypted-workspace"></a>Titkosított munkaterület üzembe helyezése
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy munkaterületet három beállítással:
 
@@ -86,6 +159,7 @@ További információ: [titkosítás a REST](concept-enterprise-security.md#encr
 
 > [!IMPORTANT]
 > A sablon használata előtt néhány speciális követelménynek meg kell felelnie az előfizetésnek:
+>
 > * Az __Azure Machine learning__ alkalmazásnak az Azure-előfizetéséhez __közreműködőnek__ kell lennie.
 > * A titkosítási kulcsot tartalmazó meglévő Azure Key Vaultnak kell lennie.
 > * Olyan hozzáférési szabályzattal kell rendelkeznie a Azure Key Vaultban, amely a __Azure Cosmos db__ alkalmazáshoz való hozzáférés __megszerzését__, __becsomagolását__és __kicsomagolását__ engedélyezi.
@@ -93,110 +167,482 @@ További információ: [titkosítás a REST](concept-enterprise-security.md#encr
 
 __A Azure Machine learning alkalmazás közreműködőként való hozzáadásához__használja a következő parancsokat:
 
-1. Ha a parancssori felületről szeretne hitelesítést végezni az Azure-ban, használja a következő parancsot:
+1. Jelentkezzen be az Azure-fiókjába, és szerezze be az előfizetés-AZONOSÍTÓját. Ennek az előfizetésnek azonosnak kell lennie, amely tartalmazza a Azure Machine Learning munkaterületet.  
 
-    ```azurecli-interactive
-    az login
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az account list --query '[].[name,id]' --output tsv
     ```
-    
-    [!INCLUDE [subscription-login](../../includes/machine-learning-cli-subscription.md)]
+
+    > [!TIP]
+    > Egy másik előfizetés kiválasztásához használja a `az account set -s <subscription name or ID>` parancsot, és adja meg az előfizetés nevét vagy azonosítóját a váltáshoz. További információ az előfizetés kiválasztásáról: [több Azure-előfizetés használata](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). 
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzSubscription
+    ```
+
+    > [!TIP]
+    > Egy másik előfizetés kiválasztásához használja a `Az-SetContext -SubscriptionId <subscription ID>` parancsot, és adja meg az előfizetés nevét vagy azonosítóját a váltáshoz. További információ az előfizetés kiválasztásáról: [több Azure-előfizetés használata](https://docs.microsoft.com/powershell/azure/manage-subscriptions-azureps?view=azps-4.3.0).
+
+    ---
 
 1. A Azure Machine Learning alkalmazás objektum-AZONOSÍTÓjának lekéréséhez használja a következő parancsot. Az egyes Azure-előfizetések esetében az érték különbözhet:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
     az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
     ```
 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzADServicePrincipal --DisplayName "Azure Machine Learning" | select-object DisplayName, Id
+    ```
+
+    ---
     Ez a parancs az objektumazonosító értéket adja vissza, amely egy GUID azonosító.
 
-1. Az objektum-azonosító közreműködőként való hozzáadásához használja az alábbi parancsot. Cserélje le az `<object-ID>` elemet az előző lépésben szereplő GUID azonosítóra. A helyére írja `<subscription-ID>` be az Azure-előfizetés nevét vagy azonosítóját:
+1. Az objektum-azonosító közreműködőként való hozzáadásához használja az alábbi parancsot. Cserélje le az értékét az `<object-ID>` egyszerű szolgáltatásnév objektum-azonosítójával. A helyére írja `<subscription-ID>` be az Azure-előfizetés nevét vagy azonosítóját:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
     az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
     ```
 
-__Ha kulcsot szeretne hozzáadni a Azure Key Vaulthoz__, használja a [kulcs, titkos kód vagy tanúsítvány hozzáadása](../key-vault/general/manage-with-cli2.md#adding-a-key-secret-or-certificate-to-the-key-vault) az Azure CLI-vel című cikkben található Key Vault- __Key Vault kezelőhöz__ című témakör információit.
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    New-AzRoleAssignment --ObjectId <object-ID> --RoleDefinitionName "Contributor" -Scope /subscriptions/<subscription-ID>
+    ```
+
+    ---
+
+1. Egy meglévő Azure Key Vaultban lévő kulcs létrehozásához használja a következő parancsok egyikét. Cserélje le a helyére a `<keyvault-name>` Key Vault nevét. Cserélje le a `<key-name>` nevet a kulcshoz használandó névre:
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az keyvault key create --vault-name <keyvault-name> --name <key-name> --protection software
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Add-AzKeyVaultKey -VaultName <keyvault-name> -Name <key-name> -Destination 'Software'
+    ```
+    --- 
 
 __Ha hozzáférési szabályzatot szeretne hozzáadni a Key vaulthoz, használja a következő parancsokat__:
 
 1. A Azure Cosmos DB alkalmazás objektum-AZONOSÍTÓjának lekéréséhez használja a következő parancsot. Az egyes Azure-előfizetések esetében az érték különbözhet:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
     az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
     ```
-    
-    Ez a parancs az objektumazonosító értéket adja vissza, amely egy GUID azonosító.
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzADServicePrincipal --DisplayName "Azure Cosmos DB" | select-object DisplayName, Id
+    ```
+    ---
+
+    Ez a parancs az objektumazonosító értéket adja vissza, amely egy GUID azonosító. Mentés később
 
 1. A házirend beállításához használja a következő parancsot. Cserélje le a helyére a `<keyvault-name>` meglévő Azure Key Vault nevét. Cserélje le `<object-ID>` az elemet az előző lépésben szereplő GUID azonosítóra:
 
-    ```azurecli-interactive
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
     az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
     ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    
+    ```azurepowershell
+    Set-AzKeyVaultAccessPolicy -VaultName <keyvault-name> -ObjectId <object-ID> -PermissionsToKeys get, unwrapKey, wrapKey
+    ```
+    ---    
 
 __To get the values__ A `cmk_keyvault` sablonhoz szükséges (Key Vault) és a `resource_cmk_uri` (kulcs URI) paraméterek értékeinek lekéréséhez kövesse az alábbi lépéseket:
 
 1. A Key Vault-azonosító beszerzéséhez használja a következő parancsot:
 
-    ```azurecli-interactive
-    az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az keyvault show --name <keyvault-name> --query 'id' --output tsv
     ```
 
-    A parancs a következőhöz hasonló értéket ad vissza: `/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault` .
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzureRMKeyVault -VaultName '<keyvault-name>'
+    ```
+    ---
+
+    A parancs a következőhöz hasonló értéket ad vissza: `/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>` .
 
 1. Az ügyfél által felügyelt kulcs URI azonosítójának megszerzéséhez használja a következő parancsot:
 
-    ```azurecli-interactive
-    az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az keyvault key show --vault-name <keyvault-name> --name <key-name> --query 'key.kid' --output tsv
     ```
 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzureKeyVaultKey -VaultName '<keyvault-name>' -KeyName '<key-name>'
+    ```
+    ---
+
     A parancs a következőhöz hasonló értéket ad vissza: `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` .
-
-__Példa sablonra__
-
-:::code language="json" source="~/quickstart-templates/201-machine-learning-encrypted-workspace/azuredeploy.json":::
 
 > [!IMPORTANT]
 > Miután létrehozta a munkaterületet, nem módosíthatja a bizalmas adatok, a titkosítás, a kulcstároló-azonosító vagy a kulcs-azonosítók beállításait. Az értékek módosításához új munkaterületet kell létrehoznia az új értékekkel.
 
+Ha sikeresen elvégezte a fenti lépéseket, akkor a szokásos módon végezze el a sablon üzembe helyezését. Az ügyfél által felügyelt kulcsok használatának engedélyezéséhez állítsa be a következő paramétereket:
+
+* **Encryption_status** **engedélyezett**.
+* **cmk_keyvault** az `cmk_keyvault` előző lépések során beszerzett értékre.
+* **resource_cmk_uri** az `resource_cmk_uri` előző lépések során beszerzett értékre.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      encryption_status="Enabled" \
+      cmk_keyvault="/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>" \
+      resource_cmk_uri="https://mykeyvault.vault.azure.net/keys/mykey/{guid}" \
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -encryption_status "Enabled" `
+  -cmk_keyvault "/subscriptions/{subscription-guid}/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<keyvault-name>" `
+  -resource_cmk_uri "https://mykeyvault.vault.azure.net/keys/mykey/{guid}"
+```
+---
+
+Ügyfél által felügyelt kulcs használatakor Azure Machine Learning létrehoz egy másodlagos erőforráscsoportot, amely tartalmazza a Cosmos DB példányt. További információ: [titkosítás a REST-Cosmos DBon](concept-enterprise-security.md#encryption-at-rest).
+
+Az adatai számára további konfigurációt adhat meg, ha a **confidential_data** paramétert True ( **igaz**) értékre állítja. Ezzel a következő műveleteket hajtja végre:
+
+* Elindítja a Azure Machine Learning számítási fürtök helyi lemezeinek titkosítását, így még nem hozott létre korábbi fürtöket az előfizetésében. Ha korábban már létrehozott egy fürtöt az előfizetésben, nyisson meg egy támogatási jegyet, hogy a számítási fürtökön engedélyezve legyen a lemez titkosítása.
+* A helyi kaparós lemez tisztítása a futtatások között.
+* A Key Vault használatával biztonságosan továbbíthatja a Storage-fiók, a Container Registry és az SSH-fiók hitelesítő adatait a végrehajtási rétegből a számítási fürtökbe.
+* Engedélyezi az IP-szűrést annak érdekében, hogy a mögöttes batch-készletek ne legyenek meghívva a AzureMachineLearningService-től eltérő külső szolgáltatásokkal.
+
+  További információ: [titkosítás a REST](concept-enterprise-security.md#encryption-at-rest)-ben.
+
+## <a name="deploy-workspace-behind-a-virtual-network"></a>Munkaterület üzembe helyezése virtuális hálózat mögött
+
+`vnetOption`Ha a paraméter értékét a vagy a értékre állítja `new` `existing` , akkor létrehozhat egy virtuális hálózat mögötti munkaterület által használt erőforrásokat.
+
+> [!IMPORTANT]
+> A Container Registry esetében csak a prémium SKU támogatott.
+
+> [!IMPORTANT]
+> Application Insights nem támogatja a virtuális hálózat mögötti üzembe helyezést.
+
+### <a name="only-deploy-workspace-behind-private-endpoint"></a>Csak a munkaterület üzembe helyezése privát végpont mögött
+
+Ha a társított erőforrások nem egy virtuális hálózat mögött találhatók, a **privateEndpointType** paramétert beállíthatja úgy, hogy `AutoAproval` `ManualApproval` a munkaterületet egy privát végpont mögött helyezze üzembe.
+
+> [!IMPORTANT]
+> Az üzembe helyezés csak a privát végpontokat támogató régiókban érvényes.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      privateEndpointType="AutoApproval"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -privateEndpointType "AutoApproval"
+```
+
+---
+
+### <a name="use-a-new-virtual-network"></a>Új virtuális hálózat használata
+
+Egy új virtuális hálózat mögötti erőforrás üzembe helyezéséhez állítsa a **vnetOption** **új** értékre a megfelelő erőforráshoz tartozó virtuális hálózati beállításokkal együtt. Az alábbi telepítés azt mutatja be, hogyan helyezhet üzembe egy munkaterületet a Storage-fiók erőforrásával egy új virtuális hálózat mögött.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="new" \
+      vnetName="examplevnet" \
+      storageAccountBehindVNet="true"
+      privateEndpointType="AutoApproval"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "new" `
+  -vnetName "examplevnet" `
+  -storageAccountBehindVNet "true"
+  -privateEndpointType "AutoApproval"
+```
+
+---
+
+Azt is megteheti, hogy a virtuális hálózat mögött több vagy minden függő erőforrást is üzembe helyez.
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="new" \
+      vnetName="examplevnet" \
+      storageAccountBehindVNet="true" \
+      keyVaultBehindVNet="true" \
+      containerRegistryBehindVNet="true" \
+      containerRegistryOption="new" \
+      containerRegistrySku="Premium"
+      privateEndpointType="AutoApproval"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "new" `
+  -vnetName "examplevnet" `
+  -storageAccountBehindVNet "true"
+  -keyVaultBehindVNet "true" `
+  -containerRegistryBehindVNet "true" `
+  -containerRegistryOption "new" `
+  -containerRegistrySku "Premium"
+  -privateEndpointType "AutoApproval"
+```
+
+---
+
+<!-- Workspaces need a private endpoint when associated resources are behind a virtual network to work properly. To set up a private endpoint for the workspace with a new virtual network:
+
+> [!IMPORTANT]
+> The deployment is only valid in regions which support private endpoints.
+
+# [Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="new" \
+      vnetName="examplevnet" \
+      privateEndpointType="AutoApproval"
+```
+
+# [Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "new" `
+  -vnetName "examplevnet" `
+  -privateEndpointType "AutoApproval"
+```
+
+--- -->
+
+### <a name="use-an-existing-virtual-network--resources"></a>Meglévő virtuális hálózati & erőforrások használata
+
+A meglévő társított erőforrásokkal rendelkező munkaterületek üzembe helyezéséhez a **vnetOption** paramétert a **meglévő** alhálózati paraméterekkel együtt kell beállítania. A központi telepítés **előtt** azonban minden erőforráshoz létre kell hoznia szolgáltatási végpontokat a virtuális hálózaton. Az új virtuális hálózati környezetekhez hasonlóan a virtuális hálózat mögött egy vagy több erőforrás is lehet.
+
+> [!IMPORTANT]
+> Az alhálózatnak `Microsoft.Storage` szolgáltatási végponttal kell rendelkeznie
+
+> [!IMPORTANT]
+> Az alhálózatok nem teszik lehetővé privát végpontok létrehozását. Tiltsa le a magánhálózati végpontot az alhálózat engedélyezéséhez.
+
+1. Szolgáltatási végpontok engedélyezése az erőforrásokhoz.
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.Storage"
+    az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.KeyVault"
+    az network vnet subnet update --resource-group "examplegroup" --vnet-name "examplevnet" --name "examplesubnet" --service-endpoints "Microsoft.ContainerRegistry"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+
+    ```azurepowershell
+    Get-AzVirtualNetwork -ResourceGroupName "examplegroup" -Name "examplevnet" | Set-AzVirtualNetworkSubnetConfig -Name "examplesubnet" -AddressPrefix "<subnet prefix>" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
+    Get-AzVirtualNetwork -ResourceGroupName "examplegroup" -Name "examplevnet" | Set-AzVirtualNetworkSubnetConfig -Name "examplesubnet" -AddressPrefix "<subnet prefix>" -ServiceEndpoint "Microsoft.KeyVault" | Set-AzVirtualNetwork
+    Get-AzVirtualNetwork -ResourceGroupName "examplegroup" -Name "examplevnet" | Set-AzVirtualNetworkSubnetConfig -Name "examplesubnet" -AddressPrefix "<subnet prefix>" -ServiceEndpoint "Microsoft.ContainerRegistry" | Set-AzVirtualNetwork
+    ```
+
+    ---
+
+1. A munkaterület üzembe helyezése
+
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+
+    ```azurecli
+    az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="existing" \
+      vnetName="examplevnet" \
+      vnetResourceGroupName="examplegroup" \
+      storageAccountBehindVNet="true" \
+      keyVaultBehindVNet="true" \
+      containerRegistryBehindVNet="true" \
+      containerRegistryOption="new" \
+      containerRegistrySku="Premium" \
+      subnetName="examplesubnet" \
+      subnetOption="existing"
+      privateEndpointType="AutoApproval"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azpowershell)
+    ```azurepowershell
+    New-AzResourceGroupDeployment `
+      -Name "exampledeployment" `
+      -ResourceGroupName "examplegroup" `
+      -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+      -workspaceName "exampleworkspace" `
+      -location "eastus" `
+      -vnetOption "existing" `
+      -vnetName "examplevnet" `
+      -vnetResourceGroupName "examplegroup" `
+      -storageAccountBehindVNet "true"
+      -keyVaultBehindVNet "true" `
+      -containerRegistryBehindVNet "true" `
+      -containerRegistryOption "new" `
+      -containerRegistrySku "Premium" `
+      -subnetName "examplesubnet" `
+      -subnetOption "existing"
+      -privateEndpointType "AutoApproval"
+    ```
+    ---
+
+<!-- Workspaces need a private endpoint when associated resources are behind a virtual network to work properly. To set up a private endpoint for the workspace with an existing virtual network:
+
+> [!IMPORTANT]
+> The deployment is only valid in regions which support private endpoints.
+
+# [Azure CLI](#tab/azcli)
+
+```azurecli
+az deployment group create \
+    --name "exampledeployment" \
+    --resource-group "examplegroup" \
+    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" \
+    --parameters workspaceName="exampleworkspace" \
+      location="eastus" \
+      vnetOption="existing" \
+      vnetName="examplevnet" \
+      vnetResourceGroupName="rg" \
+      privateEndpointType="AutoApproval" \
+      subnetName="subnet" \
+      subnetOption="existing"
+```
+
+# [Azure PowerShell](#tab/azpowershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name "exampledeployment" `
+  -ResourceGroupName "examplegroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-machine-learning-advanced/azuredeploy.json" `
+  -workspaceName "exampleworkspace" `
+  -location "eastus" `
+  -vnetOption "existing" `
+  -vnetName "examplevnet" `
+  -vnetResourceGroupName "rg"
+  -privateEndpointType "AutoApproval"
+  -subnetName "subnet"
+  -subnetOption "existing"
+```
+
+--- -->
+
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
-1. Kövesse az [erőforrások telepítése egyéni sablonból](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)című témakör lépéseit. Amikor megérkezik a __Sablon szerkesztése__ képernyőre, illessze be a sablont a dokumentumból.
-1. A sablon használatához válassza a __Mentés__ lehetőséget. Adja meg a következő információkat, és fogadja el a felsorolt feltételeket és kikötéseket:
+1. Kövesse az [erőforrások telepítése egyéni sablonból](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)című témakör lépéseit. Amikor megérkezik a __sablon kiválasztása__ képernyőre, válassza ki a **201-Machine-learning-Advanced** sablont a legördülő listából.
+1. Válassza a sablon __kiválasztása__ lehetőséget a sablon használatához. A telepítési forgatókönyvtől függően adja meg a következő szükséges információkat és egyéb paramétereket.
 
    * Előfizetés: válassza ki az erőforrásokhoz használni kívánt Azure-előfizetést.
    * Erőforráscsoport: válasszon ki vagy hozzon létre egy erőforráscsoportot, amely tartalmazza a szolgáltatásokat.
+   * Régió: válassza ki azt az Azure-régiót, ahol létre kívánja hozni az erőforrásokat.
    * Munkaterület neve: a létrehozandó Azure Machine Learning munkaterület nevét fogja használni. A munkaterület nevének 3 és 33 karakter közöttinek kell lennie. Csak alfanumerikus karaktereket és "-" karaktert tartalmazhat.
    * Hely: válassza ki azt a helyet, ahová létre kívánja hozni az erőforrásokat.
+1. Válassza az __Áttekintés és létrehozás__ lehetőséget.
+1. A __felülvizsgálat + létrehozás__ képernyőn fogadja el a felsorolt feltételeket és kikötéseket, majd válassza a __Létrehozás__lehetőséget.
 
 További információ: [erőforrások központi telepítése egyéni sablonból](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
-
-## <a name="use-azure-powershell"></a>Azure PowerShell használatával
-
-Ez a példa feltételezi, hogy mentette a sablont egy nevű fájlba `azuredeploy.json` az aktuális könyvtárban:
-
-```powershell
-New-AzResourceGroup -Name examplegroup -Location "East US"
-new-azresourcegroupdeployment -name exampledeployment `
-  -resourcegroupname examplegroup -location "East US" `
-  -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
-```
-
-További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) , valamint [saját Resource Manager-sablon üzembe helyezése sas-jogkivonat és Azure PowerShell segítségével](../azure-resource-manager/templates/secure-template-with-sas-token.md).
-
-## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
-
-Ez a példa feltételezi, hogy mentette a sablont egy nevű fájlba `azuredeploy.json` az aktuális könyvtárban:
-
-```azurecli-interactive
-az group create --name examplegroup --location "East US"
-az group deployment create \
-  --name exampledeployment \
-  --resource-group examplegroup \
-  --template-file azuredeploy.json \
-  --parameters workspaceName=exampleworkspace location=eastus sku=basic
-```
-
-További információ: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../azure-resource-manager/templates/deploy-cli.md) -vel, valamint [saját Resource Manager-sablon üzembe helyezése sas-JOGKIVONAT és Azure CLI használatával](../azure-resource-manager/templates/secure-template-with-sas-token.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -216,7 +662,7 @@ A probléma elkerüléséhez a következő módszerek egyikét javasoljuk:
 
 * Vizsgálja meg a Key Vault hozzáférési házirendeket, majd használja ezeket a házirendeket a `accessPolicies` sablon tulajdonságának beállításához. A hozzáférési szabályzatok megtekintéséhez használja az alábbi Azure CLI-parancsot:
 
-    ```azurecli-interactive
+    ```azurecli
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
@@ -287,7 +733,7 @@ A probléma elkerüléséhez a következő módszerek egyikét javasoljuk:
 
     A Key Vault AZONOSÍTÓjának lekéréséhez hivatkozhat az eredeti sablon kimenetére, vagy használhatja az Azure CLI-t is. Az alábbi parancs egy példa arra, hogyan használhatja az Azure CLI-t a Key Vault erőforrás-azonosító lekéréséhez:
 
-    ```azurecli-interactive
+    ```azurecli
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query id
     ```
 

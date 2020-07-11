@@ -1,5 +1,5 @@
 ---
-title: Folyamatos üzletmenet és vészhelyreállítás
+title: Üzletmenet-folytonosság és vészhelyreállítás
 services: azure-dev-spaces
 author: lisaguthrie
 ms.author: lcozzens
@@ -8,23 +8,24 @@ ms.topic: conceptual
 description: Ismerje meg, hogyan használható az Azure dev Spaces és az Azure Kubernetes Services az üzletmenet folytonosságának biztosításához és a vész-helyreállítás előkészítéséhez
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 993866a35f530616c235728cbe59e52e083aa968
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e47d4b05dedb981d55c527f76ae1c3a120f23d0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996924"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232423"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Üzletmenet-folytonosság és vész-helyreállítás az Azure dev Spaces szolgáltatásban
 
 ## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>A vész-helyreállítási útmutatás áttekintése az Azure Kubernetes Service (ak) szolgáltatáshoz
 
-Az Azure dev Spaces az Azure Kubernetes Service (ak) egyik funkciója. Tisztában kell lennie az AK-beli vész-helyreállítási irányelvekkel, és figyelembe kell venni, hogy azok a fejlesztői tárhelyekhez használt AK-fürtökre vonatkoznak-e. További információ: [ajánlott eljárások az üzletmenet folytonosságához és a vész-helyreállításhoz az Azure Kubernetes szolgáltatásban (ak)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)
+Az Azure dev Spaces az Azure Kubernetes Service (ak) egyik funkciója. Tisztában kell lennie az AK-beli vész-helyreállítási irányelvekkel, és figyelembe kell venni, hogy azok a fejlesztői tárhelyekhez használt AK-fürtökre vonatkoznak-e. További információ: [ajánlott eljárások az üzletmenet folytonosságához és a vész-helyreállításhoz az Azure Kubernetes szolgáltatásban (ak)](../../aks/operator-best-practices-multi-region.md)
 
 ## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Fejlesztői szóközök engedélyezése a különböző régiókban található AK-fürtökön
 
 A fejlesztői szóközöknek a különböző régiókban található AK-fürtökön való engedélyezése lehetővé teszi, hogy az Azure-régió meghibásodása után azonnal folytassa a dev Spaces használatát.
 
-Az AK többrégiós üzembe helyezésével kapcsolatos általános információkért lásd: [a többrégiós telepítés tervezése](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
+Az AK többrégiós üzembe helyezésével kapcsolatos általános információkért lásd: [a többrégiós telepítés tervezése](../../aks/operator-best-practices-multi-region.md#plan-for-multiregion-deployment)
 
 ### <a name="enable-dev-spaces-via-the-azure-cli"></a>A dev Spaces használatának engedélyezése az Azure CLI-n keresztül
 

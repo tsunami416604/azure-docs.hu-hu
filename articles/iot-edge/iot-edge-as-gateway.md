@@ -11,11 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 916eeaa60bc054301af039164ce1c14e77ceb91a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7c924af297d9a315b61351b69d2fe6346bc1178
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733517"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232627"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge-eszköz használata átjáróként
 
@@ -23,11 +24,11 @@ Az IoT Edge-megoldások átjárói az eszköz kapcsolatát és az Edge Analytics
 
 ## <a name="patterns"></a>Minták
 
-Az IoT Edge eszköz átjáróként való használatának három mintája van: transzparens, protokoll fordítása és az identitás fordítása:
+Az IoT Edge-eszközök átjáróként való használatának három módja van: transzparens, protokollfordító és identitásfordító:
 
-* **Transzparens** – azok az eszközök, amelyek elméletileg csatlakozhatnak IoT hub csatlakozhatnak egy átjáró-eszközhöz. Az alsóbb rétegbeli eszközök saját IoT Hub identitással rendelkeznek, és a MQTT, a AMQP vagy a HTTP protokollt használják. Az átjáró egyszerűen továbbítja az eszközök és a IoT Hub közötti kommunikációt. Az eszközök és a velük kommunikáló felhasználók IoT Hub nem biztos, hogy az átjáró közvetíti a kommunikációt. Ez a tájékoztatás hiánya azt jelenti, hogy az átjáró *transzparensnek*tekintendő. A IoT Edge-eszköz transzparens átjáróként való használatával kapcsolatos részletekért lásd: [transzparens átjáró létrehozása](how-to-create-transparent-gateway.md) .
-* **Protokoll fordítása** – más néven átlátszatlan átjáró mintája, a MQTT, a AMQP vagy a http-t nem támogató eszközök egy átjáró-eszköz használatával küldhetnek adatIoT Hubt a nevükben. Az átjáró megérti az alárendelt eszközök által használt protokollt, és az egyetlen olyan eszköz, amely IoT Hub identitással rendelkezik. Minden információ úgy tűnik, hogy egy eszközről, az átjáróról származik. Az alárendelt eszközöknek további azonosítási információkat kell tartalmazniuk az üzeneteiben, ha a Felhőbeli alkalmazások eszközönkénti alapon szeretnék elemezni az adatokat. Emellett a IoT Hub primitívek, például az ikrek és a metódusok csak az átjáró-eszközhöz érhetők el, nem az alsóbb rétegbeli eszközökhöz.
-* **Identitás fordítása** – az IoT hubhoz nem csatlakoztatható eszközök nem tudnak csatlakozni az átjáró-eszközökhöz. Az átjáró IoT Hub identitást és a protokoll fordítását biztosítja az alárendelt eszközök nevében. Az átjáró elég intelligens ahhoz, hogy tisztában legyen az alsóbb rétegbeli eszközök által használt protokollal, megismertesse azokat az identitással, és lefordítsa IoT Hub primitíveket. Az alsóbb szintű eszközök IoT Hub az ikrek és a metódusok első osztályú eszközeiként jelennek meg. A felhasználók kezelhetik IoT Hub eszközeit, és nem ismerik a köztes átjáró eszközét.
+* **Transzparens** – azok az eszközök, amelyek elméletileg csatlakozhatnak IoT hub csatlakozhatnak egy átjáró-eszközhöz. Az alsóbb rétegbeli eszközök saját IoT Hub-identitással rendelkeznek, és az MQTT, AMQP vagy HTTP protokoll valamelyikét használják. Az átjáró csupán továbbítja az eszközök és az IoT Hub közötti kommunikációt. Az eszközök és a velük kommunikáló felhasználók IoT Hub nem biztos, hogy az átjáró közvetíti a kommunikációt. Ez a tájékoztatás hiánya azt jelenti, hogy az átjáró *transzparensnek*tekintendő. Az IoT Edge-eszközök transzparens átjáróként való használatának részletes leírását a [transzparens átjáró létrehozását](how-to-create-transparent-gateway.md) ismertető cikkben találhatja meg.
+* **Protokoll fordítása** – más néven átlátszatlan átjáró mintája, a MQTT, a AMQP vagy a http-t nem támogató eszközök egy átjáró-eszköz használatával küldhetnek adatIoT Hubt a nevükben. Az átjáró ismeri az alsóbb rétegbeli eszközök által használt protokollt, és ez az egyetlen eszköz, amely identitással rendelkezik az IoT Hubban. Minden információ úgy tűnik, hogy egy eszközről, az átjáróról származik. Az alsóbb réteg eszközeinek további azonosító információkat kell beágyazniuk az üzenetekbe, ha a felhőalkalmazásoknak eszközönként is elemezniük kell az adatokat. Emellett az olyan IoT Hub-primitívek, mint az ikrek és metódusok csak az átjáróeszköz számára érhetők el, az alsóbb rétegbeli eszközök számára nem.
+* **Identitás fordítása** – az IoT hubhoz nem csatlakoztatható eszközök nem tudnak csatlakozni az átjáró-eszközökhöz. Az alsóbb rétegbeli eszközök nevében az átjáró biztosítja az IoT Hub-identitást és a protokollfordítást. Az átjáró elég intelligens ahhoz, hogy értelmezze az alsóbb réteg eszközei által használt protokollt, identitást biztosítson au eszközöknek és lefordítsa az IoT Hub-primitíveket. Az alsóbb rétegbeli eszközök az IoT Hub felé első szintű, ikrekkel és metódusokkal rendelkező eszközökként jelennek meg. A felhasználók úgy kezelhetik az eszközöket az IoT Hubban, hogy nem tudnak a köztes átjáróeszközről.
 
 ![Diagram – transzparens, protokoll és Identity Gateway-minták](./media/iot-edge-as-gateway/edge-as-gateway.png)
 
@@ -49,7 +50,7 @@ Az identitások fordítását végző átjáró biztosítja a protokollok fordí
 
 Itt található egy gyors Cheat-táblázat, amely összehasonlítja IoT Hub primitíveket transzparens, átlátszatlan (protokoll) és proxy átjárók használata esetén.
 
-| &nbsp; | Transzparens átjáró | Protokoll fordítása | Identitás fordítása |
+| Egyszerű | Transzparens átjáró | Protokoll fordítása | Identitás fordítása |
 |--------|-------------|--------|--------|
 | A IoT Hub Identity registryben tárolt identitások | Az összes csatlakoztatott eszköz identitása | Csak az átjáró eszközének identitása | Az összes csatlakoztatott eszköz identitása |
 | Ikereszközök | Minden csatlakoztatott eszközhöz saját eszköz tartozik | Csak az átjáró rendelkezik egy eszköz és egy modul ikrekkel | Minden csatlakoztatott eszközhöz saját eszköz tartozik |

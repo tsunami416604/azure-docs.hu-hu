@@ -7,11 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: c6b791fda43a018a26204b2b43dc1e581ff3a945
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afc3132ebdd0f144d16507ef2ccda2dcaffaa34e
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79269483"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232168"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>VMware virtuális gépek migrálása a kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal rendelkező Azure virtuális gépekre
 
@@ -57,7 +58,7 @@ A kiszolgálói áttelepítési portál felülete megkönnyíti a replikációs 
 
 A lemezes titkosítási készlet objektum Managed Diskst képez le egy olyan Key Vaultra, amely az SSE-hoz használandó CMK tartalmazza. A virtuális gépek CMK való replikálásához létre kell hoznia egy lemezes titkosítási készletet, és bemenetként kell továbbítania a replikálási művelethez.
 
-[A következő példa alapján](../virtual-machines/windows/disk-encryption.md#powershell) hozzon létre egy lemezes titkosítási készletet Azure PowerShell használatával. Győződjön meg arról, hogy a lemez titkosítási készlete a cél előfizetésben jön létre, amelyben a virtuális gépek migrálva vannak, illetve az áttelepítéshez a cél Azure-régióban.
+[A következő példa alapján](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md) hozzon létre egy lemezes titkosítási készletet Azure PowerShell használatával. Győződjön meg arról, hogy a lemez titkosítási készlete a cél előfizetésben jön létre, amelyben a virtuális gépek migrálva vannak, illetve az áttelepítéshez a cél Azure-régióban.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 

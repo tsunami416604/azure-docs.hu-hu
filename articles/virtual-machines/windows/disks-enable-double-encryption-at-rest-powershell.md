@@ -1,0 +1,75 @@
+---
+title: Azure PowerShell – a kettős titkosítás engedélyezése a REST által felügyelt lemezeken
+description: A felügyelt lemez adataihoz Azure PowerShell használatával engedélyezze a kettős titkosítást.
+author: roygara
+ms.date: 07/10/2020
+ms.topic: how-to
+ms.author: rogarana
+ms.service: virtual-machines-windows
+ms.subservice: disks
+ms.custom: references_regions
+ms.openlocfilehash: 0f386e4ba4a1835b88b753574bde23e93f7f8d17
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86235895"
+---
+# <a name="azure-powershell---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure PowerShell – a kettős titkosítás engedélyezése a felügyelt lemezeken a REST szolgáltatásban
+
+Azure Disk Storage támogatja a kettős titkosítást a felügyelt lemezeken. A kettős titkosítással kapcsolatos fogalmakról, valamint a felügyelt lemezes titkosítási típusokról további információt a lemezes titkosításról szóló cikkben, a [Rest-titkosítást](disk-encryption.md#double-encryption-at-rest) ismertető szakaszban talál.
+
+## <a name="supported-regions"></a>Támogatott régiók
+
+[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Telepítse a legújabb [Azure PowerShell verziót](/powershell/azure/install-az-ps), és jelentkezzen be egy Azure-fiókba a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0)használatával.
+
+## <a name="getting-started"></a>Első lépések
+
+1. Hozzon létre egy Azure Key Vault és egy titkosítási kulcs egy példányát.
+
+    A Key Vault-példány létrehozásakor engedélyeznie kell a Soft delete és a kiürítési védelmet. A helyreállítható törlés biztosítja, hogy a Key Vault a megadott megőrzési időtartam (90 nap alapértelmezett értéke) törölt kulcsát tárolja. A védelem kiürítése biztosítja, hogy a törölt kulcsok ne legyenek véglegesen törölve, amíg a megőrzési időszak megszűnik. Ezek a beállítások a véletlen törlés miatt védik az adatok elvesztését. Ezek a beállítások akkor kötelezőek, ha Key Vault használ a felügyelt lemezek titkosításához.
+    
+    ```powershell
+    $ResourceGroupName="yourResourceGroupName"
+    $LocationName="westcentralus"
+    $keyVaultName="yourKeyVaultName"
+    $keyName="yourKeyName"
+    $keyDestination="Software"
+    $diskEncryptionSetName="yourDiskEncryptionSetName"
+
+    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnableSoftDelete -EnablePurgeProtection
+
+    $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
+    ```
+
+1.  Hozzon létre egy DiskEncryptionSet a encryptionType set EncryptionAtRestWithPlatformAndCustomerKeys néven. Használja az **2020-05-01** -es API-verziót a Azure Resource Manager-(ARM-) sablonban. 
+    
+    ```powershell
+    New-AzResourceGroupDeployment -ResourceGroupName CMKTesting `
+    -TemplateUri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/DoubleEncryption/CreateDiskEncryptionSetForDoubleEncryption.json" `
+    -diskEncryptionSetName "yourDESForDoubleEncryption" `
+    -keyVaultId "subscriptions/dd80b94e-0463-4a65-8d04-c94f403879dc/resourceGroups/yourResourceGroupName/providers/Microsoft.KeyVault/vaults/yourKeyVaultName" `
+    -keyVaultKeyUrl "https://yourKeyVaultName.vault.azure.net/keys/yourKeyName/403445136dee4a57af7068cab08f7d42" `
+    -encryptionType "EncryptionAtRestWithPlatformAndCustomerKeys" `
+    -region "CentralUSEUAP"
+    ```
+
+1. Adja meg a DiskEncryptionSet-erőforrás hozzáférését a kulcstartóhoz.
+
+    > [!NOTE]
+    > Eltarthat néhány percig, amíg az Azure létrehozza a DiskEncryptionSet identitását a Azure Active Directoryban. Ha a következő parancs futtatásakor a "nem találja a Active Directory objektumot" hibaüzenet jelenik meg, várjon néhány percet, és próbálkozzon újra.
+
+    ```powershell  
+    Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $des.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
+    ```
+
+## <a name="next-steps"></a>További lépések
+
+Most, hogy létrehozta és konfigurálta ezeket az erőforrásokat, a segítségével biztonságossá teheti a felügyelt lemezeket. Az alábbi hivatkozások olyan parancsfájlokat tartalmaznak, amelyek mindegyike megfelelő forgatókönyvekkel rendelkezik, amelyek segítségével biztonságossá teheti a felügyelt lemezeket.
+
+[Azure PowerShell – ügyfél által felügyelt kulcsok engedélyezése kiszolgálóoldali titkosítással felügyelt lemezekkel](disks-enable-customer-managed-keys-powershell.md) 
+ [Azure Resource Manager sablon mintái](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)

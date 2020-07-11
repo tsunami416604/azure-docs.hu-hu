@@ -5,11 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b97bab7182e382801a57bcf7dd6f325e665438b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309645"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232491"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
 
@@ -131,7 +132,7 @@ A probléma megoldása:
 
 ### <a name="timeout-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Időtúllépés: "Várakozás a tároló rendszerképének összeállítására..." lépés AK virtuális csomópontokkal
 
-Ez az időkorlát akkor fordul elő, ha a fejlesztői szóközök használatával futtat olyan szolgáltatást, amely egy AK-beli [virtuális csomóponton](https://docs.microsoft.com/azure/aks/virtual-nodes-portal)való futtatásra van konfigurálva. A dev Spaces jelenleg nem támogatja a virtuális csomópontokon futó szolgáltatások létrehozását vagy hibakeresését.
+Ez az időkorlát akkor fordul elő, ha a fejlesztői szóközök használatával futtat olyan szolgáltatást, amely egy AK-beli [virtuális csomóponton](../aks/virtual-nodes-portal.md)való futtatásra van konfigurálva. A dev Spaces jelenleg nem támogatja a virtuális csomópontokon futó szolgáltatások létrehozását vagy hibakeresését.
 
 Ha `azds up` a `--verbose` kapcsolóval fut, vagy engedélyezi a részletes naplózást a Visual Studióban, további részleteket láthat:
 
@@ -511,7 +512,7 @@ A felhasználó RBAC szerepkörének frissítése a vezérlőhöz:
     * A *szerepkör*területen válassza a *közreműködő* vagy a *tulajdonos*lehetőséget.
     * A *hozzáférésének hozzárendeléséhez*válassza az *Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév*lehetőséget.
     * A *Select (kiválasztás*) lehetőségnél keresse meg azt a felhasználót, akinek engedélyeket szeretne adni.
-1. Kattintson a *Save* (Mentés) gombra.
+1. Kattintson a *Mentés* gombra.
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>A DNS-névfeloldás sikertelen a dev Spaces szolgáltatáshoz társított nyilvános URL-cím esetén
 

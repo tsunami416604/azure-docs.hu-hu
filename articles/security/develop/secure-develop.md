@@ -13,21 +13,22 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34294bf29ec861d7bbb954ece7016de37769a332
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84266763"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232695"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure szolgáltatásban
 Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
 
 Ebben a cikkben a következő SDL-fázisokat tárgyaljuk:
 
-- Megvalósítás
+- Implementálás
 - Ellenőrzés
 
-## <a name="implementation"></a>Megvalósítás
+## <a name="implementation"></a>Implementálás
 A megvalósítási fázis középpontjában a korai megelőzéssel kapcsolatos ajánlott eljárások, valamint a kód biztonsági problémáinak észlelése és eltávolítása szükséges.
 Tegyük fel, hogy az alkalmazás olyan módokon fog használatba venni, amelyeket nem kívánt használni. Ez segít megvédeni az alkalmazás véletlen vagy szándékos visszaélését.
 
@@ -133,7 +134,7 @@ Zsuzsanna hajthat végre, lehetőleg egy biztonsági szakember (a [penetrációs
 
 A [fuzz-tesztelés](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)során a program meghibásodását a helytelenül formázott vagy véletlenszerű adatmennyiség egy alkalmazásba való szándékos bevezetésével lehet kiváltani. Az előidéző program meghibásodása segít feltárni a potenciális biztonsági problémákat az alkalmazás felszabadítása előtt.
 
-A [biztonsági kockázatok észlelése](https://docs.microsoft.com/security-risk-detection/) a Microsoft egyedi fuzz Testing szolgáltatása, amely a szoftverek biztonság szempontjából kritikus fontosságú hibáinak megkeresésére szolgál.
+A [biztonsági kockázatok észlelése](https://www.microsoft.com/en-us/security-risk-detection/) a Microsoft egyedi fuzz Testing szolgáltatása, amely a szoftverek biztonság szempontjából kritikus fontosságú hibáinak megkeresésére szolgál.
 
 ### <a name="conduct-attack-surface-review"></a>Támadási felület felülvizsgálatának elvégzése
 

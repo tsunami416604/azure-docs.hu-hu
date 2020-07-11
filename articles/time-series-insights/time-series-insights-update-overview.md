@@ -10,11 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 20ab78aa67fa5d59dac774559b3c43561cf75fbc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5e8ea56de84f3d6b92bc23c0e3ab139d03bd68a9
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040707"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232253"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Mi az Azure Time Series Insights előzetes verziója?
 
@@ -75,7 +76,7 @@ A Azure Time Series Insights méretezhető utólagos elszámolású díjszabási
  
 Ezeknek a kulcsfontosságú ipari IoT képességeknek a bevezetésével a Time Series Insights a következő kulcsfontosságú előnyöket nyújtja.  
 
-| | |
+| Képesség | Előny |
 | ---| ---|
 | Többrétegű tárolás IoT-méretezési idősorozat-adatsorokhoz | Egy megosztott adatfeldolgozási folyamattal az adatbevitelhez a meleg és a hűtőházi tárolóba is betöltheti az adatmennyiséget. A nagyméretű adatmennyiségek tárolásához használjon meleg tárolót interaktív lekérdezésekhez és hideg tároláshoz. Ha többet szeretne megtudni arról, hogyan használhatja ki a nagy teljesítményű eszközökön alapuló lekérdezéseket, tekintse meg a [lekérdezéseket](./concepts-query-overview.md). |
 | Idősorozat-modell a nyers telemetria contextualize, és az eszköz-alapú adatfelismerések származtatása | Az idősorozat-modell használatával példányokat, hierarchiákat, típusokat és változókat hozhat létre az idősoros adataihoz. Ha többet szeretne megtudni a Time Series-modellről, tekintse meg a [Time Series Model](./concepts-model-overview.md)című témakört.  |

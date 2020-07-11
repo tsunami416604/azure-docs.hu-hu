@@ -4,14 +4,14 @@ description: Ismerje meg, hogyan használhatók a felügyelt identitások az Azu
 services: container-service
 author: mlearned
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 07/10/2020
 ms.author: mlearned
-ms.openlocfilehash: 30d1290f9eb7b2750f09e5e256d4dd212c7e4607
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27ae1d1a2c6309bdac2410dca4b48abf27d8ea0b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610285"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231981"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
@@ -23,7 +23,7 @@ A *felügyelt identitások* lényegében burkolók az egyszerű szolgáltatások
 
 A következő erőforrást kell telepítenie:
 
-- Az Azure CLI, a 2.2.0 vagy újabb verzió
+- Az Azure CLI, a 2.8.0 vagy újabb verzió
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -36,20 +36,20 @@ A következő erőforrást kell telepítenie:
 
 Az AK számos felügyelt identitást használ a beépített szolgáltatásokhoz és bővítményekhez.
 
-| Identitás                       | Name    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
+| Identitás                       | Név    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
 |----------------------------|-----------|----------|
 | Vezérlősík | nem látható | A hálózati erőforrások kezeléséhez, például a Load Balancer létrehozásához, a nyilvános IP-címekhez stb.| A csomópont-erőforráscsoport közreműködői szerepköre | Egyelőre nem támogatott
 | Kubelet | AK-fürt neve – agentpool | Hitelesítés Azure Container Registry (ACR) | A csomópont-erőforráscsoport olvasói szerepköre | Egyelőre nem támogatott
-| Bővítmény | AzureNPM | Nincs szükség identitásra | NA | No
-| Bővítmény | AzureCNI-hálózat figyelése | Nincs szükség identitásra | NA | No
-| Bővítmény | azurepolicy (forgalomirányító) | Nincs szükség identitásra | NA | No
-| Bővítmény | azurepolicy | Nincs szükség identitásra | NA | No
-| Bővítmény | Calico | Nincs szükség identitásra | NA | No
-| Bővítmény | Irányítópult | Nincs szükség identitásra | NA | No
-| Bővítmény | HTTPApplicationRouting | A szükséges hálózati erőforrások kezelése | A DNS-zónához tartozó csomópont-erőforráscsoport, közreműködői szerepkör olvasói szerepköre | No
-| Bővítmény | Bejövő alkalmazások átjárója | A szükséges hálózati erőforrások kezelése| A csomópont-erőforráscsoport közreműködői szerepköre | No
-| Bővítmény | omsagent | AK-metrikák küldésére szolgál Azure Monitor | A metrikák figyelése – közzétevői szerepkör | No
-| Bővítmény | Virtuális csomópont (ACIConnector) | Azure Container Instances (ACI) szükséges hálózati erőforrásait kezeli | A csomópont-erőforráscsoport közreműködői szerepköre | No
+| Bővítmény | AzureNPM | Nincs szükség identitásra | NA | Nem
+| Bővítmény | AzureCNI-hálózat figyelése | Nincs szükség identitásra | NA | Nem
+| Bővítmény | azurepolicy (forgalomirányító) | Nincs szükség identitásra | NA | Nem
+| Bővítmény | azurepolicy | Nincs szükség identitásra | NA | Nem
+| Bővítmény | Calico | Nincs szükség identitásra | NA | Nem
+| Bővítmény | Irányítópult | Nincs szükség identitásra | NA | Nem
+| Bővítmény | HTTPApplicationRouting | A szükséges hálózati erőforrások kezelése | A DNS-zónához tartozó csomópont-erőforráscsoport, közreműködői szerepkör olvasói szerepköre | Nem
+| Bővítmény | Bejövő alkalmazások átjárója | A szükséges hálózati erőforrások kezelése| A csomópont-erőforráscsoport közreműködői szerepköre | Nem
+| Bővítmény | omsagent | AK-metrikák küldésére szolgál Azure Monitor | A metrikák figyelése – közzétevői szerepkör | Nem
+| Bővítmény | Virtuális csomópont (ACIConnector) | Azure Container Instances (ACI) szükséges hálózati erőforrásait kezeli | A csomópont-erőforráscsoport közreműködői szerepköre | Nem
 
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>AK-fürt létrehozása felügyelt identitásokkal

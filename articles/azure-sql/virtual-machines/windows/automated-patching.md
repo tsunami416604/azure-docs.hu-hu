@@ -14,19 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ed973b6ea5bbcd2b23e30d381e909ef2ab03b917
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f1f564a36a3f0103832bc81bbbc65d2818c03143
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921664"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232008"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Az Azure Virtual Machines szolgáltatásban SQL Server automatikus javítása (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
-
-> [!div class="op_single_selector"]
-> * [Resource Manager](automated-patching.md)
-> * [Klasszikus](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
 
 Az automatikus javítás karbantartási időszakot hoz létre egy SQL Server rendszert futtató Azure-beli virtuális géphez. Az automatikus frissítéseket csak ebben a karbantartási időszakban lehet telepíteni. Az SQL Server esetén ez a korlátozás gondoskodik róla, hogy a rendszerfrissítésekre és az esetleges újraindításokra az adatbázis számára a lehető legkedvezőbb időpontban kerüljön sor. 
 
@@ -67,7 +63,7 @@ Az automatikus javítás használatához vegye figyelembe a következő előfelt
 ## <a name="settings"></a>Beállítások
 Az alábbi táblázat az automatikus javításhoz konfigurálható beállításokat ismerteti. A tényleges konfigurációs lépések attól függően változnak, hogy az Azure Portal vagy az Azure Windows PowerShell-parancsokat használja-e.
 
-| Beállítás | Lehetséges értékek | Description |
+| Beállítás | Lehetséges értékek | Leírás |
 | --- | --- | --- |
 | **Automatikus javítás** |Engedélyezés/letiltás (letiltva) |Engedélyezheti vagy letilthatja az Azure-beli virtuális gépek automatikus javítását. |
 | **Karbantartási ütemezés** |Mindennap, hétfő, kedd, szerda, csütörtök, péntek, szombat, vasárnap |A virtuális géphez tartozó Windows-, SQL Server-és Microsoft-frissítések letöltésének és telepítésének ütemterve. |
@@ -118,7 +114,7 @@ Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceG
 
 A jelen példa alapján a következő táblázat ismerteti a cél Azure-beli virtuális gép gyakorlati hatását:
 
-| Paraméter | Hatás |
+| Paraméterek | Hatás |
 | --- | --- |
 | **DayOfWeek** |A javítások minden csütörtökön telepítve vannak. |
 | **MaintenanceWindowStartingHour** |A frissítés megkezdése 11:00 órakor. |

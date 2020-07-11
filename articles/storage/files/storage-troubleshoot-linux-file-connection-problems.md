@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3a24f6c7c8339ee5e63fea4c0cd4d7edc9da2a17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ffd73e9dff06df4b5acdd004dddcfca5ff03ede0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512014"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232270"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files problémáinak elhárítása
 
@@ -30,12 +30,12 @@ A probléma gyakori okai a következők:
 
 |   | SMB 2.1 <br>(Ugyanazon az Azure-régióban lévő virtuális gépekre csatlakoztatások) | SMB 3.0 <br>(A helyszíni és a régiók közötti) |
 | --- | :---: | :---: |
-| Ubuntu Server | 14.04 + | 16.04 + |
-| RHEL | 7 + | 7.5 + |
-| CentOS | 7 + |  7.5 + |
-| Debian | 8 + |   |
-| openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 | 12 SP3 + |
+| **Ubuntu Server** | 14.04 + | 16.04 + |
+| **RHEL** | 7 + | 7.5 + |
+| **CentOS** | 7 + |  7.5 + |
+| **Debian** | 8 + |   |
+| **openSUSE** | 13.2 + | 42.3 + |
+| **SUSE Linux Enterprise Server** | 12 | 12 SP3 + |
 
 - A CIFS-segédprogramok (CIFS-utils) nincsenek telepítve az ügyfélen.
 - Az SMB/CIFS minimális verziója (2,1) nincs telepítve az ügyfélen.
@@ -84,9 +84,9 @@ A Linux rendszerben a következőhöz hasonló hibaüzenet jelenik meg:
 
 ### <a name="cause"></a>Ok
 
-Elérte a fájlokhoz engedélyezett egyidejű nyitott fogópontok felső határát.
+Elérte a fájlok vagy könyvtárak számára engedélyezett egyidejű nyitott fogópontok felső határát.
 
-A 2 000-as számú nyitott leíró egyetlen fájlon van. Ha a 2 000-es megnyitott kezelővel rendelkezik, hibaüzenet jelenik meg, amely szerint a kvóta elérte a kvótát.
+Egyetlen fájl vagy könyvtár 2 000-es nyitott leírójának kvótája. Ha a 2 000-es megnyitott kezelővel rendelkezik, hibaüzenet jelenik meg, amely szerint a kvóta elérte a kvótát.
 
 ### <a name="solution"></a>Megoldás
 

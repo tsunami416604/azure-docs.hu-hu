@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: a82a0644fac099b568ab86ea213b98cd8e7d5c22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 720931cf9f955f63075e3881b6b9f2e884bd3a76
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78199648"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232457"
 ---
 # <a name="live-event-low-latency-settings"></a>Élő esemény alacsony késési beállításai
 
@@ -61,15 +62,15 @@ Az alábbi táblázatok a késések jellemző eredményeit jelenítik meg (ha a 
 
 ||2s GOP – alacsony késés engedélyezve|1s GOP – alacsony késés engedélyezve|
 |---|---|---|
-|DASH in AMP|10s|8s|
-|HLS natív iOS-lejátszón|14s|10s|
+|**DASH in AMP**|10s|8s|
+|**HLS natív iOS-lejátszón**|14s|10s|
 
 ### <a name="live-encoding"></a>Live Encoding
 
 ||2s GOP – alacsony késés engedélyezve|1s GOP – alacsony késés engedélyezve|
 |---|---|---|
-|DASH in AMP|14s|10s|
-|HLS natív iOS-lejátszón|18s|13s|
+|**DASH in AMP**|14s|10s|
+|**HLS natív iOS-lejátszón**|18s|13s|
 
 > [!NOTE]
 > A végpontok közötti késés a helyi hálózati feltételektől vagy a CDN gyorsítótárazási rétegének bevezetésével függően változhat. Tesztelje a pontos konfigurációkat.

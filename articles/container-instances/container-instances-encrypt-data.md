@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: ad232c5d9df9f6bfae3a79dbd72e2c68143be949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f9aff2ea88c2334ab30c9819f68fd6cbb9124c5
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79080360"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232440"
 ---
 # <a name="encrypt-deployment-data"></a>Üzembehelyezési adatok titkosítása
 
@@ -25,10 +26,10 @@ A Microsoft által felügyelt kulcsokat a tároló adatai titkosítására haszn
 
 |    |    Microsoft által felügyelt kulcsok     |     Felhasználó által kezelt kulcsok     |
 |----|----|----|
-|    Titkosítási/visszafejtési műveletek    |    Azure    |    Azure    |
-|    Kulcstároló    |    Microsoft Key Store    |    Azure Key Vault    |
-|    Kulcs rotációs felelőssége    |    Microsoft    |    Ügyfél    |
-|    Kulcs elérése    |    Csak Microsoft    |    Microsoft, ügyfél    |
+|    **Titkosítási/visszafejtési műveletek**    |    Azure    |    Azure    |
+|    **Kulcstároló**    |    Microsoft Key Store    |    Azure Key Vault    |
+|    **Kulcs rotációs felelőssége**    |    Microsoft    |    Ügyfél    |
+|    **Kulcs elérése**    |    Csak Microsoft    |    Microsoft, ügyfél    |
 
 A dokumentum többi része ismerteti azokat a lépéseket, amelyek szükségesek az ACI üzembe helyezési adatoknak a kulccsal való titkosításához (az ügyfél által felügyelt kulcs). 
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77168140"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232525"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Beszédfelismerési eszközök SDK mikrofon tömb javaslatai
 
@@ -27,7 +27,7 @@ A Speech Devices SDK a legjobban egy olyan mikrofonos tömbvel működik, amely 
 
 A következő tömb-geometriák használata ajánlott a Microsoft audio Stacktel való használatra. A hangforrások helye és a környezeti zaj elutasítása nagyobb számú, meghatározott alkalmazásokkal, felhasználói forgatókönyvekkel és az eszköz űrlap-adattípussal kapcsolatos függőségekkel bővült.
 
-|     | Körkörös tömb |     | Lineáris tömb |     |
+| A mikrofon & geometriája | Körkörös tömb | Körkörös tömb | Lineáris tömb | Lineáris tömb |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
 | \#Mikrofon | 7 | 4 | 4 | 2 |
@@ -41,7 +41,7 @@ A mikrofon-összetevőket úgy kell kiválasztani, hogy pontosan reprodukálni l
 
 A mikrofonok kiválasztásakor a javasolt tulajdonságok a következők:
 
-| Paraméter | Ajánlott |
+| Paraméterek | Ajánlott |
 | --------- | ----------- |
 | SNR | \>= 65 dB (1 kHz jel 94 dBSPL, A-súlyozott zaj) |
 | Amplitúdó egyeztetése | ± 1 dB @ 1 kHz |
@@ -60,7 +60,7 @@ A megfelelő összetevők kiválasztását megfelelő elektroakusztikus-integrá
 
 A mikrofon tömb teljesítménye az eszközbe való integráláskor eltér az összetevő-specifikációtól. Fontos, hogy a mikrofonok az integráció után is megfelelőek legyenek. Ezért az eszköz teljesítménye a rögzített nyereség vagy EQ után mérve a következő javaslatoknak kell megfelelnie:
 
-| Paraméter          | Ajánlott                                        |
+| Paraméterek          | Ajánlott                                        |
 | ------------------ | -------------------------------------------------- |
 | SNR                | \>63 dB (1 kHz-es jel 94 dBSPL, A-súlyozott zaj) |
 | Kimeneti érzékenység | -26 dBFS/PA @ 1 kHz (ajánlott)                  |
@@ -76,7 +76,7 @@ A mikrofon tömb teljesítménye az eszközbe való integráláskor eltér az ö
 
 Mivel az ECHO-lemondás szükséges a beszélőket tartalmazó beszédfelismerési eszközökhöz, további javaslatok is elérhetők a hangszórók kiválasztásához és az integrációhoz.
 
-| Paraméter | Ajánlott |
+| Paraméterek | Ajánlott |
 | --------- | ----------- |
 | A linearitás szempontjai | Nem lineáris feldolgozás a hangsugárzó-hivatkozás után, ellenkező esetben a hardveres visszacsatolási hivatkozási adatfolyam szükséges |
 | Beszélő visszacsatolása | WASAPI, privát API-k, egyéni ALSA beépülő modul (Linux) vagy belső vezérlőprogram-csatornán keresztül biztosított |
@@ -87,7 +87,7 @@ Mivel az ECHO-lemondás szükséges a beszélőket tartalmazó beszédfelismeré
 
 A következő, architektúrára vonatkozó irányelvek szükségesek a mikrofonok eszközbe való integrálásakor:
 
-| Paraméter | Ajánlás |
+| Paraméterek | Ajánlás |
 | --------- | -------------- |
 | A MIC-portok hasonlósága | Az összes mikrofonos port azonos hosszúságú a tömbben |
 | MIC-portok méretei | A port mérete Ø 0,8-1,0 mm. Port hossz/port átmérő \< 2 |

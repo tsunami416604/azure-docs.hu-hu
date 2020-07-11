@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 543ed51cc10cce017e0e57a1a351ce382f1ca35f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f448174842ffd3b7ba14104c30319933c680127d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083508"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232321"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Beágyazott virtualizálás engedélyezése Azure-beli virtuális gépen
 
@@ -145,7 +145,7 @@ Az alábbi lépések végrehajtásával konfigurálja a DHCP-t a gazdagép virtu
   
 3. Jelölje be a **DHCP-kiszolgáló** jelölőnégyzetet, kattintson a **szolgáltatások hozzáadása**elemre, majd kattintson a **tovább** gombra a varázsló befejezéséhez.
   
-4. Kattintson a **telepítés**gombra.
+4. Kattintson az **Install** (Telepítés) gombra.
 
 #### <a name="configure-a-new-dhcp-scope"></a>Új DHCP-hatókör konfigurálása
 
@@ -181,3 +181,4 @@ Ebben a példában egy 192.168.0.0/24 tartományban található címeket fog has
 A vendég virtuális gépen nyissa meg a böngészőt, és navigáljon egy weblapra.
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
+A vendég virtuális gépek és az Azure-beli virtuális gépek közötti transzparens kapcsolat engedélyezésével kapcsolatos utasításokért tekintse meg [ezt a dokumentumot](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization).

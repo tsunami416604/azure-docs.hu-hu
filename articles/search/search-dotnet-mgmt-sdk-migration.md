@@ -1,49 +1,73 @@
 ---
-title: Frissítés a Azure Search .NET Management SDK 2-es verziójára
+title: Frissítés a Azure Search .NET Management SDK-ra
 titleSuffix: Azure Cognitive Search
-description: Frissítsen a Azure Search .NET Management SDK 2-es verziójára a korábbi verziókról. Ismerje meg az újdonságokat és a szükséges kód változásait.
+description: Frissítsen a Azure Search .NET Management SDK-ra a korábbi verziókról. Ismerkedjen meg az új szolgáltatásokkal, és az áttelepítéshez szükséges kód módosításait.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: b18e9688141ee64eb7dfcb82ce58db198e324b5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/01/2020
+ms.openlocfilehash: 436c2620b83513a2b814e050b2ae6407930b082d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73847539"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232049"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>A Azure Search .NET Management SDK verzióinak frissítése
 
-> [!Important]
-> Ez a tartalom még fejlesztés alatt áll. A Azure Search Management .NET SDK 3,0-es verziója a NuGet címen érhető el. Dolgozunk az áttelepítési útmutató frissítésén, hogy elmagyarázza, hogyan frissíthet az új verzióra. 
->
+Ez a cikk azt ismerteti, hogyan lehet áttérni a Azure Search .NET Management SDK egymást követő verzióira, amelyek a keresési szolgáltatások kiépítésére vagy kiépítésére, a kapacitás módosítására és az API-kulcsok kezelésére szolgálnak.
 
-Ha a [Azure Search .net Management SDK](https://aka.ms/search-mgmt-sdk)-hoz tartozó 1.0.2 vagy régebbi verziót használja, ez a cikk segítséget nyújt az alkalmazás 2. verzióra való frissítéséhez.
+A felügyeleti SDK-k a felügyeleti REST API egy adott verzióját célozzák meg. A fogalmakkal és a műveletekkel kapcsolatos további információkért lásd: [keresési felügyelet (REST)](https://docs.microsoft.com/rest/api/searchmanagement/).
 
-A Azure Search .NET Management SDK 2. verziója a korábbi verziók néhány módosítását tartalmazza. Ezek többnyire kisebbek, ezért a kód módosítása csak minimális erőfeszítést igényelhet. Az új SDK-verzió használatára vonatkozó utasításokért lásd: a [verziófrissítés lépései](#UpgradeSteps) .
+## <a name="versions"></a>Verziók
 
-<a name="WhatsNew"></a>
+| SDK verziója | A megfelelő REST API verziója | Szolgáltatások hozzáadásának vagy viselkedésének változása |
+|-------------|--------------------------------|-------------------------------------|
+| [3.0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/3.0.0) | API-Version = 2020 – 30 – 20 | Végpontok biztonsága (IP-tűzfalak és az [Azure Private-kapcsolat](../private-link/private-endpoint-overview.md)integrációja) |
+| [2,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/2.0.0) | API-Version = 2019-10-01 | Használhatóság javítása. A [lekérdezési kulcsok](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) lekérésének megszakítása (a Get megszűnik). |
+| [1,0](https://www.nuget.org/packages/Microsoft.Azure.Management.Search/1.0.1) | API-Version = 2015-08-19  | Első verzió |
 
-## <a name="whats-new-in-version-2"></a>A 2. verzió újdonságai
-A Azure Search .NET Management SDK 2. verziója az előző SDK-verziónak megfelelően a Azure Search felügyeleti REST API általánosan elérhető verzióját célozza meg, amely kifejezetten 2015-08-19. Az SDK módosításai szigorúan ügyféloldali változások az SDK használhatóságának javítása érdekében. Ezek a változások a következők:
+## <a name="how-to-upgrade"></a>A frissítés módja
+
+1. Frissítse a NuGet-referenciát `Microsoft.Azure.Management.Search` a NuGet Package Manager konzoljának használatával, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
+
+1. Miután a NuGet letöltötte az új csomagokat és azok függőségeit, építse újra a projektet. A kód szerkezetének módjától függően előfordulhat, hogy az Újraépítés sikeresen megtörtént, és ebben az esetben készen áll.
+
+1. Ha a létrehozás sikertelen, annak oka az lehet, hogy néhány SDK-felületet implementált (például az egység tesztelése céljából), amelyek megváltoztak. Ennek megoldásához újabb módszereket kell megvalósítani, például: `BeginCreateOrUpdateWithHttpMessagesAsync` .
+
+1. A felépítési hibák kijavítása után módosíthatja az alkalmazást, hogy kihasználhassa az új funkciókat. 
+
+## <a name="upgrade-to-30"></a>Frissítés 3,0-re
+
+Az 3,0-es verzió a magánhálózati végpontok védelmét az IP-tartományokhoz való hozzáférés korlátozásával, a nyilvános interneten nem látható keresési szolgáltatások esetében pedig opcionálisan integrálja az Azure Private-hivatkozással.
+
+### <a name="new-apis"></a>Új API-k
+
+| API | Kategória| Részletek |
+|-----|--------|------------------|
+| [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP-tűzfal | A szolgáltatás-végpontokhoz való hozzáférés korlátozása az engedélyezett IP-címek listájára. Lásd: az [IP-tűzfal konfigurálása](service-configure-firewall.md) fogalmak és portál utasításokhoz. |
+| [Megosztott privát kapcsolati erőforrás](https://docs.microsoft.com/rest/api/searchmanagement/sharedprivatelinkresources) | Private Link | Hozzon létre egy megosztott magánhálózati kapcsolati erőforrást, amelyet egy keresési szolgáltatás használni fog.  |
+| [Magánhálózati végpontok kapcsolatai](https://docs.microsoft.com/rest/api/searchmanagement/privateendpointconnections) | Private Link | A keresési szolgáltatás kapcsolatainak létrehozása és kezelése privát végponton keresztül. Lásd: [privát végpont létrehozása](service-create-private-endpoint.md) fogalmakhoz és portálhoz – útmutatás.|
+| [Privát kapcsolat erőforrásai](https://docs.microsoft.com/rest/api/searchmanagement/privatelinkresources/) | Private Link | Egy privát végponti kapcsolatban álló keresési szolgáltatás esetében az azonos virtuális hálózatban használt összes szolgáltatás listájának beolvasása. Ha a keresési megoldás olyan indexelő tartalmaz, amelyek Azure-adatforrásokból (Azure Storage, Cosmos db, Azure SQL) származnak, vagy Cognitive Services vagy Key Vault használ, akkor az összes erőforrásnak rendelkeznie kell végpontokkal a virtuális hálózatban, és az API-nak egy listát kell visszaadnia. |
+| [PublicNetworkAccess](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Private Link | Ez egy tulajdonság a szolgáltatási kérelmek létrehozásához vagy frissítéséhez. Ha le van tiltva, a privát hivatkozás az egyetlen hozzáférési mód. |
+
+### <a name="breaking-changes"></a>Kompatibilitástörő változások
+
+A GET [lekérdezési kulcsokra](https://docs.microsoft.com/rest/api/searchmanagement/querykeys/listbysearchservice) vonatkozó kérést már nem használhatja. Az előző kiadásokban használhatja a GET vagy a POST verziót, ebben a kiadásban és minden olyan kiadásban, amely továbbra is elérhető, csak a POST támogatott. 
+
+## <a name="upgrade-to-20"></a>Frissítés 2,0-re
+
+A Azure Search .NET Management SDK 2. verziója egy kisebb frissítés, ezért a kód módosítása csak minimális erőfeszítést igényelhet. Az SDK módosításai szigorúan ügyféloldali változások az SDK használhatóságának javítása érdekében. Ezek a változások a következők:
 
 * `Services.CreateOrUpdate`a és az aszinkron verziói mostantól automatikusan lekérdezik a kiépítési és a nem visszaadott állapotot, `SearchService` amíg a szolgáltatás kiépítés be nem fejeződik. Ezzel elmentheti, hogy az ilyen lekérdezési kódot saját kezűleg írja.
+
 * Ha továbbra is manuálisan szeretné lekérdezni a szolgáltatás üzembe helyezését, használhatja az új `Services.BeginCreateOrUpdate` metódust vagy annak egy aszinkron verzióját.
+
 * Új metódusok `Services.Update` és aszinkron verziók lettek hozzáadva az SDK-hoz. Ezek a módszerek a HTTP-javítás használatával támogatják a szolgáltatások növekményes frissítését. Mostantól például méretezheti a szolgáltatást úgy, hogy átadja egy `SearchService` példányát ezekhez a metódusokhoz, amelyek csak a kívánt `partitionCount` és a `replicaCount` tulajdonságokat tartalmazzák. A régi módon hívható `Services.Get` meg, módosítható a visszaadott érték, `SearchService` és a továbbítása `Services.CreateOrUpdate` továbbra is támogatott, de már nem szükséges. 
 
-<a name="UpgradeSteps"></a>
-
-## <a name="steps-to-upgrade"></a>A frissítés lépései
-Először frissítse a NuGet-referenciát a `Microsoft.Azure.Management.Search` NuGet csomagkezelő konzoljának használatára, vagy kattintson a jobb gombbal a projekt hivatkozásaira, és válassza a "NuGet-csomagok kezelése..." lehetőséget. a Visual Studióban.
-
-Miután a NuGet letöltötte az új csomagokat és azok függőségeit, építse újra a projektet. A kód szerkezetének módjától függően előfordulhat, hogy az Újraépítés sikeresen megtörtént. Ha igen, készen állsz!
-
-Ha a létrehozás sikertelen, annak oka az lehet, hogy néhány SDK-felületet implementált (például az egység tesztelése céljából), amelyek megváltoztak. Ennek megoldásához végre kell hajtania az új metódusokat, például: `BeginCreateOrUpdateWithHttpMessagesAsync` .
-
-A felépítési hibák kijavítása után módosíthatja az alkalmazást, és igény szerint kihasználhatja az új funkciókat. Az SDK új funkciói részletesen ismertetik a [2. verzió újdonságait](#WhatsNew).
-
 ## <a name="next-steps"></a>További lépések
-Üdvözöljük az SDK-val kapcsolatos visszajelzéseit. Ha problémákba ütközik, tegye fel a kérdéseit [stack Overflowba](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest). Ha hibát talál, a probléma az [Azure .net SDK GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/issues)is megadható. Ügyeljen arra, hogy a "[Search]" címkével címkézze fel a probléma címét.
+
+Ha problémákba ütközik, a kérdések feladására szolgáló legjobb fórum [stack overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest). Ha hibát talál, a probléma az [Azure .net SDK GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/issues)is megadható. Ügyeljen arra, hogy a "[Search]" címkével címkézze fel a probléma címét.

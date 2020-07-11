@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: e93dbd085ce99b8d555d6b9bb04e7eb6f60de0ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9484b81622e208077f0659975f42f46d90d2137
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422894"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232236"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Tűzfalszabály engedélyezése vagy letiltása egy Azure-beli virtuális gép vendég operációs rendszeréhez
 
@@ -107,7 +107,7 @@ Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálóza
     
         Ezután módosítsa az **aktív = FALSE értéket** az **aktív = True** értékre a karakterláncban:
 
-        **v 2.22 | Művelet = engedélyezés | Aktív = igaz | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | Alkalmazás =% SystemRoot% \system32\svchost.exe| SVC = TermService | Név = \@FirewallAPI.dll,-28775 | Desc = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
+        `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
     
     * Egy szabály letiltásához nyissa meg a következő beállításértéket:
     
@@ -115,7 +115,7 @@ Ha a virtuális gép online állapotban van, és ugyanazon a virtuális hálóza
 
         Ezután módosítsa az **aktív = True** **értéket az aktív = false**értékre:
         
-        **v 2.22 | Művelet = engedélyezés | Aktív = hamis | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | Alkalmazás =% SystemRoot% \system32\svchost.exe| SVC = TermService | Név = \@FirewallAPI.dll,-28775 | Desc = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
+        `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
 3.  A módosítások alkalmazásához indítsa újra a virtuális gépet.
 
@@ -154,7 +154,7 @@ Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett 
         
         Ezután módosítsa az **aktív = FALSE értéket** **aktív = True**értékre.
         
-        **v 2.22 | Művelet = engedélyezés | Aktív = igaz | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | Alkalmazás =% SystemRoot% \system32\svchost.exe| SVC = TermService | Név = \@FirewallAPI.dll,-28775 | Desc = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
+        `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
     3.  Egy szabály letiltásához nyissa meg a következő beállításkulcsot:
 
@@ -162,7 +162,7 @@ Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett 
 
         Ezután módosítsa az **aktív = True** **értéket aktív = false**értékre.
         
-        **v 2.22 | Művelet = engedélyezés | Aktív = hamis | Dir = a | Protokoll = 6 | Profil = tartomány | Profil = Private | Profil = nyilvános | LPort = 3389 | Alkalmazás =% SystemRoot% \system32\svchost.exe| SVC = TermService | Név = \@FirewallAPI.dll,-28775 | Desc = \@FirewallAPI.dll,-28756 | EmbedCtxt = \@FirewallAPI.dll,-28752 |**
+        `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
 9.  Jelölje ki a **BROKENSYSTEM**, majd a menüből válassza ki a **fájl**  >  **kitöltése struktúrát** .
 

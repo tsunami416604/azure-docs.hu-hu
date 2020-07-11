@@ -5,11 +5,12 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 description: Megtudhatja, hogyan hozhat létre gyorsan egy Kubernetes-fürtöt az Azure dev Spaces szolgáltatáshoz közvetlenül a böngészőből anélkül, hogy bármit kellene telepítenie.
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: 5e2e5cfd22eeedd3554737458caeca0b891b62fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6da9055e11b5c514d71122c3650bbc326fb8de8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77605304"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232287"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>Kubernetes-fürt létrehozása az Azure dev Spaces szolgáltatással Azure Cloud Shell
 
@@ -33,7 +34,7 @@ A fürt létrehozása néhány percet vesz igénybe.  Ha elkészült, a kimenet 
 
 ## <a name="next-steps"></a>További lépések
 
-A teljes oktatóanyagokra mutató hivatkozásokat az [Azure dev Spaces](/azure/dev-spaces/) című részben tekintheti meg.
+A teljes oktatóanyagokra mutató hivatkozásokat az [Azure dev Spaces](../index.yml) című részben tekintheti meg.
 
 > [!IMPORTANT]
 > Az Azure dev Spaces rövid útmutatók és oktatóanyagok az Azure dev Spaces CLI használatával végeznek műveleteket. Az Azure dev Spaces CLI nem telepíthető a Azure Cloud Shell.

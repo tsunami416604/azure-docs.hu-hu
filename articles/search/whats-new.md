@@ -6,13 +6,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 06/30/2020
-ms.openlocfilehash: 078892691bfaec62f71f9d601a42de3f80221149
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 07/10/2020
+ms.openlocfilehash: 01968335ffcaffb26cabd2a5174d00e5471409c1
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958157"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232032"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -22,47 +22,48 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 ### <a name="june-2020"></a>2020. június
 
-+ A [Knowledge Store](knowledge-store-concept-intro.md) már általánosan elérhető.
-
-+ [Search Service REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) a REST API-k új stabil verziója. A tudásbázison kívül ez az általánosan elérhető verzió a keresés relevanciájának és pontozásának fejlesztését is tartalmazza.
-
-+ Az új relevancia-rangsorolási algoritmus mostantól a létrehozott új szolgáltatások [BM25](https://en.wikipedia.org/wiki/Okapi_BM25) . Meglévő szolgáltatások esetén a `similarity` tulajdonságot a tárgymutató mezőinek beállításával engedélyezheti. Ez a tulajdonság általánosan elérhető.
-
-+ Az új indexelő beállítható `executionEnvironment` explicit módon `private` . Ez a funkció támogatja az indexelő számára a külső adathoz való hozzáférést privát végpontokon keresztül, és általánosan elérhető.
-
-+ A [Azure Machine learning (pénzmosás)](cognitive-search-aml-skill.md) egy új szaktudás, amely a következtetési végpontok Azure Machine Learningból való integrálását írja elő. A portál a Azure Machine Learning-végpont felderítését és integrálását támogatja egy Cognitive Search készségkészlet belül. A felderítéshez a Cognitive Search és az Azure ML szolgáltatásainak ugyanabban az előfizetésben kell lenniük. Ez a képesség általánosan elérhető. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-aml-custom-skill.md).
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
+|---------|------------------|-------------|---------------|
+[**Tudástár**](knowledge-store-concept-intro.md) | MI-bővítés | Egy mesterséges intelligenciával rendelkező indexelő kimenete, amely az Azure Storage-ban tárol tartalmat más alkalmazásokban és folyamatokban való használatra. | Általánosan elérhető. </br> Használja a [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) vagy újabb, vagy a portált. |
+| [**Keresés REST API 2020-06-30**](https://docs.microsoft.com/rest/api/searchservice/) | REST | A REST API-k új stabil verziója. A tudásbázison kívül ez a verzió a keresés relevanciájának és pontozásának fejlesztéseit is tartalmazza. | Általánosan elérhető. |
+| [**Okapi BM25 relevanciás algoritmus**](https://en.wikipedia.org/wiki/Okapi_BM25) | Lekérdezés | Az új relevancia-rangsorolási algoritmus automatikusan használatban van minden új, július 15. után létrehozott keresési szolgáltatáshoz. A korábban létrehozott szolgáltatások esetében a `similarity` tulajdonságot a tárgymutató mezőinek beállításával engedélyezheti. | Általánosan elérhető. </br> Használja a [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) vagy újabb, vagy REST API 2019-05-06. |
+| **executionEnvironment** | Biztonság (indexelő) | Explicit módon állítsa be ezt az indexelő konfigurációs tulajdonságot úgy, hogy az a `private` külső adatforrásokhoz való összes kapcsolatot egy privát végponton keresztül kényszerítse. Csak olyan keresési szolgáltatásokra vonatkozik, amelyek az Azure Private link szolgáltatást használják. | Általánosan elérhető. </br> Ezt az általános konfigurációs paramétert a [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) paranccsal állíthatja be. |
+| [**Azure Machine Learning (pénzmosás) ismerete**](cognitive-search-aml-skill.md) | MI-bővítés| Egy új, az Azure Machine Learning-ból származó következtetési végpont integrálására szolgáló képzettségi típus. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-aml-custom-skill.md). | Általánosan elérhető. </br> A [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) vagy újabb verzió használata. A portálon is elérhető a készségkészlet-kialakításban, feltéve, hogy a Cognitive Search és az Azure ML-szolgáltatások ugyanabban az előfizetésben vannak telepítve. |
 
 ### <a name="may-2020-microsoft-build"></a>Május 2020 (Microsoft Build)
 
-+ A [hibakeresési munkamenetek](cognitive-search-debug-session.md) szolgáltatás mostantól előzetes verzióban érhető el. A hibakeresési munkamenetek egy portálon alapuló felületet biztosítanak a készségkészlet kapcsolatos problémák kivizsgálásához és megoldásához. A hibakeresési munkamenetben létrehozott javítások az éles szakértelmével menthetők. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-debug-sessions.md).
-
-+ Egy keresési szolgáltatási végpontot a nyilvános internetről az [IP-szabályoknak a kötött tűzfal-támogatáshoz való konfigurálásával](service-configure-firewall.md) vagy [egy privát keresési végpontra vonatkozó Azure Private-hivatkozás](service-create-private-endpoint.md)használatával konfigurálhat. Mindkét funkció általánosan elérhető.
-
-+ A [rendszer által felügyelt identitás (előzetes verzió)](search-howto-managed-identities-data-sources.md) használatával állítson be egy Azure-adatforráshoz való kapcsolódást az indexeléshez. Az olyan [Indexelő](search-indexer-overview.md) anyagokra vonatkozik, amelyek az Azure-adatforrásokból (például Azure SQL Database, Azure Cosmos db és Azure Storage) származó tartalmakat töltenek be.
-
-+ Változtassa meg a keresési pontszámok számításának alapját, a szegmenstől az összes szegmensig, a [munkamenet](index-similarity-and-scoring.md) -azonosító és a [scoringStatistics = globális](index-similarity-and-scoring.md#scoring-statistics)lekérdezési paraméterek használatával. Ezek a paraméterek általánosan elérhetők.
-
-+ Vegyen fel egy [featuresMode (előzetes verzió)](index-similarity-and-scoring.md#featuresMode-param) lekérdezési paramétert a relevancia pontszám kibontásához a részletek megjelenítéséhez: mező szerinti hasonlósági pontszám, mező szerinti kifejezés gyakorisága, valamint az egyedi tokenek által egyeztetve. Ezeket az adatpontokat egyéni pontozási algoritmusokban is felhasználhatja. A képességet bemutató minta: a [Machine learning (LearnToRank) hozzáadása a relevancia kereséséhez](https://github.com/Azure-Samples/search-ranking-tutorial).
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
+|---------|------------------|-------------|---------------|
+| [**Munkamenetek hibakeresése**](cognitive-search-debug-session.md) | MI-bővítés | A hibakeresési munkamenetek egy portálon alapuló felületet biztosítanak a meglévő készségkészlet kapcsolatos problémák kivizsgálásához és megoldásához. A hibakeresési munkamenetben létrehozott javítások az éles szakértelmével menthetők. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-debug-sessions.md). | Nyilvános előzetes verzió a portálon. |
+| [**A kötött tűzfal-támogatás IP-szabályai**](service-configure-firewall.md) | Biztonság | Egy keresési szolgáltatási végpont elérésének korlátozása adott IP-címekre. | Általánosan elérhető. </br> A [felügyeleti REST API 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) -es vagy újabb verzióját, vagy a portált használja. |
+| [**Azure Private-hivatkozás privát keresési végponthoz**](service-create-private-endpoint.md) | Biztonság| Egy keresési szolgáltatást a nyilvános internetről privát kapcsolati erőforrásként futtatva, amely csak az ügyfélalkalmazások és más Azure-szolgáltatások számára érhető el ugyanazon a virtuális hálózaton. | Általánosan elérhető. </br> A [felügyeleti REST API 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) -es vagy újabb verzióját, vagy a portált használja. |
+| [**rendszer által felügyelt identitás (előzetes verzió)**](search-howto-managed-identities-data-sources.md) | Biztonság (indexelő) | Egy keresési szolgáltatás megbízható szolgáltatásként való regisztrálása a Azure Active Directory használatával a támogatott Azure-adatforrásokhoz való csatlakozások indexeléshez való beállításához. Az olyan [Indexelő](search-indexer-overview.md) anyagokra vonatkozik, amelyek az Azure-adatforrásokból (például Azure SQL Database, Azure Cosmos db és Azure Storage) származó tartalmakat töltenek be. | Nyilvános előzetes verzió. </br> Regisztrálja a keresési szolgáltatást a portál használatával. |
+| [**munkamenet-lekérdezési paraméter**](index-similarity-and-scoring.md), [scoringStatistics = globális paraméter](index-similarity-and-scoring.md#scoring-statistics) | Lekérdezés (relevancia) | Adja hozzá a munkamenet-azonosítókat egy lekérdezéshez, és hozzon létre egy munkafolyamatot a számítástechnikai keresési pontszámok számára, és a scoringStatistics = Global (pontszámok gyűjtése az összes szegmensből) a további konzisztens keresési pontszám kiszámítása | Általánosan elérhető. </br> Használja a [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) vagy újabb, vagy REST API 2019-05-06. |
+| [**featuresMode (előzetes verzió)**](index-similarity-and-scoring.md#featuresMode-param) | Lekérdezés | Adja hozzá ezt a lekérdezési paramétert a relevancia pontszám kibontásához a további részletek megjelenítéséhez: mező szerinti hasonlósági pontszám, mező szerinti kifejezés gyakorisága, valamint az egyedi tokenek által egyeztetve. Ezeket az adatpontokat egyéni pontozási algoritmusokban is felhasználhatja. A képességet bemutató minta: a [Machine learning (LearnToRank) hozzáadása a relevancia kereséséhez](https://github.com/Azure-Samples/search-ranking-tutorial). | Nyilvános előzetes verzió. </br> Használja a [Search REST API 2020-06-30 – Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) vagy REST API 2019-05-06-Preview lehetőséget. |
 
 ### <a name="march-2020"></a>2020. március
 
-+ A [natív blob Soft Delete (előzetes verzió)](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) azt jelenti, hogy az Azure Blob Storage indexelő az Azure-ban Cognitive Search felismeri a törölt állapotban lévő blobokat, és eltávolítja a megfelelő keresési dokumentumot az indexelés során.
-
-+ Az új stabil [felügyeleti REST API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) már általánosan elérhető. 
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
+|---------|------------------|-------------|---------------|
+| [**Natív blob – Soft Delete (előzetes verzió)**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | Indexelők | Egy Azure Blob Storage indexelő az Azure-ban Cognitive Search felismeri a törölt állapotban lévő blobokat, és eltávolítja a megfelelő keresési dokumentumot az indexelés során. | Nyilvános előzetes verzió. </br> A [Search REST API 2020-06-30 – Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) és a REST API 2019-05-06-Preview, a Run indexelő paranccsal olyan Azure Blob-adatforrást használhat, amelyen engedélyezve van a "Soft Delete" elem. |
+| [**Felügyeleti REST API (2020-03-13)**](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) | REST | Új stabil REST API keresési szolgáltatás létrehozásához és kezeléséhez. IP-tűzfal és privát hivatkozás támogatása | Általánosan elérhető. |
 
 ### <a name="february-2020"></a>2020. február
 
-+ A személyes adatok [észlelése (előzetes verzió)](cognitive-search-skill-pii-detection.md) az indexelés során használt kognitív képesség, amely a személyazonosításra alkalmas adatokat egy bemeneti szövegből kigyűjti, és lehetővé teszi, hogy az adott szövegtől különböző módokon maszkot adjon.
-
-+ Az [egyéni entitások keresése (előzetes verzió)](cognitive-search-skill-custom-entity-lookup.md ) szöveget keres a szavak és kifejezések egyéni, felhasználó által meghatározott listájából. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség emellett olyan zavaros egyezést is támogat, amely a hasonló, de nem pontos egyezések keresésére is alkalmazható. 
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
+|---------|------------------|-------------|---------------|
+| [**Személyes adatok észlelése (előzetes verzió)**](cognitive-search-skill-pii-detection.md) | MI-bővítés | Új kognitív képesség az indexelés során, amely a személyazonosításra alkalmas adatokat egy bemeneti szövegből kigyűjti, és lehetővé teszi, hogy az adott szövegtől különböző módokon maszkot adjon. | Nyilvános előzetes verzió. </br> Használja a portált vagy a [Search REST API 2020-06-30 – Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) vagy REST API 2019-05-06-preview. |
+| [**Egyéni entitások keresése (előzetes verzió)**](cognitive-search-skill-custom-entity-lookup.md )| MI-bővítés | Új kognitív képesség, amely szövegeket keres a szavak és kifejezések egyéni, felhasználó által meghatározott listájából. Ezzel a listával minden olyan dokumentumot felcímkéz, amely minden egyező entitással rendelkezik. A képesség a hasonló, de nem pontos egyezések keresésére is használható. | Nyilvános előzetes verzió. </br> Használja a portált vagy a [Search REST API 2020-06-30 – Preview](https://docs.microsoft.com/rest/api/searchservice/index-preview) vagy REST API 2019-05-06-preview. |
 
 ### <a name="january-2020"></a>2020. január
 
-+ Az [ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) már általánosan elérhetők. Ha REST-et használ, a vagy újabb használatával érheti el a szolgáltatást `api-version=2019-05-06` . A felügyelt kód esetében a megfelelő csomag még mindig a [.net SDK 8,0-es verziója – előzetes verzió](search-dotnet-sdk-migration-version-9.md) , bár a funkció nem előzetes verzió. 
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
+|---------|------------------|-------------|---------------|
+| [**Ügyfél által felügyelt titkosítási kulcsok**](search-security-manage-encryption-keys.md) |Biztonság | További titkosítási réteget is felvesz a platform beépített titkosítása mellett. Egy Ön által létrehozott és kezelt titkosítási kulcs használatával titkosíthatja az indexelési tartalmat és a szinonimákat, mielőtt a hasznos adatok elérnék a keresési szolgáltatást. | Általánosan elérhető. </br> A Search REST API 2019-05-06 vagy újabb verzió használata. A felügyelt kód esetében a megfelelő csomag még mindig a [.net SDK 8,0-es verziója – előzetes verzió](search-dotnet-sdk-migration-version-9.md) , bár a funkció nem előzetes verzió. |
+| [**A kötött tűzfalak támogatásának IP-szabályai (előzetes verzió)**](service-configure-firewall.md) | Biztonság | Egy keresési szolgáltatási végpont elérésének korlátozása adott IP-címekre. Az előzetes verziójú API új **IpRule** és **NetworkRuleSet** tulajdonságokkal rendelkezik a [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service)-ban. Ez az előzetes verziójú funkció a kiválasztott régiókban érhető el. |  Nyilvános előzetes verzió az API-Version = 2019-10 -01-Preview használatával.  |
+| [**Azure Private-hivatkozás privát keresési végponthoz (előzetes verzió)**](service-create-private-endpoint.md) | Biztonság| Egy keresési szolgáltatást a nyilvános internetről privát kapcsolati erőforrásként futtatva, amely csak az ügyfélalkalmazások és más Azure-szolgáltatások számára érhető el ugyanazon a virtuális hálózaton. | Nyilvános előzetes verzió az API-Version = 2019-10 -01-Preview használatával.  |
 
-+ A keresési szolgáltatásokhoz való privát hozzáférés két, jelenleg előzetes verzióban elérhető mechanizmuson keresztül érhető el:
-
-  + A szolgáltatás létrehozásához a felügyeleti REST API használatával korlátozhatja a hozzáférést adott IP-címekhez `api-version=2019-10-01-Preview` . Az előzetes verziójú API új **IpRule** és **NetworkRuleSet** tulajdonságokkal rendelkezik a [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service)-ban. Ez az előzetes verziójú funkció a kiválasztott régiókban érhető el. További információ: [a felügyeleti REST API használata](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+## <a name="feature-announcements-in-2019"></a>Szolgáltatások hirdetményei a 2019-ben
 
 ### <a name="december-2019"></a>2019. december
 
