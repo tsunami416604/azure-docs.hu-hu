@@ -10,16 +10,18 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: f45cf27f427625571a58022c199391cac9a05bd2
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 6272d050e6a71032f32c72be696d8c3918fc3d61
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146928"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223754"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mi az Azure Cognitive Services?
 
 Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások, amelyek segítségével a fejlesztők intelligens alkalmazásokat hozhatnak létre anélkül, hogy közvetlen AI-vagy adatelemzési ismeretekkel vagy ismeretekkel rendelkeznek Az Azure Cognitive Services lehetővé teszi a fejlesztők számára, hogy az alkalmazásaikban egyszerűen vegyenek fel kognitív funkciókat. Az Azure Cognitive Services célja, hogy segítse a fejlesztőket az olyan alkalmazások létrehozásában, amelyek megtekinthetik, meghallgatják, megértik, megértették és megkezdik az okot. Az Azure Cognitive Servicesban található szolgáltatások katalógusa öt fő pillérbe osztható – jövőkép, beszéd, nyelv, Web Search és döntés.
+
+Szeretné megtekinteni az új és frissített Cognitive Services dokumentációját? Tekintse [meg a Cognitive Services docs újdonságait](whats-new-docs.md).
 
 ## <a name="vision-apis"></a>Jövőkép API-k
 

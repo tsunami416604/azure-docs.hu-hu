@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 05/07/2020
+ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 289cc463732ee6b612b67f6c408d9d7260016137
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 0d6cc523a56c9235360e6476b69303c51dc4d893
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85125804"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224349"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -87,47 +87,7 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 >[!NOTE]
 >Ha Azure-előfizetésre van szüksége, [regisztrálhat egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). Ha az Azure ingyenes próbaverzióját használja, akkor a Azure AD Domain Services segítségével tartsa a Windows Server Active Directory szinkronizálását Azure Active Directory használatával.
 
-A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek hozzáféréssel kell rendelkezniük a következő URL-címekhez:
-
-|Cím|Kimenő TCP-port|Cél|Szolgáltatás címkéje|
-|---|---|---|---|
-|*. wvd.microsoft.com|443|Szolgáltatás forgalma|WindowsVirtualDesktop|
-|mrsglobalsteus2prod.blob.core.windows.net|443|Ügynök-és SXS-verem frissítései|AzureCloud|
-|*.core.windows.net|443|Ügynök forgalma|AzureCloud|
-|*.servicebus.windows.net|443|Ügynök forgalma|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|Ügynök forgalma|AzureCloud|
-|catalogartifact.azureedge.net|443|Azure Piactér|AzureCloud|
-|kms.core.windows.net|1688|A Windows aktiválása|Internet|
-|wvdportalstorageblob.blob.core.windows.net|443|Azure Portal támogatás|AzureCloud|
-
->[!IMPORTANT]
->A Windows virtuális asztal mostantól támogatja a FQDN címkét. További információ: [a Azure Firewall használata a Windows rendszerű virtuális asztali környezetek elleni védelemhez](../firewall/protect-windows-virtual-desktop.md).
->
->Javasoljuk, hogy az URL-címek helyett a teljes tartománynevet vagy a szolgáltatás címkéit használja a szolgáltatási problémák megelőzése érdekében. A felsorolt URL-címek és címkék csak a Windows rendszerű virtuális asztali helyekhez és erőforrásokhoz tartoznak. Nem tartalmaznak URL-címeket más szolgáltatásokhoz, például a Azure Active Directoryhoz.
-
-A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekhez az Azure-beli virtuális gépek hozzáférhetnek:
-
-|Cím|Kimenő TCP-port|Cél|Szolgáltatás címkéje|
-|---|---|---|---|
-|*.microsoftonline.com|443|Hitelesítés a Microsoft Online Services szolgáltatásban|Nincs|
-|*. events.data.microsoft.com|443|Telemetria szolgáltatás|Nincs|
-|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincs|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincs|
-|login.windows.net|443|Bejelentkezés a Microsoft Online Servicesbe, Microsoft 365|Nincs|
-|*. sfx.ms|443|OneDrive-ügyfélszoftver frissítései|Nincs|
-|*. digicert.com|443|Tanúsítvány visszavonásának ellenőrzése|Nincs|
-
-
->[!NOTE]
->A Windows rendszerű virtuális asztal jelenleg nem tartalmaz olyan IP-címtartományok listáját, melyeket engedélyezheti a hálózati forgalom engedélyezéséhez. Jelenleg csak a konkrét URL-címek engedélyezése támogatott.
->
->Az Office-hoz kapcsolódó URL-címek, például a szükséges Azure Active Directory kapcsolódó URL-címek listáját lásd: [Office 365 URL-címek és IP-címtartományok](/office365/enterprise/urls-and-ip-address-ranges).
->
->A szolgáltatás forgalmát tartalmazó URL-címekhez a helyettesítő karaktert (*) kell használnia. Ha nem kívánja használni az ügynökkel kapcsolatos forgalmat, a következő módon keresheti meg az URL-címeket helyettesítő karakterek nélkül:
->
->1. Regisztrálja a virtuális gépeket a Windows rendszerű virtuális asztali gazdaszámítógépen.
->2. Nyissa meg az **eseménynaplót** , és keresse meg a **Windows-naplók**  >  **Application**  >  **WVD-Agent** alkalmazást, és keresse meg a 3702-es azonosítójú eseményt.
->3. Az 3702-as AZONOSÍTÓJÚ esemény alatt található URL-címek engedélyezési listája. Az 3702-es AZONOSÍTÓJÚ esemény URL-címei régiónként jellemzőek. Az engedélyezési folyamatot meg kell ismételnie minden olyan régióhoz tartozó URL-címmel, amelybe telepíteni kívánja a virtuális gépeket.
+Az URL-címek listáját fel kell oldani a Windows rendszerű virtuális asztali környezet a kívánt módon való működésének feloldásához, a [biztonságos URL-címek listáját](safe-url-list.md).
 
 A Windows rendszerű virtuális asztali szolgáltatások a felhasználók és a felügyeleti megoldás által szolgáltatott Windows-asztalok és-alkalmazások, amelyeket a Microsoft az Azure-szolgáltatásként üzemeltet. Az asztali számítógépek és alkalmazások bármely Azure-régióban üzembe helyezhetők virtuális gépeken, valamint a felügyeleti megoldás és az ezen virtuális gépekhez tartozó adat a Egyesült Államok. Ez adatátvitelt eredményezhet a Egyesült Államokba.
 
@@ -153,20 +113,7 @@ A következő Távoli asztal-ügyfelek támogatják a Windows rendszerű virtuá
 > [!IMPORTANT]
 > A Windows virtuális asztal jelenleg nem támogatja a Távoli asztal ügyfelet a Windows áruházból. Az ügyfél támogatása egy későbbi kiadásban lesz hozzáadva.
 
-A Távoli asztal ügyfeleknek hozzáféréssel kell rendelkezniük a következő URL-címekhez:
-
-|Cím|Kimenő TCP-port|Cél|Ügyfél (ek)|
-|---|---|---|---|
-|*. wvd.microsoft.com|443|Szolgáltatás forgalma|Mind|
-|*.servicebus.windows.net|443|Hibaelhárítási hibák|Mind|
-|go.microsoft.com|443|Microsoft-Fwlinkek|Mind|
-|aka.ms|443|Microsoft URL-rövidített|Mind|
-|docs.microsoft.com|443|Dokumentáció|Mind|
-|privacy.microsoft.com|443|Adatvédelmi nyilatkozat|Mind|
-|query.prod.cms.rt.microsoft.com|443|Ügyfelek frissítései|Windows asztali rendszer|
-
->[!IMPORTANT]
->Az URL-címek megnyitása elengedhetetlen a megbízható ügyfél-élményhez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja. Ezek az URL-címek csak az ügyfél helyeinek és erőforrásainak felelnek meg, és nem tartalmaznak URL-címeket más szolgáltatásokhoz, például a Azure Active Directoryhoz.
+Ha többet szeretne megtudni az URL-címekről, tiltsa le a távoli ügyfelek használatát a [biztonságos URL-címek listájában](safe-url-list.md).
 
 ## <a name="supported-virtual-machine-os-images"></a>Támogatott virtuális gépek operációsrendszer-lemezképei
 
@@ -186,13 +133,13 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 |Operációs rendszer|Azure képtára|VIRTUÁLIS gépek manuális üzembe helyezése|Azure Resource Manager sablonok integrációja|Gazdagép-készletek kiépítése az Azure piactéren|
 |--------------------------------------|:------:|:------:|:------:|:------:|
 |Windows 10 multi-session, 1903-es verzió|Igen|Igen|Igen|Igen|
-|Windows 10 multi-session, 1809-es verzió|Igen|Igen|No|Nem|
+|Windows 10 multi-session, 1809-es verzió|Igen|Igen|Nem|Nem|
 |Windows 10 Enterprise, 1903-es verzió|Igen|Igen|Igen|Igen|
-|Windows 10 Enterprise, 1809-es verzió|Igen|Igen|No|Nem|
-|Windows 7 Enterprise|Igen|Igen|No|Nem|
-|Windows Server 2019|Igen|Igen|No|Nem|
+|Windows 10 Enterprise, 1809-es verzió|Igen|Igen|Nem|Nem|
+|Windows 7 Enterprise|Igen|Igen|Nem|Nem|
+|Windows Server 2019|Igen|Igen|Nem|Nem|
 |Windows Server 2016|Igen|Igen|Igen|Igen|
-|Windows Server 2012 R2|Igen|Igen|No|Nem|
+|Windows Server 2012 R2|Igen|Igen|Nem|Nem|
 
 ## <a name="next-steps"></a>Következő lépések
 
