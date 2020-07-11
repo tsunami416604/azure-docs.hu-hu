@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57e312df31682ea868443423f40d54369cab6699
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846721"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231299"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Az Azure FXT Edge Filer-specifikációi
 
@@ -46,9 +46,9 @@ Az Azure FXT Edge Filer úgy lett kialakítva, hogy a standard 19 "berendezés-r
 
 <!-- 10x2.5 inches version -->
 
-| Filer-méretek           |                          |
+| Filer-méretek            | Érték                    |
 |-----------------------------|--------------------------|
-| Height (Magasság)                      | 42,8 mm (1,68 hüvelyk)    |
+| Magasság                      | 42,8 mm (1,68 hüvelyk)    |
 | Szélesség (beleértve a rack fület is) | 482,0 mm (18,97 hüvelyk)  |
 | Szélesség – fő ház      | 434,0 mm (17,08 hüvelyk) |
 | A fő ház hátoldalának mélysége – a rack fülei                   | 733,82 mm (29,61 hüvelyk) |
@@ -56,7 +56,7 @@ Az Azure FXT Edge Filer úgy lett kialakítva, hogy a standard 19 "berendezés-r
 | Mélység – a fülek a legtávolabbi kezdeti kiemelkedésig, keret nélkül | 22,0 mm (0,87 hüvelyk)  |
 | Mélység – a fülek legtávolabbi kiemelkedése az elõlaptal    | 35,84 mm (1,41 hüvelyk) |
 
-| Tömeg | |
+| Tömeg | Érték |
 |-----------------|----------------------|
 | Csomópont súlya (csomagolás nélkül, tartozékok nélkül) | 40 lbs (18,1 kg) |
 | Nettó súly (csomagolás nélkül, beleértve a tartozékokat is) | 51 lbs (23,1 kg)|
@@ -66,7 +66,7 @@ Az Azure FXT Edge Filer úgy lett kialakítva, hogy a standard 19 "berendezés-r
 
 | Csomag dimenzió | Milliméter | Hüvelyk |
 |-------------------|-------------|--------|
-| Height (Magasság)            | 311,2       | 12,25 " |
+| Magasság            | 311,2       | 12,25 " |
 | Szélesség             | 642,8       | 25,31 " |
 | Hossz            | 1 051,1     | 41,38 " |
 

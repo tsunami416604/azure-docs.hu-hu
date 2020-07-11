@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e00538d1112492c5b7f9fc0f91c86df6d3500701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e59ee029b1705f6f789812b870de96bbb74a6e5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796589"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223550"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Migrálás felügyelt rendszerképből megosztott képgyűjteményi rendszerképre
 
@@ -134,3 +134,4 @@ Remove-AzImage `
 
 Miután meggyőződött arról, hogy a replikáció elkészült, létrehozhat egy virtuális gépet az [általánosított rendszerképből](vm-generalized-image-version-powershell.md).
 
+A vásárlási tervre vonatkozó információk megadásával kapcsolatos információkért lásd: [Azure Marketplace vásárlási terv információinak megadása képek létrehozásakor](marketplace-images.md).

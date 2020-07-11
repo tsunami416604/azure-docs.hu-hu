@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: 6cf9be653da2dd587b93724b6e319dc4d20686c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c130fb2e032a24384f52f11957632319093e1e3
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536435"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226422"
 ---
 | Erőforrás | Szabványos fájlmegosztás | Prémium fájlmegosztás |
 |----------|---------------|------------------------------------------|
@@ -22,7 +22,7 @@ ms.locfileid: "81536435"
 | Cél átviteli sebesség egyetlen fájlmegosztás esetén | akár 300 MiB/s *, akár 60 MiB/s,  | Tekintse meg a prémium szintű fájlmegosztás bejövő és kimenő értékeit|
 | Maximális kimenő forgalom egyetlen fájlmegosztás esetén | Tekintse meg a szabványos fájlmegosztás céljának átviteli sebességét | Akár 6 204 MiB/s |
 | Egyetlen fájlmegosztás maximális bejövő száma | Tekintse meg a szabványos fájlmegosztás céljának átviteli sebességét | Akár 4 136 MiB/s |
-| Megnyitott leírók maximális száma fájlonként | 2 000 nyitott fogantyúk | 2 000 nyitott fogantyúk |
+| Fájlok vagy könyvtárak maximálisan megnyitott leírói | 2 000 nyitott fogantyúk | 2 000 nyitott fogantyúk |
 | Megosztási Pillanatképek maximális száma | 200 megosztási Pillanatképek | 200 megosztási Pillanatképek |
 | A maximális objektum (könyvtárak és fájlok) nevének hossza | 2 048 karakter | 2 048 karakter |
 | A maximális elérésiút-összetevő (az elérési út \A\B\C\D, minden betű egy összetevő) | 255 karakter | 255 karakter |

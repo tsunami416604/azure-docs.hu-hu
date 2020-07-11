@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 983005e815061f65907fc54aa6a3dfec1771b3f0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 740c5dfb7dd4bece32aa2df5ef47d5f87091445b
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055494"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231641"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Kubenet hálózatkezelés használata saját IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
 
@@ -54,7 +54,7 @@ Az *Azure CNI*gyakori probléma, hogy a HOZZÁRENDELT IP-címtartomány túl kic
 
 Kompromisszumként létrehozhat egy *kubenet* -t használó AK-fürtöt, és csatlakozhat egy meglévő virtuális hálózat alhálózatához. Ez a megközelítés lehetővé teszi, hogy a csomópontok meghatározott IP-címeket kapjanak, anélkül, hogy a fürtben futtatott összes lehetséges hüvelyhez le kellene foglalni a nagy számú IP-címet.
 
-A *kubenet*segítségével sokkal kisebb IP-címtartományt használhat, és képes támogatni a nagyméretű fürtöket és az alkalmazások igényeit. Ha például egy */27* IP-címtartomány is van, akkor futtathat egy 20-25 csomópontos fürtöt, amely elegendő mozgásteret biztosít a méretezéshez vagy a frissítéshez. Ez a fürt mérete akár *2200-2750* hüvelyt is támogat (az alapértelmezett maximális 110 hüvely/csomópont). A *kubenet* -ben konfigurálható hüvelyek maximális száma az AK-ban 110.
+A *kubenet*segítségével sokkal kisebb IP-címtartományt használhat, és képes támogatni a nagyméretű fürtöket és az alkalmazások igényeit. Ha például egy */27* IP-címtartomány van az alhálózaton, akkor futtathat egy 20-25 csomópont-fürtöt, amely elegendő mozgásteret biztosít a méretezéshez vagy a frissítéshez. Ez a fürt mérete akár *2200-2750* hüvelyt is támogat (az alapértelmezett maximális 110 hüvely/csomópont). A *kubenet* -ben konfigurálható hüvelyek maximális száma az AK-ban 110.
 
 A következő alapvető számítások összehasonlítják a hálózati modellek különbségét:
 

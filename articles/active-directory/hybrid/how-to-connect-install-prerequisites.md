@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/27/2020
+ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bcf7b5b8791b813a28133d8a662d1736aacf35a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bd19093034b4427d9e1b637a653a90e0568cddf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358718"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223924"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és a Azure AD Connect hardverre vonatkozó követelményeit.
@@ -48,34 +48,35 @@ A Azure AD Connect telepítése előtt néhány dolog szükséges.
 * Javasoljuk, hogy [engedélyezze a Active Directory Lomtárát](how-to-connect-sync-recycle-bin.md).
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect kiszolgáló
->[!IMPORTANT]
->A Azure AD Connect kiszolgáló kritikus identitási adatokból áll, és 0. rétegű összetevőként kell kezelni, ahogy azt [az Active Directory felügyeleti csomag modelljében](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) dokumentálták
+A Azure AD Connect kiszolgáló kritikus identitási adatait tartalmaz. Fontos, hogy a kiszolgálóhoz való rendszergazdai hozzáférés megfelelően legyen biztosítva, a [privilegizált hozzáférés biztonságossá tétele](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)című cikkben ismertetett irányelvek alapján. 
 
-* Azure AD Connect nem telepíthető a Small Business Server vagy a Windows Server Essentials rendszerre, mielőtt 2019 (a Windows Server Essentials 2019 támogatott). A kiszolgálónak a Windows Server standard vagy magasabb szintűnek kell lennie.
-* A Azure AD Connect tartományvezérlőre történő telepítése nem ajánlott biztonsági eljárások és szigorúbb beállítások miatt, amelyek megakadályozzák, hogy a Azure AD Connect megfelelően legyenek telepítve.
-* A Azure AD Connect-kiszolgálónak teljes grafikus felhasználói felülettel kell rendelkeznie. A Server Core-on való telepítés **nem támogatott** .
->[!IMPORTANT]
->A Azure AD Connect a Small Business Server, a Server Essentials vagy a Server Core rendszerre való telepítése nem támogatott.
+A Azure AD Connect-kiszolgálót 0. rétegű összetevőként kell kezelni, ahogy azt az [Active Directory felügyeleti modellben](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)dokumentálták.  
 
-* Azure AD Connect a Windows Server 2012-es vagy újabb verziójára kell telepíteni. A kiszolgálónak tartományhoz kell csatlakoznia, és lehet tartományvezérlő vagy tagkiszolgáló.
-* Ha Azure AD Connect varázslót használ az ADFS-konfiguráció felügyeletéhez, a Azure AD Connect kiszolgáló nem rendelkezhet a PowerShell átírásával Csoportházirend. Ha Azure AD Connect varázslót használ a szinkronizálási konfiguráció kezelésére, engedélyezheti a PowerShell átírását.
-* Ha Active Directory összevonási szolgáltatások (AD FS) üzembe helyezése folyamatban van, azok a kiszolgálók, amelyeken AD FS vagy webalkalmazás-proxy telepítve van, Windows Server 2012 R2 vagy újabb rendszernek kell lennie. A Távoli telepítéshez [engedélyezni kell a](#windows-remote-management) Rendszerfelügyeleti webszolgáltatásokat ezeken a kiszolgálókon.
-* Ha Active Directory összevonási szolgáltatások (AD FS) üzembe helyezése folyamatban van, [TLS/SSL-tanúsítványokra](#tlsssl-certificate-requirements)van szüksége.
-* Ha Active Directory összevonási szolgáltatások (AD FS) üzembe helyezése folyamatban van, akkor konfigurálnia kell [a névfeloldást](#name-resolution-for-federation-servers).
-* Ha a globális rendszergazdák rendelkeznek MFA-támogatással, akkor az URL-címnek szerepelnie kell **https://secure.aadcdn.microsoftonline-p.com** a megbízható helyek listájában. A rendszer arra kéri, hogy adja hozzá ezt a helyet a megbízható helyek listájához, amikor a rendszer egy MFA-kihívást kér, és korábban még nem tette hozzá. Az Internet Explorer használatával adhatja hozzá a megbízható helyekhez.
-* A Microsoft azt javasolja, hogy a Azure AD Connect kiszolgáló megerősítse a biztonsági támadási felületet az IT-környezet ezen kritikus összetevője számára.  Az alábbi ajánlásokat követve csökkentheti a szervezete biztonsági kockázatait.
+További információ a Active Directory környezet biztonságossá tételéről: [ajánlott eljárások a Active Directory biztonságossá tételéhez](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory).
 
-* Azure AD Connect üzembe helyezése egy tartományhoz csatlakoztatott kiszolgálón, és a rendszergazdai hozzáférés korlátozása a tartományi rendszergazdák vagy más szigorúan ellenőrzött biztonsági csoportok számára.
+#### <a name="installation-prerequisites"></a>Telepítési előfeltételek 
 
-További tudnivalókért lásd: 
+- A Azure AD Connectt tartományhoz csatlakoztatott Windows Server 2012 vagy újabb rendszerre kell telepíteni. Erősen ajánlott, hogy ez a kiszolgáló egy tartományvezérlő. 
+- Azure AD Connect nem telepíthető a Small Business Server vagy a Windows Server Essentials rendszerre, mielőtt 2019 (a Windows Server Essentials 2019 támogatott). A kiszolgálónak a Windows Server standard vagy magasabb szintűnek kell lennie.  
+- A Azure AD Connect-kiszolgálónak teljes grafikus felhasználói felülettel kell rendelkeznie. A Azure AD Connect telepítése nem támogatott a Windows Server Core-on. 
+- Ha Azure AD Connect varázslót használ az ADFS-konfiguráció felügyeletéhez, a Azure AD Connect kiszolgáló nem rendelkezhet a PowerShell átírásával Csoportházirend. Ha Azure AD Connect varázslót használ a szinkronizálási konfiguráció kezelésére, engedélyezheti a PowerShell átírását. 
+- Ha Active Directory összevonási szolgáltatások (AD FS) üzembe helyezése folyamatban van, akkor: 
+    - azok a kiszolgálók, amelyeken telepítve van a AD FS vagy a webalkalmazás-proxy, Windows Server 2012 R2 vagy újabb rendszernek kell lennie. A Távoli telepítéshez engedélyezni kell a Rendszerfelügyeleti webszolgáltatásokat ezeken a kiszolgálókon. 
+    - konfigurálnia kell a TLS/SSL-tanúsítványokat.  Lásd: [SSL/TLS protokollok és titkosító csomagok kezelése a AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) és [az SSL-tanúsítványok kezelése a ad FSban](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap).
+    - konfigurálnia kell a névfeloldást. 
+- Ha a globális rendszergazdák rendelkeznek MFA-támogatással, akkor az URL-címnek szerepelnie kell https://secure.aadcdn.microsoftonline-p.com **must** a megbízható helyek listájában. A rendszer arra kéri, hogy adja hozzá ezt a helyet a megbízható helyek listájához, amikor a rendszer egy MFA-kihívást kér, és korábban még nem tette hozzá. Az Internet Explorer használatával adhatja hozzá a megbízható helyekhez.  
 
-* [Rendszergazdák csoportok biztonságossá tétele](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+#### <a name="hardening-your-azure-ad-connect-server"></a>A Azure AD Connect-kiszolgáló megerősítése 
+A Microsoft azt javasolja, hogy a Azure AD Connect kiszolgáló megerősítse a biztonsági támadási felületet az IT-környezet ezen kritikus összetevője számára. Az alábbi javaslatok segítenek enyhíteni a szervezete biztonsági kockázatait.
 
-* [Beépített rendszergazdai fiókok biztonságossá tétele](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+- A Azure AD Connect a tartományvezérlővel és más 0. szintű erőforrásokkal kell kezelnie:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material 
+- A Azure AD Connect-kiszolgálóhoz való rendszergazdai hozzáférést csak tartományi rendszergazdák vagy más szigorúan ellenőrzött biztonsági csoportok számára kell korlátozni.
+- Hozzon létre egy [dedikált fiókot az összes, emelt szintű hozzáféréssel rendelkező személy számára](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access). A rendszergazdáknak nem szabad böngészni a weben, ellenőrizniük kell az e-mailjeit, és a napi hatékonyságnövelő feladatokat a magas jogosultsági szintű fiókokkal.
+- Kövesse a [privilegizált hozzáférés biztonságossá tétele](https://docs.microsoft.com/windows-server/security/credentials-protection-and-management/how-to-configure-protected-accounts)című témakör útmutatását. 
+- Győződjön meg arról, hogy minden gépnek egyedi helyi rendszergazdai jelszava van. A [helyi rendszergazda jelszavas megoldás (kör)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) egyedi véletlenszerű jelszavakat konfigurálhat az egyes munkaállomásokon, és a kiszolgálókat az ACL által védett Active Directory (ad) tárolja. Csak a jogosult jogosult felhasználók olvashatják el vagy kérhetik a helyi rendszergazdai fiók jelszavának visszaállítását. A munkaállomásokon és kiszolgálókon a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)kérheti le a kört. A kör-és láb-környezetek üzemeltetéséhez szükséges további útmutatást a [tiszta forrás elve alapján a működési szabványok](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)között találja. 
+- Dedikált emelt [szintű hozzáférési munkaállomásokat (Paw)](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) kell megvalósítani az összes munkatárs számára a szervezet információs rendszereihez való emelt szintű hozzáféréssel. 
+- A Active Directory környezet támadási felületének csökkentése érdekében kövesse ezeket a [további irányelveket](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) .
 
-* [Biztonsági fejlesztés és fenntartás a támadási felületek csökkentésével](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
-
-* [A Active Directory támadási felület csökkentése](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Az Azure AD Connect által használt SQL-kiszolgáló
 * Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Alapértelmezés szerint a SQL Server 2012 Express LocalDB (SQL Server Express) egy egyszerűsített verziója van telepítve. A SQL Server Express 10 GB méretű korláttal rendelkezik, amely lehetővé teszi körülbelül 100 000 objektum kezelését. Ha nagyobb mennyiségű címtár-objektumot kell kezelnie, a telepítővarázslót a SQL Server egy másik telepítésére kell irányítani. A SQL Server telepítésének típusa hatással lehet [Azure ad Connect teljesítményére](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors#sql-database-factors).
@@ -89,7 +90,7 @@ További tudnivalókért lásd:
 * Ha az [expressz beállításokat](reference-connect-accounts-permissions.md#express-settings-installation) használja, vagy a frissítését a (z) rendszerről, akkor vállalati rendszergazdai fiókkal kell rendelkeznie a helyszíni Active Directoryhoz.
 * Ha az egyéni beállítások telepítési útvonalát használja, több lehetőség is rendelkezésre áll. További információ: [egyéni telepítési beállítások](reference-connect-accounts-permissions.md#custom-installation-settings).
 
-### <a name="connectivity"></a>Kapcsolatok
+### <a name="connectivity"></a>Kapcsolat
 * A Azure AD Connect-kiszolgálónak az intraneten és az interneten egyaránt DNS-feloldásra van szüksége. A DNS-kiszolgálónak képesnek kell lennie a nevek feloldására a helyszíni Active Directory és az Azure AD-végpontokon.
 * Ha tűzfallal rendelkezik az intraneten, és meg kell nyitnia a portokat a Azure AD Connect-kiszolgálók és a tartományvezérlők között, további információért lásd: [Azure ad Connect portok](reference-connect-ports.md) .
 * Ha a proxy vagy a tűzfal korlátozza, hogy mely URL-címek érhetők el, akkor meg kell nyitni az [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) által dokumentált URL-címeket.

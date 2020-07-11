@@ -1,5 +1,5 @@
 ---
-title: Rendszerkép verziójának másolása egy másik gyűjteményből
+title: Rendszerkép verziójának másolása egy másik katalógusból a CLI használatával
 description: Másolja a rendszerkép verzióját egy másik katalógusból az Azure CLI-vel.
 author: cynthn
 ms.service: virtual-machines
@@ -9,13 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: add08d7b8ef39322f03e0faf78959b08a6ae2a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 764fe98ad20aa29506b4fba723762124e24af245
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82797057"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224332"
 ---
-# <a name="copy-an-image-from-another-gallery"></a>Rendszerkép másolása egy másik gyűjteményből
+# <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Rendszerkép másolása egy másik gyűjteményből az Azure CLI használatával
 
 Ha a szervezet több gyűjteményt is tartalmaz, akkor a meglévő rendszerkép-verziókról is létrehozhat képverziókat más gyűjteményekben tárolt képekből. Előfordulhat például, hogy egy fejlesztési és tesztelési galériával új képeket szeretne létrehozni és tesztelni. Ha készen állnak az éles környezetben való használatra, az alábbi példán keresztül másolhatja őket egy éles katalógusba. Létrehozhat egy rendszerképet is egy másik katalógusban lévő rendszerképből [Azure PowerShell](image-version-another-gallery-powershell.md)használatával.
 
@@ -161,3 +162,5 @@ az sig image-version create \
 Hozzon létre egy virtuális gépet [általánosított](vm-generalized-image-version-cli.md) vagy [speciális](vm-specialized-image-version-cli.md) rendszerkép-verzióból.
 
 Azt is megteheti, hogy az [Azure rendszerkép-szerkesztő (előzetes verzió)](./linux/image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és a meglévő rendszerkép-verzióról is frissítheti és [létrehozhatja az új rendszerkép verzióját](./linux/image-builder-gallery-update-image-version.md). 
+
+A vásárlási tervre vonatkozó információk megadásával kapcsolatos információkért lásd: [Azure Marketplace vásárlási terv információinak megadása képek létrehozásakor](marketplace-images.md).

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 06/03/2020
 ms.custom: seodec18, contperfq4, tracking-python
-ms.openlocfilehash: 636d16c4fbbd662d6fccb811fb4a88b2d862b533
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ace657efaac323dcf48cfba95629abc59ca0cac3
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107325"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231760"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Mik a Field-programozható Gate-tömbök (FPGA) és az üzembe helyezés módja
 
@@ -65,7 +65,7 @@ A következő diagram és táblázat bemutatja, hogyan hasonlítható össze a F
 
 ![Azure Machine Learning FPGA összehasonlításának ábrája](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Processzor||Leírás|
+|Processzor| Rövidítés |Leírás|
 |---|:-------:|------|
 |Alkalmazásspecifikus integrált áramkörök|ASICs|Az egyéni áramkörök – például a Google TensorFlow Processor Units (TPU) – biztosítják a lehető legnagyobb hatékonyságot. Az igények változása miatt nem konfigurálhatók újra.|
 |Mező – programozható Gate-tömbök|FPGA-k|A FPGA, például az Azure-on elérhetők, az ASICs-hoz hasonló teljesítményt biztosítanak. Az új logika megvalósításához az idő múlásával rugalmasan és újrakonfigurálható is.|
@@ -105,7 +105,7 @@ A FPGA az alábbi Azure-régiókban érhetők el:
   - USA keleti régiója
   - Délkelet-Ázsia
   - Nyugat-Európa
-  - USA nyugati régiója, 2.
+  - USA 2. nyugati régiója
 
 > [!IMPORTANT]
 > A késés és az átviteli sebesség optimalizálása érdekében a FPGA-modellnek adatokat küldő ügyfélnek a fenti régiók egyikében kell lennie (a modellt a következőre telepítette:).
@@ -395,7 +395,7 @@ for top in sorted_results[:5]:
     print(classes_entries[top[0]], 'confidence:', top[1])
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Törölje a webszolgáltatást, a képet és a modellt (ebben a sorrendben kell elvégezni, mivel függőségek vannak).
 
@@ -411,7 +411,7 @@ converted_model.delete()
 
 A FPGA webszolgáltatások biztonságossá tételéhez tekintse meg a [biztonságos webszolgáltatások](how-to-secure-web-service.md) dokumentumát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg ezeket a jegyzetfüzeteket, videókat és blogokat:
 

@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: tagore
-ms.openlocfilehash: e862818a4fe2471af574d153d43f0096af7847b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 169b12ff4fbf2471270aa912d5d1f8242371036b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811415"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223737"
 ---
 # <a name="how-to-configure-cloud-services"></a>A Cloud Services Konfigurálása
 
@@ -43,11 +44,11 @@ Ha egy adott operációsrendszer-verziót kell megcéloznia, beállíthatja a **
 >[!IMPORTANT]
 > Egy adott operációsrendszer-verzió kiválasztásával letilthatja az operációs rendszer frissítéseinek automatikus telepítését, és javíthatja a felelősségét. Győződjön meg arról, hogy a szerepkör-példányok frissítéseket kapnak, vagy az alkalmazást biztonsági rések számára teheti elérhetővé.
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitorozás
 
 Riasztásokat adhat hozzá a felhőalapú szolgáltatáshoz. Kattintson a **Beállítások**  >  **riasztási szabályok**riasztás  >  **hozzáadása**elemre.
 
-![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
+![Képernyőfelvétel a beállításokról a riasztási szabályok beállítás kiválasztásával, valamint a piros színnel és a riasztás hozzáadása lehetőséggel lefelé.](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
 Itt beállíthatja a riasztást. A **metrika** legördülő lista használatával riasztást állíthat be a következő típusú adatokhoz.
 
@@ -57,7 +58,7 @@ Itt beállíthatja a riasztást. A **metrika** legördülő lista használatáva
 * kimenő hálózati forgalom
 * Processzorhasználat (%)
 
-![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
+![Képernyőkép a riasztási szabály hozzáadása panelről az összes beállított konfigurációs beállítással.](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
 ### <a name="configure-monitoring-from-a-metric-tile"></a>Figyelés beállítása metrikai csempéről
 

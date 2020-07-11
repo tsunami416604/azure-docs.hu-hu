@@ -3,12 +3,12 @@ title: Azure Migrate kiszolgáló áttelepítésével kapcsolatos gyakori kérd�
 description: Választ kaphat a Azure Migrate kiszolgáló áttelepítésének a gépek áttelepítésére való használatával kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744324"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224128"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate kiszolgáló áttelepítése: gyakori kérdések
 
@@ -67,6 +67,9 @@ Nem. A Azure Availability Zones Azure Migrate Migrálás nem támogatott.
 
 Azure Migrate a hálózati blokk-eszköz (NBD) protokollt használja TLS titkosítással.
 
+## <a name="how-is-the-data-transmitted-from-on-prem-environment-to-azure-is-it-encrypted-before-transmission"></a>Hogyan történik az adatok továbbítása a helyszíni környezetből az Azure-ba? Titkosítva van az átvitel előtt? 
+Az ügynök nélküli replikálásban az Azure Migrate készülék tömöríti az adatgyűjtést, és a feltöltés előtt titkosítja azokat. Az adatok továbbítása biztonságos kommunikációs csatornán keresztül történik HTTPS protokollon keresztül, és a TLS 1,2-es vagy újabb verzióját használja. Az Azure Storage emellett automatikusan titkosítja az adatait, ha a felhőbe (titkosítás – REST) megőrzi őket.  
+
 ## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Milyen minimális vCenter Server verzió szükséges az áttelepítéshez?
 
 Legalább vCenter Server 5,5 és vSphere ESXi-gazdagép 5,5-es verziójának kell lennie.
@@ -106,7 +109,7 @@ A gépek áttelepítése a fizikai kiszolgálóként való kezeléssel számos e
 Habár ez jó használati eset lehet, jelenleg nem támogatott. Ha két (vagy több) készüléket helyez üzembe ugyanazon virtuális gépek felderítéséhez, olyan szolgáltatási problémát okoz, amelyben a virtuális gépek tulajdonlása megtartja a két készülék közötti váltást. Itt láthatja, hogy a virtuális gépek megjelennek és eltűnnek. Ilyen esetekben a probléma megoldásához törölnie kell egy készüléket, és kemény frissítést kell végeznie.
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>A VMWare virtuális gépek áttelepítéséhez VMware vCenter szükséges?
-[VMWare virtuális gépek](server-migrate-overview.md) áttelepítéséhez VMware ügynök-alapú vagy ügynök nélküli Migrálás esetén az ESXi-gazdagépeket, amelyeken a virtuális gépek találhatók, vCenter Server kell felügyelni. Ha nem rendelkezik vCenter Serverekkel, áttelepítheti a VMware virtuális gépeket fizikai kiszolgálóként való áttelepítéssel. [További információk](migrate-support-matrix-physical-migration.md).
+[VMWare virtuális gépek](server-migrate-overview.md) áttelepítéséhez VMware ügynök-alapú vagy ügynök nélküli Migrálás esetén az ESXi-gazdagépeket, amelyeken a virtuális gépek találhatók, vCenter Server kell felügyelni. Ha nem rendelkezik vCenter Serverekkel, áttelepítheti a VMware virtuális gépeket fizikai kiszolgálóként való áttelepítéssel. [További információ](migrate-support-matrix-physical-migration.md).
  
 ## <a name="next-steps"></a>További lépések
 

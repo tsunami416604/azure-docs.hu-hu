@@ -4,8 +4,6 @@
   items:
     - name: Mi az a Microsoft Identitásplatform?
       href: v2-overview.md
-    - name: A Microsoft identitásplatformjának fejlődése
-      href: about-microsoft-identity-platform.md
 - name: Rövid útmutatók
   expanded: true
   items:

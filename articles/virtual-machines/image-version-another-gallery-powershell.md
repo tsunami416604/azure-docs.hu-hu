@@ -1,5 +1,5 @@
 ---
-title: Rendszerkép másolása egy másik gyűjteményből
+title: Rendszerkép másolása egy másik gyűjteményből a PowerShell használatával
 description: Rendszerkép másolása egy másik gyűjteményből Azure PowerShell használatával.
 author: cynthn
 ms.service: virtual-machines
@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 10cd8514b529f29f68ea3df14cdc208dd8fdd556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe26a880979a431e456d9a1819dfd1b18d25f77
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796927"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221221"
 ---
-# <a name="copy-an-image-from-another-gallery"></a>Rendszerkép másolása egy másik gyűjteményből
+# <a name="copy-an-image-from-another-gallery-using-powershell"></a>Rendszerkép másolása egy másik gyűjteményből a PowerShell használatával
 
 Ha a szervezet több gyűjteményt is tartalmaz, létrehozhat képeket a más gyűjteményekben tárolt képekből. Előfordulhat például, hogy egy fejlesztési és tesztelési galériával új képeket szeretne létrehozni és tesztelni. Ha készen állnak az éles környezetben való használatra, az alábbi példán keresztül másolhatja őket egy éles katalógusba. Az [Azure CLI](image-version-another-gallery-cli.md)használatával is létrehozhat egy képet egy másik katalógusban található rendszerképből.
 
@@ -165,3 +165,5 @@ $job.State
 Hozzon létre egy virtuális gépet [általánosított](vm-generalized-image-version-powershell.md) vagy [speciális](vm-specialized-image-version-powershell.md) rendszerkép-verzióból.
 
 Az [Azure rendszerkép-szerkesztő (előzetes verzió)](./linux/image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](./linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
+
+A vásárlási tervre vonatkozó információk megadásával kapcsolatos információkért lásd: [Azure Marketplace vásárlási terv információinak megadása képek létrehozásakor](marketplace-images.md).

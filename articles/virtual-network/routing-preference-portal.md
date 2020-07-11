@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 7db8dcc87606e5c58ddac8f609d1538989af5ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d41893d734037e466ad786641fed98c461adcfc
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689299"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231811"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>A nyilvános IP-cím útválasztási beállításainak konfigurálása a Azure Portal használatával
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja az útválasztási beállításokat a nyilvános IP-címekhez tartozó ISP-hálózat (**internetes** beállítás) használatával. A nyilvános IP-cím létrehozása után a következő Azure-erőforrásokkal társíthatja a bejövő és kimenő adatforgalmat az internethez:
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja az [útválasztási](https://docs.microsoft.com/azure/virtual-network/routing-preference-overview) beállításokat a nyilvános IP-címekhez tartozó ISP-hálózat (**internetes** beállítás) használatával. A nyilvános IP-cím létrehozása után a következő Azure-erőforrásokkal társíthatja a bejövő és kimenő adatforgalmat az internethez:
 
 * Virtuális gép
 * Virtuálisgép-méretezési csoport

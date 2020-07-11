@@ -6,11 +6,12 @@ ms.topic: article
 ms.date: 12/03/2018
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9f18eef607a5f655aecc0b6ebe1c85a239b34192
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 693e552c8743b435fac6fda9d5ab023be5d9adeb
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77482972"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221136"
 ---
 # <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Tartalom szinkronizálása egy Felhőbeli mappából a Azure App Serviceba
 Ez a cikk bemutatja, hogyan szinkronizálhat tartalmat [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) a dropboxból és a OneDrive. 
@@ -23,11 +24,11 @@ A tartalom szinkronizálásának engedélyezéséhez navigáljon a [Azure Portal
 
 A bal oldali menüben kattintson a **Deployment Center**  >  **OneDrive** vagy a **Dropbox**  >  **engedélyezése**lehetőségre. Kövesse az engedélyezési utasításokat. 
 
-![](media/app-service-deploy-content-sync/choose-source.png)
+![Bemutatja, hogyan engedélyezhető a OneDrive vagy a Dropbox a központi telepítési központban a Azure Portalban.](media/app-service-deploy-content-sync/choose-source.png)
 
 Csak egyszer kell engedélyeznie a OneDrive vagy a Dropboxot. Ha már engedélyezte a jogosultságot, kattintson a **Continue (folytatás**) gombra. A **fiók módosítása**lehetőségre kattintva módosíthatja a jóváhagyott OneDrive vagy Dropbox-fiókot.
 
-![](media/app-service-deploy-content-sync/continue.png)
+![Azt mutatja be, hogyan lehet módosítani a Azure Portal az üzembe helyezési központban az engedélyezve lévő OneDrive vagy Dropbox-fiókot.](media/app-service-deploy-content-sync/continue.png)
 
 A **configure (Konfigurálás** ) lapon válassza ki a szinkronizálni kívánt mappát. Ez a mappa a OneDrive vagy a Dropbox következő kijelölt tartalom elérési útján jön létre. 
    
@@ -42,7 +43,7 @@ Az **Összefoglalás** lapon ellenőrizze a beállításokat, majd kattintson a 
 
 Ha a felhőalapú mappában lévő tartalmat szinkronizálni szeretné a App Serviceval, lépjen vissza a **központi telepítési központ** lapra, és kattintson a **szinkronizálás**elemre.
 
-![](media/app-service-deploy-content-sync/synchronize.png)
+![Bemutatja, hogyan lehet szinkronizálni a felhőalapú mappát App Servicekal.](media/app-service-deploy-content-sync/synchronize.png)
    
    > [!NOTE]
    > Az API-k alapvető eltérései miatt a **OneDrive for Business** jelenleg nem támogatott. 
@@ -55,7 +56,7 @@ A tartalom-szinkronizálás letiltásához navigáljon a [Azure Portal](https://
 
 A bal oldali menüben kattintson a **központi telepítési központ**  >  **kapcsolat bontása**elemre.
 
-![](media/app-service-deploy-content-sync/disable.png)
+![Bemutatja, hogyan lehet leválasztani a Cloud Folder syncet a App Service alkalmazással a Azure Portal.](media/app-service-deploy-content-sync/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 

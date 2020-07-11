@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: a3e78ff2936cb3dbbc1bcf432f130fbd17622d14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610064"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223458"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -174,14 +174,34 @@ Ha más számítási feladatokhoz (például adatátvitelhez) használ fájlmego
 
 ### <a name="data-labeling-projects"></a>Adatcímkéző projektek
 
-|Probléma  |Megoldás:  |
+|Probléma  |Feloldás  |
 |---------|---------|
 |Csak a blob-adattárolók által létrehozott adatkészletek használhatók.     |  Ez az aktuális kiadás ismert korlátozása.       |
 |A létrehozást követően a projekt hosszú ideig az "inicializálás" kifejezést jeleníti meg.     | Manuálisan frissítse a lapot. Az inicializálásnak másodpercenként körülbelül 20 datapoints kell lennie. Az AutoFrissítés hiánya ismert probléma.         |
 |Képek áttekintésekor az újonnan címkézett képek nem jelennek meg.     |   Az összes címkézett kép betöltéséhez válassza az **első** gombot. Az **első** gomb a lista elejére kerül, de az összes címkével ellátott adattal betöltődik.      |
 |Az ESC billentyű lenyomásával az objektumok észlelése során a rendszer nulla méretű címkét hoz létre a bal felső sarokban. Az ebben az állapotban lévő címkék elküldése sikertelen.     |   Törölje a címkét a mellette lévő kereszt jelre kattintva.  |
 
-### <a name="data-drift-monitors"></a>Adatdrift figyelők
+### <a name="data-drift-monitors"></a><a name="data-drift"></a>Adatdrift figyelők
+
+Az adatdrift figyelőkkel kapcsolatos korlátozások és ismert problémák:
+
+* A korábbi adatok elemzésének időtartománya a figyelő gyakorisági beállításának 31 intervallumára korlátozódik. 
+* A 200 funkcióinak korlátozása, kivéve, ha nincs megadva szolgáltatási lista (az összes funkció használatban van).
+* A számítás méretének elég nagynak kell lennie az adatok kezeléséhez.
+* Győződjön meg arról, hogy az adatkészlet egy adott figyelő futtatásának kezdési és befejezési dátumán belüli adatokat tartalmaz.
+* Az adatkészlet-figyelők csak a 50 vagy több sort tartalmazó adatkészleteken működnek.
+* Az adatkészletben lévő oszlopok vagy szolgáltatások a következő táblázatban szereplő feltételek alapján kategorikusnak vagy numerikusnak minősülnek. Ha a szolgáltatás nem felel meg az alábbi feltételeknek – például egy karakterlánc típusú, >100 egyedi értékekkel rendelkező oszlop – a szolgáltatás el lesz dobva az adateltolódási algoritmusból, de a rendszer még mindig felhasználható. 
+
+    | Szolgáltatás típusa | Adattípus | Feltétel | Korlátozások | 
+    | ------------ | --------- | --------- | ----------- |
+    | Kategorikus | karakterlánc, bool, int, float | A szolgáltatásban található egyedi értékek száma kevesebb, mint 100, és a sorok száma kevesebb, mint 5%. | A Null érték a saját kategóriája. | 
+    | Numerikus | int, float | A szolgáltatás értékei numerikus adattípussal rendelkeznek, és nem felelnek meg a kategorikus funkció feltételének. | A szolgáltatás el lett dobva, ha az értékek 15%-a null értékű >. | 
+
+* Ha [létrehozott egy datadrift-figyelőt](how-to-monitor-datasets.md) , de nem látja az adatokat a Azure Machine learning Studio **adatkészlet-figyelők** lapján, próbálkozzon a következőkkel.
+
+    1. Ellenőrizze, hogy a megfelelő dátumtartomány van-e kiválasztva az oldal tetején.  
+    1. Az **adatkészlet-figyelők** lapon válassza a kísérlet hivatkozást a Futtatás állapotának vizsgálatához.  Ez a hivatkozás a tábla jobb szélén található.
+    1. Ha a Futtatás sikeresen befejeződött, ellenőrizze az illesztőprogram-naplókat, hogy hány mérőszám lett létrehozva, vagy hogy van-e figyelmeztető üzenet.  A kísérletre való kattintás után keresse meg az illesztőprogram-naplókat a **kimenet + naplók** lapon.
 
 * Ha az SDK `backfill()` -függvény nem hozza ki a várt kimenetet, előfordulhat, hogy egy hitelesítési probléma okozza.  Amikor létrehozza a számítást, hogy átadja ezt a függvényt, ne használja `Run.get_context().experiment.workspace.compute_targets` .  Ehelyett használja a [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) , például az alábbiakat a függvénybe beadott számítási számítás létrehozásához `backfill()` : 
 
@@ -258,7 +278,7 @@ Ismert problémák:
 
 Tegye a következő hibákat a műveletekhez:
 
-|Hiba  | Megoldás:  |
+|Hiba  | Feloldás  |
 |---------|---------|
 |Rendszerkép-létrehozási hiba a webszolgáltatás telepítésekor     |  A "pynacl = = 1.2.1" hozzáadása pip-függőségként a Conda-fájlhoz a rendszerkép-konfigurációhoz       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   A központi telepítésben használt virtuális gépek SKU-jának módosítása több memóriával. |

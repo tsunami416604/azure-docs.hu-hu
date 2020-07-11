@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.openlocfilehash: 50a7e9520730159ad2df3ec3e0b75fcfa0c5ce0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae6b40e7ec8a2bb6f635a6ffca4886ed09c1364
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84451066"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229533"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Az SDK betöltési hibáinak elhárítása JavaScript-webalkalmazásokhoz
 
@@ -28,7 +29,7 @@ Az SDK-Betöltési hiba kivételt a JavaScript-kódrészlet (v3 vagy újabb) hoz
 
 A verem részletei tartalmazzák a végfelhasználó által használt URL-címekre vonatkozó alapvető információkat.
 
-| Name                      | Description                                                                                                  |
+| Név                      | Leírás                                                                                                  |
 |---------------------------|--------------------------------------------------------------------------------------------------------------|
 | &lt;CDN- &nbsp; végpont&gt; | Az SDK letöltéséhez használt URL-cím (és sikertelen).                                                      |
 | &lt;Súgó &nbsp; hivatkozása&gt;    | Egy URL-cím, amely a hibaelhárítási dokumentációra hivatkozik (ez a lap).                                              |
@@ -75,11 +76,11 @@ Ha megerősíti, hogy van leállás, [hozzon létre egy új támogatási jegyet]
 Mivel a kódrészletet és annak konfigurációját az alkalmazás az egyes generált lapok részeként adja vissza, a kódrészletek `src` konfigurációjának módosításával más URL-címet is használhat az SDK-hoz. Ennek a módszernek a használatával megkerülheti a CDN letiltott hibáját, mivel az új URL-cím nem tiltható le.
 
 Aktuális Application Insights JavaScript SDK CDN-végpontok
-- https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js
-- https://js.monitor.azure.com/scripts/b/ai.2.min.js
+- `https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js`
+- `https://js.monitor.azure.com/scripts/b/ai.2.min.js`
 
 > [!NOTE]
-> A https://js.monitor.azure.com/ végpont egy alias, amely lehetővé teszi számunkra, hogy körülbelül 5 percen belül váltani lehessen a CDN-szolgáltatók között anélkül, hogy módosítania kellene a konfigurációt. Ez azt teszi lehetővé, hogy az észlelt CDN-vel kapcsolatos problémákat gyorsabban javítsuk, ha egy CDN-szolgáltató regionális vagy globális problémákkal rendelkezik anélkül, hogy mindenki a beállítások módosítására lenne szükség.
+> A `https://js.monitor.azure.com/` végpont egy alias, amely lehetővé teszi számunkra, hogy körülbelül 5 percen belül váltani lehessen a CDN-szolgáltatók között anélkül, hogy módosítania kellene a konfigurációt. Ez azt teszi lehetővé, hogy az észlelt CDN-vel kapcsolatos problémákat gyorsabban javítsuk, ha egy CDN-szolgáltató regionális vagy globális problémákkal rendelkezik anélkül, hogy mindenki a beállítások módosítására lenne szükség.
 
 ## <a name="sdk-failed-to-initialize-after-loading-the-script"></a>Nem sikerült inicializálni az SDK-t a parancsfájl betöltése után
 

@@ -3,11 +3,12 @@ title: Adathiány hibaelhárítása – Application Insights .NET-hez
 description: Nem látja az Azure Application Insightsban tárolt adatmegjelenítést? Próbálja ki itt.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485169"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221034"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>A .NET/.NET Core rendszerhez nem szükséges adatApplication Insightsek hibaelhárítása
 
@@ -123,7 +124,7 @@ Javítsa ki
 *Futtattam az alkalmazást, majd megnyitottam a Application Insights szolgáltatást a Microsoft Azureban, de az összes diagramon a "Ismerje meg, hogyan kell gyűjteni..." vagy nincs konfigurálva.* Vagy *csak az oldal nézet és a felhasználói adatértékek, de nem szolgálnak.*
 
 * Futtassa az alkalmazást hibakeresési módban a Visual Studióban (F5). Használja az alkalmazást úgy, hogy létrehozzon néhány telemetria. Ellenőrizze, hogy láthatók-e a Visual Studio kimeneti ablakában naplózott események.  
-  ![](./media/asp-net-troubleshoot-no-data/output-window.png)
+  ![Képernyőkép, amely az alkalmazás hibakeresési módban történő futtatását mutatja be a Visual Studióban.](./media/asp-net-troubleshoot-no-data/output-window.png)
 * A Application Insights portálon nyissa meg a [diagnosztikai keresést](../../azure-monitor/app/diagnostic-search.md). Az adatgyűjtés általában itt jelenik meg.
 * Kattintson a frissítés gombra. A panel rendszeresen frissíti magát, de manuálisan is elvégezheti. A frissítési időköz hosszabb a nagyobb időtartományok esetében.
 * Győződjön meg arról, hogy a rendszerállapot-kulcsok egyeznek. Az alkalmazás fő paneljén, a Application Insights-portálon, az **alapvető** erőforrások legördülő menüben tekintse meg a rendszerállapot- **kulcsot**. Ezután a Visual Studióban a projektben nyissa meg ApplicationInsights.config és keresse meg a t `<instrumentationkey>` . Győződjön meg arról, hogy a két kulcs egyenlő. Ha nem:  

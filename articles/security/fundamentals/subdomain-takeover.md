@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: b395931d11c7bc7119be0122531908ed680fc3b9
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a7ff8a0cf23bf0701a7cc35cb137ec0965f295ec
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145986"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223975"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>A DNS-bejegyzések letiltásának és a tartományon belüli átvétel elkerülésének megakadályozása
 
@@ -117,8 +117,8 @@ Ez gyakran a fejlesztők és az operatív csapatok számára a kitakarítási fo
 
     - Rendszeresen tekintse át a DNS-rekordokat, és győződjön meg arról, hogy az altartományok mind le vannak képezve az Azure-erőforrásokra:
 
-        - **Létezik** – lekérdezheti a DNS-zónákat az Azure altartományokra mutató erőforrásokhoz, például *. azurewebsites.net vagy *. cloudapp.Azure.com (lásd [a hivatkozási listát](azure-domains.md)).
-        - **Ön** rendelkezik a saját DNS-altartományai által megcélzott összes erőforrással.
+        - Létezik – lekérdezheti a DNS-zónákat az Azure altartományokra mutató erőforrásokhoz, például *. azurewebsites.net vagy *. cloudapp.azure.com (lásd [a hivatkozási listát](azure-domains.md)).
+        - Ön rendelkezik a saját DNS-altartományai által megcélzott összes erőforrással.
 
     - Az Azure-beli teljes tartománynevek (FQDN) végpontok és az alkalmazás tulajdonosai szolgáltatás-katalógus karbantartása. A szolgáltatás katalógusának létrehozásához futtassa az alábbi Azure Resource Graph (ARG) lekérdezést az alábbi táblázatban szereplő paraméterekkel:
     
@@ -127,26 +127,15 @@ Ez gyakran a fejlesztők és az operatív csapatok számára a kitakarítási fo
         >
         > **Korlátozások** – az Azure Resource Graph szabályozási és lapozási korlátokat tartalmaz, amelyeket érdemes figyelembe vennie, ha nagy Azure-környezettel rendelkezik. [További](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) információ a nagyméretű Azure Resource-adatkészletek használatáról.  
 
-        ```
-        Search-AzGraph -Query "resources | where type == '[ResourceType]' | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = [FQDNproperty]"
+        ```powershell
+        Search-AzGraph -Query "resources | where type == '<ResourceType>' | 
+        project tenantId, subscriptionId, type, resourceGroup, name, 
+        endpoint = <FQDNproperty>"
         ``` 
-        
-        Ez a lekérdezés például a Azure App Serviceból származó erőforrásokat adja vissza:
-
-        ```
-        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-        
-        Több erőforrástípust is egyesítheti. Ez a példában szereplő lekérdezés a Azure App Service **és** Azure app Service bővítőhelyből származó erőforrásokat adja vissza:
-
-        ```azurepowershell
-        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
-
 
         Az ARG-lekérdezés szolgáltatási paramétereinek száma:
 
-        |Erőforrás neve  |[ResourceType] típusú és  | [FQDNproperty]  |
+        |Erőforrás neve  | `<ResourceType>`  | `<FQDNproperty>`  |
         |---------|---------|---------|
         |Azure Front Door|Microsoft. Network/frontdoors|Properties. cName|
         |Azure Blob Storage|Microsoft. Storage/storageaccounts|Properties. primaryEndpoints. blob|
@@ -157,6 +146,23 @@ Ez gyakran a fejlesztők és az operatív csapatok számára a kitakarítási fo
         |Azure API Management|Microsoft. apimanagement/szolgáltatás|Properties. hostnameConfigurations. hostName|
         |Azure App Service|Microsoft. Web/Sites|Properties. defaultHostName|
         |Azure App Service – bővítőhely|Microsoft. Web/Sites/Slots|Properties. defaultHostName|
+
+        
+        **1. példa** – ez a lekérdezés a Azure app Service lévő erőforrásokat adja vissza: 
+
+        ```powershell
+        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | 
+        project tenantId, subscriptionId, type, resourceGroup, name, 
+        endpoint = properties.defaultHostName"
+        ```
+        
+        **2. példa** – ez a lekérdezés több erőforrástípust is egyesít Azure App Service **és** Azure app Service bővítőhely erőforrásainak visszaküldéséhez:
+
+        ```powershell
+        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 
+        'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, 
+        resourceGroup, name, endpoint = properties.defaultHostName"
+        ```
 
 
 - **Szervizelési eljárások létrehozása:**
@@ -173,4 +179,4 @@ Ha többet szeretne megtudni a kapcsolódó szolgáltatásokról és az Azure-be
 
 - [A tartomány-ellenőrzési azonosító használata egyéni tartományok hozzáadásakor Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#get-domain-verification-id) 
 
--    [Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Azure PowerShell használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)
+- [Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Azure PowerShell használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-powershell)

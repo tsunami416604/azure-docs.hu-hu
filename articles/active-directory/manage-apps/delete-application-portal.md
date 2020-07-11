@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02d12538fce5ccc3905ea1170fc1a8324309004f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ec0b3ef559abe1c65872d8ecf87f63e6ff3ed4b0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955998"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223907"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: alkalmazás törlése a Azure Active Directory (Azure AD) bérlőből
 
-Ez a rövid útmutató a Azure Portal használatával törli az Azure AD-bérlőhöz hozzáadott alkalmazást.
+Ez a rövid útmutató a Azure Portal használatával törli az Azure Active Directory (Azure AD) bérlőhöz hozzáadott alkalmazást.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,21 +28,21 @@ Ha törölni szeretne egy alkalmazást az Azure AD-bérlőből, a következőkre
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - A következő szerepkörök egyike: globális rendszergazda, Felhőbeli alkalmazás rendszergazdája, alkalmazás rendszergazdája vagy az egyszerű szolgáltatásnév tulajdonosa.
-- (Nem kötelező: [az alkalmazások megtekintésének](view-applications-portal.md)befejezése).
-- (Nem kötelező: [alkalmazás hozzáadása](add-application-portal.md)).
-- (Nem kötelező: [alkalmazás konfigurálásának](add-application-portal-configure.md)befejezése).
-- (Nem kötelező: az [egyszeri bejelentkezés beállításának](add-application-portal-setup-sso.md)befejezése).
+- Nem kötelező: az [alkalmazások megtekintésének](view-applications-portal.md)befejezése.
+- Nem kötelező: az [alkalmazás hozzáadásának](add-application-portal.md)befejezése.
+- Nem kötelező: [alkalmazás konfigurálásának](add-application-portal-configure.md)befejezése.
+- Nem kötelező: az [egyszeri bejelentkezés beállításának](add-application-portal-setup-sso.md)befejezése.
 
 >[!IMPORTANT]
->Az ebben a rövid útmutatóban ismertetett lépések teszteléséhez nem éles környezet használatát javasoljuk.
+>Az ebben a rövid útmutatóban ismertetett lépések teszteléséhez használjon nem termékrendszer-környezetet.
 
 ## <a name="delete-an-application-from-your-azure-ad-tenant"></a>Alkalmazás törlése az Azure AD-bérlőből
 
 Alkalmazás törlése az Azure AD-bérlőből:
 
-1. Az Azure AD-portálon válassza a **vállalati alkalmazások** elemet, majd keresse meg és válassza ki a törölni kívánt alkalmazást. Ebben az esetben töröljük az előző rövid útmutatóban hozzáadott GitHub_test alkalmazást.
-2. A navigáció kezelés szakaszában válassza a **Tulajdonságok**lehetőséget.
-3. Válassza a Törlés lehetőséget, majd kattintson az Igen gombra annak megerősítéséhez, hogy törölni szeretné az alkalmazást az Azure AD-bérlőből.
+1. Az Azure AD-portálon válassza a **vállalati alkalmazások**lehetőséget. Ezután keresse meg és válassza ki a törölni kívánt alkalmazást. Ebben az esetben törölte az előző rövid útmutatóban hozzáadott **GitHub_test** alkalmazást.
+1. A bal oldali ablaktábla **kezelés** szakaszában válassza a **Tulajdonságok**lehetőséget.
+1. Válassza a **Törlés**lehetőséget, majd kattintson az **Igen** gombra annak megerősítéséhez, hogy törölni szeretné az alkalmazást az Azure ad-bérlőből.
 
 
 ## <a name="next-steps"></a>További lépések

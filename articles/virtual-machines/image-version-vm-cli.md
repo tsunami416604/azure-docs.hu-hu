@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: f53a6b63c744b0e3e41f7ad22270cd842da57674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a983fd65a4934f53643bb21c8751e90dcb9eb21
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796576"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223533"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Rendszerkép-verzió létrehozása az Azure-beli virtuális gépről az Azure CLI használatával
 
@@ -105,3 +105,5 @@ az sig image-version create \
 ## <a name="next-steps"></a>További lépések
 
 Hozzon létre egy virtuális gépet az [általánosított rendszerképből](vm-generalized-image-version-cli.md) az Azure CLI használatával.
+
+A vásárlási tervre vonatkozó információk megadásával kapcsolatos információkért lásd: [Azure Marketplace vásárlási terv információinak megadása képek létrehozásakor](marketplace-images.md).

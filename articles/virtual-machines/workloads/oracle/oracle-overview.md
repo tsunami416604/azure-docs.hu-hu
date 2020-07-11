@@ -3,7 +3,7 @@ title: Oracle-megoldások a Microsoft Azureon | Microsoft Docs
 description: Ismerkedjen meg az Oracle-alkalmazások és-megoldások Microsoft Azureon történő üzembe helyezési lehetőségeivel, beleértve a teljes körű Azure-infrastruktúrán való futtatást vagy az Oracle Cloud Infrastructure (OCI) Felhőbeli kapcsolatait is.
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
+author: rgardler
 tags: azure-resource-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -11,12 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
-ms.author: borisb
-ms.openlocfilehash: 7c15c96305cc1220d9ca3cdb9062d7ea7acb4e86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: e9a61c631e8a74bbbd58bb991848fcf60f81ff6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85098929"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224434"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Az Azure-beli Oracle-alkalmazások és-megoldások áttekintése
 
@@ -88,7 +89,7 @@ Az Azure-ban olyan egyéni alkalmazásokat is üzembe helyezhet, amelyek a OCI �
 Az Azure-ban futó Oracle-szoftverekkel együtt Oracle Database Cloud Services (autonóm adatbázis, RAC, Exadata, DBaaS, Single node) használható. További információ a [OCI adatbázis-beállításairól](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
-## <a name="licensing"></a>Licencek
+## <a name="licensing"></a>Licencelés
 
 Az Oracle-alkalmazások Azure-beli üzembe helyezése a "saját licenc használata" modellen alapul. Feltételezi, hogy Ön megfelelő licenccel rendelkezik az Oracle-szoftverek használatához, valamint arról, hogy az Oracle-vel meglévő támogatási szerződése van érvényben. Az Oracle garantálta a helyszíni Azure-ba történő licenc-mobilitást. Tekintse meg az Oracle-Azure [GYIK](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)-et.
 

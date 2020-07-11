@@ -7,13 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/18/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 99b61bdd4318bf7c77ae53cc9b77e66ebd6c098a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84733398"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223040"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Biztonsági naplózási események áttekintése Azure Active Directory Domain Services Azure Monitor munkafüzetek használatával
 
@@ -31,8 +32,8 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Egy Azure Active Directory Domain Services felügyelt tartomány engedélyezve és konfigurálva van az Azure AD-bérlőben.
     * Ha szükséges, fejezze be az oktatóanyagot [egy Azure Active Directory Domain Services felügyelt tartomány létrehozásához és konfigurálásához][create-azure-ad-ds-instance].
-* A biztonsági naplózási események engedélyezve vannak a Azure Active Directory Domain Services felügyelt tartományon, amelyek az adatLog Analytics-munkaterületre továbbítanak.
-    * Ha szükséges, [engedélyezze a Azure Active Directory Domain Services biztonsági naplózását][enable-security-audits].
+* A biztonsági naplózási események engedélyezve vannak az olyan felügyelt tartománynál, amely Log Analytics munkaterületre továbbítja az adatátvitelt.
+    * Ha szükséges, [engedélyezze az Azure AD DS biztonsági naplózását][enable-security-audits].
 
 ## <a name="azure-monitor-workbooks-overview"></a>Azure Monitor munkafüzetek áttekintése
 
@@ -60,11 +61,13 @@ A biztonsági áttekintés jelentés munkafüzet-sablonjának eléréséhez hajt
     ![Válassza a munkafüzetek menü lehetőséget a Azure Portal](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
 1. Válassza a **biztonsági áttekintés jelentést**.
-1. A munkafüzet tetején található legördülő menükből válassza ki az Azure-előfizetését, majd Azure Monitor munkaterületet. Válasszon **időtartományt**, például az *utolsó 7 napot*.
+1. A munkafüzet tetején található legördülő menükből válassza ki az Azure-előfizetését, majd egy Azure Monitor munkaterületet.
+
+    Válasszon egy **időtartományt**, például az *utolsó 7 napot*, ahogy az az alábbi példában látható:
 
     ![Válassza a munkafüzetek menü lehetőséget a Azure Portal](./media/use-azure-monitor-workbooks/select-query-filters.png)
 
-    A **csempék** és a **diagram nézet** beállításainak módosításával a kívánt módon elemezheti és megjelenítheti az adatmegjelenítést
+    A **csempék** és a **diagram nézet** beállításait is módosíthatja, hogy a kívánt módon elemezze és megjelenítse az adatmegjelenítést.
 
 1. Egy adott eseménytípus részletezéséhez válassza ki az egyik **bejelentkezési eredmény** kártyát, például a *fiók kizárva*lehetőséget, ahogy az alábbi példában is látható:
 
@@ -84,7 +87,11 @@ A fiók tevékenységi jelentéshez tartozó munkafüzet-sablon eléréséhez ha
 1. Válassza ki a felügyelt tartományt, például *aaddscontoso.com*
 1. A bal oldali menüben válassza a **figyelés > munkafüzetek** lehetőséget.
 1. Válassza ki a **fiók tevékenységének jelentését**.
-1. A munkafüzet tetején található legördülő menükből válassza ki az Azure-előfizetését, majd Azure Monitor munkaterületet. Válassza ki az **időtartományt**, például az *utolsó 30 napot*, majd azt, hogy a **Mozaik nézet** hogyan legyen ábrázolva az adathalmazban. Az alábbi példában látható módon szűrheti a **fiók felhasználónevét**, például a *Felix*nevet:
+1. A munkafüzet tetején található legördülő menükből válassza ki az Azure-előfizetését, majd egy Azure Monitor munkaterületet.
+
+    Válassza ki az **időtartományt**, például az *utolsó 30 napot*, majd azt, hogy a **Mozaik nézet** hogyan legyen ábrázolva az adathalmazban.
+
+    Az alábbi példában látható módon szűrheti a **fiók felhasználónevét**, például a *Felix*nevet:
 
     [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 

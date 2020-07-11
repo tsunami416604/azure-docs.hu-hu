@@ -2,14 +2,14 @@
 title: Támogatási mátrix az Azure-beli virtuális gépek vész-helyreállításához Azure Site Recovery
 description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállításának támogatását egy másodlagos régióba Azure Site Recovery használatával.
 ms.topic: article
-ms.date: 06/03/2020
+ms.date: 07/10/2020
 ms.author: raynew
-ms.openlocfilehash: c729645eadc192dba4d7bb4f2c346d7b9d36434a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d56a507586c9d62fdbeae01d47bb734b98bf385b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132684"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223805"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Támogatási mátrix az Azure-beli virtuális gépek Azure-régiók közötti vész-helyreállításához
 
@@ -20,7 +20,7 @@ Ez a cikk összefoglalja az Azure-beli virtuális gépeknek az egyik Azure-régi
 
 **Üzembe helyezés** |  **Támogatás**
 --- | ---
-**Azure Portalra** | Támogatott.
+**Azure Portal** | Támogatott.
 **PowerShell** | Támogatott. [További információ](azure-to-azure-powershell.md)
 **REST API** | Támogatott.
 **Parancssori felület** | Egyelőre nem támogatott
@@ -201,11 +201,11 @@ Ez a táblázat az Azure VM operációsrendszer-lemez, az adatlemez és az ideig
 **Összetevő** | **Támogatás** | **Részletek**
 --- | --- | ---
 OPERÁCIÓSRENDSZER-lemez maximális mérete | 2048 GB | [További](../virtual-machines/windows/managed-disks-overview.md) információ a VM-lemezekről.
-Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva a replikációból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információk](../virtual-machines/windows/managed-disks-overview.md).
+Ideiglenes lemez | Nem támogatott | Az ideiglenes lemez mindig ki van zárva a replikációból.<br/><br/> Ne tároljon állandó adatmennyiséget az ideiglenes lemezen. [További információ](../virtual-machines/windows/managed-disks-overview.md).
 Adatlemez maximális mérete | 8192 GB felügyelt lemezekhez<br></br>4095 GB a nem felügyelt lemezekhez|
 Adatlemez minimális mérete | Nem felügyelt lemezekre vonatkozó korlátozás. 2 GB a felügyelt lemezekhez |
 Adatlemez maximális száma | Akár 64-ig, egy adott Azure-beli virtuálisgép-méret támogatásával összhangban | [További](../virtual-machines/windows/sizes.md) információ a virtuális gépek méreteiről.
-Adatlemez változási aránya | A Premium Storage esetében legfeljebb 10 MB/s lemezterület. A standard szintű tároláshoz legfeljebb 2 MB/s lemez adható meg. | Ha a lemez átlagos adatváltozási sebessége folyamatosan meghaladja a maximális értéket, a replikálás nem fog megjelenni.<br/><br/>  Ha azonban a maximális érték szórványosan túllépi a replikálást, a replikáció felmerülhet, de előfordulhat, hogy némileg késleltetett helyreállítási pontok jelenhetnek meg.
+Adatlemez változási aránya | A Premium Storage esetében legfeljebb 20 MB/s lemezterület. A standard szintű tároláshoz legfeljebb 2 MB/s lemez adható meg. | Ha a lemez átlagos adatváltozási sebessége folyamatosan meghaladja a maximális értéket, a replikálás nem fog megjelenni.<br/><br/>  Ha azonban a maximális érték szórványosan túllépi a replikálást, a replikáció felmerülhet, de előfordulhat, hogy némileg késleltetett helyreállítási pontok jelenhetnek meg.
 Adatlemez – szabványos Storage-fiók | Támogatott |
 Adatlemez – Premium Storage-fiók | Támogatott | Ha a virtuális gép rendelkezik lemezekkel a prémium és a standard szintű Storage-fiókok között, kiválaszthat egy másik cél Storage-fiókot az egyes lemezekhez, így biztosítva, hogy ugyanaz a tárolási konfiguráció a céltartományban.
 Felügyelt lemez – standard | Olyan Azure-régiókban támogatott, ahol a Azure Site Recovery támogatott. |
@@ -216,6 +216,7 @@ Ritka elérésű és gyors tárolás | Nem támogatott | A virtuálisgép-lemeze
 Tárolóhelyek | Támogatott |
 Titkosítás nyugalmi állapotban (SSE) | Támogatott | Az SSE a Storage-fiókok alapértelmezett beállítása.
 Inaktív titkosítás (CMK) | Támogatott | A felügyelt lemezek esetében a szoftveres és a HSM-kulcsok is támogatottak
+Dupla titkosítás a nyugalmi állapotban | Támogatott | További információ a [Windows](../virtual-machines/windows/disk-encryption.md) és a [Linux](../virtual-machines/linux/disk-encryption.md) támogatott régióiról
 Azure Disk Encryption (ADE) Windows operációs rendszerhez | Felügyelt lemezekkel rendelkező virtuális gépek esetén támogatott. | A nem felügyelt lemezeket használó virtuális gépek nem támogatottak. <br/><br/> A HSM-védelemmel ellátott kulcsok nem támogatottak. <br/><br/> Az egyes kötetek egyetlen lemezen való titkosítása nem támogatott. |
 Azure Disk Encryption (ADE) Linux operációs rendszerhez | Felügyelt lemezekkel rendelkező virtuális gépek esetén támogatott. | A nem felügyelt lemezeket használó virtuális gépek nem támogatottak. <br/><br/> A HSM-védelemmel ellátott kulcsok nem támogatottak. <br/><br/> Az egyes kötetek egyetlen lemezen való titkosítása nem támogatott. |
 Gyors Hozzáadás    | Támogatott | A replikált Azure-beli virtuális géphez hozzáadott adatlemez replikálásának engedélyezése támogatott a felügyelt lemezeket használó virtuális gépek esetében. <br/><br/> Egyszerre csak egy lemezt lehet felvenni egy Azure-beli virtuális gépre. Több lemez párhuzamos hozzáadása nem támogatott. |
@@ -234,6 +235,7 @@ Azure Storage-tűzfalak virtuális hálózatokhoz  | Támogatott | Ha korlátozz
 2. generációs (UEFI rendszerindítási) | Támogatott
 NVMe-lemezek | Nem támogatott
 Azure megosztott lemezek | Nem támogatott
+Biztonságos átvitel lehetőség | Támogatott
 
 >[!IMPORTANT]
 > A teljesítményproblémák elkerülése érdekében győződjön meg arról, hogy a virtuálisgép-lemezek méretezhetőségére és teljesítményére vonatkozó célokat követ a [Linux](../virtual-machines/linux/disk-scalability-targets.md) vagy a [Windows rendszerű](../virtual-machines/windows/disk-scalability-targets.md) virtuális gépek esetében. Ha az alapértelmezett beállításokat használja, Site Recovery létrehozza a szükséges lemezeket és a Storage-fiókokat a forrás konfigurációja alapján. Ha testreszabja és kiválasztja a saját beállításait, kövesse a forrásként szolgáló virtuális gépek lemezének méretezhetőségét és teljesítményére vonatkozó célokat.
@@ -275,12 +277,14 @@ Hitelesített proxy | Nem támogatott | Ha a virtuális gép hitelesített proxy
 Helyszíni VPN-helyek közötti kapcsolat<br/><br/>(ExpressRoute vagy anélkül)| Támogatott | Győződjön meg arról, hogy a UDR és a NSG úgy vannak konfigurálva, hogy a Site Recovery forgalom ne legyen átirányítva a helyszíni környezetbe. [További információ](./azure-to-azure-about-networking.md)
 VNET – VNET-kapcsolatok    | Támogatott | [További információ](./azure-to-azure-about-networking.md)
 Virtuális hálózati szolgáltatásvégpontok | Támogatott | Ha korlátozza a virtuális hálózati hozzáférést a Storage-fiókokhoz, győződjön meg arról, hogy a megbízható Microsoft-szolgáltatások hozzáférése engedélyezett a Storage-fiókhoz.
-Gyorsított hálózatkezelés | Támogatott | A gyorsított hálózatkezelést engedélyezni kell a forrásoldali virtuális gépen. [További információk](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Gyorsított hálózatkezelés | Támogatott | A gyorsított hálózatkezelést engedélyezni kell a forrásoldali virtuális gépen. [További információ](azure-vm-disaster-recovery-with-accelerated-networking.md).
 Palo Alto hálózati berendezés | Nem támogatott | A harmadik féltől származó készülékekkel gyakran a virtuális gépen belüli szolgáltató korlátozza a korlátozásokat. Azure Site Recovery szüksége van az ügynökre, a bővítményekre és a kimenő kapcsolatokra. A készülék azonban nem teszi lehetővé, hogy a kimenő tevékenységek a virtuális gépen belül legyenek konfigurálva.
 IPv6  | Nem támogatott | Az IPv4 és az IPv6 protokollt is tartalmazó vegyes konfigurációk nem támogatottak. A Site Recovery művelet előtt szabadítson fel az IPv6-tartomány alhálózatát.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
+
 - Olvassa el az Azure-beli virtuális gépek replikálásához szükséges [hálózatkezelési útmutatót](./azure-to-azure-about-networking.md) .
 - A vész-helyreállítás üzembe helyezése az Azure-beli [virtuális gépek replikálásával](./azure-to-azure-quickstart.md).
+

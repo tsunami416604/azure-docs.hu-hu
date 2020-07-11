@@ -12,11 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
-ms.openlocfilehash: 1413676eb5f3ab6f472648335996c1e607bc8b27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb61a3360ee2514fa6fd61e125ebc345474c62f
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771019"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224621"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból az Open hub használatával Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,10 +38,10 @@ Az SAP Business Warehouse-ból bármilyen támogatott fogadó adattárba másolh
 
 Az SAP Business Warehouse nyitott hub-összekötője a következőt támogatja:
 
-- Az SAP Business Warehouse **7,01-es vagy újabb verziója (az SAP támogatási csomagjának a 2015-os év után kiadott legújabb verziójában)**.
+- Az SAP Business Warehouse **7,01-es vagy újabb verziója (az SAP támogatási csomagjának a 2015-os év után kiadott legújabb verziójában)**. Ez az összekötő nem támogatja az SAP BW4/HANA használatát.
 - Adatok másolása az Open hub Destination helyi táblán keresztül, amely alatt a DSO, a InfoCube, a multibiztosító, a DataSource stb. lehet.
 - Adatok másolása egyszerű hitelesítés használatával.
-- Kapcsolódás az alkalmazáskiszolgáló eléréséhez.
+- Csatlakozás SAP-alkalmazáskiszolgáló vagy SAP-üzenetkezelő kiszolgálóhoz.
 
 ## <a name="sap-bw-open-hub-integration"></a>SAP BW nyitott hub-integráció 
 
@@ -106,20 +107,20 @@ Az SAP Business Warehouse nyitott hub társított szolgáltatása a következő 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **SapOpenHub** | Yes |
-| kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP BW-példány található. | Yes |
-| systemNumber | A SAP BWrendszer rendszerszáma.<br/>Engedélyezett érték: két számjegyből álló decimális szám karakterláncként megadva. | Yes |
-| messageServer | Az SAP-üzenet kiszolgálójának állomásneve.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | No |
-| messageServerService | Az üzenet kiszolgálójának szolgáltatásnév vagy portszáma.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | No |
-| systemId | Annak az SAP-rendszernek az azonosítója, amelyben a tábla található.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | No |
-| logonGroup | Az SAP-rendszerhez tartozó bejelentkezési csoport.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | No |
-| ügyfél-azonosító | A-ügyfél ügyfél-azonosítója az SAP W rendszeren.<br/>Engedélyezett érték: a háromjegyű decimális szám karakterláncként van megadva. | Yes |
+| típus | A Type tulajdonságot a következőre kell beállítani: **SapOpenHub** | Igen |
+| kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP BW-példány található. | Igen |
+| systemNumber | A SAP BWrendszer rendszerszáma.<br/>Engedélyezett érték: két számjegyből álló decimális szám karakterláncként megadva. | Igen |
+| messageServer | Az SAP-üzenet kiszolgálójának állomásneve.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | Nem |
+| messageServerService | Az üzenet kiszolgálójának szolgáltatásnév vagy portszáma.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | Nem |
+| systemId | Annak az SAP-rendszernek az azonosítója, amelyben a tábla található.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | Nem |
+| logonGroup | Az SAP-rendszerhez tartozó bejelentkezési csoport.<br/>A használatával csatlakozhat egy SAP-üzenetküldési kiszolgálóhoz. | Nem |
+| ügyfél-azonosító | A-ügyfél ügyfél-azonosítója az SAP W rendszeren.<br/>Engedélyezett érték: a háromjegyű decimális szám karakterláncként van megadva. | Igen |
 | language | Az SAP-rendszer által használt nyelv. | Nem (az alapértelmezett érték az **en**)|
-| userName (Felhasználónév) | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve. | Yes |
-| jelszó | A felhasználó jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Yes |
+| userName (Felhasználónév) | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve. | Igen |
+| jelszó | A felhasználó jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -152,12 +153,12 @@ Ha adatokat szeretne másolni a és a rendszerből SAP BW nyitott hubhoz, állí
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot **SapOpenHubTable**értékre kell beállítani.  | Yes |
-| openHubDestinationName | Annak az Open hub-célhelynek a neve, amelyből az adatok másolása megtörténjen. | Yes |
+| típus | A Type tulajdonságot **SapOpenHubTable**értékre kell beállítani.  | Igen |
+| openHubDestinationName | Annak az Open hub-célhelynek a neve, amelyből az adatok másolása megtörténjen. | Igen |
 
 Ha a beállítást `excludeLastRequest` és `baseRequestId` az adatkészletet választotta, akkor továbbra is támogatott, miközben az új modellt a tevékenység forrásában fogja használni.
 
-**Példa:**
+**Például**
 
 ```json
 {
@@ -186,16 +187,16 @@ SAP BW Open hub adatainak másolásához a következő tulajdonságok támogatot
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának **Type** tulajdonságát **SapOpenHubSource**értékre kell állítani. | Yes |
+| típus | A másolási tevékenység forrásának **Type** tulajdonságát **SapOpenHubSource**értékre kell állítani. | Igen |
 | excludeLastRequest | Azt határozza meg, hogy ki kell-e zárni a legutóbbi kérelem rekordjait. | Nem (az alapértelmezett érték **igaz**) |
-| baseRequestId | A különbözeti betöltésre vonatkozó kérelem azonosítója. Ha be van állítva, csak a tulajdonság értékénél **nagyobb** kérelemazonosító rendelkező adatmennyiségeket kéri le a rendszer.  | No |
+| baseRequestId | A különbözeti betöltésre vonatkozó kérelem azonosítója. Ha be van állítva, csak a tulajdonság értékénél **nagyobb** kérelemazonosító rendelkező adatmennyiségeket kéri le a rendszer.  | Nem |
 
 >[!TIP]
 >Ha a nyitott hub-tábla csak az egyszeres kérelem-azonosító által generált adatait tartalmazza, akkor mindig teljes betöltést hajt végre, és felülírja a táblázat meglévő adatait, vagy csak egyszer futtatja a DTP-tesztet, ne feledje, hogy törölje az "excludeLastRequest" lehetőséget az adatmásoláshoz.
 
 Az adatok betöltésének felgyorsításához beállíthatja, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) hogy a másolási tevékenység a SAP BW Open hub adatainak párhuzamosan történő betöltéséhez. Ha például a négy értékre van állítva `parallelCopies` , Data Factory egyszerre négy RFC-hívást hajt végre, és mindegyik RFC-hívás lekéri az adatok egy részét a SAP BW Open hub táblából, particionálva a DTP-kérés azonosítója és a csomag azonosítója alapján. Ez akkor érvényes, ha az egyedi DTP-kérések és-csomagok AZONOSÍTÓjának száma nagyobb, mint a értéke `parallelCopies` . Az adatok file-alapú adattárba másolásakor a rendszer úgy is Újrafuttatja, hogy több fájlként is ír egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájlba írás.
 
-**Példa:**
+**Például**
 
 ```json
 "activities":[
@@ -236,7 +237,7 @@ SAP BW Open hub adatainak másolása során a rendszer a következő leképezés
 |:--- |:--- |
 | C (karakterlánc) | Sztring |
 | I (egész szám) | Int32 |
-| F (float) | Double |
+| F (float) | Dupla |
 | D (dátum) | Sztring |
 | T (idő) | Sztring |
 | P (BCD-csomag, pénznem, decimális, mennyiség) | Decimal |

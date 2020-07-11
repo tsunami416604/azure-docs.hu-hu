@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
-ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81455362"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231709"
 ---
 # <a name="virtual-appliance-scenario"></a>Virtuális berendezés forgatókönyve
 A nagyobb Azure-ügyfelek körében gyakran előfordul, hogy egy kétrétegű alkalmazást kell megadnia az internethez, miközben a helyszíni adatközpontból elérhetővé válik a háttérrendszer-hozzáférés. Ez a dokumentum végigvezeti a felhasználói útvonalakat (UDR), a VPN Gatewayt és a hálózati virtuális berendezéseket használó forgatókönyveken egy kétrétegű környezet üzembe helyezéséhez, amely megfelel az alábbi követelményeknek:
@@ -33,8 +33,8 @@ Ez egy szabványos peremhálózati hálózat (más néven DMZ) forgatókönyv eg
 
 |  | Előnyök | Hátrányok |
 | --- | --- | --- |
-| NSG |Díjmentes. <br/>Integrálva van az Azure-RBAC. <br/>Azure Resource Manager-sablonokban létrehozhatók szabályok. |Az összetettség nagyobb környezetekben változhat. |
-| Firewall |Az adatsík teljes körű vezérlése. <br/>Központi felügyelet a tűzfal konzolján keresztül. |A tűzfal berendezésének díja. <br/>Nincs integrálva az Azure RBAC. |
+| **NSG** |Díjmentes. <br/>Integrálva van az Azure-RBAC. <br/>Azure Resource Manager-sablonokban létrehozhatók szabályok. |Az összetettség nagyobb környezetekben változhat. |
+| **Tűzfal** |Az adatsík teljes körű vezérlése. <br/>Központi felügyelet a tűzfal konzolján keresztül. |A tűzfal berendezésének díja. <br/>Nincs integrálva az Azure RBAC. |
 
 Az alábbi megoldás a tűzfal virtuális készülékeit használja a peremhálózat (DMZ)/Protected hálózati forgatókönyv megvalósításához.
 
@@ -63,7 +63,7 @@ Ebben a példában van egy előfizetés, amely a következőket tartalmazza:
   * **azsn2**. Előtér-alhálózat, amely az internetről elérhető webkiszolgálóként futó virtuális gépet üzemeltet.
   * **azsn3**. Háttérbeli alhálózat, amely az előtér-webkiszolgáló által elérhető háttér-alkalmazáskiszolgáló futtatására szolgáló virtuális gépet üzemeltet.
   * **azsn4**. Felügyeleti alhálózat, amely kizárólag az összes tűzfal virtuális készülékhez való felügyeleti hozzáférés biztosítására szolgál. Ez az alhálózat csak a megoldásban használt egyes tűzfal virtuális készülékek hálózati adapterét tartalmazza.
-  * **GatewaySubnet**. Az Azure virtuális hálózatok és más hálózatok közötti kapcsolat biztosításához a ExpressRoute és a VPN Gateway Azure Hybrid kapcsolati alhálózata szükséges. 
+  * **Átjáróalhálózat**. Az Azure virtuális hálózatok és más hálózatok közötti kapcsolat biztosításához a ExpressRoute és a VPN Gateway Azure Hybrid kapcsolati alhálózata szükséges. 
 * A **azurevnet** -hálózatban 3 tűzfal virtuális készülék található. 
   * **AZF1**. Nyilvános IP-cím-erőforrást használó külső tűzfal az Azure-ban. Győződjön meg arról, hogy rendelkezik egy, a piactéren vagy közvetlenül a készülék gyártójától származó sablonnal, amely egy 3 hálózati adapterből álló virtuális készüléket foglal magában.
   * **AZF2**. A **azsn2** és a **azsn3**közötti forgalom szabályozására szolgáló belső tűzfal. Ez egy 3 hálózati adapterből álló virtuális készülék is.
@@ -77,30 +77,30 @@ Annak biztosítása érdekében, hogy a kommunikáció a megfelelő tűzfal-bere
 ### <a name="azgwudr"></a>azgwudr
 Ebben az esetben az egyetlen, a helyszínről az Azure-ba irányuló forgalom lesz használva a tűzfalak kezeléséhez a **AZF3**való csatlakozással, és a forgalomnak a belső tűzfalon ( **AZF2**) keresztül kell haladnia. Ezért csak egy útvonal szükséges a **GatewaySubnet** az alább látható módon.
 
-| Cél | Következő ugrás | Magyarázat |
+| Destination (Cél) | Következő ugrás | Magyarázat |
 | --- | --- | --- |
 | 10.0.4.0/24 |10.0.3.11 |Lehetővé teszi a helyszíni forgalom számára a felügyeleti tűzfal **AZF3** elérését |
 
 ### <a name="azsn2udr"></a>azsn2udr
-| Cél | Következő ugrás | Magyarázat |
+| Destination (Cél) | Következő ugrás | Magyarázat |
 | --- | --- | --- |
 | 10.0.3.0/24 |10.0.2.11 |Engedélyezi a forgalmat az alkalmazáskiszolgáló futtatására szolgáló háttér-alhálózaton a **AZF2** használatával. |
 | 0.0.0.0/0 |10.0.2.10 |Lehetővé teszi az összes többi forgalom átirányítását a **AZF1** -on keresztül |
 
 ### <a name="azsn3udr"></a>azsn3udr
-| Cél | Következő ugrás | Magyarázat |
+| Destination (Cél) | Következő ugrás | Magyarázat |
 | --- | --- | --- |
 | 10.0.2.0/24 |10.0.3.10 |Lehetővé teszi, hogy a **azsn2** az App Serverről a webkiszolgálóról a **AZF2** keresztül áramlson át |
 
 A helyszíni adatközpontot a **onpremvnet** alhálózatai számára is létre kell hoznia.
 
 ### <a name="onpremsn1udr"></a>onpremsn1udr
-| Cél | Következő ugrás | Magyarázat |
+| Destination (Cél) | Következő ugrás | Magyarázat |
 | --- | --- | --- |
 | 192.168.2.0/24 |192.168.1.4 |Engedélyezi a **onpremsn2** a **OPFW** keresztül |
 
 ### <a name="onpremsn2udr"></a>onpremsn2udr
-| Cél | Következő ugrás | Magyarázat |
+| Destination (Cél) | Következő ugrás | Magyarázat |
 | --- | --- | --- |
 | 10.0.3.0/24 |192.168.2.4 |Engedélyezi a forgalmat az Azure-beli **OPFW** keresztül |
 | 192.168.1.0/24 |192.168.2.4 |Engedélyezi a **onpremsn1** a **OPFW** keresztül |

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/20/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 991bb3e296f18ef6d5182048d8ce4601c0fc09c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc665503413d2f022b10ae043aac3315597c6ba4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734996"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221391"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: az egyszerű szolgáltatások riasztásai a Azure Active Directory Domain Services
 
@@ -38,9 +38,9 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy melyik egyszerű sz
 
 1. A Azure Portal válassza a bal oldali navigációs menü **Azure Active Directory** elemét.
 1. Válassza a **vállalati alkalmazások**lehetőséget. Válassza a *minden alkalmazás* lehetőséget az **alkalmazás típusa** legördülő menüben, majd válassza az **alkalmaz**lehetőséget.
-1. Keresse meg az egyes alkalmazás-azonosítókat. Ha nem található meglévő alkalmazás, kövesse a *megoldás* lépéseit az egyszerű szolgáltatásnév létrehozásához, vagy regisztrálja újra a névteret.
+1. Keresse meg a következő alkalmazás-azonosítókat. Ha nem található meglévő alkalmazás, kövesse a *megoldás* lépéseit az egyszerű szolgáltatásnév létrehozásához, vagy regisztrálja újra a névteret.
 
-    | Alkalmazásazonosító | Megoldás: |
+    | Alkalmazásazonosító | Feloldás |
     | :--- | :--- |
     | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Hiányzó egyszerű szolgáltatásnév újbóli létrehozása](#recreate-a-missing-service-principal) |
     | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Regisztrálja újra a Microsoft. HRE névteret](#re-register-the-microsoft-aad-namespace) |
@@ -49,9 +49,9 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy melyik egyszerű sz
 
 ### <a name="recreate-a-missing-service-principal"></a>Hiányzó egyszerű szolgáltatásnév újbóli létrehozása
 
-Ha az alkalmazás-azonosító *2565bd9d-DA50-47d4-8B85-4c97f669dc36* hiányzik az Azure ad-címtárból, az Azure ad PowerShell használatával hajtsa végre az alábbi lépéseket. További információ: az [Azure ad PowerShell telepítése](/powershell/azure/active-directory/install-adv2).
+Ha az alkalmazás-azonosító *2565bd9d-DA50-47d4-8B85-4c97f669dc36* hiányzik az Azure ad-címtárból, az Azure ad PowerShell használatával hajtsa végre az alábbi lépéseket. További információ: [Azure ad PowerShell](/powershell/azure/active-directory/install-adv2).
 
-1. Telepítse az Azure AD PowerShell-modult, és importálja a következő módon:
+1. Ha szükséges, telepítse az Azure AD PowerShell-modult, és importálja a következő módon:
 
     ```powershell
     Install-Module AzureAD
@@ -85,11 +85,11 @@ A felügyelt tartomány állapota két órán belül automatikusan frissül, és
 
 Az Azure AD DS automatikusan szinkronizálja a felhasználói fiókokat és a hitelesítő adatokat az Azure AD-ből. Ha probléma van a folyamathoz használt Azure AD-alkalmazással, a hitelesítő adatok szinkronizálása az Azure AD DS és az Azure AD között meghiúsul.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 A hitelesítő adatok szinkronizálásához használt Azure AD-alkalmazás újbóli létrehozásához használja az Azure AD PowerShellt az alábbi lépések végrehajtásához. További információ: az [Azure ad PowerShell telepítése](/powershell/azure/active-directory/install-adv2).
 
-1. Telepítse az Azure AD PowerShell-modult, és importálja a következő módon:
+1. Ha szükséges, telepítse az Azure AD PowerShell-modult, és importálja a következő módon:
 
     ```powershell
     Install-Module AzureAD

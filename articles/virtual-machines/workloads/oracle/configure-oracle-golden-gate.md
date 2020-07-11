@@ -3,8 +3,8 @@ title: Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális 
 description: Gyorsan beszerezhet egy Oracle Golden-kaput az Azure-környezetben.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: ae6bfb0ab0208d0f778476c9f0959b0c0f1d6471
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: 60d06fa4cf6d116f9c802cda544a356e469755b5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683731"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223074"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális gépen 
 
@@ -443,7 +443,7 @@ Az Oracle Golden Gate telepítéséhez hajtsa végre a következő lépéseket:
 
    ![A telepítő képernyőképe – a telepítés kiválasztása lap](./media/oracle-golden-gate/golden_gate_install_01.png)
 
-3. A szoftver helyének módosítása Ezután válassza a **Start Manager** mezőt, és adja meg az adatbázis helyét. A folytatáshoz kattintson a **Tovább** gombra.
+3. A szoftver helyének módosítása Ezután válassza a **Start Manager** mezőt, és adja meg az adatbázis helyét. A folytatáshoz válassza a **Tovább** gombot.
 
    ![A telepítés kiválasztása lap képernyőképe](./media/oracle-golden-gate/golden_gate_install_02.png)
 

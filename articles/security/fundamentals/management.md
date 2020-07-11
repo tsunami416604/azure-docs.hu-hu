@@ -15,18 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8baf1c70d115b80e3238d3eedf128057684d2e6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80981307"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224706"
 ---
 # <a name="security-management-in-azure"></a>Biztonságkezelés az Azure-ban
 Az Azure-előfizetők több eszközről kezelhetik felhőkörnyezeteiket, például felügyeleti munkaállomásokról, fejlesztői PC-kről, és olyan jogosult végfelhasználói eszközökről is, amelyek feladatspecifikus engedélyekkel rendelkeznek. Egyes esetekben a felügyeleti feladatkörök ellátását olyan webalapú konzolok használatával végzik, mint például az [Azure Portal](https://azure.microsoft.com/features/azure-portal/). Más esetekben az Azure-hoz való közvetlen kapcsolat létesíthető virtuális magánhálózatokon (VPN), terminálszolgáltatásokon, ügyfél-alkalmazásprotokollokon, vagy (szoftveresen) az Azure Service Management API-n (SMAPI) keresztül. Továbbá az ügyfél-végpontok lehetnek vagy tartományhoz csatlakoztatottak, vagy pedig elkülönítettek és felügyelet nélküliek, mint például a táblagépek vagy az okostelefonok.
 
 A sokféle hozzáférési és kezelési képesség a lehetőségek széles tárházát biztosítja, ugyanakkor nagymértékű kockázatot is jelent a felhőkörnyezetek esetén. A felügyeleti műveletek kezelése, nyomon követése és naplózása nehézségekbe ütközhet. Ez a sokrétűség biztonsági fenyegetésekkel is járhat, mivel nem szabályozott hozzáférést tesz lehetővé a felhőszolgáltatások kezelésére használt ügyfélvégpontokhoz. Az általános vagy személyes munkaállomások fejlesztésre és infrastruktúra-kezelésre való használata olyan kiszámíthatatlan fenyegetési vektoroknak enged utat, mint például a webböngészés (pl. alapesetben megbízható weboldalak megfertőződése, ún. watering hole attack) vagy az e-mail (pl. pszichológiai manipuláció és adathalászat).
 
-![](./media/management/typical-management-network-topology.png)
+![Egy olyan diagram, amely a fenyegetés különböző módszereit mutatja be.](./media/management/typical-management-network-topology.png)
 
 Az ilyen jellegű környezetben magasabb a támadások bekövetkeztének esélye, mert nehéz olyan biztonsági házirendeket és mechanizmusokat megalkotni, amelyekkel megfelelően felügyelhető az Azure-felületekhez (mint például a SMAPI-hoz) való hozzáférés a rendkívül változatos végpontokból.
 
@@ -122,7 +123,7 @@ Használhat Azure bejelentkezési korlátozásokat az olyan forrás IP-címek ko
 
 Egyes Azure-ra telepített alkalmazások vagy szolgáltatások saját hitelesítési mechanizmusokkal rendelkezhetnek mind a végfelhasználói, mind a rendszergazdai hozzáféréshez, míg mások az Azure AD előnyeit használják ki. Attól függően, hogy hitelesítő adatokat von össze Active Directory összevonási szolgáltatások (AD FS) segítségével, címtár-szinkronizálást használ, vagy csak a felhőben kezeli a felhasználói fiókokat, a [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) használata segít az identitás-életciklusok erőforrások közötti kezelésében.
 
-### <a name="connectivity"></a>Kapcsolatok
+### <a name="connectivity"></a>Kapcsolat
 Az Azure virtuális hálózataihoz való ügyfélkapcsolatok biztonságossá tételének céljából több mechanizmus áll rendelkezésre. Ezen mechanizmusok közül kettő, a [helyek közötti VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) és a [pont-hely típusú VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) (P2S) lehetővé teszik az iparági szabványnak megfelelő IPsec (S2S) vagy a [Secure Socket Tunneling Protocol](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) használatát titkosítás és alagútkezelés céljából. A nyilvánosan elérhető Azure-szolgáltatásokhoz (pl. Azure Portal) való csatlakozáshoz az Azure-nak HTTPS-kapcsolatra van szüksége.
 
 Az olyan önálló megerősített munkaállomás esetében, amely nem RD-átjárón keresztül csatlakozik az Azure-hoz, javasolt, hogy SSTP alapú pont-hely típusú VPN-nel hozza létre az Azure Virtual Networkkel kialakított kezdeti kapcsolatot, majd az egyes virtuális gépekhez vezető RDP-kapcsolatokat a VPN-alagútból alakítsa ki.
@@ -156,12 +157,12 @@ A helyszíni infrastruktúrával nem rendelkező informatikai környezetek eset�
 
 Az önálló megerősített munkaállomás-forgatókönyvben (lásd alább) a Windows tűzfal (vagy egy, nem a Microsoft által készített ügyféltűzfal) helyi példánya a bejövő kapcsolatok, mint például az RDP blokkolására van konfigurálva. A rendszergazda bejelentkezhet a megerősített munkaállomásra, és indíthat RDP-munkamenetet, amely az Azure Virtual Networkhöz való VPN-kapcsolat létesítése után kapcsolódik az Azure-hoz, de nem használhat RDP-t magához a megerősített munkaállomáshoz való kapcsolódáshoz vállalati PC-ről történő bejelentkezés révén.
 
-![](./media/management/stand-alone-hardened-workstation-topology.png)
+![A különálló megerősített munkaállomás-forgatókönyvet bemutató diagram.](./media/management/stand-alone-hardened-workstation-topology.png)
 
 ### <a name="corporate-pc-as-virtual-machine"></a>Vállalati PC mint virtuális gép
 Olyan esetekben, ahol az önálló megerősített munkaállomás megvalósítása költséges vagy nehézkes volna, ehelyett a megerősített munkaállomás üzemeltethet virtuális gépet a nem felügyeleti feladatok ellátására.
 
-![](./media/management/hardened-workstation-enabled-with-hyper-v.png)
+![Olyan diagram, amely a virtuális gépet üzemeltető megerősített munkaállomást jeleníti meg a nem rendszergazdai feladatok elvégzéséhez.](./media/management/hardened-workstation-enabled-with-hyper-v.png)
 
 Annak érdekében, hogy elkerülje az ugyanannak a munkaállomásnak rendszerfelügyeletre és más napi munkafeladatok ellátására való használatából eredő lehetséges biztonsági kockázatokat, telepíthet Windows Hyper-V virtuális gépet a megerősített munkaállomásra. Ez a virtuális gép használható vállalati PC-ként. A vállalati PC-környezet így elkülönül a gazdagéptől, ami csökkenti annak támadási felületét, és elszigeteli a felhasználó napi tevékenységeit (például a levelezést) a bizalmas felügyeleti feladatoktól.
 

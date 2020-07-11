@@ -8,11 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Ismerje meg, hogyan állíthat be folyamatos integrációt/folyamatos üzembe helyezést az Azure DevOps és az Azure dev Spaces használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
-ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a5f232111bd01f707080cc1638970f8dc51e6fa
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81685636"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229329"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>A CI/CD és az Azure Dev Spaces használata
 
@@ -25,7 +26,7 @@ Bár ez a cikk végigvezeti Önt az Azure DevOps, ugyanazok a fogalmak érvénye
 ## <a name="prerequisites"></a>Előfeltételek
 * [Azure Kubernetes Service (ak) fürt az Azure dev Spaces szolgáltatással](../get-started-netcore.md)
 * [Azure dev Spaces CLI telepítve](upgrade-tools.md)
-* [Azure DevOps-szervezet projekttel](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
+* [Azure DevOps-szervezet projekttel](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
     * Azure Container Registry [rendszergazdai fiók](../../container-registry/container-registry-authentication.md#admin-account) adatai érhetők el
 * [Engedélyezze az AK-fürt számára a Azure Container Registry való lekérését](../../aks/cluster-container-registry-integration.md)
@@ -67,7 +68,7 @@ A letiltási lehetőség:
 > [!Note]
 > Az Azure DevOps _új YAML-folyamat létrehozási_ funkciójának előzetes verziója ütközik az előre definiált Build-folyamatok létrehozásával. Most le kell tiltania az előre definiált build-folyamat üzembe helyezéséhez.
 
-Az _azds_updates_ ág tartalmaz egy egyszerű [Azure pipeline-YAML](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) , amely a *mywebapi* és a *webfrontendhez*szükséges Build-lépéseket határozza meg.
+Az _azds_updates_ ág tartalmaz egy egyszerű [Azure pipeline-YAML](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) , amely a *mywebapi* és a *webfrontendhez*szükséges Build-lépéseket határozza meg.
 
 A választott nyelvtől függően a folyamat YAML a következőhöz hasonló elérési úton lett bejelentkezve:`samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 

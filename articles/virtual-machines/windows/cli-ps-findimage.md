@@ -1,28 +1,26 @@
 ---
-title: Windowsos VM-rendszerképek kiválasztása az Azure-ban
+title: Azure Marketplace-rendszerképek keresése és használata
 description: A Azure PowerShell segítségével meghatározhatja a Piactéri virtuálisgép-rendszerképek közzétevőjét, ajánlatát, SKU-jának és verziószámát.
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 46a2badbbe957f6a8a6af7f5a40633ea24cadcd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1ddc354e95185b6b2ba8bcb821fcabd5721c442
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083365"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224247"
 ---
-# <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Windows virtuálisgép-rendszerképek keresése az Azure Marketplace-en az Azure PowerShell-lel
+# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Virtuálisgép-lemezképek keresése és használata az Azure Marketplace-en Azure PowerShell
 
-Ez a cikk azt ismerteti, hogyan használhatók a Azure PowerShell a virtuálisgép-rendszerképek megkereséséhez az Azure Marketplace-en. Ezt követően megadhatja a piactér rendszerképét, ha programozott módon hoz létre virtuális gépet a PowerShell, a Resource Manager-sablonok vagy más eszközök használatával.
+Ez a cikk azt ismerteti, hogyan használhatók a Azure PowerShell a virtuálisgép-rendszerképek megkereséséhez az Azure Marketplace-en. Ezt követően megadhatja a piactér rendszerképét a virtuális gép létrehozásakor.
 
 Az elérhető lemezképek és ajánlatok az [Azure Marketplace](https://azuremarketplace.microsoft.com/) kirakat, a [Azure Portal](https://portal.azure.com)vagy az [Azure CLI](../linux/cli-ps-findimage.md)használatával is tallózhatók. 
 
- 
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
@@ -318,7 +316,6 @@ Ezután továbbítja a virtuális gép konfigurációját a hálózati konfigur�
 
 A virtuális gép `New-AzVM` egyszerű rendszerkép-információkkal történő gyors létrehozásával kapcsolatban lásd: [Windows rendszerű virtuális gép létrehozása a PowerShell](quick-create-powershell.md)használatával.
 
-
-A [teljes mértékben konfigurált virtuális gépek létrehozásához](../scripts/virtual-machines-windows-powershell-sample-create-vm.md)tekintse meg a PowerShell-parancsfájl példáját.
+További információ az Azure Marketplace-lemezképek egyéni lemezképek létrehozásához megosztott képtárban való használatáról: az [Azure Marketplace vásárlási terv információinak megadása a lemezképek létrehozásakor](../marketplace-images.md).
 
 

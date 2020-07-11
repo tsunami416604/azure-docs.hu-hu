@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3cc75fb34f0a828eccfed3951e84a1c463d4cfb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eea4de106fe566b55ae30330d4c9d101f7126bbf
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828882"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229618"
 ---
 # <a name="use-source-control-integration"></a>Verziókövetés-integrálás használata
 
@@ -61,7 +62,7 @@ Ezzel az eljárással konfigurálhatja a verziókövetés használatát a Azure 
     |Mappa elérési útja     | A szinkronizálni kívánt runbookok tartalmazó mappa, például **/Runbooks**. A rendszer csak a megadott mappában lévő runbookok szinkronizálja. A rekurzió nem támogatott.        |
     |<sup>1</sup> . automatikus szinkronizálás     | Az automatikus szinkronizálás bekapcsolásának vagy kikapcsolásának beállítása a verziókövetés adattárában.        |
     |Runbook közzététele     | Annak beállítása, hogy a runbookok automatikusan közzé legyenek-e téve a forrás-vezérlőelemről való szinkronizálás után, vagy más módon.           |
-    |Description     | A verziókövetés további részleteit megadó szöveg        |
+    |Leírás     | A verziókövetés további részleteit megadó szöveg        |
 
     <sup>1</sup> ha engedélyezni szeretné az automatikus szinkronizálást a verziókövetés Azure Repos-integrációjának konfigurálásakor, a projekt rendszergazdájának kell lennie.
 
@@ -72,8 +73,7 @@ Ezzel az eljárással konfigurálhatja a verziókövetés használatát a Azure 
 
 ### <a name="configure-source-control-in-powershell"></a>A verziókövetés konfigurálása a PowerShellben
 
-A PowerShell használatával is konfigurálhatja a verziókövetés Azure Automationban való konfigurálását. Ehhez a művelethez a PowerShell-parancsmagok használatához személyes hozzáférési jogkivonat (PAT) szükséges. A [New-AzAutomationSourceControl](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0
-) parancsmaggal hozza létre a verziókövetés-kapcsolatokat. Ehhez a parancsmaghoz biztonságos karakterlánc szükséges a PAT számára. A biztonságos sztringek létrehozásáról további információt a következő témakörben talál: [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
+A PowerShell használatával is konfigurálhatja a verziókövetés Azure Automationban való konfigurálását. Ehhez a művelethez a PowerShell-parancsmagok használatához személyes hozzáférési jogkivonat (PAT) szükséges. A [New-AzAutomationSourceControl](/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0) parancsmaggal hozza létre a verziókövetés-kapcsolatokat. Ehhez a parancsmaghoz biztonságos karakterlánc szükséges a PAT számára. A biztonságos sztringek létrehozásáról további információt a következő témakörben talál: [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
 
 Az alábbi alszakaszok a GitHub, az Azure Repos (git) és az Azure Repos (TFVC) forrás-ellenőrzési kapcsolatainak létrehozását szemléltetik. 
 
@@ -110,7 +110,7 @@ A verziókövetés bizonyos minimális engedélyeket igényel a PATs számára. 
 
 A következő táblázat a GitHubhoz szükséges minimális PAT-engedélyeket határozza meg. A PAT a GitHubon való létrehozásával kapcsolatos további információkért lásd: [személyes hozzáférési jogkivonat létrehozása a parancssorhoz](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/).
 
-|Hatókör  |Description  |
+|Hatókör  |Leírás  |
 |---------|---------|
 |**`repo`**     |         |
 |`repo:status`     | Hozzáférési véglegesítés állapota         |
@@ -122,7 +122,7 @@ A következő táblázat a GitHubhoz szükséges minimális PAT-engedélyeket ha
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>Az Azure-adattárakhoz minimálisan szükséges PAT-engedélyek
 
-Az alábbi lista meghatározza az Azure Repos minimálisan szükséges PAT-engedélyeit. További információ a PAT Azure Repos-beli létrehozásáról: [hozzáférés hitelesítése személyes hozzáférési jogkivonatokkal](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).
+Az alábbi lista meghatározza az Azure Repos minimálisan szükséges PAT-engedélyeit. További információ a PAT Azure Repos-beli létrehozásáról: [hozzáférés hitelesítése személyes hozzáférési jogkivonatokkal](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page).
 
 | Hatókör  |  Hozzáférés típusa  |
 |---------| ----------|
@@ -195,14 +195,14 @@ A forrás-felügyeleti adattárból való leválasztáshoz:
 
 ## <a name="handle-encoding-issues"></a>Kódolási problémák kezelése
 
-Ha több ember szerkeszti a runbookok a különböző szerkesztők használatával, a kódolási problémák léphetnek fel. Ha többet szeretne megtudni erről a helyzetről, tekintse meg a [kódolási problémák gyakori okait](https://docs.microsoft.com/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
+Ha több ember szerkeszti a runbookok a különböző szerkesztők használatával, a kódolási problémák léphetnek fel. Ha többet szeretne megtudni erről a helyzetről, tekintse meg a [kódolási problémák gyakori okait](/powershell/scripting/components/vscode/understanding-file-encoding?view=powershell-7#common-causes-of-encoding-issues).
 
 ## <a name="update-the-pat"></a>A PAT frissítése
 
 Jelenleg nem használhatja a Azure Portal a PAT in Source vezérlőben való frissítésére. Ha a PAT lejárt vagy visszavont, a verziókövetés egy új hozzáférési jogkivonattal is frissíthető az alábbi módokon:
 
-* Használja a [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update).
-* Használja az [Update-AzAutomationSourceControl](https://docs.microsoft.com//powershell/module/az.automation/update-azautomationsourcecontrol) parancsmagot.
+* Használja a [REST API](/rest/api/automation/sourcecontrol/update).
+* Használja az [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) parancsmagot.
 
 ## <a name="next-steps"></a>További lépések
 

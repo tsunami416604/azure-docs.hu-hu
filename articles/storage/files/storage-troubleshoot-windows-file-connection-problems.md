@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 89a5fa0be104c3a7b7e035f82d2fed80d4781701
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a8fff374edab7e307cd6dc8fb9aa4a4f974d09c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511996"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224689"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Azure Files-problémák hibaelhárítása Windowson
 
@@ -70,27 +70,31 @@ Annak vizsgálatához, hogy a tűzfal vagy az INTERNETSZOLGÁLTATÓ blokkolja-e 
 A parancsmag használatához `Test-NetConnection` telepíteni kell a Azure PowerShell modult. További információért lásd: [Azure PowerShell modul telepítése](/powershell/azure/install-Az-ps) . Ne felejtse el kicserélni a `<your-storage-account-name>` és a `<your-resource-group-name>` elemet a tárfiók vonatkozó neveivel.
 
    
-    $resourceGroupName = "<your-resource-group-name>"
-    $storageAccountName = "<your-storage-account-name>"
+```azurepowershell
+$resourceGroupName = "<your-resource-group-name>"
+$storageAccountName = "<your-storage-account-name>"
 
-    # This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
-    # already logged in.
-    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+# This command requires you to be logged into your Azure account, run Login-AzAccount if you haven't
+# already logged in.
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
-    # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
-    # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
-    # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
+# The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
+# $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
+# or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
+Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
+```
     
 Sikeres csatlakozás esetén a következő kimenetet kell látnia:
     
   
-    ComputerName     : <your-storage-account-name>
-    RemoteAddress    : <storage-account-ip-address>
-    RemotePort       : 445
-    InterfaceAlias   : <your-network-interface>
-    SourceAddress    : <your-ip-address>
-    TcpTestSucceeded : True
+```azurepowershell
+ComputerName     : <your-storage-account-name>
+RemoteAddress    : <storage-account-ip-address>
+RemotePort       : 445
+InterfaceAlias   : <your-network-interface>
+SourceAddress    : <your-ip-address>
+TcpTestSucceeded : True
+```
  
 
 > [!Note]  
@@ -127,11 +131,11 @@ További információért tekintse meg a TechNet [LmCompatibilityLevel](https://
   **HKLM\SYSTEM\CurrentControlSet\Control\Lsa**
 
 <a id="error1816"></a>
-## <a name="error-1816-not-enough-quota-is-available-to-process-this-command-when-you-copy-to-an-azure-file-share"></a>1816-es hiba: "nincs elegendő kvóta a parancs feldolgozásához" az Azure-fájlmegosztás másolásakor
+## <a name="error-1816---not-enough-quota-is-available-to-process-this-command"></a>1816-es hiba – nem áll rendelkezésre elegendő kvóta a parancs feldolgozásához
 
 ### <a name="cause"></a>Ok
 
-1816-as hiba történik, amikor eléri az egyidejű nyitott fogópontok felső határát, amelyek a fájlmegosztás csatlakoztatása esetén a számítógépen lévő fájl számára megengedettek.
+1816-es hiba történik, amikor eléri az Azure-fájlmegosztás fájljának vagy könyvtárának felső határát. További információ: [Azure Files – skálázási célok](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets).
 
 ### <a name="solution"></a>Megoldás
 

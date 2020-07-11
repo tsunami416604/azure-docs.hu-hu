@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: cynthn
-ms.openlocfilehash: 3d55efb15454f0b1dfe5ac1101a8a53eb1c9aa8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 469e225a1cc40dc2ecc45339d9355484e87c4af2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683952"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223584"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Előzetes verzió: az ügyfél által felügyelt kulcsok használata a rendszerképek titkosításához
 
@@ -174,7 +175,7 @@ az sig image-version create \
    
 ```
 
-### <a name="create-the-vm"></a>Virtuális gép létrehozása
+### <a name="create-the-vm"></a>A virtuális gép létrehozása
 
 Létrehozhat egy virtuális gépet egy megosztott rendszerkép-gyűjteményből, és az ügyfél által felügyelt kulcsokkal titkosíthatja a lemezeket. A szintaxis megegyezik egy [általánosított](vm-generalized-image-version-cli.md) vagy [speciális](vm-specialized-image-version-cli.md) virtuális gép rendszerképből való létrehozásával, csak a paramétert kell hozzáadnia a `--os-disk-encryption-set` titkosítási csoport azonosítójával. Adatlemezek esetén adja hozzá az `--data-disk-encryption-sets` adatlemezek lemezes titkosítási készletének szóközzel tagolt listáját.
 
@@ -187,10 +188,12 @@ Amikor létrehozza a rendszerkép verzióját a portálon, a **titkosítás** la
 2. A **titkosítás típusa**területen válassza az **ügyfél által felügyelt kulcs**melletti titkosítás lehetőséget. 
 3. A rendszerkép minden egyes lemezén válassza ki a legördülő listából a használni kívánt **lemezes titkosítási beállítást** . 
 
-### <a name="create-the-vm"></a>Virtuális gép létrehozása
+### <a name="create-the-vm"></a>A virtuális gép létrehozása
 
 Létrehozhat egy virtuális gépet egy megosztott rendszerkép-gyűjteményből, és az ügyfél által felügyelt kulcsokkal titkosíthatja a lemezeket. Amikor létrehozza a virtuális gépet a portálon, a **lemezek** lapon válassza a titkosítás az **ügyfél által felügyelt kulcsokkal** a **titkosítási típushoz**lehetőséget. Ezután kiválaszthatja a titkosítási készletet a legördülő menüből.
 
 ## <a name="next-steps"></a>További lépések
 
 További információ a [kiszolgálóoldali lemezek titkosításáról](./windows/disk-encryption.md).
+
+A vásárlási tervre vonatkozó információk megadásával kapcsolatos információkért lásd: [Azure Marketplace vásárlási terv információinak megadása képek létrehozásakor](marketplace-images.md).

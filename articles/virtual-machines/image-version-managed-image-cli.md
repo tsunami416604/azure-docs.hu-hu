@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 6f49ece874ea52227e6531193fc53b3bea525702
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b671bb63934eec129e992c369ba8516c191c589
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82796602"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223567"
 ---
 # <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Migrálás felügyelt rendszerképből rendszerkép-verzióra az Azure CLI használatával
 Ha van egy meglévő felügyelt rendszerképe, amelyet át szeretne telepíteni egy megosztott képkatalógusba, akkor közvetlenül a felügyelt rendszerképből is létrehozhat egy közös rendszerkép-katalógust. Miután tesztelte az új rendszerképet, törölheti a forrás által felügyelt képet. A [PowerShell](image-version-managed-image-powershell.md)használatával is áttelepítheti a felügyelt rendszerképeket egy megosztott képkatalógusba.
@@ -98,3 +98,5 @@ az sig image-version create \
 ## <a name="next-steps"></a>További lépések
 
 Hozzon létre egy virtuális gépet egy [általánosított rendszerkép-verzióból](vm-generalized-image-version-cli.md).
+
+A vásárlási tervre vonatkozó információk megadásával kapcsolatos információkért lásd: [Azure Marketplace vásárlási terv információinak megadása képek létrehozásakor](marketplace-images.md).

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6af9db5ed76ecb79f8891895eab52ff71bcab048
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4a732bd81b65c0c6b0cc227e1ed82de7bae3a1a0
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146872"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230706"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>A növekményes dúsítás gyorsítótárazásának konfigurálása az Azure-ban Cognitive Search
 
@@ -174,7 +174,7 @@ A következő táblázat összefoglalja, hogy a különböző API-k hogyan kapcs
 | [Indexelő létrehozása (2020-06-30 – előzetes verzió)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | Létrehoz és futtat egy indexelő az első használatnál, beleértve a gyorsítótár létrehozását is, ha az indexelő definíciója megadja azt. |
 | [Indexelő futtatása](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | Igény szerinti dúsítási folyamatot hajt végre. Ez az API a gyorsítótárból olvassa be, ha létezik, vagy létrehoz egy gyorsítótárat, ha egy frissített indexelő definícióhoz adta a gyorsítótárazást. Ha olyan indexelő futtat, amelyen engedélyezve van a gyorsítótárazás, az indexelő kihagyja a lépéseket, ha a gyorsítótárazott kimenet használható. Használhatja az API általánosan elérhető vagy előzetes verzió API-verzióját.|
 | [Indexelő alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| A növekményes indexelési információk indexelő adatainak törlése. A következő indexelő futtatása (igény szerinti vagy ütemezett) teljes újrafeldolgozást végez, beleértve az összes ismeret ismételt futtatását és a gyorsítótár újjáépítését. Ez a funkció az indexelő törlésével és újbóli létrehozásával egyenértékű. Használhatja az API általánosan elérhető vagy előzetes verzió API-verzióját.|
-| [Képességek alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/searchservice/reset-skills) | Meghatározza, hogy mely szaktudást futtassa újra a következő indexelő futtatásakor, még akkor is, ha nem módosította a szükséges képességeket. A gyorsítótár ennek megfelelően frissül. Az olyan kimenetek, mint például a Knowledge Store vagy a Search index, a gyorsítótárban található újrafelhasználható adatok használatával, valamint a frissített szaktudással együtt frissülnek. |
+| [Képességek alaphelyzetbe állítása](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) | Meghatározza, hogy mely szaktudást futtassa újra a következő indexelő futtatásakor, még akkor is, ha nem módosította a szükséges képességeket. A gyorsítótár ennek megfelelően frissül. Az olyan kimenetek, mint például a Knowledge Store vagy a Search index, a gyorsítótárban található újrafelhasználható adatok használatával, valamint a frissített szaktudással együtt frissülnek. |
 
 A gyorsítótárral kapcsolatos további információkért lásd: [gyorsítótár-kezelés](cognitive-search-incremental-indexing-conceptual.md#cache-management).
 

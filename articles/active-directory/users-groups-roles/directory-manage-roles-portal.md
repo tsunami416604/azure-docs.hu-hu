@@ -8,16 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 06/15/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9bfc7f194730545469e7d17d46c47f7293f016e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e067e8d56f8a928f952648fc76cd5d6b7a1afe7
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728894"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221273"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Rendszergazdai szerepkörök megtekintése és kiosztása Azure Active Directory
 
@@ -25,29 +26,50 @@ Most már megtekintheti és kezelheti a rendszergazdai szerepkörök összes tag
 
 ## <a name="view-all-roles"></a>Az összes szerepkör megtekintése
 
-Keresse meg és válassza ki az **Azure Active Directoryt**. Válassza a **szerepkörök és rendszergazdák** lehetőséget az összes elérhető szerepkör listájának megtekintéséhez.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **Azure Active Directory**lehetőséget.
 
-Kattintson az egyes sorok jobb oldalán található három pontra a szerepkör részletes leírásának megnyitásához.
+1. Válassza a **szerepkörök és rendszergazdák** lehetőséget az összes elérhető szerepkör listájának megtekintéséhez.
 
-![szerepkörök listája az Azure AD-portálon](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
+1. Válassza ki az egyes sorok jobb oldalán lévő három pontot a szerepkör engedélyeinek megtekintéséhez. Válasszon egy szerepkört a szerepkörhöz hozzárendelt felhasználók megtekintéséhez. Ha az alábbi ábrán nem látható, olvassa el a [Kiemelt szerepkörökhöz tartozó hozzárendelések megtekintése](#view-assignments-for-privileged-roles) című témakört annak ellenőrzéséhez, hogy PRIVILEGED Identity Management (PIM) van-e.
+
+    ![szerepkörök listája az Azure AD-portálon](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
 
 ## <a name="view-my-roles"></a>Saját szerepkörök megtekintése
 
 Egyszerűen megtekintheti saját engedélyeit is. Válassza ki a **szerepkört** a **szerepkörök és rendszergazdák** lapon, hogy megtekintse a jelenleg Önhöz rendelt szerepköröket.
 
-## <a name="view-assignments-for-a-role"></a>Szerepkör hozzárendeléseinek megtekintése
+## <a name="view-assignments-for-privileged-roles"></a>Kiemelt szerepkörök hozzárendeléseinek megtekintése
 
-Kattintson egy szerepkörre a szerepkörhöz hozzárendelt felhasználók megtekintéséhez. A felügyelet **a PIM-ben** lehetőségre kattintva további felügyeleti lehetőségeket biztosíthat. A Kiemelt szerepkörű rendszergazdák az "állandó" (a szerepkörben mindig aktív) hozzárendeléseket "jogosult" értékre módosíthatják (csak akkor, ha emelt szintű). Ha nem rendelkezik a PIM szolgáltatással, akkor továbbra is kiválaszthatja a **felügyelet a PIM-ben** lehetőséget a próbaverzióra való feliratkozáshoz. A Privileged Identity Management [prémium szintű Azure ad P2-licencet](../privileged-identity-management/subscription-requirements.md)igényel.
+A felügyelet **a PIM-ben** lehetőségre kattintva további felügyeleti lehetőségeket biztosíthat. A Kiemelt szerepkörű rendszergazdák az "állandó" (a szerepkörben mindig aktív) hozzárendeléseket "jogosult" értékre módosíthatják (csak akkor, ha emelt szintű). Ha nem rendelkezik Privileged Identity Managementval, akkor továbbra is kiválaszthatja a **felügyelet a PIM-ben** lehetőséget a próbaverzióra való feliratkozáshoz. A Privileged Identity Management [prémium szintű Azure ad P2-licencet](../privileged-identity-management/subscription-requirements.md)igényel.
 
 ![rendszergazdai szerepkör tagjainak listája](./media/directory-manage-roles-portal/member-list.png)
 
 Ha Ön globális rendszergazda vagy Kiemelt szerepkörű rendszergazda, egyszerűen hozzáadhat vagy eltávolíthat tagokat, szűrheti a listát, vagy kijelölhet egy tagot az aktív hozzárendelt szerepkörök megjelenítéséhez.
+
+> [!Note]
+> Ha rendelkezik egy prémium szintű Azure AD-licenccel, és már használja a Privileged Identity Management-t, az összes szerepkör-felügyeleti feladat elvégzése a Privilege Identity Management szolgáltatásban történik, és nem az Azure AD-ben.
+>
+> ![A PIM-ben felügyelt Azure AD-szerepkörök olyan felhasználók számára, akik már használják a PIM-t, és prémium P2 licenccel rendelkeznek](./media/directory-manage-roles-portal/pim-manages-roles-for-p2.png)
 
 ## <a name="view-a-users-role-permissions"></a>Felhasználó szerepkör-engedélyeinek megtekintése
 
 A szerepkör tagjainak megtekintésekor válassza a **Leírás** lehetőséget a szerepkör-hozzárendelés által biztosított engedélyek teljes listájának megtekintéséhez. A lap a kapcsolódó dokumentációra mutató hivatkozásokat tartalmaz, amelyek segítséget nyújtanak a címtár szerepköreinek kezelésében.
 
 ![rendszergazdai szerepkör engedélyeinek listája](./media/directory-manage-roles-portal/role-description.png)
+
+## <a name="assign-a-role"></a>Szerepkör kiosztása
+
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) globális rendszergazda vagy Kiemelt szerepkörű rendszergazdai jogosultságokkal, és válassza a **Azure Active Directory**lehetőséget.
+
+1. Válassza a **szerepkörök és rendszergazdák** lehetőséget az összes elérhető szerepkör listájának megtekintéséhez.
+
+1. Válasszon ki egy szerepkört a hozzárendelések megtekintéséhez.
+
+    ![rendszergazdai szerepkör engedélyeinek listája](./media/directory-manage-roles-portal/member-list.png)
+
+1. Válassza a **hozzárendelések hozzáadása** lehetőséget, és válassza ki a hozzárendelni kívánt szerepköröket. A felügyelet **a PIM-ben** lehetőségre kattintva további felügyeleti lehetőségeket biztosíthat. Ha az alábbi ábrán nem látható, olvassa el a [Kiemelt szerepkörök hozzárendelésének megtekintése](#view-assignments-for-privileged-roles) című témakört annak ellenőrzéséhez, hogy a PIM-ban van-e.
+
+    ![rendszergazdai szerepkör engedélyeinek listája](./media/directory-manage-roles-portal/directory-role-select-role.png)
 
 ## <a name="next-steps"></a>További lépések
 

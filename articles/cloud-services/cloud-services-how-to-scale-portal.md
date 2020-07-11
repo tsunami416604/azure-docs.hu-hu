@@ -7,11 +7,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5452e0794083afabbee2759c5b37feb1eed0c88
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75360837"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223686"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Felhőalapú szolgáltatás automatikus skálázásának konfigurálása a portálon
 
@@ -42,10 +43,10 @@ A felhőalapú szolgáltatás kiválasztása után a Cloud Service panel láthat
 1. A Cloud Service panelen a **szerepkörök és példányok** csempén válassza ki a Cloud Service nevét.   
    **Fontos**: Ügyeljen arra, hogy a Cloud Service szerepkörre ne a szerepkör alatt lévő szerepkör-példányra mutasson.
 
-    ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
+    ![Képernyőkép a szerepkörök és példányok csempéről, ahol a feldolgozói szerepkört az 1. B sorban, a piros színnel kell megválasztani.](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. Válassza ki a **Méretezés** csempét.
 
-    ![](./media/cloud-services-how-to-scale-portal/scale-tile.png)
+    ![Képernyőkép az Operations oldalról, amelyen a Sales csempe piros színnel van megjelölve.](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>Automatikus méretezés
 A két mód **manuális** vagy **automatikus**beállításával konfigurálhatja a szerepkörök méretezési beállításait. A manuális a vártnál, a példányok abszolút száma állítható be. Az automatikus beállítás lehetővé teszi, hogy olyan szabályokat állítson be, amelyek meghatározzák, hogy mennyit és milyen mértékben kell méreteznie.
@@ -88,7 +89,7 @@ A rendszer hozzáadja a szabályokat egy profilhoz, és egy olyan feltételt jel
 
 A szabály triggere a Cloud Service (CPU-használat, lemez tevékenység vagy hálózati tevékenység) mérőszámán alapul, amelyhez feltételes értéket adhat hozzá. Emellett az triggert egy üzenetsor vagy egy másik, az előfizetéshez társított Azure-erőforrás metrikája alapján is elvégezheti.
 
-![](./media/cloud-services-how-to-scale-portal/rule-settings.png)
+![Képernyőkép a szabály párbeszédpanelről, amelyen a metrika neve beállítás piros színnel van kiválasztva.](./media/cloud-services-how-to-scale-portal/rule-settings.png)
 
 A szabály konfigurálása után kattintson a szabály panel alján található **OK** gombra.
 

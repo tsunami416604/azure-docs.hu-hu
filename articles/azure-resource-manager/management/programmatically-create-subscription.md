@@ -1,17 +1,17 @@
 ---
 title: Azure-előfizetések programozott létrehozása
 description: Ismerje meg, hogyan hozhat létre programozott módon további Azure-előfizetéseket.
-author: amberbhargava
+author: anuragdalmia
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: b53c81a52c06780378e45b2141cbef452b4d363a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7fac201de2fd623058eb5771e194ae697f879ee8
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170632"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224162"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Azure-előfizetések programozott létrehozása (előzetes verzió)
 
@@ -156,7 +156,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | Igen      | Sztring | Az előfizetés ajánlata. Az EA két lehetőségét az [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (éles használat) és az [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (dev/test) használatára kell [bekapcsolni az EA Portal használatával](https://ea.azure.com/helpdocs/DevOrTestOffer).                |
 | `owners`      | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt felhasználó objektumazonosító.  |
 
-A válaszban vissza fog térni a `Location` figyelés URL-címére. Az előfizetés létrehozása után a GET on `Location` URL-cím egy objektumot ad vissza `subscriptionLink` , amely az előfizetés-azonosítóval rendelkezik. További részletekért tekintse meg az [előfizetés API dokumentációját](https://docs.microsoft.com/rest/api/subscription/) .
+A válaszban a fejléc részeként `Location` egy URL-címet kap vissza, amelyet az előfizetés-létrehozási művelet állapotának lekérdezéséhez tud lekérdezni. Az előfizetés létrehozása után a GET on `Location` URL-cím egy objektumot ad vissza `subscriptionLink` , amely az előfizetés-azonosítóval rendelkezik. További részletekért tekintse meg az [előfizetés API dokumentációját](https://docs.microsoft.com/rest/api/subscription/) .
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

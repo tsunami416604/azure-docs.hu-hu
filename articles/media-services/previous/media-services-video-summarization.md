@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b85cffe497ad0b374edb18a1089412da839cdf8
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77918314"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231845"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Videók összegzésének létrehozása a Azure Media Video Thumbnails használatával  
 
@@ -58,7 +59,7 @@ Ha **Azure Media Video Thumbnailskal**rendelkező videó miniatűr feladatot hoz
 
 Jelenleg a következő paramétereket módosíthatja:
 
-| Param | Description |
+| Param | Leírás |
 | --- | --- |
 | outputAudio |Megadja, hogy az eredményül kapott videó tartalmaz-e hangot. <br/>Az engedélyezett értékek: true vagy FALSE. Az alapértelmezett érték a True (igaz). |
 | fadeInFadeOut |Megadja, hogy a rendszer áttűnési átmeneteket használ-e a különálló mozgóképek bélyegképei között.  <br/>Az engedélyezett értékek: true vagy FALSE.  Az alapértelmezett érték a True (igaz). |
@@ -66,10 +67,10 @@ Jelenleg a következő paramétereket módosíthatja:
 
 Az alábbi táblázat az alapértelmezett időtartamot ismerteti, ha a **maxMotionThumbnailInSecs** nincs használatban.
 
-|  |  |  |
+|  | Small | Nagyobb |
 | --- | --- | --- |
-| Videó időtartama |d < 3 perc |3 perc < d < 15 perc |
-| Miniatűr időtartama |15 mp (2-3 jelenetek) |30 mp (3-5 jelenetek) |
+| **Videó időtartama** |d < 3 perc |3 perc < d < 15 perc |
+| **Miniatűr időtartama** |15 mp (2-3 jelenetek) |30 mp (3-5 jelenetek) |
 
 A következő JSON a rendelkezésre álló paramétereket állítja be.
 

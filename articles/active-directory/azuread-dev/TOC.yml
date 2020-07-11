@@ -6,6 +6,8 @@
   href: sample-v1-code.md
 - name: Alapelvek
   items:
+    - name: A Microsoft identitásplatformjának fejlődése
+      href: about-microsoft-identity-platform.md
     - name: Miért érdemes frissíteni a 2.0-s verzióra
       href: azure-ad-endpoint-comparison.md
     - name: Alkalmazástípusok

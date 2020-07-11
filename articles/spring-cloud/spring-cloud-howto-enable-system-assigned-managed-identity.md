@@ -6,11 +6,12 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: d113d20e87d58bad007a35fce47d597a67849a6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2aadc5806f0c5c610dc28b32039ca944af87ab13
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445202"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231726"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>A rendszerhez rendelt felügyelt identitás engedélyezése az Azure Spring Cloud Application szolgáltatáshoz
 Az Azure-erőforrások felügyelt identitásai automatikusan felügyelt identitást biztosítanak Azure Active Directory egy Azure-erőforráshoz, például az Azure Spring Cloud-alkalmazáshoz. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, és nem rendelkezik hitelesítő adatokkal a kódban.
@@ -30,7 +31,7 @@ A [Azure Portal](https://portal.azure.com/)felügyelt identitásának beállít�
 1. A szokásos módon hozzon létre egy alkalmazást a portálon. Navigáljon a portálon.
 2. Görgessen le a **Beállítások** csoportba a bal oldali navigációs ablaktáblán.
 3. Válassza az **identitás**lehetőséget.
-4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva *értékre*. Kattintson a **Save** (Mentés) gombra.
+4. A **rendszerhez rendelt** lapon váltson az **állapot** bekapcsolva *értékre*. Kattintson a **Mentés** gombra.
 
  ![Felügyelt identitás a portálon](./media/spring-cloud-managed-identity/identity-1.png)
 
@@ -80,6 +81,6 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 
 ## <a name="next-steps"></a>További lépések
 * [Felügyelt identitások használata a Java SDK-val](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
-* [Felügyelt identitásokkal rendelkező Azure Key Vault elérése a Spring boot Starter-ben](https://github.com/microsoft/azure-spring-boot/blob/master/azure-spring-boot-starters/azure-keyvault-secrets-spring-boot-starter/README.md#use-msi--managed-identities)
+* [Felügyelt identitásokkal rendelkező Azure Key Vault elérése a Spring boot Starter-ben](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter-keyvault-secrets/README.md#use-msi--managed-identities)
 * [További információ az Azure-erőforrások felügyelt identitásáról](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
 

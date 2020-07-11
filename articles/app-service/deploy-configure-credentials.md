@@ -5,11 +5,12 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45d2ec6cf4b2a54b899036d932bc310caede3c29
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649116"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223856"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Központi telepítési hitelesítő adatok konfigurálása Azure App Servicehoz
 A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) kétféle hitelesítő adatot támogat a [helyi git üzembe helyezéséhez](deploy-local-git.md) és az [FTP/S](deploy-ftp.md)környezethez. Ezek a hitelesítő adatok nem egyeznek meg az Azure-előfizetés hitelesítő adataival.
@@ -39,17 +40,17 @@ A Azure Portalben legalább egy alkalmazásnak rendelkeznie kell a központi tel
 
 1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza ki **app Services**  >  **\<any_app>**  >  **központi telepítési központ**  >  **FTP**-  >  **irányítópultot**.
 
-    ![](./media/app-service-deployment-credentials/access-no-git.png)
+    ![Bemutatja, hogyan választhatja ki az FTP-irányítópultot az Azure App Services központi telepítési központból.](./media/app-service-deployment-credentials/access-no-git.png)
 
     Ha már konfigurálta a git-telepítést, válassza a **app Services**  >  ** &lt; any_app>**  >  **központi telepítési központ**  >  **FTP/hitelesítő adatokat**.
 
-    ![](./media/app-service-deployment-credentials/access-with-git.png)
+    ![Bemutatja, hogyan választhatja ki az FTP-irányítópultot az Azure App Services üzembe helyezési központból a beállított git-telepítéshez.](./media/app-service-deployment-credentials/access-with-git.png)
 
 2. Válassza ki a **felhasználói hitelesítő adatokat**, konfigurálja a felhasználónevet és a jelszót, majd válassza a **hitelesítő adatok mentése**lehetőséget.
 
 Miután beállította az üzembe helyezési hitelesítő adatokat, megkeresheti a *git* üzembe helyezési felhasználónevet az alkalmazás **Áttekintés** lapján.
 
-![](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
+![Bemutatja, hogyan keresheti meg a git üzembe helyezési felhasználónevet az alkalmazás Áttekintés oldalán.](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
 Ha a git üzembe helyezése be van állítva, akkor a lap a **git/Deployment felhasználónevet**jeleníti meg; egyéb esetben egy **FTP-/telepítési Felhasználónév**.
 

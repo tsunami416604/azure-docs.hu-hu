@@ -3,12 +3,12 @@ title: Adatmegőrzés és tárolás az Azure Application Insightsban | Microsoft
 description: Adatmegőrzési és adatvédelmi szabályzati nyilatkozat
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 848285accd7e05607bac418b6b4ae39055a5772f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acee1ad0b531f23a872d78111ccd9f0ac09bcfb1
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601360"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224485"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés,-megőrzés és-tárolás Application Insights
 
@@ -62,7 +62,7 @@ A fő kategóriák a következők:
 ## <a name="how-can-i-verify-whats-being-collected"></a>Hogyan tudom ellenőrizni, hogy milyen adatokat gyűjt a rendszer?
 Ha a Visual Studióval fejleszti az alkalmazást, futtassa az alkalmazást hibakeresési módban (F5). A telemetria megjelenik a kimeneti ablakban. Innen átmásolhatja és formázhatja JSON-ként az egyszerű ellenőrzés érdekében. 
 
-![](./media/data-retention-privacy/06-vs.png)
+![Az alkalmazás hibakeresési módban történő futtatását bemutató képernyőkép a Visual Studióban.](./media/data-retention-privacy/06-vs.png)
 
 A diagnosztika ablakban is olvasható a nézet.
 
@@ -213,7 +213,7 @@ Nem ajánlott explicit módon beállítani az alkalmazást úgy, hogy csak a TLS
 | Windows Server 2012 – 2016 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) használja-e |
 | Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) lapját.  |
 | Windows Server 2008 SP2 | A TLS 1,2 támogatásához frissítés szükséges. | Lásd: [frissítés a TLS 1,2 támogatásának hozzáadásához](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) a Windows Server 2008 SP2-ben. |
-|Windows Vista | Nem támogatott. | N.A.
+|Windows Vista | Nem támogatott. | N/A
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Győződjön meg arról, hogy az OpenSSL milyen verziója fut a Linux-disztribúcióban
 
@@ -269,7 +269,7 @@ Az SDK-k különböző platformok között változnak, és több összetevő is 
 | Munkamenet |`session id` |
 | ServerContext |Számítógépnév, területi beállítás, operációs rendszer, eszköz, felhasználói munkamenet, felhasználói környezet, művelet |
 | Következtetni |földrajzi hely az IP-címről, időbélyeg, operációs rendszer, böngésző |
-| Mérőszámok |Metrika neve és értéke |
+| Metrikák |Metrika neve és értéke |
 | Események |Esemény neve és értéke |
 | Oldalmegtekintések |URL-cím és az oldal neve vagy a képernyő neve |
 | Ügyfél-Teljesítményfigyelő |URL-cím/oldal neve, böngésző betöltési ideje |

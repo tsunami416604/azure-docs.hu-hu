@@ -3,12 +3,12 @@ title: Hogyan... Az Azure Application Insightsban | Microsoft Docs
 description: Gyakori kérdések a Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 665d98378fc52e972986111847872ae30701f631
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110232"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224468"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
 ## <a name="get-an-email-when-"></a>E-mail küldése, ha...
@@ -18,7 +18,7 @@ Adja meg a [rendelkezésre állási webes tesztet](../../azure-monitor/app/monit
 ### <a name="email-if-my-site-is-overloaded"></a>E-mail-cím, ha a webhely túl van terhelve
 [Riasztás](../../azure-monitor/platform/alerts-log.md) beállítása a **kiszolgáló válaszideje**. Egy 1 és 2 másodperc közötti küszöbértéknek kell működnie.
 
-![](./media/how-do-i/030-server.png)
+![Képernyőkép, amely bemutatja, hogyan állítható be a riasztás a kiszolgáló válaszideje alapján.](./media/how-do-i/030-server.png)
 
 Az alkalmazás a meghibásodási kódok visszaadásával is megjelenítheti a törzs jeleit. Riasztás beállítása a **sikertelen kérelmeknél**.
 
@@ -53,11 +53,11 @@ telemetry.TrackMetric("Alarm", 0.5);
 
 Diagram létrehozása a [metrika Explorerben](../../azure-monitor/platform/metrics-charts.md) a riasztás megtekintéséhez:
 
-![](./media/how-do-i/010-alarm.png)
+![Képernyőfelvétel: diagram létrehozása a metrika Explorerben a riasztás megtekintéséhez.](./media/how-do-i/010-alarm.png)
 
 Most állítsa be a riasztást, ha a metrika rövid ideig meghaladja a középső értéket:
 
-![](./media/how-do-i/020-threshold.png)
+![Képernyőkép, amely bemutatja, hogyan állítható be a riasztás, ha a metrika rövid ideig a középső érték fölé kerül.](./media/how-do-i/020-threshold.png)
 
 Állítsa az átlagos időszakot a minimum értékre.
 
@@ -106,11 +106,11 @@ Ezután:
 
 * Keresés adott felhasználói azonosítókban
 
-![](./media/how-do-i/110-search.png)
+![Képernyőkép, amely az adott felhasználói azonosítók keresve beállításait mutatja.](./media/how-do-i/110-search.png)
 
 * Mérőszámok szűrése névtelen vagy hitelesített felhasználók számára
 
-![](./media/how-do-i/115-metrics.png)
+![A névtelen vagy hitelesített felhasználók szűrési metrixs megjelenítő képernyőkép.](./media/how-do-i/115-metrics.png)
 
 ## <a name="modify-property-names-or-values"></a>Tulajdonságok nevének vagy értékének módosítása
 Hozzon létre egy [szűrőt](../../azure-monitor/app/api-filtering-sampling.md#filtering). Ez lehetővé teszi a telemetria módosítását vagy szűrését az alkalmazásból a Application Insightsba való elküldése előtt.

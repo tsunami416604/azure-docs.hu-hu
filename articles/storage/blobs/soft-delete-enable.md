@@ -9,11 +9,12 @@ ms.topic: how-to
 ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 970a6dfc167a6bef7984598c60e7ce89c6e4b34c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2914dfed14360c114476025c74f3dc0c03d82e25
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463722"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224893"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>A Blobok Soft delete engedélyezése és kezelése
 
@@ -39,31 +40,31 @@ A Blobok törlésének engedélyezése a Storage-fiókban Azure Portal használa
 
 5. Kattintson a **Save (Mentés** ) gombra az adatvédelmi beállítások megerősítéséhez
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+![Képernyőkép az Azure Portalról a megválasztott adatvédelmi blob-szolgáltatással.](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
 A nem kötelezően törölt Blobok megtekintéséhez jelölje be a **törölt Blobok megjelenítése** jelölőnégyzetet.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
+![Képernyőfelvétel: az adatvédelem blob szolgáltatás lapja, a törölt Blobok megjelenítése lehetőség kiemelve.](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
 Egy adott blobhoz tartozó, törölt Pillanatképek megtekintéséhez válassza ki a blobot, majd kattintson a **Pillanatképek megtekintése**elemre.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
+![Képernyőfelvétel: az adatvédelem blob szolgáltatás lapja, a pillanatképek megtekintése lehetőség kiemelve.](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
 Győződjön meg arról, hogy a **törölt Pillanatképek megjelenítése** jelölőnégyzet be van jelölve.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
+![Képernyőkép a pillanatképek megtekintése oldalon a törölt Blobok megjelenítése lehetőség kiemelve.](media/soft-delete-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots-check.png)
 
 Ha a törölt blobra vagy pillanatképre kattint, figyelje az új blob tulajdonságait. Ezek azt jelzik, hogy mikor lett törölve az objektum, és hány nap van hátra, amíg a blob vagy a blob pillanatképe véglegesen lejár. Ha a helyreállított törölt objektum nem pillanatkép, akkor lehetősége van törölni a törlést is.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
+![Képernyőkép a nem kötelezően törölt objektumok részleteiről.](media/soft-delete-enable/storage-blob-soft-delete-portal-properties.png)
 
 Ne feledje, hogy a Blobok törlésének visszavonása törli az összes társított pillanatképet is. Ha törölni szeretné a nem törölt pillanatképeket egy aktív blobhoz, kattintson a blobra, és válassza az **összes pillanatkép törlésének**visszavonása lehetőséget.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
+![Képernyőkép a helyreállítható törölt Blobok részleteiről.](media/soft-delete-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
 Miután visszavonta egy blob pillanatképének törlését, az **előléptetés** gombra kattintva másolhatja a pillanatképet a gyökérkönyvtárba, így visszaállíthatja a blobot a pillanatképre.
 
-![](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
+![Képernyőkép a pillanatképek megtekintése oldalon, az előléptetés lehetőség kiemelve.](media/soft-delete-enable/storage-blob-soft-delete-portal-promote-snapshot.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

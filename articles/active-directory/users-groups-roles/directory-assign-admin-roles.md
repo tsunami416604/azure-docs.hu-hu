@@ -1,5 +1,5 @@
 ---
-title: Rendszergazdai szerepkör leírása és engedélyei – Azure AD | Microsoft Docs
+title: Azure AD-szerepkörök leírása és engedélyei – Azure Active Directory | Microsoft Docs
 description: A rendszergazdai szerepkör felhasználók hozzáadására, rendszergazdai szerepkörök hozzárendelésére, felhasználói jelszavak visszaállítására, felhasználói licencek kezelésére vagy tartományok felügyeletére használható.
 services: active-directory
 author: curtand
@@ -9,18 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/29/2020
+ms.date: 06/15/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70d53bf3d97f27caae7d3dee7cd03a4606d6761c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: dd0d17732991fd97b2406c9c5f182408f4746d96
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921751"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223873"
 ---
-# <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
+# <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkörök engedélyezése az Azure Active Directoryban
 
 A Azure Active Directory (Azure AD) használatával korlátozott rendszergazdákat jelölhet ki a kevésbé Kiemelt szerepkörökben lévő Identity Tasks-feladatok kezelésére. A rendszergazdák olyan célokra rendelhetők hozzá, mint a felhasználók hozzáadása vagy módosítása, a rendszergazdai szerepkörök hozzárendelése, a felhasználói jelszavak alaphelyzetbe állítása, a felhasználói licencek kezelése és a tartománynevek kezelése. Az [alapértelmezett felhasználói engedélyeket](../fundamentals/users-default-permissions.md) csak az Azure ad felhasználói beállításaiban lehet módosítani.
 
@@ -41,6 +42,11 @@ Lehetséges, hogy egy szerepkört vagy szerepkört adtak hozzá az Azure AD-hez,
 ## <a name="assign-or-remove-administrator-roles"></a>Rendszergazdai szerepkörök kiosztása vagy eltávolítása
 
 Ha meg szeretné tudni, hogyan rendelhet hozzá rendszergazdai szerepköröket egy felhasználóhoz Azure Active Directoryban, tekintse meg [a rendszergazdai szerepkörök megtekintése és társítása a Azure Active Directory](directory-manage-roles-portal.md).
+
+> [!Note]
+> Ha rendelkezik egy prémium szintű Azure AD-licenccel, és Ön már Privileged Identity Management (PIM) felhasználó, az összes szerepkör-felügyeleti feladat elvégzése a Privilege Identity Management szolgáltatásban történik, nem az Azure AD-ben.
+>
+> ![A PIM-ben felügyelt Azure AD-szerepkörök olyan felhasználók számára, akik már használják a PIM-t, és prémium P2 licenccel rendelkeznek](./media/directory-manage-roles-portal/pim-manages-roles-for-p2.png)
 
 ## <a name="available-roles"></a>Elérhető szerepkörök
 
@@ -179,6 +185,7 @@ Ez a szerepkör csak az [eszközbeállítások](https://aad.portal.azure.com/#bl
 ### <a name="directory-readers"></a>[Directory-olvasók](#directory-readers-permissions)
 
 Az ebben a szerepkörben lévő felhasználók beolvashatják az alapszintű címtár-információkat. A következő szerepkört kell használni:
+
 * A vendég felhasználói számára az olvasási hozzáférés megadása helyett egy adott készletet adjon meg.
 * A nem rendszergazdai jogosultságú felhasználók megadott készletének megadása Azure Portal ha "az Azure AD-portálhoz való hozzáférés korlátozása csak a rendszergazdák számára" beállítás értéke "yes".
 * Egyszerű szolgáltatásokhoz való hozzáférés biztosítása a címtár. Read. All nem lehetőség.
@@ -308,6 +315,7 @@ Az ebben a szerepkörben lévő felhasználók az üzenetközpont összes értes
 Az ebben a szerepkörben lévő felhasználók az [Office 365 Message Centerben](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) ellenőrizhetik az értesítéseket és a tanácsadói állapot frissítéseit, például az Exchange, az Intune és a Microsoft Teams szolgáltatásban konfigurált szolgáltatásokat. Az üzenetsor-olvasó hetente e-mail-kivonatokat fogad a hozzászólások, a frissítések, és megoszthatja az üzenetsor-bejegyzéseket az Office 365-ben. Az Azure AD-ben az ehhez a szerepkörhöz hozzárendelt felhasználók csak olvasási hozzáféréssel rendelkeznek az Azure AD-szolgáltatásokhoz, például a felhasználókhoz és a csoportokhoz. Ez a szerepkör nem rendelkezik hozzáféréssel a támogatási jegyek megtekintéséhez, létrehozásához és kezeléséhez.
 
 ### <a name="modern-commerce-administrator"></a>[Modern kereskedelmi rendszergazda](#modern-commerce-administrator-permissions)
+
 Ne használja. Ezt a szerepkört a rendszer automatikusan a kereskedelemből rendeli hozzá, és semmilyen más használatra nem javasolt vagy nem támogatott. A részleteket alább találja.
 
 A modern kereskedelmi rendszergazdai szerepkör lehetővé teszi, hogy bizonyos felhasználók hozzáférhessenek Microsoft 365 felügyeleti központhoz, és a bal oldali navigációs bejegyzéseket megtekintsék a **Kezdőlap**, a **számlázás**és a **támogatás**számára. Az ezeken a területeken elérhető tartalmakat a felhasználók számára a saját maguk vagy a szervezete számára vásárolt termékek kezeléséhez rendelt [kereskedelmi szerepkörök](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles) szabályozzák. Ilyen lehet például a számlák kifizetése, illetve a számlázási fiókokhoz és a számlázási profilokhoz való hozzáférés. 
@@ -315,17 +323,17 @@ A modern kereskedelmi rendszergazdai szerepkör lehetővé teszi, hogy bizonyos 
 A modern kereskedelmi rendszergazdai szerepkörrel rendelkező felhasználók általában rendszergazdai jogosultságokkal rendelkeznek más Microsoft vásárlási rendszerekben, de nem rendelkeznek globális rendszergazdai vagy számlázási rendszergazdai szerepkörökkel a felügyeleti központ eléréséhez. 
 
 **Mikor van hozzárendelve a modern kereskedelmi rendszergazdai szerepkör?**
+
 * **Önkiszolgáló vásárlás a Microsoft 365 felügyeleti központban** – az önkiszolgáló vásárlás lehetővé teszi a felhasználóknak az új termékek kipróbálását a saját maguk általi megvásárlásával vagy regisztrálásával. Ezeket a termékeket a felügyeleti központban kezelheti. Azok a felhasználók, akik önkiszolgáló vásárlást végeznek, egy szerepkört kapnak a kereskedelmi rendszeren, és a modern kereskedelmi rendszergazda szerepkört, hogy a vásárlásokat a felügyeleti központban tudják kezelni. A rendszergazdák letilthatják az önkiszolgáló vásárlásokat (Power BI, energiagazdálkodási alkalmazások, automatizálás) a [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide)használatával. További információért olvassa el az [önkiszolgáló vásárlással kapcsolatos gyakori kérdéseket](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
-* **Vásárlások a Microsoft kereskedelmi piactérről** – az önkiszolgáló vásárláshoz hasonlóan, amikor egy felhasználó terméket vagy szolgáltatást vásárol Microsoft AppSource vagy az Azure Marketplace-en, a modern kereskedelmi rendszergazdai szerepkör hozzá lesz rendelve, ha nem rendelkezik globális rendszergazdai vagy számlázási rendszergazdai szerepkörrel. Bizonyos esetekben előfordulhat, hogy a felhasználók nem tudják a vásárlásokat letiltani. További információ: [Microsoft kereskedelmi piactér](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase).   
-* A Microsoft **javaslatai** – a javaslat a Microsoft hivatalos ajánlata a Microsoft termékeinek és szolgáltatásainak megvásárlására. Ha a javaslatot fogadó személy nem rendelkezik globális rendszergazdai vagy számlázási rendszergazdai szerepkörrel az Azure AD-ben, akkor a javaslat és a modern kereskedelmi rendszergazdai szerepkör a felügyeleti központ eléréséhez is hozzá van rendelve. Amikor hozzáférnek a felügyeleti központhoz, csak azok a funkciók használhatók, amelyeket a kereskedelmi jellemző szerepköre is jogosult. 
+* **Vásárlások a Microsoft kereskedelmi piactérről** – az önkiszolgáló vásárláshoz hasonlóan, amikor egy felhasználó terméket vagy szolgáltatást vásárol Microsoft AppSource vagy az Azure Marketplace-en, a modern kereskedelmi rendszergazdai szerepkör hozzá lesz rendelve, ha nem rendelkezik globális rendszergazdai vagy számlázási rendszergazdai szerepkörrel. Bizonyos esetekben előfordulhat, hogy a felhasználók nem tudják a vásárlásokat letiltani. További információ: [Microsoft kereskedelmi piactér](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase).
+* A Microsoft **javaslatai** – a javaslat a Microsoft hivatalos ajánlata a Microsoft termékeinek és szolgáltatásainak megvásárlására. Ha a javaslatot fogadó személy nem rendelkezik globális rendszergazdai vagy számlázási rendszergazdai szerepkörrel az Azure AD-ben, akkor a javaslat és a modern kereskedelmi rendszergazdai szerepkör a felügyeleti központ eléréséhez is hozzá van rendelve. Amikor hozzáférnek a felügyeleti központhoz, csak azok a funkciók használhatók, amelyeket a kereskedelmi jellemző szerepköre is jogosult.
 * **Commerce-specifikus szerepkörök** – egyes felhasználók kereskedelmi-specifikus szerepköröket kapnak. Ha a felhasználó nem globális vagy számlázási rendszergazda, akkor a modern kereskedelmi rendszergazdai szerepkört kapják meg, hogy hozzáférhessenek a felügyeleti központhoz.  
 
-Ha a modern kereskedelmi rendszergazdai szerepkör nincs hozzárendelve egy felhasználóhoz, akkor elveszti a hozzáférést Microsoft 365 felügyeleti központhoz. Ha bármilyen terméket kezelnek, akár saját maguk, akár a szervezete számára, nem lesznek képesek a felügyeletre. Ez magában foglalhatja a licencek hozzárendelését, a fizetési módok módosítását, a számlák kifizetését, valamint az előfizetések kezeléséhez szükséges egyéb feladatokat. 
+Ha a modern kereskedelmi rendszergazdai szerepkör nincs hozzárendelve egy felhasználóhoz, akkor elveszti a hozzáférést Microsoft 365 felügyeleti központhoz. Ha bármilyen terméket kezelnek, akár saját maguk, akár a szervezete számára, nem lesznek képesek a felügyeletre. Ez magában foglalhatja a licencek hozzárendelését, a fizetési módok módosítását, a számlák kifizetését, valamint az előfizetések kezeléséhez szükséges egyéb feladatokat.
 
 ### <a name="network-administrator"></a>[Hálózati rendszergazda](#network-administrator-permissions)
 
-Az ebben a szerepkörben lévő felhasználók áttekinthetik a Microsoft által a saját felhasználói helyükről érkező hálózati telemetria alapuló hálózati peremhálózati javaslatokat. Az Office 365-es hálózati teljesítménye a vállalati ügyfél-hálózati peremhálózati architektúrára támaszkodik, amely általában a felhasználó helye. Ez a szerepkör lehetővé teszi a felderített felhasználói helyszínek szerkesztését és a hálózati paraméterek konfigurálását az adott helyszíneken a továbbfejlesztett telemetria-mérések és kialakítási javaslatok megkönnyítése érdekében. 
-
+Az ebben a szerepkörben lévő felhasználók áttekinthetik a Microsoft által a saját felhasználói helyükről érkező hálózati telemetria alapuló hálózati peremhálózati javaslatokat. Az Office 365-es hálózati teljesítménye a vállalati ügyfél-hálózati peremhálózati architektúrára támaszkodik, amely általában a felhasználó helye. Ez a szerepkör lehetővé teszi a felderített felhasználói helyszínek szerkesztését és a hálózati paraméterek konfigurálását az adott helyszíneken a továbbfejlesztett telemetria-mérések és kialakítási javaslatok megkönnyítése érdekében
 ### <a name="office-apps-administrator"></a>[Office-alkalmazások rendszergazdája](#office-apps-administrator-permissions)
 
 Az ebben a szerepkörben lévő felhasználók az Office 365 alkalmazások Felhőbeli beállításait kezelhetik. Ez magában foglalja a felhőalapú házirendek kezelését, az önkiszolgáló Letöltés felügyeletét, valamint az Office-alkalmazások kapcsolódó jelentésének megtekintését. Ez a szerepkör emellett lehetőséget biztosít a támogatási jegyek kezelésére és a szolgáltatás állapotának figyelésére a fő felügyeleti központban. Az ehhez a szerepkörhöz hozzárendelt felhasználók az Office-alkalmazások új szolgáltatásainak kommunikációját is kezelhetik. 
@@ -459,7 +467,7 @@ Az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rende
 > A Microsoft Graph API-ban és az Azure AD PowerShellben ez a szerepkör "SharePoint-szolgáltatás rendszergazdája" lesz azonosítva. A [Azure Portal](https://portal.azure.com)a "SharePoint Administrator".
 
 > [!NOTE]
-> Ez a szerepkör hatókörön belüli engedélyeket is biztosít a Microsoft Intune Microsoft Graph API számára, így lehetővé teszi a SharePoint-és Onedrive-erőforrásokkal kapcsolatos házirendek felügyeletét és konfigurálását.
+> Ez a szerepkör hatókörön belüli engedélyeket is biztosít a Microsoft Intune Microsoft Graph API számára, így lehetővé teszi a SharePoint-és OneDrive-erőforrásokkal kapcsolatos házirendek felügyeletét és konfigurálását.
 
 ### <a name="skype-for-business--lync-administrator"></a>[Skype vállalati verzió/Lync-rendszergazda](#lync-service-administrator-permissions)
 
@@ -486,13 +494,13 @@ A szerepkör felhasználói a Microsoft Teams munkaterhelésének minden aspektu
 
 ### <a name="user-administrator"></a>[Felhasználói rendszergazda](#user-administrator-permissions)
 
-Az ezzel a szerepkörrel rendelkező felhasználók létrehozhatnak felhasználókat, és kezelhetik a felhasználók minden aspektusát bizonyos korlátozásokkal (lásd alább), és frissíthetik a jelszó-elévülési házirendeket. Emellett az ezzel a szerepkörrel rendelkező felhasználók az összes csoportot is létrehozhatják és kezelhetik. Ez a szerepkör magában foglalja a felhasználói nézetek létrehozását és kezelését, a támogatási jegyek kezelését és a szolgáltatás állapotának figyelését is. A felhasználói rendszergazdáknak nincs engedélye arra, hogy a legtöbb rendszergazdai szerepkörbe tartozó felhasználókhoz felhasználói tulajdonságokat kezeljenek. Az ehhez a szerepkörhöz tartozó felhasználó nem rendelkezik az MFA felügyeletéhez szükséges engedélyekkel. A korlátozás alól kivételt képező szerepkörök az alábbi táblázatban láthatók.
+Az ezzel a szerepkörrel rendelkező felhasználók létrehozhatnak felhasználókat, és kezelhetik a felhasználók minden aspektusát bizonyos korlátozásokkal (lásd a táblázatot), és frissíthetik a jelszó-elévülési házirendeket. Emellett az ezzel a szerepkörrel rendelkező felhasználók az összes csoportot is létrehozhatják és kezelhetik. Ez a szerepkör magában foglalja a felhasználói nézetek létrehozását és kezelését, a támogatási jegyek kezelését és a szolgáltatás állapotának figyelését is. A felhasználói rendszergazdáknak nincs engedélye arra, hogy a legtöbb rendszergazdai szerepkörbe tartozó felhasználókhoz felhasználói tulajdonságokat kezeljenek. Az ehhez a szerepkörhöz tartozó felhasználó nem rendelkezik az MFA felügyeletéhez szükséges engedélyekkel. A korlátozás alól kivételt képező szerepkörök az alábbi táblázatban láthatók.
 
-| | |
+| **Engedély** | **Elvégezhető** |
 | --- | --- |
 |Általános engedélyek|<p>Felhasználók és csoportok létrehozása</p><p>Felhasználói nézetek létrehozása és kezelése</p><p>Office-támogatási jegyek kezelése<p>Jelszó-elévülési szabályzatok frissítése|
-|<p>Minden felhasználónál, beleértve az összes rendszergazdát</p>|<p>Licencek kezelése</p><p>Az összes felhasználói tulajdonság kezelése az egyszerű felhasználónév kivételével</p>
-|Csak olyan felhasználóknál, akik nem rendszergazdák vagy a következő korlátozott rendszergazdai szerepkörök valamelyikében vannak:<ul><li>Directory-olvasók<li>Vendég meghívója<li>Segélyszolgálat rendszergazdája<li>Üzenetközpont-olvasó<li>Jelentések olvasója<li>Felhasználói rendszergazda|<p>Törlés és visszaállítás</p><p>Letiltás és engedélyezés</p><p>Frissítési tokenek érvénytelenítése</p><p>Az összes felhasználói tulajdonság kezelése, beleértve az egyszerű felhasználónevet</p><p>Új jelszó létrehozása</p><p>Eszköz kulcsainak frissítése</p>|
+| <p>Minden felhasználónál, beleértve az összes rendszergazdát</p>|<p>Licencek kezelése</p><p>Az összes felhasználói tulajdonság kezelése az egyszerű felhasználónév kivételével</p>
+| Csak olyan felhasználóknál, akik nem rendszergazdák vagy a következő korlátozott rendszergazdai szerepkörök valamelyikében vannak:<ul><li>Directory-olvasók<li>Vendég meghívója<li>Segélyszolgálat rendszergazdája<li>Üzenetközpont-olvasó<li>Jelentések olvasója<li>Felhasználói rendszergazda|<p>Törlés és visszaállítás</p><p>Letiltás és engedélyezés</p><p>Frissítési tokenek érvénytelenítése</p><p>Az összes felhasználói tulajdonság kezelése, beleértve az egyszerű felhasználónevet</p><p>Új jelszó létrehozása</p><p>Eszköz kulcsainak frissítése</p>|
 
 > [!IMPORTANT]
 > Az ezzel a szerepkörrel rendelkező felhasználók megváltoztathatják azokat a személyeket, akik hozzáférhetnek a bizalmas vagy magánjellegű információkhoz, illetve a Azure Active Directoryon belül és kívül is kritikus konfigurációhoz. A felhasználó jelszavának módosítása azt jelentheti, hogy a felhasználó identitását és engedélyeit feltételezi. Például:
@@ -1920,7 +1928,7 @@ A következő szerepkörök nem használhatók. Elavultak, és a későbbiekben 
 
 Nem minden, a PowerShell vagy az MS Graph API által visszaadott szerepkör jelenik meg Azure Portalban. A következő táblázat ezeket a különbségeket rendezi.
 
-API neve | Azure Portal neve | Jegyzetek
+API neve | Azure Portal neve | Megjegyzések
 -------- | ------------------- | -------------
 Vállalati rendszergazda | Globális rendszergazda | [A jobb érthetőség érdekében a név módosult](directory-assign-admin-roles.md#role-template-ids)
 CRM szolgáltatás rendszergazdája | Dynamics 365-rendszergazda | [A termék aktuális arculatát tükrözi](directory-assign-admin-roles.md#role-template-ids)

@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: d265726835620c5b468c8a81570e80c7167b2997
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: dbb1d73fc2b19ef701cb08ced24c634bbbadb235
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084341"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231590"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database nagy kapacitású – gyakori kérdések
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,15 +42,15 @@ A virtuális mag-alapú szolgáltatási rétegek a következő táblázatban le�
 
 | | Erőforrás típusa | Általános célú |  Rugalmas skálázás | üzletileg kritikus |
 |:---:|:---:|:---:|:---:|:---:|
-| **Legjobb a következőhöz:** |Mind|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|A legtöbb üzleti számítási feladat. A tárterület automatikus skálázása 100 TB-ig, gyors vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
+| **A következőkre alkalmas** |Mind|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|A legtöbb üzleti számítási feladat. A tárterület automatikus skálázása 100 TB-ig, gyors vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
 |  **Erőforrás típusa** ||SQL Database/SQL felügyelt példány | Önálló adatbázis | SQL Database/SQL felügyelt példány |
 | **Számítási méret**|SQL Database * | 1 – 80 virtuális mag | 1 – 80 virtuális mag * | 1 – 80 virtuális mag |
-| |Felügyelt SQL-példány | 8, 16, 24, 32, 40, 64, 80 virtuális mag | N.A. | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
+| **Számítási méret**|Felügyelt SQL-példány | 8, 16, 24, 32, 40, 64, 80 virtuális mag | N/A | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
 | **Tárolás típusa** | Mind |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
 | **Tárterület mérete** | SQL Database *| 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
-| | Felügyelt SQL-példány  | 32 GB – 8 TB | N.A. | 32 GB – 4 TB |
+| **Tárterület mérete** | Felügyelt SQL-példány  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
 | **IOPS** | Önálló adatbázis | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
-| | Felügyelt SQL-példány | Fájlmérettől függ | N.A. | 1375 IOPS/virtuális mag |
+| **IOPS** | Felügyelt SQL-példány | Fájlmérettől függ | N/A | 1375 IOPS/virtuális mag |
 |**Rendelkezésre állás**|Mind|1 replika, nincs olvasási felskálázás, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási felskálázás, részleges helyi gyorsítótár | 3 replika, 1 olvasási felskálázás, zóna – redundáns HA, teljes helyi tárterület |
 |**Biztonsági másolatok**|Mind|RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap)| RA-GRS, 7 napos megőrzés, állandó időpontok közötti helyreállítási idő (PITR) | RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap) |
 
@@ -96,7 +96,7 @@ A nagy kapacitású a számítási feladatok igénye alapján gyors skálázhat�
 
 ### <a name="can-i-mix-hyperscale-and-single-databases-in-a-single-server"></a>Használhatok nagy kapacitású és önálló adatbázisokat egyetlen kiszolgálón
 
-Igen.
+Igen, írhat.
 
 ### <a name="does-hyperscale-require-my-application-programming-model-to-change"></a>A nagy kapacitású meg kell változtatni az alkalmazás programozási modelljét
 

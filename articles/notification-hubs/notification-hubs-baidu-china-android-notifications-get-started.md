@@ -14,12 +14,12 @@ ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaaaedbd6d2262f632bd47aa6eefb4cc83ab1abd
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79536989"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223958"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Ismerkedés a Notification Hubs Baiduval való használatával
 
@@ -415,8 +415,8 @@ Jegyezze fel a Kapcsolati adatok elérése ablakban látható `DefaultListenShar
 
 Az [Azure Portalról] érkező értesítések fogadásának gyors teszteléséhez használja az értesítési központ konfigurációs képernyőjén található **Küldés** gombot, ahogy az az alábbi képernyőn is látható:
 
-![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
-![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
+![Képernyőkép az Azure Portalról, amelyen a test Send (küldés) lehetőség piros színnel van kiemelve, és egy piros nyíl mutat rá. ](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
+ ![ Képernyőkép a Baidu-teszt küldési lapjáról a Azure Portal.](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
 
 A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis kódtár használatával, mint a Mobile Services vagy az ASP.NET. Ha a háttérszolgáltatáshoz nem érhető el könyvtár, az értesítési üzenetek küldéséhez használhatja közvetlenül a REST API-t.
 
@@ -436,7 +436,7 @@ Ebben a szakaszban az értesítések .NET-konzolalkalmazásból történő küld
 
 1. Hozzon létre egy új Visual C#-konzolalkalmazást:
 
-    ![](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
+    ![Képernyőkép az új projekt párbeszédpanelről, a Console Application Visual C# lehetőség kiemelve.](./media/notification-hubs-baidu-get-started/ConsoleProject.png)
 
 2. A Package Manager Console (Csomagkezelő konzol) ablakban az **Alapértelmezett projekt** értékeként adja meg az új konzolalkalmazás-projektet, majd a konzolablakban hajtsa végre az alábbi parancsot:
 
@@ -446,7 +446,7 @@ Ebben a szakaszban az értesítések .NET-konzolalkalmazásból történő küld
 
     Ez az utasítás hozzáad egy, az Azure Notification Hubs SDK-ra mutató hivatkozást a [Microsoft.Azure.Notification Hubs NuGet-csomaggal](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+    ![Képernyőkép a Package Manager konzol párbeszédpanelről, amelyen a Küldés az értesítési központba lehetőség piros színnel van kiválasztva.](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
 3. Nyissa meg a `Program.cs` fájlt, és adja hozzá a következő using utasítást:
 
@@ -485,5 +485,5 @@ Tesztértesítést az [Azure Portal] hibakeresési lapjáról küldhet. Ha a .NE
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: https://push.baidu.com/sdk/push_client_sdk_for_android
-[Azure Portalra]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Baidu portal]: https://www.baidu.com/

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7967b58819523173fd66d45eeabeaddc8605a21d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76153191"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229465"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Mi az Azure-hoz készült Avere vFXT?
 
@@ -66,7 +66,7 @@ Az Avere vFXT-fürt igény szerint gyorsítótárazza a fájlokat. Az ismételt 
 
 A avere vFXT for Azure a következő Azure-erőforrásokat használja:
 
-|Azure-összetevő|   |
+|Azure-összetevő| Erőforrás |
 |----------|-----------|
 |Virtual machines (Virtuális gépek)|3 vagy több E32s_v3|
 |Prémium szintű SSD-tár|200 GB operációsrendszer-tárhely és 1–4 TB gyorsítótártér csomópontonként |

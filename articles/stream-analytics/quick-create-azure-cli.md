@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/01/2020
-ms.openlocfilehash: 8406c556ecaa0cea968fc1976d709b4f3c51c78b
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1613486880885a3b7838b1bf806c17f88e3be06d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852525"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231267"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Gyors útmutató: Azure Stream Analytics-feladatok létrehozása az Azure CLI használatával
 
@@ -49,7 +49,7 @@ Ebben a rövid útmutatóban az Azure CLI használatával határozhat meg egy ol
     az extension add --name stream-analytics
     ```
 
-   Telepítse az [Azure IoT bővítményét](/cli/azure/ext/azure-iot/azure-iot) a következő parancs futtatásával:
+   Telepítse az [Azure IoT bővítményét](/cli/azure/ext/azure-iot) a következő parancs futtatásával:
 
     ```azurecli
     az extension add --name azure-iot
@@ -154,7 +154,7 @@ az stream-analytics job create \
 
 ## <a name="configure-input-to-the-job"></a>A feladat bemenetének konfigurálása
 
-Adjon hozzá egy bemenetet a feladathoz az az [stream-Analytics input](/cli/azure/ext/stream-analytics/stream-analytics/input?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-input-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat bemenetének a neve, az erőforráscsoport neve, és a feladat bemenetének definíciója adható meg paraméterként. A feladat bemenetének definíciója egy JSON-fájl, amely a feladat bemenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ebben a példában egy IoT Hub fog létrehozni bemenetként.
+Adjon hozzá egy bemenetet a feladathoz az az [stream-Analytics input](/cli/azure/ext/stream-analytics/stream-analytics/input?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-input-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat bemenetének a neve, az erőforráscsoport neve, és a feladat bemenetének definíciója adható meg paraméterként. A feladathoz tartozó bemeneti definíció egy olyan JSON-fájl, amely a feladatok bemenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ebben a példában egy IoT Hub fog létrehozni bemenetként.
 
 Hozzon létre a helyi gépén egy `datasource.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Győződjön meg arról, hogy az értéket lecseréli a `sharedAccessPolicyKey` `SharedAccessKey` IoT hub az előző szakaszban mentett kapcsolódási karakterlánc egy részével.
 
@@ -196,9 +196,9 @@ az stream-analytics input create
 
 ## <a name="configure-output-to-the-job"></a>A feladat kimenetének konfigurálása
 
-Adja hozzá a kimenetet a feladatokhoz az az [stream-Analytics output Create](/cli/azure/ext/stream-analytics/stream-analytics/output?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-output-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat kimenetének a neve, az erőforráscsoport neve, és a feladat kimenetének definíciója adható meg paraméterként. A feladat kimenetének definíciója egy JSON-fájl, amely a feladat kimenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ez a példa egy Blob Storage-tárolót használ kimenetként.
+Adja hozzá a kimenetet a feladatokhoz az az [stream-Analytics output Create](/cli/azure/ext/stream-analytics/stream-analytics/output?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-output-create) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat kimenetének a neve, az erőforráscsoport neve, és a feladat kimenetének definíciója adható meg paraméterként. A feladatok kimenetének definíciója egy olyan JSON-fájl, amely a feladatok kimenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ez a példa egy Blob Storage-tárolót használ kimenetként.
 
-Hozzon létre a helyi gépén egy `datasink.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Ügyeljen arra, hogy az `accountKey` értékét lecserélje a tárfiókja hozzáférési kulcsára, amelyet a $storageAccountKey értéke ad meg.
+Hozzon létre a helyi gépén egy `datasink.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Ügyeljen arra, hogy az értékét cserélje le a `accountKey` Storage-fiókja hozzáférési kulcsára, amely $storageAccountKey értékben tárolt érték.
 
 ```json
 {
@@ -266,7 +266,7 @@ az stream-analytics job start
     --output-start-mode JobStartTime
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha később is szeretné használni a feladatot, akkor nem kell törölnie, hanem elég, ha leállítja. Ha nem kívánja tovább használni ezt a feladatot, törölje az ebben a rövid útmutatóban létrehozott összes erőforrást a következő parancsmag futtatásával:
 

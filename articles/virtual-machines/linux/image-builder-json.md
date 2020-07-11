@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 975d6842110ffa864a534e09cf35d0d33612d7d5
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135074"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221204"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -69,7 +69,7 @@ A hely az a régió, ahol az egyéni rendszerkép létre lesz hozva. A rendszerk
 - USA 2. keleti régiója
 - USA nyugati középső régiója
 - USA nyugati régiója
-- USA nyugati régiója, 2.
+- USA 2. nyugati régiója
 - Észak-Európa
 - Nyugat-Európa
 
@@ -106,7 +106,7 @@ Ha nem ad meg VNET-tulajdonságokat, akkor a rendszerkép-szerkesztő létrehozz
         "resourceGroupName": "<vnetRgName>"
     }
 ```
-## <a name="tags"></a>Tags
+## <a name="tags"></a>Címkék
 
 Ezek a generált rendszerképhez megadható kulcs/érték párok.
 
@@ -150,6 +150,9 @@ Az API-nak szüksége van egy "forrás típusa" elemre, amely meghatározza a re
 - PlatformImage – jelezte, hogy a forrás rendszerkép egy Piactéri rendszerkép.
 - ManagedImage – ez a megoldás akkor használható, ha egy normál felügyelt rendszerképből indul.
 - SharedImageVersion – ez akkor használatos, ha a rendszerkép verzióját megosztott képtárban használja forrásként.
+
+> [!NOTE]
+> Meglévő egyéni Windows-rendszerképek használatakor a Sysprep-parancsot akár 8 alkalommal is futtathatja egyetlen Windows-lemezképen, további információt a [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) dokumentációjában talál.
 
 ### <a name="iso-source"></a>ISO-forrás
 Ezt a funkciót elavultunk a rendszerkép-szerkesztőből, mivel most már [RHEL a saját előfizetéseit](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos), tekintse át az alábbi ütemterveket:
@@ -468,7 +471,10 @@ Az Azure rendszerkép-szerkesztő három terjesztési célt támogat:
 - **sharedImage** – közös rendszerkép-gyűjtemény.
 - **VHD** – VHD egy Storage-fiókban.
 
-A rendszerképeket az azonos konfigurációban található cél típusokra is terjesztheti, [példákat](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)talál.
+A rendszerképeket az azonos konfigurációban lévő összes cél típusra terjesztheti.
+
+> [!NOTE]
+> Az alapértelmezett AIB Sysprep-parancs nem tartalmazza a "/Mode: VM" parancsot, azonban ez valószínűleg szükséges ahhoz, hogy olyan lemezképeket hozzon létre, amelyeken telepítve lesz a HyperV szerepkör. Ha ezt a parancs-argumentumot fel kell vennie, felül kell bírálnia a Sysprep parancsot.
 
 Mivel több célhely is kiterjeszthető a szolgáltatásba, a rendszerkép-szerkesztő minden olyan terjesztési cél állapotát fenntartja, amely elérhető a lekérdezéssel `runOutputName` .  Az egy olyan `runOutputName` objektum, amelyről lekérdezheti a terjesztés utáni adatokat. Lekérdezheti például a virtuális merevlemez helyét, illetve azokat a régiókat, amelyeken a rendszerkép verziója replikálva lett, vagy a SIG-rendszerkép verziója létrejött. Ez az összes terjesztési cél tulajdonsága. A `runOutputName` -nek egyedinek kell lennie az egyes terjesztési célkitűzéseknél. Íme egy példa, amely egy megosztott képgyűjtemény-eloszlás lekérdezését szemlélteti:
 
@@ -603,7 +609,7 @@ az resource show \
 > [!NOTE]
 > A virtuális merevlemez létrehozása után a lehető leghamarabb másolja át egy másik helyre. A virtuális merevlemezt az ideiglenes erőforráscsoport tárolja, amely akkor jön létre, amikor a rendszer elküldi a képsablont az Azure rendszerkép-szerkesztő szolgáltatásba. Ha törli a képsablont, akkor elveszíti a VHD-t. 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az [Azure rendszerkép-készítő githubon](https://github.com/danielsollondon/azvmimagebuilder)különböző forgatókönyvekhez készült minta. JSON fájlok találhatók.
  

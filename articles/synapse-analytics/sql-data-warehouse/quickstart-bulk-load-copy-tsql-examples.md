@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: f5f6c6970ad8bb697ceb118b6725b37e93ca80b5
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 94f9aca38ebe6fef50b555fa0d5b09050d996366
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213057"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230621"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Adattárolás biztonságos betöltése a szinapszis SQL használatával
 
@@ -23,10 +23,10 @@ Ez a cikk a [copy utasítás](https://docs.microsoft.com/sql/t-sql/statements/co
 
 A következő mátrix ismerteti az egyes fájltípusok és a Storage-fiókok támogatott hitelesítési módszereit. Ez a forrás tárolási helyére és a hiba fájljának helyére vonatkozik.
 
-|                      |                CSV                |              Parquet              |                ORC                |
-| :------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|  Azure Blob Storage  | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE |              SAS/KULCS              |              SAS/KULCS              |
-| Azure Data Lake Gen2 | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE |
+|                          |                CSV                |              Parquet              |                ORC                |
+| :----------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
+|  **Azure Blob Storage**  | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE |              SAS/KULCS              |              SAS/KULCS              |
+| **Azure Data Lake Gen2** | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE | SAS/MSI/EGYSZERŰ SZOLGÁLTATÁSNÉV/KULCS/HRE |
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. Storage-fiók kulcsa a LF-rel a lezáró sor (Unix stílusú új sor)
 
@@ -129,7 +129,7 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 >
 > - Határozza meg a **Storage** **blob** -Adattulajdonost, közreműködőt vagy olvasó RBAC szerepkört. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől. 
 
-## <a name="e-service-principal-authentication"></a>E. Egyszerű szolgáltatásnév hitelesítése
+## <a name="e-service-principal-authentication"></a>E. Szolgáltatásnév-hitelesítés
 #### <a name="steps"></a>Lépések
 
 1. [Azure Active Directory-(HRE-) alkalmazás létrehozása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)

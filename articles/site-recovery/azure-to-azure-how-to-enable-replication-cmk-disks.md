@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 07/10/2020
 ms.author: mayg
-ms.openlocfilehash: 1e4dcd8847d7d79d816d80b453a37f58c45417fd
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 92b35284fd7bbb3d4f1196ee0d9bae4ce42d7c9e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135745"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224111"
 ---
 # <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Gépek replikálása ügyfél által felügyelt kulcsokkal (CMK) rendelkező lemezekkel
 
@@ -81,3 +81,8 @@ Az alábbi lépéseket követve módosíthatja a Site Recovery alapértelmezett 
 * Új CMK-kompatibilis lemez lett hozzáadva a replikált objektumhoz. Hogyan replikálható a lemez Azure Site Recovery használatával?
 
     A meglévő replikált elemek új CMK-kompatibilis lemezének hozzáadása nem támogatott. Tiltsa le a replikációt, és engedélyezze újra a replikációt a virtuális gép számára.
+
+* Engedélyeztem mind a platformot, mind az ügyfél által felügyelt kulcsokat, Hogyan biztosíthatom a lemezeket?
+
+    A kettős titkosítás engedélyezése a platformmal és az ügyfél által felügyelt kulcsokkal Site Recovery suppprted. A gép biztonsága érdekében kövesse a jelen cikk utasításait. Előre létre kell hoznia egy Double encryption enabled DES-t a célként megadott régióban. A virtuális gép replikálásának engedélyezésekor ezt a DES-t megadhatja Site Recovery.
+

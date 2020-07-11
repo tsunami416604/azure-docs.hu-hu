@@ -9,11 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 454ed810f950924d3dd790a2442fe29816bf940d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa8e928a10deb3d6d97e601c607074c09e0572e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838467"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223516"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>Előzetes verzió: rendszerkép létrehozása virtuális gépről
 
@@ -138,3 +139,5 @@ $job.State
 ## <a name="next-steps"></a>További lépések
 
 Miután meggyőződött róla, hogy az új rendszerkép verziója megfelelően működik, létrehozhat egy virtuális gépet. Hozzon létre egy virtuális gépet egy [speciális rendszerkép-verzióból](vm-specialized-image-version-powershell.md) vagy egy [általánosított rendszerkép-verzióból](vm-generalized-image-version-powershell.md).
+
+A vásárlási tervre vonatkozó információk megadásával kapcsolatos információkért lásd: [Azure Marketplace vásárlási terv információinak megadása képek létrehozásakor](marketplace-images.md).

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2b66ef1a28faf97759045d40ea0f649282b2d837
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91360776c50ce514985ad36242606223becbd933
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392917"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230876"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Egyéni e-mail-ellenőrzés a mailjet
 
@@ -57,7 +57,7 @@ Ezután tárolja a mailjet API-kulcsot egy Azure AD B2C házirend-kulcsban a sza
 
 ## <a name="create-a-mailjet-template"></a>Mailjet-sablon létrehozása
 
-Hozzon létre egy mailjet [dinamikus tranzakciós sablont](https://Mailjet.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)a létrehozott mailjet-fiókkal és egy Azure ad B2Ci mailjet API-kulccsal.
+Hozzon létre egy mailjet [dinamikus tranzakciós sablont](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)a létrehozott mailjet-fiókkal és egy Azure ad B2Ci mailjet API-kulccsal.
 
 1. A mailjet webhelyen nyissa meg a [tranzakciós sablonok](https://app.mailjet.com/templates/transactional) lapot, és válassza az **új sablon létrehozása**lehetőséget.
 1. Válassza **a HTML**-kódban való kódolással lehetőséget, majd válassza **a teljesen új kód**lehetőséget.
@@ -162,7 +162,7 @@ Hozzon létre egy mailjet [dinamikus tranzakciós sablont](https://Mailjet.com/d
     1. A **Tárgy**mezőben adja meg a tárgy alapértelmezett értékét. A mailjet ezt az értéket használja, ha az API nem tartalmaz tárgy paramétert.
     1. A **név**mezőbe írja be a vállalat nevét.
     1. A **cím**mezőben válassza ki az e-mail-címét
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
 1. A jobb felső sarokban válassza a **mentés & közzététel**, majd az **Igen, a módosítások közzététele** lehetőséget.
 1. Jegyezze fel a létrehozott sablon **azonosítóját** egy későbbi lépésben való használatra. Ezt az azonosítót kell megadnia [a jogcím-átalakítás hozzáadásakor](#add-the-claims-transformation).
 

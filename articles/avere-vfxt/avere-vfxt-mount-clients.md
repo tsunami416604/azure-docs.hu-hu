@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: c6a4b2c1d95bc803d10697ce2164ea190f824d96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8850162847f2dd416b0951a797e2eb0cd7d55d2
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505443"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229567"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt csatlakoztatása
 
@@ -102,7 +102,7 @@ A zökkenőmentes ügyfél-csatlakoztatás biztosításához adja át ezeket a b
 
 ``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Szükséges beállítások | |
+| Szükséges beállítások | Leírás |
 --- | ---
 ``hard`` | A vFXT-fürthöz való Soft-csatlakoztatások az alkalmazás hibáival és az esetleges adatvesztéssel vannak társítva.
 ``proto=netid`` | Ez a beállítás támogatja az NFS-hálózati hibák megfelelő kezelését.

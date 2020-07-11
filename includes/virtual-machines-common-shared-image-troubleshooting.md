@@ -1,21 +1,21 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/25/2019
+ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75773028"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226388"
 ---
-Ha problémát észlel a megosztott rendszerkép-katalógusokon, rendszerkép-definíciókon vagy rendszerképverziókon végzett műveletek végrehajtásakor, futtassa újból a sikertelen parancsot hibakeresési módban. A hibakeresési mód aktiválása a **-Debug** kapcsoló parancssori felülettel való átadásával és a **-Debug** kapcsolóval a PowerShell használatával történik. A hiba megtalálása után kövesse ezt a dokumentumot a hibák elhárításához.
+Ha problémát észlel a megosztott rendszerkép-katalógusokon, rendszerkép-definíciókon vagy rendszerképverziókon végzett műveletek végrehajtásakor, futtassa újból a sikertelen parancsot hibakeresési módban. A hibakeresési módot a parancssori felület `--debug` és a PowerShell-lel rendelkező kapcsoló átadásával aktiválja `-Debug` . A hiba megtalálása után kövesse ezt a dokumentumot a hibák elhárításához.
 
 
 ## <a name="unable-to-create-a-shared-image-gallery"></a>Nem hozható létre megosztott rendszerkép-katalógus
@@ -43,7 +43,7 @@ A képdefiníciók megengedett karakterei nagybetűs vagy kisbetűk, számjegyek
 
 A tulajdonságok, például a név, a közzétevő, az ajánlat, az SKU és az operációs rendszer típusa kötelező. Ellenőrizze, hogy az összes tulajdonság át lett-e adva.
 
-Győződjön meg arról, hogy a rendszerkép definíciójának **OSType**(Linux vagy Windows) megegyezik a rendszerkép verziójának létrehozásához használt forrás által felügyelt képpel. 
+Győződjön meg arról, hogy a rendszerkép definíciójának **OSType**(Linux vagy Windows) megegyezik a rendszerkép verziójának létrehozásához használt forrással. 
 
 
 ## <a name="unable-to-create-an-image-version"></a>Nem hozható létre rendszerképverzió 
@@ -84,7 +84,7 @@ Győződjön meg arról, hogy a virtuális gép vagy virtuálisgép-méretezést
 
 *A virtuális gép vagy a virtuálisgép-méretezési csoport létrehozása hosszú időt vesz igénybe.*
 
-Ellenőrizze, hogy a virtuális gép vagy virtuálisgép-méretezési csoport létrehozásához használni kívánt **OSType** megegyezik-e a rendszerkép verziójának létrehozásához használt forrás által felügyelt **OSType** . 
+Ellenőrizze, hogy a virtuális gép vagy virtuálisgép-méretezési csoport létrehozásához használni kívánt **OSType** megegyezik-e a rendszerkép verziójának létrehozásához használt **OSType** . 
 
 ## <a name="unable-to-share-resources"></a>Az erőforrások nem oszthatók meg
 

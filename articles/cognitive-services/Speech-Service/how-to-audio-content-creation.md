@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 083580435c467a7d4b6a4cede0a821a2c271962f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 72fecbdc173a6174e54a28e48f983965f397ba6a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589652"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224587"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>A hanganyag-létrehozási eszközzel fejlesztheti a szintézist
 
@@ -23,11 +23,13 @@ A [hangtartalom létrehozása](https://aka.ms/audiocontentcreation) egy online e
 
 A hangtartalom-létrehozási eszköz a [Speech szintézis Markup Language (SSML) nyelvén](speech-synthesis-markup.md)alapul. A Testreszabás és a finomhangolás egyszerűsítése érdekében a hangtartalom létrehozása lehetővé teszi, hogy valós időben vizuálisan vizsgálja meg a szöveg és a beszéd eredményét.
 
+Tekintse meg a hangtartalom létrehozásának [videós oktatóanyagát](https://www.youtube.com/watch?v=O1wIJ7mts_w) .
+
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
 Ez az ábra azokat a lépéseket mutatja be, amelyek a szöveg-beszéd kimenetek finomhangolásához szükségesek. Az alábbi hivatkozásokat követve további információkat tudhat meg az egyes lépésekről.
 
-![](media/audio-content-creation/audio-content-creation-diagram.jpg)
+![A szöveg és a beszéd közötti kimenet finomhangolásához szükséges lépések diagramja.](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
 1. [Állítsa be az Azure-fiókját és a beszédfelismerési erőforrást](#set-up-your-azure-account-and-speech-resource) a kezdéshez.
 2. [Hozzon létre egy hang-hangolási fájlt](#create-an-audio-tuning-file) egyszerű SZÖVEGES vagy SSML szkriptek használatával.
@@ -103,7 +105,7 @@ Miután áttekintette a hangkimenetet, és elégedett a hangolással és a beál
 | WAV | riff-16khz-16bit-mono-PCM | riff-24khz-16bit-mono-PCM |
 | MP3 | hang-16khz-128kbitrate-mono-MP3 | hang-24khz-160kbitrate-mono-MP3 |
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Hosszú hang API](https://aka.ms/long-audio-api)
 

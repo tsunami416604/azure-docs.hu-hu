@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: a36fdbb985711887baa04320bb75e1a85cab84fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0819f5196fffca25a840dc16d1df04cdd0a55029
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253868"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223312"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Az aktuális felhasználó regisztrálása leküldéses értesítésekhez a ASP.NET használatával
 
@@ -44,11 +44,11 @@ Ebből a témakörből megtudhatja, hogyan kérhet le leküldéses értesítése
 
      Ezen a ponton a storyboard a következőhöz hasonlóan néz ki:
 
-     ![][0]
+     ![Képernyőkép a MainStoryboard_iPhone. storyboard alkalmazásról a hozzáadott összetevőkkel.][0]
 
 2. A Segéd-szerkesztőben hozzon létre az összes kapcsolót az összes átváltott vezérlő számára, és hívja meg őket, kapcsolja össze a szövegmezőket a nézet vezérlővel (delegált), és hozzon létre egy **műveletet** a **Bejelentkezés** gombhoz.
 
-    ![][1]
+    ![Képernyőkép a MainStoryboard_iPhone. storyboard alkalmazás segéd-szerkesztőjéről][1]
 
     A BreakingNewsViewController. h fájlnak most a következő kódot kell tartalmaznia:
 

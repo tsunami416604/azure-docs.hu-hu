@@ -5,11 +5,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 description: Ismerje meg, hogy az Azure dev Spaces hogyan oszthat meg fejlesztési helyet az Azure Kubernetes szolgáltatásban másokkal a csapatában
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: 0fcb8be5107c7769af7e51dece9f190c8e7e22df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3cef7cd6a5113401cb1df3dd6c76e4dea3a7524d
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79474407"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229295"
 ---
 # <a name="share-azure-dev-spaces"></a>Azure Dev Spaces megosztása
 
@@ -18,7 +19,7 @@ Az Azure dev Spaces használatával megoszthatja a fejlesztői tárhelyét máso
 ## <a name="set-up-a-dev-space-for-multiple-developers"></a>Fejlesztői terület beállítása több fejlesztő számára
 
 1. Fejlesztői terület létrehozása az Azure-ban. Válassza a [.net Core és a vs Code](../get-started-netcore.md), a [.net Core és a Visual Studio](../get-started-netcore-visualstudio.md), vagy a [Node.js és a vs Code](../get-started-nodejs.md)elemet. A kiválasztott Azure-előfizetéshez tulajdonosi vagy közreműködői hozzáféréssel kell rendelkeznie.
-1. Győződjön meg arról, hogy minden csapattag rendelkezik a [megfelelő engedélyekkel az Azure dev Spaces-vezérlő eléréséhez](../troubleshooting.md#incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis). Beállíthatja például, hogy az Azure dev Space **erőforráscsoport** [közreműködői hozzáférést](/azure/active-directory/role-based-access-control-configure) biztosítson az egyes csapattagok számára. A következő parancs futtatásával tekintheti meg a fejlesztői terület erőforrás-csoportját:`azds show-context`
+1. Győződjön meg arról, hogy minden csapattag rendelkezik a [megfelelő engedélyekkel az Azure dev Spaces-vezérlő eléréséhez](../troubleshooting.md#incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis). Beállíthatja például, hogy az Azure dev Space **erőforráscsoport** [közreműködői hozzáférést](../../role-based-access-control/role-assignments-portal.md) biztosítson az egyes csapattagok számára. A következő parancs futtatásával tekintheti meg a fejlesztői terület erőforrás-csoportját:`azds show-context`
 1. Kérje meg a csapattagokat, hogy a fejlesztéshez **válassza ki a fejlesztői helyet** .
    * A **parancssor vagy a vs Code**: megtekintheti a meglévő Azure dev-helyeket, amelyekhez hozzáférése van: `azds space list` . Fejlesztői terület kiválasztása: `azds space select` .
    * **Visual Studio ide**: nyisson meg egy projektet a Visual Studióban, válassza az **Azure dev Spaces** elemet a rendszerindítási beállítások legördülő menüből. A megnyíló párbeszédpanelen válasszon ki egy meglévő fürtöt.

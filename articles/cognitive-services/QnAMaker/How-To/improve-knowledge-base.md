@@ -3,12 +3,12 @@ title: Tudásbázis fejlesztése – QnA Maker
 description: Az aktív tanulással javíthatja a Tudásbázis minőségét. Áttekintheti, elfogadhatja vagy elutasíthatja a meglévő kérdések eltávolítása vagy módosítása nélkül.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 88ccbc52e0eb3447d0b99cac9ba41761e292a6fd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650776"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231777"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Az aktív tanulás javasolt kérdéseinek elfogadása a Tudásbázisban
 
@@ -127,7 +127,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP-kérelem tulajdonsága|Name|Típus|Cél|
+|HTTP-kérelem tulajdonsága|Név|Típus|Cél|
 |--|--|--|--|
 |URL-útvonal paraméter|Tudásbázis-azonosító|sztring|A Tudásbázis GUID azonosítója.|
 |Egyéni altartomány|QnAMaker-erőforrás neve|sztring|Az erőforrás neve a QnA Maker egyéni altartománya lesz. Ez a Tudásbázis közzététele után a beállítások lapon érhető el. A lista a `host` .|
@@ -199,7 +199,7 @@ A robot Framework kódjának meg kell hívnia a Train API-t, ha a felhasználó 
 * Annak megállapítása, hogy kell-e lekérdezést használni az aktív tanuláshoz
 * Lekérdezés küldése vissza a QnA Maker Train API-nak az aktív tanuláshoz
 
-Az [Azure bot Sample](https://aka.ms/activelearningsamplebot)-ben mindkét tevékenység programozása megtörtént.
+Az [Azure bot Sample](https://github.com/microsoft/BotBuilder-Samples)-ben mindkét tevékenység programozása megtörtént.
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Példa C#-kód a Train API-hoz a robot Framework 4. x használatával
 
@@ -264,7 +264,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 }
 ```
 
-### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Példa Node. js-kód a Train API-hoz a robot Framework 4. x használatával
+### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Példa Node.js kód a Train API-hoz a robot Framework 4. x használatával
 
 Az alábbi kód bemutatja, hogyan küldhet vissza adatokat QnA Makerra a Train API-val.
 

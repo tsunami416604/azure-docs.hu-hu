@@ -1,0 +1,113 @@
+---
+title: Különbözeti formátum a Azure Data Factoryban
+description: Adatok átalakítása és áthelyezése egy Delta-tótól a különbözeti formátum használatával
+author: djpmsft
+ms.service: data-factory
+ms.workload: data-services
+ms.topic: conceptual
+ms.date: 07/09/2020
+ms.author: daperlov
+ms.openlocfilehash: 74c2e738153b1afa5c90f4769b6d9b0e982af363
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86225272"
+---
+# <a name="delta-format-in-azure-data-factory"></a>Különbözeti formátum a Azure Data Factoryban
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Ez a cikk azt mutatja be, hogyan másolhat adatok egy [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) vagy [Azure Blob Storage](connector-azure-blob-storage.md) tárolt Delta-tóból a Delta formátum használatával. Ez az összekötő [beágyazott adatkészletként](data-flow-source.md#inline-datasets) érhető el a leképezési adatforgalomban forrásként és fogadóként.
+
+> [!NOTE]
+> Az adatforgalom megfeleltetésének különbözeti formátum-összekötője jelenleg nyilvános előzetes verzióként érhető el.
+
+## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
+
+Ez az összekötő [beágyazott adatkészletként](data-flow-source.md#inline-datasets) érhető el a leképezési adatforgalomban forrásként és fogadóként.
+
+### <a name="source-properties"></a>Forrás tulajdonságai
+
+Az alábbi táblázat a Delta forrás által támogatott tulajdonságokat sorolja fel. Ezeket a tulajdonságokat a **forrás beállításai** lapon módosíthatja.
+
+| Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Formátum | A formátumot kötelező megadni`delta` | igen | `delta` | formátumban |
+| Fájlrendszer | A Delta-tó tárolója/fájlrendszere | igen | Sztring | Fájlrendszer |
+| Mappa elérési útja | A Delta-tó közvetlen | igen | Sztring | folderPath |
+| Tömörítés típusa | A különbözeti tábla tömörítési típusa | nem | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | fájba |
+| Tömörítési szint | Válassza ki, hogy a tömörítés a lehető leggyorsabban befejeződjön-e, vagy ha az eredményül kapott fájlt optimálisan kell tömöríteni. | kötelező, ha meg `compressedType` van adva. | compressionLevel |
+| Utazási idő | Válassza ki, hogy szeretne-e lekérdezni egy különbözeti tábla egy régebbi pillanatképét | nem | Lekérdezés timestamp szerint: időbélyeg <br> Lekérdezés verzió: Integer | timestampAsOf <br> versionAsOf |
+
+#### <a name="import-schema"></a>Séma importálása
+
+A Delta csak beágyazott adatkészletként érhető el, és alapértelmezés szerint nem rendelkezik társított sémával. Az oszlop metaadatainak beszerzéséhez kattintson a **vetítés** lapon található **séma importálása** gombra. Ez lehetővé teszi a corpus által megadott oszlopnevek és adattípusok hivatkozását. A séma importálásához egy [adatfolyam-hibakeresési munkamenetnek](concepts-data-flow-debug-mode.md) aktívnak kell lennie, és rendelkeznie kell egy meglévő CDM-entitás-definíciós fájllal, amely a következőre mutat:.
+ 
+
+### <a name="delta-source-script-example"></a>Példa a Delta forrás parancsfájlra
+
+```
+source(output(movieId as integer,
+            title as string,
+            releaseDate as date,
+            rated as boolean,
+            screenedOn as timestamp,
+            ticketPrice as decimal(10,2)
+            ),
+    store: 'local',
+    format: 'delta',
+    versionAsOf: 0,
+    allowSchemaDrift: false,
+    folderPath: $tempPath + '/delta'
+  ) ~> movies
+```
+
+### <a name="sink-properties"></a>Fogadó tulajdonságai
+
+Az alábbi táblázatban a különbözeti fogadó által támogatott tulajdonságok szerepelnek. Ezeket a tulajdonságokat a **Beállítások** lapon módosíthatja.
+
+| Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Formátum | A formátumot kötelező megadni`delta` | igen | `delta` | formátumban |
+| Fájlrendszer | A Delta-tó tárolója/fájlrendszere | igen | Sztring | Fájlrendszer |
+| Mappa elérési útja | A Delta-tó közvetlen | igen | Sztring | folderPath |
+| Tömörítés típusa | A különbözeti tábla tömörítési típusa | nem | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | fájba |
+| Tömörítési szint | Válassza ki, hogy a tömörítés a lehető leggyorsabban befejeződjön-e, vagy ha az eredményül kapott fájlt optimálisan kell tömöríteni. | kötelező, ha meg `compressedType` van adva. | compressionLevel |
+| Vacuum | A tábla régebbi verziói esetében a megőrzési küszöbértéket órában kell megadni. 0 vagy kevesebb alapértelmezett érték 30 nap. | igen | Egész szám | vákuum |
+| Frissítési módszer | Itt adhatja meg, hogy mely frissítési műveletek engedélyezettek a Delta-tavon. A nem beszúrt metódusok esetében a sorok megjelöléséhez egy előző módosítási sor átalakítására van szükség. | igen | `true` vagy `false` | törölhető <br> Insertable <br> frissíthető <br> upsertable |
+
+### <a name="delta-sink-script-example"></a>Példa a különbözeti fogadó parancsfájlra
+
+A társított adatfolyam-parancsfájl:
+
+```
+moviesAltered sink(
+          input(movieId as integer,
+                title as string
+            ),
+           mapColumn(
+                movieId,
+                title
+            ),
+           insertable: true,
+           updateable: true,
+           deletable: true,
+           upsertable: false,
+           keys: ['movieId'],
+            store: 'local',
+           format: 'delta',
+           vacuum: 180,
+           folderPath: $tempPath + '/delta'
+           ) ~> movieDB
+```
+
+### <a name="known-limitations"></a>Ismert korlátozások
+
+A különbözeti fogadóba való írás során létezik egy ismert korlátozás, amelyben a rendszer nem adja vissza az írásos sorok számát a figyelési kimenetben.
+
+## <a name="next-steps"></a>További lépések
+
+* Forrás- [átalakítás](data-flow-source.md) létrehozása a leképezési adatfolyamban.
+* Hozzon létre egy fogadó [transzformációt](data-flow-sink.md) a leképezési adatfolyamatban.
+* Hozzon létre egy [Alter Row átalakítást](data-flow-alter-row.md) a sorok Beszúrás, frissítés, upsert vagy törlés céljából való megjelöléséhez.

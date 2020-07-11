@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 3efccc44255067b7e47c468c9a35853def2fce69
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c2590a2c745969313ae73521dbcd110fbf3b7551
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085854"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221017"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Apache Spark és Apache Hive integrálása a kaptár Warehouse-összekötővel az Azure HDInsight
 
@@ -37,6 +37,9 @@ A kaptár-tárház összekötője által támogatott néhány művelet:
 * DataFrame vagy Spark stream készítése a kaptárba a HiveStreaming használatával
 
 ## <a name="hive-warehouse-connector-setup"></a>A méhkas Warehouse-összekötő beállítása
+
+> [!IMPORTANT]
+> A Spark 2,4 Enterprise Security Package rendszerű fürtökre telepített HiveServer2 Interactive-példány nem támogatott a méhkas Warehouse-összekötővel való használathoz. Ehelyett külön HiveServer2 interaktív fürtöt kell konfigurálnia a HiveServer2 interaktív számítási feladatainak üzemeltetéséhez. Egyetlen Spark 2,4-fürtöt használó struktúra-tárház összekötő konfigurációja nem támogatott.
 
 A méhkas Warehouse-összekötőnek külön fürtökre van szüksége a Spark és az interaktív lekérdezési munkaterhelések számára. Ezeket a lépéseket követve állíthatja be ezeket a fürtöket az Azure HDInsight.
 

@@ -9,17 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/31/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: b9770e46e8e52d8644143c9912c98e0f7913db9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79b5f4492d05880e263f8d489a64ba0cc218d355
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734282"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223397"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Az állapot megismerése és a felfüggesztett tartományok feloldása Azure Active Directory Domain Services
 
-Ha Azure Active Directory Domain Services (Azure AD DS) nem tud hosszú ideig kiszolgálni egy felügyelt tartományt, a felügyelt tartományt felfüggesztett állapotba helyezi. Ha egy felügyelt tartomány ekkor felfüggesztett állapotban marad, a rendszer automatikusan törli. Az Azure AD DS felügyelt tartomány Kifogástalan állapotba helyezéséhez és a felfüggesztés elkerüléséhez a riasztásokat a lehető leggyorsabban oldja fel.
+Ha Azure Active Directory Domain Services (Azure AD DS) nem tud hosszú ideig kiszolgálni egy felügyelt tartományt, a felügyelt tartományt felfüggesztett állapotba helyezi. Ha egy felügyelt tartomány felfüggesztett állapotban marad, automatikusan törlődik. Az Azure AD DS felügyelt tartomány Kifogástalan állapotba helyezéséhez és a felfüggesztés elkerüléséhez a riasztásokat a lehető leggyorsabban oldja fel.
 
 Ez a cikk a felügyelt tartományok felfüggesztését és a felfüggesztett tartomány helyreállítását ismerteti.
 
@@ -38,7 +39,7 @@ A felügyelt tartomány a következő állapotok egyikében lehet:
 
 ## <a name="running-state"></a>Futó állapot
 
-Egy megfelelően konfigurált felügyelt tartomány, amely problémák nélkül fut, *futó* állapotban van. Ez a felügyelt tartomány kívánt állapota.
+Olyan felügyelt tartomány, amely megfelelően van konfigurálva, és probléma nélkül *fut* állapotban van. Ez a felügyelt tartomány kívánt állapota.
 
 ### <a name="what-to-expect"></a>Mire számíthat
 
@@ -49,7 +50,9 @@ Egy megfelelően konfigurált felügyelt tartomány, amely problémák nélkül 
 
 ## <a name="needs-attention-state"></a>Beavatkozási állapotot igényel
 
-Egy vagy több kijavítani kívánt problémával rendelkező felügyelt tartomány *beavatkozási* állapotba szorul. A felügyelt tartomány állapot lapja felsorolja a riasztásokat, és jelzi, hogy van-e probléma. Egyes riasztások átmenetiek, és az Azure platform automatikusan feloldja őket. Más riasztások esetén a probléma megoldásához kövesse a megadott megoldási lépéseket. Kritikus riasztásra van lehetőség, és további hibaelhárítási segítségért [Nyisson meg egy Azure-támogatási kérést][azure-support] .
+Egy vagy több kijavítani kívánt problémával rendelkező felügyelt tartomány *beavatkozási* állapotba szorul. A felügyelt tartomány állapot lapja felsorolja a riasztásokat, és jelzi, hogy van-e probléma.
+
+Egyes riasztások átmenetiek, és az Azure platform automatikusan feloldja őket. Más riasztások esetén a probléma megoldásához kövesse a megadott megoldási lépéseket. Kritikus riasztásra van lehetőség, és további hibaelhárítási segítségért [Nyisson meg egy Azure-támogatási kérést][azure-support] .
 
 A riasztások egyik példája, ha van egy korlátozó hálózati biztonsági csoport. Ebben a konfigurációban előfordulhat, hogy az Azure platform nem tudja frissíteni és figyelni a felügyelt tartományt. A rendszer riasztást hoz létre, és az állapotnak *figyelmet kell*fordítania.
 
@@ -101,7 +104,7 @@ A *felfüggesztett* állapotú felügyelt tartomány állapotának visszaállít
 
 A felügyelt tartományokat csak a legutóbbi biztonsági mentés dátumára lehet visszaállítani. A legutóbbi biztonsági mentés dátuma megjelenik a felügyelt tartomány **állapot** lapján. A legutóbbi biztonsági mentést követően történt módosítások nem lesznek visszaállítva. A felügyelt tartomány biztonsági másolatait akár 30 napig tárolja a rendszer. A 30 napnál régebbi biztonsági mentések törlődnek.
 
-Miután megoldotta a riasztásokat, amikor a felügyelt tartomány *felfüggesztett* állapotban van, [Nyisson meg egy Azure-támogatási kérést][azure-support] , amely Kifogástalan állapotba tér vissza. Ha 30 napnál rövidebb biztonsági mentést végez, az Azure-támogatás visszaállíthatja a felügyelt tartományt.
+Miután megoldotta a riasztásokat, amikor a felügyelt tartomány *felfüggesztett* állapotban van, [Nyisson meg egy Azure-támogatási kérést][azure-support] , amely Kifogástalan állapotba tér vissza. Ha a biztonsági mentés 30 napnál rövidebb ideig tart, az Azure-támogatás visszaállíthatja a felügyelt tartományt.
 
 ## <a name="deleted-state"></a>Törölt állapot
 
@@ -112,7 +115,7 @@ Ha egy felügyelt tartomány a *felfüggesztett* állapotban marad 15 napig, azt
 Ha egy felügyelt tartomány belép a *törölt* állapotba, a következő viselkedés látható:
 
 * A rendszer törli a felügyelt tartomány összes erőforrását és biztonsági mentését.
-* A felügyelt tartomány nem állítható vissza, és létre kell hoznia egy helyettesítő felügyelt tartományt az Azure AD DS újrafelhasználásához.
+* A felügyelt tartomány nem állítható vissza. Az Azure AD DS újrafelhasználásához létre kell hoznia egy helyettesítő felügyelt tartományt.
 * A törlése után a rendszer nem számláz a felügyelt tartományhoz.
 
 ## <a name="next-steps"></a>További lépések

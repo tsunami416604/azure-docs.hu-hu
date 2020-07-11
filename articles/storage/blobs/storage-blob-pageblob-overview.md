@@ -9,11 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: f54adb54ca842ea389b0d3ea203d747df0071ee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792030"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223295"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Az Azure-oldal Blobok áttekintése
 
@@ -122,7 +123,7 @@ Amint a blob szolgáltatásban a lapok szekvenciális készletére vonatkozó í
 
 Az alábbi ábrán két különálló írási művelet látható:
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
+![Egy diagram, amely a két különálló írási lehetőséget mutatja.](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure2.png)
 
 1.  Egy írási művelet, amely 1024 bájt hosszúságú 0 bájtnál kezdődik 
 2.  Az 1024 hosszúságú 4096-es eltolásnál kezdődő írási művelet 
@@ -150,7 +151,7 @@ Ez lehetővé teszi, hogy letöltse a blob összes eltolásával kezdődő telje
 
 Az alábbi ábrán egy olvasási művelet látható, amelynek eltolása 256, a tartomány mérete pedig 4352. A visszaadott adatértékek narancssárga színnel vannak kiemelve. A rendszer nulla értékeket ad vissza a NUL-lapokhoz.
 
-![](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
+![Egy 256-es eltolású olvasási művelet és a 4352-es tartomány méretének diagramja](./media/storage-blob-pageblob-overview/storage-blob-pageblob-overview-figure3.png)
 
 Ha ritkán feltöltött blobtal rendelkezik, érdemes letöltenie az érvényes oldal régióit, hogy elkerülje a nulla bájtos egressing és a letöltési késés csökkentését.  
 

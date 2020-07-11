@@ -3,7 +3,7 @@ title: Egy Oracle Database 12c-adatbázis biztonsági mentése és helyreállít
 description: Megtudhatja, hogyan készíthet biztonsági másolatot egy Oracle Database 12c-adatbázisról az Azure-környezetben.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
+author: rgardler
 manager: ''
 editor: ''
 tags: azure-resource-manager
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: c5f02117d3af7fb411c75d783df82f6008d8104e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: 5a491bf85546c982db126ef4d6260a46ca8bf88b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687004"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224451"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Oracle Database 12c-adatbázis biztonsági mentése és helyreállítása Azure-beli linuxos virtuális gépen
 
@@ -507,7 +508,7 @@ A virtuális gép visszaállítása után állítsa be a nyilvános IP-címet.
 
     ![Nyilvános IP-címek listája](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  A **nyilvános IP-címek** panelen kattintson a **Hozzáadás**gombra. A **nyilvános IP-cím létrehozása** panelen a **név**mezőben válassza ki a nyilvános IP-címet. Az **Erőforráscsoport** területen válassza a **Meglévő használata** lehetőséget. Ezt követően kattintson a **Create** (Létrehozás) gombra.
+2.  A **nyilvános IP-címek** panelen kattintson a **Hozzáadás**gombra. A **nyilvános IP-cím létrehozása** panelen a **név**mezőben válassza ki a nyilvános IP-címet. Az **Erőforráscsoport** területen válassza a **Meglévő használata** lehetőséget. Ezután kattintson a **Létrehozás**gombra.
 
     ![IP-cím létrehozása](./media/oracle-backup-recovery/create_ip_01.png)
 

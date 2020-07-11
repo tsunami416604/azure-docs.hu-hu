@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a50f2cf6fc00189c8cc764a132b550153b80b52e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b7b2a75bff21825a47f4364a8936ee7d5f122c1a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144598"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223890"
 ---
 # <a name="what-is-single-sign-on-sso"></a>Mi az az egyszeri bejelentkezés (SSO)?
 
@@ -90,6 +90,9 @@ Válassza a jelszó alapú egyszeri bejelentkezés lehetőséget, ha:
 - Egy alkalmazás nem támogatja az SAML egyszeri bejelentkezési protokollt.
 - Az alkalmazások hozzáférési tokenek és fejlécek helyett felhasználónévvel és jelszóval hitelesítve vannak.
 
+>[!NOTE]
+>A jelszó-alapú egyszeri bejelentkezéshez nem alkalmazhat feltételes hozzáférési szabályzatokat vagy többtényezős hitelesítést.
+
 A jelszó alapú egyszeri bejelentkezés minden olyan felhőalapú alkalmazás esetében támogatott, amely HTML-alapú bejelentkezési oldallal rendelkezik. A felhasználó a következő böngészők bármelyikét használhatja:
 
 - Internet Explorer 11 Windows 7 vagy újabb rendszeren
@@ -136,6 +139,9 @@ A csatolt bejelentkezés lehetővé teszi, hogy az Azure AD egyszeri bejelentkez
 A csatolt bejelentkezés egységes felhasználói élményt biztosíthat az alkalmazások egy adott időszakban történő áttelepítésekor. Ha Azure Active Directoryre telepíti át az alkalmazásokat, a csatolt bejelentkezés használatával gyorsan közzéteheti az összes áttelepíteni kívánt alkalmazás hivatkozásait.  A felhasználók a [MyApps-portálon](../user-help/active-directory-saas-access-panel-introduction.md) vagy az [Office 365 Application launcherben](https://support.office.com/article/meet-the-office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)is megtalálhatják a hivatkozásokat. A felhasználók nem tudják, hogy egy csatolt alkalmazást vagy egy áttelepített alkalmazást érnek el.  
 
 Miután egy felhasználó hitelesített egy csatolt alkalmazással, létre kell hoznia egy fiókot ahhoz, hogy a végfelhasználó egyszeri bejelentkezéses hozzáférést biztosítson. A fiók rekordjának kiépítési folyamata automatikusan vagy a rendszergazda által manuálisan is megtörténhet.
+
+>[!NOTE]
+>Egy csatolt alkalmazásra nem alkalmazhat feltételes hozzáférési szabályzatokat vagy többtényezős hitelesítést. Ennek az az oka, hogy a csatolt alkalmazások nem biztosítanak egyszeri bejelentkezési képességeket az Azure AD-n keresztül. Ha csatolt alkalmazást konfigurál, egyszerűen hozzáadhat egy hivatkozást, amely megjelenik az App Launcher vagy a MyApps portálon. 
 
 ## <a name="disabled-sso"></a>Letiltott egyszeri bejelentkezés
 

@@ -4,11 +4,12 @@ description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) méretezését,
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 83cbaf49f26a53518b1aa1e211b61af1959642a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c9c3cf159d67d2f4acaaab943ecf9d99263ae55
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465337"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223839"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazásskálázási beállítások az Azure Kubernetes Service-ben (AKS)
 
@@ -79,7 +80,7 @@ Az AK-fürt gyors méretezéséhez integrálható a Azure Container Instances (A
 
 ![Kubernetes-méretezés az ACI-ig](media/concepts-scale/burst-scaling.png)
 
-Az ACI lehetővé teszi, hogy gyorsan üzembe helyezzen tároló-példányokat további infrastruktúra-terhelés nélkül. Ha AK-val kapcsolódik, az ACI biztonságos, logikai kiterjesztést biztosít az AK-fürt számára. A virtuális [csomópontok][virtual-nodes-cli] virtuális [Kubelet][virtual-kubelet]alapuló összetevője telepítve van az AK-fürtben, amely az ACI-t virtuális Kubernetes-csomópontként jeleníti meg. A Kubernetes ezután olyan hüvelyeket ütemezhetnek, amelyek a virtuális csomópontokon keresztül ACI-példányként futnak, nem pedig a virtuálisgép-csomópontokon közvetlenül az AK-fürtön lévő hüvelyek. A virtuális csomópontok jelenleg előzetes verzióban találhatók az AK-ban.
+Az ACI lehetővé teszi, hogy gyorsan üzembe helyezzen tároló-példányokat további infrastruktúra-terhelés nélkül. Ha AK-val kapcsolódik, az ACI biztonságos, logikai kiterjesztést biztosít az AK-fürt számára. A virtuális [csomópontok][virtual-nodes-cli] virtuális [Kubelet][virtual-kubelet]alapuló összetevője telepítve van az AK-fürtben, amely az ACI-t virtuális Kubernetes-csomópontként jeleníti meg. A Kubernetes ezután olyan hüvelyeket ütemezhetnek, amelyek a virtuális csomópontokon keresztül ACI-példányként futnak, nem pedig a virtuálisgép-csomópontokon közvetlenül az AK-fürtön lévő hüvelyek.
 
 Az alkalmazás nem igényel módosítást virtuális csomópontok használatához. Az üzembe helyezések az AK-ban és az ACI-ban is méretezhetők, és késedelem nélkül a fürt autoskálázása új csomópontokat helyez üzembe az AK-fürtben.
 

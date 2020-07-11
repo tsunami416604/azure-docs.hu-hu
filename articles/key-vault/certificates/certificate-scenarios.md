@@ -9,11 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765097"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224859"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Bevezetés a Key Vault-tanúsítványok használatába
 A következő forgatókönyvek felvázolják az Key Vault tanúsítványkezelő szolgáltatásának számos elsődleges használatát, beleértve az első tanúsítvány a kulcstartóban való létrehozásához szükséges további lépéseket.
@@ -45,7 +46,7 @@ A tanúsítványok három egymáshoz kapcsolódó erőforrásból állnak, amely
 **3. lépés** – a contoso rendszergazdája, valamint a tanúsítványokat birtokló contoso-alkalmazott (Key Vault felhasználó) a hitelesítésszolgáltatótól függően beszerezhet egy tanúsítványt a rendszergazdától, vagy közvetlenül a fiókból a hitelesítésszolgáltatótól.  
 
 - A [tanúsítvány kiállítói erőforrásának beállításával](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) kezdjen hozzá egy hitelesítő adat hozzáadása a kulcstartóhoz. A tanúsítvány kiállítója Azure Key Vault (KV) CertificateIssuer erőforrásként jelölt entitás. A rendszer a KV-tanúsítvány forrására vonatkozó információk megadására szolgál. kiállító neve, szolgáltatója, hitelesítő adatai és egyéb rendszergazdai részletek.
-  - Pl. MyDigiCertIssuer  
+  - Például: MyDigiCertIssuer  
     -   Szolgáltató  
     -   Hitelesítő adatok – HITELESÍTÉSSZOLGÁLTATÓI fiók hitelesítő adatai. Minden HITELESÍTÉSSZOLGÁLTATÓ saját konkrét adattal rendelkezik.  
 
@@ -80,6 +81,9 @@ Megjegyzés: Ez a folyamat az 3,1-es lépéssel egy egyszeri művelet.
       -   Állapot: befejezve, hiba miatt sikertelen, vagy megszakítva  
       -   A létrehozás késleltetése miatt elindítható egy megszakítási művelet. Előfordulhat, hogy a Mégse nem érvényes.  
 
+### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>Integrált HITELESÍTÉSSZOLGÁLTATÓhoz társított hálózati biztonsági és hozzáférési szabályzatok
+Key Vault a szolgáltatás kérelmeket küld a CA-nak (kimenő forgalom). Ezért teljes mértékben kompatibilis a tűzfallal kompatibilis kulcstartókkal. A Key Vault nem oszt meg hozzáférési házirendeket a HITELESÍTÉSSZOLGÁLTATÓval. A HITELESÍTÉSSZOLGÁLTATÓT úgy kell konfigurálni, hogy egymástól függetlenül fogadja az aláírási kéréseket. [Útmutató a megbízható HITELESÍTÉSSZOLGÁLTATÓ integrálásához](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+
 ## <a name="import-a-certificate"></a>Tanúsítvány importálása  
  Másik lehetőségként – egy tanúsítvány importálható Key Vault – PFX vagy PEM rendszerbe.  
 
@@ -92,7 +96,7 @@ Megjegyzés: Ez a folyamat az 3,1-es lépéssel egy egyszeri művelet.
 
 -   Ha nincs további művelet, akkor a Key Vault elküld egy lejárati értesítést. 
 
--   A felhasználó szerkesztheti a szabályzatot is, amely az importálás időpontjában működik, de olyan alapértékeket tartalmaz, amelyekben nincs megadva információ az importáláskor. Pl. nincs kiállítói információ  
+-   A felhasználó szerkesztheti a szabályzatot is, amely az importálás időpontjában működik, de olyan alapértékeket tartalmaz, amelyekben nincs megadva információ az importáláskor. Például: nincs kiállítói információ  
 
 ### <a name="formats-of-import-we-support"></a>A támogatott importálási formátumok
 A Azure Key Vault támogatja a. PEM és a. pfx tanúsítványfájl-tanúsítványokat a tanúsítványok Key vaultba történő importálásához.

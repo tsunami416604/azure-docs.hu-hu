@@ -3,8 +3,8 @@ title: Oracle-adatbázis létrehozása Azure-beli virtuális gépen | Microsoft 
 description: Gyorsan beszerezhet egy Oracle Database 12c-adatbázist az Azure-környezetben.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,18 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: 070477c638e5a625e0c03751a1778fa0a246cd77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: 6705d4d1edebe88a577c71b3e48cd837fa7882c6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995819"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86222989"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Oracle Database létrehozása Azure-beli virtuális gépen
 
 Ez az útmutató részletesen ismerteti, hogyan helyezhet üzembe egy Azure-beli virtuális gépet az Oracle Marketplace katalógusból a [lemezképből](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview) egy Oracle 12c-adatbázis létrehozásához az Azure CLI használatával. A kiszolgáló üzembe helyezését követően SSH-kapcsolaton keresztül fog csatlakozni az Oracle-adatbázis konfigurálásához. 
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyorsútmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -314,7 +315,7 @@ Jelentkezzen be a **sys** -fiók használatával, és jelölje be a **as SYSDBA*
 
 ![Az Oracle OEM Express bejelentkezési oldalának képernyőképe](./media/oracle-quick-start/oracle_oem_express_login.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha befejezte az Azure-beli első Oracle-adatbázis vizsgálatát, és a virtuális gép már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal eltávolíthatja az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást.
 

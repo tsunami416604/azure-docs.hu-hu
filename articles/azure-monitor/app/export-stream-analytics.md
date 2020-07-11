@@ -3,12 +3,12 @@ title: Exportálás az Azure Application Insights Stream Analytics használatáv
 description: Stream Analytics a Application Insightsból exportált adatok folyamatos átalakítását, szűrését és átirányítását is elvégezheti.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 400c727b44d3794dc9a17c59959dc5c75cea71fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110487"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224519"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Stream Analytics használata az exportált adatok feldolgozásához Application Insights
 A [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ideális eszköz a [Application Insightsból exportált](export-telemetry.md)adatok feldolgozásához. A Stream Analytics különböző forrásokból származó adatok lekérésére használható. Átalakíthatja és szűrheti az adatmennyiséget, majd átirányíthatja azt különböző mosdók számára.
@@ -60,7 +60,7 @@ A [folyamatos exportálás](export-telemetry.md) a Application Insights adatait 
     És az is, hogy az adatai exportálva lesznek a tárhelyre. 
 2. Vizsgálja meg az exportált adatgyűjtést. A Visual Studióban válassza a **Megtekintés/Cloud Explorer**lehetőséget, majd nyissa meg az Azure/Storage elemet. (Ha nem rendelkezik ezzel a menüponttal, telepítenie kell az Azure SDK-t: Nyissa meg az új projekt párbeszédpanelt, és nyissa meg a Visual C#/Cloud/Get Microsoft Azure SDK-t a .NET-hez.)
    
-    ![](./media/export-stream-analytics/04-data.png)
+    ![Képernyőfelvétel: a megtekinteni kívánt események típusának beállítása.](./media/export-stream-analytics/04-data.png)
    
     Jegyezze fel az elérési út nevének közös részét, amely az alkalmazás neve és a kialakítási kulcsból származik. 
 
@@ -69,21 +69,21 @@ Az események JSON formátumú blob-fájlokba íródnak. Az egyes fájlok egy va
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics példány létrehozása
 A [Azure Portal](https://portal.azure.com/)válassza ki a Azure stream Analytics szolgáltatást, és hozzon létre egy új stream Analytics feladatot:
 
-![](./media/export-stream-analytics/SA001.png)
+![A Stream Analytics-feladatoknak a Azure Portalban való létrehozásának főoldalát bemutató képernyőkép.](./media/export-stream-analytics/SA001.png)
 
-![](./media/export-stream-analytics/SA002.png)
+![Képernyőkép, amely az új Stream Analytics feladatok létrehozásakor szükséges adatokat jeleníti meg.](./media/export-stream-analytics/SA002.png)
 
 Az új feladatok létrehozásakor válassza az **Ugrás erőforráshoz**lehetőséget.
 
-![](./media/export-stream-analytics/SA003.png)
+![Képernyőfelvétel: az új Stream Analytics feladatok központi telepítésének sikerességét jelző üzenet.](./media/export-stream-analytics/SA003.png)
 
 ### <a name="add-a-new-input"></a>Új bemenet hozzáadása
 
-![](./media/export-stream-analytics/SA004.png)
+![Képernyőkép, amely bemutatja, hogyan adhat hozzá bemeneteket a Stream Analytics feladathoz.](./media/export-stream-analytics/SA004.png)
 
 Állítsa be úgy, hogy a folyamatos exportálási blob bemenetét használja:
 
-![](./media/export-stream-analytics/SA0005.png)
+![Képernyőfelvétel: a Stream Analytics-feladatok konfigurálásának beállítása a folyamatos exportálási Blobok bemenetének megadásához.](./media/export-stream-analytics/SA0005.png)
 
 Most szüksége lesz az elsődleges hozzáférési kulcsra a Storage-fiókjából, amelyet korábban említett. Adja meg ezt a Storage-fiók kulcsaként.
 
@@ -109,7 +109,7 @@ Ebben a példában:
 ## <a name="add-new-output"></a>Új kimenet hozzáadása
 Most válassza ki a feladatot, > **kimenet**  >  **hozzáadása**elemet.
 
-![](./media/export-stream-analytics/SA006.png)
+![Képernyőfelvétel: a Stream Analytics feladatainak kiválasztásával új kimenetet adhat hozzá.](./media/export-stream-analytics/SA006.png)
 
 
 ![Válassza ki az új csatornát, kattintson a kimenetek, Hozzáadás, Power BI](./media/export-stream-analytics/SA010.png)
@@ -208,7 +208,7 @@ A Noam ben Zeev azt mutatja be, hogyan lehet az exportált adatfeldolgozást Str
 > 
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Folyamatos exportálás](export-telemetry.md)
 * [Részletes adatmodell-referenciák a tulajdonságok típusaihoz és értékeihez.](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)

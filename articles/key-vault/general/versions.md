@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 06/30/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4959d530e1f7a3c777aa3db21fe577c853fbca13
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 58c5fdcfef5e866d0c69d65412582c0ed649f7c6
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855997"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86230825"
 ---
 # <a name="key-vault-versions"></a>Key Vault-verziók
 
@@ -55,7 +55,7 @@ Az idei évben megjelent új funkciók:
 ## <a name="2015"></a>2015
 
 Az idei évben megjelent új funkciók:
-- Tanúsítványkezelő. Szolgáltatásként hozzáadva a GA 2015-06-01-es verziójához, 2016. szeptember 26-án.
+- Tanúsítványkezelés. Szolgáltatásként hozzáadva a GA 2015-06-01-es verziójához, 2016. szeptember 26-án.
 
 Az általános elérhetőség (2015-06-01-es verzió) a 2015. június 24-én jelent meg. Ebben a kiadásban a következő módosítások történtek: 
 - Törölje a "use" mezőt az eltávolításhoz.
@@ -64,7 +64,7 @@ Az általános elérhetőség (2015-06-01-es verzió) a 2015. június 24-én jel
 - Egy kulcs visszaállítása – "használat" mező eltávolítva.     
 - A "RSA_OAEP" elem "RSA-OAEP" értékre módosult RSA-algoritmusokhoz. Lásd: [a kulcsok, a titkok és a tanúsítványok ismertetése](about-keys-secrets-certificates.md).    
  
-A második előzetes verzió (2015-02-01-es verzió – előzetes verzió) bejelentve: 2015. április 20. További információ: [REST API Update](https://blogs.technet.com/b/kv/archive/2015/04/20/empty-3.aspx) blog post. A következő feladatok frissültek:
+A második előzetes verzió (2015-02-01-es verzió – előzetes verzió) bejelentve: 2015. április 20. További információ: [REST API Update](https://docs.microsoft.com/archive/blogs/kv/rest-api-update) blog post. A következő feladatok frissültek:
  
 - Egy tár által hozzáadott többoldalas támogatásban lévő kulcsok listázása a művelethez.
 - Egy kulccsal felvett művelet verzióinak listázása a kulcsok verzióinak listázásához.  

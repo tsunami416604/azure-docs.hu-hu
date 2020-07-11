@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8e014e7a1c564377582e4503218c4129619daa91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f34ffcf836eddedfb3962471ef3c777ba7880c5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80410735"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224217"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>A Windows rendszerhez készült virtuálisgép-bővítmény Key Vault
 
@@ -58,8 +58,12 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
           "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-        }      
-      }
+        },
+        "authenticationSettings": {
+                "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
+                "msiClientId":  <Optional MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+        }
+       }
       }
     }
 ```
@@ -69,9 +73,14 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 > 
 > Ennek az az oka, hogy az `/secrets` elérési út a teljes tanúsítványt adja vissza, beleértve a titkos kulcsot is, míg az `/certificates` elérési út nem. A tanúsítványokkal kapcsolatos további információkért tekintse meg a következőt: [Key Vault tanúsítványok](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
+> [!NOTE]
+> A "authenticationSettings" tulajdonság nem kötelező olyan helyzetekben, amikor a virtuális gépnek több hozzárendelt identitása van.
+> Lehetővé teszi a specifing-identitás számára a Key Vault hitelesítését.
+
+
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa | Adattípus |
+| Név | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | dátum |
 | közzétevő | Microsoft.Azure.KeyVault | sztring |
@@ -81,8 +90,10 @@ A következő JSON a Key Vault virtuálisgép-bővítmény sémáját jeleníti 
 | certificateStoreName | MY | sztring |
 | linkOnRenewal | hamis | logikai |
 | certificateStoreLocation  | LocalMachine | sztring |
-| requiredInitialSync | igaz | logikai |
+| requiredInitialSync | true | logikai |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | karakterlánc-tömb
+| msiEndpoint | http://169.254.169.254/metadata/identity | sztring |
+| msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | sztring |
 
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés

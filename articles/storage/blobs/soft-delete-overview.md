@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: dd5d9c721c3e0204a66367b76654f9a917e26ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8e84e845910b8f84a9b3f84ad414f2ecdd250a5
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82884630"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223788"
 ---
 # <a name="soft-delete-for-blob-storage"></a>A blob Storage-hoz készült Soft delete
 
@@ -53,7 +54,7 @@ A helyreállítható törlés megőrzi az adatait sok esetben, ha az objektumoka
 
 Ha a blobot a **put blob**, a **Letiltás**vagy a **blob másolása**használatával írja felül, a rendszer automatikusan létrehozza a blob állapotának verzióját vagy pillanatképét az írási művelet előtt. Ez az objektum csak akkor látható, ha a helyreállított objektumok explicit módon vannak felsorolva. A [helyreállított](#recovery) objektumok listázásával kapcsolatos információkért tekintse meg a helyreállítás szakaszt.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-overwrite.png)
+![Egy ábra, amely bemutatja, hogyan tárolódnak a Blobok pillanatképei, mivel azok felül vannak írva a Put blob használatával, a letiltási listával vagy a blob másolásával.](media/soft-delete-overview/storage-blob-soft-delete-overwrite.png)
 
 *A puha törölt adatértékek szürkék, míg az aktív adatértékek kék színűek. A legutóbb írt adatértékek a régebbi adatelemek alatt jelennek meg. Ha a B0 felülírja a B1-sel, a rendszer létrehoz egy, a B0 készült, törölt pillanatképet. Ha a B1 felülíródik a B2-mel, a rendszer létrehoz egy, a B1-ről készült, törölt pillanatképet.*
 
@@ -65,13 +66,13 @@ Ha a blobot a **put blob**, a **Letiltás**vagy a **blob másolása**használat�
 
 Ha a **törlési blobot** pillanatképként hívja meg, akkor a pillanatképet a rendszer nem töröltként jelöli meg. Nem jön létre új pillanatkép.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
+![Egy diagram, amely azt mutatja, hogyan történik a Blobok pillanatképének törlése a DELETE blob használatakor.](media/soft-delete-overview/storage-blob-soft-delete-explicit-delete-snapshot.png)
 
 *A puha törölt adatértékek szürkék, míg az aktív adatértékek kék színűek. A legutóbb írt adatértékek a régebbi adatelemek alatt jelennek meg. Ha a **Pillanatkép-blob** hívása megtörténik, a B0 a blob aktív állapota lesz. A B0-pillanatkép törlését követően a rendszer törli a jelölést.*
 
 Ha a **törlési blobot** egy alapblobra hívja (bármely olyan blob, amely nem pillanatkép), akkor a blobot a rendszer a töröltként jelöli meg. A korábbi viselkedéssel összhangban az aktív pillanatképekkel rendelkező Blobok **törlésének** meghívása hibát jelez. A **blob törlésének** meghívása egy blobon, ha a törölt Pillanatképek nem adnak vissza hibát. A blobokat és az összes pillanatképét egyetlen művelettel törölheti, ha a Soft delete be van kapcsolva. Így az alap blob és a pillanatképek nem törlődnek.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-explicit-include.png)
+![Egy ábra, amely bemutatja, hogy mi történik, ha a rendszer törli a blogot egy alap blobon.](media/soft-delete-overview/storage-blob-soft-delete-explicit-include.png)
 
 *A puha törölt adatértékek szürkék, míg az aktív adatértékek kék színűek. A legutóbb írt adatértékek a régebbi adatelemek alatt jelennek meg. Itt törölheti a **törlési blobot** , hogy törölje a B2-et és az összes kapcsolódó pillanatképet. A rendszer az aktív blobot, a B2-et és az összes kapcsolódó pillanatképet törölve jelöli.*
 
@@ -82,7 +83,7 @@ A helyreállítható törlés nem menti az adatokat tároló vagy fiók törlés
 
 A következő táblázat részletesen ismerteti a Soft delete bekapcsolásakor elvárt viselkedést:
 
-| REST API művelet | Erőforrás típusa | Description | Változás a viselkedésben |
+| REST API művelet | Erőforrás típusa | Leírás | Változás a viselkedésben |
 |--------------------|---------------|-------------|--------------------|
 | [Szabályzat](/rest/api/storagerp/StorageAccounts/Delete) | Fiók | Törli a Storage-fiókot, beleértve a benne található összes tárolót és blobot.                           | Nincs változás. A törölt fiókban lévő tárolók és Blobok nem lesznek helyreállítva. |
 | [Tároló törlése](/rest/api/storageservices/delete-container) | Tároló | Törli a tárolót, beleértve a benne található összes blobot is. | Nincs változás. A törölt tárolóban lévő Blobok nem lesznek helyreállítva. |
@@ -98,13 +99,13 @@ A következő táblázat részletesen ismerteti a Soft delete bekapcsolásakor e
 
 Fontos megjegyezni, hogy a **put oldal** meghívásával felülírja vagy törli az oldal blobjának tartományait, nem fog automatikusan pillanatképeket létrehozni. A virtuálisgép-lemezeket a Blobok végzik, és a **put Page** használatával írhatnak be adatbevitelt.
 
-### <a name="recovery"></a>Helyreállítás
+### <a name="recovery"></a>Helyreállítási
 
 Ha meghívja a [blob törlésének](/rest/api/storageservices/undelete-blob) visszavonása műveletet egy helyreállított alapszintű blobban, a rendszer visszaállítja és az összes kapcsolódó, törölt pillanatképet aktívként. A **blob törlésének törlésére** szolgáló művelet hívása aktív alapszintű blobon visszaállítja az összes társított, törölt pillanatképet aktívként. Ha a pillanatképek aktívként lettek visszaállítva, a felhasználó által létrehozott pillanatképeket hasonlítják, nem írják felül az alap blobot.
 
 Ha egy blobot egy adott helyreállítható törölt pillanatképre szeretne visszaállítani, meghívhatja a blob **törlését** az alap blobon. Ezután átmásolhatja a pillanatképet a most aktív blobon keresztül. A pillanatképet egy új blobba is másolhatja.
 
-![](media/soft-delete-overview/storage-blob-soft-delete-recover.png)
+![Egy diagram, amely bemutatja, hogy mi történik a blob törlésének visszavonásakor.](media/soft-delete-overview/storage-blob-soft-delete-recover.png)
 
 *A puha törölt adatértékek szürkék, míg az aktív adatértékek kék színűek. A legutóbb írt adatértékek a régebbi adatelemek alatt jelennek meg. Itt a **blob törlésének** visszavonása a B blobon történik, így az alap blobot, a B1-t és az összes kapcsolódó pillanatképet – itt csak B0 – aktívként kell visszaállítani. A második lépésben a B0 a rendszer az alap blobon másolja át. Ez a másolási művelet létrehoz egy, a B1-ről készült, törölt pillanatképet.*
 
