@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: d67e2639c2d4b168babeb7c29ef977d39d9e11cb
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 456a7e4f07b2416e1d2037205574f2e7149e70e2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855308"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185942"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Amazon Web Services virtuális gép üzembe helyezése runbook
 
@@ -29,7 +29,7 @@ A virtuális gép üzembe helyezési runbook az AWS PowerShell-modult használja
 3. Válassza ki a használni kívánt Automation-fiókot, majd kattintson **az OK** gombra az üzembe helyezés megkezdéséhez.
 
    > [!NOTE]
-   > Amikor Azure Automation egy PowerShell-modult importál, kibontja a parancsmagokat. A tevékenységek addig nem jelennek meg, amíg az Automation teljesen befejezte a modul importálását és a parancsmagok kicsomagolását. Ez eltarthat pár percig.  
+   > Amikor Azure Automation egy PowerShell-modult importál, kibontja a parancsmagokat. A tevékenységek addig nem jelennek meg, amíg az Automation teljesen befejezte a modul importálását és a parancsmagok kicsomagolását. Ez a folyamat eltarthat néhány percig.  
    > <br>
 
 1. Az Azure Portalon nyissa meg az Automation-fiókját.
@@ -101,7 +101,6 @@ Győződjön meg arról, hogy az AWS PowerShell-modul a Azure Automationba lett 
  
 * Ha szeretné megtudni, hogy milyen runbookok támogatottak, tekintse meg a[Azure Automation runbook-típusok](automation-runbook-types.md)című témakört.
 * A runbookok használatával kapcsolatban lásd: [Runbookok kezelése a Azure Automationban](manage-runbooks.md).
-* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview).
+* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](/powershell/scripting/overview).
 * A parancsfájl-támogatással kapcsolatban lásd: [natív PowerShell-parancsfájl-támogatás a Azure Automationban](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/).
-* A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

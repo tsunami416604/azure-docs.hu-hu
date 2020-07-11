@@ -19,11 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 959adec9f74a8cda7fde941ccea7db75e981a650
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692801"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201543"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData $filter szintaxis az Azure-ban Cognitive Search
 
@@ -83,20 +84,28 @@ Ha olyan szűrési kifejezést ír, amely nem rendelkezik zárójelekkel az alki
 
 A fenti táblázatban magasabb szintű operátor "szorosabban" kötődik az operandusokhoz, mint a többi operátor. Például a (z) `and` `or` és az összehasonlító operátorok magasabb prioritással rendelkeznek, mint bármelyiknél, így a következő két kifejezés egyenértékű:
 
+```odata-filter-expr
     Rating gt 0 and Rating lt 3 or Rating gt 7 and Rating lt 10
     ((Rating gt 0) and (Rating lt 3)) or ((Rating gt 7) and (Rating lt 10))
+```
 
 Az `not` operátor a legmagasabb prioritással rendelkezik – az összehasonlító operátorok esetében is magasabb. Ezért ha a következőhöz hasonló szűrőt próbál meg írni:
 
+```odata-filter-expr
     not Rating gt 5
+```
 
 A következő hibaüzenet jelenik meg:
 
+```text
     Invalid expression: A unary operator with an incompatible type was detected. Found operand type 'Edm.Int32' for operator kind 'Not'.
+```
 
 Ez a hiba azért fordul elő, mert az operátor csak a típusú mezőhöz van társítva, `Rating` `Edm.Int32` és nem a teljes összehasonlító kifejezéssel. A javítás célja, hogy zárójelek közé helyezze az operandust `not` :
 
+```odata-filter-expr
     not (Rating gt 5)
+```
 
 <a name="bkmk_limits"></a>
 
@@ -111,87 +120,129 @@ Az Azure Cognitive Searchba küldendő szűrési kifejezések mérete és össze
 
 Az összes olyan szálloda megkeresése, amelynek legalább egy olyan szobája van, amelynek a 4-es vagy annál magasabb névleges $200-nál kisebb a száma:
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/BaseRate lt 200.0) and Rating ge 4
+```
 
 A "Sea View Motel" kivételével minden olyan szálloda megkeresése, amelyet a 2010 óta újítottak fel:
 
+```odata-filter-expr
     $filter=HotelName ne 'Sea View Motel' and LastRenovationDate ge 2010-01-01T00:00:00Z
+```
 
 A 2010-es vagy újabb verzióban felújított összes Hotel megkeresése. A DateTime konstans a csendes-óceáni téli idő időzónájának adatait tartalmazza:  
 
+```odata-filter-expr
     $filter=LastRenovationDate ge 2010-01-01T00:00:00-08:00
+```
 
 Az összes olyan Hotel megkeresése, amely tartalmazza a parkolóhelyet, és ahol az összes szoba nem dohányzó:
 
+```odata-filter-expr
     $filter=ParkingIncluded and Rooms/all(room: not room/SmokingAllowed)
+```
 
  \-Vagy  
 
+```odata-filter-expr
     $filter=ParkingIncluded eq true and Rooms/all(room: room/SmokingAllowed eq false)
+```
 
 Keresse meg az összes olyan szállodát, amely luxust vagy parkolót tartalmaz, és a minősítésük 5:  
 
+```odata-filter-expr
     $filter=(Category eq 'Luxury' or ParkingIncluded eq true) and Rating eq 5
+```
 
 A "WiFi" címkével ellátott összes Hotel megkeresése legalább egy helyiségben (ahol minden szobához egy mezőben tárolt címke tartozik `Collection(Edm.String)` ):  
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: tag eq 'wifi'))
+```
 
 Minden olyan szálloda megkeresése, amely tartalmaz egy tetszőleges szobát:  
 
+```odata-filter-expr
     $filter=Rooms/any()
+```
 
 Az összes olyan Hotel megkeresése, amely nem rendelkezik szobával:
 
+```odata-filter-expr
     $filter=not Rooms/any()
+```
 
 Az összes Hotel megkeresése egy adott hivatkozási ponttól számított 10 kilométeren belül (ahol a `Location` egy típusú mező `Edm.GeographyPoint` ):
 
+```odata-filter-expr
     $filter=geo.distance(Location, geography'POINT(-122.131577 47.678581)') le 10
+```
 
 Az adott nézetablakban lévő összes Hotel megkeresése sokszögként (ahol a `Location` EDM. geographypoint adattípuson típusú mező). A sokszöget be kell zárni, ami azt jelenti, hogy az első és az utolsó pont készletének meg kell egyeznie. Emellett [a pontoknak a sorrendben](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)kell szerepelniük.
 
+```odata-filter-expr
     $filter=geo.intersects(Location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
+```
 
 Az összes olyan szálláshely megkeresése, ahol a "Leírás" mező null értékű. A mező értéke null, ha nem volt beállítva, vagy ha explicit módon NULL értékre lett állítva:  
 
+```odata-filter-expr
     $filter=Description eq null
+```
 
 Az összes olyan Hotel megkeresése, amelynek neve egyenlő a "Sea View Motel" vagy a "Budget Hotel" névvel. Ezek a kifejezések szóközöket tartalmaznak, a szóköz pedig egy alapértelmezett határolójel. Az idézőjelek között egy alternatív határolójelet is megadhat a harmadik sztring paraméterként:  
 
+```odata-filter-expr
     $filter=search.in(HotelName, 'Sea View motel,Budget hotel', ',')
+```
 
 Az összes olyan Hotel megkeresése, amelynek neve egyenlő a "Sea View Motel" vagy a "Budget Hotel" névvel, a következővel elválasztva: "|".  
 
+```odata-filter-expr
     $filter=search.in(HotelName, 'Sea View motel|Budget hotel', '|')
+```
 
 Az összes olyan Hotel megkeresése, ahol az összes szoba a "WiFi" vagy a "kád" címkével rendelkezik:
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'wifi, tub'))
+```
 
 Megtalálhatja a gyűjteményen belüli kifejezéseket, például a "fűtött törölköző állványok" vagy a "hajszárító" címkét.
 
+```odata-filter-expr
     $filter=Rooms/any(room: room/Tags/any(tag: search.in(tag, 'heated towel racks,hairdryer included', ','))
+```
 
 Keresse meg a "Waterfront" szót tartalmazó dokumentumokat. Ez a szűrési lekérdezés megegyezik egy [keresési kérelemmel](https://docs.microsoft.com/rest/api/searchservice/search-documents) a következővel: `search=waterfront` .
 
+```odata-filter-expr
     $filter=search.ismatchscoring('waterfront')
+```
 
 Keresse meg a "Hostel" szót tartalmazó dokumentumokat, vagy a 4-es vagy annál nagyobb minősítést, vagy a "Motel" szót tartalmazó dokumentumokat, valamint az 5 értékű minősítést. A kérést nem lehetett kifejezni a `search.ismatchscoring` függvény nélkül, mert a teljes szöveges keresést kombinálja a szűrési műveletekkel a használatával `or` .
 
+```odata-filter-expr
     $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
+```
 
 Dokumentumok keresése a "luxus" szó nélkül.
 
+```odata-filter-expr
     $filter=not search.ismatch('luxury')
+```
 
 Megkeresheti az "Ocean View" kifejezéssel vagy 5 értékkel egyenlő minősítéssel rendelkező dokumentumokat. A `search.ismatchscoring` lekérdezés csak a mezőkre és a-ra lesz végrehajtva `HotelName` `Description` . Azok a dokumentumok, amelyek megfelelnek a kivonásnak, csak a második záradékkal lesznek visszaadva `Rating` . Ezeket a dokumentumokat a pontszám nullával adja vissza, így egyértelművé válik, hogy nem felelnek meg a kifejezés egyik pontszámának sem.
 
+```odata-filter-expr
     $filter=search.ismatchscoring('"ocean view"', 'Description,HotelName') or Rating eq 5
+```
 
 Itt megtalálhatja azokat a szállodákat, amelyekben a "Hotel" és a "repülőtér" kifejezés nem több mint öt szót tartalmaz a leírásban, és ahol az összes szoba nem dohányzó. Ez a lekérdezés a [teljes Lucene lekérdezési nyelvet](query-lucene-syntax.md)használja.
 
+```odata-filter-expr
     $filter=search.ismatch('"hotel airport"~5', 'Description', 'full', 'any') and not Rooms/any(room: room/SmokingAllowed)
+```
 
 ## <a name="next-steps"></a>További lépések  
 

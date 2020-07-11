@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656819"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187710"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -313,3 +314,39 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 1. Lépjen a FarmBeats Datahub-erőforráscsoporthoz.
 2. Válassza ki az **app Service**-t.  
 3. Lépjen a vertikális felskálázás [app Service díjszabása lapra](https://azure.microsoft.com/pricing/details/app-service/windows/), és válassza ki a megfelelő árképzési szintet.
+
+## <a name="weather-data-job-failures"></a>Az időjárási adatokkal kapcsolatos sikertelen feladatok
+
+**Hiba**: az időjárási adatok beolvasására, de a feladat meghibásodására vonatkozó feladatok futtatása
+
+### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>Naplók gyűjtése az időjárási adatfeldolgozási feladatok hibáinak elhárításához
+
+1. Nyissa meg a FarmBeats erőforráscsoportot a Azure Portal.
+2. Kattintson az erőforráscsoport részét képező Data Factory szolgáltatásra. A szolgáltatás "SKU: Datahub" címkével fog rendelkezni.
+
+> [!NOTE]
+> Ha meg szeretné tekinteni a szolgáltatások címkéit az erőforráscsoporthoz, kattintson az "Oszlopok szerkesztése" elemre, és adja hozzá a "címkék" kifejezést az erőforráscsoport nézethez.
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="Projekt FarmBeats":::
+
+3. Az adatfeldolgozó áttekintés lapján kattintson a **Szerző és figyelő**elemre. Megnyílik egy új lap a böngészőben. Kattintson a **figyelés** elemre
+
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Projekt FarmBeats":::
+
+4. Ekkor megjelenik az időjárási feladatok végrehajtásának részét képező folyamat-futtatások listája. Kattintson arra a feladatokra, amelyhez naplókat szeretne gyűjteni
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="Projekt FarmBeats":::
+
+5. A folyamat áttekintése lapon láthatja a tevékenységek futtatásának listáját. Jegyezze fel azoknak a tevékenységeknek a futtatási azonosítóit, amelyekhez naplókat szeretne gyűjteni
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Projekt FarmBeats":::
+
+6. Lépjen vissza az FarmBeats erőforráscsoporthoz a Azure Portalban, és kattintson a **datahublogs-XXXX** nevű Storage-fiókra.
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Projekt FarmBeats":::
+
+7. Kattintson a **tárolók**  ->  **adfjobs**elemre. A keresőmezőbe írja be a fenti 5. lépésben feljegyzett feladatok futtatási AZONOSÍTÓját.
+ 
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="Projekt FarmBeats":::
+
+8. A keresési eredmény tartalmazza azt a mappát, amely a feladatokhoz tartozó naplókat tartalmaz. Töltse le a naplókat, és küldje el, hogy farmbeatssupport@microsoft.com segítséget nyújtson a probléma hibakereséséhez.

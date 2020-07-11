@@ -17,11 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: tracking-python
-ms.openlocfilehash: e94448debe3e846e37dcffa81a6a6a28f0f7d757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af03d0fc091c34bfef7f38b1a215832086de57c6
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561185"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220065"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>A Notification Hubs használata a Pythonból
 
@@ -63,7 +64,7 @@ wns_payload = """<toast><visual><binding template=\"ToastText01\"><text id=\"1\"
 hub.send_windows_notification(wns_payload)
 ```
 
-## <a name="implementation"></a>Megvalósítás
+## <a name="implementation"></a>Implementálás
 
 Ha még nem tette meg, kövesse az [első lépések oktatóanyagot] az utolsó szakaszhoz, ahol a háttér megvalósítására van szükség.
 
@@ -382,7 +383,7 @@ A Python-kód futtatásakor egy értesítést kell létrehozni a céleszköz.
 
 Ha engedélyezi a hibakeresési jelzőt a NotificationHub inicializálása közben, a részletes HTTP-kérés és-válasz memóriaképe, valamint a NotificationOutcome, például a következő, ahol megtudhatja, hogy milyen HTTP-fejlécek lesznek átadva a kérelemben, és milyen HTTP-választ kapott az értesítési központ:
 
-![][1]
+![Képernyőkép a-konzolról, amelyen a H T T P kérelem és a válasz memóriaképe, valamint a riasztások eredményeinek piros színnel való megjelenítése látható.][1]
 
 Például az értesítési központ részletes eredményét láthatja.
 
@@ -403,7 +404,7 @@ Figyelje meg azokat a fejléceket, amelyeket a rendszer akkor küld, ha a Window
 hub.send_windows_notification(wns_payload)
 ```
 
-![][2]
+![Képernyőkép a-konzolról, amelyen a H T T P-kérelem és a Service Bus értesítési formátum és az X W N S Type értékek piros színnel jelennek meg.][2]
 
 ### <a name="send-notification-specifying-a-tag-or-tag-expression"></a>Értesítés küldése címke (vagy címke kifejezés) megadásával
 
@@ -413,7 +414,7 @@ Figyelje meg a címkék HTTP-fejlécet, amelyet a rendszer a HTTP-kérelemhez ad
 hub.send_windows_notification(wns_payload, "sports")
 ```
 
-![][3]
+![Képernyőkép a-konzolról, amelyen a H T T P-kérelem és a Service Bus értesítési formátum, Service Bus az értesítési címkék és az X W N S Type értékek piros színnel jelennek meg.][3]
 
 ### <a name="send-notification-specifying-multiple-tags"></a>Értesítés küldése több címke megadásával
 
@@ -424,7 +425,7 @@ tags = {'sports', 'politics'}
 hub.send_windows_notification(wns_payload, tags)
 ```
 
-![][4]
+![Képernyőkép a-konzolról, amelyen a H T T P-kérelem és a Service Bus értesítési formátum, Service Bus az értesítési címkék és az X W N S Type értékek piros színnel jelennek meg.][4]
 
 ### <a name="templated-notification"></a>Sablonban szereplő értesítés
 
@@ -443,7 +444,7 @@ template_payload = {'greeting_en': 'Hello', 'greeting_fr': 'Salut'}
 hub.send_template_notification(template_payload)
 ```
 
-![][5]
+![Képernyőkép a-konzolról a H T T P-kérelem részleteivel, valamint a tartalom típusával és Service Bus értesítési formátumával kapcsolatos, piros színnel megadott értékekkel.][5]
 
 ## <a name="next-steps"></a>Következő lépések
 

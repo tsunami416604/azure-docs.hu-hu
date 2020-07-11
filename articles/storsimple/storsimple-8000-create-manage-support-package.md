@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: f8f84542cd52d8ad4affd64627637d4e95b1fb10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4332f3e5a1ca6d434671d3a2cfe100a5d12795d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514047"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182015"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Támogatási csomag létrehozása és kezelése a StorSimple 8000 sorozathoz
 
@@ -64,7 +64,7 @@ A manuálisan létrehozott támogatási csomagot megoszthatja Microsoft ügyfél
 
 A következő paraméterek használhatók az export-Hcssupportpackage futtatásával parancsmaggal.
 
-| Paraméter | Kötelező vagy nem kötelező | Description |
+| Paraméterek | Kötelező vagy nem kötelező | Leírás |
 | --- | --- | --- |
 | `-Path` |Kötelező |A használatával megadhatja annak a hálózati megosztott mappának a helyét, amelyben a támogatási csomag el van helyezve. |
 | `-EncryptionPassphrase` |Kötelező |A használatával adjon meg egy jelszót a támogatási csomag titkosításához. |
@@ -98,9 +98,11 @@ Ha a Microsoft ügyfélszolgálata helyre történő feltöltés előtt szeretne
     ![Támogatási csomag szerkesztése](./media/storsimple-8000-create-manage-support-package/IC750706.png)
 5. Ha a rendszer a titkosítási jelszó megadását kéri, adja meg a támogatási csomag létrehozásakor használt jelszót.
    
-        cmdlet Open-HcsSupportPackage at command pipeline position 1
-   
-        Supply values for the following parameters:EncryptionPassphrase: ****
+    ```powershell
+    cmdlet Open-HcsSupportPackage at command pipeline position 1
+
+    Supply values for the following parameters:EncryptionPassphrase: ****
+    ```
 6. Keresse meg a naplófájlokat tartalmazó mappát. Mivel a naplófájlok kibontása és visszafejtése már megtörtént, a fájlok eredeti kiterjesztéssel rendelkeznek. A fájlok módosításával távolítsa el az ügyfélre vonatkozó adatokat, például a kötetek nevét és az eszköz IP-címeit, és mentse a fájlokat.
 7. A fájlok bezárásával tömörítheti azokat a gzip használatával, és titkosíthatja azokat az AES-256-mel. Ez a támogatási csomag hálózaton keresztül történő átvitelének gyorsasága és biztonsága. A fájlok tömörítéséhez és titkosításához írja be a következőt:
    
@@ -109,33 +111,37 @@ Ha a Microsoft ügyfélszolgálata helyre történő feltöltés előtt szeretne
     ![Támogatási csomag szerkesztése](./media/storsimple-8000-create-manage-support-package/IC750707.png)
 8. Ha a rendszer kéri, adjon meg egy titkosítási jelszót a módosított támogatási csomaghoz.
    
-        cmdlet Close-HcsSupportPackage at command pipeline position 1
-        Supply values for the following parameters:EncryptionPassphrase: ****
+    ```powershell
+    cmdlet Close-HcsSupportPackage at command pipeline position 1
+    Supply values for the following parameters:EncryptionPassphrase: ****
+    ```
 9. Jegyezze fel az új jelszót, hogy megossza azt Microsoft ügyfélszolgálata ha szükséges.
 
 ### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>Példa: fájlok szerkesztése egy támogatási csomagban a jelszóval védett megosztáson
 
 Az alábbi példa egy támogatási csomag visszafejtését, szerkesztését és újratitkosítását mutatja be.
 
-        PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
+```powershell
+PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
 
-        PS C:\WINDOWS\system32> Open-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
+PS C:\WINDOWS\system32> Open-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
 
-        cmdlet Open-HcsSupportPackage at command pipeline position 1
+cmdlet Open-HcsSupportPackage at command pipeline position 1
 
-        Supply values for the following parameters:
+Supply values for the following parameters:
 
-        EncryptionPassphrase: ****
+EncryptionPassphrase: ****
 
-        PS C:\WINDOWS\system32> Close-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
+PS C:\WINDOWS\system32> Close-HcsSupportPackage \\hcsfs\Logs\TD48\TD48Logs\C0-A\etw
 
-        cmdlet Close-HcsSupportPackage at command pipeline position 1
+cmdlet Close-HcsSupportPackage at command pipeline position 1
 
-        Supply values for the following parameters:
+Supply values for the following parameters:
 
-        EncryptionPassphrase: ****
+EncryptionPassphrase: ****
 
-        PS C:\WINDOWS\system32>
+PS C:\WINDOWS\system32>
+```
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 0c9982fd4aa6459cdcbd715077f08092075a9776
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84610066"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184497"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Felhasználói tulajdonban lévő Storage-fiókok a naplózás betöltéséhez Azure Monitor
 
@@ -39,7 +40,7 @@ A Storage-fióknak a következő követelményeknek kell megfelelnie:
 
 - Elérhető a VNet található erőforrások számára, amelyek naplókat írnak a tárolóba.
 - Ugyanazon a régión kell lennie, mint a munkaterületnek, amelyhez kapcsolódik.
-- Explicit módon engedélyezhető Log Analytics a naplófájlok olvasásához a Storage-fiókból, ha a *megbízható MS-szolgáltatások engedélyezése lehetőségre kattint a Storage-fiók eléréséhez*.
+- Azure Monitor hozzáférés engedélyezése – ha úgy dönt, hogy korlátozza a Storage-fiók hozzáférését a hálózatok kiválasztásához, ügyeljen rá, hogy engedélyezze ezt a kivételt: *engedélyezze a megbízható Microsoft-szolgáltatások számára a Storage-fiók elérését*.
 
 ## <a name="process-to-configure-customer-owned-storage"></a>Az ügyfél által birtokolt tároló konfigurálásának folyamata
 A saját Storage-fiók használatának alapszintű folyamata a következő:
@@ -50,7 +51,12 @@ A saját Storage-fiók használatának alapszintű folyamata a következő:
 
 A hivatkozások létrehozásához és eltávolításához csak a REST API használható. Az egyes folyamatokhoz szükséges adott API-kérés részleteit az alábbi részben találja.
 
-## <a name="api-request-values"></a>API-kérelmek értékei
+## <a name="command-line-and-rest-api"></a>Parancssor és REST API
+
+### <a name="command-line"></a>Parancssor
+Csatolt Storage-fiókok létrehozásához és kezeléséhez használja [az az monitor log-Analytics Workspace csatolt-Storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage)szolgáltatást. Ezzel a paranccsal a Storage-fiókokat összekapcsolhatja és leválaszthatja egy munkaterületről, és listázhatja a társított Storage-fiókokat.
+
+### <a name="request-and-cli-values"></a>Kérelem és CLI-értékek
 
 #### <a name="datasourcetype"></a>dataSourceType 
 
@@ -72,37 +78,7 @@ subscriptions/{subscriptionId}/resourcesGroups/{resourceGroupName}/providers/Mic
 ```
 
 
-
-## <a name="get-current-links"></a>Aktuális hivatkozások beolvasása
-
-### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>Társított Storage-fiókok beolvasása adott adatforrás-típushoz
-
-#### <a name="api-request"></a>API-kérelem
-
-```
-GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
-```
-
-#### <a name="response"></a>Válasz 
-
-```json
-{
-    "properties":
-    {
-        "dataSourceType": "CustomLogs",
-        "storageAccountIds  ": 
-        [  
-            "<storage_account_resource_id_1>",
-            "<storage_account_resource_id_2>"
-        ],
-    },
-    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
-    "name": "CustomLogs",
-    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
-}
-```
-
-### <a name="get-all-linked-storage-accounts"></a>Az összes társított Storage-fiók beolvasása
+### <a name="get-linked-storage-accounts-for-all-data-source-types"></a>Társított Storage-fiókok beolvasása az összes adatforrás-típushoz
 
 #### <a name="api-request"></a>API-kérelem
 
@@ -110,7 +86,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts?api-version=2019-08-01-preview  
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```json
 {
@@ -147,6 +123,34 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
+
+### <a name="get-linked-storage-accounts-for-a-specific-data-source-type"></a>Társított Storage-fiókok beolvasása adott adatforrás-típushoz
+
+#### <a name="api-request"></a>API-kérelem
+
+```
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedStorageAccounts/{dataSourceType}?api-version=2019-08-01-preview  
+```
+
+#### <a name="response"></a>Reagálás 
+
+```json
+{
+    "properties":
+    {
+        "dataSourceType": "CustomLogs",
+        "storageAccountIds  ": 
+        [  
+            "<storage_account_resource_id_1>",
+            "<storage_account_resource_id_2>"
+        ],
+    },
+    "id":"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/microsoft. operationalinsights/workspaces/{resourceName}/linkedStorageAccounts/CustomLogs",
+    "name": "CustomLogs",
+    "type": "Microsoft.OperationalInsights/workspaces/linkedStorageAccounts"
+}
+```
+
 ## <a name="create-or-modify-a-link"></a>Hivatkozás létrehozása vagy módosítása
 
 Miután összekapcsolta a Storage-fiókot egy munkaterülettel, Log Analytics a szolgáltatás tulajdonában lévő Storage-fiók helyett elkezdi használni. Egyszerre regisztrálhatja a Storage-fiókok listáját, és ugyanazt a Storage-fiókot használhatja több munkaterülethez is.
@@ -174,7 +178,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ```json
 {

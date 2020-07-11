@@ -1,5 +1,5 @@
 ---
-title: fájlbefoglalás
+title: fájl belefoglalása
 description: file
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher

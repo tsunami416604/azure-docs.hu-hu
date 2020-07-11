@@ -2,12 +2,13 @@
 title: Oktatóanyag – több tárolós csoport üzembe helyezése – YAML
 description: Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy Azure Container Instances több tárolót tartalmazó YAML-fájllal az Azure CLI használatával.
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: c029a9c605548b828c96fa741e12a43930ec4b01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/01/2020
+ms.openlocfilehash: f101d19814687082ab02955a3a860486d3988211
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83653507"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169680"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Oktatóanyag: több tárolós csoport üzembe helyezése YAML-fájl használatával
 
@@ -45,7 +46,7 @@ code deploy-aci.yaml
 Ez a YAML-fájl definiál egy "myContainerGroup" nevű tároló csoportot két tárolóval, egy nyilvános IP-címmel és két elérhető porttal. A tárolók nyilvános Microsoft-rendszerképekből telepíthetők. A csoport első tárolója egy internetre irányuló webalkalmazást futtat. A második tároló, az oldalkocsi, rendszeres időközönként HTTP-kéréseket küld az első tárolóban futó webalkalmazásnak a tároló csoport helyi hálózatán keresztül.
 
 ```YAML
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: myContainerGroup
 properties:
@@ -132,9 +133,9 @@ Kimenet:
 
 ```console
 listening on port 80
-::1 - - [21/Mar/2019:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [21/Mar/2019:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
-::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [02/Jul/2020:23:17:48 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [02/Jul/2020:23:17:51 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
+::1 - - [02/Jul/2020:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
 Az oldalkocsi tároló naplófájljainak megtekintéséhez futtasson egy hasonló parancsot, amely megadja a `aci-tutorial-sidecar` tárolót.
@@ -146,7 +147,7 @@ az container logs --resource-group myResourceGroup --name myContainerGroup --con
 Kimenet:
 
 ```console
-Every 3s: curl -I http://localhost                          2019-03-21 20:36:41
+Every 3s: curl -I http://localhost                          2020-07-02 20:36:41
 
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -159,7 +160,7 @@ Last-Modified: Wed, 29 Nov 2017 06:40:40 GMT
 ETag: W/"67f-16006818640"
 Content-Type: text/html; charset=UTF-8
 Content-Length: 1663
-Date: Thu, 21 Mar 2019 20:36:41 GMT
+Date: Thu, 02 Jul 2020 20:36:41 GMT
 Connection: keep-alive
 ```
 
@@ -167,7 +168,7 @@ Amint láthatja, az oldalkocsi rendszeres időközönként HTTP-kérést küld a
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy YAML-fájlt használt egy többtárolós csoport üzembe helyezéséhez Azure Container Instancesban. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban egy YAML-fájlt használt egy többtárolós csoport üzembe helyezéséhez Azure Container Instancesban. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * YAML-fájl konfigurálása több tárolós csoport számára

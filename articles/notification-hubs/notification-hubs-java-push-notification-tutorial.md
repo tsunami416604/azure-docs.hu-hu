@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecfd6bf9d20309619155bf35c87bdb4c08665f73
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76263863"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169544"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>A Notification Hubs használata a Java-ból
 
@@ -50,134 +51,136 @@ Az SDK jelenleg a következőket támogatja:
 
 Létrehozás:
 
-    mvn package
+```cmd
+mvn package
+```
 
-## <a name="code"></a>Code
+## <a name="code"></a>Kód
 
 ### <a name="notification-hub-cruds"></a>Értesítési központ – SZIFILISZek
 
 **Hozzon létre egy NamespaceManager:**
 
-    ```java
-    NamespaceManager namespaceManager = new NamespaceManager("connection string")
-    ```
+```java
+NamespaceManager namespaceManager = new NamespaceManager("connection string")
+```
 
 **Értesítési központ létrehozása:**
 
-    ```java
-    NotificationHubDescription hub = new NotificationHubDescription("hubname");
-    hub.setWindowsCredential(new WindowsCredential("sid","key"));
-    hub = namespaceManager.createNotificationHub(hub);
-    ```
+```java
+NotificationHubDescription hub = new NotificationHubDescription("hubname");
+hub.setWindowsCredential(new WindowsCredential("sid","key"));
+hub = namespaceManager.createNotificationHub(hub);
+```
 
  VAGY
 
-    ```java
-    hub = new NotificationHub("connection string", "hubname");
-    ```
+```java
+hub = new NotificationHub("connection string", "hubname");
+```
 
 **Értesítési központ beolvasása:**
 
-    ```java
-    hub = namespaceManager.getNotificationHub("hubname");
-    ```
+```java
+hub = namespaceManager.getNotificationHub("hubname");
+```
 
 **Értesítési központ frissítése:**
 
-    ```java
-    hub.setMpnsCredential(new MpnsCredential("mpnscert", "mpnskey"));
-    hub = namespaceManager.updateNotificationHub(hub);
-    ```
+```java
+hub.setMpnsCredential(new MpnsCredential("mpnscert", "mpnskey"));
+hub = namespaceManager.updateNotificationHub(hub);
+```
 
 **Értesítési központ törlése:**
 
-    ```java
-    namespaceManager.deleteNotificationHub("hubname");
-    ```
+```java
+namespaceManager.deleteNotificationHub("hubname");
+```
 
 ### <a name="registration-cruds"></a>Regisztrációs SZIFILISZek
 
 **Értesítési központ ügyfelének létrehozása:**
 
-    ```java
-    hub = new NotificationHub("connection string", "hubname");
-    ```
+```java
+hub = new NotificationHub("connection string", "hubname");
+```
 
 **Windows-regisztráció létrehozása:**
 
-    ```java
-    WindowsRegistration reg = new WindowsRegistration(new URI(CHANNELURI));
-    reg.getTags().add("myTag");
-    reg.getTags().add("myOtherTag");
-    hub.createRegistration(reg);
-    ```
+```java
+WindowsRegistration reg = new WindowsRegistration(new URI(CHANNELURI));
+reg.getTags().add("myTag");
+reg.getTags().add("myOtherTag");
+hub.createRegistration(reg);
+```
 
 **IOS-regisztráció létrehozása:**
 
-    ```java
-    AppleRegistration reg = new AppleRegistration(DEVICETOKEN);
-    reg.getTags().add("myTag");
-    reg.getTags().add("myOtherTag");
-    hub.createRegistration(reg);
-    ```
+```java
+AppleRegistration reg = new AppleRegistration(DEVICETOKEN);
+reg.getTags().add("myTag");
+reg.getTags().add("myOtherTag");
+hub.createRegistration(reg);
+```
 
 Hasonlóképpen létrehozhatók az Android (FCM), a Windows Phone-telefon (MPNS) és a Kindle Fire (ADM) regisztrációi is.
 
 **Sablon regisztrációjának létrehozása:**
 
-    ```java
-    WindowsTemplateRegistration reg = new WindowsTemplateRegistration(new URI(CHANNELURI), WNSBODYTEMPLATE);
-    reg.getHeaders().put("X-WNS-Type", "wns/toast");
-    hub.createRegistration(reg);
-    ```
+```java
+WindowsTemplateRegistration reg = new WindowsTemplateRegistration(new URI(CHANNELURI), WNSBODYTEMPLATE);
+reg.getHeaders().put("X-WNS-Type", "wns/toast");
+hub.createRegistration(reg);
+```
 
 **Regisztrációk létrehozása a regisztrációs azonosító és a upsert minta használatával:**
 
 Eltávolítja az összes elveszett válasz miatti ismétlődéseket, ha a regisztrációs azonosítókat az eszközön tárolja:
 
-    ```java
-    String id = hub.createRegistrationId();
-    WindowsRegistration reg = new WindowsRegistration(id, new URI(CHANNELURI));
-    hub.upsertRegistration(reg);
-    ```
+```java
+String id = hub.createRegistrationId();
+WindowsRegistration reg = new WindowsRegistration(id, new URI(CHANNELURI));
+hub.upsertRegistration(reg);
+```
 
 **Regisztrációk frissítése:**
 
-    ```java
-    hub.updateRegistration(reg);
-    ```
+```java
+hub.updateRegistration(reg);
+```
 
 **Regisztrációk törlése:**
 
-    ```java
-    hub.deleteRegistration(regid);
-    ```
+```java
+hub.deleteRegistration(regid);
+```
 
 **Regisztrációk lekérdezése:**
 
 * **Egyszeri regisztráció beolvasása:**
 
-    ```java
-    hub.getRegistration(regid);
-    ```
+```java
+hub.getRegistration(regid);
+```
 
 * **Az összes regisztráció beolvasása a központban:**
 
-    ```java
-    hub.getRegistrations();
-    ```
+```java
+hub.getRegistrations();
+```
 
 * **Regisztrációk beszerzése a címkével:**
 
-    ```java
-    hub.getRegistrationsByTag("myTag");
-    ```
+```java
+hub.getRegistrationsByTag("myTag");
+```
 
 * **Regisztrációk beolvasása csatornán keresztül:**
 
-    ```java
-    hub.getRegistrationsByChannel("devicetoken");
-    ```
+```java
+hub.getRegistrationsByChannel("devicetoken");
+```
 
 A gyűjtemény összes lekérdezése támogatja a $top és a folytatási jogkivonatokat.
 
@@ -191,52 +194,52 @@ A háttérben csak egyetlen hívást kell végrehajtania, hogy `CreateOrUpdateIn
 
 Példa az Amazon Kindle Fire:
 
-    ```java
-    Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
-    hub.createOrUpdateInstallation(installation);
-    ```
+```java
+Installation installation = new Installation("installation-id", NotificationPlatform.Adm, "adm-push-channel");
+hub.createOrUpdateInstallation(installation);
+```
 
 Ha frissíteni kívánja:
 
-    ```java
-    installation.addTag("foo");
-    installation.addTemplate("template1", new InstallationTemplate("{\"data\":{\"key1\":\"$(value1)\"}}","tag-for-template1"));
-    installation.addTemplate("template2", new InstallationTemplate("{\"data\":{\"key2\":\"$(value2)\"}}","tag-for-template2"));
-    hub.createOrUpdateInstallation(installation);
-    ```
+```java
+installation.addTag("foo");
+installation.addTemplate("template1", new InstallationTemplate("{\"data\":{\"key1\":\"$(value1)\"}}","tag-for-template1"));
+installation.addTemplate("template2", new InstallationTemplate("{\"data\":{\"key2\":\"$(value2)\"}}","tag-for-template2"));
+hub.createOrUpdateInstallation(installation);
+```
 
 Speciális forgatókönyvek esetén használja a részleges frissítési képességet, amely lehetővé teszi a telepítési objektum csak bizonyos tulajdonságainak módosítását. A részleges frissítés a telepítési objektumon futtatható JSON-javítási műveletek részhalmaza.
 
-    ```java
-    PartialUpdateOperation addChannel = new PartialUpdateOperation(UpdateOperationType.Add, "/pushChannel", "adm-push-channel2");
-    PartialUpdateOperation addTag = new PartialUpdateOperation(UpdateOperationType.Add, "/tags", "bar");
-    PartialUpdateOperation replaceTemplate = new PartialUpdateOperation(UpdateOperationType.Replace, "/templates/template1", new InstallationTemplate("{\"data\":{\"key3\":\"$(value3)\"}}","tag-for-template1")).toJson());
-    hub.patchInstallation("installation-id", addChannel, addTag, replaceTemplate);
-    ```
+```java
+PartialUpdateOperation addChannel = new PartialUpdateOperation(UpdateOperationType.Add, "/pushChannel", "adm-push-channel2");
+PartialUpdateOperation addTag = new PartialUpdateOperation(UpdateOperationType.Add, "/tags", "bar");
+PartialUpdateOperation replaceTemplate = new PartialUpdateOperation(UpdateOperationType.Replace, "/templates/template1", new InstallationTemplate("{\"data\":{\"key3\":\"$(value3)\"}}","tag-for-template1")).toJson());
+hub.patchInstallation("installation-id", addChannel, addTag, replaceTemplate);
+```
 
 Telepítés törlése:
 
-    ```java
-    hub.deleteInstallation(installation.getInstallationId());
-    ```
+```java
+hub.deleteInstallation(installation.getInstallationId());
+```
 
 `CreateOrUpdate`, `Patch` és `Delete` végül konzisztensek a-val `Get` . A kért művelet csak a rendszer várólistára kerül a hívás során, és a háttérben kerül végrehajtásra. A Get nem a fő futtatókörnyezeti forgatókönyvhöz készült, hanem csak hibakeresési és hibaelhárítási célból, ezért a szolgáltatás szigorúan szabályozza.
 
 A küldési folyamat ugyanaz, mint a regisztrációk esetében. Értesítés küldése az adott telepítéshez – csak a "telepítésazonosító: {desired-id}" címkét használja. Ebben az esetben a kód a következő:
 
-    ```java
-    Notification n = Notification.createWindowsNotification("WNS body");
-    hub.sendNotification(n, "InstallationId:{installation-id}");
-    ```
+```java
+Notification n = Notification.createWindowsNotification("WNS body");
+hub.sendNotification(n, "InstallationId:{installation-id}");
+```
 
 Több sablon közül:
 
-    ```java
-    Map<String, String> prop =  new HashMap<String, String>();
-    prop.put("value3", "some value");
-    Notification n = Notification.createTemplateNotification(prop);
-    hub.sendNotification(n, "InstallationId:{installation-id} && tag-for-template1");
-    ```
+```java
+Map<String, String> prop =  new HashMap<String, String>();
+prop.put("value3", "some value");
+Notification n = Notification.createTemplateNotification(prop);
+hub.sendNotification(n, "InstallationId:{installation-id} && tag-for-template1");
+```
 
 ### <a name="schedule-notifications-available-for-standard-tier"></a>Ütemezett értesítések (a STANDARD szintű csomaghoz érhető el)
 
@@ -244,12 +247,12 @@ Ugyanaz, mint a normál küldés, de egy további paraméter-scheduledTime, amel
 
 **Windows natív értesítésének beütemezett időpontja:**
 
-    ```java
-    Calendar c = Calendar.getInstance();
-    c.add(Calendar.DATE, 1);
-    Notification n = Notification.createWindowsNotification("WNS body");
-    hub.scheduleNotification(n, c.getTime());
-    ```
+```java
+Calendar c = Calendar.getInstance();
+c.add(Calendar.DATE, 1);
+Notification n = Notification.createWindowsNotification("WNS body");
+hub.scheduleNotification(n, c.getTime());
+```
 
 ### <a name="importexport-available-for-standard-tier"></a>Importálás/Exportálás (STANDARD szintű csomag esetén érhető el)
 
@@ -257,39 +260,39 @@ Előfordulhat, hogy tömeges műveletet kell végrehajtania a regisztrációk el
 
 **Exportálási feladatok elküldése:**
 
-    ```java
-    NotificationHubJob job = new NotificationHubJob();
-    job.setJobType(NotificationHubJobType.ExportRegistrations);
-    job.setOutputContainerUri("container uri with SAS signature");
-    job = hub.submitNotificationHubJob(job);
-    ```
+```java
+NotificationHubJob job = new NotificationHubJob();
+job.setJobType(NotificationHubJobType.ExportRegistrations);
+job.setOutputContainerUri("container uri with SAS signature");
+job = hub.submitNotificationHubJob(job);
+```
 
 **Importálási feladatok elküldése:**
 
-    ```java
-    NotificationHubJob job = new NotificationHubJob();
-    job.setJobType(NotificationHubJobType.ImportCreateRegistrations);
-    job.setImportFileUri("input file uri with SAS signature");
-    job.setOutputContainerUri("container uri with SAS signature");
-    job = hub.submitNotificationHubJob(job);
-    ```
+```java
+NotificationHubJob job = new NotificationHubJob();
+job.setJobType(NotificationHubJobType.ImportCreateRegistrations);
+job.setImportFileUri("input file uri with SAS signature");
+job.setOutputContainerUri("container uri with SAS signature");
+job = hub.submitNotificationHubJob(job);
+```
 
 **Várakozás a feladatok elvégzésére:**
 
-    ```java
-    while(true){
-        Thread.sleep(1000);
-        job = hub.getNotificationHubJob(job.getJobId());
-        if(job.getJobStatus() == NotificationHubJobStatus.Completed)
-            break;
-    }
-    ```
+```java
+while(true){
+    Thread.sleep(1000);
+    job = hub.getNotificationHubJob(job.getJobId());
+    if(job.getJobStatus() == NotificationHubJobStatus.Completed)
+        break;
+}
+```
 
 **Az összes feladat beolvasása:**
 
-    ```java
-    List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
-    ```
+```java
+List<NotificationHubJob> jobs = hub.getAllNotificationHubJobs();
+```
 
 **URI SAS-aláírással:**
 
@@ -301,73 +304,73 @@ Az értesítési objektum egyszerűen egy fejléceket tartalmazó törzs, néhá
 
 * **Windows áruház és Windows Phone-telefon 8,1 (nem Silverlight)**
 
-    ```java
-    String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
-    Notification n = Notification.createWindowsNotification(toast);
-    hub.sendNotification(n);
-    ```
+```java
+String toast = "<toast><visual><binding template=\"ToastText01\"><text id=\"1\">Hello from Java!</text></binding></visual></toast>";
+Notification n = Notification.createWindowsNotification(toast);
+hub.sendNotification(n);
+```
 
 * **iOS**
 
-    ```java
-    String alert = "{\"aps\":{\"alert\":\"Hello from Java!\"}}";
-    Notification n = Notification.createAppleNotification(alert);
-    hub.sendNotification(n);
-    ```
+```java
+String alert = "{\"aps\":{\"alert\":\"Hello from Java!\"}}";
+Notification n = Notification.createAppleNotification(alert);
+hub.sendNotification(n);
+```
 
 * **Android**
 
-    ```java
-    String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
-    Notification n = Notification.createFcmNotification(message);
-    hub.sendNotification(n);
-    ```
+```java
+String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
+Notification n = Notification.createFcmNotification(message);
+hub.sendNotification(n);
+```
 
 * **Windows Phone-telefon 8,0 és 8,1 Silverlight**
 
-    ```java
-    String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<wp:Notification xmlns:wp=\"WPNotification\">" +
-                    "<wp:Toast>" +
-                        "<wp:Text1>Hello from Java!</wp:Text1>" +
-                    "</wp:Toast> " +
-                "</wp:Notification>";
-    Notification n = Notification.createMpnsNotification(toast);
-    hub.sendNotification(n);
-    ```
+```java
+String toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+            "<wp:Notification xmlns:wp=\"WPNotification\">" +
+                "<wp:Toast>" +
+                    "<wp:Text1>Hello from Java!</wp:Text1>" +
+                "</wp:Toast> " +
+            "</wp:Notification>";
+Notification n = Notification.createMpnsNotification(toast);
+hub.sendNotification(n);
+```
 
 * **Kindle-Tűz**
 
-    ```java
-    String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
-    Notification n = Notification.createAdmNotification(message);
-    hub.sendNotification(n);
-    ```
+```java
+String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
+Notification n = Notification.createAdmNotification(message);
+hub.sendNotification(n);
+```
 
 * **Küldés címkékre**
   
-    ```java
-    Set<String> tags = new HashSet<String>();
-    tags.add("boo");
-    tags.add("foo");
-    hub.sendNotification(n, tags);
-    ```
+```java
+Set<String> tags = new HashSet<String>();
+tags.add("boo");
+tags.add("foo");
+hub.sendNotification(n, tags);
+```
 
 * **Küldés a címkére kifejezés**
 
-    ```java
-    hub.sendNotification(n, "foo && ! bar");
-    ```
+```java
+hub.sendNotification(n, "foo && ! bar");
+```
 
 * **Sablon küldése – értesítés**
 
-    ```java
-    Map<String, String> prop =  new HashMap<String, String>();
-    prop.put("prop1", "v1");
-    prop.put("prop2", "v2");
-    Notification n = Notification.createTemplateNotification(prop);
-    hub.sendNotification(n);
-    ```
+```java
+Map<String, String> prop =  new HashMap<String, String>();
+prop.put("prop1", "v1");
+prop.put("prop2", "v2");
+Notification n = Notification.createTemplateNotification(prop);
+hub.sendNotification(n);
+```
 
 A Java-kód futtatásának most egy értesítést kell létrehoznia a céleszköz.
 

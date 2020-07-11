@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 7a7fe3f7e1c39837106471d118a8b1bb770a524e
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 75db20bdb746e7d15bef56ce7ac0a064993d3f3a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045824"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187761"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>Azure Stream Analytics-feladatok üzembe helyezése CI/CD NPM csomag használatával 
 
@@ -41,15 +41,11 @@ Stream Analytics Visual Studio Code-projekt sikeres létrehozásakor a a követk
 
 * Resource Manager-sablonfájl
 
-   ```
-   [ProjectName].JobTemplate.json 
-   ```
+   `[ProjectName].JobTemplate.json`
 
 * Resource Manager-paraméterek fájlja
 
-   ```
-   [ProjectName].JobTemplate.parameters.json
-   ```   
+   `[ProjectName].JobTemplate.parameters.json`   
 
 A fájl parameters.jsjában lévő alapértelmezett paraméterek a Visual Studio Code projekt beállításaiból származnak. Ha egy másik környezetbe szeretne telepíteni, cserélje le a paramétereket ennek megfelelően.
 
@@ -110,7 +106,7 @@ Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual
 
 1. A **feladatok** lapon válassza ki a plusz jelet a **Agent 1. feladat**mellett. **Fájlok másolásának**keresése. Ezután adja meg a következő konfigurációkat.
 
-   |Paraméter|Bevitel|
+   |Paraméterek|Bemenet|
    |-|-|
    |Megjelenített név|Fájlok másolása ide: $ (Build. artifactstagingdirectory)|
    |Forrás mappája|`$(system.defaultworkingdirectory)`| 
@@ -155,7 +151,7 @@ Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual
    |-|-|
    |Megjelenített név| *MyASAJob üzembe helyezése*|
    |Azure-előfizetés| Válassza ki az előfizetését.|
-   |Műveletek| *Erőforráscsoport létrehozása vagy frissítése*|
+   |Művelet| *Erőforráscsoport létrehozása vagy frissítése*|
    |Erőforráscsoport| Válassza ki a Stream Analytics feladatot tartalmazó tesztelési erőforráscsoport nevét.|
    |Hely|Válassza ki a tesztelési erőforráscsoport helyét.|
    |Sablon helye| *Társított összetevő*|
@@ -172,7 +168,7 @@ Nyisson meg egy webböngészőt, és navigáljon a Azure Stream Analytics Visual
    |-|-|
    |Megjelenített név| *MyASAJob üzembe helyezése*|
    |Azure-előfizetés| Válassza ki az előfizetését.|
-   |Műveletek| *Erőforráscsoport létrehozása vagy frissítése*|
+   |Művelet| *Erőforráscsoport létrehozása vagy frissítése*|
    |Erőforráscsoport| Válassza ki az üzemi erőforráscsoport nevét, amely a Stream Analytics feladatot fogja tartalmazni.|
    |Hely|Válassza ki az üzemi erőforráscsoport helyét.|
    |Sablon helye| *Társított összetevő*|

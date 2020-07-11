@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3196004015046b4d3d2789745c80d323bacdced9
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 6da539ccd8ad293aed402a4a6d130b6701e7b9c2
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985241"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187115"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Az Azure Digital Twins lekérdezési nyelvének ismertetése
 
@@ -30,10 +30,10 @@ Az alábbi műveletek érhetők el az Azure Digital Twins Query Store nyelvén:
 * Az ikrek a kapcsolati tulajdonságok alapján szerezhetők be.
 * Az ikrek több kapcsolati típust ( `JOIN` lekérdezéseket) kapnak. Az s megengedett számának korlátozásai érvényesek `JOIN` (egy szint a nyilvános előzetes verzió esetében).
 * Használja az egyéni függvényt `IS_OF_MODEL(twinCollection, twinTypeName)` , amely lehetővé teszi a Twin [modell](concepts-models.md)alapján történő szűrést. Támogatja az öröklést.
-* A fentiek bármely kombinációját ( `AND` , `OR` , `NOT` operátor) használja.
 * Skaláris függvények használata:,,,,,,, `IS_BOOL` `IS_DEFINED` `IS_NULL` `IS_NUMBER` `IS_OBJECT` `IS_PRIMITIVE` `IS_STRING` `STARTS_WITH` , `ENDS_WITH` .
-* Lekérdezés-összehasonlító operátorok használata:,,, `AND` / `OR` / `NOT` `IN` / `NOT IN` `STARTSWITH` / `ENDSWITH` `=` , `!=` , `<` , `>` , `<=` , `>=` .
-* A folytatás használata: a lekérdezési objektum egy Oldalméret (legfeljebb 100) használatával hozható létre. A digitális ikrek egy oldalát egyszerre is lekérheti, ha ismétlődő hívásokat kezdeményez a `nextAsTwin` metódusnak.
+* Lekérdezés-összehasonlító operátorok használata:,,, `IN` / `NIN` `=` `!=` `<` , `>` , `<=` , `>=` .
+* A fentiek bármely kombinációját ( `AND` , `OR` , `NOT` operátor) használja.
+* A folytatás használata: a lekérdezési objektum egy Oldalméret (legfeljebb 100) használatával hozható létre. A digitális ikrek egy oldalát egyszerre is lekérheti, ha a folytatási tokent az API-ra irányuló további hívásokban is megadja.
 
 ## <a name="next-steps"></a>További lépések
 

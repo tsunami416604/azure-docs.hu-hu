@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fe28ba0871009785b1bb8b263b42f453c2918be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddd41756f0e373e3bf627a88f441512fe0db91b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684864"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187234"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>A Change Tracking és az Inventory hibáinak elhárítása
 
@@ -36,7 +37,7 @@ Ez a hiba a következő okok miatt fordulhat elő:
 * A Change Tracking és a leltár felügyeleti csomagjai nem tölthetők le.
 * Előfordulhat, hogy az engedélyezni kívánt virtuális gép olyan klónozott gépről származik, amely nem készült rendszer-előkészítő rendszerrel (Sysprep), és a Windows Log Analytics ügynöke telepítve van.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 A Log Analytics ügynök gépen lépjen a **C:\Program Files\Microsoft monitoring Agent\Agent\Tools** , és futtassa a következő parancsokat:
 
@@ -88,7 +89,7 @@ A probléma lehetséges okai a következők:
 * A Log Analytics-ügynök Linux rendszerhez nincs megfelelően konfigurálva.
 * A fájlok integritásának figyelése (FIM) ütközik.
 
-#### <a name="resolution"></a>Megoldás: 
+#### <a name="resolution"></a>Feloldás 
 
 ##### <a name="log-analytics-agent-for-linux-not-running"></a>Log Analytics a Linux-ügynök nem fut
 
@@ -99,11 +100,11 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell telepítenie az ügynököt. További információ a telepítésről és a konfigurálásról: [a naplófájlok adatainak összegyűjtése a log Analytics ügynökkel](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
+Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell telepítenie az ügynököt. További információ a telepítésről és a konfigurálásról: [a naplófájlok adatainak összegyűjtése a log Analytics ügynökkel](../../azure-monitor/platform/log-analytics-agent.md).
 
-Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze a hatókör-konfigurációt. Lásd: [Azure monitor-figyelési megoldások célzása](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting).
+Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze a hatókör-konfigurációt. Lásd: [Azure monitor-figyelési megoldások célzása](../../azure-monitor/insights/solution-targeting.md).
 
-A probléma további hibaelhárítását lásd [: probléma: nem jelenik meg Linux-alapú információ](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data).
+A probléma további hibaelhárítását lásd [: probléma: nem jelenik meg Linux-alapú információ](../../azure-monitor/platform/agent-linux-troubleshoot.md#issue-you-are-not-seeing-any-linux-data).
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>A Linux-ügynök nem megfelelően van konfigurálva Log Analytics
 

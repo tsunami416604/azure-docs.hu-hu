@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9fe61cf2a53b8e128a6cb58465cbb4785faa89d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6e66dc05ac2b6e54a1be94576b8686390949145
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562040"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171839"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Összetett adattípusok modellezése az Azure-ban Cognitive Search
 
@@ -111,7 +111,7 @@ A szabad formátumú keresési kifejezések a várt módon működnek összetett
 
 A lekérdezések részletesebben, ha több kifejezéssel és operátorral rendelkezik, és egyes feltételeknél meg van adva mezőnév, ahogy az a [Lucene szintaxissal](query-lucene-syntax.md)is lehetséges. A lekérdezés például két, "Portland" és "OR" kifejezéssel próbálkozik a címtartomány két almezője között:
 
-    search=Address/City:Portland AND Address/State:OR
+> `search=Address/City:Portland AND Address/State:OR`
 
 Az ehhez hasonló lekérdezések nem *korrelálnak* a teljes szöveges kereséshez, a szűrőktől eltérően. A szűrőkben egy összetett gyűjtemény almezőin keresztüli lekérdezések korrelálnak a [ `any` vagy `all` ](search-query-odata-collection-operators.md)a tartományon belüli változók használatával. A fenti Lucene-lekérdezés a "Portland, Maine" és "Portland, Oregon", valamint az Oregon többi városát tartalmazó dokumentumokat adja vissza. Ez azért történik, mert az egyes záradékok a teljes dokumentumban lévő mező összes értékére érvényesek, így nincs "aktuális aldokumentum" fogalma. Erről további információt a [OData-gyűjtési szűrők ismertetése az Azure Cognitive Searchban](search-query-understand-collection-filters.md)című témakörben talál.
 
@@ -119,7 +119,7 @@ Az ehhez hasonló lekérdezések nem *korrelálnak* a teljes szöveges keresésh
 
 A `$select` paraméter használatával kiválaszthatja, hogy mely mezőket adja vissza a rendszer a keresési eredmények között. Ha ezt a paramétert szeretné használni egy összetett mező adott almezőinek kiválasztásához, akkor a szülő mezőt és az almezőt perjel () karakterrel elválasztva adja meg `/` .
 
-    $select=HotelName, Address/City, Rooms/BaseRate
+> `$select=HotelName, Address/City, Rooms/BaseRate`
 
 Ha a keresési eredmények között szeretné, a mezőket beolvasható értékként kell megjelölni az indexben. Egy utasításban csak a beolvasható megjelölt mezők használhatók `$select` .
 
@@ -143,11 +143,11 @@ A rendezési műveletek akkor működnek, ha a mezők egyetlen értékkel rendel
 
 A szűrő kifejezésben a komplex mezők almezőire is hivatkozhat. Egyszerűen használja ugyanazt a [OData elérésiút-szintaxist](query-odata-filter-orderby-syntax.md) , amelyet a rendszer a mezők rendezéséhez, rendezéséhez és kiválasztásához használ. A következő szűrő például az összes kanadai szállodát visszaküldi:
 
-    $filter=Address/Country eq 'Canada'
+> `$filter=Address/Country eq 'Canada'`
 
 Egy összetett gyűjtemény mező szűréséhez használhat **lambda kifejezést** a [ `any` és a `all` operátorral](search-query-odata-collection-operators.md). Ebben az esetben a lambda kifejezés **tartomány változója** egy olyan objektum, amely almezőket tartalmaz. Ezeket az alárendelt mezőket a standard OData Path szintaxissal tekintheti meg. A következő szűrő például az összes olyan szállodát visszaküldi, amely legalább egy deluxe szobával és az összes nem dohányzó szobával rendelkezik:
 
-    $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
+> `$filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)`
 
 A legfelső szintű egyszerű mezőkhöz hasonlóan a komplex mezők egyszerű almezői csak akkor szerepelhetnek a szűrőkben, ha az index definíciójában a **szűrhető** attribútum van beállítva `true` . További információ: [create index API Reference](/rest/api/searchservice/create-index).
 

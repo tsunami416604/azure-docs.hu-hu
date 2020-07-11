@@ -4,24 +4,25 @@ description: Ez a cikk azt ismerteti, hogyan használható a Azure Automation az
 services: automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 322e2a3679ed29ab9ecc4cdc3c6e1fe4d0f20276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91f5ac0c3adabf9880078d7a4d3703e2757cb97f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831167"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185313"
 ---
 # <a name="manage-office-365-services"></a>Office 365-szolgáltatások kezelése
 
-Az Office 365 előfizetési szolgáltatások felügyeletéhez Azure Automation használhatja a Microsoft Word és a Microsoft Outlook termékekhez. Az Office 365-mel folytatott interakciókat [Azure Active Directory (Azure ad)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)engedélyezték. Lásd: az Azure [ad használata Azure Automation az Azure-ban való hitelesítéshez](automation-use-azure-ad.md).
+Az Office 365 előfizetési szolgáltatások felügyeletéhez Azure Automation használhatja a Microsoft Word és a Microsoft Outlook termékekhez. Az Office 365-mel folytatott interakciókat [Azure Active Directory (Azure ad)](../active-directory/fundamentals/active-directory-whatis.md)engedélyezték. Lásd: az Azure [ad használata Azure Automation az Azure-ban való hitelesítéshez](automation-use-azure-ad.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Office 365 előfizetési szolgáltatásainak Azure Automation-ben való kezeléséhez a következőkre lesz szüksége.
 
-* Azure-előfizetés. Lásd: [előfizetés-döntési útmutató](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/subscriptions/).
-* Egy Automation-objektum az Azure-ban a felhasználói fiók hitelesítő adatainak és runbookok tárolásához. Tekintse [meg a Azure Automation bevezetését](https://docs.microsoft.com/azure/automation/automation-intro).
+* Azure-előfizetés. Lásd: [előfizetés-döntési útmutató](/azure/cloud-adoption-framework/decision-guides/subscriptions/).
+* Egy Automation-objektum az Azure-ban a felhasználói fiók hitelesítő adatainak és runbookok tárolásához. Tekintse [meg a Azure Automation bevezetését](./automation-intro.md).
 * Azure AD. Lásd: az Azure [ad használata Azure Automation az Azure-ban való hitelesítéshez](automation-use-azure-ad.md).
-* Office 365-bérlő, fiókkal. Lásd: [Office 365-bérlő beállítása](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant).
+* Office 365-bérlő, fiókkal. Lásd: [Office 365-bérlő beállítása](/sharepoint/dev/spfx/set-up-your-developer-tenant).
 
 ## <a name="install-the-msonline-and-msonlineext-modules"></a>A MSOnline és a MSOnlineExt modulok telepítése
 
@@ -51,7 +52,7 @@ Nem kötelező létrehozni a hitelesítő adatokat az Office 365 rendszergazda f
 
 ## <a name="create-an-office-365-service-account"></a>Office 365-szolgáltatásfiók létrehozása
 
-Az Office 365 előfizetési szolgáltatásainak futtatásához szüksége van egy Office 365-szolgáltatásfiók, amely a kívánt műveletekre vonatkozó engedélyekkel rendelkezik. Használhat egy globális rendszergazdai fiókot, egy-egy fiókot, vagy egy függvényt vagy szkriptet a végrehajtáshoz. A szolgáltatási fióknak minden esetben összetett és biztonságos jelszót kell megadnia. Lásd: [az Office 365 for Business beállítása](https://docs.microsoft.com/microsoft-365/admin/setup/setup?view=o365-worldwide). 
+Az Office 365 előfizetési szolgáltatásainak futtatásához szüksége van egy Office 365-szolgáltatásfiók, amely a kívánt műveletekre vonatkozó engedélyekkel rendelkezik. Használhat egy globális rendszergazdai fiókot, egy-egy fiókot, vagy egy függvényt vagy szkriptet a végrehajtáshoz. A szolgáltatási fióknak minden esetben összetett és biztonságos jelszót kell megadnia. Lásd: [az Office 365 for Business beállítása](/microsoft-365/admin/setup/setup?view=o365-worldwide). 
 
 ## <a name="connect-to-the-azure-ad-online-service"></a>Kapcsolódás az Azure AD online szolgáltatáshoz
 
@@ -60,7 +61,7 @@ Az Office 365 előfizetési szolgáltatásainak futtatásához szüksége van eg
 
 A MSOnline modul használatával kapcsolódhat az Azure AD-hez az Office 365-előfizetésből. A kapcsolatok egy Office 365-felhasználónevet és-jelszót használnak, vagy többtényezős hitelesítést (MFA) használnak. Az Azure Portal vagy egy Windows PowerShell-parancssor használatával is csatlakozhat (nem kell megemelni).
 
-Alább látható egy PowerShell-példa. A [Get-hitelesítőadat](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) parancsmag megkéri a hitelesítő adatokat, és tárolja azokat a `Msolcred` változóban. Ezután a [MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) parancsmag a hitelesítő adatok használatával csatlakozik az Azure Directory online szolgáltatáshoz. Ha egy adott Azure-környezethez szeretne csatlakozni, használja a (z `AzureEnvironment` ) paramétert.
+Alább látható egy PowerShell-példa. A [Get-hitelesítőadat](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) parancsmag megkéri a hitelesítő adatokat, és tárolja azokat a `Msolcred` változóban. Ezután a [MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) parancsmag a hitelesítő adatok használatával csatlakozik az Azure Directory online szolgáltatáshoz. Ha egy adott Azure-környezethez szeretne csatlakozni, használja a (z `AzureEnvironment` ) paramétert.
 
 ```powershell
 $Msolcred = Get-Credential
@@ -70,7 +71,7 @@ Connect-MsolService -Credential $MsolCred -AzureEnvironment "AzureCloud"
 Ha nem kap hibát, sikeresen kapcsolódott. A gyors tesztelés egy Office 365-parancsmag futtatása, például `Get-MsolUser` :, és az eredmények megtekintése. Ha hibaüzenetet kap, vegye figyelembe, hogy egy gyakori probléma helytelen jelszó.
 
 >[!NOTE]
->A AzureRM modul vagy az az modul használatával is csatlakozhat az Azure AD-hez az Office 365-előfizetésből. A fő csatlakozási parancsmag a kapcsolat [– AzureAD](https://docs.microsoft.com/powershell/module/azuread/connect-azuread?view=azureadps-2.0). Ez a parancsmag a `AzureEnvironmentName` megadott Office 365-környezetek paraméterét támogatja.
+>A AzureRM modul vagy az az modul használatával is csatlakozhat az Azure AD-hez az Office 365-előfizetésből. A fő csatlakozási parancsmag a kapcsolat [– AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0). Ez a parancsmag a `AzureEnvironmentName` megadott Office 365-környezetek paraméterét támogatja.
 
 ## <a name="create-a-powershell-runbook-from-an-existing-script"></a>PowerShell-runbook létrehozása meglévő parancsfájlból
 
@@ -95,22 +96,22 @@ $O365Licenses -SmtpServer $emailSMTPServer -UseSSL
 
 A parancsfájlt Azure Automation runbook használhatja. Például a PowerShell runbook típusát fogjuk használni.
 
-1. Hozzon létre egy új PowerShell-runbook. Tekintse át [Azure Automation Runbook létrehozását](https://docs.microsoft.com/azure/automation/automation-quickstart-create-runbook)ismertető témakört.
+1. Hozzon létre egy új PowerShell-runbook. Tekintse át [Azure Automation Runbook létrehozását](./automation-quickstart-create-runbook.md)ismertető témakört.
 2. Az Automation-fiókjából válassza a **runbookok** lehetőséget a **folyamat automatizálása**alatt.
 3. Válassza ki az új runbook, és kattintson a **Szerkesztés**gombra.
 4. Másolja a szkriptet, és illessze be a runbook szöveges szerkesztőjébe.
 5. Válassza az **eszközök**lehetőséget, majd bontsa ki a **hitelesítő adatokat** , és ellenőrizze, hogy az Office 365 hitelesítő adatai vannak-e.
-6. Kattintson a **Save** (Mentés) gombra.
-7. Válassza a **teszt panel**lehetőséget, majd kattintson az **Indítás** gombra a runbook tesztelésének megkezdéséhez. Lásd: [Runbookok kezelése Azure Automationban](https://docs.microsoft.com/azure/automation/manage-runbooks).
+6. Kattintson a **Mentés** gombra.
+7. Válassza a **teszt panel**lehetőséget, majd kattintson az **Indítás** gombra a runbook tesztelésének megkezdéséhez. Lásd: [Runbookok kezelése Azure Automationban](./manage-runbooks.md).
 8. A tesztelés befejezésekor lépjen ki a teszt panelről.
 
 ## <a name="publish-and-schedule-the-runbook"></a>A runbook közzététele és beosztása
 
-A runbook közzétételéhez és a runbookok való bevezetéséhez tekintse meg a következő témakört: [a Azure Automation kezelése](https://docs.microsoft.com/azure/automation/manage-runbooks).
+A runbook közzétételéhez és a runbookok való bevezetéséhez tekintse meg a következő témakört: [a Azure Automation kezelése](./manage-runbooks.md).
 
 ## <a name="next-steps"></a>További lépések
 
 * A hitelesítő adatok használatának részleteit lásd: [a hitelesítő adatok kezelése Azure Automationban](shared-resources/credentials.md).
 * A modulokkal kapcsolatos további információkért lásd: [modulok kezelése Azure Automationban](shared-resources/modules.md).
 * Ha runbook kell elindítania, tekintse meg [a Runbook elindítása a Azure Automationban](start-runbooks.md)című témakört.
-* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview).
+* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](/powershell/scripting/overview).

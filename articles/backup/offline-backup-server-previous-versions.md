@@ -3,12 +3,12 @@ title: Offline biztonsági mentés a Data Protection Manager (DPM) és a Microso
 description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: f39e93973deab09eb328eeafcff4e49b326483f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 128051210984a55620be60a5965a7067e74de7c7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374831"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186945"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM és Azure Backup Server offline biztonsági mentési munkafolyamata (korábbi verziók)
 
@@ -44,6 +44,9 @@ Az offline biztonsági mentés a Azure Backup összes olyan üzemi modelljénél
 > * Fájlok és mappák biztonsági mentése a MARS-ügynökkel vagy a Azure Backup ügynökkel.
 > * Az összes munkaterhelés és fájl biztonsági mentése a DPM-mel.
 > * Az összes munkaterhelés és fájl biztonsági mentése a MABS-mel.
+
+>[!NOTE]
+>Az Azure CSP-előfizetések használata nem támogatott a DPM 2019 RTM és korábbi verziók esetében, valamint a MABS v3 RTM és korábbi verziók esetében. Az online biztonsági mentések továbbra is támogatottak a hálózaton.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -96,7 +99,7 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt győződjön m
 
 A következő lépésekkel manuálisan feltöltheti az offline biztonsági mentési tanúsítványt egy korábban létrehozott Azure Active Directory alkalmazásba az offline biztonsági mentéshez.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. Nyissa meg **Azure Active Directory**  >  **Alkalmazásregisztrációk**.
 1. A **tulajdonban lévő alkalmazások** lapon keresse meg a megjelenítendő név formátumot tartalmazó alkalmazást `AzureOfflineBackup _<Azure User Id` .
 
@@ -121,7 +124,7 @@ A következő lépésekkel manuálisan feltöltheti az offline biztonsági ment�
     >* Az Azure-hoz csatlakoztatott PowerShellben futtassa a `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as appears in the portal"` parancsot.
     >* Nyissa meg a beállításjegyzék elérési útját `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;` .
 
-1. Kattintson a jobb gombbal az előző lépésben hozzáadott sztringre, majd válassza a **módosítás**lehetőséget. Az érték mezőben adja meg a 7. lépésben exportált tanúsítvány ujjlenyomatát. Ezután kattintson az **OK** gombra.
+1. Kattintson a jobb gombbal az előző lépésben hozzáadott sztringre, majd válassza a **módosítás**lehetőséget. Az érték mezőben adja meg a 7. lépésben exportált tanúsítvány ujjlenyomatát. Ez után válassza az **OK** gombot.
 1. Az ujjlenyomat értékének lekéréséhez kattintson duplán a tanúsítványra. Válassza a **részletek** lapot, és görgessen lefelé, amíg meg nem jelenik az ujjlenyomat mező. Válassza az **ujjlenyomat**lehetőséget, és másolja ki az értéket.
 
     ![Érték másolása az ujjlenyomat mezőből](./media/offline-backup-dpm-mabs-previous-versions/thumbprint-field.png)

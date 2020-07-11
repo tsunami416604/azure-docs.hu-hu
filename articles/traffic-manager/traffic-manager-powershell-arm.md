@@ -11,11 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: rohink
-ms.openlocfilehash: de637bc30420ce494e553100a9f1126e88027bd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af19586807bf676f1f449f7402b364a054721eec
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704148"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187591"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager kezelése a PowerShell használatával
 
@@ -29,7 +30,7 @@ Az Azure Traffic Manager Traffic Manager profil nevű beállításcsoport haszn�
 
 Minden Traffic Manager-profilt egy "TrafficManagerProfiles" típusú erőforrás képvisel. A REST API szinten az egyes profilok URI-ja a következő:
 
-    https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}
+`https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/trafficManagerProfiles/{profile-name}?api-version={api-version}`
 
 ## <a name="setting-up-azure-powershell"></a>Azure PowerShell beállítása
 
@@ -60,11 +61,11 @@ A következő táblázat ismerteti a paramétereket:
 
 | Paraméter | Leírás |
 | --- | --- |
-| Name |Az Traffic Manager-profil erőforrásának neve. Az azonos erőforráscsoporthoz tartozó profiloknak egyedi névvel kell rendelkezniük. Ez a név nem azonos a DNS-lekérdezésekhez használt DNS-névvel. |
+| Név |Az Traffic Manager-profil erőforrásának neve. Az azonos erőforráscsoporthoz tartozó profiloknak egyedi névvel kell rendelkezniük. Ez a név nem azonos a DNS-lekérdezésekhez használt DNS-névvel. |
 | ResourceGroupName |A profil erőforrását tartalmazó erőforráscsoport neve. |
 | TrafficRoutingMethod |Megadja a forgalom-útválasztási módszert, amellyel meghatározható, hogy melyik végpontot adja vissza a rendszer a DNS-lekérdezés válaszában. A lehetséges értékek a következők: "Performance", "súlyozott" vagy "priority". |
 | RelativeDnsName |Megadja a Traffic Manager profil által megadott DNS-név állomásnév részét. Ez az érték az Azure Traffic Manager által használt DNS-tartománynévvel együtt alkotja a profil teljes tartománynevét (FQDN). A "contoso" értékének beállítása például "contoso.trafficmanager.net" lesz. |
-| Élettartam |Megadja a DNS élettartamát (TTL) másodpercben. Ez a TTL tájékoztatja a helyi DNS-feloldókat és a DNS-ügyfeleket arról, hogy mennyi ideig kell gyorsítótárazni a DNS-válaszokat ehhez a Traffic Manager profilhoz. |
+| TTL |Megadja a DNS élettartamát (TTL) másodpercben. Ez a TTL tájékoztatja a helyi DNS-feloldókat és a DNS-ügyfeleket arról, hogy mennyi ideig kell gyorsítótárazni a DNS-válaszokat ehhez a Traffic Manager profilhoz. |
 | MonitorProtocol |Meghatározza a végpont állapotának figyeléséhez használandó protokollt. A lehetséges értékek a következők: "HTTP" és "HTTPS". |
 | MonitorPort |Meghatározza a végpont állapotának figyeléséhez használt TCP-portot. |
 | MonitorPath |Megadja a végponti állapot mintavételéhez használt végponti tartománynévhez viszonyított elérési utat. |

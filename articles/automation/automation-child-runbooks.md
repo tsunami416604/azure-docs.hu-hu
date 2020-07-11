@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: c15ed6e9409bee71a778986d8f38ae1ab126c180
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95e156c17b723c679772293401c730cbdff2220b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828644"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169884"
 ---
 # <a name="create-modular-runbooks"></a>Moduláris runbookok létrehozása
 
@@ -19,12 +20,12 @@ A gyermek runbook kétféleképpen hívható meg, és eltérő különbségek va
 
 |  | Beágyazott | Parancsmag |
 |:--- |:--- |:--- |
-| Feladat |A gyermekrunbookok a szülővel azonos feladatban futnak. |A rendszer külön feladatot hoz létre a gyermekrunbookhoz. |
-| Futtatási |A folytatás előtt a szülőrunbook megvárja, hogy a gyermekrunbook befejeződjön. |A szülő runbook közvetlenül a gyermek runbook elindítása után folytatódik, *vagy* a szülő runbook megvárja, amíg befejeződik a gyermek feladata. |
-| Kimenet |A szülőrunbook közvetlenül lekérheti a gyermekrunbook kimenetét. |A szülő runbook le kell kérnie a gyermek runbook-feladatokból származó kimenetet *, vagy* a szülő runbook közvetlenül a gyermek runbook származó kimenetet kaphat. |
-| Paraméterek |A gyermekrunbook paramétereinek értékeit külön kell meghatározni, és bármilyen adattípus használható. |A gyermek runbook paramétereinek értékeit egyetlen szórótábla kell egyesíteni. Ez a szórótábla csak olyan egyszerű, tömb és objektum típusú adattípusokat tartalmazhat, amelyek JSON-szerializálást használnak. |
-| Automation-fiók |A szülő runbook csak azonos Automation-fiókban használhatja a gyermek runbook. |A szülő runbookok bármely Automation-fiókból, ugyanabból az Azure-előfizetésből, illetve egy másik előfizetésből származó gyermek runbook is használhat, amelyhez kapcsolódik. |
-| Közzététel |A gyermekrunbookot a szülőrunbook közzététele előtt kell közzétenni. |A gyermek runbook a szülő runbook elindítása előtt bármikor közzé lesz téve. |
+| **Feladat** |A gyermekrunbookok a szülővel azonos feladatban futnak. |A rendszer külön feladatot hoz létre a gyermekrunbookhoz. |
+| **Futtatási** |A folytatás előtt a szülőrunbook megvárja, hogy a gyermekrunbook befejeződjön. |A szülő runbook közvetlenül a gyermek runbook elindítása után folytatódik, *vagy* a szülő runbook megvárja, amíg befejeződik a gyermek feladata. |
+| **Kimenet** |A szülőrunbook közvetlenül lekérheti a gyermekrunbook kimenetét. |A szülő runbook le kell kérnie a gyermek runbook-feladatokból származó kimenetet *, vagy* a szülő runbook közvetlenül a gyermek runbook származó kimenetet kaphat. |
+| **Paraméterek** |A gyermekrunbook paramétereinek értékeit külön kell meghatározni, és bármilyen adattípus használható. |A gyermek runbook paramétereinek értékeit egyetlen szórótábla kell egyesíteni. Ez a szórótábla csak olyan egyszerű, tömb és objektum típusú adattípusokat tartalmazhat, amelyek JSON-szerializálást használnak. |
+| **Automation-fiók** |A szülő runbook csak azonos Automation-fiókban használhatja a gyermek runbook. |A szülő runbookok bármely Automation-fiókból, ugyanabból az Azure-előfizetésből, illetve egy másik előfizetésből származó gyermek runbook is használhat, amelyhez kapcsolódik. |
+| **Közzététel** |A gyermekrunbookot a szülőrunbook közzététele előtt kell közzétenni. |A gyermek runbook a szülő runbook elindítása előtt bármikor közzé lesz téve. |
 
 ## <a name="invoke-a-child-runbook-using-inline-execution"></a>Gyermek runbook meghívása beágyazott végrehajtás használatával
 

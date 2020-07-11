@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1feadeaf2a905abee396c09829dab5e06c46d99c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acf31af6d3ba3d78a6435210fa17562aaddac0a3
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837110"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186605"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation runbook elindítására szolgáló riasztás használata
 
@@ -45,14 +45,14 @@ Az előző szakaszban leírtaknak megfelelően a riasztások típusai eltérő s
 
 Ez a példa egy virtuális gépről származó riasztást használ. Lekéri a virtuális gép adatait a hasznos adatokból, majd ezt az információt használja a virtuális gép leállításához. A kapcsolatokat a runbook futtató Automation-fiókban kell beállítani. Ha riasztásokat használ a runbookok elindításához, fontos, hogy a riasztási állapotot az aktivált runbook vizsgálja. A runbook minden alkalommal aktiválódik, amikor a riasztás állapota megváltozik. A riasztások több állapottal rendelkeznek, és a két leggyakoribb aktiválás és megoldás történik. Ellenőrizze, hogy van-e olyan állapot a runbook-logikában, amely biztosítja, hogy a runbook egynél többször ne fusson. A cikkben szereplő példa azt mutatja be, hogyan lehet megkeresni a riasztásokat csak az állapot aktiválásával.
 
-A runbook a kapcsolati eszköz `AzureRunAsConnection` [futtató fiók](automation-create-runas-account.md) használatával hitelesíti az Azure-t, hogy végrehajtsa a felügyeleti műveletet a virtuális gépen.
+A runbook a kapcsolati eszköz `AzureRunAsConnection` [futtató fiók](./manage-runas-account.md) használatával hitelesíti az Azure-t, hogy végrehajtsa a felügyeleti műveletet a virtuális gépen.
 
 Ez a példa egy **stop-AzureVmInResponsetoVMAlert**nevű runbook létrehozására használható. Módosíthatja a PowerShell-parancsfájlt, és számos különböző erőforrással használhatja azt.
 
 1. Nyissa meg Azure Automation-fiókját.
 2. A **folyamat automatizálása**területen válassza a **runbookok**lehetőséget.
 3. A runbookok listájának tetején válassza a **+ Runbook létrehozása**lehetőséget.
-4. A **Runbook hozzáadása** lapon adja meg a **stop-AzureVmInResponsetoVMAlert** értéket a Runbook nevéhez. A runbook típusnál válassza a **PowerShell**lehetőséget. Ezután válassza a **Létrehozás**lehetőséget.  
+4. A **Runbook hozzáadása** lapon adja meg a **stop-AzureVmInResponsetoVMAlert** értéket a Runbook nevéhez. A runbook típusnál válassza a **PowerShell**lehetőséget. Ezután kattintson a **Létrehozás** elemre.  
 5. Másolja a következő PowerShell-példát a **Szerkesztés** lapra.
 
     ```powershell-interactive
@@ -189,10 +189,10 @@ A riasztások olyan műveleti csoportokat használnak, amelyek a riasztás álta
 
 1. A **riasztás részletei**területen adja meg a riasztási szabály nevét és leírását, majd kattintson a **riasztási szabály létrehozása**elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A runbook webhook használatával történő indításához tekintse meg [a Runbook indítása webhookból](automation-webhooks.md)című témakört.
-* A runbook elindításának különböző módjaival kapcsolatban lásd: [Runbook elindítása](automation-starting-a-runbook.md).
+* A runbook elindításának különböző módjaival kapcsolatban lásd: [Runbook elindítása](./start-runbooks.md).
 * A műveletnapló riasztásának létrehozásával kapcsolatban lásd: [műveletnapló riasztásai](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
 * A közel valós idejű riasztás létrehozásáról további információt [a riasztási szabály létrehozása a Azure Portalban](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)című témakörben talál.
-* A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

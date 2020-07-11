@@ -9,17 +9,18 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2149fd68cdf5f2991d6035f245f70515e920045c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680999"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187200"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hibrid runbook-feldolgozó hibáinak elhárítása
 
 Ez a cikk a Azure Automation Hybrid Runbook-feldolgozókkal kapcsolatos problémák elhárításával és megoldásával kapcsolatos információkat tartalmaz. Általános információk: a [hibrid Runbook Worker áttekintése](../automation-hybrid-runbook-worker.md).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 A hibrid Runbook-feldolgozó attól függ, hogy az ügynök kommunikál-e a Azure Automation fiókjával a feldolgozó regisztrálásához, a Runbook-feladatok fogadásához és a jelentés állapotához. Windows esetén ez az ügynök a Windows Log Analytics ügynöke. Linux esetén ez az Log Analytics-ügynök Linux rendszerhez.
 
@@ -43,7 +44,7 @@ A lehetséges okok a következők:
 * A hibrid feldolgozó proxy vagy tűzfal mögött van.
 * A hibrid Runbook-feldolgozó futtatására konfigurált számítógép nem felel meg a minimális hardverkövetelmények követelményeinek.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Ellenőrizze, hogy a számítógép rendelkezik-e kimenő hozzáféréssel a ***. Azure-Automation.net** a 443-es porton.
 
@@ -57,7 +58,7 @@ A leírást a megfelelő eseményhez tartozó **Microsoft-SMA** eseménynaplóba
 
 #### <a name="issue"></a>Probléma
 
-A hibrid Runbook-feldolgozó a 15011-as eseményt kapja, ami azt jelzi, hogy a lekérdezés eredménye érvénytelen. A következő hiba jelenik meg, amikor a feldolgozó megpróbál megnyitni egy kapcsolódást a [jelző kiszolgálóval](https://docs.microsoft.com/aspnet/core/signalr/introduction?view=aspnetcore-3.1).
+A hibrid Runbook-feldolgozó a 15011-as eseményt kapja, ami azt jelzi, hogy a lekérdezés eredménye érvénytelen. A következő hiba jelenik meg, amikor a feldolgozó megpróbál megnyitni egy kapcsolódást a [jelző kiszolgálóval](/aspnet/core/signalr/introduction?view=aspnetcore-3.1).
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -71,7 +72,7 @@ A hibrid Runbook-feldolgozó a 15011-as eseményt kapja, ami azt jelzi, hogy a l
 
 A hibrid Runbook-feldolgozó nem lett megfelelően konfigurálva a szolgáltatás automatikus telepítéséhez, például Update Management. Az üzemelő példány egy olyan részt tartalmaz, amely összekapcsolja a virtuális gépet a Log Analytics munkaterülettel. A PowerShell-parancsfájl az előfizetésben található munkaterületet keresi a megadott névvel. Ebben az esetben a Log Analytics munkaterület egy másik előfizetésben található. A parancsfájl nem találja a munkaterületet, és megpróbál létrehozni egyet, de a név már használatban van. Ennek eredményeképpen a telepítés meghiúsul.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 A probléma megoldásához két lehetőség közül választhat:
 
@@ -89,7 +90,7 @@ A hibrid Runbook-feldolgozó vagy virtuális gépek nem láthatók, ha a munkav�
 
 A hibrid Runbook Worker gép nem pingelése Azure Automation 30 napnál hosszabb ideig. Ennek eredményeképpen az Automation megtisztítta a hibrid Runbook Worker csoportot vagy a rendszer munkavégző csoportját. 
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Indítsa el a munkavégző gépet, majd rereregister Azure Automation. A runbook-környezet telepítésével és a Azure Automationhoz való kapcsolódással kapcsolatos utasításokért lásd: [Windows Hybrid Runbook Worker](../automation-windows-hrw-install.md)telepítése.
 
@@ -111,7 +112,7 @@ At line:3 char:1
 
 Ez a hiba akkor fordul elő, ha a futtató [fiókot](../manage-runas-account.md) egy olyan runbook próbálja meg használni, amely olyan hibrid runbook-feldolgozón fut, amelyen a futtató fiók tanúsítványa nincs jelen. A hibrid Runbook-feldolgozók alapértelmezés szerint nem helyileg rendelkeznek a tanúsítvány eszközzel. A futtató fiók működéséhez az szükséges, hogy az eszköz megfelelően működjön.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Ha a hibrid Runbook-feldolgozó egy Azure-beli virtuális gép, a [Runbook-hitelesítést felügyelt identitásokkal](../automation-hrw-run-runbooks.md#runbook-auth-managed-identities) is használhatja. Ez a forgatókönyv leegyszerűsíti a hitelesítést azáltal, hogy lehetővé teszi az Azure-erőforrások hitelesítését az Azure-beli virtuális gép felügyelt identitásával a futtató fiók helyett. Ha a hibrid Runbook Worker egy helyszíni gép, telepítenie kell a futtató fiók tanúsítványát a gépre. A tanúsítvány telepítésének megismeréséhez tekintse meg a következő témakört: a PowerShell runbook **exportálása – RunAsCertificateToHybridWorker** futtatása a runbookok-ben [hibrid Runbook-feldolgozón](../automation-hrw-run-runbooks.md).
 
@@ -132,7 +133,7 @@ A következő problémák lehetséges okai:
 * Az ügynök beállításaiban nem szerepel a munkaterület-azonosító vagy a munkaterület kulcsa (elsődleges). 
 * A hibrid Runbook Worker nem tudja letölteni a konfigurációt, ami miatt a fiók összekapcsolási hibát okoz. Ha az Azure lehetővé teszi a gépek funkcióinak használatát, csak bizonyos régiókat támogat, amelyekkel összekapcsolhat egy Log Analytics munkaterületet és egy Automation-fiókot. Az is lehetséges, hogy helytelen dátum vagy idő van beállítva a számítógépen. Ha az idő +/-15 perc az aktuális időponttól, a szolgáltatások telepítése sikertelen lesz.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 ##### <a name="mistyped-workspace-id-or-key"></a>Nem típusos munkaterület-azonosító vagy-kulcs
 Annak ellenőrzéséhez, hogy az ügynök munkaterület-azonosítója vagy a munkaterület kulcsa nem lett-e megadva, tekintse meg a következőt: [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/platform/agent-manage.md#windows-agent) a Windows-ügynökhöz, illetve [munkaterület hozzáadása vagy eltávolítása](../../azure-monitor/platform/agent-manage.md#linux-agent) a Linux-ügynökhöz. Győződjön meg arról, hogy a Azure Portal teljes sztringet választ, majd másolja és illessze be alaposan.
@@ -157,7 +158,7 @@ A `sudo` Linux Hybrid Runbook Worker parancs futtatása nem várt jelszót kér 
 
 A Linux rendszerhez készült Log Analytics-ügynök **nxautomationuser** -fiókja helytelenül van konfigurálva a **sudoers** fájlban. A hibrid Runbook-feldolgozónak szüksége van a fiók engedélyeinek és egyéb adatmennyiségének megfelelő konfigurálására, hogy a runbookok a Linux Runbook-feldolgozó számára is aláírható legyen.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 * Győződjön meg arról, hogy a hibrid Runbook Worker rendelkezik a GnuPG (GPG) végrehajtható fájllal a gépen.
 
@@ -173,7 +174,7 @@ A Linux Log Analytics ügynöke nem fut.
 
 Ha az ügynök nem fut, megakadályozza, hogy a Linux Hybrid Runbook Worker kommunikáljon Azure Automationokkal. Lehetséges, hogy az ügynök különböző okokból nem fut.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
  Ellenőrizze, hogy fut-e az ügynök a parancs beírásával `ps -ef | grep python` . Az alábbihoz hasonló kimenetnek kell megjelennie. A Python folyamatai a **nxautomation** felhasználói fiókkal. Ha a Azure Automation funkció nincs engedélyezve, a következő folyamatok egyike sem fut.
 
@@ -213,7 +214,7 @@ A `healthservice` nem fut a hibrid Runbook Worker gépen.
 
 Ha a Windows-szolgáltatás Log Analytics nem fut, a hibrid Runbook-feldolgozó nem tud kommunikálni a Azure Automationval.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Győződjön meg arról, hogy az ügynök fut, ehhez írja be a következő parancsot a PowerShellben: `Get-Service healthservice` . Ha a szolgáltatás leáll, írja be a következő parancsot a PowerShellben a szolgáltatás elindításához: `Start-Service healthservice` .
 
@@ -227,7 +228,7 @@ Az **Application and Services Logs\Operations-kezelő** eseménynaplójában a 4
 
 Ezt a problémát az okozhatja, hogy a proxy vagy a hálózati tűzfal blokkolja a Microsoft Azure felé irányuló kommunikációt. Ellenőrizze, hogy a számítógép rendelkezik-e kimenő hozzáféréssel a ***. Azure-Automation.net** a 443-es porton.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 A naplók tárolása helyileg történik minden hibrid feldolgozón a következő helyen: C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Ellenőrizheti, hogy van-e figyelmeztetési vagy hibaüzenet az **alkalmazás-és Logs\Microsoft-SMA\Operations** , valamint az **alkalmazás és a szolgáltatások Logs\Operations-kezelő** eseménynaplójában. Ezek a naplók olyan kapcsolatot vagy más típusú problémát jeleznek, amely hatással van a szerepkör Azure Automationre való engedélyezésére vagy a normál műveletek során felmerülő problémákra. Ha további segítségre van a Log Analytics ügynökkel kapcsolatos problémák elhárításához, olvassa el [a log Analytics Windows-ügynökkel kapcsolatos problémák elhárítása](../../azure-monitor/platform/agent-windows-troubleshoot.md)című témakört.
 
@@ -237,7 +238,7 @@ A hibrid feldolgozók a [Runbook kimenetét és üzeneteit](../automation-runboo
 
 #### <a name="issue"></a>Probléma
 
-Egy Windows Hybrid Runbook Worker-példányon futó parancsfájl nem tud a várt módon csatlakozni az Office 365-Orchestrator a homokozóban. A szkript a [MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) kapcsolatot használja a kapcsolathoz. 
+Egy Windows Hybrid Runbook Worker-példányon futó parancsfájl nem tud a várt módon csatlakozni az Office 365-Orchestrator a homokozóban. A szkript a [MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) kapcsolatot használja a kapcsolathoz. 
 
 Ha úgy módosítja **Orchestrator.Sandbox.exe.config** a proxy és a mellőzési lista beállításához, a sandbox továbbra sem csatlakozik megfelelően. Úgy tűnik, hogy a várt módon működik egy **Powershell_ise.exe.config** -fájl, amely azonos proxy-és megkerülési lista-beállításokkal rendelkezik. A Service Management Automation (SMA) naplók és a PowerShell-naplók nem biztosítanak semmilyen információt a proxyval kapcsolatban.
 
@@ -245,11 +246,11 @@ Ha úgy módosítja **Orchestrator.Sandbox.exe.config** a proxy és a mellőzés
 
 A-kiszolgálón lévő Active Directory összevonási szolgáltatások (AD FS) (AD FS) kapcsolat nem kerülheti el a proxyt. Ne feledje, hogy egy PowerShell-homokozó a naplózott felhasználóként fut. Egy Orchestrator-homokozó azonban nagy mértékben testre szabott, és figyelmen kívül hagyhatja a **Orchestrator.Sandbox.exe.config** fájl beállításait. Speciális kóddal rendelkezik a gép vagy Log Analytics ügynök proxy-beállításainak kezelésére, de más egyéni proxybeállítások kezelésére nem. 
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
-A Orchestrator-sandbox problémájának megoldásához áttelepítheti a parancsfájlt, hogy a MSOnline modul helyett a PowerShell-parancsmagokhoz használja a Azure Active Directory modulokat. További információ: [áttelepítés Orchestrator-ről Azure Automationra (bétaverzió)](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration).
+A Orchestrator-sandbox problémájának megoldásához áttelepítheti a parancsfájlt, hogy a MSOnline modul helyett a PowerShell-parancsmagokhoz használja a Azure Active Directory modulokat. További információ: [áttelepítés Orchestrator-ről Azure Automationra (bétaverzió)](../automation-orchestrator-migration.md).
 
-Ha továbbra is a MSOnline modul-parancsmagokat szeretné használni, módosítsa a parancsfájlt a [hívási parancs](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)használatára. Értékek megadása a `ComputerName` és `Credential` paraméterek számára. 
+Ha továbbra is a MSOnline modul-parancsmagokat szeretné használni, módosítsa a parancsfájlt a [hívási parancs](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)használatára. Értékek megadása a `ComputerName` és `Credential` paraméterek számára. 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential
@@ -280,7 +281,7 @@ Heartbeat
 
 Ezt a problémát a hibrid Runbook-feldolgozó sérült gyorsítótára okozhatja.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 A probléma megoldásához jelentkezzen be a hibrid Runbook-feldolgozóba, és futtassa az alábbi szkriptet. Ez a parancsfájl leállítja a Windows Log Analytics ügynökét, eltávolítja a gyorsítótárat, és újraindítja a szolgáltatást. Ez a művelet kényszeríti a hibrid Runbook-feldolgozót, hogy újra letöltse a konfigurációját Azure Automationról.
 
@@ -306,7 +307,7 @@ Machine is already registered
 
 Ezt a problémát akkor lehet okozni, ha a gép már regisztrálva van egy másik Automation-fiókkal, vagy ha megpróbálta újból hozzáadni a hibrid Runbook-feldolgozót a gépről való eltávolítása után.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 A probléma megoldásához távolítsa el a következő beállításkulcsot, indítsa újra `HealthService` , majd próbálja megismételni a `Add-HybridRunbookWorker` parancsmagot.
 

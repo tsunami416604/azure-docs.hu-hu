@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 06/19/2020
-ms.openlocfilehash: 938f10b621d6081af84cf15d7e04c5f5ab517417
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6563f3e263867387332940db58abff62e085cded
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84977699"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187693"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Összekötők által létrehozott kapcsolatok blokkolása Azure Logic Apps
 
@@ -123,13 +123,13 @@ Az alábbi lépéseket követve blokkolhatja, hogy a rendszer teljesen létrehoz
 
    ![Házirend-definíció tulajdonságai](./media/block-connections-connectors/policy-definition-create-connections-1.png)
 
-   | Tulajdonság | Kötelező | Érték | Description |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Definíció helye** | Yes | <*Azure-előfizetés – név*> | A házirend-definícióhoz használandó Azure-előfizetés <p><p>1. az előfizetés megkereséséhez kattintson a három pont (**..**.) gombra. <br>2. az **előfizetés** listában keresse meg és válassza ki az előfizetését. <br>3. Ha elkészült, válassza a **kiválasztás**lehetőséget. |
-   | **Name (Név)** | Yes | <*házirend-definíció – név*> | A házirend-definícióhoz használandó név |
-   | **Leírás** | No | <*házirend-definíció – név*> | A házirend-definíció leírása |
-   | **Kategória** | Yes | **Logikai alkalmazások** | A házirend-definíció meglévő kategóriájának vagy új kategóriájának neve |
-   | **Szabályzatbetartatás** | Yes | **Engedélyezve** | Ezzel a beállítással adható meg, hogy engedélyezi vagy letiltja a házirend-definíciót a munka mentésekor. |
+   | **Definíció helye** | Igen | <*Azure-előfizetés – név*> | A házirend-definícióhoz használandó Azure-előfizetés <p><p>1. az előfizetés megkereséséhez kattintson a három pont (**..**.) gombra. <br>2. az **előfizetés** listában keresse meg és válassza ki az előfizetését. <br>3. Ha elkészült, válassza a **kiválasztás**lehetőséget. |
+   | **Név** | Igen | <*házirend-definíció – név*> | A házirend-definícióhoz használandó név |
+   | **Leírás** | Nem | <*házirend-definíció – név*> | A házirend-definíció leírása |
+   | **Kategória** | Igen | **Logikai alkalmazások** | A házirend-definíció meglévő kategóriájának vagy új kategóriájának neve |
+   | **Szabályzatbetartatás** | Igen | **Engedélyezve** | Ezzel a beállítással adható meg, hogy engedélyezi vagy letiltja a házirend-definíciót a munka mentésekor. |
    ||||
 
 1. A **házirend-szabály**területen a JSON-szerkesztő mező előre ki van töltve egy házirend-definíciós sablonnal. Cserélje le ezt a sablont a [házirend-definícióra](../governance/policy/concepts/definition-structure.md) az alábbi táblázatban leírt tulajdonságok alapján, és kövesse a következő szintaxist:
@@ -150,7 +150,7 @@ Az alábbi lépéseket követve blokkolhatja, hogy a rendszer teljesen létrehoz
     }
     ```
 
-   | Tulajdonság | Érték | Description |
+   | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
    | `mode` | `All` | Az a mód, amely meghatározza a házirend által kiértékelt erőforrás-típusokat. <p><p>Ez a forgatókönyv `mode` a `All` -re vonatkozik, amely a szabályzatot Azure-erőforráscsoportok, előfizetések és minden erőforrástípus esetében alkalmazza. <p><p>További információ: [Policy definition Structure-Mode](../governance/policy/concepts/definition-structure.md#mode). |
    | `if` | `{condition-to-evaluate}` | Az a feltétel, amely meghatározza, hogy mikor kell kikényszeríteni a szabályzat szabályát <p><p>Ebben az esetben a `{condition-to-evaluate}` meghatározza, hogy a `api.id` `Microsoft.Web/connections/api.id` egyezések értéke `*managedApis/{connector-name}` , amely a helyettesítő karakter (*) értéket adja meg. <p><p>További információ: [házirend-definíciós struktúra – házirend-szabály](../governance/policy/concepts/definition-structure.md#policy-rule). |
@@ -244,13 +244,13 @@ Ha logikai alkalmazáson belül hoz létre egy kapcsolódást, akkor ez a kapcso
 
    ![Házirend-definíció tulajdonságai](./media/block-connections-connectors/policy-definition-using-connections-1.png)
 
-   | Tulajdonság | Kötelező | Érték | Description |
+   | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Definíció helye** | Yes | <*Azure-előfizetés – név*> | A házirend-definícióhoz használandó Azure-előfizetés <p><p>1. az előfizetés megkereséséhez kattintson a három pont (**..**.) gombra. <br>2. az **előfizetés** listában keresse meg és válassza ki az előfizetését. <br>3. Ha elkészült, válassza a **kiválasztás**lehetőséget. |
-   | **Name (Név)** | Yes | <*házirend-definíció – név*> | A házirend-definícióhoz használandó név |
-   | **Leírás** | No | <*házirend-definíció – név*> | A házirend-definíció leírása |
-   | **Kategória** | Yes | **Logikai alkalmazások** | A házirend-definíció meglévő kategóriájának vagy új kategóriájának neve |
-   | **Szabályzatbetartatás** | Yes | **Engedélyezve** | Ezzel a beállítással adható meg, hogy engedélyezi vagy letiltja a házirend-definíciót a munka mentésekor. |
+   | **Definíció helye** | Igen | <*Azure-előfizetés – név*> | A házirend-definícióhoz használandó Azure-előfizetés <p><p>1. az előfizetés megkereséséhez kattintson a három pont (**..**.) gombra. <br>2. az **előfizetés** listában keresse meg és válassza ki az előfizetését. <br>3. Ha elkészült, válassza a **kiválasztás**lehetőséget. |
+   | **Név** | Igen | <*házirend-definíció – név*> | A házirend-definícióhoz használandó név |
+   | **Leírás** | Nem | <*házirend-definíció – név*> | A házirend-definíció leírása |
+   | **Kategória** | Igen | **Logikai alkalmazások** | A házirend-definíció meglévő kategóriájának vagy új kategóriájának neve |
+   | **Szabályzatbetartatás** | Igen | **Engedélyezve** | Ezzel a beállítással adható meg, hogy engedélyezi vagy letiltja a házirend-definíciót a munka mentésekor. |
    ||||
 
 1. A **házirend-szabály**területen a JSON-szerkesztő mező előre ki van töltve egy házirend-definíciós sablonnal. Cserélje le ezt a sablont a [házirend-definícióra](../governance/policy/concepts/definition-structure.md) az alábbi táblázatban leírt tulajdonságok alapján, és kövesse a következő szintaxist:
@@ -271,7 +271,7 @@ Ha logikai alkalmazáson belül hoz létre egy kapcsolódást, akkor ez a kapcso
     }
     ```
 
-   | Tulajdonság | Érték | Description |
+   | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
    | `mode` | `All` | Az a mód, amely meghatározza a házirend által kiértékelt erőforrás-típusokat. <p><p>Ez a forgatókönyv `mode` a `All` -re vonatkozik, amely a szabályzatot Azure-erőforráscsoportok, előfizetések és minden erőforrástípus esetében alkalmazza. <p><p>További információ: [Policy definition Structure-Mode](../governance/policy/concepts/definition-structure.md#mode). |
    | `if` | `{condition-to-evaluate}` | Az a feltétel, amely meghatározza, hogy mikor kell kikényszeríteni a szabályzat szabályát <p><p>Ebben az esetben az `{condition-to-evaluate}` határozza meg, hogy a karakterlánc kimenete tartalmazza-e `[string(field('Microsoft.Logic/workflows/parameters'))]` a karakterláncot `{connector-name}` . <p><p>További információ: [házirend-definíciós struktúra – házirend-szabály](../governance/policy/concepts/definition-structure.md#policy-rule). |
@@ -331,14 +331,14 @@ Ezután hozzá kell rendelnie azt a házirend-definíciót, ahol kényszeríteni
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Hatókör** | Yes | Azok az erőforrások, amelyeken ki szeretné kényszeríteni a szabályzat-hozzárendelést. <p><p>1. a **hatókör** mező mellett kattintson az ellipszisek (**..**.) gombra. <br>2. az **előfizetés** listából válassza ki az Azure-előfizetést. <br>3. szükség esetén az **erőforráscsoport** listából válassza ki az erőforráscsoportot. <br>4. Ha elkészült, válassza a **kiválasztás**lehetőséget. |
-   | **Kizárások** | No | A szabályzat-hozzárendelésből kizárandó Azure-erőforrások. <p><p>1. a **kizárások** mező mellett kattintson az ellipszisek (**..**.) gombra. <br>2. az **erőforrás** listából válassza ki az erőforrást, > a **Hozzáadás a kiválasztott hatókörhöz**. <br>3. Ha elkészült, válassza a **Mentés**lehetőséget. |
-   | **Szabályzatdefiníció** | Yes | A hozzárendelni és érvényesíteni kívánt szabályzat-definíció neve. Ez a példa a "Instagram-kapcsolatok tiltása" Instagram szabályzattal folytatja a példát. <p><p>1. a házirend- **definíció** mező mellett válassza az ellipszisek (**...**) gombot. <br>2. **a szűrő vagy a** **keresőmező** használatával keresse meg és válassza ki a házirend-definíciót. <br>3. Ha elkészült, válassza a **kiválasztás**lehetőséget. |
-   | **Hozzárendelés neve** | Yes | A szabályzat-hozzárendeléshez használandó név, ha eltér a házirend-definíciótól |
-   | **Hozzárendelés azonosítója** | Yes | A szabályzat-hozzárendelés automatikusan generált azonosítója |
-   | **Leírás** | No | A szabályzat-hozzárendelés leírása |
-   | **Szabályzatbetartatás** | Yes | A szabályzat-hozzárendelést engedélyező vagy letiltó beállítás |
-   | **Hozzárendelte** | No | Annak a személynek a neve, aki létrehozta és alkalmazta a szabályzat-hozzárendelést |
+   | **Hatókör** | Igen | Azok az erőforrások, amelyeken ki szeretné kényszeríteni a szabályzat-hozzárendelést. <p><p>1. a **hatókör** mező mellett kattintson az ellipszisek (**..**.) gombra. <br>2. az **előfizetés** listából válassza ki az Azure-előfizetést. <br>3. szükség esetén az **erőforráscsoport** listából válassza ki az erőforráscsoportot. <br>4. Ha elkészült, válassza a **kiválasztás**lehetőséget. |
+   | **Kizárások** | Nem | A szabályzat-hozzárendelésből kizárandó Azure-erőforrások. <p><p>1. a **kizárások** mező mellett kattintson az ellipszisek (**..**.) gombra. <br>2. az **erőforrás** listából válassza ki az erőforrást, > a **Hozzáadás a kiválasztott hatókörhöz**. <br>3. Ha elkészült, válassza a **Mentés**lehetőséget. |
+   | **Szabályzatdefiníció** | Igen | A hozzárendelni és érvényesíteni kívánt szabályzat-definíció neve. Ez a példa a "Instagram-kapcsolatok tiltása" Instagram szabályzattal folytatja a példát. <p><p>1. a házirend- **definíció** mező mellett válassza az ellipszisek (**...**) gombot. <br>2. **a szűrő vagy a** **keresőmező** használatával keresse meg és válassza ki a házirend-definíciót. <br>3. Ha elkészült, válassza a **kiválasztás**lehetőséget. |
+   | **Hozzárendelés neve** | Igen | A szabályzat-hozzárendeléshez használandó név, ha eltér a házirend-definíciótól |
+   | **Hozzárendelés azonosítója** | Igen | A szabályzat-hozzárendelés automatikusan generált azonosítója |
+   | **Leírás** | Nem | A szabályzat-hozzárendelés leírása |
+   | **Szabályzatbetartatás** | Igen | A szabályzat-hozzárendelést engedélyező vagy letiltó beállítás |
+   | **Hozzárendelte** | Nem | Annak a személynek a neve, aki létrehozta és alkalmazta a szabályzat-hozzárendelést |
    ||||
 
    Például a szabályzat egy Azure-erőforráscsoporthoz való hozzárendeléséhez a Instagram példa használatával:
@@ -363,7 +363,7 @@ A szabályzat kipróbálásához hozzon létre egy kapcsolatokat a Logic app Des
 
 Az üzenet tartalmazza a következő információkat:
 
-| | |
+| Leírás | Tartalom |
 |---|---|
 | A hiba oka | `"Resource 'instagram' was disallowed by policy."` |
 | Hozzárendelés neve | `"Block Instagram connections"` |

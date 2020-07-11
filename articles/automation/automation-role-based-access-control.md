@@ -6,11 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: ac05d5b4eb8dd9d7a39f56ec6efae4831f00c623
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e997f80ceee54a1454128c1308032fefa603f5d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100003"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186146"
 ---
 # <a name="manage-role-permissions-and-security"></a>Szerepköri engedélyek és biztonság kezelése
 
@@ -42,7 +43,7 @@ A következő táblázatok ismertetik az egyes szerepkörökhöz adott engedély
 
 A tulajdonosok mindent kezelhetnek, beleértve a hozzáférést is. A következő táblázat a szerepkörhöz megadott engedélyeket tartalmazza:
 
-|Műveletek|Description|
+|Műveletek|Leírás|
 |---|---|
 |Microsoft. Automation/automationAccounts/|Minden típusú erőforrás létrehozása és kezelése.|
 
@@ -310,7 +311,7 @@ Eltávolíthat egy olyan felhasználó hozzáférési engedélyét, aki nem keze
 
 Az Automation-fiókokhoz a következő [Azure PowerShell parancsmagok](../role-based-access-control/role-assignments-powershell.md)használatával is konfigurálhat szerepköralapú hozzáférést:
 
-A [Get-AzRoleDefinition](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) felsorolja a Azure Active Directoryban elérhető összes RBAC-szerepkört. Ezt a parancsmagot használhatja a `Name` paraméterrel az adott szerepkör által végrehajtható összes művelet listázásához.
+A [Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) felsorolja a Azure Active Directoryban elérhető összes RBAC-szerepkört. Ezt a parancsmagot használhatja a `Name` paraméterrel az adott szerepkör által végrehajtható összes művelet listázásához.
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -329,7 +330,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-A [Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) felsorolja az Azure ad-RBAC szerepkör-hozzárendeléseket a megadott hatókörben. Paraméterek nélkül ez a parancsmag az előfizetés keretében végrehajtott összes szerepkör-hozzárendelést visszaadja. A `ExpandPrincipalGroups` paraméter használatával listázhatja a megadott felhasználóhoz tartozó hozzáférési hozzárendeléseket, valamint azokat a csoportokat, amelyekhez a felhasználó tartozik.
+A [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) felsorolja az Azure ad-RBAC szerepkör-hozzárendeléseket a megadott hatókörben. Paraméterek nélkül ez a parancsmag az előfizetés keretében végrehajtott összes szerepkör-hozzárendelést visszaadja. A `ExpandPrincipalGroups` paraméter használatával listázhatja a megadott felhasználóhoz tartozó hozzáférési hozzárendeléseket, valamint azokat a csoportokat, amelyekhez a felhasználó tartozik.
 
 **Példa:** A következő parancsmag használatával listázhatja az összes felhasználót és azok szerepkörét egy Automation-fiókon belül.
 
@@ -351,7 +352,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-A [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) használatával a felhasználókhoz, csoportokhoz és alkalmazásokhoz való hozzáférést egy adott hatókörhöz rendelheti hozzá.
+A [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) használatával a felhasználókhoz, csoportokhoz és alkalmazásokhoz való hozzáférést egy adott hatókörhöz rendelheti hozzá.
     
 **Példa:** A következő parancs használatával rendelje hozzá az Automation-operátor szerepkört egy felhasználóhoz az Automation-fiók hatókörében.
 
@@ -373,7 +374,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-A [Remove-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) használatával távolíthatja el egy adott felhasználó, csoport vagy alkalmazás hozzáférését egy adott hatókörből.
+A [Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0) használatával távolíthatja el egy adott felhasználó, csoport vagy alkalmazás hozzáférését egy adott hatókörből.
 
 **Példa:** A következő parancs használatával távolítsa el a felhasználót az Automation-operátori szerepkörből az Automation-fiók hatókörében.
 

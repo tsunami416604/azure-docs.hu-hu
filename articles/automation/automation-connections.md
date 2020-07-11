@@ -6,11 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3c5901dbd45cc0ce82c7fcd8117705eaeed7b4ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39085aa7967ffeac3416b61f32146ac023b46dfe
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837127"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186656"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Kapcsolatok kezelése Azure Automationban
 
@@ -40,18 +41,18 @@ A legtöbb esetben nem kell létrehoznia egy kapcsolódási erőforrást, mert a
 
 Az alábbi táblázatban található parancsmagok automatizálási kapcsolatokat hoznak létre és kezelhetnek a PowerShell-lel. Az az [modulok](shared-resources/modules.md#az-modules)részét képezik.
 
-|Parancsmag|Description|
+|Parancsmag|Leírás|
 |---|---|
-|[Get-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Adatokat kér le egy kapcsolatban.|
-|[Új – AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Új kapcsolatot hoz létre.|
-|[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|Eltávolítja a meglévő kapcsolatokat.|
-|[Set-AzAutomationConnectionFieldValue](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|Beállítja egy létező kapcsolat adott mezőjének az értékét.|
+|[Get-AzAutomationConnection](/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Adatokat kér le egy kapcsolatban.|
+|[Új – AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Új kapcsolatot hoz létre.|
+|[Remove-AzAutomationConnection](/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|Eltávolítja a meglévő kapcsolatokat.|
+|[Set-AzAutomationConnectionFieldValue](/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|Beállítja egy létező kapcsolat adott mezőjének az értékét.|
 
 ## <a name="internal-cmdlets-to-access-connections"></a>A kapcsolatok elérését szolgáló belső parancsmagok
 
 A következő táblázatban található belső parancsmag a runbookok és a DSC-konfigurációk kapcsolatainak elérésére szolgál. Ez a parancsmag a globális modulhoz tartozik `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](shared-resources/modules.md#internal-cmdlets).
 
-|Belső parancsmag|Description|
+|Belső parancsmag|Leírás|
 |---|---|
 |`Get-AutomationConnection` | Lekéri a kapcsolatok különböző mezőinek értékeit, és visszaadja őket [szórótábla](https://go.microsoft.com/fwlink/?LinkID=324844). Ezt a szórótábla a megfelelő parancsokkal használhatja a runbook vagy a DSC-konfigurációban.|
 

@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 06/09/2020
-ms.openlocfilehash: 6b26db522db246add48941da9af4784ed2942a0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b9d3ea30f502f8f95bb12c6a3b270f8eddde0cf
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84661029"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186622"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Automation-fiók létrehozása Azure Resource Manager sablon használatával
 
@@ -35,13 +36,13 @@ A következő táblázat felsorolja az ebben a példában használt erőforráso
 | Erőforrás | Erőforrás típusa | API-verzió |
 |:---|:---|:---|
 | Munkaterület | munkaterületek | 2020-03-01 – előzetes verzió |
-| Automation-fiók | automation | 2018-06-30 | 
+| Automation-fiók | automatizálás | 2018-06-30 | 
 
 ## <a name="before-you-use-the-template"></a>A sablon használata előtt
 
 Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez a Azure PowerShell az modul szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-az-ps) szakaszt. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást. A PowerShell használatával a központi telepítés a [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment)t használja.
 
-Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez a 2.1.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket. Az Azure CLI-vel ez a telepítés az [az Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)paranccsal működik. 
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez a 2.1.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket. Az Azure CLI-vel ez a telepítés az [az Group Deployment Create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)paranccsal működik. 
 
 A JSON-sablon úgy van konfigurálva, hogy a következőre Kérdezzen:
 

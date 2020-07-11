@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 12/08/2018
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d348f2696ef865616669af311477cb3a90a59a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a3516d96e397944adcd31628a561a243e178c2d
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995864"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86183035"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay-licencek követelményei és konfigurálása 
 
@@ -60,6 +61,9 @@ A következőkre akkor van szükség, amikor a Media Services használatával ti
   * . der fájl
   * . pfx-fájl
   * a. pfx fájl jelszava
+  
+> [!NOTE]
+> Azure Media Services nem vizsgálja meg a tanúsítvány lejárati dátumát a csomagolás vagy a kulcs kézbesítése során. A tanúsítvány lejárata után továbbra is működni fog.
 
 ## <a name="fairplay-and-player-apps"></a>FairPlay és Player-alkalmazások
 

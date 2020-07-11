@@ -5,15 +5,16 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 72065b388f348da1d268f875a10d5b13d2f8cf3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8770762fa2d2ae6bc0584d75397829298a62e8c0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117407"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185891"
 ---
 # <a name="limit-update-management-deployment-scope"></a>Update Management központi telepítési hatókör korlátozása
 
-Ez a cikk azt ismerteti, hogyan használhatók a hatókör-konfigurációk, ha a [Update Management](automation-update-management.md) funkció használatával telepítheti a frissítéseket és a javításokat a virtuális gépekre. További információ: [figyelési megoldások célzása Azure monitor (előzetes verzió)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
+Ez a cikk azt ismerteti, hogyan használhatók a hatókör-konfigurációk, ha a [Update Management](automation-update-management.md) funkció használatával telepítheti a frissítéseket és a javításokat a virtuális gépekre. További információ: [figyelési megoldások célzása Azure monitor (előzetes verzió)](../azure-monitor/insights/solution-targeting.md). 
 
 ## <a name="about-scope-configurations"></a>A hatókör-konfigurációk ismertetése
 
@@ -33,7 +34,7 @@ A Update Management-telepítés hatókörének korlátozása:
 
 5. A szerkesztési ablaktáblán bontsa ki a **számítógépcsoportok kijelölése elemet**. A számítógépcsoportok ablaktáblán láthatók a hatókör-konfiguráció létrehozásához használt mentett keresések. Az Update Management által használt mentett keresés:
 
-    |Name     |Kategória  |Alias  |
+    |Név     |Kategória  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     | Frissítések        | Updates__MicrosoftDefaultComputerGroup         |
 

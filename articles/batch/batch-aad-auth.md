@@ -4,11 +4,12 @@ description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történ
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: ed2bfb8e0fbaff0b7ad0ded734e33512c82a4040
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958208"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170309"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 
@@ -62,7 +63,7 @@ Az alkalmazás regisztrálását követően megjelenik az alkalmazás azonosít�
 
 ![Batch-alkalmazás regisztrálása az Azure AD-ben](./media/batch-aad-auth/app-registration-data-plane.png)
 
-Az alkalmazások Azure AD-vel való regisztrálásával kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](../active-directory/develop/authentication-scenarios.md).
+Az alkalmazások Azure AD-vel való regisztrálásával kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez](../active-directory/develop/authentication-vs-authorization.md).
 
 ## <a name="get-the-tenant-id-for-your-active-directory"></a>A Active Directory bérlői AZONOSÍTÓjának beolvasása
 
@@ -426,8 +427,8 @@ A **BatchServiceClient** objektum megnyitásához használja az egyszerű szolg�
 
 - Az Azure AD-jogkivonattal hitelesített batch-ügyfelek létrehozásával kapcsolatban lásd: [Azure batch egyéni rendszerkép üzembe helyezése Python-parancsfájlos](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md) minta használatával.
 
-[aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Mi az Azure Active Directory?"
-[aad_adal]: ../active-directory/active-directory-authentication-libraries.md
-[aad_auth_scenarios]: ../active-directory/active-directory-authentication-scenarios.md "Hitelesítési forgatókönyvek az Azure AD-hez"
-[aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Alkalmazások integrálása a Azure Active Directory"
+[aad_about]: ../active-directory/fundamentals/active-directory-whatis.md "Mi az Azure Active Directory?"
+[aad_adal]: ../active-directory/azuread-dev/active-directory-authentication-libraries.md
+[aad_auth_scenarios]: ../active-directory/develop/authentication-vs-authorization.md "Hitelesítési forgatókönyvek az Azure AD-hez"
+[aad_integrate]: ../active-directory/develop/quickstart-register-app.md "Alkalmazások integrálása a Azure Active Directory"
 [azure_portal]: https://portal.azure.com

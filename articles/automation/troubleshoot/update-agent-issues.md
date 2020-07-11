@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: ff996227e23836bf85cc3885d9184ae6d7d6c61d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680826"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187132"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>A Windows Update Agent hibáinak elhárítása
 
@@ -54,7 +55,7 @@ Az eredmények a lapon jelennek meg, amikor készen állnak. Az ellenőrzések s
 
 Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgozó a következő táblázatban látható operációs rendszerek egyikét futtatja-e.
 
-|Operációs rendszer  |Jegyzetek  |
+|Operációs rendszer  |Megjegyzések  |
 |---------|---------|
 |Windows Server 2012 és újabb verziók |A .NET-keretrendszer 4,6-es vagy újabb verziójára van szükség. ([A .NET-keretrendszer letöltése](/dotnet/framework/install/guide-for-developers).)<br/> A Windows PowerShell 5,1 megadása kötelező.  (A[Windows Management Framework 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616).)        |
 
@@ -109,7 +110,7 @@ A kriptográfiai mappa hozzáférés-ellenőrzését határozza meg, hogy a hely
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Offline hibák
 
-A hibakeresést a hibrid Runbook-feldolgozón offline módon, a parancsfájl helyi futtatásával használhatja. Szerezze be a következő szkriptet a PowerShell-galéria: [hibakeresés – WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). A parancsfájl futtatásához a WMF 4,0-es vagy újabb verziójára van szükség. A PowerShell legújabb verziójának letöltéséhez lásd: a [PowerShell különböző verzióinak telepítése](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+A hibakeresést a hibrid Runbook-feldolgozón offline módon, a parancsfájl helyi futtatásával használhatja. Szerezze be a következő szkriptet a PowerShell-galéria: [hibakeresés – WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). A parancsfájl futtatásához a WMF 4,0-es vagy újabb verziójára van szükség. A PowerShell legújabb verziójának letöltéséhez lásd: a [PowerShell különböző verzióinak telepítése](/powershell/scripting/install/installing-powershell).
 
 A szkript kimenete a következő példához hasonlóan néz ki:
 

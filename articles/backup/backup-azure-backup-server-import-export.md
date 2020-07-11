@@ -3,11 +3,12 @@ title: A DPM és az Azure Backup Server kapcsolat nélküli biztonsági mentése
 description: A Azure Backup segítségével az Azure import/export szolgáltatással küldhet adathálózatot a hálózatról. Ez a cikk a DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát ismerteti.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 0ff6198eed4e3e365b443a51e5c63534c2cf0973
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 3f02c48ddd2c5cd4831d8c7a84dbbf42f55a562a
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921254"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187795"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>A DPM és a Azure Backup Server offline biztonsági mentési munkafolyamata (MABS)
 
@@ -123,7 +124,7 @@ A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a legközelebbi Azure
     | Paraméter | Leírás |
     | --- | --- |
     | s: &lt; *átmeneti hely elérési útja*&gt; |Ez a kötelező bemenet arra szolgál, hogy megadja a munkafolyamatban megadott átmeneti hely elérési útját a "kapcsolat nélküli biztonsági mentés indítása" szakaszban. |
-    | p: &lt; *a PublishSettingsFile elérési útja*&gt; |Ez a választható bemenet a "kapcsolat nélküli biztonsági mentés indítása" szakaszban a munkafolyamatban megadott Azure közzétételi beállítási fájl elérési útjának megadására szolgál. |
+    | p: &lt; *a PublishSettingsFile elérési útja*&gt; |Ez a választható bemenet az Azure publish Settings fájl elérési útjának megadására szolgál. |
 
     A parancs futtatásakor a segédprogram kéri az Azure importálási feladatoknak a kiválasztását, amely megfelel az előkészíteni kívánt meghajtóknak. Ha csak egyetlen importálási feladattípus van társítva a megadott átmeneti helyhez, a következőhöz hasonló képernyő jelenik meg.
 

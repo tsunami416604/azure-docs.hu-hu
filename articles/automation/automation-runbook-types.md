@@ -5,17 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 184e65c929d43e7a5d4ca3be8bd93770c55cd2a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24d0123eecc56b56573e94d831283d8d360cd16e
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836566"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185925"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation runbook-típusok
 
 A Azure Automation Process Automation szolgáltatás számos runbookok támogat, az alábbi táblázatban meghatározottak szerint. A folyamat-automatizálási környezettel kapcsolatos további tudnivalókért lásd: [Runbook végrehajtása Azure Automationban](automation-runbook-execution.md).
 
-| Típus | Description |
+| Típus | Leírás |
 |:--- |:--- |
 | [Grafikus](#graphical-runbooks)|A Windows PowerShellen alapuló grafikus runbook, és a Azure Portal grafikus szerkesztőjében teljesen elkészült és szerkeszthető. |
 | [Grafikus PowerShell-munkafolyamat](#graphical-runbooks)|A grafikus runbook a Windows PowerShell-munkafolyamaton alapul, és a Azure Portal grafikus szerkesztőjében teljesen elkészült és szerkeszthető. |
@@ -67,15 +68,15 @@ A PowerShell-runbookok a Windows PowerShellen alapulnak. Közvetlenül szerkeszt
 * Ismernie kell a PowerShell-parancsfájlokat.
 * A runbookok nem használhat [párhuzamos feldolgozást](automation-powershell-workflow.md#use-parallel-processing) több művelet párhuzamos végrehajtásához.
 * A runbookok nem tud [ellenőrzőpontokat](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) használni a runbook folytatásához, ha hiba történt.
-* A [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) parancsmaggal csak a PowerShell-munkafolyamatok runbookok és a grafikus runbookok lehet felvenni, amely új feladatot hoz létre.
+* A [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) parancsmaggal csak a PowerShell-munkafolyamatok runbookok és a grafikus runbookok lehet felvenni, amely új feladatot hoz létre.
 
 ### <a name="known-issues"></a>Ismert problémák
 
 A PowerShell-runbookok jelenleg ismert problémák a következők:
 
-* A PowerShell-runbookok nem tud beolvasni egy titkosítatlan [változó](automation-variables.md) objektumot NULL értékkel.
+* A PowerShell-runbookok nem tud beolvasni egy titkosítatlan [változó](./shared-resources/variables.md) objektumot NULL értékkel.
 * A PowerShell-runbookok nem tud beolvasni egy változót a `*~*` névben.
-* A PowerShell-runbook egy hurokban való [lekéréses](https://docs.microsoft.com/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) művelete a 80-es iteráció után összeomlik.
+* A PowerShell-runbook egy hurokban való [lekéréses](/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) művelete a 80-es iteráció után összeomlik.
 * A PowerShell-runbook sikertelenek lehetnek, ha nagy mennyiségű adatokat próbálnak írni a kimeneti adatfolyamba. Ezt a problémát általában úgy is megkerülheti, ha a runbook kimenete csak a nagyméretű objektumokkal való működéshez szükséges információ. A korlátozás nélküli használata helyett például `Get-Process` a parancsmag kimenete csak a szükséges paramétereket eredményezi `Get-Process | Select ProcessName, CPU` .
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell-munkafolyamat runbookok

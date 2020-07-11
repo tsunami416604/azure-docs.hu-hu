@@ -6,15 +6,19 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74129431"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184973"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Az Azure cache geo-replikációjának beállítása a Redis
 
-A Geo-replikáció lehetővé teszi két prémium szintű Azure cache összekapcsolását a Redis-példányokhoz. Az egyik gyorsítótár elsődleges csatolt gyorsítótárként van kiválasztva, a másik pedig másodlagos csatolt gyorsítótárként. A másodlagos csatolt gyorsítótár írásvédett lesz, és az elsődleges gyorsítótárba írt információk replikálódnak a másodlagos csatolt gyorsítótárba. Ez a funkció a gyorsítótár Azure-régiók közötti replikálására használható. Ez a cikk útmutatást nyújt a Geo-replikáció konfigurálásához a prémium szintű Azure cache-hez a Redis-példányok esetében.
+A Geo-replikáció lehetővé teszi két prémium szintű Azure cache összekapcsolását a Redis-példányokhoz. Az egyik gyorsítótár elsődleges csatolt gyorsítótárként van kiválasztva, a másik pedig másodlagos csatolt gyorsítótárként. A másodlagos csatolt gyorsítótár írásvédett lesz, és az elsődleges gyorsítótárba írt információk replikálódnak a másodlagos csatolt gyorsítótárba. Az elsődleges és a másodlagos gyorsítótár példányai közötti adatátvitelt a TLS védi. A Geo-replikáció két Azure-régióra kiterjedő gyorsítótár beállítására használható. Ez a cikk útmutatást nyújt a Geo-replikáció konfigurálásához a prémium szintű Azure cache-hez a Redis-példányok esetében.
+
+> [!NOTE]
+> A Geo-replikáció vész-helyreállítási megoldásként lett kialakítva. Alapértelmezés szerint az alkalmazás az elsődleges régióból fog írni és olvasni. Opcionálisan beállítható úgy is, hogy a másodlagos régióból olvasson. A Geo-replikáció nem biztosít automatikus feladatátvételt, mert a régiók között a hozzáadott hálózati késés miatti probléma az, hogy az alkalmazás többi része az elsődleges régióban marad. A másodlagos gyorsítótár leválasztásával kell kezelnie és kezdeményeznie a feladatátvételt. Ez az új elsődleges példány lesz.
 
 ## <a name="geo-replication-prerequisites"></a>Földrajzi replikálás előfeltételei
 

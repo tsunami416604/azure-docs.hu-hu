@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: bec5e68b334cada7f83c5dbeb9ba50203835d770
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63b534f67aa5cf39f7549a467be28ec1212897d2
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84265318"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86172009"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>A Microsoft Smooth Streaming beépülő modul használata az Adobe nyílt forráskódú adathordozó-keretrendszerhez  
 ## <a name="overview"></a>Áttekintés
@@ -59,7 +60,7 @@ A statikus és a dinamikus betöltéssel kapcsolatos további információkért 
 ### <a name="ss-for-osmf-static-loading"></a>SS OSMF statikus betöltéshez
 Az alábbi kódrészlet azt mutatja be, hogyan tölthetők be a OSMF SS beépülő modulja statikusan, és hogyan játszhat egy alapszintű videót a OSMF MediaFactory osztály használatával. Mielőtt belefoglalja az SS-t a OSMF-kódra, győződjön meg arról, hogy a projekt referenciája tartalmazza a "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC" statikus beépülő modult.
 
-```
+```csharp
 package 
 {
 
@@ -195,7 +196,9 @@ package
 ### <a name="ss-for-osmf-dynamic-loading"></a>SS a OSMF dinamikus betöltéséhez
 Az alábbi kódrészlet bemutatja, hogyan tölthető be dinamikusan a OSMF SS beépülő modulja, és hogyan játszhat alapszintű videót a OSMF MediaFactory osztály használatával. Mielőtt belefoglalja az SS-t a OSMF-kódra, másolja a "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" dinamikus beépülő modult a Project mappába, ha a fájlt a FILE Protocol használatával szeretné betölteni, vagy egy webkiszolgálón keresztül másolja a HTTP-terheléshez. A projekt hivatkozásaiban nincs szükség a "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. SWC" kifejezésre.
 
-csomag
+```csharp
+package 
+{
 
     import flash.display.*;
     import org.osmf.media.*;
@@ -325,6 +328,7 @@ csomag
 
     }
 }
+```
 
 ## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Strobe Media lejátszás az SS ODMF dinamikus beépülő modullal
 A OSMF dinamikus beépülő moduljának Smooth Streaming kompatibilis a [Strobe Media lejátszással (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/). Az SS for OSMF beépülő modullal felveheti Smooth Streaming tartalom lejátszását az SMP-be. Ehhez másolja a "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" nevű webkiszolgálót a HTTP-terheléshez a következő lépésekkel:
@@ -336,49 +340,53 @@ A OSMF dinamikus beépülő moduljának Smooth Streaming kompatibilis a [Strobe 
    **Megjegyzés** A tartalmi webkiszolgálónak érvényes crossdomain.xmlra van szüksége. 
 4. Másolja és illessze be a kódot egy egyszerű HTML-lapra a kedvenc szövegszerkesztő használatával, például a következő példában:
 
-        <html>
-        <body>
-        <object width="920" height="640"> 
-        <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
-        <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest &autoPlay=true"></param>
-        <param name="allowFullScreen" value="true"></param>
-        <param name="allowscriptaccess" value="always"></param>
-        <param name="wmode" value="direct"></param>
-        <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
-            type="application/x-shockwave-flash" 
-            allowscriptaccess="always" 
-            allowfullscreen="true" 
-            wmode="direct" 
-            width="920" 
-            height="640" 
-            flashvars=" src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true">
-        </embed>
-        </object>
-        </body>
-        </html>
-
+    ```html
+    <html>
+    <body>
+    <object width="920" height="640"> 
+    <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
+    <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest &autoPlay=true"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <param name="wmode" value="direct"></param>
+    <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
+        type="application/x-shockwave-flash" 
+        allowscriptaccess="always" 
+        allowfullscreen="true" 
+        wmode="direct" 
+        width="920" 
+        height="640" 
+        flashvars=" src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true">
+    </embed>
+    </object>
+    </body>
+    </html>
+    ```
 
 
 1. Adja hozzá Smooth Streaming OSMF beépülő modult a beágyazási kódhoz, és mentse.
    
-        <html>
-        <object width="920" height="640"> 
-        <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
-        <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10"></param>
-        <param name="allowFullScreen" value="true"></param>
-        <param name="allowscriptaccess" value="always"></param>
-        <param name="wmode" value="direct"></param>
-        <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
-            type="application/x-shockwave-flash" 
-            allowscriptaccess="always" 
-            allowfullscreen="true" 
-            wmode="direct" 
-            width="920" 
-            height="640" 
-            flashvars="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10">
-        </embed>
-        </object>
-        </html>
+    ```html
+    <html>
+    <object width="920" height="640"> 
+    <param name="movie" value="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf"></param>
+    <param name="flashvars" value="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10"></param>
+    <param name="allowFullScreen" value="true"></param>
+    <param name="allowscriptaccess" value="always"></param>
+    <param name="wmode" value="direct"></param>
+    <embed src="http://osmf.org/dev/2.0gm/StrobeMediaPlayback.swf" 
+        type="application/x-shockwave-flash" 
+        allowscriptaccess="always" 
+        allowfullscreen="true" 
+        wmode="direct" 
+        width="920" 
+        height="640" 
+        flashvars="src=http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest&autoPlay=true&plugin_AdaptiveStreamingPlugin=http://yourdomain/MSAdaptiveStreamingPlugin-v1.0.3-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10">
+    </embed>
+    </object>
+    </html>
+    ```
+
 2. Mentse a HTML-oldalt, és tegye közzé a webkiszolgálón. Tallózással keresse meg a közzétett weblapot a kedvenc Flash &reg; Player-kompatibilis böngésző használatával (Internet Explorer, Chrome, Firefox stb.).
 3. Az Adobe Flash Player Smooth Streaming tartalmait használhatja &reg; &reg; .
 

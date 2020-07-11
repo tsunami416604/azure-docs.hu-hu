@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
-ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa3c190912c0fbd62b08182018c99b985354811b
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81253713"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201810"
 ---
 # <a name="how-caching-works"></a>A gyorsítótárazás működése
 
@@ -45,7 +46,7 @@ Mindegyik gyorsítótár általában a saját erőforrás-frissességét kezeli,
 
 Mivel a gyorsítótárazott erőforrások valószínűleg elavultak vagy elavultak (a forráskiszolgáló megfelelő erőforrásához képest), fontos, hogy minden gyorsítótárazási mechanizmus vezérelje a tartalom frissítését. Az idő-és sávszélesség-használat megtakarításához a rendszer nem hasonlítja össze a gyorsítótárazott erőforrásokat a forrás-kiszolgálón lévő verzióval minden egyes hozzáféréskor. Ehelyett, ha egy gyorsítótárazott erőforrás frissnek tekintendő, a rendszer azt feltételezi, hogy a legfrissebb verzió, és közvetlenül az ügyfélnek lesz küldve. A gyorsítótárazott erőforrások akkor tekinthetők frissnek, ha az életkora kevesebb, mint a gyorsítótár-beállítás által meghatározott életkor vagy időszak. Ha például egy böngésző újratölt egy weboldalt, ellenőrzi, hogy a merevlemezen lévő minden gyorsítótárazott erőforrás friss-e, és betölti azt. Ha az erőforrás nem friss (elavult), akkor a rendszer naprakész másolatot tölt be a kiszolgálóról.
 
-### <a name="validation"></a>Ellenőrzés
+### <a name="validation"></a>Érvényesítés
 
 Ha egy erőforrás elavultnak minősül, a rendszer megkéri a forráskiszolgáló érvényességét, vagyis megállapítja, hogy a gyorsítótárban lévő adatmennyiség megegyezik-e a forráskiszolgálón lévővel. Ha a fájl módosult a forráskiszolgálón, a gyorsítótár frissíti az erőforrás verzióját. Ellenkező esetben, ha az erőforrás friss, az adatok közvetlenül a gyorsítótárból érkeznek, anélkül, hogy először érvényesíteni kellene.
 
@@ -111,11 +112,11 @@ Ha a gyorsítótár elavult, a HTTP-gyorsítótár-érvényesítő használatáv
 
 Nem minden erőforrást lehet gyorsítótárazni. Az alábbi táblázat a HTTP-válasz típusán alapuló gyorsítótárazott erőforrásokat mutatja be. Azok a HTTP-válaszokkal szállított erőforrások, amelyek nem felelnek meg az összes feltételnek, nem gyorsítótárazható. A csak a **Verizon Azure CDN Premium** esetében a szabályok motor használatával testreszabhatja ezeket a feltételeket.
 
-|                   | Azure CDN a Microsofttól          | Azure CDN a Verizontól | Azure CDN a Akamai        |
-|-------------------|-----------------------------------|------------------------|------------------------------|
-| HTTP-állapotkódok | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
-| HTTP-metódusok      | LETÖLTÉS, FEJ                         | GET                    | GET                          |
-| Fájlméret korlátai  | 300 GB                            | 300 GB                 | – Általános webes kézbesítés optimalizálása: 1,8 GB<br />-Media Streaming-optimalizálások: 1,8 GB<br />-Nagyméretű fájlok optimalizálása: 150 GB |
+|                       | Azure CDN a Microsofttól          | Azure CDN a Verizontól | Azure CDN a Akamai        |
+|-----------------------|-----------------------------------|------------------------|------------------------------|
+| **HTTP-állapotkódok** | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
+| **HTTP-metódusok**      | LETÖLTÉS, FEJ                         | GET                    | GET                          |
+| **Fájlméret korlátai**  | 300 GB                            | 300 GB                 | – Általános webes kézbesítés optimalizálása: 1,8 GB<br />-Media Streaming-optimalizálások: 1,8 GB<br />-Nagyméretű fájlok optimalizálása: 150 GB |
 
 Azure CDN ahhoz, hogy a **Microsoft** gyorsítótárazási szolgáltatás egy adott erőforráson működjön, a forrás-kiszolgálónak támogatnia kell a Head és a Get http-kérelmeket, és a Content-Length értékeknek meg kell egyezniük minden Head és HTTP-válaszhoz az adott objektumra vonatkozóan. HEAD kérelem esetén a forrás-kiszolgálónak támogatnia kell a HEAD kérést, és ugyanazokkal a fejlécekkel kell válaszolnia, mint ha a GET kérést kapta.
 
@@ -125,8 +126,8 @@ Az alábbi táblázat a Azure CDN termékek alapértelmezett gyorsítótárazás
 
 |    | Microsoft: általános webes kézbesítés | Verizon: általános webes kézbesítés | Verizon: DSA | Akamai: általános webes kézbesítés | Akamai: DSA | Akamai: nagyméretű fájl letöltése | Akamai: általános vagy VOD média streaming |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **A becsület forrása**       | Igen    | Igen   | Nem   | Yes    | Nem   | Igen   | Igen    |
-| **CDN gyorsítótárának időtartama** | 2 nap |7 nap | None | 7 nap | None | 1 nap | 1 év |
+| **A becsület forrása**       | Igen    | Igen   | Nem   | Igen    | Nem   | Igen   | Igen    |
+| **CDN gyorsítótárának időtartama** | 2 nap |7 nap | Nincsenek | 7 nap | Nincsenek | 1 nap | 1 év |
 
 **Becsület forrása**: Megadja, hogy a rendszer a támogatott gyorsítótár-direktíva fejléceket adja-e meg, ha azok szerepelnek a forráskiszolgáló http-válaszában.
 

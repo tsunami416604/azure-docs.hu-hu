@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/18/2019
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 68798cf98bf01697e5d854f5b539c1c381642c3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d987bbbe2a35dd24341b75d5663bab33d8c3bdb9
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735030"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220252"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Ismert problémák: Secure LDAP riasztások a Azure Active Directory Domain Services
 
@@ -30,13 +30,13 @@ Ez a cikk segítséget nyújt az Azure AD DS biztonságos LDAP-hozzáféréssel 
 
 *Az interneten keresztüli Secure LDAP engedélyezve van a felügyelt tartományhoz. Az 636-as porthoz való hozzáférés azonban nem áll le hálózati biztonsági csoport használatával. A felhasználók a felügyelt tartomány felhasználói fiókjait felhasználhatják az elkövetett jelszavakkal kapcsolatos támadásokra.*
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Ha engedélyezi a biztonságos LDAP használatát, ajánlott olyan további szabályokat létrehozni, amelyek korlátozzák a bejövő LDAP-hozzáférést adott IP-címekhez. Ezek a szabályok a találgatásos támadásokkal védik a felügyelt tartományt. A hálózati biztonsági csoport frissítéséhez a 636-as TCP-port biztonságos LDAP-hozzáférésének korlátozásához hajtsa végre a következő lépéseket:
 
 1. A Azure Portal keresse meg és válassza ki a **hálózati biztonsági csoportok**elemet.
 1. Válassza ki a felügyelt tartományhoz társított hálózati biztonsági csoportot, például: *AADDS-contoso.com-NSG*, majd válassza a **bejövő biztonsági szabályok** elemet.
-1. **+ Szabály hozzáadása** a 636-es TCP-porthoz. Ha szükséges, válassza a **speciális** lehetőséget az ablakban egy szabály létrehozásához.
+1. Válassza a **+ Hozzáadás** elemet a 636-es TCP-porthoz tartozó szabály létrehozásához. Ha szükséges, válassza a **speciális** lehetőséget az ablakban egy szabály létrehozásához.
 1. A **forrás**mezőben válassza az *IP-címek* lehetőséget a legördülő menüből. Adja meg azokat a forrás IP-címeket, amelyekhez hozzáférést szeretne biztosítani a biztonságos LDAP-forgalomhoz.
 1. Válassza *a* **cél**lehetőséget, majd adja meg a *636* értéket a **célport tartományához**.
 1. Állítsa be **Protocol** a protokollt *TCP* -ként, és *engedélyezze*a **műveletet** .
@@ -54,7 +54,7 @@ A felügyelt tartomány állapota két órán belül automatikusan frissül, és
 
 *A felügyelt tartomány biztonságos LDAP-tanúsítványa a következő időpontban lejár: [date]].*
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Hozzon létre egy helyettesítő Secure LDAP-tanúsítványt a [biztonságos LDAP-tanúsítvány létrehozásához](tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)szükséges lépések követésével. Alkalmazza a helyettesítő tanúsítványt az Azure AD DSra, és ossza el a tanúsítványt minden olyan ügyfél számára, amely biztonságos LDAP használatával csatlakozik.
 

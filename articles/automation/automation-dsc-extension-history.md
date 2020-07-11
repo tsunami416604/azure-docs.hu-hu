@@ -9,11 +9,12 @@ services: automation
 ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: b55280dd8ed5ea82cf861e300306db5a787c31e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836923"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186418"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Az Azure desired State Configuration bővítmény korábbi verzióinak használata
 
@@ -98,7 +99,7 @@ Ez a cikk információkat nyújt az Azure DSC virtuálisgép-bővítmény minden
 - **Környezet:** Azure
 - **Megjegyzések:** Ez a verzió a DSC-t használja a Windows Server 2016; más Windows operációs rendszer esetén telepíti a [Windows Management Framework 5,1](https://devblogs.microsoft.com/powershell/wmf-5-1-releasing-january-2017/) -es verzióját (a WMF telepítése újraindítást igényel). A nano Server esetében a DSC-szerepkör telepítve van a virtuális gépen.
 - **Új funkciók:**
-  - A hibajavítások & olyan fejlesztéseket tartalmaz, amelyek leegyszerűsítik a DSC-Azure Automation a portál felhasználói felületén, valamint a Resource Manager-sablonok használatával. További információ: az [alapértelmezett konfigurációs parancsfájl](/azure/virtual-machines/extensions/dsc-overview) a DSC-bővítmény dokumentációjában.
+  - A hibajavítások & olyan fejlesztéseket tartalmaz, amelyek leegyszerűsítik a DSC-Azure Automation a portál felhasználói felületén, valamint a Resource Manager-sablonok használatával. További információ: az [alapértelmezett konfigurációs parancsfájl](../virtual-machines/extensions/dsc-overview.md) a DSC-bővítmény dokumentációjában.
 
 ### <a name="version-226"></a>2,26-es verzió
 
@@ -249,6 +250,6 @@ Ez a cikk információkat nyújt az Azure DSC virtuálisgép-bővítmény minden
 ## <a name="next-steps"></a>További lépések
 
 - A PowerShell DSC-vel kapcsolatos további információkért lásd: [PowerShell dokumentációs központ](/powershell/scripting/dsc/overview/overview).
-- Vizsgálja [meg a DSC-bővítmény Resource Manager-sablonját](/azure/virtual-machines/extensions/dsc-template).
+- Vizsgálja [meg a DSC-bővítmény Resource Manager-sablonját](../virtual-machines/extensions/dsc-template.md).
 - A PowerShell DSC-vel felügyelhető további funkciók és erőforrások megtekintéséhez tallózzon a [PowerShell-galériában](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
-- A bizalmas paraméterek konfigurációkba való átadásával kapcsolatos részletekért lásd: [a hitelesítő adatok biztonságos kezelése a DSC-bővítmény kezelőjével](/azure/virtual-machines/extensions/dsc-credentials).
+- A bizalmas paraméterek konfigurációkba való átadásával kapcsolatos részletekért lásd: [a hitelesítő adatok biztonságos kezelése a DSC-bővítmény kezelőjével](../virtual-machines/extensions/dsc-credentials.md).

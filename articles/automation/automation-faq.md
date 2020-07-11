@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 02/25/2020
-ms.openlocfilehash: 1cd20e28d1b36167154059adf728a9cfdf8102bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76c8d09ef2ef0130ddac856a1f37f8b68d977494
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836617"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186231"
 ---
 # <a name="azure-automation-frequently-asked-questions"></a>Azure Automation gyakori kérdések
 
@@ -37,7 +38,7 @@ A frissítések besorolás szerinti központi telepítése nem működik a CentO
 
 ### <a name="can-i-deploy-updates-across-azure-tenants"></a>Telepíthetek frissítéseket az Azure-bérlők között?
 
-Ha olyan gépekkel rendelkezik, amelyeknek egy másik Azure-Bérlőnek kell bejelentkezniük Update Management, akkor a következő megkerülő megoldást kell használnia az ütemezett kezdéshez. A [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) parancsmagot használhatja a `ForUpdateConfiguration` megadott paraméterrel az ütemterv létrehozásához. Használhatja a [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) parancsmagot, és átadhatja a többi bérlőben lévő gépeket a `NonAzureComputer` paraméternek. Az alábbi példa azt szemlélteti, hogyan teheti ezt meg.
+Ha olyan gépekkel rendelkezik, amelyeknek egy másik Azure-Bérlőnek kell bejelentkezniük Update Management, akkor a következő megkerülő megoldást kell használnia az ütemezett kezdéshez. A [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule?view=azps-3.7.0) parancsmagot használhatja a `ForUpdateConfiguration` megadott paraméterrel az ütemterv létrehozásához. Használhatja a [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) parancsmagot, és átadhatja a többi bérlőben lévő gépeket a `NonAzureComputer` paraméternek. Az alábbi példa azt szemlélteti, hogyan teheti ezt meg.
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -53,5 +54,5 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 Ha a kérdés itt nem válaszol, további kérdéseit és válaszait az alábbi forrásokban tekintheti meg.
 
-- [Azure Automation](https://docs.microsoft.com/answers/topics/azure-automation.html)
+- [Azure Automation](/answers/topics/azure-automation.html)
 - [Visszajelzési fórum](https://feedback.azure.com/forums/905242-update-management)

@@ -3,11 +3,12 @@ title: Élő videó elemzése az Ön által választott AI-vel – Azure
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre olyan IoT Edge modult, amely integrálható az élő videók elemzésével IoT Edge az élő videók elemzéséhez egy tetszőleges számítógépes látási modell használatával.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 0ac2af280eefd5ce293a8be422551d5ee6f6d3f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a1ea3ebd8c7de4c691d7a982dbc08e9d08d9e38
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261260"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86182865"
 ---
 # <a name="analyze-live-video-with-ai-of-your-choice"></a>Élő videó elemzése tetszőleges mesterséges intelligenciával
 
@@ -45,7 +46,7 @@ A HTTP-szerződés a következőképpen van definiálva:
 
 Az élő video Analytics-modulról a modulnak küldött kérések a következők:
 
-|||
+| Kulcs | Érték |
 |---|---|
 |POST| `https://hostname/optional-path?optional-query`|
 |Elfogadás|alkalmazás/JSON,*/*|
@@ -67,11 +68,11 @@ Content-Length: 519222
 (Image Binary Content)
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A modul válaszait az élő videó elemzési moduljának a következőképpen kell megadni:
 
-|||
+| Kulcs | Érték |
 |---|---|
 |Állapotkódok|200 OK – következtetések eredményei találhatók<br/>204 nincs tartalom – a mesterséges intelligencia nem talált tartalmat<br/>400 hibás kérelem – nem várt<br/>500 belső kiszolgálóhiba – nem várt<br/>503 a kiszolgáló foglalt – az AMS az "újrapróbálkozási" fejléc alapján, vagy egy alapértelmezett időtartamon alapul, ha nincs előre beállítva fejléc.|
 |Content-Type|application/json|
@@ -264,7 +265,7 @@ Az alábbi példa egyetlen eseményt tartalmaz, amely az összes támogatott kö
  
 ## <a name="sample-http-extension-modules"></a>Minta HTTP-bővítmény modulok
 
-Néhány példa a HTTP-bővítmények elérhetővé tételére az [élő videó Analytics GitHub](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)-tárházában található. A videó- [elemzési minták](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) egyike azt mutatja be, hogyan használható a [Yolov3](https://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) -modell az objektumok észleléséhez IoT Edge modul létrehozásához. Ugyanezzel a módszerrel hozhat létre saját modult egy tetszőleges AI-modellel.
+Néhány példa a HTTP-bővítmények elérhetővé tételére az [élő videó Analytics GitHub](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)-tárházában található. A videó- [elemzési minták](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) egyike azt mutatja be, hogyan használható az [YOLOv3](https://pjreddie.com/darknet/yolo/) [ONNX](http://onnx.ai/) -modell az objektumok észleléséhez IoT Edge modul létrehozásához. Egy másik [videó-elemzési minta](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx-tiny) bemutatja, hogyan használható az apró YOLOv3 a YOLOv3 ONNX-modell egyszerűsített verziójával. Ugyanezzel a módszerrel hozhat létre saját modult egy tetszőleges AI-modellel.
 
 ## <a name="next-steps"></a>További lépések
 

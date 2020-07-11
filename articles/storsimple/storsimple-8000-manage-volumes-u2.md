@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 3d8ab6da9327048469c8b781657bb03b6a4b9669
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 920f7f2fa6fb6e80b060f0308b124a3a1214cb3f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508248"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86204460"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>A kötetek kezelése a StorSimple Eszközkezelő szolgáltatásával (3. frissítés vagy újabb)
 
@@ -51,14 +51,14 @@ Ha archivált adatmennyiséget használ a rétegekből, jelölje be a **kötet h
 
 A következő táblázat tartalmazza az egyes eszközök és kötetek típusának maximális kiosztott kapacitását. (Vegye figyelembe, hogy a helyileg rögzített kötetek nem érhetők el egy virtuális eszközön.)
 
-|  | Maximális rétegű kötet mérete | Maximális helyileg rögzített kötet mérete |
+| Típus | Maximális rétegű kötet mérete | Maximális helyileg rögzített kötet mérete |
 | --- | --- | --- |
 | **Fizikai eszközök** | | |
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Virtuális eszközök** | | |
-| 8010 |30 TB |N.A. |
-| 8020 |64 TB |N.A. |
+| 8010 |30 TB |N/A |
+| 8020 |64 TB |N/A |
 
 ## <a name="the-volumes-blade"></a>A kötetek panel
 

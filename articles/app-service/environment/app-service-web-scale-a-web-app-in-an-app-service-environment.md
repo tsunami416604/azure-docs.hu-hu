@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e665ec27da0a898e754817f946b965ac7360fda
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74688683"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220558"
 ---
 # <a name="scaling-apps-in-an-app-service-environment-v1"></a>Alkalmazások méretezése egy App Service Environment v1-ben
 A Azure App Service általában három dolgot lehet méretezni:
@@ -29,7 +30,7 @@ A feldolgozói méretek tekintetében a beosztotti rendszergazda hozzárendelhet
 
 Bármelyik tétel módosítása a szolgáltatott App Service-csomagokhoz tartozó megfelelő felhasználói felületen történik.  
 
-![][1]
+![Képernyőkép a méretezési szolgáltatási csomag és a Worker Pool szolgáltatási csomag részleteinek megtekintéséhez.][1]
 
 Az ASP nem méretezhető fel az ASP-ben lévő munkavégző készletben elérhető számítási erőforrások számánál túl.  Ha számítási erőforrásokra van szüksége az adott munkavégző készletben, akkor hozzá kell adnia a beszerzéshez a beküldés-rendszergazdát.  A következő témakörben olvashat bővebben [arról, hogyan konfigurálhatja][HowtoConfigureASE]a betekintő adatokat: app Service környezet konfigurálása.  Érdemes lehet kihasználnia a kisegítő lehetőségekkel, hogy kihasználhassa a kapacitást az ütemterv vagy a mérőszámok alapján.  Ha további részleteket szeretne megtudni arról, hogyan konfigurálhatja az autoskálázást a beadási környezettel kapcsolatban, tekintse meg, [hogyan kell konfigurálni az autoskálázást app Service Environment][ASEAutoscale]
 
@@ -40,14 +41,14 @@ Amikor először hozza létre a webalkalmazást egy App Service Environment, akk
 
 Ha a beszerzett eszköz kapacitása elegendő, akkor ez elég egyszerű.  Nyissa meg a App Service tervet, amely a vertikálisan felskálázást és a méretezést választja.  Ekkor megnyílik a felhasználói felület, amelyen manuálisan állíthatja be az ASP méretezési szabályait, vagy konfigurálhatja az ASP-re vonatkozó autoskálázási szabályokat.  Az alkalmazás manuális méretezéséhez egyszerűen állítsa be a ***skálázást*** a ***manuálisan megadott példányszámra***.  Innen húzza a csúszkát a kívánt mennyiségre, vagy írja be a csúszkát a csúszka melletti mezőbe.  
 
-![][2] 
+![Képernyőfelvétel: Itt állíthatja be, hogy hol állítható be az ASP méretezése, illetve hogyan konfigurálható az ASP-re vonatkozó autoskálázási szabályok konfigurálása.][2] 
 
 Egy olyan ASP-ben lévő ASP-re vonatkozó autoskálázási szabályok ugyanúgy működnek, mint a szokásos módon.  Kiválaszthatja a ***CPU százalékos arányát*** a ***méretezési*** lehetőség alatt, és létrehozhat az ASP-hez a CPU százalékán alapuló autoskálázási szabályokat, vagy az ***ütemterv és a teljesítmény szabályok***használatával összetettebb szabályokat is létrehozhat.  Az autoscale konfigurálásával kapcsolatos további részletekért tekintse meg az [alkalmazás méretezése Azure app Serviceban][AppScale]című útmutatót. 
 
 ### <a name="worker-pool-selection"></a>Munkavégző készlet kiválasztása
 Ahogy azt korábban említettük, a munkavégző készlet kiválasztása az ASP felhasználói felületéről érhető el.  Nyissa meg a méretezni kívánt ASP panelt, és válassza a munkavégző készlet lehetőséget.  Megjelenik az összes munkavégző készlet, amelyet a App Service Environment konfigurált.  Ha csak egy munkavégző készlettel rendelkezik, akkor csak a felsorolt készlet jelenik meg.  Ha módosítani szeretné a munkavégző készletet az ASP-ben, egyszerűen válassza ki azt a munkavégző készletet, amelyre a App Service tervet szeretné áthelyezni.  
 
-![][3]
+![Képernyőkép, amely azt mutatja, hogy hol módosíthatja az ASP munkavégző készletét.][3]
 
 Mielőtt áthelyezi az ASP-t az egyik munkavégző készletből a másikba, fontos, hogy elegendő kapacitással rendelkezzen az ASP-hez.  A munkavégző készletek listáján nem csak a Worker Pool neve szerepel, de azt is láthatja, hogy hány alkalmazott áll rendelkezésre a munkavégző készletben.  Győződjön meg arról, hogy elegendő példány áll rendelkezésre a App Service tervének tárolására.  Ha több számítási erőforrásra van szüksége a munkavégző készletben, amelyet át szeretne helyezni, akkor adja hozzá a betöltési rendszergazdát.  
 

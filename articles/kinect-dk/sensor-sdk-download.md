@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, frissítés letöltése, legújabb, elérhető, telepítés
-ms.openlocfilehash: 2c23977c7e01a9137b72b44d1bdc0e1373bafa0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 48cdd35a80d68a7ec0d900639c0fca3a2c66787e
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85277596"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171788"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect Sensor SDK letöltése
 
@@ -28,7 +28,7 @@ Ezen a lapon az Azure Kinect Sensor SDK egyes verzióihoz tartozó letöltési h
 
 ## <a name="windows-download-link"></a>Windows letöltési hivatkozás
 
-[Microsoft Installer](https://download.microsoft.com/download/4/5/a/45aa3917-45bf-4f24-b934-5cff74df73e1/Azure%20Kinect%20SDK%201.4.0.exe)  |  [GitHub forráskódja](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1093)
+[Microsoft Installer](https://download.microsoft.com/download/3/d/6/3d6d9e99-a251-4cf3-8c6a-8e108e960b4b/Azure%20Kinect%20SDK%201.4.1.exe)  |  [GitHub forráskódja](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1093)
 
 > [!NOTE]
 > Az SDK telepítésekor jegyezze fel a telepítési útvonalat. Például: "C:\Program Files\Azure Kinect SDK 1,2". Az ezen az elérési úton található cikkekben hivatkozott eszközöket megtalálja.

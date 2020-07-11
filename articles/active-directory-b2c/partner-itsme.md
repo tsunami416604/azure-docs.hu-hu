@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d8229864acc80a27994ae3c795213dc2a65d22db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85dd58398021ef61e425eb58797e818b233c491b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385569"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86170122"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Az itsme OpenID Connect (OIDC) konfigurálása Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ A kezdéshez a következőkre lesz szüksége:
 Please clarify step 1 in the description below - we don't have steps in this tutorial for "adapting in the Azure AD B2C Custom Policy- User Journeys" - should this be added somewhere?
 -->
 
-|   |   |
+| Lépés | Leírás |
 |------|------|
 |1     | A webhelyen vagy az alkalmazásban vegye fel a **Bejelentkezés a itsme** gombbal a Azure ad B2C felhasználói folyamatba való alkalmazkodással. A kapcsolati folyamat elindul, amikor a felhasználó rákattint erre a gombra.  |
 |2     | Azure AD B2C elindítja az OpenID Connect folyamatot egy engedélyezési kérelem küldésével a itsme ügyfél titkos API-nak. A végpontokkal kapcsolatos információkat tartalmazó, jól ismert/OpenID-konfigurációs végpont is elérhető.  |
@@ -82,7 +82,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
    |Tulajdonság | Érték |
    |------------ |------- |
-   | Name (Név) | itsme |
+   | Név | itsme |
    | Metaadatok URL-címe | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>hol `<environment>` van `e2e` vagy (tesztkörnyezet) vagy `prd` (éles környezet)  |
    | Ügyfélazonosító     | Az **ügyfél-azonosító**, más néven **partneri kód**  |
    | Titkos ügyfélkulcs | Az **client_secret** |
@@ -96,7 +96,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
    |vezetéknév; | family_name |
    |E-mail | e-mail|
 
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 
 ### <a name="configure-a-user-flow"></a>Felhasználói folyamat konfigurálása
 
@@ -127,11 +127,11 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 3. Győződjön meg arról, hogy a többtényezős hitelesítés **le van tiltva**.
 
-4. Kattintson a **Register** (Regisztrálás) elemre.
+4. Válassza a **Regisztráció** lehetőséget.
 
    a. Tesztelési célból válassza a **hitelesítés**lehetőséget, majd az **implicit engedélyezés**területen jelölje be a **hozzáférési jogkivonatok** és **azonosító tokenek** jelölőnégyzetet.  
 
-   b. Kattintson a **Mentés** gombra.
+   b. Válassza a **Mentés** lehetőséget.
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 

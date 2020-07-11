@@ -5,15 +5,14 @@ author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
 ms.reviewer: spelluru
-ms.date: 10/29/2019
+ms.date: 07/08/2020
 ms.topic: article
-ms.service: event-grid
-services: event-grid
-ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a7cc864366bd9a35c96dd453c0dc68f77d8abd9
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710864"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171448"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Oktatóanyag: közzététel, előfizetés helyi eseményekre
 
@@ -38,7 +37,7 @@ A modulokat többféleképpen is telepítheti egy IoT Edge eszközre, és mindeg
 
 ### <a name="select-your-iot-edge-device"></a>IoT Edge eszköz kiválasztása
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 1. Navigáljon a IoT Hub.
 1. Válassza a **IoT Edge** lehetőséget az **automatikus eszközkezelés** szakasz menüjében. 
 1. Kattintson a céleszköz AZONOSÍTÓjának az eszközök listájáról

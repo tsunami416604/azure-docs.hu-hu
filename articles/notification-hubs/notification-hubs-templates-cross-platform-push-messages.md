@@ -16,13 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3c64155053517205ab006673bb8f400325ad3c4
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76263744"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219963"
 ---
-# <a name="templates"></a>Sablonok
+# <a name="notification-hubs-templates"></a>Notification Hubs sablonok
 
 A sablonok lehetővé teszik az ügyfélalkalmazás számára, hogy megadják a fogadni kívánt értesítések pontos formátumát. A sablonok használatával az alkalmazások számos különböző előnnyel járhatnak, többek között az alábbiakkal:
 
@@ -61,7 +62,7 @@ A Notification Hubs sablon funkció lehetővé teszi, hogy az ügyfélalkalmazá
 
 A következő kép szemlélteti a folyamatot:
 
-![](./media/notification-hubs-templates/notification-hubs-hello.png)
+![A sablonok platformok közötti használatának folyamatát bemutató ábra](./media/notification-hubs-templates/notification-hubs-hello.png)
 
 Az iOS-ügyfélalkalmazás regisztrációjának sablonja a következő:
 
@@ -120,7 +121,7 @@ Az értesítési központnak küldött üzenet a következő tulajdonságokat ta
 
 Ennek a mintának a használatával a háttérrendszer csak egyetlen üzenetet küld anélkül, hogy az alkalmazás felhasználói számára speciális személyre szabott beállításokat kellene tárolnia. A következő kép szemlélteti ezt a forgatókönyvet:
 
-![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
+![Ábra, amely azt mutatja, hogy a háttérrendszer csak egyetlen üzenetet küld az egyes platformoknak.](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
 ## <a name="how-to-register-templates"></a>Sablonok regisztrálása
 

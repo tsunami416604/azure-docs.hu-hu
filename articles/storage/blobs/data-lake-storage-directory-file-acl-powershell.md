@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 67aa9fcb51742432dcd629073f15a65d14bf3597
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961200"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142548"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A PowerShell használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
@@ -81,11 +81,11 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>
 $ctx = $storageAccount.Context
 ```
 
-## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
+## <a name="create-a-container"></a>Tároló létrehozása
 
-A fájlrendszer tárolóként működik a fájlok számára. A parancsmag használatával létrehozhat egyet `New-AzStorageContainer` . 
+A tároló fájlrendszerként működik a fájlok számára. A parancsmag használatával létrehozhat egyet `New-AzStorageContainer` . 
 
-Ez a példa egy nevű fájlrendszert hoz létre `my-file-system` .
+Ez a példa egy nevű tárolót hoz létre `my-file-system` .
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -96,7 +96,7 @@ New-AzStorageContainer -Context $ctx -Name $filesystemName
 
 Hozzon létre egy címtár-hivatkozást a `New-AzDataLakeGen2Item` parancsmag használatával. 
 
-Ez a példa egy nevű könyvtárat helyez `my-directory` el egy fájlrendszerhez.
+Ez a példa egy nevű könyvtárat helyez `my-directory` el egy tárolóhoz.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -202,7 +202,7 @@ $properties.Group
 $properties.Owner
 ```
 
-A fájlrendszer tartalmának listázásához hagyja `-Path` ki a paramétert a parancsból.
+Egy tároló tartalmának listázásához hagyja `-Path` ki a paramétert a parancsból.
 
 ## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba
 
@@ -270,7 +270,7 @@ Lekérheti, beállíthatja és frissítheti a címtárak és fájlok hozzáfér�
 
 Egy könyvtár vagy fájl hozzáférés-vezérlési listájának lekérése a `Get-AzDataLakeGen2Item` parancsmag használatával.
 
-Ez a példa lekéri a **fájlrendszer** gyökérkönyvtárát, majd kinyomtatja az ACL-t a konzolra.
+Ez a példa egy **tároló** gyökérkönyvtárának ACL-listáját jeleníti meg, majd kinyomtatja az ACL-t a konzolra.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -305,7 +305,7 @@ Ebben a példában a tulajdonos felhasználó olvasási, írási és végrehajt�
 
 A `set-AzDataLakeGen2ItemAclObject` parancsmag használatával hozzon létre egy ACL-t a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók számára. Ezután a parancsmag használatával `Update-AzDataLakeGen2Item` véglegesítse az ACL-t.
 
-Ez a példa egy **fájlrendszer** gyökérkönyvtárát állítja be a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók számára, majd kinyomtatja az ACL-t a konzolra.
+Ez a példa egy **tároló** gyökérkönyvtárában lévő ACL-t állítja be a tulajdonos felhasználó, tulajdonos csoport vagy más felhasználók számára, majd kinyomtatja az ACL-t a konzolra.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -349,9 +349,9 @@ Az alábbi képen egy fájl ACL-listájának beállítása után a kimenet láth
 Ebben a példában a tulajdonos felhasználó és a tulajdonos csoport csak olvasási és írási engedéllyel rendelkezik. Minden más felhasználó írási és végrehajtási engedélyekkel rendelkezik. A hozzáférés-vezérlési listával kapcsolatos további információkért lásd: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](data-lake-storage-access-control.md).
 
 
-### <a name="set-acls-on-all-items-in-a-file-system"></a>ACL-ek beállítása a fájlrendszer összes eleméhez
+### <a name="set-acls-on-all-items-in-a-container"></a>ACL-ek beállítása egy tároló összes eleméhez
 
-A `Get-AzDataLakeGen2Item` (z) és a (z `-Recurse` ) paramétert a `Update-AzDataLakeGen2Item` (z) parancsmaggal együtt használva rekurzív módon ÁLLÍTHATJA be az ACL-t a címtárakban és a fájlokban a fájlrendszerben. 
+A `Get-AzDataLakeGen2Item` (z) és a (z `-Recurse` ) paramétert a `Update-AzDataLakeGen2Item` (z) parancsmaggal együtt használva rekurzív módon állíthatja be egy tároló könyvtáraihoz és FÁJLJAIhoz tartozó ACL-t. 
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -411,7 +411,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 A következő táblázat azt mutatja be, hogy a parancsmagok hogyan használhatók a Data Lake Storage Gen1 leképezéshez a Data Lake Storage Gen2 parancsmagokhoz.
 
-|Data Lake Storage Gen1 parancsmag| Data Lake Storage Gen2 parancsmag| Jegyzetek |
+|Data Lake Storage Gen1 parancsmag| Data Lake Storage Gen2 parancsmag| Megjegyzések |
 |--------|---------|-----|
 |Get-AzDataLakeStoreChildItem|Get-AzDataLakeGen2ChildItem|Alapértelmezés szerint a Get-AzDataLakeGen2ChildItem parancsmag csak az első szintű alárendelt elemeket sorolja fel. A-recurse paraméter rekurzív módon sorolja fel a alárendelt elemeket. |
 |Get-AzDataLakeStoreItem<br>Get-AzDataLakeStoreItemAclEntry<br>Get-AzDataLakeStoreItemOwner<br>Get-AzDataLakeStoreItemPermission|Get-AzDataLakeGen2Item|A Get-AzDataLakeGen2Item parancsmag kimeneti elemei a következő tulajdonságokkal rendelkeznek: ACL, tulajdonos, csoport, engedély.|

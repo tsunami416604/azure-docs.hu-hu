@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6b6da2a15441564ef0b67e76ee5a0e0c85839a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609316"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142414"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>A digitális ikrek és a Twin Graph ismertetése
 
@@ -94,9 +95,10 @@ A digitális Twin-és a kapcsolati adatfájlok egyaránt JSON formátumban vanna
 
 Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jeleníti meg:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
 | `$dtId` | A digitális Twin AZONOSÍTÓját jelölő, felhasználó által megadott karakterlánc |
+| `$etag` | A webkiszolgáló által hozzárendelt szabványos HTTP-mező |
 | `$conformance` | A digitális iker megfelelőségi állapotát tartalmazó felsorolás ( *nem**megfelelő,* *ismeretlen*) |
 | `{propertyName}` | Egy tulajdonság értéke a JSON-ban ( `string` , szám típusa vagy objektum) |
 | `$relationships` | A kapcsolatok gyűjtemény elérési útjának URL-címe Ez a mező hiányzik, ha a digitális Twin nem rendelkezik kimenő kapcsolati élekkel. |
@@ -115,6 +117,7 @@ Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jelení
 ```json
 {
   "$dtId": "Cafe",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "Temperature": 72,
   "Location": {
     "x": 101,
@@ -159,9 +162,10 @@ Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jelení
 
 Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő mezőket jeleníti meg:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
 | `$relationshipId` | Egy felhasználó által megadott karakterlánc, amely a kapcsolat AZONOSÍTÓját jelöli. Ez a karakterlánc egyedi a forrásként szolgáló digitális Twin környezetben, ami azt is jelenti, hogy az `sourceId`  +  `relationshipId` Azure Digital Twins-példány kontextusában egyedi. |
+| `$etag` | A webkiszolgáló által hozzárendelt szabványos HTTP-mező |
 | `$sourceId` | A forrásként szolgáló digitális Twin azonosító |
 | `$targetId` | A cél digitális iker azonosítója |
 | `$relationshipName` | A kapcsolat neve |

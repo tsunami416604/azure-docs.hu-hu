@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: ba01b89b54dc7209449490059555f531f7616720
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 171ae04a70f3639981e74d20d260a03359a0f2c8
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193362"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187438"
 ---
 # <a name="what-is-routing-preference-preview"></a>Mi az útválasztási preferencia (előzetes verzió)?
 
@@ -65,8 +65,8 @@ A "Microsoft Global Network" nevű útválasztási beállításokat tartalmazó 
 A tároláshoz az elsődleges végpontok mindig a **Microsoft globális hálózatot**használják. A másodlagos végpontokat az **internettel** engedélyezheti, ha a forgalom útválasztását választja. A támogatott tárolási szolgáltatások a következők:
 
 * Blobok
-* Files
-* Webes
+* Fájlok
+* Web
 * Azure DataLake
 
 ## <a name="pricing"></a>Díjszabás
@@ -88,7 +88,7 @@ A két lehetőség közötti árkülönbség az internetes kimenő adatforgalom 
 
 Az útválasztási beállítások támogatása a következő régiókban érhető el olyan szolgáltatások esetében, mint például a virtuális gép és az internetre irányuló terheléselosztó, amely nyilvános IP-címet használ az internetes forgalomhoz – Észak-Európa, Nyugat-Európa, Dél-Franciaország, Egyesült Királyság déli régiója, Nyugat-Svájc Középnyugat-Németország USA keleti régiója
 
-A Storage-fiók útválasztási preferencia-támogatása a következő Azure-régiókban érhető el: Dél-Franciaország, USA északi középső régiója, az USA nyugati középső régiója, Kelet-Japán, Nyugat-Japán, Középnyugat-Németország és Nyugat-Svájc.
+A Storage-fiók útválasztási preferencia-támogatása a következő Azure-régiókban érhető el: az USA északi középső régiója, az USA nyugati középső régiója, az USA déli középső régiója, az USA keleti régiója, az USA nyugati régiója, Észak-Európa, Dél-Franciaország, Középnyugat-Németország, Nyugat-Svájc, déli Kelet-Ázsia, Kelet-Japán
 ## <a name="limitations"></a>Korlátozások
 
 * Az útválasztási beállítás csak a nyilvános IP-cím szabványos SKU-jának megfelelően kompatibilis. A nyilvános IP-cím alapszintű SKU-jának használata nem támogatott.

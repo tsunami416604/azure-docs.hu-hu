@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: tracking-python
-ms.openlocfilehash: e1dd20514fcb14e411fbb7efee4157b670d462b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a832fe4e212ce39ca423263ed2554c2682455002
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389700"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165659"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Időzítő trigger a Azure Functionshoz 
 
@@ -217,10 +217,10 @@ public void keepAlive(
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `TimerTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n.a. | "TimerTrigger" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**direction** | n.a. | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**irányba** | n.a. | "In" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
 |**név** | n.a. | Annak a változónak a neve, amely az időzítő objektumot jelöli a függvény kódjában. | 
 |**menetrend**|**ScheduleExpression**|Egy [cron kifejezés](#ncrontab-expressions) vagy egy [TimeSpan](#timespan) érték. A `TimeSpan` csak egy app Service csomagon futó Function alkalmazás esetében használható. Az ütemezett kifejezést beállíthatja egy alkalmazás-beállításban, és ezt a tulajdonságot megadhatja a jelek között becsomagolt Alkalmazásbeállítások nevében, az **%** alábbi példában látható módon: "% ScheduleAppSetting%". |
 |**runOnStartup**|**RunOnStartup**|Ha a `true` rendszer meghívja a függvényt a futtatókörnyezet indításakor. Például a futtatókörnyezet akkor indul el, amikor a Function alkalmazás felébred, miután inaktivitás miatt tétlen marad. Ha a Function alkalmazás újraindul a függvény változásai miatt, és a függvény alkalmazás skálázása. Így a **runOnStartup** ritkán kell beállítani `true` , különösen éles környezetben. |
@@ -287,24 +287,7 @@ Minden mezőhöz a következő típusú értékek tartozhatnak:
 
 A CRON-kifejezésben szereplő számok egy időre és dátumra hivatkoznak, nem pedig időtartományra. A mezőben lévő 5 `hour` érték például 5:00, nem 5 óránként.
 
-A CRON-kifejezésekkel használt alapértelmezett időzóna az egyezményes világidő (UTC) szerint van megadva. Ha egy másik időzóna alapján szeretné megkeresni a CRON-kifejezést, hozzon létre egy alkalmazást az nevű Function-alkalmazáshoz `WEBSITE_TIME_ZONE` . Állítsa az értéket a kívánt időzóna nevére a [Microsoft időzóna-indexben](https://technet.microsoft.com/library/cc749073)látható módon.
-
-  > [!NOTE]
-  > `WEBSITE_TIME_ZONE`jelenleg nem támogatott a Linux-fogyasztási tervben.
-
-A *keleti téli idő* például UTC-05:00. A következő NCRONTAB-kifejezéssel, amely az UTC-időzónához 10:00 tartozik:
-
-```
-"0 0 15 * * *"
-``` 
-
-Vagy hozzon létre egy alkalmazás-beállítást a Function alkalmazáshoz `WEBSITE_TIME_ZONE` , és állítsa be az értéket **keleti téli időpontra**.  Ezután a következő NCRONTAB kifejezést használja: 
-
-```
-"0 0 10 * * *"
-``` 
-
-A használatakor `WEBSITE_TIME_ZONE` az idő az adott időzónában, például a nyári időszámítás időpontjára módosul. 
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="timespan"></a>időtartam
 
@@ -312,7 +295,7 @@ A használatakor `WEBSITE_TIME_ZONE` az idő az adott időzónában, például a
 
 A CRON kifejezéstől eltérően `TimeSpan` az érték határozza meg az egyes függvények meghívása közötti időtartamot. Ha egy függvény a megadott intervallumnál hosszabb ideig fut, az időzítő azonnal meghívja a függvényt.
 
-Karakterláncként kifejezve a `TimeSpan` formátum a `hh:mm:ss` 24- `hh` nél kisebb. Ha az első két számjegy 24 vagy nagyobb, a formátum: `dd:hh:mm` . Az alábbiakban néhány példa következik:
+Karakterláncként kifejezve a `TimeSpan` formátum a `hh:mm:ss` 24- `hh` nél kisebb. Ha az első két számjegy 24 vagy nagyobb, a formátum: `dd:hh:mm` . Néhány példa:
 
 |Példa |Aktiváláskor  |
 |---------|---------|

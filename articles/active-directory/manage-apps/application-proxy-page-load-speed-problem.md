@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bff9873742d5d660f563eebcb58ff9bcca940d24
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1dc1b14a917786e124775a4505c53f63238a383
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760175"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86203854"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>Egy alkalmazásproxy-alkalmazás túl sokáig tart a betöltéshez
 
@@ -31,8 +31,6 @@ Ebből a cikkből megtudhatja, hogy az Azure AD Application Proxy-alkalmazások 
 Habár az alkalmazásai működnek, hosszú késést tapasztalhatnak. Előfordulhat, hogy a sebesség növeléséhez hálózati topológiát kell megadnia. A különböző topológiák kiértékeléséhez tekintse meg a [hálózati megfontolásokat ismertető dokumentumot](application-proxy-network-topology.md).
 
 A hálózati topológia mellett jelenleg nincsenek további javaslatok a teljesítmény finomhangolásához. Az alkalmazásproxy szolgáltatás kibontásakor előfordulhat, hogy az adatközpont fizikailag közelebb van. A szorosabb közelség segíthet a késésben. Az Azure-adatközpontok listáját a [késési teszt oldalon](http://www.azurespeed.com/Azure/Latency)tekintheti meg. 
-
-Az alkalmazásproxy szolgáltatással rendelkező adatközpontok a [Connector ports test eszközzel](https://aadap-portcheck.connectorporttest.msappproxy.net/)találhatók. 
 
 ## <a name="feedback-on-application-proxy-data-center-locations"></a>Visszajelzés az Application proxy adatközpontjának helyeiről 
 Előfordulhat, hogy olyan Azure-adatközpontok vannak, amelyek még nem tartalmazzák az alkalmazásproxy-t, de az Ön számára jelentős késéssel jár. Küldje el az adatközpont helyét a következőnek: aadapfeedback@microsoft.com . A Microsoft a bővítési csomagok visszajelzéseit használja.

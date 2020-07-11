@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 707cfb2e9bea3286daa92ea54f7bb9659a455caf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e37c680f6bf9e296230232c0d4e0fab5f50ad3cd
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390516"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86142380"
 ---
 # <a name="manage-digital-twins"></a>Digitális ikereszközök kezelése
 
@@ -122,6 +122,7 @@ A `object result = await client.DigitalTwins.GetByIdAsync("my-moon");` *Hold*tí
 ```json
 {
   "$dtId": "myMoon-001",
+  "$etag": "W/\"e59ce8f5-03c0-4356-aea9-249ecbdc07f9\"",
   "radius": 1737.1,
   "mass": 0.0734,
   "$metadata": {
@@ -146,7 +147,8 @@ A `object result = await client.DigitalTwins.GetByIdAsync("my-moon");` *Hold*tí
 
 A digitális iker definiált tulajdonságai a digitális iker felső szintű tulajdonságaiként lesznek visszaadva. A DTDL-definíciónak nem részét képező metaadatokat vagy rendszeradatokat előtaggal adja vissza a rendszer `$` . A metaadatok tulajdonságai a következők:
 * Az Azure Digital Twins-példányban lévő digitális iker azonosítója, mint `$dtId` .
-* További tulajdonságok egy `$metadata` szakaszban. Ide tartoznak az alábbiak:
+* `$etag`, a webkiszolgáló által hozzárendelt szabványos HTTP-mező
+* További tulajdonságok egy `$metadata` szakaszban. Ezek a következők:
     - A digitális iker modell DTMI.
     - Az egyes írható tulajdonságok szinkronizálási állapota. Ez a leghasznosabb az eszközök esetében, ahol lehetséges, hogy a szolgáltatás és az eszköz eltérő állapotú (például ha egy eszköz offline állapotban van). Ez a tulajdonság jelenleg csak IoT Hubhoz csatlakoztatott fizikai eszközökre vonatkozik. A metaadatok szakaszban található adatokkal megismerheti a tulajdonságok teljes állapotát, valamint az utolsó módosítás időbélyegét is. A szinkronizálási állapottal kapcsolatos további információkért tekintse meg [ezt az IoT hub oktatóanyagot](../iot-hub/tutorial-device-twins.md) az eszköz állapotának szinkronizálásához.
     - Szolgáltatás-specifikus metaadatok, például IoT Hub vagy Azure digitális Twins. 

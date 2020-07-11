@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f7e24e1b4546c76348e61e3c2736fcfe4b66410d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0560d9a5156f06f7ae7473f63359d9d17926b7ab
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836940"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186452"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integrálás Azure Monitor naplókkal
 
@@ -35,7 +36,7 @@ Az Automation-állapotra vonatkozó konfigurációs jelentések Azure Monitor na
 
 - A [Azure PowerShell](/powershell/azure/overview) november 2016-es vagy újabb kiadása (v 2.3.0).
 - Egy Azure Automation-fiókra. További információ: [Bevezetés a Azure Automationba](automation-intro.md).
-- Egy Log Analytics munkaterületen egy Automation & Control Service-ajánlattal. További információ: [Bevezetés a log Analytics használatába Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
+- Egy Log Analytics munkaterületen egy Automation & Control Service-ajánlattal. További információ: [Bevezetés a log Analytics használatába Azure monitor](../azure-monitor/log-query/get-started-portal.md).
 - Legalább egy Azure Automation állapot-konfigurációs csomópont. További információ: [bevezetési gépek felügyeletre Azure Automation állapot-konfiguráció alapján](automation-dsc-onboarding.md).
 - A [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) modul 2.7.0.0 vagy újabb verzió. A telepítési lépésekért lásd: [Azure Automation a kívánt állapot konfigurációjának hibaelhárítása](./troubleshoot/desired-state-configuration.md).
 
@@ -43,7 +44,7 @@ Az Automation-állapotra vonatkozó konfigurációs jelentések Azure Monitor na
 
 Az adatok Azure Automation állapotból Azure Monitor naplókba való importálásának megkezdéséhez hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az Azure-fiókjába a PowerShellben. Lásd: [bejelentkezés Azure PowerShellsal](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Jelentkezzen be az Azure-fiókjába a PowerShellben. Lásd: [bejelentkezés Azure PowerShellsal](/powershell/azure/authenticate-azureps).
 1. Szerezze be az Automation-fiók erőforrás-AZONOSÍTÓját az alábbi PowerShell-parancsmag futtatásával. Ha egynél több Automation-fiókkal rendelkezik, válassza ki a konfigurálni kívánt fiók erőforrás-AZONOSÍTÓját.
 
    ```powershell
@@ -90,7 +91,7 @@ Szűrés részletei:
 * `DscResourceStatusData`Az adott erőforrásra alkalmazott csomópont-konfigurációban meghívott összes DSC-erőforrás visszaküldési műveleteinek szűréséhez. 
 * A szűrő bekapcsolásával `DscResourceStatusData` visszatérhet a hibás DSC-erőforrásokra vonatkozó információk.
 
-Ha többet szeretne megtudni a naplófájlok adatainak megkereséséről, tekintse meg a [Azure monitorban található naplók áttekintését](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Ha többet szeretne megtudni a naplófájlok adatainak megkereséséről, tekintse meg a [Azure monitorban található naplók áttekintését](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>E-mail küldése, ha az állapot-konfiguráció megfelelőségének ellenőrzése sikertelen
 
@@ -104,7 +105,7 @@ Riasztási szabály létrehozásához először létre kell hoznia egy naplót a
    Ha több Automation-fiókból vagy-előfizetésből állított be naplókat a munkaterületre, a riasztásokat az előfizetés és az Automation-fiók alapján csoportosíthatja. Származtatja az Automation-fiók nevét a `Resource` rekordok keresés mezőjéből `DscNodeStatusData` .
 1. A **szabály létrehozása** képernyő megnyitásához kattintson az oldal tetején található **új riasztási szabály** elemre. 
 
-A riasztás konfigurálásának lehetőségeiről további információt a [riasztási szabály létrehozása](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)című témakörben talál.
+A riasztás konfigurálásának lehetőségeiről további információt a [riasztási szabály létrehozása](../azure-monitor/platform/alerts-metric.md)című témakörben talál.
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Nem sikerült a DSC-erőforrások keresése az összes csomóponton
 
@@ -195,9 +196,8 @@ Azure Automation diagnosztika két típusú rekordot hoz létre a Azure Monitor 
 - Az áttekintést lásd: [Azure Automation állapot konfigurációjának áttekintése](automation-dsc-overview.md).
 - Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának első lépései](automation-dsc-getting-started.md)című témakört.
 - Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg [a DSC-konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
-- A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+- A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
 - A díjszabással kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának díjszabása](https://azure.microsoft.com/pricing/details/automation/).
 - Ha szeretné megtekinteni a Azure Automation állapot konfigurációjának folyamatos üzembe helyezési folyamatban való használatát, tekintse [meg a folyamatos üzembe helyezés a chocolatey](automation-dsc-cd-chocolatey.md)használatával című témakört.
-- Ha többet szeretne megtudni a különböző keresési lekérdezések létrehozásáról és az Automation-állapot konfigurációs naplófájljainak Azure Monitor-naplókkal való áttekintéséről, tekintse meg a naplók [keresése a Azure monitor naplókban](../log-analytics/log-analytics-log-searches.md)című témakört.
-- Ha többet szeretne megtudni Azure Monitor a naplókról és az adatgyűjtési forrásokról, tekintse meg [Az Azure Storage-adatok gyűjtése Azure monitor naplók áttekintését](../azure-monitor/platform/collect-azure-metrics-logs.md)ismertető cikket.
+- Ha többet szeretne megtudni a különböző keresési lekérdezések létrehozásáról és az Automation-állapot konfigurációs naplófájljainak Azure Monitor-naplókkal való áttekintéséről, tekintse meg a naplók [keresése a Azure monitor naplókban](../azure-monitor/log-query/log-query-overview.md)című témakört.
+- Ha többet szeretne megtudni Azure Monitor a naplókról és az adatgyűjtési forrásokról, tekintse meg [Az Azure Storage-adatok gyűjtése Azure monitor naplók áttekintését](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)ismertető cikket.

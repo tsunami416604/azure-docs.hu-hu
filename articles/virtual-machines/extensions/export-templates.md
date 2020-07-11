@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4919ce9ecaa3dc4f621aa5658b44aa53fad0bbf3
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703995"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201016"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Virtuálisgép-bővítményeket tartalmazó erőforráscsoportok exportálása
 
@@ -32,18 +33,7 @@ Számos virtuálisgép-bővítmény érhető el. Nem minden bővítmény export�
 
 A következő bővítmények exportálhatók az Automation script szolgáltatással.
 
-| Mellék ||||
-|---|---|---|---|
-| Acronis Backup | Datadoggal Windows-ügynök | Operációsrendszer-javítás Linux rendszerhez | VM pillanatkép Linux
-| Acronis Backup Linux | Docker-bővítmény | Báb-ügynök |
-| BG-információ | DSC-bővítmény | Webhely nonstop APM-betekintés |
-| BMC CTM-ügynök Linux | Dynatrace Linux | Site nonstop Linux-kiszolgáló |
-| BMC CTM-ügynök Windows | Dynatrace Windows | Hely nonstop Windows Server |
-| Chef-ügyfél | HPE Security Application Defender | Trend Micro DSA |
-| Egyéni szkript | IaaS antimalware | Trend Micro DSA Linux |
-| Egyéni szkriptbővítmény | IaaS-diagnosztika | VM-hozzáférés Linux rendszerhez |
-| Egyéni parancsfájl Linux rendszerhez | Linux Chef-ügyfél | VM-hozzáférés Linux rendszerhez |
-| Datadoggal Linux-ügynök | Linux-diagnosztika | Virtuális gép pillanatképe |
+> Acronis Backup, Acronis Backup Linux, BG info, BMC CTM-ügynök Linux, BMC CTM-ügynök – Windows, Chef-ügyfél, egyéni parancsfájl, egyéni parancsfájl-kiterjesztés, egyéni parancsfájl Linux rendszerhez, Datadoggal Linux-ügynök, Datadoggal Windows-ügynök, Docker-bővítmény, DSC-bővítmény, Dynatrace Linux, Dynatrace Windows, HPE Security Application Defender, IaaS antimalware, IaaS diagnosztika, Linux Chef-ügyfél, Linux-diagnosztika , Site nonstop Linux Server, site nonstop Windows Server, Trend Micro DSA, Trend Micro DSA Linux, VM-hozzáférés Linux rendszerhez, VM-hozzáférés Linux rendszerhez, VM-pillanatkép, VM pillanatkép Linux
 
 ## <a name="export-the-resource-group"></a>Az erőforráscsoport exportálása
 

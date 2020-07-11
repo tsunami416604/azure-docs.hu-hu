@@ -5,11 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 192fd0fe73a34ca4d6ffc49badeac7ca8a080793
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555032"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185585"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>A Change Tracking és a leltár áttekintése
 
@@ -48,11 +49,11 @@ A Change Tracking és a leltár jelenleg a következő problémákba ütközik:
 
 - A gyorsjavítások frissítései nem gyűjthetők a Windows Server 2016 Core RS3-gépeken.
 
-- Előfordulhat, hogy a Linux-démonok módosult állapotot mutatnak, de nem történt változás. Ez a probléma a `SvcRunLevels` Azure monitor [konfigurációváltozás](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) -naplóban található adatrögzítési mód miatt fordul elő.
+- Előfordulhat, hogy a Linux-démonok módosult állapotot mutatnak, de nem történt változás. Ez a probléma a `SvcRunLevels` Azure monitor [konfigurációváltozás](/azure/azure-monitor/reference/tables/configurationchange) -naplóban található adatrögzítési mód miatt fordul elő.
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A Change Tracking és a leltár minden olyan operációs rendszeren támogatott, amely megfelel Log Analytics ügynök követelményeinek. A hivatalos operációsrendszer-verziók a Windows Server 2008 SP1 vagy újabb, illetve Windows 7 SP1 vagy újabb verziójúak. A szolgáltatás számos Linux operációs rendszeren is támogatott. Az Log Analyticst támogató operációs rendszerek esetében lásd: [log Analytics ügynök áttekintése](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
+A Change Tracking és a leltár minden olyan operációs rendszeren támogatott, amely megfelel Log Analytics ügynök követelményeinek. A hivatalos operációsrendszer-verziók a Windows Server 2008 SP1 vagy újabb, illetve Windows 7 SP1 vagy újabb verziójúak. A szolgáltatás számos Linux operációs rendszeren is támogatott. Az Log Analyticst támogató operációs rendszerek esetében lásd: [log Analytics ügynök áttekintése](../azure-monitor/platform/log-analytics-agent.md).
 
 A TLS 1,2-hez szükséges ügyfél-követelmények megismeréséhez lásd: [tls 1,2 kényszerítés Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
@@ -79,8 +80,8 @@ A módosításra vagy eseményre kattintva megtekintheti annak részleteit. Az e
 
 - Események
 - Démonok
-- Files
-- Registry
+- Fájlok
+- Regisztrációs adatbázis
 - Szoftverek
 - Microsoft-szolgáltatások
 
@@ -90,7 +91,7 @@ Hozzáadhat, módosíthat vagy eltávolíthat minden módosítást. Az alábbi p
 
 ## <a name="fim-support-in-azure-security-center"></a>FIM-támogatás a Azure Security Centerban
 
-A Change Tracking és a leltár a [Azure Security Center file Integrity monitoring (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring)használatát teszi lehetővé. Míg a FIM figyeli a fájlokat és a beállításjegyzékeket, a teljes Change Tracking és a leltár funkció a következőket is tartalmazza:
+A Change Tracking és a leltár a [Azure Security Center file Integrity monitoring (FIM)](../security-center/security-center-file-integrity-monitoring.md)használatát teszi lehetővé. Míg a FIM figyeli a fájlokat és a beállításjegyzékeket, a teljes Change Tracking és a leltár funkció a következőket is tartalmazza:
 
 - A szoftver módosításai
 - Microsoft-szolgáltatások
@@ -105,7 +106,7 @@ A Windows és a Linux rendszerű fájlok változásainak nyomon követéséhez a
 
 ## <a name="tracking-of-file-content-changes"></a>A fájl tartalmának változásai nyomon követése
 
-A Change Tracking és a leltár lehetővé teszi egy Windows-vagy Linux-fájl tartalmának megtekintését. Egy fájl minden módosítása esetén a Change Tracking és a leltár egy [Azure Storage-fiókban](../storage/common/storage-create-storage-account.md)tárolja a fájl tartalmát. Egy fájl nyomon követése után megtekintheti annak tartalmát a módosítás előtt vagy után. A fájl tartalma beágyazott vagy egymás mellett is megtekinthető. 
+A Change Tracking és a leltár lehetővé teszi egy Windows-vagy Linux-fájl tartalmának megtekintését. Egy fájl minden módosítása esetén a Change Tracking és a leltár egy [Azure Storage-fiókban](../storage/common/storage-account-create.md)tárolja a fájl tartalmát. Egy fájl nyomon követése után megtekintheti annak tartalmát a módosítás előtt vagy után. A fájl tartalma beágyazott vagy egymás mellett is megtekinthető. 
 
 ![Egy fájl változásainak megtekintése](./media/change-tracking/view-file-changes.png)
 
@@ -114,7 +115,7 @@ A Change Tracking és a leltár lehetővé teszi egy Windows-vagy Linux-fájl ta
 A Change Tracking és a leltár lehetővé teszi a Windows-beállításkulcsok változásainak figyelését. A figyeléssel megadhatja azokat a bővíthetőségi pontokat, amelyekben a harmadik féltől származó kód és a kártevő is aktiválható. Az alábbi táblázat az előre konfigurált (de nem engedélyezett) beállításkulcsokat sorolja fel. A kulcsok nyomon követéséhez engedélyeznie kell mindegyiket.
 
 > [!div class="mx-tdBreakAll"]
-> |Beállításjegyzék kulcsa | Szerep |
+> |Beállításjegyzék kulcsa | Cél |
 > | --- | --- |
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Startup` | Az indításkor futó parancsfájlokat figyeli.
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | A leállításkor futó parancsfájlokat figyeli.
@@ -164,13 +165,13 @@ A következő táblázat a nyomon követett elemek korlátozásait mutatja gépe
 | **Erőforrás** | **Korlát** |
 |---|---|---|
 |Fájl|500|
-|Registry|250|
+|Regisztrációs adatbázis|250|
 |Windows-szoftver (nem tartalmazza a gyorsjavításokat) |250|
 |Linux-csomagok|1250|
 |Szolgáltatások|250|
 |Démonok|250|
 
-A Change Tracking és a leltárt használó gépek átlagos Log Analytics adatfelhasználása körülbelül 40 MB/hó, a környezettől függően. A Log Analytics munkaterület használati és becsült költségek funkciójával megtekintheti a Change Tracking és a leltár által betöltött adatokat egy használati diagramon. Ezzel az adatnézettel kiértékelheti az adathasználatot, és meghatározhatja, hogyan befolyásolja a számláját. Lásd: [a használat és a becsült költségek megismerése](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
+A Change Tracking és a leltárt használó gépek átlagos Log Analytics adatfelhasználása körülbelül 40 MB/hó, a környezettől függően. A Log Analytics munkaterület használati és becsült költségek funkciójával megtekintheti a Change Tracking és a leltár által betöltött adatokat egy használati diagramon. Ezzel az adatnézettel kiértékelheti az adathasználatot, és meghatározhatja, hogyan befolyásolja a számláját. Lásd: [a használat és a becsült költségek megismerése](../azure-monitor/platform/manage-cost-storage.md#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Microsoft-szolgáltatásokra vonatkozó adatkezelés
 
@@ -187,7 +188,7 @@ A teljesítmény optimalizálása érdekében a Log Analytics ügynök csak a v�
 
 Az Change Tracking és a leltár kulcsfontosságú funkciója, hogy a hibrid környezet konfigurációs állapotának változásairól riasztást küld. Számos hasznos művelet aktiválható a riasztásokra adott válaszokban, például az Azure functions, az Automation runbookok, a webhookok és a hasonló műveletek esetén. A **c:\Windows\System32\drivers\etc\hosts** -fájl változásainak riasztása egy adott gépen a riasztások helyes alkalmazása Change Tracking és leltározási adatként. Számos további forgatókönyv is létezik a riasztásokhoz, beleértve a következő táblázatban definiált lekérdezési forgatókönyveket is.
 
-|Lekérdezés  |Description  |
+|Lekérdezés  |Leírás  |
 |---------|---------|
 |Konfigurációváltozás <br>&#124;, ahol a ConfigChangeType = = "files" és a FileSystemPath a "c: \\ Windows \\ System32 \\ Drivers \\ " kifejezést tartalmazza|A rendszerkritikus fájlok változásainak nyomon követésére használható.|
 |Konfigurációváltozás <br>&#124;, hogy a FieldsChanged tartalmazza-e a "FileContentChecksum" és a FileSystemPath = = "c: \\ Windows system32 illesztőprogramok, illetve a \\ \\ \\ \\ gazdagépek"|Hasznos a legfontosabb konfigurációs fájlok módosításainak nyomon követéséhez.|

@@ -6,11 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: ef7824640dcd2b9dbae1d27f385e5334ba9875ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba0430461df5ce1a2d615b819dbe5e8a36ae52b7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83699226"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184531"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Az Azure Cache for Redis adatvesztéssel járó hibáinak elhárítása
 
@@ -22,11 +23,11 @@ Ez a cikk azt ismerteti, hogyan diagnosztizálhatja az Azure cache-ben esetleges
 
 ## <a name="partial-loss-of-keys"></a>Kulcsok részleges elvesztése
 
-A Redis készült Azure cache nem törli a kulcsokat, miután a memóriában tárolták őket. Azonban eltávolítja a kulcsokat a lejárati vagy kizárási szabályzatokra, valamint az explicit kulcs-törlési parancsokra válaszul. A Redis-példányhoz tartozó prémium vagy standard szintű Azure cache főcsomópontba írt kulcsai szintén nem érhetők el azonnal a replikán. Az adatok replikálása a főkiszolgálóról a replikára aszinkron és nem blokkoló módon történik.
+A Redis készült Azure cache nem törli a kulcsokat, miután a memóriában tárolták őket. Azonban eltávolítja a kulcsokat a lejárati vagy kizárási szabályzatokra, valamint az explicit kulcs-törlési parancsokra válaszul. Az Redis-példányhoz tartozó prémium vagy standard szintű Azure cache elsődleges csomópontján írt kulcsok nem érhetők el azonnal a replikán. Az adatok replikálása az elsődlegesről a replikára aszinkron és nem blokkoló módon történik.
 
 Ha úgy találja, hogy a kulcsok eltűntek a gyorsítótárból, ellenőrizze az alábbi lehetséges okokat:
 
-| Ok | Description |
+| Ok | Leírás |
 |---|---|
 | [Kulcs lejárata](#key-expiration) | A kulcsok el lesznek távolítva a rájuk vonatkozó időtúllépés miatt. |
 | [Kulcs kizárása](#key-eviction) | A kulcsok el lesznek távolítva a memória nyomása alatt. |
@@ -79,13 +80,13 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>Aszinkron replikáció
 
-A standard vagy prémium szinten található Redis-példányok minden Azure cache-je fő csomóponttal és legalább egy replikával van konfigurálva. Az adatok a főkiszolgálóról a replikába való másolása aszinkron módon, háttérbeli folyamat használatával történik. A [Redis.IO](https://redis.io/topics/replication) webhely leírja, hogyan működik az Redis adatreplikációja. Azokban az esetekben, amikor az ügyfelek gyakran írnak Redis, a részleges adatvesztés miatt előfordulhat, hogy a replikáció nem garantált azonnali. Ha például a főkiszolgáló leáll, *miután* egy ügyfél egy kulcsot ír, de *mielőtt* a háttérben elküldi a kulcsot a replikának, a kulcs elvész, amikor a replika átveszi az új főkiszolgálót.
+A standard vagy a prémium szinten lévő Redis-példányok bármely Azure cache-je elsődleges csomóponttal és legalább egy replikával van konfigurálva. Az adatok az elsődlegesről a replikára másolódnak aszinkron módon, egy háttérben futó folyamat használatával. A [Redis.IO](https://redis.io/topics/replication) webhely leírja, hogyan működik az Redis adatreplikációja. Azokban az esetekben, amikor az ügyfelek gyakran írnak Redis, a részleges adatvesztés miatt előfordulhat, hogy a replikáció nem garantált azonnali. Ha például az elsődleges üzenet azt *követően* leáll, hogy az ügyfél egy kulcsot ír, de *mielőtt* a háttérben elküldi a kulcsot a replikának, a kulcs elvész, amikor a replika átveszi az új elsődlegesként.
 
 ## <a name="major-or-complete-loss-of-keys"></a>Kulcsok jelentős vagy teljes elvesztése
 
 Ha a legtöbb vagy az összes kulcs eltűnt a gyorsítótárból, ellenőrizze az alábbi lehetséges okokat:
 
-| Ok | Description |
+| Ok | Leírás |
 |---|---|
 | [Kulcs kiürítése](#key-flushing) | A kulcsok törlése manuálisan megtörtént. |
 | [Helytelen adatbázis-kijelölés](#incorrect-database-selection) | A Redis-hez készült Azure cache nem alapértelmezett adatbázis használatára van beállítva. |
@@ -111,7 +112,7 @@ A Redis-hez készült Azure cache alapértelmezés szerint a **db0** adatbázist
 
 A Redis egy memóriában tárolt adattároló. Az adat a Redis cache-t üzemeltető fizikai vagy virtuális gépeken történik. Az alapszintű csomag Redis-példányához tartozó Azure cache csak egyetlen virtuális gépen (VM) fut. Ha a virtuális gép nem érhető el, a gyorsítótárban tárolt összes adattal elvész. 
 
-A standard és a prémium szintű gyorsítótárak sokkal nagyobb rugalmasságot biztosítanak az adatvesztés ellen, ha két virtuális gépet használ egy replikált konfigurációban. Ha egy ilyen gyorsítótárban lévő főcsomópont meghibásodik, a replika csomópont átveszi az adatok automatikus kiszolgálására. Ezek a virtuális gépek külön tartományokban találhatók a hibák és a frissítések számára, így a lehető legkevesebb eséllyel elérhetetlenné válnak. Ha azonban jelentős adatközpont-kimaradás történik, előfordulhat, hogy a virtuális gépek továbbra is leállnak egymással. Ezekben a ritka esetekben az adatai elvesznek.
+A standard és a prémium szintű gyorsítótárak sokkal nagyobb rugalmasságot biztosítanak az adatvesztés ellen, ha két virtuális gépet használ egy replikált konfigurációban. Ha az ilyen gyorsítótárban lévő elsődleges csomópont meghibásodik, a replika csomópont átveszi az adatszolgáltatások automatikus kiszolgálására. Ezek a virtuális gépek külön tartományokban találhatók a hibák és a frissítések számára, így a lehető legkevesebb eséllyel elérhetetlenné válnak. Ha azonban jelentős adatközpont-kimaradás történik, előfordulhat, hogy a virtuális gépek továbbra is leállnak egymással. Ezekben a ritka esetekben az adatai elvesznek.
 
 Érdemes lehet a [Redis adatmegőrzést](https://redis.io/topics/persistence) és a [geo-replikálást](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication) használni az adatvédelem ezen infrastrukturális hibákkal szembeni védelme érdekében.
 

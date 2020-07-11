@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: 41724753df0d529e4c44344e8e975e68ee5eafd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b29b5fa1beb19bc055f94c56b064ae2c0ae175b5
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84904592"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171142"
 ---
 # <a name="convert-to-image-directory"></a>Átalakítás képkönyvtárrá
 
@@ -24,11 +24,15 @@ Ez a cikk bemutatja, hogyan alakítható át a képadatkészlet a kép könyvtá
 
 1.  A kísérlethez adja hozzá a **Convert to rendszerkép Directory** -modult. Ezt a modult a "Computer Vision/képadatok átalakítása" kategóriában találja a modul listában. 
 
-2.  Rendszerkép-adatkészlet csatlakoztatása bemenetként. Ellenőrizze, hogy van-e rendszerkép a bemeneti adatkészletben.
+2.  [Regisztrálja a rendszerkép-adatkészletet](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets) , és kapcsolja össze a modul bemeneti portjával. Ellenőrizze, hogy van-e rendszerkép a bemeneti adatkészletben. 
     A következő adatkészlet-formátumok támogatottak:
 
     - Tömörített fájl a következő kiterjesztésekben: ". zip", ". tar", ". gz", ". bz2".
     - Képeket tartalmazó mappa. **Javasoljuk, hogy először tömörítse a mappát, majd használja a tömörített fájlt adatkészletként**.
+
+    > [!WARNING]
+    > Az **adatimportálási** modul **nem** használható a képadatkészlet importálására, mert az **adatimportálási** modul kimeneti típusa DataFrame könyvtár, amely csak a fájl elérési útja karakterláncot tartalmazza.
+    
 
     > [!NOTE]
     > Ha a képkészletet felügyelt tanulásban használja, a címkét kötelező megadni.
@@ -46,7 +50,7 @@ Ez a cikk bemutatja, hogyan alakítható át a képadatkészlet a kép könyvtá
 
 3.  A folyamat elküldése.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A Képkönyvtár-modulba **való átalakítás** kimenete Képkönyvtár formátumú, és csatlakoztatható más rendszerképhez kapcsolódó modulokhoz, amelyekben a bemeneti port formátuma is a rendszerkép könyvtára.
 
@@ -54,13 +58,13 @@ A Képkönyvtár-modulba **való átalakítás** kimenete Képkönyvtár formát
 
 ###  <a name="expected-inputs"></a>Várt bemenetek  
 
-| Name          | Típus                  | Description   |
+| Név          | Típus                  | Leírás   |
 | ------------- | --------------------- | ------------- |
 | Bemeneti adatkészlet | AnyDirectory, ZipFile | Bemeneti adatkészlet |
 
 ###  <a name="output"></a>Kimenet  
 
-| Name                   | Típus           | Description            |
+| Név                   | Típus           | Leírás            |
 | ---------------------- | -------------- | ---------------------- |
 | Kimeneti rendszerkép könyvtára | ImageDirectory | Kimeneti rendszerkép könyvtára |
 

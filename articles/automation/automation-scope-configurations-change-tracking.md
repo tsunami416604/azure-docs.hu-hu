@@ -5,15 +5,16 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 49655d11858086b16099a1864fd4d2dc5988f02a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 353f29d9b4c6599226619d40e4378e21618bcad4
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117428"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185908"
 ---
 # <a name="limit-change-tracking-and-inventory-deployment-scope"></a>A Change Tracking és a leltár központi telepítési hatókörének korlátozása
 
-Ez a cikk azt ismerteti, hogyan használhatók a hatókör-konfigurációk a [change Tracking és leltár](change-tracking.md) funkció használatakor a virtuális gépek változásainak üzembe helyezéséhez. További információ: [figyelési megoldások célzása Azure monitor (előzetes verzió)](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting). 
+Ez a cikk azt ismerteti, hogyan használhatók a hatókör-konfigurációk a [change Tracking és leltár](change-tracking.md) funkció használatakor a virtuális gépek változásainak üzembe helyezéséhez. További információ: [figyelési megoldások célzása Azure monitor (előzetes verzió)](../azure-monitor/insights/solution-targeting.md). 
 
 ## <a name="about-scope-configurations"></a>A hatókör-konfigurációk ismertetése
 
@@ -33,7 +34,7 @@ A Change Tracking hatókörének és a leltár üzembe helyezésének korlátoz�
 
 5. A szerkesztési ablaktáblán válassza a **számítógépcsoportok kiválasztása**lehetőséget. A számítógépcsoportok ablaktáblán láthatók a hatókör-konfiguráció létrehozásához használt mentett keresések. A Change Tracking és a leltár által használt mentett keresés:
 
-    |Name     |Kategória  |Alias  |
+    |Név     |Kategória  |Alias  |
     |---------|---------|---------|
     |MicrosoftDefaultComputerGroup     |  Változáskövetési       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 

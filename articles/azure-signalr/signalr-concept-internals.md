@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 8ba34edfc382f0f03abe080d78a6a47dcb65501b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f06b8f9a2d41fc5400aa0fa610a2be3f31e21f1c
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82105760"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169799"
 ---
 # <a name="azure-signalr-service-internals"></a>Az Azure SignalR szolgáltatás belső elemei
 
@@ -85,6 +85,8 @@ Amikor egy ügyfél csatlakozik a Signaler szolgáltatáshoz, a szolgáltatási 
 Ezen a ponton az alkalmazáskiszolgáló egy eseményt kap az új ügyféltől származó információkkal. A rendszer létrehoz egy logikai kapcsolódást az ügyfélhez az alkalmazáskiszolgáló használatával. Az adatcsatorna az ügyfél és az alkalmazáskiszolgáló között, a Signaler szolgáltatáson keresztül van létrehozva.
 
 A signaler szolgáltatás adatokat küld az ügyféltől a párosítási alkalmazáskiszolgáló felé. Az alkalmazás-kiszolgálóról származó adatok a leképezett ügyfelek számára lesznek elküldve.
+
+A signaler szolgáltatás nem menti vagy tárolja az ügyféladatokat, a rendszer a kapott összes vásárlói adatokat valós időben továbbítja a célkiszolgálóra vagy az ügyfeleknek.
 
 Amint láthatja, az Azure Signaler szolgáltatás lényegében logikai szállítási réteg az alkalmazáskiszolgáló és az ügyfelek között. Az összes állandó kapcsolat kiszervezése a Signaler szolgáltatásba történik.
 Az alkalmazáskiszolgáló csak az üzleti logikát kell kezelnie a hub osztályban, anélkül, hogy az ügyfélkapcsolatokkal kellene foglalkoznia.

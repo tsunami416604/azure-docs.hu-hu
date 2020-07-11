@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 3369a807410e9e959e8091d5b16c8480803d26bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38963a8e1bfdbde50439ed871aa33e9aaa830d35
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830582"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185653"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>Frissített fájlok követése figyelő feladattal
 
@@ -19,7 +20,7 @@ A Azure Automation egy megfigyelői feladattal keres eseményeket, és elindítj
 > Az Azure China Vianet 21 nem támogatja a figyelők feladatait.
 
 > [!IMPORTANT]
-> Az 2020-as verziótól kezdődően a Azure Logic Apps használatával felügyelheti az eseményeket, ütemezhet ismétlődő feladatokat és aktiválhat műveleteket. Lásd: [ismétlődő automatizált feladatok, folyamatok és munkafolyamatok ütemezett és futtatásának Azure Logic apps](https://docs.microsoft.com/azure/logic-apps/concepts-schedule-automated-recurring-tasks-workflows).
+> Az 2020-as verziótól kezdődően a Azure Logic Apps használatával felügyelheti az eseményeket, ütemezhet ismétlődő feladatokat és aktiválhat műveleteket. Lásd: [ismétlődő automatizált feladatok, folyamatok és munkafolyamatok ütemezett és futtatásának Azure Logic apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Ez az oktatóanyag végigvezeti egy figyelő feladat létrehozásán, amely figyeli, hogy új fájlt adnak-e hozzá egy címtárhoz. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -36,7 +37,7 @@ Ez az oktatóanyag végigvezeti egy figyelő feladat létrehozásán, amely figy
 Az oktatóanyag elvégzésének a következők a feltételei:
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Automation-fiók](automation-offering-get-started.md) a megfigyelő és a műveleti runbookok és a figyelő feladat tárolására.
+* [Automation-fiók](./index.yml) a megfigyelő és a műveleti runbookok és a figyelő feladat tárolására.
 * Egy [hibrid runbook](automation-hybrid-runbook-worker.md) -feldolgozó, amelyben a figyelő tevékenység fut.
 * PowerShell-runbookok. A figyelők feladatai nem támogatják a PowerShell-munkafolyamatok runbookok.
 
@@ -60,7 +61,7 @@ Ezt a runbook a portál Automation-fiókjába is importálhatja a következő l�
 
 ## <a name="create-an-automation-variable"></a>Automation-változó létrehozása
 
-Az [Automation változó](automation-variables.md) az előző runbook által beolvasott és az egyes fájlokban tárolt időbélyegek tárolására szolgál.
+Az [Automation változó](./shared-resources/variables.md) az előző runbook által beolvasott és az egyes fájlokban tárolt időbélyegek tárolására szolgál.
 
 1. Válasszon **változókat** a **megosztott erőforrások** területen, majd kattintson **a + változó hozzáadása**lehetőségre.
 1. Adja meg a NewFileTimestamp nevet a név mezőben.

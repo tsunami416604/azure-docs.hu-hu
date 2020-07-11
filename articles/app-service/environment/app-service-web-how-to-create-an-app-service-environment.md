@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80477799"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220575"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>App Service Environment v1 létrehozása 
 
@@ -40,11 +40,11 @@ App Service Environment v1 létrehozásához kereshet az Azure Marketplace-en **
 
 1. Adja meg a beadás nevét. A központhoz megadott nevet a központhoz tartozó elősegítő alkalmazásban létrehozott alkalmazások használják. Ha a appsvcenvdemo neve a következő lesz: *appsvcenvdemo.p.azurewebsites.net*. Ha így hozott létre egy *mytestapp*nevű alkalmazást, a *mytestapp.appsvcenvdemo.p.azurewebsites.net*címen lehet címezni. A szolgáltató neve nem használható üresen. Ha nagybetűket használ a névben, a tartománynév a név teljes kisbetűs változata lesz. Ha ILB használ, a rendszer nem használja a beléptetési nevet az altartományban, hanem explicit módon meg van határozva a központilag történő létrehozás során.
    
-    ![][1]
-2. Válassza ki az előfizetését. A benyújtó csomaghoz használt előfizetés az adott kiegészítő csomagban létrehozott összes alkalmazásra is érvényes lesz. Egy másik előfizetésben található VNet nem helyezheti üzembe a Bea-t.
+    ![Képernyőkép, amely bemutatja, hogyan hozható létre egy App Service Environment (beszerzési).][1]
+2. Válassza ki előfizetését. A benyújtó csomaghoz használt előfizetés az adott kiegészítő csomagban létrehozott összes alkalmazásra is érvényes lesz. Egy másik előfizetésben található VNet nem helyezheti üzembe a Bea-t.
 3. Válasszon ki vagy adjon meg egy új erőforráscsoportot. A kiegészítő szolgáltatáshoz használt erőforráscsoporthoz meg kell egyeznie a VNet. Ha már meglévő VNet választ, a rendszer frissíti az erőforráscsoport-kiválasztást a saját VNet.
    
-    ![][2]
+    ![Képernyőkép, amely bemutatja, hogyan választhat ki vagy módosíthat egy új erőforráscsoportot.][2]
 4. Adja meg a Virtual Network és a hely beállításait. Dönthet úgy, hogy új VNet hoz létre, vagy egy már meglévő VNet választ. Ha kiválaszt egy új VNet, akkor megadhatja a nevet és a helyet. Az új VNet a 192.168.250.0/23 címtartományt és egy **alapértelmezett** nevű alhálózatot fog tartalmazni, amely 192.168.250.0/24 néven van meghatározva. Egyszerűen kiválaszthat egy már létező klasszikus vagy Resource Manager-VNet is. A virtuális IP-cím típusának meghatározása meghatározza, hogy a központilag elérhető-e közvetlenül az internetről (külső), vagy belső Load Balancert (ILB) használ. Ha többet szeretne megtudni róluk, olvassa el a [belső Load Balancer egy app Service Environment használatával][ILBASE]című témakört. Ha a külső VIP-típust választja, kiválaszthatja, hogy a rendszer hány külső IP-címet hoz létre IP SSL célokra. Ha a belső lehetőséget választja, akkor meg kell adnia azt az altartományt, amelyet a szolgáltató használni fog. A ASE olyan virtuális hálózatokban is üzembe helyezhetők, *amelyek nyilvános címtartományt* *vagy* RFC1918 (például magánhálózati címeket) használnak. Ha nyilvános címtartományt használó virtuális hálózatot szeretne használni, az idő előtt létre kell hoznia a VNet. Egy már meglévő VNet kiválasztásakor létre kell hoznia egy új alhálózatot a beléptetési folyamat létrehozása során. **A portálon nem használhat előre létrehozott alhálózatot. Ha egy Resource Manager-sablonnal hozza létre a bevezetőt, létrehozhat egy meglévő alhálózattal rendelkező bevezetőt is.** Ha egy sablonból szeretne létrehozni egy adatforrást, használja az itt található információkat, [hozzon létre egy app Service Environment a sablonból][ILBAseTemplate] , és itt hozzon létre [egy ILB-app Service Environment a sablonból][ASEfromTemplate].
 
 ### <a name="details"></a>Részletek

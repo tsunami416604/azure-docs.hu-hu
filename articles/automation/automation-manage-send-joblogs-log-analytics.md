@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ba498fe9f70664a801172a6ff3705ac41a6371ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c8863615446f8b14043cd7bd13e529b7efa1e46
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835247"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186197"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Automation-feladat adatainak továbbítása az Azure Monitor-naplói felé
 
@@ -27,8 +28,8 @@ A Azure Automation a runbook feladatok állapotát és a feladatok streamjét a 
 
 Az Automation-naplók Azure Monitor naplókba való küldésének megkezdéséhez a következőkre lesz szüksége:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)legújabb kiadása.
-* Egy Log Analytics-munkaterület. További információ: Ismerkedés [a Azure monitor-naplókkal](../log-analytics/log-analytics-get-started.md).
+* [Azure PowerShell](/powershell/azureps-cmdlets-docs/)legújabb kiadása.
+* Egy Log Analytics-munkaterület. További információ: Ismerkedés [a Azure monitor-naplókkal](../azure-monitor/overview.md).
 * A Azure Automation-fiók erőforrás-azonosítója.
 
 Használja az alábbi parancsot a Azure Automation-fiók erőforrás-AZONOSÍTÓjának megkereséséhez:
@@ -185,8 +186,8 @@ Remove-AzDiagnosticSetting -ResourceId $automationAccountId
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha meg szeretné tudni, hogyan hozhat létre keresési lekérdezéseket, és hogyan tekintheti át az Automation-feladatok naplóit Azure Monitor-naplókkal, tekintse meg a [Azure monitor](../log-analytics/log-analytics-log-searches.md)naplókban végzett
+* Ha meg szeretné tudni, hogyan hozhat létre keresési lekérdezéseket, és hogyan tekintheti át az Automation-feladatok naplóit Azure Monitor-naplókkal, tekintse meg a [Azure monitor](../azure-monitor/log-query/log-query-overview.md)naplókban végzett
 * A runbookok származó kimeneti és hibaüzenetek létrehozásának és lekérésének megismeréséhez lásd: [runbook-kimenet figyelése](automation-runbook-output-and-messages.md).
 * A runbook végrehajtásával, a runbook-feladatok figyelésével és egyéb technikai részletekkel kapcsolatos további tudnivalókért tekintse meg [a runbook végrehajtásáról szóló részt Azure Automation](automation-runbook-execution.md).
-* Ha többet szeretne megtudni Azure Monitor a naplókról és az adatgyűjtési forrásokról, tekintse meg [Az Azure Storage-adatok gyűjtése Azure monitor naplók áttekintését](../azure-monitor/platform/collect-azure-metrics-logs.md)ismertető cikket.
+* Ha többet szeretne megtudni Azure Monitor a naplókról és az adatgyűjtési forrásokról, tekintse meg [Az Azure Storage-adatok gyűjtése Azure monitor naplók áttekintését](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)ismertető cikket.
 * A Log Analytics hibaelhárításával kapcsolatban lásd: [Hibaelhárítás, hogy a log Analytics miért nem gyűjti az adatgyűjtést](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data).

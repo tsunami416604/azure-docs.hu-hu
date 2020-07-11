@@ -6,11 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
-ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d14e030898db364d6621933d0032fa9ce0cab676
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74122191"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185024"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Feladatátvétel és javítás a Redis készült Azure cache-hez
 
@@ -22,32 +23,32 @@ Kezdjük azzal, hogy áttekintjük az Azure cache Redis-hez készült feladatát
 
 ### <a name="a-quick-summary-of-cache-architecture"></a>A gyorsítótár-architektúra gyors összefoglalása
 
-A gyorsítótár több, különálló, magánhálózati IP-címmel rendelkező virtuális gépről épül fel. Minden virtuális gép (más néven csomópont) egy megosztott terheléselosztó egyetlen virtuális IP-címmel van csatlakoztatva. Mindegyik csomópont futtatja a Redis-kiszolgáló folyamatát, és az állomásnév és a Redis-portok segítségével érhető el. Az egyes csomópontok fő vagy replika csomópontnak tekintendők. Amikor egy ügyfélalkalmazás egy gyorsítótárhoz csatlakozik, a forgalma áthalad ezen a terheléselosztóon, és automatikusan átirányítja a fő csomóponthoz.
+A gyorsítótár több, különálló, magánhálózati IP-címmel rendelkező virtuális gépről épül fel. Minden virtuális gép (más néven csomópont) egy megosztott terheléselosztó egyetlen virtuális IP-címmel van csatlakoztatva. Mindegyik csomópont futtatja a Redis-kiszolgáló folyamatát, és az állomásnév és a Redis-portok segítségével érhető el. Az egyes csomópontok elsődleges vagy replika csomópontnak tekintendők. Amikor egy ügyfélalkalmazás egy gyorsítótárhoz csatlakozik, a forgalma áthalad ezen a terheléselosztóon, és automatikusan átirányítja az elsődleges csomóponthoz.
 
-Alapszintű gyorsítótárban az egyetlen csomópont mindig a főkiszolgáló. Standard vagy prémium szintű gyorsítótárban két csomópont létezik: az egyiket a főkiszolgálóként, a másik pedig a replikát választja. Mivel a standard és a prémium gyorsítótárak több csomóponttal rendelkeznek, előfordulhat, hogy egy csomópont nem érhető el, míg a másik folytatja a kérelmek feldolgozását. A fürtözött gyorsítótárak számos szegmensből állnak, amelyek mindegyike különböző fő-és replika-csomópontokkal rendelkezik. Előfordulhat, hogy az egyik szegmens nem áll le, amíg a többiek elérhetők maradnak.
+Alapszintű gyorsítótárban az egyetlen csomópont mindig elsődleges. Standard vagy prémium szintű gyorsítótárban két csomópont létezik: az egyiket az elsődlegesként, a másik pedig a replikát választja. Mivel a standard és a prémium gyorsítótárak több csomóponttal rendelkeznek, előfordulhat, hogy egy csomópont nem érhető el, míg a másik folytatja a kérelmek feldolgozását. A fürtözött gyorsítótárak számos szegmensből állnak, amelyek mindegyike különböző elsődleges és replika csomópontokkal rendelkezik. Előfordulhat, hogy az egyik szegmens nem áll le, amíg a többiek elérhetők maradnak.
 
 > [!NOTE]
 > Az alapszintű gyorsítótár nem rendelkezik több csomóponttal, és nem biztosít szolgáltatói szerződést (SLA) a rendelkezésre állásához. Az alapszintű gyorsítótárak használata csak fejlesztési és tesztelési célokra ajánlott. A rendelkezésre állás növeléséhez használjon standard vagy prémium szintű gyorsítótárat a több csomópontos telepítéshez.
 
 ### <a name="explanation-of-a-failover"></a>A feladatátvétel magyarázata
 
-Feladatátvétel akkor történik, amikor egy replika csomópontja maga is főcsomópontként válik elérhetővé, és a régi főcsomópont lezárja a meglévő kapcsolatokat. A főcsomópont biztonsági mentése után észreveszi a szerepkörök változását, és lefokozza magát replikaként. Ezután csatlakozik az új főkiszolgálóhoz, és szinkronizálja az adatokat. Előfordulhat, hogy A feladatátvétel tervezett vagy nem tervezett.
+Feladatátvétel akkor történik, amikor egy replika csomópontja maga is elsődleges csomópontnak válik, és a régi elsődleges csomópont lezárja a meglévő kapcsolatokat. Az elsődleges csomópont biztonsági mentése után a megfigyeli a szerepkörök változását, és lefokozza magát replikaként. Ezután csatlakozik az új elsődlegeshez, és szinkronizálja az adatokat. Előfordulhat, hogy A feladatátvétel tervezett vagy nem tervezett.
 
 Egy *tervezett feladatátvétel* a rendszerfrissítések során történik, például a Redis javításához vagy az operációs rendszer frissítéseihez, valamint a felügyeleti műveletekhez, például a skálázáshoz és az újraindításhoz. Mivel a csomópontok előzetes értesítést kapnak a frissítésről, a szerepkörök együttműködési felcserélése és a változás terheléselosztó gyors frissítése is megtörtént. A tervezett feladatátvétel általában kevesebb, mint 1 másodperc alatt fejeződik be.
 
-A nem *tervezett feladatátvételt* hardverhiba, hálózati hiba vagy más váratlan kimaradás okozhatja a fő csomópont számára. A replika csomópont elősegíti a főkiszolgálót, de a folyamat tovább tart. A replika csomópontnak először azt kell megállapítania, hogy a fő csomópontja nem érhető el, mielőtt kezdeményezni tudja a feladatátvételi folyamatot. A replika csomópontnak azt is ellenőriznie kell, hogy ez a nem tervezett hiba nem átmeneti vagy helyi, a szükségtelen feladatátvétel elkerülése érdekében. Ez az észlelési késleltetés azt jelenti, hogy egy nem tervezett feladatátvétel általában 10 – 15 másodpercen belül fejeződik be.
+A nem *tervezett feladatátvétel* a hardverhiba, a hálózati hiba vagy az elsődleges csomópont váratlan kimaradásai miatt fordulhat elő. A replika csomópont az elsődlegesre is serkenti, de a folyamat tovább tart. A replika csomópontnak először azt kell megállapítania, hogy az elsődleges csomópontja nem érhető el, mielőtt kezdeményezni tudja a feladatátvételi folyamatot. A replika csomópontnak azt is ellenőriznie kell, hogy ez a nem tervezett hiba nem átmeneti vagy helyi, a szükségtelen feladatátvétel elkerülése érdekében. Ez az észlelési késleltetés azt jelenti, hogy egy nem tervezett feladatátvétel általában 10 – 15 másodpercen belül fejeződik be.
 
 ## <a name="how-does-patching-occur"></a>Hogyan történik a javítás?
 
 A Redis szolgáltatáshoz készült Azure cache rendszeresen frissíti a gyorsítótárat a legújabb platform-funkciókkal és javításokkal. A gyorsítótár javításához a szolgáltatás a következő lépéseket követi:
 
 1. A kezelési szolgáltatás kiválasztja az egyik csomópontot a javításhoz.
-1. Ha a kijelölt csomópont egy fő csomópont, akkor a megfelelő replika csomópont is támogatja magát. Ez az előléptetés tervezett feladatátvételnek minősül.
+1. Ha a kijelölt csomópont egy elsődleges csomópont, a megfelelő replika csomópont is támogatja magát. Ez az előléptetés tervezett feladatátvételnek minősül.
 1. A kiválasztott csomópont újraindul az új módosítások elvégzéséhez, és biztonsági másolatot készít a replika csomópontként.
-1. A replika csomópont csatlakozik a fő csomóponthoz, és szinkronizálja az adatokat.
+1. A replika csomópont csatlakozik az elsődleges csomóponthoz, és szinkronizálja az adatokat.
 1. Az adatszinkronizálás befejezésekor a javítási folyamat megismétli a többi csomópontot.
 
-Mivel a javítások tervezett feladatátvételt végeznek, a replika csomópont gyorsan elősegíti magát a főkiszolgálónak, és megkezdi a karbantartási kérelmek és az új kapcsolatok megkezdését. Az alapszintű gyorsítótárak nem rendelkeznek replika-csomóponttal, és nem érhetők el, amíg a frissítés be nem fejeződik. A fürtözött gyorsítótár minden szegmense külön van kijavítottan, és nem zárul a kapcsolat egy másik szegmenshez.
+Mivel a javítások tervezett feladatátvételt végeznek, a replika csomópont gyorsan elősegíti az elsődleges és a karbantartási kérelmek és az új kapcsolatok megkezdését. Az alapszintű gyorsítótárak nem rendelkeznek replika-csomóponttal, és nem érhetők el, amíg a frissítés be nem fejeződik. A fürtözött gyorsítótár minden szegmense külön van kijavítottan, és nem zárul a kapcsolat egy másik szegmenshez.
 
 > [!IMPORTANT]
 > Az adatvesztés elkerülése érdekében a csomópontok egyenként is kijavítottak. Az alapszintű gyorsítótárak adatvesztéssel fognak rendelkezni. A fürtözött gyorsítótárak egyszerre csak egy szegmenst javítottak.

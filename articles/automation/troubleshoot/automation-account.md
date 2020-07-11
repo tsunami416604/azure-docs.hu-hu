@@ -8,11 +8,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: bebc89514da7f28015da5cb145ae50bf3fccdb6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edd57d3d77432f3bb37872ee26f414b56398cae0
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680079"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187285"
 ---
 # <a name="troubleshoot-azure-automation-account-issues"></a>A fiókkal kapcsolatos problémák elhárítása Azure Automation
 
@@ -32,7 +33,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 Az Automation erőforrás-szolgáltató nincs regisztrálva az előfizetésben.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Az Automation erőforrás-szolgáltató regisztrálásához kövesse az alábbi lépéseket a Azure Portalban:
 
@@ -44,7 +45,7 @@ Az Automation erőforrás-szolgáltató regisztrálásához kövesse az alábbi 
 
 4. Az erőforrás-szolgáltatók listájában ellenőrizze, hogy a **Microsoft. Automation** erőforrás-szolgáltató regisztrálva van-e.
 
-5. Ha a szolgáltató nem szerepel a listáján, regisztrálja az [erőforrás-szolgáltatói regisztráció hibáinak elhárítása](/azure/azure-resource-manager/resource-manager-register-provider-errors)című témakörben leírtak szerint.
+5. Ha a szolgáltató nem szerepel a listáján, regisztrálja az [erőforrás-szolgáltatói regisztráció hibáinak elhárítása](../../azure-resource-manager/templates/error-register-resource-provider.md)című témakörben leírtak szerint.
 
 ## <a name="next-steps"></a>További lépések
 

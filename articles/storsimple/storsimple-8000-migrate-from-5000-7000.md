@@ -13,11 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: c05b62b254320bd56a6f0591f1edbe32d5362e56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 721dffcaea64e949ac7a5230e24f3aa37261fa9e
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514731"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206477"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Adatok migrálása a StorSimple 5000-7000 sorozatból az 8000 Series eszközre
 
@@ -40,21 +41,21 @@ Az adatok áthelyezhetők az áttelepítési szolgáltatással vagy egy gazdagé
 
 Az áttelepítési funkció szimulálja a vész-helyreállítási (DR) folyamatot az 7000/5000-es sorozatból a 8000-es sorozatba. Ez a funkció lehetővé teszi az adatok 5000/7000 adatsorozat-formátumból 8000 adatsorozat-formátumba való átadását az Azure-ban. Az áttelepítési folyamat a StorSimple áttelepítési eszköz használatával indítható el. Az eszköz elindítja a biztonsági mentési metaadatok letöltését és átalakítását az 8000 sorozatú eszközön, majd a legújabb biztonsági mentéssel teszi elérhetővé a köteteket az eszközön.
 
-|      | Előnyök                                                                                                                                     |Hátrányok                                                                                                                                                              |
-|------|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | Az áttelepítési folyamat megőrzi az 5000/7000 sorozaton elvégzett biztonsági másolatok előzményeit.                                               | Amikor a felhasználók megpróbálnak hozzáférni az adatokhoz, az áttelepítés az Azure-ból tölti le az adatait, így az adatletöltési költségekkel jár.                                     |
-| 2.   | A gazdagép oldalán nem történik adat áttelepítve.                                                                                                     | A folyamatnak a biztonsági mentés és a legújabb biztonsági mentés a 8000-es sorozatba való felszínének megkezdése közötti állásidőre van szüksége (az áttelepítési eszköz használatával becsülhető fel). |
-| 3.   | Ez a folyamat a 8000 sorozatú eszközökön lévő összes házirendet, sávszélesség-sablont, titkosítást és egyéb beállítást megőrzi.                      | A felhasználói hozzáférés csak a felhasználók által elért adatokat fogja visszahozni, és nem fogja kiszáradni a teljes adatkészletet.                                                  |
-| 4.   | Ehhez a folyamathoz további időre van szükség az Azure-ban az összes régebbi biztonsági mentés átalakításához, ami aszinkron módon történik az éles környezet nélkül | A Migrálás csak Felhőbeli konfigurációs szinten végezhető el.  A Felhőbeli konfigurációban lévő egyes kötetek nem telepíthetők át külön                       |
+| Előnyök                                                                                                                                     |Hátrányok                                                                                                                                                              |
+|-------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Az áttelepítési folyamat megőrzi az 5000/7000 sorozaton elvégzett biztonsági másolatok előzményeit.                                               | Amikor a felhasználók megpróbálnak hozzáférni az adatokhoz, az áttelepítés az Azure-ból tölti le az adatait, így az adatletöltési költségekkel jár.                                     |
+| A gazdagép oldalán nem történik adat áttelepítve.                                                                                                     | A folyamatnak a biztonsági mentés és a legújabb biztonsági mentés a 8000-es sorozatba való felszínének megkezdése közötti állásidőre van szüksége (az áttelepítési eszköz használatával becsülhető fel). |
+| Ez a folyamat a 8000 sorozatú eszközökön lévő összes házirendet, sávszélesség-sablont, titkosítást és egyéb beállítást megőrzi.                      | A felhasználói hozzáférés csak a felhasználók által elért adatokat fogja visszahozni, és nem fogja kiszáradni a teljes adatkészletet.                                                  |
+| Ehhez a folyamathoz további időre van szükség az Azure-ban az összes régebbi biztonsági mentés átalakításához, ami aszinkron módon történik az éles környezet nélkül | A Migrálás csak Felhőbeli konfigurációs szinten végezhető el.  A Felhőbeli konfigurációban lévő egyes kötetek nem telepíthetők át külön                       |
 
 A gazdagép-oldali áttelepítés lehetővé teszi, hogy a 8000-es sorozatok egymástól függetlenül legyenek, és az adatok másolása a 5000/7000 sorozatú eszközről a 8000 Series eszközre. Ez egyenértékű az adatok egyik tárolóeszközről a másikra való áttelepítésével. Az adatmásoláshoz különféle eszközök, például a Diskboss, a Robocopy használható.
 
-|      | Előnyök                                                                                                                      |Hátrányok                                                                                                                                                                                                      |
-|------|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1.   | A Migrálás többfázisú módon, mennyiségi alapon is megközelíthető.                                               | Az előző biztonsági másolatok (az 5000/7000-es sorozaton) nem lesznek elérhetők az 8000 Series eszközön.                                                                                                       |
-| 2.   | Lehetővé teszi az adategyesítést egyetlen Storage-fiókba az Azure-ban.                                                       | A felhőbe való első biztonsági mentés a 8000 sorozaton hosszabb időt vesz igénybe, mivel a 8000-es sorozat összes adattal biztonsági mentést kell készíteni az Azure-ba.                                                                     |
-| 3.   | A sikeres Migrálás után az összes érték helyi lesz a berendezésen. Az adatok elérésekor nincsenek késések. | Az Azure Storage-használat a 5000/7000-es eszközről az adatok törlése után növekszik.                                                                                                        |
-| 4.   |                                                                                                                           | Ha az 7000/5000-es sorozatú eszköz nagy mennyiségű adattal rendelkezik, az áttelepítés során az adatoknak le kell tölteniük az Azure-ból, ami az Azure-ból való adatletöltéssel kapcsolatos költségeket és késéseket is felmerül. |
+| Előnyök                                                                                                                      |Hátrányok                                                                                                                                                                                                      |
+|---------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| A Migrálás többfázisú módon, mennyiségi alapon is megközelíthető.                                               | Az előző biztonsági másolatok (az 5000/7000-es sorozaton) nem lesznek elérhetők az 8000 Series eszközön.                                                                                                       |
+| Lehetővé teszi az adategyesítést egyetlen Storage-fiókba az Azure-ban.                                                       | A felhőbe való első biztonsági mentés a 8000 sorozaton hosszabb időt vesz igénybe, mivel a 8000-es sorozat összes adattal biztonsági mentést kell készíteni az Azure-ba.                                                                     |
+| A sikeres Migrálás után az összes érték helyi lesz a berendezésen. Az adatok elérésekor nincsenek késések. | Az Azure Storage-használat a 5000/7000-es eszközről az adatok törlése után növekszik.                                                                                                        |
+|                                                                                                                           | Ha az 7000/5000-es sorozatú eszköz nagy mennyiségű adattal rendelkezik, az áttelepítés során az adatoknak le kell tölteniük az Azure-ból, ami az Azure-ból való adatletöltéssel kapcsolatos költségeket és késéseket is felmerül. |
 
 Ez a cikk csak a 5000/7000 – 8000 sorozatú eszköz áttelepítési szolgáltatására koncentrál. A gazdagépek közötti áttelepítéssel kapcsolatos további információkért lépjen az [áttelepítés más tárolóeszközökből](https://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating%20Data%20to%20StorSimple%20Volumes_09-02-15.pdf)című témakörre.
 

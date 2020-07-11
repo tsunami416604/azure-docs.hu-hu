@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 2cc89bf57167db75404c044f58d18ab48edfaf38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ec407b7f6baf56f0a2fe724089826d8f9303b85
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68854086"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186843"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Üzemeltetett felhasználói felület konfigurálása
 
@@ -35,13 +35,11 @@ A webalkalmazásokhoz tartozó üzemeltetett felhasználói felület konfigurál
   
 4. Válasszon ki egy elrendezést.
 
-    |  |  |
-    |---------|---------|
-    |Keresési sáv és eredmények (alapértelmezett)    | Megjeleníti az alatta lévő keresési eredményeket tartalmazó keresőmezőt.         |
-    |Csak eredmények     | Csak a keresési eredményeket jeleníti meg, keresési mező nélkül. Az elrendezés használatakor meg kell adnia a keresési lekérdezést (`&q=<query string>`). Adja hozzá a lekérdezési paramétert a kérelem URL-címéhez a JavaScript-kódrészletben, vagy a HTML-végpont hivatkozását.        |
-    |Előugró ablak     | Egy keresőmezőt biztosít, és megjeleníti a keresési eredményeket egy csúszó átfedésben.        |
-    
-5. Válasszon ki egy színtémát. Testreszabhatja a színeket úgy, hogy illeszkedjen az alkalmazáshoz a **téma testreszabása**lehetőségre kattintva. A szín módosításához adja meg a szín RGB HEXADECIMÁLIS értékét (például `#366eb8`), vagy kattintson a szín előnézetére.
+    - Keresősáv és eredmények (alapértelmezett): megjelenít egy keresőmezőt az alatta lévő keresési eredményekkel.
+    - Csak eredmények: csak a keresési eredményeket jeleníti meg, keresési mező nélkül. Az elrendezés használatakor meg kell adnia a keresési lekérdezést ( `&q=<query string>` ). Adja hozzá a lekérdezési paramétert a kérelem URL-címéhez a JavaScript-kódrészletben, vagy a HTML-végpont hivatkozását.
+    - Felugró ablak: egy keresőmezőt tartalmaz, és megjeleníti a keresési eredményeket egy csúszó átfedésben.
+
+5. Válasszon ki egy színtémát. Testreszabhatja a színeket úgy, hogy illeszkedjen az alkalmazáshoz a **téma testreszabása**lehetőségre kattintva. A szín módosításához adja meg a szín RGB HEXADECIMÁLIS értékét (például `#366eb8` ), vagy kattintson a szín előnézetére.
 
    A módosításokat a portál jobb oldalán tekintheti meg. Ha az **Alaphelyzetbe állítás** gombra kattint, a rendszer visszaállítja a módosításokat a kiválasztott téma alapértelmezett színeire.
 
@@ -90,61 +88,44 @@ Az üzemeltetett felhasználói felületet a következő módokon használhatja:
 
 Ha további információkat szeretne, például az egyéni konfiguráció AZONOSÍTÓját, ugorjon a **végpontok** elemre az **éles** lapon.
 
-## <a name="configuration-options"></a>Beállítási lehetőségek
+## <a name="configuration-options"></a>Konfigurációs lehetőségek
 
 Az üzemeltetett felhasználói felület működésének konfigurálásához kattintson a **további konfigurációk**lehetőségre, és adjon meg értékeket. Ezek a beállítások nem kötelezőek. Ha szeretné megtekinteni, hogy milyen hatással van a alkalmazásra vagy eltávolításra, tekintse meg a jobb oldali előnézet ablaktáblát. 
 
 ### <a name="web-search-configurations"></a>Webes keresési konfigurációk
 
-|  |  |
-|---------|---------|
-|Webes eredmények engedélyezve    | Meghatározza, hogy engedélyezve van-e a webes keresés (a lap tetején megjelenik egy weblap)        |
-|Automatikus kiegészítés engedélyezése     | Meghatározza, hogy engedélyezve van-e az egyéni automatikus kiegészítés (a további díjak [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) ).        |
-|Webes eredmények/oldal    | Az egyszerre megjelenítendő webes keresési eredmények száma (a maximum 50 találat/oldal).        |
-|Képfelirat   | Meghatározza, hogy megjelenjenek-e a képek a keresési eredmények között.|
-
+- Webes eredmények engedélyezve: meghatározza, hogy engedélyezve van-e a webes keresés (a lap tetején megjelenik egy weblap)
+- Automatikus kiegészítés engedélyezése: meghatározza, hogy engedélyezve van-e az egyéni automatikus kiegészítés (a további díjak [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) ).
+- Webes eredmények/oldal: a webes keresési eredmények száma, amely egyszerre jeleníthető meg (a maximális érték oldalanként 50).
+- Kép felirata: meghatározza, hogy a képek megjelenjenek-e a keresési eredmények között.
 
 A következő konfigurációk láthatók, ha a **speciális konfigurációk megjelenítése**lehetőségre kattint:
 
-
-|  | |
-|---------|---------|
-|Szavak kiemelése     | Meghatározza, hogy az eredmények félkövérrel jelennek-e meg keresési kifejezésekkel.         |
-|Hivatkozás célja    |  Meghatározza, hogy a weblap megjelenik-e egy új böngészőablakban (üres) vagy ugyanazon böngésző lapon (saját), amikor a felhasználó egy keresési eredményre kattint.        |
+- Kiemelés szavai: meghatározza, hogy az eredmények félkövérrel jelennek-e meg keresési kifejezésekkel.
+- Hivatkozás célja: meghatározza, hogy a weblap megjelenik-e egy új böngészőablakban (üres) vagy ugyanazon böngésző lapon (saját), amikor a felhasználó egy keresési eredményre kattint.
 
 ### <a name="image-search-configurations"></a>Képkeresési konfigurációk
 
-| | |
-|---------|---------|
-|Képeredmények engedélyezve     | Meghatározza, hogy engedélyezve van-e a képkeresés (a lap tetején megjelenik egy images lap).            |
-|Képtalálatok száma oldalanként     | A képkeresési találatok száma egyszerre megjeleníthető (a maximális érték 150, oldalanként).          |
+- Képtalálatok engedélyezve: meghatározza, hogy engedélyezve van-e a képkeresés (a lap tetején megjelenik egy images lap).
+- Képeredmények oldalanként: a képkeresés eredményeinek száma, amely egyszerre jeleníthető meg (a maximális érték oldalanként 150).
 
 A következő konfiguráció jelenik meg, ha a **speciális konfigurációk megjelenítése**lehetőségre kattint.  
   
-| | |
-|---------|---------|
-| Szűrők engedélyezése     | Szűrők hozzáadásával a felhasználó a Bing által visszaadott rendszerképek szűrésére használható. A felhasználó például csak animált GIF-fájlok esetében szűrheti az eredményeket.|
+- Szűrők engedélyezése: hozzáadja azokat a szűrőket, amelyeket a felhasználó a Bing által visszaadott rendszerképek szűrésére használhat. A felhasználó például csak animált GIF-fájlok esetében szűrheti az eredményeket.
 
 ### <a name="video-search-configurations"></a>Videós keresési konfigurációk
 
-|  | |
-|---------|---------|
-|Videós eredmények engedélyezve     | Meghatározza, hogy engedélyezve van-e a videó keresése (a lap tetején megjelenik egy videó lap).           |
-|Videós eredmények/oldal   | A videó keresési eredményeinek száma, amely egyszerre jeleníthető meg (a maximális érték 150, oldalanként).        |
+- Videós eredmények engedélyezve: meghatározza, hogy engedélyezve van-e a videó keresése (a lap tetején megjelenik egy videó lap).
+- Videós eredmények oldalanként: a videó keresési eredményeinek száma, amely egyszerre jeleníthető meg (a maximum 150 találat/oldal).
 
 A következő konfiguráció jelenik meg, ha a **speciális konfigurációk megjelenítése**lehetőségre kattint.  
   
-|  | |
-|---------|---------|
-|Szűrők engedélyezése    | Szűrők hozzáadásával a felhasználó a Bing által visszaadott videók szűrésére használható. A felhasználó például szűrheti a videók eredményeit az elmúlt 24 órában felderített adott felbontással vagy videókkal.          |
+- Szűrők engedélyezése: hozzáadja azokat a szűrőket, amelyeket a felhasználó a Bing által visszaadott videók szűrésére használhat. A felhasználó például szűrheti a videók eredményeit az elmúlt 24 órában felderített adott felbontással vagy videókkal.
 
 ### <a name="miscellaneous-configurations"></a>Egyéb konfigurációk
 
-
-| |  |
-|---------|---------|
-|Oldalcím   | A keresési eredmények lap title (cím) területén megjelenő szöveg (nem az előugró elrendezéshez).        |
-|Eszköztár témája    | Meghatározza a keresési eredmények oldal cím területének háttérszínét. |
+- Oldal címe: a keresési eredmények lap cím területén megjelenő szöveg (nem az előugró elrendezéshez).
+- Eszköztár témája: meghatározza a keresési eredmények oldal cím területének háttérszínét.
 
 A következő konfigurációk láthatók, ha a **speciális konfigurációk megjelenítése**lehetőségre kattint.  
 

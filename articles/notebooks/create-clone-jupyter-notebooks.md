@@ -3,12 +3,12 @@ title: Jupyter-jegyzetfüzetek létrehozása és klónozása – Azure Notebooks
 description: Azure Notebooks az előzetes verziójú projektek jegyzetfüzetek és kapcsolódó fájlok gyűjteményét kezelik, amelyekkel új vagy klónozást hozhat létre más forrásokból.
 ms.topic: how-to
 ms.date: 02/25/2019
-ms.openlocfilehash: e1321afc2ce294c8a39ba8d55574e2ca949f632e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831284"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181496"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Projektek létrehozása és klónozása Azure Notebooks előzetes verzióban
 
@@ -26,7 +26,7 @@ A **saját projektek** irányítópultja a következő címen `https://notebooks
 
 Az irányítópulton elvégezhető műveletek attól függnek, hogy a felhasználói azonosítót birtokló fiókkal jelentkezett-e be:
 
-| Parancs | Elérhető a következőhöz | Description |
+| Parancs | Elérhető a következőhöz | Leírás |
 | --- | --- | --- |
 | **Futtatás** | Tulajdonos | Elindítja a Project kiszolgálót, és megnyitja a projekt mappáját a Jupyter. (Gyakrabban navigáljon először a projekt mappájába, majd indítson el egy jegyzetfüzetet innen.) |
 | **Letöltés** | Bárki | A kiválasztott projekt másolatának letöltése ZIP-fájlként. |
@@ -57,7 +57,7 @@ Ha nem rendelkezik Azure Notebooks-projekttel, létrehozhat egy hivatkozást, am
 
 Ha az **+ új projekt** parancsot használja, Azure Notebooks megjeleníti az **új projekt létrehozása** előugró ablakban. Ebben az előugró ablakban adja meg a következő adatokat, majd válassza a **Létrehozás**lehetőséget:
 
-| Mező | Description |
+| Mező | Leírás |
 | --- | --- |
 | Projektnév | A projekt felhasználóbarát neve, amelyet a Azure Notebooks a megjelenítési célokra használ. Például: "My notebook Project". |
 | Projektazonosító | Egy egyéni azonosító, amely a projekt megosztásához használt URL-cím részévé válik (az űrlap `https://notebooks.azure.com/<user_id>/projects/<project_id>` ). Ez az azonosító csak betűket, számokat és kötőjeleket használhat, legfeljebb 30 karakterből állhat, és nem lehet [foglalt projekt-azonosító](#reserved-project-ids). Ha nem tudja biztosan, hogy mit kell használni, a közös konvenció a projekt nevének olyan kisbetűs verzióját használja, amelyben a szóközök kötőjelbe vannak bekapcsolva, például "My-notebook-Project" (ha szükséges a hosszhoz). |
@@ -68,13 +68,33 @@ Ha az **+ új projekt** parancsot használja, Azure Notebooks megjeleníti az **
 
 A következő fenntartott szavak önmagukban nem használhatók projekt-azonosítóként. Ezek a fenntartott szavak azonban a hosszú projekt-azonosítók részeként is használhatók.
 
-| | | | | | |
-| --- | --- | --- | --- | --- | --- |
-| névjegy | account | adminisztráció | api-t | blog | osztályterem |
-| tartalom | irányítópult | Ismerkedés | – gyakori kérdések | segítség | html |
-| Kezdőlap | importálása | erőforrástár | felügyelet | Új | notebook |
-| notebookok | PDF | preview | árképzési | profil | keresés |
-| status | támogatás | test | | | |
+- névjegy
+- account
+- adminisztráció
+- api
+- blog
+- osztályterem
+- tartalom
+- irányítópult
+- Ismerkedés
+- – gyakori kérdések
+- segítség
+- html
+- Kezdőlap
+- importálása
+- erőforrástár
+- felügyelet
+- Új
+- notebook
+- notebookok
+- PDF
+- preview
+- árképzési
+- profil
+- keresés
+- status
+- támogatás
+- test
 
 Ha a következő szavak egyikét próbálja meg projekt-AZONOSÍTÓként használni, az **új projekt létrehozása** és a **projekt beállításainak** előugró ablakai jelzik, hogy a "könyvtár azonosítója fenntartott azonosító".
 
@@ -84,7 +104,7 @@ Mivel a projekt-azonosító egy projekt URL-címéhez is tartozik, az ad blocker
 
 A teljes nyilvános GitHub-tárházat könnyedén importálhatja projektként, beleértve az összes adatés *readme.MD* fájlt is. Használja a **GitHub** -tárház feltöltése parancsot, adja meg a következő adatokat az előugró ablakban, majd válassza az **Importálás**lehetőséget:
 
-| Mező | Description |
+| Mező | Leírás |
 | --- | --- |
 | GitHub-adattár | A github.com lévő forrás adattár neve. Ha például az Azure-beli Cognitive Services Jupyter-jegyzetfüzeteit szeretné klónozott [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) , írja be a következőt: "Microsoft/kognitív-Services-Notebooks".  |
 | Rekurzív klónozás | A GitHub-adattárak több gyermek tárházat is tartalmazhatnak. Akkor adja meg ezt a beállítást, ha a szülő tárházat és annak összes gyermekét szeretné klónozott módon megtekinteni. Mivel lehetséges, hogy egy tárház sok gyermeket tartalmaz, hagyja üresen ezt a lehetőséget, ha nem tudja, hogy szüksége van rá. |

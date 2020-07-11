@@ -5,11 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b40357e71275d835a200f3bc08c618b6713001d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 146cf01d99ccc00a972c98128d8e93e1ed5fb690
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830769"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185704"
 ---
 # <a name="query-update-management-logs"></a>Update Management-naplók lekérdezése
 
@@ -30,7 +31,7 @@ Létrejön egy olyan típusú rekord, `RequiredUpdate` amely a gép által igén
 | Computer | A jelentéskészítő gép teljes tartományneve. |
 | KBID | A Windows Update szolgáltatáshoz tartozó Tudásbázis-cikk azonosítója. |
 | ManagementGroupName | A Operations Manager felügyeleti csoport vagy Log Analytics munkaterület neve. | 
-| Termék | Azok a termékek, amelyekhez a frissítés alkalmazható. | 
+| Szorzat | Azok a termékek, amelyekhez a frissítés alkalmazható. | 
 | PublishDate | Az a dátum, amikor a frissítés készen áll a letöltésre és telepítésre Windows Update. |
 | Kiszolgáló | | 
 | SourceHealthServiceId | A Log Analytics Windows-ügynök AZONOSÍTÓját jelképező egyedi azonosító. |
@@ -72,7 +73,7 @@ Létrejön egy olyan típusú rekord, `Update` amely az elérhető frissítések
 | Cím | A frissítés címe. |
 | PublishedDate (UTC) | Az a dátum, amikor a frissítés készen áll a letöltésre és telepítésre Windows Update.  |
 | UpdateState | A frissítés aktuális állapota. | 
-| Termék | Azok a termékek, amelyekhez a frissítés alkalmazható. |
+| Szorzat | Azok a termékek, amelyekhez a frissítés alkalmazható. |
 | SubscriptionId | Az Azure-előfizetés egyedi azonosítója. | 
 | ResourceGroup | Azon erőforráscsoport neve, amelyhez az erőforrás tartozik. | 
 | ResourceProvider | Az erőforrás-szolgáltató. | 
@@ -115,7 +116,7 @@ A rendszer létrehoz egy olyan típusú rekordot, `UpdateRunProgress` amely fris
 | KBID | A Windows Update szolgáltatáshoz tartozó Tudásbázis-cikk azonosítója. | 
 | ManagementGroupName | A Operations Manager felügyeleti csoport vagy Log Analytics munkaterület neve. |
 | OSType | Az operációs rendszer típusa. Az értékek Windows vagy Linux. | 
-| Termék | Azok a termékek, amelyekhez a frissítés alkalmazható. |
+| Szorzat | Azok a termékek, amelyekhez a frissítés alkalmazható. |
 | Erőforrás | Az erőforrás neve. | 
 | ResourceId | A rekordhoz társított erőforrás egyedi azonosítója. |
 | ResourceProvider | Az erőforrás-szolgáltató. | 
@@ -193,7 +194,7 @@ Windows rendszerű számítógépen a következő információkat tekintheti meg
 1. A vezérlőpulton nyissa meg a **Microsoft monitoring Agent ügynököt**. Az **Azure log Analytics** lapon az ügynök a következő üzenetet jeleníti meg: **a Microsoft monitoring Agent sikeresen csatlakozott a log Analyticshoz**.
 2. Nyissa meg a Windows eseménynaplót. Nyissa meg az **Application and Services Logs\Operations Manager alkalmazást** , és keressen rá a 3000-es azonosítójú eseményre és a 5002-es azonosítójú eseményre **.** Ezek az események jelzik, hogy a számítógép regisztrálva van a Log Analytics-munkaterületen, és konfigurációt kap.
 
-Ha az ügynök nem tud kommunikálni Azure Monitor naplókkal, és az ügynök úgy van konfigurálva, hogy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon az internettel, ellenőrizze, hogy a tűzfal vagy a proxykiszolgáló megfelelően van-e konfigurálva. A tűzfal vagy a proxykiszolgáló megfelelő konfigurálásának ellenőrzéséhez tekintse meg a [hálózati konfiguráció Windows-ügynökhöz](../azure-monitor/platform/agent-windows.md) vagy [a Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md)című témakört.
+Ha az ügynök nem tud kommunikálni Azure Monitor naplókkal, és az ügynök úgy van konfigurálva, hogy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon az internettel, ellenőrizze, hogy a tűzfal vagy a proxykiszolgáló megfelelően van-e konfigurálva. A tűzfal vagy a proxykiszolgáló megfelelő konfigurálásának ellenőrzéséhez tekintse meg a [hálózati konfiguráció Windows-ügynökhöz](../azure-monitor/platform/agent-windows.md) vagy [a Linux-ügynök hálózati konfigurációja](../azure-monitor/learn/quick-collect-linux-computer.md)című témakört.
 
 > [!NOTE]
 > Ha a linuxos rendszerek proxyval vagy Log Analytics átjáróval való kommunikációra vannak konfigurálva, és engedélyezte a Update Managementt, frissítse a `proxy.conf` omiuser csoport olvasási engedélyét a fájlhoz a következő parancsok használatával:
@@ -408,5 +409,5 @@ Update
 
 ## <a name="next-steps"></a>További lépések
 
-* Azure Monitor naplók részleteiért lásd: [Azure monitor naplók](../log-analytics/log-analytics-log-searches.md).
+* Azure Monitor naplók részleteiért lásd: [Azure monitor naplók](../azure-monitor/log-query/log-query-overview.md).
 * A riasztásokkal kapcsolatos segítségért lásd: [riasztások konfigurálása](automation-tutorial-update-management.md#configure-alerts).

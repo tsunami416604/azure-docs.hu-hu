@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 892197c79285495f49a870bbe79eb75229af2940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cc5e5107784d447640ef0ae77d412885b1e5668
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831024"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185772"
 ---
 # <a name="update-azure-powershell-modules"></a>Azure PowerShell-modulok frissítése
 
@@ -37,7 +38,7 @@ Az **Update-AutomationAzureModulesForAccount** runbook alapértelmezés szerint 
 
 ## <a name="use-update-runbook-code-as-a-regular-powershell-script"></a>Frissítési runbook-kód használata normál PowerShell-parancsfájlként
 
-A runbook kódot normál PowerShell-parancsfájlként is használhatja runbook helyett. Ehhez először jelentkezzen be az Azure-ba a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) parancsmaggal, majd továbbítsa `-Login $false` a parancsfájlnak.
+A runbook kódot normál PowerShell-parancsfájlként is használhatja runbook helyett. Ehhez először jelentkezzen be az Azure-ba a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) parancsmaggal, majd továbbítsa `-Login $false` a parancsfájlnak.
 
 ## <a name="use-the-update-runbook-on-sovereign-clouds"></a>A szuverén felhők frissítési runbook használata
 

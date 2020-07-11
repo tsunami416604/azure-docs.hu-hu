@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77f2e78fa3df6c7ac6a422a03335f93d2a19d99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4834cccff11a70249140f49b498b8f7891787c72
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255954"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169340"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Újrahitelesítési kérések optimalizálása és az Azure-Multi-Factor Authentication munkamenet-élettartamának megértése
 
@@ -122,10 +122,10 @@ Ha engedélyezte a konfigurálható jogkivonat élettartamát, ez a funkció ham
 
 A következő táblázat a licenceken alapuló ajánlásokat foglalja össze:
 
-|                              | ingyenes Azure AD és Office 365 alkalmazások | Azure AD Premium |
+|              | ingyenes Azure AD és Office 365 alkalmazások | Azure AD Premium |
 |------------------------------|-----------------------------------|------------------|
-| SSO                          | [Azure ad JOIN](../devices/concept-azure-ad-join.md) vagy [Hybrid Azure ad JOIN](../devices/concept-azure-ad-join-hybrid.md)vagy [zökkenőmentes SSO](../hybrid/how-to-connect-sso.md) a nem felügyelt eszközökhöz. | Azure AD-csatlakozás<br />Hibrid Azure AD-csatlakozás |
-| Újrahitelesítés beállításai    | Továbbra is bejelentkezett                  | Feltételes hozzáférési szabályzatok használata a bejelentkezés gyakoriságához és az állandó böngésző-munkamenethez |
+| **SSO**                      | [Azure ad JOIN](../devices/concept-azure-ad-join.md) vagy [Hybrid Azure ad JOIN](../devices/concept-azure-ad-join-hybrid.md)vagy [zökkenőmentes SSO](../hybrid/how-to-connect-sso.md) a nem felügyelt eszközökhöz. | Azure AD-csatlakozás<br />Hibrid Azure AD-csatlakozás |
+| **Újrahitelesítés beállításai** | Továbbra is bejelentkezett                  | Feltételes hozzáférési szabályzatok használata a bejelentkezés gyakoriságához és az állandó böngésző-munkamenethez |
 
 ## <a name="next-steps"></a>További lépések
 

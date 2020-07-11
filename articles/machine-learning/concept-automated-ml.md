@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f12f080f2b1b7379b622fe4d7c5e0b35e358d0ef
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5f4b48dfbef7362a0b49e53a17b080e127701c94
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041727"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86199889"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -118,7 +118,7 @@ Automatikus gépi tanulási kísérletek esetén a rendszer automatikusan alkalm
 
 Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek. A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre. Ismerje meg, hogyan segít a AutoML a modellekben a [túlzottan illeszkedő és kiegyensúlyozatlan adatértékek megelőzésében](concept-manage-ml-pitfalls.md) .
 
-|Méretezés &nbsp; & &nbsp; normalizálása| Description |
+|Méretezés &nbsp; & &nbsp; normalizálása| Leírás |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Szabványosítási funkciók az átlag és a skálázás egységbeli eltérésének eltávolításával  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Az egyes szolgáltatások méretezésével átalakítja a szolgáltatásokat az adott oszlop minimális és maximális értékével  |
@@ -174,7 +174,7 @@ Vegye figyelembe ezeket az előnyeit és hátrányait a helyi és a távoli hasz
 
  További funkciók érhetők el a távoli számítás használatakor, az alábbi táblázatban látható módon. Ezen funkciók némelyike csak vállalati munkaterületeken érhető el.
 
-| Szolgáltatás                                                    | Remote | Helyi | Igényel <br>Vállalati munkaterület |
+| Funkció                                                    | Remote | Helyi | Igényel <br>Vállalati munkaterület |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Adatfolyam (nagy adatátviteli támogatás, akár 100 GB-ig)          | ✓      |       | ✓                             |
 | DNN – BERT-alapú szöveges featurization és-képzés             | ✓      |       | ✓                             |
@@ -220,21 +220,21 @@ A következő beállítások lehetővé teszik az automatikus ML-kísérlet konf
 
 | |A Python SDK|A Studio webes felülete|
 ----|:----:|:----:
-Adat felosztása a betanítási/ellenőrzési készletekbe| ✓|✓
-A ML-feladatok támogatása: besorolás, regresszió és előrejelzés| ✓| ✓
-Optimalizálás az elsődleges metrika alapján| ✓| ✓
-A pénzmosás-számítást számítási célként támogatja | ✓|✓
-Az előrejelzési horizont konfigurálása, a cél késleltetése & gördülő ablak|✓|✓
-Kilépési feltételek beállítása |✓|✓ 
-Egyidejű ismétlések beállítása| ✓|✓
-Oszlopok eldobása| ✓|✓
-Algoritmusok letiltása|✓|✓
-Több érvényesítés |✓|✓
-A Azure Databricks-fürtökön betanítást támogatja| ✓|
-Megjelenő szolgáltatások nevének megtekintése|✓|
-Featurization összegzése| ✓|
-Featurization munkaszüneti napokhoz|✓|
-Naplófájl részletességi szintjei| ✓|
+|**Adat felosztása a betanítási/ellenőrzési készletekbe**| ✓|✓
+|**A ML-feladatok támogatása: besorolás, regresszió és előrejelzés**| ✓| ✓
+|**Optimalizálás az elsődleges metrika alapján**| ✓| ✓
+|**A pénzmosás-számítást számítási célként támogatja** | ✓|✓
+|**Az előrejelzési horizont konfigurálása, a cél késleltetése & gördülő ablak**|✓|✓
+|**Kilépési feltételek beállítása** |✓|✓ 
+|**Egyidejű ismétlések beállítása**| ✓|✓
+|**Oszlopok eldobása**| ✓|✓
+|**Algoritmusok letiltása**|✓|✓
+|**Több érvényesítés** |✓|✓
+|**A Azure Databricks-fürtökön betanítást támogatja**| ✓|
+|**Megjelenő szolgáltatások nevének megtekintése**|✓|
+|**Featurization összegzése**| ✓|
+|**Featurization munkaszüneti napokhoz**|✓|
+|**Naplófájl részletességi szintjei**| ✓|
 
 ### <a name="model-settings"></a>Modell beállításai
 
@@ -242,11 +242,11 @@ Ezek a beállítások a legjobb modellre alkalmazhatók az automatikus ML-kísé
 
 | |A Python SDK|A Studio webes felülete|
 |----|:----:|:----:|
-|A legjobb modell-regisztráció, üzembe helyezés, magyarázat| ✓|✓|
-|Szavazói Ensemble & stack Ensemble-modellek engedélyezése| ✓|✓|
-|A legjobb modell megjelenítése a nem elsődleges metrika alapján|✓||
-|ONNX-modell kompatibilitásának engedélyezése/letiltása|✓||
-|A modell tesztelése | ✓| |
+|**A legjobb modell-regisztráció, üzembe helyezés, magyarázat**| ✓|✓|
+|**Szavazói Ensemble & stack Ensemble-modellek engedélyezése**| ✓|✓|
+|**A legjobb modell megjelenítése a nem elsődleges metrika alapján**|✓||
+|**ONNX-modell kompatibilitásának engedélyezése/letiltása**|✓||
+|**A modell tesztelése** | ✓| |
 
 ### <a name="run-control-settings"></a>Vezérlési beállítások futtatása
 
@@ -254,10 +254,10 @@ Ezekkel a beállításokkal áttekintheti és szabályozhatja a kísérlet futta
 
 | |A Python SDK|A Studio webes felülete|
 |----|:----:|:----:|
-|Összegző táblázat futtatása| ✓|✓|
-|& gyermekobjektumok futtatásának megszakítása| ✓|✓|
-|Guardrails beolvasása| ✓|✓|
-|& szüneteltetésének folytatása| ✓| |
+|**Összegző táblázat futtatása**| ✓|✓|
+|**& gyermekobjektumok futtatásának megszakítása**| ✓|✓|
+|**Guardrails beolvasása**| ✓|✓|
+|**& szüneteltetésének folytatása**| ✓| |
 
 <a name="use-with-onnx"></a>
 
@@ -279,7 +279,7 @@ Az oktatóanyagok a AutoML forgatókönyvek teljes körű bevezető példái.
 
  + Az **alacsony vagy a kód nélküli felhasználói élmény érdekében**tekintse meg a következő [oktatóanyagot: automatizált ml besorolási modellek létrehozása Azure Machine learning Studióval](tutorial-first-experiment-automated-ml.md).
 
-A cikkek további részletekbe menően ismertetik a funkciók AutoML-ajánlatait. Példa: 
+A cikkek további részletekbe menően ismertetik a funkciók AutoML-ajánlatait. Például: 
 
 + Az automatikus tanítási kísérletek beállításainak konfigurálása
     + A Azure Machine Learning Studióban [kövesse ezeket a lépéseket](how-to-use-automated-ml-for-ml-models.md). 

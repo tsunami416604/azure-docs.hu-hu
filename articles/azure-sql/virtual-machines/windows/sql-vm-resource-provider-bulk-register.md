@@ -13,11 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 58f2b1828bcc63ce11c234847bc20f90944aba18
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 74757b2f5e272c7e7dbc0dc7f033c7899be1414b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960384"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184278"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Több SQL virtuális gép regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -133,7 +134,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="resister-all-vms-in-a-resource-group"></a>Egy erőforráscsoport összes virtuális gépe
+## <a name="register-all-vms-in-a-resource-group"></a>Erőforráscsoport összes virtuális gépe regisztrálása
 
 A következő parancsmaggal regisztrálhat egyetlen erőforráscsoport összes SQL Server virtuális gépét: 
 

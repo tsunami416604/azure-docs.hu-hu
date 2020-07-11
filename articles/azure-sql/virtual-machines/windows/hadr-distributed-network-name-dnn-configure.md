@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae9b6bf41d90b0a9111414302b2eafea3c8332d3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7c40f4d9f86f27af34c1bc649483810f6756c41d
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965524"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169816"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>Elosztott hálózatnév konfigurálása a következőhöz: 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -80,6 +80,10 @@ Set-ClusterParameter -Name DnsName -Value FCIDNN
 ```
 
 Az ügyfelek mostantól `FCIDNN` a kapcsolati sztringbe lépnek, amikor csatlakoznak a SQL Server-es verzióhoz. 
+
+   > [!WARNING]
+   > Ne törölje az aktuális virtuális hálózat nevét (VNN), mert az az-os infrastruktúra szükséges összetevője. 
+
 
 ### <a name="rename-the-vnn"></a>VNN átnevezése 
 

@@ -21,7 +21,7 @@ A Azure Monitorban lévő számítógépcsoportok lehetővé teszik a [naplózá
 ## <a name="creating-a-computer-group"></a>Számítógépcsoport létrehozása
 Az alábbi táblázatban felsorolt módszerek bármelyikével létrehozhat egy számítógépcsoportot a Azure Monitorban.  Az egyes módszerekkel kapcsolatos részletes információkat az alábbi részben találja. 
 
-| Metódus | Leírás |
+| Módszer | Leírás |
 |:--- |:--- |
 | Napló lekérdezése |Hozzon létre egy olyan log-lekérdezést, amely a számítógépek listáját adja vissza. |
 | Log Search API |A log Search API használatával programozott módon hozhat létre számítógépcsoportot a naplófájlok eredményei alapján. |
@@ -50,7 +50,7 @@ A következő táblázat a számítógépcsoport definiálásának tulajdonsága
 
 | Tulajdonság | Leírás |
 |:---|:---|
-| Name   | A portálon megjelenítendő lekérdezés neve. |
+| Név   | A portálon megjelenítendő lekérdezés neve. |
 | Függvény aliasa | Egyedi alias, amely a számítógépcsoport azonosítására szolgál a lekérdezésben. |
 | Kategória       | A lekérdezéseknek a portálon való rendszerezésének kategóriája. |
 
@@ -134,6 +134,6 @@ A rendszer létrehoz egy rekordot a Log Analytics munkaterületen minden Active 
 | `ManagementGroupName` |A felügyeleti csoport neve SCOM-ügynökök esetén.  Más ügynökök esetében ez az AOI-\<workspace ID\> |
 | `TimeGenerated` |A számítógépcsoport létrehozásának vagy frissítésének dátuma és időpontja. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) .  
 

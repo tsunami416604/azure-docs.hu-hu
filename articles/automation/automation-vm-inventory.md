@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: leltár, automatizálás, változás, követés
 ms.date: 06/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 73f5105240b8b6475bb9ebed48baadd501aec87d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32d3c17a5f3d152f32b19ffbfd5c9793a7a34b80
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603111"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185721"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Leltárkezelés virtuális gépekről
 
@@ -43,7 +43,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
    ![Előkészítési lehetőségek megtekintése](./media/automation-vm-inventory/inventory-onboarding-options.png)
 
-    Az állapotsor értesíti arról, hogy a Change Tracking és a leltár funkció engedélyezve van. Az engedélyezés akár 15 percet is igénybe vehet. Ebben az időszakban lezárhatja az ablakot, vagy megnyithatja, és értesítést kaphat, ha a funkció engedélyezve van. Az üzembe helyezés állapota az értesítési panelről figyelemmel kísérhető.
+    Az állapotsor értesíti arról, hogy a Change Tracking és a leltár funkció engedélyezve van. Ez a folyamat 15 percet is igénybe vehet. Ebben az időszakban lezárhatja az ablakot, vagy megnyithatja, és értesítést kaphat, ha a funkció engedélyezve van. Az üzembe helyezés állapota az értesítési panelről figyelemmel kísérhető.
 
    ![Leltár megjelenítése](./media/automation-vm-inventory/inventory-onboarded.png)
 
@@ -131,5 +131,5 @@ A virtuális gép eltávolítása a Change Tracking és a leltár-kezelésből:
 ## <a name="next-steps"></a>További lépések
 
 * A szolgáltatással kapcsolatos további részletekért tekintse meg a [change Tracking és a leltár kezelésével](change-tracking-file-contents.md)foglalkozó témakört.
-* A szoftverfrissítések nyomon követésével kapcsolatos további információkért lásd: [a szoftverek változásainak követése a környezetben a Change Tracking](../log-analytics/log-analytics-change-tracking.md)használatával.
+* A szoftverfrissítések nyomon követésével kapcsolatos további információkért lásd: [a szoftverek változásainak követése a környezetben a Change Tracking](./change-tracking.md)használatával.
 * A szolgáltatással kapcsolatos általános problémák elhárításához tekintse meg a [change Tracking és a leltárral kapcsolatos problémák elhárítása](troubleshoot/change-tracking.md)című témakört.

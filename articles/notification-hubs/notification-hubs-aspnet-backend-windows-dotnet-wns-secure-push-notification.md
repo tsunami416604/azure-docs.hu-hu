@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f953b21a221967c2310b2fc70056d48863149821
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75530731"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220048"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>Biztonságos leküldéses értesítések az Azure Notification Hubs
 
@@ -93,7 +94,7 @@ A következő lépés a leküldéses háttér-összetevő létrehozása.
 1. Megoldáskezelő kattintson a jobb gombbal a megoldás legfelső szintű csomópontjára (ebben az esetben a**megoldás SecurePush** ), majd kattintson a **Hozzáadás**, majd az **új projekt**elemre.
 2. Bontsa ki az **áruházbeli alkalmazások**csomópontot, majd kattintson az **alkalmazások Windows Phone-telefon**, majd a **Windows-futtatókörnyezet összetevő (Windows Phone-telefon)** elemre. Nevezze el a projekt **PushBackgroundComponent**, majd kattintson az **OK** gombra a projekt létrehozásához.
 
-    ![][12]
+    ![Képernyőfelvétel az új projekt hozzáadása párbeszédpanelről a Windows-futtatókörnyezet Component (Windows Phone-telefon) Visual C# kapcsoló kiemelve.][12]
 3. Megoldáskezelő kattintson a jobb gombbal a **PushBackgroundComponent (Windows Phone-telefon 8,1)** projektre, majd kattintson a **Hozzáadás**, majd az **osztály**elemre. Nevezze el az új osztályt `PushBackgroundTask.cs` . Az osztály létrehozásához kattintson a **Hozzáadás** gombra.
 4. Cserélje le a névtér teljes tartalmát a `PushBackgroundComponent` következő kódra, és helyettesítse be a helyőrzőt `{back-end endpoint}` a háttérrendszer üzembe helyezése során kapott háttér-végponttal:
 
@@ -161,12 +162,12 @@ A következő lépés a leküldéses háttér-összetevő létrehozása.
 11. Megoldáskezelő a **NotifyUserWindowsPhone (Windows Phone-telefon 8,1)** projektben kattintson a jobb gombbal a **hivatkozások**elemre, majd kattintson a **hivatkozás hozzáadása..**. elemre. A Reference Manager párbeszédpanelen jelölje be a **PushBackgroundComponent**melletti jelölőnégyzetet, majd kattintson az **OK**gombra.
 12. A Megoldáskezelő kattintson duplán a **Package. appxmanifest** elemre a **NotifyUserWindowsPhone (Windows Phone-telefon 8,1)** projektben. Az **értesítések**területen állítsa a **pirítóst** **Igen**értékre.
 
-    ![][3]
+    ![Képernyőkép az Megoldáskezelő ablakról a csomagra összpontosítva. a appxmanifest a Toast-kompatibilis beállítás értéke Igen, a piros színnel van kiválasztva.][3]
 13. Továbbra is a **Package. appxmanifest**, kattintson a felül található **deklarációk** menüre. Az **elérhető deklarációk** legördülő menüben kattintson a **háttér-feladatok**elemre, majd a **Hozzáadás**gombra.
 14. A **Package. appxmanifest**területen a **Tulajdonságok**alatt keresse le a **leküldéses értesítést**.
 15. A **Package. Appxmanifest** **alkalmazásban az Alkalmazásbeállítások**területen írja be a **PushBackgroundComponent. PushBackgroundTask** értéket a **belépési pont** mezőbe.
 
-    ![][13]
+    ![A csomagra összpontosító Megoldáskezelő ablak képernyőképe. a appxmanifest a rendelkezésre álló deklarációkkal, a támogatott deklarációkkal, a leküldéses értesítésekkel és a beléptetési pontokkal kapcsolatos, piros színnel megadott beállításokkal.][13]
 16. Kattintson a **File** (Fájl) menü **Save All** (Összes mentése) elemére.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása

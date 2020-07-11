@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/27/2020
+ms.date: 7/10/2020
 ms.author: raynew
-ms.openlocfilehash: b48dfba6fa5dc270a4d711864d15e9128f4beb98
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b7551ec01e3401c0636b47a25d83173b6322d06e
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132401"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86219878"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>A helyszíni Hyper-V virtuális gépek Azure-ba való vész-helyreállításának támogatási mátrixa
 
@@ -76,6 +76,7 @@ Https-proxy | Nem | Nem
 
 
 
+
 ## <a name="azure-vm-network-configuration-after-failover"></a>Azure VM hálózati konfiguráció (feladatátvétel után)
 
 **Összetevő** | **Hyper-V Virtual Machine Manager** | **Hyper-V Virtual Machine Manager nélkül**
@@ -94,7 +95,7 @@ Gyorsított hálózatkezelés | Nem | Nem
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V gazdagép tárolója
 
-**Storage** | **Hyper-V Virtual Machine Manager** | **Hyper-V Virtual Machine Manager nélkül**
+**Storage-fiók** | **Hyper-V Virtual Machine Manager** | **Hyper-V Virtual Machine Manager nélkül**
 --- | --- | --- 
 NFS | NA | NA
 SMB 3.0 | Igen | Igen
@@ -103,7 +104,7 @@ Több elérési út (MPIO). Tesztelve:<br></br> Microsoft DSM, EMC PowerPath 5,7
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V virtuális gép Guest Storage
 
-**Storage** | **Hyper-V Virtual Machine Manager** | **Hyper-V Virtual Machine Manager nélkül**
+**Storage-fiók** | **Hyper-V Virtual Machine Manager** | **Hyper-V Virtual Machine Manager nélkül**
 --- | --- | ---
 VMDK | NA | NA
 VHD/VHDX | Igen | Igen
@@ -136,16 +137,18 @@ Gyors tárolás| Nem | Nem
 Blokkblobok | Nem | Nem
 Titkosítás nyugalmi állapotban (SSE)| Igen | Igen
 Inaktív titkosítás (CMK) <br></br> (Csak a felügyelt lemezekre történő feladatátvétel esetén)| Igen (a PowerShell az 3.3.0 modultól kezdődően) | Igen (a PowerShell az 3.3.0 modultól kezdődően)
+Dupla titkosítás a nyugalmi állapotban <br></br> (Csak a felügyelt lemezekre történő feladatátvétel esetén) <br></br> További információ a [Windows](../virtual-machines/windows/disk-encryption.md) és a [Linux](../virtual-machines/linux/disk-encryption.md) támogatott régióiról | Igen (a PowerShell az 3.3.0 modultól kezdődően) | Igen (a PowerShell az 3.3.0 modultól kezdődően)
 Prémium szintű Storage | Igen | Igen
 Standard szintű Storage | Igen | Igen
 Importálási/exportálási szolgáltatás | Nem | Nem
 Azure Storage-fiókok engedélyezve tűzfallal | Igen. A cél tárolásához és a gyorsítótárhoz. | Igen. A cél tárolásához és a gyorsítótárhoz.
 Storage-fiók módosítása | Nem. A cél Azure Storage-fiók nem módosítható a replikáció engedélyezése után. A vész-helyreállítási szolgáltatás módosításához tiltsa le, majd engedélyezze újra. | Nem
+Biztonságos átvitel lehetőség | Igen
 
 
 ## <a name="azure-compute-features"></a>Az Azure számítási funkciói
 
-**Szolgáltatás** | **Hyper-V Virtual Machine Manager** | **Hyper-V Virtual Machine Manager nélkül**
+**Funkció** | **Hyper-V Virtual Machine Manager** | **Hyper-V Virtual Machine Manager nélkül**
 --- | --- | ---
 Rendelkezésre állási csoportok | Igen | Igen
 HUB | Igen | Igen  
@@ -169,7 +172,7 @@ FC-lemez | Nem támogatott | Az Előfeltételek ellenőrzése sikertelen, ha nem
 Merevlemez formátuma | VHD <br/><br/> VHDX | A Site Recovery automatikusan átalakítja a VHDX a VHD-re, amikor feladatátvételt hajt végre az Azure-ba. Ha a feladatátvételt a helyszíni rendszerre végzi, a virtuális gépek továbbra is a VHDX formátumot használják.
 BitLocker | Nem támogatott | A virtuális gép replikálásának engedélyezése előtt le kell tiltani a BitLockert.
 a virtuális gép neve | 1 és 63 karakter között. Csak betűket, számokat és kötőjelet tartalmazhat. A virtuális gép nevének betűvel vagy számmal kell kezdődnie és végződnie. | Frissítse az értéket a virtuális gép tulajdonságainál Site Recoveryban.
-Virtuális gép típusa | 1. generációs<br/><br/> 2. generációs – Windows | A 2. generációs virtuális gépek alapszintű operációsrendszer-lemezzel (amely egy vagy két VHDX formázott adatkötetet tartalmaz) és kevesebb mint 300 GB lemezterületet támogat.<br></br>A Linux 2. generációs virtuális gépek nem támogatottak. [További információk](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+Virtuális gép típusa | 1. generációs<br/><br/> 2. generációs – Windows | A 2. generációs virtuális gépek alapszintű operációsrendszer-lemezzel (amely egy vagy két VHDX formázott adatkötetet tartalmaz) és kevesebb mint 300 GB lemezterületet támogat.<br></br>A Linux 2. generációs virtuális gépek nem támogatottak. [További információ](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Recovery Services tároló műveletei
 
@@ -186,7 +189,7 @@ Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforr�
 
 Annak ellenőrzéséhez, hogy a telepítés kompatibilis-e a jelen cikkben található beállításokkal, győződjön meg arról, hogy a legújabb szolgáltatói és ügynök-verziókat futtatja.
 
-**Name (Név)** | **Leírás** | **Részletek**
+**Név** | **Leírás** | **Részletek**
 --- | --- | --- 
 Azure Site Recovery szolgáltató | A helyszíni kiszolgálók és az Azure közötti kommunikáció koordinálása <br/><br/> Hyper-V Virtual Machine Managerkal: telepítve Virtual Machine Manager kiszolgálókon<br/><br/> Hyper-V Virtual Machine Manager nélkül: telepítve a Hyper-V gazdagépeken| Legújabb verzió: 5.1.2700.1 (elérhető a Azure Portal)<br/><br/> [Legújabb funkciók és javítások](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery)
 Microsoft Azure Recovery Services-ügynök | A Hyper-V virtuális gépek és az Azure közötti replikáció koordinálása<br/><br/> Helyszíni Hyper-V-kiszolgálókra telepítve (Virtual Machine Manager) vagy anélkül | A portálon elérhető legújabb ügynök
@@ -196,5 +199,5 @@ Microsoft Azure Recovery Services-ügynök | A Hyper-V virtuális gépek és az 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerje meg, hogyan [készítheti elő az Azure](tutorial-prepare-azure.md) -t a helyszíni Hyper-V virtuális gépek vész-helyreállításához.

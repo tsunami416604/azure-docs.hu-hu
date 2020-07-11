@@ -2,12 +2,13 @@
 title: Készültségi mintavétel beállítása a tároló-példányon
 description: Megtudhatja, hogyan konfigurálhat mintavételt úgy, hogy a tárolók Azure Container Instances fogadása csak akkor legyen elérhető, amikor készen állnak
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: 3e89086d66f284df35e36dc8f1d68bb09264843f
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76935686"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169663"
 ---
 # <a name="configure-readiness-probes"></a>Készültségi tesztek konfigurálása
 
@@ -25,7 +26,7 @@ A Azure Container Instances támogatja az [élettartam](container-instances-live
 Például hozzon létre egy `readiness-probe.yaml` fájlt a következő kódrészlettel, amely tartalmazza a készültségi vizsgálatot. Ez a fájl olyan tároló csoportot határoz meg, amely egy kisméretű webalkalmazást futtató tárolóból áll. Az alkalmazás üzembe helyezése a nyilvános `mcr.microsoft.com/azuredocs/aci-helloworld` rendszerképből történik. Ez a tároló alkalmazás az Azure CLI-vel és más gyors útmutatókkal is mutatja be [a Container példány üzembe helyezését az Azure](container-instances-quickstart.md) -ban.
 
 ```yaml
-apiVersion: 2018-10-01
+apiVersion: 2019-12-01
 location: eastus
 name: readinesstest
 properties:

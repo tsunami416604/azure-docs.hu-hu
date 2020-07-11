@@ -3,11 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 5a0201eeed1678299ec16ff268062463b9c75e5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84235352"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169909"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -32,6 +33,42 @@ A Application Insightshoz tartozó kapcsolatok karakterlánca. `APPLICATIONINSIG
 |Kulcs|Mintaérték|
 |---|------------|
 |APPLICATIONINSIGHTS_CONNECTION_STRING|InstrumentationKey = [kulcs]; IngestionEndpoint = [URL]; LiveEndpoint = [URL]; ProfilerEndpoint = [URL]; SnapshotEndpoint = [URL];|
+
+## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+
+Alapértelmezés szerint a [functions-proxyk](functions-proxies.md) egy parancsikon használatával küldenek API-hívásokat a proxyk az azonos Function alkalmazásban található függvényeknek. Ez a parancsikon az új HTTP-kérelem létrehozása helyett használatos. Ezzel a beállítással letilthatja a parancsikon viselkedését.
+
+|Kulcs|Érték|Leírás|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|A helyi function alkalmazásban a függvényre mutató háttér-URL-címmel rendelkező hívások nem lesznek közvetlenül a függvényhez küldve. Ehelyett a rendszer visszairányítja a kérelmeket a functions-alkalmazáshoz tartozó HTTP-felületre.|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|hamis|A helyi function alkalmazásban egy függvényre mutató háttérbeli URL-címmel rendelkező hívások közvetlenül a függvénynek továbbítódnak. Ez az alapértelmezett érték. |
+
+## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
+
+Ezzel a beállítással szabályozható, hogy a rendszer a karaktereket a `%2F` háttérbeli URL-cím beillesztésekor perjelként dekódolja-e az útválasztási paraméterekben. 
+
+|Kulcs|Érték|Leírás|
+|-|-|-|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|A kódolt perjelekkel rendelkező útvonal-paraméterek dekódolásra kerülnek. |
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|hamis|A rendszer az összes útvonal-paramétert változatlanul adja át, ami az alapértelmezett viselkedés. |
+
+Tegyük fel például, hogy a fájl proxies.jsa tartományban található Function alkalmazáshoz `myfunction.com` .
+
+```JSON
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "root": {
+            "matchCondition": {
+                "route": "/{*all}"
+            },
+            "backendUri": "example.com/{all}"
+        }
+    }
+}
+```
+
+Ha a értékre `AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES` van állítva `true` , az URL-cím a következőre lesz `example.com/api%2ftest` feloldva: `example.com/api/test` . Alapértelmezés szerint az URL-cím változatlan marad a következőként: `example.com/test%2fapi` . További információ: [functions proxys](functions-proxies.md).
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
@@ -58,7 +95,7 @@ Opcionális Storage-fiókhoz tartozó kapcsolatok karakterlánca a naplók táro
 
 |Kulcs|Mintaérték|
 |---|------------|
-|AzureWebJobsDisableHomepage|igaz|
+|AzureWebJobsDisableHomepage|true|
 
 Ha ezt az alkalmazást kihagyja vagy beállítja, a `false` következő példához hasonló oldal jelenik meg az URL-címre adott válaszban `<functionappname>.azurewebsites.net` .
 
@@ -70,7 +107,7 @@ Ha ezt az alkalmazást kihagyja vagy beállítja, a `false` következő példáh
 
 |Kulcs|Mintaérték|
 |---|------------|
-|AzureWebJobsDotNetReleaseCompilation|igaz|
+|AzureWebJobsDotNetReleaseCompilation|true|
 
 ## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
 
@@ -86,7 +123,7 @@ Megadja a kulcstárolóhoz használandó tárházat vagy szolgáltatót. Jelenle
 
 |Kulcs|Mintaérték|
 |---|------------|
-|AzureWebJobsSecretStorageType|Files|
+|AzureWebJobsSecretStorageType|Fájlok|
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
@@ -131,7 +168,7 @@ Megköveteli, hogy a [functions \_ bővítmény \_ verziója](functions-app-sett
 
 |Kulcs|Mintaérték|
 |---|------------|
-|FUNCTIONs \_ v2 \_ kompatibilitási \_ mód|igaz|
+|FUNCTIONs \_ v2 \_ kompatibilitási \_ mód|true|
 
 ## <a name="functions_worker_process_count"></a>FUNCTIONs \_ munkavégző \_ folyamatok \_ száma
 
@@ -150,7 +187,31 @@ A Function alkalmazásban betölteni kívánt nyelvi feldolgozó futtatókörnye
 |---|------------|
 |FUNCTIONs \_ Worker \_ futtatókörnyezet|dotnet|
 
-## <a name="website_contentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
+## <a name="pip_extra_index_url"></a>PIP \_ extra \_ index \_ URL-címe
+
+A beállítás értéke a Python-alkalmazások egyéni csomag-indexelési URL-címét jelöli. Akkor használja ezt a beállítást, ha távoli buildet szeretne futtatni egy további csomag-indexben található egyéni függőségek használatával.   
+
+|Kulcs|Mintaérték|
+|---|------------|
+|PIP \_ extra \_ index \_ URL-címe|http://my.custom.package.repo/simple |
+
+További információ: [Egyéni függőségek](functions-reference-python.md#remote-build-with-extra-index-url) a Python fejlesztői referenciában.
+
+## <a name="scale_controller_logging_enable"></a>SKÁLÁZÁSi \_ vezérlő \_ naplózásának \_ engedélyezése
+
+_Ez a beállítás jelenleg előzetes verzióban érhető el._  
+
+Ezzel a beállítással szabályozható a Azure Functions skálázási vezérlő naplózása. További információkért lásd: a [vezérlő naplófájljainak skálázása](functions-monitoring.md#scale-controller-logs-preview).
+
+|Kulcs|Mintaérték|
+|-|-|
+|SCALE_CONTROLLER_LOGGING_ENABLE|AppInsights: részletes|
+
+A kulcs értéke a következő formátumban van megadva `<DESTINATION>:<VERBOSITY>` :
+
+[!INCLUDE [functions-scale-controller-logging](../../includes/functions-scale-controller-logging.md)]
+
+## <a name="website_contentazurefileconnectionstring"></a>WEBHELY \_ CONTENTAZUREFILECONNECTIONSTRING
 
 Csak a prémium csomagok fogyasztása &. A Storage-fiókhoz tartozó, a Function app-kód és a konfiguráció tárolására szolgáló hálózati karakterlánc. Lásd: [Function-alkalmazás létrehozása](functions-infrastructure-as-code.md#create-a-function-app).
 
@@ -196,47 +257,16 @@ Lehetővé teszi, hogy a Function alkalmazás egy csatlakoztatott csomagfájl ha
 
 Az érvényes értékek egy URL-cím, amely feloldja a központi telepítési csomag fájljának helyét, vagy `1` . Ha a értékre `1` van állítva, a csomagnak a mappában kell lennie `d:\home\data\SitePackages` . Ha a zip-telepítést ezzel a beállítással használja, a csomag automatikusan erre a helyre lesz feltöltve. Az előzetes verzióban ez a beállítás neve `WEBSITE_RUN_FROM_ZIP` . További információkért lásd: [függvények futtatása csomagfájl alapján](run-functions-from-deployment-package.md).
 
-## <a name="azure_function_proxy_disable_local_call"></a>AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL
+## <a name="website_time_zone"></a>WEBHELY \_ \_ időzónája
 
-Alapértelmezés szerint a függvények proxyi olyan parancsikont használnak, amely az API-hívásokat közvetlenül az azonos függvényalkalmazás lévő függvények számára küldi el, nem pedig új HTTP-kérést hoz létre. Ezzel a beállítással letilthatja ezt a viselkedést.
+Lehetővé teszi a Function alkalmazás időzónájának beállítását. 
 
-|Kulcs|Érték|Description|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|igaz|A helyi függvényalkalmazás függvényére mutató háttér-URL-címmel rendelkező hívások a továbbiakban nem lesznek közvetlenül a függvénynek elküldve, és helyette a függvényalkalmazás a HTTP-kezelőfelületre lesznek irányítva.|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|hamis|Ez az alapértelmezett érték. A helyi függvényalkalmazás függvényére mutató háttérbeli URL-címmel rendelkező hívások közvetlenül erre a függvényre lesznek továbbítva|
+|Kulcs|Operációs rendszer|Mintaérték|
+|---|--|------------|
+|WEBHELY \_ \_ időzónája|Windows|Keleti téli idő|
+|WEBHELY \_ \_ időzónája|Linux|Amerika/New_York|
 
-
-## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
-
-Ezzel a beállítással megadható, hogy a (z)% 2F dekódolva van-e a háttérbeli URL-címekbe illesztett útvonal-paraméterekben. 
-
-|Kulcs|Érték|Description|
-|-|-|-|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|igaz|A kódolt perjelekkel ellátott útválasztási paraméterek dekódolva lesznek. `example.com/api%2ftest`lesz`example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|hamis|Ez az alapértelmezett viselkedés. A rendszer az összes útvonal paraméterét változatlanul adja át|
-
-### <a name="example"></a>Példa
-
-Íme egy példa proxies.jsa myfunction.com URL-címen található Function alkalmazásban
-
-```JSON
-{
-    "$schema": "http://json.schemastore.org/proxies",
-    "proxies": {
-        "root": {
-            "matchCondition": {
-                "route": "/{*all}"
-            },
-            "backendUri": "example.com/{all}"
-        }
-    }
-}
-```
-|URL-dekódolás|Input (Bemenet)|Kimenet|
-|-|-|-|
-|igaz|myfunction.com/test%2fapi|example.com/test/api
-|hamis|myfunction.com/test%2fapi|example.com/test%2fapi|
-
+[!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
 ## <a name="next-steps"></a>További lépések
 

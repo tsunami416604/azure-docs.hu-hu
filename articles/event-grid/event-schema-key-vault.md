@@ -80,7 +80,7 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | [Oktatóanyag: Key Vault események létrehozása és figyelése a Event Grid](../key-vault/general/event-grid-tutorial.md) | Megtudhatja, hogyan állíthatja be a Key Vault Event Grid értesítéseit. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

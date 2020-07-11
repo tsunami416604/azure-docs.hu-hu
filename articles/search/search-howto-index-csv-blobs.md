@@ -9,20 +9,22 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 580c6294856145530e354b6e5cced955dbaa9f9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1d9e34687f4a8a5d973d90006e90692fde7a668
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565570"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146867"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>CSV-Blobok indexelése delimitedText-elemzési mód és blob-indexek használatával az Azure-ban Cognitive Search
 
 Alapértelmezés szerint az [Azure Cognitive Search blob indexelő](search-howto-indexing-azure-blob-storage.md) egy különálló szövegként elemzi a tagolt szöveges blobokat. A CSV-fájlokat tartalmazó Blobokkal azonban gyakran a blob minden sorát külön dokumentumként kell kezelni. Például a következő tagolt szöveg esetében érdemes lehet két dokumentumra elemezni, melyek mindegyike "id", "datePublished" és "Tags" mezőket tartalmaz: 
 
-    id, datePublished, tags
-    1, 2016-01-12, "azure-search,azure,cloud" 
-    2, 2016-07-07, "cloud,mobile" 
+```text
+id, datePublished, tags
+1, 2016-01-12, "azure-search,azure,cloud"
+2, 2016-07-07, "cloud,mobile"
+```
 
 Ebből a cikkből megtudhatja, hogyan elemezheti a CSV-blobokat egy Azure Cognitive Search blob indexelő használatával az `delimitedText` elemzési mód beállításával. 
 
@@ -32,20 +34,26 @@ Ebből a cikkből megtudhatja, hogyan elemezheti a CSV-blobokat egy Azure Cognit
 ## <a name="setting-up-csv-indexing"></a>CSV-indexelés beállítása
 CSV-Blobok indexeléséhez hozzon létre vagy frissítsen egy indexelő definíciót a `delimitedText` [create Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) -kérelem elemzési módjával:
 
+```http
     {
       "name" : "my-csv-indexer",
       ... other indexer properties
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "firstLineContainsHeaders" : true } }
     }
+```
 
 `firstLineContainsHeaders`azt jelzi, hogy az egyes Blobok első (nem üres) sora fejléceket tartalmaz.
 Ha a Blobok nem tartalmaznak kezdeti fejlécet, a fejléceket az indexelő konfigurációjában kell megadni: 
 
-    "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
+```http
+"parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
+```
 
 A elválasztó karaktert a konfigurációs beállítás használatával szabhatja testre `delimitedTextDelimiter` . Például:
 
-    "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
+```http
+"parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextDelimiter" : "|" } }
+```
 
 > [!NOTE]
 > Jelenleg csak az UTF-8 kódolás támogatott. Ha más kódolások támogatására van szüksége, szavazzon rá a [UserVoice](https://feedback.azure.com/forums/263029-azure-search)-on.
@@ -60,6 +68,7 @@ Mindez együttesen a teljes hasznos adatokat mutatja.
 
 DataSource 
 
+```http
     POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -70,9 +79,11 @@ DataSource
         "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
         "container" : { "name" : "my-container", "query" : "<optional, my-folder>" }
     }   
+```
 
 Indexelő
 
+```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
     Content-Type: application/json
     api-key: [admin key]
@@ -83,6 +94,7 @@ Indexelő
       "targetIndexName" : "my-target-index",
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } }
     }
+```
 
 ## <a name="help-us-make-azure-cognitive-search-better"></a>Segítsen nekünk, hogy jobban megtegyük az Azure Cognitive Search
 Ha a funkciókra vonatkozó kérések vagy ötletek vannak, adja meg a [UserVoice](https://feedback.azure.com/forums/263029-azure-search/).

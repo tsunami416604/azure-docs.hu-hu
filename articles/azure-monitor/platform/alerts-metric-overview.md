@@ -1,14 +1,15 @@
 ---
 title: Ismerje meg, hogyan működnek a metrikus riasztások Azure Monitorban.
 description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan működnek Azure Monitorban.
-ms.date: 03/17/2020
+ms.date: 07/09/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248821"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187523"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -125,18 +126,22 @@ Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy
 
 Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén támogatott a következő szolgáltatásokhoz a következő Azure-felhőkben:
 
-| Szolgáltatás | Nyilvános Azure | Government | Kína |
+| Szolgáltatás | Nyilvános Azure | Államigazgatás | Kína |
 |:--------|:--------|:--------|:--------|
 | Virtual machines (Virtuális gépek)  | **Igen** | Nem | Nem |
-| SQL Server-adatbázisok | **Igen** | **Igen** | No |
-| SQL Server rugalmas készletek | **Igen** | **Igen** | No |
-| Adatmező peremhálózati eszközei | **Igen** | **Igen** | No |
+| SQL Server-adatbázisok | **Igen** | **Igen** | Nem |
+| SQL Server rugalmas készletek | **Igen** | **Igen** | Nem |
+| Adatmező peremhálózati eszközei | **Igen** | **Igen** | Nem |
 
 A figyelés hatókörét a három módszer egyikével adhatja meg egyetlen metrikai riasztási szabály segítségével. A Virtual Machines használatával például a következő módon adhatja meg a hatókört:  
 
-- egy előfizetésen belül egy Azure-régióban található virtuális gépek listája
+- egy előfizetésen belüli virtuális gépek listája (egy Azure-régióban)
 - az előfizetésben lévő egy vagy több erőforráscsoport összes virtuális gépe (egy Azure-régióban)
-- minden virtuális gép (egy Azure-régióban) egy előfizetésben
+- az előfizetésben lévő összes virtuális gép (egy Azure-régióban)
+
+> [!NOTE]
+>
+> A többerőforrásos metrika riasztási szabályának hatókörének tartalmaznia kell legalább egy erőforrást a kiválasztott erőforrástípus számára.
 
 Több erőforrást figyelő metrikai riasztási szabályok létrehozása olyan, mint [bármely más metrikai riasztás](alerts-metric.md) , amely egyetlen erőforrás figyelésére szolgál. Csak a különbség, hogy az összes figyelni kívánt erőforrást kijelöli. Ezeket a szabályokat [Azure Resource Manager sablonokon](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)keresztül is létrehozhatja. Minden egyes megfigyelt erőforráshoz külön értesítést fog kapni.
 

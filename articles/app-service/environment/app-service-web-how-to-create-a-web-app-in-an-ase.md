@@ -7,11 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701830"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220694"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Webalkalmazás létrehozása App Service Environment v1-ben
 
@@ -33,8 +34,8 @@ Ez az oktatóanyag feltételezi, hogy létrehozott egy App Service Environment. 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 1. Az [Azure Portalon](https://portal.azure.com/)kattintson az **erőforrás létrehozása > web és mobil > webalkalmazás**elemre. 
    
-    ![][1]
-2. Válassza ki az előfizetését.  
+    ![Képernyőkép, amely bemutatja, hol hozhat létre webalkalmazást a Azure Portalban.][1]
+2. Válassza ki előfizetését.  
    
     Ha több előfizetéssel is rendelkezik, akkor a környezet létrehozásakor használt előfizetést kell használnia, hogy létrehozzon egy alkalmazást a App Service Environmentban. 
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
@@ -46,7 +47,7 @@ Ez az oktatóanyag feltételezi, hogy létrehozott egy App Service Environment. 
    
     A szolgáltató App Service-csomagjait a csomag neve alatt megjelenő helyen tekintheti meg.  
    
-    ![][5]
+    ![A következő képernyőképen megtekintheti a központjának App Service terveit.][5]
    
     Ha olyan App Service csomagot szeretne használni, amely már létezik a App Service Environmentban, válassza ki ezt a csomagot. Ha új App Service csomagot szeretne létrehozni, tekintse meg az oktatóanyag következő szakaszát, és [hozzon létre egy app Service tervet egy app Service Environmentban](#createplan).
 5. Adja meg a webalkalmazás nevét, majd kattintson a **Létrehozás**gombra. 
@@ -68,18 +69,18 @@ Az alábbi utasítások bemutatják, hogyan hozhat létre egy App Service tervet
    
     Mivel az App Service Environment lényegében egy privát telepítési hely, az a hely területen jelenik meg. 
    
-    ![][2]
+    ![Képernyőkép, amely megjeleníti a kívánt előállítók kiválasztására szolgáló hely választóját.][2]
    
     Miután kiválasztotta a beléptetést a hely választójában, a App Service tervezze meg a felhasználói felület frissítéseit.  A hely ekkor megjeleníti a beszállítói rendszer és a régió nevét, és a díjszabási csomagot a feldolgozó készlet választója váltja fel.  
    
-    ![][3]
+    ![Képernyőkép a beszállítói rendszer részleteiről, miután kiválasztotta a központot a hely választójában.][3]
 
 ### <a name="selecting-a-worker-pool"></a>Munkavégző készlet kiválasztása
 Általában a App Service Environment Azure App Service és azon kívül 3 számítási méret áll rendelkezésre, amely egy dedikált díjcsomag kiválasztásával érhető el.  A beadáshoz hasonló módon legfeljebb 3 készletet határozhat meg, és meghatározhatja a munkavégző készlethez használt számítási méretet.  Ez azt jelenti, hogy a beadási csomag bérlői számára a számítási mérettel rendelkező díjszabási csomag kiválasztása helyett a App Service a *munkavégző készletnek*kell kiválasztania.  
 
 A Worker Pool kiválasztási felhasználói felülete az adott feldolgozó készlethez használt számítási méretet jeleníti meg a név alatt.  A rendelkezésre álló mennyiség arra utal, hogy hány számítási példány használható a készletben.  Előfordulhat, hogy a teljes készletnek több példánya is van ennél a számnál, de ez az érték azt jelenti, hogy a nem használatos.  Ha módosítania kell a App Service Environment további számítási erőforrások hozzáadására, tekintse [meg a app Service Environment konfigurálását](app-service-web-configure-an-app-service-environment.md)ismertető témakört.
 
-![][4]
+![Képernyőfelvétel: a munkavégző készlet ablaktáblája, ahol kiválaszthatja a feldolgozó készleteket a kiegészítő szolgáltatáshoz.][4]
 
 Ebben a példában csak két munkavégző készlet érhető el. Ennek oka, hogy a szolgáltatói rendszergazda csak a két munkavégző készletbe foglalt gazdagépeket.  A harmadik akkor jelenik meg, ha virtuális gépek vannak lefoglalva.  
 

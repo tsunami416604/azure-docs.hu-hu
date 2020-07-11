@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: e64f437b65964b585311aeae25e5f3a92275754a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361676"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86185636"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Runbook indítása webhookból
 
-A webhookok lehetővé teszik, hogy egy külső szolgáltatás egy adott runbook indítson el Azure Automation egyetlen HTTP-kéréssel. A külső szolgáltatások közé tartoznak az Azure DevOps Services, a GitHub, a Azure Monitor-naplók és az egyéni alkalmazások. A szolgáltatás egy webhook használatával elindíthat egy runbook a teljes Azure Automation API megvalósítása nélkül. A webhookokat összehasonlíthatja más módszerekkel, hogy runbook indítson el [egy runbook a Azure Automation](automation-starting-a-runbook.md).
+A webhookok lehetővé teszik, hogy egy külső szolgáltatás egy adott runbook indítson el Azure Automation egyetlen HTTP-kéréssel. A külső szolgáltatások közé tartoznak az Azure DevOps Services, a GitHub, a Azure Monitor-naplók és az egyéni alkalmazások. A szolgáltatás egy webhook használatával elindíthat egy runbook a teljes Azure Automation API megvalósítása nélkül. A webhookokat összehasonlíthatja más módszerekkel, hogy runbook indítson el [egy runbook a Azure Automation](./start-runbooks.md).
 
 > [!NOTE]
 > Egy webhook használata a Python-runbook elindításához nem támogatott.
@@ -29,7 +29,7 @@ A következő táblázat ismerteti azokat a tulajdonságokat, amelyeket egy webh
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Name |A webhook neve. Megadhatja a kívánt nevet, mert az nem érhető el az ügyfél számára. A rendszer csak a runbook azonosítására szolgál Azure Automationban. Ajánlott eljárásként a webhooknak az azt használó ügyféllel kapcsolatos nevet kell adnia. |
+| Név |A webhook neve. Megadhatja a kívánt nevet, mert az nem érhető el az ügyfél számára. A rendszer csak a runbook azonosítására szolgál Azure Automationban. Ajánlott eljárásként a webhooknak az azt használó ügyféllel kapcsolatos nevet kell adnia. |
 | URL-cím |A webhook URL-címe. Ez az az egyedi címnek, amelyet az ügyfél HTTP-BEJEGYZÉSsel hív meg, hogy elindítsa a webhookhoz csatolt runbook. A webhook létrehozásakor automatikusan létrejön. Nem adhat meg egyéni URL-címet. <br> <br> Az URL-cím olyan biztonsági jogkivonatot tartalmaz, amely lehetővé teszi, hogy egy harmadik féltől származó rendszer további hitelesítés nélkül hívja meg a runbook. Ezért az URL-címet jelszóként kell kezelni. Biztonsági okokból a webhook létrehozásakor csak a Azure Portal URL-címét tekintheti meg. A jövőbeli használatra biztonságos helyen jegyezze fel az URL-címet. |
 | Lejárat dátuma | A webhook lejárati dátuma, amely után már nem használható. A webhook létrehozása után módosíthatja a lejárati dátumot, feltéve, hogy a webhook nem járt le. |
 | Engedélyezve | Ez a beállítás azt jelzi, hogy a webhook alapértelmezés szerint engedélyezve van-e a létrehozásakor. Ha a tulajdonságot letiltva értékre állítja, akkor egyetlen ügyfél sem használhatja a webhookot. Ezt a tulajdonságot akkor állíthatja be, amikor létrehozza a webhookot vagy bármely más időt a létrehozása után. |
@@ -120,7 +120,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Az ügyfél a kérelemből a következő visszatérési kódok egyikét kapja meg `POST` .
 
-| Code | Szöveg | Description |
+| Kód | Szöveg | Leírás |
 |:--- |:--- |:--- |
 | 202 |Elfogadva |A kérést elfogadták, és a runbook sikeresen várólistára került. |
 | 400 |Hibás kérés |A kérelmet a következő okok egyike miatt nem fogadták el: <ul> <li>A webhook lejárt.</li> <li>A webhook le van tiltva.</li> <li>Az URL-címben szereplő jogkivonat érvénytelen.</li>  </ul> |
@@ -133,7 +133,7 @@ Ha a kérelem sikeres, a webhook válasza JSON formátumban tartalmazza a felada
 {"JobIds":["<JobId>"]}
 ```
 
-Az ügyfél nem tudja meghatározni, hogy mikor fejeződött be a runbook-feladatok, vagy a befejezési állapota a webhookban. Ezt az információt a feladattal együtt egy másik mechanizmussal, például a [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) vagy a [Azure Automation API](/rest/api/automation/job)használatával tekintheti meg.
+Az ügyfél nem tudja meghatározni, hogy mikor fejeződött be a runbook-feladatok, vagy a befejezési állapota a webhookban. Ezt az információt a feladattal együtt egy másik mechanizmussal, például a [Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) vagy a [Azure Automation API](/rest/api/automation/job)használatával tekintheti meg.
 
 ## <a name="renew-a-webhook"></a>Webhook megújítása
 
@@ -151,7 +151,7 @@ Kiterjesztheti azt a webhookot, amely nem érte el a lejárati idejét. Webhook 
 A következő minta-runbook fogadja a webhook-adatkapcsolatot, és elindítja a kérés törzsében megadott virtuális gépeket. A runbook teszteléséhez az Automation-fiók **runbookok**területén kattintson a **runbook létrehozása**lehetőségre. Ha nem tudja, hogyan hozhat létre runbook, tekintse meg [a Runbook létrehozását](automation-quickstart-create-runbook.md)ismertető témakört.
 
 > [!NOTE]
-> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
+> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
 
 ```powershell
 param

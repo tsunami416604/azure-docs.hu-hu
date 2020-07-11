@@ -5,15 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea05e75c0d1db1ef27ae2e8e9364327528a7c8ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e30d1606a3928f421d2155e2d1abac0c8a6872aa
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837161"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186639"
 ---
 # <a name="configure-windows-update-settings-for-azure-automation-update-management"></a>Azure Automation Update Management Windows Update beállításainak konfigurálása
 
-Azure Automation Update Management a [Windows Update ügyfélen](https://docs.microsoft.com//windows/deployment/update/windows-update-overview) támaszkodik a Windows-frissítések letöltésére és telepítésére. A Windows Update-ügyfél az Windows Server Update Services (WSUS) vagy a Windows Updatehoz való csatlakozáskor adott beállításokat használ. Ezen beállítások közül sokat a következővel kezelhet:
+Azure Automation Update Management a [Windows Update ügyfélen](/windows/deployment/update/windows-update-overview) támaszkodik a Windows-frissítések letöltésére és telepítésére. A Windows Update-ügyfél az Windows Server Update Services (WSUS) vagy a Windows Updatehoz való csatlakozáskor adott beállításokat használ. Ezen beállítások közül sokat a következővel kezelhet:
 
 - Helyicsoportházirend-szerkesztő
 - Csoportházirend
@@ -22,7 +23,7 @@ Azure Automation Update Management a [Windows Update ügyfélen](https://docs.mi
 
 A Update Management a Windows Update-ügyfél vezérléséhez megadott beállítások többségét tiszteletben tartja. Ha a nem Windows rendszerű frissítéseket engedélyező beállításokat használ, akkor a Update Management a frissítéseket is kezeli. Ha szeretné engedélyezni a frissítések letöltését a frissítés központi telepítése előtt, akkor a frissítés központi telepítése gyorsabb, hatékonyabb és kevésbé valószínű, hogy túllépi a karbantartási időszakot.
 
-A WSUS Azure-előfizetésben való beállításával és a Windows rendszerű virtuális gépek naprakészen tartásával kapcsolatos további javaslatokért tekintse át az Azure-beli [Windows rendszerű virtuális gépek WSUS használatával történő frissítésének megtervezése](https://docs.microsoft.com/azure/architecture/example-scenario/wsus/)című részt.
+A WSUS Azure-előfizetésben való beállításával és a Windows rendszerű virtuális gépek naprakészen tartásával kapcsolatos további javaslatokért tekintse át az Azure-beli [Windows rendszerű virtuális gépek WSUS használatával történő frissítésének megtervezése](/azure/architecture/example-scenario/wsus/)című részt.
 
 ## <a name="pre-download-updates"></a>Frissítések előzetes letöltése
 
@@ -57,7 +58,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 Update Management támogatja a WSUS beállításait. A frissítések kereséséhez és letöltéséhez szükséges forrásokat az [intranetes Microsoft Update szolgáltatás helyének megadása](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location)című témakör útmutatása alapján adhatja meg. Alapértelmezés szerint a Windows Update ügyfél úgy van konfigurálva, hogy letöltse a frissítéseket a Windows Updateról. Ha a WSUS-kiszolgálót a számítógépek forrásaként adja meg, ha a frissítések nem hagyták jóvá a WSUS-ben, a frissítés telepítése sikertelen lesz. 
 
-Ha a gépeket a belső frissítési szolgáltatásra szeretné korlátozni, állítsa a ne [kapcsolódjon egyetlen Windows Update internetes helyhez](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations). 
+Ha a gépeket a belső frissítési szolgáltatásra szeretné korlátozni, állítsa a ne [kapcsolódjon egyetlen Windows Update internetes helyhez](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#do-not-connect-to-any-windows-update-internet-locations). 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,11 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 53a7e113d64ea4cf7018d51a44f9488342f1470f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb8fa53fa07d666693ae545c193faaf3d6d0a30c
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83715630"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187149"
 ---
 # <a name="troubleshoot-startstop-vms-during-off-hours-issues"></a>Start/Stop VMs during off-hours problémák elhárítása
 
@@ -63,7 +64,7 @@ A központi telepítések a következő okok egyike miatt sikertelenek lehetnek:
 - A Log Analytics munkaterület zárolva van.
 - A AzureRM-modulok elavult verziója vagy a Start/Stop VMs during off-hours funkció szerepel.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Tekintse át a következő javításokat a lehetséges megoldásokhoz:
 
@@ -94,11 +95,11 @@ Ezt a hibát a következő okok egyike okozhatta:
 - Lehetséges, hogy egy runbook hibák léptek fel.
 - Lehetséges, hogy a virtuális gépek ki lettek zárva.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Tekintse át az alábbi listát a lehetséges megoldásokról:
 
-* Győződjön meg arról, hogy megfelelően konfigurálta a Start/Stop VMs during off-hourshoz tartozó ütemtervet. Az ütemtervek konfigurálásának megismeréséhez lásd: [ütemtervek](../automation-schedules.md).
+* Győződjön meg arról, hogy megfelelően konfigurálta a Start/Stop VMs during off-hourshoz tartozó ütemtervet. Az ütemtervek konfigurálásának megismeréséhez lásd: [ütemtervek](../shared-resources/schedules.md).
 
 * Ellenőrizze, hogy vannak-e hibák a [feladatok streamben](../automation-runbook-execution.md#job-statuses) . Keressen feladatokat a következő runbookok egyikéről:
 
@@ -135,7 +136,7 @@ Ezt a hibát a következő okok egyike okozhatta:
 - Előfordulhat, hogy a futtató fiók nem rendelkezik megfelelő engedélyekkel a virtuális gépen.
 - A virtuális gép rendelkezhet olyan hibával, amely leállt az indítástól vagy a leállítástól.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Tekintse át az alábbi listát a lehetséges megoldásokról:
 
@@ -165,7 +166,7 @@ Létrehozott egy egyéni runbook, vagy letöltött egyet a PowerShell-galériab�
 
 A hiba számos oka lehet. Nyissa meg az Automation-fiókját a Azure Portal, és válassza a **feladatok** **automatizálása**lehetőséget. A **feladatok** lapon keresse meg a runbook feladatait, és tekintse meg a feladatok hibáit.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 A következő megoldást javasoljuk:
 
@@ -182,7 +183,7 @@ A szolgáltatáshoz engedélyezett virtuális gépek nem indulnak el vagy nem á
 
 Ezt a problémát a virtuális gépek helytelen címkézése okozza.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 A következő lépések végrehajtásával győződjön meg arról, hogy a szolgáltatás helyesen van engedélyezve:
 
@@ -200,7 +201,7 @@ A következő lépések végrehajtásával győződjön meg arról, hogy a szolg
 
 Ezt a problémát egy nem megfelelően konfigurált vagy lejárt futtató fiók okozhatja. Az is előfordulhat, hogy a futtató fiók nem rendelkezik megfelelő engedélyekkel a virtuális gép erőforrásaihoz.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Annak ellenőrzéséhez, hogy a futtató fiók megfelelően van-e konfigurálva, lépjen a Azure Portal Automation-fiókjába, és válassza a **fiók beállításai**alatt a **futtató fiókok** elemet. Ha egy futtató fiók helytelenül van konfigurálva vagy lejárt, az állapot megjeleníti a feltételt.
 
@@ -223,7 +224,7 @@ A szolgáltatás régi és elavult verziója sokszor hibákat okozhat.
 > [!NOTE]
 > A Start/Stop VMs during off-hours funkció az Automation-fiókba importált Azure-modulokkal lett tesztelve, amikor a szolgáltatást a virtuális gépeken telepíti. A szolgáltatás jelenleg nem működik az Azure-modul újabb verzióival. Ez a korlátozás csak a Start/Stop VMs during off-hours futtatásához használt Automation-fiókot érinti. Továbbra is használhatja az Azure-modul újabb verzióit a többi Automation-fiókban a következő témakörben leírtak szerint: [Azure PowerShell-modulok frissítése](../automation-update-azure-modules.md).
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Sok hiba elhárításához távolítsa el és [frissítse Start/Stop VMS During off-hours](../automation-solution-vm-management.md#update-the-feature). A [feladatok adatfolyamait](../automation-runbook-execution.md#job-statuses) is megtekintheti, ha hibákat keres. 
 

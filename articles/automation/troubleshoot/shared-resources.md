@@ -8,11 +8,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83680885"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187166"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Megosztott erőforrásokkal kapcsolatos problémák elhárítása
 
@@ -30,9 +31,9 @@ A modul az *importálási* állapotba kerül, amikor importálja vagy frissíti 
 
 Mivel a PowerShell-modulok importálása összetett, többlépéses folyamat, előfordulhat, hogy egy modul nem importál megfelelően, és átmeneti állapotba kerülhet. További információ az importálási folyamatról: [PowerShell-modul importálása](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process).
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
-A probléma megoldásához el kell távolítania a [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) parancsmag használatával beragadt modult. Ezután újra megpróbálkozhat a modul importálásával.
+A probléma megoldásához el kell távolítania a [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) parancsmag használatával beragadt modult. Ezután újra megpróbálkozhat a modul importálásával.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -52,7 +53,7 @@ Azure modules are being updated
 
 Ismert hiba történt a AzureRM-modulok automatizálási fiókban való frissítésekor. A probléma különösen akkor fordul elő, ha a modulok egy 0 értékkel kezdődő numerikus névvel rendelkező erőforráscsoporthoz tartoznak.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Az Automation-fiókban lévő AzureRM-modulok frissítéséhez a fióknak alfanumerikus névvel rendelkező erőforráscsoporthoz kell tartoznia. A 0 értékkel kezdődő numerikus nevekkel rendelkező erőforráscsoportok jelenleg nem tudják frissíteni a AzureRM modulokat.
 
@@ -69,9 +70,9 @@ Néhány gyakori ok, amiért előfordulhat, hogy egy modul nem importálható si
 * A struktúra nem felel meg az Automation által igényelt struktúrának.
 * A modul egy másik, az Automation-fiókba nem telepített modultól függ.
 * A modulban hiányzik a függőségei a mappában.
-* A [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) parancsmag a modul feltöltésére használatos, és nem biztosította a teljes tárterület elérési útját, vagy nem töltötte be a modult nyilvánosan elérhető URL-cím használatával.
+* A [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) parancsmag a modul feltöltésére használatos, és nem biztosította a teljes tárterület elérési útját, vagy nem töltötte be a modult nyilvánosan elérhető URL-cím használatával.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 A probléma megoldásához használja a következő megoldásokat:
 
@@ -89,7 +90,7 @@ Ha az [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/
 
 Ebben a runbook az alapértelmezett beállítás azt határozza meg, hogy hány modult frissít egyszerre a 10. A frissítési folyamat olyan hibákhoz van kitéve, amikor túl sok modul frissül egyidejűleg.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Nem gyakori, hogy az összes AzureRM vagy az az modulra ugyanarra az Automation-fiókra van szükség. Csak a szükséges modulokat kell importálnia.
 
@@ -131,7 +132,7 @@ You do not have permissions to create…
 
 Nem rendelkezik a futtató fiók létrehozásához vagy frissítéséhez szükséges engedélyekkel, vagy az erőforrás zárolva van egy erőforráscsoport szintjén.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Futtató fiók létrehozásához vagy frissítéséhez megfelelő [engedélyekkel](../manage-runas-account.md#permissions) kell rendelkeznie a futtató fiók által használt különféle erőforrásokhoz. 
 
@@ -151,7 +152,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 Ezt a hibát valószínűleg egy helytelenül konfigurált [futtató fiók](../manage-runas-account.md)okozza.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 Győződjön meg arról, hogy a futtató fiók megfelelően van konfigurálva. Ezután ellenőrizze, hogy rendelkezik-e a megfelelő kóddal a runbook az Azure-beli hitelesítéshez. Az alábbi példa egy kódrészletet mutat be az Azure-ban való hitelesítéshez egy runbook egy futtató fiók használatával.
 

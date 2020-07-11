@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/24/2020
-ms.openlocfilehash: 0b7ca2654fb8b7bdcca6dcb5f2fd354a138f2fcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/08/2020
+ms.openlocfilehash: fe0d3819701e062fa2253bc6dd0c3a28eaeaadfb
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564357"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171115"
 ---
 # <a name="evaluate-model-module"></a>Modell modul kiértékelése
 
@@ -35,10 +35,10 @@ Ezzel a modullal mérhető a betanított modell pontossága. Olyan adatkészlete
 
 ## <a name="how-to-use-evaluate-model"></a>Az értékelés modell használata
 1. Kapcsolja össze a pontszám [-](./assign-data-to-clusters.md) [modell](./score-model.md) vagy az eredmények adatkészlet **-kimenetét** a **kiértékelési modell**bal oldali bemeneti portjához. 
-  > [!NOTE] 
-  > Ha olyan modulokat használ, mint például az "Oszlopok kiválasztása az adatkészletben" lehetőséget a bemeneti adatkészlet egy részének kiválasztásához, győződjön meg róla, hogy a tényleges címke oszlop (tanításban használatos), a "pontszámmal rendelkező valószínűségek" oszlop és a "pontozott feliratok" oszlop létezik a metrikák, például a AUC, a bináris besorolás
-  > A tényleges felirat oszlop, a "felhorzsolt címkék" oszlop létezik a többosztályos besorolás/regresszió metrikáinak kiszámításához.
-  > "Hozzárendelések" oszlop, oszlop: "DistancesToClusterCenter". X ' (X a középpontját index, amely a 0,... számú centroids-1) létezik a fürtözés metrikáinak kiszámításához.
+    > [!NOTE] 
+    > Ha olyan modulokat használ, mint például az "Oszlopok kiválasztása az adatkészletben" lehetőséget a bemeneti adatkészlet egy részének kiválasztásához, győződjön meg róla, hogy a tényleges címke oszlop (tanításban használatos), a "pontszámmal rendelkező valószínűségek" oszlop és a "pontozott feliratok" oszlop létezik a metrikák, például a AUC, a bináris besorolás
+    > A tényleges felirat oszlop, a "felhorzsolt címkék" oszlop létezik a többosztályos besorolás/regresszió metrikáinak kiszámításához.
+    > "Hozzárendelések" oszlop, oszlop: "DistancesToClusterCenter". X ' (X a középpontját index, amely a 0,... számú centroids-1) létezik a fürtözés metrikáinak kiszámításához.
 
 2. Választható Kapcsolja össze **a** [pontszám-modell](./score-model.md) vagy az eredmények adatkészlet-kimenetét az adatok kiosztása fürtökhöz a második modellnek **megfelelő** bemeneti portra a **modell kiértékeléséhez**. Az eredményeket egyszerűen összehasonlíthatja két különböző modellből ugyanazon adatok alapján. A két bemeneti algoritmusnak azonos algoritmus típusúnak kell lennie. Másik lehetőségként összehasonlíthatja azokat a két különböző futtatásból származó pontszámokat, amelyek különböző paraméterekkel rendelkeznek.
 
@@ -47,9 +47,14 @@ Ezzel a modullal mérhető a betanított modell pontossága. Olyan adatkészlete
 
 3. Küldje el a folyamatot a kiértékelési pontszámok létrehozásához.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
-A **kiértékelési modell**futtatása után válassza ki a modult, és nyissa meg a **modell kiértékelése** navigációs panelt a jobb oldalon.  Ezután válassza a **kimenetek + naplók** fület, és a lapon az **adatkimenetek** szakaszban több ikon látható.   A **vizualizáció ikon egy** oszlopdiagram ikont tartalmaz, és első módszer az eredmények megjelenítésére.
+A **kiértékelési modell**futtatása után válassza ki a modult, és nyissa meg a **modell kiértékelése** navigációs panelt a jobb oldalon.  Ezután válassza a **kimenetek + naplók** fület, és a lapon az **adatkimenetek** szakaszban több ikon látható. A **vizualizáció ikon egy** oszlopdiagram ikont tartalmaz, és első módszer az eredmények megjelenítésére.
+
+Ha bináris besorolást szeretne, az ikon **megjelenítése** lehetőségre kattintva megjelenítheti a bináris zavart mátrixot.
+A többszörös besorolás érdekében a következőhöz hasonló **kimenetek és naplók** lapon találhatja meg a zavart mátrix nyomtatási fájlját:
+> [!div class="mx-imgBorder"]
+> ![Feltöltött rendszerkép előnézete](media/module/multi-class-confusion-matrix.png)
 
 Ha adatkészleteket hoz létre a **kiértékelési modell**mindkét bemenetéhez, akkor az eredmények mindkét adathalmazra, vagy mindkét modellre vonatkozó metrikákat tartalmaznak.
 A bal oldali porthoz csatolt modellnek vagy adatoknak először a jelentésben kell megjelenni, amelyet a DataSet adatkészlethez tartozó metrikák, illetve a jobb oldali porthoz csatolt modell mutat.  
@@ -60,7 +65,7 @@ Az alábbi ábrán például az azonos adatokra épülő két fürtözött model
 
 Mivel ez egy fürtözési modell, a kiértékelési eredmények eltérnek, mint ha két regressziós modellből származó pontszámokat hasonlítanak össze, vagy két besorolási modellel hasonlították össze. A teljes bemutató azonban ugyanaz. 
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 
 Ez a szakasz a **kiértékelési modellel**használható, adott típusú modellek által visszaadott mérőszámokat ismerteti:
 
@@ -70,7 +75,8 @@ Ez a szakasz a **kiértékelési modellel**használható, adott típusú modelle
 
 ### <a name="metrics-for-classification-models"></a>Besorolási modellek metrikái
 
-A következő metrikákat kell jelenteni a besorolási modellek kiértékelése során.
+
+A következő metrikákat kell jelenteni a bináris besorolási modellek kiértékelése során.
   
 -   A **pontosság** a besorolási modell jóságát méri az igaz eredményeknek az összes esethez viszonyított arányában.  
   
@@ -78,13 +84,10 @@ A következő metrikákat kell jelenteni a besorolási modellek kiértékelése 
   
 -   A **visszahívás** a modell által visszaadott összes helyes eredmény hányada.  
   
--   Az **f-score** kiszámítása a pontosság súlyozott átlagát és a 0 és 1 közötti visszahívást, ahol az ideális F-score értéke 1.  
+-   Az F1-es **pontszám** kiszámítása a pontosság súlyozott átlaga, a 0 és az 1 közötti visszahívás pedig az ideális F1-es pontszám értéke 1.  
   
 -   A **AUC** méri a görbe alatti terület kirajzolását az y tengelyen található igaz pozitív értékkel, az x tengelyen pedig téves pozitív értéket. Ez a metrika azért hasznos, mert egyetlen számot biztosít, amely lehetővé teszi különböző típusú modellek összehasonlítását.  
-  
-- Az **átlagos napló elvesztése** egy olyan pontszám, amely a helytelen eredményekre vonatkozó büntetés kiértékelésére szolgál. A számítás a két valószínűségi eloszlás közötti különbség – igaz, és a modellben szereplő egyik.  
-  
-- A **betanítási naplók elvesztésének** egyetlen pontszáma, amely az osztályozó előnyeit jelöli véletlenszerű előrejelzéssel. A napló elvesztése a modell bizonytalanságát méri, ha összehasonlítja az általa az ismert értékekre (a talajjal igaz) vonatkozó valószínűségeket a címkékben. A modell egészére vonatkozóan szeretné csökkenteni a napló elvesztését.
+
 
 ### <a name="metrics-for-regression-models"></a>Regressziós modellek metrikái
  

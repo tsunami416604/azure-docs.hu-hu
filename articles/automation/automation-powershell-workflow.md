@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 741569740713fef72f714f7cbce38a3c6f075684
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836685"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186000"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>A Azure Automation PowerShell-munkafolyamatának megismerése
 
@@ -20,7 +21,7 @@ A munkafolyamatok Windows PowerShell-szintaxissal íródnak, és a Windows Power
 > [!NOTE]
 > Egy PowerShell-munkafolyamati parancsfájl nagyon hasonlít egy Windows PowerShell-parancsfájlhoz, de olyan jelentős eltéréseket tartalmaz, amelyek zavaróak lehetnek az új felhasználók számára. Ezért javasoljuk, hogy csak akkor írja be a runbookok a PowerShell-munkafolyamat használatával, ha [ellenőrzőpontokat](#use-checkpoints-in-a-workflow)kell használnia. 
 
-A cikkben szereplő témakörök részletes ismertetését lásd: [első lépések a Windows PowerShell-munkafolyamattal](https://technet.microsoft.com/library/jj134242.aspx).
+A cikkben szereplő témakörök részletes ismertetését lásd: [első lépések a Windows PowerShell-munkafolyamattal](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134242(v=ws.11)).
 
 ## <a name="use-workflow-keyword"></a>Munkafolyamat-kulcsszó használata
 
@@ -45,9 +46,9 @@ A PowerShell-munkafolyamat kódja majdnem azonos a PowerShell-szkript kódjával
 
 A tevékenységek egy adott munkafolyamatban egy adott feladat, amely egy sorozatban lett elvégezve. A Windows PowerShell Workflow futtatórendszer automatikusan tevékenységgé alakít számos Windows PowerShell-parancsmagot egy munkafolyamat futtatásakor. Ha megadja a parancsmagok egyikét a runbook, a Windows Workflow Foundation a megfelelő tevékenységet futtatja. 
 
-Ha egy parancsmaghoz nem tartozik megfelelő tevékenység, a Windows PowerShell-munkafolyamat automatikusan futtatja a parancsmagot egy [InlineScript](#use-inlinescript) tevékenységben. Egyes parancsmagok ki vannak zárva, és nem használhatók munkafolyamatban, ha explicit módon belefoglalja őket egy InlineScript-blokkba. További információ: [tevékenységek használata a parancsfájl-munkafolyamatokban](https://technet.microsoft.com/library/jj574194.aspx).
+Ha egy parancsmaghoz nem tartozik megfelelő tevékenység, a Windows PowerShell-munkafolyamat automatikusan futtatja a parancsmagot egy [InlineScript](#use-inlinescript) tevékenységben. Egyes parancsmagok ki vannak zárva, és nem használhatók munkafolyamatban, ha explicit módon belefoglalja őket egy InlineScript-blokkba. További információ: [tevékenységek használata a parancsfájl-munkafolyamatokban](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574194(v=ws.11)).
 
-A munkafolyamatok tevékenységeinek működése közös paraméterek egy halmazával konfigurálható. Lásd: [about_WorkflowCommonParameters](https://technet.microsoft.com/library/jj129719.aspx).
+A munkafolyamatok tevékenységeinek működése közös paraméterek egy halmazával konfigurálható. Lásd: [about_WorkflowCommonParameters](/powershell/module/psworkflow/about/about_workflowcommonparameters).
 
 ### <a name="positional-parameters"></a>Pozíciós paraméterek
 
@@ -150,7 +151,7 @@ Habár a InlineScript tevékenységek bizonyos munkafolyamatokban kritikus fonto
 * InlineScript blokkon belül nem használható [párhuzamos végrehajtás](#use-parallel-processing) .
 * A InlineScript hatással van a munkafolyamat skálázhatóságára, mivel a Windows PowerShell-munkamenetet a InlineScript-blokk teljes hosszára vonatkozóan tárolja.
 
-További információ a InlineScript használatáról: [Windows PowerShell-parancsok futtatása munkafolyamatban](https://technet.microsoft.com/library/jj574197.aspx) és [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx).
+További információ a InlineScript használatáról: [Windows PowerShell-parancsok futtatása munkafolyamatban](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574197(v=ws.11)) és [about_InlineScript](/powershell/module/psworkflow/about/about_inlinescript).
 
 ## <a name="use-parallel-processing"></a>Párhuzamos feldolgozás használata
 
@@ -260,7 +261,7 @@ Workflow Copy-Files
 }
 ```
 
-Mivel a felhasználói név hitelesítő adatai nem maradnak meg a [felfüggesztési munkafolyamat](https://technet.microsoft.com/library/jj733586.aspx) tevékenységének meghívása vagy az utolsó ellenőrzőpont után, a hitelesítő adatokat NULL értékre kell állítania, majd újra le kell kérni azokat az objektum-áruházból, `Suspend-Workflow` vagy az ellenőrzőpont neve után.  Ellenkező esetben előfordulhat, hogy a következő hibaüzenet jelenik meg:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+Mivel a felhasználói név hitelesítő adatai nem maradnak meg a [felfüggesztési munkafolyamat](/powershell/module/psworkflow/about/about_suspend-workflow) tevékenységének meghívása vagy az utolsó ellenőrzőpont után, a hitelesítő adatokat NULL értékre kell állítania, majd újra le kell kérni azokat az objektum-áruházból, `Suspend-Workflow` vagy az ellenőrzőpont neve után.  Ellenkező esetben előfordulhat, hogy a következő hibaüzenet jelenik meg:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 A következő kód bemutatja, hogyan kezelheti ezt a helyzetet a PowerShell-munkafolyamatok runbookok.
 
@@ -289,9 +290,9 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot. Ezeknek a parancsmagoknak a használata nem kötelező, ha a hitelesítést egy egyszerű szolgáltatásnév használatával konfigurált futtató fiókkal végzi.
+> A nem grafikus PowerShell-runbookok, `Add-AzAccount` valamint a `Add-AzureRMAccount` [csatlakozási-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)aliasai. Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot. Ezeknek a parancsmagoknak a használata nem kötelező, ha a hitelesítést egy egyszerű szolgáltatásnév használatával konfigurált futtató fiókkal végzi.
 
-Az ellenőrzőpontokkal kapcsolatos további információkért lásd: [ellenőrzőpontok hozzáadása egy parancsfájl-munkafolyamathoz](https://technet.microsoft.com/library/jj574114.aspx).
+Az ellenőrzőpontokkal kapcsolatos további információkért lásd: [ellenőrzőpontok hozzáadása egy parancsfájl-munkafolyamathoz](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11)).
 
 ## <a name="next-steps"></a>További lépések
 

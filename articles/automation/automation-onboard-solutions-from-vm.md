@@ -5,11 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 481d59bd2a06103629dee88868d9e33de810fdab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1fe48b8bc776faf98f71eb882720e8180a2c573
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204905"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186027"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Az Update Management engedélyezése Azure-beli virtuális gépről
 
@@ -21,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan használható egy Azure-beli virtuális gép a [
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Egy [Automation-fiók](automation-offering-get-started.md) a gépek kezeléséhez.
+* Egy [Automation-fiók](./index.yml) a gépek kezeléséhez.
 * Egy [virtuális gép](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba

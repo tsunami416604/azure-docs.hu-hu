@@ -9,11 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 23e4d104697b5b688330c6ab3a93beebf62f3c6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 839347ce0a04cc1ca1bf16c68e0ccc36fcf0f7fc
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83799967"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200814"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metrikák az Azure Monitorban
 
@@ -28,15 +29,15 @@ A metrikák numerikus értékek, amelyek egy rendszer valamely elemét egy adott
 ## <a name="what-can-you-do-with-azure-monitor-metrics"></a>Mit tehet a Azure Monitor metrikákkal?
 A következő táblázat felsorolja azokat a különböző módszereket, amelyekkel a metrikai adatokat Azure Monitor használhatja.
 
-|  |  |
+|  | Leírás |
 |:---|:---|
-| Elemzés | A [metrikák](metrics-charts.md) segítségével elemezheti a diagramon összegyűjtött mérőszámokat, és összehasonlíthatja a különböző erőforrások metrikáit. |
-| Vizualizáció | Diagram rögzítése a metrikák Intézőből egy Azure- [irányítópultra](../learn/tutorial-app-dashboards.md).<br>Hozzon létre egy [munkafüzetet](../platform/workbooks-overview.md) , amely kombinálható több adatkészlettel egy interaktív jelentésben. Egy lekérdezés eredményeinek exportálása a [Grafana](grafana-plugin.md) , hogy kihasználja az irányítópultot, és kombinálja más adatforrásokkal. |
-| Riasztás | Olyan [metrikai riasztási szabályt](alerts-metric.md) konfigurálhat, amely értesítést küld, vagy [automatizált műveletet hajt végre](action-groups.md) , ha a metrika értéke átlépi a küszöbértéket. |
-| Automatizálás |  Az [autoscale](autoscale-overview.md) használatával növelheti vagy csökkentheti az erőforrásokat egy küszöbértéket áthaladó metrika értéke alapján. |
-| Exportálás | [Átirányítja a metrikákat a naplókba](resource-logs-collect-storage.md) , hogy Azure monitor mérőszámokban lévő adatokat elemezze Azure monitor-naplókba, és hogy a metrikus értékeket 93 napnál hosszabb ideig tárolja.<br>Stream-metrikák egy [Event hub](stream-monitoring-data-event-hubs.md) -hoz, hogy átirányítsa őket a külső rendszerekre. |
-| Beolvasni | Metrikai értékek elérése parancssorból PowerShell- [parancsmagok](https://docs.microsoft.com/powershell/module/az.applicationinsights) használatával<br>Az egyéni alkalmazás metrikai értékeinek elérése [REST API](rest-api-walkthrough.md)használatával.<br>Metrikai értékek elérése parancssorból a [CLI](/cli/azure/monitor/metrics)használatával. |
-| Archívum | Az erőforrás teljesítmény-vagy állapotadatok [archiválása](..//learn/tutorial-archive-data.md) megfelelőségi, naplózási vagy offline jelentéskészítési célokra. |
+| **Elemzés** | A [metrikák](metrics-charts.md) segítségével elemezheti a diagramon összegyűjtött mérőszámokat, és összehasonlíthatja a különböző erőforrások metrikáit. |
+| **Vizualizáció** | Diagram rögzítése a metrikák Intézőből egy Azure- [irányítópultra](../learn/tutorial-app-dashboards.md).<br>Hozzon létre egy [munkafüzetet](../platform/workbooks-overview.md) , amely kombinálható több adatkészlettel egy interaktív jelentésben. Egy lekérdezés eredményeinek exportálása a [Grafana](grafana-plugin.md) , hogy kihasználja az irányítópultot, és kombinálja más adatforrásokkal. |
+| **Riasztás** | Olyan [metrikai riasztási szabályt](alerts-metric.md) konfigurálhat, amely értesítést küld, vagy [automatizált műveletet hajt végre](action-groups.md) , ha a metrika értéke átlépi a küszöbértéket. |
+| **Automatizálás** |  Az [autoscale](autoscale-overview.md) használatával növelheti vagy csökkentheti az erőforrásokat egy küszöbértéket áthaladó metrika értéke alapján. |
+| **Exportálás** | [Átirányítja a metrikákat a naplókba](resource-logs-collect-storage.md) , hogy Azure monitor mérőszámokban lévő adatokat elemezze Azure monitor-naplókba, és hogy a metrikus értékeket 93 napnál hosszabb ideig tárolja.<br>Stream-metrikák egy [Event hub](stream-monitoring-data-event-hubs.md) -hoz, hogy átirányítsa őket a külső rendszerekre. |
+| **Beolvasni** | Metrikai értékek elérése parancssorból PowerShell- [parancsmagok](https://docs.microsoft.com/powershell/module/az.applicationinsights) használatával<br>Az egyéni alkalmazás metrikai értékeinek elérése [REST API](rest-api-walkthrough.md)használatával.<br>Metrikai értékek elérése parancssorból a [CLI](/cli/azure/monitor/metrics)használatával. |
+| **Archívum** | Az erőforrás teljesítmény-vagy állapotadatok [archiválása](..//learn/tutorial-archive-data.md) megfelelőségi, naplózási vagy offline jelentéskészítési célokra. |
 
 ## <a name="how-is-data-in-azure-monitor-metrics-structured"></a>Hogyan épülnek fel Azure Monitor mérőszámok adatai?
 Azure Monitor metrikák által gyűjtött adatokat egy idősorozat-adatbázis tárolja, amely az időbélyegzővel ellátott adatok elemzésére van optimalizálva. A metrikai értékek minden készlete egy idősorozat a következő tulajdonságokkal:

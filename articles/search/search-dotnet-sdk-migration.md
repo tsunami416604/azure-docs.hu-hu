@@ -9,11 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 548cd488bc811ad16cd84950ce3819f2e1f3ddbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10e6d0a183afdda2bf89014bb72f58d03a3013ec
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080708"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86171890"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Frissítés a Azure Search .NET SDK 3-as verziójára
 
@@ -56,7 +57,9 @@ Miután a NuGet letöltötte az új csomagokat és azok függőségeit, építse
 
 Ha a Build sikertelen, a következőhöz hasonló fordítási hibaüzenetnek kell megjelennie:
 
-    Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
+```output
+Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
+```
 
 A következő lépés a Build-hiba kijavítása. A hiba okaival és megoldásával kapcsolatos részletekért tekintse meg a [3. verzióban](#ListOfChanges) megjelenő változásokat.
 

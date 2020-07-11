@@ -5,11 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: bf2a60e1387ccdfb24ff5c5e166780c00506bac8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2bf058ddce81ab9f04e97787a4dc93e44036b1b
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83832299"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186112"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Runbookok és modulok használata a PowerShell-galériában
 
@@ -100,12 +101,11 @@ A Python-Runbookok a [Script Center](https://gallery.technet.microsoft.com/scrip
 
 ## <a name="request-a-runbook-or-module"></a>Runbook vagy modul igénylése
 
-A [felhasználói hangra](https://feedback.azure.com/forums/246290-azure-automation/)vonatkozó kéréseket küldhet.  Ha segítségre van szüksége a runbook írásához vagy a PowerShell-lel kapcsolatos kérdésben, tegye fel kérdéseit a [Microsoft Q&egy kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-automation.html).
+A [felhasználói hangra](https://feedback.azure.com/forums/246290-azure-automation/)vonatkozó kéréseket küldhet.  Ha segítségre van szüksége a runbook írásához vagy a PowerShell-lel kapcsolatos kérdésben, tegye fel kérdéseit a [Microsoft Q&egy kérdés oldalára](/answers/topics/azure-automation.html).
 
 ## <a name="next-steps"></a>További lépések
 
 * A PowerShell-runbook megkezdéséhez tekintse meg az [oktatóanyag: PowerShell-Runbook létrehozása](learn/automation-tutorial-runbook-textual-powershell.md)című témakört.
 * A runbookok használatával kapcsolatban lásd: [Runbookok kezelése a Azure Automationban](manage-runbooks.md).
-* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](https://docs.microsoft.com/powershell/scripting/overview).
-* * A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
+* A PowerShell részleteiért lásd: [PowerShell-dokumentumok](/powershell/scripting/overview).
+* * A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

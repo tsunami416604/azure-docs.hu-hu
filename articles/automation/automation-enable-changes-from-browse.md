@@ -5,11 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: f84a609ea2821546c4001b98ad11495305ac101a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d657dc38cd5b4149bcf7d1dbf1ad73afa75a5e6
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84171072"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186299"
 ---
 # <a name="enable-change-tracking-and-inventory-from-azure-portal"></a>Change Tracking és leltár engedélyezése Azure Portal
 
@@ -23,7 +24,7 @@ A virtuális gépek kezeléséhez használható erőforráscsoportok számát a 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure-előfizetés. Ha még nem rendelkezik fiókkal, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), illetve [regisztrálhat egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Egy [Automation-fiók](automation-offering-get-started.md) a gépek kezeléséhez.
+* Egy [Automation-fiók](./index.yml) a gépek kezeléséhez.
 * Egy [virtuális gép](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba

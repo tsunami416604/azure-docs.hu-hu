@@ -4,11 +4,12 @@ description: Ismerje meg, hogyan kezelheti a külső eseményeket a Azure Functi
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 387b5d920de4a295366cc7e948862a12cea901d3
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76262962"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165549"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Külső események Durable Functionsban való feldolgozása (Azure Functions)
 
@@ -19,7 +20,7 @@ A Orchestrator függvények megvárhatják és megfigyelheti a külső eseménye
 
 ## <a name="wait-for-events"></a>Várakozás az eseményekre
 
-A koordináló `WaitForExternalEvent` `waitForExternalEvent` [eseményindító kötésének](durable-functions-bindings.md#orchestration-trigger) (.net) és (JavaScript) metódusai lehetővé teszik, hogy egy Orchestrator függvény aszinkron módon várjon, és figyelje a külső eseményt. A Listening Orchestrator függvény deklarálja az esemény *nevét* és a fogadni kívánt *adatok alakját* .
+A [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.net) és `waitForExternalEvent` a (JavaScript) metódusa a hangolási [eseményindító kötése](durable-functions-bindings.md#orchestration-trigger) lehetővé teszi, hogy egy Orchestrator függvény aszinkron módon várjon, és figyelje a külső eseményt. A Listening Orchestrator függvény deklarálja az esemény *nevét* és a fogadni kívánt *adatok alakját* .
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -172,7 +173,14 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="send-events"></a>Események küldése
 
-A `RaiseEventAsync` `raiseEvent` koordinációs [ügyfél kötésének](durable-functions-bindings.md#orchestration-client) (.net) vagy (JavaScript) metódusa elküldi a `WaitForExternalEvent` (.net) vagy a `waitForExternalEvent` (JavaScript) által várt eseményeket.  A `RaiseEventAsync` metódus a *eventName* és a *eventData* paraméterként veszi igénybe. Az eseménynek JSON-szerializálható kell lennie.
+A [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) (.net) vagy a `raiseEventAsync` (JavaScript) metódus használatával külső eseményt küldhet egy előkészítési folyamatba. Ezeket a metódusokat a koordináló [ügyfél](durable-functions-bindings.md#orchestration-client) kötése teszi elérhetővé. A beépített [Event http API](durable-functions-http-api.md#raise-event) -t is használhatja, hogy külső eseményt küldjön egy előkészítési folyamatnak.
+
+A kiváltott események közé tartozik egy *példány-azonosító*, egy *EventName*és egy *eventData* paraméterként. A Orchestrator függvények ezeket az eseményeket a `WaitForExternalEvent` (.net) vagy `waitForExternalEvent` (JavaScript) API-k használatával kezelik. A *eventName* meg kell egyeznie a küldő és a fogadó végponttal, hogy az esemény feldolgozható legyen. Az eseménynek is JSON-szerializálható kell lennie.
+
+Belsőleg az "esemény emelése" mechanizmusok sorba helyezni egy üzenetet, amely a Waiting Orchestrator függvény által beolvasott üzenetbe kerül. Ha a példány nem várakozik a megadott *esemény nevére,* a rendszer hozzáadja az eseményt a memóriában tárolt várólistához. Ha az *esemény neve* később megkezdi a figyelést, akkor az esemény üzeneteinek várólistáját fogja ellenőriznie.
+
+> [!NOTE]
+> Ha nincs a megadott *példány-azonosítóval*rendelkező előkészítési példány, az esemény üzenetét a rendszer elveti.
 
 Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely a "jóváhagyás" eseményt küld egy Orchestrator függvény példányára. Az előkészítési példány azonosítója az üzenetsor-üzenet törzsében található.
 
@@ -208,6 +216,19 @@ Belsőleg, `RaiseEventAsync` (.net) vagy `raiseEvent` (JavaScript) enqueues egy 
 
 > [!NOTE]
 > Ha nincs a megadott *példány-azonosítóval*rendelkező előkészítési példány, az esemény üzenetét a rendszer elveti.
+
+### <a name="http"></a>HTTP
+
+A következő példa egy olyan HTTP-kérésre mutat be példát, amely egy "jóváhagyás" eseményt vet fel egy előkészítési példányra. 
+
+```http
+POST /runtime/webhooks/durabletask/instances/MyInstanceId/raiseEvent/Approval&code=XXX
+Content-Type: application/json
+
+"true"
+```
+
+Ebben az esetben a példány azonosítója a *MyInstanceId*hardcoded.
 
 ## <a name="next-steps"></a>További lépések
 

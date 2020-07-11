@@ -9,13 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/21/2020
+ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: c45921b75fff000185c7e24b998b761ecc088d9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a65065a6f3cbc7264a8efb9bcf128b06897aacf
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734792"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220269"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services konfigurálása a SharePoint Server felhasználói profilok szinkronizálásának támogatásához
 
@@ -41,18 +42,18 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 
 ## <a name="service-accounts-overview"></a>Szolgáltatásfiókok áttekintése
 
-Felügyelt tartományokban az **HRE DC szolgáltatásfiókok** nevű biztonsági csoport a *felhasználók* szervezeti egység (OU) részeként létezik. A biztonsági csoport tagjai a következő jogosultságokat delegálják:
+Felügyelt tartományokban az *HRE DC szolgáltatásfiókok* nevű biztonsági csoport a *felhasználók* szervezeti egység (OU) részeként létezik. A biztonsági csoport tagjai a következő jogosultságokat delegálják:
 
 - **Replikálja a címtár-módosítási** jogosultságot a gyökérszintű dse.
 - A címtár-módosítások jogosultságának **replikálása** a *konfiguráció* névhasználati környezetében ( `cn=configuration` tároló).
 
-A **HRE DC Service accounts** biztonsági csoport tagja a beépített **Windows 2000-kompatibilis hozzáférésnek**is.
+A *HRE DC Service accounts* biztonsági csoport tagja a beépített *Windows 2000-kompatibilis hozzáférésnek*is.
 
 Ha hozzáadja ezt a biztonsági csoportot, a SharePoint Server felhasználói profil szinkronizálási szolgáltatásának szolgáltatási fiókja megkapja a szükséges jogosultságokat a megfelelő működéshez.
 
 ## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>A SharePoint Server felhasználói profiljának szinkronizálásának engedélyezése
 
-A SharePoint Server szolgáltatási fiókjának megfelelő jogosultságokkal kell rendelkeznie a címtár változásainak replikálásához, és lehetővé kell tennie a SharePoint Server felhasználói profilok szinkronizálásának megfelelő működését. A jogosultságok megadásához adja hozzá a SharePoint felhasználói profil szinkronizálásához használt szolgáltatásfiókot a **HRE DC szolgáltatásfiók** csoporthoz.
+A SharePoint Server szolgáltatási fiókjának megfelelő jogosultságokkal kell rendelkeznie a címtár változásainak replikálásához, és lehetővé kell tennie a SharePoint Server felhasználói profilok szinkronizálásának megfelelő működését. A jogosultságok megadásához adja hozzá a SharePoint felhasználói profil szinkronizálásához használt szolgáltatásfiókot a *HRE DC szolgáltatásfiók* csoporthoz.
 
 Az Azure AD DS felügyeleti virtuális gépről hajtsa végre a következő lépéseket:
 

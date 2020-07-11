@@ -3,11 +3,12 @@ title: SharePoint-hely megfigyelése az Application Insights segítségével
 description: Új alkalmazás figyelésének megkezdése új kialakítási kulccsal
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: 395e8d667985318f4a084428c6fd4c395ee8b956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671443"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221051"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>SharePoint-hely megfigyelése az Application Insights segítségével
 Az Azure Application Insights figyeli alkalmazásai rendelkezésre állását, teljesítményét és használatát. Ebből a cikkből megismerheti, hogyan állíthatja be egy SharePoint-helyhez.
@@ -48,18 +49,18 @@ Ha szerkeszti webhelye mesterlapját, az biztosítja a webhely összes lapjának
 
 Tekintse át a mesterlapot, és szerkessze a SharePoint Designerrel vagy más szerkesztővel.
 
-![](./media/sharepoint/03-master.png)
+![Képernyőkép, amely bemutatja, hogyan szerkesztheti a mesterlapot a SharePoint Designer vagy más szerkesztő használatával.](./media/sharepoint/03-master.png)
 
 Adja hozzá a kódot közvetlenül a </head> tag. 
 
-![](./media/sharepoint/04-code.png)
+![Képernyőkép, amely bemutatja, hová kell hozzáadni a kódot a webhely oldalához.](./media/sharepoint/04-code.png)
 
 #### <a name="or-on-individual-pages"></a>Vagy önálló lapokon
 Adott számú lap figyeléséhez adja hozzá a szkriptet egyesével a lapokhoz. 
 
 Szúrjon be egy kijelzőt, és ágyazza bele a kódrészletet.
 
-![](./media/sharepoint/05-page.png)
+![Képernyőfelvétel: a parancsfájl hozzáadásával figyelheti a korlátozott lapokat.](./media/sharepoint/05-page.png)
 
 ## <a name="view-data-about-your-app"></a>Alkalmazás adatainak megtekintése
 Helyezze ismét üzembe alkalmazását.
@@ -68,7 +69,7 @@ Térjen vissza alkalmazása paneljéhez az [Azure Portalon](https://portal.azure
 
 Az első események megjelennek a keresésben. 
 
-![](./media/sharepoint/09-search.png)
+![Képernyőkép, amely az alkalmazásban megtekinthető új adatnézeteket jeleníti meg.](./media/sharepoint/09-search.png)
 
 Ha több adatot vár, néhány másodperc elteltével kattintson a Frissítés elemre.
 
@@ -77,7 +78,7 @@ A normál weblapkódrészlet nem rögzíti a felhasználói azonosítót a Share
 
 1. Az Application Insights Alapvető erőforrások legördülő menüjéből másolja ki alkalmazása kialakítási kulcsát. 
 
-    ![](./media/sharepoint/02-props.png)
+    ![Képernyőkép, amely az alkalmazás rendszerállapot-legördülő menüjéből való másolását mutatja Application Insightsban.](./media/sharepoint/02-props.png)
 
 1. Az alábbi részletben szereplő „XXXX”-et cserélje le a kialakítási kulcsra. 
 2. Ágyazza be a szkriptet a SharePoint alkalmazásába annak a kódrészletnek a helyére, amelyet a portálról töltött le.

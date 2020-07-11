@@ -1,5 +1,5 @@
 ---
-title: Elmagyarázás automatizált ML-ben
+title: Elmagyarázható automatizált ML-ben (előzetes verzió)
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan állapíthatja meg, hogy az automatikus ML-modell hogyan határozza meg a funkció fontosságát, és előrejelzéseket készít az Azure Machine Learning SDK használatakor.
 services: machine-learning
@@ -8,14 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 ms.author: mesameki
 author: mesameki
-ms.date: 03/11/2020
-ms.openlocfilehash: 6fcebb34f82565fcf83a9535e8c036231c5b3cf7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: af3fe7bffbf985936a1648088daaf1a294a69905
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84430535"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86206607"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Értelmező: a modell magyarázatai az automatizált gépi tanulásban
+# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Értelmező: a modell magyarázatai az automatikus gépi tanulásban (előzetes verzió)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -118,7 +119,7 @@ Ebből a szakaszból megtudhatja, hogyan működővé tenni egy olyan automatiz�
 
 A `TreeScoringExplainer` segítségével hozza létre a pontozási magyarázatot, amely kiszámítja a megtervezett funkció fontossági értékeit a következtetések időpontjában. A pontozási magyarázatot a `feature_map` korábban kiszámított értékkel inicializálhatja. 
 
-Mentse a pontozási magyarázatot, majd regisztrálja a modellt és a pontozási magyarázatot a modellkezelés szolgáltatással. Futtassa a következő kódot:
+Mentse a pontozási magyarázatot, majd regisztrálja a modellt és a pontozási magyarázatot a modellkezelés szolgáltatással. Futtassa az alábbi kódot:
 
 ```python
 from azureml.interpret.scoring.scoring_explainer import TreeScoringExplainer, save

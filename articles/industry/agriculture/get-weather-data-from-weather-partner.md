@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 39d37b1a032a386219a98a409f2eb04a6ccc6eca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7666ee1a81c2ed93ee5e246b3ec79f056f9d63ab
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078729"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187778"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Időjárási adatok beolvasása a partnerektől
 
@@ -153,7 +153,7 @@ Az időjárási FarmBeats REST API használatával történő lekérdezéséhez 
 
 1. A FarmBeats adatközpontjának hencegő https://yourdatahub.azurewebsites.net/swagger) felületén (, navigáljon a/WeatherDataLocation API-hoz, és hozzon igénybe egy Get-kérelmet. A válasz/WeatherDataLocation objektummal (szélesség/hosszúság) lett létrehozva, amelyet a rendszer a feladatok futtatásának részeként adott meg. Jegyezze fel az objektum (ok) **azonosítóját** és **weatherDataModelId** .
 
-2. Hozzon végre egy GET/{ID}/WeatherDataModel API-t a **weatherDataModelId** az 1. lépésben feljegyzett módon. Az "időjárási adatmodell" a betöltött időjárási adatokkal kapcsolatos összes metaadatot és részletet tartalmaz. Az időjárás **adatmodell** -objektumon belüli **időjárási mérték** például részletesen ismerteti, hogy milyen időjárási információk támogatottak, és milyen típusokban és egységekben. Példa:
+2. Hozzon végre egy GET/{ID}/WeatherDataModel API-t a **weatherDataModelId** az 1. lépésben feljegyzett módon. Az "időjárási adatmodell" a betöltött időjárási adatokkal kapcsolatos összes metaadatot és részletet tartalmaz. Az időjárás **adatmodell** -objektumon belüli **időjárási mérték** például részletesen ismerteti, hogy milyen időjárási információk támogatottak, és milyen típusokban és egységekben. Például:
 
    ```json
    {
@@ -211,6 +211,11 @@ Az időjárási FarmBeats REST API használatával történő lekérdezéséhez 
 
 Az előző példában a válasz két időbélyeg esetében tartalmaz adatokkal együtt a mérték nevét ("hőmérséklet") és a jelentett időjárási adatok értékeit a két időbélyegben. A jelentett értékek típusának és egységének értelmezéséhez a kapcsolódó időjárási adatmodellre kell hivatkoznia (a fenti 2. lépésben leírtak szerint).
 
+## <a name="troubleshoot-job-failures"></a>Feladatok hibáinak elhárítása
+
+A feladatokkal kapcsolatos hibák elhárításához keresse meg a feladatok naplóit. Kérjük, kövesse az alábbi [lépéseket](troubleshoot-azure-farmbeats.md#weather-data-job-failures) .
+
+
 ## <a name="appendix"></a>Függelék
 
 |        Partner   |  Részletek   |
@@ -224,7 +229,7 @@ Az előző példában a válasz két időbélyeg esetében tartalmaz adatokkal e
 | DockerDetails - partnerCredentials | a partner API meghívására szolgáló hitelesítő adatok a Docker-ben. A partnernek ezeket az információkat az ügyfelek által támogatott hitelesítési mechanizmus alapján kell megadnia az ügyfeleknek. Felhasználónév/jelszó vagy API-kulcsok. |
 | partnerType | "Weather" (a FarmBeats más típusai az "érzékelő" és a "képek")  |
 |  name   |   A partner kívánt neve a FarmBeats-rendszeren   |
-|  leírás |  Description   |
+|  leírás |  Leírás   |
 
 ## <a name="next-steps"></a>További lépések
 

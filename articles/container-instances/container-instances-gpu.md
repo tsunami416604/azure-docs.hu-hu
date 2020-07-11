@@ -2,12 +2,13 @@
 title: GPU-t használó Container-példány üzembe helyezése
 description: Ismerje meg, hogyan helyezhet üzembe az Azure Container instances szolgáltatásban nagy számítási igényű tároló-alkalmazásokat GPU-erőforrásokkal.
 ms.topic: article
-ms.date: 02/19/2020
-ms.openlocfilehash: 0f1d21c62be5d7ae099faa2c6fcc440829bb451f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/02/2020
+ms.openlocfilehash: 78b67843978583dd6b0f0aee2c1d8ad0e5a7ca77
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77525286"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86169748"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU-erőforrásokat használó tároló-példányok üzembe helyezése
 
@@ -72,7 +73,7 @@ A GPU-erőforrások hozzáadásának egyik módja, ha egy [YAML-fájl](container
 
 ```YAML
 additional_properties: {}
-apiVersion: '2018-10-01'
+apiVersion: '2019-12-01'
 name: gpucontainergroup
 properties:
   containers:
@@ -138,7 +139,7 @@ Egy másik lehetőség, hogy egy, a GPU-erőforrásokkal rendelkező tároló cs
       {
         "name": "[parameters('containerGroupName')]",
         "type": "Microsoft.ContainerInstance/containerGroups",
-        "apiVersion": "2018-10-01",
+        "apiVersion": "2019-12-01",
         "location": "[resourceGroup().location]",
         "properties": {
             "containers": [
@@ -167,10 +168,10 @@ Egy másik lehetőség, hogy egy, a GPU-erőforrásokkal rendelkező tároló cs
 }
 ```
 
-Telepítse a sablont az az [Group Deployment Create][az-group-deployment-create] paranccsal. Meg kell adnia egy olyan erőforráscsoport nevét, amely egy olyan régióban lett létrehozva, mint a GPU-erőforrásokat támogató *eastus* .
+Telepítse a sablont az az [Deployment Group Create][az-deployment-group-create] paranccsal. Meg kell adnia egy olyan erőforráscsoport nevét, amely egy olyan régióban lett létrehozva, mint a GPU-erőforrásokat támogató *eastus* .
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file gpudeploy.json
+az deployment group create --resource-group myResourceGroup --template-file gpudeploy.json
 ```
 
 Az üzembe helyezés több percet is igénybe vehet. Ezután elindul a tároló, és futtatja a TensorFlow feladatot. Futtassa az az [Container logs][az-container-logs] parancsot a napló kimenetének megtekintéséhez:
@@ -206,7 +207,7 @@ Accuracy at step 990: 0.969
 Adding run metadata for 999
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Mivel a GPU-erőforrások használata költséges lehet, gondoskodjon arról, hogy a tárolók ne fussanak váratlanul hosszú ideig. Figyelje a tárolókat a Azure Portalban, vagy ellenőrizze egy tároló csoport állapotát az az [Container show][az-container-show] paranccsal. Például:
 
@@ -239,4 +240,4 @@ az container delete --resource-group myResourceGroup --name gpucontainergrouprm 
 [az-container-show]: /cli/azure/container#az-container-show
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

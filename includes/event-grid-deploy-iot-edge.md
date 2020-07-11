@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -27,7 +27,7 @@ A modulokat többféleképpen is telepítheti egy IoT Edge eszközre, és mindeg
  
 ### <a name="select-your-iot-edge-device"></a>IoT Edge eszköz kiválasztása
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 1. Navigáljon a IoT Hub.
 1. Válassza a **IoT Edge** lehetőséget az **automatikus eszközkezelés** szakasz menüjében. 
 1. Kattintson a céleszköz AZONOSÍTÓjának az eszközök listájáról
