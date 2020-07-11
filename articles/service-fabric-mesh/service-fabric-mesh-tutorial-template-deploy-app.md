@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75494939"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248390"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Oktatóanyag: Alkalmazás üzembe helyezése a Service Fabric Meshben sablon használatával
 
@@ -44,7 +44,7 @@ Az oktatóanyag elkezdése előtt:
 
 * [Telepítse helyileg az Azure CLI-t és a Service Fabric Mesh CLI-t](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
-## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
+## <a name="create-a-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
 A Service Fabric Mesh-alkalmazás szolgáltatásaival társított tárolólemezképeket egy tárolóregisztrációs adatbázisban kell tárolni.  Ez az oktatóanyag egy privát Azure Container Registry-példányt használ. 
 
@@ -171,7 +171,7 @@ Az előző kimenet megerősíti az `azure-mesh-todo-service:1.0-nanoserver-1709`
 ## <a name="retrieve-credentials-for-the-registry"></a>Regisztrációs adatbázis hitelesítő adatainak lekérése
 
 > [!IMPORTANT]
-> Éles forgatókönyvekben nem javasolt a rendszergazdai felhasználók engedélyezése az ACR-példányokon. Ebben az oktatóanyagban csak az egyszerűség kedvéért tesszük. Éles forgatókönyvekben használjon [szolgáltatásnevet](https://docs.microsoft.com/azure/container-registry/container-registry-auth-service-principal) mind a felhasználók, mind a rendszer hitelesítéséhez.
+> Éles forgatókönyvekben nem javasolt a rendszergazdai felhasználók engedélyezése az ACR-példányokon. Ebben az oktatóanyagban csak az egyszerűség kedvéért tesszük. Éles forgatókönyvekben használjon [szolgáltatásnevet](../container-registry/container-registry-auth-service-principal.md) mind a felhasználók, mind a rendszer hitelesítéséhez.
 
 Tárolópéldánynak a sablonnal létrehozott regisztrációs adatbázisból történő üzembe helyezéséhez meg kell adnia a regisztrációs adatbázis hitelesítő adatait az üzembe helyezéskor. Elsőként a következő paranccsal engedélyezze a rendszergazdai felhasználót a regisztrációs adatbázisban:
 
@@ -191,7 +191,7 @@ Az RM-sablon és a paraméterfájlok a következő szakaszban történő létreh
 
 ## <a name="download-and-explore-the-template-and-parameters-files"></a>A sablon és a paraméterfájlok letöltése és megismerése
 
-A Service Fabric Mesh-alkalmazás egy olyan Azure-erőforrás, amelyet az Azure Resource Manager (RM) sablonjaival helyezhet üzembe és kezelhet. Ha nem jártas az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmakban, tekintse meg [Az Azure Resource Manager áttekintése](/azure/azure-resource-manager/resource-group-overview) és az [RM-sablonok struktúrájának és szintaxisának megismerése](/azure/azure-resource-manager/resource-group-authoring-templates) című cikkeket.
+A Service Fabric Mesh-alkalmazás egy olyan Azure-erőforrás, amelyet az Azure Resource Manager (RM) sablonjaival helyezhet üzembe és kezelhet. Ha nem jártas az Azure-megoldások telepítésével és kezelésével kapcsolatos fogalmakban, tekintse meg [Az Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md) és az [RM-sablonok struktúrájának és szintaxisának megismerése](../azure-resource-manager/templates/template-syntax.md) című cikkeket.
 
 Ez az oktatóanyag egy teendőlistát használ példaként.  Új sablon és paraméterfájlok létrehozása helyett töltse le a [mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) üzembe helyezési sablont és a [mesh_rp.windows.parameter.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) paramétereket.
 
@@ -351,7 +351,7 @@ Az alkalmazás üzembe helyezéséhez futtassa a következő parancsot:
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-Ez a parancs létrehoz egy JSON-kódrészletet, amely az alábbiakban látható. A JSON ```outputs``` -kimenet szakasza alatt másolja a ```publicIPAddress``` tulajdonságot.
+Ez a parancs létrehoz egy JSON-kódrészletet, amely az alábbiakban látható. A ```outputs``` JSON-kimenet szakasza alatt másolja a ```publicIPAddress``` tulajdonságot.
 
 ```json
 "outputs": {
@@ -362,7 +362,7 @@ Ez a parancs létrehoz egy JSON-kódrészletet, amely az alábbiakban látható.
 }
 ```
 
-Ez az információ az ARM ```outputs``` -sablonban található szakaszból származik. Ahogy az az alábbi ábrán is látható, ez a szakasz az átjáró erőforrására hivatkozik a nyilvános IP-cím beolvasásához. 
+Ez az információ az ```outputs``` ARM-sablonban található szakaszból származik. Ahogy az az alábbi ábrán is látható, ez a szakasz az átjáró erőforrására hivatkozik a nyilvános IP-cím beolvasásához. 
 
 ```json
   "outputs": {

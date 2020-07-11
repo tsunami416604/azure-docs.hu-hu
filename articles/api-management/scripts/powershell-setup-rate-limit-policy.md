@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: e9da57ffe89dd6e187b7681024924d4853463ee2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79b726d39b9a895d8120f5f2afdb818c3a55741b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "70067368"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249582"
 ---
 # <a name="set-up-rate-limit-policy"></a>Sebességkorlát-szabályzat beállítása
 
@@ -42,6 +42,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 ```
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/overview).
+Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 
 Az Azure API Managementhez a [PowerShell-minták](../powershell-samples.md) között találhat további Azure PowerShell-mintákat.

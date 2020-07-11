@@ -1,18 +1,18 @@
 ---
 title: Beépített szabályzat-definíciók az Azure Storage-hoz
 description: Az Azure Storage beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 3e2f4095d57fd224fb08228ca2ca904235f7ab0a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 144c1960af353e3ff6e641ca5597436b00813e31
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85312444"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277023"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-storage"></a>Az Azure Storage beépített definícióinak Azure Policy
 

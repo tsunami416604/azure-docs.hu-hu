@@ -4,14 +4,14 @@ description: Ebben az oktatóanyagban megtudhatja, hogyan állíthat össze Dock
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82b539ba8f275755ee31a00c2127a0dba7c38d9f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7178d7171d4c9c0183eb744f19776f6b2fac09ef
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78398503"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259483"
 ---
-# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: tároló lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal
+# <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: Tárolólemezképek buildelése és üzembe helyezése a felhőben az Azure Container Registry Tasks használatával
 
 Az **ACR Tasks** az Azure Container Registry egy szolgáltatáscsomagja, amely lehetővé teszi a Docker-tárolórendszerképek zökkenőmentes és hatékony összeállítását az Azure-ban. Ebben a cikkben az ACR Tasks *gyors feladat* funkciójának használatával ismerkedhet meg.
 
@@ -50,7 +50,7 @@ Ezután a GitHub felhasználói felületén ágaztassa le a mintaadattárat a Gi
 
 Miután leágaztatta az adattárat, klónozza a leágaztatást, és lépjen a helyi klónt tartalmazó könyvtárba.
 
-A tárház klónozása `git`a rel, cserélje ** \<le a-\> GitHub-username-** t a GitHub-felhasználónevére:
+A tárház klónozása a (z) `git` helyére a **\<your-github-username\>** GitHub-felhasználónévvel:
 
 ```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
@@ -70,9 +70,9 @@ Az oktatóanyag-sorozatban használt parancsok a Bash-felületnek megfelelően v
 
 Miután lekérte a forráskódot a gépre, az alábbi lépéseket követve hozzon lére egy tárolóregisztrációs adatbázist, és állítsa össze a tárolórendszerképet az ACR Tasks használatával.
 
-A mintaparancsok könnyebb végrehajtása érdekében a sorozat oktatóanyagai rendszerhéj-környezeti változókat használnak. Futtassa a következő parancsot az `ACR_NAME` változó beállításához. Cserélje le ** \<a beállításjegyzék\> -nevet** az új tároló-beállításjegyzék egyedi nevére. A beállításjegyzék nevének egyedinek kell lennie az Azure-on belül, csak kisbetűket tartalmazhat, és 5-50 alfanumerikus karaktert tartalmazhat. Az oktatóanyagban létrehozott egyéb erőforrások is ezen néven alapulnak, így csak ezt az első változót kell módosítania.
+A mintaparancsok könnyebb végrehajtása érdekében a sorozat oktatóanyagai rendszerhéj-környezeti változókat használnak. Futtassa a következő parancsot az `ACR_NAME` változó beállításához. A helyére írja be az **\<registry-name\>** új tároló-beállításjegyzék egyedi nevét. A beállításjegyzék nevének egyedinek kell lennie az Azure-on belül, csak kisbetűket tartalmazhat, és 5-50 alfanumerikus karaktert tartalmazhat. Az oktatóanyagban létrehozott egyéb erőforrások is ezen néven alapulnak, így csak ezt az első változót kell módosítania.
 
-[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
+[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>
@@ -176,7 +176,7 @@ Az Azure-beli tárolóregisztrációs adatbázisok eléréséhez minden éles fo
 
 #### <a name="create-a-key-vault"></a>Kulcstartó létrehozása
 
-Ha még nem rendelkezik tárolóval az [Azure Key Vaultban](/azure/key-vault/), hozzon létre egyet az Azure CLI alábbi parancsaival.
+Ha még nem rendelkezik tárolóval az [Azure Key Vaultban](../key-vault/index.yml), hozzon létre egyet az Azure CLI alábbi parancsaival.
 
 ```azurecli-interactive
 AKV_NAME=$ACR_NAME-vault
@@ -251,7 +251,7 @@ acr-tasks-myregistry.eastus.azurecontainer.io
 
 Jegyezze fel a tároló teljes tartománynevét, amelyet a következő szakaszban fog használni.
 
-### <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+### <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
 A tároló indítási folyamatának megtekintéséhez használja az [az container attach][az-container-attach] parancsot:
 

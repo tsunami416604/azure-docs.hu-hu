@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: e6195409a08498527ec40a2ddd2f909a092c9d19
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 28b055cb343b7f894a28eee5fbe452d037fd6b0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202825"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249490"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API-alkalmazás importálása API-ként
 
@@ -33,7 +33,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
-+ Győződjön meg arról, hogy az előfizetése tartalmaz egy API-alkalmazást. További információ: [app Service dokumentáció](https://docs.microsoft.com/azure/app-service/)
++ Győződjön meg arról, hogy az előfizetése tartalmaz egy API-alkalmazást. További információ: [app Service dokumentáció](../app-service/index.yml)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -57,7 +57,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
     * **Kezdő**
     * **Korlátlan**   
 7. Adja meg az egyéb API-beállításokat. Megadhatja az értékeket a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#-import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
-8. Kattintson a **Létrehozás** gombra.
+8. Válassza a **Létrehozás** lehetőséget.
 
 ## <a name="test-the-new-api-in-the-azure-portal"></a>Az új API tesztelése a Azure Portal
 

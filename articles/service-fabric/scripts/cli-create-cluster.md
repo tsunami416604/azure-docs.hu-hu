@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 2ef8f322ff17eeb5d75d3cc8e4f8604f02d4ef0e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b454ab7396b8185e344944d7ff526414540032e2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366543"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258928"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>Biztonságos Service Fabric-fürt létrehozása az Azure-ban
 
@@ -45,7 +45,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az sf cluster create](https://docs.microsoft.com/cli/azure/sf/cluster?view=azure-cli-latest) | Létrehoz egy új Service Fabric-fürtöt.  |
+| [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) | Létrehoz egy új Service Fabric-fürtöt.  |
 
 ## <a name="next-steps"></a>További lépések
 

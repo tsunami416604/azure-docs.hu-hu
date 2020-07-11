@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c36d45919ae8a17026fc91f8e9040f3bb11d3eb0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 586641d721d0c29bcd6d7b42fc8ca9141df96c66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75494961"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261311"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Oktatóanyag: Egy helyi fejlesztési fürtben futó Service Fabric Mesh-alkalmazás hibakeresése
 
@@ -71,20 +71,20 @@ A [Visual Studio teljesítményének optimalizálása](service-fabric-mesh-howto
 
 Jelenleg probléma merül fel, ami miatt a hívás `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` sikertelen lesz a szolgáltatáshoz való kapcsolódásra. Ez ekkor fordulhat elő, ha a gazdagép IP-címe megváltozik. A probléma megoldása:
 
-1. Távolítsa el az alkalmazást a helyi fürtből (a Visual Studióban, **hozzon létre** > **tiszta megoldást**).
+1. Távolítsa el az alkalmazást a helyi fürtből (a Visual Studióban, **hozzon létre**  >  **tiszta megoldást**).
 2. A Service Fabric Local Cluster Manager alkalmazásban válassza a **Stop Local Cluster** (Helyi fürt leállítása), majd a **Start Local Cluster** (Helyi fürt indítása) elemet.
 3. Helyezze ismét üzembe az alkalmazást (a Visual Studióban nyomja le az **F5** gombot).
 
 Ha **Nem fut helyi Service Fabric-fürt** tartalmú hibaüzenetet kap, győződjön meg arról, hogy fut a Service Fabric Local Cluster Manager (LCM), majd kattintson a tálca LCM ikonjára a jobb gombbal, és kattintson a **Start Local Cluster** (Helyi fürt indítása) elemre. A fürt elindítása után térjen vissza a Visual Studióba, és nyomja meg az **F5** billentyűt.
 
-Ha **404-es** hibát kap az alkalmazás indításakor, elképzelhető, hogy helytelenek a **service.yaml** környezeti változói. Győződjön meg arról, hogy az `ApiHostPort` és a `ToDoServiceName` megfelelően, a [környezeti változók létrehozását](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) ismertető részben leírtak szerint van beállítva.
+Ha **404-es** hibát kap az alkalmazás indításakor, elképzelhető, hogy helytelenek a **service.yaml** környezeti változói. Győződjön meg arról, hogy az `ApiHostPort` és a `ToDoServiceName` megfelelően, a [környezeti változók létrehozását](./service-fabric-mesh-tutorial-create-dotnetcore.md#create-environment-variables) ismertető részben leírtak szerint van beállítva.
 
 Ha felépítési hibákat kap a **service.yaml** fájlban, ellenőrizze, hogy tabulátorok helyett szóközöket használ-e a sorok behúzására. Ezenkívül ebben az esetben angol területi beállításokkal kell létrehoznia az alkalmazást.
 
 ### <a name="debug-in-visual-studio"></a>Hibakeresés a Visual Studióban
 
 Ha egy Service Fabric Mesh alkalmazást a Visual Studióban tesz elérhetővé, helyi Service Fabric fejlesztési fürtöt használ. Annak ellenőrzéséhez, hogy a rendszer miként olvassa be a teendőket a háttérszolgáltatásból, végezze el az OnGet() metódus hibakeresését.
-1. A **webfrontend** projektben nyissa meg a **Pages** > **index. cshtml** > **index.cshtml.cs** , és állítson be egy töréspontot a **OnGet** metódusban (17. sor).
+1. A **webfrontend** projektben nyissa meg a **Pages**  >  **index. cshtml**  >  **index.cshtml.cs** , és állítson be egy töréspontot a **OnGet** metódusban (17. sor).
 2. A **ToDoService** projektben nyissa meg a **TodoController.cs** , és állítson be egy töréspontot a **Get** metódusban (15. sor).
 3. Térjen vissza a böngészőbe, és frissítse az oldalt. Az első töréspont a webes kezelőfelület `OnGet()` metódusában jelentkezik. A `backendUrl` változó ellenőrzésével megvizsgálhatja, hogy a rendszer hogyan vonja össze a **service.yaml** fájlban megadott környezeti változókat a háttérszolgáltatással való kapcsolatfelvételhez használt URL-ben.
 4. Lépje át a `client.GetAsync(backendUrl).GetAwaiter().GetResult())` hívást (F10), és a következő töréspont a vezérlő `Get()`metódusában jelentkezik. Ezzel a módszerrel láthatja, hogy a rendszer hogyan olvassa be a teendők listáját a memóriabeli listából.

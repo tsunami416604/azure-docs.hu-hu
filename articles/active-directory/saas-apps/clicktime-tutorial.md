@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27803187e06ee523ff7e6b773bd302eed7422111
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: b0db29309c2f691a1c7811258fee59582643a6e6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608872"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256083"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Oktatóanyag: Azure Active Directory integráció a ClickTime
 
@@ -33,7 +33,7 @@ A ClickTime és az Azure AD integrálásával a következő előnyöket nyújtja
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -110,10 +110,10 @@ Az Azure AD egyszeri bejelentkezés ClickTime való konfigurálásához hajtsa v
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
     
-        ```https
-        https://app.clicktime.com/Login/
-        https://app.clicktime.com/App/Login/Consume.aspx
-        ```
+    ```http
+    https://app.clicktime.com/Login/
+    https://app.clicktime.com/App/Login/Consume.aspx
+    ```
 
 4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
@@ -145,7 +145,7 @@ Az Azure AD egyszeri bejelentkezés ClickTime való konfigurálásához hajtsa v
    
     c.  Nyissa meg a **jegyzettömbben**Azure Portal letöltött **Base-64 kódolású tanúsítványt** , másolja ki a tartalmat, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
    
-    d.  Kattintson a **Save** (Mentés) gombra.
+    d.  Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -229,7 +229,7 @@ ClickTime esetén a kiépítés manuális feladat.
     > [!NOTE]
     > Ha szeretné, az új személy objektum további tulajdonságait is megadhatja.
    
-    c.  Kattintson a **Save** (Mentés) gombra.
+    c.  Kattintson a **Mentés** gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

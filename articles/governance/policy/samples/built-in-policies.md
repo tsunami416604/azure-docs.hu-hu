@@ -1,15 +1,15 @@
 ---
 title: Beépített szabályzat-definíciók listája
 description: A Azure Policy beépített szabályzat-definícióinak listázása. A kategóriák közé tartoznak a címkék, a szabályozások megfelelősége, a Key Vault, a Kubernetes, a vendég konfigurációja és még sok más.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 94f69754ab51728a18da10b45e05770f1271760b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1db053744a68e34fc3995916605be75a49887f01
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313516"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277160"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy beépített szabályzat-definíciók
 
@@ -85,7 +85,7 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-samples-policies-event-hub](../../../../includes/policy/samples/bycat/policies-event-hub.md)]
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 [!INCLUDE [azure-policy-samples-policies-general](../../../../includes/policy/samples/bycat/policies-general.md)]
 
@@ -121,11 +121,11 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-samples-policies-managed-application](../../../../includes/policy/samples/bycat/policies-managed-application.md)]
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitorozás
 
 [!INCLUDE [azure-policy-samples-policies-monitoring](../../../../includes/policy/samples/bycat/policies-monitoring.md)]
 
-## <a name="network"></a>Network (Hálózat)
+## <a name="network"></a>Hálózat
 
 [!INCLUDE [azure-policy-samples-policies-network](../../../../includes/policy/samples/bycat/policies-network.md)]
 
@@ -164,6 +164,10 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 ## <a name="tags"></a>Címkék
 
 [!INCLUDE [azure-policy-samples-policies-tags](../../../../includes/policy/samples/bycat/policies-tags.md)]
+
+## <a name="vm-image-builder"></a>VM Image Builder
+
+[!INCLUDE [azure-policy-samples-policies-vm-image-builder](../../../../includes/policy/samples/bycat/policies-vm-image-builder.md)]
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,12 +4,12 @@ description: Ez az oktatóanyag bemutatja, hogyan frissíthető egy Azure-ban t�
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: a21de9d76a010b01da95b050a521178d8808bbdf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 23b3aabf8e991e512ef9a5c07d725c3084ea7f83
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756074"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244735"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt futtatókörnyezetének frissítése az Azure-ban
 
@@ -42,7 +42,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Telepítse [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
+* Telepítse [Azure PowerShell](/powershell/azure/install-az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
 * Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban
 * Windows fejlesztési környezet beállítása. Telepítse a [Visual Studio 2019](https://www.visualstudio.com) -es és az **Azure development**, a **ASP.net és a Web Development**, valamint a **.net Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
 

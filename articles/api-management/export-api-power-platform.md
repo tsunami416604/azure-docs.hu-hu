@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/01/2020
 ms.author: apimpm
-ms.openlocfilehash: 9af20972a47e2d0ad20de62f1bb9d10e4d43563c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5814ff3909aa36ccfd9e14033f200fb4d3b8d32d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82725951"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252854"
 ---
 # <a name="export-apis-from-azure-api-management-to-the-power-platform"></a>API-k exportálása az Azure API Managementról a Power platformra 
 
@@ -29,7 +29,7 @@ Ez a cikk végigvezeti az API-k API Managementról a Power platformra való expo
 
 + Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
 + Győződjön meg arról, hogy van egy API a API Management-példányban, amelyet exportálni szeretne a Power platformba
-+ Győződjön meg arról, hogy rendelkezik Power apps vagy Power automatizáló [környezettel](https://docs.microsoft.com/powerapps/powerapps-overview#power-apps-for-admins) 
++ Győződjön meg arról, hogy rendelkezik Power apps vagy Power automatizáló [környezettel](/powerapps/powerapps-overview#power-apps-for-admins) 
 
 ## <a name="export-an-api"></a>API exportálása
 
@@ -39,7 +39,7 @@ Ez a cikk végigvezeti az API-k API Managementról a Power platformra való expo
 4. Válassza **a Power apps és a Power automatizál**lehetőséget.
 5. Válassza ki azt a környezetet, amelybe exportálni kívánja az API-t. 
 6. Adja meg a megjelenítendő nevet, amelyet az egyéni összekötő neveként fog használni.  
-7. Nem kötelező, ha az API-t egy OAuth 2,0-kiszolgáló védi, további `Client ID`részleteket `Client secret` `Authorization URL` `Token URL`is meg kell adnia, például:,,, `Refresh URL`és.  
+7. Nem kötelező, ha az API-t egy OAuth 2,0-kiszolgáló védi, további részleteket is meg kell adnia, például:,,, `Client ID` `Client secret` `Authorization URL` `Token URL` és `Refresh URL` .  
 8. Válassza az **Export** (Exportálás) lehetőséget. 
 
 Az Exportálás befejezése után navigáljon a Power app vagy a Power automatizáló környezetbe. Az API-t egyéni összekötőként fogja látni.
@@ -47,4 +47,4 @@ Az Exportálás befejezése után navigáljon a Power app vagy a Power automatiz
 ## <a name="next-steps"></a>További lépések
 
 * [További információ a Power platformról](https://powerplatform.microsoft.com/)
-* [Az oktatóanyagok követésével megismerheti API Management gyakori feladatait](https://docs.microsoft.com/azure/api-management/import-and-publish)
+* [Az oktatóanyagok követésével megismerheti API Management gyakori feladatait](./import-and-publish.md)

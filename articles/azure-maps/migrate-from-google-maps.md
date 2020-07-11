@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 7b73923b7fc32ae83bfc8405d074835c02031a63
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2422204a809e0b13f4e337d49b851a0338681853
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77913701"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249206"
 ---
-# <a name="migrate-from-google-maps-to-azure-maps"></a>Migrálás a Google Mapsből a Azure Mapsba
+# <a name="migrate-from-google-maps-to-azure-maps"></a>Migrálás a Google Maps-ből az Azure Maps-be
 
 Ebből az oktatóanyagból megtudhatja, hogyan telepíthet át webes, mobil-és Server-alapú alkalmazásokat a Google Mapsből a Microsoft Azure Maps platformra. Ez az oktatóanyag a Azure Mapsre való áttelepítéshez szükséges összehasonlító kód-mintákat, áttelepítési javaslatokat és ajánlott eljárásokat tartalmazza.
 
@@ -74,7 +74,7 @@ Ha a Google Maps szolgáltatásból Azure Mapsra végez áttelepítést, vegye f
 A következő egy magas szintű áttelepítési terv.
 
 1. Az alkalmazás által használt Google Maps SDK-k és szolgáltatások leltárba vétele. Ellenőrizze, hogy a Azure Maps biztosít-e alternatív SDK-kat és szolgáltatásokat.
-2. Ha még nem rendelkezik ilyennel, hozzon létre egy Azure- [https://azure.com](https://azure.com)előfizetést a következő címen:.
+2. Ha még nem rendelkezik ilyennel, hozzon létre egy Azure-előfizetést a következő címen: [https://azure.com](https://azure.com) .
 3. Hozzon létre egy Azure Maps fiókot ([dokumentációt](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)) és hitelesítési kulcsot, vagy Azure Active Directory ([dokumentáció](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)).
 4. Telepítse át az alkalmazás kódját.
 5. Tesztelje az áttelepített alkalmazást.
@@ -92,7 +92,7 @@ Az alábbi lista a Azure Maps hasznos technikai erőforrásait sorolja fel.
 - Blog[https://aka.ms/AzureMapsBlog](https://aka.ms/AzureMapsBlog)
 - Technikai blog:[https://aka.ms/AzureMapsTechBlog](https://aka.ms/AzureMapsTechBlog)
 - Azure Maps visszajelzés (UserVoice):[https://aka.ms/AzureMapsFeedback](https://aka.ms/AzureMapsFeedback)
-- [Azure Maps Jupyter Notebook] [https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook]
+- [Azure Maps Jupyter Notebook](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)
 
 ## <a name="migration-support"></a>Migrálás támogatása
 

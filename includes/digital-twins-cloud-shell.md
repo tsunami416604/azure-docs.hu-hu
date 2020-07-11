@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 8be070826de0334483f4150925c05cb4dfb73f2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f472865c131b873f1ae0a21fa9ec55865fb2b29
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85805502"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277971"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -22,7 +22,11 @@ Egy Cloud Shell ablak megnyitása után először jelentkezzen be, és állítsa
 az login
 az account set --subscription <your-Azure-subscription-ID>
 ```
-
+> [!TIP]
+> Az előfizetését az előfizetés neve alapján is beállíthatja. Használja a következő parancsot: 
+> ```azurecli
+> az account set --subscription "your-Azure-subscription-name"
+> 
 Ha első alkalommal használta ezt az előfizetést az Azure digitális Twins szolgáltatásban, futtassa ezt a parancsot az Azure Digital Twins-névtérben való regisztráláshoz. (Ha nem biztos abban, hogy a múltban is elvégezte a futtatást, akkor is.)
 
 ```azurecli

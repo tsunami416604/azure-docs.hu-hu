@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 686d6e2ff01fd4d8283350ab8097e1f73c914af0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d90b212286b555bf5b858990fd5dcb062348be8d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81260996"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254724"
 ---
 # <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele  
 
@@ -43,14 +43,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ![Termék hozzáadása](media/api-management-howto-add-products/02-create-publish-product-01.png)
 
 1. Kattintson a bal oldali menü **Termékek** lehetőségére a **Termékek** oldal megjelenítéséhez.
-2. Kattintson a **+Hozzáadás** gombra.
+2. Kattintson a **+ Hozzáadás** gombra.
 
     Termék hozzáadásakor meg kell adnia a következő információkat: 
 
-    | Name (Név)                     | Leírás                                                                                                                                                                                                                                                                                                             |
+    | Név                     | Leírás                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Megjelenített név             | A név, ahogyan a **fejlesztői portálon** meg szeretné jeleníteni.                                                                                                                                                                                                                                                        |
-    | Name (Név)                     | A termék leíró neve.                                                                                                                                                                                                                                                                                      |
+    | Név                     | A termék leíró neve.                                                                                                                                                                                                                                                                                      |
     | Leírás              | A **Leírás** mezőben részletes információkat adhat meg a termékről, például a funkcióját vagy az API-kat, amelyekhez hozzáférést nyújt.                                                                                                                                               |
     | Állapot                    | Kattintson a **Közzétett** elemre, ha közzé szeretné tenni a terméket. Mielőtt meghívhatná egy termék API-jait, közzé kell tenni a terméket. Alapértelmezés szerint az új termékek nincsenek közzétéve, és csak a **Rendszergazdák** csoport tagjai számára láthatók.                                                                                      |
     | Előfizetés szükséges    | Jelölje be az **Előfizetés szükséges** jelölőnégyzetet, ha egy felhasználónak elő kell fizetnie a termék használatára.                                                                                                                                                                                                                                   |
@@ -81,11 +81,11 @@ A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor
 
 1. Válasszon ki egy terméket a **Termékek** lapon.
 2. Lépjen az **API-k** lapra.
-3. Kattintson a **+Hozzáadás** gombra.
+3. Kattintson a **+ Hozzáadás** gombra.
 4. Válasszon egy API-t, és kattintson a **Kiválasztás** gombra.
 
 > [!TIP]
-> [REST API-n keresztül](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription/createorupdate) vagy PowerShell-paranccsal, egyéni előfizetési azonosítók használatával hozhatja létre és frissítheti egy felhasználó *Termékre* vonatkozó előfizetését.
+> [REST API-n keresztül](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) vagy PowerShell-paranccsal, egyéni előfizetési azonosítók használatával hozhatja létre és frissítheti egy felhasználó *Termékre* vonatkozó előfizetését.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,12 +4,12 @@ description: Létrehozhat egy Azure Container Registryt, georeplikációt konfig
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 159426b7258d83fc28fc7d126c064167bbe00975
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 780a16d691e0d8afe62cd06f37a37fc3f6445ea6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799463"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259523"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Georeplikált Azure Container Registry előkészítése
 
@@ -35,7 +35,7 @@ Az oktatóanyag elvégzéséhez a szüksége lesz egy helyi Docker-telepítésre
 
 Az Azure Cloud Shell nem tartalmazza a jelen oktatóanyag lépéseinek elvégzéséhez szükséges Docker-összetevőket, Ezért ajánlott az Azure CLI és a Docker fejlesztőkörnyezet helyi telepítése.
 
-## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
+## <a name="create-a-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
 Ebben az oktatóanyagban szüksége lesz egy Azure Container registryre a prémium szintű szolgáltatási szinten. Új Azure Container Registry létrehozásához kövesse az ebben a szakaszban ismertetett lépéseket.
 
@@ -98,7 +98,7 @@ Nyissa meg az új tároló-beállításjegyzéket a Azure Portal, és válassza 
 
 Most, hogy konfigurálta a georeplikációt, állítson össze egy tárolórendszerképet, és küldje le azt a tárolójegyzékbe. Először be kell jelentkeznie a beállításjegyzékbe, mielőtt a képeket kikényszeríti.
 
-Az [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login) paranccsal hitelesítheti és gyorsítótárazhatja a tárolójegyzék hitelesítő adatait. Cserélje le az `<acrName>` elemet a korábban létrehozott tárolójegyzék nevére.
+Az [az acr login](/cli/azure/acr#az-acr-login) paranccsal hitelesítheti és gyorsítótárazhatja a tárolójegyzék hitelesítő adatait. Cserélje le a `<acrName>` elemet a korábban létrehozott tárolójegyzék nevére.
 
 ```azurecli
 az acr login --name <acrName>
@@ -212,7 +212,7 @@ uniqueregistryname.azurecr.io/acr-helloworld    v1     01ac48d5c8cf    About a m
 
 ## <a name="push-image-to-azure-container-registry"></a>Rendszerkép leküldése az Azure Container Registrybe
 
-Ezután a `docker push` paranccsal küldje le az *acr-helloworld*-rendszerképet a tárolójegyzékbe. Cserélje le az `<acrName>` elemet a tárolójegyzék nevére.
+Ezután a `docker push` paranccsal küldje le az *acr-helloworld*-rendszerképet a tárolójegyzékbe. Cserélje le a `<acrName>` elemet a tárolójegyzék nevére.
 
 ```bash
 docker push <acrName>.azurecr.io/acr-helloworld:v1

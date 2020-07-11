@@ -5,12 +5,12 @@ ms.author: puagarw
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
-ms.openlocfilehash: b0a9597e370648faab3787218c7d038798dbd455
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 42bdde45b3a289a35c5bf4c4651e5a50a639f049
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048108"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251773"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Az Azure Kubernetes üzembe helyezési központja
 
@@ -34,7 +34,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/).
 
-1. A Azure Portal menüsávjának jobb oldalán válassza a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) lehetőséget.
+1. A Azure Portal menüsávjának jobb oldalán válassza a [Cloud Shell](../cloud-shell/overview.md) lehetőséget.
 
 1. Az AK-fürt létrehozásához futtassa a következő parancsokat:
 
@@ -56,7 +56,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
    ![beállítások](media/deployment-center-launcher/settings.png)
 
-1. Válassza ki a kód helyét, és kattintson a **Tovább gombra**. Ezután válassza ki az egyik jelenleg támogatott tárházat: **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** vagy **GitHub**.
+1. Válassza ki a kód helyét, és kattintson a **Tovább gombra**. Ezután válassza ki az egyik jelenleg támogatott tárházat: **[Azure Repos](/azure/devops/repos/index?view=azure-devops)** vagy **GitHub**.
 
     Az Azure Repos olyan verziókövetés-eszközök összessége, amelyek segítenek a kód kezelésében. Azt jelzi, hogy a szoftveres projekt mérete nagy vagy kicsi, jó ötlet a verziókövetés a lehető leghamarabb.
 
@@ -75,9 +75,9 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
     Ha a tárház nem tartalmazza a Docker, a rendszer megjelenít egy üzenetet, amelyet véglegesíteni kell.
 
-    ![Docker](media/deployment-center-launcher/dockerfile.png)
+    ![Dockerfile](media/deployment-center-launcher/dockerfile.png)
 
-1. Válasszon ki egy meglévő tároló-beállításjegyzéket, vagy hozzon létre egyet, majd kattintson a **Befejezés gombra**. A folyamat automatikusan létrejön, és egy Build az [Azure-folyamatokban](https://docs.microsoft.com/azure/devops/pipelines/index?view=azure-devops).
+1. Válasszon ki egy meglévő tároló-beállításjegyzéket, vagy hozzon létre egyet, majd kattintson a **Befejezés gombra**. A folyamat automatikusan létrejön, és egy Build az [Azure-folyamatokban](/azure/devops/pipelines/index?view=azure-devops).
 
     Az Azure-folyamatok egy felhőalapú szolgáltatás, amellyel automatikusan felépítheti és tesztelheti a kód projektjét, és elérhetővé teheti azokat más felhasználók számára. Az Azure-folyamatok folyamatosan és következetesen tesztelik és felépítik a folyamatos integrációt és a folyamatos teljesítést, és minden célra elszállítják a kódot.
 
@@ -123,7 +123,7 @@ A Deployment Center automatikusan létrehozza és konfigurálja az Azure DevOps-
 
 1. Válassza ki a **folyamatos üzembe helyezési** triggert a **drop** kapcsoló jobb oldalán. Ez a kiadási folyamat egy olyan engedélyezett CD-triggerrel rendelkezik, amely egy üzembe helyezést futtat, amikor új Build-összetevő érhető el. Letilthatja az indítást is, ha manuális végrehajtást kíván végrehajtani az üzemelő példányokhoz.
 
-1. A folyamat összes feladatának vizsgálatához válassza a **feladatok**lehetőséget. A kiadás beállítja a kormányrúd környezetet, konfigurálja a `imagePullSecrets` (z) paramétert, telepíti a Helm-eszközöket, és üzembe helyezi a Helm-diagramokat a Kubernetes-fürtön.
+1. A folyamat összes feladatának vizsgálatához válassza a **feladatok**lehetőséget. A kiadás beállítja a kormányrúd környezetet, konfigurálja a (z `imagePullSecrets` ) paramétert, telepíti a Helm-eszközöket, és üzembe helyezi a Helm-diagramokat a Kubernetes-fürtön.
 
 1. A kiadási előzmények megtekintéséhez válassza a **kiadások megtekintése**lehetőséget.
 

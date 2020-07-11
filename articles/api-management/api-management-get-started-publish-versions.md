@@ -13,16 +13,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b683910180e597cb8cbfa642bb2d9ac3200b42ee
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73176833"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255030"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Az API több verziójának közzététele 
 
-Előfordulhat, hogy nem célszerű, ha az összes hívó ugyanazt az API-verziót használja. Ha a hívók újabb verzióra szeretnének frissíteni, azt egy könnyen érthető megközelítéssel szeretnék megtenni. Ez az Azure API Management **verziók** szolgáltatásával valósítható meg. További információkért lásd: [Verziók és változatok](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/).
+Előfordulhat, hogy nem célszerű, ha az összes hívó ugyanazt az API-verziót használja. Ha a hívók újabb verzióra szeretnének frissíteni, azt egy könnyen érthető megközelítéssel szeretnék megtenni. Ez az Azure API Management **verziók** szolgáltatásával valósítható meg. További információkért lásd: [Verziók és változatok](https://azure.microsoft.com/blog/versions-revisions/).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -89,7 +89,7 @@ Ahhoz, hogy a hívók láthassák az új verziót, hozzá kell adni azt egy **te
 3. Válassza az **API-k** lehetőséget.
 4. Válassza a **Hozzáadás** lehetőséget.
 5. Válassza a **Demo Conference API, v1 verzió** elemet.
-6. Kattintson a **Kiválasztás** gombra.
+6. Kattintson a **Kiválasztás** elemre.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>A fejlesztői portál tallózása a verzió megtekintéséhez
 

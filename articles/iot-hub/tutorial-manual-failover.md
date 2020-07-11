@@ -11,16 +11,16 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 86b39beb2958194f7c86409c5d78992616234b05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26679a7111e11eaf48e948fa6d3622814327433a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769905"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252572"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Oktatóanyag: manuális feladatátvétel végrehajtása egy IoT hub esetében
 
-A manuális feladatátvétel az IoT Hub szolgáltatás egyik funkciója, amelynek segítségével elvégezhető egy hub műveleteinek [feladatátvétele](https://en.wikipedia.org/wiki/Failover) az elsődleges régióból a megfelelő, földrajzilag párosított másodlagos Azure-régióba. A manuális feladatátvétel regionális szintű katasztrófák vagy hosszabb időtartamú szolgáltatáskimaradás alkalmával hajtható végre. Emellett végrehajthat tervezett feladatátvételt is a vészhelyreállítási képességek tesztelésére, bár ehhez inkább egy tesztelési célú, és nem egy éles környezetben futó IoT hub használatát javasoljuk. A manuális feladatátvételi funkció további költségek nélkül érhető el ügyfeleink számára.
+A manuális feladatátvétel az IoT Hub szolgáltatás egyik funkciója, amelynek segítségével elvégezhető egy hub műveleteinek [feladatátvétele](https://en.wikipedia.org/wiki/Failover) az elsődleges régióból a megfelelő, földrajzilag párosított másodlagos Azure-régióba. A manuális feladatátvétel regionális szintű katasztrófák vagy hosszabb időtartamú szolgáltatáskimaradás alkalmával hajtható végre. Emellett végrehajthat tervezett feladatátvételt is a vészhelyreállítási képességek tesztelésére, bár ehhez inkább egy tesztelési célú, és nem egy éles környezetben futó IoT hub használatát javasoljuk. A manuális feladatátvétel funkció az ügyfelek számára ingyenes, a 2017. május 18. után létrehozott IoT hubok esetében díjmentesen vehető igénybe.
 
 Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
@@ -33,7 +33,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 * Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -57,7 +57,7 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
    ![IoT hub létrehozásához az Alapvető beállítások panelt ábrázoló képernyőkép](./media/tutorial-manual-failover/create-hub-02-basics.png)
 
-   Kattintson az **Áttekintés + létrehozás** elemre. (Az alapértelmezett méret- és léptékbeállításokat használja.) 
+   Kattintson a **Felülvizsgálat + létrehozás** elemre. (Az alapértelmezett méret- és léptékbeállításokat használja.) 
 
 4. Tekintse át az információkat, majd kattintson a **Létrehozás** elemre az IoT hub létrehozásához. 
 
@@ -73,7 +73,7 @@ Vegye figyelembe, hogy naponta legfeljebb két feladatátvétel és két feladat
 
    ![IoT Hub-tulajdonságok panel képernyőképe](./media/tutorial-manual-failover/trigger-failover-01.png)
 
-1. A manuális feladatátvétel panelen az **aktuális helyet** és a **feladatátvételi helyet**látja. Az aktuális hely mindig azt a helyet adja meg, amelyben a központ éppen aktív. A feladatátvétel helye a szabványos [Azure-beli geo-párosítási régió](../best-practices-availability-paired-regions.md) , amely az aktuális helyre párosítva van. A helyek értékei nem módosíthatók. Ebben az oktatóanyagban az aktuális hely `West US 2` , a feladatátvételi hely pedig `West Central US`.
+1. A manuális feladatátvétel panelen az **aktuális helyet** és a **feladatátvételi helyet**látja. Az aktuális hely mindig azt a helyet adja meg, amelyben a központ éppen aktív. A feladatátvétel helye a szabványos [Azure-beli geo-párosítási régió](../best-practices-availability-paired-regions.md) , amely az aktuális helyre párosítva van. A helyek értékei nem módosíthatók. Ebben az oktatóanyagban az aktuális hely, `West US 2` a feladatátvételi hely pedig `West Central US` .
 
    ![A Manuális feladatátvétel panel képernyőképe](./media/tutorial-manual-failover/trigger-failover-02.png)
 
@@ -93,11 +93,11 @@ Vegye figyelembe, hogy naponta legfeljebb két feladatátvétel és két feladat
 
    ![A folyamatban lévő IoT Hub feladatátvételt ábrázoló képernyőfelvétel](./media/tutorial-manual-failover/trigger-failover-05-hub-inactive.png)
 
-   A művelet befejezése után a manuális feladatátvételi oldalon található aktuális és feladatátvételi régiók tükrözöttek, és a központ ismét aktív lesz. Ebben a példában az aktuális hely most `WestCentralUS` , a feladatátvételi hely pedig most. `West US 2` 
+   A művelet befejezése után a manuális feladatátvételi oldalon található aktuális és feladatátvételi régiók tükrözöttek, és a központ ismét aktív lesz. Ebben a példában az aktuális hely most, `WestCentralUS` a feladatátvételi hely pedig most `West US 2` . 
 
    ![Befejeződött feladatátvétel képernyőképe](./media/tutorial-manual-failover/trigger-failover-06-finished.png)
 
-   Az Áttekintés oldalon egy szalagcím is látható, amely azt jelzi, hogy a feladatátvétel befejeződött, és `West Central US`a IoT hub fut.
+   Az Áttekintés oldalon egy szalagcím is látható, amely azt jelzi, hogy a feladatátvétel befejeződött, és a IoT Hub fut `West Central US` .
 
    ![A feladatátvételt bemutató képernyőkép az Áttekintés oldalon](./media/tutorial-manual-failover/trigger-failover-06-finished-overview.png)
 

@@ -4,12 +4,12 @@ description: Ez az oktatóanyag azt mutatja be, hogyan kell törölni egy Azure-
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 802fdfc46344929930b1ffb015b364b4e2360cca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 38ddc7173f54a34d68c41ce1180c8dbeaf3d7962
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75465367"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244966"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Oktatóanyag: Az Azure-ban futó Service Fabric-fürtök törlése
 
@@ -37,7 +37,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Telepítse az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure//install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
+* Telepítse az [Azure PowerShellt](/powershell/azure//install-az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
 * Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>A Service Fabric-fürtöt tartalmazó erőforráscsoport törlése

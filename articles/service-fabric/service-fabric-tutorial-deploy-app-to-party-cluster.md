@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4cd21669b30b8ec83d6a0538c90d4cec5cafe32a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75646007"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244990"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Oktatóanyag: Service Fabric-alkalmazás üzembe helyezése egy fürtön az Azure-ban
 
@@ -53,7 +53,7 @@ Nyissa meg az alkalmazást a Visual Studióban, futtassa rendszergazdaként, és
 
 ## <a name="create-a-cluster"></a>Fürt létrehozása
 
-Most, hogy az alkalmazás készen áll, hozzon létre egy Service Fabric fürtöt, majd telepítse az alkalmazást a fürtön. A [Service Fabric-fürt](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere) olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait.
+Most, hogy az alkalmazás készen áll, hozzon létre egy Service Fabric fürtöt, majd telepítse az alkalmazást a fürtön. A [Service Fabric-fürt](./service-fabric-deploy-anywhere.md) olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait.
 
 Ebben az oktatóanyagban egy új, három csomópontos tesztelési fürtöt hoz létre a Visual Studio IDE-ben, majd közzéteszi az alkalmazást a fürtön. A termelési fürtök létrehozásával kapcsolatos információkért tekintse meg a [fürt létrehozása és kezelése című oktatóanyagot](service-fabric-tutorial-create-vnet-and-windows-cluster.md) . Az alkalmazást telepítheti egy meglévő, a [Azure Portal](https://portal.azure.com)által korábban létrehozott fürtre is, a [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) vagy az [Azure CLI](./scripts/cli-create-cluster.md) parancsfájlok használatával vagy egy [Azure Resource Manager sablonból](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
@@ -101,7 +101,7 @@ A Megoldáskezelőben kattintson a jobb gombbal a **Szavazás** elemre, majd vá
 A **csatlakoztatási végpont**területen válassza ki az előző lépésben létrehozott fürt végpontját.  Például: "mytestcluster.southcentral.cloudapp.azure.com:19000". Ha a **speciális kapcsolatok paramétereit**választja, a tanúsítvány információit automatikusan ki kell tölteni.  
 ![Service Fabric-alkalmazás közzététele](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
 
-Kattintson a **Publish** (Közzététel) elemre.
+Válassza a **Közzététel** lehetőséget.
 
 Az alkalmazás üzembe helyezése után nyisson meg egy böngészőt, és adja meg a fürt címeit, majd a **következőket: 8080**. Vagy adja meg egy másik konfigurált port számát. Például: `http://mytestcluster.southcentral.cloudapp.azure.com:8080`. Ezután megjelenik a fürtön futó alkalmazás az Azure-ban. A szavazás weboldalán próbáljon hozzáadni és törölni szavazási lehetőségeket, valamint szavazni ezek közül egyre vagy többre.
 

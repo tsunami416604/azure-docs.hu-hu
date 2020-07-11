@@ -4,12 +4,12 @@ description: Ez az oktatóanyag azt ismerteti, hogyan hozhat létre egy alkalmaz
 ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: f7bad66d15cc2f9fb1885e440f95e76e12ea458a
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: dc869dce536449a901826db3b0d964bf17abbbec
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214026"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257117"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
 
@@ -41,7 +41,7 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>ASP.NET Web API-szolgáltatás létrehozása megbízható szolgáltatásként
 
-Először hozza létre a szavazóalkalmazás webes kezelőfelületét az ASP.NET Core használatával. Az ASP.NET Core egy egyszerűsített, platformfüggetlen webes fejlesztési keretrendszer, amely segítségével modern webes felhasználói felületeket és webes API-kat hozhat létre. Az ASP.NET Core Service Fabricbe történő integrálásának teljes megértéséhez mindenképpen javasolt [az ASP.NET Core a Service Fabric Reliable Services szolgáltatásban](service-fabric-reliable-services-communication-aspnetcore.md) való használatát ismertető cikk alapos elolvasása. Egyelőre az első lépésekhez elég, ha elvégzi ezt az oktatóanyagot. Az ASP.NET Core-ról az [ASP.NET Core dokumentációjában](https://docs.microsoft.com/aspnet/core/) találhat további információt.
+Először hozza létre a szavazóalkalmazás webes kezelőfelületét az ASP.NET Core használatával. Az ASP.NET Core egy egyszerűsített, platformfüggetlen webes fejlesztési keretrendszer, amely segítségével modern webes felhasználói felületeket és webes API-kat hozhat létre. Az ASP.NET Core Service Fabricbe történő integrálásának teljes megértéséhez mindenképpen javasolt [az ASP.NET Core a Service Fabric Reliable Services szolgáltatásban](service-fabric-reliable-services-communication-aspnetcore.md) való használatát ismertető cikk alapos elolvasása. Egyelőre az első lépésekhez elég, ha elvégzi ezt az oktatóanyagot. Az ASP.NET Core-ról az [ASP.NET Core dokumentációjában](/aspnet/core/) találhat további információt.
 
 1. Indítsa el a Visual studiót **rendszergazdaként**.
 

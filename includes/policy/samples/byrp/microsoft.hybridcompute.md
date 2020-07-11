@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 1fc8910f3f30ef03970d13fe8f667a4a7a8a9cd6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: f15e83b8bf3ca8c7a838afc2836dbf0e02108d66
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316192"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275656"
 ---
-|Name (Név)<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Név<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Linux rendszerű virtuális gépek naplózása, amelyeken engedélyezve van az SSH-jelszavak használata](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F630c64f9-8b6b-4c64-b511-6544ceff6fd6) |Ez a szabályzat a Linux rendszerű virtuális gépeket naplózza, amelyek jelszavakat használnak az SSH-n keresztüli hitelesítéshez. Ehhez a Szabályzathoz az szükséges, hogy a vendég konfigurációjának előfeltételei telepítve legyenek a szabályzat-hozzárendelési hatókörben. Részletekért keresse fel a következőt:[https://aka.ms/gcpol](https://aka.ms/gcpol) |AuditIfNotExists, letiltva |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_LinuxNoPasswordForSSH_AINE.json) |
 |[Azon Windows-alapú virtuális gépek naplózása, amelyeken nincs engedélyezve a Windows Defender Exploit Guard](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |A Windows Defender Exploit Guard védelmet nyújt a kártevők elleni védelemben, amely az eszközök és a terjesztés használatát teszi lehetővé. A biztonsági rések védelme számos, az operációs rendszerre vagy az egyes alkalmazásokra alkalmazható enyhítési lehetőségből áll. Ehhez a Szabályzathoz a Windows-bővítmény Azure Policy szükséges. Részletekért keresse fel a következőt: [https://aka.ms/gcpol](https://aka.ms/gcpol) . |AuditIfNotExists, letiltva |[1.1.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AINE.json) |

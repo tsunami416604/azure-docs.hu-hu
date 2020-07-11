@@ -4,16 +4,16 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe Wi
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: dfcee93ffa5eea0b2aa0b9a93ff53ad7b61ea245
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611662"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245041"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Oktatóanyag: Windows rendszert futtató Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózatban
 
-Ez az oktatóanyag egy sorozat első része. Megtudhatja, hogyan helyezhet üzembe Windows rendszerű Azure Service Fabric-fürtöt egy Azure-beli [virtuális hálózatban](../virtual-network/virtual-networks-overview.md) és [hálózati biztonsági csoportban](../virtual-network/virtual-networks-nsg.md) a PowerShell és egy sablon használatával. Ha elkészült, egy olyan fürt fut a felhőben, amelybe alkalmazásokat telepíthet. Az Azure CLI-t használó linuxos fürtök létrehozásával kapcsolatban lásd: [biztonságos Linux-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md)-ban.
+Ez az oktatóanyag egy sorozat első része. Megtudhatja, hogyan helyezhet üzembe Windows rendszerű Azure Service Fabric-fürtöt egy Azure-beli [virtuális hálózatban](../virtual-network/virtual-networks-overview.md) és [hálózati biztonsági csoportban](../virtual-network/virtual-network-vnet-plan-design-arm.md) a PowerShell és egy sablon használatával. Ha elkészült, egy olyan fürt fut a felhőben, amelybe alkalmazásokat telepíthet. Az Azure CLI-t használó linuxos fürtök létrehozásával kapcsolatban lásd: [biztonságos Linux-fürt létrehozása az Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md)-ban.
 
 Ez az oktatóanyag egy éles forgatókönyvet ismertet. Ha egy kisebb fürtöt szeretne tesztelési célokra létrehozni, tekintse meg [a tesztelési fürt létrehozása](./scripts/service-fabric-powershell-create-secure-cluster-cert.md)című témakört.
 
@@ -48,7 +48,7 @@ Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Telepítse a [Service FABRIC SDK-t és a PowerShell-modult](service-fabric-get-started.md).
-* Telepítse a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Telepítse a [Azure PowerShell](/powershell/azure/install-az-ps).
 * Tekintse át az [Azure-fürtök](service-fabric-azure-clusters-overview.md)főbb fogalmait.
 * [Tervezze meg és készítse elő](service-fabric-cluster-azure-deployment-preparation.md) az üzemi fürtök üzembe helyezését.
 
@@ -111,7 +111,7 @@ Az alábbi bejövő forgalmi szabályok vannak engedélyezve a **Microsoft.Netwo
 Ha más alkalmazás-portok is szükségesek, akkor módosítania kell a **Microsoft. Network/loadBalancers** erőforrást és a **Microsoft. Network/networkSecurityGroups** erőforrást a forgalom engedélyezéséhez.
 
 ### <a name="windows-defender"></a>Windows Defender
-Alapértelmezés szerint a Windows [Defender víruskereső program](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) telepítve van és működőképes a windows Server 2016 rendszeren. A felhasználói felület néhány SKU-ban alapértelmezés szerint telepítve van, de nem kötelező. A sablonban deklarált minden egyes csomópont típus/virtuálisgép-méretezési csoport esetében az [Azure VM antimalware bővítmény](/azure/virtual-machines/extensions/iaas-antimalware-windows) a Service Fabric címtárak és folyamatok kizárására szolgál:
+Alapértelmezés szerint a Windows [Defender víruskereső program](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016) telepítve van és működőképes a windows Server 2016 rendszeren. A felhasználói felület néhány SKU-ban alapértelmezés szerint telepítve van, de nem kötelező. A sablonban deklarált minden egyes csomópont típus/virtuálisgép-méretezési csoport esetében az [Azure VM antimalware bővítmény](../virtual-machines/extensions/iaas-antimalware-windows.md) a Service Fabric címtárak és folyamatok kizárására szolgál:
 
 ```json
 {
@@ -143,10 +143,10 @@ Alapértelmezés szerint a Windows [Defender víruskereső program](/windows/sec
 
 Az [azuredeploy.parameters.json][parameters] paraméterfájl számos, a fürt és a társított erőforrások üzembe helyezéséhez használt értéket meghatároz. A következő paramétereket kell módosítani a telepítéshez:
 
-**Paraméter** | **Példa értéke** | **Megjegyzések** 
+**Paraméterek** | **Példa értéke** | **Megjegyzések** 
 |---|---|---|
-|adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez. [A virtuális gép felhasználónévre vonatkozó követelményei](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
-|adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez. [A virtuális gép jelszavára vonatkozó követelmények](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
+|adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez. [A virtuális gép felhasználónévre vonatkozó követelményei](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm). |
+|adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez. [A virtuális gép jelszavára vonatkozó követelmények](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
 |clusterName|mysfcluster123| A fürt neve. Csak betűket és számokat tartalmazhat. 3–23 karakter hosszú lehet.|
 |location|southcentralus| A fürt helye. |
 |certificateThumbprint|| <p>Önaláírt tanúsítvány létrehozása vagy tanúsítványfájl megadása esetén az értéknek üresnek kell lennie.</p><p>Ha meglévő, egy kulcstárolóba korábban feltöltött tanúsítványt szeretne használni, adja meg a tanúsítvány SHA1 ujjlenyomatának értékét. Például: „6190390162C988701DB5676EB81083EA608DCCF3”</p> |
@@ -703,7 +703,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az oktatóanyag-Sorozat további cikkei a létrehozott fürtöt használják. Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](service-fabric-cluster-delete.md) a felmerülő költségek elkerülése érdekében.
+Az oktatóanyag-Sorozat további cikkei a létrehozott fürtöt használják. Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](./service-fabric-tutorial-delete-cluster.md) a felmerülő költségek elkerülése érdekében.
 
 ## <a name="next-steps"></a>További lépések
 

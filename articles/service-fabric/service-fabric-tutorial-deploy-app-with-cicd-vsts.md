@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan állíthat be folyam
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 11485d22abcf0b8e1eb13d8123ff21c7fe0079f8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 992d720d86fc2e7fedd8e7fd4b559220ff3c0512
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75614145"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260365"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Alkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
 
@@ -39,7 +39,7 @@ Az oktatóanyag elkezdése előtt:
 * [Telepítse a Visual Studio 2019](https://www.visualstudio.com/) alkalmazást, és telepítse az **Azure fejlesztési** és **ASP.net, valamint a webes fejlesztési** feladatokat.
 * [A Service Fabric SDK telepítése](service-fabric-get-started.md)
 * Hozzon létre egy Service Fabric-fürtöt az Azure-ban, például [ennek az útmutatónak a segítségével](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* Hozzon létre egy [Azure DevOps-szervezetet](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Ez lehetővé teszi, hogy létrehoz egy projektet az Azure DevOps, és hogyan használhatja az Azure-folyamatokat.
+* Hozzon létre egy [Azure DevOps-szervezetet](/azure/devops/organizations/accounts/create-organization-msa-or-work-student). Ez lehetővé teszi, hogy létrehoz egy projektet az Azure DevOps, és hogyan használhatja az Azure-folyamatokat.
 
 ## <a name="download-the-voting-sample-application"></a>A mintául szolgáló szavazóalkalmazás letöltése
 
@@ -61,7 +61,7 @@ Az alkalmazásprojektben válasszon ki egy célprofilt a folyamatos integráció
 
 Az alkalmazás forrásfájljait megoszthatja az Azure DevOps egyik projektjében, és ezáltal buildeket hozhat létre.
 
-Hozzon létre egy új helyi git-tárházat a projekthez a Visual Studio jobb alsó sarkában lévő állapotsorban a **Hozzáadás a forrás vezérlőelemhez** -> **git** elemre kattintva.
+Hozzon létre egy új helyi git-tárházat a projekthez a Visual Studio jobb alsó sarkában lévő állapotsorban a **Hozzáadás a forrás vezérlőelemhez**  ->  **git** elemre kattintva.
 
 A **Team Explorer****Push** (Leküldés) nézetében válassza ki a **Push to Azure DevOps** (Leküldés Azure DevOps szolgáltatásba) alatt található **Publish Git Repo** (Git-adattár közzététele) gombot.
 
@@ -111,7 +111,7 @@ Válassza a **folyamatok** fület, majd a **releases**, majd az **+ új folyamat
 
 ![Kiadási sablon kiválasztása][select-release-template]
 
-Válassza az 1. **feladat**->-**környezet** , majd az **+ új** lehetőséget az új fürthöz való kapcsolódáshoz.
+Válassza **Tasks** -> az**1** . feladat-környezet, majd az **+ új** lehetőséget az új fürthöz való kapcsolódáshoz.
 
 ![Fürtkapcsolat hozzáadása][add-cluster-connection]
 
@@ -131,7 +131,7 @@ Engedélyezze a folyamatos üzembe helyezés eseményindítóját, hogy a kiadá
 
 ![Eseményindító engedélyezése][enable-trigger]
 
-A kiadás létrehozásához válassza a **+ kiadás** -> **Létrehozás egy kiadás** -> **létrehozása** lehetőséget. A kiadási folyamatot a **Releases** (Kiadások) lapon követheti nyomon.
+A kiadás létrehozásához válassza a **+ kiadás**  ->  **Létrehozás egy kiadás**  ->  **létrehozása** lehetőséget. A kiadási folyamatot a **Releases** (Kiadások) lapon követheti nyomon.
 
 Győződjön meg arról, hogy az üzembe helyezés sikeres volt, és ellenőrizze, hogy az alkalmazás megfelelően fut-e a fürtön.  Nyisson meg egy webböngészőt, és lépjen a `http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/` lapra.  Vegye figyelembe, hogy a példában szereplő alkalmazásverzió száma „1.0.0.20170616.3”.
 

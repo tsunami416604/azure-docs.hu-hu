@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 3a7c9f61af0124c656f98b64ba9295bc659c572a
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.openlocfilehash: 6edc6facc884fc6469b75b63216d6e5036321ea8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262343"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277903"
 ---
 ## <a name="configure-the-sample-project"></a>A minta projekt konfigurálása
 
@@ -36,7 +36,7 @@ Mentse és zárja be a fájlt.
 
 Ezután konfigurálja a fájl *serviceConfig.jsa* kimeneti könyvtárba a *SampleClientApp*létrehozásakor. Ehhez kattintson a jobb gombbal a *serviceConfig.js* fájlra, majd válassza a *Tulajdonságok elemet.* A *Tulajdonságok* ellenőrben módosítsa a *Másolás a kimeneti könyvtárba* tulajdonság értékét, *Ha újabb*.
 
-:::image type="content" source="../articles/digital-twins/media/include-tutorial/copy-config.png" alt-text="Részletek a Visual Studio ablakból: a Megoldáskezelő panel, amelyen a Kiemelt serviceConfig.jslátható, a Tulajdonságok ablaktábla pedig a "másolás a kimeneti könyvtárba" tulajdonsága a "másolás, ha újabb" értékre van állítva." border="false":::
+:::image type="content" source="../articles/digital-twins/media/includes/copy-config.png" alt-text="Részletek a Visual Studio ablakból: a Megoldáskezelő panel, amelyen a Kiemelt serviceConfig.jslátható, a Tulajdonságok ablaktábla pedig a "másolás a kimeneti könyvtárba" tulajdonsága a "másolás, ha újabb" értékre van állítva." border="false":::
 
 Tartsa meg a _**AdtE2ESample**_ projektet a Visual Studióban, és folytassa a használatát az oktatóanyagban.
 

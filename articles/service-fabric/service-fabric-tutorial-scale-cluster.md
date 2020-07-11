@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan méretezhető egy Se
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: ed212083a29836e1da593ec42c31bbf86b907546
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611645"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257104"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt skálázása az Azure-ban
 
@@ -38,7 +38,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 Az oktatóanyag elkezdése előtt:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Telepítse [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
+* Telepítse [Azure PowerShell](/powershell/azure/install-az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
 * Biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása az Azure-ban
 
 ## <a name="important-considerations-and-guidelines"></a>Fontos szempontok és irányelvek
@@ -64,7 +64,7 @@ További információért olvassa el a [fürt kapacitása című útmutatót](se
 
 ## <a name="export-the-template-for-the-resource-group"></a>Erőforráscsoport sablonjának exportálása
 
-A biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása és az erőforráscsoport sikeres beállítása után exportálja az erőforráscsoport Resource Manager-sablonját. A sablon exportálása lehetővé teszi a fürt és erőforrásai jövőbeli üzembe helyezésének automatizálását, mivel a sablon tartalmazza az összes teljes infrastruktúrát.  További információ a sablonok exportálásáról [: Azure Resource Manager erőforráscsoportok kezelése a Azure Portal használatával](/azure/azure-resource-manager/manage-resource-groups-portal).
+A biztonságos Windows- [fürt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) létrehozása és az erőforráscsoport sikeres beállítása után exportálja az erőforráscsoport Resource Manager-sablonját. A sablon exportálása lehetővé teszi a fürt és erőforrásai jövőbeli üzembe helyezésének automatizálását, mivel a sablon tartalmazza az összes teljes infrastruktúrát.  További információ a sablonok exportálásáról [: Azure Resource Manager erőforráscsoportok kezelése a Azure Portal használatával](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg a fürtöt tartalmazó erőforráscsoportot (**sfclustertutorialgroup**, ha ezt az oktatóanyagot követi). 
 

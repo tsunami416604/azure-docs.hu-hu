@@ -1,18 +1,18 @@
 ---
 title: A Key Vault beépített szabályzat-definíciói
 description: A Key Vault Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 89b1523a9724901c238cdf59e01ad52bff6b021d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: abe6bb87671950b96a77c0782920bd03f174f56c
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85317871"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273981"
 ---
 # <a name="azure-policy-built-in-definitions-for-key-vault"></a>A Key Vault beépített definíciói Azure Policy
 

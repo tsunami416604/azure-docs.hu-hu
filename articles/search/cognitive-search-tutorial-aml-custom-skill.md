@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: f673fd4b49a33c2faf6bc8b489520f2a877b0689
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 69618604c38d82567260e45d651df523055c5f7b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85513805"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245330"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Oktatóanyag: egyéni szakértelem létrehozása és üzembe helyezése Azure Machine Learning 
 
@@ -29,6 +29,9 @@ Két adatkészlet van megadva. Ha saját maga szeretné betanítani a modellt, a
 > * Modell betanítása és üzembe helyezése Azure Kubernetes-fürtön
 > * AI-dúsítási folyamat összekapcsolása az üzembe helyezett modellel
 > * Az üzembe helyezett modell kimenetének beolvasása egyéni képességként
+
+> [!IMPORTANT] 
+> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Jelenleg nincs .NET SDK-támogatás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -84,7 +87,7 @@ A portálon lépjen a Készségkészlet elemre, és válassza ki a Készségkés
 
 Másolja a készségkészlet sablont az ablakból, és illessze be a készségkészlet-definícióba a bal oldalon. Szerkessze a sablont, hogy a hiányzó értékeket adja meg a következőhöz:
 
-* Name (Név)
+* Név
 * Leírás
 * Környezet
 * "bemenetek" neve és forrása
@@ -96,7 +99,7 @@ A készségkészlet mentése után lépjen az indexelő elemre, és válassza ki
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
+Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 

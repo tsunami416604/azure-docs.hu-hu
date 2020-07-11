@@ -1,18 +1,18 @@
 ---
 title: A Azure Database for MariaDB beépített szabályzat-definíciói
 description: A Azure Database for MariaDB Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 26cc1f9a610241b9bdf55a9f4613ad285bd1f3e6
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: c6018b40c0bb7939d7d660adc65f18f0f4008c3b
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85319986"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273939"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mariadb"></a>A Azure Database for MariaDB beépített definíciói Azure Policy
 

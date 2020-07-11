@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 989608b9a087599ab73864ae2605fbffcf3221d9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84982050"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243239"
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
 Az Azure Monitorral az egyes Azure-erőforrásoktól az Azure-ba érkező metrikákat vagy naplókat jelenítheti meg, kérdezheti le, irányíthatja át, archiválhatja, illetve különböző műveleteket is végezhet velük.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Tevékenységnaplók megtekintése
@@ -43,7 +43,7 @@ A következő videó bemutatja, hogyan monitorozhatja az API Managementet az Azu
 
 ## <a name="view-metrics-of-your-apis"></a>Az API-k metrikáinak megtekintése
 
-Az API Management percenként biztosít mérőszámokat, így közel valós idejű képet ad az API-k állapotáról. Az alábbiakban a két leggyakrabban használt mérőszám szerepel. Az összes elérhető metrika listáját a [támogatott mérőszámok](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftapimanagementservice)részben tekintheti meg.
+Az API Management percenként biztosít mérőszámokat, így közel valós idejű képet ad az API-k állapotáról. Az alábbiakban a két leggyakrabban használt mérőszám szerepel. Az összes elérhető metrika listáját a [támogatott mérőszámok](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)részben tekintheti meg.
 
 * Kapacitás: segít döntéseket hozni a APIM-szolgáltatások frissítésével/lefokozásával kapcsolatban. A mérőszám percentként keletkezik, és az átjáró a jelentés pillanatában érvényes kapacitását tükrözi. A mérőszám értéke a 0–100 tartományban mozog, és az érték számítása az átjáró erőforrásai, például a processzor és a memória kihasználtsága alapján történik.
 * Kérelmek: segít az APIM-szolgáltatásokon keresztül haladó API-forgalom elemzésében. A metrikát percenként bocsátja ki, és az átjáróra vonatkozó kérelmek számát jelenti, beleértve a válasz kódokat, a helyet, az állomásnevet és a hibákat. 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 61b6ad0bedb4817c262b4269a6e9f6930a6caa6c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985688"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260680"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt létrehozása
 
@@ -87,11 +87,26 @@ A parancs futtatásakor a (z `az aro create` ) paraméter használatával hivatk
 
 Ha átmásolja a lekéréses titkot, vagy más parancsfájlokban hivatkozik rá, a lekéréses titkot érvényes JSON-karakterláncként kell formázni.
 
+### <a name="prepare-a-custom-domain-for-your-cluster-optional"></a>Egyéni tartomány előkészítése a fürt számára (nem kötelező)
+
+A parancs futtatásakor `az aro create` megadhat egy egyéni tartományt a fürthöz a `--domain foo.example.com` paraméter használatával.
+
+Ha a fürthöz egyéni tartományt ad meg, vegye figyelembe a következő szempontokat:
+
+* A fürt létrehozása után 2 DNS-rekordot kell létrehoznia a DNS-kiszolgálón a megadott értékhez `--domain` :
+    * **API** – az API-kiszolgálóra mutat
+    * ** \* . apps** – a bejövő forgalomra mutat
+    * A következő parancs végrehajtásával kérheti le ezeket az értékeket: `az aro show -n -g --query '{api:apiserverProfile.ip, ingress:ingressProfiles[0].ip}'` .
+
+* A OpenShift-konzol a beépített tartomány helyett egy URL-címen lesz elérhető `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
+
+* Alapértelmezés szerint a OpenShift önaláírt tanúsítványokat használ a által létrehozott összes útvonalhoz `*.apps.<random>.<location>.aroapp.io` .  Ha úgy dönt, hogy a fürthöz való csatlakozás után egyéni DNS-t használ, akkor a OpenShift dokumentációjában [be kell állítania egy egyéni hitelesítésszolgáltatót a bejövő vezérlőhöz](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) , valamint az [API-kiszolgáló egyéni hitelesítésszolgáltatóját](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html).
+
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Két üres alhálózatot tartalmazó virtuális hálózat létrehozása
 
 Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálózatot tartalmaz.
 
-1. **Állítsa be a következő változókat.**
+1. **Állítsa be a következő változókat abban a rendszerhéj-környezetben, amelyben végre fogja hajtani a `az` parancsokat.**
 
    ```console
    LOCATION=eastus                 # the location of your cluster
@@ -99,9 +114,9 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
    CLUSTER=cluster                 # the name of your cluster
    ```
 
-1. **Erőforráscsoport létrehozása**
+1. **Hozzon létre egy erőforráscsoportot.**
 
-    Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot az [az Group Create] [az-Group-Create] parancs használatával.
+    Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot az az [Group Create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal.
 
     ```azurecli-interactive
     az group create --name $RESOURCEGROUP --location $LOCATION
@@ -126,7 +141,7 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
 
     A OpenShift 4-es verzióját futtató Azure Red Hat OpenShift-fürtökhöz két üres alhálózattal rendelkező virtuális hálózat szükséges a fő-és munkavégző csomópontokhoz.
 
-    Hozzon létre egy új virtuális hálózatot ugyanabban az erőforráscsoporthoz, amelyet korábban hozott létre.
+    Hozzon létre egy új virtuális hálózatot ugyanabban az erőforráscsoportban, amelyet korábban hozott létre:
 
     ```azurecli-interactive
     az network vnet create \
@@ -189,10 +204,12 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
 
 ## <a name="create-the-cluster"></a>A fürt létrehozása
 
-Futtassa a következő parancsot egy fürt létrehozásához. [A Red Hat pull Secret](#get-a-red-hat-pull-secret-optional) is átadható, amely lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Container-jegyzékekhez a további tartalommal együtt.
+Futtassa a következő parancsot egy fürt létrehozásához. Ha a következő lehetőségek egyikét választja, módosítsa a parancsot ennek megfelelően:
+* [A Red Hat pull Secret](#get-a-red-hat-pull-secret-optional) is átadható, amely lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Container-jegyzékekhez a további tartalommal együtt. Adja hozzá az `--pull-secret @pull-secret.txt` argumentumot a parancshoz.
+* Igény szerint [Egyéni tartományt is használhat](#prepare-a-custom-domain-for-your-cluster-optional). Adja hozzá az `--domain foo.example.com` argumentumot a parancshoz, és cserélje le a kifejezést `foo.example.com` a saját egyéni tartományára.
 
->[!NOTE]
-> Ha másolási és beillesztési parancsokat használ, és a választható paraméterek egyikét használja, ügyeljen arra, hogy törölje a kezdeti hashtageket és a záró megjegyzés szövegét. Emellett a parancs előző sorában található argumentumot záró fordított perjeltel is lezárhatja.
+> [!NOTE]
+> Ha nem kötelező argumentumokat ad hozzá a parancshoz, akkor ügyeljen arra, hogy a parancs előző sorában található argumentumot záró fordított perjeltel adja meg.
 
 ```azurecli-interactive
 az aro create \
@@ -201,17 +218,9 @@ az aro create \
   --vnet aro-vnet \
   --master-subnet master-subnet \
   --worker-subnet worker-subnet
-  # --domain foo.example.com # [OPTIONAL] custom domain
-  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
 A parancs végrehajtása után az `az aro create` általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
-
->[!IMPORTANT]
-> Ha úgy dönt, hogy egyéni tartományt ad meg, például **foo.example.com**, a OpenShift-konzol a beépített tartomány helyett egy URL-címen lesz elérhető `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
->
-> Alapértelmezés szerint a OpenShift önaláírt tanúsítványokat használ a által létrehozott összes útvonalhoz `*.apps.<random>.<location>.aroapp.io` .  Ha úgy dönt, hogy a fürthöz való csatlakozás után egyéni DNS-t használ, akkor a OpenShift dokumentációjában [be kell állítania egy egyéni hitelesítésszolgáltatót a bejövő vezérlőhöz](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) , valamint az [API-kiszolgáló egyéni hitelesítésszolgáltatóját](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html).
->
 
 ## <a name="next-steps"></a>További lépések
 

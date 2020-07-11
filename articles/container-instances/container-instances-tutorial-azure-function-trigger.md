@@ -4,12 +4,12 @@ description: HTTP-alapú, kiszolgáló nélküli PowerShell-függvény létrehoz
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: ''
-ms.openlocfilehash: d5fa4acf7ac5a7d0b9103458636adff4befcc3d9
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 298cf1452e514ede540e23d4e64f6dd1059cceab
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144870"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259753"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Oktatóanyag: egy HTTP-triggert használó Azure-függvény használata tároló csoport létrehozásához
 
@@ -33,7 +33,7 @@ A cikkben szereplő további lépések a Azure PowerShell használatát ismertet
 
 ## <a name="create-a-basic-powershell-function"></a>Alapszintű PowerShell-függvény létrehozása
 
-Kövesse az [első PowerShell-függvény létrehozása az Azure-ban](../azure-functions/functions-create-first-function-powershell.md) című témakör lépéseit, és hozzon létre egy PowerShell-függvényt a http-trigger sablon használatával. Használja az alapértelmezett Azure-függvény nevét **HttpTrigger**. Ahogy a gyors útmutatóban is látható, a függvényt helyileg tesztelheti, és közzéteheti a projektet egy Azure-beli Function alkalmazásban. Ez a példa egy alapszintű HTTP-triggert használó függvény, amely szöveges karakterláncot ad vissza. A cikk későbbi lépéseiben módosítja a függvényt egy tároló csoport létrehozásához.
+Kövesse az [első PowerShell-függvény létrehozása az Azure-ban](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell) című témakör lépéseit, és hozzon létre egy PowerShell-függvényt a http-trigger sablon használatával. Használja az alapértelmezett Azure-függvény nevét **HttpTrigger**. Ahogy a gyors útmutatóban is látható, a függvényt helyileg tesztelheti, és közzéteheti a projektet egy Azure-beli Function alkalmazásban. Ez a példa egy alapszintű HTTP-triggert használó függvény, amely szöveges karakterláncot ad vissza. A cikk későbbi lépéseiben módosítja a függvényt egy tároló csoport létrehozásához.
 
 Ez a cikk azt feltételezi, hogy közzéteszi a projektet a *myfunctionapp*név használatával, amely az Azure-erőforráscsoportban automatikusan elnevezett, a Function app neve ( *myfunctionapp*) alapján. Helyettesítse be az egyedi Function-alkalmazás nevét és az erőforráscsoport nevét a későbbi lépésekben.
 
@@ -181,7 +181,7 @@ Példa a kimenetre:
 Hello from an Azure container instance triggered by an Azure function
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az oktatóanyagban létrehozott összes erőforrásra, a [az Group delete] [az-Group-delete] parancs futtatásával távolítsa el az erőforráscsoportot és a benne található összes erőforrást. Ez a parancs törli a létrehozott Function alkalmazást, valamint a futó tárolót és az összes kapcsolódó erőforrást.
 
@@ -191,7 +191,7 @@ az group delete --name myfunctionapp
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létrehozott egy Azure-függvényt, amely HTTP-kérést végez, és elindítja egy tároló csoport üzembe helyezését. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban létrehozott egy Azure-függvényt, amely HTTP-kérést végez, és elindítja egy tároló csoport üzembe helyezését. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * A Visual Studio Code és a Azure Functions bővítmény használatával hozzon létre egy alapszintű HTTP-triggeres PowerShell-függvényt.
@@ -201,7 +201,7 @@ Ebben az oktatóanyagban létrehozott egy Azure-függvényt, amely HTTP-kérést
 
 A tárolók elindítására és figyelésére vonatkozó részletes példákért tekintse meg az [eseményvezérelt kiszolgáló nélküli tárolók PowerShell-Azure functions és Azure Container instances és a hozzá](https://dev.to/azure/event-driven-serverless-containers-with-powershell-azure-functions-and-azure-container-instances-e9b) [tartozó kódrészletet](https://github.com/anthonychu/functions-powershell-run-aci)ismertető blogbejegyzést.
 
-Az Azure functions létrehozásával és a functions-projektek közzétételével kapcsolatos részletes útmutatásért tekintse meg az [Azure functions dokumentációját](/azure/azure-functions/) . 
+Az Azure functions létrehozásával és a functions-projektek közzétételével kapcsolatos részletes útmutatásért tekintse meg az [Azure functions dokumentációját](../azure-functions/index.yml) . 
 
 <!-- IMAGES -->
 

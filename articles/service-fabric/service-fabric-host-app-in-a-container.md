@@ -3,16 +3,16 @@ title: .NET-alkalmazás üzembe helyezése tárolóban az Azure Service Fabric
 description: Megtudhatja, hogyan helyezhet tárolóba egy meglévő .NET-alkalmazást a Visual Studio segítségével, illetve hogyan végezhet helyi hibakeresést a Service Fabric szolgáltatásbeli tárolókon. A tárolóba helyezett alkalmazást a rendszer Azure-tárolóregisztrációs adatbázisba küldi, és üzembe helyezi egy Service Fabric-fürtben. Az Azure-ban való üzembe helyezéskor az alkalmazás Azure SQL-adatbázist használ adatmegőrzéshez.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: aa99897da99ff1a1443e548e98ae415b6a8d49f5
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4970cf6492da38ad76a51df88eeb73538c850c67
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234236"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258874"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Oktatóanyag: Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre
 
-Ez az oktatóanyag bemutatja, hogyan helyezhet tárolóba egy meglévő ASP.NET-alkalmazást és csomagot Service Fabric-alkalmazásként.  Futtassa a tárolókat helyileg egy Service Fabric fejlesztési fürtön, és telepítse az alkalmazást az Azure-ba.  Az alkalmazás [Azure SQL-adatbázisban](/azure/sql-database/sql-database-technical-overview) őrzi meg az adatokat.
+Ez az oktatóanyag bemutatja, hogyan helyezhet tárolóba egy meglévő ASP.NET-alkalmazást és csomagot Service Fabric-alkalmazásként.  Futtassa a tárolókat helyileg egy Service Fabric fejlesztési fürtön, és telepítse az alkalmazást az Azure-ba.  Az alkalmazás [Azure SQL-adatbázisban](../azure-sql/database/sql-database-paas-overview.md) őrzi meg az adatokat.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -20,7 +20,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 >
 > * Meglévő alkalmazás tárolóba helyezése a Visual Studióval
 > * Adatbázis létrehozása Azure SQL Database
-> * Azure Container Registry létrehozása
+> * Azure tárolóregisztrációs adatbázis létrehozása
 > * Service Fabric-alkalmazás üzembe helyezése az Azure-ban
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -55,7 +55,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 A Fabrikam Fiber CallCenter alkalmazás éles futtatásakor az adatokat egy adatbázisban kell tárolni. Jelenleg nincs mód az állandó adatok biztosítására egy tárolóban, ezért nem tárolhat éles adatokat az SQL Serveren egy tárolóban.
 
-Javasoljuk, hogy használjon egy [Azure SQL-adatbázist](/azure/sql-database/sql-database-get-started-powershell). Egy felügyelt SQL Server-adatbázis Azure-ban való létrehozásához és futtatásához hajtsa végre az alábbi szkriptet.  Szükség esetén módosítsa a szkript változóit. A *clientIP* a fejlesztői számítógépe IP-címe. Jegyezze fel a parancsfájl által kiszolgált kiszolgáló nevét.
+Javasoljuk, hogy használjon egy [Azure SQL-adatbázist](../azure-sql/database/powershell-script-content-guide.md). Egy felügyelt SQL Server-adatbázis Azure-ban való létrehozásához és futtatásához hajtsa végre az alábbi szkriptet.  Szükség esetén módosítsa a szkript változóit. A *clientIP* a fejlesztői számítógépe IP-címe. Jegyezze fel a parancsfájl által kiszolgált kiszolgáló nevét.
 
 ```powershell
 $subscriptionID="<subscription ID>"
@@ -124,9 +124,9 @@ Lépjen vissza a **FabrikamFiber.Web** projektre, frissítse a kapcsolati sztrin
 
 Nyomja meg az **F5** billentyűt a tárolóban lévő alkalmazás helyi Service Fabric fejlesztői fürtön való debug módú futtatásához. Ha megjelenik egy üzenetablak, amelyben a rendszer arra kéri, hogy adjon a „ServiceFabricAllowedUsers” csoportnak olvasási és végrehajtási engedélyt a Visual Studio projekt könyvtárához, kattintson az **Igen** gombra.
 
-## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
+## <a name="create-a-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
-Most, hogy az alkalmazás fut a helyi környezetben, megkezdheti az Azure-ba való telepítést.  A tárolólemezképeket tárolóregisztrációs adatbázisban kell tárolni.  Hozzon létre egy [Azure tárolóregisztrációs adatbázist](/azure/container-registry/container-registry-intro) az alábbi szkript segítségével. A tárolóregisztrációs adatbázis neve más Azure-előfizetések számára is látható, ezért egyedinek kell lennie.
+Most, hogy az alkalmazás fut a helyi környezetben, megkezdheti az Azure-ba való telepítést.  A tárolólemezképeket tárolóregisztrációs adatbázisban kell tárolni.  Hozzon létre egy [Azure tárolóregisztrációs adatbázist](../container-registry/container-registry-intro.md) az alábbi szkript segítségével. A tárolóregisztrációs adatbázis neve más Azure-előfizetések számára is látható, ezért egyedinek kell lennie.
 Az alkalmazás Azure-ba való telepítése előtt a tárolólemezképet fel kell töltenie ebbe az adatbázisba.  Amikor az alkalmazást telepíti az Azure-ban lévő fürtbe, a tárolólemezképet a rendszer lekéri az adatbázisból.
 
 ```powershell
@@ -151,7 +151,7 @@ A következőket teheti:
 
 Ez az oktatóanyag a fürt Visual Studióból való létrehozását ismerteti, mely ideális megoldás tesztelési forgatókönyvekhez. Ha más módon hoz létre fürtöt, vagy ha már rendelkezik fürttel, akkor átmásolhatja a kapcsolati végpontját, vagy kiválaszthatja azt az előfizetéséből.
 
-A Kezdés előtt nyissa meg a FabrikamFiber. Web-> PackageRoot-> ServiceManifest. xml fájlt a Megoldáskezelő. Jegyezze fel a **végpontban**felsorolt webes kezelőfelület portját.
+Mielőtt elkezdené, nyissa meg a FabrikamFiber. Web->PackageRoot->ServiceManifest.xml a Megoldáskezelőban. Jegyezze fel a **végpontban**felsorolt webes kezelőfelület portját.
 
 A fürt létrehozásakor:
 
@@ -179,7 +179,7 @@ A fürt létrehozásakor:
 
 ## <a name="allow-your-application-running-in-azure-to-access-sql-database"></a>Az Azure-ban futó alkalmazás SQL Database elérésének engedélyezése
 
-Korábban egy SQL-tűzfalszabály létrehozásával engedélyezte a hozzáférést a helyi gépen futtatott alkalmazásnak.  Most az Azure-ban futó alkalmazásnak kell engedélyeznie az SQL-adatbázis elérését.  Hozzon létre egy [virtuális hálózati szolgáltatásvégpontot](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) a Service Fabric-fürtnek, majd hozzon létre egy szabályt, mely engedélyezi az adott végpontnak az SQL-adatbázis elérését. Ügyeljen arra, hogy a fürt létrehozásakor figyelembe vett fürterőforrás-csoport változót is megadhatja.
+Korábban egy SQL-tűzfalszabály létrehozásával engedélyezte a hozzáférést a helyi gépen futtatott alkalmazásnak.  Most az Azure-ban futó alkalmazásnak kell engedélyeznie az SQL-adatbázis elérését.  Hozzon létre egy [virtuális hálózati szolgáltatásvégpontot](../azure-sql/database/vnet-service-endpoint-rule-overview.md) a Service Fabric-fürtnek, majd hozzon létre egy szabályt, mely engedélyezi az adott végpontnak az SQL-adatbázis elérését. Ügyeljen arra, hogy a fürt létrehozásakor figyelembe vett fürterőforrás-csoport változót is megadhatja.
 
 ```powershell
 # Create a virtual network service endpoint
@@ -227,7 +227,7 @@ $vnetRuleObject1 = New-AzSqlServerVirtualNetworkRule `
   -VirtualNetworkSubnetId $subnetID;
 ```
 
-## <a name="deploy-the-application-to-azure"></a>Az alkalmazás központi telepítése az Azure-ban
+## <a name="deploy-the-application-to-azure"></a>Az alkalmazás üzembe helyezése az Azure-ban
 
 Most, hogy az alkalmazása kész, üzembe helyezheti az Azure-beli fürtben közvetlenül a Visual Studióból.  A Megoldáskezelőben kattintson a jobb gombbal a **FabrikamFiber.CallCenterApplication** alkalmazásprojektre, és válassza a **Közzététel** lehetőséget.  A **Kapcsolati végpont** területen válassza ki a fürt korábban létrehozott végpontját.  Az **Azure Container Registry** területen válassza ki a korábban létrehozott tárolóregisztrációs adatbázist.  Kattintson a **Közzététel** gombra az alkalmazás Azure-fürtön való közzétételéhez.
 
@@ -268,7 +268,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 >
 > * Meglévő alkalmazás tárolóba helyezése a Visual Studióval
 > * Adatbázis létrehozása Azure SQL Database
-> * Azure Container Registry létrehozása
+> * Azure tárolóregisztrációs adatbázis létrehozása
 > * Service Fabric-alkalmazás üzembe helyezése az Azure-ban
 
 Az oktatóanyag következő részéből megtudhatja, hogyan [helyezhet üzembe tárolóalkalmazást Service Fabric-fürtön CI vagy CD segítségével](service-fabric-tutorial-deploy-container-app-with-cicd-vsts.md).

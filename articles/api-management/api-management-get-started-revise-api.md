@@ -14,15 +14,15 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c91d42f3445bb2ffc02366e6cb9ae49ec2db1be4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7a4655b20fabcc72e02037de05dd0ef7c4671e52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75442756"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254911"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Változatok használata a nem kompatibilitástörő változások biztonságos elvégzéséhez
-Amikor az API készen áll, és a fejlesztők elkezdik a használatát, előbb-utóbb módosításokat kell végeznie az API-n, miközben nem akadályozza az API hívóit. Emellett az is hasznos, ha a fejlesztők értesülnek az elvégzett módosításokról. Az Azure API Managementben ez a **változatok** használatával valósítható meg. További információ: [Verziók és változatok](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) és [API-k verziókezelése az Azure API Managementtel](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
+Amikor az API készen áll, és a fejlesztők elkezdik a használatát, előbb-utóbb módosításokat kell végeznie az API-n, miközben nem akadályozza az API hívóit. Emellett az is hasznos, ha a fejlesztők értesülnek az elvégzett módosításokról. Az Azure API Managementben ez a **változatok** használatával valósítható meg. További információ: [Verziók és változatok](https://azure.microsoft.com/blog/versions-revisions/) és [API-k verziókezelése az Azure API Managementtel](https://azure.microsoft.com/blog/api-versioning-with-azure-api-management/).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -53,7 +53,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     > Az API helyi menüjében (**...**) található **Változat hozzáadása** lehetőséget is választhatja.
 
 5. Adja meg az új változat leírását, amely alapján emlékezni fog a változat funkciójára.
-6. **Létrehozás** kiválasztása
+6. Kattintson a **Létrehozás** elemre.
 7. Az új változat létrehozása megtörtént.
 
     > [!NOTE]

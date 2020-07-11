@@ -1,18 +1,18 @@
 ---
 title: A Azure Security Center beépített szabályzat-definíciói
 description: A Azure Security Center Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.topic: sample
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-samples
-ms.openlocfilehash: a43ecc5d3a2c1d6de7a95d854a8ad4c778f37b5d
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 141d94eddf4b7c22ecdb28d1104f818e34fa9ed5
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320876"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276556"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>A Azure Security Center beépített definíciói Azure Policy
 

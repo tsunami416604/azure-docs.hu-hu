@@ -1,15 +1,15 @@
 ---
 title: A Azure Event Grid beépített szabályzat-definíciói
 description: A Azure Event Grid Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: eaa38c2974617f50adeadc821a210fef35c7d967
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3ffa81a8a29ade0a0324dc44545c9be4f05304c0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116029"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276404"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-grid"></a>A Azure Event Grid beépített definíciói Azure Policy
 

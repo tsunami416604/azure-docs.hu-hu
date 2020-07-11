@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 6f4626a8c42f3a50fa273c55099158750241bfee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c6ec2be6daee931a4066ff5ce4f64fc949d497ac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202920"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243426"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure-függvényalkalmazás importálása API-ként az Azure API Management használatával
 
-Az Azure API Management az Azure-függvényalkalmazások új API-ként való importálását vagy a létező API-khoz való hozzáfűzését támogatja. A folyamat automatikusan létrehoz egy gazdagépkulcsot az Azure-függvényalkalmazásban, amelyet aztán az Azure API Management hozzárendel egy névvel ellátott értékhez.
+Az Azure API Management az Azure-függvényalkalmazások új API-ként való importálását vagy a meglévő API-khoz való hozzáfűzését támogatja. A folyamat automatikusan létrehoz egy gazdagépkulcsot az Azure-függvényalkalmazásban, amelyet aztán az Azure API Management hozzárendel egy névvel ellátott értékhez.
 
 Ez a cikk bemutatja az Azure-függvényalkalmazás importálását API-ként az Azure API Management használatával. Ezen kívül a tesztelési folyamatot is ismerteti.
 
@@ -72,7 +72,7 @@ Kövesse az alábbi lépéseket egy új API létrehozásához egy Azure-függvé
     > Kizárólag olyan függvényeket importálhat, amelyek rendelkeznek HTTP-triggerrel, és az engedélyszintjük *Névtelenre* vagy *Függvényre* van állítva.
 
 7. Váltson **teljes** nézetre, és rendelje hozzá a **terméket** az új API-hoz. Szükség esetén más mezőket is megadhat a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#-import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
-8. Kattintson a **Létrehozás**gombra.
+8. Kattintson a **Létrehozás** lehetőségre.
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Azure-függvényalkalmazás hozzáfűzése egy már létező API-hoz
 
@@ -115,7 +115,7 @@ Az Azure-függvényalkalmazás importáláskor automatikusan létrehozza a köve
 * A függvényalkalmazáson belüli APIM-{az*Azure API Management szolgáltatási példányának neve*} nevű gazdagép kulcsa,
 * Megnevezett érték az Azure API Management példányban, amelynek neve {az*azure függvényalkalmazás példánynév*} – kulcs, amely a létrehozott gazdagép kulcsát tartalmazza.
 
-A 2019. április 4. után létrehozott API-k esetében a gazdagép kulcsát a rendszer a API Management lévő HTTP-kérésekben továbbítja a fejlécben található függvényalkalmazás. A régebbi API-k [lekérdezési paraméterként](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)adják át a gazdagép kulcsát. Ez a viselkedés a függvényalkalmazáshoz társított `PATCH Backend` *háttér* -entitás [REST API hívásával](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) módosítható.
+A 2019. április 4. után létrehozott API-k esetében a gazdagép kulcsát a rendszer a API Management lévő HTTP-kérésekben továbbítja a fejlécben található függvényalkalmazás. A régebbi API-k [lekérdezési paraméterként](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)adják át a gazdagép kulcsát. Ez a viselkedés a `PATCH Backend` függvényalkalmazáshoz társított *háttér* -entitás [REST API hívásával](/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) módosítható.
 
 > [!WARNING]
 > Az új Azure-függvényalkalmazás gazdagépkulcsának vagy az Azure API Management névvel ellátott értékének eltávolítása vagy megváltoztatása megszakítja a szolgáltatások közti kommunikációt. Az értékek nem szinkronizálódnak automatikusan.
@@ -152,7 +152,7 @@ Az Azure Portalról közvetlenül meghívhat műveleteket. Az Azure Portalon ké
 
     Az oldalon megjelennek a lekérdezési paraméterek és a fejlécek mezői. Az egyik fejléc a **OCP-APIM-Subscription-Key**, amely az ehhez az API-hoz társított termék előfizetési kulcsához tartozik. Ha Ön hozta létre az API Management-példányt, akkor már eleve rendszergazdának számít, így a kulcsot automatikusan kitölti a rendszer. 
 
-4. Válassza a **Küldés**lehetőséget.
+4. Válassza a **Küldés** lehetőséget.
 
     A háttérrendszer a **200 OK** üzenetet és néhány adatot küld válaszként.
 

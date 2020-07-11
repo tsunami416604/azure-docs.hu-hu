@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2bb37252bc93c982dbc090a0c3f20aef842325f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3f0dca5aa9e430fa21d09509121a7ad26feda446
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75351846"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261330"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Oktatóanyag: Service Fabric Mesh-alkalmazás üzembe helyezése
 
@@ -59,13 +59,13 @@ Ekkor megjelenik a **Service Fabric-alkalmazás közzététele** párbeszédpane
 
 ![Service Fabric Mesh párbeszédpanel a Visual Studióban](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-dialog.png)
 
-Válassza ki az Azure-fiókját és -előfizetését. Válasszon ki egy **helyet**. Ebben a cikkben az **USA keleti régiója** szerepel.
+Válassza ki az Azure-fiókját és -előfizetését. Válasszon egy **helyet**. Ebben a cikkben az **USA keleti régiója** szerepel.
 
-Az **Erőforráscsoport** területen válassza az **\<Új erőforráscsoport létrehozása...>** lehetőséget. Ekkor egy párbeszédpanel jelenik meg, ahol új erőforráscsoportot hozhat létre. Ebben a cikkben az **USA keleti régiója** és a **sfmeshTutorial1RG** nevű csoport szerepel (ha a cégnél többen használják ugyanazt az előfizetést, válasszon egyedi csoportnevet).  Kattintson a **Létrehozás** elemre az erőforrás létrehozásához, majd térjen vissza a párbeszédpanelhez.
+Az **erőforráscsoport**területen válassza a elemet **\<Create New Resource Group...>** . Ekkor egy párbeszédpanel jelenik meg, ahol új erőforráscsoportot hozhat létre. Ebben a cikkben az **USA keleti régiója** és a **sfmeshTutorial1RG** nevű csoport szerepel (ha a cégnél többen használják ugyanazt az előfizetést, válasszon egyedi csoportnevet).  Kattintson a **Létrehozás** elemre az erőforrás létrehozásához, majd térjen vissza a párbeszédpanelhez.
 
 ![A Service Fabric Mesh új párbeszédpanelje a Visual Studióban](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-Miután visszatért a **Service Mesh-alkalmazás közzététele** párbeszédpanelhez, az **Azure Container Registry** területen válassza a **\<Create New Container Registry...>** (Tárolóregisztrációs adatbázis létrehozása) lehetőséget. A **Tárolóregisztrációs adatbázis** párbeszédpanelen használjon egyedi nevet a **Tárolóregisztrációs adatbázis neve** elemhez. Adjon meg egy **helyet** (ebben az oktatóanyagban az **USA keleti régiója** szerepel). A legördülő listában válassza ki az előző lépésben létrehozott **Erőforráscsoportot**, például a **sfmeshTutorial1RG** nevűt. Állítsa **Alapszintűre** a **termékváltozatot**, majd a **Létrehozás** elemre kattintva hozzon létre a privát Azure Container Registryt, és térjen vissza a közzétételi párbeszédpanelhez.
+A **Service Fabric alkalmazás közzététele** párbeszédpanel **Azure Container Registry**területén válassza a elemet **\<Create New Container Registry...>** . A **Tárolóregisztrációs adatbázis** párbeszédpanelen használjon egyedi nevet a **Tárolóregisztrációs adatbázis neve** elemhez. Adjon meg egy **helyet** (ebben az oktatóanyagban az **USA keleti régiója** szerepel). A legördülő listában válassza ki az előző lépésben létrehozott **Erőforráscsoportot**, például a **sfmeshTutorial1RG** nevűt. Állítsa **Alapszintűre** a **termékváltozatot**, majd a **Létrehozás** elemre kattintva hozzon létre a privát Azure Container Registryt, és térjen vissza a közzétételi párbeszédpanelhez.
 
 ![A Service Fabric Mesh új tárolóregisztrációs adatbázisról szóló párbeszédpanelje a Visual Studióban](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
@@ -139,4 +139,4 @@ Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
 > [Service Fabric Mesh-alkalmazás frissítése](service-fabric-mesh-tutorial-upgrade.md)
 
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: /cli/azure/install-azure-cli?view=azure-cli-latest

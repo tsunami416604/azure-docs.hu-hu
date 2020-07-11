@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 6ce2e5a71d48942642ee01d8d2cc75a232abf259
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f06387ea317029f5648ab0884cea80262e8640a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82159949"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245007"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Oktatóanyag: ASP.NET Core-alkalmazások monitorozása és diagnosztikája a Service Fabricben az Application Insights használatával
 
@@ -65,7 +65,7 @@ Miután kitöltötte a kötelező információkat, kattintson a **Létrehozás**
 
 ## <a name="add-application-insights-to-the-applications-services"></a>Az Application Insights hozzáadása az alkalmazás szolgáltatásaihoz
 
-Indítsa el a Visual Studio 2019-et emelt szintű jogosultságokkal. ehhez kattintson a jobb gombbal a Visual Studio ikonra a Start menüben, és válassza a **Futtatás rendszergazdaként**parancsot. Kattintson a **fájl** > **megnyitása** > **projekt/megoldás** elemre, és navigáljon a szavazási alkalmazáshoz (az oktatóanyag első részében vagy a git CLONED részben létrehozott). Nyissa meg a *szavazás. SLN*. Ha a rendszer felszólítja az alkalmazás NuGet-csomagjainak visszaállítására, kattintson az **Igen**gombra.
+Indítsa el a Visual Studio 2019-et emelt szintű jogosultságokkal. ehhez kattintson a jobb gombbal a Visual Studio ikonra a Start menüben, és válassza a **Futtatás rendszergazdaként**parancsot. Kattintson a **fájl**  >  **megnyitása**  >  **projekt/megoldás** elemre, és navigáljon a szavazási alkalmazáshoz (az oktatóanyag első részében vagy a git CLONED részben létrehozott). Nyissa meg a *szavazás. SLN*. Ha a rendszer felszólítja az alkalmazás NuGet-csomagjainak visszaállítására, kattintson az **Igen**gombra.
 
 A következő lépésekkel konfigurálhatja a Application Insightst mind a VotingWeb, mind a VotingData szolgáltatáshoz:
 
@@ -102,14 +102,14 @@ A NuGet-csomag beállításának lépései a következők:
     ![AI sdk Nuget](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
 5. Kattintson az **OK** gombra a megjelenő *változások megtekintése* párbeszédpanelen, és fogadja el a *licenc elfogadását*. Ezzel a szolgáltatásokhoz adja a NuGetet.
 6. Most be kell állítania a két szolgáltatásban a telemetriainicializálót. Ehhez nyissa meg a *VotingWeb.cs* és a *VotingData.cs*. Mindkettőhöz végezze el a következő lépéseket:
-    1. Adja hozzá ezt a két *using* utasítást az egyes * \<szolgáltatásnév>. cs*tetején, a meglévő *using* utasítások után:
+    1. Adja hozzá ezt a két *using* utasítást a * \<ServiceName> . cs*tetején, a meglévő *using* utasítások után:
 
     ```csharp
     using Microsoft.ApplicationInsights.Extensibility;
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
 
-    2. Mindkét fájlban a *CreateServiceInstanceListeners ()* vagy a *CreateServiceReplicaListeners ()* elem beágyazott *visszatérési* utasításában, a *ConfigureServices* > *Services*alatt, a többi egyedi szolgáltatás deklarálva, adja hozzá a következőt:
+    2. Mindkét fájlban a *CreateServiceInstanceListeners ()* vagy a *CreateServiceReplicaListeners ()* elem beágyazott *visszatérési* utasításában, a *ConfigureServices*  >  *Services*alatt, a többi egyedi szolgáltatás deklarálva, adja hozzá a következőt:
     ```csharp
     .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
     ```
@@ -168,7 +168,7 @@ Ekkor készen áll az alkalmazás üzembe helyezésére. Kattintson a felső **S
 >[!NOTE]
 >Ha nem rendelkezik a telepített .NET Core SDK naprakész verziójával, felépítési hibaüzenetet kaphat.
 
-Ha az alkalmazás üzembe helyezése befejeződött, lépjen a oldalra `localhost:8080`, ahol megtekintheti a szavazó minta egyoldalas alkalmazását. Szavazzon néhány tetszőleges elemre, hogy mintaadatokat és telemetriát hozzon létre – én az édességeket választottam!
+Ha az alkalmazás üzembe helyezése befejeződött, lépjen a oldalra `localhost:8080` , ahol megtekintheti a szavazó minta egyoldalas alkalmazását. Szavazzon néhány tetszőleges elemre, hogy mintaadatokat és telemetriát hozzon létre – én az édességeket választottam!
 
 ![AI mintaszavazatok](./media/service-fabric-tutorial-monitoring-aspnet/vote-sample.png)
 
@@ -251,7 +251,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-Miután végzett ezekkel a módosításokkal, **indítsa el** az alkalmazást a legújabb verzió felépítéséhez és üzembe helyezéséhez. Ha az alkalmazás üzembe helyezése megtörtént, lépjen a `localhost:8080`rendszerbe, és adjon hozzá néhány szavazati lehetőséget. Ezután térjen vissza az Application Insights erőforrásra a legutóbbi futtatás nyomainak megtekintéséhez (a korábbiakhoz hasonlóan a nyomok megjelenítése 1-2 percbe telhet az Application Insightsban). Most minden hozzáadott és törölt szavazathoz egy „Egyéni eseményt”\* kell látnia az összes választelemetriával együtt.
+Miután végzett ezekkel a módosításokkal, **indítsa el** az alkalmazást a legújabb verzió felépítéséhez és üzembe helyezéséhez. Ha az alkalmazás üzembe helyezése megtörtént, lépjen a rendszerbe `localhost:8080` , és adjon hozzá néhány szavazati lehetőséget. Ezután térjen vissza az Application Insights erőforrásra a legutóbbi futtatás nyomainak megtekintéséhez (a korábbiakhoz hasonlóan a nyomok megjelenítése 1-2 percbe telhet az Application Insightsban). Most minden hozzáadott és törölt szavazathoz egy „Egyéni eseményt”\* kell látnia az összes választelemetriával együtt.
 
 ![egyéni események](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 
@@ -268,4 +268,4 @@ Most, hogy elvégezte az ASP.NET alkalmazás monitorozása és diagnosztizálás
 
 * [A monitorozás és diagnosztika részletesebb megismerése a Service Fabricben](service-fabric-diagnostics-overview.md)
 * [Service Fabric eseményelemzés az Application Insights szolgáltatással](service-fabric-diagnostics-event-analysis-appinsights.md)
-* Az Application Insightsról további információt az [Application Insights dokumentációban](https://docs.microsoft.com/azure/application-insights/) talál
+* Az Application Insightsról további információt az [Application Insights dokumentációban](/azure/application-insights/) talál

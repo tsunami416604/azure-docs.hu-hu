@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/10/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 7fbfe49d4240d1916bd18a4c1a43bfe3d1fca010
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 35fda5ca33594a88318874c50463c7c5cca2b767
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85313362"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277276"
 ---
-|Name (Név)<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Név<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Engedélyezett modul-szerzők konfigurálása a megadott Azure Machine Learning számításokhoz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F53c70b02-63dd-11ea-bc55-0242ac130003) |Ez a szabályzat segít az engedélyezett modulok szerzője számára a megadott Azure Machine Learning számításokban, és hozzárendelhető a munkaterülethez. További információért látogasson el a következő oldalra: [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) . |enforceSetting, letiltva |[1.0.1 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedModuleAuthors_EnforceSetting.json) |
 |[Engedélyezett Python-csomagok konfigurálása a megadott Azure Machine Learning számításokhoz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77eeea86-7e81-4a7d-9067-de844d096752) | Ez a szabályzat segít az engedélyezett Python-csomagok megadásában a megadott Azure Machine Learning számításokban, és hozzárendelhető a munkaterülethez. További információért látogasson el a következő oldalra: [https://aka.ms/amlpolicydoc](https://aka.ms/amlpolicydoc) . |enforceSetting, letiltva |[1.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Machine%20Learning/AllowedPythonPackageChannels_EnforceSetting.json) |
