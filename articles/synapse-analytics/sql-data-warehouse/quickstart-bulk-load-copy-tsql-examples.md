@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql-dw
-ms.date: 05/06/2020
+ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94f9aca38ebe6fef50b555fa0d5b09050d996366
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: f9aa0214712704c1a80f73ae3fd05929f7245eb3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230621"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274142"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Adattárolás biztonságos betöltése a szinapszis SQL használatával
 
@@ -93,6 +93,11 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
    > [!NOTE]
    > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
    
+    > [!IMPORTANT]
+    > Határozza meg a **Storage** **blob** -Adattulajdonost, közreműködőt vagy olvasó RBAC szerepkört. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől. 
+
+    ![RBAC engedélyek megadása a betöltéshez](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
+
 4. Most már futtathatja a "felügyelt identitás" megadását megadó MÁSOLÁSi utasítást:
 
     ```sql
@@ -104,14 +109,15 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
     )
     ```
 
-> [!IMPORTANT]
->
-> - Határozza meg a **Storage** **blob** -Adattulajdonost, közreműködőt vagy olvasó RBAC szerepkört. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől. 
-
 ## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory hitelesítés (HRE)
 #### <a name="steps"></a>Lépések
 
 1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen hozzá **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** RBAC-szerepkört a HRE-felhasználóhoz. 
+
+    > [!IMPORTANT]
+    > Határozza meg a **Storage** **blob** -Adattulajdonost, közreműködőt vagy olvasó RBAC szerepkört. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől.
+
+    ![RBAC engedélyek megadása a betöltéshez](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
 2. Konfigurálja az Azure AD-hitelesítést az alábbi [dokumentáción](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#create-an-azure-ad-administrator-for-azure-sql-server)keresztül. 
 
@@ -125,9 +131,6 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
     )
     ```
 
-> [!IMPORTANT]
->
-> - Határozza meg a **Storage** **blob** -Adattulajdonost, közreműködőt vagy olvasó RBAC szerepkört. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől. 
 
 ## <a name="e-service-principal-authentication"></a>E. Szolgáltatásnév-hitelesítés
 #### <a name="steps"></a>Lépések
@@ -154,7 +157,7 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 >
 > - Az OAuth 2,0 token végpont **v1** -es verziójának használata
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A részletes szintaxissal kapcsolatban olvassa el a [copy utasítással](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) kapcsolatos cikket.
 - Az ajánlott eljárások betöltéséhez tekintse meg az [adatgyűjtés áttekintése című](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt) cikket

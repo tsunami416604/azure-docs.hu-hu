@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b8d30e7fe3138a26d9b64ec35d18260933df7999
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82780307"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276114"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Mely régiók érhetők el?
 
@@ -48,6 +48,10 @@ Jelenleg csak a szöveg másolása/beillesztése támogatott. Az olyan funkciók
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Mely böngészők támogatottak?
 
 Használja a Microsoft Edge böngészőt vagy a Google Chrome-ot Windows rendszeren. Apple Mac esetén használja a Google Chrome böngészőt. A Microsoft Edge Chromium a Windows és a Mac rendszereken is támogatott.
+
+### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>Hol tárolja az Azure Bastion az ügyféladatokat?
+
+Az Azure Bastion nem helyezi át és nem tárolja az ügyféladatokat a-ben üzembe helyezett régióból.
 
 ### <a name="are-any-roles-required-to-access-a-virtual-machine"></a><a name="roles"></a>Vannak olyan szerepkörök, amelyek szükségesek a virtuális gépek eléréséhez?
 

@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – szinapszis SQL-készlet létrehozása (előzetes verzió) a Azure Portal használatával
+title: 'Rövid útmutató: szinapszis SQL-készlet létrehozása (előzetes verzió) a Azure Portal használatával'
 description: Az útmutató lépéseinek követésével hozzon létre egy új szinapszis SQL-készletet a Azure Portal használatával.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 966ca099c44ba8b0f2d3241c391f4d7a101afb26
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 768b559ddaf7364726cb26a34d12f357d4126426
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955097"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274254"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-preview-using-the-azure-portal"></a>Rövid útmutató: szinapszis SQL-készlet létrehozása (előzetes verzió) a Azure Portal használatával
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
 ## <a name="navigate-to-the-synapse-workspace"></a>Navigáljon a szinapszis munkaterületre
 
@@ -60,7 +60,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 4. Válassza a **nincs** lehetőséget, ha az SQL-készletet adatnélkül szeretné kiépíteni. Hagyja bejelölve az alapértelmezett rendezést.
 ![SQL-készlet folyamat létrehozása – további beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
-5. Válassza az **Áttekintés + létrehozás** lehetőséget.
+5. Válassza az **Áttekintés és létrehozás** lehetőséget.
 6. Győződjön meg arról, hogy a korábban megadott adatok alapján a részletek helyesek. Válassza a **Létrehozás** lehetőséget.
 ![SQL-készlet létrehozása folyamat – felülvizsgálati beállítások lap.](media/quickstart-create-sql-pool/create-sql-pool-portal-04.png)
 
@@ -73,7 +73,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 
 Az SQL-készlet létrehozása után elérhető lesz a munkaterületen az adatok betöltéséhez, a streamek feldolgozásához, a tótól való olvasáshoz stb.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az alábbi lépéseket követve törölheti az SQL-készletet a munkaterületről.
 > [!WARNING]
@@ -87,7 +87,7 @@ Ha törölni szeretné az SQL-készletet, hajtsa végre a következő lépéseke
 1. Erősítse meg a törlést, **majd nyomja le a DELETE gomb** ![ SQL Pool (Törlés megerősítése) elemet.](media/quickstart-create-sql-pool/create-sql-pool-portal-11.png)
 1. Ha a folyamat sikeresen befejeződik, az SQL-készlet többé nem jelenik meg a munkaterület erőforrásaiban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd [: rövid útmutató: Apache Spark-készlet létrehozása a szinapszis Studióban webes eszközök használatával](quickstart-apache-spark-notebook.md).
 - Lásd [: rövid útmutató: Apache Spark készlet létrehozása a Azure Portal használatával](quickstart-create-apache-spark-pool-portal.md).

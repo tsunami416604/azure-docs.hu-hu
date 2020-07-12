@@ -7,11 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25aafee59c7f5f7ae59aa2fd7871de8926907f68
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84325133"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261372"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps
 
@@ -23,7 +24,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített ké
 
 * Egy másik logikai alkalmazástól érkező HTTPS-hívás fogadása és megválaszolása.
 
-A kérelem-trigger támogatja [Azure Active Directory nyílt hitelesítés](../active-directory/develop/about-microsoft-identity-platform.md) (Azure ad OAuth) használatát a logikai alkalmazás bejövő hívásainak engedélyezéséhez. A hitelesítés engedélyezésével kapcsolatos további információkért tekintse [meg a biztonságos hozzáférés és adatok Azure Logic apps – Azure ad OAuth-hitelesítés engedélyezése](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)című témakört.
+A kérelem-trigger támogatja [Azure Active Directory nyílt hitelesítés](/azure/active-directory/develop/) (Azure ad OAuth) használatát a logikai alkalmazás bejövő hívásainak engedélyezéséhez. A hitelesítés engedélyezésével kapcsolatos további információkért tekintse [meg a biztonságos hozzáférés és adatok Azure Logic apps – Azure ad OAuth-hitelesítés engedélyezése](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -73,8 +74,8 @@ Ez a beépített trigger egy manuálisan megadható HTTPS-végpontot hoz létre,
 
    | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
    |---------------|--------------------|----------|-------------|
-   | **HTTP POST URL-CÍM** | nEz egy | Yes | A logikai alkalmazás mentése után generált végponti URL-cím, amely a logikai alkalmazás meghívására szolgál |
-   | **Kérelem törzsének JSON-sémája** | `schema` | No | A bejövő kérelem törzsében található tulajdonságokat és értékeket leíró JSON-séma |
+   | **HTTP POST URL-CÍM** | nEz egy | Igen | A logikai alkalmazás mentése után generált végponti URL-cím, amely a logikai alkalmazás meghívására szolgál |
+   | **Kérelem törzsének JSON-sémája** | `schema` | Nem | A bejövő kérelem törzsében található tulajdonságokat és értékeket leíró JSON-séma |
    |||||
 
 1. A **kérelem törzse JSON-sémája** mezőben opcionálisan megadhat egy JSON-sémát, amely leírja a beérkező kérelem törzsét, például:
@@ -156,7 +157,7 @@ Ez a beépített trigger egy manuálisan megadható HTTPS-végpontot hoz létre,
          "account": {
             "name": "Contoso",
             "ID": "12345",
-            "address": { 
+            "address": {
                "number": "1234",
                "street": "Anywhere Street",
                "city": "AnyTown",
@@ -171,17 +172,17 @@ Ez a beépített trigger egy manuálisan megadható HTTPS-végpontot hoz létre,
 1. Az alábbi lépéseket követve ellenőrizheti, hogy a bejövő hívás rendelkezik-e a megadott sémának megfelelő kérelem törzsével:
 
    1. A kérelem triggerének címsorában válassza az ellipszisek (**..**.) gombot.
-   
+
    1. Az trigger beállításainak bekapcsolásához kapcsolja be a **séma érvényesítése**elemet, majd kattintson a **kész**gombra.
-   
+
       Ha a bejövő hívás kérelmének törzse nem felel meg a sémának, az trigger hibát ad vissza `HTTP 400 Bad Request` .
 
 1. További tulajdonságok megadásához nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a hozzáadni kívánt paramétereket.
 
    | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
    |---------------|--------------------|----------|-------------|
-   | **Metódus** | `method` | No | Az a módszer, amelyet a bejövő kérelemnek használnia kell a logikai alkalmazás meghívásához. |
-   | **Relatív elérési út** | `relativePath` | No | Annak a paraméternek a relatív elérési útja, amelyet a logikai alkalmazás végpontjának URL-címe el tud fogadni |
+   | **Módszer** | `method` | Nem | Az a módszer, amelyet a bejövő kérelemnek használnia kell a logikai alkalmazás meghívásához. |
+   | **Relatív elérési út** | `relativePath` | Nem | Annak a paraméternek a relatív elérési útja, amelyet a logikai alkalmazás végpontjának URL-címe el tud fogadni |
    |||||
 
    Ez a példa hozzáadja a **Method** tulajdonságot:
@@ -217,7 +218,7 @@ Az trigger alapjául szolgáló JSON-definícióval és az trigger meghívásáv
 
 További információ a kérelmek trigger kimenetéről:
 
-| JSON-tulajdonság neve | Adattípus | Description |
+| JSON-tulajdonság neve | Adattípus | Leírás |
 |--------------------|-----------|-------------|
 | `headers` | Objektum | Egy JSON-objektum, amely leírja a kérelem fejléceit. |
 | `body` | Objektum | Egy JSON-objektum, amely leírja a kérelem törzsének tartalmát |
@@ -258,7 +259,7 @@ A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-
 
    Ebben a példában az egyszerűség kedvéért a kérelem-trigger össze van csukva.
 
-1. Adja meg a válaszüzenethez szükséges értékeket. 
+1. Adja meg a válaszüzenethez szükséges értékeket.
 
    Egyes mezőkben a szövegdobozokra kattintva megnyílik a dinamikus tartalmak listája. Ezután kiválaszthatja azokat a jogkivonatokat, amelyek a munkafolyamat előző lépéseiből származó elérhető kimeneteket jelölik. A korábbi példában megadott sémából származó tulajdonságok most megjelennek a dinamikus tartalmak listájában.
 
@@ -270,19 +271,19 @@ A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-
 
    ![Fejlécek – váltás szöveges nézetre](./media/connectors-native-reqres/switch-to-text-view.png)
 
-   A válasz műveletben megadható tulajdonságokkal kapcsolatos további információk. 
+   A válasz műveletben megadható tulajdonságokkal kapcsolatos további információk.
 
    | Tulajdonság neve | JSON-tulajdonság neve | Kötelező | Leírás |
    |---------------|--------------------|----------|-------------|
-   | **Állapotkód** | `statusCode` | Yes | A válaszban visszaadni kívánt állapotkód |
-   | **Fejlécek** | `headers` | No | Egy JSON-objektum, amely egy vagy több, a válaszban szerepeltetni kívánt fejlécet ismertet. |
-   | **Törzs** | `body` | No | A válasz törzse |
+   | **Állapotkód** | `statusCode` | Igen | A válaszban visszaadni kívánt állapotkód |
+   | **Fejlécek** | `headers` | Nem | Egy JSON-objektum, amely egy vagy több, a válaszban szerepeltetni kívánt fejlécet ismertet. |
+   | **Törzs** | `body` | Nem | A válasz törzse |
    |||||
 
 1. Ha további tulajdonságokat szeretne megadni, például egy JSON-sémát a válasz törzséhez, nyissa meg az **új paraméter hozzáadása** listát, és válassza ki a hozzáadni kívánt paramétereket.
 
-1. Ha elkészült, mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget. 
+1. Ha elkészült, mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Összekötők a Logic Apps számára](../connectors/apis-list.md)

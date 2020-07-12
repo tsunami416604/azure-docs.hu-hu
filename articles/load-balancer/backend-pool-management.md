@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 51b00119a5cb7e49a04f02978613678a5144f8b9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f1718de6bc9a86f85cadf4531386e663d5a420d3
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113972"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273761"
 ---
 # <a name="backend-pool-management"></a>Háttérbeli készlet kezelése
 A háttér-készlet a terheléselosztó kritikus összetevője. A háttér-készlet meghatározza azt az erőforrás-csoportot, amely egy adott terheléselosztási szabály forgalmát fogja szolgálni.
@@ -22,9 +22,9 @@ A háttér-készleteket kétféleképpen lehet konfigurálni:
 * Hálózati kártya (NIC)
 * Kombinált IP-cím és Virtual Network (VNET) erőforrás-azonosító
 
-Konfigurálja a háttér-készletet hálózati adapteren keresztül virtuális gépek és virtuálisgép-méretezési csoportok használata esetén. Ez a módszer az erőforrás és a háttér-készlet közötti legközvetlenebb kapcsolatot hozza létre. 
+A meglévő virtuális gépek és virtuálisgép-méretezési csoportok használata esetén konfigurálja a háttérbeli készletet hálózati adapteren. Ez a módszer az erőforrás és a háttér-készlet közötti legközvetlenebb kapcsolatot hozza létre. 
 
-Olyan esetekben, amikor egy hálózati adapter nem érhető el, például tárolók vagy Kubernetes hüvelyek, a háttér-készletet IP-cím és VNET-azonosító kombináció szerint konfigurálja.
+Ha a háttérbeli készletet egy olyan IP-címtartomány alapján rendeli hozzá, amelyet később virtuális gépek és virtuálisgép-méretezési csoportok létrehozására tervez, konfigurálja a háttér-készletet IP-cím és VNET-azonosító kombinációja szerint.
 
 A cikk konfigurációs fejezetei a következőkre összpontosítanak:
 
@@ -249,7 +249,7 @@ JSON-kérelem törzse:
 Ezt a gyors útmutató [Resource Manager-sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create/) követve helyezzen üzembe egy terheléselosztó és virtuális gépet, és adja hozzá a virtuális gépeket a háttér-készlethez a hálózati adapteren keresztül.
 
 ## <a name="configure-backend-pool-by-ip-address-and-virtual-network"></a>Háttérbeli készlet konfigurálása IP-cím és virtuális hálózat alapján
-A tárolókkal vagy egy előre feltöltött, IP-címmel rendelkező háttér-készlettel rendelkező forgatókönyvek esetén használja az IP-címet és a virtuális hálózatot.
+Az előre kitöltött háttér-készletekkel rendelkező forgatókönyvekben használja az IP-címet és a virtuális hálózatot.
 
 Az alábbi példákban látható módon az összes háttérbeli készlet kezelése közvetlenül a háttér-készlet objektumon történik.
 

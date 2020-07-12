@@ -1,5 +1,5 @@
 ---
-title: Csatlakozás az Azure szinapszis hivatkozásához Azure Cosmos DB
+title: 'Gyors útmutató: csatlakozás az Azure szinapszis-hoz Azure Cosmos DB'
 description: Azure Cosmos DB csatlakoztatása a szinapszis-munkaterülethez a szinapszis-hivatkozással
 services: synapse-analytics
 author: ArnoMicrosoft
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 81cc7745790c7a89576dc5d0ff925dbaff2b2334
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 56b018326e8673e6ac9e625a5732a08238f982fd
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700387"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274322"
 ---
 # <a name="connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Csatlakozás az Azure szinapszis hivatkozásához Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Az adatok Object Explorer a következő lépések végrehajtásával közvetlen�
 5. Nevezze el a társított szolgáltatást. A név megjelenik a Object Explorerban, és a szinapszis futtatási idejének használatával csatlakozik az adatbázishoz és a tárolóhoz. A felhasználóbarát név használatát javasoljuk.
 6. Válassza ki a **Cosmos db fiók nevét** és az **adatbázis nevét**
 7. Választható Ha nincs megadva régió, a szinapszis futásidejű műveletei a legközelebbi régió felé irányítva lesznek, ahol az analitikai tároló engedélyezve van. Manuálisan is beállíthatja, hogy mely régióhoz szeretné elérni a felhasználókat Cosmos DB analitikus tárolóban. Válassza a **további kapcsolatok tulajdonságai** lehetőséget, majd az **új**elemet. A **tulajdonságnév**területen írjon ***PreferredRegions*** , és állítsa be a kívánt régió **értékét** (például: WestUS2, nincs szóköz a szavak és a számok között)
-8. ***Létrehozás*** kiválasztása
+8. Kattintson a ***Létrehozás*** elemre.
 
 Azure Cosmos DB adatbázisok láthatók a Azure Cosmos DB szakaszban **csatolt** lapon. A HTAP engedélyezett Azure Cosmos DB tárolót egy csak OLTP tárolóból lehet megkülönböztetni a következő ikonokkal:
 

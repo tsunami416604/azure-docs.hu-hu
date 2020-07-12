@@ -1,5 +1,5 @@
 ---
-title: Tömeges betöltési adatmennyiség a szinapszis SQL-sel
+title: 'Rövid útmutató: tömeges betöltési adatmennyiség (szinapszis SQ)'
 description: A szinapszis Studio használata tömeges betöltésre a szinapszis SQL-ben
 services: synapse-analytics
 author: kevinvngo
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 959742ec3c0434213d19b0f92fe523671fd60f33
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7f840d4a75be72a4317860dcf4a6708642369a24
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964549"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274220"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>Tömeges betöltés a szinapszis SQL-sel
 
@@ -52,7 +52,7 @@ Mostantól egyszerűen, a szinapszis Studióban található alábbi területekre
 
 6. Kattintson a "parancsfájl megnyitása" elemre, és a MÁSOLÁSi utasítással hozza létre a T-SQL-szkriptet a következővel: ![ az SQL-szkript megnyitása](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A MÁSOLÁSi lehetőségekkel kapcsolatos további információkért olvassa el a [copy utasításról](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) szóló cikket.
 - Tekintse át az [adatbetöltések áttekintése című](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt) cikket

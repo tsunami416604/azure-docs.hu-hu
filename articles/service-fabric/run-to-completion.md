@@ -5,12 +5,12 @@ author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
-ms.openlocfilehash: adf4b11412aa752144d4ed4fef06d2de1d76598d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f2f6aa4380fcf6909957118bf682275350ce68c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431292"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261203"
 ---
 # <a name="runtocompletion"></a>Futtatás befejezésig
 
@@ -45,7 +45,7 @@ Nézzük meg a teljes példát a RunToCompletion szemantika használatával.
 > [!IMPORTANT]
 > Az alábbi példa azt feltételezi, hogy a [Windows-tároló alkalmazások Service Fabric és a Docker használatával történő][containers-getting-started-link]létrehozásának ismerete.
 >
-> Ez a példa mcr.microsoft.com/windows/nanoserver:1809 hivatkozik. A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. További információ: a [Windows-tároló verziójának kompatibilitása](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+> Ez a példa mcr.microsoft.com/windows/nanoserver:1809 hivatkozik. A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. További információ: a [Windows-tároló verziójának kompatibilitása](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
 Az alábbi ServiceManifest.xml a tárolókat jelképező két CodePackages álló szervizcsomagot ismerteti. A *RunToCompletionCodePackage1* csak egy üzenetet naplóz az **StdOut** -ba, és kilép. A *RunToCompletionCodePackage2* egy ideig Pingeli a visszacsatolási címeket, majd a **0**, **1** vagy **2**kilépési kóddal kilép.
 
@@ -112,7 +112,7 @@ A jelenlegi RunToCompletion-támogatáshoz a következő szempontokat kell figye
 * A RunToCompletion szemantikai feladatokkal rendelkező alkalmazások frissítési forgatókönyvei nem engedélyezettek. A felhasználóknak szükség esetén törölnie kell és újra létre kell hozniuk ezeket az alkalmazásokat.
 * A feladatátvételi események hatására a CodePackages a sikeres befejezést követően újra végrehajtható, ugyanazon a csomóponton vagy a fürt más csomópontjain. Többek között a feladatátvételi események, a csomópontok újraindítása és Service Fabric futtatókörnyezet frissítése egy csomóponton.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódó információkról a következő cikkekben olvashat.
 
@@ -129,8 +129,7 @@ A kapcsolódó információkról a következő cikkekben olvashat.
 [application-and-service-manifests-link]: service-fabric-application-and-service-manifests.md
 [setup-entry-point-link]: service-fabric-run-script-at-service-startup.md
 [deployed-service-package-working-with-link]: service-fabric-hosting-model.md#work-with-a-deployed-service-package
-[deployed-code-package-link]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedcodepackage
-[deployed-service-package-link]: https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricdeployedservicePackage
-[fabric-client-link]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient
-[deployed-service-package-fabricclient-link]: https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync
-
+[deployed-code-package-link]: /powershell/module/servicefabric/get-servicefabricdeployedcodepackage
+[deployed-service-package-link]: /powershell/module/servicefabric/get-servicefabricdeployedservicepackage
+[fabric-client-link]: /dotnet/api/system.fabric.fabricclient
+[deployed-service-package-fabricclient-link]: /dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync

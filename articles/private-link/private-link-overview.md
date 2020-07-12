@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c1246c2d3a58ad29503c0767b5c4af303d1f0c54
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3814711f090a7d996271f8fa5bef9ff1394d135a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957486"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276583"
 ---
 # <a name="what-is-azure-private-link"></a>Mi az az Azure privát kapcsolat? 
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage és a SQL Database) és az Azure által üzemeltetett felhasználói/partneri szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül.
@@ -44,11 +44,11 @@ Az Azure Private link a következő előnyöket biztosítja:
 |:-------------------|:-----------------|:----------------|:--------|
 |A standard Azure Load Balancer mögötti privát kapcsolati szolgáltatások | Összes nyilvános régió  | standard Load Balancer támogatott | FE <br/> [További információ](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
 | Azure Storage       |  Összes nyilvános régió       |  A fiók típusa általános célú v2-ben támogatott | FE <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
-| 2\. generációs Azure Data Lake Storage        |  Összes nyilvános régió      |  A fiók típusa általános célú v2-ben támogatott | FE <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
+| 2. generációs Azure Data Lake Storage        |  Összes nyilvános régió      |  A fiók típusa általános célú v2-ben támogatott | FE <br/> [További információ](/azure/storage/common/storage-private-endpoints)  |
 |  Azure SQL Database         | Összes nyilvános régió      |  Proxy- [kapcsolatok házirendjében](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) támogatott | FE <br/> [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |Azure szinapszis Analytics (SQL Data Warehouse)| Összes nyilvános régió |  Proxy- [kapcsolatok házirendjében](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policyhttps://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy) támogatott |FE <br/> [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
 |Azure Cosmos DB|  Összes nyilvános régió | |FE <br/> [További információ](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
-|  Azure Database for PostgreSQL – egyetlen kiszolgáló         | Összes nyilvános régió      |  | FE <br/> [További információ](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
+|  Azure Database for PostgreSQL – egyetlen kiszolgáló         | Összes nyilvános régió      | A általános célú és a Meomry optimalizált díjszabási szintjei támogatottak | FE <br/> [További információ](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
 |  Azure Database for MySQL         | Összes nyilvános régió      |  | FE <br/> [További információ](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
 |  Azure Database for MariaDB         | Összes nyilvános régió      |  | FE <br/> [További információ](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
 |  Azure Key Vault         | Összes nyilvános régió      |  | FE   <br/> [További információ](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
@@ -61,7 +61,7 @@ Az Azure Private link a következő előnyöket biztosítja:
 |Azure Service Bus | Összes nyilvános régió  | A prémium szintű Azure Service Bus támogatott. [Kattintson a rétegek](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-premium-messaging) | FE   <br/> [További információ](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service)    |
 |Azure Relay | Összes nyilvános régió      |  | Előnézet <br/> [További információ](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure Event Grid| Összes nyilvános régió       |  | FE   <br/> [További információ](https://docs.microsoft.com/azure/event-grid/network-security) |
-|Azure Web Apps | Összes nyilvános régió      |  | Előnézet   <br/> [További információ](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|Azure Web Apps | Összes nyilvános régió      | PremiumV2 Windows-és Linux-és rugalmas prémium szintű funkciókkal támogatott  | Előnézet   <br/> [További információ](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 |Azure Machine Learning | USA KELETI RÉGIÓJA, USA 2. NYUGATI RÉGIÓJA, USA DÉLI KÖZÉPSŐ RÉGIÓJA      |  | Előnézet   <br/> [További információ](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure Automation  | Összes nyilvános régió |  | Előnézet | |
 | Azure IoT Hub | Összes nyilvános régió    |  | FE   <br/> [További információ](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
@@ -99,7 +99,7 @@ A korlátokat lásd: [Azure Private link Limits](../azure-resource-manager/manag
 ## <a name="service-level-agreement"></a>szolgáltatói szerződés
 SLA esetén lásd: [SLA az Azure Private linkhez](https://azure.microsoft.com/support/legal/sla/private-link/v1_0/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rövid útmutató: privát végpont létrehozása Azure Portal használatával](create-private-endpoint-portal.md)
 - [Rövid útmutató: privát link szolgáltatás létrehozása a Azure Portal használatával](create-private-link-service-portal.md)

@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14f21b1c0bff5f4d5f77b1547c09ddd6c370ece0
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696983"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276430"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Bevezetés az Azure Metrikaböngésző használatába
 
@@ -38,7 +39,7 @@ Metrikus diagram létrehozásához az erőforrás, Erőforráscsoport, előfizet
 
     > ![Metrika kiválasztása](./media/metrics-getting-started/metric-picker.png)
 
-4. Igény szerint módosíthatja a metrikák összesítését. Előfordulhat például, hogy a diagramot a metrika minimális, maximális vagy átlagos értékének megjelenítésére szeretné megjeleníteni.
+4. Igény szerint [módosíthatja a metrikák összesítését](metrics-charts.md#changing-aggregation). Előfordulhat például, hogy a diagramot a metrika minimális, maximális vagy átlagos értékének megjelenítésére szeretné megjeleníteni.
 
 > [!NOTE]
 > Használja a **metrika hozzáadása** gombot, és ismételje meg ezeket a lépéseket, ha több, ugyanabban a diagramban ábrázolt mérőszámot szeretne látni. Ha egy nézetben több diagramot szeretne megjeleníteni, kattintson a felül található **diagram hozzáadása** gombra.
@@ -66,7 +67,7 @@ Tekintse át a szűrést és a felosztást alkalmazó [diagramok példáit](metr
 
 Testreszabhatja a diagram stílusát, címét és a speciális diagram beállításainak módosítását. Ha végzett a testreszabással, rögzítse azt egy irányítópulton, hogy mentse a munkáját. A metrikák riasztásait is konfigurálhatja. A [termék dokumentációját](metrics-charts.md) követve megismerheti a Azure monitor Metrics Explorer egyéb speciális funkcióit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a Metrikaböngésző speciális funkcióiról](metrics-charts.md)
 * [A Metrikaböngésző hibaelhárítása](metrics-troubleshoot.md)

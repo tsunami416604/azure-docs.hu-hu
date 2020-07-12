@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 07/10/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6e7294f10ba094a1adaae399187fb9973397a561
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2589c2abf13edc19b930d597a4d75a2be823f45d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83868023"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86277731"
 ---
 Az Azure Shared Disks (előzetes verzió) az Azure Managed Disks új funkciója, amely lehetővé teszi a felügyelt lemezek egyidejű csatolását több virtuális géphez (VM). A felügyelt lemezek több virtuális géphez való csatolásával új vagy meglévő fürtözött alkalmazásokat telepíthet át az Azure-ba.
 
@@ -41,7 +41,7 @@ A legtöbb Windows-alapú fürtözés a WSFC-re épít, amely a fürtcsomóponto
 
 Néhány a WSFC-n futó népszerű alkalmazások közül:
 
-- Az SQL Server fürtözött feladatátvételi példánya (FCI)
+- [Az Azure Shared Disks (SQL Server Azure-beli virtuális gépeken) létrehozása](../articles/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md)
 - Kibővíthető fájlkiszolgáló (SoFS)
 - Általános célú fájlkiszolgáló (IW számítási feladat)
 - Távoli asztali kiszolgáló felhasználói profillemez (RDS UPD)
@@ -87,7 +87,12 @@ Az ultra-lemezek további szabályozást kínálnak, összesen két szabályozá
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Egy tábla képe, amely az írásvédett vagy olvasási/írási hozzáférést a foglalás tulajdonosa, a regisztrált és mások számára ábrázolja.":::
 
-## <a name="ultra-disk-performance-throttles"></a>Ultravékony lemezek teljesítményének szabályozása
+## <a name="performance-throttles"></a>Teljesítmény-szabályozások
+
+### <a name="premium-ssd-performance-throttles"></a>Prémium SSD-teljesítmény szabályozása
+A prémium SSD esetében a lemez IOPS és átviteli sebessége rögzített, például egy P30 IOPS 5000. Ez az érték marad, függetlenül attól, hogy a lemez 2 virtuális gép vagy 5 virtuális gép között van-e megosztva. A lemezre vonatkozó korlátok egyetlen virtuális gépről érhetők el, vagy két vagy több virtuális gép között oszthatók fel. 
+
+### <a name="ultra-disk-performance-throttles"></a>Ultravékony lemezek teljesítményének szabályozása
 
 Az ultra-lemezek egyedi képességgel rendelkeznek, amely lehetővé teszi a teljesítmény beállítását a módosítható attribútumok kiszűrésével, és lehetővé teszi a módosítását. Alapértelmezés szerint csak két módosítható attribútum létezik, de a megosztott Ultra-lemezek két további attribútummal rendelkeznek.
 
@@ -111,23 +116,23 @@ A következő képletek azt mutatják be, hogyan lehet beállítani a teljesítm
     - Egy lemez átviteli korlátja minden kiépített IOPS esetében 256 KiB/s, lemezenként legfeljebb 2000 MB/s-onként
     - Minden egyes kiépített IOPS esetében a minimális garantált átviteli sebesség 4KiB/s, a teljes alapértéknek legalább 1 MBps-nek kell lennie
 
-### <a name="examples"></a>Példák
+#### <a name="examples"></a>Példák
 
 Az alábbi példák néhány forgatókönyvet mutatnak be, amelyek bemutatják, hogyan működhet a szabályozás a megosztott Ultra-lemezekkel, pontosabban.
 
-#### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Két csomópontos fürt fürt megosztott kötetei használatával
+##### <a name="two-nodes-cluster-using-cluster-shared-volumes"></a>Két csomópontos fürt fürt megosztott kötetei használatával
 
 A következő példa egy, a fürtözött megosztott köteteket használó 2 csomópontos WSFC. Ezzel a konfigurációval mindkét virtuális gépnek egyidejű írási hozzáférése van a lemezhez, ami azt eredményezi, hogy a ReadWrite-szabályozás a két virtuális gép között oszlik el, és a nem használt ReadOnly szabályozás.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-example.png" alt-text="Két csomópontos CSV-példa":::
 
-#### <a name="two-node-cluster-without-cluster-share-volumes"></a>Két csomópontos fürt fürt megosztási kötetei nélkül
+##### <a name="two-node-cluster-without-cluster-share-volumes"></a>Két csomópontos fürt fürt megosztási kötetei nélkül
 
 A következő példa egy olyan 2 csomópontos WSFC mutat be, amely nem használ fürtözött megosztott köteteket. Ezzel a konfigurációval csak egy virtuális gép rendelkezik írási hozzáféréssel a lemezhez. Ez azt eredményezi, hogy a ReadWrite-szabályozás kizárólag az elsődleges virtuális gép esetében használatos, és az írásvédett szabályozás csak a másodlagos használatban van.
 
 :::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-two-node-no-csv.png" alt-text="CSV-fájl két csomópontja nem rendelkezik a CSV-vel – példa":::
 
-#### <a name="four-node-linux-cluster"></a>Négy csomópontos Linux-fürt
+##### <a name="four-node-linux-cluster"></a>Négy csomópontos Linux-fürt
 
 A következő példa egy 4 csomópontos linuxos fürtöt mutat be egyetlen író és három kibővíthető olvasóval. Ezzel a konfigurációval csak egy virtuális gép rendelkezik írási hozzáféréssel a lemezhez. Ez azt eredményezi, hogy a ReadWrite-szabályozás kizárólag az elsődleges virtuális gép esetében használatos, és a másodlagos virtuális gépek által feldarabolt ReadOnly szabályozás.
 

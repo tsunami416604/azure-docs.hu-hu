@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Apache Spark készlet (előzetes verzió) létrehozása a szinapszis Studio használatával
+title: 'Rövid útmutató: Apache Spark-készlet létrehozása (előzetes verzió) a szinapszis Studio használatával'
 description: Hozzon létre egy új Apache Spark készletet a szinapszis Studióval a jelen útmutató lépéseinek követésével.
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c945e56aa0b6f851f54cf7679276558190b4bc10
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 87fcbef5a3cedab3142fe9ad47c68752515fdd2e
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194958"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274339"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-using-synapse-studio"></a>Rövid útmutató: Apache Spark-készlet létrehozása (előzetes verzió) a szinapszis Studio használatával
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
 ## <a name="navigate-to-the-synapse-workspace"></a>Navigáljon a szinapszis munkaterületre
 
@@ -65,7 +65,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
     | :------ | :-------------- | :---------- |
     | **Apache Spark készlet neve** | contosospark | A Apache Spark-készlet neve. |
     | **Csomópont mérete** | Kicsi (4 vCPU/32 GB) | Állítsa be ezt a legkisebb méretre a rövid útmutató költségeinek csökkentése érdekében |
-    | **Automatikus méretezés** | Letiltva | Ebben a rövid útmutatóban nem szükséges az autoscale méretezés |
+    | **Automatikus méretezés** | Disabled (Letiltva) | Ebben a rövid útmutatóban nem szükséges az autoscale méretezés |
     | **Csomópontok száma** | 8 | Kis méret használata a rövid útmutató költségeinek korlátozásához|
     
     ![Szinapszis Studio új Apache Spark készlet űrlapja.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-24.png)
@@ -102,7 +102,7 @@ Ha törölni szeretné a Apache Spark-készletet, tegye a következőket:
  ![Megerősítő párbeszédpanel a kiválasztott Apache Spark-készlet törléséhez.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-30.png)
 1. Ha a folyamat sikeresen befejeződik, a Apache Spark-készlet többé nem jelenik meg a munkaterület erőforrásaiban. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd [: rövid útmutató: Apache Spark-készlet létrehozása a szinapszis Studióban webes eszközök használatával](quickstart-apache-spark-notebook.md).
 - Lásd [: rövid útmutató: Apache Spark készlet létrehozása a Azure Portal használatával](quickstart-create-apache-spark-pool-portal.md).

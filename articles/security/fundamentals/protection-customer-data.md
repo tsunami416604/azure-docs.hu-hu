@@ -15,14 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d723e60afe543808c88b1ae040e2979412ff324c
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811431"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273472"
 ---
 # <a name="azure-customer-data-protection"></a>Azure Customer-adatvédelem   
-A Microsoft működési és támogatási személyzete alapértelmezés szerint nem férhet hozzá az ügyféladatok eléréséhez. Ha megadtak az ügyféladatok elérését, a vezetői jóváhagyásra van szükség, és a hozzáférés körültekintően felügyelt és naplózva van. A hozzáférés-vezérlésre vonatkozó követelményeket a következő Azure biztonsági szabályzat határozza meg:
+A Microsoft működési és támogatási személyzete alapértelmezés szerint nem férhet hozzá az ügyféladatok eléréséhez. Ha a támogatási esethez kapcsolódó adatokhoz fér hozzá, a rendszer csak egy igény szerinti (JIT) modellt kap, melyet a rendszer a megfelelőségi és adatvédelmi szabályzatok alapján auditált és ellenőrzött házirendeket használ.  A hozzáférés-vezérlésre vonatkozó követelményeket a következő Azure biztonsági szabályzat határozza meg:
 
 - Alapértelmezés szerint nincs hozzáférése az ügyféladatok eléréséhez.
 - Nincs felhasználói vagy rendszergazdai fiók az ügyfél virtuális gépei (VM-EK) számára.
@@ -39,12 +40,9 @@ Az Azure alapértelmezés szerint és a vásárlói beállítások alapján erő
 
 **Rest-** alapú adatvédelem: az ügyfelek felelősek annak biztosításáért, hogy az Azure-ban tárolt adatok a szabványoknak megfelelően titkosítva legyenek. Az Azure számos titkosítási képességet kínál, így az ügyfelek rugalmasan választhatják ki az igényeiknek leginkább megfelelő megoldást. Azure Key Vault segítségével az ügyfelek egyszerűen kezelhetik a felhőalapú alkalmazások és szolgáltatások által az adattitkosításhoz használt kulcsok felügyeletét. Azure Disk Encryption lehetővé teszi az ügyfeleknek a virtuális gépek titkosítását. Az Azure Storage Service Encryption lehetővé teszi az ügyfél Storage-fiókjába helyezett összes érték titkosítását.
 
-**Adatátvitel közbeni**adatvédelem: az ügyfelek a saját virtuális gépek és a végfelhasználók közötti adatforgalom titkosítását is lehetővé teszik. Az Azure megvédi az adatátvitelt a külső összetevőkön vagy a belső forgalomban lévő adatokon, például két virtuális hálózat között. Az Azure az iparági szabványnak megfelelő Transport Layer Security (TLS) 1,2-es vagy újabb protokollt használ 2 048 bites RSA/SHA256 titkosítási kulcsokkal, a CESG/NCSC által ajánlott módon, hogy Titkosítsa a kommunikációt a következők között:
+Forgalomban **lévő adatvédelem**: a Microsoft számos olyan lehetőséget biztosít, amelyet az ügyfelek az Azure-hálózaton belül, az interneten kívülről a végfelhasználók felé irányuló adatforgalom biztonságossá tételére használhatnak.  Ezek közé tartoznak a virtuális magánhálózatok (IPsec/IKE-titkosítást használó), a Transport Layer Security (TLS) 1,2-es vagy újabb (az Azure-összetevők, például a Application Gateway vagy az Azure bejárati ajtó), a protokollok közvetlenül az Azure-beli virtuális gépeken (például Windows IPsec vagy SMB) keresztül történő kommunikáció. 
 
-- Az ügyfél és a felhő.
-- Belsőleg az Azure Systems és az adatközpontok között.
-
-**Titkosítás**: a tárolóban és az átvitelben lévő adatok titkosítása az ügyfelek által az adatok titkosságának és integritásának biztosításához ajánlott eljárásként helyezhető üzembe. Egyszerű az ügyfelek számára, hogy az Azure Cloud Servicest úgy konfigurálja, hogy a TLS-t használják az internetről érkező és az Azure által üzemeltetett virtuális gépek közötti kommunikációhoz.
+Emellett az Azure-adatközpontok közötti MACsec (az adatkapcsolati rétegben található IEEE standard) használatával az összes Azure-forgalom számára engedélyezve van az adatok titkosítása és integritásának biztosítása. 
 
 **Adatredundancia**: a Microsoft segít biztosítani az adatvédelmet, ha az adatközpont cyberattack vagy fizikai károsodást okoz. Az ügyfelek a következőket dönthetik el:
 
@@ -72,7 +70,7 @@ Az Azure lehetővé teszi, hogy az ügyfelek exportálják az adatok és a napl�
 ## <a name="electronic-discovery-e-discovery"></a>Elektronikus felderítés (e-Discovery)
 Az Azure-ügyfelek feladata az e-felderítési követelmények teljesítése az Azure-szolgáltatások használata során. Ha az Azure-ügyfeleknek meg kell őrizniük az ügyféladatokat, akkor helyileg is exportálhatunk és menthetik az adatfájlokat. Emellett az ügyfelek az Azure ügyfélszolgálati részlegében is kérhetik az adatok exportálását. Amellett, hogy lehetővé teszi az ügyfelek számára az adatok exportálását, az Azure kiterjedt naplózást és figyelést végez belsőleg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni arról, hogy a Microsoft Hogyan védi az Azure-infrastruktúrát, olvassa el a következő témakört:
 
 - [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)

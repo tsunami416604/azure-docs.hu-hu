@@ -1,5 +1,5 @@
 ---
-title: A szinapszis Studio használata (előzetes verzió)
+title: 'Rövid útmutató: a szinapszis Studio használata'
 description: Ebből a rövid útmutatóból megtudhatja, hogy milyen egyszerűen lekérdezheti a különböző típusú fájlokat a szinapszis Studio használatával.
 services: synapse-analytics
 author: jovanpop-msft
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 182c6a20af51508c357079b9542b2bda695fdae4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 271fd77e519ce9d78e2fa4e4837004a77cf73522
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658568"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276056"
 ---
 # <a name="quickstart-use-synapse-studio-preview"></a>Rövid útmutató: a szinapszis Studio használata (előzetes verzió)
 
@@ -30,11 +30,11 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 [Hozzon létre egy Azure szinapszis-munkaterületet és egy társított Storage-fiókot](quickstart-create-workspace.md).
 
-## <a name="launch-synapse-studio"></a>A szinapszis Studio elindítása
+## <a name="launch-synapse-studio"></a>A Synapse Studio indítása
 
 A Azure Portal Azure szinapszis munkaterületén kattintson a **szinapszis Studio elindítása**elemre.
 
-![A szinapszis Studio elindítása](./media/quickstart-synapse-studio/launch-synapse-workspace.png)
+![A Synapse Studio indítása](./media/quickstart-synapse-studio/launch-synapse-workspace.png)
 
 Azt is megteheti, hogy az [Azure szinapszis Analytics](https://web.azuresynapse.net) elemre kattintva elindítja a szinapszis Studio alkalmazást, és megadja a megfelelő bérlői, előfizetési és munkaterület-értékeket.
 

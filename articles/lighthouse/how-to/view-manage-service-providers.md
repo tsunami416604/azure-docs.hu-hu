@@ -1,14 +1,14 @@
 ---
 title: Szolgáltatók megtekintése és kezelése
 description: Az ügyfelek a Azure Portal szolgáltatók lapján tekinthetik meg a szolgáltatók, a szolgáltatói ajánlatok és a delegált erőforrások adatait.
-ms.date: 07/07/2020
+ms.date: 07/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 56ba5b8c88cd4653c9d41f7f3fcc6219cc376256
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111626"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273778"
 ---
 # <a name="view-and-manage-service-providers"></a>Szolgáltatók megtekintése és kezelése
 
@@ -19,7 +19,7 @@ A Azure Portal **szolgáltatók** lapjának eléréséhez az ügyfél kiválaszt
 > [!NOTE]
 > **A szolgáltatók lap megtekintéséhez** az ügyfél bérlője számára az [olvasó beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#reader) kell rendelkeznie (vagy egy másik beépített szerepkör, amely olvasói hozzáférést is tartalmaz).
 >
-> Ajánlatok hozzáadásához, erőforrások delegálásához és az ajánlatok eltávolításához a felhasználónak a [tulajdonos beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#owner) kell rendelkeznie az előfizetéshez.
+> Ajánlatok hozzáadásához vagy frissítéséhez, erőforrások delegálásához és az ajánlatok eltávolításához a felhasználónak a [tulajdonos beépített szerepkörrel](../../role-based-access-control/built-in-roles.md#owner) kell rendelkeznie az előfizetéshez.
 
 Ne feledje, hogy a **szolgáltatók lap csak** azokat a szolgáltatói információkat jeleníti meg, amelyek az ügyfél előfizetéseit vagy erőforráscsoportait az Azure Lighthouse használatával érik el. Ha az ügyfél olyan további szolgáltatókkal működik együtt, akik nem használják az Azure Lighthouse-t az ügyfél erőforrásainak eléréséhez, itt nem jelennek meg a szolgáltatók információi.
 

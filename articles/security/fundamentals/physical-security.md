@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 19fd257e76cdf811343f1c1c772fb3646933bb86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd83cd164415f45929049541a8731f80a4ba146d
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83774051"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86273506"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure-létesítmények,-telephelyek és fizikai biztonság
 Ez a cikk azt ismerteti, hogy mit tesz a Microsoft az Azure-infrastruktúra biztonságossá tételéhez.
@@ -29,7 +30,7 @@ Az Azure egy [globálisan elosztott adatközpont-infrastruktúrából](https://a
 
 Az infrastruktúra úgy lett kialakítva, hogy az alkalmazások a világ minden pontján közelebb kerüljenek a felhasználókhoz, megőrizve az adattárolást, és átfogó megfelelőségi és rugalmassági lehetőségeket biztosítanak az ügyfeleknek. Az Azure világszerte 58 régióval rendelkezik, és 140 országban/régióban érhető el.
 
-A régiók olyan adatközpontok összessége, amelyek nagy és rugalmas hálózaton keresztül kapcsolódnak egymáshoz. A hálózat alapértelmezés szerint tartalmazza a tartalom terjesztését, a terheléselosztást, a redundanciát és a titkosítást. Az Azure több globális régióval rendelkezik, mint bármely más felhőalapú szolgáltató, így rugalmasságot biztosít az alkalmazások üzembe helyezéséhez, ahol szüksége van rájuk.
+A régiók olyan adatközpontok összessége, amelyek nagy és rugalmas hálózaton keresztül kapcsolódnak egymáshoz. A hálózat magában foglalja a tartalom terjesztését, a terheléselosztást, a redundanciát és az [adatkapcsolati réteg titkosítását alapértelmezés szerint](encryption-overview.md#encryption-of-data-in-transit) a régión belüli összes Azure-forgalom esetében, vagy a régiók közötti utazást. Az Azure több globális régióval rendelkezik, mint bármely más felhőalapú szolgáltató, így rugalmasságot biztosít az alkalmazások üzembe helyezéséhez, ahol szüksége van rájuk.
 
 Az Azure-régiók földrajzilag vannak rendszerezve. Az Azure földrajza biztosítja, hogy az adattárolással, a szuverenitással, a megfelelőséggel és a rugalmassággal kapcsolatos követelmények tiszteletben maradnak a földrajzi határokon belül.
 
@@ -74,7 +75,7 @@ Az Azure-infrastruktúrát úgy tervezjük és felügyeljük, hogy megfeleljen a
 
 Az Azure által a megfelelőségi szabványok teljes listájáért tekintse meg a [megfelelőségi ajánlatokat](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni arról, hogy mit tesz a Microsoft az Azure-infrastruktúra biztonságossá tételéhez, tekintse meg a következőt:
 
 - [Azure-infrastruktúra rendelkezésre állása](infrastructure-availability.md)

@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.custom: include file
-ms.openlocfilehash: 7bc6938523a6d66a2bc20b37c659568fc5ca494d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1171c07a754b056fb9df2cee73ddf224427037cc
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77123153"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277724"
 ---
 ### <a name="general-availability-and-preview-comparison"></a>Általános elérhetőség és előzetes verzió összehasonlítása
 
@@ -22,16 +22,16 @@ Az alábbi táblázat a Azure Time Series Insights általánosan elérhető (GA)
 
 | | FE | Előnézet |
 | --- | --- | ---|
-| Első osztályú polgár | Esemény-központú | Idősorozat-központú |
-| Szemantikai indoklás | Alacsony szintű (hivatkozási adatértékek) | Magas szintű (modellek) |
-| Az adatcontextualization | Nem eszköz szint | Eszköz és nem eszköz szintje |
-| Számítási logikai tároló | No | Típus változói a modell részeként tárolva |
-| Tárolás és hozzáférés-vezérlés | No | Modellen keresztül engedélyezve |
-| Összesítések/mintavételezés | No | Az esemény súlyozása és az idő súlyozása |
-| Jel újraépítése | No | Interpolációs |
-| Származtatott idősorozatok előállítása | No | Igen, egyesítések és illesztések |
-| Nyelvi rugalmasság | Nem komponálható | Algyűjteményeinek összefüggő |
-| Kifejezés nyelve | Predikátum karakterlánca | Idősorozat-kifejezések (predikátum-karakterláncok, értékek, kifejezések és függvények) |
+| **Első osztályú polgár** | Esemény-központú | Idősorozat-központú |
+| **Szemantikai indoklás** | Alacsony szintű (hivatkozási adatértékek) | Magas szintű (modellek) |
+| **Az adatcontextualization** | Nem eszköz szint | Eszköz és nem eszköz szintje |
+| **Számítási logikai tároló** | Nem | Típus változói a modell részeként tárolva |
+| **Tárolás és hozzáférés-vezérlés** | Nem | Modellen keresztül engedélyezve |
+| **Összesítések/mintavételezés** | Nem | Az esemény súlyozása és az idő súlyozása |
+| **Jel újraépítése** | Nem | Interpolációs |
+| **Származtatott idősorozatok előállítása** | Nem | Igen, egyesítések és illesztések |
+| **Nyelvi rugalmasság** | Nem komponálható | Algyűjteményeinek összefüggő |
+| **Kifejezés nyelve** | Predikátum karakterlánca | Idősorozat-kifejezések (predikátum-karakterláncok, értékek, kifejezések és függvények) |
 
 ### <a name="property-limits"></a>Tulajdonságok korlátai
 

@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: active-directory
 author: eross-msft
 ms.service: active-directory
@@ -8,14 +8,11 @@ ms.topic: include
 ms.date: 09/10/2019
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: f2e76229673033ab001c5499739090a7c435ef8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64a0e35d1bbcc8df9a827f1f6bc58d72a7498b2a
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75468354"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86277683"
 ---
-| |
-|--|
-|Ha a rendszergazda bekapcsolta az új **saját alkalmazások** előzetes verzióját a szervezete számára, megjelenik egy szalagcím a **saját** alkalmazások oldal tetején, amely szerint a **frissített saját alkalmazások felülete elérhető**. Ha a **kipróbálás**lehetőséget választja, azonnal megtekintheti az új URL-címet (myapplications.microsoft.com) és a frissített felhasználói élményt. Ezt követően minden alkalommal, amikor visszatér a **saját alkalmazások** lapra, automatikusan az új felületre lép.<br><br>Az új felhasználói felület használatának leállításához válassza az **Igen** lehetőséget az új **alkalmazások** oldalának új **felületének meghagyása** lapon. Azonnal visszatérhet a régi URL-címre (myapps.microsoft.com) és a felhasználói élményre. Ezt követően minden alkalommal, amikor visszatér a **saját alkalmazások** oldalra, automatikusan megtörténik a régi élmény.|
-|
+Ha a rendszergazda bekapcsolta az új **saját alkalmazások** előzetes verzióját a szervezete számára, megjelenik egy szalagcím a **saját** alkalmazások oldal tetején, amely szerint a **frissített saját alkalmazások felülete elérhető**. Ha a **kipróbálás**lehetőséget választja, azonnal megtekintheti az új URL-címet (myapplications.microsoft.com) és a frissített felhasználói élményt. Ezt követően minden alkalommal, amikor visszatér a **saját alkalmazások** lapra, automatikusan az új felületre lép.<br><br>Az új felhasználói felület használatának leállításához válassza az **Igen** lehetőséget az új **alkalmazások** oldalának új **felületének meghagyása** lapon. Azonnal visszatérhet a régi URL-címre (myapps.microsoft.com) és a felhasználói élményre. Ezt követően minden alkalommal, amikor visszatér a **saját alkalmazások** oldalra, automatikusan megtörténik a régi élmény.

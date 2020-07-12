@@ -3,11 +3,12 @@ title: Gyakran ismételt kérdések az Azure Kubernetes szolgáltatásról (ak)
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: 136f79df43bcc1730f187980df8726d693390faa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300926"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86275716"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes Service-szel (AKS) kapcsolatban
 
@@ -136,7 +137,7 @@ Az AK-ügynökök csomópontjai standard Azure-beli virtuális gépekként vanna
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Áthelyezhetem/Áttelepíthetem a fürtöt az Azure-bérlők között?
 
-A `az aks update-credentials` parancs használatával egy AK-fürt helyezhető át az Azure-bérlők között. Kövesse a következő témakör utasításait: [frissítés vagy létrehozás egyszerű szolgáltatásnév](https://docs.microsoft.com/azure/aks/update-credentials) , majd az [AK-fürt frissítése új hitelesítő adatokkal](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials).
+A `az aks update-credentials` parancs használatával egy AK-fürt helyezhető át az Azure-bérlők között. Kövesse a következő témakör utasításait: [frissítés vagy létrehozás egyszerű szolgáltatásnév](./update-credentials.md) , majd az [AK-fürt frissítése új hitelesítő adatokkal](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials).
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Áthelyezhetem/Áttelepíthetem a fürtöt az előfizetések között?
 
@@ -144,7 +145,11 @@ A fürtök előfizetések közötti áthelyezése jelenleg nem támogatott.
 
 ## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Áthelyezhetem az AK-fürtöket az aktuális Azure-előfizetésből egy másikba? 
 
-Az AK-fürt áthelyezése és az Azure-előfizetések közötti társított erőforrások nem támogatottak.
+Az AK-fürt és az Azure-előfizetések közötti kapcsolódó erőforrások áthelyezése nem támogatott.
+
+## <a name="can-i-move-my-aks-cluster-or-aks-infrastructure-resources-to-other-resource-groups-or-rename-them"></a>Áthelyezhetem az AK-beli vagy AK-beli infrastruktúra-erőforrásokat más erőforráscsoportokba, vagy átnevezhetik őket?
+
+Az AK-fürt és a hozzá tartozó erőforrások áthelyezése vagy átnevezése nem támogatott.
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>Miért törli a fürtem a munkaidőt? 
 
@@ -164,11 +169,11 @@ Ezt általában az okozza, hogy a felhasználók egy vagy több hálózati bizto
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Futtattam egy frissítést, de most a hüvelyem összeomlott hurkokban van, és a készültségi mintavétel meghiúsul?
 
-Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: az [AK](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) -beli szolgáltatásnév és az AK-beli [frissítési hitelesítő adatok](https://docs.microsoft.com/azure/aks/update-credentials).
+Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: az [AK](./kubernetes-service-principal.md) -beli szolgáltatásnév és az AK-beli [frissítési hitelesítő adatok](./update-credentials.md).
 
 ## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>A fürtem működik, de hirtelen nem lehet kiépíteni a LoadBalancers, a csatlakoztatási és a PVC-ket? 
 
-Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: az [AK](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) -beli szolgáltatásnév és az AK-beli [frissítési hitelesítő adatok](https://docs.microsoft.com/azure/aks/update-credentials).
+Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: az [AK](./kubernetes-service-principal.md) -beli szolgáltatásnév és az AK-beli [frissítési hitelesítő adatok](./update-credentials.md).
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Használhatom a virtuálisgép-méretezési csoport API-jait a manuális méretezéshez?
 
@@ -189,9 +194,9 @@ Az AK nem felügyelt szolgáltatás, és a IaaS-erőforrások kezelése nem tám
 <!-- LINKS - internal -->
 
 [aks-upgrade]: ./upgrade-cluster.md
-[aks-cluster-autoscale]: ./autoscaler.md
+[aks-cluster-autoscale]: ./cluster-autoscaler.md
 [aks-advanced-networking]: ./configure-azure-cni.md
-[aks-rbac-aad]: ./azure-ad-integration.md
+[aks-rbac-aad]: ./azure-ad-integration-cli.md
 [node-updates-kured]: node-updates-kured.md
 [aks-preview-cli]: /cli/azure/ext/aks-preview/aks
 [az-aks-create]: /cli/azure/aks#az-aks-create

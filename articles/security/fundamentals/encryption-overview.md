@@ -15,13 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
-ms.openlocfilehash: c45839d622f4bad5097006a364a36db05ce5dacc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 005932f4a4be9e4a7bae85a6b380c934de5e9874
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84012976"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86276532"
 ---
-# <a name="azure-encryption-overview"></a>Az Azure encryption áttekintése
+# <a name="azure-encryption-overview"></a>Az Azure-titkosítás áttekintése
 
 Ez a cikk áttekintést nyújt a titkosítás használatáról Microsoft Azureban. A titkosítás főbb területeit fedi le, beleértve a inaktív titkosítást, a repülés közbeni titkosítást és a Azure Key Vaultsal való kulcskezelő felügyeletet. Minden szakasz részletesebb információkra mutató hivatkozásokat tartalmaz.
 
@@ -116,9 +117,13 @@ Az adatok titkosítása és visszafejtése három típusú kulcsot használ: a M
 
 Az Azure számos mechanizmust kínál az adatok magánjellegű tárolásához, ahogy az egyik helyről a másikra helyezi.
 
-### <a name="tlsssl-encryption-in-azure"></a>TLS/SSL-titkosítás az Azure-ban
+### <a name="data-link-layer-encryption-in-azure"></a>Adatkapcsolati réteg titkosítása az Azure-ban
 
-A Microsoft a [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) protokollt használja az adatvédelemhez, amikor a Cloud Services és az ügyfelek között utazik. A Microsoft-adatközpontok egy TLS-kapcsolatot egyeztetnek az Azure-szolgáltatásokhoz csatlakozó ügyfélszámítógépekkel. A TLS erős hitelesítést, az üzenetek védelmét és integritását (az üzenetek illetéktelen módosításának, elfogásának és hamisításának észlelését), az együttműködési képességet, az algoritmus rugalmasságát, valamint a könnyű üzembe helyezést és használatot biztosít.
+Amikor az Azure-ügyfelek forgalmának továbbítása az adatközpontok között történik – a Microsoft által nem szabályozott fizikai határok (vagy a Microsoft nevében) – egy adatkapcsolati rétegbeli titkosítási módszer, amely az [IEEE 802.1 AE Mac biztonsági szabványokat](https://1.ieee802.org/security/802-1ae/) (más néven MACsec) használja az alapul szolgáló hálózati hardveren.  A csomagokat a rendszer a küldés előtt titkosítja és visszafejti az eszközökön, megelőzve a fizikai "ember-középen" vagy a figyelési/wiretapping támadásokat.  Mivel ez a technológia önmagában is a hálózati hardverhez van integrálva, a hálózati hardverek esetében a sebesség nélküli titkosítás biztosítja a kapcsolati késleltetés növelését.  Ez a MACsec-titkosítás alapértelmezés szerint a régión vagy régión belüli összes Azure-forgalomra vonatkozik, és az ügyfelek részéről nincs szükség beavatkozásra. 
+
+### <a name="tls-encryption-in-azure"></a>TLS-titkosítás az Azure-ban
+
+A Microsoft lehetővé teszi az ügyfeleknek, hogy [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) protokollt használjanak az adatvédelemhez, amikor a felhőalapú szolgáltatások és az ügyfelek között utaznak. A Microsoft-adatközpontok egy TLS-kapcsolatot egyeztetnek az Azure-szolgáltatásokhoz csatlakozó ügyfélszámítógépekkel. A TLS erős hitelesítést, az üzenetek védelmét és integritását (az üzenetek illetéktelen módosításának, elfogásának és hamisításának észlelését), az együttműködési képességet, az algoritmus rugalmasságát, valamint a könnyű üzembe helyezést és használatot biztosít.
 
 A [tökéletes továbbítási titoktartás](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) védi az ügyfelek és a Microsoft Cloud Services közötti kapcsolatokat egyedi kulcsok használatával. A kapcsolatok az RSA-alapú 2 048 bites titkosítási kulcs hosszait is használják. Ez a kombináció megnehezíti, hogy valaki elhallgassa és hozzáférjen az átvitt adatforgalomhoz.
 
@@ -140,7 +145,7 @@ Alapértelmezés szerint a megosztások vagy kiszolgálók SMB-titkosításának
 
 ## <a name="in-transit-encryption-in-vms"></a>Átvitel közbeni titkosítás a virtuális gépeken
 
-A (z), a rendszerből és a Windows rendszerű virtuális gépek közötti, a kapcsolat természetétől függően számos módon titkosítva vannak az adatok.
+A (z), a rendszerből és a Windows rendszerű virtuális gépek közötti, a kapcsolat természetétől függően több módon is titkosítható adatok.
 
 ### <a name="rdp-sessions"></a>RDP-munkamenetek
 
@@ -180,7 +185,7 @@ A helyek közötti VPN Gateway-kapcsolattal a helyszíni hálózatot egy IPsec/I
 
 A helyek közötti VPN-kapcsolat a Azure Portal, a PowerShell vagy az Azure CLI használatával konfigurálható egy virtuális hálózathoz.
 
-További információkért lásd:
+További információ:
 
 [Helyek közötti kapcsolat létrehozása a Azure Portalban](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
@@ -200,7 +205,7 @@ A kulcsok megfelelő védelme és kezelése nélkül a titkosítás használhata
 
 Key Vault feloldja a szervezeteknek a hardveres biztonsági modulok (HSM) és a kulcskezelő szoftverek konfigurálását, javítását és karbantartását. Key Vault használatakor a vezérlést is megtarthatja. A Microsoft soha nem látja a kulcsokat, és az alkalmazások nem rendelkeznek közvetlen hozzáféréssel. A HSM-ben is importálhat és létrehozhat kulcsokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure biztonsági szolgáltatásainak áttekintése](get-started-overview.md)
 - [Az Azure hálózati biztonság áttekintése](network-overview.md)

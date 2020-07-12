@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – szinapszis-munkaterület létrehozása
+title: 'Rövid útmutató: szinapszis-munkaterület létrehozása'
 description: Hozzon létre egy szinapszis-munkaterületet az útmutató lépéseit követve.
 services: synapse-analytics
 author: pimorano
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e5896d1eabaf43afcbab7513d7abb0b1de4efe51
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: a069ee40c2db99b05e9620cf83c06c49cc9e29fc
+ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84656691"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86274237"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rövid útmutató: szinapszis-munkaterület létrehozása
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/)
 
 ## <a name="create-an-azure-synapse-workspace-using-the-azure-portal"></a>Azure szinapszis-munkaterület létrehozása a Azure Portal használatával
 
@@ -63,7 +63,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 6. Az **Összefoglalás** lapon a szükséges érvényesítések futnak, hogy a munkaterület sikeresen létrehozható legyen. Ha az ellenőrzés sikeres, nyomja meg **Create** a ![ munkaterület kiépítési folyamatának létrehozása – megerősítés lapot.](media/quickstart-create-synapse-workspace/create-workspace-05.png)
 7. Miután az erőforrás-létesítési folyamat sikeresen befejeződik, megjelenik egy bejegyzés a létrehozott munkaterülethez a szinapszis-munkaterületek listájában. ![Az újonnan kiosztott munkaterületet megjelenítő szinapszis-munkaterületek listázása.](media/quickstart-create-synapse-workspace/create-workspace-07.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az Azure szinapszis-munkaterület törléséhez kövesse az alábbi lépéseket.
 > [!WARNING]
