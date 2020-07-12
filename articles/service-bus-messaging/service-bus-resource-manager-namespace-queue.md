@@ -8,30 +8,30 @@ ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: e382d39e10e1907c9892f03a3da64945f3049fee
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: cb87b33ee3f88e17f7d9b7557040849745b2d95f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337023"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248458"
 ---
-# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Gyors útmutató: Service Bus névtér és üzenetsor létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-arm-template"></a>Gyors útmutató: Service Bus névtér és üzenetsor létrehozása ARM-sablonnal
 
-Ez a cikk bemutatja, hogyan használható egy Azure Resource Manager-sablon, amely létrehoz egy Service Bus névteret és egy, az adott névtéren belüli várólistát. A cikk azt ismerteti, hogyan határozható meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
+Ez a cikk bemutatja, hogyan használható egy Azure Resource Manager sablon (ARM-sablon), amely létrehoz egy Service Bus névteret és egy, az adott névtéren belüli várólistát. A cikk azt ismerteti, hogyan határozható meg, hogy mely erőforrások legyenek telepítve, és Hogyan határozható meg a központi telepítés végrehajtásakor megadott paraméterek. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-None
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="create-a-service-bus-namespace-and-a-queue"></a>Service Bus névtér és üzenetsor létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue) származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/201-servicebus-create-queue)származik.
 
 :::code language="json" source="~/quickstart-templates/201-servicebus-create-queue/azuredeploy.json" range="1-75" highlight="31-63":::
 
@@ -41,7 +41,7 @@ A sablonban definiált erőforrások a következők:
 - [**Microsoft. ServiceBus/névterek/várólisták**](/azure/templates/microsoft.servicebus/namespaces/queues)
 
 > [!NOTE]
-> A következő Azure Resource Manager sablonok tölthetők le és üzemelő példányban.
+> A következő ARM-sablonok tölthetők le és üzemelő példányokhoz.
 >
 > * [Service Bus névtér létrehozása a várólista-és engedélyezési szabállyal](service-bus-resource-manager-namespace-auth-rule.md)
 > * [Service Bus névtér létrehozása témakörrel és előfizetéssel](service-bus-resource-manager-namespace-topic.md)
@@ -50,7 +50,7 @@ A sablonban definiált erőforrások a következők:
 
 További sablont az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular) talál
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 Ezzel a sablonnal egy Service Bus névteret helyez üzembe egy várólistával.
 
@@ -58,9 +58,9 @@ Ezzel a sablonnal egy Service Bus névteret helyez üzembe egy várólistával.
 
 Ha a központi telepítést automatikusan szeretné futtatni, kattintson a következő gombra: hozzon létre egy új erőforráscsoportot a központi telepítéshez, hogy később könnyen lehessen megtisztítani.
 
-[![Üzembe helyezés az Azure-ban](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
 1. A központi telepítés állapotának megtekintéséhez válassza a felül található **értesítések** lehetőséget. Várjon, amíg az üzembe helyezés befejeződik. Ezután válassza az **Ugrás az erőforráscsoporthoz** lehetőséget az értesítési üzenetben, hogy megnyissa az Service Bus névteret tartalmazó erőforráscsoport lapját. 
 
@@ -70,7 +70,7 @@ Ha a központi telepítést automatikusan szeretné futtatni, kattintson a köve
     ![Erőforráscsoport – névtér](./media/service-bus-resource-manager-namespace-queue/resource-group-namespace.png)
 3. A **Service Bus névtér** lap megjelenítéséhez válassza ki a névteret a listából. 
 
-## <a name="cleanup-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 1. A Azure Portal navigáljon az **erőforráscsoport oldalához** .
 2. Válassza az **Erőforráscsoport törlése** elemet az eszköztáron. 
@@ -78,11 +78,11 @@ Ha a központi telepítést automatikusan szeretné futtatni, kattintson a köve
 
     ![Erőforráscsoport – törlés](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő témakört, amely bemutatja, hogyan hozhat létre egy engedélyezési szabályt a névtérhez vagy a várólistához:
 
-[Service Bus engedélyezési szabály létrehozása a névtérhez és a várólistához Azure Resource Manager sablon használatával](service-bus-resource-manager-namespace-auth-rule.md)
+[Service Bus engedélyezési szabály létrehozása a névtérhez és a várólistához ARM-sablon használatával](service-bus-resource-manager-namespace-auth-rule.md)
 
 Ismerje meg, hogyan kezelheti ezeket az erőforrásokat a következő cikkek megtekintésével:
 

@@ -4,11 +4,12 @@ description: Ajánlott eljárások az adatszerializáláshoz, valamint a működ
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: 7dc60c28b56982f82c1ac90db55ac752977ea2d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d502e74139c543d4183a75faa6bea1948d9f3e56
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457497"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247982"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Az adatszerializálás hatása az alkalmazás frissítésére
 Egy [működés közbeni alkalmazás frissítése](service-fabric-application-upgrade.md)esetén a frissítés a csomópontok egy részhalmazára lesz alkalmazva, egyszerre egy frissítési tartomány. A folyamat során egyes frissítési tartományok az alkalmazás újabb verziójára vonatkoznak, és néhány frissítési tartomány az alkalmazás régebbi verziójára mutat. A bevezetés során az alkalmazás új verziójának képesnek kell lennie az adatai régi verziójának olvasására, és az alkalmazás régi verziójának képesnek kell lennie az adatai új verziójának olvasására. Ha az adatformátum nem továbbítható, és visszafelé nem kompatibilis, a frissítés meghiúsulhat, vagy rosszabb lehet, az adat elveszhet vagy sérült lehet. Ez a cikk azt ismerteti, hogy mit jelent az adatformátuma, és ajánlott eljárásokat biztosít az adattovábbítás és a visszamenőleges kompatibilitás biztosításához.
@@ -25,7 +26,7 @@ Mivel az adatformátumot C# osztályok határozzák meg, az osztályok módosít
 * Az osztály nevének vagy névterének módosítása
 
 ### <a name="data-contract-as-the-default-serializer"></a>Adategyezmény alapértelmezett szerializáló
-A szerializáló általában az adat olvasására és a jelenlegi verzióra való deszerializálására szolgál, még akkor is, ha az adat régebbi vagy *újabb* verziójú. Az alapértelmezett szerializáló az [adategyezmény-szerializáló](https://msdn.microsoft.com/library/ms733127.aspx), amely jól definiált verziószámozási szabályokkal rendelkezik. A megbízható gyűjtemények lehetővé teszik a szerializáló felülbírálását, de a Reliable Actors jelenleg nem. Az adatszerializáló fontos szerepet játszik a működés közbeni frissítések engedélyezésében. Az adategyezmény-szerializáló a Service Fabric alkalmazásokhoz javasolt szerializáló.
+A szerializáló általában az adat olvasására és a jelenlegi verzióra való deszerializálására szolgál, még akkor is, ha az adat régebbi vagy *újabb* verziójú. Az alapértelmezett szerializáló az [adategyezmény-szerializáló](/dotnet/framework/wcf/feature-details/using-data-contracts), amely jól definiált verziószámozási szabályokkal rendelkezik. A megbízható gyűjtemények lehetővé teszik a szerializáló felülbírálását, de a Reliable Actors jelenleg nem. Az adatszerializáló fontos szerepet játszik a működés közbeni frissítések engedélyezésében. Az adategyezmény-szerializáló a Service Fabric alkalmazásokhoz javasolt szerializáló.
 
 ## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Az adatformátum hatása a működés közbeni frissítésre
 A működés közbeni frissítés során két fő forgatókönyv jelenhet meg, amelyekben a szerializáló az adatok egy régebbi vagy *újabb* verzióját észlelheti:
@@ -40,9 +41,9 @@ A működés közbeni frissítés során két fő forgatókönyv jelenhet meg, a
 
 A kód és az adatformátum két verziójának a továbbítás és a visszamenőlegesen kompatibilisnek kell lennie. Ha nem kompatibilisek, előfordulhat, hogy a működés közbeni frissítés meghiúsul, vagy előfordulhat, hogy az adat elvész. Előfordulhat, hogy a működés közbeni frissítés meghiúsul, mert a kód vagy a szerializáló kivételeket vagy hibát okozhat, ha a másik verziót találkozik. Az adatvesztés történhet, ha például új tulajdonság lett hozzáadva, de a régi szerializáló a deszerializálás során elveti azt.
 
-Az adategyezmény a javasolt megoldás annak biztosítására, hogy az adatai kompatibilisek legyenek. Jól definiált verziószámozási szabályokkal rendelkezik a mezők hozzáadásához, eltávolításához és módosításához. Emellett támogatja az ismeretlen mezők kezelését, a szerializálási és a deszerializálási folyamat összekötését, valamint az osztály öröklődésének kezelését. További információ: az [adategyezmény használata](https://msdn.microsoft.com/library/ms733127.aspx).
+Az adategyezmény a javasolt megoldás annak biztosítására, hogy az adatai kompatibilisek legyenek. Jól definiált verziószámozási szabályokkal rendelkezik a mezők hozzáadásához, eltávolításához és módosításához. Emellett támogatja az ismeretlen mezők kezelését, a szerializálási és a deszerializálási folyamat összekötését, valamint az osztály öröklődésének kezelését. További információ: az [adategyezmény használata](/dotnet/framework/wcf/feature-details/using-data-contracts).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
 [Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.
@@ -52,4 +53,3 @@ Annak szabályozása, hogy az alkalmazás hogyan legyen [frissítve a frissíté
 Ismerje meg, hogyan használhatja a speciális funkciókat az alkalmazás frissítéséhez a [speciális témakörökre](service-fabric-application-upgrade-advanced.md)való hivatkozással.
 
 Az alkalmazások frissítéseinek [hibaelhárításával](service-fabric-application-upgrade-troubleshooting.md)kapcsolatos gyakori problémák elhárítása.
-

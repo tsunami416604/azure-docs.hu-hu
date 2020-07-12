@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caa6d4fc27373e524f4c492635cffbf8b735add8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614366"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247217"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Naplózás hozzáadása Service Fabric-alkalmazáshoz
 
@@ -95,7 +96,7 @@ A strukturált és általános rendszerállapot hibrid használata is jól haszn
 
 A ASP.NET Core naplózás ([Microsoft. Extensions. Logging NuGet csomag](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) egy naplózási keretrendszer, amely szabványos naplózási API-t biztosít az alkalmazás számára. A többi naplózási háttér támogatása csatlakoztatható ASP.NET Core naplózáshoz. Ez számos támogatást biztosít az alkalmazásban való bejelentkezéshez, anélkül, hogy sok kódot kellene módosítania.
 
-1. Adja hozzá a **Microsoft. Extensions. Logging** NuGet-csomagot a felvenni kívánt projekthez. Adja hozzá a szolgáltatói csomagokat is. További információ: [bejelentkezés ASP.net Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+1. Adja hozzá a **Microsoft. Extensions. Logging** NuGet-csomagot a felvenni kívánt projekthez. Adja hozzá a szolgáltatói csomagokat is. További információ: [bejelentkezés ASP.net Core](/aspnet/core/fundamentals/logging).
 2. Adja hozzá a **Microsoft. Extensions. Logging** fájlhoz tartozó **using** direktívát a szolgáltatás fájljához.
 3. Definiáljon egy privát változót a szolgáltatási osztályon belül.
 
@@ -162,17 +163,7 @@ Egyes harmadik féltől származó szolgáltatók az előző szakaszban leírt m
    >[!NOTE]
    >Azt javasoljuk, hogy *ne* használja a statikust `Log.Logger` az előző példával. Service Fabric ugyanazon szolgáltatástípus több példányát is üzemeltetheti egyetlen folyamaton belül. Ha a statikus szolgáltatást használja `Log.Logger` , a tulajdonság-gazdagítók utolsó írója megjeleníti a-t futtató összes példány értékeit. Ez az egyik oka annak, hogy a _logger változó a Service osztály egy privát tagja változó. Emellett elérhetővé kell tennie a `_logger` közös programkódot is, amely a szolgáltatásokon keresztül is felhasználható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [alkalmazások figyeléséről Service Fabricban](service-fabric-diagnostics-event-generation-app.md).
 - További információ a [EventFlow segítségével](service-fabric-diagnostics-event-aggregation-eventflow.md) és a [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md)való naplózásról.
-
-
-
-
-
-
-
-
-
-

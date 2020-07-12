@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: e36f98a20d1fc6392aef1aebf5fc86e18085cc10
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: db6b2d95bf8f38495296885d14260b9900af1d51
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85204898"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247047"
 ---
 # <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>Az Azure szinapszis külső táblázatos definícióinak Apache Spark szinkronizálása az igény szerinti SQL-ben (előzetes verzió)
 
@@ -34,7 +34,10 @@ A Spark külső táblák lekérdezései esetében futtasson egy külső [spark_t
 SELECT * FROM [db].dbo.[spark_table]
 ```
 
-## <a name="spark-data-types-to-sql-data-types-mapping"></a>Spark-adattípusok az SQL-adattípusok leképezéséhez
+> [!NOTE]
+> A Spark külső tábla hozzáadása, eldobása vagy módosítása nem jelenik meg a külső táblában az igény szerinti SQL-táblázatban.
+
+## <a name="apache-spark-data-types-to-sql-data-types-mapping"></a>Adattípusok Apache Spark SQL-adattípusok leképezéséhez
 
 | Spark adattípus | SQL-adattípus               |
 | --------------- | --------------------------- |
@@ -43,8 +46,8 @@ SELECT * FROM [db].dbo.[spark_table]
 | IntegerType     | int                         |
 | LongType        | bigint                      |
 | FloatType       | valós szám                        |
-| DoubleType      | lebegőpontos                       |
-| DecimalType     | tizedes tört                     |
+| DoubleType      | float                       |
+| DecimalType     | decimal                     |
 | TimestampType   | datetime2                   |
 | DateType        | dátum                        |
 | StringType      | varchar (max) *               |
@@ -60,6 +63,6 @@ SELECT * FROM [db].dbo.[spark_table]
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a [storage Access Control](develop-storage-files-storage-access-control.md) cikkével, amely további információt biztosít a Storage hozzáférés-vezérléséről.

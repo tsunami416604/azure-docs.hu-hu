@@ -2,16 +2,16 @@
 title: Függőséginjektálás használata a .NET Azure Functionsben
 description: Ismerje meg, hogyan használhatja a függőségi befecskendezést a szolgáltatások .NET-függvényekbe való regisztrálásához és használatához
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a994111d2f7e938ecdd71236858e4cb8773b00f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb9783b38185940f0e75e888c3bc69a1edcc6cbb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832865"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249257"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőséginjektálás használata a .NET Azure Functionsben
 
@@ -185,7 +185,7 @@ A következő példában szereplő `host.json` fájl hozzáadja a naplózási sz
 
 A Function Host számos szolgáltatást regisztrál. A következő szolgáltatások az alkalmazástól való függőségként is biztonságosak:
 
-|Szolgáltatástípus|Élettartama|Description|
+|Szolgáltatástípus|Élettartama|Leírás|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Futásidejű konfiguráció|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|A gazdagép-példány AZONOSÍTÓjának biztosításáért felelős|
@@ -255,9 +255,9 @@ A beállításokkal kapcsolatos további részletekért tekintse meg a [ASP.net 
 > [!WARNING]
 > Ne kísérelje meg olyan fájlok értékének olvasását, mint *alocal.settings.jsvagy a* *appSettings. { Environment}. JSON* a használati tervben. Az ezekből a fájlokból az trigger-kapcsolatokhoz kapcsolódó értékek nem érhetők el, mert az üzemeltetési infrastruktúra nem fér hozzá a konfigurációs adatokhoz, mivel a méretezési vezérlő új példányokat hoz létre az alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információkért lásd a következőket:
+További információkat találhat az alábbi forrásokban:
 
 - [A Function-alkalmazás figyelése](functions-monitoring.md)
 - [Ajánlott eljárások a functions szolgáltatáshoz](functions-best-practices.md)

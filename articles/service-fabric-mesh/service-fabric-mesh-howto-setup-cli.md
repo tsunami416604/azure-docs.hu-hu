@@ -5,18 +5,19 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ce2dbcefa63cc55a66e712664d1436ca24d3a1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707951"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248526"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>A Service Fabric Mesh parancssori felületének beállítása
 Service Fabric Mesh parancssori felület (CLI) szükséges az erőforrások helyi és Azure-beli Service Fabric Mesh-beli üzembe helyezéséhez és kezeléséhez. Itt állíthatja be.
 
 A CLI három típusa használható, és az alábbi táblázatban láthatók.
 
-| CLI-modul | Cél környezet |  Description | 
+| CLI-modul | Cél környezet |  Leírás | 
 |---|---|---|
 | az Mesh | Azure Service Fabric Mesh | Az elsődleges CLI, amely lehetővé teszi az alkalmazások üzembe helyezését és az erőforrások kezelését az Azure Service Fabric Mesh-környezettel. 
 | sfctl | Helyi fürtök | Service Fabric parancssori felület, amely lehetővé teszi Service Fabric erőforrások üzembe helyezését és tesztelését helyi fürtökön.  
@@ -43,7 +44,7 @@ Az előzetes verzióban az Azure Service Fabric Mesh parancssori felülete az Az
 
 ## <a name="install-the-service-fabric-cli-sfctl"></a>A Service Fabric parancssori felület (sfctl) telepítése 
 
-Kövesse az [Service FABRIC parancssori felület beállításának](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)utasításait. A **sfctl** modul a helyi gépen lévő Service Fabric-fürtökön az erőforrás-modellen alapuló alkalmazások telepítéséhez használható. 
+Kövesse az [Service FABRIC parancssori felület beállításának](../service-fabric/service-fabric-cli.md)utasításait. A **sfctl** modul a helyi gépen lévő Service Fabric-fürtökön az erőforrás-modellen alapuló alkalmazások telepítéséhez használható. 
 
 ## <a name="install-the-maven-cli"></a>A Maven parancssori felületének telepítése 
 
@@ -81,7 +82,7 @@ Ha a Maven Java-alkalmazásban szeretné használni a Maven beépülő modult, a
 
 A részletes használatról a [MAVEN CLI-referenciáját](service-fabric-mesh-reference-maven.md) ismertető szakaszban olvashat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Windows fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md) is beállíthatja.
 

@@ -5,11 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: 17bff459a0399d39c6bfdd772ad16d0b5b2f6771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b34893b64ac3533406f33c45583a911b70ae42af
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692598"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247438"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric a Visual Studio Code-hoz
 
@@ -27,7 +28,7 @@ A következő előfeltételeket minden környezetben telepíteni kell.
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Node.js](https://nodejs.org/)
 * [Git](https://git-scm.com/)
-* [Service Fabric SDK](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started)
+* [Service Fabric SDK](./service-fabric-get-started.md)
 * Yeoman-generátorok – az alkalmazáshoz tartozó megfelelő generátorok telepítése
 
    ```sh
@@ -123,7 +124,7 @@ A **Service Fabric: Clean Application** parancs törli a Build által generált 
 2.  Válassza a **Service Fabric: Clean Application (alkalmazás tisztítása** ) parancsot.
 3.  A tiszta folyamat kimenete az integrált terminálba íródik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Útmutató [C# Service Fabric alkalmazások fejlesztéséhez és hibakereséséhez a vs Code](./service-fabric-develop-csharp-applications-with-vs-code.md)használatával.
 * Ismerje meg, hogyan [fejleszthet és kereshet Java Service Fabric-alkalmazásokat a vs Code](./service-fabric-develop-java-applications-with-vs-code.md)használatával.

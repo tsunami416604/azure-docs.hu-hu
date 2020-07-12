@@ -3,11 +3,12 @@ title: Az Azure Service Fabric-alkalmazások és-szolgáltatások leírása
 description: Leírja, hogyan használják a jegyzékfájlokat Service Fabric alkalmazások és szolgáltatások leírására.
 ms.topic: conceptual
 ms.date: 8/12/2019
-ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcf4c7611f0a6f52c28b234717b9244ac58ad2d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75349962"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248220"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Service Fabric alkalmazás-és szolgáltatás-jegyzékfájlok
 Ez a cikk azt ismerteti, hogyan történik a Service Fabric alkalmazások és szolgáltatások meghatározása és verziószámozása a ApplicationManifest.xml és ServiceManifest.xml fájlok használatával.  Részletesebb példákért tekintse meg az [alkalmazás-és szolgáltatás-jegyzékfájl példáit](service-fabric-manifest-examples.md).  A jegyzékfájlok XML-sémája dokumentálva van a [ServiceFabricServiceModel. XSD-séma dokumentációjában](service-fabric-service-model-schema.md).
@@ -156,7 +157,7 @@ A **DefaultServices** deklarálja azokat a szolgáltatási példányokat, amelye
 
 Az előző példában nem beállított **tanúsítványok** deklarálják a [https-végpontok beállításához](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) vagy [a titkok titkosításához használt tanúsítványokat az alkalmazás jegyzékfájljában](service-fabric-application-secret-management.md).
 
-Az **elhelyezési megkötések** azok a utasítások, amelyek meghatározzák, hogy a szolgáltatások hol futnak. Ezek az utasítások egy vagy több csomópont-tulajdonsághoz kiválasztott egyes szolgáltatásokhoz vannak csatolva. További információ: [elhelyezési korlátozások és csomópont-tulajdonságok szintaxisa](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax)
+Az **elhelyezési megkötések** azok a utasítások, amelyek meghatározzák, hogy a szolgáltatások hol futnak. Ezek az utasítások egy vagy több csomópont-tulajdonsághoz kiválasztott egyes szolgáltatásokhoz vannak csatolva. További információ: [elhelyezési korlátozások és csomópont-tulajdonságok szintaxisa](./service-fabric-cluster-resource-manager-cluster-description.md#placement-constraints-and-node-property-syntax)
 
 Az előző példában nem megadott **házirendek** ismertetik a naplózási gyűjteményt, az [alapértelmezett futtatási](service-fabric-application-runas-security.md) [állapotot](service-fabric-health-introduction.md#health-policies), valamint a [biztonsági hozzáférési](service-fabric-application-runas-security.md) szabályzatokat, amelyek az alkalmazás szintjén állíthatók be, beleértve azt is, hogy a szolgáltatás (ok) hozzáfér-e a Service Fabric futtatókörnyezethez.
 
@@ -179,7 +180,7 @@ For more information about other features supported by application manifests, re
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Alkalmazás becsomagolása](service-fabric-package-apps.md) és üzembe helyezése készen áll.
 - [Alkalmazások telepítése és eltávolítása](service-fabric-deploy-remove-applications.md).
 - [Konfigurálja a paramétereket és a környezeti változókat a különböző alkalmazás-példányokhoz](service-fabric-manage-multiple-environment-app-configuration.md).
@@ -191,6 +192,3 @@ For more information about other features supported by application manifests, re
 [appmodel-diagram]: ./media/service-fabric-application-model/application-model.png
 [cluster-imagestore-apptypes]: ./media/service-fabric-application-model/cluster-imagestore-apptypes.png
 [cluster-application-instances]: media/service-fabric-application-model/cluster-application-instances.png
-
-
-

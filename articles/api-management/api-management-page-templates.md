@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78866804f10d12beda46f1fab9c8c78509a5a0b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79249541"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249971"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Lapok az Azure API Management
 Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmának testreszabását a tartalmukat konfiguráló sablonok használatával. A [DotLiquid](http://dotliquidmarkup.org/) szintaxisának és a választott szerkesztőnek, például a [tervezők DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), valamint a honosított [karakterlánc-erőforrások](api-management-template-resources.md#strings), a karakterjel- [erőforrások](api-management-template-resources.md#glyphs)és a [lap vezérlőelemeknek](api-management-page-controls.md)a használatával nagyszerű rugalmasságot biztosít a lapok tartalmának konfigurálásához, ahogy az a fenti sablonok használatával illik.  
@@ -31,7 +32,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 -   [A lap nem található](#PageNotFound)  
   
 > [!NOTE]
->  A minta alapértelmezett sablonjai a következő dokumentációban szerepelnek, de a folyamatos fejlődés miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon tekintheti meg, ha a kívánt egyéni sablonokat navigálja. További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  A minta alapértelmezett sablonjai a következő dokumentációban szerepelnek, de a folyamatos fejlődés miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon tekintheti meg, ha a kívánt egyéni sablonokat navigálja. További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](./api-management-developer-portal-templates.md).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -226,7 +227,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Description|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |referenceCode|sztring|A kód akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
 |errorCode|sztring|A kód akkor lett létrehozva, ha a lap egy belső hiba eredményeként jelenik meg.|  
@@ -246,5 +247,5 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 }  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

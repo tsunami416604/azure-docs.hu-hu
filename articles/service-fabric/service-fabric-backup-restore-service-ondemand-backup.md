@@ -5,11 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: d5eada62bec49fe771373671e9438d2786d6b165
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458416"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247897"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Igény szerinti biztonsági mentés az Azure Service Fabric
 
@@ -55,7 +56,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 
 #### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
-A [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API használatával beállíthatja az indítást az igény szerinti biztonsági mentéshez a partíció-azonosítóhoz `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
+A [BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition) API használatával beállíthatja az indítást az igény szerinti biztonsági mentéshez a partíció-azonosítóhoz `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/Backup?api-version=6.4"
@@ -63,7 +64,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-A [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API használatával engedélyezheti az [igény szerinti biztonsági mentési folyamat](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)nyomon követését.
+A [GetBackupProgress](/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API használatával engedélyezheti az [igény szerinti biztonsági mentési folyamat](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)nyomon követését.
 
 ### <a name="on-demand-backup-to-specified-storage"></a>Igény szerinti biztonsági mentés a megadott tárolóra
 
@@ -80,7 +81,7 @@ Backup-SFPartition -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -AzureBlo
 
 #### <a name="rest-call-using-powershell"></a>Rest-hívás a PowerShell használatával
 
-A [BackupPartition](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition) API használatával beállíthatja az indítást az igény szerinti biztonsági mentéshez a partíció-azonosítóhoz `974bd92a-b395-4631-8a7f-53bd4ae9cf22` . A következő Azure Storage-információk belefoglalása:
+A [BackupPartition](/rest/api/servicefabric/sfclient-api-backuppartition) API használatával beállíthatja az indítást az igény szerinti biztonsági mentéshez a partíció-azonosítóhoz `974bd92a-b395-4631-8a7f-53bd4ae9cf22` . A következő Azure Storage-információk belefoglalása:
 
 ```powershell
 $StorageInfo = @{
@@ -99,7 +100,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-A [GetBackupProgress](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API-val beállíthatja az [igény szerinti biztonsági mentési folyamat](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)nyomon követését.
+A [GetBackupProgress](/rest/api/servicefabric/sfclient-api-getpartitionbackupprogress) API-val beállíthatja az [igény szerinti biztonsági mentési folyamat](service-fabric-backup-restore-service-ondemand-backup.md#tracking-on-demand-backup-progress)nyomon követését.
 
 ### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer használata
 Győződjön meg arról, hogy engedélyezve van-e a speciális mód a Service Fabric Explorer beállításokban.
@@ -169,7 +170,7 @@ Az igény szerinti biztonsági mentési kérelmek a következő állapotokban le
     LsnOfLastBackupRecord   : 0
     FailureError            : @{Code=FABRIC_E_BACKUPCOPIER_UNEXPECTED_ERROR; Message=An error occurred during this operation.  Please check the trace logs for more details.}
     ```
-  - **Időtúllépés**: egy _időtúllépési_ biztonsági mentési állapot azt jelzi, hogy a partíciós állapot biztonsági mentése nem hozható létre egy adott időtartamon belül. Az alapértelmezett időtúllépési érték 10 perc. Új, igény szerinti biztonsági mentési kérelem kezdeményezése nagyobb [BackupTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) ebben a forgatókönyvben.
+  - **Időtúllépés**: egy _időtúllépési_ biztonsági mentési állapot azt jelzi, hogy a partíciós állapot biztonsági mentése nem hozható létre egy adott időtartamon belül. Az alapértelmezett időtúllépési érték 10 perc. Új, igény szerinti biztonsági mentési kérelem kezdeményezése nagyobb [BackupTimeout](/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) ebben a forgatókönyvben.
     ```
     BackupState             : Timeout
     TimeStampUtc            : 0001-01-01T00:00:00Z
@@ -180,10 +181,10 @@ Az igény szerinti biztonsági mentési kérelmek a következő állapotokban le
     FailureError            : @{Code=FABRIC_E_TIMEOUT; Message=The request of backup has timed out.}
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az időszakos biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
-- [BackupRestore REST API referenciája](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)
+- [BackupRestore REST API referenciája](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/trigger-partition-backup.png
 [1]: ./media/service-fabric-backuprestoreservice/trigger-backup-fileshare.png

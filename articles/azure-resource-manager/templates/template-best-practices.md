@@ -2,13 +2,13 @@
 title: Ajánlott eljárások a sablonokhoz
 description: A Azure Resource Manager sablonok létrehozásához ajánlott megközelítéseket ismerteti. Javaslatokat nyújt a gyakori problémák elkerülésére a sablonok használatakor.
 ms.topic: conceptual
-ms.date: 06/09/2020
-ms.openlocfilehash: a85e9afd64c416628c35bd36d16086f28d0732d3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/10/2020
+ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058061"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248917"
 ---
 # <a name="arm-template-best-practices"></a>ARM-sablon – ajánlott eljárások
 
@@ -160,7 +160,7 @@ A következő információk hasznosak lehetnek a [változók](template-variables
 
 A beállított [függőségek](define-resource-dependency.md) meghatározásakor kövesse az alábbi irányelveket:
 
-* Használja a **hivatkozási** függvényt, és adja meg az erőforrás nevét, és adjon meg egy implicit függőséget olyan erőforrások között, amelyeknek meg kell osztaniuk egy tulajdonságot. `dependsOn`Ha már definiált implicit függőséget, ne adjon hozzá explicit elemet. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatát.
+* Használja a **hivatkozási** függvényt, és adja meg az erőforrás nevét, és adjon meg egy implicit függőséget olyan erőforrások között, amelyeknek meg kell osztaniuk egy tulajdonságot. `dependsOn`Ha már definiált implicit függőséget, ne adjon hozzá explicit elemet. Ez a megközelítés csökkenti a szükségtelen függőségek kockázatát. Az implicit függőség beállítására példát az [implicit függőség](define-resource-dependency.md#reference-and-list-functions)című témakörben talál.
 
 * Adja meg a gyermek erőforrást a szülő erőforrástól függőként.
 
@@ -170,7 +170,7 @@ A beállított [függőségek](define-resource-dependency.md) meghatározásakor
 
 * Ha az üzembe helyezés előtt meg lehet határozni egy értéket, próbálja meg az erőforrást függőség nélkül telepíteni. Ha például egy konfigurációs értéknek egy másik erőforrás nevére van szüksége, lehet, hogy nincs szüksége függőségre. Ez az útmutató nem mindig működik, mert egyes erőforrások ellenőrzik a másik erőforrás létezését. Ha hibaüzenetet kap, vegyen fel egy függőséget.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 
 A következő információk hasznosak lehetnek az [erőforrásokkal](template-syntax.md#resources)való munka során:
 
@@ -278,7 +278,7 @@ Az ARM-sablon tesztelési eszközkészlete egy olyan parancsfájl, amely ellenő
 
 A sablon befejezése után futtassa a tesztelési eszközkészletet, és ellenőrizze, hogy van-e lehetőség az informatikai megvalósítás javítására. További információ: [ARM template test Toolkit](test-toolkit.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A sablonfájl struktúrájával kapcsolatos információkért lásd [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
 * Az összes Azure-beli felhőalapú környezetben működő sablonok létrehozásával kapcsolatos javaslatokért lásd: [ARM-sablonok fejlesztése a Felhőbeli konzisztencia](templates-cloud-consistency.md)érdekében.

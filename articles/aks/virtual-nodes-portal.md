@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: 6706d9c1c683cdf46fe42822cad67a49a69843a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 277bdc19635231628cea8c308b30c57b129dc364
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389819"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250702"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatára a Azure Portalban
 
@@ -42,7 +42,7 @@ Ha a szolgáltató *NotRegistered*-ként jelenik meg, regisztrálja a szolgálta
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 A virtuális csomópontok központi telepítése a következő régiókat támogatja:
 
@@ -77,7 +77,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  >  **Kubernetes-szolgáltatás**elemet.
 
-Az **alapvető** beállítások lapon adja meg a következő beállításokat:
+Az **Alapvető beállítások** lapon konfigurálja az alábbiakat:
 
 - *PROJEKT ADATAI*: Válasszon ki egy Azure-előfizetést, majd válasszon ki vagy hozzon létre egy Azure-erőforráscsoportot, például: *myResourceGroup*. Adja meg a **Kubernetes-fürt nevét**, például *myAKSCluster*.
 - *FÜRT ADATAI*: Válasszon egy régiót, Kubernetes-verziót és DNS-névelőtagot az AKS-fürthöz.
@@ -94,7 +94,7 @@ Alapértelmezés szerint létrejön egy Azure Active Directory egyszerű szolgá
 
 A fürt speciális hálózatkezelésre is konfigurálva van. A virtuális csomópontok saját Azure-beli virtuális hálózati alhálózatának használatára vannak konfigurálva. Ez az alhálózat delegált engedélyekkel rendelkezik az Azure-erőforrások az AK-fürthöz való összekapcsolásához. Ha még nem rendelkezik delegált alhálózattal, a Azure Portal létrehozza és konfigurálja az Azure-beli virtuális hálózatot és az alhálózatot a virtuális csomópontokkal való használatra.
 
-Válassza az **Áttekintés + létrehozás** lehetőséget. Az ellenőrzés befejezése után válassza a **Létrehozás**lehetőséget.
+Válassza az **Áttekintés és létrehozás** lehetőséget. Az ellenőrzés befejezése után válassza a **Létrehozás**lehetőséget.
 
 Az AKS-fürt létrehozása és a használatra való előkészítése néhány percet vesz igénybe.
 
@@ -211,7 +211,7 @@ Megjelenik a bemutató alkalmazás, ahogy az a következő tömörített példá
 
 Zárjuk be a terminál-munkamenetet a test Pod-be a használatával `exit` . Ha a munkamenet véget ér, a rendszer törli a pod-t.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy Pod-t ütemeztek a virtuális csomóponton, és egy privát, belső IP-címet rendeltek hozzá. Ehelyett hozzon létre egy szolgáltatás központi telepítését, és irányítsa a forgalmat a pod-ra egy terheléselosztó vagy egy bejövő vezérlő használatával. További információkért lásd: [alapszintű bejövő vezérlő létrehozása az AK-ban][aks-basic-ingress].
 
@@ -235,7 +235,7 @@ A virtuális csomópontok egy méretezési megoldás egyik összetevője az AK-b
 [acr-aks-secrets]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 
 <!-- LINKS - internal -->
-[aks-network]: ./networking-overview.md
+[aks-network]: ./configure-azure-cni.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md

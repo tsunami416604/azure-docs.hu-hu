@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b4e454532dec31cbcc92269d63c8be1ff92a9f6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712224"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247523"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorozás és diagnosztika az Azure Service Fabric
 
@@ -82,7 +83,7 @@ Bár a javasolt két megoldás, [Azure monitor a naplók](service-fabric-diagnos
 
 Az Ön által választott platform főbb pontjainak tartalmaznia kell a felhasználói felület, a lekérdezési képességek, a rendelkezésre álló egyéni vizualizációk és irányítópultok, valamint az általuk biztosított további eszközök használatát a figyelési élmény fokozása érdekében. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az alkalmazások kialakításának első lépéseiért tekintse meg az [alkalmazás szintű esemény és a napló létrehozása](service-fabric-diagnostics-event-generation-app.md)című témakört.
 * Hajtsa végre az alkalmazáshoz való Application Insights beállításának lépéseit, [és figyelje meg, hogyan diagnosztizálhatja a ASP.net Core alkalmazást a Service Fabricon](service-fabric-tutorial-monitoring-aspnet.md).
@@ -91,4 +92,4 @@ Az Ön által választott platform főbb pontjainak tartalmaznia kell a felhaszn
 * Ismerje meg, hogyan állíthat be Azure Monitor naplókat a tárolók figyeléséhez – [figyelés és diagnosztika Windows-tárolók számára az Azure Service Fabricban](service-fabric-tutorial-monitoring-wincontainers.md).
 * A [gyakori forgatókönyvek diagnosztizálásával](service-fabric-diagnostics-common-scenarios.md) kapcsolatban lásd: diagnosztikai problémák és megoldások Service Fabric
 * Tekintse meg a [Service Fabric diagnosztikai partnerei](service-fabric-diagnostics-partners.md) Service Fabrickal integrált diagnosztikai termékeket
-* Ismerje meg az Azure-erőforrások általános figyelési javaslatait – [ajánlott eljárások – monitorozás és diagnosztika](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 
+* Ismerje meg az Azure-erőforrások általános figyelési javaslatait – [ajánlott eljárások – monitorozás és diagnosztika](/azure/architecture/best-practices/monitoring). 

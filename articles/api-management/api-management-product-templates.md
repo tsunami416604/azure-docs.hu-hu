@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c8cd4aa3e91c5d69c40e47683818ed8bc9be338
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79243925"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249903"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Termékcsoportok az Azure API Management
 
@@ -30,7 +31,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 -   [Product](#Product)  
   
 > [!NOTE]
->  A minta alapértelmezett sablonjai a következő dokumentációban szerepelnek, de a folyamatos fejlődés miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon tekintheti meg, ha a kívánt egyéni sablonokat navigálja. További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  A minta alapértelmezett sablonjai a következő dokumentációban szerepelnek, de a folyamatos fejlődés miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon tekintheti meg, ha a kívánt egyéni sablonokat navigálja. További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](./api-management-developer-portal-templates.md).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -78,11 +79,11 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Description|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |Lapozás|[Lapozófájl](api-management-template-data-model-reference.md#Paging) entitása.|A termékek gyűjteményének lapozási adatai.|  
 |Szűrés|Entitás [szűrése](api-management-template-data-model-reference.md#Filtering) .|A Products List lap szűrési információi.|  
-|Termékek|A [termék](api-management-template-data-model-reference.md#Product) entitások gyűjteménye.|Az aktuális felhasználó számára látható termékek.|  
+|Products|A [termék](api-management-template-data-model-reference.md#Product) entitások gyűjteménye.|Az aktuális felhasználó számára látható termékek.|  
   
 ### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
@@ -203,13 +204,13 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Description|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
-|Termék|[Product](api-management-template-data-model-reference.md#Product)|A megadott termék.|  
+|Szorzat|[Product](api-management-template-data-model-reference.md#Product)|A megadott termék.|  
 |IsDeveloperSubscribed|logikai|Azt határozza meg, hogy az aktuális felhasználó előfizetett-e erre a termékre.|  
 |SubscriptionState|szám|Az előfizetés állapota. A lehetséges állapotok a következők:<br /><br /> -   `0 - suspended`– az előfizetés le van tiltva, és az előfizető nem hívhat meg semmilyen API-t a termékről.<br />-   `1 - active`– az előfizetés aktív.<br />-   `2 - expired`– az előfizetés elérte a lejárati dátumot, és inaktiválva lett.<br />-   `3 - submitted`– az előfizetési kérést a fejlesztő hozta létre, de még nem hagyta jóvá vagy nem utasította el.<br />-   `4 - rejected`– az előfizetési kérelmet a rendszergazda megtagadta.<br />-   `5 - cancelled`– a fejlesztő vagy a rendszergazda megszakította az előfizetést.|  
 |Korlátok|tömb|Ez a tulajdonság elavult, és nem használható.|  
-|DelegatedSubscriptionEnabled|logikai|Engedélyezve van-e a [delegálás](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) ehhez az előfizetéshez.|  
+|DelegatedSubscriptionEnabled|logikai|Engedélyezve van-e a [delegálás](./api-management-howto-setup-delegation.md) ehhez az előfizetéshez.|  
 |DelegatedSubscriptionUrl|sztring|Ha a delegálás engedélyezve van, a delegált előfizetési URL-cím.|  
 |IsAgreed|logikai|Ha a termék rendelkezik feltételekkel, azt, hogy az aktuális felhasználó elfogadta-e a feltételeket.|  
 |Előfizetések|[Előfizetés összegző](api-management-template-data-model-reference.md#SubscriptionSummary) entitások gyűjteménye.|A termékre vonatkozó előfizetések.|  
@@ -261,5 +262,5 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 }  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

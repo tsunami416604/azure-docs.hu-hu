@@ -4,28 +4,36 @@ description: A dátum-és időértékek az SQL rendszerfunkcióinak megismerése
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 07/09/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 055fd5182920ebe15cb2f3ed4b7a8ff69bb94c16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3666f58b12855c19dd9b8ecf5519ab772c49743
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549566"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246937"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>Dátum és idő függvények (Azure Cosmos DB)
 
 A dátum-és időfüggvények lehetővé teszik a DateTime és timestamp típusú műveletek végrehajtását Azure Cosmos DBban.
 
-## <a name="functions"></a>Functions
+## <a name="functions-to-obtain-the-date-and-time"></a>A dátum és idő beszerzéséhez szükséges függvények
 
-A következő skaláris függvények lehetővé teszik az aktuális UTC dátum és idő lekérését két formában; egy numerikus időbélyeg, amelynek értéke a UNIX-kor ezredmásodpercben, vagy egy olyan karakterlánc, amely megfelel az ISO 8601 formátumnak:
+A következő skaláris függvények lehetővé teszik az aktuális UTC-dátum és idő megszerzését két formában: egy olyan karakterláncot, amely megfelel az ISO 8601 formátumnak, vagy egy numerikus időbélyegnek, amelynek értéke a UNIX-kor (ezredmásodperc):
 
 * [GetCurrentDateTime](sql-query-getcurrentdatetime.md)
 * [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="functions-to-work-with-datetime-values"></a>Függvények a DateTime értékekkel való munkavégzéshez
+
+A következő függvények lehetővé teszik a dátum-és időértékek egyszerű kezelését:
+
+* [DateTimeAdd](sql-query-datetimeadd.md)
+* [DateTimeDiff](sql-query-datetimediff.md)
+* [DateTimeFromParts](sql-query-datetimefromparts.md)
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
 - [Bevezetés a Azure Cosmos DBba](introduction.md)

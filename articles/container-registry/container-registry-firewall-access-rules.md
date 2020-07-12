@@ -3,11 +3,12 @@ title: Tűzfal-hozzáférési szabályok
 description: Az Azure Container Registry tűzfal mögötti elérésére vonatkozó szabályok konfigurálása a ("engedélyezési") REST API és az adatvégponti tartománynevek vagy a szolgáltatás-specifikus IP-címtartományok elérésének engedélyezésével.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: 4774191087b3e88e657e8dc9bc6a9f9c406153e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 679dbcaf30653b855d35825f94e93f87ac68c322
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83849985"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246979"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez
 
@@ -132,7 +133,7 @@ Adatvégpontok engedélyezése a portál használatával:
 1. Navigáljon a tároló-beállításjegyzékhez.
 1. Válassza a **hálózatkezelés**  >  **nyilvános hozzáférés**lehetőséget.
 1. Jelölje be a **dedikált adatvégpont engedélyezése** jelölőnégyzetet.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Az adatvégpont vagy végpontok megjelennek a portálon.
 
@@ -178,11 +179,11 @@ Miután beállította a dedikált adatvégpontokat a beállításjegyzékhez, en
 
 Ha tűzfal mögött szeretné elérni a Microsoft Container Registryt (MCR), tekintse meg a [MCR-ügyfél tűzfalszabályok](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md)konfigurálására vonatkozó útmutatót. A MCR az összes Microsoft által közzétett Docker-rendszerkép elsődleges beállításjegyzéke, például Windows Server-lemezképek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [hálózati biztonsággal kapcsolatos Azure ajánlott eljárások](../security/fundamentals/network-best-practices.md) ismertetése
 
-* További információ az Azure Virtual Network [biztonsági csoportjairól](/azure/virtual-network/security-overview)
+* További információ az Azure Virtual Network [biztonsági csoportjairól](../virtual-network/security-overview.md)
 
 * További információ a tároló-beállításjegyzék [privát hivatkozásának](container-registry-private-link.md) beállításáról
 
@@ -198,4 +199,3 @@ Ha tűzfal mögött szeretné elérni a Microsoft Container Registryt (MCR), tek
 
 [az-acr-update]: /cli/azure/acr#az-acr-update
 [az-acr-show-endpoints]: /cli/azure/acr#az-acr-show-endpoints
-

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: e059a503a29872ee6241fe00ff5c7ec94ae30308
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e82c7809f5a6c79b61dc0c6731a696c672f6aa97
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888102"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247336"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 
@@ -42,7 +42,7 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
 ## <a name="install-the-sdk-and-tools"></a>Az SDK és az eszközök telepítése
 
-A webplatform-telepítő (WebPI) az SDK és az eszközök telepítésének ajánlott módja. Ha futásidejű hibákat kap a WebPI használatával, az adott Service Fabric kiadás kibocsátási megjegyzései között közvetlen hivatkozásokat is találhat a telepítőknek. A kibocsátási megjegyzések a [Service Fabric csapat blogjának](https://blogs.msdn.microsoft.com/azureservicefabric/)különböző kiadási hirdetményekben találhatók.
+A webplatform-telepítő (WebPI) az SDK és az eszközök telepítésének ajánlott módja. Ha futásidejű hibákat kap a WebPI használatával, az adott Service Fabric kiadás kibocsátási megjegyzései között közvetlen hivatkozásokat is találhat a telepítőknek. A kibocsátási megjegyzések a [Service Fabric csapat blogjának](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)különböző kiadási hirdetményekben találhatók.
 
 > [!NOTE]
 > A helyi Service Fabric fejlesztési fürtök frissítése nem támogatott.
@@ -88,7 +88,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 A [Service Fabric egy tároló Orchestrator](service-fabric-containers-overview.md) , amely a gépek egy fürtön való üzembe helyezését végzi. A Windows-tároló alkalmazások helyi fejlesztési fürtön való futtatásához először telepítenie kell a Docker for Windowst. Szerezze [be a Windows rendszerhez készült Docker CE-t (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez a lépés szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy végzett a fejlesztőkörnyezet beállításával, belefoghat az alkalmazások létrehozásába és futtatásába.
 

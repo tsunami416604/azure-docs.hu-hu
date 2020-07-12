@@ -13,17 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 8c1d126f01580574a83850e63945aa7e513eaeda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7be1e90d10a84465d6416f2c13a6e4b6855077b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76713149"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250073"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API-k biztonságossá tétele ügyféltanúsítvány-alapú hitelesítéssel az API Managementben
 
 A API Management az Ügyféltanúsítványok használatával biztonságossá teheti az API-khoz (például az ügyféltől a API Managementig) való hozzáférést. Érvényesítheti a bejövő tanúsítványokat, és ellenőrizheti a tanúsítvány tulajdonságait a kívánt értékekkel a házirend-kifejezések használatával.
 
-További információ az API-k az Ügyféltanúsítványok használatával történő elérésének biztosításáról (azaz API Management a háttérrendszer számára): a [háttérbeli szolgáltatások biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+További információ az API-k az Ügyféltanúsítványok használatával történő elérésének biztosításáról (azaz API Management a háttérrendszer számára): a [háttérbeli szolgáltatások biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával](./api-management-howto-mutual-certificates.md)
 
 > [!IMPORTANT]
 > Az ügyféltanúsítványok a fejlesztői, alapszintű, standard vagy prémium szinteken HTTP/2 protokollon keresztüli fogadásához és ellenőrzéséhez be kell kapcsolni az "egyéni tartományok" panel "ügyfél-tanúsítvány egyeztetése" beállítását az alábbi ábrán látható módon.
@@ -96,7 +97,7 @@ Az alábbi példa bemutatja, hogyan ellenőrizhető az ügyféltanúsítvány uj
 
 ![Ügyféltanúsítvány egyeztetése](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
--   [Háttérbeli szolgáltatások biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
--   [Tanúsítványok feltöltése](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
+-   [Háttérbeli szolgáltatások biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával](./api-management-howto-mutual-certificates.md)
+-   [Tanúsítványok feltöltése](./api-management-howto-mutual-certificates.md)

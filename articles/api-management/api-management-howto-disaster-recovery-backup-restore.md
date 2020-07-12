@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c6f4bbae180184c13041863a85e2a7025f06a6e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261006"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250447"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben
 
@@ -222,7 +223,7 @@ A visszaállítás egy hosszú ideig futó művelet, amely akár 30 vagy több p
 > [!NOTE]
 > A biztonsági mentési és visszaállítási műveletek a PowerShell [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) és a [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) parancsokkal is elvégezhetők.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő forrásokat a biztonsági mentési/visszaállítási folyamat különböző lépéseihez.
 
@@ -233,7 +234,7 @@ Tekintse meg a következő forrásokat a biztonsági mentési/visszaállítási 
 
 [backup an api management service]: #step1
 [restore an api management service]: #step2
-[azure api management rest api]: https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/api-management-rest
+[azure api management rest api]: /rest/api/apimanagement/apimanagementrest/api-management-rest
 [api-management-add-aad-application]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-add-aad-application.png
 [api-management-aad-permissions]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions.png
 [api-management-aad-permissions-add]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-permissions-add.png

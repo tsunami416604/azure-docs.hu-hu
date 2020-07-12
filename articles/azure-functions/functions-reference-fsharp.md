@@ -3,15 +3,15 @@ title: 'Azure Functions F # fejlesztői segédlet'
 description: 'Ismerje meg, hogyan fejlesztheti Azure Functions az F # szkript használatával.'
 author: sylvanc
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 005cb0044cb4d225c8b94602fb907fee09fb00b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846732"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249189"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F # fejlesztői segédlet
 
@@ -284,8 +284,8 @@ Az elérési utak az `#load` irányelvhez képest a fájl helyéhez viszonyítva
 
 Az `#load` irányelv csak az `.fsx` (F # script) fájlokkal működik, és nem `.fs` fájlokkal.
 
-## <a name="next-steps"></a>További lépések
-További információkért lásd a következőket:
+## <a name="next-steps"></a>Következő lépések
+További információkat találhat az alábbi forrásokban:
 
 * [F # útmutató](/dotnet/articles/fsharp/index)
 * [Ajánlott eljárások Azure Functions](functions-best-practices.md)

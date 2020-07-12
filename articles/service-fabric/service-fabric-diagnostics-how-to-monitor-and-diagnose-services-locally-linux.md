@@ -3,12 +3,12 @@ title: Azure Service Fabric-alkalmazások hibakeresése Linux rendszeren
 description: Megtudhatja, hogyan figyelheti és diagnosztizálhatja a Service Fabric-szolgáltatásokat egy helyi linuxos fejlesztői gépen.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f637721d24045f5ca3386ffc31775d469e88537
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80991330"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247557"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Szolgáltatások figyelése és diagnosztizálása helyi Linux-alapú gépek fejlesztésének beállításakor
 
@@ -132,4 +132,4 @@ A C#- [minták](https://github.com/Azure-Samples/service-fabric-dotnet-core-gett
 
 ## <a name="next-steps"></a>Következő lépések
 Az alkalmazáshoz hozzáadott nyomkövetési kód az alkalmazás diagnosztikaával is együttműködik az Azure-fürtön. Tekintse át ezeket a cikkeket, amelyek az eszközök különböző lehetőségeit tárgyalják, és leírják, hogyan kell beállítani őket.
-* [Naplók összegyűjtése a Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md)
+* [Naplók összegyűjtése a Azure Diagnostics](./service-fabric-diagnostics-event-aggregation-lad.md)

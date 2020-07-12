@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: 8ff78934005b3c0fd5fbd2b9c4d289c7b3668824
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8806390fe772491b629276b21734947a149d67e4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389921"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250685"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure Kubernetes Services (ak) fürt létrehozása és konfigurálása virtuális csomópontok használatára az Azure CLI használatával
 
@@ -43,7 +43,7 @@ Ha a szolgáltató *NotRegistered*-ként jelenik meg, regisztrálja a szolgálta
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
+## <a name="regional-availability"></a>Regionális elérhetőség
 
 A virtuális csomópontok központi telepítése a következő régiókat támogatja:
 
@@ -70,7 +70,7 @@ A virtuális csomópontok funkciói nagy mértékben függenek az ACI funkciój�
 * A [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) nem helyezi üzembe a hüvelyeket a virtuális csomóponton.
 * A virtuális csomópontok támogatják a Linux-hüvelyek ütemezését. Manuálisan is telepítheti a nyílt forráskódú [virtuális KUBELET ACI](https://github.com/virtual-kubelet/azure-aci) -szolgáltatót a Windows Server-tárolók ACI-ra való beosztásához.
 
-## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
@@ -338,7 +338,7 @@ az network profile delete --id $NETWORK_PROFILE_ID -y
 az network vnet subnet update --resource-group $RES_GROUP --vnet-name $AKS_VNET --name $AKS_SUBNET --remove delegations 0
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy Pod-t ütemeztek a virtuális csomóponton, és egy privát, belső IP-címet rendeltek hozzá. Ehelyett hozzon létre egy szolgáltatás központi telepítését, és irányítsa a forgalmat a pod-ra egy terheléselosztó vagy egy bejövő vezérlő használatával. További információkért lásd: [alapszintű bejövő vezérlő létrehozása az AK-ban][aks-basic-ingress].
 
@@ -374,7 +374,7 @@ A virtuális csomópontok gyakran az AK-ban lévő skálázási megoldás egyik 
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az aks disable-addons]: /cli/azure/aks#az-aks-disable-addons
 [aks-hpa]: tutorial-kubernetes-scale.md
-[aks-cluster-autoscaler]: autoscaler.md
+[aks-cluster-autoscaler]: ./cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
 [az-provider-register]: /cli/azure/provider#az-provider-register

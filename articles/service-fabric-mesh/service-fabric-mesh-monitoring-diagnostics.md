@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 247a1de4d00668371337295616d31caf101f0cc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75498146"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248407"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 Az Azure Service Fabric Mesh egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a fejlesztők számára a mikroszolgáltatás-alkalmazások üzembe helyezését a virtuális gépek, a tárolók és a hálózat kezelése nélkül. A Service Fabric Mesh figyelése és diagnosztikája a diagnosztikai adattípusok három fő típusa szerint vannak kategorizálva:
@@ -42,7 +43,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzV
 
 A rácsvonal-környezet a tárolók működésének módját jelző néhány mérőszámot tesz elérhetővé. A következő mérőszámok érhetők el a Azure Portal és az Azure monitor CLI használatával:
 
-| Metric | Leírás | Egység|
+| Metrika | Leírás | Egység|
 |----|----|----|
 | CpuUtilization | ActualCpu/AllocatedCpu százalékként | % |
 | MemoryUtilization | ActualMem/AllocatedMem százalékként | % |
@@ -50,14 +51,14 @@ A rácsvonal-környezet a tárolók működésének módját jelző néhány mé
 | AllocatedMemory | Lefoglalt memória Azure Resource Manager sablonként | MB |
 | ActualCpu | CPU-használat | Millicores |
 | ActualMemory | Memóriahasználat | MB |
-| Tároló állapota: | 0 – érvénytelen: a tároló állapota ismeretlen <br> 1 – függőben: a tároló az indítást ütemezte <br> 2 – kezdő: a tároló a kezdési folyamatban van <br> 3 – elindítva: a tároló sikeresen elindult <br> 4 – Leállítás: a tároló leállítása folyamatban van <br> 5 – leállítva: a tároló sikeresen leállt | N.A. |
-| ApplicationStatus | 0 – ismeretlen: az állapot nem olvasható be. <br> 1 – kész: az alkalmazás sikeresen fut <br> 2 – verziófrissítés: folyamatban van egy frissítés <br> 3 – létrehozás: folyamatban van az alkalmazás létrehozása <br> 4 – törlés: az alkalmazás törlése folyamatban van <br> 5 – sikertelen: az alkalmazás telepítése nem sikerült | N.A. |
-| ServiceStatus | 0 – érvénytelen: a szolgáltatás jelenleg nem rendelkezik állapottal <br> 1 – ok: a szolgáltatás kifogástalan állapotban van  <br> 2 – figyelmeztetés: probléma lehet a vizsgálat megkövetelésével <br> 3 – hiba: van valami rossz, ami vizsgálatot igényel <br> 4 – ismeretlen: az állapot nem olvasható be. | N.A. |
-| ServiceReplicaStatus | 0 – érvénytelen: a replika jelenleg nem rendelkezik állapottal <br> 1 – ok: a szolgáltatás kifogástalan állapotban van  <br> 2 – figyelmeztetés: probléma lehet a vizsgálat megkövetelésével <br> 3 – hiba: van valami rossz, ami vizsgálatot igényel <br> 4 – ismeretlen: az állapot nem olvasható be. | N.A. | 
-| RestartCount | Tároló-újraindítások száma | N.A. |
+| Tároló állapota: | 0 – érvénytelen: a tároló állapota ismeretlen <br> 1 – függőben: a tároló az indítást ütemezte <br> 2 – kezdő: a tároló a kezdési folyamatban van <br> 3 – elindítva: a tároló sikeresen elindult <br> 4 – Leállítás: a tároló leállítása folyamatban van <br> 5 – leállítva: a tároló sikeresen leállt | N/A |
+| ApplicationStatus | 0 – ismeretlen: az állapot nem olvasható be. <br> 1 – kész: az alkalmazás sikeresen fut <br> 2 – verziófrissítés: folyamatban van egy frissítés <br> 3 – létrehozás: folyamatban van az alkalmazás létrehozása <br> 4 – törlés: az alkalmazás törlése folyamatban van <br> 5 – sikertelen: az alkalmazás telepítése nem sikerült | N/A |
+| ServiceStatus | 0 – érvénytelen: a szolgáltatás jelenleg nem rendelkezik állapottal <br> 1 – ok: a szolgáltatás kifogástalan állapotban van  <br> 2 – figyelmeztetés: probléma lehet a vizsgálat megkövetelésével <br> 3 – hiba: van valami rossz, ami vizsgálatot igényel <br> 4 – ismeretlen: az állapot nem olvasható be. | N/A |
+| ServiceReplicaStatus | 0 – érvénytelen: a replika jelenleg nem rendelkezik állapottal <br> 1 – ok: a szolgáltatás kifogástalan állapotban van  <br> 2 – figyelmeztetés: probléma lehet a vizsgálat megkövetelésével <br> 3 – hiba: van valami rossz, ami vizsgálatot igényel <br> 4 – ismeretlen: az állapot nem olvasható be. | N/A | 
+| RestartCount | Tároló-újraindítások száma | N/A |
 
 > [!NOTE]
-> A ServiceStatus és a ServiceReplicaStatus értékek megegyeznek a Service Fabric [HealthState](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) . 
+> A ServiceStatus és a ServiceReplicaStatus értékek megegyeznek a Service Fabric [HealthState](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet) . 
 
 Minden metrika különböző dimenziókban érhető el, így különböző szinteken láthatja az összesítéseket. A méretek aktuális listája a következő:
 
@@ -73,7 +74,7 @@ Az egyes dimenziók a [Service Fabric alkalmazás modelljének](service-fabric-m
 
 ### <a name="azure-monitor-cli"></a>Azure Monitor parancssori felület
 
-A parancsok teljes listája elérhető a [Azure monitor CLI docs](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) -ban, de néhány hasznos példát is tartalmaz. 
+A parancsok teljes listája elérhető a [Azure monitor CLI docs](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list) -ban, de néhány hasznos példát is tartalmaz. 
 
 Az erőforrás-azonosító például a következő mintát követi
 
@@ -115,6 +116,6 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 ![Container Insights](./media/service-fabric-mesh-monitoring-diagnostics/containerinsights.png)
 -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Service Fabric Meshsel kapcsolatos további információkért olvassa el a [Service Fabric Mesh áttekintésével](service-fabric-mesh-overview.md) foglalkozó cikket.
-* Ha többet szeretne megtudni a Azure Monitor metrikák parancsairól, tekintse meg a [Azure monitor CLI-docs](https://docs.microsoft.com/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)című témakört.
+* Ha többet szeretne megtudni a Azure Monitor metrikák parancsairól, tekintse meg a [Azure monitor CLI-docs](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)című témakört.

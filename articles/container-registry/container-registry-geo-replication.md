@@ -1,15 +1,16 @@
 ---
 title: Regisztrációs adatbázis georeplikálása
-description: Ismerkedjen meg a földrajzilag replikált Azure Container Registry létrehozásával és kezelésével, amely lehetővé teszi, hogy a beállításjegyzék több régiót is kiszolgáljon több főkiszolgálós regionális replikával. A Geo-replikáció a prémium szintű sevice csomag egyik funkciója.
+description: Ismerkedjen meg a földrajzilag replikált Azure Container Registry létrehozásával és kezelésével, amely lehetővé teszi, hogy a beállításjegyzék több régiót is kiszolgáljon több főkiszolgálós regionális replikával. A Geo-replikáció a prémium szintű szolgáltatási szint egyik funkciója.
 author: stevelas
 ms.topic: article
 ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: 35525906135db02c453c55d8798e1405396c8598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 315de5151547c4339255639cb65d1be30f7213ff
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508794"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247132"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replikálás Azure Container Registry
 
@@ -27,7 +28,7 @@ A georeplikált regisztrációs adatbázis a következő előnyöket nyújtja:
 >
 
 ## <a name="example-use-case"></a>Példa használati esetre
-A contoso nyilvános jelenlétű webhelyet futtat az Egyesült Államok, Kanada és Európa területén. Ha ezeket a piacokat helyi és hálózati tartalommal szeretné kiszolgálni, a contoso az USA nyugati régiójában, az USA keleti régiójában, a közép-Kanadában és Nyugat-Európában található [Azure Kubernetes Service](/azure/aks/) (ak) fürtöket futtatja. A Docker-rendszerképként üzembe helyezett webhely-alkalmazás ugyanazt a kódot és képet használja az összes régióban. Az adott régióhoz tartozó tartalmat a rendszer beolvassa egy adatbázisból, amely az egyes régiókban egyedi módon van kiépítve. Minden regionális központi telepítés egyedi konfigurációval rendelkezik a helyi adatbázishoz hasonló erőforrásokhoz.
+A contoso nyilvános jelenlétű webhelyet futtat az Egyesült Államok, Kanada és Európa területén. Ha ezeket a piacokat helyi és hálózati tartalommal szeretné kiszolgálni, a contoso az USA nyugati régiójában, az USA keleti régiójában, a közép-Kanadában és Nyugat-Európában található [Azure Kubernetes Service](../aks/index.yml) (ak) fürtöket futtatja. A Docker-rendszerképként üzembe helyezett webhely-alkalmazás ugyanazt a kódot és képet használja az összes régióban. Az adott régióhoz tartozó tartalmat a rendszer beolvassa egy adatbázisból, amely az egyes régiókban egyedi módon van kiépítve. Minden regionális központi telepítés egyedi konfigurációval rendelkezik a helyi adatbázishoz hasonló erőforrásokhoz.
 
 A fejlesztői csapat Seattle WA-ben található, amely az USA nyugati régiójának adatközpontját használja.
 
@@ -94,7 +95,7 @@ Az ACR megkezdi a lemezképek szinkronizálását a konfigurált replikák köz�
 * Amikor leküldi vagy lekéri a képeket egy földrajzilag replikált beállításjegyzékből, az Azure Traffic Manager a háttérben elküldi a kérést az Ön számára legközelebb eső régióban található beállításjegyzékbe a hálózati késés szempontjából.
 * Miután leküldte a rendszerképet vagy a címkét a legközelebbi régióra, időbe telik, amíg a Azure Container Registry replikálja a jegyzékeket és a rétegeket a többi, Ön által választott régióba. A nagyobb méretű képek replikálásához hosszabb időt is igénybe kell venni, mint a kisebbek. A rendszer a képeket és címkéket szinkronizálja a replikációs régiók között egy végleges konzisztencia-modellel.
 * A földrajzilag replikált beállításjegyzék leküldéses frissítéseitől függő munkafolyamatok kezeléséhez javasoljuk, hogy a [webhookokat](container-registry-webhook.md) úgy konfigurálja, hogy válaszoljanak a leküldéses eseményekre. A regionális webhookok a földrajzilag replikált beállításjegyzékben állíthatók be, hogy nyomon kövessék a leküldéses eseményeket a földrajzilag replikált régiókban.
-* A tartalmi rétegeket jelképező Blobok kiszolgálásához az Azure-tárolók adatvégpontokat használnak. Engedélyezheti a beállításjegyzékhez tartozó [dedikált adatvégpontokat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) a beállításjegyzék földrajzilag replikált régióiban. Ezek a végpontok lehetővé teszik a szűk hatókörű tűzfal-hozzáférési szabályok konfigurálását.
+* A tartalmi rétegeket képviselő Blobok kiszolgálásához Azure Container Registry adatvégpontokat használ. Engedélyezheti a beállításjegyzékhez tartozó [dedikált adatvégpontokat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) a beállításjegyzék földrajzilag replikált régióiban. Ezek a végpontok lehetővé teszik a szűk hatókörű tűzfal-hozzáférési szabályok konfigurálását.
 * Ha [privát](container-registry-private-link.md) végpontokat használ a beállításjegyzékhez egy virtuális hálózaton, a földrajzilag replikált régiók dedikált adatvégpontja alapértelmezés szerint engedélyezve van. 
 
 ## <a name="delete-a-replica"></a>Replika törlése
@@ -126,7 +127,7 @@ Ha ez a probléma merül fel, az egyik megoldás egy ügyféloldali DNS-gyorsít
 
 Ha a DNS-feloldást a legközelebbi replikára szeretné optimalizálni, amikor képeket küld, állítson be egy földrajzilag replikált beállításjegyzéket ugyanabban az Azure-régióban, mint a leküldéses műveletek forrása, vagy a legközelebbi régió, amikor az Azure-on kívül dolgozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a három részből álló oktatóanyag-sorozatot, a [geo-replikációt Azure Container Registryban](container-registry-tutorial-prepare-registry.md). Végigvezeti a földrajzilag replikált beállításjegyzék létrehozásán, a tároló kialakításán, majd egyetlen `docker push` paranccsal, több regionális Web Apps a tárolók példányain való üzembe helyezésével.
 

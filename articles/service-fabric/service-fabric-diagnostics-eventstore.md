@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
-ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2fcbd07c105885da4180b06fa27ec13045940a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645735"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247642"
 ---
 # <a name="eventstore-overview"></a>A EventStore áttekintése
 
@@ -45,7 +46,7 @@ A EventStore szolgáltatás lekérdezhető olyan eseményekhez, amelyek elérhet
 * Partíciós replikák: az adott partíción belüli összes replika/példány eseményei`partitionId`
 * Partíciós replika: a és a által azonosított adott replika/példány eseményei `replicaId``partitionId`
 
-Ha többet szeretne megtudni az API-ról, tekintse meg a [EVENTSTORE API-referenciát](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore).
+Ha többet szeretne megtudni az API-ról, tekintse meg a [EVENTSTORE API-referenciát](/rest/api/servicefabric/sfclient-index-eventsstore).
 
 A EventStore szolgáltatásnak lehetősége van a fürt eseményeinek összekapcsolására is. Ha olyan eseményeket vizsgál meg, amelyek a különböző entitásokból származnak, amelyek hatással lehetnek egymásra, a EventStore szolgáltatás össze tudja kapcsolni ezeket az eseményeket, hogy a fürt tevékenységeinek azonosításához segítséget nyújtson. Ha például az egyik alkalmazás nem megfelelő állapotba kerül, és az indukált változások nélkül is megtörténik, akkor a EventStore a platform által közzétett egyéb eseményeket is megtekintheti, és ezzel egy vagy több eseménnyel is korrelálhat `Error` `Warning` . Ez segít a gyorsabb hibák észlelésében és a kiváltó okok elemzésében.
 
@@ -121,9 +122,9 @@ Ha a 6,4-es verziót használja, szerkesztheti Azure Resource Manager-sablonját
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerkedés a EventStore API-val – [a EventStore API-k használata az Azure Service Fabric-fürtökben](service-fabric-diagnostics-eventstore-query.md)
 * További információ a EventStore- [Service Fabric események](service-fabric-diagnostics-event-generation-operational.md) által kínált események listájáról
 * A Service Fabric monitorozása és diagnosztika áttekintése [Service Fabric](service-fabric-diagnostics-overview.md)
-* Az API-hívások teljes listájának megtekintése – [EventStore REST API referenciája](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)
+* Az API-hívások teljes listájának megtekintése – [EventStore REST API referenciája](/rest/api/servicefabric/sfclient-index-eventsstore)
 * További információ a fürt monitorozásáról – [a fürt és a platform figyelése](service-fabric-diagnostics-event-generation-infra.md).

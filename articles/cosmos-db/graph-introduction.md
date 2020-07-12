@@ -5,28 +5,28 @@ author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 07/18/2019
+ms.date: 07/10/2020
 ms.author: lbosq
-ms.openlocfilehash: 0eb778d1fc2dca522bef675709b5241f214e2b86
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 18f8be607516857d1631f43d3bef9e2ae233c995
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118117"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248646"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Bevezetés az Azure Cosmos DB használatába: Gremlin API
+# <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>A Gremlin API bemutatása Azure Cosmos DB
 
-[Azure Cosmos db](introduction.md)   a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása a kritikus fontosságú alkalmazások számára. Ez egy többmodelles adatbázis, amely támogatja a dokumentumok, a kulcs-érték, a gráf és az oszlop-család adatmodelleket. A Azure Cosmos DB Gremlin API egy teljes körűen felügyelt, bármilyen méretezésre tervezett adatbázis-szolgáltatás gráf-adattárolására és üzemeltetésére szolgál.  
+[Azure Cosmos db](introduction.md)   a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása a kritikus fontosságú alkalmazások számára. Ez egy többmodelles adatbázis, amely támogatja a dokumentumok, a kulcs-érték, a gráf és az oszlop-család adatmodelleket. "Azure Cosmos DB a Gremlin API-val egy teljes körűen felügyelt, bármilyen méretezésre tervezett adatbázis-szolgáltatáson keresztül biztosít gráf adatbázis-szolgáltatást.  
 
 :::image type="content" source="./media/graph-introduction/cosmosdb-graph-architecture.png" alt-text="Az Azure Cosmos DB gráfarchitektúrája" border="false":::
 
-A cikk áttekintést nyújt az Azure Cosmos DB Gremlin API-járól, és elmagyarázza, hogyan használhatja a nagyméretű, több milliárd csúcsot és élet tartalmazó gráfok tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyedén fejlesztheti a gráf szerkezetét. A Azure Cosmos DB Gremlin API-t az [Apache TinkerPop](https://tinkerpop.apache.org)   Graph Database standard alapján kell használni, és a Gremlin lekérdezési nyelvet használja. 
+Ez a cikk áttekintést nyújt a Azure Cosmos DB Gremlin API-ról, és ismerteti, hogyan használhatók a nagy méretű gráfok több milliárd csúcsot és éleket tartalmazó diagramjainak tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyedén fejlesztheti a gráf szerkezetét. Azure Cosmos DB Gremlin API-ját az [Apache TinkerPop](https://tinkerpop.apache.org), egy gráf-számítástechnikai keretrendszer alapján építették. A Azure Cosmos DB Gremlin API a Gremlin lekérdezési nyelvet használja.
 
-Azure Cosmos DB Gremlin API-ját nagy mértékben skálázható, felügyelt infrastruktúrával ötvözi a Graph adatbázis-algoritmusok előnyeit, hogy egyedi, rugalmas megoldást nyújtson a rugalmasság és a kapcsolatok hiánya miatti leggyakoribb adatproblémákra. 
+Azure Cosmos DB Gremlin API-ját nagy mértékben skálázható, felügyelt infrastruktúrával ötvözi a Graph adatbázis-algoritmusok előnyeit, hogy egyedi, rugalmas megoldást nyújtson a rugalmasság és a kapcsolatok hiánya miatti leggyakoribb adatproblémákra.
 
-## <a name="features-of-azure-cosmos-db-graph-database"></a>Az Azure Cosmos DB gráfadatbázisának jellemzői
+## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>A Azure Cosmos DB Gremlin API funkciói
  
-Az Azure Cosmos DB egy teljes körűen felügyelt gráfadatbázis, amely globális elosztási, rugalmas tárhely- és teljesítményméretezési, automatikus indexelési és lekérdezési képességeket biztosít, valamint beállítható konzisztenciaszinteket és a TinkerPop szabvány támogatását. 
+Az Azure Cosmos DB egy teljes körűen felügyelt gráfadatbázis, amely globális elosztási, rugalmas tárhely- és teljesítményméretezési, automatikus indexelési és lekérdezési képességeket biztosít, valamint beállítható konzisztenciaszinteket és a TinkerPop szabvány támogatását.
 
 A Azure Cosmos DB Gremlin API által kínált differenciált funkciók a következők:
 
@@ -36,11 +36,11 @@ A Azure Cosmos DB Gremlin API által kínált differenciált funkciók a követk
 
 * **Többrégiós replikáció**
 
-  A Azure Cosmos DB automatikusan replikálhatja a Graph-adatait a világ bármely Azure-régiójába. A globális replikáció leegyszerűsíti az olyan alkalmazások fejlesztését, amelyek globális hozzáférést igényelnek az adatkezeléshez. Az olvasási és írási késleltetés a világ bármely pontján belüli minimalizálása mellett Azure Cosmos DB automatikus regionális feladatátvételi mechanizmust biztosít, amely biztosítja az alkalmazás folytonosságát abban a ritka esetben, ha a szolgáltatás megszakad egy adott régióban. 
+  A Azure Cosmos DB automatikusan replikálhatja a Graph-adatait a világ bármely Azure-régiójába. A globális replikáció leegyszerűsíti az olyan alkalmazások fejlesztését, amelyek globális hozzáférést igényelnek az adatkezeléshez. Az olvasási és írási késleltetés a világ bármely pontján belüli minimalizálása mellett Azure Cosmos DB automatikus regionális feladatátvételi mechanizmust biztosít, amely biztosítja az alkalmazás folytonosságát abban a ritka esetben, ha a szolgáltatás megszakad egy adott régióban.
 
 * **Gyors lekérdezések és bejárásokat a legszélesebb körben elfogadott gráf lekérdezési szabvánnyal**
 
-  Heterogén csúcsokat és éleket tárolhat, és egy ismerős Gremlin-szintaxissal kérdezheti le őket. A Gremlin egy rendkívül fontos, funkcionális lekérdezési nyelv, amely sokoldalú felületet biztosít a közös gráf-algoritmusok megvalósításához. 
+  Heterogén csúcsokat és éleket tárolhat, és egy ismerős Gremlin-szintaxissal kérdezheti le őket. A Gremlin egy rendkívül fontos, funkcionális lekérdezési nyelv, amely sokoldalú felületet biztosít a közös gráf-algoritmusok megvalósításához.
   
   Azure Cosmos DB lehetővé teszi a gazdag valós idejű lekérdezések és bejárásokat használatát anélkül, hogy meg kellene adni a séma-, a másodlagos indexeket vagy a nézeteket. További információk: [Gráfok lekérdezése a Gremlin használatával](gremlin-support.md).
 
@@ -52,17 +52,18 @@ A Azure Cosmos DB Gremlin API által kínált differenciált funkciók a követk
 
 * **Automatikus indexelés**
 
-  Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli a gráf csúcsain és élein található összes tulajdonságot, és nem vár vagy igényel semmilyen sémát, valamint nem szükséges másodlagos indexek létrehozása sem. További információ a [Azure Cosmos db indexeléséről](https://docs.microsoft.com/azure/cosmos-db/index-overview). 
+  Alapértelmezés szerint a Azure Cosmos DB automatikusan indexeli a csomópontokon belüli összes tulajdonságot (más néven csúcspontokat) és a diagramon lévő éleket, és nem vár vagy igényel semmilyen sémát, és nem kell másodlagos indexeket létrehoznia. További információ a [Azure Cosmos db indexeléséről](https://docs.microsoft.com/azure/cosmos-db/index-overview).
 
 * **Kompatibilitás az Apache TinkerPoppal**
 
-  A Azure Cosmos DB támogatja a [nyílt forráskódú Apache TinkerPop szabványt](https://tinkerpop.apache.org/). A Tinkerpop standard a Azure Cosmos DB Gremlin API-val könnyen integrálható alkalmazások és kódtárak széles körű ökoszisztémáját tartalmazhatja. 
+  A Azure Cosmos DB támogatja a [nyílt forráskódú Apache TinkerPop szabványt](https://tinkerpop.apache.org/). A Tinkerpop standard a Azure Cosmos DB Gremlin API-val könnyen integrálható alkalmazások és kódtárak széles körű ökoszisztémáját tartalmazhatja.
 
 * **Beállítható konzisztenciaszintek**
 
   A Azure Cosmos DB öt jól meghatározott konzisztencia-szintet biztosít az alkalmazás konzisztenciája és teljesítménye közötti megfelelő kompromisszum eléréséhez. A lekérdezések és olvasási műveletek esetében az Azure Cosmos DB öt különböző konzisztenciaszintet kínál: erős, kötött elavulás, munkamenet, konzisztens előtag és végleges. Ezek a részletes, jól meghatározott konzisztenciaszintek lehetővé teszik, hogy ésszerű kompromisszumot alakítson ki a konzisztencia, a rendelkezésre állás és a késleltetés között. További információk: [Beállítható adatkonzisztencia-szintek az Azure Cosmos DB-ben](consistency-levels.md).
 
-## <a name="scenarios-that-can-use-gremlin-api"></a>A Gremlin API használatának forgatókönyvei
+## <a name="scenarios-that-use-gremlin-api"></a>Gremlin API-t használó forgatókönyvek
+
 Íme néhány forgatókönyv, ahol a Azure Cosmos DB gráf támogatása hasznos lehet:
 
 * **Közösségi hálózatok/ügyfél 365**
@@ -82,6 +83,7 @@ A Azure Cosmos DB Gremlin API által kínált differenciált funkciók a követk
   Ha a hálózatot és az IoT-eszközök közötti kapcsolatot gráfként modellezi, jobban megértheti az eszközök és adategységek állapotát. Azt is megértheti, hogy a hálózat egyes részeinek módosítása milyen potenciális hatással lehet a többi részre.
 
 ## <a name="introduction-to-graph-databases"></a>A Graph-adatbázisok bemutatása
+
 Az adatok a való világban természetes módon kapcsolódnak egymáshoz. A hagyományos adatmodellezés az entitások külön történő definiálását és a kapcsolatok futtatását határozza meg futásidőben. Habár ennek a modellnek van előnye, a nagy terhelésű adat a megkötések alatt is kihívást jelenthet.  
 
 A Graph-adatbázisok megközelítése az adattárolási rétegben fennálló kapcsolatok megőrzésére támaszkodik, ami nagyon hatékony gráf-lekérési műveletekhez vezet. A Azure Cosmos DB Gremlin API támogatja a [Property Graph modellt](https://tinkerpop.apache.org/docs/current/reference/#intro).
@@ -90,34 +92,39 @@ A Graph-adatbázisok megközelítése az adattárolási rétegben fennálló kap
 
 A Property [Graph](http://mathworld.wolfram.com/Graph.html) a [csúcspontokból](http://mathworld.wolfram.com/GraphVertex.html) és [élekből](http://mathworld.wolfram.com/GraphEdge.html)álló struktúra. Mindkét objektum tetszőleges számú kulcs-érték párokat tartalmazhat, mint a tulajdonságok. 
 
-* **Csúcspontok** – a csúcspontok különálló entitásokat jelölnek, például személyeket, helyet vagy eseményeket.
+* **Csúcspontok/csomópontok** – a csúcspontok különálló entitásokat jelölnek, például egy személyt, egy helyet vagy egy eseményt.
 
-* **Élek** – Az élek a csúcsok közötti kapcsolatokat jelölik. Például egy adott személy ismerhet egy másik személyt, részt vehet egy eseményen, vagy nemrégiben meglátogathatott egy helyszínt. 
+* **Élek/kapcsolatok** – az élek a csúcspontok közötti kapcsolatokat jelölik. Például egy adott személy ismerhet egy másik személyt, részt vehet egy eseményen, vagy nemrégiben meglátogathatott egy helyszínt.
 
-* **Tulajdonságok** – A tulajdonságok a csúcsokkal és élekkel kapcsolatos információkat jelölik. A csúcspontok és élek tetszőleges számú tulajdonsággal rendelkezhetnek, és a lekérdezésben szereplő objektumok leírására és szűrésére használhatók. Például a tulajdonságok közé tartozik egy név és egy kor, vagy egy Edge, amely egy időbélyeggel és/vagy súlyozással is rendelkezhet. 
+* **Tulajdonságok** – A tulajdonságok a csúcsokkal és élekkel kapcsolatos információkat jelölik. A csúcspontok és élek tetszőleges számú tulajdonsággal rendelkezhetnek, és a lekérdezésben szereplő objektumok leírására és szűrésére használhatók. Például a tulajdonságok közé tartozik egy név és egy kor, vagy egy Edge, amely egy időbélyeggel és/vagy súlyozással is rendelkezhet.
 
-A Graph-adatbázisok gyakran beletartoznak a NoSQL vagy a nem kapcsolódó adatbázis kategóriába, mivel a séma vagy a korlátozott adatmodell nem függ egymástól. A séma hiánya lehetővé teszi a csatlakoztatott struktúrák természetes és hatékony modellezését és tárolását. 
+* **Label (címke** ) – a címke a csúcspont vagy a peremhálózat neve vagy azonosítója. A címkék több csúcspontot vagy szegélyt is csoportosíthatjuk, így a csoport összes csúcspontja/szegélye egy bizonyos címkével rendelkezik. Egy gráfhoz például több "person" típusú csúcspont is tartozhat.
 
-### <a name="gremlin-by-example"></a>Példa a Gremlin használatára
+A Graph-adatbázisok gyakran beletartoznak a NoSQL vagy a nem kapcsolódó adatbázis kategóriába, mivel a séma vagy a korlátozott adatmodell nem függ egymástól. A séma hiánya lehetővé teszi a csatlakoztatott struktúrák természetes és hatékony modellezését és tárolását.
+
+### <a name="graph-database-by-example"></a>Graph-adatbázis példa alapján
+
 Használjunk egy mintagráfot annak megismeréséhez, hogyan adhatók meg lekérdezések a Gremlinben. Az alábbi ábrán egy üzleti alkalmazás látható, amely felhasználókkal, érdeklődési körökkel és eszközökkel kapcsolatos adatokat kezel egy gráf formájában.  
 
 :::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Személyeket, eszközöket és érdeklődési köröket tartalmazó mintaadatbázis" border="false"::: 
 
-Ez a gráf a következő *csúcs* -típusokkal rendelkezik (a Gremlin "label" néven szerepel):
+Ez a gráf a következő *csúcs* -típusokkal rendelkezik (ezeket a "label" is nevezik a Gremlin-ben):
 
-- **Emberek**: a gráf három személy, Robin, Thomas és ben
-- **Érdeklődési**körök: ebben a példában a labdarúgás játéka
-- **Eszközök**: a felhasználók által használt eszközök
-- **Operációs rendszerek**: az eszközöket futtató operációs rendszerek
+* **Emberek**: a gráf három személy, Robin, Thomas és ben
+* **Érdeklődési**körök: ebben a példában a labdarúgás játéka
+* **Eszközök**: a felhasználók által használt eszközök
+* **Operációs rendszerek**: az eszközöket futtató operációs rendszerek
+* **Hely**: azok a helyek, amelyekről az eszközök hozzáférnek
 
-Az entitások közötti kapcsolatokat a következő *Edge* -típusok/címkék használatával ábrázoljuk:
+Az entitások közötti kapcsolatokat a következő *Edge* -típusok szerint jelöljük:
 
-- **Ismerheti**meg például a következőt: "Thomas know Robin"
-- **Fontos**: a gráfban lévő személyek érdekeinek kifejezése, például "ben a labdarúgás érdekli"
-- **RunsOS**: a laptop a Windows operációs rendszert futtatja
-- A következőt **használja**: egy személy által használt eszköz jelölésére. Robin például egy Motorola-telefont használ, amelynek sorozatszáma 77.
+* **Ismerheti**meg például a következőt: "Thomas know Robin"
+* **Fontos**: a gráfban lévő személyek érdekeinek kifejezése, például "ben a labdarúgás érdekli"
+* **RunsOS**: a laptop a Windows operációs rendszert futtatja
+* A következőt **használja**: egy személy által használt eszköz jelölésére. Robin például egy Motorola-telefont használ, amelynek sorozatszáma 77.
+* **Helye: annak**a helynek a jelölése, amelyről az eszközök hozzáférnek
 
-Most futtassunk néhány műveletet a gráfra vonatkozóan a [Gremlin Console](https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console) segítségével. Ezek a műveletek tetszőleges platformon is (Java, Node.js, Python vagy .NET) végrehajthatók a Gremlin-illesztők használatával.  Mielőtt áttekintenénk, hogy az Azure Cosmos DB mit támogat, lássunk néhány példát, amelyek segítségével megismerkedhetünk a szintaxissal.
+A Gremlin-konzol egy interaktív terminál, amelyet az Apache TinkerPop kínál, és ez a terminál használható a Graph-adatbázissal való kommunikációra. További információért tekintse meg a rövid útmutató dokumentációját a [Gremlin-konzol használatáról](create-graph-gremlin-console.md). Ezek a műveletek tetszőleges platformon is (Java, Node.js, Python vagy .NET) végrehajthatók a Gremlin-illesztők használatával. Az alábbi példák bemutatják, hogyan futtathat lekérdezéseket a gráf adatain a Gremlin-konzol használatával.
 
 Először is lássuk a CRUD-feladatokat. A következő Gremlin-utasítás beszúrja a „Thomas” csúcspontot a gráfba:
 
@@ -132,6 +139,7 @@ A következő Gremlin-utasítás beszúr egy „knows” (ismeri) élt Thomas é
 ```
 
 Az alábbi lekérdezés visszaadja a „személy” csúcspontokat, az utóneveik fordított ABC-sorrendjében:
+
 ```java
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
@@ -142,7 +150,8 @@ A gráfok különösen akkor hasznosak, ha olyan kérdéseket kell megválaszoln
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+
 A gráfok Azure Cosmos DB általi támogatásával kapcsolatos további információkért lásd:
 
 * Első lépésként kezdje [az Azure Cosmos DB-gráfokkal kapcsolatos oktatóanyaggal](create-graph-dotnet.md).

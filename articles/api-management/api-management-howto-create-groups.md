@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 182f0ea93ddfb2ab64de1c15b36958537fa5431f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16ab72a67a021338bd8e186c32015c271240d224
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75430710"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250532"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Csoportok létrehozása és használata fejlesztői fiókok kezeléséhez az Azure API Managementben
 
@@ -33,7 +34,7 @@ Ezeken a rendszercsoportokon kívül a rendszergazdák létrehozhatnak egyéni c
 
 Ez az útmutató bemutatja, hogy egy API Management-példány rendszergazdája hogyan adhat hozzá új csoportokat, és hogyan társíthatja azokat termékekhez és fejlesztőknek.
 
-A kiadói portálon a csoportok létrehozása és kezelése mellett a API Management REST API [csoport](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) entitás használatával is létrehozhatja és kezelheti a csoportokat.
+A kiadói portálon a csoportok létrehozása és kezelése mellett a API Management REST API [csoport](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) entitás használatával is létrehozhatja és kezelheti a csoportokat.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -94,10 +95,10 @@ Ez a szakasz bemutatja, hogyan lehet csoportokat társítani a tagokkal.
 
 Miután hozzáadta a társítást a fejlesztőhöz és a csoporthoz, a **felhasználók** lapon tekintheti meg.
 
-## <a name="next-steps"></a><a name="next-steps"> </a>További lépések
+## <a name="next-steps"></a><a name="next-steps"> </a>Következő lépések
 
 * Miután hozzáadta a fejlesztőt egy csoporthoz, megtekintheti és előfizethet az adott csoporthoz társított termékekre. További információkért lásd: [termék létrehozása és közzététele az Azure-ban API Management][How create and publish a product in Azure API Management],
-* A kiadói portálon a csoportok létrehozása és kezelése mellett a API Management REST API [csoport](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) entitás használatával is létrehozhatja és kezelheti a csoportokat.
+* A kiadói portálon a csoportok létrehozása és kezelése mellett a API Management REST API [csoport](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) entitás használatával is létrehozhatja és kezelheti a csoportokat.
 
 [Create a group]: #create-group
 [Associate a group with a product]: #associate-group-product

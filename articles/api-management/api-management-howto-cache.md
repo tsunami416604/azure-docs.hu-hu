@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: d4113205b47b4c6cab8b133d89c35520aa8505c1
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 0a3aa0c26ddb515b8096cce909ca074f6f24a333
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851211"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250481"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Gyorsítótárazás hozzáadása az Azure API Management teljesítményének javításához
 
@@ -91,7 +91,7 @@ A gyorsítótárazás működés közbeni megtekintéséhez hívja meg a művele
 5. Kattintson a **Tesztelés** lapra a jobb felső menüben.
 6. Kattintson a **Küldés** gombra.
 
-## <a name="next-steps"></a><a name="next-steps"> </a>További lépések
+## <a name="next-steps"></a><a name="next-steps"> </a>Következő lépések
 * További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] oktatóanyag [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
 * További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
 * További információ a Redis külső Azure cache-ről való használatáról: [külső Azure-gyorsítótár használata az azure API Management-ben való Redis](api-management-howto-cache-external.md).
@@ -108,15 +108,15 @@ A gyorsítótárazás működés közbeni megtekintéséhez hívja meg a művele
 [api-management-console]: ./media/api-management-howto-cache/api-management-console.png
 
 
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to add and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: get-started-create-service-instance.md
 
-[API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
-[Caching policies]: https://msdn.microsoft.com/library/azure/dn894086.aspx
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-caching-policies.md
 
 [Create an API Management service instance]: get-started-create-service-instance.md
 

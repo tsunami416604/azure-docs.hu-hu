@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9c3f8e1e37a59dc0010269c6b4c19e3a682c57e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982728"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247013"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>A Azure IoT Edge tanúsítványok használatának ismertetése
 
@@ -24,6 +25,9 @@ Ez a cikk azt ismerteti, hogy IoT Edge tanúsítványok hogyan működhetnek üz
 ## <a name="iot-edge-certificates"></a>IoT Edge-tanúsítványok
 
 A gyártók általában nem a IoT Edge eszköz végfelhasználói. Előfordulhat, hogy az egyetlen kapcsolat a kettő között, amikor a végfelhasználó vagy a kezelő a gyártó által készített általános eszközt vásárol. Máskor a gyártó szerződés szerint működik, hogy egyéni eszközt hozzon létre a kezelőhöz. A IoT Edge-tanúsítvány kialakítása mindkét forgatókönyvet megkísérli figyelembe venni.
+
+> [!NOTE]
+> Jelenleg a libiothsm korlátozásai meggátolják a 2050 január 1-jén vagy azt követően lejáró tanúsítványok használatát. Ez a korlátozás az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványára, a megbízhatósági csomagban található összes tanúsítványra, valamint az X. 509 létesítési módszerekhez használt eszköz-azonosító tanúsítványokra vonatkozik.
 
 Az alábbi ábra a tanúsítványok IoT Edge használatát mutatja be. A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány és az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa között nulla, egy vagy több köztes aláíró tanúsítvány lehet az érintett entitások számától függően. Itt egy esetet mutatunk be.
 
@@ -98,7 +102,7 @@ A következő képernyőképen látható a tanúsítvány mélységének hierarc
 | Munkaterhelés HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa     | iotedge munkaterhelés-CA                                                                                       |
 | IoT Edge hub-kiszolgáló tanúsítványa | iotedgegw. local (megegyezik a "hostname" attribútummal a config. YAML)                                            |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Azure IoT Edge-modulok ismertetése](iot-edge-modules.md)
 

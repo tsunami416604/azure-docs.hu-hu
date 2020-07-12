@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: fb99530923f25541316fd159a2270f7035a1916b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0c0f40144fde49d467ca7fb126a19afa6c76660a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229244"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246956"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Az Azure előzetes verziójának szolgáltatásai Cognitive Search
 
@@ -23,6 +23,7 @@ Az általánosan elérhetővé vált előzetes verziójú funkciók törlődnek 
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
+| [**Azure Machine Learning (pénzmosás) ismerete**](cognitive-search-aml-skill.md) | MI-bővítés| Egy új, az Azure Machine Learning-ból származó következtetési végpont integrálására szolgáló képzettségi típus. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-aml-custom-skill.md). | Használja a [Search REST API 2020-06-30 – Preview](https://docs.microsoft.com/rest/api/searchservice/) vagy 2019-05-06-Preview lehetőséget. A portálon is elérhető a készségkészlet-kialakításban, feltéve, hogy a Cognitive Search és az Azure ML-szolgáltatások ugyanabban az előfizetésben vannak telepítve. |
 | [**featuresMode paraméter**](https://docs.microsoft.com/rest/api/searchservice/search-documents#featuresmode) | Relevancia (pontozás) | A relevancia pontszámának kiterjesztése a részletekre: a mező szerinti hasonlóság pontszáma, a mezők kifejezésének gyakorisága, valamint az egyedi tokenek számának egyeztetése. Ezeket az adatpontokat [Egyéni pontozási megoldásokban](https://github.com/Azure-Samples/search-ranking-tutorial)használhatja fel. | Adja hozzá ezt a lekérdezési paramétert a [Search Documents (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) használatával az API-Version = 2020-06 -30-Preview vagy a 2019-05-06-Preview értékkel. |
 | [**Felügyelt szolgáltatás identitása**](search-howto-managed-identities-data-sources.md) | Indexelő, biztonság| A Azure Active Directory használatával regisztrálhat egy keresési szolgáltatást, hogy megbízható szolgáltatást végezzen, majd RBAC engedélyeket használjon az Azure-adatforrásokon, hogy az indexelő csak olvasási hozzáférést engedélyezzen. | Hozzáférés ehhez a képességhez a portál használatakor, vagy az [adatforrások (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) API-Version = 2020-06 -30 – Preview vagy API-Version = 2019-05 -06 – előzetes verziójának használatával érhető el. |
 | [**Hibakeresési munkamenetek**](cognitive-search-debug-session.md) | Portál, AI-dúsítás (készségkészlet) | Egy munkameneten belüli készségkészlet-szerkesztő, amely a készségkészlet kapcsolatos problémák vizsgálatára és megoldására szolgál. A hibakeresési munkamenet során alkalmazott javítások menthetők a szolgáltatás egyik készségkészlet is. | Egy hibakeresési munkamenet megnyitásához csak a portálon, az áttekintő lapon található, a lap közepére mutató hivatkozásokat használva. |
@@ -56,7 +57,7 @@ GET https://[service name].search.windows.net/indexes/[index name]/docs?search=*
 
 Az Azure Cognitive Search szolgáltatás több verzióban is elérhető. További információ: API- [verziók](search-api-versions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a keresési REST előzetes verzió API-dokumentációját. Ha problémákba ütközik, kérjen segítséget [stack overflow](https://stackoverflow.com/) vagy [forduljon az ügyfélszolgálathoz](https://azure.microsoft.com/support/community/?product=search).
 

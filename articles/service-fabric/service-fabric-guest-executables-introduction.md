@@ -3,11 +3,12 @@ title: Meglévő végrehajtható fájl becsomagolása az Azure Service Fabricba
 description: További információ a meglévő alkalmazások vendég végrehajtható fájlként való csomagolásáról, így Service Fabric-fürtön is üzembe helyezhető.
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 3d7aab28a32effa2caf7b04b830d72e5e3dfda56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457832"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247387"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Meglévő végrehajtható fájl üzembe helyezése Service Fabric
 Az Azure Service Fabric szolgáltatásban bármilyen típusú kódot futtathat, például Node.js, Java vagy C++. A Service Fabric vendég végrehajtható fájlokként hivatkozik az ilyen típusú szolgáltatásokra.
@@ -61,11 +62,10 @@ A ApplicationPackageRoot tartalmazza az alkalmazást definiáló ApplicationMani
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A kapcsolódó információkkal és feladatokkal kapcsolatban tekintse meg a következő cikkeket.
 * [Futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-existing-app.md)
-* [Több futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-multiple-apps.md)
+* [Több futtatható vendégalkalmazás üzembe helyezése](./service-fabric-deploy-existing-app.md)
 * [Az első vendég végrehajtható alkalmazás létrehozása a Visual Studio használatával](quickstart-guest-app.md)
 * [Minta egy vendég végrehajtható fájl csomagolásához és üzembe helyezéséhez](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), beleértve a csomagoló eszköz előzetes kiadására mutató hivatkozást is.
 * [Minta két vendég végrehajtható fájlról (C# és NodeJS) az elnevezési szolgáltatáson keresztül a REST használatával](https://github.com/Azure-Samples/service-fabric-containers)
-

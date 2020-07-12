@@ -2,13 +2,13 @@
 title: Üzembehelyezési előzmények törlései
 description: Ismerteti, hogyan Azure Resource Manager automatikusan törli a központi telepítéseket az üzembe helyezési előzményekből. A központi telepítések akkor törlődnek, ha az előzmények meghaladják a 800-as korlátot.
 ms.topic: conceptual
-ms.date: 07/06/2020
-ms.openlocfilehash: 70730ce814ebc689d9672952bad7c3dd39b5a7f1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/10/2020
+ms.openlocfilehash: 8ec3291dc5e35689d4e2c614949e0328057fbfd3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981656"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248981"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatikus törlés az üzembe helyezési előzményekből
 
@@ -23,16 +23,18 @@ A Azure Resource Manager hamarosan automatikusan elindítja az előzményekből 
 
 ## <a name="when-deployments-are-deleted"></a>Központi telepítések törlésekor
 
-A központi telepítések az üzembe helyezési előzményekből törlődnek, amikor eléri a 790-es üzemelő példányokat. Azure Resource Manager törli a legrégebbi üzemelő példányok egy kis készletét, így a későbbi központi telepítések számára nem szabad helyet kialakítani. Az előzmények többsége változatlan marad. A legrégebbi üzemelő példányokat a rendszer mindig először törli.
+A rendszer az előzményekből törli az üzembe helyezéseket, amikor eléri a 775-es vagy újabb telepítéseket. Azure Resource Manager törli az üzemelő példányokat, amíg az előzmények le nem 750. A legrégebbi üzemelő példányokat a rendszer mindig először törli.
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Törlések az üzembe helyezési előzményekből":::
+
+> [!NOTE]
+> A kezdő szám (775) és a befejezési szám (750) változhat.
+>
+> Ha az erőforráscsoport már a 800-es korláttal rendelkezik, a következő telepítés hibát jelez. Az automatikus törlési folyamat azonnal elindul. A központi telepítést rövid várakozás után is kipróbálhatja.
 
 Az üzemelő példányokon kívül a törléseket is aktiválhatja a [művelet](template-deploy-what-if.md) végrehajtásakor vagy a központi telepítés ellenőrzésekor.
 
 Ha a központi telepítéshez ugyanazt a nevet adja, mint az előzményekben, akkor alaphelyzetbe állítja a helyet az előzményekben. Az üzembe helyezés az előzmények legutóbbi helyére kerül. Alaphelyzetbe állít egy központi telepítést is, ha egy hiba után visszaállítja az [adott központi telepítésre](rollback-on-error.md) .
-
-> [!NOTE]
-> Ha az erőforráscsoport már a 800-es korláttal rendelkezik, a következő telepítés hibát jelez. Az automatikus törlési folyamat azonnal elindul. A központi telepítést rövid várakozás után is kipróbálhatja.
 
 ## <a name="opt-out-of-automatic-deletions"></a>Automatikus törlés engedélyezése
 
@@ -98,6 +100,6 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az üzembe helyezési előzmények megtekintésével kapcsolatos további tudnivalókért lásd: az [üzembe helyezési előzmények megtekintése Azure Resource Manager](deployment-history.md)használatával.

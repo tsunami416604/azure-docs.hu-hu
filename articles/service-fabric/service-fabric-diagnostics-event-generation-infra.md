@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 033b4967d3da382057c2651457f7792e760d8bc3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791816"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247615"
 ---
 # <a name="monitoring-the-cluster"></a>A fürt figyelése
 
@@ -81,12 +81,12 @@ A Service Fabric használatakor gyűjtött teljesítményszámlálók listáját
 Íme két gyakori módszer, amelyekkel a fürt teljesítményadatokat gyűjthet:
 
 * **Ügynök használata**  
-Ez az előnyben részesített módszer a gépek teljesítményének begyűjtésére, mivel az ügynökök általában a lehetséges teljesítmény-mérőszámok listáját gyűjtik, és viszonylag egyszerű folyamat, amellyel kiválaszthatja a begyűjteni vagy módosítani kívánt mérőszámokat. Az Azure Monitor ajánlat Azure Monitor naplók beolvasása Service Fabric [Azure monitor naplók integrációja](service-fabric-diagnostics-event-analysis-oms.md) és [a log Analytics-ügynök beállítása](../log-analytics/log-analytics-windows-agent.md) további információk a log Analytics ügynökről, amely egy ilyen figyelő ügynök, amely képes a fürtözött virtuális gépek és a telepített tárolók teljesítményadatait felvenni.
+Ez az előnyben részesített módszer a gépek teljesítményének begyűjtésére, mivel az ügynökök általában a lehetséges teljesítmény-mérőszámok listáját gyűjtik, és viszonylag egyszerű folyamat, amellyel kiválaszthatja a begyűjteni vagy módosítani kívánt mérőszámokat. Az Azure Monitor ajánlat Azure Monitor naplók beolvasása Service Fabric [Azure monitor naplók integrációja](service-fabric-diagnostics-event-analysis-oms.md) és [a log Analytics-ügynök beállítása](../azure-monitor/platform/agent-windows.md) további információk a log Analytics ügynökről, amely egy ilyen figyelő ügynök, amely képes a fürtözött virtuális gépek és a telepített tárolók teljesítményadatait felvenni.
 
 * **Teljesítményszámlálók az Azure Table Storage**  
 A teljesítménymutatókat is elküldheti ugyanahhoz a tábla-tárolóhoz, mint az eseményeket. Ehhez módosítania kell a Azure Diagnostics konfigurációt a fürtben lévő virtuális gépek megfelelő teljesítményszámlálói kiválasztásához, és lehetővé kell tenni a Docker-statisztika felvételét, ha tárolókat helyez üzembe. További információ a teljesítményszámlálók [a Service FABRIC wad](service-fabric-diagnostics-event-aggregation-wad.md) -ben történő konfigurálásáról a teljesítményszámláló-gyűjtemény beállításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Service Fabric [Azure monitor naplók integrálásáról](service-fabric-diagnostics-event-analysis-oms.md) a fürt diagnosztika gyűjtéséhez és egyéni lekérdezések és riasztások létrehozásához
 * Ismerkedjen meg Service Fabric a beépített diagnosztikai felülettel, a [EventStore](service-fabric-diagnostics-eventstore.md)

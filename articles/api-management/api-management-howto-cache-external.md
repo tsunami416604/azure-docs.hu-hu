@@ -11,12 +11,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: f8ca0caedd438c4ce707a044bc7fa7dd035e8983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1f3d0fd0164a37c8011dc82a95337c89e103df
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203233"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250634"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Külső Redis-kompatibilis gyorsítótár használata az Azure-ban API Management
 
@@ -74,7 +74,7 @@ Kövesse az alábbi lépéseket egy külső Azure-gyorsítótár hozzáadásáho
 3. Kattintson a **+ Hozzáadás** gombra.
 4. Válassza ki a gyorsítótárat a **gyorsítótár-példány** legördülő mezőjében.
 5. Válassza az **alapértelmezett** lehetőséget, vagy adja meg a kívánt régiót a **használat** a legördülő listából mezőben.
-6. Kattintson a **Save** (Mentés) gombra.
+6. Kattintson a **Mentés** gombra.
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>Azure-gyorsítótár hozzáadása az aktuális Azure-előfizetésen vagy az Azure-on kívül üzemeltetett Redis
 
@@ -84,7 +84,7 @@ Kövesse az alábbi lépéseket egy külső Azure-gyorsítótár hozzáadásáho
 4. Válassza az **Egyéni** lehetőséget a **gyorsítótár-példány** legördülő mezőjében.
 5. Válassza az **alapértelmezett** lehetőséget, vagy adja meg a kívánt régiót a **használat** a legördülő listából mezőben.
 6. Adja meg az Azure cache-t a Redis-kapcsolatok karakterláncához a **kapcsolatok karakterlánca** mezőben.
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 ### <a name="add-a-redis-cache-to-a-self-hosted-gateway"></a>Redis cache hozzáadása egy saját üzemeltetésű átjáróhoz
 
@@ -94,16 +94,16 @@ Kövesse az alábbi lépéseket egy külső Azure-gyorsítótár hozzáadásáho
 4. Válassza az **Egyéni** lehetőséget a **gyorsítótár-példány** legördülő mezőjében.
 5. A **használat** legördülő listából válassza ki a kívánt saját üzemeltetésű átjáró helyét vagy **alapértelmezett értékét** .
 6. Adja meg a Redis cache-gyorsítótárbeli kapcsolatok karakterláncát a **kapcsolatok karakterlánca** mezőben.
-7. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
 ## <a name="use-the-external-cache"></a>Külső gyorsítótár használata
 
 Ha a külső gyorsítótár konfigurálva van az Azure API Managementban, a gyorsítótárazási házirendek használatával is használható. A részletes lépésekért lásd: [gyorsítótár hozzáadása az Azure-API Management teljesítményének növeléséhez](api-management-howto-cache.md) .
 
-## <a name="next-steps"></a><a name="next-steps"> </a>További lépések
+## <a name="next-steps"></a><a name="next-steps"> </a>Következő lépések
 
 * További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] oktatóanyag [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
 * További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).
 
-[API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
-[Caching policies]: https://msdn.microsoft.com/library/azure/dn894086.aspx
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-caching-policies.md

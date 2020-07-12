@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: fbb5117d0650c5a3768cab4057303f8b73a0685b
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 6951dfe3eecc8764dda9788393a7348e9267cef8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657671"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248866"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Az Azure-beli privát Docker-tárolójegyzékek bemutatása
 
@@ -26,7 +26,7 @@ A Docker-és a beállításjegyzék-fogalmakkal kapcsolatos további informáci�
 Rendszerképek lekérése egy Azure-beli tároló-beállításjegyzékből különféle telepítési célokra:
 
 * **Méretezhető előkészítési rendszerek**, amelyek tárolóalapú alkalmazásokat kezelnek gazdagépfürtökben (többek között [Kubernetes](https://kubernetes.io/docs/), [DC/OS](https://docs.mesosphere.com/) és [Docker Swarm](https://docs.docker.com/get-started/swarm-deploy/)).
-* **Azure-szolgáltatások**, amelyek támogatják az alkalmazások építését és nagy mennyiségű alkalmazás futtatását, beleértve az [Azure Kubernetes Service (AKS)](../aks/index.yml), az [App Service](../app-service/index.yml), a [Batch](../batch/index.yml), a [Service Fabric](/azure/service-fabric/) és egyéb szolgáltatásokat.
+* **Azure-szolgáltatások**, amelyek támogatják az alkalmazások építését és nagy mennyiségű alkalmazás futtatását, beleértve az [Azure Kubernetes Service (AKS)](../aks/index.yml), az [App Service](../app-service/index.yml), a [Batch](../batch/index.yml), a [Service Fabric](../service-fabric/index.yml) és egyéb szolgáltatásokat.
 
 A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a tárolófejlesztési munkafolyamatok részeként. Például megcélozhat egy tároló-beállításjegyzéket egy folyamatos integrációs és kézbesítési eszközről, például [Azure-folyamatokból](/azure/devops/pipelines/ecosystems/containers/acr-template) vagy [Jenkins](https://jenkins.io/)-ből.
 

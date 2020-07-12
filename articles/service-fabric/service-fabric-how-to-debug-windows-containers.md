@@ -4,11 +4,12 @@ description: Ismerje meg, hogyan lehet Windows-tárolókat hibakeresést végezn
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: mikhegn
-ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e6e7785278b182cebb21115a70f35ade52303c3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701149"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247251"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Útmutató: Windows-tárolók hibakeresése az Azure Service Fabric a Visual Studio 2019 használatával
 
@@ -16,9 +17,9 @@ A Visual Studio 2019-es verziójában a .NET-alkalmazások a tárolókban Servic
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Windows 10 rendszeren a Windows 10 Windows- [tárolók futtatására való konfigurálásához](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10) kövesse ezt a rövid útmutatót.
-* Windows Server 2016 rendszeren a Windows 2016 Windows- [tárolók futtatására való konfigurálásához](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) kövesse ezt a rövid útmutatót.
-* A helyi Service Fabric környezet beállítása a [fejlesztési környezet előkészítése Windows](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started) rendszeren
+* Windows 10 rendszeren a Windows 10 Windows- [tárolók futtatására való konfigurálásához](/virtualization/windowscontainers/quick-start/quick-start-windows-10) kövesse ezt a rövid útmutatót.
+* Windows Server 2016 rendszeren a Windows 2016 Windows- [tárolók futtatására való konfigurálásához](/virtualization/windowscontainers/quick-start/quick-start-windows-server) kövesse ezt a rövid útmutatót.
+* A helyi Service Fabric környezet beállítása a [fejlesztési környezet előkészítése Windows](./service-fabric-get-started.md) rendszeren
 
 ## <a name="configure-your-developer-environment-to-debug-containers"></a>A fejlesztői környezet konfigurálása a tárolók hibakereséséhez
 
@@ -37,7 +38,7 @@ A Visual Studio 2019-es verziójában a .NET-alkalmazások a tárolókban Servic
       > A használatával egy `-CreateOneNodeCluster` egycsomópontos fürtöt állíthat be. Az alapértelmezett érték egy helyi, öt csomópontot tartalmazó fürtöt hoz létre.
       >
 
-      Ha többet szeretne megtudni a Service Fabric DNS szolgáltatásáról, tekintse meg a [DNS-szolgáltatás az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)-ban című témakört. Ha többet szeretne megtudni a Service Fabric fordított proxy használatáról a tárolóban futó szolgáltatásokból, tekintse meg a [reverse proxy speciális kezelését tárolókban futó szolgáltatásokhoz](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)című témakört.
+      Ha többet szeretne megtudni a Service Fabric DNS szolgáltatásáról, tekintse meg a [DNS-szolgáltatás az Azure Service Fabric](./service-fabric-dnsservice.md)-ban című témakört. Ha többet szeretne megtudni a Service Fabric fordított proxy használatáról a tárolóban futó szolgáltatásokból, tekintse meg a [reverse proxy speciális kezelését tárolókban futó szolgáltatásokhoz](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)című témakört.
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Ismert korlátozások a tárolók hibakereséséhez Service Fabric
 
@@ -70,5 +71,5 @@ Az alábbiakban felsoroljuk a Service Fabric és a lehetséges megoldásokkal ka
 
     A Visual Studio támogatja a .NET és a .NET Core konzol-és ASP.NET.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Service Fabric és a tárolók képességeiről, tekintse meg a [Service Fabric-tárolók áttekintése](service-fabric-containers-overview.md)című témakört.

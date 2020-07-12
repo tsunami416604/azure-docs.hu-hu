@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 40ea26a2394b7ca093f1bba2456ebf5ef116cd0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1713f2ca8fda0c768727ea12e682b373d644bcba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695810"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249818"
 ---
 # <a name="api-management-policy-expressions"></a>API Management házirend-kifejezések
 Ez a cikk a házirend-kifejezések szintaxisát ismerteti a C# 7-es verziójában. Mindegyik kifejezés rendelkezik hozzáféréssel a implicit módon megadott [környezeti](api-management-policy-expressions.md#ContextVariables) változóhoz, valamint a .NET-keretrendszer engedélyezett [részhalmazához](api-management-policy-expressions.md#CLRTypes) .
@@ -26,7 +27,7 @@ További információk:
 
 - Ismerje meg, hogyan adhat meg környezeti információkat a háttér-szolgáltatáshoz. Használja a [lekérdezési karakterlánc beállítása paramétert](api-management-transformation-policies.md#SetQueryStringParameter) , és adja meg a HTTP-fejléc házirendjeit az információk [megadásához](api-management-transformation-policies.md#SetHTTPheader) .
 - Tekintse meg, hogyan használhatja a JWT-szabályzat [érvényesítése](api-management-access-restriction-policies.md#ValidateJWT) beállítást a jogkivonatok jogcímein alapuló műveletekhez való hozzáférés előzetes engedélyezéséhez.
-- A szabályzatok kiértékelésének és az értékelések eredményeinek megtekintéséhez tekintse meg az [API-ellenőrök](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) nyomkövetésének használatát ismertető témakört.
+- A szabályzatok kiértékelésének és az értékelések eredményeinek megtekintéséhez tekintse meg az [API-ellenőrök](./api-management-howto-api-inspector.md) nyomkövetésének használatát ismertető témakört.
 - Tekintse meg, hogyan használhat kifejezéseket a [Get from cache](api-management-caching-policies.md#GetFromCache) és a [Store to cache](api-management-caching-policies.md#StoreToCache) policy házirendekkel a API Management válasz gyorsítótárazásának konfigurálásához. Állítsa be azt az időtartamot, amely megfelel a háttérrendszer válasz-gyorsítótárazásának, amelyet a biztonsági mentést végző szolgáltatás `Cache-Control` irányelve meghatároz.
 - Lásd: tartalom szűrésének végrehajtása. Távolítsa el az adatelemeket a háttértől kapott válaszból a [vezérlési folyamat](api-management-advanced-policies.md#choose) és a [szövegtörzs](api-management-transformation-policies.md#SetBody) -szabályzatok használatával.
 - A házirend-utasítások letöltéséhez tekintse meg az [API-Management-Samples/policies GitHub-](https://github.com/Azure/api-management-samples/tree/master/policies) tárházat.
@@ -155,7 +156,7 @@ A következő táblázat a .NET-keretrendszer típusait és azok tagjait sorolja
 |System. Security. kriptográfia. SymmetricAlgorithm|Mind|
 |System. Security. kriptográfia. X509Certificates. PublicKey|Mind|
 |System. Security. kriptográfia. X509Certificates. RSACertificateExtensions|Mind|
-|System. Security. kriptográfia. X509Certificates. X500DistinguishedName|Name|
+|System. Security. kriptográfia. X509Certificates. X500DistinguishedName|Név|
 |System. Security. kriptográfia. X509Certificates. X509|Mind|
 |System. Security. kriptográfia. X509Certificates. X509certificate2)|Mind|
 |System. Security. kriptográfia. X509Certificates. X509ContentType|Mind|
@@ -245,11 +246,11 @@ Egy nevű változó `context` implicit módon elérhető minden házirend- [kife
 |bool VerifyNoRevocation (bemenet: Ez a System. Security. kriptográfia. X509Certificates. X509certificate2))|Egy X. 509 lánc érvényesítését végzi a tanúsítvány visszavonási állapotának ellenőrzése nélkül.<br /><br />bemeneti-tanúsítvány objektum<br /><br />Azt adja vissza `true` , hogy az ellenőrzés sikeres- `false` e; ha az ellenőrzés sikertelen.|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a házirendek használatáról:
 
 + [Szabályzatok API Management](api-management-howto-policies.md)
 + [API-k átalakítása](transform-api.md)
-+ Házirend- [hivatkozás](api-management-policy-reference.md) a szabályzat-utasítások és azok beállításainak teljes listájához
++ Házirend- [hivatkozás](./api-management-policies.md) a szabályzat-utasítások és azok beállításainak teljes listájához
 + [Házirend-minták](policy-samples.md)

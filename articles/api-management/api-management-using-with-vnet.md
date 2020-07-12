@@ -13,11 +13,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 76107a3713a7570bc3bbca15aa1b47e76560bf66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7323793dcbbd05fc5abf032d140b2caa5975da4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674278"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249461"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -102,7 +103,7 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 * **Egyéni DNS-kiszolgáló beállítása**: a API Management szolgáltatás számos Azure-szolgáltatástól függ. Ha a API Management egy egyéni DNS-kiszolgálóval rendelkező VNET tárolja, az Azure-szolgáltatások állomásnevét fel kell oldania. Kérjük, kövesse [ezt az](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) útmutatót az egyéni DNS-telepítésre vonatkozóan. Tekintse meg az alábbi portok táblázatot, valamint az egyéb hálózati követelményeket a hivatkozáshoz.
 
 > [!IMPORTANT]
-> Ha egyéni DNS-kiszolgáló (ka) t szeretne használni a VNET, akkor a API Management szolgáltatás üzembe helyezése **előtt** állítsa be. Ellenkező esetben frissítenie kell a API Management szolgáltatást minden alkalommal, amikor módosítja a DNS-kiszolgáló (ka) t a [hálózati konfiguráció alkalmazása művelet](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/ApplyNetworkConfigurationUpdates) futtatásával.
+> Ha egyéni DNS-kiszolgáló (ka) t szeretne használni a VNET, akkor a API Management szolgáltatás üzembe helyezése **előtt** állítsa be. Ellenkező esetben frissítenie kell a API Management szolgáltatást minden alkalommal, amikor módosítja a DNS-kiszolgáló (ka) t a [hálózati konfiguráció alkalmazása művelet](/rest/api/apimanagement/2019-12-01/apimanagementservice/applynetworkconfigurationupdates) futtatásával.
 
 * A **API Managementhoz szükséges portok**: a bejövő és a kimenő forgalom abba az alhálózatba, amelyben a API Management telepítve van, a [hálózati biztonsági csoport][Network Security Group]használatával vezérelhető. Ha a portok bármelyike nem érhető el, előfordulhat, hogy API Management nem működik megfelelően, és elérhetetlenné válhat. Ha a portok közül egy vagy több le van tiltva, akkor a API Management VNET való használatakor a rendszer egy másik gyakori konfigurációs problémát is jelent.
 
@@ -173,7 +174,7 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
   > [!IMPORTANT]
   > A kapcsolat ellenőrzése után mindenképpen távolítsa el az alhálózaton üzembe helyezett összes erőforrást, mielőtt a API Management az alhálózatba telepítené.
 
-* **Növekményes frissítések**: a hálózat módosításakor tekintse meg a [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/networkstatus)-t, és ellenőrizze, hogy a API Management szolgáltatás nem vesztett-e el semmilyen kritikus erőforráshoz való hozzáférést, amelytől függ. A kapcsolati állapotot 15 percenként kell frissíteni.
+* **Növekményes frissítések**: a hálózat módosításakor tekintse meg a [NetworkStatus API](/rest/api/apimanagement/2019-12-01/networkstatus)-t, és ellenőrizze, hogy a API Management szolgáltatás nem vesztett-e el semmilyen kritikus erőforráshoz való hozzáférést, amelytől függ. A kapcsolati állapotot 15 percenként kell frissíteni.
 
 * **Erőforrás-navigációs hivatkozások**: Ha a üzembe helyezés Resource Manager stílusú vnet alhálózatba, API Management az alhálózatot az erőforrás-navigációs hivatkozás létrehozásával. Ha az alhálózat már tartalmaz egy másik szolgáltatótól származó erőforrást, akkor a telepítés **sikertelen**lesz. Hasonlóképpen, ha egy API Management szolgáltatást egy másik alhálózatra helyez át, vagy törli azt, akkor az erőforrás-navigációs hivatkozás el lesz távolítva.
 
@@ -231,7 +232,7 @@ Az IP-címeket az Azure- **környezet**osztja el. Ha a bejövő kérések IP-cí
 | Azure Public| Dél-India| 20.44.33.246|
 | Azure Public| USA középső régiója| 13.86.102.66|
 | Azure Public| Kelet-Ausztrália| 20.40.125.155|
-| Azure Public| USA nyugati régiója, 2.| 51.143.127.203|
+| Azure Public| USA 2. nyugati régiója| 51.143.127.203|
 | Azure Public| USA 2. keleti – EUAP| 52.253.229.253|
 | Azure Public| USA középső – EUAP| 52.253.159.160|
 | Azure Public| USA déli középső régiója| 20.188.77.119|

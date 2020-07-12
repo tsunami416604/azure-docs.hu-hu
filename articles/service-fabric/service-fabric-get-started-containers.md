@@ -4,11 +4,12 @@ description: Hozza létre első saját, Windows-alapú tárolóalkalmazását az
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d7076226b63fa3b45eaae82c2964997d3065ed88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0baad5d2596de04b629c4cf9eb86c51b37b8cdc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560670"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247404"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 
@@ -16,7 +17,7 @@ ms.locfileid: "84560670"
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a cikk bemutatja, hogyan hozhat létre [egy Python-](http://flask.pocoo.org/) alapú webalkalmazást tartalmazó Docker-rendszerképet, és hogyan helyezheti üzembe azt egy Azure Service Fabric-fürtön. Emellett meg is fogja osztani a tárolóalapú alkalmazást az [Azure Container Registry](/azure/container-registry/) használatával. A cikk feltételezi, hogy rendelkezik a Docker használatára vonatkozó alapvető ismeretekkel. A Docker megismeréséhez olvassa el a [Docker áttekintő ismertetését](https://docs.docker.com/engine/understanding-docker/).
+A meglévő alkalmazások Service Fabric-fürtökön lévő Windows-tárolókban való futtatásához nem szükséges módosítania az alkalmazást. Ez a cikk bemutatja, hogyan hozhat létre [egy Python-](http://flask.pocoo.org/) alapú webalkalmazást tartalmazó Docker-rendszerképet, és hogyan helyezheti üzembe azt egy Azure Service Fabric-fürtön. Emellett meg is fogja osztani a tárolóalapú alkalmazást az [Azure Container Registry](../container-registry/index.yml) használatával. A cikk feltételezi, hogy rendelkezik a Docker használatára vonatkozó alapvető ismeretekkel. A Docker megismeréséhez olvassa el a [Docker áttekintő ismertetését](https://docs.docker.com/engine/understanding-docker/).
 
 > [!NOTE]
 > Ez a cikk a Windows fejlesztési környezetére vonatkozik.  A Service Fabric fürt futtatókörnyezetének és a Docker-futtatókörnyezetnek ugyanazon az operációs rendszeren kell futnia.  A Windows-tárolók nem futtathatók Linux-fürtön.
@@ -332,7 +333,7 @@ Nyisson meg egy böngészőt, majd lépjen a következő helyre: `http://contain
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-A fürt futtatása költségekkel jár, ezért érdemes lehet [törölni a fürtöt](service-fabric-cluster-delete.md).
+A fürt futtatása költségekkel jár, ezért érdemes lehet [törölni a fürtöt](./service-fabric-tutorial-delete-cluster.md).
 
 Miután leküldte a rendszerképet a tárolóregisztrációs adatbázisba, törölheti a helyi rendszerképet a fejlesztői számítógépről:
 
@@ -349,7 +350,7 @@ A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszeré
 - A Windows Server 2016 használatával létrehozott Windows Server-tárolók Hyper-V elkülönítési módban működnek, csak a Windows Server 1709-es verzióját futtató gazdagépeken. 
 - A Windows Server 2016-et használó Windows Server-tárolók esetében szükség lehet annak biztosítására, hogy a tároló operációs rendszer és a gazdagép operációs rendszerének változata azonos legyen a Windows Server 2016 rendszert futtató gazdagépen futó folyamatok elkülönítési módjában.
  
-További információ: a [Windows-tároló verziójának kompatibilitása](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+További információ: a [Windows-tároló verziójának kompatibilitása](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
 Vegye figyelembe a gazdagép operációs rendszerének és a tároló operációs rendszerének kompatibilitását a tárolók Service Fabric-fürtön való létrehozásakor és telepítésekor. Például:
 
@@ -595,7 +596,7 @@ A Service Fabric-futtatókörnyezet 6.2-es vagy újabb verzióiban a Docker-dém
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információk a [tárolók futtatásáról a Service Fabricban](service-fabric-containers-overview.md).
 * Tekintse meg a [.NET-alkalmazás üzembe helyezését](service-fabric-host-app-in-a-container.md) ismertető oktatóanyagot.
 * További információk a Service Fabric [alkalmazásainak élettartamáról](service-fabric-application-lifecycle.md).

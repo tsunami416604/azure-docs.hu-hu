@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 986e061c03634fe33af985c9d11569848500862c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 963f728db55f587f7ae72aec702a099882cf401a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170494"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249359"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>Gyors útmutató: webes forgalom közvetlen továbbítása az Azure Application Gateway – Resource Manager-sablonnal
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway---arm-template"></a>Gyors útmutató: webes forgalom közvetlen továbbítása az Azure Application Gateway-ARM sablonnal
 
-Ebben a rövid útmutatóban egy Resource Manager-sablont használ Azure-Application Gateway létrehozásához. Ezt követően tesztelje az Application Gatewayt, hogy megfelelően működjön.
+Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy Azure-Application Gateway létrehozásához. Ezt követően tesztelje az Application Gatewayt, hogy megfelelően működjön.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,17 +26,19 @@ Ezt a rövid útmutatót a [Azure Portal](quick-create-portal.md), a [Azure Powe
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-application-gateway"></a>Application Gateway létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Az egyszerűség kedvéért ez a sablon egy egyszerű telepítőt hoz létre egy nyilvános előtér-IP-címmel, egy alapszintű figyelőt, amely egyetlen helyet üzemeltet az Application gatewayben, egy alapszintű kérelem-útválasztási szabályt és két virtuális gépet a háttér-készletben.
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://github.com/Azure/azure-quickstart-templates/blob/master/ag-docs-qs/azuredeploy.json) származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/ag-docs-qs/) származik.
 
 :::code language="json" source="~/quickstart-templates/ag-docs-qs/azuredeploy.json" range="001-343" highlight="197-297":::
 
@@ -50,10 +52,9 @@ Több Azure-erőforrás van definiálva a sablonban:
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : kettő a virtuális gépekhez
 - [**Microsoft. számítás/virtualMachine/bővítmények**](/azure/templates/microsoft.compute/virtualmachines/extensions) : az IIS és a weblapok konfigurálásához
 
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
-
-Resource Manager-sablon üzembe helyezése az Azure-ban:
+Az ARM-sablon üzembe helyezése az Azure-ban:
 
 1. Válassza az **üzembe helyezés az Azure** -ban lehetőséget az Azure-ba való bejelentkezéshez és a sablon megnyitásához. A sablon létrehoz egy Application Gateway-t, a hálózati infrastruktúrát és két virtuális gépet az IIS-t futtató háttér-készletben.
 
@@ -76,7 +77,7 @@ Annak ellenére, hogy az IIS nem szükséges az Application Gateway létrehozás
 
    Többször is frissítse a böngészőt, és látnia kell a myVM1 és a myVM2 kapcsolatait.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége az Application Gateway használatával létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja az Application Gatewayt és az összes kapcsolódó erőforrást.
 

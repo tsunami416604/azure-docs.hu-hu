@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 6054c595bca26dc2a0432c53369a60a61e3efde0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd7ca6bdfa7626707af9efa20d76dab633dc16fd
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76841863"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249532"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Az Azure API Management használata belső virtuális hálózattal
 Az Azure Virtual Networks használatával az Azure API Management képes az interneten keresztül nem elérhető API-k kezelésére. Számos VPN-technológia érhető el a kapcsolat létrehozásához. API Management a virtuális hálózaton belül két fő módban is üzembe helyezhető:
@@ -50,7 +51,7 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 + Ha egy API Management szolgáltatás egy virtuális hálózaton van telepítve, a rendszer a [portok listáját](./api-management-using-with-vnet.md#required-ports) használja, és meg kell nyitni. 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>API Management létrehozása belső virtuális hálózaton
-A belső virtuális hálózat API Management szolgáltatása a [belső terheléselosztó (klasszikus)](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud)mögött található. Ez az egyetlen elérhető lehetőség, és nem módosítható.
+A belső virtuális hálózat API Management szolgáltatása a [belső terheléselosztó (klasszikus)](/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud)mögött található. Ez az egyetlen elérhető lehetőség, és nem módosítható.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Virtuális hálózati kapcsolatok engedélyezése a Azure Portal használatával
 
@@ -60,7 +61,7 @@ A belső virtuális hálózat API Management szolgáltatása a [belső terhelés
 
     ![Azure-API Management belső virtuális hálózatban való beállítására szolgáló menü][api-management-using-internal-vnet-menu]
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 Az üzembe helyezés sikeres végrehajtása után az Áttekintés panelen látnia kell a API Management szolgáltatás **magánhálózati** virtuális IP-címét és **nyilvános** virtuális IP-címét. A **magánhálózati** virtuális IP-cím egy elosztott terhelésű IP-cím a API Management delegált alhálózaton belül, amelyen keresztül a `gateway` `portal` `management` `scm` végpontok elérhetők. A **nyilvános** virtuális IP-cím **csak** a `management` 3443-es porton keresztüli végpontra irányuló vezérlési sík forgalmára szolgál, és a [ApiManagement][ServiceTags] servicetag is zárolható.
 
@@ -143,4 +144,3 @@ További információt a következő cikkekben talál:
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
 
 [ServiceTags]: ../virtual-network/security-overview.md#service-tags
-

@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/10/2020
-ms.openlocfilehash: 01968335ffcaffb26cabd2a5174d00e5471409c1
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d2567a5a0374fd05f17e1153c3b2d7f3df50e0d9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232032"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246996"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -28,7 +28,6 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 | [**Keresés REST API 2020-06-30**](https://docs.microsoft.com/rest/api/searchservice/) | REST | A REST API-k új stabil verziója. A tudásbázison kívül ez a verzió a keresés relevanciájának és pontozásának fejlesztéseit is tartalmazza. | Általánosan elérhető. |
 | [**Okapi BM25 relevanciás algoritmus**](https://en.wikipedia.org/wiki/Okapi_BM25) | Lekérdezés | Az új relevancia-rangsorolási algoritmus automatikusan használatban van minden új, július 15. után létrehozott keresési szolgáltatáshoz. A korábban létrehozott szolgáltatások esetében a `similarity` tulajdonságot a tárgymutató mezőinek beállításával engedélyezheti. | Általánosan elérhető. </br> Használja a [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) vagy újabb, vagy REST API 2019-05-06. |
 | **executionEnvironment** | Biztonság (indexelő) | Explicit módon állítsa be ezt az indexelő konfigurációs tulajdonságot úgy, hogy az a `private` külső adatforrásokhoz való összes kapcsolatot egy privát végponton keresztül kényszerítse. Csak olyan keresési szolgáltatásokra vonatkozik, amelyek az Azure Private link szolgáltatást használják. | Általánosan elérhető. </br> Ezt az általános konfigurációs paramétert a [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) paranccsal állíthatja be. |
-| [**Azure Machine Learning (pénzmosás) ismerete**](cognitive-search-aml-skill.md) | MI-bővítés| Egy új, az Azure Machine Learning-ból származó következtetési végpont integrálására szolgáló képzettségi típus. Ismerkedjen meg az [oktatóanyaggal](cognitive-search-tutorial-aml-custom-skill.md). | Általánosan elérhető. </br> A [Search REST API 2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) vagy újabb verzió használata. A portálon is elérhető a készségkészlet-kialakításban, feltéve, hogy a Cognitive Search és az Azure ML-szolgáltatások ugyanabban az előfizetésben vannak telepítve. |
 
 ### <a name="may-2020-microsoft-build"></a>Május 2020 (Microsoft Build)
 

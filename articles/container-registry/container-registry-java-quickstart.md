@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 561c45bd13648f5f17273b478f320e9fd3d71331
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 87a4741ea8a64445c10c73bb1204aef1a2fcfaaf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857591"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248798"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Gyors útmutató: Java-tárolók rendszerképének létrehozása és leküldése Azure Container Registry
 
@@ -72,7 +72,7 @@ Ezután létre kell hoznia egy Azure-erőforráscsoportot és az ACR-t az alább
    az account set -s <subscription ID>
    ```
 
-1. Hozzon létre egy erőforráscsoportot az oktatóanyagban használt Azure-erőforrások számára. A következő parancsban mindenképp cserélje le a helyőrzőket a saját erőforrás nevére és egy olyan helyre, mint például a `eastus`(z).
+1. Hozzon létre egy erőforráscsoportot az oktatóanyagban használt Azure-erőforrások számára. A következő parancsban mindenképp cserélje le a helyőrzőket a saját erőforrás nevére és egy olyan helyre, mint például a (z `eastus` ).
 
    ```azurecli
    az group create \
@@ -108,7 +108,7 @@ Végezetül frissítse a projekt konfigurációját, és a parancssor használat
 
 1. Lépjen a Spring Boot-alkalmazás befejezett projektkönyvtárába (például „*C:\SpringBoot\gs-spring-boot-docker\complete*” vagy „*/users/robert/SpringBoot/gs-spring-boot-docker/complete*”), és nyissa meg a *pom.xml* fájlt egy szövegszerkesztővel.
 
-1. Frissítse a `<properties>` gyűjteményt a *Pom. XML* fájlban a következő XML-fájllal. Cserélje le a helyőrzőt a beállításjegyzék nevére, és adjon `<jib-maven-plugin.version>` hozzá egy tulajdonságot értékkel `2.2.0`, vagy a [gém-Maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)újabb verzióját.
+1. Frissítse a `<properties>` gyűjteményt a *pom.xml* fájlban a következő XML-fájllal. Cserélje le a helyőrzőt a beállításjegyzék nevére, és adjon hozzá egy `<jib-maven-plugin.version>` tulajdonságot értékkel `2.2.0` , vagy a [gém-Maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)újabb verzióját.
 
    ```xml
    <properties>
@@ -118,7 +118,7 @@ Végezetül frissítse a projekt konfigurációját, és a parancssor használat
    </properties>
    ```
 
-1. Frissítse a `<plugins>` gyűjteményt a *Pom. XML* fájlban, hogy a `<plugin>` elem tartalmazza és a bejegyzést `jib-maven-plugin`a következő példában látható módon. Vegye figyelembe, hogy a Microsoft Container Registryból (MCR) származó alaprendszerképet használunk: `mcr.microsoft.com/java/jdk:8-zulu-alpine`, amely az Azure-hoz hivatalosan támogatott JDK-t tartalmaz. A hivatalosan támogatott JDK rendelkező más MCR-alaplemezképek esetében lásd: [Java SE JDK](https://hub.docker.com/_/microsoft-java-jdk), [Java SE JRE](https://hub.docker.com/_/microsoft-java-jre), [Java SE fej nélküli JRE](https://hub.docker.com/_/microsoft-java-jre-headless)és [Java SE JDK és Maven](https://hub.docker.com/_/microsoft-java-maven).
+1. Frissítse a `<plugins>` gyűjteményt a *pom.xml* fájlban, hogy a `<plugin>` elem tartalmazza és a bejegyzést a `jib-maven-plugin` következő példában látható módon. Vegye figyelembe, hogy a Microsoft Container Registryból (MCR) származó alaprendszerképet használunk: `mcr.microsoft.com/java/jdk:8-zulu-alpine` , amely az Azure-hoz hivatalosan támogatott JDK-t tartalmaz. A hivatalosan támogatott JDK rendelkező más MCR-alaplemezképek esetében lásd: [Java SE JDK](https://hub.docker.com/_/microsoft-java-jdk), [Java SE JRE](https://hub.docker.com/_/microsoft-java-jre), [Java SE fej nélküli JRE](https://hub.docker.com/_/microsoft-java-jre-headless)és [Java SE JDK és Maven](https://hub.docker.com/_/microsoft-java-maven).
 
    ```xml
    <plugin>
@@ -144,7 +144,7 @@ Végezetül frissítse a projekt konfigurációját, és a parancssor használat
 
 > [!NOTE]
 >
-> Biztonsági okokból a által `az acr login` létrehozott hitelesítő adatok csak 1 órára érvényesek. Ha *401 jogosulatlan* hibaüzenetet kap, akkor újbóli hitelesítéshez `az acr login -n <your registry name>` futtathatja a parancsot.
+> Biztonsági okokból a által létrehozott hitelesítő adatok `az acr login` csak 1 órára érvényesek. Ha *401 jogosulatlan* hibaüzenetet kap, akkor `az acr login -n <your registry name>` újbóli hitelesítéshez futtathatja a parancsot.
 
 ## <a name="verify-your-container-image"></a>A tároló rendszerképének ellenőrzése
 
@@ -154,7 +154,7 @@ Gratulálunk! Most már telepítette az ACR-be az Azure által támogatott JDK-t
 docker pull <your registry name>.azurecr.io/gs-spring-boot-docker
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft által támogatott Java alaplemezképek egyéb verzióihoz lásd:
 
@@ -166,15 +166,15 @@ A Microsoft által támogatott Java alaplemezképek egyéb verzióihoz lásd:
 Ha szeretne többet megtudni a Spring és az Azure szolgáltatásról, lépjen tovább a Spring on Azure dokumentációs központra.
 
 > [!div class="nextstepaction"]
-> [A Spring az Azure-on](/azure/developer/java/spring-framework)
+> [A Spring használata az Azure-ban](/azure/developer/java/spring-framework)
 
 ### <a name="additional-resources"></a>További források
 
-További információkért lásd a következőket:
+További információkat találhat az alábbi forrásokban:
 
 * [Azure Java-fejlesztőknek](/azure/java)
 * [Az Azure DevOps és a Java használata](/azure/devops/java)
 * [Spring Boot on Docker – Első lépések](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
 * [Spring Boot-alkalmazás üzembe helyezése az Azure App Service-ben](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
-* [Egyéni Docker-rendszerkép használata az Azure Web App on Linuxban](/azure/app-service-web/app-service-linux-using-custom-docker-image)
+* [Egyéni Docker-rendszerkép használata az Azure Web App on Linuxban](../app-service/containers/tutorial-custom-docker-image.md)

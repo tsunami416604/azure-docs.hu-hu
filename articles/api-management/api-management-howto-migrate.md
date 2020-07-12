@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 39803ab88e5b252ef119d22a697e135c83f87780
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0eed2328aca78402c5f4691bb9b3d07d4f36472e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205649"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250226"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Azure-API Management migrálása régiók között
 API Management példányok az egyik Azure-régióból a másikba való áttelepíthetők a [biztonsági mentés és visszaállítás](api-management-howto-disaster-recovery-backup-restore.md) funkció segítségével. A forrás-és a célcsoportokban ugyanazt a API Management árképzési szintet kell választania. 
 
 > [!NOTE]
-> A biztonsági mentés és a visszaállítás nem fog működni a különböző felhőalapú típusok közötti áttelepítés során. Ehhez [sablonként](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-portal#export-resource-groups-to-templates)kell exportálnia az erőforrást. Ezután igazítsa az exportált sablont a cél Azure-régióhoz, és hozza létre újra az erőforrást. 
+> A biztonsági mentés és a visszaállítás nem fog működni a különböző felhőalapú típusok közötti áttelepítés során. Ehhez [sablonként](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)kell exportálnia az erőforrást. Ezután igazítsa az exportált sablont a cél Azure-régióhoz, és hozza létre újra az erőforrást. 
 
 ## <a name="option-1-use-a-different-api-management-instance-name"></a>1. lehetőség: eltérő API Management-példány nevének használata
 
@@ -44,7 +44,7 @@ API Management példányok az egyik Azure-régióból a másikba való áttelep�
 1. Állítsa vissza az 1. lépésben létrehozott biztonsági mentést a cél régióban lévő új API Management példányra.  
 
 
-## <a name="next-steps"></a><a name="next-steps"> </a>További lépések
+## <a name="next-steps"></a><a name="next-steps"> </a>Következő lépések
 * A biztonsági mentési és visszaállítási szolgáltatással kapcsolatos további információkért lásd: a vész- [helyreállítás megvalósítása](api-management-howto-disaster-recovery-backup-restore.md).
 * Az Azure-erőforrások áttelepítésével kapcsolatos információkért lásd: az [Azure régiók közötti áttelepítési útmutatója](https://github.com/Azure/Azure-Migration-Guidance).
-* [Optimalizálja és mentse a Felhőbeli kiadásait](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+* [Optimalizálja és mentse a Felhőbeli kiadásait](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

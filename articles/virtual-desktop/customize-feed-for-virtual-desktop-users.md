@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 99c63fd04a40b1a4e591f5ad42d8f776e8e5b67c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c2ad99a59e548ff7793455dac21748dd057c5fc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208501"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248696"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Csatorna személyre szabása Windows Virtual Desktop-felhasználók számára
 
@@ -118,13 +118,13 @@ A közzétett távoli asztal megjelenítendő nevét úgy módosíthatja, hogy e
 
 6. Válassza ki a frissíteni kívánt alkalmazást, majd adjon meg egy új **megjelenítendő nevet**.
 
-7. Kattintson a **Mentés** gombra. A szerkesztett alkalmazásnak ekkor meg kell jelennie a frissített névnek.
+7. Válassza a **Mentés** lehetőséget. A szerkesztett alkalmazásnak ekkor meg kell jelennie a frissített névnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy testre szabta a hírcsatornát a felhasználók számára, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe a teszteléshez. Ehhez folytassa a Kapcsolódás a Windows rendszerű virtuális asztali környezetekhez:
 
- * [Windows 10 vagy Windows 7 rendszerű kapcsolat](connect-windows-7-and-10.md)
+ * [Windows 10 vagy Windows 7 rendszerű kapcsolat](connect-windows-7-10.md)
  * [Kapcsolódás a webügyféllel](connect-web.md)
  * [Kapcsolódás az Android-ügyféllel](connect-android.md)
  * [Kapcsolódás az iOS-ügyfélhez](connect-ios.md)

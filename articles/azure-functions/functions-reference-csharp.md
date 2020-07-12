@@ -2,15 +2,15 @@
 title: Azure Functions C# parancsfájl-fejlesztői dokumentáció
 description: Ismerje meg, hogyan fejlesztheti Azure Functions C# parancsfájl használatával.
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: a5497300f6b0cbf3a073681bac41adc583d869ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8041f2514f59ac2511fcd64eeb0283565a0e07a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733396"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249240"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# parancsfájl (. CSX) fejlesztői referenciája
 
@@ -518,7 +518,7 @@ A következő táblázat felsorolja az egyes kötési típusok .NET-attribútuma
 > | Storage-tábla | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 > | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)

@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b87244b4df155768e815bdba5226fc784866f6b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60780821"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249716"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Egyéni gyorsítótárazás az Azure API Managementben
-Az Azure API Management Service beépített támogatást nyújt a [http-válaszok gyorsítótárazásához](api-management-howto-cache.md) az erőforrás URL-címe alapján, kulcsként. A kulcs a tulajdonságok használatával módosítható a kérelem fejlécében `vary-by` . Ez a teljes HTTP-válaszok gyorsítótárazásakor hasznos (más néven a reprezentációk), de néha hasznos lehet egy ábrázolás egy részének gyorsítótárazására. Az új [cache-lookup-Value](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) és [cache-Store-Value](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) szabályzatok lehetővé teszik tetszőleges adatmennyiségek tárolását és lekérését a házirend-definíciók között. Ez a funkció a korábban bevezetett [küldési kérelmekre](/azure/api-management/api-management-advanced-policies#SendRequest) vonatkozó szabályzat értékét is hozzáadja, mivel mostantól a külső szolgáltatásoktól származó válaszokat is gyorsítótárazhatja.
+Az Azure API Management Service beépített támogatást nyújt a [http-válaszok gyorsítótárazásához](api-management-howto-cache.md) az erőforrás URL-címe alapján, kulcsként. A kulcs a tulajdonságok használatával módosítható a kérelem fejlécében `vary-by` . Ez a teljes HTTP-válaszok gyorsítótárazásakor hasznos (más néven a reprezentációk), de néha hasznos lehet egy ábrázolás egy részének gyorsítótárazására. Az új [cache-lookup-Value](./api-management-caching-policies.md#GetFromCacheByKey) és [cache-Store-Value](./api-management-caching-policies.md#StoreToCacheByKey) szabályzatok lehetővé teszik tetszőleges adatmennyiségek tárolását és lekérését a házirend-definíciók között. Ez a funkció a korábban bevezetett [küldési kérelmekre](./api-management-advanced-policies.md#SendRequest) vonatkozó szabályzat értékét is hozzáadja, mivel mostantól a külső szolgáltatásoktól származó válaszokat is gyorsítótárazhatja.
 
 ## <a name="architecture"></a>Architektúra
 API Management a szolgáltatás egy megosztott, bérlői adatgyorsítótárat használ, így ha több egységre is kiterjed, továbbra is hozzáférhet ugyanahhoz a gyorsítótárazott információhoz. Ha azonban többrégiós telepítéssel dolgozik, az egyes régiókban külön gyorsítótárak találhatók. Fontos, hogy a gyorsítótárat ne kezelje adattárként, mert az egyetlen adat forrása. Ha ezt tette, és később úgy döntött, hogy kihasználja a többrégiós telepítést, akkor az utazást használó felhasználók nem férhetnek hozzá a gyorsítótárazott adathoz.
@@ -276,5 +276,5 @@ Nagyobb méretű, több-bérlős üzembe helyezések esetén egyes vállalatok k
 
 Ahelyett, hogy az API előnyben részesített verzióját adja vissza az egyes előfizetési kulcsokhoz, olyan azonosítót ad vissza, amely egy bérlőhöz kapcsolódik a hozzárendelt hardver csoporthoz. Ez az azonosító használható a megfelelő háttérbeli URL-cím létrehozásához.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Azure API Management cache bármilyen típusú adat tárolására való használatának szabadsága lehetővé teszi a konfigurációs adathoz való hatékony hozzáférést, amely hatással lehet a bejövő kérelmek feldolgozásának módjára. Emellett olyan adattöredékek tárolására is használható, amelyek a háttérben futó API által visszaadott válaszokat is kiterjeszthetik.

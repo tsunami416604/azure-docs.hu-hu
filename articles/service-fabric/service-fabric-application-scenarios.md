@@ -4,11 +4,12 @@ description: A felhőalapú alkalmazások kategóriáinak áttekintése Service 
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
-ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76024735"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248169"
 ---
 # <a name="service-fabric-application-scenarios"></a>Alkalmazás-forgatókönyvek Service Fabric
 
@@ -16,7 +17,7 @@ Az Azure Service Fabric megbízható és rugalmas platformot kínál, ahol szám
 
 A Service Fabric egyedi architektúrája lehetővé teszi a közel valós idejű adatelemzést, a memórián belüli számításokat, a párhuzamos tranzakciókat és az alkalmazásokban végzett események feldolgozását. A változó erőforrás-követelményektől függően egyszerűen és akár ki is méretezheti az alkalmazásokat.
 
-Az alkalmazások létrehozásával kapcsolatos tervezési útmutatásért olvassa el a [Services architektúra az Azure Service Fabric](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric) és [az alkalmazások tervezésére vonatkozó ajánlott eljárásokat Service Fabric használatával](service-fabric-best-practices-applications.md)című témakört.
+Az alkalmazások létrehozásával kapcsolatos tervezési útmutatásért olvassa el a [Services architektúra az Azure Service Fabric](/azure/architecture/reference-architectures/microservices/service-fabric) és [az alkalmazások tervezésére vonatkozó ajánlott eljárásokat Service Fabric használatával](service-fabric-best-practices-applications.md)című témakört.
 
 Érdemes lehet a Service Fabric platformot használni a következő típusú alkalmazásokhoz:
 
@@ -24,7 +25,7 @@ Az alkalmazások létrehozásával kapcsolatos tervezési útmutatásért olvass
 
     Azok az ügyfelek, akik a Service Fabric használatával építették IoT-szolgáltatásokat, például a [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), a [PCL-konstrukció](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), a [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), a [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), a [Schneider Electric](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)és a [Mesh rendszerek](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions).
 
-* **Játékok és munkamenet-alapú interaktív alkalmazások**: Service Fabric akkor lehet hasznos, ha az alkalmazás kis késleltetésű olvasást és írást igényel, például online játékokban vagy azonnali üzenetküldésben. A Service Fabric lehetővé teszi az interaktív, állapot-nyilvántartó alkalmazások összeállítását anélkül, hogy külön tárolót vagy gyorsítótárat kellene létrehoznia. Tekintse meg az [Azure-játékok megoldásait](https://azure.microsoft.com/solutions/gaming/) , amelyekkel megtudhatja, hogyan [használhatja a Service Fabrict a játékokban](https://docs.microsoft.com/gaming/azure/reference-architectures/multiplayer-synchronous-sf)
+* **Játékok és munkamenet-alapú interaktív alkalmazások**: Service Fabric akkor lehet hasznos, ha az alkalmazás kis késleltetésű olvasást és írást igényel, például online játékokban vagy azonnali üzenetküldésben. A Service Fabric lehetővé teszi az interaktív, állapot-nyilvántartó alkalmazások összeállítását anélkül, hogy külön tárolót vagy gyorsítótárat kellene létrehoznia. Tekintse meg az [Azure-játékok megoldásait](https://azure.microsoft.com/solutions/gaming/) , amelyekkel megtudhatja, hogyan [használhatja a Service Fabrict a játékokban](/gaming/azure/reference-architectures/multiplayer-synchronous-sf)
 
     A [következő játékokat](https://customers.microsoft.com/story/next-games-media-telecommunications-azure) és [Digamore](https://customers.microsoft.com/story/digamore-entertainment-scores-with-a-new-gaming-platform-based-on-azure-service-fabric/)is tartalmazó ügyfeleinknek készültek. Azok az ügyfelek, akik beépített interaktív munkamenetekkel rendelkeznek [, a Honeywellt is tartalmazzák a Hololens](https://customers.microsoft.com/story/honeywell-manufacturing-hololens).
 
@@ -64,10 +65,10 @@ Az alábbi példa az állapot nélküli szolgáltatásokat használó alkalmazá
 
 Az alábbi példa egy állapot-nyilvántartó szolgáltatásokat használó alkalmazás: ![ állapot-nyilvántartó szolgáltatásokat használó alkalmazás][Image2]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg az állapot nélküli és állapot-nyilvántartó szolgáltatásokkal a Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) és a [Reliable Actors](service-fabric-reliable-actors-get-started.md) programozási modellekkel.
-* Látogasson el a Azure Architecture Centerra, és útmutatást nyújt az Azure-beli [szolgáltatások létrehozásához](https://docs.microsoft.com/azure/architecture/microservices/).
+* Látogasson el a Azure Architecture Centerra, és útmutatást nyújt az Azure-beli [szolgáltatások létrehozásához](/azure/architecture/microservices/).
 * Az alkalmazások kialakítására vonatkozó útmutatásért keresse fel az [Azure Service Fabric alkalmazást és a fürt ajánlott eljárásait](service-fabric-best-practices-overview.md) .
 
 * Lásd még:

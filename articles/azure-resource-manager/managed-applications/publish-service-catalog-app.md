@@ -3,16 +3,17 @@ title: A Service Catalog felügyelt alkalmazás közzététele
 description: Bemutatja, hogyan hozható létre egy, a szervezete tagjainak szánt Azure-beli felügyelt alkalmazás.
 author: tfitzmac
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 47eda62810b1098fcaca5b734be4f74edc0db49a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d0a3e2a435be679a2a35941dfa24978ae77291b0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609357"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86249036"
 ---
-# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Rövid útmutató: felügyelt alkalmazás definíciójának létrehozása és közzététele
+# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Rövid útmutató: Felügyelt alkalmazás definíciójának létrehozása és közzététele
 
 Ez a rövid útmutató a [Azure Managed Applications](overview.md)használatának bevezetését ismerteti. Létrehozhat és közzétehet olyan felügyelt alkalmazást, amely a szervezet tagjai számára készült.
 
@@ -20,15 +21,15 @@ A felügyelt alkalmazások a szolgáltatás-katalógusban való közzétételéh
 
 * Létre kell hoznia egy sablont, amely meghatározza a felügyelt alkalmazással üzembe helyezendő erőforrásokat.
 * Meg kell határoznia a felhasználói felület elemeit a portál számára, amikor üzembe helyezi a felügyelt alkalmazást.
-* Létre kell hoznia egy .zip csomagot, amely a szükséges sablonfájlokat tartalmazza.
+* Hozzon létre egy _. zip_ -csomagot, amely tartalmazza a szükséges sablonfájlokat.
 * El kell döntenie, hogy melyik felhasználónak, csoportnak vagy alkalmazásnak kell hozzáférést biztosítani a felhasználó előfizetésében található erőforráscsoporthoz.
-* Létre kell hoznia a felügyelt alkalmazás definícióját, amely a .zip csomagra mutat, és hozzáférést kér az identitás számára.
+* Hozza létre a felügyelt alkalmazás definícióját, amely a _. zip_ csomagra mutat, és hozzáférést kér az identitáshoz.
 
 ## <a name="create-the-arm-template"></a>ARM-sablon létrehozása
 
-Minden felügyelt alkalmazás definíciója tartalmaz egy **mainTemplate.json** nevű fájlt. Ebben lehet meghatározni a telepítendő Azure-erőforrásokat. A sablon nem különbözik a normál Azure Resource Manager (ARM) sablontól.
+Minden felügyelt alkalmazás definíciója tartalmaz egy _mainTemplate.json_ nevű fájlt. Ebben lehet meghatározni a telepítendő Azure-erőforrásokat. A sablon nem különbözik a szokásos ARM-sablonoktól.
 
-Hozzon létre egy **mainTemplate.json** nevű fájlt. A név megkülönbözteti a kis- és nagybetűket.
+Hozzon létre egy _mainTemplate.json_ nevű fájlt. A név megkülönbözteti a kis- és nagybetűket.
 
 Adja hozzá az alábbi JSON-kódot a fájlhoz. Ez a kód határozza meg a tárfiókok létrehozásához szükséges paramétereket, és megadja a tárfiók tulajdonságait.
 
@@ -73,13 +74,13 @@ Adja hozzá az alábbi JSON-kódot a fájlhoz. Ez a kód határozza meg a tárfi
 }
 ```
 
-Mentse a mainTemplate.json fájlt.
+Mentse a _mainTemplate.js_ fájlt.
 
 ## <a name="define-your-create-experience"></a>A létrehozási élmény meghatározása
 
-Közzétevőként megadhatja a felügyelt alkalmazás létrehozásához szükséges portált. A **createUiDefinition. JSON** fájl létrehozza a portál felületét. Meghatározhatja, hogy a felhasználók hogyan biztosítanak bemenetet az egyes paraméterekhez a [vezérlési elemek](create-uidefinition-elements.md) , például a legördülő listák, a szövegmezők és a jelszó mezők használatával.
+Közzétevőként megadhatja a felügyelt alkalmazás létrehozásához szükséges portált. A fájl _createUiDefinition.js_ a portál felületét hozza létre. Meghatározhatja, hogy a felhasználók hogyan biztosítanak bemenetet az egyes paraméterekhez a [vezérlési elemek](create-uidefinition-elements.md) , például a legördülő listák, a szövegmezők és a jelszó mezők használatával.
 
-Hozzon létre egy **createUiDefinition. JSON** nevű fájlt (ez a név megkülönbözteti a kis-és nagybetűket)
+Hozzon létre egy _createUiDefinition.js_ nevű fájlt (ez a név megkülönbözteti a kis-és nagybetűket)
 
 Adja hozzá a következő kezdő JSON-fájlt a fájlhoz, és mentse azt.
 
@@ -136,7 +137,7 @@ További információ: Ismerkedés [a CreateUiDefinition szolgáltatással](crea
 
 ## <a name="package-the-files"></a>A fájlok becsomagolása
 
-Adja hozzá a két fájlt az app.zip nevű .zip fájlhoz. A két fájlnak a .zip fájl gyökérszintjén kell lennie. Ha egy mappába helyezi őket, hibaüzenetet fog kapni a felügyelt alkalmazás definíciójának létrehozásakor, amely szerint nem találhatók a szükséges fájlok.
+Adja hozzá a két fájlt egy _app.zip_nevű _. zip_ -fájlhoz. A két fájlnak a _. zip_ fájl legfelső szintjén kell lennie. Ha egy mappába helyezi őket, hibaüzenetet fog kapni a felügyelt alkalmazás definíciójának létrehozásakor, amely szerint nem találhatók a szükséges fájlok.
 
 Töltse fel a csomagot egy elérhető helyre, ahonnan mások használhatják. Meg kell adnia egy egyedi nevet a Storage-fiókhoz.
 
@@ -291,7 +292,7 @@ A parancs befejeződésekor egy felügyeltalkalmazás-definíció található az
 * **erőforráscsoport**: az erőforráscsoport neve, amelyben a felügyelt alkalmazás definíciója létrejött.
 * **zárolási szint**: a felügyelt erőforráscsoporthoz helyezett zárolás típusa. Megakadályozza, hogy az ügyfél nemkívánatos műveleteket hajtson végre ezen az erőforráscsoporton. Jelenleg a ReadOnly az egyetlen támogatott zárolási szint. Amikor a ReadOnly van megadva, az ügyfél csak olvashatja a felügyelt erőforráscsoportban lévő erőforrásokat. A kezelt erőforráscsoporthoz hozzáféréssel rendelkező közzétevői identitások mentesítve vannak a zárolás alól.
 * **authorizations**: A felügyelt erőforráscsoporthoz való engedély biztosításához használt résztvevő-azonosítót és szerepkördefiníció-azonosítót ismerteti. `<principalId>:<roleDefinitionId>` formátumban van megadva. Ha egynél több érték szükséges, adja meg azokat a következő formátumban: `<principalId1>:<roleDefinitionId1>,<principalId2>:<roleDefinitionId2>`. Az értékeket vesszővel kell elválasztani.
-* **csomagfájl URI-ja**: a szükséges fájlokat tartalmazó. zip-csomag helye.
+* **csomagfájl URI-ja**: a szükséges fájlokat tartalmazó _. zip_ -csomag helye.
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Saját tárterület használata a felügyelt alkalmazás definíciója számára
 
@@ -300,7 +301,7 @@ Megadhatja, hogy a felügyelt alkalmazás definícióját a létrehozás során 
 > [!NOTE]
 > Saját tárterület használata csak a felügyelt alkalmazás definíciójának ARM-sablonnal vagy REST API-példányával támogatott.
 
-### <a name="select-your-storage-account"></a>Válassza ki a Storage-fiókját
+### <a name="select-your-storage-account"></a>Válassza ki a tárfiókot
 
 Létre kell [hoznia egy Storage-fiókot](../../storage/common/storage-account-create.md) , amely tartalmazza a felügyelt alkalmazás definícióját a Service Catalog szolgáltatással való használatra.
 
@@ -317,7 +318,7 @@ Mielőtt a felügyelt alkalmazás definíciója üzembe helyezhető a Storage-fi
 1. A **kiválasztás**területen keresse meg a **készülék erőforrás-szolgáltatói** szerepkörét, és válassza ki.
 1. Mentse a szerepkör-hozzárendelést.
 
-### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>A felügyelt alkalmazás definíciójának üzembe helyezése ARM-sablonnal 
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>A felügyelt alkalmazás definíciójának üzembe helyezése ARM-sablonnal
 
 A következő ARM-sablon segítségével telepítheti a csomagolt felügyelt alkalmazást új felügyelt alkalmazás-definícióként a Service Catalog szolgáltatásban, amelynek a definíciós fájljait a saját Storage-fiókjában tárolja és tartja karban:
    
@@ -391,9 +392,9 @@ A következő ARM-sablon segítségével telepítheti a csomagolt felügyelt alk
 }
 ```
 
-Hozzáadunk egy **storageAccountId** nevű új tulajdonságot a applicationDefintion tulajdonságaihoz, és megadják a Storage-fiók azonosítóját, amelyben a definícióját a következőképpen szeretné tárolni:
+Hozzáadott egy új `storageAccountId` , a tulajdonságok nevű tulajdonságot `applicationDefinitions` , és adja meg a Storage-fiók azonosítóját, amelyben a definícióját a következő értékként szeretné tárolni:
 
-Ellenőrizheti, hogy az alkalmazás-definíciós fájlok a megadott Storage-fiókban vannak-e mentve a **applicationdefinitions**című tárolóban.
+Megtekintheti, hogy az alkalmazás-definíciós fájlok a megadott Storage-fiókban vannak-e mentve egy, a nevű tárolóban `applicationDefinitions` .
 
 > [!NOTE]
 > A további biztonság érdekében létrehozhat egy felügyelt alkalmazások definícióját egy [Azure Storage-fiók blobjában, ahol engedélyezve](../../storage/common/storage-service-encryption.md)van a titkosítás. A definíció tartalmának titkosítása a Storage-fiók titkosítási beállításain keresztül történik. Csak a fájlra vonatkozó engedélyekkel rendelkező felhasználók tekinthetik meg a szolgáltatás-katalógus definícióját.
@@ -402,7 +403,7 @@ Ellenőrizheti, hogy az alkalmazás-definíciós fájlok a megadott Storage-fió
 
 Ön hozzáfér a felügyelt alkalmazás definíciójához, azonban gondoskodnia kell róla, hogy a vállalat más felhasználói is hozzáférjenek. Engedélyezzen számukra legalább Olvasó szerepkört a definícióhoz. Előfordulhat, hogy ezt a hozzáférési szintet már megörökölték az előfizetéstől vagy az erőforráscsoporttól. A definíció elérésének ellenőrzésével, valamint további felhasználók és csoportok hozzáadásával kapcsolatban lásd: [Az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel](../../role-based-access-control/role-assignments-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sikeresen közzétette a felügyelt alkalmazás definícióját. Most megismerheti, hogyan helyezheti üzembe a definíció egyik példányát.
 

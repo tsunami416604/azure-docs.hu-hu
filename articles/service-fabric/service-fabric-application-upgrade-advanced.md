@@ -3,25 +3,26 @@ title: Speciális alkalmazás-frissítési témakörök
 description: Ez a cikk a Service Fabric alkalmazások frissítésével kapcsolatos néhány speciális témakört ismerteti.
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 98d8213cc50f73ef2c053e1fe5574fe33a2f3cb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc2fdc8f99b74078bd8d5274cbe52265ab8455ae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263091"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248084"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric alkalmazás frissítése: speciális témakörök
 
 ## <a name="add-or-remove-service-types-during-an-application-upgrade"></a>Szolgáltatások típusának hozzáadása vagy eltávolítása az alkalmazás frissítése során
 
-Ha új szolgáltatástípus van hozzáadva egy közzétett alkalmazáshoz egy frissítés részeként, akkor a rendszer hozzáadja az új szolgáltatás típusát az üzembe helyezett alkalmazáshoz. Egy ilyen frissítés nem befolyásolja az alkalmazás részét képező szolgáltatási példányok egyikét sem, de a hozzáadott szolgáltatástípus egy példányát létre kell hozni ahhoz, hogy az új szolgáltatástípus aktív legyen (lásd: [New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
+Ha új szolgáltatástípus van hozzáadva egy közzétett alkalmazáshoz egy frissítés részeként, akkor a rendszer hozzáadja az új szolgáltatás típusát az üzembe helyezett alkalmazáshoz. Egy ilyen frissítés nem befolyásolja az alkalmazás részét képező szolgáltatási példányok egyikét sem, de a hozzáadott szolgáltatástípus egy példányát létre kell hozni ahhoz, hogy az új szolgáltatástípus aktív legyen (lásd: [New-ServiceFabricService](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)).
 
-Hasonlóképpen, a szolgáltatások típusai a frissítés részeként eltávolíthatók az alkalmazásokból. A frissítés folytatása előtt azonban el kell távolítani az összes szolgáltatás összes szolgáltatási példányát (lásd: [Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
+Hasonlóképpen, a szolgáltatások típusai a frissítés részeként eltávolíthatók az alkalmazásokból. A frissítés folytatása előtt azonban el kell távolítani az összes szolgáltatás összes szolgáltatási példányát (lásd: [Remove-ServiceFabricService](/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)).
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Az állapot nélküli szolgáltatás tervezett leállási idejének elkerülése
 
 A tervezett állapot nélküli leállások esetében, például az alkalmazás/fürt frissítése vagy a csomópont inaktiválása esetén a kapcsolatok eltűnnek, mivel a rendszer eltávolítja a megjelenő végpontot a példány leállása után, ami erőteljes kapcsolat bezárását eredményezi.
 
-Ennek elkerüléséhez konfigurálja a *RequestDrain* szolgáltatást úgy, hogy a szolgáltatás konfigurációjában egy *példányhoz tartozó késleltetési idő* hozzáadásával engedélyezi a meglévő kérelmeket a fürtből a kihelyezett végpontokon való leeresztéshez. Ez úgy érhető el, mert a rendszer eltávolítja az állapot nélküli példány által hirdetett végpontot, *mielőtt* a késleltetés a példány bezárása előtt elindul. Ez a késleltetés lehetővé teszi, hogy a meglévő kérések zökkenőmentesen le legyenek ürítve, mielőtt a példány ténylegesen leáll. Az ügyfelek értesítést kapnak a végpont változásáról egy visszahívási függvény által a késés megkezdésének időpontjában, hogy újra fel tudják oldani a végpontot, és ne küldjön új kéréseket a lekérdezett példányra. Ezek a kérelmek olyan ügyfelektől származnak, amelyek [fordított proxyt](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) használnak, vagy a szolgáltatási végpont feloldási API-ját az értesítési modellel ([ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) használják a végpontok frissítéséhez.
+Ennek elkerüléséhez konfigurálja a *RequestDrain* szolgáltatást úgy, hogy a szolgáltatás konfigurációjában egy *példányhoz tartozó késleltetési idő* hozzáadásával engedélyezi a meglévő kérelmeket a fürtből a kihelyezett végpontokon való leeresztéshez. Ez úgy érhető el, mert a rendszer eltávolítja az állapot nélküli példány által hirdetett végpontot, *mielőtt* a késleltetés a példány bezárása előtt elindul. Ez a késleltetés lehetővé teszi, hogy a meglévő kérések zökkenőmentesen le legyenek ürítve, mielőtt a példány ténylegesen leáll. Az ügyfelek értesítést kapnak a végpont változásáról egy visszahívási függvény által a késés megkezdésének időpontjában, hogy újra fel tudják oldani a végpontot, és ne küldjön új kéréseket a lekérdezett példányra. Ezek a kérelmek olyan ügyfelektől származnak, amelyek [fordított proxyt](./service-fabric-reverseproxy.md) használnak, vagy a szolgáltatási végpont feloldási API-ját az értesítési modellel ([ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) használják a végpontok frissítéséhez.
 
 ### <a name="service-configuration"></a>Szolgáltatáskonfiguráció
 
@@ -76,7 +77,7 @@ A késést többféleképpen is konfigurálhatja a szolgáltatás oldalán.
 
 ### <a name="client-configuration"></a>Ügyfél-konfiguráció
 
-Ha értesítést szeretne kapni egy végpont megváltozásakor, az ügyfeleknek vissza kell regisztrálniuk a visszahívást, lásd: [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
+Ha értesítést szeretne kapni egy végpont megváltozásakor, az ügyfeleknek vissza kell regisztrálniuk a visszahívást, lásd: [ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
 A változási értesítés arra utal, hogy a végpontok megváltoztak, az ügyfélnek újra fel kell oldania a végpontokat, és nem szabad azokat a végpontokat használni, amelyek nem jelennek meg többé, mert hamarosan leállnak.
 
 ### <a name="optional-upgrade-overrides"></a>Választható frissítési felülbírálások
@@ -93,7 +94,7 @@ A felülbírált késleltetési időtartam csak a meghívott frissítési péld�
 
 > [!NOTE]
 > * A lecsapolt kérések beállításai nem fogják tudni megakadályozni, hogy az Azure Load Balancer új kéréseket küldjön a leeresztő végpontoknak.
-> * A panasz-alapú megoldási mechanizmus nem eredményezi a kérések zökkenőmentes kiürítését, mivel hiba után kivált egy szolgáltatás feloldására. A korábban leírtaknak megfelelően a [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)használatával kell kijavítani a végpontok módosítására vonatkozó értesítésekre való előfizetést.
+> * A panasz-alapú megoldási mechanizmus nem eredményezi a kérések zökkenőmentes kiürítését, mivel hiba után kivált egy szolgáltatás feloldására. A korábban leírtaknak megfelelően a [ServiceNotificationFilterDescription](/dotnet/api/system.fabric.description.servicenotificationfilterdescription)használatával kell kijavítani a végpontok módosítására vonatkozó értesítésekre való előfizetést.
 > * A beállítások nem teljesülnek, ha a frissítés egy negatív hatással van, azaz Ha a rendszer nem indít le replikákat a frissítés során.
 >
 >
@@ -113,7 +114,7 @@ A felülbírált késleltetési időtartam csak a meghívott frissítési péld�
 
 *Figyelt* módban Service Fabric alkalmazza az állapot-szabályzatokat, hogy az alkalmazás kifogástalan állapotú legyen a frissítés folyamata során. Ha az Állapotházirendek megsértették, a rendszer felfüggeszti a frissítést, vagy automatikusan visszaállítja a megadott *FailureAction*függően.
 
-*UnmonitoredManual* módban az alkalmazás rendszergazdája teljes mértékben szabályozhatja a frissítés előrehaladását. Ez a mód akkor hasznos, ha egyéni állapot-értékelési házirendeket alkalmaz, vagy nem hagyományos frissítéseket végez az állapot figyelésének mellőzéséhez (például az alkalmazás már adatvesztésben van). Az ebben a módban futó frissítés az egyes UD befejezését követően felfüggeszti magát, és a [resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps)használatával explicit módon folytatnia kell azt. Ha a frissítés fel van függesztve, és készen áll a felhasználó folytatására, a frissítési állapota *RollforwardPending* fog megjelenni (lásd: [UpgradeState](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)).
+*UnmonitoredManual* módban az alkalmazás rendszergazdája teljes mértékben szabályozhatja a frissítés előrehaladását. Ez a mód akkor hasznos, ha egyéni állapot-értékelési házirendeket alkalmaz, vagy nem hagyományos frissítéseket végez az állapot figyelésének mellőzéséhez (például az alkalmazás már adatvesztésben van). Az ebben a módban futó frissítés az egyes UD befejezését követően felfüggeszti magát, és a [resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps)használatával explicit módon folytatnia kell azt. Ha a frissítés fel van függesztve, és készen áll a felhasználó folytatására, a frissítési állapota *RollforwardPending* fog megjelenni (lásd: [UpgradeState](/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)).
 
 Végezetül a *UnmonitoredAuto* mód hasznos lehet a gyors verziófrissítési iterációk végrehajtásához a szolgáltatás fejlesztése vagy tesztelése során, mivel nincs szükség felhasználói beavatkozásra, és nincs kiértékelve az alkalmazás állapotára vonatkozó házirend.
 
@@ -204,13 +205,13 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 ## <a name="roll-back-application-upgrades"></a>Alkalmazások verziófrissítésének visszaállítása
 
-A frissítések a három mód (*figyelt*, *UnmonitoredAuto*vagy *UnmonitoredManual*) egyikében továbbíthatók, de csak *UnmonitoredAuto* vagy *UnmonitoredManual* módban állíthatók vissza. A *UnmonitoredAuto* mód visszaállítása ugyanúgy működik, mint a *UpgradeReplicaSetCheckTimeout* alapértelmezett értéke – lásd az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md). A *UnmonitoredManual* mód visszaállítása ugyanúgy működik, mint a továbbítás – a visszaállítás az összes UD befejezése után felfüggeszti magát, és a [resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) használatával explicit módon folytatnia kell a visszaállítást.
+A frissítések a három mód (*figyelt*, *UnmonitoredAuto*vagy *UnmonitoredManual*) egyikében továbbíthatók, de csak *UnmonitoredAuto* vagy *UnmonitoredManual* módban állíthatók vissza. A *UnmonitoredAuto* mód visszaállítása ugyanúgy működik, mint a *UpgradeReplicaSetCheckTimeout* alapértelmezett értéke – lásd az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md). A *UnmonitoredManual* mód visszaállítása ugyanúgy működik, mint a továbbítás – a visszaállítás az összes UD befejezése után felfüggeszti magát, és a [resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) használatával explicit módon folytatnia kell a visszaállítást.
 
-A visszaállítások automatikusan indíthatók, ha a *figyelt* módban lévő, a *FailureAction* *visszaállítással* rendelkező frissítés állapot-házirendjei megsérülnek (lásd az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md)), vagy explicit módon használják a [Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
+A visszaállítások automatikusan indíthatók, ha a *figyelt* módban lévő, a *FailureAction* *visszaállítással* rendelkező frissítés állapot-házirendjei megsérülnek (lásd az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md)), vagy explicit módon használják a [Start-ServiceFabricApplicationRollback](/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
 
-A visszaállítás során a *UpgradeReplicaSetCheckTimeout* és a mód értéke bármikor módosítható a [Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps)használatával.
+A visszaállítás során a *UpgradeReplicaSetCheckTimeout* és a mód értéke bármikor módosítható a [Update-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps)használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
 [Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.

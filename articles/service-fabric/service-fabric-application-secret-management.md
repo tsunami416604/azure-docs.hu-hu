@@ -3,12 +3,12 @@ title: Az Azure Service Fabric alkalmazás titkainak kezelése
 description: Megtudhatja, hogyan védheti meg a titkos értékeket egy Service Fabric alkalmazásban (platform – agnosztikus).
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.openlocfilehash: 18090dd3e4046da2069e3035be4edb4d2f979204
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af82a55d41c48eebcbcbd1581ec5096a89c49bea
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583229"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248118"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Titkosított titkok kezelése Service Fabric alkalmazásokban
 Ez az útmutató végigvezeti a Service Fabric alkalmazásban található titkok kezelésének lépésein. A titkok lehetnek bármilyen bizalmas információk, például a tárolási kapcsolatok karakterláncai, jelszavai vagy más olyan értékek, amelyeket nem szabad egyszerű szövegben kezelni.
@@ -99,7 +99,7 @@ A Settings.xml értékeinek felülbírálásához deklaráljon egy felülbírál
 
 Az érték mostantól az alkalmazás egy példányának létrehozásakor is megadható *Application paraméterként* . Az alkalmazás-példányok létrehozásához a PowerShell vagy a C# nyelven írt parancsfájl használatával lehet egyszerű integrációt létrehozni egy összeállítási folyamat során.
 
-A PowerShell használatával a paramétert a parancs a következő `New-ServiceFabricApplication` [kivonatoló táblázatként](https://technet.microsoft.com/library/ee692803.aspx)biztosítja:
+A PowerShell használatával a paramétert a parancs a következő `New-ServiceFabricApplication` [kivonatoló táblázatként](/previous-versions/windows/it-pro/windows-powershell-1.0/ee692803(v=technet.10))biztosítja:
 
 ```powershell
 New-ServiceFabricApplication -ApplicationName fabric:/MyApp -ApplicationTypeName MyAppType -ApplicationTypeVersion 1.0.0 -ApplicationParameter @{"MySecret" = "I6jCCAeYCAxgFhBXABFxzAt ... gNBRyeWFXl2VydmjZNwJIM="}
@@ -140,7 +140,7 @@ if (MySecretIsEncrypted)
 string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Service Fabric [Secrets áruház](service-fabric-application-secret-store.md) 
 * További információ az [alkalmazások és szolgáltatások biztonságáról](service-fabric-application-and-service-security.md)
 

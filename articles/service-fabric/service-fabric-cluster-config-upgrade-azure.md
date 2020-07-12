@@ -5,18 +5,19 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: c2973428354f101b5b546128b08bf67587923a8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 010f2b5d6dee3a5985c421e468bcd28b18148e5a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82793074"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247727"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Fürt konfigurációjának frissítése az Azure-ban 
 
 Ez a cikk azt ismerteti, hogyan szabhatja testre a Service Fabric-fürthöz tartozó különböző hálók beállításait. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre.
 
 > [!NOTE]
-> Nem minden beállítás érhető el a portálon, és az [ajánlott eljárás egy Azure Resource Manager sablon használatával történő Testreszabás](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code). A portál kizárólag Service Fabric Dev\Test forgatókönyvek esetében érhető el.
+> Nem minden beállítás érhető el a portálon, és az [ajánlott eljárás egy Azure Resource Manager sablon használatával történő Testreszabás](./service-fabric-best-practices-infrastructure-as-code.md). A portál kizárólag Service Fabric Dev\Test forgatókönyvek esetében érhető el.
 > 
 
 
@@ -44,12 +45,12 @@ Az Azure-fürtöket a JSON Resource Manager-sablonnal lehet konfigurálni. Tová
 
 A fürt beállításait a következő módokon is testreszabhatja a Azure Resource Manager használatával:
 
-- Az erőforrás-kezelő sablon exportálásához és frissítéséhez használja a [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template) .
-- A [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell) használatával exportálhatja és frissítheti a Resource Manager-sablont.
-- A Resource Manager-sablon exportálásához és frissítéséhez használja az [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli) -t.
-- A beállítás közvetlen módosításához használja a Azure PowerShell [set-AzServiceFabricSetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Set-azServiceFabricSetting) és a [Remove-AzServiceFabricSetting](https://docs.microsoft.com/powershell/module/az.servicefabric/Remove-azServiceFabricSetting) parancsokat.
-- Az Azure CLI az [SF cluster Setting](https://docs.microsoft.com/cli/azure/sf/cluster/setting) paranccsal közvetlenül módosíthatja a beállításokat.
+- Az erőforrás-kezelő sablon exportálásához és frissítéséhez használja a [Azure Portal](../azure-resource-manager/templates/export-template-portal.md) .
+- A [PowerShell](../azure-resource-manager/management/manage-resources-powershell.md) használatával exportálhatja és frissítheti a Resource Manager-sablont.
+- A Resource Manager-sablon exportálásához és frissítéséhez használja az [Azure CLI](../azure-resource-manager/management/manage-resources-cli.md) -t.
+- A beállítás közvetlen módosításához használja a Azure PowerShell [set-AzServiceFabricSetting](/powershell/module/az.servicefabric/set-azservicefabricsetting) és a [Remove-AzServiceFabricSetting](/powershell/module/az.servicefabric/remove-azservicefabricsetting) parancsokat.
+- Az Azure CLI az [SF cluster Setting](/cli/azure/sf/cluster/setting) paranccsal közvetlenül módosíthatja a beállításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Tudnivalók a [Service Fabric-fürt beállításairól](service-fabric-cluster-fabric-settings.md).
 * Ismerje meg, hogyan [méretezheti a fürtöt a és a](service-fabric-cluster-scale-in-out.md)szolgáltatásban.

@@ -3,11 +3,12 @@ title: Service Fabric alkalmazás frissítése
 description: Ez a cikk bevezetést nyújt egy Service Fabric alkalmazás frissítéséhez, többek között a frissítési módok kiválasztásához és az állapot-ellenőrzések végrehajtásához.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e7a93dd3ef8a1adf6617dcd57887a0ce694c509
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710320"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247999"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric alkalmazás frissítése
 Az Azure Service Fabric-alkalmazás szolgáltatások gyűjteménye. A frissítés során Service Fabric összehasonlítja az új [alkalmazás-jegyzékfájlt](service-fabric-application-and-service-manifests.md) az előző verzióval, és meghatározza, hogy az alkalmazás mely szolgáltatásai igényelnek frissítéseket. Service Fabric összehasonlítja a szolgáltatási jegyzékfájlok verziószámait az előző verzió verziószámával. Ha egy szolgáltatás nem módosult, akkor a szolgáltatás nem frissül.
@@ -36,7 +37,7 @@ Az alkalmazások frissítéséhez javasolt mód a figyelt mód, amely a leggyakr
 A nem figyelt manuális üzemmódnak manuális beavatkozásra van szüksége egy frissítési tartomány minden verziófrissítése után, hogy kirúgja a frissítést a következő frissítési tartományon. Nem történik Service Fabric állapot-ellenőrzés. A rendszergazda a következő frissítési tartomány frissítésének megkezdése előtt elvégzi az állapot-vagy az állapot-ellenőrzéseket.
 
 ## <a name="upgrade-default-services"></a>Alapértelmezett szolgáltatások frissítése
-Az [alkalmazás jegyzékfájljában](service-fabric-application-and-service-manifests.md) meghatározott alapértelmezett szolgáltatási paraméterek az alkalmazások frissítésének részeként is frissíthetők. A frissítés részeként csak azok a szolgáltatási paraméterek módosíthatók, amelyek támogatják az [Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) használatával történő módosítást. Az alapértelmezett szolgáltatások az alkalmazás frissítése során történő megváltoztatásának viselkedése a következő:
+Az [alkalmazás jegyzékfájljában](service-fabric-application-and-service-manifests.md) meghatározott alapértelmezett szolgáltatási paraméterek az alkalmazások frissítésének részeként is frissíthetők. A frissítés részeként csak azok a szolgáltatási paraméterek módosíthatók, amelyek támogatják az [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) használatával történő módosítást. Az alapértelmezett szolgáltatások az alkalmazás frissítése során történő megváltoztatásának viselkedése a következő:
 
 1. A fürtben még nem létező új alkalmazás-jegyzékfájlban található alapértelmezett szolgáltatások jönnek létre.
 2. Az előző és az új alkalmazás-jegyzékben található alapértelmezett szolgáltatások frissülnek. Az új alkalmazás jegyzékfájljában lévő alapértelmezett szolgáltatás paramétereinek felülírják a meglévő szolgáltatás paramétereit. Az alkalmazás frissítése automatikusan megtörténik, ha az alapértelmezett szolgáltatás frissítése sikertelen.
@@ -59,7 +60,7 @@ A bekezdést követő folyamatábra segít megérteni egy Service Fabric alkalma
 
 ![Service Fabric alkalmazás frissítési folyamata][image]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
 [Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.

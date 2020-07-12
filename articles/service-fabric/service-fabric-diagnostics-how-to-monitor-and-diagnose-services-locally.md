@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 8435bb82afddd0070679768bb8d22ad9290f2279
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701200"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247421"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Szolgáltatások monitorozása és diagnosztizálása egy helyi gép fejlesztési beállításánál
 > [!div class="op_single_selector"]
@@ -21,7 +22,7 @@ ms.locfileid: "84701200"
 A szolgáltatások figyelése, észlelése, diagnosztizálása és hibaelhárítása lehetővé teszi, hogy a szolgáltatások továbbra is minimálisan megzavarják a felhasználói élményt. Habár a monitorozás és a diagnosztika kritikus fontosságú a tényleges üzembe helyezett éles környezetben, a hatékonyság a szolgáltatások fejlesztése során egy hasonló modell bevezetését fogja eredményezni, hogy a valós telepítéskor is működjön. A Service Fabric megkönnyíti a szolgáltatás-fejlesztők számára a diagnosztika megvalósítását, amely zökkenőmentesen képes együttműködni mind az egyszámítógépes helyi fejlesztési környezetekben, mind a valós üzemi fürtökön.
 
 ## <a name="event-tracing-for-windows"></a>Windows esemény-nyomkövetés
-A [Windows esemény-nyomkövetés](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) az ajánlott technológia a Service Fabricban lévő üzenetek nyomon követéséhez. A ETW használatának néhány előnye:
+A [Windows esemény-nyomkövetés](/windows/win32/etw/event-tracing-portal) (ETW) az ajánlott technológia a Service Fabricban lévő üzenetek nyomon követéséhez. A ETW használatának néhány előnye:
 
 * **A ETW gyors.** Olyan nyomkövetési technológiaként készült, amely minimális hatással van a kód végrehajtásának idejére.
 * **A ETW-nyomkövetés zökkenőmentesen működik a helyi fejlesztési környezetekben és a valós fürtökön is.** Ez azt jelenti, hogy nem kell újraírnia a nyomkövetési kódot, ha készen áll a kód valós fürtön való üzembe helyezésére.
@@ -52,9 +53,8 @@ A **Actor-sablonokból** létrehozott projektek esetében (állapot nélküli va
 
 Miután hozzáadta az egyéni ETW-nyomkövetést a szolgáltatás kódjához, felépítheti, telepítheti és futtathatja az alkalmazást, hogy megtekintse az esemény (eke) t a diagnosztikai események megjelenítőben. Ha az **F5 billentyűvel**végzi az alkalmazás hibakeresését, a rendszer automatikusan megnyitja a diagnosztikai események megjelenítőjét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ugyanaz a nyomkövetési kód, amelyet a fenti alkalmazáshoz adott a helyi diagnosztika esetében, az alkalmazás Azure-fürtön való futtatásakor használható eszközökkel fog működni. Tekintse át ezeket a cikkeket, amelyek az eszközök különböző lehetőségeit tárgyalják, és leírják, hogyan állíthatja be őket.
 
-* [Naplók összegyűjtése a Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md)
+* [Naplók összegyűjtése a Azure Diagnostics](./service-fabric-diagnostics-event-aggregation-wad.md)
 * [Események összesítése és gyűjtése a EventFlow segítségével használatával](service-fabric-diagnostics-event-aggregation-eventflow.md)
-

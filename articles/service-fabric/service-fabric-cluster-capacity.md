@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 774b114a47958b173f891ed13d423f9b051ee37c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610540"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247777"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric a fürt kapacitásának tervezési szempontjait
 
@@ -26,7 +26,7 @@ Ez a cikk végigvezeti az egyes területek jelentős döntési pontjain.
 
 ## <a name="initial-number-and-properties-of-cluster-node-types"></a>A fürtcsomópontok típusainak kezdeti száma és tulajdonságai
 
-A *csomópont típusa* a fürtben lévő csomópontok (virtuális gépek) méretét, számát és tulajdonságait határozza meg. Minden Service Fabric fürtben definiált csomópont-típus egy [virtuálisgép-méretezési csoportra](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)mutat.
+A *csomópont típusa* a fürtben lévő csomópontok (virtuális gépek) méretét, számát és tulajdonságait határozza meg. Minden Service Fabric fürtben definiált csomópont-típus egy [virtuálisgép-méretezési csoportra](../virtual-machine-scale-sets/overview.md)mutat.
 
 Mivel az egyes csomópont-típusok külön méretezési csoportok, az egymástól függetlenül méretezhető, a portok különböző készletei nyitottak, és különböző kapacitási metrikákkal rendelkeznek. További információ a csomópontok típusai és a virtuálisgép-méretezési csoportok közötti kapcsolatról: [Service Fabric fürtcsomópontok típusai](service-fabric-cluster-nodetypes.md).
 
@@ -34,7 +34,7 @@ Minden fürthöz egy **elsődleges csomópont-típus**szükséges, amely Service
 
 A **nem elsődleges csomópontok típusai** az alkalmazás szerepköreinek (például *előtér-* és *háttér-* szolgáltatások) meghatározására és a fürtön belüli szolgáltatások fizikai elkülönítésére használhatók. Service Fabric fürtökhöz nulla vagy több nem elsődleges csomópont típusú típus tartozhat.
 
-Az elsődleges csomópont típusa a `isPrimary` Azure Resource Manager telepítési sablon csomópont típusa definíciójában található attribútummal van konfigurálva. Tekintse meg a csomópont típusú tulajdonságok teljes listáját a [NodeTypeDescription objektumban](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) . Ha például a használatot, nyissa meg a [Service Fabric-fürtökön](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) található fájlon *AzureDeploy.jst* , és *keressen* rá az `nodetTypes` objektumra a lapon.
+Az elsődleges csomópont típusa a `isPrimary` Azure Resource Manager telepítési sablon csomópont típusa definíciójában található attribútummal van konfigurálva. Tekintse meg a csomópont típusú tulajdonságok teljes listáját a [NodeTypeDescription objektumban](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) . Ha például a használatot, nyissa meg a [Service Fabric-fürtökön](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) található fájlon *AzureDeploy.jst* , és *keressen* rá az `nodetTypes` objektumra a lapon.
 
 ### <a name="node-type-planning-considerations"></a>Csomópont típusú tervezési szempontok
 
@@ -79,7 +79,7 @@ Az alábbi táblázat a Service Fabric tartóssági szintjeire, a rájuk vonatko
 > A bronz tartóssággal az operációs rendszer rendszerképének automatikus frissítése nem érhető el. A [patch](service-fabric-patch-orchestration-application.md) -összehangoló alkalmazás (csak a nem Azure-beli üzemeltetett fürtök esetében) *nem ajánlott* ezüst vagy nagyobb tartóssági szint esetén, ezért az egyetlen lehetőség a Windows-frissítések automatizálására Service Fabric frissítési tartományok tekintetében.
 
 > [!IMPORTANT]
-> A tartóssági szinttől függetlenül a [kiosztási](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) művelet futtatása a virtuálisgép-méretezési csoportokban megsemmisíti a fürtöt.
+> A tartóssági szinttől függetlenül a [kiosztási](/rest/api/compute/virtualmachinescalesets/deallocate) művelet futtatása a virtuálisgép-méretezési csoportokban megsemmisíti a fürtöt.
 
 ### <a name="bronze"></a>Bronz
 
@@ -182,7 +182,7 @@ Service Fabric [megbízható gyűjtemények vagy megbízható szereplők](servic
 
 Az állapot nélküli éles számítási feladatokhoz a minimálisan támogatott nem elsődleges csomópont típusának háromnak kell lennie a kvórum megőrzése érdekében, azonban a csomópont típusának mérete öt ajánlott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fürt konfigurálása előtt tekintse át a `Not Allowed` [fürt frissítési szabályzatait](service-fabric-cluster-fabric-settings.md) , hogy csökkentse a fürt ismételt létrehozását, mert a rendszer nem módosítható a rendszerkonfigurációs beállítások miatt.
 

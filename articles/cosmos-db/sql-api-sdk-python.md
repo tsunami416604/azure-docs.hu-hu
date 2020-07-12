@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: e70d7d1f2ca7aa0eeec08d69720e37c5be34f8ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bd880806a4b067139c1f22a0e4d4e6df5c88451
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391910"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247064"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK for SQL API: kibocsátási megjegyzések és erőforrások
 
@@ -134,7 +134,7 @@ ms.locfileid: "85391910"
 
 * Minden olyan művelet, amely elvégzi a `request_options` vagy a `feed_options` paramétereket, ezeket a rendszer áthelyezte a csak kulcsszavas paraméterekbe. Emellett, míg ezek a lehetőségek a szótárak továbbra is támogatottak, a szótárban lévő egyes beállítások mostantól explicit kulcsszó-argumentumként támogatottak.
 
-* A hiba-hierarchia mostantól örökölt a `azure.core.AzureError` helyett, amely el lett távolítva.
+* A hiba-hierarchia mostantól örökölt `azure.core.AzureError` :
 
   * A `HTTPFailure` új nevet kapott: `CosmosHttpResponseError`
   * `JSONParseFailure`el lett távolítva, és lecserélte`azure.core.DecodeError`
@@ -342,6 +342,6 @@ A szolgáltatás elutasítja a kivont SDK-val Azure Cosmos DBre irányuló kér�
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 

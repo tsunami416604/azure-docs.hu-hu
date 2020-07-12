@@ -1,33 +1,31 @@
 ---
 title: Rövid útmutató Azure Recovery Services-tároló létrehozásához egy Azure Resource Manager sablon használatával.
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Azure Recovery Services-tárolót egy Azure Resource Manager sablon használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Azure Recovery Services-tárolót egy Azure Resource Manager sablon (ARM-sablon) használatával.
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/29/2020
-author: davidsmatlak
-ms.author: v-dasmat
-ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9112841f6f07808d80fa2b8b61e612d57d0ec20e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217285"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86248825"
 ---
-# <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>Rövid útmutató: Recovery Services-tároló létrehozása Resource Manager-sablonnal
+# <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>Rövid útmutató: Recovery Services-tároló létrehozása ARM-sablonnal
 
-Ez a rövid útmutató azt ismerteti, hogyan állíthat be egy Recovery Services-tárolót egy Azure Resource Manager sablon használatával. Az [Azure site Recovery](site-recovery-overview.md) szolgáltatás hozzájárul az üzletmenet-folytonossági és a vész-helyreállítási (BCDR) stratégiához, így az üzleti alkalmazásai a tervezett és nem tervezett leállások során online maradnak. Site Recovery kezeli a helyszíni gépek és az Azure-beli virtuális gépek (VM) vész-helyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
+Ez a rövid útmutató azt ismerteti, hogyan állíthat be egy Recovery Services-tárolót egy Azure Resource Manager-sablon (ARM-sablon) használatával. Az [Azure site Recovery](site-recovery-overview.md) szolgáltatás hozzájárul az üzletmenet-folytonossági és a vész-helyreállítási (BCDR) stratégiához, így az üzleti alkalmazásai a tervezett és nem tervezett leállások során online maradnak. Site Recovery kezeli a helyszíni gépek és az Azure-beli virtuális gépek (VM) vész-helyreállítását, beleértve a replikálást, a feladatátvételt és a helyreállítást.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha nem rendelkezik aktív Azure-előfizetéssel, akkor a Kezdés előtt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Nincsenek.
+Ha nem rendelkezik aktív Azure-előfizetéssel, akkor a Kezdés előtt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
-
-### <a name="review-the-template"></a>A sablon áttekintése
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/)származik.
 
@@ -42,7 +40,7 @@ A sablon a tár biztonsági mentési konfigurációjához választható paramét
 
 Az Azure Recovery Services-sablonokkal kapcsolatos további információkért lásd: [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Recoveryservices&pageNumber=1&sort=Popular).
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 A sablon üzembe helyezéséhez az **előfizetés**, az **erőforráscsoport**és a tár **neve** szükséges.
 

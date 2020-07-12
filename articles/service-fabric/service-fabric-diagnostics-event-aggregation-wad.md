@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff13f8301274ebfc8b31dcbe01ef2a0fe6cd6fcc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846670"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247761"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és gyűjtése a Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -21,7 +21,7 @@ ms.locfileid: "85846670"
 
 Ha Azure Service Fabric-fürtöt futtat, érdemes összegyűjteni a naplókat egy központi helyen lévő összes csomópontról. A központi helyen található naplók segítségével elemezheti és elháríthatja a fürtben felmerülő problémákat, illetve a fürtben futó alkalmazások és szolgáltatások hibáit.
 
-A naplók feltöltésének és összegyűjtésének egyik módja a Windows Azure Diagnostics (WAD) bővítmény használata, amely a naplókat feltölti az Azure Storage-ba, és lehetővé teszi a naplók küldését az Azure-ba Application Insights vagy Event Hubs. Külső folyamattal is elolvashatja az eseményeket a tárolóból, és elhelyezheti azokat egy Analysis platform termékében, például [Azure monitor naplókban](../log-analytics/log-analytics-service-fabric.md) vagy egy másik naplózási megoldásban.
+A naplók feltöltésének és összegyűjtésének egyik módja a Windows Azure Diagnostics (WAD) bővítmény használata, amely a naplókat feltölti az Azure Storage-ba, és lehetővé teszi a naplók küldését az Azure-ba Application Insights vagy Event Hubs. Külső folyamattal is elolvashatja az eseményeket a tárolóból, és elhelyezheti azokat egy Analysis platform termékében, például [Azure monitor naplókban](./service-fabric-diagnostics-oms-setup.md) vagy egy másik naplózási megoldásban.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -31,7 +31,7 @@ A cikk a következő eszközöket használja:
 
 * [Azure Resource Manager](../azure-resource-manager/management/overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
-* [Azure Resource Manager-sablon](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Azure Resource Manager sablon](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 
 ## <a name="service-fabric-platform-events"></a>Service Fabric platform eseményei
 Service Fabric beállítja a beépített [naplózási csatornákat](service-fabric-diagnostics-event-generation-infra.md), amelyek a következő csatornákat előre konfigurálták a bővítménnyel, hogy a figyelési és diagnosztikai adatait egy Storage-táblába vagy máshová küldje el:
@@ -202,12 +202,12 @@ Mivel a bővítmény által kitöltött táblák a kvóta megtalálata előtt n�
 ## <a name="log-collection-configurations"></a>Napló-gyűjtemények konfigurációi
 A további csatornákból származó naplók is elérhetők gyűjteményként, íme néhány gyakori konfiguráció, amelyet az Azure-ban futó fürtök sablonjában tehet meg.
 
-* Operatív csatorna – alap: alapértelmezés szerint engedélyezve van a Service Fabric és a fürt által végrehajtott magas szintű műveletek, beleértve az esetlegesen megjelenő csomópontok eseményeit, egy új alkalmazás üzembe helyezését, vagy egy frissítés visszaállítását stb. Az események listáját az [operatív csatorna eseményei](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-operational)című rész tartalmazza.
+* Operatív csatorna – alap: alapértelmezés szerint engedélyezve van a Service Fabric és a fürt által végrehajtott magas szintű műveletek, beleértve az esetlegesen megjelenő csomópontok eseményeit, egy új alkalmazás üzembe helyezését, vagy egy frissítés visszaállítását stb. Az események listáját az [operatív csatorna eseményei](./service-fabric-diagnostics-event-generation-operational.md)című rész tartalmazza.
   
 ```json
       scheduledTransferKeywordFilter: "4611686018427387904"
   ```
-* Működési csatorna – részletes: Ez magában foglalja az állapotadatok és a terheléselosztási döntések, valamint az alapszintű működési csatorna összes adatát. Ezeket az eseményeket a rendszer vagy a kód hozza létre a Health vagy a Load Reporting API-k, például a [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) vagy a [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx)használatával. Ha ezeket az eseményeket a Visual Studio diagnosztikai Eseménynaplóban szeretné megtekinteni, adja hozzá a "Microsoft-ServiceFabric: 4:0x4000000000000008" kifejezést a ETW-szolgáltatók listájához.
+* Működési csatorna – részletes: Ez magában foglalja az állapotadatok és a terheléselosztási döntések, valamint az alapszintű működési csatorna összes adatát. Ezeket az eseményeket a rendszer vagy a kód hozza létre a Health vagy a Load Reporting API-k, például a [ReportPartitionHealth](/previous-versions/azure/reference/mt645153(v=azure.100)) vagy a [ReportLoad](/previous-versions/azure/reference/mt161491(v=azure.100))használatával. Ha ezeket az eseményeket a Visual Studio diagnosztikai Eseménynaplóban szeretné megtekinteni, adja hozzá a "Microsoft-ServiceFabric: 4:0x4000000000000008" kifejezést a ETW-szolgáltatók listájához.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387912"
@@ -296,7 +296,7 @@ Ha például az eseményforrás neve My-EventSource, adja hozzá a következő k
         }
 ```
 
-A teljesítményszámlálók és az eseménynaplók összegyűjtéséhez módosítsa a Resource Manager-sablont a [Windows rendszerű virtuális gép létrehozása figyelési és diagnosztikai funkciókkal Azure Resource Manager sablon segítségével](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ezután tegye közzé újra a Resource Manager-sablont.
+A teljesítményszámlálók és az eseménynaplók összegyűjtéséhez módosítsa a Resource Manager-sablont a [Windows rendszerű virtuális gép létrehozása figyelési és diagnosztikai funkciókkal Azure Resource Manager sablon segítségével](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json). Ezután tegye közzé újra a Resource Manager-sablont.
 
 ## <a name="collect-performance-counters"></a>Teljesítményszámlálók gyűjtése
 
@@ -351,14 +351,14 @@ Jelenleg a fürtből származó naplók **nyomkövetésként** jelennek meg Appl
 >[!NOTE]
 >Ha a portálon vagy a Resource Manager-sablonban helytelen Application Insights kulcsot használ, akkor manuálisan kell módosítania a kulcsot, és frissítenie kell a fürtöt, majd újra kell telepítenie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Diagnostics megfelelő konfigurálása után a ETW és a EventSource naplókból származó adatok jelennek meg a tároló tábláiban. Ha úgy dönt, hogy Azure Monitor naplókat, Kibana vagy bármely más adatelemzési és vizualizációs platformot használ, amely nem közvetlenül a Resource Manager-sablonban van konfigurálva, ügyeljen arra, hogy a kívánt platformot állítsa be a tárolási táblákból származó adatok olvasásához. Ezt Azure Monitor naplóknál viszonylag triviálisan használják, és az [esemény-és naplózási elemzésekben](service-fabric-diagnostics-event-analysis-oms.md)is ismertetjük. Application Insights ebben az értelemben egy kis különleges eset, mivel a diagnosztikai bővítmény konfigurációjának részeként konfigurálható, ezért a [megfelelő cikkben](service-fabric-diagnostics-event-analysis-appinsights.md) tájékozódhat, ha úgy dönt, hogy az AI-t használja.
 
 >[!NOTE]
 >Jelenleg nincs mód a táblába eljuttatott események szűrésére vagy a vőlegényre. Ha nem valósít meg eseményeket a táblából, a tábla továbbra is növekedni fog. Jelenleg a [watchdog mintában](https://github.com/Azure-Samples/service-fabric-watchdog-service)futó adatápolási szolgáltatásra van példa, ezért azt javasoljuk, hogy saját magának is írjon egyet, hacsak nem jó oka, hogy a naplókat 30 vagy 90 napos időkereten belül tárolja.
 
-* [Ismerje meg, hogyan gyűjthet teljesítményszámlálókat vagy naplókat a diagnosztikai bővítmény használatával](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Ismerje meg, hogyan gyűjthet teljesítményszámlálókat vagy naplókat a diagnosztikai bővítmény használatával](../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json)
 * [Események elemzése és vizualizáció Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Események elemzése és vizualizáció Azure Monitor naplókkal](service-fabric-diagnostics-event-analysis-oms.md)
 * [Események elemzése és vizualizáció Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)

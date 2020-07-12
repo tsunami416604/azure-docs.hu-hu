@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: f160910024d9d64d22028c72825b98d93f66f15d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ee58f6a2058158308cab8ec49b1d79587998d39
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390363"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86247030"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Gyakori kérdések a Azure Container Registry
 
@@ -32,7 +32,7 @@ Igen. Itt látható [egy olyan sablon](https://github.com/Azure/azure-quickstart
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Biztonsági rést okoz a rendszerképek keresése az ACR-ben?
 
-Igen. Tekintse meg a [Azure Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration), a [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) és az [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)dokumentációját.
+Igen. Tekintse meg a [Azure Security Center](../security-center/azure-container-registry-integration.md), a [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) és az [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)dokumentációját.
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Hogyan konfigurálja a Kubernetes-t a Azure Container Registrykal?
 
@@ -427,7 +427,7 @@ Ha a Microsoft Edge/IE böngészőt használja, legfeljebb 100 adattárat vagy c
 Előfordulhat, hogy a böngésző nem tudja elküldeni a tárolók vagy címkék kiszolgálónak való beolvasására vonatkozó kérést. Többek között a következők lehetnek:
 
 * Hálózati kapcsolat hiánya
-* Firewall
+* Tűzfal
 * Ad-blokkolók
 * DNS-hibák
 
@@ -436,8 +436,8 @@ Forduljon a hálózati rendszergazdához, vagy ellenőrizze a hálózati konfigu
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Miért sikertelen a lekéréses vagy leküldéses kérelem a nem engedélyezett művelettel?
 
 Íme néhány forgatókönyv, ahol a műveletek nem lehetnek engedélyezve:
-* A klasszikus kibocsátásiegység-forgalmi jegyzékek már nem támogatottak. Frissítsen egy támogatott [szolgáltatási szintre](https://aka.ms/acr/skus) az [az ACR update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) vagy a Azure Portal használatával.
-* Előfordulhat, hogy a rendszerkép vagy a tárház zárolva van, ezért nem törölhető vagy nem frissíthető. A jelenlegi attribútumok megtekintéséhez használja az az [ACR show adattár](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) parancsot.
+* A klasszikus kibocsátásiegység-forgalmi jegyzékek már nem támogatottak. Frissítsen egy támogatott [szolgáltatási szintre](https://aka.ms/acr/skus) az [az ACR update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) vagy a Azure Portal használatával.
+* Előfordulhat, hogy a rendszerkép vagy a tárház zárolva van, ezért nem törölhető vagy nem frissíthető. A jelenlegi attribútumok megtekintéséhez használja az az [ACR show adattár](./container-registry-image-lock.md) parancsot.
 * Néhány művelet nem engedélyezett, ha a rendszerkép karanténban van. További információ a [karanténba helyezésről](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 * Lehetséges, hogy a beállításjegyzék elérte a [tárolási korlátot](container-registry-skus.md#service-tier-features-and-limits).
 
@@ -501,10 +501,10 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 
 | Git szolgáltatás | Forrás kontextus | Manuális létrehozás | Automatikus létrehozás a commit trigger használatával |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Igen | Yes |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Igen | Yes |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | Nem |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | Nem |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Igen | Igen |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Igen | Igen |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Igen | Nem |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Igen | Nem |
 
 ## <a name="run-error-message-troubleshooting"></a>Hibaüzenetek futtatása – hibaelhárítás
 
@@ -517,6 +517,6 @@ Jelenleg nem támogatjuk a GitLab a forrás-eseményindítók esetében.
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
 - [GitHub-műveletek](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További](container-registry-intro.md) információ a Azure Container Registryról.

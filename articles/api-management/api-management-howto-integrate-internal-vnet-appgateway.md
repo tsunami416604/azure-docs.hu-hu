@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08e718739971283418d151bef9ad75333e313d85
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811173"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250430"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integrálása egy belső VNET Application Gateway
 
@@ -329,7 +330,7 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "rule2" -RuleType Bas
 
 ### <a name="step-11"></a>11. lépés
 
-Adja meg a példányok számát és a méretet a Application Gateway számára. Ebben a példában a [WAF SKU](../application-gateway/application-gateway-webapplicationfirewall-overview.md) -t használjuk a API Management erőforrás fokozott biztonsága érdekében.
+Adja meg a példányok számát és a méretet a Application Gateway számára. Ebben a példában a [WAF SKU](../web-application-firewall/ag/ag-overview.md) -t használjuk a API Management erőforrás fokozott biztonsága érdekében.
 
 ```powershell
 $sku = New-AzApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
@@ -367,9 +368,9 @@ A VNET konfigurált Azure API Management egyetlen átjáró felületet biztosít
 
 ## <a name="next-steps"></a><a name="next-steps"> </a> További lépések
 * További információ az Azure Application Gateway
-  * [Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md)
-  * [Webalkalmazási tűzfal Application Gateway](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
-  * [Application Gateway elérésiút-alapú útválasztás használatával](../application-gateway/application-gateway-create-url-route-arm-ps.md)
+  * [Application Gateway áttekintése](../application-gateway/overview.md)
+  * [Webalkalmazási tűzfal Application Gateway](../web-application-firewall/ag/ag-overview.md)
+  * [Application Gateway elérésiút-alapú útválasztás használatával](../application-gateway/tutorial-url-route-powershell.md)
 * További információ a API Management és a virtuális hálózatok
   * [A API Management csak a VNET-en keresztül érhető el](api-management-using-with-internal-vnet.md)
   * [API Management használata a VNET-ben](api-management-using-with-vnet.md)
