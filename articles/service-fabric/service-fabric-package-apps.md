@@ -3,11 +3,12 @@ title: Azure Service Fabric-alkalmazás becsomagolása
 description: Ismerje meg az Azure Service Fabric-alkalmazások csomagolását és a fürtre történő telepítés előkészítését ismertető témakört.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c00e46915c7bf147d224911ef4988d9fedd691c7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701047"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260974"
 ---
 # <a name="package-an-application"></a>Alkalmazás becsomagolása
 
@@ -210,7 +211,7 @@ Ezzel a beállítással nem kell átmásolni az alkalmazáscsomag a rendszerkép
 A `sfpkg` fájl egy olyan zip, amely tartalmazza a kezdeti alkalmazáscsomag, és a ". sfpkg" kiterjesztésű.
 A zip-ben az alkalmazáscsomag tömöríthető vagy tömörítetlen is lehet. A zip-ben lévő alkalmazáscsomag tömörítése a kód, a konfiguráció és az adatcsomag szintjén történik, ahogy azt [korábban említettük](service-fabric-package-apps.md#compress-a-package).
 
-A létrehozásához `sfpkg` kezdjen el egy olyan mappával, amely tartalmazza az eredeti alkalmazáscsomag tömörített vagy nem. Ezután a ". sfpkg" kiterjesztésű mappa zip-fájljának kitöltéséhez használjon bármilyen segédprogramot. Használja például a [ZipFile. CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx).
+A létrehozásához `sfpkg` kezdjen el egy olyan mappával, amely tartalmazza az eredeti alkalmazáscsomag tömörített vagy nem. Ezután a ". sfpkg" kiterjesztésű mappa zip-fájljának kitöltéséhez használjon bármilyen segédprogramot. Használja például a [ZipFile. CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
@@ -223,7 +224,7 @@ A csomag kiépítéséhez használja a külső kiépítés elemet, amelyhez a le
 >[!NOTE]
 > A rendszerkép-tároló relatív elérési útja alapján történő kiépítés jelenleg nem támogatja a `sfpkg` fájlokat. Ezért a `sfpkg` nem másolható a rendszerkép-tárolóba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [alkalmazások telepítése és eltávolítása című][10] témakör ismerteti, hogyan kezelheti az alkalmazás példányait a PowerShell használatával
 

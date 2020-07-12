@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70ae4a014768976c7dcf81ffadf1066027fa06ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 956934bd536d8eb5e692ed193cad1424929db24b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214281"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260765"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel
 
@@ -75,7 +76,7 @@ A következőképpen telepítheti újra a Azure Resource Manager sablont a gazda
 
 Kövesse az [alkalmazáskészlet létrehozása az Azure Marketplace](create-host-pools-azure-marketplace-2019.md) -en című témakör utasításait, amíg el nem éri [Az Azure Marketplace-ajánlat futtatását az új címkészlet](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)kiépítéséhez. Amikor erre a pontra kerül, meg kell adnia az alábbi adatokat az egyes lapokon:
 
-### <a name="basics"></a>Alapvető beállítások
+### <a name="basics"></a>Alapbeállítások
 
 Az ebben a szakaszban szereplő összes értéknek egyeznie kell azzal, amit a gazdagép és a munkamenet-gazda virtuális gépei első létrehozásakor adott meg, kivéve az *alapértelmezett asztali felhasználók*számára:
 
@@ -125,11 +126,11 @@ Az ebben a szakaszban szereplő összes paraméternek meg kell egyeznie a gazdag
 
 Kövesse a [Azure Resource Manager sablon futtatása új címkészlet kiépítési céljára](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool) című témakör utasításait, és adja meg az összes azonos paraméter-értéket, kivéve a *Rdsh-példányok számát*. A sablon futtatása után adja meg a gazdagép-készletben használni kívánt munkamenet-gazda virtuális gépek számát. Ha például öt munkamenet-gazdagépről nyolcra bővíti a gazdagép-készletet, írja be a **8**értéket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy kibontotta a meglévő gazdagép-készletet, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, és tesztelheti őket egy felhasználói munkamenet részeként. Csatlakozhat egy munkamenethez a következő ügyfelek bármelyikével:
 
-- [Kapcsolódás a Windows asztali ügyféllel](../connect-windows-7-and-10.md)
+- [Kapcsolódás a Windows asztali ügyféllel](connect-windows-7-10-2019.md)
 - [Kapcsolódás a webügyféllel](connect-web-2019.md)
 - [Kapcsolódás az Android-ügyféllel](connect-android-2019.md)
 - [Kapcsolódás a macOS-ügyfélhez](connect-macos-2019.md)

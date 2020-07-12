@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: edoyle
 ms.date: 04/24/2020
-ms.openlocfilehash: 1cb6dc56a5d4fa975f68c1dea08920a7c7db3904
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 70b5387e5e58bd30aa61feefc1bf4e5e98af9b1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119497"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259345"
 ---
 # <a name="quickstart-create-a-service-fabric-cluster-using-arm-template"></a>Rövid útmutató: Service Fabric-fürt létrehozása ARM-sablonnal
 
@@ -36,7 +36,7 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 * Telepítse a [Service FABRIC SDK-t és a PowerShell-modult](service-fabric-get-started.md).
 
-* Telepítse a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Telepítse a [Azure PowerShell](/powershell/azure/install-az-ps).
 
 ### <a name="download-the-sample-template-and-certificate-helper-script"></a>A sablon és a tanúsítvány segítő parancsfájl letöltése
 
@@ -170,7 +170,7 @@ A Service Fabric Explorer végpontot a Service Explorer erőforrás paneljéről
 
 ![Service Fabric Explorer végpontot mutató Service Fabric erőforrás panel](./media/quickstart-cluster-template/service-fabric-explorer-endpoint-azure-portal.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, amely törli az erőforráscsoport erőforrásait.
 

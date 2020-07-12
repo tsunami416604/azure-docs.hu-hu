@@ -24,6 +24,8 @@
   items:
     - name: Csatlakozás Windows Virtual Desktop erőforrásaihoz
       items:
+        - name: Kapcsolódás a Windows asztali ügyféllel
+          href: connect-windows-7-10-2019.md
         - name: Kapcsolódás a webügyféllel
           href: connect-web-2019.md
         - name: Kapcsolódás az Android-ügyféllel

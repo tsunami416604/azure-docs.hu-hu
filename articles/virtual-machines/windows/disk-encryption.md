@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: d0625c817703fe5d5645bcfdab962591cb184ae2
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 0bb0fb268d18ddc152dae45014e2154686762976
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232729"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259838"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage kiszolgálóoldali titkosítása
 
@@ -82,11 +82,11 @@ A fokozott biztonságú bizalmas ügyfelek, akik az adott titkosítási algoritm
 > Az ügyfél által felügyelt kulcsok az Azure-erőforrások felügyelt identitásait, Azure Active Directory (Azure AD) funkcióját használják. Az ügyfél által felügyelt kulcsok konfigurálásakor a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alá tartozó erőforrásokhoz. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a felügyelt lemezt egyik Azure AD-címtárból a másikba, a felügyelt lemezekhez társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok nem fognak működni. További információ: [előfizetés továbbítása az Azure ad-címtárak között](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Gazdagép-alapú titkosítás engedélyezése](disks-enable-host-based-encryption-powershell.md)
-- [Azure PowerShell – a kettős titkosítás engedélyezése a REST által felügyelt lemezeken](disks-enable-double-encryption-at-rest-powershell.md)
-- [Ügyfél által felügyelt kulcsok engedélyezése a felügyelt lemezhez – PowerShell](disks-enable-customer-managed-keys-powershell.md)
-- [Az ügyfél által felügyelt kulcsok – felügyelt lemezek engedélyezése](disks-enable-customer-managed-keys-portal.md)
+- [Végpontok közötti titkosítás engedélyezése titkosítással a gazdagépen – PowerShell](disks-enable-host-based-encryption-powershell.md)
+- [A kettős titkosítás engedélyezése a felügyelt lemezeken – PowerShell](disks-enable-double-encryption-at-rest-powershell.md)
+- [Ügyfél által felügyelt kulcsok engedélyezése a felügyelt lemezekhez – PowerShell](disks-enable-customer-managed-keys-powershell.md)
+- [Ügyfél által felügyelt kulcsok engedélyezése a felügyelt lemezekhez – portál](disks-enable-customer-managed-keys-portal.md)
 - [Az ügyfél által felügyelt kulcsokkal rendelkező titkosított lemezek létrehozásához Azure Resource Manager-sablonok megismerése](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Mi az Azure Key Vault?](../../key-vault/general/overview.md)

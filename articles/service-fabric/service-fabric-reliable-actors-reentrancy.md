@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 100cf1f7bf8a0c903cfd61d93d2f923c32cabd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645531"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260958"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors újbóli belépés
 A Reliable Actors futtatókörnyezet alapértelmezés szerint lehetővé teszi a logikai hívás kontextus-alapú újbóli belépés. Ez lehetővé teszi, hogy a szereplők újra bejelentkeznek, ha ugyanabban a hívási környezeti láncban vannak. Az A-Actor például üzenetet küld a B színésznek, aki üzenetet küld a C-nek. Az üzenet feldolgozásának részeként, ha a színész A "A" résztvevőt hívja meg, az üzenet újra bejelentkező, így engedélyezve lesz. A másik hívási környezet részét képező más üzeneteket a rendszer letiltja a (z)
@@ -100,5 +101,5 @@ static class Program
 ```
 
 
-## <a name="next-steps"></a>További lépések
-* További információ a újbóli belépés a [Actor API-dokumentációjában](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+## <a name="next-steps"></a>Következő lépések
+* További információ a újbóli belépés a [Actor API-dokumentációjában](/previous-versions/azure/dn971626(v=azure.100))

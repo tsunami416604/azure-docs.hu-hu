@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: be0e24977bbb1aeec74e8847b3fb128267a9ec0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392233"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259443"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -42,7 +42,7 @@ További információ: [Azure Machine learning erőforrások és munkafolyamatok
 
 Azure Machine Learning a következő két hitelesítési módszert támogatja a webszolgáltatások esetében: kulcs és jogkivonat. Az egyes webszolgáltatások egyszerre csak egy hitelesítési űrlapot tudnak engedélyezni.
 
-|Hitelesítési módszer|Description|Azure Container Instances|AKS|
+|Hitelesítési módszer|Leírás|Azure Container Instances|AKS|
 |---|---|---|---|
 |Kulcs|A kulcsok statikusak, és nem kell frissíteni. A kulcsok újragenerálása manuálisan végezhető el.|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezett|
 |Jogkivonat|A tokenek a megadott időszak után lejárnak, és frissíteni kell őket.| Nem érhető el| Alapértelmezés szerint letiltva |
@@ -111,16 +111,21 @@ Az Azure Private-hivatkozást is engedélyezheti a munkaterülethez. A privát h
 
 ## <a name="data-encryption"></a>Adattitkosítás
 
+> [!IMPORTANT]
+> Az éles környezetben való titkosításhoz __a Microsoft__Azure Machine learning számítási fürt használatát javasolja. A Microsoft az Azure Kubernetes Service használatát javasolja az éles környezetbeli adattitkosításhoz a __következtetések__során.
+>
+> Azure Machine Learning számítási példány fejlesztési és tesztelési környezet. A használatakor azt javasoljuk, hogy a fájlokat, például jegyzetfüzeteket és parancsfájlokat egy fájlmegosztás tárolja. Az adatait adattárban kell tárolni.
+
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
 > [!IMPORTANT]
 > Ha a munkaterület bizalmas adatokat tartalmaz, javasoljuk, hogy a munkaterület létrehozásakor a [hbi_workspace jelzőt](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) állítsa be. 
 
-A `hbi_workspace` jelző szabályozza a Microsoft által diagnosztikai célokra gyűjtött adatok mennyiségét, és lehetővé teszi a további titkosítást a Microsoft által felügyelt környezetekben. Emellett a következőket teszi lehetővé:
+A `hbi_workspace` jelző szabályozza a Microsoft által diagnosztikai célokra gyűjtött adatok mennyiségét, és lehetővé teszi a további titkosítást a Microsoft által felügyelt környezetekben. Emellett a következő műveleteket is lehetővé teszi:
 
-* Elindítja a Amlcompute-fürtben lévő helyi leválasztó lemez titkosítását, ha még nem hozott létre egy korábbi fürtöt az előfizetésben. Más esetben egy támogatási jegyet kell létrehoznia, amely lehetővé teszi a számítási fürtökhöz tartozó kaparós lemez titkosítását 
-* A helyi kaparós lemez tisztítása a futtatások között
-* Biztonságos módon továbbítja a Storage-fiók, a tároló-beállításjegyzék és az SSH-fiók hitelesítő adatait a végrehajtási rétegből a kulcstárolóban lévő számítási fürtökre
+* Megkezdi a helyi lemez titkosítását a Azure Machine Learning számítási fürtben, ha nem hozott létre egy korábbi fürtöt az előfizetésben. Más esetben egy támogatási jegyet kell létrehoznia, amely lehetővé teszi a számítási fürtökhöz tartozó kaparós lemez titkosítását 
+* Kiüríti az ideiglenes lemezt a futtatások között
+* Biztonságosan továbbítja a Storage-fiók, a tároló-beállításjegyzék és az SSH-fiók hitelesítő adatait a végrehajtási rétegből a kulcstartó használatával a számítási fürtökbe
 * Engedélyezi az IP-szűrést annak érdekében, hogy a mögöttes batch-készletek ne legyenek meghívva a AzureMachineLearningService-től eltérő külső szolgáltatásokkal.
 
 
@@ -228,7 +233,7 @@ Azure Databricks használható Azure Machine Learning folyamatokban. Alapértelm
 
 A Azure Machine Learning a TLS-t használja a különböző Azure Machine Learning-szolgáltatások közötti belső kommunikáció biztonságossá tételéhez. Az Azure Storage összes hozzáférése egy biztonságos csatornán is megtörténik.
 
-A pontozási végpont Azure Machine Learning a TLS protokollt használja a külső hívások biztonságossá tételéhez. További információkért lásd: [webszolgáltatások biztonságossá tétele a TLS használatával Azure Machine Learningon keresztül](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
+A pontozási végponton végzett külső hívások biztonságossá tételéhez Azure Machine Learning a TLS protokollt használja. További információkért lásd: [webszolgáltatások biztonságossá tétele a TLS használatával Azure Machine Learningon keresztül](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service).
 
 ### <a name="using-azure-key-vault"></a>Azure Key Vault használata
 
@@ -258,9 +263,9 @@ Ha olyan szolgáltatásokat használ, mint például az automatizált Machine Le
 
 Érdemes lehet titkosítani az [üzembe helyezett végpontból naplózott diagnosztikai adatokat](how-to-enable-app-insights.md) az Azure Application Insights-példányba.
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Monitorozás
 
-### <a name="metrics"></a>Mérőszámok
+### <a name="metrics"></a>Metrikák
 
 Azure Monitor metrikák használatával megtekintheti és figyelheti a Azure Machine Learning munkaterület metrikáit. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet, majd válassza a **metrikák**elemet:
 
@@ -322,7 +327,7 @@ Az Azure Machine Learning munkaterülethez tartozó könyvtárak (kísérletek) 
 
 [![Kód pillanatkép-munkafolyamata](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
 
-### <a name="training"></a>Képzés
+### <a name="training"></a>Betanítás
 
 Az alábbi ábra a betanítási munkafolyamatot mutatja be.
 
@@ -364,7 +369,7 @@ A részletek a következők:
 
 [![Következtetési munkafolyamat](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing-expanded.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Biztonságos Azure Machine Learning webszolgáltatások TLS-vel](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett Machine Learning-modell felhasználása](how-to-consume-web-service.md)

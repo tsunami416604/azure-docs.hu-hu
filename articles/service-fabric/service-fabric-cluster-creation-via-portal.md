@@ -3,17 +3,17 @@ title: Service Fabric-fürt létrehozása az Azure Portalon
 description: Ismerje meg, hogyan állíthat be biztonságos Service Fabric-fürtöt az Azure-ban a Azure Portal és a Azure Key Vault használatával.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: eeadfcf24ad2448c845f3d612247686347600001
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b47f3b756ef4d012b41fd15686ffc08ab54fc187
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611152"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259321"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban a Azure Portal használatával
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure Portalra](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -121,7 +121,7 @@ Konfigurálja a fürtcsomópontok konfigurációját. A csomópontok típusai ha
 ### <a name="3-security"></a>3. biztonság
 ![Képernyőkép a Azure Portal biztonsági beállításairól.][BasicSecurityConfigs]
 
-A biztonságos tesztelési fürt létrehozásához egyszerűen biztosítjuk az **alapszintű** lehetőséget. Ha már rendelkezik tanúsítvánnyal, és feltölti a [kulcstartóba](/azure/key-vault/) (és engedélyezte a kulcstartót az üzembe helyezéshez), használja az **Egyéni** lehetőséget.
+A biztonságos tesztelési fürt létrehozásához egyszerűen biztosítjuk az **alapszintű** lehetőséget. Ha már rendelkezik tanúsítvánnyal, és feltölti a [kulcstartóba](../key-vault/index.yml) (és engedélyezte a kulcstartót az üzembe helyezéshez), használja az **Egyéni** lehetőséget.
 
 #### <a name="basic-option"></a>Alapszintű beállítás
 A képernyők használatával hozzáadhat vagy felhasználhat egy meglévő kulcstartót, és hozzáadhat egy tanúsítványt. A tanúsítvány hozzáadása szinkron folyamat, ezért meg kell várnia a tanúsítvány létrehozását.
@@ -173,7 +173,7 @@ Most már készen áll a fürt üzembe helyezésére. Mielőtt ezt megtenné, t�
 
 A fürt létrehozásának befejezéséhez kattintson a **Létrehozás**gombra. Igény szerint letöltheti a sablont.
 
-![Összefoglalás]
+![Összegzés]
 
 A létrehozás folyamatát az értesítésekben követheti nyomon. (Kattintson a "harang" ikonra a képernyő jobb felső sarkában található állapotjelző sáv közelében.) Ha a fürt létrehozásakor a **rögzítés a kezdőpulton** elemre kattintott, akkor a **Service Fabric-fürt üzembe helyezése** a **kezdőképernyőn** rögzített állapotban jelenik meg. Ez a folyamat hosszabb időt is igénybe vehet. 
 
@@ -198,11 +198,11 @@ A fürt irányítópult paneljének **csomópont-figyelő** szakasza a kifogást
 ## <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli kapcsolódás virtuálisgép-méretezési csoport példányaihoz vagy fürtcsomóponton
 A fürtben megadott NodeTypes mindegyike egy virtuálisgép-méretezési csoportba kerül, amely beállítja a beállítását. <!--See [Remote connect to a Virtual Machine Scale Set instance][remote-connect-to-a-vm-scale-set] for details. -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ezen a ponton van egy biztonságos fürt, amely tanúsítványokat használ a felügyeleti hitelesítéshez. Ezután [kapcsolódjon a fürthöz](service-fabric-connect-to-secure-cluster.md) , és Ismerje meg, hogyan [kezelheti az alkalmazási titkokat](service-fabric-application-secret-management.md).  Emellett megismerheti [Service Fabric támogatási lehetőségeit](service-fabric-support.md).
 
 <!-- Links -->
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 [azure-portal]: https://portal.azure.com/
 [key-vault-get-started]: ../key-vault/general/overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md

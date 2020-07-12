@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: a3b2f7c22c1afd0a24aafa3bcd9dc9a6c3f725f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392573"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260189"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Az Azure Service Fabric-összetevők rendszerállapot-jelentéseket biztosítanak a fürtben lévő összes entitáshoz, közvetlenül a jelölőnégyzetből. A [Health Store](service-fabric-health-introduction.md#health-store) a rendszerjelentések alapján hozza létre és törli az entitásokat. Azt is megszervezi egy hierarchiában, amely rögzíti az entitások interakcióit.
@@ -73,17 +74,17 @@ A vetőmag-csomópont állapotára vonatkozó figyelmeztetési jelentés felsoro
 * **Következő lépések**: Ha ez a figyelmeztetés a fürtben jelenik meg, kövesse az alábbi utasításokat a kijavításához: Service Fabric 6,5-es vagy újabb verzióját futtató fürt esetén: az Azure-beli Service Fabric-fürtön a magok csomópontjának leállása után a Service Fabric megkísérli a nem magot futtató csomópontok automatikus módosítását. Ennek elvégzéséhez győződjön meg arról, hogy az elsődleges csomópont típusában lévő nem Seed csomópontok száma nagyobb vagy egyenlő a lefelé irányuló mag csomópontjainak számával. Ha szükséges, vegyen fel további csomópontokat az elsődleges csomópont-típusba ennek eléréséhez.
 A fürt állapotától függően eltarthat egy ideig a probléma megoldásában. Ha ez megtörtént, a rendszer automatikusan törli a figyelmeztetési jelentést.
 
-Service Fabric önálló fürt esetében a figyelmeztetési jelentés törléséhez az összes vetőmag-csomópontnak Kifogástalan állapotba kell állítania. Attól függően, hogy a magok miért nem kifogástalanok, különböző műveleteket kell végrehajtania: Ha a mag csomópontja nem működik, a felhasználóknak be kell állítania a mag csomópontot; Ha a vetőmag-csomópont el van távolítva vagy ismeretlen, akkor ezt a vetőmag-csomópontot [el kell távolítani a fürtből](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes).
+Service Fabric önálló fürt esetében a figyelmeztetési jelentés törléséhez az összes vetőmag-csomópontnak Kifogástalan állapotba kell állítania. Attól függően, hogy a magok miért nem kifogástalanok, különböző műveleteket kell végrehajtania: Ha a mag csomópontja nem működik, a felhasználóknak be kell állítania a mag csomópontot; Ha a vetőmag-csomópont el van távolítva vagy ismeretlen, akkor ezt a vetőmag-csomópontot [el kell távolítani a fürtből](./service-fabric-cluster-windows-server-add-remove-nodes.md).
 A figyelmeztetési jelentés automatikusan törlődik, amikor az összes vetőmag-csomópont Kifogástalan állapotba kerül.
 
 A 6,5-nál régebbi Service Fabric verziót futtató fürtök esetében: ebben az esetben a figyelmeztetési jelentést manuálisan kell törölni. **A jelentés törlése előtt győződjön meg arról, hogy az összes mag-csomópont kifogástalan**állapotba kerül: Ha a magok csomópontja nem működik, a felhasználóknak el kell érniük a mag csomópontot; ha a vetőmag-csomópontot eltávolítja vagy ismeretlen, a vetőmag-csomópontot el kell távolítani a fürtből.
-Miután az összes vetőmag-csomópont Kifogástalan állapotba került, a Powershellből a következő parancs használatával [törölje a figyelmeztetési jelentést](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
+Miután az összes vetőmag-csomópont Kifogástalan állapotba került, a Powershellből a következő parancs használatával [törölje a figyelmeztetési jelentést](/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
 
 ## Node system health reports
-System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
+System.FM, which represents the Failover Manager service, is the authority that manages information about cluster nodes. Each node should have one report from System.FM showing its state. The node entities are removed when the node state is removed. For more information, see [RemoveNodeStateAsync](/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).
 
 ### Node up/down
 System.FM reports as OK when the node joins the ring (it's up and running). It reports an error when the node departs the ring (it's down, either for upgrading or simply because it has failed). The health hierarchy built by the health store acts on deployed entities in correlation with System.FM node reports. It considers the node a virtual parent of all deployed entities. The deployed entities on that node are exposed through queries if the node is reported as up by System.FM, with the same instance as the instance associated with the entities. When System.FM reports that the node is down or restarted, as a new instance, the health store automatically cleans up the deployed entities that can exist only on the down node or on the previous instance of the node.
@@ -674,7 +675,7 @@ A **System. replikátor** figyelmeztetést küld, ha a replikációs várólista
 * **Tulajdonság**: **PrimaryReplicationQueueStatus** vagy **SecondaryReplicationQueueStatus**, a replika szerepkörtől függően.
 
 ### <a name="slow-naming-operations"></a>Lassú elnevezési műveletek
-A **System. NamingService** az elsődleges replikájának állapotát jelzi, ha az elnevezési művelet hosszabb időt vesz igénybe. Példák az elnevezési műveletekre: [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) vagy [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). További módszerek találhatók a FabricClient alatt. Ezek lehetnek például a [Service Management metódusok](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient) vagy a [Tulajdonságok felügyeleti módszerei](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)alatt.
+A **System. NamingService** az elsődleges replikájának állapotát jelzi, ha az elnevezési művelet hosszabb időt vesz igénybe. Példák az elnevezési műveletekre: [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) vagy [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). További módszerek találhatók a FabricClient alatt. Ezek lehetnek például a [Service Management metódusok](/dotnet/api/system.fabric.fabricclient.servicemanagementclient) vagy a [Tulajdonságok felügyeleti módszerei](/dotnet/api/system.fabric.fabricclient.propertymanagementclient)alatt.
 
 > [!NOTE]
 > Az elnevezési szolgáltatás a fürt egyik helyére oldja fel a szolgáltatás nevét. A felhasználók a szolgáltatás nevét és tulajdonságait kezelhetik. Ez egy Service Fabric particionált megőrzött szolgáltatás. Az egyik partíció a *hatóság tulajdonosát*jelöli, amely a Service Fabric nevekkel és szolgáltatásokkal kapcsolatos metaadatokat tartalmaz. A Service Fabric neveket a rendszer a különböző partíciók, *nevük tulajdonosa* partíciók néven rendeli hozzá, így a szolgáltatás bővíthető. További információ az [elnevezési szolgáltatásról](service-fabric-architecture.md).
@@ -871,7 +872,7 @@ A System. hosting figyelmeztetést küld, ha a fürt jegyzékfájljában nincs d
 * **Tulajdonság**: **ResourceGovernance**.
 * **Következő lépések**: a probléma megoldásának előnyben részesített módja a fürt jegyzékfájljának módosítása az elérhető erőforrások automatikus észlelésének engedélyezéséhez. Egy másik lehetőség a fürt jegyzékfájljának frissítése a metrikák megfelelően megadott csomópont-kapacitása alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Service Fabric állapottal kapcsolatos jelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
 
 * [A szolgáltatás állapotának jelentése és ellenõrzése](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
@@ -879,4 +880,3 @@ A System. hosting figyelmeztetést küld, ha a fürt jegyzékfájljában nincs d
 * [A szolgáltatások helyi figyelése és diagnosztikája](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 * [Service Fabric alkalmazás frissítése](service-fabric-application-upgrade.md)
-

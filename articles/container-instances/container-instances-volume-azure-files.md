@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan csatlakoztathat Azure Files kötetet az állapo
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: 593400f67db5018f1533dd37eed88ece7fd596c6
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: eaf5e0704ba2ea4f0e0a30d61e4ae1d2ad1bf58d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169578"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259470"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure-fájlmegosztás csatlakoztatása az Azure Container Instancesben
 
@@ -223,11 +223,11 @@ Ahogy az előző példákban is látható, az `dnsNameLabel` értéknek egyedine
 }
 ```
 
-A Resource Manager-sablonnal történő üzembe helyezéshez mentse az előző JSON-fájlt egy nevű fájlba `deploy-aci.json` , majd hajtsa végre az az [Group Deployment Create][az-group-deployment-create] parancsot a következő `--template-file` paraméterrel:
+A Resource Manager-sablonnal történő üzembe helyezéshez mentse az előző JSON-fájlt egy nevű fájlba `deploy-aci.json` , majd hajtsa végre az az [üzembe helyezési csoport létrehozása][az-deployment-group-create] parancsot a következő `--template-file` paraméterrel:
 
 ```azurecli
 # Deploy with Resource Manager template
-az group deployment create --resource-group myResourceGroup --template-file deploy-aci.json
+az deployment group create --resource-group myResourceGroup --template-file deploy-aci.json
 ```
 
 
@@ -269,7 +269,7 @@ Ezután a tároló csoport minden olyan tárolójában, amelyben a köteteket cs
 }]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További mennyiségi típusok csatlakoztatása a Azure Container Instancesban:
 
@@ -285,4 +285,4 @@ További mennyiségi típusok csatlakoztatása a Azure Container Instancesban:
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-container-show]: /cli/azure/container#az-container-show
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create

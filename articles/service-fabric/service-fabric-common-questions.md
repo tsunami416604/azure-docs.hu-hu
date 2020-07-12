@@ -4,11 +4,12 @@ description: Gyakori kérdések a Service Fabricről, beleértve a képességeke
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 056ff2475e0ae8c78887e24e07a3e33f12d7df88
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78254885"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258948"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric – GYIK
 
@@ -21,9 +22,9 @@ Számos gyakran feltett kérdés arról, hogy mit tehet, és hogyan használhat�
 
 ### <a name="how-do-i-roll-back-my-service-fabric-cluster-certificate"></a>Hogyan vissza a Service Fabric-fürt tanúsítványát?
 
-Az alkalmazásra való frissítés visszagörgetéséhez az Service Fabric fürt kvóruma előtt a módosítás véglegesítése előtt állapot-meghibásodás észlelése szükséges. a véglegesített módosításokat csak előre lehet görgetni. A eszkalációs mérnök az ügyfél-támogatási szolgáltatásokon keresztül szükséges lehet a fürt helyreállításához, ha a nem figyelt feltörési tanúsítvány megváltozása be lett vezetve.  [Service Fabric alkalmazásának frissítése](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade?branch=master) az [alkalmazás frissítési paramétereit](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master)alkalmazza, és nulla állásidő-frissítési ígéretet biztosít.  Az ajánlott alkalmazás-frissítési figyelt üzemmódot követve a frissítési tartományokon keresztüli automatikus előrehaladás az állapot-ellenőrzéseken alapul, az alapértelmezett szolgáltatás frissítése esetén pedig automatikusan visszagörgethető.
+Az alkalmazásra való frissítés visszagörgetéséhez az Service Fabric fürt kvóruma előtt a módosítás véglegesítése előtt állapot-meghibásodás észlelése szükséges. a véglegesített módosításokat csak előre lehet görgetni. A eszkalációs mérnök az ügyfél-támogatási szolgáltatásokon keresztül szükséges lehet a fürt helyreállításához, ha a nem figyelt feltörési tanúsítvány megváltozása be lett vezetve.  [Service Fabric alkalmazásának frissítése](./service-fabric-application-upgrade.md?branch=master) az [alkalmazás frissítési paramétereit](./service-fabric-application-upgrade-parameters.md?branch=master)alkalmazza, és nulla állásidő-frissítési ígéretet biztosít.  Az ajánlott alkalmazás-frissítési figyelt üzemmódot követve a frissítési tartományokon keresztüli automatikus előrehaladás az állapot-ellenőrzéseken alapul, az alapértelmezett szolgáltatás frissítése esetén pedig automatikusan visszagörgethető.
  
-Ha a fürt továbbra is kihasználja a klasszikus tanúsítvány ujjlenyomatát a Resource Manager-sablonban, javasoljuk, hogy a modern titkok kezelési funkcióinak kihasználásához [módosítsa a fürtet a tanúsítvány ujjlenyomatáról a köznapi névre](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn).
+Ha a fürt továbbra is kihasználja a klasszikus tanúsítvány ujjlenyomatát a Resource Manager-sablonban, javasoljuk, hogy a modern titkok kezelési funkcióinak kihasználásához [módosítsa a fürtet a tanúsítvány ujjlenyomatáról a köznapi névre](./service-fabric-cluster-change-cert-thumbprint-to-cn.md).
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Létrehozhatok olyan fürtöt, amely több Azure-régióra vagy saját adatközpontra is kiterjed?
 
@@ -40,7 +41,7 @@ Néhány megfontolandó szempont:
 
 ### <a name="do-service-fabric-nodes-automatically-receive-os-updates"></a>Az Service Fabric-csomópontok automatikusan kapják meg az operációs rendszer frissítéseit?
 
-A virtuálisgép- [méretezési csoport automatikus operációs rendszer rendszerképének frissítése](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) általánosan elérhető funkcióként érhető el.
+A virtuálisgép- [méretezési csoport automatikus operációs rendszer rendszerképének frissítése](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) általánosan elérhető funkcióként érhető el.
 
 Az Azure-ban nem futtatott fürtök esetében [biztosítunk egy alkalmazást](service-fabric-patch-orchestration-application.md) a Service Fabric-csomópontok alatti operációs rendszerek javításához.
 
@@ -125,7 +126,7 @@ Nem. Az alacsony prioritású virtuális gépek nem támogatottak.
 Az alábbi módszer azt jelenti, hogy az alkalmazás a kulcstartóhoz való hitelesítéshez hitelesítő adatokat kér:
 
 A. Az alkalmazások felépítési/csomagolási feladataként lekérhet egy tanúsítványt az SF alkalmazás adatcsomagjába, és ezzel hitelesítheti a kulcstartót.
-B. A virtuálisgép-méretezési csoport MSI-kompatibilis gazdagépei esetében létrehozhat egy egyszerű PowerShell-SetupEntryPoint az SF-alkalmazáshoz, amely [hozzáférési tokent kap az MSI-végponttól](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token), majd [lekéri a titkos kulcsokat](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)a kulcstartóból.
+B. A virtuálisgép-méretezési csoport MSI-kompatibilis gazdagépei esetében létrehozhat egy egyszerű PowerShell-SetupEntryPoint az SF-alkalmazáshoz, amely [hozzáférési tokent kap az MSI-végponttól](../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md), majd [lekéri a titkos kulcsokat](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)a kulcstartóból.
 
 ## <a name="application-design"></a>Alkalmazás kialakítása
 
@@ -176,10 +177,10 @@ A tárolók egyszerű módszert biztosítanak a szolgáltatások és a függős�
 
 Nyílt forráskódú Service Fabric ([megbízható szolgáltatások keretrendszere](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [megbízható szereplők keretrendszere](https://github.com/Azure/service-fabric-services-and-actors-dotnet), [ASP.net Core integrációs kódtárak](https://github.com/Azure/service-fabric-aspnetcore), [Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)és [Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) találhatók a githubon, és közösségi hozzájárulásokat fogadhatnak ezekhez a projektekhez. 
 
-[Nemrég bejelentettük](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/) , hogy a Service Fabric futtatókörnyezet nyílt forráskódú. Ezen a ponton a GitHubon a Linux Build-és tesztelési eszközeivel is rendelkezünk a [Service Fabric](https://github.com/Microsoft/service-fabric/) -tárházban, ami azt jelenti, hogy a tárház klónozása, a Linux-alapú Service Fabric, az alapszintű tesztek futtatása, a nyílt problémák és a lekéréses kérelmek elküldése Keményen dolgozunk a Windows-Build környezet áttelepítésének és a teljes körű CI-környezetnek a beszerzésével.
+[Nemrég bejelentettük](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) , hogy a Service Fabric futtatókörnyezet nyílt forráskódú. Ezen a ponton a GitHubon a Linux Build-és tesztelési eszközeivel is rendelkezünk a [Service Fabric](https://github.com/Microsoft/service-fabric/) -tárházban, ami azt jelenti, hogy a tárház klónozása, a Linux-alapú Service Fabric, az alapszintű tesztek futtatása, a nyílt problémák és a lekéréses kérelmek elküldése Keményen dolgozunk a Windows-Build környezet áttelepítésének és a teljes körű CI-környezetnek a beszerzésével.
 
-További részletekért tekintse meg a [Service Fabric blogot](https://blogs.msdn.microsoft.com/azureservicefabric/) .
+További részletekért tekintse meg a [Service Fabric blogot](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg az [alapszintű Service Fabric fogalmakat](service-fabric-technical-overview.md) és az [ajánlott eljárásokat](service-fabric-best-practices-overview.md)

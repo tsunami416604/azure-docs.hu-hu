@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: a42797b51d811ee9427c9b77f8ea59a24c00feee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba6474751913b4994ae840f77577b3c1db6c5f73
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83827964"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259289"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Serveren futó különálló fürt létrehozása
 Az Azure Service Fabric használatával Service Fabric-fürtöket hozhat létre a Windows Servert futtató virtuális gépeken vagy számítógépeken. Ez azt jelenti, hogy Service Fabric alkalmazásokat bármely olyan környezetben telepítheti és futtathatja, amely összekapcsolt Windows Server-számítógépeket, illetve helyszíni vagy bármilyen felhőalapú szolgáltatót tartalmaz. A Service Fabric egy önálló Windows Server-csomagot tartalmazó Service Fabric-fürtök létrehozására szolgáló telepítőcsomagot biztosít. Az Azure-beli hagyományos Service Fabric-fürtök felügyelt szolgáltatásként érhetők el, míg a különálló Service Fabric-fürtök önkiszolgáló szolgáltatások. További információ a különbségekről: az [Azure és az önálló Service Fabric-fürtök összehasonlítása](./service-fabric-deploy-anywhere.md).
@@ -24,10 +25,10 @@ Ez a cikk végigvezeti a Service Fabric önálló fürt létrehozásának lépé
 <a id="getsupport"></a>
 
 ## <a name="get-support-for-the-service-fabric-for-windows-server-package"></a>A Windows Server-csomag Service Fabric támogatásának beolvasása
-* Kérdezze meg a Közösséget a Windows Serverhez készült Service Fabric önálló csomagjáról a [Microsoft Q&az Azure Service Fabric kérdéseit tartalmazó oldalt](https://docs.microsoft.com/answers/topics/azure-service-fabric.html).
+* Kérdezze meg a Közösséget a Windows Serverhez készült Service Fabric önálló csomagjáról a [Microsoft Q&az Azure Service Fabric kérdéseit tartalmazó oldalt](/answers/topics/azure-service-fabric.html).
 * Nyisson meg egy jegyet a [Service Fabric szakmai támogatásához](https://support.microsoft.com/oas/default.aspx?prid=16146).  További információ [a Microsoft szakmai](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)támogatásáról.
 * A csomag támogatását a [Microsoft Premier szintű támogatás](https://support.microsoft.com/en-us/premier)részeként is elérheti.
-* További részletekért tekintse meg az [Azure Service Fabric támogatási lehetőségeit](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
+* További részletekért tekintse meg az [Azure Service Fabric támogatási lehetőségeit](./service-fabric-support.md).
 * A naplók támogatási célból történő gyűjtéséhez futtassa a [Service Fabric önálló napló gyűjtőjét](service-fabric-cluster-standalone-package-contents.md).
 
 <a id="downloadpackage"></a>
@@ -210,12 +211,12 @@ Nincsenek.
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Alkalmazások telepítése és eltávolítása a PowerShell használatával](service-fabric-deploy-remove-applications.md)
 * [Önálló Windows-fürt konfigurációs beállításai](service-fabric-cluster-manifest.md)
 * [Csomópontok hozzáadása vagy eltávolítása önálló Service Fabric-fürthöz](service-fabric-cluster-windows-server-add-remove-nodes.md)
 * [Önálló Service Fabric fürt verziójának frissítése](service-fabric-cluster-upgrade-windows-server.md)
-* [Önálló Service Fabric-fürt létrehozása Windows rendszerű Azure-beli virtuális gépekkel](service-fabric-cluster-creation-with-windows-azure-vms.md)
+* [Önálló Service Fabric-fürt létrehozása Windows rendszerű Azure-beli virtuális gépekkel](./service-fabric-cluster-creation-via-arm.md)
 * [Önálló fürt biztonságossá tétele Windows rendszeren Windows-Biztonság használatával](service-fabric-windows-cluster-windows-security.md)
 * [Önálló fürt biztonságossá tétele a Windowsban X509-tanúsítványok használatával](service-fabric-windows-cluster-x509-security.md)
 

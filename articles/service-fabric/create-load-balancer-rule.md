@@ -3,17 +3,18 @@ title: Azure Load Balancer szabály létrehozása fürthöz
 description: Azure Load Balancer konfigurálása az Azure Service Fabric-fürthöz tartozó portok megnyitásához.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 049afb88b5552c92294180069b54d49574a410fa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025384"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259047"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric-fürt portjainak megnyitása
 
 Az Azure Service Fabric-fürttel üzembe helyezett terheléselosztó átirányítja a forgalmat a csomóponton futó alkalmazás felé. Ha úgy módosítja az alkalmazást, hogy másik portot használjon, ki kell jelölnie ezt a portot (vagy egy másik portot kell átirányítani) a Azure Load Balancer.
 
-Amikor üzembe helyezte a Service Fabric-fürtöt az Azure-ban, a terheléselosztó létrehozása automatikusan megtörténik. Ha nincs terheléselosztó, tekintse meg [az internetre irányuló terheléselosztó konfigurálása](../load-balancer/load-balancer-get-started-internet-portal.md)című témakört.
+Amikor üzembe helyezte a Service Fabric-fürtöt az Azure-ban, a terheléselosztó létrehozása automatikusan megtörténik. Ha nincs terheléselosztó, tekintse meg [az internetre irányuló terheléselosztó konfigurálása](../load-balancer/quickstart-load-balancer-standard-public-portal.md)című témakört.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -24,7 +25,7 @@ A Service Fabric alkalmazás **ServiceManifest.xml** konfigurációs fájl hatá
 
 ## <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
-A Load Balancer szabály egy internetkapcsolattal rendelkező portot nyit meg, és továbbítja a forgalmat az alkalmazás által használt belső csomópont portjához. Ha nincs terheléselosztó, tekintse meg [az internetre irányuló terheléselosztó konfigurálása](../load-balancer/load-balancer-get-started-internet-portal.md)című témakört.
+A Load Balancer szabály egy internetkapcsolattal rendelkező portot nyit meg, és továbbítja a forgalmat az alkalmazás által használt belső csomópont portjához. Ha nincs terheléselosztó, tekintse meg [az internetre irányuló terheléselosztó konfigurálása](../load-balancer/quickstart-load-balancer-standard-public-portal.md)című témakört.
 
 Load Balancer szabály létrehozásához a következő információkat kell összegyűjtenie:
 
@@ -97,6 +98,6 @@ A `New-AzLoadBalancerRuleConfig` parancshoz tartozó érték azt a `-FrontendPor
 >[!NOTE]
 >A terheléselosztó PowerShell-lel történő létrehozásával kapcsolatos további információkért lásd: [Load Balancer létrehozása a PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)-lel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [Service Fabric hálózatkezeléséről](service-fabric-patterns-networking.md).

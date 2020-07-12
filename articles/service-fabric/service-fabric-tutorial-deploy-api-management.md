@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan kezdheti meg gyorsan az Azure API Managementét
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 7bd781a21a32ca29fe3f5dd2f4432dbf1e5ca411
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40f8c53394292a85f6fd032e445d79ed82e2d4e9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80292143"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260248"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>API Management integrálása az Azure Service Fabricával
 
@@ -30,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az [Azure API Managementt]
 Előkészületek:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Telepítse az [Azure PowerShellt](https://docs.microsoft.com/powershell/azure/install-Az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
+* Telepítse az [Azure PowerShellt](/powershell/azure/install-az-ps) vagy az [Azure CLI](/cli/azure/install-azure-cli)-t.
 * Hozzon létre egy biztonságos [Windows-fürtöt](service-fabric-tutorial-create-vnet-and-windows-cluster.md) egy hálózati biztonsági csoportban.
 * Ha Windows-fürtöt telepít, állítson be egy Windows fejlesztési környezetet. Telepítse a [Visual Studio 2019](https://www.visualstudio.com) -es és az **Azure development**, a **ASP.net és a Web Development**, valamint a **.net Core platformfüggetlen fejlesztési** számítási feladatokat.  Ezután hozzon létre egy [.NET fejlesztési környezet](service-fabric-get-started.md).
 
@@ -151,9 +151,9 @@ Egy előtér-API művelet hozzáadásához töltse ki a következő értékeket:
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
-A [Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) egy háttérszabályzatot hoz létre, amely mindent összeköt egymással. Itt konfigurálhatja a Service Fabric-háttérszolgáltatást, amelyhez a rendszer a kérelmeket fogja irányítani. Ezt a házirendet bármely API-műveletre alkalmazhatja.  További információkért lásd: [Szabályzatok áttekintése](/azure/api-management/api-management-howto-policies).
+A [Microsoft.ApiManagement/service/apis/policies](/azure/templates/microsoft.apimanagement/service/apis/policies) egy háttérszabályzatot hoz létre, amely mindent összeköt egymással. Itt konfigurálhatja a Service Fabric-háttérszolgáltatást, amelyhez a rendszer a kérelmeket fogja irányítani. Ezt a házirendet bármely API-műveletre alkalmazhatja.  További információkért lásd: [Szabályzatok áttekintése](../api-management/api-management-howto-policies.md).
 
-A [Service Fabric háttérrendszerének konfigurációja](/azure/api-management/api-management-transformation-policies#SetBackendService) a következő vezérlőket biztosítja a kérelmek útválasztásához:
+A [Service Fabric háttérrendszerének konfigurációja](../api-management/api-management-transformation-policies.md#SetBackendService) a következő vezérlőket biztosítja a kérelmek útválasztásához:
 
 * Szolgáltatáspéldány kiválasztása szoftveresen kötött (például `"fabric:/myapp/myservice"`) vagy a HTTP-kérelem alapján létrehozott (például `"fabric:/myapp/users/" + context.Request.MatchedParameters["name"]`) Service Fabric szolgáltatáspéldány-név megadásával.
 * Partíciófeloldás bármely Service Fabric particionálási séma használatával történő partíciókulcs-létrehozással.
@@ -180,7 +180,7 @@ A **policyContent** a szabályzat Json-feloldójelekkel ellátott XML-tartalma. 
 </policies>
 ```
 
-A Service Fabric-háttérszabályzat attribútumainak teljes listája az [API Management-háttérrendszer dokumentációban](https://docs.microsoft.com/azure/api-management/api-management-transformation-policies#SetBackendService) található.
+A Service Fabric-háttérszabályzat attribútumainak teljes listája az [API Management-háttérrendszer dokumentációban](../api-management/api-management-transformation-policies.md#SetBackendService) található.
 
 ## <a name="set-parameters-and-deploy-api-management"></a>Paraméterek beállítása és az API Management telepítése
 
@@ -190,7 +190,7 @@ Töltse ki az *apim.parameters.json* fájl következő üres paramétereit az ü
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
-|apimSku|Fejlesztő|
+|apimSku|Fejlesztői|
 |serviceFabricCertificateName|sfclustertutorialgroup320171031144217|
 |certificatePassword|q6D7nN%6ck@6|
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |
@@ -273,7 +273,7 @@ Most megpróbálhat küldeni egy kérelmet a Service Fabricben lévő háttérsz
     ["value1", "value2"]
     ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A fürtben a fürt erőforrásán felül egyéb Azure-erőforrások is megtalálhatók. A fürt és az összes általa használt erőforrás törlésének legegyszerűbb módja az erőforráscsoport törlése.
 
@@ -289,11 +289,11 @@ ResourceGroupName="sfclustertutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ a [API Management](/azure/api-management/import-and-publish)használatáról.
+További információ a [API Management](../api-management/import-and-publish.md)használatáról.
 
-[azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]: /powershell/azure/
 
 [apim-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.json
 [apim-parameters-arm]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/apim.parameters.json

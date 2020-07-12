@@ -3,11 +3,12 @@ title: Hitelesítés felügyelt identitással
 description: Hozzáférés biztosítása a privát tároló beállításjegyzékében lévő rendszerképekhez felhasználó által hozzárendelt vagy rendszer által hozzárendelt Azure-identitás használatával.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 9b8bed78629d3a9739ec00772ad5c8216a04c122
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3a1f0f9c9e814cabaa205fbb0abf05333fd6daf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74456487"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259099"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure-beli felügyelt identitás használata az Azure Container registryben való hitelesítéshez 
 
@@ -44,7 +45,7 @@ Ezt követően az identitás használatával hitelesítheti magát az [Azure ad-
 
 * [Jelentkezzen be az Azure CLI-be vagy a powershellbe](../active-directory/managed-identities-azure-resources/how-to-use-vm-sign-in.md) az identitással. 
 
-## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
+## <a name="create-a-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
 Ha még nem rendelkezik Azure Container Registry-regisztrációval, hozzon létre egy beállításjegyzéket, és küldje el a minta-tároló képét. A lépéseket a rövid útmutató [: privát tároló beállításjegyzékének létrehozása az Azure CLI használatával](container-registry-get-started-azure-cli.md)című témakörben tekintheti meg.
 
@@ -95,7 +96,7 @@ This message shows that your installation appears to be working correctly.
 [...]
 ```
 
-### <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
+### <a name="install-the-azure-cli"></a>Az Azure CLI összetevő telepítése
 
 Az Azure CLI az Ubuntu rendszerű virtuális gépen való telepítéséhez kövesse az Azure CLI az [apt-vel](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) való telepítésének lépéseit. Ehhez a cikkhez győződjön meg arról, hogy a 2.0.55 vagy újabb verzióját telepíti.
 
@@ -229,7 +230,7 @@ Egy üzenetnek kell megjelennie `Login succeeded` . Ezután parancsok futtatás�
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan használhatja a felügyelt identitásokat a Azure Container Registry és a következőket:
 
@@ -238,7 +239,7 @@ Ebből a cikkből megtudhatta, hogyan használhatja a felügyelt identitásokat 
 > * Az identitás hozzáférésének biztosítása egy Azure Container registryhez
 > * A felügyelt identitás használata a beállításjegyzék eléréséhez és a tároló rendszerképének lekéréséhez
 
-* További információ az [Azure-erőforrások felügyelt identitásáról](/azure/active-directory/managed-identities-azure-resources/).
+* További információ az [Azure-erőforrások felügyelt identitásáról](../active-directory/managed-identities-azure-resources/index.yml).
 
 
 <!-- LINKS - external -->

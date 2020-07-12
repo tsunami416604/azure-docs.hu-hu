@@ -4,18 +4,19 @@ description: Megtudhatja, hogyan hozhatja létre a Azure IoT Edge-megoldását a
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/25/2020
+ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f5698c5390a341df505bf5a1f849e121bd754a2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84431924"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258794"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -37,11 +38,14 @@ IoT Edge az eszközök a málna PI-ből egy laptopra vagy egy kiszolgálón fut�
 
 ### <a name="install-production-certificates"></a>Éles tanúsítványok telepítése
 
-Minden üzemi IoT Edge eszközön telepítve kell lennie egy, az eszközre telepített HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak. Ezt követően a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány deklarálva lesz a config. YAML fájlban lévő IoT Edge futtatókörnyezetnek. Fejlesztési és tesztelési forgatókönyvek esetén az IoT Edge Runtime ideiglenes tanúsítványokat hoz létre, ha nem deklarálnak tanúsítványokat a config. YAML fájlban. Ezek az ideiglenes tanúsítványok azonban három hónap elteltével lejárnak, és nem biztonságosak az éles környezetekben.
+Minden üzemi IoT Edge eszközön telepítve kell lennie egy, az eszközre telepített HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak. Ezt követően a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány deklarálva lesz a config. YAML fájlban lévő IoT Edge futtatókörnyezetnek. Fejlesztési és tesztelési forgatókönyvek esetén az IoT Edge Runtime ideiglenes tanúsítványokat hoz létre, ha nem deklarálnak tanúsítványokat a config. YAML fájlban. Ezek az ideiglenes tanúsítványok azonban három hónap elteltével lejárnak, és nem biztonságosak az éles környezetekben. Éles forgatókönyvek esetén saját eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványát kell megadnia egy önaláírt hitelesítésszolgáltatótól, vagy egy kereskedelmi hitelesítésszolgáltatótól vásárolhatja meg.
+
+> [!NOTE]
+> Jelenleg a libiothsm korlátozásai meggátolják a 2050 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
 
 Az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványa szerepkörének megismeréséhez tekintse meg a [hogyan használja a Azure IoT Edge a tanúsítványokat](iot-edge-certs.md).
 
-Ha további információt szeretne arról, hogyan telepíthet tanúsítványokat egy IoT Edge eszközre, és hogyan hivatkozhat rájuk a config. YAML fájlból, tekintse [meg az éles tanúsítványok telepítése IoT Edge eszközön](how-to-manage-device-certificates.md)című témakört.
+Ha további információt szeretne arról, hogyan telepíthet tanúsítványokat egy IoT Edge eszközre, és hogyan hivatkozhat rájuk a config. YAML fájlból, tekintse [meg a tanúsítvány kezelése IoT Edge eszközön](how-to-manage-device-certificates.md)című témakört.
 
 ### <a name="have-a-device-management-plan"></a>Eszközkezelés
 
@@ -319,7 +323,7 @@ Ezt megteheti az egyes modulok **createOptions** . Például:
 
 A leghatékonyabb IoT Edge üzembe helyezési forgatókönyv esetén érdemes lehet az éles üzembe helyezést a tesztelési és CI/CD-folyamatokba integrálni. Azure IoT Edge több CI/CD platformot támogat, beleértve az Azure DevOps is. További információ: [a folyamatos integráció és a folyamatos üzembe helyezés a Azure IoT Edge](how-to-ci-cd.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [IoT Edge automatikus központi telepítéséről](module-deployment-monitoring.md).
 * Ismerje meg, hogyan támogatja [a IoT Edge a folyamatos integrációt és a folyamatos üzembe helyezést](how-to-ci-cd.md).

@@ -5,12 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 4a6e8b2baa400e1221ac1e8271e04cdaa912aff6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: f691eb6433907ed10737329de3edd78547f130f1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224145"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258852"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>A Service Fabric állapotmonitorozásának bemutatása
 Az Azure Service Fabric egy olyan egészségügyi modellt vezet be, amely gazdag, rugalmas és bővíthető egészségügyi értékelést és jelentéskészítést tesz lehetővé. A modell lehetővé teszi a fürt állapotának és a rajta futó szolgáltatásoknak a közel valós idejű figyelését. Egyszerűen beszerezhet egészségügyi információkat, és kiválaszthatja a potenciális problémákat, mielőtt lépcsőzetesen kiesést okoz. A tipikus modellben a szolgáltatások a helyi nézeteik alapján küldenek jelentéseket, és ezek az információk összesítve biztosítják a teljes fürt szintű nézetet.
@@ -60,7 +60,7 @@ Tervezze meg, hogyan jelentheti be és reagálhat az állapotra a nagyméretű f
 ## <a name="health-states"></a>Állapotok
 A Service Fabric három állapotot használ annak leírására, hogy az entitás kifogástalan-e vagy sem: OK, figyelmeztetés és hiba. Az állapotfigyelő szolgáltatásnak eljuttatott jelentéseknek ezen állapotok egyikét kell megadniuk. Az állapot kiértékelésének eredménye ezen állapotok egyike.
 
-A lehetséges [állapotok](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthstate) a következők:
+A lehetséges [állapotok](/dotnet/api/system.fabric.health.healthstate) a következők:
 
 * **OK**. Az entitás kifogástalan. Nincsenek ismert problémák az informatikai vagy a gyermekeik számára (ha vannak ilyenek).
 * **Figyelmeztetés**. Az entitásnak vannak problémái, de továbbra is megfelelően működhet. Például késések fordulnak elő, de még nem okoznak működési problémákat. Bizonyos esetekben a figyelmeztetési feltétel külső beavatkozás nélkül is megoldható. Ezekben az esetekben az állapot-jelentések a tudatosságot és a folyamatban lévők láthatóságát teszik lehetővé. Más esetekben előfordulhat, hogy a figyelmeztetési feltétel a felhasználói beavatkozás nélkül súlyos hibába ütközik.
@@ -78,13 +78,13 @@ Az állapotfigyelő az állapotadatok alapján határozza meg, hogy az entitás 
 Alapértelmezés szerint a Service Fabric szigorú szabályokat alkalmaz (mindennek kifogástalannak kell lennie) a szülő-gyermek hierarchikus kapcsolathoz. Ha még az egyik gyermek egy nem megfelelő állapotú eseményt tartalmaz, a szülő nem kifogástalannak minősül.
 
 ### <a name="cluster-health-policy"></a>Fürt állapotára vonatkozó házirend
-A [fürt állapot-házirendje](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy) a fürt állapotának és a csomópont állapotának kiértékelésére szolgál. A házirend a fürt jegyzékfájljában határozható meg. Ha nincs jelen, a rendszer az alapértelmezett szabályzatot (a tolerálatlan hibákat) használja.
+A [fürt állapot-házirendje](/dotnet/api/system.fabric.health.clusterhealthpolicy) a fürt állapotának és a csomópont állapotának kiértékelésére szolgál. A házirend a fürt jegyzékfájljában határozható meg. Ha nincs jelen, a rendszer az alapértelmezett szabályzatot (a tolerálatlan hibákat) használja.
 A fürt állapotára vonatkozó házirend a következőket tartalmazza:
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Azt határozza meg, hogy a figyelmeztetési állapot jelentéseit hibaként kell-e kezelni az állapot értékelése során. Alapértelmezett érték: false (hamis).
-* [MaxPercentUnhealthyApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications). Meghatározza, hogy a fürt miért nem megfelelő állapotba kerül, mielőtt a rendszer hibát észlel.
-* [MaxPercentUnhealthyNodes](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes). Meghatározza a csomópontok maximálisan megengedett százalékos arányát, amely a fürt hibás állapotba való beszámításához szükséges. A nagyméretű fürtökben egyes csomópontok mindig kimaradnak vagy kifogynak a javításokhoz, ezért ezt a százalékos arányt úgy kell konfigurálni, hogy eltűri ezt.
-* [ApplicationTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). A fürt állapotának kiértékelése során a speciális alkalmazások típusának leírására használhatja az állapotfigyelő állapotra vonatkozó házirend-hozzárendelést. Alapértelmezés szerint a rendszer az összes alkalmazást egy készletbe helyezi, és kiértékeli a MaxPercentUnhealthyApplications. Ha egyes alkalmazás-típusokat másképp kell kezelni, akkor kivehetők a globális készletből. Ehelyett a rendszer kiértékeli azokat a százalékokat, amelyek az alkalmazás típusa nevével vannak társítva a térképen. Egy fürtben például több ezer különböző típusú alkalmazás létezik, és a speciális alkalmazás néhány vezérlő alkalmazás-példánya. A vezérlő alkalmazásoknak soha nem lehetnek hiba. Megadhatja a globális MaxPercentUnhealthyApplications 20%-ra a hibák kihasználása érdekében, de a "ControlApplicationType" alkalmazás típusához állítsa a MaxPercentUnhealthyApplications 0-ra. Így ha a sok alkalmazás nem kifogástalan, de a globális nem kifogástalan százalék alatt van, a rendszer figyelmeztetésként értékeli ki a fürtöt. A figyelmeztetési állapot nem befolyásolja a fürt frissítését vagy a hiba állapotával indított egyéb figyelési állapotot. Egy hiba esetén azonban még egy vezérlő alkalmazás sem fogja a fürtöt sérült állapotba hozni, amely a frissítés konfigurációjától függően visszaállítja vagy szünetelteti a fürt frissítését.
+* [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Azt határozza meg, hogy a figyelmeztetési állapot jelentéseit hibaként kell-e kezelni az állapot értékelése során. Alapértelmezett érték: false (hamis).
+* [MaxPercentUnhealthyApplications](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthyapplications). Meghatározza, hogy a fürt miért nem megfelelő állapotba kerül, mielőtt a rendszer hibát észlel.
+* [MaxPercentUnhealthyNodes](/dotnet/api/system.fabric.health.clusterhealthpolicy.maxpercentunhealthynodes). Meghatározza a csomópontok maximálisan megengedett százalékos arányát, amely a fürt hibás állapotba való beszámításához szükséges. A nagyméretű fürtökben egyes csomópontok mindig kimaradnak vagy kifogynak a javításokhoz, ezért ezt a százalékos arányt úgy kell konfigurálni, hogy eltűri ezt.
+* [ApplicationTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.applicationtypehealthpolicymap). A fürt állapotának kiértékelése során a speciális alkalmazások típusának leírására használhatja az állapotfigyelő állapotra vonatkozó házirend-hozzárendelést. Alapértelmezés szerint a rendszer az összes alkalmazást egy készletbe helyezi, és kiértékeli a MaxPercentUnhealthyApplications. Ha egyes alkalmazás-típusokat másképp kell kezelni, akkor kivehetők a globális készletből. Ehelyett a rendszer kiértékeli azokat a százalékokat, amelyek az alkalmazás típusa nevével vannak társítva a térképen. Egy fürtben például több ezer különböző típusú alkalmazás létezik, és a speciális alkalmazás néhány vezérlő alkalmazás-példánya. A vezérlő alkalmazásoknak soha nem lehetnek hiba. Megadhatja a globális MaxPercentUnhealthyApplications 20%-ra a hibák kihasználása érdekében, de a "ControlApplicationType" alkalmazás típusához állítsa a MaxPercentUnhealthyApplications 0-ra. Így ha a sok alkalmazás nem kifogástalan, de a globális nem kifogástalan százalék alatt van, a rendszer figyelmeztetésként értékeli ki a fürtöt. A figyelmeztetési állapot nem befolyásolja a fürt frissítését vagy a hiba állapotával indított egyéb figyelési állapotot. Egy hiba esetén azonban még egy vezérlő alkalmazás sem fogja a fürtöt sérült állapotba hozni, amely a frissítés konfigurációjától függően visszaállítja vagy szünetelteti a fürt frissítését.
   A térképen definiált alkalmazások típusai esetében az összes alkalmazás-példány kikerül a globális készletből. A kiértékelésük az alkalmazás típusú alkalmazások teljes száma alapján történik, a Térkép adott MaxPercentUnhealthyApplications használatával. Az összes többi alkalmazás a globális készletben marad, és a MaxPercentUnhealthyApplications-mel van kiértékelve.
 
 A következő példa egy fürt jegyzékfájljának kivonata. Ha bejegyzéseket szeretne megadni az Application Type Térképben, előtagként adja meg a paraméter nevét a "ApplicationTypeMaxPercentUnhealthyApplications-" kifejezéssel, amelyet az alkalmazásnév neve követ.
@@ -101,20 +101,20 @@ A következő példa egy fürt jegyzékfájljának kivonata. Ha bejegyzéseket s
 ```
 
 ### <a name="application-health-policy"></a>Alkalmazás állapotára vonatkozó házirend
-Az [alkalmazás állapotára vonatkozó házirend](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) leírja, hogyan történik az események és a gyermekek összesítésének kiértékelése az alkalmazásokhoz és a gyermekeik számára. Az alkalmazás jegyzékfájljában, **ApplicationManifest.xml**az alkalmazáscsomagban definiálható. Ha nincsenek megadva szabályzatok, Service Fabric feltételezi, hogy az entitás nem kifogástalan állapotú, ha a figyelmeztetés vagy a hiba állapot állapota jelentésben vagy gyermeken van.
+Az [alkalmazás állapotára vonatkozó házirend](/dotnet/api/system.fabric.health.applicationhealthpolicy) leírja, hogyan történik az események és a gyermekek összesítésének kiértékelése az alkalmazásokhoz és a gyermekeik számára. Az alkalmazás jegyzékfájljában, **ApplicationManifest.xml**az alkalmazáscsomagban definiálható. Ha nincsenek megadva szabályzatok, Service Fabric feltételezi, hogy az entitás nem kifogástalan állapotú, ha a figyelmeztetés vagy a hiba állapot állapota jelentésben vagy gyermeken van.
 A konfigurálható szabályzatok a következők:
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Azt határozza meg, hogy a figyelmeztetési állapot jelentéseit hibaként kell-e kezelni az állapot értékelése során. Alapértelmezett érték: false (hamis).
-* [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). Meghatározza a telepített alkalmazások maximálisan megengedett százalékos arányát, amely nem kifogástalan, mielőtt az alkalmazás hibát észlel. Ezt a százalékarányt úgy számítjuk ki, hogy a nem kifogástalan állapotú központilag telepített alkalmazások számát a fürtben jelenleg telepített alkalmazások csomópontjain használják. A számítások egy kis számú csomóponton fellépő meghibásodást okoznak. Alapértelmezett százalék: nulla.
-* [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Meghatározza a szolgáltatástípus alapértelmezett állapotát, amely lecseréli az alkalmazásban lévő összes szolgáltatástípus alapértelmezett állapotfigyelő házirendjét.
-* [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). A szolgáltatási állapot házirendjeinek egy-egy térképét adja meg. Ezek a szabályzatok az alapértelmezett szolgáltatástípus-állapotra vonatkozó házirendeket helyettesítik az egyes szolgáltatástípus-típusokhoz. Ha például egy alkalmazás állapot nélküli átjáró szolgáltatás típussal és egy állapot-nyilvántartó szolgáltatás típussal rendelkezik, a kiértékeléshez különböző állapotokra állíthatja be az állapotfigyelő házirendeket. Ha a házirendet szolgáltatási típusként adja meg, a szolgáltatás állapotának részletesebb szabályozását is megteheti.
+* [ConsiderWarningAsError](/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Azt határozza meg, hogy a figyelmeztetési állapot jelentéseit hibaként kell-e kezelni az állapot értékelése során. Alapértelmezett érték: false (hamis).
+* [MaxPercentUnhealthyDeployedApplications](/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). Meghatározza a telepített alkalmazások maximálisan megengedett százalékos arányát, amely nem kifogástalan, mielőtt az alkalmazás hibát észlel. Ezt a százalékarányt úgy számítjuk ki, hogy a nem kifogástalan állapotú központilag telepített alkalmazások számát a fürtben jelenleg telepített alkalmazások csomópontjain használják. A számítások egy kis számú csomóponton fellépő meghibásodást okoznak. Alapértelmezett százalék: nulla.
+* [DefaultServiceTypeHealthPolicy](/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Meghatározza a szolgáltatástípus alapértelmezett állapotát, amely lecseréli az alkalmazásban lévő összes szolgáltatástípus alapértelmezett állapotfigyelő házirendjét.
+* [ServiceTypeHealthPolicyMap](/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). A szolgáltatási állapot házirendjeinek egy-egy térképét adja meg. Ezek a szabályzatok az alapértelmezett szolgáltatástípus-állapotra vonatkozó házirendeket helyettesítik az egyes szolgáltatástípus-típusokhoz. Ha például egy alkalmazás állapot nélküli átjáró szolgáltatás típussal és egy állapot-nyilvántartó szolgáltatás típussal rendelkezik, a kiértékeléshez különböző állapotokra állíthatja be az állapotfigyelő házirendeket. Ha a házirendet szolgáltatási típusként adja meg, a szolgáltatás állapotának részletesebb szabályozását is megteheti.
 
 ### <a name="service-type-health-policy"></a>Szolgáltatástípus állapot-házirendje
-A [szolgáltatástípus állapot-szabályzata](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy) határozza meg, hogy miként értékelhető ki és összesíthető a szolgáltatások és a szolgáltatások gyermekei. A szabályzat a következőket tartalmazza:
+A [szolgáltatástípus állapot-szabályzata](/dotnet/api/system.fabric.health.servicetypehealthpolicy) határozza meg, hogy miként értékelhető ki és összesíthető a szolgáltatások és a szolgáltatások gyermekei. A szabályzat a következőket tartalmazza:
 
-* [MaxPercentUnhealthyPartitionsPerService](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice). Meghatározza a nem kifogástalan állapotú partíciók maximálisan megengedett százalékos arányát, mielőtt egy szolgáltatás nem kifogástalannak minősül. Alapértelmezett százalék: nulla.
-* [MaxPercentUnhealthyReplicasPerPartition](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition). Meghatározza a nem kifogástalan állapotú replikák maximálisan megengedett százalékos arányát, mielőtt a partíció nem megfelelőnek minősül. Alapértelmezett százalék: nulla.
-* [MaxPercentUnhealthyServices](https://docs.microsoft.com/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices). Meghatározza a nem kifogástalan állapotú szolgáltatások maximálisan megengedett százalékos arányát, mielőtt az alkalmazás nem megfelelőnek minősül. Alapértelmezett százalék: nulla.
+* [MaxPercentUnhealthyPartitionsPerService](/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthypartitionsperservice). Meghatározza a nem kifogástalan állapotú partíciók maximálisan megengedett százalékos arányát, mielőtt egy szolgáltatás nem kifogástalannak minősül. Alapértelmezett százalék: nulla.
+* [MaxPercentUnhealthyReplicasPerPartition](/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyreplicasperpartition). Meghatározza a nem kifogástalan állapotú replikák maximálisan megengedett százalékos arányát, mielőtt a partíció nem megfelelőnek minősül. Alapértelmezett százalék: nulla.
+* [MaxPercentUnhealthyServices](/dotnet/api/system.fabric.health.servicetypehealthpolicy.maxpercentunhealthyservices). Meghatározza a nem kifogástalan állapotú szolgáltatások maximálisan megengedett százalékos arányát, mielőtt az alkalmazás nem megfelelőnek minősül. Alapértelmezett százalék: nulla.
 
 Az alábbi példa egy alkalmazási jegyzékből származó részlet:
 
@@ -179,10 +179,10 @@ Miután az állapotfigyelő kiértékelte az összes gyermeket, a rendszer a nem
 ## <a name="health-reporting"></a>Állapotadatok jelentése
 A rendszerösszetevők, a rendszerháló alkalmazások és a belső/külső watchdogok jelenthetnek Service Fabric entitásokat. A jelentéskészítők a figyelt entitások állapotának *helyi* meghatározását teszik elérhetővé a figyelés feltételei alapján. Nem kell semmilyen globális vagy összesített adatokat megvizsgálniuk. A kívánt viselkedés az egyszerű jelentéskészítők használata, és nem olyan összetett szervezetek, amelyeknek sok dolgot kell megvizsgálniuk, hogy milyen információkat kell elküldeni.
 
-Az állapotadatok az állapotfigyelő tárolóba való küldéséhez a Jelentéskészítőnek azonosítania kell az érintett entitást, és létre kell hoznia egy állapotjelentést. A jelentés elküldéséhez használja a [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API-t, a Report Health API-kat, amelyek elérhetők a `Partition` vagy az `CodePackageActivationContext` objektumok, a PowerShell-parancsmagok vagy a REST számára.
+Az állapotadatok az állapotfigyelő tárolóba való küldéséhez a Jelentéskészítőnek azonosítania kell az érintett entitást, és létre kell hoznia egy állapotjelentést. A jelentés elküldéséhez használja a [FabricClient. HealthClient. ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API-t, a Report Health API-kat, amelyek elérhetők a `Partition` vagy az `CodePackageActivationContext` objektumok, a PowerShell-parancsmagok vagy a REST számára.
 
 ### <a name="health-reports"></a>Állapotjelentés
-A fürt minden entitásához tartozó [Állapotjelentés](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) a következő információkat tartalmazza:
+A fürt minden entitásához tartozó [Állapotjelentés](/dotnet/api/system.fabric.health.healthreport) a következő információkat tartalmazza:
 
 * **SourceId forrásazonosító**. Egy olyan karakterlánc, amely egyedileg azonosítja az állapotadatok jelentéskészítőjét.
 * Az **entitás azonosítója**. Azonosítja azt az entitást, amelyben a jelentés alkalmazva van. Az [entitás típusa](service-fabric-health-introduction.md#health-entities-and-hierarchy)alapján különbözik:
@@ -205,7 +205,7 @@ A fürt minden entitásához tartozó [Állapotjelentés](https://docs.microsoft
 Ez a négy információ – SourceId forrásazonosító, entitás-azonosító, tulajdonság és HealthState – minden állapotjelentés esetében kötelező. A SourceId forrásazonosító karakterlánc nem kezdődhet a rendszerjelentések számára fenntartott "**System.**" előtaggal. Ugyanahhoz az entitáshoz csak egy jelentés létezik ugyanahhoz a forráshoz és tulajdonsághoz. Ugyanahhoz a forráshoz és tulajdonsághoz több jelentés is bírálható felül, akár az állapot-ügyfél oldalán (ha a kötegben vannak), vagy az állapotfigyelő oldalon. A pótlás a sorozatszámok alapján történik; az újabb jelentések (nagyobb sorszámokkal) lecserélik a régebbi jelentéseket.
 
 ### <a name="health-events"></a>Állapotadatok
-Belsőleg az állapotfigyelő tárolja a jelentésekben szereplő összes információt és a további metaadatokat tartalmazó [állapot-eseményeket](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthevent). A metaadatok között megtalálhatók a jelentésnek az állapot-ügyfélnek adott időpontja, valamint a kiszolgáló oldalán módosított idő. Az állapotadatok visszaadását az [állapot-lekérdezések](service-fabric-view-entities-aggregated-health.md#health-queries)adják vissza.
+Belsőleg az állapotfigyelő tárolja a jelentésekben szereplő összes információt és a további metaadatokat tartalmazó [állapot-eseményeket](/dotnet/api/system.fabric.health.healthevent). A metaadatok között megtalálhatók a jelentésnek az állapot-ügyfélnek adott időpontja, valamint a kiszolgáló oldalán módosított idő. Az állapotadatok visszaadását az [állapot-lekérdezések](service-fabric-view-entities-aggregated-health.md#health-queries)adják vissza.
 
 A hozzáadott metaadatok a következőket tartalmazzák:
 
@@ -294,7 +294,7 @@ Más rendszerek egyetlen, központosított szolgáltatással rendelkeznek a für
 
 Az állapotfigyelő modell nagy mértékben használatos figyelésre és diagnosztizálásra, a fürt és az alkalmazás állapotának kiértékeléséhez, valamint a figyelt frissítésekhez. Más szolgáltatások az állapotadatok használatával végzik el az automatikus javításokat, felépítik a fürt állapotának előzményeit, és bizonyos körülmények között riasztásokat adnak ki.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Service Fabric állapottal kapcsolatos jelentések megtekintése](service-fabric-view-entities-aggregated-health.md)
 
 [Rendszerállapot-jelentések használata a hibaelhárításhoz](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
@@ -306,4 +306,3 @@ Az állapotfigyelő modell nagy mértékben használatos figyelésre és diagnos
 [A szolgáltatások helyi figyelése és diagnosztikája](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric alkalmazás frissítése](service-fabric-application-upgrade.md)
-

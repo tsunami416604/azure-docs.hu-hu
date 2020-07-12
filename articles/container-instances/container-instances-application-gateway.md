@@ -3,11 +3,12 @@ title: A Container Group statikus IP-címe
 description: Hozzon létre egy tároló csoportot egy virtuális hálózatban, és egy Azure Application Gateway használatával tegye elérhetővé egy statikus előtérbeli IP-címet egy tárolós webalkalmazáshoz
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299162"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260776"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Statikus IP-cím közzététele egy tároló csoport számára
 
@@ -102,7 +103,7 @@ ACI_IP=$(az container show \
 
 ## <a name="create-application-gateway"></a>Alkalmazásátjáró létrehozása
 
-Hozzon létre egy Application Gateway-t a virtuális hálózaton az [Application Gateway](../application-gateway/quick-create-cli.md)rövid útmutatójának lépéseit követve. A következő az [Network Application-Gateway Create][az-network-application-gateway-create] paranccsal létrehoz egy átjárót egy nyilvános ELŐTÉRBELI IP-címmel és egy, a háttér-tároló csoportra mutató útvonallal. Az átjáró beállításaival kapcsolatos részletekért tekintse meg az [Application Gateway dokumentációját](/azure/application-gateway/) .
+Hozzon létre egy Application Gateway-t a virtuális hálózaton az [Application Gateway](../application-gateway/quick-create-cli.md)rövid útmutatójának lépéseit követve. A következő az [Network Application-Gateway Create][az-network-application-gateway-create] paranccsal létrehoz egy átjárót egy nyilvános ELŐTÉRBELI IP-címmel és egy, a háttér-tároló csoportra mutató útvonallal. Az átjáró beállításaival kapcsolatos részletekért tekintse meg az [Application Gateway dokumentációját](../application-gateway/index.yml) .
 
 ```azurecli
 az network application-gateway create \
@@ -141,7 +142,7 @@ Ha a sikeres konfigurálás után szeretné megtekinteni a futó webalkalmazást
 
 ![Képernyőkép a böngészőről, ahol egy Azure-tárolópéldányban futó alkalmazás látható](./media/container-instances-application-gateway/aci-app-app-gateway.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtekintheti a gyors üzembe helyezési [sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) , amely egy, a WordPress Container-példánnyal rendelkező tároló csoportot hoz létre egy Application Gateway mögötti háttér-kiszolgálóként.
 * Az alkalmazás-átjárót a tanúsítvány használatával is konfigurálhatja az SSL-lezáráshoz. Tekintse meg az [áttekintést](../application-gateway/ssl-overview.md) és az [oktatóanyagot](../application-gateway/create-ssl-portal.md).

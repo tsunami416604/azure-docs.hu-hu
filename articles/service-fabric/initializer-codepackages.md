@@ -5,12 +5,12 @@ author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
-ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be079b97c2660437344f88203fdda06cc6d6740
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430629"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258977"
 ---
 # <a name="initializer-codepackages"></a>Inicializáló kódcsomagok
 
@@ -50,7 +50,7 @@ Nézzük meg a teljes példát az inicializálási CodePackages használatával.
 > [!IMPORTANT]
 > Az alábbi példa azt feltételezi, hogy a [Windows-tároló alkalmazások Service Fabric és a Docker használatával történő][containers-getting-started-link]létrehozásának ismerete.
 >
-> Ez a példa mcr.microsoft.com/windows/nanoserver:1809 hivatkozik. A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. További információ: a [Windows-tároló verziójának kompatibilitása](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+> Ez a példa mcr.microsoft.com/windows/nanoserver:1809 hivatkozik. A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. További információ: a [Windows-tároló verziójának kompatibilitása](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
 A következő ServiceManifest.xml a korábban ismertetett ServiceManifest-kódrészletre épül fel. A *InitCodePackage0*, a *InitCodePackage1* és a *WorkloadCodePackage* a tárolókat jelképező CodePackages. Aktiváláskor a rendszer először a *InitCodePackage0* hajtja végre. Egy üzenetet naplóz egy fájlba, és kilép. Ezután a *InitCodePackage1* végrehajtja a fájlt, amely egy üzenetet is naplóz egy fájlba, és kilép. Végül a *WorkloadCodePackage* megkezdi a végrehajtást. Egy üzenetet is naplóz egy fájlba, kiírja a fájl tartalmát az **StdOut** -ba, majd örökre Pingeli.
 
@@ -136,7 +136,7 @@ Hi from InitCodePackage1.
 Hi from WorkloadCodePackage.
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódó információkról a következő cikkekben olvashat.
 
@@ -151,4 +151,3 @@ A kapcsolódó információkról a következő cikkekben olvashat.
 [application-model-link]: service-fabric-application-model.md
 [hosting-model-link]: service-fabric-hosting-model.md
 [setup-entry-point-link]: service-fabric-run-script-at-service-startup.md
-

@@ -5,15 +5,16 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbde23dd888d179917f123d00745fb7d0099c2d2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76028553"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259300"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric és Azure API Management – áttekintés
 
-A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. Service Fabric az átjáró bármilyen állapot nélküli szolgáltatás lehet, például [ASP.net Core alkalmazás](service-fabric-reliable-services-communication-aspnetcore.md)vagy más, a bejövő forgalomra tervezett szolgáltatás, például [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT hub](https://docs.microsoft.com/azure/iot-hub/)vagy [Azure API Management](https://docs.microsoft.com/azure/api-management/).
+A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. Service Fabric az átjáró bármilyen állapot nélküli szolgáltatás lehet, például [ASP.net Core alkalmazás](service-fabric-reliable-services-communication-aspnetcore.md)vagy más, a bejövő forgalomra tervezett szolgáltatás, például [Event Hubs](../event-hubs/index.yml), [IoT hub](../iot-hub/index.yml)vagy [Azure API Management](../api-management/index.yml).
 
 Ez a cikk bemutatja, hogyan használhatja az Azure API Management-t a Service Fabric alkalmazásaihoz tartozó átjáróként. A API Management közvetlenül integrálható Service Fabricekkel, így lehetővé teszi az API-k széles körű útválasztási szabályokkal történő közzétételét a háttérbeli Service Fabric-szolgáltatásokhoz.
 
@@ -104,7 +105,7 @@ A Int64 partíciós séma két partícióval és egy, a rendszerre kiterjedő ku
 
 ![Service Fabric az Azure API Management topológia áttekintése][sf-apim-dynamic-stateful]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kövesse az [oktatóanyagot](service-fabric-tutorial-deploy-api-management.md) , és állítsa be az első Service Fabric-fürtöt API Management és flow-kérelmekkel a szolgáltatásokra API Managementon keresztül.
 

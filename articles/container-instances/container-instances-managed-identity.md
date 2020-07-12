@@ -3,12 +3,12 @@ title: Felügyelt identitás engedélyezése a tároló csoportban
 description: Megtudhatja, hogyan engedélyezheti a felügyelt identitást olyan Azure Container Instancesban, amelyek más Azure-szolgáltatásokkal is hitelesíthetők
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 9bc96ed29039650082bdfa8b7b2b1b48ecb6bd3f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 23f2347593137a4846c8fd22e3b90f22db39bda3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169782"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259631"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Felügyelt identitások használata az Azure Container Instancesszel
 
@@ -383,7 +383,7 @@ identity:
    {'myResourceID1':{}}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta a felügyelt identitásokat a Azure Container Instancesban, és a következőket:
 
@@ -392,6 +392,6 @@ Ebben a cikkben megtanulta a felügyelt identitásokat a Azure Container Instanc
 > * Az identitás hozzáférésének biztosítása egy Azure Key vaulthoz
 > * A felügyelt identitás használata egy futó tárolóból származó kulcstartó eléréséhez
 
-* További információ az [Azure-erőforrások felügyelt identitásáról](/azure/active-directory/managed-identities-azure-resources/).
+* További információ az [Azure-erőforrások felügyelt identitásáról](../active-directory/managed-identities-azure-resources/index.yml).
 
 * Tekintse meg az [Azure go SDK példáját](https://medium.com/@samkreter/c98911206328) , amely felügyelt identitás használatával fér hozzá egy kulcstartóhoz Azure Container Instancesról.

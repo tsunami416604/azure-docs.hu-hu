@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: cf0fab9942dcbb7ee09e554f2c9ba8738f208009
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 691f3b7987c2591b0f6cea3f7b520c03c0ba9a9e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609927"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258659"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Azure Monitor naplók beállítása fürthöz
 
@@ -90,7 +91,7 @@ Azure Resource Manager észleli, hogy ez a parancs egy meglévő erőforrás fri
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Azure Monitor naplók üzembe helyezése Azure PowerShell
 
-A log Analytics-erőforrást a PowerShellen keresztül is üzembe helyezheti a `New-AzOperationalInsightsWorkspace` parancs használatával. Ha ezt a módszert szeretné használni, ellenőrizze, hogy telepítve van-e a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). Ezzel a parancsfájllal új Log Analytics munkaterületet hozhat létre, és hozzáadhatja a Service Fabric megoldást: 
+A log Analytics-erőforrást a PowerShellen keresztül is üzembe helyezheti a `New-AzOperationalInsightsWorkspace` parancs használatával. Ha ezt a módszert szeretné használni, ellenőrizze, hogy telepítve van-e a [Azure PowerShell](/powershell/azure/install-az-ps). Ezzel a parancsfájllal új Log Analytics munkaterületet hozhat létre, és hozzáadhatja a Service Fabric megoldást: 
 
 ```powershell
 
@@ -120,7 +121,7 @@ Ha elkészült, kövesse az előző szakasz lépéseit Azure Monitor naplók a m
 
 Emellett további megoldásokat is hozzáadhat, vagy egyéb módosításokat végezhet a Log Analytics munkaterületen a PowerShell használatával. További információ: [Azure monitor naplók kezelése a PowerShell használatával](../azure-monitor/platform/powershell-workspace-configuration.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A log Analytics-ügynök üzembe helyezése](service-fabric-diagnostics-oms-agent.md) a csomópontokon a teljesítményszámlálók összegyűjtéséhez, valamint a tárolók Docker-statisztikáinak és naplóinak összegyűjtéséhez
-* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciókkal
+* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/log-query/log-query-overview.md) funkciókkal
 * [Egyéni nézetek létrehozása Azure Monitor naplókban a Tervező nézet használatával](../azure-monitor/platform/view-designer.md)

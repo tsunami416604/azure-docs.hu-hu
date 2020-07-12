@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4cbfe03c48c6d971c140dc332c38a47bc9234173
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d41df8fe4f411cf28af83c8b4b667f1e86bdb45d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135105"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259919"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Gazdagépek RDP protokoll tulajdonságainak testreszabása
 
@@ -37,7 +37,7 @@ Alapértelmezés szerint a közzétett RDP-fájlok a következő tulajdonságoka
 
 |RDP-tulajdonságok | Asztali számítógépek | RemoteApp-alkalmazások |
 |---|---| --- |
-| Többszörös figyelési mód | Engedélyezve | N.A. |
+| Többszörös figyelési mód | Engedélyezve | N/A |
 | Meghajtó-átirányítások engedélyezve | Meghajtók, vágólap, nyomtatók, COM-portok, USB-eszközök és intelligens kártyák| Meghajtók, vágólap és nyomtatók |
 | Távoli hang mód | Helyi lejátszás | Helyi lejátszás |
 
@@ -132,7 +132,7 @@ CustomRdpProperty : <CustomRDPpropertystring>
 
 Most, hogy testreszabta az adott címkészlet RDP-tulajdonságait, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, hogy egy felhasználói munkamenet részeként tesztelje őket. A következő útmutatókból megtudhatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél használatával:
 
-- [Kapcsolódás a Windows asztali ügyféllel](connect-windows-7-and-10.md)
+- [Kapcsolódás a Windows asztali ügyféllel](connect-windows-7-10.md)
 - [Kapcsolódás a webügyféllel](connect-web.md)
 - [Kapcsolódás az Android-ügyféllel](connect-android.md)
 - [Kapcsolódás a macOS-ügyfélhez](connect-macos.md)

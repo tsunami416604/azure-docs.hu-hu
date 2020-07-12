@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/16/2020
-ms.openlocfilehash: ba8f4591782a4e34fbde26d9669ef01f24450486
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/09/2020
+ms.openlocfilehash: de2579868ad72bdf4cf78c552e9553f289ecabd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82146414"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259063"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL-bővítmények Azure Database for PostgreSQLban – nagy kapacitású (Citus)
 
@@ -31,7 +31,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="data-types-extensions"></a>Adattípusok bővítményei
 
 > [!div class="mx-tableFixed"]
-> | **Mellék** | **Leírás** |
+> | **Kiterjesztés** | **Leírás** |
 > |---|---|
 > | [citext](https://www.postgresql.org/docs/current/static/citext.html) | Kis-és nagybetűket nem megkülönböztető karakterlánc-típust biztosít. |
 > | [adatkocka](https://www.postgresql.org/docs/current/static/cube.html) | Adattípust biztosít a többdimenziós kockákhoz. |
@@ -46,7 +46,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="full-text-search-extensions"></a>Teljes szöveges keresési bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Mellék** | **Leírás** |
+> | **Kiterjesztés** | **Leírás** |
 > |---|---|
 > | [dict \_ int](https://www.postgresql.org/docs/current/static/dict-int.html) | Szöveges keresési szótári sablont biztosít az egész számokhoz. |
 > | [dict \_ xsyn](https://www.postgresql.org/docs/current/dict-xsyn.html) | Szöveges keresési szótár sablon a kiterjesztett szinonimák feldolgozásához. |
@@ -55,7 +55,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="functions-extensions"></a>Functions-bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Mellék** | **Leírás** |
+> | **Kiterjesztés** | **Leírás** |
 > |---|---|
 > | [autoinc](https://www.postgresql.org/docs/current/contrib-spi.html#id-1.11.7.45.7) | Függvények az automatikusan növekvő mezőkhöz. |
 > | [earthdistance](https://www.postgresql.org/docs/current/static/earthdistance.html) | Lehetővé teszi a nagy kör alakú távolságok kiszámítását a Föld felszínén. |
@@ -77,7 +77,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="hyperscale-extensions"></a>Nagy kapacitású-bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Mellék** | **Leírás** |
+> | **Kiterjesztés** | **Leírás** |
 > |---|---|
 > | [citus](https://github.com/citusdata/citus) | Citus elosztott adatbázis. |
 > | szegmens- \_ újrakiegyensúlyozó | A kiszolgálókon tárolt adatok biztonságos átszámolása csomópontok hozzáadása vagy eltávolítása esetén. |
@@ -85,7 +85,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="index-types-extensions"></a>Index típusú bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Mellék** | **Leírás** |
+> | **Kiterjesztés** | **Leírás** |
 > |---|---|
 > | [Bloom](https://www.postgresql.org/docs/current/bloom.html) | A Bloom hozzáférési módszere – aláírási fájl alapú index. |
 > | [fa \_ gin](https://www.postgresql.org/docs/current/static/btree-gin.html) | Olyan minta GIN operátori osztályokat biztosít, amelyek bizonyos adattípusok esetén B-fa viselkedést implementálnak. |
@@ -94,14 +94,14 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="language-extensions"></a>Nyelvi bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Mellék** | **Leírás** |
+> | **Kiterjesztés** | **Leírás** |
 > |---|---|
 > | [plpgsql](https://www.postgresql.org/docs/current/static/plpgsql.html) | PL/pgSQL betölthető eljárási nyelv. |
 
 ### <a name="miscellaneous-extensions"></a>Egyéb bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Mellék** | **Leírás** |
+> | **Kiterjesztés** | **Leírás** |
 > |---|---|
 > | [AdminPack](https://www.postgresql.org/docs/current/adminpack.html) | A PostgreSQL-hez készült felügyeleti függvények. |
 > | [amcheck](https://www.postgresql.org/docs/current/amcheck.html) | Függvények a kapcsolatok integritásának ellenőrzéséhez. |
@@ -127,7 +127,7 @@ A következő táblázat a Azure Database for PostgreSQL által jelenleg támoga
 ### <a name="postgis-extensions"></a>PostGIS-bővítmények
 
 > [!div class="mx-tableFixed"]
-> | **Mellék** | **Leírás** |
+> | **Kiterjesztés** | **Leírás** |
 > |---|---|
 > | [PostGIS](https://www.postgis.net/), PostGIS \_ topológia, PostGIS \_ Tiger \_ geocoder, PostGIS \_ sfcgal | A PostgreSQL térbeli és földrajzi objektumai. |
 > | \_a címek szabványosítása, a \_ szabványosítási adatkezelési \_ szolgáltatás \_ | A címek összetevőire való elemzéséhez használatos. A helymeghatározáshoz-címek normalizálása lépésének támogatásához használatos. |
@@ -144,6 +144,6 @@ A beállítás határozza meg, hogy `pg_stat_statements.track` a bővítmény mi
 A lekérdezés végrehajtási információi pg_stat_statements biztosít, valamint a kiszolgáló teljesítményére gyakorolt hatás, ahogy az egyes SQL-utasítások bejelentkezik. Ha nem használja aktívan a pg_stat_statements bővítményt, javasoljuk, hogy állítsa a következőre: `pg_stat_statements.track` `none` . Előfordulhat, hogy egyes harmadik féltől származó figyelési szolgáltatások a lekérdezési teljesítmény megállapítására támaszkodnak pg_stat_statements, ezért ellenőrizze, hogy ez a helyzet-e az Ön számára.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink és postgres_fdw
-A dblink és a postgres_fdw használatával csatlakozhat egy PostgreSQL-kiszolgálóról egy másikhoz, vagy egy kiszolgálón található másik adatbázishoz. A fogadó kiszolgálónak engedélyeznie kell a kapcsolódást a küldő kiszolgálóról a tűzfalon keresztül. Ha ezeket a bővítményeket Azure Database for PostgreSQL-kiszolgálók közötti kapcsolathoz szeretné használni, állítsa be az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** a következőre:. Ezt a beállítást akkor is be kell kapcsolni, ha a bővítményekkel vissza kíván térni ugyanarra a kiszolgálóra. Az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás a postgres-kiszolgáló Azure Portal lapján található, a **kapcsolat biztonsága**lehetőség alatt. Az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** az összes Azure-beli IP-címen.
 
-Jelenleg a Azure Database for PostgreSQL kimenő kapcsolatai nem támogatottak, kivéve a más Azure Database for PostgreSQL kiszolgálókhoz való kapcsolódást.
+A dblink és \_ a postgres FDW használatával csatlakozhat egy PostgreSQL-kiszolgálóról egy másikra, vagy egy kiszolgálón található másik adatbázisba.  A fogadó kiszolgálónak engedélyeznie kell a kapcsolódást a küldő kiszolgálóról a tűzfalon keresztül.  Ha ezeket a bővítményeket Azure Database for PostgreSQL kiszolgálók vagy nagy kapacitású (Citus) kiszolgálócsoportok közötti kapcsolathoz szeretné használni, állítsa be az **Azure-szolgáltatások és-erőforrások engedélyezése lehetőséget a kiszolgálócsoport (vagy kiszolgáló) számára való hozzáféréshez** .  Ezt a beállítást akkor is be kell kapcsolni, ha a bővítményekkel vissza kíván térni ugyanarra a kiszolgálóra.
+Az **Azure-szolgáltatások és-erőforrások hozzáférésének engedélyezése ehhez a kiszolgálócsoport** -beállításhoz a Azure Portal oldalon található a nagy kapacitású (Citus) kiszolgálócsoport a **hálózat**területen.  Jelenleg Azure Database for PostgreSQL önálló kiszolgálóról és nagy kapacitású (Citus) származó kimenő kapcsolatok nem támogatottak, kivéve a más Azure Database for PostgreSQL kiszolgálókhoz és nagy kapacitású (Citus) kiszolgálói csoportokhoz való kapcsolódást.

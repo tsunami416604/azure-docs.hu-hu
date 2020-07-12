@@ -3,12 +3,12 @@ title: Fürt Azure Service Fabric verziójának frissítése
 description: Frissítse a Service Fabric kódot és/vagy konfigurációt, amely egy Service Fabric fürtöt futtat, beleértve a fürt frissítési módjának beállítását, a tanúsítványok frissítését, az alkalmazások portjainak hozzáadását, az operációs rendszer javítását stb. Mire számíthat a frissítések végrehajtásakor?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 802e7402f60370b7151c5e373c8a4921a5af7c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0fef612725d606f1415e7e8d004aacee025cedf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82789600"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261048"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Egy fürt Service Fabric-verziójának frissítése
 
@@ -19,7 +19,7 @@ Beállíthatja, hogy a fürt a Microsoft által kiadott automatikus háló-friss
 Ezt úgy teheti meg, hogy az "upgradeMode" fürtöt a portálon vagy a Resource Managert használja a létrehozáskor vagy később egy élő fürtön 
 
 > [!NOTE]
-> Ügyeljen arra, hogy a fürtön mindig a támogatott háló verziót futtassa. Ahogy és amikor bejelentjük a Service Fabric új verziójának kiadását, az előző verzió a támogatás végére van megjelölve, legalább 60 nappal az adott dátumtól számítva. Az új kiadások a [Service Fabric csapatának blogjában](https://blogs.msdn.microsoft.com/azureservicefabric/)jelennek meg. Az új kiadás elérhető lesz a választáshoz. 
+> Ügyeljen arra, hogy a fürtön mindig a támogatott háló verziót futtassa. Ahogy és amikor bejelentjük a Service Fabric új verziójának kiadását, az előző verzió a támogatás végére van megjelölve, legalább 60 nappal az adott dátumtól számítva. Az új kiadások a [Service Fabric csapatának blogjában](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)jelennek meg. Az új kiadás elérhető lesz a választáshoz. 
 > 
 > 
 
@@ -108,7 +108,7 @@ Output:
                 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök néhány beállítását](service-fabric-cluster-fabric-settings.md)
 * Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-in-out.md)
 * Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md) megismerése

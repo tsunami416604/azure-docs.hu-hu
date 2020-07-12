@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 73c149a0d0992fecd1acf633891057570285df64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b17befcd86cd56eb5eb385ddc5196cbfce73003c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639666"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260418"
 ---
 # <a name="actor-events"></a>Színészi események
 A színészi események lehetővé teszik a legjobb erőfeszítést jelző értesítések küldését a színésztől az ügyfeleknek. A Actors-események a színészek közötti kommunikációhoz készültek, és nem használhatók a színészek közötti kommunikációhoz.
@@ -98,10 +99,10 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Actor újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
 * [Színészi diagnosztika és Teljesítményfigyelés](service-fabric-reliable-actors-diagnostics.md)
-* [A Actor API-referenciájának dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [A Actor API-referenciájának dokumentációja](/previous-versions/azure/dn971626(v=azure.100))
 * [C# mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET Core-mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)

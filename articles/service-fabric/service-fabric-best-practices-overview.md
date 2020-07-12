@@ -5,11 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: pepogors
-ms.openlocfilehash: 46601fd91fccb5bd0866bd999cc7643c37c6d582
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86a02fd489ca0eec61b798db7136f963277f6c82
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75551777"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261088"
 ---
 # <a name="azure-service-fabric-application-and-cluster-best-practices"></a>Az Azure Service Fabric alkalmazás és a fürt ajánlott eljárásai
 
@@ -26,7 +27,7 @@ Ez a cikk az Azure Service Fabric-alkalmazások és-fürtök kezelésével kapcs
 ## <a name="compute-planning-and-scaling"></a>Számítási teljesítmény tervezése és méretezése
 
 * [Ajánlott eljárások a számítási skálázáshoz](service-fabric-best-practices-capacity-scaling.md)
-* [Számítási kapacitás megtervezése](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)
+* [Számítási kapacitás megtervezése](./service-fabric-cluster-capacity.md)
 
 ## <a name="infrastructure-as-code"></a>Infrastruktúra mint kód
 
@@ -43,9 +44,9 @@ Ez a cikk az Azure Service Fabric-alkalmazások és-fürtök kezelésével kapcs
 ## <a name="checklist"></a>Ellenőrzőlista
 
 Az előző fejezetekben javasolt eljárások megvalósítása után győződjön meg arról, hogy az üzemi készültségi ellenőrzőlista összes ajánlott eljárása be van építve:
-* [Azure Service Fabric üzemi készültségi ellenőrzőlista](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)
+* [Azure Service Fabric üzemi készültségi ellenőrzőlista](./service-fabric-production-readiness-checklist.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Fürt létrehozása a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric Windows Server-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)
 * Fürt létrehozása virtuális gépeken vagy Linuxon futó számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)

@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7e3a35d95e7d2a339bf33620c9d1a140fb6a0a1d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 3ed3ff94b764c0fcb5521ef8106b32923b203a01
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143747"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260647"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Dokumentumok indexelése az Azure Blob Storage az Azure-ban Cognitive Search
 
@@ -210,6 +210,25 @@ A következő lépésekkel egyesítheti a mezőket, és engedélyezheti a kulcso
 >
 >
 
+#### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>Mi a teendő, ha olyan mezőt kell kódolni, amelyet kulcsként kíván használni, de azt is érdemes megkeresni?
+
+Vannak olyan időpontok, amikor egy mező kódolású verzióját kell használnia, például metadata_storage_path kulcsként, de a mezőnek kereshetőnek kell lennie (kódolás nélkül). A probléma megoldásához rendelje azt két mezőhöz; az egyik, amelyet a kulcshoz fog használni, és egy másikat, amelyet a rendszer keresési célokra használ. Az alábbi példában a *kulcs* mező a kódolt elérési utat tartalmazza, az *elérési út* mező pedig nincs kódolva, és az index kereshető mezőként lesz használva.
+
+```http
+    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      "dataSourceName" : " blob-datasource ",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "fieldMappings" : [
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "key", "mappingFunction" : { "name" : "base64Encode" } },
+        { "sourceFieldName" : "metadata_storage_path", "targetFieldName" : "path" }
+      ]
+    }
+```
 <a name="WhichBlobsAreIndexed"></a>
 ## <a name="controlling-which-blobs-are-indexed"></a>A Blobok indexelésének szabályozása
 Megadhatja, hogy mely Blobok indexelve legyenek, és melyeket a rendszer kihagyja.

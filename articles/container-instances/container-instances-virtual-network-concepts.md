@@ -4,12 +4,12 @@ description: Forgatókönyvek, erőforrások és korlátozások a tároló-csopo
 ms.topic: article
 ms.date: 04/29/2020
 ms.author: danlep
-ms.openlocfilehash: 77fbdb1720e571027f28b5bdca5c0e3c65c3ded2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4e983e7d83e661b4ba50ebe2c6d65bce2f42514
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82584401"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259549"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Virtuális hálózati forgatókönyvek és erőforrások
 
@@ -67,13 +67,13 @@ A tárolók csoportjaihoz használt alhálózat csak tároló csoportokat tartal
 
 A hálózati profil az Azure-erőforrások hálózati konfigurációs sablonja. Megadja az erőforrás bizonyos hálózati tulajdonságait, például azt az alhálózatot, amelybe központilag telepíteni kívánja. Amikor először az az [Container Create][az-container-create] paranccsal telepít egy tároló csoportot egy alhálózatra (és így egy virtuális hálózatra), az Azure létrehoz egy hálózati profilt. Ezt a hálózati profilt ezután a jövőbeli központi telepítések számára is használhatja az alhálózathoz. 
 
-Ha Resource Manager-sablont, YAML-fájlt vagy programozott módszert szeretne használni egy alhálózatra, meg kell adnia egy hálózati profil teljes Resource Manager erőforrás-AZONOSÍTÓját. Használhat korábban [az az Container Create][az-container-create]paranccsal létrehozott profilt, vagy létrehozhat egy profilt egy Resource Manager-sablonnal (lásd a [sablon példáját](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) és a [hivatkozást](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles)). Egy korábban létrehozott profil AZONOSÍTÓjának lekéréséhez használja az az [Network profil List][az-network-profile-list] parancsot. 
+Ha Resource Manager-sablont, YAML-fájlt vagy programozott módszert szeretne használni egy alhálózatra, meg kell adnia egy hálózati profil teljes Resource Manager erőforrás-AZONOSÍTÓját. Használhat korábban [az az Container Create][az-container-create]paranccsal létrehozott profilt, vagy létrehozhat egy profilt egy Resource Manager-sablonnal (lásd a [sablon példáját](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet) és a [hivatkozást](/azure/templates/microsoft.network/networkprofiles)). Egy korábban létrehozott profil AZONOSÍTÓjának lekéréséhez használja az az [Network profil List][az-network-profile-list] parancsot. 
 
 A következő ábrán számos tároló csoport lett telepítve egy Azure Container Instances-ra delegált alhálózatra. Miután telepített egy tároló csoportot egy alhálózatra, további tároló csoportokat is telepíthet rá, ha ugyanazt a hálózati profilt megadja.
 
 ![Virtuális hálózaton belüli tároló-csoportok][aci-vnet-01]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure CLI-vel történő üzembe helyezési példákat lásd: [Container instances telepítése Azure-beli virtuális hálózatba](container-instances-vnet.md).
 * Ha új virtuális hálózatot, alhálózatot, hálózati profilt és tároló csoportot szeretne üzembe helyezni Resource Manager-sablonnal, tekintse meg [Az Azure Container Group létrehozása a VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
@@ -86,4 +86,3 @@ A következő ábrán számos tároló csoport lett telepítve egy Azure Contain
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
-

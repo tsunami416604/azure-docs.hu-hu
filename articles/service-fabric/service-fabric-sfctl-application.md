@@ -5,27 +5,28 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b4e1066bba1db387c9dc0600bc55522f0b5fe897
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 880770345eb7d65850db322bd97d64c60b6681ee
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906196"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260871"
 ---
 # <a name="sfctl-application"></a>sfctl-alkalmazás
 Alkalmazások és alkalmazások típusainak létrehozása, törlése és kezelése.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Description|
+|Parancs|Leírás|
 | --- | --- |
 | létrehozás | Létrehoz egy Service Fabric alkalmazást a megadott leírás használatával. |
-| delete | Töröl egy meglévő Service Fabric alkalmazást. |
+| törlés | Töröl egy meglévő Service Fabric alkalmazást. |
 | telepített | Egy Service Fabric csomóponton telepített alkalmazás információinak beolvasása. |
 | központilag telepített – állapot | Egy Service Fabric csomóponton telepített alkalmazás állapotával kapcsolatos információk beolvasása. |
 | központilag telepített – lista | A Service Fabric csomóponton telepített alkalmazások listájának beolvasása. |
 | állapotfigyelő | Lekéri a Service Fabric-alkalmazás állapotát. |
 | információ | Beolvas egy Service Fabric alkalmazással kapcsolatos információkat. |
-| lista | A megadott szűrőknek megfelelő Service Fabric-fürtben létrehozott alkalmazások listájának beolvasása. |
+| list | A megadott szűrőknek megfelelő Service Fabric-fürtben létrehozott alkalmazások listájának beolvasása. |
 | betöltés | Beolvas egy Service Fabric alkalmazás betöltési adatait. |
 | manifest | Beolvassa az alkalmazás típusát leíró jegyzékfájlt. |
 | rendelkezés | Kiépíti vagy regisztrálja Service Fabric alkalmazás típusát a fürtön a külső tárolóban található ". sfpkg" csomaggal, vagy a rendszerkép-tárolóban lévő alkalmazáscsomag használatával. |
@@ -44,7 +45,7 @@ Létrehoz egy Service Fabric alkalmazást a megadott leírás használatával.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --App-Name [kötelező] | Az alkalmazás neve, beleértve a "Fabric \: " URI-sémát. |
 | --App-Type [kötelező] | Az alkalmazás-jegyzékfájlban található az alkalmazás típusa név. |
@@ -57,7 +58,7 @@ Létrehoz egy Service Fabric alkalmazást a megadott leírás használatával.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -72,7 +73,7 @@ A törlés előtt létre kell hozni egy alkalmazást. Egy alkalmazás törlésé
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
 | --Force-Remove | Távolítson el egy Service Fabric alkalmazást vagy szolgáltatást erőteljesen, anélkül, hogy a kecses leállítási sorozatot kellene volna átvennie. Ez a paraméter egy olyan alkalmazás vagy szolgáltatás kényszerített törlésére használható, amelynél a törlés időtúllépés miatt meggátolja a replikák kecses bezárását. |
@@ -80,7 +81,7 @@ A törlés előtt létre kell hozni egy alkalmazást. Egy alkalmazás törlésé
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -95,7 +96,7 @@ Ez a lekérdezés a rendszeralkalmazási adatokat adja vissza, ha a megadott alk
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
 | --Node-Name [kötelező] | A csomópont neve. |
@@ -104,7 +105,7 @@ Ez a lekérdezés a rendszeralkalmazási adatokat adja vissza, ha a megadott alk
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -119,7 +120,7 @@ Egy Service Fabric csomóponton telepített alkalmazás állapotával kapcsolato
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
 | --Node-Name [kötelező] | A csomópont neve. |
@@ -130,7 +131,7 @@ Egy Service Fabric csomóponton telepített alkalmazás állapotával kapcsolato
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -145,7 +146,7 @@ A Service Fabric csomóponton telepített alkalmazások listájának beolvasása
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Node-Name [kötelező] | A csomópont neve. |
 | --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
@@ -155,7 +156,7 @@ A Service Fabric csomóponton telepített alkalmazások listájának beolvasása
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -170,7 +171,7 @@ A Service Fabric-alkalmazás egészségügyi állapotát adja vissza. A válasz 
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
 | --telepített-alkalmazások-állapot-állapot-szűrő | Lehetővé teszi az alkalmazás állapota lekérdezés eredményében visszaadott központilag telepített alkalmazások állapotának szűrését az állapotuk alapján. A paraméter lehetséges értékei a következő állapotok egyikének egészét tartalmazzák. A rendszer csak a szűrőnek megfelelő telepített alkalmazásokat adja vissza. Az összes telepített alkalmazás az összesített állapot kiértékelésére szolgál. Ha nincs megadva, a rendszer az összes bejegyzést visszaadja. Az állapotok a jelző-alapú enumerálások, így az érték a bitenkénti "vagy" operátor használatával kapott értékek kombinációja lehet. Ha például a megadott érték 6, akkor a rendszer az OK (2) és a figyelmeztetés (4) HealthState értékkel rendelkező telepített alkalmazások állapotát adja vissza.  <br> – Alapértelmezett – alapértelmezett érték. Megfelel bármely HealthState. Az érték nulla.  <br> – Nincs – a HealthState értéknek nem megfelelő szűrő. Az adott állapotok egy adott gyűjteményében nem lehet eredményt visszaadni. Az érték 1.  <br> – Ok – a HealthState értékkel egyező bemenettel rendelkező szűrő. Az érték 2.  <br> -Figyelmeztetés – a HealthState értékkel rendelkező bemenettel egyező szűrő. Az érték 4.  <br> – Hiba – a HealthState értékű bemenettel egyező szűrő. Az érték 8.  <br> – Minden olyan szűrő, amely megfelel bármely HealthState értéknek. Az érték 65535. |
@@ -181,7 +182,7 @@ A Service Fabric-alkalmazás egészségügyi állapotát adja vissza. A válasz 
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -196,7 +197,7 @@ A létrehozott vagy a Service Fabric-fürtben létrehozott alkalmazással kapcso
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
 | --kizárás-Application-Parameters | A jelző, amely megadja, hogy az alkalmazás paramétereinek ki lesznek-e zárva az eredményből. |
@@ -204,7 +205,7 @@ A létrehozott vagy a Service Fabric-fürtben létrehozott alkalmazással kapcso
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -219,7 +220,7 @@ Beolvassa a létrehozott vagy a Service Fabric-fürtben létrehozott alkalmazás
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --alkalmazás-definíció-Kind-Filter | A ApplicationDefinitionKind szűrésére szolgál, amely egy Service Fabric alkalmazás definiálásához használt mechanizmus.  <br> – Alapértelmezett – az alapértelmezett érték, amely ugyanazt a funkciót hajtja végre, mint az "összes" lehetőséget. Az érték 0.  <br> – Minden olyan szűrő, amely megfelel bármely ApplicationDefinitionKind értéknek. Az érték 65535.  <br> -ServiceFabricApplicationDescription – a ApplicationDefinitionKind érték ServiceFabricApplicationDescription rendelkező bemenettel egyező szűrő. Az érték 1.  <br> -Levélírás – a ApplicationDefinitionKind értékkel megegyező bemeneti szűrő. Az érték 2. |
 | --Application-Type-Name | Az alkalmazásnak a lekérdezéshez való szűréséhez használt alkalmazásnév neve. Ez az érték nem tartalmazhatja az alkalmazás típusának verzióját. |
@@ -230,7 +231,7 @@ Beolvassa a létrehozott vagy a Service Fabric-fürtben létrehozott alkalmazás
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -245,14 +246,14 @@ A létrehozott vagy a Service Fabric-fürtben létrehozott alkalmazás betölté
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
 | --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett \: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -267,7 +268,7 @@ A válasz karakterláncként tartalmazza az alkalmazás jegyzékfájljának XML-
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-Type-Name [kötelező] | Az alkalmazás típusának neve. |
 | --Application-Type-Version [kötelező] | Az alkalmazás típusának verziója. |
@@ -275,7 +276,7 @@ A válasz karakterláncként tartalmazza az alkalmazás jegyzékfájljának XML-
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -290,7 +291,7 @@ Egy Service Fabric alkalmazás típusának kiosztása a fürttel. A kiépítés 
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --alkalmazás-csomag-Letöltés-URI | Azon ". sfpkg" alkalmazáscsomag elérési útja, ahonnan az alkalmazáscsomag HTTP vagy HTTPS protokoll használatával tölthető le. <br><br> Csak a külső tároló üzembe helyezéséhez. Az alkalmazáscsomag tárolható egy külső tárolóban is, amely lekéréses műveletet biztosít a fájl letöltéséhez. A támogatott protokollok a HTTP és a HTTPS, és az elérési útnak engedélyeznie kell az OLVASÁSI hozzáférést. |
 | --Application-Type-Build-Path | Csak a rendszerképek tárolásához. Az alkalmazáscsomag relatív elérési útja az előző feltöltési művelet során megadott rendszerkép-tárolóban. |
@@ -302,7 +303,7 @@ Egy Service Fabric alkalmazás típusának kiosztása a fürttel. A kiépítés 
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -317,7 +318,7 @@ A megadott Service Fabric alkalmazás állapotának jelentése. A jelentésnek t
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. <br><br> Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziókban a 6.0 + és a "SajátPr/App1" értéknél. |
 | --Health-Property [kötelező] | Az állapotadatok tulajdonsága. <br><br> Az entitások különböző tulajdonságokhoz tartozhatnak állapotjelentést. A tulajdonság egy karakterlánc, nem pedig rögzített enumerálás, amely lehetővé teszi, hogy a jelentéskészítő rugalmasan kategorizálja a jelentést kiváltó állapot feltételeit. A "LocalWatchdog" SourceId forrásazonosító rendelkező jelentéskészítő például nyomon követheti a csomópontok rendelkezésre álló lemezének állapotát, így az adott csomópont "AvailableDisk" tulajdonságát is jelentheti. Ugyanaz a riporter figyelheti a csomópontok kapcsolatát, így a "kapcsolat" tulajdonságot is jelentheti ugyanazon a csomóponton. Az állapotfigyelő szolgáltatásban ezek a jelentések különálló állapotadatokként lesznek kezelve a megadott csomópont esetében. A SourceId forrásazonosító együtt a tulajdonság egyedileg azonosítja az állapotadatok adatait. |
@@ -332,7 +333,7 @@ A megadott Service Fabric alkalmazás állapotának jelentése. A jelentésnek t
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -347,7 +348,7 @@ A kiépített vagy a Service Fabric fürtben kiépített alkalmazási típusok a
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-Type-Name [kötelező] | Az alkalmazás típusának neve. |
 | --alkalmazás-típus-verzió | Az alkalmazás típusának verziója. |
@@ -358,7 +359,7 @@ A kiépített vagy a Service Fabric fürtben kiépített alkalmazási típusok a
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -373,7 +374,7 @@ A kiépített vagy a Service Fabric fürtben kiépített alkalmazási típusok a
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-Type-Definition-Kind-Filter | A ApplicationTypeDefinitionKind szűrésére szolgál, amely egy Service Fabric alkalmazás típusának definiálására szolgáló mechanizmus.  <br> – Alapértelmezett – az alapértelmezett érték, amely ugyanazt a funkciót hajtja végre, mint az "összes" lehetőséget. Az érték 0.  <br> – Minden olyan szűrő, amely megfelel bármely ApplicationTypeDefinitionKind értéknek. Az érték 65535.  <br> -ServiceFabricApplicationPackage – a ApplicationTypeDefinitionKind érték ServiceFabricApplicationPackage rendelkező bemenettel egyező szűrő. Az érték 1.  <br> -Levélírás – a ApplicationTypeDefinitionKind értékkel megegyező bemeneti szűrő. Az érték 2. |
 | --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
@@ -383,7 +384,7 @@ A kiépített vagy a Service Fabric fürtben kiépített alkalmazási típusok a
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -398,7 +399,7 @@ Ez a művelet csak akkor hajtható végre, ha az alkalmazás összes példánya 
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-Type-Name [kötelező] | Az alkalmazás típusának neve. |
 | --Application-Type-Version [kötelező] | Az alkalmazás jegyzékfájlban definiált verziója. |
@@ -407,7 +408,7 @@ Ez a művelet csak akkor hajtható végre, ha az alkalmazás összes példánya 
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -422,7 +423,7 @@ Ellenőrzi a megadott alkalmazás-frissítési paramétereket, és megkezdi az a
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. <br><br> Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
 | --alkalmazás-verzió [kötelező] | Az alkalmazás frissítéséhez használt célalkalmazás-típus verziója (az alkalmazás jegyzékfájljában található). |
@@ -444,7 +445,7 @@ Ellenőrzi a megadott alkalmazás-frissítési paramétereket, és megkezdi az a
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -459,7 +460,7 @@ A nem figyelt manuális Service Fabric az alkalmazás frissítését folytatja. 
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
 | --upgrade-domain-name [kötelező] | Annak a frissítési tartománynak a neve, amelyben a frissítés folytatása folyamatban van. |
@@ -467,7 +468,7 @@ A nem figyelt manuális Service Fabric az alkalmazás frissítését folytatja. 
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -482,14 +483,14 @@ Elindítja az aktuális alkalmazás frissítését az előző verzióra. Ez az A
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
 | --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett \: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -504,14 +505,14 @@ Információt ad vissza az alkalmazás legújabb frissítésének állapotáról
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
 | --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett \: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -526,7 +527,7 @@ A csomag összes fájljának feltöltési folyamata opcionálisan megjeleníthet
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – elérési út [kötelező] | Helyi alkalmazáscsomag elérési útja. |
 | – tömörítés | Csak Service Fabric alkalmazás-csomagokra érvényes. Hozzon létre egy új mappát, amely tartalmazza a tömörített alkalmazáscsomag vagy az alapértelmezett helyet, vagy a tömörített hely paraméter által megadott helyet, majd töltse fel az újonnan létrehozott mappát. <br><br> Ha már van olyan tömörített fájl, amelyet a sfctl hozott létre, a rendszer felülírja, ha ez a jelző be van állítva. Ha a könyvtár nem alkalmazáscsomag, a rendszer hibaüzenetet küld. Ha már tömörített alkalmazáscsomag van, a mappa a következőképpen lesz átmásolva:. Alapértelmezés szerint az újonnan létrehozott tömörített alkalmazáscsomag törlése sikeres feltöltés után megtörténik. Ha a feltöltés nem sikerült, manuálisan törölje a tömörített csomagot szükség szerint. A törlés nem távolít el üres dirs, amelyek akkor hozhatók létre, ha a tömörített Location paraméter nem létező címtárakra hivatkozik. |
@@ -538,7 +539,7 @@ A csomag összes fájljának feltöltési folyamata opcionálisan megjeleníthet
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -547,6 +548,6 @@ A csomag összes fájljának feltöltési folyamata opcionálisan megjeleníthet
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa](service-fabric-cli.md) be a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

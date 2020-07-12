@@ -7,12 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: afc3132ebdd0f144d16507ef2ccda2dcaffaa34e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232168"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260020"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>VMware virtuális gépek migrálása a kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal rendelkező Azure virtuális gépekre
 
@@ -59,6 +59,10 @@ A kiszolgálói áttelepítési portál felülete megkönnyíti a replikációs 
 A lemezes titkosítási készlet objektum Managed Diskst képez le egy olyan Key Vaultra, amely az SSE-hoz használandó CMK tartalmazza. A virtuális gépek CMK való replikálásához létre kell hoznia egy lemezes titkosítási készletet, és bemenetként kell továbbítania a replikálási művelethez.
 
 [A következő példa alapján](../virtual-machines/windows/disks-enable-customer-managed-keys-powershell.md) hozzon létre egy lemezes titkosítási készletet Azure PowerShell használatával. Győződjön meg arról, hogy a lemez titkosítási készlete a cél előfizetésben jön létre, amelyben a virtuális gépek migrálva vannak, illetve az áttelepítéshez a cél Azure-régióban.
+
+A lemezes titkosítási csoport úgy konfigurálható, hogy a felügyelt lemezeket egy ügyfél által felügyelt kulccsal titkosítsa, vagy a kettős titkosításhoz az ügyfél által felügyelt kulccsal és egy platform kulccsal. Ha a kettős titkosítást szeretné használni a REST beállításnál, konfigurálja a lemez titkosítási készletét az [itt](../virtual-machines/windows/disks-enable-double-encryption-at-rest-powershell.md)leírtak szerint.
+
+A lemezes titkosítási csoport alatt látható példában az ügyfél által felügyelt kulcs használatára van konfigurálva.
 
 ```azurepowershell
 $Location = "southcentralus"                           #Target Azure region for migration 
@@ -268,6 +272,6 @@ DeploymentDebugLogLevel :
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [replikációs állapot figyelése](tutorial-migrate-vmware.md#track-and-monitor) a portálon keresztül, valamint a tesztek áttelepítése és áttelepítése.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dc9d62141a63574a6796982542cb1491108eedc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422419"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259869"
 ---
 # <a name="linux-support"></a>Linux-támogatás
 
@@ -65,11 +65,11 @@ A Linux-ügyfél Windows rendszerű virtuális asztali környezethez való fejle
 1. Windows rendszerű virtuális asztali környezet létrehozása és üzembe helyezése teszteléshez vagy éles környezetben való használatra.
 2. Tesztelje az elérhető első féltől származó ügyfeleket a Windows rendszerű virtuális asztali felhasználói élmény megismeréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő ügyfelek dokumentációját:
 
-- [Windows asztali ügyfél](connect-windows-7-and-10.md)
+- [Windows asztali ügyfél](connect-windows-7-10.md)
 - [Webes ügyfél](connect-web.md)
 - [Android-ügyfél](connect-android.md)
 - [macOS-ügyfél](connect-macos.md)

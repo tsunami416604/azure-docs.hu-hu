@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bfe428b9eba1f83f3e1bb05c3941c4c56317c9bc
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 12caa6fce4d49e86d1ad5da16aa7abba30f26207
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223108"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260819"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>A személyes asztali címkészlet-hozzárendelés típusának konfigurálása
 
@@ -87,11 +87,11 @@ Ha közvetlenül szeretne hozzárendelni egy felhasználót egy munkamenet-gazda
 11. Válassza ki azt a felhasználót, akihez a munkamenet-gazdagépet hozzá szeretné rendelni az elérhető felhasználók listájából.
 12. Ha elkészült, válassza a **kiválasztás**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy konfigurálta a személyes asztal hozzárendelési típusát, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, és tesztelheti azt egy felhasználói munkamenet részeként. A következő két útmutató bemutatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél használatával:
 
-- [Kapcsolódás a Windows asztali ügyféllel](connect-windows-7-and-10.md)
+- [Kapcsolódás a Windows asztali ügyféllel](connect-windows-7-10.md)
 - [Kapcsolódás a webügyféllel](connect-web.md)
 - [Kapcsolódás az Android-ügyféllel](connect-android.md)
 - [Kapcsolódás az iOS-ügyfélhez](connect-ios.md)

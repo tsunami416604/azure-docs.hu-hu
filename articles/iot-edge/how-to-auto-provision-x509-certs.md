@@ -9,12 +9,12 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c54690645286a4fceb3fd786d85652b1cf77d7aa
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82131308"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260032"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>IoT Edge-eszköz létrehozása és kiépítése X. 509 tanúsítványok használatával
 
@@ -50,6 +50,9 @@ A következő fájlokra van szükség az automatikus kiépítés beállításáh
 * Az eszköz identitásának tanúsítványa és a titkos kulcs tanúsítványa. Ha egyéni regisztrációt hoz létre, a rendszer feltölti az eszköz Identity tanúsítványát a DPS-be. A titkos kulcsot a IoT Edge futtatókörnyezet adja át.
 * Egy teljes láncú tanúsítvány, amelynek tartalmaznia kell legalább az eszköz identitását és a köztes tanúsítványokat. A rendszer átadja a teljes lánc tanúsítványát a IoT Edge futtatókörnyezetnek.
 * Egy köztes vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány a megbízhatósági tanúsítványlánc alapján. A tanúsítványt a rendszer feltölti a DPS-be, ha létrehoz egy csoportos regisztrációt.
+
+> [!NOTE]
+> Jelenleg a libiothsm korlátozásai meggátolják a 2050 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
 
 ### <a name="use-test-certificates"></a>Tesztelési tanúsítványok használata
 
@@ -113,7 +116,7 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
       }
       ```
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során. A IoT Edge eszköz beállításához folytassa a [IoT Edge futtatókörnyezet telepítése](#install-the-iot-edge-runtime) című szakaszát.
 
@@ -139,7 +142,7 @@ Beléptetési csoport létrehozásakor lehetősége van ellenőrzött tanúsítv
 
    Ha a bemutató tanúsítványait használja, töltse fel a `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` tanúsítványt.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A tanúsítványnak mostantól szerepelnie kell a **tanúsítványok** lapon. Válassza ki a tanúsítvány adatainak megnyitásához.
 
@@ -198,7 +201,7 @@ További információ az eszközök kiépítési szolgáltatásának regisztrál
       }
       ```
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során. Folytassa a következő szakasszal a IoT Edge eszköz beállításához.
 
@@ -326,6 +329,6 @@ Futó modulok listázása.
 iotedge list
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az eszköz kiépítési szolgáltatásának beléptetési folyamata lehetővé teszi, hogy az eszköz AZONOSÍTÓját és az eszköz Twin címkéit az új eszköz kiépítésekor egy időben állítsa be. Ezeket az értékeket használhatja az egyes eszközök vagy eszközök automatikus eszközkezelés használatával történő megcélzásához. Megtudhatja, hogyan [helyezheti üzembe és figyelheti IoT Edge-modulok méretezését a Azure Portal vagy az](how-to-deploy-at-scale.md) [Azure CLI használatával](how-to-deploy-cli-at-scale.md).

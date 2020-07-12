@@ -3,12 +3,12 @@ title: Irányelvek a megbízható gyűjteményekhez
 description: Irányelvek és javaslatok Service Fabric megbízható gyűjtemények Azure Service Fabric alkalmazásban való használatához.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f196df4b58f1acb01a497b5fa08e9af99a4707d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483125"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260913"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure-Service Fabric megbízható gyűjteményekhez
 Ez a szakasz a megbízható állapot-kezelő és a megbízható gyűjtemények használatához nyújt útmutatást. A cél az, hogy segítse a felhasználókat a gyakori buktatók elkerülésében.
@@ -54,7 +54,7 @@ Az illékony megbízható gyűjtemények használatának eldöntése során vegy
 * A felejtő partíció Kvórumának elvesztése a teljes adatvesztést eredményezi
 * A biztonsági mentés és a visszaállítás nem érhető el a felejtő szolgáltatásokhoz
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
 * [Tranzakciók és zárolások](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Az adatkezelés
@@ -64,4 +64,4 @@ Az illékony megbízható gyűjtemények használatának eldöntése során vegy
   * [Megbízható állapot-kezelő konfigurációja](service-fabric-reliable-services-configuration.md)
 * Egyéb
   * [Reliable Services rövid útmutató](service-fabric-reliable-services-quick-start.md)
-  * [Fejlesztői referenciák megbízható gyűjteményekhez](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

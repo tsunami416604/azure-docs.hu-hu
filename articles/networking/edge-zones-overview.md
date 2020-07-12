@@ -7,12 +7,12 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: ganesr
-ms.openlocfilehash: 65a5f7e261913fa38c41930cc44341ca872d1b44
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: be113fec596d4730d55403b6ce4dbd6d2709e273
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086891"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260072"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Az Azure Edge Zone előzetes verziójának bemutatása
 
@@ -75,6 +75,8 @@ A tipikus használati esetek a következők:
 A peremhálózati zónák a következő operátorokkal együttműködve lesznek elérhetők:
 
 - &T (Atlanta, Dallas és Los Angeles) 
+
+Az 5G-hálózatokhoz csatlakozó, optimalizált és méretezhető alkalmazásokkal rendelkező ISV-ket mostantól az Azure Edge Zones új, a&T-re vonatkozó előzetes verzióját használhatja az alacsony késésű platformok, a mobil és a csatlakoztatott forgatókönyvek kiépítéséhez és kipróbálásához. Regisztráljon a korai örökbefogadó programra, és használja ki a biztonságos, nagy sávszélességű kapcsolat előnyeit.
 
 További információért [vegye fel a kapcsolatot az Edge Zone csapatával](https://aka.ms/EdgeZones) .
 
@@ -185,7 +187,7 @@ Az SD-WAN lehetővé teszi, hogy olyan nagyvállalati szintű hálózatokat (WAN
 Az SD-WAN zökkenőmentes fiókirodai kapcsolatot biztosít, amely a redundáns központi vezérlőkből áll, és alacsonyabb a tulajdonlási díja.
 Az SD-WAN privát peremhálózati zónái lehetővé teszik, hogy a CAPEX-központú modellből egy szolgáltatott szoftveres (SaaS) modellre váltson, hogy csökkentse az informatikai költségvetéseket. Az Ön által választott SD-WAN-partnereket, Orchestrator vagy vezérlőket használhat az új szolgáltatások engedélyezéséhez, és a teljes hálózaton keresztül propagálhatja azokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért forduljon a következő csapatokhoz:
 

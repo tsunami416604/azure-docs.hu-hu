@@ -5,12 +5,12 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19f773fa781c51f64412039201842a7af4c29052
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82787124"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261127"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Service Fabric-fürt programozott méretezése 
 
@@ -20,7 +20,7 @@ Az Azure-ban futó Service Fabric fürtök a virtuálisgép-méretezési csoport
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Hitelesítő adatok kezelése
-A szolgáltatásnak a skálázás kezelésére való írásának egyik kihívása, hogy a szolgáltatásnak képesnek kell lennie a virtuálisgép-méretezési csoport erőforrásainak interaktív bejelentkezés nélküli elérésére. Ha a skálázási szolgáltatás módosítja a saját Service Fabric alkalmazást, a Service Fabric-fürt elérése egyszerűen megtörténik, de a méretezési csoport eléréséhez hitelesítő adatokra van szükség. A bejelentkezéshez használhatja az [Azure CLI](https://github.com/azure/azure-cli)-vel létrehozott [egyszerű szolgáltatásnevet](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) .
+A szolgáltatásnak a skálázás kezelésére való írásának egyik kihívása, hogy a szolgáltatásnak képesnek kell lennie a virtuálisgép-méretezési csoport erőforrásainak interaktív bejelentkezés nélküli elérésére. Ha a skálázási szolgáltatás módosítja a saját Service Fabric alkalmazást, a Service Fabric-fürt elérése egyszerűen megtörténik, de a méretezési csoport eléréséhez hitelesítő adatokra van szükség. A bejelentkezéshez használhatja az [Azure CLI](https://github.com/azure/azure-cli)-vel létrehozott [egyszerű szolgáltatásnevet](/cli/azure/create-an-azure-service-principal-azure-cli) .
 
 Egy egyszerű szolgáltatásnév a következő lépésekkel hozható létre:
 
@@ -59,7 +59,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Másik lehetőségként a virtuálisgép-méretezési csoport mérete is kezelhetők PowerShell-parancsmagokkal. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss)lekérheti a virtuálisgép-méretezési Csoport objektumát. Az aktuális kapacitás a tulajdonságon keresztül érhető el `.sku.capacity` . Miután módosította a kapacitást a kívánt értékre, az Azure-ban található virtuálisgép-méretezési csoport frissíthető a [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) paranccsal.
+Másik lehetőségként a virtuálisgép-méretezési csoport mérete is kezelhetők PowerShell-parancsmagokkal. [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss)lekérheti a virtuálisgép-méretezési Csoport objektumát. Az aktuális kapacitás a tulajdonságon keresztül érhető el `.sku.capacity` . Miután módosította a kapacitást a kívánt értékre, az Azure-ban található virtuálisgép-méretezési csoport frissíthető a [`Update-AzVmss`](/powershell/module/az.compute/update-azvmss) paranccsal.
 
 Amikor manuálisan ad hozzá egy csomópontot, a méretezési csoport példányainak hozzáadásához minden szükséges, ami egy új Service Fabric csomópont elindításához szükséges, mivel a méretezési csoport sablonja olyan bővítményeket tartalmaz, amelyek automatikusan csatlakoznak az új példányokhoz a Service Fabric-fürthöz. 
 
@@ -115,10 +115,10 @@ A horizontális felskálázáshoz hasonlóan a virtuálisgép-méretezési csopo
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A saját automatikus méretezési logikája megvalósításának megkezdéséhez Ismerkedjen meg a következő fogalmakkal és hasznos API-kkal:
 
 - [Méretezés manuálisan vagy automatikus méretezési szabályokkal](./service-fabric-cluster-scale-in-out.md)
 - [Fluent Azure felügyeleti kódtárak a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (a Service Fabric-fürt mögöttes virtuálisgép-méretezési csoportjaival való interakcióhoz hasznos)
-- [System. Fabric. FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (Service Fabric-fürttel és annak csomópontjaival való interakcióhoz hasznos)
+- [System. Fabric. FabricClient](/dotnet/api/system.fabric.fabricclient) (Service Fabric-fürttel és annak csomópontjaival való interakcióhoz hasznos)

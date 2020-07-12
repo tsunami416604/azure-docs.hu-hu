@@ -3,11 +3,12 @@ title: Hitelesítés szolgáltatásnévvel
 description: Hozzáférés biztosítása a privát tároló beállításjegyzékében lévő rendszerképekhez egy Azure Active Directory egyszerű szolgáltatásnév használatával.
 ms.topic: article
 ms.date: 10/04/2019
-ms.openlocfilehash: 37da784c8e95a5f5b924532e4a019552924a1a3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74455410"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259145"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry hitelesítés egyszerű szolgáltatásokkal
 
@@ -29,7 +30,7 @@ Például úgy konfigurálhatja a webalkalmazást, hogy olyan egyszerű szolgál
 
 Egy egyszerű szolgáltatásnév használatával kell megadni a beállításjegyzék-hozzáférést a **fej nélküli forgatókönyvekben**. Ez azt jelenti, hogy minden olyan alkalmazás, szolgáltatás vagy parancsfájl, amely automatizált vagy más módon felügyelet nélkül leküld vagy lehívhatja a tárolók lemezképeit. Például:
 
-  * *Pull*: tárolók üzembe helyezése a beállításjegyzékből a Kubernetes, a DC/os és a Docker Swarm rendszerbe. Lekérheti a tároló-beállításjegyzékből a kapcsolódó Azure-szolgáltatásokat, például az [Azure Kubernetes Service (ak)](../aks/cluster-container-registry-integration.md), a [Azure Container Instances](container-registry-auth-aci.md), a [app Service](../app-service/index.yml), a [Batch](../batch/index.yml), a [Service Fabric](/azure/service-fabric/)és más szolgáltatásait is.
+  * *Pull*: tárolók üzembe helyezése a beállításjegyzékből a Kubernetes, a DC/os és a Docker Swarm rendszerbe. Lekérheti a tároló-beállításjegyzékből a kapcsolódó Azure-szolgáltatásokat, például az [Azure Kubernetes Service (ak)](../aks/cluster-container-registry-integration.md), a [Azure Container Instances](container-registry-auth-aci.md), a [app Service](../app-service/index.yml), a [Batch](../batch/index.yml), a [Service Fabric](../service-fabric/index.yml)és más szolgáltatásait is.
 
   * *Leküldés*: tároló-lemezképek létrehozása és továbbítása egy beállításjegyzékbe folyamatos integrációs és üzembe helyezési megoldások, például az Azure-folyamatok vagy a Jenkins használatával.
 
@@ -94,7 +95,7 @@ az acr login --name myregistry
 
 A CLI azt a tokent használja, amely akkor jön létre, amikor a `az login` -munkamenetet a beállításjegyzékkel hitelesíti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Container Registry szolgáltatással történő hitelesítéssel kapcsolatos egyéb forgatókönyvek [hitelesítésének áttekintését](container-registry-authentication.md) itt tekintheti meg.
 

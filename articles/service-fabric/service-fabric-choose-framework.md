@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 11e32c9d1290227e638a314ed8417b1bed906842
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e1c96d0b04140f8c1121cfb74b43969b49cfdda
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749529"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260522"
 ---
 # <a name="service-fabric-programming-model-overview"></a>A Service Fabric programozási modelljének áttekintése
 
@@ -25,7 +26,7 @@ Ismerkedés a vendég-végrehajtható fájlokkal az első [vendég végrehajthat
 
 Alapértelmezés szerint a Service Fabric folyamatokként telepíti és aktiválja a szolgáltatásokat. A Service Fabric [tárolókban](service-fabric-containers-overview.md)is telepíthetnek szolgáltatásokat. Service Fabric támogatja a Linux-tárolók és Windows-tárolók telepítését a Windows Server 2016-es és újabb verzióiban. A tároló lemezképeit bármely tároló adattárból lehívhatja, és üzembe helyezheti a gépre. A meglévő alkalmazásokat vendégként is üzembe helyezheti, Service Fabric állapot nélküli vagy állapot-nyilvántartó megbízható szolgáltatásokat vagy Reliable Actors tárolókban, és az ugyanazon alkalmazásban lévő tárolókban található folyamatokban és szolgáltatásokban is összekeverheti a szolgáltatásokat.
 
-[További információ a szolgáltatások containerizing Windows vagy Linux rendszeren](service-fabric-deploy-container.md)
+[További információ a szolgáltatások containerizing Windows vagy Linux rendszeren](./service-fabric-get-started-containers.md)
 
 ## <a name="reliable-services"></a>Reliable Services
 
@@ -53,7 +54,7 @@ Mivel a Reliable Actors Reliable Servicesre épülő alkalmazás-keretrendszer, 
 
 [Előtér-szolgáltatás létrehozása ASP.NET Core használatával](service-fabric-reliable-services-communication-aspnetcore.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Service Fabric és a tárolók áttekintése](service-fabric-containers-overview.md)
 

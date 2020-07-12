@@ -5,11 +5,12 @@ author: maburlik
 ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
-ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb9a52510788a275bdeea67cd5c1fdd2e894738d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75451843"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261026"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>A Windows Server önálló csomagjának Service Fabric tartalma
 A [letöltött](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric önálló csomag a következő fájlokat fogja megtalálni:
@@ -36,11 +37,11 @@ A [letöltött](https://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric �
 | --- | --- |
 | ClusterConfig.Unsecure.DevCluster.jsbekapcsolva |Egy, a nem biztonságos, három csomópontos, egyszámítógépes (vagy virtuálisgép-) fejlesztési fürtre vonatkozó beállításokat tartalmazó fürtözött konfigurációs minta, amely tartalmazza a fürt egyes csomópontjainak információit. |
 | ClusterConfig.Unsecure.MultiMachine.jsbekapcsolva |A fürt konfigurációs mintája, amely egy nem védett, többszámítógépes (vagy virtuális gép) fürt beállításait tartalmazza, beleértve a fürtben lévő egyes gépek adatait is. |
-| ClusterConfig.Windows.DevCluster.jsbekapcsolva |Egy, a biztonságos, három csomópontos, egyszámítógépes (vagy virtuálisgép-) fejlesztési fürtre vonatkozó összes beállítást tartalmazó fürtözött konfigurációs minta, amely tartalmazza a fürtben található egyes csomópontok információit. A fürt a [Windows-identitások](https://msdn.microsoft.com/library/ff649396.aspx)használatával védett. |
-| ClusterConfig.Windows.MultiMachine.jsbekapcsolva |Egy, a Windows-biztonságot használó biztonságos, többszámítógépes (vagy virtuálisgép-) fürt összes beállítását tartalmazó fürtkonfiguráció, beleértve a biztonságos fürtben található minden egyes gép adatait. A fürt a [Windows-identitások](https://msdn.microsoft.com/library/ff649396.aspx)használatával védett. |
+| ClusterConfig.Windows.DevCluster.jsbekapcsolva |Egy, a biztonságos, három csomópontos, egyszámítógépes (vagy virtuálisgép-) fejlesztési fürtre vonatkozó összes beállítást tartalmazó fürtözött konfigurációs minta, amely tartalmazza a fürtben található egyes csomópontok információit. A fürt a [Windows-identitások](/previous-versions/msp-n-p/ff649396(v=pandp.10))használatával védett. |
+| ClusterConfig.Windows.MultiMachine.jsbekapcsolva |Egy, a Windows-biztonságot használó biztonságos, többszámítógépes (vagy virtuálisgép-) fürt összes beállítását tartalmazó fürtkonfiguráció, beleértve a biztonságos fürtben található minden egyes gép adatait. A fürt a [Windows-identitások](/previous-versions/msp-n-p/ff649396(v=pandp.10))használatával védett. |
 | ClusterConfig.x509.DevCluster.jsbekapcsolva |Egy, a biztonságos, három csomópontos, egyszámítógépes (vagy virtuálisgép-) fejlesztési fürtre vonatkozó összes beállítást tartalmazó fürtözött konfigurációs minta, amely tartalmazza a fürt egyes csomópontjainak információit. A fürt x509-tanúsítványok használatával van védve. |
 | ClusterConfig.x509.MultiMachine.jsbekapcsolva |A fürt konfigurációs mintája, amely tartalmazza a biztonságos, többszámítógépes (vagy virtuálisgép-) fürt összes beállítását, beleértve a biztonságos fürt egyes csomópontjainak adatait is. A fürt x509-tanúsítványok használatával van védve. |
-| ClusterConfig.gMSA.Windows.MultiMachine.jsbekapcsolva |A fürt konfigurációs mintája, amely tartalmazza a biztonságos, többszámítógépes (vagy virtuálisgép-) fürt összes beállítását, beleértve a biztonságos fürt egyes csomópontjainak adatait is. A fürt a [csoportosan felügyelt szolgáltatásfiókok](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)használatával védett. |
+| ClusterConfig.gMSA.Windows.MultiMachine.jsbekapcsolva |A fürt konfigurációs mintája, amely tartalmazza a biztonságos, többszámítógépes (vagy virtuálisgép-) fürt összes beállítását, beleértve a biztonságos fürt egyes csomópontjainak adatait is. A fürt a [csoportosan felügyelt szolgáltatásfiókok](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11))használatával védett. |
 
 ## <a name="cluster-configuration-samples"></a>Fürt konfigurációs mintái
 A fürt konfigurációs sablonjainak legújabb verziói a GitHub oldalon találhatók: [önálló fürt konfigurációs minták](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).

@@ -5,22 +5,23 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a5ebd4822c5f0ff1735464bb4d5b42c436ee529
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905831"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260328"
 ---
 # <a name="sfctl-property"></a>sfctl-tulajdonság
 Tulajdonságok tárolása és lekérdezése Service Fabric neve alatt.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Description|
+|Parancs|Leírás|
 | --- | --- |
-| delete | Törli a megadott Service Fabric tulajdonságot. |
+| törlés | Törli a megadott Service Fabric tulajdonságot. |
 | get | Lekéri a megadott Service Fabric tulajdonságot. |
-| lista | Az adott név alatti összes Service Fabric tulajdonság információinak beolvasása. |
+| list | Az adott név alatti összes Service Fabric tulajdonság információinak beolvasása. |
 | Put | Létrehoz vagy frissít egy Service Fabric tulajdonságot. |
 
 ## <a name="sfctl-property-delete"></a>sfctl tulajdonság törlése
@@ -30,7 +31,7 @@ Törli az adott név alatti megadott Service Fabric tulajdonságot. A törlés e
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Name-ID [kötelező] | A Service Fabric neve a "Fabric \: " URI-séma nélkül. |
 | --tulajdonság-név [kötelező] | A lekérdezni kívánt tulajdonság nevét adja meg. |
@@ -38,7 +39,7 @@ Törli az adott név alatti megadott Service Fabric tulajdonságot. A törlés e
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -53,7 +54,7 @@ Lekéri a megadott Service Fabric tulajdonságot egy adott név alatt. Ez mindig
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Name-ID [kötelező] | A Service Fabric neve a "Fabric \: " URI-séma nélkül. |
 | --tulajdonság-név [kötelező] | A lekérdezni kívánt tulajdonság nevét adja meg. |
@@ -61,7 +62,7 @@ Lekéri a megadott Service Fabric tulajdonságot egy adott név alatt. Ez mindig
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -76,7 +77,7 @@ A Service Fabric neve tartalmazhat egy vagy több olyan nevesített tulajdonság
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Name-ID [kötelező] | A Service Fabric neve a "Fabric \: " URI-séma nélkül. |
 | --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
@@ -85,7 +86,7 @@ A Service Fabric neve tartalmazhat egy vagy több olyan nevesített tulajdonság
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -100,7 +101,7 @@ Létrehozza vagy frissíti a megadott Service Fabric tulajdonságot egy adott n�
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Name-ID [kötelező] | A Service Fabric neve a "Fabric \: " URI-séma nélkül. |
 | --tulajdonság-név [kötelező] | A Service Fabric tulajdonság neve. |
@@ -110,7 +111,7 @@ Létrehozza vagy frissíti a megadott Service Fabric tulajdonságot egy adott n�
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -119,6 +120,6 @@ Létrehozza vagy frissíti a megadott Service Fabric tulajdonságot egy adott n�
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

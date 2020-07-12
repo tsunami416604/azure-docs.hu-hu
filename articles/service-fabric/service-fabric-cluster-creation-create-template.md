@@ -3,11 +3,12 @@ title: Azure Service Fabric-fürt sablonjának létrehozása
 description: Megtudhatja, hogyan hozhat létre Resource Manager-sablont egy Service Fabric-fürthöz. A biztonság, a Azure Key Vault és a Azure Active Directory (Azure AD) konfigurálása az ügyfél-hitelesítéshez.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 6cf0f9c3b8b54db7bd27ec8dd9c9d59d849c74cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b028b5c1f32733146c071e50b24202e5bad945c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985371"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260496"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric fürterőforrás-kezelő sablon létrehozása
 
@@ -246,7 +247,7 @@ Az alábbi ábra azt szemlélteti, hogy a Key Vault és az Azure AD konfiguráci
 
 ![Resource Manager-függőségi Térkép][cluster-security-arm-dependency-map]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy van egy sablonja a fürthöz, Ismerje meg, hogyan [helyezheti üzembe a fürtöt az Azure](service-fabric-cluster-creation-via-arm.md)-ban.  Ha még nem tette meg, olvassa el az [üzemi készültségi ellenőrzőlistát](service-fabric-production-readiness-checklist.md) az éles fürt üzembe helyezése előtt.
 
 A cikkben üzembe helyezett erőforrások JSON-szintaxisáról és tulajdonságairól további információt a következő témakörben talál:
@@ -261,7 +262,7 @@ A cikkben üzembe helyezett erőforrások JSON-szintaxisáról és tulajdonsága
 <!-- Links -->
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure
-[resource-group-template-deploy]: https://azure.microsoft.com/documentation/articles/resource-group-template-deploy/
+[resource-group-template-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 
 <!-- Images -->
 [cluster-security-arm-dependency-map]: ./media/service-fabric-cluster-creation-create-template/cluster-security-arm-dependency-map.png

@@ -4,11 +4,12 @@ description: Tanúsítványok konfigurálása az alkalmazáshoz a Linux-fürtön
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: pepogors
-ms.openlocfilehash: 802e76614f51e1f6479a311e61a49d83b8125546
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a97c8b8315fe3be405aed9c6570004afb8fafd1d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79282574"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258666"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Tanúsítványok és biztonság Linux-fürtökön
 
@@ -20,11 +21,11 @@ A Service Fabric általában X. 509 tanúsítványokat vár a Linux-fürtcsomóp
 
 Linux-fürtök esetén Service Fabric a tanúsítványokat olyan. PEM fájlként kell megadnia, amely tartalmazza a tanúsítványt és a titkos kulcsot, vagy egy. CRT-fájlt, amely tartalmazza a tanúsítványt és a titkos kulcsot tartalmazó. Key fájlt. Minden fájlnak PEM formátumúnak kell lennie. 
 
-Ha a tanúsítványt egy [Resource Manager-sablonnal](./service-fabric-cluster-creation-create-template.md) vagy [PowerShell](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0) -parancsokkal telepíti Azure Key Vaultból, a tanúsítványt a */var/lib/sfcerts* könyvtárban, az egyes csomópontokon a megfelelő formátumban kell telepíteni. Ha a tanúsítványt egy másik módszerrel telepíti, meg kell győződnie arról, hogy a tanúsítvány megfelelően van telepítve a fürtcsomópontokon.
+Ha a tanúsítványt egy [Resource Manager-sablonnal](./service-fabric-cluster-creation-create-template.md) vagy [PowerShell](/powershell/module/az.servicefabric/?view=azps-2.6.0) -parancsokkal telepíti Azure Key Vaultból, a tanúsítványt a */var/lib/sfcerts* könyvtárban, az egyes csomópontokon a megfelelő formátumban kell telepíteni. Ha a tanúsítványt egy másik módszerrel telepíti, meg kell győződnie arról, hogy a tanúsítvány megfelelően van telepítve a fürtcsomópontokon.
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Az alkalmazás jegyzékfájljában hivatkozott tanúsítványok
 
-Az alkalmazás jegyzékfájljában megadott tanúsítványoknak (például a [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) vagy a [**EndpointCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) elemnek) szerepelniük kell a */var/lib/sfcerts* könyvtárban. Az alkalmazás jegyzékfájljában a tanúsítványok megadásához használt elemek nem rendelkeznek elérésiút-attribútummal, ezért a tanúsítványoknak jelen kell lenniük az alapértelmezett könyvtárban. Ezek az elemek nem kötelező **X509StoreName** attribútumot is igénybe vehetnek. Az alapértelmezett érték a "My", amely a Linux-csomópontok */var/lib/sfcerts* könyvtárára mutat. Bármely más érték nem definiált Linux-fürtön. Azt javasoljuk, hogy hagyja ki a **X509StoreName** attribútumot a Linux-fürtökön futó alkalmazásokhoz. 
+Az alkalmazás jegyzékfájljában megadott tanúsítványoknak (például a [**SecretsCertificate**](./service-fabric-service-model-schema-elements.md#secretscertificate-element) vagy a [**EndpointCertificate**](./service-fabric-service-model-schema-elements.md#endpointcertificate-element) elemnek) szerepelniük kell a */var/lib/sfcerts* könyvtárban. Az alkalmazás jegyzékfájljában a tanúsítványok megadásához használt elemek nem rendelkeznek elérésiút-attribútummal, ezért a tanúsítványoknak jelen kell lenniük az alapértelmezett könyvtárban. Ezek az elemek nem kötelező **X509StoreName** attribútumot is igénybe vehetnek. Az alapértelmezett érték a "My", amely a Linux-csomópontok */var/lib/sfcerts* könyvtárára mutat. Bármely más érték nem definiált Linux-fürtön. Azt javasoljuk, hogy hagyja ki a **X509StoreName** attribútumot a Linux-fürtökön futó alkalmazásokhoz. 
 
 ## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>A konfigurációs csomagban hivatkozott tanúsítványok (Settings.xml)
 
@@ -32,7 +33,7 @@ Egyes szolgáltatások esetében X. 509 tanúsítványokat is beállíthat a [Co
 
 ### <a name="using-x509-securitycredentialstype"></a>A X509 SecurityCredentialsType használata
 
-A .NET-vagy Java SDK-k segítségével megadhatja a **SecurityCredentialsType** **X509** . Ez megfelel a ( `X509Credentials` .net[Java](https://msdn.microsoft.com/library/system.fabric.x509credentials.aspx) / [Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials)) típusának ( `SecurityCredentials` .net[.NET](https://msdn.microsoft.com/library/system.fabric.securitycredentials.aspx) / [Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)).
+A .NET-vagy Java SDK-k segítségével megadhatja a **SecurityCredentialsType** **X509** . Ez megfelel a ( `X509Credentials` .net[Java](/previous-versions/azure/reference/mt124925(v=azure.100)) / [Java](/java/api/system.fabric.x509credentials)) típusának ( `SecurityCredentials` .net[.NET](/previous-versions/azure/reference/mt124894(v=azure.100)) / [Java](/java/api/system.fabric.securitycredentials)).
 
 A **X509** -hivatkozás megkeresi a tanúsítványt a tanúsítványtárolóban. A következő XML a tanúsítvány helyének megadásához használt paramétereket mutatja be:
 
@@ -63,7 +64,7 @@ A következő XML egy **TransportSettings** szakaszt mutat be a stílus alapján
 
 ### <a name="using-x509_2-securitycredentialstype"></a>X509_2 SecurityCredentialsType használata
 
-A Java SDK segítségével megadhatja **X509_2** a **SecurityCredentialsType**. Ez megfelel a ( `X509Credentials2` Java) ([Java](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)) típusának `SecurityCredentials` .[Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials) 
+A Java SDK segítségével megadhatja **X509_2** a **SecurityCredentialsType**. Ez megfelel a ( `X509Credentials2` Java) ([Java](/java/api/system.fabric.x509credentials2)) típusának `SecurityCredentials` .[Java](/java/api/system.fabric.securitycredentials) 
 
 **X509_2** hivatkozással megadhatja a Path paramétert, így a */var/lib/sfcerts*eltérő könyvtárban is megkeresheti a tanúsítványt.  A következő XML a tanúsítvány helyének megadásához használt paramétereket mutatja be: 
 
@@ -93,7 +94,7 @@ A következő XML egy **TransportSettings** szakaszt mutat be ezen stílus alapj
 
 A Service Fabric SDK-k lehetővé teszik a Service Fabric Runtime API-kkal való kommunikációt a platform kihasználása érdekében. Ha olyan alkalmazást futtat, amely ezt a funkciót a biztonságos Linux-fürtökön használja, konfigurálnia kell az alkalmazást egy olyan tanúsítvánnyal, amelyet a Service Fabric futtatókörnyezettel való ellenőrzéshez használhat. A .NET Core vagy Java SDK-k használatával írt Service Fabric megbízható szolgáltatási szolgáltatásokat tartalmazó alkalmazások esetén ehhez a konfigurációhoz szükség van. 
 
-Egy alkalmazás konfigurálásához adjon hozzá egy [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) elemet a **tanúsítványok** címkében, amely a *ApplicationManifest.xml* fájl **ApplicationManifest** címkéjén található. A következő XML az ujjlenyomata által hivatkozott tanúsítványt jeleníti meg: 
+Egy alkalmazás konfigurálásához adjon hozzá egy [**SecretsCertificate**](./service-fabric-service-model-schema-elements.md#secretscertificate-element) elemet a **tanúsítványok** címkében, amely a *ApplicationManifest.xml* fájl **ApplicationManifest** címkéjén található. A következő XML az ujjlenyomata által hivatkozott tanúsítványt jeleníti meg: 
 
 ```xml
    <Certificates>
@@ -102,6 +103,3 @@ Egy alkalmazás konfigurálásához adjon hozzá egy [**SecretsCertificate**](ht
 ```
 
 Hivatkozhat a fürt tanúsítványára vagy a fürt egyes csomópontjaira telepített tanúsítványokra. Linux rendszeren a tanúsítvány fájljainak jelen kell lenniük a */var/lib/sfcerts* könyvtárban. További információért lásd: [X. 509 tanúsítványok helye és formátuma Linux-csomópontokon](#location-and-format-of-x509-certificates-on-linux-nodes).
-
-
-

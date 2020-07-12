@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: c78fa51150ba09e5b72eeb0587679f779c947acf
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 2d4fc47247c9fe2ed1af0eee59500db7e894fdd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231051"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260139"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage kiszolgálóoldali titkosítása
 
@@ -78,11 +78,10 @@ A fokozott biztonságú bizalmas ügyfelek, akik az adott titkosítási algoritm
 
 [Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) szolgáltatásával titkosítja a felügyelt lemezeket az ügyfél által felügyelt KULCSOKKAL a vendég virtuális gépen belül.  Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás javítja az ADE-t, mivel lehetővé teszi a virtuális gépekhez tartozó operációsrendszer-típusok és-lemezképek használatát a Storage szolgáltatásban tárolt adattitkosítással.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Titkosítás engedélyezése a gazdagépen](disks-enable-host-based-encryption-cli.md)
-- [Azure CLI – a kettős titkosítás engedélyezése a REST által felügyelt lemezeken](disks-enable-double-encryption-at-rest-cli.md)
+- [Végpontok közötti titkosítás engedélyezése a Host-CLI titkosítással](disks-enable-host-based-encryption-cli.md)
+- [A kettős titkosítás engedélyezése a felügyelt lemezeken – parancssori felület](disks-enable-double-encryption-at-rest-cli.md)
 - [Az ügyfél által felügyelt kulcsok engedélyezése a felügyelt lemezeken – parancssori felület](disks-enable-customer-managed-keys-cli.md)
 - [Ügyfél által felügyelt kulcsok engedélyezése a felügyelt lemezekhez – portál](disks-enable-customer-managed-keys-portal.md)
-- [Ügyfél által felügyelt kulcsok engedélyezése a felügyelt lemezhez – PowerShell](../windows/disks-enable-customer-managed-keys-powershell.md)
 - [Mi az Azure Key Vault?](../../key-vault/general/overview.md)

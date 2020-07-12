@@ -3,11 +3,12 @@ title: Azure szolgáltatás állapotára vonatkozó riasztások küldése a Serv
 description: Személyre szabott értesítések beszerzése a ServiceNow-példány szolgáltatás állapotával kapcsolatos eseményekről.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cd17af080714fdf2e9e5b168e72f975c8d3a3f6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654103"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260199"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a ServiceNow webhookok használatával
 
@@ -139,9 +140,10 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
      ![Az "alapszintű API elérési útja" a ServiceNow-ben](./media/webhook-alerts/servicenow-base-api-path.png)
 
 1.  A teljes integrációs URL-cím a következőképpen néz ki:
-        
-         https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
+    ```http
+    https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
+    ```
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Riasztás létrehozása a Azure Portal ServiceNow használatával
 ### <a name="for-a-new-action-group"></a>Új műveleti csoport esetén:
@@ -190,7 +192,7 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 
 1. Nyissa meg a [ServiceNow](https://www.servicenow.com/) , és ellenőrizze, hogy sikeresen beállította-e az integrációt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md).
 - Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/platform/activity-log-alerts-webhook.md). 
 - Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](../azure-monitor/platform/service-notifications.md).

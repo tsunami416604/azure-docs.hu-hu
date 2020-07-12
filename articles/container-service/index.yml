@@ -22,15 +22,15 @@ sections:
         className: cardsFTitle
         items:
           - title: A Kubernetes-fürtök használatának első lépései
-            href: /azure/container-service/kubernetes
+            href: ./kubernetes/index.yml
             image:
               src: media/index/get-started.svg
-              href: /azure/container-service/kubernetes
+              href: ./kubernetes/index.yml
           - title: A DC/OS- és Docker Swarm-fürtök használatának első lépései
-            href: /azure/container-service/dcos-swarm
+            href: ./dcos-swarm/index.yml
             image:
               src: media/index/get-started.svg
-              href: /azure/container-service/dcos-swarm
+              href: ./dcos-swarm/index.yml
   - title: Fejlessze a készségeit a Microsoft Learnnel
     items:
       - type: list

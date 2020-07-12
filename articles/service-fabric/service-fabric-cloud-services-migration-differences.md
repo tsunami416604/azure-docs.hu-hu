@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 283ad2c63bb59771dab7881522e737f773ab1705
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47c3d1b4d603e2dde2de8d4a95fb953744d71409
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463366"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259006"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Ismerkedjen meg Cloud Services és Service Fabric közötti különbségekkel az alkalmazások áttelepítése előtt.
 A Microsoft Azure Service Fabric a felhőalapú alkalmazások következő platformja, amely rugalmasan méretezhető, megbízható elosztott alkalmazások számára készült. Számos új funkciót vezet be az elosztott felhőalapú alkalmazások csomagolásához, üzembe helyezéséhez, frissítéséhez és felügyeletéhez. 
@@ -80,7 +81,7 @@ Ugyanez a kommunikációs modell használható Service Fabricban. Ez akkor lehet
 ![Közvetlen kommunikáció Service Fabric][8]
 
 ## <a name="parity"></a>Parity
-[Cloud Services hasonló a Service Fabrichoz, mint a könnyű használat, de ez már egy örökölt szolgáltatás, és az új fejlesztéshez Service Fabric ajánlott](https://docs.microsoft.com/azure/app-service/overview-compare). a következő egy API-összehasonlítás:
+[Cloud Services hasonló a Service Fabrichoz, mint a könnyű használat, de ez már egy örökölt szolgáltatás, és az új fejlesztéshez Service Fabric ajánlott](/azure/app-service/overview-compare). a következő egy API-összehasonlítás:
 
 
 | **Cloud Service API** | **Service Fabric API** | **Megjegyzések** |

@@ -4,11 +4,12 @@ description: Bevezetés az állapot nélküli és állapot-nyilvántartó szolg�
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev
-ms.openlocfilehash: 0a8d5a05f922cd01067abbc3e98320a32cd9d256
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 201131f774632e1130c6be6a0dbcb950b96ec508
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038021"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260482"
 ---
 # <a name="get-started-with-reliable-services"></a>Ismerkedés a Reliable Services használatával
 
@@ -168,11 +169,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-A [IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) egy olyan szótári implementáció, amellyel megbízhatóan tárolhatja az állapotot a szolgáltatásban. A Service Fabric és megbízható gyűjtemények révén közvetlenül a szolgáltatásban tárolhatja az adatait anélkül, hogy külső állandó tárolóra lenne szükség. A megbízható gyűjtemények kiválóan elérhetővé teszik az adataikat. A Service Fabric a szolgáltatás több *replikájának* létrehozásával és kezelésével hajtja végre. Emellett olyan API-t is biztosít, amely ellátja a replikák kezelésének bonyolultságát és az állapotukat.
+A [IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) egy olyan szótári implementáció, amellyel megbízhatóan tárolhatja az állapotot a szolgáltatásban. A Service Fabric és megbízható gyűjtemények révén közvetlenül a szolgáltatásban tárolhatja az adatait anélkül, hogy külső állandó tárolóra lenne szükség. A megbízható gyűjtemények kiválóan elérhetővé teszik az adataikat. A Service Fabric a szolgáltatás több *replikájának* létrehozásával és kezelésével hajtja végre. Emellett olyan API-t is biztosít, amely ellátja a replikák kezelésének bonyolultságát és az állapotukat.
 
 A megbízható gyűjtemények bármilyen .NET-típust tárolhatnak, beleértve az egyéni típusokat is, néhány figyelmeztetéssel:
 
-* A Service Fabric az állapotot a csomópontok közötti *replikálással* , a megbízható gyűjtemények pedig az összes replikán tárolják az adataikat a helyi lemezen. Ez azt jelenti, hogy a megbízható gyűjteményekben tárolt összes elemnek *szerializálható*kell lennie. Alapértelmezés szerint a megbízható gyűjtemények [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) használ a szerializáláshoz, ezért fontos, hogy az [adategyezmény-szerializáló](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) a típusait az alapértelmezett szerializáló használata esetén is támogatja.
+* A Service Fabric az állapotot a csomópontok közötti *replikálással* , a megbízható gyűjtemények pedig az összes replikán tárolják az adataikat a helyi lemezen. Ez azt jelenti, hogy a megbízható gyűjteményekben tárolt összes elemnek *szerializálható*kell lennie. Alapértelmezés szerint a megbízható gyűjtemények [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute?view=netcore-3.1) használ a szerializáláshoz, ezért fontos, hogy az [adategyezmény-szerializáló](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) a típusait az alapértelmezett szerializáló használata esetén is támogatja.
 * Az objektumok a magas rendelkezésre állás érdekében replikálódnak, amikor megbízható gyűjteményekre vonatkozó tranzakciókat véglegesít. A megbízható gyűjteményekben tárolt objektumokat a szolgáltatás helyi memóriájában tárolja. Ez azt jelenti, hogy van egy helyi hivatkozása az objektumra.
   
    Fontos, hogy ne módosítsa az objektumok helyi példányait anélkül, hogy frissítési műveletet hajt végre a tranzakcióban található megbízható gyűjteményen. Ennek az az oka, hogy az objektumok helyi példányainak módosításait a rendszer nem replikálja automatikusan. Újra be kell szúrni az objektumot a szótárba, vagy a *frissítési* módszerek egyikét kell használnia a szótárban.
@@ -196,7 +197,7 @@ A megbízható gyűjtemények több azonos művelettel rendelkeznek, mint a saj�
 
 A megbízható gyűjtési műveletek *tranzakciós*tevékenységek, így az állapot konzisztens marad több megbízható gyűjtemény és művelet között. Megadhat például egy munkaelemet egy megbízható várólistából, végrehajthat egy műveletet, és az eredményt egy megbízható szótárban mentheti, mindezt egyetlen tranzakción belül. Ezt atomi műveletként kezeli a rendszer, és garantálja, hogy a teljes művelet sikeres lesz, vagy a teljes művelet visszaállítja a műveletet. Ha hiba lép fel az elem kivonása után, de az eredmény mentése előtt, a teljes tranzakció vissza lesz állítva, és az elem a várólistán marad a feldolgozáshoz.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 Most visszatérünk a *HelloWorld* alkalmazáshoz. Most már létrehozhatja és üzembe helyezheti szolgáltatásait. Ha lenyomja az **F5**billentyűt, az alkalmazás a helyi fürtön lesz felépítve és telepítve.
 
 A szolgáltatások elindítása után megtekintheti a generált Windows esemény-nyomkövetés (ETW) eseményeit egy **diagnosztikai események** ablakban. Vegye figyelembe, hogy a megjelenített események az állapot nélküli szolgáltatásból és az alkalmazás állapot-nyilvántartó szolgáltatásból származnak. A **szüneteltetés** gombra kattintva szüneteltetheti az adatfolyamot. Ezután megvizsgálhatja az üzenet részleteit az üzenet kibontásával.
@@ -208,10 +209,10 @@ A szolgáltatások elindítása után megtekintheti a generált Windows esemény
 
 ![Diagnosztikai események megtekintése a Visual Studióban](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A Service Fabric-alkalmazás hibakeresése a Visual Studióban](service-fabric-debugging-your-application.md)
 
-[Első lépések: Service Fabric webes API-szolgáltatások OWIN-alapú önkiszolgáló használatával](service-fabric-reliable-services-communication-webapi.md)
+[Első lépések: Service Fabric webes API-szolgáltatások OWIN-alapú önkiszolgáló használatával](./service-fabric-reliable-services-communication-aspnetcore.md)
 
 [További információ a megbízható gyűjteményekről](service-fabric-reliable-services-reliable-collections.md)
 
@@ -219,5 +220,4 @@ A szolgáltatások elindítása után megtekintheti a generált Windows esemény
 
 [Alkalmazás frissítése](service-fabric-application-upgrade.md)
 
-[Reliable Services fejlesztői referenciája](https://msdn.microsoft.com/library/azure/dn706529.aspx)
-
+[Reliable Services fejlesztői referenciája](/previous-versions/azure/dn706529(v=azure.100))

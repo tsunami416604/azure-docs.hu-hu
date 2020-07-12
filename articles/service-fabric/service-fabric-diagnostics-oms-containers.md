@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 8d4231de13da3f8b2960bd4852136f803a97a546
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1d118fa1fb65663f37e33f739bf4a72a14e1c52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614434"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258710"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>Tárolók figyelése Azure Monitor naplókkal
  
@@ -44,8 +45,8 @@ Az ügynök lehetővé teszi több, a tárolóra vonatkozó naplók begyűjtés�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [Azure monitor naplók tárolói megoldásáról](../azure-monitor/insights/containers.md).
 * További információ a Service Fabric- [Service Fabric és-tárolók](service-fabric-containers-overview.md) tároló-előkészítéséről
-* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciókkal
-* Azure Monitor naplók konfigurálása [automatizált riasztási](../log-analytics/log-analytics-alerts.md) szabályok beállításához az észlelés és a diagnosztika támogatásához
+* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/log-query/log-query-overview.md) funkciókkal
+* Azure Monitor naplók konfigurálása [automatizált riasztási](../azure-monitor/platform/alerts-overview.md) szabályok beállításához az észlelés és a diagnosztika támogatásához

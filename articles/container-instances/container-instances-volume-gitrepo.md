@@ -3,11 +3,12 @@ title: Gitrepo típusú-kötet csatlakoztatása a tároló csoportjához
 description: Megtudhatja, hogyan csatlakoztathat egy Gitrepo típusú-kötetet a git-tárház klónozásához a Container instances szolgáltatásba
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78252090"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260709"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Gitrepo típusú-kötet csatlakoztatása Azure Container Instances
 
@@ -24,9 +25,9 @@ A *gitrepo típusú* kötet csatlakoztat egy könyvtárat, és a tároló indít
 
 | Tulajdonság | Kötelező | Leírás |
 | -------- | -------- | ----------- |
-| `repository` | Yes | A klónozott git-tárház teljes URL-címe, beleértve a vagy a-t is `http://` `https://` .|
-| `directory` | No | A könyvtárat, amelybe a tárházat klónozottnak kell lennie. Az elérési út nem tartalmazhat vagy kezdődhet a következővel: " `..` ".  Ha a "" lehetőséget választja `.` , a tárház klónozása a kötet könyvtárába történik. Ellenkező esetben a git-tárház klónozása a megadott név alkönyvtárába történik a kötet könyvtárában. |
-| `revision` | No | A klónozott változat véglegesített kivonata. Ha nincs megadva, a `HEAD` változat klónozásra kerül. |
+| `repository` | Igen | A klónozott git-tárház teljes URL-címe, beleértve a vagy a-t is `http://` `https://` .|
+| `directory` | Nem | A könyvtárat, amelybe a tárházat klónozottnak kell lennie. Az elérési út nem tartalmazhat vagy kezdődhet a következővel: " `..` ".  Ha a "" lehetőséget választja `.` , a tárház klónozása a kötet könyvtárába történik. Ellenkező esetben a git-tárház klónozása a megadott név alkönyvtárába történik a kötet könyvtárában. |
+| `revision` | Nem | A klónozott változat véglegesített kivonata. Ha nincs megadva, a `HEAD` változat klónozásra kerül. |
 
 ## <a name="mount-gitrepo-volume-azure-cli"></a>Gitrepo típusú-kötet csatlakoztatása: Azure CLI
 
@@ -100,7 +101,7 @@ GitHub: [személyes hozzáférési jogkivonat létrehozása a parancssorhoz][pat
 
 Azure Repos: [személyes hozzáférési tokenek létrehozása a hozzáférés hitelesítéséhez][pat-repos]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További mennyiségi típusok csatlakoztatása a Azure Container Instancesban:
 
@@ -111,7 +112,7 @@ További mennyiségi típusok csatlakoztatása a Azure Container Instancesban:
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
 [pat-github]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-[pat-repos]: https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
+[pat-repos]: /azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

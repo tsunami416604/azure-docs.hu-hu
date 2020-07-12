@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: fdb78498d33416ef21b2e2b0f498e7afa6a58d99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 453258bb5768a2faa8f4e42cce86d02125283026
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75609961"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259195"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Események összesítése és gyűjtése linuxos Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -20,7 +21,7 @@ ms.locfileid: "75609961"
 
 Ha Azure Service Fabric-fürtöt futtat, érdemes összegyűjteni a naplókat egy központi helyen lévő összes csomópontról. A központi helyen található naplók segítségével elemezheti és elháríthatja a fürtben felmerülő problémákat, illetve a fürtben futó alkalmazások és szolgáltatások hibáit.
 
-A naplók feltöltésének és összegyűjtésének egyik módja a Linux Azure Diagnostics (LAD) bővítmény használata, amely a naplókat feltölti az Azure Storage-ba, és lehetővé teszi a naplók küldését az Azure-ba Application Insights vagy Event Hubs. Külső folyamattal is elolvashatja az eseményeket a tárolóból, és elhelyezheti azokat egy Analysis platform termékében, például [Azure monitor naplókban](../log-analytics/log-analytics-service-fabric.md) vagy egy másik naplózási megoldásban.
+A naplók feltöltésének és összegyűjtésének egyik módja a Linux Azure Diagnostics (LAD) bővítmény használata, amely a naplókat feltölti az Azure Storage-ba, és lehetővé teszi a naplók küldését az Azure-ba Application Insights vagy Event Hubs. Külső folyamattal is elolvashatja az eseményeket a tárolóból, és elhelyezheti azokat egy Analysis platform termékében, például [Azure monitor naplókban](./service-fabric-diagnostics-oms-setup.md) vagy egy másik naplózási megoldásban.
 
 ## <a name="log-and-event-sources"></a>Napló-és eseményforrás
 
@@ -40,7 +41,7 @@ Ha a fürt létrehozása során a diagnosztikai bővítményt a fürtben lévő 
 Ezzel konfigurálja a LAD-ügynököt a megadott naplófájlok figyelésére. Minden alkalommal, amikor új sort fűz a fájlhoz, létrehoz egy syslog-bejegyzést, amelyet a rendszer a megadott tárolóba (táblára) küld.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-1. A hibák elhárítása során megfontolandó események részletesebb megismeréséhez tekintse meg a [lttng érhető el dokumentációját](https://lttng.org/docs) és a [Lad használatával](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux)foglalkozó témakört.
+1. A hibák elhárítása során megfontolandó események részletesebb megismeréséhez tekintse meg a [lttng érhető el dokumentációját](https://lttng.org/docs) és a [Lad használatával](../virtual-machines/extensions/diagnostics-linux.md)foglalkozó témakört.
 2. [A log Analytics ügynök beállítása](service-fabric-diagnostics-event-analysis-oms.md) a metrikák gyűjtéséhez, a fürtön üzembe helyezett tárolók figyeléséhez és a naplók megjelenítéséhez 

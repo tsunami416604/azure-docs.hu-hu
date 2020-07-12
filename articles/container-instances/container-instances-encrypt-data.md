@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 2f9aff2ea88c2334ab30c9819f68fd6cbb9124c5
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3c7a84dad1f107d8709e3bcdeac696414cdf883d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232440"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259704"
 ---
 # <a name="encrypt-deployment-data"></a>Üzembehelyezési adatok titkosítása
 
@@ -39,7 +39,7 @@ A dokumentum többi része ismerteti azokat a lépéseket, amelyek szükségesek
 
 ### <a name="create-service-principal-for-aci"></a>Egyszerű szolgáltatásnév létrehozása az ACI-hoz
 
-Első lépésként győződjön meg arról, hogy az [Azure-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) rendelkezik a Azure Container instances szolgáltatás engedélyeinek megadásához hozzárendelt egyszerű szolgáltatással. 
+Első lépésként győződjön meg arról, hogy az [Azure-bérlő](../active-directory/develop/quickstart-create-new-tenant.md) rendelkezik a Azure Container instances szolgáltatás engedélyeinek megadásához hozzárendelt egyszerű szolgáltatással. 
 
 > [!IMPORTANT]
 > A következő parancs futtatásához és az egyszerű szolgáltatás létrehozásához ellenőrizze, hogy rendelkezik-e jogosultsággal a szolgáltatásbeli egyszerű szolgáltatások létrehozásához a bérlőben.
@@ -59,7 +59,7 @@ Ha nem tudja sikeresen létrehozni a szolgáltatásnevet:
 
 ### <a name="create-a-key-vault-resource"></a>Key Vault erőforrás létrehozása
 
-Hozzon létre egy Azure Key Vaultt a [Azure Portal](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault), a [CLI](https://docs.microsoft.com/azure/key-vault/quick-create-cli)vagy a [PowerShell](https://docs.microsoft.com/azure/key-vault/quick-create-powershell)használatával. 
+Hozzon létre egy Azure Key Vaultt a [Azure Portal](../key-vault/secrets/quick-create-portal.md#create-a-vault), a [CLI](../key-vault/secrets/quick-create-cli.md)vagy a [PowerShell](../key-vault/secrets/quick-create-powershell.md)használatával. 
 
 A Key Vault tulajdonságaihoz használja a következő irányelveket: 
 * Név: Egy egyedi nevet kell megadnia. 
@@ -96,7 +96,7 @@ A hozzáférési szabályzatnak ekkor meg kell jelennie a Key Vault hozzáféré
 > [!IMPORTANT]
 > A központi telepítési adatai ügyfél által felügyelt kulccsal történő titkosítása a legújabb API-verzióban (2019-12-01) érhető el, amely jelenleg ki van vezetve. Adja meg ezt az API-verziót a telepítési sablonban. Ha problémája merül fel, forduljon az Azure ügyfélszolgálatához.
 
-A Key Vault-kulcs és a hozzáférési házirend beállítása után adja hozzá a következő tulajdonságokat az ACI telepítési sablonhoz. További információ az ACI-erőforrások üzembe helyezéséről a sablonnal az [oktatóanyagban: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+A Key Vault-kulcs és a hozzáférési házirend beállítása után adja hozzá a következő tulajdonságokat az ACI telepítési sablonhoz. További információ az ACI-erőforrások üzembe helyezéséről a sablonnal az [oktatóanyagban: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](./container-instances-multi-container-group.md). 
 * A alatt `resources` állítsa be a következőt: `apiVersion` `2019-12-01` .
 * A telepítési sablon tároló csoport tulajdonságai szakaszában adja meg a `encryptionProperties` következő értékeket tartalmazó értéket:
   * `vaultBaseUrl`: a Key Vault DNS-neve a Key Vault-erőforrás áttekintés paneljén található a portálon
@@ -129,7 +129,7 @@ A következő kódrészlet ezeket a további tulajdonságokat jeleníti meg a k�
 ]
 ```
 
-A következő egy teljes sablon, amely a sablon alapján van adaptálva [: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
+A következő egy teljes sablon, amely a sablon alapján van adaptálva [: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](./container-instances-multi-container-group.md). 
 
 ```json
 {
@@ -233,14 +233,14 @@ Hozzon létre egy erőforráscsoportot az [az group create][az-group-create] par
 az group create --name myResourceGroup --location eastus
 ```
 
-Telepítse a sablont az az [Group Deployment Create][az-group-deployment-create] paranccsal.
+Telepítse a sablont az az [Deployment Group Create][az-deployment-group-create] paranccsal.
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
+az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
 Néhány másodpercen belül meg kell kapnia az Azure kezdeti válaszát. Miután az üzembe helyezés befejeződött, az ACI szolgáltatás által megőrzött összes adat titkosítva lesz a megadott kulccsal.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[az-deployment-group-create]: /cli/azure/deployment/group/#az-deployment-group-create

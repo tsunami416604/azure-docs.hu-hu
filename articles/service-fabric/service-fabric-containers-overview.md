@@ -3,15 +3,16 @@ title: A Service Fabric és a tárolók áttekintése
 description: A Service Fabric áttekintése és a tárolók használata a Service-alkalmazások üzembe helyezéséhez. Ez a cikk áttekintést nyújt a tárolók használatáról és a Service Fabric rendelkezésre álló lehetőségeiről.
 ms.topic: conceptual
 ms.date: 8/8/2018
-ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458222"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259234"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric és tárolók
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások és tárolók csomagolását, üzembe helyezését és kezelését.
 
@@ -64,7 +65,7 @@ Az alábbi ábrán az elérhető virtualizációs és elkülönítési szintek k
 
 Íme egy tipikus példa, amelyben a tároló jó választás:
 
-* **IIS-lift és-váltás**: egy meglévő [ASP.net MVC](https://www.asp.net/mvc) -alkalmazást helyezhet üzembe egy tárolóban ahelyett, hogy áttelepíti azt a ASP.net Coreba. Ezek a ASP.NET MVC-alkalmazások a Internet Information Servicestól (IIS) függenek. Ezeket az alkalmazásokat tároló lemezképbe csomagolhatja az előre létrehozott IIS-lemezképből, és üzembe helyezheti azokat Service Fabric használatával. A Windows-tárolókkal kapcsolatos információkért lásd: [tároló lemezképek a Windows Serveren](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
+* **IIS-lift és-váltás**: egy meglévő [ASP.net MVC](https://www.asp.net/mvc) -alkalmazást helyezhet üzembe egy tárolóban ahelyett, hogy áttelepíti azt a ASP.net Coreba. Ezek a ASP.NET MVC-alkalmazások a Internet Information Servicestól (IIS) függenek. Ezeket az alkalmazásokat tároló lemezképbe csomagolhatja az előre létrehozott IIS-lemezképből, és üzembe helyezheti azokat Service Fabric használatával. A Windows-tárolókkal kapcsolatos információkért lásd: [tároló lemezképek a Windows Serveren](/virtualization/windowscontainers/quick-start/quick-start-windows-server) .
 
 * **Tárolók és Service Fabric-szolgáltatások együttes**használata: használjon egy meglévő tároló-rendszerképet az alkalmazás részeként. Használhatja például az alkalmazás és az állapot-nyilvántartó szolgáltatások webes kezelőfelületének [NGINX-tárolóját](https://hub.docker.com/_/nginx/) az intenzívebb háttérbeli számításokhoz.
 
@@ -89,14 +90,14 @@ A Service Fabric számos tároló-képességet biztosít, amelyek segítségéve
 * Biztonsági hitelesítő adatok megadásának lehetősége a tárolón.
 * Különböző hálózati módok választhatók a tárolók számára.
 
-Az Azure-beli tárolók támogatásának átfogó áttekintése, például a Kubernetes-fürt létrehozása az Azure Kubernetes szolgáltatással, a privát Docker-beállításjegyzék létrehozása a Azure Container Registry-ben és további információ: [Azure for containers](https://docs.microsoft.com/azure/containers/).
+Az Azure-beli tárolók támogatásának átfogó áttekintése, például a Kubernetes-fürt létrehozása az Azure Kubernetes szolgáltatással, a privát Docker-beállításjegyzék létrehozása a Azure Container Registry-ben és további információ: [Azure for containers](../containers/index.yml).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogy milyen támogatási Service Fabric biztosít a tárolók futtatásához. Ezután az egyes funkciók példáit követve megtudhatja, hogyan használhatja őket.
 
 [Az első Service Fabric-tárolóalkalmazás létrehozása Linux rendszeren](service-fabric-get-started-containers-linux.md)  
 [Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren](service-fabric-get-started-containers.md)  
-[További információ a Windows-tárolók használatáról](https://docs.microsoft.com/virtualization/windowscontainers/about/)
+[További információ a Windows-tárolók használatáról](/virtualization/windowscontainers/about/)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png

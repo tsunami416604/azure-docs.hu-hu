@@ -6,17 +6,18 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5bb7ab6c861d958f6811ca852363c59cfced3940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76718820"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260107"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Azure Files-alapú kötet csatlakoztatása egy Service Fabric Mesh-alkalmazásban 
 
 Ez a cikk azt ismerteti, hogyan csatlakoztathat egy Azure Files-alapú kötetet egy Service Fabric Mesh-alkalmazás szolgáltatásában.  A Azure Files kötet-illesztőprogram egy olyan Docker-kötet-illesztőprogram, amellyel Azure Files-megosztást csatlakoztathat egy tárolóhoz, amelyet a szolgáltatás állapotának megőrzése érdekében használ. A kötetek általános célú fájlmegosztást biztosítanak, és lehetővé teszik a fájlok olvasását/írását a normál lemez I/O-fájl API-jai használatával.  Ha többet szeretne megtudni az alkalmazásadatok tárolásához szükséges kötetekről és lehetőségekről, olvassa el a [tárolás állapotát](service-fabric-mesh-storing-state.md).
 
-Ha kötetet szeretne csatlakoztatni egy szolgáltatásban, hozzon létre egy kötet-erőforrást a Service Fabric Mesh alkalmazásban, majd hivatkozzon a kötetre a szolgáltatásban.  A mennyiségi erőforrás deklarálása és a szolgáltatási erőforrásban való hivatkozása a [YAML-alapú erőforrás-fájlokban](#declare-a-volume-resource-and-update-the-service-resource-yaml) vagy a [JSON-alapú telepítési sablonban](#declare-a-volume-resource-and-update-the-service-resource-json)végezhető el. A kötet csatlakoztatása előtt először hozzon létre egy Azure Storage-fiókot és egy [fájlmegosztást a Azure Filesban](/azure/storage/files/storage-how-to-create-file-share).
+Ha kötetet szeretne csatlakoztatni egy szolgáltatásban, hozzon létre egy kötet-erőforrást a Service Fabric Mesh alkalmazásban, majd hivatkozzon a kötetre a szolgáltatásban.  A mennyiségi erőforrás deklarálása és a szolgáltatási erőforrásban való hivatkozása a [YAML-alapú erőforrás-fájlokban](#declare-a-volume-resource-and-update-the-service-resource-yaml) vagy a [JSON-alapú telepítési sablonban](#declare-a-volume-resource-and-update-the-service-resource-json)végezhető el. A kötet csatlakoztatása előtt először hozzon létre egy Azure Storage-fiókot és egy [fájlmegosztást a Azure Filesban](../storage/files/storage-how-to-create-file-share.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 > [!NOTE]
@@ -245,7 +246,7 @@ application:
             - name: VolumeTestNetwork
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a Azure Files mennyiségi minta alkalmazást a [githubon](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
 - A Service Fabric-erőforrásmodellel kapcsolatos további tudnivalókért lásd a [Service Fabric Mesh-erőforrásmodellt](service-fabric-mesh-service-fabric-resources.md) bemutató cikket.

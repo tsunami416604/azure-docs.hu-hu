@@ -3,11 +3,12 @@ title: Azure Service Fabric DNS-szolgáltatás
 description: Használja a Service Fabric DNS-szolgáltatását, hogy a rendszer a fürtön belül felfedezzék a szolgáltatásait.
 ms.topic: conceptual
 ms.date: 7/20/2018
-ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a6611281fd2d2368809419ad594d2eb1289b5a0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458027"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258913"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS-szolgáltatás az Azure Service Fabricben
 A DNS-szolgáltatás egy opcionális rendszerszolgáltatás, amelyet engedélyezheti a fürtben más szolgáltatások felderítéséhez a DNS protokoll használatával. 
@@ -41,7 +42,7 @@ Amikor a portál használatával hoz létre fürtöt, a DNS szolgáltatás alap�
 Ha nem a portál használatával hozza létre a fürtöt, vagy ha meglévő fürtöt frissít, engedélyeznie kell a DNS-szolgáltatást egy sablonban:
 
 - Új fürt üzembe helyezéséhez használhatja a [minta sablonokat](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) , vagy létrehozhat egy saját Resource Manager-sablont. 
-- Egy meglévő fürt frissítéséhez navigáljon a fürt erőforráscsoporthoz a portálon, és kattintson az **Automation-parancsfájl** lehetőségre a fürt aktuális állapotát és a csoport többi erőforrását tükröző sablonnal való munkához. További információ: [a sablon exportálása az erőforráscsoporthoz](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template).
+- Egy meglévő fürt frissítéséhez navigáljon a fürt erőforráscsoporthoz a portálon, és kattintson az **Automation-parancsfájl** lehetőségre a fürt aktuális állapotát és a csoport többi erőforrását tükröző sablonnal való munkához. További információ: [a sablon exportálása az erőforráscsoporthoz](../azure-resource-manager/templates/export-template-portal.md).
 
 A sablon használata után engedélyezheti a DNS-szolgáltatást a következő lépésekkel:
 
@@ -102,7 +103,7 @@ A sablon használata után engedélyezheti a DNS-szolgáltatást a következő l
 3. Miután frissítette a fürt sablonját a módosításokkal, alkalmazza őket, és hagyja, hogy a frissítés befejeződjön. Ha a frissítés befejeződött, a DNS-rendszerszolgáltatás elindul a fürtben. A szolgáltatás neve `fabric:/System/DnsService` , és a Service Fabric Explorer rendszerszolgáltatás szakasza **System** alatt található. 
 
 > [!NOTE]
-> Ha a DNS-t Letiltottról engedélyezettre frissíti, előfordulhat, hogy a Service Fabric Explorer nem tükrözi az új állapotot. Az Azure Resource Manager-sablonban található UpgradePolicy módosításával oldja fel újra a csomópontokat. További információkért tekintse meg a [Service Fabric-sablonra vonatkozó referenciát](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) .
+> Ha a DNS-t Letiltottról engedélyezettre frissíti, előfordulhat, hogy a Service Fabric Explorer nem tükrözi az új állapotot. Az Azure Resource Manager-sablonban található UpgradePolicy módosításával oldja fel újra a csomópontokat. További információkért tekintse meg a [Service Fabric-sablonra vonatkozó referenciát](/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications) .
 
 > [!NOTE]
 > A DNS szolgáltatás helyi gépen való fejlesztésekor a DNS-beállítások felülbírálják a DNS-beállításokat. Ha problémákat tapasztal az internethez való csatlakozás során, ellenőrizze a DNS-beállításokat.
@@ -128,7 +129,7 @@ Az alkalmazás üzembe helyezését követően a Service Fabric Explorerben lát
 
 ![szolgáltatási végpontok](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-Az alábbi példa egy állapot-nyilvántartó szolgáltatás DNS-nevét állítja be a következőre: `statefulsvc.app` . A szolgáltatás nevesített particionálási sémát használ. Figyelje meg, hogy a partíciók nevei kisbetűvel vannak elválasztva. Ez a követelmény a DNS-lekérdezésekben célként megadott partíciók esetében. További információ: [DNS-lekérdezések készítése állapot-nyilvántartó szolgáltatás partícióján](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
+Az alábbi példa egy állapot-nyilvántartó szolgáltatás DNS-nevét állítja be a következőre: `statefulsvc.app` . A szolgáltatás nevesített particionálási sémát használ. Figyelje meg, hogy a partíciók nevei kisbetűvel vannak elválasztva. Ez a követelmény a DNS-lekérdezésekben célként megadott partíciók esetében. További információ: [DNS-lekérdezések készítése állapot-nyilvántartó szolgáltatás partícióján](#preview-making-dns-queries-on-a-stateful-service-partition).
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />
@@ -169,7 +170,7 @@ A partíciót tároló DNS-lekérdezések a következőképpen vannak formázva:
 ```
     <First-Label-Of-Partitioned-Service-DNSName><PartitionPrefix><Target-Partition-Name>< PartitionSuffix>.<Remaining- Partitioned-Service-DNSName>
 ```
-Ebben a kódban:
+Ahol:
 
 - *Első – a particionált-Service-DNSName* az első része a szolgáltatás DNS-nevének.
 - A *PartitionPrefix* olyan érték, amely a fürt jegyzékfájljának DnsService szakaszában vagy a fürt Resource Manager-sablonján keresztül adható meg. Az alapértelmezett érték a "--". További információ: [DNS-szolgáltatás beállításai](./service-fabric-cluster-fabric-settings.md#dnsservice).
@@ -250,6 +251,5 @@ public class ValuesController : Controller
 
 * A Service Fabric szolgáltatások DNS szolgáltatása még nem támogatott Linux rendszeren. A DNS-szolgáltatás a Linux rendszerű tárolók esetében támogatott. A Fabric Client/ServicePartitionResolver manuális feloldása a rendelkezésre álló alternatíva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a fürtön belüli, a [kapcsolattal és a szolgáltatásokkal](service-fabric-connect-and-communicate-with-services.md) való kommunikációval
-

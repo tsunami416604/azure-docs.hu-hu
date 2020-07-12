@@ -4,12 +4,12 @@ description: A Azure Container Instances szolgáltatás az elkülönített táro
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84695284"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259503"
 ---
 # <a name="what-is-azure-container-instances"></a>Mi az az Azure Container Instances?
 
@@ -43,7 +43,7 @@ A nagy számítási igényű feladatok, például a gépi tanulás esetében a A
 
 ## <a name="persistent-storage"></a>Állandó tárolók
 
-Az Azure Container Instances-nal való lekéréséhez és megtartásához közvetlen csatlakoztatást biztosítunk az Azure Storage által támogatott [Azure Files-megosztásokhoz](container-instances-mounting-azure-files-volume.md) .
+Az Azure Container Instances-nal való lekéréséhez és megtartásához közvetlen csatlakoztatást biztosítunk az Azure Storage által támogatott [Azure Files-megosztásokhoz](./container-instances-volume-azure-files.md) .
 
 ## <a name="linux-and-windows-containers"></a>Linux- és Windows-tárolók
 
@@ -70,7 +70,7 @@ Az Azure Container Instances támogatja az olyan [több tárolóból álló csop
 
 Az Azure-régiók egy részében jelenleg az éles számítási feladatokhoz érhető el, Azure Container Instances ez a szolgáltatás lehetővé teszi [a Container instances üzembe helyezését egy Azure-beli virtuális hálózatban](container-instances-vnet.md). Ha a tárolópéldányokat a virtuális hálózat egyik alhálózatában helyezi üzembe, biztonságosan tudnak majd kommunikálni a virtuális hálózat más erőforrásaival, így a helyszíniekkel is (a [VPN Gateway-en](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy az [ExpressRoute-on](../expressroute/expressroute-introduction.md) keresztül).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbáljon üzembe helyezni egy tárolót az Azure-ban egyetlen parancs használatával a rövid útmutatónk alapján:
 

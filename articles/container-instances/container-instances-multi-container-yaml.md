@@ -3,12 +3,12 @@ title: Oktatóanyag – több tárolós csoport üzembe helyezése – YAML
 description: Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy Azure Container Instances több tárolót tartalmazó YAML-fájllal az Azure CLI használatával.
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: f101d19814687082ab02955a3a860486d3988211
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2673f1066db705e4d2e850230c5f96dc2690a85c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169680"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259555"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Oktatóanyag: több tárolós csoport üzembe helyezése YAML-fájl használatával
 
@@ -166,7 +166,7 @@ Connection: keep-alive
 
 Amint láthatja, az oldalkocsi rendszeres időközönként HTTP-kérést küld a fő webalkalmazásnak a csoport helyi hálózatán keresztül annak biztosítása érdekében, hogy az fut. Ez az oldalkocsis példa kiterjeszthető úgy, hogy riasztást indítson, ha nem a HTTP-válasz kódját kapta `200 OK` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy YAML-fájlt használt egy többtárolós csoport üzembe helyezéséhez Azure Container Instancesban. Megtanulta végrehajtani az alábbi műveleteket:
 
@@ -186,5 +186,5 @@ Egy [Resource Manager-sablonnal](container-instances-multi-container-group.md)is
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
 [az-group-create]: /cli/azure/group#az-group-create
-[az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
-[template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups
+[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
+[template-reference]: /azure/templates/microsoft.containerinstance/containergroups

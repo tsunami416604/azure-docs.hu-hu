@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan küldhet erőforrás-naplókat és-eseményeket
 ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: c76d8a2e7e468c511f0df47ebb240a787f40e026
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169731"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259608"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Tároló csoport és példány naplózása Azure Monitor naplókkal
 
@@ -29,7 +29,7 @@ A következő szakaszok bemutatják, hogyan hozhat létre naplózási képesség
 A tárolópéldányokban való naplózás engedélyezéséhez a következőkre van szükség:
 
 * [Log Analytics munkaterület](../azure-monitor/learn/quick-create-workspace.md)
-* [Azure CLI](/cli/azure/install-azure-cli) (vagy [Cloud Shell](/azure/cloud-shell/overview))
+* [Azure CLI](/cli/azure/install-azure-cli) (vagy [Cloud Shell](../cloud-shell/overview.md))
 
 ## <a name="get-log-analytics-credentials"></a>A Log Analytics hitelesítő adatainak lekérése
 
@@ -147,13 +147,13 @@ ContainerInstanceLog_CL
 | where (TimeGenerated > ago(1h))
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
 A naplók lekérdezéséről és a riasztások Azure Monitor naplókban való konfigurálásáról további információt a következő témakörben talál:
 
-* [A naplók Azure Monitor naplókban való keresésének ismertetése](../log-analytics/log-analytics-log-search.md)
+* [A naplók Azure Monitor naplókban való keresésének ismertetése](../azure-monitor/log-query/log-query-overview.md)
 * [Egyesített riasztások az Azure Monitorban](../azure-monitor/platform/alerts-overview.md)
 
 

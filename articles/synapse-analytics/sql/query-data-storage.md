@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e9a90ab7100ae9757f59c80bb8f4738772482f56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f78928c26b595caafd6709a200297d62ce1c361
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833655"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259674"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Storage-fájlok lekérdezése az SQL on-demand (előzetes verzió) erőforrásain belül a szinapszis SQL-ben
 
@@ -46,7 +46,7 @@ A parketta-forrásadatok lekérdezéséhez használja a FORMAT = "PARQUEt"
 
 ```syntaxsql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 ```
 
@@ -58,7 +58,7 @@ A parketta-forrásadatok lekérdezéséhez használja a FORMAT = "CSV" formátum
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
 WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 ```
 
@@ -81,7 +81,7 @@ Az olvasni kívánt oszlopok megadásához megadhat egy opcionális záradékot 
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 WITH (
       C1 int, 
       C2 varchar(20),
@@ -101,7 +101,7 @@ Ha kihagyja a WITH záradékot az `OPENROWSET` utasításból, utasíthatja a sz
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
 ```
 
 Győződjön meg arról, hogy a [megfelelő késleltetett adattípusok](best-practices-sql-on-demand.md#check-inferred-data-types) használatos az optimális teljesítmény érdekében. 
@@ -118,7 +118,7 @@ A következő szabályok érvényesek:
 
 ```sql
 SELECT * FROM
-OPENROWSET( BULK N'https://myaccount.blob.core.windows.net/myroot/*/mysubfolder/*.parquet', FORMAT = 'PARQUET' ) as rows
+OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*.parquet', FORMAT = 'PARQUET' ) as rows
 ```
 
 A használati példákat a [lekérdezési mappákban és több fájlban](query-folders-multiple-csv-files.md) találja.
@@ -179,7 +179,7 @@ A szintaxis kódrészlet példája a következő:
 
 Alapértelmezés szerint a `OPENROWSET` függvény megegyezik a forrás mező nevével és elérési útjával a with záradékban megadott oszlopnevek alapján. Az azonos forrásban lévő parketta-fájl különböző beágyazási szintjein található elemek a WITH záradék használatával érhetők el.
 
-**Visszaadott értékek**
+**Visszatérési értékek**
 
 - A függvény egy skaláris értéket ad vissza, például: int, decimális és varchar, a megadott elemből és a megadott elérési úton, a beágyazott Type csoportban nem szereplő összes parketta típushoz.
 - Ha az elérési út egy beágyazott típusú elemre mutat, a függvény egy JSON-töredéket ad vissza a megadott elérési út felső elemétől kezdve. A JSON-töredék varchar (8000) típusú.
@@ -224,7 +224,7 @@ A különböző típusú adattípusok lekérdezésével kapcsolatos további inf
 A lekérdezések kibocsátásához szükséges eszközök:
     - Azure szinapszis Studio (előzetes verzió)
     - Azure Data Studio
-    - SQL Server Management Studio
+    - Az SQL Server Management Studio
 
 ### <a name="demo-setup"></a>Bemutató beállítása
 
@@ -260,7 +260,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 | /json/books/                                                 | Könyvekből származó JSON-fájlok                                   |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A különböző fájltípusok lekérdezésével, valamint a nézetek létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

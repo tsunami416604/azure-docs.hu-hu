@@ -5,12 +5,12 @@ author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db47a758d33c3ed6e861601285e7737514ab416d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847867"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260448"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Színészi életciklus, automatikus Garbage-gyűjtés és manuális törlés
 A színész akkor aktiválódik, amikor az első alkalommal hívást kezdeményeztek valamelyik metódusára. Egy szereplő inaktiválva van (a Actors Runtime által összegyűjtött szemetet), ha nem használják konfigurálható időtartamra. Egy színész és az állapota manuálisan is törölhető bármikor.
@@ -107,12 +107,12 @@ Egy színész soha nem kerül begyűjtésre, amíg az egyik módszert futtatja, 
 ## <a name="manually-deleting-actors-and-their-state"></a>A szereplők és állapotuk manuális törlése
 A deaktivált szereplők szemét-gyűjteménye csak a Actor objektumot törli, de nem távolítja el a szereplő állapot-kezelőjében tárolt adatmennyiséget. Ha egy szereplő újra aktiválódik, a rendszer ismét elérhetővé teszi az adatforrást az állami kezelőn keresztül. Azokban az esetekben, amikor a szereplők az állapot-kezelőben tárolják az adattárolást, és inaktiválva vannak, de soha nem aktiválják őket, szükség lehet az Adattisztításra.  Példák a szereplők törlésére, a [szereplők törlésére és azok állapotára](service-fabric-reliable-actors-delete-actors.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Színészi időzítők és emlékeztetők](service-fabric-reliable-actors-timers-reminders.md)
 * [Színészi események](service-fabric-reliable-actors-events.md)
 * [Actor újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
 * [Színészi diagnosztika és Teljesítményfigyelés](service-fabric-reliable-actors-diagnostics.md)
-* [A Actor API-referenciájának dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [A Actor API-referenciájának dokumentációja](/previous-versions/azure/dn971626(v=azure.100))
 * [C# mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

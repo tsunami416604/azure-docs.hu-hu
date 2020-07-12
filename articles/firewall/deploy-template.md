@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
 ms.author: victorh
-ms.openlocfilehash: 9b9b7926caa717c1a02988ac7a927bd9bd39d52a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cec7ff020ce7e5894d4909263b5ab1aa2275caac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683705"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260631"
 ---
-# <a name="quickstart-deploy-azure-firewall-with-availability-zones---resource-manager-template"></a>Gyors útmutató: Azure Firewall üzembe helyezése Availability Zones-Resource Manager-sablonnal
+# <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>Gyors útmutató: Azure Firewall üzembe helyezése Availability Zones ARM-sablonnal
 
-Ebben a rövid útmutatóban egy Resource Manager-sablonnal telepít egy Azure Firewall három Availability Zones. 
+Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM-sablon) használatával telepít egy Azure Firewall három Availability Zones.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -29,15 +29,17 @@ A felhasználó által megadott útvonal hálózati forgalmat végez a *ServersS
 
 További információ a Azure Firewallről: [Azure Firewall központi telepítése és konfigurálása a Azure Portal használatával](tutorial-firewall-deploy-portal.md).
 
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-with-zones-sandbox%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-azure-firewall-with-availability-zones"></a>Azure Firewall létrehozása Availability Zones
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Ez a sablon létrehoz egy Azure Firewall a Availability Zones, valamint a szükséges erőforrásokat a Azure Firewall támogatásához.
-
-### <a name="review-the-template"></a>A sablon áttekintése
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox)származik.
 
@@ -54,9 +56,9 @@ Több Azure-erőforrás van definiálva a sablonban:
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A Resource Manager-sablon üzembe helyezése az Azure-ban:
+Az ARM-sablon üzembe helyezése az Azure-ban:
 
 1. Válassza az **üzembe helyezés az Azure** -ban lehetőséget az Azure-ba való bejelentkezéshez és a sablon megnyitásához. A sablon létrehoz egy Azure Firewall, a hálózati infrastruktúrát és két virtuális gépet.
 
@@ -64,9 +66,9 @@ A Resource Manager-sablon üzembe helyezése az Azure-ban:
 
 2. A portálon, a **Azure Firewall és zónák létrehozása a sandbox létrehozásához** lapon írja be vagy válassza ki a következő értékeket:
    - **Erőforráscsoport**: válassza az **új létrehozása**elemet, írja be az erőforráscsoport nevét, majd kattintson **az OK gombra**. 
-   - **Virtual Network neve**: írja be az új VNet nevét. 
+   - **Virtual Network neve**: írja be az új VNet nevét.
    - Rendszergazdai **Felhasználónév**: adjon meg egy felhasználónevet a rendszergazda felhasználói fiókhoz.
-   - Rendszergazdai **jelszó**: adjon meg egy rendszergazdai jelszót. 
+   - Rendszergazdai **jelszó**: adjon meg egy rendszergazdai jelszót.
 
 3. Olvassa el a használati feltételeket, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** , majd válassza a **vásárlás**lehetőséget. Az üzembe helyezés akár 10 percet is igénybe vehet.
 
@@ -76,9 +78,9 @@ Ismerkedjen meg a tűzfallal létrehozott erőforrásokkal.
 
 A sablonban található tűzfal JSON-szintaxisáról és tulajdonságairól a [Microsoft. Network/azureFirewalls](/azure/templates/microsoft.network/azurefirewalls)című témakörben olvashat bővebben.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége rájuk, eltávolíthatja az erőforráscsoportot, a tűzfalat és az összes kapcsolódó erőforrást a PowerShell- `Remove-AzResourceGroup` parancs futtatásával. A *MyResourceGroup*nevű erőforráscsoport eltávolításához futtassa a következőt: 
+Ha már nincs szüksége rájuk, eltávolíthatja az erőforráscsoportot, a tűzfalat és az összes kapcsolódó erőforrást a PowerShell- `Remove-AzResourceGroup` parancs futtatásával. A *MyResourceGroup*nevű erőforráscsoport eltávolításához futtassa a következőt:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyResourceGroup

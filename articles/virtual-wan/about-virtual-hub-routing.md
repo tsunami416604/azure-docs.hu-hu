@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 368440976558730bd7bb9600a0bf45c56d1ee300
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147384"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259172"
 ---
 # <a name="about-virtual-hub-routing"></a>Információ a virtuális központ útválasztásáról
 
@@ -64,6 +64,9 @@ Minden egyes virtuális központ esetében az **egyik útválasztási tábla sem
 
 A statikus útvonalak konfigurálása egy olyan mechanizmust biztosít, amely egy következő ugrási IP-címen keresztül irányítja át a forgalmat, ami egy virtuális hubhoz csatolt küllős VNet kiépített hálózati virtuális berendezés (NVA) lehet. A statikus útvonal egy útvonal neve, a célhelyek előtagjainak listája, valamint egy következő ugrási IP-cím.
 
+## <a name="reset-hub"></a><a name="route"></a>Hub alaphelyzetbe állítása
+Csak a Azure Portal érhető el, ez a beállítás lehetővé teszi a felhasználó számára, hogy a hibás erőforrásokat, például útválasztási táblákat, hub-útválasztókat vagy a virtuális hub-erőforrást a megfelelő kiépítési állapotba vonja vissza. Ez egy további lehetőség arra, hogy a felhasználó vegye figyelembe a kapcsolatfelvételt a Microsoft támogatási szolgálata előtt. Ez a művelet nem állítja alaphelyzetbe a virtuális központ egyik átjáróját. 
+
 ## <a name="route-tables-in-basic-and-standard-virtual-wans-prior-to-the-feature-set-of-association-and-propagation"></a><a name="route"></a>Az alapszintű és a standard szintű virtuális hálózatok útválasztási táblái a társítási és propagálási funkciók előtt
 
 Az útválasztási táblák mostantól társítási és propagálási funkciókkal rendelkeznek. A már meglévő útválasztási táblázat olyan útválasztási táblázat, amely nem rendelkezik ezekkel a funkciókkal. Ha már meglévő útvonalak vannak a hub-útválasztásban, és az új képességeket szeretné használni, vegye figyelembe a következőket:
@@ -74,7 +77,7 @@ Az útválasztási táblázat új funkcióinak használatához várjon, amíg az
 
 * **Alapszintű virtuális WAN-ügyfelek meglévő útvonalakkal a Virtual hub-ban**: az útválasztási táblázat új funkcióinak használatához várjon, amíg az Azure-ba való bevezetéshez a 3. augusztusi hét befejeződik. Ha az Útválasztás szakaszban már meglévő útvonalak találhatók a Azure Portal található hubhoz, először törölnie kell őket, majd **frissítenie** kell az alapszintű virtuális WAN-t a standard virtuális WAN-ra. Lásd: [virtuális WAN frissítése alapszintről standard verzióra](upgrade-virtual-wan.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Útválasztás konfigurálásával kapcsolatban lásd: [a virtuális központ útválasztásának konfigurálása](how-to-virtual-hub-routing.md).
 

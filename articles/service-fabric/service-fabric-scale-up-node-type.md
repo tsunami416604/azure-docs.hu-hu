@@ -3,12 +3,12 @@ title: Azure Service Fabric csomópont-típus vertikális felskálázása
 description: Megtudhatja, hogyan méretezheti Service Fabric fürtöt egy virtuálisgép-méretezési csoport hozzáadásával.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 2d700367049e0bf9bf710aad110c850a78c26220
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a42e33fa87b6cf7966368481ef6d3920511919e3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610693"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260466"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric-fürt elsődleges csomóponttípusának vertikális felskálázása
 Ez a cikk azt ismerteti, hogyan lehet a virtuális gépek erőforrásainak növelésével bővíteni egy Service Fabric-fürt elsődleges csomópontjának típusát. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni. Service Fabric-fürt létrehozása után függőlegesen méretezheti a fürt csomópontjának típusát (módosítsa a csomópontok erőforrásait), vagy frissítse a csomópont típusú virtuális gépek operációs rendszerét.  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -49,7 +49,7 @@ Ezután jelentkezzen be az Azure-fiókjába.
 Login-AzAccount -SubscriptionId "<your subscription ID>"
 ```
 
-Ez az oktatóanyag végigvezeti az önaláírt tanúsítványok létrehozásának forgatókönyvén. Ha Azure Key Vault meglévő tanúsítványt szeretne használni, ugorja át az alábbi lépést, és [egy meglévő tanúsítvány használatával hajtsa végre a fürt üzembe helyezéséhez](https://docs.microsoft.com/azure/service-fabric/upgrade-managed-disks#use-an-existing-certificate-to-deploy-the-cluster)szükséges lépéseket.
+Ez az oktatóanyag végigvezeti az önaláírt tanúsítványok létrehozásának forgatókönyvén. Ha Azure Key Vault meglévő tanúsítványt szeretne használni, ugorja át az alábbi lépést, és [egy meglévő tanúsítvány használatával hajtsa végre a fürt üzembe helyezéséhez](./upgrade-managed-disks.md#use-an-existing-certificate-to-deploy-the-cluster)szükséges lépéseket.
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Önaláírt tanúsítvány létrehozása és a fürt üzembe helyezése
 
@@ -245,10 +245,9 @@ foreach($name in $nodeNames){
 
 A fürt elsődleges csomópontjának típusa már frissítve lett. Ellenőrizze, hogy a telepített alkalmazások megfelelően működnek-e, és hogy a fürt állapota rendben van-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [adhat hozzá csomópont-típust fürthöz](virtual-machine-scale-set-scale-node-type-scale-out.md)
 * Az [alkalmazások méretezhetőségének](service-fabric-concepts-scalability.md)megismerése.
 * [Azure-fürt méretezése vagy](service-fabric-tutorial-scale-cluster.md)kibontása.
 * Az [Azure-fürtöket programozott módon méretezheti](service-fabric-cluster-programmatic-scaling.md) a Fluent Azure számítási SDK használatával.
 * [Önálló fürt méretezése vagy](service-fabric-cluster-windows-server-add-remove-nodes.md)kibontása.
-

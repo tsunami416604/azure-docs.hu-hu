@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 07394fb2d33aaacdc8e47bc2d1809854c0c8ca1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5eee6f34124f8b286deff278c6c3d1038b595357
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209351"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259888"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel
 
@@ -31,7 +31,7 @@ Ebből a cikkből megtudhatja, hogyan bővítheti a meglévő gazdagépeket új 
 
 Mielőtt elkezdené, győződjön meg arról, hogy létrehozta a gazdagép-készletet és a munkamenet-gazda virtuális gépeket (VM) az alábbi módszerek egyikének használatával:
 
-- [Azure Portalra](./create-host-pools-azure-marketplace.md)
+- [Azure Portal](./create-host-pools-azure-marketplace.md)
 - [Gazdagépcsoport létrehozása a PowerShell-lel](./create-host-pools-powershell.md)
 
 A következő információkra is szüksége lesz a gazdagép és a munkamenet-gazda virtuális gépek első létrehozásakor:
@@ -44,7 +44,7 @@ A következő információkra is szüksége lesz a gazdagép és a munkamenet-ga
 
 A gazdagép-készlet bővítése virtuális gépek hozzáadásával:
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. Keresse meg és válassza ki a **Windows virtuális asztal**elemet.
 
@@ -74,11 +74,11 @@ A gazdagép-készlet bővítése virtuális gépek hozzáadásával:
 
 12. Válassza a **felülvizsgálat + létrehozás** lapot. tekintse át a beállításokat, és ha mindent jól néz ki, válassza a **Létrehozás**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy kibontotta a meglévő gazdagép-készletet, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, és tesztelheti őket egy felhasználói munkamenet részeként. Csatlakozhat egy munkamenethez a következő ügyfelek bármelyikével:
 
-- [Kapcsolódás a Windows asztali ügyféllel](./connect-windows-7-and-10.md)
+- [Kapcsolódás a Windows asztali ügyféllel](./connect-windows-7-10.md)
 - [Kapcsolódás a webügyféllel](./connect-web.md)
 - [Kapcsolódás az Android-ügyféllel](./connect-android.md)
 - [Kapcsolódás a macOS-ügyfélhez](./connect-macos.md)

@@ -3,19 +3,19 @@ title: Azure Service Fabric önálló fürt frissítése
 description: Ismerje meg, hogyan frissítheti az Azure Service Fabric önálló fürtjének verzióját vagy konfigurációját.  T
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 519a9163d16fda2dd9fcf49cf22fe4ad4a272e09
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790643"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260992"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Önálló Service Fabric-fürt frissítése és frissítése
 
 Bármely modern rendszer esetében a minőségének megtervezése kulcsfontosságú a termék hosszú távú sikerességének megvalósításához. Az Azure Service Fabric önálló fürt egy saját erőforrás. Ez a cikk ismerteti, hogy mi frissíthető vagy frissíthető.
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>A fürtön futó háló verziójának szabályozása
-Győződjön meg arról, hogy a fürt mindig [támogatott Service Fabric verziót](service-fabric-versions.md)futtat. Ha a Microsoft bejelenti Service Fabric új verziójának kiadását, az előző verzió a támogatás végére van megjelölve, a bejelentés dátumától számítva legalább 60 nappal. Az új kiadások a [Service Fabric csapat blogjában](https://blogs.msdn.microsoft.com/azureservicefabric/)jelennek meg. Az új kiadás elérhető az adott pontra való választáshoz.
+Győződjön meg arról, hogy a fürt mindig [támogatott Service Fabric verziót](service-fabric-versions.md)futtat. Ha a Microsoft bejelenti Service Fabric új verziójának kiadását, az előző verzió a támogatás végére van megjelölve, a bejelentés dátumától számítva legalább 60 nappal. Az új kiadások a [Service Fabric csapat blogjában](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)jelennek meg. Az új kiadás elérhető az adott pontra való választáshoz.
 
 Beállíthatja úgy a fürtöt, hogy a Microsoft által kiadott automatikus háló-frissítéseket fogadja, vagy manuálisan kiválaszthatja azt a támogatott Fabric-verziót, amelyre a fürtöt be szeretné állítani. További információért olvassa el [a fürtön futó Service Fabric verziójának frissítése](service-fabric-cluster-upgrade-windows-server.md)című témakört.
 
@@ -36,7 +36,7 @@ Az egyes csomópont-típusoknál hozzáadhat egyéni kapacitási mérőszámokat
 A javítási előkészítési alkalmazás (POA) egy Service Fabric alkalmazás, amely az operációs rendszer javítását automatizálja egy Service Fabric-fürtön állásidő nélkül. A [Windowshoz készült patch](service-fabric-patch-orchestration-application.md) -előkészítési alkalmazás üzembe helyezhető a fürtön úgy, hogy a javításokat koordinált módon telepítse, miközben a szolgáltatások rendelkezésre állását is megőrizheti. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök néhány beállítását](service-fabric-cluster-fabric-settings.md)
 * Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-in-out.md)
 * Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md) megismerése

@@ -3,11 +3,12 @@ title: Azure Active Directory beállítása az ügyfél-hitelesítéshez
 description: Megtudhatja, hogyan állíthatja be Azure Active Directory (Azure AD) a Service Fabric-fürtökhöz tartozó ügyfelek hitelesítéséhez.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78193380"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258766"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory beállítása az ügyfél-hitelesítéshez
 
@@ -124,7 +125,7 @@ A Service Fabric-fürt összekapcsolásához használja a következő PowerShell
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
 ```
 
-További információ: a [ServiceFabricCluster parancsmag](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster).
+További információ: a [ServiceFabricCluster parancsmag](/powershell/module/servicefabric/connect-servicefabriccluster).
 
 ### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>Felhasználhatom ugyanazt az Azure AD-bérlőt több fürtben?
 Igen. Azonban ne felejtse el felvenni a Service Fabric Explorer URL-címét a fürt (webes) alkalmazásba. Ellenkező esetben a Service Fabric Explorer nem működik.
@@ -132,7 +133,7 @@ Igen. Azonban ne felejtse el felvenni a Service Fabric Explorer URL-címét a f�
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Miért van szükség a kiszolgálói tanúsítványra, amíg az Azure AD engedélyezve van?
 A FabricClient és a FabricGateway kölcsönös hitelesítést hajt végre. Az Azure AD-hitelesítés során az Azure AD-integráció ügyfél-identitást biztosít a kiszolgálónak, és a kiszolgáló tanúsítványát az ügyfél használja a kiszolgáló identitásának ellenőrzéséhez. További információ a Service Fabric tanúsítványokról: [X. 509 tanúsítványok és Service Fabric][x509-certificates-and-service-fabric].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Azure Active Directory alkalmazások beállítása és szerepkörök beállítása a felhasználók számára, [a fürt konfigurálása és üzembe helyezése](service-fabric-cluster-creation-via-arm.md).
 
 

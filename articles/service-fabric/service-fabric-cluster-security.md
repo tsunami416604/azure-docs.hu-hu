@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Service Fabric-fürtök biztonsági forgatók�
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: ba1565c31e8a3ce3f25501f0cad321d5413dc962
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 258a6dd141ccc31516e37dac9f265328f981bbf5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080690"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86261073"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric fürt biztonsági forgatókönyvei
 
@@ -27,7 +27,7 @@ A csomópontok közötti biztonság a fürtben lévő virtuális gépek vagy sz�
 
 ![Csomópontok közötti kommunikáció diagramja][Node-to-Node]
 
-Az Azure-on és a Windows rendszeren futó önálló fürtökön futó fürtök egyaránt használhatják a Windows Server rendszerű számítógépek [tanúsítvány](https://msdn.microsoft.com/library/ff649801.aspx) -vagy [Windows-biztonságát](https://msdn.microsoft.com/library/ff649396.aspx) .
+Az Azure-on és a Windows rendszeren futó önálló fürtökön futó fürtök egyaránt használhatják a Windows Server rendszerű számítógépek [tanúsítvány](/previous-versions/msp-n-p/ff649801(v=pandp.10)) -vagy [Windows-biztonságát](/previous-versions/msp-n-p/ff649396(v=pandp.10)) .
 
 ### <a name="node-to-node-certificate-security"></a>Csomópontok közötti tanúsítvány biztonsága
 
@@ -54,7 +54,7 @@ Az ügyfél és a csomópont közötti biztonság hitelesíti az ügyfeleket, é
 
 ![Az ügyfél és a csomópont közötti kommunikáció diagramja][Client-to-Node]
 
-Az Azure-on és a Windows rendszeren futó önálló fürtökön futó fürtök egyaránt használhatják a [tanúsítvány](https://msdn.microsoft.com/library/ff649801.aspx) -vagy a [Windows-biztonságot](https://msdn.microsoft.com/library/ff649396.aspx), bár a javaslat az X. 509 tanúsítványalapú hitelesítés használata, ha lehetséges.
+Az Azure-on és a Windows rendszeren futó önálló fürtökön futó fürtök egyaránt használhatják a [tanúsítvány](/previous-versions/msp-n-p/ff649801(v=pandp.10)) -vagy a [Windows-biztonságot](/previous-versions/msp-n-p/ff649396(v=pandp.10)), bár a javaslat az X. 509 tanúsítványalapú hitelesítés használata, ha lehetséges.
 
 ### <a name="client-to-node-certificate-security"></a>Az ügyfél és a csomópont közötti tanúsítvány biztonsága
 
@@ -95,7 +95,7 @@ A rendszergazdai szerepkörrel rendelkező felhasználók teljes hozzáférésse
 
 ## <a name="x509-certificates-and-service-fabric"></a>X. 509 tanúsítványok és Service Fabric
 
-Az X. 509 digitális tanúsítványok általában az ügyfelek és a kiszolgálók hitelesítésére szolgálnak. Emellett az üzenetek titkosítására és digitális aláírására is használhatók. A Service Fabric X. 509 tanúsítványokat használ a fürt biztonságossá tételéhez és az alkalmazás biztonsági funkcióinak biztosításához. További információ az X. 509 digitális tanúsítványokról: [a tanúsítványok használata](https://msdn.microsoft.com/library/ms731899.aspx). A [Key Vault](../key-vault/general/overview.md) segítségével kezelheti az Azure-beli Service Fabric-fürtök tanúsítványait.
+Az X. 509 digitális tanúsítványok általában az ügyfelek és a kiszolgálók hitelesítésére szolgálnak. Emellett az üzenetek titkosítására és digitális aláírására is használhatók. A Service Fabric X. 509 tanúsítványokat használ a fürt biztonságossá tételéhez és az alkalmazás biztonsági funkcióinak biztosításához. További információ az X. 509 digitális tanúsítványokról: [a tanúsítványok használata](/dotnet/framework/wcf/feature-details/working-with-certificates). A [Key Vault](../key-vault/general/overview.md) segítségével kezelheti az Azure-beli Service Fabric-fürtök tanúsítványait.
 
 Néhány fontos szempont:
 
@@ -141,7 +141,7 @@ Alapértelmezés szerint a fürt tanúsítványa rendszergazdai jogosultságokka
 > [!NOTE]
 > Egy Service Fabric-fürtön lévő összes felügyeleti művelethez kiszolgálói tanúsítványok szükségesek. Az ügyféltanúsítványok nem használhatók felügyelethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fürt létrehozása az Azure-ban Resource Manager-sablon használatával](service-fabric-cluster-creation-via-arm.md)
 * [Fürt létrehozása az Azure Portalon](service-fabric-cluster-creation-via-portal.md)

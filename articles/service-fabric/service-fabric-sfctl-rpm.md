@@ -5,22 +5,23 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7317fd66303aaabf5232106aa7391439880bebaf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76904946"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260296"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Parancsok lekérdezése és küldése a Repair Manager szolgáltatásnak.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Description|
+|Parancs|Leírás|
 | --- | --- |
 | jóváhagyás – kényszerít | Kényszeríti a megadott javítási feladat jóváhagyását. |
-| delete | Töröl egy befejezett javítási feladatot. |
-| lista | Lekéri a megadott szűrőknek megfelelő javítási feladatok listáját. |
+| törlés | Töröl egy befejezett javítási feladatot. |
+| list | Lekéri a megadott szűrőknek megfelelő javítási feladatok listáját. |
 
 ## <a name="sfctl-rpm-approve-force"></a>sfctl rpm jóváhagyása-Force
 Kényszeríti a megadott javítási feladat jóváhagyását.
@@ -29,14 +30,14 @@ Ez az API támogatja a Service Fabric platformot; nem közvetlenül a kódból v
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Task-ID [kötelező] | A javítási feladat azonosítója. |
 | --Version | A javítási feladat aktuális verziószáma. Ha nullától eltérő értéket ad meg, a kérelem csak akkor lesz sikeres, ha ez az érték megegyezik a javítási feladat aktuális verziójával. Ha nulla, akkor a rendszer nem hajtja végre a verzió-ellenőrzéseket. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -51,14 +52,14 @@ Ez az API támogatja a Service Fabric platformot; nem közvetlenül a kódból v
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Task-ID [kötelező] | A törlendő befejezett javítási feladat azonosítója. |
 | --Version | A javítási feladat aktuális verziószáma. Ha nullától eltérő értéket ad meg, a kérelem csak akkor lesz sikeres, ha ez az érték megegyezik a javítási feladat aktuális verziójával. Ha nulla, akkor a rendszer nem hajtja végre a verzió-ellenőrzéseket. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -73,7 +74,7 @@ Ez az API támogatja a Service Fabric platformot; nem közvetlenül a kódból v
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --végrehajtó-szűrő | Annak a javítási végrehajtónak a neve, amelynek az igényelt feladatait fel kell venni a listára. |
 | --állapot-szűrő | Egy bitenkénti – vagy a következő értékek közül, amelyek meghatározzák, hogy mely feladatok szerepeljenek az eredmények listájában. <ul><li>1 – létrehozva</li><li>2 – igényelt</li><li>4 – felkészülés</li><li>8 – jóváhagyott</li><li>16 – végrehajtás</li><li>32 – visszaállítás</li><li>64 – befejezett</li></ul>
@@ -81,7 +82,7 @@ Ez az API támogatja a Service Fabric platformot; nem közvetlenül a kódból v
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -90,6 +91,6 @@ Ez az API támogatja a Service Fabric platformot; nem közvetlenül a kódból v
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa](service-fabric-cli.md) be a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

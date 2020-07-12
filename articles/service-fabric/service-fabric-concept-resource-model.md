@@ -4,12 +4,12 @@ description: Ez a cikk áttekintést nyújt az Azure Service Fabric-alkalmazáso
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682643"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258738"
 ---
 # <a name="service-fabric-application-resource-model"></a>Alkalmazás-erőforrás modell Service Fabric
 
@@ -56,7 +56,7 @@ A fürtben lévő erőforrások biztonságossá tétele a nyilvános hozzáfér�
 
 * A blobokhoz és várólistákhoz való hozzáférés engedélyezése [Azure Active Directory](../storage/common/storage-auth-aad-app.md)használatával.
 * Hozzáférés biztosítása az Azure Blob-és üzenetsor-adataihoz [a Azure Portal RBAC](../storage/common/storage-auth-aad-rbac-portal.md)használatával.
-* Hozzáférés delegálása [közös hozzáférésű aláírás](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)használatával.
+* Hozzáférés delegálása [közös hozzáférésű aláírás](/rest/api/storageservices/delegate-access-with-shared-access-signature)használatával.
 
 Az alábbi képernyőképen szereplő példa a Blobok névtelen olvasási hozzáférését használja.
 
@@ -128,7 +128,7 @@ A minta alkalmazás az alkalmazás üzembe helyezéséhez használható [Azure R
 }
 ```
 
-### <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
+### <a name="deploy-the-application"></a>Az alkalmazás üzembe helyezése
 
 A **New-AzResourceGroupDeployment** parancsmag futtatásával telepítse az alkalmazást a fürtöt tartalmazó erőforráscsoporthoz:
 
@@ -166,19 +166,19 @@ A következő okok egyike miatt frissíthet egy Service Fabric-fürtre már tele
 
 A Resource Manager alkalmazás-erőforrás modelljével telepített alkalmazás törlése:
 
-1. Az alkalmazás erőforrás-AZONOSÍTÓjának beszerzéséhez használja a [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) parancsmagot:
+1. Az alkalmazás erőforrás-AZONOSÍTÓjának beszerzéséhez használja a [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-2.5.0) parancsmagot:
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-1. Az alkalmazás-erőforrások törléséhez használja a [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) parancsmagot:
+1. Az alkalmazás-erőforrások törléséhez használja a [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) parancsmagot:
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Információk beolvasása az alkalmazás-erőforrás modelljéről:
 

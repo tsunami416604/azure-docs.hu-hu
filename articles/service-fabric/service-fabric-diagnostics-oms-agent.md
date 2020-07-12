@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: c3c1bf511f3313e7408d6ce90b73de60bd1309f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79366745"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258688"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Teljesítményfigyelés Azure Monitor naplókkal
 
@@ -22,7 +23,7 @@ Ez a cikk a Log Analytics-ügynök virtuálisgép-méretezési csoportként val�
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Az ügynök bővítmény hozzáadása az Azure CLI-n keresztül
 
-Az Log Analytics-ügynök fürthöz való hozzáadásának legjobb módja az Azure CLI-vel elérhető virtuálisgép-méretezési csoport API-k használatával. Ha még nem állította be az Azure CLI-t, látogasson el Azure Portalre, és nyisson meg egy [Cloud Shell](../cloud-shell/overview.md) példányt, vagy [telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)-t.
+Az Log Analytics-ügynök fürthöz való hozzáadásának legjobb módja az Azure CLI-vel elérhető virtuálisgép-méretezési csoport API-k használatával. Ha még nem állította be az Azure CLI-t, látogasson el Azure Portalre, és nyisson meg egy [Cloud Shell](../cloud-shell/overview.md) példányt, vagy [telepítse az Azure CLI](/cli/azure/install-azure-cli)-t.
 
 1. A Cloud Shell kérése után ellenőrizze, hogy az erőforrással megegyező előfizetésben dolgozik-e. Jelölje be ezt a `az account show` elemet, és győződjön meg arról, hogy a "Name" (név) érték megegyezik a fürt előfizetésével.
 
@@ -72,7 +73,7 @@ Most, hogy hozzáadta a Log Analytics-ügynököt, a Log Analytics portálra bej
 
 3. Kattintson a **Speciális beállítások**elemre.
 
-4. Kattintson **az adat**, majd a **Windows-vagy Linux-teljesítményszámlálók**elemre. Az alapértelmezett számlálók listája lehetővé teszi az engedélyezést, és beállíthatja a gyűjtemény intervallumát is. [További teljesítményszámlálókat](service-fabric-diagnostics-event-generation-perf.md) is hozzáadhat a gyűjtéshez. Ennek a [cikknek](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx)a megfelelő formátumra hivatkozik.
+4. Kattintson **az adat**, majd a **Windows-vagy Linux-teljesítményszámlálók**elemre. Az alapértelmezett számlálók listája lehetővé teszi az engedélyezést, és beállíthatja a gyűjtemény intervallumát is. [További teljesítményszámlálókat](service-fabric-diagnostics-event-generation-perf.md) is hozzáadhat a gyűjtéshez. Ennek a [cikknek](/windows/win32/perfctrs/specifying-a-counter-path)a megfelelő formátumra hivatkozik.
 
 5. Kattintson a **Mentés**, majd **az OK**gombra.
 
@@ -88,8 +89,8 @@ Most, hogy hozzáadta a Log Analytics-ügynököt, a Log Analytics portálra bej
 
 ![Log Analytics teljesítményszámláló-lekérdezés](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A megfelelő [teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md)összegyűjtése. Ha a Log Analytics-ügynököt egy adott teljesítményszámlálók gyűjtésére szeretné beállítani, tekintse át az [adatforrások konfigurálását ismertető témakört](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)
-* Azure Monitor naplók konfigurálása az [automatizált riasztások](../log-analytics/log-analytics-alerts.md) beállításához az észlelés és a diagnosztika támogatásához
+* Azure Monitor naplók konfigurálása az [automatizált riasztások](../azure-monitor/platform/alerts-overview.md) beállításához az észlelés és a diagnosztika támogatásához
 * Alternatív megoldásként összegyűjtheti a teljesítményszámlálók [Azure Diagnostics bővítmény használatával, és elküldheti őket Application Insights](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)

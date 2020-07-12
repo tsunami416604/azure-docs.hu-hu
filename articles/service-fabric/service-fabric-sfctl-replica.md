@@ -5,24 +5,25 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: f6ad0b4c08ac8d710340fe654a068d0a3804e58f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ed1ecca686471e052f07e945738ad1a49e68464
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905803"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260314"
 ---
 # <a name="sfctl-replica"></a>sfctl-replika
 Kezelheti a szolgáltatási partíciókhoz tartozó replikákat.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Description|
+|Parancs|Leírás|
 | --- | --- |
 | telepített | A Service Fabric csomóponton telepített replika részleteinek beolvasása. |
 | központilag telepített – lista | Lekéri egy Service Fabric csomóponton telepített replikák listáját. |
 | állapotfigyelő | Beolvas egy Service Fabric állapot-nyilvántartó szolgáltatás replikájának vagy állapot nélküli szolgáltatási példányának állapotát. |
 | információ | Egy Service Fabric partíció replikájának adatait kérdezi le. |
-| lista | Lekérdezi a Service Fabric szolgáltatás partíciójának replikáit. |
+| list | Lekérdezi a Service Fabric szolgáltatás partíciójának replikáit. |
 | eltávolítása | Eltávolít egy csomóponton futó szolgáltatási replikát. |
 | jelentés – állapot | Állapotjelentés küldése az Service Fabric-replikán. |
 | restart | Újraindítja egy csomóponton futó megőrzött szolgáltatás szolgáltatás-replikáját. |
@@ -34,7 +35,7 @@ Lekéri a Service Fabric csomóponton telepített replika részleteit. Az inform
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Node-Name [kötelező] | A csomópont neve. |
 | --Partition-ID [kötelező] | A partíció identitása. |
@@ -43,7 +44,7 @@ Lekéri a Service Fabric csomóponton telepített replika részleteit. Az inform
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -58,7 +59,7 @@ A Service Fabric csomóponton telepített replikákkal kapcsolatos információk
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Application-ID [kötelező] | Az alkalmazás identitása. Ez általában az alkalmazás teljes neve a "Fabric \: " URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric \: /MyApp/App1", az alkalmazás identitása "SajátPr App1" lesz a \~ korábbi verziók 6.0 + és "SajátPr/App1" értékében. |
 | --Node-Name [kötelező] | A csomópont neve. |
@@ -68,7 +69,7 @@ A Service Fabric csomóponton telepített replikákkal kapcsolatos információk
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -83,7 +84,7 @@ Egy Service Fabric replika állapotának beolvasása. A EventsHealthStateFilter 
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Partition-ID [kötelező] | A partíció identitása. |
 | --replika-azonosító [kötelező] | A replika azonosítója. |
@@ -92,7 +93,7 @@ Egy Service Fabric replika állapotának beolvasása. A EventsHealthStateFilter 
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -107,7 +108,7 @@ A válasz tartalmazza az azonosítót, a szerepkört, az állapotot, az állapot
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Partition-ID [kötelező] | A partíció identitása. |
 | --replika-azonosító [kötelező] | A replika azonosítója. |
@@ -115,7 +116,7 @@ A válasz tartalmazza az azonosítót, a szerepkört, az állapotot, az állapot
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -130,7 +131,7 @@ Az GetReplicas-végpont adatokat ad vissza a megadott partíció replikái szám
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Partition-ID [kötelező] | A partíció identitása. |
 | --Folytatás-token | A folytatási jogkivonat paraméter az eredmények következő készletének beszerzésére szolgál. Egy nem üres értékkel rendelkező folytatási token szerepel az API válaszában, ha a rendszer eredményei nem illeszkednek egyetlen válaszhoz. Ha ezt az értéket átadja a következő API-hívásnak, az API az eredmények következő készletét adja vissza. Ha nincs további eredmény, akkor a folytatási jogkivonat nem tartalmaz értéket. A paraméter értéke nem lehet URL-kódolású. |
@@ -138,7 +139,7 @@ Az GetReplicas-végpont adatokat ad vissza a megadott partíció replikái szám
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -153,7 +154,7 @@ Ez az API egy Service Fabric replika hibáját szimulálja egy Service Fabric f�
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Node-Name [kötelező] | A csomópont neve. |
 | --Partition-ID [kötelező] | A partíció identitása. |
@@ -163,7 +164,7 @@ Ez az API egy Service Fabric replika hibáját szimulálja egy Service Fabric f�
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -178,7 +179,7 @@ A megadott Service Fabric replika állapotának jelentése. A jelentésnek tarta
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Health-Property [kötelező] | Az állapotadatok tulajdonsága. <br><br> Az entitások különböző tulajdonságokhoz tartozhatnak állapotjelentést. A tulajdonság egy karakterlánc, nem pedig rögzített enumerálás, amely lehetővé teszi, hogy a jelentéskészítő rugalmasan kategorizálja a jelentést kiváltó állapot feltételeit. A "LocalWatchdog" SourceId forrásazonosító rendelkező jelentéskészítő például nyomon követheti a csomópontok rendelkezésre álló lemezének állapotát, így az adott csomópont "AvailableDisk" tulajdonságát is jelentheti. Ugyanaz a riporter figyelheti a csomópontok kapcsolatát, így a "kapcsolat" tulajdonságot is jelentheti ugyanazon a csomóponton. Az állapotfigyelő szolgáltatásban ezek a jelentések különálló állapotadatokként lesznek kezelve a megadott csomópont esetében. A SourceId forrásazonosító együtt a tulajdonság egyedileg azonosítja az állapotadatok adatait. |
 | --állapotadatok [kötelező] | A lehetséges értékek a következők lehetnek: \: "Érvénytelen", "OK", "figyelmeztetés", "hiba", "ismeretlen". |
@@ -195,7 +196,7 @@ A megadott Service Fabric replika állapotának jelentése. A jelentésnek tarta
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -210,7 +211,7 @@ A megadott Service Fabric replika állapotának jelentése. A jelentésnek tarta
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Node-Name [kötelező] | A csomópont neve. |
 | --Partition-ID [kötelező] | A partíció identitása. |
@@ -219,7 +220,7 @@ A megadott Service Fabric replika állapotának jelentése. A jelentésnek tarta
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -228,6 +229,6 @@ A megadott Service Fabric replika állapotának jelentése. A jelentésnek tarta
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa](service-fabric-cli.md) be a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

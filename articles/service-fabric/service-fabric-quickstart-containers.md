@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 477d47fabc59c5718c449418f225d6a38838b270
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: da50fb9f331e91089bb6bf0fb373cab8045639f0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75466271"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260513"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>Rövid útmutató: Windows-tárolók üzembe helyezése a Service Fabricben
 
@@ -41,7 +41,7 @@ Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
 
 A Service Fabric SDK és -eszközök egy szolgáltatássablont biztosítanak, amelynek segítségével a tároló üzembe helyezhető egy Service Fabric-fürtben.
 
-Indítsa el a Visual Studiót „rendszergazdaként”.  Válassza a **fájl** > **új** > **projekt**lehetőséget.
+Indítsa el a Visual Studiót „rendszergazdaként”.  Válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
 
 Válassza ki **Service Fabric alkalmazást**, nevezze el "MyFirstContainer", majd kattintson a **Létrehozás**gombra.
 
@@ -76,7 +76,7 @@ A Microsoft különböző rendszerképeket tesz közzé a Windows Server külön
 
 A szolgáltatásjegyzék továbbra is csak egy rendszerképet ad meg a nanoserverhez, `mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016`.
 
-A *ApplicationManifest. XML* fájlban is módosítsa a **PasswordEncrypted** **értéket hamis**értékre. A fiók és a jelszó üres a Docker hub-on található nyilvános tároló-rendszerkép esetében, ezért kikapcsoljuk a titkosítást, mivel az üres jelszavak titkosítása felépítési hibát eredményez.
+A *ApplicationManifest.xml* fájlban is módosítsa a **PasswordEncrypted** **hamis**értékre. A fiók és a jelszó üres a Docker hub-on található nyilvános tároló-rendszerkép esetében, ezért kikapcsoljuk a titkosítást, mivel az üres jelszavak titkosítása felépítési hibát eredményez.
 
 ```xml
 <RepositoryCredentials AccountName="" Password="" PasswordEncrypted="false" />
@@ -90,13 +90,13 @@ Ha szükséges, telepítse a Azure PowerShellt a [Azure PowerShell útmutatóban
 
 A következő szkript futtatása előtt a PowerShell futtatásával `Connect-AzAccount` hozzon létre egy, az Azure-hoz való kapcsolódást.
 
-Másolja az alábbi parancsfájlt a vágólapra, és nyissa meg **Windows PowerShell integrált parancsprogram-kezelési környezet**.  Illessze be a tartalmat az üres Untitled1. ps1 ablakba. Ezután adja meg a változók `subscriptionId`értékeit a következő parancsfájlban `certpwd`: `certfolder`, `adminuser`, `adminpwd`,, stb.  A parancsfájl futtatása előtt a `certfolder` megadott címtárnak léteznie kell.
+Másolja az alábbi parancsfájlt a vágólapra, és nyissa meg **Windows PowerShell integrált parancsprogram-kezelési környezet**.  Illessze be a tartalmat az üres Untitled1.ps1 ablakába. Ezután adja meg a változók értékeit a következő parancsfájlban:,,, `subscriptionId` `certpwd` `certfolder` `adminuser` , `adminpwd` stb.  A parancsfájl futtatása előtt a megadott címtárnak `certfolder` léteznie kell.
 
 [!code-powershell[main](../../powershell_scripts/service-fabric/create-secure-cluster/create-secure-cluster.ps1 "Create a Service Fabric cluster")]
 
 Miután megadta a változók értékeit, nyomja le az **F5** billentyűt a szkript futtatásához.
 
-A szkript futtatása és a fürt létrehozása után keresse meg a kimenetben a `ClusterEndpoint` következőt:. Például:
+A szkript futtatása és a fürt létrehozása után keresse meg a `ClusterEndpoint` kimenetben a következőt:. Például:
 
 ```powershell
 ...
@@ -105,9 +105,9 @@ ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/cluster
 
 ### <a name="install-the-certificate-for-the-cluster"></a>A fürt tanúsítványának telepítése
 
-Most a PFX-t a *et currentuser\my tanúsítványtárolóba* -tanúsítványtárolóban fogjuk telepíteni. A PFX-fájl a fenti PowerShell-parancsfájl `certfolder` környezeti változója alapján megadott könyvtárba kerül.
+Most a PFX-t a *et currentuser\my tanúsítványtárolóba* -tanúsítványtárolóban fogjuk telepíteni. A PFX-fájl a `certfolder` fenti PowerShell-parancsfájl környezeti változója alapján megadott könyvtárba kerül.
 
-Váltson erre a könyvtárra, majd futtassa a következő PowerShell-parancsot, és cserélje le `certfolder` a könyvtárban található pfx-fájl nevét, valamint a `certpwd` változóban megadott jelszót. Ebben a példában az aktuális könyvtár a PowerShell-parancsfájlban a `certfolder` változó által megadott könyvtárra van beállítva. A `Import-PfxCertificate` parancs futtatása:
+Váltson erre a könyvtárra, majd futtassa a következő PowerShell-parancsot, és cserélje le a könyvtárban található PFX-fájl nevét `certfolder` , valamint a `certpwd` változóban megadott jelszót. Ebben a példában az aktuális könyvtár a `certfolder` PowerShell-parancsfájlban a változó által megadott könyvtárra van beállítva. A `Import-PfxCertificate` parancs futtatása:
 
 ```powershell
 PS C:\mycertificates> Import-PfxCertificate -FilePath .\mysfclustergroup20190130193456.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString Password#1234 -AsPlainText -Force)
@@ -132,9 +132,9 @@ Az alkalmazást a létrehozása után telepítheti a fürtben, közvetlenül a V
 
 A Solution Explorerben (Megoldáskezelőben) kattintson a jobb gombbal a **MyFirstContainer** elemre, majd kattintson a **Publish** (Közzététel) parancsra. Ekkor megjelenik a Publish (Közzététel) párbeszédpanel.
 
-Másolja a következőt a **CN =** nevű tartalmat a PowerShell-ablakban a `Import-PfxCertificate` fenti parancs futtatásakor, és `19000` adja hozzá a portot. Például: `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Másolja azt a **kapcsolatok végpont** mezőjébe. Jegyezze fel ezt az értéket, mert egy későbbi lépésben szüksége lesz rá.
+Másolja a következőt a **CN =** nevű tartalmat a PowerShell-ablakban a `Import-PfxCertificate` fenti parancs futtatásakor, és adja hozzá a portot `19000` . Például: `mysfcluster.SouthCentralUS.cloudapp.azure.com:19000`. Másolja azt a **kapcsolatok végpont** mezőjébe. Jegyezze fel ezt az értéket, mert egy későbbi lépésben szüksége lesz rá.
 
-Kattintson az **Advanced Connection Parameters** (Speciális kapcsolati paraméterek) elemre, és ellenőrizze a kapcsolati paraméterek információit.  A *FindValue* és a *servercertthumbprint értékeknek egyezniük* értékének meg kell egyeznie az előző lépésben futtatott `Import-PfxCertificate` tanúsítvány ujjlenyomatával.
+Kattintson az **Advanced Connection Parameters** (Speciális kapcsolati paraméterek) elemre, és ellenőrizze a kapcsolati paraméterek információit.  A *FindValue* és a *servercertthumbprint értékeknek egyezniük* értékének meg kell egyeznie az előző lépésben futtatott tanúsítvány ujjlenyomatával `Import-PfxCertificate` .
 
 ![Publish (Közzététel) párbeszédpanel](./media/service-fabric-quickstart-containers/publish-app.png)
 
@@ -142,15 +142,15 @@ Kattintson a **Publish** (Közzététel) gombra.
 
 A fürtben szereplő minden alkalmazásnak egyedi névvel kell rendelkeznie. Ha névütközés van, nevezze át a Visual Studio-projektet, és telepítse újra.
 
-Nyisson meg egy böngészőt, és navigáljon az előző lépésben a **kapcsolódási végpont** mezőjébe helyezett címre. Azt is megteheti, hogy beilleszti előre a `http://` sémaazonosítót, vagy hozzáfűzheti a `:80` portot az URL-címhez. Például http:\//mysfcluster.SouthCentralUS.cloudapp.Azure.com:80.
+Nyisson meg egy böngészőt, és navigáljon az előző lépésben a **kapcsolódási végpont** mezőjébe helyezett címre. Azt is megteheti, hogy beilleszti előre a `http://` sémaazonosítót, vagy hozzáfűzheti a `:80` portot az URL-címhez. Például http: \/ /mysfcluster.SouthCentralUS.cloudapp.Azure.com:80.
 
  Ekkor az IIS alapértelmezett webhelyének kell megjelennie: ![Az IIS alapértelmezett webhelye][iis-default]
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 
-A fürt futása során továbbra is felmerülnek a költségek. Érdemes lehet [törölni a fürtöt](service-fabric-cluster-delete.md).
+A fürt futása során továbbra is felmerülnek a költségek. Érdemes lehet [törölni a fürtöt](./service-fabric-tutorial-delete-cluster.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

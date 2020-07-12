@@ -12,8 +12,6 @@
       href: tutorial-hybrid-portal.md
     - name: Bejövő forgalom szűrése DNAT használatával
       href: tutorial-firewall-dnat.md
-    - name: Diagnosztikai naplók monitorozása
-      href: tutorial-diagnostics.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -86,6 +84,8 @@
       href: protect-azure-kubernetes-service.md
     - name: DNS-beállítások
       href: dns-settings.md
+    - name: Diagnosztikai naplók monitorozása
+      href: firewall-diagnostics.md
 - name: Referencia
   items:
     - name: Azure CLI

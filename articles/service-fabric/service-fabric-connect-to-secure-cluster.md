@@ -3,11 +3,12 @@ title: Biztonságos kapcsolódás Azure Service Fabric-fürthöz
 description: Útmutatás a Service Fabric-fürthöz való ügyfél-hozzáférés hitelesítéséhez, valamint az ügyfelek és a fürt közötti kommunikáció biztonságossá tételéhez.
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d3598b283a91645f0db648be81c73dffde8b46
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84701219"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259252"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Csatlakozás biztonságos fürthöz
 
@@ -144,7 +145,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 <a id="connectsecureclusterfabricclient"></a>
 
 ## <a name="connect-to-a-cluster-using-the-fabricclient-apis"></a>Kapcsolódás fürthöz a FabricClient API-k használatával
-A Service Fabric SDK biztosítja a [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) osztályt a fürt felügyeletéhez. A FabricClient API-k használatához szerezze be a Microsoft. ServiceFabric NuGet-csomagot.
+A Service Fabric SDK biztosítja a [FabricClient](/dotnet/api/system.fabric.fabricclient) osztályt a fürt felügyeletéhez. A FabricClient API-k használatához szerezze be a Microsoft. ServiceFabric NuGet-csomagot.
 
 ### <a name="connect-to-an-unsecure-cluster"></a>Kapcsolódás nem biztonságos fürthöz
 
@@ -162,7 +163,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Kapcsolódás biztonságos fürthöz ügyféltanúsítvány használatával
 
-A fürt csomópontjainak érvényes tanúsítványokkal kell rendelkezniük, amelyek köznapi neve vagy DNS-neve a SAN-ban jelenik meg a [RemoteCommonNames tulajdonságban](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) a [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient). Ennek a folyamatnak a követése lehetővé teszi a kölcsönös hitelesítést az ügyfél és a fürtcsomópontok között.
+A fürt csomópontjainak érvényes tanúsítványokkal kell rendelkezniük, amelyek köznapi neve vagy DNS-neve a SAN-ban jelenik meg a [RemoteCommonNames tulajdonságban](/dotnet/api/system.fabric.x509credentials) a [FabricClient](/dotnet/api/system.fabric.fabricclient). Ennek a folyamatnak a követése lehetővé teszi a kölcsönös hitelesítést az ügyfél és a fürtcsomópontok között.
 
 ```csharp
 using System.Fabric;
@@ -230,7 +231,7 @@ catch (Exception e)
 
 A következő példa a Microsoft. IdentityModel. clients. ActiveDirectory, Version: 2.19.208020213 függvényre támaszkodik.
 
-További információ a HRE-jogkivonat beszerzéséről: [Microsoft. IdentityModel. clients. ActiveDirectory](https://msdn.microsoft.com/library/microsoft.identitymodel.clients.activedirectory.aspx).
+További információ a HRE-jogkivonat beszerzéséről: [Microsoft. IdentityModel. clients. ActiveDirectory](/dotnet/api/microsoft.identitymodel.clients.activedirectory?view=azure-dotnet).
 
 ```csharp
 string tenantId = "C15CFCEA-02C1-40DC-8466-FBD0EE0B05D2";
@@ -377,7 +378,7 @@ Legalább két tanúsítványt kell használni a fürt biztonságossá tételéh
 
 * Mac rendszeren: Kattintson duplán a PFX-fájlra, és kövesse a lépéseket a tanúsítvány a kulcskarikában való telepítéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Service Fabric fürt frissítési folyamata és elvárásai](service-fabric-cluster-upgrade.md)
 * [A Service Fabric-alkalmazások kezelése a Visual Studióban](service-fabric-manage-application-in-visual-studio.md)

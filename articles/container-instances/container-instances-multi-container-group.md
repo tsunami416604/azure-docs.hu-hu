@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe eg
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc
-ms.openlocfilehash: 48068659d99fc060aa0c0580eb781e10c434c597
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: cb085112c6e6458d897f52f19988e6301d4ae6e8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169714"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259580"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Oktatóanyag: több tárolós csoport üzembe helyezése Resource Manager-sablonnal
 
@@ -154,7 +154,7 @@ az group create --name myResourceGroup --location eastus
 Telepítse a sablont az az [Deployment Group Create][az-deployment-group-create] paranccsal.
 
 ```azurecli-interactive
-az group deployment create --resource-group myResourceGroup --template-file azuredeploy.json
+az deployment group create --resource-group myResourceGroup --template-file azuredeploy.json
 ```
 
 Néhány másodpercen belül meg kell kapnia az Azure kezdeti válaszát.
@@ -220,7 +220,7 @@ Connection: keep-alive
 
 Amint láthatja, az oldalkocsi rendszeres időközönként HTTP-kérést küld a fő webalkalmazásnak a csoport helyi hálózatán keresztül annak biztosítása érdekében, hogy az fut. Ez az oldalkocsis példa kiterjeszthető úgy, hogy riasztást indítson, ha nem a HTTP-válasz kódját kapta `200 OK` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure Resource Manager sablont használt egy többtárolós csoport üzembe helyezéséhez Azure Container Instancesban. Megtanulta végrehajtani az alábbi műveleteket:
 
@@ -240,4 +240,4 @@ Többtárolós csoportot is megadhat egy [YAML-fájl](container-instances-multi-
 [az-container-show]: /cli/azure/container#az-container-show
 [az-group-create]: /cli/azure/group#az-group-create
 [az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
-[template-reference]: https://docs.microsoft.com/azure/templates/microsoft.containerinstance/containergroups
+[template-reference]: /azure/templates/microsoft.containerinstance/containergroups

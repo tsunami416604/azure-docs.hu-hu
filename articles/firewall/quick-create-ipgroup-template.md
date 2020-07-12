@@ -1,6 +1,6 @@
 ---
 title: 'Rövid útmutató: Azure Firewall és IP-csoportok létrehozása – Resource Manager-sablon'
-description: Megtudhatja, hogyan hozhat létre Azure Firewall és IP-csoportokat egy Resource Manager-sablon használatával.
+description: Megtudhatja, hogyan használhat egy Azure Resource Manager sablont (ARM-sablon) egy Azure Firewall és IP-csoport létrehozásához.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,28 +8,30 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 403aaafebcae680f337aeff551b81a80a9549252
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 5ac1248ddcdf8c0eef68b7c32e322398fa01a6f2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680559"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260572"
 ---
-# <a name="quickstart-create-an-azure-firewall-and-ip-groups---resource-manager-template"></a>Rövid útmutató: Azure Firewall és IP-csoportok létrehozása – Resource Manager-sablon
+# <a name="quickstart-create-an-azure-firewall-and-ip-groups---arm-template"></a>Rövid útmutató: Azure Firewall és IP-csoportok létrehozása – ARM-sablon
 
-Ebben a rövid útmutatóban egy Resource Manager-sablont használ egy olyan Azure Firewall üzembe helyezéséhez, amely egy hálózati szabályban és alkalmazási szabályban használt minta IP-csoportokkal rendelkezik. Az IP-csoport egy legfelső szintű erőforrás, amely lehetővé teszi, hogy az IP-címeket, tartományokat és alhálózatokat egyetlen objektumba definiálja és csoportosítsa. Ez hasznos az IP-címek Azure Firewall szabályokban való kezeléséhez. Manuálisan is megadhatja az IP-címeket, vagy importálhatja őket egy fájlból.
+Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy olyan Azure Firewall üzembe helyezéséhez, amely egy hálózati szabályban és alkalmazási szabályban használt minta IP-csoportokkal rendelkezik. Az IP-csoport egy legfelső szintű erőforrás, amely lehetővé teszi, hogy az IP-címeket, tartományokat és alhálózatokat egyetlen objektumba definiálja és csoportosítsa. Ez hasznos az IP-címek Azure Firewall szabályokban való kezeléséhez. Manuálisan is megadhatja az IP-címeket, vagy importálhatja őket egy fájlból.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurefirewall-create-with-ipgroups-and-linux-jumpbox%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-azure-firewall-and-ip-groups"></a>Azure Firewall és IP-csoportok létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Ez a sablon létrehoz egy Azure Firewall és IP-csoportokat, valamint a szükséges erőforrásokat a Azure Firewall támogatásához.
-
-### <a name="review-the-template"></a>A sablon áttekintése
 
 Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-azurefirewall-create-with-ipgroups-and-linux-jumpbox)származik.
 
@@ -47,9 +49,9 @@ Több Azure-erőforrás van definiálva a sablonban:
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
 - [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Resource Manager-sablon üzembe helyezése az Azure-ban:
+Az ARM-sablon üzembe helyezése az Azure-ban:
 
 1. Válassza az **üzembe helyezés az Azure** -ban lehetőséget az Azure-ba való bejelentkezéshez és a sablon megnyitásához. A sablon létrehoz egy Azure Firewall, a hálózati infrastruktúrát és két virtuális gépet.
 
@@ -76,9 +78,9 @@ A Azure Portal tekintse át az üzembe helyezett erőforrásokat, különösen a
 
 :::image type="content" source="media/quick-create-ipgroup-template/network-rule.png" alt-text="Hálózati szabályok.":::
 
-A sablonban található tűzfal JSON-szintaxisáról és tulajdonságairól további információt a [Microsoft. Network azureFirewalls-sablon referenciája](https://docs.microsoft.com/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls)című témakörben talál.
+A sablonban található tűzfal JSON-szintaxisáról és tulajdonságairól további információt a [Microsoft. Network azureFirewalls-sablon referenciája](/azure/templates/Microsoft.Network/2019-11-01/azureFirewalls)című témakörben talál.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a tűzfallal létrehozott erőforrásokra, törölje az erőforráscsoportot. Ezzel eltávolítja a tűzfalat és az összes kapcsolódó erőforrást.
 

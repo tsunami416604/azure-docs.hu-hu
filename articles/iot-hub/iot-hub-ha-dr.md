@@ -7,11 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84fa7ae50b69e7e1a2fe341e34497f2bf1a75b0d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84267630"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260172"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub magas rendelkezésre állása és vészhelyreállítása
 
@@ -75,6 +76,8 @@ Ha a Microsoft által kezdeményezett feladatátvétel által biztosított RTO n
 
 A manuális feladatátvételi lehetőség mindig használható, függetlenül attól, hogy az elsődleges régió leállást tapasztal-e. Ezért lehetséges, hogy ez a beállítás a tervezett feladatátvételek végrehajtására használható. A tervezett feladatátvételek használata például rendszeres feladatátvételi gyakorlatokat hajt végre. A figyelmeztetés figyelmezteti, hogy a tervezett feladatátvételi művelet leállást eredményez a hub számára a RTO által meghatározott időszakra vonatkozóan, és a fenti RPO-táblázat által meghatározott adatvesztést is eredményez. Érdemes lehet úgy beállítani egy teszt IoT hub-példányt, hogy a tervezett feladatátvételi lehetőség rendszeres időközönként megszerezze a szükséges megbízhatóságot a teljes körű megoldások üzembe helyezéséhez, ha valós katasztrófa következik be.
 
+A manuális feladatátvétel ingyenesen elérhető a 2017. május 18. után létrehozott IoT hubok esetében
+
 Részletes útmutatásért lásd [: oktatóanyag: manuális feladatátvétel végrehajtása IoT hub](tutorial-manual-failover.md) esetén
 
 ### <a name="running-test-drills"></a>Tesztelési gyakorlatok futtatása
@@ -129,11 +132,11 @@ Ennek a lépésnek a leegyszerűsítése érdekében idempotens műveleteket kel
 
 | HA/DR beállítás | RTO | RPO | Manuális beavatkozásra van szüksége? | Implementáció bonyolultsága | További költséghatékonyság|
 | --- | --- | --- | --- | --- | --- |
-| Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|No|None|None|
-| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Yes|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|None|
-| Régión átívelő HA |< 1 perc|Az egyéni HA-megoldás replikációs gyakoriságának függvénye|No|Magasság|> 1 IoT hub díja|
+| Microsoft által kezdeményezett feladatátvétel |2-26 óra|Tekintse át a fenti RPO-táblázatot|Nem|Nincs|Nincs|
+| Manuális feladatátvétel |10 perc – 2 óra|Tekintse át a fenti RPO-táblázatot|Igen|Nagyon alacsony. Ezt a műveletet csak a portálról kell elindítania.|Nincs|
+| Régión átívelő HA |< 1 perc|Az egyéni HA-megoldás replikációs gyakoriságának függvénye|Nem|Magas|> 1 IoT hub díja|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi az Azure IoT Hub?](about-iot-hub.md)
 * [Ismerkedés a IoT Hubokkal (gyors útmutató)](quickstart-send-telemetry-dotnet.md)

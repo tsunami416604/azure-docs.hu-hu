@@ -4,12 +4,12 @@ description: Ismerje meg a tanúsítványalapú hitelesítést Service Fabric-f�
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: 699015e322c599dea996b3a8b9dbc0a4589440ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 36717f526f88af753f3929d62e84ee65be4320e9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429667"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259019"
 ---
 # <a name="x509-certificate-based-authentication-in-service-fabric-clusters"></a>X. 509 tanúsítványalapú hitelesítés Service Fabric-fürtökben
 
@@ -180,7 +180,7 @@ Korábban már említettük, hogy egy Service Fabric-fürt biztonsági beállít
 
 Ahogy említettük, a tanúsítvány ellenőrzése mindig magában foglalja a tanúsítvány láncának kiépítése és kiértékelése. A CA által kiállított tanúsítványok esetében ez a látszólag egyszerű operációsrendszer-API-hívás általában több kimenő hívást eredményez a nyilvános kulcsokra épülő PKI különböző végpontjai, a válaszok gyorsítótárazása és így tovább. A tanúsítvány-ellenőrzési hívások gyakorisága Service Fabric-fürtben a PKI-végpontok bármely problémája csökkentheti a fürt rendelkezésre állását, vagy lerövidítheti a lebontást. Amíg a kimenő hívásokat nem lehet letiltani (lásd alább a gyakori kérdések című szakaszt), a következő beállításokkal elvégezhető a CRL-hívások meghibásodása által okozott érvényesítési hibák maszkolása.
 
-  * CrlCheckingFlag – a "biztonság" szakaszban a sztring UINT konvertálva. Ennek a beállításnak az értékét a Service Fabric a tanúsítványlánc állapotával kapcsolatos hibák kiszűrésére használja a lánc kiépítése viselkedésének megváltoztatásával; a rendszer átadja a Win32 CryptoAPI [CertGetCertificateChain](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) hívásának a "dwFlags" paraméternek, és a függvény által elfogadott jelzők érvényes kombinációja lehet. A 0 érték kikényszeríti a Service Fabric futtatókörnyezetet, hogy figyelmen kívül hagyja a megbízhatósági állapottal kapcsolatos hibákat – ez nem ajánlott, mivel a használata jelentős biztonsági kockázatot jelenthet. Az alapértelmezett érték a 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
+  * CrlCheckingFlag – a "biztonság" szakaszban a sztring UINT konvertálva. Ennek a beállításnak az értékét a Service Fabric a tanúsítványlánc állapotával kapcsolatos hibák kiszűrésére használja a lánc kiépítése viselkedésének megváltoztatásával; a rendszer átadja a Win32 CryptoAPI [CertGetCertificateChain](/windows/win32/api/wincrypt/nf-wincrypt-certgetcertificatechain) hívásának a "dwFlags" paraméternek, és a függvény által elfogadott jelzők érvényes kombinációja lehet. A 0 érték kikényszeríti a Service Fabric futtatókörnyezetet, hogy figyelmen kívül hagyja a megbízhatósági állapottal kapcsolatos hibákat – ez nem ajánlott, mivel a használata jelentős biztonsági kockázatot jelenthet. Az alapértelmezett érték a 0x40000000 (CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT).
 
   Mikor érdemes használni: helyi teszteléshez olyan önaláírt tanúsítványokkal vagy fejlesztői tanúsítványokkal, amelyek nincsenek teljesen kialakítva/nem rendelkeznek megfelelő nyilvános kulcsokra épülő infrastruktúrával a tanúsítványok támogatásához. A Erdőmbe közötti váltás során a gapped környezetekben is használhatja a megoldást.
 
@@ -257,7 +257,7 @@ A 2. fázis befejezése azt is jelzi, hogy a fürt átalakítása köznapi név 
 Egy külön cikkben egy Service Fabric-fürthöz tartozó tanúsítványok kezelésével és kiépítési témakörével foglalkozunk.
 
 ## <a name="troubleshooting-and-frequently-asked-questions"></a>Hibaelhárítás és gyakran ismételt kérdések
-A Service Fabric fürtök hitelesítéssel kapcsolatos problémáinak hibakeresése nem egyszerű, ezért a következő útmutatók és tippek segíthetnek. A vizsgálatok megkezdésének legegyszerűbb módja az Service Fabric eseménynaplók vizsgálata a fürt csomópontjain – nem feltétlenül csak a tüneteket mutató, de a csomópontok is, amelyek nem tudnak csatlakozni az egyik szomszédaihoz. Windows rendszeren a fontossági eseményeket általában az "alkalmazások és szolgáltatások Logs\Microsoft-ServiceFabric\Admin" vagy a "működési" csatornák alatt naplózza a rendszer. Esetenként hasznos lehet a [CAPI2 naplózásának engedélyezése](https://docs.microsoft.com/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues), hogy további részleteket rögzítsen a tanúsítvány érvényesítésével, a CRL/CTL-ek lekérésével, stb. (ne felejtse el letiltani a Reprodukálási befejezése után.)
+A Service Fabric fürtök hitelesítéssel kapcsolatos problémáinak hibakeresése nem egyszerű, ezért a következő útmutatók és tippek segíthetnek. A vizsgálatok megkezdésének legegyszerűbb módja az Service Fabric eseménynaplók vizsgálata a fürt csomópontjain – nem feltétlenül csak a tüneteket mutató, de a csomópontok is, amelyek nem tudnak csatlakozni az egyik szomszédaihoz. Windows rendszeren a fontossági eseményeket általában az "alkalmazások és szolgáltatások Logs\Microsoft-ServiceFabric\Admin" vagy a "működési" csatornák alatt naplózza a rendszer. Esetenként hasznos lehet a [CAPI2 naplózásának engedélyezése](/archive/blogs/benjaminperkins/enable-capi2-event-logging-to-troubleshoot-pki-and-ssl-certificate-issues), hogy további részleteket rögzítsen a tanúsítvány érvényesítésével, a CRL/CTL-ek lekérésével, stb. (ne felejtse el letiltani a Reprodukálási befejezése után.)
 
 A hitelesítési problémákat tapasztaló fürtökben előforduló jellemző tünetek a következők: 
   - csomópontok leállítása/kerékpározás 
@@ -300,5 +300,4 @@ Előfordulhat, hogy az egyes tüneteket különböző problémák okozzák, és 
     ```C++
     0x80090014  -2146893804 NTE_BAD_PROV_TYPE
     ```
-    A CAPI1 létrehozásához hozza létre újra a fürtöt (például "Microsoft Enhanced RSA and AES kriptográfiai szolgáltató") szolgáltatót. A kriptográfiai szolgáltatókkal kapcsolatos további részletekért tekintse meg a [kriptográfiai szolgáltatók ismertetése](https://docs.microsoft.com/windows/win32/seccertenroll/understanding-cryptographic-providers) című témakört.
-
+    A CAPI1 létrehozásához hozza létre újra a fürtöt (például "Microsoft Enhanced RSA and AES kriptográfiai szolgáltató") szolgáltatót. A kriptográfiai szolgáltatókkal kapcsolatos további részletekért tekintse meg a [kriptográfiai szolgáltatók ismertetése](/windows/win32/seccertenroll/understanding-cryptographic-providers) című témakört.

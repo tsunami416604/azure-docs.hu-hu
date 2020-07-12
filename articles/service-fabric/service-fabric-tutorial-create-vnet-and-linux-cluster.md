@@ -4,12 +4,12 @@ description: Megismerheti, hogyan helyezhet üzembe egy Linux-alapú Service Fab
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 1d6edc086233d757269c12e323241bc4bf55249f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611696"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260223"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Linux Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózaton
 
@@ -21,7 +21,7 @@ Előkészületek:
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * A [Service FABRIC parancssori](service-fabric-cli.md) felületének telepítése
-* Telepítse az [Azure CLI-t](/cli/azure/install-azure-cli)
+* Az [Azure CLI](/cli/azure/install-azure-cli) telepítése
 * A fürtök legfontosabb fogalmait az [Azure-fürtök áttekintését ismertető témakörben](service-fabric-azure-clusters-overview.md) tekintheti meg
 * [Tervezze meg és készítse elő](service-fabric-cluster-azure-deployment-preparation.md) az üzemi fürtök üzembe helyezését.
 
@@ -81,7 +81,7 @@ Ha további alkalmazásportokra van szükség, akkor módosítania kell a Micros
 
 A **AzureDeploy. Parameters** fájl számos, a fürt és a kapcsolódó erőforrások üzembe helyezéséhez használt értéket deklarál. Néhány paraméter, amelyeket lehet, hogy módosítani kell az üzembe helyezéshez:
 
-|Paraméter|Példaérték|Jegyzetek|
+|Paraméter|Példaérték|Megjegyzések|
 |---|---||
 |adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez. |
 |adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez.|
@@ -160,11 +160,11 @@ Az `sfctl cluster health` parancs futtatásával ellenőrizze, hogy csatlakozik-
 sfctl cluster health
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](service-fabric-cluster-delete.md) a felmerülő költségek elkerülése érdekében.
+Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](./service-fabric-tutorial-delete-cluster.md) a felmerülő költségek elkerülése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [méretezheti a fürtöt](service-fabric-tutorial-scale-cluster.md).
 

@@ -4,12 +4,12 @@ description: Lemezképek vagy más összetevők gyűjteményének átvitele egy 
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: c80f10e8795c63b84bb46fc21fd3406a195b772e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186928"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259450"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Összetevők átvitele másik beállításjegyzékbe
 
@@ -36,7 +36,7 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
 * **Storage-fiókok** – forrás-és célként szolgáló Storage-fiókok létrehozása egy előfizetésben és egy tetszőleges helyen. Tesztelési célból használhatja ugyanazt az előfizetést vagy előfizetést, mint a forrás-és a cél-nyilvántartó. A Felhőbeli forgatókönyvek esetében általában külön Storage-fiókot hoz létre minden felhőben. Ha szükséges, hozzon létre egy Storage-fiókot az [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) -vel vagy más eszközökkel. 
 
   Hozzon létre egy BLOB-tárolót az összetevők átviteléhez az egyes fiókokban. Hozzon létre például egy *átvitel*nevű tárolót. Két vagy több adatátviteli folyamat is megoszthatja ugyanazt a Storage-fiókot, de eltérő tárolási tároló-hatóköröket kell használnia.
-* **Kulcstartók** – kulcstartók szükségesek a forrás-és cél Storage-fiókok eléréséhez használt sas-jogkivonat-titkok tárolásához. Hozza létre a forrás és a cél kulcstartót ugyanabban az Azure-előfizetésben vagy előfizetésben, mint a forrás-és a cél-nyilvántartó. Ha szükséges, hozzon létre kulcstartókat az [Azure CLI](../key-vault/quick-create-cli.md) -vel vagy más eszközökkel.
+* **Kulcstartók** – kulcstartók szükségesek a forrás-és cél Storage-fiókok eléréséhez használt sas-jogkivonat-titkok tárolásához. Hozza létre a forrás és a cél kulcstartót ugyanabban az Azure-előfizetésben vagy előfizetésben, mint a forrás-és a cél-nyilvántartó. Ha szükséges, hozzon létre kulcstartókat az [Azure CLI](../key-vault/secrets/quick-create-cli.md) -vel vagy más eszközökkel.
 * **Környezeti változók** – a cikkben szereplő parancsokhoz például a következő környezeti változók állíthatók be a forrás-és a célként megadott környezetekben. Az összes példa a bash-rendszerhéjra van formázva.
   ```console
   SOURCE_RG="<source-resource-group>"
@@ -257,7 +257,7 @@ az storage blob list \
 
 A AzCopy eszköz vagy más módszerek használatával a [blob-adatok átvitele](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts) a forrás Storage-fiókból a cél Storage-fiókba.
 
-A következő parancs például a [`azcopy copy`](/azure/storage/common/storage-ref-azcopy-copy) myblob lévő *átvitel* tárolóból másolja át az *átvitel* tárolóba a cél fiókba. Ha a blob létezik a cél fiókban, az felülírva van. A hitelesítés SAS-jogkivonatokat használ a forrás és a cél tárolók megfelelő engedélyeivel. (A jogkivonatok létrehozásának lépései nem jelennek meg.)
+A következő parancs például a [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) myblob lévő *átvitel* tárolóból másolja át az *átvitel* tárolóba a cél fiókba. Ha a blob létezik a cél fiókban, az felülírva van. A hitelesítés SAS-jogkivonatokat használ a forrás és a cél tárolók megfelelő engedélyeivel. (A jogkivonatok létrehozásának lépései nem jelennek meg.)
 
 ```console
 azcopy copy \
@@ -342,7 +342,7 @@ az deployment group delete \
   * Az egyéb folyamatokkal kapcsolatos problémák esetén adja meg az Exportálás futtatásának vagy importálásának a Azure Container Registry csapatnak való futtatásához szükséges telepítési [korrelációs azonosítót](../azure-resource-manager/templates/deployment-history.md) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha egyetlen tároló lemezképét szeretné importálni egy Azure Container registrybe egy nyilvános beállításjegyzékből vagy egy másik privát beállításjegyzékből, tekintse meg az az [ACR import][az-acr-import] parancs-referenciát.
 
@@ -366,6 +366,3 @@ Ha egyetlen tároló lemezképét szeretné importálni egy Azure Container regi
 [az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
 [az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
 [az-acr-import]: /cli/azure/acr#az-acr-import
-
-
-

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: charwen
-ms.openlocfilehash: f3a658d4b02501994437691308810ffb9cabcb6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2672068e505b7c86127b8b765372e7c607c3875a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738855"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86259774"
 ---
 # <a name="optimize-expressroute-routing"></a>Az ExpressRoute-útválasztás optimalizálása
 Ha több ExpressRoute-kapcsolatcsoporttal rendelkezik, több útvonalon csatlakozhat a Microsofthoz. Ennek eredményeképpen előfordulhat, hogy az útválasztás nem lesz optimális – azaz a forgalom hosszabb úton jut el a Microsofthoz, illetve a Microsofttól az Ön hálózatába. Minél hosszabb a hálózati útvonal, annál nagyobb a késés. A késés közvetlen hatással van az alkalmazások teljesítményére és a felhasználói élményre. Ez a cikk ezt a problémát mutatja be, és ismerteti, hogyan optimalizálható az útválasztás a standard útválasztási technológiák segítségével.
@@ -33,18 +33,18 @@ A fenti példában a ExpressRoute elérési utak előnyben részesítése a köv
 
 **Cisco IOS-XE konfiguráció R1 perspektívából:**
 
-    R1(config)#route-map prefer-ExR permit 10
-    R1(config-route-map)#set local-preference 150
+- R1 (konfiguráció) #route-map előnyben részesített – ExR engedélyezése 10
+- R1 (konfiguráció-útvonal-térkép) #set local-preferencia 150
 
-    R1(config)#router BGP 345
-    R1(config-router)#neighbor 1.1.1.2 remote-as 12076
-    R1(config-router)#neighbor 1.1.1.2 activate
-    R1(config-router)#neighbor 1.1.1.2 route-map prefer-ExR in
+- R1 (konfiguráció) #router BGP 345
+- R1 (config-router) #neighbor 1.1.1.2 távoli – 12076
+- R1 (config-router) #neighbor 1.1.1.2 aktiválása
+- R1 (config-router) #neighbor 1.1.1.2 útvonal – Térkép preferálása – ExR a következőben:
 
 **Junos konfiguráció R1 perspektívából:**
 
-    user@R1# set protocols bgp group ibgp type internal
-    user@R1# set protocols bgp group ibgp local-preference 150
+- user@R1# set protokollok BGP csoport ibgp típus belső
+- user@R1# set protokollok BGP csoport ibgp local-preferencia 150
 
 
 

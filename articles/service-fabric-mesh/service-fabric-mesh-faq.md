@@ -4,11 +4,12 @@ description: Ismerkedjen meg az Azure Service Fabric Mesh szolgáltatással kapc
 ms.author: pepogors
 ms.date: 4/23/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 2a5c2ea63d162eb6fb78ab702e0519f8ac25dcc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64eeb43d743d71d5acd456409445a4fadfe91aeb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78252492"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86260117"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Gyakori kérdések Service Fabric Mesh kérdésekről
 
@@ -74,7 +75,7 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 
 Az erőforráscsoport törléséhez használja az `az group delete <nameOfResourceGroup>` parancsot.
 
-## <a name="deployments"></a>Központi telepítés
+## <a name="deployments"></a>Üzemelő példányok
 
 ### <a name="what-container-images-are-supported"></a>Milyen tároló-lemezképek támogatottak?
 
@@ -120,7 +121,7 @@ A helyi fejlesztési fürtben használja a t `{serviceName}.{applicationName}` .
 
 Az Azure Mesh jelenleg nem támogatja a DNS-feloldást az alkalmazások között.
 
-A Service Fabric fejlesztői fürt Windows 10 rendszeren való futtatásával kapcsolatos egyéb ismert DNS-problémákkal kapcsolatban lásd: [Windows-tárolók](/azure/service-fabric/service-fabric-how-to-debug-windows-containers) és [ismert DNS-problémák](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice#known-issues)hibakeresése.
+A Service Fabric fejlesztői fürt Windows 10 rendszeren való futtatásával kapcsolatos egyéb ismert DNS-problémákkal kapcsolatban lásd: [Windows-tárolók](../service-fabric/service-fabric-how-to-debug-windows-containers.md) és [ismert DNS-problémák](../service-fabric/service-fabric-dnsservice.md#known-issues)hibakeresése.
 
 ### <a name="networking"></a>Hálózat
 
@@ -166,6 +167,6 @@ Az alkalmazás modelljében használja a hálózatok és kötetek teljes erőfor
 
 Ez egy hiba, és a javítás megvalósítása folyamatban van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a Service Fabric Meshról, olvassa el az [áttekintést](service-fabric-mesh-overview.md).
