@@ -9,11 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 38cfab8a3b73eeef28249f53bd2f5c56e26b21a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82854107"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254282"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Saját üzemeltetésű átjáró üzembe helyezése Kubernetesben
 
@@ -64,7 +65,7 @@ Ez a cikk az Azure-API Management saját üzemeltetésű átjáró-összetevőj�
 ### <a name="access-token"></a>Hozzáférési jogkivonat
 Érvényes hozzáférési jogkivonat nélkül a saját üzemeltetésű átjáró nem fér hozzá és nem tölthet le konfigurációs adatait a társított API Management szolgáltatás végpontján. A hozzáférési jogkivonat legfeljebb 30 napig érvényes lehet. Újra kell indítani, és a fürtöt egy friss tokenrel kell konfigurálni manuálisan vagy automatizálással, mielőtt lejár. 
 
-Amikor automatizálja a jogkivonat-frissítést, [ezzel a kezelési API-művelettel](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/gateway/generatetoken) új tokent hozhatja ki. A Kubernetes-titkok kezelésével kapcsolatos információkért tekintse meg a [Kubernetes webhelyét](https://kubernetes.io/docs/concepts/configuration/secret).
+Amikor automatizálja a jogkivonat-frissítést, [ezzel a kezelési API-művelettel](/rest/api/apimanagement/2019-12-01/gateway/generatetoken) új tokent hozhatja ki. A Kubernetes-titkok kezelésével kapcsolatos információkért tekintse meg a [Kubernetes webhelyét](https://kubernetes.io/docs/concepts/configuration/secret).
 
 ### <a name="namespace"></a>Névtér
 A Kubernetes- [névterek](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) segítségével egyetlen fürtöt oszthat meg több csapat, projekt vagy alkalmazás között. A névterek az erőforrások és a nevek hatókörét biztosítják. Ezek társíthatók erőforrás-kvótával és hozzáférés-vezérlési szabályzatokkal.
@@ -117,6 +118,6 @@ A saját üzemeltetésű átjáró a társított API Management szolgáltatás k
 Ha az [Azure-hoz való csatlakozás](self-hosted-gateway-overview.md#connectivity-to-azure) átmenetileg megszakad, a telemetria az Azure-ba való továbbítása megszakad, és a leállás ideje alatt az adatvesztés történik.
 Érdemes lehet [helyi figyelést beállítani](how-to-configure-local-metrics-logs.md) , hogy megfigyelje az API-forgalom megfigyelését, és megakadályozza a telemetria elvesztését az Azure-kapcsolat kimaradásai során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha többet szeretne megtudni a saját üzemeltetésű átjáróról, tekintse meg a saját üzemeltetésű [átjáró áttekintése](self-hosted-gateway-overview.md)című témakört.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: d0fbdcb877e91a703306f15fdc7507fd19d534f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3bbfd167e89ae1b5f9b7de1df5fd1cb72c720cb6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205130"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254528"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Felhőalapú metrikák és naplók konfigurálása az Azure API Management saját üzemeltetésű átjáróhoz
 
@@ -25,7 +25,7 @@ Ez a cikk részletesen ismerteti a felhőalapú metrikák és naplók konfigurá
 
 A saját üzemeltetésű átjárót egy API Management szolgáltatáshoz kell társítani, és a 443-es porton kimenő TCP/IP-kapcsolatot igényel az Azure-hoz. Az átjáró kihasználja a kimenő kapcsolatokat, hogy telemetria küldjön az Azure-ba, ha erre van konfigurálva. 
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 Alapértelmezés szerint a saját üzemeltetésű átjáró a [felhőben](api-management-howto-use-azure-monitor.md)lévő felügyelt átjáróval megegyező számú metrikát bocsát ki [Azure monitoron](https://azure.microsoft.com/services/monitor/)keresztül. 
 
 A szolgáltatás engedélyezhető vagy letiltható az `telemetry.metrics.cloud` átjáró üzembe helyezésének ConfigMap található kulccsal. Alább látható az elérhető konfigurációk részletezése:
@@ -49,7 +49,7 @@ A szolgáltatás engedélyezhető vagy letiltható az `telemetry.metrics.cloud` 
 
 A saját üzemeltetésű átjáró jelenleg a következő metrikákat bocsátja Azure Monitor:
 
-| Metric  | Leírás |
+| Metrika  | Leírás |
 | ------------- | ------------- |
 | Kérelmek  | API-kérelmek száma az adott időszakban |
 | Az átjáró kéréseinek időtartama | A kérelem átjáróhoz való megérkezése és a teljes válasz elküldése között eltelt ezredmásodpercek száma |
@@ -57,14 +57,12 @@ A saját üzemeltetésű átjáró jelenleg a következő metrikákat bocsátja 
 
 ## <a name="logs"></a>Naplók
 
-A saját üzemeltetésű átjáró jelenleg nem küld [diagnosztikai naplókat](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs) a felhőbe. A helyi átjáró üzembe helyezésekor azonban [helyileg is konfigurálhatja és](how-to-configure-local-metrics-logs.md) megtarthatja a naplókat. 
+A saját üzemeltetésű átjáró jelenleg nem küld [diagnosztikai naplókat](./api-management-howto-use-azure-monitor.md#activity-logs) a felhőbe. A helyi átjáró üzembe helyezésekor azonban [helyileg is konfigurálhatja és](how-to-configure-local-metrics-logs.md) megtarthatja a naplókat. 
 
-Ha az [Azure Kubernetes szolgáltatásban](https://azure.microsoft.com/services/kubernetes-service/)átjáró van üzembe helyezve, engedélyezheti [Azure monitor a](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) tárolók számára, hogy begyűjtsön naplókat a tárolóból, és megtekintse őket a log Analyticsban. 
+Ha az [Azure Kubernetes szolgáltatásban](https://azure.microsoft.com/services/kubernetes-service/)átjáró van üzembe helyezve, engedélyezheti [Azure monitor a](../azure-monitor/insights/container-insights-overview.md) tárolók számára, hogy begyűjtsön naplókat a tárolóból, és megtekintse őket a log Analyticsban. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a saját üzemeltetésű átjáróról: [Azure API Management saját üzemeltetésű átjáró – áttekintés](self-hosted-gateway-overview.md)
 * A [naplók helyi konfigurálásának és](how-to-configure-local-metrics-logs.md) megőrzésének ismertetése
-
-

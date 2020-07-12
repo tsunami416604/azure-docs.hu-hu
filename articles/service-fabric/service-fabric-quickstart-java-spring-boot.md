@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: de94e40a8d34a62f4233878f8057649c8fb2c0e4
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: e2e511a8c3cd9f474d3cfb71d9ebdee9cfc48826
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126025"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253660"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Gyors útmutató: Java Spring boot-alkalmazás üzembe helyezése az Azure-ban Service Fabric
 
@@ -21,14 +21,14 @@ Ebben a rövid útmutatóban egy Java Spring boot-alkalmazást helyez üzembe az
 
 #### <a name="linux"></a>[Linux](#tab/linux)
 
-- [Java-környezet](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) és [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-- [Service Fabric SDK & Service Fabric parancssori felület (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Java-környezet](./service-fabric-get-started-linux.md#set-up-java-development) és [Yeoman](./service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Service Fabric SDK & Service Fabric parancssori felület (CLI)](./service-fabric-get-started-linux.md#installation-methods)
 - [Git](https://git-scm.com/downloads)
 
 #### <a name="macos"></a>[MacOS](#tab/macos)
 
-- [Java-környezet és Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-- [Service Fabric SDK & Service Fabric parancssori felület (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
+- [Java-környezet és Yeoman](./service-fabric-get-started-mac.md#create-your-application-on-your-mac-by-using-yeoman)
+- [Service Fabric SDK & Service Fabric parancssori felület (CLI)](./service-fabric-cli.md#cli-mac)
 - [Git](https://git-scm.com/downloads)
 
 --- 
@@ -113,7 +113,7 @@ Mostanra más létrehozta Spring Boot mintájához tartozó Service Fabric-alkal
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-    Mac rendszerű gép esetében indítsa el a helyi fürtöt a Docker-rendszerképből (ehhez az [előfeltételek](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-a-local-container-and-set-up-service-fabric) alapján be kell állítania a helyi fürtöt Mac rendszerhez). 
+    Mac rendszerű gép esetében indítsa el a helyi fürtöt a Docker-rendszerképből (ehhez az [előfeltételek](./service-fabric-get-started-mac.md#create-a-local-container-and-set-up-service-fabric) alapján be kell állítania a helyi fürtöt Mac rendszerhez). 
 
     ```bash
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
@@ -190,7 +190,7 @@ A szolgáltatás feladatátvételének bemutatásához a Service Fabric Explorer
 
     ![Service Fabric Explorer a csomópont újraindítása sikerült](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-service-moved.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

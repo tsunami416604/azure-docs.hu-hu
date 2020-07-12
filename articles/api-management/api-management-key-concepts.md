@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 85fa79cdfc7036be5b0ab20e49986a1d075152c5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84690200"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254656"
 ---
 # <a name="about-api-management"></a>Az API Management ismertetése
 
@@ -30,7 +30,7 @@ Ez a cikk áttekintést nyújt az APIM-ot érintő gyakori forgatókönyvekről.
 
 ## <a name="overview"></a>Áttekintés
 
-Az API Management használatához a rendszergazdák API-kat hoznak létre. Minden API egy vagy több műveletből áll, és minden API-t hozzá lehet adni egy vagy több termékhez. Az API-k használatához a fejlesztőknek elő kell fizetniük egy termékre, amely tartalmazza az adott API-t, utána meghívhatják az API műveletét, amelyre érvényesek az esetleg érvényben lévő használati házirendek. A gyakori forgatókönyvek a következők:
+Az API Management használatához a rendszergazdák API-kat hoznak létre. Minden API egy vagy több műveletből áll, és minden API-t hozzá lehet adni egy vagy több termékhez. Az API-k használatához a fejlesztőknek elő kell fizetniük egy termékre, amely tartalmazza az adott API-t, utána meghívhatják az API műveletét, amelyre érvényesek az esetleg érvényben lévő használati házirendek. Gyakori forgatókönyvek például a következők:
 
 * **A mobil infrastruktúra biztonságossá tétele** a hozzáférés API-kulcsokkal történő korlátozásával, a szolgáltatásmegtagadási támadások szabályozással történő megelőzésével vagy speciális biztonsági házirendek, például a JWT-jogkivonat alapú érvényesítés használatával.
 * **Az ISV-k partneri rendszereinek engedélyezése** a fejlesztői portálon keresztüli gyors partnerfelvétellel és egy API-homlokzat építésével annak érdekében, hogy a belső megvalósításokról leválassza a partnerek általi használatra nem alkalmas megvalósításokat.
@@ -42,11 +42,11 @@ A rendszer az alábbi összetevőkből áll:
   
   * Fogadja az API-hívásokat, és továbbítja őket a háttérrendszerekre.
   * Ellenőrzi az API-kulcsokat, JWT-jogkivonatokat, tanúsítványokat és más hitelesítő adatokat.
-  * Betartatja a használati kvótákat és a sebességkorlátokat.
-  * Villámgyorsan, kódmódosítás nélkül átalakítja az API-kat.
-  * Gyorsítótárazza a háttérrendszer válaszait, ahol ez be van állítva.
+  * Használati kvótákat és sebességkorlátokat érvényesít.
+  * Kódmódosítások nélkül alakítja át az API-t működés közben.
+  * Gyorsítótárazza a háttérszolgáltatás válaszait, ahol be van állítva.
   * Elemzési céllal naplózza a hívások metaadatait.
-* Az **Azure Portal** az a rendszergazdai felület, ahol beállíthatja az API-programot. A következőkre lehet használni:
+* Az **Azure Portal** az a felügyeleti felület, amelyen be kell ÁLLÍTANIA az API-programot. A következőkre lehet használni:
   
   * API-séma meghatározása vagy importálása.
   * API-k termékekbe csomagolása.
@@ -56,8 +56,8 @@ A rendszer az alábbi összetevőkből áll:
 * A **Developer portal** a fejlesztők fő webhelye, ahol a következőket tehetik:
   
   * Elolvashatják az API-dokumentációt.
-  * API-kat próbálhatnak ki az interaktív konzollal.
-  * Létrehozhatnak egy fiókot és előfizethetnek, hogy API-kulcsokat szerezzenek.
+  * Kipróbálhatnak egy API-t az interaktív konzolon.
+  * Egy fiók létrehozásával és előfizetéssel API-kulcsokat szerezhetnek be.
   * Hozzáférhetnek a használat adataikról készült elemzésekhez.
 
 További információkért tekintse meg a [Felhőalapú API Management: Az API-kban rejlő lehetőségek kihasználása](https://j.mp/ms-apim-whitepaper) című PDF tanulmányt. A CITO Research által írt, az API Management szolgáltatást bemutató tanulmány az alábbiakat tárgyalja: 
@@ -102,13 +102,13 @@ További információkért lásd: [Fejlesztők létrehozása vagy meghívása][H
 ## <a name="policies"></a><a name="policies"> </a> Szabályzatok
 A házirend az API Management kiemelkedő funkciója, amely lehetővé teszi az Azure Portal számára, hogy konfigurálással módosítsa az API viselkedését. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. A népszerű utasítások közé tartozik a formátumátalakítás XML-ről JSON-ra, a hívások sebességének korlátozása a fejlesztőktől érkező hívások számának korlátozásához és számos más elérhető házirend.
 
-A házirend-kifejezéseket attribútumértékekként vagy szövegértékekként lehet használni bármelyik API Management házirendben, hacsak a házirend másként nem rendelkezik. Néhány házirend, például a [Vezérlés folyamata](/azure/api-management/api-management-advanced-policies#choose) és a [Változó beállítása](/azure/api-management/api-management-advanced-policies#set-variable) házirend-kifejezéseken alapul. További információ: [Speciális szabályzatok](/azure/api-management/api-management-advanced-policies#AdvancedPolicies) és [Szabályzatkifejezések](/azure/api-management/api-management-policy-expressions).
+A házirend-kifejezéseket attribútumértékekként vagy szövegértékekként lehet használni bármelyik API Management házirendben, hacsak a házirend másként nem rendelkezik. Néhány házirend, például a [Vezérlés folyamata](./api-management-advanced-policies.md#choose) és a [Változó beállítása](./api-management-advanced-policies.md#set-variable) házirend-kifejezéseken alapul. További információ: [Speciális szabályzatok](./api-management-advanced-policies.md#AdvancedPolicies) és [Szabályzatkifejezések](./api-management-policy-expressions.md).
 
 
 Az API Management házirendek teljes listájáért tekintse meg a [Házirend-referencia][Policy reference] szakaszt. További információ a házirendek használatáról és konfigurálásáról: [API Management házirendek][API Management policies]. Ha egy sebességkorlát- és kvótaházirendekkel rendelkező termék létrehozásához keres oktatóanyagot, tekintse meg a [Speciális termékbeállítások létrehozása és konfigurálása][How create and configure advanced product settings] című szakaszt.
 
 
-## <a name="developer-portal"></a><a name="developer-portal"> </a> Fejlesztői portálon
+## <a name="developer-portal"></a><a name="developer-portal"> </a> Fejlesztői portál
 A fejlesztők a fejlesztői portálon ismerhetik meg az API-kat, tekinthetik meg és hívhatják meg a műveleteket, és ott fizethetnek elő a termékekre. A leendő ügyfelek meglátogathatják a fejlesztői portált, megtekinthetik az API-kat és a műveleteket, illetve regisztrálhatnak. A fejlesztői portál URL-címe az API Management szolgáltatáspéldányhoz tartozó Azure Portal irányítópultján található.
 
 A fejlesztői portál megjelenését és működését egyéni tartalom hozzáadásával, a stílusok testre szabásával és a vállalat emblémájának hozzáadásával lehet személyre szabni.
@@ -121,7 +121,7 @@ Ha többet szeretne megtudni az API Management szolgáltatásról, tekintse meg 
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hajtsa végre az alábbi gyors útmutatót, és kezdje el használni az Azure API Management szolgáltatást:
 
@@ -135,17 +135,13 @@ Hajtsa végre az alábbi gyors útmutatót, és kezdje el használni az Azure AP
 [Policies]: #policies
 [Developer portal]: #developer-portal
 
-[How to create APIs]: api-management-howto-create-apis.md
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to create APIs]: ./import-and-publish.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to create and use groups]: api-management-howto-create-groups.md
 [How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
 [How create and configure advanced product settings]: transform-api.md
 [How to create or invite developers]: api-management-howto-create-or-invite-developers.md
-[Policy reference]: api-management-policy-reference.md
+[Policy reference]: ./api-management-policies.md
 [API Management policies]: api-management-howto-policies.md
 [Create an API Management service instance]: get-started-create-service-instance.md
-
-
-
-

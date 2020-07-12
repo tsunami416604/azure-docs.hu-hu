@@ -5,11 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: fe338ca3f25cd606da7f95f6c9437a3cd3dc4e69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 162ad87f79109cf38d3d0013608812155c6988a7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699787"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252249"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>A Reliable Services életciklusának áttekintése
 > [!div class="op_single_selector"]
@@ -112,7 +113,7 @@ A Service Fabric számos okból módosítja az állapot-nyilvántartó szolgált
 
 A megszakítást nem kezelő szolgáltatások számos problémát tapasztalhatnak. Ezek a műveletek lassúak, mert Service Fabric megvárja, amíg a szolgáltatások szabályosan leállnak. Ez végső soron sikertelen frissítésekhez vezethet, amelyek időtúllépést és visszaállítást végeznek. A lemondási token betartásának elmulasztása miatt kiegyensúlyozatlan fürtök is lehetnek. A fürtök kiegyensúlyozatlan állapotba kerülhetnek, mivel a csomópontok melegek lesznek, de a szolgáltatások nem lehetnek kiegyensúlyozva, mert túl sokáig tart, hogy máshová helyezze őket. 
 
-Mivel a szolgáltatások állapot-nyilvántartó, az is valószínű, hogy a [megbízható gyűjteményeket](service-fabric-reliable-services-reliable-collections.md)használják. Service Fabric az elsődleges lefokozása után az egyik első dolog, ami megtörténik, az írási hozzáférés az alapul szolgáló állapothoz visszavonva. Ez egy második olyan problémát eredményez, amely hatással lehet a szolgáltatás életciklusára. A gyűjtemények az időzítés alapján adják vissza a kivételeket, és azt, hogy a replika áthelyezése vagy leállítása folyamatban van-e. Ezeket a kivételeket helyesen kell kezelni. A Service Fabric által okozott kivételek állandó [( `FabricException` )](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) és átmeneti [( `FabricTransientException` )](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) kategóriákba esnek. Az állandó kivételeket naplózni kell, és el kell dobni, amíg az átmeneti kivételek újrapróbálkoznak néhány újrapróbálkozási logika alapján.
+Mivel a szolgáltatások állapot-nyilvántartó, az is valószínű, hogy a [megbízható gyűjteményeket](service-fabric-reliable-services-reliable-collections.md)használják. Service Fabric az elsődleges lefokozása után az egyik első dolog, ami megtörténik, az írási hozzáférés az alapul szolgáló állapothoz visszavonva. Ez egy második olyan problémát eredményez, amely hatással lehet a szolgáltatás életciklusára. A gyűjtemények az időzítés alapján adják vissza a kivételeket, és azt, hogy a replika áthelyezése vagy leállítása folyamatban van-e. Ezeket a kivételeket helyesen kell kezelni. A Service Fabric által okozott kivételek állandó [( `FabricException` )](/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) és átmeneti [( `FabricTransientException` )](/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) kategóriákba esnek. Az állandó kivételeket naplózni kell, és el kell dobni, amíg az átmeneti kivételek újrapróbálkoznak néhány újrapróbálkozási logika alapján.
 
 A `ReliableCollections` szolgáltatás életciklus-eseményeinek használatából származó kivételek kezelése fontos részét képezi a megbízható szolgáltatások tesztelésének és ellenőrzésének. Javasoljuk, hogy az éles környezetbe való üzembe helyezés előtt mindig a terhelés alatt futtassa a szolgáltatást a frissítés és a [káosz tesztelésének](service-fabric-controlled-chaos.md) végrehajtása során. Ezek az alapvető lépések segítenek biztosítani a szolgáltatás megfelelő megvalósítását és az életciklus-események megfelelő kezelését.
 
@@ -125,7 +126,7 @@ A `ReliableCollections` szolgáltatás életciklus-eseményeinek használatábó
   - Az `OnCloseAsync()` elérési út során `OnAbort()` fellépő hibák meghívását eredményezik, ami a szolgáltatás által igényelt erőforrások törlésére és az azokhoz szükséges összes erőforrás kitakarítására irányuló utolsó esélyes lehetőség. Ez általában akkor fordul elő, ha a csomóponton állandó hibát észlel, vagy ha Service Fabric belső meghibásodások miatt nem tudja megbízhatóan kezelni a szolgáltatási példány életciklusát.
   - `OnChangeRoleAsync()`akkor lesz meghívva, amikor az állapot-nyilvántartó szolgáltatás replikája megváltoztatja a szerepkört, például az elsődleges vagy a másodlagos. Az elsődleges replikák írási állapotot kapnak (a megbízható gyűjtemények létrehozásához és írásához engedélyezett). A másodlagos replikák olvasási állapotot kapnak (csak a meglévő megbízható gyűjteményekből olvashatók be). Egy állapot-nyilvántartó szolgáltatásban a legtöbb munka az elsődleges replikán történik. A másodlagos replikák csak olvasási ellenőrzés, jelentéskészítés, adatbányászat vagy más írásvédett feladatok végrehajtására használhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Bevezetés a Reliable Servicesba](service-fabric-reliable-services-introduction.md)
 - [Reliable Services – első lépések](service-fabric-reliable-services-quick-start.md)
 - [Replikák és példányok](service-fabric-concepts-replica-lifecycle.md)

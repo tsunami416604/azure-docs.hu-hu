@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan telepítheti és konfigurálhatja az NGINX beá
 services: container-service
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 8f1a538364284863cbfe3786213434b14918f214
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: eecf34c6ad622c374e6f43670972279e297662a9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920238"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251586"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Bejövő vezérlő létrehozása belső virtuális hálózathoz az Azure Kubernetes szolgáltatásban (ak)
 
@@ -268,7 +268,7 @@ $ curl -L -k http://10.240.0.42/hello-world-two
 [...]
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ez a cikk a beáramló összetevők telepítésére szolgál. Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ezek az erőforrások a hüvelyek, a központi telepítések és a szolgáltatások részét képezik. Ezen erőforrások törléséhez törölheti a teljes minta névteret vagy az egyes erőforrásokat.
 
@@ -330,7 +330,7 @@ Végezetül törölheti saját maga is a névteret. Használja a `kubectl delete
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 
@@ -346,7 +346,7 @@ További lehetőségek:
 
 <!-- LINKS - external -->
 [helm]: https://helm.sh/
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 
 <!-- LINKS - internal -->

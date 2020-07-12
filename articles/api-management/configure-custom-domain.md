@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 981d3134e957e1f19b9cd88ee13a72fc45d79277
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83004747"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252895"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása
 
@@ -71,8 +71,8 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
     > A helyettesítő tartománynevek, például `*.contoso.com` az összes szinten támogatottak, kivéve a felhasználási szintet.
 
     > [!TIP]
-    > Javasoljuk, hogy használjon [Azure Key Vault a tanúsítványok kezeléséhez](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) , és állítsa be őket az automegújít értékre.
-    > Ha a Azure Key Vault használatával kezeli az egyéni tartomány TLS/SSL-tanúsítványát, akkor győződjön meg arról, hogy a tanúsítvány bekerül a Key Vaultba [ _tanúsítványként_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nem _titkosként_.
+    > Javasoljuk, hogy használjon [Azure Key Vault a tanúsítványok kezeléséhez](../key-vault/certificates/about-certificates.md) , és állítsa be őket az automegújít értékre.
+    > Ha a Azure Key Vault használatával kezeli az egyéni tartomány TLS/SSL-tanúsítványát, akkor győződjön meg arról, hogy a tanúsítvány bekerül a Key Vaultba [ _tanúsítványként_](/rest/api/keyvault/createcertificate/createcertificate), nem _titkosként_.
     >
     > A TLS/SSL-tanúsítvány lekéréséhez API Managementnak tartalmaznia kell a listát, és meg kell kapnia a titkokat a tanúsítványt tartalmazó Azure Key Vault. Azure Portal használatakor a rendszer az összes szükséges konfigurációs lépést automatikusan végrehajtja. Parancssori eszközök vagy felügyeleti API használatakor ezeket az engedélyeket manuálisan kell megadni. Ez két lépésben történik. Először használja a API Management-példány felügyelt identitások lapját, és győződjön meg arról, hogy a felügyelt identitás engedélyezve van, és jegyezze fel az oldalon megjelenő résztvevő azonosítóját. Másodszor, adja meg az engedélyek listáját, és szerezzen be titkokat a rendszerbiztonsági tag számára a tanúsítványt tartalmazó Azure Key Vault.
     >

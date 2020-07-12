@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
 author: palma21
-ms.openlocfilehash: 6aed6c84439e65646c15367cdad3bf13c5573256
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d06852e9d3d61b3e3d368a1d1c6f4107aff1442
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831687"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251314"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>A fürtcsomópontok kimenő forgalmának szabályozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -239,7 +239,7 @@ Az alábbi példa az üzemelő példány architektúráját mutatja be:
   * Az AK-ügynök csomópontjaitól érkező kérések követnek egy olyan UDR, amely az AK-fürt üzembe helyezésére szolgáló alhálózaton van elhelyezve.
   * Azure Firewall egresses a virtuális hálózatról a nyilvános IP-címről
   * A nyilvános internethez vagy más Azure-szolgáltatásokhoz való hozzáférés a tűzfal előtér-IP-címére irányuló és onnan áramlik.
-  * Ha szükséges, a hozzáférés az AK-vezérlési síkon az [API-kiszolgáló által jogosult IP-címtartományok](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)által védett, amely magában foglalja a tűzfal nyilvános ELŐTÉRBELI IP-címét.
+  * Ha szükséges, a hozzáférés az AK-vezérlési síkon az [API-kiszolgáló által jogosult IP-címtartományok](./api-server-authorized-ip-ranges.md)által védett, amely magában foglalja a tűzfal nyilvános ELŐTÉRBELI IP-címét.
 * Belső forgalom
   * Ehelyett vagy egy [nyilvános Load Balanceron](load-balancer-standard.md) kívül a belső forgalomhoz [belső Load Balancer](internal-lb.md) is használhat, amelyet a saját alhálózatán is elkülönítheti.
 
@@ -353,7 +353,7 @@ FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurati
 ```
 
 > [!NOTE]
-> Ha a [jogosult IP-címtartományok](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)biztonságos hozzáférést biztosít az AK API-kiszolgálóhoz, a tűzfal nyilvános IP-címét fel kell vennie az engedélyezett IP-tartományba.
+> Ha a [jogosult IP-címtartományok](./api-server-authorized-ip-ranges.md)biztonságos hozzáférést biztosít az AK API-kiszolgálóhoz, a tűzfal nyilvános IP-címét fel kell vennie az engedélyezett IP-tartományba.
 
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>UDR létrehozása ugrással Azure Firewall
 
@@ -389,7 +389,7 @@ az network firewall network-rule create -g $RG -f $FWNAME --collection-name 'aks
 az network firewall application-rule create -g $RG -f $FWNAME --collection-name 'aksfwar' -n 'fqdn' --source-addresses '*' --protocols 'http=80' 'https=443' --fqdn-tags "AzureKubernetesService" --action allow --priority 100
 ```
 
-A Azure Firewall szolgáltatással kapcsolatos további információkért tekintse meg [Azure Firewall dokumentációját](https://docs.microsoft.com/azure/firewall/overview) .
+A Azure Firewall szolgáltatással kapcsolatos további információkért tekintse meg [Azure Firewall dokumentációját](../firewall/overview.md) .
 
 ### <a name="associate-the-route-table-to-aks"></a>Az útválasztási táblázat hozzárendelése AK-hoz
 
@@ -722,7 +722,7 @@ kubectl apply -f example.yaml
 ### <a name="add-a-dnat-rule-to-azure-firewall"></a>DNAT-szabály hozzáadása a Azure Firewall
 
 > [!IMPORTANT]
-> Ha Azure Firewall használatával korlátozza a kimenő forgalom forgalmát, és egy felhasználó által megadott útvonalat (UDR) hoz létre az összes kimenő forgalom kikényszerítéséhez, akkor győződjön meg arról, hogy megfelelő DNAT-szabályt hoz létre a tűzfalban, hogy megfelelően engedélyezze a bejövő forgalmat. A Azure Firewall használata UDR megszakítja a bejövő beállításokat az aszimmetrikus útválasztás miatt. (A probléma akkor fordul elő, ha az AK-alhálózat alapértelmezett útvonala a tűzfal magánhálózati IP-címére mutat, de a következő típusú nyilvános terheléselosztó-bejövő vagy Kubernetes-szolgáltatást használja: terheléselosztó). Ebben az esetben a bejövő terheléselosztó forgalma a nyilvános IP-címén keresztül érkezik, a visszatérési útvonal azonban a tűzfal magánhálózati IP-címén halad át. Mivel a tűzfal állapot-nyilvántartó, eldobja a visszaadott csomagot, mert a tűzfal nem ismeri a létesített munkamenetet. Ha szeretné megtudni, hogyan integrálhatja a Azure Firewallt a bemenő vagy a Service Load balancerrel, tekintse meg a [Azure Firewall integrálása az Azure standard Load Balancer](https://docs.microsoft.com/azure/firewall/integrate-lb)-nal című
+> Ha Azure Firewall használatával korlátozza a kimenő forgalom forgalmát, és egy felhasználó által megadott útvonalat (UDR) hoz létre az összes kimenő forgalom kikényszerítéséhez, akkor győződjön meg arról, hogy megfelelő DNAT-szabályt hoz létre a tűzfalban, hogy megfelelően engedélyezze a bejövő forgalmat. A Azure Firewall használata UDR megszakítja a bejövő beállításokat az aszimmetrikus útválasztás miatt. (A probléma akkor fordul elő, ha az AK-alhálózat alapértelmezett útvonala a tűzfal magánhálózati IP-címére mutat, de a következő típusú nyilvános terheléselosztó-bejövő vagy Kubernetes-szolgáltatást használja: terheléselosztó). Ebben az esetben a bejövő terheléselosztó forgalma a nyilvános IP-címén keresztül érkezik, a visszatérési útvonal azonban a tűzfal magánhálózati IP-címén halad át. Mivel a tűzfal állapot-nyilvántartó, eldobja a visszaadott csomagot, mert a tűzfal nem ismeri a létesített munkamenetet. Ha szeretné megtudni, hogyan integrálhatja a Azure Firewallt a bemenő vagy a Service Load balancerrel, tekintse meg a [Azure Firewall integrálása az Azure standard Load Balancer](../firewall/integrate-lb.md)-nal című
 
 
 A bejövő kapcsolat konfigurálásához egy DNAT szabályt kell írni a Azure Firewallba. A fürthöz való csatlakozás teszteléséhez egy szabály van meghatározva a tűzfal előtér nyilvános IP-címére, hogy a belső szolgáltatás által közzétett belső IP-címhez irányítson.
@@ -765,7 +765,7 @@ Ekkor meg kell jelennie az AK-szavazati alkalmazásnak. Ebben a példában a tű
 ![AK – szavazás](media/limit-egress-traffic/aks-vote.png)
 
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az Azure-erőforrások tisztításához törölje az AK-erőforráscsoport törlését.
 
@@ -773,7 +773,7 @@ Az Azure-erőforrások tisztításához törölje az AK-erőforráscsoport törl
 az group delete -g $RG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogy milyen portokat és címeket kell engedélyezni, ha szeretné korlátozni a kimenő forgalmat a fürt számára. Azt is láthatja, hogyan védheti meg a kimenő forgalmat Azure Firewall használatával. 
 

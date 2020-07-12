@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9f8b0cc5a80853542b15d1993713d8a97f5371b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 672a5afe36449aaa486ca6980f510ba52cf6daf2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361574"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250957"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes szolgáltatás (ak) üzemidő SLA
 
@@ -40,7 +40,7 @@ A rendelkezésre állási SLA egy fizetős szolgáltatás, és fürtön engedél
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.8.0 vagy újabb verziójának telepítése
+* Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 2.8.0 vagy újabb verziójának telepítése
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>Új fürt létrehozása a rendelkezésre állási SLA-val
 
@@ -122,7 +122,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Availability Zones][availability-zones] használatával növelheti a magas rendelkezésre állást az AK-fürt számítási feladataival.
 

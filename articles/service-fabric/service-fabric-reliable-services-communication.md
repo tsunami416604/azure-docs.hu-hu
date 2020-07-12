@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 3c1a6cfa5227369bf1cde4af087019727c22c0c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0899e33e875fea4a1708e593876b7ef771004677
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75462957"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253184"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>A Reliable Services kommunikációs API-k használata
 Az Azure Service Fabric platformként teljes mértékben független a szolgáltatások közötti kommunikációtól. Minden protokoll és verem elfogadható, UDP-ről HTTP-re. A szolgáltatás fejlesztője dönti el, hogyan kommunikálnak a szolgáltatások. A Reliable Services alkalmazás-keretrendszer beépített kommunikációs veremeket és API-kat biztosít, amelyeket az egyéni kommunikációs összetevők kiépítéséhez használhat.
@@ -187,7 +188,7 @@ public CompletableFuture<String> openAsync(CancellationToken cancellationToken)
 A Service Fabric olyan API-kat biztosít, amelyek lehetővé teszik az ügyfelek és más szolgáltatások számára, hogy ezt a nevet a szolgáltatásnév alapján kérjék. Ez azért fontos, mert a szolgáltatás címe nem statikus. A szolgáltatások a fürtön vannak áthelyezve erőforrás-kiegyenlítő és rendelkezésre állási célokra. Ez az a mechanizmus, amely lehetővé teszi, hogy az ügyfelek feloldják a szolgáltatás figyelési címeit.
 
 > [!NOTE]
-> A kommunikációs figyelő megírásának teljes körű bemutatása: [Service Fabric webes API-szolgáltatások a C# OWIN](service-fabric-reliable-services-communication-webapi.md) , míg a Java esetében a saját http-kiszolgálói implementációját is megírhatja, lásd: EchoServer alkalmazás példája https://github.com/Azure-Samples/service-fabric-java-getting-started .
+> A kommunikációs figyelő megírásának teljes körű bemutatása: [Service Fabric webes API-szolgáltatások a C# OWIN](./service-fabric-reliable-services-communication-aspnetcore.md) , míg a Java esetében a saját http-kiszolgálói implementációját is megírhatja, lásd: EchoServer alkalmazás példája https://github.com/Azure-Samples/service-fabric-java-getting-started .
 >
 >
 
@@ -420,7 +421,7 @@ CompletableFuture<?> result = myServicePartitionClient.invokeWithRetryAsync(clie
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [ASP.NET Core a Reliable Services](service-fabric-reliable-services-communication-aspnetcore.md)
 * [Távoli eljáráshívás Reliable Services táveléréssel](service-fabric-reliable-services-communication-remoting.md)
 * [WCF-kommunikáció Reliable Services használatával](service-fabric-reliable-services-communication-wcf.md)

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 447af1580f601c1f55690434b371aeeed2d335a0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cc71603add2caeb277f8083d292832a374a95544
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106330"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251501"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>Gyors útmutató: Azure Kubernetes-szolgáltatás (ak) fürt üzembe helyezése ARM-sablon használatával
 
@@ -32,7 +32,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 Az AK-fürtök Resource Manager-sablonnal történő létrehozásához meg kell adnia egy nyilvános SSH-kulcsot és egy Azure Active Directory egyszerű szolgáltatást. Azt is megteheti, hogy az engedélyekhez egy egyszerű szolgáltatásnév helyett [felügyelt identitást](use-managed-identity.md) is használhat. Ha ezekre az erőforrásokra szüksége van, tekintse meg a következő szakaszt: Ellenkező esetben ugorjon a [sablon áttekintése](#review-the-template) szakaszra.
 
@@ -103,9 +103,9 @@ További AK-mintákért tekintse meg az AK gyors üzembe helyezési [sablonok][a
 
     ![Resource Manager-sablon Azure Kubernetes Service-fürt létrehozásához a portálon](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
-3. Válassza a **Beszerzés** lehetőséget.
+3. Válassza a **Vásárlás** lehetőséget.
 
-Az AK-fürt létrehozása néhány percet vesz igénybe. Várjon, amíg a fürt sikeresen üzembe helyezhető, mielőtt továbblép a következő lépésre.
+Az AKS-fürt létrehozása eltarthat néhány percig. Várjon, amíg a fürt sikeresen üzembe helyezhető, mielőtt továbblép a következő lépésre.
 
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
@@ -138,7 +138,7 @@ aks-agentpool-41324942-1   Ready    agent   6m46s   v1.12.6
 aks-agentpool-41324942-2   Ready    agent   6m45s   v1.12.6
 ```
 
-### <a name="run-the-application"></a>Alkalmazás futtatása
+### <a name="run-the-application"></a>Az alkalmazás futtatása
 
 A Kubernetes jegyzékfájl a fürt kívánt állapotát határozza meg, például a tároló lemezképeit. Ebben a rövid útmutatóban egy jegyzékfájlt használunk az Azure Vote-alkalmazás futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl két [Kubernetes-telepítést][kubernetes-deployment] tartalmaz – egyet az Azure-beli szavazás Python-alkalmazásaihoz, a másikat pedig egy Redis-példányhoz. Két [Kubernetes][kubernetes-service] -szolgáltatás is létrejön – egy belső szolgáltatás a Redis-példányhoz, és egy külső szolgáltatás, amely az Azure vote alkalmazást az internetről éri el.
 
@@ -274,7 +274,7 @@ Az Azure vote alkalmazás működés közbeni megtekintéséhez nyisson meg egy 
 
 ![Az Azure Vote keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha a fürtre már nincs szükség, az [az group delete][az-group-delete] paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
@@ -305,7 +305,7 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml
 [aks-quickstart-templates]: https://azure.microsoft.com/resources/templates/?term=Azure+Kubernetes+Service
 
 <!-- LINKS - internal -->

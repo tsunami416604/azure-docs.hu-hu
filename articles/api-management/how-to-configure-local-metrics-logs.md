@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
-ms.openlocfilehash: dd49680da6f52e32ddb52dbdb23ad5e8f627a91e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac147863fe54be3343eda653fc863ebd08dac54d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205065"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254503"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Helyi mérőszámok és naplók konfigurálása az Azure API Management saját üzemeltetésű átjáróhoz
 
 Ez a cikk részletesen ismerteti a helyi metrikák és naplók konfigurálását a saját üzemeltetésű [átjáróhoz](./self-hosted-gateway-overview.md). A felhő metrikáinak és naplóinak konfigurálásához tekintse meg [ezt a cikket](how-to-configure-cloud-metrics-logs.md). 
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 A saját üzemeltetésű átjáró támogatja a [statisztikát](https://github.com/statsd/statsd), amely egységesítő protokollként szolgál a metrikák gyűjtéséhez és összesítéséhez. Ez a szakasz részletesen ismerteti a statisztikai adatok Kubernetes történő üzembe helyezésének lépéseit, az átjáró konfigurálását a mérőszámok statisztikán keresztüli kibocsátásához, valamint a [Prometheus](https://prometheus.io/) használatával a metrikák monitorozásához. 
 
 ### <a name="deploy-statsd-and-prometheus-to-the-cluster"></a>A statd és a Prometheus üzembe helyezése a fürtön
@@ -189,7 +189,7 @@ Most már mindent üzembe helyezett és konfigurált, a saját üzemeltetésű �
 
 Hajtson végre néhány API-hívást a saját üzemeltetésű átjárón keresztül, ha minden megfelelően van konfigurálva, a következő metrikákat kell megtekinteni:
 
-| Metric  | Leírás |
+| Metrika  | Leírás |
 | ------------- | ------------- |
 | Kérelmek  | API-kérelmek száma az adott időszakban |
 | DurationInMS | A kérelem átjáróhoz való megérkezése és a teljes válasz elküldése között eltelt ezredmásodpercek száma |
@@ -204,7 +204,7 @@ A saját üzemeltetésű átjáró alapértelmezés szerint a és a naplókat is
 kubectl logs <pod-name>
 ```
 
-Ha a saját üzemeltetésű átjáró üzembe helyezése az Azure Kubernetes szolgáltatásban történik, engedélyezheti [Azure monitor a tárolók](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) számára a számítási `stdout` `stderr` feladatokhoz és a munkaterhelések összegyűjtéséhez, valamint a naplófájlok megtekintéséhez log Analytics. 
+Ha a saját üzemeltetésű átjáró üzembe helyezése az Azure Kubernetes szolgáltatásban történik, engedélyezheti [Azure monitor a tárolók](../azure-monitor/insights/container-insights-overview.md) számára a számítási `stdout` `stderr` feladatokhoz és a munkaterhelések összegyűjtéséhez, valamint a naplófájlok megtekintéséhez log Analytics. 
 
 A saját üzemeltetésű átjáró számos protokollt is támogat, például: `localsyslog` , `rfc5424` és `journal` . Az alábbi táblázat összefoglalja az összes támogatott lehetőséget. 
 
@@ -232,8 +232,7 @@ Példa a helyi naplózási konfigurációra:
         telemetry.logs.local.localsyslog.facility: "7"
 ```
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a saját üzemeltetésű átjáróról: [Azure API Management saját üzemeltetésű átjáró – áttekintés](self-hosted-gateway-overview.md)
 * [A naplók Felhőbeli konfigurálásának és](how-to-configure-local-metrics-logs.md) megőrzésének megismerése
-

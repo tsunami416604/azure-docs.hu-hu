@@ -4,11 +4,12 @@ description: Ismerje meg, hogyan frissíthet egy Azure Kubernetes-szolgáltatás
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: ea9f0154c221fe99d683cc58d5f6dccfce8d948c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 603a27f0ecffb762a18f58847110c4dd3de68425
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800494"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250991"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service- (AKS-) fürt frissítése
 
@@ -21,7 +22,7 @@ A több csomópontot vagy Windows Server-csomópontokat (jelenleg előzetes verz
 Ehhez a cikkhez az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
 > [!WARNING]
-> Az AK-fürtök frissítése kiváltja a csomópontjait, és kiüríti a csomópontokat. Ha alacsony számítási kvóta áll rendelkezésre, előfordulhat, hogy a frissítés meghiúsul. További információért lásd: [kvóták növelése](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
+> Az AK-fürtök frissítése kiváltja a csomópontjait, és kiüríti a csomópontokat. Ha alacsony számítási kvóta áll rendelkezésre, előfordulhat, hogy a frissítés meghiúsul. További információért lásd: [kvóták növelése](../azure-portal/supportability/resource-manager-core-quotas-request.md) .
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Elérhető AK-fürt frissítésének keresése
 
@@ -132,7 +133,7 @@ Name          Location    ResourceGroup    KubernetesVersion    ProvisioningStat
 myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk bemutatta, hogyan frissíthet egy meglévő AK-fürtöt. Az AK-fürtök üzembe helyezésével és kezelésével kapcsolatos további információkért tekintse meg az oktatóanyagokat.
 

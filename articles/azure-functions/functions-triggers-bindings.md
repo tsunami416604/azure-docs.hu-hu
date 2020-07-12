@@ -2,14 +2,15 @@
 title: Eseményindítók és kötések Azure Functions
 description: Megtudhatja, hogyan használhatja az eseményindítókat és a kötéseket az Azure-függvények online eseményekhez és felhőalapú szolgáltatásokhoz való összekapcsolásához.
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddcf6758c8c648678c69070fa5b65ae6c4947018
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687650"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252691"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions-eseményindítók és -kötések – fogalmak
 
@@ -19,7 +20,7 @@ Az eseményindítók a függvény futtatását okozzák. Egy eseményindító ha
 
 A függvények kötése egy másik erőforrás a függvényhez való deklaratív csatlakoztatásának módja. a kötések *bemeneti Kötésként*, *kimeneti Kötésként*vagy mindkettőként is csatlakoztathatók. A kötések adatai a függvények számára paraméterekként vannak megadva.
 
-A különböző kötéseket igény szerint kombinálhatja. A kötések választhatóak, és egy függvény rendelkezhet egy vagy több bemeneti és/vagy kimeneti kötéssel.
+A különböző kötéseket igény szerint kombinálhatja. A kötések opcionálisak, és egy függvény egy vagy több bemeneti, illetve kimeneti kötéssel is rendelkezhet.
 
 Az eseményindítók és kötések lehetővé teszik a más szolgáltatásokhoz való rögzítjük való hozzáférés elkerülését. A függvény függvényparaméterekben kapja meg az adatokat (például egy üzenetsor üzenetének tartalmát). Az adatokat (például egy üzenetsor üzenetének tartalmát) a függvény által visszaadott értékek használatával küldheti el. 
 
@@ -78,7 +79,7 @@ Ha az [attribútumokat egy osztály-függvénytárban](functions-dotnet-class-li
 
 További információ arról, hogy mely kötések érhetők el előzetes verzióban, vagy hogy a rendszer az éles használatra jóváhagyja a [támogatott nyelveket](supported-languages.md).
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 - [Kötési kifejezések és minták](./functions-bindings-expressions-patterns.md)
 - [Az Azure Function Return értékének használata](./functions-bindings-return-value.md)
 - [Kötési kifejezés regisztrálása](./functions-bindings-register.md)
@@ -87,6 +88,6 @@ További információ arról, hogy mely kötések érhetők el előzetes verzió
   - [Nem HTTP által aktivált függvény manuális futtatása](functions-manually-run-non-http.md)
 - [Kötési hibák feldolgozása](./functions-bindings-errors.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Azure Functions kötési bővítmények regisztrálása](./functions-bindings-register.md)

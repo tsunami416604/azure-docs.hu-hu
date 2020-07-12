@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f4a29c7cb7e35e69eb9410dd7ddc9f07757e3565
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 069fc95d226e4417bb650b6092a7d00953f69e8d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82128716"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252846"
 ---
 # <a name="api-management-policies"></a>API Management házirendek
 Ez a szakasz a következő API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](api-management-howto-policies.md).  
@@ -50,19 +50,19 @@ Ez a szakasz a következő API Management szabályzatokra mutató hivatkozást t
     -   [Változó beállítása](api-management-advanced-policies.md#set-variable) – megtarthat egy értéket egy nevesített környezeti változóban a későbbi hozzáférés érdekében.  
     -   [Kérelem módszerének beállítása](api-management-advanced-policies.md#SetRequestMethod) – lehetővé teszi a kérések http-metódusának módosítását.  
     -   [Állapotkód beállítása](api-management-advanced-policies.md#SetStatus) – a HTTP-állapotkódot a megadott értékre módosítja.  
-    -   [Trace](api-management-advanced-policies.md#Trace) – egyéni nyomkövetéseket ad az [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) kimenetéhez, Application Insights telemetriáiról és az erőforrás-naplókhoz.  
+    -   [Trace](api-management-advanced-policies.md#Trace) – egyéni nyomkövetéseket ad az [API Inspector](./api-management-howto-api-inspector.md) kimenetéhez, Application Insights telemetriáiról és az erőforrás-naplókhoz.  
     -   [Várakozás](api-management-advanced-policies.md#Wait) a befoglalt [küldési kérelemre](api-management-advanced-policies.md#SendRequest), az [érték beolvasása a gyorsítótárból](api-management-caching-policies.md#GetFromCacheByKey), vagy a folytatás előtt a flow-szabályzatok [ellenőrzése](api-management-advanced-policies.md#choose) .  
 -   [Hitelesítési szabályzatok](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   Egyszerű hitelesítéssel [hitelesítheti alapszintű](api-management-authentication-policies.md#Basic) hitelesítést a háttér-szolgáltatással.  
     -   [Hitelesítés az ügyféltanúsítvány](api-management-authentication-policies.md#ClientCertificate) használatával – az Ügyféltanúsítványok segítségével végezzen hitelesítést egy háttér-szolgáltatással.  
-    -   [Hitelesítés felügyelt identitással](api-management-authentication-policies.md#ManagedIdentity) [– felügyelt](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)identitás használatával végezzen hitelesítést egy háttér-szolgáltatással.  
+    -   [Hitelesítés felügyelt identitással](api-management-authentication-policies.md#ManagedIdentity) [– felügyelt](../active-directory/managed-identities-azure-resources/overview.md)identitás használatával végezzen hitelesítést egy háttér-szolgáltatással.  
 -   [Gyorsítótárazási házirendek](api-management-caching-policies.md#CachingPolicies)  
     -   [Beolvasás gyorsítótárból](api-management-caching-policies.md#GetFromCache) – a gyorsítótár végrehajtása megkeresi és érvényes gyorsítótárazott választ ad vissza, ha elérhető.  
     -   [Tárolás gyorsítótárba](api-management-caching-policies.md#StoreToCache) – a gyorsítótárak válasza a megadott gyorsítótár-vezérlési konfiguráció alapján történik.  
     -   [Érték lekérése a gyorsítótárból](api-management-caching-policies.md#GetFromCacheByKey) – a gyorsítótárazott elemek kulcs szerinti beolvasása.  
     -   [Tárolási érték](api-management-caching-policies.md#StoreToCacheByKey) a gyorsítótárban – a gyorsítótárban lévő elemek tárolása kulcs alapján.  
     -   [Érték eltávolítása a gyorsítótárból](api-management-caching-policies.md#RemoveCacheByKey) – a kulcsban lévő elem eltávolítása a gyorsítótárból.  
--   [Tartományközi házirendek](api-management-cross-domain-policies.md#CrossDomainPolicies)  
+-   [Tartományközi szabályzatok](api-management-cross-domain-policies.md#CrossDomainPolicies)  
     -   Tartományok [közötti hívások engedélyezése](api-management-cross-domain-policies.md#AllowCrossDomainCalls) – elérhetővé teszi az API-t az Adobe Flash és a Microsoft Silverlight böngésző alapú ügyfeleitől.  
     -   [CORS](api-management-cross-domain-policies.md#CORS) – a több eredetű erőforrás-megosztási (CORS) támogatás egy művelethez vagy API-hoz, amely lehetővé teszi a tartományok közötti hívásokat a böngészőalapú ügyfelektől.  
     -   [Jsnop támogatással](api-management-cross-domain-policies.md#JSONP) – egy művelet vagy API számára lehetővé teszi a JSON-t a kitöltési (jsnop támogatással) támogatással, hogy engedélyezze a tartományok közötti hívásokat a JavaScript böngésző alapú ügyfelektől.  
@@ -80,7 +80,7 @@ Ez a szakasz a következő API Management szabályzatokra mutató hivatkozást t
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a házirendek használatáról:
 
 + [Szabályzatok API Management](api-management-howto-policies.md)

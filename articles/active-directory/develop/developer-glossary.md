@@ -12,11 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 764600d61704378b1bc0937dd1399260a1266150
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91094285aa50641f62527326bab121adcf026a9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308626"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252062"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft Identity platform fejlesztői szószedete
 
@@ -116,7 +117,7 @@ További részletekért tekintse meg a [Microsoft Identity platform jogkivonat-r
 
 ## <a name="microsoft-identity-platform"></a>Microsoft-identitásplatform
 
-A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg a Microsoft Graphot, más Microsoft API-kat vagy olyan API-kat, amelyeket fejlesztők készítettek. Ez egy teljes körű funkcionalitást biztosító platform, amely egy hitelesítési szolgáltatásból, a könyvtárakból, az alkalmazás-regisztrációból és-konfigurációból, a teljes fejlesztői dokumentációból, a kódokból és más fejlesztői tartalmakból áll. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet. További részletekért tekintse meg a [Microsoft Identity platformot ismertető](about-microsoft-identity-platform.md) témakört.
+A Microsoft identitásplatformja az Azure Active Directory (Azure AD) identitásszolgáltatás és fejlesztői platform fejlődésének eredménye. Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat építsenek, amelyek az összes Microsoft-identitás használatával biztonságosan jelentkeznek be, és jogkivonattal hívják meg a Microsoft Graphot, más Microsoft API-kat vagy olyan API-kat, amelyeket fejlesztők készítettek. Ez egy teljes körű funkcionalitást biztosító platform, amely egy hitelesítési szolgáltatásból, a könyvtárakból, az alkalmazás-regisztrációból és-konfigurációból, a teljes fejlesztői dokumentációból, a kódokból és más fejlesztői tartalmakból áll. A Microsoft identitásplatformja támogatja a nyílt szabványokat, többek között az OAuth 2.0-t és az OpenID Connectet.
 
 ## <a name="multi-tenant-application"></a>több-bérlős alkalmazás
 
@@ -157,7 +158,7 @@ Az erőforrás-kiszolgáló elérhetővé teszi az API-kat, és kikényszeríti 
 
 Akárcsak egy ügyfélalkalmazás esetében, az erőforrás-alkalmazás identitásának konfigurációja az Azure AD-bérlőben való [regisztrációval](#application-registration) történik, amely az alkalmazás és a szolgáltatás egyszerű objektumát is megadja. Egyes Microsoft által biztosított API-k (például a Microsoft Graph API) a kiépítés során minden bérlőn elérhetők előre regisztrált egyszerű szolgáltatások.
 
-## <a name="roles"></a>roles
+## <a name="roles"></a>szerepkörök
 
 A [hatókörökhöz](#scopes)hasonlóan a szerepkörök lehetővé teszik az [erőforrás-kiszolgáló](#resource-server) számára a védett erőforrásokhoz való hozzáférés szabályozását. Kétféle típus létezik: a "felhasználói" szerepkör implementálja a szerepköralapú hozzáférés-vezérlést olyan felhasználók/csoportok számára, amelyek hozzáférést igényelnek az erőforráshoz, míg az "alkalmazás" szerepkör ugyanazokat valósít meg a hozzáférést igénylő [ügyfélalkalmazások](#client-application) számára.
 
@@ -219,7 +220,7 @@ Hasonlóan ahhoz, ahogyan egy egyszerű szolgáltatásnév-objektumot használ e
 
 Egy olyan [ügyfélalkalmazás](#client-application) , amely a webkiszolgálón lévő összes kódot végrehajtja, és a hitelesítő adatai biztonságos tárolásával a kiszolgálón a "bizalmas" ügyfélként működhet. További információ: [OAuth2-ügyfelek típusai és profiljai][OAuth2-Client-Types].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft Identity [platform fejlesztői útmutatója][AAD-Dev-Guide] az összes Microsoft Identity platform-fejlesztéssel kapcsolatos témakör, beleértve az [alkalmazások integrálásának][AAD-How-To-Integrate] áttekintését és a [Microsoft Identity platform hitelesítésének alapjait, valamint a támogatott hitelesítési forgatókönyveket][AAD-Auth-Scenarios]. A [githubon](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)megtalálhatja a kód mintáit & oktatóanyagokat is.
 

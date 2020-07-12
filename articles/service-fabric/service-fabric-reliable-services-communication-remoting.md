@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3f19d1240c2dcf1e62d5723c40b4f7c8b2154f0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75433884"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253286"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Szolgáltatás távelérési szolgáltatása C#-ban Reliable Services
 
@@ -64,7 +65,7 @@ class MyService : StatelessService, IMyService
 ```
 
 > [!NOTE]
-> A szolgáltatási felületen található argumentumok és visszatérési típusok bármely egyszerű, összetett vagy egyéni típus lehet, de a .NET- [dataContractSerializer](https://msdn.microsoft.com/library/ms731923.aspx)szerializálni kell őket.
+> A szolgáltatási felületen található argumentumok és visszatérési típusok bármely egyszerű, összetett vagy egyéni típus lehet, de a .NET- [dataContractSerializer](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)szerializálni kell őket.
 >
 >
 
@@ -88,19 +89,19 @@ A szolgáltatás-proxy létrehozása egy könnyű művelet, így tetszőleges sz
 
 ### <a name="service-proxy-factory-lifetime"></a>Service proxy gyári élettartama
 
-A [ServiceProxyFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) egy olyan gyár, amely különböző távelérési felületek számára hoz létre proxy-példányokat. Ha az API `ServiceProxyFactory.CreateServiceProxy` -t használja a proxy létrehozásához, a keretrendszer létrehoz egy egyedi szolgáltatást.
-A [IServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) tulajdonságainak felülbírálásához hasznos lehet manuálisan létrehozni.
+A [ServiceProxyFactory](/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) egy olyan gyár, amely különböző távelérési felületek számára hoz létre proxy-példányokat. Ha az API `ServiceProxyFactory.CreateServiceProxy` -t használja a proxy létrehozásához, a keretrendszer létrehoz egy egyedi szolgáltatást.
+A [IServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v1.client.iserviceremotingclientfactory) tulajdonságainak felülbírálásához hasznos lehet manuálisan létrehozni.
 A gyári létrehozás költséges művelet. A Service proxy Factory a kommunikációs ügyfél belső gyorsítótárát tárolja.
 Ajánlott eljárás a Service proxy-gyár gyorsítótárazása a lehető leghosszabbra.
 
 ## <a name="remoting-exception-handling"></a>Távelérési kivételek kezelését
 
-A szolgáltatás API által okozott összes távoli kivételt AggregateException-ként küldik vissza az ügyfélnek. A távoli kivételeket a DataContract szerializálhatja. Ha nem, akkor a proxy API a szerializálási hibát [ServiceException](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) .
+A szolgáltatás API által okozott összes távoli kivételt AggregateException-ként küldik vissza az ügyfélnek. A távoli kivételeket a DataContract szerializálhatja. Ha nem, akkor a proxy API a szerializálási hibát [ServiceException](/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) .
 
 A szolgáltatás proxyja kezeli a szolgáltatáshoz létrehozott összes feladatátvételi kivételt. Újra feloldja a végpontokat, ha vannak feladatátvételi kivételek (nem átmeneti kivételek), és újrapróbálkozik a hívást a megfelelő végponttal. A feladatátvételi kivételek újrapróbálkozások száma határozatlan.
 Átmeneti kivételek esetén a proxy újrapróbálkozik a hívással.
 
-A [OperationRetrySettings](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings)az alapértelmezett újrapróbálkozási paramétereket is megadja.
+A [OperationRetrySettings](/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings)az alapértelmezett újrapróbálkozási paramétereket is megadja.
 
 A felhasználó ezeket az értékeket úgy konfigurálhatja, hogy átadja a OperationRetrySettings objektumot a ServiceProxyFactory konstruktornak.
 
@@ -160,7 +161,7 @@ Ezek a lépések megváltoztatják a sablon kódját, hogy a v2-veremet explicit
    </Resources>
    ```
 
-2. Használja a [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) a `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` névtérből.
+2. Használja a [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet) a `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` névtérből.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +177,7 @@ Ezek a lépések megváltoztatják a sablon kódját, hogy a v2-veremet explicit
     }
    ```
 
-3. Ügyfelek létrehozásához használja a [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) a `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` névtérből.
+3. Ügyfelek létrehozásához használja a [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) a `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` névtérből.
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +256,7 @@ Az alábbi lépéseket követve váltson V2_1 veremre.
     }
    ```
 
-3. Adjon hozzá egy [Assembly attribútumot](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) a távelérési adapterekhez.
+3. Adjon hozzá egy [Assembly attribútumot](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) a távelérési adapterekhez.
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -279,7 +280,7 @@ Kövesse az alábbi lépéseket:
    </Resources>
    ```
 
-2. Használja a [távelérési v2-figyelőt](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). Az alapértelmezett szolgáltatási végponti erőforrás neve a következő: "ServiceEndpointV2_1." A szolgáltatás jegyzékfájljában definiálni kell.
+2. Használja a [távelérési v2-figyelőt](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). Az alapértelmezett szolgáltatási végponti erőforrás neve a következő: "ServiceEndpointV2_1." A szolgáltatás jegyzékfájljában definiálni kell.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +298,7 @@ Kövesse az alábbi lépéseket:
     }
    ```
 
-3. Használja a v2 [Client Factoryt](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet).
+3. Használja a v2 [Client Factoryt](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet).
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
@@ -546,8 +547,8 @@ Kövesse az alábbi lépéseket:
       });
       ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Webes API a Reliable Services OWIN](service-fabric-reliable-services-communication-webapi.md)
+* [Webes API a Reliable Services OWIN](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Kommunikáció Windows Communication Foundation a Reliable Services](service-fabric-reliable-services-communication-wcf.md)
 * [Biztonságos kommunikáció Reliable Services](service-fabric-reliable-services-secure-communication.md)

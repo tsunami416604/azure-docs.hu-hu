@@ -5,11 +5,12 @@ author: mcoskun
 ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: 1f3239ea1da252ccd84c6572b562756c8fd1677d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16dcfd23ec00a144b17244e811e91a92db9e6995
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639564"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253047"
 ---
 # <a name="reliable-services-notifications"></a>Értesítések Reliable Services
 Az értesítések lehetővé teszik, hogy az ügyfelek nyomon kövessék egy olyan objektum módosításait, amelyekre kíváncsiak. Két típusú objektum támogatja az értesítéseket: *megbízható State Manager* és *megbízható szótár*.
@@ -205,9 +206,8 @@ A következő szempontokat érdemes figyelembe venni:
 * A több műveletet tartalmazó tranzakciók esetében a rendszer az elsődleges replikán a felhasználótól kapott sorrendben alkalmazza a műveleteket.
 * A hamis folyamat feldolgozásának részeként előfordulhat, hogy egyes műveletek visszavonhatók. A rendszer értesítést küld az ilyen visszavonási műveletekről, és Visszagörgeti a replika állapotát egy stabil pontra. A visszavonási értesítések egyik fontos különbsége az, hogy az ismétlődő kulcsokkal rendelkező események összesítve lesznek. Ha például a T1 tranzakciót visszavonja, egyetlen értesítést fog látni a törléshez (X).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services – első lépések](service-fabric-reliable-services-quick-start.md)
 * [Biztonsági mentés és visszaállítás Reliable Services (vész-helyreállítás)](service-fabric-reliable-services-backup-restore.md)
-* [Fejlesztői referenciák megbízható gyűjteményekhez](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
-
+* [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

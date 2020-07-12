@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 92c717fa2c82dd147acd3c28333e37ccf8dd2e89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 621e325d0b549d2970180a5a40eb09260c1f2ee0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79282301"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253473"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Hogyan Reliable Actors használni a Service Fabric platformot?
 Ez a cikk azt ismerteti, hogy Reliable Actors hogyan működik az Azure Service Fabric platformon. A Reliable Actors egy olyan keretrendszerben fut, amely egy, a *Actors szolgáltatásnak*nevezett, állapot-nyilvántartó megbízható szolgáltatás implementációjában található. A Actors szolgáltatás tartalmazza az életciklus és az üzenetek a szereplőkkel való elküldésének kezeléséhez szükséges összes összetevőt:
@@ -86,10 +87,10 @@ ActorProxyBase.create(MyActor.class, new ActorId(1234));
 GUID-azonosítók/UUID-kódok és karakterláncok használatakor az értékek kivonatolása egy Int64 történik. Ha azonban explicit módon ad meg egy Int64 `ActorId` , a Int64 további kivonatolás nélkül leképezi közvetlenül a partícióra. Ezzel a technikával szabályozhatja, hogy a szereplők milyen partíciót helyeznek el.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Színészi állapot kezelése](service-fabric-reliable-actors-state-management.md)
 * [A Actor életciklusa és a szemét gyűjtése](service-fabric-reliable-actors-lifecycle.md)
-* [A Actors API-dokumentációja](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet)
+* [A Actors API-dokumentációja](/dotnet/api/microsoft.servicefabric.actors?view=azure-dotnet)
 * [.NET-mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

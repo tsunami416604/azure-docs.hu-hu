@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c03c8b385fc287737853c3cabd2e25f365a84578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11f8442f188ea6ce7ee1de5a093362279da4594c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831522"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251163"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Nyilvános standard Load Balancer használata az Azure Kubernetes szolgáltatásban (ak)
 
@@ -297,7 +297,7 @@ spec:
 
 Az alábbi lista a Kubernetes-szolgáltatások típussal támogatott megjegyzéseit sorolja fel `LoadBalancer` , ezek a jegyzetek csak a **bejövő** folyamatokra érvényesek:
 
-| Jegyzet | Érték | Description
+| Jegyzet | Érték | Leírás
 | ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` vagy `false`                     | Annak megadása, hogy a terheléselosztó belső legyen-e. Alapértelmezés szerint a nyilvános, ha nincs beállítva.
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Az alhálózat neve                    | Határozza meg, hogy melyik alhálózathoz kell kötni a belső terheléselosztó. Ha nincs beállítva, a rendszer alapértelmezés szerint a Cloud config fájlban konfigurált alhálózatot állítja be.
@@ -357,7 +357,7 @@ A következő korlátozások érvényesek a terheléselosztó és a *szabványos
 * *Standard szintű* Az SKU-terheléselosztó csak a *szabványos* SKU IP-címeket támogatja.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Kubernetes Services szolgáltatásról a [Kubernetes Services dokumentációjában][kubernetes-services].
 
@@ -393,10 +393,10 @@ További információk a belső Load Balancer a bejövő forgalomhoz való haszn
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/skus.md
-[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-rules-overview.md#snatports
+[azure-lb-outbound-rules]: ../load-balancer/load-balancer-outbound-connections.md#outboundrules
 [azure-lb-outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md
 [azure-lb-outbound-preallocatedports]: ../load-balancer/load-balancer-outbound-connections.md#preallocatedports
-[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-rules-overview.md
+[azure-lb-outbound-rules-overview]: ../load-balancer/load-balancer-outbound-connections.md#outboundrules
 [install-azure-cli]: /cli/azure/install-azure-cli
 [internal-lb-yaml]: internal-lb.md#create-an-internal-load-balancer
 [kubernetes-concepts]: concepts-clusters-workloads.md

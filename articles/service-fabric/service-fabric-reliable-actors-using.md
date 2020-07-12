@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 9f5f9e00c374b16026f22d4efdee51ec94d2902a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8bf54f9909125030e067bc483ca2fb7e3dc68a7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502287"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253354"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>A szolgáltatás szintű szolgáltatások implementálása a Actor Service-ben
 
@@ -211,11 +211,11 @@ Ez a változás egy kétlépéses frissítés. Kövesse a jelen szakasz lépése
     [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Színészi állapot kezelése](service-fabric-reliable-actors-state-management.md)
 * [A Actor életciklusa és a szemét gyűjtése](service-fabric-reliable-actors-lifecycle.md)
-* [A Actors API-dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [A Actors API-dokumentációja](/previous-versions/azure/dn971626(v=azure.100))
 * [.NET-mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

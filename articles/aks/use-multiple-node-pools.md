@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre és kezelhet több Node-készlete
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 64eaa3fd38a9f3de7e2032ef7ff7a18924353a1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c35b3cdbde79a771eccc42c7c3a60b0ab4e08e8a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318436"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250855"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürthöz tartozó több Node-készlet létrehozása és kezelése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -783,7 +783,7 @@ A csomópontok nyilvános IP-címeit többféleképpen is megtalálhatja:
 az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ebben a cikkben létrehozta a GPU-alapú csomópontokat tartalmazó AK-fürtöt. A szükségtelen díjak csökkentése érdekében érdemes törölni a *gpunodepool*vagy a teljes Kabai fürtöt.
 
@@ -805,7 +805,7 @@ A csomópont-készletek esetében a nyilvános IP-címhez létrehozott további 
 az group delete --name myResourceGroup2 --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [rendszercsomópont-készletekről][use-system-pool].
 
@@ -844,7 +844,7 @@ A [közeli elhelyezési csoportok][reduce-latency-ppg] használatával csökkent
 [operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [quotas-skus-regions]: quotas-skus-regions.md
 [supported-versions]: supported-kubernetes-versions.md
-[tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
+[tag-limitation]: ../azure-resource-manager/management/tag-resources.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-system-pool]: use-system-pools.md

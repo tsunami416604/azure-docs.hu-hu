@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogy
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: 735869da1432c241927597789f00a0bd2aea63f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036c97d406e37e038474287daf39182ddce194a1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207948"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250872"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Windows Server-tároló létrehozása Azure Kubernetes-szolgáltatásbeli (ak-) fürtön a PowerShell használatával
 
@@ -47,7 +47,7 @@ A következő további korlátozások érvényesek a Windows Server Node-készle
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az [Azure-erőforráscsoport](/azure/azure-resource-manager/resource-group-overview) olyan logikai csoport, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup][new-azresourcegroup] parancsmag használatával.
+Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) olyan logikai csoport, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup][new-azresourcegroup] parancsmag használatával.
 
 A következő példában létrehozunk egy **myResourceGroup** nevű erőforráscsoportot az **eastus** helyen.
 
@@ -70,7 +70,7 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-Az `ssh-keygen` SSH-kulcspár létrehozásához használja a parancssori segédprogramot. További részletekért lásd a [gyors lépések: SSH nyilvános magánhálózati kulcspár létrehozása és használata az Azure-ban linuxos virtuális gépekhez](/azure/virtual-machines/linux/mac-create-ssh-keys)című témakört.
+Az `ssh-keygen` SSH-kulcspár létrehozásához használja a parancssori segédprogramot. További részletekért lásd a [gyors lépések: SSH nyilvános magánhálózati kulcspár létrehozása és használata az Azure-ban linuxos virtuális gépekhez](../virtual-machines/linux/mac-create-ssh-keys.md)című témakört.
 
 Ha olyan AK-fürtöt szeretne futtatni, amely támogatja a Windows Server-tárolók csomópont-készleteit, a fürtnek az [Azure CNI][azure-cni-about] (Advanced) hálózati beépülő modult használó hálózati házirendet kell használnia. További információ a szükséges alhálózati tartományok és hálózati megfontolások megtervezéséhez: az [Azure CNI hálózatkezelésének konfigurálása][use-advanced-networking]. Az alábbi [New-AzAks][new-azaks] parancsmag használatával hozzon létre egy **myAKSCluster**nevű AK-fürtöt. A következő példa létrehozza a szükséges hálózati erőforrásokat, ha nem léteznek.
 
@@ -125,7 +125,7 @@ aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.16.7
 aksnpwin987654                      Ready    agent   108s   v1.16.7
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 A Kubernetes jegyzékfájl a fürt kívánt állapotát határozza meg, például a tároló lemezképeit. Ebben a cikkben egy jegyzékfájlt használunk a ASP.NET-minta alkalmazás Windows Server-tárolóban való futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl egy [Kubernetes-telepítést][kubernetes-deployment] tartalmaz a ASP.net-minta alkalmazáshoz és egy külső [Kubernetes szolgáltatáshoz][kubernetes-service] az alkalmazás internetről való eléréséhez.
 
@@ -234,7 +234,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Felügyelt identitás használata esetén az identitást a platform felügyeli, és nem szükséges az eltávolítás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben üzembe helyezett egy Kubernetes-fürtöt, és üzembe helyezett egy `ASP.NET` minta alkalmazást egy Windows Server-tárolóban. Nyissa meg a létrehozott fürt [Kubernetes webes irányítópultját][kubernetes-dashboard] .
 

@@ -4,30 +4,32 @@ description: Ebben a rövid útmutatóban egy Azure Resource Manager sablon (ARM
 ms.date: 07/06/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: 3cdcff4898a8644008193943a243be4a2ef9e8c4
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a05be04064df81373f856ea0e8ca59664078695f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969806"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252368"
 ---
-# <a name="quickstart-create-a-shared-query-by-using-an-azure-resource-manager-template"></a>Gyors útmutató: megosztott lekérdezés létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Gyors útmutató: megosztott lekérdezés létrehozása ARM-sablon használatával
 
 Az erőforrás-gráf lekérdezéseit _privát lekérdezésként_ vagy _megosztott lekérdezésként_lehet menteni. A privát lekérdezéseket a rendszer az egyéni portál profiljába menti, és mások számára nem látható. A megosztott lekérdezés egy olyan Resource Manager-objektum, amely engedélyek és szerepköralapú hozzáférés használatával megosztható másokkal. A megosztott lekérdezés az erőforrás-felderítés általános és konzisztens végrehajtását teszi lehetővé. Ez a rövid útmutató egy Azure Resource Manager sablont (ARM-sablont) használ egy megosztott lekérdezés létrehozásához.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+:::image type="content" source="../../media/template-deployments/deploy-to-azure.svg" alt-text="Az ARM-sablon üzembe helyezése megosztott lekérdezés létrehozásához az Azure-ban" border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fresourcegraph-sharedquery-countos%2Fazuredeploy.json":::
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-## <a name="create-a-shared-query"></a>Megosztott lekérdezés létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Ebben a rövid útmutatóban létrehoz egy "Count VM" nevű megosztott lekérdezést az _operációs rendszer szerint_. A lekérdezés SDK-ban vagy a Portalon a Resource Graph Explorerben való kipróbálásához lásd: [minták – virtuális gépek száma operációs rendszer típusa szerint](./samples/starter.md#count-os).
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/) származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/resourcegraph-sharedquery-countos/)származik.
 
 :::code language="json" source="~/quickstart-templates/resourcegraph-sharedquery-countos/azuredeploy.json" highlight="28-37":::
 
@@ -35,7 +37,7 @@ A sablonban definiált erőforrás:
 
 - [Microsoft. ResourceGraph/lekérdezések](/azure/templates/microsoft.resourcegraph/queries)
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 > [!NOTE]
 > Az Azure Resource Graph szolgáltatás ingyenes. További információ: [Az Azure Resource Graph áttekintése](./overview.md).
@@ -46,7 +48,7 @@ A sablonban definiált erőforrás:
 
 1. Válassza ki vagy adja meg a következő értékeket:
 
-   | Name | Érték |
+   | Név | Érték |
    |------|-------|
    | Előfizetés | Válassza ki az Azure-előfizetését. |
    | Erőforráscsoport | Válassza az **új létrehozása**lehetőséget, adjon meg egy nevet, majd kattintson **az OK gombra**. |
@@ -56,7 +58,7 @@ A sablonban definiált erőforrás:
    | Lekérdezés leírása | Hagyja meg az alapértelmezett értéket **, ez a megosztott lekérdezés az összes virtuálisgép-erőforrást megszámolja, és az operációs rendszer típusa szerint összegzi.** |
    | Elfogadom a fenti feltételeket és kikötéseket | Válassza |
 
-1. Válassza a **Beszerzés** lehetőséget.
+1. Válassza a **Vásárlás** lehetőséget.
 
 Néhány további erőforrás:
 
@@ -83,7 +85,7 @@ Azt is megteheti, hogy a megosztott lekérdezést megnyithatja a Resource Graph 
 
 1. A lekérdezés betöltését követően kattintson a **lekérdezés futtatása** gombra. Az eredmények az alábbi **eredmények** lapon jelennek meg.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A létrehozott megosztott lekérdezés eltávolításához kövesse az alábbi lépéseket:
 
@@ -93,7 +95,7 @@ A létrehozott megosztott lekérdezés eltávolításához kövesse az alábbi l
 
 1. Kattintson a **Törlés** gombra az oldal tetején.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Resource Graph megosztott lekérdezést.
 

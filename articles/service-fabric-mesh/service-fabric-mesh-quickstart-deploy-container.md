@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5373cbf76b55b86e4851e1d7c6b53222871faa4c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75458972"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254333"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rövid útmutató: A Hello World üzembe helyezése a Service Fabric Meshben
 
@@ -40,16 +40,16 @@ Hozzon létre egy erőforráscsoportot, amelyben az alkalmazást üzembe helyezh
 az group create --name myResourceGroup --location eastus 
 ```
 
-## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
+## <a name="deploy-the-application"></a>Az alkalmazás üzembe helyezése
 Hozza létre az alkalmazást az erőforráscsoportban az `az mesh deployment create` paranccsal.  Futtassa a következőt:
 
 ```azurecli-interactive
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json --parameters "{'location': {'value': 'eastus'}}" 
 ```
 
-Az előző parancs egy Linux-alkalmazást telepít [Linux. JSON sablonnal](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json). Ha Windows-alkalmazást szeretne telepíteni, használja a [Windows. JSON sablont](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json). A Windows-tárolórendszerképek nagyobbak, mint a Linux-tárolórendszerképek, ezért több ideig tarthat az üzembe helyezésük.
+Az előző parancs egy Linux-alkalmazást telepít [linux.jshasználatával a sablonon](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json). Ha Windows-alkalmazást szeretne telepíteni, használja [awindows.jssablont](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json). A Windows-tárolórendszerképek nagyobbak, mint a Linux-tárolórendszerképek, ezért több ideig tarthat az üzembe helyezésük.
 
-Ez a parancs létrehoz egy JSON-kódrészletet, amely az alábbiakban látható. A JSON ```outputs``` -kimenet szakasza alatt másolja a ```publicIPAddress``` tulajdonságot.
+Ez a parancs létrehoz egy JSON-kódrészletet, amely az alábbiakban látható. A ```outputs``` JSON-kimenet szakasza alatt másolja a ```publicIPAddress``` tulajdonságot.
 
 ```json
 "outputs": {
@@ -60,7 +60,7 @@ Ez a parancs létrehoz egy JSON-kódrészletet, amely az alábbiakban látható.
 }
 ```
 
-Ez az információ az ARM ```outputs``` -sablonban található szakaszból származik. Ahogy az az alábbi ábrán is látható, ez a szakasz az átjáró erőforrására hivatkozik a nyilvános IP-cím beolvasásához. 
+Ez az információ az ```outputs``` ARM-sablonban található szakaszból származik. Ahogy az az alábbi ábrán is látható, ez a szakasz az átjáró erőforrására hivatkozik a nyilvános IP-cím beolvasásához. 
 
 ```json
   "outputs": {
@@ -99,7 +99,7 @@ Amikor készen áll az alkalmazás törlésére, futtassa az [az group delete][a
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Fabric Mesh-alkalmazások létrehozásáról és üzembe helyezésével kapcsolatos további információért lépjen tovább az oktatóanyagra.
 > [!div class="nextstepaction"]
@@ -110,4 +110,4 @@ A Service Fabric Mesh-alkalmazások létrehozásáról és üzembe helyezéséve
 
 <!-- Links / Internal -->
 [az-group-delete]: /cli/azure/group
-[azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli-install]: /cli/azure/install-azure-cli?view=azure-cli-latest

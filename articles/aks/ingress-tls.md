@@ -5,12 +5,12 @@ description: Megtudhatja, hogyan telepíthet és konfigurálhat egy olyan NGINX 
 services: container-service
 ms.topic: article
 ms.date: 04/27/2020
-ms.openlocfilehash: 59f1b63a5c72ed5583b88af9e42bf5337f358b47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9536d8ee6c1cab0d3ebd2648200683d454843760
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82561896"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251352"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>HTTPS bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -340,7 +340,7 @@ tls-secret   True    tls-secret   11m
 
 Nyisson meg egy webböngészőt a *Hello-World-inbehatolás szolgáltatásban. MY_CUSTOM_DOMAIN* a Kubernetes bejövő adatkezelője. Figyelje meg, hogy a HTTPS használatára van átirányítva, és a tanúsítvány megbízható, és a bemutató alkalmazás megjelenik a böngészőben. Adja hozzá a */Hello-World-Two* elérési útját, és figyelje meg, hogy a második bemutató alkalmazás az egyéni címmel jelenik meg.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ez a cikk a beáramlási összetevők, a tanúsítványok és a minta alkalmazások telepítéséhez használható. Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ezek az erőforrások a hüvelyek, a központi telepítések és a szolgáltatások részét képezik. Ezen erőforrások törléséhez törölheti a teljes minta névteret vagy az egyes erőforrásokat.
 
@@ -398,13 +398,13 @@ Végezetül törölheti saját maga is a névteret. Használja a `kubectl delete
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 
 - [Helm parancssori felület][helm-cli]
 - [NGINX bejövő adatkezelő][nginx-ingress]
-- [tanúsítvány-kezelő][cert-manager]
+- [Tanúsítványkezelő][cert-manager]
 
 További lehetőségek:
 
@@ -419,7 +419,7 @@ További lehetőségek:
 [custom-domain]: ../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
 [dns-zone]: ../dns/dns-getstarted-cli.md
 [helm]: https://helm.sh/
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [cert-manager]: https://github.com/jetstack/cert-manager
 [cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
 [ingress-shim]: https://docs.cert-manager.io/en/latest/tasks/issuing-certificates/ingress-shim.html

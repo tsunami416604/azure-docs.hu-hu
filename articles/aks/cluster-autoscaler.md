@@ -4,11 +4,12 @@ description: Ismerje meg, hogyan használható a fürt automatikus méretezése,
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: e87470e577f4d2613b43cc02755ccc2d500c0ef8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9aa06ea2fbc3aff218a4940fa60da767fabca500
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84730016"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252028"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Fürt automatikus méretezése az alkalmazások igényeinek kielégítéséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -106,7 +107,7 @@ Figyelje az alkalmazások és szolgáltatások teljesítményét, és állítsa 
 
 A fürt autoskálázásának részletesebb adatait úgy is konfigurálhatja, hogy módosítja a teljes fürtre kiterjedő autoskálázási profil alapértelmezett értékeit. Egy leskálázási esemény például akkor fordul elő, ha a csomópontok 10 perc elteltével vannak kihasználva. Ha 15 percenként futtatott munkaterhelésekkel rendelkezett, érdemes lehet módosítani az autoskálázási profilt úgy, hogy a használatban lévő csomópontok között 15 vagy 20 percet is igénybe vehet. Ha engedélyezi a fürt automéretezőjét, a rendszer az alapértelmezett profilt használja, kivéve, ha eltérő beállításokat ad meg. A fürt autoskálázási profilja a következő beállításokat tudja frissíteni:
 
-| Beállítás                          | Description                                                                              | Alapértelmezett érték |
+| Beállítás                          | Leírás                                                                              | Alapértelmezett érték |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | vizsgálat – intervallum                    | A fürt fel-vagy leskálázásának újraértékelésének gyakorisága                                    | 10 másodperc    |
 | vertikális leskálázás – késleltetés utáni Hozzáadás       | A vertikális felskálázást követő kiértékelés utáni időtartam                               | 10 perc    |
@@ -212,7 +213,7 @@ Az AK kezeli a fürt automéretezőjét az Ön nevében, és futtatja a felügye
 
 Az alábbi lépésekkel konfigurálhatja a naplóknak a fürt autoskálázási szolgáltatásból Log Analyticsba való leküldését.
 
-1. Szabály beállítása az erőforrás-naplókhoz a fürt leküldéséhez – az autoskálázási naplók Log Analytics. Az [utasításokat itt](https://docs.microsoft.com/azure/aks/view-master-logs#enable-resource-logs)találja, és ellenőrizze, hogy be van-e jelölve a `cluster-autoscaler` "naplók" beállításainak kiválasztásakor.
+1. Szabály beállítása az erőforrás-naplókhoz a fürt leküldéséhez – az autoskálázási naplók Log Analytics. Az [utasításokat itt](./view-master-logs.md#enable-resource-logs)találja, és ellenőrizze, hogy be van-e jelölve a `cluster-autoscaler` "naplók" beállításainak kiválasztásakor.
 1. Kattintson a "naplók" szakaszra a fürtön a Azure Portalon keresztül.
 1. Adja meg a következő példában szereplő lekérdezést Log Analyticsba:
 
@@ -261,7 +262,7 @@ az aks nodepool update \
 
 Ha újra engedélyezni szeretné a fürt automéretezőjét egy meglévő fürtön, újra engedélyezheti azt az az [AK nodepool Update][az-aks-nodepool-update] paranccsal, amely a *--enable-cluster-automéretező*, *--min-Count*és *--Max-Count* paramétereket határozza meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk azt mutatja be, hogyan lehet automatikusan méretezni az AK-csomópontok számát. A vízszintes Pod automatikus méretezés használatával automatikusan módosíthatja az alkalmazást futtató hüvelyek számát. A horizontális Pod automéretező használatának lépéseiért lásd: [alkalmazások méretezése az AK-ban][aks-scale-apps].
 

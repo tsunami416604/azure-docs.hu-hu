@@ -3,11 +3,12 @@ title: Erőforrás-naplók & gyűjtése
 description: Az Azure Container Registry, például a hitelesítés, a képküldés és a képek lekéréséhez szükséges erőforrás-naplózási események rögzítése és elemzése.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8757b8bdb67cf75b1ba800658d80b2a44311f1ba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343183"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252487"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry naplók a diagnosztika kiértékeléséhez és a naplózáshoz
 
@@ -141,10 +142,9 @@ ContainerRegistryLoginEvents
 
 Amellett, hogy a naplókat Log Analyticsre küldi, vagy egy másik megoldásként egy Azure Storage-fiókot kell kiválasztania a napló célhelyként. Az Azure Storage-beli naplók archiválásához hozzon létre egy Storage-fiókot, mielőtt engedélyezi az archiválást a diagnosztikai beállításokon.
 
-A diagnosztikai napló eseményeit egy [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md)-ba is továbbíthatja. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat. 
+A diagnosztikai napló eseményeit egy [Azure Event hub](../event-hubs/event-hubs-about.md)-ba is továbbíthatja. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [log Analytics](../azure-monitor/log-query/get-started-portal.md) használatáról és a [naplók](../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
 * A különböző Azure-rétegekben elérhető platform-naplók megismeréséhez tekintse meg [Az Azure platform-naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md) című témakört.
-

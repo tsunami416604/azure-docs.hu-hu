@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 0d432bd19d0689ef508fca0bf24eed4406929f82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8866714ca1736b3ba785b560cb5a7aea451fdf1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639632"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253337"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>ASP.NET Core az Azure Service Fabric Reliable Services
 
@@ -19,7 +20,7 @@ Ez a cikk részletesen ismerteti, hogy a **Microsoft. ServiceFabric. AspNetCore*
 
 Az Service Fabric és a fejlesztői környezet beszerzésével kapcsolatos útmutatásért lásd [: oktatóanyag: alkalmazás létrehozása és üzembe helyezése egy ASP.net Core webes API előtér-szolgáltatással és egy állapot-visszaállítási szolgáltatással](service-fabric-tutorial-create-dotnet-app.md). asp.net Core
 
-A cikk további része feltételezi, hogy már ismeri a ASP.NET Core. Ha nem, olvassa el a [ASP.net Core alapjaival](https://docs.microsoft.com/aspnet/core/fundamentals/index)kapcsolatos tudnivalókat.
+A cikk további része feltételezi, hogy már ismeri a ASP.NET Core. Ha nem, olvassa el a [ASP.net Core alapjaival](/aspnet/core/fundamentals/index)kapcsolatos tudnivalókat.
 
 ## <a name="aspnet-core-in-the-service-fabric-environment"></a>ASP.NET Core a Service Fabric környezetben
 
@@ -93,7 +94,7 @@ A vércse és a HTTP.sys `ICommunicationListener` implementációja is pontosan 
 ## <a name="httpsys-in-reliable-services"></a>HTTP.sys a Reliable Services
 Reliable Services HTTP.sys a **Microsoft. ServiceFabric. AspNetCore. httpsys kiszolgálón** NuGet csomag importálásával is használhatja. Ez a csomag a következő `HttpSysCommunicationListener` implementációját tartalmazza: `ICommunicationListener` . `HttpSysCommunicationListener`lehetővé teszi, hogy a HTTP.sys webkiszolgálóként való használatával egy megbízható szolgáltatáson belül hozzon létre egy ASP.NET Core WebHost.
 
-HTTP.sys a [Windows HTTP Server API](https://msdn.microsoft.com/library/windows/desktop/aa364510(v=vs.85).aspx)-ra épül. Ez az API a **HTTP.sys** kernel-illesztővel dolgozza fel a http-kérelmeket, és továbbítja azokat a webalkalmazásokat futtató folyamatoknak. Ez lehetővé teszi, hogy ugyanazon a fizikai vagy virtuális gépen több folyamat is üzemelteti a webalkalmazásokat ugyanazon a porton, disambiguated egyedi URL-cím vagy állomásnév alapján. Ezek a funkciók hasznosak lehetnek Service Fabric több webhely üzemeltetéséhez ugyanabban a fürtben.
+HTTP.sys a [Windows HTTP Server API](/windows/win32/http/http-api-start-page)-ra épül. Ez az API a **HTTP.sys** kernel-illesztővel dolgozza fel a http-kérelmeket, és továbbítja azokat a webalkalmazásokat futtató folyamatoknak. Ez lehetővé teszi, hogy ugyanazon a fizikai vagy virtuális gépen több folyamat is üzemelteti a webalkalmazásokat ugyanazon a porton, disambiguated egyedi URL-cím vagy állomásnév alapján. Ezek a funkciók hasznosak lehetnek Service Fabric több webhely üzemeltetéséhez ugyanabban a fürtben.
 
 >[!NOTE]
 >HTTP.sys implementáció csak a Windows platformon működik.
@@ -132,9 +133,9 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="endpoint-configuration"></a>Végpont konfigurációja
 
-`Endpoint`A Windows HTTP Server API-t használó webkiszolgálók esetében konfigurációra van szükség, beleértve a HTTP.syst is. A Windows HTTP Server API-t használó webkiszolgálóknak először le kell foglalniuk az URL-címet HTTP.sys (ez általában a [netsh](https://msdn.microsoft.com/library/windows/desktop/cc307236(v=vs.85).aspx) eszközzel érhető el). 
+`Endpoint`A Windows HTTP Server API-t használó webkiszolgálók esetében konfigurációra van szükség, beleértve a HTTP.syst is. A Windows HTTP Server API-t használó webkiszolgálóknak először le kell foglalniuk az URL-címet HTTP.sys (ez általában a [netsh](/windows/win32/http/netsh-commands-for-http) eszközzel érhető el). 
 
-Ehhez a művelethez olyan emelt szintű jogosultságok szükségesek, amelyeket a szolgáltatásai alapértelmezés szerint nem rendelkeznek. A ServiceManifest.xml konfiguráció tulajdonságának "http" vagy "https" beállításai `Protocol` `Endpoint` kifejezetten arra szolgálnak, hogy a Service Fabric futtatókörnyezetet az Ön nevében HTTP.sys az URL-cím regisztrálására használják. Ezt az [*erős helyettesítő karakteres*](https://msdn.microsoft.com/library/windows/desktop/aa364698(v=vs.85).aspx) URL-előtag használatával végezheti el.
+Ehhez a művelethez olyan emelt szintű jogosultságok szükségesek, amelyeket a szolgáltatásai alapértelmezés szerint nem rendelkeznek. A ServiceManifest.xml konfiguráció tulajdonságának "http" vagy "https" beállításai `Protocol` `Endpoint` kifejezetten arra szolgálnak, hogy a Service Fabric futtatókörnyezetet az Ön nevében HTTP.sys az URL-cím regisztrálására használják. Ezt az [*erős helyettesítő karakteres*](/windows/win32/http/urlprefix-strings) URL-előtag használatával végezheti el.
 
 Egy szolgáltatás foglalásához például `http://+:80` használja a következő konfigurációt ServiceManifest.xmlban:
 
@@ -190,7 +191,7 @@ Egy konfiguráció által lefoglalt dinamikus port `Endpoint` csak egy portot bi
 ## <a name="kestrel-in-reliable-services"></a>Vércse Reliable Services
 A Reliable Services a a **Microsoft. ServiceFabric. AspNetCore. vércse** NuGet-csomag importálásával használhatja. Ez a csomag a következő `KestrelCommunicationListener` implementációját tartalmazza: `ICommunicationListener` . `KestrelCommunicationListener`lehetővé teszi, hogy egy ASP.NET Core webkiszolgálót hozzon létre egy megbízható szolgáltatáson belül a vércse használatával webkiszolgálóként.
 
-A vércse egy platformfüggetlen webkiszolgáló a ASP.NET Corehoz. A HTTP.systól eltérően a vércse nem használ központosított Endpoint Managert. A HTTP.systól eltérően a vércse nem támogatja a portok több folyamat közötti megosztását. A vércse minden példányának egyedi portot kell használnia. A vércse szolgáltatással kapcsolatos további információkért tekintse meg a [megvalósítás részleteit](https://docs.microsoft.com/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2).
+A vércse egy platformfüggetlen webkiszolgáló a ASP.NET Corehoz. A HTTP.systól eltérően a vércse nem használ központosított Endpoint Managert. A HTTP.systól eltérően a vércse nem támogatja a portok több folyamat közötti megosztását. A vércse minden példányának egyedi portot kell használnia. A vércse szolgáltatással kapcsolatos további információkért tekintse meg a [megvalósítás részleteit](/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2).
 
 ![Vércse-diagram][4]
 
@@ -334,7 +335,7 @@ HTTPS esetén a végpontnak a ServiceManifest.xmlben megadott port nélkül kell
 
 
 ## <a name="service-fabric-configuration-provider"></a>Service Fabric konfigurációs szolgáltató
-ASP.NET Core alkalmazás-konfigurációja a konfigurációs szolgáltató által létesített kulcs-érték párokon alapul. Az általános ASP.NET Core-konfiguráció támogatásával kapcsolatos további információkért olvassa el [ASP.net Core konfigurációját](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/) .
+ASP.NET Core alkalmazás-konfigurációja a konfigurációs szolgáltató által létesített kulcs-érték párokon alapul. Az általános ASP.NET Core-konfiguráció támogatásával kapcsolatos további információkért olvassa el [ASP.net Core konfigurációját](/aspnet/core/fundamentals/configuration/) .
 
 Ez a szakasz azt ismerteti, hogyan integrálható a Service Fabric konfigurációs szolgáltató ASP.NET Core-konfigurációval a NuGet-csomag importálásával `Microsoft.ServiceFabric.AspNetCore.Configuration` .
 
@@ -447,7 +448,7 @@ public Startup()
 ```
 
 ### <a name="configuration-updates"></a>Konfigurációs frissítések
-A Service Fabric konfigurációs szolgáltató is támogatja a konfigurációs frissítéseket. `IOptionsMonitor`A ASP.net Core a módosítási értesítések fogadására, majd `IOptionsSnapshot` a konfigurációs adatfrissítésre használható. További információ: [ASP.net Core beállítások](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options).
+A Service Fabric konfigurációs szolgáltató is támogatja a konfigurációs frissítéseket. `IOptionsMonitor`A ASP.net Core a módosítási értesítések fogadására, majd `IOptionsSnapshot` a konfigurációs adatfrissítésre használható. További információ: [ASP.net Core beállítások](/aspnet/core/fundamentals/configuration/options).
 
 Alapértelmezés szerint ezek a beállítások támogatottak. A konfigurációs frissítések engedélyezéséhez nincs szükség további kódolásra.
 
@@ -473,7 +474,7 @@ Ha az internetre van kitéve, az állapot nélküli szolgáltatásnak olyan jól
 | --- | --- | --- |
 | Webkiszolgáló | Vércse | A vércse az előnyben részesített webkiszolgáló, mivel a Windows és a Linux rendszeren is támogatott. |
 | Port konfigurációja | Statikus | Jól ismert statikus portot kell konfigurálni a `Endpoints` ServiceManifest.xml konfigurációjában, például: 80 http vagy 443 for HTTPS. |
-| ServiceFabricIntegrationOptions | None | Használja a `ServiceFabricIntegrationOptions.None` Service Fabric Integration middleware konfigurálásának lehetőségét, hogy a szolgáltatás ne próbálja érvényesíteni a beérkező kéréseket egy egyedi azonosítóhoz. Az alkalmazás külső felhasználói nem fogják tudni, hogy a middleware milyen egyedi azonosító adatokat használ. |
+| ServiceFabricIntegrationOptions | Nincs | Használja a `ServiceFabricIntegrationOptions.None` Service Fabric Integration middleware konfigurálásának lehetőségét, hogy a szolgáltatás ne próbálja érvényesíteni a beérkező kéréseket egy egyedi azonosítóhoz. Az alkalmazás külső felhasználói nem fogják tudni, hogy a middleware milyen egyedi azonosító adatokat használ. |
 | Példányszám | -1 | Tipikus használati esetekben a példányszám beállításának *-1*értékűnek kell lennie. Erre azért van szükség, hogy egy példány minden olyan csomóponton elérhető legyen, amely egy terheléselosztó által forgalmazott forgalmat fogad. |
 
 Ha több külsőleg megjelenő szolgáltatás is ugyanazokat a csomópontokat használja, akkor a HTTP.syst egyedi, de állandó URL-címmel is használhatja. Ezt a IWebHost konfigurálásakor megadott URL-cím módosításával végezheti el. Vegye figyelembe, hogy ez csak HTTP.sysre vonatkozik.
@@ -510,7 +511,7 @@ A csak a fürtön belül hívott állapot-nyilvántartó szolgáltatásoknak din
 | Port konfigurációja | dinamikusan hozzárendelve | Egy állapot-nyilvántartó szolgáltatás több replikája megoszthatja a gazdagép vagy a gazdagép operációs rendszerét, így egyedi portokra lesz szüksége. |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | A dinamikus port hozzárendelésével ez a beállítás megakadályozza a korábban ismertetett, téves identitás problémáját. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Service Fabric-alkalmazás hibakeresése a Visual Studióval](service-fabric-debugging-your-application.md)
 
 

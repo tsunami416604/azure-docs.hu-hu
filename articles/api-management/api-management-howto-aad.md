@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 4a2038b44cf55f2a322b6bda202b8c33372f3716
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edbe202350b0912372aad822c8530c5f79c76384
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808292"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254826"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure Active Directory használatával az Azure API Managementben
 
@@ -50,7 +50,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti a hozzáférést a fejlesztői port�
    ![Az identitás-szolgáltató hozzáadásának lépései a Azure Portal](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. Nyisson meg egy másik lapot a böngészőben. 
 11. A [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) gombra kattintva regisztrálhat egy alkalmazást a Active Directoryban.
-12. A **kezelés**területen válassza a **Alkalmazásregisztrációk**lehetőséget.
+12. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
 13. Válassza az **új regisztráció**lehetőséget. Az **alkalmazás regisztrálása** lapon állítsa be az értékeket az alábbiak szerint:
     
     * Adjon **nevet** egy értelmes névnek. például: *Developer-Portal*
@@ -141,14 +141,14 @@ A felhasználó most bejelentkezett a fejlesztői portálra a API Management Ser
 [api-management-complete-registration]: ./media/api-management-howto-aad/api-management-complete-registration.png
 [api-management-registration-complete]: ./media/api-management-howto-aad/api-management-registration-complete.png
 
-[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add operations to an API]: ./mock-api-responses.md
 [How to add and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: get-started-create-service-instance.md
-[API Management policy reference]: api-management-policy-reference.md
-[Caching policies]: api-management-policy-reference.md#caching-policies
+[API Management policy reference]: ./api-management-policies.md
+[Caching policies]: ./api-management-policies.md#caching-policies
 [Create an API Management service instance]: get-started-create-service-instance.md
 
 [https://oauth.net/2/]: https://oauth.net/2/

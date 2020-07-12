@@ -5,11 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: 7f3b3974893316a488270f755b8f8822080658d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fbcf552cee8a96636920f04472843b1fea5c845
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75433868"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253235"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>WCF-alapú kommunikációs verem a Reliable Serviceshoz
 A Reliable Services-keretrendszer lehetővé teszi, hogy a szolgáltatás szerzője kiválassza a szolgáltatáshoz használni kívánt kommunikációs veremet. A [CreateServiceReplicaListeners vagy a CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metódusok által visszaadott **ICommunicationListener** keresztül képesek a választás kommunikációs verembe való csatlakoztatására. A keretrendszer a kommunikációs verem megvalósítását biztosítja azon szolgáltatás-szerzők Windows Communication Foundation (WCF) alapján, akik WCF-alapú kommunikációt kívánnak használni.
@@ -113,8 +114,7 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Távoli eljáráshívás Reliable Services táveléréssel](service-fabric-reliable-services-communication-remoting.md)
-* [Webes API a Reliable Services OWIN](service-fabric-reliable-services-communication-webapi.md)
+* [Webes API a Reliable Services OWIN](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [A Reliable Services kommunikációjának biztonságossá tétele](service-fabric-reliable-services-secure-communication-wcf.md)
-

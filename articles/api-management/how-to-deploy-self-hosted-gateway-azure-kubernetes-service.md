@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: abf7e6d7032e7e5dc35b2f4397a5630d45d762de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82205117"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254384"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Üzembe helyezés az Azure Kubernetes Service-ben
 
@@ -36,7 +36,7 @@ Ez a cikk az Azure-API Management saját üzemeltetésű átjáró-összetevőj�
 5. Győződjön meg arról, hogy az **üzembehelyezési parancsfájlok**területen a **Kubernetes** van kiválasztva.
 6. Válassza ki **<Gateway-name>. YML-** fájl hivatkozását a **központi telepítés** mellett a fájl letöltéséhez.
 7. Szükség szerint módosítsa a port-hozzárendeléseket és a tároló nevét a YML fájlban.
-8. A forgatókönyvtől függően előfordulhat, hogy módosítania kell a [szolgáltatás típusát](https://docs.microsoft.com/azure/aks/concepts-network#services). Az alapértelmezett érték `NodePort`.
+8. A forgatókönyvtől függően előfordulhat, hogy módosítania kell a [szolgáltatás típusát](../aks/concepts-network.md#services). Az alapértelmezett érték `NodePort`.
 9. Válassza a **telepítés** szövegmező jobb oldalán található **Másolás** ikont a `kubectl` parancs vágólapra mentéséhez.
 10. Illessze be a parancsot a terminál (vagy a parancs) ablakába. Vegye figyelembe, hogy a parancs elvárja, hogy a letöltött környezeti fájl megtalálható legyen az aktuális könyvtárban.
 ```console
@@ -60,13 +60,9 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 > [!TIP]
 > A <code>kubectl logs <gateway-pod-name></code> parancs használatával megtekintheti a saját üzemeltetésű átjáró naplójának pillanatképét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a saját üzemeltetésű átjáróról: [Azure API Management saját üzemeltetésű átjáró – áttekintés](self-hosted-gateway-overview.md)
-* További információ az [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes) -ről
+* További információ az [Azure Kubernetes Service](../aks/intro-kubernetes.md) -ről
 * Megtudhatja, [Hogyan konfigurálhat és tartson fenn naplókat a felhőben](how-to-configure-cloud-metrics-logs.md)
 * * Ismerje meg, [hogyan konfigurálhatja és megőrizheti a naplókat helyileg](how-to-configure-local-metrics-logs.md)
-
-
-
-

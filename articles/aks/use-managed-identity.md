@@ -6,18 +6,18 @@ author: mlearned
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: mlearned
-ms.openlocfilehash: 27ae1d1a2c6309bdac2410dca4b48abf27d8ea0b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 95a303a4b6a83901560b26679bca920b9de4d3f4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231981"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86250905"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
 
 Jelenleg egy Azure Kubernetes Service (ak) fürt (konkrétan a Kubernetes Cloud Provider) identitást igényel további erőforrások, például terheléselosztó és felügyelt lemezek létrehozásához az Azure-ban. Ez az identitás *felügyelt identitás* vagy *egyszerű szolgáltatásnév*lehet. Ha [szolgáltatásnevet](kubernetes-service-principal.md)használ, meg kell adnia egy vagy AK-t az Ön nevében. Ha felügyelt identitást használ, a rendszer automatikusan létrehozza ezt. Az egyszerű szolgáltatásokat használó fürtök végül olyan állapotot érnek el, amelyben az egyszerű szolgáltatásnevet meg kell újítani a fürt működésének megtartása érdekében. Az egyszerű szolgáltatások kezelése bonyolultságot biztosít, ezért a felügyelt identitások könnyebben használhatók. Ugyanezek az engedélyezési követelmények érvényesek az egyszerű szolgáltatásokra és a felügyelt identitásokra is.
 
-A *felügyelt identitások* lényegében burkolók az egyszerű szolgáltatásokban, és egyszerűbbé teszik a felügyeletet. A hitelesítő adatok elforgatása az Azure Active Directory alapértelmezett értékének megfelelően automatikusan megtörténik a 46 naponta. Az AK rendszerhez hozzárendelt és felhasználó által hozzárendelt felügyelt identitási típusokat használ. Ezek az identitások jelenleg nem változtathatók meg. További tudnivalókért tekintse meg az [Azure-erőforrások felügyelt identitásait](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)ismertető témakört.
+A *felügyelt identitások* lényegében burkolók az egyszerű szolgáltatásokban, és egyszerűbbé teszik a felügyeletet. A hitelesítő adatok elforgatása az Azure Active Directory alapértelmezett értékének megfelelően automatikusan megtörténik a 46 naponta. Az AK rendszerhez hozzárendelt és felhasználó által hozzárendelt felügyelt identitási típusokat használ. Ezek az identitások jelenleg nem változtathatók meg. További tudnivalókért tekintse meg az [Azure-erőforrások felügyelt identitásait](../active-directory/managed-identities-azure-resources/overview.md)ismertető témakört.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -106,8 +106,8 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 
 A fürtöt néhány percen belül létrehozza a rendszer. Ezután üzembe helyezheti az alkalmazás számítási feladatait az új fürtön, és ugyanúgy kezelheti, mint a Service-Principal-alapú AK-fürtökkel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Felügyelt identitást használó fürtök létrehozásához használjon [Azure Resource Manager (ARM) sablonokat][aks-arm-template] .
 
 <!-- LINKS - external -->
-[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
+[aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters

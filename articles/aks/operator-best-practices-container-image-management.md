@@ -4,11 +4,12 @@ description: Ismerje meg az Azure Kubernetes Service-ben (ak) található tárol
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: efe72157f598c336248e407c57bce92fe87da23a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018dc1802d4f0b4b498d3993b8753990598a16ba
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77594744"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251144"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a tárolók rendszerképének kezeléséhez és biztonságához az Azure Kubernetes szolgáltatásban (ak)
 
@@ -44,7 +45,7 @@ Azure Container Registry a feladatok a lemezkép frissítésekor is automatikusa
 
 További információ az alapszintű rendszerkép frissítéseiről: [a rendszerkép-buildek automatizálása az alapszintű rendszerkép frissítése Azure Container Registry feladatokkal][acr-base-image-update].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a tárolók biztonságossá tételére koncentrál. Ezen területek némelyikének megvalósításához tekintse meg a következő cikkeket:
 
@@ -59,5 +60,5 @@ Ez a cikk a tárolók biztonságossá tételére koncentrál. Ezen területek n�
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
-[security-center-containers]: /azure/security-center/container-security
-[security-center-acr]: /azure/security-center/azure-container-registry-integration
+[security-center-containers]: ../security-center/container-security.md
+[security-center-acr]: ../security-center/azure-container-registry-integration.md

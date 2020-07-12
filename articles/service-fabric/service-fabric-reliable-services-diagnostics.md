@@ -5,14 +5,15 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 37162287e130b05dc41453c579b3a628ac878fca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92fd8dbd1afbd2bdcabbaebbd5dc056d912ae118
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699811"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253116"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>A Stateful Reliable Services diagnosztikai funkciói
-Az Azure Service Fabric állapot-nyilvántartó Reliable Services StatefulServiceBase osztály a szolgáltatás hibakereséséhez használható [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) -eseményeket bocsát ki, betekintést nyújt a futtatókörnyezet működéséhez, és segít a hibaelhárításban.
+Az Azure Service Fabric állapot-nyilvántartó Reliable Services StatefulServiceBase osztály a szolgáltatás hibakereséséhez használható [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) -eseményeket bocsát ki, betekintést nyújt a futtatókörnyezet működéséhez, és segít a hibaelhárításban.
 
 ## <a name="eventsource-events"></a>EventSource események
 Az állapot-nyilvántartó Reliable Services StatefulServiceBase osztály EventSource neve "Microsoft-ServiceFabric-Services". Az eseményforrás eseményei a [diagnosztikai események](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) ablakban jelennek meg, amikor a szolgáltatás [hibakeresése a Visual Studióban](service-fabric-debugging-your-application.md)folyamatban van.
@@ -40,16 +41,16 @@ A StatefulRunAsyncSlowCancellation akkor bocsátja ki, ha a RunAsync feladat meg
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 A Reliable Services futtatókörnyezet a következő teljesítményszámláló-kategóriákat definiálja:
 
-| Kategória | Description |
+| Kategória | Leírás |
 | --- | --- |
 | Tranzakciós replikátor Service Fabric |Az Azure Service Fabric tranzakciós Replikátorra jellemző számlálók |
 | Service Fabric TStore |Az Azure Service Fabric TStore kapcsolódó számlálók |
 
-A [megbízható állapot-kezelő](service-fabric-reliable-services-reliable-collections-internals.md) a Service Fabric tranzakciós replikálása használatával replikálja a tranzakciókat egy adott [replikán](service-fabric-concepts-replica-lifecycle.md)belül.
+A [megbízható állapot-kezelő](./service-fabric-reliable-services-introduction.md) a Service Fabric tranzakciós replikálása használatával replikálja a tranzakciókat egy adott [replikán](service-fabric-concepts-replica-lifecycle.md)belül.
 
-A Service Fabric TStore a [megbízható gyűjteményekben](service-fabric-reliable-services-reliable-collections-internals.md) a kulcs-érték párok tárolására és lekérésére használt összetevő.
+A Service Fabric TStore a [megbízható gyűjteményekben](./service-fabric-reliable-services-introduction.md) a kulcs-érték párok tárolására és lekérésére használt összetevő.
 
-A Windows [Teljesítményfigyelő](https://technet.microsoft.com/library/cc749249.aspx) alkalmazás, amely alapértelmezés szerint elérhető a Windows operációs rendszerben, a teljesítményszámláló-adatok gyűjtésére és megtekintésére használható. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) egy másik lehetőség a teljesítményszámláló-adatok gyűjtésére és az Azure-táblákba való feltöltésére.
+A Windows [Teljesítményfigyelő](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) alkalmazás, amely alapértelmezés szerint elérhető a Windows operációs rendszerben, a teljesítményszámláló-adatok gyűjtésére és megtekintésére használható. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) egy másik lehetőség a teljesítményszámláló-adatok gyűjtésére és az Azure-táblákba való feltöltésére.
 
 ### <a name="performance-counter-instance-names"></a>Teljesítményszámláló-példányok nevei
 A nagy mennyiségű megbízható szolgáltatást vagy megbízható szolgáltatási partíciót tartalmazó fürtök nagy számú tranzakciós replikáló teljesítményszámláló-példánnyal rendelkeznek. Ez a TStore teljesítményszámlálók esetében is igaz, de a megbízható szótárak és a használt megbízható várólisták száma is megszorozva. A teljesítményszámláló-példányok nevei segítenek a TStore esetében az adott [partíció](service-fabric-concepts-partitioning.md), a szolgáltatás replikájának és az állami szolgáltatónak az azonosításában, hogy a teljesítményszámláló-példány társítva legyen.
@@ -59,7 +60,7 @@ A kategória esetében `Service Fabric Transactional Replicator` a számláló p
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-A *ServiceFabricPartitionId* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció azonosítója egy GUID, és a karakterlánc-ábrázolás [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) a "D" formátum megadásával jön létre.
+A *ServiceFabricPartitionId* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció azonosítója egy GUID, és a karakterlánc-ábrázolás [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) a "D" formátum megadásával jön létre.
 
 A *ServiceFabricReplicaId* egy megbízható szolgáltatás adott replikájának azonosítója. A rendszer a teljesítményszámláló-példány neve tartalmazza a replika AZONOSÍTÓját, hogy biztosítsa annak egyediségét, és elkerülje az azonos partíció által generált teljesítményszámláló-példányokkal való ütközést. A replikákkal és a megbízható szolgáltatásokban lévő szerepével kapcsolatos további részletek [itt](service-fabric-concepts-replica-lifecycle.md)találhatók.
 
@@ -74,7 +75,7 @@ A kategória esetében `Service Fabric TStore` a számláló példányainak neve
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-A *ServiceFabricPartitionId* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció azonosítója egy GUID, és a karakterlánc-ábrázolás [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) a "D" formátum megadásával jön létre.
+A *ServiceFabricPartitionId* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció azonosítója egy GUID, és a karakterlánc-ábrázolás [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) a "D" formátum megadásával jön létre.
 
 A *ServiceFabricReplicaId* egy megbízható szolgáltatás adott replikájának azonosítója. A rendszer a teljesítményszámláló-példány neve tartalmazza a replika AZONOSÍTÓját, hogy biztosítsa annak egyediségét, és elkerülje az azonos partíció által generált teljesítményszámláló-példányokkal való ütközést. A replikákkal és a megbízható szolgáltatásokban lévő szerepével kapcsolatos további részletek [itt](service-fabric-concepts-replica-lifecycle.md)találhatók.
 
@@ -94,7 +95,7 @@ Az előző példában a `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric pa
 
 A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a `Service Fabric Transactional Replicator` kategóriába
 
- Számláló neve | Description |
+ Számláló neve | Leírás |
 | --- | --- |
 | Tranzakció művelet/s megkezdése | A másodpercenként létrehozott új írási tranzakciók száma|
 | Tranzakció művelet/mp | A megbízható gyűjteményeken végrehajtott hozzáadási/frissítési/törlési műveletek száma másodpercenként.|
@@ -107,12 +108,12 @@ A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a
 
 A Reliable Services futtatókörnyezet a következő eseményeket bocsátja ki a `Service Fabric TStore` kategóriába
 
- Számláló neve | Description |
+ Számláló neve | Leírás |
 | --- | --- |
 | Elemek száma | Az áruházban lévő elemek száma.|
 | Lemezméret | Az áruházhoz tartozó ellenőrzőpont-fájlok teljes mérete (bájtban).|
 | Ellenőrzőpont-fájl írási sebessége (bájt/s) | A legutóbbi ellenőrzőpont-fájl másodpercenként írt bájtjainak száma.|
 | Lemez átviteli sebességének másolása (bájt/s) | Az elolvasott lemezes bájtok száma (az elsődleges replikán) vagy a másodpercenként írt (másodlagos replikán).|
 
-## <a name="next-steps"></a>További lépések
-[EventSource-szolgáltatók a Perfview eszköz-ben](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+## <a name="next-steps"></a>Következő lépések
+[EventSource-szolgáltatók a Perfview eszköz-ben](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

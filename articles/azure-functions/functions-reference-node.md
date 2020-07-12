@@ -2,13 +2,14 @@
 title: JavaScript fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a JavaScript használatával.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 51d8c951958dc5fb4b26e92337f96e7a5c758999
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996601"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252725"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -99,7 +100,7 @@ module.exports = async function (context, req) {
 ## <a name="bindings"></a>Kötések 
 A JavaScriptben a [kötések](functions-triggers-bindings.md) konfigurálva és definiálva vannak a függvény function.jsján. A függvények számos módon működnek együtt a kötésekkel.
 
-### <a name="inputs"></a>Bevitelek
+### <a name="inputs"></a>Bemenetek
 A bemenet két kategóriára oszlik Azure Functionsban: az egyik az trigger bemenete, a másik pedig a további bemenet. Az trigger és más bemeneti kötések (-kötések `direction === "in"` ) háromféle módon olvashatók be a függvényekben:
  - **_[Ajánlott]_ A függvénynek átadott paraméterek.** A függvénynek ugyanolyan sorrendben kell átadni őket, mint *function.js*. A `name` *function.json* elemben definiált tulajdonságnak nem kell megegyeznie a paraméter nevével, bár ennek a következőnek kell lennie:.
  
@@ -264,7 +265,7 @@ context.log(message)
 Lehetővé teszi, hogy az alapértelmezett nyomkövetési szinten írjon a streaming Function naplóiba. A `context.log` (z) rendszeren további naplózási módszerek érhetők el, amelyek lehetővé teszik a függvények naplóinak más nyomkövetési szinten történő írására:
 
 
-| Metódus                 | Description                                |
+| Módszer                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
 | **hiba (_üzenet_)**   | A hiba szintű naplózás vagy az alacsonyabb értékre ír.   |
 | **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szintű naplózás vagy alacsonyabb értékre írás. |
@@ -691,9 +692,9 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információkért lásd a következőket:
+További információkat találhat az alábbi forrásokban:
 
 + [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 + [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 55fd27d473bd47fd3321bdb2e730e4ef2d35352f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 560f7b958e04b55a7d642c9f95750812b86d32bc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106168"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251722"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és identitás-beállítások az Azure Kubernetes Service (AKS) szolgáltatáshoz
 
@@ -83,7 +83,7 @@ A Kubernetes-fürtön belül a rendszer webhook jogkivonat-hitelesítést haszn�
 
 Ahogy az a fenti ábrán is látható, az API-kiszolgáló meghívja az AK webhook-kiszolgálót, és a következő lépéseket hajtja végre:
 
-1. Az Azure AD ügyfélalkalmazás a kubectl használatával jelentkezik be a OAuth 2,0-es [eszköz-engedélyezési folyamattal](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-device-code)rendelkező felhasználókba.
+1. Az Azure AD ügyfélalkalmazás a kubectl használatával jelentkezik be a OAuth 2,0-es [eszköz-engedélyezési folyamattal](../active-directory/develop/v2-oauth2-device-code.md)rendelkező felhasználókba.
 2. Az Azure AD egy access_token, id_token és egy refresh_token biztosít.
 3. A felhasználó kérést küld a kubectl access_token a kubeconfig.
 4. A Kubectl elküldi a access_tokent a APIServer.

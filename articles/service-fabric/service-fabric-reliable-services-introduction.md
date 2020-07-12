@@ -6,11 +6,12 @@ ms.topic: conceptual
 ms.date: 3/9/2018
 ms.author: masnider
 ms.custom: sfrev
-ms.openlocfilehash: 58259b0d19d68c468779a579bd9c86e77106c18d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66fc58941de206d0bff086f44852d0f2a31587f1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77083517"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253082"
 ---
 # <a name="reliable-services-overview"></a>A Reliable Services áttekintése
 
@@ -36,7 +37,7 @@ A Reliable Services egy egyszerű, hatékony és legfelső szintű programozási
   * A [megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md) használata
   * Számos más képességhez férhet hozzá, mindezt egy, az első osztályú programozási modellből számos programozási nyelven.
 * Egy egyszerű modell a saját programkód futtatásához, amely más ismerős programozási modellekhez hasonlóan működik. A kód jól definiált belépési ponttal és könnyen kezelhető életciklussal rendelkezik.
-* Egy csatlakoztatható kommunikációs modell. Az Ön által választott átvitelt használhatja, például a HTTP-t [webes API](service-fabric-reliable-services-communication-webapi.md)-val, websocketekkel, egyéni TCP protokollokkal vagy bármi mással. Reliable Services rendelkezésére áll néhány remek lehetőség, amelyet használhat, vagy megadhatja a sajátját.
+* Egy csatlakoztatható kommunikációs modell. Az Ön által választott átvitelt használhatja, például a HTTP-t [webes API](./service-fabric-reliable-services-communication-aspnetcore.md)-val, websocketekkel, egyéni TCP protokollokkal vagy bármi mással. Reliable Services rendelkezésére áll néhány remek lehetőség, amelyet használhat, vagy megadhatja a sajátját.
 * Az állapot-nyilvántartó szolgáltatások esetében az Reliable Services programozási modell lehetővé teszi, hogy [megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md)használatával következetesen és megbízhatóan tárolja az állapotát a szolgáltatáson belül. A megbízható gyűjtemények olyan jól elérhető és megbízható gyűjteményi osztályok, amelyek a C#-gyűjteményeket használó bárki számára ismerősek lesznek. A szolgáltatásoknak hagyományosan külső rendszerekre van szükségük a megbízható állami felügyelethez. Megbízható gyűjtemények esetén az állapotát a számítási kapacitás mellett tárolhatja, és a magas rendelkezésre állású külső üzletekből várhatóan magasabb rendelkezésre állást és megbízhatóságot is igénybe vehet. Ez a modell Emellett javítja a késést, mivel Ön a számítás és az állapot működéséhez szükséges.
 
 ## <a name="what-makes-reliable-services-different"></a>Mi teszi Reliable Services különböző
@@ -52,7 +53,7 @@ A Reliable Services a korábban írt szolgáltatásokból különböznek, mivel 
 
 Az, hogy a szolgáltatás állapota állapotú vagy állapot nélküli-e, Reliable Services adjon meg egy egyszerű életciklust, amely lehetővé teszi a kód gyors csatlakoztatását és az első lépéseket.  Az új szolgáltatás megkezdéséhez két módszert kell megvalósítani:
 
-* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** – ez a módszer, ahol a szolgáltatás meghatározza a használni kívánt kommunikációs verem (eke) t. A kommunikációs verem (például a [webes API](service-fabric-reliable-services-communication-webapi.md)) meghatározza a szolgáltatás figyelő végpontját vagy végpontját (az ügyfelek hogyan érik el a szolgáltatást). Azt is meghatározza, hogy a megjelenő üzenetek hogyan működnek együtt a szolgáltatás kódjával.
+* **CreateServiceReplicaListeners/CreateServiceInstanceListeners** – ez a módszer, ahol a szolgáltatás meghatározza a használni kívánt kommunikációs verem (eke) t. A kommunikációs verem (például a [webes API](./service-fabric-reliable-services-communication-aspnetcore.md)) meghatározza a szolgáltatás figyelő végpontját vagy végpontját (az ügyfelek hogyan érik el a szolgáltatást). Azt is meghatározza, hogy a megjelenő üzenetek hogyan működnek együtt a szolgáltatás kódjával.
 * **RunAsync** – ez a módszer azt adja meg, hogy a szolgáltatás hogyan futtatja az üzleti logikát, és hol indítson el minden olyan háttérben futó feladatot, amelyet a szolgáltatás élettartama során futtatni kell. A megadott lemondási token egy jel, amikor a munkafolyamat leáll. Ha például a szolgáltatásnak üzeneteket kell kihúznia egy megbízható várólistából, és fel kell dolgoznia azokat, akkor ez a feladat.
 
 Ha első alkalommal tanul a megbízható szolgáltatásokkal kapcsolatban, olvassa el a következőt:. Ha a megbízható szolgáltatások életciklusának részletes ismertetését keresi, tekintse meg [Reliable Services életciklus áttekintését](service-fabric-reliable-services-lifecycle.md).
@@ -67,7 +68,7 @@ Az *állapot nélküli szolgáltatások* olyanok, amelyekben a szolgáltatáson 
 
 Vegyünk például egy olyan számológépet, amely nem rendelkezik memóriával, és fogadja az összes feltételt és műveletet egyszerre történő végrehajtásra.
 
-Ebben az esetben a `RunAsync()` szolgáltatás (C#) vagy `runAsync()` (Java) üres, mert nincs olyan háttérbeli feladat-feldolgozás, amelyet a szolgáltatásnak el kell végeznie. A számológép szolgáltatás létrehozásakor egy `ICommunicationListener` (C#) vagy `CommunicationListener` (Java) (például [webes API](service-fabric-reliable-services-communication-webapi.md)) értéket ad vissza, amely egy figyelő végpontot nyit meg egy bizonyos porton. Ez a figyelő végpont a számológép nyilvános API-ját definiáló különböző számítási módszerekhez (például: "Add (N1, N2)") csatlakoztatható.
+Ebben az esetben a `RunAsync()` szolgáltatás (C#) vagy `runAsync()` (Java) üres, mert nincs olyan háttérbeli feladat-feldolgozás, amelyet a szolgáltatásnak el kell végeznie. A számológép szolgáltatás létrehozásakor egy `ICommunicationListener` (C#) vagy `CommunicationListener` (Java) (például [webes API](./service-fabric-reliable-services-communication-aspnetcore.md)) értéket ad vissza, amely egy figyelő végpontot nyit meg egy bizonyos porton. Ez a figyelő végpont a számológép nyilvános API-ját definiáló különböző számítási módszerekhez (például: "Add (N1, N2)") csatlakoztatható.
 
 Amikor egy ügyfél hívást kezdeményez, a rendszer meghívja a megfelelő metódust, és a számológép szolgáltatás végrehajtja a műveleteket a megadott adatokon, és visszaadja az eredményt. Nem tárol semmilyen állapotot.
 
@@ -103,7 +104,7 @@ Vegye fontolóra Reliable Services API-kat, ha:
 * Az alkalmazásnak meg kell őriznie a változási előzményeket az egysége számára.
 * Harmadik féltől származó, egyéni állami szolgáltatókat szeretne fejleszteni vagy használni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Reliable Services rövid útmutató](service-fabric-reliable-services-quick-start.md)
 * [Megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md)

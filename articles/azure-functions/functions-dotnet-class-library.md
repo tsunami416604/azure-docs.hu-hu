@@ -1,13 +1,14 @@
 ---
 title: Azure Functions C# – fejlesztői dokumentáció
 description: Ismerje meg, hogyan fejlesztheti Azure Functions a C# használatával.
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/12/2018
-ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 038c1db2d4bb4d8bd80801d36cf5feec1905bbc1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697187"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254367"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# – fejlesztői dokumentáció
 
@@ -137,7 +138,7 @@ A létrehozási folyamat létrehoz egy *function.js* fájlt a Build mappában ta
 
 Ennek a fájlnak a célja, hogy információt szolgáltasson a méretezési vezérlő számára [a használati tervre vonatkozó döntések skálázásához](functions-scale.md#how-the-consumption-and-premium-plans-work). Emiatt a fájl csak trigger-információkkal, nem bemeneti vagy kimeneti kötésekkel rendelkezik.
 
-A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdonságot, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function.jsa* konfiguráción. Íme egy példa:
+A fájlhoz generált *function.js* tartalmaz egy `configurationSource` tulajdonságot, amely azt jelzi, hogy a futtatókörnyezet .net-attribútumokat használ a kötésekhez ahelyett, hogy *function.jsa* konfiguráción. Bemutatunk egy példát:
 
 ```json
 {
@@ -406,7 +407,7 @@ public static class IBinderExampleMultipleAttributes
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)

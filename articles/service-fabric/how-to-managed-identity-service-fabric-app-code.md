@@ -3,12 +3,12 @@ title: Felügyelt identitás használata alkalmazással
 description: Felügyelt identitások használata az Azure Service Fabric alkalmazás kódjában az Azure-szolgáltatások eléréséhez.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461565"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253643"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Service Fabric alkalmazás felügyelt identitásának kihasználása az Azure-szolgáltatások eléréséhez
 
@@ -345,7 +345,7 @@ Minta hiba:
 
 A következő lista a felügyelt identitásokra jellemző jellemző Service Fabric hibák listáját tartalmazza:
 
-| Code | Üzenet | Leírás | 
+| Kód | Üzenet | Leírás | 
 | ----------- | ----- | ----------------- |
 | SecretHeaderNotFound | A titkos kód nem található a kérelem fejlécében. | A hitelesítési kódot nem adta meg a kérelem. | 
 | ManagedIdentityNotFound | Nem található felügyelt identitás a megadott alkalmazás-gazdagéphez. | Az alkalmazás nem rendelkezik identitással, vagy a hitelesítési kód ismeretlen. |
@@ -371,9 +371,9 @@ Azt javasoljuk, hogy a sávszélesség-szabályozás miatti kérelmeket az aláb
 | 5 | Várjon 16 másodpercet, és próbálkozzon újra |
 
 ## <a name="resource-ids-for-azure-services"></a>Az Azure-szolgáltatások erőforrás-azonosítói
-Tekintse meg az Azure ad- [hitelesítést támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-msi.md) az Azure ad-t támogató erőforrások listáját, valamint a hozzájuk tartozó erőforrás-azonosítókat.
+Tekintse meg az Azure ad- [hitelesítést támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) az Azure ad-t támogató erőforrások listáját, valamint a hozzájuk tartozó erőforrás-azonosítókat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure Service Fabric-alkalmazás üzembe helyezése rendszerhez rendelt felügyelt identitással](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazások hozzáférésének biztosítása más Azure-erőforrásokhoz](./how-to-grant-access-other-resources.md)

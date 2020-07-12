@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 7/7/2020
-ms.openlocfilehash: c1f4945cda9db0f99799ea072737d4524f04e481
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 183ece0d82431a8a961902d75d2fc24b013bc97b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076572"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252266"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mariadb"></a>Az üzletmenet folytonosságának megismerése Azure Database for MariaDB
 
@@ -23,7 +23,7 @@ A Azure Database for MariaDB olyan üzletmenet-folytonossági funkciókat biztos
 
 A következő táblázat összehasonlítja a rendelkezésre álló funkciók ERT-és RPO:
 
-| **Képesség** | **Alapszintű** | **általános célú** | **Memóriaoptimalizált** |
+| **Képesség** | **Basic** | **általános célú** | **Memóriaoptimalizált** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Időponthoz kötött visszaállítás biztonsági másolatból | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok |
 | Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | Nem támogatott | ERT < 12 h<br/>RPO < 1 óra | ERT < 12 h<br/>RPO < 1 óra |
@@ -52,7 +52,11 @@ A másik lehetőség a Azure Database for MariaDB geo-visszaállítási funkció
 
 Az üzleti folytonosság és a vész-helyreállítás megtervezése érdekében a tartományok közötti olvasási replikákat is használhatja. Az olvasási replikák aszinkron módon frissülnek a MariaDB bináris naplójának replikációs technológiájának használatával. További információk az olvasási replikák, az elérhető régiók és a feladatátvétel az [olvasási replikák fogalmai című cikkben](concepts-read-replicas.md)olvashatók. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="faq"></a>GYIK
+### <a name="where-does-azure-database-for-mariadb-store-customer-data"></a>Hol tárolja Azure Database for MariaDB az ügyféladatokat?
+Alapértelmezés szerint a Azure Database for MariaDB nem helyezi át vagy nem tárolja az ügyféladatokat a-ben üzembe helyezett régióból. Az ügyfelek azonban igény szerint engedélyezhetik a [geo-redundáns biztonsági mentéseket](concepts-backup.md#backup-redundancy-options) , vagy létrehozhatnak [régiók közötti olvasási replikát](concepts-read-replicas.md#cross-region-replication) az adattároláshoz egy másik régióban.
+
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Database for MariaDB automatikus biztonsági mentéséről](concepts-backup.md).
 - Ismerje meg, hogyan lehet visszaállítani [a Azure Portal](howto-restore-server-portal.md) vagy [Az Azure CLI](howto-restore-server-cli.md)használatával.

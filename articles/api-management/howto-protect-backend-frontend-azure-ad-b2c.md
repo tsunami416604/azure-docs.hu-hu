@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60177dd00dc6326aae4cfdc0b658c85f2635f8c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202876"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253694"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Az OAuth 2,0, a Azure Active Directory B2C és az Azure API Management által védett SPA-háttérrendszer
 
@@ -457,8 +457,8 @@ A CIDR formázott blokkokat kell hozzáadnia az IP-korlátozások panelhez. Ha e
 ## <a name="and-were-done"></a>És készen vagyunk
 A fenti lépések módosíthatók és szerkeszthetők úgy, hogy a Azure AD B2C számos különböző felhasználási igényét lehetővé tegyék a API Management.
 
-## <a name="next-steps"></a>További lépések
-* További információ a [Azure Active Directory és a OAuth 2.0-s](../active-directory/develop/authentication-scenarios.md)verzióról.
+## <a name="next-steps"></a>Következő lépések
+* További információ a [Azure Active Directory és a OAuth 2.0-s](../active-directory/develop/authentication-vs-authorization.md)verzióról.
 * További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.
 * A háttér-szolgáltatás biztonságossá tételének egyéb módjaival kapcsolatban lásd: [kölcsönös Tanúsítványos hitelesítés](api-management-howto-mutual-certificates.md).
 * [Hozzon létre egy API Management Service-példányt](get-started-create-service-instance.md).

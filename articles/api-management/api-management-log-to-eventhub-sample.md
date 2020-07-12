@@ -15,16 +15,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ace0ef2660a44af41d8942cfe4d225bc1a03228e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75442526"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86254588"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Az API-k monitorozása az Azure API Management, a Event Hubs és a Moesif segítségével
 A [API Management szolgáltatás](api-management-key-concepts.md) számos lehetőséget kínál a http API-nak küldött HTTP-kérések feldolgozásának javítására. Azonban a kérések és válaszok megléte átmeneti jellegű. A rendszer elvégzi a kérést, és a API Management szolgáltatáson keresztül áramlik a háttérbeli API-ra. Az API feldolgozza a kérést, és a válasz visszaáramlik az API-fogyasztó felé. A API Management szolgáltatás megtart néhány fontos statisztikát az API-król a Azure Portal irányítópulton való megjelenítéshez, de ezen túlmenően a részletek eltűnnek.
 
-Ha a API Management szolgáltatásban a eventhub szabályzatot használja, az adatokat a kérelemből és válaszból is elküldheti egy [Azure Event hub](../event-hubs/event-hubs-what-is-event-hubs.md)-ra. Számos oka lehet annak, hogy az API-khoz küldött HTTP-üzenetekről szeretne eseményeket előállítani. Néhány példa a frissítések naplózási nyomvonalára, a használati elemzésekre, a kivételek riasztására és a harmadik féltől származó integrációra.
+Ha a API Management szolgáltatásban a eventhub szabályzatot használja, az adatokat a kérelemből és válaszból is elküldheti egy [Azure Event hub](../event-hubs/event-hubs-about.md)-ra. Számos oka lehet annak, hogy az API-khoz küldött HTTP-üzenetekről szeretne eseményeket előállítani. Néhány példa a frissítések naplózási nyomvonalára, a használati elemzésekre, a kivételek riasztására és a harmadik féltől származó integrációra.
 
 Ez a cikk bemutatja, hogyan rögzítheti a teljes HTTP-kérést és válaszüzenetet, elküldheti azt egy Event hub-nak, majd továbbíthatja az üzenetet egy olyan külső szolgáltatásnak, amely HTTP-naplózási és figyelési szolgáltatásokat biztosít.
 
@@ -47,7 +48,7 @@ Az Event hub egyszerű sztringként fogadja el az eseményeket. Ennek a karakter
 
 Egy másik lehetőség az `application/http` adathordozó típusának használata az [RFC 7230](https://tools.ietf.org/html/rfc7230)http-specifikációban leírtak szerint. Ez az adathordozó-típus ugyanazt a formátumot használja, mint amellyel ténylegesen HTTP-üzeneteket küld a hálózaton keresztül, de a teljes üzenet egy másik HTTP-kérelem törzsében is elhelyezhető. Ebben az esetben a törzset fogjuk használni az üzenetünk Event Hubs való elküldéséhez. Kényelmesen, a [Microsoft ASP.net web API 2,2-es verziójának](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) olyan elemzője létezik, amely elemezni tudja ezt a formátumot, és átalakítja a natív `HttpRequestMessage` és `HttpResponseMessage` objektumokra.
 
-Ahhoz, hogy létre tudja hozni ezt az üzenetet, ki kell használnia a C#-alapú [házirend-kifejezések](/azure/api-management/api-management-policy-expressions) előnyeit az Azure API Managementban. Itt látható a szabályzat, amely HTTP-kérést küld az Azure Event Hubsnak.
+Ahhoz, hogy létre tudja hozni ezt az üzenetet, ki kell használnia a C#-alapú [házirend-kifejezések](./api-management-policy-expressions.md) előnyeit az Azure API Managementban. Itt látható a szabályzat, amely HTTP-kérést küld az Azure Event Hubsnak.
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -296,7 +297,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 A a `MoesifHttpMessageProcessor` [MOESIF C# API-kódtárat](https://www.moesif.com/docs/api?csharp#events) használ, amely megkönnyíti a http-események adatküldését a szolgáltatásba. Ahhoz, hogy HTTP-alapú adatküldést küldhessen a Moesif Collector API-nak, szüksége lesz egy fiókra és egy alkalmazás-azonosítóra. A Moesif-alkalmazás azonosítójának létrehozásához hozzon létre egy fiókot a [Moesif webhelyén](https://www.moesif.com) , és nyissa meg a _jobb felső menü_  ->  _alkalmazás-telepítőt_.
 
 ## <a name="complete-sample"></a>Teljes minta
-A mintához tartozó [forráskód](https://github.com/dgilling/ApimEventProcessor) és tesztek a githubon találhatók. A minta futtatásához szüksége van egy [API Management szolgáltatásra](get-started-create-service-instance.md), [egy csatlakoztatott esemény-hubhoz](api-management-howto-log-event-hubs.md)és egy [Storage-fiókra](../storage/common/storage-create-storage-account.md) .   
+A mintához tartozó [forráskód](https://github.com/dgilling/ApimEventProcessor) és tesztek a githubon találhatók. A minta futtatásához szüksége van egy [API Management szolgáltatásra](get-started-create-service-instance.md), [egy csatlakoztatott esemény-hubhoz](api-management-howto-log-event-hubs.md)és egy [Storage-fiókra](../storage/common/storage-account-create.md) .   
 
 A minta csak egy egyszerű konzolos alkalmazás, amely az Event hub-ból érkező eseményeket figyeli, átalakítja őket egy Moesif `EventRequestModel` és `EventResponseModel` objektummá, majd továbbítja őket a MOESIF Collector API-hoz.
 
@@ -304,15 +305,15 @@ A következő animált ábrán megtekintheti a fejlesztői portálon egy API-ra 
 
 ![A kérelem Runscope való továbbításának bemutatása](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Azure API Management szolgáltatás ideális helyet biztosít az API-khoz érkező és onnan érkező HTTP-forgalom rögzítéséhez. Az Azure Event Hubs egy rugalmasan méretezhető, alacsony díjszabású megoldás a forgalom rögzítésére és a másodlagos feldolgozási rendszerekbe való etetésére a naplózás, figyelés és más kifinomult elemzések céljából. A harmadik féltől származó forgalom figyelési rendszereihez (például a Moesif) való csatlakozás néhány tucat sornyi kód.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az Azure Event Hubs
   * [Ismerkedés az Azure Event Hubs](../event-hubs/event-hubs-c-getstarted-send.md)
-  * [Üzenetek fogadása az EventProcessorHost szolgáltatással](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
+  * [Üzenetek fogadása az EventProcessorHost szolgáltatással](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
   * [Event Hubs programozási útmutató](../event-hubs/event-hubs-programming-guide.md)
 * További információ a API Management és a Event Hubs integrációról
   * [Események naplózása az Azure Event Hubsba az Azure-ban API Management](api-management-howto-log-event-hubs.md)
-  * [Naplózó entitás referenciája](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [eventhub házirend-hivatkozás](/azure/api-management/api-management-advanced-policies#log-to-eventhub)
+  * [Naplózó entitás referenciája](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
+  * [eventhub házirend-hivatkozás](./api-management-advanced-policies.md#log-to-eventhub)

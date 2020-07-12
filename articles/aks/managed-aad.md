@@ -7,12 +7,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/08/2020
 ms.author: thomasge
-ms.openlocfilehash: 9cacd2454dc987f7d507bb4b677e742f0be0d391
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b30c5b0e81f4748d5e94c05d016be83163c1e78e
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166501"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251127"
 ---
 # <a name="aks-managed-azure-active-directory-integration-preview"></a>AK által felügyelt Azure Active Directory integráció (előzetes verzió)
 
@@ -71,13 +71,13 @@ kubectl version --client
 az feature register --name AAD-V2 --namespace Microsoft.ContainerService
 ```
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg az állapot **regisztrálva**jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list) parancs használatával tekintheti meg:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
+Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) paranccsal:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -131,7 +131,7 @@ A fürt néhány percen belül létrejön.
 
 ## <a name="access-an-azure-ad-enabled-cluster"></a>Hozzáférés egy Azure AD-kompatibilis fürthöz
 
-A következő lépések elvégzéséhez szüksége lesz az [Azure Kubernetes Service cluster felhasználói](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role) beépített szerepkörre.
+A következő lépések elvégzéséhez szüksége lesz az [Azure Kubernetes Service cluster felhasználói](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) beépített szerepkörre.
 
 A fürt eléréséhez szükséges felhasználói hitelesítő adatok beszerzése:
  
@@ -150,7 +150,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-[Szerepköralapú Access Control (RBAC)](https://docs.microsoft.com/azure/aks/azure-ad-rbac) konfigurálása a fürtökhöz tartozó további biztonsági csoportok konfigurálásához.
+[Szerepköralapú Access Control (RBAC)](./azure-ad-rbac.md) konfigurálása a fürtökhöz tartozó további biztonsági csoportok konfigurálásához.
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>Az Azure AD hozzáférési problémáinak elhárítása
 
@@ -159,7 +159,7 @@ aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 
 Ha véglegesen letiltja azt, hogy nem fér hozzá a fürthöz hozzáféréssel rendelkező érvényes Azure AD-csoporthoz, akkor továbbra is beszerezheti a rendszergazdai hitelesítő adatokat a fürt közvetlen eléréséhez.
 
-A lépések végrehajtásához hozzá kell férnie az [Azure Kubernetes szolgáltatás-fürt rendszergazdai](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-admin-role) beépített szerepköréhez.
+A lépések végrehajtásához hozzá kell férnie az [Azure Kubernetes szolgáltatás-fürt rendszergazdai](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-admin-role) beépített szerepköréhez.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster --admin
@@ -169,7 +169,7 @@ az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster 
 
 Vannak olyan nem interaktív forgatókönyvek, mint például a folyamatos integrációs folyamatok, amelyek jelenleg nem érhetők el a kubectl. [`kubelogin`](https://github.com/Azure/kubelogin)A paranccsal hozzáférhet a fürthöz nem interaktív egyszerű szolgáltatás-bejelentkezéssel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók az [Azure RBAC-integrációról a Kubernetes-hitelesítéshez][azure-rbac-integration]
 * Ismerje meg az [Azure ad-integrációt a KUBERNETES RBAC][azure-ad-rbac].
@@ -180,7 +180,7 @@ Vannak olyan nem interaktív forgatókönyvek, mint például a folyamatos integ
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
-[aks-arm-template]: https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters
+[aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
 
 <!-- LINKS - Internal -->
 [azure-rbac-integration]: manage-azure-rbac.md
@@ -195,4 +195,3 @@ Vannak olyan nem interaktív forgatókönyvek, mint például a folyamatos integ
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [azure-ad-cli]: azure-ad-integration-cli.md
-

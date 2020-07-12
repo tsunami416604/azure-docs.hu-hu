@@ -5,11 +5,12 @@ author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: eef63d7a2c8a4b15938dfbffd7db5f9d1b22d426
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2942c015ba9265d7f2c597ced2321a7789c28576
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75426635"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253389"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Szolgáltatás-távelérés a javában Reliable Services
 > [!div class="op_single_selector"]
@@ -82,8 +83,8 @@ A távelérési keretrendszer a szolgáltatásban a-ügyfél felé irányuló ki
 A ServiceProxy létrehozása egy könnyű művelet, így tetszőleges számú igényt hozhat létre. A Service proxy példányai a szükséges ideig újra felhasználhatók. Ha egy távoli eljáráshívás kivételt jelez, továbbra is használhatja ugyanazt a proxy-példányt. Minden ServiceProxy tartalmaz egy kommunikációs ügyfelet, amely üzenetek küldésére szolgál a vezetékes hálózaton keresztül. A távoli hívások meghívása során a rendszer belső ellenőrzéseket végez annak meghatározására, hogy a kommunikációs ügyfél érvényes-e. Az ellenőrzések eredményei alapján a kommunikációs ügyfél újból létrejön, ha szükséges. Ezért ha kivétel történik, nem kell újból létrehoznia `ServiceProxy` .
 
 ### <a name="serviceproxyfactory-lifetime"></a>ServiceProxyFactory élettartama
-A [FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) egy olyan gyár, amely különböző távelérési felületek számára hoz létre proxyt. Ha API-t használ `ServiceProxyBase.create` a proxy létrehozásához, a Framework létrehoz egy-t `FabricServiceProxyFactory` .
-A [ServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) tulajdonságainak felülbírálásához hasznos lehet manuálisan létrehozni.
+A [FabricServiceProxyFactory](/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) egy olyan gyár, amely különböző távelérési felületek számára hoz létre proxyt. Ha API-t használ `ServiceProxyBase.create` a proxy létrehozásához, a Framework létrehoz egy-t `FabricServiceProxyFactory` .
+A [ServiceRemotingClientFactory](/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory) tulajdonságainak felülbírálásához hasznos lehet manuálisan létrehozni.
 A gyár költséges művelet. `FabricServiceProxyFactory`megőrzi a kommunikációs ügyfelek gyorsítótárát.
 Az ajánlott eljárás a gyorsítótárazás `FabricServiceProxyFactory` a lehető leghosszabbra.
 
@@ -93,8 +94,8 @@ A Service API által kiváltott összes távoli kivételt visszaküldi az ügyf�
 A ServiceProxy kezeli az összes feladatátvételi kivételt a számára létrehozott szolgáltatási partícióhoz. Újra feloldja a végpontokat, ha vannak feladatátvételi kivételek (nem átmeneti kivételek), és újrapróbálkozik a hívást a megfelelő végponttal. A feladatátvételi kivételek újrapróbálkozások száma határozatlan.
 TransientExceptions esetén csak újra próbálkozik a hívással.
 
-Az alapértelmezett újrapróbálkozási paramétereket a [OperationRetrySettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings)biztosítanak.
+Az alapértelmezett újrapróbálkozási paramétereket a [OperationRetrySettings](/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings)biztosítanak.
 Ezeket az értékeket úgy is konfigurálhatja, hogy átadja a OperationRetrySettings objektumot a ServiceProxyFactory konstruktornak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Reliable Services kommunikációjának biztonságossá tétele](service-fabric-reliable-services-secure-communication-java.md)

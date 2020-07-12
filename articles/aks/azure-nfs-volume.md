@@ -7,11 +7,12 @@ author: ozboms
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 7db3f806df88e5b23012e97ba5c2f14ca65b2508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e817d572a98ffb8135adf58d13f50ccacbc8746
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80803466"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251994"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>NFS-(hálózati fájlrendszer) Linux Server-kötet manuális létrehozása és használata az Azure Kubernetes szolgáltatással (ak)
 A tárolók közötti adatmegosztás gyakran a Container-alapú szolgáltatások és alkalmazások szükséges összetevője. Általában különböző hüvelyek vannak, amelyekhez ugyanahhoz az információhoz kell hozzáférni egy külső állandó köteten.    
@@ -154,16 +155,16 @@ ls -l
 A teljes körű bemutatóhoz, illetve az NFS-kiszolgáló beállításával kapcsolatban a részletes oktatóanyagban talál további útmutatót:
   - [NFS-oktatóanyag][nfs-tutorial]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 
 <!-- LINKS - external -->
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/
-[linux-create]: https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm
+[linux-create]: ../virtual-machines/linux/tutorial-manage-vm.md
 [nfs-tutorial]: https://help.ubuntu.com/community/SettingUpNFSHowTo#Pre-Installation_Setup
-[aks-virtual-network]: https://docs.microsoft.com/azure/aks/configure-kubenet#create-an-aks-cluster-in-the-virtual-network
-[peer-virtual-networks]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal
+[aks-virtual-network]: ./configure-kubenet.md#create-an-aks-cluster-in-the-virtual-network
+[peer-virtual-networks]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

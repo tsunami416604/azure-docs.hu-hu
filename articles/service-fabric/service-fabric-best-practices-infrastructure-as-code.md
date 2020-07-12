@@ -5,11 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75551828"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253677"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktúra mint kód
 
@@ -43,7 +44,7 @@ New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -
 
 ## <a name="azure-service-fabric-resources"></a>Azure Service Fabric-erőforrások
 
-Az alkalmazásait és szolgáltatásait Azure Resource Manager használatával telepítheti a Service Fabric-fürtre. A részletekért lásd: [alkalmazások és szolgáltatások kezelése Azure Resource Manager erőforrásként](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-arm-resource) . A következőkben az ajánlott eljárások Service Fabric a Resource Manager-sablonok erőforrásaiba felvenni kívánt alkalmazás-specifikus erőforrások.
+Az alkalmazásait és szolgáltatásait Azure Resource Manager használatával telepítheti a Service Fabric-fürtre. A részletekért lásd: [alkalmazások és szolgáltatások kezelése Azure Resource Manager erőforrásként](./service-fabric-application-arm-resource.md) . A következőkben az ajánlott eljárások Service Fabric a Resource Manager-sablonok erőforrásaiba felvenni kívánt alkalmazás-specifikus erőforrások.
 
 ```json
 {
@@ -72,7 +73,7 @@ Az alkalmazásait és szolgáltatásait Azure Resource Manager használatával t
 }
 ```
 
-Az alkalmazás Azure Resource Manager használatával történő üzembe helyezéséhez először [létre kell hoznia egy sfpkg](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg) Service Fabric alkalmazáscsomag. A következő Python-szkript egy példa arra, hogyan hozhat létre sfpkg:
+Az alkalmazás Azure Resource Manager használatával történő üzembe helyezéséhez először [létre kell hoznia egy sfpkg](./service-fabric-package-apps.md#create-an-sfpkg) Service Fabric alkalmazáscsomag. A következő Python-szkript egy példa arra, hogyan hozhat létre sfpkg:
 
 ```python
 # Create SFPKG that needs to be uploaded to Azure Storage Blob Container
@@ -90,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Azure-beli virtuális gép operációs rendszerének automatikus frissítési konfigurációja 
-A virtuális gépek frissítése egy felhasználó által kezdeményezett művelet, ezért javasolt a [virtuálisgép-méretezési csoport automatikus verziófrissítése](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) az Azure Service Fabric-fürtökön, amelyeken a javítások kezelése történik. A patch-előkészítési alkalmazás egy alternatív megoldás, amely az Azure-on kívüli üzemeltetéshez készült, bár a POA az Azure-ban is használható, és az Azure-ban a szolgáltatási terv általános oka az, hogy a virtuális gép operációs rendszerének automatikus frissítése javasolt a cselekvési terv keretében. A következő a számítási virtuálisgép-méretezési csoport Resource Manager-sablonjának tulajdonságai az automatikus operációs rendszer frissítésének engedélyezéséhez:
+A virtuális gépek frissítése egy felhasználó által kezdeményezett művelet, ezért javasolt a [virtuálisgép-méretezési csoport automatikus verziófrissítése](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md) az Azure Service Fabric-fürtökön, amelyeken a javítások kezelése történik. A patch-előkészítési alkalmazás egy alternatív megoldás, amely az Azure-on kívüli üzemeltetéshez készült, bár a POA az Azure-ban is használható, és az Azure-ban a szolgáltatási terv általános oka az, hogy a virtuális gép operációs rendszerének automatikus frissítése javasolt a cselekvési terv keretében. A következő a számítási virtuálisgép-méretezési csoport Resource Manager-sablonjának tulajdonságai az automatikus operációs rendszer frissítésének engedélyezéséhez:
 
 ```json
 "upgradePolicy": {
@@ -130,7 +131,7 @@ Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
 Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Fürt létrehozása a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric Windows Server-fürt létrehozása](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * Fürt létrehozása virtuális gépeken vagy Linuxon futó számítógépeken: [Linux-fürt létrehozása](service-fabric-tutorial-create-vnet-and-linux-cluster.md)

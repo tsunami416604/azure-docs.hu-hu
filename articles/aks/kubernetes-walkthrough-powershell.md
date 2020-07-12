@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogy
 services: container-service
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 74a71bdc4c9aef9a6964f0c9120a902262a50526
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: e786b64554b5fbaf5bb7051e09daca8fb1eaf049
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207141"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251438"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Gyors útmutató: Azure Kubernetes Service-fürt üzembe helyezése a PowerShell használatával
 
@@ -37,7 +37,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Az [Azure-erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) olyan logikai csoport, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup][new-azresourcegroup] parancsmag használatával.
+Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) olyan logikai csoport, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup][new-azresourcegroup] parancsmag használatával.
 
 A következő példában létrehozunk egy **myResourceGroup** nevű erőforráscsoportot a **eastus** régióban.
 
@@ -57,12 +57,12 @@ ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 ## <a name="create-aks-cluster"></a>AKS-fürt létrehozása
 
-Az `ssh-keygen` SSH-kulcspár létrehozásához használja a parancssori segédprogramot. További részletekért lásd a [gyors lépések: SSH nyilvános magánhálózati kulcspár létrehozása és használata az Azure-ban linuxos virtuális gépekhez](/azure/virtual-machines/linux/mac-create-ssh-keys)című témakört.
+Az `ssh-keygen` SSH-kulcspár létrehozásához használja a parancssori segédprogramot. További részletekért lásd a [gyors lépések: SSH nyilvános magánhálózati kulcspár létrehozása és használata az Azure-ban linuxos virtuális gépekhez](../virtual-machines/linux/mac-create-ssh-keys.md)című témakört.
 
 A [New-AzAks][new-azaks] parancsmag használatával hozzon létre egy AK-fürtöt. A következő példa egy **myAKSCluster** nevű fürtöt hoz létre egy csomóponttal. Alapértelmezés szerint a tárolók Azure Monitor is engedélyezve van. Ez több percet is igénybe vehet.
 
 > [!NOTE]
-> AK-fürt létrehozásakor a rendszer automatikusan létrehoz egy második erőforráscsoportot az AK-erőforrások tárolásához. További információ: [miért jön létre két erőforráscsoport az AK-val?](https://docs.microsoft.com/azure/aks/faq#why-are-two-resource-groups-created-with-aks)
+> AK-fürt létrehozásakor a rendszer automatikusan létrehoz egy második erőforráscsoportot az AK-erőforrások tárolásához. További információ: [miért jön létre két erőforráscsoport az AK-val?](./faq.md#why-are-two-resource-groups-created-with-aks)
 
 ```azurepowershell-interactive
 New-AzAks -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
@@ -97,7 +97,7 @@ NAME                       STATUS   ROLES   AGE     VERSION
 aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.15.10
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 A Kubernetes jegyzékfájl a fürt kívánt állapotát határozza meg, például a tároló lemezképeit. Ebben a rövid útmutatóban egy jegyzékfájlt használunk az Azure Vote-alkalmazás futtatásához szükséges összes objektum létrehozásához. Ez a jegyzékfájl két [Kubernetes-telepítést][kubernetes-deployment] tartalmaz – egyet az Azure-beli szavazás Python-alkalmazásaihoz, a másikat pedig egy Redis-példányhoz. Két [Kubernetes-szolgáltatás is létrehozva – egy belső szolgáltatás a Redis-példányhoz, és egy külső szolgáltatás, amely hozzáfér az Azure vote alkalmazáshoz az internetről.
 
@@ -254,7 +254,7 @@ Ebben a rövid útmutatóban előre létrehozott tároló-lemezképeket használ
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe. [A Kubernetes webes irányítópultját is elérheti][kubernetes-dashboard] az AK-fürthöz.
 
@@ -266,7 +266,7 @@ Az AKS-sel kapcsolatos további információkért és a kódtól az üzembe hely
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
 

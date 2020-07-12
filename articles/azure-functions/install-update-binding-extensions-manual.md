@@ -1,13 +1,14 @@
 ---
 title: Azure Functions kötési bővítmények manuális telepítése vagy frissítése
 description: Megtudhatja, hogyan telepíthet vagy frissíthet Azure Functions kötési bővítményeket a telepített functions-alkalmazásokhoz.
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: e8716f691a5d19ddac7fece47c423e1f7787b9db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0705e62adc4acb26797b937a6dd8c684a598ebc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75768860"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252623"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Azure Functions kötési bővítmények manuális telepítése vagy frissítése a portálról
 
@@ -39,7 +40,7 @@ A bővítmények a portálról történő manuális telepítéséhez és frissí
 
 1. A portál **Áttekintés** lapján kattintson a **Start** gombra a Function alkalmazás újraindításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

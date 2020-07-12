@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 2e9a50553a12c57c0043c7f2924245f6a907242a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 095bc5594cf9b6eaf0df7929ea83c25a401793e2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83825958"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86252113"
 ---
 # <a name="authentication-vs-authorization"></a>Hitelesítés és engedélyezés
 
@@ -38,7 +38,7 @@ Ahelyett, hogy olyan alkalmazásokat hozna létre, amelyek mindegyike megtartja 
 
 Azure Active Directory (Azure AD) egy központi identitás-szolgáltató a felhőben. A hitelesítés és az engedélyezés delegálása olyan forgatókönyveket tesz lehetővé, mint például a feltételes hozzáférési szabályzatok, amelyek megkövetelik, hogy a felhasználó egy adott helyen legyen, a [többtényezős hitelesítés](../authentication/concept-mfa-howitworks.md) használata (más néven kétfaktoros hitelesítés vagy 2FA), valamint a felhasználó egyszeri bejelentkezésének engedélyezése, majd automatikusan bejelentkezve az összes olyan webalkalmazásba, amely azonos központi címtárral rendelkezik. Ez a funkció **egyszeri bejelentkezésre (SSO)** hivatkozik.
 
-A Microsoft Identity platform leegyszerűsíti az alkalmazások fejlesztői számára az engedélyezést és a hitelesítést azáltal, hogy szolgáltatásként szolgáltatja a szolgáltatást, és támogatja az iparági szabványnak megfelelő protokollokat, például a OAuth 2,0 és az OpenID Connectet, valamint a különböző platformokhoz készült nyílt forráskódú kódtárakat, amelyek segítségével gyorsan elkezdheti a kódolást Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek az összes Microsoft-identitást bejelentkeznek, a [Microsoft Graph](https://developer.microsoft.com/graph/), más Microsoft API-k vagy a fejlesztők által készített API-k meghívására. További információ: [a Microsoft Identity platform fejlődése](about-microsoft-identity-platform.md).
+A Microsoft Identity platform leegyszerűsíti az alkalmazások fejlesztői számára az engedélyezést és a hitelesítést azáltal, hogy szolgáltatásként szolgáltatja a szolgáltatást, és támogatja az iparági szabványnak megfelelő protokollokat, például a OAuth 2,0 és az OpenID Connectet, valamint a különböző platformokhoz készült nyílt forráskódú kódtárakat, amelyek segítségével gyorsan elkezdheti a kódolást Lehetővé teszi a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek az összes Microsoft-identitást bejelentkeznek, a [Microsoft Graph](https://developer.microsoft.com/graph/), más Microsoft API-k vagy a fejlesztők által készített API-k meghívására.
 
 A következő a Microsoft Identity platform által használt különböző protokollok rövid összevetése:
 

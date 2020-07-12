@@ -4,11 +4,12 @@ description: Ismerje meg a Kubernetes alapszintű fürt-és munkaterhelés-össz
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 9b54bdbfcbc37d3863d4e6b86ae6fe5522bb5be9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fe687ddd63ee85faec2d1aa4c02fa2636a3058f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336633"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251858"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) Kubernetes alapvető fogalmai
 
@@ -37,7 +38,7 @@ A Kubernetes-fürtök két összetevőhöz vannak osztva:
 
 ## <a name="control-plane"></a>Vezérlősík
 
-Ha AK-fürtöt hoz létre, a rendszer automatikusan létrehozza és konfigurálja a vezérlő síkot. Ez a vezérlési sík a felhasználótól kivont felügyelt Azure-erőforrásként van megadva. A vezérlő síkja nem jár díjmentesen, csak az AK-fürt részét képező csomópontok.
+Ha AK-fürtöt hoz létre, a rendszer automatikusan létrehozza és konfigurálja a vezérlő síkot. Ez a vezérlési sík a felhasználótól kivont felügyelt Azure-erőforrásként van megadva. A vezérlő síkja nem jár díjmentesen, csak az AK-fürt részét képező csomópontok. A vezérlő síkja és erőforrásai csak abban a régióban találhatók, ahol létrehozta a fürtöt.
 
 A vezérlő síkja a következő alapvető Kubernetes összetevőket tartalmazza:
 
@@ -48,7 +49,7 @@ A vezérlő síkja a következő alapvető Kubernetes összetevőket tartalmazza
 
 Az AK egy egybérlős vezérlési gépet biztosít dedikált API-kiszolgálóval, ütemező szolgáltatással stb. Megadhatja a csomópontok számát és méretét, és az Azure platform konfigurálja a vezérlési sík és a csomópontok közötti biztonságos kommunikációt. A vezérlési síkon való interakció Kubernetes API-kon keresztül történik, például `kubectl` a Kubernetes-irányítópulton.
 
-Ez a felügyelt vezérlési sík azt jelenti, hogy nem kell olyan összetevőket konfigurálnia, mint például egy magasan elérhető *etcd* -tároló, de ez azt is jelenti, hogy közvetlenül nem férhet hozzá a vezérlési síkon. A Kubernetes-re való frissítés az Azure CLI-n vagy Azure Portalon keresztül történik, amely frissíti a vezérlő síkot, majd a csomópontokat. A lehetséges problémák elhárításához tekintse át a vezérlési sík naplóit Azure Monitor naplókon keresztül.
+Ez a felügyelt vezérlési sík azt jelenti, hogy nem kell olyan összetevőket konfigurálnia, mint például egy magasan elérhető *etcd* -tároló, de ez azt is jelenti, hogy nem fér hozzá közvetlenül a vezérlő síkja. A Kubernetes-re való frissítés az Azure CLI-n vagy Azure Portalon keresztül történik, amely frissíti a vezérlő síkot, majd a csomópontokat. A lehetséges problémák elhárításához tekintse át a vezérlési sík naplóit Azure Monitor naplókon keresztül.
 
 Ha a vezérlési síkot egy bizonyos módon kell konfigurálnia, vagy közvetlen hozzáférésre van szüksége, a saját Kubernetes-fürtöt az [AK-motor][aks-engine]használatával is üzembe helyezheti.
 
@@ -72,9 +73,9 @@ Ha egy másik gazdagép operációs rendszert, tároló-futtatókörnyezetet vag
 
 ### <a name="resource-reservations"></a>Erőforrás-foglalások
 
-A csomópont-erőforrásokat az AK használja, hogy a Node függvényt a fürt részeként végezze el. Ez eltérést okozhat a csomópont összes erőforrása és az AK-beli használat során kiosztható erőforrások között. Fontos megjegyezni, hogy a felhasználók által telepített hüvelyek kéréseinek és korlátainak beállításakor.
+A csomópont-erőforrásokat az AK használja, hogy a Node függvényt a fürt részeként végezze el. Ez a használat ellentmondást okozhat a csomópont összes erőforrása és az AK-beli használat során kiosztható erőforrások között. Fontos megjegyezni, hogy a felhasználók által telepített hüvelyek kéréseinek és korlátainak beállításakor vegye figyelembe ezeket az információkat.
 
-Csomópont lefoglalható erőforrásainak kereséséhez futtassa a következőt:
+Csomópont lefoglalható erőforrásainak kereséséhez futtassa a következő parancsot:
 ```kubectl
 kubectl describe node [NODE_NAME]
 
@@ -93,7 +94,7 @@ A csomópontok teljesítményének és funkcióinak fenntartásához az erőforr
 
 - Az AK által használt **memória** -memória két érték összegét foglalja magában.
 
-1. A kubelet démon az összes Kubernetes-ügynök csomópontján telepítve van a tárolók létrehozásának és megszüntetésének kezeléséhez. Alapértelmezés szerint az AK-ban ez a démon a következő kiürítési szabállyal rendelkezik: *memória. rendelkezésre álló<750Mi*, ami azt jelenti, hogy egy csomópontnak mindig legalább 750, de mindenkor lefoglalható kell lennie.  Ha egy gazdagép a rendelkezésre álló memória küszöbértéke alá esik, a kubelet leállítja az egyik futó hüvelyt, hogy szabad memóriát szabadítson fel a gazdagépen, és megvédje azt. Ez egy reaktív művelet, ha a rendelkezésre álló memória a 750Mi küszöbértékén túl csökken.
+1. A kubelet démon az összes Kubernetes-ügynök csomópontján telepítve van a tárolók létrehozásának és megszüntetésének kezeléséhez. Alapértelmezés szerint az AK-ban ez a démon a következő kiürítési szabállyal rendelkezik: *memória. rendelkezésre álló<750Mi*, ami azt jelenti, hogy egy csomópontnak mindig legalább 750, de mindenkor lefoglalható kell lennie.  Ha egy gazdagép a rendelkezésre álló memória küszöbértéke alá esik, a kubelet leállítja az egyik futó hüvelyt, hogy szabad memóriát szabadítson fel a gazdagépen, és megvédje azt. Ez a művelet akkor aktiválódik, ha a rendelkezésre álló memória a 750Mi küszöbértékén túl csökken.
 
 2. A második érték a kubelet démon által a megfelelő működéshez (Kube) tartozó lefoglalt memória-foglalások degresszív gyakorisága.
     - az első 4 GB memória 25%-a
@@ -102,7 +103,7 @@ A csomópontok teljesítményének és funkcióinak fenntartásához az erőforr
     - a következő 112 GB memória 6%-a (legfeljebb 128 GB)
     - a 128 GB-nál nagyobb memória 2%-a
 
-A memóriára és a CPU-elosztásra vonatkozó fenti szabályok az ügynök csomópontjainak kifogástalan megőrzésére szolgálnak, beleértve a fürt állapotának kritikus fontosságú részét képező üzemeltetési rendszerhüvelyeket is. Ezek a kiosztási szabályok azt is okozják, hogy a csomópont kevésbé lefoglalható memóriát és CPU-t jelent, mint a Kubernetes-fürt része. A fenti erőforrás-foglalások nem módosíthatók.
+A memóriára és a CPU-elosztásra vonatkozó fenti szabályok az ügynök csomópontjainak kifogástalan megőrzésére szolgálnak, beleértve a fürt állapotának kritikus fontosságú részét képező üzemeltetési rendszerhüvelyeket is. Ezek a kiosztási szabályok azt is okozzák, hogy a csomópont kevésbé lefoglalható memóriát és CPU-t jelent, mint általában, ha nem része egy Kubernetes-fürtnek. A fenti erőforrás-foglalások nem módosíthatók.
 
 Ha például egy csomópont 7 GB-ot biztosít, akkor a memória 34%-a nem foglalható le, beleértve a 750Mi Hard kilakoltatási küszöbértékét.
 
@@ -152,7 +153,7 @@ A pod létrehozásakor megadhatja az *erőforrás-kérelmeket* , hogy bizonyos m
 
 További információ: [Kubernetes hüvelyek][kubernetes-pods] és [Kubernetes Pod életciklusa][kubernetes-pod-lifecycle].
 
-A pod logikai erőforrás, de a tároló (k), ahol az alkalmazás munkaterhelései futnak. A hüvelyek általában elmúló, eldobható erőforrások, és egyénileg ütemezett hüvelyek hiányoznak az Kubernetes által biztosított magas rendelkezésre állási és redundancia-funkciók közül. Ehelyett a hüvelyeket általában Kubernetes- *vezérlők*, például a központi telepítési vezérlő helyezi üzembe és kezeli.
+A pod logikai erőforrás, de a tároló (k), ahol az alkalmazás munkaterhelései futnak. A hüvelyek általában elmúló, eldobható erőforrások, és egyénileg ütemezett hüvelyek hiányoznak az Kubernetes által biztosított magas rendelkezésre állási és redundancia-funkciók közül. Ehelyett a hüvelyeket Kubernetes- *vezérlők*, például a központi telepítési vezérlő helyezi üzembe és kezeli.
 
 ## <a name="deployments-and-yaml-manifests"></a>Központi telepítések és YAML-jegyzékek
 
@@ -162,9 +163,9 @@ A központi telepítések segítségével módosíthatja a hüvelyek, a felhaszn
 
 Az AK-ban a legtöbb állapot nélküli alkalmazásnak az egyes hüvelyek ütemezése helyett a telepítési modellt kell használnia. A Kubernetes nyomon követheti az üzemelő példányok állapotát és állapotát, így biztosítva, hogy a fürtön belül a szükséges számú replika fusson. Ha csak egyes hüvelyeket ütemezhet, a hüvelyek nem indulnak újra, ha probléma lép fel, és nem lettek átütemezett állapotba, ha az aktuális csomópont problémát észlel.
 
-Ha egy alkalmazáshoz a példányok kvóruma szükséges, hogy mindig elérhetők legyenek a felügyeleti döntésekhez, nem szeretné, hogy a frissítési folyamat megszakítsa ezt a képességet. A *Pod-megszakadási költségkeretekkel* határozható meg, hogy egy központi telepítés hány replikáját lehet leállítani a frissítés vagy a csomópont frissítése során. Ha például *5* replika van az üzemelő példányban, megadhatja a *4* . Pod megszakadást, hogy egyszerre csak egy replikát töröljen vagy ütemezzen. A pod-erőforrások korlátaihoz hasonlóan a legjobb megoldás az, ha a pod-megszakadási költségvetést olyan alkalmazásokhoz határozza meg, amelyekhez legalább egy replika szükséges.
+Ha egy alkalmazáshoz a példányok kvóruma szükséges, hogy mindig elérhetők legyenek a felügyeleti döntésekhez, nem szeretné, hogy a frissítési folyamat megszakítsa ezt a képességet. A *Pod-megszakadási költségkeretekkel* határozható meg, hogy egy központi telepítés hány replikáját lehet leállítani a frissítés vagy a csomópont frissítése során. Ha például *öt (5)* replikája van az üzemelő példányban, megadhatja a *4* . Pod-megszakadást, hogy egyszerre csak egy replikát töröljen vagy ütemezzen. A pod-erőforrások korlátaihoz hasonlóan a legjobb megoldás az, ha a pod-megszakadási költségvetést olyan alkalmazásokhoz határozza meg, amelyekhez legalább egy replika szükséges.
 
-A központi telepítések általában a vagy a alkalmazással hozhatók létre és kezelhetők `kubectl create` `kubectl apply` . Központi telepítés létrehozásához meg kell adnia egy jegyzékfájlt a YAML (YAML nem Markup Language) formátumban. Az alábbi példa az NGINX webkiszolgáló alapszintű telepítését hozza létre. Az üzemelő példány *3* másodpéldányt határoz meg, és az *80* -es port nyitva van a tárolón. Az erőforrás-kérelmek és-korlátok a PROCESSZORhoz és a memóriához is meg vannak határozva.
+A központi telepítések általában a vagy a alkalmazással hozhatók létre és kezelhetők `kubectl create` `kubectl apply` . Központi telepítés létrehozásához meg kell adnia egy jegyzékfájlt a YAML (YAML nem Markup Language) formátumban. Az alábbi példa az NGINX webkiszolgáló alapszintű telepítését hozza létre. Az üzemelő példány *három (3)* replikát határoz meg, és megköveteli, hogy a *80* -es port nyitva legyen a tárolón. Az erőforrás-kérelmek és-korlátok a PROCESSZORhoz és a memóriához is meg vannak határozva.
 
 ```yaml
 apiVersion: apps/v1
@@ -251,7 +252,7 @@ Ha AK-fürtöt hoz létre, a következő névterek érhetők el:
 
 További információ: Kubernetes- [névterek][kubernetes-namespaces].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a legfontosabb Kubernetes-összetevőket ismerteti, valamint azt, hogy ezek hogyan vonatkoznak az AK-fürtökre. Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 

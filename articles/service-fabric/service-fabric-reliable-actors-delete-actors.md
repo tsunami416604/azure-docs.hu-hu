@@ -5,11 +5,12 @@ author: amanbha
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: amanbha
-ms.openlocfilehash: b90c5a10c64e273f1c8f48c7bf5713859796db65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d977b6fea71d246610b0e6ef2d9e17d587f1e9ad
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645616"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86253541"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>Reliable Actors-szereplők és állapotuk törlése
 A deaktivált szereplők szemét-gyűjteménye csak a Actor objektumot törli, de nem távolítja el a szereplő állapot-kezelőjében tárolt adatmennyiséget. A színész újraaktiválásakor a rendszer ismét elérhetővé teszi az adatforrást az állami kezelőn keresztül. Azokban az esetekben, amikor a szereplők az állapot-kezelőben tárolják az adattárolást, és inaktiválva vannak, de soha nem aktiválják őket, szükség lehet az Adattisztításra.
@@ -48,7 +49,7 @@ Reliable Actorsról a következő témakörben olvashat bővebben:
 * [Színészi események](service-fabric-reliable-actors-events.md)
 * [Actor újbóli belépés](service-fabric-reliable-actors-reentrancy.md)
 * [Színészi diagnosztika és Teljesítményfigyelés](service-fabric-reliable-actors-diagnostics.md)
-* [A Actor API-referenciájának dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [A Actor API-referenciájának dokumentációja](/previous-versions/azure/dn971626(v=azure.100))
 * [C# mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

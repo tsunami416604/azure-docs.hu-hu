@@ -5,11 +5,12 @@ description: Ismerje meg, hogyan telepíthet és konfigurálhat egy olyan NGINX 
 services: container-service
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 4e87a4005a2f6428123b852c2ff505a30c7e36fd
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b3e844c0c4d4861f7a0a0e12c4ae9d59e23c24e2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920319"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86251512"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>HTTPS bejövőforgalom-vezérlő létrehozása, és saját TLS-tanúsítványok használata az Azure Kubernetes Service-ben (AKS)
 
@@ -300,7 +301,7 @@ $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/h
 [...]
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ez a cikk a beáramló összetevők és a minta alkalmazások telepítésére szolgál. Amikor központilag telepít egy Helm-diagramot, a rendszer számos Kubernetes-erőforrást hoz létre. Ilyen erőforrások például a hüvelyek, az üzembe helyezések és a szolgáltatások. Ezen erőforrások törléséhez törölheti a teljes minta névteret vagy az egyes erőforrásokat.
 
@@ -368,7 +369,7 @@ Végezetül törölheti saját maga is a névteret. Használja a `kubectl delete
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk néhány külső összetevőt tartalmaz az ak-nak. Ha többet szeretne megtudni ezekről az összetevőkről, tekintse meg a következő Project-lapokat:
 
@@ -383,7 +384,7 @@ További lehetőségek:
 - Hozzon létre egy olyan bejövő vezérlőt, amely lehetővé teszi a titkosítást [egy dinamikus nyilvános IP-címmel][aks-ingress-tls] vagy [statikus nyilvános IP-címmel rendelkező][aks-ingress-static-tls] TLS-tanúsítványok automatikus létrehozásához
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
+[helm-cli]: ./kubernetes-helm.md
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 [helm]: https://helm.sh/
 [helm-install]: https://docs.helm.sh/using_helm/#installing-helm
