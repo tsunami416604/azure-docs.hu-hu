@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db8ae98302ad6df7355ce03f5a33b5d21f1ea09
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334043"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242100"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps támogatott Térkép stílusa
 A Azure Maps az alább leírtak szerint számos különböző beépített térképi stílust támogat.
@@ -28,6 +28,7 @@ A **közúti** Térkép egy szabványos Térkép, amely az utakat, természetes 
 * [Térkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK Térkép vezérlőelem
 * Android Térkép vezérlőelem
+* Power BI-vizualizáció
 
 ## <a name="blank-and-blank_accessible"></a>üres és blank_accessible
 
@@ -48,6 +49,7 @@ A **műhold** stílusa a szatellit és a légi felvételek kombinációja.
 * [Műholdas csempe](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
 * Web SDK Térkép vezérlőelem
 * Android Térkép vezérlőelem
+* Power BI-vizualizáció
 
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 Ez a Térkép stílusa a műholdon és a légi képeken behelyezett utak és feliratok hibrid útvonala.
@@ -57,6 +59,7 @@ Ez a Térkép stílusa a műholdon és a légi képeken behelyezett utak és fel
 **Alkalmazható API-k:**
 * Web SDK Térkép vezérlőelem
 * Android Térkép vezérlőelem
+* Power BI-vizualizáció
 
 ## <a name="grayscale_dark"></a>grayscale_dark
 a **szürkeárnyalatos sötét** a közúti Térkép stílusának sötét változata.
@@ -68,6 +71,7 @@ a **szürkeárnyalatos sötét** a közúti Térkép stílusának sötét válto
 * [Térkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK Térkép vezérlőelem 
 * Android Térkép vezérlőelem
+* Power BI-vizualizáció
 
 
 ## <a name="grayscale_light"></a>grayscale_light
@@ -78,6 +82,7 @@ a **szürkeárnyalatos fény** a közúti Térkép stílusának egyszerűsített
 **Alkalmazható API-k:**
 * Web SDK Térkép vezérlőelem
 * Android Térkép vezérlőelem
+* Power BI-vizualizáció
 
 
 ## <a name="night"></a>éjszaka
@@ -88,6 +93,7 @@ a **Night** a közúti Térkép stílusa sötét változata, amely színes utaka
 **Alkalmazható API-k:**
 * Web SDK Térkép vezérlőelem
 * Android Térkép vezérlőelem
+* Power BI-vizualizáció
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 a **közúti árnyékolt Relief** egy Azure Maps fő stílus, amelyet a föld körvonalával töltöttek be.
@@ -98,6 +104,7 @@ a **közúti árnyékolt Relief** egy Azure Maps fő stílus, amelyet a föld k�
 * [Térkép csempe](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK Térkép vezérlőelem
 * Android Térkép vezérlőelem
+* Power BI-vizualizáció
 
 ## <a name="high_contrast_dark"></a>high_contrast_dark
 
@@ -107,8 +114,9 @@ a **közúti árnyékolt Relief** egy Azure Maps fő stílus, amelyet a föld k�
 
 **Alkalmazható API-k:**
 * Web SDK Térkép vezérlőelem
+* Power BI-vizualizáció
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan állíthat be leképezési stílust a Azure Mapsban:
 

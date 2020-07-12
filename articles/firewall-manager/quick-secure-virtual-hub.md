@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 6641cc29025d39ddff33e706dd9b1b0da517b884
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 1917bed7727b97de27e560a0f2d8032a8ae08996
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563687"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242015"
 ---
-# <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>Rövid útmutató: a virtuális központ biztonságossá tétele a Azure Firewall Manager – Resource Manager-sablon használatával
+# <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---arm-template"></a>Rövid útmutató: a virtuális központ biztonságossá tétele Azure Firewall Manager-ARM sablon használatával
 
-Ebben a rövid útmutatóban egy Resource Manager-sablonnal biztosíthatja a virtuális központ védelmét a Azure Firewall Manager használatával. Az üzembe helyezett tűzfalon van egy alkalmazás-szabály, amely lehetővé teszi a kapcsolódást `www.microsoft.com` . A tűzfal teszteléséhez két Windows Server 2019 virtuális gép van telepítve. Az egyik ugrási kiszolgáló a munkaterhelés-kiszolgálóhoz való kapcsolódásra szolgál. A munkaterhelés-kiszolgálóról csak a következőhöz csatlakozhat: `www.microsoft.com` .
+Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ a virtuális központ biztonságossá tételéhez a Azure Firewall Manager használatával. Az üzembe helyezett tűzfalon van egy alkalmazás-szabály, amely lehetővé teszi a kapcsolódást `www.microsoft.com` . A tűzfal teszteléséhez két Windows Server 2019 virtuális gép van telepítve. Az egyik ugrási kiszolgáló a munkaterhelés-kiszolgálóhoz való kapcsolódásra szolgál. A munkaterhelés-kiszolgálóról csak a következőhöz csatlakozhat: `www.microsoft.com` .
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 A Azure Firewall Managerrel kapcsolatos további információkért lásd: [Mi az a Azure Firewall Manager?](overview.md).
 
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Ffwm-docs-qs%2Fazuredeploy.json)
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-secured-virtual-hub"></a>Biztonságos virtuális központ létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Ez a sablon egy biztonságos virtuális hubot hoz létre a Azure Firewall Manager használatával, valamint a forgatókönyv támogatásához szükséges erőforrásokat.
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://azure.microsoft.com/resources/templates/fwm-docs-qs/) származik.
+Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/fwm-docs-qs/)származik.
 
 :::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
 
@@ -51,9 +53,9 @@ Több Azure-erőforrás van definiálva a sablonban:
 - [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicipaddresses)
 - [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-Resource Manager-sablon üzembe helyezése az Azure-ban:
+Az ARM-sablon üzembe helyezése az Azure-ban:
 
 1. Válassza az **üzembe helyezés az Azure** -ban lehetőséget az Azure-ba való bejelentkezéshez és a sablon megnyitásához. A sablon létrehoz egy Azure Firewall, egy virtuális WAN-t és egy virtuális hubot, a hálózati infrastruktúrát és két virtuális gépet.
 
@@ -86,7 +88,7 @@ A tűzfalszabályok tesztelésével ellenőrizze, hogy az a vártnak megfelelőe
 
 Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
-* Az egyetlen engedélyezett FQDN-t el tudja érni, de másokat nem.
+- Az egyetlen engedélyezett FQDN-t el tudja érni, de másokat nem.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -98,7 +100,7 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name "<your resource group name>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További tudnivalók a biztonsági partner-szolgáltatókról](trusted-security-partners.md)

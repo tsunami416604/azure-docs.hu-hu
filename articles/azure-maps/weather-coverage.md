@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ac4df0b63d48e590bfdfc49f1c8b5607b4651cd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c18a09b494de7ecb639fbc5639b7162bdb02d2a6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310189"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241981"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps időjárási lefedettség
 
@@ -22,12 +23,12 @@ Azure Maps az összes ország és régió esetében nem rendelkezik azonos szint
 
 Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási információkról nyújt információt.
 
-| Szimbólum | Értelmezés |
+| Szimbólum | Jelentés |
 |--------|---------|
 |*       |A Route, a CURRENT conditions, az óránkénti előrejelzés, a negyedéves előrejelzés és a napi előrejelzési API-k esetében érvényes. |
 
 
-## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
+## <a name="americas"></a>Amerika
 
 | Ország/régió              |  Műholdas csempék | Perc előrejelzés, radar csempék | Más | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
@@ -110,7 +111,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Csád                        | ✓               |                              |        ✓| 
 | Comore-szigetek                     | ✓               |                              |        ✓| 
 | Kongó (KDK)                 | ✓               |                              |        ✓|
-| Elefántcsontparti               | ✓               |                              |        ✓| 
+| Côte d'Ivoire               | ✓               |                              |        ✓| 
 | Dzsibuti                    | ✓               |                              |        ✓| 
 | Egyiptom                       | ✓               |                              |        ✓| 
 | Egyenlítői-Guinea           | ✓               |                              |        ✓| 

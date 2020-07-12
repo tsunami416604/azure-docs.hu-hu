@@ -5,12 +5,12 @@ author: athinanthny
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.author: atsenthi
-ms.openlocfilehash: feeef1773ffe68f3ff88175b413cd40ba618b8d9
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e6174f35bd54b3ca0b2c5240a663369350b30ce8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207231"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241896"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric tároló hálózatkezelési módjai
 
@@ -21,7 +21,7 @@ Ha egy tároló szolgáltatás statikus végponttal rendelkezik a szolgáltatás
 Amikor egy tároló szolgáltatás újraindítja vagy áthelyezi a fürt egy másik csomópontjára, az IP-cím megváltozik. Ezért nem ajánlott a dinamikusan hozzárendelt IP-cím használatával felderíteni a Container Services szolgáltatást. A szolgáltatás felderítéséhez csak a Service Fabric elnevezési szolgáltatás vagy a DNS-szolgáltatást kell használnia. 
 
 >[!WARNING]
->Az Azure összesen 65 356 IP-címet tesz lehetővé virtuális hálózatonként. A csomópontok számának és a tároló szolgáltatás példányainak (amelyek nyílt üzemmódot használnak) összege nem haladhatja meg a virtuális hálózaton belüli 65 356 IP-címeket. Nagy sűrűségű helyzetekben javasolt a NAT hálózati mód használata. Emellett más függőségek, például a terheléselosztó más [korlátozásokat](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) is figyelembe vesznek. Egy csomóponton jelenleg akár 50 IP-cím lett tesztelve és bizonyítottan stabil. 
+>Az Azure összesen 65 356 IP-címet tesz lehetővé virtuális hálózatonként. A csomópontok számának és a tároló szolgáltatás példányainak (amelyek nyílt üzemmódot használnak) összege nem haladhatja meg a virtuális hálózaton belüli 65 356 IP-címeket. Nagy sűrűségű helyzetekben javasolt a NAT hálózati mód használata. Emellett más függőségek, például a terheléselosztó más [korlátozásokat](../azure-resource-manager/management/azure-subscription-service-limits.md) is figyelembe vesznek. Egy csomóponton jelenleg akár 50 IP-cím lett tesztelve és bizonyítottan stabil. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Nyitott hálózati mód beállítása
@@ -196,7 +196,7 @@ Amikor egy tároló szolgáltatás újraindítja vagy áthelyezi a fürt egy má
    |Prioritás |2000 |
    |Név |Custom_Dns  |
    |Forrás |VirtualNetwork |
-   |Cél | VirtualNetwork |
+   |Destination (Cél) | VirtualNetwork |
    |Szolgáltatás | DNS (UDP/53) |
    |Művelet | Engedélyezés  |
 
@@ -261,8 +261,8 @@ Amikor egy tároló szolgáltatás újraindítja vagy áthelyezi a fürt egy má
             ],          
  ``` 
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Service Fabric-alkalmazásmodell megismerése](service-fabric-application-model.md)
-* [További információ a Service Fabric Service manifest-erőforrásokról](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)
+* [További információ a Service Fabric Service manifest-erőforrásokról](./service-fabric-service-manifest-resources.md)
 * [Windows-tároló üzembe helyezése Service Fabric Windows Server 2016 rendszeren](service-fabric-get-started-containers.md)
 * [Docker-tároló üzembe helyezése Linuxon Service Fabric](service-fabric-get-started-containers-linux.md)

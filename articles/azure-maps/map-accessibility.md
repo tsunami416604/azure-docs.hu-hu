@@ -8,11 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: febfdf5405038e5b60a3133a554eba7a756f617d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648574"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242372"
 ---
 # <a name="building-an-accessible-application"></a>Akadálymentes alkalmazás létrehozása
 
@@ -45,6 +46,7 @@ A Térkép több különböző módon nagyítható, megpárolt, elforgatható é
 - A térképre koncentrálva a mínuszjel, kötőjel ( `-` ) vagy aláhúzás ( `_` ) használatával nagyíthatja ki az egyik szintet.
 - A nagyítás vezérlőelemet egérrel, érintéssel vagy billentyűzettel vagy a kulcsok beírásával használhatja.
 - Nyomja le és tartsa nyomva a `Shift` gombot, és nyomja le a bal oldali egérgombot a térképen, és húzza a diagramot a térkép nagyításához.
+- Több érintéses párnak használata esetén a nagyításhoz húzza a két ujját a nagyításhoz vagy a kicsinyítéshez.
 
 **A Térkép pásztázása**
 
@@ -92,7 +94,7 @@ map.getMapContainer().classList.contains("high-contrast-light")
 
 A Térkép számos billentyűparancsot tartalmaz, amelyek megkönnyítik a Térkép használatát. Ezek a billentyűparancsok akkor működnek, ha a Térkép fókuszban van.
 
-| Kulcs      | Műveletek                            |
+| Kulcs      | Művelet                            |
 |----------|-----------------------------------|
 | `Tab` | Navigáljon a térképen a vezérlők és az előugró ablakok között. |
 | `ESC` | Mozgassa a fókuszt a Térkép bármely eleméről a legfelső szintű Térkép elemre. |
@@ -151,7 +153,7 @@ A következő példa egy szimbólum réteget használ a Térkép érdeklődési 
 - Próbálja megnavigálni az alkalmazást a billentyűzet használatával. Győződjön meg arról, hogy a tabulátorok sorrendje logikai.
 - Ha billentyűparancsokat hoz létre, próbálja meg korlátozni két vagy kevesebb kulcsra. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a web SDK-modulok hozzáférhetőségét.
 

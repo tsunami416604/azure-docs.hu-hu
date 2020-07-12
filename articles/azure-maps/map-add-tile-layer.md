@@ -9,11 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 61d7a11df499e6b740adb45968721b6a9bb1af22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bb3cfa7266688ac8973bd3838d0d03e9efe8d50
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76988600"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242304"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>Csemperéteg hozzáadása térképhez
 
@@ -36,6 +37,7 @@ A csempe rétegbe átadott csempe URL-címnek http vagy HTTPS URL-címnek kell l
 * `{quadkey}`– Csempe quadkey-azonosítója a Bing Maps csempe rendszerelnevezési konvenciója alapján.
 * `{bbox-epsg-3857}`– Egy határolókeret karakterlánca, amely a `{west},{south},{east},{north}` EPSG 3857 térbeli hivatkozási rendszer formátumát jelöli.
 * `{subdomain}`– Az altartomány értékeinek helyőrzője, ha meg van adva, a `subdomain` hozzá lesz adva.
+* `{azMapsDomain}`– A Térkép által használt értékekkel összehangolja a tartományt és a csempe-kérelmek hitelesítését.
 
 ## <a name="add-a-tile-layer"></a>Mozaikréteg hozzáadása
 
@@ -67,7 +69,7 @@ A csempe réteg osztályának számos stílusa van. Itt látható egy eszköz, a
 <iframe height='700' scrolling='no' title='Csempe rétegének beállításai' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>csempe rétegének beállításait</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 

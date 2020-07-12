@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d666f7e3e43b5429423a5356aa00e074ed020869
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 153532b3c33158ee1a43db7883eb7a9ec621ade7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615330"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241675"
 ---
 # <a name="windows-virtual-desktop-environment"></a>A Windows Virtual Desktop környezete
 
@@ -59,7 +59,7 @@ A Windows virtuális asztal szolgáltatásban a Windows rendszerű virtuális as
 
 Miután hozzárendelte a felhasználókat az alkalmazás csoportjaihoz, csatlakozhatnak a Windows rendszerű virtuális asztali környezethez a Windows rendszerű virtuális asztali ügyfelek bármelyikével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a delegált hozzáférésről és a szerepkörök felhasználókhoz való hozzárendeléséről a [Windows Virtual Desktopban](delegated-access-virtual-desktop-2019.md).
 
@@ -67,5 +67,5 @@ A Windows rendszerű virtuális asztali bérlő beállításával kapcsolatos to
 
 A következő cikkekből megtudhatja, hogyan csatlakozhat a Windows rendszerű virtuális asztalhoz:
 
-- [Csatlakozás Windows 10 vagy Windows Server 7 rendszerről](../connect-windows-7-and-10.md)
+- [Csatlakozás Windows 10 vagy Windows Server 7 rendszerről](connect-windows-7-10-2019.md)
 - [Csatlakozás webböngészőről](connect-web-2019.md)

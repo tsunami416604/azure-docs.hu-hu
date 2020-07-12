@@ -5,12 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: b97b373936f9c485eaa96cdd34ed33c49e75ad9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77201271"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242066"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-bővítmények Azure Database for PostgreSQL – egyetlen kiszolgáló
 A PostgreSQL lehetőséget nyújt az adatbázis funkcióinak kiterjesztésére a bővítmények használatával. A bővítmények több kapcsolódó SQL-objektumot egyesítenek egyetlen csomagban, amely egyetlen paranccsal tölthető be vagy távolítható el az adatbázisból. Az adatbázisba való betöltés után a bővítmények a beépített funkciókhoz hasonlóan működnek.
@@ -25,7 +26,7 @@ A Azure Database for PostgreSQL a következő listában szereplő kulcs-kiterjes
 A következő bővítmények érhetők el a postgres 11-es verzióját tartalmazó Azure Database for PostgreSQL-kiszolgálókon. 
 
 > [!div class="mx-tableFixed"]
-> | **Mellék**| **Bővítmény verziója** | **Leírás** |
+> | **Kiterjesztés**| **Bővítmény verziója** | **Leírás** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | A címek összetevőire való elemzéséhez használatos. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Példa az USA-beli szabványosító adathalmazra|
@@ -70,7 +71,7 @@ A következő bővítmények érhetők el a postgres 11-es verzióját tartalmaz
 A következő bővítmények érhetők el olyan Azure Database for PostgreSQL-kiszolgálókon, amelyeken a postgres 10-es verziója található.
 
 > [!div class="mx-tableFixed"]
-> | **Mellék**| **Bővítmény verziója** | **Leírás** |
+> | **Kiterjesztés**| **Bővítmény verziója** | **Leírás** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | A címek összetevőire való elemzéséhez használatos. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Példa az USA-beli szabványosító adathalmazra|
@@ -116,7 +117,7 @@ A következő bővítmények érhetők el olyan Azure Database for PostgreSQL-ki
 A következő bővítmények érhetők el a 9,6-es postgres-verzióval rendelkező Azure Database for PostgreSQL-kiszolgálókon.
 
 > [!div class="mx-tableFixed"]
-> | **Mellék**| **Bővítmény verziója** | **Leírás** |
+> | **Kiterjesztés**| **Bővítmény verziója** | **Leírás** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | A címek összetevőire való elemzéséhez használatos. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Példa az USA-beli szabványosító adathalmazra|
@@ -162,7 +163,7 @@ A következő bővítmények érhetők el a 9,6-es postgres-verzióval rendelkez
 A következő bővítmények érhetők el a 9,5-es postgres-verzióval rendelkező Azure Database for PostgreSQL-kiszolgálókon.
 
 > [!div class="mx-tableFixed"]
-> | **Mellék**| **Bővítmény verziója** | **Leírás** |
+> | **Kiterjesztés**| **Bővítmény verziója** | **Leírás** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | A címek összetevőire való elemzéséhez használatos. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Példa az USA-beli szabványosító adathalmazra|
@@ -211,7 +212,7 @@ Az egyes SQL-utasítások beolvasása során kompromisszumot pg_stat_statements 
 ## <a name="dblink-and-postgres_fdw"></a>dblink és postgres_fdw
 a [dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) és a [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) lehetővé teszik, hogy az egyik PostgreSQL-kiszolgálóról egy másikra, vagy ugyanabban a kiszolgálón található másik adatbázishoz kapcsolódjon. A fogadó kiszolgálónak engedélyeznie kell a kapcsolódást a küldő kiszolgálóról a tűzfalon keresztül. Ha ezekkel a bővítményekkel csatlakozik Azure Database for PostgreSQL kiszolgálók között, ezt az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítással teheti meg. Erre akkor is szükség van, ha a bővítmények használatával szeretne visszakapcsolni ugyanarra a kiszolgálóra. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás megtalálhatók a postgres-kiszolgáló Azure Portal lapján, a kapcsolat biztonsága lehetőségnél. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás bekapcsolásával az összes Azure-beli IP-címet az engedélyezési listán helyezheti el.
 
-A Azure Database for PostgreSQL kimenő kapcsolatai jelenleg nem támogatottak, kivéve a más Azure Database for PostgreSQL kiszolgálókhoz való kapcsolódást.
+A Azure Database for PostgreSQL kimenő kapcsolatai jelenleg nem támogatottak, kivéve az ugyanabban a régióban lévő más Azure Database for PostgreSQL kiszolgálókhoz való kapcsolódást.
 
 ## <a name="uuid"></a>uuid
 Ha `uuid_generate_v4()` az [UUID-ossp bővítményből](https://www.postgresql.org/docs/current/uuid-ossp.html)tervezi használni a használatát, érdemes lehet összehasonlítást alkalmazni `gen_random_uuid()` a [pgcrypto-bővítménnyel](https://www.postgresql.org/docs/current/pgcrypto.html) a teljesítménnyel kapcsolatos előnyökhöz.
@@ -277,5 +278,5 @@ SELECT timescaledb_post_restore();
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha nem látja a használni kívánt bővítményt, tudassa velünk. Szavazzon a meglévő kérelmekre, vagy hozzon létre új visszajelzési kéréseket a [visszajelzési fórumban](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).

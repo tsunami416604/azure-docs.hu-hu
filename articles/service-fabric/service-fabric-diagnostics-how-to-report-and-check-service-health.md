@@ -5,18 +5,19 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 2b7a9c44a84e3ce15eaec22c8f57bb48f79dae05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 751af36c630d1b0faa0c07bdd3a8b7519bd328c9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464638"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86241930"
 ---
 # <a name="report-and-check-service-health"></a>Szolgáltatásállapot jelentése és ellenőrzése
 Ha a szolgáltatásai problémákba ütköznek, az incidensek és az kimaradások kijavításának lehetősége a problémák gyors észlelésére is függ. Ha az Azure Service Fabric Health Managerrel kapcsolatos problémákat és hibákat jelent a szolgáltatás kódjában, a Service Fabric által biztosított szabványos állapot-figyelési eszközöket használhatja az állapot ellenőrzéséhez.
 
 Háromféle módon jelenthet jelentést az állapotról a szolgáltatásból:
 
-* Használjon [partíciós](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition) vagy [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext) objektumokat.  
+* Használjon [partíciós](/dotnet/api/system.fabric.istatefulservicepartition) vagy [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext) objektumokat.  
   A `Partition` és az objektumok segítségével `CodePackageActivationContext` jelentést készíthet az aktuális környezet részét képező elemek állapotáról. A replika részeként futó kód például csak az adott replikán, a hozzá tartozó partíción, valamint az alkalmazás részeként jelentheti az állapotot.
 * A `FabricClient` címet használja.   
   `FabricClient`Ha a fürt nem [biztonságos](service-fabric-cluster-security.md) , vagy ha a szolgáltatás rendszergazdai jogosultságokkal fut, akkor az állapotot a szolgáltatás kódjából lehet jelenteni. A legtöbb valós forgatókönyv nem használ nem biztonságos fürtöket, vagy rendszergazdai jogosultságokat biztosít. A segítségével `FabricClient` bármilyen, a fürt részét képező entitáson jelenthet állapotot. Ideális esetben azonban a szolgáltatási kódnak csak a saját állapotával kapcsolatos jelentéseket kell elküldenie.
@@ -138,8 +139,7 @@ var activationContext = FabricRuntime.GetActivationContext();
 activationContext.ReportApplicationHealth(healthInformation);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Service Fabric állapotának részletes bemutatása](service-fabric-health-introduction.md)
-* [REST API a jelentési szolgáltatás állapotához](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)
-* [REST API a jelentéskészítési alkalmazás állapota](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-an-application)
-
+* [REST API a jelentési szolgáltatás állapotához](/rest/api/servicefabric/report-the-health-of-a-service)
+* [REST API a jelentéskészítési alkalmazás állapota](/rest/api/servicefabric/report-the-health-of-an-application)
