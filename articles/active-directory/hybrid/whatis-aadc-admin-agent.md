@@ -11,12 +11,12 @@ ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f68635820125161ed4f5777e27a20de9e6fbe8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43b69deb242fd1ad80d9cdc4667070d2dbfefcd5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80049386"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255608"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Mi az az Azure AD Connect felügyeleti ügynök? 
 A Azure AD Connect felügyeleti ügynök a Azure Active Directory Connect egy új összetevője, amely Azure Active Directory Connect-kiszolgálóra telepíthető. A szolgáltatás a Active Directory-környezetből származó adatok összegyűjtésére szolgál, amely segít a Microsoft támogatási szakemberének a támogatási eset megnyitásakor felmerülő problémák megoldásában. 
@@ -40,7 +40,7 @@ A Azure AD Connect felügyeleti ügynök bináris fájljait a HRE-összekötő k
 
 1.    A PowerShell megnyitása rendszergazdai módban
 2.    Navigáljon ahhoz a könyvtárhoz, ahol az alkalmazás található CD "C:\Program Files\Microsoft Azure Active Directory Connect\Tools"
-3.    ConfigureAdminAgent. ps1 futtatása
+3.    ConfigureAdminAgent.ps1 futtatása
 
 Ha a rendszer kéri, adja meg az Azure AD globális rendszergazdai hitelesítő adatait. A Azure AD Connect telepítés során megadott hitelesítő adatoknak kell szerepelniük.
 
@@ -56,8 +56,8 @@ A Microsoft ügyfélszolgálata mérnök nem módosíthatja a rendszeren lévő 
 ## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Mi a teendő, ha nem szeretném, hogy a Microsoft támogatási szakembere hozzáférjen az adataim eléréséhez? 
 Ha az ügynök telepítése után nem szeretné, hogy a Microsoft szolgáltatási mérnöke hozzáférjen az adataihoz egy támogatási híváshoz, a szolgáltatás konfigurációs fájljának módosításával letilthatja a funkciót a következő módon: 
 
-1.    Nyissa meg a **C:\Program Files\Microsoft Azure ad Connect felügyeleti Agent\AzureADConnectAdministrationAgentService.exe.config** a Jegyzettömbben.
-2.    Tiltsa le a **UserDataEnabled** beállítást az alább látható módon. Ha a **UserDataEnabled** -beállítás létezik, és igaz értékre van állítva, állítsa hamis értékre. Ha a beállítás nem létezik, adja hozzá a beállítást az alább látható módon.    
+1. Nyissa meg a **C:\Program Files\Microsoft Azure ad Connect felügyeleti Agent\AzureADConnectAdministrationAgentService.exe.config** a Jegyzettömbben.
+2. Tiltsa le a **UserDataEnabled** beállítást az alább látható módon. Ha a **UserDataEnabled** -beállítás létezik, és igaz értékre van állítva, állítsa hamis értékre. Ha a beállítás nem létezik, adja hozzá a beállítást az alább látható módon.    
 
     ```xml
     <appSettings>
@@ -66,10 +66,10 @@ Ha az ügynök telepítése után nem szeretné, hogy a Microsoft szolgáltatás
     </appSettings>
     ```
 
-3.    Mentse a konfigurációs fájlt.
-4.    Azure AD Connect felügyeleti ügynök szolgáltatás újraindítása az alább látható módon
+3. Mentse a konfigurációs fájlt.
+4. Azure AD Connect felügyeleti ügynök szolgáltatás újraindítása az alább látható módon
 
 ![felügyeleti ügynök](media/whatis-aadc-admin-agent/adminagent2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

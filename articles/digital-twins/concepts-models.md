@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a1bb07ee900622b138a556a33469641e4e8310af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab0b08c01478d1375ec2a234dc0277980312f17c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392301"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258284"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>A Twin modellek ismertetése az Azure Digital Twinsban
 
@@ -108,7 +109,7 @@ A Twin Type modellek bármilyen szövegszerkesztőben megírhatók. A DTDL nyelv
 
 A modell mezői a következők:
 
-| Mező | Description |
+| Mező | Leírás |
 | --- | --- |
 | `@id` | A modell azonosítója. Formátumúnak kell lennie `dtmi:<domain>:<unique model identifier>;<model version number>` . |
 | `@type` | A leírt információ típusát azonosítja. Illesztőfelület esetén a típus *illesztőfelület*. |
@@ -196,11 +197,16 @@ A kiterjesztési felület nem változtathatja meg a szülő felületek definíci
 
 ## <a name="validating-models"></a>Modellek ellenőrzése
 
-Rendelkezésre áll egy minta a modell dokumentumainak ellenőrzéséhez, hogy a DTDL érvényes legyen. A DTDL-elemző könyvtárra épül, és nyelvtől független. Itt találja: [DTDL validator minta](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
+> [!TIP]
+> Javasoljuk, hogy az Azure Digital Twins-példányba való feltöltés előtt ellenőrizze a modelleket offline állapotba.
 
-Ha további információt szeretne az elemző könyvtárról, beleértve a közvetlen használattal kapcsolatos példát is, tekintse meg a [How-to: modellek elemzése és ellenőrzése](how-to-use-parser.md)című témakört.
+A DTDL helyességének biztosítása érdekében egy nyelvtől független minta érhető el a modell dokumentumainak ellenőrzéséhez. Itt található: [**DTDL validator minta**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator).
 
-## <a name="next-steps"></a>További lépések
+A DTDL-érvényesítő minta egy .NET DTDL-elemző könyvtárra épül, amely ügyféloldali kódtárként érhető el a NuGet-ben: [**Microsoft. Azure. DigitalTwins. Parser**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). A könyvtárat közvetlenül is használhatja a saját ellenőrzési megoldás megtervezéséhez. Az elemző függvénytár használatakor ügyeljen arra, hogy olyan verziót használjon, amely kompatibilis az Azure Digital ikrek által futtatott verziójával. Az előzetes verzióban ez a *3.7.0*verziója.
+
+További információ az elemző könyvtárról, például a használati példákról [: a modellek elemzése és ellenőrzése](how-to-use-parser.md).
+
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg, hogyan kezelhetők a modellek a DigitalTwinsModels API-kkal:
 * [Útmutató: egyéni modellek kezelése](how-to-manage-model.md)

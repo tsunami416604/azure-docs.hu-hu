@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 46be6acc1ef08770826a2e020c8930eba0787791
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 360bba2ffc344175214c44e2c9c1d3c0859ac3e5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76774441"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255965"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Önálló fürt biztonságossá tétele Windows rendszeren a Windows biztonsági szolgáltatással
 A Service Fabric fürthöz való jogosulatlan hozzáférés megakadályozása érdekében védenie kell a fürtöt. A biztonság különösen akkor fontos, ha a fürt éles számítási feladatokat futtat. Ez a cikk azt ismerteti, hogyan konfigurálható a csomópontok közötti és az ügyfél és a csomópont közötti biztonság a Windows biztonsági funkciójának használatával a fájl *ClusterConfig.JS* .  A folyamat megfelel a [Windows rendszeren futó önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)biztonsági lépéseként. További információ arról, hogy a Service Fabric hogyan használja a Windows-biztonságot: a [fürtök biztonsági forgatókönyvei](service-fabric-cluster-security.md).
@@ -20,7 +21,7 @@ A Service Fabric fürthöz való jogosulatlan hozzáférés megakadályozása é
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>A Windows Biztonság konfigurálása a gMSA használatával  
-A minta *ClusterConfig.gMSA.Windows.MultiMachine.JS* a [Microsoft. Azure. ServiceFabric. windowsserver.. fájllal letöltött konfigurációs fájlban \<version> . a zip](https://go.microsoft.com/fwlink/?LinkId=730690) önálló fürt csomagja olyan sablont tartalmaz, amely a Windows biztonsági beállításait [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx)használatával konfigurálja:  
+A minta *ClusterConfig.gMSA.Windows.MultiMachine.JS* a [Microsoft. Azure. ServiceFabric. windowsserver.. fájllal letöltött konfigurációs fájlban \<version> . a zip](https://go.microsoft.com/fwlink/?LinkId=730690) önálló fürt csomagja olyan sablont tartalmaz, amely a Windows biztonsági beállításait [csoportosan felügyelt szolgáltatásfiók (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))használatával konfigurálja:  
 
 ```
 "security": {
@@ -53,8 +54,8 @@ A minta *ClusterConfig.gMSA.Windows.MultiMachine.JS* a [Microsoft. Azure. Servic
 > [!NOTE]
 > A ClustergMSAIdentity értékének a következő formátumúnak kell lennie: " mysfgmsa@mydomain ".
 
-A csomópontok közötti [Biztonság](service-fabric-cluster-security.md#node-to-node-security) a **ClustergMSAIdentity** beállításával állítható be, ha a Service fabricnek a gMSA alatt kell futnia. A csomópontok közötti megbízhatósági kapcsolatok létrehozásához tudniuk kell egymással kapcsolatban. Ez két különböző módon valósítható meg: megadhatja a fürtben lévő összes csomópontot tartalmazó csoportosan felügyelt szolgáltatásfiókot, vagy megadhatja a fürtben lévő összes csomópontot tartalmazó tartományi számítógép csoportot is. Javasoljuk, hogy használja a [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) megközelítését, különösen a nagyobb fürtök (több mint 10 csomópont) vagy a valószínűleg növekedni vagy zsugorodó fürtök esetében.  
-Ehhez a megközelítéshez nincs szükség olyan tartományi csoport létrehozására, amelyhez a fürt rendszergazdája hozzáférési jogokat kapott a tagok hozzáadásához és eltávolításához. Ezek a fiókok az automatikus jelszavas felügyelethez is hasznosak. További információ: [első lépések csoportosan felügyelt szolgáltatásfiókok](https://technet.microsoft.com/library/jj128431.aspx).  
+A csomópontok közötti [Biztonság](service-fabric-cluster-security.md#node-to-node-security) a **ClustergMSAIdentity** beállításával állítható be, ha a Service fabricnek a gMSA alatt kell futnia. A csomópontok közötti megbízhatósági kapcsolatok létrehozásához tudniuk kell egymással kapcsolatban. Ez két különböző módon valósítható meg: megadhatja a fürtben lévő összes csomópontot tartalmazó csoportosan felügyelt szolgáltatásfiókot, vagy megadhatja a fürtben lévő összes csomópontot tartalmazó tartományi számítógép csoportot is. Javasoljuk, hogy használja a [csoportosan felügyelt szolgáltatásfiók (gMSA)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) megközelítését, különösen a nagyobb fürtök (több mint 10 csomópont) vagy a valószínűleg növekedni vagy zsugorodó fürtök esetében.  
+Ehhez a megközelítéshez nincs szükség olyan tartományi csoport létrehozására, amelyhez a fürt rendszergazdája hozzáférési jogokat kapott a tagok hozzáadásához és eltávolításához. Ezek a fiókok az automatikus jelszavas felügyelethez is hasznosak. További információ: [első lépések csoportosan felügyelt szolgáltatásfiókok](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11)).  
  
 Az [ügyfél és a csomópont közötti biztonság](service-fabric-cluster-security.md#client-to-node-security) a **ClientIdentities**használatával van konfigurálva. Az ügyfél és a fürt közötti megbízhatósági kapcsolat létrehozásához konfigurálnia kell a fürtöt, hogy megtudja, melyik ügyfél-identitások bízhatnak meg. Ezt kétféleképpen teheti meg: megadhatja, hogy mely felhasználók csatlakozhatnak a hálózathoz, vagy megadhatják azokat a tartományi csomópontokat, akik csatlakozhatnak. Service Fabric két különböző hozzáférés-vezérlési típust támogat a Service Fabric-fürthöz csatlakozó ügyfelekhez: rendszergazda és felhasználó. A hozzáférés-vezérlés lehetővé teszi, hogy a fürt rendszergazdája korlátozza a hozzáférést bizonyos típusú fürtökhöz a különböző felhasználói csoportok számára, így a fürt biztonságosabbá tehető.  A rendszergazdák teljes hozzáféréssel rendelkeznek a felügyeleti képességekhez (beleértve az írási/olvasási képességeket is). A felhasználók alapértelmezés szerint csak olvasási jogosultságot biztosítanak a felügyeleti képességekhez (például a lekérdezési képességekhez), valamint az alkalmazások és szolgáltatások feloldásának lehetőségét. A hozzáférés-vezérléssel kapcsolatos további információkért lásd: [Service Fabric ügyfelek szerepköralapú hozzáférés-vezérlése](service-fabric-cluster-security-roles.md).  
  
@@ -102,7 +103,7 @@ Ez a modell elavult. Javasoljuk, hogy a fentiekben ismertetett gMSA használja. 
 | Identitás |Adja hozzá a tartományi felhasználót (tartomány \ Felhasználónév) az ügyfél identitásához. |  
 | IsAdmin |Állítsa igaz értékre, ha azt szeretné megadni, hogy a tartományi felhasználó rendszergazdai ügyfél-hozzáféréssel vagy FALSE értékkel rendelkezik a felhasználói ügyfelek hozzáféréséhez. |  
 
-A csomópontok közötti [biztonsági](service-fabric-cluster-security.md#node-to-node-security) beállításokat a **ClusterIdentity** használatával állíthatja be, ha egy Active Directory-tartományon belül szeretne gépi csoportot használni. További információ: [Machine Group létrehozása a Active Directoryban](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx).
+A csomópontok közötti [biztonsági](service-fabric-cluster-security.md#node-to-node-security) beállításokat a **ClusterIdentity** használatával állíthatja be, ha egy Active Directory-tartományon belül szeretne gépi csoportot használni. További információ: [Machine Group létrehozása a Active Directoryban](/previous-versions/commerce-server/aa545347(v=cs.70)).
 
 Az [ügyfél és a csomópont közötti biztonság](service-fabric-cluster-security.md#client-to-node-security) a **ClientIdentities**használatával konfigurálható. Az ügyfél és a fürt közötti megbízhatósági kapcsolat létrehozásához úgy kell beállítania a fürtöt, hogy megismerje a fürt által megbízhatónak ítélt ügyfél-identitásokat. Két különböző módon hozhat létre megbízhatósági kapcsolatot:
 
@@ -132,7 +133,7 @@ A következő példa **biztonsági** szakasz a Windows biztonsági beállításo
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután konfigurálta a Windows-biztonságot a fájl *ClusterConfig.JSjában* , folytassa a fürt létrehozási folyamatát a [Windows rendszeren futó önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)című témakörben.
 
 További információ a csomópontok közötti biztonságról, az ügyfelek és a csomópontok biztonságáról, valamint a szerepköralapú hozzáférés-vezérlésről: [fürtök biztonsági forgatókönyvei](service-fabric-cluster-security.md).

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c795e6077bc5a7b755a388a6f50848ad6094d48
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 070d933394b19ea38a9632f25909812943f7bff8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921811"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255830"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a szinapszis SQL használatával
 
@@ -101,10 +101,9 @@ LOCATION = `'<prefix>://<path>'` – Megadja a kapcsolati protokollt és a küls
 | Külső adatforrás        | Hely előtagja | Hely elérési útja                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
 | Azure Blob Storage          | `wasb[s]`       | `<container>@<storage_account>.blob.core.windows.net` |
-|                             | `https`         | `<storage_account>.blob.core.windows.net/<container>/subfolders` |
-| 1. generációs Azure Data Lake Store | `adl`           | `<storage_account>.azuredatalake.net`                 |
-| 2. generációs Azure Data Lake Store | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
-|                             | `https`         | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
+| Azure Blob Storage          | `http[s]`       | `<storage_account>.blob.core.windows.net/<container>/subfolders` |
+| 1. generációs Azure Data Lake Store | `http[s]`       | `<storage_account>.azuredatalakestore.net/webhdfs/v1` |
+| 2. generációs Azure Data Lake Store | `http[s]`       | `<storage_account>.dfs.core.windows.net/<container>/subfolders`  |
 
 `https:`az előtag lehetővé teszi az elérési út almappájának használatát.
 
@@ -375,6 +374,6 @@ A külső tábla most létrejön, a külső tábla tartalmának későbbi feltá
 > [!div class="mx-imgBorder"]
 >![externaltable5](./media/develop-tables-external-tables/external-table-5.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A lekérdezés eredményeinek az Azure Storage külső táblájába való mentéséhez olvassa el a [CETAS](develop-tables-cetas.md) című cikket. Vagy megkezdheti [a Apache Spark lekérdezését az Azure szinapszis külső tábláihoz](develop-storage-files-spark-tables.md).

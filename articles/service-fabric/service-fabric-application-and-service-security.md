@@ -3,12 +3,12 @@ title: Tudnivalók az Azure Service Fabric alkalmazás biztonságáról
 description: Annak áttekintése, hogy miként futtathatók biztonságosan a Service-alkalmazások a Service Fabricon. Megtudhatja, hogyan futtathat szolgáltatásokat és indítási parancsfájlokat különböző biztonsági fiókok alatt, hogyan hitelesítheti és engedélyezheti a felhasználókat, kezelheti az alkalmazások titkait, gondoskodhat a biztonságos szolgáltatásokkal való kommunikációról, API-átjárót használhat, és biztonságossá teheti az alkalmazásokat
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f17840f31d2a4c12a1d4618bd16e81dcc2cc8a14
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81461429"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256577"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric alkalmazás és szolgáltatás biztonsága
 A Service-architektúra [számos előnnyel](service-fabric-overview-microservices.md)járhat. A szolgáltatások biztonságának kezelése azonban kihívást jelent, és eltér a hagyományos monolit alkalmazások biztonságának kezelésével. 
@@ -35,7 +35,7 @@ A hitelesítés után a szolgáltatásoknak engedélyeznie kell a felhasználói
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>Hozzáférés korlátozása és biztonságossá tétele API-átjáró használatával
 A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. Az [API-átjáró](/azure/architecture/microservices/gateway) az ügyfelek és a szolgáltatások között helyezkedik el, és a belépési pont az alkalmazás által biztosított összes szolgáltatáshoz. Fordított proxyként működik, az ügyfelektől a szolgáltatások felé irányuló útválasztási kérelmeket. Emellett különböző, több területet érintő feladatokat is végrehajthat, például a hitelesítést és az engedélyezést, a TLS-lezárást és a díjszabást. Ha nem telepít átjárót, az ügyfeleknek közvetlenül kell elküldeni a kérelmeket az előtér-szolgáltatásoknak.
 
-Service Fabric az átjáró bármilyen állapot nélküli szolgáltatás lehet, például egy [ASP.net Core alkalmazás](service-fabric-reliable-services-communication-aspnetcore.md)vagy egy másik, a bejövő forgalomra tervezett szolgáltatás, például [Traefik](https://docs.traefik.io/), [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT hub](https://docs.microsoft.com/azure/iot-hub/)vagy [Azure API Management](https://docs.microsoft.com/azure/api-management).
+Service Fabric az átjáró bármilyen állapot nélküli szolgáltatás lehet, például egy [ASP.net Core alkalmazás](service-fabric-reliable-services-communication-aspnetcore.md)vagy egy másik, a bejövő forgalomra tervezett szolgáltatás, például [Traefik](https://docs.traefik.io/), [Event Hubs](../event-hubs/index.yml), [IoT hub](../iot-hub/index.yml)vagy [Azure API Management](../api-management/index.yml).
 
 A API Management közvetlenül integrálható Service Fabricekkel, így lehetővé teszi az API-k széles körű útválasztási szabályokkal történő közzétételét a háttérbeli Service Fabric-szolgáltatásokhoz.  Biztonságos hozzáférést biztosíthat a háttér-szolgáltatásokhoz, megakadályozhatja a DOS-támadások szabályozását, vagy ellenőrizheti az API-kulcsokat, a JWT-jogkivonatokat, a tanúsítványokat és az egyéb hitelesítő adatokat. További információért olvassa el [Service Fabric az Azure API Management áttekintése című témakört](service-fabric-api-management-overview.md).
 
@@ -85,14 +85,14 @@ Biztonságos kapcsolatot létesíthet a fordított proxy és a szolgáltatások 
 A Reliable Services alkalmazás-keretrendszer néhány előre elkészített kommunikációs veremet és eszközt biztosít, amelyek segítségével javíthatja a biztonságot. Ismerje meg, hogyan javíthatja a biztonságot a szolgáltatás távelérésének ( [C#](service-fabric-reliable-services-secure-communication.md) vagy [Java](service-fabric-reliable-services-secure-communication-java.md)) vagy a [WCF](service-fabric-reliable-services-secure-communication-wcf.md)használatával történő használatakor.
 
 ## <a name="encrypt-application-data-at-rest"></a>Alkalmazás-adatok titkosítása a nyugalmi állapotban
-Az Azure-ban futó Service Fabric fürtök mindegyik [csomópont-típusát](service-fabric-cluster-nodetypes.md) egy [virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)támogatja. Egy Azure Resource Manager-sablonnal adatlemezeket csatlakoztathat a Service Fabric-fürtöt alkotó méretezési csoport(ok)hoz.  Ha a szolgáltatások egy csatolt adatlemezre mentik az adataikat, akkor az [adatlemezeket titkosíthatja](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) az alkalmazásadatok védelme érdekében.
+Az Azure-ban futó Service Fabric fürtök mindegyik [csomópont-típusát](service-fabric-cluster-nodetypes.md) egy [virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/overview.md)támogatja. Egy Azure Resource Manager-sablonnal adatlemezeket csatlakoztathat a Service Fabric-fürtöt alkotó méretezési csoport(ok)hoz.  Ha a szolgáltatások egy csatolt adatlemezre mentik az adataikat, akkor az [adatlemezeket titkosíthatja](../virtual-machine-scale-sets/disk-encryption-powershell.md) az alkalmazásadatok védelme érdekében.
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Telepítési parancsfájl futtatása a szolgáltatás indításakor](service-fabric-run-script-at-service-startup.md)
 * [Erőforrások meghatározása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md)
 * [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)

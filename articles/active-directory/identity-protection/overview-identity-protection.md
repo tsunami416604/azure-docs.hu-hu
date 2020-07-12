@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27adab85f684143db29e248739492b68af869404
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59f83c7896ca371809d9103489b140ae73d5a42d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647354"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256653"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Mi az az Azure Active Directory Identity Protection?
 
@@ -48,9 +48,9 @@ Az Identity Protection a következő besorolások kockázatait azonosítja:
 
 | Kockázat észlelésének típusa | Leírás |
 | --- | --- |
-| Atipikus utazás | Jelentkezzen be egy atipikus helyről a felhasználó legutóbbi bejelentkezései alapján. |
+| Szokatlan utazás | Jelentkezzen be egy atipikus helyről a felhasználó legutóbbi bejelentkezései alapján. |
 | Névtelen IP-cím | Jelentkezzen be egy névtelen IP-címről (például: Tor-böngésző, névtelenül VPN-ek). |
-| Ismeretlen bejelentkezési tulajdonságok | Jelentkezzen be a nemrégiben nem látott tulajdonságokkal az adott felhasználó számára. |
+| Szokatlan bejelentkezési tulajdonságok | Jelentkezzen be a nemrégiben nem látott tulajdonságokkal az adott felhasználó számára. |
 | Kártevők társított IP-címe | Bejelentkezés kártevővel összekapcsolt IP-címről |
 | Kiszivárgott hitelesítő adatok | Ez a kockázati észlelés azt jelzi, hogy a felhasználó érvényes hitelesítő adatait kiszivárgott |
 | Azure AD-fenyegetések felderítése | A Microsoft belső és külső veszélyforrások hírszerzési forrásai ismert támadási mintát azonosítottak |
@@ -79,7 +79,7 @@ Az Identity Protection-információk Azure Sentineltel való integrálásával k
 
 Az Identity Protection használatához a felhasználóknak biztonsági olvasónak, biztonsági kezelőnek, biztonsági rendszergazdának, globális olvasónak vagy globális rendszergazdának kell lenniük ahhoz, hogy hozzáférjenek.
 
-| Szerepkör | Elvégezhető | Nem hajtható végre |
+| Role | Elvégezhető | Nem hajtható végre |
 | --- | --- | --- |
 | Globális rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz |   |
 | Biztonsági rendszergazda | Teljes hozzáférés az Identity Protection szolgáltatáshoz | Felhasználó jelszavának alaphelyzetbe állítása |
@@ -94,7 +94,7 @@ A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozha
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-| Képesség | Részletek | Prémium szintű Azure AD P2 | Prémium szintű Azure AD P1 | Alapszintű Azure AD/ingyenes |
+| Képesség | Részletek | Prémium szintű Azure AD P2 | Prémium szintű Azure AD P1 | Ingyenes Azure AD/Office 365 alkalmazások |
 | --- | --- | --- | --- | --- |
 | Kockázati szabályzatok | Felhasználói kockázati házirend (Identity Protection használatával) | Igen | Nem | Nem |
 | Kockázati szabályzatok | Bejelentkezési kockázati szabályzat (Identity Protection vagy feltételes hozzáférés használatával) | Igen | Nem | Nem |
@@ -104,7 +104,7 @@ A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozha
 | Biztonsági jelentések | Kockázatészlelések | Teljes hozzáférés | Korlátozott információ | Nem |
 | Értesítések | Veszélyeztetett felhasználók észlelt riasztásai | Igen | Nem | Nem |
 | Értesítések | Heti kivonat | Igen | Nem | Nem |
-| | MFA regisztrációs szabályzat | Igen | Nem | Nem |
+| | MFA-regisztrációs szabályzat | Igen | Nem | Nem |
 
 ## <a name="next-steps"></a>Következő lépések
 

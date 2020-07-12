@@ -5,11 +5,12 @@ author: georgewallace
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
-ms.openlocfilehash: 167ca76d0b6977a87352f8219d807949a0e4a301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695e8d03f782527cd3a9a2667f3513046d7e76c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392641"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256305"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Egyéni Service Fabric állapotjelentés hozzáadása
 Az Azure Service Fabric egy olyan [egészségügyi modellt](service-fabric-health-introduction.md) vezet be, amely a nem kifogástalan állapotú fürtök és az alkalmazások bizonyos entitásokra vonatkozó feltételeit jelöli. Az állapot-modell az állapotfigyelő **jelentéseket** (rendszerösszetevők és watchdogok) használja. A cél egyszerű és gyors diagnosztizálás és javítás. A Service Writers szolgáltatásnak előre kell gondolnia az állapotról. Minden olyan feltételt, amely hatással lehet az állapotra, jelenteni kell, különösen akkor, ha segíthet a gyökérhez közeledő problémák megjelölésében. Az állapotadatok segítségével időt és fáradságot takaríthat meg a hibakeresés és a vizsgálat során. A hasznosság különösen egyértelmű, ha a szolgáltatás a felhőben (magán vagy Azure) nagy léptékben fut.
@@ -37,7 +38,7 @@ Ahogy említettük, a jelentéskészítés a következő helyről végezhető el
 > 
 > 
 
-Ha az állapot-jelentési terv egyértelmű, az állapotadatok egyszerűen elküldhetők. A [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) használatával jelenthet állapotot, ha a fürt nem [biztonságos](service-fabric-cluster-security.md) , vagy ha a háló ügyfél rendszergazdai jogosultságokkal rendelkezik. A jelentéskészítés az API-n keresztül végezhető el a [FabricClient. HealthManager. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), a PowerShell vagy a REST használatával. A konfigurációs gombok a Batch-jelentéseket a jobb teljesítmény érdekében.
+Ha az állapot-jelentési terv egyértelmű, az állapotadatok egyszerűen elküldhetők. A [FabricClient](/dotnet/api/system.fabric.fabricclient) használatával jelenthet állapotot, ha a fürt nem [biztonságos](service-fabric-cluster-security.md) , vagy ha a háló ügyfél rendszergazdai jogosultságokkal rendelkezik. A jelentéskészítés az API-n keresztül végezhető el a [FabricClient. HealthManager. ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), a PowerShell vagy a REST használatával. A konfigurációs gombok a Batch-jelentéseket a jobb teljesítmény érdekében.
 
 > [!NOTE]
 > A jelentés állapota szinkronban van, és csak az ügyfél oldalán lévő ellenőrzési munkát jelöli. Az a tény, hogy az állapotadatok elfogadják a jelentést, vagy az `Partition` vagy az `CodePackageActivationContext` objektum nem azt jelenti, hogy az a tárolóban lesz alkalmazva. A rendszer aszinkron módon küldi el, és esetleg más jelentésekkel kötegelt feldolgozást készít. A kiszolgálón végzett feldolgozás továbbra is sikertelen lehet: a sorszám elavult lehet, az entitást, amelyre a jelentést alkalmazni kell, törölve lett, stb.
@@ -57,7 +58,7 @@ Az állapotfigyelő jelentéseket a rendszer az állapotfigyelő ügyfélen kere
 > 
 
 Az ügyfélen a pufferelés a jelentések egyediségét veszi figyelembe. Ha például egy adott rossz Reporter egy adott entitás ugyanazon tulajdonságán másodpercenként 100 jelentést küld, a jelentéseket a rendszer a legutóbbi verzióra cseréli le. Legfeljebb egy ilyen jelentés szerepel az ügyfél-várólistában. Ha a kötegelt beállítás konfigurálva van, az állapotfigyelő Managernek küldött jelentések száma csak egy küldési időköz. Ez a jelentés az utolsó hozzáadott jelentés, amely az entitás aktuális állapotát tükrözi.
-Adja meg a konfigurációs paramétereket, ha a jön `FabricClient` létre a [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) átadásával az állapottal kapcsolatos bejegyzések kívánt értékeivel.
+Adja meg a konfigurációs paramétereket, ha a jön `FabricClient` létre a [FabricClientSettings](/dotnet/api/system.fabric.fabricclientsettings) átadásával az állapottal kapcsolatos bejegyzések kívánt értékeivel.
 
 A következő példa létrehoz egy Fabric-ügyfelet, és megadja, hogy a rendszer a jelentéseket a hozzáadásakor küldje el. Az újrapróbálkozó időtúllépéseken és hibáknál az újrapróbálkozások 40 másodpercenként történnek.
 
@@ -71,7 +72,7 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-Javasoljuk, hogy az alapértelmezett háló ügyfél-beállításokat állítsa `HealthReportSendInterval` 30 másodpercre. Ez a beállítás biztosítja az optimális teljesítményt a kötegelt feldolgozás miatt. Olyan kritikus fontosságú jelentésekhez, amelyeket a lehető legrövidebb időn belül el kell juttatni, azonnal használhatja a `HealthReportSendOptions` `true` [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API-ban. Az azonnali jelentések megkerülik a kötegelt időközt. Ezt a jelzőt körültekintően használhatja. Ha lehetséges, igény szerint ki kell használni az állapot-ügyfél kötegét. Az azonnali küldés akkor is hasznos, ha a Fabric-ügyfél lezárult (például a folyamat érvénytelen állapotot határozott meg, és le kell állítania, hogy megakadályozza a mellékhatásokat). Ez biztosítja a halmozott jelentések legalkalmasabb küldését. Ha az azonnali jelzővel egy jelentést ad hozzá, az állapot-ügyfél a legutóbbi küldés óta összesíti az összes összesített jelentést.
+Javasoljuk, hogy az alapértelmezett háló ügyfél-beállításokat állítsa `HealthReportSendInterval` 30 másodpercre. Ez a beállítás biztosítja az optimális teljesítményt a kötegelt feldolgozás miatt. Olyan kritikus fontosságú jelentésekhez, amelyeket a lehető legrövidebb időn belül el kell juttatni, azonnal használhatja a `HealthReportSendOptions` `true` [FabricClient. HealthClient. ReportHealth](/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API-ban. Az azonnali jelentések megkerülik a kötegelt időközt. Ezt a jelzőt körültekintően használhatja. Ha lehetséges, igény szerint ki kell használni az állapot-ügyfél kötegét. Az azonnali küldés akkor is hasznos, ha a Fabric-ügyfél lezárult (például a folyamat érvénytelen állapotot határozott meg, és le kell állítania, hogy megakadályozza a mellékhatásokat). Ez biztosítja a halmozott jelentések legalkalmasabb küldését. Ha az azonnali jelzővel egy jelentést ad hozzá, az állapot-ügyfél a legutóbbi küldés óta összesíti az összes összesített jelentést.
 
 Ugyanazokat a paramétereket lehet megadni, amikor egy fürthöz csatlakozik a PowerShell használatával. A következő példa egy helyi fürthöz való kapcsolódást indít el:
 
@@ -113,12 +114,12 @@ A REST esetében a jelentéseket a rendszer a Service Fabric átjárónak küldi
 ## <a name="report-from-within-low-privilege-services"></a>Az alacsony jogosultsági szintű szolgáltatásokból származó jelentés
 Ha Service Fabric szolgáltatásoknak nincs rendszergazdai hozzáférése a fürthöz, a vagy a alkalmazásban az aktuális környezetből bejelentheti az állapotot az entitásokban `Partition` `CodePackageActivationContext` .
 
-* Állapot nélküli szolgáltatások esetén a [IStatelessServicePartition. ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) használatával jelentse az aktuális szolgáltatási példányt.
-* Állapot-nyilvántartó szolgáltatások esetén a [IStatefulServicePartition. ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) használatával jelentse az aktuális replikát.
-* A [IServicePartition. ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) használatával jelentse az aktuális partíciós entitást.
-* A [CodePackageActivationContext. ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) használatával jelentse az aktuális alkalmazást.
-* A [CodePackageActivationContext. ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) használatával jelentse az aktuális csomóponton üzembe helyezett aktuális alkalmazást.
-* A [CodePackageActivationContext. ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) használatával jelentheti be az aktuális csomóponton üzembe helyezett alkalmazás szolgáltatási csomagját.
+* Állapot nélküli szolgáltatások esetén a [IStatelessServicePartition. ReportInstanceHealth](/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) használatával jelentse az aktuális szolgáltatási példányt.
+* Állapot-nyilvántartó szolgáltatások esetén a [IStatefulServicePartition. ReportReplicaHealth](/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) használatával jelentse az aktuális replikát.
+* A [IServicePartition. ReportPartitionHealth](/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) használatával jelentse az aktuális partíciós entitást.
+* A [CodePackageActivationContext. ReportApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) használatával jelentse az aktuális alkalmazást.
+* A [CodePackageActivationContext. ReportDeployedApplicationHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) használatával jelentse az aktuális csomóponton üzembe helyezett aktuális alkalmazást.
+* A [CodePackageActivationContext. ReportDeployedServicePackageHealth](/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) használatával jelentheti be az aktuális csomóponton üzembe helyezett alkalmazás szolgáltatási csomagját.
 
 > [!NOTE]
 > Belsőleg, a `Partition` és az `CodePackageActivationContext` állapotának megtartása az alapértelmezett beállításokkal van konfigurálva. Ahogy azt az állapotfigyelő [ügyfél](service-fabric-report-health.md#health-client)is ismerteti, a jelentések kötegelt és időzítő módon lesznek elküldve. Az objektumokat életben kell tartani, hogy legyen esélye a jelentés elküldésére.
@@ -289,9 +290,9 @@ HealthEvents          :
 ```
 
 ### <a name="rest"></a>REST
-Állapotjelentés küldése a REST használatával a kívánt entitáshoz tartozó POST-kérésekkel, és az állapotjelentés leírását a törzsben kell megtenni. Tekintse meg például a REST- [fürt állapotáról szóló jelentések](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) vagy a [szolgáltatás állapotáról](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service)szóló jelentések küldését ismertető témakört. Minden entitás támogatott.
+Állapotjelentés küldése a REST használatával a kívánt entitáshoz tartozó POST-kérésekkel, és az állapotjelentés leírását a törzsben kell megtenni. Tekintse meg például a REST- [fürt állapotáról szóló jelentések](/rest/api/servicefabric/report-the-health-of-a-cluster) vagy a [szolgáltatás állapotáról](/rest/api/servicefabric/report-the-health-of-a-service)szóló jelentések küldését ismertető témakört. Minden entitás támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az állapotadatok alapján a Service Writers és a cluster/Application Administrators az információk felhasználásának módját is meggondolhatja. Például riasztásokat állíthatnak be az állapot alapján, hogy súlyos problémákba tudják fogni az kimaradások kiesése előtt. A rendszergazdák a javítási rendszerek beállításával automatikusan is kijavíthatják a problémákat.
 
 [Az Service Fabric Health monitoring bemutatása](service-fabric-health-introduction.md)
@@ -305,4 +306,3 @@ Az állapotadatok alapján a Service Writers és a cluster/Application Administr
 [A szolgáltatások helyi figyelése és diagnosztikája](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric alkalmazás frissítése](service-fabric-application-upgrade.md)
-

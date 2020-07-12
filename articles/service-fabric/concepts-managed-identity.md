@@ -4,11 +4,12 @@ description: Ismerje meg, hogyan használhatók a felügyelt identitások az Azu
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: a5c82f49195fc6d790ca4308d78b70106b6cc042
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 786d9b4b577f4a686367a103542ae4f8fa5453da
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710303"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257639"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Felügyelt identitások használata az Azure-hoz a Service Fabric
 
@@ -19,11 +20,11 @@ Az Azure- *erőforrások felügyelt identitásai* ingyenesek az Azure ad-vel az 
 > [!NOTE]
 > A *felügyelt identitások az Azure* -ban a korábbi Managed Service Identity (MSI) néven ismert szolgáltatás neve.
 
-## <a name="concepts"></a>Fogalmak
+## <a name="concepts"></a>Alapelvek
 
 Az Azure-hoz készült felügyelt identitások számos kulcsfontosságú koncepción alapulnak:
 
-- **Ügyfél-azonosító** – az Azure ad által generált egyedi azonosító, amely egy alkalmazáshoz és egyszerű szolgáltatáshoz van kötve a kezdeti kiépítés során (lásd az [alkalmazás azonosítóját](/azure/active-directory/develop/developer-glossary#application-id-client-id)is).
+- **Ügyfél-azonosító** – az Azure ad által generált egyedi azonosító, amely egy alkalmazáshoz és egyszerű szolgáltatáshoz van kötve a kezdeti kiépítés során (lásd az [alkalmazás azonosítóját](../active-directory/develop/developer-glossary.md#application-id-client-id)is).
 
 - **Elsődleges azonosító** – a felügyelt identitáshoz tartozó egyszerű szolgáltatásnév, amely az Azure-erőforrásokhoz való szerepköralapú hozzáférés biztosítására szolgál.
 
@@ -58,7 +59,7 @@ A következő forgatókönyvek nem támogatottak vagy nem ajánlottak; vegye fig
 
 - A felügyelt identitások Service Fabric támogatása jelenleg nincs integrálva a [AzureServiceTokenProvider](../key-vault/general/service-to-service-authentication.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Új Azure Service Fabric-fürt üzembe helyezése felügyelt identitások támogatásával](./configure-new-azure-service-fabric-enable-managed-identity.md)
 - [Felügyelt identitás támogatásának engedélyezése meglévő Azure Service Fabric-fürtben](./configure-existing-cluster-enable-managed-identity-token-service.md)

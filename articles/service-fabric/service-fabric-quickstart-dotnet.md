@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: e3d984fee75dcdb8d4e14e7b454e74a3f7c629f2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b88dfedd5454d708386afa6912a26dac41c6d6b4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75730139"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258562"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rövid útmutató: .NET Reliable Services-alkalmazás üzembe helyezése a Service Fabricben
 
@@ -52,7 +52,7 @@ Miután telepítette a futtatókörnyezetet, az SDK-kat, a Visual Studio-eszköz
 > Bár ez a rövid útmutató szükségtelen, a fürt létrehozásakor a Docker futtatására szolgáló utasítás az ajánlott eljárás.
 > A Docker futásának ellenőrzéséhez nyisson meg egy terminálablakot, majd a `docker ps` parancs futtatásával ellenőrizze, hogy történik-e hiba. Ha a válasz nem jelez hibát, akkor a Docker fut, és készen áll a fürt létrehozására.
 >
-> [Windows 10 vagy Windows Server for containers szolgáltatás beállítása](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
+> [Windows 10 vagy Windows Server for containers szolgáltatás beállítása](/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. Nyisson meg egy új, emelt szintű PowerShell-ablakot rendszergazdaként.
 2. Futtassa az alábbi PowerShell-parancsot egy fejlesztési fürt létrehozásához:
@@ -91,7 +91,7 @@ Az alkalmazás üzembe helyezéséhez nyomja le az **F5** billentyűt.
 > [!NOTE]
 > A Visual Studio kimeneti ablakában megjelenik az "az alkalmazás URL-címe nincs beállítva vagy nem HTTP/HTTPS URL-cím, így a böngésző nem lesz megnyitva az alkalmazás számára."  Ez az üzenet nem utal hibára, csak arra, hogy a böngésző nem fog automatikusan elindulni.
 
-Ha a telepítés befejeződött, indítson el egy böngészőt `http://localhost:8080` , és nyissa meg az alkalmazás webes kezelőfelületének megtekintését.
+Ha a telepítés befejeződött, indítson el egy böngészőt, és nyissa meg az `http://localhost:8080` alkalmazás webes kezelőfelületének megtekintését.
 
 ![Alkalmazás kezelőfelülete](./media/service-fabric-quickstart-dotnet/application-screenshot-new.png)
 
@@ -161,7 +161,7 @@ Az alkalmazás frissítéséhez tegye a következőket:
 
     ![Verzió módosítása párbeszédpanel](./media/service-fabric-quickstart-dotnet/change-version.png)
 7. Az **Service Fabric alkalmazás közzététele** párbeszédpanelen jelölje be az **alkalmazás frissítése jelölőnégyzetet**.
-8.  Módosítsa **a** **PublishProfiles\Local.5Node.XML** , és győződjön meg arról, hogy a **kapcsolódási végpont** **helyi fürtre**van beállítva. 
+8.  Módosítsa a **cél profilt** **PublishProfiles\Local.5Node.xmlre** , és győződjön meg arról, hogy a **kapcsolódási végpont** **helyi fürtre**van beállítva. 
 9. Válassza **az alkalmazás frissítése**lehetőséget.
 
     ![A Közzététel párbeszédpanel frissítési beállításai](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
@@ -176,7 +176,7 @@ Az alkalmazás frissítéséhez tegye a következőket:
 
     A Service Fabric a biztonságos frissítés érdekében a fürt minden egyes csomópontjának frissítése után két percet várakozik. A teljes frissítés körülbelül nyolc percet vesz igénybe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

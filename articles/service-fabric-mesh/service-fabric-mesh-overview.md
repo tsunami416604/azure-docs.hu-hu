@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: d6522d417556104a1ece703c725f3fbeab49d683
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e64cc158a18e604cbd022be5c91350c95258272c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75458986"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257803"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Mi a Service Fabric Mesh?
 
@@ -42,7 +42,7 @@ A Service Fabric Mesh használatával a következőket teheti:
 
 - Az alkalmazásokat az infrastruktúra explicit kiépítése és kezelése nélkül helyezheti üzembe és kezelheti.  A Service Fabric Mesh kiépíti, frissíti, javítja és fenntartja a mögöttes infrastruktúrát Ön helyett.
 - Folyamatos integrációt állíthat be az integrált eszközökkel az alkalmazások egyszerű csomagolása és üzembe helyezése érdekében.
-- Azure Resource Manager erőforrások összes funkciójának kihasználása. Ilyen funkciók például a naplózási nyomvonal és a [szerepköralapú hozzáférés-vezérlés](/azure/role-based-access-control/overview). Az Azure Service Fabric Mesh szolgáltatásában üzembe helyezett összes erőforrás Azure Resource Manager erőforrás. Ezen erőforrások közé tartoznak az alkalmazások, a szolgáltatások, a titkos kulcsok stb.
+- Azure Resource Manager erőforrások összes funkciójának kihasználása. Ilyen funkciók például a naplózási nyomvonal és a [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md). Az Azure Service Fabric Mesh szolgáltatásában üzembe helyezett összes erőforrás Azure Resource Manager erőforrás. Ezen erőforrások közé tartoznak az alkalmazások, a szolgáltatások, a titkos kulcsok stb.
 - Az [Azure Portal](https://portal.azure.com), Resource Manager-sablonok vagy Azure CLI-/PowerShell-kódtárak használatával helyezheti üzembe és kezelheti az erőforrásokat.
 - Működésfigyelést és riasztást állíthat be az [Application Insights](/azure/application-insights/) (vagy a kívánt eszköz) használatával a működési és diagnosztikai nyomkövetések rögzítéséhez a platformról.
 - Az alkalmazásmodellből küldött alkalmazásdiagnosztikai információkat érhet el az [Application Insights](/azure/application-insights/) vagy a kívánt eszköz használatával.
@@ -50,17 +50,17 @@ A Service Fabric Mesh használatával a következőket teheti:
 
 ## <a name="mission-critical-platform-capabilities"></a>Az üzletmenet szempontjából kritikus fontosságú platformképességek
 
-A Service Fabric Mesh a fürtök egy gyűjteményét hozza létre, amelyek áthidalják az [Azure rendelkezésre állási zónák](/azure/availability-zones/az-overview) és/vagy a geopolitikai régiók határait. Service Fabric Mesh olyan alkalmazásokkal rendelkezik, amelyek olyan szándékokkal rendelkeznek, mint a méretezés, a hardverkövetelmények, a tartóssági követelmények és a biztonsági szabályzatok.  Az alkalmazás üzembe helyezésekor a Service Fabric Mesh megkeresi a futtatásához optimális helyet.
+A Service Fabric Mesh a fürtök egy gyűjteményét hozza létre, amelyek áthidalják az [Azure rendelkezésre állási zónák](../availability-zones/az-overview.md) és/vagy a geopolitikai régiók határait. Service Fabric Mesh olyan alkalmazásokkal rendelkezik, amelyek olyan szándékokkal rendelkeznek, mint a méretezés, a hardverkövetelmények, a tartóssági követelmények és a biztonsági szabályzatok.  Az alkalmazás üzembe helyezésekor a Service Fabric Mesh megkeresi a futtatásához optimális helyet.
 
 A Service Fabric Mesh használatával a következőket teheti:
 
 - Használja ki a magas rendelkezésre állás, a le-/felskálázás, a felderíthetőség, a vezénylés, az üzenet-útválasztás, a megbízható üzenetkezelés, az állásidő nélküli frissítések, a biztonság/a titkos kódok kezelése, a vészhelyreállítás, az állapotkezelés, a konfigurációkezelés és az elosztott tranzakciók előnyeit.
 - Az alkalmazások létrehozásakor több alkalmazásmodell közül választhat.
 - A REST-végpontokon keresztül közzétett platformképességeket használhat a Swagger révén létrehozott nyelvspecifikus kötések használatával.
-- [Rendelkezésre állási zónák](/azure/availability-zones/az-overview) és több régió között helyezhet üzembe alkalmazásokat a földrajzi megbízhatóság érdekében.
+- [Rendelkezésre állási zónák](../availability-zones/az-overview.md) és több régió között helyezhet üzembe alkalmazásokat a földrajzi megbízhatóság érdekében.
 - Az Azure által nyújtott összes biztonsági és megfelelőségi szolgáltatást használhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Csupán néhány lépést kell elvégezni a mintaprojekt Visual Studióval való üzembe helyezéséhez. További információért lásd: [ASP.NET Core-webhely létrehozása](service-fabric-mesh-quickstart-dotnet-core.md). 
 

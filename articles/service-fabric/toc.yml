@@ -111,7 +111,7 @@
 - name: Példák
   items:
     - name: Kódminták
-      href: 'https://docs.microsoft.com/samples/browse/'
+      href: /samples/browse/
     - name: Azure PowerShell
       href: service-fabric-powershell-samples.md
     - name: Service Fabric parancssori felület
@@ -491,7 +491,7 @@
             - name: Configure ReliableDictionaryActorStateProvider
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
         - name: ASP.NET Core-szolgáltatás összeállítása
-          href: service-fabric-add-a-web-frontend.md
+          href: ./service-fabric-reliable-services-communication-aspnetcore.md
         - name: Apache Tomcat-kiszolgálótároló összeállítása Linuxon.
           href: service-fabric-get-started-tomcat.md
         - name: Biztonság konfigurálása
@@ -628,7 +628,7 @@
         - name: A folyamatos integráció beállítása
           items:
             - name: A folyamatos integráció beállítása az Azure Pipelinesszal
-              href: service-fabric-set-up-continuous-integration.md
+              href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: Linuxos alkalmazások üzembe helyezése a Jenkins használatával
               href: service-fabric-cicd-your-linux-applications-with-jenkins.md
     - name: Fordított proxy telepítése és konfigurálása
@@ -897,7 +897,7 @@
     - name: Gyakori kérdések
       href: service-fabric-common-questions.md
     - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-service-fabric.html'
+      href: /answers/topics/azure-service-fabric.html
     - name: Az Azure Resource Manager üzembehelyezési védőkorlátai
       href: service-fabric-azure-resource-manager-guardrails.md
     - name: Díjszabás

@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 5bd3bda71943b2ba8a34cd4fbd0b20917b875670
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe31c6fdca3651bfe56e798b30d50c9f047c680b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645752"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258629"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Linux-fürt eseményeinek Service Fabric a syslog-ben
 
@@ -17,7 +18,7 @@ Service Fabric platform-eseményeket tesz elérhetővé, amelyekkel tájékoztat
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Az 6,4-es kiadásban a SyslogConsumer bevezették a Service Fabric platform eseményeinek a syslog for Linux-fürtökbe való küldéséhez. Ha bekapcsolta, az események automatikusan a syslog-be kerülnek, amelyet a Log Analytics ügynök gyűjthet és küldhet.
 
@@ -25,7 +26,7 @@ Minden syslog-esemény 4 összetevővel rendelkezik
 * Létesítmény
 * Identitás
 * Üzenet
-* Severity
+* Súlyosság
 
 A SyslogConsumer minden platform-eseményt ír a létesítmény használatával `Local0` . A konfiguráció konfigurációjának módosításával bármely érvényes létesítményre frissítheti. A használt identitás: `ServiceFabric` . Az üzenet mező a JSON-ban szerializált teljes eseményt tartalmazza, így számos eszközről lekérdezhető és felhasználható. 
 
@@ -110,8 +111,8 @@ Ezeket a syslog-eseményeket megtekintheti egy figyelési eszközben, például 
 
 A fenti példa egy NodeDown esemény. Az események teljes listáját [itt](service-fabric-diagnostics-event-generation-operational.md)tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A log Analytics-ügynök üzembe helyezése](service-fabric-diagnostics-oms-agent.md) a csomópontokon a teljesítményszámlálók összegyűjtéséhez, valamint a tárolók Docker-statisztikáinak és naplóinak összegyűjtéséhez
-* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciókkal
-* [Egyéni nézetek létrehozása Azure Monitor naplókban a Tervező nézet használatával](../log-analytics/log-analytics-view-designer.md)
-* Útmutató a [naplók Azure monitor a syslog-integrációhoz](../log-analytics/log-analytics-data-sources-syslog.md).
+* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/log-query/log-query-overview.md) funkciókkal
+* [Egyéni nézetek létrehozása Azure Monitor naplókban a Tervező nézet használatával](../azure-monitor/platform/view-designer.md)
+* Útmutató a [naplók Azure monitor a syslog-integrációhoz](../azure-monitor/platform/data-sources-syslog.md).

@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bfdf1263ccee78b57ccf79c63efcc01d95dd13c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392250"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258086"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Digitális ikrek gráfjának kezelése kapcsolatok használatával
 
@@ -20,6 +21,8 @@ Az Azure digitális ikrek szíve a teljes környezetet jelképező [kettős grá
 Ha rendelkezik egy működő [Azure digitális Twins-példánnyal](how-to-set-up-instance.md) , és beállította a [hitelesítést](how-to-authenticate-client.md) az ügyfélalkalmazás számára, a [**DigitalTwins API**](how-to-use-apis-sdks.md) -kkal digitális ikreket és azok kapcsolatait is létrehozhatja, módosíthatja és törölheti egy Azure digitális Twins-példányban. Használhatja a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)-t vagy az [Azure Digital Twins CLI](how-to-use-cli.md)-t is.
 
 Ez a cikk a kapcsolatok és a gráf egészének kezelésére koncentrál. az egyes digitális ikrekkel való munkavégzéshez tekintse meg az [útmutató: digitális ikrek kezelése](how-to-manage-twin.md)című témakört.
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
 ## <a name="create-relationships"></a>Kapcsolatok létrehozása
 
@@ -229,12 +232,12 @@ Vegye figyelembe a következő adattáblázatot, amely leírja a létrehozandó 
 | Modell    | ID | Szülő | Kapcsolat neve | Egyéb adatszolgáltatások |
 | --- | --- | --- | --- | --- |
 | padló    | Floor01 | | | … |
-| szoba    | Room10 | Floor01 | tartalmazza | … |
-| szoba    | Room11 | Floor01 | tartalmazza | … |
-| szoba    | Room12 | Floor01 | tartalmazza | … |
+| szoba    | Room10 | Floor01 | contains | … |
+| szoba    | Room11 | Floor01 | contains | … |
+| szoba    | Room12 | Floor01 | contains | … |
 | padló    | Floor02 | | | … |
-| szoba    | Room21 | Floor02 | tartalmazza | … |
-| szoba    | Room22 | Floor02 | tartalmazza | … |
+| szoba    | Room21 | Floor02 | contains | … |
+| szoba    | Room22 | Floor02 | contains | … |
 
 A következő kód a [Microsoft Graph API](https://docs.microsoft.com/graph/overview) -t használja a számolótáblák beolvasásához és az eredményekből származó Azure digitális Twins Twin gráf létrehozásához.
 
@@ -300,7 +303,7 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 
 Az ikrek és kapcsolataik az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [útmutatóban találhatók: az Azure digitális Twins parancssori](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók az Azure Digital Twins Twin Graph lekérdezéséről:
 * [Fogalmak: lekérdezési nyelv](concepts-query-language.md)

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d765168ea2eddaf42715536b5da67f15bb8a8cee
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75372686"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258555"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rövid útmutató: Linux-tárolók üzembe helyezése a Service Fabricben
 
@@ -26,7 +26,7 @@ Az oktatóanyag elvégzéséhez:
 
 1. Hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) , mielőtt elkezdené, ha nem rendelkezik előfizetéssel.
 
-2. Telepítse az [Azure CLI-t](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+2. Az [Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) telepítése
 
 3. A [Service FABRIC SDK és parancssori](service-fabric-get-started-linux.md#installation-methods) felület telepítése
 
@@ -37,7 +37,7 @@ Az oktatóanyag elvégzéséhez:
 
 A tárolók a Service Fabric szolgáltatásban való üzembe helyezéséhez jegyzékfájlok egy készletére lesz szükség (az alkalmazásdefinícióra), amelyek leírják az egyes tárolókat és az alkalmazást.
 
-A konzolon a git használatával klónozott az alkalmazás definíciójának másolatát; Ezután módosítsa a címtárakat `Voting` a klónozott könyvtárba.
+A konzolon a git használatával klónozott az alkalmazás definíciójának másolatát; Ezután módosítsa a címtárakat a `Voting` klónozott könyvtárba.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-containers.git
@@ -108,7 +108,7 @@ A Mozilla Firefox az Ubuntu 16,04 alapértelmezett böngészője. A tanúsítvá
     ./install.sh
     ```
 
-3. Nyisson meg egy webböngészőt, majd navigáljon a fürt Service Fabric Explorer-végpontjára. A végpont formátuma a következő: **https://\<My-Azure-Service-Fabric-cluster-URL>:19080/Explorer**; például: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
+3. Nyisson meg egy webböngészőt, majd navigáljon a fürt Service Fabric Explorer-végpontjára. A végpont formátuma a következő: **https:// \<my-azure-service-fabric-cluster-url> : 19080/Explorer**; például: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer` . </br>
 
 4. Bontsa ki az **alkalmazások** csomópontot, és ellenőrizze, hogy most már van-e bejegyzés a szavazási alkalmazás típusához és a létrehozott példányhoz.
 
@@ -179,11 +179,11 @@ az group delete --name $ResourceGroupName
 ```
 
 Ha végzett a fürt használatával, eltávolíthatja a tanúsítványt a tanúsítványtárolóból. Például:
-- Windows rendszeren: Használja a [Tanúsítványok MMC beépülő modult](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Ügyeljen arra, hogy a **Saját felhasználói fiókot** válassza a beépülő modul hozzáadásakor. Lépjen a `Certificates - Current User\Personal\Certificates` helyre, és távolítsa el a tanúsítványt.
+- Windows rendszeren: Használja a [Tanúsítványok MMC beépülő modult](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Ügyeljen arra, hogy a **Saját felhasználói fiókot** válassza a beépülő modul hozzáadásakor. Lépjen a `Certificates - Current User\Personal\Certificates` helyre, és távolítsa el a tanúsítványt.
 - Mac rendszeren: Használja a Keychain alkalmazást.
 - Ubuntu rendszeren: Kövesse a tanúsítványok megtekintéséhez használt lépéseket, majd távolítsa el a tanúsítványt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban üzembe helyezett egy Linux-alapú tárolóalkalmazást egy Service Fabric-fürtön az Azure-ban, elvégezte az alkalmazás feladatátvételét és méretezte azt a fürtben. Ha bővebb információra van szüksége a Linux-tárolók Service Fabricben való használatával kapcsolatban, lépjen tovább a Linux-tárolóalkalmazásokról szóló oktatóanyagra.
 

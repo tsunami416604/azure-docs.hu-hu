@@ -3,12 +3,12 @@ title: A Reliable Collections használata
 description: Ismerje meg a megbízható gyűjtemények Azure Service Fabric alkalmazáson belüli használatának ajánlott eljárásait.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: f0f1d332b3636e28ffc50ee8b8edcd253474a307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7df48bc0dfbef6fc85335801e64484914a218eb7
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374695"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255795"
 ---
 # <a name="working-with-reliable-collections"></a>A Reliable Collections használata
 Service Fabric egy megbízható gyűjtemények használatával a .NET-fejlesztők számára elérhető állapot-nyilvántartó programozási modellt kínál. Pontosabban, Service Fabric megbízható szótárt és megbízható üzenetsor-osztályokat biztosít. Ha ezeket az osztályokat használja, az állapota particionálva van (a méretezhetőség érdekében), a replikált (rendelkezésre álláshoz), és egy partíción belül (a savas szemantika esetében). Nézzük meg egy megbízható szótár tipikus használatát, és lássuk, mit csinál valójában.
@@ -218,11 +218,11 @@ Emellett a szolgáltatási kód egyszerre egy frissítési tartományt frissít.
 
 Azt is megteheti, hogy a szokásos módon két frissítést hajt végre. A kétfázisú frissítéssel a Service-t a v1-ről v2-re, a v2-re pedig az új séma módosításával, de ez a kód nem hajtható végre. Ha a v2 kód beolvassa a v1-es adatokat, akkor az működik rajta, és v1-adatokat ír. Ezt követően a frissítés befejezését követően az összes frissítési tartományon megadhatja a frissítés befejezését jelző futó v2-példányokat. (Az egyik lehetőség, hogy ezt a konfigurációt egy konfigurációs frissítés kiépítésére állítja be. Ez a kétfázisú frissítés.) A v2-példányok a v1-es adatelemzést, a v2-re való átalakítást, a működést, valamint a v2-adatként való kiírását teszik elérhetővé. Ha más példányok is beolvassák a v2-et, akkor nem kell azokat konvertálniuk, csak azokon működnek, és ki kell írni a v2-es adattípust.
 
-## <a name="next-steps"></a>További lépések
-A továbbítással kompatibilis adategyezmények létrehozásával kapcsolatos további információkért lásd: [továbbítással kompatibilis adategyezmények](https://msdn.microsoft.com/library/ms731083.aspx)
+## <a name="next-steps"></a>Következő lépések
+A továbbítással kompatibilis adategyezmények létrehozásával kapcsolatos további információkért lásd: [továbbítással kompatibilis adategyezmények](/dotnet/framework/wcf/feature-details/forward-compatible-data-contracts)
 
-Az adategyezmények verziószámozásával kapcsolatos ajánlott eljárásokért tekintse meg az [adategyezmény verziószámozása](https://msdn.microsoft.com/library/ms731138.aspx) című témakört.
+Az adategyezmények verziószámozásával kapcsolatos ajánlott eljárásokért tekintse meg az [adategyezmény verziószámozása](/dotnet/framework/wcf/feature-details/data-contract-versioning) című témakört.
 
-A verzió-toleráns adategyezmények megvalósításának megismeréséhez tekintse meg a [Version-toleráns szerializálási visszahívások](https://msdn.microsoft.com/library/ms733734.aspx) című témakört.
+A verzió-toleráns adategyezmények megvalósításának megismeréséhez tekintse meg a [Version-toleráns szerializálási visszahívások](/dotnet/framework/wcf/feature-details/version-tolerant-serialization-callbacks) című témakört.
 
-Ha szeretné megtudni, hogyan biztosíthat olyan adatstruktúrát, amely több verzióban is képes együttműködni, tekintse meg a következőt: [IExtensibleDataObject](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx)
+Ha szeretné megtudni, hogyan biztosíthat olyan adatstruktúrát, amely több verzióban is képes együttműködni, tekintse meg a következőt: [IExtensibleDataObject](/dotnet/api/system.runtime.serialization.iextensibledataobject?view=netcore-3.1)

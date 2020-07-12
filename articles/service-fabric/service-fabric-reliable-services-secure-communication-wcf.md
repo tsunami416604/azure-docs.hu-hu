@@ -5,11 +5,12 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.author: pepogors
-ms.openlocfilehash: ca5eafa4612503a13f80b7f238e4827979c0358b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8633a5018e6faeaca842a3ecffb4c4921358e191
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614162"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257358"
 ---
 # <a name="secure-wcf-based-communications-for-a-service"></a>Biztonságos WCF-alapú kommunikáció egy szolgáltatáshoz
 A biztonság a kommunikáció egyik legfontosabb aspektusa. A Reliable Services alkalmazás-keretrendszer néhány előre elkészített kommunikációs veremet és eszközt biztosít, amelyek segítségével javíthatja a biztonságot. Ez a cikk arról beszél, hogyan javíthatja a biztonságot a szolgáltatás távelérésének használatakor.
@@ -119,4 +120,4 @@ Egy meglévő [példát](service-fabric-reliable-services-communication-wcf.md) 
         client => client.Channel.Add(2, 3)).Result;
     ```
 
-A következő lépésként olvassa el a [webes API-t a OWIN Reliable Services-ben](service-fabric-reliable-services-communication-webapi.md)című témakörben.
+A következő lépésként olvassa el a [webes API-t a OWIN Reliable Services-ben](./service-fabric-reliable-services-communication-aspnetcore.md)című témakörben.

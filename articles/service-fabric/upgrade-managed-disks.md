@@ -3,12 +3,12 @@ title: Fürtcsomópontok frissítése az Azure Managed Disks használatára
 description: A következőképpen frissíthet egy meglévő Service Fabric-fürtöt az Azure Managed Disks használatára a fürt minimális vagy leállása nélkül.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 46dec6ae29fdd8f2a418f695c31900e6df4483e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611628"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255897"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Fürtcsomópontok frissítése az Azure Managed Disks használatára
 
@@ -16,7 +16,7 @@ Az [Azure Managed](../virtual-machines/windows/managed-disks-overview.md) Disks 
 
 Service Fabric fürtcsomópont a felügyelt lemezek használatára való frissítésének általános stratégiája a következő:
 
-1. Helyezzen üzembe egy, az adott csomópont típusú, másképpen duplikált virtuálisgép-méretezési készletet, de a virtuálisgép- [managedDisk](https://docs.microsoft.com/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) `osDisk` méretezési csoport telepítési sablonjának szakaszához hozzáadott managedDisk objektummal. Az új méretezési csoportnak ugyanahhoz a terheléselosztó/IP-címhez kell tartoznia, mint az eredeti, így az ügyfelek nem tapasztalnak szolgáltatás-kimaradást az áttelepítés során.
+1. Helyezzen üzembe egy, az adott csomópont típusú, másképpen duplikált virtuálisgép-méretezési készletet, de a virtuálisgép- [managedDisk](/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) `osDisk` méretezési csoport telepítési sablonjának szakaszához hozzáadott managedDisk objektummal. Az új méretezési csoportnak ugyanahhoz a terheléselosztó/IP-címhez kell tartoznia, mint az eredeti, így az ügyfelek nem tapasztalnak szolgáltatás-kimaradást az áttelepítés során.
 
 2. Ha az eredeti és a frissített méretezési csoportok is futnak egymás mellett, tiltsa le az eredeti csomópont-példányokat egy időben, hogy a rendszerszolgáltatások (vagy az állapot-nyilvántartó szolgáltatások replikái) át legyenek telepítve az új méretezési csoportba.
 
@@ -25,7 +25,7 @@ Service Fabric fürtcsomópont a felügyelt lemezek használatára való frissí
 Ez a cikk végigvezeti egy példa-fürt elsődleges csomópont-típusának a felügyelt lemezek használatára való frissítésének lépésein, és a fürt leállásának elkerülésével (lásd az alábbi megjegyzést). A példaként szolgáló tesztelési fürt kezdeti állapota egy [ezüst tartósságú](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)csomópontból áll, amely egyetlen, öt csomóponttal rendelkező méretezési csoporttal rendelkezik.
 
 > [!CAUTION]
-> Ezt az eljárást csak akkor fogja tapasztalni, ha a fürt DNS-függőségeivel rendelkezik (például [Service Fabric Explorerhoz](service-fabric-visualizing-your-cluster.md)való hozzáféréskor). Az [előtér-szolgáltatásokra vonatkozó ajánlott eljárás](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) az, hogy a csomópontok típusai előtt valamilyen [terheléselosztó](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) legyen elérhető, hogy leállás nélkül lehessen lecserélni a csomópontokat.
+> Ezt az eljárást csak akkor fogja tapasztalni, ha a fürt DNS-függőségeivel rendelkezik (például [Service Fabric Explorerhoz](service-fabric-visualizing-your-cluster.md)való hozzáféréskor). Az [előtér-szolgáltatásokra vonatkozó ajánlott eljárás](/azure/architecture/microservices/design/gateway) az, hogy a csomópontok típusai előtt valamilyen [terheléselosztó](/azure/architecture/guide/technology-choices/load-balancing-overview) legyen elérhető, hogy leállás nélkül lehessen lecserélni a csomópontokat.
 
 Az alábbi [sablonok és parancsmagok](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) a frissítési forgatókönyv elvégzéséhez használni kívánt Azure Resource Manager. A sablon módosításait a [frissített méretezési csoport üzembe helyezése az alábbi elsődleges csomópont-típushoz című](#deploy-an-upgraded-scale-set-for-the-primary-node-type) részben találja.
 
@@ -212,7 +212,7 @@ A központi telepítési sablon `variables` szakaszban adja meg az új méretez�
 "lbNatPoolID1": "[concat(variables('lbID0'),'/inboundNatPools/LoadBalancerBEAddressNatPool1')]", 
 ```
 
-### <a name="resources"></a>Erőforrások
+### <a name="resources"></a>További források
 
 A központi telepítési sablon *erőforrásai* szakaszban adja hozzá az új virtuálisgép-méretezési készletet, szem előtt tartva ezeket a dolgokat:
 
@@ -356,7 +356,7 @@ foreach($name in $nodeNames){
 
 ![Service Fabric Explorer a hibás állapotú csomópontok eltávolításakor](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan frissíthet egy Service Fabric-fürt virtuálisgép-méretezési csoportjait a felügyelt lemezek használatára, miközben elkerüli a szolgáltatás leállását a folyamat során. A kapcsolódó témakörökkel kapcsolatos további információkért tekintse meg az alábbi forrásokat.
 

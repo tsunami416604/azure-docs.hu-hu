@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
-ms.openlocfilehash: 33df6b5c8c5c16a6eb896944de05068affc2b407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82bcc61d06ac519447307c1e92784f33794d5817
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062203"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258029"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>E-mail küldése a SendGrid és az Azure használatával
 ## <a name="overview"></a>Áttekintés
@@ -68,30 +68,34 @@ A SendGrid .NET-osztály könyvtára **SendGrid**néven ismert. A következő n�
 
 Adja hozzá a következő kód névtér-deklarációkat a C#-fájlok tetejéhez, amelyeken programozott módon szeretné elérni a SendGrid e-mail szolgáltatást.
 
-    using SendGrid;
-    using SendGrid.Helpers.Mail;
+```csharp
+using SendGrid;
+using SendGrid.Helpers.Mail;
+```
 
 ## <a name="how-to-create-an-email"></a>Útmutató: E-mail létrehozása
 E-mail-üzenet létrehozásához használja a **SendGridMessage** objektumot. Az üzenet-objektum létrehozása után megadhatja a tulajdonságokat és a metódusokat, beleértve az e-mail feladóját, az e-mail címzettjét, valamint az e-mail tárgyát és törzsét.
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy teljesen feltöltött e-mail-objektumot:
 
-    var msg = new SendGridMessage();
+```csharp
+var msg = new SendGridMessage();
 
-    msg.SetFrom(new EmailAddress("dx@example.com", "SendGrid DX Team"));
+msg.SetFrom(new EmailAddress("dx@example.com", "SendGrid DX Team"));
 
-    var recipients = new List<EmailAddress>
-    {
-        new EmailAddress("jeff@example.com", "Jeff Smith"),
-        new EmailAddress("anna@example.com", "Anna Lidman"),
-        new EmailAddress("peter@example.com", "Peter Saddow")
-    };
-    msg.AddTos(recipients);
+var recipients = new List<EmailAddress>
+{
+    new EmailAddress("jeff@example.com", "Jeff Smith"),
+    new EmailAddress("anna@example.com", "Anna Lidman"),
+    new EmailAddress("peter@example.com", "Peter Saddow")
+};
+msg.AddTos(recipients);
 
-    msg.SetSubject("Testing the SendGrid C# Library");
+msg.SetSubject("Testing the SendGrid C# Library");
 
-    msg.AddContent(MimeType.Text, "Hello World plain text!");
-    msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
+msg.AddContent(MimeType.Text, "Hello World plain text!");
+msg.AddContent(MimeType.Html, "<p>Hello World!</p>");
+```
 
 További információ a **SendGrid** típus által támogatott összes tulajdonságról és metódusról: [SendGrid-csharp][sendgrid-csharp] a githubon.
 
@@ -104,44 +108,48 @@ Ezeket a hitelesítő adatokat a Azure Portalon keresztül is tárolhatja, ha az
 
  ![Azure-alkalmazás beállításai][azure_app_settings]
 
- Ezután a következőképpen érheti el őket:
+Ezután a következőképpen érheti el őket:
 
-    var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
-    var client = new SendGridClient(apiKey);
+```csharp
+var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+var client = new SendGridClient(apiKey);
+```
 
 Az alábbi példák bemutatják, hogyan küldhet e-mail-üzenetet a SendGrid web API-val egy konzolszoftver használatával.
 
-    using System;
-    using System.Threading.Tasks;
-    using SendGrid;
-    using SendGrid.Helpers.Mail;
+```csharp
+using System;
+using System.Threading.Tasks;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
-    namespace Example
+namespace Example
+{
+    internal class Example
     {
-        internal class Example
+        private static void Main()
         {
-            private static void Main()
-            {
-                Execute().Wait();
-            }
+            Execute().Wait();
+        }
 
-            static async Task Execute()
+        static async Task Execute()
+        {
+            var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
+            var client = new SendGridClient(apiKey);
+            var msg = new SendGridMessage()
             {
-                var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
-                var client = new SendGridClient(apiKey);
-                var msg = new SendGridMessage()
-                {
-                    From = new EmailAddress("test@example.com", "DX Team"),
-                    Subject = "Hello World from the SendGrid CSharp SDK!",
-                    PlainTextContent = "Hello, Email!",
-                    HtmlContent = "<strong>Hello, Email!</strong>"
-                };
-                msg.AddTo(new EmailAddress("test@example.com", "Test User"));
-                var response = await client.SendEmailAsync(msg);
-            }
+                From = new EmailAddress("test@example.com", "DX Team"),
+                Subject = "Hello World from the SendGrid CSharp SDK!",
+                PlainTextContent = "Hello, Email!",
+                HtmlContent = "<strong>Hello, Email!</strong>"
+            };
+            msg.AddTo(new EmailAddress("test@example.com", "Test User"));
+            var response = await client.SendEmailAsync(msg);
         }
     }
-    
+}
+```
+
 ## <a name="how-to-send-email-from-asp-net-core-api-using-mailhelper-class"></a>Útmutató: e-mailek küldése az ASP .NET Core API-ból a MailHelper osztály használatával
 
 Az alábbi példa arra szolgál, hogy egyetlen e-mailt küldjön több személynek az ASP .NET Core API-ból a `MailHelper` névtér osztály használatával `SendGrid.Helpers.Mail` . Ebben a példában az ASP .NET Core 1,0-et használjuk. 
@@ -150,86 +158,94 @@ Ebben a példában az API-kulcsot a fájl tárolja, `appsettings.json` amely fel
 
 A fájl tartalmának a következőhöz `appsettings.json` hasonlóan kell kinéznie:
 
-    {
-       "Logging": {
-       "IncludeScopes": false,
-       "LogLevel": {
-       "Default": "Debug",
-       "System": "Information",
-       "Microsoft": "Information"
-         }
-       },
-     "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-    }
+```csharp
+{
+   "Logging": {
+   "IncludeScopes": false,
+   "LogLevel": {
+   "Default": "Debug",
+   "System": "Information",
+   "Microsoft": "Information"
+     }
+   },
+ "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+}
+```
 
 Először hozzá kell adnia az alábbi kódot a `Startup.cs` .net Core API projekt fájljában. Erre azért van szükség, hogy az API- `SENDGRID_API_KEY` `appsettings.json` vezérlő függőségi injektálásával hozzáférhessen a fájlhoz. Az `IConfiguration` illesztőfelület a vezérlő konstruktorában lehet befecskendezni, miután hozzáadta azt az `ConfigureServices` alábbi metódushoz. A fájl tartalma a `Startup.cs` következőhöz hasonlóan néz ki a szükséges kód hozzáadása után:
 
-        public IConfigurationRoot Configuration { get; }
+```csharp
+    public IConfigurationRoot Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            // Add mvc here
-            services.AddMvc();
-            services.AddSingleton<IConfiguration>(Configuration);
-        }
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // Add mvc here
+        services.AddMvc();
+        services.AddSingleton<IConfiguration>(Configuration);
+    }
+```
 
 A vezérlőben az interfész beinjektálása után a `IConfiguration` `CreateSingleEmailToMultipleRecipients` osztály metódusával `MailHelper` egyetlen e-mailt küldhet több címzettnek. A metódus egy nevű további logikai paramétert fogad el `showAllRecipients` . Ezzel a paraméterrel szabályozhatja, hogy az e-mail címzettjei láthatják-e az e-mailek fejlécének címzett szakaszát. A vezérlőhöz tartozó mintakód az alábbihoz hasonló lehet: 
 
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc;
-    using SendGrid;
-    using SendGrid.Helpers.Mail;
-    using Microsoft.Extensions.Configuration;
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using Microsoft.Extensions.Configuration;
 
-    namespace SendgridMailApp.Controllers
+namespace SendgridMailApp.Controllers
+{
+    [Route("api/[controller]")]
+    public class NotificationController : Controller
     {
-        [Route("api/[controller]")]
-        public class NotificationController : Controller
-        {
-           private readonly IConfiguration _configuration;
+       private readonly IConfiguration _configuration;
 
-           public NotificationController(IConfiguration configuration)
-           {
-             _configuration = configuration;
-           }      
-        
-           [Route("SendNotification")]
-           public async Task PostMessage()
-           {
-              var apiKey = _configuration.GetSection("SENDGRID_API_KEY").Value;
-              var client = new SendGridClient(apiKey);
-              var from = new EmailAddress("test1@example.com", "Example User 1");
-              List<EmailAddress> tos = new List<EmailAddress>
-              {
-                  new EmailAddress("test2@example.com", "Example User 2"),
-                  new EmailAddress("test3@example.com", "Example User 3"),
-                  new EmailAddress("test4@example.com","Example User 4")
-              };
-            
-              var subject = "Hello world email from Sendgrid ";
-              var htmlContent = "<strong>Hello world with HTML content</strong>";
-              var displayRecipients = false; // set this to true if you want recipients to see each others mail id 
-              var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, tos, subject, "", htmlContent, false);
-              var response = await client.SendEmailAsync(msg);
-          }
-       }
-    }
+       public NotificationController(IConfiguration configuration)
+       {
+         _configuration = configuration;
+       }      
     
+       [Route("SendNotification")]
+       public async Task PostMessage()
+       {
+          var apiKey = _configuration.GetSection("SENDGRID_API_KEY").Value;
+          var client = new SendGridClient(apiKey);
+          var from = new EmailAddress("test1@example.com", "Example User 1");
+          List<EmailAddress> tos = new List<EmailAddress>
+          {
+              new EmailAddress("test2@example.com", "Example User 2"),
+              new EmailAddress("test3@example.com", "Example User 3"),
+              new EmailAddress("test4@example.com","Example User 4")
+          };
+        
+          var subject = "Hello world email from Sendgrid ";
+          var htmlContent = "<strong>Hello world with HTML content</strong>";
+          var displayRecipients = false; // set this to true if you want recipients to see each others mail id 
+          var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, tos, subject, "", htmlContent, false);
+          var response = await client.SendEmailAsync(msg);
+      }
+   }
+}
+```
+
 ## <a name="how-to-add-an-attachment"></a>Útmutató: melléklet hozzáadása
 A mellékletek hozzáadhatók egy üzenethez a **AddAttachment** metódus meghívásával és a csatolni kívánt fájl nevének és Base64-kódolásának minimális megadásával. Több mellékletet is megadhat, ha ezt a metódust egyszer hívja meg minden csatolni kívánt fájlhoz vagy a **AddAttachments** metódus használatával. Az alábbi példa egy melléklet hozzáadását mutatja be egy üzenethez:
 
-    var banner2 = new Attachment()
-    {
-        Content = Convert.ToBase64String(raw_content),
-        Type = "image/png",
-        Filename = "banner2.png",
-        Disposition = "inline",
-        ContentId = "Banner 2"
-    };
-    msg.AddAttachment(banner2);
+```csharp
+var banner2 = new Attachment()
+{
+    Content = Convert.ToBase64String(raw_content),
+    Type = "image/png",
+    Filename = "banner2.png",
+    Disposition = "inline",
+    ContentId = "Banner 2"
+};
+msg.AddAttachment(banner2);
+```
 
 ## <a name="how-to-use-mail-settings-to-enable-footers-tracking-and-analytics"></a>Útmutató: a levelezési beállítások használata a láblécek, a követés és az elemzés engedélyezéséhez
 A SendGrid további e-mail-funkciókat biztosít a levelezési beállítások és a követési beállítások használatával. Ezek a beállítások hozzáadhatók egy e-mail-üzenethez, amely lehetővé teszi bizonyos funkciók, például a követés, a Google Analytics, az előfizetés nyomon követése és így tovább. Az alkalmazások teljes listáját a [Beállítások dokumentációjában][settings-documentation]találja.
@@ -239,18 +255,24 @@ Az alkalmazások a **SendGridMessage** osztály részeként megvalósított met�
 Az alábbi példák bemutatják a láblécet, majd a szűrők követése elemre kattintanak:
 
 ### <a name="footer-settings"></a>Lábléc beállításai
-    msg.SetFooterSetting(
-                         true,
-                         "Some Footer HTML",
-                         "<strong>Some Footer Text</strong>");
+
+```csharp
+msg.SetFooterSetting(
+                     true,
+                     "Some Footer HTML",
+                     "<strong>Some Footer Text</strong>");
+```
 
 ### <a name="click-tracking"></a>Kattintson a nyomon követés gombra
-    msg.SetClickTracking(true);
+
+```csharp
+msg.SetClickTracking(true);
+```
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>Útmutató: további SendGrid-szolgáltatások használata
 A SendGrid számos API-t és webhookot kínál, amelyek segítségével további funkciókat alkalmazhat az Azure-alkalmazásban. További részletekért tekintse meg a [SENDGRID API-referenciát][SendGrid API documentation].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, kövesse az alábbi hivatkozásokat további információért.
 
 * SendGrid C \# programkönyvtár: [SendGrid-csharp][sendgrid-csharp]

@@ -3,12 +3,12 @@ title: Az Azure Service Fabric hálózatkezelési mintái
 description: Ismerteti a Service Fabric általános hálózati mintáit, valamint azt, hogyan lehet fürtöt létrehozni az Azure hálózatkezelési funkciói segítségével.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: b9114be5498bcb7fdec4e105ad6e3ff9fcc03a7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c3664d1890fd318aa1bff508a51cb227bdcc01d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85106614"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258537"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric hálózati minták
 Az Azure Service Fabric-fürtöt más Azure hálózati szolgáltatásokkal is integrálhatja. Ebben a cikkben bemutatjuk, hogyan hozhat létre olyan fürtöket, amelyek a következő szolgáltatásokat használják:
@@ -598,10 +598,9 @@ Az üzembe helyezést követően két terheléselosztó látható az erőforrás
 
 ## <a name="notes-for-production-workloads"></a>Az éles számítási feladatokra vonatkozó megjegyzések
 
-A fenti GitHub-sablonok úgy vannak kialakítva, hogy működjenek az alapértelmezett SKU-val az Azure standard Load Balancer (SLB) és az alapszintű SKU használatával. Ez a SLB nem rendelkezik SLA-val, ezért az éles számítási feladatokhoz a szabványos SKU-t kell használni. Erről további információt az [Azure standard Load Balancer áttekintése](/azure/load-balancer/load-balancer-standard-overview)című témakörben talál. A SLB standard SKU-t használó összes Service Fabric fürtnek biztosítania kell, hogy minden csomópont-típushoz olyan szabály legyen, amely engedélyezi a kimenő forgalmat az 443-as porton. Ez a fürt beállításának befejezéséhez szükséges, és az ilyen szabályok nélküli központi telepítések sikertelenek lesznek. A "belső only" terheléselosztó fenti példájában egy további külső terheléselosztó hozzáadása szükséges a sablonhoz egy olyan szabállyal, amely engedélyezi a kimenő forgalmat a 443-es porton.
+A fenti GitHub-sablonok úgy vannak kialakítva, hogy működjenek az alapértelmezett SKU-val az Azure standard Load Balancer (SLB) és az alapszintű SKU használatával. Ez a SLB nem rendelkezik SLA-val, ezért az éles számítási feladatokhoz a szabványos SKU-t kell használni. Erről további információt az [Azure standard Load Balancer áttekintése](../load-balancer/load-balancer-overview.md)című témakörben talál. A SLB standard SKU-t használó összes Service Fabric fürtnek biztosítania kell, hogy minden csomópont-típushoz olyan szabály legyen, amely engedélyezi a kimenő forgalmat az 443-as porton. Ez a fürt beállításának befejezéséhez szükséges, és az ilyen szabályok nélküli központi telepítések sikertelenek lesznek. A "belső only" terheléselosztó fenti példájában egy további külső terheléselosztó hozzáadása szükséges a sablonhoz egy olyan szabállyal, amely engedélyezi a kimenő forgalmat a 443-es porton.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Fürt létrehozása](service-fabric-cluster-creation-via-arm.md)
 
 Az üzembe helyezést követően két terheléselosztó látható az erőforráscsoporthoz. Ha megkeresi a terheléselosztó szolgáltatásait, megtekintheti a nyilvános IP-címhez hozzárendelt nyilvános IP-címet és felügyeleti végpontokat (19000-es és 19080-as portok). A belső terheléselosztó számára hozzárendelt statikus belső IP-címet és alkalmazás-végpontot (80-as portot) is láthatja. Mindkét terheléselosztó ugyanazt a virtuálisgép-méretezési készletet használja.
-

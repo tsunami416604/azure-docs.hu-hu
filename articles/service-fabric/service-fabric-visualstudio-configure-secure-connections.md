@@ -5,11 +5,12 @@ author: cawaMS
 ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: 11f76153726d3fc92118fb46cc61b4627ab6a1b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464093"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256093"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Biztonságos kapcsolatok konfigurálása egy Service Fabric-fürthöz a Visual studióból
 Ismerje meg, hogyan férhet hozzá a Visual Studióval egy Azure Service Fabric-fürt biztonságos eléréséhez a konfigurált hozzáférés-vezérlési házirendekkel.
@@ -34,9 +35,9 @@ A **Service Fabric alkalmazás közzététele** párbeszédpanel automatikusan e
 3. A projekt helyi menüjében válassza a **Publish...** parancsot az **Azure-alkalmazás közzététele** párbeszédpanel megnyitásához, majd válassza ki a célként megadott fürtöt. Az eszköz automatikusan feloldja a kapcsolatokat, és menti a biztonságos kapcsolatok paramétereit a közzétételi profilban.
 4. Nem kötelező: a közzétételi profil szerkesztésével megadhat egy biztonságos fürtöt.
    
-   Mivel manuálisan módosítja a közzétételi profil XML-fájlját a tanúsítvány adatainak megadásához, jegyezze fel a tanúsítványtároló nevét, az áruház helyét és a tanúsítvány ujjlenyomatát. Ezeket az értékeket meg kell adnia a tanúsítvány tárolójának és tárolási helyének. További információt a [tanúsítvány ujjlenyomatának beolvasása](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx) című témakörben talál.
+   Mivel manuálisan módosítja a közzétételi profil XML-fájlját a tanúsítvány adatainak megadásához, jegyezze fel a tanúsítványtároló nevét, az áruház helyét és a tanúsítvány ujjlenyomatát. Ezeket az értékeket meg kell adnia a tanúsítvány tárolójának és tárolási helyének. További információt a [tanúsítvány ujjlenyomatának beolvasása](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric) című témakörben talál.
    
-   A *ClusterConnectionParameters* paraméterrel megadhatja a Service Fabric-fürthöz való csatlakozáskor használandó PowerShell-paramétereket. Az érvényes paraméterek tetszőlegesek, amelyeket a ServiceFabricCluster parancsmag fogad el. A rendelkezésre álló paraméterek listáját a [Csatlakozás – ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) című részben tekintheti meg.
+   A *ClusterConnectionParameters* paraméterrel megadhatja a Service Fabric-fürthöz való csatlakozáskor használandó PowerShell-paramétereket. Az érvényes paraméterek tetszőlegesek, amelyeket a ServiceFabricCluster parancsmag fogad el. A rendelkezésre álló paraméterek listáját a [Csatlakozás – ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) című részben tekintheti meg.
    
    Ha távoli fürtöt tesz közzé, meg kell adnia a megfelelő paramétereket az adott fürthöz. A következő példa egy nem biztonságos fürthöz való csatlakozásra mutat be:
    
@@ -56,7 +57,7 @@ A **Service Fabric alkalmazás közzététele** párbeszédpanel automatikusan e
    ```
 5. Szerkessze az egyéb szükséges beállításokat, például a frissítési paramétereket és az alkalmazás paramétereinek helyét, majd tegye közzé az alkalmazást a Visual Studióban a **közzététel Service Fabric alkalmazásban** párbeszédpanelen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Service Fabric-fürtök elérésével kapcsolatos további információkért lásd: [a fürt megjelenítése Service Fabric Explorer használatával](service-fabric-visualizing-your-cluster.md).
 
 <!--Image references-->

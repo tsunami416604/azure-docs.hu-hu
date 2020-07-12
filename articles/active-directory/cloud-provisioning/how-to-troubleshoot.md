@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 009e762b69d4f3512158d69ef3c67089096c9da7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360792"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256866"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Felhőalapú kiépítés – hibaelhárítás
 
@@ -22,7 +22,7 @@ A Felhőbeli kiépítés számos különböző dolgot érint, és számos külö
 
 ## <a name="common-troubleshooting-areas"></a>Gyakori hibaelhárítási területek
 
-|Name|Description|
+|Név|Leírás|
 |-----|-----|
 |[Ügynökkel kapcsolatos problémák](#agent-problems)|Ellenőrizze, hogy az ügynök megfelelően lett-e telepítve, és hogy a Azure Active Directory (Azure AD) szolgáltatással kommunikál-e.|
 |[Objektum-szinkronizálási problémák](#object-synchronization-problems)|Az objektumok szinkronizálásával kapcsolatos problémák elhárításához használjon kiépítési naplókat.|
@@ -43,7 +43,7 @@ Ezek az elemek ellenőrizhetők a Azure Portal és az ügynököt futtató helyi
 
 Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látható-e az Azure-ban és kifogástalan állapotban van-e.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 1. A bal oldalon válassza a **Azure Active Directory**  >  **Azure ad Connect**lehetőséget. A központban válassza a **felügyelet kiépítés (előzetes verzió)** lehetőséget.
 1. Az **Azure ad-kiépítés (előzetes verzió)** képernyőn válassza az **összes ügynök áttekintése**lehetőséget.
 
@@ -55,9 +55,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy az ügynök látható-e az 
 
 ### <a name="verify-the-port"></a>A port ellenőrzése
 
-Az alábbi eszköz használatával ellenőrizheti, hogy az Azure figyeli-e a 443-es portot, valamint arról, hogy az ügynök képes-e kommunikálni vele.
-
-https://aadap-portcheck.connectorporttest.msappproxy.net/ 
+Ellenőrizze, hogy az Azure figyel-e a 443-es porton, és hogy az ügynök tud-e kommunikálni vele. 
 
 Ez a teszt ellenőrzi, hogy az ügynökök az 443-as porton keresztül kommunikálnak-e az Azure-ban. Nyisson meg egy böngészőt, és keresse meg az előző URL-címet arról a kiszolgálóról, amelyen az ügynököt telepítették.
 
@@ -206,7 +204,7 @@ Az állapot kiválasztásával további információkat tekinthet meg a karanté
  
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

@@ -5,18 +5,19 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 108389407221779ed20e81310f084b7b5c23b8c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb2adafab88eb1d3855cdec8268601fb4e15dcbb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906027"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257268"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh üzembe helyezése
 Hozzon létre Service Fabric Mesh-erőforrásokat.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Description|
+|Parancs|Leírás|
 | --- | --- |
 | létrehozás | Service Fabric Mesh-erőforrások központi telepítését hozza létre. |
 
@@ -25,14 +26,14 @@ Service Fabric Mesh-erőforrások központi telepítését hozza létre.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --input-YAML-Files [kötelező] | Az összes YAML-fájl vagy a YAML-fájlokat tartalmazó könyvtár relatív vagy abszolút elérési útjának vesszővel tagolt relatív vagy abszolút fájlelérési útja. |
 | – paraméterek | Egy YAML-fájl vagy egy JSON-objektum relatív vagy abszolút elérési útja, amely a felülbírálni kívánt paramétereket tartalmazza. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -60,6 +61,6 @@ sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_
 {'value' : 'my_value'} }"   
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

@@ -4,12 +4,12 @@ description: A következőképpen engedélyezheti a felügyelt identitások tám
 ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
-ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 722c507300cc5766d162f336f77f60293c5c90dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415693"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257622"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Felügyelt identitás támogatásának konfigurálása meglévő Service Fabric-fürtben
 
@@ -40,7 +40,7 @@ Ha engedélyezni szeretné a felügyelt identitás-jogkivonat szolgáltatást eg
 ]
 ```
 
-Ahhoz, hogy a módosítások életbe lépjenek, módosítania kell a frissítési házirendet, hogy az egyes csomópontokon a frissítés folyamata során az Service Fabric-futtatókörnyezet kényszerített újraindítását is megadja. Ez az újraindítás biztosítja, hogy az újonnan engedélyezett rendszerszolgáltatás elindult, és minden csomóponton fusson. Az alábbi kódrészletben az `forceRestart` az alapvető beállítás, amely lehetővé teszi az újraindítást. A többi paraméter esetében használja az alább ismertetett értékeket, vagy használja a fürterőforrás számára már megadott meglévő egyéni értékeket. A háló frissítési szabályzatának ("upgradeDescription") egyéni beállításai az Azure Portalon tekinthetők meg, ha a Service Fabric erőforráson vagy a resources.azure.com a "háló frissítése" lehetőséget választja. A frissítési szabályzat ("upgradeDescription") alapértelmezett beállításai nem tekinthetők meg a powershellből vagy a resources.azure.com. További információ: [ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) .  
+Ahhoz, hogy a módosítások életbe lépjenek, módosítania kell a frissítési házirendet, hogy az egyes csomópontokon a frissítés folyamata során az Service Fabric-futtatókörnyezet kényszerített újraindítását is megadja. Ez az újraindítás biztosítja, hogy az újonnan engedélyezett rendszerszolgáltatás elindult, és minden csomóponton fusson. Az alábbi kódrészletben az `forceRestart` az alapvető beállítás, amely lehetővé teszi az újraindítást. A többi paraméter esetében használja az alább ismertetett értékeket, vagy használja a fürterőforrás számára már megadott meglévő egyéni értékeket. A háló frissítési szabályzatának ("upgradeDescription") egyéni beállításai az Azure Portalon tekinthetők meg, ha a Service Fabric erőforráson vagy a resources.azure.com a "háló frissítése" lehetőséget választja. A frissítési szabályzat ("upgradeDescription") alapértelmezett beállításai nem tekinthetők meg a powershellből vagy a resources.azure.com. További információ: [ClusterUpgradePolicy](/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) .  
 
 ```json
 "upgradeDescription": {
@@ -68,7 +68,7 @@ Ha az üzembe helyezés a következő üzenettel meghiúsul, az azt jelenti, hog
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure Service Fabric-alkalmazás üzembe helyezése rendszerhez rendelt felügyelt identitással](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Service Fabric alkalmazás felügyelt identitásának kihasználása a szolgáltatási kódból](./how-to-managed-identity-service-fabric-app-code.md)

@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c534ba54ccea78759628f554707271934ddc9a48
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645565"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258480"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors bemutatása
 A Reliable Actors a [virtuális színész](https://research.microsoft.com/en-us/projects/orleans/) mintáján alapuló Service Fabric alkalmazás-keretrendszer. A Reliable Actors API egy egyszálas programozási modellt biztosít, amely a Service Fabric által biztosított méretezhetőségi és megbízhatósági garanciára épül.
@@ -133,10 +134,10 @@ A Actors futtatókörnyezet alapértelmezés szerint engedélyezi a újbóli bel
 ### <a name="scope-of-concurrency-guarantees"></a>Egyidejűségi garanciák hatóköre
 A szereplők futtatókörnyezete biztosítja ezeket a párhuzamossági garanciákat olyan helyzetekben, amikor a módszerek meghívását vezérli. Ezek a garanciák például az ügyfélre vonatkozó kérelemre adott válaszként, valamint az időzítő és az emlékeztető visszahívásai esetén is. Ha azonban a színészi kód közvetlenül az Actors Runtime által biztosított mechanizmusokon kívül hívja meg ezeket a metódusokat, akkor a futtatókörnyezet nem tud egyidejűségi garanciákat biztosítani. Ha például a metódust egy olyan feladat kontextusában hívja meg, amely nincs társítva a Actor metódusok által visszaadott feladathoz, akkor a futtatókörnyezet nem tud egyidejűségi garanciákat biztosítani. Ha a metódust olyan szálon hívja meg, amelyet a színész saját maga hoz létre, akkor a futtatókörnyezet nem tud egyidejűségi garanciákat biztosítani. Ezért a háttérbeli műveletek végrehajtásához a szereplőknek olyan [színészi időzítőket és színészi emlékeztetőket](service-fabric-reliable-actors-timers-reminders.md) kell használniuk, amelyek figyelembe veszik a párhuzamos párhuzamosságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerkedjen meg az első Reliable Actors szolgáltatás létrehozásával:
    * [Első lépések a Reliable Actors a .NET-keretrendszerben](service-fabric-reliable-actors-get-started.md)
-   * [Első lépések a Reliable Actors Javával](service-fabric-reliable-actors-get-started-java.md)
+   * [Első lépések a Reliable Actors Javával](./service-fabric-create-your-first-linux-application-with-java.md)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-introduction/concurrency.png

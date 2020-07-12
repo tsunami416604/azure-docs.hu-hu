@@ -5,11 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: b29985d40ae3a1bf582099e998e000fed83460f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79371647"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257521"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Vész-helyreállítás az Azure Service Fabric
 A magas rendelkezésre állás megvalósításának kritikus része annak biztosítása, hogy a szolgáltatások képesek legyenek túlélni az összes különböző típusú hibát. Ez különösen fontos a nem tervezett és a vezérlőn kívüli hibák esetén. 
@@ -171,7 +172,7 @@ Az alábbi műveletek adatvesztést okozhatnak. A követés előtt tekintse meg 
 >
 
 - Használja a `Repair-ServiceFabricPartition -PartitionId` vagy az API-t `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` . Ez az API lehetővé teszi a partíció AZONOSÍTÓjának megadását, hogy kilépjen a kvórum elvesztésével és a lehetséges adatvesztéssel.
-- Ha a fürt olyan gyakori hibákba ütközik, amelyek következtében a szolgáltatások kvórum elvesztése állapotba kerülnek, és a lehetséges _adatvesztés elfogadható_, a megfelelő [QuorumLossWaitDuration](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) érték megadásával a szolgáltatás automatikusan helyreállítható. A helyreállítás végrehajtása előtt Service Fabric várnia kell a megadott `QuorumLossWaitDuration` értéket (az alapértelmezett érték a végtelen). Ez a módszer *nem* ajánlott, mert váratlan adatvesztést okozhat.
+- Ha a fürt olyan gyakori hibákba ütközik, amelyek következtében a szolgáltatások kvórum elvesztése állapotba kerülnek, és a lehetséges _adatvesztés elfogadható_, a megfelelő [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) érték megadásával a szolgáltatás automatikusan helyreállítható. A helyreállítás végrehajtása előtt Service Fabric várnia kell a megadott `QuorumLossWaitDuration` értéket (az alapértelmezett érték a végtelen). Ez a módszer *nem* ajánlott, mert váratlan adatvesztést okozhat.
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>A Service Fabric-fürt rendelkezésre állása
 Általánosságban elmondható, hogy a Service Fabric-fürt egy olyan, szigorúan elosztott környezet, amely egyetlen meghibásodási pontot sem okoz. Egy csomópont meghibásodása nem eredményezi a fürt rendelkezésre állási és megbízhatósági problémáit, elsősorban azért, mert a Service Fabric rendszerszolgáltatások a korábban megadott irányelvek szerint követik egymást. Azaz mindig három vagy több replikával futnak alapértelmezés szerint, és a rendszerszolgáltatások, amelyek állapot nélküliek futnak az összes csomóponton. 
@@ -203,21 +204,21 @@ Az Azure-ban Service Fabric erőforrás-szolgáltató kezeli Service Fabric für
 
 Az önálló Service Fabric-fürtökben és az Azure-ban az elsődleges csomópont típusa a magok futtatásának egyike. Ha elsődleges csomópont-típust határoz meg, Service Fabric automatikusan kihasználja a csomópontok számát, amelyet akár kilenc vetőmag-csomópont létrehozásával, mind a rendszerszolgáltatások hét replikájának létrehozásával biztosít. Ha a véletlenszerű hibák egy halmaza egyidejűleg a replikák többségét kiveszi, a rendszerszolgáltatások kvórum elvesztését fogják megadni. Ha a vetőmag-csomópontok többsége elveszik, akkor a fürt hamarosan leáll.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Megtudhatja, hogyan szimulálhatja a különböző hibákat a [tesztelési keretrendszer](service-fabric-testability-overview.md)használatával.
 - További katasztrófa-helyreállítási és magas rendelkezésre állású erőforrások olvasása. A Microsoft nagy mennyiségű útmutatót tett közzé ezekkel a témakörökkel kapcsolatban. Bár ezek az erőforrások bizonyos, más termékekben használt technikákra vonatkoznak, számos általános ajánlott eljárást tartalmaznak, amelyeket a Service Fabric kontextusban alkalmazhat:
   - [Rendelkezésre állási ellenőrzőlista](/azure/architecture/checklist/resiliency-per-service)
-  - [Vész-helyreállítási részletezés végrehajtása](../sql-database/sql-database-disaster-recovery-drills.md)
+  - [Vész-helyreállítási részletezés végrehajtása](../azure-sql/database/disaster-recovery-drills.md)
   - [Vészhelyreállítás és magas szintű rendelkezésre állás az Azure-alkalmazásokhoz][dr-ha-guide]
 - További információ a [Service Fabric támogatási lehetőségeiről](service-fabric-support.md).
 
 
 <!-- External links -->
 
-[repair-partition-ps]: https://msdn.microsoft.com/library/mt163522.aspx
+[repair-partition-ps]: /windows/win32/perfctrs/specifying-a-counter-path
 [azure-status-dashboard]:https://azure.microsoft.com/status/
 [azure-regions]: https://azure.microsoft.com/regions/
-[dr-ha-guide]: https://msdn.microsoft.com/library/azure/dn251004.aspx
+[dr-ha-guide]: /previous-versions/azure/dn251004(v=azure.100)
 
 
 <!-- Images -->

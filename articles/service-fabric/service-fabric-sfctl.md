@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc317345155a6807a20d342e2cefd0701b20f180
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76906220"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257053"
 ---
 # <a name="sfctl"></a>sfctl
 Parancsok Service Fabric fürtök és entitások kezeléséhez. Ez a verzió Service Fabric 7,0 futtatókörnyezettel kompatibilis.
@@ -17,7 +18,7 @@ Parancsok Service Fabric fürtök és entitások kezeléséhez. Ez a verzió Ser
 A parancsok a főnévi művelet mintáját követik. További információért tekintse meg az alcsoportokat.
 
 ## <a name="subgroups"></a>Alcsoportok
-|Alcsoport|Description|
+|Alcsoport|Leírás|
 | --- | --- |
 | [alkalmazás](service-fabric-sfctl-application.md) | Alkalmazások és alkalmazások típusainak létrehozása, törlése és kezelése. |
 | [Chaos](service-fabric-sfctl-chaos.md) | Indítsa el, állítsa le és jelentse a Chaos test Service-t. |
@@ -37,6 +38,6 @@ A parancsok a főnévi művelet mintáját követik. További információért t
 | [beállítások](service-fabric-sfctl-settings.md) | Konfigurálja a helyi beállításokat a sfctl ezen példánya számára. |
 | [áruház](service-fabric-sfctl-store.md) | Hajtsa végre az alapszintű fájl szintű műveleteket a fürt rendszerkép-tárolóján. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

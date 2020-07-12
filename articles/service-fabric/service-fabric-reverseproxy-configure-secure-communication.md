@@ -3,11 +3,12 @@ title: Azure Service Fabric fordított proxy biztonságos kommunikációja
 description: Fordított proxy konfigurálása az Azure Service Fabric-alkalmazások biztonságos, végpontok közötti kommunikációjának engedélyezéséhez.
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01ce559b3c790164992d6618149afa9df069466
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82858527"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256135"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Csatlakozás biztonságos szolgáltatáshoz a fordított proxyval
 
@@ -19,7 +20,7 @@ Ez a cikk azt ismerteti, hogyan hozható létre biztonságos kapcsolat a fordít
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Biztonságos kapcsolat létesítése a fordított proxy és a szolgáltatások között 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Fordított proxy hitelesítése a szolgáltatásokban:
-A fordított proxy a tanúsítványa alapján azonosítja magát a szolgáltatásokhoz. Azure-fürtök esetén a tanúsítvány a Resource Manager [**-sablon Microsoft. ServiceFabric/Clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [erőforrástípus szakaszában](../azure-resource-manager/templates/template-syntax.md) , a ***reverseProxyCertificate*** tulajdonsággal van megadva. Önálló fürtök esetén a tanúsítvány a ClusterConfig.js**biztonsági** szakaszában, a ***ReverseProxyCertificate*** vagy a ***ReverseProxyCertificateCommonNames*** tulajdonsággal van megadva. További információ: [fordított proxy engedélyezése önálló fürtökön](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+A fordított proxy a tanúsítványa alapján azonosítja magát a szolgáltatásokhoz. Azure-fürtök esetén a tanúsítvány a Resource Manager [**-sablon Microsoft. ServiceFabric/Clusters**](/azure/templates/microsoft.servicefabric/clusters) [erőforrástípus szakaszában](../azure-resource-manager/templates/template-syntax.md) , a ***reverseProxyCertificate*** tulajdonsággal van megadva. Önálló fürtök esetén a tanúsítvány a ClusterConfig.js**biztonsági** szakaszában, a ***ReverseProxyCertificate*** vagy a ***ReverseProxyCertificateCommonNames*** tulajdonsággal van megadva. További információ: [fordított proxy engedélyezése önálló fürtökön](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
 
 A szolgáltatások a fordított proxy által megjelenített tanúsítvány ellenőrzéséhez implementálják a logikát. A szolgáltatások megadhatják az elfogadott ügyféltanúsítvány részleteit konfigurációs beállításokként a konfigurációs csomagban. Ez futásidőben olvasható, és a fordított proxy által bemutatott tanúsítvány ellenőrzéséhez használható. A konfigurációs beállítások hozzáadásához tekintse meg az [alkalmazás paramétereinek kezelése](service-fabric-manage-multiple-environment-app-configuration.md) című témakört. 
 
@@ -183,10 +184,10 @@ Ha az ügyfél nem tartalmaz tanúsítványt, a fordított proxy egy üres fejl�
 > A fordított proxy csak továbbítási szolgáltatásként működik. Az ügyfél tanúsítványának érvényesítése nem történik meg.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Állítsa be és konfigurálja a fordított proxyt egy fürtön](service-fabric-reverseproxy-setup.md).
 * Tekintse meg a [fordított proxy konfigurálása a biztonságos szolgáltatásokhoz való csatlakozáshoz](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services) című témakört.
 * Tekintse [meg a githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)található, a szolgáltatások közötti http-kommunikáció példáját.
 * [Távoli eljáráshívás Reliable Services táveléréssel](service-fabric-reliable-services-communication-remoting.md)
-* [OWIN-t használó webes API Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [OWIN-t használó webes API Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Fürttanúsítványok kezelése](service-fabric-cluster-security-update-certs-azure.md)

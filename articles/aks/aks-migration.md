@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9a5e2c1e36a742115ed2f5c690c81a186a86dee7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c864a9cc5dd5658bcb3205ce2cbe4f6142cf45a1
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82129104"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255489"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrálás az Azure Kubernetes szolgáltatásba (ak)
 
@@ -18,13 +18,13 @@ Ez a cikk segítséget nyújt az Azure Kubernetes szolgáltatásba (ak) való si
 
 Ez a dokumentum a következő forgatókönyvek támogatásához használható:
 
-* [Rendelkezésre állási készletek](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) által támogatott AK-fürt áttelepítése [Virtual Machine Scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)
-* AK-fürt áttelepítése [szabványos SKU Load Balancer](https://docs.microsoft.com/azure/aks/load-balancer-standard) használatára
+* [Rendelkezésre állási készletek](../virtual-machines/windows/tutorial-availability-sets.md) által támogatott AK-fürt áttelepítése [Virtual Machine Scale sets](../virtual-machine-scale-sets/overview.md)
+* AK-fürt áttelepítése [szabványos SKU Load Balancer](./load-balancer-standard.md) használatára
 * Migrálás [Azure Container Serviceról (ACS) – 2020 és AK között, január 31-ig](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/)
-* Migrálás az [AK-ból motorról](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) AK-ra
+* Migrálás az [AK-ból motorról](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) AK-ra
 * Áttelepítés nem Azure-alapú Kubernetes-fürtökről AK-ra
 
-Az áttelepítés során győződjön meg arról, hogy a cél Kubernetes verziója az AK-hoz támogatott ablakon belül van. Ha régebbi verziót használ, előfordulhat, hogy nem a támogatott tartományon belül van, és az AK által támogatott verziófrissítési verzióra van szükség. További információért lásd: [AK támogatott Kubernetes-verziók](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions) .
+Az áttelepítés során győződjön meg arról, hogy a cél Kubernetes verziója az AK-hoz támogatott ablakon belül van. Ha régebbi verziót használ, előfordulhat, hogy nem a támogatott tartományon belül van, és az AK által támogatott verziófrissítési verzióra van szükség. További információért lásd: [AK támogatott Kubernetes-verziók](./supported-kubernetes-versions.md) .
 
 Ha a Kubernetes egy újabb verziójára végez áttelepítést, tekintse át a [Kubernetes verziójának és verziójának döntési támogatási szabályzatát](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions).
 
@@ -47,11 +47,11 @@ Ebben a cikkben a következő áttelepítési adatokat összegzi:
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>AK standard Load Balancer és Virtual Machine Scale Sets
 
-Az AK egy felügyelt szolgáltatás, amely az alacsonyabb felügyeleti terhelést biztosító egyedi képességeket kínál. A felügyelt szolgáltatásnak köszönhetően olyan [régiókból](https://docs.microsoft.com/azure/aks/quotas-skus-regions) kell kiválasztania, amelyek az AK által támogatottak. A meglévő fürtről az AK-ra való áttérés szükségessé teheti a meglévő alkalmazások módosítását, hogy azok egészségesek maradjanak az AK felügyelt vezérlési síkon.
+Az AK egy felügyelt szolgáltatás, amely az alacsonyabb felügyeleti terhelést biztosító egyedi képességeket kínál. A felügyelt szolgáltatásnak köszönhetően olyan [régiókból](./quotas-skus-regions.md) kell kiválasztania, amelyek az AK által támogatottak. A meglévő fürtről az AK-ra való áttérés szükségessé teheti a meglévő alkalmazások módosítását, hogy azok egészségesek maradjanak az AK felügyelt vezérlési síkon.
 
-Javasoljuk, hogy [Virtual Machine Scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets) és az [Azure standard Load BALANCER](https://docs.microsoft.com/azure/aks/load-balancer-standard) által támogatott AK-fürtöket használjon, így biztosítva a [több csomópontos készlet](https://docs.microsoft.com/azure/aks/use-multiple-node-pools), a [Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview), az [engedélyezett IP-címtartományok](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), a [fürt autoskálázása](https://docs.microsoft.com/azure/aks/cluster-autoscaler), [a Azure Policy for AK](https://docs.microsoft.com/azure/governance/policy/concepts/rego-for-aks)és más új funkciók használatát.
+Javasoljuk, hogy [Virtual Machine Scale sets](../virtual-machine-scale-sets/index.yml) és az [Azure standard Load BALANCER](./load-balancer-standard.md) által támogatott AK-fürtöket használjon, így biztosítva a [több csomópontos készlet](./use-multiple-node-pools.md), a [Availability Zones](../availability-zones/az-overview.md), az [engedélyezett IP-címtartományok](./api-server-authorized-ip-ranges.md), a [fürt autoskálázása](./cluster-autoscaler.md), [a Azure Policy for AK](../governance/policy/concepts/policy-for-kubernetes.md)és más új funkciók használatát.
 
-A [virtuális gépek rendelkezésre állási csoportjai](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets) által támogatott AK-fürtök számos ilyen funkció esetében nem támogatottak.
+A [virtuális gépek rendelkezésre állási csoportjai](../virtual-machine-scale-sets/availability.md#availability-sets) által támogatott AK-fürtök számos ilyen funkció esetében nem támogatottak.
 
 A következő példa létrehoz egy AK-fürtöt egyetlen, virtuálisgép-méretezési csoporttal támogatott egycsomópontos készlettel. Standard Load balancert használ. Emellett lehetővé teszi a fürthöz tartozó automéretezőt a fürt csomópont-készletén, és legalább *1* és legfeljebb *3* csomópontot állít be:
 
@@ -84,25 +84,25 @@ Előfordulhat, hogy a fürtök áttelepítésekor külső Azure-szolgáltatások
 
 ## <a name="ensure-valid-quotas"></a>Érvényes kvóták biztosítása
 
-Mivel az áttelepítés során további virtuális gépek lesznek telepítve az előfizetésben, ellenőriznie kell, hogy a kvóták és a korlátozások elegendőek-e az adott erőforrásokhoz. Előfordulhat, hogy a [vCPU-kvóta](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)növelését kell kérnie.
+Mivel az áttelepítés során további virtuális gépek lesznek telepítve az előfizetésben, ellenőriznie kell, hogy a kvóták és a korlátozások elegendőek-e az adott erőforrásokhoz. Előfordulhat, hogy a [vCPU-kvóta](../azure-portal/supportability/per-vm-quota-requests.md)növelését kell kérnie.
 
-Előfordulhat, hogy a [hálózati kvóták](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) növelését kell megadnia, hogy ne legyenek kimerítve az IP-címek. További információért lásd: [hálózati és IP-címtartományok](https://docs.microsoft.com/azure/aks/configure-kubenet) .
+Előfordulhat, hogy a [hálózati kvóták](../azure-portal/supportability/networking-quota-requests.md) növelését kell megadnia, hogy ne legyenek kimerítve az IP-címek. További információért lásd: [hálózati és IP-címtartományok](./configure-kubenet.md) .
 
-További információ: Azure- [előfizetés és-szolgáltatási korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Az aktuális kvóták megtekintéséhez a Azure Portal lépjen az [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)panelre, válassza ki az előfizetését, majd válassza a **használat + kvóták**lehetőséget.
+További információ: Azure- [előfizetés és-szolgáltatási korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md). Az aktuális kvóták megtekintéséhez a Azure Portal lépjen az [előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)panelre, válassza ki az előfizetését, majd válassza a **használat + kvóták**lehetőséget.
 
 ## <a name="high-availability-and-business-continuity"></a>Magas rendelkezésre állás és Üzletmenet-folytonosság
 
-Ha az alkalmazás nem tudja kezelni az állásidőt, a magas rendelkezésre állású áttelepítési forgatókönyvekhez ajánlott eljárásokat kell követnie.  Az összetett üzletmenet folytonosságának megtervezése, a vész-helyreállítás és a hasznos üzemidő maximalizálása a jelen dokumentum hatókörén kívül esik.  További információ az [üzletmenet folytonosságával és a vész-helyreállítással kapcsolatos ajánlott eljárásokról az Azure Kubernetes szolgáltatásban (ak)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) .
+Ha az alkalmazás nem tudja kezelni az állásidőt, a magas rendelkezésre állású áttelepítési forgatókönyvekhez ajánlott eljárásokat kell követnie.  Az összetett üzletmenet folytonosságának megtervezése, a vész-helyreállítás és a hasznos üzemidő maximalizálása a jelen dokumentum hatókörén kívül esik.  További információ az [üzletmenet folytonosságával és a vész-helyreállítással kapcsolatos ajánlott eljárásokról az Azure Kubernetes szolgáltatásban (ak)](./operator-best-practices-multi-region.md) .
 
 Összetett alkalmazások esetében általában az idő múlásával, nem pedig egyszerre kell áttérnie. Ez azt jelenti, hogy a régi és az új környezetnek kommunikálnia kell a hálózaton keresztül. Előfordulhat, hogy a korábban a `ClusterIP` kommunikációhoz használt szolgáltatásokat be kell állítani, `LoadBalancer` és megfelelő védelemmel kell elvégezniük.
 
 Az áttelepítés befejezéséhez az ügyfeleket az AK-on futó új szolgáltatásokra kell irányítani. Javasoljuk, hogy a forgalom átirányításához frissítse a DNS-t úgy, hogy az AK-fürt előtt található Load Balancer mutasson.
 
-Az [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) az ügyfeleket a kívánt Kubernetes-fürtre és alkalmazás-példányra irányíthatja.  Traffic Manager egy DNS-alapú forgalom terheléselosztó, amely a régiók közötti hálózati forgalmat terjesztheti.  A legjobb teljesítmény és redundancia érdekében a Traffic Manageron keresztül irányítsa az összes alkalmazás forgalmát, mielőtt az AK-fürtre kerül.  Többfürtes telepítés esetén az ügyfeleknek csatlakozniuk kell egy Traffic Manager DNS-névhez, amely az egyes AK-fürtök szolgáltatásaira mutat. Adja meg ezeket a szolgáltatásokat Traffic Manager végpontok használatával. Mindegyik végpont a *szolgáltatás terheléselosztó IP-címe*. Ezt a konfigurációt használva irányíthatja a hálózati forgalmat az egyik régióban lévő Traffic Manager végpontról a végpontra egy másik régióban.
+Az [Azure Traffic Manager](../traffic-manager/index.yml) az ügyfeleket a kívánt Kubernetes-fürtre és alkalmazás-példányra irányíthatja.  Traffic Manager egy DNS-alapú forgalom terheléselosztó, amely a régiók közötti hálózati forgalmat terjesztheti.  A legjobb teljesítmény és redundancia érdekében a Traffic Manageron keresztül irányítsa az összes alkalmazás forgalmát, mielőtt az AK-fürtre kerül.  Többfürtes telepítés esetén az ügyfeleknek csatlakozniuk kell egy Traffic Manager DNS-névhez, amely az egyes AK-fürtök szolgáltatásaira mutat. Adja meg ezeket a szolgáltatásokat Traffic Manager végpontok használatával. Mindegyik végpont a *szolgáltatás terheléselosztó IP-címe*. Ezt a konfigurációt használva irányíthatja a hálózati forgalmat az egyik régióban lévő Traffic Manager végpontról a végpontra egy másik régióban.
 
 ![AK Traffic Manager](media/operator-best-practices-bc-dr/aks-azure-traffic-manager.png)
 
-Az [Azure bejárati ajtó szolgáltatás](https://docs.microsoft.com/azure/frontdoor/front-door-overview) egy másik lehetőség az AK-fürtök forgalmának útválasztására.  Az Azure Front Door Service segítségével meghatározhatja, felügyelheti és monitorozhatja a webes forgalmának globális forgalomirányítását, optimalizálhatja annak teljesítményét, és azonnali globális feladatátvétellel magas rendelkezésre állást biztosíthat. 
+Az [Azure bejárati ajtó szolgáltatás](../frontdoor/front-door-overview.md) egy másik lehetőség az AK-fürtök forgalmának útválasztására.  Az Azure Front Door Service segítségével meghatározhatja, felügyelheti és monitorozhatja a webes forgalmának globális forgalomirányítását, optimalizálhatja annak teljesítményét, és azonnali globális feladatátvétellel magas rendelkezésre állást biztosíthat. 
 
 ### <a name="considerations-for-stateless-applications"></a>Állapot nélküli alkalmazások szempontjai
 
@@ -113,10 +113,10 @@ Az állapot nélküli alkalmazások migrálása a legegyszerűbb eset. Alkalmazz
 Gondosan tervezze meg az állapot-nyilvántartó alkalmazások áttelepítését, hogy elkerülje az adatvesztést vagy a váratlan állásidőt.
 
 Ha Azure Files használ, a fájlmegosztást kötetként csatlakoztathatja az új fürthöz:
-* [Statikus Azure Files csatlakoztatása kötetként](https://docs.microsoft.com/azure/aks/azure-files-volume#mount-the-file-share-as-a-volume)
+* [Statikus Azure Files csatlakoztatása kötetként](./azure-files-volume.md#mount-the-file-share-as-a-volume)
 
 Ha az Azure Managed Disks-t használja, csak akkor csatlakoztathatja a lemezt, ha az nincs csatlakoztatva a virtuális géphez:
-* [Statikus Azure-lemez csatlakoztatása kötetként](https://docs.microsoft.com/azure/aks/azure-disk-volume#mount-disk-as-volume)
+* [Statikus Azure-lemez csatlakoztatása kötetként](./azure-disk-volume.md#mount-disk-as-volume)
 
 Ha egyik módszer sem működik, akkor biztonsági mentési és visszaállítási lehetőségeket is használhat:
 * [Velero az Azure-ban](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
@@ -131,7 +131,7 @@ Ha az alkalmazás több replikát is képes tárolni, amelyek ugyanarra a megosz
 * Mutasson az élő adatforgalomra az új AK-fürtre.
 * Válassza le a régi fürtöt.
 
-Ha üres megosztással szeretne kezdeni, és másolatot készít a forrásadatokről, a [`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) parancsok segítségével áttelepítheti az adatait.
+Ha üres megosztással szeretne kezdeni, és másolatot készít a forrásadatokről, a [`az storage file copy`](/cli/azure/storage/file/copy?view=azure-cli-latest) parancsok segítségével áttelepítheti az adatait.
 
 
 #### <a name="migrating-persistent-volumes"></a>Állandó kötetek áttelepítése
@@ -142,7 +142,7 @@ Ha a meglévő állandó köteteket AK-ra telepíti át, akkor általában az al
 * Pillanatképek készítése a lemezekről.
 * Hozzon létre új felügyelt lemezeket a pillanatképek közül.
 * Állandó kötetek létrehozása az AK-ban.
-* A pod-specifikációk frissítése a [meglévő kötetek használatára](https://docs.microsoft.com/azure/aks/azure-disk-volume) a PersistentVolumeClaims helyett (statikus kiépítés).
+* A pod-specifikációk frissítése a [meglévő kötetek használatára](./azure-disk-volume.md) a PersistentVolumeClaims helyett (statikus kiépítés).
 * Az alkalmazás üzembe helyezése az AK-ban.
 * Ellenőrizze, hogy az alkalmazás megfelelően működik-e.
 * Mutasson az élő adatforgalomra az új AK-fürtre.
@@ -158,7 +158,7 @@ Egyes nyílt forráskódú eszközök segítségével felügyelt lemezeket hozha
 
 ### <a name="deployment-of-your-cluster-configuration"></a>A fürt konfigurációjának üzembe helyezése
 
-Javasoljuk, hogy a meglévő folyamatos integrációs (CI) és a folyamatos kézbesítés (CD) folyamat használatával helyezzen üzembe egy ismert, jó konfigurációt az AK-ban. Az Azure-folyamatok segítségével alkalmazásokat hozhat [létre és helyezhet üzembe az AK](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)-ban. A meglévő üzembe helyezési feladatok klónozásával ellenőrizze, hogy `kubeconfig` az új AK-fürtre mutat-e.
+Javasoljuk, hogy a meglévő folyamatos integrációs (CI) és a folyamatos kézbesítés (CD) folyamat használatával helyezzen üzembe egy ismert, jó konfigurációt az AK-ban. Az Azure-folyamatok segítségével alkalmazásokat hozhat [létre és helyezhet üzembe az AK](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)-ban. A meglévő üzembe helyezési feladatok klónozásával ellenőrizze, hogy `kubeconfig` az új AK-fürtre mutat-e.
 
 Ha ez nem lehetséges, exportálja az erőforrás-definíciókat a meglévő Kubernetes-fürtből, majd alkalmazza őket az AK-ra. `kubectl`Az objektumok exportálására használható.
 
@@ -184,4 +184,4 @@ Ebben a cikkben a következő áttelepítési adatokat összesítettük:
 
 
 [region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[azure-dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
+[azure-dev-spaces]: ../dev-spaces/index.yml

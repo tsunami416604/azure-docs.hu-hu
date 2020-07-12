@@ -7,17 +7,14 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 1d86749a4e6071213ba5e229765bb6391affb199
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 05a3fc7524b16033c48170b6cf0fa4e004c9eb9b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84737121"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257986"
 ---
 # <a name="what-is-azure-digital-twins"></a>Mi az az Azure Digital Twins?
-
-[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Az **Azure Digital Twins** egy IoT platform, amely teljes környezetek átfogó digitális modelljeinek létrehozását teszi lehetővé. Ezek a környezetek lehetnek olyan épületek, gyárak, gazdaságok, energiahálózatok, vasutak, stadionok és sok más – akár a teljes város is. Ezek a digitális modellek olyan elemzések megszerzésére használhatók, amelyek jobb termékeket, optimalizált műveleteket, csökkentett költségeket és áttörést jelentő felhasználói élményt nyújtanak.
 
@@ -46,6 +43,12 @@ A DTDL a többi Azure IoT-szolgáltatás (például a [IoT Plug and Play (PNP)](
 ### <a name="live-execution-environment"></a>Élő végrehajtási környezet
 
 Az Azure Digital Twins digitális modelljei élő, naprakész képviseletek a valós világban. Az egyéni DTDL-modellek kapcsolatainak használatával összekapcsolhatók az ikrek egy **élő gráfban** , amely a környezetet jelképezi.
+
+Megtekintheti az Azure Digital Twins gráf vizualizációját egy minta alkalmazás, az [**Azure digitális Twins Explorer**](https://github.com/Azure-Samples/digital-twins-explorer)segítségével.
+
+A minta vizualizáció a következőképpen néz ki:
+
+:::image type="content" source="media/includes/azure-digital-twins-explorer.png" alt-text="Képernyőkép az Azure Digital Twins Explorer alkalmazásról, amely a digitális ikreket jelképező csomópontok gráfját mutatja" lightbox="media/includes/azure-digital-twins-explorer.png":::
 
 Az Azure Digital Twins gazdag **eseményt** biztosít a gráfnak az adatfeldolgozással és az üzleti logikával való folyamatos megőrzéséhez. A külső számítási erőforrások, például a [Azure functions](../azure-functions/functions-overview.md)összekapcsolhatók az adatfeldolgozás rugalmas, testre szabott módon történő elvégzéséhez.
 
@@ -95,7 +98,7 @@ Az alábbi ábra azt mutatja be, hogy az Azure Digital Twins egy nagyobb Azure I
 
 A nyilvános előzetes verzióban elérhető Azure Digital Twins-korlátok listáját a következő témakörben tekintheti meg [: referenciák a nyilvános előzetes verziókra vonatkozó korlátozások](reference-service-limits.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha az Azure Digital Twins korábbi előzetes kiadásával dolgozott együtt, Ismerje meg, hogy mi változott:
 * [Áttekintés: eltérések az előző kiadástól](overview-differences.md)

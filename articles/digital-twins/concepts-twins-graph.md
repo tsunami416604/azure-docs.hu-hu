@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 248725c7281c8c63e4ca5c0c70428b4fc997d350
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 955a3b8d12eb3b93bc9d44c624953cd5c1007318
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142414"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86258213"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>A digitális ikrek és a Twin Graph ismertetése
 
@@ -21,11 +21,27 @@ Egy Azure digitális Twins-megoldásban a környezetében lévő entitásokat az
 > [!TIP]
 > Az "Azure digitális Twins" az Azure-szolgáltatás egészére vonatkozik. A "digitális twin (k)" vagy csak a "twin (k)" a szolgáltatás példányán belüli különálló csomópontokra utal.
 
-## <a name="creating-digital-twins"></a>Digitális ikrek létrehozása
+## <a name="digital-twins"></a>Digitális Twins
 
 Ahhoz, hogy létre lehessen hozni egy Digital Twin-et az Azure Digital Twins-példányban, rendelkeznie kell egy, a szolgáltatásba feltöltött *modellel* . A modellek a tulajdonságok, a telemetria és az adott Twin kapcsolatok készletét írják le, egyebek között. A modellben definiált információk típusaiért lásd [: fogalmak: egyéni modellek](concepts-models.md).
 
 Egy modell létrehozása és feltöltése után az ügyfélalkalmazás létrehozhat egy típusú példányt; Ez egy digitális Twin. Például a *Floor*modell létrehozása után létrehozhat egy vagy több olyan digitális ikreket, amelyek ezt a típust használják (például a *Floor*típust, egy másikat *, a* *Floor2*stb.). 
+
+## <a name="relationships-a-graph-of-digital-twins"></a>Kapcsolatok: digitális ikrek gráfja
+
+Az ikrek a kapcsolataik között kettős gráfba csatlakoznak. A Twin típusú kapcsolatok a modell részeként definiálhatók.  
+
+Például a modell *emeleten* definiálhat egy olyan kapcsolatot, *amely a* *szoba*típusú ikreket célozza meg. Ezzel a definícióval az Azure Digital Twins lehetővé teszi, hogy az összes *emeleti* Twin-ből *származó kapcsolatot* hozzon létre a Twin *Room* (beleértve az olyan ikreket, amelyek a *szoba* altípusai). 
+
+Ennek a folyamatnak az eredménye egy gráfon (a kapcsolatokon) keresztül összekapcsolt csomópontok (a digitális ikrek) halmaza.
+
+[!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
+
+## <a name="create-with-the-apis"></a>Létrehozás az API-kkal
+
+Ez a szakasz azt mutatja be, hogyan hozhat létre digitális ikreket és kapcsolatokat egy ügyfélalkalmazás használatával. Olyan .NET-kód példákat tartalmaz, amelyek a [DigitalTwins API-kat](how-to-use-apis-sdks.md)használják, hogy további kontextust biztosítson az egyes fogalmakon belül.
+
+### <a name="create-digital-twins"></a>Digitális ikrek létrehozása
 
 Az alábbi kódrészlet a [DigitalTwins API](how-to-use-apis-sdks.md) -kat használja egy Twin típusú *szoba*létrehozásához.
 
@@ -59,11 +75,7 @@ public Task<boolean> CreateRoom(string id, double temperature, double humidity)
 }
 ```
 
-## <a name="relationships-creating-a-graph-of-digital-twins"></a>Kapcsolatok: digitális ikrek gráfjának létrehozása
-
-Az ikrek a kapcsolataik között kettős gráfba csatlakoznak. A Twin típusú kapcsolatok a modell részeként definiálhatók.  
-
-Például a modell *emeleten* definiálhat egy olyan kapcsolatot, *amely a* *szoba*típusú ikreket célozza meg. Ezzel a definícióval az Azure Digital Twins lehetővé teszi, hogy az összes *emeleti* Twin-ből *származó kapcsolatot* hozzon létre a Twin *Room* (beleértve az olyan ikreket, amelyek a *szoba* altípusai). 
+### <a name="create-relationships"></a>Kapcsolatok létrehozása
 
 Íme néhány példa arra, hogy a [DigitalTwins API](how-to-use-apis-sdks.md) *-kat*használó ügyfél létrehozza a kapcsolatot *egy, a* *földszintes*és egy *Cafe*típusú digitális Twin.
 
@@ -84,8 +96,6 @@ try
     Console.WriteLine($"*** Error creating relationship: {e.Response.StatusCode}");
 }
 ```
-
-Ennek a folyamatnak az eredménye egy gráfon (a kapcsolatokon) keresztül összekapcsolt csomópontok (a digitális ikrek) halmaza.
 
 ## <a name="json-representations-of-graph-elements"></a>Graph-elemek JSON-ábrázolásai
 
@@ -184,7 +194,7 @@ Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő me
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: gráf-elemek kezelése az Azure Digital Twin API-kkal:
 * [Útmutató: digitális ikrek kezelése](how-to-manage-twin.md)

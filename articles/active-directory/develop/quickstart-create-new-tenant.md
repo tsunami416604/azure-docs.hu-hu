@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: a45160db09b3f6bf68bda3f25e40a29a1154099d
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 19c94a4807b8958fa8b1ec46ccae660c7cbe92de
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308489"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256696"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Gyors útmutató: bérlő beállítása
 
@@ -34,7 +34,7 @@ Kétféle környezetet hozhat létre. Annak eldöntése, hogy melyikre van szük
 * Munkahelyi és iskolai (Azure AD-fiókok) vagy Microsoft-fiókok (például outlook.com és live.com)
 * Közösségi és helyi fiókok (Azure AD B2C)
 
-A rövid útmutató két forgatókönyvre oszlik a létrehozni kívánt alkalmazás típusától függően. Ha további segítségre van szüksége egy identitástípushoz kapcsolódóan, tekintse meg a [Microsoft identitásplatformját ismertető](about-microsoft-identity-platform.md) témakört.
+A rövid útmutató két forgatókönyvre oszlik a létrehozni kívánt alkalmazás típusától függően.
 
 ## <a name="work-and-school-accounts-or-personal-microsoft-accounts"></a>Munkahelyi és iskolai fiókok, vagy személyes Microsoft-fiókok
 
@@ -69,7 +69,7 @@ Ha még nem rendelkezik Azure AD-Bérlővel, vagy létre szeretne hozni egy úja
 
 A közösségi és helyi fiók bejelentkeztetésére szolgáló alkalmazások létrehozásának megkezdéséhez egy Azure AD B2C-bérlőt kell létrehoznia. A létrehozást az [Azure AD B2C-bérlők létrehozását ismertető](../../active-directory-b2c/tutorial-create-tenant.md) témakör utasításait követve kezdheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazás regisztrálása](quickstart-register-app.md) és integrálása a Microsoft Identity platformmal. 
 * Ismerje meg a [hitelesítés alapjait](authentication-scenarios.md).

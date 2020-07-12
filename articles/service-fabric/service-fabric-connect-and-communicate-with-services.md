@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: e57d169decf482f8b8be1e3b31a07690bc222c5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a873a32aa8c12b535c06711ea7dc7a4aa920a27f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458239"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257762"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>A Service Fabric-szolgáltatásokkal való kapcsolattartás és kommunikáció
 Service Fabric a szolgáltatás egy Service Fabric fürtön fut valahol, általában több virtuális gépen elosztva. Áthelyezhető az egyik helyről a másikra, akár a szolgáltatás tulajdonosa, akár a Service Fabric automatikusan. A szolgáltatások nem statikusan vannak társítva egy adott géphez vagy címhez.
@@ -162,14 +163,14 @@ Fontos megjegyezni, hogy a Azure Load Balancer és a mintavétel csak a *csomóp
 A Reliable Services-keretrendszer számos előre elkészített kommunikációs lehetőséggel rendelkezik. Arról, hogy melyik az Ön számára legmegfelelőbb, a programozási modell, a kommunikációs keretrendszer, valamint a szolgáltatások által írt programozási nyelv típusától függ.
 
 * **Nincs konkrét protokoll:**  Ha nem rendelkezik egy adott kommunikációs keretrendszerrel, de gyorsan szeretne lekérdezni, akkor az ideális megoldás a [szolgáltatás távelérése](service-fabric-reliable-services-communication-remoting.md), amely lehetővé teszi a nagymértékben begépelt távoli eljáráshívás használatát Reliable Services és Reliable Actors. Ez a legegyszerűbb és leggyorsabb módszer a szolgáltatásokkal való kommunikáció megkezdéséhez. A szolgáltatás távelérési szolgáltatása kezeli a szolgáltatási címek, a kapcsolatok, az újrapróbálkozások és a hibakezelés feloldását. Ez mind a C#, mind a Java-alkalmazásokhoz elérhető.
-* **Http**: a Language-agnosztikus kommunikációhoz a http egy iparági szabványnak megfelelő választási lehetőséget biztosít, amely számos különböző nyelven elérhető eszközöket és http-kiszolgálókat tartalmaz, amelyeket Service Fabric támogat. A szolgáltatások használhatnak bármely elérhető HTTP-veremet, beleértve a [ASP.net webes API](service-fabric-reliable-services-communication-webapi.md) -t C#-alkalmazásokhoz. A C# nyelven írt ügyfelek kihasználhatják a `ICommunicationClient` és az `ServicePartitionClient` osztályokat, míg a Javához a `CommunicationClient` és az osztályokat használhatja a szolgáltatás- `FabricServicePartitionClient` [feloldáshoz, a http-kapcsolatokhoz és az újrapróbálkozási ciklusokhoz](service-fabric-reliable-services-communication.md).
+* **Http**: a Language-agnosztikus kommunikációhoz a http egy iparági szabványnak megfelelő választási lehetőséget biztosít, amely számos különböző nyelven elérhető eszközöket és http-kiszolgálókat tartalmaz, amelyeket Service Fabric támogat. A szolgáltatások használhatnak bármely elérhető HTTP-veremet, beleértve a [ASP.net webes API](./service-fabric-reliable-services-communication-aspnetcore.md) -t C#-alkalmazásokhoz. A C# nyelven írt ügyfelek kihasználhatják a `ICommunicationClient` és az `ServicePartitionClient` osztályokat, míg a Javához a `CommunicationClient` és az osztályokat használhatja a szolgáltatás- `FabricServicePartitionClient` [feloldáshoz, a http-kapcsolatokhoz és az újrapróbálkozási ciklusokhoz](service-fabric-reliable-services-communication.md).
 * **WCF**: Ha már létezik olyan kód, amely a WCF-t használja kommunikációs keretrendszerként, akkor használhatja a `WcfCommunicationListener` kiszolgálót és az `WcfCommunicationClient` `ServicePartitionClient` osztályt az ügyfélhez. Ez azonban csak Windows-alapú fürtökön elérhető C#-alkalmazásokhoz érhető el. További részletekért tekintse meg [a kommunikációs verem WCF-alapú implementációját](service-fabric-reliable-services-communication-wcf.md)ismertető cikket.
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Egyéni protokollok és egyéb kommunikációs keretrendszerek használata
 A szolgáltatások bármilyen protokollt vagy keretrendszert használhatnak a kommunikációhoz, függetlenül attól, hogy ez egy egyéni bináris protokoll TCP-szoftvercsatornán keresztül, vagy az [azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) vagy az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub/)használatával folyó események. A Service Fabric kommunikációs API-kat biztosít, amelyekkel összekapcsolhatja a kommunikációt. További részletekért tekintse meg ezt a cikket a [megbízható szolgáltatásokkal kapcsolatos kommunikációs modellről](service-fabric-reliable-services-communication.md) .
 
-## <a name="next-steps"></a>További lépések
-Tudjon meg többet a [Reliable Services kommunikációs modellben](service-fabric-reliable-services-communication.md)elérhető fogalmakról és API-król, majd a [szolgáltatás távelérésének](service-fabric-reliable-services-communication-remoting.md) gyors kezdéséhez, vagy részletesen megtudhatja, hogyan írhat egy kommunikációs figyelőt a [webes API-val a OWIN-alapú](service-fabric-reliable-services-communication-webapi.md)önkiszolgáló használatával.
+## <a name="next-steps"></a>Következő lépések
+Tudjon meg többet a [Reliable Services kommunikációs modellben](service-fabric-reliable-services-communication.md)elérhető fogalmakról és API-król, majd a [szolgáltatás távelérésének](service-fabric-reliable-services-communication-remoting.md) gyors kezdéséhez, vagy részletesen megtudhatja, hogyan írhat egy kommunikációs figyelőt a [webes API-val a OWIN-alapú](./service-fabric-reliable-services-communication-aspnetcore.md)önkiszolgáló használatával.
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

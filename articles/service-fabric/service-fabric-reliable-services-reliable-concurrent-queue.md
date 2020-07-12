@@ -3,14 +3,15 @@ title: Megbízható párhuzamos várólista az Azure Service Fabric
 description: A megbízható párhuzamos várólista egy nagy átviteli sebességű üzenetsor, amely párhuzamos enqueues és-várólistákat tesz lehetővé.
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75462736"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257438"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Az Azure Service Fabric megbízható párhuzamos várólista bemutatása
-A megbízható párhuzamos üzenetsor egy aszinkron, tranzakciós és replikált üzenetsor, amely magas párhuzamosságot biztosít a sorba helyezni és a dequeuing műveletekhez. A szolgáltatás úgy lett kialakítva, hogy magas átviteli sebességet és kis késleltetést biztosítson a [megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx) által biztosított szigorú FIFO-sorrend kihasználása mellett, és ehelyett a lehető legjobb rendezést biztosítja.
+A megbízható párhuzamos üzenetsor egy aszinkron, tranzakciós és replikált üzenetsor, amely magas párhuzamosságot biztosít a sorba helyezni és a dequeuing műveletekhez. A szolgáltatás úgy lett kialakítva, hogy magas átviteli sebességet és kis késleltetést biztosítson a [megbízható üzenetsor](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) által biztosított szigorú FIFO-sorrend kihasználása mellett, és ehelyett a lehető legjobb rendezést biztosítja.
 
 ## <a name="apis"></a>API-k
 
@@ -20,11 +21,11 @@ A megbízható párhuzamos üzenetsor egy aszinkron, tranzakciós és replikált
 | bool TryDequeue (kimenő eredmény)  | Feladat< ConditionalValue < T > > TryDequeueAsync (ITransaction TX)  |
 | int szám ()                    | hosszú darabszám ()                                                     |
 
-## <a name="comparison-with-reliable-queue"></a>Összehasonlítás [megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx)
+## <a name="comparison-with-reliable-queue"></a>Összehasonlítás [megbízható üzenetsor](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)
 
-A megbízható párhuzamos üzenetsor a [megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx)alternatívájaként is elérhető. Olyan esetekben kell használni, ahol nem szükséges szigorú FIFO-sorrend, mivel a FIFO garantálja a kompromisszumot a párhuzamosságtal.  A [megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx) zárolásokkal kényszeríti ki a FIFO-sorrendet, és legfeljebb egy tranzakciót sorba helyezni, és legfeljebb egy tranzakciót használhat egyszerre. Az összehasonlításban a megbízható párhuzamos üzenetsor ellazítja a megrendelési korlátozást, és lehetővé teszi, hogy az egyidejű tranzakciók száma a sorba helyezni és a dequeuing műveletekkel párhuzamos legyen. A legjobb megoldás, ha azonban egy megbízható párhuzamos várólistában két érték relatív sorrendjét nem lehet garantálni.
+A megbízható párhuzamos üzenetsor a [megbízható üzenetsor](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)alternatívájaként is elérhető. Olyan esetekben kell használni, ahol nem szükséges szigorú FIFO-sorrend, mivel a FIFO garantálja a kompromisszumot a párhuzamosságtal.  A [megbízható üzenetsor](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) zárolásokkal kényszeríti ki a FIFO-sorrendet, és legfeljebb egy tranzakciót sorba helyezni, és legfeljebb egy tranzakciót használhat egyszerre. Az összehasonlításban a megbízható párhuzamos üzenetsor ellazítja a megrendelési korlátozást, és lehetővé teszi, hogy az egyidejű tranzakciók száma a sorba helyezni és a dequeuing műveletekkel párhuzamos legyen. A legjobb megoldás, ha azonban egy megbízható párhuzamos várólistában két érték relatív sorrendjét nem lehet garantálni.
 
-A megbízható párhuzamos üzenetsor nagyobb átviteli sebességet és kisebb késést biztosít, mint a [megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx) , amikor több egyidejű tranzakció hajtja végre a enqueues és/vagy a várólistákat.
+A megbízható párhuzamos üzenetsor nagyobb átviteli sebességet és kisebb késést biztosít, mint a [megbízható üzenetsor](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) , amikor több egyidejű tranzakció hajtja végre a enqueues és/vagy a várólistákat.
 
 A megbízható párhuzamos várólista esetében az [üzenetsor](https://en.wikipedia.org/wiki/Message_queue) -használati eset a példa. Ebben a forgatókönyvben egy vagy több üzenet gyártója hozza létre és adja hozzá az elemeket a várólistához, és egy vagy több üzenet felhasználója lekéri az üzeneteket a várólistából, és feldolgozza azokat. Több gyártó és fogyasztó is működhet egymástól függetlenül, egyidejű tranzakciók használatával a várólista feldolgozása céljából.
 
@@ -337,6 +338,6 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Értesítések Reliable Services](service-fabric-reliable-services-notifications.md)
 * [Biztonsági mentés és visszaállítás Reliable Services (vész-helyreállítás)](service-fabric-reliable-services-backup-restore.md)
 * [Megbízható állapot-kezelő konfigurációja](service-fabric-reliable-services-configuration.md)
-* [Első lépések Service Fabric web API-szolgáltatásokkal](service-fabric-reliable-services-communication-webapi.md)
-* [Az Reliable Services programozási modell speciális használata](service-fabric-reliable-services-advanced-usage.md)
-* [Fejlesztői referenciák megbízható gyűjteményekhez](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Első lépések Service Fabric web API-szolgáltatásokkal](./service-fabric-reliable-services-communication-aspnetcore.md)
+* [Az Reliable Services programozási modell speciális használata](./service-fabric-reliable-services-lifecycle.md)
+* [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

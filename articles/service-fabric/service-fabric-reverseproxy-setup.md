@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan állíthatja be és konfigurálhatja a fordíto
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80476668"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256344"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Fordított proxy beállítása és konfigurálása az Azure-ban Service Fabric
 A fordított proxy egy opcionális Azure Service Fabric szolgáltatás, amely segít a Service Fabric-fürtökön futó, a http-végpontokkal rendelkező más szolgáltatásokkal való kommunikációban. További információ: [fordított proxy az Azure Service Fabricban](service-fabric-reverseproxy.md). Ez a cikk bemutatja, hogyan állíthatja be és konfigurálhatja a fordított proxykat a fürtben. 
@@ -37,7 +37,7 @@ Egy új fürthöz [létrehozhat egy egyéni Resource Manager-sablont](service-fa
 
 Olyan Resource Manager-sablonokat talál, amelyek segítségével biztonságos fordított proxyt konfigurálhat egy Azure-fürthöz a GitHubon található [biztonságos fordított proxy-sablonokban](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample) . A biztonságos fordított proxy tanúsítványokkal történő konfigurálásához és a tanúsítványok átváltásának kezeléséhez tekintse meg a [https fordított proxy konfigurálása biztonságos fürtben](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) című témakört a readme fájlban.
 
-Meglévő fürt esetén a [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), a [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell)vagy az [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli)használatával exportálhatja a fürt erőforráscsoport Resource Manager-sablonját.
+Meglévő fürt esetén a [Azure Portal](../azure-resource-manager/templates/export-template-portal.md), a [PowerShell](../azure-resource-manager/management/manage-resources-powershell.md)vagy az [Azure CLI](../azure-resource-manager/management/manage-resources-cli.md)használatával exportálhatja a fürt erőforráscsoport Resource Manager-sablonját.
 
 A Resource Manager-sablonokkal a következő lépéseket követve engedélyezheti a fordított proxyt:
 
@@ -52,7 +52,7 @@ A Resource Manager-sablonokkal a következő lépéseket követve engedélyezhet
         }
     },
     ```
-2. Adja meg a portot a [**Microsoft. ServiceFabric/Clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) [erőforrástípus szakaszban](../azure-resource-manager/templates/template-syntax.md)található összes NodeType-objektumhoz.
+2. Adja meg a portot a [**Microsoft. ServiceFabric/Clusters**](/azure/templates/microsoft.servicefabric/clusters) [erőforrástípus szakaszban](../azure-resource-manager/templates/template-syntax.md)található összes NodeType-objektumhoz.
 
     A portot a paraméter neve, reverseProxyEndpointPort azonosítja.
 
@@ -74,7 +74,7 @@ A Resource Manager-sablonokkal a következő lépéseket követve engedélyezhet
         ...
     }
     ```
-3. Ha a fordított proxy portján TLS/SSL-tanúsítványokat szeretne konfigurálni, adja hozzá a tanúsítványt a **Microsoft. ServiceFabric/Clusters** [erőforrástípus szakasz](../resource-group-authoring-templates.md) ***reverseProxyCertificate*** tulajdonságához.
+3. Ha a fordított proxy portján TLS/SSL-tanúsítványokat szeretne konfigurálni, adja hozzá a tanúsítványt a **Microsoft. ServiceFabric/Clusters** [erőforrástípus szakasz](../azure-resource-manager/templates/template-syntax.md) ***reverseProxyCertificate*** tulajdonságához.
 
     ```json
     {
@@ -98,7 +98,7 @@ A Resource Manager-sablonokkal a következő lépéseket követve engedélyezhet
     ```
 
 ### <a name="supporting-a-reverse-proxy-certificate-thats-different-from-the-cluster-certificate"></a>A fürt tanúsítványának eltérő fordított proxy-tanúsítvány támogatása
- Ha a fordított proxy tanúsítványa eltér a fürtöt tároló tanúsítványtól, akkor a korábban megadott tanúsítványt telepíteni kell a virtuális gépre, és hozzá kell adni a hozzáférés-vezérlési listához (ACL), hogy Service Fabric el tudja érni. Ezt a [**Microsoft. számítási/virtualMachineScaleSets**](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets) [erőforrástípus szakaszban](../resource-group-authoring-templates.md)teheti meg. A telepítéshez adja hozzá a tanúsítványt a osProfile. A sablon bővítmény szakasza frissíteni tudja a tanúsítványt az ACL-ben.
+ Ha a fordított proxy tanúsítványa eltér a fürtöt tároló tanúsítványtól, akkor a korábban megadott tanúsítványt telepíteni kell a virtuális gépre, és hozzá kell adni a hozzáférés-vezérlési listához (ACL), hogy Service Fabric el tudja érni. Ezt a [**Microsoft. számítási/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets) [erőforrástípus szakaszban](../azure-resource-manager/templates/template-syntax.md)teheti meg. A telepítéshez adja hozzá a tanúsítványt a osProfile. A sablon bővítmény szakasza frissíteni tudja a tanúsítványt az ACL-ben.
 
   ```json
   {
@@ -252,50 +252,50 @@ Ha a fordított proxyt nyilvánosan szeretné kiterjeszteni egy önálló fürth
 
 ### <a name="expose-the-reverse-proxy-via-resource-manager-templates"></a>Fordított proxy elérhetővé tétele Resource Manager-sablonok használatával
 
-A következő JSON ugyanarra a sablonra hivatkozik, amely a [fordított proxy engedélyezése Azure Resource Manager-sablonok](#enable-reverse-proxy-via-azure-resource-manager-templates)használatával. A dokumentum adott szakaszát a Resource Manager-sablonok létrehozásával vagy egy meglévő fürthöz tartozó sablon exportálásával kapcsolatban tekintheti meg.  A módosítások a [**Microsoft. Network/loadBalancers**](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers) [erőforrástípus szakaszon](../resource-group-authoring-templates.md)történnek.
+A következő JSON ugyanarra a sablonra hivatkozik, amely a [fordított proxy engedélyezése Azure Resource Manager-sablonok](#enable-reverse-proxy-via-azure-resource-manager-templates)használatával. A dokumentum adott szakaszát a Resource Manager-sablonok létrehozásával vagy egy meglévő fürthöz tartozó sablon exportálásával kapcsolatban tekintheti meg.  A módosítások a [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers) [erőforrástípus szakaszon](../azure-resource-manager/templates/template-syntax.md)történnek.
 
-    ```json
-    {
-        "apiVersion": "[variables('lbApiVersion')]",
-        "type": "Microsoft.Network/loadBalancers",
+```json
+{
+    "apiVersion": "[variables('lbApiVersion')]",
+    "type": "Microsoft.Network/loadBalancers",
+    ...
+    ...
+    "loadBalancingRules": [
         ...
-        ...
-        "loadBalancingRules": [
-            ...
-            {
-                "name": "LBSFReverseProxyRule",
-                "properties": {
-                    "backendAddressPool": {
-                        "id": "[variables('lbPoolID0')]"
-                    },
-                    "backendPort": "[parameters('SFReverseProxyPort')]",
-                    "enableFloatingIP": "false",
-                    "frontendIPConfiguration": {
-                        "id": "[variables('lbIPConfig0')]"
-                    },
-                    "frontendPort": "[parameters('SFReverseProxyPort')]",
-                    "idleTimeoutInMinutes": "5",
-                    "probe": {
-                        "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
-                    },
-                    "protocol": "tcp"
-                }
+        {
+            "name": "LBSFReverseProxyRule",
+            "properties": {
+                "backendAddressPool": {
+                    "id": "[variables('lbPoolID0')]"
+                },
+                "backendPort": "[parameters('SFReverseProxyPort')]",
+                "enableFloatingIP": "false",
+                "frontendIPConfiguration": {
+                    "id": "[variables('lbIPConfig0')]"
+                },
+                "frontendPort": "[parameters('SFReverseProxyPort')]",
+                "idleTimeoutInMinutes": "5",
+                "probe": {
+                    "id": "[concat(variables('lbID0'),'/probes/SFReverseProxyProbe')]"
+                },
+                "protocol": "tcp"
             }
-        ],
-        "probes": [
-            ...
-            {
-                "name": "SFReverseProxyProbe",
-                "properties": {
-                    "intervalInSeconds": 5,
-                    "numberOfProbes": 2,
-                    "port":     "[parameters('SFReverseProxyPort')]",
-                    "protocol": "tcp"
-                }
-            }  
-        ]
-    }
-    ```
+        }
+    ],
+    "probes": [
+        ...
+        {
+            "name": "SFReverseProxyProbe",
+            "properties": {
+                "intervalInSeconds": 5,
+                "numberOfProbes": 2,
+                "port":     "[parameters('SFReverseProxyPort')]",
+                "protocol": "tcp"
+            }
+        }  
+    ]
+}
+```
 
 
 ## <a name="customize-reverse-proxy-behavior-using-fabric-settings"></a>Fordított proxy viselkedésének testreszabása a háló beállításaival
@@ -326,6 +326,6 @@ További információ az Azure-fürtökhöz tartozó Fabric-beállítások friss
 
 A rendszer több háló-beállítást használ a fordított proxy és a szolgáltatások közötti biztonságos kommunikáció kialakításához. Ezen beállítások részletes ismertetését lásd: [Csatlakozás biztonságos szolgáltatáshoz a fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A biztonságos HTTP-szolgáltatás továbbításának beállítása a fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md)
 * A fordított proxy konfigurációs beállításaival kapcsolatban lásd: [ApplicationGateway/http szakasz, Service Fabric a fürt beállításainak testreszabása](service-fabric-cluster-fabric-settings.md#applicationgatewayhttp).

@@ -5,11 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: 40dd930aa21e3056d5ecc908359215d6874ed8ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464739"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257668"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Események elemzése és vizualizáció Azure Monitor naplókkal
  Azure Monitor naplók gyűjti és elemzi a felhőben üzemeltetett alkalmazások és szolgáltatások telemetria, és elemzési eszközöket biztosít a rendelkezésre állás és a teljesítmény maximalizálása érdekében. Ez a cikk azt ismerteti, hogyan futtathat lekérdezéseket Azure Monitor-naplókban, hogy betekintést nyerjen, és hárítsa el, mi történik a fürtben. A következő gyakori kérdéseket tárgyaljuk:
@@ -99,10 +100,10 @@ A Kusto lekérdezési nyelve nagy teljesítményű. Egy másik értékes lekérd
 
 ![Események lekérdezése/csomópont](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az infrastruktúra figyelésének engedélyezéséhez, azaz a teljesítményszámlálók létrehozásához lépjen [a log Analytics-ügynök hozzáadásához](service-fabric-diagnostics-oms-agent.md). Az ügynök gyűjti a teljesítményszámlálókat, és hozzáadja őket a meglévő munkaterülethez.
 * Helyszíni fürtök esetén a Azure Monitor-naplók egy átjárót (HTTP-továbbítási proxyt) biztosítanak, amellyel az adatküldés Azure Monitor naplókba. További információ arról, hogy a [számítógépek internetkapcsolat nélküli csatlakoztatása Azure monitor naplókhoz a log Analytics átjáró használatával](../azure-monitor/platform/gateway.md).
-* [Automatikus riasztások](../log-analytics/log-analytics-alerts.md) konfigurálása az észlelés és a diagnosztika támogatásához.
-* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciókkal.
-* Részletes áttekintést kaphat Azure Monitor naplókról, valamint arról, hogy mit kínál, olvassa el a [Mi az Azure monitor naplók?](../operations-management-suite/operations-management-suite-overview.md)című témakört.
+* [Automatikus riasztások](../azure-monitor/platform/alerts-overview.md) konfigurálása az észlelés és a diagnosztika támogatásához.
+* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/log-query/log-query-overview.md) funkciókkal.
+* Részletes áttekintést kaphat Azure Monitor naplókról, valamint arról, hogy mit kínál, olvassa el a [Mi az Azure monitor naplók?](../azure-monitor/overview.md)című témakört.

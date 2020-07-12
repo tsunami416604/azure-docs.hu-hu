@@ -8,11 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b13944e30c339357997fbc5f0919e5eb8485a0a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c49345f7036dfee7d1f37c15a4647202b3e5670
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308778"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257830"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Tanúsítványok kezelése egy IoT Edge eszközön
 
@@ -46,6 +47,9 @@ A következő fájlok létrehozásához használja a saját hitelesítésszolgá
 * Eszköz HITELESÍTÉSSZOLGÁLTATÓI titkos kulcsa
 
 Ebben a cikkben a *legfelső szintű hitelesítésszolgáltatót* nevezzük, nem pedig a szervezet legfelső szintű hitelesítésszolgáltatója. Ez a legfelső szintű hitelesítésszolgáltató a IoT Edge-forgatókönyvhöz, amelyet az IoT Edge hub modul, a felhasználói modulok és az alsóbb rétegbeli eszközök az egymás közötti megbízhatósági kapcsolat létrehozására használnak.
+
+> [!NOTE]
+> Jelenleg a libiothsm korlátozásai meggátolják a 2050 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
 
 Ha szeretné megtekinteni a tanúsítványok példáját, tekintse át a bemutató tanúsítványokat létrehozó parancsfájlokat a [teszt hitelesítésszolgáltatói tanúsítványok kezelése a mintákhoz és az oktatóanyagokhoz](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)című témakörben.
 
@@ -108,7 +112,7 @@ További információ a IoT Edge eszköz különböző tanúsítványainak funkc
 A két automatikusan generált tanúsítvány esetében beállíthatja a **auto_generated_ca_lifetime_days** jelzőt a config. yamlban a tanúsítványok élettartamára vonatkozó napok számának beállításához.
 
 >[!NOTE]
->Létezik egy harmadik automatikusan generált tanúsítvány, amelyet a IoT Edge Security Manager hoz létre, a **IoT Edge hub-kiszolgáló tanúsítványát**. A tanúsítványnak mindig 90 nap, de a lejárata előtt automatikusan megújul. A **auto_generated_ca_lifetime_days** érték nem befolyásolja ezt a tanúsítványt.
+>Létezik egy harmadik automatikusan generált tanúsítvány, amelyet a IoT Edge Security Manager hoz létre, a **IoT Edge hub-kiszolgáló tanúsítványát**. A tanúsítványnak mindig 90 napos élettartama van, de a lejárata előtt automatikusan megújul. A **auto_generated_ca_lifetime_days** érték nem befolyásolja ezt a tanúsítványt.
 
 Ha a tanúsítvány lejáratát az alapértelmezett 90 napnál nem korábbi értékre szeretné beállítani, adja hozzá az értéket napokban a config. YAML fájl **tanúsítványok** szakaszába.
 
@@ -119,6 +123,9 @@ certificates:
   trusted_ca_certs: "<ADD URI TO TRUSTED CA CERTIFICATES HERE>"
   auto_generated_ca_lifetime_days: <value>
 ```
+
+> [!NOTE]
+> Jelenleg a libiothsm korlátozásai meggátolják a 2050 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
 
 Ha a saját eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványait biztosította, akkor ez az érték továbbra is érvényes a munkaterhelés HITELESÍTÉSSZOLGÁLTATÓI tanúsítványára, ha a beállított élettartam értéke rövidebb, mint az eszköz HITELESÍTÉSSZOLGÁLTATÓI tanúsítványának élettartama.
 
@@ -158,6 +165,6 @@ Miután megadta a jelölőt a config. YAML fájlban, hajtsa végre a következő
 
    Tekintse meg az **éles készültségi** egység kimenetét: tanúsítványok ellenőrzését, amely felsorolja, hogy hány nap elteltével járjon le az automatikusan létrehozott hitelesítésszolgáltatói tanúsítványok érvényessége.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tanúsítványok IoT Edge eszközön történő telepítése szükséges lépés a megoldás éles környezetben történő üzembe helyezése előtt. További információ a [IoT Edge-megoldás éles környezetben való üzembe helyezésének előkészítéséről](production-checklist.md).

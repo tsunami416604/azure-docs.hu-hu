@@ -5,11 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mikhegn
-ms.openlocfilehash: ef88a528dbb6d326e5cc742d14c27218eb7502f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1db6cea0af229664b07e88463e279b2a64d7e267
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464083"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256050"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Service Fabric alkalmazás frissítésének konfigurálása a Visual Studióban
 Az Azure-hoz készült Visual Studio Tools Service Fabric biztosítanak a helyi vagy távoli fürtökre való közzétételhez szükséges frissítési támogatást. Az alkalmazásnak a tesztelés és a hibakeresés során való lecserélése helyett három forgatókönyvvel kell frissítenie az alkalmazást egy újabb verzióra:
@@ -56,7 +57,7 @@ Ha a Visual Studio Service Fabric eszközeit használja egy Service Fabric alkal
 3. Ha a UnmonitoredManual frissítési módot választja, akkor a folytatáshoz manuálisan kell elindítania a PowerShell-konzolt, és be kell fejeznie a frissítési folyamatot. A manuális frissítés működésének megismeréséhez tekintse meg az [Service Fabric alkalmazás frissítése: speciális témaköröket](service-fabric-application-upgrade-advanced.md) .
 
 ## <a name="upgrade-an-application-by-using-powershell"></a>Alkalmazás frissítése a PowerShell használatával
-Service Fabric alkalmazások frissítéséhez PowerShell-parancsmagokat használhat. Részletes információkért lásd: [Service Fabric alkalmazás verziófrissítésének oktatóanyaga](service-fabric-application-upgrade-tutorial.md) és a [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) .
+Service Fabric alkalmazások frissítéséhez PowerShell-parancsmagokat használhat. Részletes információkért lásd: [Service Fabric alkalmazás verziófrissítésének oktatóanyaga](service-fabric-application-upgrade-tutorial.md) és a [Start-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade) .
 
 ## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>Állapot-ellenőrzési házirend meghatározása az alkalmazás jegyzékfájljában
 Egy Service Fabric alkalmazás minden szolgáltatása rendelkezhet saját állapotházirend-paraméterekkel, amelyek felülbírálják az alapértelmezett értékeket. Ezeket a paramétereket megadhatja az alkalmazás jegyzékfájljában.
@@ -76,5 +77,5 @@ Az alábbi példa bemutatja, hogyan alkalmazhat egyedi állapot-ellenőrzési h�
     </HealthPolicy>
 </Policies>
 ```
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alkalmazások frissítésével kapcsolatos további információkért lásd: [alkalmazások frissítése a Visual Studióval](service-fabric-application-upgrade-tutorial.md).

@@ -5,16 +5,17 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
-ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2ee5df9f0b09e30212f61e804e24086874f07f5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75466256"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86256271"
 ---
 # <a name="getting-started-with-reliable-actors"></a>A Reliable Actors első lépései
 > [!div class="op_single_selector"]
 > * [C# Windowson](service-fabric-reliable-actors-get-started.md)
-> * [Java Linuxon](service-fabric-reliable-actors-get-started-java.md)
+> * [Java Linuxon](./service-fabric-create-your-first-linux-application-with-java.md)
 
 Ez a cikk végigvezeti egy egyszerű, megbízható szereplő alkalmazás létrehozásán és hibakeresésén a Visual Studióban. További információ a Reliable Actorsről: [Service Fabric Reliable Actors bemutatása](service-fabric-reliable-actors-introduction.md).
 
@@ -147,7 +148,7 @@ Ha a kimenet tartalmazza a szöveget, *az alkalmazás készen áll*, a ActorClie
 > [!TIP]
 > A Service Fabric Actors Runtime a [színészi módszerekhez kapcsolódó eseményeket és](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)teljesítményszámlálókat bocsát ki. Ezek a diagnosztika és a teljesítmény monitorozása során hasznosak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ arról, [hogy Reliable Actors hogyan használják a Service Fabric platformot](service-fabric-reliable-actors-platform.md).
 
 

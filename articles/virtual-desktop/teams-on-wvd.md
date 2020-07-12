@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3fc44ca18f237fecd1c694e96f9ebc2d5b541757
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d482b3335b31d116846ec64883b43897fcc4e43d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564458"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86255659"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>A Microsoft Teams használata a Windows rendszerű virtuális asztalon
 
@@ -32,7 +32,7 @@ A Microsoft Teams-hez készült Media Optimization szolgáltatással a Windows a
 Ahhoz, hogy a Microsoft Teams szolgáltatást használhassa a Windows rendszerű virtuális asztalon, ezeket a következő műveleteket kell végrehajtania:
 
 - [Készítse elő a hálózatát](/microsoftteams/prepare-network/) a Microsoft Teams szolgáltatásban.
-- Telepítse a [Windows asztali ügyfelet](connect-windows-7-and-10.md) egy Windows 10 vagy Windows 10 IoT Enterprise rendszerű eszközre, amely megfelel a Microsoft Teams [Windows rendszerű számítógépekre vonatkozó hardverkövetelmények](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
+- Telepítse a [Windows asztali ügyfelet](connect-windows-7-10.md) egy Windows 10 vagy Windows 10 IoT Enterprise rendszerű eszközre, amely megfelel a Microsoft Teams [Windows rendszerű számítógépekre vonatkozó hardverkövetelmények](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Csatlakozhat egy Windows 10 rendszerű többmunkamenetes vagy Windows 10 Enterprise rendszerű virtuális géphez (VM).
 - Telepítse a Teams Desktop alkalmazást a gazdagépre számítógépenkénti telepítés használatával. A Microsoft Teams-hez készült média-optimalizáláshoz a Teams Desktop-alkalmazás 1.3.00.4461 vagy újabb verziója szükséges.
 
@@ -47,7 +47,7 @@ A csapatok számára a média optimalizálásának engedélyezéséhez állítsa
 1. A Start menüben futtassa a **Regedit parancsot** rendszergazdaként. Navigáljon **HKEY_LOCAL_MACHINE \software\microsoft\teams**.
 2. Hozza létre a következő értéket a csapatok kulcsához:
 
-| Name             | Típus   | Az adatértékek/értékek  |
+| Név             | Típus   | Az adatértékek/értékek  |
 |------------------|--------|-------------|
 | IsWVDEnvironment | DWORD  | 1           |
 

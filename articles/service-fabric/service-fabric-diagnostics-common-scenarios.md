@@ -3,11 +3,12 @@ title: Az Azure Service Fabric gyakori forgatókönyvek diagnosztizálására
 description: Ismerje meg az Azure Service Fabric-alkalmazásokon belüli általános figyelési és diagnosztikai forgatókönyvek hibaelhárítását.
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: bc17f00dc46c6e995d18621353c8f10cacf7759c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f92bc02082d8bcd9d917f05c93d3da413f772cd0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697684"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86257729"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Gyakori forgatókönyvek diagnosztizálása Service Fabric
 
@@ -129,12 +130,12 @@ Az alkalmazások Reliable Services vagy szereplőinek teljesítményének nyomon
 
 A megbízható [szolgáltatásokkal](service-fabric-reliable-serviceremoting-diagnostics.md) és [szereplőkkel](service-fabric-reliable-actors-diagnostics.md) kapcsolatos teljesítményszámlálók teljes listájáért olvassa el a következő hivatkozásokat:
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Gyakori programkód-aktiválási hibák megkeresése](./service-fabric-diagnostics-code-package-errors.md)
-* [Riasztások beállítása az AI-ben](/azure/azure-monitor/platform/alerts-log) a teljesítmény vagy a használat változásairól való értesítéshez
+* [Riasztások beállítása az AI-ben](../azure-monitor/platform/alerts-log.md) a teljesítmény vagy a használat változásairól való értesítéshez
 * Az [intelligens észlelés a Application Insights](../azure-monitor/app/proactive-diagnostics.md) az AI által küldött telemetria proaktív elemzését hajtja végre, hogy figyelmeztesse Önt a lehetséges teljesítménnyel kapcsolatos problémákra
-* További információ Azure Monitor naplók [riasztásáról](../log-analytics/log-analytics-alerts.md) az észlelés és a diagnosztika támogatásához.
+* További információ Azure Monitor naplók [riasztásáról](../azure-monitor/platform/alerts-overview.md) az észlelés és a diagnosztika támogatásához.
 * Helyszíni fürtök esetén a Azure Monitor-naplók egy átjárót (HTTP-továbbítási proxyt) biztosítanak, amellyel az adatküldés Azure Monitor naplókba. További információ arról, hogy az [log Analytics átjáró használatával internet-hozzáférés nélküli számítógépek csatlakoztatása Azure monitor naplókhoz](../azure-monitor/platform/gateway.md)
-* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciókkal
-* Részletesebb áttekintést kaphat Azure Monitor naplókról és arról, hogy mit kínál, olvassa el a [Mi az Azure monitor-naplók?](../operations-management-suite/operations-management-suite-overview.md)
+* Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/log-query/log-query-overview.md) funkciókkal
+* Részletesebb áttekintést kaphat Azure Monitor naplókról és arról, hogy mit kínál, olvassa el a [Mi az Azure monitor-naplók?](../azure-monitor/overview.md)
