@@ -5,12 +5,12 @@ author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 326075b947ea61384681fb2353c27d3e1450156d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d9ebf77862f7b9b019507613e269126501abfd8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735336"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244922"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Fordított proxy az Azure-ban Service Fabric
 Az Azure Service Fabric beépített fordított proxy segít felderíteni a Service Fabric-fürtökön futó és a http-végpontokat használó más szolgáltatásokkal való kommunikációt.
@@ -117,7 +117,7 @@ A Service Fabric fordított proxy megkísérli újból feloldani a szolgáltatá
 
 A replikák és a szolgáltatási példányok azonban megoszthatnak egy gazdagépet, és egy http.sys-alapú webkiszolgáló által üzemeltetett portot is megoszthatnak, többek között:
 
-* [System .net. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
+* [System .net. HttpListener](/dotnet/api/system.net.httplistener?view=netcore-3.1)
 * [ASP.NET Core webfigyelő](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
@@ -149,13 +149,13 @@ A helyi fürt esetében alapértelmezés szerint a `Fabric_NodeIPOrFQDN` "localh
 
 Service Fabric Docker-összeállítási tárolókban futó szolgáltatások speciális Docker-compose igényelnek. a YML- *portok szakasz* http: vagy https: Configuration. További információ: [Docker-összeállítás támogatása az Azure Service Fabricban](service-fabric-docker-compose.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Állítsa be és konfigurálja a fordított proxyt egy fürtön](service-fabric-reverseproxy-setup.md).
 * [A biztonságos HTTP-szolgáltatás továbbításának beállítása a fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md)
 * [Fordított proxy eseményeinek diagnosztizálása](service-fabric-reverse-proxy-diagnostics.md)
 * Tekintse [meg a githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)található, a szolgáltatások közötti http-kommunikáció példáját.
 * [Távoli eljáráshívás Reliable Services táveléréssel](service-fabric-reliable-services-communication-remoting.md)
-* [OWIN-t használó webes API Reliable Services](service-fabric-reliable-services-communication-webapi.md)
+* [OWIN-t használó webes API Reliable Services](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [WCF-kommunikáció Reliable Services használatával](service-fabric-reliable-services-communication-wcf.md)
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png

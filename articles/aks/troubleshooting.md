@@ -4,12 +4,12 @@ description: Útmutató az Azure Kubernetes szolgáltatás (ak) használata sor�
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 08668289faa2341389a80b00cba11a33021da608
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054389"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243681"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -22,7 +22,7 @@ A Microsoft Engineering által kiadott [hibaelhárítási útmutató](https://gi
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>"A kvóta túllépve" hibaüzenetet kapok a létrehozás vagy a frissítés során. Mit tegyek? 
 
- [További magok igénylése](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+ [További magok igénylése](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Mekkora a hüvelyek maximális száma az AK-ban?
 
@@ -34,7 +34,7 @@ Alapértelmezés szerint a hüvelyek maximális száma 110, ha az Azure CLI-ben 
 Ez a hiba azt jelzi, hogy a fürtben lévő alhálózatok már nem rendelkeznek a CIDR belüli elérhető IP-címekkel a sikeres erőforrás-hozzárendeléshez. A Kubenet-fürtök esetében a követelmény elegendő IP-terület a fürt minden csomópontja számára. Az Azure CNI-fürtök esetében a követelmény elegendő IP-terület a fürt minden egyes csomópontja és Pod számára.
 További információk az [Azure-CNI kialakításáról az IP-címek a hüvelyekhez való hozzárendeléséhez](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
-Ezeket a hibákat az [AK-diagnosztika](https://docs.microsoft.com/azure/aks/concepts-diagnostics) is felveszi, amely proaktív módon olyan problémákat okoz, mint például a nem megfelelő alhálózat mérete.
+Ezeket a hibákat az [AK-diagnosztika](./concepts-diagnostics.md) is felveszi, amely proaktív módon olyan problémákat okoz, mint például a nem megfelelő alhálózat mérete.
 
 A következő három (3) eset nem megfelelő alhálózati méretet okoz:
 
@@ -217,7 +217,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.10 | 1.10.2 vagy újabb |
 | 1,11 | 1.11.0 vagy újabb |
-| 1,12 és újabb verziók | N.A. |
+| 1,12 és újabb verziók | N/A |
 
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Hiba történt az UID és a GID beállításakor az Azure Disk mountOptions esetében
@@ -274,7 +274,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.9 vagy újabb |
 | 1.13 | 1.13.6 vagy újabb |
 | 1,14 | 1.14.2 vagy újabb |
-| 1,15 és újabb verziók | N.A. |
+| 1,15 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont elavult lemezzel rendelkezik, enyhítheti a virtuális gépről a nem létező lemezek tömeges műveletként való leválasztásával. **A nem létező lemezek különálló leválasztása sikertelen lehet.**
 
@@ -293,7 +293,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 | 1.12 | 1.12.10 vagy újabb |
 | 1.13 | 1.13.8 vagy újabb |
 | 1,14 | 1.14.4 vagy újabb |
-| 1,15 és újabb verziók | N.A. |
+| 1,15 és újabb verziók | N/A |
 
 Ha olyan Kubernetes-verziót használ, amely nem rendelkezik a probléma javításával, és a csomópont meghibásodott állapotban van, a virtuális gép állapotának manuális frissítésével csökkentheti a következő lépések egyikét:
 
@@ -402,7 +402,7 @@ Ezt a problémát a Kubernetes következő verzióiban rögzítették:
 |--|:--:|
 | 1.12 | 1.12.6 vagy újabb |
 | 1.13 | 1.13.4 vagy újabb |
-| 1,14 és újabb verziók | N.A. |
+| 1,14 és újabb verziók | N/A |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure Files csatlakoztatás sikertelen, mert a Storage-fiók kulcsa módosult
 

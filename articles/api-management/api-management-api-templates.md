@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.custom: tracking-python
-ms.openlocfilehash: 467d8b89ef5c114d647a257053ed3367d6336bdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 193dc7a953bc746ec7211433f846343969176c96
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559340"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243698"
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-sablonok az Azure API Management
 
@@ -39,7 +40,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  A minta alapértelmezett sablonjai a következő dokumentációban szerepelnek, de a folyamatos fejlődés miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon tekintheti meg, ha a kívánt egyéni sablonokat navigálja. További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  A minta alapértelmezett sablonjai a következő dokumentációban szerepelnek, de a folyamatos fejlődés miatt változhatnak. Az élő alapértelmezett sablonokat a fejlesztői portálon tekintheti meg, ha a kívánt egyéni sablonokat navigálja. További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](./api-management-developer-portal-templates.md).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
@@ -89,7 +90,7 @@ Az ebben a szakaszban található sablonok segítségével testre szabhatja az A
   
 ### <a name="data-model"></a>Adatmodell  
   
-|Tulajdonság|Típus|Description|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |`apis`|[API összefoglaló](api-management-template-data-model-reference.md#APISummary) entitások gyűjteménye.|Az aktuális felhasználó számára látható API-k.|  
   
@@ -1472,5 +1473,5 @@ puts response.body
 }  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

@@ -15,11 +15,12 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6415214e5d6b71d174e5117c1cf1e41af381334c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bbd461072a137bf32874805e5c6171d1102ef0c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84013574"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245347"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -394,9 +395,9 @@ Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a
    
      | URL-formátum | WWS API-verzió használatban | XPATH-módosítások szükségesek |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Yes |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Nem |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Nem |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Igen |
 
       > [!NOTE]
      > Ha nem ad meg verziószámot az URL-címben, az alkalmazás a munkanap webszolgáltatások (WWS) v 21.1 verzióját használja, és nincs szükség módosításra az alkalmazáshoz mellékelt alapértelmezett XPATH API-kifejezésekhez. Ha egy adott WWS API-verziót szeretne használni, az URL-címben válassza a verziószám értéket. <br>
@@ -532,7 +533,7 @@ Miután befejezte a munkaidő-kiépítési alkalmazás konfigurációját, bekap
 
 1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a**következőre:.
 
-2. Kattintson a **Save** (Mentés) gombra.
+2. Kattintson a **Mentés** gombra.
 
 3. Ez a művelet elindítja a kezdeti szinkronizálást, amely a munkanapokhoz tartozó bérlők számától függően több órát is igénybe vehet. 
 
@@ -683,12 +684,7 @@ Cserélje le a [proxy-server] és [proxy-port] változókat a proxykiszolgálój
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>Hogyan gondoskodjon arról, hogy a kiépítési ügynök képes legyen kommunikálni az Azure AD-Bérlővel, és egyetlen tűzfal sem blokkolja az ügynök által igényelt portokat?
 
-Azt is ellenőrizheti, hogy az összes szükséges portot megnyitotta-e. Ehhez nyissa meg az [összekötő portok tesztelése eszközt](https://aadap-portcheck.connectorporttest.msappproxy.net/) a helyszíni hálózatról. A további zöld pipa nagyobb rugalmasságot jelent.
-
-Győződjön meg arról, hogy az eszköz biztosítja a megfelelő eredményeket:
-
-* Nyissa meg az eszközt egy böngészőben azon a kiszolgálón, amelyen a kiépítési ügynököt telepítette.
-* Győződjön meg arról, hogy a kiépítési ügynökre érvényes proxyk vagy tűzfalak is érvényesek erre az oldalra. Ezt az Internet Explorerben a **Beállítások-> Internetbeállítások-> kapcsolatok-> LAN-beállítások**menüpontban teheti meg. Ezen az oldalon a "proxykiszolgáló használata a helyi hálózathoz" mező látható. Jelölje be ezt a jelölőnégyzetet, és helyezze el a proxy címe mezőt a "címek" mezőbe.
+Azt is megtekintheti, hogy az összes [szükséges port](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#open-ports) nyitva van-e.
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>A kiépítési ügynökök több AD-tartomány kiépítésére is konfigurálhatók?
 
@@ -1161,7 +1157,7 @@ Az Azure AD-kiépítési szolgáltatás a GDPR-besorolás **adatfeldolgozó** ka
 
 Az adatmegőrzés tekintetében az Azure AD-létesítési szolgáltatás nem hoz létre jelentéseket, elemzéseket végez, vagy 30 napon belül nem nyújt betekintést. Ezért az Azure AD kiépítési szolgáltatás 30 napon belül nem tárolja, dolgozza fel és nem őrzi meg az összes adatát. Ez a kialakítás megfelel a GDPR-szabályozásoknak, a Microsoft adatvédelmi rendelkezéseinek és az Azure AD adatmegőrzési szabályzatának.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
 * [Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a munkanap és a Azure Active Directory között](workday-tutorial.md)

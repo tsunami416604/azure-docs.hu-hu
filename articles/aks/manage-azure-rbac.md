@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 84800f978790a114b80c415a5e5e3dad77eaf8da
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fc0464c226b8edc2dae01f8ea54c3e5b2e11f2d6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122303"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244260"
 ---
-# <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Az Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
+# <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
 
 Ma már [a Azure Active Directory (Azure ad) és az AK közötti integrált hitelesítést](managed-aad.md)is kihasználhatja. Ha ez a beállítás engedélyezve van, ez az integráció lehetővé teszi, hogy az ügyfelek az Azure AD-felhasználókat,-csoportokat vagy egyszerű szolgáltatásokat használják a Kubernetes-RBAC, [itt](azure-ad-rbac.md)találhat további információt.
 Ezzel a funkcióval a Kubernetes felhasználói identitások és hitelesítő adatok külön kezelhetők. Azonban továbbra is külön kell beállítania és kezelnie az Azure RBAC és a Kubernetes RBAC. A hitelesítéssel, az engedélyezéssel és a RBAC kapcsolatos további információkért lásd [itt](concepts-identity.md).
@@ -215,7 +215,7 @@ az aks get-credentials -g MyResourceGroup -n MyManagedCluster
 ```
 
 > [!IMPORTANT]
-> A fenti lépés végrehajtásához szüksége lesz az [Azure Kubernetes Service cluster felhasználói](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#azure-kubernetes-service-cluster-user-role) beépített szerepkörre.
+> A fenti lépés végrehajtásához szüksége lesz az [Azure Kubernetes Service cluster felhasználói](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) beépített szerepkörre.
 
 Most használhatja a kubectl-t, például listázhatja a fürt csomópontjait. Amikor először futtatja, be kell jelentkeznie, és a következő parancsok a megfelelő hozzáférési tokent fogják használni.
 

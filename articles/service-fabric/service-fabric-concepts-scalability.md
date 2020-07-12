@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 1780cb47696813b5d26035f54e0685969482dba6
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 5b311dd9b0cd2c2b007bc19994aee771b2c4360f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058112"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246380"
 ---
 # <a name="scaling-in-service-fabric"></a>Méretezés Service Fabric
 Az Azure Service Fabric használatával könnyedén méretezhető alkalmazások hozhatók létre egy fürt csomópontjain található szolgáltatások, partíciók és replikák kezelésével. Számos számítási feladat ugyanazon a hardveren való futtatása lehetővé teszi az erőforrások maximális kihasználtságát, azonban rugalmasságot is biztosít a munkaterhelések skálázása szempontjából. Ez a Channel 9 videó azt ismerteti, hogyan hozhat létre méretezhető Service-alkalmazásokat:
@@ -63,7 +63,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>Méretezés új nevesített szolgáltatások létrehozásával vagy eltávolításával
 Az elnevezett szolgáltatás-példány egy szolgáltatástípus egy adott példánya (lásd: [Service Fabric alkalmazás életciklusa](service-fabric-application-lifecycle.md)) a fürt egyes megnevezett alkalmazási példányain belül. 
 
-Az új elnevezett szolgáltatási példányok létrehozhatók (vagy eltávolíthatók), mivel a szolgáltatások egyre vagy kevesebben vannak elfoglalva. Ez lehetővé teszi, hogy a kérelmek több szolgáltatási példányon is elterjednek, ami általában lehetővé teszi a meglévő szolgáltatások terhelésének csökkenését. Szolgáltatások létrehozásakor a Service Fabric fürterőforrás-kezelő elosztott módon helyezi el a szolgáltatásokat a fürtben. A pontos döntéseket a fürt [metrikái](service-fabric-cluster-resource-manager-metrics.md) és egyéb elhelyezési szabályok szabályozzák. A szolgáltatások számos különböző módon hozhatók létre, de a leggyakoribbak vagy olyan rendszergazdai műveletek, mint például valaki [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) , vagy a kód meghívásával [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) . `CreateServiceAsync`akár a fürtben futó más szolgáltatásokból is meghívható.
+Az új elnevezett szolgáltatási példányok létrehozhatók (vagy eltávolíthatók), mivel a szolgáltatások egyre vagy kevesebben vannak elfoglalva. Ez lehetővé teszi, hogy a kérelmek több szolgáltatási példányon is elterjednek, ami általában lehetővé teszi a meglévő szolgáltatások terhelésének csökkenését. Szolgáltatások létrehozásakor a Service Fabric fürterőforrás-kezelő elosztott módon helyezi el a szolgáltatásokat a fürtben. A pontos döntéseket a fürt [metrikái](service-fabric-cluster-resource-manager-metrics.md) és egyéb elhelyezési szabályok szabályozzák. A szolgáltatások számos különböző módon hozhatók létre, de a leggyakoribbak vagy olyan rendszergazdai műveletek, mint például valaki [`New-ServiceFabricService`](/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) , vagy a kód meghívásával [`CreateServiceAsync`](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) . `CreateServiceAsync`akár a fürtben futó más szolgáltatásokból is meghívható.
 
 A szolgáltatások dinamikusan hozhatók létre a különféle helyzetekben, és egy közös minta. Vegyünk például egy olyan állapot-nyilvántartó szolgáltatást, amely egy adott munkafolyamatot jelöl. A munkát képviselő hívások megjelennek a szolgáltatásban, és ez a szolgáltatás végrehajtja a munkafolyamat lépéseit és a rekord előrehaladását. 
 
@@ -140,7 +140,7 @@ Ez a dinamikus létrehozási minta számos előnnyel jár:
   - Nem futtat olyan szolgáltatási példányokat vagy replikákat, amelyek az ügyfelek számára való várakozás közben vannak
   - Ha egy ügyfél még mindig elhagyja a szolgáltatást, a szolgáltatásból eltávolíthatja az adatait, és a kezelő törli az általa létrehozott szolgáltatást vagy alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Service Fabric fogalmakkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
 * [Service Fabric szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)

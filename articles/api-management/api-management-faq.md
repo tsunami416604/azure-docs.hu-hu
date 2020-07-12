@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72f9381a320dc0fb946dbf6f48c5bcab5390aed5
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233482"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243579"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management – gyakori kérdések
 Választ kaphat az Azure API Management gyakori kérdéseire, mintáinak és ajánlott eljárásaira.
@@ -68,7 +68,7 @@ Igen, API Management programozott módon felügyelheti a használatával:
 
 * A [API Management REST API](/rest/api/apimanagement/).
 * A [Microsoft Azure ApiManagement Service Management Library SDK](https://aka.ms/apimsdk).
-* A [szolgáltatás központi telepítésével](https://docs.microsoft.com/powershell/module/wds) és a [Service Management](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) PowerShell-parancsmagokkal.
+* A [szolgáltatás központi telepítésével](/powershell/module/wds) és a [Service Management](/powershell/azure/servicemanagement/overview) PowerShell-parancsmagokkal.
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Hogyan adhatok hozzá felhasználót a rendszergazdák csoportjához?
 A következőképpen adhat hozzá felhasználókat a rendszergazdák csoporthoz:
@@ -77,7 +77,7 @@ A következőképpen adhat hozzá felhasználókat a rendszergazdák csoporthoz:
 2. Lépjen a frissíteni kívánt API Management-példánnyal rendelkező erőforráscsoporthoz.
 3. A API Management-ben rendelje hozzá az **API Management szolgáltatás közreműködői** szerepkört a felhasználóhoz.
 
-Az újonnan hozzáadott közreműködő mostantól Azure PowerShell [parancsmagokat](https://docs.microsoft.com/powershell/azure/overview)is használhat. A következőképpen jelentkezhet be rendszergazdaként:
+Az újonnan hozzáadott közreműködő mostantól Azure PowerShell [parancsmagokat](/powershell/azure/overview)is használhat. A következőképpen jelentkezhet be rendszergazdaként:
 
 1. `Connect-AzAccount`Jelentkezzen be a parancsmag használatával.
 2. Állítsa a kontextust arra az előfizetésre, amely a szolgáltatást használja `Set-AzContext -SubscriptionID <subscriptionGUID>` .
@@ -85,7 +85,7 @@ Az újonnan hozzáadott közreműködő mostantól Azure PowerShell [parancsmago
 4. A felügyeleti portál eléréséhez használja az URL-címet.
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Miért nem érhető el a szabályzat a házirend-szerkesztőben?
-Ha a hozzáadni kívánt szabályzat szürkén vagy árnyékolva jelenik meg a házirend-szerkesztőben, ügyeljen arra, hogy a szabályzat megfelelő hatóköre legyen. Minden házirend-utasítás meghatározott hatókörökben és házirend-szakaszban való használatra készült. A szabályzatok szabályzat-szakaszainak és hatókörének áttekintéséhez tekintse meg a házirend használatáról szóló szakaszt [API Management házirendek](/azure/api-management/api-management-policies)részben.
+Ha a hozzáadni kívánt szabályzat szürkén vagy árnyékolva jelenik meg a házirend-szerkesztőben, ügyeljen arra, hogy a szabályzat megfelelő hatóköre legyen. Minden házirend-utasítás meghatározott hatókörökben és házirend-szakaszban való használatra készült. A szabályzatok szabályzat-szakaszainak és hatókörének áttekintéséhez tekintse meg a házirend használatáról szóló szakaszt [API Management házirendek](./api-management-policies.md)részben.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Hogyan több környezetet is beállíthat egyetlen API-ban?
 Több környezet (például egy tesztkörnyezet és egy éles környezet) egyetlen API-ban való beállításához két lehetőség közül választhat. A következőket teheti:
@@ -94,7 +94,7 @@ Több környezet (például egy tesztkörnyezet és egy éles környezet) egyetl
 * Ugyanazon API-k üzemeltetése különböző bérlők esetében.
 
 ### <a name="can-i-use-soap-with-api-management"></a>Használhatom a SOAP-t a API Management?
-A [SOAP pass-through](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) támogatás mostantól elérhető. A rendszergazdák importálhatók a SOAP-szolgáltatáshoz tartozó WSDL-t, az Azure API Management pedig létrehoz egy SOAP-előtérben. A fejlesztői portál dokumentációja, a tesztelési konzol, a szabályzatok és az elemzések mind elérhetők a SOAP-szolgáltatásokhoz.
+A [SOAP pass-through](https://azure.microsoft.com/blog/soap-pass-through/) támogatás mostantól elérhető. A rendszergazdák importálhatók a SOAP-szolgáltatáshoz tartozó WSDL-t, az Azure API Management pedig létrehoz egy SOAP-előtérben. A fejlesztői portál dokumentációja, a tesztelési konzol, a szabályzatok és az elemzések mind elérhetők a SOAP-szolgáltatásokhoz.
 
 ### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>Konfigurálható a OAuth 2,0-es engedélyezési kiszolgáló AD FS biztonsággal?
 Az OAuth 2,0 engedélyezési kiszolgáló Active Directory összevonási szolgáltatások (AD FS) (AD FS) biztonsággal való konfigurálásával kapcsolatos információkért lásd: az [ADFS használata a API Management-ben](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/).
@@ -109,7 +109,7 @@ Igen. Tekintse meg az [Azure API Management Service](https://aka.ms/apimtemplate
 Igen. Ez a PowerShell használatával vagy az API-hoz való közvetlen beküldéssel végezhető el. Ezzel a beállítással letilthatja a tanúsítványlánc érvényesítését, és lehetővé teszi önaláírt vagy önaláírt tanúsítványok használatát a API Managementról a háttér-szolgáltatásokhoz való kommunikáció során.
 
 #### <a name="powershell-method"></a>PowerShell-módszer ####
-Használja az [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (új háttérrendszer) vagy a [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (meglévő háttérrendszer) PowerShell-parancsmagokat, és állítsa a paramétert a következőre: `-SkipCertificateChainValidation` `True` .
+Használja az [`New-AzApiManagementBackend`](/powershell/module/az.apimanagement/new-azapimanagementbackend) (új háttérrendszer) vagy a [`Set-AzApiManagementBackend`](/powershell/module/az.apimanagement/set-azapimanagementbackend) (meglévő háttérrendszer) PowerShell-parancsmagokat, és állítsa a paramétert a következőre: `-SkipCertificateChainValidation` `True` .
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

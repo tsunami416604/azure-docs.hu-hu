@@ -3,11 +3,12 @@ title: Azure Service Fabric – a Service Fabric Application kulcstartó-referen
 description: Ez a cikk azt ismerteti, hogyan használható a Service-Fabric KeyVaultReference támogatása az alkalmazás titkos kulcsaihoz.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f1ac3ac50c5ac7cbabb03561c5db7f9c14150de4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76545483"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246163"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric alkalmazások KeyVaultReference támogatása (előzetes verzió)
 
@@ -155,6 +156,6 @@ A KeyVaultReference egy támogatott típusú tároló-RepositoryCredentials, az 
 
 - A kulcstartónak ugyanahhoz az előfizetéshez kell esnie, mint a Service Fabric-fürtnek. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Azure kulcstartó – dokumentáció](https://docs.microsoft.com/azure/key-vault/)
+* [Azure kulcstartó – dokumentáció](../key-vault/index.yml)

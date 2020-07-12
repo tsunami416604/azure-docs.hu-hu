@@ -5,21 +5,22 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 9aa0b6795508cb94200c486df092b867c1086316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b2b2c444bb492fa6c6b945a82090e91963fb1a8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905993"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245860"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh hálózata
 Háló hálózati erőforrásainak beolvasása és törlése.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Description|
+|Parancs|Leírás|
 | --- | --- |
-| delete | A hálózati erőforrás törlése. |
-| lista | Felsorolja az összes hálózati erőforrást. |
+| törlés | A hálózati erőforrás törlése. |
+| list | Felsorolja az összes hálózati erőforrást. |
 | megjelenítés | Lekéri a megadott nevű hálózati erőforrást. |
 
 ## <a name="sfctl-mesh-network-delete"></a>sfctl Mesh hálózat törlése
@@ -29,13 +30,13 @@ Törli a névvel azonosított hálózati erőforrást.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Name-n [kötelező] | A hálózat neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -50,7 +51,7 @@ Egy adott erőforráscsoport összes hálózati erőforrásával kapcsolatos inf
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -65,13 +66,13 @@ A megadott nevű hálózati erőforrással kapcsolatos információk beolvasása
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Name-n [kötelező] | A hálózat neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -80,6 +81,6 @@ A megadott nevű hálózati erőforrással kapcsolatos információk beolvasása
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

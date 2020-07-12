@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 137cbec270b40042503fc7687c9deb39b0df1aa4
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073419"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243290"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Előfizetések az Azure API Managementben
 
@@ -33,7 +33,7 @@ Az API-k eléréséhez szükséges előfizetési kulcs beszerzéséhez előfizet
 > A API Management az API-khoz való hozzáférés biztosítására szolgáló egyéb mechanizmusokat is támogat, beleértve az alábbi példákat:
 > - [OAuth 2.0](api-management-howto-protect-backend-with-aad.md)
 > - [Ügyféltanúsítványok](api-management-howto-mutual-certificates-for-clients.md)
-> - [IP-engedélyezési lista](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> - [IP-engedélyezési lista](./api-management-access-restriction-policies.md#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>Előfizetések hatóköre
 
@@ -59,7 +59,7 @@ Ha bevezetjük API Management [fogyasztási](https://aka.ms/apimconsumptionblog)
 
     ![Rugalmas előfizetések](./media/api-management-subscriptions/flexible-subscription.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a API Managementról:
 
 + Ismerje meg a API Management egyéb [fogalmait](api-management-terminology.md) .

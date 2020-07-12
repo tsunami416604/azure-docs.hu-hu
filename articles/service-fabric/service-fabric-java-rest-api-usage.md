@@ -5,11 +5,12 @@ author: rapatchi
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c093958b9a8c5a21cb6996db891705ec8c3d21ab
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75451667"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246282"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric Java ügyféloldali API-k
 
@@ -123,6 +124,5 @@ Minden API-hoz négy túlterhelést talál a megvalósításhoz. Ha választhat�
  4. **nyilvános megfigyelhető \<ServiceResponse\<Void>> removeReplicaWithServiceResponseAsync (string csomópontnév, UUID partitionId, karakterlánc replicaId)**
     * Az API-hívás ezen változata akkor használható, ha reaktív aszinkron programozást szeretne használni, és a nyers Rest-választal foglalkozik.
 
-## <a name="next-steps"></a>További lépések
-* A [Service FABRIC REST API](https://docs.microsoft.com/rest/api/servicefabric/) -k megismerése
-
+## <a name="next-steps"></a>Következő lépések
+* A [Service FABRIC REST API](/rest/api/servicefabric/) -k megismerése

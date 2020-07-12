@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/18/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 459360e72c2d35cafedb0291642bf081bfcad96c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 077dc0e8048da39253729d56f1e812cccc69500c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103993"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242916"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Hibrid gépek összekötése az Azure-ba a Azure Portal
 
@@ -24,7 +24,7 @@ Ehhez a módszerhez rendszergazdai jogosultságokkal kell rendelkeznie a gépen 
 
 Mielőtt elkezdené, tekintse át az [előfeltételeket](agent-overview.md#prerequisites) , és győződjön meg arról, hogy az előfizetés és az erőforrások megfelelnek a követelményeknek.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="generate-the-installation-script-from-the-azure-portal"></a>A telepítési parancsfájl létrehozása a Azure Portal
 
@@ -32,7 +32,7 @@ A letöltés és telepítés automatizálására szolgáló parancsfájl, valami
 
 1. A böngészőben nyissa meg a [Azure Portal](https://aka.ms/hybridmachineportal).
 
-1. A **gépek – Azure arc** lapon válassza a **Hozzáadás**, a bal felső sarokban vagy a **számítógép létrehozása – Azure arc** lehetőséget a középső ablaktábla alján. 
+1. A **gépek – Azure arc** lapon válassza a **Hozzáadás**, a bal felső sarokban vagy a **számítógép létrehozása – Azure arc** lehetőséget a középső ablaktábla alján.
 
 1. A **módszer kiválasztása** lapon jelölje be a **számítógépek hozzáadása interaktív parancsfájl** -csempével lehetőséget, majd válassza a **parancsfájl létrehozása**lehetőséget.
 
@@ -49,8 +49,8 @@ A letöltés és telepítés automatizálására szolgáló parancsfájl, valami
 
 1. A **parancsfájl létrehozása** lap **operációs rendszer** legördülő listájában válassza ki azt az operációs rendszert, amelyen a parancsfájl futni fog.
 
-1. Ha a gép proxykiszolgálón keresztül kommunikál az internethez, válassza a **Tovább: proxykiszolgáló**lehetőséget. 
-1. A **proxykiszolgáló** lapon adja meg a proxykiszolgáló IP-címét, vagy azt a nevet és portszámot, amelyet a gép a proxykiszolgálóhoz való kommunikációhoz használni fog. Adja meg az értéket a formátumban `http://<proxyURL>:<proxyport>` . 
+1. Ha a gép proxykiszolgálón keresztül kommunikál az internethez, válassza a **Tovább: proxykiszolgáló**lehetőséget.
+1. A **proxykiszolgáló** lapon adja meg a proxykiszolgáló IP-címét, vagy azt a nevet és portszámot, amelyet a gép a proxykiszolgálóhoz való kommunikációhoz használni fog. Adja meg az értéket a formátumban `http://<proxyURL>:<proxyport>` .
 1. Válassza a **felülvizsgálat + előállítás**lehetőséget.
 
 1. A **felülvizsgálat + előállítás** lapon tekintse át az összegző információkat, majd kattintson a **Letöltés**gombra. Ha továbbra is módosításokat kell végeznie, válassza az **előző**lehetőséget.
@@ -59,17 +59,17 @@ A letöltés és telepítés automatizálására szolgáló parancsfájl, valami
 
 ### <a name="install-manually"></a>Manuális telepítés
 
-A csatlakoztatott gépi ügynököt manuálisan is telepítheti a Windows Installer csomag *AzureConnectedMachineAgent.msi*futtatásával. A [Windows agent Windows Installer csomag](https://aka.ms/AzureConnectedMachineAgent) legújabb verzióját a Microsoft letöltőközpontból töltheti le. 
+A csatlakoztatott gépi ügynököt manuálisan is telepítheti a Windows Installer csomag *AzureConnectedMachineAgent.msi*futtatásával. A [Windows agent Windows Installer csomag](https://aka.ms/AzureConnectedMachineAgent) legújabb verzióját a Microsoft letöltőközpontból töltheti le.
 
-> [!NOTE]
-> * Az ügynök telepítéséhez vagy eltávolításához *rendszergazdai* jogosultságokkal kell rendelkeznie.
-> * Először le kell töltenie és át kell másolnia a telepítőcsomagot egy mappába a célkiszolgálón vagy egy megosztott hálózati mappából. Ha bármilyen lehetőség nélkül futtatja a telepítőcsomagot, elindul egy telepítővarázsló, amelyet követve interaktív módon telepítheti az ügynököt.
+>[!NOTE]
+>* Az ügynök telepítéséhez vagy eltávolításához *rendszergazdai* jogosultságokkal kell rendelkeznie.
+>* Először le kell töltenie és át kell másolnia a telepítőcsomagot egy mappába a célkiszolgálón vagy egy megosztott hálózati mappából. Ha bármilyen lehetőség nélkül futtatja a telepítőcsomagot, elindul egy telepítővarázsló, amelyet követve interaktív módon telepítheti az ügynököt.
 
 Ha a gépnek egy proxykiszolgálón keresztül kell kommunikálnia a szolgáltatással, az ügynök telepítése után futtatnia kell egy, a cikk későbbi részében ismertetett parancsot. Ezzel beállítja a proxykiszolgáló rendszerkörnyezeti változóját `https_proxy` .
 
 Ha nem ismeri a Windows Installer csomagok parancssori kapcsolóit, tekintse át az [msiexec standard parancssori kapcsolóit](/windows/win32/msi/standard-installer-command-line-options) és az [msiexec parancssori kapcsolókat](/windows/win32/msi/command-line-options).
 
-Például futtassa a telepítőprogramot a `/?` paraméterrel, és tekintse át a Súgó és a gyors hivatkozás lehetőséget. 
+Például futtassa a telepítőprogramot a `/?` paraméterrel, és tekintse át a Súgó és a gyors hivatkozás lehetőséget.
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
@@ -113,7 +113,7 @@ Restart-Service -Name himds
 
 Az ügynök telepítése után az ügynököt úgy kell konfigurálnia, hogy az alábbi parancs futtatásával kommunikáljon az Azure arc szolgáltatással:
 
-`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>Az ügynök telepítése és ellenőrzése Linuxon
 
@@ -124,7 +124,7 @@ A Linux rendszerhez csatlakoztatott számítógép-ügynök a terjesztés előny
 
 Igény szerint az ügynököt a (z) paraméterrel is konfigurálhatja a proxy adataival `--proxy "{proxy-url}:{proxy-port}"` .
 
-A parancsfájl a támogatott és nem támogatott disztribúciók azonosítására szolgáló logikát is tartalmaz, és ellenőrzi a telepítés végrehajtásához szükséges engedélyeket. 
+A parancsfájl a támogatott és nem támogatott disztribúciók azonosítására szolgáló logikát is tartalmaz, és ellenőrzi a telepítés végrehajtásához szükséges engedélyeket.
 
 A következő példa letölti az ügynököt, és telepíti azt:
 
@@ -132,7 +132,7 @@ A következő példa letölti az ügynököt, és telepíti azt:
 # Download the installation package.
 wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 
-# Install the connected machine agent. 
+# Install the connected machine agent.
 bash ~/Install_linux_azcmagent.sh
 ```
 
@@ -150,7 +150,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 Az ügynök telepítése után konfigurálja úgy, hogy az alábbi parancs futtatásával kommunikáljon az Azure arc szolgáltatással:
 
-`azcmagent connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Az Azure arc-beli kapcsolatok ellenőrzése
 

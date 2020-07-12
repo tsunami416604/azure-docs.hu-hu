@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac5f6b4d2d197bbd4f4aff9236837eab062b4a63
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190014"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243307"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Külső szolgáltatások használata az Azure API Management szolgáltatásból
 Az Azure API Management szolgáltatásban elérhető házirendek számos hasznos munkát végezhetnek, tisztán a bejövő kérelem, a kimenő válasz és az alapszintű konfigurációs információk alapján. A külső szolgáltatásokkal való interakcióhoz azonban API Management házirendek számos lehetőséget nyitnak meg.
@@ -26,7 +27,7 @@ Az Azure API Management szolgáltatásban elérhető házirendek számos hasznos
 Korábban már láttuk, hogyan használhatja az [Azure Event hub szolgáltatást a naplózáshoz, a figyeléshez és az elemzéshez](api-management-log-to-eventhub-sample.md). Ez a cikk azokat a szabályzatokat mutatja be, amelyek lehetővé teszik a külső HTTP-alapú szolgáltatásokkal való interakciót. Ezek a házirendek a távoli események kiváltására vagy az eredeti kérelem és válasz kezeléséhez használt információk beolvasására használhatók.
 
 ## <a name="send-one-way-request"></a>Egyirányú küldési kérelem
-Lehetséges, hogy a legegyszerűbb külső interakció a tűz és a kitakarítási stílus, amely lehetővé teszi, hogy egy külső szolgáltatás értesítést kapjon valamilyen fontos eseményről. A vezérlési folyamat szabályzata `choose` bármely olyan feltétel észlelésére használható, amely érdekli.  Ha a feltétel teljesül, külső HTTP-kérést is elvégezhet a [küldési egyirányú kérelmekkel](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) kapcsolatos házirend használatával. Ez lehet egy olyan üzenetküldési rendszerre irányuló kérelem, mint például a Hipchat vagy a Slack, vagy egy e-mail API, például a SendGrid vagy a MailChimp, vagy olyan kritikus támogatási incidensek esetében, mint például a PagerDuty. Ezen üzenetkezelő rendszerek mindegyike egyszerű HTTP API-kkal rendelkezik, amelyek meghívhatók.
+Lehetséges, hogy a legegyszerűbb külső interakció a tűz és a kitakarítási stílus, amely lehetővé teszi, hogy egy külső szolgáltatás értesítést kapjon valamilyen fontos eseményről. A vezérlési folyamat szabályzata `choose` bármely olyan feltétel észlelésére használható, amely érdekli.  Ha a feltétel teljesül, külső HTTP-kérést is elvégezhet a [küldési egyirányú kérelmekkel](./api-management-advanced-policies.md#SendOneWayRequest) kapcsolatos házirend használatával. Ez lehet egy olyan üzenetküldési rendszerre irányuló kérelem, mint például a Hipchat vagy a Slack, vagy egy e-mail API, például a SendGrid vagy a MailChimp, vagy olyan kritikus támogatási incidensek esetében, mint például a PagerDuty. Ezen üzenetkezelő rendszerek mindegyike egyszerű HTTP API-kkal rendelkezik, amelyek meghívhatók.
 
 ### <a name="alerting-with-slack"></a>Riasztás a Slacktel
 Az alábbi példa bemutatja, hogyan küldhet üzenetet egy Slack chat-szobájába, ha a HTTP-válasz állapotkód nagyobb vagy egyenlő, mint 500. A 500-tartomány hibája hibát jelez a háttér API-val, amelyet az API-ügyfél nem tud feloldani. Általában API Management részben beavatkozásra van szükség.  
@@ -61,7 +62,7 @@ A Slack a bejövő webhookok fogalma. A bejövő webhookok konfigurálásakor a 
 ![Slack web Hook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
 ### <a name="is-fire-and-forget-good-enough"></a>Tűz van, és elég jól elfelejteni?
-Bizonyos kompromisszumok használatakor a rendszer tűz-és felejtsds stílusú kéréseket használ. Ha valamilyen okból kifolyólag a kérés meghiúsul, a rendszer nem küldi el a hibát. Ebben a konkrét helyzetben a másodlagos hibajelentési rendszer és a válaszra való várakozás további teljesítményének összetettsége nem indokolt. Olyan esetekben, amikor elengedhetetlen a válasz ellenőrzését, a [Send-Request](/azure/api-management/api-management-advanced-policies#SendRequest) házirend jobb megoldás.
+Bizonyos kompromisszumok használatakor a rendszer tűz-és felejtsds stílusú kéréseket használ. Ha valamilyen okból kifolyólag a kérés meghiúsul, a rendszer nem küldi el a hibát. Ebben a konkrét helyzetben a másodlagos hibajelentési rendszer és a válaszra való várakozás további teljesítményének összetettsége nem indokolt. Olyan esetekben, amikor elengedhetetlen a válasz ellenőrzését, a [Send-Request](./api-management-advanced-policies.md#SendRequest) házirend jobb megoldás.
 
 ## <a name="send-request"></a>Kérelem küldése
 A `send-request` házirend lehetővé teszi, hogy egy külső szolgáltatás összetett feldolgozási funkciókat végezzen, és az API Management szolgáltatásba visszaküldse azokat, amelyeket a házirendek további feldolgozásához is használhatnak.
@@ -212,7 +213,7 @@ Miután megkapta ezeket az információkat, megteheti a kérelmeket az összes h
 Ezek a kérések a sorrend szerint futnak, ami nem ideális. 
 
 ### <a name="responding"></a>Válaszol
-Az összetett válasz létrehozásához használhatja a [Return-Response](/azure/api-management/api-management-advanced-policies#ReturnResponse) házirendet. Az `set-body` elem egy kifejezés használatával új elemet hozhat létre a `JObject` tulajdonságokként beágyazott összes összetevő-ábrázolással.
+Az összetett válasz létrehozásához használhatja a [Return-Response](./api-management-advanced-policies.md#ReturnResponse) házirendet. Az `set-body` elem egy kifejezés használatával új elemet hozhat létre a `JObject` tulajdonságokként beágyazott összes összetevő-ábrázolással.
 
 ```xml
 <return-response response-variable-name="existing response variable">
@@ -284,6 +285,5 @@ A teljes szabályzat a következőképpen néz ki:
 
 A helyőrző művelet konfigurációjában beállíthatja, hogy az irányítópult-erőforrás legalább egy órán át legyen gyorsítótárazva. 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az Azure API Management szolgáltatás rugalmas szabályzatokat biztosít, amelyek szelektíven alkalmazhatók a HTTP-forgalomra, és lehetővé teszik a háttér-szolgáltatások összeállítását. Az API-átjárót a riasztási funkciókkal, az ellenőrzéssel, az érvényesítési lehetőségekkel vagy az új összetett erőforrások több háttér-szolgáltatáson alapuló létrehozásával szeretné növelni, a `send-request` és a kapcsolódó szabályzatok pedig megnyitják a lehetőségeket.
-

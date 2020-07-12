@@ -2,14 +2,15 @@
 title: Azure Functions üzembe helyezési pontok
 description: Ismerje meg, hogyan hozhat létre és használhat üzembe helyezési tárolóhelyeket Azure Functions
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 7cfbd533921ba4d1757e7415a3bb8f70aeb71251
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8abc670535f240d436e90c34f7245a3d176f517
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83122596"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242780"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions üzembe helyezési pontok
 
@@ -152,7 +153,7 @@ Az [Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?
 
 - [létrehozása](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
 - [törlése](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [listáját](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
+- [list](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
 - [swap](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [automatikus felcserélés](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
@@ -201,6 +202,6 @@ Az üzembe helyezési pontok két szinten támogatottak:
 | Linux Premium             | Általános elérhetőség  |
 | Linux dedikált           | Általános elérhetőség |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Üzembe helyezési technológiák Azure Functions](./functions-deployment-technologies.md)

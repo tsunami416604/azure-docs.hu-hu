@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 38c487928f15e953a1c660c5007398bc5c2b3f7d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ed95b902c2c0768f50a0c6dadbfc617292932c2b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206617"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242950"
 ---
 # <a name="overview-of-azure-arc-for-servers-agent"></a>Az Azure arc for Servers Agent áttekintése
 
@@ -62,7 +62,7 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
     |Mappa |Leírás |
     |-------|------------|
-    |C:\Program Files\AzureConnectedMachineAgent |Az ügynök által támogatott fájlokat tartalmazó alapértelmezett telepítési útvonal.|
+    |%ProgramFiles%\AzureConnectedMachineAgent |Az ügynök által támogatott fájlokat tartalmazó alapértelmezett telepítési útvonal.|
     |%ProgramData%\AzureConnectedMachineAgent |Az ügynök konfigurációs fájljait tartalmazza.|
     |%ProgramData%\AzureConnectedMachineAgent\Tokens |A beszerzett jogkivonatokat tartalmazza.|
     |%ProgramData%\AzureConnectedMachineAgent\Config |Az ügynök konfigurációs fájlját tartalmazza `agentconfig.json` , amely rögzíti a regisztrációs adatokat a szolgáltatással.|
@@ -99,7 +99,7 @@ A Windowshoz készült csatlakoztatott számítógép-ügynök telepítése utá
 
 * Az ügynök eltávolítása során a rendszer nem távolítja el a következő összetevőket.
 
-    * C:\Program Files\AzureConnectedMachineAgent\Logs
+    * %ProgramFiles%\AzureConnectedMachineAgent\Logs
     * %ProgramData%\AzureConnectedMachineAgent és alkönyvtárak
     * %ProgramData%\GuestConfig
 
@@ -170,9 +170,9 @@ A Windows és a Linux operációs rendszer következő verziói hivatalosan tám
 
 ### <a name="required-permissions"></a>Szükséges engedélyek
 
-- A gépek bevezetéséhez Ön az **Azure Connected Machine** bevezetési szerepkör tagja.
+* A gépek bevezetéséhez Ön az **Azure Connected Machine** bevezetési szerepkör tagja.
 
-- Egy gép olvasásához, módosításához, újbóli előkészítéséhez és törléséhez az **Azure Connected machine erőforrás-rendszergazdai** szerepkör tagja. 
+* Egy gép olvasásához, módosításához, újbóli előkészítéséhez és törléséhez az **Azure Connected machine erőforrás-rendszergazdai** szerepkör tagja. 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure-előfizetések és-szolgáltatások korlátai
 
@@ -195,8 +195,8 @@ Ha a kimenő kapcsolatot a tűzfal vagy a proxykiszolgáló korlátozza, győző
 
 Szolgáltatás címkéi:
 
-- AzureActiveDirectory
-- AzureTrafficManager
+* AzureActiveDirectory
+* AzureTrafficManager
 
 URLs
 
@@ -218,8 +218,8 @@ Az előző táblázatban szereplő URL-címeket a szolgáltatási címke IP-cím
 
 Az Azure arc for Servers (előzetes verzió) az előfizetés alábbi Azure-erőforrás-szolgáltatói függ a szolgáltatás használatához:
 
-- **Microsoft. HybridCompute**
-- **Microsoft. GuestConfiguration**
+* **Microsoft. HybridCompute**
+* **Microsoft. GuestConfiguration**
 
 Ha nincsenek regisztrálva, akkor az alábbi parancsokkal regisztrálhat:
 
@@ -252,6 +252,6 @@ A hibrid környezetben az Azure-ban közvetlenül csatlakoztatható gépek a kö
 | Skálán | Telepítse és konfigurálja az ügynököt több gépen a [számítógépek összekapcsolását követően egy egyszerű szolgáltatásnév használatával](onboard-service-principal.md).<br> Ez a metódus létrehoz egy egyszerű szolgáltatást, amely nem interaktív módon csatlakozik a gépekhez.|
 | Skálán | Telepítse és konfigurálja az ügynököt több gépre, a módszert követve a [Windows POWERSHELL DSC használatával](onboard-dsc.md).<br> Ez a metódus egyszerű szolgáltatásnév használatával csatlakozik a gépekhez a PowerShell DSC-vel nem interaktív módon. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha meg szeretné kezdeni a kiszolgálók Azure-ív kiértékelését (előzetes verzió), kövesse a [hibrid gépek az Azure-hoz való összekapcsolását ismertető cikket a Azure Portal](onboard-portal.md).

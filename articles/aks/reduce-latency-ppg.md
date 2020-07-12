@@ -5,11 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 06/22/2020
-ms.openlocfilehash: 095746b9cf3cada9cebf7d169078eff9eb64a52d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bcdfb4bb3c910feeac0521308e1e7d733fbd959
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444267"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244072"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>A késés és a közelségi csoportok (előzetes verzió) csökkentése
 
@@ -73,7 +74,7 @@ A közelségi elhelyezési csoporttal üzembe helyezett első erőforrás egy ad
 
 Az alábbi példa az az [Group Create][az-group-create] paranccsal létrehoz egy *myResourceGroup* nevű erőforráscsoportot a *CentralUS* régióban. Ezután létrejön egy *myAKSCluster* nevű AK-fürt az az [AK Create][az-aks-create] paranccsal. 
 
-A gyorsított hálózatkezelés nagy mértékben javítja a virtuális gépek hálózati teljesítményét. Ideális esetben a közeli elhelyezési csoportok használata a gyorsított hálózatkezeléssel együtt. Alapértelmezés szerint az AK gyorsított hálózatkezelést használ a [támogatott virtuálisgép-példányokon](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints), beleértve a legtöbb Azure-beli virtuális gépet két vagy több vCPU.
+A gyorsított hálózatkezelés nagy mértékben javítja a virtuális gépek hálózati teljesítményét. Ideális esetben a közeli elhelyezési csoportok használata a gyorsított hálózatkezeléssel együtt. Alapértelmezés szerint az AK gyorsított hálózatkezelést használ a [támogatott virtuálisgép-példányokon](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints), beleértve a legtöbb Azure-beli virtuális gépet két vagy több vCPU.
 
 Hozzon létre egy új AK-fürtöt közelségi elhelyezési csoporttal:
 
@@ -142,7 +143,7 @@ A fürt törléséhez használja a [`az group delete`][az-group-delete] parancso
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [közelségi elhelyezési csoportokról][proximity-placement-groups].
 
@@ -163,4 +164,3 @@ az group delete --name myResourceGroup --yes --no-wait
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
-

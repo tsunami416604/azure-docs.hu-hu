@@ -6,11 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: 041767474fbc56ee7a53bcbd54f27873d17dab77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 216705ef4ff7c235179c1f1be38a993ecd2fe782
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413637"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244412"
 ---
 # <a name="http-application-routing"></a>HTTP-alkalmazások útválasztása
 
@@ -19,7 +20,7 @@ A HTTP-alkalmazás útválasztási megoldásával egyszerűen elérheti az Azure
 Ha a bővítmény engedélyezve van, létrehoz egy DNS-zónát az előfizetésben. További információ a DNS-díjakról: [DNS-díjszabás][dns-pricing].
 
 > [!CAUTION]
-> A HTTP-alkalmazás útválasztási bővítménye lehetővé teszi, hogy gyorsan hozzon létre egy bejövő vezérlőt, és hozzáférjen az alkalmazásaihoz. Ez a bővítmény éles használatra nem ajánlott. A több replikát és TLS-támogatást tartalmazó, éles környezetbe való beléptetésre alkalmas központi telepítések esetén lásd: HTTPS bejövő forgalomra vonatkozó [vezérlő létrehozása](https://docs.microsoft.com/azure/aks/ingress-tls).
+> A HTTP-alkalmazás útválasztási bővítménye lehetővé teszi, hogy gyorsan hozzon létre egy bejövő vezérlőt, és hozzáférjen az alkalmazásaihoz. Ez a bővítmény éles használatra nem ajánlott. A több replikát és TLS-támogatást tartalmazó, éles környezetbe való beléptetésre alkalmas központi telepítések esetén lásd: HTTPS bejövő forgalomra vonatkozó [vezérlő létrehozása](./ingress-tls.md).
 
 ## <a name="http-routing-solution-overview"></a>HTTP-útválasztási megoldás áttekintése
 
@@ -299,7 +300,7 @@ service "party-clippy" deleted
 ingress "party-clippy" deleted
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan telepíthet egy HTTPS-védelemmel ellátott bejövő vezérlőt az AK-ban: [https-bejövő forgalom az Azure Kubernetes szolgáltatásban (ak)][ingress-https].
 

@@ -6,11 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: afa03399933bdc8bd8ff869125955cfd9e0abecb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b2236ae6ffd3df3e458cdbd4bc01e89a1da2b2
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75981919"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245306"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Az üzletmenet folytonosságának áttekintése Azure Database for PostgreSQL – egyetlen kiszolgálóval
 
@@ -22,7 +23,7 @@ A Azure Database for PostgreSQL olyan üzletmenet-folytonossági funkciókat biz
 
 A következő táblázat összehasonlítja a rendelkezésre álló funkciók ERT-és RPO:
 
-| **Képesség** | **Alapszintű** | **általános célú** | **Memóriaoptimalizált** |
+| **Képesség** | **Basic** | **általános célú** | **Memóriaoptimalizált** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Időponthoz kötött visszaállítás biztonsági másolatból | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok | A megőrzési időtartamon belüli visszaállítási pontok |
 | Geo-visszaállítás földrajzilag replikált biztonsági másolatokból | Nem támogatott | ERT < 12 h<br/>RPO < 1 óra | ERT < 12 h<br/>RPO < 1 óra |
@@ -52,7 +53,12 @@ A Geo-visszaállítási szolgáltatás visszaállítja a kiszolgálót a Geo-red
 ## <a name="cross-region-read-replicas"></a>Régiók közötti olvasási replikák
 Az üzleti folytonosság és a vész-helyreállítás megtervezése érdekében a tartományok közötti olvasási replikákat is használhatja. Az olvasási replikák aszinkron módon frissülnek a PostgreSQL fizikai replikációs technológiájának használatával. További információk az olvasási replikák, az elérhető régiók és a feladatátvétel az [olvasási replikák fogalmai című cikkben](concepts-read-replicas.md)olvashatók. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="faq"></a>GYIK
+### <a name="where-does-azure-database-for-postgresql-store-customer-data"></a>Hol tárolja Azure Database for PostgreSQL az ügyféladatokat?
+Alapértelmezés szerint a Azure Database for PostgreSQL nem helyezi át vagy nem tárolja az ügyféladatokat a-ben üzembe helyezett régióból. Az ügyfelek azonban igény szerint engedélyezhetik a [geo-redundáns biztonsági mentéseket](concepts-backup.md#backup-redundancy-options) , vagy létrehozhatnak [régiók közötti olvasási replikát](concepts-read-replicas.md#cross-region-replication) az adattároláshoz egy másik régióban.
+
+
+## <a name="next-steps"></a>Következő lépések
 - További információ a [Azure Database for PostgreSQL automatikus biztonsági mentéséről](concepts-backup.md). 
 - Ismerje meg, hogyan lehet visszaállítani [a Azure Portal](howto-restore-server-portal.md) vagy [Az Azure CLI](howto-restore-server-cli.md)használatával.
 - További információ a [Azure Database for PostgreSQL található olvasási replikáról](concepts-read-replicas.md).

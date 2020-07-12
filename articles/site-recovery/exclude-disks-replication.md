@@ -3,12 +3,12 @@ title: Lemezek kizárása a replikációból a Azure Site Recovery
 description: Lemezek kizárása a replikációból az Azure-ba Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 5a8d52bd0cc40b45f92039c537a1b3b63f0bec61
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 778bb030d9768c5fbe1cb8aeba0becfc68c00629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135697"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245398"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Lemezek kizárása a vész-helyreállításból
 
@@ -105,29 +105,35 @@ A példánkban, mivel a Disk3, az SQL tempdb lemez ki lett zárva a replikáció
 1. Nyisson meg egy parancssort.
 2. Futtassa az SQL Servert helyreállítási módban a parancssorból.
 
-        Net start MSSQLSERVER /f / T3608
+    ```console
+    Net start MSSQLSERVER /f / T3608
+    ```
 
 3. Futtassa a következő sqlcmd parancsot a tempdb elérési útjának az új elérési útra történő módosításához.
 
-        sqlcmd -A -S SalesDB        **Use your SQL DBname**
-        USE master;     
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
-        GO      
-        ALTER DATABASE tempdb       
-        MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
-        GO
-
+    ```sql
+    sqlcmd -A -S SalesDB        **Use your SQL DBname**
+    USE master;     
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = tempdev, FILENAME = 'E:\MSSQL\tempdata\tempdb.mdf');
+    GO      
+    ALTER DATABASE tempdb       
+    MODIFY FILE (NAME = templog, FILENAME = 'E:\MSSQL\tempdata\templog.ldf');       
+    GO
+    ```
 
 4. Állítsa le a Microsoft SQL Server szolgáltatást.
 
-        Net stop MSSQLSERVER
+    ```console
+    Net stop MSSQLSERVER
+    ```
+
 5. Indítsa el a Microsoft SQL Server szolgáltatást.
 
-        Net start MSSQLSERVER
-
-
+    ```console
+    Net start MSSQLSERVER
+    ```
 
 ### <a name="vmware-vms-disks-during-failback-to-original-location"></a>VMware virtuális gépek: lemezek a feladat-visszavétel során az eredeti helyre
 

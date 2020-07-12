@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 4b53c4d1a26d8e4b8d784087dcb9b9feba9c7ded
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2b6c61c5c144923ece80fddf8a1412d68f35ad52
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191749"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242873"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
-A Azure Maps térinformatikai szolgáltatások gyűjteménye, amely friss leképezési információt használ a webes és mobil alkalmazások földrajzi kontextusának biztosításához. Azure Maps a következőket biztosítja:
+Az Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosítása érdekében friss térképadatokat használó térinformatikai szolgáltatások gyűjteménye. Azure Maps a következőket biztosítja:
 
 * REST API-k, amelyek több stílusban és műholdképeken jelenítik meg a térképeket.
 * A keresési szolgáltatások segítségével megkeresheti a címeket, a helyeket és a világ érdekes pontjait.
@@ -57,7 +57,7 @@ Mobil leképezési alkalmazások létrehozásához használja a Azure Maps Andro
 
 Azure Maps a következő kilenc szolgáltatásból áll, amelyek földrajzi kontextust biztosítanak az Azure-alkalmazásokhoz.
 
-### <a name="data-service"></a>Data szolgáltatás
+### <a name="data-service"></a>Adatszolgáltatás
 
 Az adatleképezések esetében elengedhetetlen az adatkezelés. Az adatszolgáltatással a térbeli adatok és a képek összeállításával használható térinformatikai adatok tölthetők fel és tárolhatók.  Az ügyféladatok a Azure Maps szolgáltatáshoz közelebb hozása csökkenti a késést, növeli a termelékenységet, és új forgatókönyveket hoz létre az alkalmazásaiban. A szolgáltatással kapcsolatos részletekért tekintse meg az [adatszolgáltatási API dokumentációját](https://docs.microsoft.com/rest/api/maps/data).
 
@@ -159,11 +159,19 @@ Az IP-cím használatával megtekintheti az IP-címek beolvasott kétbetűs orsz
 
 Ha további részleteket szeretne megtudni a REST API IP-címéről, olvassa el az [Azure Maps Térinformatikai API dokumentációját](https://docs.microsoft.com/rest/api/maps/geolocation).
 
-## <a name="programming-model"></a>A programozási modell
+## <a name="programming-model"></a>Programozási modell
 
 A Azure Maps a mobilitáshoz készült, és több platformon futó alkalmazások fejlesztéséhez is segítséget nyújt. Olyan programozási modellt használ, amely az agnosztikus nyelvét használja, és támogatja a JSON-kimenetet a [REST API](https://docs.microsoft.com/rest/api/maps/)-kon keresztül.
 
 A Azure Maps egy egyszerű programozási modellel is kényelmes [JavaScript-leképezési vezérlőt](https://docs.microsoft.com/javascript/api/azure-maps-control) biztosít. A fejlesztés a webes és a mobil alkalmazások esetében is gyorsan és egyszerűen elvégezhető.
+
+## <a name="power-bi-visual"></a>Power BI-vizualizáció
+
+A Power BI Azure Maps vizualizációja az adatvizualizációk gazdag készletét kínálja a térbeli adatvizualizációk számára a térképen felül. A becslések szerint az üzleti adatmennyiség több mint 80%-a rendelkezik helyi környezettel. A Azure Maps vizualizáció egy kód nélküli megoldást kínál arra, hogy betekintést nyerjen a helyi környezet és az üzleti adatai hatására.
+
+![Power BI asztal a Azure Maps vizualizáció üzleti adataival](media/power-bi-visual/azure-maps-visual-hero.png)
+
+További információ: a [Azure Maps Power bi Visual](power-bi-visual-getting-started.md) dokumentációjának első lépései.
 
 ## <a name="usage"></a>Használat
 
@@ -171,18 +179,18 @@ A Azure Maps szolgáltatásokhoz való hozzáférés a [Azure Portal](https://po
 
 Az Azure Maps kulcsalapú hitelesítési sémát használ. A fiókja két, már létrehozott kulccsal rendelkezik, a kulcsok használatával. Kezdje el integrálni ezeket a tartózkodási helyeket az alkalmazásban, és tegyen kéréseket a Azure Maps-szolgáltatásoknak.
 
-Megjegyzés: a Azure Maps az ügyfél által megadott címek/helyek lekérdezéseket ("lekérdezések") a harmadik féltől származó TomTom-t használja a leképezési funkciókhoz. A lekérdezések nem kapcsolódnak az ügyfelekhez vagy a végfelhasználóhoz, ha a TomTom megosztva van, és nem használható az egyéni felhasználók azonosítására. A Microsoft jelenleg folyamatban van a TomTom hozzáadásának folyamata az Online Services alvállalkozói listához. Vegye figyelembe, hogy a Moovit és az AccuWeather szolgáltatással való integrációt magában foglaló mobilitási és időjárási szolgáltatások jelenleg [előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhetők el.
+Megjegyzés: a Azure Maps az ügyfél által megadott címekre és helyekre vonatkozó lekérdezéseket ("lekérdezéseket") a harmadik féltől származó TomTom-tól a leképezési funkciókhoz. A lekérdezések nem kapcsolódnak az ügyfélhez vagy a végfelhasználóhoz, ha a TomTom megosztva van, és nem használható az egyéni felhasználók azonosítására. A Microsoft jelenleg folyamatban van a TomTom hozzáadásának folyamata az Online Services alvállalkozói listához. Vegye figyelembe, hogy a mobilitási és időjárási szolgáltatások, köztük a Moovit és a AccuWeather integrációja jelenleg [előzetes](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)verzióban érhető el.
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-A Azure Maps API-k jelenleg minden országban és régióban elérhetők, kivéve az alábbiakat:
+A Azure Maps API-k jelenleg az összes országban és régióban érhetők el, a következők kivételével:
 
 * Kína
 * Dél-Korea
 
 Ellenőrizze, hogy az aktuális IP-cím helye támogatott országban/régióban található-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a Azure Mapst bemutató minta alkalmazást:
 

@@ -5,11 +5,12 @@ author: alexwun
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: c3395248188c2a16736cfc8cea262fe163a6944b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8fc0239dd18fc7071823a129a7dbc4f102023d66
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645667"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246197"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>Az ImageStoreConnectionString beállítás ismertetése
 
@@ -37,9 +38,9 @@ A rendszer a lemezképtároló szolgáltatás helyett a fájlrendszer-szolgálta
 
 Továbbá, nem a fájlrendszer-szolgáltatót, sem az Azure Storage-szolgáltatót több fürt közötti lemezképtároló megosztására kell használni – ez a fürt konfigurációs információinak sérülését eredményezi, mivel az egyes fürtök ütköző adatmennyiséget írhatnak a lemezképtároló. Ha több fürt között szeretné megosztani a kiépített alkalmazáscsomag-csomagokat, használja helyette a [sfpkg][12] -fájlokat, amelyek a letöltési URI-val bármely külső tárolóba feltölthetők.
 
-Így amíg a ImageStoreConnectionString konfigurálható, csak az alapértelmezett beállítást használja. Az Azure-ban a Visual studión keresztül történő közzétételkor a paraméter automatikusan be lesz állítva. Az Azure-ban üzemeltetett fürtök programozott telepítéséhez a kapcsolódási sztring mindig "Fabric: Lemezképtárolóba". Habár kétségei vannak, az értéke mindig ellenőrizhető a fürt jegyzékfájljának a [PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), a [.net](https://msdn.microsoft.com/library/azure/mt161375.aspx)vagy a [Rest](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest)használatával történő beolvasásával. A helyszíni teszt-és üzemi fürtöket mindig úgy kell konfigurálni, hogy az lemezképtároló szolgáltatót is használják.
+Így amíg a ImageStoreConnectionString konfigurálható, csak az alapértelmezett beállítást használja. Az Azure-ban a Visual studión keresztül történő közzétételkor a paraméter automatikusan be lesz állítva. Az Azure-ban üzemeltetett fürtök programozott telepítéséhez a kapcsolódási sztring mindig "Fabric: Lemezképtárolóba". Habár kétségei vannak, az értéke mindig ellenőrizhető a fürt jegyzékfájljának a [PowerShell](/powershell/module/servicefabric/get-servicefabricclustermanifest), a [.net](/previous-versions/azure/reference/mt161375(v=azure.100))vagy a [Rest](/rest/api/servicefabric/get-a-cluster-manifest)használatával történő beolvasásával. A helyszíni teszt-és üzemi fürtöket mindig úgy kell konfigurálni, hogy az lemezképtároló szolgáltatót is használják.
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 [Alkalmazások telepítése és eltávolítása a PowerShell használatával][10]
 
 <!--Image references-->

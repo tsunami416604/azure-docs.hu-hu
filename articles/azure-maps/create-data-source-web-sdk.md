@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 7c23e659463364c5e1a497ead138abb4c696627a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0334e03f2d4f34913f2f96610868b5ffe169013
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207498"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242559"
 ---
 # <a name="create-a-data-source"></a>Adatforrás létrehozása
 
@@ -71,16 +71,69 @@ dataSource.setShapes(geoJsonData);
 
 **Vektoros csempe forrása**
 
-A vektoros csempék forrása leírja, hogyan lehet hozzáférni a vektoros csempék rétegéhez. A [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) osztály használatával hozza létre a vektoros csempe forrását. A vektoros csempe rétegei hasonlóak a csempék rétegeihez, de nem azonosak. A csempe réteg egy raszteres rendszerkép. A vektoros csempe rétegek a PBF formátumában tömörített fájlok. Ez a tömörített fájl vektoros leképezési és egy vagy több réteget tartalmaz. A fájl az egyes rétegek stílusa alapján megjeleníthető és stílusú lehet az ügyfélen. A vektoros csempén lévő információk pontok, vonalak és sokszögek formájában található földrajzi funkciókat tartalmaznak. A raszteres csempe rétegei helyett több előnye van a vektoros csempék használatának:
+A vektoros csempék forrása leírja, hogyan lehet hozzáférni a vektoros csempék rétegéhez. A [VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource) osztály használatával hozza létre a vektoros csempe forrását. A vektoros csempe rétegei hasonlóak a csempék rétegeihez, de nem azonosak. A csempe réteg egy raszteres rendszerkép. A vektoros csempe rétegek a **PBF** formátumában tömörített fájlok. Ez a tömörített fájl vektoros leképezési és egy vagy több réteget tartalmaz. A fájl az egyes rétegek stílusa alapján megjeleníthető és stílusú lehet az ügyfélen. A vektoros csempén lévő információk pontok, vonalak és sokszögek formájában található földrajzi funkciókat tartalmaznak. A raszteres csempe rétegei helyett több előnye van a vektoros csempék használatának:
 
  - A vektoros csempék fájlmérete általában sokkal kisebb, mint egy egyenértékű raszteres csempe. Így kevesebb sávszélesség van használatban. Kisebb késést, gyorsabb térképet és jobb felhasználói élményt jelent.
  - Mivel a rendszer a vektoros csempéket jeleníti meg az ügyfélen, alkalmazkodik a megjelenő eszköz feloldásához. Ennek eredményeképpen a megjelenített térképek jól definiálva jelennek meg, a Crystal Clear címkékkel.
  - A vektoros leképezésekben lévő adatstílus módosítása nem igényli újra az adatletöltést, mivel az új stílus alkalmazható az ügyfélen. Ezzel szemben a raszteres csempék rétegének módosítása általában a-kiszolgálóról származó csempék betöltését igényli, majd az új stílust alkalmazza.
  - Mivel az adat vektoros formában lett továbbítva, az adatelőkészítéshez kevesebb kiszolgálóoldali feldolgozás szükséges. Ennek eredményeképpen az újabb adatértékek gyorsabban elérhetővé tehetők.
 
-A vektoros forrást használó összes rétegnek meg kell adnia egy `sourceLayer` értéket.
+Azure Maps betartja a [Mapbox Vector csempe specifikációját](https://github.com/mapbox/vector-tile-spec), amely egy nyílt szabvány. Azure Maps a következő vektoros szolgáltatásokat nyújtja a platform részeként:
 
-Azure Maps betartja a [Mapbox Vector csempe specifikációját](https://github.com/mapbox/vector-tile-spec), amely egy nyílt szabvány.
+- A Road csempe [dokumentációjának](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)  |  [adatformátuma – részletek](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- Forgalmi incidensek [dokumentációjának](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)  |  [adatformátuma – részletek](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- A forgalmi folyamat [dokumentációjának](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)  |  [adatformátumának részletei](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
+- A Azure Maps Creator Emellett lehetővé teszi az egyéni vektoros csempék létrehozását és elérését a [csempe renderelése v2](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) használatával.
+
+> [!TIP]
+> Ha vektoros vagy raszteres képcsempéket használ a Azure Maps Render szolgáltatásból a web SDK-val, a `atlas.microsoft.com` helyőrzőre cserélheti `{azMapsDomain}` . Ezt a helyőrzőt a Térkép ugyanazokkal a tartománnyal helyettesíti, és a rendszer automatikusan hozzáfűzi ugyanazokat a hitelesítési adatokat is. Ez nagymértékben leegyszerűsíti a Azure Active Directory hitelesítés használatakor a renderelési szolgáltatással történő hitelesítést.
+
+Ha a térképen a vektoros csempe forrásának adatait szeretné megjeleníteni, a forrást csatlakoztathatja az egyik adatmegjelenítési réteghez. A vektoros forrást használó összes rétegnek meg kell adnia egy `sourceLayer` értéket a beállításokban. FThe következő kód betölti a Azure Maps Traffic flow Vector csempe szolgáltatást vektoros csempék forrásaként, majd megjeleníti egy térképen egy vonal réteg használatával. Ez a vektoros csempés forrás egyetlen adatkészlettel rendelkezik, amely a "forgalom flow" nevű rétegben található. Ebben az adatkészletben az adathalmazban található sorokra vonatkozó tulajdonság egy nevű tulajdonsággal rendelkezik, `traffic_level` amely a kód kiválasztásához és a sorok méretének méretezéséhez használatos.
+
+```javascript
+//Create a vector tile source and add it to the map.
+var datasource = new atlas.source.VectorTileSource(null, {
+    tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
+    maxZoom: 22
+});
+map.sources.add(datasource);
+
+//Create a layer for traffic flow lines.
+var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+    //The name of the data layer within the data source to pass into this rendering layer.
+    sourceLayer: 'Traffic flow',
+
+    //Color the roads based on the traffic_level property. 
+    strokeColor: [
+        'interpolate',
+        ['linear'],
+        ['get', 'traffic_level'],
+        0, 'red',
+        0.33, 'orange',
+        0.66, 'green'
+    ],
+
+    //Scale the width of roads based on the traffic_level property. 
+    strokeWidth: [
+        'interpolate',
+        ['linear'],
+        ['get', 'traffic_level'],
+        0, 6,
+        1, 1
+    ]
+});
+
+//Add the traffic flow layer below the labels to make the map clearer.
+map.layers.add(flowLayer, 'labels');
+```
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Vektor csempe vonalának rétege" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>Vector csempe vonal réteget</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+<br/>
 
 ## <a name="connecting-a-data-source-to-a-layer"></a>Adatforrás csatlakoztatása réteghez
 
@@ -152,7 +205,7 @@ var bubbleLayer = new atlas.layer.BubbleLayer(dataSource, 'myBubbleLayer', {
 map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 

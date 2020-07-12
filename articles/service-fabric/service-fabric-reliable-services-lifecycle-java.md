@@ -5,11 +5,12 @@ author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 1d3be958a0649ed3e80df2d63adbdf0b91831dbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b86f68126825f146a50ed21edf2acbda2b5181cf
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75639598"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245177"
 ---
 # <a name="reliable-services-lifecycle"></a>A Reliable Services életciklusa
 > [!div class="op_single_selector"]
@@ -114,7 +115,7 @@ A megszakítást nem kezelő szolgáltatások számos problémát tapasztalhatna
 
 Mivel a szolgáltatások állapot-nyilvántartó, az is valószínű, hogy a szolgáltatások [megbízható gyűjteményeket](service-fabric-reliable-services-reliable-collections.md)használnak. Service Fabric az elsődleges lefokozása után az egyik első dolog, ami megtörténik, az írási hozzáférés az alapul szolgáló állapothoz visszavonva. Ez egy második olyan problémát eredményez, amely hatással lehet a szolgáltatás életciklusára. A gyűjtemények az időzítés alapján adják vissza a kivételeket, és azt, hogy a replika áthelyezése vagy leállítása folyamatban van-e. Fontos, hogy megfelelően kezelje ezeket a kivételeket. 
 
-Service Fabric által kiváltott kivételek állandó [( `FabricException` )](https://docs.microsoft.com/java/api/system.fabric.exception) vagy átmeneti [( `FabricTransientException` )](https://docs.microsoft.com/java/api/system.fabric.exception.fabrictransientexception)értékűek. A végleges kivételeket naplózni és dobni kell. Az újrapróbálkozási logikán alapuló átmeneti kivételek is megismételhetők.
+Service Fabric által kiváltott kivételek állandó [( `FabricException` )](/java/api/system.fabric.exception) vagy átmeneti [( `FabricTransientException` )](/java/api/system.fabric.exception.fabrictransientexception)értékűek. A végleges kivételeket naplózni és dobni kell. Az újrapróbálkozási logikán alapuló átmeneti kivételek is megismételhetők.
 
 A Reliable Services tesztelésének és érvényesítésének fontos része a `ReliableCollections` szolgáltatás-életciklussal kapcsolatos eseményekkel együtt a-től származó kivételek kezelése. Javasoljuk, hogy mindig a terhelés alatt futtassa a szolgáltatást. Az éles környezetbe való üzembe helyezés előtt frissítéseket és [Chaos-teszteket](service-fabric-controlled-chaos.md) is végre kell hajtania. Ezek az alapszintű lépések biztosítják a szolgáltatás megfelelő megvalósítását, valamint az életciklus-események megfelelő kezelését.
 
@@ -126,7 +127,6 @@ A Reliable Services tesztelésének és érvényesítésének fontos része a `R
 * Az `onCloseAsync()` elérési úton történt hibák `onAbort()` meghívásának eredménye. Ez a hívás egy utolsó esélyes, legjobb lehetőség arra, hogy a szolgáltatás kiürítse és felszabadítsa az általuk igényelt erőforrásokat. Ez általában akkor fordul elő, ha a csomóponton állandó hibát észlel, vagy ha Service Fabric belső meghibásodások miatt nem tudja megbízhatóan kezelni a szolgáltatási példány életciklusát.
 * `OnChangeRoleAsync()`akkor lesz meghívva, amikor az állapot-nyilvántartó szolgáltatás replikája megváltoztatja a szerepkört, például az elsődleges vagy a másodlagos. Az elsődleges replikák írási állapotot kapnak (a megbízható gyűjtemények létrehozásához és írásához engedélyezett). A másodlagos replikák olvasási állapotot kapnak (csak a meglévő megbízható gyűjteményekből olvashatók be). Egy állapot-nyilvántartó szolgáltatásban a legtöbb munka az elsődleges replikán történik. A másodlagos replikák csak olvasási ellenőrzés, jelentéskészítés, adatbányászat vagy más írásvédett feladatok végrehajtására használhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Bevezetés a Reliable Servicesba](service-fabric-reliable-services-introduction.md)
 * [Reliable Services rövid útmutató](service-fabric-reliable-services-quick-start-java.md)
-

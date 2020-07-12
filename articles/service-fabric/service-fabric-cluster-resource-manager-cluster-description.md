@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f473b70d260c552dc67d00715b6ee4bc56b670e0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259473"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246554"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Service Fabric-fürt leírása a fürterőforrás-kezelő használatával
 Az Azure Service Fabric fürterőforrás-kezelő funkciója számos módszert kínál a fürtök leírására:
@@ -36,7 +36,7 @@ Az Azure-környezetben a Service Fabric a környezete által biztosított tartal
 > [!WARNING]
 > Fontos, hogy a Service Fabrichoz megadott tartalék tartományi információk pontosak legyenek. Tegyük fel például, hogy az Service Fabric-fürt csomópontjai 10 virtuális gépen futnak, és 5 fizikai gazdagépen futnak. Ebben az esetben annak ellenére, hogy 10 virtuális gép van, csak 5 különböző (legfelső szintű) tartalék tartomány létezik. Ugyanannak a fizikai gazdagépnek a megosztása azt eredményezi, hogy a virtuális gépek ugyanazt a legfelső szintű tartalék tartományt használják, mivel a virtuális gépek a fizikai gazdagép meghibásodása esetén koordinált hibával  
 >
-> Service Fabric elvárja, hogy a csomópontok tartalék tartománya ne változzon meg. A virtuális gépek magas rendelkezésre állásának biztosítására szolgáló egyéb mechanizmusok, például [Ha a virtuális gépek](https://technet.microsoft.com/library/cc967323.aspx), ütközést okozhatnak a Service Fabric. Ezek a mechanizmusok a virtuális gépek transzparens áttelepítését használják az egyik gazdagépről a másikra. Nem konfigurálja újra vagy értesíti a futó kódot a virtuális gépen. Ezért *nem támogatottak* környezetként Service Fabric fürtök futtatásához. 
+> Service Fabric elvárja, hogy a csomópontok tartalék tartománya ne változzon meg. A virtuális gépek magas rendelkezésre állásának biztosítására szolgáló egyéb mechanizmusok, például [Ha a virtuális gépek](/previous-versions/system-center/virtual-machine-manager-2008-r2/cc967323(v=technet.10)), ütközést okozhatnak a Service Fabric. Ezek a mechanizmusok a virtuális gépek transzparens áttelepítését használják az egyik gazdagépről a másikra. Nem konfigurálja újra vagy értesíti a futó kódot a virtuális gépen. Ezért *nem támogatottak* környezetként Service Fabric fürtök futtatásához. 
 >
 > A Service Fabric csak magas rendelkezésre állású technológia lehet. Nem szükségesek olyan mechanizmusok, mint az élő VM-Migrálás és a SANs. Ha ezeket a mechanizmusokat a Service Fabric együtt használja, az alkalmazás rendelkezésre állását és megbízhatóságát is _csökkenti_ . Ennek az az oka, hogy további bonyolultságot jelentenek, központosított meghibásodási forrásokat biztosítanak, és olyan megbízhatósági és rendelkezésre állási stratégiákat használnak, amelyek ütköznek a Service Fabric. 
 >
@@ -237,7 +237,7 @@ Az előző elrendezésben, ha a **TargetReplicaSetSize** értéke öt, és a ren
 
 |  | FD0 | FD1 | FD2 ÁRAMLÁSMEGOSZTÓ | FD3 | FD4 | UDTotal |
 | --- |:---:|:---:|:---:|:---:|:---:|:---:|
-| **UD0** |N.A. |N.A. |N.A. |N.A. |N.A. |N.A. |
+| **UD0** |N/A |N/A |N/A |N/A |N/A |N/A |
 | **UD1** |R2 | | | | |1 |
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |1 |
@@ -375,7 +375,7 @@ A Node tulajdonságban megadott érték karakterlánc, logikai vagy hosszú lehe
 
 * Feltételes ellenőrzések adott utasítások létrehozásához:
 
-  | Nyilatkozat | Szintaxis |
+  | Nyilatkozat | Syntax |
   | --- |:---:|
   | "egyenlő" | "==" |
   | "nem egyenlő" | "!=" |
@@ -386,7 +386,7 @@ A Node tulajdonságban megadott érték karakterlánc, logikai vagy hosszú lehe
 
 * Logikai utasítások csoportosításhoz és logikai műveletekhez:
 
-  | Nyilatkozat | Szintaxis |
+  | Nyilatkozat | Syntax |
   | --- |:---:|
   | és | "&&" |
   | vagy | "&#124;&#124;" |

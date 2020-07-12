@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4817c7b76ccd127d5f310a9d2abcecdb094944dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82790847"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246605"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Önálló fürt konfigurációjának frissítése 
 
@@ -53,7 +53,7 @@ TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File
 Egyes konfigurációk nem frissíthetők, például végpontok, fürt neve, csomópont IP-címe stb. Az új fürtkonfiguráció JSON a régivel van tesztelve, és hibák léptek fel a PowerShell-ablakban, ha probléma merül fel.
 
 ## <a name="upgrade-the-cluster-configuration"></a>A fürtkonfiguráció frissítése
-A fürt konfigurációjának frissítéséhez futtassa a [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)parancsot. A konfiguráció frissítését a frissítési tartomány dolgozza fel.
+A fürt konfigurációjának frissítéséhez futtassa a [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade)parancsot. A konfiguráció frissítését a frissítési tartomány dolgozza fel.
 
 ```powershell
 Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
@@ -73,7 +73,7 @@ Négy lehetőség támogatott:
 * Tanúsítvány kiállítói ujjlenyomatának frissítése: a frissítési útvonal a következő tanúsítvány: CN = A, IssuerThumbprint = IT1 (elsődleges)-> tanúsítvány CN = A, IssuerThumbprint = IT1, IT2 (elsődleges)-> tanúsítvány CN = A, IssuerThumbprint = IT2 (elsődleges).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan szabhatja testre a [Service Fabric fürtkonfiguráció beállításait](service-fabric-cluster-fabric-settings.md).
 * Ismerje meg, hogyan [méretezheti a fürtöt a és a](service-fabric-cluster-scale-in-out.md)szolgáltatásban.
 * Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md)megismerése.

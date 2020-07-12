@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 09/11/2019
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b7552fc083c5ed340dc54c2a31160b0c8b4bd076
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84b826ce33b5395db5bd38e883b3a0fb3425725b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420901"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244038"
 ---
 # <a name="security-hardening-for-aks-agent-node-host-os"></a>Biztonság megerősítése az AK-ügynök Node gazda operációs rendszeréhez
 
-Az Azure Kubernetes Service (ak) a SOC, az ISO, a PCI DSS és a HIPAA szabványoknak megfelelő biztonságos szolgáltatás. Ez a cikk az AK-beli virtuális gépek gazdagépekre alkalmazott biztonsági korlátozásokat ismerteti. További információ az AK biztonságáról: [alkalmazások és fürtök biztonsági fogalmai az Azure Kubernetes szolgáltatásban (ak)](https://docs.microsoft.com/azure/aks/concepts-security).
+Az Azure Kubernetes Service (ak) a SOC, az ISO, a PCI DSS és a HIPAA szabványoknak megfelelő biztonságos szolgáltatás. Ez a cikk az AK-beli virtuális gépek gazdagépekre alkalmazott biztonsági korlátozásokat ismerteti. További információ az AK biztonságáról: [alkalmazások és fürtök biztonsági fogalmai az Azure Kubernetes szolgáltatásban (ak)](./concepts-security.md).
 
 > [!Note]
 > Ez a dokumentum csak az AK-ban található Linux-ügynökökre terjed ki.
@@ -32,7 +32,7 @@ A biztonsági megerősített gazda operációs rendszer célja, hogy csökkentse
 
 * Az KABAi szolgáltatás alapértelmezés szerint a biztonsággal optimalizált gazdagép operációs rendszerét biztosítja. Egy másik operációs rendszer nem választható ki.
 
-* Az Azure napi javításokat alkalmaz (beleértve a biztonsági javításokat is) az AK-beli virtuális gépek gazdagépei számára. Ezen javítások némelyike újraindítást igényel, míg mások nem. Az AK-beli VM-állomások újraindítását szükség szerint ütemezi. Az AK-javítások automatizálásával kapcsolatos útmutatásért lásd: [AK-csomópontok javítása](https://docs.microsoft.com/azure/aks/node-updates-kured).
+* Az Azure napi javításokat alkalmaz (beleértve a biztonsági javításokat is) az AK-beli virtuális gépek gazdagépei számára. Ezen javítások némelyike újraindítást igényel, míg mások nem. Az AK-beli VM-állomások újraindítását szükség szerint ütemezi. Az AK-javítások automatizálásával kapcsolatos útmutatásért lásd: [AK-csomópontok javítása](./node-updates-kured.md).
 
 ## <a name="what-is-configured"></a>Mi van konfigurálva
 
@@ -81,12 +81,12 @@ A biztonsági megerősített gazda operációs rendszer célja, hogy csökkentse
 
 * A biztonsági megerősített operációs rendszer kifejezetten AK-hoz készült, és nem támogatott az AK platformon kívül.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 Az AK biztonságával kapcsolatos további információkért tekintse meg a következő cikkeket: 
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+[Azure Kubernetes Service (AKS)](./intro-kubernetes.md)
 
-[AK biztonsági megfontolások](https://docs.microsoft.com/azure/aks/concepts-security)
+[AK biztonsági megfontolások](./concepts-security.md)
 
-[AK ajánlott eljárások](https://docs.microsoft.com/azure/aks/best-practices)
+[AK ajánlott eljárások](./best-practices.md)

@@ -4,11 +4,12 @@ description: Annak áttekintése, hogy miért fontos a Felhőbeli alkalmazások 
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8fbe5096014b116c3d5c5deaa7615874135d001
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792868"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246020"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Miért érdemes alkalmazások létrehozására használni a Service-t
 
@@ -130,7 +131,7 @@ Az állapot különbözik a diagnosztikatól. Az állapot arról szól, hogy a w
 
 ## <a name="guidance-for-designing-microservices-on-azure"></a>Útmutató az Azure-beli szolgáltatások tervezéséhez
 
-Tekintse meg az Azure Architecture centert, amely útmutatást nyújt az [Azure-beli szolgáltatások tervezéséhez és létrehozásához](https://docs.microsoft.com/azure/architecture/microservices/).
+Tekintse meg az Azure Architecture centert, amely útmutatást nyújt az [Azure-beli szolgáltatások tervezéséhez és létrehozásához](/azure/architecture/microservices/).
 
 ## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric Service-platformként
 
@@ -162,7 +163,7 @@ Ne feledje, hogy *bármelyik szakaszban elindíthatja és leállíthatja*. A kö
 
 Nézzük meg az egyes szakaszokra vonatkozó példákat.
 
-**Migrate (Áttelepítés)**  
+**Migrálás**  
 Két okból kifolyólag számos vállalat telepít át meglévő monolitikus alkalmazásokat tárolóba:
 
 * Költségcsökkentés a meglévő hardverek összevonása és eltávolítása, illetve a nagyobb sűrűségű alkalmazások futtatása miatt.
@@ -187,10 +188,10 @@ Talán. A Microsoftnál, ahogy egyre több csapat kezdte meg a felhőbe való ki
 
 Service Fabric célja, hogy csökkentse a Service-alkalmazások kiépítésének bonyolultságát, így nem kell a lehető legtöbb költséges újratervezéssel eljárnia. Kis méretű, méretezhető, ha szükséges, elavult szolgáltatásokat, újakat adhat hozzá, és fejlődik az ügyfelek használatában. Azt is tudjuk, hogy még sok más problémát kell megoldani, hogy a legtöbb fejlesztő számára jobban elérhetővé tegye a szolgáltatást. A tárolók és a színészek programozási modellje példákat mutat be ennek az iránynak a kis lépéseire. Biztosak vagyunk abban, hogy az innovációk könnyebben megkönnyítik a szolgáltatások kialakítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Szolgáltatások: a felhő által működtetett alkalmazás-forradalom](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
-* [Azure Architecture Center: szolgáltatások készítése az Azure-ban](https://docs.microsoft.com/azure/architecture/microservices/)
+* [Azure Architecture Center: szolgáltatások készítése az Azure-ban](/azure/architecture/microservices/)
 * [Az Azure Service Fabric alkalmazás és a fürt ajánlott eljárásai](service-fabric-best-practices-overview.md)
 * [Service Fabric terminológia áttekintése](service-fabric-technical-overview.md)
 

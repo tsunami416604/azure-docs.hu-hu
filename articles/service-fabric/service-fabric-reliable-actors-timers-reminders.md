@@ -3,11 +3,12 @@ title: Reliable Actors időzítők és emlékeztetők
 description: Az időzítők és emlékeztetők bevezetője Service Fabric Reliable Actorshoz, beleértve az egyes eszközök használatára vonatkozó útmutatást.
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: 67dc5d9706c2176b2fe70d2540be00d0af79fd80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a464fda3f8b0f293efd36cf0a064156bd7795d44
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996354"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245947"
 ---
 # <a name="actor-timers-and-reminders"></a>Színészi időzítők és emlékeztetők
 A szereplők rendszeres munkát ütemezhetnek az időzítők vagy emlékeztetők regisztrálásával. Ez a cikk bemutatja, hogyan használhatók az időzítők és a emlékeztetők, valamint ismertetik a köztük lévő különbségeket.
@@ -129,7 +130,7 @@ Az emlékeztetők olyan mechanizmusok, amelyekkel az állandó visszahívás akt
 > [!NOTE]
 > Az emlékeztetők megbízhatósága a szereplők állami szolgáltatója által biztosított állapot-megbízhatósági garanciákkal van kötve. Ez azt jelenti, hogy azoknál a szereplőknél, amelyek állapotának megőrzése nem értékre van *állítva, a*rendszer nem hajtja végre az emlékeztetőket a feladatátvétel után.
 
-Egy emlékeztető regisztrálásához a színész meghívja az [`RegisterReminderAsync`](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) alaposztályon megadott metódust, ahogy az az alábbi példában is látható:
+Egy emlékeztető regisztrálásához a színész meghívja az [`RegisterReminderAsync`](/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) alaposztályon megadott metódust, ahogy az az alábbi példában is látható:
 
 ```csharp
 protected override async Task OnActivateAsync()

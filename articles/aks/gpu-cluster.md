@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatók a GPU-k nagy teljesítményű sz
 services: container-service
 ms.topic: article
 ms.date: 03/27/2020
-ms.openlocfilehash: 242fefb3b153d11e23d66f26049d0b68c0a4bf4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30cbac0984236717581c994700483b85829c4571
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80383990"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244293"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU használata nagy számítási igényű munkaterhelésekhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -319,7 +319,7 @@ Accuracy at step 490: 0.9494
 Adding run metadata for 499
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A cikkben létrehozott társított Kubernetes-objektumok eltávolításához használja a [kubectl delete Job][kubectl delete] parancsot a következő módon:
 
@@ -327,7 +327,7 @@ A cikkben létrehozott társított Kubernetes-objektumok eltávolításához has
 kubectl delete jobs samples-tf-mnist-demo
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Apache Spark feladatok futtatásához tekintse [meg Apache Spark feladatok futtatása az AK][aks-spark]-ban című témakört.
 
@@ -350,5 +350,5 @@ A Machine learning (ML) számítási feladatainak Kubernetes való futtatásáva
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [aks-spark]: spark-job.md
-[gpu-skus]: ../virtual-machines/linux/sizes-gpu.md
+[gpu-skus]: ../virtual-machines/sizes-gpu.md
 [install-azure-cli]: /cli/azure/install-azure-cli

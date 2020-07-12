@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: dc8ca7296658f4113d86765f230ca0158727255f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28a9f37f58a6c056bf23a85fcf2641f407988891
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649203"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243477"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Nevesített értékek használata az Azure API Management-házirendekben
 
@@ -33,13 +34,13 @@ Minden API Management Service-példányhoz kulcs/érték párok gyűjteménye ta
 
 ![Névvel ellátott értékek](./media/api-management-howto-properties/named-values.png)
 
-A nevesített értékek literál karakterláncokat és [házirend-kifejezéseket](/azure/api-management/api-management-policy-expressions)tartalmazhatnak. Az értéke például `Expression` egy olyan házirend-kifejezés, amely az aktuális dátumot és időpontot tartalmazó karakterláncot ad vissza. A megnevezett érték `Credential` titkosként van megjelölve, ezért az értéke alapértelmezés szerint nem jelenik meg.
+A nevesített értékek literál karakterláncokat és [házirend-kifejezéseket](./api-management-policy-expressions.md)tartalmazhatnak. Az értéke például `Expression` egy olyan házirend-kifejezés, amely az aktuális dátumot és időpontot tartalmazó karakterláncot ad vissza. A megnevezett érték `Credential` titkosként van megjelölve, ezért az értéke alapértelmezés szerint nem jelenik meg.
 
-| Name       | Érték                      | Titkos | Címkék          |
+| Név       | Érték                      | Titkos | Címkék          |
 | ---------- | -------------------------- | ------ | ------------- |
-| Érték      | 42                         | False (Hamis)  | létfontosságú számok |
-| Hitelesítő adat | ••••••••••••••••••••••     | True (Igaz)   | biztonság      |
-| Expression | @ (DateTime. Now. ToString ()) | False (Hamis)  |               |
+| Érték      | 42                         | Hamis  | létfontosságú számok |
+| Hitelesítő adat | ••••••••••••••••••••••     | Igaz   | biztonság      |
+| Kifejezés | @ (DateTime. Now. ToString ()) | Hamis  |               |
 
 > [!NOTE]
 > Egy API Management szolgáltatásban tárolt névvel ellátott értékek helyett a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) szolgáltatásban tárolt értékeket használhatja, ahogy azt a [példa](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)mutatja.
@@ -105,12 +106,12 @@ Ha megtekinti az [API Inspector nyomkövetését](api-management-howto-api-inspe
 
 Míg a nevesített értékek tartalmazhatnak házirend-kifejezéseket, nem tartalmazhatnak más nevesített értékeket. Ha egy megnevezett értékű hivatkozást tartalmazó szöveget használ egy értékhez, például a `Text: {{MyProperty}}` hivatkozást, a hivatkozás nem lesz feloldva és lecserélve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -   További információ a szabályzatok használatáról
     -   [Szabályzatok API Management](api-management-howto-policies.md)
-    -   [Házirend-referencia](/azure/api-management/api-management-policies)
-    -   [Házirend-kifejezések](/azure/api-management/api-management-policy-expressions)
+    -   [Házirend-referencia](./api-management-policies.md)
+    -   [Házirend-kifejezések](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

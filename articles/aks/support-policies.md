@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: ec58f8df5507fd9c52950e880c062e6cad964b7a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ce014fc338ebfad18b91ba65b614ca0a380a3f7c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106985"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243851"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Támogatási szabályzatok az Azure Kubernetes Service-hez
 
@@ -75,7 +75,7 @@ A Microsoft nem nyújt technikai támogatást a következőkhöz:
   > A Microsoft a harmadik féltől származó nyílt forráskódú projektek, például a Helm és a Kured számára nyújt legjobb támogatást. Ha a harmadik féltől származó nyílt forráskódú eszköz integrálva van a Kubernetes Azure Cloud providerrel vagy más AK-specifikus hibákkal, a Microsoft a Microsoft dokumentációjában szereplő példákat és alkalmazásokat támogatja.
 * Harmadik féltől származó zárt forrású szoftver. Ez a szoftver biztonsági ellenőrzési eszközöket és hálózati eszközöket, illetve szoftvereket tartalmazhat.
 * A többfelhős vagy a többgyártós kiépítéssel kapcsolatos problémák. A Microsoft például nem támogatja az összevont többnyilvános felhő-gyártói megoldás futtatásával kapcsolatos problémákat.
-* Az [AK dokumentációjában](https://docs.microsoft.com/azure/aks/)nem szereplő hálózati testreszabások.
+* Az [AK dokumentációjában](./index.yml)nem szereplő hálózati testreszabások.
   > [!NOTE]
   > A Microsoft támogatja a hálózati biztonsági csoportokkal (NSG) kapcsolatos problémákat és hibákat. A Microsoft ügyfélszolgálata például választ kaphat a NSG sikertelen frissítésével vagy váratlan NSG vagy terheléselosztó viselkedésével kapcsolatos kérdésekre.
 
@@ -88,7 +88,7 @@ A Microsoft és az ügyfelek megosztják a Kubernetes munkavégző csomópontok 
 * Az alap operációs rendszer rendszerképének a szükséges kiegészítései vannak (például figyelési és hálózati ügynökök).
 * A munkavégző csomópontok automatikusan kapják meg az operációs rendszer javításait.
 * A Kubernetes vezérlő síkja a munkavégző csomópontokon futó összetevőivel kapcsolatos problémákat automatikusan szervizeli a rendszer. Az összetevők többek között a következők:
-  * Kube – proxy
+  * Kube-proxy
   * Hálózati alagutak, amelyek kommunikációs útvonalakat biztosítanak a Kubernetes fő összetevőinek
   * Kubelet
   * Docker vagy Moby Daemon

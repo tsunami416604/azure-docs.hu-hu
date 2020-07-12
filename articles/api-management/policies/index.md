@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: b8f97bb27b3eb45c731b20ad51e35fde9b6a394a
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 252e7b8d13cf53a98ea1f25b207740c0e623f92c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126900"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242967"
 ---
 # <a name="api-management-policy-samples"></a>API Management-szabályzatminták
 
@@ -34,7 +34,7 @@ A [szabályzat](../api-management-howto-policies.md) a rendszer egyik kiemelked�
 | [Kérelmek hitelesítése külső hitelesítő használatával](./authorize-request-using-external-authorizer.md)                                                   | Bemutatja, hogyan használható külső hitelesítő az API-hozzáférés biztosításához.                                                                                                                                                               |
 | [Hozzáférés engedélyezése Google OAuth-jogkivonatokkal](./use-google-as-oauth-token-provider.md)                                            | Bemutatja, hogyan engedélyezheti a végpontokhoz való hozzáférést a Google OAuth jogkivonat-szolgáltatóként való használatával.                                                                                                                                    |
 | [IP-címek szűrése Application Gateway használata esetén](./filter-ip-addresses-when-using-appgw.md) | Bemutatja, hogyan lehet IP-re szűrni a szabályzatokban, ha az API Management-példányt egy Application Gateway használatával érik el.
-| [Közös hozzáférésű jogosultságkód létrehozása és kérések továbbítása az Azure-tárolóba.](./generate-shared-access-signature.md)                  | Bemutatja, hogyan hozhat létre [közös hozzáférésű jogosultságkódot](../../storage/storage-dotnet-shared-access-signature-part-1.md) kifejezések használatával, majd továbbíthatja a kérést az Azure-tárolóba a rewrite-uri szabályzattal. |
+| [Közös hozzáférésű jogosultságkód létrehozása és kérések továbbítása az Azure-tárolóba.](./generate-shared-access-signature.md)                  | Bemutatja, hogyan hozhat létre [közös hozzáférésű jogosultságkódot](../../storage/common/storage-sas-overview.md) kifejezések használatával, majd továbbíthatja a kérést az Azure-tárolóba a rewrite-uri szabályzattal. |
 | [OAuth2 hozzáférési jogkivonat beszerzése az AAD-tól, és annak továbbítása a háttérrendszerbe](./use-oauth2-for-authorization.md)                             | Bemutatja, hogyan használhatja az OAuth2-t az átjáró és a háttérrendszer közötti engedélyezési folyamathoz. Bemutatja, hogyan szerezheti be a hozzáférési jogkivonatot az AAD-tól, majd továbbíthatja azt a háttérrendszernek.                                                    |
 | [X-CSRF-jogkivonat beszerzése az SAP-átjárótól a kérésküldési szabályzat használatával](./get-x-csrf-token-from-sap-gateway.md)                           | Bemutatja, hogyan alkalmazhatja a számos API által használt X-CSRF-mintát. Ez a példa kifejezetten az SAP-átjáróra vonatkozik.                                                                                                                           |
 | [Kérés átirányítása a törzs méretétől függően](./route-requests-based-on-size.md)                                            | Bemutatja, hogyan irányíthat át kéréseket a törzsük nagyságától függően.                                                                                                                                                       |

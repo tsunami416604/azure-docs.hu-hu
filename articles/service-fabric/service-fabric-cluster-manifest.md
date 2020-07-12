@@ -5,11 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8a1fdfb23b6e0aee9b9bdd04f70c554824f4c35
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75458373"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246571"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Önálló Windows-fürt konfigurációs beállításai
 Ez a cikk egy önálló Azure Service Fabric-fürt konfigurációs beállításait ismerteti, amelyek a fájlban *ClusterConfig.js* megadhatók. Ezzel a fájllal adhatja meg a fürt csomópontjaival, a biztonsági konfigurációkkal, valamint a hálózati topológiával kapcsolatos információkat a hibák és a frissítési tartományok tekintetében.  A konfigurációs beállítások módosítása vagy hozzáadása után [létrehozhat egy önálló fürtöt](service-fabric-cluster-creation-for-windows-server.md) , vagy [frissítheti egy önálló fürt konfigurációját](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -88,7 +89,7 @@ A diagnosticsStore szakaszban paramétereket konfigurálhat a diagnosztika enged
 }
 ```
 
-A metaadatok a fürt diagnosztika leírását jelentik, és a beállításuk szerint állíthatók be. Ezek a változók segítenek a ETW nyomkövetési naplók és az összeomlási memóriaképek, valamint a teljesítményszámlálók összegyűjtésében. További információ a ETW nyomkövetési naplóiról: [TraceLog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) és [ETW nyomkövetés](https://msdn.microsoft.com/library/ms751538.aspx). Az összes napló, beleértve az [Összeomlási memóriaképeket](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/) és a [teljesítményszámlálókat](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx), a számítógép ConnectionString mappájába lehet irányítani. A AzureStorage-t is használhatja a diagnosztika tárolásához. Tekintse meg a következő kódrészletet:
+A metaadatok a fürt diagnosztika leírását jelentik, és a beállításuk szerint állíthatók be. Ezek a változók segítenek a ETW nyomkövetési naplók és az összeomlási memóriaképek, valamint a teljesítményszámlálók összegyűjtésében. További információ a ETW nyomkövetési naplóiról: [TraceLog](/windows-hardware/drivers/devtest/tracelog) és [ETW nyomkövetés](/dotnet/framework/wcf/samples/etw-tracing). Az összes napló, beleértve az [Összeomlási memóriaképeket](https://techcommunity.microsoft.com/t5/ask-the-performance-team/bg-p/AskPerf) és a [teljesítményszámlálókat](/windows/win32/perfctrs/performance-counters-portal), a számítógép ConnectionString mappájába lehet irányítani. A AzureStorage-t is használhatja a diagnosztika tárolásához. Tekintse meg a következő kódrészletet:
 
 ```json
 "diagnosticsStore": {
@@ -192,15 +193,14 @@ A kiegészítő funkciók konfigurálásához konfigurálja a apiVersion 04-2017
     ]
 }
 ```
-Az összes elérhető kiegészítő funkció a [Service Fabric REST API-referenciában](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-addonfeatures)látható.
+Az összes elérhető kiegészítő funkció a [Service Fabric REST API-referenciában](/rest/api/servicefabric/sfrp-model-addonfeatures)látható.
 
 ### <a name="container-support"></a>Tárolótámogatás
 Ha engedélyezni szeretné a tárolók támogatását a Windows Server-tárolók és a Hyper-V tárolók számára az önálló fürtök esetében, engedélyezni kell a DnsService-bővítmény funkciót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután az önálló fürt beállítása szerint konfigurálta a teljes *ClusterConfig.jsa* fájlon, üzembe helyezheti a fürtöt. Kövesse az [önálló Service Fabric-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)című témakör lépéseit. 
 
 Ha önálló fürttel rendelkezik, akkor [egy önálló fürt konfigurációját is frissítheti](service-fabric-cluster-config-upgrade-windows-server.md). 
 
 Ismerje meg, hogyan [jelenítheti meg a fürtöt Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)használatával.
-

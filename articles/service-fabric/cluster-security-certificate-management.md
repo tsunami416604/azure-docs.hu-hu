@@ -4,11 +4,12 @@ description: További információ az X. 509 tanúsítvánnyal védett Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5d19e1cceacfeabc4bc670de98e56d3fbc2596
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324742"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246707"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Tanúsítványkezelő Service Fabric-fürtökben
 
@@ -75,8 +76,8 @@ Ezek a lépések az alábbi ábrán láthatók: Figyelje meg, hogy az ujjlenyoma
 ![A tulajdonos köznapi neve által deklarált tanúsítványok kiépítési feltételei][Image2]
 
 ### <a name="certificate-enrollment"></a>Tanúsítványigénylés
-Ez a témakör részletesen szerepel a Key Vault [dokumentációjában](../key-vault/create-certificate.md); a folytonosság és a könnyebb referenciák áttekintését itt olvashatja. Ha továbbra is az Azure-t használja kontextusként, és a Azure Key Vaultt a titkos felügyeleti szolgáltatásként használja, akkor egy jogosult tanúsítvány-kérelmezőnek legalább tanúsítványkezelő engedélyekkel kell rendelkeznie a tárolóban, amelyet a tár tulajdonosa biztosít; a kérelmező ezután a következőképpen regisztrálja a tanúsítványokat:
-    - létrehoz egy Azure Key Vault (AKV) tanúsítvány-szabályzatot, amely meghatározza a tanúsítvány tartományát/tárgyát, a kívánt kiállítót, a kulcs típusát és hosszát, a használandó kulcshasználat és egyebeket. részletekért tekintse [meg Azure Key Vault tanúsítványait](../key-vault/certificate-scenarios.md) . 
+Ez a témakör részletesen szerepel a Key Vault [dokumentációjában](../key-vault/certificates/create-certificate.md); a folytonosság és a könnyebb referenciák áttekintését itt olvashatja. Ha továbbra is az Azure-t használja kontextusként, és a Azure Key Vaultt a titkos felügyeleti szolgáltatásként használja, akkor egy jogosult tanúsítvány-kérelmezőnek legalább tanúsítványkezelő engedélyekkel kell rendelkeznie a tárolóban, amelyet a tár tulajdonosa biztosít; a kérelmező ezután a következőképpen regisztrálja a tanúsítványokat:
+    - létrehoz egy Azure Key Vault (AKV) tanúsítvány-szabályzatot, amely meghatározza a tanúsítvány tartományát/tárgyát, a kívánt kiállítót, a kulcs típusát és hosszát, a használandó kulcshasználat és egyebeket. részletekért tekintse [meg Azure Key Vault tanúsítványait](../key-vault/certificates/certificate-scenarios.md) . 
     - létrehoz egy tanúsítványt ugyanabban a tárolóban a fent megadott házirenddel; Ez viszont létrehoz egy kulcspárt tároló-objektumokként, a titkos kulccsal aláírt tanúsítvány-aláírási kérelmet, amelyet aztán a kijelölt kiállítónak továbbít az aláíráshoz.
     - Miután a kiállító (hitelesítésszolgáltató) válaszol az aláírt tanúsítvánnyal, az eredmény bekerül a tárolóba, és a tanúsítvány elérhető a következő műveletekhez:
       - a (z) {vaultUri}/Certificates/{Name} alatt: a tanúsítvány, beleértve a nyilvános kulcsot és a metaadatokat
@@ -209,7 +210,7 @@ Ahogy azt korábban említettük, a virtuálisgép-méretezési csoport titkos k
 
 Az összes ezt követő részletet egyidejűleg kell üzembe helyezni – a Play-by-play elemzés és a magyarázatok külön vannak felsorolva.
 
-Először Definiáljon egy felhasználóhoz rendelt identitást (példaként az alapértelmezett értékeket) – tekintse meg a naprakész információk [hivatalos dokumentációját](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm#create-a-user-assigned-managed-identity) :
+Először Definiáljon egy felhasználóhoz rendelt identitást (példaként az alapértelmezett értékeket) – tekintse meg a naprakész információk [hivatalos dokumentációját](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity) :
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -240,7 +241,7 @@ Először Definiáljon egy felhasználóhoz rendelt identitást (példaként az 
   ]}
 ```
 
-Ezt követően adja meg ezt az identitást a tár titkos kulcsaihoz – tekintse meg az aktuális információk [hivatalos dokumentációját](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy) :
+Ezt követően adja meg ezt az identitást a tár titkos kulcsaihoz – tekintse meg az aktuális információk [hivatalos dokumentációját](/rest/api/keyvault/vaults/updateaccesspolicy) :
 ```json
   "resources":
   [{
@@ -265,7 +266,7 @@ Ezt követően adja meg ezt az identitást a tár titkos kulcsaihoz – tekintse
 A következő lépésben:
   - a felhasználó által hozzárendelt identitás hozzárendelése a virtuálisgép-méretezési csoporthoz
   - deklarálja a virtuálisgép-méretezési csoport függőségét a felügyelt identitás létrehozásával, valamint a tárolóhoz való hozzáférés biztosításának eredményével
-  - deklarálja a kulcstartó virtuálisgép-bővítményét, amely megköveteli, hogy beolvassa a megfigyelt tanúsítványokat az indításkor ([hivatalos dokumentáció](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows))
+  - deklarálja a kulcstartó virtuálisgép-bővítményét, amely megköveteli, hogy beolvassa a megfigyelt tanúsítványokat az indításkor ([hivatalos dokumentáció](../virtual-machines/extensions/key-vault-windows.md))
   - frissítse a Service Fabric virtuálisgép-bővítmény definícióját, hogy az a KVVM-bővítménytől függjön, és a fürt tanúsítványát köznapi névre alakítsa (a módosításokat egyetlen lépésben végezzük el, mivel az azonos erőforrás hatóköre alá tartoznak)
 
 ```json
@@ -419,12 +420,12 @@ A KVVM-bővítmény kiépítési ügynökként folyamatosan fut előre meghatár
 #### <a name="certificate-linking-explained"></a>Tanúsítvány összekapcsolása, magyarázat
 Előfordulhat, hogy észrevette a KVVM-bővítmény "linkOnRenewal" jelzőjét, és az a tény, hogy hamis értékre van állítva. Itt részletesen ismertetjük az e jelző által vezérelt viselkedést, valamint a fürt működésével kapcsolatos következményeiket. Megjegyzés Ez a viselkedés a Windowsra jellemző.
 
-A [definíciója](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows#extension-schema)szerint:
+A [definíciója](../virtual-machines/extensions/key-vault-windows.md#extension-schema)szerint:
 ```json
 "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
 ```
 
-A TLS-kapcsolat létesítéséhez használt tanúsítványokat jellemzően az S-Channel biztonsági támogató szolgáltatón keresztül [kezelik](https://docs.microsoft.com/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea) , vagyis az ügyfél nem fér hozzá közvetlenül a tanúsítvány titkos kulcsához. Az s-Channel támogatja a hitelesítő adatok átirányítását (összekapcsolása) a tanúsítvány kiterjesztésének ([CERT_RENEWAL_PROP_ID](https://docs.microsoft.com/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)) formájában: Ha ez a tulajdonság be van állítva, az értéke a "megújítás" tanúsítvány ujjlenyomatát jelöli, így az s-Channel Ehelyett megkísérli betölteni a csatolt tanúsítványt. Valójában ez a csatolt (és remélhetőleg aciklikus) listán halad át, amíg a végleges tanúsítvánnyal nem ér véget – egyet megújítási megjelölés nélkül. Ez a funkció, ha megfontoltan használatban van, kiváló megoldás a lejárt tanúsítványok (például) által okozott rendelkezésre állás elvesztésével szemben. Más esetekben előfordulhat, hogy az kimaradás oka nehéz diagnosztizálni és enyhíteni. Az S-Channel a tanúsítványokat a megújítási tulajdonságokat feltétlen módon hajtja végre, függetlenül attól, hogy a tulajdonos, a kiállítók vagy az ügyfél által az eredményül kapott tanúsítvány érvényesítésében részt vevő egyéb attribútumok szerepelnek-e. Valóban lehetséges, hogy az eredményül kapott tanúsítványhoz nem tartozik titkos kulcs, vagy a kulcs nem lett ACLed a leendő fogyasztónak. 
+A TLS-kapcsolat létesítéséhez használt tanúsítványokat jellemzően az S-Channel biztonsági támogató szolgáltatón keresztül [kezelik](/windows/win32/api/sspi/nf-sspi-acquirecredentialshandlea) , vagyis az ügyfél nem fér hozzá közvetlenül a tanúsítvány titkos kulcsához. Az s-Channel támogatja a hitelesítő adatok átirányítását (összekapcsolása) a tanúsítvány kiterjesztésének ([CERT_RENEWAL_PROP_ID](/windows/win32/api/wincrypt/nf-wincrypt-certsetcertificatecontextproperty#cert_renewal_prop_id)) formájában: Ha ez a tulajdonság be van állítva, az értéke a "megújítás" tanúsítvány ujjlenyomatát jelöli, így az s-Channel Ehelyett megkísérli betölteni a csatolt tanúsítványt. Valójában ez a csatolt (és remélhetőleg aciklikus) listán halad át, amíg a végleges tanúsítvánnyal nem ér véget – egyet megújítási megjelölés nélkül. Ez a funkció, ha megfontoltan használatban van, kiváló megoldás a lejárt tanúsítványok (például) által okozott rendelkezésre állás elvesztésével szemben. Más esetekben előfordulhat, hogy az kimaradás oka nehéz diagnosztizálni és enyhíteni. Az S-Channel a tanúsítványokat a megújítási tulajdonságokat feltétlen módon hajtja végre, függetlenül attól, hogy a tulajdonos, a kiállítók vagy az ügyfél által az eredményül kapott tanúsítvány érvényesítésében részt vevő egyéb attribútumok szerepelnek-e. Valóban lehetséges, hogy az eredményül kapott tanúsítványhoz nem tartozik titkos kulcs, vagy a kulcs nem lett ACLed a leendő fogyasztónak. 
  
 Ha a csatolás engedélyezve van, akkor a kulcstartó virtuálisgép-bővítmény a megfigyelt tanúsítványnak a tárolóból való lekérése után megkísérli megtalálni a megfelelő, meglévő tanúsítványokat, hogy azok a megújítási kiterjesztés tulajdonságával legyenek összekapcsolva. A megfeleltetés (kizárólag) a tulajdonos alternatív neve (SAN) alapján történik, és az alábbi példának megfelelően működik.
 Tegyük fel, hogy két létező tanúsítvány van: A következő: A: CN = "Alice 's Accessories", SAN = {"alice.universalexports.com"}, megújítás = "" B: CN = "Bob BITS", SAN = {"bob.universalexports.com", "bob.universalexports.net"}, megújítás = ""
@@ -491,4 +492,3 @@ A Microsoft – belső Erdőmbe kapcsolatban tekintse meg a jóváhagyott kiáll
 
 [Image1]:./media/security-cluster-certificate-mgmt/certificate-journey-thumbprint.png
 [Image2]:./media/security-cluster-certificate-mgmt/certificate-journey-common-name.png
-

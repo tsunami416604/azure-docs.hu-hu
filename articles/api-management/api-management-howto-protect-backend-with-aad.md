@@ -12,11 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: apimpm
-ms.openlocfilehash: 72899e743e167eef5ee7d1be04cb50cafc1f2a95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 455444fe78171e3e2b37a309fd5708f283121ed6
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445508"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243409"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>API-k védelme az OAuth 2.0 Azure Active Directoryval és API Managementtel történő használatával
 
@@ -145,7 +146,7 @@ Ebben a példában a fejlesztői konzol az ügyfél-alkalmazás. A következő l
 
 1. Ha **v1** -es végpontokat használ, adjon hozzá egy **erőforrás**nevű Body paramétert. A paraméter értékeként használja a háttérbeli alkalmazás **alkalmazás-azonosítóját** . 
 
-1. Ha **v2** -végpontokat használ, használja az **Alapértelmezett hatókör** mezőben a háttér-alkalmazáshoz létrehozott hatókört. Ügyeljen arra is, hogy a tulajdonság értékét az [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) `2` [alkalmazás jegyzékfájljában](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)állítsa be.
+1. Ha **v2** -végpontokat használ, használja az **Alapértelmezett hatókör** mezőben a háttér-alkalmazáshoz létrehozott hatókört. Ügyeljen arra is, hogy a tulajdonság értékét az [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute) `2` [alkalmazás jegyzékfájljában](../active-directory/develop/reference-app-manifest.md)állítsa be.
 
 1. Ezután határozza meg az ügyfél hitelesítő adatait. Az ügyfél-alkalmazás hitelesítő adatai.
 
@@ -173,7 +174,7 @@ A következő lépés a OAuth 2,0 felhasználói engedélyezésének engedélyez
 
 1. A **Biztonság**területen válassza a **OAuth 2,0**elemet, és válassza ki a korábban konfigurált OAuth 2,0-kiszolgálót. 
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="successfully-call-the-api-from-the-developer-portal"></a>Sikerült meghívni az API-t a fejlesztői portálról
 
@@ -202,7 +203,7 @@ Ezen a ponton, amikor egy felhasználó megpróbál hívást készíteni a fejle
 
 Mi a teendő, ha valaki jogkivonat vagy érvénytelen token nélkül hívja meg az API-t? Ha például az API-t a fejléc nélkül szeretné hívni `Authorization` , a hívás továbbra is elérhető lesz. Ennek az az oka, hogy API Management ezen a ponton nem érvényesíti a hozzáférési jogkivonatot. Egyszerűen átadja a `Authorization` fejlécet a háttér-API-nak.
 
-A [JWT szabályzat érvényesítésével](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#ValidateJWT) engedélyezze a kérelmeket a API Managementban, az egyes bejövő kérelmek hozzáférési jogkivonatának ellenőrzésével. Ha egy kérelem nem rendelkezik érvényes jogkivonattal, API Management blokkolja. Adja hozzá például a következő szabályzatot a `<inbound>` szabályzat szakaszához `Echo API` . Ellenőrzi a célközönség jogcímet egy hozzáférési jogkivonatban, és hibaüzenetet ad vissza, ha a jogkivonat érvénytelen. A házirendek konfigurálásával kapcsolatos információkért lásd: [házirendek beállítása vagy szerkesztése](https://docs.microsoft.com/azure/api-management/set-edit-policies).
+A [JWT szabályzat érvényesítésével](./api-management-access-restriction-policies.md#ValidateJWT) engedélyezze a kérelmeket a API Managementban, az egyes bejövő kérelmek hozzáférési jogkivonatának ellenőrzésével. Ha egy kérelem nem rendelkezik érvényes jogkivonattal, API Management blokkolja. Adja hozzá például a következő szabályzatot a `<inbound>` szabályzat szakaszához `Echo API` . Ellenőrzi a célközönség jogcímet egy hozzáférési jogkivonatban, és hibaüzenetet ad vissza, ha a jogkivonat érvénytelen. A házirendek konfigurálásával kapcsolatos információkért lásd: [házirendek beállítása vagy szerkesztése](./set-edit-policies.md).
 
 
 ```xml
@@ -225,9 +226,9 @@ A [JWT szabályzat érvényesítésével](https://docs.microsoft.com/azure/api-m
 
 Ebben az útmutatóban a fejlesztői konzolt használta a API Managementban, mint a `Echo API` OAuth 2,0 által védettként hívható minta ügyfélalkalmazás. Ha többet szeretne megtudni az alkalmazások létrehozásáról és a 2,0-es OAuth megvalósításáról, tekintse meg a [Azure Active Directory](../active-directory/develop/sample-v2-code.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- További információ a [Azure Active Directory és a OAuth 2.0-s](../active-directory/develop/authentication-scenarios.md)verzióról.
+- További információ a [Azure Active Directory és a OAuth 2.0-s](../active-directory/develop/authentication-vs-authorization.md)verzióról.
 - További [videók](https://azure.microsoft.com/documentation/videos/index/?services=api-management) a API Managementról.
 - A háttér-szolgáltatás biztonságossá tételének egyéb módjaival kapcsolatban lásd: [kölcsönös Tanúsítványos hitelesítés](./api-management-howto-mutual-certificates.md).
 - [Hozzon létre egy API Management Service-példányt](./get-started-create-service-instance.md).

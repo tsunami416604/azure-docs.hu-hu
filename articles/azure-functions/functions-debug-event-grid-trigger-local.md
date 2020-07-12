@@ -2,14 +2,15 @@
 title: Azure Functions Event Grid helyi hibakeresés
 description: Ismerkedjen meg a Event Grid esemény által aktivált Azure-függvények hibakeresésével
 author: craigshoemaker
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: bfb502e42e41ac530851766db87bcebf3c94c371
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d57b230ceecc8e676eea6a1ab0855761e78f723b
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340861"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242746"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Az Azure Function Event Grid helyi hibakeresést indít
 
@@ -100,11 +101,11 @@ Miután a Event Grid felismerte, hogy a rendszer feltölt egy új fájlt a Stora
 
 ![Ngrok elindítása](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-breakpoint.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A cikkben létrehozott erőforrások törléséhez törölje a tároló-fiókban található **teszt** tárolót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Feltöltött képek átméretezésének automatizálása az Event Grid használatával](../event-grid/resize-images-on-storage-blob-upload-event.md)
 - [Azure Functions Event Grid trigger](./functions-bindings-event-grid.md)

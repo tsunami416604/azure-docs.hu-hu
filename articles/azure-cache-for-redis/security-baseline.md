@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b9568d352b22d9c48789f2648489be0444823fff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea46a42fa8063aaf1d67c4f5ae0d2eef3a83fd5a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195986"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242703"
 ---
 # <a name="azure-security-baseline-for-azure-cache-for-redis"></a>Azure-beli biztonsági alaptervek az Azure cache-hez a Redis
 
@@ -1201,7 +1201,7 @@ https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági Alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

@@ -13,22 +13,23 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857174"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246809"
 ---
 # <a name="design-secure-applications-on-azure"></a>Biztonságos alkalmazások tervezése az Azure-ban
 Ebben a cikkben a Felhőbeli alkalmazások tervezésekor megfontolandó biztonsági tevékenységeket és vezérlőket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) követelményei és tervezési szakaszaiban figyelembe venni kívánt biztonsági kérdések és fogalmak betanítása, valamint az erőforrások képzése. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások kialakításához használhat.
 
 Ebben a cikkben a következő SDL-fázisokat tárgyaljuk:
 
-- Képzés
+- Betanítás
 - Követelmények
 - Tervezés
 
-## <a name="training"></a>Képzés
+## <a name="training"></a>Betanítás
 Mielőtt megkezdené a felhőalapú alkalmazás fejlesztését, szánjon időt az Azure biztonságának és adatvédelmének megismerésére. Ennek a lépésnek a segítségével csökkentheti a kihasználható biztonsági rések számát és súlyosságát az alkalmazásban. Az állandóan változó fenyegetést jelentő tájképre való megfelelő reagálásra készen áll.
 
 A betanítási fázisban a következő erőforrásokkal megismerkedhet a fejlesztők számára elérhető Azure-szolgáltatásokkal és az Azure-ban ajánlott biztonsági eljárásokkal:
@@ -152,11 +153,11 @@ Az alkalmazások tervezésének modellezése és a [Stride](https://docs.google.
 
 | Fenyegetés | Biztonsági tulajdonság | Az Azure platform lehetséges enyhítése |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Hamisítás               | Hitelesítés        | [HTTPS-kapcsolatok megkövetelése](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
-| Illetéktelen módosításának              | Integritás             | Ellenőrizze az SSL/TLS-tanúsítványokat. Az SSL/TLS protokollt használó alkalmazásoknak teljes mértékben ellenőriznie kell azon entitások X. 509 tanúsítványait, amelyekhez csatlakoznak. [A x509-tanúsítványok kezeléséhez](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)használjon Azure Key Vault tanúsítványokat. |
-| Letagadhatóság            | Nem megtagadási       | Az Azure [monitorozásának és diagnosztizálásának](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)engedélyezése.|
-| Információk közzététele | Titkosság       | Bizalmas adatok titkosítása [a nyugalmi](../fundamentals/encryption-atrest.md) [állapotban és az átvitel során](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
-| Szolgáltatás megtagadása      | Rendelkezésre állás          | Teljesítmény-mérőszámok figyelése a szolgáltatási feltételek esetleges megtagadásához. A kapcsolatok szűrőinek implementálása. Az [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps)az alkalmazás-tervezési ajánlott eljárásokkal együtt védelmet nyújt a DDoS-támadásokkal szemben.|
+| Identitáshamisítás               | Hitelesítés        | [HTTPS-kapcsolatok megkövetelése](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Illetéktelen adatmódosítás              | Integritás             | Ellenőrizze az SSL/TLS-tanúsítványokat. Az SSL/TLS protokollt használó alkalmazásoknak teljes mértékben ellenőriznie kell azon entitások X. 509 tanúsítványait, amelyekhez csatlakoznak. [A x509-tanúsítványok kezeléséhez](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)használjon Azure Key Vault tanúsítványokat. |
+| Letagadhatóság            | Letagadhatatlanság       | Az Azure [monitorozásának és diagnosztizálásának](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)engedélyezése.|
+| Információfelfedés | Titkosság       | Bizalmas adatok titkosítása [a nyugalmi](../fundamentals/encryption-atrest.md) [állapotban és az átvitel során](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |
+| Szolgáltatásmegtagadás      | Rendelkezésre állás          | Teljesítmény-mérőszámok figyelése a szolgáltatási feltételek esetleges megtagadásához. A kapcsolatok szűrőinek implementálása. Az [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md#next-steps)az alkalmazás-tervezési ajánlott eljárásokkal együtt védelmet nyújt a DDoS-támadásokkal szemben.|
 | Jogosultsági szint emelése | Engedélyezés         | Azure Active Directory <span class="underline"> </span> [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)használata.|
 
 ### <a name="reduce-your-attack-surface"></a>Csökkentse a támadási felületet
@@ -208,7 +209,7 @@ Használjon kétfaktoros hitelesítést. A kétfaktoros hitelesítés a jelenleg
 
 Egyéni kód helyett platform által biztosított hitelesítési és engedélyezési mechanizmusokat használhat. Ennek az az oka, hogy az egyéni hitelesítési kód fejlesztése a hibákra is hajlamos lehet. A kereskedelmi kódokat (például a Microsofttól) gyakran részletesen áttekintjük a biztonság érdekében. A [Azure Active Directory (Azure ad)](../../active-directory/fundamentals/active-directory-whatis.md) az identitás-és hozzáférés-kezeléshez használható Azure-megoldás. Ezek az Azure AD-eszközök és-szolgáltatások segítenek a biztonságos fejlesztésben:
 
-- Az [Azure ad Identity platform (a fejlesztők számára készült Azure ad)](../../active-directory/develop/about-microsoft-identity-platform.md) egy felhőalapú identitás-szolgáltatás, amellyel a fejlesztők biztonságosan jelentkezhetnek be a felhasználókba. Az Azure AD segít a több-bérlős alkalmazások fejlesztését végző egybérlős, üzletági (LOB) alkalmazások és fejlesztők létrehozásában. Az alapszintű bejelentkezésen felül az Azure AD-vel létrehozott alkalmazások meghívhatják a Microsoft API-kat és az Azure AD platformra épülő egyéni API-kat. Az Azure AD Identity platform olyan iparági szabványnak megfelelő protokollokat támogat, mint a OAuth 2,0 és az OpenID Connect.
+- A [Microsoft Identity platform](/azure/active-directory/develop/) azon összetevők összessége, amelyekkel a fejlesztők biztonságosan jelentkezhetnek be a felhasználókba. A platform segítséget nyújt azoknak a fejlesztőknek, akik több-bérlős alkalmazásokat fejlesztenek egybérlős, üzletági (LOB) alkalmazásokat és fejlesztőket. Az alapszintű bejelentkezésen felül a Microsoft Identity platform használatával létrehozott alkalmazások meghívhatják a Microsoft API-kat és az egyéni API-kat. A Microsoft Identity platform támogatja az iparági szabványnak megfelelő protokollokat, például a OAuth 2,0 és az OpenID connectet.
 
 - A [Azure Active Directory B2C (Azure ad B2C)](../../active-directory-b2c/index.yml) egy Identitáskezelő szolgáltatás, amellyel testreszabhatja és szabályozhatja, hogy az ügyfelek hogyan regisztrálhatnak, jelentkezhetnek be és kezelhetik a profiljaikat, amikor az alkalmazásaikat használják. Ide tartoznak a többek között az iOS, az Android és a .NET rendszerhez fejlesztett alkalmazások is. A Azure AD B2C engedélyezi ezeket a műveleteket az ügyfelek identitásának védelme mellett.
 
@@ -315,7 +316,7 @@ Győződjön meg arról, hogy nem naplózza a felhasználó által a webhelyre k
 
 Győződjön meg arról, hogy az alkalmazás figyeli a felhasználói felügyeleti eseményeket, például a sikeres és sikertelen felhasználói bejelentkezéseket, a jelszó alaphelyzetbe állítását, a jelszó módosításait, a fiók zárolását és a felhasználói regisztrációt. Az események naplózása segít észlelni és reagálni az esetlegesen gyanús viselkedésre. Lehetővé teszi az operatív adatok összegyűjtését is, például az alkalmazáshoz való hozzáférést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkekben olyan biztonsági vezérlőket és tevékenységeket ajánlunk, amelyek segíthetnek a biztonságos alkalmazások fejlesztésében és üzembe helyezésében.
 
 - [Biztonságos alkalmazások fejlesztése](secure-develop.md)

@@ -4,11 +4,12 @@ description: Az Azure Service Fabric megbízható State Manager és megbízható
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
-ms.openlocfilehash: 5f7b3a4d43d35f0d2965dd33c8f69143f4b3a8f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7d0970918b0fc60f1208b5997d696a57e5bc698
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76938911"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245109"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Tranzakciók és zárolási módok az Azure-ban Service Fabric megbízható gyűjtemények
 
@@ -18,7 +19,7 @@ A tranzakciók egyetlen logikai egységként végrehajtott műveletek sorozatáb
 
 * **Atomi**: a tranzakciónak a Work atomi egységének kell lennie. Más szóval a rendszer minden adatmódosítást végez, vagy egyiket sem hajt végre.
 * **Konzisztencia**: Ha elkészült, a tranzakciónak konzisztens állapotban kell hagynia az összes adategységet. A tranzakció végén minden belső adatstruktúrának helyesnek kell lennie.
-* **Elkülönítés**: az egyidejű tranzakciók által végrehajtott módosításokat el kell különíteni a más párhuzamos tranzakciók által végrehajtott módosításokkal. Egy [ITransaction](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) belüli művelethez használt elkülönítési szintet a műveletet végrehajtó [IReliableState](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) határozza meg.
+* **Elkülönítés**: az egyidejű tranzakciók által végrehajtott módosításokat el kell különíteni a más párhuzamos tranzakciók által végrehajtott módosításokkal. Egy [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) belüli művelethez használt elkülönítési szintet a műveletet végrehajtó [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) határozza meg.
 * **Tartósság**: egy tranzakció befejeződése után a rendszer tartósan érvénybe helyezi a hatását. A módosítások rendszerhiba esetén is megmaradnak.
 
 ### <a name="isolation-levels"></a>Elkülönítési szintek
@@ -67,7 +68,7 @@ A frissítési zárolás egy aszimmetrikus zárolás, amely megakadályozza a ho
 
 A zárolási kompatibilitási mátrix a következő táblázatban található:
 
-| Kérelem \ megadott | None | Megosztott | Frissítés | Kizárólagos |
+| Kérelem \ megadott | Nincs | Megosztott | Frissítés | Kizárólagos |
 | --- |:--- |:--- |:--- |:--- |
 | Megosztott |Nincs ütközés |Nincs ütközés |Ütközés |Ütközés |
 | Frissítés |Nincs ütközés |Nincs ütközés |Ütközés |Ütközés |
@@ -78,10 +79,10 @@ Például két tranzakció (T1 és T2) megkísérli olvasni és frissíteni a K1
 Lehetséges, hogy holtpontra válnak, mivel mindkettő a megosztott zárolással végződik.
 Ebben az esetben az egyik vagy mindkét művelet időtúllépést eredményez. Ebben a forgatókönyvben egy frissítési zár megakadályozhatja az ilyen holtpontot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
 * [Értesítések Reliable Services](service-fabric-reliable-services-notifications.md)
 * [Biztonsági mentés és visszaállítás Reliable Services (vész-helyreállítás)](service-fabric-reliable-services-backup-restore.md)
 * [Megbízható állapot-kezelő konfigurációja](service-fabric-reliable-services-configuration.md)
-* [Fejlesztői referenciák megbízható gyűjteményekhez](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+* [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

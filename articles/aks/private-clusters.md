@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Serv
 services: container-service
 ms.topic: article
 ms.date: 6/18/2020
-ms.openlocfilehash: ebbe2f754aa70c6c65ec7016da29a4a1b0bd7dd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c788f2009bdc771bcdde20d1c3dbe9eafdbcffcb
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374525"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244225"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Privát Azure Kubernetes Service-fürt létrehozása
 
@@ -67,7 +67,7 @@ Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Az API-kiszolgál�
 
 A legegyszerűbb lehetőség a virtuális gép létrehozása ugyanabban a VNET, mint az AK-fürt.  Az expressz útvonal és a VPN-EK növelik a költségeket és további hálózati bonyolultságot igényelnek.  A virtuális hálózat társításához meg kell terveznie a hálózati CIDR-tartományokat, hogy ne legyenek átfedésben lévő tartományok.
 
-## <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
+## <a name="virtual-network-peering"></a>Virtuális hálózati társviszony
 
 Ahogy említettük, a VNet-társítás az egyik módja a privát fürt elérésének. A VNet-társítás használatához létre kell hoznia egy kapcsolatot a virtuális hálózat és a magánhálózati DNS-zóna között.
     
@@ -83,7 +83,7 @@ Ahogy említettük, a VNet-társítás az egyik módja a privát fürt elérés�
 
 ## <a name="hub-and-spoke-with-custom-dns"></a>A hub és a küllő egyéni DNS-sel
 
-A központilag [és küllős architektúrákat](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) gyakran használják az Azure-beli hálózatok üzembe helyezésére. Ezen telepítések többségében a küllős virtuális hálózatok DNS-beállításai úgy vannak konfigurálva, hogy egy központi DNS-továbbítóra hivatkozzon, amely lehetővé teszi a helyszíni és az Azure-alapú DNS-feloldást. Ha egy AK-fürtöt egy ilyen hálózati környezetben helyez üzembe, néhány speciális szempontot figyelembe kell venni.
+A központilag [és küllős architektúrákat](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) gyakran használják az Azure-beli hálózatok üzembe helyezésére. Ezen telepítések többségében a küllős virtuális hálózatok DNS-beállításai úgy vannak konfigurálva, hogy egy központi DNS-továbbítóra hivatkozzon, amely lehetővé teszi a helyszíni és az Azure-alapú DNS-feloldást. Ha egy AK-fürtöt egy ilyen hálózati környezetben helyez üzembe, néhány speciális szempontot figyelembe kell venni.
 
 ![Privát fürt hub és küllő](media/private-clusters/aks-private-hub-spoke.png)
 
@@ -116,9 +116,9 @@ A központilag [és küllős architektúrákat](https://docs.microsoft.com/azure
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: /azure/private-link/private-link-service-overview#limitations
+[private-link-service]: ../private-link/private-link-service-overview.md#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
-[devops-agents]: https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops
+[devops-agents]: /azure/devops/pipelines/agents/agents?view=azure-devops
 [availability-zones]: availability-zones.md

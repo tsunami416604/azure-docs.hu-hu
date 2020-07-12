@@ -4,11 +4,12 @@ description: Ismerje meg a hálózatkezelést az Azure Kubernetes szolgáltatás
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ae1c2b95a948f2344119af234539b6fab4edaaac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84789497"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244650"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai
 
@@ -134,7 +135,7 @@ A bejövő forgalom egy másik gyakori funkciója az SSL/TLS-lezárás. A HTTPS-
 
 A bejövő adatkezelőt úgy is konfigurálhatja, hogy megőrizze az ügyfél forrásának IP-címét az AK-fürtön lévő tárolók kéréseire. Ha az ügyfél kérelmét az AK-fürtön lévő egyik tárolóhoz irányítja át a bejövő vezérlőn keresztül, a kérelem eredeti forrás IP-címe nem lesz elérhető a cél tároló számára. Ha engedélyezi az *ügyfél forrás IP-címének megőrzését*, az ügyfél forrás IP-címe a kérelem fejlécében érhető el az *X által továbbított – esetében*. Ha ügyfél-forrás IP-megőrzést használ a bejövő adatkezelőn, akkor nem használhatja a TLS átmenő átvitelt. Az ügyfél-forrás IP-megőrzés és a TLS-továbbítás más szolgáltatásokkal, például a *terheléselosztó* típussal is használható.
 
-## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+## <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 
 A hálózati biztonsági csoport a virtuális gépek, például az AK-csomópontok forgalmát szűri. A szolgáltatások, például a terheléselosztó létrehozása során az Azure platform automatikusan konfigurálja a hálózati biztonsági csoportok szükséges szabályait. Ne konfigurálja manuálisan a hálózati biztonsági csoport szabályait a hüvelyek forgalmának szűrésére egy AK-fürtben. Adja meg a szükséges portokat és továbbítást a Kubernetes szolgáltatás jegyzékfájljának részeként, és hagyja, hogy az Azure platform létrehozza vagy frissítse a megfelelő szabályokat. Hálózati házirendeket is használhat a következő szakaszban leírtak szerint, hogy automatikusan alkalmazza a forgalmi szűrő szabályait a hüvelyekre.
 
@@ -146,7 +147,7 @@ A hálózati házirend egy AK-ban elérhető Kubernetes funkció, amely lehetőv
 
 További információ: a [hüvelyek közötti biztonságos forgalom a hálózati házirendek használatával az Azure Kubernetes szolgáltatásban (ak)][use-network-policies].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az AK hálózatkezelésének megkezdéséhez hozzon létre és konfiguráljon egy AK-fürtöt a saját IP-címtartományok használatával a [kubenet][aks-configure-kubenet-networking] vagy az [Azure CNI][aks-configure-advanced-networking]segítségével.
 
@@ -173,7 +174,7 @@ Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információk
 
 <!-- LINKS - Internal -->
 [aks-http-routing]: http-application-routing.md
-[aks-ingress-tls]: ingress.md
+[aks-ingress-tls]: ./ingress-tls.md
 [aks-configure-kubenet-networking]: configure-kubenet.md
 [aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md

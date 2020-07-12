@@ -5,21 +5,22 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b805b7047b00f416664a001f02f311f6b387af19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baf4e843eea859fc16ed6e3bcd509785cc4db8bc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76896273"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245585"
 ---
 # <a name="sfctl-settings"></a>sfctl-beállítások
 Konfigurálja a helyi beállításokat a sfctl ezen példánya számára.
 
 ## <a name="subgroups"></a>Alcsoportok
-|Alcsoport|Description|
+|Alcsoport|Leírás|
 | --- | --- |
 | [telemetria](service-fabric-sfctl-settings-telemetry.md) | Konfigurálja a helyi telemetria-beállításokat a sfctl ezen példányára. |
 
 
-## <a name="next-steps"></a>További lépések   
+## <a name="next-steps"></a>Következő lépések   
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.   
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

@@ -5,16 +5,17 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 54382e74899d2cbb56ccf424b0f39bd874e31630
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8f883457c2d6da6d2776bb2119caf5d09565170
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259371"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246418"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
 
-Service Fabric támogatja a különböző Availability Zonesokra kiterjedő fürtöket, ha olyan csomópont-típusokat telepít, amelyek meghatározott zónákra vannak rögzítve. Ez biztosítja az alkalmazások magas rendelkezésre állását. Azure Availability Zones csak a kiválasztott régiókban érhetők el. További információ: [Azure Availability Zones Overview (áttekintés](https://docs.microsoft.com/azure/availability-zones/az-overview)).
+Service Fabric támogatja a különböző Availability Zonesokra kiterjedő fürtöket, ha olyan csomópont-típusokat telepít, amelyek meghatározott zónákra vannak rögzítve. Ez biztosítja az alkalmazások magas rendelkezésre állását. Azure Availability Zones csak a kiválasztott régiókban érhetők el. További információ: [Azure Availability Zones Overview (áttekintés](../availability-zones/az-overview.md)).
 
 A sablonok elérhetők: [Service Fabric több rendelkezésre állási zóna sablonja](https://github.com/Azure-Samples/service-fabric-cluster-templates)
 
@@ -135,7 +136,7 @@ A terheléselosztó bejövő NAT-szabályainak meg kell egyezniük a virtuálisg
 ```
 
 ### <a name="standard-sku-load-balancer-outbound-rules"></a>Szabványos SKU Load Balancer kimenő szabályok
-A standard Load Balancer és a standard nyilvános IP-címek új képességeket és különböző viselkedéseket vezetnek be a kimenő kapcsolatokhoz az alapszintű SKU-hoz képest. Ha standard SKU-kal dolgozik a kimenő kapcsolaton, explicit módon meg kell határoznia a standard nyilvános IP-címeket vagy a standard nyilvános Load Balancer. További információ: [Kimenő kapcsolatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#snatexhaust) és [Azure standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+A standard Load Balancer és a standard nyilvános IP-címek új képességeket és különböző viselkedéseket vezetnek be a kimenő kapcsolatokhoz az alapszintű SKU-hoz képest. Ha standard SKU-kal dolgozik a kimenő kapcsolaton, explicit módon meg kell határoznia a standard nyilvános IP-címeket vagy a standard nyilvános Load Balancer. További információ: [Kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md) és [Azure standard Load Balancer](../load-balancer/load-balancer-overview.md).
 
 >[!NOTE]
 > A standard sablon egy olyan NSG hivatkozik, amely alapértelmezés szerint engedélyezi az összes kimenő forgalmat. A bejövő forgalom a Service Fabric felügyeleti műveletekhez szükséges portokra korlátozódik. A NSG-szabályok módosíthatók a követelmények teljesítése érdekében.

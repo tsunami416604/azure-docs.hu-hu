@@ -5,16 +5,17 @@ author: motanv
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 37b451abd0a519dff17aba9b2d6c42b4762f30cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 33ad837195c747a4e7f9a4609d745659be69dc9a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75463165"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246180"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Vezérelt káosz indukálása Service Fabric-fürtökben
 A nagy léptékű elosztott rendszerek, például a felhőalapú infrastruktúrák eleve megbízhatatlanok. Az Azure Service Fabric lehetővé teszi a fejlesztők számára, hogy megbízható elosztott szolgáltatásokat írjanak egy megbízhatatlan infrastruktúrán felül. Ahhoz, hogy megbízható, megbízható infrastruktúrán alapuló elosztott szolgáltatásokat lehessen írni, a fejlesztőknek képesnek kell lenniük a szolgáltatásaik stabilitásának tesztelésére, miközben a mögöttes megbízhatatlan infrastruktúra a hibák miatt bonyolult állapotú átmeneteken megy keresztül.
 
-A [hibák befecskendezése és a fürt Analysis Service](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview) (más néven a fault Analysis Service) lehetővé teszi a fejlesztők számára, hogy a szolgáltatásaik teszteléséhez hibákat idézzenek. Ezek a meghívott szimulált hibák, például a [partíciók újraindítása](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), segíthetnek a leggyakoribb állapot-váltások végrehajtásában. A megfogalmazott szimulált hibák azonban a definíciók szerint torzulnak, így a hibák kimaradnak, amelyek csak nehezen megjósolható, hosszú és bonyolult állapotú átmeneteket jeleznek. Elfogulatlan teszteléshez használhatja a káoszt.
+A [hibák befecskendezése és a fürt Analysis Service](./service-fabric-testability-overview.md) (más néven a fault Analysis Service) lehetővé teszi a fejlesztők számára, hogy a szolgáltatásaik teszteléséhez hibákat idézzenek. Ezek a meghívott szimulált hibák, például a [partíciók újraindítása](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), segíthetnek a leggyakoribb állapot-váltások végrehajtásában. A megfogalmazott szimulált hibák azonban a definíciók szerint torzulnak, így a hibák kimaradnak, amelyek csak nehezen megjósolható, hosszú és bonyolult állapotú átmeneteket jeleznek. Elfogulatlan teszteléshez használhatja a káoszt.
 
 A káosz szimulálja az időszakos, összekapcsolt hibákat (mind a kecses, mind a szégyenletes) a fürtben a hosszabb időtartamon belül. Egy kecses hiba Service Fabric API-hívásokból áll, például az újraindítási replika hibája egy kecses hiba, amelyet egy replikán nyitott meg. Távolítsa el a replikát, helyezze át az elsődleges replikát, és helyezze át a másodlagos replikát a káosz által gyakorolt egyéb kecses hibákra. A hibás hibák a folyamat bezárása, például a csomópont újraindítása és a Code csomag újraindítása. 
 
@@ -24,7 +25,7 @@ Miután beállította a káoszt a ráta és a hibák típusával, elindíthatja 
 > A Chaos jelenleg csak biztonságos hibákat idéz elő, ami azt jelenti, hogy a külső hibák hiányában a kvórum elvesztése vagy az adatvesztés soha nem fordul elő.
 >
 
-Amíg a káosz fut, különböző eseményeket hoz létre, amelyek rögzítik a Futtatás állapotát. Például egy ExecutingFaultsEvent tartalmazza az összes olyan hibát, amelyet a káosz úgy döntött, hogy az adott iterációban végrehajtja a végrehajtást. A ValidationFailedEvent a fürt érvényesítése során talált érvényesítési hibák (állapot vagy stabilitási problémák) részleteit tartalmazza. A GetChaosReport API (C#, PowerShell vagy REST) meghívásával lekérheti a káosz futtatásának jelentését. Ezek az események egy [megbízható szótárban](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)maradnak, amely a következő két konfiguráció által diktált csonkolt házirendtel rendelkezik: **MaxStoredChaosEventCount** (az alapértelmezett érték 25000) és a **StoredActionCleanupIntervalInSeconds** (az alapértelmezett érték a 3600). Minden *StoredActionCleanupIntervalInSeconds* , de a legutóbbi *MaxStoredChaosEventCount* -események törlődnek a megbízható szótárból.
+Amíg a káosz fut, különböző eseményeket hoz létre, amelyek rögzítik a Futtatás állapotát. Például egy ExecutingFaultsEvent tartalmazza az összes olyan hibát, amelyet a káosz úgy döntött, hogy az adott iterációban végrehajtja a végrehajtást. A ValidationFailedEvent a fürt érvényesítése során talált érvényesítési hibák (állapot vagy stabilitási problémák) részleteit tartalmazza. A GetChaosReport API (C#, PowerShell vagy REST) meghívásával lekérheti a káosz futtatásának jelentését. Ezek az események egy [megbízható szótárban](./service-fabric-reliable-services-reliable-collections.md)maradnak, amely a következő két konfiguráció által diktált csonkolt házirendtel rendelkezik: **MaxStoredChaosEventCount** (az alapértelmezett érték 25000) és a **StoredActionCleanupIntervalInSeconds** (az alapértelmezett érték a 3600). Minden *StoredActionCleanupIntervalInSeconds* , de a legutóbbi *MaxStoredChaosEventCount* -események törlődnek a megbízható szótárból.
 
 ## <a name="faults-induced-in-chaos"></a>A káoszban kiváltott hibák
 A Chaos a teljes Service Fabric fürt hibáit állítja elő, és a hónapokban vagy években megtekintett hibákat néhány órára tömöríti. A magas hibatűrési aránnyal rendelkező, egymással megszakított hibák kombinációja olyan sarki eseteket talál, amelyek egyébként kihagyhatók. A káosz gyakorlása a szolgáltatás programkód-minőségének jelentős javulását eredményezi.

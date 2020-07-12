@@ -5,20 +5,21 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: ac604ec0a854964746ef34627b054e853662265f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbfdba30663e2aa531ab1db955b0e035a0588709
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905953"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245721"
 ---
 # <a name="sfctl-mesh-service-replica"></a>sfctl mesh szolgáltatásreplika
 A replika adatainak beolvasása és az adott szolgáltatás replikáinak listázása egy alkalmazás-erőforrásban.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Description|
+|Parancs|Leírás|
 | --- | --- |
-| lista | A szolgáltatás összes replikáját listázza. |
+| list | A szolgáltatás összes replikáját listázza. |
 | megjelenítés | Egy alkalmazás szolgáltatásának adott replikájának beolvasása. |
 
 ## <a name="sfctl-mesh-service-replica-list"></a>sfctl Mesh Service – replika lista
@@ -28,14 +29,14 @@ Lekéri egy szolgáltatás összes replikájának adatait. Az információk köz
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --App-Name--Application-Name [kötelező] | Az alkalmazás neve. |
 | – szolgáltatásnév [kötelező] | A szolgáltatás neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -50,7 +51,7 @@ Lekéri a szolgáltatás replikájának adatait a megadott névvel. Az informác
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --App-Name--Application-Name [kötelező] | Az alkalmazás neve. |
 | --Name-n [kötelező] | A szolgáltatás replikájának neve. |
@@ -58,7 +59,7 @@ Lekéri a szolgáltatás replikájának adatait a megadott névvel. Az informác
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -67,6 +68,6 @@ Lekéri a szolgáltatás replikájának adatait a megadott névvel. Az informác
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

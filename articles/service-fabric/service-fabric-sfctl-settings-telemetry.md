@@ -5,11 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 6af5fa944ef399756f9e890ddd77a7f5f32e2bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef720a14617b4131474d50875701d0ef27df4151
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76903028"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245507"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl-beállítások telemetriája
 Konfigurálja a helyi telemetria-beállításokat a sfctl ezen példányára.
@@ -18,7 +19,7 @@ A Sfctl telemetria a megadott paraméterek nélkül gyűjti a parancs nevét, il
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Description|
+|Parancs|Leírás|
 | --- | --- |
 | set-telemetria | Kapcsolja be vagy ki a telemetria. |
 
@@ -27,14 +28,14 @@ Kapcsolja be vagy ki a telemetria.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – ki | Kapcsolja ki a telemetria. |
 | – bekapcsolva | Kapcsolja be a telemetria. Ez az alapértelmezett érték. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -57,6 +58,6 @@ sfctl settings telemetry set_telemetry --on
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

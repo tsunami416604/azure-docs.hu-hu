@@ -5,27 +5,28 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692563"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245925"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnosztika és Teljesítményfigyelés a megbízható szolgáltatás táveléréséhez
-A megbízható ServiceRemoting futtatókörnyezet [teljesítményszámlálókat](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)bocsát ki. Ezek betekintést nyújtanak a ServiceRemoting működéséhez, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.
+A megbízható ServiceRemoting futtatókörnyezet [teljesítményszámlálókat](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)bocsát ki. Ezek betekintést nyújtanak a ServiceRemoting működéséhez, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.
 
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 A megbízható ServiceRemoting-futtatókörnyezet a következő teljesítményszámláló-kategóriákat határozza meg:
 
-| Kategória | Description |
+| Kategória | Leírás |
 | --- | --- |
 | Service Fabric szolgáltatás |Az Azure Service Fabric szolgáltatás táveléréséhez kapcsolódó számlálók, például a kérelem feldolgozásához átlagosan szükséges idő |
 | Service Fabric szolgáltatási módszer |Service Fabric távelérési szolgáltatás által megvalósított módszerekre jellemző számlálók, például a szolgáltatási módszer meghívásának gyakorisága |
 
 Az előző kategóriák mindegyike egy vagy több számlálóval rendelkezik.
 
-A Windows [Teljesítményfigyelő](https://technet.microsoft.com/library/cc749249.aspx) alkalmazás, amely alapértelmezés szerint elérhető a Windows operációs rendszerben, a teljesítményszámláló-adatok gyűjtésére és megtekintésére használható. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) egy másik lehetőség a teljesítményszámláló-adatok gyűjtésére és az Azure-táblákba való feltöltésére.
+A Windows [Teljesítményfigyelő](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc749249(v=ws.11)) alkalmazás, amely alapértelmezés szerint elérhető a Windows operációs rendszerben, a teljesítményszámláló-adatok gyűjtésére és megtekintésére használható. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) egy másik lehetőség a teljesítményszámláló-adatok gyűjtésére és az Azure-táblákba való feltöltésére.
 
 ### <a name="performance-counter-instance-names"></a>Teljesítményszámláló-példányok nevei
 A nagy mennyiségű ServiceRemoting-szolgáltatással vagy partícióval rendelkező fürtök nagy számú teljesítményszámláló-példánnyal rendelkeznek. A teljesítményszámláló-példányok nevei segíthetnek azonosítani a teljesítményszámláló-példányhoz társított adott partíciót és szolgáltatási módszert (ha van ilyen).
@@ -35,7 +36,7 @@ A kategória esetében `Service Fabric Service` a számláló példányainak nev
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" formátumú metódussal jön létre.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) "D" formátumú metódussal jön létre.
 
 A *ServiceReplicaOrInstanceId* az a Service Fabric replika/példány-azonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van.
 
@@ -56,7 +57,7 @@ A *MethodName* annak a szolgáltatási módszernek a neve, amelyhez a teljesítm
 
 A *ServiceRuntimeMethodId* egy 32 bites egész szám karakterlánc-ábrázolása, amelyet a háló szolgáltatás futtatókörnyezete hoz létre belső használatra. Ez a teljesítményszámláló-példány neve része, amely biztosítja az egyediségét, és a teljesítményszámláló-példányok más neveivel való ütközés elkerülését. A felhasználók nem próbálják értelmezni a teljesítményszámláló-példány nevének ezen részét.
 
-A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" formátumú metódussal jön létre.
+A *ServiceFabricPartitionID* annak a Service Fabric partíció-azonosítónak a karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van. A partíció-azonosító egy GUID, és a karakterlánc-ábrázolás a [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) "D" formátumú metódussal jön létre.
 
 A *ServiceReplicaOrInstanceId* az a Service Fabric replika/példány-azonosító karakterlánc-ábrázolása, amelyhez a teljesítményszámláló-példány társítva van.
 
@@ -73,7 +74,7 @@ Az előző példában a `ivoicemailboxservice.leavemessageasync` metódus neve a
 
 A megbízható szolgáltatási futtatókörnyezet a szolgáltatási módszerek végrehajtásával kapcsolatos következő teljesítményszámlálók közzétételét teszi közzé.
 
-| Kategória neve | Számláló neve | Description |
+| Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
 | Service Fabric szolgáltatási módszer |Hívás/mp |A szolgáltatás metódusának meghívásakor meghívott idő másodpercenkénti száma |
 | Service Fabric szolgáltatási módszer |Hívás átlagos száma ezredmásodpercben |A szolgáltatás metódusának végrehajtásához szükséges idő ezredmásodpercben |
@@ -82,13 +83,13 @@ A megbízható szolgáltatási futtatókörnyezet a szolgáltatási módszerek v
 ### <a name="service-request-processing-performance-counters"></a>Szolgáltatási kérelmek feldolgozási teljesítményszámlálói
 Ha egy ügyfél Service proxy-objektumon keresztül hív meg egy metódust, akkor a rendszer a hálózaton keresztül küldi el a távelérési szolgáltatásnak küldött kérési üzenetet. A szolgáltatás feldolgozza a kérelem üzenetét, és visszaküldi a választ az ügyfélnek. A megbízható ServiceRemoting-futtatókörnyezet a következő teljesítményszámlálók közzétételét teszi közzé a szolgáltatási kérelmek feldolgozásával kapcsolatban.
 
-| Kategória neve | Számláló neve | Description |
+| Kategória neve | Számláló neve | Leírás |
 | --- | --- | --- |
 | Service Fabric szolgáltatás |függőben lévő kérelmek száma |A szolgáltatásban feldolgozott kérelmek száma |
 | Service Fabric szolgáltatás |Kérelmek átlagos száma ezredmásodpercben |A szolgáltatás által a kérelem feldolgozásához szükséges idő (ezredmásodpercben) |
 | Service Fabric szolgáltatás |Kérelem deszerializálásának átlagos ezredmásodperce |A szolgáltatási kérelem üzenetének deszerializálásához szükséges idő (ezredmásodpercben), amikor a szolgáltatás megkapja a szolgáltatást |
 | Service Fabric szolgáltatás |Válasz szerializálásának átlagos ezredmásodperce |Igénybe vett idő (ezredmásodpercben) a szolgáltatás válaszüzenetének szerializálásához, mielőtt a rendszer elküldi a választ az ügyfélnek |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Mintakód](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
-* [EventSource-szolgáltatók a Perfview eszköz-ben](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [EventSource-szolgáltatók a Perfview eszköz-ben](/archive/blogs/vancem/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource)

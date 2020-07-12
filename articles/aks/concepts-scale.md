@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) méretezését,
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 7c9c3cf159d67d2f4acaaab943ecf9d99263ae55
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223839"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244514"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazásskálázási beállítások az Azure Kubernetes Service-ben (AKS)
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek segítséget nyújta
 
 A replikák (hüvelyek) és a csomópontok manuális skálázásával tesztelheti, hogy az alkalmazás hogyan reagáljon a rendelkezésre álló erőforrások és állapot változására. Az erőforrások manuális skálázása azt is lehetővé teszi, hogy meghatározott mennyiségű erőforrást határozzon meg a rögzített költségeket, például a csomópontok számának fenntartásához. A manuális méretezéshez meg kell határoznia a replika vagy a csomópontok darabszámát. A Kubernetes API ezután az adott replika vagy csomópontok száma alapján további hüvelyek vagy kiürítési csomópontok létrehozását ütemezheti.
 
-A csomópontok skálázásakor a Kubernetes API meghívja a megfelelő Azure számítási API-t a fürt által használt számítási típushoz kötve. Például a VM Scale Sets API által meghatározott csomópontok kiválasztásához az VM Scale Setsra épülő fürtök esetében. Ha többet szeretne megtudni arról, hogy a csomópontok hogyan legyenek kiválasztva az eltávolításra, tekintse meg a [VMSS kapcsolatos gyakori kérdéseket](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed).
+A csomópontok skálázásakor a Kubernetes API meghívja a megfelelő Azure számítási API-t a fürt által használt számítási típushoz kötve. Például a VM Scale Sets API által meghatározott csomópontok kiválasztásához az VM Scale Setsra épülő fürtök esetében. Ha többet szeretne megtudni arról, hogy a csomópontok hogyan legyenek kiválasztva az eltávolításra, tekintse meg a [VMSS kapcsolatos gyakori kérdéseket](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed).
 
 A hüvelyek és a csomópontok manuális méretezésének megkezdéséhez lásd: [alkalmazások méretezése az AK-ban][aks-scale].
 
@@ -86,7 +86,7 @@ Az alkalmazás nem igényel módosítást virtuális csomópontok használatáho
 
 A virtuális csomópontok egy további alhálózatra vannak telepítve, ugyanabban a virtuális hálózatban, mint az AK-fürt. Ez a virtuális hálózati konfiguráció lehetővé teszi az ACI és az AK közötti adatforgalom védelmét. Az AK-fürtökhöz hasonlóan az ACI-példányok egy biztonságos, logikai számítási erőforrás, amely más felhasználóktól el van különítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazások méretezésének megkezdéséhez először kövesse a gyors üzembe helyezési lehetőséget, és [hozzon létre egy AK-fürtöt az Azure CLI][aks-quickstart]használatával. Ezután megkezdheti az alkalmazások manuális vagy automatikus méretezését az AK-fürtben:
 
@@ -111,7 +111,7 @@ Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információk
 [aks-scale]: tutorial-kubernetes-scale.md
 [aks-manually-scale-pods]: tutorial-kubernetes-scale.md#manually-scale-pods
 [aks-manually-scale-nodes]: tutorial-kubernetes-scale.md#manually-scale-aks-nodes
-[aks-cluster-autoscaler]: autoscaler.md
+[aks-cluster-autoscaler]: ./cluster-autoscaler.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-storage]: concepts-storage.md

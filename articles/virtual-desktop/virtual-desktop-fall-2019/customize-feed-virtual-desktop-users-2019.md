@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 58f05b2f9f15166e161b31578b47cf06afcb13a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 248156c403e7e74665ec1c856588d8a2ca76e208
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362577"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244565"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Csatorna személyre szabása Windows Virtual Desktop-felhasználók számára
 
@@ -72,9 +72,9 @@ Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 > [!div class="mx-imgBorder"]
 > ![Képernyőkép a set-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és új FriendlyName ki van emelve.](../media/set-rdsremotedesktop.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy testre szabta a hírcsatornát a felhasználók számára, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe a teszteléshez. Ehhez folytassa a Kapcsolódás a Windows rendszerű virtuális asztali környezetekhez:
 
- * [Csatlakozás Windows 10 vagy Windows Server 7 rendszerről](../connect-windows-7-and-10.md)
+ * [Csatlakozás Windows 10 vagy Windows Server 7 rendszerről](connect-windows-7-10-2019.md)
  * [Csatlakozás webböngészőről](connect-web-2019.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
-ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc19c5ea7a45f78110818bc6c8cea8fbe25981c0
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70072306"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243443"
 ---
 # <a name="policies-in-azure-api-management"></a>Az Azure API Management szabályzatai
 
@@ -58,7 +58,7 @@ A konfiguráció a,, és rendszerre van osztva `inbound` `backend` `outbound` `o
 </policies> 
 ```
 
-Ha hiba történik a kérelem feldolgozása során, a, a, a és a szakaszok hátralévő `inbound` lépései `backend` `outbound` kimaradnak, és a végrehajtás a szakaszban szereplő utasításokra ugrik `on-error` . Ha házirend-utasításokat helyez a `on-error` szakaszba, áttekintheti a hibát a `context.LastError` tulajdonság használatával, megvizsgálhatja és testreszabhatja a hibát a szabályzat használatával, `set-body` és konfigurálhatja, hogy mi történjen, ha hiba történik. A beépített lépések és a házirend-utasítások feldolgozása során esetlegesen előforduló hibák esetén hibakódok találhatók. További információ: hibakezelés [API Management házirendekben](/azure/api-management/api-management-error-handling-policies).
+Ha hiba történik a kérelem feldolgozása során, a, a, a és a szakaszok hátralévő `inbound` lépései `backend` `outbound` kimaradnak, és a végrehajtás a szakaszban szereplő utasításokra ugrik `on-error` . Ha házirend-utasításokat helyez a `on-error` szakaszba, áttekintheti a hibát a `context.LastError` tulajdonság használatával, megvizsgálhatja és testreszabhatja a hibát a szabályzat használatával, `set-body` és konfigurálhatja, hogy mi történjen, ha hiba történik. A beépített lépések és a házirend-utasítások feldolgozása során esetlegesen előforduló hibák esetén hibakódok találhatók. További információ: hibakezelés [API Management házirendekben](./api-management-error-handling-policies.md).
 
 ## <a name="how-to-configure-policies"></a><a name="scopes"> </a>Szabályzatok konfigurálása
 
@@ -66,7 +66,7 @@ A házirendek konfigurálásával kapcsolatos információkért lásd: [háziren
 
 ## <a name="policy-reference"></a>Házirend-hivatkozás
 
-A szabályzatokra vonatkozó utasítások és azok beállításainak teljes listájáért tekintse meg a [házirend-referenciát](api-management-policy-reference.md) .
+A szabályzatokra vonatkozó utasítások és azok beállításainak teljes listájáért tekintse meg a [házirend-referenciát](./api-management-policies.md) .
 
 ## <a name="policy-samples"></a>Házirend-minták
 
@@ -113,22 +113,22 @@ Ha korlátozni szeretné a bejövő kérelmeket, és csak a 1.2.3.4 IP-címérő
 </ip-filter>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a házirendek használatáról:
 
 + [API-k átalakítása](transform-api.md)
-+ Házirend- [hivatkozás](api-management-policy-reference.md) a szabályzat-utasítások és azok beállításainak teljes listájához
++ Házirend- [hivatkozás](./api-management-policies.md) a szabályzat-utasítások és azok beállításainak teljes listájához
 + [Házirend-minták](policy-samples.md)   
 
-[Policy Reference]: api-management-policy-reference.md
+[Policy Reference]: ./api-management-policies.md
 [Product]: api-management-howto-add-products.md
 [API]: api-management-howto-add-products.md
-[Operation]: api-management-howto-add-operations.md
+[Operation]: ./mock-api-responses.md
 
-[Advanced policies]: https://msdn.microsoft.com/library/azure/dn894085.aspx
-[Control flow]: https://msdn.microsoft.com/library/azure/dn894085.aspx#choose
-[Set variable]: https://msdn.microsoft.com/library/azure/dn894085.aspx#set_variable
-[Policy expressions]: https://msdn.microsoft.com/library/azure/dn910913.aspx
+[Advanced policies]: ./api-management-advanced-policies.md
+[Control flow]: ./api-management-advanced-policies.md#choose
+[Set variable]: ./api-management-advanced-policies.md#set-variable
+[Policy expressions]: ./api-management-policy-expressions.md
 
 [policies-restrict]: ./media/api-management-howto-policies/api-management-policies-restrict.png

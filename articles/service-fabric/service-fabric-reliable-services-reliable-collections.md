@@ -3,12 +3,12 @@ title: A megbízható gyűjtemények bemutatása
 description: Service Fabric állapot-nyilvántartó szolgáltatások megbízható gyűjteményeket biztosítanak, amelyek lehetővé teszik a nagyfokú rendelkezésre állású, méretezhető és kis késleltetésű felhőalapú alkalmazások írását.
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e0f39b994087fe44038e62e85326945589c719a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81398431"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245126"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>A megbízható gyűjtemények bemutatása az Azure Service Fabric állapot-nyilvántartó szolgáltatásokban
 
@@ -40,11 +40,11 @@ A megbízható gyűjtemények API-k az egyidejű gyűjtemények API-k (a **Syste
 
 Ma a **Microsoft. ServiceFabric. Recollections. Collections** három gyűjteményt tartalmaz:
 
-* [Megbízható szótár](https://msdn.microsoft.com/library/azure/dn971511.aspx): a kulcs/érték párok replikált, tranzakciós és aszinkron gyűjteményét jelöli. A **ConcurrentDictionary**hasonlóan a kulcs és az érték is bármilyen típusú lehet.
-* [Megbízható üzenetsor](https://msdn.microsoft.com/library/azure/dn971527.aspx): a replikált, tranzakciós és aszinkron, szigorú első-be, első kimenő (FIFO) várólistát jelöli. A **ConcurrentQueue**hasonlóan az érték bármilyen típusú lehet.
+* [Megbízható szótár](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2): a kulcs/érték párok replikált, tranzakciós és aszinkron gyűjteményét jelöli. A **ConcurrentDictionary**hasonlóan a kulcs és az érték is bármilyen típusú lehet.
+* [Megbízható üzenetsor](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1): a replikált, tranzakciós és aszinkron, szigorú első-be, első kimenő (FIFO) várólistát jelöli. A **ConcurrentQueue**hasonlóan az érték bármilyen típusú lehet.
 * [Megbízható párhuzamos üzenetsor](service-fabric-reliable-services-reliable-concurrent-queue.md): a nagy átviteli sebesség érdekében a rendszer replikált, tranzakciós és aszinkron módon kezeli a legjobb rendezési várakozási sort. A **ConcurrentQueue**hasonlóan az érték bármilyen típusú lehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Megbízható gyűjteményekre vonatkozó irányelvek & javaslatok](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
@@ -57,4 +57,4 @@ Ma a **Microsoft. ServiceFabric. Recollections. Collections** három gyűjtemén
   * [Megbízható állapot-kezelő konfigurációja](service-fabric-reliable-services-configuration.md)
 * Egyéb
   * [Reliable Services rövid útmutató](service-fabric-reliable-services-quick-start.md)
-  * [Fejlesztői referenciák megbízható gyűjteményekhez](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  * [Fejlesztői referenciák megbízható gyűjteményekhez](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)

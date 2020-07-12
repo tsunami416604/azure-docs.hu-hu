@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: d98261629f9e1612966bf74084ae0e0fa70d3605
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829252"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244446"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Fürt kilépésének testreszabása felhasználó által megadott útvonallal
 
@@ -73,11 +73,11 @@ Egy felhasználó által megadott útvonal használatával a kimenő típusú f�
 > Az útválasztási táblázathoz már tartozik egy alapértelmezett 0.0.0.0/0 az internetre, anélkül, hogy a nyilvános IP-cím SNAT csak ezt az útvonalat adja hozzá, a kimenő forgalom nem fog megjelenni. Az AK ellenőrzi, hogy nem hoz létre 0.0.0.0/0 útvonalat az interneten, hanem NVA vagy átjáróként, stb.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Lásd: [Azure Networking UDR – áttekintés](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
+Lásd: [Azure Networking UDR – áttekintés](../virtual-network/virtual-networks-udr-overview.md).
 
-Lásd: [útválasztási táblázat létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/manage-route-table).
+Lásd: [útválasztási táblázat létrehozása, módosítása vagy törlése](../virtual-network/manage-route-table.md).
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

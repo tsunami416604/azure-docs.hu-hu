@@ -5,21 +5,22 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b2fe3a7995cdd88a8f63d0d865e72e9f161cf9d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 985fb505aae96f4ebd1ba8aeb61679081f303243
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905965"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245772"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh titkos kódjának értéke
 Háló secretvalue erőforrásainak beolvasása és törlése.
 
 ## <a name="commands"></a>Parancsok
 
-|Parancs|Description|
+|Parancs|Leírás|
 | --- | --- |
-| delete | Törli a névvel ellátott titkos erőforrás megadott értékét. |
-| lista | A megadott titkos erőforrás összes értékének listázása. |
+| törlés | Törli a névvel ellátott titkos erőforrás megadott értékét. |
+| list | A megadott titkos erőforrás összes értékének listázása. |
 | megjelenítés | A titkos erőforrás megadott értékét listázza. |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl Mesh secretvalue törlése
@@ -29,14 +30,14 @@ Törli a név alapján azonosított titkos érték erőforrást. Az erőforrás 
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Secret-Name-n [kötelező] | A titkos erőforrás neve. |
 | --Version-v [kötelező] | A titkos verzió neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -51,13 +52,13 @@ Információk beolvasása a megadott titkos erőforrás minden titkos érték er
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Secret-Name-n [kötelező] | A titkos erőforrás neve. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -70,7 +71,7 @@ A titkos erőforrás megadott értékét listázza.
 
 ### <a name="arguments"></a>Argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | --Secret-Name-n [kötelező] | A titkos erőforrás neve. |
 | --Version-v [kötelező] | A titkos verzió neve. |
@@ -78,7 +79,7 @@ A titkos erőforrás megadott értékét listázza.
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 | --- | --- |
 | – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
 | --Help-h | A súgó üzenet megjelenítése és kilépés. |
@@ -87,6 +88,6 @@ A titkos erőforrás megadott értékét listázza.
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
-- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](/azure/service-fabric/scripts/sfctl-upgrade-application)használatával.
+- Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

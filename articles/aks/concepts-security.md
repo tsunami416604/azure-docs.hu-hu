@@ -6,20 +6,20 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: a0fe0803b0961b3aaa89627823b4867fac0d5d61
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f957ee5293d2804298d4723ed3a763fabac9dc93
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206314"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86244531"
 ---
-# <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) található alkalmazások és fürtök biztonsági fogalmai
+# <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) alkalmazásainak és fürtjeinek biztonsági fogalmai
 
 Ha az alkalmazás számítási feladatait az Azure Kubernetes szolgáltatásban (ak) futtatja, a fürt biztonsága kulcsfontosságú szempont. A Kubernetes olyan biztonsági összetevőket tartalmaz, mint például a *hálózati házirendek* és a *titkos kulcsok*. Az Azure ezután olyan összetevőket hoz létre, mint például a hálózati biztonsági csoportok és a előkészített fürtök frissítése. Ezek a biztonsági összetevők a legújabb operációs rendszer biztonsági frissítéseit és Kubernetes, valamint a biztonságos Pod-forgalmat és a bizalmas hitelesítő adatokhoz való hozzáférést biztosító AK-fürt megtartására szolgálnak.
 
 Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyekkel biztonságossá teheti alkalmazásait az AK-ban:
 
-- [Az Azure Kubernetes Service-ben (ak) található alkalmazások és fürtök biztonsági fogalmai](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
+- [Az Azure Kubernetes Service (AKS) alkalmazásainak és fürtjeinek biztonsági fogalmai](#security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks)
   - [Fő biztonság](#master-security)
   - [Csomópont biztonsága](#node-security)
     - [Számítási elkülönítés](#compute-isolation)
@@ -27,7 +27,7 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyekkel biztonságossá t
     - [Cordon és Drain](#cordon-and-drain)
   - [Hálózati biztonság](#network-security)
     - [Azure-beli hálózati biztonsági csoportok](#azure-network-security-groups)
-  - [A Kubernetes titkos kódjai](#kubernetes-secrets)
+  - [Kubernetes titkai](#kubernetes-secrets)
   - [Következő lépések](#next-steps)
 
 ## <a name="master-security"></a>Fő biztonság
@@ -94,7 +94,7 @@ A titkok használata csökkenti a pod vagy a Service YAML-jegyzékben definiált
 
 A Kubernetes-titkokat a rendszer a etcd-ben tárolja elosztott kulcs-érték tárolóban. A Etcd-tárolót teljes mértékben az AK felügyeli, és [az adatok titkosítása az Azure platformon belül történik][encryption-atrest]. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az AK-fürtök biztonságossá tételének megkezdéséhez tekintse meg [az AK-fürt frissítését][aks-upgrade-cluster]ismertető témakört.
 
@@ -112,12 +112,12 @@ Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információk
 [kured]: https://github.com/weaveworks/kured
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [secret-risks]: https://kubernetes.io/docs/concepts/configuration/secret/#risks
-[encryption-atrest]: https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
+[encryption-atrest]: ../security/fundamentals/encryption-atrest.md
 
 <!-- LINKS - Internal -->
 [aks-daemonsets]: concepts-clusters-workloads.md#daemonsets
 [aks-upgrade-cluster]: upgrade-cluster.md
-[aks-aad]: azure-ad-integration.md
+[aks-aad]: ./azure-ad-integration-cli.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-scale]: concepts-scale.md

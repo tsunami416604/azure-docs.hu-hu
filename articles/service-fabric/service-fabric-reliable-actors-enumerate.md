@@ -5,11 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 1516c9005a7c4dd0adcb279e9954e5f882c575c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8e462cc5fa82b8692304f58ef6cf0ea0e2db8725
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75645599"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86245976"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric enumerálása Reliable Actors
 A Reliable Actors szolgáltatás lehetővé teszi, hogy az ügyfél a szolgáltatás által üzemeltetett szereplők metaadatait enumerálja. Mivel a Actors szolgáltatás particionált állapot-nyilvántartó szolgáltatás, a számbavétel egy partíción történik. Mivel az egyes partíciók több résztvevőt is tartalmazhatnak, a számbavétel a lapozható eredmények halmazát adja vissza. A lapokat a rendszer az összes oldal beolvasása után összehurkolja. Az alábbi példa bemutatja, hogyan hozhatja létre az összes aktív szereplő listáját a Actors szolgáltatás egy partíciójában:
@@ -57,10 +58,10 @@ while (continuationToken != null);
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Színészi állapot kezelése](service-fabric-reliable-actors-state-management.md)
 * [A Actor életciklusa és a szemét gyűjtése](service-fabric-reliable-actors-lifecycle.md)
-* [A Actors API-dokumentációja](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [A Actors API-dokumentációja](/previous-versions/azure/dn971626(v=azure.100))
 * [.NET-mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-mintakód](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

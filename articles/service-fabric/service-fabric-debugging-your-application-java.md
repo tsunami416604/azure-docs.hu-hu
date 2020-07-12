@@ -5,11 +5,12 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 15448a9bd8998a99e8fce578b05130694ecd5fd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f2361bf76bd4f9d297fbe541b950840f13966cc
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75614485"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246401"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Java Service Fabric-alkalmazás hibakeresése az Eclipse használatával
 > [!div class="op_single_selector"]
@@ -26,7 +27,7 @@ ms.locfileid: "75614485"
     ```
 3. Frissítse az alkalmazás-jegyzékfájlt úgy, hogy beállítja a példányszámot vagy az 1-re felkeresett szolgáltatás replikáinak darabszámát. Ezzel a beállítással elkerülheti, hogy ütközések alakuljanak ki a hibakereséshez használt portnál. Állapotmentes szolgáltatások esetén például állítsa be az `InstanceCount="1"` értéket, állapotalapú szolgáltatások esetén pedig állítsa be a cél és a minimális replikakészlet méretét 1-re a következőképpen: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
 
-4. Az alkalmazás üzembe helyezése.
+4. Telepítse az alkalmazást.
 
 5. Az Eclipse IDE-ben válassza a **Futtatás – > hibakeresési konfigurációk – > távoli Java-alkalmazás és a bemeneti kapcsolatok tulajdonságai** lehetőséget, és állítsa be a tulajdonságokat a következőképpen:
 
@@ -38,7 +39,7 @@ ms.locfileid: "75614485"
 
 Ha az alkalmazás összeomlik, érdemes lehet engedélyezni a coredumps is. Hajtson végre `ulimit -c` egy rendszerhéjban, és ha 0 értéket ad vissza, akkor a coredumps nem engedélyezettek. A korlátlan coredumps engedélyezéséhez hajtsa végre a következő parancsot: `ulimit -c unlimited` . Az állapotot a parancs használatával is ellenőrizheti `ulimit -a` .  Ha szeretné frissíteni a coredump-létrehozási útvonalat, hajtsa végre a következőt: `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern` . 
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
-* [Naplók gyűjtése Linux Azure Diagnostics használatával](service-fabric-diagnostics-how-to-setup-lad.md).
+* [Naplók gyűjtése Linux Azure Diagnostics használatával](./service-fabric-diagnostics-event-aggregation-lad.md).
 * [A szolgáltatások helyi figyelése és diagnosztizálása](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md).

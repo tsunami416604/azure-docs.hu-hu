@@ -3,12 +3,12 @@ title: Service Fabric-fürt méretezése vagy kibontása
 description: Az egyes csomópontok és virtuálisgép-méretezési csoportokra vonatkozó automatikus méretezési szabályok beállításával az igény szerint méretezheti a Service Fabric-fürtöt az igényeknek megfelelően. Csomópontok hozzáadása vagy eltávolítása Service Fabric fürthöz
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: c72f8eca9bc054446ceec35448c930098c5f81fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9393ca4531dea58859a4fc60509524e9c4a0b7f
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610251"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246486"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Fürt horizontális fel- és leskálázása
 
@@ -24,7 +24,7 @@ A számítási erőforrások méretezése az alkalmazás munkahelyi terhelésén
 A virtuálisgép-méretezési csoportok egy olyan Azure-beli számítási erőforrás, amellyel készletként telepítheti és kezelheti a virtuális gépek gyűjteményét. A Service Fabric-fürtben definiált összes csomópont-típus külön virtuálisgép-méretezési csoportként van beállítva. Ezután az egyes csomópont-típusok egymástól függetlenül méretezhetők, különböző portokat nyitnak meg, és rendelkezhetnek különböző kapacitási metrikákkal. További információ a [Service Fabric Node types](service-fabric-cluster-nodetypes.md) dokumentumban olvasható. Mivel a fürtben lévő Service Fabric csomópontok virtuálisgép-méretezési csoportokból állnak a háttérben, be kell állítania az automatikus skálázási szabályokat minden egyes csomópont típus/virtuálisgép-méretezési csoport számára.
 
 > [!NOTE]
-> Az előfizetésnek elegendő maggal kell rendelkeznie ahhoz, hogy hozzáadja a fürtöt alkotó új virtuális gépeket. Jelenleg nincs modell-érvényesítés, ezért ha a kvóta bármely korlátja teljesül, az üzembe helyezési idő sikertelen lesz. Egyetlen csomópont-típus sem lehet egyszerűen a 100 csomópontok VMSS. Előfordulhat, hogy hozzá kell adnia a VMSS-t a célként megadott skála eléréséhez, és az automatikus skálázás nem tudja automatikusan felvenni a VMSS. A VMSS egy élő fürthöz való elhelyezése egy kihívást jelentő feladat, amely általában az új fürtök kiosztását eredményezi a létrehozáskor kiépített megfelelő csomópont-típusokkal. Ennek megfelelően [tervezze meg a fürt kapacitását](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) . 
+> Az előfizetésnek elegendő maggal kell rendelkeznie ahhoz, hogy hozzáadja a fürtöt alkotó új virtuális gépeket. Jelenleg nincs modell-érvényesítés, ezért ha a kvóta bármely korlátja teljesül, az üzembe helyezési idő sikertelen lesz. Egyetlen csomópont-típus sem lehet egyszerűen a 100 csomópontok VMSS. Előfordulhat, hogy hozzá kell adnia a VMSS-t a célként megadott skála eléréséhez, és az automatikus skálázás nem tudja automatikusan felvenni a VMSS. A VMSS egy élő fürthöz való elhelyezése egy kihívást jelentő feladat, amely általában az új fürtök kiosztását eredményezi a létrehozáskor kiépített megfelelő csomópont-típusokkal. Ennek megfelelően [tervezze meg a fürt kapacitását](./service-fabric-cluster-capacity.md) . 
 > 
 > 
 
@@ -52,7 +52,7 @@ Jelenleg az automatikus méretezési funkciót nem az alkalmazások által az Se
 A [virtuálisgép-méretezési csoportokhoz tartozó automatikus méretezés beállításához](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md)kövesse az alábbi utasításokat.
 
 > [!NOTE]
-> Abban az esetben, ha a csomópont típusa nem rendelkezik az arany vagy ezüst [tartóssági szinttel][durability] , a [Remove-ServiceFabricNodeState parancsmagot](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) a megfelelő csomópont nevével kell meghívni. A bronz tartósság esetében nem ajánlott egyszerre egynél több csomóponton méretezni a méretezést.
+> Abban az esetben, ha a csomópont típusa nem rendelkezik az arany vagy ezüst [tartóssági szinttel][durability] , a [Remove-ServiceFabricNodeState parancsmagot](/powershell/module/servicefabric/remove-servicefabricnodestate) a megfelelő csomópont nevével kell meghívni. A bronz tartósság esetében nem ajánlott egyszerre egynél több csomóponton méretezni a méretezést.
 > 
 > 
 
@@ -229,7 +229,7 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>A Service Fabric Explorerban megfigyelhető viselkedések
-A fürt felskálázásakor a Service Fabric Explorer tükrözi a fürt részét képező csomópontok (virtuálisgép-méretezési csoport példányai) számát.  Ha azonban a fürt méretezését fogja látni, akkor az eltávolított csomópont-vagy virtuálisgép-példány nem Kifogástalan állapotba kerül, hacsak nem hívja a [Remove-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) fájlt a megfelelő csomópont nevével.   
+A fürt felskálázásakor a Service Fabric Explorer tükrözi a fürt részét képező csomópontok (virtuálisgép-méretezési csoport példányai) számát.  Ha azonban a fürt méretezését fogja látni, akkor az eltávolított csomópont-vagy virtuálisgép-példány nem Kifogástalan állapotba kerül, hacsak nem hívja a [Remove-ServiceFabricNodeState cmd](/powershell/module/servicefabric/remove-servicefabricnodestate) fájlt a megfelelő csomópont nevével.   
 
 Itt látható ennek a viselkedésnek a magyarázata.
 
@@ -240,14 +240,14 @@ Annak biztosítása érdekében, hogy a rendszer eltávolítsa a csomópontot eg
 1. Válassza ki a fürtben található csomópont-típusoknál az arany vagy ezüst tartóssági szintet, amely az infrastruktúra-integrációt biztosítja. Ekkor a rendszer automatikusan eltávolítja a csomópontokat a rendszerszolgáltatások (FM) állapotáról a méretezés során.
 Tekintse [meg a tartóssági szintek részleteit itt](service-fabric-cluster-capacity.md)
 
-2. A virtuálisgép-példány skálázása után meg kell hívnia a [Remove-ServiceFabricNodeState parancsmagot](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate).
+2. A virtuálisgép-példány skálázása után meg kell hívnia a [Remove-ServiceFabricNodeState parancsmagot](/powershell/module/servicefabric/remove-servicefabricnodestate).
 
 > [!NOTE]
 > Service Fabric fürtökhöz szükség van bizonyos számú csomópontra a rendelkezésre állás fenntartása és az állapot megőrzése érdekében – a továbbiakban "a kvórum fenntartása". Így általában nem biztos, hogy leállítja a fürtben lévő összes gépet, hacsak nem végezte el az [állapot teljes biztonsági mentését](service-fabric-reliable-services-backup-restore.md).
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkből megtudhatja, hogyan tervezheti meg a fürt kapacitását, hogyan frissítheti a fürtöket és particionálhatja a szolgáltatásokat:
 
 * [A fürt kapacitásának megtervezése](service-fabric-cluster-capacity.md)

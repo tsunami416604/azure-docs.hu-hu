@@ -5,11 +5,12 @@ description: Ismerje meg, hogyan hozhat létre és használhat statikus IP-címe
 services: container-service
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3055b5d32055d0ed0e3870f16f6af95407a68cd9
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80886738"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243936"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statikus nyilvános IP-cím és DNS-címke használata az Azure Kubernetes Service (ak) terheléselosztó használatával
 
@@ -153,7 +154,7 @@ Events:
   Warning  CreatingLoadBalancerFailed  6s (x2 over 12s)  service-controller  Error creating load balancer (will retry): Failed to create load balancer for service default/azure-load-balancer: user supplied IP Address 40.121.183.52 was not found
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazásokra irányuló hálózati forgalom további szabályozása érdekében érdemes lehet [egy bejövő vezérlőt létrehozni][aks-ingress-basic]. Egy [statikus nyilvános IP-címmel rendelkező bejövő vezérlőt is létrehozhat][aks-static-ingress].
 
@@ -172,4 +173,4 @@ Az alkalmazásokra irányuló hálózati forgalom további szabályozása érdek
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
-[ip-sku]: ../virtual-network/virtual-network-ip-addresses-overview-arm.md#sku
+[ip-sku]: ../virtual-network/public-ip-addresses.md#sku

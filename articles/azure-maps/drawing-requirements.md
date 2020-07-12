@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: c8699ff86573084e3199b096b25dd5d97cce2985
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ba9edba97ce89cede54287076e50eb587af10f3
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791571"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242474"
 ---
 # <a name="drawing-package-requirements"></a>Rajzolási csomag követelményei
 
@@ -33,7 +34,7 @@ A dokumentumban használt kifejezések glosszáriuma.
 | Réteg | Egy AutoCAD DWG-réteg.|
 | Szint | Egy épület területe egy beállított jogosultságszint-emeléssel. Például egy épület padlója. |
 | Xref  |Egy olyan fájl, amely az elsődleges rajzhoz külső hivatkozásként csatolt AutoCAD DWG-fájlformátumban (. DWG) van csatolva.  |
-| Szolgáltatás | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
+| Funkció | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
 | Szolgáltatási osztályok | A funkciók közös tervrajza. Egy egység például egy szolgáltatás osztály, az Office pedig egy szolgáltatás. |
 
 ## <a name="drawing-package-structure"></a>Rajzolási csomag szerkezete
@@ -76,7 +77,7 @@ Minden rétegbeli entitásnak a következő típusok egyikének kell lennie: von
 
 Az alábbi táblázat az egyes rétegekhez tartozó támogatott entitások típusait és támogatott funkcióit ismerteti. Ha egy réteg nem támogatott entitás-típusokat tartalmaz, akkor a [Azure Maps konverziós szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) figyelmen kívül hagyja ezeket az entitásokat.  
 
-| Réteg | Entitástípusok | Szolgáltatások |
+| Réteg | Entitástípusok | Jellemzők |
 | :----- | :-------------------| :-------
 | [Külső](#exterior-layer) | Sokszög, vonallánc (lezárt), kör | Szintek
 | [Egység](#unit-layer) |  Sokszög, vonallánc (lezárt), kör | Vertikális behatolások, egységek
@@ -174,11 +175,11 @@ Bár a jegyzékfájl-objektumok használatakor követelmények vannak, nem minde
 
 | Objektum | Kötelező | Leírás |
 | :----- | :------- | :------- |
-| version | igaz |Jegyzékfájl-séma verziója. Jelenleg csak a 1,1-es verzió támogatott.|
-| directoryInfo | igaz | Felvázolja a létesítmény földrajzi és kapcsolattartási adatait. Az utas földrajzi és kapcsolattartási adatainak tagolására is használható. |
-| buildingLevels | igaz | Meghatározza az épületek szintjét és a szintek kialakítását tartalmazó fájlokat. |
-| Georeference | igaz | Numerikus földrajzi adatokat tartalmaz a létesítmény rajzolásához. |
-| dwgLayers | igaz | Felsorolja a rétegek nevét, és mindegyik réteg felsorolja a saját szolgáltatásainak nevét. |
+| version | true |Jegyzékfájl-séma verziója. Jelenleg csak a 1,1-es verzió támogatott.|
+| directoryInfo | true | Felvázolja a létesítmény földrajzi és kapcsolattartási adatait. Az utas földrajzi és kapcsolattartási adatainak tagolására is használható. |
+| buildingLevels | true | Meghatározza az épületek szintjét és a szintek kialakítását tartalmazó fájlokat. |
+| Georeference | true | Numerikus földrajzi adatokat tartalmaz a létesítmény rajzolásához. |
+| dwgLayers | true | Felsorolja a rétegek nevét, és mindegyik réteg felsorolja a saját szolgáltatásainak nevét. |
 | unitProperties | hamis | További metaadatok beszúrására használható az egység szolgáltatásaihoz. |
 | zoneProperties | hamis | További metaadatok beszúrására használható a zóna szolgáltatásaihoz. |
 
@@ -188,7 +189,7 @@ A következő részek részletezik az egyes objektumok követelményeit.
 
 | Tulajdonság  | típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
-| name      | sztring | igaz   |  Az építési név. |
+| name      | sztring | true   |  Az építési név. |
 | streetAddress|    sztring |    hamis    | Az építési címe. |
 |egység     | sztring    |  hamis    |  Egység az épületben. |
 | településen |    sztring |    hamis |    Terület, környék vagy régió neve. Például: "túltó" vagy "központi körzet". A helység nem része a levelezési címnek. |
@@ -209,26 +210,26 @@ Az `buildingLevels` objektum az épületek szintjeinek JSON-tömbjét tartalmazz
 
 | Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
-|Szint    |sztring    |igaz |    Leíró szint neve. Például: Floor 1, lobby, Blue parkoló, alagsor stb.|
-|sorszámok | egész szám |    igaz | A szintek függőleges sorrendjének meghatározásához a sorszámot kell használni. Minden létesítménynek 0 sorszámú szinten kell lennie. |
+|Szint    |sztring    |true |    Leíró szint neve. Például: Floor 1, lobby, Blue parkoló, alagsor stb.|
+|sorszámok | egész szám |    true | A szintek függőleges sorrendjének meghatározásához a sorszámot kell használni. Minden létesítménynek 0 sorszámú szinten kell lennie. |
 |heightAboveFacilityAnchor | numerikus | hamis |    A rögzítési magasság meghaladja a mérőórákat. |
 | verticalExtent | numerikus | hamis | A szint és a felső határ közötti magasság (vastagság) mértékegysége (méter). |
-|fájlnév |    sztring |    igaz |    A CAD-rajz fájlrendszerbeli elérési útja egy építési szinthez. Az értéknek az épületben található zip-fájl gyökeréhez viszonyítva kell lennie. |
+|fájlnév |    sztring |    true |    A CAD-rajz fájlrendszerbeli elérési útja egy építési szinthez. Az értéknek az épületben található zip-fájl gyökeréhez viszonyítva kell lennie. |
 
 ### <a name="georeference"></a>Georeference
 
 | Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
-|Lat    | numerikus |    igaz |    A mértékek szélességének decimális ábrázolása a létesítmény-rajz forrásaként. A forrás koordinátáinak a WGS84 web Mercator () értékkel kell rendelkezniük `EPSG:3857` .|
-|Lon    |numerikus|    igaz|    A fok hosszúságának decimális ábrázolása a létesítmény-rajz forrásaként. A forrás koordinátáinak a WGS84 web Mercator () értékkel kell rendelkezniük `EPSG:3857` . |
-|angle|    numerikus|    igaz|   Az óramutató és a rajz függőleges (Y) tengelye közötti szögben, fokban megadva.   |
+|Lat    | numerikus |    true |    A mértékek szélességének decimális ábrázolása a létesítmény-rajz forrásaként. A forrás koordinátáinak a WGS84 web Mercator () értékkel kell rendelkezniük `EPSG:3857` .|
+|Lon    |numerikus|    true|    A fok hosszúságának decimális ábrázolása a létesítmény-rajz forrásaként. A forrás koordinátáinak a WGS84 web Mercator () értékkel kell rendelkezniük `EPSG:3857` . |
+|angle|    numerikus|    true|   Az óramutató és a rajz függőleges (Y) tengelye közötti szögben, fokban megadva.   |
 
 ### <a name="dwglayers"></a>dwgLayers
 
 | Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
-|külső    |Karakterláncok tömbje|    igaz|    A külső felépítési profilt meghatározó réteg (ek) neve.|
-|egység|    Karakterláncok tömbje|    igaz|    Az egységeket meghatározó réteg (ek) neve.|
+|külső    |Karakterláncok tömbje|    true|    A külső felépítési profilt meghatározó réteg (ek) neve.|
+|egység|    Karakterláncok tömbje|    true|    Az egységeket meghatározó réteg (ek) neve.|
 |fal|    Karakterláncok tömbje    |hamis|    A falakat meghatározó réteg (ek) neve.|
 |ajtajának    |Karakterláncok tömbje|    hamis   | Az ajtókat meghatározó réteg (ek) neve.|
 |unitLabel    |Karakterláncok tömbje|    hamis    |Az egységek nevét meghatározó réteg (ek) neve.|
@@ -241,7 +242,7 @@ Az `unitProperties` objektum az egység tulajdonságainak JSON-tömbjét tartalm
 
 | Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
-|unitName    |sztring    |igaz    |A rekorddal társítandó egység neve `unitProperty` . Ez a rekord csak akkor érvényes, ha a `unitName` réteg (ek) ban címkével egyező címke található `unitLabel` . |
+|unitName    |sztring    |true    |A rekorddal társítandó egység neve `unitProperty` . Ez a rekord csak akkor érvényes, ha a `unitName` réteg (ek) ban címkével egyező címke található `unitLabel` . |
 |categoryName|    sztring|    hamis    |Kategória neve A kategóriák teljes listájáért tekintse meg a [kategóriákat](https://aka.ms/pa-indoor-spacecategories). |
 |navigableBy| Karakterláncok tömbje |    hamis    |Az egységet áthaladó navigáló ügynökök típusát jelöli. Például: "sétáló". Ez a tulajdonság tájékoztatja a wayfinding képességeit.  A megengedett értékek:,,,,,,,,,, `pedestrian` `wheelchair` `machine` `bicycle` `automobile` `hiredAuto` `bus` `railcar` `emergency` `ferry` `boat` és `disallowed` .|
 |routeThroughBehavior|    sztring|    hamis    |Az egység viselkedési útvonala. A megengedett értékek: `disallowed` , `allowed` és `preferred` . Az alapértelmezett érték: `allowed` .|
@@ -261,7 +262,7 @@ Az `zoneProperties` objektum a zóna tulajdonságainak JSON-tömbjét tartalmazz
 
 | Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
-|zoneName        |sztring    |igaz    |A rekordhoz társítandó zóna neve `zoneProperty` . Ez a rekord csak akkor érvényes, ha a `zoneName` zóna rétegében szerepel a címke egyezése `zoneLabel` .  |
+|zoneName        |sztring    |true    |A rekordhoz társítandó zóna neve `zoneProperty` . Ez a rekord csak akkor érvényes, ha a `zoneName` zóna rétegében szerepel a címke egyezése `zoneLabel` .  |
 |categoryName|    sztring|    hamis    |Kategória neve A kategóriák teljes listájáért tekintse meg a [kategóriákat](https://aka.ms/pa-indoor-spacecategories). |
 |zoneNameAlt|    sztring|    hamis    |A zóna alternatív neve.  |
 |zoneNameSubtitle|    sztring |    hamis    |A zóna alcíme. |
@@ -401,7 +402,7 @@ Alább látható a minta rajzolási csomaghoz tartozó jegyzékfájl-fájl. A te
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a rajzolási csomag megfelel a követelményeknek, a [Azure Maps konverziós szolgáltatással](https://docs.microsoft.com/rest/api/maps/conversion) átalakíthatja a csomagot térképi adatkészletbe. Ezt követően használhatja az adatkészletet egy beltéri Térkép létrehozásához a beltéri térképek modul használatával. A beltéri térképek modul használatáról a következő cikkekből tájékozódhat:
 

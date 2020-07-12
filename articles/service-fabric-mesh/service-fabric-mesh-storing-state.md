@@ -5,15 +5,16 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0b0bd611fa86d155bb5bf2e07808e7365e28871c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d56ce811155f7b7f60fa870dbdae2550afab2eac
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84692682"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86246826"
 ---
 # <a name="state-management-with-service-fabric"></a>Állapot-kezelés Service Fabric
 
-Service Fabric számos különböző lehetőséget támogat az állapot-tároláshoz. Az állapot-felügyeleti minták és Service Fabric fogalmi áttekintését lásd [: Service Fabric fogalmak: State](/azure/service-fabric/service-fabric-concepts-state). Mindezen fogalmak érvényesek, függetlenül attól, hogy a szolgáltatásai Service Fabric hálón belül vagy kívül futnak-e. 
+Service Fabric számos különböző lehetőséget támogat az állapot-tároláshoz. Az állapot-felügyeleti minták és Service Fabric fogalmi áttekintését lásd [: Service Fabric fogalmak: State](../service-fabric/service-fabric-concepts-state.md). Mindezen fogalmak érvényesek, függetlenül attól, hogy a szolgáltatásai Service Fabric hálón belül vagy kívül futnak-e. 
 
 A Service Fabric Mesh használatával egyszerűen üzembe helyezhető egy új alkalmazás, és az Azure-ban üzemeltetett meglévő adattárhoz csatlakoztatható. A távoli adatbázisok mellett számos lehetőség áll rendelkezésre az adattárolásra attól függően, hogy a szolgáltatás helyi vagy távoli tárterületet kíván-e használni. 
 
@@ -31,7 +32,7 @@ Service Fabric megbízható kötet a helyi kötetek tárolóba csatlakoztatásá
 
 Azure Files kötet egy Azure Files-megosztás tárolóba csatlakoztatására szolgáló Docker-kötet-illesztőprogram. Azure Files a tárterület hálózati tárterületet használ, ezért az olvasás és az írás a hálózaton keresztül történik. A Service Fabric megbízható kötethez képest Azure Files tárterület kevésbé nagy teljesítményű, de olcsóbb és teljesen megbízható adatbeállítást biztosít. Példaként tekintse meg, [Hogyan helyezhet üzembe egy alkalmazást Azure Files kötettel](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alkalmazás modelljével kapcsolatos információkért lásd: [Service Fabric erőforrások](service-fabric-mesh-service-fabric-resources.md)
 

@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: adb11f29460bd6dee7171fa97a6ebfc958cfad12
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169909"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242763"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -17,6 +17,9 @@ A Function alkalmazásban az Alkalmazásbeállítások olyan globális konfigur�
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 Más globális konfigurációs beállítások is találhatók a fájl [host.jsjában](functions-host-json.md) , a fájl [local.settings.js](functions-run-local.md#local-settings-file) pedig a fájlban.
+
+> [!NOTE]  
+> Az Alkalmazásbeállítások segítségével felülbírálhatja host.jsbeállításait, anélkül, hogy módosítania kellene a host.jsa fájlon. Ez olyan esetekben hasznos, amikor egy adott környezet beállításain egy adott host.jskell konfigurálnia vagy módosítania. Ez a beállítás azt is lehetővé teszi, hogy a projekt újbóli közzététele nélkül módosítsa host.jsbeállításait. További tudnivalókat ahost.jscímű [cikkben](functions-host-json.md#override-hostjson-values)talál.  
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
@@ -268,7 +271,7 @@ Lehetővé teszi a Function alkalmazás időzónájának beállítását.
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg, hogyan frissítheti az alkalmazás beállításait](functions-how-to-use-azure-function-app-settings.md#settings)
 

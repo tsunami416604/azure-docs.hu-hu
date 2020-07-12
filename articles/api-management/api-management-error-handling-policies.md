@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 0bc4792b44ccff23a141460c3521d684801c4567
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bddb4ea3759d19d1e122739fb69cf9bf96c66635
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84674261"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243545"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Hibakezelés az API Management-szabályzatokban
 
@@ -50,7 +51,7 @@ A kérelem feldolgozása során a beépített lépések minden olyan szabályzat
 A `on-error` szabályzat szakasz bármely hatókörben használható. Az API-közzétevők egyéni viselkedést állíthatnak be, például naplózzák a hibát az Event hubokba, vagy létrehozhatnak egy új választ a hívónak való visszatéréshez.
 
 > [!NOTE]
-> A `on-error` szakasz alapértelmezés szerint nem szerepel a szabályzatokban. A szakasz szabályzathoz való hozzáadásához `on-error` Keresse meg a kívánt szabályzatot a szabályzat-szerkesztőben, és adja hozzá. A házirendek konfigurálásával kapcsolatos további információkért lásd: [szabályzatok API Management](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/).
+> A `on-error` szakasz alapértelmezés szerint nem szerepel a szabályzatokban. A szakasz szabályzathoz való hozzáadásához `on-error` Keresse meg a kívánt szabályzatot a szabályzat-szerkesztőben, és adja hozzá. A házirendek konfigurálásával kapcsolatos további információkért lásd: [szabályzatok API Management](./api-management-howto-policies.md).
 >
 > Ha nincs `on-error` szakasz, a hívók 400 vagy 500 http-válaszüzenetet kapnak, ha hiba történik.
 
@@ -79,15 +80,15 @@ A házirend szakaszban a következő szabályzatok használhatók `on-error` .
 
 Ha hiba lép fel, és a vezérlő a `on-error` házirend szakaszra ugrik, a rendszer a hibát a [kontextusban tárolja. LastError](api-management-policy-expressions.md#ContextVariables) tulajdonság, amely a szakasz szabályzatai alapján érhető el `on-error` . A LastError a következő tulajdonságokkal rendelkezik.
 
-| Name       | Típus   | Description                                                                                               | Kötelező |
+| Név       | Típus   | Leírás                                                                                               | Kötelező |
 | ---------- | ------ | --------------------------------------------------------------------------------------------------------- | -------- |
-| `Source`   | sztring | Annak az elemnek a neve, ahol a hiba történt. Lehet házirend vagy beépített folyamat lépésének neve.      | Yes      |
-| `Reason`   | sztring | Számítógép-barát hibakód, amely a hibakezelés során használható.                                       | No       |
-| `Message`  | sztring | Ember által olvasható hiba leírása.                                                                         | Yes      |
-| `Scope`    | sztring | Annak a hatókörnek a neve, ahol a hiba történt, és a "globális", "termék", "API" vagy "művelet" lehet. | No       |
-| `Section`  | sztring | A szakasz neve, ahol a hiba történt. Lehetséges értékek: "bejövő", "háttér", "kimenő" vagy "on-Error".      | No       |
-| `Path`     | sztring | Beágyazott szabályzatot határoz meg, például "válasszon [3]/when [2]".                                                 | No       |
-| `PolicyId` | sztring | Az attribútum értéke `id` , ha az ügyfél megadja azt a házirendet, ahol a hiba történt             | No       |
+| `Source`   | sztring | Annak az elemnek a neve, ahol a hiba történt. Lehet házirend vagy beépített folyamat lépésének neve.      | Igen      |
+| `Reason`   | sztring | Számítógép-barát hibakód, amely a hibakezelés során használható.                                       | Nem       |
+| `Message`  | sztring | Ember által olvasható hiba leírása.                                                                         | Igen      |
+| `Scope`    | sztring | Annak a hatókörnek a neve, ahol a hiba történt, és a "globális", "termék", "API" vagy "művelet" lehet. | Nem       |
+| `Section`  | sztring | A szakasz neve, ahol a hiba történt. Lehetséges értékek: "bejövő", "háttér", "kimenő" vagy "on-Error".      | Nem       |
+| `Path`     | sztring | Beágyazott szabályzatot határoz meg, például "válasszon [3]/when [2]".                                                 | Nem       |
+| `PolicyId` | sztring | Az attribútum értéke `id` , ha az ügyfél megadja azt a házirendet, ahol a hiba történt             | Nem       |
 
 > [!TIP]
 > Az állapotkódot a kontextusban érheti el. Response. StatusCode.
@@ -99,7 +100,7 @@ Ha hiba lép fel, és a vezérlő a `on-error` házirend szakaszra ugrik, a rend
 
 A következő hibák előre definiálva vannak a beépített feldolgozási lépések kiértékelése során felmerülő hibákra vonatkozó feltételekhez.
 
-| Forrás        | Állapot                                 | Ok                  | Üzenet                                                                                                                |
+| Forrás        | Feltétel                                 | Ok                  | Üzenet                                                                                                                |
 | ------------- | ----------------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | konfiguráció | Az URI nem felel meg egyetlen API-nak vagy műveletnek sem | OperationNotFound       | Nem lehet egyeztetni a bejövő kérést egy művelethez.                                                                      |
 | engedélyezés | Nincs megadva az előfizetési kulcs             | SubscriptionKeyNotFound | A hozzáférés megtagadva a hiányzó előfizetési kulcs miatt. Ügyeljen arra, hogy előfizetési kulcsot tartalmazzon az API-nak küldött kérésekhez. |
@@ -112,7 +113,7 @@ A következő hibák előre definiálva vannak a beépített feldolgozási lép�
 
 A következő hibák előre definiálva vannak a szabályzat kiértékelése során felmerülő hibákra vonatkozóan.
 
-| Forrás       | Állapot                                                       | Ok                    | Üzenet                                                                                                                              |
+| Forrás       | Feltétel                                                       | Ok                    | Üzenet                                                                                                                              |
 | ------------ | --------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | korlát mértéke   | Túllépte a díjszabási korlátot                                             | RateLimitExceeded         | Túllépte a díjszabási korlátot                                                                                                               |
 | kvóta        | Kvóta túllépve                                                  | QuotaExceeded             | A csomagba foglalt lebeszélhető percek elfogytak. A kvóta a XX: xx: xx nyelven lesz feltöltve. -vagy a sávszélesség-kvóta. A kvóta a XX: xx: xx nyelven lesz feltöltve. |
@@ -182,11 +183,11 @@ a jogosulatlan kérések küldése a következő választ eredményezi:
 
 ![Jogosulatlan hiba válasza](media/api-management-error-handling-policies/error-response.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a házirendek használatáról:
 
 -   [Szabályzatok API Management](api-management-howto-policies.md)
 -   [API-k átalakítása](transform-api.md)
--   Házirend- [hivatkozás](api-management-policy-reference.md) a szabályzat-utasítások és azok beállításainak teljes listájához
+-   Házirend- [hivatkozás](./api-management-policies.md) a szabályzat-utasítások és azok beállításainak teljes listájához
 -   [Házirend-minták](policy-samples.md)

@@ -9,11 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 79f1188665208ec95e5d1d855d2247858e98653c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaf974eca4b307fc122cf0ee5fdb0ddbcf75088a
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561654"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86242610"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Adatvezérelt stílusú kifejezések (web SDK)
 
@@ -40,7 +41,7 @@ A kifejezések JSON-tömbökként jelennek meg. A tömb egyik kifejezésének el
 
 A Azure Maps web SDK számos típusú kifejezést támogat. A kifejezések saját vagy más kifejezésekkel kombinálva is használhatók.
 
-| Kifejezések típusa | Description |
+| Kifejezések típusa | Leírás |
 |---------------------|-------------|
 | [Összesítő kifejezés](#aggregate-expression) | Egy olyan kifejezés, amely egy adathalmazon feldolgozott számítást határoz meg, és a használatával használható `clusterProperties` `DataSource` . |
 | [Logikai kifejezések](#boolean-expressions) | A logikai kifejezések logikai operátorok egy készletét biztosítják a logikai összehasonlítások kiértékeléséhez. |
@@ -80,7 +81,7 @@ A jelen dokumentumban szereplő összes példa a következő funkcióval mutatja
 
 Az adatkifejezések hozzáférést biztosítanak a szolgáltatásban található tulajdonság-értékekhez. 
 
-| Expression | Visszatérési típus | Description |
+| Kifejezés | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['at', number, array]` | objektum | Egy elem lekérése egy tömbből. |
 | `['geometry-type']` | sztring | A szolgáltatás geometriai típusának beolvasása: pont, multipoint, LineString, MultiLineString, sokszög és többsokszög. |
@@ -140,7 +141,7 @@ Hasonlóképpen a sokszögek körvonalai is megjelennek a sorokban. Ha le szeret
 
 A matematikai kifejezések matematikai operátorokat biztosítanak az adatvezérelt számítások végrehajtásához a kifejezés keretrendszerében.
 
-| Expression | Visszatérési típus | Description |
+| Kifejezés | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | szám | Kiszámítja a megadott számok összegét. |
 | `['-', number]` | szám | A megadott szám szerinti 0 kivonása. |
@@ -195,7 +196,7 @@ A logikai kifejezések logikai operátorok egy készletét biztosítják a logik
 
 Az értékek összehasonlításakor az összehasonlítás szigorúan be van írva. A különböző típusú értékek mindig egyenlőtlennek számítanak. Azok az esetek, amelyekben a típusok ismertek, hogy az elemzési idő eltérő, és elemzési hibát eredményez. 
 
-| Expression | Visszatérési típus | Description |
+| Kifejezés | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['! ', boolean]` | logikai | Logikai tagadás. Visszaadja `true` , ha a bemenet `false` , és `false` Ha a bemenet szerepel `true` . |
 | `['!= ', value, value]` | logikai | Visszaadja `true` , ha a bemeneti értékek nem egyenlőek, `false` ellenkező esetben. |
@@ -398,7 +399,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 A Type kifejezések a különböző adattípusok (például karakterláncok, számok és logikai értékek) tesztelésére és átalakítására szolgáló eszközöket biztosítanak.
 
-| Expression | Visszatérési típus | Description |
+| Kifejezés | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | tömb \| objektum | Egy konstans tömb vagy objektum értékét adja vissza. Ezzel a kifejezéssel megakadályozható, hogy egy tömb vagy objektum kifejezésként legyen kiértékelve. Erre akkor van szükség, ha egy tömböt vagy objektumot egy kifejezésnek kell visszaadnia. |
 | `['image', string]` | sztring | Ellenőrzi, hogy a megadott rendszerkép-azonosító be van-e töltve a Maps-rendszerkép sprite-ba. Ha igen, a rendszer visszaadja az azonosítót, ellenkező esetben null értéket ad vissza. |
@@ -434,7 +435,7 @@ A Type kifejezések a különböző adattípusok (például karakterláncok, sz�
 
 A színkifejezések egyszerűbbé teszik a színértékek létrehozását és kezelését.
 
-| Expression | Visszatérési típus | Description |
+| Kifejezés | Visszatérési típus | Leírás |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | szín | Egy színértéket hoz létre a *vörös*, *zöld*és *kék* összetevőkből a és a között `0` `255` , és egy alfa-összetevőt `1` . Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
 | `['rgba', number, number, number, number]` | szín | Egy színértéket hoz létre a *vörös*, *zöld*és *kék* összetevők között, amelyeknek a és a közötti tartományba kell `0` `255` esnie, valamint egy alfa-összetevőt a és a tartományban `0` `1` . Ha bármelyik összetevő tartományon kívül esik, a kifejezés hibát jelez. |
@@ -462,7 +463,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 A karakterlánc-operátor kifejezései olyan karakterlánc-átalakítási műveleteket hajtanak végre, mint például az Összefűzés és az átalakítás. 
 
-| Expression | Visszatérési típus | Description |
+| Kifejezés | Visszatérési típus | Description |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | sztring | Több karakterlánc összefűzése egymással. Minden értéknek sztringnek kell lennie. Ha szükséges, használja a `to-string` Type kifejezést más típusú értékek karakterlánccá alakításához. |
 | `['downcase', string]` | sztring | A megadott karakterláncot kisbetűsre alakítja. |
@@ -778,7 +779,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
         textField: [
             'number-format', 
             ['get', 'revenue'], 
-            { ‘currency’: 'USD' }
+            { ‘currency': 'USD' }
         ],
 
         offset: [0, 0.75]
@@ -860,7 +861,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Változó kötési kifejezések a számítások eredményeit tárolják egy változóban. Így a számítási eredmények több alkalommal is hivatkozhatnak egy kifejezésben máshol. Hasznos optimalizálás olyan kifejezések esetében, amelyek sok számítást tartalmaznak.
 
-| Expression | Visszatérési típus | Description |
+| Kifejezés | Visszatérési típus | Leírás |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Let",<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: karakterlánc,<br/>&nbsp;&nbsp;&nbsp;&nbsp;érték1: bármely,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2: karakterlánc,<br/>&nbsp;&nbsp;&nbsp;&nbsp;érték2: bármely,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Egy vagy több értéket tárol változóként az `var` eredményt visszaadó gyermek kifejezésben szereplő kifejezés használatával. |
 | `['var', name: string]` | bármelyik | A kifejezés használatával létrehozott változóra hivatkozik `let` . |
@@ -893,7 +894,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi cikkekben további kódokat talál a kifejezések megvalósításához:
 

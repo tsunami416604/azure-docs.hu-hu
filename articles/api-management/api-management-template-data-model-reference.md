@@ -13,22 +13,23 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5625ff7e4fc51b9b6b894698719247902a480f44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 868ad3d1c6e7e7ef2cf32dcf675bc471a614f3ed
+ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690031"
+ms.lasthandoff: 07/11/2020
+ms.locfileid: "86243154"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Az Azure API Management sablon adatmodell-referenciája
 Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmodelljeiben használt általános elemekhez tartozó entitásokat és típusokat ismerteti.  
   
- További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+ További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](./api-management-developer-portal-templates.md).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="reference"></a>Hivatkozás
+## <a name="reference"></a>Referencia
 
 -   [API](#API)  
 -   [API összefoglaló](#APISummary)  
@@ -66,7 +67,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 |`serviceUrl`|sztring|Az API-t megvalósító háttér-szolgáltatás abszolút URL-címe.|  
 |`path`|sztring|A relatív URL-cím egyedi módon azonosítja ezt az API-t és annak összes erőforrás-elérési útját az API Management Service-példányon belül. A rendszer hozzáfűzi a szolgáltatás példányának létrehozása során megadott API-végponti alap URL-címhez, hogy az API számára egy nyilvános URL-címet formáljon.|  
 |`protocols`|szám tömbje|Leírja, hogy mely protokollok hívhatók meg az API műveleteiben. Az engedélyezett értékek: `1 - http` és `2 - https` , vagy mindkettő.|  
-|`authenticationSettings`|[Engedélyezési kiszolgáló hitelesítési beállításai](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Az API-ban található hitelesítési beállítások gyűjteménye.|  
+|`authenticationSettings`|[Engedélyezési kiszolgáló hitelesítési beállításai](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Az API-ban található hitelesítési beállítások gyűjteménye.|  
 |`subscriptionKeyParameterNames`|objektum|Nem kötelező tulajdonság, amely az előfizetési kulcsot tartalmazó lekérdezési és/vagy fejléc-paraméterek egyéni nevének megadására használható. Ha ez a tulajdonság jelen van, a következő két tulajdonság közül legalább egyet tartalmaznia kell:<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
 ##  <a name="api-summary"></a><a name="APISummary"></a>API-összefoglalás  
@@ -126,7 +127,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="comment"></a><a name="Comment"></a>Megjegyzés  
  Az `API` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Description|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |`Id`|szám|A Megjegyzés azonosítója.|  
 |`CommentText`|sztring|A Megjegyzés törzse. Tartalmazhat HTML-kódot.|  
@@ -183,7 +184,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="http-response"></a><a name="HTTPResponse"></a>HTTP-válasz  
  Ez a szakasz a `response` megjelenítést ismerteti.  
   
-|Tulajdonság|Típus|Description|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |`statusCode`|pozitív egész szám|Művelet válaszának állapota kód.|  
 |`description`|sztring|Művelet válaszának leírása.|  
@@ -226,7 +227,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="paging"></a><a name="Paging"></a>Lapozófájl  
  Az `paging` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Description|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |`Page`|szám|Az aktuális oldalszám.|  
 |`PageSize`|szám|Az egyetlen oldalon megjelenítendő eredmények maximális száma.|  
@@ -263,7 +264,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="provider"></a><a name="Provider"></a>Szolgáltató  
  Az `provider` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Description|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |`Properties`|karakterlánc-szótár|A hitelesítési szolgáltató tulajdonságai.|  
 |`AuthenticationType`|sztring|A szolgáltató típusa (Azure Active Directory, Facebook-Bejelentkezés, Google-fiók, Microsoft-fiók, Twitter).|  
@@ -345,7 +346,7 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 ##  <a name="user-sign-up"></a><a name="UserSignUp"></a>Felhasználó regisztrálása  
  Az `user sign up` entitás a következő tulajdonságokkal rendelkezik:  
   
-|Tulajdonság|Típus|Description|  
+|Tulajdonság|Típus|Leírás|  
 |--------------|----------|-----------------|  
 |`PasswordConfirm`|logikai|A [regisztrálási](api-management-page-controls.md#sign-up)bejelentkezési vezérlő által használt érték.|  
 |`Password`|sztring|Felhasználói fiók jelszava.|  
@@ -360,5 +361,5 @@ Ez a témakör az Azure API Management fejlesztői portál sablonjainak adatmode
 |`NameIdentifier`|sztring|A [regisztrálási](api-management-page-controls.md#sign-up)bejelentkezési vezérlő által használt érték.|  
 |`ProviderName`|sztring|Hitelesítési szolgáltató neve.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).
