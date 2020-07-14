@@ -28,7 +28,7 @@ Az első lépések előtt ügyeljen a következőre:
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-Emellett a naplózás engedélyezéséhez frissítse a _Pom. XML_ fájlt, hogy az tartalmazza a következő függőséget:
+Emellett a naplózás engedélyezéséhez frissítse a _pom.xml_ fájlt, hogy az tartalmazza a következő függőséget:
 
 ```xml
  <dependency>
@@ -40,13 +40,13 @@ Emellett a naplózás engedélyezéséhez frissítse a _Pom. XML_ fájlt, hogy a
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Ha új üres osztályt szeretne hozzáadni a Java-projekthez, válassza a **fájl** > **új** > **osztály**elemet.
+1. Ha új üres osztályt szeretne hozzáadni a Java-projekthez, válassza a **fájl**  >  **új**  >  **osztály**elemet.
 
 1. Az **új Java-osztály** ablakban adja meg a _speechsdk._ gyors értéket a **csomag** mezőben _és a_ főértékben a **név** mezőben.
 
    ![A New Java Class varázsló képernyőképe](~/articles/cognitive-services/speech-service/media/sdk/qs-java-jre-06-create-main-java.png)
 
-1. Nyissa meg az `Main` újonnan létrehozott osztályt, és cserélje le `Main.java` a fájl tartalmát a következő kiindulási kódra:
+1. Nyissa meg az újonnan létrehozott `Main` osztályt, és cserélje le a fájl tartalmát a `Main.java` következő kiindulási kódra:
 
    ```java
    package speechsdk.quickstart;
@@ -113,10 +113,10 @@ Emellett a naplózás engedélyezéséhez frissítse a _Pom. XML_ fájlt, hogy a
    }
    ```
 
-1. A `main` metódusban először konfigurálja `DialogServiceConfig` és használja egy `DialogServiceConnector` példány létrehozásához. Ez a példány csatlakozik a közvetlen vonalas beszédfelismerési csatornához, hogy együttműködjön a robottal. A `AudioConfig` rendszer egy példányt is használ a hangbemenet forrásának megadására. Ebben a példában az alapértelmezett mikrofon van használatban `AudioConfig.fromDefaultMicrophoneInput()`.
+1. A `main` metódusban először konfigurálja `DialogServiceConfig` és használja egy példány létrehozásához `DialogServiceConnector` . Ez a példány csatlakozik a közvetlen vonalas beszédfelismerési csatornához, hogy együttműködjön a robottal. `AudioConfig`A rendszer egy példányt is használ a hangbemenet forrásának megadására. Ebben a példában az alapértelmezett mikrofon van használatban `AudioConfig.fromDefaultMicrophoneInput()` .
 
-   - Cserélje le a `YourSubscriptionKey` karakterláncot az előfizetési kulcsra, amelyet a [webhelyről](~/articles/cognitive-services/speech-service/get-started.md)szerezhet be.
-   - Cserélje le a `YourServiceRegion` karakterláncot az előfizetéséhez társított [régióra](~/articles/cognitive-services/speech-service/regions.md) .
+   - Cserélje le a karakterláncot az `YourSubscriptionKey` előfizetési kulcsra, amelyet a [webhelyről](~/articles/cognitive-services/speech-service/get-started.md)szerezhet be.
+   - Cserélje le a karakterláncot `YourServiceRegion` az előfizetéséhez társított [régióra](~/articles/cognitive-services/speech-service/regions.md) .
 
    > [!NOTE]
    > Tekintse meg [a támogatott régiók listáját a hangsegédek számára](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
@@ -172,7 +172,7 @@ Emellett a naplózás engedélyezéséhez frissítse a _Pom. XML_ fájlt, hogy a
        });
    ```
 
-1. Kapcsolódjon `DialogServiceConnector` a közvetlen vonalas beszédhez a `connectAsync()` metódus meghívásával. A robot teszteléséhez meghívja a `listenOnceAsync` metódust, hogy hangbemenetet küldjön a mikrofonból. Emellett az metódus használatával is elküldheti az `sendActivityAsync` egyéni tevékenységeket szerializált karakterláncként. Ezek az egyéni tevékenységek további, a beszélgetés során használt adatait is megadhatják.
+1. Kapcsolódjon `DialogServiceConnector` a közvetlen vonalas beszédhez a metódus meghívásával `connectAsync()` . A robot teszteléséhez meghívja a `listenOnceAsync` metódust, hogy hangbemenetet küldjön a mikrofonból. Emellett az metódus használatával is `sendActivityAsync` elküldheti az egyéni tevékenységeket szerializált karakterláncként. Ezek az egyéni tevékenységek további, a beszélgetés során használt adatait is megadhatják.
 
    ```java
    connector.connectAsync();
@@ -183,13 +183,13 @@ Emellett a naplózás engedélyezéséhez frissítse a _Pom. XML_ fájlt, hogy a
    // connector.sendActivityAsync(...)
    ```
 
-1. Mentse a `Main` fájl módosításait.
+1. Mentse a fájl módosításait `Main` .
 
-1. A válaszok lejátszásának támogatásához adjon hozzá egy további osztályt, amely átalakítja a getAudio () API által visszaadott PullAudioOutputStream objektumot egy Java-InputStream a könnyű kezelhetőség érdekében. Ez `ActivityAudioStream` egy speciális osztály, amely a Direct line Speech Channel hangválaszait kezeli. Hozzáférést biztosít a lejátszáshoz szükséges hangformátum-információk lekéréséhez. Ehhez válassza a **fájl** > **új** > **osztály**elemet.
+1. A válaszok lejátszásának támogatásához adjon hozzá egy további osztályt, amely átalakítja a getAudio () API által visszaadott PullAudioOutputStream objektumot egy Java-InputStream a könnyű kezelhetőség érdekében. Ez `ActivityAudioStream` egy speciális osztály, amely a Direct line Speech Channel hangválaszait kezeli. Hozzáférést biztosít a lejátszáshoz szükséges hangformátum-információk lekéréséhez. Ehhez válassza a **fájl**  >  **új**  >  **osztály**elemet.
 
 1. Az **új Java-osztály** ablakban írja be a _Speechsdk. Gyorsindítás_ nevet a **csomag** mezőbe, és a _ActivityAudioStream_ értéket a **név** mezőbe.
 
-1. Nyissa meg az `ActivityAudioStream` újonnan létrehozott osztályt, és cserélje le az alábbi kódra:
+1. Nyissa meg az újonnan létrehozott `ActivityAudioStream` osztályt, és cserélje le az alábbi kódra:
 
    ```java
    package com.speechsdk.quickstart;
@@ -430,13 +430,13 @@ Emellett a naplózás engedélyezéséhez frissítse a _Pom. XML_ fájlt, hogy a
 
    ```
 
-1. Mentse a `ActivityAudioStream` fájl módosításait.
+1. Mentse a fájl módosításait `ActivityAudioStream` .
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-app"></a>Készítsen buildet és futtassa az alkalmazást
 
-Válassza az F11 lehetőséget, vagy válassza a**hibakeresés** **futtatása** > lehetőséget.
+Válassza az F11 lehetőséget, **Run**vagy válassza a  >  **hibakeresés**futtatása lehetőséget.
 A konzolon megjelenik a "Say valami" üzenet.
-Ezen a ponton beszéljen egy angol nyelvű kifejezéssel vagy mondattal, amelyet a robotja tud megérteni. A beszédet a robot a közvetlen vonalas beszéd csatornán keresztül továbbítja, ahol a robot felismeri és dolgozza fel. A válasz tevékenységként lesz visszaadva. Ha a robot válaszként adja vissza a beszédet, a hang a `AudioPlayer` osztály használatával lesz visszajátszva.
+Ezen a ponton beszéljen egy angol nyelvű kifejezéssel vagy mondattal, amelyet a robotja tud megérteni. A beszédet a robot a közvetlen vonalas beszéd csatornán keresztül továbbítja, ahol a robot felismeri és dolgozza fel. A válasz tevékenységként lesz visszaadva. Ha a robot válaszként adja vissza a beszédet, a hang a osztály használatával lesz visszajátszva `AudioPlayer` .
 
 ![Képernyőkép a konzolról a sikeres felismerést követően](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-08-console-output.png)
 

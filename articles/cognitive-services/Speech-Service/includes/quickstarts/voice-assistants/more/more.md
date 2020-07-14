@@ -20,7 +20,7 @@ Ha erre a lapra kattintott, valószínűleg nem jelenik meg egy rövid útmutat�
 | C#          | [.NET-keretrendszer][dotnet], [.net Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
 | C++         | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac]                                   |
 | Java        | [Android][java-android], [JRE][java-jre]                                                       |
-| JavaScript  | [Böngésző, Node. js][js-code]                                                                    |
+| JavaScript  | [Böngésző, Node.js][js-code]                                                                    |
 | Objective-C | [iOS][obj-iOS], [MacOS][obj-macOS]                                                             |
 | Python      | [Windows, Linux, macOS][python]                                                                |
 | Swift       | [iOS][swift-iOS], [MacOS][swift-macOS]                                                         |

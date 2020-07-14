@@ -20,7 +20,7 @@ Ebben a rövid útmutatóban a [SPEECH SDK](~/articles/cognitive-services/speech
 
 Néhány előfeltétel kielégítése után az egyéni hangsegéd csatlakoztatása csak néhány lépést vesz igénybe:
 > [!div class="checklist"]
-> * Hozzon `BotFrameworkConfig` létre egy objektumot az előfizetési kulcs és a régió alapján.
-> * Hozzon `DialogServiceConnector` létre egy objektumot `BotFrameworkConfig` a fenti objektum használatával.
+> * Hozzon létre egy `BotFrameworkConfig` objektumot az előfizetési kulcs és a régió alapján.
+> * Hozzon létre egy `DialogServiceConnector` objektumot a `BotFrameworkConfig` fenti objektum használatával.
 > * Az `DialogServiceConnector` objektum használatával megkezdheti a figyelési folyamatot egyetlen Kimondás esetén.
-> * Vizsgálja meg `ActivityReceivedEventArgs` a visszaadott értéket.
+> * Vizsgálja meg a `ActivityReceivedEventArgs` visszaadott értéket.

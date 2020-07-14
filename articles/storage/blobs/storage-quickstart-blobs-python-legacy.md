@@ -193,7 +193,7 @@ block_blob_service.get_blob_to_path(
     container_name, local_file_name, full_path_to_file2)
 ```
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a `delete_container` metódussal. Az egyes fájlok törléséhez használja a `delete_blob` metódust.
 
 ```python
@@ -216,7 +216,7 @@ A Python-fejlesztés és a blob Storage szolgáltatással kapcsolatos további i
 - További információ a Python-ügyfél könyvtáráról: a [Pythonhoz készült Azure Storage kódtárak](https://docs.microsoft.com/python/api/overview/azure/storage).
 - Tekintse át a Python ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Python használatával. 
 

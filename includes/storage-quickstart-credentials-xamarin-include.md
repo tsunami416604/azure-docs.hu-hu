@@ -28,7 +28,7 @@ Ha a minta alkalmazás az Azure Storage-ba irányuló kérést tesz elérhetőv�
 
 ### <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 
-A kapcsolódási karakterlánc másolását követően állítsa azt a *MainPage.XAML.cs* -fájlban lévő Class Level változóra. Nyissa meg a *MainPaage.XAML.cs* , `storageConnectionString` és keresse meg a változót. Cserélje `<yourconnectionstring>` le a-t a tényleges kapcsolatok karakterláncára.
+A kapcsolódási karakterlánc másolását követően állítsa azt a *MainPage.XAML.cs* -fájlban lévő Class Level változóra. Nyissa meg a *MainPaage.XAML.cs* , és keresse meg a `storageConnectionString` változót. Cserélje le a- `<yourconnectionstring>` t a tényleges kapcsolatok karakterláncára.
 
 A kód a következő:
 

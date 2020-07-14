@@ -15,7 +15,7 @@ ms.locfileid: "84609297"
 
     ![Az Android Studio üdvözlőablakának képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-01-start-new-android-studio-project.png)
 
-1. Megjelenik a **projekt kiválasztása** varázsló. A tevékenység kiválasztása mezőben válassza a **telefon és a tábla** és az **üres tevékenység** lehetőséget. Válassza a **Tovább** lehetőséget.
+1. Megjelenik a **projekt kiválasztása** varázsló. A tevékenység kiválasztása mezőben válassza a **telefon és a tábla** és az **üres tevékenység** lehetőséget. Válassza a **Tovább** gombot.
 
    ![A projekt kiválasztása varázsló képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-02-target-android-devices.png)
 
@@ -42,7 +42,7 @@ Készítse elő a projektet a Speech SDK használatára. Nyissa meg a **projekt 
 
    ![A könyvtár függőségének képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. A megjelenő ablakban adja meg az Androidhoz készült Speech SDK nevét és verzióját ( *com. microsoft. cognitiveservices. Speech: Client-SDK: 1.12.1*). Ezután kattintson az **OK** gombra.
+1. A megjelenő ablakban adja meg az Androidhoz készült Speech SDK nevét és verzióját ( *com. microsoft. cognitiveservices. Speech: Client-SDK: 1.12.1*). Ez után válassza az **OK** gombot.
    A beszédfelismerési SDK-t most a következő módon kell hozzáadni a függőségek listájához:
 
    ![Képernyőkép a Speech SDK-ról a függőségek listájában](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

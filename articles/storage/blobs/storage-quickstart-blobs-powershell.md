@@ -49,7 +49,7 @@ A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblob
 
 Fájlok blokkblobba való feltöltéséhez szerezze be a tároló hivatkozását, majd a blokkblob hivatkozását az adott tárolóban. A blob-hivatkozás után az adatok a [set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent)használatával tölthetők fel. Ez az eljárás létrehozza a blobot, ha az még nem létezett, vagy felülírja azt, ha már igen.
 
-Az alábbi példákban feltöltheti a *kép001. jpg* és a *Image002. png* fájlokat a helyi lemez *D:\\_TestImages* mappájából a létrehozott tárolóba.
+Az alábbi példák feltöltik *Image001.jpg* és *Image002.png* a helyi lemezen található *D: \\ _TestImages* mappából a létrehozott tárolóba.
 
 ```powershell
 # upload a file
@@ -79,7 +79,7 @@ Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 Töltse le a blobokat a helyi lemezre. Minden letölteni kívánt blob esetében állítsa be a [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent) nevet, és hívja le a blobot.
 
-Ez a példa a blobokat a helyi lemezen lévő *D:\\_TestImages \downloads* tölti le. 
+Ez a példa a blobokat a helyi lemezen lévő *D: \\ _TestImages \downloads* tölti le. 
 
 ```powershell
 # download first blob

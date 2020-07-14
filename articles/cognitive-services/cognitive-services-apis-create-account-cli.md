@@ -76,7 +76,7 @@ az group create \
 
 ### <a name="multi-service"></a>Több szolgáltatás
 
-| Szolgáltatás                    | Altípus                      |
+| Szolgáltatás                    | Erőforrás                      |
 |----------------------------|---------------------------|
 | Több szolgáltatás. További részletekért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/) oldalt.            | `CognitiveServices`     |
 
@@ -86,35 +86,35 @@ az group create \
 
 ### <a name="vision"></a>Látás
 
-| Szolgáltatás                    | Altípus                      |
+| Szolgáltatás                    | Erőforrás                      |
 |----------------------------|---------------------------|
 | Computer Vision            | `ComputerVision`          |
 | Custom Vision – előrejelzés | `CustomVision.Prediction` |
 | Custom Vision – képzés   | `CustomVision.Training`   |
-| Face                       | `Face`                    |
+| Arcfelismerés                       | `Face`                    |
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
 ### <a name="search"></a>Keresés
 
-| Szolgáltatás            | Altípus                  |
+| Szolgáltatás            | Erőforrás                  |
 |--------------------|-----------------------|
 | Bing Autosuggest   | `Bing.Autosuggest.v7` |
 | Bing Custom Search | `Bing.CustomSearch`   |
 | Bing Entity Search | `Bing.EntitySearch`   |
-| Bing kereső        | `Bing.Search.v7`      |
+| Bing Search        | `Bing.Search.v7`      |
 | Bing Spell Check   | `Bing.SpellCheck.v7`  |
 
 ### <a name="speech"></a>Speech
 
-| Szolgáltatás            | Altípus                 |
+| Szolgáltatás            | Erőforrás                 |
 |--------------------|----------------------|
-| Beszédfelismerési szolgáltatások    | `SpeechServices`     |
+| Beszédszolgáltatások    | `SpeechServices`     |
 | Beszédfelismerés | `SpeakerRecognition` |
 
 ### <a name="language"></a>Nyelv
 
-| Szolgáltatás            | Altípus                |
+| Szolgáltatás            | Erőforrás                |
 |--------------------|---------------------|
 | Űrlap megértése | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -124,7 +124,7 @@ az group create \
 
 ### <a name="decision"></a>Döntés
 
-| Szolgáltatás           | Altípus               |
+| Szolgáltatás           | Erőforrás               |
 |-------------------|--------------------|
 | Anomáliadetektor  | `AnomalyDetector`  |
 | Tartalommoderátor | `ContentModerator` |
@@ -188,7 +188,7 @@ az cognitiveservices account list-usage \
     --subscription subscription-name
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha törölni szeretné egy Cognitive Services erőforrást, törölheti azt vagy az erőforráscsoportot. Az erőforráscsoport törlése a csoportban található egyéb erőforrásokat is törli.
 

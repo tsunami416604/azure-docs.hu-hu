@@ -28,7 +28,7 @@ Ha a minta alkalmazás az Azure Storage-ba irányuló kérést tesz elérhetőv�
 
 ### <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 
-A kapcsolati sztring másolása után írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje `<yourconnectionstring>` le a-t a tényleges kapcsolatok karakterláncára.
+A kapcsolati sztring másolása után írja azt egy új környezeti változóba az alkalmazást futtató helyi gépen. A környezeti változó megadásához nyisson meg egy konzolablakot, és kövesse az operációs rendszerének megfelelő utasításokat. Cserélje le a- `<yourconnectionstring>` t a tényleges kapcsolatok karakterláncára.
 
 #### <a name="windows"></a>Windows
 

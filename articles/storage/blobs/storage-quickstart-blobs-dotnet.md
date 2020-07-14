@@ -14,7 +14,7 @@ ms.contentlocale: hu-HU
 ms.lasthandoff: 06/11/2020
 ms.locfileid: "84711867"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a .NET-hez
+# <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Rövid útmutató: Az Azure Blob Storage .NET-hez készült ügyféloldali kódtára (v12)
 
 Ismerkedés a .NET-hez készült Azure Blob Storage ügyféloldali kódtáraval. Az Azure Blob Storage a Microsoft felhőalapú objektumtárolási megoldása. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
 

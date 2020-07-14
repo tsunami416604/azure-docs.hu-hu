@@ -124,7 +124,7 @@ Két módon adhat hozzá házirendet a Azure Portalon keresztül.
    }
    ```
 
-5. Kattintson a **Mentés** gombra.
+5. Válassza a **Mentés** lehetőséget.
 
 6. A JSON-példával kapcsolatos további információkért tekintse meg a [szabályzatok](#policy) és [szabályok](#rules) szakaszt.
 
@@ -234,10 +234,10 @@ A szabályzaton belüli szabályok több paraméterrel rendelkeznek:
 
 | Paraméter neve | Paraméter típusa | Jegyzetek | Kötelező |
 |----------------|----------------|-------|----------|
-| `name`         | Sztring |A szabály neve legfeljebb 256 alfanumerikus karaktert tartalmazhat. A szabály neve megkülönbözteti a kis-és nagybetűket.  Egy szabályzaton belül egyedinek kell lennie. | True (Igaz) |
-| `enabled`      | Logikai | Egy nem kötelező logikai érték, amely lehetővé teszi egy szabály ideiglenes letiltását. Az alapértelmezett érték igaz, ha nincs beállítva. | False (Hamis) | 
-| `type`         | Enumerálási érték | A jelenlegi érvényes típus: `Lifecycle` . | True (Igaz) |
-| `definition`   | Az életciklus-szabályt meghatározó objektum | Mindegyik definíció egy szűrő készletből és egy műveleti készletből áll. | True (Igaz) |
+| `name`         | Sztring |A szabály neve legfeljebb 256 alfanumerikus karaktert tartalmazhat. A szabály neve megkülönbözteti a kis-és nagybetűket.  Egy szabályzaton belül egyedinek kell lennie. | Igaz |
+| `enabled`      | Logikai | Egy nem kötelező logikai érték, amely lehetővé teszi egy szabály ideiglenes letiltását. Az alapértelmezett érték igaz, ha nincs beállítva. | Hamis | 
+| `type`         | Enumerálási érték | A jelenlegi érvényes típus: `Lifecycle` . | Igaz |
+| `definition`   | Az életciklus-szabályt meghatározó objektum | Mindegyik definíció egy szűrő készletből és egy műveleti készletből áll. | Igaz |
 
 ## <a name="rules"></a>Szabályok
 
@@ -291,9 +291,9 @@ A szűrők a következők:
 
 | Szűrő neve | Szűrő típusa | Jegyzetek | Kötelező |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Előre definiált enumerálási értékek tömbje. | A jelenlegi kiadás támogatja `blockBlob` . | Yes |
-| prefixMatch | Karakterláncok tömbje az előtagok megfeleltetéséhez. Mindegyik szabály legfeljebb 10 előtagot tud definiálni. Egy előtag-karakterláncnak a tároló nevével kell kezdődnie. Ha például egy szabályhoz tartozó összes blobot szeretné egyeztetni `https://myaccount.blob.core.windows.net/container1/foo/...` , a prefixMatch a következő: `container1/foo` . | Ha nem határoz meg prefixMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik.  | No |
-| blobIndexMatch | A blob index címke kulcsát és a hozzájuk illeszkedő értékeket tartalmazó szótárak tömbje. Az egyes szabályok legfeljebb 10 blob-index címkét adhatnak meg. Ha például az összes blobot `Project = Contoso` egy szabály alá szeretné egyeztetni `https://myaccount.blob.core.windows.net/` , a blobIndexMatch a következő: `{"name": "Project","op": "==","value": "Contoso"}` . | Ha nem határoz meg blobIndexMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik. | No |
+| blobTypes   | Előre definiált enumerálási értékek tömbje. | A jelenlegi kiadás támogatja `blockBlob` . | Igen |
+| prefixMatch | Karakterláncok tömbje az előtagok megfeleltetéséhez. Mindegyik szabály legfeljebb 10 előtagot tud definiálni. Egy előtag-karakterláncnak a tároló nevével kell kezdődnie. Ha például egy szabályhoz tartozó összes blobot szeretné egyeztetni `https://myaccount.blob.core.windows.net/container1/foo/...` , a prefixMatch a következő: `container1/foo` . | Ha nem határoz meg prefixMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik.  | Nem |
+| blobIndexMatch | A blob index címke kulcsát és a hozzájuk illeszkedő értékeket tartalmazó szótárak tömbje. Az egyes szabályok legfeljebb 10 blob-index címkét adhatnak meg. Ha például az összes blobot `Project = Contoso` egy szabály alá szeretné egyeztetni `https://myaccount.blob.core.windows.net/` , a blobIndexMatch a következő: `{"name": "Project","op": "==","value": "Contoso"}` . | Ha nem határoz meg blobIndexMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik. | Nem |
 
 > [!NOTE]
 > A blob index nyilvános előzetes verzióban érhető el, és a **franciaországi Közép** -és **dél-franciaországi** régiókban is elérhető. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és a korlátozásokról, tekintse meg [Az Azure Blob Storage a blob index (előzetes verzió) használatával történő kezelésével és keresésével](storage-manage-find-blobs.md)kapcsolatos információkat.
@@ -304,11 +304,11 @@ Ha a futtatási feltétel teljesül, a rendszer a szűrt blobokra alkalmazza a m
 
 Az életciklus-kezelés támogatja a Blobok kiszervezését és törlését, valamint a blob-Pillanatképek törlését. Adjon meg legalább egy műveletet a Blobok vagy blob-Pillanatképek minden szabályához.
 
-| Műveletek        | Alap blob                                   | Pillanatkép      |
+| Művelet        | Alap blob                                   | Pillanatkép      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Jelenleg a gyors elérésű szinten támogatott Blobok támogatása         | Nem támogatott |
 | tierToArchive | Jelenleg a gyors vagy a lassú elérésű szinten támogatja a blobokat | Nem támogatott |
-| delete        | Támogatott                                   | Támogatott     |
+| törlés        | Támogatott                                   | Támogatott     |
 
 >[!NOTE]
 >Ha ugyanazon a blobon több műveletet is definiál, az életciklus-kezelés a legkevesebb költséges műveletet alkalmazza a blobra. Például a művelet `delete` olcsóbb a műveletnél `tierToArchive` . `tierToArchive`A művelet olcsóbb a műveletnél `tierToCool` .

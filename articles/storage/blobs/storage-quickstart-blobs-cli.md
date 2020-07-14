@@ -165,7 +165,7 @@ az group delete \
     --no-wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan vihetők át fájlok egy helyi fájlrendszer és egy tároló az Azure Blob Storage szolgáltatásban. Ha többet szeretne megtudni a blob Storage Azure CLI használatával történő használatáról, tekintse meg az Azure CLI-mintákat a blob Storage-hoz.
 
