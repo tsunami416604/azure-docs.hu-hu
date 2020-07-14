@@ -267,7 +267,7 @@ A [Azure Portal](https://portal.azure.com)a következő lépésekkel ELLENŐRIZH
 #### <a name="step-1---create-a-container"></a>1. lépés – tároló létrehozása
 
 1. A webalkalmazásban válassza a **tároló létrehozása**lehetőséget. Az állapot azt jelzi, hogy egy tároló létrejött.
-2. A Azure Portal ellenőrzéséhez válassza ki a Storage-fiókját. A **blob Service**területen válassza a **tárolók**lehetőséget. Ellenőrizze, hogy az új tároló megjelenik-e. (Lehetséges, hogy a **frissítés**lehetőséget kell választania.)
+2. A Azure Portal ellenőrzéséhez válassza ki a Storage-fiókját. A **Blob Service** szakaszban válassza a **Tárolók** lehetőséget. Ellenőrizze, hogy az új tároló megjelenik-e. (Lehetséges, hogy a **frissítés**lehetőséget kell választania.)
 
 #### <a name="step-2---upload-a-blob-to-the-container"></a>2. lépés – blob feltöltése a tárolóba
 
@@ -289,7 +289,7 @@ A [Azure Portal](https://portal.azure.com)a következő lépésekkel ELLENŐRIZH
 3. Válassza a **frissítés**lehetőséget. Az új tároló eltűnik.
 4. A webalkalmazás bezárásához.
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Kattintson a **terminál** konzolra a Visual Studio Code-ban, és nyomja le a CTRL + C billentyűkombinációt a webkiszolgáló leállításához.
 
