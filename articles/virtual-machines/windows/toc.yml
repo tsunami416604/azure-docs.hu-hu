@@ -434,6 +434,8 @@
                   items:
                     - name: Virtuális gépről
                       href: ../image-version-vm-powershell.md
+                    - name: VHD-ből vagy pillanatképből
+                      href: ../image-version-snapshot-powershell.md
                     - name: Migrálás felügyelt rendszerképből
                       href: ../image-version-managed-image-powershell.md
                     - name: Másolás másik katalógusból
@@ -454,6 +456,8 @@
                   items:
                     - name: Virtuális gépről
                       href: ../image-version-vm-cli.md
+                    - name: VHD-ből vagy pillanatképből
+                      href: ../image-version-snapshot-cli.md
                     - name: Migrálás felügyelt rendszerképből
                       href: ../image-version-managed-image-cli.md
                     - name: Másolás másik katalógusból
@@ -508,6 +512,8 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Rendszerképek keresése és használata
           href: cli-ps-findimage.md
+        - name: Tervezett konstrukció információi
+          href: ../marketplace-images.md
         - name: Virtuális gép előkészítése feltöltéshez
           href: prepare-for-upload-vhd-image.md
         - name: Virtuális gép rögzítése rendszerképben
@@ -853,10 +859,18 @@
           href: disks-incremental-snapshots-portal.md
         - name: Nem felügyelt lemezek biztonsági mentése
           href: incremental-snapshots.md
+        - name: Titkosítás
+          items:
+            - name: Gazdagépalapú titkosítás engedélyezése – PowerShell
+              href: disks-enable-host-based-encryption-powershell.md
+            - name: Felhasználó által kezelt kulcsok engedélyezése – PowerShell
+              href: disks-enable-customer-managed-keys-powershell.md
+            - name: Felhasználó által kezelt kulcsok engedélyezése – Portal
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: Inaktív állapotban történő dupla adattitkosítás engedélyezése
+              href: disks-enable-double-encryption-at-rest-powershell.md
         - name: Migrálás és átalakítás
           items:
-            - name: Konvertálás kiszolgálóoldali titkosításra
-              href: disks-ade-sse-conversion-powershell.md
             - name: Lemez konvertálása a standard és a prémium szint között
               href: convert-disk-storage.md
             - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel

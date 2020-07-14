@@ -5,6 +5,8 @@
   items:
     - name: Mi a Cognitive Services?
       href: Welcome.md
+    - name: A Cognitive Services-dokumentumok újdonságai
+      href: whats-new-docs.md
     - name: Cognitive Services és Machine Learning
       href: cognitive-services-and-machine-learning.md
     - name: Egyéni altartományok a Cognitive Serviceshez
@@ -64,6 +66,24 @@
           href: ../container-registry/container-registry-get-started-azure-cli.md
         - name: Azure Kubernetes Service (AKS)
           href: ../aks/tutorial-kubernetes-prepare-app.md
+- name: Big Data
+  items:
+    - name: Cognitive Services big data jellegű adatokhoz
+      href: ./big-data/cognitive-services-for-big-data.md
+    - name: Első lépések
+      href: ./big-data/getting-started.md
+    - name: Példák
+      items:
+        - name: Python
+          href: ./big-data/samples-python.md
+        - name: Scala
+          href: ./big-data/samples-scala.md
+    - name: Receptek
+      items:
+        - name: 'Recept: Anomaly Detector'
+          href: ./big-data/recipes/anomaly-detection.md
+        - name: 'Recept: Art Explorer'
+          href: ./big-data/recipes/art-explorer.md
 - name: További források
   items:
     - name: Azure-ütemterv

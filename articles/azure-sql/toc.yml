@@ -921,6 +921,8 @@
                   href: virtual-machines/windows/storage-configuration.md
                 - name: Azure Key Vault-integráció
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
+                - name: Tárfiók migrálása az UltraSSD-re
+                  href: virtual-machines/windows/storage-migrate-to-ultradisk.md
                 - name: Regisztrálás az SQL VM erőforrás-szolgáltatónál
                   displayName: 'resource provider, registration'
                   items:

@@ -17,6 +17,8 @@
       href: integration-patterns-in-azure-farmbeats.md
     - name: Érzékelői partner integrációja
       href: sensor-partner-integration-in-azure-farmbeats.md
+    - name: Időjárási partner integrációja
+      href: weather-partner-integration-in-azure-farmbeats.md
     - name: Képalkotási partner integrációja
       href: imagery-partner-integration-in-azure-farmbeats.md
 - name: Útmutatók
@@ -29,6 +31,8 @@
       href: manage-farms-in-azure-farmbeats.md
     - name: Érzékelői adatok lekérése
       href: get-sensor-data-from-sensor-partner.md
+    - name: Időjárási adatok lekérése
+      href: get-weather-data-from-weather-partner.md
     - name: Térképek létrehozása
       href: generate-maps-in-azure-farmbeats.md
     - name: Szabályok konfigurálása és riasztások kezelése

@@ -140,8 +140,6 @@
                   href: /rest/api/storageservices/authorize-with-shared-key
                 - name: Hozzáférés delegálása közös hozzáférésű jogosultságkódokkal (SAS)
                   href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Névtelen hozzáférés a blobokhoz
-                  href: storage-manage-access-to-resources.md
             - name: Felügyeleti műveletek engedélyezése
               href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Nem módosítható blobok
@@ -361,6 +359,14 @@
                       href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: Tárolt hozzáférési szabályzat meghatározása
                       href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Blobadatok névtelen olvasási hozzáférésének kezelése
+                  items:
+                    - name: Tárolók és blobok névtelen olvasási hozzáférésének konfigurálása
+                      href: anonymous-read-access-configure.md
+                    - name: Blobadatok névtelen olvasási hozzáférésének megakadályozása
+                      href: anonymous-read-access-prevent.md
+                    - name: Névtelen hozzáférés nyilvános tárolókhoz és blobokhoz (.NET)
+                      href: anonymous-read-access-client.md
             - name: Azure Storage-titkosítás kezelése
               items:
                 - name: Blob titkosítási állapotának ellenőrzése
@@ -379,6 +385,8 @@
                           href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Titkosítási kulcs biztosítása kérésre
                   href: storage-blob-customer-provided-key.md
+                - name: Infrastruktúra titkosításának engedélyezése a tárfiókban
+                  href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Ügyféloldali titkosítás konfigurálása
               items:
                 - name: .NET
@@ -393,8 +401,12 @@
                   href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Tűzfalak és virtuális hálózatok konfigurálása
                   href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Transport Layer Security engedélyezése
-                  href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Transport Layer Security (TLS) konfigurálása
+                  items:
+                    - name: Minimális TLS-verzió konfigurálása a tárfiókhoz
+                      href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                    - name: TLS konfigurálása ügyfélalkalmazáshoz
+                      href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Módosíthatatlansági szabályzatok beállítása és kezelése
               href: storage-blob-immutability-policies-manage.md
         - name: Adatredundancia kezelése

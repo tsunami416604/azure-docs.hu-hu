@@ -106,6 +106,8 @@
           href: how-to-connect-install-express.md
         - name: Az Azure AD Connect telepítése összevonás vagy más egyéni beállítások használatával
           href: how-to-connect-install-custom.md
+        - name: Importálás és exportálás konfigurációs beállításai
+          href: how-to-connect-import-export-config.md
         - name: Az Azure AD Connect telepítése átmenő hitelesítéssel (PTA)
           href: how-to-connect-pta-quick-start.md
         - name: Az Azure AD Connect Health telepítése

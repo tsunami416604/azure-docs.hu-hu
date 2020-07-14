@@ -164,6 +164,8 @@
                   href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: A fiók titkosításikulcs-modelljének ellenőrzése
               href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: Infrastruktúra titkosításának engedélyezése a tárfiókban
+              href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Ügyféloldali titkosítás konfigurálása
           items:
             - name: .NET
@@ -178,8 +180,12 @@
               href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Biztonságos átvitel megkövetelése
               href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Transport Layer Security engedélyezése
-              href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: Transport Layer Security (TLS) konfigurálása
+              items:
+                - name: Minimális TLS-verzió konfigurálása a tárfiókhoz
+                  href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: TLS konfigurálása ügyfélalkalmazáshoz
+                  href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Adatredundancia kezelése
       items:
         - name: Az adatreplikálás módjának megváltoztatása
