@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 19824e978af78e85f9e8c790517bd66b1f6c0113
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d32c130205420ef8f20d7ce8cb97f9a2595e978
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481731"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232202"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – Gyakori kérdések (GYIK)
 
@@ -174,7 +174,7 @@ Attól függ. Ha a virtuális gépet a Resource Managerrel telepítette, nem, f�
 Igen, de nem ajánlott, ha szükséges, például ha több IP-címet rendel egy virtuális géphez. Részletekért lásd: [több IP-cím hozzáadása egy virtuális géphez](virtual-network-multiple-ip-addresses-portal.md#os-config). Ha egy virtuális géphez csatlakoztatott Azure hálózati adapterhez hozzárendelt IP-cím és a virtuális gép operációs rendszerének IP-címe eltérő, elveszíti a kapcsolatot a virtuális géppel.
 
 ### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>Ha leállítom a Cloud Service üzembe helyezési pontját, vagy leállítja a virtuális gépet az operációs rendszerből, mi történik az IP-címekkel?
-Semmi. Az IP-címek (nyilvános VIP, Public és Private) továbbra is hozzá vannak rendelve a Cloud Service üzembe helyezési ponthoz vagy virtuális géphez.
+Semmit nem fogok észlelni. Az IP-címek (nyilvános VIP, Public és Private) továbbra is hozzá vannak rendelve a Cloud Service üzembe helyezési ponthoz vagy virtuális géphez.
 
 ### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Áthelyezhetek virtuális gépeket az egyik alhálózatból egy másik alhálózatba egy VNet újratelepítése nélkül?
 Igen. További információt a [virtuális gép vagy szerepkör példányának áthelyezése másik alhálózatra](virtual-networks-move-vm-role-to-subnet.md) című cikkben talál.
@@ -191,7 +191,7 @@ Igen. Egy VNet belül telepített összes virtuális gép és Cloud Services sze
 ## <a name="azure-services-that-connect-to-vnets"></a>Virtuális hálózatok-hez csatlakozó Azure-szolgáltatások
 
 ### <a name="can-i-use-azure-app-service-web-apps-with-a-vnet"></a>Használhatok Azure App Service Web Apps VNet?
-Igen. Web Apps központilag telepítheti a VNet egy szolgáltató (App Service Environment) használatával, összekapcsolhatja az alkalmazásait a virtuális hálózatok a VNet-integrációval, és zárolhatja az alkalmazás felé irányuló bejövő forgalmat a szolgáltatási végpontokkal. További információért tekintse át a következő cikkeket:
+Igen. Web Apps központilag telepítheti a VNet egy szolgáltató (App Service Environment) használatával, összekapcsolhatja az alkalmazásait a virtuális hálózatok a VNet-integrációval, és zárolhatja az alkalmazás felé irányuló bejövő forgalmat a szolgáltatási végpontokkal. További információkért tekintse át a következő cikkeket:
 
 * [Hálózati szolgáltatások App Service](../app-service/networking-features.md)
 * [Web Apps létrehozása App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -406,9 +406,8 @@ Azure Active Directory (Azure AD) nem támogatja natív módon a szolgáltatási
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Van-e korlátozás arra vonatkozóan, hogy hány VNet szolgáltatás-végpontot állíthatok be a VNet?
 A virtuális hálózatok VNet-végpontok teljes száma nincs korlátozva. Az Azure-szolgáltatási erőforrások (például egy Azure Storage-fiók) esetében a szolgáltatások korlátozhatják az erőforrás biztosításához használt alhálózatok számát. A következő táblázat néhány példát mutat be: 
 
-|||
-|---|---|
 |Azure-szolgáltatás| VNet szabályok korlátai|
+|---|---|
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|

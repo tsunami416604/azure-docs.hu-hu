@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 8a1dd07fd567f41c2b406aabccd0421b5a6983af
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fbfc6bf9c50257c2683522913503bf9b29450d94
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671209"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86226427"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -36,9 +36,9 @@ Az első lépések előtt ügyeljen a következőre:
 
 ## <a name="create-user-interface"></a>A felhasználói felület létrehozása
 
-Ebben a szakaszban egy alapszintű felhasználói felületet (UI) hozunk létre az alkalmazáshoz. Kezdjük a fő tevékenység megnyitásával: `activity_main.xml`. Az alapszintű sablon tartalmaz egy címsort az alkalmazás nevével, és `TextView` a "Hello World!" üzenettel.
+Ebben a szakaszban egy alapszintű felhasználói felületet (UI) hozunk létre az alkalmazáshoz. Kezdjük a fő tevékenység megnyitásával: `activity_main.xml` . Az alapszintű sablon tartalmaz egy címsort az alkalmazás nevével, és a `TextView` "Hello World!" üzenettel.
 
-Ezután cserélje le a tartalmát `activity_main.xml` a következő kódra:
+Ezután cserélje le a tartalmát a `activity_main.xml` következő kódra:
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
@@ -89,17 +89,17 @@ Ezután cserélje le a tartalmát `activity_main.xml` a következő kódra:
 
 Ez az XML egy egyszerű felhasználói felületet határoz meg a robottal való interakcióhoz.
 
-- Az `button` elem interakciót kezdeményez, és rákattintáskor meghívja a `onBotButtonClicked` metódust.
+- Az `button` elem interakciót kezdeményez, és `onBotButtonClicked` rákattintáskor meghívja a metódust.
 - Az `recoText` elem megjeleníti a beszéd – szöveg eredményeket a robottal való kommunikáció során.
 - Az `activityText` elem megjeleníti a robothoz tartozó legújabb bot Framework-tevékenység JSON-adattartalmát.
 
 A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a következőképpen kell kinéznie:
 
-![](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-designer-ui.png)
+![Képernyőkép arról, hogy a robot felhasználói felületének hogyan kell kinéznie.](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-designer-ui.png)
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Nyissa meg `MainActivity.java`a (z) programot, és cserélje le a tartalmát a következő kódra:
+1. Nyissa meg a (z) programot `MainActivity.java` , és cserélje le a tartalmát a következő kódra:
 
    ```java
     package samples.speech.cognitiveservices.microsoft.com;
@@ -245,21 +245,21 @@ A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a követk
 
    * Ahogy korábban már említettük, az `onBotButtonClicked` metódus kezeli azt, ha a gombra kattintanak. Egy gomb megnyomásával egyetlen interakciót ("turn") indít a robottal.
 
-   * A `registerEventListeners` metódus a bejövő tevékenységek és az `DialogServiceConnector` alapszintű kezelési műveletek által használt eseményeket mutatja be.
+   * A `registerEventListeners` metódus a `DialogServiceConnector` bejövő tevékenységek és az alapszintű kezelési műveletek által használt eseményeket mutatja be.
 
 1. Ugyanebben a fájlban cserélje le a konfigurációs karakterláncokat a megfelelő erőforrásokra:
 
     * A `YourSpeechSubscriptionKey` helyére írja be az előfizetési kulcsot.
 
-    * Cserélje `YourServiceRegion` le az előfizetéshez tartozó [régiót](~/articles/cognitive-services/speech-service/regions.md) , és csak a Speech Service-régiók egy részhalmazát támogatja a közvetlen vonalas beszéd. További információ: [régiók](~/articles/cognitive-services/speech-service/regions.md#voice-assistants).
+    * Cserélje le az `YourServiceRegion` előfizetéshez tartozó [régiót](~/articles/cognitive-services/speech-service/regions.md) , és csak a Speech Service-régiók egy részhalmazát támogatja a közvetlen vonalas beszéd. További információ: [régiók](~/articles/cognitive-services/speech-service/regions.md#voice-assistants).
 
-## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
+## <a name="build-and-run-the-app"></a>Készítsen buildet és futtassa az alkalmazást
 
 1. Csatlakoztassa az Android-eszközt a fejlesztői számítógéphez. Győződjön meg róla, hogy engedélyezte a [fejlesztői módot és az USB-hibakeresést](https://developer.android.com/studio/debug/dev-options) az eszközön.
 
-1. Az alkalmazás létrehozásához nyomja le a CTRL + F9 billentyűkombinációt, vagy válassza a menüsávon a **Létrehozás** > **projekt** létrehozása lehetőséget.
+1. Az alkalmazás létrehozásához nyomja le a CTRL + F9 billentyűkombinációt **Build**, vagy válassza  >  a menüsávon a létrehozás**projekt** létrehozása lehetőséget.
 
-1. Az alkalmazás elindításához nyomja le a SHIFT + F10 billentyűkombinációt, **vagy válassza** > az**alkalmazás futtatása**parancsot.
+1. Az alkalmazás elindításához nyomja le a SHIFT + F10 billentyűkombinációt, **vagy válassza az**  >  **alkalmazás futtatása**parancsot.
 
 1. A megjelenő, az üzembehelyezési cél megadására szolgáló ablakban válassza ki az Android-eszközt.
 

@@ -3,8 +3,8 @@ title: Oracle-adatbázis tervezése és megvalósítása az Azure-ban | Microsof
 description: Egy Oracle-adatbázis megtervezése és megvalósítása az Azure-környezetben.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: borisb
-ms.openlocfilehash: ad446180b3bd864c5b6df808e6e4efac7d6c1c65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rogardle
+ms.openlocfilehash: b553256d3e6a498e36e8b5c98d90c6c14b10df75
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81687540"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224570"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Oracle-adatbázis tervezése és implementálása az Azure-ban
 
@@ -51,7 +52,7 @@ Az alábbi táblázat a helyszíni megvalósítás és az Oracle-adatbázisok Az
 > | **Tervezett karbantartás** |Javítások/frissítések|[Rendelkezésre állási készletek](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (az Azure által kezelt javítások/frissítések) |
 > | **Erőforrás** |Dedikált  |Megosztva más ügyfelekkel|
 > | **Régiók** |Adatközpontok |[Régiópárok](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Storage** |SAN/fizikai lemezek |[Azure által felügyelt tároló](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Storage-fiók** |SAN/fizikai lemezek |[Azure által felügyelt tároló](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Méretezés** |Függőleges skála |Horizontális skálázhatóság|
 
 
@@ -143,7 +144,7 @@ A hálózati sávszélességre vonatkozó követelmények alapján különböző
 - A hálózati késés magasabb a helyszíni üzembe helyezéshez képest. A hálózati utak csökkentése jelentősen növelheti a teljesítményt.
 - Az egyidejű váltás csökkentése érdekében a nagy tranzakciós vagy "Csevegő" alkalmazásokkal rendelkező alkalmazások összevonása ugyanazon a virtuális gépen.
 - A gyorsabb hálózati teljesítmény érdekében a Virtual Machinest [gyorsított hálózatkezeléssel](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) használhatja.
-- Bizonyos linuxos distrubutions esetében érdemes lehet a [Trim/leképezésének megszüntetése támogatásának](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)engedélyezése.
+- Bizonyos Linux-disztribúciók esetében érdemes lehet a [Trim/leképezésének megszüntetése támogatásának](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)engedélyezése.
 - Telepítse az [Oracle Enterprise Managert](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) egy különálló virtuális gépre.
 - Alapértelmezés szerint a hatalmas lapok nincsenek engedélyezve a Linuxon. Érdemes lehet hatalmas lapokat engedélyezni és beállítani `use_large_pages = ONLY` a Oracle db. Ez segíthet a teljesítmény növelésében. További információt [itt](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)találhat.
 

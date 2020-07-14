@@ -232,6 +232,24 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Forgalomadatok megjelenítése
           href: how-to-show-traffic-android.md
+    - name: Az Azure Maps használata a Power BI-ban
+      items:
+        - name: Első lépések
+          href: power-bi-visual-getting-started.md
+        - name: A rétegek ismertetése
+          href: power-bi-visual-understanding-layers.md
+        - name: Buborékréteg hozzáadása
+          href: power-bi-visual-add-bubble-layer.md
+        - name: Oszlopdiagram-réteg hozzáadása
+          href: power-bi-visual-add-bar-chart-layer.md
+        - name: Referenciaréteg hozzáadása
+          href: power-bi-visual-add-reference-layer.md
+        - name: Mozaikréteg hozzáadása
+          href: power-bi-visual-add-tile-layer.md
+        - name: Valós idejű forgalom megjelenítése
+          href: power-bi-visual-show-real-time-traffic.md
+        - name: Hozzáférés kezelése
+          href: power-bi-visual-manage-access.md
     - name: Adatokkal kapcsolatos visszajelzés küldése
       href: how-to-use-feedback-tool.md
 - name: Referencia

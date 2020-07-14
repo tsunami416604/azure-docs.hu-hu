@@ -477,6 +477,8 @@
                   items:
                     - name: Virtuális gépről
                       href: ../image-version-vm-cli.md
+                    - name: VHD-ből vagy pillanatképből
+                      href: ../image-version-snapshot-cli.md
                     - name: Migrálás felügyelt rendszerképből
                       href: ../image-version-managed-image-cli.md
                     - name: Másolás másik katalógusból
@@ -499,6 +501,8 @@
                   items:
                     - name: Virtuális gépről
                       href: ../image-version-vm-powershell.md
+                    - name: VHD-ből vagy pillanatképből
+                      href: ../image-version-snapshot-powershell.md
                     - name: Migrálás felügyelt rendszerképből
                       href: ../image-version-managed-image-powershell.md
                     - name: Másolás másik katalógusból
@@ -547,6 +551,8 @@
               href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Rendszerképek keresése és használata
           href: cli-ps-findimage.md
+        - name: Vásárlási terv információi
+          href: ../marketplace-images.md
         - name: Virtuális gép rögzítése felügyelt rendszerképben
           href: capture-image.md
         - name: Rendszerkép összeállítása a Packerrel
@@ -945,6 +951,16 @@
           href: disks-incremental-snapshots-portal.md
         - name: Nem felügyelt lemezek biztonsági mentése
           href: incremental-snapshots.md
+        - name: Titkosítás
+          items:
+            - name: Titkosítás engedélyezése a gazdagépen – CLI
+              href: disks-enable-host-based-encryption-cli.md
+            - name: Felhasználó által kezelt kulcsok engedélyezése – CLI
+              href: disks-enable-customer-managed-keys-cli.md
+            - name: Felhasználó által kezelt kulcsok engedélyezése – Portal
+              href: disks-enable-customer-managed-keys-portal.md
+            - name: Az inaktív állapotban történő kettős adattitkosítás engedélyezése
+              href: disks-enable-double-encryption-at-rest-cli.md
         - name: Migrálás és átalakítás
           items:
             - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel

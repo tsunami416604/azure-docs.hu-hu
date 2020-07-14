@@ -8,11 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564644"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232066"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Az Azure Time Series Insights integrálása a távoli monitorozással
 
@@ -243,7 +244,7 @@ Konfigurálja az üzemelő példányok környezetét `basic` a frissített Servi
 
 Konfigurálja az üzemelő `standard` példány környezetét a fenti frissített Micro Services-szolgáltatásokhoz
 
-1. A parancssorban futtassa a parancsot `kubectl proxy` . További információ: [hozzáférés a KUBERNETES API](https://kubernetes.io/docs/tasks/access-kubernetes-api/http-proxy-access-api/#using-kubectl-to-start-a-proxy-server)-hoz.
+1. A parancssorban futtassa a parancsot `kubectl proxy` . További információ: [hozzáférés a KUBERNETES API](https://kubernetes.io/docs/reference/access-authn-authz/)-hoz.
 
 1. Nyissa meg a Kubernetes felügyeleti konzolt.
 

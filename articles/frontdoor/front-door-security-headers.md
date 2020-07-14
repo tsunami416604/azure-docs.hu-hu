@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/22/2020
 ms.author: mebeatty
-ms.openlocfilehash: 4d698375488d4dac551f0028883fc4e18a10d8ef
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: d489186dc1c012fe8c181f17e00bcdb999e230dd
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323529"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232134"
 ---
-# <a name="add-security-headers-with-rules-engine"></a>Biztonsági fejlécek hozzáadása a Rules Engine
+# <a name="add-security-headers-with-rules-engine"></a>Biztonsági fejlécek hozzáadása a szabálymotorral
 
 A biztonsági fejlécek megvalósításával megakadályozhatja a böngészőalapú biztonsági réseket, például a HTTP Strict-Transport-Security (HSTS), az X-XSS-Protection, a Content-Security-Policy vagy az X-frame-Options használatát. A biztonság-alapú attribútumok cookie-kkal is meghatározhatók.
 
-Az alábbi példa bemutatja, hogyan adhat hozzá egy Content-Security-Policy fejlécet az összes olyan bejövő kérelemhez, amely megfelel a szabályok motor-konfigurációjának útvonalán megadott elérési útnak. Itt csak a megbízható webhelyről származó szkripteket engedélyezzük **https://apis.contoso.com** az alkalmazáson való futtatáshoz.
+Az alábbi példa bemutatja, hogyan adhat hozzá egy Content-Security-Policy fejlécet az összes olyan bejövő kérelemhez, amely megfelel a szabályok motor-konfigurációjának útvonalán megadott elérési útnak. Itt csak a megbízható webhelyről származó szkripteket engedélyezzük **https://apiphany.portal.azure-api.net** az alkalmazáson való futtatáshoz.
 
 ## <a name="add-a-content-security-policy-header-in-azure-portal"></a>Tartalom-biztonsági házirend fejlécének hozzáadása a Azure Portal
 
@@ -33,7 +33,7 @@ Az alábbi példa bemutatja, hogyan adhat hozzá egy Content-Security-Policy fej
 
 3. Állítsa be úgy a kezelőt **, hogy ezt** a fejlécet adja hozzá az útvonal összes bejövő kérelmének válaszként.
 
-4. Adja hozzá a fejléc neve: **Content-Security-Policy** , és határozza meg, hogy a fejlécnek milyen értékeket kell elfogadnia. Ebben a forgatókönyvben a *"script-src" saját https://apis.contoso.com * lehetőséget választjuk.
+4. Adja hozzá a fejléc neve: **Content-Security-Policy** , és határozza meg, hogy a fejlécnek milyen értékeket kell elfogadnia. Ebben a forgatókönyvben a *"script-src" saját https://apiphany.portal.azure-api.net * lehetőséget választjuk.
 
 5. Ha hozzáadta az összes szabályt, amelyet szeretne konfigurálni, ne felejtse el, hogy a kívánt útvonalra lépjen, és a szabályok motorjának beállításait az útválasztási szabályhoz rendeli. Ez a lépés a szabály működésének engedélyezéséhez szükséges. 
 

@@ -32,7 +32,7 @@ Service Fabric megbízható kötet a helyi kötetek tárolóba csatlakoztatásá
 
 Azure Files kötet egy Azure Files-megosztás tárolóba csatlakoztatására szolgáló Docker-kötet-illesztőprogram. Azure Files a tárterület hálózati tárterületet használ, ezért az olvasás és az írás a hálózaton keresztül történik. A Service Fabric megbízható kötethez képest Azure Files tárterület kevésbé nagy teljesítményű, de olcsóbb és teljesen megbízható adatbeállítást biztosít. Példaként tekintse meg, [Hogyan helyezhet üzembe egy alkalmazást Azure Files kötettel](service-fabric-mesh-howto-deploy-app-azurefiles-volume.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alkalmazás modelljével kapcsolatos információkért lásd: [Service Fabric erőforrások](service-fabric-mesh-service-fabric-resources.md)
 

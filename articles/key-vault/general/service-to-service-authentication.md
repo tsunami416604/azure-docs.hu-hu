@@ -9,12 +9,12 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 7ad3af46be26816231a15156d13fbec3275a5559
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 132663ed26eab41747f6fce25bdb2beabe286322
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855076"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232610"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával
 
@@ -226,17 +226,20 @@ A felügyelt identitásnak vagy a fejlesztői identitásnak engedéllyel kell re
 
 ## <a name="connection-string-support"></a>A kapcsolatok karakterláncának támogatása
 
-Alapértelmezés szerint a `AzureServiceTokenProvider` több metódust használ a jogkivonat lekéréséhez.
+Alapértelmezés szerint `AzureServiceTokenProvider` a a következő hitelesítési módszereket kísérli meg a jogkivonat lekéréséhez:
 
-A folyamat szabályozásához használjon a konstruktornak átadott, `AzureServiceTokenProvider` vagy a *AzureServicesAuthConnectionString* környezeti változóban megadott kapcsolatot megadó karakterláncot.
+- [Felügyelt identitás az Azure-erőforrásokhoz](../..//active-directory/managed-identities-azure-resources/overview.md)
+- Visual Studio-hitelesítés
+- [Azure CLI-hitelesítés](/azure/authenticate-azure-cli?view=azure-cli-latest)
+- [Integrált Windows-hitelesítés](/aspnet/web-api/overview/security/integrated-windows-authentication)
 
-A következő lehetőségek támogatottak:
+A folyamat szabályozásához használjon a konstruktornak átadott, `AzureServiceTokenProvider` vagy a *AzureServicesAuthConnectionString* környezeti változóban megadott kapcsolatot megadó karakterláncot.  A következő lehetőségek támogatottak:
 
 | A kapcsolatok karakterláncának beállítása | Forgatókönyv | Megjegyzések|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | Helyi fejlesztés | `AzureServiceTokenProvider`a AzureCli használatával kérdezi le a tokent. |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Helyi fejlesztés | `AzureServiceTokenProvider`a Visual studiót használja a jogkivonat lekéréséhez. |
-| `RunAs=CurrentUser` | Helyi fejlesztés | `AzureServiceTokenProvider`Az Azure AD integrált hitelesítést használ a token beszerzéséhez. |
+| `RunAs=CurrentUser` | Helyi fejlesztés | A .NET Core-ban nem támogatott. `AzureServiceTokenProvider`Az Azure AD integrált hitelesítést használ a token beszerzéséhez. |
 | `RunAs=App` | [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider`felügyelt identitást használ a jogkivonat lekéréséhez. |
 | `RunAs=App;AppId={ClientId of user-assigned identity}` | [Felhasználó által hozzárendelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) | `AzureServiceTokenProvider`felhasználó által hozzárendelt identitást használ a jogkivonat lekéréséhez. |
 | `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Egyéni szolgáltatások hitelesítése | `KeyVaultCertificateSecretIdentifier`a tanúsítvány titkos azonosítója. |

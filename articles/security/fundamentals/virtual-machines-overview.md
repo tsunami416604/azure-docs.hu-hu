@@ -16,11 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: a1726e18ea8c1ba86d77d7b9ca3d50c444620361
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77657163"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86229363"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure Virtual Machines biztonsági áttekintése
 Ez a cikk áttekintést nyújt a virtuális gépekkel használható alapvető Azure-beli biztonsági funkciókról.
@@ -60,7 +61,7 @@ A fokozottan hatékony védelem érdekében érdemes lehet a [Windows Defender k
 * [Következő generációs védelem](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
 * [Endpoint Protection és Response](/windows/security/threat-protection/windows-defender-atp/overview-endpoint-detection-response)
 * [Automatizált vizsgálat és szervizelés](/windows/security/threat-protection/windows-defender-atp/automated-investigations-windows-defender-advanced-threat-protection)
-* [Biztonsági pontszám](/windows/security/threat-protection/microsoft-defender-atp/configuration-score)
+* [Biztonsági pontszám](/windows/security/threat-protection/microsoft-defender-atp/tvm-microsoft-secure-score-devices)
 * [Speciális vadászat](/windows/security/threat-protection/windows-defender-atp/overview-hunting-windows-defender-advanced-threat-protection)
 * [Felügyelet és API-k](/windows/security/threat-protection/windows-defender-atp/management-apis)
 * [Microsoft veszélyforrások elleni védelem](/windows/security/threat-protection/windows-defender-atp/threat-protection-integration)

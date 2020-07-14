@@ -249,7 +249,7 @@ az stream-analytics transformation create
 
 2. A 15. sorban található helyőrzőt cserélje le az előző szakaszban mentett teljes Azure-IoT Hub eszköz-összekapcsolási sztringre.
 
-3. Kattintson a **Futtatás**gombra. A kimenetnek meg kell jelenítenie az érzékelő adatait és a IoT Hub küldött üzeneteket.
+3. Kattintson a **Futtatás** elemre. A kimenetnek meg kell jelenítenie az érzékelő adatait és a IoT Hub küldött üzeneteket.
 
     ![Online Raspberry Pi Azure IoT-szimulátor](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 

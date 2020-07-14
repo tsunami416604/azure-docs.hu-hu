@@ -3,19 +3,19 @@ title: Eszköz csatlakoztatása az Azure IoT Centralban | Microsoft Docs
 description: Ez a cikk bemutatja az Azure-beli eszközök csatlakoztatásával kapcsolatos főbb fogalmakat IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 06/26/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710439"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86224751"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -72,27 +72,48 @@ Az eszköz kódjában található exportálási fájl kapcsolati adataival lehet
 
 Éles környezetben az X. 509 tanúsítványok használata az ajánlott eszköz hitelesítési mechanizmusa IoT Central számára. További információért lásd: [az eszközök hitelesítése X. 509 hitelesítésszolgáltatói tanúsítványokkal](../../iot-hub/iot-hub-x509ca-overview.md).
 
-Az X. 509 tanúsítvánnyal rendelkező eszköz csatlakoztatása előtt adjon hozzá egy közbenső vagy gyökérszintű X. 509 tanúsítványt az alkalmazáshoz. Az eszközöknek a gyökér-vagy köztes tanúsítványból generált levél X. 509 tanúsítványokat kell használniuk.
+X. 509 tanúsítvánnyal rendelkező eszköz csatlakoztatása az alkalmazáshoz:
 
-### <a name="add-and-verify-a-root-or-intermediate-certificate"></a>Gyökér-vagy köztes tanúsítvány hozzáadása és ellenőrzése
+1. Hozzon létre egy *regisztrációs csoportot* , amely a **tanúsítványok (X. 509)** igazolási típust használja.
+2. Adjon hozzá és ellenőrizzen egy közbenső vagy gyökérszintű X. 509 tanúsítványt a beléptetési csoportban.
+3. Regisztrálja és csatlakoztasson olyan eszközöket, amelyek a beléptetési csoportban lévő legfelső vagy köztes tanúsítványból generált levél X. 509 tanúsítványokat használnak.
 
-Navigáljon az **adminisztráció > az eszköz csatlakoztatása > az elsődleges tanúsítvány kezelése** elemre, és adja hozzá az eszköz tanúsítványának létrehozásához használt X. 509 gyökér-vagy köztes tanúsítványt.
+### <a name="create-an-enrollment-group"></a>Regisztrációs csoport létrehozása
 
-![Kapcsolati beállítások](media/concepts-get-connected/manage-x509-certificate.png)
+A [regisztrációs csoport](../../iot-dps/concepts-service.md#enrollment) olyan eszközök csoportja, amelyek ugyanazt az igazolási típust használják. A két támogatott igazolási típus X. 509 tanúsítvány és SAS:
 
-A tanúsítvány tulajdonjogának ellenőrzése biztosítja, hogy a tanúsítványt feltöltő személy rendelkezik a tanúsítvány titkos kulcsával. A tanúsítvány ellenőrzése:
+- Az X. 509 beléptetési csoportban az összes olyan eszköz, amely csatlakozik a IoT Central a beléptetési csoportban lévő legfelső vagy köztes tanúsítványból generált levél X. 509 tanúsítványokat használ.
+- Egy SAS-beléptetési csoportban a IoT Centralhoz csatlakozó összes eszköz a beléptetési csoportban lévő SAS-tokenből generált SAS-tokent használ.
 
-  1. A kód létrehozásához kattintson az **ellenőrző kód** melletti gombra.
-  1. Hozzon létre egy X. 509 ellenőrző tanúsítványt az előző lépésben létrehozott ellenőrző kóddal. Mentse a tanúsítványt. cer fájlként.
-  1. Töltse fel az aláírt ellenőrző tanúsítványt, és válassza az **ellenőrzés**lehetőséget. A tanúsítvány az ellenőrzés sikeressége után **ellenőrzöttként** van megjelölve.
+Minden IoT Central alkalmazásban a két alapértelmezett regisztrációs csoport a SAS-beléptetési csoportok – egy a IoT-eszközökhöz, egy pedig a Azure IoT Edge eszközökhöz. X. 509 beléptetési csoport létrehozásához navigáljon az **eszköz csatlakoztatása** lapra, és válassza a **+ beléptetési csoport hozzáadása**elemet:
+
+:::image type="content" source="media/concepts-get-connected/add-enrollment-group.png" alt-text="X. 509 regisztrációs csoport hozzáadása képernyőkép":::
+
+### <a name="add-and-verify-a-root-or-intermediate-x509-certificate"></a>Gyökér-vagy köztes X. 509 tanúsítvány hozzáadása és ellenőrzése
+
+Gyökér-vagy köztes tanúsítvány hozzáadása és ellenőrzése a beléptetési csoportban:
+
+1. Navigáljon az imént létrehozott X. 509 beléptetési csoportra. Lehetősége van az elsődleges és a másodlagos X. 509 tanúsítványok hozzáadására is. Válassza az **elsődleges kezelése**elemet.
+
+1. Az **elsődleges tanúsítvány lapon**töltse fel az elsődleges X. 509 tanúsítványt. Ez a legfelső szintű vagy köztes tanúsítvány:
+
+    :::image type="content" source="media/concepts-get-connected/upload-primary-certificate.png" alt-text="Az elsődleges tanúsítvány képernyőképe":::
+
+1. Az **ellenőrző kód** segítségével létrehozhat egy ellenőrző kódot a használt eszközön. Ezután válassza az **ellenőrzés** lehetőséget az ellenőrző tanúsítvány feltöltéséhez.
+
+1. Ha az ellenőrzés sikeres, a következő megerősítés jelenik meg:
+
+    :::image type="content" source="media/concepts-get-connected/verified-primary-certificate.png" alt-text="Ellenőrzött elsődleges tanúsítvány képernyőképe":::
+
+A tanúsítvány tulajdonjogának ellenőrzése biztosítja, hogy a tanúsítványt feltöltő személy rendelkezik a tanúsítvány titkos kulcsával.
 
 Ha biztonsági problémákba ütközik, vagy ha az elsődleges tanúsítvány lejár, a másodlagos tanúsítvány használatával csökkentheti az állásidőt. Az elsődleges tanúsítvány frissítésekor továbbra is kiépítheti az eszközöket a másodlagos tanúsítvány használatával.
 
 ### <a name="register-and-connect-devices"></a>Eszközök regisztrálása és csatlakoztatása
 
-Az eszközök X. 509 tanúsítvánnyal való tömeges csatlakoztatásához először regisztrálja az eszközeit az alkalmazásban, egy CSV-fájllal, hogy [importálja az eszköz azonosítóit és az eszközök nevét](howto-manage-devices.md#import-devices). Az eszközök azonosítóinak mind kisbetűvel kell rendelkezniük.
+Az eszközök X. 509 tanúsítvánnyal való tömeges csatlakoztatásához először regisztrálja az alkalmazásban lévő eszközöket egy CSV-fájl használatával [az eszközök azonosítóinak és az eszközök nevének importálásához](howto-manage-devices.md#import-devices). Az eszközök azonosítóinak mind kisbetűvel kell rendelkezniük.
 
-X. 509 Leaf-tanúsítványok előállítása az eszközökön a feltöltött gyökér vagy köztes tanúsítvány használatával. Használja az **eszköz azonosítóját** a `CNAME` levél tanúsítványainak értékeként. Az eszköz kódjának szüksége van az alkalmazás **azonosító hatókörének** értékére, az **eszköz azonosítójára**és a megfelelő eszköz tanúsítványára.
+X. 509 Leaf-tanúsítványok létrehozása az eszközökhöz az X. 509 regisztrációs csoportba feltöltött legfelső szintű vagy köztes tanúsítvány használatával. Használja az **eszköz azonosítóját** a `CNAME` levél tanúsítványainak értékeként. Az eszköz kódjának szüksége van az alkalmazás **azonosító hatókörének** értékére, az **eszköz azonosítójára**és a megfelelő eszköz tanúsítványára.
 
 #### <a name="sample-device-code"></a>Minta eszköz kódja
 
@@ -122,9 +143,9 @@ A folyamat némileg eltér attól függően, hogy az eszközök SAS-jogkivonatok
 
 ### <a name="connect-devices-that-use-sas-tokens-without-registering"></a>SAS-tokeneket használó eszközök csatlakoztatása regisztráció nélkül
 
-1. Másolja a IoT Central alkalmazás csoportjának elsődleges kulcsát:
+1. Másolja a csoport elsődleges kulcsát az **sas-IoT-Devices** beléptetési csoportból:
 
-    ![Alkalmazáscsoport elsődleges SAS-kulcsa](media/concepts-get-connected/group-sas-keys.png)
+    :::image type="content" source="media/concepts-get-connected/group-primary-key.png" alt-text="Elsődleges kulcs csoportosítása SAS-IoT-Devices beléptetési csoportból":::
 
 1. A [DPS-keygen](https://www.npmjs.com/package/dps-keygen) eszközzel előállíthatja az eszköz sas-kulcsait. Használja az előző lépésben a csoport elsődleges kulcsát. Az eszköz azonosítóinak kisbetűvel kell rendelkezniük:
 
@@ -145,7 +166,7 @@ A folyamat némileg eltér attól függően, hogy az eszközök SAS-jogkivonatok
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>X. 509 tanúsítványokat használó eszközök csatlakoztatása regisztráció nélkül
 
-1. [Adjon hozzá és ellenőrizzen egy root vagy Intermediate X. 509 tanúsítványt](#connect-devices-using-x509-certificates) a IoT Central alkalmazáshoz.
+1. [Hozzon létre egy regisztrációs csoportot](#create-an-enrollment-group) , majd [adjon hozzá és ellenőrizzen egy root vagy Intermediate X. 509 tanúsítványt](#add-and-verify-a-root-or-intermediate-x509-certificate) a IoT Central alkalmazáshoz.
 
 1. Az eszközökhöz tartozó levél-tanúsítványok létrehozása a IoT Central alkalmazáshoz hozzáadott legfelső szintű vagy köztes tanúsítvány használatával. A kisbetűket használó eszközök azonosítóit használja a `CNAME` levél tanúsítványainak.
 

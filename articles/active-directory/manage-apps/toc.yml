@@ -5,6 +5,8 @@
   items:
     - name: Mi az alkalmazáskezelés?
       href: what-is-application-management.md
+    - name: Mi az az egyszeri bejelentkezés (SSO)?
+      href: what-is-single-sign-on.md
 - name: Rövid útmutatók
   items:
     - name: Az alkalmazásai megtekintése
@@ -19,6 +21,8 @@
       href: delete-application-portal.md
 - name: Oktatóanyagok
   items:
+    - name: A katalógusban nem szereplő alkalmazás hozzáadása
+      href: add-non-gallery-app.md
     - name: 'Integrált katalógusalkalmazások (pl. ServiceNow, Salesforce, Dropbox)'
       href: /azure/active-directory/saas-apps/
     - name: Alkalmazásproxyval rendelkező helyszíni alkalmazás hozzáadása
@@ -46,8 +50,6 @@
               href: developer-guidance-for-integrating-applications.md
         - name: Egyszeri bejelentkezés
           items:
-            - name: Mi az az egyszeri bejelentkezés?
-              href: what-is-single-sign-on.md
             - name: Az SSO engedélyezése több-bérlős alkalmazások esetében
               href: isv-sso-content.md
             - name: Azure-bérlő létrehozása több-bérlős alkalmazások esetében
@@ -103,10 +105,6 @@
   items:
     - name: Felhőalkalmazások és egyszeri bejelentkezés
       items:
-        - name: Felhőalkalmazás hozzáadása
-          items:
-            - name: Nem katalógusbeli alkalmazás hozzáadása
-              href: add-non-gallery-app.md
         - name: Egyszeri bejelentkezés konfigurálása
           items:
             - name: SAML-alapú egyszeri bejelentkezés konfigurálása
@@ -143,6 +141,8 @@
               href: configure-admin-consent-workflow.md
             - name: Felhasználó vagy csoport hozzárendelése egy alkalmazáshoz
               href: assign-user-or-group-access-portal.md
+            - name: Az alkalmazásoknak megadott engedélyek áttekintése
+              href: manage-application-permissions.md
             - name: Gyűjtemények létrehozása a Saját alkalmazások területen
               href: access-panel-collections.md
             - name: Az önkiszolgáló alkalmazás-hozzáférés használata

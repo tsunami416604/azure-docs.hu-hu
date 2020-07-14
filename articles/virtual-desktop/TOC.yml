@@ -23,7 +23,7 @@
     - name: Csatlakozás Windows Virtual Desktop erőforrásaihoz
       items:
         - name: Kapcsolódás a Windows asztali ügyféllel
-          href: connect-windows-7-and-10.md
+          href: connect-windows-7-10.md
         - name: Kapcsolódás a webügyféllel
           href: connect-web.md
         - name: Kapcsolódás az Android-ügyféllel
@@ -38,6 +38,8 @@
       items:
         - name: PowerShell
           href: create-host-pools-powershell.md
+        - name: Windows 7 rendszerű virtuális gép üzembe helyezése
+          href: deploy-windows-7-virtual-machine.md
         - name: GPU-alapú munkamenetgazda üzembe helyezése
           href: configure-vm-gpu.md
         - name: Meglévő gazdagépkészlet kibontása
@@ -90,6 +92,8 @@
       href: language-packs.md
 - name: Alapelvek
   items:
+    - name: Biztonságos URL-címek listája
+      href: safe-url-list.md
     - name: A Windows Virtual Desktop környezete
       href: environment-setup.md
     - name: Felhasználói kapcsolat késleltetésének meghatározása

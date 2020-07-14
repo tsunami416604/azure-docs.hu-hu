@@ -40,7 +40,7 @@ A bővítmények a portálról történő manuális telepítéséhez és frissí
 
 1. A portál **Áttekintés** lapján kattintson a **Start** gombra a Function alkalmazás újraindításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

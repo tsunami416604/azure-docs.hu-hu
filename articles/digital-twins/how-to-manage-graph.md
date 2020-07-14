@@ -229,7 +229,7 @@ Gyakorlati használati esetekben a különálló hierarchiák gyakran egy másik
 
 Vegye figyelembe a következő adattáblázatot, amely leírja a létrehozandó Digitális ikrek és kapcsolatok készletét.
 
-| Modell    | ID | Szülő | Kapcsolat neve | Egyéb adatszolgáltatások |
+| Modellezés    | ID | Szülő | Kapcsolat neve | Egyéb adatszolgáltatások |
 | --- | --- | --- | --- | --- |
 | padló    | Floor01 | | | … |
 | szoba    | Room10 | Floor01 | contains | … |
@@ -303,7 +303,7 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 
 Az ikrek és kapcsolataik az Azure Digital Twins CLI használatával is kezelhetők. A parancsok a következő [útmutatóban találhatók: az Azure digitális Twins parancssori](how-to-use-cli.md)felületének használata.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudnivalók az Azure Digital Twins Twin Graph lekérdezéséről:
 * [Fogalmak: lekérdezési nyelv](concepts-query-language.md)

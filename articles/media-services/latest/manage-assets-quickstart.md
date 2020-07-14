@@ -3,12 +3,12 @@ title: Tartalom feltöltése, kódolása és továbbítása a portál használat
 description: Ebből a rövid útmutatóból megtudhatja, hogyan tölthet fel, kódolhat és továbbíthat tartalmakat Azure Media Services használatával a portálon.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: b023a4ed68aa7cfa41661e986dcd4ad6819b810d
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 374e8a22bf8fdcb14101bffc26f9d1b27480ce88
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84988936"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86232474"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Gyors útmutató: tartalom feltöltése, kódolása és továbbítása a portálon
 
@@ -58,7 +58,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan töltheti fel, kódolhatja é
 1. Keresse meg a Media Services-fiókját, és kattintson rá.
 1. Válassza az **eszközök (új)** lehetőséget.
 1. Kattintson a **feltöltés** gombra az ablak tetején. 
-1. Húzással vagy tallózással keresse meg a feltölteni kívánt tha-fájlt.
+1. Húzással vagy tallózással keresse meg a feltölteni kívánt fájlt.
 
 Ha az eszközök ablakra navigál, látni fogja, hogy a listához új eszköz lett hozzáadva:
 

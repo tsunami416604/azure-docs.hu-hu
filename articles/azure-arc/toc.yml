@@ -56,3 +56,7 @@
               href: ./servers/manage-vm-extensions.md
             - name: Ügynök kezelése
               href: ./servers/manage-agent.md
+        - name: Hibaelhárítás
+          items:
+            - name: Ügynökök kapcsolódási problémái
+              href: ./servers/troubleshoot-agent-onboard.md

@@ -257,6 +257,8 @@
           href: private-clusters.md
         - name: BYOK lemezekhez
           href: azure-disk-customer-managed-keys.md
+        - name: Gazdagépalapú titkosítás engedélyezése
+          href: enable-host-encryption.md
     - name: Monitorozás és naplózás
       items:
         - name: Azure Monitor tárolókhoz
@@ -282,9 +284,9 @@
         - name: A Kubernetes-irányítópult használata
           href: kubernetes-dashboard.md
         - name: Docker-fájlok létrehozása Windows Server-tárolók számára
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/manage-windows-dockerfile?context=/azure/aks/context/aks-context
         - name: Docker-fájlok optimalizálása Windows Server-tárolók számára
-          href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
+          href: /virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context
     - name: Alkalmazások fejlesztése és futtatása
       items:
         - name: Helyi folyamat és Kubernetes használata a Visual Studio Code-dal (előzetes verzió)
