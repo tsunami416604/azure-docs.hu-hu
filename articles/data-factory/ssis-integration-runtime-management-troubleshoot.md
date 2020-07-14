@@ -11,11 +11,12 @@ ms.reviewer: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: e928a6b54e53f9076ffe184ed4868e7741661d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84118828"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86172026"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>A SSIS Integration Runtime-kezelés hibáinak megoldása Azure Data Factory
 
@@ -114,7 +115,7 @@ Ez a hiba azt jelenti, hogy az egyéni telepítés végrehajtási naplóinak a b
 ## <a name="virtual-network-configuration"></a>Virtuális hálózati konfiguráció
 
 Amikor az SSIS integrációs modult az Azure Virtual Networkhöz csatlakoztatja, a SSIS IR a felhasználói előfizetéshez tartozó virtuális hálózatot használja. További információért tekintse meg [az Azure-SSIS IR virtuális hálózathoz történő csatlakoztatásával](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) foglalkozó cikket.
-
+Miután a SSIS IR sikeresen elindult, ha hálózati kapcsolati problémák léptek fel, megpróbálhatja a probléma diagnosztizálására használni a [kapcsolat diagnosztizálása eszközt](ssis-integration-runtime-diagnose-connectivity-faq.md) .
 Ha virtuális hálózattal kapcsolatos probléma jelentkezik, az alábbi hibák egyike jelenik meg.
 
 ### <a name="invalidvnetconfiguration"></a>InvalidVnetConfiguration

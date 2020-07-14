@@ -8,20 +8,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 8/2/2019
+ms.date: 07/09/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 0023bcc4a7c31a0e337683fa3d3080a45445fc49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4df4f7e1db880a38f647e8e384cbfb29b70954ec
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117910"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86187251"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS integrációs modul indítása és leállítása ütemezés szerint
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ez a cikk bemutatja, hogyan ütemezhet Azure-SSIS Integration Runtime (IR) indítását és leállítását Azure Data Factory (ADF) használatával. A Azure-SSIS IR a SQL Server Integration Services (SSIS) csomagok végrehajtásához dedikált, ADF számítási erőforrás. A Azure-SSIS IR futtatásához hozzá kell rendelni egy díjat. Ezért általában csak akkor szeretné futtatni az IR-t, ha SSIS-csomagokat kell végrehajtania az Azure-ban, és le kell állítania az IR-t, ha már nincs rá szükség. Az IR-/app vagy a Azure PowerShell az [IR manuális indításához vagy leállításához](manage-azure-ssis-integration-runtime.md)használhatja az ADF felhasználói felületét (UI).
 
@@ -116,7 +117,7 @@ Ha olyan harmadik triggert hoz létre, amely naponta éjfélkor fut, és a harma
     1. A **szerepkör**területen válassza a **közreműködő**lehetőséget. 
     2. A **hozzáférésének hozzárendeléséhez**válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**lehetőséget. 
     3. A **kiválasztás**elemnél keresse meg az ADF nevét, és jelölje ki. 
-    4. Kattintson a **Save** (Mentés) gombra.
+    4. Kattintson a **Mentés** gombra.
     
    ![Felügyelt identitás szerepkör-hozzárendelésének automatikus kiosztása](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 
@@ -135,7 +136,7 @@ Ha olyan harmadik triggert hoz létre, amely naponta éjfélkor fut, és a harma
     1. A **kiszolgáló neve**mezőben adja meg ** &lt; a kiszolgáló nevét &gt; . database.Windows.net**.
     2. Válassza a **beállítások >>lehetőséget **.
     3. Az **adatbázishoz való kapcsolódáshoz**válassza a **SSISDB**lehetőséget.
-    4. Kattintson a **Csatlakozás** gombra. 
+    4. Válassza a **Kapcsolódás** lehetőséget. 
     5. Bontsa ki az **Integration Services-katalógusok**  ->  **SSISDB** -> a mappa-> **projects** -> a SSIS Project-> **csomagokat**. 
     6. Kattintson a jobb gombbal a futtatni kívánt SSIS-csomagra, és válassza a **jelentések**  ->  **szabványos jelentések**  ->  **minden végrehajtás**elemet. 
     7. Ellenőrizze, hogy futott-e. 
@@ -162,7 +163,7 @@ Most, hogy a folyamatok a várt módon működnek, létrehozhat eseményindító
     4. Az **ismétlődéshez**adja meg az eseményindítóhoz tartozó lépésszám értéket. A következő példában **naponta** egyszer. 
     5. A **befejezéshez**válassza a **nincs vége** lehetőséget, vagy adjon meg egy befejezési dátumot és időpontot **a dátum**kiválasztása után. 
     6. A teljes ADF-beállítások közzététele után azonnal aktiválja az **aktivált** elemet. 
-    7. Válassza a **Tovább** lehetőséget.
+    7. Válassza a **Tovább** gombot.
 
    ![Trigger – > új/szerkesztés](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     

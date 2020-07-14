@@ -3,12 +3,12 @@ title: Azure Machine Learning Event Grid forrásként
 description: A Machine Learning-munkaterület eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 11d8c38ee041ac9278e08166c4c060cdad87655f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b5a39539a6f39c78251a3cc7788b8e5ee4babbf9
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102497"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181522"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning Event Grid forrásként
 
@@ -26,7 +26,7 @@ Azure Machine Learning a következő típusú eseményeket bocsátja ki:
 | Microsoft. MachineLearningServices. ModelDeployed | Akkor következik be, amikor a modell (ek) sikeresen telepítve lett egy végpontra. |
 | Microsoft. MachineLearningServices. RunCompleted | A Futtatás sikeres befejeződése után következik be. |
 | Microsoft. MachineLearningServices. DatasetDriftDetected | Akkor következik be, amikor egy adatkészlet drift figyelője észleli a driftet. |
-| Microsoft. MachineLearningServices. RunStatusChanged | Akkor következik be, amikor a futtatási állapot "Failed" értékre változik. |
+| Microsoft. MachineLearningServices. RunStatusChanged | Futtatási állapot megváltozásakor következik be. |
 
 ### <a name="the-contents-of-an-event-response"></a>Egy eseményre adott válasz tartalma
 
@@ -186,10 +186,10 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
-| tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
@@ -201,7 +201,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft. MachineLearningServices. ModelRegistered
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | Modellnév | sztring | A regisztrált modell neve. |
 | ModelVersion | sztring | A regisztrált modell verziója. |
@@ -210,7 +210,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. ModelDeployed
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | ServiceName | sztring | A telepített szolgáltatás neve. |
 | ServiceComputeType | sztring | A központilag telepített szolgáltatás számítási típusa (pl. ACI, ak). |
@@ -259,7 +259,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 | ----- | ----- |
 | [Azure Machine Learning események felhasználása](../machine-learning/concept-event-grid-integration.md) | A Azure Machine Learning és a Event Grid integrálásának áttekintése. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetési séma](subscription-creation-schema.md)

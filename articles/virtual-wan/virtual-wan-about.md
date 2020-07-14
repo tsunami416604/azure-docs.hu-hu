@@ -128,7 +128,7 @@ Az útválasztási táblák mostantól társítási és propagálási funkciókk
 
 * **Alapszintű virtuális WAN-ügyfelek meglévő útvonalakkal a Virtual hub-ban**: az útválasztási táblázat új funkcióinak használatához várjon, amíg az Azure-ba való bevezetéshez a 3. augusztusi hét befejeződik. Ha az Útválasztás szakaszban már meglévő útvonalak találhatók a Azure Portal található hubhoz, először törölnie kell őket, majd **frissítenie** kell az alapszintű virtuális WAN-t a standard virtuális WAN-ra. Lásd: [virtuális WAN frissítése alapszintről standard verzióra](upgrade-virtual-wan.md).
 
-## <a name="faq"></a><a name="faq"></a>– GYAKORI kérdések
+## <a name="faq"></a><a name="faq"></a>GYIK
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 

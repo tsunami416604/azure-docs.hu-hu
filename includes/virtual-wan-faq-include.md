@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 98b82047c1744fbd63ecd3665e804e9d8f6c5221
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28ea1e68441a57d67fef1e78153e00eb1bd09211
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565996"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86143917"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Szükség van a felhasználónak a hub és az SD-WAN/VPN-eszközök használatára az Azure Virtual WAN használatához?
 
@@ -25,7 +25,7 @@ A Virtual WAN két változatban érhető el: alapszintű és standard. Alapszint
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Hogyan kezelik a Availability Zones és a rugalmasságot a virtuális WAN-ban?
 
-A virtuális WAN az elosztón belül elérhetővé tett hubok és szolgáltatások gyűjteménye. A felhasználónak tetszőleges számú virtuális WAN-t kell használnia. Egy virtuális WAN-központban több szolgáltatás, például VPN, ExpressRoute stb. Ezen szolgáltatások mindegyike egy Availability Zones régióban van telepítve, ha a régió támogatja a Availability Zones. Ha egy régió elérhetővé válik egy rendelkezésre állási zónában a központi telepítés után, akkor a felhasználó újra létrehozhatja az átjárókat, amelyek kiváltják a rendelkezésre állási zónák központi telepítését. Az összes átjáró aktív-aktívként van kiépítve egy hubhoz, ami azt jelenti, hogy a csomóponton belül van egy rugalmasság. A felhasználók több hubhoz is csatlakozhatnak, ha rugalmasságot szeretnének a régiók között. Habár a virtuális WAN koncepciója globális, a tényleges virtuális WAN-erőforrás Resource Manager-alapú, és regionálisan van üzembe helyezve. Ha maga a virtuális WAN-régióval kapcsolatos probléma merült fel, a virtuális WAN összes központja továbbra is működni fog, de a felhasználó nem fog tudni új hubokat létrehozni, amíg a virtuális WAN-régió elérhetővé nem válik.
+A virtuális WAN az elosztón belül elérhetővé tett hubok és szolgáltatások gyűjteménye. A felhasználónak tetszőleges számú virtuális WAN-ra van szüksége. Egy virtuális WAN-központban több szolgáltatás, például VPN, ExpressRoute stb. Az egyes szolgáltatások (kivéve a Azure Firewall) egy Availability Zones régióban vannak telepítve, vagyis ha a régió támogatja a Availability Zones. Ha egy régió elérhetővé válik egy rendelkezésre állási zónában a központi telepítés után, akkor a felhasználó újra létrehozhatja az átjárókat, amelyek kiváltják a rendelkezésre állási zónák központi telepítését. Az összes átjáró aktív-aktívként van kiépítve egy hubhoz, ami azt jelenti, hogy a csomóponton belül van egy rugalmasság. A felhasználók több hubhoz is csatlakozhatnak, ha rugalmasságot szeretnének a régiók között. Habár a virtuális WAN koncepciója globális, a tényleges virtuális WAN-erőforrás Resource Manager-alapú, és regionálisan van üzembe helyezve. Ha maga a virtuális WAN-régióval kapcsolatos probléma merült fel, a virtuális WAN összes központja továbbra is működni fog, de a felhasználó nem fog tudni új hubokat létrehozni, amíg a virtuális WAN-régió elérhetővé nem válik.
 
 ### <a name="what-client-does-the-azure-virtual-wan-user-vpn-point-to-site-support"></a>Milyen ügyfelet támogat az Azure Virtual WAN felhasználói VPN (pont – hely)?
 

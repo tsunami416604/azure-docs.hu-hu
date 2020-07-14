@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 03/24/2020
+ms.date: 07/08/2020
 ms.custom: seodec18, tracking-python
-ms.openlocfilehash: cb52935b731a507d2408d174a5aa571fb2bfc973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6b1d5c66c1dd15fa12638dd451d1ce2fa8fa79f
+ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609265"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86146729"
 ---
 # <a name="connect-to-azure-storage-services"></a>Kapcsolódás az Azure Storage-szolgáltatásokhoz
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Ha szeretné megismerni, hogy az adattárolók hogyan illeszkednek Azure Machine
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következők szükségesek:
-- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy ingyenes fiókot, mielőtt nekikezdene a feladatok elvégzésének. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - Azure Storage-fiók [Azure Blob-tárolóval](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) vagy [Azure-fájlmegosztás](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
 
@@ -52,16 +52,16 @@ A következők szükségesek:
 
 Az adattárolók jelenleg támogatják a kapcsolódási adatok tárolását a következő mátrixban felsorolt tárolási szolgáltatásokhoz.
 
-| Tárolási &nbsp; típus | Hitelesítés &nbsp; típusa | [Azure &nbsp; Machine &nbsp; learning Studio](https://ml.azure.com/) | [Az Azure &nbsp; Machine &nbsp; learning &nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure &nbsp; Machine &nbsp; learning parancssori felület](reference-azure-machine-learning-cli.md) | [Azure &nbsp; Machine &nbsp; learning – &nbsp; REST API](https://docs.microsoft.com/rest/api/azureml/)
----|---|---|---|---|---
-[Azure &nbsp; blob &nbsp; Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Fiókkulcs <br> SAS-token | ✓ | ✓ | ✓ |✓
-[Azure- &nbsp; fájlmegosztás &nbsp;](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Fiókkulcs <br> SAS-token | ✓ | ✓ | ✓ |✓
-[Azure &nbsp; Data Lake &nbsp; Storage, &nbsp; 1. generációs](https://docs.microsoft.com/azure/data-lake-store/)| Szolgáltatásnév| ✓ | ✓ | ✓ |✓
-[Azure &nbsp; Data Lake &nbsp; Storage, &nbsp; 2. generációs](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Szolgáltatásnév| ✓ | ✓ | ✓ |✓
-[Azure &nbsp; SQL &nbsp; Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| SQL-hitelesítés <br>Szolgáltatásnév| ✓ | ✓ | ✓ |✓
-[Azure &nbsp; PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview) | SQL-hitelesítés| ✓ | ✓ | ✓ |✓
-[MySQL-hez készült Azure- &nbsp; adatbázis &nbsp; &nbsp;](https://docs.microsoft.com/azure/mysql/overview) | SQL-hitelesítés|  | ✓* | ✓* |✓*
-[Databricks &nbsp; fájlrendszer &nbsp;](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)| Nincs hitelesítés | | ✓** | ✓ ** |✓** 
+| Tárolási &nbsp; típus | Hitelesítés &nbsp; típusa | [Azure &nbsp; Machine &nbsp; learning Studio](https://ml.azure.com/) | [Az Azure &nbsp; Machine &nbsp; learning &nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure &nbsp; Machine &nbsp; learning parancssori felület](reference-azure-machine-learning-cli.md) | [Azure &nbsp; Machine &nbsp; learning – &nbsp; REST API](https://docs.microsoft.com/rest/api/azureml/) | VS Code
+---|---|---|---|---|---|---
+[Azure &nbsp; blob &nbsp; Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Fiókkulcs <br> SAS-jogkivonat | ✓ | ✓ | ✓ |✓ |✓
+[Azure- &nbsp; fájlmegosztás &nbsp;](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Fiókkulcs <br> SAS-jogkivonat | ✓ | ✓ | ✓ |✓|✓
+[Azure &nbsp; Data Lake &nbsp; Storage, &nbsp; 1. generációs](https://docs.microsoft.com/azure/data-lake-store/)| Szolgáltatásnév| ✓ | ✓ | ✓ |✓|
+[Azure &nbsp; Data Lake &nbsp; Storage, &nbsp; 2. generációs](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Szolgáltatásnév| ✓ | ✓ | ✓ |✓|
+[Azure &nbsp; SQL &nbsp; Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)| SQL-hitelesítés <br>Szolgáltatásnév| ✓ | ✓ | ✓ |✓|
+[Azure &nbsp; PostgreSQL](https://docs.microsoft.com/azure/postgresql/overview) | SQL-hitelesítés| ✓ | ✓ | ✓ |✓|
+[MySQL-hez készült Azure- &nbsp; adatbázis &nbsp; &nbsp;](https://docs.microsoft.com/azure/mysql/overview) | SQL-hitelesítés|  | ✓* | ✓* |✓*|
+[Databricks &nbsp; fájlrendszer &nbsp;](https://docs.microsoft.com/azure/databricks/data/databricks-file-system)| Nincs hitelesítés | | ✓** | ✓ ** |✓** |
 
 * A MySQL-t csak a folyamat [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)támogatja. <br>
 * * A Databricks csak a folyamat [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) esetében támogatott
@@ -205,6 +205,9 @@ Az alábbi példa bemutatja, hogyan néz ki az űrlap az **Azure Blob-adattár**
     
 ![Űrlap új adattárhoz](media/how-to-access-data/new-datastore-form.png)
 
+### <a name="vs-code"></a>VS Code
+
+Az adattárolókat a Azure Machine Learning VS Code bővítmény használatával hozhatja létre és kezelheti. További tudnivalókért tekintse meg a [vs Code erőforrás-kezelési útmutatóját](how-to-manage-resources-vscode.md#datastores) .
 
 <a name="get"></a>
 
@@ -292,7 +295,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 A Azure Machine Learning számos módszert kínál a modellek pontozási célra való használatára. A módszerek némelyike nem biztosít hozzáférést az adattárolóhoz. A következő táblázat segítségével megtudhatja, hogy mely módszerek lehetővé teszik az adattárolók elérését a pontozás során:
 
-| Metódus | Adattár-hozzáférés | Description |
+| Módszer | Adattár-hozzáférés | Leírás |
 | ----- | :-----: | ----- |
 | [Kötegelt előrejelzés](how-to-use-parallel-run-step.md) | ✔ | Előrejelzések készítése aszinkron módon nagy mennyiségű adattal. |
 | [Webszolgáltatás](how-to-deploy-and-where.md) | &nbsp; | Modellek üzembe helyezése webszolgáltatásként. |

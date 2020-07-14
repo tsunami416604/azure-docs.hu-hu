@@ -72,6 +72,8 @@
           href: cognitive-search-tutorial-blob-python.md
     - name: Készségek hibakeresése
       href: cognitive-search-tutorial-debug-sessions.md
+    - name: Egyéni elemző létrehozása
+      href: tutorial-create-custom-analyzer.md
     - name: Lekérdezés a Power Appsből
       href: search-howto-powerapps.md
 - name: Példák

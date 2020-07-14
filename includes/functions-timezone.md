@@ -10,7 +10,7 @@ A CRON-kifejezésekkel használt alapértelmezett időzóna az egyezményes vil�
 
 A beállítás értéke attól függ, hogy az operációs rendszer és az alkalmazás melyik csomagja fut.
 
-|Operációs rendszer |Tervezés |Érték |
+|Operációs rendszer |Felkészülés |Érték |
 |-|-|-|
 | **Windows** |Mind | Állítsa az értéket a kívánt időzóna nevére a [Microsoft időzóna-index] ( https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10) . |
 | **Linux** |Prémium<br/>Dedikált |Állítsa az értéket a kívánt időzóna nevére a [TZ-adatbázisban](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)látható módon. |

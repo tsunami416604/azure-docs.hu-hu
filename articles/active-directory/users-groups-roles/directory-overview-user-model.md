@@ -1,12 +1,12 @@
 ---
-title: Felhasználók, csoportok, licencelés és szerepkörök áttekintése – Azure AD | Microsoft Docs
+title: Felhasználók, csoportok, licencelés és szerepkörök a Azure Active Directory
 description: A felhasználók és a hozzárendelt licencek, a rendszergazdai szerepkörök és a csoporttagságok közti kapcsolatok az Azure Active Directoryban
 keywords: ''
 author: curtand
 manager: daveba
 ms.author: curtand
 ms.reviewer: vincesm
-ms.date: 11/08/2019
+ms.date: 06/16/2020
 ms.topic: overview
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -14,14 +14,14 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8052bb44df6d29e17304763051fa2099009b9701
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 89c96da30411705bf33b1c63f79a9beef11962a1
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583019"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223822"
 ---
-# <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Nagyobb szervezetek felhasználói, csoportjai, licenckezelése és szerepkörei
+# <a name="what-is-enterprise-user-management"></a>Mi a vállalati felhasználók felügyelete?
 
 A cikk az Azure AD-rendszergazdák számára mutatja be a felhasználókra vonatkozó felső szintű [identitáskezelési](/azure/active-directory/fundamentals/identity-fundamentals?context=azure/active-directory/users-groups-roles/context/ugr-context) feladatok közti kapcsolatot a csoportok, a licencek, az üzembe helyezett vállalati alkalmazások és a rendszergazdai szerepkörök tekintetében. A szervezet növekedtével az Azure AD-csoportok és rendszergazdai szerepkörök használatával a következőket teheti:
 

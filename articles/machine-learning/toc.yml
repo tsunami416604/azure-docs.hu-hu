@@ -443,6 +443,9 @@
     - name: Erőforráskvóták kezelése
       displayName: limits
       href: how-to-manage-quotas.md
+    - name: Erőforrások kezelése – VS Code
+      displayName: 'vscode,resources'
+      href: how-to-manage-resources-vscode.md
     - name: Adatok exportálása és törlése
       displayName: GDPR
       href: how-to-export-delete-data.md
@@ -495,3 +498,6 @@
     - name: Tervezői kisegítő lehetőségek
       displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
       href: designer-accessibility.md
+    - name: Válogatott környezetek
+      displayName: 'environments, curated environments'
+      href: resource-curated-environments.md

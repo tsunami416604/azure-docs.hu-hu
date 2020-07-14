@@ -6,11 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: ab6ee597cfdc5d169bd33b77a061880b19e134b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7be1c350af6c9bb84669b45a9bc8a1d9dd808133
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300308"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165634"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>A Azure Monitor naplózási értesítéseinek hibakeresése  
 
@@ -182,9 +183,10 @@ A Azure Monitor a konfiguráció részeként létrehozott összes naplózási ri
 - Az elemzési platformhoz nem történt adatfolyam. A [lekérdezés végrehajtása hibát jelez](https://dev.loganalytics.io/documentation/Using-the-API/Errors) , mert a megadott lekérdezéshez nem tartozik információ.
 - A [lekérdezés nyelvének](https://docs.microsoft.com/azure/kusto/query/) változásai a parancsok és függvények módosított formátumát tartalmazzák. Így a riasztási szabályban korábban megadott lekérdezés már nem érvényes.
 
-[Azure Advisor](../../advisor/advisor-overview.md) figyelmeztet erre a viselkedésre. A rendszer javaslatot tesz az adott napló riasztási szabályának Azure Advisor, a közepes hatású magas rendelkezésre állási kategóriára, valamint a "riasztási szabály kijavítása a naplózásra" című cikk leírására. Ha a naplózási riasztási szabályban lévő riasztási lekérdezés nem kerül kijavításra, miután a Azure Advisor hét napig megadta a javaslatot, Azure Monitor letiltja a naplózási riasztást, és gondoskodik arról, hogy a szabály nem számítható fel feleslegesen, ha a szabály nem futtatható folyamatosan egy jókora (például egy hétre).
+[Azure Advisor](../../advisor/advisor-overview.md) figyelmeztet erre a viselkedésre. A rendszer javaslatot tesz az adott napló riasztási szabályának Azure Advisor, a közepes hatású magas rendelkezésre állás kategóriája és a "riasztási szabály kijavítása a figyeléshez" című cikk leírásával.
 
-Megtalálhatja azt a pontos időt, amikor a Azure Monitor letiltotta a napló riasztási szabályát, ha egy eseményt keres az Azure-beli [tevékenység naplójában](../../azure-resource-manager/management/view-activity-logs.md).
+> [!NOTE]
+> Ha a naplózási riasztási szabályban lévő riasztási lekérdezés nem kerül kijavításra, miután a Azure Advisor hét napig megadta a javaslatot, Azure Monitor letilthatja a naplózási riasztást, és gondoskodhat arról, hogy a szabály nem számítható fel feleslegesen, ha a szabály nem futtatható folyamatosan egy jókora (7 nap). Megtalálhatja azt a pontos időt, amikor a Azure Monitor letiltotta a napló riasztási szabályát, ha egy eseményt keres az Azure-beli [tevékenység naplójában](../../azure-resource-manager/management/view-activity-logs.md).
 
 ## <a name="next-steps"></a>További lépések
 

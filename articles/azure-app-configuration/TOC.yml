@@ -103,6 +103,8 @@
       href: howto-import-export-data.md
     - name: Események átirányítása egyéni végponthoz
       href: howto-app-configuration-event.md
+    - name: A konfigurációs tár automatikus biztonsági mentése
+      href: howto-backup-config-store.md
     - name: Ajánlott eljárások
       href: howto-best-practices.md
 - name: Referencia

@@ -12,11 +12,12 @@ ms.date: 06/05/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 9e2f4eccb725bfac2229fa1471673a121c77f648
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2452d1e0cc07767922b86810a914bba2e6f56dba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84448517"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200971"
 ---
 # <a name="microsoft-identity-platform-videos"></a>A Microsoft Identitásplatformot bemutató videók
 
@@ -65,10 +66,22 @@ ___
         <a href="https://www.youtube.com/watch?v=-BK2iBDrmNo" target="_blank"> <img src="./media/identity-videos/id-for-devs-05.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        <!-- BLANK TITLE CELL -->
+        6 – <a href="https://www.youtube.com/watch?v=4pwuRYcZbz4" target="_blank">milyen szempontokat használ a protokollok használata a MSAL-tárakban <span class="docon docon-navigate-external x-hidden-focus"></span> ?</a> (15:52)
     :::column-end:::
     :::column:::
-        <!-- BLANK VIDEO CELL -->
+        <a href="https://www.youtube.com/watch?v=4pwuRYcZbz4" target="_blank"> <img src="./media/identity-videos/id-for-devs-06.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        7 – <a href="https://www.youtube.com/watch?v=cZKgTqF4o88" target="_blank">Ha a MSAL-t használja, milyen alapvető fogalmakat érdemes tudnia? <span class="docon docon-navigate-external x-hidden-focus"></span> </a> (1:51)
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=cZKgTqF4o88" target="_blank"> <img src="./media/identity-videos/one-dev-question-hs.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+    :::column:::
     :::column-end:::
 :::row-end:::
 
@@ -131,6 +144,20 @@ ___
     :::column-end:::
     :::column:::
         <a href="https://www.youtube.com/watch?v=2RE6IhXfmHY" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-06.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        7 – <a href="https://www.youtube.com/watch?v=jEEwN7XAtUo" target="_blank">Mi a kapcsolat az engedélyezési kérelem és a jogkivonatok között <span class="docon docon-navigate-external x-hidden-focus"></span> ?</a> (1:45)
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=jEEwN7XAtUo" target="_blank"> <img src="./media/identity-videos/one-dev-question-hs.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+    :::column:::
+        8 – <a href="https://www.youtube.com/watch?v=41vmzPdbfXM" target="_blank">Mi a különbség az azonosító tokenek, a hozzáférési tokenek, a frissítési tokenek és a munkamenet-tokenek között? <span class="docon docon-navigate-external x-hidden-focus"></span> </a> (2:10)
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=41vmzPdbfXM" target="_blank"> <img src="./media/identity-videos/aad-auth-fund-08.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
 
@@ -237,6 +264,32 @@ ___
         <a href="https://www.youtube.com/watch?v=ZJirt7eTVw8" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::
+:::row:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=6R3W9T01gdE" target="_blank">Mi az az alkalmazás engedélyei és a delegált engedélyek?<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=6R3W9T01gdE" target="_blank"> <img src="./media/identity-videos/aad-basics-12.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=Gm6sALdXtpg" target="_blank">Mi a Microsoft Identity platform OpenID Connect tanúsítvánnyal?<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=Gm6sALdXtpg" target="_blank"> <img src="./media/identity-videos/one-dev-question-hs.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=NrydwrckYaw" target="_blank">Mik a különböző HRE-alkalmazások típusai, és hogyan hasonlíthatók össze?<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+    :::column-end:::
+    :::column:::
+        <a href="https://www.youtube.com/watch?v=NrydwrckYaw" target="_blank"> <img src="./media/identity-videos/aad-basics-13.jpg" alt="Video thumbnail"> </a>
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
 
 ## <a name="migrate-from-v10-to-v20"></a>Áttelepítés v 1.0-ről v 2.0-ra
 
@@ -265,9 +318,9 @@ ___
         <a href="https://www.youtube.com/watch?v=q-TDszj2O-4" target="_blank"> <img src="./media/identity-videos/one-dev-question-jm.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
     :::column:::
-        <!-- BLANK TITLE CELL -->
+        <a href="https://www.youtube.com/watch?v=aBMUxC4evhU" target="_blank">Mi a különbség a v1 és v2 hitelesítés között?<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     :::column-end:::
     :::column:::
-        <!-- BLANK VIDEO CELL -->
+        <a href="https://www.youtube.com/watch?v=aBMUxC4evhU" target="_blank"> <img src="./media/identity-videos/one-dev-question-hs.jpg" alt="Video thumbnail"> </a>
     :::column-end:::
 :::row-end:::

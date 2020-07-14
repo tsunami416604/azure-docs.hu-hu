@@ -55,6 +55,7 @@
       href: machine-learning-pytorch.md
     - name: Egyéni linuxos lemezkép létrehozása
       href: functions-create-function-linux-custom-image.md
+      displayName: 'container, docker'
     - name: Functions IoT Edge-eszközön
       href: ../iot-edge/tutorial-deploy-function.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: A Java használata az Azure Cosmos DB-vel és az Event Hubszal
@@ -252,7 +253,7 @@
           href: run-functions-from-deployment-package.md
         - name: Függvények a Kubernetesben
           href: functions-kubernetes-keda.md
-          displayName: keda
+          displayName: 'keda, container, docker'
         - name: Erőforrások üzembe helyezésének automatizálása
           href: functions-infrastructure-as-code.md
         - name: Helyszíni függvények
@@ -296,6 +297,8 @@
               href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fazure-functions%2ftoc.json
             - name: Hitelesítés a Twitterrel
               href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fazure-functions%2ftoc.json
+            - name: Hitelesítés OpenID Connect-szolgáltatóval (előzetes verzió)
+              href: ../app-service/configure-authentication-provider-openid-connect.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Speciális hitelesítés
           href: ../app-service/app-service-authentication-how-to.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: IP-címek korlátozása
@@ -500,6 +503,8 @@
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel
       href: /learn/browse/?products=azure-functions
+    - name: Architektúra-útmutató
+      href: 'https://docs.microsoft.com/azure/architecture/serverless-quest/serverless-overview'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Díjszabás

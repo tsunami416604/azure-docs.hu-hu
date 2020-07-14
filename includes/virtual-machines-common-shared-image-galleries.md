@@ -4,19 +4,19 @@ description: fájl belefoglalása
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/16/2020
+ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 1ca9d41134bf33a9e007da4b5a56652ccdbd4e22
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2d0030549acdb55ce2be94534ec59bb07b11869d
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218425"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221636"
 ---
-A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a felügyelt lemezképekre épülő struktúrát és szervezetet. A megosztott képtárak a következőket biztosítják:
+A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a lemezképek körét a szerkezet és a szervezet számára. A megosztott képtárak a következőket biztosítják:
 
-- A lemezképek felügyelt globális replikálása.
+- Lemezképek globális replikálása.
 - A könnyebb felügyelet érdekében a rendszerképek verziószámozása és csoportosítása.
 - A Availability Zones-t támogató régiókban található, a zóna redundáns tárolási (ZRS) fiókjaival rendelkező, nagyon elérhető rendszerképek. A ZRS nagyobb rugalmasságot biztosít a zónabeli hibákkal szemben.
 - Premium Storage-támogatás (Premium_LRS).
@@ -33,7 +33,7 @@ A megosztott képkatalógus funkció több erőforrástípust tartalmaz:
 
 | Erőforrás | Leírás|
 |----------|------------|
-| **Rendszerkép forrása** | Ez egy olyan erőforrás, amellyel rendszerkép- **verziót** hozhat létre egy Képtárban. A rendszerkép forrása lehet egy meglévő Azure-beli virtuális gép, amely [általánosított vagy specializált](#generalized-and-specialized-images), felügyelt képet, pillanatképet vagy rendszerkép-verziót használ egy másik rendszerkép-katalógusban. |
+| **Rendszerkép forrása** | Ez egy olyan erőforrás, amellyel rendszerkép- **verziót** hozhat létre egy Képtárban. A rendszerkép forrása lehet egy meglévő Azure-beli virtuális gép, amely [általánosított vagy specializált](#generalized-and-specialized-images), felügyelt rendszerkép, pillanatkép, virtuális merevlemez vagy rendszerkép verziója egy másik Képtárban. |
 | **Képtár** | Az Azure Marketplace-hez hasonlóan a képkatalógus **is a lemezképek** kezeléséhez és megosztásához használható tárház, de Ön szabályozhatja, hogy ki férhet hozzá. |
 | **Rendszerkép definíciója** | A képdefiníciók egy gyűjteményen belül jönnek létre, és a rendszerképekkel és a belső használat követelményeivel kapcsolatos információkat hordozzák. Ez magában foglalja azt is, hogy a rendszerkép Windows vagy Linux, kibocsátási megjegyzések, valamint minimális és maximális memória-követelmény. Ez egy adott típusú rendszerkép definíciója. |
 | **Rendszerkép verziója** | A **rendszerkép verziója** az, amit a virtuális gép létrehozásához használ gyűjtemény létrehozásakor. A környezethez szükség lehet a rendszerkép több verziójára. A felügyelt rendszerképekhez hasonlóan, amikor **rendszerkép-verziót** használ egy virtuális gép létrehozásához, a rendszerkép verziója a virtuális gép új lemezének létrehozására szolgál. A rendszerkép verziója többször is használható. |
@@ -68,6 +68,7 @@ A következő más paraméterek is megadhatók a képdefinícióban, így könny
 * Minimális és maximális vCPU és memória-javaslatok – ha a rendszerképnek van vCPU-és memória-javaslata, csatolhatja ezeket az információkat a rendszerkép-definícióhoz.
 * Nem engedélyezett lemezek típusai – a virtuális gép tárolási igényeivel kapcsolatos információkat adhat meg. Ha például a rendszerkép nem szabványos HDD-lemezekhez van kiválasztva, akkor azokat a letiltási listához adja.
 * Hyper-V-generáció – megadhatja, hogy a rendszerkép egy 1. vagy 2. generációs Hyper-V virtuális merevlemezről lett-e létrehozva.
+* A Piactéri rendszerképekre vonatkozó vásárlási terv adatai –, `-PurchasePlanPublisher ` `-PurchasePlanName` és `-PurchasePlanProduct` . További információ a vásárlási tervekről: [rendszerképek keresése az Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) -en, valamint a [lemezképek létrehozásakor az Azure Marketplace vásárlási terv információi](../articles/virtual-machines/marketplace-images.md).
 
 ## <a name="generalized-and-specialized-images"></a>Általánosított és speciális rendszerképek
 
@@ -82,11 +83,7 @@ A speciális virtuális gépek nem a gép specifikus információinak és fiókj
 
 ## <a name="regional-support"></a>Regionális támogatás
 
-A forrás régiói az alábbi táblázatban láthatók. Az összes nyilvános régió lehet célcsoport, de az ausztráliai közép-és ausztráliai Közép-Ausztrália 2-es verzióra való replikáláshoz az előfizetés engedélyezési listának kell lennie. A következő lépésekkel kérheti le az engedélyezési listát:https://azure.microsoft.com/global-infrastructure/australia/contact/
-
-> Ausztrália középső régiója, Kelet-Kína, Dél-India, Nyugat-Európa, Ausztrália középső régiója 2, Kelet-Kína 2, Délkelet-Ázsia, Egyesült Királyság déli régiója, Kelet-Ausztrália, Észak-Kína, Kelet-Japán, Egyesült Királyság nyugati régiója, Délkelet-Ausztrália, Észak-Kína 2, Nyugat-Japán, US DoD – középső régió, Dél-Brazília, Kelet-Ázsia, Korea középső régiója, US DoD – keleti régió, Közép-Kanada, USA keleti régiója, Dél-Korea , US Gov Texas, Közép-India, USA 2. keleti régiója, – EUAP, Észak-Európa, US Gov Virginia, USA középső régiója, Közép-Németország, USA déli középső régiója, Nyugat-India, USA középső régiója, USA 2. nyugati régiója, USA nyugati középső régiója
-
-
+Az összes nyilvános régió lehet célcsoport, de az ausztráliai közép-és ausztráliai Közép-Ausztrália 2-es verzióra való replikáláshoz az előfizetés engedélyezési listának kell lennie. A következő lépésekkel kérheti le az engedélyezési listát:https://azure.microsoft.com/global-infrastructure/australia/contact/
 
 ## <a name="limits"></a>Korlátok 
 
@@ -233,13 +230,7 @@ Igen. A lemezképek típusain alapuló 3 forgatókönyv van.
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Létrehozhatok lemezkép-verziót egy speciális lemezről?
 
-Igen, a speciális lemezek támogatása előzetes verzióban érhető el. A portál, a PowerShell vagy az API segítségével csak egy speciális rendszerképből hozhat létre virtuális gépet. 
-
-
-A [PowerShell használatával hozzon létre egy speciális virtuális gép képét](../articles/virtual-machines/image-version-vm-powershell.md).
-
-[Windows](../articles/virtual-machines/linux/shared-images-portal.md) vagy [Linux] (..) létrehozása a portál használatával /articles/Virtual-Machines/Linux/Shared-images-Portal.MD) képe. 
-
+Igen, létrehozhat egy virtuális gépet egy speciális rendszerképből a [parancssori](../articles/virtual-machines/vm-specialized-image-version-cli.md)felület, a [PowerShell](../articles/virtual-machines/vm-specialized-image-version-powershell.md)vagy az API használatával. 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Áthelyezhetem a megosztott rendszerkép-katalógus erőforrását egy másik előfizetésbe a létrehozása után?
 

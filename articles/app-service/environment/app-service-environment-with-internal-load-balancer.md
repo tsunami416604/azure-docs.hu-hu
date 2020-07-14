@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 009b1ff08f9a3a0b840a20a01be5b16cd28d4533
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49045c8b8c7b3ccfa44a1077e59683191393e1ee
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833103"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220813"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Belső Load Balancer használata App Service Environment
 
@@ -46,7 +46,7 @@ Bizonyos dolgok nem hajthatók végre, ha ILB-beadást használ. Ezek a követke
 Egy ILB-bekészítés létrehozása nem sokban különbözik a hagyományos központú adatforrások létrehozásával. A kiegészítő információk létrehozásával kapcsolatos részletes információkért lásd: [app Service Environment létrehozása][HowtoCreateASE]. A ILB beadásának folyamata megegyezik a VNet létrehozása és a már meglévő VNet kiválasztása között. Az ILB ASE létrehozása: 
 
 1. A Azure Portal válassza az **erőforrás létrehozása-> web és mobil – > app Service Environment**lehetőséget.
-2. Válassza ki az előfizetését.
+2. Válassza ki előfizetését.
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 4. Válasszon ki vagy hozzon létre egy virtuális hálózatot.
 5. Hozzon létre egy alhálózatot, ha kiválaszt egy VNet.
@@ -54,7 +54,7 @@ Egy ILB-bekészítés létrehozása nem sokban különbözik a hagyományos köz
 7. Adja meg az altartomány nevét (ez a jelen útmutatóban létrehozott alkalmazásokhoz használt altartomány).
 8. Válassza **az OK** , majd a **Létrehozás**lehetőséget.
 
-![][1]
+![Megjeleníti a ILB-előkészítés létrehozásához használt képernyőket.][1]
 
 A Virtual Network ablaktáblán található egy VNet konfigurációs beállítás, amely lehetővé teszi a külső VIP-vagy belső VIP-címek közötti választást. Az alapértelmezett érték a Külső. Ha a külső értékre van állítva, a beadási szolgáltatás egy internetről elérhető VIP-t használ. Ha a Belső lehetőséget választja, az ASE ILB-vel vagy virtuális hálózati IP-címmel lesz konfigurálva. 
 
@@ -65,12 +65,12 @@ Az alkalmazások ILB-ben történő létrehozása megegyeznek az alkalmazások s
 
 1. A Azure Portal válassza az **erőforrás létrehozása-> web és mobil-> webes** vagy **mobil** vagy API- **alkalmazás**elemet.
 2. Adja meg az alkalmazás nevét.
-3. Válassza ki az előfizetését.
+3. Válassza ki előfizetését.
 4. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 5. Válasszon ki vagy hozzon létre egy App Service tervet (ASP). Ha új ASP hoz létre, válassza ki a beadási helyet, és válassza ki azt a munkavégző készletet, amelyben létre szeretné hozni az ASP-t. Az ASP létrehozásakor kiválaszthatja a beadási helyet és a munkavégző készletet. Az alkalmazás nevének megadásakor látni fogja, hogy az alkalmazás neve alá tartozó altartomány helyébe a szolgáltató altartománya kerül. 
 6. Válassza a **Létrehozás** lehetőséget. Jelölje be a rögzítés az **irányítópulton** jelölőnégyzetet, ha azt szeretné, hogy az alkalmazás megjelenjen az irányítópulton. 
 
-![][2]
+![Bemutatja, hogyan hozhat létre alkalmazást egy ILB-előAzure Portalban.][2]
 
 Az alkalmazás neve alatt a aldomain neve frissül, hogy tükrözze a központjának altartományát. 
 
@@ -79,11 +79,11 @@ Az ILB ASE kissé különbözik az ILB nélküli ASE környezettől. Ahogy már 
 
 Miután létrehozta a központot, megfigyelheti, hogy az altartomány megjeleníti a megadott altartományt, és van egy új elem a **ILB-tanúsítvány**nevű **beállítási** menüben. A kiegészítő szolgáltatás önaláírt tanúsítvánnyal jön létre, amely megkönnyíti a HTTPS tesztelését. A portálon megtudhatja, hogy meg kell adnia a saját tanúsítványát a HTTPS-hez, de ez azt javasolja, hogy rendelkezzen egy olyan tanúsítvánnyal, amely a saját altartománnyal rendelkezik. 
 
-![][3]
+![Megjeleníti a beadási pont létrehozásakor megadott altartományt.][3]
 
 Ha egyszerűen próbálkozik a dolgokkal, és nem tudja, hogyan hozhat létre egy tanúsítványt, az IIS MMC konzol alkalmazásával hozhat létre önaláírt tanúsítványt. A létrehozása után exportálhatja. pfx-fájlként, majd feltöltheti azt a ILB-tanúsítvány felhasználói felületén. Ha egy önaláírt tanúsítvánnyal védett helyet ad meg, a böngésző figyelmeztetést küld arról, hogy az elérni kívánt hely nem biztonságos, mert nem tudja érvényesíteni a tanúsítványt. Ha el szeretné kerülni ezt a figyelmeztetést, szüksége lesz egy megfelelően aláírt tanúsítványra, amely megfelel az altartománynak, és a böngésző által felismert megbízhatósági lánctal rendelkezik.
 
-![][6]
+![Bemutatja, hogyan hozhat létre önaláírt tanúsítványt az IIS MMC konzol alkalmazásával.][6]
 
 Ha saját tanúsítványokkal szeretné kipróbálni a folyamatot, és a HTTP-és HTTPS-hozzáférést is tesztelni kívánja a saját előállítók számára:
 
@@ -98,7 +98,7 @@ Ha saját tanúsítványokkal szeretné kipróbálni a folyamatot, és a HTTP-é
 
 A ILB IP-címe a tulajdonságok között a virtuális IP-cím mezőben jelenik meg.
 
-![][4]
+![Azt mutatja, hogy a ILB tartozó IP-cím a tulajdonságok között a virtuális IP-cím mezőben szerepel.][4]
 
 ## <a name="using-an-ilb-ase"></a>ILB-kiegészítő szolgáltatás használata
 #### <a name="network-security-groups"></a>Network Security Groups (Hálózati biztonsági csoportok)
@@ -108,7 +108,7 @@ Ha a NSG-t szeretné a hozzáférés további korlátozására használni, meg k
 
 A NSG konfigurálásához ismernie kell az Azure által a szolgáltatói felügyelethez használt IP-címet. Ez az IP-cím is a kifelé irányuló kimenő IP-cím, ha internetes kérelmeket tesz elérhetővé. A beadáshoz tartozó kimenő IP-cím statikus marad a szolgáltatói életében. Ha törli és újból létrehozza a beadást, akkor egy új IP-címet fog kapni. Az IP-cím megkereséséhez lépjen a **Beállítások-> tulajdonságok** elemre, és keresse meg a **kimenő IP-címet**. 
 
-![][5]
+![Itt látható, hogy hol található a bemenő IP-cím.][5]
 
 #### <a name="general-ilb-ase-management"></a>Általános ILB-felügyelet
 Egy ILB-bevezetési szolgáltatás kezelése nagyjából azonos a közüzemi közüzemek kezelésével. A munkavégző készletek több ASP-példány üzemeltetéséhez és az előtér-kiszolgálók vertikális felskálázásához nagyobb mennyiségű HTTP/HTTPS-forgalom kezelésére van szükség. A bevezetési adatok konfigurálásával kapcsolatos általános információkért lásd: [app Service Environment konfigurálása][ASEConfig]. 

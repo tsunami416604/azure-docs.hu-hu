@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 191c6d411418229d40b10704ea14d5a536c0d5f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110623"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184548"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -95,7 +95,7 @@ Ha egy ugrás vörös színű, azt jelenti, hogy az egy nem megfelelő állapot�
 A NPM egy valószínűségi mechanizmust használ a meghibásodási valószínűségek az egyes hálózati elérési utakhoz, hálózati szegmensekhez és az összetevők hálózati ugrásokhoz való hozzárendeléséhez azon nem kifogástalan elérési utak száma alapján, amelyek részét képezik. Mivel a hálózati szegmensek és a komló több nem megfelelő állapotú elérési út részévé válik, a hozzájuk tartozó hibák valószínűsége növekszik. Ez az algoritmus akkor működik a legjobban, ha sok olyan csomóponttal rendelkezik, amelynek NPM-ügynöke csatlakozik egymáshoz, mivel ez növeli az adatpontokat a hiba valószínűségének kiszámításához.
 
 ### <a name="how-can-i-create-alerts-in-npm"></a>Hogyan hozhatok létre riasztásokat a NPM-ben?
-Részletes útmutatásért tekintse meg [a riasztások című szakaszt a dokumentációban](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts) .
+A NPM felhasználói felületéről származó riasztások létrehozása jelenleg hiba miatt meghiúsul. Manuálisan hozzon létre riasztásokat.
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>A riasztások alapértelmezett Log Analytics lekérdezései
 Teljesítményfigyelő lekérdezése
@@ -129,7 +129,7 @@ NetworkMonitoring
  | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
 ```
 
-Microsoft társviszony-létesítés
+Microsoftos társhálózat-létesítés
 
 ```kusto
 NetworkMonitoring
@@ -283,7 +283,7 @@ Ez akkor fordulhat elő, ha egy vagy több igaz:
 ### <a name="in-the-service-connectivity-monitor-capability-the-service-response-time-is-na-but-network-loss-as-well-as-latency-are-valid"></a>A szolgáltatás-kapcsolódási figyelő képességben a szolgáltatás válaszideje NA, de a hálózati veszteség, valamint a késés érvényes
 Ez akkor fordulhat elő, ha a célként megadott szolgáltatás nem webalkalmazás, de a teszt webes tesztként van konfigurálva. Szerkessze a teszt konfigurációját, és válassza ki a teszt típusát a web helyett hálózatként.
 
-## <a name="miscellaneous"></a>Egyéb
+## <a name="miscellaneous"></a>Különböző veszélyes anyagok és tárgyak
 
 ### <a name="is-there-a-performance-impact-on-the-node-being-used-for-monitoring"></a>Hatással van-e a figyelésre használt csomópont teljesítményére?
 A NPM folyamat úgy van beállítva, hogy leálljon, ha a gazdagép CPU-erőforrásainak több mint 5%-át használja. Ezzel biztosíthatja, hogy a csomópontokat a szokásos számítási feladatokhoz a teljesítmény befolyásolása nélkül tudja használni.
@@ -297,6 +297,6 @@ A figyeléshez használt csomópontok állapotát a következő nézetből tekin
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>NPM a jelentés késési számait a másodpercenként?
 A NPM felkerekíti a késési számokat a felhasználói felületen és ezredmásodpercben. Ugyanazokat az adatokat a rendszer magasabb részletességgel tárolja (esetenként akár négy tizedesjegy is).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Network Performance Monitorről az [Azure-beli Network Performance monitor megoldásra](../../azure-monitor/insights/network-performance-monitor.md)való hivatkozással.

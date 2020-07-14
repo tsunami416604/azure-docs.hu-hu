@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74073851"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186826"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Az Azure Linux-ügynök megismerése és használata
 
@@ -133,36 +134,36 @@ A speciális telepítési lehetőségekről, például a forrásról vagy az egy
 ## <a name="configuration"></a>Konfiguráció
 A konfigurációs fájl (/etc/waagent.conf) szabályozza a waagent műveleteit. A következő példában egy minta konfigurációs fájl látható:
 
-    ```
-    Provisioning.Enabled=y
-    Provisioning.DeleteRootPassword=n
-    Provisioning.RegenerateSshHostKeyPair=y
-    Provisioning.SshHostKeyPairType=rsa
-    Provisioning.MonitorHostName=y
-    Provisioning.DecodeCustomData=n
-    Provisioning.ExecuteCustomData=n
-    Provisioning.AllowResetSysUser=n
-    Provisioning.PasswordCryptId=6
-    Provisioning.PasswordCryptSaltLength=10
-    ResourceDisk.Format=y
-    ResourceDisk.Filesystem=ext4
-    ResourceDisk.MountPoint=/mnt/resource
-    ResourceDisk.MountOptions=None
-    ResourceDisk.EnableSwap=n
-    ResourceDisk.SwapSizeMB=0
-    LBProbeResponder=y
-    Logs.Verbose=n
-    OS.RootDeviceScsiTimeout=300
-    OS.OpensslPath=None
-    HttpProxy.Host=None
-    HttpProxy.Port=None
-    AutoUpdate.Enabled=y
-    ```
+```config
+Provisioning.Enabled=y
+Provisioning.DeleteRootPassword=n
+Provisioning.RegenerateSshHostKeyPair=y
+Provisioning.SshHostKeyPairType=rsa
+Provisioning.MonitorHostName=y
+Provisioning.DecodeCustomData=n
+Provisioning.ExecuteCustomData=n
+Provisioning.AllowResetSysUser=n
+Provisioning.PasswordCryptId=6
+Provisioning.PasswordCryptSaltLength=10
+ResourceDisk.Format=y
+ResourceDisk.Filesystem=ext4
+ResourceDisk.MountPoint=/mnt/resource
+ResourceDisk.MountOptions=None
+ResourceDisk.EnableSwap=n
+ResourceDisk.SwapSizeMB=0
+LBProbeResponder=y
+Logs.Verbose=n
+OS.RootDeviceScsiTimeout=300
+OS.OpensslPath=None
+HttpProxy.Host=None
+HttpProxy.Port=None
+AutoUpdate.Enabled=y
+```
 
 A következő különböző konfigurációs beállítások vannak leírva. A konfigurációs beállítások három típusból állnak; Boolean, string vagy Integer. A logikai konfigurációs beállítások "y" vagy "n" értékkel adhatók meg. A "None" kulcsszót a következő részletekkel lehet használni néhány karakterlánc típusú konfigurációs bejegyzésnél:
 
 **Kiépítés. engedélyezve:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -174,14 +175,14 @@ Ez lehetővé teszi, hogy a felhasználó engedélyezze vagy tiltsa le az ügyn�
 > 
 
 **Kiépítés. DeleteRootPassword:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Ha be van állítva, a/etc/Shadow fájl legfelső szintű jelszava törlődik a létesítési folyamat során.
 
 **Kiépítés. RegenerateSshHostKeyPair:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
@@ -190,42 +191,42 @@ Ha be van állítva, az összes SSH-gazdagép kulcspár (ECDSA, DSA és RSA) tö
 Az új kulcspár titkosítási típusa a kiépítési. SshHostKeyPairType bejegyzés által konfigurálható. Egyes disztribúciók minden hiányzó titkosítási típushoz újra létrehoznak SSH-kulcspárt az SSH-démon újraindításakor (például újraindítás után).
 
 **Kiépítés. SshHostKeyPairType:**  
-```
+```txt
 Type: String  
 Default: rsa
 ```
 Ez beállítható egy olyan titkosítási algoritmus típusára, amelyet a virtuális gépen futó SSH démon támogat. A jellemzően támogatott értékek a következők: "RSA", "DSA" és "ECDSA". A Windows "putty.exe" nem támogatja a "ECDSA". Ha tehát a Windows rendszerű számítógépeken szeretné putty.exe használni a Linux-telepítést, használja az "RSA" vagy a "DSA" kifejezést.
 
 **Kiépítés. MonitorHostName:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 Ha be van állítva, a waagent figyeli a Linux rendszerű virtuális gépet az állomásnév változásaihoz (az "állomásnév" parancs által visszaadottak szerint), és automatikusan frissíti a rendszerkép hálózati konfigurációját, hogy tükrözze a változást. Ahhoz, hogy a név a DNS-kiszolgálókra legyen leküldve, a hálózat újraindul a virtuális gépen. Ez az internetkapcsolat rövid elvesztését eredményezi.
 
 **Kiépítés. DecodeCustomData**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Ha be van állítva, a waagent dekódolja a Base64-CustomData.
 
 **Provisioning.ExecuteCustomData**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Ha be van állítva, a waagent a kiépítés után hajtja végre a CustomData.
 
 **Kiépítés. AllowResetSysUser**
-```
+```txt
 Type: Boolean
 Default: n
 ```
 Ez a beállítás lehetővé teszi, hogy a rendszer alaphelyzetbe állítsa a sys-felhasználó jelszavát. az alapértelmezett érték le van tiltva.
 
 **Kiépítés. PasswordCryptId**  
-```
+```txt
 Type: String  
 Default: 6
 ```
@@ -236,91 +237,91 @@ A crypt által a jelszó-kivonat létrehozásakor használt algoritmus.
  6 – SHA-512  
 
 **Kiépítés. PasswordCryptSaltLength**  
-```
+```txt
 Type: String  
 Default: 10
 ```
 A jelszó-kivonatok létrehozásakor használt véletlenszerű só hossza.
 
 **ResourceDisk. format:**  
-```
+```txt
 Type: Boolean  
 Default: y
 ```
 Ha be van állítva, a platform által biztosított erőforrás-lemez formázása és csatlakoztatása waagent történik, ha a felhasználó által a "ResourceDisk. FileSystem" típusban kért fájlrendszer típusa nem "NTFS". A lemezen elérhető egyetlen Linux (83) típusú partíció. A partíció nem formázott, ha sikeresen csatlakoztatható.
 
 **ResourceDisk. filesystem:**  
-```
+```txt
 Type: String  
 Default: ext4
 ```
 Ez határozza meg az erőforrás-lemez fájlrendszerének típusát. A támogatott értékek a Linux-disztribúciók szerint változnak. Ha a karakterlánc X, akkor a mkfs. X-nek jelen kell lennie a Linux-rendszerképben. A SLES 11 lemezképek általában az "ext3"-et használják. A FreeBSD-lemezképek itt az "UFS2"-t használják.
 
 **ResourceDisk. csatlakoztatási pont:**  
-```
+```txt
 Type: String  
 Default: /mnt/resource 
 ```
 Ez határozza meg az erőforrás-lemez csatlakoztatásának elérési útját. Az erőforrás-lemez egy *ideiglenes* lemez, és a virtuális gép kiépítése után kiüríthető.
 
 **ResourceDisk.MountOptions**  
-```
+```txt
 Type: String  
 Default: None
 ```
 Megadja a Mount-o parancsnak átadandó lemez csatlakoztatási beállításait. Ez az értékek vesszővel tagolt listája, pl.:. "nodev, nosuid". A részletekért lásd a csatlakoztatás (8) című témakört.
 
 **ResourceDisk.EnableSwap:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Ha be van állítva, a rendszer egy lapozófájlt (/swapfile) hoz létre az erőforrás-lemezen, és hozzáadja a rendszerswap-területhez.
 
 **ResourceDisk.SwapSizeMB:**  
-```
+```txt
 Type: Integer  
 Default: 0
 ```
 A lapozófájl mérete megabájtban.
 
 **Naplók. verbose:**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Ha be van állítva, a naplózási részletesség növelése megtörténik. A Waagent naplókat készít a/var/log/waagent.log, és a rendszerszintű logrotate funkciót használja a naplók elforgatásához.
 
 **OS. EnableRDMA**  
-```
+```txt
 Type: Boolean  
 Default: n
 ```
 Ha be van állítva, az ügynök megkísérli a telepítését, majd betölteni egy olyan RDMA kernel-illesztőprogramot, amely megfelel az alapul szolgáló hardveren található belső vezérlőprogram verziójának.
 
 **OS. RootDeviceScsiTimeout:**  
-```
+```txt
 Type: Integer  
 Default: 300
 ```
 Ezzel a beállítással az operációsrendszer-lemezen és az adatmeghajtókon másodpercek alatt megadhatja az SCSI-időtúllépést. Ha nincs beállítva, a rendszer az alapértelmezett értékeket használja.
 
 **OS. OpensslPath:**  
-```
+```txt
 Type: String  
 Default: None
 ```
 Ezzel a beállítással megadhatja a titkosítási műveletekhez használandó OpenSSL bináris fájl alternatív elérési útját.
 
 **Http. Host, http. port**  
-```
+```txt
 Type: String  
 Default: None
 ```
 Ha be van állítva, az ügynök ezt a proxykiszolgálót használja az Internet eléréséhez. 
 
 **AutoUpdate. enabled**
-```
+```txt
 Type: Boolean
 Default: y
 ```

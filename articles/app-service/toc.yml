@@ -176,6 +176,8 @@
               href: configure-authentication-provider-microsoft.md
             - name: Hitelesítés a Twitterrel
               href: configure-authentication-provider-twitter.md
+            - name: Hitelesítés OpenID Connect-szolgáltatóval (előzetes verzió)
+              href: configure-authentication-provider-openid-connect.md
         - name: Speciális hitelesítés
           href: app-service-authentication-how-to.md
         - name: Hozzáférés korlátozása

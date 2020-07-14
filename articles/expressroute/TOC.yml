@@ -40,6 +40,8 @@
       items:
         - name: Kapcsolatcsoportok és társviszonyok ismertetése
           href: expressroute-circuit-peerings.md
+        - name: Kapcsolatcsoport sávszélessége frissítésének ismertetése
+          href: about-upgrade-circuit-bandwidth.md
         - name: Kapcsolatcsoportok módosítása klasszikusról Resource Manager-alapúra
           href: expressroute-move.md
     - name: BFD ExpressRoute-on keresztül

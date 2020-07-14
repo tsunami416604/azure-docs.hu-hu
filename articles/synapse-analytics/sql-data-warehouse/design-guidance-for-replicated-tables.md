@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8328750849f5466c8754499694a41615776ff3da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85201701"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86181335"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>Tervezési útmutató a replikált táblák használatához a szinapszis SQL-készletben
 
@@ -149,9 +149,9 @@ Ha replikált táblákba tölti be az adatgyűjtést, próbálja meg az Újraép
 
 Például a terhelési minta négy forrásból tölti be az adatait, és négy újraépítést hív meg.
 
-        Load from source 1.
+- Betöltés az 1. forrásból.
 - Válassza az utasítás Újraépítés 1 lehetőséget.
-        Betöltés a 2. forrásból.
+- Betöltés a 2. forrásból.
 - A SELECT utasítás elindítja a 2. újraépítést.
 - Betöltés a 3. forrásból.
 - A SELECT utasítás elindítja a 3. Újraépítés elemet.

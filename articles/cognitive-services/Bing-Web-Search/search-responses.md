@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7933d5e5cf7d82de013e18b221f3a0c3ce6b5229
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 284f8c8432d732fdfa7e16b43a47578437bcf0ba
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800528"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202248"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API a válasz szerkezete és a válaszok típusai  
 
@@ -294,9 +294,9 @@ A matematikai kifejezések a következő szimbólumokat tartalmazhatják:
 |------------|-----------------|
 |+|Összeadás|
 |-|Kivonás|
-|/|Részleg|
+|/|Osztás|
 |*|Szorzás|
-|^|Power|
+|^|Energiaellátás|
 |!|Faktoriális|
 |.|Decimal|
 |()|Sorrend csoportosítása|
@@ -435,7 +435,7 @@ Ha a Bing azt állapítja meg, hogy a felhasználó nem keres valami mást, a v�
 
 A Bing Web Search API által küldött válaszok a következő fejléceket tartalmazhatják:
 
-|||
+| Fejléc | Leírás |
 |-|-|
 |`X-MSEdge-ClientID`|A Bing által a felhasználóhoz hozzárendelt egyedi azonosító|
 |`BingAPIs-Market`|A kérelem teljesítéséhez használt piac|
@@ -476,10 +476,10 @@ Az alábbi ábrán látható, hogyan használja a Bing a helyesírási javaslato
 
 ![Bing – helyesírási javaslat – példa](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 * Felülvizsgálati [kérelem szabályozási](throttling-requests.md) dokumentációja.  
 
-## <a name="see-also"></a>További információ  
+## <a name="see-also"></a>Lásd még  
 
 * [Bing Web Search API referenciája](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

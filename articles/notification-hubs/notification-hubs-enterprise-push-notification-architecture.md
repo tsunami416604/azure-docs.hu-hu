@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e53e9599da3c12fdf01c8902a7275fc75ce86643
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76264033"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86223601"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Útmutató a vállalati leküldési architektúrákhoz
 
@@ -36,7 +37,7 @@ Itt látható a megoldás általános architektúrája (több Mobile alkalmazás
 
 ## <a name="architecture"></a>Architektúra
 
-![][1]
+![A folyamatot bemutató vállalati architektúra ábrája események, előfizetések és leküldéses üzenetek használatával.][1]
 
 Ebben az építészeti diagramban található kulcs Azure Service Bus, amely a témakörök/előfizetések programozási modelljét tartalmazza (További információ: [Service Bus pub/sub programozás]). A fogadó, amely ebben az esetben a mobil háttér (jellemzően az [Azure Mobile Service], amely leküldi a Mobile apps-t) nem fogad üzeneteket közvetlenül a háttérrendszer-rendszerekből, hanem a [Azure Service Bus]által biztosított köztes absztrakt réteget, amely lehetővé teszi, hogy a mobil háttérrendszer üzeneteket fogadjon egy vagy több háttérrendszer-rendszerből. Létre kell hozni egy Service Bus témakört az egyes háttérrendszer-rendszerekhez, például a fiók, az HR, a pénzügy, ami alapvetően "témakörök", amely a leküldéses értesítésként küldendő üzeneteket kezdeményezi. A háttérrendszer üzeneteket küld ezekre a témakörökre. A mobil háttérrendszer egy Service Bus előfizetés létrehozásával tud előfizetni egy vagy több ilyen témakörre. Arra jogosítja fel a mobil hátteret, hogy értesítést kapjon a megfelelő háttérrendszer-rendszerről. A mobil háttérrendszer továbbra is figyeli az üzenetek előfizetéseit, és amint egy üzenet érkezik, visszavált, és értesítést küld az értesítési központnak. Az értesítési hubok végül továbbítják az üzenetet a Mobile alkalmazásnak. Itt látható a legfontosabb összetevők listája:
 
@@ -227,15 +228,17 @@ A teljes mintakód a [Notification hub-mintáknál]érhető el. Három összetev
 
     e. Az alkalmazás **webjobs**való közzétételéhez kattintson a jobb gombbal a megoldásra a Visual Studióban, és válassza a **Közzététel as webjobs** lehetőséget.
 
-    ![][2]
+    ![Képernyőkép a jobb gombbal elérhető beállításokról, amelyek a publish as Azure Webjobs jelennek meg, és piros színnel jelennek meg.][2]
 
     f. Válassza ki a közzétételi profilt, és hozzon létre egy új Azure-webhelyet, ha még nem létezik, amely üzemelteti ezt a Webjobs, és ha már rendelkezik a webhellyel, **tegye közzé**.
 
-    ![][3]
+    :::image type="complex" source="./media/notification-hubs-enterprise-push-architecture/PublishAsWebJob.png" alt-text="Képernyőfelvétel: a munkafolyamatot bemutató webhely létrehozása az Azure-ban.":::
+    Képernyőkép a webes közzététel párbeszédpanelről, amelyen a Microsoft Azure Websites lehetőség van kiválasztva, egy zöld nyíl a meglévő webhely kiválasztása párbeszédpanelre, ahol a piros színnel jelölt új lehetőség látható, és a hely neve, valamint a vörös színnel jelölt létrehozási beállítások pontra Microsoft Azure mutató zöld nyíl.
+    :::image-end:::
 
     : Konfigurálja úgy a feladatot, hogy "folyamatosan fusson", hogy amikor bejelentkezik a [Azure Portalba] , a következőhöz hasonlóan kell megjelennie:
 
-    ![][4]
+    ![Képernyőkép az Azure Portalról a vállalati leküldéses háttérbeli webjobs-feladatokkal, valamint a név, az ütemterv és a naplók értékeit piros színnel mutatja.][4]
 
 3. **EnterprisePushMobileApp**
 
@@ -269,11 +272,11 @@ A teljes mintakód a [Notification hub-mintáknál]érhető el. Három összetev
 2. Futtassa a **EnterprisePushMobileApp**, amely elindítja a Windows áruház alkalmazást.
 3. Futtassa a **EnterprisePushBackendSystem** Console alkalmazást, amely szimulálja az LoB-hátteret, és megkezdi az üzenetek küldését, és látnia kell a következő képen láthatóhoz hasonló pirítósi értesítéseket:
 
-    ![][5]
+    ![Képernyőkép a vállalati leküldéses háttérrendszer-alkalmazást futtató konzolról, valamint az alkalmazás által küldött üzenetről.][5]
 
 4. Az üzeneteket eredetileg Service Bus témakörök kaptak, amelyeket a webes feladatokban Service Bus előfizetések figyeltek. Az üzenet fogadása után egy értesítés lett létrehozva, és a rendszer elküldte a mobil alkalmazásnak. A Webjobs-naplókban megtekintheti a feldolgozást, amikor a [Azure Portal] webhelyéhez tartozó naplók hivatkozásra lép:
 
-    ![][6]
+    ![A folyamatos Webjobs részletek párbeszédpanel képernyőképe, amelyen a piros színnel elküldött üzenet jelenik meg.][6]
 
 <!-- Images -->
 [1]: ./media/notification-hubs-enterprise-push-architecture/architecture.png
@@ -290,4 +293,4 @@ A teljes mintakód a [Notification hub-mintáknál]érhető el. Három összetev
 [Service Bus pub/sub programozás]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure-Webjobs]: ../app-service/webjobs-create.md
 [Notification Hubs – univerzális Windows-oktatóanyag]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Azure Portalra]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

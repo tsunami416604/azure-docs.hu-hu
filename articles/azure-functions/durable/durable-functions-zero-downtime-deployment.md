@@ -5,11 +5,13 @@ author: tsushi
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 45f87898f7da432e5bdd09061e74c33a1a8fe41b
+ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74231256"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86165702"
 ---
 # <a name="zero-downtime-deployment-for-durable-functions"></a>Nulla – állásidő üzembe helyezése Durable Functions
 
@@ -18,9 +20,6 @@ A Durable Functions [megbízható végrehajtási modellje](durable-functions-che
 A hibák megelőzése érdekében két lehetőség közül választhat: 
 - Késleltetheti az üzembe helyezést, amíg az összes futó előkészítési példány be nem fejeződik.
 - Győződjön meg arról, hogy a futó előkészítési példányok a függvények meglévő verzióit használják. 
-
-> [!NOTE]
-> Ez a cikk útmutatást nyújt a functions-alkalmazásokhoz, amelyek célja az 1. x Durable Functions. Nem frissült a Durable Functions 2. x-ben bevezetett változások miatt. További információ a bővítmény-verziók közötti különbségekről: [Durable functions verziók](durable-functions-versions.md).
 
 Az alábbi táblázat összehasonlítja a három fő stratégiát a Durable Functions nulla állásidős telepítésének megvalósításához: 
 
@@ -96,7 +95,7 @@ Konfigurálja a CI/CD-folyamatot úgy, hogy csak akkor telepítsen, ha a Functio
 [FunctionName("StatusCheck")]
 public static async Task<IActionResult> StatusCheck(
     [HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestMessage req,
-    [OrchestrationClient] DurableOrchestrationClient client,
+    [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
     var runtimeStatus = new List<OrchestrationRuntimeStatus>();
@@ -104,8 +103,8 @@ public static async Task<IActionResult> StatusCheck(
     runtimeStatus.Add(OrchestrationRuntimeStatus.Pending);
     runtimeStatus.Add(OrchestrationRuntimeStatus.Running);
 
-    var status = await client.GetStatusAsync(new DateTime(2015,10,10), null, runtimeStatus);
-    return (ActionResult) new OkObjectResult(new Status() {HasRunning = (status.Count != 0)});
+    var result = await client.ListInstancesAsync(new OrchestrationStatusQueryCondition() { RuntimeStatus = runtimeStatus }, CancellationToken.None);
+    return (ActionResult)new OkObjectResult(new { HasRunning = result.DurableOrchestrationState.Any() });
 }
 ```
 

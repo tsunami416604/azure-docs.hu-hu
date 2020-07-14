@@ -8,11 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ed1a7cacc6c40cb12976c8703164d46e0dc0458
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76844394"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86202377"
 ---
 # <a name="coarse-relocalization"></a>Durva helyzet-újrameghatározás
 
@@ -119,13 +120,11 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 
 Ezután el kell döntenie, hogy mely érzékelőket szeretné használni a durva újrahonosításhoz. Ez a döntés a fejleszthető alkalmazásra jellemző, de a következő táblázatban szereplő javaslatok jó kiindulási pontot adnak:
 
-
-|             | Beltéri | Szabadban |
-|-------------|---------|----------|
-| GPS         | Ki | Be |
-| Fi        | Be | Bekapcsolva (nem kötelező) |
-| Egyazon figyelő | Bekapcsolva (nem kötelező a kikötésekkel kapcsolatban lásd alább) | Ki |
-
+|                 | Beltéri | Szabadban |
+|-----------------|---------|----------|
+| **GPS**         | Ki | Be |
+| **Fi**        | Be | Bekapcsolva (nem kötelező) |
+| **Egyazon figyelő** | Bekapcsolva (nem kötelező a kikötésekkel kapcsolatban lásd alább) | Ki |
 
 ### <a name="enabling-gps"></a>A GPS engedélyezése
 
@@ -657,12 +656,11 @@ Az alábbi táblázat a várt keresési helyet becsüli meg az egyes érzékelő
 
 A következő táblázat összefoglalja az egyes támogatott platformokon összegyűjtött érzékelők adatait, valamint a platformra vonatkozó kikötéseket:
 
-
-|             | HoloLens | Android | iOS |
-|-------------|----------|---------|-----|
-| GPS         | N.A. | [LocationManager][3] API-kon keresztül támogatott (a GPS és a hálózat is) | [CLLocationManager][4] API-kon keresztül támogatott |
-| Fi        | 3 másodpercenként körülbelül egy vizsgálattal támogatott | Támogatott. A 28-as API-szinttől kezdve a Wi-Fi vizsgálat 2 percenként 4 hívásra van Leszabályozva. Az Android 10-es verzióban a szabályozás le lehet tiltani a fejlesztői beállítások menüből. További információt az [Android dokumentációjában][5]talál. | N/A – nincs nyilvános API |
-| Egyazon figyelő | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik |
+|                 | HoloLens | Android | iOS |
+|-----------------|----------|---------|-----|
+| **GPS**         | N/A | [LocationManager][3] API-kon keresztül támogatott (a GPS és a hálózat is) | [CLLocationManager][4] API-kon keresztül támogatott |
+| **Fi**        | 3 másodpercenként körülbelül egy vizsgálattal támogatott | Támogatott. A 28-as API-szinttől kezdve a Wi-Fi vizsgálat 2 percenként 4 hívásra van Leszabályozva. Az Android 10-es verzióban a szabályozás le lehet tiltani a fejlesztői beállítások menüből. További információt az [Android dokumentációjában][5]talál. | N/A – nincs nyilvános API |
+| **Egyazon figyelő** | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik |
 
 ## <a name="next-steps"></a>További lépések
 

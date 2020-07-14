@@ -4,24 +4,27 @@ description: Hálózatok biztonságos csatlakoztatása az Azure privát hivatkoz
 author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: fa473591355ef9e1ee582dd9c9b820dfa2f93f36
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a7ff659eb6fc204208c84146a2fc33c8278f7154
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85269041"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207285"
 ---
-# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozással Azure Automation
+# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Hálózatok biztonságos csatlakoztatása az Azure privát hivatkozásával Azure Automation (előzetes verzió)
 
 Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos módon csatlakoztatja Önt egy Azure privát kapcsolat által működtetett szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza az Automation szolgáltatást a VNet. A VNet lévő gépek és az Automation-fiók közötti hálózati forgalom a VNet és a Microsoft gerinc hálózatán található privát kapcsolaton keresztül történik, ami kiküszöböli a nyilvános internetről való kitettséget.
 
-Például van egy olyan VNet, amelyben le van tiltva a kimenő internet-hozzáférés. Az Automation-fiókját azonban saját maga szeretné elérni, és olyan automatizálási funkciókat használhat, mint például a webhookok, az állapot-konfiguráció és a runbook-feladatok hibrid Runbook-feldolgozókon. Emellett azt is szeretné, hogy a felhasználók csak a VNET keresztül férhessenek hozzá az Automation-fiókhoz. Ezt a magánhálózati végpontok üzembe helyezésével lehet megvalósítani.
+Például van egy olyan VNet, amelyben le van tiltva a kimenő internet-hozzáférés. Az Automation-fiókját azonban saját maga szeretné elérni, és olyan automatizálási funkciókat használhat, mint például a webhookok, az állapot-konfiguráció és a runbook-feladatok hibrid Runbook-feldolgozókon. Emellett azt is szeretné, hogy a felhasználók csak a VNET keresztül férhessenek hozzá az Automation-fiókhoz.  A privát végpontok üzembe helyezése ezeket a célokat éri el.
 
-Ez a cikk azt ismerteti, hogy mikor kell használni és hogyan kell beállítani egy privát végpontot az Automation-fiókkal.
+Ez a cikk a használatáról és az Automation-fiókkal (előzetes verzió) rendelkező privát végpontok beállításával foglalkozik.
 
 ![A Azure Automation privát hivatkozásának fogalmi áttekintése](./media/private-link-security/private-endpoints-automation.png)
+
+>[!NOTE]
+> A Azure Automation (előzetes verzió) szolgáltatással való privát kapcsolat támogatása csak az Azure kereskedelmi és az Azure US government-felhőkben érhető el.
 
 ## <a name="advantages"></a>Előnyök
 
@@ -46,9 +49,11 @@ Azure Automation privát hivatkozás egy vagy több privát végpontot (és így
 
 Miután létrehozta az Automation számára a magánhálózati végpontokat, az összes nyilvános Automation URL-cím, amelyet Ön vagy egy gép közvetlenül tud felvenni, a VNet egy privát végpontra van leképezve.
 
+Az előzetes kiadás részeként egy Automation-fiók nem fér hozzá a privát végponton keresztül védett Azure-erőforrásokhoz. Például Azure Key Vault, Azure SQL, Azure Storage-fiók stb.
+
 ### <a name="webhook-scenario"></a>Webhook forgatókönyv
 
-A runbookok elindításához tegye a webhook URL-címét. Az URL-cím például a következőre hasonlít:`https://<automationAccountId>.webhooks. <region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
+A runbookok elindításához tegye a webhook URL-címét. Az URL-cím például a következőre hasonlít:`https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
 
 ### <a name="state-configuration-agentsvc-scenario"></a>Állapot-konfiguráció (agentsvc) forgatókönyv
 
@@ -60,11 +65,11 @@ A nyilvános & magánhálózati végpont URL-címe azonos lenne, azonban egy mag
 
 ## <a name="planning-based-on-your-network"></a>Tervezés a hálózat alapján
 
-Az Automation-fiók erőforrásának beállítása előtt vegye figyelembe a hálózat elkülönítésének követelményeit. Értékelje ki a virtuális hálózatok hozzáférését a nyilvános internethez, valamint a hozzáférési korlátozásokat az Automation-fiókhoz (beleértve a privát kapcsolati csoport hatókörének beállítását is, hogy az Automation-fiókjával integráltan Azure Monitor naplókat.
+Az Automation-fiók erőforrásának beállítása előtt vegye figyelembe a hálózat elkülönítésének követelményeit. Értékelje ki a virtuális hálózatok hozzáférését a nyilvános internethez, valamint a hozzáférési korlátozásokat az Automation-fiókhoz (beleértve a privát kapcsolati csoport hatókörének beállítását is, hogy az Automation-fiókjával integráltan Azure Monitor naplókat. Emellett az Automation szolgáltatás [DNS-rekordjainak](./automation-region-dns-records.md) felülvizsgálatát is tartalmazza a csomag részeként, hogy a támogatott funkciók a probléma nélkül működjenek.
 
 ### <a name="connect-to-a-private-endpoint"></a>Kapcsolódás privát végponthoz
 
-Hozzon létre egy privát végpontot a hálózat összekapcsolásához. Ezt a feladatot a [Azure Portal Private link Centerben](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)végezheti el. Miután a publicNetworkAccess és a privát kapcsolatra vonatkozó módosításokat alkalmazza, akár 35 percet is igénybe vehet, amíg érvénybe lépnek.
+Hozzon létre egy privát végpontot a hálózat összekapcsolásához. Ezt a [Azure Portal Private link Centerben](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)hozhatja létre. Miután a publicNetworkAccess és a privát kapcsolatra vonatkozó módosításokat alkalmazza, akár 35 percet is igénybe vehet, amíg érvénybe lépnek.
 
 Ebben a szakaszban egy privát végpontot fog létrehozni az Automation-fiókhoz.
 
@@ -72,34 +77,34 @@ Ebben a szakaszban egy privát végpontot fog létrehozni az Automation-fiókhoz
 
 2. A **Private link Centerben – áttekintés**, a **szolgáltatáshoz való magánhálózati kapcsolat**létrehozásához válassza az **Indítás**lehetőséget.
 
-3. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
+3. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki a következő adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki az előfizetését. |
+    | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
-    | Name | Adja meg a *PrivateEndpoint*. |
+    | Név | Adja meg a *PrivateEndpoint*. |
     | Régió | Válassza a **YourRegion**lehetőséget. |
     |||
 
 4. Válassza a **Tovább: erőforrás**elemet.
 
-5. A **privát végpont létrehozása – erőforrás**területen adja meg vagy válassza ki az alábbi adatokat:
+5. A **privát végpont létrehozása – erőforrás**területen adja meg vagy válassza ki a következő adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     |Kapcsolati módszer  | Válassza a kapcsolódás egy Azure-erőforráshoz a címtárban lehetőséget.|
-    | Előfizetés| Válassza ki az előfizetését. |
+    | Előfizetés| Válassza ki előfizetését. |
     | Erőforrás típusa | Válassza a **Microsoft. Automation/automationAccounts**lehetőséget. |
     | Erőforrás |*MyAutomationAccount* kiválasztása|
-    |Cél alerőforrása |A forgatókönyvtől függően válassza a *webhook* vagy a *DSCAndHybridWorker* lehetőséget.|
+    |Cél alerőforrás |A forgatókönyvtől függően válassza a *webhook* vagy a *DSCAndHybridWorker* lehetőséget.|
     |||
 
 6. Válassza a **Tovább: konfigurálás**lehetőséget.
 
-7. A **privát végpont létrehozása – konfiguráció**területen adja meg vagy válassza ki az alábbi adatokat:
+7. A **privát végpont létrehozása – konfiguráció**területen adja meg vagy válassza ki a következő adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
@@ -141,7 +146,7 @@ $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 
 ## <a name="dns-configuration"></a>DNS-konfiguráció
 
-Ha a kapcsolati karakterlánc részeként egy teljes tartománynevet használó privát kapcsolati erőforráshoz csatlakozik, fontos, hogy helyesen konfigurálja a DNS-beállításokat a lefoglalt magánhálózati IP-címhez való feloldáshoz. Előfordulhat, hogy a meglévő Azure-szolgáltatások már rendelkeznek DNS-konfigurációval, ha nyilvános végponton keresztül csatlakoznak. Ezt felül kell bírálni a privát végpont használatával történő kapcsolódáshoz.
+Ha a kapcsolati karakterlánc részeként egy teljes tartománynevet (FQDN) használó privát kapcsolati erőforráshoz csatlakozik, fontos, hogy a DNS-beállításokat helyesen konfigurálja a lefoglalt magánhálózati IP-címhez való feloldáshoz. Előfordulhat, hogy a meglévő Azure-szolgáltatások már rendelkeznek DNS-konfigurációval, ha nyilvános végponton keresztül csatlakoznak. A DNS-konfigurációt felül kell vizsgálni és frissíteni kell, hogy az a privát végponton keresztül kapcsolódjon.
 
 A magánhálózati végponthoz társított hálózati adapter tartalmazza a DNS konfigurálásához szükséges összes információt, beleértve a teljes TARTOMÁNYNEVEt és az adott privát kapcsolati erőforrás számára lefoglalt magánhálózati IP-címeket is.
 

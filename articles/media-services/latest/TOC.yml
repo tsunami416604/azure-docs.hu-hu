@@ -159,6 +159,8 @@
           href: streaming-policy-concept.md
         - name: Tartalomkulcsszabályok
           href: content-key-policy-concept.md
+        - name: Tartalomvédelem az Azure AD-vel
+          href: azure-ad-content-protection.md
     - name: Figyelés
       items:
         - name: Események az Event Griddel

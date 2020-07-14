@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d0d0d19b9b84649867085a05efa656131e48c5a
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81535706"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86220720"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Egyéni tartománynév vásárlása az Azure App Service-hez
 
@@ -78,11 +78,11 @@ Nyissa meg az [Azure Portalt](https://portal.azure.com/), majd jelentkezzen be a
 ### <a name="launch-buy-domains"></a>A Buy Domains elindítása
 A **app Services** lapon kattintson az alkalmazás nevére, válassza a **Beállítások**, majd az **Egyéni tartományok** elemet.
    
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Képernyőkép, amely a Kiemelt egyéni tartományokat jeleníti meg.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 Az **Egyéni tartományok** lapon kattintson a **tartomány vásárlása**elemre.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
+![A Buy domain kiemelését bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
 > [!NOTE]
 > Ha nem látja a **app Service tartományok** szakaszt, el kell távolítania az Azure-fiók költségkeretét (lásd: [Előfeltételek](#prerequisites)).
@@ -93,7 +93,7 @@ Az **Egyéni tartományok** lapon kattintson a **tartomány vásárlása**elemre
 
 A **app Service tartomány** lap **Keresés tartományba** mezőjébe írja be a megvásárolni kívánt tartománynevet, majd írja be a nevet `Enter` . A javasolt elérhető tartományok csak a szövegmező alatt jelennek meg. Válasszon ki egy vagy több megvásárolni kívánt tartományt.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
+![Képernyőkép, amely megjeleníti a keresés a tartományon keresőmezőt.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
 > App Service tartományok a következő [legfelső szintű tartományokat](https://wikipedia.org/wiki/Top-level_domain) támogatják: _com_, _net_, _Co.uk_, _org_, _nl_, _in_, _BIZ_, _org.uk_és _Co.in_.
@@ -108,7 +108,7 @@ Ezután válassza ki a tartományhoz a kívánt beállításokat. A magyarázato
 
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
-|Adatvédelem | Engedélyezés | Ha az "Adatvédelem" lehetőséget választja, az _ingyenes_vásárlási díj részét képezi. Néhány legfelső szintű tartományt a regisztrátorok felügyelnek, amelyek nem támogatják az adatvédelem védelmét, és az **Adatvédelem** lapon vannak felsorolva. |
+|Adatvédelem | Bekapcsolás | Ha az "Adatvédelem" lehetőséget választja, az _ingyenes_vásárlási díj részét képezi. Néhány legfelső szintű tartományt a regisztrátorok felügyelnek, amelyek nem támogatják az adatvédelem védelmét, és az **Adatvédelem** lapon vannak felsorolva. |
 | Alapértelmezett állomásnevek kiosztása | **www** és**\@** | Szükség esetén válassza ki a kívánt állomásnév-kötéseket. A tartományi megvásárlási művelet befejezésekor az alkalmazás a kiválasztott gazdagépeken is elérhető. Ha az alkalmazás az [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)mögött van, nem jelenik meg a gyökértartomány (@) hozzárendelésének lehetősége, mert Traffic Manager nem támogatja a rekordokat. A tartománynév-hozzárendelések módosítása a tartomány megvásárlása után végezhető el. |
 
 ### <a name="accept-terms-and-purchase"></a>Feltételek és vásárlás elfogadása
@@ -122,19 +122,19 @@ A feltételek és a díjak áttekintéséhez kattintson a **jogi feltételek** e
 
 Vissza a **app Service tartomány** lapon kattintson **az OK**gombra. Amíg a művelet folyamatban van, a következő értesítések jelennek meg:
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
+![Képernyőkép, amely az érvényesítés folyamatban üzenetben jelenik meg.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-validate.png)
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
+![A vásárlás sikerességét bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-purchase-success.png)
 
 ### <a name="test-the-hostnames"></a>Az állomásnevek tesztelése
 
 Ha az alkalmazáshoz az alapértelmezett állomásnevek vannak hozzárendelve, akkor az egyes kiválasztott állomásnévről is megjelenik egy sikeres értesítés.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![Képernyőkép, amely az egyes kiválasztott állomásnév sikeres értesítését jeleníti meg.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 A kiválasztott állomásnevek a Custom **Domains** (egyéni tartományok) lapon, az **Egyéni állomásnevek** szakaszban is láthatók.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
+![Képernyőfelvétel: a kiválasztott állomásnevek a Custom Domains (egyéni állomásnevek) szakaszban találhatók.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
 > Az egyéni tartomány **nem biztonságos** címkéje azt jelenti, hogy még nem kötődik TLS/SSL-tanúsítványhoz, és a böngészőtől az egyéni tartományba érkező HTTPS-kérések a böngészőtől függően hibaüzenetet vagy figyelmeztetést kapnak. A TLS-kötés konfigurálásával kapcsolatban lásd: [Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure app Serviceban](configure-ssl-bindings.md).
@@ -154,11 +154,11 @@ A App Service tartományban lévő gazdagépeket más alkalmazásokhoz is hozzá
 ### <a name="launch-add-hostname"></a>Az állomásnév hozzáadásának indítása
 A **app Services** lapon válassza ki annak az alkalmazásnak a nevét, amelyhez állomásnévket szeretne hozzárendelni, válassza a **Beállítások**, majd az **Egyéni tartományok**elemet.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Képernyőkép, amely a Kiemelt egyéni tartományokat jeleníti meg.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 Győződjön meg arról, hogy a megvásárolt tartomány szerepel a **app Service tartományok** szakaszban, de ne jelölje ki. 
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![A megvásárolt tartományt bemutató képernyőkép a App Service tartományok szakaszban.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 > [!NOTE]
 > Az adott előfizetésben lévő összes App Service tartomány megjelenik az alkalmazás **Egyéni tartományok** lapján. Ha a tartomány az alkalmazás előfizetésében szerepel, de nem jelenik meg az alkalmazás **Egyéni tartományok** lapján, próbálja meg újból megnyitni az **Egyéni tartományok** lapot, vagy frissítse a weblapot. Emellett tekintse meg az értesítési harangot a Azure Portal tetején a folyamatjelző vagy a létrehozási hibákért.
@@ -180,14 +180,14 @@ Válassza a **Gazdagépnév hozzáadása** lehetőséget.
 
 Ha a művelet befejeződött, megjelenik egy sikeres értesítés a hozzárendelt állomásnévről.  
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
+![A hozzárendelt állomásnév sikeres értesítését bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
 ### <a name="close-add-hostname"></a>Állomásnév hozzáadásának lezárása
 Az **állomásnév hozzáadása** lapon a kívánt módon rendeljen hozzá egy másik gazdagépet az alkalmazáshoz. Ha elkészült, az **Add hostname (állomásnév hozzáadása** ) oldal bezárásához.
 
 Ekkor az újonnan hozzárendelt állomásnév (eke) t kell látnia az alkalmazás **Egyéni tartományok** lapján.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
+![Képernyőfelvétel: az újonnan hozzárendelt gazdagépek az alkalmazás egyéni tartományok lapján láthatók.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added2.png)
 
 ### <a name="test-the-hostnames"></a>Az állomásnevek tesztelése
 
@@ -201,15 +201,15 @@ Ha ki szeretné kapcsolni az automatikus megújítást, vagy ha manuálisan szer
 
 A **app Services** lapon kattintson az alkalmazás nevére, válassza a **Beállítások**, majd az **Egyéni tartományok**elemet.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+![Képernyőkép, amely a Kiemelt egyéni tartományokat jeleníti meg.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
 A **app Service tartományok** szakaszban válassza ki a konfigurálni kívánt tartományt.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+![A megvásárolt tartományt bemutató képernyőkép a App Service tartományok szakaszban.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
 
 A tartomány bal oldali navigációs sávján válassza a **tartomány megújítása**lehetőséget. Ha nem szeretné automatikusan megújítani a tartományt, válassza a **kikapcsolva**, majd a **Mentés**lehetőséget.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
+![Képernyőfelvétel: a tartomány automatikus megújításának lehetősége.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
 
 A tartomány manuális megújításához válassza a **tartomány megújítása**lehetőséget. Ez a gomb azonban [a tartomány lejárata előtt 90 nappal](#when-domain-expires)nem aktív.
 
@@ -237,7 +237,7 @@ Az Azure-ban a App Service tartomány DNS-rekordjait [Azure DNS](https://azure.m
 
 A Azure Portal bal oldali menüjében válassza a **minden szolgáltatás**  >  **app Service tartományok**lehetőséget.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![Képernyőfelvétel: a App Service tartományok elérési helyének megjelenítése.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 Válassza ki a kezelni kívánt tartományt. 
 
@@ -245,7 +245,7 @@ Válassza ki a kezelni kívánt tartományt.
 
 A tartomány bal oldali menüjében válassza a **DNS-zóna**lehetőséget.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
+![A DNS-zóna kiválasztásának helyét bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-dns-zone.png)
 
 Ez a művelet megnyitja a App Service tartományának [DNS-zóna](../dns/dns-zones-records.md) lapját Azure DNS. További információ a DNS-rekordok szerkesztéséről: [DNS-zónák kezelése a Azure Portalban](../dns/dns-operations-dnszones-portal.md).
 
@@ -257,7 +257,7 @@ Miután megvásárolta a App Service tartományt, öt napja van, hogy megszakít
 
 A Azure Portal bal oldali menüjében válassza a **minden szolgáltatás**  >  **app Service tartományok**lehetőséget.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
+![Képernyőfelvétel: a App Service tartományok elérési helyének megjelenítése.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
 Válassza ki a megszakítani vagy törölni kívánt tartományt. 
 
@@ -265,13 +265,13 @@ Válassza ki a megszakítani vagy törölni kívánt tartományt.
 
 A tartomány bal oldali menüjében válassza az **állomásnév-kötések**lehetőséget. Az összes Azure-szolgáltatás állomásnév-kötéseit itt találja.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
+![A hostname kötések lapot megjelenítő képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostname-bindings.png)
 
 A App Service tartományt csak akkor törölheti, ha az összes állomásnév-kötés törölve lett.
 
 Az egyes állomásnév-kötések törléséhez válassza a **...**  >  lehetőséget. **Törlés**. Az összes kötés törlése után válassza a **Mentés**lehetőséget.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
+![A gazdagép-kötések törlésének helyét bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-delete-hostname-bindings.png)
 
 ### <a name="cancel-or-delete"></a>Megszakítás vagy törlés
 
@@ -279,7 +279,7 @@ A tartomány bal oldali menüjében válassza az **Áttekintés**lehetőséget.
 
 Ha a megvásárolt tartomány megszakítási időszaka nem telt el, válassza a **vásárlás megszakítása**lehetőséget. Ellenkező esetben a Delete ( **Törlés** ) gomb jelenik meg. Ha a tartományt visszatérítés nélkül szeretné törölni, válassza a **Törlés**lehetőséget.
 
-![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
+![A megvásárolt tartomány törlésének vagy megszakításának helyét bemutató képernyőkép.](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
 A művelet megerősítéséhez válassza az **Igen**lehetőséget.
 

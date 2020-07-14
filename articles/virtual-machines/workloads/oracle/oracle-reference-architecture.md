@@ -2,22 +2,22 @@
 title: Az Azure-beli Oracle-adatbázisok referenciái architektúrái | Microsoft Docs
 description: A Oracle Database Enterprise Edition-adatbázisok Microsoft Azure Virtual Machines-on való futtatására szolgáló architektúrák.
 services: virtual-machines-linux
-author: BorisB2015
-manager: gwallace
+author: rgardler
+manager: ''
 tags: ''
 ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2019
-ms.author: borisb
+ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: bbb6665299ce9b6521eeb8801d8621dfbdc17f4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9125d8d2177b9bc40bb280f414cdfb2797ccf8fe
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81683491"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221612"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Az Azure-beli Oracle Database Enterprise Edition hivatkozási architektúrái
 
@@ -41,7 +41,7 @@ Végül, ha a felhőhöz telepít át vagy hoz létre alkalmazásokat, fontos, h
 
 ### <a name="oracle-rac-in-the-cloud"></a>Oracle-RAC a felhőben
 
-Az Oracle Real Application Cluster (RAC) egy olyan megoldás, amelyet az Oracle az ügyfelek számára nagy teljesítményű adatforgalom eléréséhez biztosít, mivel számos példány fér hozzá egy adatbázis-tárolóhoz (közös – minden architektúra minta). Habár az Oracle RAC a helyszíni magas rendelkezésre álláshoz is használható, az Oracle-RAC önmagában nem használható magas rendelkezésre álláshoz a felhőben, mivel csak a példányok szintjének meghibásodása elleni védelmet nyújt, és nem az állvány-vagy adatközpont-szintű hibák ellen. Ezért az Oracle a magas rendelkezésre állás érdekében azt javasolja, hogy az Oracle-adatvédelmet az adatbázissal (akár egy példány vagy RAC) használja. Az ügyfeleknek általában magas SLA-ra van szükségük a kritikus fontosságú alkalmazások futtatásához. Az Oracle-RAC jelenleg nem hitelesített vagy nem támogatott az Azure-on. Az Azure azonban olyan funkciókat kínál, mint például az Azure, Availability Zones és tervezett karbantartási időszakokat, amelyek segítenek a példány-szintű hibák elleni védelemben. Ezen kívül az ügyfelek olyan technológiákat is használhatnak, mint például az Oracle-adatvédelem, az Oracle-GoldenGate és az Oracle-skálázás a nagy teljesítmény és a resiliancy érdekében azáltal, hogy az adatbázisait a rack szintű, valamint az adatközponti szintű és a földrajzilag fellépő hibák védik.
+Az Oracle Real Application Cluster (RAC) egy olyan megoldás, amelyet az Oracle az ügyfelek számára nagy teljesítményű adatforgalom eléréséhez biztosít, mivel számos példány fér hozzá egy adatbázis-tárolóhoz (közös – minden architektúra minta). Habár az Oracle RAC a helyszíni magas rendelkezésre álláshoz is használható, az Oracle-RAC önmagában nem használható magas rendelkezésre álláshoz a felhőben, mivel csak a példányok szintjének meghibásodása elleni védelmet nyújt, és nem az állvány-vagy adatközpont-szintű hibák ellen. Ezért az Oracle a magas rendelkezésre állás érdekében azt javasolja, hogy az Oracle-adatvédelmet az adatbázissal (akár egy példány vagy RAC) használja. Az ügyfeleknek általában magas SLA-ra van szükségük a kritikus fontosságú alkalmazások futtatásához. Az Oracle-RAC jelenleg nem hitelesített vagy nem támogatott az Azure-on. Az Azure azonban olyan funkciókat kínál, mint például az Azure, Availability Zones és tervezett karbantartási időszakokat, amelyek segítenek a példány-szintű hibák elleni védelemben. Ezen kívül az ügyfelek olyan technológiákat is használhatnak, mint például az Oracle-adatvédelem, az Oracle-GoldenGate és az Oracle-skálázás a nagy teljesítmény és a rugalmasság érdekében azáltal, hogy az adatbázisait a rack-szintű, valamint az adatközponti szintű és a földrajzilag fellépő hibák védik.
 
 Ha az Oracle-adatbázisok több [rendelkezésre állási zónában](https://docs.microsoft.com/azure/availability-zones/az-overview) futnak Oracle-adatgárda vagy GoldenGate használatával, az ügyfeleknek 99,99%-os üzemidőt biztosító SLA-t is igénybe vehetik. Azokon az Azure-régiókban, ahol a rendelkezésre állási zónák még nincsenek jelen, az ügyfelek használhatják a [rendelkezésre állási csoportokat](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) , és 99,95%-os üzemidőt biztosítanak.
 

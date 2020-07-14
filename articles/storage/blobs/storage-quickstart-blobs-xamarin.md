@@ -31,7 +31,7 @@ Hivatkozásokra mutató hivatkozások:
 * [API-referenciadokumentáció](/dotnet/api/azure.storage.blobs)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
 * [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
-* [Minta](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
+* [Sample](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

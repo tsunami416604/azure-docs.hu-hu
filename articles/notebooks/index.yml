@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Az Azure Notebooks előzetes verziójának dokumentációja
-summary: Az Azure Notebooks előzetes verziója egy ingyenes üzemeltetett szolgáltatás a Jupyter notebookok felhőben történő, telepítés nélküli fejlesztéséhez és futtatásához. A Jupyter (korábbi nevén IPython) egy nyílt forráskódú projekt, amellyel egyetlen megosztható vásznon – más néven egy notebookon – egyesítheti a Markdown-szövegeket, a végrehajtható kódot (Python, R és F#), valamint az állandó adatokat, grafikákat és vizualizációkat.
+summary: '2020. október 9-én az Azure Notebooks nyilvános előzetes webhelye megszűnik, és a Visual Studio, az Azure és a GitHub integrált szolgáltatásai váltják fel. A lehetőségeiről és a Microsoft egyéb notebook-szolgáltatásairól itt tájékozódhat: https://notebooks.azure.com/Content/alternatives.html.'
 metadata:
   title: Az Azure Notebooks előzetes verziójának dokumentációja
   description: Megtudhatja, hogyan hozhat létre, futtathat és oszthat meg Jupyter notebookokat az üzemeltetett előzetes verziójú Azure Notebooks-szolgáltatással.
@@ -9,12 +9,12 @@ metadata:
   author: JoshuaPartlow
   ms.author: joshuapa
   ms.date: 06/17/2020
-  ms.openlocfilehash: 96fd38e081105b6fc43cc2fc00d52bcf17b20074
-  ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
-  ms.translationtype: 
+  ms.openlocfilehash: 0065b8b609ca9ef29365127333ad1a39f3327c1b
+  ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+  ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/01/2020
-  ms.locfileid: "85799411"
+  ms.lasthandoff: 07/09/2020
+  ms.locfileid: "86181420"
 landingContent:
 - title: Tudnivalók az Azure Notebooks használatáról
   linkLists:

@@ -125,10 +125,10 @@ Cognitive Services támogatja Azure Active Directory (Azure AD) hitelesítését
 
 Mielőtt felügyelt identitásokat használ az Azure-erőforrásokhoz a virtuális gépről Cognitive Services erőforrásokhoz való hozzáférés engedélyezéséhez, engedélyeznie kell az Azure-erőforrások felügyelt identitásait a virtuális gépen. Az Azure-erőforrások felügyelt identitásának engedélyezéséről a következő témakörben tájékozódhat:
 
-- [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
+- [Azure Portalra](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
 - [Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
-- [Azure Resource Manager-sablon](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
+- [Azure Resource Manager sablon](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
 - [Azure Resource Manager ügyféloldali kódtárak](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
 
 A felügyelt identitásokkal kapcsolatos további információkért lásd: [felügyelt identitások az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).

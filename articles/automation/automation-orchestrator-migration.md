@@ -5,18 +5,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: b6778c4eab4dee382ec38d6218aa647e8aedc4cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3399138ef7c14dd2db9133334a08b3984bd26448
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836753"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86186001"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Migrálás az Orchestratorből az Azure Automationbe (bétaverzió)
 
-A [System Center 2012 – Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) runbookok az integrációs csomagok azon tevékenységein alapulnak, amelyek kifejezetten a Orchestrator vannak írva, míg a Azure Automation a Windows powershellen alapulnak. A Azure Automation [grafikus runbookok](automation-runbook-types.md#graphical-runbooks) hasonló megjelenéssel rendelkeznek a Orchestrator-runbookok, és azok tevékenységei a PowerShell-parancsmagokat, a gyermek runbookok és az eszközöket jelképezik. A runbookok konvertálásán kívül az integrációs csomagokat olyan tevékenységekkel kell konvertálnia, amelyeket a runbookok a Windows PowerShell-parancsmagokkal rendelkező integrációs modulokhoz használ. 
+A [System Center 2012 – Orchestrator](/previous-versions/system-center/system-center-2012-R2/hh237242(v=sc.12)) runbookok az integrációs csomagok azon tevékenységein alapulnak, amelyek kifejezetten a Orchestrator vannak írva, míg a Azure Automation a Windows powershellen alapulnak. A Azure Automation [grafikus runbookok](automation-runbook-types.md#graphical-runbooks) hasonló megjelenéssel rendelkeznek a Orchestrator-runbookok, és azok tevékenységei a PowerShell-parancsmagokat, a gyermek runbookok és az eszközöket jelképezik. A runbookok konvertálásán kívül az integrációs csomagokat olyan tevékenységekkel kell konvertálnia, amelyeket a runbookok a Windows PowerShell-parancsmagokkal rendelkező integrációs modulokhoz használ. 
 
-A [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx) (SMA) a helyi adatközpontban (például a Orchestrator) tárolja és futtatja a runbookok, és ugyanazokat az integrációs modulokat használja, mint a Azure Automation. A Runbook Converter a Orchestrator-runbookok grafikus runbookok alakítja át, amelyek nem támogatottak az SMA-ban. Továbbra is telepítheti a standard tevékenységek modult és a System Center Orchestrator integrációs modulokat SMA-ba, de manuálisan kell [újraírnia a runbookok](https://technet.microsoft.com/library/dn469262.aspx).
+A [Service Management Automation](/previous-versions/system-center/system-center-2012-R2/dn469260(v=sc.12)) (SMA) a helyi adatközpontban (például a Orchestrator) tárolja és futtatja a runbookok, és ugyanazokat az integrációs modulokat használja, mint a Azure Automation. A Runbook Converter a Orchestrator-runbookok grafikus runbookok alakítja át, amelyek nem támogatottak az SMA-ban. Továbbra is telepítheti a standard tevékenységek modult és a System Center Orchestrator integrációs modulokat SMA-ba, de manuálisan kell [újraírnia a runbookok](/system-center/sma/authoring-automation-runbooks).
 
 ## <a name="download-the-orchestrator-migration-toolkit"></a>A Orchestrator áttelepítési eszközkészlet letöltése
 
@@ -24,28 +24,28 @@ Az áttelepítés első lépése a [System Center Orchestrator áttelepítési e
 
 ## <a name="import-the-standard-activities-module"></a>A standard tevékenységek modul importálása
 
-Importálja a [standard tevékenységek modult](https://docs.microsoft.com/system-center/orchestrator/standard-activities?view=sc-orch-2019) Azure Automationba. Ide tartoznak a szabványos Orchestrator-tevékenységek konvertált verziói, amelyek a grafikus runbookok konvertálhatók.
+Importálja a [standard tevékenységek modult](/system-center/orchestrator/standard-activities?view=sc-orch-2019) Azure Automationba. Ide tartoznak a szabványos Orchestrator-tevékenységek konvertált verziói, amelyek a grafikus runbookok konvertálhatók.
 
 ## <a name="import-orchestrator-integration-modules"></a>Orchestrator-integrációs modulok importálása
 
-A Microsoft [integrációs csomagokat](https://technet.microsoft.com/library/hh295851.aspx) biztosít a System Center összetevőinek és más termékeinek automatizálására szolgáló runbookok létrehozásához. Ezen integrációs csomagok némelyike jelenleg a OIT alapul, de az ismert problémák miatt jelenleg nem alakítható át integrációs modulokra. Importálja a [System Center Orchestrator integrációs modulokat](https://www.microsoft.com/download/details.aspx?id=49555) a Azure Automationba a System Centerhez hozzáférő runbookok által használt integrációs csomagokba. Ez a csomag tartalmazza az integrációs csomagok konvertált verzióit, amelyek importálhatók Azure Automationba és Service Management Automationba.  
+A Microsoft [integrációs csomagokat](/previous-versions/system-center/packs/hh295851(v=technet.10)) biztosít a System Center összetevőinek és más termékeinek automatizálására szolgáló runbookok létrehozásához. Ezen integrációs csomagok némelyike jelenleg a OIT alapul, de az ismert problémák miatt jelenleg nem alakítható át integrációs modulokra. Importálja a [System Center Orchestrator integrációs modulokat](https://www.microsoft.com/download/details.aspx?id=49555) a Azure Automationba a System Centerhez hozzáférő runbookok által használt integrációs csomagokba. Ez a csomag tartalmazza az integrációs csomagok konvertált verzióit, amelyek importálhatók Azure Automationba és Service Management Automationba.  
 
 ## <a name="convert-integration-packs"></a>Integrációs csomagok konvertálása
 
-Az [Integration Pack Converter](https://docs.microsoft.com/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019) használatával a [Orchestrator Integration Toolkit (OIT)](https://technet.microsoft.com/library/hh855853.aspx) használatával létrehozott integrációs csomagokat átalakíthatja PowerShell-alapú integrációs modulokba, amelyek Azure Automation vagy Service Management Automationba importálhatók. Az integrációs csomag átalakítójának futtatásakor egy varázsló jelenik meg, amely lehetővé teszi egy integrációs csomag (. OIP) fájljának kiválasztását. A varázsló ezután felsorolja az integrációs csomagban szereplő tevékenységeket, és lehetővé teszi az áttelepíteni kívánt tevékenységek kiválasztását. A varázsló befejezése után létrehoz egy integrációs modult, amely tartalmazza a megfelelő parancsmagot az eredeti integrációs csomagban lévő összes tevékenységhez.
+Az [Integration Pack Converter](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019) használatával a [Orchestrator Integration Toolkit (OIT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) használatával létrehozott integrációs csomagokat átalakíthatja PowerShell-alapú integrációs modulokba, amelyek Azure Automation vagy Service Management Automationba importálhatók. Az integrációs csomag átalakítójának futtatásakor egy varázsló jelenik meg, amely lehetővé teszi egy integrációs csomag (. OIP) fájljának kiválasztását. A varázsló ezután felsorolja az integrációs csomagban szereplő tevékenységeket, és lehetővé teszi az áttelepíteni kívánt tevékenységek kiválasztását. A varázsló befejezése után létrehoz egy integrációs modult, amely tartalmazza a megfelelő parancsmagot az eredeti integrációs csomagban lévő összes tevékenységhez.
 
 > [!NOTE]
 > Az integrációs csomag átalakítója nem használható olyan integrációs csomagok átalakítására, amelyek nem a OIT-mel lettek létrehozva. A Microsoft olyan integrációs csomagokat is biztosít, amelyek jelenleg nem alakíthatók át ezzel az eszközzel. Az integrációs csomagok konvertált verziói letölthetők, így Azure Automation vagy Service Management Automation telepíthetik őket.
 
 ### <a name="parameters"></a>Paraméterek
 
-Az integrációs csomagban lévő tevékenységek bármely tulajdonsága az integrációs modul megfelelő parancsmagjának paramétereinek megfelelően lesz konvertálva.  A Windows PowerShell-parancsmagok olyan [általános paraméterekkel](https://technet.microsoft.com/library/hh847884.aspx) rendelkeznek, amelyek az összes parancsmaggal használhatók. A-verbose paraméter például egy parancsmagot eredményez a művelet részletes adatainak kiírásához.  Egyetlen parancsmag sem rendelkezhet ugyanazzal a névvel, mint a Common paraméterrel. Ha egy tevékenységnek ugyanaz a neve, mint a közös paraméternek, a varázsló megkéri, hogy adjon meg egy másik nevet a paraméter számára.
+Az integrációs csomagban lévő tevékenységek bármely tulajdonsága az integrációs modul megfelelő parancsmagjának paramétereinek megfelelően lesz konvertálva.  A Windows PowerShell-parancsmagok olyan [általános paraméterekkel](/powershell/module/microsoft.powershell.core/about/about_commonparameters) rendelkeznek, amelyek az összes parancsmaggal használhatók. A-verbose paraméter például egy parancsmagot eredményez a művelet részletes adatainak kiírásához.  Egyetlen parancsmag sem rendelkezhet ugyanazzal a névvel, mint a Common paraméterrel. Ha egy tevékenységnek ugyanaz a neve, mint a közös paraméternek, a varázsló megkéri, hogy adjon meg egy másik nevet a paraméter számára.
 
 ### <a name="monitor-activities"></a>Tevékenységek monitorozása
 
-A Orchestrator runbookok figyelése egy [figyelő tevékenységgel](https://technet.microsoft.com/library/hh403827.aspx) kezdődik, és folyamatosan várakozik, hogy egy adott esemény meghívja őket. A Azure Automation nem támogatja a runbookok figyelését, így az integrációs csomagban lévő figyelési tevékenységek nem konvertálódnak. Ehelyett helyőrző parancsmag jön létre a figyelő tevékenység integrációs moduljában.  Ez a parancsmag nem rendelkezik funkcionalitással, de lehetővé teszi az azt használó átalakított runbook telepítését. Ez a runbook nem futtatható Azure Automationban, de telepíthető úgy, hogy módosítható legyen.
+A Orchestrator runbookok figyelése egy [figyelő tevékenységgel](/previous-versions/system-center/system-center-2012-R2/hh403827(v=sc.12)) kezdődik, és folyamatosan várakozik, hogy egy adott esemény meghívja őket. A Azure Automation nem támogatja a runbookok figyelését, így az integrációs csomagban lévő figyelési tevékenységek nem konvertálódnak. Ehelyett helyőrző parancsmag jön létre a figyelő tevékenység integrációs moduljában.  Ez a parancsmag nem rendelkezik funkcionalitással, de lehetővé teszi az azt használó átalakított runbook telepítését. Ez a runbook nem futtatható Azure Automationban, de telepíthető úgy, hogy módosítható legyen.
 
-A Orchestrator olyan [szabványos tevékenységeket](https://technet.microsoft.com/library/hh403832.aspx) tartalmaz, amelyek nem szerepelnek az integrációs csomagban, de számos runbookok használják.  A standard szintű tevékenységek modul egy integrációs modul, amely minden egyes tevékenységhez megfelelő parancsmagot tartalmaz. A standard tevékenységeket használó konvertált runbookok importálása előtt telepítenie kell ezt az integrációs modult Azure Automation.
+A Orchestrator olyan [szabványos tevékenységeket](/previous-versions/system-center/system-center-2012-R2/hh403832(v=sc.12)) tartalmaz, amelyek nem szerepelnek az integrációs csomagban, de számos runbookok használják.  A standard szintű tevékenységek modul egy integrációs modul, amely minden egyes tevékenységhez megfelelő parancsmagot tartalmaz. A standard tevékenységeket használó konvertált runbookok importálása előtt telepítenie kell ezt az integrációs modult Azure Automation.
 
 Az átalakított runbookok támogatásán kívül a standard szintű tevékenységek modulban található parancsmagok a Orchestrator által ismert, új runbookok létrehozására használhatók a Azure Automationban. Habár az összes szabványos tevékenység funkcióit parancsmagokkal is elvégezheti, különböző műveleteket hajthat végre. Az átalakított szabványos tevékenységek modul parancsmagjai ugyanúgy működnek, mint a kapcsolódó tevékenységek, és ugyanazokat a paramétereket használják. Ez segítséget nyújt a Azure Automation runbookok való áttéréshez.
 
@@ -100,7 +100,7 @@ A Runbook Converter a Orchestrator Runbook minden tevékenységét egy megfelel�
 
 A standard szintű tevékenységek modulban minden Orchestrator-tevékenység át lesz konvertálva. Vannak olyan általános Orchestrator tevékenységek, amelyek nem szerepelnek ebben a modulban, de nem lesznek konvertálva. Például `Send Platform Event` nincs Azure Automation egyenértékű, mert az esemény a Orchestrator jellemző.
 
-A [figyelési tevékenységeket](https://technet.microsoft.com/library/hh403827.aspx) a rendszer nem konvertálja, mert a Azure Automationban nincsenek egyenértékűek. A kivételek a helyőrző tevékenységre konvertált konvertált integrációs csomagok figyelési tevékenységei.
+A [figyelési tevékenységeket](/previous-versions/system-center/system-center-2012-R2/hh403827(v=sc.12)) a rendszer nem konvertálja, mert a Azure Automationban nincsenek egyenértékűek. A kivételek a helyőrző tevékenységre konvertált konvertált integrációs csomagok figyelési tevékenységei.
 
 Az átalakított integrációs csomagból származó tevékenységek konvertálása akkor történik meg, ha az integrációs modul elérési útját megadja a `modules` paraméterrel. A System Center integrációs csomagjaihoz használhatja a System Center Orchestrator integrációs modulokat.
 
@@ -118,7 +118,7 @@ Ennek a stratégiának az az oka, hogy a legjobban tükrözze a Orchestrator run
 
 ### <a name="invoke-runbook-activity"></a>Runbook-tevékenység meghívása
 
-A runbookok a Orchestrator más runbookok indítanak el a `Invoke Runbook` tevékenységgel. Ha az átalakítás alatt álló runbook tartalmazza ezt a tevékenységet `Wait for completion` , és a beállítás be van állítva, akkor létrejön egy runbook-tevékenység a konvertált runbook.  Ha a `Wait for completion` beállítás nincs megadva, akkor létrejön egy munkafolyamat-parancsfájl tevékenység, amely a [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) használatával indítja el a runbook. A konvertált runbook Azure Automationba való importálása után módosítania kell a tevékenységet a tevékenységben megadott adatokkal.
+A runbookok a Orchestrator más runbookok indítanak el a `Invoke Runbook` tevékenységgel. Ha az átalakítás alatt álló runbook tartalmazza ezt a tevékenységet `Wait for completion` , és a beállítás be van állítva, akkor létrejön egy runbook-tevékenység a konvertált runbook.  Ha a `Wait for completion` beállítás nincs megadva, akkor létrejön egy munkafolyamat-parancsfájl tevékenység, amely a [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) használatával indítja el a runbook. A konvertált runbook Azure Automationba való importálása után módosítania kell a tevékenységet a tevékenységben megadott adatokkal.
 
 ## <a name="create-orchestrator-assets"></a>Orchestrator-eszközök létrehozása
 
@@ -130,8 +130,8 @@ A Orchestrator az adatbázis-kiszolgálón tárolja a runbookok, és a runbook-k
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 
-* A Orchestrator részleteiért lásd: [System Center 2012-Orchestrator](https://technet.microsoft.com/library/hh237242.aspx).
-* További információ a [Service Management Automation](https://technet.microsoft.com/library/dn469260.aspx)szolgáltatásainak kezelésének automatizálásáról.
-* A Orchestrator tevékenységek részletei a [Orchestrator standard tevékenységekben](https://technet.microsoft.com/library/hh403832.aspx)találhatók.
+* A Orchestrator részleteiért lásd: [System Center 2012-Orchestrator](/previous-versions/system-center/system-center-2012-R2/hh237242(v=sc.12)).
+* További információ a [Service Management Automation](/previous-versions/system-center/system-center-2012-R2/dn469260(v=sc.12))szolgáltatásainak kezelésének automatizálásáról.
+* A Orchestrator tevékenységek részletei a [Orchestrator standard tevékenységekben](/previous-versions/system-center/system-center-2012-R2/hh403832(v=sc.12))találhatók.
 * A Orchestrator áttelepítési eszközkészletének beszerzéséhez lásd: a [System Center Orchestrator áttelepítési eszközkészlet letöltése](https://www.microsoft.com/download/details.aspx?id=47323).
 * A Azure Automation Hybrid Runbook Worker áttekintését lásd: a [hibrid Runbook Worker áttekintése](automation-hybrid-runbook-worker.md).

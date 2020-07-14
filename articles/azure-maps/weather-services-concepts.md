@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 03a16ac065b585c499efa268500e0a8c81c07738
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f38ef2c337564d2b36d3939b3ed03130437e35ea
+ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333823"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86221765"
 ---
 # <a name="weather-services-in-azure-maps"></a>Időjárási szolgáltatások a Azure Maps
 
@@ -22,7 +23,7 @@ Ez a cikk a [Azure Maps időjárási szolgáltatásokra](https://aka.ms/AzureMap
 
 A Weather Service API-k némelyike lehetővé teszi a felhasználó számára, hogy az adatokat metrikus vagy angolszász egységekben adja vissza. Az API-k által visszaadott válaszok közé tartozik a unitType és egy numerikus érték, amely az egység fordításához használható. Az értékek értelmezéséhez tekintse meg az alábbi táblázatot.
 
-|unitType|Description         |
+|unitType|Leírás         |
 |--------|--------------------|
 |0       |méter                |
 |1       |hüvelyk              |
@@ -45,7 +46,7 @@ A Weather Service API-k némelyike lehetővé teszi a felhasználó számára, h
 |18      |Fahrenheit          |
 |19      |Kelvin              |
 |20      |százalék             |
-|21      |lebegőpontos               |
+|21      |float               |
 |22      |egész szám             |
 
 
@@ -55,46 +56,46 @@ Néhány időjárási szolgáltatás API a válaszban visszaküldi a értéket `
 
 | Ikon száma |Ikon| Nap | Éjszaka | Szöveg |
 |-------------|:----:|-----|-------|------|
-| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Yes |  Nem    | Sunny|
-| 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Yes |  Nem    | Többnyire napos|
-| 3           |![](./media/weather-services-concepts/partly-sunny.png)                | Yes |  Nem    | Részben Sunny|
-| 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | Yes |  Nem    | Időszakos felhők|
-| 5           |![](./media/weather-services-concepts/hazy-sunshine.png)               | Yes |  Nem    | Ködös napsütés |
-| 6           |![](./media/weather-services-concepts/mostly-cloudy.png)               | Yes |  Nem    | Többnyire Felhőbeli|
-| 7           |![](./media/weather-services-concepts/cloudy-i.png)                     | Igen |  Igen   | Felhős |
-| 8           |![](./media/weather-services-concepts/dreary-overcast.png)             | Igen |  Igen   | Sivár (borús)|
-| 11           |![](./media/weather-services-concepts/fog-i.png)                       | Igen |  Igen   | Köd|
-| 12           |![](./media/weather-services-concepts/showers-i.png)                   | Igen |  Igen   | Zuhanyzók|
-| 13           |![](./media/weather-services-concepts/mostly-cloudy-showers.png)       | Yes |  Nem    | Jórészt Felhőbeli|
-| 14           |![](./media/weather-services-concepts/partly-sunny-showers.png)        | Yes |  Nem    | Részben napos és zuhanyozós|
-| 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | Igen |  Igen   | Zivatarok|
-| 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | Yes |  Nem    | Jórészt Felhőbeli|
-| 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | Yes |  Nem    | Részben napos, zivataros|
-| 18           |![](./media/weather-services-concepts/rain-i.png)                      | Igen |  Igen   | Eső|
-| 19           |![](./media/weather-services-concepts/flurries-i.png)                  | Igen |  Igen   | Flurries|
-| 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | Yes |  Nem    | Többnyire Felhőbeli Flurries|
-| 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Yes |  Nem    | Részben Sunny a Flurries|
-| 22           |![](./media/weather-services-concepts/snow-i.png)                      | Igen |  Igen   | Vízisízni|
-| 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Yes |  Nem    | Jórészt Felhőbeli|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Igen |  Igen   | Ice |
-| 25           |![](./media/weather-services-concepts/sleet-i.png)                     | Igen |  Igen   | Ónos eső|
-| 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Igen |  Igen   | Fagyasztási eső|
-| 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Igen |  Igen   | Eső és hó|
-| 30           |![](./media/weather-services-concepts/hot-i.png)                       | Igen |  Igen   | Gyakori|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Igen |  Igen   | Ritka elérésű|
-| 32           |![](./media/weather-services-concepts/windy-i.png)                     | Igen |  Igen   | Szeles|
-| 33           |![](./media/weather-services-concepts/clear-night.png)                | Nem  |  Yes   | Törlés|
-| 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Nem  |  Yes   | Többnyire egyértelmű|
-| 35           |![](./media/weather-services-concepts/partly-cloudy-night.png)         | Nem  |  Yes   | Részben felhőbe|
-| 36           |![](./media/weather-services-concepts/intermittent-clouds-Night.png)   | Nem  |  Yes   | Időszakos felhők|
-| 37           |![](./media/weather-services-concepts/hazymoon-light.png)             | Nem  |  Yes   | Ködös Holdfény|
-| 38           |![](./media/weather-services-concepts/mostly-cloudy-night.png)         | Nem  |  Igen   | Többnyire Felhőbeli|
-| 39           |![](./media/weather-services-concepts/partly-cloudy-showers-night.png)  | Nem  |  Igen   | Záporok részben felhőben|
-| 40           |![](./media/weather-services-concepts/mostly-cloudy-showers-night.png)  | Nem  |  Igen   | Jórészt Felhőbeli|
-| 41           |![](./media/weather-services-concepts/partly-cloudy-tstorms-night.png)  | Nem  |  Igen   | Jórészt Felhőbeli|
-| 42           |![](./media/weather-services-concepts/mostly-cloudy-tstorms-night.png)  | Nem  |  Igen   | Jórészt Felhőbeli|
-| 43           |![](./media/weather-services-concepts/mostly-cloudy-flurries-night.png) | Nem  |  Igen   | Többnyire Felhőbeli Flurries|
-| 44           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Nem  |  Igen   | Jórészt Felhőbeli|
+| 1           | :::image type="icon" source="./media/weather-services-concepts/sunny-i.png"::: | Igen |  Nem    | Sunny|
+| 2           | :::image type="icon" source="./media/weather-services-concepts/mostly-sunny.png"::: | Igen |  Nem    | Többnyire napos|
+| 3           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny.png"::: | Igen |  Nem    | Részben Sunny|
+| 4           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds.png"::: | Igen |  Nem    | Időszakos felhők|
+| 5           | :::image type="icon" source="./media/weather-services-concepts/hazy-sunshine.png"::: | Igen |  Nem    | Ködös napsütés |
+| 6           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy.png"::: | Igen |  Nem    | Többnyire Felhőbeli|
+| 7           | :::image type="icon" source="./media/weather-services-concepts/cloudy-i.png"::: | Igen |  Igen   | Felhős |
+| 8           | :::image type="icon" source="./media/weather-services-concepts/dreary-overcast.png"::: | Igen |  Igen   | Sivár (borús)|
+| 11           | :::image type="icon" source="./media/weather-services-concepts/fog-i.png"::: | Igen |  Igen   | Köd|
+| 12           | :::image type="icon" source="./media/weather-services-concepts/showers-i.png"::: | Igen |  Igen   | Zuhanyzók|
+| 13           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers.png"::: | Igen |  Nem    | Jórészt Felhőbeli|
+| 14           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-showers.png"::: | Igen |  Nem    | Részben napos és zuhanyozós|
+| 15           | :::image type="icon" source="./media/weather-services-concepts/tstorms-i.png"::: | Igen |  Igen   | Zivatarok|
+| 16           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms.png"::: | Igen |  Nem    | Jórészt Felhőbeli|
+| 17           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-tstorms.png"::: | Igen |  Nem    | Részben napos, zivataros|
+| 18           | :::image type="icon" source="./media/weather-services-concepts/rain-i.png"::: | Igen |  Igen   | Eső|
+| 19           | :::image type="icon" source="./media/weather-services-concepts/flurries-i.png"::: | Igen |  Igen   | Flurries|
+| 20           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries.png"::: | Igen |  Nem    | Többnyire Felhőbeli Flurries|
+| 21           | :::image type="icon" source="./media/weather-services-concepts/partly-sunny-flurries.png"::: | Igen |  Nem    | Részben Sunny a Flurries|
+| 22           | :::image type="icon" source="./media/weather-services-concepts/snow-i.png"::: | Igen |  Igen   | Vízisízni|
+| 23           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Igen |  Nem    | Jórészt Felhőbeli|     
+| 24           | :::image type="icon" source="./media/weather-services-concepts/ice-i.png"::: | Igen |  Igen   | Ice |
+| 25           | :::image type="icon" source="./media/weather-services-concepts/sleet-i.png"::: | Igen |  Igen   | Ónos eső|
+| 26           | :::image type="icon" source="./media/weather-services-concepts/freezing-rain.png"::: | Igen |  Igen   | Fagyasztási eső|
+| 29           | :::image type="icon" source="./media/weather-services-concepts/rain-snow.png"::: | Igen |  Igen   | Eső és hó|
+| 30           | :::image type="icon" source="./media/weather-services-concepts/hot-i.png"::: | Igen |  Igen   | Gyakori|
+| 31           | :::image type="icon" source="./media/weather-services-concepts/cold-i.png"::: | Igen |  Igen   | Ritka elérésű|
+| 32           | :::image type="icon" source="./media/weather-services-concepts/windy-i.png"::: | Igen |  Igen   | Szeles|
+| 33           | :::image type="icon" source="./media/weather-services-concepts/clear-night.png"::: | Nem  |  Igen   | Törlés|
+| 34           | :::image type="icon" source="./media/weather-services-concepts/mostly-clear-night.png"::: | Nem  |  Igen   | Többnyire egyértelmű|
+| 35           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-night.png"::: | Nem  |  Igen   | Részben felhőbe|
+| 36           | :::image type="icon" source="./media/weather-services-concepts/intermittent-clouds-Night.png"::: | Nem  |  Igen   | Időszakos felhők|
+| 37           | :::image type="icon" source="./media/weather-services-concepts/hazymoon-light.png"::: | Nem  |  Igen   | Ködös Holdfény|
+| 38           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-night.png"::: | Nem  |  Igen   | Többnyire Felhőbeli|
+| 39           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-showers-night.png"::: | Nem  |  Igen   | Záporok részben felhőben|
+| 40           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-showers-night.png"::: | Nem  |  Igen   | Jórészt Felhőbeli|
+| 41           | :::image type="icon" source="./media/weather-services-concepts/partly-cloudy-tstorms-night.png"::: | Nem  |  Igen   | Jórészt Felhőbeli|
+| 42           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-tstorms-night.png"::: | Nem  |  Igen   | Jórészt Felhőbeli|
+| 43           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-flurries-night.png"::: | Nem  |  Igen   | Többnyire Felhőbeli Flurries|
+| 44           | :::image type="icon" source="./media/weather-services-concepts/mostly-cloudy-snow.png"::: | Nem  |  Igen   | Jórészt Felhőbeli|
 
 
 ## <a name="radar-and-satellite-imagery-color-scale"></a>A radar és a műhold képének színskálája
@@ -107,22 +108,22 @@ Az alábbi táblázat útmutatást nyújt a radar-képek értelmezéséhez, vala
 
 | Hexadecimális színkód | Színminta | Időjárási feltétel |
 |----------------|--------------|-------------------|
-| #93c701        | ![](./media/weather-services-concepts/color-93c701.png) | Csapadékos fény |
-| #ffd701        | ![](./media/weather-services-concepts/color-ffd701.png) | Enyhe csapadék |
-| #f05514        | ![](./media/weather-services-concepts/color-f05514.png) | Eső – nehéz |
-| #dc250e        | ![](./media/weather-services-concepts/color-dc250e.png) | Eső – súlyos |
-| #9ec8f2        | ![](./media/weather-services-concepts/color-9ec8f2.png) | Havazás |
-| #2a8fdb        | ![](./media/weather-services-concepts/color-2a8fdb.png) | Havazás – mérsékelt |
-| #144bed        | ![](./media/weather-services-concepts/color-144bed.png) | Snow – nagy |
-| #020096        | ![](./media/weather-services-concepts/color-020096.png) | Snow – súlyos |
-| #e6a5c8        | ![](./media/weather-services-concepts/color-e6a5c8.png) | Jeges fény |
-| #d24fa0        | ![](./media/weather-services-concepts/color-d24fa0.png) | Jég közepes |
-| #b71691        | ![](./media/weather-services-concepts/color-b71691.png) | Jég – súlyos |
-| #7a1570        | ![](./media/weather-services-concepts/color-7a1570.png) | Ice-Heavy |
-| #c196e6        | ![](./media/weather-services-concepts/color-c196e6.png) | Mix-Light |
-| #ae6ee6        | ![](./media/weather-services-concepts/color-ae6ee6.png) | Mérsékelt keverés |
-| #8a32d7        | ![](./media/weather-services-concepts/color-8a32d7.png) | Nagy kombináció |
-| #6500ba        | ![](./media/weather-services-concepts/color-6500ba.png) | Súlyos kombináció |
+| #93c701        | ![Az esőt jelző szín](./media/weather-services-concepts/color-93c701.png) | Csapadékos fény |
+| #ffd701        | ![Az enyhe csapadék színe](./media/weather-services-concepts/color-ffd701.png) | Enyhe csapadék |
+| #f05514        | ![Az eső-nehéz szín.](./media/weather-services-concepts/color-f05514.png) | Eső – nehéz |
+| #dc250e        | ![Eső – súlyos szín](./media/weather-services-concepts/color-dc250e.png) | Eső – súlyos |
+| #9ec8f2        | ![A Snow-Light színének színe](./media/weather-services-concepts/color-9ec8f2.png) | Havazás |
+| #2a8fdb        | ![A Snow-mérsékelt szín.](./media/weather-services-concepts/color-2a8fdb.png) | Havazás – mérsékelt |
+| #144bed        | ![A Snow-Heavy szín színe](./media/weather-services-concepts/color-144bed.png) | Snow – nagy |
+| #020096        | ![A Snow-súlyos szín.](./media/weather-services-concepts/color-020096.png) | Snow – súlyos |
+| #e6a5c8        | ![A jég színét jelző szín](./media/weather-services-concepts/color-e6a5c8.png) | Jeges fény |
+| #d24fa0        | ![A jég moderálásának színe.](./media/weather-services-concepts/color-d24fa0.png) | Jég közepes |
+| #b71691        | ![A jég súlyos színe.](./media/weather-services-concepts/color-b71691.png) | Jég – súlyos |
+| #7a1570        | ![A jég nagy színe.](./media/weather-services-concepts/color-7a1570.png) | Ice-Heavy |
+| #c196e6        | ![A mix-Light szín](./media/weather-services-concepts/color-c196e6.png) | Mix-Light |
+| #ae6ee6        | ![A mix-mérsékelt szín.](./media/weather-services-concepts/color-ae6ee6.png) | Mérsékelt keverés |
+| #8a32d7        | ![A mix-Heavy szín](./media/weather-services-concepts/color-8a32d7.png) | Nagy kombináció |
+| #6500ba        | ![A mix-súlyos szín.](./media/weather-services-concepts/color-6500ba.png) | Súlyos kombináció |
 
 Alább láthatók a radar csempék részletes színpalettája hexadecimális színkódokkal és dBZ értékekkel. a dBZ a csapadék intenzitását jelöli az időjárási radarban. 
 
@@ -198,18 +199,18 @@ Az alábbi táblázat útmutatást nyújt az infravörös műholdképek megjelen
 
 | Hexadecimális színkód | Színminta | Felhő hőmérséklete |
 |----------------|--------------|-------------------|
-| #b5b5b5        | ![](./media/weather-services-concepts/color-b5b5b5.png) | Alacsony hőmérséklet | 
-| #d24fa0        | ![](./media/weather-services-concepts/color-d24fa0.png) |  |
-| #8a32d7        | ![](./media/weather-services-concepts/color-8a32d7.png) |  |
-| #144bed        | ![](./media/weather-services-concepts/color-144bed.png) |  |
-| #479702        | ![](./media/weather-services-concepts/color-479702.png) |  |
-| #72b403        | ![](./media/weather-services-concepts/color-72b403.png) |  |
-| #93c701        | ![](./media/weather-services-concepts/color-93c701.png) |  |
-| #ffd701        | ![](./media/weather-services-concepts/color-ffd701.png) |  |
-| #f05514        | ![](./media/weather-services-concepts/color-f05514.png) |  |
-| #dc250e        | ![](./media/weather-services-concepts/color-dc250e.png) |  |
-| #ba0808        | ![](./media/weather-services-concepts/color-ba0808.png) |  |
-| #1f1f1f        | ![](./media/weather-services-concepts/color-1f1f1f.png) | Hőmérséklet – magas |
+| #b5b5b5        | ![#B5b5b5 színének csempe](./media/weather-services-concepts/color-b5b5b5.png) | Alacsony hőmérséklet | 
+| #d24fa0        | ![#D24fa0 színének csempe](./media/weather-services-concepts/color-d24fa0.png) |  |
+| #8a32d7        | ![#8a32d7 színének csempe](./media/weather-services-concepts/color-8a32d7.png) |  |
+| #144bed        | ![#144bed színének csempe](./media/weather-services-concepts/color-144bed.png) |  |
+| #479702        | ![#479702 színének csempe](./media/weather-services-concepts/color-479702.png) |  |
+| #72b403        | ![#72b403 színének csempe](./media/weather-services-concepts/color-72b403.png) |  |
+| #93c701        | ![#93c701 színének csempe](./media/weather-services-concepts/color-93c701.png) |  |
+| #ffd701        | ![#Ffd701 színének csempe](./media/weather-services-concepts/color-ffd701.png) |  |
+| #f05514        | ![#F05514 színének csempe](./media/weather-services-concepts/color-f05514.png) |  |
+| #dc250e        | ![#Dc250e színének csempe](./media/weather-services-concepts/color-dc250e.png) |  |
+| #ba0808        | ![#Ba0808 színének csempe](./media/weather-services-concepts/color-ba0808.png) |  |
+| #1f1f1f        | ![#1f1f1f színének csempe](./media/weather-services-concepts/color-1f1f1f.png) | Hőmérséklet – magas |
 
 
 Alább látható az infravörös műholdképek részletes palettája.

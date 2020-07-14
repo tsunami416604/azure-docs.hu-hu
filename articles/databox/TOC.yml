@@ -14,30 +14,52 @@
               href: data-box-quickstart-portal.md
         - name: Oktatóanyagok
           items:
-            - name: 1 – Rendelés
-              href: data-box-deploy-ordered.md
-            - name: 2 – Beállítás
-              href: data-box-deploy-set-up.md
-            - name: 3 – Csatlakozás és másolás
+            - name: Adatok importálása az Azure-ba
               items:
-                - name: SMB-n keresztül
-                  href: data-box-deploy-copy-data.md
-                - name: NFS-en keresztül
-                  href: data-box-deploy-copy-data-via-nfs.md
-                - name: REST-en keresztül
-                  href: data-box-deploy-copy-data-via-rest.md
-                - name: Adatmásolási szolgáltatással
-                  href: data-box-deploy-copy-data-via-copy-service.md
-                - name: Felügyelt lemezekre
-                  href: data-box-deploy-copy-data-from-vhds.md
-            - name: '4 – Visszaküldés, feltöltés, ellenőrzés'
-              href: data-box-deploy-picked-up.md
+                - name: 1 – Rendelés
+                  href: data-box-deploy-ordered.md
+                - name: 2 – Beállítás
+                  href: data-box-deploy-set-up.md
+                - name: 3 – Csatlakozás és másolás
+                  items:
+                    - name: SMB-n keresztül
+                      href: data-box-deploy-copy-data.md
+                    - name: NFS-en keresztül
+                      href: data-box-deploy-copy-data-via-nfs.md
+                    - name: REST-en keresztül
+                      href: data-box-deploy-copy-data-via-rest.md
+                    - name: Adatmásolási szolgáltatással
+                      href: data-box-deploy-copy-data-via-copy-service.md
+                    - name: Felügyelt lemezekre
+                      href: data-box-deploy-copy-data-from-vhds.md
+                - name: '4 – Visszaküldés, feltöltés, ellenőrzés'
+                  href: data-box-deploy-picked-up.md
+            - name: Adatok exportálása az Azure-ból
+              items:
+                - name: 1 – Rendelés
+                  href: data-box-deploy-export-ordered.md
+                - name: 2 – Beállítás
+                  href: data-box-deploy-set-up.md
+                - name: 3 – Csatlakozás és másolás
+                  items:
+                    - name: SMB-n keresztül
+                      href: data-box-deploy-export-copy-data.md
+                    - name: NFS-en keresztül
+                      href: data-box-deploy-export-copy-data-via-nfs.md
+                - name: 4 – Visszaküldés
+                  href: data-box-deploy-export-picked-up.md
         - name: Alapelvek
           items:
             - name: Biztonsági irányelvek megtekintése
               href: data-box-safety.md
             - name: A nyomon követés és naplózás áttekintése
-              href: data-box-logs.md
+              items:
+                - name: Megrendelések importáláshoz
+                  href: data-box-logs.md
+                - name: Megrendelések exportáláshoz
+                  href: data-box-export-logs.md
+            - name: Auditnaplók megtekintése
+              href: data-box-audit-logs.md
             - name: Követelmények áttekintése
               items:
                 - name: A Data Boxhoz
@@ -64,6 +86,8 @@
               href: data-box-portal-customer-managed-shipping.md
             - name: Felhasználó által kezelt kulcs engedélyezése
               href: data-box-customer-managed-encryption-key-portal.md
+            - name: Ügyfélszéf használata
+              href: data-box-customer-lockbox.md
             - name: Adatok áthelyezése blobszintre
               href: data-box-how-to-set-data-tier.md
             - name: Az eszköz bekábelezése

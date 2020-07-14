@@ -4,11 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 68310f504e94e50be9fbd4ce49055a4b318ab5d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e40b74cc5bf995e943b20ddcd21127ed4f7d7ead
+ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659504"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86184191"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -185,28 +186,67 @@ Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljen
 
 **3. lépés**: próbálja meg [növelni a virtuális gép méretét](https://azure.microsoft.com/blog/resize-virtual-machines/) , és ismételje meg a műveletet.
 
-## <a name="common-vm-backup-errors"></a>Virtuális gép biztonsági mentésének gyakori hibái
 
-| A hiba részletei | Áthidaló megoldás |
-| ------ | --- |
-| **Hibakód**: 320001, ResourceNotFound <br/> **Hibaüzenet**: nem sikerült végrehajtani a műveletet, mert a virtuális gép már nem létezik. <br/> <br/> **Hibakód**: 400094, BCMV2VMNotFound <br/> **Hibaüzenet**: a virtuális gép nem létezik <br/> <br/>  Nem található Azure-beli virtuális gép.  |Ez a hiba akkor fordul elő, ha az elsődleges virtuális gép törlődik, de a biztonsági mentési szabályzat továbbra is a virtuális gép biztonsági mentését keresi. A hiba elhárításához hajtsa végre a következő lépéseket: <ol><li> Hozza létre újra a virtuális gépet ugyanazzal a névvel és ugyanazzal az erőforráscsoport-névvel, a **Cloud Service-névvel**,<br>**vagy**</li><li> Állítsa le a virtuális gép védelmét a biztonsági mentési adatok törlése nélkül vagy anélkül. További információ: a [virtuális gépek védelmének leállítása](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
-|**Hibakód**: UserErrorBCMPremiumStorageQuotaError<br/> **Hibaüzenet**: nem sikerült másolni a virtuális gép pillanatképét, mert nincs elég szabad hely a Storage-fiókban. | A virtuális gépek biztonsági mentési verem v1-es verziójának prémium szintű virtuális gépei esetén a pillanatképet a Storage-fiókba másolja. Ez a lépés gondoskodik arról, hogy a biztonsági mentési felügyeleti forgalom, amely a pillanatképen működik, nem korlátozza az alkalmazás számára elérhető IOPS számát a prémium szintű lemezek használatával. <br><br>Javasoljuk, hogy a teljes Storage-fiók területének 50%-os, 17,5 TB-os számát foglalja le. Ezután a Azure Backup szolgáltatás átmásolhatja a pillanatképet a Storage-fiókba, és átviheti az adatait a Storage-fiókból a tárolóba. |
-| **Hibakód**: 380008, AzureVmOffline <br/> **Hibaüzenet**: nem sikerült telepíteni a Microsoft Recovery Services-bővítményt, mert a virtuális gép nem fut | A VM-ügynök az Azure Recovery Services bővítmény előfeltétele. Telepítse az Azure Virtual Machine Agent ügynököt, és indítsa újra a regisztrációs műveletet. <br> <ol> <li>Ellenőrizze, hogy a virtuális gép ügynöke megfelelően van-e telepítve. <li>Győződjön meg arról, hogy a virtuális gép konfigurációjának jelzője helyesen van beállítva.</ol> További információ a virtuálisgép-ügynök telepítéséről és a virtuálisgép-ügynök telepítésének ellenőrzéséről. |
-| **Hibakód**: ExtensionSnapshotBitlockerError <br/> **Hibaüzenet**: a pillanatkép-művelet a kötet ÁRNYÉKMÁSOLATA szolgáltatás (VSS) művelet hibája miatt sikertelen volt, mert az **BitLocker meghajtótitkosítás zárolta a meghajtót. A meghajtót fel kell oldani a Vezérlőpultról.** |Kapcsolja ki a BitLockert a virtuális gépen lévő összes meghajtón, és ellenőrizze, hogy megoldódott-e a VSS-probléma. |
-| **Hibakód**: VmNotInDesirableState <br/> **Hibaüzenet**: a virtuális gép nincs olyan állapotban, amely lehetővé teszi a biztonsági mentéseket. |<ul><li>Ha a virtuális gép átmeneti állapotban van a **Futtatás** és a **Leállítás**között, várjon, amíg az állapot megváltozhat. Ezután aktiválja a biztonsági mentési feladatot. <li> Ha a virtuális gép Linux rendszerű virtuális gép, és a fokozott biztonságú Linux kernel-modult használja, zárja ki az Azure Linux-ügynök elérési útját a biztonsági szabályzatból, és győződjön meg arról, hogy a biztonsági **/var/lib/waagent** telepítve van.  |
-| A virtuálisgép-ügynök nincs jelen a virtuális gépen: <br>Telepítse az előfeltételt és a virtuálisgép-ügynököt. Ezután indítsa újra a műveletet. |További információ a [VM-ügynök telepítéséről és a virtuálisgép-ügynök telepítésének ellenőrzéséről](#vm-agent). |
-| **Hibakód**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Hibaüzenet**: a pillanatkép-művelet sikertelen volt, mert nem sikerült létrehozni a biztonságos hálózati kommunikációs csatornát. | <ol><li> A **regedit.exe** futtatásával nyissa meg a Beállításszerkesztőt egy emelt szintű módban. <li> Azonosítsa a rendszeren lévő .NET-keretrendszer összes verzióját. A **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft**beállításkulcs hierarchiájában jelennek meg. <li> A beállításkulcsban található minden egyes .NET-keretrendszerhez adja hozzá a következő kulcsot: <br> **Alatt "= DWORD: 00000001**. </ol>|
-| **Hibakód**: ExtensionVCRedistInstallationFailure <br/> **Hibaüzenet**: a pillanatkép-művelet sikertelen volt, mert a Visual C++ újraterjeszthető csomagjának telepítése sikertelen volt a visual Studio 2012-ben. | <li> Navigáljon a `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` vcredist2013_x64ra, és telepítse a következőt:.<br/>Győződjön meg arról, hogy a beállításjegyzék-kulcs értéke, amely lehetővé teszi, hogy a szolgáltatás telepítése a megfelelő értékre legyen állítva. Ez azt eredményezi, hogy a **kezdő** értéket **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** **3** értékre, nem pedig **4**értékre állítja. <br><br>Ha továbbra is problémái vannak a telepítéssel, indítsa újra a telepítési szolgáltatást az msiexec **/UNREGISTER** , majd az **msiexec/Register** egy rendszergazda jogú parancssorból való futtatásával. <br><br><li> Ellenőrizze az eseménynaplót, és győződjön meg arról, hogy a hozzáféréshez kapcsolódó problémák merültek fel. Például: *termék: Microsoft Visual C++ 2013 x64 minimális futtatókörnyezet – 12.0.21005 – hiba 1401. nem sikerült létrehozni a kulcsot: Software\Classes.  5. rendszerhiba.  Ellenőrizze, hogy van-e megfelelő engedélye a kulcs eléréséhez, vagy forduljon a technikai tanácsadási csoporthoz.* <br><br> Győződjön meg arról, hogy a rendszergazda vagy a felhasználói fiók rendelkezik a megfelelő engedélyekkel a beállításkulcs **HKEY_LOCAL_MACHINE \software\classes**való frissítéséhez. Adja meg a megfelelő engedélyeket, és indítsa újra a Windows Azure Guest Agent ügynököt.<br><br> <li> Ha víruskereső termékek vannak érvényben, győződjön meg arról, hogy a megfelelő kizárási szabályokkal rendelkeznek a telepítés engedélyezéséhez.    |
-| **Hibakód**: UserErrorRequestDisallowedByPolicy <BR> **Hibaüzenet**: érvénytelen házirend van konfigurálva a virtuális gépen, amely megakadályozza a pillanatkép-műveletet. | Ha van olyan Azure Policy, amely [a környezetében található címkéket szabályozza](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags), érdemes lehet a szabályzatot egy [megtagadási hatásról](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) [módosítani](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify), vagy a [Azure Backup által igényelt elnevezési séma](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)alapján manuálisan létrehozni az erőforráscsoportot.
+## <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound – a művelet nem hajtható végre, mert a virtuális gép már nem létezik/400094, BCMV2VMNotFound – a virtuális gép nem létezik, vagy nem található Azure-beli virtuális gép
+
+Hibakód: 320001, ResourceNotFound <br/> Hibaüzenet: nem sikerült végrehajtani a műveletet, mert a virtuális gép már nem létezik. <br/> <br/> Hibakód: 400094, BCMV2VMNotFound <br/> Hibaüzenet: a virtuális gép nem létezik <br/>
+Nem található Azure-beli virtuális gép.
+
+Ez a hiba akkor fordul elő, ha az elsődleges virtuális gép törlődik, de a biztonsági mentési szabályzat továbbra is a virtuális gép biztonsági mentését keresi. A hiba elhárításához hajtsa végre a következő lépéseket:
+- Hozza létre újra a virtuális gépet ugyanazzal a névvel és ugyanazzal az erőforráscsoport-névvel, a **Cloud Service-névvel**,<br>vagy
+- Állítsa le a virtuális gép védelmét a biztonsági mentési adatok törlése nélkül vagy anélkül. További információ: a [virtuális gépek védelmének leállítása](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>
+
+## <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError – nem lehet másolni a virtuális gép pillanatképét, mert nincs elég szabad hely a Storage-fiókban.
+
+Hibakód: UserErrorBCMPremiumStorageQuotaError<br/> Hibaüzenet: nem sikerült másolni a virtuális gép pillanatképét, mert nincs elég szabad hely a Storage-fiókban.
+
+ A virtuális gépek biztonsági mentési verem v1-es verziójának prémium szintű virtuális gépei esetén a pillanatképet a Storage-fiókba másolja. Ez a lépés gondoskodik arról, hogy a biztonsági mentési felügyeleti forgalom, amely a pillanatképen működik, nem korlátozza az alkalmazás számára elérhető IOPS számát a prémium szintű lemezek használatával. <br><br>Javasoljuk, hogy a teljes Storage-fiók területének 50%-os, 17,5 TB-os számát foglalja le. Ezután a Azure Backup szolgáltatás átmásolhatja a pillanatképet a Storage-fiókba, és átviheti az adatait a Storage-fiókból a tárolóba.
+
+
+## <a name="380008-azurevmoffline---failed-to-install-microsoft-recovery-services-extension-as-virtual-machine--is-not-running"></a>380008, AzureVmOffline – nem sikerült telepíteni a Microsoft Recovery Services-bővítményt, mert a virtuális gép nem fut
+Hibakód: 380008, AzureVmOffline <br/> Hibaüzenet: nem sikerült telepíteni a Microsoft Recovery Services-bővítményt, mert a virtuális gép nem fut
+
+A VM-ügynök az Azure Recovery Services bővítmény előfeltétele. Telepítse az Azure Virtual Machine Agent ügynököt, és indítsa újra a regisztrációs műveletet. <br> <ol> <li>Ellenőrizze, hogy a virtuális gép ügynöke megfelelően van-e telepítve. <li>Győződjön meg arról, hogy a virtuális gép konfigurációjának jelzője helyesen van beállítva.</ol> További információ a virtuálisgép-ügynök telepítéséről és a virtuálisgép-ügynök telepítésének ellenőrzéséről.
+
+## <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError – a pillanatkép-művelet a Kötet árnyékmásolata szolgáltatás (VSS) művelet hibája miatt meghiúsult
+Hibakód: ExtensionSnapshotBitlockerError <br/> Hibaüzenet: a pillanatkép-művelet a Kötet árnyékmásolata szolgáltatás (VSS) művelet hibája miatt sikertelen volt, mert az **BitLocker meghajtótitkosítás zárolta a meghajtót. A meghajtót fel kell oldani a Vezérlőpultról.**
+
+Kapcsolja ki a BitLockert a virtuális gépen lévő összes meghajtón, és ellenőrizze, hogy megoldódott-e a VSS-probléma.
+
+## <a name="vmnotindesirablestate---the-vm-isnt-in-a-state-that-allows-backups"></a>VmNotInDesirableState – a virtuális gép nincs olyan állapotban, amely lehetővé teszi a biztonsági mentéseket
+Hibakód: VmNotInDesirableState <br/> Hibaüzenet: a virtuális gép nincs olyan állapotban, amely lehetővé teszi a biztonsági mentéseket.
+- Ha a virtuális gép átmeneti állapotban van a **Futtatás** és a **Leállítás**között, várjon, amíg az állapot megváltozhat. Ezután aktiválja a biztonsági mentési feladatot.
+- Ha a virtuális gép Linux rendszerű virtuális gép, és a fokozott biztonságú Linux kernel-modult használja, zárja ki az Azure Linux-ügynök elérési útját a biztonsági szabályzatból, és győződjön meg arról, hogy a biztonsági **/var/lib/waagent** telepítve van.
+
+- A virtuálisgép-ügynök nincs jelen a virtuális gépen: <br>Telepítse az előfeltételt és a virtuálisgép-ügynököt. Ezután indítsa újra a műveletet. | További információ a [VM-ügynök telepítéséről és a virtuálisgép-ügynök telepítésének ellenőrzéséről](#vm-agent).
+
+
+## <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork – a pillanatkép-művelet sikertelen volt, mert nem sikerült létrehozni a biztonságos hálózati kommunikációs csatornát
+Hibakód: ExtensionSnapshotFailedNoSecureNetwork <br/> Hibaüzenet: a pillanatkép-művelet sikertelen volt, mert nem sikerült létrehozni a biztonságos hálózati kommunikációs csatornát.
+- A **regedit.exe** futtatásával nyissa meg a Beállításszerkesztőt egy emelt szintű módban.
+- Azonosítsa a rendszeren lévő .NET-keretrendszer összes verzióját. A **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft**beállításkulcs hierarchiájában jelennek meg.
+- A beállításkulcsban található minden egyes .NET-keretrendszerhez adja hozzá a következő kulcsot: <br> **Alatt "= DWORD: 00000001**. </ol>
+
+
+## <a name="extensionvcredistinstallationfailure---the-snapshot-operation-failed-because-of-failure-to-install-visual-c-redistributable-for-visual-studio-2012"></a>ExtensionVCRedistInstallationFailure – a pillanatkép-művelet sikertelen volt, mert hiba történt a Visual C++ terjeszthető csomagjának telepítése során a Visual Studio 2012-ben
+Hibakód: ExtensionVCRedistInstallationFailure <br/> Hibaüzenet: a pillanatkép-művelet sikertelen volt, mert a Visual C++ újraterjeszthető csomagjának telepítése sikertelen volt a Visual Studio 2012-ben.
+- Navigáljon a `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` vcredist2013_x64ra, és telepítse a következőt:.<br/>Győződjön meg arról, hogy a beállításjegyzék-kulcs értéke, amely lehetővé teszi, hogy a szolgáltatás telepítése a megfelelő értékre legyen állítva. Ez azt eredményezi, hogy a **kezdő** értéket **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** **3** értékre, nem pedig **4**értékre állítja. <br><br>Ha továbbra is problémái vannak a telepítéssel, indítsa újra a telepítési szolgáltatást az msiexec **/UNREGISTER** , majd az **msiexec/Register** egy rendszergazda jogú parancssorból való futtatásával.
+- Ellenőrizze az eseménynaplót, és győződjön meg arról, hogy a hozzáféréshez kapcsolódó problémák merültek fel. Például: *termék: Microsoft Visual C++ 2013 x64 minimális futtatókörnyezet – 12.0.21005 – hiba 1401. nem sikerült létrehozni a kulcsot: Software\Classes.  5. rendszerhiba.  Ellenőrizze, hogy van-e megfelelő engedélye a kulcs eléréséhez, vagy forduljon a technikai tanácsadási csoporthoz.* <br><br> Győződjön meg arról, hogy a rendszergazda vagy a felhasználói fiók rendelkezik a megfelelő engedélyekkel a beállításkulcs **HKEY_LOCAL_MACHINE \software\classes**való frissítéséhez. Adja meg a megfelelő engedélyeket, és indítsa újra a Windows Azure Guest Agent ügynököt.<br><br> <li> Ha víruskereső termékek vannak érvényben, győződjön meg arról, hogy a megfelelő kizárási szabályokkal rendelkeznek a telepítés engedélyezéséhez.
+
+
+## <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy – érvénytelen házirend van konfigurálva a virtuális gépen, amely megakadályozza a pillanatkép-műveletet
+Hibakód: UserErrorRequestDisallowedByPolicy <BR> Hibaüzenet: érvénytelen házirend van konfigurálva a virtuális gépen, amely megakadályozza a pillanatkép-műveletet.
+
+Ha van olyan Azure Policy, amely [a környezetében található címkéket szabályozza](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags), érdemes lehet a szabályzatot egy [megtagadási hatásról](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) [módosítani](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify), vagy a [Azure Backup által igényelt elnevezési séma](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)alapján manuálisan létrehozni az erőforráscsoportot.
 
 ## <a name="jobs"></a>Feladatok
 
 | A hiba részletei | Áthidaló megoldás |
 | --- | --- |
-| Ez a feladattípus nem támogatja a megszakítást: <br>Várjon, amíg a feladatok befejeződik. |None |
+| Ez a feladattípus nem támogatja a megszakítást: <br>Várjon, amíg a feladatok befejeződik. |Nincsenek |
 | A feladat nem törölhető állapotban van: <br>Várjon, amíg a feladatok befejeződik. <br>**vagy**<br> A kijelölt feladat nem törölhető állapotban van: <br>Várjon, amíg a feladatok befejeződik. |Valószínű, hogy a feladatot majdnem befejezték. Várjon, amíg a feladatok befejeződik.|
 | A biztonsági mentés nem tudja megszakítani a feladatot, mert nincs folyamatban: <br>A megszakítás csak folyamatban lévő feladatok esetén támogatott. Próbálkozzon egy folyamatban lévő feladat megszakításával. |Ez a hiba átmeneti állapot miatt fordul elő. Várjon egy percet, és ismételje meg a megszakítási műveletet. |
-| A biztonsági mentés nem tudta megszakítani a feladatot: <br>Várjon, amíg a feladatok befejeződik. |None |
+| A biztonsági mentés nem tudta megszakítani a feladatot: <br>Várjon, amíg a feladatok befejeződik. |Nincsenek |
 
 ## <a name="restore"></a>Visszaállítás
 
@@ -214,14 +254,14 @@ Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljen
 | --- | --- |
 | A Restore művelet belső felhőalapú hibával meghiúsult. |<ol><li>A felhőalapú szolgáltatás, amelyre a visszaállítást végzi, DNS-beállításokkal van konfigurálva. A következőket tekintheti meg: <br>**$Deployment = Get-AzureDeployment-szolgáltatásnév "szolgáltatásnév"-slot "Production" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>Ha a **címe** konfigurálva van, a rendszer konfigurálja a DNS-beállításokat.<br> <li>A felhőalapú szolgáltatás, amelyre a visszaállítást végzi, a **foglalt IP**-sel van konfigurálva, a felhőalapú szolgáltatásban lévő meglévő virtuális gépek pedig leállított állapotban vannak. A következő PowerShell-parancsmagok használatával megtekintheti, hogy a felhőalapú szolgáltatás fenntartott-e egy IP-címet: **$Deployment = Get-AzureDeployment-szolgáltatásnév "szolgáltatásnév"-slot "Production" $DEP. ReservedIPName**. <br><li>Egy virtuális gépet a következő speciális hálózati konfigurációkkal próbál visszaállítani ugyanazon a felhőalapú szolgáltatásban: <ul><li>Virtuális gépek a terheléselosztó konfigurációjában, belső és külső.<li>Több fenntartott IP-címmel rendelkező virtuális gépek. <li>Több hálózati adapterrel rendelkező virtuális gépek. </ul><li>Válasszon egy új felhőalapú szolgáltatást a felhasználói felületen, vagy tekintse meg a speciális hálózati konfigurációval rendelkező virtuális gépek [visszaállítási szempontjait](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) .</ol> |
 | A kiválasztott DNS-név már használatban van: <br>Adjon meg másik DNS-nevet, és próbálkozzon újra. |Ez a DNS-név a felhőalapú szolgáltatás nevére hivatkozik, általában a **. cloudapp.net**végződéssel. A névnek egyedinek kell lennie. Ha ezt a hibaüzenetet kapja, a visszaállítás során másik virtuálisgép-nevet kell választania. <br><br> Ez a hiba csak a Azure Portal felhasználói számára jelenik meg. A PowerShell-alapú visszaállítási művelet sikeres, mert csak a lemezeket állítja vissza, és nem hozza létre a virtuális gépet. A hiba akkor jelenik meg, ha a virtuális gépet explicit módon hozza létre a lemez-visszaállítási művelet után. |
-| A virtuális hálózat megadott konfigurációja nem megfelelő: <br>Adjon meg másik virtuális hálózati konfigurációt, és próbálkozzon újra. |None |
-| A megadott felhőalapú szolgáltatás olyan fenntartott IP-címet használ, amely nem felel meg a visszaállítani kívánt virtuális gép konfigurációjának: <br>Olyan felhőalapú szolgáltatást válasszon, amely nem használ fenntartott IP-címet. Vagy válasszon egy másik helyreállítási pontot a visszaállításhoz. |None |
-| A felhőalapú szolgáltatás elérte a bemeneti végpontok számának korlátját: <br>Próbálja megismételni a műveletet egy másik felhőalapú szolgáltatás megadásával vagy egy meglévő végpont használatával. |None |
-| A Recovery Services-tár és a célként megadott Storage-fiók két különböző régióban található: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott Storage-fiók ugyanabban az Azure-régióban található, mint a Recovery Services-tároló. |None |
-| A visszaállítási művelethez megadott Storage-fiók nem támogatott: <br>Csak a helyileg redundáns vagy földrajzilag redundáns replikációs beállításokkal rendelkező alapszintű vagy standard szintű Storage-fiókok támogatottak. Válasszon egy támogatott Storage-fiókot. |None |
+| A virtuális hálózat megadott konfigurációja nem megfelelő: <br>Adjon meg másik virtuális hálózati konfigurációt, és próbálkozzon újra. |Nincsenek |
+| A megadott felhőalapú szolgáltatás olyan fenntartott IP-címet használ, amely nem felel meg a visszaállítani kívánt virtuális gép konfigurációjának: <br>Olyan felhőalapú szolgáltatást válasszon, amely nem használ fenntartott IP-címet. Vagy válasszon egy másik helyreállítási pontot a visszaállításhoz. |Nincsenek |
+| A felhőalapú szolgáltatás elérte a bemeneti végpontok számának korlátját: <br>Próbálja megismételni a műveletet egy másik felhőalapú szolgáltatás megadásával vagy egy meglévő végpont használatával. |Nincsenek |
+| A Recovery Services-tár és a célként megadott Storage-fiók két különböző régióban található: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott Storage-fiók ugyanabban az Azure-régióban található, mint a Recovery Services-tároló. |Nincsenek |
+| A visszaállítási művelethez megadott Storage-fiók nem támogatott: <br>Csak a helyileg redundáns vagy földrajzilag redundáns replikációs beállításokkal rendelkező alapszintű vagy standard szintű Storage-fiókok támogatottak. Válasszon egy támogatott Storage-fiókot. |Nincsenek |
 | A visszaállítási művelethez megadott Storage-fiók típusa nincs online állapotban: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott Storage-fiók online állapotban van. |Ez a hiba az Azure Storage-ban vagy kimaradás miatti átmeneti hiba miatt fordulhat elő. Válasszon másik Storage-fiókot. |
-| Elérte az erőforráscsoport-kvótát: <br>Töröljön néhány erőforráscsoportot a Azure Portal, vagy forduljon az Azure támogatási szolgálatához, és növelje a határértékeket. |None |
-| A kiválasztott alhálózat nem létezik: <br>Válasszon egy létező alhálózatot. |None |
+| Elérte az erőforráscsoport-kvótát: <br>Töröljön néhány erőforráscsoportot a Azure Portal, vagy forduljon az Azure támogatási szolgálatához, és növelje a határértékeket. |Nincsenek |
+| A kiválasztott alhálózat nem létezik: <br>Válasszon egy létező alhálózatot. |Nincsenek |
 | A Backup szolgáltatásnak nincs engedélye az erőforrásokhoz való hozzáférésre az előfizetésében. |A hiba megoldásához először állítsa vissza a lemezeket a [biztonsági másolatba mentett lemezek visszaállítása](backup-azure-arm-restore-vms.md#restore-disks)című cikkben ismertetett lépések segítségével. Ezután használja a [virtuális gép létrehozása helyreállított lemezekről](backup-azure-vms-automation.md#restore-an-azure-vm)című témakör PowerShell-lépéseit. |
 
 ## <a name="backup-or-restore-takes-time"></a>A biztonsági mentés vagy a visszaállítás időt vesz igénybe

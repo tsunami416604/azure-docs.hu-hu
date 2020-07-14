@@ -10,21 +10,21 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 56b94d66eb0929d2fd0ca74a1a631d229330adfa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f469196f96b97903f69e29d1a38900369653e02f
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "69906398"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86200512"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Keresési kategóriák a Bing helyi üzleti keresési API-hoz
 
-A Bing helyi üzleti keresési API lehetővé teszi a helyi üzleti entitások különböző kategóriákban való keresését, és prioritást biztosít a felhasználó helyének bezárásához. Ezeket a kereséseket a és `localCircularView` `localMapView` a [paraméterekkel](specify-geographic-search.md)együtt is felveheti.
+A Bing helyi üzleti keresési API lehetővé teszi a helyi üzleti entitások különböző kategóriákban való keresését, és prioritást biztosít a felhasználó helyének bezárásához. Ezeket a kereséseket a `localCircularView` és a `localMapView` [paraméterekkel](specify-geographic-search.md)együtt is felveheti.
 
 
 ## <a name="toplevel-categories"></a>TopLevel-kategóriák 
 
-A következő típusok a keresés főbb kategóriáit határozzák meg.  Több kategória is megadható a `localCategories` paraméterhez rendelt vesszővel tagolt lista használatával.  
+A következő típusok a keresés főbb kategóriáit határozzák meg.  Több kategória is megadható a paraméterhez rendelt vesszővel tagolt lista használatával `localCategories` .  
 - EatDrink 
 - SeeDo 
 - Shop 
@@ -34,56 +34,24 @@ A következő típusok a keresés főbb kategóriáit határozzák meg.  Több k
 - Kórházak 
 
 ## <a name="sub-categories"></a>Alkategóriák
-Az alkategóriák ugyanolyan módon lesznek átadva `localCategories`, mint a. Az alkategóriák konkrétabb kategóriák. Az alárendeltek abban az értelemben, hogy ha a C kategóriát és annak egyik alkategóriáját adja meg ugyanazon a vesszővel tagolt listában, akkor ugyanazokat az eredményeket kapja meg, mint ha csak a C értéket adta meg.
+Az alkategóriák ugyanolyan módon lesznek átadva, mint a `localCategories` . Az alkategóriák konkrétabb kategóriák. Az alárendeltek abban az értelemben, hogy ha a C kategóriát és annak egyik alkategóriáját adja meg ugyanazon a vesszővel tagolt listában, akkor ugyanazokat az eredményeket kapja meg, mint ha csak a C értéket adta meg.
 
-### <a name="eat-drink"></a>Egyél inni 
-|  |  |  |  |
-| - | - | - | - |
-| BreweriesAndBrewPubs | CocktailLounges | AfricanRestaurants |
-| AmericanRestaurants | Bagels | BarbecueRestaurants |
-| Vendéglők | SportsBars | Sávok |
-| BarsGrillsAndPubs | BuffetRestaurants| BelgianRestaurants | 
-| BritishRestaurants | CafeRestaurants | CaribbeanRestaurants |
-| ChineseRestaurants | CoffeeAndTea | Csemegeüzletekben | 
-| DeliveryService | Diners | DiscountStores | 
-| Fánk | Gyorsétterem | FrenchRestaurants | 
-| FrozenYogurt | GermanRestaurants | Szupermarketek | 
-| GreekRestaurants | Fűszerek | HawaiianRestaurants | 
-| HungarianRestaurants | IceCreamAndFrozenDesserts | IndianRestaurants | 
-| ItalianRestaurants | JapaneseRestaurants | Gyümölcslevek | 
-| KoreanRestaurants | LiquorStores | MexicanRestaurants |
-| MiddleEasternRestaurants | Pizza | PolishRestaurants | 
-| PortugueseRestaurants | Perecet | Éttermek | 
-| RussianAndUkrainianRestaurants | Szendvicsek | SeafoodRestaurants | 
-| SpanishRestaurants | SteakHouseRestaurants | SushiRestaurants | 
-| Elvihető | ThaiRestaurants | TurkishRestaurants | 
-| VegetarianAndVeganRestaurants | VietnameseRestaurants|  |
- 
-### <a name="see-do"></a>Lásd: do 
-|  |  |  |
-| -- | -- | -- |
-| AmusementParks | Látnivalók | Karneválok |
-| Kaszinók | LandmarksAndHistoricalSites | MiniatureGolfCourses |
-| MovieTheaters | Múzeumok | Parkot |
-| SightseeingTours | TouristInformation | Állatkertek |
- 
-### <a name="shop"></a>Shop 
-|  |  |  |
-| -- | -- | -- |
-| AntiqueStores | Könyvesboltok | CDAndRecordStores |
-| ChildrensClothingStores | CigarAndTobaccoShops | ComicBookStores |
-| DepartmentStores | DiscountStores | FleaMarketsAndBazaars |
-| FurnitureStores | HomeImprovementStores | JewelryAndWatchesStores |
-| KitchenwareStores | LiquorStores | MallsAndShoppingCenters |
-| MensClothingStores | MusicStores | OutletStores |
-| PetShops | PetSupplyStores | SchoolAndOfficeSupplyStores |
-| ShoeStores | SportingGoodsStores | ToyAndGameStores |
-| VitaminAndSupplementStores | WomensClothingStores |  |
+### <a name="eat-drink"></a>Egyél inni
+
+> BreweriesAndBrewPubs, CocktailLounges, AfricanRestaurants, AmericanRestaurants, bagels, BarbecueRestaurants, kocsmák, SportsBars, bárok, BarsGrillsAndPubs, BuffetRestaurants | BelgianRestaurants, BritishRestaurants, CafeRestaurants, CaribbeanRestaurants, ChineseRestaurants, CoffeeAndTea, csemegeüzletekben, DeliveryService, Diners, DiscountStores, fánkok, gyorsétterem, FrenchRestaurants, FrozenYogurt, GermanRestaurants, szupermarketek, GreekRestaurants, élelmiszerboltok, HawaiianRestaurants, HungarianRestaurants, IceCreamAndFrozenDesserts, IndianRestaurants, ItalianRestaurants, JapaneseRestaurants, Juice, KoreanRestaurants, LiquorStores, MexicanRestaurants, MiddleEasternRestaurants, pizza, PolishRestaurants, PortugueseRestaurants, perec, éttermek, RussianAndUkrainianRestaurants, szendvicsek, SeafoodRestaurants, SpanishRestaurants, SteakHouseRestaurants, SushiRestaurants, elvihető, ThaiRestaurants, TurkishRestaurants, VegetarianAndVeganRestaurants, VietnameseRestaurants
+
+### <a name="see-do"></a>Lásd: do
+
+> AmusementParks, attractions, karnevál, kaszinók, LandmarksAndHistoricalSites, MiniatureGolfCourses, MovieTheaters, múzeumok, parkok, SightseeingTours, TouristInformation, állatkertek
+
+### <a name="shop"></a>Shop
+
+> AntiqueStores, könyvesboltok, CDAndRecordStores, ChildrensClothingStores, CigarAndTobaccoShops, ComicBookStores, DepartmentStores, DiscountStores, FleaMarketsAndBazaars, FurnitureStores, HomeImprovementStores, JewelryAndWatchesStores, KitchenwareStores, LiquorStores, MallsAndShoppingCenters, MensClothingStores, MusicStores, OutletStores, PetShops, PetSupplyStores, SchoolAndOfficeSupplyStores, ShoeStores, SportingGoodsStores, ToyAndGameStores, VitaminAndSupplementStores, WomensClothingStores
 
 
 ## <a name="examples-of-local-categories-search"></a>Példák a helyi kategóriák keresésére
 
-Az alábbi példák a `localCategories` paraméternek megfelelően szereznek eredményt:
+Az alábbi példák a paraméternek megfelelően SZEREZnek eredményt `localCategories` :
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localcategories=HotelsAndMotels`
 

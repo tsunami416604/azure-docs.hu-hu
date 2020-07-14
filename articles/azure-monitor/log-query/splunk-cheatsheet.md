@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: 6346055f1169bfa533d5dbfe441ecf27fb0d78a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00fdaf93553c97112c67caa66cb2246756b63c33
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75397745"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207477"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk Azure Monitor naplózási lekérdezés
 
@@ -25,7 +26,7 @@ A következő táblázat összehasonlítja a splunk és az Azure Monitor-naplók
  | Üzembe helyezési egység  | cluster |  cluster |  A Azure Monitor lehetővé teszi a fürtök tetszőleges típusú lekérdezését. A splunk nem. |
  | Adatgyorsítótárak |  vödör  |  Gyorsítótárazási és adatmegőrzési szabályzatok |  Az adatpontok és a gyorsítótárazási szint szabályozása. Ez a beállítás közvetlenül befolyásolja a lekérdezések teljesítményét és a telepítés költségeit. |
  | Az adatlogikai partíció  |  index  |  adatbázis  |  Lehetővé teszi az adatmennyiségek logikai elkülönítését. Mindkét implementáció lehetővé teszi a szakszervezetek és az ezekhez való csatlakozást a partíciók között. |
- | Strukturált esemény metaadatainak | N.A. | tábla |  A splunk nem rendelkezik az esemény metaadatainak keresési nyelvén elérhető koncepcióval. Azure Monitor a naplók egy tábla fogalmával rendelkeznek, amelynek vannak oszlopai. Minden Event-példány egy sorra van leképezve. |
+ | Strukturált esemény metaadatainak | N/A | table |  A splunk nem rendelkezik az esemény metaadatainak keresési nyelvén elérhető koncepcióval. Azure Monitor a naplók egy tábla fogalmával rendelkeznek, amelynek vannak oszlopai. Minden Event-példány egy sorra van leképezve. |
  | Adatrekord | esemény | sor |  Csak a terminológia módosul. |
  | Adatrekord-attribútum | mező |  oszlop |  A Azure Monitorban ez a tábla struktúrájának részeként van definiálva. A splunk minden esemény saját mezőket tartalmaz. |
  | Típusok | adattípus |  adattípus |  Azure Monitor adattípusok világosabbak, mert az oszlopokra vannak beállítva. Mindkettő képes dinamikusan dolgozni az adattípusokkal és nagyjából egyenértékű adattípusokkal, beleértve a JSON-támogatást is. |
@@ -67,146 +68,108 @@ A következő részekben példákat talál a splunk és a Azure Monitor között
 ### <a name="search"></a>Keresés
 A splunk kihagyhatja a `search` kulcsszót, és megadhat egy idézőjelet nem tartalmazó karakterláncot. Azure Monitor el kell indítania az egyes lekérdezéseket a alkalmazásban `find` , a nem jegyzett sztringek oszlop neve, a keresési értéknek pedig egy idézőjeles karakterláncnak kell lennie. 
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **Keresés** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
-| Azure Monitor | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
-| | |
+| **Splunk** | **Keresés** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
+| **Azure Monitor** | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
+
 
 ### <a name="filter"></a>Szűrés
 Azure Monitor a naplók lekérdezése táblázatos eredményhalmaz alapján kezdődik, ahol a szűrő. A splunk-ben a szűrés az aktuális index alapértelmezett művelete. Használhatja `where` a splunk operátort is, de nem ajánlott.
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **Keresés** | <code>Event.Rule="330009.2" Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" _indextime>-24h</code> |
-| Azure Monitor | **ahol** | <code>Office_Hub_OHubBGTaskError<br>&#124; where Session_Id == "c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time() > ago(24h)</code> |
-| | |
-
+| **Splunk** | **Keresés** | <code>Event.Rule="330009.2" Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" _indextime>-24h</code> |
+| **Azure Monitor** | **ahol** | <code>Office_Hub_OHubBGTaskError<br>&#124; where Session_Id == "c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time() > ago(24h)</code> |
 
 ### <a name="getting-n-eventsrows-for-inspection"></a>N esemény/sor beolvasása vizsgálathoz 
 A Azure Monitor log-lekérdezések aliasként is támogatják a következőt: `take` `limit` . Ha a splunk az eredmények sorrendjét adják meg, `head` az az első n eredményt fogja visszaadni. Azure Monitor esetén a korlát nem rendezett, de a megtalált első n sort adja vissza.
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **fej** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
-| Azure Monitor | **korlátot** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
-| | |
-
-
+| **Splunk** | **fej** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
+| **Azure Monitor** | **korlátot** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
 
 ### <a name="getting-the-first-n-eventsrows-ordered-by-a-fieldcolumn"></a>Az első n esemény/sor beolvasása egy mező/oszlop alapján rendezve
 Az alsó eredmények esetében a splunk használja `tail` . A Azure Monitorban megadhatja a sorrend irányát a használatával `asc` .
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **fej** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
-| Azure Monitor | **Top** | <code>Office_Hub_OHubBGTaskError<br>&#124; top 20 by Event_Sequence</code> |
-| | |
-
-
-
+| **Splunk** | **fej** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
+| **Azure Monitor** | **top** | <code>Office_Hub_OHubBGTaskError<br>&#124; top 20 by Event_Sequence</code> |
 
 ### <a name="extending-the-result-set-with-new-fieldscolumns"></a>Az eredményhalmaz kiterjesztése új mezőkkel/oszlopokkal
 A splunk is tartalmaz egy `eval` függvényt, amely nem hasonlítható össze az `eval` operátorral. Mind a `eval` splunk, mind a `extend` Azure monitor operátora csak a skaláris függvények és a aritmetikai operátorok támogatását támogatja.
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **eval** |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
-| Azure Monitor | **kiterjesztése** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
-| | |
-
+| **Splunk** | **eval** |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
+| **Azure Monitor** | **kiterjesztése** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
 
 ### <a name="rename"></a>Átnevezés 
 Azure Monitor az `project-rename` operátor használatával nevezi át a mezőt. `project-rename`lehetővé teszi a lekérdezés számára, hogy kihasználhassa a mezőhöz előre elkészített indexeket. A splunk rendelkezik egy `rename` operátorral, amely ugyanezt teszi.
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **átnevezése** |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
-| Azure Monitor | **projekt – Átnevezés** | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
-| | |
-
-
-
+| **Splunk** | **átnevezése** |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
+| **Azure Monitor** | **projekt – Átnevezés** | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
 
 ### <a name="format-resultsprojection"></a>Találatok és leképezések formázása
 Úgy tűnik, hogy a splunk nem rendelkezik hasonló operátorral `project-away` . A felhasználói felület használatával szűrheti a mezőket.
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **tábla** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
-| Azure Monitor | **projekt**<br>**projekt – vendég** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
-| | |
-
-
+| **Splunk** | **tábla** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
+| **Azure Monitor** | **projekt**<br>**projekt – vendég** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 
 ### <a name="aggregation"></a>Összesítés
 Tekintse meg az összesítéseket Azure Monitor a különböző aggregációs függvények [naplózási lekérdezéseit](aggregations.md) .
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **stats** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
-| Azure Monitor | **Összegzés** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
-| | |
-
+| **Splunk** | **stats** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
+| **Azure Monitor** | **Összegzés** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
 
 
 ### <a name="join"></a>Csatlakozás
 A splunk való csatlakozás jelentős korlátozásokkal rendelkezik. A segédlekérdezés korlátja 10000 eredmény (a telepítési konfigurációs fájlban van beállítva), és korlátozott számú JOIN-íz van.
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **csatlakozás** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
-| Azure Monitor | **csatlakozás** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
-| | |
-
-
+| **Splunk** | **csatlakozás** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
+| **Azure Monitor** | **csatlakozás** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
 
 ### <a name="sort"></a>Rendezés
 A splunk-ben növekvő sorrendbe kell rendezni a `reverse` kezelőt. A Azure Monitor támogatja a null értékek meghatározásának helyét is, az elején vagy a végén.
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **Rendezés** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
-| Azure Monitor | **rendezési sorrend** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
-| | |
-
-
+| **Splunk** | **Rendezés** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
+| **Azure Monitor** | **rendezési sorrend** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
 
 ### <a name="multivalue-expand"></a>Többértékes Kibontás
 Ez egy hasonló operátor a splunk és a Azure Monitorban is.
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **mvexpand** |  `mvexpand foo` |
-| Azure Monitor | **mvexpand** | `mvexpand foo` |
-| | |
-
-
-
+| **Splunk** | **mvexpand** |  `mvexpand foo` |
+| **Azure Monitor** | **mvexpand** | `mvexpand foo` |
 
 ### <a name="results-facets-interesting-fields"></a>Eredmények aspektusai, érdekes mezők
 A Azure Portal Log Analyticsban csak az első oszlop van kitéve. Az összes oszlop elérhető az API-n keresztül.
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **mezők** |  <code>Event.Rule=330009.2<br>&#124; fields App.Version, App.Platform</code> |
-| Azure Monitor | **metszettel** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
-| | |
-
-
-
+| **Splunk** | **mezők** |  <code>Event.Rule=330009.2<br>&#124; fields App.Version, App.Platform</code> |
+| **Azure Monitor** | **metszettel** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; facet by App_Branch, App_Version</code> |
 
 ### <a name="de-duplicate"></a>De-Duplicate
 `summarize arg_min()`Ehelyett a kiválasztott rekord sorrendjének megfordítására használható.
 
-| |  | |
+| | Operátor | Példa |
 |:---|:---|:---|
-| Splunk | **deduplikáció** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
-| Azure Monitor | **összefoglalás arg_max ()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
-| | |
-
-
-
+| **Splunk** | **deduplikáció** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
+| **Azure Monitor** | **összefoglalás arg_max ()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
 
 ## <a name="next-steps"></a>További lépések
 

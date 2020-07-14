@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: active-directory
 author: msaburnley
 ms.service: active-directory
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 7fd716be397d9ef6b9d6132cd4470f653f3cea0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae3efec3722570e7e94316c5d874a74c523b1f05
+ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80655940"
+ms.lasthandoff: 07/08/2020
+ms.locfileid: "86156560"
 ---
 ## <a name="for-users-in-your-directory"></a>A címtárban lévő felhasználók számára
 
@@ -194,7 +194,7 @@ Ha például az Alice és a Bob, mint az első jóváhagyó (k) szerepel, a Caro
 
 1. A **továbbítás a másodlagos jóváhagyó (ok)** hoz a napok száma után, hogy a jóváhagyóknak hány napig kell jóváhagyni vagy megtagadni a kérést. Ha a kérelem időtartama előtt egyetlen jóváhagyó sem hagyta jóvá vagy nem utasította el a kérelmet, a kérelem lejár (időtúllépés), és a felhasználónak egy másik kérelmet kell benyújtania a hozzáférési csomaghoz. 
 
-    A kérések továbbítása csak egy nap elteltével lehetséges, ha a kérelem időtartama eléri a felezési időt. Ebben a példában a kérelem időtartama 14 nap. Így a kérelem időtartama a 7. napon eléri a felezési időt. Így a kérés nem továbbítható a 8. napnál korábbi időpontig. A kérések időtartamának utolsó napján nem továbbítható kérelmek. Így a példában a legutóbbi kérelem továbbítása a 13. nap.
+    A kérések továbbítása csak a kérelem időtartamát követő nap után lehetséges, és a fő jóváhagyó (k) döntését legalább 4 nappal később el kell végezni. Ha a kérelem időtúllépése kisebb vagy egyenlő, mint 3, nincs elegendő idő arra, hogy a kérést a másodlagos jóváhagyó (k) számára továbbítsa. Ebben a példában a kérelem időtartama 14 nap. Így a kérelem időtartama a 7. napon eléri a felezési időt. Így a kérés nem továbbítható a 8. napnál korábbi időpontig. A kérések időtartamának utolsó napján nem továbbítható kérelmek. Így a példában a legutóbbi kérelem továbbítása a 13. nap.
 
 ## <a name="enable-requests"></a>Kérelmek engedélyezése
 
