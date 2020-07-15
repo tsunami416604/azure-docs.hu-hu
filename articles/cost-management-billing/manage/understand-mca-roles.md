@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 76aa21aea647e5096ba47fb691622ea5146d9901
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84702601"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86207219"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>A Microsoft-ügyfélszerződéshez tartozó felügyeleti szerepkörök ismertetése az Azure-ban
 
@@ -141,12 +141,12 @@ Az alábbi táblázat azt mutatja be, hogy melyik szerepkörre van szüksége bi
 
 ### <a name="manage-invoice-section-permissions-and-properties"></a>A számlázási szakaszok engedélyeinek és tulajdonságainak kezelése
 
-|Feladatok|Számlázási szakasz tulajdonosa|Számlázási szakasz közreműködője|Számlázási szakasz olvasója|Azure-előfizetés létrehozója|Számlázásifiók-tulajdonos|Számlázási fiók közreműködője|Számlázásifiók-olvasó | |
-|---|---|---|---|---|---|---|---|---|
-|A számlázási szakaszhoz tartozó összes engedély megtekintése|✔|✔|✔|✔|✔|✔|✔| |
-|Engedély biztosítása másoknak a számlázási szakasz megtekintésére és kezelésére|✔|✘|✘|✘|✘|✘|✘| |
-|A számlázási szakasz tulajdonságainak megtekintése|✔|✔|✔|✔|✔|✔|✔| |
-|A számlázási szakasz tulajdonságainak frissítése|✔|✔|✘|✘|✘|✘|✘|✘|
+|Feladatok|Számlázási szakasz tulajdonosa|Számlázási szakasz közreműködője|Számlázási szakasz olvasója|Azure-előfizetés létrehozója|Számlázásifiók-tulajdonos|Számlázási fiók közreműködője|Számlázásifiók-olvasó |
+|---|---|---|---|---|---|---|---|
+|A számlázási szakaszhoz tartozó összes engedély megtekintése|✔|✔|✔|✔|✔|✔|✔|
+|Engedély biztosítása másoknak a számlázási szakasz megtekintésére és kezelésére|✔|✘|✘|✘|✘|✘|✘|
+|A számlázási szakasz tulajdonságainak megtekintése|✔|✔|✔|✔|✔|✔|✔|
+|A számlázási szakasz tulajdonságainak frissítése|✔|✔|✘|✘|✘|✘|✘|
 
 ### <a name="manage-products-for-invoice-section"></a>A számlázási szakaszokhoz tartozó termékek kezelése
 
@@ -176,7 +176,7 @@ Az alábbi táblázat azt mutatja be, hogy melyik szerepkörre van szüksége bi
 
 ## <a name="manage-billing-roles-in-the-azure-portal"></a>Számlázási szerepkörök kezelése az Azure Portalon
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
@@ -202,7 +202,7 @@ Az alábbi táblázat azt mutatja be, hogy melyik szerepkörre van szüksége bi
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálattal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A számlázási fiókkal kapcsolatos tudnivalókért tekintse meg az alábbi cikkeket:
 
