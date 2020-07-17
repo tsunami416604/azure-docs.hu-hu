@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 04343f684539307957cd635822ba1ba5a1ce24c9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dd429dadcbe67f0ac91da19d6606626b39f34ef5
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313773"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86201091"
 ---
-# <a name="get-started-with-azure-data-box"></a>Ismerkedés az Azure Data Boxszal 
+# <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Ismerkedés az Azure Data Boxszal végzett Azure-beli adatimportálással
 
 ::: zone target="docs"
 
-A rövid útmutató az Azure Data Box az Azure Portal használatával való üzembe helyezését írja le. A lépések bemutatják, hogyan csatlakoztathatja a kábelekkel, és hogyan konfigurálhatja a Data Boxot, majd másolhatja rá az adatokat az Azure-ba való feltöltésükhöz. A rövid útmutató az Azure Portalon és az eszköz helyi webes felületén hajtható végre.
+Ez a gyorsútmutató azt ismerteti, hogyan helyezheti üzembe az Azure Data Boxot importálási rendelésekhez az Azure Portal használatával. A lépések bemutatják, hogyan csatlakoztathatja a kábelekkel, és hogyan konfigurálhatja a Data Boxot, majd másolhatja rá az adatokat az Azure-ba való feltöltésükhöz. A gyorsútmutató lépései az Azure Portalon és az eszköz helyi webes felületén hajthatók végre.
 
 Részletes üzembehelyezési és nyomkövetési utasítások: [Oktatóanyag: Az Azure Data Box megrendelése](data-box-deploy-ordered.md)
 
@@ -28,7 +28,7 @@ Részletes üzembehelyezési és nyomkövetési utasítások: [Oktatóanyag: Az 
 
 ::: zone target="chromeless"
 
-Ez az útmutató az Azure Data Box Azure Portal használatával való üzembe helyezését ismerteti. A lépések bemutatják az előfeltételeket, valamint azt, hogyan kábelezheti és csatlakoztathatja az eszközt, és hogyan másolhatja az eszközre az adatokat az Azure-ba történő feltöltés céljából.
+Ez az útmutató azt ismerteti, hogyan helyezheti üzembe az Azure Data Boxot importáláshoz az Azure Portal használatával. A lépések bemutatják az előfeltételeket, valamint azt, hogyan kábelezheti és csatlakoztathatja az eszközt, és hogyan másolhatja az eszközre az adatokat az Azure-ba történő feltöltés céljából.
 
 ::: zone-end
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 850144e4835b43e219fa059bbc1c92bb3ef412f4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c74b5ba5101dae9165898aeb4f265d449988ecab
+ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200501"
+ms.lasthandoff: 07/09/2020
+ms.locfileid: "86205235"
 ---
 ::: zone target="docs"
 
@@ -32,7 +32,7 @@ ms.locfileid: "83200501"
 
 Az oktatóanyag az Azure Data Box bekábelezését, csatlakoztatását és bekapcsolását mutatja be.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A Data Box bekábelezése
@@ -42,17 +42,19 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-1. Befejezte [az Azure Data Box rendelését ismertető oktatóanyagot](data-box-deploy-ordered.md).
-2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú. 
+1. Megrendelt egy Azure Data Boxot.
+    - Az importálási rendelésekkel kapcsolatos információkért lásd [ Az Azure Data Box megrendelése](data-box-deploy-ordered.md) című oktatóanyagot.
+    - Exportálási rendelésekkel kapcsolatos információkért lásd: [Oktatóanyag: Az Azure Data Box megrendelése](data-box-deploy-export-ordered.md)
+1. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú. 
     - Az aktuális fuvarlevélcímke alatt egy átlátszó zacskó van rögzítve az eszközre, benne egy másik címkével. Őrizze meg ezt a címkét, mivel ezt fogja használni a küldemény visszaküldéséhez.
     - Egyes európai régiókban előfordulhat, hogy az eszköz egy dobozba csomagolva érkezik. Csomagolja ki az eszközt, és őrizze meg a dobozt a visszaküldéshez.
-3. Áttekintette [a Data Box biztonsági útmutatásait](data-box-safety.md).
-4. Kapott egy földelt tápkábelt a 100 TB-os tárolóeszközhöz.
-5. Rendelkezik egy gazdagéppel, amelyen a Data Boxra másolni kívánt adatok találhatók. A gazdaszámítógépen:
+1. Áttekintette [a Data Box biztonsági útmutatásait](data-box-safety.md).
+1. Kapott egy földelt tápkábelt a 100 TB-os tárolóeszközhöz.
+1. Rendelkezik egy gazdagéppel, amelyet az adatok Data Boxra való (importálási rendelés) vagy onnan való (exportálási rendelés) másolására használ. A gazdaszámítógépen:
     - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
     - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha 10 GbE sebességű kapcsolat nem áll rendelkezésre, egy 1 GbE sebességű adatkapcsolat is használható, azonban ez csökkenti a másolási sebességet. 
-6. Szüksége lesz egy vízszintes felületre, ahová a Data Boxot helyezheti. Ha az eszközt egy standard kiszolgálószekrény-polcra szeretné helyezni, egy legalább 7U méretű helyre lesz szükség az adatközponti szekrényben. Az eszközt a talpán vagy az oldalán is elhelyezheti a szekrényben.
-7. A következő kábelekkel rendelkezik a Data Box a gazdagéphez való csatlakoztatásához.
+1. Szüksége lesz egy vízszintes felületre, ahová a Data Boxot helyezheti. Ha az eszközt egy standard kiszolgálószekrény-polcra szeretné helyezni, egy legalább 7U méretű helyre lesz szükség az adatközponti szekrényben. Az eszközt a talpán vagy az oldalán is elhelyezheti a szekrényben.
+1. A következő kábelekkel rendelkezik a Data Box a gazdagéphez való csatlakoztatásához.
     - Egy vagy több 10 GbE SFP+ Twinax rézkábel vagy SFP+ száloptikai kábel (a DATA 1 és DATA 2 hálózati adapterekhez). A Data Box PCI Express 3.0 hálózati adapterrel felszerelt Mellanox ConnectX®-3 Pro EN kétportos 10GBASE-T adapterekkel rendelkezik, így az ezzel az adapterrel kompatibilis kábeleknek működniük kell. A belső teszteléshez például egy CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M kábelt használtunk. További információkért tekintse meg a [Mellanox támogatott kábeleinek és kapcsolóinak listáját](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Egy RJ-45 CAT 6 hálózati kábel (az MGMT hálózati adapterhez)
     - Egy RJ-45 CAT 6A VAGY egy RJ-45 CAT 6 hálózati kábel (a DATA 3 hálózati adapterhez 10 Gb/s vagy 1 Gb/s sebességre konfigurálva)
@@ -120,7 +122,7 @@ Az eszköz beállításához kövesse az alábbi lépéseket a helyi webes felha
    ![Csatlakozás a helyi webes felhasználói felülethez](media/data-box-deploy-set-up/data-box-connect-local-web-ui.png) 
 
 4. Megjelenik a helyi webes felhasználói felület **bejelentkezési** oldala. Győződjön meg róla, hogy az eszköz sorozatszáma megegyezik a helyi webes felhasználói felületen és a portál felhasználói felületén. Ekkor az eszköz még le van zárva.
-5. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+5. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 6. Töltse le az eszköz hitelesítő adatait a portálról. Lépjen az **Általános > Eszköz adatai** menüpontra. Másolja ki **az eszköz jelszavát**. Az eszköz jelszava a portálon megadott sorrendhez kötött. 
 
     ![Eszköz hitelesítő adatainak letöltése](media/data-box-deploy-set-up/data-box-device-credentials.png)
@@ -135,7 +137,7 @@ Az eszköz beállításához kövesse az alábbi lépéseket a helyi webes felha
 
 Az adathálózati adapterek konfigurálása konfigurálását követően a DATA 1–DATA 3 adapterek bármelyikének IP-címét használhatja a helyi webes felhasználói felülethez való hozzáféréshez a következő címen: `https://<IP address of a data network interface>`. 
 
-Ha az eszköz beállításával elkészült, csatlakozhat az eszközmegosztásokhoz, és a számítógépről az eszközre másolhatja az adatokat. 
+Ha elkészült az eszköz beállításával, csatlakozhat az eszközmegosztásokhoz, és átmásolhatja az adatokat. 
 
 ::: zone-end
 
@@ -143,7 +145,7 @@ Ha az eszköz beállításával elkészült, csatlakozhat az eszközmegosztások
 
 ## <a name="connect-your-device"></a>Az eszköz csatlakoztatása
 
-1. Az eszköz jelszavát az **Azure Portal**[Általános > Eszköz adatai](https://portal.azure.com) lapján találja.
+1. Az eszköz jelszavát az [Azure Portal](https://portal.azure.com)**Általános > Eszköz adatai** lapján találja.
 2. A Data Boxhoz csatlakoztatott számítógépen rendelje a 192.168.100.5 statikus IP-címet és a 255.255.255.0 alhálózatot az Ethernet-adapterhez. Nyissa meg az eszköz helyi webes felületét a következő helyen: `https://192.168.100.10`. A csatlakozás az eszköz bekapcsolását követően 5 percet is igénybe vehet. 
 3. Jelentkezzen be az Azure Portalról beszerzett jelszóval. Egy hibaüzenet jelenik meg, miszerint a webhely biztonsági tanúsítványa hibás. A böngészőspecifikus utasításokat követve lépjen a weblapra.
 4. Alapértelmezés szerint a 10 Gb/s (vagy az 1 Gb/s) sebességű adatillesztő DHCP-ként van konfigurálva. Szükség esetén statikusként is konfigurálhatja az illesztőt, és megadhat egy IP-címet. 
@@ -153,7 +155,7 @@ Ha az eszköz beállításával elkészült, csatlakozhat az eszközmegosztások
 
 ::: zone target="docs"
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a következőket:
 
@@ -161,10 +163,15 @@ Ebben az oktatóanyagban az Azure Data Box témaköréből ismerhette meg a köv
 > * A Data Box bekábelezése
 > * Csatlakozás a Data Boxhoz
 
-A következő oktatóanyag azt mutatja be, hogyan másolhat adatokat a Data Boxra.
+A következő oktatóanyag azt mutatja be, hogyan másolhat adatokat.
 
 > [!div class="nextstepaction"]
-> [Adatok másolása az Azure Data Boxra](./data-box-deploy-copy-data.md)
+> [Adatok másolása az Azure Data Boxra importálási rendeléshez](./data-box-deploy-copy-data.md)
+
+Vagy
+
+> [!div class="nextstepaction"]
+> [Adatok másolása az Azure Data Boxra exportálási rendeléshez](./data-box-deploy-export-copy-data.md)
 
 ::: zone-end
 
