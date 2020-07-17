@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 93a7181a3b720a3b313bb75855b2564c4cd33bc1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ff57a67d5e6d617d6d51c924161f586f90f92c3c
+ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214326"
+ms.lasthandoff: 07/10/2020
+ms.locfileid: "86231539"
 ---
 ::: zone target="docs"
 
@@ -273,7 +273,7 @@ Az adatok másolásának befejeződése után ellenőrizze az adatokat. Ha haszn
 
 Ha nem használta a másolásfelosztó eszközt az adatok másolásához, ellenőriznie kell az adatokat. Az adatok ellenőrzéséhez hajtsa végre a következő lépéseket.
 
-1. Futtassa a `DataBoxDiskValidation.cmd` parancsot az ellenőrzőösszeg-érvényesítéshez a meghajtó *DataBoxDiskImport* mappájában.
+1. Futtassa a `DataBoxDiskValidation.cmd` parancsot az ellenőrzőösszeg-érvényesítéshez a meghajtó *DataBoxDiskImport* mappájában. Ez kizárólag Windows-környezetben érhető el. A Linux-felhasználóknak ellenőrizniük kell, hogy a lemezre másolt forrásadatok megfelelnek-e az [előfeltételeknek](https://docs.microsoft.com/azure/databox/data-box-disk-limits).
     
     ![A Data Box Disk érvényesítési eszköz kimenete](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
