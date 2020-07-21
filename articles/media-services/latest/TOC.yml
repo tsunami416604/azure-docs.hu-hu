@@ -194,7 +194,7 @@
               href: job-error-codes.md
     - name: Magas rendelkezésre állás
       items:
-        - name: Encoding
+        - name: Igény szerinti videó
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-encoding.md
         - name: Streamelés

@@ -62,6 +62,8 @@
           href: tutorial-dr-drill-azure.md
         - name: Feladatátvétel az Azure-ba
           href: hyper-v-azure-failover-failback-tutorial.md
+        - name: Helyszíni replikáció engedélyezése privát végpontok segítségével
+          href: ./hybrid-how-to-enable-replication-private-endpoints.md
     - name: Áttelepítés az Azure-ba
       items:
         - name: Az Azure előkészítése helyszíni replikációhoz
@@ -186,6 +188,8 @@
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
             - name: Replikáció engedélyezése a hozzáadott lemezen
               href: azure-to-azure-enable-replication-added-disk.md
+            - name: Replikáció engedélyezése privát végpontok segítségével
+              href: ./azure-to-azure-how-to-enable-replication-private-endpoints.md
             - name: Lemezek kizárása
               href: azure-to-azure-exclude-disks.md
             - name: Azure-beli virtuális gépek védelmének ismételt biztosítása feladatátvétel után
@@ -242,6 +246,8 @@
               href: vmware-azure-set-up-target.md
             - name: Replikációs beállítások konfigurálása
               href: vmware-azure-set-up-replication.md
+            - name: Helyszíni replikáció engedélyezése privát végpontok segítségével
+              href: ./hybrid-how-to-enable-replication-private-endpoints.md
             - name: A mobilitási szolgáltatás telepítése
               items:
                 - name: Mobilitási szolgáltatások áttekintése és telepítése
@@ -308,6 +314,8 @@
               href: physical-azure-set-up-source.md
             - name: A célkörnyezet beállítása
               href: vmware-azure-set-up-target.md
+            - name: Helyszíni replikáció engedélyezése privát végpontok segítségével
+              href: ./hybrid-how-to-enable-replication-private-endpoints.md
             - name: A mobilitási szolgáltatás telepítése
               items:
                 - name: Tudnivalók a mobilitási szolgáltatás telepítéséről

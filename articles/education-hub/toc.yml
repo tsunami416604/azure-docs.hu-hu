@@ -1,0 +1,56 @@
+- name: Az Azure Education-központ dokumentációja
+  href: ./index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az Education-központ?
+      href: about-education-hub.md
+- name: Rövid útmutatók
+  items:
+    - name: Hozzáférés az Education-központhoz
+      href: access-education-hub.md
+    - name: Bevezetés az Education-központ használatába
+      href: get-started-education-hub.md
+    - name: Képzés beállítása és osztályterem létrehozása
+      href: set-up-course-classroom.md
+- name: Útmutatók
+  items:
+    - name: Tanulmányi ösztöndíj kezelése
+      href: hub-overview-page.md
+    - name: Feladat létrehozása és kreditek kiosztása
+      href: create-assignment-allocate-credit.md
+- name: Támogatás
+  items:
+    - name: Ügyfélszolgálat
+      href: educator-service-desk.md
+- name: Azure Dev Tools for Teaching
+  items:
+    - name: Áttekintés
+      items:
+        - name: Mi az az Azure Dev Tools for Teaching?
+          href: azure-dev-tools-teaching/about-program.md
+        - name: Azure for Students
+          href: azure-dev-tools-teaching/azure-students-program.md
+        - name: Azure for Students Starter
+          href: azure-dev-tools-teaching/azure-students-starter-program.md
+    - name: Rövid útmutatók
+      items:
+        - name: Előfizetés regisztrálása vagy megújítása
+          href: azure-dev-tools-teaching/enroll-renew-subscription.md
+        - name: Hozzáférés beállítása
+          href: azure-dev-tools-teaching/set-up-access.md
+    - name: Útmutatók
+      items:
+        - name: Tanulók kezelése
+          href: azure-dev-tools-teaching/manage-students.md
+        - name: Szoftverek letöltése
+          href: azure-dev-tools-teaching/download-software.md
+    - name: Hibaelhárítás
+      items:
+        - name: Bejelentkezési hibák
+          href: azure-dev-tools-teaching/troubleshoot-login.md
+- name: További források
+  items:
+    - name: GYIK
+      href: azure-dev-tools-teaching/program-faq.md
+    - name: Támogatás
+      href: azure-dev-tools-teaching/program-support.md
