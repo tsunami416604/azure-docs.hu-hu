@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 44aa7bdcaa77ba0865f17e2781e2a0521afe16df
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 89b2fc9ffe05853e34670b6f33ed665240d59457
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555433"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540196"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Oktatóanyag: gépi tanulási modellek alkalmazása Azure Functions Python és TensorFlow
 
@@ -122,21 +122,21 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
     func init --worker-runtime python
     ```
 
-    Az inicializálás után a *Start* mappa különböző fájlokat tartalmaz a projekthez, beleértve a [Local. Settings. JSON](functions-run-local.md#local-settings-file) és a [Host. JSON](functions-host-json.md)nevű konfigurációs fájlokat. Mivel a *Local. Settings. JSON* az Azure-ból letöltött titkos kulcsokat tartalmazhat, a fájl a *. gitignore* fájlban alapértelmezés szerint ki van zárva a forrás-vezérlőelemből.
+    Az inicializálást követően a *Start* mappa különböző fájlokat tartalmaz a projekthez, beleértve a [local.settings.json](functions-run-local.md#local-settings-file) és a [host.js](functions-host-json.md)nevű konfigurációk fájljait. Mivel a *local.settings.json* az Azure-ból letöltött titkos kódok is lehetnek, a fájl a *. gitignore* fájlban alapértelmezés szerint ki van zárva a forrás-vezérlőelemből.
 
     > [!TIP]
     > Mivel a Function projekt egy adott futtatókörnyezethez van kötve, a projekt összes funkcióját ugyanazzal a nyelvvel kell írni.
 
-1. Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol az `--name` argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new`hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének és a *function. JSON*nevű konfigurációs fájlnak, amely tartalmazza a függvény nevét.
+1. Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol az `--name` argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new`hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének, valamint egy *function.js*nevű konfigurációs fájlnak.
 
     ```
     func new --name classify --template "HTTP trigger"
     ```
 
-    Ez a parancs létrehoz egy mappát, amely megfelel a függvény nevének, *besorolása*. Ebben a mappában két fájl található: az * \_ \_ init \_ \_ .* a (z), amely tartalmazza a függvény kódját és a *function. JSON*fájlt, amely leírja a függvény triggerét, valamint a bemeneti és kimeneti kötéseit. A fájlok tartalmával kapcsolatos részletekért lásd: [a fájl tartalmának vizsgálata](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) a Python rövid útmutatójában.
+    Ez a parancs létrehoz egy mappát, amely megfelel a függvény nevének, *besorolása*. Ebben a mappában két fájl található: az * \_ \_ init \_ \_ .* a (z), amely tartalmazza a függvény kódját, és *function.json*, amely leírja a függvény triggerét, valamint a bemeneti és kimeneti kötéseit. A fájlok tartalmával kapcsolatos részletekért lásd: [a fájl tartalmának vizsgálata](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#optional-examine-the-file-contents) a Python rövid útmutatójában.
 
 
-## <a name="run-the-function-locally"></a>Függvény helyi futtatása
+## <a name="run-the-function-locally"></a>A függvény helyi futtatása
 
 1. Indítsa el a függvényt úgy, hogy elindítja a helyi Azure Functions futtatókörnyezet-gazdagépet a *Start* mappában:
 
@@ -180,7 +180,7 @@ Ha saját modellt kíván létrehozni a Custom Vision Service ingyenes szintjév
     
     ---
     
-1. Ellenőrizze, hogy a *besorolási* mappa tartalmazza-e a *Model. PB* és a *labels. txt*nevű fájlokat. Ha nem, ellenőrizze, hogy a parancsot futtatta-e a *Start* mappában.
+1. Ellenőrizze, hogy a *besorolási* mappa tartalmazza-e a *Model. pb* és a *labels.txt*nevű fájlokat. Ha nem, ellenőrizze, hogy a parancsot futtatta-e a *Start* mappában.
 
 1. A *Start* mappában futtassa a következő parancsot egy segítő kóddal rendelkező fájl másolásához a *besorolási* mappába:
 
@@ -206,7 +206,7 @@ Ha saját modellt kíván létrehozni a Custom Vision Service ingyenes szintjév
 
 1. Győződjön meg arról, hogy a *besorolási* mappa már tartalmaz egy *Predict.py*nevű fájlt.
 
-1. Nyissa meg a *Start/követelmények. txt fájlt* egy szövegszerkesztőben, és adja hozzá a segítő kód által igényelt következő függőségeket:
+1. Nyisson meg egy szövegszerkesztőben a *Start/requirements.txt* szöveget, és adja hozzá a segítő kód által igényelt következő függőségeket:
 
     ```txt
     tensorflow==1.14
@@ -214,7 +214,7 @@ Ha saját modellt kíván létrehozni a Custom Vision Service ingyenes szintjév
     requests
     ```
     
-1. Mentse a *követelmények. txt fájlt*.
+1. *requirements.txt*mentése.
 
 1. A függőségek telepítéséhez futtassa a következő parancsot a *Start* mappában. A telepítés néhány percet is igénybe vehet, amely alatt a következő szakaszban folytathatja a függvény módosítását.
 

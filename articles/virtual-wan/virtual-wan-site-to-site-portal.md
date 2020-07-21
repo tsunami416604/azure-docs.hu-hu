@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/09/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 219551f2bba229fb627092548fe5c5f5ff8798b9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: eceb9e4c8c839e4da333e005e879ea6094936092
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220602"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525165"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Oktatóanyag: Helyek közötti kapcsolat létrehozása az Azure Virtual WAN használatával
 
@@ -51,21 +51,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 
 ## <a name="create-a-virtual-wan"></a><a name="openvwan"></a>Virtuális WAN létrehozása
 
-Egy böngészőből lépjen az Azure Portalra, majd jelentkezzen be az Azure-fiókjával.
-
-1. Navigáljon a virtuális WAN lapra. A portálon kattintson az **+Erőforrás létrehozása** gombra. Írja be a **virtuális WAN** kifejezést a keresőmezőbe, majd válassza az ENTER billentyűt.
-2. Válassza ki a **virtuális WAN** elemet az eredmények közül. A virtuális WAN lapon kattintson a **Létrehozás** elemre a WAN létrehozása lap megnyitásához.
-3. A **WAN létrehozása** lap **alapok** lapján töltse ki a következő mezőket:
-
-   ![Virtuális WAN](./media/virtual-wan-site-to-site-portal/vwan.png)
-
-   * **Előfizetés** – Válassza ki a használni kívánt előfizetést.
-   * **Erőforráscsoport** – új létrehozása vagy meglévő használata.
-   * **Erőforráscsoport helye** – válasszon ki egy erőforrás-helyet a legördülő listából. A WAN egy globális erőforrás, és nem egy adott régióhoz tartozik. Mindazonáltal mégis ki kell választania egy régiót, hogy könnyebben kezelhesse és megtalálhassa a létrehozott WAN-erőforrást.
-   * **Név** – írja be a WAN-híváshoz használni kívánt nevet.
-   * **Írja be a következőt:** Alapszintű vagy standard. Ha alapszintű WAN-t hoz létre, akkor csak egy alapszintű hubot hozhat létre. Az alapszintű hubok csak a VPN-helyek közötti kapcsolatra képesek.
-4. Miután befejezte a mezők kitöltését, válassza a **felülvizsgálat + létrehozás**lehetőséget.
-5. Az ellenőrzés után válassza a **Létrehozás** lehetőséget a virtuális WAN létrehozásához.
+[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-create-vwan-include.md)]
 
 ## <a name="create-a-hub"></a><a name="hub"></a>Elosztó létrehozása
 

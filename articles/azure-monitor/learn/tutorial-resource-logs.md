@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: d356042d65c419163de4951e64a635a22ea90e6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f2c780ffb7705575bf1bb5cabb6a09d9dabc0690
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78269196"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505839"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Oktatóanyag: erőforrás-naplók összegyűjtése és elemzése Azure-erőforrásból
 
@@ -31,7 +31,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-erőforrásra a figyel
 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be a Azure Portalba [https://portal.azure.com](https://portal.azure.com)a következő címen:.
+Jelentkezzen be a Azure Portalba a következő címen: [https://portal.azure.com](https://portal.azure.com) .
 
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
@@ -86,10 +86,10 @@ Az adatok beolvasása egy Log Analytics munkaterületről a Kusto lekérdezési 
    
     ![Naplók](media/tutorial-resource-logs/logs.png)
 
-4. A példában szereplő szolgáltatás erőforrás-naplókat ír a **AzureDiagnostics** táblába, de más szolgáltatások is írhatnak más táblákba. A különböző Azure-szolgáltatások által használt táblák esetében lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrás-naplókhoz](../platform/diagnostic-logs-schema.md) .
+4. A példában szereplő szolgáltatás erőforrás-naplókat ír a **AzureDiagnostics** táblába, de más szolgáltatások is írhatnak más táblákba. A különböző Azure-szolgáltatások által használt táblák esetében lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrás-naplókhoz](../platform/resource-logs-schema.md) .
 
     > [!NOTE]
-    > Több szolgáltatás erőforrás-naplókat ír a AzureDiagnostics táblába. Ha a Azure Monitor menüből indítja el a Log Analytics, akkor az adott szolgáltatás megadásához `where` hozzá kell adnia `ResourceProvider` egy utasítást az oszlophoz. Amikor elindít Log Analytics egy erőforrás menüjéből, akkor a hatókör csak az adott erőforrás rekordjait állítja be, ezért erre az oszlopra nincs szükség. Tekintse meg a szolgáltatás dokumentációját a példák lekérdezéséhez.
+    > Több szolgáltatás erőforrás-naplókat ír a AzureDiagnostics táblába. Ha a Azure Monitor menüből indítja el a Log Analytics, akkor az `where` adott szolgáltatás megadásához hozzá kell adnia egy utasítást az `ResourceProvider` oszlophoz. Amikor elindít Log Analytics egy erőforrás menüjéből, akkor a hatókör csak az adott erőforrás rekordjait állítja be, ezért erre az oszlopra nincs szükség. Tekintse meg a szolgáltatás dokumentációját a példák lekérdezéséhez.
 
 
 5. Írjon be egy lekérdezést, és kattintson a **Futtatás** elemre az eredmények vizsgálatához. 
@@ -100,8 +100,8 @@ Az adatok beolvasása egy Log Analytics munkaterületről a Kusto lekérdezési 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte, hogyan gyűjthet erőforrás-naplókat egy Log Analytics munkaterületre, hogyan elemezheti az adatokat a naplók írásához.
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a Azure Monitor-naplózási lekérdezésekkel](../log-query/get-started-queries.md)
+> [Ismerkedés az Azure Monitor-naplólekérdezésekkel](../log-query/get-started-queries.md)

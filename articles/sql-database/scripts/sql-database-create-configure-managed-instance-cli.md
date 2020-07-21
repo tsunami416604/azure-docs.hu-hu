@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: fd2c7a33c0747aa21a8bda53ad5437c9e79a6557
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9d0058fd90590b10a0d5745bce1875db9ad35745
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115411"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518894"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>Azure SQL felügyelt példány létrehozása a CLI használatával
 
@@ -49,14 +49,14 @@ az group delete --name $resource
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| | |
+| Parancs | Leírás |
 |---|---|
 | [az Network vnet](/cli/azure/network/vnet) | Virtuális hálózati parancsok. |
 | [az Network vnet subnet](/cli/azure/network/vnet/subnet) | Virtuális hálózati alhálózati parancsok. |
 | [az Network Route-Table](/cli/azure/network/route-table) | Hálózati útválasztási táblázat parancsai. |
 | [az SQL mi](/cli/azure/sql/mi) | SQL felügyelt példányok parancsai. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

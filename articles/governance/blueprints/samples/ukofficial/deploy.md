@@ -1,13 +1,14 @@
 ---
 title: Az Egyesült Királyság hivatalos & Egyesült Királysági NHS tervezetének mintái
 description: Üzembe helyezheti az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetének lépéseit, beleértve a tervrajz-összetevők paramétereit.
-ms.date: 05/08/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 2ac2d17c08b3f585f86d1b2d339c3c7cf52844ce
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a4512eb982943664afc8217c5332e5e3b6e62fc1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037171"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521445"
 ---
 # <a name="deploy-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és egyesült királysági NHS-mintáinak üzembe helyezése
 
@@ -61,7 +62,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
-   - Alapvető beállítások
+   - Alapbeállítások
 
      - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
      - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
@@ -90,13 +91,13 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-Összetevő neve|Összetevő típusa|Paraméter neve|Description|
+Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
 |Tervezet kezdeményezés az Egyesült Királyság hivatalos vagy Egyesült Királysági NHS-hez|Szabályzat-hozzárendelés |A diagnosztikai naplók naplózására szolgáló erőforrástípusok (szabályzat: tervezet kezdeményezés az Egyesült Királyság hivatalos vagy Egyesült Királysági NHS) |A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása Megjegyzés engedélyezve van.  Elfogadható értékek: [támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplóihoz](../../../../azure-monitor/platform/resource-logs-schema.md). |
 |\[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken |Szabályzat-hozzárendelés |Nem kötelező: azon virtuálisgép-lemezképek listája, amelyek támogatottak a hatókörhöz hozzáadandó linuxos operációs rendszer (házirend: \[ előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux virtuális gépeken) |Választható Az alapértelmezett érték _none_. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
 |\[Előzetes verzió \] : log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken |Szabályzat-hozzárendelés |Nem kötelező: azon virtuálisgép-lemezképek listája, amelyek támogatják a hatókörhöz hozzáadandó Windows operációs rendszert (házirend: \[ előzetes verzió \] : log Analytics ügynök központi telepítése Windows rendszerű virtuális gépeken) |Választható Az alapértelmezett érték _none_. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../../../../azure-monitor/learn/quick-create-workspace.md). |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a brit hivatalos és az Egyesült Királysági NHS-tervezetek üzembe helyezésének lépéseit, tekintse meg az alábbi cikkeket az Áttekintés és a vezérlés leképezésének megismeréséhez:
 

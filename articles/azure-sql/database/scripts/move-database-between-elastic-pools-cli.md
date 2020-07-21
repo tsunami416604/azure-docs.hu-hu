@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 85b78ad92997344ff6ea0f30da25205790d90eef
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7da5e25624a0e3a323e60cdf91660b29f58f31d7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196766"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514747"
 ---
 # <a name="use-the-azure-cli-to-move-a-database-in-sql-database-in-a-sql-elastic-pool"></a>Az adatbázis áthelyezése az Azure CLI használatával SQL Database egy rugalmas SQL-készletben
 
@@ -46,13 +46,13 @@ az group delete --name $resource
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| | |
+| Parancs | Leírás |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Kiszolgálói parancsok. |
 | [az SQL rugalmas-készletek](/cli/azure/sql/elastic-pool) | Rugalmas készlet parancsai. |
 | [az SQL db](/cli/azure/sql/db) | Adatbázis-parancsok. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

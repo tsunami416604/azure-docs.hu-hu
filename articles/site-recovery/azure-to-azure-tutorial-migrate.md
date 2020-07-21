@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuális gépek áthelyezése egy másik régióba Azure Site Recovery
+title: Azure IaaS virtuális gépek áthelyezése egy másik régióba Azure Site Recovery
 description: Az Azure IaaS virtuális gépek egyik Azure-régióból a másikba való áthelyezéséhez használja a Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 09a00d2c6a889f396e5c18da29530c94a624568b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 198e07b80788629030b621dd3c5e235a91baaba3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134435"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518911"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -70,7 +70,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
      > Azure Site Recovery automatikusan felfedi és létrehoz egy virtuális hálózatot, amikor engedélyezi a forrás virtuális gép replikálását. Emellett előre létrehozhat egy hálózatot, és hozzárendelheti azt a virtuális géphez a replikálás engedélyezéséhez a felhasználói folyamaton keresztül. Amint azt korábban említettük, manuálisan létre kell hoznia minden más erőforrást a céltartományban.
 
     A forrás virtuális gép konfigurációja alapján a leggyakrabban használt hálózati erőforrások létrehozásához tekintse meg a következő dokumentációt:
-    - [Network security groups (Hálózati biztonsági csoportok)](../virtual-network/manage-network-security-group.md)
+    - [Hálózati biztonsági csoportok](../virtual-network/manage-network-security-group.md)
     - [Terheléselosztók](../load-balancer/index.yml)
     -  [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md)
     - Bármely más hálózati összetevőnél tekintse meg a [hálózatkezelési dokumentációt](../index.yml?pivot=products&panel=network).
@@ -99,7 +99,7 @@ Site Recovery beolvassa az előfizetéshez és az erőforráscsoporthoz társít
 
 1. A következő lépésben válassza ki az áthelyezni kívánt virtuális gépet, majd kattintson az **OK gombra**.
 1. A **Beállítások**területen válassza a vész- **helyreállítás**lehetőséget.
-1. A vész- **helyreállítási**  >  **célcsoport**konfigurálása területen válassza ki azt a régiót, amelyre a replikálást végzi.
+1. A **Vészhelyreállítás konfigurálása** > **Célrégió** részben válassza ki a célrégiót, amelybe a replikálást végezni kívánja.
 1. A jelen oktatóanyag esetében fogadja el a többi alapértelmezett értéket.
 1. Válassza a **Replikáció engedélyezése** elemet. Ezzel a lépéssel elindít egy feladatot a virtuális gép replikálásának engedélyezéséhez.
 
@@ -140,7 +140,7 @@ Ha nem tervezi a forrás-erőforrások újrafelhasználását, hajtsa végre a k
 1. Törölje az összes olyan hálózati erőforrást a forrás régióban, amelyet az [Előfeltételek](#prerequisites)között azonosított.
 1. Törölje a megfelelő Storage-fiókot a forrás régióban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure-beli virtuális gépet egy másik Azure-régióba helyezett át. Most már beállíthatja a vész-helyreállítást az áthelyezett virtuális géphez.
 

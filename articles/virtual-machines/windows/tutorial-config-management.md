@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ed36dc669c8b89ba4a2b7831c6eb6f8742e73730
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cf01e4baf96e4403dae443fa6c98f74c571641a8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100413"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508317"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: változások figyelése és Windowsos virtuális gépek frissítése az Azure-ban
 
@@ -31,19 +31,19 @@ A Azure Cloud Shell egy ingyenes interaktív felület, amellyel a cikkben ismert
 
 Ha meg szeretné nyitni a Cloud Shellban lévő összes kódot, egyszerűen válassza ki a **kipróbálás** lehetőséget a kód blokk jobb felső sarkában.
 
-A Cloud Shell egy külön böngésző lapon is megnyithatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Válassza a **Másolás** elemet a kódok másolásához, illessze be őket a Cloud Shell lapra, és válassza az ENTER billentyűt a kód futtatásához.
+A Cloud Shell egy külön böngésző lapon is megnyithatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . Válassza a **Másolás** elemet a kódok másolásához, illessze be őket a Cloud Shell lapra, és válassza az ENTER billentyűt a kód futtatásához.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
 Ebben az oktatóanyagban az Azure-monitorozás és a frissítéskezelés konfigurálásához egy Azure-beli windowsos virtuális gép szükséges.
 
-Először a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát:
+Először a [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) paranccsal állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Ezután hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Az alábbi példa egy nevű `myVM` virtuális gépet hoz létre `East US` a helyen. Ha még nem léteznek, az erőforráscsoport `myResourceGroupMonitor` és a támogató hálózati erőforrások jönnek létre:
+Ezután hozza létre a virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm). Az alábbi példa egy nevű virtuális gépet hoz létre `myVM` a `East US` helyen. Ha még nem léteznek, az erőforráscsoport és a `myResourceGroupMonitor` támogató hálózati erőforrások jönnek létre:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -76,7 +76,7 @@ A virtuális gép Update Managementának engedélyezése:
 
 A rendszer ellenőrzi, hogy engedélyezve van-e a Update Management ezen a virtuális gépen. Az ellenőrzés magában foglalja a Log Analytics munkaterület, a csatolt Automation-fiókok, valamint az, hogy a megoldás szerepel-e a munkaterületen.
 
-[Log Analytics](../../log-analytics/log-analytics-overview.md) munkaterületet használ a szolgáltatások és szolgáltatások, például a Update Management által generált adatok gyűjtéséhez. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
+[Log Analytics](../../azure-monitor/log-query/log-query-overview.md) munkaterületet használ a szolgáltatások és szolgáltatások, például a Update Management által generált adatok gyűjtéséhez. A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
 
 Ha további műveleteket szeretne végrehajtani a frissítéseket igénylő virtuális gépeken, Azure Automation használatával runbookok futtathat a virtuális gépeken. Ilyen műveletek közé tartoznak a frissítések letöltése vagy alkalmazása.
 
@@ -86,8 +86,8 @@ Az **Update Management engedélyezése** ablakban válassza ki a log Analytics m
 
 A rendszer az előkészítés során hiányzó alábbi előfeltételek bármelyikét automatikusan hozzáadja:
 
-* [Log Analytics](../../log-analytics/log-analytics-overview.md) munkaterület
-* [Automation](../../automation/automation-offering-get-started.md)
+* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) munkaterület
+* [Automatizálás](../../automation/index.yml)
 * [Hibrid runbook Worker](../../automation/automation-hybrid-runbook-worker.md), amely engedélyezve van a virtuális gépen
 
 A megoldás engedélyezését követően megnyílik az **Update Management** ablak. Konfigurálja a használni kívánt helyet, Log Analytics munkaterületet és Automation-fiókot, majd válassza az **Engedélyezés**lehetőséget. Ha ezek a beállítások szürkén jelennek meg, egy másik automatizálási megoldás van engedélyezve a virtuális gépen, és a megoldás munkaterület-és Automation-fiókját kell használnia.
@@ -199,9 +199,9 @@ Az előző diagramon az idő múlásával történt változások láthatók. Miu
 
 A sávdiagramok minden sora egy másik, nyomon követhető módosítás típusát jelöli. Ezek a típusok a Linux-démonok, a fájlok, a Windows-beállításkulcsok, a szoftverek és a Windows-szolgáltatások. A **módosítás lap a változás** részleteit jeleníti meg. A változások az egyes előfordulások sorrendjében jelennek meg, és a legutóbbi változás látható először.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban konfigurálta és ellenőrizte Change Tracking és Update Management a virtuális géphez. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban konfigurálta és ellenőrizte Change Tracking és Update Management a virtuális géphez. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Hozzon létre egy erőforráscsoportot és egy virtuális gépet.

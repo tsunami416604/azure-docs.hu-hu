@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4b5e4fe585b01670c06d5ff08fb3d221086d94d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b5b3d1240c621a1bcdc135825e70fe164452a428
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100430"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500395"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Oktatóanyag: A Windows rendszerű virtuális gépek fájljainak biztonsági mentése és visszaállítása az Azure-ban
 
@@ -27,7 +27,7 @@ Adatai védelme érdekében érdemes rendszeres időközönként biztonság ment
 
 ## <a name="backup-overview"></a>A biztonsági mentés áttekintése
 
-Amikor az Azure Backup szolgáltatás biztonsági mentési feladatot kezdeményez, elindítja a biztonsági mentési bővítményt, hogy készítsen egy időponthoz kötött pillanatképet. A Azure Backup szolgáltatás a [VMSnapshot bővítményt](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows)használja. A rendszer a virtuális gép első biztonsági mentésekor telepíti a bővítményt, ha a virtuális gép fut. Ha a virtuális gép nem fut, a Backup szolgáltatás az alapul szolgáló tárolóról készít pillanatképet (mivel nem történik alkalmazásírás, amikor a virtuális gép le van állítva).
+Amikor az Azure Backup szolgáltatás biztonsági mentési feladatot kezdeményez, elindítja a biztonsági mentési bővítményt, hogy készítsen egy időponthoz kötött pillanatképet. A Azure Backup szolgáltatás a [VMSnapshot bővítményt](../extensions/vmsnapshot-windows.md)használja. A rendszer a virtuális gép első biztonsági mentésekor telepíti a bővítményt, ha a virtuális gép fut. Ha a virtuális gép nem fut, a Backup szolgáltatás az alapul szolgáló tárolóról készít pillanatképet (mivel nem történik alkalmazásírás, amikor a virtuális gép le van állítva).
 
 Amikor Windows rendszerű virtuális gépekről készít pillanatképet, a Backup szolgáltatás együttműködik a Kötet árnyékmásolata szolgáltatással (VSS), hogy egységes pillanatképet készítsen a virtuális gép lemezeiről. Amikor az Azure Backup szolgáltatás elkészítette a pillanatképet, az adatok átkerülnek a tárolóba. A maximális hatékonyság érdekében a szolgáltatás csak azokat az adatblokkokat azonosítja és továbbítja, amelyek az előző biztonsági mentés óta változtak.
 
@@ -98,12 +98,3 @@ Folytassa a következő oktatóanyaggal, amely a virtuális gépek monitorozás�
 
 > [!div class="nextstepaction"]
 > [Virtuális gépek szabályozása](tutorial-govern-resources.md)
-
-
-
-
-
-
-
-
-

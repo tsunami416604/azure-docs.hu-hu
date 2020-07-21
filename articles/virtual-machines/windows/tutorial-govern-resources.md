@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: fce613da352e55bae64db2912af23a07f4bf954f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f7f993ca817d6ed6b395343eb180b3601a22f7a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200677"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508270"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Oktatóanyag: a Windows rendszerű virtuális gépek felügyeletének megismerése Azure PowerShell
 
@@ -53,7 +53,7 @@ A virtuálisgép-megoldások kezeléséhez három erőforrás-specifikus szerepk
 
 Ahelyett, hogy szerepköröket rendelne az egyéni felhasználókhoz, gyakran célszerűbb egy azokat a felhasználókat tartalmazó Azure Active Directory-csoportot használni, akiknek hasonló műveleteket kell elvégezniük. Ezután rendelje hozzá a csoportot a megfelelő szerepkörhöz. Ehhez a cikkhez használhat egy meglévő csoportot a virtuális gép kezeléséhez, vagy a portálon [létrehozhat egy Azure Active Directory-csoportot](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Új csoport létrehozása vagy egy meglévő megkeresése után a [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) parancs használatával rendelje hozzá a Azure Active Directory csoportot a virtuálisgép-közreműködő szerepkörhöz az erőforráscsoporthoz.  
+Új csoport létrehozása vagy egy meglévő megkeresése után a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) parancs használatával rendelje hozzá a Azure Active Directory csoportot a virtuálisgép-közreműködő szerepkörhöz az erőforráscsoporthoz.  
 
 ```azurepowershell-interactive
 $adgroup = Get-AzADGroup -DisplayName <your-group-name>
@@ -69,7 +69,7 @@ A folyamatot általában a *Hálózati közreműködő* és a *Tárfiók-közrem
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Az [Azure Policy](../../governance/policy/overview.md) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Az elérhető szabályzat-definíciók megtekintéséhez használja a [Get-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition) parancsot:
+Az [Azure Policy](../../governance/policy/overview.md) segítségével ellenőrizheti, hogy az előfizetés összes erőforrása megfelel-e a vállalati szabványoknak. Az előfizetése már számos szabályzatdefinícióval rendelkezik. Az elérhető szabályzat-definíciók megtekintéséhez használja a [Get-AzPolicyDefinition](/powershell/module/az.resources/get-azpolicydefinition) parancsot:
 
 ```azurepowershell-interactive
 (Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -81,7 +81,7 @@ Itt láthatja a meglévő szabályzatdefiníciókat. A szabályzat típusa lehet
 * Korlátozzák a virtuális gépek termékváltozatait.
 * Naplózzák a felügyelt lemezeket nem használó virtuális gépeket.
 
-A következő példában három olyan szabályzatdefiníciót fog lekérni, amely a megjelenítendő néven alapul. A [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) parancs használatával rendelje hozzá ezeket a definíciókat az erőforráscsoporthoz. Egyes szabályzatoknál paraméterértékekkel határozhatja meg az engedélyezett értékeket.
+A következő példában három olyan szabályzatdefiníciót fog lekérni, amely a megjelenítendő néven alapul. A [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment) parancs használatával rendelje hozzá ezeket a definíciókat az erőforráscsoporthoz. Egyes szabályzatoknál paraméterértékekkel határozhatja meg az engedélyezett értékeket.
 
 ```azurepowershell-interactive
 # Values to use for parameters
@@ -135,7 +135,7 @@ Az üzembe helyezés befejezése után további kezelési beállításokat alkal
 
 Az [Erőforrás-zárolások](../../azure-resource-manager/management/lock-resources.md) megakadályozzák, hogy a cég vagy intézmény felhasználói véletlenül töröljék vagy módosítsák a kritikus erőforrásokat. Az erőforrás-zárolások a szerepköralapú hozzáférés-vezérléssel szemben minden felhasználóra és szerepkörre érvényes korlátozásokat alkalmaznak. A zárolási szintet *CanNotDelete* (nem törölhető) vagy *ReadOnly* (csak olvasható) értékre állíthatja be.
 
-A virtuális gép és a hálózati biztonsági csoport zárolásához használja a [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock) parancsot:
+A virtuális gép és a hálózati biztonsági csoport zárolásához használja a [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) parancsot:
 
 ```azurepowershell-interactive
 # Add CanNotDelete lock to the VM
@@ -167,7 +167,7 @@ Megjelenik egy hibaüzenet, amely szerint a törlési művelet nem hajtható vé
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
-Ha címkéket szeretne alkalmazni egy virtuális gépre, használja a [set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) parancsot:
+Ha címkéket szeretne alkalmazni egy virtuális gépre, használja a [set-AzResource](/powershell/module/az.resources/set-azresource) parancsot:
 
 ```azurepowershell-interactive
 # Get the virtual machine
@@ -181,7 +181,7 @@ Set-AzResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } 
 
 ### <a name="find-resources-by-tag"></a>Erőforrások keresése címke szerint
 
-Ha meg szeretné keresni az erőforrásokat a címke nevével és értékével, használja a [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) parancsot:
+Ha meg szeretné keresni az erőforrásokat a címke nevével és értékével, használja a [Get-AzResource](/powershell/module/az.resources/get-azresource) parancsot:
 
 ```azurepowershell-interactive
 (Get-AzResource -Tag @{ Environment="Test"}).Name
@@ -197,9 +197,9 @@ Get-AzResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "
 
 [!INCLUDE [Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-A zárolt hálózati biztonsági csoport nem törölhető a zárolás eltávolításáig. A zárolás eltávolításához használja a [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock) parancsot:
+A zárolt hálózati biztonsági csoport nem törölhető a zárolás eltávolításáig. A zárolás eltávolításához használja a [Remove-AzResourceLock](/powershell/module/az.resources/remove-azresourcelock) parancsot:
 
 ```azurepowershell-interactive
 Remove-AzResourceLock -LockName LockVM `
@@ -212,7 +212,7 @@ Remove-AzResourceLock -LockName LockNSG `
   -ResourceGroupName myResourceGroup
 ```
 
-Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás eltávolításához.
+Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás eltávolításához.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
@@ -236,4 +236,3 @@ Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan azonosít
 
 > [!div class="nextstepaction"]
 > [Virtuális gépek felügyelete](tutorial-config-management.md)
-

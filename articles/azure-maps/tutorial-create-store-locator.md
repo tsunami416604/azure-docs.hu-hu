@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 050f95ac98ce1ab36dc4ca537db458e133581925
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5caeb9ff5c289343e1869a55808bde7fbe035479
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746042"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517552"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával
 
-Ez az oktatóanyag végigvezeti egy egyszerű tároló-lokátor létrehozásának folyamatán Azure Maps használatával. Az áruházbeli lokátorok gyakoriak. Az ilyen típusú alkalmazásokban használt fogalmak számos más típusú alkalmazásra alkalmazhatók. Az ügyfeleknek nyújtott áruházi lokátort a legtöbb, közvetlenül a fogyasztóknak értékesítő vállalat számára ajánlott biztosítani. Az oktatóanyag a következőket ismerteti:
+Ez az oktatóanyag végigvezeti egy egyszerű tároló-lokátor létrehozásának folyamatán Azure Maps használatával. Az áruházbeli lokátorok gyakoriak. Az ilyen típusú alkalmazásokban használt fogalmak számos más típusú alkalmazásra alkalmazhatók. Az ügyfeleknek nyújtott áruházi lokátort a legtöbb, közvetlenül a fogyasztóknak értékesítő vállalat számára ajánlott biztosítani. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     
 > [!div class="checklist"]
 > * Hozzon létre egy új weblapot az Azure térképkezelés API használatával.
@@ -35,7 +35,7 @@ Ugorjon az [élő áruház kereső példájának](https://azuremapscodesamples.a
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie az elsődleges kulcsot (előfizetési kulcs). Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) Azure Maps fiók előfizetése S1 árképzési szinten című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
+Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie az elsődleges kulcsot (előfizetési kulcs). Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account) Azure Maps fiók előfizetése S1 árképzési szinten című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 ## <a name="design"></a>Tervezés
 
@@ -90,7 +90,7 @@ Számos módon teheti elérhetővé az adatkészletet az alkalmazás számára. 
 
 Egy másik módszer az adatkészlet átalakítása egy egyszerű szövegfájlba, amelyet a böngésző könnyen elemez. Maga a fájl a többi alkalmazással is üzemeltethető. Ez a lehetőség egyszerűen megtartja a dolgokat, de ez a lehetőség csak kisebb adatkészletek esetében hasznos, mert a felhasználó letölti az összes adatát. Ehhez az adatkészlethez az egyszerű szövegfájlt használjuk, mert az adatfájl mérete kisebb, mint 1 MB.  
 
-Ha a munkafüzetet egy sima szövegfájlba szeretné átalakítani, mentse a munkafüzetet tabulátorral tagolt fájlként. Az egyes oszlopokat tabulátor karakterekkel tagoljuk, így az oszlopok könnyen elemezhetők a kódban. Vesszővel tagolt (CSV) formátumot használhat, de ez a beállítás több elemzési logikát igényel. A körülötte található vesszőt tartalmazó mezők idézőjelekkel lesznek becsomagolva. Ha ezeket az adatfájlokat tabulátorral tagolt fájlként szeretné exportálni az Excelben, válassza a **Mentés másként**lehetőséget. A fájltípus **legördülő listából** válassza a **szöveg (tabulátorral tagolt) (*. txt)** lehetőséget. Nevezze el a *ContosoCoffee. txt*fájlt. 
+Ha a munkafüzetet egy sima szövegfájlba szeretné átalakítani, mentse a munkafüzetet tabulátorral tagolt fájlként. Az egyes oszlopokat tabulátor karakterekkel tagoljuk, így az oszlopok könnyen elemezhetők a kódban. Vesszővel tagolt (CSV) formátumot használhat, de ez a beállítás több elemzési logikát igényel. A körülötte található vesszőt tartalmazó mezők idézőjelekkel lesznek becsomagolva. Ha ezeket az adatfájlokat tabulátorral tagolt fájlként szeretné exportálni az Excelben, válassza a **Mentés másként**lehetőséget. A fájltípus **legördülő listából** válassza a **szöveg (tabulátorral tagolt) (*. txt)** lehetőséget. Nevezze el a fájlt *ContosoCoffee.txt*. 
 
 <center>
 
@@ -105,7 +105,7 @@ Ha a Jegyzettömbben megnyitja a szövegfájlt, az a következő ábrához hason
 
 ## <a name="set-up-the-project"></a>A projekt beállítása
 
-A projekt létrehozásához használhatja a [Visual studiót](https://visualstudio.microsoft.com) vagy az Ön által választott programkód-szerkesztőt. A Project mappában hozzon létre három fájlt: *index. html*, *index. css*és *index. js*. Ezek a fájlok határozzák meg az alkalmazás elrendezését, stílusát és logikáját. Hozzon létre egy adatmappa nevű mappát *, és adja* hozzá a *ContosoCoffee. txt fájlt* a mappához. Hozzon létre egy másik mappát a *képek*nevű mappában. Ebben az alkalmazásban 10 lemezképet használunk a térképen látható ikonokhoz, gombokhoz és jelölőhöz. [Ezeket a lemezképeket letöltheti](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). A projekt mappájának ekkor az alábbi ábrához hasonlóan kell kinéznie:
+A projekt létrehozásához használhatja a [Visual studiót](https://visualstudio.microsoft.com) vagy az Ön által választott programkód-szerkesztőt. A Project mappában hozzon létre három fájlt: *index.html*, *index. css*és *index.js*. Ezek a fájlok határozzák meg az alkalmazás elrendezését, stílusát és logikáját. Hozzon létre egy *adatmappa nevű mappát* , és adja hozzá *ContosoCoffee.txt* a mappához. Hozzon létre egy másik mappát a *képek*nevű mappában. Ebben az alkalmazásban 10 lemezképet használunk a térképen látható ikonokhoz, gombokhoz és jelölőhöz. [Ezeket a lemezképeket letöltheti](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). A projekt mappájának ekkor az alábbi ábrához hasonlóan kell kinéznie:
 
 <center>
 
@@ -113,9 +113,9 @@ A projekt létrehozásához használhatja a [Visual studiót](https://visualstud
 
 ## <a name="create-the-user-interface"></a>A felhasználói felület létrehozása
 
-A felhasználói felület létrehozásához vegyen fel egy kódot az *index. html fájlba*:
+A felhasználói felület létrehozásához adja hozzá a kódot *index.html*:
 
-1. Adja hozzá a következő `meta` címkéket az `head` *index. html*fájlhoz. A `charset` címke határozza meg a karakterkészletet (UTF-8). Az érték `http-equiv` azt jelzi, hogy az Internet Explorer és a Microsoft Edge a legújabb böngésző-verziókat használja. Az utolsó címke pedig `meta` egy olyan nézőpontot határoz meg, amely jól működik a rugalmas elrendezések esetében.
+1. Adja hozzá a következő `meta` címkéket a `head` *index.html*-hez. A `charset` címke határozza meg a karakterkészletet (UTF-8). Az érték `http-equiv` azt jelzi, hogy az Internet Explorer és a Microsoft Edge a legújabb böngésző-verziókat használja. Az utolsó címke pedig `meta` egy olyan nézőpontot határoz meg, amely jól működik a rugalmas elrendezések esetében.
 
     ```HTML
     <meta charset="utf-8">
@@ -136,7 +136,7 @@ A felhasználói felület létrehozásához vegyen fel egy kódot az *index. htm
     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
-1. Adja hozzá a hivatkozásokat az *index. js* és az *index. css*fájlhoz:
+1. Hivatkozások hozzáadása a *index.js* és az *index. css*-hez:
 
     ```HTML
     <link rel="stylesheet" href="index.css" type="text/css">
@@ -168,7 +168,7 @@ A felhasználói felület létrehozásához vegyen fel egy kódot az *index. htm
     </main>
     ```
 
-Ha elkészült, az *index. html* [fájlnak a következőhöz](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)hasonlóan kell kinéznie: index. html.
+Ha elkészült, *index.html* -nek [ehhez a példához index.html fájlhoz](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)hasonlóan kell kinéznie.
 
 A következő lépés a CSS-stílusok definiálása. A CSS-stílusok határozzák meg az alkalmazás-összetevők elrendezésének és az alkalmazás megjelenésének módját. Nyissa meg az *index. css* programot, és adja hozzá a következő kódot. A `@media` stílus alternatív stílusú beállításokat határoz meg, amelyeket akkor kell használni, ha a képernyő szélessége 700 képpontnál kisebb.  
 
@@ -379,7 +379,7 @@ Az alkalmazás futtatása most megjelenik a fejléc, a keresőmező és a Keres�
 
 ## <a name="wire-the-application-with-javascript"></a>Az alkalmazás drótba való átvitele JavaScript-sel
 
-Minden most már be van állítva a felhasználói felületen. Továbbra is hozzá kell adnia a JavaScriptet az betöltéshez és az elemzéshez, majd a térképen megjeleníteni az adatmennyiséget. Első lépésként nyissa meg az *index. js fájlt* , és adja hozzá a kódot az alábbi lépések szerint.
+Minden most már be van állítva a felhasználói felületen. Továbbra is hozzá kell adnia a JavaScriptet az betöltéshez és az elemzéshez, majd a térképen megjeleníteni az adatmennyiséget. A kezdéshez nyissa meg *index.js* és adja hozzá a kódot a következő lépésekben leírtak szerint.
 
 1. Globális beállítások hozzáadásával könnyebben frissítheti a beállításokat. Adja meg a Térkép, a felugró ablak, az adatforrás, az ikon réteg és a HTML-jelölő változóit. A HTML-jelölő beállítása a keresési terület középpontjának jelzésére. És határozza meg a Azure Maps keresési szolgáltatás ügyfelének egy példányát.
 
@@ -395,7 +395,7 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Adja hozzá a kódot az *index. js*fájlhoz. Az alábbi kód inicializálja a térképet. Hozzáadunk egy [esemény-figyelőt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , hogy megvárná, amíg az oldal be nem fejeződik. Ezután a rendszer bekapcsolta az eseményeket a Térkép betöltésének figyeléséhez, és a keresés és a saját hely gomb használatát is lehetővé teheti.
+1. Kód hozzáadása a *index.jshoz *. Az alábbi kód inicializálja a térképet. Hozzáadunk egy [esemény-figyelőt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , hogy megvárná, amíg az oldal be nem fejeződik. Ezután a rendszer bekapcsolta az eseményeket a Térkép betöltésének figyeléséhez, és a keresés és a saját hely gomb használatát is lehetővé teheti.
 
    Amikor a felhasználó kiválasztja a Keresés gombot, vagy beír egy helyet a keresőmezőbe, megnyomja az ENTER billentyűt, a rendszer a felhasználó lekérdezésével kapcsolatos intelligens keresést kezdeményez. Adja át az ország/régió ISO 2 értékének egy tömbjét a `countrySet` keresési eredmények ezen országokban/régiókban való korlátozásához. Az országok és régiók keresésének korlátozása segít a visszaadott eredmények pontosságának növelésében. 
   
@@ -920,7 +920,7 @@ Minden most már be van állítva a felhasználói felületen. Továbbra is hozz
     }
     ```
 
-Most már van egy teljesen működőképes tároló-lokátora. A böngészőben nyissa meg az *index. html* fájlt az áruház keresője számára. Ha a fürtök megjelennek a térképen, a keresőmező használatával kereshet egy helyet a saját hely gomb kiválasztásával, egy fürt kiválasztásával, vagy a Térkép nagyításával az egyes helyek megjelenítéséhez.
+Most már van egy teljesen működőképes tároló-lokátora. A böngészőben nyissa meg az *index.html* fájlt az áruház lokátora számára. Ha a fürtök megjelennek a térképen, a keresőmező használatával kereshet egy helyet a saját hely gomb kiválasztásával, egy fürt kiválasztásával, vagy a Térkép nagyításával az egyes helyek megjelenítéséhez.
 
 Amikor a felhasználó először kiválasztja a saját hely gombot, a böngésző egy biztonsági figyelmeztetést jelenít meg, amely engedélyt kér a felhasználó tartózkodási helyének elérésére. Ha a felhasználó beleegyezik, hogy megosztja a helyüket, a Térkép nagyítja a felhasználó helyét, és megjelenik a közeli kávézók. 
 
@@ -940,7 +940,7 @@ Ha a böngészőablakot kevesebb, mint 700 képpont szélesre módosítja, vagy 
 
 ![Képernyőkép az áruházi lokátor kis képernyős verziójáról](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre alapszintű tároló-lokátort Azure Maps használatával. Előfordulhat, hogy az oktatóanyagban létrehozott áruház-lokátor rendelkezik az összes szükséges funkcióval. Lehetőség van az áruházbeli lokátor szolgáltatásainak hozzáadására, vagy további speciális funkciók használatára az egyéni felhasználói élmény érdekében: 
 

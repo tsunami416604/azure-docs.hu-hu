@@ -3,12 +3,12 @@ title: Oktatóanyag – a privát felhő elérésének megismerése
 description: Ismerje meg, hogyan érheti el az Azure VMware-megoldás (AVS) privát felhőjét
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 332b1b01f05ca97b03264201384ee38ac266470f
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 32dc5c173789996d2559eda1153b1509e10e5984
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873604"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497964"
 ---
 # <a name="tutorial-learn-how-to-access-an-azure-vmware-solution-avs-private-cloud"></a>Oktatóanyag: az Azure VMware-megoldás (AVS) privát felhő elérésének megismerése
 
@@ -16,7 +16,7 @@ Az előzetes verzióban az AVS nem teszi lehetővé, hogy a helyszíni vCenter k
 
 Ebben az oktatóanyagban egy Windows rendszerű virtuális gépet hoz létre egy Jump Box számára az előző oktatóanyagban létrehozott erőforráscsoporthoz [: konfigurálja a hálózatkezelést a VMware Private Cloud-ban az Azure-ban](tutorial-configure-networking.md) , és jelentkezzen be a vCenter. Ez egy virtuális gép, amely az Ön által létrehozott virtuális hálózaton található, és hozzáférést biztosít a vCenter és a NSX Managerhez. 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A vCenter való kapcsolódáshoz használandó Windows rendszerű virtuális gép létrehozása
@@ -37,13 +37,13 @@ Adja meg a szükséges adatokat a mezőkben, majd válassza a **felülvizsgálat
 | **Virtuális gép neve** | Adjon meg egy egyedi nevet a virtuális gép számára. |
 | **Régió** | Válassza ki a virtuális gép földrajzi helyét. |
 | **Rendelkezésre állási beállítások** | Hagyja bejelölve az alapértelmezett értéket. |
-| **Kép** | Válassza ki a virtuális gép rendszerképét. |
+| **Rendszerkép** | Válassza ki a virtuális gép rendszerképét. |
 | **Méret** | Hagyja meg az alapértelmezett méret értéket. |
 | **Hitelesítés típusa**  | Válassza a **jelszó**lehetőséget. |
-| **Username** | Adja meg a virtuális gépre való bejelentkezéshez használt felhasználónevet. |
+| **Felhasználónév** | Adja meg a virtuális gépre való bejelentkezéshez használt felhasználónevet. |
 | **Jelszó** | Adja meg a virtuális gépre való bejelentkezéshez használt jelszót. |
 | **Jelszó megerősítése** | Adja meg a virtuális gépre való bejelentkezéshez használt jelszót. |
-| **Nyilvános bejövő portok** | Válassza a **Nincs** lehetőséget. Ha a nincs lehetőséget választja, a [JIT-hozzáférés](../security-center/security-center-just-in-time.md#configure-jit-access-from-an-azure-vms-page-) használatával szabályozhatja a virtuális gép elérését, ha azt szeretné elérni.  |
+| **Nyilvános bejövő portok** | Válassza a **Nincs** lehetőséget. Ha a nincs lehetőséget választja, a [JIT-hozzáférés](../security-center/security-center-just-in-time.md#jit-configure) használatával szabályozhatja a virtuális gép elérését, ha azt szeretné elérni.  |
 
 A megfelelő információk megadása után kattintson a **felülvizsgálat + létrehozás**gombra. Az ellenőrzés után válassza a **Létrehozás** lehetőséget a virtuális gép létrehozási folyamatának elindításához.
 
@@ -69,7 +69,7 @@ A böngésző második lapján jelentkezzen be a NSX-T Managerbe.
 
 :::image type="content" source="./media/tutorial-access-private-cloud/ss10-nsx-manager-home.png" alt-text="Helyi Private Cloud NSX Manger kezdőlapja" border="true":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

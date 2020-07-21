@@ -17,12 +17,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: a8a939f0d0c3575adec147c1942ddbbef334cb65
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e13e7c1057d5a01867b561fc7ee7d1eed1a97ca3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220150"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530490"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Oktatóanyag: Értesítések küldése adott felhasználóknak az Azure Notification Hubs használatával
 
@@ -51,7 +51,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 Ez az oktatóanyag az [Oktatóanyag: Értesítések küldése az Univerzális Windows-platformon alapuló alkalmazásoknak az Azure Notification Hubs használatával](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) című oktatóanyagban létrehozott értesítési központra és Visual Studio-projektre épül. Ezért fejezze be azt az oktatóanyagot a jelen oktatóanyag elkezdése előtt.
 
 > [!NOTE]
-> Ha az Azure App Service Mobile Apps szolgáltatását használja háttérszolgáltatásként, az oktatóanyag [Mobile Apps-verzióját](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md) tekintse meg.
+> Ha az Azure App Service Mobile Apps szolgáltatását használja háttérszolgáltatásként, az oktatóanyag [Mobile Apps-verzióját](/previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push) tekintse meg.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -224,7 +224,7 @@ Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Wi
     ```
 13. Kattintson a jobb gombbal a **WindowsApp** projektre, kattintson az **Add** (Hozzáadás) lehetőségre, majd a **Class** (Osztály) elemre. Nevezze el az osztályt `RegisterClient.cs` , majd kattintson az **OK** gombra az osztály létrehozásához.
 
-    Ez az osztály burkolja azon REST-hívásokat, amelyek az alkalmazás háttérrendszeréhez való kapcsolódáshoz szükségesek a leküldéses értesítésekre való regisztrálás érdekében. Emellett helyben tárolja az értesítési központ által a [Regisztráció az alkalmazás háttérrendszeréből](https://msdn.microsoft.com/library/dn743807.aspx) című szakaszban leírtak szerint létrehozott *registrationIds* fájlt. A helyi tárterületen tárolt hitelesítési jogkivonatot használ, amikor a **Login and register** (Bejelentkezés és regisztráció) gombra kattint.
+    Ez az osztály burkolja azon REST-hívásokat, amelyek az alkalmazás háttérrendszeréhez való kapcsolódáshoz szükségesek a leküldéses értesítésekre való regisztrálás érdekében. Emellett helyben tárolja az értesítési központ által a [Regisztráció az alkalmazás háttérrendszeréből](/previous-versions/azure/azure-services/dn743807(v=azure.100)) című szakaszban leírtak szerint létrehozott *registrationIds* fájlt. A helyi tárterületen tárolt hitelesítési jogkivonatot használ, amikor a **Login and register** (Bejelentkezés és regisztráció) gombra kattint.
 14. Adja hozzá a következő `using` utasításokat a RegisterClient.cs fájl elejéhez:
 
     ```csharp
@@ -357,4 +357,4 @@ Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses ért
 [Get started with Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Secure Push]: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

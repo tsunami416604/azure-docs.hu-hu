@@ -14,11 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8e5c03876de8ca078c6e89b8ca101602e4e4cf52
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 3a410eac22d41dc4eead1689ab48e67a4ee52b32
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045739"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510089"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Azure-alapú virtuális hálózatok létrehozása és kezelése Linux rendszerű virtuális gépeken az Azure CLI-vel
 
@@ -31,7 +32,7 @@ Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső é
 > * Biztonságos hálózati adatforgalom
 > * Háttérbeli virtuális gép létrehozása
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](../../cloud-shell/overview.md)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -288,9 +289,9 @@ A háttérbeli virtuális gép csak a *22*-es és a *3306*-os porton keresztül 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --output table
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosította az Azure-hálózatokat. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosította az Azure-hálózatokat. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Virtuális hálózat és alhálózat létrehozása

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: de554f48297c228df9345a6e822096d05b85652f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: cb8850adaf638aca3ed69c3939916e132f66062d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196880"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504563"
 ---
 # <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>Egyetlen adatbázis létrehozása és tűzfalszabály konfigurálása az Azure CLI használatával
 
@@ -48,13 +48,13 @@ az group delete --name $resource
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| | |
+| Parancs | Leírás |
 |---|---|
 | [az sql server](/cli/azure/sql/server#az-sql-server-create) | Kiszolgálói parancsok |
 | [az SQL Server Firewall](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Kiszolgálói tűzfal parancsai. |
 | [az SQL db](/cli/azure/sql/db#az-sql-db-create) | Adatbázis-parancsok. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

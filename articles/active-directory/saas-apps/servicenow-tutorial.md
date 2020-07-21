@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41f42b053181f4115770cd9973621706b248baab
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a09cc83259a6fbb07b8c88e1d8f82b720400c0d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86168303"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507709"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ServiceNow
 
@@ -43,6 +43,9 @@ Első lépésként a következő elemeket kell megadnia:
 * Az ServiceNow-bérlőnek engedélyezve kell lennie a [több szolgáltató egyszeri bejelentkezés beépülő moduljának](https://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0) . Ezt [egy szolgáltatási kérelem elküldésével](https://hi.service-now.com)teheti meg.
 * Az automatikus konfiguráláshoz engedélyezze a többszörös szolgáltató beépülő modult a ServiceNow.
 * A klasszikus ServiceNow (Mobile) alkalmazás telepítéséhez lépjen a megfelelő tárolóba, és keresse meg a klasszikus ServiceNow alkalmazást. Ezután töltse le.
+
+> [!NOTE]
+> Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -101,8 +104,10 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     c. A **Válasz URL-cím**mezőben adja meg a következő URL-cím egyikét:
 
-    - `https://instancename.service-now.com/navpage.do`
-    - `https://instancename.service-now.com/customer.do`
+    | Válasz URL-cím|
+    |----------|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` | 
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval kell frissíteni, amelyet az oktatóanyag későbbi részében ismertetünk. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -129,7 +134,7 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
    1. A **név**mezőbe írja be a következőt: `B.Simon` .  
    1. A **Felhasználónév**mezőbe írja be a következőt: username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Válassza a **Létrehozás** lehetőséget.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -171,8 +176,10 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     c. A **Válasz URL-cím**mezőben adja meg a következő URL-cím egyikét:
 
-    - `https://instancename.service-now.com/navpage.do`
-    - `https://instancename.service-now.com/customer.do`
+    | Válasz URL-cím |
+    |-----------|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` |
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval kell frissíteni, amelyet az oktatóanyag későbbi részében ismertetünk. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -227,7 +234,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     * A **felhasználói tábla azon mezőjénél, amely...**, írja be az **e-mail címet**.
   
-    * Kattintson a **Mentés** gombra.
+    * Válassza a **Mentés** lehetőséget.
 
 1. A ServiceNow automatikusan vagy manuálisan is konfigurálhatja. A ServiceNow automatikus konfigurálásához kövesse az alábbi lépéseket:
 
@@ -278,7 +285,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
             ![Képernyőfelvétel a gyűjteményről, a tanúsítvány és a jobbra mutató nyíl ikon kiemelve](./media/servicenow-tutorial/tutorial_servicenow_11.png "Egyszeri bejelentkezés konfigurálása")
 
-          1. Kattintson a **Mentés** gombra.
+          1. Válassza a **Mentés** lehetőséget.
 
           1. A lap jobb felső sarkában válassza a **kapcsolatok tesztelése**lehetőséget.
 
@@ -445,7 +452,7 @@ Ennek a szakasznak a célja egy B. Simon nevű felhasználó létrehozása a Ser
     > [!NOTE]
     > Az Azure AD úgy is beállítható, hogy az Azure AD felhasználói AZONOSÍTÓját (egyszerű felhasználónév) vagy az e-mail-címet az SAML-jogkivonatban egyedi azonosítóként bocsátja ki. Ehhez nyissa meg a Azure Portal **ServiceNow**  >  **Attributes**  >  **-attribútumok egyszeri bejelentkezés** szakaszát, és rendelje hozzá a kívánt mezőt a **NameIdentifier** attribútumhoz. Az Azure AD kiválasztott attribútumának (például az egyszerű felhasználónév) értékének meg kell egyeznie a megadott mező ServiceNow (például user_name) tárolt értékével.
 
-    f. Kattintson a **Mentés** gombra.
+    f. Válassza a **Mentés** lehetőséget.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

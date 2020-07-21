@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e0e220467c8c16deb413f6c70f236f6de67f980
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 739e4fa45987f33b3a32503eaedf9aae74a7e000
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142027"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499990"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Oktatóanyag: Azure Active Directory integráció a PolicyStat
 
@@ -32,7 +32,7 @@ A PolicyStat és az Azure AD integrálásával a következő előnyöket nyújtj
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,6 +40,9 @@ Az Azure AD-integráció PolicyStat való konfigurálásához a következő elem
 
 * Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
 * PolicyStat egyszeri bejelentkezésre engedélyezett előfizetés
+
+> [!NOTE]
+> Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -143,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához hajtsa 
     
     f. Az **1. paraméter** listából írja be az adott sorhoz megjelenő attribútum értékét.
 
-    g. Kattintson a **Save** (Mentés) gombra.
+    : Kattintson a **Mentés** gombra.
 
 7. A **PolicyStat beállítása** szakaszban másolja ki a megfelelő URL-címeket a követelmények szerint.
 

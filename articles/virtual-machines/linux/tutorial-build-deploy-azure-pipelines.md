@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – CI/CD – Azure-beli virtuális gépek az Azure-folyamatokkal
-description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a Node. js-alkalmazások folyamatos integrációját (CI) és folyamatos üzembe helyezését (CD) az Azure virtuális gépekre a YAML-alapú Azure-folyamat használatával.
+description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be egy Node.js-alkalmazás folyamatos integrációját (CI) és folyamatos üzembe helyezését (CD) az Azure-beli virtuális gépekhez a YAML-alapú Azure-folyamat használatával.
 author: ushan
 tags: azure-devops-pipelines
 ms.assetid: ''
@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: bb7c773d02c5da5c115af79cd9e90c78e71eb6bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8aa53d4b08a4a0bdaa4e1f12169811ae88edbd2f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76988328"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501874"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Oktatóanyag: alkalmazás üzembe helyezése az Azure-beli linuxos virtuális gépeken az Azure DevOps Services és az Azure-folyamatok használatával
 
@@ -24,7 +24,7 @@ A folyamatos integráció (CI) és a folyamatos üzembe helyezés (CD) egy olyan
 
 Az Azure-folyamatok teljes körűen Kiemelt CI/CD Automation-eszközöket biztosítanak a virtuális gépekhez, helyszíni vagy bármilyen Felhőbeli üzembe helyezéshez.
 
-Ebben az oktatóanyagban egy YAML-alapú CI/CD-folyamatot állít be az alkalmazás Azure-beli, Linux rendszerű virtuális gépekkel [való üzembe](https://docs.microsoft.com/azure/devops/pipelines/process/environments?view=azure-devops) helyezéséhez erőforrásként, amelyek mindegyike webkiszolgálóként szolgál az alkalmazás futtatásához.
+Ebben az oktatóanyagban egy YAML-alapú CI/CD-folyamatot állít be az alkalmazás Azure-beli, Linux rendszerű virtuális gépekkel [való üzembe](/azure/devops/pipelines/process/environments?view=azure-devops) helyezéséhez erőforrásként, amelyek mindegyike webkiszolgálóként szolgál az alkalmazás futtatásához.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -37,15 +37,15 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Jelentkezzen be az Azure DevOps Services-szervezetbe (**https://dev.azure.com/**). 
+* Jelentkezzen be az Azure DevOps Services-szervezetbe ( **https://dev.azure.com/** ). 
   Beszerezhet egy [ingyenes Azure DevOps Services-szervezetet](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308).
 
   > [!NOTE]
-  > További információ: [Csatlakozás az Azure DevOps Services-hez](https://docs.microsoft.com/azure/devops/organizations/projects/connect-to-projects?view=vsts).
+  > További információ: [Csatlakozás az Azure DevOps Services-hez](/azure/devops/organizations/projects/connect-to-projects?view=vsts).
 
-*  Telepítési célként egy Linux rendszerű virtuális gépre van szükség.  További információért lásd: [Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm).
+*  Telepítési célként egy Linux rendszerű virtuális gépre van szükség.  További információért lásd: [Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel](./tutorial-manage-vm.md).
 
-*  Nyissa meg a virtuális géphez a 80-as a bejövő portot. További információ: [Hozzon létre egy hálózati biztonsági csoportot az Azure Portal használatával](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic).
+*  Nyissa meg a virtuális géphez a 80-as a bejövő portot. További információ: [Hozzon létre egy hálózati biztonsági csoportot az Azure Portal használatával](../../virtual-network/tutorial-filter-network-traffic.md).
 
 ## <a name="get-your-sample-app-code"></a>A minta alkalmazás kódjának beolvasása
 
@@ -69,7 +69,7 @@ https://github.com/azure-devops/fabrikam-node
 ```
 
 > [!NOTE]
-> Ez a Node. js-alkalmazás a [Yeoman](https://yeoman.io/learning/index.html)-on keresztül készült. Express-t bowert és gruntot használ. És rendelkezik néhány npm-csomaggal függőségként.
+> Ezt a Node.js alkalmazást a [Yeoman](https://yeoman.io/learning/index.html)-on keresztül építették. Express-t bowert és gruntot használ. És rendelkezik néhány npm-csomaggal függőségként.
 > A minta egy szkriptet is tartalmaz, amely beállítja az Nginx kiszolgálót, és üzembe helyezi az alkalmazást. A végrehajtása a virtuális gépeken történik. Pontosabban a szkript az alábbi műveleteket végzi:
 > 1. Telepíti a Node-ot, az Nginx kiszolgálót és a PM2-t.
 > 2. Konfigurálja az Nginx kiszolgálót és a PM2-t.
@@ -90,14 +90,14 @@ Kövesse az alábbiakban ismertetett további lépéseket az alkalmazáshoz hasz
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
-JavaScript-alkalmazás vagy Node. js-alkalmazás telepítéséhez egy Linux rendszerű virtuális gépre van szükség Nginx-webkiszolgálóval az alkalmazás telepítéséhez.
-Ha még nem rendelkezik a Linux rendszerű virtuális géppel, hozzon létre egyet most az Azure-ban az [ebben a példában](/azure/virtual-machines/linux/quick-create-cli)szereplő lépések segítségével.
+JavaScript-alkalmazás vagy Node.js-alkalmazás telepítéséhez egy Linux rendszerű virtuális gépnek kell lennie az Nginx webkiszolgálóval az alkalmazás üzembe helyezéséhez.
+Ha még nem rendelkezik a Linux rendszerű virtuális géppel, hozzon létre egyet most az Azure-ban az [ebben a példában](./quick-create-cli.md)szereplő lépések segítségével.
 
 * * * 
 
 ## <a name="create-an-azure-pipelines-environment-with-azure-virtual-machines"></a>Azure-folyamatokat tartalmazó környezet létrehozása Azure-beli virtuális gépekkel
 
-A virtuális gépeket erőforrásként lehet felvenni [környezetekben](https://docs.microsoft.com/azure/devops/pipelines/process/environments) , és több gépen üzemelő példányokhoz is megcélozható. A környezeten belüli üzembe helyezési előzmények a virtuális gépekről a folyamatra, majd a végrehajtásra vonatkozó nyomon követést biztosítanak.
+A virtuális gépeket erőforrásként lehet felvenni [környezetekben](/azure/devops/pipelines/process/environments) , és több gépen üzemelő példányokhoz is megcélozható. A környezeten belüli üzembe helyezési előzmények a virtuális gépekről a folyamatra, majd a végrehajtásra vonatkozó nyomon követést biztosítanak.
 
 Létrehozhat egy környezetet a "**környezetek**" csomóponton belül a "**folyamatok**" szakaszban.
 1.  Jelentkezzen be az Azure DevOps-szervezetbe, és navigáljon a projekthez.
@@ -163,11 +163,11 @@ Válassza ki az **alapszintű** sablont, és másolja az alábbi YAML-kódrészl
     artifact: drop
 ```
 
-További útmutatásért kövesse a [Java-alkalmazás létrehozása a mavenrel](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/java)című témakörben leírt lépéseket.
+További útmutatásért kövesse a [Java-alkalmazás létrehozása a mavenrel](/azure/devops/pipelines/ecosystems/java)című témakörben leírt lépéseket.
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 
-Válassza ki az **alapszintű** sablont, és másolja az alábbi YAML-kódrészletet, amely létrehoz egy általános Node. js-projektet a NPM.
+Válassza ki az **alapszintű** sablont, és másolja az alábbi YAML-kódrészletet, amely létrehoz egy általános Node.js projektet a NPM.
 
 ```YAML
 - stage: Build
@@ -196,7 +196,7 @@ Válassza ki az **alapszintű** sablont, és másolja az alábbi YAML-kódrészl
       artifact: drop
 ```
 
-További útmutatásért kövesse a [Node. js-alkalmazás felépítése a Nyelő](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/javascript)használatával című témakör lépéseit.
+További útmutatásért kövesse a [Node.js alkalmazás felépítése a Nyelő](/azure/devops/pipelines/ecosystems/javascript)használatával című témakör lépéseit.
 
 - Tekintse meg a folyamatot, hogy megtudja, mi ez. Győződjön meg arról, hogy az összes alapértelmezett bemenet megfelel a kódnak.
 
@@ -208,7 +208,7 @@ További útmutatásért kövesse a [Node. js-alkalmazás felépítése a Nyelő
 
 ## <a name="define-cd-steps-to-deploy-to-the-linux-vm"></a>A Linux rendszerű virtuális gépen való üzembe helyezéshez szükséges CD-lépések megadása
 
-1. Szerkessze a fenti folyamatot, és vegyen fel egy [telepítési feladatot](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs) úgy, hogy a környezetre és a virtuálisgép-erőforrásokra hivatkozik, amelyeket korábban az alábbi YAML-szintaxissal használ:
+1. Szerkessze a fenti folyamatot, és vegyen fel egy [telepítési feladatot](/azure/devops/pipelines/process/deployment-jobs) úgy, hogy a környezetre és a virtuálisgép-erőforrásokra hivatkozik, amelyeket korábban az alábbi YAML-szintaxissal használ:
 
    ```YAML
    jobs:  
@@ -221,13 +221,13 @@ További útmutatásért kövesse a [Node. js-alkalmazás felépítése a Nyelő
      strategy:
    ```
 2. A környezetből kiválaszthatja a virtuális gépek meghatározott készleteit, hogy a központi telepítést a környezetben minden egyes virtuális géphez definiált **címkék** megadásával kapja meg.
-[Itt](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) látható az üzembe helyezési feladatokhoz tartozó teljes YAML séma.
+[Itt](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) látható az üzembe helyezési feladatokhoz tartozó teljes YAML séma.
 
-3. Eithor `runOnce` vagy `rolling` telepítési stratégiát is megadhat. 
+3. Eithor `runOnce` vagy telepítési stratégiát is megadhat `rolling` . 
 
-   `runOnce`a legegyszerűbb üzembe helyezési stratégia, amelyben minden életciklus-Hook, azaz `preDeploy` `deploy` `routeTraffic`a és `postRouteTraffic`a, egyszerre kerül végrehajtásra. `on:` `success` Ezt követően a vagy `on:` `failure` a végrehajtása történik.
+   `runOnce`a legegyszerűbb üzembe helyezési stratégia, amelyben minden életciklus-Hook, azaz a `preDeploy` `deploy` `routeTraffic` és a `postRouteTraffic` , egyszerre kerül végrehajtásra. Ezt követően a `on:` `success` vagy `on:` `failure` a végrehajtása történik.
 
-   Alább látható a következő példában szereplő YAML `runOnce` -kódrészlet:
+   Alább látható a következő példában szereplő YAML-kódrészlet `runOnce` :
    ```YAML
    jobs:
    - deployment: VMDeploy
@@ -294,9 +294,9 @@ A környezet üzembe helyezési nézete biztosítja a véglegesítés és a munk
   
 ![VMjobs_view](media/tutorial-deploy-vms-azure-pipelines/vm-jobsview.png)
 
-## <a name="next-steps"></a>További lépések
-- Folytathatja az imént létrehozott [folyamat testreszabását](https://docs.microsoft.com/azure/devops/pipelines/customize-pipeline) .
-- Ha szeretné megtudni, hogy mit tehet a YAML-folyamatokban, tekintse meg a [YAML-séma referenciáját](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema).
+## <a name="next-steps"></a>Következő lépések
+- Folytathatja az imént létrehozott [folyamat testreszabását](/azure/devops/pipelines/customize-pipeline) .
+- Ha szeretné megtudni, hogy mit tehet a YAML-folyamatokban, tekintse meg a [YAML-séma referenciáját](/azure/devops/pipelines/yaml-schema).
 - Annak elsajátításához, hogyan helyezhet üzembe LAMP (Linux, Apache, MySQL és PHP) stacket, lépjen tovább a következő oktatóanyagra.
 
 > [!div class="nextstepaction"]

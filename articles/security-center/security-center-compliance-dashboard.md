@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 285245e499cfe8a5d7e365044c188191325e4267
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: a636acab42d14925f507568e8a9fff4693c8f71c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782857"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519643"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Oktatóanyag: a szabályozás megfelelőségének javítása
 ---
@@ -85,7 +85,7 @@ A szabályozás megfelelőségi irányítópultján található információk al
     > [!NOTE]
     > A felmérések körülbelül 12 óránként futnak le, tehát a megfelelési adatai csak a felmérések futtatása után tükrözik majd a változásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja a Security Center szabályozási megfelelőségi irányítópultját a következőre:
 

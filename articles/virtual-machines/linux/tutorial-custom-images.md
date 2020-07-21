@@ -10,12 +10,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.reviewer: akjosh
-ms.openlocfilehash: 0ea5c11254d8dba050fe63a4cd915240c8270dd1
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: bd4da23ed3f4b2dc92652493c77efbcbc0542066
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324572"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510123"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Oktatóanyag: Azure-beli virtuális gép egyéni rendszerképének létrehozása az Azure CLI használatával
 
@@ -29,7 +29,7 @@ Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek
 > * Képtár megosztása
 
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](../../cloud-shell/overview.md)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.4.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -49,7 +49,7 @@ Az alábbi lépések ismertetik, hogyan alakíthat egy meglévő virtuális gép
 
 Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre. Ha szükséges, megtekintheti a [CLI](quick-create-cli.md) gyors üzembe helyezését az oktatóanyaghoz használandó virtuális gép létrehozásához. Az oktatóanyagban végzett munka során cserélje le az erőforrás nevét, ahol szükséges.
 
-## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
@@ -90,11 +90,11 @@ A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. 
 
 A képdefiníciók nevei kis-és nagybetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. 
 
-További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./shared-image-galleries.md#image-definitions).
 
 Hozzon létre egy rendszerkép-definíciót a galériában az [az SIG rendszerkép-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)paranccsal. 
 
-Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [speciális](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. 
+Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [speciális](./shared-image-galleries.md#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -134,11 +134,11 @@ az sig image-version create \
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 >
-> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `--storage-account-type  premium_lrs` vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `--storage-account-type  standard_zrs` Ha létrehozza a rendszerkép verzióját.
+> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `--storage-account-type  premium_lrs` vagy a [zóna redundáns tárterületével](../../storage/common/storage-redundancy.md) , `--storage-account-type  standard_zrs` Ha létrehozza a rendszerkép verzióját.
 >
 
  
-## <a name="create-the-vm"></a>Virtuális gép létrehozása
+## <a name="create-the-vm"></a>A virtuális gép létrehozása
 
 Hozza létre a virtuális gépet az az [VM Create](/cli/azure/vm#az-vm-create) paranccsal a--Specialized paraméterrel, amely jelzi, hogy a rendszerkép egy speciális rendszerkép. 
 
@@ -176,15 +176,15 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-Az erőforrások RBAC használatával történő megosztásával kapcsolatos további információkért lásd: [hozzáférés kezelése a RBAC és az Azure CLI használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
+Az erőforrások RBAC használatával történő megosztásával kapcsolatos további információkért lásd: [hozzáférés kezelése a RBAC és az Azure CLI használatával](../../role-based-access-control/role-assignments-cli.md).
 
 ## <a name="azure-image-builder"></a>Azure Image Builder
 
-Az Azure a csomagoló, az [Azure VM rendszerkép-készítő](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)szolgáltatásra épülő szolgáltatást is kínál. Egyszerűen írja le a testreszabásokat egy sablonban, és kezeli a képek létrehozását. 
+Az Azure a csomagoló, az [Azure VM rendszerkép-készítő](./image-builder-overview.md)szolgáltatásra épülő szolgáltatást is kínál. Egyszerűen írja le a testreszabásokat egy sablonban, és kezeli a képek létrehozását. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Shared Image Gallery létrehozása
@@ -197,4 +197,3 @@ A következő oktatóanyagban a magas rendelkezésre állású virtuális gépek
 
 > [!div class="nextstepaction"]
 > [Magas rendelkezésre állású virtuális gépek létrehozása](tutorial-availability-sets.md)
-

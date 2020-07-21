@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 7195de1cf58e5dd2e1d0b49b309f3afc718cca92
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c39bfdbcfb924505473b20b3d56a28d54c84f93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77656262"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505873"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Az alkalmazás állapotának figyelése és riasztása az Azure Application Insights
 
@@ -28,7 +28,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 Az oktatóanyag elvégzéséhez:
 
-Hozzon létre egy [Application Insights erőforrást](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights).
+Hozzon létre egy [Application Insights erőforrást](./dotnetcore-quick-start.md#enable-application-insights).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -56,7 +56,7 @@ A Application Insights rendelkezésre állási tesztek lehetővé teszik az alka
 
     ![Riasztás szerkesztése](media/tutorial-alert/edit-alert-001.png)
 
-6. A sikertelen tárolóhelyek beállítása 3 értéknél nagyobb vagy azzal egyenlő. Hozzon létre egy [műveleti csoportot](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) , amely azt konfigurálja, hogy ki kapja meg a riasztási küszöbérték megszegése esetén a rendszer értesítést kapjon.
+6. A sikertelen tárolóhelyek beállítása 3 értéknél nagyobb vagy azzal egyenlő. Hozzon létre egy [műveleti csoportot](../platform/action-groups.md) , amely azt konfigurálja, hogy ki kapja meg a riasztási küszöbérték megszegése esetén a rendszer értesítést kapjon.
 
     ![Riasztás felhasználói felületének mentése](media/tutorial-alert/save-alert-001.png)
 
@@ -68,7 +68,7 @@ A Application Insights rendelkezésre állási tesztek lehetővé teszik az alka
 
     ![Teszt eredménye](media/tutorial-alert/test-result-001.png)
   
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a problémákkal kapcsolatos riasztásokat, folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan használhatja a felhasználókat az alkalmazással való kommunikációra.
 

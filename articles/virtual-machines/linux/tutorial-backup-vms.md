@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d233cba65d190178c500f78d4817e233ab46d780
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9dcc1b6f6f3792682f81c0d37ef2046bd1840657
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460070"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526996"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Oktatóanyag: Linux rendszerű virtuális gépek fájljainak biztonsági mentése és visszaállítása az Azure-ban
 
@@ -34,7 +34,7 @@ Adatai védelme érdekében érdemes rendszeres időközönként biztonság ment
 
 Amikor az Azure Backup szolgáltatás biztonsági mentést kezdeményez, elindítja a biztonsági mentési bővítményt, hogy készítsen egy időponthoz kötött pillanatképet. Az Azure Backup szolgáltatás a _VMSnapshotLinux_ Linux-bővítményt használja. A rendszer a virtuális gép első biztonsági mentésekor telepíti a bővítményt, ha a virtuális gép fut. Ha a virtuális gép nem fut, a Backup szolgáltatás az alapul szolgáló tárolóról készít pillanatképet (mivel nem történik alkalmazásírás, amikor a virtuális gép le van állítva).
 
-Alapértelmezés szerint az Azure Backup a fájlrendszerrel konzisztens biztonsági másolatot készít a Linux rendszerű virtuális gépről, de úgy is lehet konfigurálni, hogy [alkalmazáskonzisztens biztonsági mentést készítsem szkript előtti és utáni keretrendszerrel](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent). Amikor az Azure Backup szolgáltatás elkészítette a pillanatképet, az adatok átkerülnek a tárolóba. A maximális hatékonyság érdekében a szolgáltatás csak azokat az adatblokkokat azonosítja és továbbítja, amelyek az előző biztonsági mentés óta változtak.
+Alapértelmezés szerint az Azure Backup a fájlrendszerrel konzisztens biztonsági másolatot készít a Linux rendszerű virtuális gépről, de úgy is lehet konfigurálni, hogy [alkalmazáskonzisztens biztonsági mentést készítsem szkript előtti és utáni keretrendszerrel](../../backup/backup-azure-linux-app-consistent.md). Amikor az Azure Backup szolgáltatás elkészítette a pillanatképet, az adatok átkerülnek a tárolóba. A maximális hatékonyság érdekében a szolgáltatás csak azokat az adatblokkokat azonosítja és továbbítja, amelyek az előző biztonsági mentés óta változtak.
 
 Ha az adatátvitel befejeződött, a rendszer eltávolítja a pillanatképet, és létrehoz egy helyreállítási pontot.
 
@@ -88,7 +88,7 @@ Ebben a példában bemutatjuk, hogyan állíthatja vissza az alapértelmezett /v
 
     ![Alapértelmezett nginx-weblap](./media/tutorial-backup-vms/nginx-broken.png)
     
-1. A helyi számítógépen jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a helyi számítógépen.
 6. A bal oldali menüben válassza a **Virtuális gépek** elemet. 
 7. Válassza ki a virtuális gépet a listából.
 8. A virtuális gép paneljének **Beállítások** szakaszában kattintson a **Backup** elemre. Megnyílik a **Biztonsági mentés** panel. 
@@ -171,4 +171,3 @@ Folytassa a következő oktatóanyaggal, amely a virtuális gépek monitorozás�
 
 > [!div class="nextstepaction"]
 > [Virtuális gépek szabályozása](tutorial-govern-resources.md)
-

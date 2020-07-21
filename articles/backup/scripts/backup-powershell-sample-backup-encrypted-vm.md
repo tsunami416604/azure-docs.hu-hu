@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan használhat Azure PowerShell 
 ms.topic: sample
 ms.date: 03/05/2019
 ms.custom: mvc
-ms.openlocfilehash: ad4d290961bd39659283795f6a58ccb815b639b0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a60320c165499ed1fb02fa544deec0e304d447df
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74171804"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513642"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Titkosított Azure-beli virtuális gép biztonsági mentése a PowerShell-lel
 
@@ -37,19 +37,19 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 A szkript a következő parancsokat használja az üzemelő példány létrehozásához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [Új – AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) | Létrehoz egy Recovery Services-tárolót a biztonsági másolatok tárolásához. |
-| [Set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) | A biztonsági mentési tár tulajdonságainak beállítása Recovery Services-tárolón. |
-| [Új – AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Védelmi házirendet hoz létre a Recovery Services-tárolóban ütemezett házirend és adatmegőrzési szabályzat használatával. |
+| [Új – AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) | Létrehoz egy Recovery Services-tárolót a biztonsági másolatok tárolásához. |
+| [Set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) | A biztonsági mentési tár tulajdonságainak beállítása Recovery Services-tárolón. |
+| [Új – AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Védelmi házirendet hoz létre a Recovery Services-tárolóban ütemezett házirend és adatmegőrzési szabályzat használatával. |
 | [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) | Beállítja a jogosultságokat a Key Vault-tárolóban, hogy a szolgáltatásnév hozzáférhessen a titkosítási kulcsokhoz. |
-| [AzRecoveryServicesBackupProtection engedélyezése](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) | Lehetővé teszi egy adott biztonsági mentési szabályzattal rendelkező elem biztonsági mentését. |
-| [Set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Egy meglévő biztonsági mentési védelmi szabályzatot módosít. |
-| [Backup – AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) | Olyan védett Azure Backup-elemek biztonsági mentésének elindítása, amely nem a biztonsági mentési ütemtervhez van kötve. |
-| [Várakozás – AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) | Egy Azure Backup-feladatokra vár. |
+| [AzRecoveryServicesBackupProtection engedélyezése](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) | Lehetővé teszi egy adott biztonsági mentési szabályzattal rendelkező elem biztonsági mentését. |
+| [Set-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)| Egy meglévő biztonsági mentési védelmi szabályzatot módosít. |
+| [Backup – AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) | Olyan védett Azure Backup-elemek biztonsági mentésének elindítása, amely nem a biztonsági mentési ütemtervhez van kötve. |
+| [Várakozás – AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) | Egy Azure Backup-feladatokra vár. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Eltávolít egy erőforráscsoportot és az összes abban található erőforrást. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/new-azureps-module-az).
+Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/new-azureps-module-az).

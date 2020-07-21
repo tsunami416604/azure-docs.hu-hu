@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 2a2db9f7342b984a8c539a345f8e5038caf5ff85
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: fcf8eb8cd110fab4f1fc85a317f1dd491d21c091
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170275"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529947"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése Windows Phone-telefon alkalmazásoknak Notification Hubs használatával
 
@@ -65,7 +65,7 @@ Ennek az oktatóanyagnak az elvégzése előfeltétel minden további, Windows P
     A szolgáltatás létrehozza a központot, és nem hitelesített értesítések Windows Phone rendszerű eszközökre való küldésére konfigurálja.
 
     > [!NOTE]
-    > Ez az oktatóanyag nem hitelesített módban használja az MPNS-t. Az MPNS nem hitelesített módja korlátozásokat tartalmaz az egyes csatornákra küldhető értesítések tekintetében. A Notification Hubs tanúsítvány feltöltésének lehetővé tételével támogatja az [MPNS hitelesített módját](https://msdn.microsoft.com/library/windowsphone/develop/ff941099.aspx).
+    > Ez az oktatóanyag nem hitelesített módban használja az MPNS-t. Az MPNS nem hitelesített módja korlátozásokat tartalmaz az egyes csatornákra küldhető értesítések tekintetében. A Notification Hubs tanúsítvány feltöltésének lehetővé tételével támogatja az [MPNS hitelesített módját](/previous-versions/windows/apps/ff941099(v=vs.105)).
 
 ## <a name="create-a-windows-phone-application"></a>Windows Phone-alkalmazás létrehozása
 
@@ -117,7 +117,7 @@ Ebben a szakaszban egy új Windows Phone-alkalmazást hoz létre, amely regisztr
     ```
 
    > [!NOTE]
-   > Az érték `MyPushChannel` egy olyan index, amely a [HttpNotificationChannel](https://msdn.microsoft.com/library/windows/apps/microsoft.phone.notification.httpnotificationchannel.aspx) -gyűjtemény meglévő csatornájának keresésére szolgál. Amennyiben nem létezik ott ilyen, hozzon létre egy bejegyzést ezen a néven.
+   > Az érték `MyPushChannel` egy olyan index, amely a [HttpNotificationChannel](/previous-versions/ff402781(v=vs.110)) -gyűjtemény meglévő csatornájának keresésére szolgál. Amennyiben nem létezik ott ilyen, hozzon létre egy bejegyzést ezen a néven.
 
     Szúrja be a központ nevét és az `DefaultListenSharedAccessSignature` előző szakaszban feljegyzett, a kapcsolatok karakterláncát.
     Ez a kód lekéri a csatorna URI azonosítóját az alkalmazás számára az MPNS-ből, majd regisztrálja a csatorna URI azonosítóját az értesítési központban. Emellett biztosítja azt, hogy a csatorna URI azonosítója legyen regisztrálva az értesítési központban az alkalmazás minden indításakor.
@@ -152,7 +152,7 @@ Ebben a szakaszban egy új Windows Phone-alkalmazást hoz létre, amely regisztr
 
     ![Értesítés a Windows Phone-eszközön](./media/notification-hubs-windows-phone-get-started/notification-on-windows-phone.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az egyszerű példában leküldéses értesítéseket küldött az összes Windows Phone 8 rendszerű eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
 
@@ -174,10 +174,10 @@ Ebben az egyszerű példában leküldéses értesítéseket küldött az összes
 [213]: ./media/notification-hubs-windows-phone-get-started/notification-hub-create-console-app.png
 
 <!-- URLs. -->
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[MPNS authenticated mode]: https://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[MPNS authenticated mode]: /previous-versions/windows/apps/ff941099(v=vs.105)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-[toast catalog]: https://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
-[tile catalog]: https://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
+[toast catalog]: /previous-versions/windows/apps/jj662938(v=vs.105)
+[tile catalog]: /previous-versions/windows/apps/hh202948(v=vs.105)
 [Notification Hubs – Windows Phone Silverlight-oktatóanyagot]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari

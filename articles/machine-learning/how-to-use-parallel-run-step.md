@@ -6,16 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.reviewer: trbye, jmartens, larryfr
+ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 06/23/2020
+ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: e5665bd5ad2baa35b497c8b4fe19b0cb93bdb2a7
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bf0aa51c64eea0aa58e679c4f9f44686ce7b9ffb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023363"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520629"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-következtetés futtatása nagy mennyiségű adattal a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,10 +33,11 @@ Ez a cikk a következő feladatokat ismerteti:
 > * Írja be a következtetési parancsfájlt.
 > * Hozzon létre egy [gépi tanulási folyamatot](concept-ml-pipelines.md) , amely ParallelRunStep tartalmaz, és futtassa a Batch következtetést a MNIST-tesztelési lemezképeken. 
 > * A Batch-következtetések újraküldése új adatbevitelsel és paraméterekkel. 
+> * Tekintse meg az eredményeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+* Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes fiókot a virtuális gép létrehozásának megkezdése előtt. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 * Az interaktív gyors útmutatóhoz végezze el a [telepítési oktatóanyagot](tutorial-1st-experiment-sdk-setup.md) , ha még nem rendelkezik Azure Machine learning munkaterülettel. 
 
@@ -158,9 +160,7 @@ input_mnist_ds_consumption = DatasetConsumptionConfig("minist_param_config", pip
 ```python
 from azureml.pipeline.core import Pipeline, PipelineData
 
-output_dir = PipelineData(name="inferences", 
-                          datastore=def_data_store, 
-                          output_path_on_compute="mnist/results")
+output_dir = PipelineData(name="inferences", datastore=def_data_store)
 ```
 
 ## <a name="prepare-the-model"></a>A modell előkészítése
@@ -265,17 +265,17 @@ Most már mindent megtalál, amire szüksége lehet: az adatbemenetek, a modell,
 
 ### <a name="prepare-the-environment"></a>A környezet előkészítése
 
-Először adja meg a parancsfájl függőségeit. Ez lehetővé teszi a pip-csomagok telepítését, valamint a környezet konfigurálását. Mindig tartalmazza a **azureml-Core** és a **azureml-adatelőkészítés [pandák, Fuse]** csomagokat.
+Először adja meg a parancsfájl függőségeit. Ez lehetővé teszi a pip-csomagok telepítését, valamint a környezet konfigurálását.
 
-Ha egyéni Docker-rendszerképet használ (user_managed_dependencies = true), telepítenie kell a Conda is.
+Mindig tartalmazza a **azureml-Core** és a **azureml-DataSet-Runtime [pandák, Fuse]** részt a pip csomag listájában. Ha egyéni Docker-rendszerképet használ (user_managed_dependencies = true), telepítenie kell a Conda is.
 
 ```python
 from azureml.core.environment import Environment
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
-batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.13.1", "pillow",
-                                                          "azureml-core", "azureml-dataprep[pandas, fuse]"])
+batch_conda_deps = CondaDependencies.create(pip_packages=["tensorflow==1.15.2", "pillow", 
+                                                          "azureml-core", "azureml-dataset-runtime[pandas, fuse]"])
 
 batch_env = Environment(name="batch_environment")
 batch_env.python.conda_dependencies = batch_conda_deps
@@ -285,7 +285,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 ### <a name="specify-the-parameters-using-parallelrunconfig"></a>Paraméterek megadása a ParallelRunConfig használatával
 
-`ParallelRunConfig`a `ParallelRunStep` Azure Machine learning folyamaton belüli példány fő konfigurációja. Ezzel a paranccsal becsomagolhatja a parancsfájlt, és konfigurálhatja a szükséges paramétereket, beleértve a következők mindegyikét:
+`ParallelRunConfig`a `ParallelRunStep` Azure Machine learning folyamaton belüli példány fő konfigurációja. Ezzel a paranccsal becsomagolhatja a parancsfájlt, és konfigurálhatja a szükséges paramétereket, beleértve az alábbi bejegyzéseket:
 - `entry_script`: Egy felhasználói parancsfájl helyi fájl elérési útjaként, amely több csomóponton párhuzamosan fog futni. Ha `source_directory` van ilyen, használjon relatív elérési utat. Ellenkező esetben használja a gépen elérhető bármely elérési utat.
 - `mini_batch_size`: A mini-batch egyetlen hívásnak átadott mérete `run()` . (nem kötelező; az alapértelmezett érték a `10` FileDataset és `1MB` a TabularDataset fájl.)
     - A esetében `FileDataset` a minimális értékkel rendelkező fájlok száma `1` . Több fájlt is egyesítheti egyetlen mini-kötegbe.
@@ -304,7 +304,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`: A `run()` metódus meghívásának időtúllépése másodpercben. (nem kötelező; az alapértelmezett érték: `60` )
 - `run_max_try`: Maximális számú próbálkozás a `run()` mini batch számára. A nem `run()` sikerült, ha kivétel keletkezik, vagy ha a rendszer nem ad vissza semmit, ha `run_invocation_timeout` a szolgáltatás elérte az értéket (opcionális; az alapértelmezett érték `3` ). 
 
-A (z),,,, és as értékeket megadhatja, `mini_batch_size` `node_count` így a `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` folyamat futásának újraküldésekor beállíthatja a paraméterek értékeit. Ebben a példában a és a PipelineParameter használja `mini_batch_size` , `Process_count_per_node` és ezeket az értékeket fogja módosítani, ha később újra elküld egy futtatást. 
+A (z),,,, és as értéket megadhatja, `mini_batch_size` `node_count` hogy a `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` folyamat futásának újraküldésekor a paraméterek értékei finomhangolása megtörténjen. Ebben a példában a és a PipelineParameter használja `mini_batch_size` , `Process_count_per_node` és ezeket az értékeket fogja módosítani, ha később újra elküld egy futtatást. 
 
 Ez a példa feltételezi, hogy a `digit_identification.py` korábban tárgyalt parancsfájlt használja. Ha saját parancsfájlt használ, `source_directory` ennek megfelelően módosítsa a és a `entry_script` paramétereket.
 
@@ -392,8 +392,30 @@ pipeline_run_2 = experiment.submit(pipeline,
 
 pipeline_run_2.wait_for_completion(show_output=True)
 ```
+## <a name="view-the-results"></a>Eredmények megtekintése
 
-## <a name="next-steps"></a>További lépések
+A fenti Futtatás eredményei a PipelineData objektumban megadott adattárolóba kerülnek, ami ebben az esetben a következő: *következtetések*. A rendszer az alapértelmezett blob-tárolóban tárolja az eredményeket, és megtekintheti a Storage-fiókját, és megtekintheti Storage Explorer, a fájl elérési útja a következő: azureml-blobtárhely-*GUID*/azureml/*RunId* / *output_dir*.
+
+A találatok megtekintéséhez letöltheti ezeket az adatfájlokat is. Alább látható a mintakód az első 10 sor megtekintéséhez.
+
+```python
+import pandas as pd
+import tempfile
+
+batch_run = pipeline_run.find_step_run(parallelrun_step.name)[0]
+batch_output = batch_run.get_output_data(output_dir.name)
+
+target_dir = tempfile.mkdtemp()
+batch_output.download(local_path=target_dir)
+result_file = os.path.join(target_dir, batch_output.path_on_datastore, parallel_run_config.append_row_file_name)
+
+df = pd.read_csv(result_file, delimiter=":", header=None)
+df.columns = ["Filename", "Prediction"]
+print("Prediction has ", df.shape[0], " rows")
+df.head(10) 
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné látni, hogy ez a folyamat teljes körűen működjön, próbálja ki a [Batch következtetéseit tartalmazó jegyzetfüzetet](https://aka.ms/batch-inference-notebooks). 
 

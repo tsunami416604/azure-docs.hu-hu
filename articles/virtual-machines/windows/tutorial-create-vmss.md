@@ -9,12 +9,12 @@ ms.subservice: windows
 ms.date: 11/30/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 14777b85fdc531b96c61882d5f244ca40ed28fa6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f6dd0792a764ef423f31131e80ab28a45f1fe4c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197984"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500293"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-windows-with-azure-powershell"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és magas rendelkezésre állású alkalmazás üzembe helyezése Windows rendszeren, az Azure PowerShell használatával
 A virtuálisgép-méretezési csoport lehetővé teszi azonos, automatikus skálázású virtuális gépek készletének üzembe helyezését és kezelését. A méretezési csoportba tartozó virtuális gépek számát manuálisan is méretezheti. A szabályokat az erőforrás-használat, például a processzor, a memória igénye vagy a hálózati forgalom alapján is megadhatja az autoskálázáshoz. Ebben az oktatóanyagban egy virtuálisgép-méretezési csoport üzembe helyezését mutatja be az Azure-ban, és megismerheti a következőket:
@@ -26,7 +26,7 @@ A virtuálisgép-méretezési csoport lehetővé teszi azonos, automatikus skál
 > * Példányok számának növelése vagy csökkentése méretezési csoportokban
 > * Automatikus skálázási szabályok létrehozása
 
-## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
@@ -41,7 +41,7 @@ A méretezési csoportok legfeljebb 1000 virtuális gépek támogatására képe
 
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
-Hozzon létre egy virtuálisgép-méretezési készletet a [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss). A következő példa létrehoz egy *myScaleSet* nevű méretezési csoportot, amely a *Windows Server 2016 Datacenter* platformrendszerképet használja. A rendszer automatikusan létrehozza az Azure-beli hálózati erőforrásokat a virtuális hálózathoz, a nyilvános IP-címhez és a terheléselosztóhoz. Ha a rendszer kéri, beállíthatja a virtuálisgép-példányok saját rendszergazdai hitelesítő adatait a méretezési csoportba:
+Hozzon létre egy virtuálisgép-méretezési készletet a [New-AzVmss](/powershell/module/az.compute/new-azvmss). A következő példa létrehoz egy *myScaleSet* nevű méretezési csoportot, amely a *Windows Server 2016 Datacenter* platformrendszerképet használja. A rendszer automatikusan létrehozza az Azure-beli hálózati erőforrásokat a virtuális hálózathoz, a nyilvános IP-címhez és a terheléselosztóhoz. Ha a rendszer kéri, beállíthatja a virtuálisgép-példányok saját rendszergazdai hitelesítő adatait a méretezési csoportba:
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -59,7 +59,7 @@ A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása �
 
 
 ## <a name="deploy-sample-application"></a>Mintaalkalmazás üzembe helyezése
-A méretezési csoport teszteléséhez telepítsen egy alapszintű webalkalmazást. Az egyéni Azure-szkriptbővítménnyel egy olyan szkriptet tölthet le és futtathat, amely az IIS-t telepíti a virtuálisgép-példányokon. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. További információ: [Az egyéni szkriptbővítmény áttekintése](extensions-customscript.md).
+A méretezési csoport teszteléséhez telepítsen egy alapszintű webalkalmazást. Az egyéni Azure-szkriptbővítménnyel egy olyan szkriptet tölthet le és futtathat, amely az IIS-t telepíti a virtuálisgép-példányokon. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. További információ: [Az egyéni szkriptbővítmény áttekintése](../extensions/custom-script-windows.md).
 
 Telepítsen egy alapszintű IIS-webkiszolgálót az egyéni szkriptbővítménnyel. Alkalmazza az IIS-t telepítő egyéni szkriptbővítményt a következő módon:
 
@@ -92,7 +92,7 @@ Update-AzVmss `
 
 ## <a name="allow-traffic-to-application"></a>Forgalom engedélyezése az alkalmazáshoz
 
-Az alapszintű webalkalmazáshoz való hozzáférés engedélyezéséhez hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) és a [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup). További információ: [hálózatkezelés az Azure-beli virtuálisgép-méretezési csoportokhoz](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md).
+Az alapszintű webalkalmazáshoz való hozzáférés engedélyezéséhez hozzon létre egy hálózati biztonsági csoportot a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) és a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup). További információ: [hálózatkezelés az Azure-beli virtuálisgép-méretezési csoportokhoz](../../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md).
 
 ```azurepowershell-interactive
 # Get information about the scale set
@@ -141,7 +141,7 @@ Update-AzVmss `
 ```
 
 ## <a name="test-your-scale-set"></a>Méretezési csoport tesztelése
-A méretezési csoport működés közbeni megtekintéséhez szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress)használatával. A következő példa a méretezési csoport részeként létrehozott *myPublicIP* IP-címét jeleníti meg:
+A méretezési csoport működés közbeni megtekintéséhez szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress)használatával. A következő példa a méretezési csoport részeként létrehozott *myPublicIP* IP-címét jeleníti meg:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -160,7 +160,7 @@ Ha kíváncsi a méretezési csoport működésére, kényszerítse a webböngé
 A méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Az Azure PowerShell gyors módot kínál e feladatok elvégzéséhez. Lássunk néhány gyakori feladatot.
 
 ### <a name="view-vms-in-a-scale-set"></a>Virtuális gépek megtekintése egy méretezési csoportban
-A méretezési csoportokban lévő virtuálisgép-példányok listájának megtekintéséhez használja a [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm) a következő módon:
+A méretezési csoportokban lévő virtuálisgép-példányok listájának megtekintéséhez használja a [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) a következő módon:
 
 ```azurepowershell-interactive
 Get-AzVmssVM `
@@ -177,7 +177,7 @@ MYRESOURCEGROUPSCALESET   myScaleSet_0   eastus Standard_DS1_v2          0      
 MYRESOURCEGROUPSCALESET   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Egy adott virtuálisgép-példányra vonatkozó további információk megtekintéséhez adja hozzá a `-InstanceId` [Get-AzVmssVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm)paramétert. A következő példa információkat tekint meg az *1*-es számú virtuálisgép-példányról:
+Egy adott virtuálisgép-példányra vonatkozó további információk megtekintéséhez adja hozzá a `-InstanceId` [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)paramétert. A következő példa információkat tekint meg az *1*-es számú virtuálisgép-példányról:
 
 ```azurepowershell-interactive
 Get-AzVmssVM `
@@ -188,7 +188,7 @@ Get-AzVmssVM `
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>Virtuális gépek példányszámának növelése vagy csökkentése
-A méretezési csoportokban jelenleg megjelenő példányok számának megtekintéséhez használja a [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) és a Query értéket az SKU-on *. Capacity*:
+A méretezési csoportokban jelenleg megjelenő példányok számának megtekintéséhez használja a [Get-AzVmss](/powershell/module/az.compute/get-azvmss) és a Query értéket az SKU-on *. Capacity*:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
@@ -196,7 +196,7 @@ Get-AzVmss -ResourceGroupName "myResourceGroupScaleSet" `
   Select -ExpandProperty Sku
 ```
 
-Ezután manuálisan növelheti vagy csökkentheti a méretezési csoportba tartozó virtuális gépek számát az [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss)használatával. Az alábbi példában a méretezési csoport virtuális gépeinek számát *3*-ra állítjuk:
+Ezután manuálisan növelheti vagy csökkentheti a méretezési csoportba tartozó virtuális gépek számát az [Update-AzVmss](/powershell/module/az.compute/update-azvmss)használatával. Az alábbi példában a méretezési csoport virtuális gépeinek számát *3*-ra állítjuk:
 
 ```azurepowershell-interactive
 # Get current scale set
@@ -271,8 +271,8 @@ Add-AzAutoscaleSetting `
 Az automatikus skálázás tervezésével kapcsolatban bővebben az [automatikus skálázás ajánlott eljárásait](/azure/architecture/best-practices/auto-scaling) ismertető cikkben tájékozódhat.
 
 
-## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban létrehozott egy virtuálisgép-méretezési csoportot. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>Következő lépések
+Ebben az oktatóanyagban létrehozott egy virtuálisgép-méretezési csoportot. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * IIS-hely skálázásának megadása az egyéni szkriptbővítménnyel

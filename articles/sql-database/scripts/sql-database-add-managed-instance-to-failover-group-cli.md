@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: e9efb4e222e74f97a4f3d88639b02a86a3a6d660
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: f196db537ef0a64d14930ed6bc67696ee4614c23
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115430"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528903"
 ---
 # <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>Azure SQL felügyelt példány hozzáadása feladatátvételi csoporthoz a CLI használatával
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| | |
+| Parancs | Leírás |
 |---|---|
 | [az Network vnet](/cli/azure/network/vnet) | Virtuális hálózati parancsok.  |
 | [az Network vnet subnet](/cli/azure/network/vnet/subnet) | Virtuális hálózati alhálózati parancsok. |
@@ -57,7 +57,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az Network vnet-Gateway](/cli/azure/network/vnet-gateway) | Virtual Network átjáró parancsai. |
 | [az SQL instance-feladatátvétel-Group](/cli/azure/sql/instance-failover-group) | SQL felügyelt példány feladatátvételi csoportjának parancsai. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c239c30b24ad110d71c43b31448a0f5b29574b
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 0e249c512825dc4c36ff3f6355a4a774934ee4e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84762547"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499936"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BlueJeans for Azure AD-vel
 
@@ -38,6 +38,9 @@ Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * BlueJeans az Azure AD egyszeri bejelentkezés (SSO) számára engedélyezett előfizetés esetén.
+
+> [!NOTE]
+> Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 

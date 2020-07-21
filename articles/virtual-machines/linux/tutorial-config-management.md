@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: cac17d15d792622d9a26ff7c228ce1f0ba76bbc4
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fe53f400c1e03f0f3bb9d5e85891769d58320d84
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027579"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501942"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: a változások monitorozása és a Linux rendszerű virtuális gépek frissítése az Azure-ban
 
@@ -31,7 +32,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Linux-frissítések kezelése
 > * A módosítások és a leltár monitorozása
 
-## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
@@ -76,7 +77,7 @@ Az Update management engedélyezése a virtuális géphez:
 A rendszer ellenőrzi, hogy az Update Management engedélyezve van-e a virtuális gépen.
 A rendszer eközben azt is ellenőrzi, hogy létezik-e Log Analytics-munkaterület és egy csatlakoztatott Automation-fiók, valamint hogy a megoldás már jelen van-e a munkaterületen.
 
-A [Log Analytics](../../log-analytics/log-analytics-overview.md)-munkaterület az Update Management, valamint a hasonló funkciók és szolgáltatások által létrehozott adatok gyűjtésére szolgál.
+A [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)-munkaterület az Update Management, valamint a hasonló funkciók és szolgáltatások által létrehozott adatok gyűjtésére szolgál.
 A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
 A frissítést igénylő virtuális gépeken további műveletek elvégzése érdekében az Azure Automation runbookok futtatását is lehetővé teszi a virtuális gépeken (pl. letöltés és frissítések alkalmazása).
 
@@ -86,8 +87,8 @@ Válassza ki az Log Analytics munkaterület és Automation-fiókot, és válassz
 
 Ha az előkészítés közben az alábbi előfeltételek bármelyike hiányzik, a rendszer automatikusan hozzáadja azt:
 
-* [Log Analytics](../../log-analytics/log-analytics-overview.md) munkaterület
-* [Automation-fiók](../../automation/automation-offering-get-started.md)
+* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) munkaterület
+* [Automation-fiók](../../automation/index.yml)
 * Engedélyezett [hibrid runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md) a virtuális gépen
 
 Megnyílik az **Update Management** képernyő. Konfigurálja a használni kívánt helyet, Log Analytics munkaterületet és Automation-fiókot, majd válassza az **Engedélyezés**lehetőséget. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia.
@@ -112,7 +113,7 @@ A frissítések telepítéséhez ütemezzen egy olyan telepítést, amely megfel
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Name |A frissítéstelepítést beazonosító egyedi név. |
+| Név |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux vagy Windows|
 | Frissítendő csoportok |Azure-gépek esetén az előfizetés, az erőforráscsoportok, a helyszínek és a címkék kombinációja alapján hozzon létre egy lekérdezést az üzembe helyezéshez felvenni kívánt Azure-beli virtuális gépek dinamikus csoportjának létrehozásához. </br></br>Nem Azure-beli gépek esetén válasszon ki egy meglévő mentett keresést, és válasszon ki egy olyan csoportot, amely nem Azure-beli gépeket tartalmaz az üzembe helyezéshez. </br></br>További információ: [dinamikus csoportok](../../automation/automation-update-management-groups.md)|
 | Frissítendő gépek |Válasszon ki egy mentett keresést, importált csoportot, vagy válasszon gépet a legördülő listából, és válassza az egyes gépek lehetőséget. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../../azure-monitor/platform/computer-groups.md) |
@@ -192,9 +193,9 @@ A virtuális gép leállítása és elindítása egy-egy eseményt rögzít a te
 
 A diagram az eltelt idő alatt bekövetkezett változásokat mutatja. A Tevékenységnapló-kapcsolat hozzáadása után a felül látható vonaldiagramon az Azure tevékenységnapló eseményei jelennek meg. A sávdiagramok minden egyes sora más-más követhető változástípust jelenít meg. Ezek a típusok lehetnek Linux-démonok, fájlok és szoftverek. A Változások lapon jelennek meg a vizualizációban látható változások részletei a változás bekövetkezte szerinti fordított időrendben (vagyis a legutóbbi van legelöl).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban konfigurálta és ellenőrizte Change Tracking és Update Management a virtuális géphez. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban konfigurálta és ellenőrizte Change Tracking és Update Management a virtuális géphez. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Erőforráscsoport és virtuális gép létrehozása

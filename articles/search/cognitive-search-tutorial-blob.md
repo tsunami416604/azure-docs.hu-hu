@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/26/2020
-ms.openlocfilehash: 663d6659acf5c1e5abc8be56156af84167c51797
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/15/2020
+ms.openlocfilehash: ba30584ca40e7d093ecd9090b82b977d71fc1e0e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146951"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503302"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Oktatóanyag: az Azure-Blobok kereshető tartalmának létrehozásához használja a REST és a AI használatát
 
@@ -520,7 +520,7 @@ Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávo
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a mesterséges intelligencia-bővítési folyamat összes objektumát, ismerkedjen meg közelebbről a készségkészlet-definíciókkal és az egyéni ismeretekkel.
 

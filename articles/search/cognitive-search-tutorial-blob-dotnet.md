@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: 25df5f37f8aef55bc025b579ec48a2fab7dd6b72
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 0ad3e6dbb63d7c89919d6d341bd62c5d57960a43
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080166"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511653"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Oktatóanyag: AI által generált kereshető tartalom az Azure-blobokból a .NET SDK használatával
 
@@ -560,10 +560,13 @@ Ebben a szakaszban egy indexsémát határoz meg a kereshető indexben szereplő
 
 A gyakorlat során az alábbi mezőket és mezőtípusokat használjuk:
 
-| mezőnevek: | `id`       | tartalom   | languageCode | keyPhrases         | organizations     |
-|--------------|----------|-------|----------|--------------------|-------------------|
-| mezőtípusok: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
-
+| Mezőnevek | Mezőtípusok |
+| --- | --- |
+| id | Edm.String |
+| tartalom | Edm.String |
+| languageCode | Edm.String |
+| keyPhrases | List<Edm.String> |
+| organizations | List<Edm.String> |
 
 #### <a name="create-demoindex-class"></a>DemoIndex osztály létrehozása
 
@@ -842,7 +845,7 @@ private static SearchIndexClient CreateSearchIndexClient(IConfigurationRoot conf
 }
 ```
 
-Adja hozzá a következő kódot a `Main` fájlhoz. Az első try-catch az index definícióját adja vissza az egyes mezők neve, típusa és attribútumai szerint. A második egy paraméteres lekérdezés, ahol `Select` megadhatja, hogy mely mezők szerepeljenek az eredményekben, például: `organizations` . A keresési sztring egy adott `"*"` mező összes tartalmát adja vissza.
+Adja hozzá az alábbi kódot a következőhöz: `Main` . Az első try-catch az index definícióját adja vissza az egyes mezők neve, típusa és attribútumai szerint. A második egy paraméteres lekérdezés, ahol `Select` megadhatja, hogy mely mezők szerepeljenek az eredményekben, például: `organizations` . A keresési sztring egy adott `"*"` mező összes tartalmát adja vissza.
 
 ```csharp
 //Verify content is returned after indexing is finished
@@ -897,11 +900,11 @@ Végül megismerte, hogyan tesztelheti az eredményeket, és hogyan állíthatja
 
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrások egyesével is törölhetők, de az erőforráscsoport törlésével egyszerre eltávolítható az összes erőforrás is.
+Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávolítani a már nem szükséges erőforrásokat. A továbbra is futó erőforrások költségekkel járhatnak. Az erőforrásokat törölheti egyesével, vagy az erőforráscsoport törlésével eltávolíthatja a benne lévő összes erőforrást is.
 
 A bal oldali navigációs panelen a minden erőforrás vagy erőforráscsoport hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a mesterséges intelligencia-bővítési folyamat összes objektumát, ismerkedjen meg közelebbről a készségkészlet-definíciókkal és az egyéni ismeretekkel.
 

@@ -3,12 +3,12 @@ title: Oktatóanyag – SAP HANA-adatbázisok biztonsági mentése Azure-beli vi
 description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépen futó SAP HANA-adatbázisokról egy Azure Backup Recovery Services-tárolóra.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 123f27a6e2114ed17cbb5e11b34202c17ba69a2d
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 8f6fa00f65a99798ee105852a269247d717ad75d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84770730"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513268"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag bemutatja, hogyan készíthet biztonsági mentést SAP HANA A
 [Itt](sap-hana-backup-support-matrix.md#scenario-support) találja az összes olyan forgatókönyvet, amelyet jelenleg támogatunk.
 
 >[!NOTE]
->[Ismerkedés](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) a RHEL SAP HANA Backup előzetes verziójával (7,4, 7,6, 7,7 vagy 8,1). További lekérdezések írásához írjon nekünk a következő címen: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>[Ismerkedés]() a RHEL SAP HANA Backup előzetes verziójával (7,4, 7,6, 7,7 vagy 8,1). További lekérdezések írásához írjon nekünk a következő címen: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,13 +53,13 @@ Ez a beállítás engedélyezi a letöltött fájl [IP-tartományait](https://ww
 
 ### <a name="allow-access-using-nsg-tags"></a>Hozzáférés engedélyezése NSG-címkék használatával
 
-Ha a NSG-t használja a kapcsolat korlátozására, akkor a AzureBackup szolgáltatás címkével kell rendelkeznie, hogy lehetővé tegye a kimenő hozzáférést a Azure Backuphoz. Emellett az Azure AD-hez és az Azure Storage-hoz kapcsolódó [szabályok](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) használatával is engedélyeznie kell a hitelesítést és az adatátvitelt. Ezt a Azure Portal vagy a PowerShell segítségével teheti meg.
+Ha a NSG-t használja a kapcsolat korlátozására, akkor a AzureBackup szolgáltatás címkével kell rendelkeznie, hogy lehetővé tegye a kimenő hozzáférést a Azure Backuphoz. Emellett az Azure AD-hez és az Azure Storage-hoz kapcsolódó [szabályok](../virtual-network/security-overview.md#service-tags) használatával is engedélyeznie kell a hitelesítést és az adatátvitelt. Ezt a Azure Portal vagy a PowerShell segítségével teheti meg.
 
 Szabály létrehozása a portál használatával:
 
   1. A **minden szolgáltatás**területen lépjen a **hálózati biztonsági csoportok** elemre, és válassza ki a hálózati biztonsági csoportot.
   2. A **Beállítások**területen válassza a **kimenő biztonsági szabályok** lehetőséget.
-  3. Válassza a **Hozzáadás** elemet. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a **Service tag** és a **cél szolgáltatás címkéje** **AzureBackup**értékre van állítva.
+  3. Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](../virtual-network/manage-network-security-group.md#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a **Service tag** és a **cél szolgáltatás címkéje** **AzureBackup**értékre van állítva.
   4. Kattintson a **Hozzáadás**gombra az újonnan létrehozott kimenő biztonsági szabály mentéséhez.
 
 Szabály létrehozása a PowerShell használatával:
@@ -85,7 +85,7 @@ Szabály létrehozása a PowerShell használatával:
  7. A NSG mentése<br/>
     `Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg`
 
-**Hozzáférés engedélyezése Azure Firewall címkék használatával**. Ha Azure Firewall használ, hozzon létre egy szabályt a AzureBackup [FQDN-címke](https://docs.microsoft.com/azure/firewall/fqdn-tags)használatával. Ez lehetővé teszi a kimenő hozzáférést Azure Backuphoz.
+**Hozzáférés engedélyezése Azure Firewall címkék használatával**. Ha Azure Firewall használ, hozzon létre egy szabályt a AzureBackup [FQDN-címke](../firewall/fqdn-tags.md)használatával. Ez lehetővé teszi a kimenő hozzáférést Azure Backuphoz.
 
 **Http-proxykiszolgáló üzembe helyezése a forgalom irányításához**. Ha egy Azure-beli virtuális gépen SAP HANA adatbázisról készít biztonsági másolatot, a virtuális gépen futó biztonsági mentési bővítmény a HTTPS API-k használatával küldi el a felügyeleti parancsokat az Azure Storage-ba való Azure Backup és az adattároláshoz. A biztonsági mentési bővítmény az Azure AD-t is használja a hitelesítéshez. Irányítsa a biztonsági mentési bővítmény forgalmát a három szolgáltatáshoz a HTTP-proxyn keresztül. A bővítmények az egyetlen olyan összetevő, amely a nyilvános internethez való hozzáférésre van konfigurálva.
 
@@ -153,7 +153,7 @@ Egy Recovery Services-tároló létrehozásához:
    * **Név**: a név a Recovery Services-tároló azonosítására szolgál, és egyedinek kell lennie az Azure-előfizetésben. Adjon meg legalább két, de legfeljebb 50 karakterből álló nevet. A névnek betűvel kell kezdődnie, és csak betűt, számot és kötőjelet tartalmazhat. Ebben az oktatóanyagban a **SAPHanaVault**nevet használtuk.
    * **Előfizetés**: válassza ki a használni kívánt előfizetést. Ha csak egy előfizetés tagja, akkor ezt a nevet fogja látni. Ha nem biztos abban, hogy melyik előfizetést szeretné használni, használja az alapértelmezett (javasolt) előfizetést. Több választási lehetőség is van, ha a munkahelyi vagy iskolai fiók egynél több Azure-előfizetéshez van társítva. Itt a **SAP HANA Solution Lab előfizetési** előfizetést használtuk.
    * **Erőforráscsoport**: használjon meglévő erőforráscsoportot, vagy hozzon létre egy újat. Itt **SAPHANADemo**használunk.<br>
-   Az előfizetésben elérhető erőforráscsoportok listájának megtekintéséhez válassza a **meglévő használata**lehetőséget, majd válasszon ki egy erőforrást a legördülő listából. Új erőforráscsoport létrehozásához válassza az **új létrehozása** lehetőséget, és adja meg a nevet. Az erőforráscsoportok részletes ismertetését itt tekintheti meg: [Azure Resource Manager Overview (áttekintés](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)).
+   Az előfizetésben elérhető erőforráscsoportok listájának megtekintéséhez válassza a **meglévő használata**lehetőséget, majd válasszon ki egy erőforrást a legördülő listából. Új erőforráscsoport létrehozásához válassza az **új létrehozása** lehetőséget, és adja meg a nevet. Az erőforráscsoportok részletes ismertetését itt tekintheti meg: [Azure Resource Manager Overview (áttekintés](../azure-resource-manager/management/overview.md)).
    * **Hely**: válassza ki a tároló földrajzi régióját. A tárolónak ugyanabban a régióban kell lennie, mint ahol a virtuális gép SAP HANA fut. Használtuk az **USA 2. keleti**régióját.
 
 5. Válassza a **felülvizsgálat + létrehozás**lehetőséget.

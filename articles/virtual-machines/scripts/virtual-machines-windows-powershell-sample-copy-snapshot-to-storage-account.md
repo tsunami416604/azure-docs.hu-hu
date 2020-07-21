@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 760b6ae2d791267053acdb1e216ab5daeab7c061
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9b8510d3eb66cc63a0c9c660b34514a83a35d25c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459355"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509580"
 ---
 # <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Felügyelt Pillanatképek exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba a PowerShell használatával
 
@@ -39,13 +39,13 @@ Ez a szkript egy felügyelt pillanatképet exportál egy másik régió tárfió
 
 A szkript a következő parancsokat használja egy felügyelt pillanatkép SAS URI-azonosítójának létrehozásához, majd a pillanatkép a SAS URI használatával egy tárfiókba való másolásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
-| [Engedélyezés – AzSnapshotAccess](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | SAS URI-t hoz létre egy olyan pillanatképhez, amely egy Storage-fiókba való másoláshoz használatos. |
-| [New-AzStorageContext](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontext) | Létrehozza egy tárfiókkörnyezetet a fióknév és -kulcs használatával. Ennek a környezetnek a használatával olvasási/írási műveletek hajthatók végre a tárfiókon. |
-| [Start-AzStorageBlobCopy](https://docs.microsoft.com/powershell/module/az.storage/start-azstorageblobcopy) | Másolatot készít egy pillanatkép mögöttes VHD-fájljáról egy tárfiókba |
+| [Engedélyezés – AzSnapshotAccess](/powershell/module/az.compute/new-azdisk) | SAS URI-t hoz létre egy olyan pillanatképhez, amely egy Storage-fiókba való másoláshoz használatos. |
+| [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext) | Létrehozza egy tárfiókkörnyezetet a fióknév és -kulcs használatával. Ennek a környezetnek a használatával olvasási/írási műveletek hajthatók végre a tárfiókon. |
+| [Start-AzStorageBlobCopy](/powershell/module/az.storage/start-azstorageblobcopy) | Másolatot készít egy pillanatkép mögöttes VHD-fájljáról egy tárfiókba |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Felügyelt lemez létrehozása VHD-ből](virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 

@@ -6,12 +6,12 @@ ms.topic: sample
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/08/2020
-ms.openlocfilehash: 82032c6a5ac8ec65265ffb44f896be6cea8fe4ce
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d7a8a7b7fa75d7d9bb4dc45a3432370bac4cb4d6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86210447"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498644"
 ---
 # <a name="resource-manager-template-samples-for-creating-application-insights-resources"></a>Resource Manager-sablonok – minták Application Insights erőforrások létrehozásához
 
@@ -21,7 +21,7 @@ Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager
 
 ## <a name="classic-application-insights-resource"></a>Klasszikus Application Insights erőforrás
 
-Az alábbi minta egy [klasszikus Application Insights-erőforrást](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)hoz létre. 
+Az alábbi minta egy [klasszikus Application Insights-erőforrást](../app/create-new-resource.md)hoz létre. 
 
 ### <a name="template-file"></a>Sablonfájl
 
@@ -107,7 +107,7 @@ Az alábbi minta egy [klasszikus Application Insights-erőforrást](https://docs
 
 ## <a name="workspace-based-application-insights-resource"></a>Munkaterület-alapú Application Insights erőforrás 
 
-Az alábbi minta egy [munkaterület-alapú Application Insights erőforrást](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource)hoz létre. A munkaterület-alapú Application Insights jelenleg **előzetes**verzióban érhető el. 
+Az alábbi minta egy [munkaterület-alapú Application Insights erőforrást](../app/create-workspace-resource.md)hoz létre. A munkaterület-alapú Application Insights jelenleg **előzetes**verzióban érhető el. 
 
 
 ### <a name="template-file"></a>Sablonfájl

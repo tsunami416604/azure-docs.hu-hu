@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5c82f087505c1634dd621252935c4017687340b2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: b3b57cd2a2e5d5502f3865eddcdddfac67460dc7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198241"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495028"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Lemezek létrehozása és használata virtuálisgép-méretezési csoportokhoz Azure PowerShell-lel
 
@@ -24,10 +24,10 @@ A virtuálisgép-méretezési csoportok lemezeket használnak a virtuálisgép-p
 > * Operációsrendszer-lemezek és ideiglenes lemezek
 > * Adatlemezek
 > * Standard és Prémium lemezek
-> * Lemezek teljesítménye
+> * Lemezteljesítmény
 > * Adatlemezek csatolása és előkészítése
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -44,12 +44,12 @@ Egy méretezési csoport létrehozásakor vagy skálázásakor a rendszer két l
 ### <a name="temporary-disk-sizes"></a>Ideiglenes lemezek méretei
 | Típus | Gyakori méretek | Ideiglenes lemez max. mérete (GiB) |
 |----|----|----|
-| [Általános célú](../virtual-machines/windows/sizes-general.md) | A, B és D sorozat | 1600 |
-| [Számításra optimalizált](../virtual-machines/windows/sizes-compute.md) | F sorozat | 576 |
-| [Memóriaoptimalizált](../virtual-machines/windows/sizes-memory.md) | D, E, G és M sorozat | 6144 |
-| [Tárolásra optimalizált](../virtual-machines/windows/sizes-storage.md) | L sorozat | 5630 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N sorozat | 1440 |
-| [Nagy teljesítmény](../virtual-machines/windows/sizes-hpc.md) | A és H sorozat | 2000 |
+| [Általános célú](../virtual-machines/sizes-general.md) | A, B és D sorozat | 1600 |
+| [Számításoptimalizált](../virtual-machines/sizes-compute.md) | F sorozat | 576 |
+| [Memóriaoptimalizált](../virtual-machines/sizes-memory.md) | D, E, G és M sorozat | 6144 |
+| [Tároptimalizált](../virtual-machines/sizes-storage.md) | L sorozat | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N sorozat | 1440 |
+| [Nagy teljesítmény](../virtual-machines/sizes-hpc.md) | A és H sorozat | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure-adatlemezek
@@ -58,12 +58,12 @@ További adatlemezek adhatók hozzá, amelyekre alkalmazásokat telepíthet és 
 ### <a name="max-data-disks-per-vm"></a>Adatlemezek max. száma virtuális gépenként
 | Típus | Gyakori méretek | Adatlemezek max. száma virtuális gépenként |
 |----|----|----|
-| [Általános célú](../virtual-machines/windows/sizes-general.md) | A, B és D sorozat | 64 |
-| [Számításra optimalizált](../virtual-machines/windows/sizes-compute.md) | F sorozat | 64 |
-| [Memóriaoptimalizált](../virtual-machines/windows/sizes-memory.md) | D, E, G és M sorozat | 64 |
-| [Tárolásra optimalizált](../virtual-machines/windows/sizes-storage.md) | L sorozat | 64 |
-| [GPU](../virtual-machines/windows/sizes-gpu.md) | N sorozat | 64 |
-| [Nagy teljesítmény](../virtual-machines/windows/sizes-hpc.md) | A és H sorozat | 64 |
+| [Általános célú](../virtual-machines/sizes-general.md) | A, B és D sorozat | 64 |
+| [Számításoptimalizált](../virtual-machines/sizes-compute.md) | F sorozat | 64 |
+| [Memóriaoptimalizált](../virtual-machines/sizes-memory.md) | D, E, G és M sorozat | 64 |
+| [Tároptimalizált](../virtual-machines/sizes-storage.md) | L sorozat | 64 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N sorozat | 64 |
+| [Nagy teljesítmény](../virtual-machines/sizes-hpc.md) | A és H sorozat | 64 |
 
 
 ## <a name="vm-disk-types"></a>Virtuálisgép-lemezek típusai
@@ -135,7 +135,7 @@ Update-AzVmss `
 ## <a name="prepare-the-data-disks"></a>Az adatlemezek előkészítése
 A méretezési csoport virtuálisgép-példányaihoz létrehozott és hozzácsatolt lemezek nyers lemezek. Mielőtt adatokhoz vagy alkalmazásokhoz használhatná őket, a lemezeket elő kell készíteni. A lemezek előkészítéséhez létrehoz egy partíciót, egy fájlrendszert és beolvassa azokat.
 
-A folyamat a méretezési csoport több virtuálisgép-példányán való automatizálásához használja az Azure egyéni szkriptek futtatására szolgáló bővítményét. A bővítmény képes a szkriptek helyi végrehajtására az egyes virtuálisgép-példányokon, például előkészíti a csatlakoztatott adatlemezeket. További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/windows/extensions-customscript.md).
+A folyamat a méretezési csoport több virtuálisgép-példányán való automatizálásához használja az Azure egyéni szkriptek futtatására szolgáló bővítményét. A bővítmény képes a szkriptek helyi végrehajtására az egyes virtuálisgép-példányokon, például előkészíti a csatlakoztatott adatlemezeket. További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/extensions/custom-script-windows.md).
 
 
 Az alábbi példa egy GitHub-minta-tárházból származó szkriptet hajt végre minden olyan virtuálisgép-példányon, amely az összes nyers csatolt adatlemezt előkészítő [AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) rendelkezik:
@@ -297,7 +297,7 @@ Update-AzVmss `
 ```
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 A méretezési csoport és a lemezek eltávolításához törölje az erőforráscsoportot és az összes erőforrását a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
 
 ```azurepowershell-interactive
@@ -305,14 +305,14 @@ Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre és használhat lemezeket a méretezési csoportokkal együtt az Azure PowerShell használatával:
 
 > [!div class="checklist"]
 > * Operációsrendszer-lemezek és ideiglenes lemezek
 > * Adatlemezek
 > * Standard és Prémium lemezek
-> * Lemezek teljesítménye
+> * Lemezteljesítmény
 > * Adatlemezek csatolása és előkészítése
 
 A következő oktatóanyag azt mutatja be, hogyan használhat egyedi rendszerképeket a méretezési csoport virtuálisgép-példányaihoz.

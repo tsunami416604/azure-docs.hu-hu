@@ -10,14 +10,14 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 1665bc42578c189ed27208eb31cc4bdb2e27bbb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628394"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536164"
 ---
-# <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Oktatóanyag: címkézési projekt (előzetes verzió) létrehozása a többosztályos képek besorolásához 
+# <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Oktatóanyag: címkézési projekt létrehozása a többosztályos képek besorolásához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Ebből az oktatóanyagból megtudhatja, hogyan kezelheti a gépi tanulási modellek készítéséhez használt, a címkézési (más néven címkézési) lemezképeket. Az adatfelirat Azure Machine Learning nyilvános előzetes verzióban érhető el.
@@ -70,7 +70,7 @@ Azure Machine Learning adattárolók a kapcsolódási adatok tárolására szolg
     Adattár típusa | Válassza ki a tároló típusát.  Itt az **Azure Blob Storaget**használjuk, a lemezképek előnyben részesített tárhelyét.
     Fiók kiválasztása módszer | Válassza az **ENTER manuálisan**lehetőséget.
     URL-cím | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
-    Hitelesítés típusa | Válasszon **sas-tokent**.
+    Hitelesítéstípus | Válasszon **sas-tokent**.
     Fiókkulcs | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
 
 1. Válassza a **Létrehozás** lehetőséget az adattár létrehozásához.
@@ -102,7 +102,7 @@ Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a c
 
 1. Használja a következő inputot az **adatkészlet létrehozása adattárból** űrlapból:
 
-    1. Az **alapszintű információ** űrlapon adjon meg egy nevet, itt a **képek-for-tutorial**használatát fogjuk használni.  Ha szeretné, adja meg a leírást.  Ezután válassza a **tovább**lehetőséget.
+    1. Az **alapszintű információ** űrlapon adjon meg egy nevet, itt a **képek-for-tutorial**használatát fogjuk használni.  Ha szeretné, adja meg a leírást.  Ezután kattintson a **Tovább** gombra.
     1. Az **adattár kiválasztása** űrlapon a legördülő listából válassza ki a **korábban létrehozott**adattárat, például **tutorial_images (Azure Blob Storage)**
     1. Ezután továbbra is az **adattár kiválasztása** űrlapon válassza a **Tallózás** lehetőséget, majd válassza a **többosztályos DogsCats**lehetőséget.  Válassza a **Mentés** lehetőséget a **/MultiClass-DogsCats** elérési útvonalként való használatához.
     1. A **tovább** gombra kattintva erősítse meg a részleteket, majd **hozzon** létre az adatkészlet létrehozásához.
@@ -114,7 +114,7 @@ Most, hogy hozzáfér a címkével ellátni kívánt adataihoz, hozza létre a c
 
 Ha új lemezképeket szeretne hozzáadni az adatkészlethez, a Növekményes frissítés megkeresi ezeket az új képeket, és hozzáadja őket a projekthez.  Ha engedélyezi ezt a funkciót, a projekt rendszeresen ellenőrzi az új lemezképeket.  Ebben az oktatóanyagban nem fog új rendszerképeket hozzáadni az adattárhoz, ezért a funkció nincs bejelölve.
 
-A folytatáshoz kattintson a **Tovább** gombra.
+A folytatáshoz válassza a **Tovább** gombot.
 
 ### <a name="label-classes"></a>Címkézési osztályok
 
@@ -130,7 +130,7 @@ A folytatáshoz kattintson a **Tovább** gombra.
 
 1. Válassza a **Tovább** lehetőséget.
 
-1. A **ml által támogatott címkéző** űrlapon ne jelölje be a jelölőnégyzetet. A ML által támogatott címkézés több olyan adattípust igényel, mint amit ebben az oktatóanyagban használ.
+1. Ha vállalati munkaterületet használ, egy ml-ben **támogatott címkézési** szakaszt fog látni.  Ne jelölje be a jelölőnégyzetet. A ML által támogatott címkézés több olyan adattípust igényel, mint amit ebben az oktatóanyagban használ.
 
 1. Válassza a **Create project** (Projekt létrehozása) lehetőséget.
 

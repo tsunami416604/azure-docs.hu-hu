@@ -1,13 +1,14 @@
 ---
 title: Az ISO 27001 megosztott szolgáltatások tervrajzi mintájának üzembe helyezése
 description: Az ISO 27001 megosztott szolgáltatások tervezetének üzembe helyezési mintája, beleértve a tervrajz-összetevő paraméterének részleteit.
-ms.date: 01/13/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 19e394f115c87c499f7839c6ef63921e68f4d357
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0f2fa71e56deadba1188ab0fa69898c261861eb5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044702"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521462"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 Shared Services Blueprint minta üzembe helyezése
 
@@ -61,7 +62,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
-   - Alapvető beállítások
+   - Alapbeállítások
 
      - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
      - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
@@ -100,7 +101,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Összetevő neve|Összetevő típusa|Paraméter neve|Description|
+|Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
 |\[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux-VM Scale sets (VMSS)|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_.|
 |\[Előzetes verzió \] : log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken|Szabályzat-hozzárendelés|Nem kötelező: a hatókörbe felvenni kívánt Linux operációs rendszert futtató virtuálisgép-rendszerképek listája|Választható Az alapértelmezett érték _["None"]_.|
@@ -112,7 +113,7 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Tervezet kezdeményezés ISO 27001|Szabályzat-hozzárendelés|A diagnosztikai naplók naplózására szolgáló erőforrástípusok|A naplózni kívánt erőforrástípusok listája, ha a diagnosztikai napló beállítása nincs engedélyezve. Elfogadható értékek találhatók [Azure monitor diagnosztikai naplók sémái](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)között.|
 |Log Analytics erőforráscsoport|Erőforráscsoport|Name|**Zárolva** – összefűzi a **szervezet nevét** , `-sharedsvsc-log-rg` hogy az erőforráscsoport egyedi legyen.|
 |Log Analytics erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
-|Log Analytics sablon|Resource Manager-sablon|Szolgáltatásszint|Beállítja a Log Analytics munkaterület szintjét. Az alapértelmezett érték a _PerNode_.|
+|Log Analytics sablon|Resource Manager-sablon|Szolgáltatási szint|Beállítja a Log Analytics munkaterület szintjét. Az alapértelmezett érték a _PerNode_.|
 |Log Analytics sablon|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
 |Log Analytics sablon|Resource Manager-sablon|Hely|A Log Analytics munkaterület létrehozásához használt régió. Az alapértelmezett érték az _USA 2. nyugati_régiója.|
 |Hálózati erőforráscsoport|Erőforráscsoport|Name|**Zárolva** – összefűzi a **szervezet nevét** , `-sharedsvcs-net-rg` hogy az erőforráscsoport egyedi legyen.|
@@ -151,7 +152,7 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Active Directory tartományi szolgáltatások sablon|Resource Manager-sablon|Tartományi rendszergazda felhasználó|A rendszergazdai AD-fiókhoz tartozó Felhasználónév és az eszközök AD-tartományhoz való csatlakoztatása. Meg kell egyeznie az **ad admin username** tulajdonság értékével **Key Vault sablonban**. Az alapértelmezett érték a _tartományi rendszergazda – felhasználó_.|
 |Active Directory tartományi szolgáltatások sablon|Resource Manager-sablon|Tartományi rendszergazda jelszava|Adja meg a Jelszó tárolásának Key Vault részleteit. Nincs alapértelmezett érték, és nem hagyható üresen.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette az ISO 27001 Shared Services Blueprint-minta üzembe helyezésének lépéseit, tekintse meg az alábbi cikkeket az architektúra és a vezérlés leképezésének megismeréséhez:
 

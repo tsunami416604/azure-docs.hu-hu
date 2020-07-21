@@ -1,5 +1,5 @@
 ---
-title: fájlbefoglalás
+title: fájl belefoglalása
 description: foglalja bele a háttérbeli ASP .NET WebAPI-projekt létrehozására szolgáló kódot tartalmazó fájlt.
 services: notification-hubs
 author: spelluru
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77192769"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530171"
 ---
 ## <a name="create-the-webapi-project"></a>A WebAPI-projekt létrehozása
 
@@ -30,7 +30,7 @@ Az új ASP.NET WebAPI háttérrendszer létrehozása a következő műveletekkel
 >
 >Az ellenőrzéshez indítsa el a Visual Studiót. Az **eszközök** menüben válassza a **bővítmények és frissítések**lehetőséget. Keresse meg az Ön által használt Visual Studio-verzióhoz tartozó **NuGet-csomagkezelőt**, és ellenőrizze, hogy a legfrissebb verzió van-e telepítve a gépén. Ha nem a legfrissebb verzió van telepítve a gépén, távolítsa el, és telepítse újra a NuGet-csomagkezelőt.
 
-![][B4]
+![Képernyőkép a bővítmények és frissítések párbeszédpanelről, amely a NuGet-csomag kezelése a Visual Studios-csomaghoz lehetőség ki van emelve.][B4]
 
 > [!NOTE]
 > Győződjön meg arról, hogy telepítette a Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) -t a webhely telepítéséhez.
@@ -392,11 +392,11 @@ A következőkben üzembe fogja helyezni ezt az alkalmazást egy Azure-webhelyen
 
 3. A **Create App Service** (App Service létrehozása) ablakban válassza ki az Azure-fiókját. Válassza a **change Type**  >  **Web App**(típus módosítása) lehetőséget. Tartsa meg az alapértelmezett **webalkalmazásnevet**, majd válassza a **Subscription** (Előfizetés), **Resource Group** (Erőforráscsoport) és **App Service Plan** (App Service-csomag) elemeket.
 
-4. Válassza a **Létrehozás** lehetőséget.
+4. Kattintson a **Létrehozás** gombra.
 
 5. Jegyezze fel a **Summary** (Összegzés) szakaszban lévő **Site URL** (Webhely URL-címe) tulajdonságot. Ezt az URL-címet az oktatóanyag későbbi részében fogja használni *háttérvégpontként*.
 
-6. Kattintson a **Közzététel** lehetőségre.
+6. Kattintson a **Publish** (Közzététel) elemre.
 
 Miután a varázsló befejeződött, közzéteszi az ASP.NET-webalkalmazást az Azure-on, majd megnyitja azt az alapértelmezett böngészőben.  Az alkalmazását az Azure App Servicesben tekintheti meg.
 

@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 80f7ba4a4493299d9d1795631401689f4619d873
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5ae3f3dd31ad7a98a1b4a3d5ed00b568d1f8ed47
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508066"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Azure-alapú virtuális hálózatok létrehozása és felügyelete Windows rendszerű virtuális gépeken az Azure PowerShell-lel
 
@@ -48,7 +48,7 @@ Az oktatóanyag végrehajtása során a következő erőforrások jönnek létre
 - *myBackendVM* – A *myFrontendVM* virtuális géppel a 1433-as porton keresztül kommunikáló virtuális gép.
 
 
-## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
@@ -59,13 +59,13 @@ A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy k�
 
 Ebben az oktatóanyagban egy virtuális hálózatot hozunk létre két alhálózattal, egy előtérbeli alhálózatot egy webalkalmazás üzemeltetéséhez, és egy háttérbeli alhálózatot egy adatbázis-kiszolgáló üzemeltetéséhez.
 
-A virtuális hálózat létrehozása előtt hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példa létrehoz egy *myRGNetwork* nevű erőforráscsoportot az *EastUS* régióban:
+A virtuális hálózat létrehozása előtt hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példa létrehoz egy *myRGNetwork* nevű erőforráscsoportot az *EastUS* régióban:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-Hozzon létre egy *myFrontendSubnet* nevű alhálózati konfigurációt a [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig):
+Hozzon létre egy *myFrontendSubnet* nevű alhálózati konfigurációt a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig):
 
 ```azurepowershell-interactive
 $frontendSubnet = New-AzVirtualNetworkSubnetConfig `
@@ -83,7 +83,7 @@ $backendSubnet = New-AzVirtualNetworkSubnetConfig `
 
 ## <a name="create-virtual-network"></a>Virtuális hálózat létrehozása
 
-Hozzon létre egy *myVNet* nevű VNET a *MyFrontendSubnet* és a *MyBackendSubnet* használatával a [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)használatával:
+Hozzon létre egy *myVNet* nevű VNET a *MyFrontendSubnet* és a *MyBackendSubnet* használatával a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)használatával:
 
 ```azurepowershell-interactive
 $vnet = New-AzVirtualNetwork `
@@ -102,7 +102,7 @@ A nyilvános IP-cím lehetővé teszi, hogy az Azure-erőforrások elérhetők l
 
 A kiosztási módszer statikus értékre állítható, amely biztosítja, hogy az IP-cím egy virtuális géphez legyen hozzárendelve, még akkor is, ha a felszabadítási állapotban van. Ha statikus IP-címet használ, maga az IP-cím nem adható meg. Ehelyett a rendszer kiosztja az elérhető címek készletét.
 
-Hozzon létre egy *myPublicIPAddress* nevű nyilvános IP [-címet a New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress):
+Hozzon létre egy *myPublicIPAddress* nevű nyilvános IP [-címet a New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress):
 
 ```azurepowershell-interactive
 $pip = New-AzPublicIpAddress `
@@ -116,7 +116,7 @@ Ha az -AllocationMethod paramétert `Static` értékre állítja, egy statikus n
 
 ## <a name="create-a-front-end-vm"></a>Előtérbeli virtuális gép létrehozása
 
-Ahhoz, hogy a virtuális gép kommunikálhasson a virtuális hálózatban, szüksége van egy virtuális hálózati adapterre (NIC). Hozzon létre egy hálózati adaptert a [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface)használatával:
+Ahhoz, hogy a virtuális gép kommunikálhasson a virtuális hálózatban, szüksége van egy virtuális hálózati adapterre (NIC). Hozzon létre egy hálózati adaptert a [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)használatával:
 
 ```azurepowershell-interactive
 $frontendNic = New-AzNetworkInterface `
@@ -127,13 +127,13 @@ $frontendNic = New-AzNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal. Ezekkel a hitelesítő adatokkal csatlakozhat a virtuális géphez a további lépésekben:
+A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) paranccsal. Ezekkel a hitelesítő adatokkal csatlakozhat a virtuális géphez a további lépésekben:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Hozza létre a virtuális gépeket a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)használatával.
+Hozza létre a virtuális gépeket a [New-AzVM](/powershell/module/az.compute/new-azvm)használatával.
 
 ```azurepowershell-interactive
 New-AzVM `
@@ -163,7 +163,7 @@ Minden NSG tartalmaz egy alapértelmezett szabálykészletet. Az alapértelmezet
 
 ### <a name="create-network-security-groups"></a>Hálózati biztonsági csoportok létrehozása
 
-Hozzon létre egy *myFrontendNSGRule* nevű bejövő szabályt, hogy engedélyezze a bejövő webes forgalmat a *myFrontendVM* a [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig)használatával:
+Hozzon létre egy *myFrontendNSGRule* nevű bejövő szabályt, hogy engedélyezze a bejövő webes forgalmat a *myFrontendVM* a [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)használatával:
 
 ```azurepowershell-interactive
 $nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
@@ -193,7 +193,7 @@ $nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Vegyen fel egy *myFrontendNSG* nevű hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup):
+Vegyen fel egy *myFrontendNSG* nevű hálózati biztonsági csoportot a [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup):
 
 ```azurepowershell-interactive
 $nsgFrontend = New-AzNetworkSecurityGroup `
@@ -269,7 +269,7 @@ New-AzVM `
 
 Ebben a példában a rendszerkép SQL Server telepítve van, de ez az oktatóanyag nem használható. Ennek részeként megtudhatja, hogyan konfigurálhat egy virtuális gépet a webes forgalom és az adatbázis-kezelés kezelésére szolgáló virtuális gép használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosította az Azure-hálózatokat. 
 

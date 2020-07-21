@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77021644"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497046"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Oktatóanyag: Power BI-szolgáltató irányítópultjának összeállítása
 
 
 
-A folyamatos beteg-figyelési megoldás létrehozásakor létrehozhat egy irányítópultot a kórházi ápolási csapat számára a páciensek adatainak megjelenítéséhez. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Power BI valós idejű adatfolyam-irányítópultot a IoT Central folyamatos beteg-figyelési alkalmazás sablonból.
+A folyamatos beteg-figyelési megoldás létrehozásakor létrehozhat egy irányítópultot a kórházi ápolási csapat számára a páciensek adatainak megjelenítéséhez. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Power BI valós idejű adatfolyam-irányítópultot a IoT Central folyamatos beteg-figyelési alkalmazás sablonból. Ha a használati eset nem igényli a valós idejű adatelérést, használhatja a [IoT Central Power bi irányítópultot](../core/howto-connect-powerbi.md), amely egyszerűsített telepítési folyamattal rendelkezik. 
 
 >[!div class="mx-imgBorder"]
 >![Irányítópult GIF](media/dashboard-gif-3.gif)
@@ -80,8 +80,8 @@ A logikai alkalmazás Azure Event Hubshoz való összekapcsolásához kövesse a
 |Paraméter|Érték|
 |---|---|
 |Tartalomtípus|application/json|
-|Intervallum|3|
-|Frequency|Másodperc|
+|Időköz|3|
+|Gyakoriság|Second|
 
 Ennek a lépésnek a végén a Logic app designernek így kell kinéznie:
 
@@ -143,7 +143,7 @@ A következő lépés az, hogy elemezze az Event hub-ról érkező adatokat a ko
 
     |Paraméter|Érték|
     |---|---|
-    |Name (Név)|Csatoló neve|
+    |Név|Csatoló neve|
     |Típus|Sztring|
 
     Kattintson a **Mentés** gombra. 
@@ -197,7 +197,7 @@ Válassza ki a három pontot a felső navigációs sávon, majd válassza a **+ 
 
 Válassza ki, hogy milyen típusú csempét szeretne felvenni, és testreszabni szeretné az alkalmazást.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az erőforrásokat a következő lépésekkel:
 
@@ -205,6 +205,6 @@ Ha nem folytatja az alkalmazás használatát, törölje az erőforrásokat a k�
 
 2. IoT Central alkalmazásához lépjen az adminisztráció lapra, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [folyamatos beteg monitorozási architektúrával kapcsolatos útmutatót](concept-continuous-patient-monitoring-architecture.md).

@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 8e37876e0e9666097c3cf16589e64929c670b14a
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: eb3096cadc8197aeda9258bd3123c2eb760a44af
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85390278"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540281"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Oktatóanyag: Azure Functions Private site-hozzáférés létrehozása
 
@@ -43,7 +43,7 @@ Az alábbi ábrán a létrehozandó megoldás architektúrája látható:
 
 Ebben az oktatóanyagban fontos megérteni az IP-címzést és alhálózatokat. Ebből a cikkből megtudhatja, hogyan kezelheti [a címzési és alhálók alapjait](https://support.microsoft.com/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). Számos további cikk és videó elérhető online állapotban.
 
-## <a name="sign-in-to-azure-portal"></a>Jelentkezzen be az Azure Portalon
+## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
@@ -68,7 +68,7 @@ Az oktatóanyag első lépése egy új virtuális gép létrehozása egy virtuá
     | [_Erőforráscsoport_](../azure-resource-manager/management/overview.md) | myResourceGroup | Válassza ki az oktatóanyaghoz tartozó összes erőforrást tartalmazó erőforráscsoportot.  Ugyanezen erőforráscsoport használatával egyszerűbbé válik az erőforrások törlése, amikor ezzel az Oktatóanyaggal végzett. |
     | _Virtuális gép neve_ | myVM | A virtuális gép nevének egyedinek kell lennie az erőforráscsoporthoz |
     | [_Régió_](https://azure.microsoft.com/regions/) | USA USA északi középső régiója | Válasszon egy Önhöz közeli régiót vagy az elérni kívánt funkciók közelében. |
-    | _Nyilvános bejövő portok_ | None | Válassza a **nincs** lehetőséget, hogy a virtuális géphez ne legyen bejövő kapcsolat az internetről. A virtuális géphez való távoli hozzáférés az Azure Bastion szolgáltatáson keresztül lesz konfigurálva. |
+    | _Nyilvános bejövő portok_ | Nincs | Válassza a **nincs** lehetőséget, hogy a virtuális géphez ne legyen bejövő kapcsolat az internetről. A virtuális géphez való távoli hozzáférés az Azure Bastion szolgáltatáson keresztül lesz konfigurálva. |
 
 1. Válassza a _hálózatkezelés_ fület, és válassza az **új létrehozása** lehetőséget az új virtuális hálózat konfigurálásához.
 
@@ -82,7 +82,7 @@ Az oktatóanyag első lépése egy új virtuális gép létrehozása egy virtuá
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | _Name (Név)_ | myResourceGroup – vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
+    | _Név_ | myResourceGroup – vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
     | _Címtartomány_ | 10.10.0.0/16 | Használjon egyetlen címtartományt a virtuális hálózathoz. |
     | _Alhálózat neve_ | Oktatóanyag | Az alhálózat neve. |
     | _Címtartomány_ (alhálózat) | 10.10.1.0/24 | Az alhálózat mérete határozza meg, hogy hány csatolót lehet hozzáadni az alhálózathoz. Ezt az alhálózatot a virtuális gép használja. A/24 alhálózat 254 gazdagép-címeket biztosít. |
@@ -107,8 +107,8 @@ Az [Azure Bastion](https://azure.microsoft.com/services/azure-bastion/) egy telj
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
-    | _Name (Név)_ | myBastion | Az új megerősített erőforrás neve |
-    | _Régió_ | USA északi középső régiója | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. |
+    | _Név_ | myBastion | Az új megerősített erőforrás neve |
+    | _Régió_ | USA északi középső régiója | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) vagy a funkciókhoz tartozó egyéb szolgáltatások közelében. |
     | _Virtuális hálózat_ | myResourceGroup – vnet | Az a virtuális hálózat, amelyben a megerősített erőforrás létre lesz hozva |
     | _Alhálózat_ | AzureBastionSubnet | Annak a virtuális hálózatnak az alhálózata, amelyhez az új megerősített gazdagép erőforrása telepítve lesz. Létre kell hoznia egy alhálózatot a **AzureBastionSubnet**név érték használatával. Ez az érték lehetővé teszi, hogy az Azure tudja, melyik alhálózaton telepítse a megerősített erőforrásokat a következőre:. Legalább **/27** vagy nagyobb (/27,/26 stb.) alhálózatot kell használnia. |
 
@@ -139,10 +139,10 @@ A következő lépés egy Function-alkalmazás létrehozása az Azure-ban a [fel
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
     | _Erőforráscsoport_ | myResourceGroup | Válassza ki az oktatóanyaghoz tartozó összes erőforrást tartalmazó erőforráscsoportot.  Ha a Function alkalmazáshoz ugyanazt az erőforráscsoportot használja, és a virtuális gép megkönnyíti az erőforrások törlését, amikor ezzel az Oktatóanyaggal végzett. |
-    | _függvényalkalmazás neve_ | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek: a – z (kis-és nagybetűk megkülönböztetése), 0-9 és –. |
-    | _Közzététel_ | Code | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
+    | _Függvényalkalmazás neve_ | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Érvényes karakterek: a – z (kis-és nagybetűk megkülönböztetése), 0-9 és –. |
+    | _Közzététel_ | Kód | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
     | _Futtatókörnyezet verme_ | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. |
-    | _Régió_ | USA északi középső régiója | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. |
+    | _Régió_ | USA északi középső régiója | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) vagy a funkciókhoz tartozó egyéb szolgáltatások közelében. |
 
     Válassza a **következő: >üzemeltetése** gombot.
 1. A _hoszting_ szakaszban válassza ki a megfelelő _Storage-fiókot_, _operációs rendszert_és _tervet_ a következő táblázatban leírtak szerint.
@@ -197,7 +197,7 @@ Az oktatóanyag következő lépése egy HTTP-triggerű Azure-függvény létreh
     * [Visual Studio Code](./functions-create-first-function-vs-code.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
     * [Parancssor](./functions-create-first-azure-function-azure-cli.md)
-    * [Maven (Java)](./functions-create-first-java-maven.md)
+    * [Maven (Java)](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)
 
 1. Azure Functions projekt közzétételekor válassza ki az oktatóanyag során korábban létrehozott Function app-erőforrást.
 1. Ellenőrizze, hogy a függvény telepítve van-e.

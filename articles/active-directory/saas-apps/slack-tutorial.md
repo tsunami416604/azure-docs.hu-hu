@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70caf48163483b449fa2cf3576681b5c9c15f4f2
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0ffc9d3f4feb003d537b52cde15356e756aa11c0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259286"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500106"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Slacktel
 
@@ -41,6 +41,9 @@ Első lépésként a következő elemeket kell megadnia:
 
 > [!NOTE]
 > Ha több Slack-példánnyal kell integrálnia egy bérlőben, az egyes alkalmazások azonosítója változó lehet.
+
+> [!NOTE]
+> Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -130,7 +133,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

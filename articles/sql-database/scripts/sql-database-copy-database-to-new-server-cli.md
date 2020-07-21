@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: e7a83478654b848b8e001dd3fea276c5cc9e125a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3f180f075a32ac193ed003b58a99483ea3210cc7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022692"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528898"
 ---
 # <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>Adatbázis másolása Azure SQL Database új kiszolgálóra a CLI használatával
 
@@ -53,11 +53,11 @@ az group delete --name $targetResource
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| | |
+| Parancs | Leírás |
 |---|---|
 | [az SQL db Copy](/cli/azure/sql/db#az-sql-db-copy) | Másolatot készít egy adatbázisról, amely az aktuális időpontban készített pillanatképet használja. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

@@ -16,11 +16,12 @@ ms.date: 07/07/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 05/23/2019
-ms.openlocfilehash: 6b3c56734261c47b17b2fc4e65555aea9004eee2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 3a10b17b65c518b483a713701986765b8c979c79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057942"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529964"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinios-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése Xamarin. iOS-alkalmazásokba az Azure Notification Hubs használatával
 
@@ -105,19 +106,21 @@ Ennek az oktatóanyagnak az elvégzése a Xamarin.iOS-alkalmazásokkal kapcsolat
         if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
         {
             UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound,
-                                                                    (granted, error) =>
-                    InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications);
+                                                                    (granted, error) => InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications));
         }
-        } else if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
-            var pushSettings = UIUserNotificationSettings.GetSettingsForTypes (
+        else if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+        {
+            var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(
                     UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
-                    new NSSet ());
+                    new NSSet());
 
-            UIApplication.SharedApplication.RegisterUserNotificationSettings (pushSettings);
-            UIApplication.SharedApplication.RegisterForRemoteNotifications ();
-        } else {
+            UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
+            UIApplication.SharedApplication.RegisterForRemoteNotifications();
+        }
+        else
+        {
             UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
-            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes (notificationTypes);
+            UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes);
         }
 
         return true;
@@ -208,7 +211,7 @@ Az [Azure Portal]*Tesztküldés* lehetőségével tesztelheti az alkalmazásban 
 
 A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis könyvtár használatával, mint a Mobile Apps vagy az ASP.NET. Ha a háttérszolgáltatáshoz nem érhető el kódtár, az értesítések küldéséhez használhatja közvetlenül a REST API-t is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendszerben regisztrált iOS-eszközök mindegyikének. Ha szeretné megtudni, hogy hogyan küldhet értesítéseket adott iOS-eszközökre, lépjen tovább a következő oktatóanyagra:
 
@@ -234,4 +237,4 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [Apple Push Notification Service]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [Apple Push Notification Service fwlink]: https://go.microsoft.com/fwlink/p/?LinkId=272584
 [GitHub]: https://github.com/xamarin/mobile-samples/tree/master/Azure/NotificationHubs
-[Azure Portalra]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

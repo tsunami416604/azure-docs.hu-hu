@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: da9834636944c6bb816c4f49b0e9bf3abda2264a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3b65d04b383fdc0a409e23ab6b6649604be502c6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097778"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525586"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Oktatóanyag: webkiszolgáló védelme Azure-beli Windows rendszerű virtuális gépen a Key Vault tárolt TLS/SSL-tanúsítványokkal
 
@@ -30,11 +30,11 @@ A webkiszolgálók biztonságossá tételéhez Transport Layer Security (TLS), k
 > * A tanúsítvány behelyezése a virtuális gépre és az IIS konfigurálása TLS-kötéssel
 
 
-## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 
 ## <a name="overview"></a>Áttekintés
@@ -44,7 +44,7 @@ Beépített tanúsítványokat tartalmazó egyéni virtuális gép rendszerkép 
 
 
 ## <a name="create-an-azure-key-vault"></a>Azure Key Vault létrehozása;
-Key Vault és tanúsítványok létrehozása előtt hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *myResourceGroupSecureWeb* nevű erőforráscsoportot az *USA keleti régiója* helyen:
+Key Vault és tanúsítványok létrehozása előtt hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *myResourceGroupSecureWeb* nevű erőforráscsoportot az *USA keleti régiója* helyen:
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroupSecureWeb"
@@ -52,7 +52,7 @@ $location = "East US"
 New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-Ezután hozzon létre egy Key Vaultt a [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault). Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. Cserélje le a `mykeyvault` nevet a következő példában a saját egyedi Key Vault-névre:
+Ezután hozzon létre egy Key Vaultt a [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Mindegyik Key Vaultnak egyedi névvel kell rendelkeznie, amely csak kisbetűkből állhat. Cserélje le a `mykeyvault` nevet a következő példában a saját egyedi Key Vault-névre:
 
 ```azurepowershell-interactive
 $keyvaultName="mykeyvault"
@@ -63,7 +63,7 @@ New-AzKeyVault -VaultName $keyvaultName `
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Tanúsítvány létrehozása és tárolása a Key Vaultban
-Éles használatra a megbízható szolgáltató által aláírt érvényes tanúsítványt kell importálnia az [import-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate)használatával. Ebben az oktatóanyagban a következő példa bemutatja, hogyan hozhat létre olyan önaláírt tanúsítványt az [Add-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) , amely a [New-AzKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy)alapértelmezett tanúsítvány-házirendjét használja. 
+Éles használatra a megbízható szolgáltató által aláírt érvényes tanúsítványt kell importálnia az [import-AzKeyVaultCertificate](/powershell/module/az.keyvault/import-azkeyvaultcertificate)használatával. Ebben az oktatóanyagban a következő példa bemutatja, hogyan hozhat létre olyan önaláírt tanúsítványt az [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/add-azkeyvaultcertificate) , amely a [New-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy)alapértelmezett tanúsítvány-házirendjét használja. 
 
 ```azurepowershell-interactive
 $policy = New-AzKeyVaultCertificatePolicy `
@@ -80,13 +80,13 @@ Add-AzKeyVaultCertificate `
 
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
-Először a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát:
+Először a [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) paranccsal állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Most már létrehozhatja a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)használatával. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre az *USA keleti régiója* helyen. Ha még nem léteznek, létrejönnek a támogató hálózati erőforrások. A biztonságos webes forgalom engedélyezéséhez a parancsmag megnyitja a *443*-as portot is.
+Most már létrehozhatja a virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm)használatával. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre az *USA keleti régiója* helyen. Ha még nem léteznek, létrejönnek a támogató hálózati erőforrások. A biztonságos webes forgalom engedélyezéséhez a parancsmag megnyitja a *443*-as portot is.
 
 ```azurepowershell-interactive
 # Create a VM
@@ -112,11 +112,11 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server -IncludeManagementTools"}'
 ```
 
-A virtuális gép létrehozása néhány percig tart. Az utolsó lépés az Azure Custom script bővítmény használatával telepíti az IIS-webkiszolgálót a [set-AzVmExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
+A virtuális gép létrehozása néhány percig tart. Az utolsó lépés az Azure Custom script bővítmény használatával telepíti az IIS-webkiszolgálót a [set-AzVmExtension](/powershell/module/az.compute/set-azvmextension).
 
 
 ## <a name="add-a-certificate-to-vm-from-key-vault"></a>Tanúsítvány hozzáadása egy virtuális géphez a Key Vaultból
-A tanúsítvány Key Vaultból virtuális géphez való hozzáadásához szerezze be a tanúsítvány AZONOSÍTÓját a [Get-AzKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret)használatával. Adja hozzá a tanúsítványt a virtuális géphez az [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret)használatával:
+A tanúsítvány Key Vaultból virtuális géphez való hozzáadásához szerezze be a tanúsítvány AZONOSÍTÓját a [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret)használatával. Adja hozzá a tanúsítványt a virtuális géphez az [Add-AzVMSecret](/powershell/module/az.compute/add-azvmsecret)használatával:
 
 ```azurepowershell-interactive
 $certURL=(Get-AzKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id
@@ -130,7 +130,7 @@ Update-AzVM -ResourceGroupName $resourceGroup -VM $vm
 
 
 ## <a name="configure-iis-to-use-the-certificate"></a>Az IIS konfigurálása a tanúsítvány használatára
-Az egyéni szkriptek bővítményét újra használhatja a [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) az IIS konfigurációjának frissítéséhez. Ez a frissítés alkalmazza a Key Vaultból beszúrt tanúsítványt az IIS-re, és konfigurálja a webes kötést:
+Az egyéni szkriptek bővítményét újra használhatja a [set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) az IIS konfigurációjának frissítéséhez. Ez a frissítés alkalmazza a Key Vaultból beszúrt tanúsítványt az IIS-re, és konfigurálja a webes kötést:
 
 ```azurepowershell-interactive
 $PublicSettings = '{
@@ -150,7 +150,7 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
 
 
 ### <a name="test-the-secure-web-app"></a>A biztonságos webalkalmazás tesztelése
-Szerezze be a virtuális gép nyilvános IP-címét a [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott `myPublicIP` IP-címét kéri le:
+Szerezze be a virtuális gép nyilvános IP-címét a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott `myPublicIP` IP-címét kéri le:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress" | select "IpAddress"
@@ -165,8 +165,8 @@ Ekkor a biztonságos IIS-webhely a következő példához hasonlóan jelenik meg
 ![Futó biztonságos IIS-hely megtekintése](./media/tutorial-secure-web-server/secured-iis.png)
 
 
-## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban egy olyan IIS-webkiszolgálót biztosított, amely Azure Key Vaultban tárolt TLS/SSL-tanúsítvánnyal rendelkezik. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>Következő lépések
+Ebben az oktatóanyagban egy olyan IIS-webkiszolgálót biztosított, amely Azure Key Vaultban tárolt TLS/SSL-tanúsítvánnyal rendelkezik. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Azure Key Vault létrehozása;

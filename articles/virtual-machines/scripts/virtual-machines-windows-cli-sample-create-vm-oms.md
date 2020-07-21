@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: b3c8c045b7d773f6345072ed46c4a668d0db8ec5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b28e139ecbfee0ba3a9e092827d0b57ff145a842
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81459474"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526928"
 ---
-# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Virtuális gép figyelése Azure Monitor naplókkal
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Virtuális gép monitorozása Azure Monitor-naplókkal
 
 Ez a szkript egy Azure-beli virtuális gépet hoz létre, telepíti a Log Analytics-ügynököt, és regisztrálja a rendszert egy Log Analytics-munkaterületen. A szkript futtatását követően a virtuális gép megjelenik az Azure Monitor szolgáltatásban.
 
@@ -46,15 +46,15 @@ az group delete --name myResourceGroup --yes
 
 A szkript a következő parancsokat használja egy erőforráscsoport, egy virtuális gép és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Futtat egy virtuálisgép-bővítményt egy virtuális gépen. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
+| [az group create](/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az vm create](/cli/azure/vm) | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
+| [azure vm extension set](/cli/azure/vm/extension) | Futtat egy virtuálisgép-bővítményt egy virtuális gépen. |
+| [az group delete](/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
 További virtuális gép CLI-példaszkripteket az [Azure Windows virtuális gépekre vonatkozó dokumentációban](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) találhat.

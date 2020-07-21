@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.custom: mvc, seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2019
-ms.author: mbaldwin
-ms.openlocfilehash: c1a847a315a264591c0d003ff691d9938c2bf0f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/14/2020
+ms.author: johndaw
+ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79474424"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512503"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Oktatóanyag – a HSM üzembe helyezése meglévő virtuális hálózaton a PowerShell használatával
 
@@ -48,7 +48,7 @@ Előfeltételek:
 - Létrehozott egy erőforráscsoportot ezekhez az erőforrásokhoz, és az ebben az oktatóanyagban üzembe helyezett új eszközök csatlakozni fognak ehhez a csoporthoz.
 - Már létrehozta a szükséges virtuális hálózatot, alhálózatot és virtuális gépeket a fenti ábrán látható módon, és most integrálni szeretné a 2 HSM az adott üzembe helyezésbe.
 
-Az alábbi utasítások feltételezik, hogy már elindította a Azure Portal, és megnyitotta a Cloud shell (a\>\_portál jobb felső részén válassza a "" lehetőséget).
+Az alábbi utasítások feltételezik, hogy már elindította a Azure Portal, és megnyitotta a Cloud Shell (a portál jobb felső részén válassza a " \> \_ " lehetőséget).
 
 ## <a name="provisioning-a-dedicated-hsm"></a>Dedikált HSM kiépítés
 
@@ -62,19 +62,13 @@ A fentiekben leírtaknak megfelelően a kiépítési tevékenységekhez a dedik�
 Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
-A következő parancs ellenőrzi a dedikált HSM szolgáltatáshoz szükséges hálózatkezelési funkciókat.
-
-```powershell
-Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
-```
-
-A folytatás előtt mindkét parancsnak "regisztrált" állapotot kell visszaadnia.  Ha regisztrálnia kell erre a szolgáltatásra, forduljon a Microsoft-fiók képviselőjéhez.
+A parancsnak "regisztrált" állapotot kell visszaadnia, mielőtt továbblépne.  Ha nincs regisztrálva erre a szolgáltatásra, forduljon a Microsoft-fiók képviselőjéhez.
 
 ![előfizetés állapota](media/tutorial-deploy-hsm-powershell/subscription-status.png)
 
 ### <a name="creating-hsm-resources"></a>HSM-erőforrások létrehozása
 
-A HSM-eszközök egy ügyfél virtuális hálózatán vannak kiépítve. Ez egy alhálózat követelményét jelenti. A HSM-függőség, amely lehetővé teszi a virtuális hálózat és a fizikai eszköz közötti kommunikációt, egy ExpressRoute-átjáró, és végül egy virtuális gépnek kell hozzáférnie a HSM-eszközhöz a Gemalto-ügyfélszoftver használatával. Ezeket az erőforrásokat a rendszer egy, a megfelelő paramétert tartalmazó fájlba gyűjtötte a könnyű használat érdekében. A fájlok elérhetőségét közvetlenül a Microsofthoz fordulva HSMrequest@Microsoft.comérheti el.
+A HSM-eszközök egy ügyfél virtuális hálózatán vannak kiépítve. Ez egy alhálózat követelményét jelenti. A HSM-függőség, amely lehetővé teszi a virtuális hálózat és a fizikai eszköz közötti kommunikációt, egy ExpressRoute-átjáró, és végül egy virtuális gépnek kell hozzáférnie a HSM-eszközhöz a Gemalto-ügyfélszoftver használatával. Ezeket az erőforrásokat a rendszer egy, a megfelelő paramétert tartalmazó fájlba gyűjtötte a könnyű használat érdekében. A fájlok elérhetőségét közvetlenül a Microsofthoz fordulva érheti el HSMrequest@Microsoft.com .
 
 Miután megtörtént a fájlok használata, szerkesztenie kell a paramétert, hogy beszúrja az erőforrások előnyben részesített nevét. Ez azt jelenti, hogy a sorokat "value": "" értékkel kell szerkeszteni.
 
@@ -123,7 +117,7 @@ A kapcsolódó Resource Manager-sablonfájl 6 erőforrást hoz létre a követke
 - Egy HSM az 1. stampben
 - Egy HSM a 2. stampben
 
-A paraméterek beállítása után a fájlokat fel kell tölteni Azure Portal Cloud Shell-fájlmegosztás használatára. A Azure Portal kattintson a\>\_"" Cloud Shell Symbol jobb felső sarokban, így a képernyő alsó részén egy parancssori környezet jelenik meg. Az ehhez tartozó beállítások a BASH és a PowerShell, és ha még nincs beállítva, válassza a BASH lehetőséget.
+A paraméterek beállítása után a fájlokat fel kell tölteni Azure Portal Cloud Shell-fájlmegosztás használatára. A Azure Portal kattintson a " \> \_ " Cloud Shell Symbol jobb felső sarokban, így a képernyő alsó részén egy parancssori környezet jelenik meg. Az ehhez tartozó beállítások a BASH és a PowerShell, és ha még nincs beállítva, válassza a BASH lehetőséget.
 
 A parancs rendszerhéjának feltöltési/letöltési lehetősége van az eszköztáron, és ezt a beállítást kell választania a sablon és a paraméter fájljainak a fájlmegosztás számára való feltöltéséhez:
 
@@ -217,7 +211,7 @@ Az SSH-eszköz a virtuális géphez való kapcsolódásra szolgál. A parancs a 
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 A használandó jelszó a paraméter fájljának egyike.
-Miután bejelentkezett a Linux rendszerű virtuális gépre, jelentkezzen be a HSM-be a portálon található privát IP-cím használatával \<>hsm_vnic erőforrás-előtaggal.
+Miután bejelentkezett a Linux rendszerű virtuális gépre, jelentkezzen be a HSM-be a portálon található privát IP-cím használatával a hsm_vnic erőforráshoz \<prefix> .
 
 ```powershell
 
@@ -261,7 +255,7 @@ Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGrou
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag lépéseinek elvégzése után a dedikált HSM-erőforrások kiépítve és elérhetővé válnak a virtuális hálózaton. Most már olyan helyzetben van, hogy ezt az üzembe helyezést az előnyben részesített üzembe helyezési architektúrához szükséges további erőforrásokkal kiegészítse. Az üzembe helyezés megtervezésével kapcsolatos további információkért tekintse meg a fogalmakat ismertető dokumentumokat. Az elsődleges régió két HSM rendelkező kialakítás az állvány szintjén kezeli a rendelkezésre állást, a másodlagos régióban pedig két HSM ajánlott. Az oktatóanyagban használt sablonfájl egyszerűen használható két HSM-telepítés alapjaként, de a hozzájuk tartozó paramétereket módosítani kell, hogy megfeleljenek a követelményeinek.
 

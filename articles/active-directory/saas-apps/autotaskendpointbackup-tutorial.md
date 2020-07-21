@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c9bad99d0ce39fb5f179043278ca4785d726744
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7d080fd3cac7a0550452908e9e0265bb2ffcb462
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73157782"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499999"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Oktatóanyag: Azure Active Directory integráció az automatikus feladat-végpont biztonsági mentésével
 
@@ -33,7 +33,7 @@ Az automatikus feladat-végpont biztonsági mentésének az Azure AD-vel való i
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -111,7 +111,7 @@ Az Azure AD egyszeri bejelentkezés automatikus feladat-végponti biztonsági me
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek megszerzéséhez lépjen kapcsolatba az automatikus [feladat-végpont biztonsági mentési ügyfelének ügyfélszolgálatával](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek megszerzéséhez lépjen kapcsolatba az automatikus [feladat-végpont biztonsági mentési ügyfelének ügyfélszolgálatával](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -129,7 +129,7 @@ Az Azure AD egyszeri bejelentkezés automatikus feladat-végponti biztonsági me
 
 ### <a name="configure-autotask-endpoint-backup-single-sign-on"></a>Az automatikus feladat-végponti biztonsági mentés egyszeri bejelentkezésének konfigurálása
 
-Az egyszeri bejelentkezés automatikus **feladat-végponton történő biztonsági mentésének** konfigurálásához el kell küldenie a letöltött **összevonási METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt url-címeket a Azure Portalról az automatikus [feladat végpontjának biztonsági mentési támogatási csapatához](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az egyszeri bejelentkezés automatikus **feladat-végponton történő biztonsági mentésének** konfigurálásához el kell küldenie a letöltött **összevonási METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt url-címeket a Azure Portalról az automatikus [feladat végpontjának biztonsági mentési támogatási csapatához](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -149,12 +149,12 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A Felhasználónév mezőbe írja be a **brittasimon\@yourcompanydomain. Extension** **nevet**  
+    b. A **Felhasználónév** mezőbe írja be a **brittasimon \@ yourcompanydomain. Extension** nevet  
     Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -184,7 +184,7 @@ Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatár
 
 ### <a name="create-autotask-endpoint-backup-test-user"></a>Automatikus feladat-végpont biztonsági mentési tesztelési felhasználójának létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az autotask Endpoint Backup szolgáltatásban. Az automatikus feladat- [végpont biztonsági mentési támogatási csapatának](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) használata a felhasználók hozzáadásához az automatikus feladat-végpont biztonsági mentési platformján. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az autotask Endpoint Backup szolgáltatásban. Az automatikus feladat- [végpont biztonsági mentési támogatási csapatának](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) használata a felhasználók hozzáadásához az automatikus feladat-végpont biztonsági mentési platformján. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

@@ -5,22 +5,20 @@ author: tfitzmac
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: f86eabc30114a3643f5d39297567411e88018378
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f2ffa7515fb15f323e469daf9f3c94779e48eca
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75649882"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515359"
 ---
-# <a name="azure-cli-samples"></a>Azure CLI-minták
+# <a name="azure-cli-samples-for-azure-managed-applications"></a>Azure CLI-minták a Azure Managed Applicationshoz
 
 A következő táblázat az Azure CLI-t használó Azure Managed Applications bash-parancsfájlokra mutató hivatkozásokat tartalmaz.
 
-| | |
-|-|-|
-|**Felügyelt alkalmazás létrehozása**||
+| Felügyelt alkalmazás létrehozása | Leírás |
+| -------------------------- | ----------- |
 | [Felügyelt alkalmazás definíciójának létrehozása](scripts/managed-application-cli-sample-create-definition.md) | Létrehoz egy felügyelt alkalmazás definícióját a szolgáltatási katalógusban.  |
 | [Felügyelt alkalmazás telepítése](scripts/managed-application-cli-sample-create-application.md) | Felügyelt alkalmazást telepít a szolgáltatás-katalógusból.  |
-| | |
-|**Felügyelt erőforráscsoport frissítése**||
+|**Felügyelt erőforráscsoport frissítése**| **Leírás** |
 | [Erőforrások lekérése a felügyelt erőforráscsoporthoz és a virtuális gépek átméretezése](scripts/managed-application-cli-sample-get-managed-group-resize-vm.md) | Lekéri a felügyelt erőforráscsoport erőforrásait, és átméretezi a virtuális gépeket. |

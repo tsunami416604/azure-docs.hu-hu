@@ -4,12 +4,12 @@ description: Ez az oktatóanyag részletesen ismerteti a több Azure-beli virtu�
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.custom: mvc
-ms.openlocfilehash: 154238eae78ce44b9fc91058e58d9a11e254c0f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0f6bd2bebb0961388d4f81663167d9e579958a2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74171784"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513217"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése PowerShell-lel
 
@@ -48,7 +48,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 A [Recovery Services](backup-azure-recovery-services-vault-overview.md) -tár egy logikai tároló, amely a védett erőforrások, például az Azure-beli virtuális gépek biztonsági mentési szolgáltatásait tárolja. A biztonsági mentési feladatok futtatásakor egy helyreállítási pontot hoz létre a Recovery Services-tárolón belül. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra.
 
 * Ebben az oktatóanyagban a tárolót ugyanabban az erőforráscsoportban és helyen hozza létre, mint azt a virtuális gépet, amelyről biztonsági másolatot szeretne készíteni.
-* A Azure Backup automatikusan kezeli a tárterületet a biztonsági másolatok tárolására. Alapértelmezés szerint a [tár geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy-grs.md)használ. A Geo-redundancia biztosítja, hogy a biztonsági másolatba mentett adatok egy másodlagos Azure-régióba replikálódnak, amely több száz kilométerre van az elsődleges régiótól.
+* A Azure Backup automatikusan kezeli a tárterületet a biztonsági másolatok tárolására. Alapértelmezés szerint a [tár geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md)használ. A Geo-redundancia biztosítja, hogy a biztonsági másolatba mentett adatok egy másodlagos Azure-régióba replikálódnak, amely több száz kilométerre van az elsődleges régiótól.
 
 Hozza létre a tárolót a következőképpen:
 
@@ -113,7 +113,7 @@ Unregister-AzRecoveryServicesBackupContainer -Container $namedContainer
 Remove-AzRecoveryServicesVault -Vault $vault1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Tekintse át](backup-azure-vms-automation.md) az Azure-beli virtuális gépek PowerShell-lel történő biztonsági mentésének és visszaállításának részletes ismertetését.
 * [Azure-beli virtuális gépek kezelése és figyelése](backup-azure-manage-vms.md)

@@ -7,11 +7,12 @@ ms.author: cschorm
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: deb69f6ca8f1499f43c12d606434719571a1f400
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b1039bb94626dec35eff040e023a84283d9d3a4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027884"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537418"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Kódolás az Azure Digital Twins API-kkal
 
@@ -46,7 +47,7 @@ Ez több fájlt hoz létre a címtárban, például egy *program.cs* , ahol a k�
 Következő lépésként vegyen fel két szükséges függőséget az Azure Digital Twins-használathoz:
 
 ```cmd/sh
-dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
 dotnet add package Azure.identity
 ```
 
@@ -173,7 +174,7 @@ Hozzon létre egy *SampleModel.js*nevű új *. JSON* fájlt a címtárban, ahol 
 > Ha a Visual studiót használja ehhez az oktatóanyaghoz, érdemes kijelölni az újonnan létrehozott JSON-fájlt, és a tulajdonság-ellenőrben a *Másolás a kimeneti könyvtárba* tulajdonságot úgy kell beállítani, hogy az *újabb* vagy a *Másolás Always*. Ez lehetővé teszi a Visual Studio számára, hogy megkeresse a JSON-fájlt az alapértelmezett elérési úttal, amikor az oktatóanyag többi részében futtatja a programot az **F5 billentyűvel** .
 
 > [!TIP] 
-> A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [és ellenőrzése](how-to-use-parser.md)című témakörben olvashat.
+> A DTDL érvényességének ellenőrzéséhez használhatja a Language-agnosztikus [DTDL-érvényesítő mintát](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) , amellyel ellenőrizhetők a modell dokumentumai. A szolgáltatás a DTDL-elemző könyvtárra épül, amelyről további információt a modellek elemzése [*és ellenőrzése*](how-to-use-parser.md)című témakörben olvashat.
 
 Ezután adjon hozzá még egy kódot a *program.cs* az imént létrehozott modell feltöltéséhez az Azure Digital Twins-példányba.
 
@@ -184,7 +185,6 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections.Generic;
 using Azure;
-using Azure.DigitalTwins.Core.Models;
 ```
 
 Következő lépésként készítse elő az aszinkron metódusok használatát a C# Service SDK-ban úgy, hogy módosítja a `Main` metódus aláírását, hogy engedélyezze az aszinkron végrehajtást. 
@@ -530,7 +530,7 @@ namespace minimal
 ```
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
  
-Az oktatóanyagban használt példány újra felhasználható a következő oktatóanyagban, [oktatóanyag: az alapokat egy minta ügyfélalkalmazás segítségével tárja fel](tutorial-command-line-app.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított Azure digitális Twins-példányt.
+Az oktatóanyagban használt példány újra felhasználható a következő oktatóanyagban, [*oktatóanyag: az alapokat egy minta ügyfélalkalmazás segítségével tárja fel*](tutorial-command-line-app.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított Azure digitális Twins-példányt.
  
 Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, a következő lépésekkel törölheti őket.
 
@@ -553,15 +553,15 @@ az ad app delete --id <your-application-ID>
 
 Végül törölje a helyi gépen létrehozott Project mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozta a .NET-konzol ügyfélprogramját a semmiből. Az ügyfélalkalmazás kódját az Azure Digital Twins-példányon végzett alapszintű műveletek végrehajtásához írta.
 
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan teheti meg az ilyen minta ügyfélprogramot: 
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az alapok megismerése egy minta ügyfélalkalmazás alkalmazásával](tutorial-command-line-app.md)
+> [*Oktatóanyag: az alapok megismerése egy minta ügyfélalkalmazás alkalmazásával*](tutorial-command-line-app.md)
 
 Azt is megteheti, hogy az oktatóanyagban írt kóddal több felügyeleti műveletet tanul, vagy megkezdi a koncepció dokumentációját, hogy többet tudjon meg az oktatóanyagban használt elemekről.
-* [Útmutató: egyéni modellek kezelése](how-to-manage-model.md)
-* [Fogalmak: egyéni modellek](concepts-models.md)
+* [*Útmutató: egyéni modellek kezelése*](how-to-manage-model.md)
+* [*Fogalmak: egyéni modellek*](concepts-models.md)

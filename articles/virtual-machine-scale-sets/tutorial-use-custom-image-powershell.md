@@ -9,12 +9,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: akjosh
-ms.openlocfilehash: 5452d12ca12507e1583f52a9800859a2e3086d0c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 8a0ee8565d22e935535bbe1e830d8399b2489f5c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684040"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527523"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és használata virtuálisgép-méretezési csoportokhoz az Azure PowerShell-lel
 
@@ -35,7 +35,7 @@ Az alábbi lépések részletesen ismertetik, hogyan készíthet egy meglévő v
 
 Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre. Ha szükséges, a [PowerShell](quick-create-powershell.md) rövid útmutatójában létrehozhat egy virtuális gépet, amelyet ehhez az oktatóanyaghoz szeretne használni. Az oktatóanyagban végzett munka során cserélje le az erőforrás nevét, ahol szükséges.
 
-## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
@@ -44,7 +44,7 @@ A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy k�
 
 ## <a name="get-the-vm"></a>A virtuális gép beszerzése
 
-A [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm)használatával megtekintheti az erőforráscsoporthoz elérhető virtuális gépek listáját. Ha ismeri a virtuális gép nevét és az erőforráscsoportot, használhatja `Get-AzVM` újra a virtuálisgép-objektum beolvasásához és egy változóban való tárolásához. Ez a példa egy *sourceVM* nevű virtuális gépet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$VM*változóhoz. 
+A [Get-AzVM](/powershell/module/az.compute/get-azvm)használatával megtekintheti az erőforráscsoporthoz elérhető virtuális gépek listáját. Ha ismeri a virtuális gép nevét és az erőforráscsoportot, használhatja `Get-AzVM` újra a virtuálisgép-objektum beolvasásához és egy változóban való tárolásához. Ez a példa egy *sourceVM* nevű virtuális gépet kap a "myResourceGroup" erőforráscsoporthoz, és hozzárendeli azt a (z) *$VM*változóhoz. 
 
 ```azurepowershell-interactive
 $sourceVM = Get-AzVM `
@@ -53,7 +53,7 @@ $sourceVM = Get-AzVM `
 ```
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) paranccsal.
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal.
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myGalleryRG* nevű erőforráscsoportot a *EastUS* régióban:
 
@@ -67,7 +67,7 @@ $resourceGroup = New-AzResourceGroup `
 
 A képgyűjtemény a képmegosztás engedélyezéséhez használt elsődleges erőforrás. A katalógus nevének megengedett karaktere nagybetűs vagy kisbetűk, számjegyek, pontok és időszakok. A gyűjtemény neve nem tartalmazhat kötőjeleket. A katalógus nevének egyedinek kell lennie az előfizetésen belül. 
 
-Hozzon létre egy képtárat a [New-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery)használatával. A következő példában létrehozunk egy *MyGallery* nevű katalógust a *myGalleryRG* -erőforráscsoporthoz.
+Hozzon létre egy képtárat a [New-AzGallery](/powershell/module/az.compute/new-azgallery)használatával. A következő példában létrehozunk egy *MyGallery* nevű katalógust a *myGalleryRG* -erőforráscsoporthoz.
 
 ```azurepowershell-interactive
 $gallery = New-AzGallery `
@@ -80,9 +80,9 @@ $gallery = New-AzGallery `
 
 ## <a name="create-an-image-definition"></a>Rendszerkép-definíció létrehozása 
 
-A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. Ezek az adatok a bennük létrehozott rendszerkép-verziókra vonatkozó információk kezelésére szolgálnak. A képdefiníciók nevei nagybetűket, kisbetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. Ezek az adatok a bennük létrehozott rendszerkép-verziókra vonatkozó információk kezelésére szolgálnak. A képdefiníciók nevei nagybetűket, kisbetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. További információ a képdefiníciók által megadható értékekről: [képdefiníciók](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
-Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. Ebben a példában a katalógus képének neve *myGalleryImage* , és egy speciális képhez lett létrehozva. 
+Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion)használatával. Ebben a példában a katalógus képének neve *myGalleryImage* , és egy speciális képhez lett létrehozva. 
 
 ```azurepowershell-interactive
 $galleryImage = New-AzGalleryImageDefinition `
@@ -100,7 +100,7 @@ $galleryImage = New-AzGalleryImageDefinition `
 
 ## <a name="create-an-image-version"></a>Rendszerképverzió létrehozása
 
-Hozzon létre egy rendszerkép-verziót egy virtuális gépről a [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
+Hozzon létre egy rendszerkép-verziót egy virtuális gépről a [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
 
 A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
 
@@ -244,7 +244,7 @@ New-AzRoleAssignment `
 
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) parancsmagot az erőforráscsoport és az összes kapcsolódó erőforrás eltávolításához:
+Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsmagot az erőforráscsoport és az összes kapcsolódó erőforrás eltávolításához:
 
 ```azurepowershell-interactive
 # Delete the gallery 
@@ -256,7 +256,7 @@ Remove-AzResourceGroup -Name myResoureceGroup
 
 ## <a name="azure-image-builder"></a>Azure Image Builder
 
-Az Azure a csomagoló, az [Azure VM rendszerkép-készítő](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview)szolgáltatásra épülő szolgáltatást is kínál. Egyszerűen írja le a testreszabásokat egy sablonban, és kezeli a képek létrehozását. 
+Az Azure a csomagoló, az [Azure VM rendszerkép-készítő](../virtual-machines/windows/image-builder-overview.md)szolgáltatásra épülő szolgáltatást is kínál. Egyszerűen írja le a testreszabásokat egy sablonban, és kezeli a képek létrehozását. 
 
 ## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképet a méretezési csoportjai esetében az Azure PowerShell segítségével:

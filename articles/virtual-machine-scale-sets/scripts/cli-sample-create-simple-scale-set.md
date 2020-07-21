@@ -9,12 +9,12 @@ ms.subservice: cli
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c2c1ea09d10ee177a722a56f6825db0f37da7e9b
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 1456301f1cc1da33835206e10dc1550ed8fcbbf2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374669"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503064"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Virtuálisgép-méretezési csoport létrehozása az Azure CLI használatával
 Ez a szkript egy Azure-beli virtuálisgép-méretezési csoportot hoz létre Ubuntu operációs rendszerrel és kapcsolódó hálózati erőforrásokkal, beleértve egy terheléselosztót is. A szkript futtatása után a virtuálisgép-példányokat SSH-kapcsolaton keresztül érheti el.
@@ -43,4 +43,4 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az group delete](/cli/azure/ad/group) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>Következő lépések
-Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure/overview).

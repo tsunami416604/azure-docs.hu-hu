@@ -7,16 +7,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: how-to
+ms.topic: tutorial
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a1af5fb7d0a1f8844016fcb6096e3a7ad9946f9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ac8baf0e2aa9555efb6d6b4f39787d9a7bf9508
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384889"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499902"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Oktatóanyag: webalkalmazás regisztrálása a Azure Active Directory B2Cban
 
@@ -58,13 +58,13 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
     * A válasz URL-címe megkülönbözteti a kis-és nagybetűket. Az esetnek egyeznie kell a futó alkalmazás URL-címének elérési útjával. Ha például az alkalmazás az elérési út részeként szerepel `.../abc/response-oidc` , ne adja meg `.../ABC/response-oidc` a válasz URL-címét. Mivel a webböngésző a kis-és nagybetűket megkülönböztető módon kezeli az elérési utakat, a hozzájuk társított cookie-k `.../abc/response-oidc` kizárható, ha a rendszer átirányítja a kis-és nagybetűket `.../ABC/response-oidc` .
 
 1. Az **engedélyek**területen jelölje be a *rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyekhez* jelölőnégyzetet.
-1. Kattintson a **Register** (Regisztrálás) elemre.
+1. Válassza a **Regisztráció** lehetőséget.
 
 Az alkalmazás regisztrációjának befejezése után engedélyezze az implicit engedélyezési folyamatot:
 
 1. A **kezelés**területen válassza a **hitelesítés**lehetőséget.
 1. Az **implicit engedélyezés**területen jelölje be a **hozzáférési jogkivonatok** és az **azonosító tokenek** jelölőnégyzetet.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
@@ -109,7 +109,7 @@ Ha az alkalmazás egy hozzáférési jogkivonat engedélyezési kódját cserél
 
 * * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 

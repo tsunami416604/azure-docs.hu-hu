@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: f9ce90a64ca038c99fe4ba63e66f7e5abbd196f6
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: a796ae32033dbc09b1f5b888ded9ea5e1f4c457e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85119171"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523485"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – Node.js Express-alkalmazás létrehozása
 
@@ -147,11 +147,11 @@ Az oktatóanyaghoz a következőkre is szükség lesz:
 
 7. Menti az összes módosított fájlt. 
 
-8. A Visual Studio Code-ban kattintson a **Debug** (Hibakeresés) gombra ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), majd kattintson a fogaskerék gombra ![Fogaskerék gomb a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Az új launch.json fájl megnyílik a Visual Studio Code-ban.
+8. A Visual Studio Code-ban kattintson a **Debug (hibakeresés** ) gombra :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png"::: , majd a fogaskerék gombra :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png"::: . Az új launch.json fájl megnyílik a Visual Studio Code-ban. 
 
 8. A launch.json fájl 11. sorában módosítsa a `"${workspaceFolder}\\server"` részt a `"program": "${workspaceRoot}/src/server/index.js"` kódra, és mentse a fájlt.
 
-9. Kattintson a **Start Debugging** (Hibakeresés indítása) gombra ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png) az alkalmazás futtatásához.
+9. Kattintson a **hibakeresés indítása** gombra az :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png"::: alkalmazás futtatásához.
 
     Az alkalmazásnak hiba nélkül kell futnia.
 
@@ -166,7 +166,7 @@ Az oktatóanyaghoz a következőkre is szükség lesz:
     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part2/azure-cosmos-db-postman.png" alt-text="Postman képe a kéréssel és a válasszal":::
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagnak ebben a részében a következőket hajtotta végre:
 

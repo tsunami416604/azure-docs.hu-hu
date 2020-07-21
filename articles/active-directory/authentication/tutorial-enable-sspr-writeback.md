@@ -5,24 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 04/24/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: a25fe090c88d2540bdf63cd6479d25b879090a38
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 70a73cb1f855840831f2e1107baa94dfd54868a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202553"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518487"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Oktatóanyag: Azure Active Directory önkiszolgáló jelszó-visszaállítási visszaírási engedélyezése helyszíni környezetbe
 
 A Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) használatával a felhasználók frissíthetik a jelszavukat, vagy feloldhatók a fiókjuk a böngészőben. A hibrid környezetekben, ahol az Azure AD egy helyszíni Active Directory tartományi szolgáltatások (AD DS) környezethez csatlakozik, ez a forgatókönyv azt eredményezheti, hogy a jelszavak eltérőek lehetnek a két könyvtár között.
 
 A jelszó-visszaírási az Azure AD-ben a helyi AD DS-környezetbe való visszatéréshez is szinkronizálhatja a jelszó módosításait. A Azure AD Connect biztonságos mechanizmust biztosít a jelszavak visszaküldéséhez egy meglévő helyszíni címtárba az Azure AD-ből.
+
+> [!IMPORTANT]
+> Ez az oktatóanyag egy rendszergazdát mutat be, amely lehetővé teszi az önkiszolgáló jelszó-visszaállítást egy helyszíni környezetbe. Ha a végfelhasználó már regisztrálva van az önkiszolgáló jelszó-visszaállításhoz, és vissza kell kérnie a fiókját, lépjen a következőre: https://aka.ms/sspr .
+>
+> Ha az informatikai csapat nem engedélyezte a saját jelszavának alaphelyzetbe állítását, további segítségért forduljon az ügyfélszolgálathoz.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -35,7 +40,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
 
-* Egy működő Azure AD-bérlő, amely legalább egy prémium szintű Azure AD P1 vagy P2 próbaverziós licenccel rendelkezik.
+* Egy működő Azure AD-bérlő, amely legalább egy prémium szintű Azure AD P1 próbaverziós licenccel rendelkezik.
     * Ha szükséges, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
     * További információ: [licencelési követelmények az Azure ad SSPR](concept-sspr-licensing.md).
 * *Globális rendszergazdai* jogosultságokkal rendelkező fiók.
@@ -54,11 +59,9 @@ Ahhoz, hogy megfelelően működjön a SSPR visszaírási, a Azure AD Connectban
 * **Új jelszó létrehozása**
 * **Írási engedélyek** bekapcsolva`lockoutTime`
 * **Írási engedélyek** bekapcsolva`pwdLastSet`
-* A "jelszó lejárata" beállításhoz tartozó **kiterjesztett jogok** a következők valamelyikén:
-   * Az erdő *minden tartományának* legfelső szintű objektuma
-   * A SSPR hatókörében használni kívánt felhasználói szervezeti egységek (OU-ket)
+* Ha még nincs beállítva, az erdő *minden tartományának* gyökérszintű objektumán a "lejárati jelszó" kifejezésre vonatkozó **kiterjesztett jogosultságok** jelennek meg.
 
-Ha nem rendeli hozzá ezeket az engedélyeket, úgy tűnik, hogy a visszaírási megfelelően van konfigurálva, de a felhasználók a felhőből származó helyszíni jelszavaik kezelésekor hibákba ütköznek. Meg kell adni az engedélyeket erre az objektumra, és a "lejárat jelszava" kifejezés **összes leszármazott objektumát** meg kell jeleníteni.  
+Ha nem rendeli hozzá ezeket az engedélyeket, előfordulhat, hogy a visszaírási megfelelően vannak konfigurálva, de a felhasználók a felhőből származó helyszíni jelszavaik kezelésekor hibákba ütköznek. Meg kell adni az engedélyeket erre az objektumra, és a "lejárat jelszava" kifejezés **összes leszármazott objektumát** meg kell jeleníteni.  
 
 > [!TIP]
 >
@@ -74,7 +77,7 @@ A jelszó visszaírási vonatkozó megfelelő engedélyek beállításához hajt
 1. Az **érintettek** legördülő listában válassza a **leszármazott felhasználói objektumok**elemet.
 1. Az *engedélyek*területen válassza a következő lehetőséghez tartozó jelölőnégyzetet:
     * **Új jelszó létrehozása**
-1. A *Tulajdonságok*területen jelölje be a következő beállításokhoz tartozó mezőket. Ezen beállítások megkereséséhez görgessen végig a listában, amelyek már alapértelmezetten is megadhatók:
+1. A *Tulajdonságok*területen jelölje be a következő beállításokhoz tartozó mezőket. A lista görgetésével megkeresheti ezeket a beállításokat, amelyek már alapértelmezetten is megadhatók:
     * **LockoutTime írása**
     * **PwdLastSet írása**
 
@@ -89,13 +92,13 @@ A helyi AD DS környezetében lévő jelszóházirendek megakadályozhatják, ho
 Ha frissíti a csoportházirendet, várja meg a frissített házirend replikálását, vagy használja a `gpupdate /force` parancsot.
 
 > [!Note]
-> Ahhoz, hogy a jelszavak azonnal megváltozzon legyenek, a jelszó visszaírási 0-ra kell állítani. Ha azonban a felhasználók betartják a helyszíni házirendeket, és a *jelszó minimális élettartama* nullánál nagyobb értékre van állítva, a jelszó visszaírási továbbra is működni fog a helyszíni házirendek kiértékelése után. 
+> Ahhoz, hogy a jelszavak azonnal megváltozzon legyenek, a jelszó visszaírási 0-ra kell állítani. Ha azonban a felhasználók betartják a helyszíni házirendeket, és a *jelszó minimális kora* nullánál nagyobb értékre van állítva, a jelszó visszaírási továbbra is a helyszíni házirendek kiértékelése után működik.
 
 ## <a name="enable-password-writeback-in-azure-ad-connect"></a>Jelszó visszaírási engedélyezése a Azure AD Connectban
 
 Azure AD Connect egyik konfigurációs beállítása a jelszó-visszaírási. Ha ez a beállítás engedélyezve van, a jelszó-módosítási események miatt Azure AD Connect a frissített hitelesítő adatok szinkronizálása a helyszíni AD DS környezetbe.
 
-Az önkiszolgáló jelszó-visszaállítási visszaírási engedélyezéséhez először engedélyezze a visszaírási lehetőséget a Azure AD Connect. A Azure AD Connect-kiszolgálóról végezze el a következő lépéseket:
+A SSPR-visszaírási engedélyezéséhez először engedélyezze a visszaírási beállítást a Azure AD Connect. A Azure AD Connect-kiszolgálóról végezze el a következő lépéseket:
 
 1. Jelentkezzen be a Azure AD Connect-kiszolgálóra, és indítsa el a **Azure ad Connect** konfigurációs varázslót.
 1. Az **üdvözlőlapon** kattintson a **Konfigurálás** gombra.
@@ -124,7 +127,7 @@ A jelszó visszaírási a SSPR-ben való engedélyezéséhez hajtsa végre a kö
 
 1. Ha elkészült, válassza a **Mentés**lehetőséget.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nem szeretné használni az oktatóanyag részeként konfigurált SSPR visszaírási funkciót, hajtsa végre a következő lépéseket:
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7c84c705da99bd6f04a6737a1c781b905cbeaad6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c6afdae275b98a86eba14b920a6969c967c5a7db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100481"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508236"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata Windows rendszerű virtuális gépek megfigyeléséhez
 
@@ -52,7 +52,7 @@ Ekkor a rendszer telepíti a Security Center adatgyűjtési ügynökét minden v
 
 ## <a name="set-up-a-security-policy"></a>Biztonsági szabályzat beállítása
 
-A biztonsági szabályzatok segítségével határozhatók meg azok az elemek, amelyekhez a Security Center adatokat gyűjt és javaslatokat tesz. Az Azure-erőforrások különböző halmazaira különböző biztonsági szabályzatokat alkalmazhat. Noha alapértelmezés szerint a rendszer az Azure-erőforrásokat az összes szabályzatelem szerint értékeli ki, az egyes szabályzatelemek kikapcsolhatók minden Azure-erőforráshoz, vagy egy adott erőforráscsoporthoz. Ha további információt szeretne megtudni a Security Center biztonsági szabályzatairól olvassa el a [biztonsági szabályzatok az Azure Security Centerben történő beállítását](../../security-center/security-center-policies.md) ismertető részt. 
+A biztonsági szabályzatok segítségével határozhatók meg azok az elemek, amelyekhez a Security Center adatokat gyűjt és javaslatokat tesz. Az Azure-erőforrások különböző halmazaira különböző biztonsági szabályzatokat alkalmazhat. Noha alapértelmezés szerint a rendszer az Azure-erőforrásokat az összes szabályzatelem szerint értékeli ki, az egyes szabályzatelemek kikapcsolhatók minden Azure-erőforráshoz, vagy egy adott erőforráscsoporthoz. Ha további információt szeretne megtudni a Security Center biztonsági szabályzatairól olvassa el a [biztonsági szabályzatok az Azure Security Centerben történő beállítását](../../security-center/tutorial-security-policy.md) ismertető részt. 
 
 Ha biztonsági szabályzatot szeretne beállítani a teljes előfizetéshez:
 
@@ -105,7 +105,7 @@ A biztonsági riasztások funkciójának használatához a Security Center tarif
 A tarifacsomag módosítása:  
 
 1. A Security Center irányítópultján kattintson a **Biztonsági szabályzat** elemre, és válassza ki az előfizetését.
-2. Válassza a **Tarifacsomag** lehetőséget,
+2. Válassza ki az **árképzési szintet**.
 3. Válassza a **Standard** lehetőséget, majd kattintson a panel tetején lévő **Mentés** elemre.
 
 
@@ -117,8 +117,8 @@ Az információk megtekintéséhez válasszon ki egy riasztást. Megjelenik pél
 
 ![RDP-támadás](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban beállította az Azure Security Centert, és áttekintette a virtuális gépek Security Centerben való kezelését. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>Következő lépések
+Ebben az oktatóanyagban beállította az Azure Security Centert, és áttekintette a virtuális gépek Security Centerben való kezelését. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adatgyűjtés beállítása

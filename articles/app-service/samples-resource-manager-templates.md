@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 01/04/2019
 ms.author: tomfitz
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 2caaadd0da9d62128d04962fa1f2ff7eade907b0
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 4ac8e7d51ce9a3d5694f2853219bb04869a91734
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254429"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517705"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>App Service Azure Resource Manager sablonjai
 
@@ -20,31 +20,31 @@ Az alábbi táblázat a Azure App Service Azure Resource Manager sablonjaira mut
 
 A App Services erőforrások JSON-szintaxisával és tulajdonságaival kapcsolatos további információkért lásd: [Microsoft. Web Resource types](/azure/templates/microsoft.web/allversions).
 
-| | |
+| Alkalmazás üzembe helyezése | Leírás |
 |-|-|
-|**Alkalmazás üzembe helyezése**||
 | [App Service csomag és alapszintű Linux-alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-linux) | Üzembe helyez egy Linux rendszerhez konfigurált App Service alkalmazást. |
 | [App Service csomag és alapszintű Windows-alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-basic-windows) | Központilag telepíti a Windows rendszerhez konfigurált App Service alkalmazást. |
 | [GitHub-adattárhoz csatolt alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy)| Üzembe helyez egy App Service alkalmazást, amely kódot húz le a GitHubról. |
 | [Alkalmazás egyéni üzembe helyezési pontokkal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| Üzembe helyez egy App Service alkalmazást egyéni üzembe helyezési pontokkal/környezetekkel. |
-|**Alkalmazás konfigurálása**||
+| [Alkalmazás privát végponttal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-private-endpoint-webapp)| Üzembe helyez egy App Service alkalmazást egy privát végponttal. |
+|**Alkalmazás konfigurálása**| **Leírás** |
 | [Alkalmazás-tanúsítvány Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Üzembe helyez egy App Service alkalmazás-tanúsítványt egy Azure Key Vault titkos kulcsból, és a TLS/SSL-kötéshez használja azt. |
 | [Alkalmazás egyéni tartománnyal és SSL-lel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Üzembe helyez egy App Service alkalmazást egy egyéni állomásnévvel, és beolvassa az alkalmazás tanúsítványát Key Vaultról a TLS/SSL-kötéshez. |
 | [Alkalmazás GoLang bővítménnyel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Üzembe helyez egy App Service alkalmazást a Golang hely bővítménnyel. Ezután futtathatja a Golangben fejlesztett webalkalmazásokat az Azure-ban. |
 | [Alkalmazás Java 8 és tomcat 8](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Üzembe helyez egy App Service alkalmazást a Java 8 és a Tomcat 8 használata esetén. Ezután Java-alkalmazásokat futtathat az Azure-ban. |
 | [Alkalmazás regionális VNet-integrációval](https://github.com/Azure/azure-quickstart-templates/tree/master/101-app-service-regional-vnet-integration)| Üzembe helyez egy App Service alkalmazást, amelyen engedélyezve van a regionális VNet-integráció. |
-|**Alkalmazás védelme**||
+|**Alkalmazás védelme**| **Leírás** |
 | [Az Azure Application Gateway integrált alkalmazás](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-app-gateway-v2)| Üzembe helyez egy App Service alkalmazást és egy Application Gateway, és elkülöníti a forgalmat a szolgáltatási végpont és a hozzáférési korlátozások használatával. |
-|**Linux-alkalmazás csatlakoztatott erőforrásokkal**||
+|**Linux-alkalmazás csatlakoztatott erőforrásokkal**| **Leírás** |
 | [Alkalmazás Linuxon MySQL-vel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-mysql) | Központilag telepít egy App Service alkalmazást Linux rendszeren, Azure Database for MySQL. |
 | [Alkalmazás Linuxon a PostgreSQL használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-linux-managed-postgresql) | Központilag telepít egy App Service alkalmazást Linux rendszeren, Azure Database for PostgreSQL. |
-|**Alkalmazás csatlakoztatott erőforrásokkal**||
+|**Alkalmazás csatlakoztatott erőforrásokkal**| **Leírás** |
 | [Alkalmazás MySQL-sel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-mysql)| Üzembe helyez egy App Service alkalmazást a Windows rendszeren Azure Database for MySQL. |
 | [Alkalmazás PostgreSQL-sel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-managed-postgresql)| Üzembe helyez egy App Service alkalmazást a Windows rendszeren Azure Database for PostgreSQL. |
 | [Alkalmazás Azure SQL Database-adatbázissal](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database)| Üzembe helyez egy App Service alkalmazást és egy adatbázist az alapszintű szolgáltatási szinten Azure SQL Databaseban. |
 | [Alkalmazás blob Storage-kapcsolatban](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-blob-connection)| Üzembe helyez egy App Service alkalmazást egy Azure Blob Storage-beli kapcsolatok karakterláncával. Ezután használhatja a blob Storage-t az alkalmazásból. |
 | [Alkalmazás egy Azure cache for Redis](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-redis-cache)| Üzembe helyez egy App Service alkalmazást a Redis készült Azure cache-sel. |
-|**App Service-környezet**||
+|**App Service-környezet**| **Leírás** |
 | [App Service Environment v2-környezet létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | Létrehoz egy App Service Environment v2-környezetet a virtuális hálózaton. |
 | [App Service Environment v2-környezet létrehozása ILB-címmel](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | Létrehoz egy App Service Environment v2-környezetet a virtuális hálózaton egy privát belső terheléselosztó címmel. |
 | [Az alapértelmezett SSL-tanúsítvány konfigurálása egy ILB App Service-környezethez vagy egy ILB App Service Environment v2-környezethez](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | Az alapértelmezett TLS/SSL-tanúsítványt konfigurálja egy ILB App Service-környezethez vagy egy ILB App Service Environment v2-hez. |

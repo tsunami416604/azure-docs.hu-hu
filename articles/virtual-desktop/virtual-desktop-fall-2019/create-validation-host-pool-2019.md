@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali munkamenetgazda szolgáltatás frissítései – Azure
-description: Ellenőrzési címkészlet létrehozása a szolgáltatások frissítéseinek figyeléséhez, mielőtt az éles környezetbe helyezné a frissítéseket.
+title: Windows Virtual Desktop Host Pool Service-frissítések (Fall 2019) – Azure
+description: Megtudhatja, hogyan hozhat létre egy érvényesítési gazdagépet a szolgáltatások frissítéseinek figyelésére, mielőtt az éles környezetbe helyezné a frissítéseket.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fe6b047d10b8aef8faf81365cae940b05b3d798c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 806c3396d9188ea6abc5f779a26d99247d802ebe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117738"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527584"
 ---
-# <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Oktatóanyag: gazdagép-készlet létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez
+# <a name="tutorial-create-a-host-pool-to-validate-service-updates-fall-2019-release"></a>Oktatóanyag: állomáslista létrehozása a szolgáltatás frissítéseinek ellenőrzéséhez (2019-es kiadás)
 
 >[!IMPORTANT]
 >Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../create-validation-host-pool.md).
@@ -77,7 +77,7 @@ A parancsmag eredményeinek ehhez a kimenethez hasonlóan kell kinéznie:
 
 A szolgáltatás frissítései havonta történnek. Jelentős problémák esetén a kritikus frissítések gyakoribb ütemben lesznek elérhetők.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozott egy érvényesítési gazdagépet, megtudhatja, hogyan használhatja a Azure Service Health a Windows rendszerű virtuális asztali környezet figyelésére. 
 

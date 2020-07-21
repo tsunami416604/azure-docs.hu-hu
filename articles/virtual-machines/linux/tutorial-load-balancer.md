@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 89ed39d1cd18fc97cec06dce4313271731b23b90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1bd6e9280acdbde105876a6c0e8e0bc45735a558
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460035"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510140"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek terheléselosztása az Azure CLI használatával az Azure-ban magas rendelkezésre állású alkalmazások létrehozásához
 
@@ -35,7 +35,7 @@ A terheléselosztás magasabb szintű rendelkezésre állást biztosít, mivel a
 > * Terheléselosztó megtekintése működés közben
 > * Virtuális gépek hozzáadása a terheléselosztóhoz és eltávolításuk a terheléselosztóból
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](../../cloud-shell/overview.md)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -313,8 +313,8 @@ az network nic ip-config address-pool add \
 Az előző lépésben szereplő [az network lb address-pool show](/cli/azure/network/lb/address-pool) paranccsal ellenőrizheti, hogy a virtuális NIC csatlakozik-e a háttércímkészlethez.
 
 
-## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban létrehozott egy terheléselosztót, majd virtuális gépeket csatolt hozzá. Megismerte, hogyan végezheti el az alábbi műveleteket:
+## <a name="next-steps"></a>Következő lépések
+Ebben az oktatóanyagban létrehozott egy terheléselosztót, majd virtuális gépeket csatolt hozzá. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Azure-terheléselosztó létrehozása

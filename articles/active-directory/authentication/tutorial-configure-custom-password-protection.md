@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/27/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4abb15462689470c87e9cf5ba8d5be8af2e45bfd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 642082b3fe23e0d007e21409062fe8e777728cc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252844"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518539"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Oktatóanyag: egyéni tiltott jelszavak konfigurálása Azure Active Directory jelszavas védelemhez
 
@@ -36,12 +36,12 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
     * Ha szükséges, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Globális rendszergazdai* jogosultságokkal rendelkező fiók.
 * Egy nem rendszergazda felhasználó, aki ismeri a jelszót, például *tesztfelhasználó*. Ebben az oktatóanyagban ezt a fiókot használja a jelszó-módosítási esemény teszteléséhez.
-    * Ha létre kell hoznia egy felhasználót, tekintse meg a rövid útmutató [: új felhasználók hozzáadása a Azure Active Directoryhoz](../add-users-azure-active-directory.md)című témakört.
+    * Ha létre kell hoznia egy felhasználót, tekintse meg a rövid útmutató [: új felhasználók hozzáadása a Azure Active Directoryhoz](../fundamentals/add-users-azure-active-directory.md)című témakört.
     * A jelszó-módosítási művelet tiltott jelszóval való teszteléséhez az Azure AD-bérlőt konfigurálni kell az [önkiszolgáló jelszó-visszaállításhoz](tutorial-enable-sspr.md).
 
 ## <a name="what-are-banned-password-lists"></a>Mik a tiltott jelszavak listája?
 
-Az Azure AD globálisan tiltott jelszavak listáját tartalmazza. A globálisan tiltott jelszavak listájának tartalma nem a külső adatforrásokon alapul. Ehelyett a globálisan tiltott jelszavak listája az Azure AD biztonsági telemetria és elemzésének folyamatos eredményein alapul. Amikor egy felhasználó vagy rendszergazda megpróbálja megváltoztatni vagy alaphelyzetbe állítani a hitelesítő adatait, a rendszer ellenőrzi a kívánt jelszót a tiltott jelszavak listáján. A jelszó-módosítási kérelem meghiúsul, ha egyezés szerepel a globálisan tiltott jelszavak listájában.
+Az Azure AD globálisan tiltott jelszavak listáját tartalmazza. A globálisan tiltott jelszavak listájának tartalma nem a külső adatforrásokon alapul. Ehelyett a globálisan tiltott jelszavak listája az Azure AD biztonsági telemetria és elemzésének folyamatos eredményein alapul. Amikor egy felhasználó vagy rendszergazda megpróbálja megváltoztatni vagy alaphelyzetbe állítani a hitelesítő adatait, a rendszer ellenőrzi a kívánt jelszót a tiltott jelszavak listáján. A jelszó-módosítási kérelem meghiúsul, ha egyezés szerepel a globálisan tiltott jelszavak listájában. Ez az alapértelmezett globális tiltott jelszó lista nem módosítható.
 
 Ha rugalmasságot szeretne biztosítani, hogy milyen jelszavak engedélyezettek, megadhat egyéni tiltott jelszavakat is. Az egyéni tiltott jelszavak listája a globálisan tiltott jelszavak mellett működik, hogy erős jelszavakat kényszerítse ki a szervezetében. A szervezetre vonatkozó feltételek hozzáadhatók az egyéni tiltott jelszavak listájához, például az alábbi példákban:
 
@@ -91,9 +91,9 @@ Hibrid környezetekben az [Azure ad jelszavas védelmet is üzembe](howto-passwo
 Ha szeretné megtekinteni az egyéni tiltott jelszavak listáját a műveletben, próbálja meg módosítani a jelszót az előző szakaszban hozzáadott egyik változatra. Amikor az Azure AD megpróbálja feldolgozni a jelszó módosítását, a rendszer a jelszót az egyéni tiltott jelszavak listájában szereplő bejegyzéssel egyezteti. Ekkor a rendszer hibaüzenetet jelenít meg a felhasználó számára.
 
 > [!NOTE]
-> Ahhoz, hogy a felhasználó alaphelyzetbe tudja állítani a jelszavát a webes portálon, konfigurálni kell az Azure AD-bérlőt az [önkiszolgáló jelszó-visszaállításhoz](tutorial-enable-sspr.md).
+> Ahhoz, hogy a felhasználó alaphelyzetbe tudja állítani a jelszavát a webes portálon, konfigurálni kell az Azure AD-bérlőt az [önkiszolgáló jelszó-visszaállításhoz](tutorial-enable-sspr.md). Ha szükséges, a felhasználó regisztrálhat a [SSPR címen https://aka.ms/ssprsetup ](https://aka.ms/ssprsetup).
 
-1. Nyissa meg a **saját alkalmazások** lapot [https://myapps.microsoft.com](https://myapps.microsoft.com)a következő címen:.
+1. Nyissa meg a **saját alkalmazások** lapot a következő címen: [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 1. A jobb felső sarokban válassza ki a nevét, majd válassza a **profil** lehetőséget a legördülő menüből.
 
     ![Profil kiválasztása](media/tutorial-configure-custom-password-protection/myapps-profile.png)
@@ -104,7 +104,7 @@ Ha szeretné megtekinteni az egyéni tiltott jelszavak listáját a műveletben,
 
     ![Hibaüzenet jelenik meg, ha olyan jelszót próbál használni, amely az egyéni tiltott jelszavak listáján szerepel](media/tutorial-configure-custom-password-protection/password-change-error.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nem szeretné használni az oktatóanyag részeként konfigurált egyéni tiltott jelszavak listáját, hajtsa végre a következő lépéseket:
 
@@ -114,9 +114,9 @@ Ha már nem szeretné használni az oktatóanyag részeként konfigurált egyén
 1. Állítsa be az **Egyéni lista érvényesítésének** lehetőségét a *nem*értékre.
 1. Az egyéni tiltott jelszó konfigurációjának frissítéséhez válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban engedélyezte és konfigurálta az egyéni jelszavas védelem listáját az Azure AD-hez. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban engedélyezte és konfigurálta az egyéni jelszavas védelem listáját az Azure AD-hez. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Egyéni tiltott jelszavak engedélyezése

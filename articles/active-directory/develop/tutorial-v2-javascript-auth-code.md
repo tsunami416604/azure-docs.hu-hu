@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 05/19/2020
+ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 3e6f94c3b44cd3316a25c356dc5e33835f8c9337
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 4de555f823abe5414bf117a6709e67676571c833
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553805"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518164"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript-alapú egyoldalas alkalmazásból (SPA) az Auth Code flow használatával
-
-> [!IMPORTANT]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány aspektusa változhat az általános elérhetősége előtt.
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre olyan JavaScript-alapú egyoldalas alkalmazást (SPA), amely a JavaScript v 2.0-hoz készült Microsoft Authentication Library (MSAL) szolgáltatást használja a következőhöz:
 
@@ -59,7 +56,7 @@ Ha folytatni szeretné az oktatóanyagot, és saját maga is felépíti az alkal
 * [Node.js](https://nodejs.org/en/download/) helyi webkiszolgáló futtatásához
 * [Visual Studio Code](https://code.visualstudio.com/download) vagy más Kódszerkesztő
 
-## <a name="create-your-project"></a>A projekt létrehozása
+## <a name="create-your-project"></a>Projekt létrehozása
 
 A [Node.js](https://nodejs.org/en/download/) telepítése után hozzon létre egy mappát az alkalmazás üzemeltetéséhez, például: *msal-Spa-tutorial*.
 
@@ -289,7 +286,7 @@ msal-spa-tutorial/
     }
     ```
 
-## <a name="register-your-application"></a>Alkalmazás regisztrálása
+## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
 Kövesse az [egyoldalas alkalmazás lépéseit: az alkalmazások regisztrálásával](scenario-spa-app-registration.md) hozzon létre egy alkalmazást az Ön gyógyfürdőjében.
 
@@ -611,7 +608,7 @@ Ha egy háttérrendszer API-nak nincs szüksége hatókörre, ami nem ajánlott,
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy JavaScript-alapú egyoldalas alkalmazást (SPA), amely a JavaScript v 2.0-hoz készült Microsoft Authentication Library (MSAL) szolgáltatást használja a következőhöz:
 

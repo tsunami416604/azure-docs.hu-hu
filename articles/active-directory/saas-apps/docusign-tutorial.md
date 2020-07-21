@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 00c2825b78d0774d3c428978ba66c957130d3737
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509363"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499953"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a DocuSign
 
@@ -38,6 +38,9 @@ Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * Az egyszeri bejelentkezést (SSO) engedélyező DocuSign-előfizetés.
+
+> [!NOTE]
+> Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -118,7 +121,7 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
 1. A képernyő felső részén válassza az **új felhasználó**lehetőséget.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
-   1. A **Felhasználónév** mezőbe írja be `<username>@<companydomain>.<extension>`a nevet. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a nevet `<username>@<companydomain>.<extension>` . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
@@ -192,13 +195,13 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a DocuSign, így ez a felha
 
     f. A **AuthN-kérelem küldéséhez**válassza a **post**lehetőséget.
 
-    g. A **kijelentkezési kérelmének elküldéséhez**válassza a **beolvasás**lehetőséget.
+    : A **kijelentkezési kérelmének elküldéséhez**válassza a **beolvasás**lehetőséget.
 
     h. Az **Egyéni attribútumok leképezése** szakaszban válassza az **Új leképezés hozzáadása**elemet.
 
        ![Egyéni attribútumok leképezése felhasználói felület][62]
 
-    i. Válassza ki azt a mezőt, amelyet az Azure AD-jogcímhez szeretne rendelni. Ebben a példában az **EmailAddress** jogcím a következő értékkel van leképezve: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`. Ez az alapértelmezett jogcím neve az Azure AD-től az e-mail-jogcímhez. Válassza a **Mentés**lehetőséget.
+    i. Válassza ki azt a mezőt, amelyet az Azure AD-jogcímhez szeretne rendelni. Ebben a példában az **EmailAddress** jogcím a következő értékkel van leképezve: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` . Ez az alapértelmezett jogcím neve az Azure AD-től az e-mail-jogcímhez. Válassza a **Mentés**lehetőséget.
 
        ![Egyéni attribútum-leképezési mezők][57]
 
@@ -223,7 +226,7 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a DocuSign, így ez a felha
        
        1. Másolja a **szolgáltatói bejelentkezési URL-címet**, majd illessze be a **bejelentkezési URL-cím** mezőbe az **alapszintű SAML-konfiguráció** szakaszban a Azure Portal. A **szolgáltató bejelentkezési URL-címének** végén a IDPID értéket fogja kapni.
 
-       1. Kattintson a **Bezárás** gombra.
+       1. Válassza a **Bezárás** lehetőséget.
 
 ### <a name="create-docusign-test-user"></a>DocuSign-tesztelési felhasználó létrehozása
 
@@ -238,7 +241,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor kiválasztja a DocuSign csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a DocuSign-példányra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok az SaaS-alkalmazások Azure AD-vel való integrálásáról](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

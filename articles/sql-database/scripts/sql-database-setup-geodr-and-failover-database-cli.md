@@ -11,12 +11,12 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 93afb5b52df7ac3ff638ff5fc180c3c4774880b8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 48ebf87a732380188b1c5f03954385b61bc765f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020387"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528825"
 ---
 # <a name="use-cli-to-configure-active-geo-replication-for-a-single-database-in-azure-sql-database"></a>A CLI használatával konfigurálhatja az aktív földrajzi replikálást egyetlen adatbázishoz Azure SQL Database
 
@@ -52,11 +52,11 @@ az group delete --name $resource
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| | |
+| Parancs | Leírás |
 |---|---|
 | [az SQL db replika](/cli/azure/sql/db/replica) | Adatbázis-replika parancsai. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

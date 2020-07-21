@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: a021675632a093d41e2565f63f8bb4e844213628
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c60d27cb75526d801880658846a6b61760f4bf7e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101620"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508083"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>Oktatóanyag: Windowsos virtuális gép figyelése az Azure-ban
 
@@ -31,21 +31,21 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * VIRTUÁLIS gépek teljesítmény-metrikáinak megtekintése
 > * Riasztás létrehozása
 
-## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Ebben az oktatóanyagban az Azure-monitorozás és a frissítéskezelés konfigurálásához egy Azure-beli windowsos virtuális gép szükséges. Először a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát:
+Ebben az oktatóanyagban az Azure-monitorozás és a frissítéskezelés konfigurálásához egy Azure-beli windowsos virtuális gép szükséges. Először a [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) paranccsal állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Most hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre az *USA keleti régiója* helyen. Ha még nem létezik, létrejön a *myResourceGroupMonitorMonitor* nevű erőforráscsoport a támogató hálózati erőforrásokkal együtt:
+Most hozza létre a virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm). Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre az *USA keleti régiója* helyen. Ha még nem létezik, létrejön a *myResourceGroupMonitorMonitor* nevű erőforráscsoport a támogató hálózati erőforrásokkal együtt:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -61,7 +61,7 @@ Az erőforrások és a virtuális gép létrehozása néhány percig tart.
 
 A Windows rendszerű virtuális gépek rendszerindítása után a rendszerindítási diagnosztikai ügynök rögzíti a képernyőkimenetet, amelyet hibaelhárítási célokra lehet felhasználni. Ez a képesség alapértelmezés szerint engedélyezve van. A rögzített képernyőképeket egy Azure Storage-fiók tárolja, amelyet a rendszer alapértelmezés szerint is létrehoz.
 
-A rendszerindítási diagnosztika adatait a [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata) paranccsal kérheti le. A következő példában a rendszerindítási diagnosztika a *c:\* meghajtó gyökérkönyvtárába töltődik le.
+A rendszerindítási diagnosztika adatait a [Get-AzureRmVMBootDiagnosticsData](/powershell/module/az.compute/get-azvmbootdiagnosticsdata) paranccsal kérheti le. A következő példában a rendszerindítási diagnosztika a *c:\* meghajtó gyökérkönyvtárába töltődik le.
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
@@ -129,9 +129,9 @@ A következő példában az átlagos processzorhasználat alapján hozunk létre
 
 6. Kattintson az **OK** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban konfigurálta és megtekintette a virtuális gép teljesítményét. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban konfigurálta és megtekintette a virtuális gép teljesítményét. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Erőforráscsoport és virtuális gép létrehozása

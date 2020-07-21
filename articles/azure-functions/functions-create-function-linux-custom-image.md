@@ -5,20 +5,20 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: bb9fc07c0c909f1fcec1644175c1dbac1e2bbb57
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 57468a4b4234809ca6293ca39ed54a3934f9a4fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560915"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506383"
 ---
-# <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszeren egyéni tároló használatával
+# <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszerben egyéni tárolóval
 
 Ebben az oktatóanyagban létrehozhatja és üzembe helyezheti a kódot úgy, hogy az egyéni Docker-tárolóként Azure Functions egy Linux-alapú alaprendszerkép használatával. Általában egyéni rendszerképeket használ, ha a függvények egy adott nyelvi verziót igényelnek, vagy olyan függőséget vagy konfigurációt használnak, amelyet a beépített rendszerkép nem biztosít.
 
-Az alapértelmezett Azure App Service tárolót a [Linuxon üzemeltetett első függvény létrehozása](functions-create-first-azure-function-azure-cli-linux.md)című témakörben leírtak szerint is használhatja. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók.
+Az alapértelmezett Azure App Service tárolót a [Linuxon üzemeltetett első függvény létrehozása](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)című témakörben leírtak szerint is használhatja. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Function alkalmazást és egy Docker a Azure Functions Core Tools használatával.
@@ -96,7 +96,7 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse.   
 Ha a rendszer kéri, adja meg a következő értékeket:
 
-| Kérdés | Érték | Leírás |
+| Adatkérés | Érték | Leírás |
 | ------ | ----- | ----------- |
 | **csoportazonosító** | `com.fabrikam` | Egy érték, amely egyedileg azonosítja a projektet az összes projektben, a Java [csomag elnevezési szabályait](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) követve. |
 | **artifactId** | `fabrikam-functions` | Egy érték, amely a jar neve, verziószám nélkül. |
@@ -121,7 +121,7 @@ cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol az `--name` argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new`hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének és a *function. JSON*nevű konfigurációs fájlnak, amely tartalmazza a függvény nevét.
+Adjon hozzá egy függvényt a projekthez a következő parancs használatával, ahol az `--name` argumentum a függvény egyedi neve, és az `--template` argumentum megadja a függvény triggerét. `func new`hozzon létre egy olyan almappát, amely megfelel a projekt választott nyelvének, valamint egy *function.js*nevű konfigurációs fájlnak.
 
 ```
 func new --name HttpExample --template "HTTP trigger"
@@ -173,7 +173,7 @@ docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-Miután a rendszerkép egy helyi tárolóban fut, nyisson meg egy böngészőt `http://localhost:8080` , amely megjeleníti az alább látható helyőrző képet. A rendszerkép ekkor jelenik meg, mivel a függvény a helyi tárolóban fut, ahogy az az Azure-ban lenne, ami azt jelenti, hogy egy, a *function. JSON* fájlban definiált hozzáférési kulccsal védi a `"authLevel": "function"` tulajdonságot. A tároló még nem lett közzétéve egy Azure-beli Function alkalmazásban, így a kulcs még nem érhető el. Ha tesztelni szeretné a helyi tárolót, állítsa le a Docker-t, módosítsa az engedélyezési tulajdonságot a értékre, hozza `"authLevel": "anonymous"` létre újra a rendszerképet, és indítsa újra a Docker-t. Ezután állítsa alaphelyzetbe `"authLevel": "function"` a *function. JSON*fájlt. További információ: [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys).
+Miután a rendszerkép egy helyi tárolóban fut, nyisson meg egy böngészőt `http://localhost:8080` , amely megjeleníti az alább látható helyőrző képet. A rendszerkép ekkor jelenik meg, mivel a függvény a helyi tárolóban fut, ahogy az az Azure-ban lenne, ami azt jelenti, hogy egy hozzáférési kulcs védi, ahogy az a (z) *function.json* tulajdonsággal van meghatározva `"authLevel": "function"` . A tároló még nem lett közzétéve egy Azure-beli Function alkalmazásban, így a kulcs még nem érhető el. Ha tesztelni szeretné a helyi tárolót, állítsa le a Docker-t, módosítsa az engedélyezési tulajdonságot a értékre, hozza `"authLevel": "anonymous"` létre újra a rendszerképet, és indítsa újra a Docker-t. Ezután állítsa alaphelyzetbe a `"authLevel": "function"` *function.js*. További információ: [engedélyezési kulcsok](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
 ![Helyőrző képe, amely azt jelzi, hogy a tároló helyileg fut](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -289,7 +289,7 @@ Az Azure-beli Function-alkalmazás kezeli a függvények végrehajtását a üze
 
 ## <a name="verify-your-functions-on-azure"></a>A függvények ellenőrzése az Azure-ban
 
-Az Azure-beli Function alkalmazásban üzembe helyezett képpel a függvényt HTTP-kérelmeken keresztül hívhatja meg. Mivel a *function. JSON* definíciója tartalmazza a tulajdonságot `"authLevel": "function"` , először be kell szereznie a hozzáférési kulcsot (más néven "Function Key"), és a végpontra irányuló kérésekben URL-ként kell megadni.
+Az Azure-beli Function alkalmazásban üzembe helyezett képpel a függvényt HTTP-kérelmeken keresztül hívhatja meg. Mivel a definícióban szereplő *function.js* tartalmazza a tulajdonságot `"authLevel": "function"` , először be kell szereznie a hozzáférési kulcsot (más néven "Function Key"), és a végpontra irányuló kérésekben URL-ként kell megadnia.
 
 1. A függvény URL-címének lekérése a hozzáférési (Function) kulccsal a Azure Portal használatával vagy az Azure CLI használatával a `az rest` paranccsal.)
 
@@ -409,9 +409,7 @@ Az SSH lehetővé teszi a tároló és az ügyfél közötti biztonságos kommun
     FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
     ```
     ::: zone-end
-
-    Az alapképek közötti különbségekről az [app Services-Custom Docker images oktatóanyagban](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections)olvashat.
-
+    
 1. Hozza létre újra a rendszerképet a `docker build` paranccsal, és cserélje `<docker_id>` le a Docker-azonosítóra:
 
     ```

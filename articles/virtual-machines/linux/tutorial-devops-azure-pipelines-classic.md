@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 28f093bc464a45862d3b253d628b7ae03810f81a
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: b8eec0d95144c012d3034e3f2c7c6e8adc921651
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871233"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510174"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – az Azure Linux rendszerű virtuális gépek működés közbeni üzembe helyezési stratégiájának konfigurálása
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan állíthat be egy CI/CD-folyamatot a Azure Portal Mu
 
 ### <a name="configure-cicd-on-virtual-machines"></a>CI/CD konfigurálása virtuális gépeken
 
-A virtuális gépeket célként adhatja hozzá egy [központi telepítési csoporthoz](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups). Ezután megcélozhatja őket a MultiMachine-frissítésekhez. A gépekre való központi telepítés után megtekintheti a telepítési **előzményeket** egy központi telepítési csoportban. Ez a nézet lehetővé teszi a virtuális gép és a folyamat közötti nyomkövetést, majd a véglegesítés elvégzését.
+A virtuális gépeket célként adhatja hozzá egy [központi telepítési csoporthoz](/azure/devops/pipelines/release/deployment-groups). Ezután megcélozhatja őket a MultiMachine-frissítésekhez. A gépekre való központi telepítés után megtekintheti a telepítési **előzményeket** egy központi telepítési csoportban. Ez a nézet lehetővé teszi a virtuális gép és a folyamat közötti nyomkövetést, majd a véglegesítés elvégzését.
 
 ### <a name="rolling-deployments"></a>Működés közbeni üzembe helyezések
 
@@ -51,7 +51,7 @@ A folyamatos kézbesítés beállítás használatával a Azure Portalon belül 
    ![A folyamatos kézbesítés panel](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png)
 
 1. A központi telepítési csoport a központi telepítési célszámítógépek logikai készlete, amely a fizikai környezeteket jelképezi. Példák a fejlesztési, tesztelési, ellenőrzését és éles környezetekre. Létrehozhat egy új központi telepítési csoportot, vagy kijelölhet egy meglévőt is.
-1. Válassza ki a Build folyamatot, amely közzéteszi a virtuális gépre telepítendő csomagot. A közzétett csomagnak rendelkeznie kell egy Deploy. ps1 vagy deploy.sh nevű telepítési parancsfájllal a csomag gyökérkönyvtárában lévő deployscripts mappában. A folyamat futtatja ezt az üzembe helyezési parancsfájlt.
+1. Válassza ki a Build folyamatot, amely közzéteszi a virtuális gépre telepítendő csomagot. A közzétett csomagnak rendelkeznie kell egy deploy.ps1 vagy deploy.sh nevű telepítési parancsfájllal a csomag gyökérkönyvtárában található deployscripts mappában. A folyamat futtatja ezt az üzembe helyezési parancsfájlt.
 1. A **központi telepítési stratégia**területen válassza a **gördülő**lehetőséget.
 1. Szükség esetén az egyes gépeket felcímkézheti a szerepkörével. A "web" és az "db" címke példákat tartalmaz. Ezek a címkék segítenek kizárólag adott szerepkörrel rendelkező virtuális gépek célzásában.
 1. A folyamatos kézbesítési folyamat konfigurálásához kattintson **az OK gombra** .
@@ -72,7 +72,7 @@ A folyamatos kézbesítés beállítás használatával a Azure Portalon belül 
 
 1. A jobb oldali konfiguráció panelen megadhatja, hogy az egyes iterációkban mely gépeket szeretné párhuzamosan telepíteni. Ha egyszerre több gépre szeretne üzembe helyezni, a csúszka használatával megadhatja a számítógépek számát százalékosan.  
 
-1. Az üzembe helyezési parancsfájl végrehajtása feladat alapértelmezés szerint végrehajtja a Deploy. ps1 vagy a deploy.sh üzembe helyezési parancsfájlt. A parancsfájl a közzétett csomag gyökérkönyvtárában lévő deployscripts mappában található.
+1. Az üzembe helyezési parancsfájl végrehajtása feladat alapértelmezés szerint végrehajtja az üzembe helyezési parancsfájlt deploy.ps1 vagy deploy.sh. A parancsfájl a közzétett csomag gyökérkönyvtárában lévő deployscripts mappában található.
 
    ![A deployscripts mappában található deploy.sh mutató összetevők ablaktábla](media/tutorial-deployment-strategy/package.png)
 
@@ -93,5 +93,5 @@ Az Azure-t egyszerűen megteheti. A Azure DevOps Projects használatával a köv
  
 ## <a name="additional-resources"></a>További források
 
-- [Üzembe helyezés az Azure-beli virtuális gépeken Azure DevOps Projects használatával](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
-- [Az alkalmazás folyamatos üzembe helyezésének megvalósítása egy Azure virtuálisgép-méretezési csoportba](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
+- [Üzembe helyezés az Azure-beli virtuális gépeken Azure DevOps Projects használatával](../../devops-project/azure-devops-project-vms.md)
+- [Az alkalmazás folyamatos üzembe helyezésének megvalósítása egy Azure virtuálisgép-méretezési csoportba](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

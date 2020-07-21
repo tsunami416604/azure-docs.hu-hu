@@ -1,18 +1,18 @@
 ---
-title: Metrikariasztás létrehozása Resource Manager-sablonnal
-description: Megtudhatja, hogyan hozhat létre metrikus riasztásokat Resource Manager-sablonok használatával.
+title: Resource Manager-sablon – minták metrikus riasztásokhoz
+description: Ez a cikk a Azure Monitorban metrikai riasztások létrehozásához használt Resource Manager-sablonokat ismerteti.
 author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 27d592a2702f9e2e8fda9094796cf2e37400621b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83854551"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515376"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Resource Manager-sablonok – minták metrikus riasztási szabályokhoz Azure Monitor
 
@@ -20,7 +20,7 @@ Ez a cikk példákat tartalmaz [Azure Resource Manager sablonok](../../azure-res
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
-A metrikus riasztási szabályokkal használható erőforrások listáját a [Azure monitor metrikai riasztások támogatott erőforrásai](../platform/alerts-metric-near-real-time.md) című részben tekintheti meg. A riasztási szabályok sémájának és tulajdonságainak magyarázata a [metrikus riasztások – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)lehetőségnél érhető el.
+A metrikus riasztási szabályokkal használható erőforrások listáját a [Azure monitor metrikai riasztások támogatott erőforrásai](../platform/alerts-metric-near-real-time.md) című részben tekintheti meg. A riasztási szabályok sémájának és tulajdonságainak magyarázata a [metrikus riasztások – létrehozás vagy frissítés](/rest/api/monitor/metricalerts/createorupdate)lehetőségnél érhető el.
 
 > [!NOTE]
 > Erőforrás-sablon metrikai riasztások létrehozásához az erőforrástípus esetében: az Azure Log Analytics munkaterület (azaz) `Microsoft.OperationalInsights/workspaces` további lépéseket igényel. Részletekért lásd: [metrikai riasztás a naplókhoz – erőforrás-sablon](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
@@ -249,7 +249,7 @@ Az alábbi minta egy metrikai riasztási szabályt hoz létre egyetlen feltétel
 Az alábbi minta egy metrikai riasztási szabályt hoz létre egyetlen feltétel és egy dinamikus küszöbérték használatával.
 
 ### <a name="template-file"></a>Sablonfájl
-Mentse az alábbi JSON-t simpledynamicmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t simpledynamicmetricalert.jsként az útmutató céljára.
 
 ```json
 {
@@ -1094,13 +1094,13 @@ Például a riasztási szabály által figyelt egyes lehetséges idősorozatok:
 
 Az alábbi sablonnal speciális statikus küszöbértéket tartalmazó metrikai szabályt hozhat létre egyéni metrika esetén.
 
-Ha többet szeretne megtudni az Azure Monitor lévő egyéni metrikákkal kapcsolatban, tekintse meg [a Azure monitor egyéni metrikáit](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
+Ha többet szeretne megtudni az Azure Monitor lévő egyéni metrikákkal kapcsolatban, tekintse meg [a Azure monitor egyéni metrikáit](../platform/metrics-custom-overview.md).
 
 Ha egyéni metrika esetén riasztási szabályt hoz létre, meg kell adnia a metrika nevét és a metrikai névteret is. Győződjön meg arról is, hogy az egyéni metrika már be van jelentkezve, mivel nem hozható létre riasztási szabály olyan egyéni metrika esetében, amely még nem létezik.
 
 ### <a name="template-file"></a>Sablonfájl
 
-Mentse az alábbi JSON-t customstaticmetricalert. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t customstaticmetricalert.jsként az útmutató céljára.
 
 ```json
 {
@@ -1325,7 +1325,7 @@ Mentse az alábbi JSON-t customstaticmetricalert. JSON néven az útmutató cél
 
 >[!NOTE]
 >
-> Egy adott egyéni metrika metrikai névterét megkeresheti az [Egyéni metrikák a Azure Portal használatával történő tallózásával](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal) .
+> Egy adott egyéni metrika metrikai névterét megkeresheti az [Egyéni metrikák a Azure Portal használatával történő tallózásával](../platform/metrics-custom-overview.md#browse-your-custom-metrics-via-the-azure-portal) .
 
 
 ## <a name="multiple-resources"></a>Több erőforrás
@@ -1348,7 +1348,7 @@ Ebből a szakaszból megtudhatja, hogy három forgatókönyv esetén hogyan figy
 
 Ez a sablon egy statikus küszöbérték-metrikai riasztási szabályt hoz létre, amely egy vagy több erőforráscsoport esetében az összes virtuális gép százalékos PROCESSZORát figyeli (egy Azure-régióban).
 
-Mentse az alábbi JSON-t az All-VM-in-Resource-Group-static. JSON néven az útmutató céljára.
+Mentse az alábbi JSON-t all-vms-in-resource-group-static.js-ként az útmutató céljára.
 
 ### <a name="template-file"></a>Sablonfájl
 
@@ -3261,7 +3261,7 @@ Ez a minta egy dinamikus küszöbértékek metrikai riasztási szabályt hoz lé
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További Azure monitor-sablonok beszerzése](resource-manager-samples.md).
 - [További információ a riasztásokról](../platform/alerts-overview.md).

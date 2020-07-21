@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 317d5681ac3b09cb433cdc2bc3c83b6b1c8d37dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77670423"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516362"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Futásidejű kivételek észlelése és diagnosztizálása az Azure Application Insights segítségével
 
@@ -35,12 +35,12 @@ Az oktatóanyag elvégzéséhez:
     - ASP.NET és webfejlesztés
     - Azure-fejlesztés
 - Töltse le és telepítse a [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) alkalmazást.
-- Engedélyezze a [Visual Studio Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) alkalmazást.
+- Engedélyezze a [Visual Studio Snapshot Debugger](../app/snapshot-debugger.md) alkalmazást.
 - Telepítsen egy .NET-alkalmazást az Azure-hoz, és [engedélyezze az Application Insights SDK](../../azure-monitor/app/asp-net.md)-t. 
 - Ez az oktatóanyag az alkalmazásban történt kivétel azonosításának módszerét ismerteti, ezért módosítsa a kódot a fejlesztési vagy a tesztelési környezetben, hogy létrehozzon egy kivételt. 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be a Azure Portalba [https://portal.azure.com](https://portal.azure.com)a következő címen:.
+Jelentkezzen be a Azure Portalba a következő címen: [https://portal.azure.com](https://portal.azure.com) .
 
 
 ## <a name="analyze-failures"></a>Hibák elemzése
@@ -95,7 +95,7 @@ Az Application Insights által gyűjtött minden adatot az Azure Log Analytics t
 
 1. Kattintson a CodeLens információra a kód felett az Application Insights által biztosított telemetria megtekintéséhez.
 
-    ![Kód](media/tutorial-runtime-exceptions/codelens.png)
+    ![Code](media/tutorial-runtime-exceptions/codelens.png)
 
 1. Kattintson a **Hatás elemzése** elemre az Application Insights Analytics megnyitásához.  Több lekérdezés is található itt, amelyek részleteket biztosítanak a sikertelen kérésekről, például az érintett felhasználókról, böngészőkről és régiókról.<br><br>![Elemzés](media/tutorial-runtime-exceptions/analytics.png)<br>
 
@@ -108,7 +108,7 @@ Ha az Application Insights alkalmazást egy követőrendszerhez csatlakoztatja, 
 
     ![Új munkaelem](media/tutorial-runtime-exceptions/new-work-item.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már megtanulta, hogyan azonosíthatja a futásidejű kivételeket. Térjen át a következő oktatóanyagra, hogy megtanulja, hogyan azonosíthatja és diagnosztizálhatja a teljesítménybeli problémákat.
 
 > [!div class="nextstepaction"]

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8e559be82fc7c3d6b25b99319785d49e30f56287
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c233ef9cfb6ded6f3d4e96b893970d4282dfc22e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460001"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526979"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI használatával
 
@@ -32,13 +32,13 @@ Az Azure-beli virtuális gépek egy teljes mértékben konfigurálható és ruga
 > * Virtuális gép átméretezése
 > * Virtuális gép állapotának áttekintése és értelmezése
 
-Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](../../cloud-shell/overview.md)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. 
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. 
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportot még a virtuális gép létrejötte előtt létre kell hozni. Ebben a példában egy *myResourceGroupVM* nevű erőforráscsoportot hozunk létre az *eastus* régióban. 
 
@@ -50,7 +50,7 @@ Az erőforráscsoport meghatározására a virtuális gép létrehozásakor vagy
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy virtuális gépet az [az vm create](https://docs.microsoft.com/cli/azure/vm) paranccsal. 
+Hozzon létre egy virtuális gépet az [az vm create](/cli/azure/vm) paranccsal. 
 
 Virtuális gép létrehozásakor több lehetőség is rendelkezésre áll, például az operációsrendszer-lemezkép, a lemezméretezés vagy a rendszergazdai hitelesítő adatok. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre, mely Ubuntu Server rendszert futtat. Ezen a virtuális gépen létrehozunk egy *azureuser* nevű felhasználói fiókot, illetve SSH-kulcsokat generálunk, ha még nem léteznek a kulcsok alapértelmezett helyén (*~/.ssh*):
 
@@ -155,12 +155,12 @@ Az alábbi táblázat a méreteket használati esetek alapján kategorizálja.
 
 | Típus                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Általános célú](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
-| [Számításra optimalizált](sizes-compute.md)   | Fsv2          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
-| [Memóriaoptimalizált](sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Magas memória-mag arány a memória javára. Ideális választás relációs adatbázisokhoz, közepes és nagy gyorsítótárakhoz, memóriában végzett elemzésekhez.                 |
-| [Tárolásra optimalizált](sizes-storage.md)      | Lsv2, ls              | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
-| [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Specializált virtuális gépek nagy terhelést jelentő grafikus rendereléshez és videószerkesztéshez.       |
-| [Nagy teljesítmény](sizes-hpc.md) | H        | Leghatékonyabb processzorral rendelkező virtuális gépeink, választható nagy átviteli sebességű hálózati adapterekkel (RDMA). |
+| [Általános célú](../sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
+| [Számításoptimalizált](../sizes-compute.md)   | Fsv2          | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
+| [Memóriaoptimalizált](../sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Magas memória-mag arány a memória javára. Ideális választás relációs adatbázisokhoz, közepes és nagy gyorsítótárakhoz, memóriában végzett elemzésekhez.                 |
+| [Tároptimalizált](../sizes-storage.md)      | Lsv2, ls              | Magas lemez-adatátviteli és I/O-műveleti jellemzők. Ideális Big Data-, SQL- és NoSQL-adatbázisok esetén.                                                         |
+| [GPU](../sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Specializált virtuális gépek nagy terhelést jelentő grafikus rendereléshez és videószerkesztéshez.       |
+| [Nagy teljesítmény](../sizes-hpc.md) | H        | Leghatékonyabb processzorral rendelkező virtuális gépeink, választható nagy átviteli sebességű hálózati adapterekkel (RDMA). |
 
 
 ### <a name="find-available-vm-sizes"></a>Elérhető virtuálisgép-méretek keresése
@@ -312,7 +312,7 @@ Az erőforráscsoportok törlésével az összes bennük foglalt erőforrás is 
 az group delete --name myResourceGroupVM --no-wait --yes
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a virtuális gépek létrehozásának és kezelésének alapvető műveleteivel ismerkedett meg, például:
 

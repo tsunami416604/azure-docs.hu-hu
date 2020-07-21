@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: e0fb26896b79fb23bb0f784c0f23aa3af0593c22
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 22f36448a4246f7cc8c66b2c4f8051c835ed939a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871850"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510157"
 ---
 # <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – a Kanári üzembe helyezési stratégia konfigurálása az Azure Linux Virtual Machines
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan állíthat be egy olyan CI/CD-folyamatot, amely a Mu
 
 ### <a name="configure-cicd-on-virtual-machines"></a>CI/CD konfigurálása virtuális gépeken
 
-A virtuális gépeket célként adhatja hozzá egy [központi telepítési csoporthoz](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups). Ezután megcélozhatja őket a MultiMachine-frissítésekhez. A gépekre való központi telepítés után megtekintheti a telepítési **előzményeket** egy központi telepítési csoportban. Ez a nézet lehetővé teszi a virtuális gép és a folyamat közötti nyomkövetést, majd a véglegesítés elvégzését.
+A virtuális gépeket célként adhatja hozzá egy [központi telepítési csoporthoz](/azure/devops/pipelines/release/deployment-groups). Ezután megcélozhatja őket a MultiMachine-frissítésekhez. A gépekre való központi telepítés után megtekintheti a telepítési **előzményeket** egy központi telepítési csoportban. Ez a nézet lehetővé teszi a virtuális gép és a folyamat közötti nyomkövetést, majd a véglegesítés elvégzését.
 
 ### <a name="canary-deployments"></a>Kanári-telepítések
 
@@ -47,7 +47,7 @@ A folyamatos kézbesítés lehetőséggel a Azure Portal a Kanári-telepítések
    ![A folyamatos kézbesítés panel](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png)
 
 1. A központi telepítési csoport a központi telepítési célszámítógépek logikai készlete, amely a fizikai környezeteket jelképezi. Példák a fejlesztési, tesztelési, ellenőrzését és éles környezetekre. Létrehozhat egy új központi telepítési csoportot, vagy kijelölhet egy meglévőt is.
-1. Válassza ki a Build folyamatot, amely közzéteszi a virtuális gépre telepítendő csomagot. A közzétett csomagnak rendelkeznie kell egy Deploy. ps1 vagy deploy.sh nevű telepítési parancsfájllal a csomag gyökérkönyvtárában lévő deployscripts mappában. A folyamat futtatja ezt az üzembe helyezési parancsfájlt.
+1. Válassza ki a Build folyamatot, amely közzéteszi a virtuális gépre telepítendő csomagot. A közzétett csomagnak rendelkeznie kell egy deploy.ps1 vagy deploy.sh nevű telepítési parancsfájllal a csomag gyökérkönyvtárában található deployscripts mappában. A folyamat futtatja ezt az üzembe helyezési parancsfájlt.
 1. A **központi telepítési stratégia**területen válassza a **Kanári**lehetőséget.
 1. Vegyen fel egy "Kanári" címkét a Kanári-környezetek részét képező virtuális gépekhez. Adjon hozzá egy "Prod" címkét a virtuális gépekhez, amelyek a Kanári üzembe helyezése után végrehajtott központi telepítések részét képezik. A címkék segítségével csak az adott szerepkörrel rendelkező virtuális gépeket célozza meg.
 
@@ -67,7 +67,7 @@ A folyamatos kézbesítés lehetőséggel a Azure Portal a Kanári-telepítések
 
 1. A folyamat futásának folytatása előtt győződjön meg arról, hogy legalább egy virtuális gép "Prod" címkével van megjelölve. A folyamat harmadik fázisában az alkalmazások csak azokra a virtuális gépekre lesznek telepítve, amelyek rendelkeznek a "Prod" címkével.
 
-1. Az üzembe helyezési parancsfájl végrehajtása feladat alapértelmezés szerint a Deploy. ps1 vagy a deploy.sh telepítési parancsfájlt futtatja. A parancsfájl a közzétett csomag gyökérkönyvtárában lévő deployscripts mappában található. Győződjön meg arról, hogy a kiválasztott build-folyamat közzéteszi a központi telepítést a csomag gyökérkönyvtárában.
+1. Az üzembe helyezési parancsfájl végrehajtása feladat alapértelmezés szerint futtatja az üzembe helyezési parancsfájlt deploy.ps1 vagy deploy.sh. A parancsfájl a közzétett csomag gyökérkönyvtárában lévő deployscripts mappában található. Győződjön meg arról, hogy a kiválasztott build-folyamat közzéteszi a központi telepítést a csomag gyökérkönyvtárában.
 
    ![A deployscripts mappában található deploy.sh mutató összetevők ablaktábla](media/tutorial-deployment-strategy/package.png)
 
@@ -87,5 +87,5 @@ Az Azure-t egyszerűen megteheti. A Azure DevOps Projects használatával a köv
 
 ## <a name="additional-resources"></a>További források
 
-- [Üzembe helyezés az Azure-beli virtuális gépeken Azure DevOps Projects használatával](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
-- [Az alkalmazás folyamatos üzembe helyezésének megvalósítása egy Azure virtuálisgép-méretezési csoportba](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
+- [Üzembe helyezés az Azure-beli virtuális gépeken Azure DevOps Projects használatával](../../devops-project/azure-devops-project-vms.md)
+- [Az alkalmazás folyamatos üzembe helyezésének megvalósítása egy Azure virtuálisgép-méretezési csoportba](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

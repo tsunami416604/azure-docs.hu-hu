@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
-ms.openlocfilehash: 0b28de7af16053093cd0108224188cdd615fce55
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3e4404589e180be730579b8cbbfadd132502585a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80435522"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529318"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Oktatóanyag: Erőforrások védelme az Azure Security Centerrel
 A Security Center korlátozza a fenyegetéseknek való kitettségét azzal, hogy hozzáférés- és alkalmazásvezérlőket használ a kártékony tevékenységek blokkolására. Az igény szerinti (JIT) virtuálisgép-hozzáférés csökkenti a támadásoknak való kitettséget azáltal, hogy lehetővé teszi a virtuális gépek állandó hozzáférésének megtagadását. Az állandó hozzáférés helyett szabályozott és naplózott hozzáférést biztosít a virtuális gépekhez – csak akkor, ha szükség van rá. Az adaptív alkalmazásvezérlők segítenek felvértezni a virtuális gépeket a kártevők ellen azáltal, hogy szabályozzák, mely alkalmazások futhatnak rajtuk. A Security Center gépi tanulási módszerekkel elemzi a virtuális gépen futó folyamatokat, és az így szerzett információk alapján segít az engedélyezési szabályok alkalmazásában.
@@ -31,7 +31,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > * Alkalmazásvezérlési szabályzat konfigurálása
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az oktatóanyagban ismertetett funkciók végrehajtásához a Security Center Standard tarifacsomagjával kell rendelkeznie. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
+Az oktatóanyagban szereplő funkciók átlépéséhez Security Center Standard díjszabási szinten kell lennie. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). [Az Azure-előfizetés a Security Center Standard verziójába való felvételével](security-center-get-started.md) foglalkozó rövid útmutató végigvezeti azokon a lépéseken, amelyekkel frissíthet a Standard verzióra.
 
 ## <a name="manage-vm-access"></a>Virtuális gépekhez való hozzáférés kezelése
 A JIT VM-hozzáférés segítségével zárolhatja az Azure-beli virtuális gépek bejövő forgalmát, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez, ha szükséges.
@@ -72,7 +72,7 @@ Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurál
 
 1. Térjen vissza a Security Center főmenüjébe. Az **ADVANCED CLOUD DEFENSE** (SPECIÁLIS FELHŐVÉDELEM) területen válassza ki az **Adaptive application controls** (Adaptív alkalmazásvezérlők) elemet.
 
-   ![Adaptív alkalmazásvezérlők][3]
+   ![Adaptív alkalmazásvezérlés][3]
 
    A **Resource groups** (Erőforráscsoportok) szakaszban három lap található:
 
@@ -93,27 +93,27 @@ Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurál
 
 4. Ha végzett a kiválasztással, válassza a **Create** (Létrehozás) lehetőséget.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, folytassa a standard szint futtatását és az automatikus kiépítés engedélyezését. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:
 
 1. Térjen vissza a Security Center főmenüjébe, és válassza a **Biztonsági szabályzat** elemet.
 2. Válassza ki az előfizetést vagy a szabályzatot, amelyet vissza szeretne állítani Ingyenes állapotba. Megnyílik a **Biztonsági szabályzat** képernyő.
 3. A **SZABÁLYZAT ÖSSZETEVŐI** alatt válassza a **Tarifacsomag** lehetőséget.
-4. Válassza az **Ingyenes** lehetőséget az előfizetés Standard szintről Ingyenes szintre való módosításához.
-5. Kattintson a **Mentés** gombra.
+4. Válassza az **ingyenes** lehetőséget a standard szintről az ingyenes szintre való előfizetés módosításához.
+5. Válassza a **Mentés** lehetőséget.
 
 Ha le szeretné tiltani az automatikus kiépítést:
 
 1. Térjen vissza a Security Center főmenüre, és válassza a **biztonsági szabályzat**elemet.
 2. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést.
 3. Az automatikus kiépítés letiltásához a **Biztonsági szabályzat – Adatgyűjtés** területen válassza a **Ki** lehetőséget az **Előkészítés** elemnél.
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
 >[!NOTE]
 > Az automatikus kiépítés letiltása nem távolítja el a Log Analytics ügynököt az Azure-beli virtuális gépekről, ahol az ügynököt kiépítték. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan korlátozhatja a fenyegetéseknek való kitettségét a következőkkel:
 
 > [!div class="checklist"]
