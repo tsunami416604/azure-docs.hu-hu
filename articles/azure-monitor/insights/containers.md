@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/06/2020
-ms.openlocfilehash: fe8d2a2c083072ebc717b7476bb0738bb83301f1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 14fa6859a16dc173e75091983abee717bf813220
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85984624"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499021"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Tároló-figyelési megoldás a Azure Monitor
 
@@ -45,7 +45,7 @@ A Kezdés előtt tekintse át az alábbi adatokat, és ellenőrizze, hogy megfel
 
 Az alábbi táblázat ismerteti a Docker-hangolást és az operációs rendszer figyelését a tárolók, a teljesítmény és a naplók Azure Monitor-vel való felügyeletének támogatásával.   
 
-| | ACS | Linux | Windows | Tároló<br>Leltár | Kép<br>Leltár | Csomópont<br>Leltár | Tároló<br>Teljesítmény | Tároló<br>Esemény | Esemény<br>Napló | Tároló<br>Napló |
+|Docker-hangolás | ACS | Linux | Windows | Tároló<br>Leltár | Kép<br>Leltár | Csomópont<br>Leltár | Tároló<br>Teljesítmény | Tároló<br>Esemény | Esemény<br>Napló | Tároló<br>Napló |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
@@ -105,11 +105,11 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
        - Tekintse át [a Kubernetes log Analytics Linux-ügynök konfigurálása](#configure-a-log-analytics-linux-agent-for-kubernetes)című ismertetőt.
        - Tekintse át [az log Analytics Windows-ügynök konfigurálása a Kubernetes-hez](#configure-a-log-analytics-windows-agent-for-kubernetes)című ismertetőt.
        - Tekintse át az Log Analytics Agent telepítését a Linux Kubernetes.
-     - Ha Azure Container Service DC/OS-fürttel rendelkezik, további információ: [Azure Container Service DC/os-fürt figyelése Azure Monitorsal](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
+     - Ha Azure Container Service DC/OS-fürttel rendelkezik, további információ: [Azure Container Service DC/os-fürt figyelése Azure Monitorsal](/previous-versions/azure/container-service/dcos-swarm/container-service-monitoring-oms).
      - Ha Docker Swarm módú környezettel rendelkezik, további információt a Log Analytics ügynök konfigurálása a Docker Swarmhoz című témakörben olvashat.
      - Ha Service Fabric-fürttel rendelkezik, további információt a [tárolók figyelése Azure Monitorsal](../../service-fabric/service-fabric-diagnostics-oms-containers.md)című témakörben olvashat.
 
-A Windows rendszerű számítógépeken a Docker-motorok telepítésével és konfigurálásával kapcsolatos további információkért tekintse át a [Docker-motor a Windowsban](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) című cikkét.
+A Windows rendszerű számítógépeken a Docker-motorok telepítésével és konfigurálásával kapcsolatos további információkért tekintse át a [Docker-motor a Windowsban](/virtualization/windowscontainers/manage-docker/configure-docker-daemon) című cikkét.
 
 > [!IMPORTANT]
 > A Docker-nek futnia kell, **mielőtt** telepítené a Linux rendszerhez készült [log Analytics-ügynököt](../../azure-monitor/learn/quick-collect-linux-computer.md) a tároló gazdagépeken. Ha már telepítette az ügynököt a Docker telepítése előtt, újra kell telepítenie a Linux rendszerhez készült Log Analytics-ügynököt. A Docker-ról további információt a [Docker webhelyén](https://www.docker.com)talál.
@@ -505,7 +505,7 @@ dockerd --register-service -H npipe:// -H 0.0.0.0:2375
 Start-Service docker
 ```
 
-A Windows-tárolók által használt Docker Daemon-konfigurációval kapcsolatos további információkért lásd: [Docker-motor Windows rendszeren](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
+A Windows-tárolók által használt Docker Daemon-konfigurációval kapcsolatos további információkért lásd: [Docker-motor Windows rendszeren](/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 
 #### <a name="install-windows-agents"></a>Windows-ügynökök telepítése
 
@@ -637,6 +637,6 @@ A lekérdezések mentése a Azure Monitor egy standard funkciója. A mentésük 
 
 Ha olyan lekérdezést hoz létre, amelyet hasznosnak talál, mentse azt a Keresés lap tetején található **Kedvencek** elemre kattintva. Ezután egyszerűen elérheti később a **saját irányítópult** lapon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Lekérdezési naplók](../log-query/log-query-overview.md) a részletes tároló-adatrekordok megtekintéséhez.

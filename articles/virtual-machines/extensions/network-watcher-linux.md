@@ -14,17 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
-ms.openlocfilehash: 476241ad3d4077f2da0c513e3c989218701232ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37a2724e28269d5f8b10d6ae7073aacc8272255b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81255753"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494768"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>A Network Watcher ügynök Linux rendszerhez készült virtuális gépi bővítménye
 
 ## <a name="overview"></a>Áttekintés
 
-Az [azure Network Watcher](/azure/network-watcher/) egy hálózati teljesítmény-figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi az Azure-hálózatok figyelését. Az Network Watcher Agent virtuálisgép-bővítmény az Azure-beli virtuális gépek egyes Network Watcher funkcióinak, például az igény szerinti hálózati forgalom rögzítésének és más speciális funkcióknak a követelménye.
+Az [azure Network Watcher](../../network-watcher/index.yml) egy hálózati teljesítmény-figyelési, diagnosztikai és elemzési szolgáltatás, amely lehetővé teszi az Azure-hálózatok figyelését. Az Network Watcher Agent virtuálisgép-bővítmény az Azure-beli virtuális gépek egyes Network Watcher funkcióinak, például az igény szerinti hálózati forgalom rögzítésének és más speciális funkcióknak a követelménye.
 
 Ez a cikk a Linux rendszerhez készült Network Watcher Agent virtuálisgép-bővítmény támogatott platformait és telepítési lehetőségeit ismerteti. Az ügynök telepítése nem zavarja vagy nem igényli a virtuális gép újraindítását. A bővítményt a telepített virtuális gépekre is telepítheti. Ha a virtuális gépet egy Azure-szolgáltatás telepíti, a szolgáltatás dokumentációjában ellenőrizze, hogy engedélyezi-e a bővítmények telepítését a virtuális gépen.
 
@@ -48,7 +49,7 @@ A Network Watcher ügynök bővítmény a következő Linux-disztribúciók eset
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 
-A Network Watcher-ügynök néhány funkciója megköveteli, hogy a virtuális gép csatlakoztatva legyen az internethez. A kimenő kapcsolatok létrehozása nélkül előfordulhat, hogy a Network Watcher ügynök egyes funkciói meghibásodnak vagy elérhetetlenné válnak. Az ügynököt igénylő Network Watcher funkcióival kapcsolatos további információkért tekintse meg a[Network Watcher dokumentációját](/azure/network-watcher/).
+A Network Watcher-ügynök néhány funkciója megköveteli, hogy a virtuális gép csatlakoztatva legyen az internethez. A kimenő kapcsolatok létrehozása nélkül előfordulhat, hogy a Network Watcher ügynök egyes funkciói meghibásodnak vagy elérhetetlenné válnak. Az ügynököt igénylő Network Watcher funkcióival kapcsolatos további információkért tekintse meg a[Network Watcher dokumentációját](../../network-watcher/index.yml).
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -118,4 +119,4 @@ az vm extension show --name NetworkWatcherAgentLinux --resource-group myResource
 
 ### <a name="support"></a>Támogatás
 
-Ha a cikk bármely pontján további segítségre van szüksége, tekintse meg az [Network Watcher dokumentációját](/azure/network-watcher/), vagy lépjen kapcsolatba az Azure-szakértőkkel az [MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, tekintse meg az [Network Watcher dokumentációját](../../network-watcher/index.yml), vagy lépjen kapcsolatba az Azure-szakértőkkel az [MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 75c65cf9f76e711a3aeed764de8b92ed619bad2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d52138f5b23a6a0ac8ff8c585e6aed0edd92eaf0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77666943"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499545"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>A Hyper-V virtuális gépek kapacitásának megtervezése a Capacity and Performance megoldással (elavult)
 
@@ -38,12 +39,12 @@ A megoldás:
 
 Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott összekapcsolt forrásokról.
 
-| Összekapcsolt forrás | Támogatás | Description |
+| Összekapcsolt forrás | Támogatás | Leírás |
 |---|---|---|
-| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Yes | A megoldás a Windows-ügynököktől származó kapacitás-és teljesítményadatok adatait gyűjti. |
-| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | No    | A megoldás nem gyűjt kapacitás-és teljesítményadatok-adatokat a közvetlen Linux-ügynököktől.|
-| [SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Yes |A megoldás gyűjti a kapacitás-és teljesítményadatokat a csatlakoztatott SCOM felügyeleti csoportban lévő ügynököktől. Nem szükséges közvetlen kapcsolódás a SCOM-ügynöktől a Log Analyticshoz.|
-| [Azure Storage-fiók](../../azure-monitor/platform/collect-azure-metrics-logs.md) | No | Az Azure Storage nem tartalmaz kapacitás-és teljesítményadatokat.|
+| [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | Igen | A megoldás a Windows-ügynököktől származó kapacitás-és teljesítményadatok adatait gyűjti. |
+| [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nem    | A megoldás nem gyűjt kapacitás-és teljesítményadatok-adatokat a közvetlen Linux-ügynököktől.|
+| [SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | Igen |A megoldás gyűjti a kapacitás-és teljesítményadatokat a csatlakoztatott SCOM felügyeleti csoportban lévő ügynököktől. Nem szükséges közvetlen kapcsolódás a SCOM-ügynöktől a Log Analyticshoz.|
+| [Azure Storage-fiók](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nem | Az Azure Storage nem tartalmaz kapacitás-és teljesítményadatokat.|
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -108,7 +109,7 @@ A Capacity and Performance csempére kattintva nyissa meg a Capacity and Perform
 
 Az éles számítástechnikai környezetek nagy mértékben különböznek az egyik szervezettől a másikig. A kapacitás-és teljesítménybeli munkaterhelések a virtuális gépek működésének módjától, illetve a megszokott szempontoktól függően változhatnak. A teljesítmény mérésére szolgáló konkrét eljárások valószínűleg nem lesznek érvényesek a környezetére. Így az általánosabb előírási útmutató jobban alkalmazkodik a segítséghez. A Microsoft számos, a teljesítmény mérését segítő útmutatást tesz közzé.
 
-Az összegzéshez a megoldás a különböző forrásokból származó kapacitás-és teljesítményadatokat gyűjti, beleértve a teljesítményszámlálók adatait is. Használja ezt a kapacitást és teljesítményadatokat, amelyet a megoldás különböző felületeinek mutatnak be, és hasonlítsa össze az eredményeket a [Hyper-V cikk mérési teljesítményének](https://msdn.microsoft.com/library/cc768535.aspx) megfelelő értékekkel. Bár a cikket néhány évvel ezelőtt közzétették, a mérőszámok, megfontolások és irányelvek még érvényesek. A cikk más hasznos erőforrásokra mutató hivatkozásokat tartalmaz.
+Az összegzéshez a megoldás a különböző forrásokból származó kapacitás-és teljesítményadatokat gyűjti, beleértve a teljesítményszámlálók adatait is. Használja ezt a kapacitást és teljesítményadatokat, amelyet a megoldás különböző felületeinek mutatnak be, és hasonlítsa össze az eredményeket a [Hyper-V cikk mérési teljesítményének](https://www.microsoft.com/en-us/download/details.aspx?id=56495) megfelelő értékekkel. Bár a cikket néhány évvel ezelőtt közzétették, a mérőszámok, megfontolások és irányelvek még érvényesek. A cikk más hasznos erőforrásokra mutató hivatkozásokat tartalmaz.
 
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
@@ -116,7 +117,7 @@ Az összegzéshez a megoldás a különböző forrásokból származó kapacitá
 Az alábbi táblázat a megoldás által gyűjtött és kiszámított kapacitás-és teljesítményadatok-kereséseket tartalmazza.
 
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 |:--- |:--- |
 | Minden gazdagép memória-konfigurációja | A Perf &#124;, ahol a ObjectName = = "Capacity and Performance" és a CounterName = = "gazdagéphez hozzárendelt memória MB" &#124; összefoglaló MB = AVG (kártyabirtokos számlájának megterhelését) by példánynév |
 | Minden virtuális gép memória-konfigurációja | A Teljesítményfigyelő &#124;, ahol a ObjectName = = "Capacity and Performance" és a CounterName = = "virtuális gép hozzárendelt memóriája MB" &#124; a MB = AVG (kártyabirtokos számlájának megterhelését) by példánynév összegzése |
@@ -127,5 +128,5 @@ Az alábbi táblázat a megoldás által gyűjtött és kiszámított kapacitás
 | Az összes CSV közötti teljes késés részletezése | A Teljesítményfigyelő &#124;, ahol a ObjectName = = "Capacity and Performance" és (CounterName = = "CSV olvasási késés" vagy CounterName = = "CSV írási késése") &#124; foglalja össze a AggregatedValue = AVG (kártyabirtokos számlájának megterhelését) by bin (TimeGenerated, 1h), CounterName, példánynév |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A részletes Capacity and Performance-információk megtekintéséhez használja [a log Analytics a naplóbeli kereséseket](../../azure-monitor/log-query/log-query-overview.md) .

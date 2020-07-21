@@ -1,17 +1,17 @@
 ---
-title: Azure HPC cache-példány létrehozása
-description: Azure HPC cache-példány létrehozása
+title: Az Azure HPC cache összesített névterének használata
+description: Az Azure HPC-gyorsítótár virtuális névterének megtervezése
 author: ekpgh
 ms.service: hpc-cache
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: be09d8b903d63b9fb2b57f8b9b7486b02a60085c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.author: v-erkel
+ms.openlocfilehash: c16d2f9e9c94603361d9a096f33d559105f2d28d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045807"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497029"
 ---
 # <a name="plan-the-aggregated-namespace"></a>Az aggregált névtér tervezése
 
@@ -30,7 +30,7 @@ Vegyünk például egy olyan rendszerrendszert, amelyben az Azure-blobban tárol
 A sablon adatai egy adatközpontban tárolódnak, és a feladathoz szükséges információk a következő alkönyvtárakban tárolódnak:
 
 * */goldline/templates/acme2017/sku798*
-* */goldline/templates/acme2017/sku980* 
+* */goldline/templates/acme2017/sku980*
 
 Az adatközpont tárolási rendszere a következő exportálásokat teszi elérhetővé:
 
@@ -52,13 +52,13 @@ Egy NFS-tárolási cél több virtuális névtér elérési úttal is rendelkezh
 
 Mivel az NFS-forrás elérési útjai azonos exportálási alkönyvtárak, meg kell határoznia több névtér elérési útját is ugyanabból a tárolási céltól.
 
-| Tárolási cél állomásneve  | NFS-exportálási útvonal      | Alkönyvtár elérési útja | Névtér elérési útja    |
-|--------------------------|----------------------|-------------------|-------------------|
-| *IP-cím vagy állomásnév* | /goldline/templates  | acme2017/sku798   | /templates/sku798 |
-| *IP-cím vagy állomásnév* | /goldline/templates  | acme2017/sku980   | /templates/sku980 |
+| Tárolási cél állomásneve  | NFS-exportálási útvonal     | Alkönyvtár elérési útja | Névtér elérési útja    |
+|--------------------------|---------------------|-------------------|-------------------|
+| *IP-cím vagy állomásnév* | /goldline/templates | acme2017/sku798   | /templates/sku798 |
+| *IP-cím vagy állomásnév* | /goldline/templates | acme2017/sku980   | /templates/sku980 |
 
 Egy ügyfélalkalmazás csatlakoztathatja a gyorsítótárat, és egyszerűen elérheti az összesített névtér elérési útját, ``/source`` ``/templates/sku798`` és ``/templates/sku980`` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután eldöntötte, hogyan állíthatja be a virtuális fájlrendszert, [hozzon létre tárolási célokat](hpc-cache-add-storage.md) a háttérbeli tároló leképezéséhez az ügyfélre irányuló virtuális fájlok elérési útjaihoz.

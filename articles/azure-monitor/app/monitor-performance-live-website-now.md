@@ -3,17 +3,17 @@ title: Élő ASP.NET-webapp figyelése az Azure Application Insights segítség�
 description: Megfigyelheti egy webhely teljesítményét annak ismételt üzembe helyezése nélkül. A helyszíni vagy virtuális gépeken üzemeltetett ASP.NET webalkalmazásokkal működik.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: f4ce01ea8fc7b6bf1f294071f04e2bebce3e1d27
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 93b150b831a01989093fd916d17e31aee27beb3a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166382"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499528"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Az eszköz webalkalmazásai futásidőben Application Insights kód nem csatolhatók
 
 > [!IMPORTANT]
-> A Állapotmonitor már nem ajánlott a használatra, és **június 1-től 2021** az állapotfigyelő szolgáltatás ezen verziója nem támogatott. A Azure Monitor Application Insights ügynök váltotta fel (korábban Állapotmonitor v2 néven). Tekintse [meg a helyszíni kiszolgálók](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) és az Azure-beli [virtuális gépek és a virtuálisgép-méretezési csoport központi telepítésének](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)dokumentációját.
+> A Állapotmonitor már nem ajánlott a használatra, és **június 1-től 2021** az állapotfigyelő szolgáltatás ezen verziója nem támogatott. A Azure Monitor Application Insights ügynök váltotta fel (korábban Állapotmonitor v2 néven). Tekintse [meg a helyszíni kiszolgálók](./status-monitor-v2-overview.md) és az Azure-beli [virtuális gépek és a virtuálisgép-méretezési csoport központi telepítésének](./azure-vm-vmss-apps.md)dokumentációját.
 
 Egy élő webalkalmazást a kód módosítása vagy ismételt telepítése nélkül is kialakíthat az Azure Application Insights használatával. Ehhez [Microsoft Azure](https://azure.com)-előfizetésre van szükség.
 
@@ -97,7 +97,7 @@ Ezeket a lépéseket végrehajtva ellenőrizheti, hogy a telepítés sikeres vol
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
 
-- Ha meg kell győződnie arról, hogy a Application Insights sikeresen csatlakoztatva van, futtathatja a [Sysinternals-kezelőt](https://docs.microsoft.com/sysinternals/downloads/handle) egy parancssori ablakban annak ellenőrzéséhez, hogy az IIS betöltötte-e az applicationinsights.dll.
+- Ha meg kell győződnie arról, hogy a Application Insights sikeresen csatlakoztatva van, futtathatja a [Sysinternals-kezelőt](/sysinternals/downloads/handle) egy parancssori ablakban annak ellenőrzéséhez, hogy az IIS betöltötte-e az applicationinsights.dll.
 
   ```console
   handle.exe /p w3wp.exe
@@ -145,7 +145,7 @@ Ezt a problémát [itt](https://github.com/Microsoft/ApplicationInsights-Home/is
 * A részletes naplók kimenetének módosításához módosítsa a konfigurációs fájlt, `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` és adja hozzá a következőt: `<add key="TraceLevel" value="All" />` `appsettings` .
 Ezután indítsa újra az állapot-figyelőt.
 
-* Mivel Állapotmonitor egy .NET-alkalmazás, a .net-nyomkövetést is engedélyezheti, ha [hozzáadja a megfelelő diagnosztikát a konfigurációs fájlhoz](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). Például bizonyos helyzetekben hasznos lehet megtekinteni, hogy mi történik a hálózati szinten a [hálózati nyomkövetés konfigurálásával](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)
+* Mivel Állapotmonitor egy .NET-alkalmazás, a .net-nyomkövetést is engedélyezheti, ha [hozzáadja a megfelelő diagnosztikát a konfigurációs fájlhoz](/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element). Például bizonyos helyzetekben hasznos lehet megtekinteni, hogy mi történik a hálózati szinten a [hálózati nyomkövetés konfigurálásával](/dotnet/framework/network-programming/how-to-configure-network-tracing)
 
 ### <a name="insufficient-permissions"></a>Nem megfelelő engedélyek
   
@@ -311,7 +311,7 @@ A fordítási során már kiépített alkalmazások esetén:
 
 ## <a name="download-status-monitor"></a><a name="download"></a>Állapotmonitor letöltése
 
-- Az új [PowerShell-modul](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) használata
+- Az új [PowerShell-modul](./status-monitor-v2-overview.md) használata
 - A [Állapotmonitor telepítőjének](https://go.microsoft.com/fwlink/?LinkId=506648) letöltése és futtatása
 - Vagy futtasson [webplatform-telepítőt](https://www.microsoft.com/web/downloads/platform.aspx) , és keressen rá Application Insights állapotfigyelő.
 
@@ -321,7 +321,7 @@ A telemetriai adatok megtekintése:
 
 * [A metrikák áttekintése](../../azure-monitor/platform/metrics-charts.md) a teljesítmény és a használat figyeléséhez
 * [Események és naplók keresése][diagnostic] a problémák diagnosztizálásához
-* [Elemzések](../../azure-monitor/app/analytics.md) az összetettebb lekérdezésekhez
+* [Elemzések](../log-query/log-query-overview.md) az összetettebb lekérdezésekhez
 
 További telemetriai funkciók hozzáadása:
 
@@ -336,6 +336,6 @@ További telemetriai funkciók hozzáadása:
 [client]: ../../azure-monitor/app/javascript.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [roles]: ../../azure-monitor/app/resources-roles-access-control.md
 [usage]: ../../azure-monitor/app/javascript.md

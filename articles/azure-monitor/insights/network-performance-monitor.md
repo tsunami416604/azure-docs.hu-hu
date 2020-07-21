@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51111d92e85c6ddbdfac85c333293c2af8b31fbe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480878"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498964"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -31,12 +32,12 @@ A Network Performance Monitor három széles körű képességgel rendelkezik:
 
 * [ExpressRoute-figyelő](network-performance-monitor-expressroute.md): végpontok közötti kapcsolat és teljesítmény figyelése a fiókirodák és az Azure között az Azure ExpressRoute-en keresztül.  
 
-További információ a [Network Performance monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) által támogatott különböző képességekről online érhető el.
+További információ a [Network Performance monitor](../../networking/network-monitoring-overview.md) által támogatott különböző képességekről online érhető el.
  
 ## <a name="supported-regions"></a>Támogatott régiók
 A NPM a világ bármely részén lévő hálózatok és alkalmazások közötti kapcsolatot a következő régiók egyikében üzemeltetett munkaterületről képes figyelni:
 * Észak-Európa
-* Nyugat-Európa
+* West Europe
 * Közép-Franciaország
 * Közép-Kanada
 * USA nyugati régiója
@@ -46,7 +47,7 @@ A NPM a világ bármely részén lévő hálózatok és alkalmazások közötti 
 * USA középső régiója
 * USA keleti régiója
 * USA 2. keleti régiója
-* USA nyugati régiója, 2.
+* USA 2. nyugati régiója
 * Kelet-Japán
 * Délkelet-Ázsia
 * Dél-Kelet-Ausztrália
@@ -55,12 +56,12 @@ A NPM a világ bármely részén lévő hálózatok és alkalmazások közötti 
 * Dél-Egyesült Királyság
 * Kelet-Ázsia
 * Dél-Korea középső régiója
-* Közép-India
+* Central India
 * USA-beli kormányzati Virginia
 * Kelet-Kína 2
 
 
-A ExpressRoute-figyelő támogatott régiói listája a [dokumentációban](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)érhető el.
+A ExpressRoute-figyelő támogatott régiói listája a [dokumentációban](../../expressroute/how-to-npm.md?utm_swu=8117)érhető el.
 
 
 ## <a name="set-up-and-configure"></a>Beállítás és konfigurálás
@@ -154,7 +155,7 @@ A **csomópontok** lapon az összes olyan csomópont szerepel, amelyen telepítv
 
 1. Válassza ki vagy törölje azokat a csomópontokat, amelyek figyelését vagy leállítását meg szeretné szüntetni. 
 2. A **figyeléshez**válassza a használat lehetőséget, vagy törölje a jelölést, ha szükséges. 
-3. Kattintson a **Mentés** gombra. 
+3. Válassza a **Mentés** lehetőséget. 
 
 
 Konfigurálja a kívánt képességeket:
@@ -255,9 +256,9 @@ Az Network Performance Monitor-irányítópulton és-részletezésen keresztül 
 
 ## <a name="alerts"></a>Riasztások
 
-Network Performance Monitor a [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)riasztási képességeit használja.
+Network Performance Monitor a [Azure monitor](../platform/alerts-overview.md)riasztási képességeit használja.
 
-Ez azt jelenti, hogy minden értesítés a [műveleti csoportok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)használatával lesz kezelve.  
+Ez azt jelenti, hogy minden értesítés a [műveleti csoportok](../platform/action-groups.md)használatával lesz kezelve.  
 
 Ha Ön egy NPM-felhasználó, Log Analytics használatával hozza létre a riasztást: 
 1. Ekkor megjelenik egy hivatkozás, amely átirányítja a Azure Portalra. Kattintson rá a portál eléréséhez.
@@ -268,7 +269,7 @@ Ha Ön egy NPM-felhasználó, Log Analytics használatával hozza létre a riasz
 Ha Ön egy NPM-felhasználó, Azure Portal használatával hozza létre a riasztást:  
 1. Dönthet úgy is, hogy közvetlenül adja meg az e-mail-címet, vagy választhatja a riasztások létrehozását a műveleti csoportok használatával.
 2. Ha úgy dönt, hogy közvetlenül adja meg az e-mail-címet, a rendszer létrehoz egy **NPM e-mail-ActionGroup** nevű műveleti csoportot, és hozzáadja az e-mail-azonosítót az adott műveleti csoporthoz.
-3. Ha a műveleti csoportok használata mellett dönt, ki kell választania egy korábban létrehozott műveleti csoportot. Itt megtudhatja, hogyan hozhat létre egy műveleti csoportot [.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
+3. Ha a műveleti csoportok használata mellett dönt, ki kell választania egy korábban létrehozott műveleti csoportot. Itt megtudhatja, hogyan hozhat létre egy műveleti csoportot [.](../platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) 
 4. A riasztás sikeres létrehozása után használhatja a riasztások kezelése hivatkozást a riasztások kezeléséhez. 
 
 Minden alkalommal, amikor riasztást hoz létre, a NPM egy lekérdezés-alapú napló-riasztási szabályt hoz létre Azure Monitorban. A lekérdezés alapértelmezés szerint 5 percenként aktiválódik. Az Azure monitor nem számítja fel a létrehozott első 250-es naplózási riasztási szabályokat, és az 250-es napló riasztási szabályának korlátja fölötti riasztási szabályok számlázása a [Azure monitor díjszabási oldalon, a riasztások díjszabása](https://azure.microsoft.com/pricing/details/monitor/)szerint történik.
@@ -285,5 +286,5 @@ A díjszabással kapcsolatos információk [online állapotban](network-performa
 
 * **Csatlakozzon a kohorszhoz:** Mindig érdeklik, hogy az új ügyfelek csatlakozzanak a kohorszhoz. Ennek részeként korai hozzáférést kap az új funkciókhoz, és lehetőséget nyújt a Network Performance Monitor javítására. Ha érdekli a csatlakozás, töltse ki ezt a [gyors kérdőívet](https://aka.ms/npmcohort). 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 További információ a [Teljesítményfigyelőről](network-performance-monitor-performance-monitor.md), a [szolgáltatás-csatlakozási figyelőről](network-performance-monitor-performance-monitor.md)és a [ExpressRoute-figyelőről](network-performance-monitor-expressroute.md). 

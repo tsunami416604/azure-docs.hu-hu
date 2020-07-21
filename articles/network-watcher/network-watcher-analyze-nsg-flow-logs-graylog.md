@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 406b02ee2e9c2f4e78ce50fc7160b382b9662303
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a4aa4cc545d6941f144ce0657ede7199d4f8f57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737427"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497114"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Hálózati biztonsági csoport folyamatábráinak kezelése és elemzése az Azure-ban Network Watcher és Graylog használatával
 
@@ -190,7 +190,7 @@ Most, hogy létrehozott egy kapcsolódást a folyamat naplóihoz a Logstash hasz
 
    Miután elindította a bemenetet, megjelenik a **helyi bemenetek** szakaszban, az alábbi képen látható módon:
 
-   ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
+   ![Képernyőkép, amely az elindított bemenetet tartalmazó helyi bemenetek szakaszt mutatja.](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
    Az Graylog kapcsolatos további tudnivalókért tekintse meg a [dokumentációt](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
 
@@ -244,6 +244,6 @@ Az irányítópult címére kattintva megtekintheti, de most már üres is lehet
 
 A Network Watcher és a Graylog integrálásával mostantól kényelmes és központosított módon kezelheti és jelenítheti meg a hálózati biztonsági csoport folyamatábráit. A Graylog számos más hatékony funkcióval rendelkezik, mint például a streamek és a riasztások, amelyek a flow-naplók további kezeléséhez és a hálózati forgalom jobb megismeréséhez is használhatók. Most, hogy már beállította a Graylog, és csatlakozott az Azure-hoz, nyugodtan folytassa az általa kínált egyéb funkciók megismerésével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan jelenítheti meg a hálózati biztonsági csoport folyamatának naplóit Power BI a [hálózati biztonsági csoport adatforgalmának naplófájljainak Power bi](network-watcher-visualize-nsg-flow-logs-power-bi.md)használatával történő megjelenítésével.

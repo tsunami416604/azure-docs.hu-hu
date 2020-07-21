@@ -13,18 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a33d74c01771c2b60ac8667a1494ebe80271a8ac
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698512"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494785"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-bővítmény Linuxra (Microsoft. OSTCExtensions. DSCForLinux)
 
 A kívánt állapot-konfiguráció (DSC) egy olyan felügyeleti platform, amelynek segítségével az informatikai és fejlesztési infrastruktúra felügyelhető kódként való konfigurálásával.
 
 > [!NOTE]
-> A Linux rendszerhez készült DSC-bővítmény és a [linux Azure monitor virtuálisgép-bővítménye](/azure/virtual-machines/extensions/oms-linux) jelenleg ütközik, és nem támogatott egymás melletti konfigurációban. Ne használja együtt a két megoldást ugyanazon a virtuális gépen.
+> A Linux rendszerhez készült DSC-bővítmény és a [linux Azure monitor virtuálisgép-bővítménye](./oms-linux.md) jelenleg ütközik, és nem támogatott egymás melletti konfigurációban. Ne használja együtt a két megoldást ugyanazon a virtuális gépen.
 
 A DSCForLinux bővítményt a Microsoft közzétette és támogatja. A bővítmény telepíti a és a DSC-ügynököt az Azure Virtual Machines szolgáltatásban. A DSC bővítmény a következő műveleteket is elvégezheti:
 
@@ -41,7 +42,7 @@ A DSCForLinux bővítményt a Microsoft közzétette és támogatja. A bővítm�
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-A DSC Linux-bővítmény támogatja az [Azure-ban támogatott összes Linux-disztribúciót](/azure/virtual-machines/linux/endorsed-distros) , kivéve a következőket:
+A DSC Linux-bővítmény támogatja az [Azure-ban támogatott összes Linux-disztribúciót](../linux/endorsed-distros.md) , kivéve a következőket:
 
 | Disztribúció | Verzió |
 |---|---|
@@ -432,5 +433,5 @@ Bizonyos esetekben a DSC Linux bővítmény nem tudja telepíteni a következőt
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/community/). Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a bővítményekről: [virtuálisgép-bővítmények és-szolgáltatások Linux rendszerhez](features-linux.md).

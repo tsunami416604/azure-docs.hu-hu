@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c74d4f0b2e0b2d8ca09c9b2c1f1091594f5657dc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2faf33fdd58090a335804f084ef2d1f180a9754a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111014"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499324"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights ügynök (korábbi nevén Állapotmonitor v2): részletes utasítások
 
@@ -29,9 +29,7 @@ Első lépésként szükség van egy kialakítási kulcsra. További informáci�
 A PowerShellnek rendszergazdai szintű engedélyekkel kell rendelkeznie a számítógép módosításához.
 ### <a name="execution-policy"></a>Végrehajtási házirend
 - Leírás: alapértelmezés szerint a PowerShell-parancsfájlok futtatása le van tiltva. Javasoljuk, hogy csak az aktuális hatókörhöz engedélyezze a RemoteSigned-parancsfájlokat.
-- Hivatkozás: [a végrehajtási házirendek és a](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) [Set-ExecutionPolicy](
-https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
-).
+- Hivatkozás: [a végrehajtási házirendek és a](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6).
 - Parancs: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` .
 - Választható paraméter:
     - `-Force`. Megkerüli a megerősítési kérést.
@@ -80,7 +78,7 @@ Ezek a lépések előkészítik a kiszolgálót a PowerShell-galéria-ból szár
 1. Futtassa a PowerShellt rendszergazdaként egy emelt szintű végrehajtási házirenddel.
 2. Telepítse a NuGet csomag szolgáltatóját.
     - Leírás: szükség van erre a szolgáltatóra, hogy együttműködjön a NuGet-alapú adattárakkal, például a PowerShell-galériaokkal.
-    - Hivatkozás: [install-PackageProvider](https://docs.microsoft.com/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
+    - Hivatkozás: [install-PackageProvider](/powershell/module/packagemanagement/install-packageprovider?view=powershell-6).
     - Parancs: `Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201` .
     - Választható paraméterek:
         - `-Proxy`. Megad egy proxykiszolgálót a kérelemhez.
@@ -100,7 +98,7 @@ Ezek a lépések előkészítik a kiszolgálót a PowerShell-galéria-ból szár
 
 3. PowerShell-galéria konfigurálása megbízható tárházként.
     - Leírás: alapértelmezés szerint a PowerShell-galéria nem megbízható tárház.
-    - Hivatkozás: [set-PSRepository](https://docs.microsoft.com/powershell/module/powershellget/set-psrepository?view=powershell-6).
+    - Hivatkozás: [set-PSRepository](/powershell/module/powershellget/set-psrepository?view=powershell-6).
     - Parancs: `Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted` .
     - Választható paraméter:
         - `-Proxy`. Megad egy proxykiszolgálót a kérelemhez.
@@ -146,7 +144,7 @@ Ezek a lépések az az. ApplicationMonitor modult töltik le PowerShell-galéria
 1. Győződjön meg arról, hogy a PowerShell-galéria összes előfeltétele teljesül.
 2. Futtassa a PowerShellt rendszergazdaként egy emelt szintű végrehajtási házirenddel.
 3. Telepítse az az. ApplicationMonitor modult.
-    - Hivatkozás: [install-Module](https://docs.microsoft.com/powershell/module/powershellget/install-module?view=powershell-6).
+    - Hivatkozás: [install-Module](/powershell/module/powershellget/install-module?view=powershell-6).
     - Parancs: `Install-Module -Name Az.ApplicationMonitor` .
     - Választható paraméterek:
         - `-Proxy`. Megad egy proxykiszolgálót a kérelemhez.
@@ -172,7 +170,7 @@ További információ: PowerShell- [modul telepítése](/powershell/scripting/de
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Nupkg kibontása zip-fájlként a Expand-Archive (v 1.0.1.0) használatával
 
 - Leírás: a Microsoft. PowerShell. Archive (v 1.0.1.0) alapverziója nem tudja kibontani a nupkg-fájlokat. Nevezze át a fájlt a. zip kiterjesztéssel.
-- Hivatkozás: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
+- Hivatkozás: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
 - Parancs
 
     ```console
@@ -186,7 +184,7 @@ További információ: PowerShell- [modul telepítése](/powershell/scripting/de
 #### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Nupkg kicsomagolása a Expand-Archive (v 1.1.0.0) használatával
 
 - Leírás: a Expand-Archive aktuális verziójának használatával bontsa ki a nupkg-fájlokat a bővítmény módosítása nélkül.
-- Hivatkozás: [Expand-Archive](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) és [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
+- Hivatkozás: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) és [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Parancs
 
     ```console
@@ -199,7 +197,7 @@ További információ: PowerShell- [modul telepítése](/powershell/scripting/de
 Telepítse a manuálisan letöltött PowerShell-modult egy PowerShell-könyvtárba, hogy a PowerShell-munkamenetek is felderíthetők legyenek.
 További információ: PowerShell- [modul telepítése](/powershell/scripting/developer/module/installing-a-powershell-module).
 
-Ha a modult bármely más könyvtárba telepíti, manuálisan importálja a modult [importálási modul](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6)használatával.
+Ha a modult bármely más könyvtárba telepíti, manuálisan importálja a modult [importálási modul](/powershell/module/microsoft.powershell.core/import-module?view=powershell-6)használatával.
 
 > [!IMPORTANT] 
 > A DLL-eket relatív elérési utakon keresztül kell telepíteni.
@@ -218,14 +216,14 @@ Ha a privát intraneten lévő számítógépet figyeli, a HTTP-forgalmat egy pr
 A (z) és a (z) PowerShell-galéria által támogatott PowerShell-parancsok támogatják a `-Proxy` ApplicationMonitor.
 A telepítési parancsfájlok írásakor tekintse át a fenti utasításokat.
 
-A Application Insights SDK-nak el kell küldenie az alkalmazás telemetria a Microsoftnak. Javasoljuk, hogy konfigurálja az alkalmazás proxybeállításait a web.config fájlban. További információ [: Application INSIGHTS GYIK: proxy átadó](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#proxy-passthrough).
+A Application Insights SDK-nak el kell küldenie az alkalmazás telemetria a Microsoftnak. Javasoljuk, hogy konfigurálja az alkalmazás proxybeállításait a web.config fájlban. További információ [: Application INSIGHTS GYIK: proxy átadó](../faq.md#proxy-passthrough).
 
 
 ## <a name="enable-monitoring"></a>Monitorozás engedélyezése
 
 A `Enable-ApplicationInsightsMonitoring` parancs használatával engedélyezze a figyelést.
 
-A parancsmag használatának részletes ismertetését az [API-referenciában](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring) tekintheti meg.
+A parancsmag használatának részletes ismertetését az [API-referenciában](./status-monitor-v2-api-reference.md#enable-applicationinsightsmonitoring) tekintheti meg.
 
 
 
@@ -235,7 +233,7 @@ A parancsmag használatának részletes ismertetését az [API-referenciában](h
 
 - [Ismerje meg a mérőszámokat](../../azure-monitor/platform/metrics-charts.md) a teljesítmény és a használat figyeléséhez.
 - [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md) a problémák diagnosztizálásához.
-- További speciális lekérdezésekhez [használja az elemzést](../../azure-monitor/app/analytics.md) .
+- További speciális lekérdezésekhez [használja az elemzést](../log-query/log-query-overview.md) .
 - [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).
 
  További telemetriai funkciók hozzáadása:

@@ -12,11 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 1461ba4ae0bea61b3a220c22144a31eade6cdf04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bd98d69c9a941e8da08fc7ab798c37b1a22f0bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708807"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498405"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Az Azure SQL felügyelt példányának üzembe helyezése egy példány-készleten
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,11 +30,11 @@ A következő táblázat a példány-készletekhez kapcsolódó elérhető műve
 
 |Parancs|Azure Portal|PowerShell|
 |:---|:---|:---|
-|Példány-készlet létrehozása|Nem|Yes|
-|Példány készletének frissítése (korlátozott számú tulajdonság)|Nem |Yes |
-|Példány-készlet használatának és tulajdonságainak keresése|Nem|Yes |
-|Példány-készlet törlése|Nem|Yes|
-|Felügyelt példány létrehozása egy példány-készleten belül|Nem|Yes|
+|Példány-készlet létrehozása|Nem|Igen|
+|Példány készletének frissítése (korlátozott számú tulajdonság)|Nem |Igen |
+|Példány-készlet használatának és tulajdonságainak keresése|Nem|Igen |
+|Példány-készlet törlése|Nem|Igen|
+|Felügyelt példány létrehozása egy példány-készleten belül|Nem|Igen|
 |Felügyelt példány erőforrás-használatának frissítése|Igen |Igen|
 |Felügyelt példány használatának és tulajdonságainak keresése|Igen|Igen|
 |Felügyelt példány törlése a készletből|Igen|Igen|
@@ -42,7 +43,7 @@ A következő táblázat a példány-készletekhez kapcsolódó elérhető műve
 
 Elérhető [PowerShell-parancsok](https://docs.microsoft.com/powershell/module/az.sql/):
 
-|Parancsmag |Description |
+|Parancsmag |Leírás |
 |:---|:---|
 |[Új – AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Létrehoz egy SQL-alapú felügyelt példány-készletet. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Egy példány-készlet adatait adja vissza. |
@@ -99,7 +100,7 @@ $instancePool = New-AzSqlInstancePool `
   -Name "mi-pool-name" `
   -SubnetId $subnet.Id `
   -LicenseType "LicenseIncluded" `
-  -VCore 80 `
+  -VCore 8 `
   -Edition "GeneralPurpose" `
   -ComputeGeneration "Gen5" `
   -Location "westeurope"
@@ -115,13 +116,13 @@ A példány-készlet sikeres üzembe helyezése után itt az ideje, hogy felügy
 Felügyelt példány létrehozásához hajtsa végre a következő parancsot:
 
 ```powershell
-$instanceOne = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 2 -StorageSizeInGB 256
+$instanceOne = $instancePool | New-AzSqlInstance -Name "mi-one-name" -VCore 2 -StorageSizeInGB 256
 ```
 
 Egy példány egy készleten belüli üzembe helyezése néhány percet vesz igénybe. Az első példány létrehozása után további példányok is létrehozhatók:
 
 ```powershell
-$instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 4 -StorageSizeInGB 512
+$instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-two-name" -VCore 4 -StorageSizeInGB 512
 ```
 
 ## <a name="create-a-database"></a>Adatbázis létrehozása 
@@ -252,7 +253,7 @@ Meglévő adatbázisok áthelyezése:
 Ha több adatbázis van, ismételje meg a folyamatot az egyes adatbázisokhoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](../database/features-comparison.md).
 - További információ a VNet konfigurálásáról: [SQL felügyelt példány VNet konfigurációja](connectivity-architecture-overview.md).

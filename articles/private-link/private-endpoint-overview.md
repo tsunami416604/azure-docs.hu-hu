@@ -7,11 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: f4e5bbdc50d99eca774dc5b96657ac8bfdebca17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c739c6483832c08a91f2a5318853bf48e5d41854
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414147"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496961"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
@@ -23,7 +24,7 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
 
 |Tulajdonság  |Leírás |
 |---------|---------|
-|Name    |    Az erőforráscsoporthoz tartozó egyedi név.      |
+|Név    |    Az erőforráscsoporthoz tartozó egyedi név.      |
 |Alhálózat    |  A magánhálózati IP-címek virtuális hálózatról való üzembe helyezésére és lefoglalására szolgáló alhálózat. Az alhálózatra vonatkozó követelményekért tekintse meg a jelen cikk korlátozások című szakaszát.         |
 |Magánhálózati kapcsolat erőforrása    |   A privát kapcsolati erőforrás az erőforrás-AZONOSÍTÓval vagy az aliassal való kapcsolódáshoz az elérhető típusok listájából. Az erőforrásnak elküldett összes forgalomhoz egyedi hálózati azonosító jön létre.       |
 |Cél alerőforrás   |      A kapcsolódáshoz használandó alerőforrás. Minden egyes privát kapcsolati erőforrástípus különböző beállításokkal választható ki a megfelelő beállítás alapján.    |
@@ -68,7 +69,7 @@ A privát kapcsolati erőforrás egy adott privát végpont célját célozza me
 |**Azure Kubernetes Service – Kubernetes API** | Microsoft. Tárolószolgáltatás/managedClusters    | managedCluster |
 |**Azure Search** | Microsoft. Search/searchService| searchService|  
 |**Azure Container Registry** | Microsoft. ContainerRegistry/nyilvántartók    | registry |
-|**Azure App Configuration** | Microsoft. Appconfiguration/configurationStores    | configurationStore |
+|**Azure App Configuration** | Microsoft. Appconfiguration/configurationStores    | configurationStores |
 |**Azure Backup** | Microsoft. Recoveryservices szolgáltatónál/tárolók    | tár |
 |**Azure Event Hub** | Microsoft. EventHub/névterek    | névtér |
 |**Azure Service Bus** | Microsoft. ServiceBus/névterek | névtér |
@@ -118,12 +119,12 @@ A privát végpontok számára a DNS konfigurálásával kapcsolatos ajánlott e
 A következő táblázat tartalmazza a privát végpontok használatakor felismert korlátozások listáját: 
 
 
-|Korlátozás |Leírás |Kezelés  |
+|Korlátozás |Leírás |Kockázatcsökkentés  |
 |---------|---------|---------|
 |A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontra    |A NSG nem támogatott a privát végpontokon. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken. Az összes ügyfél-alhálózat útvonala egy/32 előtagot használ, és az alapértelmezett útválasztási viselkedés megváltoztatásához hasonló UDR van szükség.  | A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja. Egyéni útvonalak üzembe helyezése a/32 előtaggal a privát végponti útvonalak felülbírálásához. A kimenő kapcsolatok NSG és figyelési információi továbbra is támogatottak, és használhatók        |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Privát végpont létrehozása SQL Database a portál használatával](create-private-endpoint-portal.md)
 - [Privát végpont létrehozása SQL Databasehoz a PowerShell használatával](create-private-endpoint-powershell.md)
 - [Privát végpont létrehozása SQL Databasehoz a parancssori felület használatával](create-private-endpoint-cli.md)

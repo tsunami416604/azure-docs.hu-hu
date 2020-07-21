@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 97bea90e67b9449a8f5fd7b333b9ac149abef2f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945460"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498951"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>A Key Vault szolgáltatás figyelése Azure Monitor for Key Vault (előzetes verzió)
 A Key Vault (előzetes verzió) Azure Monitor a kulcstartók átfogó figyelését teszi lehetővé a Key Vault kérelmek, a teljesítmény, a hibák és a késések egységes áttekintésével.
@@ -24,7 +24,7 @@ Mielőtt beugrott a felületre, tisztában kell lennie azzal, hogyan mutatja be 
 -   Egy adott kulcstartó **elemzésének részletezése** részletes elemzés elvégzéséhez.
 -    **Testreszabható** , ahol megváltoztathatja, hogy mely metrikákat szeretné megtekinteni, módosítani vagy beállítani a korlátozásokhoz illeszkedő küszöbértékeket, és mentheti a saját munkafüzetét. A munkafüzetben található diagramok az Azure-irányítópultokon rögzíthetők.
 
-A Key Vault Azure Monitor a naplók és a metrikák összeadásával globális figyelési megoldást biztosít. Az összes felhasználó hozzáférhet a metrika-alapú figyelési adatokhoz, azonban a naplókon alapuló vizualizációk belefoglalása esetén a felhasználóknak [engedélyezniük kell a Azure Key Vault naplózását](https://docs.microsoft.com/azure/key-vault/key-vault-logging).
+A Key Vault Azure Monitor a naplók és a metrikák összeadásával globális figyelési megoldást biztosít. Az összes felhasználó hozzáférhet a metrika-alapú figyelési adatokhoz, azonban a naplókon alapuló vizualizációk belefoglalása esetén a felhasználóknak [engedélyezniük kell a Azure Key Vault naplózását](../../key-vault/general/logging.md).
 
 ## <a name="configuring-your-key-vaults-for-monitoring"></a>Kulcstartók konfigurálása figyeléshez
 
@@ -39,7 +39,7 @@ A Key Vault Azure Monitor a naplók és a metrikák összeadásával globális f
 
 3. A diagnosztikai beállítások mentése után megtekintheti az összes log-alapú diagramot és vizualizációt a Key Vault-adatfelismerések alatt. Vegye figyelembe, hogy a naplók feltöltésének megkezdése több percet is igénybe vehet.
 
-4. Ha további segítségre van a Key Vault szolgáltatás diagnosztikai naplóinak engedélyezéséhez, olvassa el a [teljes útmutatót](https://docs.microsoft.com/azure/key-vault/key-vault-logging).
+4. Ha további segítségre van a Key Vault szolgáltatás diagnosztikai naplóinak engedélyezéséhez, olvassa el a [teljes útmutatót](../../key-vault/general/logging.md).
 
 ## <a name="view-from-azure-monitor"></a>Nézet Azure Monitor
 
@@ -75,7 +75,7 @@ A munkafüzetben lévő oszlopok feltételes színkódolással vagy intenzitást
 
 A munkafüzet megjeleníti a sikereket (2xx), a hitelesítési hibákat (401/403 állapotkódok), a szabályozást (429 állapotkódok) és más hibákat (4xx).
 
-Ha jobban meg szeretné ismerni az egyes állapotkódok által képviselt kódokat, javasoljuk, hogy olvassa el [Azure Key Vault állapot-és reagálási kódok](https://docs.microsoft.com/azure/key-vault/authentication-requests-and-responses)dokumentációját.
+Ha jobban meg szeretné ismerni az egyes állapotkódok által képviselt kódokat, javasoljuk, hogy olvassa el [Azure Key Vault állapot-és reagálási kódok](../../key-vault/general/authentication-requests-and-responses.md)dokumentációját.
 
 ## <a name="operations--latency-workbook"></a>Műveletek & késési munkafüzet
 
@@ -120,7 +120,7 @@ Az operatív munkafüzet lehetővé teszi a felhasználók számára az összes 
 A felhasználók a felső táblában megadott tranzakciótípusok alapján is kihasználhatják a nézeteket, amelyek dinamikusan frissítik az alsó táblázatot, ahol a felhasználók megtekinthetik a teljes művelet részleteit egy előugró környezet ablaktáblán.
 
 >[!NOTE]
-> Vegye figyelembe, hogy a felhasználóknak engedélyezniük kell a diagnosztikai beállításokat a munkafüzet megtekintéséhez. Ha többet szeretne megtudni a diagnosztikai beállítások engedélyezéséről, olvassa el a [Azure Key Vault naplózással](https://docs.microsoft.com/azure/key-vault/general/logging)kapcsolatos további tudnivalókat.
+> Vegye figyelembe, hogy a felhasználóknak engedélyezniük kell a diagnosztikai beállításokat a munkafüzet megtekintéséhez. Ha többet szeretne megtudni a diagnosztikai beállítások engedélyezéséről, olvassa el a [Azure Key Vault naplózással](../../key-vault/general/logging.md)kapcsolatos további tudnivalókat.
 
 ## <a name="pin-and-export"></a>PIN-kód és exportálás
 
@@ -164,7 +164,7 @@ Ez a szakasz a Azure Monitor for Key Vault (előzetes verzió) használata sorá
 
 ### <a name="resolving-performance-issues-or-failures"></a>Teljesítménnyel kapcsolatos problémák és hibák elhárítása
 
-A Key Vault (előzetes verzió) Azure Monitor azonosított kulcstartóval kapcsolatos problémák elhárításához tekintse meg a [Azure Key Vault dokumentációját](https://docs.microsoft.com/azure/key-vault/).
+A Key Vault (előzetes verzió) Azure Monitor azonosított kulcstartóval kapcsolatos problémák elhárításához tekintse meg a [Azure Key Vault dokumentációját](../../key-vault/index.yml).
 
 ### <a name="why-can-i-only-see-200-key-vaults"></a>Miért csak a 200 Key vaultot láthatom
 
@@ -206,6 +206,6 @@ Emellett, ha nagy számú kulcstartót és előfizetést választott ki, előfor
 
 Szerkesztheti a meglévő munkafüzetet a szerkesztési mód használatával, majd mentheti a munkáját új munkafüzetként, amely az összes új módosítást tartalmazni fogja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerkedjen meg a forgatókönyvekkel, amelyek támogatják az új és a meglévő jelentések testreszabását, valamint az [interaktív jelentések Azure monitor-munkafüzetekkel való létrehozását](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)ismertető áttekintést.
+Ismerkedjen meg a forgatókönyvekkel, amelyek támogatják az új és a meglévő jelentések testreszabását, valamint az [interaktív jelentések Azure monitor-munkafüzetekkel való létrehozását](../platform/workbooks-overview.md)ismertető áttekintést.

@@ -5,20 +5,21 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 626a8c96fdc247db174e2cbcd2e5c99cec43d2ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a51da4f4685d7d7b1c597d8a9b9dd78270f29b1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770962"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499273"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>A helyszíni kiszolgálók Azure Monitor Application Insights ügynökének üzembe helyezése
 
 > [!IMPORTANT]
-> Ez az útmutató a Application Insights-ügynök helyszíni és nem Azure-beli Felhőbeli üzembe helyezéséhez ajánlott. Az [Azure-beli virtuális gépek és a virtuálisgép-méretezési csoport üzembe helyezésének](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)ajánlott módszere.
+> Ez az útmutató a Application Insights-ügynök helyszíni és nem Azure-beli Felhőbeli üzembe helyezéséhez ajánlott. Az [Azure-beli virtuális gépek és a virtuálisgép-méretezési csoport üzembe helyezésének](./azure-vm-vmss-apps.md)ajánlott módszere.
 
 Application Insights ügynök (korábbi nevén Állapotmonitor v2) a [PowerShell-Galéria](https://www.powershellgallery.com/packages/Az.ApplicationMonitor)közzétett PowerShell-modul.
-Lecseréli [Állapotmonitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
-A rendszer elküldje a telemetria a Azure Portalba, ahol [nyomon](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) követheti az alkalmazást.
+Lecseréli [Állapotmonitor](./monitor-performance-live-website-now.md).
+A rendszer elküldje a telemetria a Azure Portalba, ahol [nyomon](./app-insights-overview.md) követheti az alkalmazást.
 
 > [!NOTE]
 > A modul jelenleg csak az IIS-ben üzemeltetett .NET-webalkalmazások Code uninstrumentation-alapú rendszerállapotát támogatja. SDK használata ASP.NET Core, Java és Node.js alkalmazásokhoz.
@@ -35,14 +36,14 @@ Application Insights ügynök itt található: https://www.powershellgallery.com
 - Tekintse meg az első lépések [részletes leírását](status-monitor-v2-detailed-instructions.md) .
 
 ## <a name="powershell-api-reference"></a>PowerShell API-referenciák
-- [ApplicationInsightsMonitoring letiltása](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-applicationinsightsmonitoring)
-- [InstrumentationEngine letiltása](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-instrumentationengine)
-- [ApplicationInsightsMonitoring engedélyezése](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)
-- [InstrumentationEngine engedélyezése](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-instrumentationengine)
-- [Get-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringconfig)
-- [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus)
-- [Set-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#set-applicationinsightsmonitoringconfig)
-- [Start – ApplicationInsightsMonitoringTrace](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#start-applicationinsightsmonitoringtrace)
+- [ApplicationInsightsMonitoring letiltása](./status-monitor-v2-api-reference.md#disable-applicationinsightsmonitoring)
+- [InstrumentationEngine letiltása](./status-monitor-v2-api-reference.md#disable-instrumentationengine)
+- [ApplicationInsightsMonitoring engedélyezése](./status-monitor-v2-api-reference.md#enable-applicationinsightsmonitoring)
+- [InstrumentationEngine engedélyezése](./status-monitor-v2-api-reference.md#enable-instrumentationengine)
+- [Get-ApplicationInsightsMonitoringConfig](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringconfig)
+- [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus)
+- [Set-ApplicationInsightsMonitoringConfig](./status-monitor-v2-api-reference.md#set-applicationinsightsmonitoringconfig)
+- [Start – ApplicationInsightsMonitoringTrace](./status-monitor-v2-api-reference.md#start-applicationinsightsmonitoringtrace)
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 - [Hibaelhárítás](status-monitor-v2-troubleshoot.md)
@@ -59,25 +60,25 @@ Ezeket a beállításokat a [részletes utasítások](status-monitor-v2-detailed
 
 - Támogatja az Állapotmonitor v2 ASP.NET Core alkalmazásokat?
 
-  *Nem*. ASP.NET Core alkalmazások figyelésének engedélyezéséhez lásd: [Application Insights ASP.net Core alkalmazásokhoz](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core). Nincs szükség a StatusMonitor telepítésére egy ASP.NET Core alkalmazáshoz. Ez akkor is igaz, ha ASP.NET Core alkalmazást az IIS üzemelteti.
+  *Nem*. ASP.NET Core alkalmazások figyelésének engedélyezéséhez lásd: [Application Insights ASP.net Core alkalmazásokhoz](./asp-net-core.md). Nincs szükség a StatusMonitor telepítésére egy ASP.NET Core alkalmazáshoz. Ez akkor is igaz, ha ASP.NET Core alkalmazást az IIS üzemelteti.
 
 - Hogyan ellenőrizze, hogy az engedélyezés sikeres volt-e?
 
-  - A [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus) parancsmag használatával ellenőrizheti, hogy az engedélyezés sikeres volt-e.
-  - Javasoljuk, hogy [élő metrikák](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) használatával gyorsan megállapítsa, hogy az alkalmazás telemetria küld-e.
+  - A [Get-ApplicationInsightsMonitoringStatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) parancsmag használatával ellenőrizheti, hogy az engedélyezés sikeres volt-e.
+  - Javasoljuk, hogy [élő metrikák](./live-stream.md) használatával gyorsan megállapítsa, hogy az alkalmazás telemetria küld-e.
 
   - A [log Analytics](../log-query/get-started-portal.md) használatával is listázhatja az összes jelenleg telemetria küldő felhőalapú szerepkört:
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A telemetriai adatok megtekintése:
 
 * [Ismerje meg a mérőszámokat](../../azure-monitor/platform/metrics-charts.md) a teljesítmény és a használat figyeléséhez.
 * [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md) a problémák diagnosztizálásához.
-* További speciális lekérdezésekhez [használja az elemzést](../../azure-monitor/app/analytics.md) .
+* További speciális lekérdezésekhez [használja az elemzést](../log-query/log-query-overview.md) .
 * [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).
 
 További telemetriai funkciók hozzáadása:
@@ -85,4 +86,3 @@ További telemetriai funkciók hozzáadása:
 * [Létrehozhat webes teszteket](monitor-web-app-availability.md) annak biztosításához, hogy a hely elérhető maradjon.
 * [Vegyen fel webes ügyfél-telemetria](../../azure-monitor/app/javascript.md) a kivételek megjelenítéséhez a weboldali kódból és a nyomkövetési hívások engedélyezéséhez.
 * [Adja hozzá a Application INSIGHTS SDK-t a kódhoz](../../azure-monitor/app/asp-net.md) , hogy nyomkövetési és naplózási hívásokat helyezzen el.
-

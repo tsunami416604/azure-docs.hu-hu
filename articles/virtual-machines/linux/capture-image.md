@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 54f82d0ba4b0c5de0b4e373416857d670d4bba53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26c8a8746fe748585f36e5282ad6e694cdcef1f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83723306"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494462"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Virtuális gép vagy VHD felügyelt rendszerképének létrehozása
 
@@ -24,7 +25,7 @@ Felügyelt rendszerkép létrehozásához el kell távolítania a személyes fi�
 
 Ha meglévő linuxos virtuális gépe másolatát szeretné létrehozni a biztonsági mentéshez vagy a hibakereséshez, vagy egy speciális linuxos virtuális merevlemezt szeretne feltölteni egy helyszíni virtuális gépről, tekintse meg a [Linux rendszerű virtuális gép feltöltése és létrehozása az egyéni](upload-vhd.md)lemezképből című témakört.  
 
-Az **Azure VM rendszerkép-készítő (nyilvános előzetes)** szolgáltatásával egyéni rendszerképet hozhat létre, nem kell megtanulnia semmilyen eszközt, vagy a telepítő folyamatokat kell beállítania, egyszerűen biztosítva a rendszerkép-konfigurációt, és a rendszerkép-szerkesztő létrehozza a rendszerképet. További információ: [első lépések az Azure VM rendszerkép-készítővel](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview).
+Az **Azure VM rendszerkép-készítő (nyilvános előzetes)** szolgáltatásával egyéni rendszerképet hozhat létre, nem kell megtanulnia semmilyen eszközt, vagy a telepítő folyamatokat kell beállítania, egyszerűen biztosítva a rendszerkép-konfigurációt, és a rendszerkép-szerkesztő létrehozza a rendszerképet. További információ: [első lépések az Azure VM rendszerkép-készítővel](./image-builder-overview.md).
 
 Rendszerkép létrehozása előtt a következő elemekre lesz szüksége:
 
@@ -135,5 +136,5 @@ az vm show \
    --show-details
 ```
 
-## <a name="next-steps"></a>További lépések
-A képek nagy léptékű létrehozásához, tárolásához és megosztásához tekintse meg a [megosztott lemezképek gyűjteményét](shared-images.md).
+## <a name="next-steps"></a>Következő lépések
+A képek nagy léptékű létrehozásához, tárolásához és megosztásához tekintse meg a [megosztott lemezképek gyűjteményét](../shared-images-cli.md).

@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32fd0da0095c34c4ef199eb703881e048473f0a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733673"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499358"
 ---
 # <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights Agent API-referenciája
 
@@ -118,7 +119,7 @@ A beállítással egyetlen telepítési parancsfájlt is létrehozhat több szá
 - A **MachineFilter** a számítógép vagy a virtuális gép nevének kötelező C# regexje.
     - a ". *" mindennek megfelel
     - A "számítógépnév" csak a pontosan megadott névvel rendelkező számítógépekhez fog megfelelni.
-- A **AppFilter** az IIS-hely nevének kötelező C#-alapú regexje. A [Get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite)parancs futtatásával lekérheti a kiszolgálón található helyek listáját.
+- A **AppFilter** az IIS-hely nevének kötelező C#-alapú regexje. A [Get-iissite](/powershell/module/iisadministration/get-iissite)parancs futtatásával lekérheti a kiszolgálón található helyek listáját.
     - a ". *" mindennek megfelel
     - A "SiteName" csak az IIS-helynek felel meg, amely a pontos nevet adja meg.
 - A **InstrumentationKey** az előző két szűrőnek megfelelő alkalmazások figyelésének engedélyezéséhez szükséges.
@@ -134,7 +135,7 @@ A kialakítási motor terhelést hoz létre, és alapértelmezés szerint ki van
 **Választható.** Ezzel a kapcsolóval fogadhatja el a fej nélküli telepítések licencét és adatvédelmi nyilatkozatát.
 
 #### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
-Ha webkiszolgálókat tartalmazó fürttel rendelkezik, lehet, hogy [megosztott konfigurációt](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)használ.
+Ha webkiszolgálókat tartalmazó fürttel rendelkezik, lehet, hogy [megosztott konfigurációt](/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)használ.
 A HttpModule nem lehet beinjektálni ebbe a megosztott konfigurációba.
 Ez a parancsfájl nem fog működni, ha az üzenetben további telepítési lépések szükségesek.
 Ezzel a kapcsolóval figyelmen kívül hagyhatja ezt az ellenőrzés, és folytathatja az előfeltételek telepítését. További információ: [ismert ütközés-az-IIS-Shared-Configuration](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
@@ -446,8 +447,8 @@ Emellett letölti a külső eszközöket is annak megállapításához, hogy a s
 
 Ha a folyamat bármilyen okból meghiúsul, manuálisan is futtathatja ezeket a parancsokat:
 - iisreset.exe/status
-- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) – p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
-- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
+- [handle64.exe](/sysinternals/downloads/handle) – p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
+- [listdlls64.exe](/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
@@ -551,7 +552,7 @@ C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applica
 
 ## <a name="start-applicationinsightsmonitoringtrace"></a>Start – ApplicationInsightsMonitoringTrace
 
-A [ETW-eseményeket](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) gyűjti a kód-visszacsatolási futtatókörnyezetből. Ez a parancsmag egy alternatív megoldás a [perfview eszköz](https://github.com/microsoft/perfview)futtatására.
+A [ETW-eseményeket](/windows/desktop/etw/event-tracing-portal) gyűjti a kód-visszacsatolási futtatókörnyezetből. Ez a parancsmag egy alternatív megoldás a [perfview eszköz](https://github.com/microsoft/perfview)futtatására.
 
 Az összegyűjtött események valós időben lesznek kinyomtatva a konzolra, és egy ETL-fájlba lesznek mentve. A kimeneti ETL-fájl a [perfview eszköz](https://github.com/microsoft/perfview) segítségével nyitható meg további vizsgálat céljából.
 
@@ -633,12 +634,12 @@ Tracing will timeout in 5 minutes. Press CTRL+C to cancel.
 Timeout Reached. Stopping...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
   A telemetriai adatok megtekintése:
- - [Ismerje meg a mérőszámokat](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez.
+ - [Ismerje meg a mérőszámokat](../platform/metrics-charts.md) a teljesítmény és a használat figyeléséhez.
 - [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md) a problémák diagnosztizálásához.
-- További speciális lekérdezésekhez használja az [elemzést](../../azure-monitor/app/analytics.md) .
+- További speciális lekérdezésekhez használja az [elemzést](../log-query/log-query-overview.md) .
 - [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).
  
  További telemetriai funkciók hozzáadása:
@@ -648,9 +649,3 @@ Timeout Reached. Stopping...
  
  Több Application Insights-ügynökkel:
  - Az útmutató segítségével Application Insights-ügynököt lehet [elhárítani](status-monitor-v2-troubleshoot.md) .
-
-
-
-
-
-

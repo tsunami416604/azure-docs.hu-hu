@@ -1,5 +1,5 @@
 ---
-title: A betöltési és összeolvasztási szabályok közelgő változásai a Azure Time Series Insightsban | Microsoft Docs
+title: A betöltési és összeolvasztási szabályok közelgő változásai a Azure Time Series Insights Gen2 | Microsoft Docs
 description: Betöltési szabály módosításai
 ms.service: time-series-insights
 services: time-series-insights
@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 067244aa40256e3cc76239343790974bc3c06481
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f667ca5ad82182fcf40d5c1fbb325f2ea99a7e08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919034"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495108"
 ---
 # <a name="upcoming-changes-to-the-json-flattening-and-escaping-rules-for-new-environments"></a>A JSON-összeolvasztási és-Escape-szabályok közelgő módosításai az új környezetekhez
 
-Ezek a módosítások csak az *új* Azure Time Series Insights utólagos elszámolású (TB) környezetekre lesznek alkalmazva. Ezek a módosítások nem vonatkoznak a standard (S) SKU-környezetekre.
+**Ezek a módosítások csak az *újonnan létrehozott* Azure Time Series Insights Gen2-környezetekre lesznek alkalmazva. Ezek a módosítások nem vonatkoznak a Gen1-környezetekre.**
 
-A Azure Time Series Insights-környezet dinamikusan létrehozza a tárolási oszlopokat, az elnevezési konvenciók egy adott halmazát követve. Egy esemény betöltése esetén a rendszer a JSON-adattartalomra és a tulajdonságok nevére alkalmazza a szabályok halmazát. A JSON-adatkészletek és az azok tárolására szolgáló változások az új Azure Time Series Insights utólagos elszámolású környezetekben lépnek életbe. július 2020. Ez a változás a következő esetekben van hatással:
+Azure Time Series Insights Gen2-környezete dinamikusan létrehozza a tárolási oszlopokat az elnevezési konvenciók egy adott halmazának követésével. Egy esemény betöltése esetén a rendszer a JSON-adattartalomra és a tulajdonságok nevére alkalmazza a szabályok halmazát. A JSON-adatkészletek és a tárolt elemek tárolásának változásai a 2020 júliusában új Azure Time Series Insights Gen2 környezetekben lépnek életbe. Ez a változás a következő esetekben van hatással:
 
 * Ha a JSON-adattartalom beágyazott objektumokat tartalmaz
 *  Ha a JSON-adattartalom tömböket tartalmaz
@@ -45,15 +45,16 @@ Az objektumok tömbje mindig össze van egyengetve, így több esemény is létr
 
  #### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Ha a hasznos adatok beágyazott JSON-vagy speciális karaktereket tartalmaznak, és automatizálja az [idősorozat-modell](.\time-series-insights-update-tsm.md) változó kifejezéseit.
 
-*  Frissítse a [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/executebatch#typesbatchput) végrehajtó ügyfelét az új betöltési szabályoknak megfelelően. Például egy korábbi [Idősorozat-kifejezést](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) frissíteni kell az `"value": {"tsx": "$event.series_value.Double"}` alábbi lehetőségek egyikére:
+*  Frissítse a [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) végrehajtó ügyfelét az új betöltési szabályoknak megfelelően. Például egy korábbi [Idősorozat-kifejezést](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) frissíteni kell az `"value": {"tsx": "$event.series_value.Double"}` alábbi lehetőségek egyikére:
     * `"value": {"tsx": "$event.series.value.Double"}`
     * `"value": {"tsx": "$event['series']['value'].Double"}`
 
 
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="next-steps"></a>További lépések
+- Olvassa el [Azure Time Series Insights Gen2-tárolót és a bejövő](./time-series-insights-update-storage-ingress.md)forgalmat.
 
-- [A hosszú adattípus támogatásának](./time-series-insights-long-data-type.md)beolvasása.
+- További információ az adatlekérdezésről az [Idősorozat lekérdezési API-jai](./concepts-query-overview.md)segítségével.
 
-- Olvassa el [Azure Time Series Insights előnézeti tárolót és a bejövő](./time-series-insights-update-storage-ingress.md)forgalmat.
+- További információ az [új Idősorozat-kifejezés szintaxisáról](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 

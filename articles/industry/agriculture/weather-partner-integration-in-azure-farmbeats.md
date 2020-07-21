@@ -1,18 +1,18 @@
 ---
-title: Időjárási partnerek integrációja
+title: Időjárási partner integrációja
 description: Ez a cikk azt ismerteti, hogyan integrálható az időjárási adatszolgáltató a FarmBeats
 author: sunasing
 ms.topic: article
 ms.date: 07/09/2020
 ms.author: sunasing
-ms.openlocfilehash: d4ceb25b9b81c831ed1b285a875742ebfaa6d24f
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a2677b5343b2d65a39e7c9f6d5006db599c1ac73
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232644"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496995"
 ---
-# <a name="weather-partner-integration"></a>Időjárási partnerek integrációja
+# <a name="weather-partner-integration"></a>Időjárási partner integrációja
 
 Ez a cikk az Azure FarmBeats- **összekötő** Docker-összetevőjével kapcsolatos információkat tartalmaz, amelyeket az időjárási adatszolgáltatók az API-kkal való FarmBeats és az időjárási adatok FarmBeats történő elküldésére használhatnak. Ha az adatok elérhetők a FarmBeats-ben, az adatfúzióhoz és a gépi tanulás/mesterséges intelligencia modellek létrehozásához is használható.
 
@@ -36,10 +36,10 @@ A fenti Docker-információk használatával az ügyfél egy időjárási partne
 
 A FarmBeats API-k hencegő technikai dokumentációt tartalmaznak. További információ az API-król és a hozzájuk kapcsolódó kérésekről és válaszokról: [FarmBeats hencegés](https://aka.ms/farmbeatsswagger). 
 
-Ha telepítette a FarmBeats-t, akkor a FarmBeats a következő helyen érheti el:[https://yourfarmbeatswebsitename-api.azurewebsites.net](https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger)
+Ha telepítette a FarmBeats-t, akkor a FarmBeats a következő helyen érheti el:`https://yourfarmbeatswebsitename-api.azurewebsites.net/swagger`
 
 Vegye figyelembe, hogy a "-API" a FarmBeats-webhely nevéhez van hozzáfűzve.
-Az API-végpont a következőket teszi:[https://yourfarmbeatswebsitename-api.azurewebsites.net](https://yourfarmbeatswebsitename-api.azurewebsites.net)
+Az API-végpont a következőket teszi:`https://yourfarmbeatswebsitename-api.azurewebsites.net`
 
 ### <a name="datahub-lib"></a>Datahub lib
 
@@ -134,7 +134,7 @@ Ez az összetevő minden alkalommal meghívásra kerül, amikor egy FarmBeats-fe
 
 ### <a name="details-of-the-objects"></a>Az objektumok részletei
 
-  **WeatherDataModel** |  |
+  WeatherDataModel | Leírás |
   --- | ---
   Név  | Az időjárási adatmodell neve |
   Leírás  | Adjon meg egy értelmes leírást a modellről. |
@@ -147,8 +147,8 @@ Ez az összetevő minden alkalommal meghívásra kerül, amikor egy FarmBeats-fe
   weatherMeasures > AggregationType  | Nincs, átlag, maximum, minimum, StandardDeviation, Sum, Total
   weatherMeasures > mélység  | Az érzékelő mélysége centiméterben. Például a nedvesség 10 cm-es méretének mérése a terepen.
   weatherMeasures > leírása  | Adjon meg egy értelmes leírást a mérésről. |
-  **JobType** |  |
-  Név  | a feladattípus neve – például Get_Daily_Forecast; az ügyfél által az időjárási adatok beolvasása érdekében futtatandó feladatok|
+  **JobType** | **Leírás** |
+  Name  | a feladattípus neve – például Get_Daily_Forecast; az ügyfél által az időjárási adatok beolvasása érdekében futtatandó feladatok|
   pipelineDetails > paraméterek > neve  | a paraméter neve |
   pipelineDetails > paraméterek > típusa | Karakterlánc, int, float, bool vagy Array |
   pipelineDetails > paraméterek > isRequired | logikai igaz, ha kötelező paraméter, hamis, ha nem; az alapértelmezett érték TRUE (igaz) |
@@ -156,10 +156,10 @@ Ez az összetevő minden alkalommal meghívásra kerül, amikor egy FarmBeats-fe
   pipelineDetails > paraméterek > leírása | A paraméter leírása |
   Tulajdonságok  | További tulajdonságok a gyártótól.
   Tulajdonságok > **programRunCommand** | Docker parancs futtatása – ez a parancs akkor lesz végrehajtva, amikor az ügyfél futtatja az időjárási feladatot. |
-  **WeatherDataLocation** |  |
+  **WeatherDataLocation** | **Leírás** |
   weatherDataModelId  | A rendszerindításkor létrehozott megfelelő WeatherDataModel azonosítója|
   location  | a szélesség, a hosszúság és a jogosultságszint-emelést jelöli |
-  Név | Az objektum neve |
+  Name | Az objektum neve |
   Leírás | Leírás |
   farmId | nem **kötelező** Az ügyfél által a feladatok paraméterének részeként megadott Farm azonosítója |
   Tulajdonságok  | További tulajdonságok a gyártótól.
@@ -267,6 +267,6 @@ A FarmBeats támogatja az új szenzor mértékének típusát és egységeit. Ve
 
 További információ a/ExtendedType API-ról: [hencegés](https://aka.ms/FarmBeatsSwagger).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már rendelkezik egy összekötő Docker-vel, amely integrálható a FarmBeats. A következőben láthatja, hogyan szerezhet be időjárási adatait a Docker használatával a FarmBeats. Lásd: [időjárási információk beolvasása](get-weather-data-from-weather-partner.md).

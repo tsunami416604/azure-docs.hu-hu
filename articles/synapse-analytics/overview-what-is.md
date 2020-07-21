@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 96bb624472aa2053599765d5bfedeb96339d0973
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85808046"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496049"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Mi az Azure szinapszis Analytics (munkaterületek előzetes verziója)?
 
@@ -40,7 +40,7 @@ Az Azure szinapszis emellett a **AzureML**beépített támogatásával lehetőv�
 
 * A szinapszis SQL **kiszolgáló** nélküli és **kiépített** erőforrás-modelleket is kínál, és az igényeinek megfelelő használati és számlázási lehetőségeket kínál. A kiszámítható teljesítmény és a költséghatékonyság érdekében kiépítheti a készleteket az SQL-táblákban tárolt adatfeldolgozási teljesítmény fenntartásához. Nem tervezett vagy feltört számítási feladatok esetén használja a kiszolgáló nélküli, mindig elérhető SQL-végpontot.
 * A Felhőbeli adatforrásokból származó adatoknak az SQL-táblákba való beépítésére szolgáló beépített **streaming** -funkciók használata
-* A AI és az SQL integrálása **gépi tanulási** modellek használatával a T-SQL előrejelzési függvény használatával
+* A AI és az SQL integrálása **gépi tanulási** modellek használatával a [T-SQL előrejelzési függvény](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest) használatával
 
 ### <a name="industry-standard-apache-spark"></a>Iparági szabványnak megfelelő Apache Spark
 

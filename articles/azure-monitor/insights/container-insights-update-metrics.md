@@ -2,12 +2,13 @@
 title: A tárolók Azure Monitorának frissítése a metrikák számára | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan frissítheti Azure Monitor a tárolók számára az összesített metrikák vizsgálatát és riasztását támogató egyéni metrikák funkció engedélyezéséhez.
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: d299fc5e6b0c41188fac1fa19bb66387263c12e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298261"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498984"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>A tárolókhoz készült Azure Monitor frissítése a metrikák engedélyezéséhez
 
@@ -19,23 +20,25 @@ A tárolók Azure Monitor támogatja a metrikák gyűjtését az Azure Kubernete
 
 A szolgáltatás részeként a következő metrikák engedélyezettek:
 
-| Metrikai névtér | Metric | Leírás |
+| Metrikai névtér | Metrika | Leírás |
 |------------------|--------|-------------|
-| bepillantást nyerhet. tároló/csomópontok | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Ezek a *csomópont* -metrikák, és a *gazdagép* dimenzióként is szerepelnek, és a<br> a csomópont neve a *gazdagép* dimenziójának értékeként. |
-| bepillantást nyerhet. tároló/hüvely | podCount | Ezek a *Pod* mérőszámok, és a következő dimenziókat tartalmazzák: ControllerName, Kubernetes névtér, név, fázis. |
+| Bepillantást nyerhet. tároló/csomópontok | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount, diskUsedPercentage, | A *csomópont* -metrikák közé tartoznak a *gazdagép* dimenzióként. A következőket is tartalmazzák:<br> a csomópont neve a *gazdagép* dimenziójának értékeként. |
+| Bepillantást nyerhet. tároló/hüvely | podCount, completedJobsCount, restartingContainerCount, oomKilledContainerCount, podReadyPercentage | A *Pod* -metrikák a következő dimenziókat tartalmazzák: ControllerName, Kubernetes névtér, név, fázis. |
+| Bepillantást nyerhet. tároló/tárolók | cpuExceededPercentage, memoryRssExceededPercentage, memoryWorkingSetExceededPercentage | |
 
-A fürt frissítése az új képességek támogatásához a Azure Portal, Azure PowerShell vagy az Azure CLI használatával végezhető el. A Azure PowerShell és a CLI használatával engedélyezheti ezt a fürtön vagy az előfizetésben lévő összes fürtön. Az AK új üzemelő példányai automatikusan tartalmazzák ezt a konfigurációs változást és képességet.
+Ezen új képességek támogatásához egy új, a **Microsoft/OMS: ciprod02212019**verziót tároló ügynök szerepel a kiadásban. Az AK új központi telepítései automatikusan tartalmazzák ezt a konfigurációs változást és képességet. A fürt frissítése a szolgáltatás támogatásához a Azure Portal, Azure PowerShell vagy az Azure CLI használatával végezhető el. Azure PowerShell és parancssori felülettel. Ezt a fürtöt vagy az előfizetésben lévő összes fürt számára engedélyezheti.
 
 Bármelyik folyamat hozzárendeli a figyelési **metrika közzétevői** szerepkörét a fürt egyszerű vagy felhasználó által hozzárendelt MSI-fiókjához a figyelési bővítményhez, így az ügynök által gyűjtött adatok közzétehetők a fürtök erőforrásában. A monitorozási metrikák közzétevője csak az erőforráshoz tartozó mérőszámok leküldésére jogosult, nem változtathat meg semmilyen állapotot, nem frissítheti az erőforrást, illetve nem olvashatja el az adatokat. További információ a szerepkörről: a [metrikák közzétevői szerepkörének figyelése](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, erősítse meg a következőket:
+A fürt frissítése előtt erősítse meg a következőket:
 
 * Az egyéni metrikák csak az Azure-régiók egy részhalmazában érhetők el. A támogatott régiók listáját [itt](../platform/metrics-custom-overview.md#supported-regions)dokumentáljuk.
-* Az AK-fürterőforrás **[tulajdonosi](../../role-based-access-control/built-in-roles.md#owner)** szerepkörének tagja, hogy engedélyezze a Node és a pod egyéni teljesítmény-mérőszámok gyűjteményét. 
 
-Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. 
+* Az AK-fürterőforrás **[tulajdonosi](../../role-based-access-control/built-in-roles.md#owner)** szerepkörének tagja, hogy engedélyezze a Node és a pod egyéni teljesítmény-mérőszámok gyűjteményét.
+
+Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
 ## <a name="upgrade-a-cluster-from-the-azure-portal"></a>Fürt frissítése a Azure Portal
 
@@ -121,4 +124,4 @@ A következő lépések végrehajtásával frissítheti egy adott fürtöt a Azu
 
 ## <a name="verify-update"></a>Frissítés ellenőrzése
 
-Miután a korábban ismertetett módszerek valamelyikével kezdeményezte a frissítést, használhatja Azure Monitor metrikák Explorert, és ellenőrizheti, hogy a **metrikai névtér** tartalmazza-e az **észlelt** adatokat. Ha igen, ez azt jelzi, hogy mehet előre, és megkezdheti a [metrikus riasztások](../platform/alerts-metric.md) beállítását, illetve a diagramok [irányítópultokon](../../azure-portal/azure-portal-dashboards.md)való rögzítését.  
+Miután a korábban ismertetett módszerek valamelyikével kezdeményezte a frissítést, használhatja Azure Monitor metrikák Explorert, és ellenőrizheti, hogy a **metrikai névtér** tartalmazza-e az **észlelt** adatokat. Ha igen, megkezdheti a [metrikus riasztások](../platform/alerts-metric.md) beállítását, vagy rögzítheti a diagramokat az [irányítópultokon](../../azure-portal/azure-portal-dashboards.md).  

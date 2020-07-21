@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6527ee8be64d57b42d7753c266a5c416ceeef589
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187710"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497063"
 ---
-# <a name="troubleshoot"></a>Hibaelhárítás
+# <a name="troubleshoot-azure-farmbeats"></a>Az Azure FarmBeats hibaelhárítása
 
 Ez a cikk az Azure FarmBeats kapcsolatos gyakori problémák megoldásait ismerteti. További segítségért forduljon a [támogatási fórumhoz](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) , vagy küldjön nekünk e-mailt a következő címen: farmbeatssupport@microsoft.com .
 
@@ -58,8 +58,8 @@ Vegye fel velünk a kapcsolatot az alábbi adatokkal:
 
 **Javító művelet**
 
-1. Lépjen a FarmBeats Datahub-erőforráscsoporthoz.
-2. Válassza ki az **Event hub** (DatafeedEventHubNamespace) elemet, majd keresse meg a bejövő üzenetek számát.
+1. Nyissa meg a FarmBeats erőforráscsoportot.
+2. Válassza ki az **Event hub** -névteret ("érzékelő-partner-eh-Namespace-xxxx"), kattintson a "Event Hubs" elemre, majd keresse meg a partnerhez rendelt Event hub bejövő üzeneteinek számát.
 3. A következő lehetőségek közül választhat:
 
    - Ha nincsenek *beérkező üzenetek*, forduljon az eszköz partneréhez.  

@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 4e4abdd5d5a9e3cddf00cf47d7388a57d0d4d6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5366166a31ee45c74c34b8af0e01da251bd7f7f0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807706"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499222"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -29,7 +30,7 @@ Szeptember 2018-án a Microsoft kombinált Azure Monitor, Log Analytics és Appl
 A Azure Monitor automatikusan engedélyezett szolgáltatásai, például a metrikák és a tevékenységek naplóinak gyűjtése díjmentes. Más szolgáltatásokkal, például a naplók lekérdezésével és a riasztásokkal kapcsolatos költségeket is tartalmaz. A részletes díjszabási információkért tekintse meg a [Azure monitor díjszabási oldalát](https://azure.microsoft.com/pricing/details/monitor/) .
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Hogyan az Azure Monitor engedélyezése?
-Azure Monitor engedélyezve van az új Azure-előfizetés létrehozásakor, valamint a [tevékenység naplójának](platform/activity-logs-overview.md) és a platform [metrikáinak](platform/data-platform-metrics.md) automatikus gyűjtése. [Diagnosztikai beállításokat](platform/diagnostic-settings.md) hozhat létre az Azure-erőforrások működésével kapcsolatos részletesebb információk gyűjtéséhez, valamint a [figyelési megoldások](insights/solutions.md) és elemzések hozzáadásához [, hogy](insights/insights-overview.md) további elemzéseket nyújtson az egyes szolgáltatások összegyűjtött adatairól. 
+Azure Monitor engedélyezve van az új Azure-előfizetés létrehozásakor, valamint a [tevékenység naplójának](./platform/platform-logs-overview.md) és a platform [metrikáinak](platform/data-platform-metrics.md) automatikus gyűjtése. [Diagnosztikai beállításokat](platform/diagnostic-settings.md) hozhat létre az Azure-erőforrások működésével kapcsolatos részletesebb információk gyűjtéséhez, valamint a [figyelési megoldások](insights/solutions.md) és elemzések hozzáadásához [, hogy](insights/insights-overview.md) további elemzéseket nyújtson az egyes szolgáltatások összegyűjtött adatairól. 
 
 ### <a name="how-do-i-access-azure-monitor"></a>Hogyan a hozzáférési Azure Monitor?
 A Azure Portal **figyelés** menüjében található összes Azure monitor funkció és az adatok elérése. A különböző Azure-szolgáltatások menüjének **figyelés** szakasza ugyanazokat az eszközöket biztosítja, mint az adott erőforráshoz szűrt adatok. Azure Monitor adatok a CLI, a PowerShell és a REST API használatával számos különböző forgatókönyvhöz is elérhetők.
@@ -271,7 +272,7 @@ Ezt a módszert nem ajánlott az API verziójának feltöltésére használni. A
 
 Egy asztali alkalmazás, amelyet az IIS-webkiszolgálóban használhat a Application Insights webalkalmazásokban való konfigurálásához. Nem gyűjt telemetria: leállíthatja, ha nem konfigurál egy alkalmazást. 
 
-[További információk](app/monitor-performance-live-website-now.md#questions).
+[További információ](app/monitor-performance-live-website-now.md#questions).
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Milyen telemetria gyűjtenek Application Insights?
 
@@ -314,10 +315,10 @@ A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megk
 
 * Böngésző telemetria: összegyűjtjük a küldő IP-címét.
 * Kiszolgáló telemetria: a Application Insights modul gyűjti az ügyfél IP-címét. Ha be van állítva, a rendszer nem gyűjti `X-Forwarded-For` .
-* Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan kerülnek gyűjtésre Application Insights tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
+* Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan kerülnek gyűjtésre Application Insights tekintse meg ezt a [cikket](./app/ip-collection.md).
 
 
-Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információk](https://apmtips.com/posts/2016-07-05-client-ip-address/).
+Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információ](https://apmtips.com/posts/2016-07-05-client-ip-address/).
 
 A [Power bi](app/export-power-bi.md ) segítségével megjelenítheti a kérések telemetria egy térképen.
 
@@ -327,7 +328,7 @@ Vessen egy pillantást az [adatok megőrzésére és az adatvédelemre][data].
 
 ### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>Mi történik az alkalmazás-betekintési telemetria, ha egy kiszolgáló vagy eszköz elveszti az Azure-ral való kapcsolódást?
 
-Az összes SDK, beleértve a web SDK-t is, "megbízható átvitel" vagy "robusztus szállítás". Ha a kiszolgáló vagy az eszköz elveszti a kapcsolatot az Azure-val, a telemetria [a fájlrendszeren](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) (Server SDK-k) vagy a HTML5 munkamenet-tárolóban (web SDK) helyileg tárolja a rendszer. Az SDK rendszeres időközönként újra megpróbálja elküldeni ezt a telemetria, amíg a betöltési szolgáltatás nem tekinti az "elavult" (48 órás naplók, 30 perc a metrikák esetében). A rendszer elveti az elavult telemetria. Bizonyos esetekben, például ha a helyi tárterület megtelt, a rendszer nem hajtja végre az újrapróbálkozást.
+Az összes SDK, beleértve a web SDK-t is, "megbízható átvitel" vagy "robusztus szállítás". Ha a kiszolgáló vagy az eszköz elveszti a kapcsolatot az Azure-val, a telemetria [a fájlrendszeren](./app/data-retention-privacy.md#does-the-sdk-create-temporary-local-storage) (Server SDK-k) vagy a HTML5 munkamenet-tárolóban (web SDK) helyileg tárolja a rendszer. Az SDK rendszeres időközönként újra megpróbálja elküldeni ezt a telemetria, amíg a betöltési szolgáltatás nem tekinti az "elavult" (48 órás naplók, 30 perc a metrikák esetében). A rendszer elveti az elavult telemetria. Bizonyos esetekben, például ha a helyi tárterület megtelt, a rendszer nem hajtja végre az újrapróbálkozást.
 
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>A személyes adatküldés a telemetria?
@@ -409,7 +410,7 @@ Nem állítható be metrikai Explorer-jelentés, vagy nem állítható be folyam
 
 #### <a name="querying-the-telemetry"></a>A telemetria lekérdezése
 
-[Analytics](app/analytics.md) -lekérdezések futtatásához használja a [REST API](https://dev.applicationinsights.io/) .
+[Analytics](./log-query/log-query-overview.md) -lekérdezések futtatásához használja a [REST API](https://dev.applicationinsights.io/) .
 
 ### <a name="how-can-i-set-an-alert-on-an-event"></a>Hogyan állíthatok be riasztást eseményre?
 
@@ -476,7 +477,7 @@ Az átjárónak a végpont alapcímeihez kell irányítani a forgalmat. A konfig
 #### <a name="proxy-passthrough"></a>Proxy átengedése
 
 A proxy továbbítása a gépi vagy az alkalmazás szintű proxy konfigurálásával érhető el.
-További információ: a [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)-ra vonatkozó DotNet-cikk.
+További információ: a [DefaultProxy](/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)-ra vonatkozó DotNet-cikk.
  
  Példa Web.config:
  ```xml
@@ -731,10 +732,10 @@ Ha az *ingyenes* díjszabási csomaggal konfigurálta a Azure monitort egy log A
 Ebben az esetben a virtuális gép megnyitásakor a **kipróbálás most** lehetőséggel fog megjelenni, és a bal oldali ablaktáblában kiválaszthatja a **bepillantást** , még azután is, hogy már telepítve van a virtuális gépen.  Azonban nem kell megadnia a beállításokat, mivel ez általában akkor fordul elő, ha a virtuális gép nem lett előkészítve a Azure Monitor for VMs. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha a kérdés itt nem válaszol, további kérdéseit és válaszait a következő fórumokon tekintheti meg.
 
-- [Log Analytics](https://docs.microsoft.com/answers/topics/azure-monitor.html)
-- [Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+- [Log Analytics](/answers/topics/azure-monitor.html)
+- [Application Insights](/answers/topics/azure-monitor.html)
 
 Ha Azure Monitor általános visszajelzést szeretne kapni, látogasson el a [visszajelzési fórumra](https://feedback.azure.com/forums/34192--general-feedback).

@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 3fd4bcd13b4d92d2c6e61d10ae9e62996b5dfcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8043dfb7fdda972d4ede6798d07355936b23bf93
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945494"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498916"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB Azure Monitor megismerése
 
 A Azure Cosmos DB Azure Monitor az egységes interaktív felhasználói felület összes Azure Cosmos DB erőforrásának teljes teljesítményét, hibáit, kapacitását és működési állapotát jeleníti meg. Ez a cikk segítséget nyújt az új figyelési élmény előnyeinek megismeréséhez, valamint arról, hogy miként módosíthatja és igazíthatja a felhasználói élményt a szervezet egyedi igényeinek megfelelően.   
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A tapasztalatok megismerése előtt meg kell ismernie, hogyan jeleníti meg és jeleníti meg az információkat. 
 
@@ -72,13 +72,13 @@ Válassza ki a **hibák** elemet az oldal tetején, és megnyílik a munkafüzet
 
 ![Képernyőfelvétel a HTTP-kérelem típusa szerinti bontásban fellépő hibákról](./media/cosmosdb-insights-overview/failures.png)
 
-| Code      |  Description       | 
+| Code      |  Leírás       | 
 |-----------|:--------------------|
 | `200 OK`  | A következő REST-műveletek egyike sikeres volt: </br>– Erőforrás lekérése. </br> -Erőforrásra kerül. </br> – KÖZZÉTÉTEL egy erőforráson. </br> – KÖZZÉTÉTEL a tárolt eljárási erőforráson a tárolt eljárás végrehajtásához.|
 | `201 Created` | Az erőforrás-létrehozás utáni művelet sikeres. |
 | `404 Not Found` | A művelet olyan erőforráson próbálkozik, amely már nem létezik. Előfordulhat például, hogy az erőforrás már törölve lett. |
 
-Az állapotkódok teljes listájáért olvassa el a [Azure Cosmos db http-állapotkód című cikket](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+Az állapotkódok teljes listájáért olvassa el a [Azure Cosmos db http-állapotkód című cikket](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 ### <a name="capacity"></a>Kapacitás
 
@@ -88,7 +88,7 @@ Válassza ki a **kapacitás** elemet az oldal tetején, és megnyílik a munkaf�
 
 Az áttekintő munkafüzethez hasonlóan az **előfizetés** oszlopban egy Azure Cosmos db erőforrás melletti legördülő lista is megjelenik, amely az adatbázist alkotó egyes tárolók részletezését mutatja.
 
-### <a name="operations"></a>Műveletek 
+### <a name="operations"></a>Üzemeltetés 
 
 Válassza a lap tetején a **műveletek** lehetőséget, majd megnyílik a munkafüzet sablonjának **műveletek** rész. Lehetővé teszi, hogy a kérések típusa szerinti bontásban megtekintse a kérelmeket. 
 
@@ -98,7 +98,7 @@ Tehát az alábbi példában láthatja, hogy `eastus-billingint` az olvasási k�
 
 ## <a name="pin-export-and-expand"></a>PIN-kód, exportálás és Kibontás
 
-A metrikus szakaszok bármelyikét rögzítheti egy [Azure-irányítópultra](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) , ha a szakasz jobb felső sarkában található gombostű ikonra kattint.
+A metrikus szakaszok bármelyikét rögzítheti egy [Azure-irányítópultra](../../azure-portal/azure-portal-dashboards.md) , ha a szakasz jobb felső sarkában található gombostű ikonra kattint.
 
 ![Metrikus szakasz rögzítése az irányítópulton – példa](./media/cosmosdb-insights-overview/pin.png)
 
@@ -124,8 +124,8 @@ A munkafüzetek egy erőforráscsoporthoz lesznek mentve, vagy az Ön számára 
 
 A hibaelhárítással kapcsolatos útmutatásért tekintse meg a dedikált munkafüzet-alapú információkkal [kapcsolatos hibaelhárítási cikket](troubleshoot-workbooks.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications.md) konfigurálása automatizált riasztások beállításához a problémák észlelése érdekében.
+* A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications-portal.md) konfigurálása automatizált riasztások beállításához a problémák észlelése érdekében.
 
 * Ismerkedjen meg a forgatókönyvekkel, amelyek támogatják az új és a meglévő jelentések testreszabását, valamint az [interaktív jelentések Azure monitor-munkafüzetekkel való létrehozását](../platform/workbooks-overview.md)ismertető áttekintést.

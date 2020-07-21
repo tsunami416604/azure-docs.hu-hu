@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 133de199c240cbc4ea7246a29e65347d53c50545
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045756"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494513"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>A Linux-ügynök letiltása vagy eltávolítása a virtuális gépekről és a lemezképekről
 
 A Linux-ügynök eltávolítása előtt tisztában kell lennie azzal, hogy a Linux-ügynök eltávolítása után milyen virtuális gépek nem lesznek képesek a művelet elvégzésére.
 
-Az Azure virtuálisgép- [bővítmények](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken, a bővítményeket az Azure vezérlő síkja telepíti és kezeli. Az [Azure Linux-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) feladata, hogy feldolgozza a platform-bővítmény parancsait, és gondoskodjon arról, hogy a bővítmény helyes állapota a virtuális gépen belül legyen.
+Az Azure virtuálisgép- [bővítmények](../extensions/overview.md) olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken, a bővítményeket az Azure vezérlő síkja telepíti és kezeli. Az [Azure Linux-ügynök](../extensions/agent-linux.md) feladata, hogy feldolgozza a platform-bővítmény parancsait, és gondoskodjon arról, hogy a bővítmény helyes állapota a virtuális gépen belül legyen.
 
 Az Azure platform számos olyan bővítményt üzemeltet, amely a virtuálisgép-konfigurációtól, a figyelési, a biztonsági és a segédprogram-alkalmazásokból származik. Az első és a harmadik féltől származó bővítmények széles választékát, példákat tartalmaz a bővítmények által használt főbb forgatókönyvekre:
 * Az Azure-szolgáltatások (például a Azure Backup, a figyelés, a lemezek titkosítása, a biztonság, a hely replikálása és mások) támogatása.
@@ -31,7 +31,7 @@ Az Azure platform számos olyan bővítményt üzemeltet, amely a virtuálisgép
 
 ## <a name="disabling-extension-processing"></a>Bővítmény feldolgozásának letiltása
 
-Több módon is letilthatja a bővítmények feldolgozását, az igényeinek megfelelően, de a folytatás előtt el **kell** távolítania a virtuális géphez központilag telepített összes bővítményt, például az az CLI használatával, [listázhatja](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) és [törölheti](https://docs.microsoft.com/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete)a következőket:
+Több módon is letilthatja a bővítmények feldolgozását, az igényeinek megfelelően, de a folytatás előtt el **kell** távolítania a virtuális géphez központilag telepített összes bővítményt, például az az CLI használatával, [listázhatja](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) és [törölheti](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete)a következőket:
 
 ```bash
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
@@ -155,7 +155,7 @@ Ha a virtuális gépet Linux-ügynök nélkül hozza létre a rendszerképből, 
 > 
 > Ha ezt nem teszi meg, a platform megpróbálja elküldeni a bővítmény konfigurációját és időtúllépését a 40min után.
 
-Ha a virtuális gépet a bővítmények letiltásával szeretné telepíteni, használhatja az Azure CLI-t az [--enable-Agent](https://docs.microsoft.com/cli/azure/vm#az-vm-create)paranccsal.
+Ha a virtuális gépet a bővítmények letiltásával szeretné telepíteni, használhatja az Azure CLI-t az [--enable-Agent](/cli/azure/vm#az-vm-create)paranccsal.
 
 ```bash
 az vm create \
@@ -183,6 +183,6 @@ Azt is megteheti, hogy az Azure Resource Manager (ARM) sablonokat használja a b
                     "keyData": "[parameters('adminPublicKey')]"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Linux kiépítés](provisioning.md).

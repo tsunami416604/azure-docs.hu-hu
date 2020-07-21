@@ -3,11 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-t
 description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről egy Recovery Services-tárolóban a Azure Backup használatával
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: cba042efb08f121d4cd9fa5693edd69c827f1465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88e7be7e2238637f1e6d5ac84abebdca0b9e1674
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727012"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497930"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
 
@@ -53,7 +54,7 @@ Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
     * A névnek egyedinek kell lennie az Azure-előfizetéshez.
     * 2 – 50 karakterből állhat.
     * Betűvel kell kezdődnie, és csak betűket, számokat és kötőjeleket tartalmazhat.
-5. Válassza ki azt az Azure-előfizetést, erőforráscsoportot és földrajzi régiót, amelyben létre kívánja hozni a tárolót. Ezután kattintson a **Létrehozás**gombra.
+5. Válassza ki azt az Azure-előfizetést, erőforráscsoportot és földrajzi régiót, amelyben létre kívánja hozni a tárolót. Végül kattintson a **Létrehozás** elemre.
     * A tár létrehozása eltarthat egy ideig.
     * Figyelje az állapotjelző értesítéseket a portál jobb felső részén.
 
@@ -66,10 +67,10 @@ A tároló létrehozása után megjelenik a Recovery Services-tárolók listáj�
 
 ### <a name="modify-storage-replication"></a>Tárolási replikáció módosítása
 
-Alapértelmezés szerint a [tárolók a Geo-redundáns tárolást (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)használják.
+Alapértelmezés szerint a [tárolók a Geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md)használják.
 
 * Ha a tároló elsődleges biztonsági mentési mechanizmusa, javasoljuk, hogy használja a GRS-t.
-* A [helyileg redundáns tárolást (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) is használhatja egy olcsóbb megoldáshoz.
+* A [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) is használhatja egy olcsóbb megoldáshoz.
 
 Módosítsa a tárolási replikálás típusát a következőképpen:
 
@@ -100,7 +101,7 @@ Módosítsa a tárolási replikálás típusát a következőképpen:
 
       ![Alapértelmezett biztonsági mentési szabályzat](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-4. A **virtuális gépek kiválasztása**területen válassza ki azokat a virtuális gépeket, amelyekről biztonsági másolatot szeretne készíteni a szabályzat használatával. Ezt követően kattintson az **OK** gombra.
+4. A **virtuális gépek kiválasztása**területen válassza ki azokat a virtuális gépeket, amelyekről biztonsági másolatot szeretne készíteni a szabályzat használatával. Ezután kattintson az **OK** gombra.
 
    * A kiválasztott virtuális gépek ellenőrzése megtörtént.
    * Csak a tárolóval megegyező régióban lévő virtuális gépeket lehet kiválasztani.
@@ -150,7 +151,7 @@ A kezdeti biztonsági mentés az ütemterv szerint fog futni, de az alábbiak sz
 2. A **biztonsági másolati elemek**területen kattintson az Azure-beli **virtuális gép**elemre.
 3. A **biztonsági mentési elemek** listában kattintson a három pontra (...).
 4. Kattintson a **biztonsági mentés**gombra.
-5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezt követően kattintson az **OK** gombra.
+5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezután kattintson az **OK** gombra.
 6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban**vannak. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
 
 ## <a name="verify-backup-job-status"></a>Biztonsági mentési feladatok állapotának ellenőrzése
@@ -188,7 +189,7 @@ Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a
 **VM** | **Részletek**
 --- | ---
 **Windows** | 1. [töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlját.<br/><br/> 2. telepítsen rendszergazdai engedélyekkel a gépen.<br/><br/> 3. Ellenőrizze a telepítést. A virtuális gép *C:\WindowsAzure\Packages* kattintson a jobb gombbal **WaAppAgent.exe**  >  **Tulajdonságok**elemre. A **részletek** lapon a **termék verziószámának** 2.6.1198.718 vagy magasabbnak kell lennie.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, majd [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
-**Linux** | A telepítést egy RPM vagy egy DEB-csomag használatával telepítheti a terjesztési csomag adattárában. Ez az Azure Linux-ügynök telepítésének és frissítésének előnyben részesített módszere. Az összes [támogatott terjesztési szolgáltató](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálja az Azure Linux-ügynök csomagját a lemezképbe és a tárházba. Az ügynök elérhető a [githubon](https://github.com/Azure/WALinuxAgent), de nem javasoljuk, hogy innen telepítsen.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, és frissítse a bináris fájlokat.
+**Linux** | A telepítést egy RPM vagy egy DEB-csomag használatával telepítheti a terjesztési csomag adattárában. Ez az Azure Linux-ügynök telepítésének és frissítésének előnyben részesített módszere. Az összes [támogatott terjesztési szolgáltató](../virtual-machines/linux/endorsed-distros.md) integrálja az Azure Linux-ügynök csomagját a lemezképbe és a tárházba. Az ügynök elérhető a [githubon](https://github.com/Azure/WALinuxAgent), de nem javasoljuk, hogy innen telepítsen.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, és frissítse a bináris fájlokat.
 
 >[!NOTE]
 > **A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gép biztonsági mentési megoldásával.**
@@ -197,7 +198,7 @@ Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a
 >
 >**Az előzetes verzióra való feliratkozáshoz írjon nekünk a következőt:AskAzureBackupTeam@microsoft.com**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [Azure VM-ügynökökkel](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) vagy az [Azure-beli virtuális gépek biztonsági mentésével](backup-azure-vms-troubleshoot.md)kapcsolatos problémák elhárítása.
 * [Visszaállítás](backup-azure-arm-restore-vms.md) Azure-beli virtuális gépek.

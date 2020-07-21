@@ -7,48 +7,32 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: machine-learning
-ms.date: 02/05/2020
+ms.date: 07/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-Synapse
-ms.openlocfilehash: 76a0e4660967dafec8e314fd681d05e694e562b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cf65b2fdeb7faa03b950593db86dd32a4ef91a7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368192"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495738"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Adatok elemzése Azure Machine Learning segítségével
-> [!div class="op_single_selector"]
-> * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
-> * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md) 
-> * [SSMS](sql-data-warehouse-query-ssms.md)
-> 
-> 
 
-Ez az oktatóanyag a Azure Machine Learning használatával hoz létre egy prediktív gépi tanulási modellt az Azure Szinapszisban tárolt adatszolgáltatások alapján. Egy célzott marketingkampányt hozunk létre az Adventure Works kerékpáráruház számára, annak előre jelzése alapján, hogy egy vásárló valószínűleg megvesz-e egy kerékpárt vagy nem.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
-> 
-> 
+Ez az oktatóanyag a [Azure Machine learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) használatával készít egy prediktív gépi tanulási modellt. A modell az Azure Szinapszisban tárolt adatszolgáltatásokon alapul. Az oktatóanyag forgatókönyve annak előrejelzése, hogy az ügyfél valószínűleg kerékpárt vásárol-e, vagy sem, hogy az Adventure működik-e, a bike Shop a megcélzó marketing-kampányt is felépítheti.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Egy SQL-készlet előre betöltve a AdventureWorksDW-mintaadatok. Ennek kiépítéséhez lásd: [SQL-készlet létrehozása](create-data-warehouse-portal.md) és a mintaadatok betöltésének kiválasztása. Ha már rendelkezik egy adatraktárral, de nincsenek mintaadatai, [a mintaadatokat manuálisan is betöltheti](load-data-from-azure-blob-storage-using-polybase.md).
+* egy SQL-készlet előre betöltve a AdventureWorksDW-mintaadatok. Az SQL-készlet kiépítéséhez lásd: [SQL-készlet létrehozása](create-data-warehouse-portal.md) és a mintaadatok betöltésének kiválasztása. Ha már rendelkezik egy adatraktárral, de nem rendelkezik mintaadatok használatával, [manuálisan is betöltheti a mintavételi](load-data-from-azure-blob-storage-using-polybase.md)adatkészleteket.
+* egy Azure Machine learning-munkaterület. [Ezt az oktatóanyagot](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) követve hozzon létre egy újat.
 
-## <a name="1-get-the-data"></a>1. az adatlekérdezés
-Az adatok az AdventureWorksDW adatbázis dbo.vTargetMail nézetében találhatók. Az adatok olvasása:
+## <a name="get-the-data"></a>Az adatok lekérése
 
-1. Jelentkezzen be az [Azure Machine Learning Studio](https://studio.azureml.net/) szolgáltatásba, majd kattintson a Saját kísérletek elemre.
-2. Kattintson a képernyő bal alsó sarkában található **+ új** elemre, majd válassza az **üres kísérlet**lehetőséget.
-3. Adjon nevet a Célzott marketing kísérletnek.
-4. Húzza az **adatok importálása** modult a modulok panel **adatbemenet és kimenet** területén a vászonra.
-5. Adja meg az SQL-készlet adatait a Tulajdonságok ablaktáblán.
-6. Adja meg az adatbázishoz a **lekérdezést** az Önt érdeklő adatok olvasásához.
+A használt adatértékek a AdventureWorksDW dbo. vTargetMail nézetében szerepelnek. Az ebben az oktatóanyagban az adattár használatához először exportálja az adatokat Azure Data Lake Storage fiókba, mivel az Azure szinapszis jelenleg nem támogatja az adatkészleteket. A Azure Data Factory a [másolási tevékenységgel](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)Azure Data Lake Storage adatok exportálására is használható az adatraktárból. Az importáláshoz használja a következő lekérdezést:
 
 ```sql
 SELECT [CustomerKey]
@@ -70,66 +54,111 @@ SELECT [CustomerKey]
 FROM [dbo].[vTargetMail]
 ```
 
-Futtassa a kísérletet a kísérlet vászon alatt található**Futtatás** opcióra kattintva.
+Ha az adatAzure Data Lake Storageban rendelkezésre állnak, a Azure Machine Learning [adattárolói az Azure Storage-szolgáltatásokhoz való kapcsolódáshoz](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)használatosak. Az adattár és a megfelelő adatkészlet létrehozásához kövesse az alábbi lépéseket:
 
-![Kísérlet futtatása](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1-reader-new.png)
+1. Indítsa el az Azure Machine learning studiót Azure Portal vagy jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
 
-A kísérlet futtatásának sikeres befejezése után kattintson az Olvasó modul alján található kimeneti portra, és válassza a **Képi megjelenítés** opciót az importált adatok megtekintéséhez.
+1. Kattintson az **Datastores** adattárolók elemre a **kezelés** szakasz bal oldali ablaktábláján, majd kattintson az **új adattár**elemre.
 
-![Importált adatok megtekintése](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img3-readerdata-new.png)
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/datastores-tab.png" alt-text="Képernyőkép a Azure Machine Learning felület bal oldali paneljéről":::
 
-## <a name="2-clean-the-data"></a>2. az adatgyűjtés megtisztítása
-Az adatok megtisztításához el kell vetni néhány, a modell szempontjából érdektelen oszlopot. Ehhez tegye a következőket:
+1. Adja meg az adattár nevét, válassza ki az "Azure Blob Storage" típust, adja meg a helyet és a hitelesítő adatokat. Ezután kattintson a **Létrehozás**gombra.
 
-1. Húzza a **Select Columns (oszlopok kiválasztása** ) modult az **adatátalakítási < manipuláció** a vászonra elemre. Kapcsolja össze ezt a modult az **adatimportálási** modulhoz.
-2. Kattintson a Tulajdonságok panelen az **Oszlopválasztás indítása** opcióra az elvetni kívánt oszlopok megadásához.
+1. Ezután kattintson az **adatkészletek** elemre az **eszközök** szakasz bal oldali ablaktábláján. Válassza az **adatkészlet létrehozása** lehetőséget az **adattár**lehetőséggel.
 
-   ![Projektoszlopok](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img4-projectcolumns-new.png)
-3. Két oszlop kizárása: CustomerAlternateKey és GeographyKey.
+1. Adja meg az adatkészlet nevét, és válassza ki a **táblázatos**típust. Ezután a **tovább** gombra kattintva léphet tovább.
 
-   ![Felesleges oszlopok eltávolítása](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img5-columnselector-new.png)
+1. Az **adattár kiválasztása vagy létrehozása szakaszban**válassza a **korábban létrehozott adattár**lehetőséget. Válassza ki a korábban létrehozott adattárat. Kattintson a Tovább gombra, és határozza meg az elérési utat és a fájl beállításait. Ha a fájlok tartalmaznak egyet, ügyeljen arra, hogy az oszlopfejléc legyen megadva.
 
-## <a name="3-build-the-model"></a>3. a modell összeállítása
-80:20 arányban osztjuk fel az adatokat: az adatok 80 % -át a gépi tanulási modell tanításához, 20 %-át a modell teszteléséhez használjuk. A bináris besorolási probléma "kétosztályos" algoritmusait fogjuk használni.
+1. Végül kattintson a **Létrehozás** gombra az adatkészlet létrehozásához.
 
-1. Húzza a **Felosztás** modult a vászonra.
-2. A Tulajdonságok ablaktáblán adja meg a 0,8 értéket az első kimeneti adatkészletben lévő sorok töredékének megadásához.
+## <a name="configure-designer-experiment"></a>Tervezői kísérlet konfigurálása
 
-   ![Adatok felosztása tanítási és tesztelési adatkészletre](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img6-split-new.png)
-3. Húzza a **Két osztályú súlyozott döntési fa** modult a vászonra.
-4. Húzza a **betanítási modell** modult a vászonra, és a bemenetek megadásához csatlakoztassa a **kétosztályos kibővített döntési fához** (ml-algoritmushoz) és a **felosztott** (adatokat az algoritmus betanítása) modulokhoz. 
+Ezután kövesse az alábbi lépéseket a tervező konfigurálásához:
 
-     ![Csatlakozás a Tanítási modell modulhoz](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img7-train-new.png)
-5. Majd kattintson a Tulajdonságok panelen az **Oszlopválasztás indítása** opcióra. Válassza ki a **BikeBuyer** oszlopot előrejelzési oszlopként.
+1. Kattintson a **tervező** fülre a **Szerző** szakasz bal oldali paneljén.
 
-   ![Előrejelzési oszlop kiválasztása](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img8-traincolumnselector-new.png)
+1. Válassza a **könnyen használható előre elkészített modulok** lehetőséget egy új folyamat létrehozásához.
 
-## <a name="4-score-the-model"></a>4. a modell pontozása
-Most teszteljük, hogyan kezeli a modell a tesztadatokat. Az általunk választott algoritmust összehasonlítjuk egy másik algoritmussal, hogy megtudjuk, melyik teljesít jobban.
+1. A jobb oldali beállítások ablaktáblán adja meg a folyamat nevét.
+
+1. Továbbá válasszon ki egy cél számítási fürtöt a teljes kísérlethez a beállítások gombon egy korábban kiosztott fürthöz. A beállítások ablaktábla bezárásához.
+
+## <a name="import-the-data"></a>Adatok importálása
+
+1. A keresőmező alatti bal oldali ablaktáblán kattintson az **adatkészletek** lapra.
+
+1. Húzza a korábban létrehozott adatkészletet a vászonra.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/import-dataset.png" alt-text="Képernyőfelvétel a vásznon található adatkészlet-modulról.":::
+
+## <a name="clean-the-data"></a>Az adatok megtisztítása
+
+Az adattisztításhoz a modellhez nem kapcsolódó oszlopokat kell eldobnia. Kövesse az alábbi lépéseket:
+
+1. Válassza a **modulok** lapra a bal oldali ablaktáblán.
+
+1. Húzza a **Select Columns (oszlopok kiválasztása** ) modult az **adatátalakítási < manipuláció** a vászonra elemre. Kapcsolja össze ezt a modult az **adatkészlet** modulhoz.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-in.png" alt-text="Képernyőfelvétel a vászon oszlop kiválasztása moduljáról." lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/select-columns-zoomed-out.png":::
+
+1. Kattintson a modulra a Tulajdonságok ablaktábla megnyitásához. Az oszlop szerkesztése elemre kattintva megadhatja, hogy mely oszlopokat szeretné eldobni.
+
+1. Két oszlop kizárása: CustomerAlternateKey és GeographyKey. Kattintson a **Mentés** gombra
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/drop-columns.png" alt-text="Az eldobott oszlopokat ábrázoló képernyőkép.":::
+
+## <a name="build-the-model"></a>A modell létrehozása
+
+Az adathalmaz 80-20:80%-ot oszt ki egy Machine learning-modell betanításához, és 20%-ot a modell teszteléséhez. Ez a bináris besorolási probléma "kétosztályos" algoritmust használ.
+
+1. Húzza az **Adatfelosztási** modult a vászonra.
+
+1. A Tulajdonságok ablaktáblán adja meg a 0,8 értéket **az első kimeneti adatkészletben lévő sorok töredékének**megadásához.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/split-data.png" alt-text="Képernyőfelvétel: a 0,8 felosztási arányának ábrázolása.":::
+
+1. Húzza a **Két osztályú súlyozott döntési fa** modult a vászonra.
+
+1. Húzza a **vonat modell** modult a vászonra. A bemeneteket úgy adhatja meg, hogy összekapcsolja a **kétosztályos kibővített döntési fába** (ml algoritmus) és az **adatok felosztása** (az algoritmus betanítása) modulok számára.
+
+1. A betanítási modell modellje elemnél, a Tulajdonságok ablaktábla **címke oszlopa** területén válassza az oszlop szerkesztése lehetőséget. Válassza ki a **kerékpárvásárló** oszlopot az előrejelzéshez, majd válassza a **Mentés**lehetőséget.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/label-column.png" alt-text="A Label (címke) oszlopot, a Kerékpárvásárló és a kiválasztott elemet ábrázoló képernyőkép.":::
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/train-model.png" alt-text="Képernyőfelvétel: a betanítási modell modulja, amely a kétosztályos felerősített döntési fához és a felosztott adatmodulokhoz csatlakozik.":::
+
+## <a name="score-the-model"></a>A modell pontozása
+
+Most tesztelje, hogyan hajtja végre a modell a tesztelési adatokon. A rendszer két különböző algoritmust használ, amelyekkel megtekintheti, melyik végez jobbat. Kövesse az alábbi lépéseket:
 
 1. Húzza a **pontszám modell** modult a vászonra, és kapcsolja össze a **modell betanítása** és a **felosztott** adatmodulok használatával.
 
-   ![A modell pontozása](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img9-score-new.png)
-2. Húzza a **két osztályú Bayes pontozó gépet** a kísérlet vászonra. Összehasonlítjuk ennek az algoritmusnak a teljesítményét a Két osztályú súlyozott döntési fa teljesítményével.
-3. Másolja és illessze be a vászonra a Tanítási és Pontszám modelleket.
-4. Húzza a **Modell kiértékelése** modult a vászonra a két algoritmus összehasonlításához.
-5. **Futtassa** a kísérletet.
+1. Húzza a **kétosztályos Bayes átlagos Perceptron** a kísérleti vászonra. Összehasonlítja, hogy ez az algoritmus hogyan működik együtt a kétosztályos kibővített döntési fához képest.
 
-   ![Kísérlet futtatása](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img10-evaluate-new.png)
-6. Kattintson a Modell kiértékelése modul alsó részén található kimeneti portra, majd kattintson a Képi megjelenítés opcióra.
+1. Másolja és illessze be a modulok **betanítási modelljét** és **pontszámát** a vásznon.
 
-   ![Kiértékelés eredményeinek képi megjelenítése](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img11-evalresults-new.png)
+1. Húzza a **Modell kiértékelése** modult a vászonra a két algoritmus összehasonlításához.
 
-A megadott metrikák a ROC görbe, a precíziós visszahívás diagram és a lift görbe. A metrikák azt mutatják, hogy az első modell jobban teljesített, mint a második. Ha szeretné megtekinteni az első modell előrejelzését, kattintson a pontszám modell kimeneti portjára, és kattintson a vizualizáció elemre.
+1. Kattintson a **Submit (elküldés** ) gombra a folyamat futtatásának beállításához.
 
-![Pontszám modell eredményeinek képi megjelenítése](./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img12-scoreresults-new.png)
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-in.png" alt-text="Képernyőkép a vásznon található többi modulról." lightbox="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/algo-comparison-zoomed-out.png":::
 
-Látni fogja, hogy a tesztelési adatkészletnél megjelent két új oszlop.
+1. A Futtatás befejezése után kattintson a jobb gombbal a **modell kiértékelése** modulra, majd kattintson a **kiértékelés eredményeinek megjelenítése**lehetőségre.
+
+    :::image type="content" source="./media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/result-visualize-zoomed-out.png" alt-text="Képernyőkép az eredményekről.":::
+
+A megadott metrikák a ROC görbe, a precíziós visszahívás diagram és a lift görbe. Tekintse meg ezeket a mérőszámokat, és figyelje meg, hogy az első modell jobban teljesített, mint a második. Ha szeretné megtekinteni az első modell előrejelzését, kattintson a jobb gombbal a pontszám modell modulra, és kattintson a pontozásos adatkészlet megjelenítése elemre az előre jelzett eredmények megtekintéséhez.
+
+Ekkor két további oszlop jelenik meg a tesztelési adatkészlethez.
 
 * Pontozott valószínűség: annak valószínűsége, hogy az ügyfél kerékpárvásárló.
 * Pontozott címkék: a modell által elvégzett osztályozás – kerékpárvásárló (1) vagy sem (0). A címkézés valószínűségi küszöbértéke 50 százalékra van beállítva és módosítható.
 
-A Kerékpárvásárló (tényleges) és a Pontozott címkék (előrejelzés) oszlopok összehasonlításával láthatja, milyen jól teljesített a modell. Ezt a modellt használhatja az új ügyfelek előrejelzéséhez, és közzéteheti a modellt webszolgáltatásként, vagy visszaállíthatja az eredményeket az Azure szinapszis szolgáltatásba.
+Hasonlítsa össze az oszlop Kerékpárvásárló (tényleges) és a pontozásos címkékkel (előrejelzéssel), hogy megtekintse a modell végrehajtását. Ezt a modellt használhatja arra, hogy előrejelzéseket készítsen az új ügyfelek számára. [Ezt a modellt webszolgáltatásként](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) teheti közzé, vagy visszaállíthatja az eredményeket az Azure szinapszisba.
 
-## <a name="next-steps"></a>További lépések
-A prediktív gépi tanulási modellek létrehozásával kapcsolatos további tudnivalókért olvassa el [Az Azure Machine Learning bemutatása](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) című részt.
+## <a name="next-steps"></a>Következő lépések
+
+Ha többet szeretne megtudni a Azure Machine Learningről, tekintse meg az Azure-beli [Machine learning bemutatása](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)című témakört.
+
+Ismerje meg a beépített pontozást az adattárházban. [here](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)

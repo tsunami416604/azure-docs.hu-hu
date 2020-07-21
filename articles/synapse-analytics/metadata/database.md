@@ -1,5 +1,5 @@
 ---
-title: Az Azure szinapszis Analytics megosztott adatbázisa
+title: Megosztott adatbázis
 description: Az Azure szinapszis Analytics olyan megosztott metaadat-modellt biztosít, amelyben az adatbázis létrehozása Apache Spark az SQL igény szerinti (előzetes verzió) és az SQL Pool Engines használatával elérhetővé teszi.
 services: synapse-analytics
 author: MikeRys
@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 68919457cc045f50ebef249ced9c117fea8d6984
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 42c6ad7f77d1b42c02f57f161874eadb75387dc2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079026"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496009"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Az Azure szinapszis Analytics megosztott adatbázisa
 
@@ -73,7 +73,7 @@ SELECT * FROM sys.databases;
 
 Ellenőrizze, hogy `mytestdb` szerepel-e az eredmények között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ az Azure szinapszis Analytics megosztott metaadatairól](overview.md)
 - [További információ az Azure szinapszis Analytics megosztott metaadatait tartalmazó tábláiról](table.md)

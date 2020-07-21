@@ -6,13 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 2da0cd2ede33abe8ebbe3616192349112fb24bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0176454b38dfa88480e63fedfae175a63192eaee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797506"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498593"
 ---
-# <a name="visualizing-data-from-azure-monitor"></a>Adatok megjelenítése Azure Monitorból
+# <a name="visualizing-data-from-azure-monitor"></a>Adatok megjelenítése az Azure Monitorból
 Ez a cikk az Azure Monitorban tárolt napló-és metrikai adatok megjelenítéséhez használható módszerek összegzését tartalmazza.
 
 A vizualizációk, például a diagramok és a diagramok segítségével elemezheti a figyelési adatait a problémák részletezése és a minták azonosítása érdekében. A használt eszköztől függően lehetősége van a vizualizációk megosztására is a szervezeten belül és kívül más felhasználókkal.
@@ -39,6 +40,8 @@ A [munkafüzetek](../azure-monitor/platform/workbooks-overview.md) olyan interak
 Az [Azure irányítópultok](../azure-portal/azure-portal-dashboards.md) az Azure elsődleges irányítópult-technológiái. Különösen hasznosak lehetnek az Azure-infrastruktúra és-szolgáltatások egyetlen ablaktáblájának biztosításában, amely lehetővé teszi a fontos problémák gyors azonosítását.
 
 ![Irányítópult](media/visualizations/dashboard.png)
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>Előnyök
 - Mélyreható integráció az Azure-ba. A vizualizációk több Azure-oldalról is rögzíthetők az irányítópultokon, például Metrikaböngésző, Log Analytics és Application Insights.
@@ -132,7 +135,7 @@ A naplózási és metrikai adatokban lévő adatokhoz a Azure Monitor API-n kere
 - Nem támogatott több munkaterület vagy Application Insights alkalmazások lekérdezése.
 - A lekérdezések mérete legfeljebb 8 MB, a lekérdezés végrehajtási ideje pedig 110 másodperc.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tudnivalók a [Azure monitor által gyűjtött adatokról](platform/data-platform.md).
 - Ismerje meg az [Azure-irányítópultokat](../azure-portal/azure-portal-dashboards.md).
 - A [Azure monitor nézeteinek](platform/view-designer.md)megismerése.

@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: b5fad1e287ffca569546092893c4f1a6501a3b7b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6713a1fbbbbca0aa212461cc966b42aaf2daa47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224417"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498442"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL felügyelt példányok – gyakori kérdések (GYIK)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -66,11 +66,11 @@ Nem, és jelenleg nincsenek véglegesítve a felügyelt SQL-példányon találha
 **Hol lehet migrálni, ha bizonyos hardverkövetelmények, például nagyobb RAM-virtuális mag arány vagy több processzor?**
 Érdemes lehet áttelepíteni [SQL Serverre az Azure Virtual Machines](../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) vagy az optimalizált memória/CPU [Azure SQL Database](../database/sql-database-paas-overview.md) .
 
-## <a name="known-issues--bugs"></a>Ismert problémák & hibák
+## <a name="known-issues-and-defects"></a>Ismert problémák és hibák
 
 **Hol találhatók az ismert problémák és hibák?**
 
-A hibákkal és az ismert problémákkal kapcsolatban lásd: [ismert problémák](../database/doc-changes-updates-release-notes.md#known-issues).
+A termékkel kapcsolatos hibák és ismert problémák esetén lásd: [ismert problémák](../database/doc-changes-updates-release-notes.md#known-issues).
 
 ## <a name="new-features"></a>Új funkciók
 
@@ -127,7 +127,7 @@ Ha egy másik DNS-zónát szeretne használni az alapértelmezett helyett, péld
 **Hogyan telepíthetek át Azure SQL Database egy vagy rugalmas készletről az SQL-alapú felügyelt példányra?**
 
 A felügyelt példányok a számítási és a tárolási méretnél ugyanazok a teljesítményszint, mint a Azure SQL Database egyéb központi telepítési lehetőségei. Ha egyetlen példányon szeretné összevonni az adatait, vagy egyszerűen csak felügyelt példányban támogatott szolgáltatást kell használnia, az adatait Exportálás/Importálás (BACPAC) funkcióval is áttelepítheti. Az alábbi módokon érdemes megfontolni SQL Database áttelepítését az SQL felügyelt példányára: 
-- [Külső adatforrás]() használata
+- [Külső adatforrás](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-129-using-data-source-external-from-azure-sql/ba-p/1443210) használata
 - A [SQLPackage](https://techcommunity.microsoft.com/t5/azure-database-support-blog/how-to-migrate-azure-sql-database-to-azure-sql-managed-instance/ba-p/369182) használata
 - A [BCP](https://medium.com/azure-sqldb-managed-instance/migrate-from-azure-sql-managed-instance-using-bcp-674c92efdca7) használata
 
@@ -296,7 +296,7 @@ Ez nem kötelező. [Létrehozhat egy virtuális hálózatot az Azure SQL felügy
 
 Nem. Jelenleg nem támogatott olyan felügyelt példány elhelyezése olyan alhálózatban, amely már tartalmaz más típusú erőforrásokat.
 
-## <a name="connectivity"></a>Kapcsolat 
+## <a name="connectivity"></a>Kapcsolatok 
 
 **Tudok csatlakozni a felügyelt példányhoz IP-cím használatával?**
 
@@ -348,21 +348,6 @@ A kiszűrése kockázatok enyhítése érdekében az ügyfeleknek ajánlott bizt
 - Állítsa be az JIT Jumpbox hozzáférését a sysadmin fiókhoz.
 - Kapcsolja be az [SQL-naplózást](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine), és integrálja azt a riasztási mechanizmusokkal.
 - A [veszélyforrások észlelésének](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) bekapcsolása a [speciális adatbiztonsági (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) csomagból.
-
-
-## <a name="cost-saving-use-cases"></a>Költségtakarékos használati esetek
-
-**Hol találom a használati eseteket és a költségmegtakarítást az SQL felügyelt példányával?**
-
-SQL felügyelt példányok esettanulmányai:
-
-- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
-- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
-
-Ha jobban meg szeretné ismerni az Azure SQL felügyelt példányának üzembe helyezéséhez kapcsolódó előnyöket, költségeket és kockázatokat, akkor is van egy Forrester-tanulmány: [Microsoft Azure SQL Database felügyelt példány teljes gazdasági hatása](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
-
 
 ## <a name="dns"></a>DNS
 
@@ -467,6 +452,19 @@ A biztonsági mentési tár költségeit az Azure Portalon figyelheti. Útmutat�
 **Hogyan optimalizálható a biztonsági másolatok tárolási költségei a felügyelt példányon?**
 
 A biztonsági másolatok tárolási költségeinek optimalizálásához tekintse [meg a biztonsági mentés finomhangolása az SQL felügyelt példányon](https://techcommunity.microsoft.com/t5/azure-sql-database/fine-tuning-backup-storage-costs-on-managed-instance/ba-p/1390935)című témakört.
+
+## <a name="cost-saving-use-cases"></a>Költségtakarékos használati esetek
+
+**Hol találom a használati eseteket és a költségmegtakarítást az SQL felügyelt példányával?**
+
+SQL felügyelt példányok esettanulmányai:
+
+- [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
+
+Ha jobban meg szeretné ismerni az Azure SQL felügyelt példányának üzembe helyezéséhez kapcsolódó előnyöket, költségeket és kockázatokat, akkor is van egy Forrester-tanulmány: [Microsoft Azure SQL Database felügyelt példány teljes gazdasági hatása](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 
 ## <a name="password-policy"></a>Jelszóházirend 
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: sngun
-ms.openlocfilehash: e7e1480d00280fc567a69556f25db8ffab800f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31c3c02f2b32594e5b20450d0bb519f4cdf82807
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262633"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497760"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>Az Azure Kubernetes és a Azure Cosmos DB használata (előzetes verzió)
 
@@ -33,7 +33,7 @@ Ha többet szeretne megtudni a Azure Cosmos DB etcd API-ról, tekintse meg az [�
 
    Az Azure Kubernetes Engine (**AK-Engine**) Azure Resource Manager sablonokat hoz létre az Azure-beli Kubernetes-fürtökhöz. Az Kabai-motor bemenete a fürt definíciós fájlja, amely leírja a kívánt fürtöt, beleértve a Orchestrator, a szolgáltatásokat és az ügynököket. A bemeneti fájlok szerkezete hasonló az Azure Kubernetes Service nyilvános API-hoz.
 
-1. A Azure Cosmos DB etcd API jelenleg előzetes verzióban érhető el. Regisztráljon az előzetes verzió használatára a következő címen: https://aka.ms/cosmosetcdapi-signup . Az űrlap elküldése után az előfizetését az Azure Cosmos etcd API használatára fogja engedélyezni. 
+1. A Azure Cosmos DB etcd API jelenleg előzetes verzióban érhető el. Regisztráljon az előzetes verzió használatára a következő címen: https://aka.ms/cosmosetcdapi-signup . Az űrlap elküldése után az előfizetés az Azure Cosmos etcd API-t fogja használni. 
 
 ## <a name="deploy-the-cluster-with-azure-cosmos-db"></a>A fürt üzembe helyezése Azure Cosmos DB
 
@@ -43,7 +43,7 @@ Ha többet szeretne megtudni a Azure Cosmos DB etcd API-ról, tekintse meg az [�
    az login 
    ```
 
-1. Ha egynél több előfizetéssel rendelkezik, váltson arra az előfizetésre, amelyet a Azure Cosmos DB etcd API számára engedélyezett. A szükséges előfizetésre váltás a következő paranccsal végezhető el:
+1. Ha egynél több előfizetéssel rendelkezik, váltson a Azure Cosmos DB etcd API-hoz engedélyezett előfizetésre. A szükséges előfizetésre váltás a következő paranccsal végezhető el:
 
    ```azurecli-interactive
    az account set --subscription "<Name of your subscription>"
@@ -164,7 +164,7 @@ Ha többet szeretne megtudni a Azure Cosmos DB etcd API-ról, tekintse meg az [�
      --force-overwrite
    ```
 
-## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
+## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
 
 A sablon üzembe helyezése több percet is igénybe vehet. Az üzembe helyezés sikeres befejeződése után a következő kimenet jelenik meg a parancsok parancssorában:
 
@@ -179,7 +179,7 @@ Az erőforráscsoport mostantól olyan erőforrásokat tartalmaz, mint a-Virtual
 
 Az Azure Cosmos-fiók neve megegyezik a megadott DNS-előtaggal, amely a k8s-vel van hozzáfűzve. Az Azure Cosmos-fiókját a rendszer automatikusan kiépíti egy **EtcdDB** nevű adatbázissal és egy **EtcdData**nevű tárolóval. A tároló tárolja a etcd kapcsolatos összes adatát. A tároló bizonyos számú kérési egységgel lett kiépítve, és a [számítási feladatok alapján méretezheti (növelheti/csökkentheti) az átviteli sebességet](scaling-throughput.md) . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg [, hogyan dolgozhat az Azure Cosmos Database, tárolók és elemek](databases-containers-items.md) használatával
 * Útmutató a [kiépített átviteli sebességek optimalizálásához](optimize-cost-throughput.md)

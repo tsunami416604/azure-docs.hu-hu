@@ -1,5 +1,5 @@
 ---
-title: Azure erőforrás-szolgáltatói műveletek
+title: Azure-beli erőforrás-szolgáltatók műveletei
 description: Felsorolja az Azure-erőforrás-szolgáltatók műveleteit.
 services: active-directory
 ms.service: role-based-access-control
@@ -7,15 +7,15 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/06/2020
-ms.openlocfilehash: 911e1de018ba7027585e19199b69eaaf116ba39a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 07/16/2020
+ms.openlocfilehash: 0fc2039805b155535eeac1d653fc9ecb9e576d5d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087112"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496944"
 ---
-# <a name="azure-resource-providers-operations"></a>Azure erőforrás-szolgáltatói műveletek
+# <a name="azure-resource-providers-operations"></a>Azure-beli erőforrás-szolgáltatók műveletei
 
 Ez a szakasz a beépített szerepkörökben használt Azure-erőforrás-szolgáltatók műveleteit sorolja fel. Ezeket a műveleteket saját [Egyéni Azure-szerepköreiben](custom-roles.md) használhatja az Azure-beli erőforrások részletes hozzáférés-vezérlésének biztosításához. Az erőforrás-szolgáltatói műveletek folyamatosan fejlődnek. A legújabb műveletek beszerzéséhez használja a [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) vagy [az az Provider Operation List műveletet](/cli/azure/provider/operation#az-provider-operation-list).
 
@@ -23,9 +23,8 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 
 ## <a name="all"></a>Mind
 
-|  |
+| Általános kérdések |
 | --- |
-| **Általános** |
 | [Microsoft. addons](#microsoftaddons) |
 | [Microsoft. Marketplace](#microsoftmarketplace) |
 | [Microsoft. MarketplaceApps](#microsoftmarketplaceapps) |
@@ -40,7 +39,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft. CDN](#microsoftcdn) |
 | [Microsoft. ClassicNetwork](#microsoftclassicnetwork) |
 | [Microsoft.Network](#microsoftnetwork) |
-| **Storage** |
+| **Storage-fiók** |
 | [Microsoft. ClassicStorage](#microsoftclassicstorage) |
 | [Microsoft. DataBox](#microsoftdatabox) |
 | [Microsoft. ImportExport](#microsoftimportexport) |
@@ -81,7 +80,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft.Kusto](#microsoftkusto) |
 | [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated) |
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
-| **Blokklánc** |
+| **Blockchain** |
 | [Microsoft. Blockchain](#microsoftblockchain) |
 | **AI és gépi tanulás** |
 | [Microsoft. BotService](#microsoftbotservice) |
@@ -89,7 +88,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft. MachineLearning](#microsoftmachinelearning) |
 | [Microsoft.MachineLearningServices](#microsoftmachinelearningservices) |
 | **Dolgok internetes hálózata** |
-| [Microsoft. Devices](#microsoftdevices) |
+| [Microsoft.Devices](#microsoftdevices) |
 | [Microsoft. IoTCentral](#microsoftiotcentral) |
 | [Microsoft. NotificationHubs](#microsoftnotificationhubs) |
 | [Microsoft. TimeSeriesInsights](#microsofttimeseriesinsights) |
@@ -121,7 +120,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft. segédösszetevője](#microsoftdevtestlab) |
 | [Microsoft. LabServices](#microsoftlabservices) |
 | [Microsoft. VisualStudio](#microsoftvisualstudio) |
-| **Migrate (Áttelepítés)** |
+| **Migrate** |
 | [Microsoft. Migrálás](#microsoftmigrate) |
 | [Microsoft. OffAzure](#microsoftoffazure) |
 | **Figyelő** |
@@ -146,7 +145,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft. HybridCompute](#microsofthybridcompute) |
 | [Microsoft. ManagedServices](#microsoftmanagedservices) |
 | [Microsoft. Management](#microsoftmanagement) |
-| [Microsoft.PolicyInsights](#microsoftpolicyinsights) |
+| [Microsoft. PolicyInsights](#microsoftpolicyinsights) |
 | [Microsoft. Portal](#microsoftportal) |
 | [Microsoft. Recoveryservices szolgáltatónál](#microsoftrecoveryservices) |
 | [Microsoft. Resources](#microsoftresources) |
@@ -166,7 +165,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. addons/regisztráció/művelet | A megadott előfizetés regisztrálása a Microsoft. addons szolgáltatásban |
 > | Microsoft. addons/műveletek/olvasás | A támogatott RP-műveletek beolvasása. |
@@ -180,7 +179,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Marketplace/regisztráció/művelet | Regisztrálja a Microsoft. Marketplace erőforrás-szolgáltatót az előfizetésben. |
 > | Microsoft. Marketplace/privateStores/művelet | Frissíti a PrivateStore. |
@@ -202,7 +201,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. MarketplaceApps/ClassicDevServices/READ | A GET művelet egy klasszikus fejlesztői szolgáltatáson keresztül történik. |
 > | Microsoft. MarketplaceApps/ClassicDevServices/delete | A TÖRLÉSi művelet egy klasszikus fejlesztői szolgáltatási erőforráson van. |
@@ -216,7 +215,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. MarketplaceOrdering/szerződések/olvasás | Az adott előfizetéshez tartozó összes szerződés visszaküldése |
 > | Microsoft. MarketplaceOrdering/szerződések/ajánlatok/csomagok/olvasás | Szerződés visszaadása egy adott piactér-elemmel kapcsolatban |
@@ -231,7 +230,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: [Azure Service Health](../service-health/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ResourceHealth/regisztráció/művelet | Regisztrálja az előfizetést a Microsoft ResourceHealth |
 > | Microsoft. ResourceHealth/regisztráció/művelet | A Microsoft ResourceHealth-előfizetés regisztrációjának törlése |
@@ -255,7 +254,7 @@ Azure-szolgáltatás: [Azure Service Health](../service-health/index.yml)
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft.Support/register/action | Regisztrálja a támogatási erőforrás-szolgáltatót |
 > | Microsoft. support/checkNameAvailability/művelet | Ellenőrzi, hogy a név érvényes-e, és nincs-e használatban az erőforrás típusaként |
@@ -276,7 +275,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: klasszikus üzembe helyezési modell virtuális gép
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ClassicCompute/regisztráció/művelet | Regisztrálás a klasszikus számítási feladatokba |
 > | Microsoft. ClassicCompute/checkDomainNameAvailability/művelet | Ellenőrzi egy adott tartománynév rendelkezésre állását. |
@@ -393,7 +392,7 @@ Azure-szolgáltatás: klasszikus üzembe helyezési modell virtuális gép
 Azure-szolgáltatás: [Virtual Machines](../virtual-machines/index.yml), [Virtual Machine Scale sets](../virtual-machine-scale-sets/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. számítás/regisztrálás/művelet | Előfizetés regisztrálása a Microsoft. számítási erőforrás-szolgáltatónál |
 > | Microsoft. számítás/regisztráció/művelet | Előfizetés regisztrációjának törlése a Microsoft. számítási erőforrás-szolgáltatónál |
@@ -577,7 +576,7 @@ Azure-szolgáltatás: [Virtual Machines](../virtual-machines/index.yml), [Virtua
 Azure-szolgáltatás: [Service Fabric](../service-fabric/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ServiceFabric/regisztráció/művelet | Bármilyen művelet regisztrálása |
 > | Microsoft. ServiceFabric/fürtök/olvasás | Bármely fürt beolvasása |
@@ -606,14 +605,14 @@ Azure-szolgáltatás: [Service Fabric](../service-fabric/index.yml)
 > | Microsoft. ServiceFabric/Locations/Operations/READ | Bármilyen művelet beolvasása hely szerint |
 > | Microsoft. ServiceFabric/Operations/READ | Az összes elérhető művelet beolvasása |
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 ### <a name="microsoftcdn"></a>Microsoft. CDN
 
 Azure-szolgáltatás: [Content Delivery Network](../cdn/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. CDN/regisztráció/művelet | Regisztrálja az előfizetést a CDN erőforrás-szolgáltató számára, és lehetővé teszi a CDN-profilok létrehozását. |
 > | Microsoft. CDN/CheckNameAvailability/művelet |  |
@@ -684,7 +683,7 @@ Azure-szolgáltatás: [Content Delivery Network](../cdn/index.yml)
 Azure-szolgáltatás: klasszikus üzembe helyezési modell virtuális hálózata
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ClassicNetwork/regisztráció/művelet | Regisztrálás a klasszikus hálózatra |
 > | Microsoft. ClassicNetwork/expressroutecrossconnections/READ | Expressz útvonal-kereszt kapcsolatok beolvasása. |
@@ -763,7 +762,7 @@ Azure-szolgáltatás: klasszikus üzembe helyezési modell virtuális hálózata
 Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), [azure Bastion](../bastion/index.yml), [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md), [Azure DNS](../dns/index.yml), [Azure ExpressRoute](../expressroute/index.yml), [Azure Firewall](../firewall/index.yml), [Azure bejárati szolgáltatás](../frontdoor/index.yml), [azure Private link](../private-link/index.yml), [Load Balancer](../load-balancer/index.yml), [Network Watcher](../network-watcher/index.yml), [Traffic Manager](../traffic-manager/index.yml), [Virtual Network](../virtual-network/index.yml), [Virtual WAN](../virtual-wan/index.yml), [VPN Gateway](../vpn-gateway/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Network/regisztráció/művelet | Regisztrálja az előfizetést |
 > | Microsoft. Network/regisztráció/művelet | Előfizetés regisztrációjának törlése |
@@ -1298,7 +1297,7 @@ Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), 
 Azure-szolgáltatás: klasszikus üzembe helyezési modell tárolója
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ClassicStorage/regisztráció/művelet | Regisztrálás a klasszikus tárolóba |
 > | Microsoft. ClassicStorage/checkStorageAccountAvailability/művelet | A Storage-fiók rendelkezésre állását ellenőrzi. |
@@ -1363,7 +1362,7 @@ Azure-szolgáltatás: klasszikus üzembe helyezési modell tárolója
 Azure-szolgáltatás: [Azure Data Box](../databox/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. DataBox/regisztráció/művelet | Szolgáltató regisztrálása a Microsoft. Databox |
 > | Microsoft. DataBox/regisztráció/művelet | A Microsoft. Databox szolgáltató regisztrációjának megszüntetése |
@@ -1388,7 +1387,7 @@ Azure-szolgáltatás: [Azure Data Box](../databox/index.yml)
 Azure-szolgáltatás: [Azure import/export](../storage/common/storage-import-export-service.md)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ImportExport/regisztráció/művelet | Regisztrálja az előfizetést az importálási/exportálási erőforrás-szolgáltató számára, és lehetővé teszi az importálási/exportálási feladatok létrehozását. |
 > | Microsoft. ImportExport/feladatok/írás | Létrehoz egy feladatot a megadott paraméterekkel, vagy frissíti a megadott feladatokhoz tartozó tulajdonságokat vagy címkéket. |
@@ -1403,7 +1402,7 @@ Azure-szolgáltatás: [Azure import/export](../storage/common/storage-import-exp
 Azure-szolgáltatás: [Azure NetApp Files](../azure-netapp-files/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. NetApp/regisztráció/művelet | Előfizetés-regisztrációs művelet |
 > | Microsoft. NetApp/regisztráció/művelet | Előfizetés regisztrációjának törlése a Microsoft. NetApp erőforrás-szolgáltatóval |
@@ -1453,7 +1452,7 @@ Azure-szolgáltatás: [Azure NetApp Files](../azure-netapp-files/index.yml)
 Azure-szolgáltatás: [Storage](../storage/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Storage/regisztráció/művelet | Regisztrálja az előfizetést a tárolási erőforrás-szolgáltató számára, és lehetővé teszi a Storage-fiókok létrehozását. |
 > | Microsoft. Storage/checknameavailability/olvasás | Ellenőrzi, hogy a fiók neve érvényes-e, és nincs-e használatban. |
@@ -1580,7 +1579,7 @@ Azure-szolgáltatás: [Storage](../storage/index.yml)
 Azure-szolgáltatás: [Storage](../storage/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. storagesync/regisztráció/művelet | Regisztrálja az előfizetést a Storage Sync Provider számára |
 > | Microsoft. storagesync/regisztráció/művelet | A Storage Sync Provider előfizetés regisztrációjának törlése |
@@ -1633,7 +1632,7 @@ Azure-szolgáltatás: [Storage](../storage/index.yml)
 Azure-szolgáltatás: [StorSimple](../storsimple/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. StorSimple/regisztráció/művelet | Szolgáltató regisztrálása a Microsoft. StorSimple |
 > | Microsoft. StorSimple/menedzserek/clearAlerts/művelet | Törölje az Eszközkezelőhöz társított összes riasztást. |
@@ -1805,14 +1804,14 @@ Azure-szolgáltatás: [StorSimple](../storsimple/index.yml)
 > | Microsoft. StorSimple/Managers/storageDomains/operationResults/READ | A művelet eredményeinek megjelenítése vagy beolvasása |
 > | Microsoft. StorSimple/Operations/READ | A műveletek listája vagy beolvasása |
 
-## <a name="web"></a>Web
+## <a name="web"></a>Webes
 
 ### <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
 Azure-szolgáltatás: [app Service tanúsítványok](../app-service/configure-ssl-certificate.md#import-an-app-service-certificate)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. CertificateRegistration/provisionGlobalAppServicePrincipalInUserTenant/művelet | Egyszerű szolgáltatásnév kiépítése a Service app számára |
 > | Microsoft. CertificateRegistration/validateCertificateRegistrationInformation/művelet | Tanúsítvány-megvásárlási objektum ellenőrzése az elküldése nélkül |
@@ -1838,7 +1837,7 @@ Azure-szolgáltatás: [app Service tanúsítványok](../app-service/configure-ss
 Azure-szolgáltatás: [app Service](../app-service/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. DomainRegistration/generateSsoRequest/művelet | Kérelem létrehozása a tartomány-ellenőrzési központba való bejelentkezéshez. |
 > | Microsoft. DomainRegistration/validateDomainRegistrationInformation/művelet | Tartományi vásárlási objektum ellenőrzése a küldés nélkül |
@@ -1865,7 +1864,7 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml)
 Azure-szolgáltatás: [Azure Maps](../azure-maps/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Maps/regisztráció/művelet | A szolgáltató regisztrálása |
 > | Microsoft. Maps/fiókok/írás | Maps-fiók létrehozása vagy frissítése. |
@@ -1901,7 +1900,7 @@ Azure-szolgáltatás: [Azure Maps](../azure-maps/index.yml)
 Azure-szolgáltatás: [Media Services](../media-services/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Media/regisztráció/művelet | Regisztrálja az előfizetést a Media Services erőforrás-szolgáltatóhoz, és lehetővé teszi Media Services fiókok létrehozását |
 > | Microsoft. Media/regisztráció/művelet | A Media Services erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése |
@@ -2005,7 +2004,7 @@ Azure-szolgáltatás: [Media Services](../media-services/index.yml)
 Azure-szolgáltatás: [Azure Search](../search/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Search/regisztráció/művelet | Regisztrálja az előfizetést a keresési erőforrás-szolgáltatónál, és lehetővé teszi a keresési szolgáltatások létrehozását. |
 > | Microsoft. Search/checkNameAvailability/művelet | A szolgáltatás nevének rendelkezésre állását ellenőrzi. |
@@ -2030,7 +2029,7 @@ Azure-szolgáltatás: [Azure Search](../search/index.yml)
 Azure-szolgáltatás: [Azure signaler szolgáltatás](../azure-signalr/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. SignalRService/regisztráció/művelet | Regisztrálja a Microsoft. SignalRService erőforrás-szolgáltatót egy előfizetéssel |
 > | Microsoft. SignalRService/regisztráció/művelet | A Microsoft. SignalRService erőforrás-szolgáltató regisztrációjának törlése előfizetéssel |
@@ -2067,7 +2066,7 @@ Azure-szolgáltatás: [Azure signaler szolgáltatás](../azure-signalr/index.yml
 Azure-szolgáltatás: [app Service](../app-service/index.yml), [Azure functions](../azure-functions/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Web/regisztráció/művelet | A Microsoft. web erőforrás-szolgáltató regisztrációjának törlése az előfizetéshez. |
 > | Microsoft. Web/érvényesítés/művelet | Érvényesít. |
@@ -2525,14 +2524,14 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml), [Azure functions]
 > | Microsoft. Web/staticSites/customdomains/validate/Action | Egyéni tartomány érvényesítése statikus helyhez |
 > | Microsoft. Web/staticSites/functions/READ | Statikus hely funkcióinak listázása |
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Tárolók
 
 ### <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
 Azure-szolgáltatás: [Container instances](../container-instances/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ContainerInstance/regisztráció/művelet | Regisztrálja az előfizetést a tároló példány erőforrás-szolgáltatója számára, és lehetővé teszi a tároló csoportok létrehozását. |
 > | Microsoft. ContainerInstance/containerGroups/READ | Minden tároló csoport beolvasása. |
@@ -2562,7 +2561,7 @@ Azure-szolgáltatás: [Container instances](../container-instances/index.yml)
 Azure-szolgáltatás: [Container Registry](../container-registry/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ContainerRegistry/regisztráció/művelet | Regisztrálja az előfizetést a tároló-beállításjegyzék erőforrás-szolgáltatója számára, és lehetővé teszi a tároló-nyilvántartók létrehozását. |
 > | Microsoft. ContainerRegistry/checkNameAvailability/READ | Ellenőrzi, hogy a tároló beállításjegyzékének neve használható-e. |
@@ -2647,7 +2646,7 @@ Azure-szolgáltatás: [Container Registry](../container-registry/index.yml)
 Azure-szolgáltatás: [Azure Kubernetes szolgáltatás (ak)](../aks/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Tárolószolgáltatás/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. Tárolószolgáltatás erőforrás-szolgáltatónál |
 > | Microsoft. Tárolószolgáltatás/regisztráció/művelet | Előfizetés regisztrációjának törlése a Microsoft. Tárolószolgáltatás erőforrás-szolgáltatóval |
@@ -2990,7 +2989,7 @@ Azure-szolgáltatás: [Azure Kubernetes szolgáltatás (ak)](../aks/index.yml)
 Azure-szolgáltatás: [Azure dev Spaces](../dev-spaces/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. DevSpaces/regisztráció/művelet | A Microsoft dev Spaces erőforrás-szolgáltató regisztrálása előfizetéssel |
 > | Microsoft. DevSpaces/vezérlők/olvasás | Az Azure dev Spaces-vezérlő tulajdonságainak olvasása |
@@ -3009,7 +3008,7 @@ Azure-szolgáltatás: [Azure dev Spaces](../dev-spaces/index.yml)
 Azure-szolgáltatás: [Azure cache for Redis](../azure-cache-for-redis/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. cache/checknameavailability/művelet | Ellenőrzi, hogy a név elérhető-e új Redis Cache |
 > | Microsoft. cache/regisztráció/művelet | Regisztrálja a Microsoft. cache erőforrás-szolgáltatót egy előfizetéssel |
@@ -3055,7 +3054,7 @@ Azure-szolgáltatás: [Azure cache for Redis](../azure-cache-for-redis/index.yml
 Azure-szolgáltatás: [Data Factory](../data-factory/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. DataFactory/regisztráció/művelet | Regisztrálja az előfizetést a Data Factory erőforrás-szolgáltatóhoz. |
 > | Microsoft. DataFactory/regisztráció/művelet | A Data Factory erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése. |
@@ -3127,6 +3126,7 @@ Azure-szolgáltatás: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/gyárak/integrationruntimes/leállítás/művelet | Leállítja a Integration Runtime. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/synccredentials/művelet | Szinkronizálja a megadott Integration Runtime hitelesítő adatait. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/frissítés/művelet | A megadott Integration Runtime frissítése. |
+> | Microsoft. DataFactory/gyárak/integrationruntimes/createexpressshirinstalllink/művelet | Expressz telepítési hivatkozás létrehozása a saját üzemeltetésű Integration Runtimehoz. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/regenerateauthkey/művelet | Újragenerálja a megadott Integration Runtime hitelesítési kulcsait. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/removelinks/művelet | Eltávolítja a megadott Integration Runtime csatolt Integration Runtime hivatkozásait. |
 > | Microsoft. DataFactory/gyárak/integrationruntimes/linkedIntegrationRuntime/művelet | Csatolt Integration Runtime-hivatkozás létrehozása a megadott megosztott Integration Runtime. |
@@ -3158,6 +3158,12 @@ Azure-szolgáltatás: [Data Factory](../data-factory/index.yml)
 > | Microsoft. DataFactory/gyárak/folyamatok/pipelineruns/activityruns/folyamat/olvasás | Lekéri a tevékenységek futtatásának folyamatát. |
 > | Microsoft. DataFactory/gyárak/folyamatok/homokozó/létrehozás/művelet | Hibakeresési futtatási környezetet hoz létre a folyamathoz. |
 > | Microsoft. DataFactory/gyárak/folyamatok/homokozó/Futtatás/művelet | Hibakeresési futtatást hoz létre a folyamathoz. |
+> | Microsoft. DataFactory/gyárak/privateEndpointConnectionProxies/READ | Privát végponti kapcsolatok proxyjának olvasása. |
+> | Microsoft. DataFactory/gyárak/privateEndpointConnectionProxies/írás | Hozzon létre vagy frissítsen privát végponti ügyfélkapcsolati proxyt. |
+> | Microsoft. DataFactory/gyárak/privateEndpointConnectionProxies/delete | Privát végponti kapcsolatok proxyjának törlése. |
+> | Microsoft. DataFactory/gyárak/privateEndpointConnectionProxies/érvényesítés/művelet | A magánhálózati végpontok közötti kapcsolatok proxyjának ellenőrzése. |
+> | Microsoft. DataFactory/gyárak/privateEndpointConnectionProxies/operationresults/READ | Olvassa el a privát végpontok közötti kapcsolatok proxyjának létrehozásának eredményét. |
+> | Microsoft. DataFactory/gyárak/privateEndpointConnectionProxies/operationstatuses/READ | Olvassa el a magánhálózati végponti kapcsolatok proxyjának létrehozásának állapotát. |
 > | Microsoft. DataFactory/gyárak/querypipelineruns/READ | Beolvassa a lekérdezési folyamat futtatásának eredményét. |
 > | Microsoft. DataFactory/gyárak/querytriggerruns/READ | Beolvassa az trigger futtatásának eredményét. |
 > | Microsoft. DataFactory/gyárak/sandboxpipelineruns/READ | A folyamat hibakeresési futtatási adatainak beolvasása. |
@@ -3182,7 +3188,7 @@ Azure-szolgáltatás: [Data Factory](../data-factory/index.yml)
 Azure-szolgáltatás: [Azure Database Migration Service](../dms/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. DataMigration/regisztráció/művelet | Az előfizetés regisztrálása a Azure Database Migration Service szolgáltatóval |
 > | Microsoft. DataMigration/Locations/operationResults/READ | Egy 202 elfogadott válaszhoz kapcsolódó hosszan futó művelet állapotának beolvasása |
@@ -3220,7 +3226,7 @@ Azure-szolgáltatás: [Azure Database Migration Service](../dms/index.yml)
 Azure-szolgáltatás: [Azure Database for MariaDB](../mariadb/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. DBforMariaDB/regisztráció/művelet | MariaDB erőforrás-szolgáltató regisztrálása |
 > | Microsoft. DBforMariaDB/checkNameAvailability/művelet | Győződjön meg arról, hogy az adott kiszolgálónév elérhető-e a világ egy adott előfizetéshez való kiépítés céljából. |
@@ -3298,7 +3304,7 @@ Azure-szolgáltatás: [Azure Database for MariaDB](../mariadb/index.yml)
 Azure-szolgáltatás: [Azure Database for MySQL](../mysql/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. DBforMySQL/regisztráció/művelet | MySQL erőforrás-szolgáltató regisztrálása |
 > | Microsoft. DBforMySQL/checkNameAvailability/művelet | Győződjön meg arról, hogy az adott kiszolgálónév elérhető-e a világ egy adott előfizetéshez való kiépítés céljából. |
@@ -3376,7 +3382,7 @@ Azure-szolgáltatás: [Azure Database for MySQL](../mysql/index.yml)
 Azure-szolgáltatás: [Azure Database for PostgreSQL](../postgresql/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. DBforPostgreSQL/regisztráció/művelet | A PostgreSQL erőforrás-szolgáltató regisztrálása |
 > | Microsoft. DBforPostgreSQL/checkNameAvailability/művelet | Győződjön meg arról, hogy az adott kiszolgálónév elérhető-e a világ egy adott előfizetéshez való kiépítés céljából. |
@@ -3468,7 +3474,7 @@ Azure-szolgáltatás: [Azure Database for PostgreSQL](../postgresql/index.yml)
 Azure-szolgáltatás: [Azure Cosmos db](../cosmos-db/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft.DocumentDB/regisztráció/művelet |  Regisztrálja a Microsoft DocumentDB erőforrás-szolgáltatót az előfizetéshez |
 > | Microsoft.DocumentDB/databaseAccountNames/READ | A név rendelkezésre állását ellenőrzi. |
@@ -3697,7 +3703,7 @@ Azure-szolgáltatás: [Azure Cosmos db](../cosmos-db/index.yml)
 Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Azure SQL felügyelt példány](../azure-sql/managed-instance/index.yml), [SQL Data Warehouse](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. SQL/checkNameAvailability/művelet | Győződjön meg arról, hogy az adott kiszolgálónév elérhető-e a világ egy adott előfizetéshez való kiépítés céljából. |
 > | Microsoft. SQL/regisztráció/művelet | Regisztrálja a Microsoft SQL Database erőforrás-szolgáltató előfizetését, és engedélyezi a Microsoft SQL-adatbázisok létrehozását. |
@@ -4113,7 +4119,7 @@ Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Az
 Azure-szolgáltatás: [SQL Server az Azure-on Virtual Machines](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. SqlVirtualMachine/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. SqlVirtualMachine erőforrás-szolgáltatóval |
 > | Microsoft. SqlVirtualMachine/regisztráció/művelet | Előfizetés regisztrációjának törlése a Microsoft. SqlVirtualMachine erőforrás-szolgáltatóval |
@@ -4140,7 +4146,7 @@ Azure-szolgáltatás: [SQL Server az Azure-on Virtual Machines](../azure-sql/vir
 Azure-szolgáltatás: [Azure Analysis Services](../analysis-services/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. AnalysisServices/regisztráció/művelet | Regisztrálja Analysis Services erőforrás-szolgáltatót. |
 > | Microsoft. AnalysisServices/Locations/checkNameAvailability/Action | Ellenőrzi, hogy a megadott Analysis Server neve érvényes-e, és nincs-e használatban. |
@@ -4161,7 +4167,7 @@ Azure-szolgáltatás: [Azure Analysis Services](../analysis-services/index.yml)
 Azure-szolgáltatás: [Azure Databricks](https://docs.microsoft.com/azure/databricks/)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Databricks/regisztráció/művelet | Regisztráljon a Databricks. |
 > | Microsoft. Databricks/Locations/getNetworkPolicies/Action | Hálózati leképezési házirendek beolvasása az egyes alhálózatok számára az NRP által használt hely alapján |
@@ -4188,7 +4194,7 @@ Azure-szolgáltatás: [Azure Databricks](https://docs.microsoft.com/azure/databr
 Azure-szolgáltatás: [Data Lake Analytics](../data-lake-analytics/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. DataLakeAnalytics/regisztráció/művelet | Regisztrálja az előfizetést a DataLakeAnalytics. |
 > | Microsoft. DataLakeAnalytics/fiókok/olvasás | Egy meglévő DataLakeAnalytics-fiók adatainak beolvasása. |
@@ -4228,7 +4234,7 @@ Azure-szolgáltatás: [Data Lake Analytics](../data-lake-analytics/index.yml)
 Azure-szolgáltatás: [Azure Data Lake Store](../storage/blobs/data-lake-storage-introduction.md)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Data Lake Store/regisztráció/művelet | Regisztrálja az előfizetést a Data Lake Store. |
 > | Microsoft. Data Lake Store/fiókok/olvasás | Egy meglévő Data Lake Store-fiók adatainak beolvasása. |
@@ -4263,7 +4269,7 @@ Azure-szolgáltatás: [Azure Data Lake Store](../storage/blobs/data-lake-storage
 Azure-szolgáltatás: [Event Hubs](../event-hubs/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. EventHub/checkNamespaceAvailability/művelet | Ellenőrzi a névtér elérhetőségét a megadott előfizetésben. Ez az API elavult. használja helyette a CheckNameAvailability. |
 > | Microsoft. EventHub/checkNameAvailability/művelet | Ellenőrzi a névtér elérhetőségét a megadott előfizetésben. |
@@ -4348,7 +4354,7 @@ Azure-szolgáltatás: [Event Hubs](../event-hubs/index.yml)
 Azure-szolgáltatás: [HDInsight](../hdinsight/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. HDInsight/regisztráció/művelet | Az előfizetéshez tartozó HDInsight erőforrás-szolgáltató regisztrálása |
 > | Microsoft. HDInsight/regisztráció/művelet | HDInsight erőforrás-szolgáltató regisztrációjának törlése az előfizetéshez |
@@ -4378,7 +4384,7 @@ Azure-szolgáltatás: [HDInsight](../hdinsight/index.yml)
 Azure-szolgáltatás: [azure adatkezelő](/azure/data-explorer/)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Kusto/regisztráció/művelet | Előfizetés-regisztrációs művelet |
 > | Microsoft. Kusto/regisztráció/művelet | Regisztrálja az előfizetést a Kusto erőforrás-szolgáltatón. |
@@ -4436,7 +4442,7 @@ Azure-szolgáltatás: [azure adatkezelő](/azure/data-explorer/)
 Azure-szolgáltatás: [Power bi Embedded](https://docs.microsoft.com/azure/power-bi-embedded/)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. PowerBIDedicated/regisztráció/művelet | Regisztrálja Power BI dedikált erőforrás-szolgáltatót. |
 > | Microsoft. PowerBIDedicated/kapacitások/olvasás | A megadott Power BI dedikált kapacitás információinak beolvasása. |
@@ -4456,7 +4462,7 @@ Azure-szolgáltatás: [Power bi Embedded](https://docs.microsoft.com/azure/power
 Azure-szolgáltatás: [stream Analytics](../stream-analytics/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. StreamAnalytics/regisztráció/művelet | Előfizetés regisztrálása Stream Analytics erőforrás-szolgáltatóval |
 > | Microsoft. StreamAnalytics/Locations/kvóták/olvasás | Stream Analytics előfizetés kvótájának beolvasása |
@@ -4495,14 +4501,14 @@ Azure-szolgáltatás: [stream Analytics](../stream-analytics/index.yml)
 > | Microsoft. StreamAnalytics/streamingjobs/átalakítások/olvasás | Stream Analytics feladatok átalakításának olvasása |
 > | Microsoft. StreamAnalytics/streamingjobs/átalakítás/írás | Stream Analytics feladatok átalakításának írása |
 
-## <a name="blockchain"></a>Blokklánc
+## <a name="blockchain"></a>Blockchain
 
 ### <a name="microsoftblockchain"></a>Microsoft. Blockchain
 
 Azure-szolgáltatás: [Azure Blockchain Service](../blockchain/workbench/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Blockchain/regisztráció/művelet | Regisztrálja az előfizetést a Blockchain erőforrás-szolgáltatóhoz. |
 > | Microsoft. Blockchain/blockchainMembers/READ | Lekérdezi vagy felsorolja a meglévő Blockchain-tag (oka) t. |
@@ -4529,7 +4535,7 @@ Azure-szolgáltatás: [Azure Blockchain Service](../blockchain/workbench/index.y
 Azure-szolgáltatás: [Azure bot Service](https://docs.microsoft.com/azure/bot-service/)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. BotService/checknameavailability/művelet | Egy robot nevének rendelkezésre állásának keresése |
 > | Microsoft. BotService/listauthserviceproviders/művelet | Hitelesítési szolgáltatók listázása |
@@ -4552,7 +4558,7 @@ Azure-szolgáltatás: [Azure bot Service](https://docs.microsoft.com/azure/bot-s
 Azure-szolgáltatás: [Cognitive Services](../cognitive-services/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. CognitiveServices/regisztráció/művelet | Előfizetés-regisztrációs művelet |
 > | Microsoft. CognitiveServices/regisztráció/művelet | Cognitive Services-előfizetés regisztrálása |
@@ -4880,7 +4886,7 @@ Azure-szolgáltatás: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/accounts/TextAnalytics/languages/Action | Az API az észlelt nyelvet és egy 0 és 1 közötti numerikus pontszámot ad vissza. Az 1 értéknél közelebbi pontszámok 100%-os bizonyosságot jeleznek, hogy az azonosított nyelv igaz. Összesen 120 nyelv támogatott. |
 > | Microsoft. CognitiveServices/fiókok/TextAnalytics/entitások/művelet | Az API egy adott dokumentum ismert entitások és általános névvel ellátott entitások ( \" személy \" , \" hely \" , \" szervezet \" stb.) listáját adja vissza egy adott dokumentumban. |
 > | Microsoft. CognitiveServices/fiókok/TextAnalytics/alkifejezések/művelet | Az API a bemeneti szövegben szereplő legfontosabb beszéd pontokat jelölő karakterláncok listáját adja vissza. |
-> | Microsoft. CognitiveServices/accounts/TextAnalytics/hangulat/művelet | Az API egy 0 és 1 közötti számértéket ad vissza.<br>Az 1-hez közelebbi pontszám pozitív, míg a 0-hoz közelebbi pontszám negatív érzelmeket jelez.<br>A 0,5-es pontszám jelzi az érzelmek hiányát (például<br>egy factoid-utasítás). |
+> | Microsoft. CognitiveServices/accounts/TextAnalytics/hangulat/művelet | Az API egy 0 és 1 közötti számértéket ad vissza.<br>Az 1-hez közeli értékek pozitív hangulatot, a 0-hoz közeliek pedig negatív hangulatot jelölnek.<br>A 0,5-es pontszám jelzi az érzelmek hiányát (például<br>egy factoid-utasítás). |
 > | Microsoft. CognitiveServices/fiókok/VideoSearch/trendek/művelet | Aktuálisan növekvő videók beolvasása. |
 > | Microsoft. CognitiveServices/accounts/VideoSearch/details/Action | Bepillantást nyerhet egy videóra, például a kapcsolódó videókra. |
 > | Microsoft. CognitiveServices/accounts/VideoSearch/Search/Action | Egy adott lekérdezéshez kapcsolódó videók beolvasása. |
@@ -4892,7 +4898,7 @@ Azure-szolgáltatás: [Cognitive Services](../cognitive-services/index.yml)
 Azure-szolgáltatás: [Machine learning Studio](../machine-learning/studio/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. MachineLearning/regisztráció/művelet | Regisztrálja az előfizetést a Machine learning webszolgáltatás erőforrás-szolgáltatója számára, és lehetővé teszi a webszolgáltatások létrehozását. |
 > | Microsoft. MachineLearning/webszolgáltatások/művelet | Regionális webszolgáltatás tulajdonságainak létrehozása a támogatott régiók számára |
@@ -4921,7 +4927,7 @@ Azure-szolgáltatás: [Machine learning Studio](../machine-learning/studio/index
 Azure-szolgáltatás: [Machine learning szolgáltatás](../machine-learning/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. MachineLearningServices/regisztráció/művelet | Regisztrálja az előfizetést a Machine Learning Services erőforrás-szolgáltatóhoz |
 > | Microsoft. MachineLearningServices/Locations/updateQuotas/Action | Frissítse a kvótát minden virtuálisgép-családhoz a munkaterületen. |
@@ -5026,12 +5032,12 @@ Azure-szolgáltatás: [Machine learning szolgáltatás](../machine-learning/inde
 
 ## <a name="internet-of-things"></a>Eszközök internetes hálózata
 
-### <a name="microsoftdevices"></a>Microsoft. Devices
+### <a name="microsoftdevices"></a>Microsoft.Devices
 
 Azure-szolgáltatás: [IoT hub](../iot-hub/index.yml), [IoT hub Device Provisioning Service](../iot-dps/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Devices/regisztráció/művelet | Regisztrálja az előfizetést a IotHub erőforrás-szolgáltatóhoz, és lehetővé teszi a IotHub-erőforrások létrehozását |
 > | Microsoft. Devices/checkNameAvailability/Action | Ellenőrizze, hogy elérhető-e a IotHub neve |
@@ -5176,7 +5182,7 @@ Azure-szolgáltatás: [IoT hub](../iot-hub/index.yml), [IoT hub Device Provision
 Azure-szolgáltatás: [IoT Central](../iot-central/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. IoTCentral/checkNameAvailability/művelet | Ellenőrzi, hogy elérhető-e IoT Central alkalmazás neve |
 > | Microsoft. IoTCentral/checkSubdomainAvailability/művelet | Ellenőrzi, hogy elérhető-e IoT Central alkalmazás altartománya |
@@ -5192,7 +5198,7 @@ Azure-szolgáltatás: [IoT Central](../iot-central/index.yml)
 Azure-szolgáltatás: [Notification Hubs](../notification-hubs/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. NotificationHubs/regisztráció/művelet | Regisztrálja az előfizetést a NotificationHubs erőforrás-szolgáltatóhoz, és lehetővé teszi a névterek és NotificationHubs létrehozását |
 > | Microsoft. NotificationHubs/regisztráció/művelet | A NotificationHubs erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának megszüntetése, és a névterek és NotificationHubs létrehozásának engedélyezése |
@@ -5227,7 +5233,7 @@ Azure-szolgáltatás: [Notification Hubs](../notification-hubs/index.yml)
 Azure-szolgáltatás: [Time Series Insights](../time-series-insights/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. TimeSeriesInsights/regisztráció/művelet | Regisztrálja az előfizetést a Time Series Insights erőforrás-szolgáltatóhoz, és lehetővé teszi Time Series Insights környezetek létrehozását. |
 > | Microsoft. TimeSeriesInsights/környezetek/olvasás | Egy környezet tulajdonságainak beolvasása. |
@@ -5251,7 +5257,7 @@ Azure-szolgáltatás: [Time Series Insights](../time-series-insights/index.yml)
 Azure-szolgáltatás: [Azure digitális Twins](../digital-twins/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. IoTSpaces/regisztráció/művelet | A Microsoft. IoTSpaces Graph erőforrás-szolgáltatóhoz tartozó előfizetés regisztrálása az erőforrások létrehozásának engedélyezéséhez |
 > | Microsoft. IoTSpaces/gráf/írás | Microsoft. IoTSpaces Graph-erőforrás létrehozása |
@@ -5263,7 +5269,7 @@ Azure-szolgáltatás: [Azure digitális Twins](../digital-twins/index.yml)
 Azure-szolgáltatás: [Azure térbeli horgonyok](../spatial-anchors/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. MixedReality/regisztráció/művelet | Regisztrálja az előfizetést a vegyes valóság erőforrás-szolgáltatóhoz. |
 > | Microsoft. MixedReality/remoteRenderingAccounts/Providers/Microsoft. bepillantást/metricDefinitions/READ | A Microsoft. MixedReality/remoteRenderingAccounts elérhető metrikáinak beolvasása |
@@ -5296,7 +5302,7 @@ Azure-szolgáltatás: [Azure térbeli horgonyok](../spatial-anchors/index.yml)
 Azure-szolgáltatás: [API Management](../api-management/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ApiManagement/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. ApiManagement erőforrás-szolgáltatónál |
 > | Microsoft. ApiManagement/regisztráció/művelet | A Microsoft. ApiManagement erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának megszüntetése |
@@ -5515,7 +5521,7 @@ Azure-szolgáltatás: [API Management](../api-management/index.yml)
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. AppConfiguration/regisztráció/művelet | Regisztrálja az előfizetést a Microsoft-alkalmazás konfigurációjának használatához. |
 > | Microsoft. AppConfiguration/regisztráció/művelet | Az előfizetés regisztrációjának törlése a Microsoft app Configuration használatával. |
@@ -5553,7 +5559,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. AzureStack/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. AzureStack erőforrás-szolgáltatónál |
 > | Microsoft. AzureStack/cloudManifestFiles/READ | A Cloud manifest-fájl beolvasása |
@@ -5577,7 +5583,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: [Azure stack Edge](../databox-online/azure-stack-edge-overview.md)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. DataBoxEdge/availableSkus/READ | Felsorolja vagy lekéri a ArmApiRes_availableSkus |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/uploadCertificate/művelet | Tanúsítvány feltöltése az eszköz regisztrálásához |
@@ -5656,25 +5662,22 @@ Azure-szolgáltatás: [Azure stack Edge](../databox-online/azure-stack-edge-over
 Azure-szolgáltatás: [Data Catalog](../data-catalog/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
-> | Microsoft. DataCatalog/regisztráció/művelet | Az előfizetés regisztrálása Data Catalog erőforrás-szolgáltatóhoz |
-> | Microsoft. DataCatalog/regisztráció/művelet | Data Catalog erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése |
-> | Microsoft. DataCatalog/katalógusok/olvasás | Data Catalog erőforrás-szolgáltatóhoz tartozó katalógusok erőforrásának olvasása. |
-> | Microsoft. DataCatalog/katalógusok/írás | Data Catalog erőforrás-szolgáltatónál írja be a katalógusok erőforrását. |
-> | Microsoft. DataCatalog/katalógusok/törlés | Data Catalog erőforrás-szolgáltatóhoz tartozó katalógusok erőforrásának törlése. |
-> | Microsoft. DataCatalog/checkNameAvailability/READ | A Data Catalog erőforrás-szolgáltatóhoz tartozó katalógus nevének rendelkezésre állásának keresése. |
-> | Microsoft. DataCatalog/datacatalogs/READ | Data Catalog erőforrás-szolgáltató DataCatalog-erőforrásának olvasása. |
-> | Microsoft. DataCatalog/datacatalogs/Write | DataCatalog-erőforrás írása Data Catalog erőforrás-szolgáltatóhoz. |
-> | Microsoft. DataCatalog/datacatalogs/delete | Data Catalog erőforrás-szolgáltatóhoz tartozó DataCatalog-erőforrás törlése. |
-> | Microsoft. DataCatalog/Operations/READ | A Data Catalog erőforrás-szolgáltató összes elérhető műveletének beolvasása. |
+> | Microsoft. DataCatalog/checkNameAvailability/művelet | A katalógus nevének elérhetőségét ellenőrzi a bérlő számára. |
+> | Microsoft. DataCatalog/regisztráció/művelet | Regisztrálja az előfizetést a Microsoft. DataCatalog erőforrás-szolgáltatóval. |
+> | Microsoft. DataCatalog/regisztráció/művelet | Előfizetés regisztrációjának törlése a Microsoft. DataCatalog erőforrás-szolgáltatótól. |
+> | Microsoft. DataCatalog/katalógusok/olvasás | Katalógus vagy katalógus tulajdonságainak beolvasása az előfizetés vagy az erőforráscsoport alatt. |
+> | Microsoft. DataCatalog/katalógusok/írás | Katalógust hoz létre, vagy frissíti a katalógus címkéit és tulajdonságait. |
+> | Microsoft. DataCatalog/katalógusok/törlés | Törli a katalógust. |
+> | Microsoft. DataCatalog/Operations/READ | A Microsoft. DataCatalog erőforrás-szolgáltatóján elérhető műveletek felsorolása. |
 
 ### <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 Azure-szolgáltatás: [Event Grid](../event-grid/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. EventGrid/regisztráció/művelet | Regisztrálja az előfizetést a EventGrid erőforrás-szolgáltatóhoz. |
 > | Microsoft. EventGrid/regisztráció/művelet | A EventGrid erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése. |
@@ -5746,7 +5749,7 @@ Azure-szolgáltatás: [Event Grid](../event-grid/index.yml)
 Azure-szolgáltatás: [Logic apps](../logic-apps/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Logic/regisztráció/művelet | Regisztrálja a Microsoft. Logic erőforrás-szolgáltatót egy adott előfizetéshez. |
 > | Microsoft. Logic/integrationAccounts/READ | Beolvassa az integrációs fiókot. |
@@ -5859,7 +5862,7 @@ Azure-szolgáltatás: [Logic apps](../logic-apps/index.yml)
 Azure-szolgáltatás: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Relay/checkNamespaceAvailability/művelet | Ellenőrzi a névtér elérhetőségét a megadott előfizetésben. Ez az API elavult. használja helyette a CheckNameAvailability. |
 > | Microsoft. Relay/checkNameAvailability/művelet | Ellenőrzi a névtér elérhetőségét a megadott előfizetésben. |
@@ -5922,7 +5925,7 @@ Azure-szolgáltatás: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 Azure-szolgáltatás: [Service Bus](../service-bus/index.md)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ServiceBus/checkNamespaceAvailability/művelet | Ellenőrzi a névtér elérhetőségét a megadott előfizetésben. Ez az API elavult. használja helyette a CheckNameAvailability. |
 > | Microsoft. ServiceBus/checkNameAvailability/művelet | Ellenőrzi a névtér elérhetőségét a megadott előfizetésben. |
@@ -5986,6 +5989,7 @@ Azure-szolgáltatás: [Service Bus](../service-bus/index.md)
 > | Microsoft. ServiceBus/névterek/várólisták/engedélyezési szabályok/delete | Várólista-engedélyezési szabályok törlésének művelete |
 > | Microsoft. ServiceBus/Namespaces/Queues/engedélyezési szabályok/listkeys műveletének beolvasása/művelet | A várólistához tartozó kapcsolódási karakterlánc lekérése |
 > | Microsoft. ServiceBus/Namespaces/Queues/engedélyezési szabályok/regenerateKeys/művelet | Az elsődleges vagy másodlagos kulcs újragenerálása az erőforráshoz |
+> | Microsoft. ServiceBus/névterek/SKU/READ | A névtérhez tartozó támogatott SKU-ket listázása |
 > | Microsoft. ServiceBus/névterek/témakörök/írás | Témakör tulajdonságainak létrehozása vagy frissítése. |
 > | Microsoft. ServiceBus/névterek/témakörök/olvasás | Témakör-erőforrás leírások listájának beolvasása |
 > | Microsoft. ServiceBus/névterek/témakörök/törlés | Témakör-erőforrás törlésére szolgáló művelet |
@@ -6018,7 +6022,7 @@ Azure-szolgáltatás: [Service Bus](../service-bus/index.md)
 Azure-szolgáltatás: [Azure Active Directory Domain Services](../active-directory-domain-services/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. HRE/regisztráció/művelet | Tartományi szolgáltatás regisztrációjának törlése |
 > | Microsoft. HRE/regisztráció/művelet | Tartományi szolgáltatás regisztrálása |
@@ -6036,7 +6040,7 @@ Azure-szolgáltatás: [Azure Active Directory Domain Services](../active-directo
 Azure-szolgáltatás: Azure Active Directory
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. aadiam/azureADMetrics/READ | Azure AD-metrikák definíciójának beolvasása |
 > | Microsoft. aadiam/azureADMetrics/Write | Azure AD-metrikák definíciójának létrehozása és frissítése |
@@ -6066,7 +6070,7 @@ Azure-szolgáltatás: Azure Active Directory
 Azure-szolgáltatás: [Azure Active Directory](../active-directory/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ADHybridHealthService/konfiguráció/művelet | A bérlő konfigurációjának frissítése. |
 > | Microsoft. ADHybridHealthService/szolgáltatások/művelet | Egy szolgáltatási példány frissítése a bérlőben. |
@@ -6145,7 +6149,7 @@ Azure-szolgáltatás: [Azure Active Directory](../active-directory/index.yml)
 Azure-szolgáltatás: [Azure Active Directory B2C](../active-directory-b2c/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. AzureActiveDirectory/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. AzureActiveDirectory erőforrás-szolgáltatónál |
 > | Microsoft. AzureActiveDirectory/b2cDirectories/Write | B2C-címtár erőforrásának létrehozása vagy frissítése |
@@ -6162,7 +6166,7 @@ Azure-szolgáltatás: [Azure Active Directory B2C](../active-directory-b2c/index
 Azure-szolgáltatás: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ManagedIdentity/regisztráció/művelet | Regisztrálja az előfizetést a felügyelt identitás erőforrás-szolgáltatója számára |
 > | Microsoft. ManagedIdentity/identitások/olvasás | Meglévő rendszerhez rendelt identitás beolvasása |
@@ -6179,7 +6183,7 @@ Azure-szolgáltatás: [felügyelt identitások az Azure-erőforrásokhoz](../act
 Azure-szolgáltatás: [Key Vault](../key-vault/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. kulcstartó/regisztráció/művelet | Előfizetés regisztrálása |
 > | Microsoft. kulcstartó/regisztráció/művelet | Előfizetés regisztrációjának törlése |
@@ -6258,7 +6262,7 @@ Azure-szolgáltatás: [Key Vault](../key-vault/index.yml)
 Azure-szolgáltatás: [Security Center](../security-center/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Security/regisztráció/művelet | Az előfizetés regisztrálása Azure Security Center |
 > | Microsoft. Security/regisztráció/művelet | Az előfizetés regisztrációjának törlése Azure Security Center |
@@ -6335,7 +6339,7 @@ Azure-szolgáltatás: [Security Center](../security-center/index.yml)
 Azure-szolgáltatás: a Microsoft monitoring bepillantást nyerhet
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. SecurityGraph/diagnosticsettings/Write | Diagnosztikai beállítások írása |
 > | Microsoft. SecurityGraph/diagnosticsettings/READ | Diagnosztikai beállítások olvasása |
@@ -6347,7 +6351,7 @@ Azure-szolgáltatás: a Microsoft monitoring bepillantást nyerhet
 Azure-szolgáltatás: [Azure Sentinel](../sentinel/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. SecurityInsights/regisztráció/művelet | Az előfizetés regisztrálása az Azure Sentinel szolgáltatásban |
 > | Microsoft. SecurityInsights/regisztráció/művelet | Az előfizetés regisztrációjának törlése az Azure Sentinelből |
@@ -6410,7 +6414,7 @@ Azure-szolgáltatás: [Azure Sentinel](../sentinel/index.yml)
 Azure-szolgáltatás: [Azure Lab Services](../lab-services/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. segédösszetevője/regisztráció/művelet | Regisztrálja az előfizetést |
 > | Microsoft. segédösszetevője/labCenters/delete | Tesztkörnyezet-központok törlése. |
@@ -6530,7 +6534,7 @@ Azure-szolgáltatás: [Azure Lab Services](../lab-services/index.yml)
 Azure-szolgáltatás: [Azure Lab Services](../lab-services/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. LabServices/regisztráció/művelet | Regisztrálja az előfizetést |
 > | Microsoft. LabServices/labAccounts/delete | Tesztkörnyezet-fiókok törlése. |
@@ -6587,7 +6591,7 @@ Azure-szolgáltatás: [Azure Lab Services](../lab-services/index.yml)
 Azure-szolgáltatás: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. VisualStudio/regisztráció/művelet | Azure-előfizetés regisztrálása a Microsoft. VisualStudio-szolgáltatóval |
 > | Microsoft. VisualStudio/fiók/írás | Fiók beállítása |
@@ -6603,14 +6607,14 @@ Azure-szolgáltatás: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > | Microsoft. VisualStudio/Project/delete | Projekt törlése |
 > | Microsoft. VisualStudio/Project/READ | Projekt beolvasása |
 
-## <a name="migrate"></a>Migrate (Áttelepítés)
+## <a name="migrate"></a>Migrate
 
 ### <a name="microsoftmigrate"></a>Microsoft. Migrálás
 
 Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Migrálás/regisztráció/művelet | Előfizetés regisztrálása a Microsoftnál. erőforrás-szolgáltató átmigrálása |
 > | Microsoft. Migrálás/assessmentprojects/olvasás | Az értékelési projekt tulajdonságainak beolvasása |
@@ -6677,7 +6681,7 @@ Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. OffAzure/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. OffAzure erőforrás-szolgáltatónál |
 > | Microsoft. OffAzure/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. OffAzure erőforrás-szolgáltatónál |
@@ -6925,15 +6929,16 @@ Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/vCenter/READ | Egy VMware-vCenter tulajdonságainak beolvasása |
 > | Microsoft. OffAzure/VMwareSites/vCenter/Write | A VMware-vCenter létrehozása vagy frissítése |
 
-## <a name="monitor"></a>Figyelés
+## <a name="monitor"></a>Monitor
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
 Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
+> | Microsoft. AlertsManagement/regisztráció/művelet | Előfizetés-regisztrációs művelet |
 > | Microsoft. AlertsManagement/regisztráció/művelet | Regisztrálja az előfizetést a Microsoft riasztások kezeléséhez |
 > | Microsoft. AlertsManagement/actionRules/READ | A bemeneti szűrőkhöz tartozó összes művelet szabályának beolvasása. |
 > | Microsoft. AlertsManagement/actionRules/Write | Műveleti szabály létrehozása vagy frissítése egy adott előfizetésben |
@@ -6959,7 +6964,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. elemzések/mérőszámok/művelet | Metrika művelet |
 > | Microsoft. elemzések/regisztráció/művelet | A Microsoft bepillantást nyújtó szolgáltató regisztrálása |
@@ -7276,7 +7281,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. OperationalInsights/regisztráció/művelet | Előfizetés regisztrálása erőforrás-szolgáltatóhoz. |
 > | Microsoft. operationalinsights/regisztráció/művelet | Rergisters az előfizetést. |
@@ -7306,9 +7311,9 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/munkaterületek/configurationScopes/olvasás | Konfiguráció hatókörének beolvasása |
 > | Microsoft. OperationalInsights/munkaterületek/configurationScopes/írás | Konfigurációs hatókör beállítása |
 > | Microsoft. OperationalInsights/munkaterület/configurationScopes/delete | Konfigurációs hatókör törlése |
-> | Microsoft. operationalinsights/munkaterületek/dataexport/olvasás | Adott adatexportálás beolvasása. |
-> | Microsoft. operationalinsights/munkaterületek/dataexport/írás | Adatexportálás létrehozása vagy frissítése. |
-> | Microsoft. operationalinsights/munkaterület/dataexport/delete | Az adott adatexportálás törlése. |
+> | Microsoft. operationalinsights/munkaterületek/dataExports/olvasás | Adott adatexportálás beolvasása. |
+> | Microsoft. operationalinsights/munkaterületek/dataExports/írás | Adatexportálás létrehozása vagy frissítése. |
+> | Microsoft. operationalinsights/munkaterület/dataExports/delete | Az adott adatexportálás törlése. |
 > | Microsoft. OperationalInsights/munkaterületek/adatforrások/olvasás | Munkaterületen lévő adatforrások beolvasása. |
 > | Microsoft. OperationalInsights/munkaterületek/adatforrások/írás | Adatforrások létrehozása/frissítése egy munkaterület alatt. |
 > | Microsoft. OperationalInsights/munkaterületek/adatforrások/törlés | Munkaterületen lévő adatforrások törlése. |
@@ -7361,7 +7366,9 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AlertHistory/olvasás | Adatok beolvasása a AlertHistory táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AmlComputeClusterEvent/olvasás | Adatok beolvasása a AmlComputeClusterEvent táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AmlComputeClusterNodeEvent/olvasás | Adatok beolvasása a AmlComputeClusterNodeEvent táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AmlComputeCpuGpuUtilization/olvasás | Adatok beolvasása a AmlComputeCpuGpuUtilization táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AmlComputeJobEvent/olvasás | Adatok beolvasása a AmlComputeJobEvent táblából |
+> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AmlRunStatusChangedEvent/olvasás | Adatok beolvasása a AmlRunStatusChangedEvent táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ApiManagementGatewayLogs/olvasás | Adatok beolvasása a ApiManagementGatewayLogs táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppAvailabilityResults/olvasás | Adatok beolvasása a AppAvailabilityResults táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/AppBrowserTimings/olvasás | Adatok beolvasása a AppBrowserTimings táblából |
@@ -7540,7 +7547,6 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/Perf/olvasás | Adatok beolvasása a Perf táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ProtectionStatus/olvasás | Adatok beolvasása a ProtectionStatus táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/kérelmek/olvasás | Adatok beolvasása a kérelmek táblából |
-> | Microsoft. OperationalInsights/munkaterületek/lekérdezés/ReservedCommonFields/olvasás | Adatok beolvasása a ReservedCommonFields táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/SCCMAssessmentRecommendation/olvasás | Adatok beolvasása a SCCMAssessmentRecommendation táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/SCOMAssessmentRecommendation/olvasás | Adatok beolvasása a SCOMAssessmentRecommendation táblából |
 > | Microsoft. OperationalInsights/munkaterületek/lekérdezés/SecurityAlert/olvasás | Adatok beolvasása a SecurityAlert táblából |
@@ -7643,7 +7649,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. OperationsManagement/regisztráció/művelet | Előfizetés regisztrálása erőforrás-szolgáltatóhoz. |
 > | Microsoft. OperationsManagement/managementAssociations/Write | Új felügyeleti társítás létrehozása |
@@ -7661,7 +7667,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. WorkloadMonitor/összetevők/olvasás | Az erőforrás összetevőinek beolvasása |
 > | Microsoft. WorkloadMonitor/componentsSummary/READ | Az összetevők összegzésének beolvasása |
@@ -7680,7 +7686,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 Azure-szolgáltatás: [Azure Advisor](../advisor/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Advisor/generateRecommendations/művelet | Javaslatok állapotának előállítása |
 > | Microsoft. Advisor/regisztráció/művelet | Regisztrálja a Microsoft Advisor előfizetését |
@@ -7704,7 +7710,7 @@ Azure-szolgáltatás: [Azure Advisor](../advisor/index.yml)
 Azure-szolgáltatás: [Azure Policy](../governance/policy/overview.md), [azure RBAC](overview.md), [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Authorization/elevateAccess/művelet | A hívónak felhasználói hozzáférésű rendszergazdai hozzáférést engedélyez a bérlői hatókörben |
 > | Microsoft. Authorization/classicAdministrators/olvasás | Az előfizetés rendszergazdáinak beolvasása. |
@@ -7758,7 +7764,7 @@ Azure-szolgáltatás: [Azure Policy](../governance/policy/overview.md), [azure R
 Azure-szolgáltatás: [automatizálás](../automation/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Automation/regisztráció/művelet | Az előfizetés regisztrálása Azure Automation |
 > | Microsoft. Automation/automationAccounts/webhookok/művelet | URI generálása egy Azure Automation webhookhoz |
@@ -7890,7 +7896,7 @@ Azure-szolgáltatás: [automatizálás](../automation/index.yml)
 Azure-szolgáltatás: [Batch](../batch/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft.BatCH/regisztráció/művelet | Regisztrálja az előfizetést a Batch erőforrás-szolgáltató számára, és lehetővé teszi a Batch-fiókok létrehozását. |
 > | Microsoft.BatCH/Regisztráció törlése/művelet | A Batch erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése a Batch-fiókok létrehozásának megakadályozása érdekében |
@@ -7940,7 +7946,7 @@ Azure-szolgáltatás: [Batch](../batch/index.yml)
 Azure-szolgáltatás: [Cost Management + számlázás](../cost-management-billing/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Billing/validateAddress/művelet |  |
 > | Microsoft. számlázás/regisztráció/művelet |  |
@@ -7979,7 +7985,7 @@ Azure-szolgáltatás: [Cost Management + számlázás](../cost-management-billin
 Azure-szolgáltatás: [Azure-tervek](../governance/blueprints/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Blueprint/regisztráció/művelet | Regisztrálja az Azure-tervrajzok erőforrás-szolgáltatóját |
 > | Microsoft. Blueprint/blueprintAssignments/READ | A tervrajzok összetevőinek olvasása |
@@ -8003,7 +8009,7 @@ Azure-szolgáltatás: [Azure-tervek](../governance/blueprints/index.yml)
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Capacity/calculateprice/művelet | A foglalás árának kiszámítása |
 > | Microsoft. Capacity/checkoffers/művelet | Előfizetési ajánlatok keresése |
@@ -8042,7 +8048,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Commerce/regisztráció/művelet | Előfizetés regisztrálása a Microsoft Commerce UsageAggregate |
 > | Microsoft. Commerce/regisztráció/művelet | A Microsoft Commerce UsageAggregate-előfizetés regisztrációjának törlése |
@@ -8054,7 +8060,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: [Cost Management](../cost-management-billing/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. felhasználás/regisztráció/művelet | Regisztrálás a használati RP-be |
 > | Microsoft. fogyasztás/aggregatedcost/olvasás | Felügyeleti csoport AggregatedCost listázása. |
@@ -8089,7 +8095,7 @@ Azure-szolgáltatás: [Cost Management](../cost-management-billing/index.yml)
 Azure-szolgáltatás: [Cost Management](../cost-management-billing/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. CostManagement/lekérdezés/művelet | Használati adatok lekérdezése hatókör alapján. |
 > | Microsoft. CostManagement/jelentések/művelet | A használati adatok hatókör szerint ütemezhetnek jelentéseket. |
@@ -8135,7 +8141,7 @@ Azure-szolgáltatás: [Cost Management](../cost-management-billing/index.yml)
 Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. features/regisztráció/művelet | Egy előfizetés funkciójának regisztrálása. |
 > | Microsoft. features/features/READ | Egy előfizetés funkcióinak beolvasása. |
@@ -8149,7 +8155,7 @@ Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.y
 Azure-szolgáltatás: [Azure Policy](../governance/policy/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. GuestConfiguration/regisztráció/művelet | Regisztrálja az előfizetést a Microsoft. GuestConfiguration erőforrás-szolgáltatóhoz. |
 > | Microsoft. GuestConfiguration/guestConfigurationAssignments/Write | Új vendég-konfiguráció hozzárendelésének létrehozása. |
@@ -8163,7 +8169,7 @@ Azure-szolgáltatás: [Azure Policy](../governance/policy/index.yml)
 Azure-szolgáltatás: [Azure arc](../azure-arc/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. HybridCompute/regisztráció/művelet | Regisztrálja az előfizetést a Microsoft. HybridCompute erőforrás-szolgáltatóhoz |
 > | Microsoft. HybridCompute/regisztráció/művelet | A Microsoft. HybridCompute erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése |
@@ -8182,7 +8188,7 @@ Azure-szolgáltatás: [Azure arc](../azure-arc/index.yml)
 Azure-szolgáltatás: [Azure Lighthouse](../lighthouse/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. ManagedServices/regisztráció/művelet | Regisztráljon a felügyelt szolgáltatásokra. |
 > | Microsoft. ManagedServices/regisztráció/művelet | A felügyelt szolgáltatások regisztrációjának törlése. |
@@ -8201,7 +8207,7 @@ Azure-szolgáltatás: [Azure Lighthouse](../lighthouse/index.yml)
 Azure-szolgáltatás: [Management groups](../governance/management-groups/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Management/checkNameAvailability/művelet | Ellenőrzi, hogy a felügyeleti csoport megadott neve érvényes-e és egyedi-e. |
 > | Microsoft. Management/getEntities/művelet | A hitelesített felhasználó összes entitásának (Management Groups, előfizetések stb.) listázása. |
@@ -8217,12 +8223,12 @@ Azure-szolgáltatás: [Management groups](../governance/management-groups/index.
 > | Microsoft. Management/managementGroups/előfizetések/írás | Meglévő előfizetés társítása a felügyeleti csoporttal. |
 > | Microsoft. Management/managementGroups/előfizetések/törlés | Az előfizetés társítása a felügyeleti csoportból. |
 
-### <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
+### <a name="microsoftpolicyinsights"></a>Microsoft. PolicyInsights
 
 Azure-szolgáltatás: [Azure Policy](../governance/policy/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. PolicyInsights/regisztráció/művelet | Regisztrálja a Microsoft Policy bepillantást biztosító erőforrás-szolgáltatót, és engedélyezi a műveleteket. |
 > | Microsoft. PolicyInsights/regisztráció/művelet | A Microsoft Policy-erőforrás-szolgáltató regisztrációjának törlése. |
@@ -8254,7 +8260,7 @@ Azure-szolgáltatás: [Azure Policy](../governance/policy/index.yml)
 Azure-szolgáltatás: [Azure Portal](../azure-portal/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Portal/regisztráció/művelet | Regisztráció a portálra |
 > | Microsoft. Portal/konzolok/törlés | Eltávolítja a Cloud Shell példányt. |
@@ -8272,72 +8278,72 @@ Azure-szolgáltatás: [Azure Portal](../azure-portal/index.yml)
 Azure-szolgáltatás: [site Recovery](../site-recovery/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Recoveryservices szolgáltatónál/regisztráció/művelet | Az adott erőforrás-szolgáltatóhoz tartozó előfizetés regisztrálása |
-> | Microsoft. Recoveryservices szolgáltatónál/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. Recoveryservices szolgáltatónál/Locations/backupStatus/Action | Recovery Services-tárolók biztonsági mentési állapotának keresése |
-> | Microsoft. Recoveryservices szolgáltatónál/Locations/backupValidateFeatures/Action | Funkciók ellenőrzése |
+> | Microsoft. recoveryservices szolgáltatónál/Locations/backupPreValidateProtection/Action |  |
+> | Microsoft. recoveryservices szolgáltatónál/Locations/backupStatus/Action | Recovery Services-tárolók biztonsági mentési állapotának keresése |
+> | Microsoft. recoveryservices szolgáltatónál/Locations/backupValidateFeatures/Action | Funkciók ellenőrzése |
 > | Microsoft. Recoveryservices szolgáltatónál/Locations/allocateStamp/Action | A AllocateStamp a szolgáltatás által használt belső művelet |
 > | Microsoft. Recoveryservices szolgáltatónál/Locations/checkNameAvailability/Action | Ellenőrizze, hogy az erőforrás neve rendelkezésre állása egy API-e, hogy elérhető-e az erőforrás neve |
 > | Microsoft. Recoveryservices szolgáltatónál/Locations/allocatedStamp/READ | A lefoglalt bélyegző beolvasása a szolgáltatás által használt belső művelet |
-> | Microsoft. Recoveryservices szolgáltatónál/Locations/backupProtectedItem/Write | Védett elemek biztonsági másolatának létrehozása |
-> | Microsoft. Recoveryservices szolgáltatónál/Locations/backupProtectedItems/READ | Az összes védett elem listáját adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Locations/backupProtectedItem/Write | Védett elemek biztonsági másolatának létrehozása |
+> | Microsoft. recoveryservices szolgáltatónál/Locations/backupProtectedItems/READ | Az összes védett elem listáját adja vissza. |
 > | Microsoft. Recoveryservices szolgáltatónál/Locations/operationStatus/READ | Egy adott művelet műveleti állapotának beolvasása |
 > | Microsoft. Recoveryservices szolgáltatónál/Operations/READ | A művelet egy erőforrás-szolgáltató műveleteinek listáját adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupJobsExport/művelet | Feladatok exportálása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupSecurityPIN/művelet | Recovery Services-tároló biztonsági PIN-kódjának beolvasása. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupValidateOperation/művelet | A művelet érvényesítése védett elemen |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupJobsExport/művelet | Feladatok exportálása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupSecurityPIN/művelet | Recovery Services-tároló biztonsági PIN-kódjának beolvasása. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupValidateOperation/művelet | A művelet érvényesítése védett elemen |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/írás | A Create Vault művelet létrehoz egy "Vault" típusú Azure-erőforrást. |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/olvasás | A tár beolvasása művelet lekérdezi a Vault típusú Azure-erőforrást jelképező objektumot. |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/törlés | A tár törlése művelet törli a "Vault" típusú megadott Azure-erőforrást. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupconfig/READ | Recovery Services-tároló konfigurációjának visszaadása. |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/backupconfig/írás | Recovery Services tár konfigurációjának frissítése. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupEncryptionConfigs/READ | A biztonsági mentési erőforrás titkosítási konfigurációjának beolvasása. |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/backupEncryptionConfigs/írás | A biztonsági mentési erőforrás titkosítási konfigurációjának frissítése |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupEngines/READ | A tár összes regisztrált biztonságimásolat-felügyeleti kiszolgálóját adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/refreshContainers/művelet | Frissíti a tárolók listáját |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/delete | Biztonsági másolat védelmi leképezésének törlése |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/READ | Biztonsági másolat védelmi szándékának beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/Write | Biztonsági másolat védelmi leképezésének létrehozása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/operationResults/READ | A művelet állapotának visszaadása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/operationsStatus/READ | A művelet állapotának visszaadása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectableContainers/READ | Az összes védhető tároló beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/delete | A regisztrált tároló törlése |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/lekérdezés/művelet | A tárolóban lévő számítási feladatok lekérdezése |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/READ | Az összes regisztrált tároló visszaadása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/Write | Létrehoz egy regisztrált tárolót |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/Items/READ | Tároló összes elemének beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/operationResults/READ | A védelmi tárolón végrehajtott művelet eredményét kapja meg. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/operationsStatus/READ | Lekéri a védelmi tárolón végrehajtott művelet állapotát. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/biztonsági mentés/művelet | A védett elemek biztonsági mentését végzi. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/delete | Védett elemek törlése |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/READ | A védett tétel objektumának részleteit adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/Write | Védett elemek biztonsági másolatának létrehozása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/operationResults/READ | A védett elemeken végrehajtott művelet eredményét kapja meg. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/operationsStatus/READ | A védett elemeken végrehajtott művelet állapotát adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/művelet | Azonnali elemek helyreállításának kiépítése védett elemek esetén |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/READ | A védett elemek helyreállítási pontjainak beolvasása. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | A védett elemek helyreállítási pontjainak visszaállítása. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/művelet | A védett elemek azonnali elemek helyreállításának visszavonása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupJobs/megszakítás/művelet | Feladat megszakítása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupJobs/READ | Az összes feladatütemezés visszaadása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupJobs/operationResults/READ | A feladatok műveletének eredményét adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupJobs/operationsStatus/READ | A feladatok műveletének állapotát adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupOperationResults/READ | Recovery Services-tár biztonsági mentési műveletének eredményét adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupOperations/READ | Recovery Services-tároló biztonsági mentési műveletének állapotát adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupPolicies/delete | Védelmi szabályzat törlése |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupPolicies/READ | Az összes védelmi szabályzat visszaadása |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/backupPolicies/írás | Védelmi szabályzat létrehozása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupPolicies/operationResults/READ | A házirend-művelet eredményeinek beolvasása. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupPolicies/Operations/READ | Házirend-művelet állapotának beolvasása. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupProtectableItems/READ | Az összes védhető elem listáját adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupProtectedItems/READ | Az összes védett elem listáját adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupProtectionContainers/READ | Az előfizetéshez tartozó összes tárolót adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupProtectionIntents/READ | Az összes biztonsági mentési védelmi leképezés listázása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupstorageconfig/READ | Recovery Services tároló tárolási konfigurációját adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/backupstorageconfig/írás | Frissíti Recovery Services tár tárolási konfigurációját. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupUsageSummaries/READ | A védett elemek és a védett kiszolgálók összefoglalásait adja vissza egy Recovery Services számára. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupconfig/READ | Recovery Services-tároló konfigurációjának visszaadása. |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/backupconfig/írás | Recovery Services tár konfigurációjának frissítése. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupEncryptionConfigs/READ | A biztonsági mentési erőforrás titkosítási konfigurációjának beolvasása. |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/backupEncryptionConfigs/írás | A biztonsági mentési erőforrás titkosítási konfigurációjának frissítése |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupEngines/READ | A tár összes regisztrált biztonságimásolat-felügyeleti kiszolgálóját adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/refreshContainers/művelet | Frissíti a tárolók listáját |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/delete | Biztonsági másolat védelmi leképezésének törlése |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/READ | Biztonsági másolat védelmi szándékának beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/Write | Biztonsági másolat védelmi leképezésének létrehozása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/operationResults/READ | A művelet állapotának visszaadása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/operationsStatus/READ | A művelet állapotának visszaadása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectableContainers/READ | Az összes védhető tároló beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/delete | A regisztrált tároló törlése |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/lekérdezés/művelet | A tárolóban lévő számítási feladatok lekérdezése |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/READ | Az összes regisztrált tároló visszaadása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/Write | Létrehoz egy regisztrált tárolót |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/Items/READ | Tároló összes elemének beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/operationResults/READ | A védelmi tárolón végrehajtott művelet eredményét kapja meg. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/operationsStatus/READ | Lekéri a védelmi tárolón végrehajtott művelet állapotát. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/biztonsági mentés/művelet | A védett elemek biztonsági mentését végzi. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/delete | Védett elemek törlése |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/READ | A védett tétel objektumának részleteit adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/Write | Védett elemek biztonsági másolatának létrehozása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/operationResults/READ | A védett elemeken végrehajtott művelet eredményét kapja meg. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/operationsStatus/READ | A védett elemeken végrehajtott művelet állapotát adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/művelet | Azonnali elemek helyreállításának kiépítése védett elemek esetén |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/READ | A védett elemek helyreállítási pontjainak beolvasása. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | A védett elemek helyreállítási pontjainak visszaállítása. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/művelet | A védett elemek azonnali elemek helyreállításának visszavonása |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupJobs/megszakítás/művelet | Feladat megszakítása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupJobs/READ | Az összes feladatütemezés visszaadása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupJobs/operationResults/READ | A feladatok műveletének eredményét adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupJobs/operationsStatus/READ | A feladatok műveletének állapotát adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupOperationResults/READ | Recovery Services-tár biztonsági mentési műveletének eredményét adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupOperations/READ | Recovery Services-tároló biztonsági mentési műveletének állapotát adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupPolicies/delete | Védelmi szabályzat törlése |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupPolicies/READ | Az összes védelmi szabályzat visszaadása |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/backupPolicies/írás | Védelmi szabályzat létrehozása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupPolicies/operationResults/READ | A házirend-művelet eredményeinek beolvasása. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupPolicies/Operations/READ | Házirend-művelet állapotának beolvasása. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupProtectableItems/READ | Az összes védhető elem listáját adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupProtectedItems/READ | Az összes védett elem listáját adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupProtectionContainers/READ | Az előfizetéshez tartozó összes tárolót adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupProtectionIntents/READ | Az összes biztonsági mentési védelmi leképezés listázása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupstorageconfig/READ | Recovery Services tároló tárolási konfigurációját adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/backupstorageconfig/írás | Frissíti Recovery Services tár tárolási konfigurációját. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupUsageSummaries/READ | A védett elemek és a védett kiszolgálók összefoglalásait adja vissza egy Recovery Services számára. |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/tanúsítványok/írás | Az erőforrás-tanúsítvány frissítése művelet frissíti az erőforrás/tároló hitelesítő adatait tartalmazó tanúsítványt. |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/extendedInformation/READ | A kiterjesztett adatok beolvasása művelet lekérdezi egy objektum kiterjesztett adatait, amely a (z) típusú Azure-erőforrást jelképezi? |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/extendedInformation/írás | A kiterjesztett adatok beolvasása művelet lekérdezi egy objektum kiterjesztett adatait, amely a (z) típusú Azure-erőforrást jelképezi? |
@@ -8346,14 +8352,14 @@ Azure-szolgáltatás: [site Recovery](../site-recovery/index.yml)
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/monitoringAlerts/írás | A riasztás feloldása. |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/monitoringConfigurations/READ | A Recovery Services-tár értesítési konfigurációjának beolvasása. |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/monitoringConfigurations/írás | E-mail-értesítések konfigurálása a Recovery Services-tárolóhoz. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/delete | Várjon néhány percet, majd próbálja megismételni a műveletet. If the issue persists, please contact Microsoft support. (Az Azure Key Vault-művelet meghiúsult. Próbálja meg újból végrehajtani a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.) |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/READ | Az összes védhető tároló beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/privateEndpointConnectionProxies/validate/Action | Az összes védhető tároló beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/privateEndpointConnectionProxies/írás | Az összes védhető tároló beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/operationsStatus/READ | Az összes védhető tároló beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/privateEndpointConnections/delete | Privát végponti kérelmek törlése. Ezt a hívást a Backup rendszergazdája végzi. |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/privateEndpointConnections/írás | Privát végponti kérelmek jóváhagyása vagy elutasítása. Ezt a hívást a Backup rendszergazdája végzi. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/privateEndpointConnections/operationsStatus/READ | Egy privát végponti kapcsolatok műveleti állapotát adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/delete | Várjon néhány percet, majd próbálja megismételni a műveletet. If the issue persists, please contact Microsoft support. (Az Azure Key Vault-művelet meghiúsult. Próbálja meg újból végrehajtani a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.) |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/READ | Az összes védhető tároló beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/privateEndpointConnectionProxies/validate/Action | Az összes védhető tároló beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/privateEndpointConnectionProxies/írás | Az összes védhető tároló beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/operationsStatus/READ | Az összes védhető tároló beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnections/delete | Privát végponti kérelmek törlése. Ezt a hívást a Backup rendszergazdája végzi. |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/privateEndpointConnections/írás | Privát végponti kérelmek jóváhagyása vagy elutasítása. Ezt a hívást a Backup rendszergazdája végzi. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnections/operationsStatus/READ | Egy privát végponti kapcsolatok műveleti állapotát adja vissza. |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/registeredIdentities/írás | A szolgáltatás-tároló regisztrálása művelettel regisztrálhat egy tárolót a helyreállítási szolgáltatással. |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/registeredIdentities/READ | A tárolók beolvasása művelettel beolvashatók az adott erőforráshoz regisztrált tárolók. |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/registeredIdentities/delete | A tároló regisztrációjának törlése művelettel törölheti a tároló regisztrációját. |
@@ -8469,7 +8475,7 @@ Azure-szolgáltatás: [site Recovery](../site-recovery/index.yml)
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/replicationVaultSettings/READ | Bármilyen beolvasás  |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/replicationVaultSettings/írás | Tetszőlegesek létrehozása vagy frissítése  |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/replicationvCenters/READ | Bármilyen vCenter beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/használati adatok/olvasás | Egy Recovery Services tár használati adatait adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/használati adatok/olvasás | Egy Recovery Services tár használati adatait adja vissza. |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/használati adatok/olvasás | Bármely tár használatának olvasása |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/vaultTokens/READ | A tároló-jogkivonat művelettel lekérheti a tár szintű háttérbeli műveletek tároló-tokenjét. |
 
@@ -8478,7 +8484,7 @@ Azure-szolgáltatás: [site Recovery](../site-recovery/index.yml)
 Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Resources/checkResourceName/Action | Győződjön meg arról, hogy az erőforrás neve érvényes. |
 > | Microsoft. Resources/calculateTemplateHash/Action | Kiszámítja a megadott sablon kivonatát. |
@@ -8539,7 +8545,7 @@ Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.y
 Azure-szolgáltatás: [Scheduler](../scheduler/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Scheduler/feladatgyűjtemények/olvasás | Webhelycsoport beolvasása |
 > | Microsoft. Scheduler/feladatgyűjtemények/írás | A feladatütemezés létrehozása vagy frissítése. |
@@ -8558,7 +8564,7 @@ Azure-szolgáltatás: [Scheduler](../scheduler/index.yml)
 Azure-szolgáltatás: [Azure Managed Applications](../azure-resource-manager/managed-applications/index.yml)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Solutions/regisztráció/művelet | Regisztráljon a megoldásokra. |
 > | Microsoft. Solutions/regisztráció/művelet | A megoldások regisztrációjának törlése. |
@@ -8583,7 +8589,7 @@ Azure-szolgáltatás: [Azure Managed Applications](../azure-resource-manager/man
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. előfizetés/CreateSubscription/művelet | Azure-előfizetés létrehozása |
 > | Microsoft. előfizetés/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. előfizetés erőforrás-szolgáltatónál |
@@ -8599,7 +8605,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: a Microsoft monitoring bepillantást nyerhet
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Intune/diagnosticsettings/írás | Diagnosztikai beállítások írása |
 > | Microsoft. Intune/diagnosticsettings/READ | Diagnosztikai beállítások olvasása |
@@ -8613,7 +8619,7 @@ Azure-szolgáltatás: a Microsoft monitoring bepillantást nyerhet
 Azure-szolgáltatás: [Bing Maps](https://docs.microsoft.com/BingMaps/)
 
 > [!div class="mx-tableFixed"]
-> | Műveletek | Description |
+> | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. BingMaps/updateCommunicationPreference/művelet | A Microsoft. BingMaps tulajdonosának kommunikációs beállításait frissíti. |
 > | Microsoft. BingMaps/listCommunicationPreference/művelet | Lekéri a Microsoft. BingMaps tulajdonosának kommunikációs beállításait |
@@ -8625,8 +8631,8 @@ Azure-szolgáltatás: [Bing Maps](https://docs.microsoft.com/BingMaps/)
 > | Microsoft. BingMaps/mapApis/listUsageMetrics/művelet | A Microsoft. BingMaps/mapApis metrikáinak listázása |
 > | Microsoft. BingMaps/Operations/READ | A Microsoft. BingMaps műveleteinek listázása |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
-- [Azure beépített szerepkörök](built-in-roles.md)
+- [Beépített Azure-szerepkörök](built-in-roles.md)
 - [Felhőalapú bevezetési keretrendszer: erőforrás-hozzáférés kezelése az Azure-ban](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: d55bcf921d5bddb1612f9cfb884b339f837c7aa2
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 315c635ba0864dc1565fd7ba5ccc450223d87ac9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225168"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494717"
 ---
 # <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>Rendszerkép létrehozása virtuális merevlemezről vagy pillanatképből egy megosztott képtárban a PowerShell használatával
 
@@ -90,9 +90,9 @@ A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. 
 
 A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Ebben a példában feltételezzük, hogy a pillanatkép vagy virtuális merevlemez egy használatban lévő virtuális gépről származik, és nem lett általánosítva. Ha a VHD-t vagy pillanatképet egy általánosított operációs rendszerből (a Sysprep futtatása után Windows-vagy [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` vagy Linux rendszeren) készítette, `-deprovision+user` akkor módosítsa a alkalmazást `-OsState` `generalized` . 
 
-További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./windows/shared-image-galleries.md#image-definitions).
 
-Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. Ebben a példában a képdefiníció neve *myImageDefinition*, és egy speciális Windows operációs rendszerhez készült. A rendszerképek definíciójának létrehozásához használja a következőt: `-OsType Linux` . 
+Hozza létre a rendszerkép definícióját a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion)használatával. Ebben a példában a képdefiníció neve *myImageDefinition*, és egy speciális Windows operációs rendszerhez készült. A rendszerképek definíciójának létrehozásához használja a következőt: `-OsType Linux` . 
 
 ```azurepowershell-interactive
 $imageDefinition = New-AzGalleryImageDefinition `
@@ -107,14 +107,14 @@ $imageDefinition = New-AzGalleryImageDefinition `
    -Sku 'mySKU'
 ```
 
-### <a name="purchase-plan-information"></a>Vásárlási terv adatai
+### <a name="purchase-plan-information"></a>Tervezett konstrukció információi
 
 Bizonyos esetekben a vásárlási terv adatait kell átadnia, amikor virtuális gépet hoz létre egy Azure Marketplace-rendszerképen alapuló rendszerképből. Ezekben az esetekben azt javasoljuk, hogy a vásárlási terv adatait a rendszerkép definíciójában adja meg. Ebben az esetben a [lemezképek létrehozásakor az Azure Marketplace vásárlási terv információinak beszerzése](marketplace-images.md)című témakörben talál információt.
 
 
 ## <a name="create-an-image-version"></a>Rendszerképverzió létrehozása
 
-Hozzon létre egy rendszerkép-verziót a pillanatképből a [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
+Hozzon létre egy rendszerkép-verziót a pillanatképből a [New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
 
 A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
 
@@ -148,7 +148,7 @@ $job.State
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült a létrehozás és a replikálás során, mielőtt ugyanezt a pillanatképet használhatja egy másik rendszerkép-verzió létrehozására. 
 >
-> A rendszerkép verzióját a [zóna redundáns tárolójában](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) is tárolhatja `-StorageAccountType Standard_ZRS` a rendszerkép verziójának létrehozásakor.
+> A rendszerkép verzióját a [zóna redundáns tárolójában](../storage/common/storage-redundancy.md) is tárolhatja `-StorageAccountType Standard_ZRS` a rendszerkép verziójának létrehozásakor.
 >
 
 ## <a name="delete-the-source"></a>A forrás törlése
@@ -156,7 +156,7 @@ $job.State
 Miután meggyőződött arról, hogy az új rendszerkép verziója megfelelően működik, törölheti a rendszerkép forrását a [Remove-AzSnapshot](/powershell/module/Az.Compute/Remove-AzSnapshot) vagy a [Remove-AzDisk](/powershell/module/az.compute/remove-azdisk)használatával.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután meggyőződött arról, hogy a replikáció elkészült, létrehozhat egy virtuális gépet a [speciális rendszerképből](vm-specialized-image-version-powershell.md).
 

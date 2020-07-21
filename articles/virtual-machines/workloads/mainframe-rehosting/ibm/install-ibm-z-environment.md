@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72025935"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499919"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Az IBM&T fejlesztési és tesztelési környezet telepítése az Azure-ban
 
@@ -56,13 +56,13 @@ Ez a cikk bemutatja, hogyan állíthatja be a Z fejlesztési és tesztelési kö
 
 ## <a name="create-the-base-image-and-connect"></a>Az alaprendszerkép létrehozása és a kapcsolat
 
-1. A Azure Portal-ben [hozzon létre egy virtuális gépet](/azure/virtual-machines/linux/quick-create-portal) a kívánt operációsrendszer-konfigurációval. Ez a cikk feltételezi, hogy a B4ms virtuális gép (4 vCPU és 16 GB memóriával) Ubuntu 16,04 rendszert futtat.
+1. A Azure Portal-ben [hozzon létre egy virtuális gépet](../../../linux/quick-create-portal.md) a kívánt operációsrendszer-konfigurációval. Ez a cikk feltételezi, hogy a B4ms virtuális gép (4 vCPU és 16 GB memóriával) Ubuntu 16,04 rendszert futtat.
 
 2. A virtuális gép létrehozása után nyissa meg a 22-es bejövő portokat az SSH-hoz, 21 FTP-hez és 9443-hez a webkiszolgálóhoz.
 
 3. Szerezze be a virtuális gép **Áttekintés** paneljén látható SSH hitelesítő adatokat a **kapcsolat** gomb használatával. Válassza az **SSH** fület, és másolja az SSH-bejelentkezési parancsot a vágólapra.
 
-4. Jelentkezzen be egy [bash-rendszerhéjba](/azure/cloud-shell/quickstart) a helyi számítógépről, és illessze be a parancsot. Ez az **SSH \<user id\> \@ \<IP Address\> **formában jelenik meg. Ha a rendszer kéri a hitelesítő adatok megadását, adja meg őket a saját kezdőkönyvtár kapcsolatának létrehozásához.
+4. Jelentkezzen be egy [bash-rendszerhéjba](../../../../cloud-shell/quickstart.md) a helyi számítógépről, és illessze be a parancsot. Ez az **SSH \<user id\> \@ \<IP Address\> **formában jelenik meg. Ha a rendszer kéri a hitelesítő adatok megadását, adja meg őket a saját kezdőkönyvtár kapcsolatának létrehozásához.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>A telepítési fájl másolása a kiszolgálóra
 
@@ -136,6 +136,6 @@ Ne feledje, hogy a webkiszolgáló indításakor a rendszer a telepítési folya
 
 3. Illessze be az URL-címet egy webböngészőbe, és nyissa meg a felügyeleti összetevőt a&T-telepítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazás-fejlesztőknek vezérelt terjesztés (ADCD) beállítása az IBM&T v1-ben](./demo.md)

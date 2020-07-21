@@ -3,17 +3,18 @@ title: Rendellenes növekedés a kivételek mennyiségében – Azure Applicatio
 description: Alkalmazás-kivételek figyelése az Azure Application Insights az intelligens észleléssel a kivételt okozó kötet szokatlan mintázata esetén.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: a08fae4774a8afb9959f55ea3196cd1a45c33439
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00b7a28a51f91c969b41d2ab85b611f6dde51396
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671766"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499426"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>Rendellenes növekedés a kivétel mennyisége (előzetes verzió)
 
 Application Insights automatikusan elemzi az alkalmazásban eldobott kivételeket, és figyelmezteti a kivételek telemetria szokatlan mintázatokra.
 
-Ehhez a szolgáltatáshoz nem szükséges speciális beállítás, kivéve az alkalmazásra vonatkozó [kivétel-jelentéskészítés konfigurálását](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting) . Akkor aktív, ha az alkalmazás elég kivételt hoz létre a telemetria.
+Ehhez a szolgáltatáshoz nem szükséges speciális beállítás, kivéve az alkalmazásra vonatkozó [kivétel-jelentéskészítés konfigurálását](./asp-net-exceptions.md#set-up-exception-reporting) . Akkor aktív, ha az alkalmazás elég kivételt hoz létre a telemetria.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Mikor kapok ilyen típusú intelligens észlelési értesítést?
 Ez a típusú értesítés akkor fordulhat elő, ha az alkalmazás egy nap során rendellenes növekedést mutat egy adott típusú kivételek számának az elmúlt hét napban számított alaptervhez képest.

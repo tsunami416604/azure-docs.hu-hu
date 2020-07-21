@@ -1,5 +1,5 @@
 ---
-title: A oszlopcentrikus index teljesítményének javítása
+title: A oszlopcentrikus index teljesítményének javítása (munkaterületek előzetes verziója)
 description: Csökkentse a memória követelményeit, vagy növelje a rendelkezésre álló memóriát úgy, hogy maximalizálja a oszlopcentrikus-indexek által az egyes sorcsoport tömöríthető sorok számát.
 services: synapse-analytics
 author: kevinvngo
@@ -11,14 +11,14 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f1f3667c088c5f7300317ea02ca19a72e4e62905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c885bce5ca17d5919ec134d179f6009e91a969cc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431032"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495482"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>A oszlopcentrikus sorcsoport-minőségének maximalizálása
+# <a name="maximizing-rowgroup-quality-for-columnstore-index-performance"></a>A sorcsoport minőségének maximalizálása a oszlopcentrikus index teljesítményéhez
 
 A sorcsoport minőségét a sorcsoport sorainak száma határozza meg. A rendelkezésre álló memória növelésével maximalizálható, hogy a oszlopcentrikus-indexek hány sort tömörítenek az egyes sorcsoport.  Ezekkel a módszerekkel javíthatja a tömörítési sebességet és a lekérdezési teljesítményt a oszlopcentrikus indexek esetében.
 
@@ -139,7 +139,7 @@ A DWU mérete és a felhasználói erőforrás osztály együttesen határozzák
 - A DWU növeléséhez lásd: [Hogyan méretezési teljesítmény?](../sql-data-warehouse/quickstart-scale-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - Ha módosítani szeretné egy lekérdezés erőforrás osztályát, tekintse meg a [felhasználói erőforrás osztályának módosítása](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#change-a-users-resource-class)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szinapszis SQL teljesítményének növelésével kapcsolatos további lehetőségekért tekintse meg a [teljesítmény áttekintését](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 

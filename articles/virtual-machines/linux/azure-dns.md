@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 1e53a6a5c024fe58eae00dcda785ff9622061654
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 41cf83a3d9c756d69df2e2e9777ebd8eb54d4d74
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135321"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494734"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-névfeloldási lehetőségek Linux rendszerű virtuális gépekhez az Azure-ban
 Az Azure alapértelmezés szerint DNS-névfeloldást biztosít az egyetlen virtuális hálózatban lévő összes virtuális géphez. Saját DNS-névfeloldási megoldást is alkalmazhat saját DNS-szolgáltatásainak konfigurálásával az Azure-gazdagépeken futó virtuális gépeken. A következő forgatókönyvek segíthetnek kiválasztani az adott helyzetnek megfelelőt.
@@ -121,7 +121,7 @@ A DNS-továbbítás a virtuális hálózatok közötti DNS-feloldást is lehető
 
 Ha az Azure által biztosított névfeloldást használ, a belső DNS-utótagot a rendszer DHCP használatával adja meg az egyes virtuális gépek számára. Ha saját névfeloldási megoldást használ, ezt az utótagot a rendszer nem adja meg a virtuális gépek számára, mert az utótag más DNS-architektúrákkal is ütközik. Ha a gépeket teljes tartománynévvel vagy a virtuális gépek utótagjának konfigurálásával szeretné megtekinteni, a PowerShell vagy az API használatával határozhatja meg az utótagot:
 
-* Azure Resource Manager által felügyelt virtuális hálózatok esetében az utótag a [hálózati kártya](https://msdn.microsoft.com/library/azure/mt163668.aspx) erőforrásán keresztül érhető el. A parancs futtatásával is `azure network public-ip show <resource group> <pip name>` megjelenítheti a nyilvános IP-cím részleteit, beleértve a hálózati adapter teljes tartománynevét is.
+* Azure Resource Manager által felügyelt virtuális hálózatok esetében az utótag a [hálózati kártya](/rest/api/virtualnetwork/networkinterfaces) erőforrásán keresztül érhető el. A parancs futtatásával is `azure network public-ip show <resource group> <pip name>` megjelenítheti a nyilvános IP-cím részleteit, beleértve a hálózati adapter teljes tartománynevét is.
 
 Ha az Azure-ba irányuló lekérdezések továbbítása nem felel meg az igényeinek, meg kell adnia a saját DNS-megoldását.  A DNS-megoldásnak a következőket kell tennie:
 
@@ -131,6 +131,6 @@ Ha az Azure-ba irányuló lekérdezések továbbítása nem felel meg az igénye
 * Védelmet biztosít az internetről a külső ügynökök által jelentett fenyegetések enyhítése érdekében.
 
 > [!NOTE]
-> A legjobb teljesítmény érdekében, ha Azure DNS-kiszolgálókon lévő virtuális gépeket használ, tiltsa le az IPv6 protokollt, és rendeljen hozzá egy [példány-szintű nyilvános IP-címet](../../virtual-network/virtual-networks-instance-level-public-ip.md) minden DNS-kiszolgáló virtuális géphez.  
+> A legjobb teljesítmény érdekében, ha Azure DNS-kiszolgálókon lévő virtuális gépeket használ, tiltsa le az IPv6 protokollt, és rendeljen hozzá egy [példány-szintű nyilvános IP-címet](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) minden DNS-kiszolgáló virtuális géphez.  
 >
 >

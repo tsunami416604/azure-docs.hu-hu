@@ -9,13 +9,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 4f3148a4d5bd0d39ccfcf7e92e80300a7e19effa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31d9754ddd9e9dfd0cca258901a6c8ab2c4a9cdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70307217"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497165"
 ---
-# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Az elküldett adatmegosztások használatának figyelése a PowerShell használatával
+# <a name="use-powershell-to-create-and-share-snapshot-triggers"></a>Pillanatkép-eseményindítók létrehozása és megosztása a PowerShell használatával
 
 Ez a PowerShell-parancsfájl létrehozza és beolvassa a megosztási pillanatkép-eseményindítókat.
 
@@ -50,7 +51,7 @@ Ez a szkript a következő parancsokat használja:
 | [Get-AzDataShareTrigger](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Beolvassa a megosztás szinkronizálásának beállításait. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

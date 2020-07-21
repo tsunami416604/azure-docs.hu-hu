@@ -3,11 +3,12 @@ title: Windowsos asztali alkalmazások használatának és teljesítményének f
 description: A windowsos asztali alkalmazások használatát és teljesítményét az Application Insights segítségével elemezheti.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 1b8909c47594ebd752035ca88b23d4b836345f88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718784"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499188"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasszikus windowsos asztali alkalmazások használatának és teljesítményének figyelése
 
@@ -72,9 +73,9 @@ using Microsoft.ApplicationInsights;
 
 Alapértelmezés szerint ez az SDK összegyűjti és tárolja a rendszer-előállítók telemetria számítógép nevét.
 
-A számítógép nevét a Application Insights [örökölt vállalati (csomóponton belüli) árképzési szinten](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) használják a belső számlázási célokra. Alapértelmezés szerint, ha telemetria inicializáló használ a felülbíráláshoz `telemetry.Context.Cloud.RoleInstance` , a rendszer külön tulajdonságot `ai.internal.nodeName` küld, amely továbbra is a számítógépnév értéket fogja tartalmazni. Ez az érték nem lesz tárolva a Application Insights telemetria, de belsőleg használatos a betöltéskor, hogy lehetővé váljon a visszamenőleges kompatibilitás az örökölt node-alapú számlázási modellel.
+A számítógép nevét a Application Insights [örökölt vállalati (csomóponton belüli) árképzési szinten](./pricing.md#legacy-enterprise-per-node-pricing-tier) használják a belső számlázási célokra. Alapértelmezés szerint, ha telemetria inicializáló használ a felülbíráláshoz `telemetry.Context.Cloud.RoleInstance` , a rendszer külön tulajdonságot `ai.internal.nodeName` küld, amely továbbra is a számítógépnév értéket fogja tartalmazni. Ez az érték nem lesz tárolva a Application Insights telemetria, de belsőleg használatos a betöltéskor, hogy lehetővé váljon a visszamenőleges kompatibilitás az örökölt node-alapú számlázási modellel.
 
-Ha az [örökölt Enterprise (node) árképzési szinten](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) van, és egyszerűen csak a számítógépnév tárterületét szeretné felülbírálni, használjon egy telemetria inicializáló:
+Ha az [örökölt Enterprise (node) árképzési szinten](./pricing.md#legacy-enterprise-per-node-pricing-tier) van, és egyszerűen csak a számítógépnév tárterületét szeretné felülbírálni, használjon egy telemetria inicializáló:
 
 **Az alábbi módon írhat egyéni TelemetryInitializer.**
 
@@ -115,7 +116,7 @@ Hozza létre az inicializálást az `Program.cs` `Main()` alábbi metódusban a 
 
 ## <a name="override-transmission-of-computer-name"></a>Számítógépnév átvitelének felülbírálása
 
-Ha nem az [örökölt Enterprise (node) árképzési](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier) szinten található, és teljes mértékben meg szeretné akadályozni, hogy a számítógép nevét tartalmazó összes telemetria el lehessen juttatni, telemetria processzort kell használnia.
+Ha nem az [örökölt Enterprise (node) árképzési](./pricing.md#legacy-enterprise-per-node-pricing-tier) szinten található, és teljes mértékben meg szeretné akadályozni, hogy a számítógép nevét tartalmazó összes telemetria el lehessen juttatni, telemetria processzort kell használnia.
 
 ### <a name="telemetry-processor"></a>Telemetria processzor
 
@@ -171,11 +172,10 @@ namespace WindowsFormsApp2
 ```
 
 > [!NOTE]
-> Bár a fentiekben leírtak szerint technikailag használhatja a telemetria-processzort, még akkor is, ha az [örökölt Enterprise (node) díjszabási](https://docs.microsoft.com/azure/azure-monitor/app/pricing#legacy-enterprise-per-node-pricing-tier)szinten van, ez a túlszámlázás lehetséges lehetőségét eredményezi, mert a csomópontok díjszabása nem képes megfelelően megkülönböztetni a csomópontokat.
+> Bár a fentiekben leírtak szerint technikailag használhatja a telemetria-processzort, még akkor is, ha az [örökölt Enterprise (node) díjszabási](./pricing.md#legacy-enterprise-per-node-pricing-tier)szinten van, ez a túlszámlázás lehetséges lehetőségét eredményezi, mert a csomópontok díjszabása nem képes megfelelően megkülönböztetni a csomópontokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Irányítópult létrehozása](../../azure-monitor/app/overview-dashboard.md)
 * [Diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md)
 * [Metrikák böngészése](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics-lekérdezések](../../azure-monitor/app/analytics.md)
-
+* [Analytics-lekérdezések](../log-query/log-query-overview.md)

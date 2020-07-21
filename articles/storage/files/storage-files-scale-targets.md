@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd04e92804a1d37afd8ee2cefb159c1e686748d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536436"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496179"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Az Azure Files méretezhetőségi és teljesítménycéljai
 
@@ -73,15 +74,15 @@ Azure File Sync esetében a teljesítmény kritikus fontosságú két szakaszban
 
 Az alábbi szakaszokban megtervezheti az üzembe helyezést, és a belső tesztelés során megfigyelheti a konfigurációt a rendszeren.
 
-| Rendszerkonfiguráció |  |
+| Rendszerkonfiguráció | Részletek |
 |-|-|
 | CPU | 64 virtuális magok a 64 MiB L3 gyorsítótárral |
-| Memory (Memória) | 128 GiB |
+| Memória | 128 GiB |
 | Lemez | SAS-lemezek RAID 10 akkumulátorral rendelkező gyorsítótárral |
 | Network (Hálózat) | 1 GB/s hálózat |
 | Számítási feladat | általános célú fájlkiszolgáló|
 
-| Egyszeri kiépítés kezdeti időpontja  |  |
+| Egyszeri kiépítés kezdeti időpontja  | Részletek |
 |-|-|
 | Objektumok száma | 25 000 000 objektum |
 | Adatkészlet mérete| ~ 4,7 TiB |
@@ -91,7 +92,7 @@ Az alábbi szakaszokban megtervezheti az üzembe helyezést, és a belső teszte
 
 * Új kiszolgálói végpont létrehozásakor a Azure File Sync ügynök nem tölti le a fájl tartalmát. Először szinkronizálja a teljes névteret, majd elindítja a háttérben való visszahívást, hogy letöltse a fájlokat, akár teljes egészében, akár a felhőalapú rétegek engedélyezése esetén a kiszolgálói végponton beállított felhő-előállítási házirendhez.
 
-| Folyamatban lévő szinkronizálás  |   |
+| Folyamatban lévő szinkronizálás  | Részletek  |
 |-|--|
 | Szinkronizált objektumok száma| 125 000 objektum (~ 1%-os forgalom) |
 | Adatkészlet mérete| 50 GiB |
@@ -111,5 +112,5 @@ Az üzembe helyezésre vonatkozó általános útmutatóként vegye figyelembe a
 
 ## <a name="see-also"></a>Lásd még
 
-- [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
-- [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
+- [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
+- [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)

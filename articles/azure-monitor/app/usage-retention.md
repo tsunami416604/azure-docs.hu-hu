@@ -6,17 +6,18 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 654dba968ba4efec1c30c94082726da04059adc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25d1cccdbd56db397fc444d1488c773515ad6553
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797735"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499307"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>A webalkalmazások felhasználói adatmegőrzési elemzése Application Insights
 
 Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) megőrzési funkciója segítségével elemezheti, hogy hány felhasználó tér vissza az alkalmazásba, és hogy milyen gyakran hajtanak végre bizonyos feladatokat, vagy hogyan érik el a célokat. Ha például egy játék helyét futtat, összehasonlíthatja azokat a felhasználókat, akik a nyeremény után visszatérnek a webhelyhez. Ez a tudás segíthet a felhasználói élmény és az üzleti stratégia tökéletesítésében.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 Ha még nem látja az adatokat a Application Insights-portál megőrzési eszközében, [Ismerkedjen meg a használati eszközök használatába](usage-overview.md).
 
@@ -56,13 +57,11 @@ Vagy a ASP.NET-kiszolgáló kódjában:
 [További információ az egyéni események írásához](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
 
-## <a name="next-steps"></a>További lépések
-- A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
+## <a name="next-steps"></a>Következő lépések
+- A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](./api-custom-events-metrics.md#trackevent) vagy [oldalletöltések](./api-custom-events-metrics.md#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [Felhasználók, munkamenetek, események](usage-segmentation.md)
     - [Tölcsérek](usage-funnels.md)
     - [Felhasználói folyamatok](usage-flows.md)
     - [Munkafüzetek](../../azure-monitor/platform/workbooks-overview.md)
     - [Felhasználói környezet hozzáadása](usage-send-user-context.md)
-
-

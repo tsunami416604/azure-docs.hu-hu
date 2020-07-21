@@ -4,54 +4,37 @@ description: fájl belefoglalása
 services: digital-twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 02/07/2020
+ms.date: 07/09/2020
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 1171c07a754b056fb9df2cee73ddf224427037cc
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: cd6ea6d4967e024ddf88fb9572d5efae8b7a7815
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86277724"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495336"
 ---
-### <a name="general-availability-and-preview-comparison"></a>Általános elérhetőség és előzetes verzió összehasonlítása
-
-Az alábbi táblázat a Azure Time Series Insights általánosan elérhető (GA) és az előzetes verziójú példányok közötti főbb különbségeket foglalja össze.
-
-| | FE | Előnézet |
-| --- | --- | ---|
-| **Első osztályú polgár** | Esemény-központú | Idősorozat-központú |
-| **Szemantikai indoklás** | Alacsony szintű (hivatkozási adatértékek) | Magas szintű (modellek) |
-| **Az adatcontextualization** | Nem eszköz szint | Eszköz és nem eszköz szintje |
-| **Számítási logikai tároló** | Nem | Típus változói a modell részeként tárolva |
-| **Tárolás és hozzáférés-vezérlés** | Nem | Modellen keresztül engedélyezve |
-| **Összesítések/mintavételezés** | Nem | Az esemény súlyozása és az idő súlyozása |
-| **Jel újraépítése** | Nem | Interpolációs |
-| **Származtatott idősorozatok előállítása** | Nem | Igen, egyesítések és illesztések |
-| **Nyelvi rugalmasság** | Nem komponálható | Algyűjteményeinek összefüggő |
-| **Kifejezés nyelve** | Predikátum karakterlánca | Idősorozat-kifejezések (predikátum-karakterláncok, értékek, kifejezések és függvények) |
-
 ### <a name="property-limits"></a>Tulajdonságok korlátai
 
-Time Series Insights a tulajdonságok korlátai 1 000-re növekedtek a GA-ban lévő maximális 800. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyeket megtekinthet a [Time Series Insights Preview Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
+Azure Time Series Insights a 1 000 a Gen1-ben maximális 800-os korláttal emelkedett. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyeket megtekintheti a [Azure Time Series Insights Gen2 Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
 
 | Termékváltozat | Maximális tulajdonságok |
 | --- | --- |
-| Előzetes verzió TB | 1 000 tulajdonságok (oszlopok) |
-| GA S1 | 600 tulajdonságok (oszlopok) |
-| GA S2 | 800 tulajdonságok (oszlopok) |
+| Gen2 (L1) | 1 000 tulajdonságok (oszlopok) |
+| Gen1 (S1) | 600 tulajdonságok (oszlopok) |
+| Gen1 (S2) | 800 tulajdonságok (oszlopok) |
 
 ### <a name="event-sources"></a>Eseményforrások
 
-A példányok száma legfeljebb két eseményforrás esetén támogatott. 
+A példányok száma legfeljebb két eseményforrás esetén támogatott.
 
 * Ismerje meg, hogyan [adhat hozzá egy Event hub-forrást](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 * [IoT hub-forrás](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)konfigurálása.
 
-Alapértelmezés szerint az [előzetes verziójú környezetek](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#ingress-scale-and-preview-limitations) legfeljebb **1 megabájt/másodperc (MB/s)** sebességű bejövő forgalmat támogatnak. Ha szükséges, az ügyfelek akár **16 MB/s** sebességig méretezhetik az előzetes verziójú környezeteket. A partíciós korlát **0,5 MB/s**. 
+Alapértelmezés szerint a Gen2-környezetek **felhasználónként 1 megabájt/másodperc (MB/s)** [sebességű bejövő forgalmat támogatnak](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-throughput-limitations) . Ha szükséges, az ügyfelek akár **16 MB/s** adatátviteli sebességet is igénybe vehetnek. A partíciós korlát **0,5 MB/s**.
 
 ### <a name="api-limits"></a>API-korlátok
 
-A Time Series Insights előzetes verziójának REST API korlátai a [REST API](https://docs.microsoft.com/rest/api/time-series-insights/preview-query#limits)dokumentációjában vannak megadva.
+A [REST API](https://docs.microsoft.com/rest/api/time-series-insights/preview#limits-1)dokumentációjában a Azure Time Series Insights Gen2 REST API korlátai vannak megadva.

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 60e3529e68183488016e40211730412da8e3e0bb
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 83f83922b3bed19e98566002cbf9ad084ba66cb9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564604"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496213"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Gyors útmutató: az Azure Sentinel használatának első lépései
 
@@ -91,23 +91,26 @@ Létrehozhat egy új munkafüzetet a semmiből, vagy használhat egy beépített
 
 A következő minta lekérdezéssel összehasonlíthatja a forgalom trendjeinek hetek közötti összehasonlítását. Egyszerűen átválthatja, hogy melyik eszköz gyártója és adatforrás futtatja a lekérdezést. Ez a példa a Windows SecurityEvent használja, átválthatja a AzureActivity-on vagy a CommonSecurityLog-on való futtatásra bármely más tűzfalon.
 
-     |where DeviceVendor == "Palo Alto Networks":
-      // week over week query
-      SecurityEvent
-      | where TimeGenerated > ago(14d)
-      | summarize count() by bin(TimeGenerated, 1d)
-      | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
-
+```console
+ |where DeviceVendor == "Palo Alto Networks":
+  // week over week query
+  SecurityEvent
+  | where TimeGenerated > ago(14d)
+  | summarize count() by bin(TimeGenerated, 1d)
+  | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
+```
 
 Előfordulhat, hogy olyan lekérdezést szeretne létrehozni, amely több forrásból származó adatokkal rendelkezik. Létrehozhat egy olyan lekérdezést, amely megkeresi Azure Active Directory naplókat az imént létrehozott új felhasználók számára, majd ellenőrzi az Azure-naplókat, hogy a felhasználó elindította-e a szerepkör-hozzárendelés változásait 24 órán belül. Ez az irányítópulton a gyanús tevékenység jelenik meg:
 
-    AuditLogs
-    | where OperationName == "Add user"
-    | project AddedTime = TimeGenerated, user = tostring(TargetResources[0].userPrincipalName)
-    | join (AzureActivity
-    | where OperationName == "Create role assignment"
-    | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
-    | project-away user1
+```console
+AuditLogs
+| where OperationName == "Add user"
+| project AddedTime = TimeGenerated, user = tostring(TargetResources[0].userPrincipalName)
+| join (AzureActivity
+| where OperationName == "Create role assignment"
+| project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
+| project-away user1
+```
 
 Különböző munkafüzeteket hozhat létre az adatelemzést végző személy és a keresett személyek szerepköre alapján. Létrehozhat például egy olyan munkafüzetet a hálózati rendszergazdához, amely tartalmazza a tűzfal adatait. Létrehozhat olyan munkafüzeteket is, amelyek alapján gyakran szeretné megtekinteni őket, hogy vannak-e olyan dolgok, amelyeket naponta szeretne áttekinteni, és ha szeretné, hogy a rendszer óránként egyszer ellenőrizni kívánja az Azure AD-bejelentkezéseket, akkor a rendellenességek keresése érdekében minden órában érdemes megkeresni a kívánt adatokat. 
 
@@ -123,7 +126,7 @@ Az összes beépített észlelés megtekintéséhez lépjen az **elemzés** , ma
 
 A beépített észlelésekkel kapcsolatos további információkért lásd az [oktatóanyag: beépített elemzések](tutorial-detect-threats-built-in.md)beszerzése című témakört.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban megtanulta, hogyan kezdheti el az Azure Sentinel használatát. Folytassa az Oktatóanyaggal a [fenyegetések észleléséhez](tutorial-detect-threats-built-in.md).
 > [!div class="nextstepaction"]
 > [Hozzon létre egyéni veszélyforrás-észlelési szabályokat](tutorial-detect-threats-custom.md) a fenyegetésekre adott válaszok automatizálására.

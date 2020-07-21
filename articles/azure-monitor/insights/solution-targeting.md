@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cecf24f4ba086feba5ab87b5752fd665c540dff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77663232"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498678"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Figyelési megoldások célzása Azure Monitorban (előzetes verzió)
 Amikor felvesz egy figyelési megoldást az előfizetéséhez, a rendszer alapértelmezés szerint automatikusan telepíti a Log Analytics munkaterülethez csatlakoztatott összes Windows-és Linux-ügynököt.  Érdemes lehet felügyelni a költségeket, és korlátozni a megoldáshoz összegyűjtött adatok mennyiségét, ha korlátozza azt egy adott ügynökre.  Ez a cikk azt ismerteti, hogyan használható a megoldások **célzása** , amely egy olyan funkció, amely lehetővé teszi egy hatókör alkalmazását a megoldásokra.
@@ -37,7 +38,7 @@ Miután létrehozta a számítógépcsoportot a munkaterületen, akkor azt egy h
  3. Új hatókör-konfiguráció létrehozásához kattintson a **Hozzáadás** gombra.
  4. Adja meg a hatókör-konfiguráció **nevét** .
  5. Kattintson a **számítógépcsoportok kiválasztása**elemre.
- 6. Válassza ki a létrehozott számítógépcsoportot, és opcionálisan bármely más csoportot, amelyet hozzá szeretne adni a konfigurációhoz.  Kattintson a **Kiválasztás** gombra.  
+ 6. Válassza ki a létrehozott számítógépcsoportot, és opcionálisan bármely más csoportot, amelyet hozzá szeretne adni a konfigurációhoz.  Válassza a **Kiválasztás** lehetőséget.  
  6. A hatókör-konfiguráció létrehozásához kattintson **az OK** gombra. 
 
 
@@ -58,7 +59,7 @@ Hatókör-konfiguráció alkalmazása a következő folyamat használatával.
 Az alábbi feltételek a megoldás célcsoportját nem használó ügynökökre és megoldásokra vonatkoznak.
 
 - A megoldások célzása csak az ügynökökre telepítendő megoldásokra vonatkozik.
-- A megoldások célzása csak a Microsoft által biztosított megoldásokra vonatkozik.  Nem vonatkozik a [saját maga vagy partnerei által létrehozott](solutions-creating.md)megoldásokra.
+- A megoldások célzása csak a Microsoft által biztosított megoldásokra vonatkozik.  Nem vonatkozik a [saját maga vagy partnerei által létrehozott](./solutions.md)megoldásokra.
 - Csak olyan ügynökök szűrhetők, amelyek közvetlenül a Azure Monitorhoz kapcsolódnak.  A rendszer automatikusan telepíti a megoldásokat a csatlakoztatott Operations Manager felügyeleti csoport részét képező ügynökökre, függetlenül attól, hogy azok szerepelnek-e a hatókör-konfigurációban.
 
 ### <a name="exceptions"></a>Kivételek
@@ -66,6 +67,6 @@ A megoldások célzása nem használható a következő megoldásokkal annak ell
 
 - Agent Health Értékelés
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a figyelési megoldásokról, beleértve a környezetében telepítendő megoldásokat az [Azure log Analytics-figyelési megoldások hozzáadása a munkaterülethez](solutions.md)lehetőségre.
 - További információ a számítógépcsoportok számítógép [-csoportokon való létrehozásáról Azure monitor log lekérdezésekben](../platform/computer-groups.md).

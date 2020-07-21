@@ -1,5 +1,5 @@
 ---
-title: Társított szolgáltatás kiépítése és biztonságossá tétele az Azure szinapszis Analytics szolgáltatásban
+title: Társított szolgáltatás biztonságossá tétele
 description: Ismerje meg, hogyan hozhat létre és biztosíthat biztonságossá egy társított szolgáltatást a felügyelt vnet
 services: synapse-analytics
 author: acomet
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c7cf8ec7297b3c0ef855936becc3c06a5120a38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430551"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496077"
 ---
 # <a name="securing-a-linked-service-with-private-links"></a>Társított szolgáltatás biztonságossá tétele privát hivatkozásokkal 
 
@@ -56,7 +56,7 @@ Abban az esetben, ha a fenti kapcsolat tesztelésekor nem kattintott a hiperhiva
 1. Válassza ki a fent létrehozott privát végpontot. Megtekintheti azt a hiperhivatkozást, amely lehetővé teszi a magánhálózati végpont jóváhagyását a Storage-fiók szintjén. *Egy másik lehetőség, hogy közvetlenül a Azure Portal Storage-fiókba lép, és bemegy a **privát Endpoint Connections** panelre.*
 1. Jelölje be a stúdióban létrehozott privát végpontot, és válassza a **jóváhagyás**lehetőséget.
 1. Adja meg a leírást, és kattintson az **Igen** gombra.
-1. Lépjen vissza a szinapszis studióhoz a **kezelés**lap **felügyelt virtuális hálózatok** szakaszában.
+1. Lépjen vissza a szinapszis studióhoz a **kezelés** lap **felügyelt virtuális hálózatok** szakaszában.
 1. Ahhoz, hogy a jóváhagyás megjelenjen a privát végponton, körülbelül 1 percnek kell lennie.
 
 ## <a name="check-the-connection-works"></a>A kapcsolatok működésének ellenõrzése
@@ -66,7 +66,7 @@ Abban az esetben, ha a fenti kapcsolat tesztelésekor nem kattintott a hiperhiva
 
 Ezzel létrehozott egy biztonságos és privát kapcsolatot a szinapszis és a társított szolgáltatás között!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további ismereteket szeretne megtudni a saját felügyelt privát végpontról a szinapszis Analyticsben, tekintse meg a [következő koncepciót: szinapszis felügyelt privát végpontja](data-integration-data-lake.md)
 

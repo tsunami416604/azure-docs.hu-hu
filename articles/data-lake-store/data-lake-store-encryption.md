@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60878395"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497182"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1ban lévő adattitkosítás
 
@@ -52,8 +52,8 @@ A titkosítási főkulcs mindkét mód esetében az Azure Key Vaultban van bizto
 
 Az alábbiakban röviden összehasonlítjuk a kétféle mód MEK-kezelési képességét.
 
-|  | Szolgáltatás által kezelt kulcsok | Felhasználó által kezelt kulcsok |
-| --- | --- | --- |
+| Kérdés | Szolgáltatás által kezelt kulcsok | Felhasználó által kezelt kulcsok |
+| -------- | -------------------- | --------------------- |
 |Hogyan történik az adatok tárolása?|Mindig titkosítva a tárolást megelőzően.|Mindig titkosítva a tárolást megelőzően.|
 |Hol történik a titkosítási főkulcs tárolása?|Key Vault|Key Vault|
 |Létezik-e titkosítatlanul, a Key Vaulton kívül tárolt titkosítási kulcs? |Nem|Nem|
@@ -74,11 +74,11 @@ A titkosítási főkulcsok kezelési módjának megválasztásakor fontos szem e
 
 Az adattitkosítás során háromféle kulcsot használunk. A következő táblázat az összefoglalást tartalmazza:
 
-| Kulcs                   | Rövidítés | Társítva ezzel: | Tárolási hely                             | Típus       | Megjegyzések                                                                                                   |
+| Kulcs                   | Rövidítés | Társítva ezzel: | Tárolási hely                             | Típus       | Jegyzetek                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Titkosítási főkulcs | MEK          | Egy Data Lake Storage Gen1 fiók | Key Vault                              | Aszimmetrikus | Data Lake Storage Gen1 vagy Ön által felügyelhető.                                                              |
 | Adattitkosítási kulcs   | DEK          | Egy Data Lake Storage Gen1 fiók | A Data Lake Storage Gen1 szolgáltatás által felügyelt állandó tárterület | Szimmetrikus  | A DEK titkosítását a MEK végzi. A szolgáltatás a titkosított DEK-et tárolja az állandó adathordozón. |
-| Blokktitkosítási kulcs  | BEK          | Egy adatblokk | None                                         | Szimmetrikus  | A blokktitkosítási kulcsot az adattitkosítási kulcsból és az adatblokkból származtatjuk.                                                      |
+| Blokktitkosítási kulcs  | BEK          | Egy adatblokk | Egyik sem                                         | Szimmetrikus  | A blokktitkosítási kulcsot az adattitkosítási kulcsból és az adatblokkból származtatjuk.                                                      |
 
 Az alapelveket a következő ábra mutatja be:
 

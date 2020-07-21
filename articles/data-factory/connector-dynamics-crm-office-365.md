@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: a7a8af505394b5bf860778b9872434cdacf54210
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54aac9fda42a867ab66d631279efbca4f812b01a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887007"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497615"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Dynamics 365 (Common Data Service) vagy a Dynamics CRM-be a Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -65,7 +65,7 @@ Ez a Dynamics-összekötő a [Dynamics xrm-eszközökre](https://docs.microsoft.
 
 Ha az összekötőt az Azure AD szolgáltatással szeretné használni – az egyszerű hitelesítéshez be kell állítania a kiszolgálók közötti (S2S) hitelesítést Common Data Service vagy Dynamics rendszerbe. A részletes lépésekért tekintse meg [ezt a cikket](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) .
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -79,14 +79,14 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot "Dynamics", "DynamicsCrm" vagy "CommonDataServiceForApps" értékre kell beállítani. | Yes |
-| Megadva | A Dynamics-példány központi telepítési típusa. Az értéknek "online" értékűnek kell lennie a Dynamics online-hoz. | Yes |
-| serviceUri | A Dynamics-példány szolgáltatásának URL-címe. Például: https://adfdynamics.crm.dynamics.com. | Yes |
-| authenticationType | A Dynamics-kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítési típus. Az érvényes értékek: "AADServicePrincipal" és "Office 365". | Yes |
+| típus | A Type tulajdonságot "Dynamics", "DynamicsCrm" vagy "CommonDataServiceForApps" értékre kell beállítani. | Igen |
+| Megadva | A Dynamics-példány központi telepítési típusa. Az értéknek "online" értékűnek kell lennie a Dynamics online-hoz. | Igen |
+| serviceUri | A Dynamics-példány szolgáltatásának URL-címe. Például: https://www.crmdynamics.com. | Igen |
+| authenticationType | A Dynamics-kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítési típus. Az érvényes értékek: "AADServicePrincipal" és "Office 365". | Igen |
 | servicePrincipalId | Az Azure AD-alkalmazás ügyfél-azonosítója. | Igen, ha a hitelesítés "AADServicePrincipal" |
 | servicePrincipalCredentialType | A szolgáltatás egyszerű hitelesítéséhez használandó hitelesítőadat-típus. Az érvényes értékek: "ServicePrincipalKey" és "ServicePrincipalCert". | Igen, ha a hitelesítés "AADServicePrincipal" |
 | servicePrincipalCredential | A szolgáltatás egyszerű hitelesítő adatai. <br/><br/>Ha a "ServicePrincipalKey" hitelesítő adatként használja, `servicePrincipalCredential` akkor egy karakterlánc, amely Azure Data Factory titkosítja a társított szolgáltatás központi telepítését. Vagy a Azure Key Vault titkos kódjára is hivatkozhat. <br/><br/>Ha hitelesítő adatként használja a "ServicePrincipalCert" kifejezést, `servicePrincipalCredential` Azure Key Vault-ben lévő tanúsítványra kell hivatkoznia. | Igen, ha a hitelesítés "AADServicePrincipal" |
-| felhasználónév | A Dynamicshoz való kapcsolódáshoz használt Felhasználónév. | Igen, ha a hitelesítés "Office 365" |
+| username | A Dynamicshoz való kapcsolódáshoz használt Felhasználónév. | Igen, ha a hitelesítés "Office 365" |
 | jelszó | A felhasználónévként megadott felhasználói fiók jelszava. A mező megjelölése a "SecureString" értékkel a biztonságos tárolás Data Factoryban, vagy [a Azure Key Vault tárolt titkos kód hivatkozása](store-credentials-in-key-vault.md). | Igen, ha a hitelesítés "Office 365" |
 | Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Ha nincs megadva érték, a tulajdonság az alapértelmezett Azure Integration Runtime-t használja. | Nem a forráshoz, és igen, ha a forráshoz társított szolgáltatás nem rendelkezik integrációs futtatókörnyezettel |
 
@@ -102,7 +102,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
         "type": "Dynamics",  
         "typeProperties": {  
             "deploymentType": "Online",  
-            "serviceUri": "https://adfdynamics.crm.dynamics.com",  
+            "serviceUri": "https://www.crmdynamics.com",  
             "authenticationType": "AADServicePrincipal",  
             "servicePrincipalId": "<service principal id>",  
             "servicePrincipalCredentialType": "ServicePrincipalKey",  
@@ -124,7 +124,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
         "type": "Dynamics", 
         "typeProperties": { 
             "deploymentType": "Online", 
-            "serviceUri": "https://adfdynamics.crm.dynamics.com", 
+            "serviceUri": "https://www.crmdynamics.com", 
             "authenticationType": "AADServicePrincipal", 
             "servicePrincipalId": "<service principal id>", 
             "servicePrincipalCredentialType": "ServicePrincipalCert", 
@@ -154,7 +154,7 @@ A Dynamics társított szolgáltatás a következő tulajdonságokat támogatja.
         "type": "Dynamics",
         "typeProperties": {
             "deploymentType": "Online",
-            "serviceUri": "https://adfdynamics.crm.dynamics.com",
+            "serviceUri": "https://www.crmdynamics.com",
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
@@ -182,7 +182,7 @@ A Dynamics online-hoz képest további tulajdonságok az **állomásnév** és a
 | port | A helyszíni Dynamics-kiszolgáló portja. | Nem. Az alapértelmezett érték a 443. |
 | Szervezetnév | A Dynamics-példány szervezetének neve. | Igen. |
 | authenticationType | A Dynamics-kiszolgálóhoz való kapcsolódáshoz szükséges hitelesítési típus. A központi TELEPÍTÉSsel rendelkező Dynamics helyszíni környezetének "központi telepítés" megadása. | Igen. |
-| felhasználónév | A Dynamicshoz való kapcsolódáshoz használt Felhasználónév. | Igen. |
+| username | A Dynamicshoz való kapcsolódáshoz használt Felhasználónév. | Igen. |
 | jelszó | A felhasználónévhez megadott felhasználói fiók jelszava. Ezt a mezőt "SecureString" értékkel jelölheti meg, hogy biztonságosan tárolja Data Factoryban. Vagy tárolhat egy jelszót Key Vaultban, és engedélyezheti a másolási tevékenységet, amikor az Adatmásolás során lekéri. További információ a [Key Vault tárolt hitelesítő adatokról](store-credentials-in-key-vault.md). | Igen. |
 | Connectvia tulajdonsággal | Az adattárhoz való csatlakozáshoz használt [integrációs](concepts-integration-runtime.md) modul. Ha nincs megadva érték, a tulajdonság az alapértelmezett Azure Integration Runtime-t használja. | Nem a forrás és az Igen érték a fogadó számára. |
 
@@ -222,7 +222,7 @@ Az adatok a és a Dynamics rendszerbe való másolásához a következő tulajdo
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát "DynamicsEntity", "DynamicsCrmEntity" vagy "CommonDataServiceForAppsEntity" értékre kell beállítani. |Yes |
+| típus | Az adatkészlet Type tulajdonságát "DynamicsEntity", "DynamicsCrmEntity" vagy "CommonDataServiceForAppsEntity" értékre kell beállítani. |Igen |
 | entityName | A lekérdezni kívánt entitás logikai neve. | Nem a forrásnál, ha a tevékenység forrása "Query" (lekérdezés), igen, fogadóként van megadva |
 
 #### <a name="example"></a>Példa
@@ -254,7 +254,7 @@ A Dynamicsből származó adatok másolásához a másolási tevékenység **for
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát "DynamicsSource", "DynamicsCrmSource" vagy "CommonDataServiceForAppsSource" értékre kell beállítani. | Yes |
+| típus | A másolási tevékenység forrásának Type tulajdonságát "DynamicsSource", "DynamicsCrmSource" vagy "CommonDataServiceForAppsSource" értékre kell beállítani. | Igen |
 | lekérdezés | A FetchXML egy saját lekérdezési nyelv, amelyet a Dynamics online-ban és a helyszínen is használhat. Tekintse meg a következő példát. További információ: [lekérdezések készítése a FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nem, ha az `entityName` adatkészletben meg van adva |
 
 >[!NOTE]
@@ -323,7 +323,7 @@ Az adatmásoláshoz a másolási **tevékenység** elfogadója szakasz a követk
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység fogadójának Type tulajdonságát "DynamicsSink", "DynamicsCrmSink" vagy "CommonDataServiceForAppsSink" értékre kell beállítani. | Igen. |
-| writeBehavior | A művelet írási viselkedése. Az értéknek "Upsert" értékűnek kell lennie. | Yes |
+| writeBehavior | A művelet írási viselkedése. Az értéknek "Upsert" értékűnek kell lennie. | Igen |
 | alternateKeyName | Az entitáson definiált másodlagos kulcs neve upsert. | Nem. |
 | writeBatchSize | Az egyes kötegekben a Dynamicsba írt adatsorok száma. | Nem. Az alapértelmezett érték 10. |
 | ignoreNullValues | Azt határozza meg, hogy a rendszer figyelmen kívül hagyja-e a null értékeket a Key mezőktől eltérő bemeneti adatokból az írási művelet során.<br/><br/>Az érvényes értékek **igazak** és **hamisak**:<ul><li>**True (igaz**): a célobjektum nem módosult, ha upsert vagy frissítési műveletet végez. Definiált alapértelmezett érték beszúrása egy beszúrási művelet végrehajtásakor.</li><li>**Hamis**: a upsert vagy frissítési művelet végrehajtásakor a célként megadott objektumban lévő Adatfrissítés NULL értékre. Szúrjon be egy null értéket a beszúrási művelet végrehajtásakor.</li></ul> | Nem. Az alapértelmezett érték **false (hamis**). |
@@ -378,15 +378,15 @@ Konfigurálja a megfelelő Data Factory adattípust a forrás-Dynamics adattípu
 | Dynamics-adattípus | Data Factory időközi adattípus | Forrásként támogatott | Fogadóként támogatott |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode. BigInt | Hosszú | ✓ | ✓ |
-| AttributeTypeCode. Boolean | Logikai | ✓ | ✓ |
+| AttributeTypeCode. Boolean | Logikai érték | ✓ | ✓ |
 | AttributeType. Customer | GUID | ✓ | ✓ (Lásd: [útmutató](#writing-data-to-a-lookup-field)) |
 | AttributeType. DateTime | Datetime | ✓ | ✓ |
 | AttributeType. decimális | Decimal | ✓ | ✓ |
-| AttributeType. Double | Double | ✓ | ✓ |
+| AttributeType. Double | Dupla | ✓ | ✓ |
 | AttributeType. EntityName | Sztring | ✓ | ✓ |
 | AttributeType. Integer | Int32 | ✓ | ✓ |
 | AttributeType. lookup | GUID | ✓ | ✓ (Lásd: [útmutató](#writing-data-to-a-lookup-field)) |
-| AttributeType. ManagedProperty | Logikai | ✓ | |
+| AttributeType. ManagedProperty | Logikai érték | ✓ | |
 | AttributeType. Memo | Sztring | ✓ | ✓ |
 | AttributeType. Money | Decimal | ✓ | ✓ |
 | AttributeType. Owner | GUID | ✓ | ✓ (Lásd: [útmutató](#writing-data-to-a-lookup-field)) |
@@ -433,5 +433,5 @@ Ha az összes forrásoldali rekord ugyanahhoz a célként megadott entitáshoz k
 
 A tulajdonságok részleteinek megismeréséhez lásd: [keresési tevékenység](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Data Factory a másolási tevékenységet a forrásként és a fogadóként támogatja, a [támogatott adattárakat](copy-activity-overview.md#supported-data-stores-and-formats)ismertető cikk tartalmazza.

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan támogatja a MARS-ügynök a biztonsági menté
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 64f43f42fc23b1ca9591b6a49c3acce6c52c09d6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 417fc385750ccab5c2f11f8160d9bbc85a013cde
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134978"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497947"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Tudnivalók a Microsoft Azure Recovery Services (MARS) ügynökről
 
@@ -40,10 +40,10 @@ A MARS-ügynök a következő visszaállítási forgatókönyveket támogatja:
 ## <a name="backup-process"></a>A biztonsági mentés folyamata
 
 1. A Azure Portal hozzon létre egy [Recovery Services](install-mars-agent.md#create-a-recovery-services-vault)-tárolót, majd a **biztonsági mentési célokból**válassza a fájlok, mappák és a rendszerállapot lehetőséget.
-2. [Töltse le a Recovery Services-tároló hitelesítő adatait és az ügynök telepítőjét](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) egy helyszíni gépre.
+2. [Töltse le a Recovery Services-tároló hitelesítő adatait és az ügynök telepítőjét](./install-mars-agent.md#download-the-mars-agent) egy helyszíni gépre.
 
-3. [Telepítse az ügynököt](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) , és a letöltött tároló hitelesítő adataival regisztrálja a gépet a Recovery Services-tárolóba.
-4. A-ügyfél ügynök-konzolján [konfigurálja a biztonsági mentést](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy) , és adja meg a biztonsági mentést, a biztonsági mentés idejét (az ütemezést), a biztonsági másolatok megőrzésének idejét az Azure-ban (az adatmegőrzési szabályzatban), és a védelem megkezdéséhez.
+3. [Telepítse az ügynököt](./install-mars-agent.md#install-and-register-the-agent) , és a letöltött tároló hitelesítő adataival regisztrálja a gépet a Recovery Services-tárolóba.
+4. A-ügyfél ügynök-konzolján [konfigurálja a biztonsági mentést](./backup-windows-with-mars-agent.md#create-a-backup-policy) , és adja meg a biztonsági mentést, a biztonsági mentés idejét (az ütemezést), a biztonsági másolatok megőrzésének idejét az Azure-ban (az adatmegőrzési szabályzatban), és a védelem megkezdéséhez.
 
 ![Azure Backup-ügynök diagramja](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
 
@@ -57,12 +57,12 @@ A MARS-ügynök a következő visszaállítási forgatókönyveket támogatja:
 
 ### <a name="additional-scenarios"></a>További helyzetek
 
-- **Meghatározott fájlok és mappák biztonsági mentése az Azure Virtual Machines**szolgáltatásban: az Azure-beli virtuális gépek (VM-EK) biztonsági mentésének elsődleges módszere egy Azure Backup-bővítmény használata a virtuális gépen. A bővítmény biztonsági másolatot készít a teljes virtuális gépről. Ha meghatározott fájlokról és mappákról szeretne biztonsági mentést készíteni egy virtuális gépen belül, telepítheti a MARS-ügynököt az Azure-beli virtuális gépekre. További információ: [architektúra: beépített Azure virtuális gépek biztonsági mentése](https://docs.microsoft.com/azure/backup/backup-architecture#architecture-built-in-azure-vm-backup).
+- **Meghatározott fájlok és mappák biztonsági mentése az Azure Virtual Machines**szolgáltatásban: az Azure-beli virtuális gépek (VM-EK) biztonsági mentésének elsődleges módszere egy Azure Backup-bővítmény használata a virtuális gépen. A bővítmény biztonsági másolatot készít a teljes virtuális gépről. Ha meghatározott fájlokról és mappákról szeretne biztonsági mentést készíteni egy virtuális gépen belül, telepítheti a MARS-ügynököt az Azure-beli virtuális gépekre. További információ: [architektúra: beépített Azure virtuális gépek biztonsági mentése](./backup-architecture.md#architecture-built-in-azure-vm-backup).
 
 - **Offline előkészítés**: az Azure-ba irányuló adatok kezdeti teljes biztonsági mentése általában nagy mennyiségű adat átvitelét és nagyobb hálózati sávszélességet igényel. A következő biztonsági másolatok csak a különbözetet, vagy növekményes adatmennyiséget továbbítanak. Azure Backup tömöríti a kezdeti biztonsági mentéseket. Az *Offline kivetés*folyamatán keresztül a Azure Backup lemezek használatával feltölthetik a tömörített kezdeti biztonsági mentési adatok az Azure-ba. További információ: [Azure Backup offline biztonsági mentés Azure Data Box használatával](offline-backup-azure-data-box.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
-[A MARS-ügynök támogatási mátrixa](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)
+[A MARS-ügynök támogatási mátrixa](./backup-support-matrix-mars-agent.md)
 
-[MARS-ügynök – gyakori kérdések](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq)
+[MARS-ügynök – gyakori kérdések](./backup-azure-file-folder-backup-faq.md)

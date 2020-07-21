@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Kubernetes szolgáltatás (ak) méretezését,
 services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 41d4088a0942eb408d3d3c9eeb2d13ff38fc0362
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244514"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499885"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazásskálázási beállítások az Azure Kubernetes Service-ben (AKS)
 
@@ -19,7 +19,7 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek segítséget nyújta
 
 - [Manuális méretezés](#manually-scale-pods-or-nodes)
 - [Vízszintes Pod automéretező (HPA)](#horizontal-pod-autoscaler)
-- [Fürt autoskálázása](#cluster-autoscaler)
+- [Automatikus fürtskálázási eszköz](#cluster-autoscaler)
 - [Az Azure Container instance (ACI) integrációja az AK-val](#burst-to-azure-container-instances)
 
 ## <a name="manually-scale-pods-or-nodes"></a>Hüvelyek vagy csomópontok manuális skálázása
@@ -48,7 +48,7 @@ A verseny eseményeinek minimalizálásához meg kell határozni egy késleltet�
 
 Jelenleg nem állíthatók be ezek a hűtési értékek az alapértelmezett értékből.
 
-## <a name="cluster-autoscaler"></a>Fürt autoskálázása
+## <a name="cluster-autoscaler"></a>Automatikus fürtskálázási eszköz
 
 Ahhoz, hogy válaszoljon a Kubernetes módosítására, a fürt automatikusan méretezhető, amely a csomópontok által igényelt számítási erőforrások alapján módosítja a csomópontok számát. Alapértelmezés szerint a fürt autoskálázása 10 másodpercenként ellenőrzi a metrikák API-kiszolgálóját a csomópontok számának szükséges változásaihoz. Ha a fürt autoskálázása meghatározza, hogy szükség van-e módosításra, az AK-fürt csomópontjainak száma ennek megfelelően növekszik vagy csökken. A fürt autoskálázása RBAC-kompatibilis AK-fürtökkel működik, amelyek Kubernetes 1,10. x vagy újabb verziójúak.
 
@@ -58,7 +58,7 @@ A fürt autoskálázása jellemzően a horizontális Pod autoskálázás mellett
 
 A fürt autoskálázási szolgáltatásának az AK-ban való megkezdéséhez lásd: [fürt automéretezője az AK][aks-cluster-autoscaler]-ban.
 
-### <a name="scale-up-events"></a>Események vertikális felskálázása
+### <a name="scale-out-events"></a>Kibővíthető események
 
 Ha egy csomópont nem rendelkezik elegendő számítási erőforrással a kért Pod futtatásához, akkor a pod nem haladhat át az ütemezési folyamaton. A pod nem indítható el, ha további számítási erőforrások állnak rendelkezésre a csomópont-készleten belül.
 
@@ -66,7 +66,7 @@ Ha a fürt automéretezője azt észleli, hogy a csomópont-készlet erőforrás
 
 Ha az alkalmazásnak gyors skálázásra van szüksége, egyes hüvelyek úgy maradhatnak, hogy ütemezve maradnak, amíg a fürt automéretezője által üzembe helyezett további csomópontok el nem fogadják az ütemezett hüvelyeket. A nagy terhelést igénylő alkalmazások esetében a virtuális csomópontok és a Azure Container Instances is méretezhető.
 
-### <a name="scale-down-events"></a>Leskálázási események
+### <a name="scale-in-events"></a>Méretezés az eseményeken
 
 A fürt autoskálázása azt is figyeli, hogy az új ütemezési kérelmeket még nem fogadó csomópontok Pod ütemezési állapota. Ez a forgatókönyv azt jelzi, hogy a csomópont-készlet több számítási erőforrással rendelkezik, mint amennyi szükséges, és a csomópontok száma csökkenthető.
 

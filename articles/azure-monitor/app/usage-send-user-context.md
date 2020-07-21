@@ -6,11 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
-ms.openlocfilehash: ecdcc8a84cdccb05ec514003d63f808583d719c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3a59b6658e6ea0229f65492b20b5f5f2882d12a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797677"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499239"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Felhasználói környezeti azonosítók küldése a használati élmények engedélyezéséhez az Azure-ban Application Insights
 
@@ -18,10 +19,10 @@ ms.locfileid: "83797677"
 
 Application Insights lehetővé teszi a felhasználók figyelését és nyomon követését a termék használati eszközeinek használatával:
 
-- [Felhasználók, munkamenetek, események](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
-- [Tölcsérek](https://docs.microsoft.com/azure/application-insights/usage-funnels)
-- [Adatmegőrzés](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention) Kohorszok
-- [Munkafüzetek](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)
+- [Felhasználók, munkamenetek, események](./usage-segmentation.md)
+- [Tölcsérek](./usage-funnels.md)
+- [Adatmegőrzés](./usage-retention.md) Kohorszok
+- [Munkafüzetek](../platform/workbooks-overview.md)
 
 A felhasználó által az idő múlásával nyomon követhető, Application Insights minden felhasználóhoz vagy munkamenethez szüksége van egy AZONOSÍTÓra. A következő azonosítókat adja meg minden egyéni esemény vagy lap nézetben.
 
@@ -41,11 +42,11 @@ A felhasználói azonosítóknak meg kell őrizniük a felhasználói munkamenet
 
 Az AZONOSÍTÓnak GUID-ként vagy más karakterlánc-komplexnek kell lennie ahhoz, hogy az egyes felhasználók egyedileg azonosíthatók legyenek. Ez lehet például egy hosszú véletlenszerű szám.
 
-Ha az azonosító a felhasználóval kapcsolatos személyazonosításra alkalmas adatokat tartalmaz, nem megfelelő érték, amelyet felhasználói AZONOSÍTÓként Application Insights küldeni. Ezt az azonosítót [hitelesített felhasználói azonosítóként](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users)is elküldheti, de nem teljesíti a használati forgatókönyvek felhasználói azonosítóra vonatkozó követelményeit.
+Ha az azonosító a felhasználóval kapcsolatos személyazonosításra alkalmas adatokat tartalmaz, nem megfelelő érték, amelyet felhasználói AZONOSÍTÓként Application Insights küldeni. Ezt az azonosítót [hitelesített felhasználói azonosítóként](./api-custom-events-metrics.md#authenticated-users)is elküldheti, de nem teljesíti a használati forgatókönyvek felhasználói azonosítóra vonatkozó követelményeit.
 
 ## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET alkalmazások: a felhasználói környezet beállítása egy ITelemetryInitializer
 
-Hozzon létre egy telemetria inicializáló a részletek [itt](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer)leírtak szerint. Adja át a munkamenet-azonosítót a kérelem telemetria, és állítsa be a Context.User.Id és a Context.Session.Id.
+Hozzon létre egy telemetria inicializáló a részletek [itt](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)leírtak szerint. Adja át a munkamenet-azonosítót a kérelem telemetria, és állítsa be a Context.User.Id és a Context.Session.Id.
 
 Ez a példa a felhasználói azonosítót egy olyan azonosítóra állítja be, amely a munkamenet után lejár. Ha lehetséges, használjon olyan felhasználói azonosítót, amely a munkamenetek között megmarad.
 
@@ -125,9 +126,9 @@ namespace MvcWebRole.Telemetry
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) vagy [oldalletöltések](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)küldését.
+- A használati tapasztalatok engedélyezéséhez kezdjen el [Egyéni eseményeket](./api-custom-events-metrics.md#trackevent) vagy [oldalletöltések](./api-custom-events-metrics.md#page-views)küldését.
 - Ha már elküldte az egyéni eseményeket vagy a lapok nézeteit, tekintse meg a használati eszközöket, amelyekkel megismerheti, hogy a felhasználók miként használják a szolgáltatást.
     - [A használat áttekintése](usage-overview.md)
     - [Felhasználók, munkamenetek és események](usage-segmentation.md)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: e97f607c17f746c3cb16a17b7f579a58d4914608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553141"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496417"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Az Azure Cognitive Search az eredmények kivágására szolgáló biztonsági szűrők
 
@@ -34,26 +34,29 @@ Ez a cikk bemutatja, hogyan hajthatja végre a biztonsági szűrést a következ
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy rendelkezik [Azure-előfizetéssel](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), [Azure Cognitive Search szolgáltatással](https://docs.microsoft.com/azure/search/search-create-service-portal)és [Azure Cognitive Search indextel](https://docs.microsoft.com/azure/search/search-create-index-portal).  
+Ez a cikk feltételezi, hogy rendelkezik [Azure-előfizetéssel](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), egy[Azure Cognitive Search szolgáltatással](search-create-service-portal.md)és egy [indexszel](search-what-is-an-index.md).  
 
 ## <a name="create-security-field"></a>Biztonsági mező létrehozása
 
 A dokumentumoknak tartalmazniuk kell egy mezőt, amely meghatározza, hogy mely csoportok férhetnek hozzá. Ezek az információk azokra a szűrési feltételekre vonatkoznak, amelyek alapján a rendszer kijelöli vagy elutasítja a kiállítói eredményhalmaz által visszaadott dokumentumokat.
 Tegyük fel, hogy a védett fájlok indexét használjuk, és minden fájlhoz egy másik felhasználó férhet hozzá.
+
 1. Mező hozzáadása `group_ids` (itt választhat nevet) `Collection(Edm.String)` . Győződjön meg arról, hogy a mezőhöz egy `filterable` attribútum van beállítva, `true` hogy a keresési eredmények szűrve legyenek a felhasználó hozzáférése alapján. Ha például a (z) `group_ids` `["group_id1, group_id2"]` "secured_file_b" nevű dokumentumra állítja be a mezőt `file_name` , csak a "group_id1" vagy "group_id2" csoport-azonosítóhoz tartozó felhasználók rendelkeznek olvasási hozzáféréssel a fájlhoz.
+   
    Győződjön meg arról, hogy a mező `retrievable` attribútuma úgy van beállítva, `false` hogy a rendszer ne adja vissza a keresési kérelem részeként.
+
 2. `file_id` `file_name` A példa kedvéért adja hozzá a és a mezőket is.  
 
-```JSON
-{
-    "name": "securedfiles",  
-    "fields": [
-        {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
-        {"name": "file_name", "type": "Edm.String"},
-        {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
-    ]
-}
-```
+    ```JSON
+    {
+        "name": "securedfiles",  
+        "fields": [
+            {"name": "file_id", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
+            {"name": "file_name", "type": "Edm.String"},
+            {"name": "group_ids", "type": "Collection(Edm.String)", "filterable": true, "retrievable": false}
+        ]
+    }
+    ```
 
 ## <a name="pushing-data-into-your-index-using-the-rest-api"></a>Az adatküldés az indexbe az REST API használatával
   

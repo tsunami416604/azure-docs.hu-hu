@@ -1,58 +1,82 @@
 ---
-title: Index definíciójának és fogalmának létrehozása
+title: Keresési index létrehozása
 titleSuffix: Azure Cognitive Search
-description: Bevezetés az Azure Cognitive Search indexelési feltételeit és fogalmait, beleértve az összetevők és a fizikai struktúra részleteit.
+description: Bevezeti az Azure Cognitive Search indexelési fogalmait és eszközeit, beleértve a séma-definíciókat és a fizikai adatstruktúrát is.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d2b8b2fecbf85e6590294f1fbd7ff2a4453b9e87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 9e8d1c012ae07fc458a324315e2635f04c3dbd78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79282782"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496500"
 ---
-# <a name="create-a-basic-index-in-azure-cognitive-search"></a>Alapszintű index létrehozása az Azure Cognitive Searchban
+# <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Alapszintű keresési index létrehozása az Azure-ban Cognitive Search
 
-Az Azure Cognitive Searchban az *index* az Azure Cognitive Search szolgáltatásban szűrt és teljes szöveges kereséshez használt *dokumentumok* és egyéb szerkezetek állandó tárolója. Elméletileg a dokumentumok az indexben kereshető adategységek. Az elektronikus kereskedelemmel foglalkozó ügyfelek például minden egyes értékesített áru, egy hírközlő szervezet pedig minden egyes cikk esetében rendelkezhet dokumentumokkal. Ezen fogalmak ismertebb, adatbázisbeli megfelelőivel élve: az *index* koncepcionálisan egy *táblához* hasonlít, a *dokumentumok* pedig nagyjából a tábla *sorainak* felelnek meg.
+Az Azure Cognitive Searchban a *keresési index* a teljes szöveges és szűrt lekérdezésekhez használt kereshető tartalmat tárolja. Az indexet egy séma határozza meg, és a szolgáltatásba menti, és az adatimportálás második lépésként történik. 
 
-Ha indexet ad hozzá vagy tölt fel, az Azure Cognitive Search fizikai struktúrákat hoz létre az Ön által megadott séma alapján. Ha például az index egy mezője kereshetőként van megjelölve, akkor az adott mezőhöz fordított index jön létre. Később, amikor dokumentumokat ad hozzá vagy tölt fel, vagy keresési lekérdezéseket küld az Azure Cognitive Searchba, a keresési szolgáltatás egy adott indexére küldi a kéréseket. A dokumentum típusú értékekkel rendelkező mezők *indexelési* vagy adatfeldolgozási szolgáltatásnak nevezzük.
+Az indexek *dokumentumokat*tartalmaznak. Elméletileg a dokumentumok az indexben kereshető adategységek. Előfordulhat, hogy egy kiskereskedő rendelkezik egy dokumentummal az egyes termékekhez, a hírekért felelős szervezet pedig minden cikkhez tartalmaz egy dokumentumot, és így tovább. Ezeket a fogalmakat több ismerős adatbázis-megfelelőnek is feltérképezheti: a *keresési index* egy *táblázatnak*felel meg, a *dokumentumok* pedig nagyjából egyenértékűek egy tábla *soraival* .
 
-Létrehozhat egy indexet a portálon, [REST API](search-create-index-rest-api.md)vagy [.net SDK](search-create-index-dotnet.md)-ban.
+Az index fizikai szerkezetét a séma határozza meg, a "kereshető" jelölésű mezőkkel, ami az adott mezőhöz létrehozott fordított indexet eredményez. 
+
+Létrehozhat egy indexet a következő eszközökkel és API-kkal:
+
+* A Azure Portal használja az **index hozzáadása** vagy az **adatimportálás** varázslót.
+* A [create index (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) használata
+* A [.net SDK](search-create-index-dotnet.md) használata
+
+A portál eszközzel könnyebben tanulhat. A portál bizonyos adattípusokra vonatkozóan kényszeríti a követelményeket és a séma szabályait, például a teljes szöveges keresési képességek letiltását a numerikus mezőkön. Ha egy működőképes indextel rendelkezik, a JSON-definíció lekérése a szolgáltatásból a [Get index (REST API)](https://docs.microsoft.com/rest/api/searchservice/get-index) használatával és a megoldáshoz való hozzáadásával átválthat a kódra.
 
 ## <a name="recommended-workflow"></a>Javasolt munkafolyamat
 
-A jobb oldali index kialakításának megérkezése általában több iteráción keresztül történik. Az eszközök és API-k kombinációjának használatával gyorsan véglegesítheti a kialakítást.
+Az utolsó index kialakításának megérkezése egy iterációs folyamat. Gyakori, hogy először a portál használatával hozza létre a kezdeti indexet, majd váltson kód értékre, hogy az index a verziókövetés alá kerüljön.
 
-1. Állapítsa meg, hogy használható-e [Indexelő](search-indexer-overview.md#supported-data-sources). Ha a külső adatai a támogatott adatforrások egyike, akkor az [**adatimportálás**](search-import-data-portal.md) varázsló használatával prototípust és betöltést is beállíthat.
+1. Döntse el, hogy használhatja-e az [**importált adatimportálást**](search-import-data-portal.md). A varázsló teljes körű indexelő indexelést végez, ha a forrásadatok egy [támogatott adatforrás-típusból származnak az Azure-ban](search-indexer-overview.md#supported-data-sources).
 
-2. Ha nem tudja használni az **importálási adatmennyiséget**, akkor továbbra is [létrehozhat egy kezdeti indexet a portálon](search-create-index-portal.md), mezők hozzáadásával, adattípusokkal és attribútumok hozzárendelésével az **index hozzáadása** lap Vezérlők használatával. A portálon láthatja, hogy mely attribútumok érhetők el különböző adattípusokhoz. Ha most ismerkedik az index kialakításával, ez hasznos lehet.
+1. Ha nem tudja használni az **adatimportálást**, kezdje az **index hozzáadása** lehetőséggel a séma definiálásához.
 
-   ![Index hozzáadása lap, amely az attribútumokat adattípus szerint jeleníti meg](media/search-create-index-portal/field-attributes.png "Index hozzáadása lap, amely az attribútumokat adattípus szerint jeleníti meg")
-  
-   Amikor a **Létrehozás**gombra kattint, az indexet támogató összes fizikai struktúra létrejön a keresési szolgáltatásban.
+   ![Index hozzáadása parancs](media/search-what-is-an-index/add-index.png "Index hozzáadása parancs")
 
-3. Töltse le az index sémát a [Get index REST API](https://docs.microsoft.com/rest/api/searchservice/get-index) és egy webes tesztelési eszköz, például a [Poster](search-get-started-postman.md)használatával. Most már rendelkezik a portálon létrehozott index JSON-ábrázolásával. 
+1. Adjon meg egy nevet és egy kulcsot, amellyel egyedileg azonosíthatja az egyes keresési dokumentumokat az indexben. A kulcs kötelező, és EDM. String típusúnak kell lennie. Az importálás során meg kell terveznie egy egyedi mező leképezését a forrásadatok között ebbe a mezőbe. 
 
-   Ezen a ponton a kód alapú megközelítésre vált. A portál nem alkalmas az iterációhoz, mert már létrehozott index nem szerkeszthető. De a további feladatokhoz a Poster és a REST is használható.
+   A portál egy mezőt biztosít `id` a kulcshoz. Az alapértelmezett érték felülbírálásához `id` hozzon létre egy új mezőt (például egy új mező definícióját `HotelId` ), majd jelölje ki a **kulcsban**.
 
-4. [Töltse be az indexet az adataival](search-what-is-data-import.md). Az Azure Cognitive Search JSON-dokumentumokat fogad el. Az adatok programozott módon történő betöltéséhez használhatja a Poster-t JSON-dokumentumokkal a kérelem hasznos adatai között. Ha az adatai nem könnyen használhatók JSON-ként, ez a lépés a legintenzívebb munkaerő.
+   ![A szükséges tulajdonságok kitöltése](media/search-what-is-an-index//field-attributes.png "A szükséges tulajdonságok kitöltése")
 
-5. Kérdezze le az indexet, vizsgálja meg az eredményeket, és ismételje meg az indexelési sémát, amíg meg nem kezdődik a várt eredmények megtekintése. Az index lekérdezéséhez használhatja a [**Search Explorert**](search-explorer.md) vagy a Poster-t.
+1. További mezők hozzáadása. A portálon láthatja, hogy mely [mezőtulajdonságok](#index-attributes) érhetők el különböző adattípusokhoz. Ha most ismerkedik az index kialakításával, ez hasznos lehet.
 
-6. Folytassa a kód használatát a terv megismétléséhez.  
+   Ha a bejövő adattípusok hierarchikus jellegűek, a beágyazott struktúrákat a [komplex típus](search-howto-complex-data-types.md) adattípusa szerint kell kijelölni. A beépített mintavételi adatkészlet, a hotelek és az összetett típusok illusztrálása egy olyan címen (több almezőt tartalmaz), amely egy-az-egyhez kapcsolattal rendelkezik az egyes szolgáltatásokkal, valamint a szobák összetett gyűjteménye, ahol több szoba van társítva az egyes szolgáltatásokhoz. 
 
-Mivel a fizikai struktúrák a szolgáltatásban jönnek létre, az [indexek eldobása és](search-howto-reindex.md) újbóli létrehozása akkor szükséges, ha egy meglévő mező definíciójában lényeges módosításokat végez. Ez azt jelenti, hogy a fejlesztés során érdemes megtervezni a gyakori újraépítést. Érdemes lehet az adatai egy részhalmazával dolgozni az Újraépítés gyorsabb elvégzése érdekében. 
+1. Az index létrehozása előtt rendeljen hozzá egy [elemzőt](#analyzers) a karakterlánc mezőihez. Ha engedélyezni szeretné az automatikus kiegészítést adott mezőkön, tegye ugyanezt a [javaslatokat](#suggesters) .
 
-A portál megközelítése helyett a kód használata javasolt az ismétlődő kialakításhoz. Ha a portálon az index definícióját használja, ki kell töltenie az index definícióját minden egyes Újraépítés során. Alternatív megoldásként az olyan eszközök, mint [a Poster és a REST API](search-get-started-postman.md) hasznosak lehetnek a megvalósíthatósági teszteléshez, amikor a fejlesztési projektek még mindig korai fázisban vannak. A kérés törzsében növekményes módosításokat végezhet egy index definíciójában, majd a kérést elküldheti a szolgáltatásnak, hogy egy frissített séma használatával újra létrehozza az indexet.
+1. Kattintson a **Létrehozás** elemre a keresési szolgáltatásban található fizikai struktúrák létrehozásához.
 
-## <a name="components-of-an-index"></a>Index összetevői
+1. Az index létrehozása után további parancsokat is megadhat a definíciók áttekintéséhez vagy további elemek hozzáadásához.
 
-Az Azure Cognitive Search index sematikusan a következő elemekből áll. 
+   ![Index hozzáadása lap, amely az attribútumokat adattípus szerint jeleníti meg](media/search-what-is-an-index//field-definitions.png "Index hozzáadása lap, amely az attribútumokat adattípus szerint jeleníti meg")
 
-A [*mezők gyűjteménye*](#fields-collection) általában az index legnagyobb része, ahol az egyes mezők neve, beírása és attribútuma engedélyezett viselkedésmódokkal, amelyek meghatározzák a használatuk módját. A további elemek közé tartoznak a [javaslatok](#suggesters), a [pontozási profilok](#scoring-profiles)és az összetevőkkel rendelkező [elemzők](#analyzers) , amelyek támogatják a testreszabást, a [CORS](#cors) és a [titkosítási kulcs](#encryption-key) beállításait.
+1. Töltse le az index sémát a [Get index (REST API)](https://docs.microsoft.com/rest/api/searchservice/get-index) és egy webes tesztelési eszköz, például a [Poster](search-get-started-postman.md)használatával. Most már rendelkezik az index JSON-ábrázolásával, amelyet a kód számára is adaptálhat.
+
+1. [Töltse be az indexet az adataival](search-what-is-data-import.md). Az Azure Cognitive Search JSON-dokumentumokat fogad el. Az adatok programozott módon történő betöltéséhez használhatja a Poster-t JSON-dokumentumokkal a kérelem hasznos adatai között. Ha az adatai nem könnyen használhatók JSON-ként, ez a lépés a legintenzívebb munkaerő. 
+
+    Az indexek adatba való betöltését követően a meglévő mezők többségének szerkesztéséhez el kell dobnia és újra létre kell építenie egy indexet.
+
+1. Kérdezze le az indexet, vizsgálja meg az eredményeket, és ismételje meg az indexelési sémát, amíg meg nem kezdődik a várt eredmények megtekintése. Az index lekérdezéséhez használhatja a [**Search Explorert**](search-explorer.md) vagy a Poster-t.
+
+A fejlesztés során tervezze meg a gyakori újraépítést. Mivel a fizikai struktúrák a szolgáltatásban jönnek létre, az [indexek eldobása és](search-howto-reindex.md) újbóli létrehozása szükséges ahhoz, hogy a legtöbb módosítást egy meglévő mező határozza meg. Érdemes lehet az adatai egy részhalmazával dolgozni az Újraépítés gyorsabb elvégzése érdekében. 
+
+> [!Tip]
+> A portál megközelítése helyett a kód használata ajánlott az indexek tervezéséhez és az adatimportáláshoz. Alternatív megoldásként az olyan eszközök, mint [a Poster és a REST API](search-get-started-postman.md) hasznosak lehetnek a megvalósíthatósági teszteléshez, amikor a fejlesztési projektek még mindig korai fázisban vannak. A kérés törzsében növekményes módosításokat végezhet egy index definíciójában, majd a kérést elküldheti a szolgáltatásnak, hogy egy frissített séma használatával újra létrehozza az indexet.
+
+## <a name="index-schema"></a>Index séma
+
+Egy indexre van szükség ahhoz, hogy egy név és egy kijelölt kulcs mező (EDM. String) legyen a mezők gyűjteményében. A [*mezők gyűjteménye*](#fields-collection) általában az index legnagyobb része, ahol az egyes mezők neve, beírása és attribútuma engedélyezett viselkedésmódokkal, amelyek meghatározzák a használatuk módját. 
+
+Más elemek közé tartoznak a [javaslatok](#suggesters), a [pontozási profilok](#scoringprofiles), a karakterláncok jogkivonatba való feldolgozásához használt [elemzők](#analyzers) , a nyelvi szabályok vagy az analizátor által támogatott egyéb jellemzők, valamint a [CORS](#corsoptions) -beállítások alapján.
 
 ```json
 {
@@ -141,70 +165,56 @@ A [*mezők gyűjteménye*](#fields-collection) általában az index legnagyobb r
 
 ## <a name="fields-collection-and-field-attributes"></a>Mezők gyűjteménye és a mező attribútumai
 
-A séma meghatározásakor az index minden egyes mezőjéhez nevet, típust és attribútumokat kell rendelni. Az adott mezőben található adatok osztályozása a mező típusa szerint történik. Az egyes mezők használati módjának megadásához attribútumokat állítunk be. Az itt megadható típusokat és attribútumokat az alábbi tábla sorolja fel.
+A mezők névvel, a tárolt adat osztályozására szolgáló típussal és a mező használatának módját megadó attribútumokkal rendelkeznek.
 
 ### <a name="data-types"></a>Adattípusok
+
 | Típus | Description |
-| --- | --- |
-| *Edm.String* |A teljes szöveges kereséshez (Word-Breaking, fakadóan stb.) tartozó szöveg, amely lehet jogkivonatos. |
-| *Collection(Edm.String)* |A teljes szöveges keresés érdekében lehetőség van a sztringlista tokenekre bontására. Az egyes gyűjteményekben lévő elemek számának nincs elméleti felső korlátja, a 16 MB-os adattartalom-méretkorlát azonban a gyűjteményekre is érvényes. |
-| *Edm.Boolean* |Igaz/hamis értékeket tartalmaz. |
-| *Edm.Int32* |32 bites egész számok. |
-| *Edm.Int64* |64 bites egész számok. |
-| *Edm.Double* |Kétszeres pontosságú numerikus adatok. |
-| *Edm.DateTimeOffset* |A dátum-és időértékek a OData v4 formátumban (például `yyyy-MM-ddTHH:mm:ss.fffZ` vagy) jelennek meg `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` . |
-| *Edm.GeographyPoint* |A pont egy konkrét földrajzi helyet jelöl. |
+|------|-------------|
+| Edm.String |A teljes szöveges kereséshez (Word-Breaking, fakadóan stb.) tartozó szöveg, amely lehet jogkivonatos. |
+| Collection(Edm.String) |A teljes szöveges keresés érdekében lehetőség van a sztringlista tokenekre bontására. Az egyes gyűjteményekben lévő elemek számának nincs elméleti felső korlátja, a 16 MB-os adattartalom-méretkorlát azonban a gyűjteményekre is érvényes. |
+| Edm.Boolean |Igaz/hamis értékeket tartalmaz. |
+| Edm.Int32 |32 bites egész számok. |
+| Edm.Int64 |64 bites egész számok. |
+| Edm.Double |Kétszeres pontosságú numerikus adatok. |
+| Edm.DateTimeOffset |A dátum-és időértékek a OData v4 formátumban (például `yyyy-MM-ddTHH:mm:ss.fffZ` vagy) jelennek meg `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm` . |
+| Edm.GeographyPoint |A pont egy konkrét földrajzi helyet jelöl. |
 
-Az Azure Cognitive Search [által támogatott adattípusokkal](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)kapcsolatos részletesebb információkat itt talál.
+További információ: [támogatott adattípusok](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
 
-### <a name="index-attributes"></a>Indexattribútumok
+<a name="index-attributes"></a>
 
-Az index pontosan egy mezőjének a kijelölt **kulcs** mezőnek kell lennie, amely egyedileg azonosítja az egyes dokumentumokat.
+### <a name="attributes"></a>Attribútumok
 
-Más attribútumok határozzák meg, hogyan használják a mezőket egy alkalmazásban. A **kereshető** attribútum például minden olyan mezőhöz hozzá van rendelve, amelynek szerepelnie kell egy teljes szöveges keresésben. 
+A mezőtulajdonságok határozzák meg egy mező használati módját, például hogy használva lesz-e teljes szöveges keresésben, kategorizált navigációban, rendezési műveletekben stb. 
 
-Az indexek létrehozásához használt API-k eltérő alapértelmezett viselkedéssel rendelkeznek. A [REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index)-k esetében a legtöbb attribútum alapértelmezés szerint engedélyezve van (például **kereshető** és lekérdezhető, hogy a karakterlánc mezőinél **igaz legyen)** , és gyakran csak be kell állítani őket, ha ki szeretné kapcsolni őket. A .NET SDK esetében az ellenkezője igaz. A nem kifejezetten beállított bármely tulajdonság esetében az alapértelmezett érték a megfelelő keresési viselkedés letiltása, kivéve, ha kifejezetten engedélyezi azt.
+A karakterlánc típusú mezők gyakran "kereshető" és "lekérhető" jelöléssel rendelkeznek. A keresési eredmények szűkítéséhez használt mezők közé tartoznak a "rendezhető", a "szűrhető" és a "sokrétű".
 
-| Attribútum | Leírás |
-| --- | --- |
-| `key` |Az egyes dokumentumok egyedi azonosítóját megadó sztring, amelyet a dokumentumok keresésére használunk. Minden egyes indexnek egy kulccsal kell rendelkeznie. A kulcs kizárólag egyetlen mező lehet, annak típusa pedig Edm.String kell legyen. |
-| `retrievable` |Megadja, hogy az adott mező visszaadható-e egy keresési eredményben. |
-| `filterable` |Lehetővé teszi az adott mező szűrőlekérdezésekben történő használatát. |
-| `Sortable` |Lehetővé teszi egy lekérdezés számára, hogy az adott mezőt használja egy rendezés alapjaként. |
-| `facetable` |Lehetővé teszi, hogy egy mező [csiszolt navigációs](search-faceted-navigation.md) struktúrában legyen felhasználva a felhasználó által irányított szűréshez. Általában olyan ismétlődő értékeket tartalmazó mezők, amelyek dokumentumok csoportosítására használhatók (például adott márkához vagy szolgáltatási kategóriához tartozó dokumentumok esetében). |
-| `searchable` |Azt jelzi, hogy az adott mező teljes szöveges keresésre alkalmas. |
+|Attribútum|Leírás|  
+|---------------|-----------------|  
+|kereshető |Kereshető – Teljes szöveges keresésre alkalmas, az indexelés során lexikai elemzés, például szavakra bontás végezhető rajta. Ha egy kereshető mező értékének például a „sunny day” szöveget adja meg, akkor az két különálló tokenre lesz bontva: „sunny” és „day”. További részletek az [A teljes szöveges keresés működése](search-lucene-query-architecture.md) című cikkben.|  
+|szűrhető |Szűrhető – A $filter lekérdezések hivatkoznak rá. Az `Edm.String` vagy `Collection(Edm.String)` típusú szűrhető mezők nem lesznek szavakra bontva, ezért összehasonlítások csak pontos egyezésekre végezhetők. Ha egy ilyen mező értékének például a „sunny day” szöveget adja meg, akkor a `$filter=f eq 'sunny'` keresés nem talál egyezést, a `$filter=f eq 'sunny day'` viszont igen. |  
+|rendezhető |Rendezhető – A rendszer alapértelmezés szerint érték szerint rendezi a találatokat, de a dokumentumok mezői alapján végzett rendezés is konfigurálható. A típusú mezők `Collection(Edm.String)` nem lehetnek "rendezve". |  
+|kategorizálható |Kategorizálható – Általában akkor használják, ha a keresési eredményeket a kategóriánkénti találatok számával együtt kell bemutatni (például szállodák egy adott városban). Ez a lehetőség az `Edm.GeographyPoint` típusú mezők esetén nem használható. A `Edm.String` szűrhető, "rendezhető" vagy "sokrétű" típusú mezők legfeljebb 32 kilobájt hosszúságú lehetnek. Részletek az [Index létrehozása (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) című cikkben.|  
+|kulcs |Kulcs – Az indexen belüli dokumentumok egyedi azonosítója. Kulcsmezőként egyetlen `Edm.String` típusú mezőt kell megadni.|  
+|visszakereshetőnek |Lekérdezhető – Megadja, hogy a mező visszaadható-e egy keresési eredményben. Ez akkor hasznos, ha egy mező (például *nyereség*) szűrésre, rendezésre vagy értékelésre szolgál, de a végfelhasználó számára nem kell megjelennie. Ennek a tulajdonságnak az értéke `key` tulajdonságú mezők esetén csak `true` lehet.|  
 
-## <a name="index-size"></a>Index mérete
+Új mezők bármikor megadhatók, a meglévő meződefiníciók azonban az index élettartamára rögzülnek. A fejlesztők ezért általában egyszerű indexek létrehozására vagy ötletek kipróbálására használják a portált, vagy a portál oldalain néznek utána egy beállításnak. Egy index rendszeres kiegészítése hatékonyabb az index újraépítését megkönnyítő kódalapú megközelítéssel.
 
-Az index méretét a feltöltött dokumentumok mérete határozza meg, valamint az indexelési konfiguráció, például a javaslatok belefoglalása, valamint az attribútumok egyéni mezőkhöz való beállítása. Az alábbi képernyőfelvételen az attribútumok különböző kombinációinak eredményeként létrejövő indexek tárolási mintáit mutatjuk be.
+> [!NOTE]
+> Az indexek létrehozásához használt API-k eltérő alapértelmezett viselkedéssel rendelkeznek. A [REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index)-k esetében a legtöbb attribútum alapértelmezés szerint engedélyezve van (például a "kereshető" és a "lekérhető" igaz a karakterlánc mezőknél), és gyakran csak akkor kell beállítania őket, ha ki szeretné kapcsolni őket. A .NET SDK esetében az ellenkezője igaz. A nem kifejezetten beállított bármely tulajdonság esetében az alapértelmezett érték a megfelelő keresési viselkedés letiltása, kivéve, ha kifejezetten engedélyezi azt.
 
-Az index a [beépített Real Estate Sample](search-get-started-portal.md) adatforráson alapul, amelyet a portálon indexelheti és lekérdezheti. Bár az index sémái nem jelennek meg, az attribútumok az index neve alapján következtethető ki. Például a *Realestate-kereshető* indexben a **kereshető** attribútum van kiválasztva, és semmi mást sem, a *Realestate* lekérhető index a **beolvasható** attribútum van kiválasztva, semmi más, és így tovább.
+## `analyzers`
 
-![Index mérete az attribútumok kijelölése alapján](./media/search-what-is-an-index/realestate-index-size.png "Index mérete az attribútumok kijelölése alapján")
+Az analizátorok elem beállítja a mezőhöz használandó nyelvi elemző nevét. Az elérhető elemzők tartományával kapcsolatos további információkért lásd: [elemzők hozzáadása egy Azure Cognitive Search indexhez](search-analyzers.md). Az elemzők csak kereshető mezőkkel használhatók. Ha az analizátor egy mezőhöz van rendelve, akkor nem módosítható, ha újra létrehozza az indexet.
 
-Bár ezek az index-változatok mesterségesek, az attribútumok a tárolók befolyásolásának széles körű összehasonlítására is hivatkozhatnak. **Beállítja a** lekérdezhető növelési index méretét? Nem. Növeli a mezők hozzáadását egy **javaslathoz** az index méretének növelése érdekében? Igen.
+## `suggesters`
 
-A szűrőket és a rendezést támogató indexek arányosan nagyobbak, mint a csak teljes szöveges keresések. A pontos egyezések szűrése és rendezése – a sértetlen dokumentumok jelenlétének megkövetelése. Ezzel szemben a teljes szöveges és a zavaros keresést támogató kereshető mezők invertált indexeket használnak, amelyek olyan jogkivonatokkal vannak feltöltve, amelyek kevesebb helyet foglalnak el, mint a teljes dokumentumok. 
-
-> [!Note]
-> A tárolási architektúra az Azure-Cognitive Search megvalósítási részletének minősül, és értesítés nélkül megváltozhat. Nincs garancia arra, hogy a jelenlegi viselkedés továbbra is fennmarad a jövőben.
-
-## <a name="suggesters"></a>Javaslattevők
 A javaslat a séma azon szakasza, amely meghatározza, hogy az indexben mely mezők használhatók az automatikus vagy a beírásos lekérdezések támogatásához a keresésekben. A rendszer általában a részleges keresési karakterláncokat küldi el a [javaslatok (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) számára, amíg a felhasználó begépel egy keresési lekérdezést, és az API a javasolt dokumentumok vagy kifejezések készletét adja vissza. 
 
 A rendszer a javaslathoz hozzáadott mezőket használja a típus előtti keresési feltételek kiépítéséhez. Az összes keresési kifejezés az indexelés során jön létre, és külön tárolja őket. A javaslati struktúra létrehozásával kapcsolatos további információkért lásd: [javaslatok hozzáadása](index-add-suggesters.md).
 
-## <a name="scoring-profiles"></a>Pontozási profilok
-
-A [pontozási profil](index-add-scoring-profiles.md) a séma olyan szakasza, amely egyéni pontozási viselkedést határoz meg, amely lehetővé teszi, hogy a keresési eredményekben magasabban megjelenjenek az elemek. A pontozási profilok mezőből származó súlyok és függvények alkotják. A használatához a lekérdezési karakterláncban meg kell adnia egy profilt név alapján.
-
-Az alapértelmezett pontozási profil a háttérben működik, hogy kiszámítsa a keresési pontszámot az eredményhalmaz minden eleménél. Használhatja a belső, nem névre vonatkozó pontozási profilt. Azt is megteheti, hogy a **defaultScoringProfile** egyéni profilt használ alapértelmezettként, ha a lekérdezési karakterláncban nincs megadva egyéni profil.
-
-## <a name="analyzers"></a>Elemzők
-
-Az analizátorok elem beállítja a mezőhöz használandó nyelvi elemző nevét. Az elérhető elemzők tartományával kapcsolatos további információkért lásd: [elemzők hozzáadása egy Azure Cognitive Search indexhez](search-analyzers.md). Az elemzők csak kereshető mezőkkel használhatók. Ha az analizátor egy mezőhöz van rendelve, akkor nem módosítható, ha újra létrehozza az indexet.
-
-## <a name="cors"></a>CORS
+## `corsOptions`
 
 Az ügyféloldali JavaScriptek alapértelmezés szerint nem hívhatnak meg API-kat, mivel a böngésző megakadályozza az összes kereszthivatkozási kérelmet. Ha engedélyezni szeretné az adatforrások közötti lekérdezéseket az index számára, engedélyezze a CORS (több eredetű erőforrás-megosztás) a **corsOptions** attribútum beállításával. Biztonsági okokból csak a lekérdezési API-k támogatják a CORS. 
 
@@ -216,13 +226,36 @@ A következő beállítások állíthatók be a CORS:
 
 + **maxAgeInSeconds** (nem kötelező): a böngészők ezt az értéket használják annak meghatározására, hogy mennyi ideig (másodpercben) kell gyorsítótárazni a CORS elővizsgálati válaszokat. Ennek nem negatív egész számnak kell lennie. Minél nagyobb ez az érték, annál jobb lesz a teljesítmény, de minél hosszabb ideig tart a CORS-szabályzat módosításainak érvénybe léptetése. Ha nincs beállítva, a rendszer az alapértelmezett 5 perces időtartamot használja.
 
-## <a name="encryption-key"></a>Titkosítási kulcs
+## `scoringProfiles`
 
-Habár a Microsoft által felügyelt kulcsokkal az összes Azure Cognitive Search-index titkosítva van, az indexek úgy konfigurálhatók, hogy az **ügyfél által felügyelt kulcsokkal** legyenek titkosítva Key Vault. További információ: [titkosítási kulcsok kezelése az Azure Cognitive Searchban](search-security-manage-encryption-keys.md).
+A [pontozási profil](index-add-scoring-profiles.md) a séma olyan szakasza, amely egyéni pontozási viselkedést határoz meg, amely lehetővé teszi, hogy a keresési eredményekben magasabban megjelenjenek az elemek. A pontozási profilok mezőből származó súlyok és függvények alkotják. A használatához a lekérdezési karakterláncban meg kell adnia egy profilt név alapján.
 
-## <a name="next-steps"></a>További lépések
+Az alapértelmezett pontozási profil a háttérben működik, hogy kiszámítsa a keresési pontszámot az eredményhalmaz minden eleménél. Használhatja a belső, nem névre vonatkozó pontozási profilt. Azt is megteheti, hogy a **defaultScoringProfile** egyéni profilt használ alapértelmezettként, ha a lekérdezési karakterláncban nincs megadva egyéni profil.
 
-Az index-összeállítás megismerésével a portálon folytathatja az első index létrehozását.
+<a name="index-size"></a>
+
+## <a name="attributes-and-index-size-storage-implications"></a>Attribútumok és index mérete (tárolási vonzatok)
+
+Az index méretét a feltöltött dokumentumok mérete határozza meg, valamint az indexelési konfiguráció, például a javaslatok belefoglalása, valamint az attribútumok egyéni mezőkhöz való beállítása. 
+
+Az alábbi képernyőfelvételen az attribútumok különböző kombinációinak eredményeként létrejövő indexek tárolási mintáit mutatjuk be. Az index a **Real Estate Sample indexen**alapul, amelyet egyszerűen létrehozhat az adatimportálás varázsló segítségével. Bár az index sémái nem jelennek meg, az attribútumok az index neve alapján következtethető ki. Például a *Realestate-kereshető* index a "kereshető" attribútummal van kiválasztva, és semmi mást sem, a *Realestate* lekérhető indexben a "lekérhető" attribútum van kiválasztva, semmi más, és így tovább.
+
+![Index mérete az attribútumok kijelölése alapján](./media/search-what-is-an-index/realestate-index-size.png "Index mérete az attribútumok kijelölése alapján")
+
+Bár ezek az index-változatok mesterségesek, az attribútumok a tárolók befolyásolásának széles körű összehasonlítására is hivatkozhatnak. Megnövelhető az index mérete? Nem. Növeli a mezők hozzáadását egy **javaslathoz** az index méretének növelése érdekében? Igen.
+
+A szűrőket és a rendezést támogató indexek a csak teljes szöveges keresést támogató indexek arányosan nagyobbak. Ennek az az oka, hogy a szűrési és rendezési műveletek pontos egyezéseket keresnek, és a Verbatim szöveges karakterláncok jelenlétét igénylik. Ezzel szemben a teljes szöveges lekérdezéseket támogató kereshető mezők fordított indexeket használnak, amelyek olyan jogkivonatokkal vannak feltöltve, amelyek kevesebb helyet foglalnak el, mint a teljes dokumentumok. 
+
+> [!Note]
+> A tárolási architektúra az Azure-Cognitive Search megvalósítási részletének minősül, és értesítés nélkül megváltozhat. Nincs garancia arra, hogy a jelenlegi viselkedés továbbra is fennmarad a jövőben.
+
+## <a name="next-steps"></a>Következő lépések
+
+Az index-összeállítás megismerésével a portálon folytathatja az első index létrehozását. Javasoljuk, hogy az **adatimportálás** varázslóval Kezdje a *Realestate-US-Sample* vagy a *Hotels-Sample* Hosted adatforrások kiválasztásával.
 
 > [!div class="nextstepaction"]
-> [Index hozzáadása (portál)](search-create-index-portal.md)
+> [Adatimportálási varázsló (portál)](search-get-started-portal.md)
+
+Mindkét adatkészlet esetében a varázsló következtetheti az indexelési sémát, importálhatja az adatokat, és olyan kereshető indexet adhat kimenetként, amelyet a Search Explorer használatával tud lekérdezni. Keresse meg ezeket az adatforrásokat az **adatimportálás** varázsló **Kapcsolódás az adataihoz** lapján.
+
+   ![Minta index létrehozása](media/search-what-is-an-index//import-wizard-sample-data.png "Minta index létrehozása")

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: 88aea7e58aacd9a630771948c6dbc6ed5712a674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505307"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497199"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>További Azure HPC-gyorsítótár beállításainak konfigurálása
 
@@ -51,7 +51,7 @@ Ha a root squash engedélyezve van, a rendszer automatikusan leképezi a felhasz
 
 Ha a root squash le van tiltva, a rendszer az ügyfél gyökérszintű felhasználójának (UID 0) kérelmét átadja egy háttérként szolgáló NFS Storage rendszernek. Ez a konfiguráció a nem megfelelő fájlok elérését is lehetővé teheti.
 
-A gyorsítótárban lévő legfelső szintű squash beállításával kompenzálhatja a szükséges ``no_root_squash`` beállítást a tárolási célként használt NAS-rendszereken. (További információ az [NFS-tárolási cél előfeltételeiről](hpc-cache-prereqs.md#nfs-storage-requirements).) Emellett az Azure Blob Storage-célokkal való használatkor is javíthatja a biztonságot.
+A gyorsítótárban lévő legfelső szintű squash beállításával kompenzálhatja a szükséges ``no_root_squash`` beállítást a tárolási célként használt NAS-rendszereken. (További információ az [NFS-tárolási cél előfeltételeiről](hpc-cache-prerequisites.md#nfs-storage-requirements).) Emellett az Azure Blob Storage-célokkal való használatkor is javíthatja a biztonságot.
 
 Az alapértelmezett beállítás az **Igen**. (A 2020 áprilisa előtt létrehozott gyorsítótárak esetében az alapértelmezett beállítás **nem**.)
 

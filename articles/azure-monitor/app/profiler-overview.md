@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3074d58560df5cb5bd6bdc2c0437a4be828918
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671647"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499392"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Profil éles alkalmazások az Azure-ban Application Insights
 ## <a name="enable-application-insights-profiler-for-your-application"></a>Application Insights Profiler engedélyezése az alkalmazáshoz
@@ -29,7 +30,7 @@ Ha engedélyezte a Profilert, de nem lát nyomkövetést, tekintse meg a [hibael
 
 ## <a name="view-profiler-data"></a>Profiler-adathalmazok megtekintése
 
-A Profiler a Nyomkövetések feltöltéséhez az alkalmazásnak aktívan kell kezelnie a kérelmeket. Ha kísérletet hajt végre, [Application Insights teljesítményteszt](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)használatával hozhatja elő a kérelmeket a webalkalmazáshoz. Ha újonnan engedélyezte a Profilert, rövid betöltési tesztet is futtathat. Amíg a terhelési teszt fut, kattintson a **profil most** gombra a [ **Profiler-beállítások** panelen](profiler-settings.md). Ha a Profiler fut, a rendszer óránként egyszer, és két percen belül véletlenszerűen készíti el a profilt. Ha az alkalmazás a kérelmek állandó streamjét kezeli, a Profiler óránként feltölti a nyomkövetéseket.
+A Profiler a Nyomkövetések feltöltéséhez az alkalmazásnak aktívan kell kezelnie a kérelmeket. Ha kísérletet hajt végre, [Application Insights teljesítményteszt](/vsts/load-test/app-service-web-app-performance-test)használatával hozhatja elő a kérelmeket a webalkalmazáshoz. Ha újonnan engedélyezte a Profilert, rövid betöltési tesztet is futtathat. Amíg a terhelési teszt fut, kattintson a **profil most** gombra a [ **Profiler-beállítások** panelen](profiler-settings.md). Ha a Profiler fut, a rendszer óránként egyszer, és két percen belül véletlenszerűen készíti el a profilt. Ha az alkalmazás a kérelmek állandó streamjét kezeli, a Profiler óránként feltölti a nyomkövetéseket.
 
 Miután az alkalmazás megkapta a forgalmat és a Profiler-nek van ideje a Nyomkövetések feltöltésére, a megtekintéshez nyomkövetést kell használnia. Ez a folyamat 5 – 10 percet is igénybe vehet. A Nyomkövetések megtekintéséhez a **teljesítmény** ablaktáblán válassza a **műveletek elvégzése**lehetőséget, majd válassza a **Profiler Nyomkövetések** gombot.
 
@@ -118,7 +119,7 @@ A Profiler szolgáltatás használatáért nem számítunk fel díjat. Ahhoz, ho
 
 A Profiler véletlenszerűen két percen belül fut minden olyan virtuális gépen, amelyen a Profiler engedélyezve van a nyomkövetés rögzítéséhez. Ha a Profiler fut, az 5 – 15 százalékos CPU-terhelést tesz elérhetővé a kiszolgálóra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Application Insights Profiler engedélyezése az Azure-alkalmazáshoz. Lásd még:
 * [App Services](profiler.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)

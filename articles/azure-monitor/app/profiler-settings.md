@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6b6f98f3c7f540e00743ae27b532b24d2310453e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205708"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499409"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler konfigurálása
 
@@ -32,16 +32,16 @@ Ekkor megnyílik egy oldal, amely így néz ki:
 
 A **Application Insights Profiler konfigurálása** lapon a következő funkciók szerepelnek:
 
-| Szolgáltatás | Leírás |
+| Funkció | Leírás |
 |-|-|
 Profil most | A profilkészítési munkamenetek elindítása minden olyan alkalmazáshoz, amely a Application Insights ezen példányához van csatolva.
-Eseményindítók | Lehetővé teszi olyan eseményindítók konfigurálását, amelyek a Profiler futtatását okozzák. 
+Triggerek | Lehetővé teszi olyan eseményindítók konfigurálását, amelyek a Profiler futtatását okozzák. 
 Közelmúltbeli profilkészítési munkamenetek | A korábbi profilkészítési munkamenetekkel kapcsolatos információkat jeleníti meg.
 
 ## <a name="profile-now"></a>Profil most
 Ez a beállítás lehetővé teszi a profilkészítési munkamenet igény szerinti elindítását. Ha erre a hivatkozásra kattint, az összes Profiler-ügynök, amely adatokat küld erre a Application Insights-példányra, megkezdi a profil rögzítését. 5 – 10 perc elteltével a profil-munkamenet az alábbi listában fog megjelenni.
 
-Ahhoz, hogy egy felhasználó manuálisan aktiválja a Profiler-munkamenetet, a Application Insights összetevő szerepköréhez legalább "írási" hozzáférésre van szükségük. A legtöbb esetben automatikusan megkapja ezt a hozzáférést, és nincs szükség további munkára. Ha problémák merülnek fel, a hozzáadandó előfizetési hatókör szerepkör a "Application Insights Component közreműködő" szerepkör lenne. [További információ a szerepköralapú hozzáférés-vezérlésről az Azure monitoring szolgáltatással](https://docs.microsoft.com/azure/azure-monitor/app/resources-roles-access-control).
+Ahhoz, hogy egy felhasználó manuálisan aktiválja a Profiler-munkamenetet, a Application Insights összetevő szerepköréhez legalább "írási" hozzáférésre van szükségük. A legtöbb esetben automatikusan megkapja ezt a hozzáférést, és nincs szükség további munkára. Ha problémák merülnek fel, a hozzáadandó előfizetési hatókör szerepkör a "Application Insights Component közreműködő" szerepkör lenne. [További információ a szerepköralapú hozzáférés-vezérlésről az Azure monitoring szolgáltatással](./resources-roles-access-control.md).
 
 ## <a name="trigger-settings"></a>Trigger beállításai
 ![Trigger beállításai menü][trigger-settings-flyout]
@@ -63,7 +63,7 @@ Az oldal ezen szakasza a közelmúltbeli profilkészítési munkamenetekkel kapc
 Aktiválta: | A munkamenet elindítása a trigger, a profil és az alapértelmezett mintavételezés használatával. 
 Alkalmazásnév | A létrehozott alkalmazás neve.
 Gépi példány | Annak a gépnek a neve, amelyen a Profiler-ügynök futott.
-Időbélyeg | A profil rögzítésének ideje.
+Timestamp | A profil rögzítésének ideje.
 Farkas | Az egyes kérelmekhez csatolt Nyomkövetések száma.
 CPU % | A Profiler futása közben használt CPU százaléka.
 Memória | A Profiler futása közben használt memória százalékos aránya.
@@ -105,7 +105,7 @@ Ha a webalkalmazás már rendelkezik bejövő forgalommal, vagy ha csak manuáli
 
 Miután a Profiler befejezte a futtatást, kövesse az értesítésen megjelenő utasításokat a teljesítmény panelre való ugráshoz és a Nyomkövetések megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A Profiler engedélyezése és a Nyomkövetések megtekintése](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
 [profiler-on-demand]: ./media/profiler-settings/Profiler-on-demand.png

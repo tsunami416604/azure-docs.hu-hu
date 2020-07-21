@@ -4,22 +4,18 @@ description: Ismerteti a klónok különböző típusait és használatát, vala
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 12/05/2017
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 1ddc7d9e359fbb43680ae093c4e6cd2b9fb1ab2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514987"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496145"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Kötet klónozása az Azure Portal StorSimple-eszközkezelő szolgáltatásával
 
@@ -31,7 +27,7 @@ A StorSimple Eszközkezelő szolgáltatás **biztonságimásolat-katalógusa** p
 
  ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
 
-## <a name="considerations-for-cloning-a-volume"></a>A kötetek klónozásával kapcsolatos megfontolások
+## <a name="considerations-for-cloning-a-volume"></a>Kötet klónozásának szempontjai
 
 A kötetek klónozásakor vegye figyelembe a következő információkat:
 
@@ -51,7 +47,7 @@ A kötetek klónozásakor vegye figyelembe a következő információkat:
 
 Létrehozhat egy klónt ugyanazon az eszközön, egy másik eszközön, vagy akár egy felhőalapú készüléken is egy helyi vagy Felhőbeli pillanatkép használatával.
 
-Az alábbi eljárás azt ismerteti, hogyan hozhat létre egy klónt a biztonsági mentési katalógusból.  Egy másik módszer a klónozás elindítására, ha a **kötetek**elemre kattint, kijelöl egy kötetet, majd a jobb gombbal rákattint a helyi menü meghívására és a **klónozás**elemre.
+Az alábbi eljárás azt ismerteti, hogyan hozhat létre egy klónt a biztonsági mentési katalógusból.  
 
 A következő lépések végrehajtásával hozza létre a kötet klónját a biztonsági mentési katalógusból.
 
@@ -117,7 +113,7 @@ Egy egyéves Microsoft PowerPoint-bemutató fájlt kell helyreállítani. A rend
 ### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>Éles környezetben végzett tesztelés állandó klónozással
 Ellenőrizze, hogy van-e tesztelési hiba az éles környezetben. Létre kell hoznia egy klónt a kötetről az éles környezetben, majd el kell készítenie egy Felhőbeli pillanatképet a klónról egy független klónozott kötet létrehozásához. Ebben az esetben állandó klónozást használunk.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [állíthatja vissza a StorSimple kötetét egy biztonságimásolat-készletből](storsimple-8000-restore-from-backup-set-u2.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
 

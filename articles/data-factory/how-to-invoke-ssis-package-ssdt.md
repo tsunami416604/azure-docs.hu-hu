@@ -12,11 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/31/2019
-ms.openlocfilehash: 1d8261d05f59c7f40ba6b1e2d59d2b15ad56de95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3163d414e940d843489a34f319996b1b8ed6f4a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424576"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497412"
 ---
 # <a name="execute-ssis-packages-in-azure-from-ssdt"></a>SSIS-csomagok végrehajtása az Azure-ban a SSDT-ből
 
@@ -81,6 +82,30 @@ Az Azure-kompatibilis projektek ADF-SSIS való csatlakoztatásával feltöltheti
    ![Az Azure Storage kiválasztása](media/how-to-invoke-ssis-package-ssdt/ssis-in-adf-connection-wizard3.png)
 
 4. A kapcsolat befejezéséhez kattintson a **Kapcsolódás** gombra.  A kiválasztott Azure-SSIS IR és az Azure Storage-fiókot a SSDT Megoldáskezelő paneljén található **társított Azure-erőforrások** csomópont alatt jelenítjük meg.  A Azure-SSIS IR állapotát is frissítjük, miközben a jobb gombbal a csomópontra kattintva megnyithatja a menüt, majd kiválaszthatja a **Start\Stop\Manage** menüelemet, amely az ADF-portál vagy-alkalmazás megadására kerül.
+
+## <a name="assess-ssis-projectpackages-for-executions-in-azure"></a>SSIS-project\packages kiértékelése az Azure-beli végrehajtásokhoz
+### <a name="assess-ssis-project-or-package"></a>SSIS projekt vagy csomag értékelése
+A csomagok Azure-ban való végrehajtása előtt értékelheti a csomagot annak kiértékeléséhez, hogy van-e lehetséges áttelepítési blokkoló vagy információ, amelyről tisztában kell lennie. 
+-  A projektben vagy egy csomagban lévő összes csomagot fel lehet mérni.
+
+   ![Projekt- ](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project.png)
+    ![ értékelési csomag értékelése](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-package.png)
+
+-  Az értékelési jelentést az egyes értékelési problémák ellenőrzéséhez, valamint az egyes problémák részletes leírását és ajánlását is megtekintheti. Az értékelési jelentést CSV-fájlként is exportálhatja. 
+
+   ![Projekt eredményének felmérése](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assess-project-result.png)
+
+### <a name="suppress-assessment-rule"></a>Értékelési szabály mellőzése
+Ha biztos abban, hogy a csomaghoz nem alkalmaztak valamilyen értékelési szabályt, dönthet úgy, hogy letiltja azt. 
+-  Közvetlenül rákattinthat az **értékelési szabály letiltásának beállítása** az értékelési jelentésben lehetőségre.
+
+   ![Értékelési szabály letiltási beállításai](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings.png)
+
+-  Az **Azure-kompatibilis beállítások**használatával is konfigurálhatja.
+
+   ![Azure-kompatibilis beállítások](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-azure-enabled-setting.png)
+
+   ![Az értékelési szabály letiltásának beállításai az Azure-kompatibilis beállításokon keresztül](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-assessment-rule-suppression-settings-via-azure-enabled-settings.png)
 
 ## <a name="execute-ssis-packages-in-azure"></a>SSIS-csomagok végrehajtása az Azure-ban
 ### <a name="azure-enabled-setting"></a>Azure-kompatibilis beállítás
@@ -160,5 +185,8 @@ Ha az Azure-t támogató projektekkel szeretné váltani a csomag-végrehajtási
 
    ![A Visual Studio konfigurációjának váltása](media/how-to-invoke-ssis-package-ssdt/ssdt-azure-enabled-example-switch-configurations.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="current-limitations"></a>Aktuális korlátozások
+-  Ez a SSDT szolgáltatás jelenleg nem támogatja az országos felhőt.
+
+## <a name="next-steps"></a>Következő lépések
 Ha elégedett az Azure-beli csomagok az SSDT-ból való futtatásával, telepítheti és futtathatja őket az ADF-folyamatokban végrehajtható SSIS-csomag tevékenységként, lásd: [SSIS-csomagok futtatása az ADF-folyamatokban végrehajtási SSIS](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)

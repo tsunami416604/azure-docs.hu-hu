@@ -1,14 +1,14 @@
 ---
 title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch megoldás fejlesztéséhez.
-ms.date: 06/22/2020
+ms.date: 07/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a66fb383195a7de347b5e6ce83ad89fa3706e96
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954149"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497777"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -146,6 +146,10 @@ A címtár-összekapcsolásokat, más néven a címtárbeli rögzített hivatkoz
 ### <a name="collect-the-batch-agent-logs"></a>A Batch-ügynök naplóinak összegyűjtése
 
 Ha egy csomóponton futó csomópont vagy feladatok viselkedésével kapcsolatos problémát tapasztal, gyűjtsön a Batch-ügynök naplóit a szóban forgó csomópontok felszabadítása előtt. A Batch-ügynök naplóit a Batch szolgáltatás naplófájljainak API-jával töltheti össze. Ezek a naplók a Microsoft támogatási jegyének részeként is megadhatók, és segítenek a hibaelhárításban és a megoldásban.
+
+### <a name="manage-os-upgrades"></a>Operációs rendszer frissítéseinek kezelése
+
+A felhasználói előfizetés módú batch-fiókok esetében az automatikus operációsrendszer-frissítések megszakítják a feladat előrehaladását, különösen akkor, ha a feladatok hosszú ideig futnak. A [idempotens feladatok kiépítése](#build-durable-tasks) segíthet a megszakítások által okozott hibák csökkentésében. Javasoljuk továbbá [, hogy az operációs rendszer rendszerképének frissítéseit olyan időpontokra ütemezze, amikor a feladatok nem várhatóan futnak](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades).
 
 ## <a name="isolation-security"></a>Elkülönítés biztonsága
 

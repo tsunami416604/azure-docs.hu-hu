@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: aa8f5fa9901055957c5c94923ebd74c3d57ce41a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 302a0361c19d247b6da4abd516d3a5df8dfd10c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481782"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86494666"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics virtuális gépi bővítmény Windowshoz
 
@@ -91,14 +91,14 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
 | apiVersion | 2015-06-15 |
 | közzétevő | Microsoft. EnterpriseCloud. monitoring |
 | típus | MicrosoftMonitoringAgent |
-| typeHandlerVersion | 1.0 |
+| typeHandlerVersion | 1,0 |
 | Munkaterület azonosítója (például) * | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
 
 \*A munkaterület azonosítója neve consumerId a Log Analytics API-ban.
 
 > [!NOTE]
-> További tulajdonságok: Azure [-beli Windows-számítógépek Összekapcsolásának Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
+> További tulajdonságok: Azure [-beli Windows-számítógépek Összekapcsolásának Azure monitor](../../azure-monitor/platform/agent-windows.md).
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 

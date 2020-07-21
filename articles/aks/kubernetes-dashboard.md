@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 1754e166cd5c5a3d7309bc8c6f6459cdd0852396
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69e60c3e4ac91a5d0ca9a0245dc61f090c625c60
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762904"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499865"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>A Kubernetes web Dashboard elérése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -28,7 +28,7 @@ A Kubernetes-irányítópulttal kapcsolatos további információkért lásd: [K
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A dokumentumban részletezett lépések feltételezik, hogy létrehozott egy AK-fürtöt, és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Ha AK-fürtöt kell létrehoznia, tekintse meg az [AK][aks-quickstart]gyors üzembe helyezését ismertető témakört.
+A dokumentumban részletezett lépések feltételezik, hogy létrehozott egy AK-fürtöt, és létesítettek egy, `kubectl` a fürttel létesített kapcsolatokat. Ha AK-fürtöt kell létrehoznia, tekintse meg a rövid útmutató [: Azure Kubernetes Service-fürt üzembe helyezése az Azure CLI használatával][aks-quickstart]című témakört.
 
 Szüksége lesz az Azure CLI-es vagy újabb verziójára is, amely telepítve van és konfigurálva van. A verzió azonosításához futtassa a következőt:  `az --version` . Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
@@ -190,7 +190,7 @@ Néhány percet vesz igénybe, hogy az új hüvelyek létre legyenek hozva egy r
 
 ![A replikakészlet információinak megtekintése](./media/kubernetes-dashboard/view-replica-set.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Kubernetes-irányítópulttal kapcsolatos további információkért tekintse meg a [Kubernetes webes felhasználói felületének irányítópultját][kubernetes-dashboard].
 

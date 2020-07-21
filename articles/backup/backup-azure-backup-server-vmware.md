@@ -3,12 +3,12 @@ title: VMware virtuális gépek biztonsági mentése a Azure Backup Server
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup Servert a VMware vCenter/ESXi-kiszolgálón futó VMware virtuális gépek biztonsági mentésére.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: fed088a9c5eea461f93c844dcb0eead74761237e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c9868012698fcdf5a2352c289de85261b6899dc3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081060"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86497913"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
 
@@ -24,7 +24,7 @@ Ez a cikk a következőket ismerteti:
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- Győződjön meg arról, hogy a vCenter/ESXi olyan verzióját futtatja, amely támogatja a biztonsági mentést. Tekintse meg a támogatási mátrixot [itt](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix).
+- Győződjön meg arról, hogy a vCenter/ESXi olyan verzióját futtatja, amely támogatja a biztonsági mentést. Tekintse meg a támogatási mátrixot [itt](./backup-mabs-protection-matrix.md).
 - Győződjön meg arról, hogy beállította Azure Backup Server. Ha még nem tette meg, a Kezdés előtt [végezze el a](backup-azure-microsoft-azure-backup.md) következőt:. A legújabb frissítésekkel Azure Backup Servert kell futtatnia.
 - Győződjön meg arról, hogy a következő hálózati portok nyitva vannak:
   - MABS és vCenter közötti TCP 443
@@ -41,7 +41,7 @@ Alapértelmezés szerint a Azure Backup Server HTTPS-kapcsolaton keresztül komm
 - Fontos megérteni, hogyan kezeli a Azure Backup Server a biztonsági mentéseket.
   - Első lépésként Azure Backup Server az adatbiztonsági mentést a helyi lemezes tárhelyre. Azure Backup Server egy tárolót használ, amely lemezeket és köteteket tartalmaz, amelyeken Azure Backup Server tárolja a lemez helyreállítási pontjait a védett adatbázisokhoz. A Storage-készlet lehet közvetlenül csatlakoztatott tároló (DAS), Fibre Channel SAN vagy iSCSI tárolóeszköz vagy SAN. Fontos, hogy elegendő tárterületet biztosítson a VMware VM-adatai helyi biztonsági mentéséhez.
   - Azure Backup Server ezután biztonsági másolatot készít a helyi lemezes tárterületről az Azure-ba.
-  - [Segítséget kaphat](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need) a szükséges tárhely mennyiségének meghatározásához. Az információ a DPM, de Azure Backup Server is használható.
+  - [Segítséget kaphat](/system-center/dpm/create-dpm-protection-groups#figure-out-how-much-storage-space-you-need) a szükséges tárhely mennyiségének meghatározásához. Az információ a DPM, de Azure Backup Server is használható.
 
 ### <a name="set-up-the-certificate"></a>A tanúsítvány beállítása
 
@@ -539,6 +539,6 @@ A lemez kizárásból való eltávolításához futtassa a következő parancsot
 C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Remove "[datastore1] TestVM4/TestVM4\_1.vmdk"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A biztonsági másolatok beállítása során felmerülő problémák elhárításához tekintse át a [Azure Backup Server hibaelhárítási útmutatóját](./backup-azure-mabs-troubleshoot.md).

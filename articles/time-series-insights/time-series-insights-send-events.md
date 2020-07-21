@@ -5,19 +5,20 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: dd7a74ff775e6e07d1c32ed198ff028765fce45d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 589dd411e3d340eb8a0bf84b21a306cabd4bb362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037290"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86495074"
 ---
-# <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Események küldése egy Time Series Insights-környezetbe az Event hub használatával
+# <a name="send-events-to-a-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Események küldése egy Azure Time Series Insights Gen1-környezetbe az Event hub használatával
 
 Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az Azure Event Hubsban. Azt is leírja, hogyan futtathat egy minta alkalmazást, hogy leküldéses eseményeket Azure Time Series Insights a Event Hubsról. Ha van egy meglévő Event hub JSON formátumú eseményekkel, ugorja át ezt az oktatóanyagot, és tekintse meg a környezetét [Azure Time Series Insightsban](./time-series-insights-update-create-environment.md).
 
@@ -37,10 +38,10 @@ Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az 
 
     [![Fogyasztói csoport létrehozása](media/send-events/add-event-hub-consumer-group.png)](media/send-events/add-event-hub-consumer-group.png#lightbox)
 
-1. Győződjön meg arról, hogy olyan fogyasztói csoportot hoz létre, amelyet kizárólag a Time Series Insights-eseményforrás használ.
+1. Győződjön meg arról, hogy olyan fogyasztói csoportot hoz létre, amelyet kizárólag a Azure Time Series Insights-eseményforrás használ.
 
     > [!IMPORTANT]
-    > Győződjön meg arról, hogy a fogyasztói csoportot nem használja más szolgáltatás, például Azure Stream Analytics vagy más Time Series Insights-környezet. Ha a fogyasztói csoportot más szolgáltatások használják, az olvasási műveletek negatív hatással vannak erre a környezetre és más szolgáltatásokra. Ha a **$Defaultt** használja fogyasztói csoportként, a többi olvasó esetleg újra felhasználhatja a fogyasztói csoportot.
+    > Győződjön meg arról, hogy a fogyasztói csoportot nem használja más szolgáltatás, például Azure Stream Analytics vagy más Azure Time Series Insights-környezet. Ha a fogyasztói csoportot más szolgáltatások használják, az olvasási műveletek negatív hatással vannak erre a környezetre és más szolgáltatásokra. Ha a **$Defaultt** használja fogyasztói csoportként, a többi olvasó esetleg újra felhasználhatja a fogyasztói csoportot.
 
 1. A menü **Beállítások**területén válassza a **megosztott elérési házirendek**elemet, majd kattintson a **Hozzáadás**gombra.
 
@@ -52,11 +53,11 @@ Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az 
 
 1. A **jogcím**területen jelölje be a **Küldés** jelölőnégyzetet.
 
-## <a name="add-a-time-series-insights-instance"></a>Time Series Insights példány hozzáadása
+## <a name="add-an-azure-time-series-insights-instance"></a>Azure Time Series Insights-példány hozzáadása
 
-A Time Series Insights-frissítés példányokkal adja hozzá a környezetfüggő adatbevitelt a bejövő telemetria-adatértékekhez. Az adatai egy **Idősorozat-azonosító**használatával csatlakoznak a lekérdezési időponthoz. A jelen cikk későbbi részében használt minta szélmalmok projekt **idősorozat-azonosítója** `id` . Ha többet szeretne megtudni a Time Series Insight instances és az **idősorozat-azonosítóról**, olvassa el a [Time Series-modelleket](./concepts-model-overview.md).
+A 2. Azure Time Series Insights-ben az idősorozat-modell (TSM) használatával felveheti a kontextusbeli adataikat a bejövő telemetria. A TSM-ben a címkék vagy a jelek a példányok *,* és a kontextusban tárolt adat is tárolható *.* Az adatai egy **Idősorozat-azonosító**használatával csatlakoznak a lekérdezési időponthoz. A jelen cikk későbbi részében használt minta szélmalmok projekt **idősorozat-azonosítója** `id` . Ha többet szeretne megtudni az adattárolásról a példány mezőiben, olvassa el az [Idősorozat-modell](./concepts-model-overview.md) áttekintését.
 
-### <a name="create-a-time-series-insights-event-source"></a>Time Series Insights eseményforrás létrehozása
+### <a name="create-a-azure-time-series-insights-event-source"></a>Azure Time Series Insights eseményforrás létrehozása
 
 1. Ha még nem hozott létre egy eseményforrás, hajtsa végre az [eseményforrás létrehozásához](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)szükséges lépéseket.
 
@@ -80,7 +81,7 @@ A Time Series Insights-frissítés példányokkal adja hozzá a környezetfügg�
 1. Válassza **a Start gombra**. 
 
     > [!TIP]
-    > A szélmalom-szimulátor emellett olyan JSON-t is létrehoz, amelyet hasznos adattartalomként használhat a [Time Series INSIGHTS GA lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)-kkal.
+    > A szélmalom-szimulátor emellett olyan JSON-t is létrehoz, amelyet hasznos adattartalomként használhat a [Azure Time Series INSIGHTS GA lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)-kkal.
 
     > [!NOTE]
     > A szimulátor továbbra is küldi az adatküldést, amíg be nem zárul a böngésző lapja.
@@ -197,11 +198,11 @@ A Time Series Insights-frissítés példányokkal adja hozzá a környezetfügg�
 
     |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
     |---|---|---|---|---|---|---|---|
-    |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
+    |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|nyomás|psi|108.09|
     |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Tekintse meg a környezetet](https://insights.timeseries.azure.com) a Time Series Insights Explorerben.
+- [Tekintse meg a környezetet](https://insights.timeseries.azure.com) a Azure Time Series Insights Explorerben.
 
 - További információ a [IoT hub eszköz üzeneteiről](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)

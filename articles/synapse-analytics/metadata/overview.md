@@ -1,5 +1,5 @@
 ---
-title: Az Azure szinapszis Analytics megosztott metaadat-modellje
+title: Megosztott metaadat-modell
 description: Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok adatbázisokat és táblákat osszanak meg a Spark-készletek (előzetes verzió), az SQL igény szerinti motorja (előzetes verzió) és az SQL-készletek között.
 services: synapse-analytics
 author: MikeRys
@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 26a65aef0d7524bf73c6dc2981bd71539e59ed76
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: c41c3346d04dd1fc00a7ddb9e7fea66f619995e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080152"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86496054"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure szinapszis Analytics megosztott metaadatok
 
@@ -54,7 +54,7 @@ További információ: az [Azure szinapszis Analytics megosztott adatbázisa](da
 
 Ha egy metaadat-objektumot törölnek vagy módosítanak a Sparktal, a rendszer átveszi a módosításokat, és propagálja azokat az SQL igény szerinti motorján. A szinkronizálás aszinkron módon történik, és a módosítások rövid késleltetés után az SQL-motorban is megjelennek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ az Azure szinapszis Analytics megosztott metaadat-adatbázisairól](database.md)
 - [További információ az Azure szinapszis Analytics megosztott metaadatait tartalmazó tábláiról](table.md)

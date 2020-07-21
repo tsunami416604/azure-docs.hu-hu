@@ -6,15 +6,16 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: tracking-python
-ms.openlocfilehash: d12db3ab046d115b60b67a9c22bf4e885cd0ef02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e99ea1d5a90455a4c470346fbbe5d1095c426e81
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782568"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86499460"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Függőségek követése a OpenCensus Pythonban
 
-A függőség egy külső összetevő, amelyet az alkalmazás meghív. A függőségi adatok gyűjtése a OpenCensus Python és annak különböző integrációi használatával történik. Ezután a rendszer elküldi az adat Application Insights Azure Monitor alatt `dependencies` telemetria.
+A függőségek az alkalmazás által hívott külső összetevők. A függőségi adatok gyűjtése a OpenCensus Python és annak különböző integrációi használatával történik. Ezután a rendszer elküldi az adat Application Insights Azure Monitor alatt `dependencies` telemetria.
 
 Először is a Python-alkalmazást a legújabb [OpenCensus PYTHON SDK](../../azure-monitor/app/opencensus-python.md)-val alakíthatja ki.
 
@@ -85,7 +86,7 @@ conn.close()
 A kimenő Django-kérelmek nyomon követése a OpenCensus- `django` integrációval.
 
 > [!NOTE]
-> Az egyetlen követett kimenő Django-kérelem egy adatbázisra irányuló hívás. A Django alkalmazásra irányuló kérelmekért lásd: [bejövő kérelmek](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request#tracking-django-applications).
+> Az egyetlen követett kimenő Django-kérelem egy adatbázisra irányuló hívás. A Django alkalmazásra irányuló kérelmekért lásd: [bejövő kérelmek](./opencensus-python-request.md#tracking-django-applications).
 
 Töltse le és telepítse a `opencensus-ext-django` [PyPI](https://pypi.org/project/opencensus-ext-django/) -ból, és adja hozzá a következő sort a `MIDDLEWARE` Django fájl szakaszához `settings.py` .
 
@@ -167,7 +168,7 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['sqlalchemy'])
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazástérkép](../../azure-monitor/app/app-map.md)
 * [Rendelkezésre állás](../../azure-monitor/app/monitor-web-app-availability.md)

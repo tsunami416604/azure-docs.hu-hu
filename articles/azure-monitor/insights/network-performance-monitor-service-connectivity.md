@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 93f3820b7cf1db85b9ff4cd514fe22efc75a90d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ba93db3e692a34de42849b469978cea4459c6fc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84690014"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86498865"
 ---
 # <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
 
@@ -56,7 +57,7 @@ Kezdje el a tesztek létrehozását a szolgáltatási végpontokhoz való háló
 
     * Válassza a **web** lehetőséget egy olyan szolgáltatáshoz való kapcsolódás figyelésére, amely válaszol a http/S kérelmekre, például outlook.office365.com vagy Bing.com.<br>
     * Válassza a **hálózat** lehetőséget a TCP-kérelmekre válaszoló szolgáltatáshoz való kapcsolódás figyeléséhez, de nem válaszol a http/S kérelmekre, például az SQL Serverre, az FTP-kiszolgálóra vagy az SSH-portra. 
-    * Például: webteszt létrehozása blob Storage-fiókba válassza a **web** lehetőséget, és adja meg a TARGET értéket *yourstorageaccount*. blob.Core.Windows.net néven. Hasonlóképpen létrehozhat teszteket más Table Storage-hoz, üzenetsor-tároláshoz és Azure Files [a hivatkozás használatával.](https://docs.microsoft.com/azure/storage/common/storage-account-overview#storage-account-endpoints)
+    * Például: webteszt létrehozása blob Storage-fiókba válassza a **web** lehetőséget, és adja meg a TARGET értéket *yourstorageaccount*. blob.Core.Windows.net néven. Hasonlóképpen létrehozhat teszteket más Table Storage-hoz, üzenetsor-tároláshoz és Azure Files [a hivatkozás használatával.](../../storage/common/storage-account-overview.md#storage-account-endpoints)
 4. Ha nem szeretne hálózati méréseket végrehajtani, például a hálózati késést, a csomagok elvesztését és a topológia felderítését, törölje a jelet a **hálózati mérések végrehajtása** jelölőnégyzetből. Hagyja kiválasztva, hogy a képességből maximális előnyt kapjon. 
 5. A **cél**mezőben adja meg azt az URL/FQDN/IP-címet, amelyre figyelni szeretné a hálózati kapcsolatot.
 6. A **portszám**mezőben adja meg a cél szolgáltatás portszámát. 
@@ -131,5 +132,5 @@ Az USA-beli kormányzati Virginia régió esetében csak a DOD URL-címek beép�
 | Exchange Online | * outlook.office365.us <br> * attachments.office365-net.us <br> * autodiscover-s.office365.us <br> * manage.office365.us <br> * scc.office365.us |
 | MS-csapatok | gov.teams.microsoft.us | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Keresési naplók](../../azure-monitor/log-query/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.
