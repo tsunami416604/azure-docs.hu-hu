@@ -3,11 +3,12 @@ title: Azure Service Bus üzenet-munkamenetek | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan használhatók a munkamenetek a kapcsolódó üzenetek nem kötött sorrendjének közös és rendezett kezelésének engedélyezéséhez.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c1b714df1df7e2c3ba39c63581dc3c40a2ff9d1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341185"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511296"
 ---
 # <a name="message-sessions"></a>Üzenet-munkamenetek
 Microsoft Azure Service Bus-munkamenetek lehetővé teszik a kapcsolódó üzenetek nem kötött sorrendjének együttes és rendezett kezelését. A munkamenetek a-ben **, az elsőben (FIFO)** és a **kérés-válasz** mintákban is használhatók. Ez a cikk bemutatja, hogyan használhatja a munkameneteket ezen minták megvalósításához Service Bus használatakor. 
@@ -30,7 +31,7 @@ A Service Bus munkamenet-funkciója lehetővé teszi egy adott fogadási művele
 
 A portálon állítsa be a jelzőt a következő jelölőnégyzet bejelölésével:
 
-![][2]
+![A várólista létrehozása párbeszédpanel képernyőképe, amelyen a munkamenetek engedélyezése beállítás be van jelölve, és piros színnel van ellátva.][2]
 
 > [!NOTE]
 > Ha a munkamenetek engedélyezve vannak egy várólistán vagy előfizetésen, az ügyfélalkalmazások ***többé nem*** küldhetnek és fogadhatnak rendszeres üzeneteket. Az összes üzenetet el kell juttatni egy munkamenet részeként (a munkamenet-azonosító beállításával), és fogadni kell a munkamenetet.
@@ -41,7 +42,7 @@ A munkamenetek API-jai léteznek a várólista-és előfizetési ügyfeleken. Va
 
 A munkamenetek egyidejű, egymással párhuzamosan megjelenő üzeneteket biztosítanak a megrendelt kézbesítés megőrzése és garantálása mellett.
 
-![][1]
+![Egy diagram, amely azt mutatja, hogy a munkamenetek szolgáltatás hogyan őrzi meg a rendezett kézbesítést.][1]
 
 A munkamenetet elfogadó ügyfél létrehoz egy [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -fogadót. Az ügyfél a C# nyelvben hívja meg a [QueueClient. AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) vagy a [QueueClient. AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) . A reaktív visszahívási modellben regisztrál egy munkamenet-kezelőt.
 
@@ -77,8 +78,8 @@ Az üzenetek kézbesítési számának a munkamenetek kontextusában való megha
 
 | Forgatókönyv | Az üzenet kézbesítési száma nő |
 |----------|---------------------------------------------|
-| A munkamenet el van fogadva, de a munkamenet zárolása lejár (időtúllépés miatt) | Yes |
-| A munkamenet elfogadása megtörtént, a munkamenetben lévő üzenetek nem lesznek végrehajtva (még akkor is, ha zárolva vannak), és a munkamenet be van zárva. | No |
+| A munkamenet el van fogadva, de a munkamenet zárolása lejár (időtúllépés miatt) | Igen |
+| A munkamenet elfogadása megtörtént, a munkamenetben lévő üzenetek nem lesznek végrehajtva (még akkor is, ha zárolva vannak), és a munkamenet be van zárva. | Nem |
 | A munkamenet elfogadva, az üzenetek befejeződtek, majd a munkamenet explicit módon be van zárva | N/A (ez a standard folyamat. Itt az üzenetek el lesznek távolítva a munkamenetből) |
 
 ## <a name="request-response-pattern"></a>Kérelem – válasz minta
@@ -89,7 +90,7 @@ Több alkalmazás is elküldheti kérelmeit egyetlen kérelem-várólistába, eg
 > [!NOTE]
 > A kezdeti kérelmeket küldő alkalmazásnak ismernie kell a munkamenet-azonosítót, és `SessionClient.AcceptMessageSession(SessionID)` a használatával zárolhatja azt a munkamenetet, amelyen a válasz várható. Érdemes olyan GUID-t használni, amely egyedileg azonosítja az alkalmazás példányát munkamenet-azonosítóként. Nem lehet munkamenet-kezelő vagy a `AcceptMessageSession(timeout)` várólistán annak biztosítása érdekében, hogy a válaszok az adott fogadók számára legyenek zárolva és feldolgozva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [Microsoft. Azure. ServiceBus Samples](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) vagy a [Microsoft. ServiceBus. Messaging példákat](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) egy olyan példához, amely a .NET-keretrendszer ügyfelet használja a munkamenet-kompatibilis üzenetek kezelésére. 
 

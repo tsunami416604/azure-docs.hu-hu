@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: container-registry
 author: dlepow
 ms.service: container-registry
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 643cf8fd400adf06bf61f070947bd78ba7be50eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f68ca0fc577e6cf3f896ede0418f11f59756701
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242071"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512613"
 ---
 | Erőforrás | Alapszintű | Standard | Prémium |
 |---|---|---|---|
@@ -25,15 +25,16 @@ ms.locfileid: "85242071"
 | Sávszélesség letöltése MBps<sup>2</sup> | 30 | 60 | 100 |
 | Feltöltési sávszélesség (MBps)<sup>2</sup> | 10 | 20 | 50 |
 | Webhookok | 2 | 10 | 500 |
-| Georeplikáció | N.A. | N.A. | [Támogatott][geo-replication] |
-| Tartalommegbízhatóság | N.A. | N.A. | [Támogatott][content-trust] |
-| Privát kapcsolat privát végpontokkal | N.A. | N.A. | [Támogatott][plink] |
-| Szolgáltatási végpont VNet elérése | N.A. | N.A. | [Előnézet][vnet] |
-| Felhasználó által kezelt kulcsok | N.A. | N.A. | [Támogatott][cmk] |
-| Tárház – hatókörön belüli engedélyek | N.A. | N.A. | [Előnézet][token]|
-| &bull;Tokenek | N.A. | N.A. | 20000 |
-| &bull;Hatóköri térképek | N.A. | N.A. | 20000 |
-| &bull;Adattárak/hatókör-leképezés | N.A. | N.A. | 500 |
+| Georeplikáció | n.a. | n.a. | [Támogatott][geo-replication] |
+| Tartalommegbízhatóság | n.a. | n.a. | [Támogatott][content-trust] |
+| Privát kapcsolat privát végpontokkal | n.a. | n.a. | [Támogatott][plink] |
+| &bull;Privát végpontok | n.a. | n.a. | 10 |
+| Szolgáltatási végpont VNet elérése | n.a. | n.a. | [Előnézet][vnet] |
+| Felhasználó által kezelt kulcsok | n.a. | n.a. | [Támogatott][cmk] |
+| Tárház – hatókörön belüli engedélyek | n.a. | n.a. | [Előnézet][token]|
+| &bull;Tokenek | n.a. | n.a. | 20 000 |
+| &bull;Hatóköri térképek | n.a. | n.a. | 20 000 |
+| &bull;Adattárak/hatókör-leképezés | n.a. | n.a. | 500 |
 
 
 <sup>1</sup> tárterület az egyes szintek napi díja. A további tárterületért a napi rendszerességgel, a maximális tárolási korlátig érvényes díjat számítunk fel. A díjszabással kapcsolatos információkért lásd: [Azure Container Registry díjszabása][pricing].

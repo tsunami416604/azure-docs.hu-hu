@@ -1,18 +1,18 @@
 ---
-title: Fájlok és mappák biztonsági mentése – gyakori kérdések
+title: Microsoft Azure Recovery Services (MARS) ügynök – gyakori kérdések
 description: A fájlok és mappák Azure Backupsal történő biztonsági mentésével kapcsolatos gyakori kérdéseket tárgyalja.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 0ecff00fdfaf9b0ca494cd1c78d0a5e16b198995
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056174"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514067"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>Fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdések
+# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Gyakori kérdések – Microsoft Azure Recovery Services (MARS) ügynök
 
-Ez a cikk a [Azure Backup](backup-overview.md) szolgáltatásban található Microsoft Azure Recovery Services-(MARS-) ügynökkel a fájlok és mappák biztonsági mentésével kapcsolatos gyakori kérdésekre ad választ.
+Ez a cikk a [Azure Backup](backup-overview.md) szolgáltatás Microsoft Azure Recovery Services (MARS) ügynökével kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="configure-backups"></a>Biztonsági mentések konfigurálása
 
@@ -70,15 +70,15 @@ Windows rendszerű gép átnevezése esetén az összes jelenleg konfigurált bi
 
 * Regisztrálnia kell az új gép nevét a Backup-tárolóban.
 * Amikor regisztrálja az új nevet a tárolóban, az első művelet egy *teljes* biztonsági mentés.
-* Ha a régi kiszolgálónévvel a tárolóba mentett adatokat kell helyreállítani, akkor a visszaállítás másik helyre lehetőségre kell kattintania az adatok helyreállítása varázslóban. [További információk](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
+* Ha a régi kiszolgálónévvel a tárolóba mentett adatokat kell helyreállítani, akkor a visszaállítás másik helyre lehetőségre kell kattintania az adatok helyreállítása varázslóban. [További információ](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 
 ### <a name="what-is-the-maximum-file-path-length-for-backup"></a>Mi a fájl elérési útjának maximális hossza a biztonsági mentéshez?
 
-A MARS-ügynök NTFS-re támaszkodik, és a [Windows API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths)által korlátozott filepath-hossz-specifikációt használ. Ha a védelemmel ellátni kívánt fájlok hosszabbak az engedélyezett értéknél, biztonsági mentést készíthet a szülőmappa vagy a lemezmeghajtóról.  
+A MARS-ügynök NTFS-re támaszkodik, és a [Windows API](/windows/win32/FileIO/naming-a-file#fully-qualified-vs-relative-paths)által korlátozott filepath-hossz-specifikációt használ. Ha a védelemmel ellátni kívánt fájlok hosszabbak az engedélyezett értéknél, biztonsági mentést készíthet a szülőmappa vagy a lemezmeghajtóról.  
 
 ### <a name="what-characters-are-allowed-in-file-paths"></a>Milyen karakterek engedélyezettek a fájlelérési utakban?
 
-A MARS-ügynök NTFS-re támaszkodik, és lehetővé teszi a [támogatott karakterek](/windows/desktop/FileIO/naming-a-file#naming-conventions) használatát a fájlnevekben/elérési utakban.
+A MARS-ügynök NTFS-re támaszkodik, és lehetővé teszi a [támogatott karakterek](/windows/win32/FileIO/naming-a-file#naming-conventions) használatát a fájlnevekben/elérési utakban.
 
 ### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>Megjelenik az "Azure Backups nincsenek konfigurálva ehhez a kiszolgálóhoz" figyelmeztetés
 
@@ -91,11 +91,11 @@ Ez a figyelmeztetés akkor is megjelenhet, ha a biztonsági mentési szabályzat
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder"></a>Mi a gyorsítótármappa minimális méretkövetelménye?
 
-A gyorsítótármappa mérete határozza meg azt az adatmennyiséget, amelyről biztonsági másolatot készít.
+A gyorsítótár mappájának mérete határozza meg a biztonsági mentéshez használt adatmennyiséget.
 
 * A gyorsítótár-mappák köteteinek szabad területtel kell rendelkezniük, amely a biztonsági másolatok teljes méretének legalább 5-10%-ával egyenlő.
 * Ha a kötet kevesebb, mint 5% szabad területtel rendelkezik, növelje a kötet méretét, vagy helyezze át a gyorsítótár mappát egy olyan kötetre, amely elegendő hellyel rendelkezik a következő [lépések végrehajtásával](#how-do-i-change-the-cache-location-for-the-mars-agent).
-* A Windows rendszerállapotának biztonsági mentése esetén további 30-35 GB szabad terület szükséges a gyorsítótár mappát tartalmazó köteten.
+* Ha biztonsági mentést készít a Windows rendszer állapotáról, további 30-35 GB szabad területre lesz szüksége a gyorsítótár mappát tartalmazó köteten.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Hogyan ellenőrizhető, hogy a kaparós mappa érvényes és elérhető-e?
 
@@ -141,7 +141,7 @@ A gyorsítótár mappájának következő helyei nem ajánlottak:
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>Vannak olyan attribútumok, amelyek nem támogatottak a gyorsítótár mappájában?
 
-A következő attribútumok vagy kombinációik nem támogatottak a gyorsítótármappa számára:
+A következő attribútumok vagy azok kombinációi nem támogatottak a gyorsítótár mappájában:
 
 * Titkosított
 * Deduplikált
@@ -153,7 +153,7 @@ A gyorsítótár mappája és a metaadatok virtuális merevlemeze nem rendelkezi
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Be lehet állítani a biztonsági mentéshez használt sávszélesség mennyiségét?
 
-Igen, a MARS-ügynök **Tulajdonságok módosítása** beállításával állíthatja be a sávszélességet és az időzítést. [További információk](backup-windows-with-mars-agent.md#enable-network-throttling).
+Igen, a MARS-ügynök **Tulajdonságok módosítása** beállításával állíthatja be a sávszélességet és az időzítést. [További információ](backup-windows-with-mars-agent.md#enable-network-throttling).
 
 ## <a name="restore"></a>Visszaállítás
 
@@ -165,17 +165,17 @@ A Azure Backup ügynöknek szüksége van egy jelszóra (amelyet a regisztráci�
 
 | Eredeti gép <br> *(forrásoldali gép, ahol a biztonsági másolatok készültek)* | Jelszót | Elérhető beállítások |
 | --- | --- | --- |
-| Elérhető |Elveszett |Ha az eredeti gép (ahol a biztonsági másolatok készültek) elérhető, és továbbra is ugyanazon a Recovery Services-tárolóban van regisztrálva, akkor a következő [lépésekkel](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)újból létrehozhatja a jelszót.  |
+| Elérhető |Elveszett |Ha az eredeti gép (ahol a biztonsági másolatok készültek) elérhető, és továbbra is ugyanazon a Recovery Services-tárolóban van regisztrálva, akkor a következő [lépésekkel](./backup-azure-manage-mars.md#re-generate-passphrase)újból létrehozhatja a jelszót.  |
 | Elveszett |Elveszett |Nem lehet helyreállítani az adatokat, vagy az adatok nem érhetők el |
 
 Vegye figyelembe a következő feltételeket:
 
-* Ha eltávolítja és újra regisztrálja az ügynököt ugyanarra az eredeti gépre,
-  * *Ugyanez a jelszó*, akkor a biztonsági másolatok adatait is visszaállíthatja.
-  * *Más jelszó*, nem fogja tudni visszaállítani a mentett adatait.
+* Ha eltávolítja és újra regisztrálja az ügynököt ugyanarra az eredeti gépre, mint te
+  * *Ugyanez a jelszó*, akkor visszaállíthatja a biztonsági másolatok adatait.
+  * *Más jelszó*, nem állíthatja vissza a biztonsági másolatban tárolt adatait.
 * Ha az ügynököt egy *másik gépre* telepíti, amelyen a
-  * *Ugyanaz a jelszó* (amelyet az eredeti gépen használ), majd visszaállíthatja a biztonsági másolatok adatait.
-  * *Különböző hozzáférési kód*, nem fogja tudni visszaállítani a mentett adatait.
+  * *Ugyanaz a jelszó* (amelyet az eredeti gépen használ), akkor visszaállíthatja a biztonsági másolatok adatait.
+  * *Különböző hozzáférési kód*, nem állíthatja vissza a biztonsági másolatok adatait.
 * Ha az eredeti gép sérült (megakadályozza a jelszó újragenerálását a MARS-konzolon keresztül), de visszaállíthatja vagy elérheti a MARS-ügynök által használt eredeti mappát, akkor előfordulhat, hogy vissza tudja állítani (Ha elfelejtette a jelszót). További segítségért forduljon az ügyfélszolgálathoz.
 
 #### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>Hogyan a helyreállítást, ha elvesztettem az eredeti gépet (a biztonsági mentések során)?
@@ -184,7 +184,7 @@ Ha ugyanazzal a jelszóval rendelkezik (amelyet a regisztráció során megadott
 
 | Eredeti gép | Jelszót | Elérhető beállítások |
 | --- | --- | --- |
-| Elveszett |Elérhető |A MARS-ügynököt telepítheti és regisztrálhatja egy másik gépen ugyanazzal a jelszóval, amelyet az eredeti gép regisztrálása során adott meg. **Recovery Option**  >  A visszaállítás végrehajtásához válasszon**másik helyet** a helyreállítási lehetőség számára. További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Elveszett |Elérhető |A MARS-ügynököt telepítheti és regisztrálhatja egy másik gépen ugyanazzal a jelszóval, amelyet az eredeti gép regisztrálása során adott meg. **Recovery Option**  >  A visszaállítás végrehajtásához válasszon**másik helyet** a helyreállítási lehetőség számára. További információkért tekintse meg [ezt a cikket](./backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Elveszett |Elveszett |Nem lehet helyreállítani az adatokat, vagy az adatok nem érhetők el |
 
 ### <a name="my-backup-jobs-have-been-failing-or-not-running-for-a-long-time-im-past-the-retention-period-can-i-still-restore"></a>A biztonsági mentési feladatok végrehajtása sikertelen volt, vagy hosszú ideje nem fut. Megtartom a megőrzési időszakot. Továbbra is visszaállíthatók?
@@ -201,6 +201,6 @@ Ha egy folyamatban lévő visszaállítási feladat meg lett szakítva, a vissza
 * A kötet-visszaállítás helyreállítási lehetőségnél a MARS-ügynök lehetőséget biztosít az ACL-engedélyek visszaállítására a helyreállított fájlra vagy mappára vonatkozóan.
 * Az egyes fájlok és mappák helyreállítási lehetőség esetén a MARS-ügynök ACL-engedélyekkel lesz visszaállítva (nincs lehetőség az ACL-visszaállítás kihagyására).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók](tutorial-backup-windows-server-to-azure.md) a Windows rendszerű gépek biztonsági mentéséről.

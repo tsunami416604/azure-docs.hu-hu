@@ -3,12 +3,12 @@ title: AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatójában | Mi
 description: A Azure Service Bus és Event Hubs AMQP 1,0-es kifejezésekre és leírására vonatkozó protokoll-útmutató
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 79132ef7105de8de2261c35258006af3f0a665a5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186911"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511313"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatója
 
@@ -48,7 +48,7 @@ A leghitelesebb forrás, amelyből megismerheti, hogy a AMQP hogyan működik a 
 
 A AMQP meghívja a kommunikáló programok *tárolóit*; Ezek olyan *csomópontokat*tartalmaznak, amelyek a tárolóban lévő entitásokat kommunikálják. A várólista lehet egy csomópont. A AMQP lehetővé teszi a többszörös használatot, így egyetlen kapcsolat használható a csomópontok közötti számos kommunikációs útvonalhoz. egy alkalmazás-ügyfél például egyidejűleg tud fogadni egy várólistából, és ugyanazon a hálózati kapcsolaton keresztül küld egy másik várólistára.
 
-![][1]
+![A tárolók közötti munkameneteket és kapcsolatokat bemutató diagram.][1]
 
 A hálózati kapcsolat így a tárolóra van rögzítve. Az ügyfél szerepkör tárolója kezdeményezi a kimenő TCP szoftvercsatorna-kapcsolatot a fogadó szerepkör egyik tárolójában, amely figyeli és fogadja a bejövő TCP-kapcsolatokat. A kapcsolati kézfogás magában foglalja a protokoll verziószámának egyeztetését, a Transport Level Security (TLS/SSL) használatának bejelentését vagy egyeztetését, valamint egy hitelesítési/engedélyezési kézfogást a SASL alapuló kapcsolati hatókörben.
 
@@ -84,7 +84,7 @@ A .NET-ügyfelek meghiúsulnak a SocketException ("a hozzáférési engedélyeik
 
 A AMQP a hivatkozásokon keresztül továbbítja az üzeneteket. A hivatkozás egy munkameneten keresztül létrehozott kommunikációs útvonal, amely lehetővé teszi, hogy az üzeneteket az egyik irányba vigye át. az átvitel állapotának egyeztetése a kapcsolaton keresztül történik, és kétirányú a csatlakoztatott felek között.
 
-![][2]
+![Képernyőfelvétel: a munkamenet carryign két tároló közötti kapcsolati kapcsolatot mutat.][2]
 
 A hivatkozásokat a tárolók bármikor létrehozhatják egy meglévő munkamenet során, így a AMQP számos más protokolltól, például a HTTP-től és a MQTT-tól eltérő módon hozhatók létre, ahol az átvitel és az átadás útvonalának megkezdése kizárólagos jogosultságot biztosít a szoftvercsatorna-kapcsolatot létrehozó fél számára.
 
@@ -100,7 +100,7 @@ A Connecting ügyfélnek a hivatkozások létrehozásához helyi csomópont nev�
 
 A kapcsolat létrejötte után az üzenetek átvihetők a hivatkozás fölé. A AMQP az átvitelt egy explicit protokoll-kézmozdulattal (az *átvitel* performatív) hajtja végre, amely egy hivatkozáson keresztül áthelyezi az üzenetet a feladótól a fogadóba. Az átvitel akkor fejeződik be, amikor a rendszer "rendezi", ami azt jelenti, hogy mindkét fél közösen megértette az átvitel eredményét.
 
-![][3]
+![Egy diagram, amely a küldő és a fogadó közötti üzenet átvitelét, valamint az abból származó hajlamot mutatja.][3]
 
 A legegyszerűbb esetben a küldő dönthet úgy, hogy "előre rendezve" üzenetet küld, ami azt jelenti, hogy az ügyfél nem érdekli az eredmény, és a fogadó nem ad visszajelzést a művelet eredményéről. Ezt a módot a Service Bus a AMQP protokoll szintjén támogatja, de az ügyféloldali API-k egyikében sincs kitéve.
 
@@ -120,7 +120,7 @@ A lehetséges duplikált küldések kompenzálása érdekében a Service Bus tá
 
 A korábban tárgyalt munkamenet-szintű folyamat-vezérlési modellen kívül minden hivatkozás saját flow-vezérlési modellel rendelkezik. A munkamenet-szintű folyamat vezérlése megvédi a tárolót attól, hogy egyszerre túl sok képkockát kezeljen, a kapcsolati szintű flow-vezérlés pedig az alkalmazás felügyeletét, hogy hány üzenetet szeretne kezelni egy hivatkozásról és mikor.
 
-![][4]
+![A forrás, a cél, a forrásport, a célport és a protokoll nevét bemutató napló képernyőképe. A fiest sorban a 10401-as célként megadott port (0x28 A 1) feketén van.][4]
 
 Egy hivatkozáson az átvitelek csak akkor történnek, ha a küldőnek van elegendő *hivatkozása*. A link Credit a fogadó által a *flow* performatív használatával beállított számláló, amely egy hivatkozásra terjed ki. Ha a küldőhöz hivatkozás-jóváírás van hozzárendelve, az üzenetek kézbesítésével megkísérli ezt a jóváírást használni. Minden üzenet kézbesítése eggyel csökkenti a fennmaradó hivatkozás-jóváírást. A hivatkozás felhasználása után a kézbesítések leállnak.
 
@@ -222,7 +222,7 @@ Az alkalmazás által definiált összes tulajdonságot le kell képezni a AMQP 
 | --- | --- | --- |
 | üzenet-azonosító |Az üzenet alkalmazás által definiált, szabad formátumú azonosítója. Ismétlődő észleléshez használatos. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | felhasználói azonosító |Az alkalmazás által definiált felhasználói azonosító, Service Bus nem értelmezhető. |Nem érhető el a Service Bus API-n keresztül. |
-| erre: |Az alkalmazás által definiált cél-azonosító, amelyet a Service Bus nem értelmez. |[Hogy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| a következőre: |Az alkalmazás által definiált cél-azonosító, amelyet a Service Bus nem értelmez. |[Hogy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | tulajdonos |Az alkalmazás által definiált üzenet céljának azonosítója Service Bus szerint nem értelmezhető. |[Címke](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Válasz címzettje |Az alkalmazás által definiált válasz-elérésiút jelző, amelyet a Service Bus nem értelmez. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | korrelációs azonosító |Az alkalmazás által definiált korrelációs azonosító Service Bus nem értelmezhető. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -366,7 +366,7 @@ A kérelem üzenete a következő alkalmazás-tulajdonságokkal rendelkezik:
 
 A *Name (név* ) tulajdonság azonosítja azt az entitást, amelyhez a token társítva van. Service Bus a várólista elérési útja, vagy témakör/előfizetés. A *Type* tulajdonság azonosítja a jogkivonat típusát:
 
-| Jogkivonat típusa | Jogkivonat leírása | Törzs típusa | Megjegyzések |
+| Jogkivonat típusa | Jogkivonat leírása | Törzs típusa | Jegyzetek |
 | --- | --- | --- | --- |
 | amqp: JWT |JSON Web Token (JWT) |AMQP érték (karakterlánc) |Még nem érhető el. |
 | amqp: SWT |Egyszerű webes jogkivonat (SWT) |AMQP érték (karakterlánc) |Csak a HRE/ACS által kiállított SWT-tokenek esetében támogatott |
@@ -404,7 +404,7 @@ Ezzel a funkcióval létre kell hoznia egy küldőt, és létre kell hoznia a hi
 | csatolja<br/>név = {hivatkozás neve},<br/>szerepkör = feladó,<br/>forrás = {ügyfél-hivatkozási azonosító},<br/>Target =**{on-Entity}**,<br/>**Properties = Térkép [( <br/> com. Microsoft: átvitel-cél-címe = <br/> {cél-entitás})]** ) | ------> | |
 | | <------ | csatolja<br/>név = {hivatkozás neve},<br/>szerepkör = fogadó,<br/>forrás = {ügyfél-hivatkozási azonosító},<br/>Target = {on-Entity},<br/>tulajdonságok = Térkép [(<br/>com. Microsoft: átvitel-cél-címe =<br/>{cél-entitás})] ) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A AMQP kapcsolatos további információkért tekintse meg a következő hivatkozásokat:
 

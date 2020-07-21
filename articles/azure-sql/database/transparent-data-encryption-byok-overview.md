@@ -12,14 +12,14 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 32347f6d943565eeca7c37a9cdd2cf511e39ddb3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985309"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514721"
 ---
-# <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által felügyelt kulccsal
+# <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által kezelt kulccsal
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Az ügyfél által felügyelt kulccsal rendelkező Azure SQL [transzparens adattitkosítás (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) lehetővé teszi BRING Your Own Key (BYOK) forgatókönyv használatát az inaktív adatok védelméhez, és lehetővé teszi a szervezetek számára a kulcsok és adatok kezelésében felmerülő feladatok elkülönítését. Az ügyfél által felügyelt transzparens adattitkosítással az ügyfél felelős a kulcsfontosságú életciklus-felügyelet (a kulcs létrehozása, feltöltése, elforgatása, törlése), a kulcshasználat engedélyei és a kulcsokon végzett műveletek naplózása felett.
@@ -62,7 +62,7 @@ Ahhoz, hogy a kiszolgáló használhassa a AKV-ben tárolt TDE-kezelőt a ADATTI
 
 - **unwrapKey** – a adattitkosítási kulcsot feloldása (visszafejtés)
 
-A Key Vault rendszergazdája [engedélyezheti a Key Vault naplózási eseményeinek naplózását](../../azure-monitor/insights/azure-key-vault.md)is, így később is naplózhatja őket.
+A Key Vault rendszergazdája [engedélyezheti a Key Vault naplózási eseményeinek naplózását](../../azure-monitor/insights/key-vault-insights-overview.md)is, így később is naplózhatja őket.
 
 Ha a kiszolgáló úgy van konfigurálva, hogy a AKV TDE-védőt használ, a kiszolgáló az egyes TDE-kompatibilis adatbázisok ADATTITKOSÍTÁSI kulcsot küldi a kulcstárolóba a titkosításhoz. A Key Vault a titkosított ADATTITKOSÍTÁSI kulcsot adja vissza, amelyet a rendszer a felhasználói adatbázisban tárol.
 
@@ -200,7 +200,7 @@ Ha el szeretné kerülni, hogy a kulcsfontosságú anyagok hiányában a Geo-rep
 
 A feladatátvétel teszteléséhez kövesse az [aktív geo-replikáció áttekintése](active-geo-replication-overview.md)című témakör lépéseit. A feladatátvételi tesztet rendszeresen kell elvégezni annak ellenőrzéséhez, hogy a SQL Database megőrizte-e a Key vaultok hozzáférési engedélyét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő PowerShell-parancsfájlokat is érdemes megtekinteni az ügyfél által felügyelt TDE tartozó általános műveletekhez:
 

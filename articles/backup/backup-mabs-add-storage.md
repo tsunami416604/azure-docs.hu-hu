@@ -3,11 +3,12 @@ title: modern biztonsági másolati tárhely használata a Azure Backup Server
 description: Ismerkedjen meg a Azure Backup Server új szolgáltatásaival. Ez a cikk a biztonsági mentési kiszolgáló telepítésének frissítését ismerteti.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: c6346d7b0275a00271c1787b378a63b8365edf2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee55355b0f2cabe97f5d2a838edcbd5cfddf44e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74172380"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513710"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Tárterület hozzáadása az Azure Backup Serverhez
 
@@ -17,7 +18,7 @@ A Azure Backup Server v2 és újabb verziók olyan modern biztonsági másolati 
 > A modern biztonsági másolati tárhely használatához a Backup Server v2 vagy v3 verzióját kell futtatnia a Windows Server 2016-es vagy v3-es verziójával a Windows Server 2019 rendszeren.
 > Ha a Backup Server v2-t a Windows Server egy korábbi verziójára futtatja, Azure Backup Server nem tudja kihasználni modern biztonsági másolati tárhely. Ehelyett a biztonsági mentési kiszolgáló v1-es verziójának megfelelően védi a munkaterheléseket. További információt a biztonsági mentési kiszolgáló verziójának [védelmi mátrixa](backup-mabs-protection-matrix.md)című témakörben talál.
 >
-> A továbbfejlesztett biztonsági mentési teljesítmény érdekében javasoljuk, hogy a Windows Server 2019-es verziójában a MABS v3-ot a többplatformos tárolással telepítse. A többplatformos tárolás konfigurálásának lépéseiért tekintse meg a "[MBS és Tiered Storage beállítása](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)" DPM.
+> A továbbfejlesztett biztonsági mentési teljesítmény érdekében javasoljuk, hogy a Windows Server 2019-es verziójában a MABS v3-ot a többplatformos tárolással telepítse. A többplatformos tárolás konfigurálásának lépéseiért tekintse meg a "[MBS és Tiered Storage beállítása](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)" DPM.
 
 ## <a name="volumes-in-backup-server"></a>Kötetek a biztonsági mentési kiszolgálón
 
@@ -102,13 +103,13 @@ A védelmi csoportokat nem kötelező átállítani a Modern Backup Storage hasz
 
 1. A felügyeleti konzol válassza ki a **védelmi** funkciót. A **védelmi csoport tagja** listában kattintson a jobb gombbal a tagra, majd válassza a **tag védelmének leállítása**lehetőséget.
 
-   ![Tag védelmének leállítása](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+   ![Tag védelmének leállítása](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. A **csoportból való eltávolítás** párbeszédpanelen tekintse át a felhasznált lemezterületet és a tárterület rendelkezésre álló szabad területét. Az alapértelmezés ilyenkor a helyreállítási pontok meghagyása a lemezen, hagyva, hogy lejárjanak a megőrzési szabályzatuk szerint. Kattintson az **OK** gombra.
 
    Ha azonnal vissza kívánja adni a felhasznált lemezterületet az ingyenes tárterületre, jelölje be a **replika törlése a lemezen** jelölőnégyzetet az ehhez a taghoz tartozó biztonsági mentési információk (és helyreállítási pontok) törléséhez.
 
-   ![Eltávolítás a csoportból párbeszédpanel](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+   ![Eltávolítás a csoportból párbeszédpanel](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Hozzon létre egy modern biztonsági másolati tárhely-t használó védelmi csoportot. Adja meg a nem védett adatforrásokat.
 
@@ -120,13 +121,13 @@ Lemezterület növelése:
 
 1. A felügyeleti konzol válassza a **felügyeleti**  >  **Disk Storage**  >  **Hozzáadás**elemet.
 
-    ![Disk Storage hozzáadása párbeszédpanel](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+    ![Disk Storage hozzáadása párbeszédpanel](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 2. A **Disk Storage hozzáadása** párbeszédpanelen válassza a **lemezek hozzáadása**lehetőséget.
 
 3. Az elérhető lemezek listájában jelölje ki a hozzáadni kívánt lemezeket, válassza a **Hozzáadás**lehetőséget, majd kattintson **az OK gombra**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Backup Server telepítése után megtudhatja, hogyan készítheti elő a kiszolgálót, vagy megkezdheti a munkaterhelések védelmét.
 

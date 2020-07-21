@@ -3,12 +3,13 @@ title: Azure Backup Recovery Services-tárolók áthelyezése
 description: Útmutató a Recovery Services-tároló Azure-előfizetések és-erőforráscsoportok közötti áthelyezéséhez.
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 9373ea41c3cd5d35c86b8b306a20b5c106105217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 40ef55fa3b86856051b840c5d88ab8fadae3b7c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368226"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514101"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
 
@@ -16,7 +17,7 @@ Ez a cikk azt ismerteti, hogyan helyezhet át egy Recovery Services-tárolót az
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-A Recovery Services-tár erőforrás-áthelyezését a Kelet-Ausztrália támogatja. Kelet-Ausztrália, Közép-Kanada, Kelet-Kanada, Dél-Kelet-Ázsia, Kelet-Ázsia, az USA középső régiója, az USA északi középső régiója, az USA keleti régiója, a keleti RÉGIÓJA, az USA déli középső régiója, az USA nyugati középső régiója, az USA nyugati középső régiója, Közép-India, Dél-India, Kelet-Japán, Nyugat-Korea , Dél-Afrika nyugati, Egyesült Királyság déli régiója és Egyesült Királyság nyugati régiója.
+A Recovery Services-tár erőforrás-áthelyezését a Kelet-Ausztrália támogatja. Délkelet-Ausztrália, Közép-Kanada, Kelet-Kanada, Dél-Kelet-Ázsia, Kelet-Ázsia, Közép-USA, USA északi középső régiója, USA keleti régiója, USA 2. keleti régiója, USA déli középső régiója, az USA nyugati középső régiója, USA nyugati régiója, USA 2. nyugati régiója, Közép-India, Dél-India, Kelet-Japán , Nyugat-Európa, Dél-Afrika északi régiója, Dél-Afrika nyugati régiója, Egyesült Királyság déli régiója és Egyesült Királyság nyugati régiója.
 
 ## <a name="unsupported-regions"></a>Nem támogatott régiók
 
@@ -24,7 +25,7 @@ Közép-Franciaország, Dél-Franciaország, Északkelet-Németország, Közép-
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Recovery Services-tároló áthelyezésének előfeltételei
 
-- A tárolóban az erőforráscsoportok között a forrás-és a célként megadott erőforráscsoportok is zárolva vannak az írási és törlési műveletek megakadályozása érdekében. További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+- A tárolóban az erőforráscsoportok között a forrás-és a célként megadott erőforráscsoportok is zárolva vannak az írási és törlési műveletek megakadályozása érdekében. További információkért tekintse meg [ezt a cikket](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - Csak a rendszergazdai előfizetés rendelkezik a tároló áthelyezéséhez szükséges engedélyekkel.
 - A tárolók előfizetések közötti áthelyezéséhez a cél előfizetésnek ugyanabban a bérlőben kell lennie, mint a forrás-előfizetésnek, és annak állapotát engedélyezni kell.
 - A cél erőforráscsoporthoz írási műveletek végrehajtásához engedéllyel kell rendelkeznie.
@@ -34,10 +35,10 @@ Közép-Franciaország, Dél-Franciaország, Északkelet-Németország, Közép-
 - Azt jelzi, hogy a virtuális gép a tárolóval van-e áthelyezve, vagy sem, bármikor visszaállíthatja a virtuális gépet a tár megőrzött biztonsági mentési előzményeiből.
 - A Azure Disk Encryption megköveteli, hogy a Key Vault és a virtuális gépek ugyanabban az Azure-régióban és-előfizetésben legyenek tárolva.
 - Ha felügyelt lemezekkel rendelkező virtuális gépet szeretne áthelyezni, tekintse meg ezt a [cikket](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
-- A klasszikus modellben üzembe helyezett erőforrások áthelyezésének lehetőségei eltérnek attól függően, hogy az adott előfizetésen belül vagy egy új előfizetésre helyezi át az erőforrásokat. További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+- A klasszikus modellben üzembe helyezett erőforrások áthelyezésének lehetőségei eltérnek attól függően, hogy az adott előfizetésen belül vagy egy új előfizetésre helyezi át az erőforrásokat. További információkért tekintse meg [ezt a cikket](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - A tárolóhoz definiált biztonsági mentési szabályzatok megmaradnak, miután a tár előfizetések vagy egy új erőforráscsoport között mozog.
 - Csak olyan tárolót helyezhet át, amely a következő típusú biztonsági másolati elemeket tartalmazza. Az alább nem felsorolt típusú biztonsági másolati elemeket le kell állítani, és az adatokat véglegesen törölni kell a tár áthelyezése előtt.
-  - Azure-alapú virtuális gépek
+  - Azure Virtual Machines
   - Microsoft Azure Recovery Services (MARS) ügynök
   - Microsoft Azure Backup-kiszolgáló (MABS)
   - Data Protection Manager (DPM)
@@ -45,7 +46,7 @@ Közép-Franciaország, Dél-Franciaország, Északkelet-Németország, Közép-
 
 > [!NOTE]
 > Az Azure-régiók Azure Backup Recovery Services-tárolóinak áthelyezése nem támogatott.<br><br>
-> Ha a **Azure site Recovery**használatával bármilyen virtuális gépet (Azure IaaS, Hyper-V, VMware) vagy fizikai gépet konfigurált, akkor az áthelyezési művelet le lesz tiltva. Ha Azure Site Recovery tárolóit szeretné áthelyezni, tekintse át [ezt a cikket](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) , és ismerkedjen meg a tárolók manuális mozgatásával.
+> Ha a **Azure site Recovery**használatával bármilyen virtuális gépet (Azure IaaS, Hyper-V, VMware) vagy fizikai gépet konfigurált, akkor az áthelyezési művelet le lesz tiltva. Ha Azure Site Recovery tárolóit szeretné áthelyezni, tekintse át [ezt a cikket](../site-recovery/move-vaults-across-regions.md) , és ismerkedjen meg a tárolók manuális mozgatásával.
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Recovery Services-tár másik erőforráscsoporthoz való áthelyezéséhez használja a Azure Portal
 
@@ -142,8 +143,8 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 1. Az erőforráscsoportok hozzáférés-vezérlésének beállítása/ellenőrzése.  
 2. A biztonsági mentés jelentéskészítési és figyelési funkcióját újra be kell állítani ahhoz, hogy a tár végrehajtsa az áthelyezést. Az áthelyezési művelet során az előző konfiguráció el fog veszni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Több különböző típusú erőforrást is áthelyezhet az erőforráscsoportok és az előfizetések között.
 
-További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md).

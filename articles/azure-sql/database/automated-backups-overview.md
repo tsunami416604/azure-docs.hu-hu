@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-ms.date: 06/04/2020
-ms.openlocfilehash: 340f4310da5131ea0d2576e7c77d8f6cd0a731b3
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.date: 07/20/2020
+ms.openlocfilehash: 0eea1b696d8eae8606c0b6009f248a215d12db57
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983104"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515118"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -101,7 +101,7 @@ A biztonsági mentési tárterület-felhasználás legfeljebb az adatbázis maxi
 
 ## <a name="backup-retention"></a>Biztonsági mentés megőrzése
 
-Az új, visszaállított és másolt adatbázisok esetében a Azure SQL Database és az Azure SQL felügyelt példánya megfelelő biztonsági másolatokat tart fenn, hogy alapértelmezés szerint az elmúlt 7 napban engedélyezze a PITR. A nagy kapacitású-adatbázisok kivételével a 1-35-es napon belül [megváltoztathatja az adatbázis biztonsági másolatának megőrzési időszakát](#change-the-pitr-backup-retention-period) . A [biztonsági másolatok tárolásának felhasználásáról](#backup-storage-consumption)a PITR engedélyezéséhez tárolt biztonsági másolatok a megőrzési időtartamnál régebbiek lehetnek.
+Az új, visszaállított és másolt adatbázisok esetében a Azure SQL Database és az Azure SQL felügyelt példánya megfelelő biztonsági másolatokat tart fenn, hogy alapértelmezés szerint az elmúlt 7 napban engedélyezze a PITR. A nagy kapacitású-adatbázisok kivételével a 1-35 napos tartományban minden aktív adatbázis [biztonsági mentési megőrzési időszakát módosíthatja](#change-the-pitr-backup-retention-period) . A [biztonsági másolatok tárolásának felhasználásáról](#backup-storage-consumption)a PITR engedélyezéséhez tárolt biztonsági másolatok a megőrzési időtartamnál régebbiek lehetnek. Csak az Azure SQL felügyelt példányai esetében lehet beállítani a PITR biztonsági mentés megőrzési arányát, miután az 0-35 nap tartományba törölte az adatbázist. 
 
 Ha töröl egy adatbázist, a rendszer ugyanúgy tartja a biztonsági mentéseket, mint egy online adatbázis számára a megadott megőrzési időtartammal. Törölt adatbázis biztonsági másolatának megőrzési időszaka nem módosítható.
 
@@ -192,7 +192,7 @@ Az alapértelmezett PITR biztonsági mentési megőrzési időszakot a Azure Por
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-azure-portal"></a>A PITR biztonsági mentés megőrzési időszakának módosítása a Azure Portal használatával
 
-Ha módosítani szeretné a PITR biztonsági mentési megőrzési időtartamát a Azure Portal használatával, lépjen a kiszolgáló vagy a felügyelt példányra azokkal az adatbázisokkal, amelyek megőrzési időtartamát módosítani kívánja. 
+Ha módosítani szeretné a PITR biztonsági mentési megőrzési időtartamát az aktív adatbázisokhoz a Azure Portal használatával, lépjen a kiszolgálóra vagy a felügyelt példányra azokra az adatbázisokra, amelyek megőrzési időtartamát módosítani kívánja. 
 
 #### <a name="sql-database"></a>[SQL Database](#tab/single-database)
 
@@ -200,7 +200,7 @@ A SQL Database PITR biztonsági mentési megőrzésének változásai a portál 
 
 ![PITR-megőrzés, kiszolgáló szintjének módosítása](./media/automated-backups-overview/configure-backup-retention-sqldb.png)
 
-#### <a name="sql-managed-instance"></a>[Felügyelt SQL-példány](#tab/managed-instance)
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
 Az SQL felügyelt példány PITR biztonsági mentési megőrzésének módosításai egyedi adatbázis-szinten hajthatók végre. Ha módosítani szeretné a PITR biztonsági mentési megőrzését egy példány-adatbázishoz a Azure Portal, lépjen az egyes adatbázisok áttekintés paneljére. Ezután válassza a **biztonsági másolatok megőrzésének konfigurálása** lehetőséget a képernyő tetején:
 
@@ -214,9 +214,54 @@ Az SQL felügyelt példány PITR biztonsági mentési megőrzésének módosít�
 > [!IMPORTANT]
 > A PowerShell-AzureRM modult továbbra is támogatja a SQL Database és az SQL felügyelt példánya, de az az. SQL modul jövőbeli fejlesztése is. További információ: [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az az modul parancsaihoz tartozó argumentumok lényegében azonosak a AzureRm-modulokban szereplő parancsokkal.
 
+#### <a name="sql-database"></a>[SQL Database](#tab/single-database)
+
+Az aktív Azure SQL Database-adatbázisok PITR biztonsági mentési megőrzésének módosításához használja a következő PowerShell-példát.
+
 ```powershell
+# SET new PITR backup retention period on an active individual database
+# Valid backup retention must be between 1 and 35 days
 Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -ServerName testserver -DatabaseName testDatabase -RetentionDays 28
 ```
+
+#### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
+
+Az **egyes aktív** SQL felügyelt példány-adatbázisok PITR biztonsági mentési megőrzésének módosításához használja a következő PowerShell-példát.
+
+```powershell
+# SET new PITR backup retention period on an active individual database
+# Valid backup retention must be between 1 and 35 days
+Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase -RetentionDays 1
+```
+
+Ha módosítani szeretné a PITR biztonsági mentésének megőrzését az **összes aktív** SQL felügyelt példány adatbázisaiban, használja a következő PowerShell-példát.
+
+```powershell
+# SET new PITR backup retention period for ALL active databases
+# Valid backup retention must be between 1 and 35 days
+Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 1
+```
+
+Az **egyes törölt** SQL felügyelt példány-adatbázisok PITR biztonsági mentésének módosításához használja a következő PowerShell-példát.
+ 
+```powershell
+# SET new PITR backup retention on an individual deleted database
+# Valid backup retention must be between 0 (no retention) and 35 days. Valid retention rate can only be lower than the period of the retention period when database was active, or remaining backup days of a deleted database.
+Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
+```
+
+Ha módosítani szeretné a PITR biztonsági mentésének megőrzését az **összes törölt** SQL felügyelt példány-adatbázis esetében, használja a következő PowerShell-példát.
+
+```powershell
+# SET new PITR backup retention for ALL deleted databases
+# Valid backup retention must be between 0 (no retention) and 35 days. Valid retention rate can only be lower than the period of the retention period when database was active, or remaining backup days of a deleted database
+Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
+```
+
+Nulla (0) a napok megőrzése azt jelzi, hogy a biztonsági mentés azonnal törlődik, és a rendszer már nem őrzi meg a törölt adatbázisokat.
+Ha a PITR biztonsági mentésének megőrzése csökkentve lett egy törölt adatbázisra vonatkozóan, az már nem növelhető.
+
+---
 
 ### <a name="change-the-pitr-backup-retention-period-by-using-the-rest-api"></a>A PITR biztonsági mentés megőrzési időszakának módosítása a REST API használatával
 
@@ -253,10 +298,11 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 További információ: a [biztonsági másolatok megőrzésének REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az adatbázis biztonsági mentései az üzletmenet folytonossága és a vész-helyreállítási stratégia alapvető részét képezik, mivel az adatok véletlen sérüléstől vagy törléstől való védelme érdekében szükségesek. SQL Database az üzletmenet-folytonossági megoldásokkal kapcsolatos további információkért lásd: az [üzletmenet folytonosságának áttekintése](business-continuity-high-availability-disaster-recover-hadr-overview.md).
 - További információ arról, hogyan [állíthatja vissza az adatbázist egy adott időpontra a Azure Portal használatával](recovery-using-backups.md).
 - További információ arról, hogyan [állíthatja vissza az adatbázist egy adott időpontra a PowerShell használatával](scripts/restore-database-powershell.md).
 - Az Azure Blob Storage-ban az Azure Portal használatával történő automatikus biztonsági mentések konfigurálásával, kezelésével és visszaállításával kapcsolatos további információkért lásd: [a biztonsági másolatok hosszú távú megőrzésének kezelése a Azure Portal használatával](long-term-backup-retention-configure.md).
 - További információ arról, hogyan konfigurálható, kezelhető és állítható vissza az automatikus biztonsági mentések az Azure Blob Storage-ban a PowerShell használatával: a [biztonsági másolatok hosszú távú megőrzésének kezelése a PowerShell használatával](long-term-backup-retention-configure.md).
+- Ha szeretné megtudni, hogyan finomíthatja a biztonsági másolatok tárolásának megőrzését és költségeit az Azure SQL felügyelt példányain, tekintse [meg a biztonsági mentési tárolási költségek finomhangolása felügyelt példányon](https://aka.ms/mi-backup-tuning)című témakört

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696966"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515495"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Az Azure Diagnostics hibaelhárítása
 Ez a cikk a Azure Diagnostics használatára vonatkozó hibaelhárítási információkat ismerteti. További információ az Azure Diagnostics szolgáltatásról: [Azure Diagnostics Overview (áttekintés](diagnostics-extension-overview.md)).
@@ -36,7 +37,7 @@ A következő néhány fontos napló és összetevő elérési útja. Ezt az inf
 | **A log Collection segédprogram elérési útja** | %SystemDrive%\Packages\GuestAgent\ |
 | **MonAgentHost naplófájl** | C:\Resources\Directory \<CloudServiceDeploymentID> . \<RoleName> . DiagnosticStore\WAD0107\Configuration\MonAgentHost. <seq_num>. log |
 
-### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
+### <a name="virtual-machines"></a>Virtuális gépek
 | Összetevő | Elérési út |
 | --- | --- |
 | **Azure Diagnostics konfigurációs fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version> \RuntimeSettings |
@@ -49,7 +50,7 @@ A következő néhány fontos napló és összetevő elérési útja. Ezt az inf
 | **MonAgentHost naplófájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Configuration\MonAgentHost. <seq_num>. log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>A metrikus adatok nem jelennek meg a Azure Portal
-A Azure Diagnostics a Azure Portal megjeleníthető metrikai adatokat biztosít. Ha problémába ütközik a portálon található adatokkal kapcsolatban, tekintse meg a \* Azure Diagnostics Storage-fiók WADMetrics táblázatát, és ellenőrizze, hogy a megfelelő metrikai rekordok léteznek-e, és győződjön meg arról, hogy az [erőforrás-szolgáltató](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) Microsoft. az elemzések regisztrálva vannak.
+A Azure Diagnostics a Azure Portal megjeleníthető metrikai adatokat biztosít. Ha problémába ütközik a portálon található adatokkal kapcsolatban, tekintse meg a \* Azure Diagnostics Storage-fiók WADMetrics táblázatát, és ellenőrizze, hogy a megfelelő metrikai rekordok léteznek-e, és győződjön meg arról, hogy az [erőforrás-szolgáltató](../../azure-resource-manager/management/resource-providers-and-types.md) Microsoft. az elemzések regisztrálva vannak.
 
 Itt a tábla **PartitionKey** az erőforrás-azonosító, a virtuális gép vagy a virtuálisgép-méretezési csoport. A **RowKey** a metrika neve (más néven a teljesítményszámláló neve).
 
@@ -164,7 +165,7 @@ A ETW-eseményeket tároló Azure Storage-táblákat a következő kód alapján
             tableName = "WAD" + eventDestination;
 ```
 
-Például:
+Alább bemutatunk egy példát:
 
 ```XML
         <EtwEventSourceProviderConfiguration provider="prov1">
@@ -204,7 +205,7 @@ Például:
 ```
 Ez a kód négy táblát hoz létre:
 
-| Esemény | Table name (Táblázat neve) |
+| Esemény | Tábla neve |
 | --- | --- |
 | Provider = "Prov1" &lt; esemény azonosítója = "1"/&gt; |WADEvent + MD5 ("Prov1") + "1" |
 | Provider = "Prov1" &lt; esemény azonosítója = "2" eventDestination = "dest1"/&gt; |WADdest1 |
@@ -227,7 +228,7 @@ A Cloud Service szerepkör esetében, ha a konfigurációt a lemezről választj
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure Diagnostics beépülő modul kilépési kódjai
 A beépülő modul a következő kilépési kódokat adja vissza:
 
-| Kilépési kód | Description |
+| Kilépési kód | Leírás |
 | --- | --- |
 | 0 |Sikeres művelet. |
 | -1 |Általános hiba. |
@@ -296,4 +297,3 @@ A virtuális gépeken a portál felülete alapértelmezés szerint bizonyos telj
 - Azt határozza meg, hogy a tárolóban lévő összes számláló neve angol nyelven van-e. Ha a számlálók nevei nem angol nyelvűek, a portál metrikai diagramja nem tudja felismerni. Megoldás **: módosítsa**a gép nyelvét angolra a rendszerfiókok számára. Ehhez válassza a **Vezérlőpult**  >  **régió**  >  **felügyeleti**  >  **másolási beállítások**lehetőséget. Ezután törölje az **üdvözlőképernyő és a rendszerfiókok** kijelölését, hogy a rendszer ne alkalmazza az egyéni nyelvet a rendszerfiókra.
 
 - Ha helyettesítő karaktereket () használ a \* teljesítményszámlálók neveiben, a portál nem fogja tudni összekapcsolni a konfigurált és az összegyűjtött számlálót, amikor a teljesítményszámlálók az Azure Storage-tárolóba kerülnek. Megoldás **: Győződjön**meg arról, hogy használhat helyettesítő karaktereket, és a portál kibontásával ( \* ) a teljesítményszámlálók átirányítása a Azure monitor fogadóba.
-

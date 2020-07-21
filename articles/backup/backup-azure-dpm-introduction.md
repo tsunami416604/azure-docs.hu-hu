@@ -3,11 +3,12 @@ title: A DPM-kiszolgáló előkészítése a munkaterhelések biztonsági menté
 description: Ebből a cikkből megtudhatja, hogyan készítse elő a System Center Data Protection Manager (DPM) biztonsági mentését az Azure-ba a Azure Backup szolgáltatás használatával.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 7c2b811685ec9ea5f8fe752a5a1c73611a624b62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9891be5eded94c64a6cc256b99510a9c0c673daf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718325"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514169"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>A számítási feladatok biztonsági mentésének előkészítése az Azure-ba a System Center DPM
 
@@ -23,7 +24,7 @@ A cikk a következőket tartalmazza:
 
 ## <a name="why-back-up-dpm-to-azure"></a>Miért érdemes biztonsági mentést készíteni a DPM az Azure-ba?
 
-A [System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) biztonsági mentést készít a fájlokról és az alkalmazásokról. A DPM az alábbiak szerint kommunikál a Azure Backupekkel:
+A [System Center DPM](/system-center/dpm/dpm-overview) biztonsági mentést készít a fájlokról és az alkalmazásokról. A DPM az alábbiak szerint kommunikál a Azure Backupekkel:
 
 - **Fizikai kiszolgálón vagy helyszíni virtuális gépen futó DPM** – az adatok biztonsági mentését az Azure Backup-tárolójába, a lemez és a szalagos biztonsági mentés mellett is elvégezheti.
 - **Azure-beli virtuális gépen futtatott DPM** – a System Center 2012 R2 és a 3. frissítéssel, illetve az újabb verziókkal a DPM üzembe helyezhető egy Azure-beli virtuális gépen. Biztonsági mentést készíthet a virtuális géphez csatolt Azure-lemezekre, vagy a Azure Backup használatával biztonsági mentést készíthet az adatbiztonsági mentési tárba.
@@ -42,12 +43,12 @@ DPM fizikai kiszolgálón | System Center 2012 SP1 vagy újabb; System Center 20
 DPM Hyper-V rendszerű virtuális gépen | System Center 2012 SP1 vagy újabb; System Center 2012 R2.
 DPM VMware virtuális gépen | System Center 2012 R2 az 5. vagy újabb kumulatív frissítéssel.
 Összetevők | A DPM-kiszolgálónak telepítve kell lennie a Windows PowerShell és a .NET-keretrendszer 4,5-es frissítésének.
-Támogatott alkalmazások | [Ismerje meg](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) , hogy milyen DPM tud biztonsági másolatot készíteni.
+Támogatott alkalmazások | [Ismerje meg](/system-center/dpm/dpm-protection-matrix) , hogy milyen DPM tud biztonsági másolatot készíteni.
 Támogatott fájltípusok | Ezek a fájltípusok biztonsági másolat készíthető Azure Backup: titkosított (csak teljes biztonsági mentések esetén). Tömörített (növekményes biztonsági másolatok támogatottak); Ritka (növekményes biztonsági másolatok támogatottak); Tömörítve és ritka (Ritkaként kezelve).
 Nem támogatott fájltípusok | Kis-és nagybetűket megkülönböztető fájlrendszereket tartalmazó kiszolgálók; rögzített hivatkozások (kihagyva); újraelemzési pontok (kihagyva); titkosított és tömörített (kihagyva); titkosított és ritka (kihagyott); Tömörített Stream; adatfolyam elemzése.
 Helyi tárhely | Minden olyan gépnek, amelyről biztonsági másolatot szeretne készíteni, rendelkeznie kell helyi szabad tárterülettel, amely a biztonsági mentés alatt álló adatmennyiség legalább 5%-a. Például a 100 GB adat biztonsági mentéséhez legalább 5 GB szabad terület szükséges a semmiből.
 Tár tárolója | A Azure Backup-tárolóba felhasználható adatmennyiségnek nincs korlátja, de az adatforrások (például virtuális gépek vagy adatbázisok) mérete nem haladhatja meg a 54 400 GB-ot.
-Azure ExpressRoute | Az Azure ExpressRoute-on keresztül biztonsági mentést készíthet az adatairól a nyilvános (a régi áramkörökhöz elérhető) és a Microsoft-partnerek számára. A privát kapcsolaton keresztüli biztonsági mentés nem támogatott.<br/><br/> **Nyilvános társítás esetén**: a következő tartományokhoz/címekhez való hozzáférés biztosítása:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **A Microsoft-partnerekkel**válassza ki a következő szolgáltatásokat/régiókat és a vonatkozó közösségi értékeket:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)<br/><br/>– Azure Storage (az Recovery Services-tároló helyének megfelelően)<br/><br/>További információ: ExpressRoute- [útválasztási követelmények](https://docs.microsoft.com/azure/expressroute/expressroute-routing).<br/><br/>**Megjegyzés**: a nyilvános társítás az új áramköröknél elavult.
+Azure ExpressRoute | Az Azure ExpressRoute-on keresztül biztonsági mentést készíthet az adatairól a nyilvános (a régi áramkörökhöz elérhető) és a Microsoft-partnerek számára. A privát kapcsolaton keresztüli biztonsági mentés nem támogatott.<br/><br/> **Nyilvános társítás esetén**: a következő tartományokhoz/címekhez való hozzáférés biztosítása:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **A Microsoft-partnerekkel**válassza ki a következő szolgáltatásokat/régiókat és a vonatkozó közösségi értékeket:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)<br/><br/>– Azure Storage (az Recovery Services-tároló helyének megfelelően)<br/><br/>További információ: ExpressRoute- [útválasztási követelmények](../expressroute/expressroute-routing.md).<br/><br/>**Megjegyzés**: a nyilvános társítás az új áramköröknél elavult.
 Az Azure Backup ügynöke | Ha a DPM a System Center 2012 SP1 rendszeren fut, telepítse a 2. vagy újabb kumulatív frissítést a DPM SP1 verzióhoz. Ez az ügynök telepítéséhez szükséges.<br/><br/> Ez a cikk bemutatja, hogyan helyezheti üzembe a Azure Backup-ügynök legújabb verzióját, más néven a Microsoft Azure Recovery Service (MARS) ügynököt. Ha a korábbi verziót telepítette, frissítsen a legújabb verzióra, és győződjön meg arról, hogy a biztonsági mentés a várt módon működik-e.
 
 Mielőtt elkezdené, szüksége lesz egy Azure-fiókra, amelyen engedélyezve van a Azure Backup funkció. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információ a [Azure Backup díjszabásáról](https://azure.microsoft.com/pricing/details/backup/).
@@ -60,7 +61,7 @@ Választhat a földrajzilag redundáns tárolás és a helyileg redundáns táro
 
 - Alapértelmezés szerint a tárolója georedundáns tárolással rendelkezik.
 - Ha a tároló elsődleges biztonsági másolata, hagyja a beállítást a Geo-redundáns tárolás beállításnál. Ha olyan olcsóbb lehetőséget szeretne, amely nem annyira tartós, a következő eljárással konfigurálhatja a helyileg redundáns tárolást.
-- További információ az [Azure Storage](../storage/common/storage-redundancy.md)szolgáltatásról, valamint a [geo-redundáns](../storage/common/storage-redundancy-grs.md) és a [helyileg redundáns](../storage/common/storage-redundancy-lrs.md) tárolási lehetőségekről.
+- További információ az [Azure Storage](../storage/common/storage-redundancy.md)szolgáltatásról, valamint a [geo-redundáns](../storage/common/storage-redundancy.md) és a [helyileg redundáns](../storage/common/storage-redundancy.md) tárolási lehetőségekről.
 - Módosítsa a tárolási beállításokat a kezdeti biztonsági mentés előtt. Ha már készített biztonsági másolatot egy elemről, a tárolási beállítások módosítása előtt állítsa le a biztonsági mentést a tárolóban.
 
 A tárreplikációs beállítás szerkesztése:
@@ -130,7 +131,7 @@ A Azure Backup által készített biztonsági mentést végző számítógépeke
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>A DPM-kiszolgáló regisztrálása a tárolóban
 
-1. A DPM felügyeleti konzolon > a **felügyelet**elemre, majd kattintson az **online**lehetőségre. Kattintson a **Register** (Regisztrálás) elemre. Ekkor megnyílik a kiszolgáló regisztrálása varázsló.
+1. A DPM felügyeleti konzolon > a **felügyelet**elemre, majd kattintson az **online**lehetőségre. Válassza a **Regisztráció** lehetőséget. Ekkor megnyílik a kiszolgáló regisztrálása varázsló.
 2. A **proxy konfigurálása**területen szükség szerint határozza meg a proxybeállításokat.
 
     ![Proxy konfigurálása](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
@@ -164,7 +165,7 @@ A Azure Backup által készített biztonsági mentést végző számítógépeke
 
 7. Kattintson a **regisztráció** gombra a DPM-kiszolgáló a tárolóhoz való regisztrálásához.
 
-Miután a kiszolgáló regisztrálása sikeresen megtörtént a tárolóban, és most már készen áll a Microsoft Azurere való biztonsági mentésre. A munkaterhelések Azure-ba történő biztonsági mentéséhez konfigurálnia kell a védelmi csoportot a DPM-konzolon. [További információ](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) a védelmi csoportok üzembe helyezéséről.
+Miután a kiszolgáló regisztrálása sikeresen megtörtént a tárolóban, és most már készen áll a Microsoft Azurere való biztonsági mentésre. A munkaterhelések Azure-ba történő biztonsági mentéséhez konfigurálnia kell a védelmi csoportot a DPM-konzolon. [További információ](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) a védelmi csoportok üzembe helyezéséről.
 
 ## <a name="troubleshoot-vault-credentials"></a>Tár hitelesítő adatainak hibakeresése
 

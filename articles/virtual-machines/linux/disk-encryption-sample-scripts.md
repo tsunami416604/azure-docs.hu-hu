@@ -8,14 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 32d4e709036135a9a88ec36eaafaa176df33fabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e7b22a8010d7dfbdeeaeae623a55c1aff9c006c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610353"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510497"
 ---
-# <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption – mintaszkriptek 
+# <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>A Linux rendszerű virtuális gépekre Azure Disk Encryption minta szkriptek
 
 Ez a cikk példákat tartalmaz az előre titkosított virtuális merevlemezek és egyéb feladatok előkészítéséhez.
 
@@ -45,13 +45,13 @@ A következő táblázat a PowerShell-parancsfájlban használható paraméterek
 
 |Paraméter|Leírás|Kötelező?|
 |------|------|------|
-|$resourceGroupName| Azon erőforráscsoport neve, amelyhez a kulcstartó tartozik.  Ha az egyik nem létezik, akkor létrejön egy ilyen nevű új erőforráscsoport.| True (Igaz)|
-|$keyVaultName|Annak a kulcstartónak a neve, amelyben a titkosítási kulcsokat el kell helyezni. Ha az egyik nem létezik, akkor a rendszer létrehoz egy új tárat ezzel a névvel.| True (Igaz)|
-|$location|A kulcstartó helye. Győződjön meg arról, hogy a kulcstároló és a virtuális gépek titkosítva vannak ugyanazon a helyen. A helyek listáját a következővel érheti el: `Get-AzLocation`.|True (Igaz)|
-|$subscriptionId|A használni kívánt Azure-előfizetés azonosítója.  Az előfizetés-azonosítóját a következővel érheti el: `Get-AzSubscription`.|True (Igaz)|
-|$aadAppName|Annak az Azure AD-alkalmazásnak a neve, amelyet a rendszer a kulcstartók írásához fog használni. Ha a megadott néven még nem létezik alkalmazás, a rendszer létrehoz egyet a beírt néven. Ha az alkalmazás már létezik, adja át a aadClientSecret paramétert a parancsfájlnak.|False (Hamis)|
-|$aadClientSecret|A korábban létrehozott Azure AD-alkalmazás ügyfél-titka.|False (Hamis)|
-|$keyEncryptionKeyName|A kulcstartóban nem kötelező kulcs-titkosítási kulcs neve. Ha az egyik nem létezik, a rendszer létrehoz egy új kulcsot a névvel.|False (Hamis)|
+|$resourceGroupName| Azon erőforráscsoport neve, amelyhez a kulcstartó tartozik.  Ha az egyik nem létezik, akkor létrejön egy ilyen nevű új erőforráscsoport.| Igaz|
+|$keyVaultName|Annak a kulcstartónak a neve, amelyben a titkosítási kulcsokat el kell helyezni. Ha az egyik nem létezik, akkor a rendszer létrehoz egy új tárat ezzel a névvel.| Igaz|
+|$location|A kulcstartó helye. Győződjön meg arról, hogy a kulcstároló és a virtuális gépek titkosítva vannak ugyanazon a helyen. A helyek listáját a következővel érheti el: `Get-AzLocation`.|Igaz|
+|$subscriptionId|A használni kívánt Azure-előfizetés azonosítója.  Az előfizetés-azonosítóját a következővel érheti el: `Get-AzSubscription`.|Igaz|
+|$aadAppName|Annak az Azure AD-alkalmazásnak a neve, amelyet a rendszer a kulcstartók írásához fog használni. Ha a megadott néven még nem létezik alkalmazás, a rendszer létrehoz egyet a beírt néven. Ha az alkalmazás már létezik, adja át a aadClientSecret paramétert a parancsfájlnak.|Hamis|
+|$aadClientSecret|A korábban létrehozott Azure AD-alkalmazás ügyfél-titka.|Hamis|
+|$keyEncryptionKeyName|A kulcstartóban nem kötelező kulcs-titkosítási kulcs neve. Ha az egyik nem létezik, a rendszer létrehoz egy új kulcsot a névvel.|Hamis|
 
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Virtuális gépek titkosítása vagy visszafejtése Azure AD-alkalmazás nélkül
@@ -186,7 +186,7 @@ Az alábbi lépéseket követve konfigurálja a titkosítást a terjesztés tele
 
    ![Ubuntu 16,04 telepítő – jelszó megadása rendszerindításkor](./media/disk-encryption/ubuntu-1604-preencrypted-fig5.png)
 
-6. Készítse elő a virtuális gépet az Azure-ba való feltöltéshez [ezen utasítások](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-ubuntu/)használatával. Ne futtassa az utolsó lépést (a virtuális gép kiépítése).
+6. Készítse elő a virtuális gépet az Azure-ba való feltöltéshez [ezen utasítások](./create-upload-ubuntu.md?toc=/azure/virtual-machines/linux/toc.json)használatával. Ne futtassa az utolsó lépést (a virtuális gép kiépítése).
 
 Az alábbi lépések végrehajtásával konfigurálhatja a titkosítást az Azure-nal való együttműködéshez:
 
@@ -227,7 +227,7 @@ Az alábbi lépések végrehajtásával konfigurálhatja a titkosítást az Azur
     fi
    ```
 
-2. Módosítsa a */etc/crypttab*található Crypt-konfigurációt. A listának így kell kinéznie:
+2. Módosítsa a */etc/crypttab*található Crypt-konfigurációt. Így kell kinéznie:
    ```
     xxx_crypt uuid=xxxxxxxxxxxxxxxxxxxxx none luks,discard,keyscript=/usr/local/sbin/azure_crypt_key.sh
     ```
@@ -262,7 +262,7 @@ A titkosítás konfigurálásához végezze el a következő lépéseket:
 
    ![openSUSE 13,2 telepítő – jelszó megadása rendszerindításkor](./media/disk-encryption/opensuse-encrypt-fig2.png)
 
-3. Készítse elő a virtuális GÉPET az Azure-ba való feltöltéshez a [SLES-vagy openSUSE-alapú virtuális gép Azure-ban történő előkészítésének](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-suse-create-upload-vhd/#prepare-opensuse-131)utasításait követve. Ne futtassa az utolsó lépést (a virtuális gép kiépítése).
+3. Készítse elő a virtuális GÉPET az Azure-ba való feltöltéshez a [SLES-vagy openSUSE-alapú virtuális gép Azure-ban történő előkészítésének](./suse-create-upload-vhd.md?toc=/azure/virtual-machines/linux/toc.json#prepare-opensuse-131)utasításait követve. Ne futtassa az utolsó lépést (a virtuális gép kiépítése).
 
 A titkosítás az Azure-ban való működésének konfigurálásához hajtsa végre a következő lépéseket:
 1. Szerkessze a/etc/Dracut.conf, és adja hozzá a következő sort:
@@ -339,7 +339,7 @@ A titkosítás konfigurálásához végezze el a következő lépéseket:
 
    ![CentOS 7 telepítő – jelszó megadása a csomagtartóban](./media/disk-encryption/centos-encrypt-fig4.png)
 
-5. Készítse elő a virtuális gépet az Azure-ba való feltöltéshez az [Azure-hoz készült CentOS-alapú virtuális gép előkészítése](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-create-upload-centos/#centos-70)című témakör "CentOS 7.0 +" utasításával. Ne futtassa az utolsó lépést (a virtuális gép kiépítése).
+5. Készítse elő a virtuális gépet az Azure-ba való feltöltéshez az [Azure-hoz készült CentOS-alapú virtuális gép előkészítése](./create-upload-centos.md?toc=/azure/virtual-machines/linux/toc.json#centos-70)című témakör "CentOS 7.0 +" utasításával. Ne futtassa az utolsó lépést (a virtuális gép kiépítése).
 
 6. Most kiépítheti a virtuális gépet, és feltöltheti a VHD-t az Azure-ba.
 
@@ -371,7 +371,7 @@ A titkosítás az Azure-ban való működésének konfigurálásához hajtsa vé
    ```bash
     if [ -z "$DRACUT_SYSTEMD" ]; then
    ```
-   erre:
+   a következőre:
    ```bash
     if [ 1 ]; then
    ```
@@ -439,7 +439,7 @@ A titkos kulcs a Key vaultban történő beállításához használja a [set-AzK
 Használja a `$secretUrl` következő lépésben az operációsrendszer- [lemez csatlakoztatását a KEK használata nélkül](#without-using-a-kek).
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>A lemez titkosítási titka egy KEK-sel titkosítva
-Mielőtt feltölti a titkos kulcsot a kulcstartóba, lehetősége van arra, hogy titkosítsa azt egy kulcs titkosítási kulcs használatával. A wrap [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) használatával először Titkosítsa a titkos kulcsot a kulcs titkosítási kulcsával. Ennek a körbefuttatási műveletnek a kimenete Base64 URL-kódolású karakterlánc, amelyet ezután titkos kulcsként tölthet fel a [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) parancsmag használatával.
+Mielőtt feltölti a titkos kulcsot a kulcstartóba, lehetősége van arra, hogy titkosítsa azt egy kulcs titkosítási kulcs használatával. A wrap [API](/rest/api/keyvault/wrapkey) használatával először Titkosítsa a titkos kulcsot a kulcs titkosítási kulcsával. Ennek a körbefuttatási műveletnek a kimenete Base64 URL-kódolású karakterlánc, amelyet ezután titkos kulcsként tölthet fel a [`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) parancsmag használatával.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

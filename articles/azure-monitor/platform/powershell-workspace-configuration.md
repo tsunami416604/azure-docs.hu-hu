@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: bf94631c821c8a7ba5e2870af0bf1ecfd268e888
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d0bbde0ee4fd0eaf7387abaf6d548dc563e5b715
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203595"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515444"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Log Analytics munkaterület létrehozása és konfigurálása Azure Monitorban a PowerShell használatával
 Ez a cikk két olyan mintakód-mintát tartalmaz, amelyek bemutatják, hogyan hozhat létre és konfigurálhat egy Log Analytics munkaterületet Azure Monitor.  
@@ -193,7 +193,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 
 > [!NOTE]
-> Az egyéni naplók konfigurációját definiáló **CustomLogRawJson** paraméter formátuma összetett lehet. Egy meglévő egyéni napló konfigurációjának beolvasása a [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) használatával. A **Properties (Tulajdonságok** ) tulajdonság a **CustomLogRawJson** paraméterhez szükséges konfiguráció.
+> Az egyéni naplók konfigurációját definiáló **CustomLogRawJson** paraméter formátuma összetett lehet. Egy meglévő egyéni napló konfigurációjának beolvasása a [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) használatával. A **Properties (Tulajdonságok** ) tulajdonság a **CustomLogRawJson** paraméterhez szükséges konfiguráció.
 
 A fenti példában a regexDelimiter "n"-ként lett definiálva \\ a sortöréshez. A naplózási határolójel is lehet időbélyeg.  A támogatott formátumok a következők:
 
@@ -212,14 +212,13 @@ A fenti példában a regexDelimiter "n"-ként lett definiálva \\ a sortöréshe
 | `yyyy-MM-ddTHH:mm:ss` <br> A T egy literál betű, a t | `((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))T((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]` |
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Ha olyan munkaterületet hoz létre, amely az elmúlt 14 napban törölve lett, és nem [törölhető állapotban](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#soft-delete-behavior)van, a művelet a munkaterület konfigurációjától függően eltérő eredménnyel járhat:
+Ha olyan munkaterületet hoz létre, amely az elmúlt 14 napban törölve lett, és nem [törölhető állapotban](./delete-workspace.md#soft-delete-behavior)van, a művelet a munkaterület konfigurációjától függően eltérő eredménnyel járhat:
 1. Ha ugyanazt a munkaterület-nevet, erőforráscsoportot, előfizetést és régiót adja meg, mint a törölt munkaterületen, a munkaterület helyreállítva lesz, beleértve az adatait, a konfigurációját és a csatlakoztatott ügynököket is.
 2. Ha ugyanazt a munkaterület-nevet használja, de a másik erőforráscsoport, előfizetés vagy régió, hibaüzenet jelenik meg, ha *a munkaterület neve nem egyedi*, vagy az *ütközés*. Az alábbi lépéseket követve felülbírálhatja a munkaterület helyreállítható törlését és végleges törlését, és létrehozhatja az új munkaterületet ugyanazzal a névvel, a munkaterület helyreállításához és az állandó törlés végrehajtásához hajtsa végre a következő lépéseket:
-   * Munkaterület [helyreállítása](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)
-   * Munkaterület [végleges törlése](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)
+   * Munkaterület [helyreállítása](./delete-workspace.md#recover-workspace)
+   * Munkaterület [végleges törlése](./delete-workspace.md#permanent-workspace-delete)
    * Új munkaterület létrehozása ugyanazzal a munkaterület-névvel
 
 
-## <a name="next-steps"></a>További lépések
-* [Tekintse át log Analytics PowerShell-parancsmagokat](https://docs.microsoft.com/powershell/module/az.operationalinsights/) a log Analytics konfigurálásához a PowerShell használatával kapcsolatos további információkért.
-
+## <a name="next-steps"></a>Következő lépések
+* [Tekintse át log Analytics PowerShell-parancsmagokat](/powershell/module/az.operationalinsights/) a log Analytics konfigurálásához a PowerShell használatával kapcsolatos további információkért.

@@ -3,12 +3,12 @@ title: Gyakori kérdések – SAP HANA-adatbázisok biztonsági mentése Azure-b
 description: Ebből a cikkből megismerheti a SAP HANA adatbázisok a Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 512075a24cf9400415f2367ead16b57f8b31c038
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dcbf1bf6b39b2afa3fb5aaf2a7f18c5d0e8e4afb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170326"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513506"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -22,11 +22,11 @@ Naponta csak egy teljes biztonsági mentést támogatunk. Ugyanazon a napon nem 
 
 ### <a name="do-successful-backup-jobs-create-alerts"></a>A sikeres biztonsági mentési feladatok létrehoznak riasztásokat?
 
-Nem. A sikeres biztonsági mentési feladatok nem hoznak fel riasztásokat. A rendszer csak a sikertelen biztonsági mentési feladatokhoz küld riasztásokat. A portálon megjelenő riasztások részletes viselkedését [itt](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor)dokumentáljuk. Ha azonban még a sikeres feladatok esetében is érdekli a riasztás, [Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)is használhatja.
+Nem. A sikeres biztonsági mentési feladatok nem hoznak fel riasztásokat. A rendszer csak a sikertelen biztonsági mentési feladatokhoz küld riasztásokat. A portálon megjelenő riasztások részletes viselkedését [itt](./backup-azure-monitoring-built-in-monitor.md)dokumentáljuk. Ha azonban még a sikeres feladatok esetében is érdekli a riasztás, [Azure monitor](./backup-azure-monitoring-use-azuremonitor.md)is használhatja.
 
 ### <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>Láthatom az ütemezett biztonsági mentési feladatokat a biztonsági mentési feladatok menüben?
 
-A biztonsági mentési feladat menü csak az alkalmi biztonsági mentési feladatokat jeleníti meg. Ütemezett feladatokhoz használja a [Azure monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
+A biztonsági mentési feladat menü csak az alkalmi biztonsági mentési feladatokat jeleníti meg. Ütemezett feladatokhoz használja a [Azure monitor](./backup-azure-monitoring-use-azuremonitor.md).
 
 ### <a name="are-future-databases-automatically-added-for-backup"></a>A jövőbeli adatbázisokról is automatikusan készül biztonsági mentés?
 
@@ -51,7 +51,7 @@ Az előzetes regisztrációs parancsfájl futtatásakor a szükséges engedélye
 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>A biztonsági mentések a SDC-ről a MDC-be való SAP HANA Migrálás után fognak működni?
 
-Tekintse át a hibaelhárítási útmutató [ezen szakaszát](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) .
+Tekintse át a hibaelhárítási útmutató [ezen szakaszát](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid) .
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Be lehet állítani az Azure HANA Backup szolgáltatást egy virtuális IP-cím (terheléselosztó) és nem virtuális gép között?
 
@@ -111,7 +111,7 @@ Ezután a teljes biztonsági mentés újra aktiválódik az 1. csomóponton, maj
 
 ### <a name="why-cant-i-see-the-hana-system-i-want-my-database-to-be-restored-to"></a>Miért nem látom, hogy a HANA-rendszeren Szeretném visszaállítani az adatbázist?
 
-Ellenőrizze, hogy teljesülnek-e a visszaállítás a cél SAP HANA példányra vonatkozó előfeltételei. További információ: [Előfeltételek – SAP HANA adatbázisok visszaállítása az Azure-beli virtuális gépen](https://docs.microsoft.com/azure/backup/sap-hana-db-restore#prerequisites).
+Ellenőrizze, hogy teljesülnek-e a visszaállítás a cél SAP HANA példányra vonatkozó előfeltételei. További információ: [Előfeltételek – SAP HANA adatbázisok visszaállítása az Azure-beli virtuális gépen](./sap-hana-db-restore.md#prerequisites).
 
 ### <a name="why-is-the-overwrite-db-restore-failing-for-my-database"></a>Miért nem sikerül felülírni az adatbázis-visszaállítást?
 
@@ -125,6 +125,6 @@ A jelenleg támogatott visszaállítási típusok megtekintéséhez tekintse meg
 
 Igen, a SLES-on futó HANA-adatbázison aktiválható streaming Backups használatával visszaállíthatja egy RHEL HANA rendszerre, és fordítva. Ez azt jelenti, hogy a rendszer a folyamatos átviteli biztonsági mentést is lehetővé teszi. Azonban győződjön meg arról, hogy a HANA rendszer, amelyet vissza szeretne állítani, és a visszaállításhoz használt HANA-rendszer egyaránt kompatibilis az SAP alapján történő visszaállítással. Tekintse meg SAP HANA Megjegyzés [1642148](https://launchpad.support.sap.com/#/notes/1642148) , hogy mely típusú visszaállítási típusok kompatibilisek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan [készíthet biztonsági mentést](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database) az Azure-beli virtuális gépeken futó SAP HANA adatbázisokról.
+Ismerje meg, hogyan [készíthet biztonsági mentést](./backup-azure-sap-hana-database.md) az Azure-beli virtuális gépeken futó SAP HANA adatbázisokról.

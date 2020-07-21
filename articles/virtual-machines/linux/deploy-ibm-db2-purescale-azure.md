@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 98e912894a4d93a057a2f6a2153d0690deaed250
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e2ec4bfe04112d300a63e6326f0391968e385f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78968892"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510731"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Az IBM DB2-pureScale üzembe helyezése az Azure-ban
 
@@ -18,14 +19,14 @@ Ez a cikk azt ismerteti, hogyan lehet üzembe helyezni egy olyan [példa archite
 
 Az áttelepítéshez használt lépések követéséhez tekintse meg a [DB2onAzure](https://aka.ms/db2onazure) adattár telepítési parancsfájljait a githubon. Ezek a parancsfájlok egy tipikus, közepes méretű online tranzakció-feldolgozási (OLTP) munkaterhelés architektúráján alapulnak.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 Az architektúra üzembe helyezéséhez töltse le és futtassa a [DB2onAzure](https://aka.ms/db2onazure) -tárházban található Deploy.sh-parancsfájlt a githubon.
 
 A tárház parancsfájlokat is tartalmaz a Grafana-irányítópult beállításához. Az irányítópult segítségével lekérdezheti a Prometheus-t, a nyílt forráskódú figyelési és riasztási rendszer részét képező DB2-t.
 
 > [!NOTE]
-> Az ügyfélen található deploy.sh-parancsfájl titkos SSH-kulcsokat hoz létre, és a központi telepítési sablonhoz HTTPS-kapcsolaton keresztül továbbítja azokat. A nagyobb biztonság érdekében javasoljuk, hogy az [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) használatával tárolja a titkokat, a kulcsokat és a jelszavakat.
+> Az ügyfélen található deploy.sh-parancsfájl titkos SSH-kulcsokat hoz létre, és a központi telepítési sablonhoz HTTPS-kapcsolaton keresztül továbbítja azokat. A nagyobb biztonság érdekében javasoljuk, hogy az [Azure Key Vault](../../key-vault/general/overview.md) használatával tárolja a titkokat, a kulcsokat és a jelszavakat.
 
 ## <a name="how-the-deployment-script-works"></a>Az üzembe helyezési parancsfájl működése
 
@@ -76,7 +77,7 @@ A GitHub-tárház tartalmazza a DB2server. RSP, a Response (. RSP) fájlt, amely
 | Termék kiválasztása          |                                              | A DB2 verziója 11.1.3.3. Kiszolgálói kiadások DB2 pureScale                                              |
 | Konfiguráció             | Címtár                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | A telepítés típusának kiválasztása                 | Tipikus                                                                                               |
-|                           | Elfogadom az IBM használati feltételeit                     | Bejelölve                                                                                               |
+|                           | Elfogadom az IBM használati feltételeit                     | Jelölje be                                                                                               |
 | Példány tulajdonosa            | Meglévő felhasználó, példány, Felhasználónév        | DB2sdin1                                                                                              |
 | Bekerített felhasználó               | Meglévő felhasználó, felhasználó neve                     | DB2sdfe1                                                                                              |
 | Fürt fájlrendszere       | Megosztott lemezpartíció eszközének elérési útja            | /dev/dm-2                                                                                             |
@@ -132,7 +133,7 @@ A GitHub-tárház tartalmaz egy tudásbázist, amelyet a szerzők tartanak fenn.
 
 További információ ezekről és az egyéb ismert problémákról: kb.md-fájl a [DB2onAzure](https://aka.ms/DB2onAzure) -tárházban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -   [Szükséges felhasználók létrehozása a DB2 pureScale szolgáltatás telepítéséhez](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 

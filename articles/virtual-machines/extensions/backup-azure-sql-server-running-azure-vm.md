@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: b17e4031edaedc6b0a63d305d20a77e5b58f91ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84ff3e18cf488f5536d5945d7b8fc8d78882424e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80247384"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511177"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Az Azure-beli virtuális gépen futó SQL Server Azure Backup
 
@@ -26,7 +26,7 @@ A támogatott forgatókönyvek listáját a Azure Backup által támogatott [tá
 
 ## <a name="network-connectivity"></a>Hálózati kapcsolat
 
-Azure Backup támogatja a NSG-címkéket, a proxykiszolgáló vagy a felsorolt IP-címtartományok telepítését; az egyes módszerekkel kapcsolatos részletekért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity).
+Azure Backup támogatja a NSG-címkéket, a proxykiszolgáló vagy a felsorolt IP-címtartományok telepítését; az egyes módszerekkel kapcsolatos részletekért tekintse meg ezt a [cikket](../../backup/backup-sql-server-database-azure-vms.md#establish-network-connectivity).
 
 ## <a name="extension-schema"></a>Bővítményséma
 
@@ -102,7 +102,7 @@ Azt javasoljuk, hogy a AzureBackupWindowsWorkload bővítményt a virtuális gé
 
 ## <a name="powershell-deployment"></a>PowerShell-telepítés
 
-Regisztrálnia kell az Azure-beli virtuális gépet, amely tartalmazza az SQL-alkalmazást a Recovery Services-tárolóval. A regisztráció során a rendszer telepíti a AzureBackupWindowsWorkload bővítményt a virtuális gépre. A virtuális gép regisztrálásához használja a [Register-AzRecoveryServicesBackupContainerPS](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) parancsmagot.
+Regisztrálnia kell az Azure-beli virtuális gépet, amely tartalmazza az SQL-alkalmazást a Recovery Services-tárolóval. A regisztráció során a rendszer telepíti a AzureBackupWindowsWorkload bővítményt a virtuális gépre. A virtuális gép regisztrálásához használja a [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0) parancsmagot.
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
@@ -111,7 +111,7 @@ Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagemen
 
 A parancs visszaküldi az erőforrás **biztonsági mentési tárolóját** , és a rendszer **regisztrálja**az állapotot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [További](https://docs.microsoft.com/azure/backup/backup-sql-server-azure-troubleshoot) információ az Azure SQL Server VM Backup hibaelhárítási irányelveiről
-- [Gyakori kérdések](https://docs.microsoft.com/azure/backup/faq-backup-sql-server) az Azure Virtual Machines szolgáltatásban (VM) futó SQL Server adatbázisok biztonsági mentéséről és azokról, amelyek az Azure Backup szolgáltatást használják.
+- [További](../../backup/backup-sql-server-azure-troubleshoot.md) információ az Azure SQL Server VM Backup hibaelhárítási irányelveiről
+- [Gyakori kérdések](../../backup/faq-backup-sql-server.md) az Azure Virtual Machines szolgáltatásban (VM) futó SQL Server adatbázisok biztonsági mentéséről és azokról, amelyek az Azure Backup szolgáltatást használják.

@@ -3,11 +3,13 @@ title: Kézbesítetlen levelek várólistáinak Service Bus | Microsoft Docs
 description: A Azure Service Bus kézbesítetlen levelek várólistáinak leírása. Service Bus várólisták és témakör-előfizetések másodlagos alvárólistát biztosítanak, amelyet kézbesítetlen levelek várólistájának nevezünk.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 62db4e71d99d1242cfbb69bdb7979bf9e5dc67ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7078a7889947c4121713e9374d1487f408fed871
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337581"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511211"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>A kézbesítetlen levelek várólistájának Service Bus áttekintése
 
@@ -56,7 +58,7 @@ Ez a viselkedés nem tiltható le, de a [MaxDeliveryCount](/dotnet/api/microsoft
 
 Ha a [QueueDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) vagy a [SubscriptionDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) tulajdonság értéke **true** (az alapértelmezett érték a **false**), a rendszer az összes lejáró üzenetet áthelyezi a DLQ, és megadja az `TTLExpiredException` okkódot.
 
-A lejárt üzenetek csak akkor törlődnek, és átkerülnek a DLQ, ha van legalább egy aktív fogadó a fő sorból vagy előfizetésből. Ez a viselkedés a tervezés szerint történik.
+A lejárt üzenetek csak akkor törlődnek és átkerülnek a DLQ, ha van legalább egy aktív fogadó a fő sorból vagy előfizetésből, a [késleltetett üzenetek](./message-deferral.md) pedig nem törlődnek, és a lejáratuk után a kézbesítetlen levelek várólistára kerülnek. Ezek a viselkedések a tervek szerint vannak kialakítva.
 
 ## <a name="errors-while-processing-subscription-rules"></a>Hibák az előfizetési szabályok feldolgozásakor
 
@@ -108,7 +110,7 @@ A kézbesítetlen levelek várólistáját a következő szintaxissal érheti el
 Ha a .NET SDK-t használja, a kézbesítetlen levelek várólistájának elérési útját a SubscriptionClient. FormatDeadLetterPath () metódus használatával érheti el. Ez a metódus a következő témakört veszi fel: név/előfizetés neve és utótagja a **/$DeadLetterQueue**.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Service Bus várólistákkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 

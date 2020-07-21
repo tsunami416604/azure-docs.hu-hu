@@ -3,17 +3,18 @@ title: A System Center Data Protection Manager hibaelhárítása
 description: Ebből a cikkből megtudhatja, milyen problémák merülhetnek fel a System Center Data Protection Manager használata során.
 ms.topic: troubleshooting
 ms.date: 01/30/2019
-ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84646f34d905b570855f655465529eb19b717cab
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75664748"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513812"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>A System Center Data Protection Manager hibaelhárítása
 
 Ez a cikk a Data Protection Manager használata során felmerülő problémák megoldásait ismerteti.
 
-A System Center Data Protection Manager legújabb kibocsátási megjegyzései a [System Center dokumentációjában](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016)olvashatók. További információ a Data Protection Manager támogatásáról [ebben a mátrixban](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016).
+A System Center Data Protection Manager legújabb kibocsátási megjegyzései a [System Center dokumentációjában](/system-center/dpm/dpm-release-notes)olvashatók. További információ a Data Protection Manager támogatásáról [ebben a mátrixban](/system-center/dpm/dpm-protection-matrix).
 
 ## <a name="error-replica-is-inconsistent"></a>Hiba: a replika inkonzisztens
 

@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: metrics
-ms.openlocfilehash: 14079f42fd857495396a0c44fd3bdeaf4371ea5f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 208515b7541948ca6913e6fda092c6a424de85f9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83650541"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515784"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Windows rendszerű virtuális gép Azure Resource Manager-sablonjának használatával
 Az Azure-beli virtuális gépek vendég operációs rendszeréről származó teljesítményadatokat a rendszer nem gyűjti automatikusan, mint más [platform metrikákat](../insights/monitor-azure-resource.md#monitoring-data). Telepítse a Azure Monitor [diagnosztikai bővítményt](diagnostics-extension-overview.md) a vendég operációs rendszer metrikáinak összegyűjtéséhez a metrikák adatbázisába, hogy az Azure monitor metrikák összes szolgáltatásával használható legyen, beleértve a közel valós idejű riasztásokat, a diagramokat, az útválasztást és a REST API elérését. Ez a cikk azt ismerteti, hogyan lehet a vendég operációs rendszer teljesítményének mérőszámait egy Windows rendszerű virtuális géphez a metrikai adatbázishoz Resource Manager-sablon használatával elküldeni. 
@@ -24,9 +25,9 @@ Ha most ismerkedik a Resource Manager-sablonokkal, ismerkedjen meg a [sablonok k
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az előfizetést regisztrálni kell a [Microsoft. ininsights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)szolgáltatásban.
+- Az előfizetést regisztrálni kell a [Microsoft. ininsights](../../azure-resource-manager/management/resource-providers-and-types.md)szolgáltatásban.
 
-- [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve kell lennie.
+- [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](../../cloud-shell/overview.md) telepítve kell lennie.
 
 - A virtuális gép erőforrásának olyan régióban kell lennie [, amely támogatja az egyéni metrikákat](metrics-custom-overview.md#supported-regions). 
 
@@ -283,6 +284,5 @@ A Resource Manager-sablon üzembe helyezéséhez kihasználjuk a Azure PowerShel
 7. A metrikák legördülő menüben válassza a **memória \% által véglegesített bájtok használatban**lehetőséget.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.
-

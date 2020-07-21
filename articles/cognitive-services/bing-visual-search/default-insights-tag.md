@@ -10,16 +10,16 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a11bf408f06b5c4e621f0af1f71f23c335dc2069
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60510122"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512639"
 ---
 # <a name="default-insights-tag"></a>Alapértelmezett adatáttekintési címke
 
-Az alapértelmezett adatáttekintési címke az a `displayName` mező, amely üres karakterláncra van beállítva. Az alábbi példa az alapértelmezett adatmennyiségek (műveletek) lehetséges listáját mutatja. A válasz részét képező műveletek listája a rendszerképtől függ. Az egyes műveletek esetében a tulajdonságok listája a rendszerképtől függően változhat, ezért ellenőrizze, hogy a tulajdonság létezik-e, mielőtt megpróbálja használni.
+Az alapértelmezett adatáttekintési címke az a mező, amely `displayName` üres karakterláncra van beállítva. Az alábbi példa az alapértelmezett adatmennyiségek (műveletek) lehetséges listáját mutatja. A válasz részét képező műveletek listája a rendszerképtől függ. Az egyes műveletek esetében a tulajdonságok listája a rendszerképtől függően változhat, ezért ellenőrizze, hogy a tulajdonság létezik-e, mielőtt megpróbálja használni.
 
 ```json
 {
@@ -421,8 +421,16 @@ A DocumentLevelSuggestions Insight a javasolt keresési kifejezések listáját 
       }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a Bing-információk [használatának példáit](bing-insights-usage.md) , hogy megtudja, hogyan jelenítheti meg a Bing a vizualizációs információkat.
 
-Az első kérésének gyors megkezdéséhez tekintse meg a rövid útmutatókat: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+Az első kérés gyors megkezdéséhez tekintse meg a rövid útmutatókat:
+
+* [C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md).

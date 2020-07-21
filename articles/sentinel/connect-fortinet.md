@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 72ba4acd694933db503b01611e63867af99a129f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa8599cbaab6af00d7b4122b94c9e24870881f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555961"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511330"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>A Fortinet és az Azure Sentinel összekötése
 
@@ -36,12 +36,14 @@ Konfigurálja a Fortinet a syslog-üzenetek CEF formátumban való továbbítás
 
 1. Nyissa meg a CLI-t a Fortinet készüléken, és futtassa a következő parancsokat:
 
-        config log syslogd setting
-        set format cef
-        set port 514
-        set server <ip_address_of_Receiver>
-        set status enable
-        end
+    ```console
+    config log syslogd setting
+    set format cef
+    set port 514
+    set server <ip_address_of_Receiver>
+    set status enable
+    end
+    ```
 
     - Cserélje le a kiszolgáló **IP-címét** az ügynök IP-címére.
     - Állítsa a **syslog portot** **514** -re vagy az ügynökön beállított portra.
@@ -55,7 +57,7 @@ Konfigurálja a Fortinet a syslog-üzenetek CEF formátumban való továbbítás
 1. Folytassa a [3. lépéssel: a kapcsolat ellenőrzése](connect-cef-verify.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan csatlakoztathatók a Fortinet-készülékek az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

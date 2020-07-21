@@ -3,16 +3,15 @@ title: Azure-előfizetési korlátok és kvóták
 description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, kvótáinak és megkötéseinek listáját jeleníti meg. Ez a cikk a korlátok növelésével és a maximális értékekkel kapcsolatos tudnivalókat tartalmazza.
 ms.topic: conceptual
 author: davidsmatlak
-ms.author: v-dasmat
 ms.date: 06/04/2020
-ms.openlocfilehash: 594e34a07cf2c370546e59ebe59df1de88eb2aa4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ffe0703fbbea75b221dfc6fd16f334dcf58e8ab3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080975"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515871"
 ---
-# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései
+# <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései
 
 Ez a dokumentum felsorolja a leggyakoribb Microsoft Azure-korlátozásokat, amelyeket más néven kvótának is nevezünk.
 
@@ -377,6 +376,10 @@ Azure Files korlátozásokkal kapcsolatos további információkért lásd: [Azu
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
 További információ: [virtuális gépek méretei](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+
+#### <a name="disk-encryption-sets"></a>Lemezes titkosítási készletek
+
+A 50-es lemezes titkosítási készletek régiónként, előfizetések szerint vannak korlátozva. További információt a [Linux](/azure/virtual-machines/linux/disk-encryption#restrictions) vagy [Windows rendszerű](/azure/virtual-machines/windows/disk-encryption#restrictions) virtuális gépek titkosítási dokumentációjában talál. Ha a kvóta növelésére van szüksége, forduljon az Azure ügyfélszolgálatához.
 
 ### <a name="managed-virtual-machine-disks"></a>Felügyelt virtuális gépek lemezei
 

@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 734d4f9e3c9832d08b61d98c9f9c8fe860998135
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0cb7d1fa8dc9171c4baba09136d3a3c28d6c901c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660196"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510650"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás Premium Storagere Azure Site Recovery használatával
 
@@ -23,7 +24,7 @@ Site Recovery feladatátvételi teszteket biztosít a vész-helyreállítási gy
 
 Javasoljuk, hogy a Site Recovery használatával Premium Storage áttelepítését, mert ez a beállítás minimális állásidőt biztosít. Ezzel a beállítással elkerülhető a lemezek másolásának manuális végrehajtása és az új virtuális gépek létrehozása is. A Site Recovery rendszeresen másolja a lemezeket, és új virtuális gépeket hoz létre a feladatátvétel során. 
 
-Site Recovery számos feladatátvételi típust támogat minimális vagy állásidő nélkül. Az állásidő és a becslés adatvesztésének megtervezéséhez tekintse meg a [feladatátvétel típusát site Recoveryban](../../site-recovery/site-recovery-failover.md). Ha a [feladatátvételt követően előkészíti az Azure-beli virtuális gépekhez való csatlakozást](../../site-recovery/vmware-walkthrough-overview.md), akkor a feladatátvételt követően az RDP használatával csatlakoznia kell az Azure-beli virtuális géphez.
+Site Recovery számos feladatátvételi típust támogat minimális vagy állásidő nélkül. Az állásidő és a becslés adatvesztésének megtervezéséhez tekintse meg a [feladatátvétel típusát site Recoveryban](../../site-recovery/site-recovery-failover.md). Ha a [feladatátvételt követően előkészíti az Azure-beli virtuális gépekhez való csatlakozást](../../site-recovery/vmware-azure-tutorial.md), akkor a feladatátvételt követően az RDP használatával csatlakoznia kell az Azure-beli virtuális géphez.
 
 ![Vész-helyreállítási diagram][1]
 
@@ -31,7 +32,7 @@ Site Recovery számos feladatátvételi típust támogat minimális vagy állás
 
 Ezek az Site Recovery összetevők az áttelepítési forgatókönyv szempontjából fontosak:
 
-* A **konfigurációs kiszolgáló** egy Azure-beli virtuális gép, amely összehangolja a kommunikációt és kezeli az adatreplikálási és helyreállítási folyamatokat. Ezen a virtuális gépen egyetlen telepítési fájlt kell futtatnia a konfigurációs kiszolgáló és egy további, a Process Server nevű, replikációs átjáróként működő összetevő telepítéséhez. További információ a [konfigurációs kiszolgáló előfeltételeiről](../../site-recovery/vmware-walkthrough-overview.md). A konfigurációs kiszolgálót csak egyszer kell beállítania, és az összes áttelepítéshez használhatja azt ugyanahhoz a régióhoz.
+* A **konfigurációs kiszolgáló** egy Azure-beli virtuális gép, amely összehangolja a kommunikációt és kezeli az adatreplikálási és helyreállítási folyamatokat. Ezen a virtuális gépen egyetlen telepítési fájlt kell futtatnia a konfigurációs kiszolgáló és egy további, a Process Server nevű, replikációs átjáróként működő összetevő telepítéséhez. További információ a [konfigurációs kiszolgáló előfeltételeiről](../../site-recovery/vmware-azure-tutorial.md). A konfigurációs kiszolgálót csak egyszer kell beállítania, és az összes áttelepítéshez használhatja azt ugyanahhoz a régióhoz.
 
 * A **Process Server** egy replikációs átjáró, amely: 
 
@@ -41,7 +42,7 @@ Ezek az Site Recovery összetevők az áttelepítési forgatókönyv szempontjá
 
   Emellett a mobilitási szolgáltatás leküldéses telepítését is kezeli a forrásként szolgáló virtuális gépekre, és elvégzi a forrás virtuális gépek automatikus felderítését. Az alapértelmezett Process Server telepítve van a konfigurációs kiszolgálón. Az üzemelő példány skálázásához további önálló folyamat-kiszolgálókat is telepíthet. További információ [a Process Server-telepítéssel kapcsolatos ajánlott](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/) eljárásokról és a [további folyamat-kiszolgálók üzembe helyezéséről](../../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers). A folyamat-kiszolgálót csak egyszer kell beállítania, és az összes áttelepítéshez használhatja azt ugyanahhoz a régióhoz.
 
-* A **mobilitási szolgáltatás** egy olyan összetevő, amely minden replikálni kívánt szabványos virtuális gépen telepítve van. Rögzíti az adatírásokat a szabványos virtuális gépen, és továbbítja azokat a Process Servernek. További információ a [replikált gépek előfeltételeiről](../../site-recovery/vmware-walkthrough-overview.md).
+* A **mobilitási szolgáltatás** egy olyan összetevő, amely minden replikálni kívánt szabványos virtuális gépen telepítve van. Rögzíti az adatírásokat a szabványos virtuális gépen, és továbbítja azokat a Process Servernek. További információ a [replikált gépek előfeltételeiről](../../site-recovery/vmware-azure-tutorial.md).
 
 Ez a kép bemutatja, hogyan hatnak ezek az összetevők:
 
@@ -50,7 +51,7 @@ Ez a kép bemutatja, hogyan hatnak ezek az összetevők:
 > [!NOTE]
 > A Site Recovery nem támogatja a tárolóhelyek lemezének áttelepítését.
 
-További összetevők más forgatókönyvekhez: forgatókönyv- [architektúra](../../site-recovery/vmware-walkthrough-overview.md).
+További összetevők más forgatókönyvekhez: forgatókönyv- [architektúra](../../site-recovery/vmware-azure-tutorial.md).
 
 ## <a name="azure-essentials"></a>Azure Essentials
 
@@ -68,11 +69,11 @@ Ezek az áttelepítési forgatókönyvre vonatkozó Azure-követelmények:
 
 ## <a name="setup-and-migration-steps"></a>Telepítési és áttelepítési lépések
 
-Site Recovery használatával áttelepítheti az Azure IaaS virtuális gépeket régiók vagy ugyanazon régión belül. A következő utasítások erre az áttelepítési forgatókönyvre vonatkoznak a [VMWare virtuális gépeket vagy fizikai kiszolgálókat az Azure-ba replikáló](../../site-recovery/vmware-walkthrough-overview.md)cikkből. Az ebben a cikkben található utasításokon felül kövesse a hivatkozásokat a részletes lépésekhez.
+Site Recovery használatával áttelepítheti az Azure IaaS virtuális gépeket régiók vagy ugyanazon régión belül. A következő utasítások erre az áttelepítési forgatókönyvre vonatkoznak a [VMWare virtuális gépeket vagy fizikai kiszolgálókat az Azure-ba replikáló](../../site-recovery/vmware-azure-tutorial.md)cikkből. Az ebben a cikkben található utasításokon felül kövesse a hivatkozásokat a részletes lépésekhez.
 
 ### <a name="step-1-create-a-recovery-services-vault"></a>1. lépés: Recovery Services-tároló létrehozása
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 2. Válassza **az erőforrás létrehozása**  >  **Management**  >  **biztonsági mentés** és **site Recovery (OMS)** lehetőséget. Választhatja a **Tallózás**  >  **Recovery Services**tár  >  **hozzáadása**lehetőséget is. 
 3. Itt adhatja meg azt a régiót, amelyet a virtuális gépek replikálnak a rendszerbe. Ugyanabban a régióban a Migrálás céljából válassza ki azt a régiót, ahol a forrásként használt virtuális gépek és a forrás Storage-fiókok találhatók. 
 
@@ -99,7 +100,7 @@ Site Recovery használatával áttelepítheti az Azure IaaS virtuális gépeket 
 
    ![Kiszolgáló ablaktábla hozzáadása a kiválasztott konfigurációs kiszolgálóval][5]
 
-3. Azon a virtuális gépen, amelyet konfigurációs kiszolgálóként használ, futtassa az egyesített telepítőt a konfigurációs kiszolgáló és a Process Server telepítéséhez. A [képernyőképek](../../site-recovery/vmware-walkthrough-overview.md) segítségével elvégezheti a telepítést. Az áttelepítési forgatókönyvhöz megadott lépésekért tekintse meg az alábbi képernyőképeket.
+3. Azon a virtuális gépen, amelyet konfigurációs kiszolgálóként használ, futtassa az egyesített telepítőt a konfigurációs kiszolgáló és a Process Server telepítéséhez. A [képernyőképek](../../site-recovery/vmware-azure-tutorial.md) segítségével elvégezheti a telepítést. Az áttelepítési forgatókönyvhöz megadott lépésekért tekintse meg az alábbi képernyőképeket.
 
    1. A **Kezdés előtt**válassza **a konfigurációs kiszolgáló és a Process Server telepítése**lehetőséget.
 
@@ -133,7 +134,7 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
 
 ### <a name="step-5-set-up-replication-settings"></a>5. lépés: a replikációs beállítások beállítása
 
-Annak ellenőrzéséhez, hogy a konfigurációs kiszolgáló sikeresen hozzá van-e rendelve a létrehozott replikációs házirendhez, kövesse a [replikációs beállítások beállítása](../../site-recovery/vmware-walkthrough-overview.md)című témakört.
+Annak ellenőrzéséhez, hogy a konfigurációs kiszolgáló sikeresen hozzá van-e rendelve a létrehozott replikációs házirendhez, kövesse a [replikációs beállítások beállítása](../../site-recovery/vmware-azure-tutorial.md)című témakört.
 
 ### <a name="step-6-plan-capacity"></a>6. lépés: kapacitás megtervezése
 
@@ -144,11 +145,11 @@ Annak ellenőrzéséhez, hogy a konfigurációs kiszolgáló sikeresen hozzá va
 
 ### <a name="step-7-install-the-mobility-service-and-enable-replication"></a>7. lépés: a mobilitási szolgáltatás telepítése és a replikáció engedélyezése
 
-1. Dönthet úgy, hogy [leküldi a telepítést](../../site-recovery/vmware-walkthrough-overview.md) a forrás virtuális gépekre, vagy [manuálisan telepíti a mobilitási szolgáltatást](../../site-recovery/site-recovery-vmware-to-azure-install-mob-svc.md) a forrásként szolgáló virtuális gépekre. A telepítés és a manuális telepítő elérési útjának megadására vonatkozó követelményt a megadott hivatkozásban találja. Ha manuális telepítést végez, előfordulhat, hogy belső IP-címet kell használnia a konfigurációs kiszolgáló megtalálásához.
+1. Dönthet úgy, hogy [leküldi a telepítést](../../site-recovery/vmware-azure-tutorial.md) a forrás virtuális gépekre, vagy [manuálisan telepíti a mobilitási szolgáltatást](../../site-recovery/vmware-azure-install-mobility-service.md) a forrásként szolgáló virtuális gépekre. A telepítés és a manuális telepítő elérési útjának megadására vonatkozó követelményt a megadott hivatkozásban találja. Ha manuális telepítést végez, előfordulhat, hogy belső IP-címet kell használnia a konfigurációs kiszolgáló megtalálásához.
 
    ![Konfigurációs kiszolgáló részletei lap][12]
 
-   A feladatátvételen átesett virtuális gépnek két ideiglenes lemeze lesz: egyet az elsődleges virtuális gépről, a másikat pedig a virtuális gép üzembe helyezése során hozta létre a helyreállítási régióban. Ha ki szeretné zárni az ideiglenes lemezt a replikáció előtt, telepítse a mobilitási szolgáltatást a replikáció engedélyezése előtt. További információ az ideiglenes lemez kizárásáról: [Lemezek kizárása a replikációból](../../site-recovery/vmware-walkthrough-overview.md).
+   A feladatátvételen átesett virtuális gépnek két ideiglenes lemeze lesz: egyet az elsődleges virtuális gépről, a másikat pedig a virtuális gép üzembe helyezése során hozta létre a helyreállítási régióban. Ha ki szeretné zárni az ideiglenes lemezt a replikáció előtt, telepítse a mobilitási szolgáltatást a replikáció engedélyezése előtt. További információ az ideiglenes lemez kizárásáról: [Lemezek kizárása a replikációból](../../site-recovery/vmware-azure-tutorial.md).
 
 2. A replikációt a következők szerint engedélyezheti:
    1. Válassza az **alkalmazás**  >  **forrásának**replikálása lehetőséget. Miután az első alkalommal engedélyezte a replikálást, kattintson a **+ replikálás** a tárolóban lehetőségre a további gépek replikációjának engedélyezéséhez.
@@ -157,7 +158,7 @@ Annak ellenőrzéséhez, hogy a konfigurációs kiszolgáló sikeresen hozzá va
    4. A 3. lépésben adja hozzá a védett virtuális gépeket IP-cím szerint. (Szükség lehet egy belső IP-cím megkeresésére.)
    5. A 4. lépésben konfigurálja a tulajdonságokat úgy, hogy kiválasztja a korábban a Process Serveren beállított fiókokat.
    6. Az 5. lépésben válassza ki azt a replikációs házirendet, amelyet korábban a "5. lépés: replikációs beállítások beállítása" című témakörben hozott létre.
-   7. Válassza az **OK** lehetőséget.
+   7. Kattintson az **OK** gombra.
 
    > [!NOTE]
    > Ha egy Azure-beli virtuális gép fel van foglalva és újra elindult, nincs garancia arra, hogy ugyanazt az IP-címet kapja. Ha a konfigurációs kiszolgáló vagy folyamat kiszolgálójának vagy a védett Azure-beli virtuális gépeknek az IP-címe megváltozik, előfordulhat, hogy az ebben a forgatókönyvben lévő replikáció nem fog megfelelően működni.
@@ -174,7 +175,7 @@ A feladatátvétel utáni üzembe helyezési modellt igény szerint választhatj
 
 A replikálás befejezésének megadásához válassza ki a site Recovery példányt, majd válassza a **Beállítások**  >  **replikált elemek**lehetőséget. Ekkor megtekintheti a replikációs folyamat állapotát és százalékos arányát. 
 
-A kezdeti replikáció befejezését követően futtasson egy feladatátvételi tesztet a replikációs stratégia ellenőrzéséhez. A feladatátvételi teszt részletes lépéseiért lásd: [feladatátvételi teszt futtatása site Recoveryban](../../site-recovery/vmware-walkthrough-overview.md). 
+A kezdeti replikáció befejezését követően futtasson egy feladatátvételi tesztet a replikációs stratégia ellenőrzéséhez. A feladatátvételi teszt részletes lépéseiért lásd: [feladatátvételi teszt futtatása site Recoveryban](../../site-recovery/vmware-azure-tutorial.md). 
 
 > [!NOTE]
 > A feladatátvétel futtatása előtt győződjön meg arról, hogy a virtuális gépek és a replikációs stratégia megfelel a követelményeknek. További információ a feladatátvételi teszt futtatásáról: [feladatátvételi teszt tesztelése az Azure-ban site Recovery](../../site-recovery/site-recovery-test-failover-to-azure.md).
@@ -192,19 +193,19 @@ Site Recovery létre fog hozni egy virtuálisgép-példányt, amelynek típusa a
 ## <a name="post-migration-steps"></a>A migrálást követő lépések
 
 1. **Ha alkalmazható, konfigurálja a replikált virtuális gépeket a rendelkezésre állási csoportba**. A Site Recovery nem támogatja a virtuális gépek áttelepítését a rendelkezésre állási csoporttal együtt. A replikált virtuális gép központi telepítésének függvényében hajtsa végre az alábbi műveletek egyikét:
-   * A klasszikus üzemi modellel létrehozott virtuális gépek esetében: vegye fel a virtuális gépet a rendelkezésre állási csoportba a Azure Portal. A részletes lépésekért lépjen a [meglévő virtuális gép hozzáadása egy rendelkezésre állási csoporthoz lehetőségre](../linux/classic/configure-availability-classic.md).
+   * A klasszikus üzemi modellel létrehozott virtuális gépek esetében: vegye fel a virtuális gépet a rendelkezésre állási csoportba a Azure Portal. A részletes lépésekért lépjen a [meglévő virtuális gép hozzáadása egy rendelkezésre állási csoporthoz lehetőségre](/previous-versions/azure/virtual-machines/linux/classic/configure-availability-classic).
    * A Resource Manager-alapú üzemi modellel létrehozott virtuális gépek esetén mentse a virtuális gép konfigurációját, majd törölje és hozza létre újra a virtuális gépeket a rendelkezésre állási csoportból. Ehhez használja a szkriptet a [set Azure Resource Manager VM rendelkezésre állási készletben](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4). A szkript futtatása előtt tekintse át a korlátozásait, és tervezze meg az állásidőt.
 
-2. **Törölje a régi virtuális gépeket és lemezeket**. Győződjön meg arról, hogy a prémium szintű lemezek konzisztensek a forrásoldali lemezekkel, és hogy az új virtuális gépek ugyanazt a funkciót használják, mint a forrás virtuális gépek. Törölje a virtuális gépet, és törölje a forrásként szolgáló Storage-fiókok lemezeit a Azure Portal. Ha van olyan probléma, amelyben a lemez nincs törölve, bár törölte a virtuális gépet, tekintse meg a [tárolási erőforrások törlésével kapcsolatos hibák elhárítása](storage-resource-deletion-errors.md)című témakört.
+2. **Törölje a régi virtuális gépeket és lemezeket**. Győződjön meg arról, hogy a prémium szintű lemezek konzisztensek a forrásoldali lemezekkel, és hogy az új virtuális gépek ugyanazt a funkciót használják, mint a forrás virtuális gépek. Törölje a virtuális gépet, és törölje a forrásként szolgáló Storage-fiókok lemezeit a Azure Portal. Ha van olyan probléma, amelyben a lemez nincs törölve, bár törölte a virtuális gépet, tekintse meg a [tárolási erőforrások törlésével kapcsolatos hibák elhárítása](../troubleshooting/storage-resource-deletion-errors.md)című témakört.
 
 3. **Tisztítsa meg az Azure site Recovery infrastruktúrát**. Ha Site Recoveryra már nincs szükség, megtisztíthatja infrastruktúráját. Törölje a replikált elemeket, a konfigurációs kiszolgálót és a helyreállítási szabályzatot, majd törölje a Azure Site Recovery-tárolót.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-* [A virtuális gépek és a fizikai kiszolgálók védelmének figyelése és hibakeresése](../../site-recovery/site-recovery-monitoring-and-troubleshooting.md)
-* [A Microsoft Q&egy kérdés oldalt Microsoft Azure Site Recovery](https://docs.microsoft.com/answers/topics/azure-site-recovery.html)
+* [A virtuális gépek és a fizikai kiszolgálók védelmének figyelése és hibakeresése](../../site-recovery/site-recovery-monitor-and-troubleshoot.md)
+* [A Microsoft Q&egy kérdés oldalt Microsoft Azure Site Recovery](/answers/topics/azure-site-recovery.html)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális gépek áttelepítésére vonatkozó konkrét forgatókönyvek esetében tekintse meg a következő forrásokat:
 

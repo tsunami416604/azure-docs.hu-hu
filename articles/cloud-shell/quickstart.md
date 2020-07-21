@@ -10,11 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3001e814a5f31725bfc78385d2435bbb0e971d40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79458069"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513020"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>A bash gyors üzembe helyezése Azure Cloud Shell
 
@@ -25,7 +26,7 @@ Ez a dokumentum részletesen ismerteti, hogyan használható a bash a [Azure Por
 
 ## <a name="start-cloud-shell"></a>Cloud Shell indítása
 1. **Cloud Shell** elindítása a Azure Portal legfelső navigációs sávján. <br>
-![](media/quickstart/shell-icon.png)
+![A Azure Portal Azure Cloud Shell indítását bemutató képernyőkép.](media/quickstart/shell-icon.png)
 
 2. Válasszon egy előfizetést, és hozzon létre egy Storage-fiókot, és Microsoft Azure a fájlok megosztását.
 3. Válassza a "tároló létrehozása" lehetőséget.
@@ -35,7 +36,7 @@ Ez a dokumentum részletesen ismerteti, hogyan használható a bash a [Azure Por
 
 ### <a name="select-the-bash-environment"></a>Bash-környezet kiválasztása
 Győződjön meg arról, hogy a környezet legördülő menüje a rendszerhéj ablakának bal oldali részén látható `Bash` . <br>
-![](media/quickstart/env-selector.png)
+![A Azure Cloud Shell bash-környezetének kijelölését bemutató képernyőkép.](media/quickstart/env-selector.png)
 
 ### <a name="set-your-subscription"></a>Előfizetés beállítása
 1. Azon előfizetések listázása, amelyekhez hozzáférése van.
@@ -43,15 +44,16 @@ Győződjön meg arról, hogy a környezet legördülő menüje a rendszerhéj a
    az account list
    ```
 
-2. Az előnyben részesített előfizetés beállítása: <br>
-```azurecli-interactive
-az account set --subscription 'my-subscription-name'
-```
+2. Az előnyben részesített előfizetés beállítása:
+
+   ```azurecli-interactive
+   az account set --subscription 'my-subscription-name'
+   ```
 
 > [!TIP]
 > Az előfizetést a későbbi munkamenetek esetén is megjegyezjük `/home/<user>/.azure/azureProfile.json` .
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Hozzon létre egy új erőforráscsoportot a "MyRG" nevű WestUS.
 ```azurecli-interactive
 az group create --location westus --name MyRG
@@ -72,7 +74,7 @@ A virtuális gépen lévő felhasználóneve a Cloud Shell ($) által használt 
 ### <a name="ssh-into-your-linux-vm"></a>SSH-t a linuxos virtuális gépre
 1. Keresse meg a virtuális gép nevét a Azure Portal keresési sávjában.
 2. Kattintson a "kapcsolódás" gombra a virtuális gép nevének és nyilvános IP-címének lekéréséhez. <br>
-   ![](media/quickstart/sshcmd-copy.png)
+   ![A Linux V M-vel való kapcsolódást bemutató képernyőkép.](media/quickstart/sshcmd-copy.png)
 
 3. SSH-t a virtuális gépre a `ssh` cmd fájllal.
    ```
@@ -80,7 +82,7 @@ A virtuális gépen lévő felhasználóneve a Cloud Shell ($) által használt 
    ```
 
 Az SSH-kapcsolatok létrehozásakor az Ubuntu Welcome promptot kell látnia. <br>
-![](media/quickstart/ubuntu-welcome.png)
+![Képernyőkép az Ubuntu inicializálásáról és az üdvözlő kérdésről az S S H kapcsolat létrehozása után.](media/quickstart/ubuntu-welcome.png)
 
 ## <a name="cleaning-up"></a>Takarítás 
 1. Lépjen ki az SSH-munkamenetből.
@@ -93,7 +95,7 @@ Az SSH-kapcsolatok létrehozásakor az Ubuntu Welcome promptot kell látnia. <br
    az group delete -n MyRG
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Tudnivalók a bash-fájlok megőrzéséről Cloud Shell](persisting-shell-storage.md) <br>
 [További tudnivalók az Azure CLI-ről](https://docs.microsoft.com/cli/azure/) <br>
 [Tudnivalók a Azure Files Storage szolgáltatásról](../storage/files/storage-files-introduction.md) <br>

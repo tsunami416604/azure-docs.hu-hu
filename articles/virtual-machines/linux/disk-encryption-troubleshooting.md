@@ -8,13 +8,14 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: eeacea9e3305865881747801100dc17770b7df63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abd802f19917b048f6d006b8e3097b08efaf22e2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970478"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510480"
 ---
-# <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption hibaelhárítási útmutató
+# <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Azure Disk Encryption Linux rendszerű virtuális gépek hibaelhárítási útmutatója
 
 Ez az útmutató olyan informatikai szakemberek, Információbiztonsági elemzők és Felhőbeli rendszergazdák számára készült, akiknek a vállalata Azure Disk Encryptiont használ. Ez a cikk segítséget nyújt a lemezes titkosítással kapcsolatos problémák elhárításában.
 
@@ -106,9 +107,9 @@ A Azure Disk Encryption PowerShell-lel való letiltásához használja a [disabl
 
 A CLI-vel való Azure Disk Encryption letiltásához használja [az az VM encryption disable](/cli/azure/vm/encryption)parancsot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a dokumentumban többet is megtudhat a Azure Disk Encryption és a problémák elhárításával kapcsolatos gyakori problémákról. A szolgáltatással és képességeivel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Lemez titkosításának alkalmazása Azure Security Center](../../security-center/security-center-apply-disk-encryption.md)
-- [Az Azure-beli adattitkosítás inaktív állapotban](../../security/fundamentals/encryption-atrest.md)
+- [Lemez titkosításának alkalmazása Azure Security Center](../../security-center/security-center-virtual-machine-protection.md)
+- [Inaktív adatok titkosítása az Azure-ban](../../security/fundamentals/encryption-atrest.md)

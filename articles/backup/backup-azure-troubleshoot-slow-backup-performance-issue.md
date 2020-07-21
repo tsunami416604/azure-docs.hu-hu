@@ -3,12 +3,12 @@ title: Fájlok és mappák lassú biztonsági mentésének hibáinak megoldása
 description: Hibaelhárítási útmutatót biztosít a Azure Backup teljesítményproblémák okának diagnosztizálásához
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 07f596f0900fbd92391a383678ade99df30592f1
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 7bdda02b837cc2312b997b23ba7b714ca7ebb41a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135037"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513832"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
 
@@ -47,7 +47,7 @@ A Windows a [teljesítmény figyelője](https://techcommunity.microsoft.com/t5/a
 
 Íme néhány teljesítményszámlálók és tartományok, amelyek hasznosak lehetnek a szűk keresztmetszetek optimális biztonsági mentéshez való diagnosztizálásában.
 
-| Számláló | Állapot |
+| Számláló | status |
 | --- | --- |
 | Logikai lemez (fizikai lemez) –% tétlen |<li> 100% tétlen – 50% tétlen = kifogástalan</br><li> 49% tétlen: 20% tétlen = figyelmeztetés vagy figyelő</br><li> 19% üresjáratban 0% tétlen = kritikus vagy a spec |
 | Logikai lemez (fizikai lemez) –% AVG. lemez olvasása vagy írása (mp) |<li> 0,001 MS – 0,015 MS = kifogástalan</br><li> 0,015 MS – 0,025 MS = figyelmeztetés vagy figyelő</br><li> 0,026 MS vagy több = kritikus vagy nem a spec |
@@ -95,7 +95,7 @@ A következő mutatók segítségével megismerheti a szűk keresztmetszeteket, 
 * **A felhasználói felületen az adatátvitel előrehaladása látható**. Az adatforgalom továbbra is átvitel alatt áll. Előfordulhat, hogy a hálózati sávszélesség vagy az adatméret késést okoz.
 * **A felhasználói felület nem mutatja az adatátvitel folyamatát**. Nyissa meg a C:\Program Files\Microsoft Azure Recovery Services Agent\Temp található naplókat, és keresse meg a FileProvider:: EndData bejegyzést a naplókban. Ez a bejegyzés azt jelzi, hogy az adatátvitel befejeződött, és a katalógus-művelet zajlik. Ne szakítsa meg a biztonsági mentési feladatokat. Ehelyett várjon egy kicsit, amíg a katalógus-művelet befejeződik. Ha a probléma továbbra is fennáll, forduljon az [Azure ügyfélszolgálatához](https://portal.azure.com/#create/Microsoft.Support).
 
-Ha nagyméretű lemezekről szeretne biztonsági mentést készíteni, ajánlott [Azure Data Box](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box) használni az első biztonsági mentéshez (kezdeti replikáció).  Ha nem tudja használni a Data Boxt, akkor a környezetben előforduló, hosszú adatátvitelt okozó átmeneti hálózati problémák a biztonsági mentési hibákhoz vezethetnek.  Ezeknek a hibáknak a védelme érdekében hozzáadhat néhány mappát a kezdeti biztonsági mentéshez, és további mappák növekményes hozzáadásával megőrizheti az Azure-ba történő biztonsági mentést.  A további növekményes biztonsági mentések viszonylag gyorsabbak lesznek.
+Ha nagyméretű lemezekről szeretne biztonsági mentést készíteni, ajánlott [Azure Data Box](./offline-backup-azure-data-box.md) használni az első biztonsági mentéshez (kezdeti replikáció).  Ha nem tudja használni a Data Boxt, akkor a környezetben előforduló, hosszú adatátvitelt okozó átmeneti hálózati problémák a biztonsági mentési hibákhoz vezethetnek.  Ezeknek a hibáknak a védelme érdekében hozzáadhat néhány mappát a kezdeti biztonsági mentéshez, és további mappák növekményes hozzáadásával megőrizheti az Azure-ba történő biztonsági mentést.  A további növekményes biztonsági mentések viszonylag gyorsabbak lesznek.
 
 ## <a name="next-steps"></a>Következő lépések
 

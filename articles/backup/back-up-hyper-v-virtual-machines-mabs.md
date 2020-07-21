@@ -3,12 +3,12 @@ title: Hyper-V rendszerű virtuális gépek biztonsági mentése a MABS-mel
 description: Ez a cikk a virtuális gépek Microsoft Azure Backup Server (MABS) használatával történő biztonsági mentésének és helyreállításának eljárásait tartalmazza.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80420400"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514551"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Hyper-V rendszerű virtuális gépek biztonsági mentése Azure Backup Server
 
@@ -153,6 +153,6 @@ Amikor biztonsági másolatba mentett virtuális gépeket állít helyre, a Hely
 
 7. A helyreállítási feladatra vonatkozó információk a **Helyreállítás állapota** képernyőn jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Adatok helyreállítása az Azure Backup Serverről](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)
+[Adatok helyreállítása az Azure Backup Serverről](./backup-azure-alternate-dpm-server.md)

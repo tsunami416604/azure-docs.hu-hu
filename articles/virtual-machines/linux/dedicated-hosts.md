@@ -6,13 +6,14 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: c19b3410e106aaf5fed53aba45d06eac6dd9d601
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e19f74c40bbeb83c9230e620c4488778823ef99
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78970731"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510803"
 ---
-# <a name="azure-dedicated-hosts"></a>Dedikált Azure-gazdagépek
+# <a name="azure-dedicated-hosts-for-virtual-machines"></a>Azure dedikált gazdagépek virtuális gépekhez
 
 Az Azure dedikált gazdagép olyan szolgáltatás, amely fizikai kiszolgálókat biztosít, amelyek egy vagy több virtuális gép üzemeltetésére alkalmasak egyetlen Azure-előfizetéshez. A dedikált gazdagépek ugyanazok a fizikai kiszolgálók, amelyek az adatközpontokban, erőforrásként vannak megadva. Dedikált gazdagépeket a régión, a rendelkezésre állási zónán és a tartalék tartományon belül is kiépítheti. Ezután elhelyezheti a virtuális gépeket közvetlenül a kiépített gazdagépeken, bármilyen konfigurációban, amely a legjobban megfelel az igényeinek.
 
@@ -21,7 +22,7 @@ Az Azure dedikált gazdagép olyan szolgáltatás, amely fizikai kiszolgálókat
 [!INCLUDE [virtual-machines-common-dedicated-hosts](../../../includes/virtual-machines-common-dedicated-hosts.md)]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A dedikált gazdagépeket az [Azure CLI](dedicated-hosts-cli.md), a [portál](dedicated-hosts-portal.md)és a [PowerShell](../windows/dedicated-hosts-powershell.md)használatával helyezheti üzembe.
 

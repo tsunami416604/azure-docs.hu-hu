@@ -4,11 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja helyre a fájlok
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ded26718f176629f6c53ae90abf3c7e69b4df893
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a594b9636dcb4e584fd10a17bca6c48c2d1fb960
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027165"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514084"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása az Azure-beli virtuális gépek biztonsági másolatából
 
@@ -181,7 +182,7 @@ mount [RAID Disk Path] [/mountpath]
 
 Ha a RAID-lemezen van egy másik LVM konfigurálva, akkor használja a fenti eljárást az LVM-partíciók esetében, de használja a kötet nevét a RAID-lemez nevének helyén.
 
-## <a name="system-requirements"></a>System requirements (Rendszerkövetelmények)
+## <a name="system-requirements"></a>Rendszerkövetelmények
 
 ### <a name="for-windows-os"></a>Windows operációs rendszer esetén
 
@@ -325,9 +326,9 @@ A szülő/biztonsági mentés alatt lévő virtuális gépen található összes
 
 A parancsfájl csak olvasási hozzáférést biztosít egy helyreállítási ponthoz, és csak 12 órára érvényes. Ha korábban el szeretné távolítani a hozzáférést, jelentkezzen be az Azure Portalra, a PowerShellbe vagy a CLI-be, és válassza le az adott helyreállítási ponthoz a **leválasztott lemezeket** . A parancsfájl azonnal érvénytelenítve lesz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A fájlok visszaállítása során felmerülő problémákért tekintse meg a [hibaelhárítási](#troubleshooting) szakaszt.
-- Ismerje meg, hogyan [állíthatja vissza a fájlokat a PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-files-from-an-azure-vm-backup) használatával
-- Ismerje meg, hogyan [állíthatja vissza a fájlokat az Azure CLI-n keresztül](https://docs.microsoft.com/azure/backup/tutorial-restore-files)
-- A virtuális gép visszaállítása után megtudhatja, hogyan [kezelheti a biztonsági mentéseket](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms)
+- Ismerje meg, hogyan [állíthatja vissza a fájlokat a PowerShell](./backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup) használatával
+- Ismerje meg, hogyan [állíthatja vissza a fájlokat az Azure CLI-n keresztül](./tutorial-restore-files.md)
+- A virtuális gép visszaállítása után megtudhatja, hogyan [kezelheti a biztonsági mentéseket](./backup-azure-manage-vms.md)

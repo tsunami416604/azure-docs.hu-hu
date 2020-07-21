@@ -8,11 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: fc460abe65709f90ff22e1ec6f8e47b315db7f67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 402fd8da8e29e8f3fec6747be5d9480ca176fc55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84555238"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511398"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Egyéni elemzők hozzáadása karakterlánc-mezőkhöz Azure Cognitive Search indexben
 
@@ -134,7 +135,7 @@ A char szűrők, a tokenizers és a jogkivonat-szűrők definíciói csak akkor 
 
 Az [REST API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) **tesztelési elemző műveletével** megtekintheti, hogy az elemző hogyan szakítja meg az adott szöveget a jogkivonatokban.
 
-**Kérés**
+**Kérelem**
 ```
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
   Content-Type: application/json
@@ -199,17 +200,17 @@ Az elemzők esetében az index attribútumai eltérőek lehetnek, attól függő
 
 #### <a name="predefined-analyzers"></a>Előre definiált elemzők
 
-|||  
-|-|-|  
-|Name|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
+| Típus | Leírás |
+| ---- | ----------- |  
+|Név|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
 |Típus|Elemző típusa a támogatott elemzők listájából. Tekintse meg az alábbi **analyzer_type** oszlopot az [elemzők](#AnalyzerTable) táblázatban.|  
 |Beállítások|Az alábbi, az [elemzők](#AnalyzerTable) táblázatban szereplő, előre definiált analizátorok érvényes beállításainak kell lenniük.|  
 
 #### <a name="custom-analyzers"></a>Egyéni elemzők
 
-|||  
-|-|-|  
-|Name|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
+| Típus | Leírás |
+| ---- | ----------- |  
+|Név|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
 |Típus|A következőnek kell lennie: "#Microsoft. Azure. Search. CustomAnalyzer".|  
 |CharFilters|Az index definíciójában megadott char Filters [táblában vagy](#char-filters-reference) egy egyéni char szűrőben felsorolt előre definiált karakteres szűrők egyikére kell beállítani.|  
 |Tokenizer|Kötelező. Az alábbi [tokenizers](#Tokenizers) táblázatban felsorolt előre definiált tokenizers egyikére vagy az index definíciójában megadott egyéni tokenizer értékre kell állítani.|  
@@ -224,9 +225,9 @@ Az elemzők esetében az index attribútumai eltérőek lehetnek, attól függő
 
  Egy char-szűrő segítségével előkészítheti a bemeneti szöveget, mielőtt a tokenizer feldolgozza azt. Például lecserélhetik bizonyos karaktereket vagy szimbólumokat. Egy egyéni elemzőben több char-szűrő is megadható. A char-szűrők a felsorolt sorrendben futnak.  
 
-|||  
-|-|-|  
-|Name|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
+| Típus | Leírás |
+| ---- | ----------- | 
+|Név|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
 |Típus|Char Filter típus a támogatott char-szűrők listájából. Lásd az alábbi [karakteres szűrők](#char-filters-reference) táblázat **char_filter_type** oszlopát.|  
 |Beállítások|Egy adott [char-szűrő](#char-filters-reference) típus érvényes beállításainak kell lennie.|  
 
@@ -237,9 +238,9 @@ Az elemzők esetében az index attribútumai eltérőek lehetnek, attól függő
  Egyéni analizátorok esetében pontosan egy tokenizer adhat meg. Ha egynél több tokenizer van szüksége, több egyéni elemzőt is létrehozhat, és kioszthatja őket egy mező – mező alapján az index sémában.  
 Az egyéni elemzők az alapértelmezett vagy a testreszabott beállításokkal előre definiált tokenizer is használhatnak.  
 
-|||  
-|-|-|  
-|Name|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
+| Típus | Leírás |
+| ---- | ----------- | 
+|Név|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
 |Típus|A Tokenizer neve a támogatott tokenizers listájáról. Tekintse meg **tokenizer_type** oszlopot az alábbi [Tokenizers](#Tokenizers) táblázatban.|  
 |Beállítások|A megadott tokenizer-típus érvényes beállításainak kell lennie, amely az alábbi [Tokenizers](#Tokenizers) táblázatban látható.|  
 
@@ -248,9 +249,9 @@ Az egyéni elemzők az alapértelmezett vagy a testreszabott beállításokkal e
  A jogkivonat-szűrő a tokenizer által generált jogkivonatok kiszűrésére és módosítására szolgál. Megadhat például egy kisbetűs szűrőt, amely az összes karaktert kisbetűsre alakítja.   
 Egy egyéni elemzőben több jogkivonat-szűrő is megadható. A jogkivonat-szűrők a felsorolt sorrendben futnak.  
 
-|||  
-|-|-|  
-|Name|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
+| Típus | Leírás |
+| ---- | ----------- |  
+|Név|Csak betűket, számokat, szóközöket, kötőjeleket vagy aláhúzásokat tartalmazhat, csak alfanumerikus karakterrel kezdődhet és végződhet, és legfeljebb 128 karakter hosszú lehet.|  
 |Típus|A jogkivonat-szűrő neve a támogatott jogkivonat-szűrők listájából. Tekintse meg az alábbi [jogkivonat-szűrők](#TokenFilters) táblázat **token_filter_type** oszlopát.|  
 |Beállítások|Egy adott jogkivonat-szűrőtípus [jogkivonat-szűrőinek](#TokenFilters) kell lennie.|  
 

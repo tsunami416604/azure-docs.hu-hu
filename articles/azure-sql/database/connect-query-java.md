@@ -1,192 +1,499 @@
 ---
-title: Adatbázis lekérdezése a Java használatával
-description: Bemutatja, hogyan használható a Java egy olyan program létrehozásához, amely Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz kapcsolódik, és T-SQL-utasítások használatával kérdezi le.
-titleSuffix: Azure SQL Database & SQL Managed Instance
+title: A Java és a JDBC használata Azure SQL Database
+description: Ismerje meg, hogyan használható a Java és a JDBC egy Azure SQL Database.
 services: sql-database
+author: jdubois
+ms.author: judubois
 ms.service: sql-database
 ms.subservice: development
-ms.devlang: java
 ms.topic: quickstart
-author: stevestein
-ms.author: sstein
-ms.reviewer: v-masebo
-ms.date: 05/29/2020
-ms.custom: seo-java-july2019. seo-java-august2019, sqldbrb=2 
-ms.openlocfilehash: 6be52d2d3472888607bbd6276b4794184bb11273
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.devlang: java
+ms.date: 06/26/2020
+ms.openlocfilehash: 59124928e9bfb75265e3556e37d65a3b30c851d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267392"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515075"
 ---
-# <a name="quickstart-use-java-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányban lévő adatbázis lekérdezése a Java használatával
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="use-java-and-jdbc-with--azure-sql-database"></a>A Java és a JDBC használata Azure SQL Database
 
-Ebben a rövid útmutatóban a Java használatával csatlakozik egy Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz, és T-SQL-utasítások használatával kérdez le adatokat.
+Ez a témakör bemutatja, hogyan hozhat létre egy olyan minta alkalmazást, amely a javát és a [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) -t használja [Azure SQL Databaseban](https://docs.microsoft.com/azure/sql-database/)található információk tárolására és lekérésére.
+
+A JDBC a szabványos Java API a hagyományos kapcsolati adatbázisokhoz való kapcsolódáshoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
+- Egy Azure-fiók. Ha még nem rendelkezik ilyennel, [kérjen meg egy ingyenes próbaverziót](https://azure.microsoft.com/free/).
+- [Azure Cloud Shell](/azure/cloud-shell/quickstart) vagy az [Azure CLI](/cli/azure/install-azure-cli). Javasoljuk, hogy Azure Cloud Shell, hogy automatikusan bejelentkezzen, és hozzáférhessen minden szükséges eszközhöz.
+- Támogatott [Java Development Kit](https://aka.ms/azure-jdks), 8-as verzió (Azure Cloud Shell).
+- Az [Apache Maven](https://maven.apache.org/) Build eszköz.
 
-- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+## <a name="prepare-the-working-environment"></a>A munkahelyi környezet előkészítése
 
-  || SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
-  |:--- |:--- |:---|:---|
-  | Létrehozás| [Portál](single-database-create-quickstart.md) | [Portál](../managed-instance/instance-create-quickstart.md) | [Portál](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  || [Parancssori felület](scripts/create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
-  | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](firewall-create-server-level-portal-quickstart.md)| [Kapcsolódás virtuális gépről](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Helyszíni kapcsolat](../managed-instance/point-to-site-p2s-configure.md) | [Kapcsolódás SQL Server-példányhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  |Adatok betöltése|Adventure Works betöltve|[Széles körű globális importőrök visszaállítása](../managed-instance/restore-sample-database-quickstart.md) | [Széles körű globális importőrök visszaállítása](../managed-instance/restore-sample-database-quickstart.md) |
-  |||Adventure Works visszaállítása vagy importálása [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Adventure Works visszaállítása vagy importálása [BACPAC](database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
+Környezeti változókat fogunk használni a gépelési hibák korlátozása érdekében, és egyszerűbbé tesszük a következő konfiguráció testreszabását az adott igényeknek megfelelően.
 
-- [Java](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server)-hoz kapcsolódó szoftverek
+Állítsa be ezeket a környezeti változókat a következő parancsok használatával:
 
-  # <a name="macos"></a>[macOS](#tab/macos)
+```bash
+AZ_RESOURCE_GROUP=database-workshop
+AZ_DATABASE_NAME=<YOUR_DATABASE_NAME>
+AZ_LOCATION=<YOUR_AZURE_REGION>
+AZ_SQL_SERVER_USERNAME=demo
+AZ_SQL_SERVER_PASSWORD=<YOUR_AZURE_SQL_PASSWORD>
+AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
+```
 
-  Telepítse a Homebrew-t és a Java-t, majd telepítse a Mavent a **1,2** -es és a **1,3** -es lépések használatával a [Java-alkalmazások létrehozása SQL Server MacOS](https://www.microsoft.com/sql-server/developer-get-started/java/mac/)
+Cserélje le a helyőrzőket a következő értékekre, amelyek a cikk során használatosak:
 
-  # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
+- `<YOUR_DATABASE_NAME>`: A Azure SQL Database-kiszolgáló neve. Egyedinek kell lennie az Azure-ban.
+- `<YOUR_AZURE_REGION>`: A használni kívánt Azure-régió. Alapértelmezés szerint használhatja `eastus` , de azt javasoljuk, hogy a régiót közelebbről konfigurálja, ahol él. Az elérhető régiók teljes listáját a beírásával érheti el `az account list-locations` .
+- `<AZ_SQL_SERVER_PASSWORD>`: A Azure SQL Database-kiszolgáló jelszava. A jelszónak legalább nyolc karakterből kell állnia. A karaktereknek a következő kategóriák közül hármat kell tartalmaznia: angol nagybetűs karakterek, angol kisbetűs karakterek, számok (0-9) és nem alfanumerikus karakterek (!, $, #,% stb.).
+- `<YOUR_LOCAL_IP_ADDRESS>`: A helyi számítógép IP-címe, amelyből a Java-alkalmazást fogja futtatni. Az egyik kényelmes módszer, ha úgy találja, hogy a böngészőt a [whatismyip.Akamai.com](http://whatismyip.akamai.com/)irányítsa.
 
-  Telepítse a Java alkalmazást, telepítse a Java fejlesztői készletet, majd telepítse a Mavent a **1,2**, **1,3**és **1,4** lépések használatával a [Java-alkalmazások létrehozása SQL Server használatával Ubuntu rendszeren](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
+Ezután hozzon létre egy erőforráscsoportot a következő parancs használatával:
 
-  # <a name="windows"></a>[Windows](#tab/windows)
-
-  Telepítse a Java-t, majd telepítse a Mavent a **1,2** -es és a **1,3** -es lépések használatával a [Java-alkalmazások létrehozása SQL Server használatával Windows rendszeren](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).
-
-  ---
-
-> [!IMPORTANT]
-> A cikkben található parancsfájlok az **Adventure Works** -adatbázis használatára íródnak.
-
-> [!NOTE]
-> Dönthet úgy is, hogy egy Azure SQL felügyelt példányt használ.
->
-> A létrehozásához és konfigurálásához használja a [Azure Portal](../managed-instance/instance-create-quickstart.md), a [PowerShellt](../managed-instance/scripts/create-configure-managed-instance-powershell.md)vagy a [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)-t, majd állítsa be a helyszíni vagy [a](../managed-instance/point-to-site-p2s-configure.md) [virtuális gép](../managed-instance/connect-vm-instance-configure.md) kapcsolatát.
->
-> Az betöltéssel kapcsolatban lásd: [visszaállítás a BACPAC](database-import.md) az [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) -fájllal, vagy lásd: [a Wide World](../managed-instance/restore-sample-database-quickstart.md)importing-adatbázis visszaállítása.
-
-## <a name="get-server-connection-information"></a>Kiszolgáló-kapcsolatok adatainak beolvasása
-
-A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati adatok lekérése. A közelgő eljárásokhoz szüksége lesz a teljes kiszolgálónévre vagy az állomásnévre, az adatbázis nevére és a bejelentkezési adatokra.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-
-2. Válassza az **SQL-adatbázisok** lehetőséget, vagy nyissa meg az **SQL felügyelt példányok** lapot.
-
-3. Az **Áttekintés** lapon tekintse át a teljes kiszolgálónevet a **kiszolgáló neve** mellett Azure SQL Database vagy a **gazdagép** melletti teljes kiszolgálónevet (vagy IP-címet) egy Azure SQL felügyelt példányhoz, vagy SQL Server az Azure virtuális gépen. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
+```azurecli
+az group create \
+    --name $AZ_RESOURCE_GROUP \
+    --location $AZ_LOCATION \
+  	| jq
+```
 
 > [!NOTE]
-> SQL Server Azure-beli virtuális gépen való kapcsolódásával kapcsolatos információkért lásd: [kapcsolódás SQL Serverhoz](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
+> A `jq` segédprogramot a JSON-információk megjelenítésére használjuk, és olvashatóbbá teszik azokat. Ez a segédprogram alapértelmezés szerint telepítve van [Azure Cloud Shellon](https://shell.azure.com/). Ha nem tetszik a segédprogram, nyugodtan eltávolíthatja az `| jq` összes használni kívánt parancs részét.
 
-## <a name="create-the-project"></a>A projekt létrehozása
+## <a name="create-an-azure-sql-database-instance"></a>Azure SQL Database példány létrehozása
 
-1. Hozzon létre egy új, *sqltest*nevű Maven-projektet a parancssorból.
+A létrehozott első dolog egy felügyelt Azure SQL Database-kiszolgáló.
 
-    ```bash
-    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0" --batch-mode
-    ```
+> [!NOTE]
+> A rövid útmutatóban Azure SQL Database kiszolgálók létrehozásával kapcsolatos részletes információkat a következő témakörben olvashatja [: Azure SQL Database önálló adatbázis létrehozása](/azure/sql-database/sql-database-single-database-get-started).
 
-1. Módosítsa a mappát *sqltest* , és nyissa meg a *Pom. xml fájlt* a kedvenc szövegszerkesztővel. Adja hozzá a **Microsoft JDBC-illesztőprogramot** a projekt függőségeihez a következő kód használatával SQL Server.
+A [Azure Cloud Shell](https://shell.azure.com/)futtassa a következő parancsot:
 
-    ```xml
-    <dependency>
-        <groupId>com.microsoft.sqlserver</groupId>
-        <artifactId>mssql-jdbc</artifactId>
-        <version>7.0.0.jre8</version>
-    </dependency>
-    ```
+```azurecli
+az sql server create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name $AZ_DATABASE_NAME \
+    --location $AZ_LOCATION \
+    --admin-user $AZ_SQL_SERVER_USERNAME \
+    --admin-password $AZ_SQL_SERVER_PASSWORD \
+  	| jq
+```
 
-1. A *pom.xml* fájlban adja hozzá a következő tulajdonságokat a projekthez. Ha nincs tulajdonságok szakasz, a függőségek után adhatja hozzá őket.
+Ez a parancs létrehoz egy Azure SQL Database kiszolgálót.
 
-   ```xml
-   <properties>
-       <maven.compiler.source>1.8</maven.compiler.source>
-       <maven.compiler.target>1.8</maven.compiler.target>
-   </properties>
-   ```
+### <a name="configure-a-firewall-rule-for-your-azure-sql-database-server"></a>Tűzfalszabály konfigurálása a Azure SQL Database-kiszolgálóhoz
 
-1. Mentse és zárja be a *pom.xml* fájlt.
+A Azure SQL Database példányok alapértelmezés szerint biztonságosak. Olyan tűzfallal rendelkeznek, amely nem engedélyezi a bejövő kapcsolatokat. Az adatbázis használatához olyan tűzfalszabály hozzáadására van szükség, amely lehetővé teszi a helyi IP-cím számára az adatbázis-kiszolgáló elérését.
 
-## <a name="add-code-to-query-the-database"></a>Kód hozzáadása az adatbázis lekérdezéséhez
+Mivel a cikk elején konfigurálta a helyi IP-címet, a következő parancs futtatásával nyithatja meg a kiszolgáló tűzfalát:
 
-1. A Maven-projektben már van egy *app. Java* nevű fájl, amely a következő helyen található:
+```azurecli
+az sql server firewall-rule create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name $AZ_DATABASE_NAME-database-allow-local-ip \
+    --server $AZ_DATABASE_NAME \
+    --start-ip-address $AZ_LOCAL_IP_ADDRESS \
+    --end-ip-address $AZ_LOCAL_IP_ADDRESS \
+  	| jq
+```
 
-   *.. \sqltest\src\main\java\com\sqldbsamples\App.java*
+### <a name="configure-a-azure-sql-database"></a>Azure SQL Database konfigurálása
 
-1. Nyissa meg a fájlt, és cserélje le a tartalmát a következő kódra. Ezután adja hozzá a kiszolgáló, az adatbázis, a felhasználó és a jelszó megfelelő értékeit.
+A korábban létrehozott Azure SQL Database-kiszolgáló üres. Nincs olyan adatbázisa, amelyet a Java-alkalmazással használhat. Hozzon létre egy nevű új adatbázist `demo` a következő parancs futtatásával:
 
-    ```java
-    package com.sqldbsamples;
+```azurecli
+az sql db create \
+    --resource-group $AZ_RESOURCE_GROUP \
+    --name demo \
+    --server $AZ_DATABASE_NAME \
+  	| jq
+```
 
-    import java.sql.Connection;
-    import java.sql.Statement;
-    import java.sql.PreparedStatement;
-    import java.sql.ResultSet;
-    import java.sql.DriverManager;
+### <a name="create-a-new-java-project"></a>Új Java-projekt létrehozása
 
-    public class App {
+Használja kedvenc IDE-t, hozzon létre egy új Java-projektet, és adjon hozzá egy `pom.xml` fájlt a gyökérkönyvtárában:
 
-        public static void main(String[] args) {
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>demo</name>
 
-            // Connect to database
-            String hostName = "your_server.database.windows.net"; // update me
-            String dbName = "your_database"; // update me
-            String user = "your_username"; // update me
-            String password = "your_password"; // update me
-            String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;"
-                + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, dbName, user, password);
-            Connection connection = null;
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
-            try {
-                connection = DriverManager.getConnection(url);
-                String schema = connection.getSchema();
-                System.out.println("Successful connection - Schema: " + schema);
+    <dependencies>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>7.4.1.jre8</version>
+        </dependency>
+    </dependencies>
+</project>
+```
 
-                System.out.println("Query data example:");
-                System.out.println("=========================================");
+Ez a fájl egy [Apache Maven](https://maven.apache.org/) , amely a következő használatára konfigurálja a projektet:
 
-                // Create and execute a SELECT SQL statement.
-                String selectSql = "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName "
-                    + "FROM [SalesLT].[ProductCategory] pc "  
-                    + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid";
+- Java 8
+- A Java legújabb SQL Server-illesztőprogramja
 
-                try (Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery(selectSql)) {
+### <a name="prepare-a-configuration-file-to-connect-to-azure-sql-database"></a>Konfigurációs fájl előkészítése az Azure SQL Database-hez való csatlakozáshoz
 
-                    // Print results from select statement
-                    System.out.println("Top 20 categories:");
-                    while (resultSet.next())
-                    {
-                        System.out.println(resultSet.getString(1) + " "
-                            + resultSet.getString(2));
-                    }
-                    connection.close();
-                }
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+Hozzon létre egy *src/Main/Resources/Application. properties* fájlt, és adja hozzá a következőket:
+
+```properties
+url=jdbc:sqlserver://$AZ_DATABASE_NAME.database.windows.net:1433;database=demo;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+user=demo@$AZ_DATABASE_NAME
+password=$AZ_SQL_SERVER_PASSWORD
+```
+
+- Cserélje le a két `$AZ_DATABASE_NAME` változót a cikk elején konfigurált értékre.
+- Cserélje le a `$AZ_SQL_SERVER_PASSWORD` változót a cikk elején konfigurált értékre.
+
+### <a name="create-an-sql-file-to-generate-the-database-schema"></a>SQL-fájl létrehozása az adatbázis-séma létrehozásához
+
+Egy adatbázis-séma létrehozásához a *src/Main `schema.sql` /Resources* /file-t fogjuk használni. Hozza létre a fájlt a következő tartalommal:
+
+```sql
+DROP TABLE IF EXISTS todo;
+CREATE TABLE todo (id INT PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BIT);
+```
+
+## <a name="code-the-application"></a>Az alkalmazás kódja
+
+### <a name="connect-to-the-database"></a>Csatlakozás az adatbázishoz
+
+Ezután adja hozzá azt a Java-kódot, amely a JDBC-t használja az Azure SQL Database-ben tárolt adatok tárolására és lekérésére.
+
+Hozzon létre egy *src/Main/Java/DemoApplication. Java* fájlt, amely a következőket tartalmazza:
+
+```java
+package com.example.demo;
+
+import java.sql.*;
+import java.util.*;
+import java.util.logging.Logger;
+
+public class DemoApplication {
+
+    private static final Logger log;
+
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%4$-7s] %5$s %n");
+        log =Logger.getLogger(DemoApplication.class.getName());
     }
-    ```
 
-   > [!NOTE]
-   > A példa a **AdventureWorksLT** minta adatbázisát használja Azure SQL Databaseban.
+    public static void main(String[] args) throws Exception {
+        log.info("Loading application properties");
+        Properties properties = new Properties();
+        properties.load(DemoApplication.class.getClassLoader().getResourceAsStream("application.properties"));
 
-## <a name="run-the-code"></a>A kód futtatása
+        log.info("Connecting to the database");
+        Connection connection = DriverManager.getConnection(properties.getProperty("url"), properties);
+        log.info("Database connection test: " + connection.getCatalog());
 
-1. A parancssorban futtassa az alkalmazást.
+        log.info("Create database schema");
+        Scanner scanner = new Scanner(DemoApplication.class.getClassLoader().getResourceAsStream("schema.sql"));
+        Statement statement = connection.createStatement();
+        while (scanner.hasNextLine()) {
+            statement.execute(scanner.nextLine());
+        }
 
-    ```bash
-    mvn package -DskipTests
-    mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
-    ```
+        /*
+        Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
+        insertData(todo, connection);
+        todo = readData(connection);
+        todo.setDetails("congratulations, you have updated data!");
+        updateData(todo, connection);
+        deleteData(todo, connection);
+        */
 
-1. Győződjön meg arról, hogy az első 20 sor visszaadva, majd az alkalmazás ablakának bezárásával.
+        log.info("Closing database connection");
+        connection.close();
+    }
+}
+```
 
-## <a name="next-steps"></a>További lépések
+Ez a Java-kód az *Application. properties* és a korábban létrehozott *Schema. SQL* fájlokat fogja használni, hogy csatlakozhasson a SQL Server-adatbázishoz, és hozzon létre egy sémát, amely az adattárolást fogja tárolni.
+
+Ebben a fájlban láthatja, hogy az adatok beszúrására, olvasására, frissítésére és törlésére szolgáló metódusok megjegyzései: ezeket a metódusokat a cikk további részében fogjuk felírni, és egy másik után törölheti őket.
+
+> [!NOTE]
+> Az adatbázis hitelesítő adatait az *Application. properties* fájl *felhasználói* és *jelszó* tulajdonságaiban tárolja a rendszer. Ezeket a hitelesítő adatokat a rendszer a végrehajtáskor használja `DriverManager.getConnection(properties.getProperty("url"), properties);` , mivel a tulajdonságok fájlját argumentumként adja át a rendszer.
+
+Ezt a fő osztályt a kedvenc eszközével is végrehajthatja:
+
+- Az IDE használatával kattintson a jobb gombbal a *DemoApplication* osztályra, és hajtsa végre.
+- A Maven használatával futtathatja az alkalmazást az alábbiak végrehajtásával: `mvn exec:java -Dexec.mainClass="com.example.demo.DemoApplication"` .
+
+Az alkalmazásnak kapcsolódnia kell a Azure SQL Databasehoz, létre kell hoznia egy adatbázis-sémát, majd be kell kapcsolnia a kapcsolatot, ahogy az a konzol naplófájljaiban látható:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Closing database connection 
+```
+
+### <a name="create-a-domain-class"></a>Tartományi osztály létrehozása
+
+Hozzon létre egy új `Todo` Java-osztályt az osztály mellett, `DemoApplication` és adja hozzá a következő kódot:
+
+```java
+package com.example.demo;
+
+public class Todo {
+
+    private Long id;
+    private String description;
+    private String details;
+    private boolean done;
+
+    public Todo() {
+    }
+
+    public Todo(Long id, String description, String details, boolean done) {
+        this.id = id;
+        this.description = description;
+        this.details = details;
+        this.done = done;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public boolean isDone() {
+        return done;
+    }
+
+    public void setDone(boolean done) {
+        this.done = done;
+    }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", details='" + details + '\'' +
+                ", done=" + done +
+                '}';
+    }
+}
+```
+
+Ez az osztály olyan tartományi modell, amely a `todo` *Schema. SQL* parancsfájl végrehajtásakor létrehozott táblán van leképezve.
+
+### <a name="insert-data-into-azure-sql-database"></a>Adatbeszúrás az Azure SQL Database-be
+
+Az *src/Main/Java/DemoApplication. Java* fájlban a Main metódust követően adja hozzá a következő metódust az adatbázisba való beszúráshoz:
+
+```java
+private static void insertData(Todo todo, Connection connection) throws SQLException {
+    log.info("Insert data");
+    PreparedStatement insertStatement = connection
+            .prepareStatement("INSERT INTO todo (id, description, details, done) VALUES (?, ?, ?, ?);");
+
+    insertStatement.setLong(1, todo.getId());
+    insertStatement.setString(2, todo.getDescription());
+    insertStatement.setString(3, todo.getDetails());
+    insertStatement.setBoolean(4, todo.isDone());
+    insertStatement.executeUpdate();
+}
+```
+
+Mostantól megadhatja a következő két sor megjegyzését a `main` metódusban:
+
+```java
+Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC correctly!", true);
+insertData(todo, connection);
+```
+
+A Main osztály végrehajtásához most a következő kimenetet kell létrehozni:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Closing database connection
+```
+
+### <a name="reading-data-from-azure-sql-database"></a>Adatok beolvasása az Azure SQL Database-ből
+
+Olvassa el a korábban beszúrt adatforrásokat, és ellenőrizze, hogy a kód megfelelően működik-e.
+
+Az *src/Main/Java/DemoApplication. Java* fájlban a `insertData` metódus után adja hozzá a következő metódust az adatok az adatbázisból való beolvasásához:
+
+```java
+private static Todo readData(Connection connection) throws SQLException {
+    log.info("Read data");
+    PreparedStatement readStatement = connection.prepareStatement("SELECT * FROM todo;");
+    ResultSet resultSet = readStatement.executeQuery();
+    if (!resultSet.next()) {
+        log.info("There is no data in the database!");
+        return null;
+    }
+    Todo todo = new Todo();
+    todo.setId(resultSet.getLong("id"));
+    todo.setDescription(resultSet.getString("description"));
+    todo.setDetails(resultSet.getString("details"));
+    todo.setDone(resultSet.getBoolean("done"));
+    log.info("Data read from the database: " + todo.toString());
+    return todo;
+}
+```
+
+Mostantól megadhatja a következő sor megjegyzését a `main` metódusban:
+
+```java
+todo = readData(connection);
+```
+
+A Main osztály végrehajtásához most a következő kimenetet kell létrehozni:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Closing database connection 
+```
+
+### <a name="updating-data-in-azure-sql-database"></a>Az Azure SQL Database-beli Adatfrissítés
+
+Frissítjük a korábban beszúrt adathalmazokat.
+
+Továbbra is a *src/Main/Java/DemoApplication. Java* fájlban, a `readData` metódus után adja hozzá a következő metódust az adatbázison belüli adatfrissítéshez:
+
+```java
+private static void updateData(Todo todo, Connection connection) throws SQLException {
+    log.info("Update data");
+    PreparedStatement updateStatement = connection
+            .prepareStatement("UPDATE todo SET description = ?, details = ?, done = ? WHERE id = ?;");
+
+    updateStatement.setString(1, todo.getDescription());
+    updateStatement.setString(2, todo.getDetails());
+    updateStatement.setBoolean(3, todo.isDone());
+    updateStatement.setLong(4, todo.getId());
+    updateStatement.executeUpdate();
+    readData(connection);
+}
+```
+
+Mostantól megadhatja a következő két sor megjegyzését a `main` metódusban:
+
+```java
+todo.setDetails("congratulations, you have updated data!");
+updateData(todo, connection);
+```
+
+A Main osztály végrehajtásához most a következő kimenetet kell létrehozni:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Update data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have updated data!', done=true} 
+[INFO   ] Closing database connection 
+```
+
+### <a name="deleting-data-in-azure-sql-database"></a>Az Azure SQL Database-ben tárolt adattörlés
+
+Végül törölje az előzőleg beszúrt adathalmazt.
+
+Továbbra is a *src/Main/Java/DemoApplication. Java* fájlban, a `updateData` metódus után adja hozzá a következő metódust az adatbázison belüli adattörléshez:
+
+```java
+private static void deleteData(Todo todo, Connection connection) throws SQLException {
+    log.info("Delete data");
+    PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM todo WHERE id = ?;");
+    deleteStatement.setLong(1, todo.getId());
+    deleteStatement.executeUpdate();
+    readData(connection);
+}
+```
+
+Mostantól megadhatja a következő sor megjegyzését a `main` metódusban:
+
+```java
+deleteData(todo, connection);
+```
+
+A Main osztály végrehajtásához most a következő kimenetet kell létrehozni:
+
+```
+[INFO   ] Loading application properties 
+[INFO   ] Connecting to the database 
+[INFO   ] Database connection test: demo 
+[INFO   ] Create database schema 
+[INFO   ] Insert data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have set up JDBC correctly!', done=true} 
+[INFO   ] Update data 
+[INFO   ] Read data 
+[INFO   ] Data read from the database: Todo{id=1, description='configuration', details='congratulations, you have updated data!', done=true} 
+[INFO   ] Delete data 
+[INFO   ] Read data 
+[INFO   ] There is no data in the database! 
+[INFO   ] Closing database connection 
+```
+
+## <a name="conclusion-and-resources-clean-up"></a>Következtetések és erőforrások tisztítása
+
+Gratulálunk! Létrehozott egy Java-alkalmazást, amely JDBC-t használ az Azure SQL Database-ben tárolt adatok tárolására és lekérésére.
+
+Az ebben a rövid útmutatóban használt összes erőforrás törléséhez törölje az erőforráscsoportot a következő parancs használatával:
+
+```azurecli
+az group delete \
+    --name $AZ_RESOURCE_GROUP \
+    --yes
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 - [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)  
 - [Microsoft JDBC-illesztőprogram SQL Serverhez](https://github.com/microsoft/mssql-jdbc)  

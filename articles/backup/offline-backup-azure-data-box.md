@@ -3,16 +3,16 @@ title: Offline biztonsági mentés Azure Data Box használatával
 description: Ebből a témakörből megtudhatja, hogyan használhatja a Azure Data Box a nagyméretű kezdeti biztonsági mentési adatoknak a MARS-ügynökből egy Recovery Services-tárolóba való összevetéséhez
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e45b8e26d332019b03ac41c3993e311480494040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82160955"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513693"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offline biztonsági mentés Azure Backup Azure Data Box használatával
 
-A [Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) használatával a nagy kezdeti Microsoft Azure Recovery Services (MARS) biztonsági mentések a Recovery Services-tárolóra kapcsolat nélküli üzemmódban (hálózat nélkül) is kiírhatók. Ezzel a folyamattal időt és hálózati sávszélességet takaríthat meg, amely egyébként nagy mennyiségű biztonsági mentési adat online állapotba helyezésével nagy késleltetésű hálózaton keresztül történik. Ez a fejlesztés jelenleg előzetes verzióban érhető el. A Azure Data Boxon alapuló offline biztonsági mentés két különböző előnyt biztosít [Az Azure import/export szolgáltatás alapján az offline biztonsági mentéshez](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export):
+A [Azure Data Box](../databox/data-box-overview.md) használatával a nagy kezdeti Microsoft Azure Recovery Services (MARS) biztonsági mentések a Recovery Services-tárolóra kapcsolat nélküli üzemmódban (hálózat nélkül) is kiírhatók. Ezzel a folyamattal időt és hálózati sávszélességet takaríthat meg, amely egyébként nagy mennyiségű biztonsági mentési adat online állapotba helyezésével nagy késleltetésű hálózaton keresztül történik. Ez a fejlesztés jelenleg előzetes verzióban érhető el. A Azure Data Boxon alapuló offline biztonsági mentés két különböző előnyt biztosít [Az Azure import/export szolgáltatás alapján az offline biztonsági mentéshez](./backup-azure-backup-import-export.md):
 
 - Nincs szükség a saját Azure-kompatibilis lemezek és összekötők beszerzésére. Azure Data Box hajók a kiválasztott [Data Box SKU](https://azure.microsoft.com/services/databox/data/)-hoz társított lemezeket.
 - A Azure Backup (MARS-ügynök) közvetlenül a Azure Data Box támogatott SKU-jéről írhatja fel a biztonsági mentési adatmennyiséget. Ezzel a képességgel nem kell kiépíteni egy átmeneti helyet a kezdeti biztonsági mentési adatai számára. Emellett a segédprogramok nem szükségesek az adatlemezek formázásához és másolásához.
@@ -47,8 +47,8 @@ A MARS-ügynökről Azure Data Box használatával történő adatfeldolgozási 
 
 | Biztonsági mentési adatméret (a MARS tömörítése után) * kiszolgálónként | Támogatott Azure Data Box SKU                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| <= 7,2 TB                                                    | [Azure Data Box lemez](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| >7,2 TB és <= 80 TB * *                                      | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| <= 7,2 TB                                                    | [Azure Data Box lemez](../databox/data-box-disk-overview.md) |
+| >7,2 TB és <= 80 TB * *                                      | [Azure Data Box (100 TB)](../databox/data-box-overview.md) |
 
 * A tipikus tömörítési arányok 10% és 20% között változnak. <br>
 * * Ha várhatóan több mint 80 TB kezdeti biztonsági mentési adatra van szüksége egyetlen MARS-kiszolgálóról, forduljon a következőhöz: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
@@ -113,7 +113,7 @@ A Azure PowerShell MSI-fájl használatával is telepíthető. A eltávolítás�
 
 ### <a name="order-and-receive-the-data-box-device"></a>A Data Box eszköz megrendelése és fogadása
 
-Az offline biztonsági mentési folyamat a MARS és a Azure Data Box használatával az offline biztonsági mentés a MARS-ügynök használatával történő elindítása előtt a Data Box-eszközöknek kézbesítési állapotban kell lennie. A szükséglethez legmegfelelőbb SKU rendeléséhez tekintse meg a [biztonsági másolatok méretének és a támogatott Data Box SKU](#backup-data-size-and-supported-data-box-skus)-nak a megadását ismertető témakört. Kövesse az [oktatóanyag: Azure Data Box lemez megrendelése](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) és a Data Box-eszközök fogadása című témakör lépéseit.
+Az offline biztonsági mentési folyamat a MARS és a Azure Data Box használatával az offline biztonsági mentés a MARS-ügynök használatával történő elindítása előtt a Data Box-eszközöknek kézbesítési állapotban kell lennie. A szükséglethez legmegfelelőbb SKU rendeléséhez tekintse meg a [biztonsági másolatok méretének és a támogatott Data Box SKU](#backup-data-size-and-supported-data-box-skus)-nak a megadását ismertető témakört. Kövesse az [oktatóanyag: Azure Data Box lemez megrendelése](../databox/data-box-disk-deploy-ordered.md) és a Data Box-eszközök fogadása című témakör lépéseit.
 
 > [!IMPORTANT]
 > Ne válassza a *BlobStorage* lehetőséget a **fiókhoz**. A MARS-ügynöknek olyan fiókra van szüksége, amely támogatja a Blobok használatát, ami nem támogatott, ha a *BlobStorage* van kiválasztva. Válassza a **Storage v2 (általános célú v2)** lehetőséget **, ha a** cél Storage-fiókot hozza létre a Azure Data Box feladathoz.
@@ -124,7 +124,7 @@ Az offline biztonsági mentési folyamat a MARS és a Azure Data Box használat�
 
 1. Győződjön meg arról, hogy eltávolítja a MARS-ügynök korábbi telepítését.
 1. Töltse le a legújabb MARS-ügynököt [erről a webhelyről](https://aka.ms/azurebackup_agent).
-1. Futtassa a *MARSAgentInstaller.exet *, és *csak* az [ügynök telepítéséhez és regisztrálásához](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) szükséges lépéseket a Recovery Services-tárolóban, ahol a biztonsági másolatokat tárolni szeretné.
+1. Futtassa a *MARSAgentInstaller.exet *, és *csak* az [ügynök telepítéséhez és regisztrálásához](./install-mars-agent.md#install-and-register-the-agent) szükséges lépéseket a Recovery Services-tárolóban, ahol a biztonsági másolatokat tárolni szeretné.
 
    > [!NOTE]
    > A Recovery Services-tárolónak ugyanabban az előfizetésben kell lennie, mint a Azure Data Box feladatoknak.
@@ -137,14 +137,14 @@ A megrendelt Azure Data Box SKU-tól függően végezze el az alábbi, a megfele
 
 ### <a name="set-up-azure-data-box-disks"></a>Azure Data Box lemezek beállítása
 
-Ha egy vagy több Azure Data Box lemezt (egyenként 8 TB-ig) rendelt, kövesse az itt leírt lépéseket a [Data Box lemez kicsomagolásához, összekapcsolásához és feloldásához](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up).
+Ha egy vagy több Azure Data Box lemezt (egyenként 8 TB-ig) rendelt, kövesse az itt leírt lépéseket a [Data Box lemez kicsomagolásához, összekapcsolásához és feloldásához](../databox/data-box-disk-deploy-set-up.md).
 
 >[!NOTE]
 >Lehetséges, hogy a MARS-ügynökkel rendelkező kiszolgáló nem rendelkezik USB-porttal. Ebben az esetben összekapcsolhatók a Azure Data Box lemez egy másik kiszolgálóval vagy ügyféllel, és elérhetővé tehetik az eszköz gyökerét hálózati megosztásként.
 
 ### <a name="set-up-azure-data-box"></a>Azure Data Box beállítása
 
-Ha Azure Data Box-példányt (akár 100 TB-ot) rendelt el, kövesse az alábbi lépéseket a [Data Box példány beállításához](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up).
+Ha Azure Data Box-példányt (akár 100 TB-ot) rendelt el, kövesse az alábbi lépéseket a [Data Box példány beállításához](../databox/data-box-deploy-set-up.md).
 
 #### <a name="mount-your-azure-data-box-instance-as-a-local-system"></a>Azure Data Box-példány csatlakoztatása helyi rendszerként
 
@@ -160,8 +160,8 @@ Annak biztosítása érdekében, hogy az Data Box eszközt helyi rendszerként c
     psexec.exe  -s  -i  cmd.exe
     ```
 
-   Az előző parancs eredményeképpen megnyíló parancssori ablak a helyi rendszerkörnyezetben található. Ezen a parancsablakban hajthatja végre az Azure-oldal blob-megosztásának hálózati meghajtóként való csatlakoztatásához szükséges lépéseket a Windows-kiszolgálón.
-1. A kiszolgáló és a MARS-ügynök összekapcsolásához a Data Box eszköz NFS-en keresztül történő csatlakoztatásához kövesse a [kapcsolódás Data boxhoz](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box) című témakör lépéseit. Futtassa az alábbi parancsot a helyi rendszerparancssorban az Azure-oldal Blobok megosztásának csatlakoztatásához.
+   Az előző parancs miatt megnyíló parancssori ablak a helyi rendszerkörnyezetben található. Ezen a parancsablakban hajthatja végre az Azure-oldal blob-megosztásának hálózati meghajtóként való csatlakoztatásához szükséges lépéseket a Windows-kiszolgálón.
+1. A kiszolgáló és a MARS-ügynök összekapcsolásához a Data Box eszköz NFS-en keresztül történő csatlakoztatásához kövesse a [kapcsolódás Data boxhoz](../databox/data-box-deploy-copy-data-via-nfs.md#connect-to-data-box) című témakör lépéseit. Futtassa az alábbi parancsot a helyi rendszerparancssorban az Azure-oldal Blobok megosztásának csatlakoztatásához.
 
     ```cmd
     mount -o nolock \\<DeviceIPAddress>\<StorageAccountName_PageBlob X:  
@@ -238,9 +238,9 @@ Az adatbiztonsági mentés befejezése után egy olyan oldal jelenik meg a MARS-
 
 Ez a szakasz ismerteti azokat a lépéseket, amelyeket az Azure Data Box Disk sikeres biztonsági mentése után kell végrehajtani.
 
-- A [Azure Data Box lemez Azure-ba való szállításához](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up)kövesse az ebben a cikkben ismertetett lépéseket. Ha Azure Data Box 100-TB eszközt használt, kövesse az alábbi lépéseket az [Azure Data Box eszköz Azure-ba történő szállításához](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up).
+- A [Azure Data Box lemez Azure-ba való szállításához](../databox/data-box-disk-deploy-picked-up.md)kövesse az ebben a cikkben ismertetett lépéseket. Ha Azure Data Box 100-TB eszközt használt, kövesse az alábbi lépéseket az [Azure Data Box eszköz Azure-ba történő szállításához](../databox/data-box-deploy-picked-up.md).
 
-- [Figyelje a Data Box feladatot](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) a Azure Portalban. A Azure Data Box feladatok befejezése után a MARS-ügynök automatikusan áthelyezi az adatait a Storage-fiókból a Recovery Services-tárolóba a következő ütemezett biztonsági mentés időpontjában. Ezután a biztonsági mentési feladatot *befejezettként* jelöli meg, ha a helyreállítási pont sikeresen létrejött.
+- [Figyelje a Data Box feladatot](../databox/data-box-disk-deploy-upload-verify.md) a Azure Portalban. A Azure Data Box feladatok befejezése után a MARS-ügynök automatikusan áthelyezi az adatait a Storage-fiókból a Recovery Services-tárolóba a következő ütemezett biztonsági mentés időpontjában. Ezután a biztonsági mentési feladatot *befejezettként* jelöli meg, ha a helyreállítási pont sikeresen létrejött.
 
     >[!NOTE]
     >A MARS-ügynök a házirendek létrehozásakor ütemezett időközönként elindítja a biztonsági mentéseket. Ezek a feladatok jelző "Várakozás a Azure Data Box feladat befejeződésére", amíg a feladat befejeződik.
@@ -249,7 +249,7 @@ Ez a szakasz ismerteti azokat a lépéseket, amelyeket az Azure Data Box Disk si
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-A Microsoft Azure Backup (Mohácsi) ügynök létrehoz egy Azure Active Directory (Azure AD) alkalmazást a bérlőben. Az alkalmazáshoz szükség van egy tanúsítványra az offline kiindulási házirend konfigurálásakor létrehozott és feltöltött hitelesítéshez. A Azure PowerShell használatával hozza létre és töltse fel a tanúsítványt az Azure AD-alkalmazásba.
+A Microsoft Azure Recovery Services-(MARS-) ügynök létrehoz egy Azure Active Directory (Azure AD) alkalmazást a bérlőben. Az alkalmazáshoz szükség van egy tanúsítványra az offline kiindulási házirend konfigurálásakor létrehozott és feltöltött hitelesítéshez. A Azure PowerShell használatával hozza létre és töltse fel a tanúsítványt az Azure AD-alkalmazásba.
 
 ### <a name="problem"></a>Probléma
 
@@ -310,7 +310,7 @@ Az offline biztonsági mentéshez konfigurálni kívánt kiszolgálóról végez
     >- Az Azure-hoz csatlakoztatott PowerShellben futtassa a `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` parancsot.
     > - Nyissa meg a beállításjegyzék elérési útját `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` a *CurrentUserId*néven.
 
-6. Kattintson a jobb gombbal az előző lépésben hozzáadott sztringre, majd válassza a **módosítás**lehetőséget. Az érték mezőben adja meg a 2. lépésben exportált tanúsítvány ujjlenyomatát. Válassza az **OK** lehetőséget.
+6. Kattintson a jobb gombbal az előző lépésben hozzáadott sztringre, majd válassza a **módosítás**lehetőséget. Az érték mezőben adja meg a 2. lépésben exportált tanúsítvány ujjlenyomatát. Kattintson az **OK** gombra.
 
 7. Az ujjlenyomat értékének lekéréséhez kattintson duplán a tanúsítványra. Válassza a **részletek** lapot, és görgessen lefelé, amíg meg nem jelenik az ujjlenyomat mező. Válassza az **ujjlenyomat**lehetőséget, és másolja ki az értéket.
 

@@ -4,11 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan frissítheti a tár konfigur�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248226"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513115"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Az Azure Recovery Services-tároló konfigurációinak frissítése REST API használatával
 
@@ -24,7 +25,7 @@ Ezért alaposan ki kell választania, hogy le kell-e tiltani egy adott tár hely
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>Helyreállítható törlési állapot beolvasása REST API használatával
 
-Alapértelmezés szerint a rendszer minden újonnan létrehozott Recovery Services-tárolóra engedélyezi a helyreállítható törlési állapotot. Egy tár helyreállítható törlési állapotának lekéréséhez/frissítéséhez használja a Backup-tároló konfigurációval kapcsolatos [REST API dokumentumát](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs) .
+Alapértelmezés szerint a rendszer minden újonnan létrehozott Recovery Services-tárolóra engedélyezi a helyreállítható törlési állapotot. Egy tár helyreállítható törlési állapotának lekéréséhez/frissítéséhez használja a Backup-tároló konfigurációval kapcsolatos [REST API dokumentumát](/rest/api/backup/backupresourcevaultconfigs) .
 
 A tárolóhoz tartozó helyreállítható törlés aktuális állapotának beolvasásához használja a következő *lekérési* műveletet
 
@@ -42,9 +43,9 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 A "GET" művelet sikeres válasza alább látható:
 
-|Name  |Típus  |Description  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
-|200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Példaválasz
 
@@ -80,13 +81,13 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 A kérelem törzsének létrehozásához a következő általános definíciók használhatók
 
-További részletekért tekintse meg [a REST API dokumentációját](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
+További részletekért tekintse meg [a REST API dokumentációját](/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
 
-|Name  |Kötelező  |Típus  |Description  |
+|Name  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
 |eTag     |         |   Sztring      |  Opcionális eTag       |
-|location     |  igaz       |Sztring         |   Erőforrás helye      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tár tulajdonságai       |
+|location     |  true       |Sztring         |   Erőforrás helye      |
+|properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tár tulajdonságai       |
 |tags     |         | Objektum        |     Erőforráscímkék    |
 
 #### <a name="example-request-body"></a>Példa kérelem törzsére
@@ -106,9 +107,9 @@ A következő példa a helyreállítható törlési állapot frissítésére szo
 
 A "PATCH" művelet sikeres válasza alább látható:
 
-|Name  |Típus  |Description  |
+|Név  |Típus  |Leírás  |
 |---------|---------|---------|
-|200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
+|200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
 ##### <a name="example-response"></a>Példaválasz
 
@@ -126,7 +127,7 @@ A "javítás" kérés elküldése után a rendszer egy 200 (sikeres) választ ad
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Hozzon létre egy biztonsági mentési szabályzatot egy Azure-beli virtuális gép biztonsági mentéséhez ebben a tárolóban](backup-azure-arm-userestapi-createorupdatepolicy.md).
 

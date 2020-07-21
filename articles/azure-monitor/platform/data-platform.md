@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68e88ec90625f34e5bc8ae1b70c75e3cfe9a53ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81457263"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515529"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor adatplatform
 
@@ -23,7 +23,7 @@ A napjainkban a Felhőbeli és a helyszíni szolgáltatásokra támaszkodó elos
 A [Azure monitor](../overview.md) különböző forrásokból származó adatokat gyűjt és összesít egy közös adatplatformba, ahol elemzésre, vizualizációra és riasztásra is használható. Egységes felhasználói élményt nyújt több forrásból származó adatokon, ami részletes elemzéseket nyújt az összes figyelt erőforrásról, akár más olyan szolgáltatásokból származó adatokból, amelyek az adataikat a Azure Monitor tárolják.
 
 
-![Az Azure Monitor áttekintése](media/data-platform/overview.png)
+![Azure Monitor – áttekintés](media/data-platform/overview.png)
 
 ## <a name="observability-data-in-azure-monitor"></a>Megfigyelt adatszolgáltatások Azure Monitor
 A mérőszámokat, a naplókat és az elosztott nyomkövetéseket általában a megfigyelés három pillérének nevezzük. Ezek a különböző típusú adatok, amelyeket a figyelő eszköznek össze kell gyűjtenie, és elemezni kell, hogy elegendő legyen a figyelt rendszer megfelelő megfigyelése. A megfigyelés úgy érhető el, ha több pillérből származó adatokkal korrelál, és az adatok összesítése a figyelt erőforrások teljes készlete között történik. Mivel a Azure Monitor különböző forrásokból származó adatok tárolására szolgálnak, az adatok összekapcsolhatók és elemezhetők a közös eszközkészletek használatával. Emellett a több Azure-előfizetésre és-bérlőre vonatkozó adatokkal is összefügg, valamint más szolgáltatásokra vonatkozó adatok üzemeltetése mellett.
@@ -49,7 +49,7 @@ A Azure Monitor lévő naplókat az [Azure Adatkezelőon](/azure/data-explorer/)
 > Fontos különbséget tenni Azure Monitor naplók és a naplózási adatforrások között az Azure-ban. Az Azure-beli előfizetési szintű események például egy, a Azure Monitor menüből megtekinthető [tevékenységi naplóba](platform-logs-overview.md) íródnak. A legtöbb erőforrás operatív adatokat fog írni egy olyan [erőforrás-naplóba](platform-logs-overview.md) , amelyet továbbíthat a különböző helyszínekhez. Azure Monitor a naplók egy olyan naplózási adatplatform, amely a tevékenységek naplóit és erőforrás-naplóit, valamint más figyelési adatokat gyűjt, így részletes elemzéseket biztosít a teljes erőforrás-készleten belül.
 
 
- A [naplózási lekérdezéseket](../log-query/log-query-overview.md) interaktív módon is használhatja a Azure Portal [log Analyticsével](../log-query/portals.md) , vagy az eredményeket hozzáadhat egy [Azure-irányítópulthoz](../learn/tutorial-app-dashboards.md) a vizualizációhoz más adattal kombinálva. Létrehozhat olyan [naplózási riasztásokat](alerts-log.md) is, amelyek riasztást küldenek egy ütemezett lekérdezés eredményei alapján.
+ A [naplózási lekérdezéseket](../log-query/log-query-overview.md) interaktív módon is használhatja a Azure Portal [log Analyticsével](../log-query/log-query-overview.md) , vagy az eredményeket hozzáadhat egy [Azure-irányítópulthoz](../learn/tutorial-app-dashboards.md) a vizualizációhoz más adattal kombinálva. Létrehozhat olyan [naplózási riasztásokat](alerts-log.md) is, amelyek riasztást küldenek egy ütemezett lekérdezés eredményei alapján.
 
 További információ az Azure Monitor naplókról, beleértve az adatforrásokat [Azure monitor naplókban](data-platform-logs.md).
 
@@ -81,11 +81,11 @@ A különböző típusú adatforrások listájának megjelenítéséhez tekintse
 
 
 ## <a name="stream-data-to-external-systems"></a>Adatfolyamok továbbítása külső rendszerekre
-Amellett, hogy az Azure-ban található eszközöket használja a figyelési adatok elemzéséhez, előfordulhat, hogy egy külső eszközre kell továbbítania, például egy biztonsági információ és egy esemény-felügyeleti (SIEM) termékre. Ez a továbbítás általában közvetlenül a figyelt erőforrásokon keresztül történik az [Azure Event Hubson](/azure/event-hubs/)keresztül. Néhány forrás úgy konfigurálható, hogy közvetlenül egy Event hubhoz küldje az adatküldést, miközben egy másik folyamat, például egy logikai alkalmazás is használható a szükséges információk lekéréséhez. A részletekért tekintse meg az [Azure monitoring-adatok átvitele egy Event hub-](stream-monitoring-data-event-hubs.md) ba című témakört.
+Amellett, hogy az Azure-ban található eszközöket használja a figyelési adatok elemzéséhez, előfordulhat, hogy egy külső eszközre kell továbbítania, például egy biztonsági információ és egy esemény-felügyeleti (SIEM) termékre. Ez a továbbítás általában közvetlenül a figyelt erőforrásokon keresztül történik az [Azure Event Hubson](../../event-hubs/index.yml)keresztül. Néhány forrás úgy konfigurálható, hogy közvetlenül egy Event hubhoz küldje az adatküldést, miközben egy másik folyamat, például egy logikai alkalmazás is használható a szükséges információk lekéréséhez. A részletekért tekintse meg az [Azure monitoring-adatok átvitele egy Event hub-](stream-monitoring-data-event-hubs.md) ba című témakört.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor metrikákkal](data-platform-metrics.md)kapcsolatban.
 - További információ a [Azure monitor naplóiról](data-platform-logs.md).

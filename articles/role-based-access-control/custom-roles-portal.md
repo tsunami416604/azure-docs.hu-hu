@@ -10,15 +10,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/30/2020
+ms.date: 07/13/2020
 ms.author: rolyon
-ms.openlocfilehash: a7be51cfceee3bb445b085efd780463c8b6f49be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791197"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511721"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése az Azure Portalon
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Egyéni Azure-szerepkörök létrehozása vagy módosítása az Azure Portal segítségével
 
 Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni Azure-szerepköröket is. A beépített szerepkörökhöz hasonlóan egyéni szerepköröket is hozzárendelhet a felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz az előfizetéshez és az erőforráscsoport-hatókörökhöz. Az egyéni szerepkörök egy Azure Active Directory (Azure AD) könyvtárban tárolódnak, és az előfizetések között megoszthatók. Minden címtárhoz legfeljebb 5000 egyéni szerepkör tartozhat. Egyéni szerepkörök hozhatók létre a Azure Portal, a Azure PowerShell, az Azure CLI vagy a REST API használatával. Ez a cikk azt ismerteti, hogyan hozhat létre egyéni szerepköröket a Azure Portal használatával.
 
@@ -32,7 +33,7 @@ Egyéni szerepkörök létrehozásához a következőkre lesz szüksége:
 
 Az Azure-ban több ezer engedély található, amelyeket esetleg belefoglalhat az egyéni szerepkörbe. Az alábbi négy módszer segítségével határozhatja meg az egyéni szerepkörhöz hozzáadni kívánt engedélyeket:
 
-| Metódus | Description |
+| Metódus | Leírás |
 | --- | --- |
 | Megtekintheti a meglévő szerepköröket | Megtekintheti a meglévő szerepköröket, hogy megtudja, milyen engedélyek vannak használatban. További információ: [Azure beépített szerepkörök](built-in-roles.md). |
 | Engedélyek keresése kulcsszó alapján | Ha a Azure Portal használatával hoz létre egyéni szerepkört, az engedélyek kulcsszava alapján is megkereshetők. Megkeresheti például a *virtuális gépet* vagy a *Számlázási* engedélyeket. Ezt a keresési funkciót a [4. lépés: engedélyek című szakasza](#step-4-permissions)tárgyalja. |
@@ -203,17 +204,7 @@ Kövesse az alábbi lépéseket az egyéni szerepkörhöz tartozó engedélyek h
 
 ### <a name="add-wildcard-permissions"></a>Helyettesítő karakteres engedélyek hozzáadása
 
-Attól függően, hogy hogyan döntött, az engedélyek listájában szerepelhetnek helyettesítő karakterekkel ( \* ). Egy helyettesítő karakter ( \* ) kibővíti az Ön által megadott karakterlánccal megegyező összes engedélyt. Tegyük fel például, hogy hozzá kívánja adni a Azure Cost Management és az exportáláshoz kapcsolódó összes engedélyt. A következő engedélyeket adhatja hozzá:
-
-```
-Microsoft.CostManagement/exports/action
-Microsoft.CostManagement/exports/read
-Microsoft.CostManagement/exports/write
-Microsoft.CostManagement/exports/delete
-Microsoft.CostManagement/exports/run/action
-```
-
-Az összes engedély hozzáadása helyett egyszerűen használhat helyettesítő karaktert. A következő helyettesítő karakteres engedély például egyenértékű az előző öt engedélyekkel. Ez magában foglalja az esetleg hozzáadott jövőbeli exportálási engedélyeket is.
+Attól függően, hogy hogyan döntött, az engedélyek listájában szerepelhetnek helyettesítő karakterekkel ( `*` ). A helyettesítő karakter ( `*` ) minden olyan engedélyt kiterjeszt, amely megfelel az Ön által megadott műveleti karakterláncnak. A következő helyettesítő karakterlánc például a Azure Cost Management és az exportáláshoz kapcsolódó összes engedélyt hozzáadja. Ez magában foglalja az esetleg hozzáadott jövőbeli exportálási engedélyeket is.
 
 ```
 Microsoft.CostManagement/exports/*
@@ -223,7 +214,7 @@ Ha új helyettesítő karaktert szeretne hozzáadni, az **engedélyek hozzáadá
 
 ### <a name="exclude-permissions"></a>Engedélyek kizárása
 
-Ha a szerepkör helyettesítő () engedéllyel rendelkezik, és ki kívánja \* zárni vagy kivonni a helyettesítő jogosultságokból származó konkrét engedélyeket, kizárhatja őket. Tegyük fel például, hogy a következő helyettesítő karakteres engedélyekkel rendelkezik:
+Ha a szerepkör helyettesítő () engedéllyel rendelkezik, és ki kívánja `*` zárni vagy kivonni a helyettesítő jogosultságokból származó konkrét engedélyeket, kizárhatja őket. Tegyük fel például, hogy a következő helyettesítő karakteres engedélyekkel rendelkezik:
 
 ```
 Microsoft.CostManagement/exports/*
@@ -268,7 +259,7 @@ A **hozzárendelhető hatókörök** lapon adhatja meg, hogy az egyéni szerepk�
 
 ## <a name="step-6-json"></a>6. lépés: JSON
 
-A **JSON** lapon megtekintheti a JSON-ban formázott egyéni szerepkört. Ha szeretné, közvetlenül is szerkesztheti a JSON-t. Ha helyettesítő karaktert () szeretne hozzáadni \* , ezt a fület kell használnia.
+A **JSON** lapon megtekintheti a JSON-ban formázott egyéni szerepkört. Ha szeretné, közvetlenül is szerkesztheti a JSON-t. Ha helyettesítő karaktert () szeretne hozzáadni `*` , ezt a fület kell használnia.
 
 1. A JSON szerkesztéséhez kattintson a **Szerkesztés**gombra.
 
@@ -344,8 +335,8 @@ Az alábbi lépéseket követve megtekintheti az egyéni szerepköröket.
 
     Az egyéni szerepkör teljes törlése eltarthat néhány percig.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: egyéni Azure-szerepkör létrehozása Azure PowerShell használatával](tutorial-custom-role-powershell.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)
-- [Erőforrás-szolgáltatói műveletek Azure Resource Manager](resource-provider-operations.md)
+- [Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md)

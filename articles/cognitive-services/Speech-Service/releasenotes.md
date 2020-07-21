@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 2dd2d3b8564535a64ff961479ed94fc92fb210f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: eceb34b57a0b2dd62f93f7732a6b93221e3ecb56
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112986"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512663"
 ---
-# <a name="release-notes"></a>Kibocsátási megjegyzések
+# <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
 ## <a name="text-to-speech-2020-july-release"></a>Szöveg-beszéd 2020 – júliusi kiadás
 
@@ -217,7 +217,7 @@ Egészségesek maradjanak!
 - JavaScript: további támogatás a `FromHost API` helyszíni tárolók és a szuverén felhők használatának megkönnyítéséhez. [Itt](speech-container-howto.md)találja a dokumentációt.
 - JavaScript: `NODE_TLS_REJECT_UNAUTHORIZED` Köszönjük, hogy hozzájárult a [orgads](https://github.com/orgads). Tekintse meg [a részleteket.](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)
 
-**Változtatások megszakítása**
+**Kompatibilitástörő változások**
 
 - `OpenSSL`frissítve lett a b 1.1.1-es verzióra, és statikusan kapcsolódik a Linux rendszerhez készült Speech SDK Core-könyvtárhoz. Ez akkor fordulhat elő, ha a beérkezett fájlok `OpenSSL` nem lettek telepítve a `/usr/lib/ssl` rendszeren lévő könyvtárba. A probléma megoldásához tekintse meg a Speech SDK [dokumentációját](how-to-configure-openssl-linux.md) .
 - Módosítottuk a C#-tól a-ig visszaadott adattípust, `WordLevelTimingResult.Offset` `int` `long` hogy engedélyezzék a hozzáférést, `WordLevelTimingResults` Ha a beszédfelismerési adatok 2 percnél hosszabbak.
@@ -258,7 +258,7 @@ Egészségesek maradjanak!
 - `KeywordRecognizer`A Windows (UWP), az Android és az iOS támogatása a NuGet-és Unity-csomagokon keresztül
 - Távoli beszélgetési Java API hozzáadva a beszélgetések átírásához aszinkron kötegekben.
 
-**Változtatások megszakítása**
+**Kompatibilitástörő változások**
 
 - A beszélgetési átirat funkciói a névtér alatt lettek áthelyezve `Microsoft.CognitiveServices.Speech.Transcription` .
 - A beszélgetési átirat módszereinek egy része új `Conversation` osztályba kerül.
@@ -565,7 +565,7 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 - Az Objective-C támogatása iOS rendszeren. Tekintse meg [az iOS-hez készült Objective-C](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)rövid útmutatót.
 - JavaScript-támogatás a böngészőben. Tekintse meg a [JavaScript](quickstart-js-browser.md)rövid útmutatót.
 
-**Változtatások megszakítása**
+**Kompatibilitástörő változások**
 
 - Ebben a kiadásban számos megszakított változást vezetünk be.
   További részletekért olvassa el [ezt a lapot](https://aka.ms/csspeech/breakingchanges_1_0_0) .
@@ -584,7 +584,7 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 
 - További hibák részletes információinak közzététele a csatlakoztatási hibákról.
 
-**Változtatások megszakítása**
+**Kompatibilitástörő változások**
 
 - Java (Android) esetén a `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` függvénynek már nincs szüksége elérésiút-paraméterre. A rendszer mostantól automatikusan észleli az elérési utat az összes támogatott platformon.
 - A Java-és C#-beli tulajdonság get-accesser `EndpointUrl` eltávolítása megtörtént.
@@ -613,7 +613,7 @@ A [minta adattárában](https://aka.ms/csspeech/samples)egy új minta lett hozz�
 - A felismerési eredmény több mezőt tartalmaz. Ezek a felismert szöveg és a felismerési állapotot jelképező további értékek (például a kullancsok) és az azokhoz tartozó további értékek (például: és) eltolása `InitialSilenceTimeout` `InitialBabbleTimeout` .
 - Támogatási AuthorizationToken a gyári példányok létrehozásához.
 
-**Változtatások megszakítása**
+**Kompatibilitástörő változások**
 
 - Felismerési események: `NoMatch` az esemény típusa egyesítve lett az `Error` eseménybe.
 - A C# nyelvben lévő SpeechOutputFormat átnevezték, `OutputFormat` hogy a C++ nyelvre legyen igazítva.

@@ -9,11 +9,13 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 8d76588ae9124d34902659cc0149063400b6e766
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-ansible
+ms.openlocfilehash: ba6fab2c2112c0e2c32e07965ededea817c37cbd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759516"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510599"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
 
@@ -84,7 +86,7 @@ Az Azure Portalon:
 
    ![Alkalmazás-regisztrálási hozzáférés](media/openshift-post-deployment/app-registration-access.png)
 
-8. Válassza a **Done** (Kész) lehetőséget.
+8. Válassza a **Kész** lehetőséget.
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>OpenShift konfigurálása az Azure AD-hitelesítéshez
 
@@ -158,7 +160,7 @@ Az Log Analytics-ügynök három módon adható hozzá a OpenShift.
 - Azure Monitor virtuálisgép-bővítmény engedélyezése az egyes OpenShift-csomópontokon
 - A Log Analytics-ügynök telepítése OpenShift Daemon-set
 
-További részletekért olvassa el a teljes [útmutatást](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift) .
+További részletekért olvassa el a teljes [útmutatást](../../azure-monitor/insights/containers.md#configure-a-log-analytics-agent-for-red-hat-openshift) .
 
 ## <a name="configure-metrics-and-logging"></a>Metrikák és naplózás konfigurálása
 
@@ -200,6 +202,6 @@ A OSBA a OpenShift-on való telepítéséhez kövesse az itt található utasít
 > [!NOTE]
 > Csak a OpenShift-projekt sablonjának lépéseit kell végrehajtania, nem a teljes telepítés szakaszt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [OpenShift-tároló platform – első lépések](https://docs.openshift.com)

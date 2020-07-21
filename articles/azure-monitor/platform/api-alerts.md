@@ -4,19 +4,19 @@ description: A Log Analytics riasztási REST API lehetővé teszi a riasztások 
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
-ms.openlocfilehash: 4ab2a1369fc4902afec7d62e44ef8e947864167f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 38f2f671ecf426f6544f6faf934aec7071451b0d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112051"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515750"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Riasztási szabályok létrehozása és kezelése a Log Analyticsban REST API 
 
 A Log Analytics riasztási REST API lehetővé teszi a riasztások létrehozását és kezelését Log Analyticsban.  Ez a cikk részletesen ismerteti az API-t és számos példát a különböző műveletek végrehajtásához.
 
 > [!IMPORTANT]
-> Amint azt [korábban bejelentettük](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), a *2019. június 1* . után létrehozott log Analytics-munkaterület (ek) a riasztási szabályokat **csak** az Azure ScheduledQueryRules [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/), az [Azure Resource Mananger-sablon](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) és a PowerShell- [parancsmag](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)használatával tudják kezelni. Az ügyfelek könnyedén [válthatnak a riasztási szabályok kezeléséhez](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) a régebbi munkaterületek számára, hogy Azure monitor scheduledQueryRules használják az alapértelmezettként, és számos [új előnyt](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) szerezzenek, mint például a natív PowerShell-parancsmagok használata, a szabályok megnövelt lookback időszaka, a szabályok létrehozása külön erőforráscsoport vagy előfizetés esetén, és még sok minden más.
+> Amint azt [korábban bejelentettük](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), a *2019. június 1* . után létrehozott log Analytics-munkaterület (ek) a riasztási szabályokat **csak** az Azure ScheduledQueryRules [REST API](/rest/api/monitor/scheduledqueryrules/), az [Azure Resource Mananger-sablon](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) és a PowerShell- [parancsmag](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)használatával tudják kezelni. Az ügyfelek könnyedén [válthatnak a riasztási szabályok kezeléséhez](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) a régebbi munkaterületek számára, hogy Azure monitor scheduledQueryRules használják az alapértelmezettként, és számos [új előnyt](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) szerezzenek, mint például a natív PowerShell-parancsmagok használata, a szabályok megnövelt lookback időszaka, a szabályok létrehozása külön erőforráscsoport vagy előfizetés esetén, és még sok minden más.
 
 A Log Analytics keresési REST API REST-vel rendelkezik, és a Azure Resource Manager REST API keresztül érhető el. Ebben a dokumentumban olyan példákat talál, amelyekben az API egy PowerShell-parancssorból érhető el az [ARMClient](https://github.com/projectkudu/ARMClient)használatával, amely leegyszerűsíti a Azure Resource Manager API meghívását. A ARMClient és a PowerShell használata számos lehetőség a Log Analytics Search API eléréséhez. Ezekkel az eszközökkel a REST-Azure Resource Manager API-val hívásokat indíthat Log Analytics munkaterületekre, és keresési parancsokat hajthat végre rajtuk. Az API JSON formátumban jeleníti meg a keresési eredményeket, így a keresési eredmények többféleképpen is használhatók.
 
@@ -29,7 +29,7 @@ Az ütemezett tulajdonságok a következő táblázatban láthatók.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Intervallum |A keresés futtatásának gyakorisága. Percekben mérve. |
+| Időköz |A keresés futtatásának gyakorisága. Percekben mérve. |
 | QueryTimeSpan |Az az időtartam, ameddig a feltételek kiértékelése megtörténik. Az értéknek meg kell egyeznie az Intervallumtal vagy nagyobbnak kell lennie. Percekben mérve. |
 | Verzió |A használt API-verzió.  Jelenleg ezt mindig 1-re kell állítani. |
 
@@ -265,7 +265,7 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName
 #### <a name="action-groups"></a>Műveletcsoportok
 Minden riasztás az Azure-ban, a műveleti csoport használata a műveletek kezelésére szolgáló alapértelmezett mechanizmusként. A műveleti csoport segítségével egyszer adhatja meg a műveleteket, majd a műveleti csoportot több riasztáshoz társíthatja az Azure-on keresztül. Anélkül, hogy szükség lenne rá, hogy ismételten deklarálja ugyanazokat a műveleteket újra és újra. A műveleti csoportok több műveletet is támogatnak – például e-maileket, SMS-t, hanghívást, ITSM, Automation Runbook, webhook URI-t és egyebeket. 
 
-Azok a felhasználók, akik kibővítették a riasztásokat az Azure-ba, a riasztás létrehozásához a küszöbértékkel együtt át kell adni a műveleti csoport részleteit. Az e-mailek adatait, a webhook URL-jeit, a Runbook Automation részleteit és az egyéb műveleteket a riasztás létrehozása előtt először a műveleti csoportba kell definiálni. Létrehozhat [műveleti csoportot Azure monitor](../../azure-monitor/platform/action-groups.md) a portálon, vagy használhatja a [műveleti csoport API](https://docs.microsoft.com/rest/api/monitor/actiongroups)-t.
+Azok a felhasználók, akik kibővítették a riasztásokat az Azure-ba, a riasztás létrehozásához a küszöbértékkel együtt át kell adni a műveleti csoport részleteit. Az e-mailek adatait, a webhook URL-jeit, a Runbook Automation részleteit és az egyéb műveleteket a riasztás létrehozása előtt először a műveleti csoportba kell definiálni. Létrehozhat [műveleti csoportot Azure monitor](../../azure-monitor/platform/action-groups.md) a portálon, vagy használhatja a [műveleti csoport API](/rest/api/monitor/actiongroups)-t.
 
 Ha a műveleti csoport társítását szeretné hozzáadni egy riasztáshoz, adja meg a műveleti csoport egyedi Azure Resource Manager AZONOSÍTÓját a riasztás definíciójában. Alább látható egy minta illusztráció:
 
@@ -390,4 +390,3 @@ armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Na
 * A [REST API használatával hajthat végre naplóbeli keresést](../../azure-monitor/log-query/log-query-overview.md) a log Analytics.
 * További tudnivalók a [naplózási riasztásokról az Azure monitorban](../../azure-monitor/platform/alerts-unified-log.md)
 * A [naplók riasztási szabályainak létrehozása, szerkesztése és kezelése az Azure monitorban](../../azure-monitor/platform/alerts-log.md)
-

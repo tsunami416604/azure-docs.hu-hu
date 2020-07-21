@@ -9,13 +9,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: b8d01a383e816bfc73413d21e9cc8d51d326ab14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ced66c1d3023b7edb3220b45e24d3eb54098df8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70307183"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512486"
 ---
-# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Az elküldett adatmegosztások használatának figyelése a PowerShell használatával
+# <a name="use-powershell-to-set-azure-data-share-sychronization-settings"></a>Az Azure-beli adatmegosztási szinkronizálási beállításainak megadása a PowerShell használatával
 
 Ez a PowerShell-szkript beállítja és megosztja a szinkronizálási beállításokat.
 
@@ -51,7 +52,7 @@ Ez a szkript a következő parancsokat használja:
 | [Get-AzDataShareSynchronizationSetting](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Beolvassa a megosztás szinkronizálásának beállításait. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 

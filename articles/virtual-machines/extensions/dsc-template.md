@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc73b5b9f05d24de206b25095ea7eaf93f035298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891656"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511160"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>A kívánt állapot konfigurációs bővítménye Azure Resource Manager-sablonokkal
 
-Ez a cikk a [kívánt állapot-konfigurációs (DSC) bővítmény kezelője](dsc-overview.md)Azure Resource Manager sablonját ismerteti. Számos példa a **RegistrationURL** (karakterláncként megadott) és a **RegistrationKey** (feltéve, hogy [PSCredential](/dotnet/api/system.management.automation.pscredential)) használja a Azure Automationba való bevezetéshez. Az értékek beszerzésével kapcsolatos részletekért lásd: [bevezetési gépek felügyelethez Azure Automation állapot konfigurálása – biztonságos regisztráció](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration).
+Ez a cikk a [kívánt állapot-konfigurációs (DSC) bővítmény kezelője](dsc-overview.md)Azure Resource Manager sablonját ismerteti. Számos példa a **RegistrationURL** (karakterláncként megadott) és a **RegistrationKey** (feltéve, hogy a Azure Automation a bevezetéshez [PSCredential](/dotnet/api/system.management.automation.pscredential) ) használja. Az értékek beszerzésével kapcsolatos részletekért lásd: [bevezetési gépek felügyelethez Azure Automation állapot konfigurálása – biztonságos regisztráció](../../automation/automation-dsc-onboarding.md#enable-machines-securely-using-registration).
 
 > [!NOTE]
 > Előfordulhat, hogy némileg eltérő séma-példákkal találkozhat. A séma változása a 2016 októberi kiadásban történt. Részletekért lásd: [korábbi formátum frissítése](#update-from-a-previous-format).
@@ -176,7 +177,7 @@ Az alapértelmezett konfigurációs parancsfájlhoz elérhető argumentumok list
 
 ## <a name="details"></a>Részletek
 
-| Tulajdonság neve | Típus | Description |
+| Tulajdonság neve | Típus | Leírás |
 | --- | --- | --- |
 | Settings. wmfVersion |sztring |A Windows Management Framework (WMF) azon verzióját adja meg, amelyet telepíteni kell a virtuális gépre. Ha ezt a tulajdonságot a **legújabbra** állítja, a a WMF legújabb verzióját telepíti. Jelenleg a tulajdonság egyetlen lehetséges értéke **4,0**, **5,0**, **5,1**és **Latest**. Ezek a lehetséges értékek a frissítések tárgya. Az alapértelmezett érték a **legújabb**. |
 | settings.configszülő. URL |sztring |Azt az URL-címet adja meg, amelyből le szeretné tölteni a DSC Configuration. zip fájlt. Ha a megadott URL-címnek szüksége van egy SAS-tokenre a hozzáféréshez, állítsa a **protectedSettings.configurationUrlSasToken** tulajdonságot az SAS-token értékére. Ez a tulajdonság akkor szükséges, ha **settings.configszülő. script** vagy **settings.configszülő. Function** van definiálva. Ha nem adott meg értéket ezekhez a tulajdonságokhoz, a bővítmény meghívja az alapértelmezett konfigurációs parancsfájlt a Location Configuration Manager (LCD) metaadatainak beállításához, és meg kell adni az argumentumokat. |
@@ -195,7 +196,7 @@ Az alapértelmezett konfigurációs parancsfájlhoz elérhető argumentumok list
 A következő értékekkel kapcsolatos további információkért lásd: [helyi Configuration Manager alapszintű beállítások](/powershell/scripting/dsc/managing-nodes/metaConfig#basic-settings).
 A DSC-bővítmény alapértelmezett konfigurációs parancsfájlja csak az alábbi táblázatban felsorolt LCD-tulajdonságok konfigurálására használható.
 
-| Tulajdonság neve | Típus | Description |
+| Tulajdonság neve | Típus | Leírás |
 | --- | --- | --- |
 | protectedSettings.configurationArguments. RegistrationKey |PSCredential |Kötelező tulajdonság. Meghatározza azt a kulcsot, amelyet egy csomóponthoz használ a Azure Automation szolgáltatásban egy PowerShell hitelesítőadat-objektum jelszavaként való regisztráláshoz. Ez az érték automatikusan felderíthető az Automation-fiók **listkeys műveletének beolvasása** metódusának használatával.  Lásd a [példát](#example-using-referenced-azure-automation-registration-values). |
 | settings.configurationArguments. RegistrationUrl |sztring |Kötelező tulajdonság. Megadja annak az Automation-végpontnak az URL-címét, amelyben a csomópont megpróbál regisztrálni. Ez az érték automatikusan felderíthető az Automation-fiókra vonatkozó **hivatkozási** módszer használatával. |
@@ -203,9 +204,9 @@ A DSC-bővítmény alapértelmezett konfigurációs parancsfájlja csak az aláb
 | settings.configurationArguments.ConfigurationMode |sztring |Megadja az LCD/ChipOnGlas üzemmódot. Az érvényes beállítások a következők: **ApplyOnly**, **ApplyandMonitor**és **ApplyandAutoCorrect**.  Az alapértelmezett érték a **ApplyandMonitor**. |
 | settings.configurationArguments. RefreshFrequencyMins | UInt32 | Meghatározza, hogy az LCD-eszköz milyen gyakran próbálkozzon az Automation-fiókkal a frissítésekhez.  Az alapértelmezett érték **30**.  A minimális érték **15**. |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | UInt32 | Azt határozza meg, hogy az LCD/ChipOnGlas milyen gyakran ellenőrizze az aktuális konfigurációt. Az alapértelmezett érték **15**. A minimális érték **15**. |
-| settings.configurationArguments. RebootNodeIfNeeded | logikai | Meghatározza, hogy a csomópontok automatikusan újraindulnak-e, ha egy DSC-művelet kéri. Az alapértelmezett érték **false (hamis**). |
+| settings.configurationArguments. RebootNodeIfNeeded | boolean | Meghatározza, hogy a csomópontok automatikusan újraindulnak-e, ha egy DSC-művelet kéri. Az alapértelmezett érték **false (hamis**). |
 | settings.configurationArguments. ActionAfterReboot | sztring | Itt adható meg, hogy mi történjen a konfiguráció alkalmazásának újraindításakor. Az érvényes beállítások a következők: **ContinueConfiguration** és **stopconfiguration metódusa**. Az alapértelmezett érték a **ContinueConfiguration**. |
-| settings.configurationArguments. AllowModuleOverwrite | logikai | Meghatározza, hogy a LCD-eszközök felülírják-e a csomóponton meglévő modulokat. Az alapértelmezett érték **false (hamis**). |
+| settings.configurationArguments. AllowModuleOverwrite | boolean | Meghatározza, hogy a LCD-eszközök felülírják-e a csomóponton meglévő modulokat. Az alapértelmezett érték **false (hamis**). |
 
 ## <a name="settings-vs-protectedsettings"></a>beállítások és Protectedsettingsfromkeyvault
 
@@ -424,7 +425,7 @@ A "" duplikált argumentumok találhatók {0} a nyilvános és a védett configu
 - Adja meg a hiányzó tulajdonságot.
 - Távolítsa el a hiányzó tulajdonságot igénylő tulajdonságot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [, hogyan használhatja a virtuálisgép-méretezési csoportokat az Azure DSC bővítménnyel](../../virtual-machine-scale-sets/virtual-machine-scale-sets-dsc.md).
 - További információ a [DSC biztonságos hitelesítőadat-kezeléséről](dsc-credentials.md).

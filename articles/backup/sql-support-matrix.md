@@ -3,11 +3,13 @@ title: Azure Backup támogatási mátrix az Azure-beli virtuális gépeken futó
 description: Összefoglalja a támogatási beállításokat és korlátozásokat, amikor Azure-beli virtuális gépeken SQL Server biztonsági mentést készít a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: f9594b9157f84a0536ffd4b62f792fd86fb1c243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 4d197f8b3c1ed74ef45c1f7942ead52ccef0c14a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234250"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513183"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Az Azure-beli virtuális gépek SQL Server biztonsági mentésének támogatási mátrixa
 
@@ -26,7 +28,7 @@ A Azure Backup használatával biztonsági mentést készíthet a Microsoft Azur
 ## <a name="feature-consideration-and-limitations"></a>Funkciókkal kapcsolatos szempontok és korlátozások
 
 * SQL Server biztonsági mentés konfigurálható a Azure Portal vagy a **PowerShellben**. Nem támogatjuk a CLI-t.
-* A megoldás mindkét típusú [üzembe helyezést](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) támogatja – Azure Resource Manager virtuális gépeket és klasszikus virtuális gépeket.
+* A megoldás mindkét típusú [üzembe helyezést](../azure-resource-manager/management/deployment-models.md) támogatja – Azure Resource Manager virtuális gépeket és klasszikus virtuális gépeket.
 * A SQL Server rendszert futtató virtuális gépek internetkapcsolatot igényelnek az Azure nyilvános IP-címeinek eléréséhez.
 * SQL Server **feladatátvevő fürt példánya (** nem támogatott).
 * A tükrözési adatbázisok és az adatbázis-Pillanatképek biztonsági mentésére és visszaállítására vonatkozó műveletek nem támogatottak.
@@ -87,6 +89,6 @@ Differenciál | Elsődleges
 Napló |  Másodlagos
 Csak másolás – teljes |  Másodlagos
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést egy](backup-azure-sql-database.md) Azure-beli virtuális gépen futó SQL Server-adatbázisról.

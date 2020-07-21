@@ -3,12 +3,12 @@ title: Azure-Event Hubs – kivételek
 description: Ez a cikk az Azure Event Hubs üzenetkezelési kivételek és a javasolt műveletek listáját tartalmazza.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ce9e1bcd1f9e4d196d03d55374af8b1c86651851
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a93daa88c468a22838a6f9012f0c4622447f5555
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314617"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512367"
 ---
 # <a name="event-hubs-messaging-exceptions---net"></a>Üzenetkezelési kivételek Event Hubs – .NET
 Ez a szakasz a .NET-keretrendszer API-jai által generált .NET-kivételeket sorolja fel. 
@@ -19,10 +19,10 @@ A Event Hubs .NET API-k olyan kivételeket hoznak elő, amelyek a következő ka
 
  - Felhasználói kódolási hiba: 
  
-   - [System. ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)
-   - [System. InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)
-   - [System. OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)
-   - [System. Runtime. szerializálás. SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)
+   - [System. ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)
+   - [System. InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1)
+   - [System. OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1)
+   - [System. Runtime. szerializálás. SerializationException](/dotnet/api/system.runtime.serialization.serializationexception?view=netcore-3.1)
    
    Általános művelet: a folytatás előtt próbálja meg kijavítani a kódot.
  
@@ -30,7 +30,7 @@ A Event Hubs .NET API-k olyan kivételeket hoznak elő, amelyek a következő ka
  
    - [Microsoft. ServiceBus. Messaging. MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception)
    - [Microsoft. Azure. EventHubs. MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception)
-   - [System. UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)
+   - [System. UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1)
    
    Általános művelet: Ellenőrizze a konfigurációt, és szükség esetén módosítsa.
    
@@ -45,7 +45,7 @@ A Event Hubs .NET API-k olyan kivételeket hoznak elő, amelyek a következő ka
  
  - Egyéb kivételek: 
  
-   - [System. Transactions. TransactionException](https://msdn.microsoft.com/library/system.transactions.transactionexception.aspx)
+   - [System. Transactions. TransactionException](/dotnet/api/system.transactions.transactionexception?view=netcore-3.1)
    - [System. Timeoutexception osztályról](#timeoutexception)
    - [Microsoft. ServiceBus. Messaging. MessageLockLostException](/dotnet/api/microsoft.servicebus.messaging.messagelocklostexception)
    - [Microsoft. ServiceBus. Messaging. SessionLockLostException](/dotnet/api/microsoft.servicebus.messaging.sessionlocklostexception)
@@ -57,11 +57,11 @@ Az alábbi táblázat az üzenetkezelési kivételek típusait, valamint azok ok
 
 | Kivétel típusa | Leírás/ok/példák | Javasolt művelet | Megjegyzés automatikus/azonnali újrapróbálkozás |
 | -------------- | -------------------------- | ---------------- | --------------------------------- |
-| [Timeoutexception osztályról](https://msdn.microsoft.com/library/system.timeoutexception.aspx) |A kiszolgáló a megadott időn belül nem válaszolt a kért műveletre, amelyet a [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings)vezérel. Lehet, hogy a kiszolgáló végrehajtotta a kért műveletet. Ez a kivétel hálózati vagy más infrastrukturális késések miatt fordulhat elő. |Ellenőrizze a rendszerállapotot a konzisztencia érdekében, és szükség esetén próbálkozzon újra.<br /> Lásd: [timeoutexception osztályról](#timeoutexception). | Előfordulhat, hogy az Újrapróbálkozás bizonyos esetekben segíthet. adja hozzá az újrapróbálkozási logikát a kódhoz. |
-| [InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx) |A kért felhasználói művelet nem engedélyezett a kiszolgálón vagy a szolgáltatáson belül. A részletekért tekintse meg a kivételt jelző üzenetet. A [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) például ezt a kivételt hozza létre, ha az üzenet [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) módban érkezett. | Keresse meg a kódot és a dokumentációt. Győződjön meg arról, hogy a kért művelet érvényes. | Az újrapróbálkozás nem segít. |
-| [OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx) | Kísérlet történt egy olyan objektum műveletének meghívására, amely már be van zárva, megszakadt vagy el lett távolítva. Ritka esetekben a környezeti tranzakció már el van távolítva. | Ellenőrizze a kódot, és győződjön meg róla, hogy nem hív meg műveleteket egy eldobott objektumon. | Az újrapróbálkozás nem segít. |
-| [UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx) | A [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) objektum nem tudott jogkivonatot beszerezni, a jogkivonat érvénytelen, vagy a jogkivonat nem tartalmazza a művelet végrehajtásához szükséges jogcímeket. | Győződjön meg arról, hogy a jogkivonat-szolgáltató a megfelelő értékekkel lett létrehozva. Vizsgálja meg a Access Control Service konfigurációját. | Előfordulhat, hogy az Újrapróbálkozás bizonyos esetekben segíthet. adja hozzá az újrapróbálkozási logikát a kódhoz. |
-| [ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)<br /> [ArgumentNullException](https://msdn.microsoft.com/library/system.argumentnullexception.aspx)<br />[ArgumentOutOfRangeException](https://msdn.microsoft.com/library/system.argumentoutofrangeexception.aspx) | A metódushoz megadott egy vagy több argumentum érvénytelen. A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy [létrehozáshoz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) megadott URI-azonosító szegmens (eke) t tartalmaz. A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy- [létrehozáshoz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) megadott URI-séma érvénytelen. A tulajdonság értéke nagyobb, mint 32 KB. | Ellenőrizze a hívó kódját, és ellenőrizze, hogy helyesek-e az argumentumok. | Az újrapróbálkozás nem segít. |
+| [Timeoutexception osztályról](/dotnet/api/system.timeoutexception?view=netcore-3.1) |A kiszolgáló a megadott időn belül nem válaszolt a kért műveletre, amelyet a [OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings)vezérel. Lehet, hogy a kiszolgáló végrehajtotta a kért műveletet. Ez a kivétel hálózati vagy más infrastrukturális késések miatt fordulhat elő. |Ellenőrizze a rendszerállapotot a konzisztencia érdekében, és szükség esetén próbálkozzon újra.<br /> Lásd: [timeoutexception osztályról](#timeoutexception). | Előfordulhat, hogy az Újrapróbálkozás bizonyos esetekben segíthet. adja hozzá az újrapróbálkozási logikát a kódhoz. |
+| [InvalidOperationException](/dotnet/api/system.invalidoperationexception?view=netcore-3.1) |A kért felhasználói művelet nem engedélyezett a kiszolgálón vagy a szolgáltatáson belül. A részletekért tekintse meg a kivételt jelző üzenetet. A [Complete](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) például ezt a kivételt hozza létre, ha az üzenet [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) módban érkezett. | Keresse meg a kódot és a dokumentációt. Győződjön meg arról, hogy a kért művelet érvényes. | Az újrapróbálkozás nem segít. |
+| [OperationCanceledException](/dotnet/api/system.operationcanceledexception?view=netcore-3.1) | Kísérlet történt egy olyan objektum műveletének meghívására, amely már be van zárva, megszakadt vagy el lett távolítva. Ritka esetekben a környezeti tranzakció már el van távolítva. | Ellenőrizze a kódot, és győződjön meg róla, hogy nem hív meg műveleteket egy eldobott objektumon. | Az újrapróbálkozás nem segít. |
+| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1) | A [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) objektum nem tudott jogkivonatot beszerezni, a jogkivonat érvénytelen, vagy a jogkivonat nem tartalmazza a művelet végrehajtásához szükséges jogcímeket. | Győződjön meg arról, hogy a jogkivonat-szolgáltató a megfelelő értékekkel lett létrehozva. Vizsgálja meg a Access Control Service konfigurációját. | Előfordulhat, hogy az Újrapróbálkozás bizonyos esetekben segíthet. adja hozzá az újrapróbálkozási logikát a kódhoz. |
+| [ArgumentException](/dotnet/api/system.argumentexception?view=netcore-3.1)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception?view=netcore-3.1)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception?view=netcore-3.1) | A metódushoz megadott egy vagy több argumentum érvénytelen. A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy [létrehozáshoz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) megadott URI-azonosító szegmens (eke) t tartalmaz. A [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) vagy- [létrehozáshoz](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) megadott URI-séma érvénytelen. A tulajdonság értéke nagyobb, mint 32 KB. | Ellenőrizze a hívó kódját, és ellenőrizze, hogy helyesek-e az argumentumok. | Az újrapróbálkozás nem segít. |
 | [Microsoft. ServiceBus. Messaging MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception) <br /><br/> [Microsoft. Azure. EventHubs MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception) | A művelethez társított entitás nem létezik, vagy törölték. | Győződjön meg arról, hogy az entitás létezik. | Az újrapróbálkozás nem segít. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) | Az ügyfél nem tud kapcsolatot létesíteni az Event hub szolgáltatással. |Győződjön meg arról, hogy a megadott állomásnév helyes, és a gazdagép elérhető. | Az újrapróbálkozás akkor lehet hasznos, ha akadozó kapcsolódási problémák léptek fel. |
 | [Microsoft. ServiceBus. Messaging ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) <br /> <br/>[Microsoft. Azure. EventHubs ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) | A szolgáltatás jelenleg nem tudja feldolgozni a kérelmet. | Az ügyfél hosszabb ideig is megvárhat, majd próbálja megismételni a műveletet. <br /> Lásd: [ServerBusyException](#serverbusyexception). | Előfordulhat, hogy az ügyfél bizonyos intervallum után újra próbálkozik. Ha az újrapróbálkozások eltérő kivételt eredményeznek, akkor ellenőrizze, hogy az újrapróbálkozási viselkedést az adott kivétel okozza. |
@@ -80,7 +80,7 @@ Ez a kivétel akkor fordulhat elő, ha a fogadók maximális száma (5) már meg
 Az Event Hubs legfeljebb 20 fogyasztói csoportot tartalmaz. Ha további kísérletet szeretne létrehozni, [quotaexceededexception osztályról](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception)kap. 
 
 ## <a name="timeoutexception"></a>Timeoutexception osztályról
-A [timeoutexception osztályról](https://msdn.microsoft.com/library/system.timeoutexception.aspx) azt jelzi, hogy a felhasználó által kezdeményezett művelet a művelet időkorlátja alatt hosszabb időt vesz igénybe. 
+A [timeoutexception osztályról](/dotnet/api/system.timeoutexception?view=netcore-3.1) azt jelzi, hogy a felhasználó által kezdeményezett művelet a művelet időkorlátja alatt hosszabb időt vesz igénybe. 
 
 Event Hubs esetében az időtúllépés a kapcsolati sztring részeként vagy a [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.servicebus.servicebusconnectionstringbuilder)-n keresztül van megadva. Maga a hibaüzenet is változhat, de mindig az aktuális művelethez megadott időtúllépési értéket tartalmazza. 
 
@@ -116,10 +116,10 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
-* [Event Hubs áttekintése](event-hubs-what-is-event-hubs.md)
-* [Event hub létrehozása](event-hubs-create.md)
+* [Event Hubs áttekintése](./event-hubs-about.md)
+* [Eseményközpont létrehozása](event-hubs-create.md)
 * [Event Hubs – gyakori kérdések](event-hubs-faq.md)

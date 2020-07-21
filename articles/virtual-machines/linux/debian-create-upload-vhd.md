@@ -6,16 +6,16 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: ebd20b6187fd4f04ac525e0152d805d9d81de3ab
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4c2edddb8eec4a2f8300077bb00df72d7e2b00de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134607"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510720"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Debian VHD előkészítése az Azure-hoz
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a szakasz azt feltételezi, hogy már telepített egy Debian Linux operációs rendszert a [Debian-webhelyről](https://www.debian.org/distrib/) egy virtuális merevlemezre letöltött. ISO fájlból. Több eszköz létezik a. vhd fájlok létrehozásához; A Hyper-V csak egy példa. A Hyper-V-t használó utasításokért lásd: [a Hyper-v szerepkör telepítése és a virtuális gép konfigurálása](https://technet.microsoft.com/library/hh846766.aspx).
+Ez a szakasz azt feltételezi, hogy már telepített egy Debian Linux operációs rendszert a [Debian-webhelyről](https://www.debian.org/distrib/) egy virtuális merevlemezre letöltött. ISO fájlból. Több eszköz létezik a. vhd fájlok létrehozásához; A Hyper-V csak egy példa. A Hyper-V-t használó utasításokért lásd: [a Hyper-v szerepkör telepítése és a virtuális gép konfigurálása](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 ## <a name="installation-notes"></a>Telepítési megjegyzések
 * Lásd még az [általános linuxos telepítési megjegyzések](create-upload-generic.md#general-linux-installation-notes) című témakört, amely további tippeket nyújt az Azure-hoz készült Linux előkészítéséhez.
@@ -116,4 +116,3 @@ Elérhetők az Azure-hoz készült Debian virtuális merevlemezek, például az 
 
 ## <a name="next-steps"></a>Következő lépések
 Most már készen áll a Debian-beli virtuális merevlemez használatára az új virtuális gépek létrehozásához az Azure-ban. Ha első alkalommal tölti fel a. vhd-fájlt az Azure-ba, tekintse meg a Linux rendszerű [virtuális gép létrehozása egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd)című témakört.
-

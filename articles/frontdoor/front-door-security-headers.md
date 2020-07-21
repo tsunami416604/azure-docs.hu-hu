@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: Biztonsági fejlécek hozzáadása a szabályok motorral – Azure bejárati ajtó
 description: Ebből a cikkből megtudhatja, hogyan konfigurálhat egy biztonsági fejlécet az Azure-beli előtérben található Rules Engine használatával
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/22/2020
 ms.author: mebeatty
-ms.openlocfilehash: d489186dc1c012fe8c181f17e00bcdb999e230dd
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 5f07a57e0d41a5e7c546bc89ca7a0b5ac5fce5de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232134"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512231"
 ---
 # <a name="add-security-headers-with-rules-engine"></a>Biztonsági fejlécek hozzáadása a szabálymotorral
 
@@ -43,7 +43,7 @@ Az alábbi példa bemutatja, hogyan adhat hozzá egy Content-Security-Policy fej
 > Ebben a forgatókönyvben nem vettünk fel [egyezési feltételeket](front-door-rules-engine-match-conditions.md) a szabályhoz. Az útvonal-szabályban definiált elérési útra megegyező összes bejövő kérelem esetében ez a szabály lesz alkalmazva. Ha azt szeretné, hogy csak a kérelmek egy részhalmazára vonatkozzon, ügyeljen arra, hogy a szabályhoz az adott egyeztetési feltételeket adja hozzá.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [AFD-szabályok motorról](front-door-rules-engine.md). 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).

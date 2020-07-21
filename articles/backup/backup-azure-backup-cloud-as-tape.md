@@ -3,11 +3,12 @@ title: A szalagos infrastruktúra cseréje
 description: Ismerje meg, hogyan biztosíthatja az Azure-ban tárolt adatok biztonsági mentését és helyreállítását lehetővé tevő szalagos szemantikai Azure Backup?
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: aeda1cefc84d425855c40b793f8334936541e63f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71bfa86611b3a63fa6a28f60f80608b394cab5a3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77425102"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514186"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>A hosszú távú tároló áthelyezése szalagról az Azure-felhőbe
 
@@ -65,9 +66,9 @@ Ha az előző képernyőn a **módosítás** gombra kattint, az ügyfelek továb
 
 ![Módosítás](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Backupról:
 
-* [Az Azure Backup bemutatása](backup-introduction-to-azure-backup.md)
-* [Az Azure Backup kipróbálása](backup-try-azure-backup-in-10-mins.md)
+* [Az Azure Backup bemutatása](./backup-overview.md)
+* [Az Azure Backup kipróbálása](./backup-windows-with-mars-agent.md)

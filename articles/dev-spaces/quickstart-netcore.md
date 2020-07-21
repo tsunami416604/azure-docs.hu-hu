@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy .NET Core-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b38562879fa67d7ee82e3251ea2fcaa57a2075d6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8ddf2e484b3d1525825f8df3b738091564b0a78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240209"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512452"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes-on: Visual Studio Code és .NET Core – Azure dev Spaces
 
@@ -23,7 +23,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 
 Az Azure dev Spaces Emellett lehetővé teszi a következő műveletek hibakeresését és megismétlését:
 - [A Java és a Visual Studio Code](quickstart-java.md)
-- [Node. js és Visual Studio Code](quickstart-nodejs.md)
+- [ANode.js és a Visual Studio Code](quickstart-nodejs.md)
 - [A .NET Core és a Visual Studio](quickstart-netcore-visualstudio.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -47,7 +47,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 A `use-dev-spaces` parancs használatával engedélyezze a fejlesztői szóközöket az AK-fürtön, és kövesse az utasításokat. Az alábbi parancs lehetővé teszi a dev Spaces használatát a *MyAKS* -fürtön a *MyResourceGroup* csoportban, és létrehoz egy *alapértelmezett* fejlesztői helyet.
 
 > [!NOTE]
-> A `use-dev-spaces` parancs az Azure dev SPACEs CLI-t is telepíti, ha még nincs telepítve. Az Azure dev Spaces CLI nem telepíthető a Azure Cloud Shell.
+> A `use-dev-spaces` parancs az Azure dev Spaces CLI-t is telepíti, ha még nincs telepítve. Az Azure dev Spaces CLI nem telepíthető a Azure Cloud Shell.
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -85,11 +85,11 @@ Nyissa meg a Visual Studio Code-ot, kattintson a *fájl* , majd a *Megnyitás...
 
 Most már megnyitotta a *webfrontend* -projektet a Visual Studio Code-ban. Az alkalmazás fejlesztői tárhelyen való futtatásához a Docker és a Helm chart objektumokat a parancs paletta Azure dev Spaces bővítményének használatával hozhatja ki.
 
-A parancs paletta a Visual Studio Code-ban való megnyitásához kattintson a *nézet* , majd a *parancs paletta*elemre. Kezdjen `Azure Dev Spaces` el gépelni, `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`és kattintson a elemre.
+A parancs paletta a Visual Studio Code-ban való megnyitásához kattintson a *nézet* , majd a *parancs paletta*elemre. Kezdjen el gépelni `Azure Dev Spaces` , és kattintson a elemre `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces` .
 
 ![Konfigurációs fájlok előkészítése az Azure dev Spaces szolgáltatáshoz](./media/common/command-palette.png)
 
-Ha a Visual Studio Code azt is kéri, hogy konfigurálja a nyilvános végpontot `Yes` , válassza a nyilvános végpont engedélyezését.
+Ha a Visual Studio Code azt is kéri, hogy konfigurálja a nyilvános végpontot, válassza a `Yes` nyilvános végpont engedélyezését.
 
 ![Nyilvános végpont kiválasztása](media/common/select-public-endpoint.png)
 
@@ -102,7 +102,7 @@ Ez a parancs előkészíti a projektet az Azure dev Spaces-ben való futtatásra
 
 Kattintson a bal oldali *hibakeresés* ikonra, és kattintson a felül található *.net Core Launch (AZDS)* elemre.
 
-![](media/get-started-netcore/debug-configuration.png)
+![A képernyőkép a Visual Studio Code ablak bal felső sarkában található. A hibakeresés ikon ki van emelve, a bal oldali panel "hibakeresés", a cím jobb oldalán pedig egy legördülő lista jelenik meg, amely a "dot NET Core Launch (A Z D k)" címet jeleníti meg.](media/get-started-netcore/debug-configuration.png)
 
 Ez a parancs hibakeresési módban létrehozza és futtatja a szolgáltatást az Azure dev Spaces szolgáltatásban. Az alján található *Terminálablak* megjeleníti az Azure dev Spaces szolgáltatásban futó szolgáltatások kiépítési kimenetét és URL-címeit. A *hibakeresési konzol* megjeleníti a napló kimenetét.
 
@@ -143,11 +143,11 @@ Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jele
 
 A szolgáltatás Kubernetes való futtatásakor a hibakeresőhöz csatolva teljes hozzáférése van a hibakeresési adatokhoz, például a hívási verem, a helyi változók és a kivételek adataihoz.
 
-Távolítsa el a töréspontot úgy, hogy a kurzort a 22-es és az `Controllers/HomeController.cs` *F9 billentyű*megnyomásával helyezi el.
+Távolítsa el a töréspontot úgy, hogy a kurzort a 22-es `Controllers/HomeController.cs` és az *F9 billentyű*megnyomásával helyezi el.
 
 ## <a name="update-code-from-visual-studio-code"></a>Kód frissítése a Visual Studio Code-ból
 
-Amíg a szolgáltatás hibakeresési módban fut, frissítse a 22-es `Controllers/HomeController.cs`. sort. Például:
+Amíg a szolgáltatás hibakeresési módban fut, frissítse a 22-es. sort `Controllers/HomeController.cs` . Például:
 
 ```csharp
 ViewData["Message"] = "Your application description page in Azure while debugging!";
@@ -155,7 +155,7 @@ ViewData["Message"] = "Your application description page in Azure while debuggin
 
 Mentse a fájlt. Kattintson a *hibakeresés* elemre, majd *indítsa újra a hibakeresést* , vagy a hibakeresés *eszköztáron*kattintson a *hibakeresés újraindítása* gombra.
 
-![](media/common/debug-action-refresh.png)
+![A hibakeresés eszköztár egy kis ablaktábla az oldal felső középső részén (közvetlenül az oldal címe alatt). Az Újraindítás gomb egy körkörös nyilat jelenít meg, és ki van emelve. A gomb hover-képe: "újraindítás (CTRL + SHIFT + F5)".](media/common/debug-action-refresh.png)
 
 Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy a frissített üzenet jelenik meg.
 
@@ -167,7 +167,7 @@ Az új Container-lemezképek újraépítése és újratelepítése helyett az Az
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken. 
 

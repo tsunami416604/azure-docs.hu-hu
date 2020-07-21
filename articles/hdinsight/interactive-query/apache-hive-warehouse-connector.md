@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: c2590a2c745969313ae73521dbcd110fbf3b7551
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221017"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511891"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Apache Spark és Apache Hive integrálása a kaptár Warehouse-összekötővel az Azure HDInsight
 
@@ -179,9 +179,9 @@ Miután létrehozta a Scala/Java-kódot és a függőségeket egy szerelvény ja
 
 A Python esetében adja hozzá a következő konfigurációt is. 
 
-    ```python
-    --py-files /usr/hdp/current/hive_warehouse_connector/pyspark_hwc-<VERSION>.zip
-    ```
+```python
+--py-files /usr/hdp/current/hive_warehouse_connector/pyspark_hwc-<VERSION>.zip
+```
     
 ## <a name="run-queries-on-enterprise-security-package-esp-clusters"></a>Lekérdezések futtatása Enterprise Security Package (ESP) fürtökön
 
@@ -224,7 +224,7 @@ kinit USERNAME
 
     ![bemutató táblázat a Ranger-szabályzat alkalmazása után](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [HWC- és Apache Spark-műveletek](./apache-hive-warehouse-connector-operations.md)
 * [Az interaktív lekérdezés használata HDInsighttal](./apache-interactive-query-get-started.md)

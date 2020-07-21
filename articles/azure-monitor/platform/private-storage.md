@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 05eb92e2fb887b5c64e2c73576fe85a4543ac1b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: da9ec0fc421f0cb2f2a1e6fa65d8c936cfd5a3c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184497"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515427"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Felhasználói tulajdonban lévő Storage-fiókok a naplózás betöltéséhez Azure Monitor
 
-A Azure Monitor egyes adattípusok, például az [egyéni naplók](data-sources-custom-logs.md) és néhány [Azure-napló](azure-storage-iis-table.md)betöltési folyamatában a Storage-fiókokat használja. A betöltési folyamat során a rendszer először egy Storage-fiókba küldik a naplókat, és később bekerül Log Analyticsba vagy Application Insightsba. Ha a betöltés során szeretné szabályozni az adatait, a szolgáltatás által felügyelt tároló helyett saját Storage-fiókokat is használhat. A saját Storage-fiók használata lehetővé teszi a naplók hozzáférésének, tartalmának, titkosításának és megőrzésének szabályozását a betöltés során. Erre a saját tárhely vagy BYOS használata esetén van szükség. 
+A Azure Monitor egyes adattípusok, például az [egyéni naplók](data-sources-custom-logs.md) és néhány [Azure-napló](./diagnostics-extension-logs.md)betöltési folyamatában a Storage-fiókokat használja. A betöltési folyamat során a rendszer először egy Storage-fiókba küldik a naplókat, és később bekerül Log Analyticsba vagy Application Insightsba. Ha a betöltés során szeretné szabályozni az adatait, a szolgáltatás által felügyelt tároló helyett saját Storage-fiókokat is használhat. A saját Storage-fiók használata lehetővé teszi a naplók hozzáférésének, tartalmának, titkosításának és megőrzésének szabályozását a betöltés során. Erre a saját tárhely vagy BYOS használata esetén van szükség. 
 
 A BYOS igénylő forgatókönyvek esetében a hálózati elkülönítés privát hivatkozásokon keresztül történik. VNet használatakor a hálózat elkülönítése gyakran követelmény, és a nyilvános internethez való hozzáférés korlátozott. Ilyen esetekben a Azure Monitor a szolgáltatás tárhelyének betöltése teljesen le van tiltva, vagy helytelen gyakorlatnak minősül. Ehelyett a naplókat az ügyfél által birtokolt Storage-fiókon belül kell beírni a VNet, vagy egyszerűen elérhetővé kell tenni őket.
 
@@ -23,7 +23,7 @@ Egy másik forgatókönyv a naplók titkosítása az ügyfél által felügyelt 
 
 ## <a name="data-types-supported"></a>Támogatott adattípusok
 
-A Storage-fiókból betöltött adattípusok közé tartoznak a következők. Az ilyen típusú adatok betöltésével kapcsolatos további információkért lásd: [adatgyűjtés az Azure Diagnostics bővítményből Azure monitor naplókba](azure-storage-iis-table.md) .
+A Storage-fiókból betöltött adattípusok közé tartoznak a következők. Az ilyen típusú adatok betöltésével kapcsolatos további információkért lásd: [adatgyűjtés az Azure Diagnostics bővítményből Azure monitor naplókba](./diagnostics-extension-logs.md) .
 
 | Típus | Tábla adatai |
 |:-----|:------------------|
@@ -54,7 +54,7 @@ A hivatkozások létrehozásához és eltávolításához csak a REST API haszn�
 ## <a name="command-line-and-rest-api"></a>Parancssor és REST API
 
 ### <a name="command-line"></a>Parancssor
-Csatolt Storage-fiókok létrehozásához és kezeléséhez használja [az az monitor log-Analytics Workspace csatolt-Storage](https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/linked-storage)szolgáltatást. Ezzel a paranccsal a Storage-fiókokat összekapcsolhatja és leválaszthatja egy munkaterületről, és listázhatja a társított Storage-fiókokat.
+Csatolt Storage-fiókok létrehozásához és kezeléséhez használja [az az monitor log-Analytics Workspace csatolt-Storage](/cli/azure/monitor/log-analytics/workspace/linked-storage)szolgáltatást. Ezzel a paranccsal a Storage-fiókokat összekapcsolhatja és leválaszthatja egy munkaterületről, és listázhatja a társított Storage-fiókokat.
 
 ### <a name="request-and-cli-values"></a>Kérelem és CLI-értékek
 
@@ -233,6 +233,6 @@ Ha a munkaterület regisztrált Storage-fiókja egy másik régióban találhat�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A privát hivatkozások beállításával kapcsolatos további információkért lásd: az [Azure privát hivatkozás használata a hálózatok biztonságos csatlakoztatásához Azure monitor](private-link-security.md)

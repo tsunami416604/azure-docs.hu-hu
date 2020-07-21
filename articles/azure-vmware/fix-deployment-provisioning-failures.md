@@ -3,11 +3,12 @@ title: Segítség kérése az Azure VMware-megoldás üzembe helyezésével vagy
 description: A szükséges információk lekérése az Azure VMware-megoldás (AVS) privát felhőből az AVS-telepítésre vagy-létesítési hibákra vonatkozó szolgáltatási kérelem beszerzéséhez.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 3032c01d48617347c454d71498571b0e6b789e32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986924"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514577"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Segítség kérése az Azure VMware-megoldás üzembe helyezésével vagy a kiépítési hibákkal kapcsolatban
 
@@ -71,7 +72,7 @@ Illessze be a ExpressRoute-azonosítót az új támogatási kérelem megfelelő 
 
 ## <a name="create-your-support-request"></a>Támogatási kérelem létrehozása
 
-A támogatási kérelem létrehozásával kapcsolatos általános útmutatásért lásd: [Azure-támogatási kérelem létrehozása](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). 
+A támogatási kérelem létrehozásával kapcsolatos általános útmutatásért lásd: [Azure-támogatási kérelem létrehozása](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
 Az alábbiakban további útmutatást talál az SR az AVS üzembe helyezéséhez vagy a kiépítési hibákhoz való létrehozásához.
 

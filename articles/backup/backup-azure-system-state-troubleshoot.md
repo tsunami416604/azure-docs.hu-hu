@@ -4,11 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan lehet elhárítani a rendszer
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 28647b72334d592692c5fe1b031735330d1a0509
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e588ce4e3458634be32a7129b40906c98fc02ac0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969577"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513848"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Rendszerállapot biztonsági mentésének hibáinak megoldása
 
@@ -19,11 +20,11 @@ Ez a cikk a rendszerállapot biztonsági mentésének használata során felmer�
 Javasoljuk, hogy a rendszerállapot biztonsági mentésének megkezdése előtt végezze el az alábbi érvényesítést:
 
 - [Győződjön meg arról, Microsoft Azure Recovery Services (MARS) ügynök naprakész](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Győződjön meg arról, hogy a MARS-ügynök és az Azure között van hálózati kapcsolat](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [Győződjön meg arról, hogy a MARS-ügynök és az Azure között van hálózati kapcsolat](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Győződjön meg arról, hogy a Microsoft Azure Recovery Services fut (a Szolgáltatás konzolon). Szükség esetén indítsa újra, és ismételje meg a műveletet.
-- [Győződjön meg arról, hogy 5-10% szabad hellyel rendelkezik az ideiglenes mappa helyén](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
-- [Ellenőrizze, hogy egy másik folyamat vagy víruskereső szoftver nem zavarja-e az Azure Backup működését](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
-- [Az ütemezett biztonsági mentés meghiúsul, de a manuális biztonsági mentés sikeres](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)
+- [Győződjön meg arról, hogy 5-10% szabad hellyel rendelkezik az ideiglenes mappa helyén](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Ellenőrizze, hogy egy másik folyamat vagy víruskereső szoftver nem zavarja-e az Azure Backup működését](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
+- [Az ütemezett biztonsági mentés meghiúsul, de a manuális biztonsági mentés sikeres](./backup-azure-mars-troubleshoot.md#backups-dont-run-according-to-schedule)
 - Ellenőrizze, hogy az operációs rendszer rendelkezik-e a legújabb frissítésekkel
 - [Győződjön meg arról, hogy a nem támogatott, nem támogatott attribútumokkal rendelkező meghajtók és fájlok ki vannak zárva a biztonsági mentésből](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - Győződjön meg arról, hogy a védett rendszer **Rendszerórájának** beállítása helyes időzóna <br>
@@ -32,7 +33,7 @@ Javasoljuk, hogy a rendszerállapot biztonsági mentésének megkezdése előtt 
   - Győződjön meg arról, hogy az ügynök el lett távolítva a-kiszolgálón, és a portálról törlődik <br>
   - Használja ugyanazt a jelszót, amelyet kezdetben használt a kiszolgáló regisztrálásához <br>
 - Ha ez egy offline biztonsági mentés, győződjön meg arról, hogy a 3.7.0 Azure PowerShell verziója a forrás-és a másolási számítógépen is telepítve van az offline biztonsági mentési művelet megkezdése előtt.
-- [A biztonsági mentési ügynök Azure-beli virtuális gépen való futtatásakor megfontolandó szempontok](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)
+- [A biztonsági mentési ügynök Azure-beli virtuális gépen való futtatásakor megfontolandó szempontok](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-agent-running-on-an-azure-virtual-machine)
 
 ### <a name="limitation"></a>Korlátozás
 
@@ -128,22 +129,22 @@ Ha a feladat meghiúsul, egy WSB-problémát jelez, amely a MARS-ügynök rendsz
 
 ### <a name="vss-writer-timeout-error"></a>VSS-író időtúllépési hibája
 
-| Hibajelenség | Ok | Megoldás:
+| Hibajelenség | Ok | Feloldás
 | -- | -- | --
 | -A MARS-ügynök a következő hibaüzenettel meghiúsul: "a WSB-feladatban hiba történt VSS-hibákkal. A hiba elhárításához keresse meg a VSS-eseménynaplókat.<br/><br/> -A VSS-alkalmazás eseménynaplójában a következő hibanapló szerepel: "A VSS-író elutasította az eseményt hibás 0x800423f2, az író időtúllépése lejárt a befagyasztási és felolvasztási események között."| A VSS-író nem tud időben befejezni a számítógép processzor-és memória-erőforrásainak hiánya miatt. <br/><br/> Egy másik biztonsági mentési szoftver már használja a VSS-írót, mert nem sikerült befejezni a biztonsági mentés eredményének pillanatkép-műveletét | Várjon, amíg a CPU vagy a memória fel lesz szabadítva a rendszeren, vagy szakítsa meg a folyamatokat túl sok memóriát/PROCESSZORt, majd próbálja megismételni a műveletet. <br/><br/>  Várjon, amíg a folyamatban lévő biztonsági mentés befejeződik, majd próbálja megismételni a műveletet, amikor a gépen nem fut biztonsági másolat.
 
 ### <a name="insufficient-disk-space-to-grow-shadow-copies"></a>Nincs elegendő lemezterület az árnyékmásolatok növeléséhez
 
-| Hibajelenség | Megoldás:
+| Hibajelenség | Feloldás
 | -- | --
-| -A MARS-ügynök a következő hibaüzenettel meghiúsul: a biztonsági mentés nem sikerült, mert az árnyékmásolat-kötet nem tudott növekedni, mert nincs elég szabad lemezterület a rendszerfájlokat tartalmazó köteteken. <br/><br/> -A következő hiba/figyelmeztetési napló szerepel a VolSnap rendszeresemény-naplóiban: "nincs elég szabad lemezterület a C köteten: az árnyékmásolat-tároló növelése a C-beli árnyékmásolatok esetében – ennek a hibának a hatására a c kötet összes árnyékmásolatai-példánya törlődik:" | – Szabadítson fel lemezterületet a kijelölt köteten az eseménynaplóban, hogy elegendő lemezterület álljon rendelkezésre az árnyékmásolatok növekedéséhez, miközben a biztonsági mentés folyamatban van. <br/><br/> – Az árnyékmásolat-terület konfigurálásával korlátozható az árnyékmásolat-használathoz felhasznált terület mennyisége. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
+| -A MARS-ügynök a következő hibaüzenettel meghiúsul: a biztonsági mentés nem sikerült, mert az árnyékmásolat-kötet nem tudott növekedni, mert nincs elég szabad lemezterület a rendszerfájlokat tartalmazó köteteken. <br/><br/> -A következő hiba/figyelmeztetési napló szerepel a VolSnap rendszeresemény-naplóiban: "nincs elég szabad lemezterület a C köteten: az árnyékmásolat-tároló növelése a C-beli árnyékmásolatok esetében – ennek a hibának a hatására a c kötet összes árnyékmásolatai-példánya törlődik:" | – Szabadítson fel lemezterületet a kijelölt köteten az eseménynaplóban, hogy elegendő lemezterület álljon rendelkezésre az árnyékmásolatok növekedéséhez, miközben a biztonsági mentés folyamatban van. <br/><br/> – Az árnyékmásolat-terület konfigurálásával korlátozható az árnyékmásolat-használathoz felhasznált terület mennyisége. További információkért tekintse meg ezt a [cikket](/windows-server/administration/windows-commands/vssadmin-resize-shadowstorage)
 
 ### <a name="efi-partition-locked"></a>EFI-partíció zárolva
 
-| Hibajelenség | Megoldás:
+| Hibajelenség | Feloldás
 | -- | --
 | A MARS-ügynök a következő hibaüzenettel meghiúsul: "a rendszerállapot biztonsági mentése nem sikerült, mert az EFI rendszerpartíció zárolva van. Ezt az okozhatja, hogy a rendszerpartíciók a harmadik féltől származó biztonsági vagy biztonsági mentési szoftverhez férnek hozzá. | – Ha a problémát egy külső gyártótól származó biztonsági szoftver okozza, akkor kapcsolatba kell lépnie a víruskereső gyártójával, hogy engedélyezze a MARS-ügynököt <br/><br/> – Ha fut egy külső gyártótól származó biztonsági mentési szoftver, várjon, amíg befejeződik, majd próbálkozzon újra a biztonsági mentéssel
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Windows rendszerállapotáról a Resource Manager üzembe helyezésében: a [Windows Server rendszerállapotának biztonsági mentése](backup-azure-system-state.md)

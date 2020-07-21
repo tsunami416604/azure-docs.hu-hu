@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1be80defd7a4291d1224d5b0cb9f9e833dcf9af5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81460120"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510514"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Azure Disk Encryption izolált hálózaton
 
@@ -36,20 +36,20 @@ Red Hat esetén, ha proxyra van szükség, meg kell győződnie arról, hogy az 
 
 Ha a csomagokat manuálisan telepítik, akkor azokat is manuálisan kell frissíteni, mivel a rendszer új verziókat szabadít fel.
 
-## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+## <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 Az alkalmazott hálózati biztonsági csoportok beállításai továbbra is lehetővé teszik, hogy a végpont megfeleljen a lemez titkosításának dokumentált hálózati konfigurációs előfeltételeinek.  Lásd [Azure Disk Encryption: hálózati követelmények](disk-encryption-overview.md#networking-requirements)
 
 ## <a name="azure-disk-encryption-with-azure-ad-previous-version"></a>Azure Disk Encryption az Azure AD-vel (előző verzió)
 
 Ha az [Azure Disk Encryptiont az Azure ad-vel (előző verzió)](disk-encryption-overview-aad.md)használja, a [Azure Active Directory-függvénytárat](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) manuálisan kell telepíteni az összes disztribúcióhoz (a [fentiekben](#package-management)leírtak szerint a disztribúciónak megfelelő csomagokon kívül).
 
-Ha engedélyezve van a titkosítás az [Azure ad hitelesítő adataival](disk-encryption-linux-aad.md), a CÉLKÉNT megadott virtuális gépnek Azure Active Directory végpontokhoz és Key Vault végpontokhoz is engedélyeznie kell a kapcsolatot. Az aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományok](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56-es és 59-es szakaszában maradnak. Key Vault útmutatást a [tűzfal mögötti Azure Key Vault elérésének](../../key-vault/general/access-behind-firewall.md)dokumentációjában talál.
+Ha engedélyezve van a titkosítás az [Azure ad hitelesítő adataival](disk-encryption-linux-aad.md), a CÉLKÉNT megadott virtuális gépnek Azure Active Directory végpontokhoz és Key Vault végpontokhoz is engedélyeznie kell a kapcsolatot. Az aktuális Azure Active Directory hitelesítési végpontok az [Office 365 URL-címeinek és IP-címtartományok](/office365/enterprise/urls-and-ip-address-ranges) dokumentációjának 56-es és 59-es szakaszában maradnak. Key Vault útmutatást a [tűzfal mögötti Azure Key Vault elérésének](../../key-vault/general/access-behind-firewall.md)dokumentációjában talál.
 
 ### <a name="azure-instance-metadata-service"></a>Azure Instance Metadata szolgáltatás 
 
 A virtuális gépnek képesnek kell lennie az [Azure-példány metaadatainak szolgáltatás](instance-metadata-service.md) -végpontjának elérésére, amely egy jól ismert, nem irányítható IP-címet () használ, `169.254.169.254` amely csak a virtuális gépről érhető el.  A helyi HTTP-forgalmat az erre a címmé megváltoztató proxy-konfigurációk nem támogatottak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További lépések az [Azure Disk Encryption hibaelhárításához](disk-encryption-troubleshooting.md)
-- [Az Azure-beli adattitkosítás inaktív állapotban](../../security/fundamentals/encryption-atrest.md)
+- [Inaktív adatok titkosítása az Azure-ban](../../security/fundamentals/encryption-atrest.md)

@@ -3,11 +3,12 @@ title: A Windows Server biztonsági mentése a PowerShell használatával az Azu
 description: Ebből a cikkből megtudhatja, hogyan használható a PowerShell a Azure Backup Windows Serveren vagy Windows-ügyfélen való beállításához, valamint a biztonsági mentés és a helyreállítás kezeléséhez.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 696da2c94a439e5efaebbd148f6e05a9e0e15f37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 116bdd6b5f48a9d5abc0f9f0d9ce61f857196fd2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84247750"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513727"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 
@@ -19,17 +20,17 @@ Ez a cikk bemutatja, hogyan használható a PowerShell a Azure Backup Windows Se
 
 Első lépésként [telepítse a PowerShell legújabb verzióját](/powershell/azure/install-az-ps).
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
+## <a name="create-a-recovery-services-vault"></a>Helyreállítási tár létrehozása
 
 A következő lépések végigvezetik a Recovery Services-tároló létrehozásának lépésein. Egy Recovery Services-tár nem azonos a Backup-tárolóval.
 
-1. Ha első alkalommal használja a Azure Backup-t, a **Register-AzResourceProvider** parancsmaggal regisztrálnia kell az Azure Recovery Service providert az előfizetésében.
+1. Ha első alkalommal használja a Azure Backup, a **Register-AzResourceProvider** parancsmaggal regisztrálnia kell az Azure Recovery szolgáltatást az előfizetésében.
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-2. A Recovery Services tároló egy ARM-erőforrás, ezért egy erőforráscsoporthoz kell helyeznie. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. Új erőforráscsoport létrehozásakor adja meg az erőforráscsoport nevét és helyét.  
+2. A Recovery Services-tároló egy Azure Resource Manager erőforrás, ezért egy erőforráscsoporthoz kell elhelyeznie. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. Új erőforráscsoport létrehozásakor adja meg az erőforráscsoport nevét és helyét.  
 
     ```powershell
     New-AzResourceGroup –Name "test-rg" –Location "WestUS"
@@ -41,7 +42,7 @@ A következő lépések végigvezetik a Recovery Services-tároló létrehozás�
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. Adja meg a használandó tárolási redundancia típusát; használhatja a [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy-lrs.md) vagy a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy-grs.md). Az alábbi példa a-BackupStorageRedundancy beállítást mutatja be a testVault beállításnál a GeoRedundant értékre.
+4. Adja meg a használandó tárolási redundancia típusát; használhatja a [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md) vagy a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md). Az alábbi példa a **-BackupStorageRedundancy** beállítást mutatja be a *testVault* beállításnál a **GeoRedundant**értékre.
 
    > [!TIP]
    > Számos Azure Backup-parancsmaghoz szükséges bemenetként a helyreállítási tár objektum. Ebből az okból célszerű egy változóban tárolni a helyreállítási tár objektumot.
@@ -55,7 +56,7 @@ A következő lépések végigvezetik a Recovery Services-tároló létrehozás�
 
 ## <a name="view-the-vaults-in-a-subscription"></a>Az előfizetésben található tárolók megtekintése
 
-A **Get-AzRecoveryServicesVault** használatával megtekintheti az aktuális előfizetésben található összes tároló listáját. Ezzel a paranccsal ellenőrizhető, hogy az új tároló létrejött-e, vagy hogy milyen tárolók érhetők el az előfizetésben.
+A **Get-AzRecoveryServicesVault** használatával megtekintheti az aktuális előfizetésben található összes tároló listáját. Ezzel a paranccsal ellenőrizhető, hogy az új tároló létrejött-e, vagy hogy mely tárolók érhetők el az előfizetésben.
 
 Futtassa a parancsot, a **Get-AzRecoveryServicesVault**és az előfizetés összes tárolóját.
 
@@ -94,7 +95,7 @@ Az ügynök telepítéséhez futtassa a következő parancsot egy emelt szintű 
 MARSAgentInstaller.exe /q
 ```
 
-Ezzel telepíti az ügynököt az összes alapértelmezett beállítással. A telepítés eltarthat néhány percig a háttérben. Ha nem adja meg a */Nu* kapcsolót, akkor a telepítés végén megnyílik a **Windows Update** ablak, hogy ellenőrizze a frissítéseket. A telepítés után az ügynök megjelenik a telepített programok listájában.
+Ezzel telepíti az ügynököt az összes alapértelmezett beállítással. A telepítés eltarthat néhány percig a háttérben. Ha nem adja meg a */Nu* beállítást, akkor a telepítés végén megnyílik a **Windows Update** ablak, hogy ellenőrizze a frissítéseket. A telepítés után az ügynök megjelenik a telepített programok listájában.
 
 A telepített programok listájának megtekintéséhez válassza **a Vezérlőpult**  >  **programok**  >  **programok és szolgáltatások**elemét.
 
@@ -116,7 +117,7 @@ Az elérhető lehetőségek a következők:
 | /p: "location" |A Azure Backup ügynök telepítési mappájának elérési útja. |C:\Program Files\Microsoft Azure Recovery Services ügynök |
 | /s: "location" |A Azure Backup ügynökhöz tartozó gyorsítótár mappájának elérési útja. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |Microsoft Update |- |
-| /nu |Frissítések keresése a telepítés befejezése után |- |
+| /nu |A telepítés befejezése után ne keressen frissítéseket |- |
 | /d |Microsoft Azure Recovery Services ügynök eltávolítása |- |
 | /ph |Proxy gazdagép címe |- |
 | /po |Proxy gazdagép portszáma |- |
@@ -137,7 +138,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault1 
 > [!NOTE]
 > A tár tanúsítványának generálásával kapcsolatos hiba az az 3.5.0 kiadásban van kijavítva. A tár tanúsítványának letöltéséhez használja az az 3.5.0 Release vagy újabb verziót.
 
-A legújabb PowerShell-modulban az alapul szolgáló platform korlátai miatt a tár hitelesítő adatainak letöltéséhez önaláírt tanúsítvány szükséges. Az alábbi példa bemutatja, hogyan biztosíthat önaláírt tanúsítványt, és hogyan töltheti le a tároló hitelesítő adatait.
+A legújabb PowerShell-modulban a platform mögöttes korlátai miatt a tároló hitelesítő adatainak letöltése önaláírt tanúsítványt igényel. Az alábbi példa bemutatja, hogyan biztosíthat önaláírt tanúsítványt, és hogyan töltheti le a tároló hitelesítő adatait.
 
 ```powershell
 $dt = $(Get-Date).ToString("M-d-yyyy")
@@ -146,7 +147,7 @@ $certficate = [convert]::ToBase64String($cert.Export([System.Security.Cryptograp
 $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -Path $CredsPath -Certificate $certficate
 ```
 
-A Windows Server vagy a Windows rendszerű ügyfélszámítógépen futtassa a [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration?view=winserver2012-ps) parancsmagot a gép a tárolóban való regisztrálásához.
+A Windows Server vagy a Windows rendszerű ügyfélszámítógépen futtassa a [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) parancsmagot a gép a tárolóban való regisztrálásához.
 Ez és a biztonsági mentéshez használt egyéb parancsmagok a MSONLINE modulból származnak, amelyet a Mars AgentInstaller a telepítési folyamat részeként adott hozzá.
 
 Az ügynök telepítője nem frissíti a $Env:P SModulePath változót. Ez azt jelenti, hogy a modul automatikus betöltése meghiúsul. Ennek megoldásához a következőket teheti:
@@ -186,7 +187,7 @@ Ha a Windows rendszerű gép internetkapcsolata egy proxykiszolgálón keresztü
 
 A sávszélesség-használat a `work hour bandwidth` `non-work hour bandwidth` hét egy adott halmazának beállításaival is vezérelhető.
 
-A proxy és a sávszélesség adatainak beállítása a [set-OBMachineSetting](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obmachinesetting) parancsmag használatával történik:
+A proxy és a sávszélesség adatainak beállítása a [set-OBMachineSetting](/powershell/module/msonlinebackup/set-obmachinesetting) parancsmag használatával történik:
 
 ```powershell
 Set-OBMachineSetting -NoProxy
@@ -208,7 +209,7 @@ Server properties updated successfully.
 
 A Azure Backup elküldett biztonsági mentési adatok titkosítva vannak az adatok titkosságának védelme érdekében. A titkosítási jelszó a "password" (jelszó), amely a visszaállításkor visszafejti az adatmennyiséget.
 
-A **Létrehozás**lehetőség kiválasztásával biztonsági PIN-kódot kell megadnia a **Settings**  >  **Properties**  >  Azure Portal **Recovery Services** tároló szakaszának beállítások tulajdonságai**biztonsági PIN-kódjában** . 
+A **Létrehozás**lehetőség kiválasztásával biztonsági PIN-kódot kell megadnia a **Settings**  >  **Properties**  >  Azure Portal **Recovery Services** tároló szakaszának beállítások tulajdonságai**biztonsági PIN-kódjában** .
 
 >[!NOTE]
 > A biztonsági PIN-kód csak a Azure Portal használatával hozható létre.
@@ -237,17 +238,17 @@ A Windows-kiszolgálókról és-ügyfelekről Azure Backup összes biztonsági m
 2. Egy **adatmegőrzési ütemterv** , amely meghatározza, hogy mennyi ideig kell megőrizni a helyreállítási pontokat az Azure-ban.
 3. A **fájlok felvételének/kizárásának specifikációja** , amely azt határozza meg, hogy miről kell biztonsági mentést készíteni.
 
-Ebben a dokumentumban a biztonsági mentés automatizálásakor feltételezzük, hogy a rendszer semmit sem konfigurált. Először hozzon létre egy új biztonsági mentési szabályzatot a [New-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obpolicy) parancsmag használatával.
+Ebben a dokumentumban a biztonsági mentés automatizálásakor feltételezzük, hogy a rendszer semmit sem konfigurált. Először hozzon létre egy új biztonsági mentési szabályzatot a [New-OBPolicy](/powershell/module/msonlinebackup/new-obpolicy) parancsmag használatával.
 
 ```powershell
 $NewPolicy = New-OBPolicy
 ```
 
-Ekkor a szabályzat üres, és más parancsmagokra van szükség ahhoz, hogy meghatározza, hogy milyen elemek lesznek befoglalva vagy kizárva a biztonsági mentések futtatásakor, és hol lesznek tárolva a biztonsági másolatok.
+Jelenleg a szabályzat üres, és más parancsmagokra van szükség ahhoz, hogy meghatározza, hogy milyen elemek lesznek befoglalva vagy kizárva a biztonsági mentések futtatásakor, és hol lesznek tárolva a biztonsági másolatok.
 
 ### <a name="configuring-the-backup-schedule"></a>A biztonsági mentés ütemtervének konfigurálása
 
-A szabályzat három részének első eleme a biztonsági mentési ütemterv, amely a [New-OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obschedule) parancsmag használatával jön létre. A biztonsági mentés ütemezése határozza meg, hogy mikor kell a biztonsági mentést készíteni. Az ütemterv létrehozásakor két bemeneti paramétert kell megadnia:
+A szabályzat három részének első eleme a biztonsági mentési ütemterv, amely a [New-OBSchedule](/powershell/module/msonlinebackup/new-obschedule) parancsmag használatával jön létre. A biztonsági mentés ütemezése határozza meg, hogy mikor kell a biztonsági mentést készíteni. Az ütemterv létrehozásakor két bemeneti paramétert kell megadnia:
 
 * A **hét azon napjai** , amelyeken a biztonsági mentést futtatni kell. A biztonsági mentési feladatot csak egy napon, vagy a hét minden napján, illetve a kettő közötti kombinációban futtathatja.
 * A **nap azon időpontja,** amikor a biztonsági mentést futtatni kell. A biztonsági mentés elindításához legfeljebb három különböző időpontot adhat meg a nap során.
@@ -258,7 +259,7 @@ Beállíthat például egy olyan biztonsági mentési szabályzatot, amely minde
 $Schedule = New-OBSchedule -DaysOfWeek Saturday, Sunday -TimesOfDay 16:00
 ```
 
-A biztonsági mentési ütemtervet hozzá kell rendelni egy szabályzathoz, és ezt a [set-OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obschedule) parancsmag használatával lehet megvalósítani.
+A biztonsági mentési ütemtervet hozzá kell rendelni egy szabályzathoz, és ezt a [set-OBSchedule](/powershell/module/msonlinebackup/set-obschedule) parancsmag használatával lehet megvalósítani.
 
 ```powershell
 Set-OBSchedule -Policy $NewPolicy -Schedule $Schedule
@@ -270,13 +271,13 @@ BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName :
 
 ### <a name="configuring-a-retention-policy"></a>Adatmegőrzési szabály konfigurálása
 
-A megőrzési házirend határozza meg, hogy a biztonsági mentési feladatokból létrehozott helyreállítási pontok mennyi ideig maradnak meg. Amikor új adatmegőrzési szabályzatot hoz létre a [New-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obretentionpolicy) parancsmaggal, megadhatja, hogy hány nap elteltével kell megőrizni a biztonsági mentési helyreállítási pontokat a Azure Backup. Az alábbi példa egy hét napos adatmegőrzési szabályt állít be.
+A megőrzési házirend határozza meg, hogy a biztonsági mentési feladatokból létrehozott helyreállítási pontok mennyi ideig maradnak meg. Amikor új adatmegőrzési szabályzatot hoz létre a [New-OBRetentionPolicy](/powershell/module/msonlinebackup/new-obretentionpolicy) parancsmaggal, megadhatja, hogy hány nap elteltével őrizze meg a rendszer a biztonsági mentési helyreállítási pontokat a Azure Backup. Az alábbi példa egy hét napos adatmegőrzési szabályt állít be.
 
 ```powershell
 $RetentionPolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
 
-Az adatmegőrzési szabályzatot a [set-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obretentionpolicy)parancsmag használatával kell társítani a fő házirenddel:
+Az adatmegőrzési szabályzatot a [set-OBRetentionPolicy](/powershell/module/msonlinebackup/set-obretentionpolicy)parancsmag használatával kell társítani a fő házirenddel:
 
 ```powershell
 Set-OBRetentionPolicy -Policy $NewPolicy -RetentionPolicy $RetentionPolicy
@@ -313,7 +314,7 @@ Egy `OBFileSpec` objektum határozza meg a biztonsági másolatban szerepeltetni
 
 Az utóbbit a New-OBFileSpec parancsban a-nem rekurzív jelző használatával érhetjük el.
 
-Az alábbi példában biztonsági mentést készítünk a C: és D kötetről, és kizárjuk az operációs rendszer bináris fájljait a Windows mappában és bármely ideiglenes mappában. Ehhez hozzon létre két fájl specifikációt a [New-OBFileSpec](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obfilespec) parancsmag használatával – egyet a bevonáshoz, egyet pedig a kizáráshoz. A fájl specifikációinak létrehozása után a [rendszer az Add-OBFileSpec](https://docs.microsoft.com/powershell/module/msonlinebackup/add-obfilespec) parancsmaggal társítja őket a szabályzathoz.
+Az alábbi példában biztonsági mentést készítünk a C: és D kötetről, és kizárjuk az operációs rendszer bináris fájljait a Windows mappában és bármely ideiglenes mappában. Ehhez hozzon létre két fájl specifikációt a [New-OBFileSpec](/powershell/module/msonlinebackup/new-obfilespec) parancsmag használatával – egyet a bevonáshoz, egyet pedig a kizáráshoz. A fájl specifikációinak létrehozása után a [rendszer az Add-OBFileSpec](/powershell/module/msonlinebackup/add-obfilespec) parancsmaggal társítja őket a szabályzathoz.
 
 ```powershell
 $Inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
@@ -409,7 +410,7 @@ PolicyState     : Valid
 
 ### <a name="applying-the-policy"></a>A szabályzat alkalmazása
 
-A házirend-objektum most elkészült, és a biztonsági mentési ütemtervtel, a megőrzési házirenddel és a fájlok befoglalásával/kizárásával kapcsolatos listával rendelkezik. Ezt a szabályzatot most már véglegesítheti Azure Backup használatra. Az újonnan létrehozott házirend alkalmazása előtt győződjön meg arról, hogy a [Remove-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/remove-obpolicy) parancsmag használatával nincsenek társítva meglévő biztonsági mentési szabályzatok a kiszolgálóhoz. Ha eltávolítja a szabályzatot, a rendszer megerősítést kér. A megerősítés kihagyásához használja a `-Confirm:$false` jelzőt a parancsmaggal.
+A házirend-objektum most elkészült, és a biztonsági mentési ütemtervtel, a megőrzési házirenddel és a fájlok befoglalásával/kizárásával kapcsolatos listával rendelkezik. Ezt a szabályzatot most már véglegesítheti Azure Backup használatra. Az újonnan létrehozott házirend alkalmazása előtt győződjön meg arról, hogy a [Remove-OBPolicy](/powershell/module/msonlinebackup/remove-obpolicy) parancsmag használatával nincsenek társítva meglévő biztonsági mentési szabályzatok a kiszolgálóhoz. Ha eltávolítja a szabályzatot, a rendszer megerősítést kér. A megerősítés kihagyásához használja a `-Confirm:$false` jelzőt a parancsmaggal.
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy
@@ -419,7 +420,7 @@ Get-OBPolicy | Remove-OBPolicy
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-A házirend-objektum véglegesítése a [set-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/set-obpolicy) parancsmag használatával történik. A művelet megerősítést is kér. A megerősítés kihagyásához használja a `-Confirm:$false` jelzőt a parancsmaggal.
+A házirend-objektum véglegesítése a [set-OBPolicy](/powershell/module/msonlinebackup/set-obpolicy) parancsmag használatával történik. A művelet megerősítést is kér. A megerősítés kihagyásához használja a `-Confirm:$false` jelzőt a parancsmaggal.
 
 ```powershell
 Set-OBPolicy -Policy $NewPolicy
@@ -467,7 +468,7 @@ RetentionPolicy : Retention Days : 7
 State : Existing PolicyState : Valid
 ```
 
-A meglévő biztonsági mentési szabályzat részleteit a [Get-OBPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obpolicy) parancsmaggal tekintheti meg. A [Get-OBSchedule](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obschedule) parancsmaggal tovább részletezheti a biztonsági mentési ütemtervet és a [Get-OBRetentionPolicy](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obretentionpolicy) parancsmagot az adatmegőrzési szabályzatokhoz
+A meglévő biztonsági mentési szabályzat részleteit a [Get-OBPolicy](/powershell/module/msonlinebackup/get-obpolicy) parancsmaggal tekintheti meg. A [Get-OBSchedule](/powershell/module/msonlinebackup/get-obschedule) parancsmaggal tovább részletezheti a biztonsági mentési ütemtervet és a [Get-OBRetentionPolicy](/powershell/module/msonlinebackup/get-obretentionpolicy) parancsmagot az adatmegőrzési szabályzatokhoz
 
 ```powershell
 Get-OBPolicy | Get-OBSchedule
@@ -522,7 +523,7 @@ IsRecursive : True
 
 ### <a name="performing-an-on-demand-backup"></a>Igény szerinti biztonsági mentés végrehajtása
 
-Miután beállította a biztonsági mentési szabályzatot, a biztonsági mentések az ütemezés szerint történnek. Az igény szerinti biztonsági mentést a [Start-OBBackup](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obbackup) parancsmaggal is lehet használni:
+Miután beállította a biztonsági mentési szabályzatot, a biztonsági mentések az ütemezés szerint történnek. Az igény szerinti biztonsági mentést a [Start-OBBackup](/powershell/module/msonlinebackup/start-obbackup) parancsmaggal is lehet használni:
 
 ```powershell
 Get-OBPolicy | Start-OBBackup
@@ -541,9 +542,9 @@ Job completed.
 The backup operation completed successfully.
 ```
 
-## <a name="back-up-windows-server-system-state-in-mabs-agent"></a>A Windows Server rendszerállapotának biztonsági mentése a MABS-ügynökben
+## <a name="back-up-windows-server-system-state-in-mars-agent"></a>A Windows Server rendszerállapotának biztonsági mentése a MARS-ügynökben
 
-Ez a szakasz a MABS-ügynök rendszerállapotának beállítására szolgáló PowerShell-parancsot ismerteti.
+Ez a szakasz a rendszerállapotnak a MARS-ügynökön való beállításához szükséges PowerShell-parancsot ismerteti.
 
 ### <a name="schedule"></a>Ütemezés
 
@@ -580,7 +581,7 @@ Ez a szakasz végigvezeti a Azure Backup-ból származó adatok helyreállítás
 
 ### <a name="picking-the-source-volume"></a>A forrásoldali kötet kiválogatása
 
-Egy elem Azure Backupból való visszaállításához először azonosítania kell az elem forrását. Mivel a parancsokat egy Windows-kiszolgáló vagy egy Windows-ügyfél kontextusában futtatjuk, a gép már azonosítva van. A forrás azonosításának következő lépése az azt tartalmazó kötet azonosítása. A számítógépről biztonsági mentés alatt álló kötetek vagy források listáját a [Get-OBRecoverableSource](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obrecoverablesource) parancsmag végrehajtásával kérheti le. Ez a parancs az összes olyan forrás tömbjét adja vissza, amelyről biztonsági másolat készül a kiszolgálóról/ügyfélről.
+Egy elem Azure Backupból való visszaállításához először azonosítania kell az elem forrását. Mivel a parancsokat egy Windows-kiszolgáló vagy egy Windows-ügyfél kontextusában futtatjuk, a gép már azonosítva van. A forrás azonosításának következő lépése az azt tartalmazó kötet azonosítása. A számítógépről biztonsági mentés alatt álló kötetek vagy források listáját a [Get-OBRecoverableSource](/powershell/module/msonlinebackup/get-obrecoverablesource) parancsmag végrehajtásával kérheti le. Ez a parancs az összes olyan forrás tömbjét adja vissza, amelyről biztonsági másolat készül a kiszolgálóról/ügyfélről.
 
 ```powershell
 $Source = Get-OBRecoverableSource
@@ -599,7 +600,7 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>A visszaállítani kívánt biztonsági mentési pont kiválasztása
 
-A biztonsági mentési pontok listáját a [Get-OBRecoverableItem](https://docs.microsoft.com/powershell/module/msonlinebackup/get-obrecoverableitem) parancsmag megfelelő paraméterekkel való végrehajtásával kérheti le. A példánkban a *C* kötethez tartozó legújabb biztonsági mentési pontot választjuk, és egy adott fájl helyreállításához használjuk.
+A biztonsági mentési pontok listáját a [Get-OBRecoverableItem](/powershell/module/msonlinebackup/get-obrecoverableitem) parancsmag megfelelő paraméterekkel való végrehajtásával kérheti le. A példánkban a *C* kötethez tartozó legújabb biztonsági mentési pontot választjuk, és egy adott fájl helyreállításához használjuk.
 
 ```powershell
 $Rps = Get-OBRecoverableItem $Source[0]
@@ -631,7 +632,7 @@ ItemSize             :
 ItemLastModifiedTime :
 ```
 
-Az objektum a `$Rps` biztonsági mentési pontok tömbje. Az első elem a legutóbbi pont, az n-edik elem pedig a legrégebbi pont. A legutóbbi pont kiválasztásához a következőt fogjuk használni: `$Rps[0]` .
+Az objektum a `$Rps` biztonsági mentési pontok tömbje. Az első elem a legutóbbi pont, az n-edik elem pedig a legrégebbi pont. A legutóbbi pont kiválasztásához használjuk a következőt: `$Rps[0]` .
 
 ### <a name="specifying-an-item-to-restore"></a>A visszaállítani kívánt elemek meghatározása
 
@@ -658,13 +659,13 @@ ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 
 ### <a name="triggering-the-restore-process"></a>A visszaállítási folyamat elindítása
 
-A visszaállítási folyamat elindításához először meg kell adnia a helyreállítási beállításokat. Ezt a [New-OBRecoveryOption](https://docs.microsoft.com/powershell/module/msonlinebackup/new-obrecoveryoption) parancsmag használatával teheti meg. Ebben a példában feltételezzük, hogy a fájlokat vissza szeretnénk állítani a *C:\Temp*-re. Tegyük fel, hogy a célmappában már létező fájlokat is szeretnénk kihagyni a *C:\Temp*. Ilyen helyreállítási lehetőség létrehozásához használja a következő parancsot:
+A visszaállítási folyamat elindításához először meg kell adnia a helyreállítási beállításokat. Ezt a [New-OBRecoveryOption](/powershell/module/msonlinebackup/new-obrecoveryoption) parancsmag használatával teheti meg. Ebben a példában feltételezzük, hogy szeretnénk visszaállítani a fájlokat a *C:\Temp*. Tegyük fel, hogy a célmappában már létező fájlokat is szeretnénk kihagyni a *C:\Temp*. Ilyen helyreállítási lehetőség létrehozásához használja a következő parancsot:
 
 ```powershell
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-Most aktiválja a visszaállítási folyamatot a következő parancsmag kimenetében kiválasztott [Start-OBRecovery](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obrecovery) paranccsal `$Item` `Get-OBRecoverableItem` :
+Most aktiválja a visszaállítási folyamatot a következő parancsmag kimenetében kiválasztott [Start-OBRecovery](/powershell/module/msonlinebackup/start-obrecovery) paranccsal `$Item` `Get-OBRecoverableItem` :
 
 ```powershell
 Start-OBRecovery -RecoverableItem $Item -RecoveryOption $RecoveryOption
@@ -739,9 +740,9 @@ $Session = New-PSSession -ComputerName REMOTESERVER01
 Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath $D $A -Wait } -ArgumentList $Agent, $Args
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Windows Server/Client Azure Backupról:
 
-* [Az Azure Backup bemutatása](backup-introduction-to-azure-backup.md)
+* [Az Azure Backup bemutatása](./backup-overview.md)
 * [Windows-kiszolgálók biztonsági mentése](backup-windows-with-mars-agent.md)

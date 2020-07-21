@@ -3,17 +3,17 @@ title: Az Azure Event Hubs integrálása az Azure Private link Service szolgált
 description: Ismerje meg, hogyan integrálható az Azure Event Hubs az Azure Private link Service használatával
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: aa1eb4df425d83a37fbf4ac69e0e256c464dc5c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312833"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512255"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Az Azure Event Hubs integrálása az Azure Private-hivatkozással
 Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Event Hubs, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat **privát végpontján** keresztül.
 
-A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
+A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcsolaton keresztül csatlakoznak a szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a virtuális hálózatról, amely hatékonyan hozza a szolgáltatást a virtuális hálózatba. A szolgáltatás felé irányuló összes forgalom a privát végponton keresztül irányítható, így nincs szükség átjáróra, NAT-eszközre, ExpressRoute vagy VPN-kapcsolatra, vagy nyilvános IP-címekre. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Kapcsolódhat egy Azure-erőforrás egy példányához, amely a legmagasabb szintű részletességet nyújtja a hozzáférés-vezérlésben.
 
 További információ: [Mi az az Azure Private link?](../private-link/private-link-overview.md)
 
@@ -33,7 +33,7 @@ További információ: [Mi az az Azure Private link?](../private-link/private-li
 > - Azure IoT Device Explorer
 >
 > A következő Microsoft-szolgáltatások szükségesek virtuális hálózaton
-> - Azure Web Apps
+> - Azure-webalkalmazások
 > - Azure Functions
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Privát végpont hozzáadása a Azure Portal használatával
@@ -58,10 +58,13 @@ Ha már rendelkezik Event Hubs névtérrel, a következő lépések végrehajtá
 2. A keresősáv mezőbe írja be az **Event hubok**kifejezést.
 3. Válassza ki a listából azt a **névteret** , amelyhez privát végpontot szeretne hozzáadni.
 4. Válassza a **hálózatkezelés** fület a **Beállítások**területen.
-5. Válassza ki a **privát Endpoint Connections** fület az oldal tetején. 
-6. A lap tetején kattintson a **+ privát végpont** gombra.
 
-    ![Kép](./media/private-link-service/private-link-service-3.png)
+    > [!NOTE]
+    > A **hálózatkezelés** lap csak a **standard** vagy a **dedikált** névtér esetében jelenik meg. 
+1. Válassza ki a **privát Endpoint Connections** fület az oldal tetején. 
+1. A lap tetején kattintson a **+ privát végpont** gombra.
+
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Hálózatkezelés lap – magánhálózati végponti kapcsolatok lap – privát végponti hivatkozás hozzáadása":::
 7. Az **alapvető beállítások** lapon kövesse az alábbi lépéseket: 
     1. Válassza ki azt az **Azure-előfizetést** , amelyben létre szeretné hozni a privát végpontot. 
     2. Válassza ki a privát végpont erőforráshoz tartozó **erőforráscsoportot** .
@@ -194,16 +197,16 @@ Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az er�
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Description |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
-| None | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| Egyik sem | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
 | Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
 | Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Privát végponti kapcsolatok jóváhagyása, elutasítása vagy eltávolítása
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 2. A keresősáv mezőbe írja be az **Event hubok**kifejezést.
 3. Válassza ki a kezelni kívánt **névteret** .
 4. Válassza a **hálózatkezelés** lapot.
@@ -270,7 +273,7 @@ Aliases:  <event-hubs-namespace-name>.servicebus.windows.net
 
 További információ [: Azure Private link Service: korlátozások](../private-link/private-link-service-overview.md#limitations)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure Private linkről](../private-link/private-link-service-overview.md)
 - További információ az [Azure Event Hubs](event-hubs-about.md)

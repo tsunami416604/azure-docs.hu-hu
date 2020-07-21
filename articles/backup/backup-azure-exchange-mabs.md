@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan készíthet biztonsági mentést egy Exchange-k
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e3e89d93ab35724a09138d48863badad6a41b71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80421339"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514118"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Exchange-kiszolgáló biztonsági mentése az Azure-ba Azure Backup Server
 
@@ -23,8 +23,8 @@ A folytatás előtt győződjön meg arról, hogy a Azure Backup Server [telepí
 
 Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni, kövesse az alábbi lépéseket:
 
-1. Győződjön meg arról, hogy a tűzfalak megfelelően vannak konfigurálva. Lásd: [tűzfal-kivételek konfigurálása az ügynökhöz](https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
-2. Telepítse az ügynököt az Exchange-kiszolgálóra, ehhez kattintson a **felügyeleti > ügynökök elemre > install** in MABS felügyeleti konzol. A részletes lépésekért lásd [a MABS védelmi ügynök telepítése](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) című témakört.
+1. Győződjön meg arról, hogy a tűzfalak megfelelően vannak konfigurálva. Lásd: [tűzfal-kivételek konfigurálása az ügynökhöz](/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
+2. Telepítse az ügynököt az Exchange-kiszolgálóra, ehhez kattintson a **felügyeleti > ügynökök elemre > install** in MABS felügyeleti konzol. A részletes lépésekért lásd [a MABS védelmi ügynök telepítése](/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019) című témakört.
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Védelmi csoport létrehozása az Exchange-kiszolgálóhoz
 
@@ -34,7 +34,7 @@ Ha a MABS védelmi ügynököt az Exchange-kiszolgálóra szeretné telepíteni,
 4. Válassza ki a védelemmel ellátni kívánt Exchange Server-adatbázist, és kattintson a **tovább**gombra.
 
    > [!NOTE]
-   > Ha az Exchange 2013-et védi, ellenőrizze az [exchange 2013 előfeltételeit](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016).
+   > Ha az Exchange 2013-et védi, ellenőrizze az [exchange 2013 előfeltételeit](/system-center/dpm/back-up-exchange).
    >
    >
 
@@ -105,6 +105,6 @@ Az online helyreállítási pontok esetében öt helyreállítási típus létez
 
     ![Online replikáció kiválasztása](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Backup GYIK](backup-azure-backup-faq.md)

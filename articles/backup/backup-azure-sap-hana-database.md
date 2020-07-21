@@ -3,11 +3,12 @@ title: SAP HANA-adatbázis biztonsági mentése az Azure-ba Azure Backup
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést egy SAP HANA-adatbázisról az Azure-beli virtuális gépekre a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c9f9841ac40a39fc51c0e722415c871650bec86d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 273ba40feee01c2dd2bfe68d1660a5c94f254062
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667318"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513864"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -24,7 +25,7 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 > * Igény szerinti biztonsági mentési feladatok futtatása
 
 >[!NOTE]
->[Ismerkedés](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) a RHEL SAP HANA Backup előzetes verziójával (7,4, 7,6, 7,7 vagy 8,1). További lekérdezések írásához írjon nekünk a következő címen: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>[Ismerkedés](./tutorial-backup-sap-hana-db.md) a RHEL SAP HANA Backup előzetes verziójával (7,4, 7,6, 7,7 vagy 8,1). További lekérdezések írásához írjon nekünk a következő címen: [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
 >[!NOTE]
 >Az Azure-beli virtuális gépeken futó **SQL Server-kiszolgáló és az Azure** -beli virtuális gépekhez készült SAP HANA Soft delete már előzetes verzióban érhető el.<br>
@@ -52,17 +53,17 @@ A fenti beállítások használatával kapcsolatos további részletekért lásd
 
 #### <a name="private-endpoints"></a>Privát végpontok
 
-A privát végpontok lehetővé teszik a biztonságos kapcsolódást a virtuális hálózaton belüli kiszolgálókról a Recovery Services-tárba. A privát végpont egy IP-címet használ a tár VNET. A virtuális hálózaton belüli erőforrásai és a tároló közötti hálózati forgalom a virtuális hálózatra és a Microsoft gerinc hálózatán található privát kapcsolatra is áthalad. Ezzel kiküszöbölhető a nyilvános internetről való kitettség. További információ a Azure Backup privát végpontokról [itt](https://docs.microsoft.com/azure/backup/private-endpoints)olvasható.
+A privát végpontok lehetővé teszik a biztonságos kapcsolódást a virtuális hálózaton belüli kiszolgálókról a Recovery Services-tárba. A privát végpont egy IP-címet használ a tár VNET. A virtuális hálózaton belüli erőforrásai és a tároló közötti hálózati forgalom a virtuális hálózatra és a Microsoft gerinc hálózatán található privát kapcsolatra is áthalad. Ezzel kiküszöbölhető a nyilvános internetről való kitettség. További információ a Azure Backup privát végpontokról [itt](./private-endpoints.md)olvasható.
 
 #### <a name="nsg-tags"></a>NSG Címkék
 
-Ha hálózati biztonsági csoportokat (NSG) használ, használja a *AzureBackup* szolgáltatás címkéjét, hogy engedélyezze a kimenő hozzáférést Azure Backuphoz. A Azure Backup címkén kívül az *Azure ad* -hez és az *Azure Storage*-hoz hasonló [NSG-szabályok](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) létrehozásával is engedélyeznie kell a csatlakozást a hitelesítéshez és az adatátvitelhez.  A következő lépések azt ismertetik, hogyan hozható létre szabály a Azure Backup címke számára:
+Ha hálózati biztonsági csoportokat (NSG) használ, használja a *AzureBackup* szolgáltatás címkéjét, hogy engedélyezze a kimenő hozzáférést Azure Backuphoz. A Azure Backup címkén kívül az *Azure ad* -hez és az *Azure Storage*-hoz hasonló [NSG-szabályok](../virtual-network/security-overview.md#service-tags) létrehozásával is engedélyeznie kell a csatlakozást a hitelesítéshez és az adatátvitelhez.  A következő lépések azt ismertetik, hogyan hozható létre szabály a Azure Backup címke számára:
 
 1. A **minden szolgáltatás**területen lépjen a **hálózati biztonsági csoportok** elemre, és válassza ki a hálózati biztonsági csoportot.
 
 1. A **Beállítások**területen válassza a **kimenő biztonsági szabályok** lehetőséget.
 
-1. Válassza a **Hozzáadás** elemet. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup*értékre van állítva.
+1. Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](../virtual-network/manage-network-security-group.md#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup*értékre van állítva.
 
 1. Kattintson a **Hozzáadás** gombra az újonnan létrehozott kimenő biztonsági szabály mentéséhez.
 
@@ -70,7 +71,7 @@ Hasonlóképpen NSG kimenő biztonsági szabályokat hozhat létre az Azure Stor
 
 #### <a name="azure-firewall-tags"></a>Címkék Azure Firewall
 
-Ha Azure Firewall használ, hozzon létre egy szabályt a *AzureBackup* [Azure Firewall FQDN címke](https://docs.microsoft.com/azure/firewall/fqdn-tags)használatával. Ez lehetővé teszi Azure Backup összes kimenő hozzáférését.
+Ha Azure Firewall használ, hozzon létre egy szabályt a *AzureBackup* [Azure Firewall FQDN címke](../firewall/fqdn-tags.md)használatával. Ez lehetővé teszi Azure Backup összes kimenő hozzáférését.
 
 #### <a name="allow-access-to-service-ip-ranges"></a>Hozzáférés engedélyezése a szolgáltatás IP-tartományai számára
 
@@ -84,7 +85,7 @@ A következő teljes tartományneveket is használhatja a szükséges szolgálta
 | -------------- | ------------------------------------------------------------ |
 | Azure Backup  | `*.backup.windowsazure.com`                             |
 | Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Azure AD      | Az 56-es és a 59-es szakaszban található teljes tartománynevek elérésének engedélyezése [a jelen cikk](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) alapján |
+| Azure AD      | Az 56-es és a 59-es szakaszban található teljes tartománynevek elérésének engedélyezése [a jelen cikk](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online) alapján |
 
 #### <a name="use-an-http-proxy-server-to-route-traffic"></a>HTTP-proxykiszolgáló használata a forgalom irányításához
 
@@ -172,7 +173,7 @@ A házirend-beállításokat a következőképpen adhatja meg:
 
 7. A házirend mentéséhez kattintson az **OK** gombra, és térjen vissza a **biztonsági mentési házirend** fő menüjére.
 8. A tranzakciós napló biztonsági mentési szabályzatának hozzáadásához válassza a **napló biztonsági mentése** lehetőséget,
-    * A **napló biztonsági mentése**területen válassza az **Engedélyezés**lehetőséget.  Ez nem tiltható le, mert SAP HANA kezeli az összes napló biztonsági mentését.
+    * A **napló biztonsági mentése**területen válassza az **Engedélyezés**lehetőséget.  Ez nem tiltható le, mert a SAP HANA az összes napló biztonsági mentését kezeli.
     * Állítsa be a gyakoriságot és a megőrzési vezérlőket.
 
     > [!NOTE]
@@ -190,7 +191,7 @@ A biztonsági mentések a szabályzat ütemezésével összhangban futnak. Az ig
 
 1. A tároló menüjében kattintson a **biztonsági másolati elemek elemre**.
 2. A **biztonsági másolati elemek**területen válassza ki a SAP HANA adatbázist futtató virtuális gépet, majd kattintson a **biztonsági mentés**elemre.
-3. A **biztonsági mentés**területen válassza ki a végrehajtani kívánt biztonsági mentés típusát. Ezt követően kattintson az **OK** gombra. Ezt a biztonsági mentést a biztonsági másolathoz tartozó szabályzatnak megfelelően megőrzi a rendszer.
+3. A **biztonsági mentés**területen válassza ki a végrehajtani kívánt biztonsági mentés típusát. Ezután kattintson az **OK** gombra. Ezt a biztonsági mentést a biztonsági másolathoz tartozó szabályzatnak megfelelően megőrzi a rendszer.
 4. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban**vannak. Az adatbázis méretétől függően a kezdeti biztonsági mentés hosszabb időt is igénybe vehet.
 
 ## <a name="run-sap-hana-studio-backup-on-a-database-with-azure-backup-enabled"></a>SAP HANA Studio Backup futtatása Azure Backup engedélyezve lévő adatbázison
@@ -198,17 +199,19 @@ A biztonsági mentések a szabályzat ütemezésével összhangban futnak. Az ig
 Ha egy olyan adatbázis helyi biztonsági másolatát kívánja használni, amelyről biztonsági mentés készül Azure Backupsal, tegye a következőket:
 
 1. Várjon, amíg befejeződik az adatbázis teljes vagy naplózott biztonsági mentése. Az állapot ellenõrzése SAP HANA Studio/pilótafülkében.
-2. Tiltsa le a naplók biztonsági mentését, és állítsa a biztonsági mentési katalógust a fájlrendszerre a megfelelő adatbázishoz.
-3. Ehhez kattintson duplán a **systemdb**-konfiguráció elemre, majd  >  **Configuration**  >  **válassza az adatbázis**  >  **-szűrő (napló)** lehetőséget.
-4. A **enable_auto_log_backup** beállítása **nem**értékre.
-5. **Log_backup_using_backint** beállítása **hamis**értékre.
-6. Igény szerint készítsen teljes biztonsági mentést az adatbázisról.
-7. Várjon, amíg befejeződik a teljes biztonsági mentés és a katalógus biztonsági mentése.
-8. A korábbi beállítások visszaállítása az Azure-ba:
+1. Tiltsa le a naplók biztonsági mentését, és állítsa a biztonsági mentési katalógust a fájlrendszerre a megfelelő adatbázishoz.
+1. Ehhez kattintson duplán a **systemdb**-konfiguráció elemre, majd  >  **Configuration**  >  **válassza az adatbázis**  >  **-szűrő (napló)** lehetőséget.
+1. A **enable_auto_log_backup** beállítása **nem**értékre.
+1. **Log_backup_using_backint** beállítása **hamis**értékre.
+1. **Catalog_backup_using_backint** beállítása **hamis**értékre.
+1. Igény szerint készítsen teljes biztonsági mentést az adatbázisról.
+1. Várjon, amíg befejeződik a teljes biztonsági mentés és a katalógus biztonsági mentése.
+1. A korábbi beállítások visszaállítása az Azure-ba:
     * Állítsa **enable_auto_log_backup** a Enable_auto_log_backup **értéket igen**értékre.
     * A **log_backup_using_backint** beállítása **igaz**értékre.
+    * A **catalog_backup_using_backint** beállítása **igaz**értékre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg, hogyan [állíthatja vissza az Azure-beli virtuális gépeken futó SAP HANA-adatbázisokat](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
-* Megtudhatja, hogyan [kezelheti SAP HANA-adatbázisok biztonsági mentését a Azure Backup használatával](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)
+* Ismerje meg, hogyan [állíthatja vissza az Azure-beli virtuális gépeken futó SAP HANA-adatbázisokat](./sap-hana-db-restore.md)
+* Megtudhatja, hogyan [kezelheti SAP HANA-adatbázisok biztonsági mentését a Azure Backup használatával](./sap-hana-db-manage.md)

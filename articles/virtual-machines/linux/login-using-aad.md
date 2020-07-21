@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80366491"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510429"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: bejelentkezés az Azure-beli linuxos virtuális gépre Azure Active Directory hitelesítéssel
 
@@ -77,7 +77,7 @@ Ha engedélyezni szeretné az Azure AD-hitelesítést az Azure-beli linuxos virt
 > [!NOTE]
 > Jelenleg az Azure hálózati biztonsági csoportjai nem konfigurálhatók az Azure AD-hitelesítéssel engedélyezett virtuális gépekhez.
 
-## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gép létrehozása
+## <a name="create-a-linux-virtual-machine"></a>Linux rendszerű virtuális gép létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create)paranccsal, majd hozzon létre egy virtuális gépet az [az VM Create](/cli/azure/vm#az-vm-create) használatával egy támogatott disztribúcióval és egy támogatott régióban. A következő példa egy *myVM* nevű virtuális gépet telepít, amely *Ubuntu 16,04 LTS* -et használ egy *myResourceGroup* nevű erőforráscsoporthoz a *southcentralus* régióban. Az alábbi példákban megadhatja a saját erőforráscsoport és a virtuális gépek nevét igény szerint.
 
@@ -109,7 +109,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-A *sikeres* *provisioningState* akkor jelenik meg, ha a bővítmény telepítése sikeresen megtörtént a virtuális gépen. A virtuális gépnek egy futó virtuálisgép-ügynökre van szüksége a bővítmény telepítéséhez. További információ: virtuálisgép- [ügynök áttekintése](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows).
+A *sikeres* *provisioningState* akkor jelenik meg, ha a bővítmény telepítése sikeresen megtörtént a virtuális gépen. A virtuális gépnek egy futó virtuálisgép-ügynökre van szüksége a bővítmény telepítéséhez. További információ: virtuálisgép- [ügynök áttekintése](../extensions/agent-windows.md).
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Szerepkör-hozzárendelések konfigurálása a virtuális géphez
 
@@ -138,7 +138,7 @@ az role assignment create \
 
 Az Azure-előfizetések erőforrásaihoz való hozzáférés RBAC használatával kapcsolatos további információkért lásd az [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)vagy [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)használatát ismertető témakört.
 
-Az Azure AD-t úgy is beállíthatja, hogy a többtényezős hitelesítés megkövetelése egy adott felhasználó számára a linuxos virtuális gépre való bejelentkezéshez. További információ: Ismerkedés [Az Azure multi-Factor Authentication a felhőben](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+Az Azure AD-t úgy is beállíthatja, hogy a többtényezős hitelesítés megkövetelése egy adott felhasználó számára a linuxos virtuális gépre való bejelentkezéshez. További információ: Ismerkedés [Az Azure multi-Factor Authentication a felhőben](../../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Bejelentkezés a Linux rendszerű virtuális gépre
 
@@ -212,6 +212,6 @@ Azok a felhasználók, akik beágyazott csoportokon vagy szerepkör-hozzárendel
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse az [Azure ad visszajelzési fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) használó problémákat
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Active Directoryről: [Mi az Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)

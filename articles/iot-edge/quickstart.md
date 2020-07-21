@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c0476c7190dcf2ac42dafc9896540be83a938016
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 73d7c129a63e4d63ad5cc05d8dac47720c7955e4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801716"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511909"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése virtuális Windows-eszközön
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik aktív Azure-előfizetéssel, kezdetnek hozzon létre egy [in
 
 Az Azure CLI-vel az ebben a rövid útmutatóban ismertetett lépések számos lépését elvégezheti. Az Azure IoT rendelkezik egy bővítménnyel, amely lehetővé teszi a további funkciók használatát.
 
-Adja hozzá az Azure IoT bővítményt a Cloud Shell-példányhoz.
+Adja hozzá az Azure IoT bővítményt az Cloud Shell-példányhoz.
 
    ```azurecli-interactive
    az extension add --name azure-iot
@@ -76,7 +76,7 @@ IoT Edge-eszköz:
 >
 > Ha készen áll a IoT Edgehoz tartozó saját Windows-eszköz konfigurálására, beleértve az IoT Core-ot futtató eszközöket, kövesse a [Azure IoT Edge futtatókörnyezet telepítése Windows rendszeren](how-to-install-iot-edge-windows.md)című témakör lépéseit.
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 A rövid útmutató elindításához hozzon létre egy IoT hubot az Azure CLI-vel.
 
@@ -84,7 +84,7 @@ A rövid útmutató elindításához hozzon létre egy IoT hubot az Azure CLI-ve
 
 Ehhez a rövid útmutatóhoz az IoT Hub ingyenes csomagja is elegendő. Ha korábban már használta a IoT Hubt, és már rendelkezik egy hubhoz, akkor használhatja ezt az IoT hubot.
 
-A következő kód egy ingyenes **F1** -hubot hoz létre az erőforráscsoporthoz `IoTEdgeResources` . Cserélje le `{hub_name}` az nevet az IoT hub egyedi nevére.
+A következő kód egy ingyenes **F1** -hubot hoz létre az erőforráscsoporthoz `IoTEdgeResources` . Cserélje le `{hub_name}` az nevet az IoT hub egyedi nevére. A IoT Hub létrehozása néhány percet is igénybe vehet.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
@@ -101,13 +101,13 @@ Hozzon létre egy eszközidentitást a szimulált eszközhöz, hogy az kommunik�
 
 Mivel IoT Edge-eszközök viselkedése és kezelése eltérően történik a szokásos IoT-eszközöknél, deklarálja ezt az identitást egy IoT Edge eszközhöz a `--edge-enabled` jelzővel.
 
-1. Az Azure Cloud Shellben a következő paranccsal hozza létre a **myEdgeDevice** nevű eszközt a központjában.
+1. A Azure Cloud Shell írja be a következő parancsot egy **myEdgeDevice** nevű eszköz létrehozásához a központban.
 
    ```azurecli-interactive
    az iot hub device-identity create --device-id myEdgeDevice --edge-enabled --hub-name {hub_name}
    ```
 
-   Ha hibaüzenetet kap a iothubowner, győződjön meg arról, hogy a Cloud shell az Azure-IOT bővítmény legújabb verzióját futtatja.
+   Ha hibaüzenetet kap a iothubowner, győződjön meg arról, hogy a Cloud Shell az Azure-IOT bővítmény legújabb verzióját futtatja.
 
 2. Megtekintheti az eszköz kapcsolati karakterláncát, amely a fizikai eszközt a IoT Hub identitásával társítja. Tartalmazza az IoT hub nevét, az eszköz nevét, majd egy megosztott kulcsot, amely a kettő közötti kapcsolatokat hitelesíti.
 
@@ -124,7 +124,7 @@ Mivel IoT Edge-eszközök viselkedése és kezelése eltérően történik a szo
 Telepítse az Azure IoT Edge-futtatókörnyezetet az IoT Edge-eszközön, és a konfigurálást eszközkapcsolati sztring használatával végezze el.
 ![Diagram – a futtatókörnyezet elindítása az eszközön](./media/quickstart/start-runtime.png)
 
-Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. A **IoT Edge biztonsági démon** minden alkalommal elindul, amikor egy IoT Edge-eszköz elindul, és elindítja az eszközt a IoT Edge ügynök elindításával. A **IoT Edge ügynök** kezeli a IoT Edge eszközön található modulok telepítését és figyelését, beleértve az IoT Edge hubot is. Az **IoT Edge hub** kezeli a IoT Edge eszközön található modulok közötti kommunikációt, valamint az eszköz és a IoT hub között.
+Az IoT Edge-futtatókörnyezet minden IoT Edge-eszközön üzembe van helyezve. Három összetevőből áll. A *IoT Edge biztonsági démon* minden alkalommal elindul, amikor egy IoT Edge-eszköz elindul, és elindítja az eszközt a IoT Edge ügynök elindításával. A *IoT Edge ügynök* kezeli a IoT Edge eszközön található modulok telepítését és figyelését, beleértve az IoT Edge hubot is. Az *IoT Edge hub* kezeli a IoT Edge eszközön található modulok közötti kommunikációt, valamint az eszköz és a IoT hub között.
 
 A telepítési parancsfájl tartalmaz egy Moby nevű tároló motort is, amely a IoT Edge eszközön lévő tároló lemezképeit kezeli.
 
@@ -236,10 +236,19 @@ Ha tovább szeretne dolgozni az IoT Edge-oktatóanyagokkal, használhatja az ebb
 
 Ha a virtuális gépet és az IoT Hubot egy új erőforráscsoportban hozta létre, törölheti azt a csoportot és az összes társított erőforrást. Ellenőrizze az erőforráscsoport tartalmát, és győződjön meg róla, hogy nem kívánja megőrizni a lépést. Ha nem szeretné törölni a teljes csoportot, az egyes erőforrásokat is törölheti.
 
-Távolítsa el az **IoTEdgeResources** csoportot.
+> [!IMPORTANT]
+> Az erőforráscsoport törlése nem vonható vissza.
+
+Távolítsa el az **IoTEdgeResources** csoportot. Egy erőforráscsoport törlése eltarthat néhány percig.
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources
+```
+
+Az erőforráscsoport törlését az erőforráscsoportok listájának megtekintésével ellenőrizheti.
+
+```azurecli-interactive
+az group list
 ```
 
 ## <a name="next-steps"></a>Következő lépések

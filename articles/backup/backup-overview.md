@@ -4,14 +4,14 @@ description: Áttekintést nyújt a Azure Backup szolgáltatásról, valamint ar
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 70fcbc432c3a3584047fe5ac39f217981a73df71
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84709929"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513523"
 ---
-# <a name="what-is-the-azure-backup-service"></a>Mi a Azure Backup szolgáltatás?
+# <a name="what-is-the-azure-backup-service"></a>Mi az az Azure App Service?
 
 Az Azure Backup szolgáltatás egyszerű, biztonságos és költséghatékony megoldásokat kínál adatai biztonsági mentéséhez és a Microsoft Azure-felhőből történő helyreállításához.
 
@@ -43,10 +43,10 @@ A Azure Backup a következő kulcsfontosságú előnyöket nyújtja:
 - **Rövid és hosszú távú adatok megőrzése**: [Recovery Services](backup-azure-recovery-services-vault-overview.md) -tárolókat használhat a rövid és hosszú távú adatmegőrzéshez.
 - **Automatikus tárolófelügyelet** – A hibrid környezetek gyakran megkövetelik a heterogén tárhely alkalmazását – valamennyi tárhely szükséges a helyszínen, valamennyi a felhőben. Azure Backup esetén a helyszíni tárolóeszközök használata díjmentes. Az Azure Backup automatikusan foglalja le és kezeli a Backup-tárolót, és használatalapú modellt alkalmaz. Így csak a felhasznált tárterületért kell fizetnie. [További](https://azure.microsoft.com/pricing/details/backup) információ a díjszabásról.
 - **Több tárolási lehetőség** – a Azure Backup kétféle replikálási lehetőséget kínál a tárterület/az adatmennyiség nagyfokú rendelkezésre állásának megőrzésére.
-  - A [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy-lrs.md) háromszor replikálja az adatait (az adatait három példányban hozza létre) egy adatközpont tárolási méretezési egységében. Az adatok összes másolata ugyanabban a régióban található. Az LRS egy alacsony költségű megoldás az adatok védelmére a helyi hardveres hibák esetén.
-  - A [geo-redundáns tárolás (GRS)](../storage/common/storage-redundancy-grs.md) az alapértelmezett és ajánlott replikációs lehetőség. A GRS az adatait egy másodlagos régióba replikálja (több száz kilométerre a forrásadatok elsődleges helyétől). A GRS több mint LRS, de a GRS magasabb szintű tartósságot biztosít az adataihoz, még akkor is, ha van regionális leállás.
+  - A [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md) háromszor replikálja az adatait (az adatait három példányban hozza létre) egy adatközpont tárolási méretezési egységében. Az adatok összes másolata ugyanabban a régióban található. Az LRS egy alacsony költségű megoldás az adatok védelmére a helyi hardveres hibák esetén.
+  - A [geo-redundáns tárolás (GRS)](../storage/common/storage-redundancy.md) az alapértelmezett és ajánlott replikációs lehetőség. A GRS az adatait egy másodlagos régióba replikálja (több száz kilométerre a forrásadatok elsődleges helyétől). A GRS több mint LRS, de a GRS magasabb szintű tartósságot biztosít az adataihoz, még akkor is, ha van regionális leállás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tekintse át](backup-architecture.md) a különböző biztonsági mentési forgatókönyvek architektúráját és összetevőit.
 - [Ellenőrizze](backup-support-matrix.md) a biztonsági mentés támogatási követelményeit és korlátozásait, valamint az [Azure virtuális gépek biztonsági mentését](backup-support-matrix-iaas.md).

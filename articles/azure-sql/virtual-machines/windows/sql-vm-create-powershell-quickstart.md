@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e821c650bae7694070624aeebe7fcc3482f7a3b9
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: eafbf102c092b180a1f3c882f5ae626e60b80f30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667403"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514611"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>Gyors útmutató: SQL Server létrehozása Windows rendszerű virtuális gépen Azure PowerShell
 
@@ -48,7 +48,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 1. Amikor megjelenik a bejelentkezési ablak, adja meg a hitelesítő adatait. Használja ugyanazt az e-mail-címet és jelszót, amelyet az Azure Portalra való bejelentkezéshez használ.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 1. Adjon meg egy változót egy egyedi erőforráscsoport-névvel. A rövid útmutató további részének egyszerűsítése érdekében a többi parancs ezt a nevet használja az egyéb erőforrásnevek alapján.
 
@@ -89,7 +89,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
       -AllocationMethod Static -IdleTimeoutInMinutes 4 -Name $PipName
    ```
 
-1. Hozzon létre egy hálózati biztonsági csoportot. Konfiguráljon szabályokat a távoli asztali (RDP) és SQL Server-kapcsolatok lehetővé tételéhez.
+1. Egy hálózati biztonsági csoport létrehozása; Konfiguráljon szabályokat a távoli asztali (RDP) és SQL Server-kapcsolatok lehetővé tételéhez.
 
    ```powershell
    # Rule to allow remote desktop (RDP)
@@ -147,13 +147,34 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
    > [!TIP]
    > A virtuális gép létrehozása több percig tart.
 
-## <a name="install-the-sql-iaas-agent"></a>Az SQL IaaS-ügynök telepítése
+## <a name="register-with-sql-vm-rp"></a>Regisztrálás az SQL VM erőforrás-szolgáltatónál 
 
-A portál integrációjához és az SQL virtuálisgép-funkciókhoz telepíteni kell az [SQL Server IaaS-ügynök bővítményt](sql-server-iaas-agent-extension-automate-management.md). Ha az ügynököt az új virtuális gépre szeretné telepíteni, futtassa a következő parancsot a virtuális gép létrehozása után.
+A portál-integráció és az SQL-alapú virtuális gépek funkcióinak beszerzéséhez regisztrálnia kell az [SQL VM erőforrás-szolgáltatóval](sql-vm-resource-provider-register.md).
 
-   ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "2.0" -Location $Location
-   ```
+A teljes funkcionalitás eléréséhez teljes módban regisztrálnia kell az erőforrás-szolgáltatóban. Ezzel azonban újraindítja a SQL Server szolgáltatást, ezért az ajánlott módszer az, hogy egyszerű módban regisztrálja a regisztrációt, majd a karbantartási időszak alatt teljes egészében frissítsen. 
+
+Először regisztrálja a SQL Server VMt könnyű módban: 
+
+```powershell-interactive
+# Get the existing compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+        
+# Register SQL VM with 'Lightweight' SQL IaaS agent
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
+  -LicenseType PAYG -SqlManagementType LightWeight
+```
+
+Ezután a karbantartási időszak alatt frissítsen a teljes módra: 
+
+```powershell-interactive
+# Get the existing Compute VM
+$vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+      
+# Register with SQL VM resource provider in full mode
+New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+```
+
+
 
 ## <a name="remote-desktop-into-the-vm"></a>Távoli asztal a virtuális gépen
 

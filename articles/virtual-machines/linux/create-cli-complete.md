@@ -6,11 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cc7a739b27d96eac01733b4f340d6d6d4dac265
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969563"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511126"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Teljes linuxos virtuális gép létrehozása az Azure CLI-vel
 Virtuális gép (VM) gyors létrehozásához az Azure-ban használhat egyetlen Azure CLI-parancsot, amely az alapértelmezett értékeket használja a szükséges támogatási erőforrások létrehozásához. A rendszer automatikusan létrehozza az erőforrásokat, például a virtuális hálózatot, a nyilvános IP-címet és a hálózati biztonsági csoport szabályait. A környezet éles környezetben való használatának szabályozása érdekében érdemes lehet előre létrehozni ezeket az erőforrásokat, majd hozzáadni a virtuális gépeket. Ez a cikk végigvezeti a virtuális gépek és az egyes támogatási erőforrások egyenkénti létrehozásán.
@@ -549,13 +550,13 @@ Az alapértelmezett NGINX-webhely működés közbeni megtekintéséhez nyissa m
 ![Alapértelmezett NGINX-webhely a virtuális gépen](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>Exportálás sablonként
-Mi a teendő, ha már szeretne egy további fejlesztési környezetet létrehozni ugyanazzal a paraméterekkel vagy egy olyan éles környezettel, amely megfelel a szolgáltatásnak? A Resource Manager JSON-sablonokat használ, amelyek meghatározzák a környezet összes paraméterét. A JSON-sablonra hivatkozó teljes környezeteket hozhat létre. A JSON- [sablonokat manuálisan](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) is létrehozhatja, vagy exportálhat egy meglévő környezetet a JSON-sablon létrehozásához. Az alábbi módon exportálhatja az erőforráscsoportot az az [Group export](/cli/azure/group) paranccsal:
+Mi a teendő, ha már szeretne egy további fejlesztési környezetet létrehozni ugyanazzal a paraméterekkel vagy egy olyan éles környezettel, amely megfelel a szolgáltatásnak? A Resource Manager JSON-sablonokat használ, amelyek meghatározzák a környezet összes paraméterét. A JSON-sablonra hivatkozó teljes környezeteket hozhat létre. A JSON- [sablonokat manuálisan](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) is létrehozhatja, vagy exportálhat egy meglévő környezetet a JSON-sablon létrehozásához. Az alábbi módon exportálhatja az erőforráscsoportot az az [Group export](/cli/azure/group) paranccsal:
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
 ```
 
-Ez a parancs az `myResourceGroup.json` aktuális munkakönyvtárban hozza létre a fájlt. Amikor létrehoz egy környezetet a sablonból, a rendszer az összes erőforrás nevét kéri. Ezeket a neveket feltöltheti a sablon fájljába úgy, hogy hozzáadja a `--include-parameter-default-value` paramétert a `az group export` parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy [hozzon létre egy parameters.js](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) az erőforrás nevét megadó fájlon.
+Ez a parancs az `myResourceGroup.json` aktuális munkakönyvtárban hozza létre a fájlt. Amikor létrehoz egy környezetet a sablonból, a rendszer az összes erőforrás nevét kéri. Ezeket a neveket feltöltheti a sablon fájljába úgy, hogy hozzáadja a `--include-parameter-default-value` paramétert a `az group export` parancshoz. Szerkessze a JSON-sablont az erőforrásnevek megadásához, vagy [hozzon létre egy parameters.js](../../azure-resource-manager/templates/template-syntax.md?toc=/azure/virtual-machines/linux/toc.json) az erőforrás nevét megadó fájlon.
 
 Ha létre szeretne hozni egy környezetet a sablonból, használja az [az Group Deployment Create](/cli/azure/group/deployment) elemet a következő módon:
 
@@ -565,7 +566,7 @@ az group deployment create \
     --template-file myResourceGroup.json
 ```
 
-Előfordulhat, hogy [további információra van szüksége a sablonokból való üzembe helyezésről](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). További információ a környezetek növekményes frissítéséről, a Parameters fájl használatáról és a sablonok egyetlen tárolási helyről való eléréséről.
+Előfordulhat, hogy [további információra van szüksége a sablonokból való üzembe helyezésről](../../azure-resource-manager/templates/deploy-cli.md?toc=/azure/virtual-machines/linux/toc.json). További információ a környezetek növekményes frissítéséről, a Parameters fájl használatáról és a sablonok egyetlen tárolási helyről való eléréséről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már készen áll a több hálózati összetevő és virtuális gép használatának megkezdésére. Ezzel a minta környezettel kiépítheti az alkalmazást az itt bemutatott alapvető összetevők használatával.

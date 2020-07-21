@@ -9,11 +9,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
-ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b50922d129fb4c72db1d6077a49c4d1309d5fe55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84686018"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512979"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>A PowerShell rövid útmutatója Azure Cloud Shell
 
@@ -26,11 +27,11 @@ Ez a dokumentum részletesen ismerteti, hogyan használható a PowerShell a [Azu
 
 1. Kattintson **Cloud Shell** gombra a Azure Portal felső navigációs sávján.
 
-   ![](media/quickstart-powershell/shell-icon.png)
+   ![A Azure Portal Azure Cloud Shell indítását bemutató képernyőkép.](media/quickstart-powershell/shell-icon.png)
 
 2. Válassza ki a PowerShell-környezetet a legördülő listából, és az Azure Drive-ban lesz`(Azure:)`
 
-   ![](media/quickstart-powershell/environment-ps.png)
+   ![A Azure Cloud Shell PowerShell-környezetének kijelölését bemutató képernyőkép.](media/quickstart-powershell/environment-ps.png)
 
 ## <a name="run-powershell-commands"></a>PowerShell-parancsok futtatása
 

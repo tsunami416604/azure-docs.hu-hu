@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: Azure bejárati ajtó szabályainak motorja egyeztetési feltételek
 description: Ez a cikk az Azure bejárati szabályainak motorjában elérhető különböző egyeztetési feltételek listáját tartalmazza.
 services: frontdoor
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: d42b6b56f0cdd1f6ef2ea45b21a027f1b4c56b1c
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 311914078f8169a3b48b5559ed58a690c29be83a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85321994"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512163"
 ---
-# <a name="azure-front-door-rules-engine-match-conditions"></a>Azure bejárati ajtó szabályainak motorja egyeztetési feltételek
+# <a name="azure-front-door-rules-engine-match-conditions"></a>Azure Front Door szabálymotor egyezési feltételei
 
 A [AFD-szabályok motorjában](front-door-rules-engine.md) a szabály nulla vagy több egyeztetési feltételt és egy műveletet tartalmaz. Ez a cikk részletes leírást tartalmaz a AFD-szabályok motorjában használható egyeztetési feltételekről.
 
@@ -71,9 +71,9 @@ A kérelmező helye vagy IP-címe alapján azonosítja a kérelmeket.
 
 Operátor | Támogatott értékek
 ---------|-----------------
-Földrajzi egyezés | Országhívószám
+Földrajzi egyezés | Országkód
 IP-egyeztetés | IP-cím (szóközzel tagolt)
-Nem földrajzi egyezés | Országhívószám
+Nem földrajzi egyezés | Országkód
 Nem IP-egyeztetés | IP-cím (szóközzel tagolt)
 
 #### <a name="key-information"></a>Legfontosabb információk
@@ -186,14 +186,14 @@ Operátor | Érték | Eset átalakítása
 
 Azok a szabályok, amelyek a normál operátorok listájából fogadnak értékeket, a következő operátorok érvényesek:
 
-- Bármelyik
+- Bármely
 - Egyenlő 
 - Contains 
 - Kezdete 
 - Végződik 
-- Kisebb, mint
+- Kisebb
 - Kisebb vagy egyenlő
-- Nagyobb, mint
+- Nagyobb
 - Nagyobb vagy egyenlő
 - Nem
 - Nem tartalmazza
@@ -207,7 +207,7 @@ Azok a szabályok, amelyek a normál operátorok listájából fogadnak értéke
 A (z) *vagy*annál *kisebb* numerikus operátorok esetében a felhasznált összehasonlítás a hosszon alapul. Ebben az esetben az egyeztetési feltételben szereplő értéknek olyan egész számnak kell lennie, amelynek meg kell egyeznie az összehasonlítani kívánt hosszsal. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan állíthatja be az első [szabályok motorjának konfigurációját](front-door-tutorial-rules-engine.md). 
 - További tudnivalók a [szabályok motor műveleteiről](front-door-rules-engine-actions.md)

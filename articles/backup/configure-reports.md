@@ -3,11 +3,12 @@ title: Azure Backup-jelentések konfigurálása
 description: Azure Backup jelentések konfigurálása és megtekintése Log Analytics és Azure-munkafüzetek használatával
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d1c7d628a61e550aa9dc4a5265ae16c5ed5336a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484978"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86513625"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -17,7 +18,7 @@ A biztonsági mentési rendszergazdákra vonatkozó gyakori követelmény, hogy 
 - Biztonsági mentések és visszaállítások naplózása.
 - A legfontosabb trendek azonosítása különböző részletességi szinteken.
 
-A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely [Azure monitor naplókat](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) és [Azure-munkafüzeteket](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)használ. Ezekkel az erőforrásokkal részletes információkhoz juthat a biztonsági másolatokról a teljes Backup-hagyatékon keresztül. Ez a cikk azt ismerteti, hogyan lehet konfigurálni és megtekinteni Azure Backup jelentéseket.
+A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely [Azure monitor naplókat](../azure-monitor/log-query/get-started-portal.md) és [Azure-munkafüzeteket](../azure-monitor/platform/workbooks-overview.md)használ. Ezekkel az erőforrásokkal részletes információkhoz juthat a biztonsági másolatokról a teljes Backup-hagyatékon keresztül. Ez a cikk azt ismerteti, hogyan lehet konfigurálni és megtekinteni Azure Backup jelentéseket.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
@@ -25,11 +26,11 @@ A Azure Backup jelenleg olyan jelentéskészítési megoldást biztosít, amely 
 - A DPM számítási feladatokhoz a biztonsági mentési jelentések támogatottak a DPM 5.1.363.0-es vagy újabb verziójával, valamint az ügynök 2.0.9127.0 és újabb verziójával.
 - A MABS számítási feladatokhoz a biztonsági mentési jelentések támogatottak a MABS 13.0.415.0-es vagy újabb verziójával, valamint az ügynök 2.0.9170.0 és újabb verziójával.
 - A biztonsági mentési jelentések az összes biztonsági mentési elemben, tárolóban, előfizetésben és régióban is megtekinthetők, ha az adatokat egy olyan Log Analytics munkaterületre küldik, amelyhez a felhasználó hozzáfér. A jelentések egy készlethez való megtekintéséhez csak olvasási hozzáféréssel kell rendelkeznie ahhoz a Log Analytics munkaterülethez, amelyhez a tárolók küldik az adatokat. Nincs szükség az egyes tárak elérésére.
-- Ha Ön [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) -felhasználó, aki delegált hozzáféréssel rendelkezik ügyfelei előfizetéséhez, a jelentéseket az Azure Lighthouse használatával tekintheti meg az összes bérlőn.
+- Ha Ön [Azure Lighthouse](../lighthouse/index.yml) -felhasználó, aki delegált hozzáféréssel rendelkezik ügyfelei előfizetéséhez, a jelentéseket az Azure Lighthouse használatával tekintheti meg az összes bérlőn.
 - Az adatbiztonsági mentési jelentések jelenleg legfeljebb 100 Log Analytics munkaterületen (a bérlők között) jeleníthetők meg.
 - A naplók biztonsági mentési feladatai jelenleg nem jelennek meg a jelentésekben.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 A jelentések használatának megkezdéséhez kövesse az alábbi lépéseket.
 
@@ -37,22 +38,22 @@ A jelentések használatának megkezdéséhez kövesse az alábbi lépéseket.
 
 Állítson be egy vagy több Log Analytics munkaterületet a biztonsági mentési jelentéskészítési adatai tárolásához. A hely és az előfizetés, ahol a Log Analytics munkaterület létrehozható, független a tárolók helyétől és előfizetéstől.
 
-Log Analytics munkaterület beállításához tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)című témakört.
+Log Analytics munkaterület beállításához tekintse meg a [log Analytics munkaterület létrehozása a Azure Portalben](../azure-monitor/learn/quick-create-workspace.md)című témakört.
 
-Alapértelmezés szerint a Log Analytics munkaterületen lévő adat 30 napig tart. Ha hosszabb ideig szeretné megtekinteni az adatok számát, módosítsa a Log Analytics munkaterület megőrzési időtartamát. A megőrzési időtartam módosításához tekintse meg a [használat és a költségek kezelése Azure monitor naplókkal](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)című témakört.
+Alapértelmezés szerint a Log Analytics munkaterületen lévő adat 30 napig tart. Ha hosszabb ideig szeretné megtekinteni az adatok számát, módosítsa a Log Analytics munkaterület megőrzési időtartamát. A megőrzési időtartam módosításához tekintse meg a [használat és a költségek kezelése Azure monitor naplókkal](../azure-monitor/platform/manage-cost-storage.md)című témakört.
 
 ### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2. a tárolók diagnosztikai beállításainak konfigurálása
 
 Azure Resource Manager erőforrások, például Recovery Services-tárolók, rögzítik az ütemezett műveletekkel és a felhasználó által aktivált műveletekkel kapcsolatos információkat diagnosztikai adatként.
 
-A Recovery Services-tároló figyelés szakaszában válassza a **diagnosztikai beállítások** lehetőséget, és adja meg a Recovery Services tároló diagnosztikai adataihoz tartozó célt. További információ a diagnosztikai események használatáról: Recovery Services-tárolók [diagnosztikai beállításainak használata](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events).
+A Recovery Services-tároló figyelés szakaszában válassza a **diagnosztikai beállítások** lehetőséget, és adja meg a Recovery Services tároló diagnosztikai adataihoz tartozó célt. További információ a diagnosztikai események használatáról: Recovery Services-tárolók [diagnosztikai beállításainak használata](./backup-azure-diagnostic-events.md).
 
 ![Diagnosztikai beállítások ablaktábla](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-A Azure Backup beépített Azure Policy-definíciót is biztosít, amely automatizálja a diagnosztikai beállítások konfigurációját egy adott hatókörben lévő összes tárolónál. A szabályzat használatának megismeréséhez tekintse meg a tár [diagnosztikai beállításainak konfigurálása skálán](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)című témakört.
+A Azure Backup beépített Azure Policy-definíciót is biztosít, amely automatizálja a diagnosztikai beállítások konfigurációját egy adott hatókörben lévő összes tárolónál. A szabályzat használatának megismeréséhez tekintse meg a tár [diagnosztikai beállításainak konfigurálása skálán](./azure-policy-configure-diagnostics.md)című témakört.
 
 > [!NOTE]
-> A diagnosztika konfigurálása után akár 24 óráig is eltarthat, amíg a kezdeti adattovábbítás befejeződik. Miután az adat elindult a Log Analytics munkaterületre, előfordulhat, hogy a jelentésekben nem jelenik meg azonnal az adat, mert az aktuális részleges napi adat nem jelenik meg a jelentésekben. További információ: [a biztonsági mentési jelentésekben használt konvenciók](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports). Javasoljuk, hogy a tárolók konfigurálása után két nappal megtekintse a jelentéseket, hogy az adatküldés Log Analytics.
+> A diagnosztika konfigurálása után akár 24 óráig is eltarthat, amíg a kezdeti adattovábbítás befejeződik. Miután az adat elindult a Log Analytics munkaterületre, előfordulhat, hogy a jelentésekben nem jelenik meg azonnal az adat, mert az aktuális részleges napi adat nem jelenik meg a jelentésekben. További információ: [a biztonsági mentési jelentésekben használt konvenciók](#conventions-used-in-backup-reports). Javasoljuk, hogy a tárolók konfigurálása után két nappal megtekintse a jelentéseket, hogy az adatküldés Log Analytics.
 
 #### <a name="3-view-reports-in-the-azure-portal"></a>3. jelentések megtekintése a Azure Portal
 
@@ -71,7 +72,7 @@ A jelentés különböző lapokat tartalmaz:
 
 - **Összefoglalás**: ezen a lapon magas szintű áttekintést kaphat a Backup-hagyatékról. Gyorsan áttekintheti a biztonsági másolati elemek teljes számát, a felhasznált Felhőbeli tárterületet, a védett példányok számát, valamint a feladat sikerességi arányát a munkaterhelés típusától függően. Az adott biztonsági mentési összetevő típusával kapcsolatos részletesebb információkért nyissa meg a megfelelő lapokat.
 
-   ![Összefoglalás lap](./media/backup-azure-configure-backup-reports/summary.png)
+   ![Összegzés lap](./media/backup-azure-configure-backup-reports/summary.png)
 
 - **Biztonsági másolati elemek**: ezen a lapon megtekintheti a biztonsági mentési elem szintjén felhasznált Felhőbeli tárolással kapcsolatos információkat és trendeket. Ha például az SQL-t használja egy Azure-beli virtuális gép biztonsági mentésében, megtekintheti a biztonsági mentés alatt álló SQL-adatbázisokhoz felhasznált felhőalapú tárhelyet. Azt is megteheti, hogy megtekinti az adott védelmi állapot biztonsági másolati elemeinek adatait. Ha például a lap tetején található **védelem leállított** csempét választja, a rendszer az összes widgetet kiszűri, hogy csak a védelem leállított állapotának biztonsági mentési elemeire vonatkozó adatokat jelenítse meg.
 
@@ -102,7 +103,7 @@ Válassza az egyes widgetek tetején található rögzítés gombot, hogy rögz�
 
 ## <a name="cross-tenant-reports"></a>Több-bérlős jelentések
 
-Ha az [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/) -t az előfizetések több bérlős környezetben való delegált hozzáférésével használja, használhatja az alapértelmezett előfizetési szűrőt. Válassza a szűrő gombot a Azure Portal jobb felső sarkában, és válassza ki az összes olyan előfizetést, amelynek az adatait meg szeretné jeleníteni. Így kiválaszthatja Log Analytics munkaterületeket a bérlők között a több-bérlős jelentések megtekintéséhez.
+Ha az [Azure Lighthouse](../lighthouse/index.yml) -t az előfizetések több bérlős környezetben való delegált hozzáférésével használja, használhatja az alapértelmezett előfizetési szűrőt. Válassza a szűrő gombot a Azure Portal jobb felső sarkában, és válassza ki az összes olyan előfizetést, amelynek az adatait meg szeretné jeleníteni. Így kiválaszthatja Log Analytics munkaterületeket a bérlők között a több-bérlős jelentések megtekintéséhez.
 
 ## <a name="conventions-used-in-backup-reports"></a>A biztonsági mentési jelentésekben használt konvenciók
 
@@ -130,8 +131,8 @@ A biztonsági mentési jelentésben szereplő widgeteket Kusto-lekérdezések m�
 
 - Az Azure Storage-fiókból származó, a jelentéskészítéshez korábban Power BI sablon alkalmazás egy elavult útvonalon található. Javasoljuk, hogy a jelentések megtekintéséhez indítsa el a tár diagnosztikai adatok küldését Log Analytics.
 
-- Emellett a diagnosztikai adatok egy Storage-fiókba vagy egy LA-munkaterületre való küldésének [v1-sémája](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema) is egy elavult útvonalon található. Ez azt jelenti, hogy ha a v1 séma alapján egyéni lekérdezéseket vagy automatizálásokat írt, javasoljuk, hogy frissítse ezeket a lekérdezéseket a jelenleg támogatott v2 séma használatára.
+- Emellett a diagnosztikai adatok egy Storage-fiókba vagy egy LA-munkaterületre való küldésének [v1-sémája](./backup-azure-diagnostics-mode-data-model.md#v1-schema-vs-v2-schema) is egy elavult útvonalon található. Ez azt jelenti, hogy ha a v1 séma alapján egyéni lekérdezéseket vagy automatizálásokat írt, javasoljuk, hogy frissítse ezeket a lekérdezéseket a jelenleg támogatott v2 séma használatára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[További információ a Azure Backup figyeléséről és jelentéskészítéséről](https://docs.microsoft.com/azure/backup/backup-azure-monitor-alert-faq)
+[További információ a Azure Backup figyeléséről és jelentéskészítéséről](./backup-azure-monitor-alert-faq.md)

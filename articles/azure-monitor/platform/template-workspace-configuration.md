@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 240a261f8dd401f36ef763e4c1274a1c0760f2dd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81768128"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515648"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Log Analytics munkaterület kezelése Azure Resource Manager sablonok használatával
 
@@ -44,7 +44,7 @@ A következő táblázat felsorolja az ebben a példában használt erőforráso
 | Adatforrás | adatforrások   | 2015-11-01 – előzetes verzió |
 | Megoldás    | megoldások     | 2015-11-01 – előzetes verzió |
 
-## <a name="create-a-log-analytics-workspace"></a>A Log Analytics-munkaterület létrehozása
+## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 
 A következő példa egy munkaterületet hoz létre egy sablon használatával a helyi gépről. A JSON-sablon úgy van konfigurálva, hogy csak az új munkaterület nevét és helyét írja elő. Más munkaterület-paraméterekhez megadott értékeket használ, például a [hozzáférés-vezérlési módot](design-logs-deployment.md#access-control-mode), az árképzési szintet, a megőrzést és a kapacitás foglalási szintjét.
 
@@ -153,7 +153,7 @@ A kapacitás foglalása esetén a kiválasztott kapacitás foglalása az adatfel
    >* "Name": "CapacityReservation",
    >* "capacityReservationLevel": 100
 
-2. Szerkessze a sablont, hogy megfeleljen a követelményeinek. Hozzon létre egy [Resource Manager-paramétereket tartalmazó fájlt](../../azure-resource-manager/templates/parameter-files.md) ahelyett, hogy a paramétereket beágyazott értékként adja át. Tekintse át a [Microsoft. OperationalInsights/munkaterületek sablonjának](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) hivatkozását, hogy megtudja, milyen tulajdonságokat és értékeket támogat a rendszer. 
+2. Szerkessze a sablont, hogy megfeleljen a követelményeinek. Hozzon létre egy [Resource Manager-paramétereket tartalmazó fájlt](../../azure-resource-manager/templates/parameter-files.md) ahelyett, hogy a paramétereket beágyazott értékként adja át. Tekintse át a [Microsoft. OperationalInsights/munkaterületek sablonjának](/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) hivatkozását, hogy megtudja, milyen tulajdonságokat és értékeket támogat a rendszer. 
 
 3. Mentse ezt a fájlt **deploylaworkspacetemplate.jsként** egy helyi mappába.
 

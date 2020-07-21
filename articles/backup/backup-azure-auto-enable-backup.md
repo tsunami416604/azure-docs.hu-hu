@@ -3,11 +3,12 @@ title: Biztonsági mentés automatikus engedélyezése a virtuális gép Azure P
 description: A cikk azt ismerteti, hogyan használható a Azure Policy az adott hatókörben létrehozott összes virtuális gép biztonsági mentésének automatikus engedélyezéséhez
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4ce7825b714eed1b025a6a807a62759177b81f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77584268"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86514220"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Biztonsági mentés automatikus engedélyezése a virtuális gép Azure Policyval végzett létrehozásakor
 
@@ -17,7 +18,7 @@ Napjainkban a Azure Backup egy beépített szabályzatot (Azure Policy használa
 
 ## <a name="supported-scenarios"></a>Támogatott helyzetek
 
-* A beépített szabályzat jelenleg csak Azure-beli virtuális gépek esetén támogatott. A felhasználóknak ügyelniük kell arra, hogy a hozzárendelés során megadott adatmegőrzési szabályzat a virtuális gép adatmegőrzési szabályzata legyen. Tekintse át [ezt](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus) a dokumentumot a szabályzat által támogatott összes virtuális gép SKU megtekintéséhez.
+* A beépített szabályzat jelenleg csak Azure-beli virtuális gépek esetén támogatott. A felhasználóknak ügyelniük kell arra, hogy a hozzárendelés során megadott adatmegőrzési szabályzat a virtuális gép adatmegőrzési szabályzata legyen. Tekintse át [ezt](./backup-azure-policy-supported-skus.md) a dokumentumot a szabályzat által támogatott összes virtuális gép SKU megtekintéséhez.
 
 * A szabályzat egyszerre egyetlen helyhez és előfizetéshez is hozzárendelhető. Ha engedélyezni szeretné a virtuális gépek biztonsági mentését a helyek és az előfizetések között, a házirend-hozzárendelés több példányát is létre kell hoznia, egyet a hely és az előfizetés minden kombinációja esetében.
 
@@ -47,7 +48,7 @@ A szabályzatnak a szükséges hatókörhöz való hozzárendeléséhez kövesse
 
 > [!NOTE]
 >
-> A Azure Policy a meglévő virtuális gépeken is felhasználható [szervizeléssel](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources).
+> A Azure Policy a meglévő virtuális gépeken is felhasználható [szervizeléssel](../governance/policy/how-to/remediate-resources.md).
 
 > [!NOTE]
 >
@@ -55,4 +56,4 @@ A szabályzatnak a szükséges hatókörhöz való hozzárendeléséhez kövesse
 
 ## <a name="next-steps"></a>Következő lépések
 
-[További információ a Azure Policy](https://docs.microsoft.com/azure/governance/policy/overview)
+[További információ a Azure Policy](../governance/policy/overview.md)

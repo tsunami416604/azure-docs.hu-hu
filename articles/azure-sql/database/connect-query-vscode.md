@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e0554711aa6db436bc0c3076ec468555c47fff39
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7a096e355e140b18bd7df010c379e31d21f90634
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267256"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515053"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Rövid útmutató: a Visual Studio Code használata a kapcsolódáshoz és a lekérdezéshez 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -29,7 +29,7 @@ A [Visual Studio Code](https://code.visualstudio.com/docs) egy grafikus Kódszer
 
 - Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
 
-  || Azure SQL Database | Felügyelt Azure SQL-példány |
+  | Művelet | Azure SQL Database | Felügyelt Azure SQL-példány |
   |:--- |:--- |:---|
   | Létrehozás| [Portál](single-database-create-quickstart.md) | [Portál](../managed-instance/instance-create-quickstart.md) |
   || [Parancssori felület](scripts/create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -109,7 +109,7 @@ Hozzon létre kapcsolatot a kiszolgálóval a Visual Studio Code használatával
 
    | Tulajdonság       | Ajánlott érték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Kiszolgáló neve** | A teljes kiszolgálónév | Valami hasonló: **mynewserver20170313.database.Windows.net**. |
+   | **Kiszolgálónév** | A teljes kiszolgálónév | Valami hasonló: **mynewserver20170313.database.Windows.net**. |
    | **Adatbázis neve** | mySampleDatabase | Az adatbázis, amelyhez csatlakozni kíván. |
    | **Hitelesítés** | SQL-bejelentkezés| Ez az oktatóanyag SQL-hitelesítést használ. |
    | **Felhasználónév** | Felhasználónév | A kiszolgáló létrehozásához használt kiszolgálói rendszergazdai fiók felhasználóneve. |
@@ -191,7 +191,7 @@ Futtassa az alábbi [delete](https://docs.microsoft.com/sql/t-sql/statements/del
 
 2. Nyomja le a **CTRL**E billentyűt a + **Shift** + **E** tábla megadott sorának törléséhez `Product` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SQL Server Management Studio használatával történő kapcsolódáshoz és lekérdezéshez tekintse meg a rövid útmutató [: a SQL Server Management Studio használata az adatbázishoz való kapcsolódáshoz Azure SQL Database és a lekérdezési](connect-query-ssms.md)információit.
 - A Azure Portal használatával történő kapcsolódáshoz és lekérdezéshez tekintse meg a gyors útmutató [: az SQL-lekérdezési szerkesztő használata a Azure Portal a kapcsolódáshoz és az adatlekérdezéshez](connect-query-portal.md).

@@ -3,12 +3,12 @@ title: A nemmegfelelőség okainak meghatározása
 description: Ha egy erőforrás nem megfelelő, számos lehetséges oka lehet. Ismerje meg, hogy mi okozta a meg nem felelés okait.
 ms.date: 07/06/2020
 ms.topic: how-to
-ms.openlocfilehash: d548f5b9db141eb6aed5984c43f00543d0228f31
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: ee027ff0f2936dc3eb7153869c52d4e70c83918b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970773"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86512027"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -80,7 +80,7 @@ Ezek a részletek ismertetik, hogy egy adott erőforrás miért nem megfelelő, 
 
 A következő mátrix minden lehetséges _okot_ leképez a szabályzat-definícióban szereplő felelős [feltételre](../concepts/definition-structure.md#conditions) :
 
-|Ok | Állapot |
+|Ok | Feltétel |
 |-|-|
 |A jelenlegi értéknek a célként megadott értéket kell tartalmaznia kulcsként. |containsKey vagy **nem** notContainsKey |
 |A jelenlegi értéknek tartalmaznia kell a célérték értékét. |notContains tartalmaz vagy **nem** |
@@ -133,7 +133,7 @@ Install-Module Az.GuestConfiguration
 A virtuális gép összes vendég hozzárendelésének aktuális állapotát a következő parancs használatával tekintheti meg:
 
 ```azurepowershell-interactive
-Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname>
+Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname>
 ```
 
 ```output
@@ -146,7 +146,7 @@ Audit that an application is not installed inside Windows VMs.            {[Inst
 Ha csak az _OK_ kifejezést szeretné megtekinteni, amely leírja, hogy a virtuális gép miért _nem megfelelő_, csak a gyermek tulajdonságot küldje vissza.
 
 ```azurepowershell-interactive
-Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
+Get-AzVMGuestPolicyStatus -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
 ```
 
 ```output
@@ -209,7 +209,7 @@ A _vizualizációs diff_ segédek egy erőforrás változásainak azonosításá
 
 Az előzmények módosításait az [Azure Resource Graph](../../resource-graph/overview.md)biztosíthatja. A Azure Portalon kívüli adatok lekérdezéséhez lásd: [erőforrás-módosítások beolvasása](../../resource-graph/how-to/get-resource-changes.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

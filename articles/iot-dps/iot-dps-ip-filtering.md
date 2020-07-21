@@ -7,13 +7,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 0b13040b39ed491ec4fee4d6922d41f086edeeb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 580c378df5fc3912aa540b5d85adf99bc42605e0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79284914"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511942"
 ---
-# <a name="use-ip-filters"></a>IP-szűrők használata
+# <a name="use-azure-iot-dps-ip-connection-filters"></a>Az Azure IoT DPS IP-kapcsolatok szűrőinek használata
 
 A biztonság minden IoT-megoldás fontos aspektusa. Időnként explicit módon meg kell adnia azokat az IP-címeket, amelyekről az eszközök a biztonsági konfiguráció részeként csatlakozni tudnak. Az Azure IoT Hub Device Provisioning Service (DPS) *IP-szűrési* funkciója lehetővé teszi szabályok konfigurálását az egyes IPv4-címekről érkező forgalom elutasításához vagy fogadásához.
 
@@ -252,7 +253,7 @@ Az új IP-szűrési szabály sorrendjének mentéséhez kattintson a **Mentés**
 
 ![A DPS IP-szűrési szabályok sorrendjének módosítása](./media/iot-dps-ip-filtering/ip-filter-rule-order.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő témakörben talál további információt:
 

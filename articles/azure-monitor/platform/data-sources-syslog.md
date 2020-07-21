@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: cce74358a206c7103d537ba80c62d6561606b818
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 983091ac0d1f9fdcb33e64d2af521ec3442a040b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242032"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515512"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Rendszernapló-adatforrások az Azure Monitorban
 A syslog egy olyan eseménynaplózási protokoll, amely közös a Linux rendszerben. Az alkalmazások elküldik a helyi gépen tárolt vagy a syslog-gyűjtőnek küldött üzeneteket. A Linux rendszerhez készült Log Analytics-ügynök telepítésekor a helyi syslog démont úgy konfigurálja, hogy továbbítsa az üzeneteket az ügynöknek. Az ügynök ezután elküldi az üzenetet, hogy Azure Monitor, ahol létrejön egy megfelelő rekord.  
@@ -90,7 +90,6 @@ A létesítmény eltávolításához távolítsa el a konfigurációs fájl szak
 user.error    @127.0.0.1:25224
 ```
 
-
 #### <a name="syslog-ng"></a>syslog – ng
 A syslog-ng konfigurációs fájlja a következő helyen található: **/etc/syslog-ng/syslog-ng.conf**.  Alább látható az alapértelmezett tartalma. Ez a művelet a helyi ügynöktől érkező syslog-üzeneteket gyűjti az összes létesítmény és az összes tartomány számára.   
 
@@ -163,17 +162,16 @@ A portszámot úgy változtathatja meg, hogy két konfigurációs fájlt hoz lé
 
 * A folyékonyan használt konfigurációs fájlnak egy új fájlnak kell lennie, amely a (z) helyen található, `/etc/opt/microsoft/omsagent/conf/omsagent.d` és a **port** bejegyzésben szereplő értéket cserélje le az egyéni portszámára.
 
-    ```config
+    ```xml
     <source>
-      type syslog
-      port %SYSLOG_PORT%
-      bind 127.0.0.1
-      protocol_type udp
-      tag oms.syslog
+        type syslog
+        port %SYSLOG_PORT%
+        bind 127.0.0.1
+        protocol_type udp
+        tag oms.syslog
     </source>
     <filter oms.syslog.**>
-      type filter_syslog
-    </filter>
+        type filter_syslog
     ```
 
 * A rsyslog hozzon létre egy új konfigurációs fájlt a következő helyen:, `/etc/rsyslog.d/` és cserélje le a% SYSLOG_PORT% értéket az egyéni portszámra.  

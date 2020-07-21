@@ -15,11 +15,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996617"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86511636"
 ---
 # <a name="understand-azure-role-definitions"></a>Az Azure szerepkör-definíciók ismertetése
 
@@ -27,7 +28,7 @@ Ha meg szeretné ismerni, hogyan működik az Azure-szerepkör, vagy saját Azur
 
 ## <a name="role-definition"></a>Szerepkör-definíció
 
-A *szerepkör-definíció* engedélyek gyűjteménye. Szokás egyszerűen csak *szerepkörnek* is nevezni. A szerepkör-definíció a végrehajtható műveletek listáját tartalmazza (például olvasás, írás és törlés). Azokat a műveleteket is listázhatja, amelyek ki vannak zárva az engedélyezett műveletekről vagy az alapul szolgáló adatokkal kapcsolatos műveletekről.
+A *szerepkör-definíció* engedélyek gyűjteménye. Ezt néha csak *szerepkörnek*nevezzük. A szerepkör-definíció a végrehajtható műveletek listáját tartalmazza (például olvasás, írás és törlés). Azokat a műveleteket is listázhatja, amelyek ki vannak zárva az engedélyezett műveletekről vagy az alapul szolgáló adatokkal kapcsolatos műveletekről.
 
 Az alábbi példa a szerepkör-definíciók tulajdonságait mutatja be a Azure PowerShell használatával történő megjelenítéskor:
 
@@ -79,7 +80,7 @@ A műveletek a következő formátumú karakterláncokkal vannak megadva:
 
 A `{action}` műveleti karakterláncok része az erőforrástípus által elvégezhető műveletek típusát határozza meg. Például a következő alsztringek jelennek meg a ben `{action}` :
 
-| Művelet alkarakterlánca    | Description         |
+| Művelet alkarakterlánca    | Leírás         |
 | ------------------- | ------------------- |
 | `*` | A helyettesítő karakter a sztringnek megfelelő összes művelethez hozzáférést biztosít. |
 | `read` | Olvasási műveletek (GET) engedélyezése. |
@@ -89,7 +90,7 @@ A `{action}` műveleti karakterláncok része az erőforrástípus által elvég
 
 ### <a name="role-definition-example"></a>Példa a szerepkör-definícióra
 
-Itt látható a [közreműködő](built-in-roles.md#contributor) szerepkör definíciója Azure PowerShell és az Azure CLI-ben. Az `Actions``*` helyettesítő karakterének művelete azt jelzi, hogy a szerepkörhöz rendelt szolgáltatásnév minden műveletet elvégezhet, azaz mindent kezelhet. Ez az Azure által hozzáadott új erőforrástípusokkal együtt a jövőben meghatározott műveletekre is vonatkozik. A `NotActions` műveleteit kivonjuk az `Actions` elemből. A [Contributor](built-in-roles.md#contributor) szerepkör esetében a `NotActions` eltávolítja a szerepkör erőforrások hozzáférésének kezelésére, valamint megadására vonatkozó engedélyét.
+Itt látható a [közreműködő](built-in-roles.md#contributor) szerepkör definíciója Azure PowerShell és az Azure CLI-ben. Az `Actions``*` helyettesítő karakterének művelete azt jelzi, hogy a szerepkörhöz rendelt szolgáltatásnév minden műveletet elvégezhet, azaz mindent kezelhet. Ez az Azure által hozzáadott új erőforrástípusokkal együtt a jövőben meghatározott műveletekre is vonatkozik. A `NotActions` műveleteit kivonjuk az `Actions` elemből. A [közreműködő](built-in-roles.md#contributor) szerepkör esetében `NotActions` eltávolítja ezt a szerepkört az erőforrásokhoz való hozzáférés kezeléséhez és a Azure Blueprint-hozzárendelések kezeléséhez is.
 
 Közreműködő szerepkör a Azure PowerShellban megjelenített módon:
 
@@ -280,7 +281,7 @@ Az REST APIban lévő adatműveletek megtekintéséhez és használatához az **
 Az `Actions` engedély meghatározza azokat a felügyeleti műveleteket, amelyeket a szerepkör engedélyez. Ez a műveleti karakterláncok gyűjteménye, amelyek az Azure-erőforrás-szolgáltatók biztonságos műveleteit azonosítják. Íme néhány példa a szolgáltatásban használható felügyeleti műveletekre `Actions` .
 
 > [!div class="mx-tableFixed"]
-> | Műveleti sztring    | Description         |
+> | Műveleti sztring    | Leírás         |
 > | ------------------- | ------------------- |
 > | `*/read` | Olvasási műveletekhez való hozzáférést biztosít az összes Azure-erőforrás-szolgáltató összes erőforrás-típusához.|
 > | `Microsoft.Compute/*` | Hozzáférést biztosít minden művelethez a Microsoft. számítási erőforrás-szolgáltató összes erőforrás-típusához.|
@@ -301,7 +302,7 @@ Az `NotActions` engedély meghatározza azokat a felügyeleti műveleteket, amel
 Az `DataActions` engedély meghatározza azokat az adatműveleteket, amelyeket a szerepkör engedélyez az adott objektumon belüli adatokon való végrehajtáshoz. Ha például egy felhasználó beolvasta a blob-adathozzáférést egy Storage-fiókhoz, akkor az adott Storage-fiókban található blobokat is elolvashatja. Íme néhány példa a szolgáltatásban használható adatműveletekre `DataActions` .
 
 > [!div class="mx-tableFixed"]
-> | Műveleti sztring    | Description         |
+> | Műveleti sztring    | Leírás         |
 > | ------------------- | ------------------- |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Blobot vagy Blobok listáját adja vissza. |
 > | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Egy blob írásának eredményét adja vissza. |
@@ -334,8 +335,8 @@ A beépített szerepkörök `AssignableScopes` a gyökérszintű hatókörre () 
 
 További információ az `AssignableScopes` Egyéni szerepkörökről: [Egyéni Azure-szerepkörök](custom-roles.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Azure beépített szerepkörök](built-in-roles.md)
+* [Beépített Azure-szerepkörök](built-in-roles.md)
 * [Egyéni Azure-szerepkörök](custom-roles.md)
-* [Erőforrás-szolgáltatói műveletek Azure Resource Manager](resource-provider-operations.md)
+* [Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md)
