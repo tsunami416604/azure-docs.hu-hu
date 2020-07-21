@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/17/2020
 ms.author: victorh
-ms.openlocfilehash: 3174576201f0068191c2918b47fbd99eaa1ec182
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b984bb581df54cba79a551dc870786ed228eaa43
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232083"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536969"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -22,15 +22,7 @@ Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltat�
 
 ## <a name="what-capabilities-are-supported-in-azure-firewall"></a>Milyen képességeket támogat a Azure Firewall?
 
-* Állapot-nyilvántartó tűzfal szolgáltatásként
-* Beépített magas rendelkezésre állás a korlátlan felhő méretezhetőségével
-* FQDN-szűrés
-* FQDN-címkék
-* Hálózati forgalomra vonatkozó szűrési szabályok
-* Kimenő SNAT-támogatás
-* Bejövő DNAT-támogatás
-* Alkalmazás-és hálózati csatlakozási szabályzatok központi létrehozása, betartatása és naplózása az Azure-előfizetések és a virtuális hálózatok között
-* Teljes mértékben integrált Azure Monitor a naplózáshoz és az elemzéshez
+Azure Firewall szolgáltatásokkal kapcsolatos további tudnivalókért lásd: [Azure Firewall szolgáltatások](features.md).
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Mi a Azure Firewall általános telepítési modellje?
 

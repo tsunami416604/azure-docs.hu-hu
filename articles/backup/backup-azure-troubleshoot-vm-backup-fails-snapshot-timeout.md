@@ -5,11 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55af4bddb5a963a831c1438400a7a243cca20573
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864402"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538819"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -27,7 +28,7 @@ Lehet, hogy az Azure VM-ügynök leállt, elavult, inkonzisztens állapotban van
 - **Nyissa meg Azure Portal > vm > beállítások > Tulajdonságok ablaktáblán** > gondoskodjon arról, hogy a virtuális gép **állapota** **fusson** , és az **ügynök állapota** **kész**. Ha a virtuálisgép-ügynök leállt vagy inkonzisztens állapotban van, indítsa újra az ügynököt.<br>
   - Windows rendszerű virtuális gépek esetén a vendég ügynök újraindításához kövesse az alábbi [lépéseket](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) .<br>
   - Linux rendszerű virtuális gépek esetén a vendég ügynök újraindításához kövesse az alábbi [lépéseket](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) .
-- **Nyissa meg Azure Portal > virtuálisgép-> beállítások > bővítmények** > győződjön meg arról, hogy az összes bővítmény üzembe helyezése **sikeres** állapotban van. Ha nem, kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) a probléma megoldásához.
+- **Nyissa meg Azure Portal > virtuálisgép-> beállítások > bővítmények** > győződjön meg arról, hogy az összes bővítmény üzembe helyezése **sikeres** állapotban van. Ha nem, kövesse az alábbi [lépéseket](#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) a probléma megoldásához.
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – Nem lehetett kommunikálni a virtuálisgép-ügynökkel a pillanatfelvétel állapotáról
 
@@ -51,7 +52,7 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 **Hibakód**: UserErrorVmProvisioningStateFailed<br>
 **Hibaüzenet**: a virtuális gép sikertelen kiépítési állapotban van<br>
 
-Ez a hiba akkor fordul elő, ha az egyik bővítmény hibája a virtuális gépet kiépítés sikertelen állapotba helyezi.<br>**Nyissa meg Azure Portal > virtuálisgép-> beállításait > bővítmények >-bővítmények állapota** elemre, és ellenőrizze, hogy az összes bővítmény üzembe helyezése **sikeres** volt-e. További információ: [kiépítési állapotok](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states).
+Ez a hiba akkor fordul elő, ha az egyik bővítmény hibája a virtuális gépet kiépítés sikertelen állapotba helyezi.<br>**Nyissa meg Azure Portal > virtuálisgép-> beállításait > bővítmények >-bővítmények állapota** elemre, és ellenőrizze, hogy az összes bővítmény üzembe helyezése **sikeres** volt-e. További információ: [kiépítési állapotok](../virtual-machines/windows/states-lifecycle.md#provisioning-states).
 
 - Ha a VMSnapshot-bővítmény hibás állapotban van, kattintson a jobb gombbal a sikertelen bővítményre, és távolítsa el. Igény szerinti biztonsági mentés indítása. Ez a művelet újratelepíti a bővítményeket, majd futtatja a biztonsági mentési feladatot.  <br>
 - Ha bármely más bővítmény meghibásodott állapotban van, akkor az zavarhatja a biztonsági mentést. Győződjön meg arról, hogy a bővítmények problémái megoldódott, és próbálkozzon újra a biztonsági mentési művelettel.
@@ -79,7 +80,7 @@ A probléma megoldásához távolítsa el a virtuális gép erőforráscsoport z
 **Hibakód**: UserErrorKeyvaultPermissionsNotConfigured <br>
 **Hibaüzenet**: a biztonsági mentés nem rendelkezik megfelelő engedélyekkel a Key Vault számára a titkosított virtuális gépek biztonsági mentéséhez. <br>
 
-Ahhoz, hogy a biztonsági mentési művelet sikeres legyen a titkosított virtuális gépeken, rendelkeznie kell engedéllyel a kulcstartó eléréséhez. Az engedélyek a [Azure Portalon](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) vagy a [powershellen](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)keresztül állíthatók be.
+Ahhoz, hogy a biztonsági mentési művelet sikeres legyen a titkosított virtuális gépeken, rendelkeznie kell engedéllyel a kulcstartó eléréséhez. Az engedélyek a [Azure Portalon](./backup-azure-vms-encryption.md) vagy a [powershellen](./backup-azure-vms-automation.md#enable-protection)keresztül állíthatók be.
 
 ## <a name="extensionsnapshotfailednonetwork---snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a><a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork – Nem sikerült elkészíteni a pillanatképet, mert nincs hálózati kapcsolat a virtuális gépen
 
@@ -129,9 +130,9 @@ A legutóbbi biztonsági mentési feladata sikertelen volt, mert folyamatban van
 2. A Recovery Services-tárolók listájából válassza ki azt a tárat, amelyben a biztonsági mentés konfigurálva van.
 3. A tároló irányítópultjának menüjében kattintson a **biztonsági mentési feladatok** lehetőségre az összes biztonsági mentési feladat megjelenítéséhez.
    - Ha folyamatban van egy biztonsági mentési feladat, várja meg, amíg befejeződik, vagy szakítsa meg a biztonsági mentési feladatot.
-     - A biztonsági mentési feladat megszakításához kattintson a jobb gombbal a biztonsági mentési feladatokra, majd kattintson a **Mégse** gombra, vagy használja a [PowerShellt](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+     - A biztonsági mentési feladat megszakításához kattintson a jobb gombbal a biztonsági mentési feladatokra, majd kattintson a **Mégse** gombra, vagy használja a [PowerShellt](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
    - Ha egy másik tárolóban újrakonfigurálta a biztonsági mentést, akkor győződjön meg arról, hogy a régi tárolóban nem fut biztonsági mentési feladat. Ha létezik, szakítsa meg a biztonsági mentési feladatot.
-     - A biztonsági mentési feladat megszakításához kattintson a jobb gombbal a biztonsági mentési feladatra, majd a **Mégse** elemre, vagy használja a [PowerShellt](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
+     - A biztonsági mentési feladat megszakításához kattintson a jobb gombbal a biztonsági mentési feladatra, majd a **Mégse** elemre, vagy használja a [PowerShellt](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)
 4. Próbálkozzon újra a biztonsági mentési művelettel.
 
 Ha az ütemezett biztonsági mentési művelet tovább tart, ütközik a következő biztonsági mentési konfigurációval, tekintse át az [ajánlott eljárásokat](backup-azure-vms-introduction.md#best-practices), a [biztonsági mentés teljesítményét](backup-azure-vms-introduction.md#backup-performance)és a [visszaállítási szempontot](backup-azure-vms-introduction.md#backup-and-restore-considerations).
@@ -166,7 +167,7 @@ Lehet, hogy a virtuálisgép-ügynök sérült, vagy a szolgáltatást leállít
 6. Igény szerinti biztonsági mentés futtatása:
    - A portálon válassza a **biztonsági mentés**lehetőséget.
 
-Ellenőrizze azt is, hogy a [Microsoft .NET 4,5 telepítve van](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) -e a virtuális gépen. A .NET 4,5 szükséges ahhoz, hogy a virtuálisgép-ügynök kommunikáljon a szolgáltatással.
+Ellenőrizze azt is, hogy a [Microsoft .NET 4,5 telepítve van](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) -e a virtuális gépen. A .NET 4,5 szükséges ahhoz, hogy a virtuálisgép-ügynök kommunikáljon a szolgáltatással.
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>A virtuális gépen telepített ügynök elavult (Linux rendszerű virtuális gépek esetén)
 
@@ -174,7 +175,7 @@ Ellenőrizze azt is, hogy a [Microsoft .NET 4,5 telepítve van](https://docs.mic
 
 A Linux rendszerű virtuális gépek esetében a legtöbb ügynökkel kapcsolatos vagy kiterjesztéssel kapcsolatos hibát az elavult virtuálisgép-ügynököt érintő problémák okozzák. A probléma megoldásához kövesse az alábbi általános irányelveket:
 
-1. Kövesse a Linux rendszerű [virtuális gép ügynökének frissítésével](../virtual-machines/linux/update-agent.md)kapcsolatos utasításokat.
+1. Kövesse a Linux rendszerű [virtuális gép ügynökének frissítésével](../virtual-machines/extensions/update-linux-agent.md)kapcsolatos utasításokat.
 
    > [!NOTE]
    > Javasoljuk *, hogy csak* terjesztési tárházon keresztül frissítse az ügynököt. Nem javasoljuk, hogy közvetlenül a GitHubról töltse le az ügynököt, és frissítse azt. Ha a disztribúcióhoz tartozó legújabb ügynök nem érhető el, a telepítésével kapcsolatos útmutatásért forduljon az elosztási támogatáshoz. A legutóbbi ügynök kereséséhez nyissa meg a [Windows Azure Linux Agent](https://github.com/Azure/WALinuxAgent/releases) lapot a GitHub-tárházban.
@@ -206,7 +207,7 @@ A VM-Agent konfigurációs fájl beállításainak teljes listáját lásd:<http
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Az alkalmazás-ellenőrzési megoldás blokkolja IaaSBcdrExtension.exe
 
-Ha [applockert](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (vagy más alkalmazás-vezérlési megoldást) futtat, és a szabályok közzétevők vagy elérési utak, akkor előfordulhat, hogy letiltják a **IaaSBcdrExtension.exe** végrehajtható fájl futtatását.
+Ha [applockert](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (vagy más alkalmazás-vezérlési megoldást) futtat, és a szabályok közzétevők vagy elérési utak, akkor előfordulhat, hogy letiltják a **IaaSBcdrExtension.exe** végrehajtható fájl futtatását.
 
 #### <a name="solution"></a>Megoldás
 

@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d84010fd62d753fafd7edffab833b203657f74c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50dcd3f438645c99e0ed3cfdded7a101ee5f1852
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361938"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539856"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>A saját tároló (BYOS) beállítása a Application Insights Profiler és a Snapshot Debugger
 
@@ -21,9 +21,9 @@ Application Insights Profiler vagy Snapshot Debugger használatakor az alkalmaz�
 Ha saját tárhelyet használ, a rendszer feltölti ezeket az összetevőket egy Ön által vezérelt Storage-fiókba. Ez azt jelenti, hogy a titkosítást a REST-re vonatkozó szabályzatot, az élettartam-kezelési házirendet és a hálózati hozzáférést szabályozza. A Storage-fiókkal kapcsolatos költségekért azonban felelősnek kell lennie.
 
 > [!NOTE]
-> Ha engedélyezi a privát hivatkozásokat, a saját tárterületet is igénybe kell hoznia. További információ a Application Insightshoz tartozó privát hivatkozásokról [: dokumentáció.](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)
+> Ha engedélyezi a privát hivatkozásokat, a saját tárterületet is igénybe kell hoznia. További információ a Application Insightshoz tartozó privát hivatkozásokról [: dokumentáció.](../platform/private-link-security.md)
 >
-> Ha az ügyfél által felügyelt kulcsokat engedélyezi, a saját tárterületet is igénybe kell hoznia. A Application Insights ügyfél által felügyelt kulcsaival kapcsolatos további információkért [tekintse meg a dokumentációt.](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)
+> Ha az ügyfél által felügyelt kulcsokat engedélyezi, a saját tárterületet is igénybe kell hoznia. A Application Insights ügyfél által felügyelt kulcsaival kapcsolatos további információkért [tekintse meg a dokumentációt.](../platform/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Hogyan lesz elérhető a Storage-fiókom?
 1. A Virtual Machinesban vagy App Serviceban futó ügynökök az összetevők (profilok, Pillanatképek és szimbólumok) feltöltését is feltölthetik a fiókban található blob-tárolóba. Ehhez a folyamathoz kapcsolatba kell lépnie a Application Insights Profiler vagy Snapshot Debugger szolgáltatással, hogy SAS (közös hozzáférésű aláírási) tokent szerezzen be a Storage-fiókjában lévő új blobba.
@@ -31,7 +31,7 @@ Ha saját tárhelyet használ, a rendszer feltölti ezeket az összetevőket egy
 1. Amikor megtekinti a Profiler-nyomkövetéseket vagy a pillanatkép-hibakereső elemzését, a szolgáltatás beolvassa az elemzési eredményeket a blob Storage-ból.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Győződjön meg arról, hogy a Storage-fiókját a Application Insights erőforrással megegyező helyen hozza létre. Pl. Ha a Application Insights-erőforrás az USA 2. nyugati régiójában található, a Storage-fióknak az USA 2. nyugati régiójában is szerepelnie kell. 
+* Győződjön meg arról, hogy a Storage-fiókját a Application Insights erőforrással megegyező helyen hozza létre. Például: Ha a Application Insights-erőforrás az USA 2. nyugati régiójában található, a Storage-fióknak az USA 2. nyugati régiójában is szerepelnie kell. 
 * Adja meg a "Storage blob-adatközreműködői" szerepkört a HRE alkalmazás "diagnosztikai szolgáltatások megbízható tároló-hozzáférése" számára a Storage-fiókban a Access Control (IAM) felhasználói felületén keresztül.
 * Ha engedélyezve van a privát hivatkozás, konfigurálja a további beállítást, hogy engedélyezze a kapcsolatot a megbízható Microsoft-szolgáltatással a Virtual Network. 
 
@@ -60,7 +60,7 @@ Miután hozzáadta a szerepkört, az megjelenik a "szerepkör-hozzárendelések"
 _ ![ 1,1](media/profiler-bring-your-own-storage/figure-11.png)_. ábra, 
  _1,1_ 
 
-Ha privát hivatkozást is használ, egy további konfigurációra van szükség, amely lehetővé teszi a megbízható Microsoft-szolgáltatásokhoz való kapcsolódást a Virtual Network. Tekintse át a [Storage hálózati biztonsági dokumentációját](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services).
+Ha privát hivatkozást is használ, egy további konfigurációra van szükség, amely lehetővé teszi a megbízható Microsoft-szolgáltatásokhoz való kapcsolódást a Virtual Network. Tekintse át a [Storage hálózati biztonsági dokumentációját](../../storage/common/storage-network-security.md#trusted-microsoft-services).
 
 ### <a name="link-your-storage-account-with-your-application-insights-resource"></a>A Storage-fiók összekapcsolása a Application Insights erőforrással
 A BYOS-diagnosztika (Profiler/Debugger) konfigurálásához két lehetőség közül választhat:
@@ -73,7 +73,7 @@ A BYOS-diagnosztika (Profiler/Debugger) konfigurálásához két lehetőség kö
 
 1. Győződjön meg arról, hogy telepítette az az PowerShell 4.2.0 vagy újabb.
 
-    Azure PowerShell telepítéséhez tekintse meg a [hivatalos Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/install-az-ps).
+    Azure PowerShell telepítéséhez tekintse meg a [hivatalos Azure PowerShell dokumentációját](/powershell/azure/install-az-ps).
 
 1. Telepítse a Application Insights PowerShell-bővítményt.
     ```powershell
@@ -85,7 +85,7 @@ A BYOS-diagnosztika (Profiler/Debugger) konfigurálásához két lehetőség kö
     Connect-AzAccount -Subscription "{subscription_id}"
     ```
 
-    A bejelentkezéssel kapcsolatos további információkért tekintse meg a [kapcsolódási AzAccount dokumentációját](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+    A bejelentkezéssel kapcsolatos további információkért tekintse meg a [kapcsolódási AzAccount dokumentációját](/powershell/module/az.accounts/connect-azaccount).
 
 1. Távolítsa el a Application Insights erőforráshoz társított korábbi Storage-fiókot.
 
@@ -121,7 +121,7 @@ A BYOS-diagnosztika (Profiler/Debugger) konfigurálásához két lehetőség kö
 
 1. Győződjön meg arról, hogy telepítette az Azure CLI-t.
 
-    Az Azure CLI telepítéséhez tekintse meg a [hivatalos Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/install-azure-cli).
+    Az Azure CLI telepítéséhez tekintse meg a [hivatalos Azure CLI dokumentációját](/cli/azure/install-azure-cli).
 
 1. Telepítse a Application Insights CLI-bővítményt.
     ```powershell
@@ -152,7 +152,7 @@ A BYOS-diagnosztika (Profiler/Debugger) konfigurálásához két lehetőség kö
     ```
 
     > [!NOTE]
-    > A társított Storage-fiókok frissítéseinek a Application Insights erőforráshoz való végrehajtásához tekintse meg a [Application INSIGHTS CLI dokumentációját](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage).
+    > A társított Storage-fiókok frissítéseinek a Application Insights erőforráshoz való végrehajtásához tekintse meg a [Application INSIGHTS CLI dokumentációját](/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage).
 
 #### <a name="configure-using-azure-resource-manager-template"></a>Konfigurálás Azure Resource Manager sablon használatával
 

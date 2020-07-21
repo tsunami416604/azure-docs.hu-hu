@@ -3,11 +3,12 @@ title: Átviteli egységek automatikus méretezése – Azure Event Hubs | Micro
 description: Engedélyezze az automatikus kiosztást a névtéren az átviteli egységek automatikus skálázásához.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 382d407bde61a4ca24ab5833ea51d540c8904adc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1be564472011622b71b3066495748dfdbe6cc791
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322558"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537241"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Az Azure Event Hubs átviteli egységek automatikus méretezése
 Az Azure Event Hubs egy rugalmasan méretezhető adatfolyam-platform. Ennek megfelelően a Event Hubs használat a szolgáltatás használatának megkezdése után gyakran növekszik. Az ilyen használathoz az előre meghatározott [átviteli egységek](event-hubs-scalability.md#throughput-units) növelésére van szükség a Event Hubs méretezéséhez és a nagyobb átviteli sebességek kezeléséhez. A Event Hubs **automatikus** feltöltési funkciója automatikusan méretezi az átviteli egységek számának növelésével, hogy megfeleljen a használati igényeknek. Az átviteli egységek növelése megakadályozza a szabályozást, amelyben:
@@ -109,9 +110,8 @@ Engedélyezheti az automatikus kiépítést Azure Resource Manager sablon közpo
 A teljes sablonhoz lásd: [Event Hubs névtér létrehozása és a kikapcsolt sablon engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) a githubon.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
-* [Event Hubs áttekintése](event-hubs-what-is-event-hubs.md)
-
+* [Event Hubs áttekintése](./event-hubs-about.md)

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 6d8088f537c4148f780c5f250eda3dcd5198f67f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 1ecdbaa28cad633817497f4af2091b9e38ba7db2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683915"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538054"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>A minták az előrejelzési pontosságot javítják
 A minták úgy vannak kialakítva, hogy javítsák a pontosságot, ha több hosszúságú kimondott szöveg nagyon hasonló.  A minta lehetővé teszi, hogy nagyobb pontosságot szerezzen egy szándékhoz anélkül, hogy sok további hosszúságú kimondott szöveg lenne.
@@ -26,7 +26,7 @@ Vegyünk egy olyan emberi erőforrás-alkalmazást, amely jelentést készít a 
 
 ![Szervezeti diagram képe](./media/luis-concept-patterns/org-chart.png)
 
-|Beszédmódok|Előre jelzett szándék|Szándék pontszáma|
+|Beszédelemek|Előre jelzett szándék|Szándék pontszáma|
 |--|--|--|
 |Ki Tom alárendelt?|GetOrgChart|.30|
 |Ki a Tom alárendeltje?|GetOrgChart|.30|
@@ -41,7 +41,7 @@ A minták a következő helyzeteket oldják meg:
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>A minták nem garantálják a szándékot
 A minták előrejelzési technológiák kombinációját használják. A sablonhoz való Kimondás szándékának beállítása a mintázatban nem garantálja a szándék-előrejelzést, de ez egy erős jel.
 
-<a name="patterns-do-not-improve-entity-detection"/></a>
+<a name="patterns-do-not-improve-entity-detection"></a>
 
 ## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>A minták nem javítják a gépi tanulási entitások észlelését
 
@@ -72,7 +72,7 @@ Ismerje meg az [ajánlott eljárásokat](luis-concept-best-practices.md).
 
 A minta szintaxisának ismertetése a [minta szintaxisának](reference-pattern-syntax.md)leírásában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a mintákról:
 

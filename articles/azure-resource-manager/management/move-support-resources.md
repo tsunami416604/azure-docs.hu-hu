@@ -2,13 +2,13 @@
 title: Művelet támogatásának áthelyezése erőforrástípus szerint
 description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 785243676040fc86d42e3125684239ebe6da2061
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.date: 07/13/2020
+ms.openlocfilehash: 7b7f6f05c9cae80cffb64245a3fc8a6b0890d577
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134673"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539227"
 ---
 # <a name="move-operation-support-for-resources"></a>Erőforrás-áthelyezési műveletek támogatása
 
@@ -85,7 +85,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. DBforPostgreSQL](#microsoftdbforpostgresql)
 > - [Microsoft. DeploymentManager](#microsoftdeploymentmanager)
 > - [Microsoft. DesktopVirtualization](#microsoftdesktopvirtualization)
-> - [Microsoft. Devices](#microsoftdevices)
+> - [Microsoft.Devices](#microsoftdevices)
 > - [Microsoft. DevOps](#microsoftdevops)
 > - [Microsoft. DevSpaces](#microsoftdevspaces)
 > - [Microsoft. segédösszetevője](#microsoftdevtestlab)
@@ -146,7 +146,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. OperationalInsights](#microsoftoperationalinsights)
 > - [Microsoft. OperationsManagement](#microsoftoperationsmanagement)
 > - [Microsoft. peering](#microsoftpeering)
-> - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
+> - [Microsoft. PolicyInsights](#microsoftpolicyinsights)
 > - [Microsoft. Portal](#microsoftportal)
 > - [Microsoft. PowerBI](#microsoftpowerbi)
 > - [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated)
@@ -1395,7 +1395,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | műveletek | Nem | Nem |
 > | munkaterületek | Igen | Igen |
 
-## <a name="microsoftdevices"></a>Microsoft. Devices
+## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -2188,7 +2188,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | helyszínek/használat | Nem | Nem |
 > | helyszínek/validateresourceownership | Nem | Nem |
 > | helyszínek/virtualnetworkavailableendpointservices | Nem | Nem |
-> | natgateways | Igen | Igen |
+> | natgateways | Nem | Nem |
 > | networkexperimentprofiles | Nem | Nem |
 > | networkintentpolicies | Igen | Igen |
 > | networkinterfaces | Igen | Igen |
@@ -2322,7 +2322,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | peeringserviceproviders | Nem | Nem |
 > | peeringservices | Nem | Nem |
 
-## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
+## <a name="microsoftpolicyinsights"></a>Microsoft. PolicyInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -2615,7 +2615,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | dataconnectorscheckrequirements | Nem | Nem |
 > | szervezetek | Nem | Nem |
 > | entityqueries | Nem | Nem |
-> | események | Nem | Nem |
+> | incidensek | Nem | Nem |
 > | officeconsents | Nem | Nem |
 > | műveletek | Nem | Nem |
 > | beállítások | Nem | Nem |

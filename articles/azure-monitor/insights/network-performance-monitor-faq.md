@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: de1c6e91a6502e3a5e03dde69c5559445628d369
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: d85cd05ee6b40b6b660958330145ed0c61b1b0a3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184548"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539669"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor megoldás – gyakori kérdések
 
@@ -19,11 +19,11 @@ ms.locfileid: "86184548"
 
 Ez a cikk az Azure-beli Network Performance Monitor (NPM) kapcsolatos gyakori kérdéseket (GYIK) rögzíti
 
-A [Network Performance monitor](/azure/networking/network-monitoring-overview) egy felhőalapú [hibrid hálózati figyelési](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) megoldás, amely a hálózati infrastruktúra különböző pontjai közötti hálózati teljesítmény figyelését segíti. Emellett a [szolgáltatás-és alkalmazás-végpontok](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) hálózati kapcsolatának figyelésére és [Az Azure-ExpressRoute teljesítményének figyelésére](../../azure-monitor/insights/network-performance-monitor-expressroute.md)is lehetőséget nyújt. 
+A [Network Performance monitor](../../networking/network-monitoring-overview.md) egy felhőalapú [hibrid hálózati figyelési](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md) megoldás, amely a hálózati infrastruktúra különböző pontjai közötti hálózati teljesítmény figyelését segíti. Emellett a [szolgáltatás-és alkalmazás-végpontok](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) hálózati kapcsolatának figyelésére és [Az Azure-ExpressRoute teljesítményének figyelésére](../../azure-monitor/insights/network-performance-monitor-expressroute.md)is lehetőséget nyújt. 
 
 A Network Performance Monitor észleli a hálózati problémákat, például a forgalmi blackholing, az útválasztási hibákat, valamint azokat a problémákat, amelyeket a hagyományos hálózati figyelési módszerek nem képesek észlelni. A megoldás riasztásokat készít, és értesíti, amikor egy hálózati kapcsolat meghaladja a küszöbértéket. Emellett biztosítja a hálózat teljesítményével kapcsolatos problémák időbeni észlelését és leszűkíti a hiba forrásának helyszínét egy hálózati szegmensre vagy eszközre. 
 
-További információ a [Network Performance monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) által támogatott különböző képességekről online érhető el.
+További információ a [Network Performance monitor](../../networking/network-monitoring-overview.md) által támogatott különböző képességekről online érhető el.
 
 ## <a name="set-up-and-configure-agents"></a>Ügynökök beállítása és konfigurálása
 
@@ -149,7 +149,7 @@ NetworkMonitoring
 A NPM csak az alapul szolgáló hálózati ugrások (kapcsolók, útválasztók, kiszolgálók stb.) IP-címét és állomásnevét azonosítja a forrás és a cél IP-címei között. Emellett meghatározza az azonosított ugrások közötti késést is. Nem figyeli külön a mögöttes ugrásokat.
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>Használható NPM az Azure és az AWS közötti hálózati kapcsolat figyelésére?
-Igen. A részletekért tekintse meg az [Azure, az AWS és a helyszíni hálózatok figyelése a NPM használatával című](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/) cikket.
+Igen. A részletekért tekintse meg az [Azure, az AWS és a helyszíni hálózatok figyelése a NPM használatával című](/archive/blogs/msoms/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor) cikket.
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>A ExpressRoute sávszélesség-használat bejövő vagy kimenő?
 A sávszélesség-használat a bejövő és a kimenő sávszélesség teljes száma. Ez a bit/mp értékben van kifejezve.
@@ -188,7 +188,7 @@ A NPM a világ bármely részén lévő hálózatok közötti kapcsolat figyelé
 A NPM a világ bármely részén a szolgáltatásokhoz való kapcsolódást a [támogatott régiók](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) egyikében üzemeltetett munkaterületről tudja figyelni.
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Mely régiók támogatottak a NPM ExpressRoute-figyelője számára?
-A NPM bármely Azure-régióban található ExpressRoute-áramköröket nyomon követheti. A NPM való bevezetéshez Log Analytics munkaterületre lesz szükség, amelyet a [támogatott régiók](/azure/expressroute/how-to-npm) egyikében kell üzemeltetni.
+A NPM bármely Azure-régióban található ExpressRoute-áramköröket nyomon követheti. A NPM való bevezetéshez Log Analytics munkaterületre lesz szükség, amelyet a [támogatott régiók](../../expressroute/how-to-npm.md) egyikében kell üzemeltetni.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -231,7 +231,7 @@ Ez akkor fordulhat elő, ha a gazdagép tűzfala vagy a köztes tűzfal (hálóz
 * Annak ellenőrzéséhez, hogy a gazdagép tűzfala nem blokkolja-e a kommunikációt a szükséges porton, tekintse meg a forrás és a cél csomópontok állapotát a következő nézetből: Network Performance Monitor-> Configuration-> csomópontok. 
   Ha nem kifogástalan állapotú, tekintse meg az utasításokat, és végezze el a megfelelő lépéseket. Ha a csomópontok állapota Kifogástalan, lépjen a b lépésre. az alábbiakban.
 * Annak ellenőrzéséhez, hogy a közbenső hálózati tűzfal vagy az Azure NSG nem blokkolja-e a szükséges porton keresztüli kommunikációt, használja a külső gyártótól származó PsPing segédprogramot az alábbi utasítások használatával:
-  * a psping segédprogram letölthető [innen](https://technet.microsoft.com/sysinternals/psping.aspx) 
+  * a psping segédprogram letölthető [innen](/sysinternals/downloads/psping) 
   * Futtassa a következő parancsot a forrás csomópontról.
     * psping-n 15 \<destination node IPAddress\> :P ortnumber alapértelmezett NPM 8084 portot használ. Ha explicit módon módosította ezt a EnableRules.ps1 parancsfájl használatával, adja meg az Ön által használt egyéni portszámot). Ez a ping az Azure-gépről a helyi környezetbe
 * Ellenőrizze, hogy a pingek sikeresek-e. Ha nem, akkor azt jelzi, hogy egy közbenső hálózati tűzfal vagy az Azure NSG blokkolja a port forgalmát.
@@ -297,6 +297,6 @@ A figyeléshez használt csomópontok állapotát a következő nézetből tekin
 ### <a name="can-npm-report-latency-numbers-in-microseconds"></a>NPM a jelentés késési számait a másodpercenként?
 A NPM felkerekíti a késési számokat a felhasználói felületen és ezredmásodpercben. Ugyanazokat az adatokat a rendszer magasabb részletességgel tárolja (esetenként akár négy tizedesjegy is).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Network Performance Monitorről az [Azure-beli Network Performance monitor megoldásra](../../azure-monitor/insights/network-performance-monitor.md)való hivatkozással.

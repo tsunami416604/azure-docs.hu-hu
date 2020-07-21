@@ -8,12 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 34d2ba05b00ab92066bc7fa3ccd0b7b2aa59e15c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.openlocfilehash: 70a54f52470a715df1011199d5cbd6aa5030094d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669637"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539210"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Az Azure SQL Edge támogatott funkciói (előzetes verzió) 
 
@@ -35,15 +36,17 @@ Az Azure SQL Edge két különböző kiadással vagy szoftver csomaggal érhető
 
 ## <a name="operating-system"></a>Operációs rendszer
 
-Az Azure SQL Edge-tárolók jelenleg Ubuntu 16,04-alapúak, és így csak az Ubuntu 16,04 (ajánlott) vagy az Ubuntu 18,04-ot futtató Docker-gazdagépeken futnak. Az Azure SQL Edge más operációs rendszerű gazdagépeken is futtatható. Futtatható például a Linux vagy a Windows egyéb disztribúcióján (a Docker CE vagy a Docker EE használatával). Vegye figyelembe azonban, hogy a Microsoft nem tesztelte ezeket a konfigurációkat.
+Az Azure SQL Edge-tárolók jelenleg Ubuntu 16,04-alapúak, és csak az Ubuntu 16,04 LTS (ajánlott) vagy az Ubuntu 18,04 LTS rendszerű Docker-gazdagépeken futnak. Az Azure SQL Edge-tárolók futtathatók más operációs rendszerű gazdagépeken, például a Linux vagy a Windows rendszerű (Docker CE vagy Docker EE használatával) más disztribúciókban is futtathatók, azonban a Microsoft nem javasolja ezt, mert ez a konfiguráció nem lesz alaposan tesztelve.
 
 Az Azure SQL Edge jelenleg csak a Azure IoT Edgeon keresztül történő üzembe helyezéshez támogatott. További információ: [Azure IoT Edge támogatott rendszerek](https://docs.microsoft.com/azure/iot-edge/support).
 
 Az Azure SQL Edge Windows rendszeren való futtatásához ajánlott konfiguráció egy Ubuntu virtuális gép konfigurálása a Windows-gazdagépen, majd az Azure SQL Edge futtatása a Linux rendszerű virtuális gépen.
 
+Az Azure SQL Edge ajánlott és támogatott fájlrendszere EXT4 és XFS. Ha állandó köteteket használ az Azure SQL Edge adatbázis-tárolójának visszaállítására, akkor a mögöttes gazdagép fájlrendszerének EXT4 és XFS kell lennie.
+
 ## <a name="hardware-support"></a>Hardveres támogatás
 
-Az Azure SQL Edge használatához egy 64 bites processzor szükséges, amely az Inteltől, az AMD-tól vagy az ARM-től függően legalább egy processzorral és egy GB RAM-mal rendelkezik a gazdagépen. Míg az Azure SQL Edge indítási memória-lábnyoma 500 MB-tal közelíthető meg, a peremhálózati eszközön futó többi IoT Edge-modulhoz további memória szükséges.
+Az Azure SQL Edge használatához 64 bites processzor szükséges (x64 vagy ARM64), amely legalább egy processzorral és egy GB RAM-mal rendelkezik a gazdagépen. Míg az Azure SQL Edge indítási memória-lábnyoma 500 MB-tal közelíthető meg, a peremhálózati eszközön futó többi IoT Edge-modulhoz további memória szükséges. Az Azure SQL Edge tényleges memória-és CPU-követelményei a számítási feladatok és a feldolgozott adatmennyiség összetettsége alapján változhatnak. Ha hardvert választ a megoldásához, a Microsoft azt javasolja, hogy széleskörű teljesítménytesztek futtatásával ellenőrizze, hogy teljesülnek-e a megoldáshoz szükséges teljesítménybeli jellemzők.  
 
 ## <a name="azure-sql-edge-components"></a>Azure SQL Edge-összetevők
 
@@ -107,7 +110,7 @@ Az alábbi lista az Azure SQL Edge által jelenleg nem támogatott Linux-funkci�
 | &nbsp; | Distributed Replay. |
 | **Kezelhetőség** | SQL Server segédprogram-vezérlő pont. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure SQL Edge üzembe helyezése](deploy-portal.md)
 - [Az Azure SQL Edge konfigurálása](configure.md)

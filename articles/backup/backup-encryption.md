@@ -1,22 +1,23 @@
 ---
-title: Titkosítás Azure Backup
+title: Titkosítás az Azure Backupban
 description: Ismerje meg, hogy a Azure Backup titkosítási funkciói hogyan védik a biztonsági mentési adatait, és megfelelnek a vállalat biztonsági igényeinek.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: aafb9868dfb6a63ec9b6a3ae654b88b202a1a145
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: references_regions
+ms.openlocfilehash: 099e736bfb321f0f92bd3a57f9c24e88293b42bb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171822"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538751"
 ---
-# <a name="encryption-in-azure-backup"></a>Titkosítás Azure Backup
+# <a name="encryption-in-azure-backup"></a>Titkosítás az Azure Backupban
 
 Az Azure Storage encryption használatával a rendszer automatikusan titkosítja a biztonsági másolatok adatait a felhőben, ami segít a biztonsági és megfelelőségi kötelezettségek teljesítésében. Az inaktív adatok titkosítása 256 bites AES-titkosítással történik, amely az egyik legerősebb blokk titkosítási algoritmus, és az FIPS 140-2-kompatibilis.
 
 Amellett, hogy a titkosítás a nyugalmi állapotban van, a rendszer az összes átviteli biztonsági mentési adatát HTTPS-kapcsolaton keresztül továbbítja. Mindig az Azure gerinc hálózatán marad.
 
-További információ: az [Azure Storage titkosítása inaktív adatokhoz](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). A titkosítással kapcsolatban esetlegesen felmerülő kérdések megválaszolásához tekintse meg a [Azure Backup gyakori kérdések](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) című témakört.
+További információ: az [Azure Storage titkosítása inaktív adatokhoz](../storage/common/storage-service-encryption.md). A titkosítással kapcsolatban esetlegesen felmerülő kérdések megválaszolásához tekintse meg a [Azure Backup gyakori kérdések](./backup-azure-backup-faq.md#encryption) című témakört.
 
 ## <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Biztonsági másolatok titkosítása a platform által felügyelt kulcsokkal
 
@@ -30,7 +31,7 @@ További információk arról, hogyan titkosíthatja a biztonsági mentési adat
 
 ## <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Az ügyfél által felügyelt kulcsok használatával titkosított felügyelt lemezes virtuális gépek biztonsági mentése
 
-A Azure Backup lehetővé teszi az Azure-beli virtuális gépek biztonsági mentését is, amelyek a kulcsot használják a [Storage szolgáltatás titkosításához](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). A lemezek titkosításához használt kulcsot a Azure Key Vault tárolja és felügyeli. Storage Service Encryption (SSE) az ügyfél által felügyelt kulcsok használata különbözik a Azure Disk Encryptiontól, mivel az ADE a BitLocker (for Windows) és a DM-Crypt (for Linux) használatával végzi a vendég titkosítást, az SSE titkosítja az adatait a Storage szolgáltatásban, lehetővé téve a virtuális gépekhez tartozó operációs rendszerek vagy rendszerképek használatát. További részletekért tekintse meg a [felügyelt lemezek titkosítása az ügyfél által felügyelt kulcsokkal](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) című témakört.
+A Azure Backup lehetővé teszi az Azure-beli virtuális gépek biztonsági mentését is, amelyek a kulcsot használják a [Storage szolgáltatás titkosításához](../storage/common/storage-service-encryption.md). A lemezek titkosításához használt kulcsot a Azure Key Vault tárolja és felügyeli. Storage Service Encryption (SSE) az ügyfél által felügyelt kulcsok használata különbözik a Azure Disk Encryptiontól, mivel az ADE a BitLocker (for Windows) és a DM-Crypt (for Linux) használatával végzi a vendég titkosítást, az SSE titkosítja az adatait a Storage szolgáltatásban, lehetővé téve a virtuális gépekhez tartozó operációs rendszerek vagy rendszerképek használatát. További részletekért tekintse meg a [felügyelt lemezek titkosítása az ügyfél által felügyelt kulcsokkal](../virtual-machines/windows/disk-encryption.md#customer-managed-keys) című témakört.
 
 ## <a name="infrastructure-level-encryption-for-backup-data"></a>Infrastruktúra-szintű titkosítás a biztonsági mentési adatvédelemhez
 
@@ -41,8 +42,8 @@ A Recovery Services-tárolóban az ügyfél által felügyelt kulcsok használat
 
 ## <a name="backup-of-vms-encrypted-using-ade"></a>Az ADE használatával titkosított virtuális gépek biztonsági mentése
 
-A Azure Backup segítségével biztonsági mentést készíthet az Azure-beli virtuális gépekről, amelyek az operációs rendszer vagy a Azure Disk Encryption használatával titkosított adatlemezekkel rendelkeznek. Az ADE a BitLockert használja a Windows rendszerű virtuális gépekhez és a Linux rendszerű virtuális gépekhez készült DM-Crypt titkosítást. Részletekért lásd: [a titkosított virtuális gépek biztonsági mentése és visszaállítása Azure Backupokkal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+A Azure Backup segítségével biztonsági mentést készíthet az Azure-beli virtuális gépekről, amelyek az operációs rendszer vagy a Azure Disk Encryption használatával titkosított adatlemezekkel rendelkeznek. Az ADE a BitLockert használja a Windows rendszerű virtuális gépekhez és a Linux rendszerű virtuális gépekhez készült DM-Crypt titkosítást. Részletekért lásd: [a titkosított virtuális gépek biztonsági mentése és visszaállítása Azure Backupokkal](./backup-azure-vms-encryption.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása](backup-azure-vms-encryption.md)

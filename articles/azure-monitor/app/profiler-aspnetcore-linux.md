@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b91abe282c25b161db72616d7123d7a2bf5dbc9f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6ef67addba2bcc96cfb51f9f217d7d43e729bdf4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111065"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539907"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil ASP.NET Core Azure Linux-webalkalmazások és a Application Insights Profiler
 
@@ -106,7 +106,7 @@ Az alábbi utasítások minden Windows-, Linux-és Mac-alapú fejlesztői körny
 
     ![A git-tárház beállítása](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-További üzembe helyezési lehetőségekért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/app-service/containers/choose-deployment-type).
+További üzembe helyezési lehetőségekért tekintse meg [ezt a cikket](../../app-service/containers/choose-deployment-type.md).
 
 ## <a name="deploy-your-project"></a>A projekt üzembe helyezése
 

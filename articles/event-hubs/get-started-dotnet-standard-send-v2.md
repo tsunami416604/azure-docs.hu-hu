@@ -3,12 +3,12 @@ title: Események küldése vagy fogadása az Azure Event Hubs .NET használatá
 description: Ez a cikk egy olyan .NET Core-alkalmazás létrehozását ismerteti, amely az Azure-Event Hubs a legújabb Azure. Messaging. EventHubs csomag használatával küld/fogad eseményeket.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8752064b59030c04e409e13baf7bf58836ce7ac7
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 9e7f40b0312798667b63c6cf5d02772307dbc2b9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320155"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537139"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-azuremessagingeventhubs"></a>Események küldése és fogadása az Azure Event Hubs-.NET-ről (Azure. Messaging. EventHubs) 
 Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről az **Azure. Messaging. EventHubs** .net-kódtár használatával. 
@@ -24,7 +24,7 @@ Ha még nem ismeri az Azure Event Hubsét, a rövid útmutató elvégzése előt
 A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 
 - **Microsoft Azure előfizetés**. Az Azure-szolgáltatások, például az Azure Event Hubs használatához előfizetésre van szükség.  Ha még nem rendelkezik Azure-fiókkal, regisztrálhat az [ingyenes próbaverzióra](https://azure.microsoft.com/free/) , vagy a [fiók létrehozásakor](https://azure.microsoft.com)használhatja az MSDN-előfizetői előnyeit.
-- **Microsoft Visual Studio 2019**. Az Azure Event Hubs ügyféloldali kódtár a C# 8,0-ben bevezetett új funkciók használatát teszi lehetővé.  Továbbra is használhatja a könyvtárat a korábbi C# nyelvi verziókkal, de az új szintaxis nem lesz elérhető. A teljes szintaxis használatához javasolt a [.NET Core SDK](https://dotnet.microsoft.com/download) 3,0-as vagy újabb [verzióra](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#override-a-default) való fordítás, és a nyelv a következőre van beállítva: `latest` . Ha a Visual studiót használja, a Visual Studio 2019 előtti verziói nem kompatibilisek a C# 8,0-projektek létrehozásához szükséges eszközökkel. A Visual Studio 2019, beleértve az ingyenes Community Edition verziót, [itt](https://visualstudio.microsoft.com/vs/)tölthető le.
+- **Microsoft Visual Studio 2019**. Az Azure Event Hubs ügyféloldali kódtár a C# 8,0-ben bevezetett új funkciók használatát teszi lehetővé.  Továbbra is használhatja a könyvtárat a korábbi C# nyelvi verziókkal, de az új szintaxis nem lesz elérhető. A teljes szintaxis használatához javasolt a [.NET Core SDK](https://dotnet.microsoft.com/download) 3,0-as vagy újabb [verzióra](/dotnet/csharp/language-reference/configure-language-version#override-a-default) való fordítás, és a nyelv a következőre van beállítva: `latest` . Ha a Visual studiót használja, a Visual Studio 2019 előtti verziói nem kompatibilisek a C# 8,0-projektek létrehozásához szükséges eszközökkel. A Visual Studio 2019, beleértve az ingyenes Community Edition verziót, [itt](https://visualstudio.microsoft.com/vs/)tölthető le.
 - **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként a [Azure Portal](https://portal.azure.com) használatával hozzon létre egy Event Hubs típusú névteret, és szerezze be azokat a felügyeleti hitelesítő adatokat, amelyekre az alkalmazásnak szüksége van az Event hub-vel való kommunikációhoz. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást. Ezután szerezze be a **Event Hubs névtérhez tartozó kapcsolatok karakterláncot** a cikk utasításait követve: a [kapcsolatok karakterláncának beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A rövid útmutató későbbi részében használja a kapcsolatok karakterláncát.
 
 ## <a name="send-events"></a>Események küldése 
@@ -32,7 +32,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan .NET Core Console-a
 
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
-1. Indítsa el a Visual Studio 2019 alkalmazást. 
+1. Indítsa el a Visual Studio 2019-et. 
 1. Válassza **az új projekt létrehozása**lehetőséget. 
 1. A **create a New Project (új projekt létrehozása** ) párbeszédpanelen hajtsa végre a következő lépéseket: Ha nem látja ezt a párbeszédpanelt, válassza a **fájl** lehetőséget a menüben, majd válassza az **új**, majd a **projekt**elemet. 
     1. Válassza a **C#** lehetőséget a programozási nyelvhez.
@@ -109,12 +109,12 @@ Ez a szakasz bemutatja, hogyan írhat olyan .NET Core Console-alkalmazást, amel
 
 
 > [!NOTE]
-> Ha Azure Stack hub-on fut, akkor a platform a Storage blob SDK egy másik verzióját is támogatja, mint az Azure-ban általában elérhető. Ha például [Azure stack Hub 2002-es verzióján](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)fut, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben a szakasz következő lépésein kívül kódot is hozzá kell adnia a Storage szolgáltatás API 2017-11-09-es verziójának célzásához. Az adott tárolási API-verzió célzásának példáját a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)tekintheti meg. Az Azure Stack hub által támogatott Azure Storage szolgáltatás verziójával kapcsolatos további információkért tekintse meg [Azure stack hub Storage: különbségek és megfontolások](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)című témakört.
+> Ha Azure Stack hub-on fut, akkor a platform a Storage blob SDK egy másik verzióját is támogatja, mint az Azure-ban általában elérhető. Ha például [Azure stack Hub 2002-es verzióján](/azure-stack/user/event-hubs-overview)fut, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben a szakasz következő lépésein kívül kódot is hozzá kell adnia a Storage szolgáltatás API 2017-11-09-es verziójának célzásához. Az adott tárolási API-verzió célzásának példáját a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)tekintheti meg. Az Azure Stack hub által támogatott Azure Storage szolgáltatás verziójával kapcsolatos további információkért tekintse meg [Azure stack hub Storage: különbségek és megfontolások](/azure-stack/user/azure-stack-acs-differences)című témakört.
 
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure Storage és blob-tároló létrehozása
 Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-tárolóként. Egy Azure Storage-fiók létrehozásához kövesse az alábbi lépéseket. 
 
-1. [Azure Storage-fiók létrehozása](/azure/storage/common/storage-account-create?tabs=azure-portal)
+1. [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [Blobtároló létrehozása](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [A Storage-fiókhoz tartozó kapcsolódási karakterlánc lekérése](../storage/common/storage-configure-connection-string.md)
 
@@ -221,7 +221,7 @@ Ebben a rövid útmutatóban az Azure Storage-t használja ellenőrzőpont-táro
     Ezek az események a küldő program futtatásával korábban a következő három eseményt küldik el az Event hub számára. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a mintákat a GitHubon. 
 
 - [Event Hubs minták a GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)

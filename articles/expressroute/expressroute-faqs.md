@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: c9b109fe12b709649adaa05d62b3d1255605986e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8309c98e9ae45650f65fcd54676cc7655934039d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987301"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537122"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
 
@@ -77,7 +78,7 @@ A ExpressRoute [három útválasztási tartományt](expressroute-circuit-peering
 
 * Virtuális hálózatok, beleértve az összes virtuális gépet és a Cloud Servicest
 
-### <a name="microsoft-peering"></a>Microsoft társviszony-létesítés
+### <a name="microsoft-peering"></a>Microsoftos társhálózat-létesítés
 
 Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcsolathoz, az Azure-ban az áramkörön használt [nyilvános IP-címtartományok](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) is elérhetők. Az Azure Microsoft-partnerek hozzáférést biztosítanak a jelenleg az Azure-ban üzemeltetett szolgáltatásokhoz (az áramköri SKU-tól függően földrajzi korlátozásokkal). Egy adott szolgáltatás rendelkezésre állásának ellenőrzéséhez ellenőrizheti a szolgáltatás dokumentációját, és ellenőrizheti, hogy van-e fenntartott tartomány közzétéve az adott szolgáltatás számára. Ezután keresse meg a cél szolgáltatás IP-tartományait, és hasonlítsa össze az [Azure IP-tartományok és szolgáltatások címkék – nyilvános felhő XML-fájljában](https://www.microsoft.com/download/details.aspx?id=56519)felsorolt tartományokkal. Azt is megteheti, hogy megnyit egy támogatási jegyet a kérdéses szolgáltatáshoz a tisztázás érdekében.
 
@@ -94,7 +95,7 @@ Ha a ExpressRoute-áramkör engedélyezve van az Azure Microsoft-partneri kapcso
 
 * Tartalomkézbesítési hálózat (CDN)
 * Azure Front Door
-* [Windows virtuális asztal](https://azure.microsoft.com/services/virtual-desktop/)
+* [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * Multi-Factor Authentication kiszolgáló (örökölt)
 * Traffic Manager
 
@@ -110,7 +111,7 @@ A Microsoft ellenőrzi, hogy a megadott "meghirdetett nyilvános előtagok" és 
 
 Ha az "érvényesítés szükséges" üzenet jelenik meg, Gyűjtse össze azokat a dokumentumokat, amelyek megjelenítik a nyilvános előtagokat a szervezethez az útválasztási beállításjegyzékben szereplő előtagok tulajdonosának listáján, majd a dokumentumok manuális ellenőrzéshez való beküldéséhez az alább látható módon nyisson meg egy támogatási jegyet.
 
-![](./media/expressroute-faqs/ticket-portal-msftpeering-prefix-validation.png)
+![Képernyőfelvétel: új támogatási kérés (támogatási jegy) "a nyilvános előtagok tulajdonjogának igazolása".](./media/expressroute-faqs/ticket-portal-msftpeering-prefix-validation.png)
 
 ### <a name="is-dynamics-365-supported-on-expressroute"></a>Támogatott-e a Dynamics 365 a ExpressRoute-on?
 
@@ -175,7 +176,7 @@ További részletek [itt](https://docs.microsoft.com/azure/expressroute/expressr
 
 Ha a szolgáltató két Ethernet virtuális áramkört tud létrehozni a fizikai kapcsolaton keresztül, akkor csak egy fizikai kapcsolatra van szükség. A fizikai kapcsolatok (például optikai Fiber) egy 1. rétegbeli (L1) eszközön megszakadnak (lásd a képet). A két Ethernet virtuális áramkör különböző VLAN-azonosítókkal van megjelölve, egyet az elsődleges áramkörhöz, egyet pedig a másodlagoshoz. Ezek a VLAN-azonosítók a külső 802.1 Q Ethernet-fejlécben találhatók. A belső 802.1 Q Ethernet-fejléc (nem látható) egy adott ExpressRoute- [útválasztási tartományra](expressroute-circuit-peerings.md)van leképezve.
 
-![](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
+![Diagram, amely kiemeli az 1. réteg (L1) elsődleges és másodlagos virtuális áramköröket, amelyek az ügyfél és a ExpressRoute közötti váltások közötti fizikai kapcsolatot alkotják.](./media/expressroute-faqs/expressroute-p2p-ref-arch.png)
 
 ### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>Ki tudom terjeszteni az egyik VLAN-t az Azure-ra az ExpressRoute használatával?
 

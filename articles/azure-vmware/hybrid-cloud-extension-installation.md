@@ -2,19 +2,19 @@
 title: Hibrid felhőalapú bővítmény (HCX) telepítése
 description: A VMware Hybrid Cloud Extension (HCX) megoldás beállítása az Azure VMware-megoldás (AVS) privát felhőhöz
 ms.topic: how-to
-ms.date: 05/19/2020
-ms.openlocfilehash: 3037d12ebbb036098cfc00a42521513bc2df6170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367546"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539159"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Az Azure VMware-megoldás HCX telepítése
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a VMWare Hybrid Cloud Extension (HCX) megoldást az Azure VMWare-megoldás (AVS) privát felhőbe. A HCX lehetővé teszi a VMware-alapú számítási feladatok felhőbe és más csatlakoztatott webhelyekre történő áttelepítését a különböző beépített HCX támogatott áttelepítési típusokon keresztül.
 
-A HCX Advanced, az alapértelmezett telepítés legfeljebb három külső helyet támogat. Ha több mint három hely szükséges, az ügyfeleknek lehetővé kell tenniük a HCX Enterprise bővítmény támogatását. A HCX Enterprise telepítése további díjakat biztosít az ügyfelek számára az általánosan elérhetővé tétel (GA) után, de [további funkciókat](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)is kínál.
+A HCX Advanced, az alapértelmezett telepítés legfeljebb három vCenter támogat. Ha több mint három szükséges, az ügyfeleknek lehetővé kell tenniük a HCX Enterprise bővítmény támogatását. A HCX Enterprise telepítése további díjakat biztosít az ügyfelek számára az általánosan elérhetővé tétel (GA) után, de [további funkciókat](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)is kínál.
 
 
 Először alaposan [áttekintheti](#before-you-begin)a [szoftver verziójának követelményeit](#software-version-requirements)és [előfeltételeit](#prerequisites) . 
@@ -80,7 +80,7 @@ Az infrastruktúra-összetevőknek a szükséges minimális verziót kell futtat
 
     ![Sablon részleteinek áttekintése](./media/hybrid-cloud-extension-installation/configure-template.png)
 
-1. Tekintse át a licencfeltételeket, és ha elfogadja, válassza a szükséges tárterület és hálózat lehetőséget. Ezután válassza a **tovább**lehetőséget.
+1. Tekintse át a licencfeltételeket, és ha elfogadja, válassza a szükséges tárterület és hálózat lehetőséget. Ezután kattintson a **Tovább** gombra.
 
 1. A **sablon testreszabása**mezőben adja meg az összes szükséges információt. 
 
@@ -273,6 +273,6 @@ A készülék állapotának vizsgálatához válassza az **összekötő**  >  **
       
 ![Berendezés állapota](./media/hybrid-cloud-extension-installation/appliance-status.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a készülék összekötő **alagútjának állapota** felfelé és zöldre van **állítva** , készen áll az AVS virtuális gépek áttelepítésére és védelemre a HCX használatával. Tekintse meg a VMware [HCX dokumentációját](https://docs.vmware.com/en/VMware-HCX/index.html) és a VMware [HCX átVirtual Machines telepítését](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g) a VMware technikai dokumentációjában.

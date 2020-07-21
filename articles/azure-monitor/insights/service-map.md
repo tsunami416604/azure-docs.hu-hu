@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 637db3a0749b5a0738b0ccc5136d26e435a03c7b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bfd25c2572e91c2984f2845e08941614fff65570
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203135"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539771"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldás használata az Azure-ban
 
@@ -41,7 +41,7 @@ Service Map a Log Analytics munkaterületen található Azure Portal, és a bal 
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Használati esetek: az informatikai folyamatok függőségének elkészítése
 
-### <a name="discovery"></a>Felderítés (Discovery)
+### <a name="discovery"></a>Felderítés
 
 A Service Map a kiszolgálókon, folyamatokon és harmadik féltől származó szolgáltatások függőségeinek általános hivatkozási térképét hozza létre. Feltérképezi és leképezi az összes TCP-függőséget, azonosíthatja a meglepetésekkel létesített kapcsolatokat, a külső gyártótól származó rendszereket, és a hálózat hagyományos sötét területeire (például Active Directory) való függőségeket. Service Map felderíti a felügyelt rendszerek által megkísérelt hálózati kapcsolatokat, így azonosíthatja a lehetséges kiszolgálók helytelen konfigurálását, a szolgáltatás leállását és a hálózati problémákat.
 
@@ -241,7 +241,7 @@ A Service Map a naplóbeli kereséssel integrálva megjeleníti a kijelölt kisz
 
 ## <a name="service-desk-integration"></a>Az ügyfélszolgálat integrációja
 
-Ha mindkét megoldás engedélyezve van és konfigurálva van a Log Analytics munkaterületen, Service Map az IT-szolgáltatásmenedzsmenti csatoló integrációja automatikusan megtörténik. A Service Map integrációja a "Service Desk" címkével van ellátva. További információ: [központilag felügyelheti a ITSM munkaelemeit it-szolgáltatásmenedzsmenti csatoló használatával](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
+Ha mindkét megoldás engedélyezve van és konfigurálva van a Log Analytics munkaterületen, Service Map az IT-szolgáltatásmenedzsmenti csatoló integrációja automatikusan megtörténik. A Service Map integrációja a "Service Desk" címkével van ellátva. További információ: [központilag felügyelheti a ITSM munkaelemeit it-szolgáltatásmenedzsmenti csatoló használatával](../platform/itsmc-overview.md).
 
 A **számítógép-szolgáltatási** tábla ablaktábla a kiválasztott időtartományban lévő összes IT Service Management-eseményt listázza. A kiszolgáló egy ikont jelenít meg, ha vannak aktuális elemek, és a Machine Service Desk ablaktábla felsorolja őket.
 
@@ -270,7 +270,7 @@ A **gép teljesítménye** ablaktábla a kiválasztott kiszolgálóhoz tartozó 
 
 ![Gépi teljesítmény panel](media/service-map/machine-performance.png)
 
-A teljesítményadatok megjelenítéséhez szükség lehet [a megfelelő log Analytics teljesítményszámlálók engedélyezésére](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Az engedélyezni kívánt számlálók:
+A teljesítményadatok megjelenítéséhez szükség lehet [a megfelelő log Analytics teljesítményszámlálók engedélyezésére](../platform/data-sources-performance-counters.md).  Az engedélyezni kívánt számlálók:
 
 Windows:
 - Processzor (*) \\ processzoridő (%)
@@ -345,7 +345,7 @@ A csoportosítás hatásának kiszámításához a csoportosított fizikai kapcs
 | `LinksFailed` |Azon fizikai hálózati kapcsolatok száma, amelyek sikertelenek voltak a jelentéskészítési idő ablakában. Ez az információ jelenleg csak a kimenő kapcsolatok esetében érhető el. |
 | `LinksLive` |A jelentéskészítési idő ablakának végén megnyitott fizikai hálózati kapcsolatok száma|
 
-#### <a name="metrics"></a>Metrikák
+#### <a name="metrics"></a>Mérőszámok
 
 A kapcsolatok számának mérőszámai mellett az adott logikai kapcsolatban vagy hálózati porton küldött és fogadott adatok mennyiségére vonatkozó információk is szerepelni fog a rekord alábbi tulajdonságaiban:
 
@@ -540,7 +540,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="rest-api"></a>REST API
 
-Service Map összes kiszolgáló-, folyamat-és függőségi értéke a [Service Map REST API](https://docs.microsoft.com/rest/api/servicemap/)keresztül érhető el.
+Service Map összes kiszolgáló-, folyamat-és függőségi értéke a [Service Map REST API](/rest/api/servicemap/)keresztül érhető el.
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnosztikai és használati adatok
 
@@ -548,7 +548,7 @@ A Microsoft a Service Map szolgáltatás használatával automatikusan gyűjti a
 
 További információ az adatok gyűjtéséről és használatáról: a [Microsoft Online Services adatvédelmi nyilatkozata](https://go.microsoft.com/fwlink/?LinkId=512132).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Log Analytics [naplóbeli keresésekről](../../azure-monitor/log-query/log-query-overview.md) Service Map által összegyűjtött adatok lekéréséhez.
 
@@ -571,7 +571,7 @@ A futásidejű kódtár telepítői a %LOCALAPPDATA%\temp mappában hozzák lét
 
 A következő táblázat felsorolja a kódok számát és a javasolt megoldásokat.
 
-| Kód | Leírás | Feloldás |
+| Code | Leírás | Feloldás |
 |:--|:--|:--|
 | 0x17 | A kódtártelepítőhöz olyan Windows-frissítés szükséges, amely még nincs telepítve. | Tekintse meg a legutóbbi kódtártelepítői naplót.<br><br>Ha egy hivatkozást egy olyan `Windows8.1-KB2999226-x64.msu` vonal követ, amely `Error 0x80240017: Failed to execute MSU package,` nem rendelkezik a KB2999226 telepítéséhez szükséges előfeltételekkel. Kövesse az [Universal C-futtatókörnyezet a Windowsban](https://support.microsoft.com/kb/2999226) című cikk előfeltételekről szóló szakaszában foglalt utasításokat. Lehetséges, hogy az előfeltételek telepítéséhez futtatnia kell a Windows Update-et, és többször újra kell indítania a számítógépet.<br><br>Futtassa újra a Microsoft függőségi ügynök telepítőjét. |
 

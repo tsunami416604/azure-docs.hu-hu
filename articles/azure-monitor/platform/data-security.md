@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 540e824f301c402e1f65f6186b26ad1672e21d37
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333361"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539346"
 ---
 # <a name="log-analytics-data-security"></a>Adatbiztonság Log Analytics
-Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](../../security/fundamentals/trust-center.md)információit.  
+Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trust-center?rtc=1)információit.  
 
 Ez a cikk bemutatja, hogyan gyűjti és dolgozza fel a Log Analytics az adatokat, és hogyan gondoskodik a védelmükről. Az ügynökökkel csatlakozhat a webszolgáltatáshoz, System Center Operations Manager használhatja az operatív adatok gyűjtéséhez, illetve az adatok Azure diagnosticsból való lekéréséhez Log Analytics által használható adatokat. 
 
@@ -42,9 +42,9 @@ Nem ajánlott explicit módon beállítani az ügynököt úgy, hogy csak a TLS 
 |Platform/nyelv | Támogatás | További információ |
 | --- | --- | --- |
 |Linux | A Linux-disztribúciók általában az [OpenSSL](https://www.openssl.org) -t használják a TLS 1,2 támogatásához.  | Ellenőrizze az OpenSSL- [changelog](https://www.openssl.org/news/changelog.html) , hogy az OpenSSL verziója támogatott-e.|
-| Windows 8,0 – 10 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak megerősítéséhez, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)használja.  |
-| Windows Server 2012 – 2016 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) használja-e |
-| Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) lapját.  |
+| Windows 8,0 – 10 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak megerősítéséhez, hogy továbbra is az [alapértelmezett beállításokat](/windows-server/security/tls/tls-registry-settings)használja.  |
+| Windows Server 2012 – 2016 | Támogatott, és alapértelmezés szerint engedélyezve van. | Annak ellenőrzése, hogy továbbra is az [alapértelmezett beállításokat](/windows-server/security/tls/tls-registry-settings) használja-e |
+| Windows 7 SP1 és Windows Server 2008 R2 SP1 | Támogatott, de alapértelmezés szerint nincs engedélyezve. | Az engedélyezésével kapcsolatos részletekért tekintse meg a [Transport Layer Security (TLS) beállításjegyzék-beállítások](/windows-server/security/tls/tls-registry-settings) lapját.  |
 
 ## <a name="data-segregation"></a>Az adatok elkülönítése
 Miután a Log Analytics szolgáltatás betöltötte az adatait, az adatai logikailag elkülönítve maradnak az egyes összetevőkön a szolgáltatáson belül. A rendszer minden adatmezőt felcímkéz a munkaterületen. Ez a címkézés megmarad az adatok teljes életciklusa alatt, és a szolgáltatás minden rétegében érvényes. Az adatait a kiválasztott régióban lévő Storage-fürt egy dedikált adatbázisában tárolja a rendszer.
@@ -171,8 +171,7 @@ Az adatbázisban tárolt összegyűjtött adatok megőrzési ideje a kiválaszto
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. a Log Analytics használata az adateléréshez
 Log Analytics munkaterület eléréséhez jelentkezzen be a Azure Portal a korábban beállított szervezeti fiókkal vagy Microsoft-fiók. A portál és a Log Analytics szolgáltatás közötti összes forgalmat biztonságos HTTPS-csatornán keresztül küldik el. A portál használatakor a rendszer egy munkamenet-azonosítót hoz létre a felhasználói ügyfélen (webböngészőn), és a rendszer a munkamenet megszakítása előtt helyi gyorsítótárban tárolja az adataikat. Ha leállt, a gyorsítótár törlődik. A személyazonosításra alkalmas adatokat nem tartalmazó ügyféloldali cookie-k nem törlődnek automatikusan. A munkamenet-cookie-k HTTPOnly vannak megjelölve, és biztonságosak. Az előre meghatározott üresjárati időszak után a Azure Portal munkamenet megszakad.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan gyűjthet adatokat az Azure-beli virtuális gépek Log Analyticsával az [Azure VM](../../azure-monitor/learn/quick-collect-azurevm.md)gyors üzembe helyezését követően.  
 
 *  Ha a környezetben található fizikai vagy virtuális Windows-vagy Linux-számítógépekről szeretne adatokat gyűjteni, tekintse meg a Linux rendszerű [számítógépek](../../azure-monitor/learn/quick-collect-linux-computer.md) és a [Windows rendszerű számítógépek](../../azure-monitor/learn/quick-collect-windows-computer.md) gyors útmutatója című témakört.
-

@@ -4,11 +4,12 @@ description: Az Azure-beli riasztások áttekintése. Riasztások, klasszikus ri
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: e02c23623062f5cb3e4c597b0bb257b30aa9f44a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c4432300319c02cd7b1e31dec566f6e65ea9580
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81769770"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539567"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztásainak áttekintése 
 
@@ -67,7 +68,7 @@ Korábban Azure Monitor a metrikák, a Application Insights, a Log Analytics és
 
 | **Forrás figyelése** | **Jel típusa**  | **Leírás** |
 |-------------|----------------|-------------|
-| Szolgáltatás állapota | Tevékenységnapló  | Nem támogatott. Lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
+| Szolgáltatás állapota | Tevékenységnapló  | Nem támogatott. Lásd: [műveletnapló riasztások létrehozása a szolgáltatási értesítéseken](../../service-health/alerts-activity-log-service-notifications-portal.md).  |
 | Application Insights | Webes rendelkezésre állási tesztek | Nem támogatott. Tekintse meg a [webes tesztek riasztásait](../../azure-monitor/app/monitor-web-app-availability.md). Minden olyan webhely számára elérhető, amely az adatküldés Application Insights. Értesítést kap, ha a webhely rendelkezésre állása vagy a válaszadás a vártnál kisebb. |
 
 ## <a name="manage-alerts"></a>Riasztások kezelése
@@ -102,7 +103,7 @@ A klasszikus riasztások nem jelennek meg vagy követhetik nyomon. Módosíthatj
 
 A nézet szűréséhez válassza az értékek lehetőséget a lap tetején található legördülő menükben.
 
-| Oszlop | Description |
+| Oszlop | Leírás |
 |:---|:---|
 | Előfizetés | Válassza ki azokat az Azure-előfizetéseket, amelyeken meg szeretné tekinteni a riasztásokat. Igény szerint kiválaszthatja az összes előfizetést. Csak a kiválasztott előfizetésekben elérhető riasztások szerepelnek a nézetben. |
 | Erőforráscsoport | Válasszon ki egy erőforráscsoportot. Csak a kijelölt erőforráscsoport céljaival rendelkező riasztások szerepelnek a nézetben. |
@@ -110,7 +111,7 @@ A nézet szűréséhez válassza az értékek lehetőséget a lap tetején talá
 
 Válassza ki az alábbi értékeket a riasztások lap tetején egy másik oldal megnyitásához:
 
-| Érték | Description |
+| Érték | Leírás |
 |:---|:---|
 | Összes riasztás | A kiválasztott feltételeknek megfelelő riasztások teljes száma. Válassza ezt az értéket, ha a minden riasztás nézetet szűrő nélkül szeretné megnyitni. |
 | Intelligens csoportok | Azon intelligens csoportok teljes száma, amelyek a kiválasztott feltételeknek megfelelő riasztásokból lettek létrehozva. Válassza ezt az értéket az intelligens csoportok listájának az összes riasztás nézetben való megnyitásához.
@@ -148,7 +149,7 @@ A **minden riasztás** lap megjelenítéséhez válassza az összes **riasztás*
 
 A nézet szűréséhez válassza a következő értékeket az oldal tetején található legördülő menükben:
 
-| Oszlop | Description |
+| Oszlop | Leírás |
 |:---|:---|
 | Előfizetés | Válassza ki azokat az Azure-előfizetéseket, amelyeken meg szeretné tekinteni a riasztásokat. Igény szerint kiválaszthatja az összes előfizetést. Csak a kiválasztott előfizetésekben elérhető riasztások szerepelnek a nézetben. |
 | Erőforráscsoport | Válasszon ki egy erőforráscsoportot. Csak a kijelölt erőforráscsoport céljaival rendelkező riasztások szerepelnek a nézetben. |
@@ -169,15 +170,15 @@ Ha kiválaszt egy riasztást, ez a lap a riasztás részleteit jeleníti meg, é
 
 A riasztás részletei lapon a következő témakörök találhatók:
 
-| Section | Description |
+| Section | Leírás |
 |:---|:---|
-| Összefoglalás | Megjeleníti a riasztás tulajdonságait és egyéb fontos információit. |
+| Összegzés | Megjeleníti a riasztás tulajdonságait és egyéb fontos információit. |
 | Előzmények | Felsorolja a riasztás által végrehajtott műveleteket és a riasztáson végrehajtott módosításokat. Jelenleg csak az állapot változásaira korlátozódik. |
 | Diagnosztika | Az intelligens csoportra vonatkozó információk, amelyekben a riasztás szerepel. A *riasztások* száma az intelligens csoportba tartozó riasztások számára utal. Az adott intelligens csoportban lévő, az elmúlt 30 napban létrehozott riasztásokat is tartalmazza, a riasztások listája lapon lévő időszűrőtől függetlenül. Válasszon ki egy riasztást a részletes adatok megtekintéséhez. |
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) a riasztási példányokhoz
 
-A riasztási példányok felhasználása és kezelése megköveteli, hogy a felhasználó rendelkezzen a [figyelési közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) vagy [figyelő olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)beépített RBAC szerepköreivel. Ezek a szerepkörök bármely Azure Resource Manager hatókörön támogatottak, az előfizetési szinttől kezdve a részletes hozzárendelésekhez az erőforrás szintjén. Ha például egy felhasználó csak a figyelés közreműködői hozzáférését használja a virtuális géphez `ContosoVM1` , a felhasználó csak a által generált riasztásokat használhatja és kezelheti `ContosoVM1` .
+A riasztási példányok felhasználása és kezelése megköveteli, hogy a felhasználó rendelkezzen a [figyelési közreműködő](../../role-based-access-control/built-in-roles.md#monitoring-contributor) vagy [figyelő olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader)beépített RBAC szerepköreivel. Ezek a szerepkörök bármely Azure Resource Manager hatókörön támogatottak, az előfizetési szinttől kezdve a részletes hozzárendelésekhez az erőforrás szintjén. Ha például egy felhasználó csak a figyelés közreműködői hozzáférését használja a virtuális géphez `ContosoVM1` , a felhasználó csak a által generált riasztásokat használhatja és kezelheti `ContosoVM1` .
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Riasztási példányok programozott kezelése
 
@@ -204,16 +205,10 @@ A riasztásokat lekérdezheti az [alapvető](alerts-common-schema-definitions.md
 
 Az [Alert Management REST API](https://aka.ms/alert-management-api) segítségével további információkat kaphat az egyes riasztásokról, például a [riasztási környezet](alerts-common-schema-definitions.md#alert-context) mezőiről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ az intelligens csoportokról](https://aka.ms/smart-groups)
 - [A műveleti csoportok ismertetése](../../azure-monitor/platform/action-groups.md)
 - [Riasztási példányok kezelése az Azure-ban](https://aka.ms/managing-alert-instances)
 - [Intelligens csoportok kezelése](https://aka.ms/managing-smart-groups)
 - [További információ az Azure-riasztások díjszabásáról](https://azure.microsoft.com/pricing/details/monitor/)
-
-
-
-
-
-

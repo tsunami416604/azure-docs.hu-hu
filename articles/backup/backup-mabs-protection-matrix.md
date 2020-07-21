@@ -3,11 +3,12 @@ title: MABS (Azure Backup Server) v3 UR1 védelmi mátrix
 description: Ez a cikk egy támogatási mátrixot tartalmaz, amely felsorolja az összes olyan munkaterhelést, adattípust és telepítést, amelyet Azure Backup Server véd.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: f950c7be28a4ff0dd0caa12d1327c2a0e2ac4fc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfcb8fbf9f793cfbe11d2c25b3d2caa7018d0fd4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84677321"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538734"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) v3 UR1 védelmi mátrix
 
@@ -33,7 +34,7 @@ A következő részben a MABS védelmi támogatási mátrixát részletezjük:
 
 ## <a name="applications-backup"></a>Alkalmazások biztonsági mentése
 
-| **Munkaterhelés**               | **Verzió**                                                  | **Azure Backup Server telepítés**                       | **Támogatott Azure Backup Server** | **Védelem és helyreállítás**                                  |
+| **Számítási feladat**               | **Verzió**                                                  | **Azure Backup Server telepítés**                       | **Támogatott Azure Backup Server** | **Védelem és helyreállítás**                                  |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------ |
 | Ügyfélszámítógépek (64 bites) | Windows 10                                                  | Fizikai kiszolgáló  <br><br>    Hyper-V virtuális gép   <br><br>   VMware virtuális gép | V3 UR1                            | Kötet, megosztás, mappa, fájlok, deduplikált kötetek   <br><br>   A védett köteteknek NTFS fájlrendszerűeknek kell lenniük. A FAT és FAT32 nem támogatottak.  <br><br>    A köteteknek legalább 1 GB méretűnek kell lenniük. A Azure Backup Server a Kötet árnyékmásolata szolgáltatás (VSS) segítségével készíti el az adatok pillanatképét, és a pillanatkép csak akkor működik, ha a kötet legalább 1 GB. |
 | Kiszolgálók (64 bites)          | Windows Server 2019, 2016, 2012 R2, 2012                    | Azure virtuális gép (ha a számítási feladat Azure-beli virtuális gépként fut)  <br><br>    Fizikai kiszolgáló  <br><br>    Hyper-V virtuális gép <br><br>     VMware virtuális gép  <br><br>    Azure Stack | V3 UR1                            | Kötet, megosztás, mappa, fájl, deduplikált kötetek (NTFS és ReFS)  <br><br>   Rendszerállapot és operációs rendszer nélküli (nem támogatott, ha a számítási feladat Azure-beli virtuális gépként fut) |
@@ -44,16 +45,16 @@ A következő részben a MABS védelmi támogatási mátrixát részletezjük:
 
 ## <a name="vm-backup"></a>Virtuális gép biztonsági mentése
 
-| **Munkaterhelés**                                                 | **Verzió**                                             | **Azure Backup Server telepítés**                      | **Támogatott Azure Backup Server** | **Védelem és helyreállítás**                                 |
+| **Számítási feladat**                                                 | **Verzió**                                             | **Azure Backup Server telepítés**                      | **Támogatott Azure Backup Server** | **Védelem és helyreállítás**                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
 | Hyper-V gazdagép – MABS védelmi ügynök a Hyper-V-gazdagépen, a fürtön vagy a virtuális gépen | Windows Server 2019, 2016, 2012 R2, 2012               | Fizikai kiszolgáló  <br><br>    Hyper-V virtuális gép <br><br>    VMware virtuális gép | V3 UR1                             | Védelem: Hyper-V számítógépek, fürt megosztott kötetei (CSV)  <br><br>    Helyreállítás: virtuális gép, a fájlok és mappák elemszintű helyreállítása csak Windows, kötetek és virtuális merevlemezek esetén érhető el |
 | VMware virtuális gépek                                                  | VMware Server 5,5, 6,0 vagy 6,5, 6,7 (licencelt verzió) | Hyper-V virtuális gép  <br><br>   VMware virtuális gép         | V3 UR1                             | Védelem: VMware virtuális gépek a fürt megosztott kötetein (CSV), az NFS-en és a TÁROLÓHÁLÓZATI tárolóban   <br><br>     Helyreállítás: virtuális gép, a fájlok és mappák elemszintű helyreállítása csak Windows, kötetek és virtuális merevlemezek esetén érhető el <br><br>    A VMware Vapp nem támogatottak. |
 
 ## <a name="linux"></a>Linux
 
-| **Munkaterhelés** | **Verzió**                               | **Azure Backup Server telepítés**                      | **Támogatott Azure Backup Server** | **Védelem és helyreállítás**                                 |
+| **Számítási feladat** | **Verzió**                               | **Azure Backup Server telepítés**                      | **Támogatott Azure Backup Server** | **Védelem és helyreállítás**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | Hyper-V vagy VMware vendégként futó Linux | Fizikai kiszolgáló, helyszíni Hyper-V virtuális gép, Windows rendszerű virtuális gép VMWare-ben | V3 UR1                             | A Hyper-V-nek Windows Server 2012 R2 vagy Windows Server 2016 rendszeren kell futnia. Védelem: teljes virtuális gép   <br><br>   Helyreállítás: az egész virtuális gép   <br><br>    Csak a fájlkonzisztens pillanatképek támogatottak.    <br><br>   A támogatott Linux-disztribúciók és-verziók teljes listájáért tekintse meg a [Linux az Azure által támogatott disztribúciókkal foglalkozó](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)cikket. |
+| Linux        | Hyper-V vagy VMware vendégként futó Linux | Fizikai kiszolgáló, helyszíni Hyper-V virtuális gép, Windows rendszerű virtuális gép VMWare-ben | V3 UR1                             | A Hyper-V-nek Windows Server 2012 R2 vagy Windows Server 2016 rendszeren kell futnia. Védelem: teljes virtuális gép   <br><br>   Helyreállítás: az egész virtuális gép   <br><br>    Csak a fájlkonzisztens pillanatképek támogatottak.    <br><br>   A támogatott Linux-disztribúciók és-verziók teljes listájáért tekintse meg a [Linux az Azure által támogatott disztribúciókkal foglalkozó](../virtual-machines/linux/endorsed-distros.md)cikket. |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute-támogatás
 
@@ -73,7 +74,7 @@ A Microsoft-partnerekkel válassza ki a következő szolgáltatásokat/régióka
 * Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)
 * Azure Storage (az Recovery Services-tároló helyének megfelelően)
 
-További információkért tekintse meg a [ExpressRoute útválasztási követelményeit](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+További információkért tekintse meg a [ExpressRoute útválasztási követelményeit](../expressroute/expressroute-routing.md).
 
 >[!NOTE]
 >Az új áramkörök esetében a nyilvános társítás elavult.

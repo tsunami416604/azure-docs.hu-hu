@@ -12,13 +12,14 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 2cea9cd1439bce0c55d701539471c463acb8f7e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f0d60d1f76523beca6567517ef44d50b910b221
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84020132"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537615"
 ---
-# <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
+# <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Egyéni tevékenységek használata egy Azure Data Factory 1-es verziójú adatcsatornán
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](data-factory-use-custom-activities.md)
 > * [2-es verzió (aktuális verzió)](../transform-data-using-dotnet-custom-activity.md)
@@ -52,7 +53,7 @@ Az oktatóanyaghoz hozzon létre egy Azure Batch-fiókot virtuális gépek kész
 
 1. Hozzon létre egy **Azure batch fiókot** a [Azure Portal](https://portal.azure.com)használatával. Útmutatásért tekintse meg a [Azure batch-fiók létrehozása és kezelése][batch-create-account] című cikket.
 2. Jegyezze fel a Azure Batch fiók nevét, a fiók kulcsát, az URI-t és a készlet nevét. Szükség van rájuk egy Azure Batch társított szolgáltatás létrehozásához.
-    1. Azure Batch fiók kezdőlapján a következő formátumban jelenik meg egy **URL-cím** : `https://myaccount.westus.batch.azure.com` . Ebben a példában a **MyAccount** a Azure batch fiók neve. A társított szolgáltatás definíciójában használt URI az URL-cím a fiók neve nélkül. Példa: `https://<region>.batch.azure.com`.
+    1. Azure Batch fiók kezdőlapján a következő formátumban jelenik meg egy **URL-cím** : `https://myaccount.westus.batch.azure.com` . Ebben a példában a **MyAccount** a Azure batch fiók neve. A társított szolgáltatás definíciójában használt URI az URL-cím a fiók neve nélkül. Például: `https://<region>.batch.azure.com`.
     2. A bal oldali menüben kattintson a **kulcsok** elemre, és másolja ki az **elsődleges hozzáférési kulcsot**.
     3. Meglévő készlet használatához kattintson a menü **készletek** elemére, és jegyezze fel a készlet **azonosítóját** . Ha nem rendelkezik meglévő készlettel, lépjen a következő lépésre.
 2. Hozzon létre egy **Azure batch készletet**.
@@ -98,7 +99,7 @@ A metódus egy olyan szótárt ad vissza, amely az egyéni tevékenységek a jö
 ### <a name="procedure"></a>Eljárás
 1. Hozzon létre egy **.net Class Library** -projektet.
    <ol type="a">
-     <li>Indítsa el a Visual Studiót.</li>
+     <li>Indítsa el a Visual studiót.</li>
      <li>Kattintson a <b>File</b> (Fájl) menüre, mutasson a <b>New</b> (Új) elemre, és kattintson a <b>Project</b> (Projekt) lehetőségre.</li>
      <li>Bontsa ki a <b>Sablonok</b> lehetőséget, és válassza a <b>Visual C#</b> lehetőséget. Ebben az útmutatóban a C# nyelvet használja, de bármilyen .NET-nyelv használatával fejlesztheti az egyéni tevékenységeket.</li>
      <li>A jobb oldalon válassza ki az <b>osztály könyvtára</b> elemet a projekttípus listából. A Visual Studióban válassza az <b>osztály könyvtára (.NET-keretrendszer) lehetőséget.</b> </li>

@@ -3,12 +3,12 @@ title: MABS & System Center DPM támogatási mátrix
 description: Ez a cikk Azure Backup támogatást összegzi, ha Microsoft Azure Backup Servert (MABS) vagy System Center DPM használ a helyszíni és az Azure-beli virtuális gépek erőforrásainak biztonsági mentésére.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d3b9dbf0440809578fca113ee6674b79a5d7fb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 476f1523eaf042576d38f5d2db283b525721389c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193275"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538666"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Támogatási mátrix a Microsoft Azure Backup Server vagy System Center DPM való biztonsági mentéshez
 
@@ -16,7 +16,7 @@ A [Azure Backup szolgáltatás](backup-overview.md) segítségével biztonsági 
 
 ## <a name="about-dpmmabs"></a>Tudnivalók a DPM/MABS
 
-A [System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview?view=sc-dpm-1807) egy vállalati megoldás, amely a vállalati gépek és az adatmennyiségek biztonsági mentésének és helyreállításának konfigurálását, megkönnyítését és felügyeletét végzi. A [System Center](https://www.microsoft.com/cloud-platform/system-center-pricing) programcsomag részét képezi.
+A [System Center DPM](/system-center/dpm/dpm-overview) egy vállalati megoldás, amely a vállalati gépek és az adatmennyiségek biztonsági mentésének és helyreállításának konfigurálását, megkönnyítését és felügyeletét végzi. A [System Center](https://www.microsoft.com/system-center/pricing) programcsomag részét képezi.
 
 A MABS egy olyan kiszolgálói termék, amely a rajtuk futó helyszíni fizikai kiszolgálók, virtuális gépek és alkalmazások biztonsági mentésére használható.
 
@@ -71,7 +71,7 @@ Azure Backup a következő operációs rendszerek bármelyikét futtató DPM-vag
 **Forgatókönyv** | **DPM/MABS**
 --- | ---
 **MABS egy Azure-beli virtuális gépen** |  Windows 2016 Datacenter.<br/><br/> Windows 2019 Datacenter.<br/><br/> Javasoljuk, hogy indítson el egy rendszerképet a piactéren.<br/><br/> Minimális Standard_A4_v2 négy maggal és 8 GB RAM-mal.
-**DPM egy Azure-beli virtuális gépen** | System Center 2012 R2, 3. frissítéssel vagy újabb verzióval.<br/><br/> Windows operációs rendszer a [System Center által igényelt](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server)módon.<br/><br/> Javasoljuk, hogy indítson el egy rendszerképet a piactéren.<br/><br/> Minimális Standard_A4_v2 négy maggal és 8 GB RAM-mal.
+**DPM egy Azure-beli virtuális gépen** | System Center 2012 R2, 3. frissítéssel vagy újabb verzióval.<br/><br/> Windows operációs rendszer a [System Center által igényelt](/system-center/dpm/prepare-environment-for-dpm#dpm-server)módon.<br/><br/> Javasoljuk, hogy indítson el egy rendszerképet a piactéren.<br/><br/> Minimális Standard_A4_v2 négy maggal és 8 GB RAM-mal.
 **Helyszíni MABS** |  MABS v3 és újabb verziók: Windows Server 2016 vagy Windows Server 2019
 **Helyszíni DPM** | Fizikai kiszolgáló vagy Hyper-V virtuális gép: System Center 2012 SP1 vagy újabb.<br/><br/> VMware virtuális gép: System Center 2012 R2, 5. frissítéssel vagy újabb verzióval.
 
@@ -82,10 +82,10 @@ Azure Backup a következő operációs rendszerek bármelyikét futtató DPM-vag
 
 **Probléma** | **Részletek**
 --- | ---
-**Telepítés** | Telepítse a DPM/MABS egyetlen célra szolgáló gépre.<br/><br/> Ne telepítse a DPM/MABS-t egy tartományvezérlőre, egy olyan gépre, amelyen telepítve van az Alkalmazáskiszolgáló szerepkör, egy Microsoft Exchange Servert vagy System Center Operations Managert futtató gépen vagy egy fürtcsomóponton.<br/><br/> [Tekintse át az összes DPM rendszerkövetelményt](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).
-**Domain** | A DPM/MABS tartományhoz kell csatlakoznia. Először telepítse, majd csatlakoztassa a DPM/MABS-t egy tartományhoz. A DPM/MABS új tartományba való áthelyezése az üzembe helyezést követően nem támogatott.
-**Storage** | A modern Backup Storage (MBS) a DPM 2016/MABS v2 és újabb verziók esetében támogatott. A MABS v1 esetében nem érhető el.
-**MABS-frissítés** | Közvetlenül telepítheti a MABS v3 verziót, vagy frissíthet a MABS v3 verzióra a MABS v2-ről. [További információk](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
+**Telepítés** | Telepítse a DPM/MABS egyetlen célra szolgáló gépre.<br/><br/> Ne telepítse a DPM/MABS-t egy tartományvezérlőre, egy olyan gépre, amelyen telepítve van az Alkalmazáskiszolgáló szerepkör, egy Microsoft Exchange Servert vagy System Center Operations Managert futtató gépen vagy egy fürtcsomóponton.<br/><br/> [Tekintse át az összes DPM rendszerkövetelményt](/system-center/dpm/prepare-environment-for-dpm#dpm-server).
+**Tartomány** | A DPM/MABS tartományhoz kell csatlakoznia. Először telepítse, majd csatlakoztassa a DPM/MABS-t egy tartományhoz. A DPM/MABS új tartományba való áthelyezése az üzembe helyezést követően nem támogatott.
+**Storage-fiók** | A modern Backup Storage (MBS) a DPM 2016/MABS v2 és újabb verziók esetében támogatott. A MABS v1 esetében nem érhető el.
+**MABS-frissítés** | Közvetlenül telepítheti a MABS v3 verziót, vagy frissíthet a MABS v3 verzióra a MABS v2-ről. [További információ](backup-azure-microsoft-azure-backup.md#upgrade-mabs).
 **MABS áthelyezése** | Ha a MABS egy új kiszolgálóra helyezi át, a tárterület megőrzése mellett az MBS használata támogatott.<br/><br/> A kiszolgálónak ugyanazzal a névvel kell rendelkeznie, mint az eredetinek. A név nem módosítható, ha ugyanazt a tárolót szeretné megőrizni, és ugyanazt a MABS-adatbázist használja az adathelyreállítási pontok tárolásához.<br/><br/> Szüksége lesz egy biztonsági másolatra a MABS-adatbázisról, mert vissza kell állítania.
 
 ## <a name="mabs-support-on-azure-stack"></a>MABS-támogatás Azure Stack
@@ -137,7 +137,7 @@ A Microsoft-partnerekkel válassza ki a következő szolgáltatásokat/régióka
 - Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)
 - Azure Storage (az Recovery Services-tároló helyének megfelelően)
 
-További részletekért tekintse meg a [ExpressRoute útválasztási követelményeit](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+További információkért tekintse meg a [ExpressRoute útválasztási követelményeit](../expressroute/expressroute-routing.md).
 
 >[!NOTE]
 >Az új áramkörök esetében a nyilvános társítás elavult.
@@ -153,11 +153,18 @@ Csatlakozva | Lejárt/kiépítés | Nincs biztonsági másolat a lemezre vagy az
 Több mint 15 napja nincs kapcsolat | Aktív | Nincs biztonsági másolat a lemezre vagy az Azure-ra.<br/><br/> A lemezről vagy az Azure-ból is visszaállítható.
 Több mint 15 napja nincs kapcsolat | Lejárt/kiépítés | Nincs biztonsági másolat a lemezre vagy az Azure-ra.<br/><br/> Ha az előfizetés lejárt, a lemezről vagy az Azure-ból állíthatja vissza.<br/><br/> Ha az előfizetés le van szerelve, a lemezről vagy az Azure-ból nem lehet visszaállítani. Az Azure helyreállítási pontok törlődnek.
 
+## <a name="domain-and-domain-trusts-support"></a>Tartományi és tartományi megbízhatósági kapcsolatok támogatása
+
+|Követelmény |Részletek |
+|---------|---------|
+|Tartomány    | A DPM/MABS-kiszolgálónak Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 tartományban kell lennie.        |
+|Tartományi megbízhatóság   |  A DPM/MABS támogatja az erdők közötti adatvédelmet, ha a különálló erdők között erdőszintű kétirányú megbízhatósági kapcsolatot hoz létre.   <BR><BR>   A DPM/MABS képes a kiszolgálók és munkaállomások különböző tartományokban való ellátására, egy olyan erdőben, amely kétirányú megbízhatósági kapcsolattal rendelkezik a DPM/MABS-kiszolgáló tartományával. A munkacsoportokban vagy nem megbízható tartományokban található számítógépek elleni védelemért lásd: [munkacsoportokban és nem megbízható tartományokban lévő munkaterhelések biztonsági mentése és visszaállítása.](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)  |
+
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS-tároló támogatása
 
 A rendszer a DPM/MABS biztonsági mentést készít a helyi lemezes tárolóban.
 
-**Storage** | **Részletek**
+**Storage-fiók** | **Részletek**
 --- | ---
 **MBS** | A modern Backup Storage (MBS) a DPM 2016/MABS v2 és újabb verziók esetében támogatott. A MABS v1 esetében nem érhető el.
 **MABS-tároló az Azure-beli virtuális gépen** | A rendszer az DPM/MABS virtuális géphez csatolt Azure-lemezeken tárolja az adattárolást, amelyeket a DPM/MABS kezel. A DPM-vagy MABS-tárolóhoz használható lemezek számát a virtuális gép mérete korlátozza.<br/><br/> A2 méretű VM: 4 lemez; A3 méretű VM: 8 lemez; A4-es virtuális gép: 16 lemez, az egyes lemezek maximális mérete 1 TB. Ez határozza meg az összes rendelkezésre álló biztonsági mentési tár készletét.<br/><br/> Azon adatok mennyisége, amelyekről biztonsági másolatot készíthet, a csatolt lemezek számától és méretétől függ.
@@ -174,18 +181,18 @@ A DPM 2016/MABS v2 (Windows Server 2016 rendszeren futó) és újabb verziók es
 
 ## <a name="supported-backups-to-mabs"></a>A MABS által támogatott biztonsági másolatok
 
-A Azure Backup Server védelemmel ellátott különböző kiszolgálókról és munkaterhelésekről a [Azure Backup Server védelmi mátrixban](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix#protection-support-matrix)találhat további információt.
+A Azure Backup Server védelemmel ellátott különböző kiszolgálókról és munkaterhelésekről a [Azure Backup Server védelmi mátrixban](./backup-mabs-protection-matrix.md#protection-support-matrix)találhat további információt.
 
 ## <a name="supported-backups-to-dpm"></a>A DPM által támogatott biztonsági másolatok
 
-A Data Protection Managerrel védhető különböző kiszolgálókkal és munkaterhelésekkel kapcsolatos információkért tekintse meg a [DPM biztonsági mentését](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)ismertető cikket.
+A Data Protection Managerrel védhető különböző kiszolgálókkal és munkaterhelésekkel kapcsolatos információkért tekintse meg a [DPM biztonsági mentését](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)ismertető cikket.
 
 - A DPM/MABS által készített fürtözött munkaterheléseknek ugyanabban a tartományban kell lenniük, mint a DPM/MABS, vagy egy alárendelt/megbízható tartományban.
 - Az NTLM/tanúsítványalapú hitelesítés használatával biztonsági mentést készíthet a nem megbízható tartományokban vagy munkacsoportokban található adatvédelemről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További](backup-architecture.md#architecture-back-up-to-dpmmabs) információ a MABS architektúráról.
 - [Tekintse át](backup-support-matrix-mars-agent.md) a Mars-ügynök által támogatott tudnivalókat.
 - [Állítson be](backup-azure-microsoft-azure-backup.md) egy MABS-kiszolgálót.
-- [DPM beállítása](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-180).
+- [DPM beállítása](/system-center/dpm/install-dpm).

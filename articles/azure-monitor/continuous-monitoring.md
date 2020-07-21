@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 6df27dde997bd34e86b1bb340817648bfe68f2c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb216f164e02dfa4dbc4ad11774569b2e8ea970f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797595"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539686"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Folyamatos figyelés a Azure Monitor
 
@@ -37,7 +38,7 @@ Az alkalmazások csak a mögöttes infrastruktúrájuk megbízhatóak. Ha a figy
 - A [platform metrikáit, a tevékenységek naplóit és a diagnosztikai naplókat](platform/data-sources.md) a konfiguráció nélkül, a legtöbb Azure-erőforrásból automatikusan beolvashatja.
 - A [Azure monitor for VMsrel](insights/vminsights-overview.md)rendelkező virtuális gépek mélyebb monitorozásának engedélyezése.
 -  A [Azure monitor for containers esetében](insights/container-insights-overview.md)lehetővé teszi az AK-fürtök mélyebb figyelését.
-- [Figyelési megoldások](insights/solutions-inventory.md) hozzáadása a környezet különböző alkalmazásaihoz és szolgáltatásaihoz.
+- [Figyelési megoldások](./monitor-reference.md) hozzáadása a környezet különböző alkalmazásaihoz és szolgáltatásaihoz.
 
 
 Az [infrastruktúra mint kód](/azure/devops/learn/what-is-infrastructure-as-code) az infrastruktúra kezelése egy leíró modellben, amely ugyanazt a verziószámozást használja, mint a DevOps Teams a forráskódot. Megbízhatóságot és méretezhetőséget biztosít a környezet számára, és lehetővé teszi az alkalmazások kezeléséhez használt hasonló folyamatok kihasználása.
@@ -82,7 +83,7 @@ Annak biztosítása, hogy a fejlesztési és üzemeltetési műveletek azonos te
 - Az [Impact Analysis](../azure-monitor/app/usage-impact.md) segítségével rangsorolhatja, hogy mely területek összpontosítanak a fontos KPI-k elérésére.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor](overview.md)különbségi összetevőiről.
 - [Vegyen fel folyamatos figyelést](../azure-monitor/app/continuous-monitoring.md) a kiadási folyamatba.

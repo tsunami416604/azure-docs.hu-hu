@@ -3,12 +3,12 @@ title: Exportálás az Azure Application Insights Stream Analytics használatáv
 description: Stream Analytics a Application Insightsból exportált adatok folyamatos átalakítását, szűrését és átirányítását is elvégezheti.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 71b19f0b49dec8f7176a53eeb656519c65f9c1d0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224519"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539958"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Stream Analytics használata az exportált adatok feldolgozásához Application Insights
 A [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ideális eszköz a [Application Insightsból exportált](export-telemetry.md)adatok feldolgozásához. A Stream Analytics különböző forrásokból származó adatok lekérésére használható. Átalakíthatja és szűrheti az adatmennyiséget, majd átirányíthatja azt különböző mosdók számára.
@@ -138,7 +138,7 @@ GROUP BY TumblingWindow(minute, 1), flat.ArrayValue.name
 
 * exportálás – a bemenet a stream bemenetéhez megadott alias.
 * PBI – a kimeneti alias definiálva
-* [Külső alkalmazás-GetElements](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) használunk, mert az esemény neve beágyazott JSON-tömbben van. Ezután a válassza ki az esemény nevét, valamint az adott névvel rendelkező példányok számát az adott időszakban. A [Group By](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) záradék egy perc alatt csoportosítja az elemeket.
+* [Külső alkalmazás-GetElements](/stream-analytics-query/apply-azure-stream-analytics) használunk, mert az esemény neve beágyazott JSON-tömbben van. Ezután a válassza ki az esemény nevét, valamint az adott névvel rendelkező példányok számát az adott időszakban. A [Group By](/stream-analytics-query/group-by-azure-stream-analytics) záradék egy perc alatt csoportosítja az elemeket.
 
 ### <a name="query-to-display-metric-values"></a>Metrikai értékek megjelenítésére szolgáló lekérdezés
 
@@ -208,8 +208,7 @@ A Noam ben Zeev azt mutatja be, hogyan lehet az exportált adatfeldolgozást Str
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Folyamatos exportálás](export-telemetry.md)
 * [Részletes adatmodell-referenciák a tulajdonságok típusaihoz és értékeihez.](export-data-model.md)
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
-

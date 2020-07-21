@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9f44cbd9b735839640702970a65de239b36b3f30
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a8f5aaa7b2a054aa31198779414387cebf0f0fbd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209546"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537037"
 ---
 # <a name="about-upgrading-expressroute-circuit-bandwidth"></a>Tudnivalók a ExpressRoute-áramkör sávszélességének frissítéséről
 
@@ -34,14 +34,14 @@ Ha a kapacitás elérhető, a következő módszerekkel frissítheti az áramkö
 
 Ha a ExpressRoute-partner nem rendelkezik elegendő kapacitással, létre kell hoznia egy új áramkört, amely a kívánt sávszélességre van konfigurálva. A kapcsolat fenntartása érdekében ne törölje a régi áramkört addig, amíg az újonnan létrehozott áramkör nincs kiépítve, a társítás be van állítva, és (a magánjellegű kapcsolattal kapcsolatban) a ExpressRoute virtuális hálózati átjáróhoz tartozó kapcsolati objektum lett kiépítve.
 
-Ha a ExpressRoute-partnernek nincs elegendő rendelkezésre álló kapacitása, további kapacitást kell kérnie a kívánt társítási helyen. Az új kapacitás kiépítése után a [frissítési áramköri sávszélesség](#upgrade) szakaszban található cikkekben ismertetett lépéseket követve létrehozhat egy új áramkört, konfigurálhatja a kapcsolatot, és törölheti a régi áramkört:
+Ha a ExpressRoute-partnernek nincs elegendő rendelkezésre álló kapacitása, további kapacitást kell kérnie a kívánt társítási helyen. Az új kapacitás kiépítése után a [frissítési áramköri sávszélesség](#upgrade) szakaszban található cikkekben ismertetett lépéseket követve létrehozhat egy új áramkört, konfigurálhatja a kapcsolatot, és törölheti a régi áramkört.
 
 
 ### <a name="insufficient-expressroute-direct-bandwidth"></a><a name="bandwidth"></a>Nem elegendő ExpressRoute közvetlen sávszélesség
 
 Ha a közvetlen ExpressRoute nem rendelkezik elegendő kapacitással, törölheti a ExpressRoute közvetlen erőforráshoz társított áramköröket, amelyekre már nincs szükség, vagy létrehozhat egy új ExpressRoute Direct-erőforrást is. A ExpressRoute Direct erőforrás kezelésével kapcsolatos útmutatásért tekintse meg a [ExpressRoute Direct konfigurálását ismertető témakört](how-to-expressroute-direct-portal.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kapcsolatcsoport létrehozása és módosítása](expressroute-howto-circuit-portal-resource-manager.md)
 * [Társhálózati konfiguráció létrehozása és módosítása](expressroute-howto-routing-portal-resource-manager.md)

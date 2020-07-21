@@ -6,11 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 664d6eb377185613a1a5670daf6747b482c79d9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d63d932756495584b2870c597d3332077f8e86c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671613"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539839"
 ---
 # <a name="profile-live-azure-service-fabric-applications-with-application-insights"></a>A profil élő Azure Service Fabric alkalmazásai Application Insights
 
@@ -25,9 +26,9 @@ A Application Insights Profiler a Azure Diagnostics részét képezi. A Azure Di
 
 A környezet beállításához végezze el a következő műveleteket:
 
-1. A Profiler a .NET-keretrendszer és a .net Core használatát is támogatja. Ha .NET-keretrendszert használ, győződjön meg róla, hogy a [.NET-keretrendszer 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) -es vagy újabb verzióját használja. Elegendő meggyőződni arról, hogy a telepített operációs rendszer `Windows Server 2012 R2` vagy újabb. A Profiler támogatja a .NET Core 2,1-es és újabb alkalmazásokat.
+1. A Profiler a .NET-keretrendszer és a .net Core használatát is támogatja. Ha .NET-keretrendszert használ, győződjön meg róla, hogy a [.NET-keretrendszer 4.6.1](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) -es vagy újabb verzióját használja. Elegendő meggyőződni arról, hogy a telepített operációs rendszer `Windows Server 2012 R2` vagy újabb. A Profiler támogatja a .NET Core 2,1-es és újabb alkalmazásokat.
 
-1. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) bővítményt a telepítési sablon fájljában.
+1. Keresse meg a [Azure Diagnostics](../platform/diagnostics-extension-overview.md) bővítményt a telepítési sablon fájljában.
 
 1. Adja hozzá a következő `SinksConfig` szakaszt a gyermek elemeként `WadCfg` . Cserélje le a `ApplicationInsightsProfiler` tulajdonság értékét a saját Application Insights kialakítási kulcsára:  
 
@@ -42,7 +43,7 @@ A környezet beállításához végezze el a következő műveleteket:
       }
       ```
 
-      További információ a diagnosztikai bővítmény telepítési sablonhoz való hozzáadásáról: a [figyelés és a diagnosztika használata Windows rendszerű virtuális gépekkel és Azure Resource Manager sablonokkal](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+      További információ a diagnosztikai bővítmény telepítési sablonhoz való hozzáadásáról: a [figyelés és a diagnosztika használata Windows rendszerű virtuális gépekkel és Azure Resource Manager sablonokkal](../../virtual-machines/extensions/diagnostics-template.md?toc=/azure/virtual-machines/windows/toc.json).
 
 1. Telepítse a Service Fabric-fürtöt a Azure Resource Manager sablon használatával.  
   Ha a beállítások helyesek, Application Insights Profiler lesz telepítve és engedélyezve a Azure Diagnostics bővítmény telepítésekor. 
@@ -53,7 +54,7 @@ A környezet beállításához végezze el a következő műveleteket:
 1. Telepítse újra az alkalmazást.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Adatforgalom létrehozása az alkalmazáshoz (például egy [rendelkezésre állási teszt](monitor-web-app-availability.md)elindításához). Ezután várjon 10 – 15 percet, amíg a Nyomkövetések el nem jutnak a Application Insights példányba.
 * Lásd: [Profiler-Nyomkövetések](profiler-overview.md?toc=/azure/azure-monitor/toc.json) a Azure Portalban.

@@ -7,18 +7,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 9aa19dfa0626ff0726911815addbb03945ee36f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e066ef1910373734d9a6607500e45e8a9ccc80b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82144845"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539754"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Az ASP.NET Core-webalkalmazás monitorozásának indítása
 
 Az Azure Application Insights segítségével egyszerűen monitorozhatja webalkalmazása rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. 
 
-Ez a rövid útmutató végigvezeti a Application Insights SDK meglévő ASP.NET Core webalkalmazáshoz való hozzáadásának lépésein. Ha szeretné megtudni, hogyan konfigurálhatja a Application Insights a Visual Studio-előfizetések nélkül ez a [cikk](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core).
+Ez a rövid útmutató végigvezeti a Application Insights SDK meglévő ASP.NET Core webalkalmazáshoz való hozzáadásának lépésein. Ha szeretné megtudni, hogyan konfigurálhatja a Application Insights a Visual Studio-előfizetések nélkül ez a [cikk](../app/asp-net-core.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,10 +42,10 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 Az Application Insights bármely, az internethez csatlakozó alkalmazásról képes telemetriaadatokat gyűjteni, függetlenül attól, hogy az a helyszínen vagy a felhőben fut-e. Az adatok megjelenítéséhez hajtsa végre az alábbi lépéseket.
 
-1. Válassza **az erőforrás** > **létrehozása fejlesztői eszközök** > **Application Insights**elemet.
+1. Válassza **az erőforrás létrehozása**  >  **fejlesztői eszközök**  >  **Application Insights**elemet.
 
    > [!NOTE]
-   >Ha első alkalommal hoz létre egy Application Insights-erőforrást, további információt az [Application Insights erőforrás létrehozása](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) doc webhelyén olvashat.
+   >Ha első alkalommal hoz létre egy Application Insights-erőforrást, további információt az [Application Insights erőforrás létrehozása](../app/create-new-resource.md) doc webhelyén olvashat.
 
     Megjelenik egy konfigurációs mező. Az adatbeviteli mezők kitöltéséhez használja az alábbi táblát.
 
@@ -55,7 +55,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
    | **Erőforráscsoport**     | myResourceGroup      | Az új erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. Létrehozhat egy új erőforráscsoportot, vagy használhat egy meglévőt is. |
    | **Hely** | USA keleti régiója | Válasszon egy Önhöz vagy az alkalmazást futtató gazdagéphez közeli helyet. |
 
-2. Kattintson a **Létrehozás**gombra.
+2. Kattintson a **Létrehozás** lehetőségre.
 
 
 
@@ -69,9 +69,9 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 3. Válassza ki a fiókját és az előfizetést > válassza ki a Azure Portal létrehozott **meglévő erőforrást** > kattintson a **regisztráció**elemre.
 
-4. Válassza a **projekt** > **NuGet-csomagok** > kezelése**csomag forrása: nuget.org** > **frissítse** a Application Insights SDK-csomagokat a legújabb stabil kiadásra.
+4. Válassza a **projekt**  >  **NuGet-csomagok kezelése**  >  **csomag forrása: nuget.org**  >  **frissítse** a Application Insights SDK-csomagokat a legújabb stabil kiadásra.
 
-5. Válassza a **hibakeresés** > **Indítás hibakeresés nélkül** (CTRL + F5) lehetőséget az alkalmazás indításához
+5. Válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** (CTRL + F5) lehetőséget az alkalmazás indításához
 
     ![Az Application Insights áttekintése menü](./media/dotnetcore-quick-start/3debug.png)
 
@@ -88,7 +88,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
    ![Alkalmazástérkép](./media/dotnetcore-quick-start/5appmap.png)
 
-3. Kattintson az **app Analytics** ikon ![alkalmazás-Térkép ikon](./media/dotnetcore-quick-start/006.png) **nézet az elemzés**elemre. Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3. Kattintson az **app Analytics** ikon ![ alkalmazás-Térkép ikon ](./media/dotnetcore-quick-start/006.png) **nézet az elemzés**elemre. Megnyílik az **Application Insights Analytics**, amely egy részletes lekérdezési nyelvet biztosít az Application Insights által gyűjtött adatok elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
    ![Az adott időtartamon belüli felhasználói kéréseket mutató elemzési diagram](./media/dotnetcore-quick-start/6analytics.png)
 
@@ -100,7 +100,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
      ![Metrikák lap: az átlagos böngészőbeli betöltési idő diagramja](./media/dotnetcore-quick-start/8metrics.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez kövesse az alábbi lépéseket.
 
 > [!NOTE]
@@ -109,7 +109,7 @@ Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes 
 1. Az Azure Portal bal oldali menüjében kattintson az **Erőforráscsoportok** lehetőségre, majd kattintson a **myResourceGroup** elemre.
 2. Az erőforráscsoport lapon kattintson a **Törlés**elemre, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd kattintson a **Törlés**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Futásidejű kivételek észlelése és diagnosztizálása](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)
+> [Futásidejű kivételek észlelése és diagnosztizálása](./tutorial-runtime-exceptions.md)

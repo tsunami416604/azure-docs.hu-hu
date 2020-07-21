@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e8e2015e7d0798542ff0c80d8eb39461918ad67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82591652"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539601"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>A Azure Monitor lévő naplók áttekintése
 A naplók lekérdezései segítségével teljes mértékben kihasználhatja [Azure monitor naplókban](../platform/data-platform-logs.md)összegyűjtött adatok értékét. Egy hatékony lekérdezési nyelv lehetővé teszi több táblázatból származó adatok összekapcsolását, nagy mennyiségű adat összesítését, valamint a minimális kóddal rendelkező összetett műveletek végrehajtását. Gyakorlatilag bármilyen kérdés megválaszolható és elemezhető mindaddig, amíg a támogatási adatok gyűjtése megtörtént, és tisztában van a megfelelő lekérdezés létrehozásával is.
 
-A Azure Monitor egyes funkciói, [például](../insights/insights-overview.md) az elemzések és a [megoldások](../insights/solutions-inventory.md) feldolgozzák az adatokat, és nem teszik közzé az alapul szolgáló lekérdezéseket. A Azure Monitor egyéb funkcióinak teljes körű kihasználása érdekében ismernie kell a lekérdezések összeépítésének módját, valamint azt, hogy miként használhatja őket interaktív módon elemezni Azure Monitor naplókban.
+A Azure Monitor egyes funkciói, [például](../insights/insights-overview.md) az elemzések és a [megoldások](../monitor-reference.md) feldolgozzák az adatokat, és nem teszik közzé az alapul szolgáló lekérdezéseket. A Azure Monitor egyéb funkcióinak teljes körű kihasználása érdekében ismernie kell a lekérdezések összeépítésének módját, valamint azt, hogy miként használhatja őket interaktív módon elemezni Azure Monitor naplókban.
 
 Ez a cikk kiindulási pontként használható a Azure Monitor naplózási lekérdezésének megismeréséhez. A gyakori kérdésekre ad választ, és más dokumentációra mutató hivatkozásokat is tartalmaz, amelyek további részleteket és tanulságokat biztosítanak.
 
@@ -99,6 +99,6 @@ A naplózási lekérdezésekkel és azok eredményeivel való interaktív együt
 - **Azure Monitor naplózó API-t.**  A [Azure monitor logs API](https://dev.loganalytics.io) lehetővé teszi, hogy bármely REST API ügyfél beolvassa a naplózási adatait a munkaterületről.  Az API-kérelem tartalmaz egy lekérdezést, amely az Azure Monitoron fut, hogy meghatározza a lekérdezni kívánt adatgyűjtést.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Útmutató a Azure Portal log Analyticsjának használatáról](get-started-portal.md).
 - [Útmutató a lekérdezések írásához](get-started-queries.md).

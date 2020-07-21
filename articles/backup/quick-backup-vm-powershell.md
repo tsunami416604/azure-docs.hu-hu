@@ -5,16 +5,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc
-ms.openlocfilehash: 8021ca553a1434c891bee911e85d351c61938594
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa190c670c5bdcae8bcb31d2b8d5d9bd011acae9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74171947"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538581"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Virtuális gép biztonsági mentése az Azure-ban a PowerShell használatával
 
-A [Azure PowerShell](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) az modul az Azure-erőforrások parancssorból vagy parancsfájlokból való létrehozására és kezelésére szolgál.
+A [Azure PowerShell](/powershell/azure/new-azureps-module-az) az modul az Azure-erőforrások parancssorból vagy parancsfájlokból való létrehozására és kezelésére szolgál.
 
 [Azure Backup](backup-overview.md) biztonsági mentést készít a helyszíni gépekről és alkalmazásokról, valamint az Azure-beli virtuális gépekről. Ez a cikk bemutatja, hogyan készíthet biztonsági mentést egy Azure-beli virtuális gépről az az modullal. Azt is megteheti, hogy biztonsági másolatot készít egy virtuális gépről az [Azure CLI](quick-backup-vm-cli.md)használatával vagy a [Azure Portal](quick-backup-vm-portal.md).
 
@@ -46,7 +46,7 @@ A tároló létrehozásakor:
 
 - Az erőforráscsoport és a hely mezőben válassza ki azt az erőforráscsoportot és helyet, amelyről biztonsági másolatot szeretne készíteni.
 - Ha ezt a [parancsfájlt](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) használta a virtuális gép létrehozásához, az erőforráscsoport **myResourceGroup**, a virtuális gép ***myVM**, és az erőforrások a **WestEurope** régióban találhatók.
-- A Azure Backup automatikusan kezeli a tárterületet a biztonsági másolatok tárolására. Alapértelmezés szerint a [tár geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy-grs.md)használ. A Geo-redundancia biztosítja, hogy a biztonsági másolatba mentett adatok egy másodlagos Azure-régióba replikálódnak, amely több száz kilométerre van az elsődleges régiótól.
+- A Azure Backup automatikusan kezeli a tárterületet a biztonsági másolatok tárolására. Alapértelmezés szerint a [tár geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md)használ. A Geo-redundancia biztosítja, hogy a biztonsági másolatba mentett adatok egy másodlagos Azure-régióba replikálódnak, amely több száz kilométerre van az elsődleges régiótól.
 
 Most hozzon létre egy tárolót:
 
@@ -66,7 +66,7 @@ Most hozzon létre egy tárolót:
         -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesVaultContext
     ```
 
-3. Módosítsa a tár tárolási redundancia-konfigurációját (LRS/GRS) a [set-AzRecoveryServicesBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperty), a következő módon:
+3. Módosítsa a tár tárolási redundancia-konfigurációját (LRS/GRS) a [set-AzRecoveryServicesBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty), a következő módon:
 
     ```powershell
     Get-AzRecoveryServicesVault `
@@ -166,7 +166,7 @@ Remove-AzRecoveryServicesVault -Vault $vault
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot.
 

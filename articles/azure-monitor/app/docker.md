@@ -3,16 +3,17 @@ title: Docker-alkalmazások figyelése az Azure Application Insightsban | Micros
 description: A Docker-teljesítményszámlálók, az események és a kivételek a Application Insightson, valamint a tároló alkalmazások telemetria is megjeleníthetők.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 5ff3d6a2b31425a3fb6857c8c6aed45f7ef18d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6af39db68c2020e578fe6fbd39870b2e00a16e07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669607"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539924"
 ---
 # <a name="monitor-docker-applications-in-application-insights-deprecated"></a>Docker-alkalmazások figyelése Application Insightsban (elavult)
 
 > [!NOTE]
-> Ez a megoldás elavult. Ha többet szeretne megtudni a tárolók monitorozásával kapcsolatos aktuális befektetésekről, javasoljuk, hogy a tárolók [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)kijelentkezését ajánljuk.
+> Ez a megoldás elavult. Ha többet szeretne megtudni a tárolók monitorozásával kapcsolatos aktuális befektetésekről, javasoljuk, hogy a tárolók [Azure monitor](../insights/container-insights-overview.md)kijelentkezését ajánljuk.
 
 A [Docker](https://www.docker.com/) -tárolókban található életciklus-események és teljesítményszámlálók Application Insights foglalhatók. Telepítse a [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) lemezképet egy tárolóba a gazdagépen, és megjeleníti a gazdagéphez tartozó teljesítményszámlálókat, valamint a többi lemezképet is.
 
@@ -95,7 +96,7 @@ Az AI SDK-val az alkalmazásból elkészített telemetria-kérések a Docker kö
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Java-Application Insights](../../azure-monitor/app/java-get-started.md)
 * [Node.js-hez készült Application Insights](../../azure-monitor/app/nodejs.md)

@@ -3,16 +3,16 @@ title: Adatforgalom leképezése az átalakításhoz
 description: Azure Data Factory leképezési adatfolyamok kibontásának átalakítása
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: c3e769334beb6a5739eebb8d7e8dc370533c2dc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: b7a05f33c199ab46508fa2b9bc0ef576f888ef27
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606251"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537714"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory unpivot átalakítás
 
@@ -21,6 +21,8 @@ ms.locfileid: "81606251"
 A nem normalizált adatkészletek egy normalizált verzióban való kibontásához használja az ADF-leképezési adatfolyamatot úgy, hogy egy rekord több oszlopának értékeit több, egyetlen oszlopban szereplő értékkel rendelkező rekordba bővíti.
 
 ![Az átalakítás unpivot](media/data-flow/unpivot1.png "Kibontási beállítások 1")
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B1RR]
 
 ## <a name="ungroup-by"></a>Csoportosítás bontása
 
@@ -52,6 +54,6 @@ Ha úgy állítja be az oszlop elrendezését a "NORMAL" értékre, hogy az öss
 
 A végleges, nem felváltott adateredményhalmaz azt mutatja, hogy az oszlopok összesítései mostantól külön sorba vannak bontva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sorok oszlopokra való kimutatásához használja a [pivot transzformációt](data-flow-pivot.md) .

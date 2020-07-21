@@ -3,11 +3,12 @@ title: Windows rendszerű gépek biztonsági mentése a MARS-ügynök használat
 description: A Windows rendszerű gépek biztonsági mentéséhez használja a Microsoft Azure Recovery Services (MARS) ügynököt.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 4f0e605185be6db8629144e05f5f39309a3831ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34fa0906ec63eb51d37c192f9dadddc57dbf1cdf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604845"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538632"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server-fájlok és-mappák biztonsági mentése az Azure-ba
 
@@ -52,7 +53,7 @@ Biztonsági mentési szabályzat létrehozásához:
     ![Válassza ki azokat az elemeket, amelyekről biztonsági másolatot szeretne készíteni](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
 1. Az **elemek kiválasztása a biztonsági mentéshez** lapon válassza a **tovább**lehetőséget.
-1. A **biztonsági mentési ütemezés megadása** lapon határozza meg, hogy mikor kell napi vagy heti biztonsági mentést készítenie. Ezután válassza a **tovább**lehetőséget.
+1. A **biztonsági mentési ütemezés megadása** lapon határozza meg, hogy mikor kell napi vagy heti biztonsági mentést készítenie. Ezután kattintson a **Tovább** gombra.
 
     * A biztonsági másolat létrehozásakor létrejön egy helyreállítási pont.
     * A környezetben létrehozott helyreállítási pontok száma a biztonsági mentési ütemtervtől függ.
@@ -64,7 +65,7 @@ Biztonsági mentési szabályzat létrehozásához:
 
         ![Heti biztonsági mentési ütemterv beállítása](./media/backup-configure-vault/week-schedule.png)
 
-1. Az **adatmegőrzési szabály kiválasztása** lapon adja meg, hogyan szeretné tárolni az adatok korábbi másolatait. Ezután válassza a **tovább**lehetőséget.
+1. Az **adatmegőrzési szabály kiválasztása** lapon adja meg, hogyan szeretné tárolni az adatok korábbi másolatait. Ezután kattintson a **Tovább** gombra.
 
     * Az adatmegőrzési beállítások határozzák meg, hogy mely helyreállítási pontok legyenek tárolva, és mennyi ideig kell tárolni őket.
     * Napi adatmegőrzési beállítás esetén azt jelzi, hogy a napi megőrzéshez megadott idő elteltével a rendszer a megadott számú napig megőrzi a legutóbbi helyreállítási pontot. Vagy megadhat egy havi adatmegőrzési szabályt, amely azt jelzi, hogy a minden hónap 30-án létrehozott helyreállítási pontot 12 hónapig kell tárolni.
@@ -103,7 +104,7 @@ Kapcsolat nélküli átvitel:
 1. A biztonsági mentési állapotot egy átmeneti helyre írja.
 1. A AzureOfflineBackupDiskPrep eszközzel másolja az adatok az előkészítési helyről egy vagy több SATA-lemezre.
 
-    Az eszköz létrehoz egy Azure importálási feladatot. További információ: Mi az [Az Azure import/export szolgáltatás](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
+    Az eszköz létrehoz egy Azure importálási feladatot. További információ: Mi az [Az Azure import/export szolgáltatás](../storage/common/storage-import-export-service.md).
 1. A SATA-lemezek küldése egy Azure-adatközpontba.
 
     Az adatközpontban a lemezre vonatkozó Adatmásolás egy Azure Storage-fiókba történik. Azure Backup átmásolja az adatokat a Storage-fiókból a tárolóba, és a növekményes biztonsági mentések ütemezve lesznek.
@@ -114,7 +115,7 @@ További információ az offline előkészítésről: [Azure Data Box használat
 
 A hálózati sávszélesség-szabályozás engedélyezésével szabályozhatja, hogy a MARS-ügynök hogyan használja a hálózati sávszélességet. A szabályozás akkor lehet hasznos, ha a munkaidőn belül biztonsági mentést kell végeznie, de szeretné szabályozni, hogy mekkora sávszélességet használ a biztonsági mentési és a helyreállítási tevékenység.
 
-A hálózati sávszélesség-szabályozás Azure Backup a szolgáltatásminőség [(QoS) szolgáltatást](https://docs.microsoft.com/windows-server/networking/technologies/qos/qos-policy-top) használja a helyi operációs rendszeren.
+A hálózati sávszélesség-szabályozás Azure Backup a szolgáltatásminőség [(QoS) szolgáltatást](/windows-server/networking/technologies/qos/qos-policy-top) használja a helyi operációs rendszeren.
 
 A biztonsági mentések hálózati szabályozása a Windows Server 2012-es és újabb verzióiban, valamint Windows 8 és újabb rendszereken érhető el. Az operációs rendszernek a legújabb szervizcsomagokat kell futtatnia.
 
@@ -124,7 +125,7 @@ A hálózati sávszélesség-szabályozás engedélyezése:
 1. A **szabályozás** lapon válassza az **Internet sávszélesség-használat szabályozásának engedélyezése a biztonsági mentési műveletekhez**lehetőséget.
 
     ![Hálózati sávszélesség-szabályozás beállítása biztonsági mentési műveletekhez](./media/backup-configure-vault/throttling-dialog.png)
-1. A munkaidőben és a munkaidőn belül engedélyezett sávszélesség megadására használható. A sávszélesség értéke 512 kbps, és akár 1 023 MBps is lehet. Ezután kattintson az **OK** gombra.
+1. A munkaidőben és a munkaidőn belül engedélyezett sávszélesség megadására használható. A sávszélesség értéke 512 kbps, és akár 1 023 MBps is lehet. Ez után válassza az **OK** gombot.
 
 ## <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentés futtatása
 
@@ -154,7 +155,7 @@ A kezdeti biztonsági mentés befejeződése után a **feladatok befejezve** ál
 
 További információt a [biztonsági mentési szabályzat létrehozása](#create-a-backup-policy)című témakörben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [állíthatja vissza a fájlokat az Azure-ban](backup-azure-restore-windows-server.md).
 * [Gyakori kérdések a fájlok és mappák biztonsági mentéséről](backup-azure-file-folder-backup-faq.md)

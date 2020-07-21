@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 80c789f955b279e7771fe39c20087baa465b3293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88f1e40101b807e82eaf69be6c167cd4aa2e2831
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042623"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539193"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Új bérlők kiépítése és katalógusa egy SaaS-alkalmazásban többvállalatos több-bérlős Azure SQL Database használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +30,7 @@ Ez a cikk két fő részből áll:
 - [Oktatóanyag](#goto_1_tutorial) , amely kiemeli a kiépítés és a katalogizálás által megvalósított PowerShell-szkript kódját.
   - Az oktatóanyag a Wingtip tickets SaaS-alkalmazást használja, amelyet a több-bérlős szegmensben lévő adatbázis mintához alakítottak ki.
 
-<a name="goto_2_conceptual"/>
+<a name="goto_2_conceptual"></a>
 
 ## <a name="database-pattern"></a>Adatbázis mintája
 
@@ -110,7 +111,7 @@ Ebben az oktatóanyagban a bérlői kiépítési szkriptek az alábbi forgatók�
 
 A bérlői adatai ezután inicializálva és regisztrálva vannak a katalógus szegmensének térképén. A minta alkalmazásban a több bérlőt tartalmazó adatbázisok általános nevet kapnak, például *tenants1* vagy *tenants2*. Az egyetlen bérlőt tartalmazó adatbázisok a bérlő nevét kapják meg. A mintában használt egyedi elnevezési konvenciók nem kritikus részét képezik a mintának, mivel a katalógus használata lehetővé teszi a nevek hozzárendelését az adatbázishoz.
 
-<a name="goto_1_tutorial"/>
+<a name="goto_1_tutorial"></a>
 
 ## <a name="tutorial-begins"></a>Az oktatóanyag kezdete
 
@@ -267,7 +268,7 @@ Az ilyen típusú automatizált szolgáltatás egyszerű vagy összetett lehet. 
 - [Parancsfájlok hibakeresése Windows PowerShell integrált parancsprogram-kezelési környezet](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

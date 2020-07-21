@@ -8,11 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: aa5e741d8578253b8b3e8e5c692873c39cec8f79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc872b24c78fbdf6e55673f9d1f78efc0647895
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85412634"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537884"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -60,6 +61,17 @@ Az Azure Cosmos DB Java SDK v4 for Core (SQL) egy aszinkron API-t és egy "Sync"
 | **Azure Cosmos DB workshopok és Labs** |[Cosmos DB workshopok kezdőlapja](https://aka.ms/cosmosworkshop)
 
 ## <a name="release-history"></a>Kiadási előzmények
+
+### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14)
+* Parancsfájl-naplózás engedélyezve API-t adott hozzá `CosmosStoredProcedureRequestOptions` .
+* Az `DirectConnectionConfig` alapértelmezett érték `idleEndpointTimeout` az 1h és `connectTimeout` az alapértelmezett érték 5 mp.
+#### <a name="key-bug-fixes"></a>Kulcs hibajavításai
+* Kijavítva a hiba, amely `GatewayConnectionConfig` `idleConnectionTimeout` felülbírálta a problémát `DirectConnectionConfig` `idleConnectionTimeout` .
+* Rögzített `responseContinuationTokenLimitInKb` Get és set API-k a-ben `CosmosQueryRequestOptions` .
+* Kijavítva a probléma a lekérdezésben, és módosíthatja a hírcsatornát, amikor a gyűjteményt ugyanazzal a névvel hozza létre.
+* Kijavítva a probléma a leggyakoribb lekérdezési ClassCastException.
+* Kijavítva a hiba az Order by Query NullPointerException.
+* Kijavítottuk a lemondott kérések kezelését a közvetlen módban, ami a reaktor `onErrorDropped` meghívását okozza. 
 
 ### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25)
 #### <a name="new-features"></a>Új funkciók

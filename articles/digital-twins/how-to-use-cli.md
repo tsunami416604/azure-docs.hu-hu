@@ -7,11 +7,12 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 53b20ded8e4b4a003beff1ef8489ecd9ff3451ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5272babf794529e5e9bd87a3c4a96e6df5758fb8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725297"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537462"
 ---
 # <a name="use-the-azure-digital-twins-cli"></a>Az Azure Digital Twins CLI használata
 
@@ -32,7 +33,7 @@ A példányok általános kezelése mellett a CLI is hasznos eszköz az üzembe 
 * A vezérlési sík parancsaival az új példányok üzembe helyezése ismételhető vagy automatizált lehet.
 * Az adatsík parancsai segítségével gyorsan ellenőrizheti a példányban lévő értékeket, és ellenőrizheti, hogy a műveletek a várt módon fejeződött-e be.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A CLI-parancsok alternatívájaként lásd: Azure digitális Twins-példányok kezelése API-k és SDK-k használatával:
-* [Útmutató: az Azure Digital Twins API-k és SDK-k használata](how-to-use-apis-sdks.md)
+* [*Útmutató: az Azure Digital Twins API-k és SDK-k használata*](how-to-use-apis-sdks.md)

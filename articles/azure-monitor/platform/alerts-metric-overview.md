@@ -1,15 +1,15 @@
 ---
 title: Ismerje meg, hogyan működnek a metrikus riasztások Azure Monitorban.
 description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan működnek Azure Monitorban.
-ms.date: 07/09/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: cd8c28b2c26e8859eda1634d2441982336cdd460
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 05e25a67279786ef4679552503e577b1b1a382ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187523"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539431"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -120,6 +120,15 @@ Ez a szabály figyeli, hogy az elmúlt 5 percben az átlagos CPU-használat megh
 
 A visszapillantási időszakok és a szabálysértések számának növelése is lehetővé teszi a riasztások szűrését, hogy csak a jelentős eltérés definíciójában figyelmeztessen. [További információ a dinamikus küszöbértékekkel kapcsolatos speciális beállításokról](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
 
+> [!NOTE]
+>
+> Javasoljuk, hogy a *kiértékelés gyakorisága*nagyobb mértékű *összesítési részletességet (időszakot)* válasszon, hogy csökkentse a hozzáadott idősorozat első kiértékelésének valószínűségét a következő esetekben:
+> - Metrikus riasztási szabály, amely több dimenziót figyel – új dimenzió érték-kombináció hozzáadásakor
+> - Metrikus riasztási szabály, amely több erőforrást figyel – új erőforrás a hatókörhöz való hozzáadásakor
+> - Metrikus riasztási szabály, amely nem folyamatosan kibocsátott mérőszámot figyel (ritka metrika) – Ha a mérőszámot 24 óránál hosszabb időt követően bocsátják ki a rendszer, amelyben nem lett kibocsátva
+
+
+
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Méretezés a metrikus riasztások használatával Azure Monitor
 
 Eddig azt tapasztalta, hogy egyetlen metrikai riasztást is használhat egy vagy több, egyetlen Azure-erőforráshoz kapcsolódó metrikai idősorozat figyelésére. Sokszor előfordulhat, hogy ugyanaz a riasztási szabály sok erőforrásra vonatkozik. A Azure Monitor az ugyanazon az Azure-régióban található erőforrások esetében is támogatja több erőforrás (azonos típusú) figyelését egy metrikai riasztási szabállyal. 
@@ -128,7 +137,7 @@ Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén tám
 
 | Szolgáltatás | Nyilvános Azure | Államigazgatás | Kína |
 |:--------|:--------|:--------|:--------|
-| Virtual machines (Virtuális gépek)  | **Igen** | Nem | Nem |
+| Virtuális gépek  | **Igen** | Nem | Nem |
 | SQL Server-adatbázisok | **Igen** | **Igen** | Nem |
 | SQL Server rugalmas készletek | **Igen** | **Igen** | Nem |
 | Adatmező peremhálózati eszközei | **Igen** | **Igen** | Nem |
@@ -158,7 +167,7 @@ A metrikus riasztások esetében általában 5 percen belül értesítést fog k
 A támogatott erőforrástípusok teljes listáját ebben a [cikkben](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)találja.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Megtudhatja, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztásokat az Azure-ban](alerts-metric.md)
 - [Megtudhatja, hogyan helyezhet üzembe metrikus riasztásokat Azure Resource Manager sablonok használatával](../../azure-monitor/platform/alerts-metric-create-templates.md)

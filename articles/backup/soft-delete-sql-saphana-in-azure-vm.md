@@ -3,12 +3,12 @@ title: Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és a SAP
 description: Ismerje meg, hogy az Azure-beli virtuális gépen futó SQL Server és az Azure-beli virtuális gépek számítási feladatainak SAP HANAa hogyan teszi biztonságosabbá a biztonsági mentéseket
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: f1e3ecae5d643b8e32f8f4f07808d56cdc421163
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0eaedea2d5428376befaade42f87348cf84e7bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791374"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538190"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Az Azure-beli virtuális gépeken futó SQL Server-kiszolgáló és a SAP HANA Azure-beli virtuális gépek számítási feladatainak törlése
 
@@ -99,7 +99,7 @@ A Azure PowerShell használatára vonatkozó lépések sorrendjének megegyeznek
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>A biztonsági mentési tétel törlése Azure PowerShell használatával
 
-Törölje a biztonsági mentési tételt a [disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS parancsmag használatával.
+Törölje a biztonsági mentési tételt a [disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS parancsmag használatával.
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -117,7 +117,7 @@ Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadTy
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType SQLDataBase -VaultId $myVaultID -Name AppVM1
 ```
 
-Ezután hajtsa végre a visszavonás-törlés műveletet a [Visszavonás-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.8.0) PS parancsmag használatával.
+Ezután hajtsa végre a visszavonás-törlés műveletet a [Visszavonás-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS parancsmag használatával.
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
@@ -129,7 +129,7 @@ A biztonsági mentési elemek **DeleteState** visszaállnak a **NotDeleted**. A 
 
 A funkció letiltása nem ajánlott. Ha a védett elemek új tárolóba való áthelyezését tervezi, és a törlés és az ismételt védelem (például egy tesztkörnyezetben) esetében nem várhatja el a szükséges 14 napot, az egyetlen olyan körülmény, amelyben érdemes megfontolni a Soft delete letiltását. A Soft delete letiltásával kapcsolatos utasításokért lásd: a [Soft delete engedélyezése és letiltása](backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Soft delete [gyakori kérdéseinek](backup-azure-security-feature-cloud.md#frequently-asked-questions) áttekintése
 - További információ a [Azure Backup összes biztonsági szolgáltatásáról](security-overview.md)

@@ -2,18 +2,18 @@
 title: 'Sikertelen áramkör alaphelyzetbe állítása – ExpressRoute: PowerShell: Azure | Microsoft Docs'
 description: Ez a cikk segítséget nyújt egy hibás állapotú ExpressRoute-áramkör alaphelyzetbe állításához.
 services: expressroute
-author: anzaman
+author: kumudD
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/28/2018
-ms.author: anzaman
+ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: f75d9ae2fc788bbeb769aaf412c77dfacec9d04c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0f79ce0959e7b7dccc20e46493f34e1963df70e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738124"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537105"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>Állítsa alaphelyzetbe a hibás ExpressRoute-kapcsolatcsoportot
 
@@ -50,6 +50,6 @@ Ha egy ExpressRoute-áramkörön végzett művelet nem fejeződik be sikeresen, 
 
 Az áramkörnek most kifogástalannak kell lennie. Nyisson meg egy támogatási jegyet a [Microsoft támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) szolgálatával, ha az áramkör még sikertelen állapotban van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha továbbra is problémákat tapasztal, nyisson meg egy támogatási jegyet a [Microsoft ügyfélszolgálatával](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .

@@ -1,18 +1,18 @@
 ---
-title: Ajánlott eljárások az automatikus skálázáshoz
+title: Ajánlott eljárások az autoskálázáshoz
 description: Az Azure-ban Web Apps, virtuálisgép-méretezési csoportokhoz és Cloud Serviceshoz használható autoskálázási minták
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47da813498ef2cd4d16aeaa5ab31eff24b1db267
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85846932"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539533"
 ---
 # <a name="best-practices-for-autoscale"></a>Ajánlott eljárások az automatikus méretezéshez
-Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)vonatkozik.
+Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](../../api-management/api-management-key-concepts.md)vonatkozik.
 
 ## <a name="autoscale-concepts"></a>Alapfogalmak
 
@@ -151,4 +151,3 @@ A műveletnapló értesítésein kívül az e-mail-vagy webhook-értesítéseket
 ## <a name="next-steps"></a>Következő lépések
 - [Hozzon létre egy műveletnapló-riasztást az előfizetésben lévő összes autoskálázási motor műveleteinek figyeléséhez.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Eseménynapló-riasztás létrehozása az összes sikertelen, az előfizetésen belüli és a vertikális Felskálázási műveletek figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
-

@@ -3,11 +3,12 @@ title: SharePoint-farm biztonsági mentése Azure Stack
 description: A Azure Backup Server használatával biztonsági mentést készíthet a SharePoint-adatairól, és visszaállíthatja azokat Azure Stackeken. Ez a cikk ismerteti a SharePoint-farm konfigurálásához szükséges információkat, hogy a kívánt adatok az Azure-ban is tárolhatók legyenek. A védett SharePoint-adatok a lemezről vagy az Azure-ból is visszaállíthatók.
 ms.topic: conceptual
 ms.date: 06/07/2020
-ms.openlocfilehash: 8b9257c1d175c350df06f9421b31a9e7b8e2bb80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd94b24479631f9fbbe4070529d76fe6442faae2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84657943"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538785"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>SharePoint-farm biztonsági mentése Azure Stack
 
@@ -101,7 +102,7 @@ A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint védelmét
 
 1. Az **online megőrzési szabály meghatározása lapon**megadhatja, hogy a rendszer hogyan őrizze meg a napi/heti/havi/éves biztonsági másolatokből létrehozott helyreállítási pontokat az Azure-ban.
 
-1. Az **online replikáció kiválasztása**lapon adja meg, hogyan történjen az adatkezdeti teljes replikálás. Replikálhat a hálózaton keresztül, vagy offline biztonsági mentést (offline áttöltést) is végezhet. Az offline biztonsági mentés az Azure Import szolgáltatással működik. [További információk](https://azure.microsoft.com/documentation/articles/backup-azure-backup-import-export/).
+1. Az **online replikáció kiválasztása**lapon adja meg, hogyan történjen az adatkezdeti teljes replikálás. Replikálhat a hálózaton keresztül, vagy offline biztonsági mentést (offline áttöltést) is végezhet. Az offline biztonsági mentés az Azure Import szolgáltatással működik. [További információk](./backup-azure-backup-import-export.md).
 
 1. Az **Összefoglalás** lapon tekintse át a beállításokat. Miután rákattintott a **csoport létrehozása**lehetőségre, az adatműveletek kezdeti replikálása történik. Amikor befejeződik, a védelmi csoport állapota **OK** lesz az **állapot** lapon. Ezután a védelmicsoport-beállításoknak megfelelően megtörténik a biztonsági mentés.
 
@@ -256,7 +257,7 @@ Az alábbi eljárás egy kiszolgálófarm példáját használja két előtér-w
 
 1. Ha végrehajtotta a 6. lépést, most eltávolíthatja a kötetet a védelmi csoportból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg a [biztonsági másolat fájljait és az alkalmazásról](backup-mabs-files-applications-azure-stack.md) szóló cikket.
 * A [biztonsági mentési SQL Server Azure stack](backup-mabs-sql-azure-stack.md) cikkben talál.

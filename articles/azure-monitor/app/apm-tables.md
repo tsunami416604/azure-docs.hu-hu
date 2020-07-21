@@ -5,21 +5,22 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
-ms.openlocfilehash: 21f387a87224615ea6afbdce620c56e3ad2cc6ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3175e43a841334719de80f44a226b1c7b87690d9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83210540"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540111"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Munkaterület-alapú erőforrás-változások (előzetes verzió)
 
-A [munkaterület-alapú Application Insights erőforrások](create-workspace-resource.md)bevezetését megelőzően Application Insights az adatok a Azure monitor egyéb naplófájljaitól elkülönítve vannak tárolva. Mindkettő az Azure Adatkezelőon alapul, és ugyanazt a Kusto lekérdezési nyelvet (KQL) használja. Ezt a [Azure monitor naplóiban](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)ismertetjük.
+A [munkaterület-alapú Application Insights erőforrások](create-workspace-resource.md)bevezetését megelőzően Application Insights az adatok a Azure monitor egyéb naplófájljaitól elkülönítve vannak tárolva. Mindkettő az Azure Adatkezelőon alapul, és ugyanazt a Kusto lekérdezési nyelvet (KQL) használja. Ezt a [Azure monitor naplóiban](../platform/data-platform-logs.md)ismertetjük.
 
 A munkaterületen alapuló Application Insights erőforrás-adathalmazok egy Log Analytics munkaterületen vannak tárolva, amelyek más megfigyelési és alkalmazásadatok. Ez egyszerűbbé teszi a konfigurációt azáltal, hogy könnyebben elemezheti az adatelemzést több megoldás között, és kihasználhatja a munkaterületek képességeit.
 
 ## <a name="table-structure"></a>Tábla szerkezete
 
-| Örökölt tábla neve | Új tábla neve | Description |
+| Örökölt tábla neve | Új tábla neve | Leírás |
 |:---|:---|:---|
 | availabilityResults | AppAvailabilityResults |  A rendelkezésre állási tesztek összesített adatai.|
 | browserTimings | AppBrowserTimings | Az ügyfél teljesítményére vonatkozó adat, például a bejövő adat feldolgozásához szükséges idő.|
@@ -57,9 +58,9 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
-|customMeasurements|dinamikus|Mérések|Dinamikus|
-|duration|valós szám|Átl|valós szám|
+|customDimensions|dynamic|Tulajdonságok|Dinamikus|
+|customMeasurements|dynamic|Mérések|Dinamikus|
+|duration|valós szám|DurationMs|valós szám|
 |`id`|sztring|`Id`|sztring|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |itemCount|int|ItemCount|int|
@@ -76,7 +77,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |sdkVersion|sztring|SdkVersion|sztring|
 |session_Id|sztring|SessionId|sztring|
 |size|valós szám|Méret|valós szám|
-|sikeres|sztring|Sikeres|Logikai|
+|sikeres|sztring|Success|Logikai|
 |időbélyeg|dátum/idő|TimeGenerated|dátum/idő|
 |user_AccountId|sztring|UserAccountId|sztring|
 |user_AuthenticatedId|sztring|UserAuthenticatedId|sztring|
@@ -101,8 +102,8 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
-|customMeasurements|dinamikus|Mérések|Dinamikus|
+|customDimensions|dynamic|Tulajdonságok|Dinamikus|
+|customMeasurements|dynamic|Mérések|Dinamikus|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
@@ -145,10 +146,10 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
-|customMeasurements|dinamikus|Mérések|Dinamikus|
+|customDimensions|dynamic|Tulajdonságok|Dinamikus|
+|customMeasurements|dynamic|Mérések|Dinamikus|
 |adatok|sztring|Adatok|sztring|
-|duration|valós szám|Átl|valós szám|
+|duration|valós szám|DurationMs|valós szám|
 |`id`|sztring|`Id`|sztring|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |itemCount|int|ItemCount|int|
@@ -163,7 +164,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |resultCode|sztring|ResultCode|sztring|
 |sdkVersion|sztring|SdkVersion|sztring|
 |session_Id|sztring|SessionId|sztring|
-|sikeres|sztring|Sikeres|Logikai|
+|sikeres|sztring|Success|Logikai|
 |cél|sztring|Cél|sztring|
 |időbélyeg|dátum/idő|TimeGenerated|dátum/idő|
 |típus|sztring|DependencyType|sztring|
@@ -190,8 +191,8 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
-|customMeasurements|dinamikus|Mérések|Dinamikus|
+|customDimensions|dynamic|Tulajdonságok|Dinamikus|
+|customMeasurements|dynamic|Mérések|Dinamikus|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
@@ -227,7 +228,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
+|customDimensions|dynamic|Tulajdonságok|Dinamikus|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|sztring|
@@ -242,7 +243,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |user_AccountId|sztring|UserAccountId|sztring|
 |user_AuthenticatedId|sztring|UserAuthenticatedId|sztring|
 |user_Id|sztring|UserId (Felhasználóazonosító)|sztring|
-|value|valós szám|távolítva||
+|Érték|valós szám|távolítva||
 |valueCount|int|ValueCount|int|
 |valueMax|valós szám|ValueMax|valós szám|
 |valueMin|valós szám|ValueMin|valós szám|
@@ -268,9 +269,9 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
-|customMeasurements|dinamikus|Mérések|Dinamikus|
-|duration|valós szám|Átl|valós szám|
+|customDimensions|dynamic|Tulajdonságok|Dinamikus|
+|customMeasurements|dynamic|Mérések|Dinamikus|
+|duration|valós szám|DurationMs|valós szám|
 |`id`|sztring|`Id`|sztring|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |itemCount|int|ItemCount|int|
@@ -311,7 +312,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
 |számláló|sztring|távolítva||
-|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
+|customDimensions|dynamic|Tulajdonságok|Dinamikus|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |például|sztring|Példány|sztring|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
@@ -327,7 +328,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |user_AccountId|sztring|UserAccountId|sztring|
 |user_AuthenticatedId|sztring|UserAuthenticatedId|sztring|
 |user_Id|sztring|UserId (Felhasználóazonosító)|sztring|
-|value|valós szám|Érték|valós szám|
+|Érték|valós szám|Érték|valós szám|
 
 ### <a name="apprequests"></a>AppRequests
 
@@ -348,9 +349,9 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
-|customMeasurements|dinamikus|Mérések|Dinamikus|
-|duration|valós szám|Átl|Valós|
+|customDimensions|dynamic|Tulajdonságok|Dinamikus|
+|customMeasurements|dynamic|Mérések|Dinamikus|
+|duration|valós szám|DurationMs|Valós|
 |`id`|sztring|`Id`|Sztring|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |itemCount|int|ItemCount|int|
@@ -366,7 +367,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |sdkVersion|sztring|SdkVersion|sztring|
 |session_Id|sztring|SessionId|sztring|
 |source|sztring|Forrás|Sztring|
-|sikeres|sztring|Sikeres|Logikai|
+|sikeres|sztring|Success|Logikai|
 |időbélyeg|dátum/idő|TimeGenerated|dátum/idő|
 |url|sztring|URL-cím|Sztring|
 |user_AccountId|sztring|UserAccountId|sztring|
@@ -393,9 +394,9 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dinamikus|Tulajdonságok|dinamikus|
-|customMeasurements|dinamikus|Mérések|dinamikus|
-|Részletek|dinamikus|Részletek|dinamikus|
+|customDimensions|dynamic|Tulajdonságok|dynamic|
+|customMeasurements|dynamic|Mérések|dynamic|
+|Részletek|dynamic|Részletek|dynamic|
 |handledAt|sztring|HandledAt|sztring|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |innermostAssembly|sztring|InnermostAssembly|sztring|
@@ -444,8 +445,8 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dinamikus|Tulajdonságok|dinamikus|
-|customMeasurements|dinamikus|Mérések|dinamikus|
+|customDimensions|dynamic|Tulajdonságok|dynamic|
+|customMeasurements|dynamic|Mérések|dynamic|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
@@ -463,7 +464,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |user_AuthenticatedId|sztring|UserAuthenticatedId|sztring|
 |user_Id|sztring|UserId (Felhasználóazonosító)|sztring|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Metrikák böngészése](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics-lekérdezések](../../azure-monitor/app/analytics.md)
+* [Analytics-lekérdezések](../log-query/log-query-overview.md)

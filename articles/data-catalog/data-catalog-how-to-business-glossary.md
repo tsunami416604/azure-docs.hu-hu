@@ -4,17 +4,18 @@ description: 'Útmutató: az üzleti Szószedet kiemelése Azure Data Catalog a 
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 1065abecb1f0ef57eb13b1ec3f194f07ae01eaee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f91728435b885f3b4d9415bc81e18fdaaea0148f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68976791"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537748"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>Az üzleti Szószedet beállítása az irányított címkézéshez
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Azure Data Catalog lehetővé teszi az adatforrások felderítését, így könnyen felderítheti és értelmezheti az elemzéshez és a döntések végrehajtásához szükséges adatforrásokat. Ezek a képességek a legnagyobb hatással lehetnek az elérhető adatforrások legszélesebb körének megtalálása és megismerése érdekében.
 
@@ -75,10 +76,10 @@ A Data Catalog-portálon a címkék két típusa vizuálisan eltérő, és kül�
 
 A Szószedetbeli címkék és a felhasználói címkék egyaránt kereshetők, és szűrőként is alkalmazhatók a keresés során.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 A Azure Data Catalog üzleti szószedetének használatával és a szabályozott címkézéssel lehetővé teszi az adategységek egységes módon történő azonosítását, kezelését és felderítését. Az üzleti Szószedet a szervezet tagjai által az üzleti szókincs megismerésére is képes. A Szószedet Emellett támogatja az értelmes metaadatok rögzítését is, ami leegyszerűsíti az eszközök felderítését és megértését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [REST API dokumentáció vállalati Szószedet-műveletekhez](/rest/api/datacatalog/data-catalog-glossary)

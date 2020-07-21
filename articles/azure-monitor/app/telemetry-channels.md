@@ -4,11 +4,12 @@ description: Telemetria-csatornák testreszabása az Azure Application Insights 
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f9e93d477efeee7e1d8a0b0d8704f9c83d2a4f7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84691951"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539788"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetria csatornák Application Insights
 
@@ -16,7 +17,7 @@ A telemetria csatornák az [Azure Application Insights SDK](../../azure-monitor/
 
 ## <a name="what-are-telemetry-channels"></a>Mik azok a telemetria-csatornák?
 
-A telemetria csatornák felelősek a telemetria-elemek puffereléséhez és a Application Insights szolgáltatásba való küldéséhez, ahol lekérdezési és elemzési célból vannak tárolva. A telemetria-csatorna bármely olyan osztály, amely megvalósítja az [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) illesztőfelületet.
+A telemetria csatornák felelősek a telemetria-elemek puffereléséhez és a Application Insights szolgáltatásba való küldéséhez, ahol lekérdezési és elemzési célból vannak tárolva. A telemetria-csatorna bármely olyan osztály, amely megvalósítja az [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) illesztőfelületet.
 
 A `Send(ITelemetry item)` telemetria-csatorna metódusát a rendszer az összes telemetria inicializáló és telemetria processzor hívása után hívja meg. Tehát a telemetria-feldolgozó által eldobott elemek nem érik el a csatornát. `Send()`nem általában azonnal küldi el az elemeket a háttérbe. A szolgáltatás általában a memóriában, és kötegekben küldi el őket a hatékony átvitel érdekében.
 
@@ -30,7 +31,7 @@ A Application Insights .NET és .NET Core SDK-k két beépített csatornával re
 
     Ez a csatorna a Microsoft. ApplicationInsights NuGet csomag részét képezi, és az az alapértelmezett csatorna, amelyet az SDK használ, ha nincs más konfigurálva.
 
-* `ServerTelemetryChannel`: Egy fejlettebb csatorna, amely újrapróbálkozási házirendekkel rendelkezik, és képes az adattárolásra helyi lemezen. Ez a csatorna újrapróbálkozik a telemetria küldésével, ha átmeneti hibák történnek. Ez a csatorna a helyi lemezes tárolást is használja a hálózati kimaradások vagy a nagy telemetria-kötetek esetében a lemezen lévő elemek megtartására. Az újrapróbálkozási mechanizmusok és a helyi lemezes tárolás miatt ez a csatorna megbízhatóbbnak minősül, és minden éles környezetben ajánlott. Ez a csatorna az alapértelmezett a [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) és a [ASP.net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) a hivatalos dokumentációnak megfelelően konfigurált alkalmazások esetében. Ez a csatorna kiszolgálói forgatókönyvekhez van optimalizálva hosszan futó folyamatokkal. A [`Flush()`](#which-channel-should-i-use) csatorna által megvalósított metódus nem szinkronban van.
+* `ServerTelemetryChannel`: Egy fejlettebb csatorna, amely újrapróbálkozási házirendekkel rendelkezik, és képes az adattárolásra helyi lemezen. Ez a csatorna újrapróbálkozik a telemetria küldésével, ha átmeneti hibák történnek. Ez a csatorna a helyi lemezes tárolást is használja a hálózati kimaradások vagy a nagy telemetria-kötetek esetében a lemezen lévő elemek megtartására. Az újrapróbálkozási mechanizmusok és a helyi lemezes tárolás miatt ez a csatorna megbízhatóbbnak minősül, és minden éles környezetben ajánlott. Ez a csatorna az alapértelmezett a [ASP.net](./asp-net.md) és a [ASP.net Core](./asp-net-core.md) a hivatalos dokumentációnak megfelelően konfigurált alkalmazások esetében. Ez a csatorna kiszolgálói forgatókönyvekhez van optimalizálva hosszan futó folyamatokkal. A [`Flush()`](#which-channel-should-i-use) csatorna által megvalósított metódus nem szinkronban van.
 
     Ez a csatorna a Microsoft. ApplicationInsights. WindowsServer. TelemetryChannel NuGet csomagként érhető el, és a Microsoft. ApplicationInsights. web vagy a Microsoft. ApplicationInsights. AspNetCore NuGet csomag használatakor automatikusan megtörténik.
 
@@ -163,7 +164,7 @@ További információ az adatvédelem [és az adatvédelem terén](data-retentio
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
 A Application Insights összes SDK-hoz hasonlóan a csatornák is nyílt forráskódúak. Olvassa el és járuljon hozzá a kód vagy a jelentéssel kapcsolatos problémákhoz [a hivatalos GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet)-tárházban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mintavételezés](../../azure-monitor/app/sampling.md)
 * [SDK – hibaelhárítás](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)

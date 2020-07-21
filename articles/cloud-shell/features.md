@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 409e8667f03843ae1b1bad56f189ff17b29d549a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7324bfec32368e952af8f24afabe893011454df
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506565"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538173"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Szolgáltatások & eszközök Azure Cloud Shell
 
@@ -27,7 +27,7 @@ ms.locfileid: "85506565"
 
 Azure Cloud Shell fut `Ubuntu 16.04 LTS` .
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 ### <a name="secure-automatic-authentication"></a>Biztonságos automatikus hitelesítés
 
@@ -49,19 +49,19 @@ Az Azure-meghajtó az Azure-erőforrások (például számítás, hálózat, tá
 Továbbra is használhatja az ismerős [Azure PowerShell parancsmagokat](https://docs.microsoft.com/powershell/azure) az erőforrások kezeléséhez, függetlenül attól, hogy melyik meghajtóról van.
 Az Azure-erőforrásokon végrehajtott, közvetlenül Azure Portal vagy Azure PowerShell parancsmagokkal végzett módosítások az Azure-meghajtón is megjelennek.  A futtatásával `dir -Force` frissítheti az erőforrásokat.
 
-![](media/features-powershell/azure-drive.png)
+![Képernyőkép egy Azure Cloud Shell inicializálásáról és a címtár erőforrásainak listájáról.](media/features-powershell/azure-drive.png)
 
 ### <a name="manage-exchange-online"></a>Exchange Online kezelése
 
 A Cloud Shell PowerShell az Exchange Online modul privát összeállítását tartalmazza.  `Connect-EXOPSSession`Az Exchange-parancsmagok beszerzéséhez futtassa a parancsot.
 
-![](media/features-powershell/exchangeonline.png)
+![Képernyőkép a EXOPSSession és a Get-User parancsokat futtató Azure Cloud Shellról.](media/features-powershell/exchangeonline.png)
 
  Futtassa a `Get-Command -Module tmp_*` parancsot.
 > [!NOTE]
 > A modul nevének a (z) értékkel kell kezdődnie `tmp_` , ha azonos előtaggal rendelkező modulokat telepített, a parancsmagok is felszínre kerülnek. 
 
-![](media/features-powershell/exchangeonlinecmdlets.png)
+![Képernyőkép a Get-Command-Module tmp_ * parancsot futtató Azure Cloud Shellról.](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>Mélyreható integráció nyílt forráskódú eszközökkel
 
@@ -76,7 +76,7 @@ A Cloud Shell a nyílt forráskódú eszközök, például a Terraform, a Ansibl
 |Szövegszerkesztők           |Code (Cloud Shell Editor)<br> vim<br> nano<br> emacs    |
 |Verziókövetés         |git                    |
 |Buildelő eszközök            |make<br> maven<br> npm<br> pip         |
-|Containers             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLET](https://github.com/dcos/dcos-cli)         |
+|Tárolók             |[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLET](https://github.com/dcos/dcos-cli)         |
 |Adatbázisok              |MySQL-ügyfél<br> PostgreSql-ügyfél<br> [Sqlcmd segédprogram](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [MSSQL – parancsfájl](https://github.com/Microsoft/sql-xplat-cli) |
 |Egyéb                  |iPython-ügyfél<br> [Cloud Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef Inspect](https://www.chef.io/inspec/)<br> [Báb-bolt](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp-csomagoló](https://www.packer.io/)<br> [Office 365 parancssori felület](https://pnp.github.io/office365-cli/)|
 
@@ -85,13 +85,13 @@ A Cloud Shell a nyílt forráskódú eszközök, például a Terraform, a Ansibl
 |Nyelv   |Verzió   |
 |---|---|
 |.NET Core  |2.2.402       |
-|Indítás         |1.9        |
+|Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
 |PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2,7 és 3,5 (alapértelmezett)|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Bash Cloud Shell rövid útmutatóban](quickstart.md) <br>
 [PowerShell Cloud Shell rövid útmutató](quickstart-powershell.md) <br>
 [További tudnivalók az Azure CLI-ről](https://docs.microsoft.com/cli/azure/) <br>

@@ -3,11 +3,12 @@ title: Azure-fájlmegosztás biztonsági másolatainak kezelése a PowerShell-le
 description: Megtudhatja, hogyan kezelheti és figyelheti a PowerShell használatával a Azure Backup szolgáltatás által biztonsági mentés alatt lévő Azure-fájlmegosztást.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 6ee5fb92e4a66a9d6db66514f966c3650d3a4f13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 889c9bb3ef087c700bbfc3a68959f2c5924bffda
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201975"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538593"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Azure-fájlmegosztás biztonsági másolatainak kezelése a PowerShell-lel
 
@@ -18,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell az Azure Backup
 
 ## <a name="modify-the-protection-policy"></a>A védelmi szabályzat módosítása
 
-Az Azure-fájlmegosztás biztonsági mentésére használt szabályzat módosításához használja az [enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0). A megfelelő biztonsági mentési elem és az új biztonsági mentési szabályzat meghatározása.
+Az Azure-fájlmegosztás biztonsági mentésére használt szabályzat módosításához használja az [enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection). A megfelelő biztonsági mentési elem és az új biztonsági mentési szabályzat meghatározása.
 
 A következő példa a **testAzureFS** védelmi szabályzatot a **dailyafs** -ről a **monthlyafs**-re módosítja.
 
@@ -31,7 +32,7 @@ Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsP
 
 ## <a name="track-backup-and-restore-jobs"></a>Biztonsági mentési és visszaállítási feladatok nyomon követése
 
-Az igény szerinti biztonsági mentési és visszaállítási műveletek a feladatokat egy AZONOSÍTÓval együtt visszaadják, ahogyan az [igény szerinti biztonsági mentés futtatásakor](backup-azure-afs-automation.md#trigger-an-on-demand-backup)is látható. A [Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0) parancsmag használatával követheti nyomon a feladatok előrehaladását és részleteit.
+Az igény szerinti biztonsági mentési és visszaállítási műveletek a feladatokat egy AZONOSÍTÓval együtt visszaadják, ahogyan az [igény szerinti biztonsági mentés futtatásakor](backup-azure-afs-automation.md#trigger-an-on-demand-backup)is látható. A [Get-AzRecoveryServicesBackupJobDetails](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) parancsmag használatával követheti nyomon a feladatok előrehaladását és részleteit.
 
 ```powershell
 $job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
@@ -70,7 +71,7 @@ Előfordulhat, hogy a tárolóban lévő helyreállítási pontok elhagyása ut�
 
 ## <a name="stop-protection-and-retain-recovery-points"></a>Védelem leállítása és helyreállítási pontok megőrzése
 
-A védelem leállításához az adat megőrzése mellett használja a [disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0) parancsmagot.
+A védelem leállításához az adat megőrzése mellett használja a [disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) parancsmagot.
 
 A következő példa leállítja a *afsfileshare* -fájlmegosztás védelmét, de megőrzi az összes helyreállítási pontot:
 
@@ -86,11 +87,11 @@ WorkloadName     Operation         Status         StartTime                 EndT
 afsfileshare     DisableBackup     Completed      1/26/2020 2:43:59 PM      1/26/2020 2:44:21 PM      98d9f8a1-54f2-4d85-8433-c32eafbd793f
 ```
 
-A kimenetben lévő Job ID attribútum megfelel a Backup szolgáltatás által a "védelem leállítása" művelethez létrehozott feladatok AZONOSÍTÓjának. A feladatok állapotának nyomon követéséhez használja a [Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-3.3.0) parancsmagot.
+A kimenetben lévő Job ID attribútum megfelel a Backup szolgáltatás által a "védelem leállítása" művelethez létrehozott feladatok AZONOSÍTÓjának. A feladatok állapotának nyomon követéséhez használja a [Get-AzRecoveryServicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) parancsmagot.
 
 ## <a name="stop-protection-without-retaining-recovery-points"></a>A védelem leállítása a helyreállítási pontok megőrzése nélkül
 
-A védelem leállításához a helyreállítási pontok megőrzése nélkül használja a [disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-3.3.0) parancsmagot, és adja hozzá a **-RemoveRecoveryPoints** paramétert.
+A védelem leállításához a helyreállítási pontok megőrzése nélkül használja a [disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) parancsmagot, és adja hozzá a **-RemoveRecoveryPoints** paramétert.
 
 A következő példa leállítja a *afsfileshare* -fájlmegosztás védelmét a helyreállítási pontok megőrzése nélkül:
 
@@ -106,6 +107,6 @@ WorkloadName     Operation            Status         StartTime                 E
 afsfileshare     DeleteBackupData     Completed      1/26/2020 2:50:57 PM      1/26/2020 2:51:39 PM      b1a61c0b-548a-4687-9d15-9db1cc5bcc85
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ismerje meg](manage-afs-backup.md) , hogyan kezelheti az Azure-fájlmegosztás biztonsági másolatait a Azure Portalban.

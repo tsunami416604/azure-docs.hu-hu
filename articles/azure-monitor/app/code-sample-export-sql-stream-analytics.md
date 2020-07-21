@@ -3,12 +3,12 @@ title: Exportálás az Azure-ból az SQL-be Application Insights | Microsoft Doc
 description: Application Insights-SQL-adatbázis folyamatos exportálása a Stream Analytics használatával.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 3c8586e8a6950e827d1078ca7d9cc3792fa58ae0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087230"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540094"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Útmutató: exportálás az SQL rendszerbe Application Insights használatával Stream Analytics
 Ez a cikk bemutatja, hogyan helyezheti át a telemetria-adatait az [Azure Application Insightsból][start] a [folyamatos exportálás][export] és a [Azure stream Analytics](https://azure.microsoft.com/services/stream-analytics/)használatával Azure SQL Databaseba. 
@@ -82,7 +82,7 @@ Győződjön meg arról, hogy a kiszolgáló engedélyezi az Azure-szolgáltatá
 ![Tallózás, kiszolgálók, a kiszolgáló, a beállítások, a tűzfal, az Azure-hoz való hozzáférés engedélyezése](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>Tábla létrehozása Azure SQL Databaseban
-Kapcsolódjon az előző szakaszban létrehozott adatbázishoz az előnyben részesített felügyeleti eszközzel. Ebben az útmutatóban a [SQL Server felügyeleti eszközei](https://msdn.microsoft.com/ms174173.aspx) (SSMS) használatát fogjuk használni.
+Kapcsolódjon az előző szakaszban létrehozott adatbázishoz az előnyben részesített felügyeleti eszközzel. Ebben az útmutatóban a [SQL Server felügyeleti eszközei](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS) használatát fogjuk használni.
 
 ![Kapcsolódás az Azure SQL Database-hez](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
@@ -255,4 +255,3 @@ FROM [dbo].[PageViewsTable]
 [metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
-

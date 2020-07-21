@@ -3,17 +3,18 @@ title: A nyomkövetés súlyossági arányának csökkenése – Azure Applicati
 description: Az alkalmazások nyomon követését az Azure Application Insights az intelligens észleléssel rendelkező nyomkövetési telemetria szokatlan mintázatait figyelheti.
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: 30bdd30ac9c49bb79a3c48bae8149ec761756dd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b27860adfc1652b58fe9c51d4d0b0a6c271fc0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671681"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539873"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>A nyomkövetés súlyossági arányának csökkenése (előzetes verzió)
 
 A nyomkövetéseket széles körben használják az alkalmazásokban, mivel ezek segítenek megismerni a jelenetek mögötti történések történetét. Ha a dolgok helytelenek, a Nyomkövetések kritikus láthatóságot biztosítanak a nemkívánatos állapotot eredményező események sorrendjében. Míg a Nyomkövetések általában strukturálatlan, az egyik dolog, ami konkrétan megtudhatja tőlük a súlyossági szintet. Az alkalmazás állandó állapotában a "jó" nyomkövetési*adatok (információ* és *részletes*információk) és a "rossz" (*Figyelmeztetés*, *hiba*és *kritikus*) közötti arány marad a stabil működés érdekében. Ennek az az oka, hogy a "rossz" nyomon követések rendszeres időközönként, bizonyos számú ok miatt előfordulhatnak (átmeneti hálózati problémák esetén). De ha egy valós probléma egyre nő, az általában a "rossz", a "jó" nyomok relatív arányának növekedésével nyilvánul meg. Application Insights az intelligens észlelés automatikusan elemzi az alkalmazás által naplózott nyomokat, és figyelmezteti a szokatlan mintákat a nyomkövetési telemetria súlyosságára.
 
-Ehhez a szolgáltatáshoz nem szükséges speciális beállítás, az alkalmazás nyomkövetési naplózásának konfigurálása nélkül (lásd: nyomkövetési naplók konfigurálása [.net](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) vagy [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs)esetén). Akkor aktív, ha az alkalmazás elég kivételt hoz létre a telemetria.
+Ehhez a szolgáltatáshoz nem szükséges speciális beállítás, az alkalmazás nyomkövetési naplózásának konfigurálása nélkül (lásd: nyomkövetési naplók konfigurálása [.net](./asp-net-trace-logs.md) vagy [Java](./java-trace-logs.md)esetén). Akkor aktív, ha az alkalmazás elég kivételt hoz létre a telemetria.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Mikor kapok ilyen típusú intelligens észlelési értesítést?
 Ez a típusú értesítés akkor fordulhat elő, ha a "jó" nyomok (az információ vagy a *részletes* *adatokkal* naplózott Nyomkövetések) és a "rossz" nyomok közötti arány (a *Figyelmeztetési*, *hiba*vagy *végzetes*szintű Nyomkövetések) egy adott napon, az előző hét napban kiszámított alapértékkel összehasonlítva van.
@@ -26,5 +27,3 @@ Az értesítések közé tartoznak a diagnosztikai információk, amelyek támog
 1. **Osztályozás.** Az értesítésből megtudhatja, hogy hány műveletet érint. Ez segíthet a probléma prioritásának hozzárendelésében.
 2. **Hatókör.** A probléma hatással van az összes forgalomra, vagy csak néhány műveletre? Ezeket az információkat az értesítésből lehet beszerezni.
 3. **Diagnosztizálása.** A probléma további diagnosztizálásához a kapcsolódó elemek és jelentések hivatkozását használhatja a támogatási információkhoz.
-
-

@@ -3,12 +3,12 @@ title: Mi a Language Understanding (LUIS)?
 description: A Language Understanding (LUIS) egy olyan felhőalapú API-szolgáltatás, amely egyéni gépi tanulási intelligenciát használ a felhasználó párbeszédszerű, természetes nyelvi szövege általános jelentésének megállapítására, valamint a releváns, részletes információk kinyerésére.
 ms.topic: overview
 ms.date: 05/05/2020
-ms.openlocfilehash: 26e1dfd5a610be9470d05080ca1559eec47196ab
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 231a6580a6776b82173865744e9e8757c2fa08f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675993"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538037"
 ---
 # <a name="what-is-language-understanding-luis"></a>Mi a Language Understanding (LUIS)?
 
@@ -61,7 +61,7 @@ A LUIS-modell a **[szándékok](luis-concept-intent.md)** elnevezésű felhaszn�
 
 ## <a name="query-prediction-endpoint"></a>Előrejelzési végpont lekérdezése
 
-Miután az alkalmazást betanítják és közzétették a végponton, az ügyfélalkalmazás hosszúságú kimondott szöveg küld az előrejelzési [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) API-nak. Az API a teljes elemzésre alkalmazza az alkalmazást, és az előrejelzési eredményeket JSON formátumban válaszolja meg.
+Miután az alkalmazást betanítják és közzétették a végponton, az ügyfélalkalmazás hosszúságú kimondott szöveg küld az előrejelzési [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) API-nak. Az API a modellt a teljes elemzésre alkalmazza, és az előrejelzési eredményeket JSON formátumban adja meg.
 
 A JSON-végpont minimális válasza tartalmazza a lekérdezési kimondott szöveget, valamint a legmagasabb pontszámú szándékot. Emellett olyan adatok kinyerése is kinyerhető, mint például a következő **kapcsolatfelvételi típus** entitás és az általános hangulat.
 

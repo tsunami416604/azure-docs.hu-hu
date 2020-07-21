@@ -6,11 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114410"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539549"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Logikai alkalmazások és runbookok előkészítése a klasszikus riasztási szabályok migrálására
 
@@ -27,12 +28,12 @@ A klasszikus riasztási szabályokat létrehozó és kezelő API-k `microsoft.in
 
 A következő táblázat a klasszikus és az új riasztások programozott interfészeit ismerteti:
 
-|         |Klasszikus riasztások  |Új metrikai riasztások |
-|---------|---------|---------|
-|REST API     | [Microsoft. bepillantások/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [Microsoft. bepillantások/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [az monitor Alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor Metrics Alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
-|PowerShell      | [Hivatkozás](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Hivatkozás](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
-| Azure Resource Manager-sablon | [Klasszikus riasztások esetén](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Új metrikai riasztások esetén](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
+| Telepítési parancsfájl típusa | Klasszikus riasztások | Új metrikai riasztások |
+| ---------------------- | -------------- | ----------------- |
+|REST API     | [Microsoft. bepillantások/alertrules](/rest/api/monitor/alertrules)         | [Microsoft. bepillantások/metricalerts](/rest/api/monitor/metricalerts)       |
+|Azure CLI     | [az monitor Alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor Metrics Alert](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|PowerShell      | [Referencia](/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referencia](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
+| Azure Resource Manager-sablon | [Klasszikus riasztások esetén](./alerts-enable-template.md)|[Új metrikai riasztások esetén](./alerts-metric-create-templates.md)|
 
 ## <a name="notification-payload-changes"></a>Értesítési tartalom változásai
 
@@ -40,8 +41,8 @@ Az értesítési hasznos adatok formátuma némileg eltér a [klasszikus riaszt�
 
 A következő táblázat segítségével leképezheti a webhook hasznos adatait tartalmazó mezőket a klasszikus formátumból az új formátumba:
 
-|  |Klasszikus riasztások  |Új metrikai riasztások |
-|---------|---------|---------|
+| Értesítési végpont típusa | Klasszikus riasztások | Új metrikai riasztások |
+| -------------------------- | -------------- | ----------------- |
 |Aktiválták vagy megoldották a riasztást?    | **állapota**       | **az adat. status** |
 |A riasztás kontextusával kapcsolatos információk     | **összefüggésben**        | **az adat. Context**        |
 |A riasztás aktiválásának vagy feloldásának időbélyegzője     | **Context. timestamp**       | **az adat. Context. timestamp**        |
@@ -149,11 +150,11 @@ else {
 
 ```
 
-A virtuális gépet egy riasztás indításakor leállító runbook teljes példáját a [Azure Automation dokumentációjában](https://docs.microsoft.com/azure/automation/automation-create-alert-triggered-runbook)találja.
+A virtuális gépet egy riasztás indításakor leállító runbook teljes példáját a [Azure Automation dokumentációjában](../../automation/automation-create-alert-triggered-runbook.md)találja.
 
 ## <a name="partner-integration-via-webhooks"></a>Partner-integráció webhookok használatával
 
-A [klasszikus riasztásokkal integrált partnereink](https://docs.microsoft.com/azure/azure-monitor/platform/partners) többsége már támogatja az újabb metrikai riasztásokat az integrációjuk során. Az új metrikai riasztásokkal már működő ismert integrációk a következők:
+A [klasszikus riasztásokkal integrált partnereink](./partners.md) többsége már támogatja az újabb metrikai riasztásokat az integrációjuk során. Az új metrikai riasztásokkal már működő ismert integrációk a következők:
 
 - [PagerDuty](https://www.pagerduty.com/docs/guides/azure-integration-guide/)
 - [OpsGenie](https://docs.opsgenie.com/docs/microsoft-azure-integration)
@@ -161,7 +162,7 @@ A [klasszikus riasztásokkal integrált partnereink](https://docs.microsoft.com/
 
 Ha olyan partner-integrációt használ, amely itt nem szerepel, erősítse meg az integrációs szolgáltatót, hogy az integráció működik az új metrikai riasztásokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A migrálási eszköz használata](alerts-using-migration-tool.md)
 - [A migrálási eszköz működésének ismertetése](alerts-understand-migration.md)

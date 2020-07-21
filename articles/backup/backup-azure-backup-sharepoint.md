@@ -3,12 +3,12 @@ title: SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
 description: Ez a cikk áttekintést nyújt a SharePoint-farmok Azure-ba való DPM/Azure Backup kiszolgáló védelméről
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 0199495e3b0eb002e58c096ed9abf05d46f43f97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 447776af7cb021fd0c3381334bf3acf258ff22ab
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80054115"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539108"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
 
@@ -18,7 +18,7 @@ A SharePoint az Azure-ba történő biztonsági mentése nagyon hasonló folyama
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>A SharePoint által támogatott verziók és kapcsolódó védelmi forgatókönyvek
 
-A támogatott SharePoint-verziók, illetve a biztonsági mentésükhöz szükséges DPM-verziók felsorolását a [Miről tud biztonsági másolatot készíteni a DPM?](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019#applications-backup) című cikk tartalmazza.
+A támogatott SharePoint-verziók, illetve a biztonsági mentésükhöz szükséges DPM-verziók felsorolását a [Miről tud biztonsági másolatot készíteni a DPM?](/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019#applications-backup) című cikk tartalmazza.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -28,19 +28,19 @@ A SharePoint-farmok Azure-ba történő biztonsági mentése előtt néhány dol
 
 A folytatás előtt győződjön meg arról, hogy teljesítette az [Microsoft Azure Backup használatára vonatkozó összes előfeltételt](backup-azure-dpm-introduction.md#prerequisites-and-limitations) a munkaterhelések elleni védelemhez. Az előfeltételek egyes feladatai közé tartozik a Backup-tároló létrehozása, a tár hitelesítő adatainak letöltése, Azure Backup ügynök telepítése, valamint a DPM/Azure Backup Server regisztrálása a tárolóval.
 
-További előfeltételeket és korlátozásokat a [SharePoint biztonsági mentése a DPM](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#prerequisites-and-limitations) című cikkben találhat.
+További előfeltételeket és korlátozásokat a [SharePoint biztonsági mentése a DPM](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#prerequisites-and-limitations) című cikkben találhat.
 
 ## <a name="configure-backup"></a>Biztonsági mentés konfigurálása
 
-A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint-védelmet a ConfigureSharePoint.exe segítségével, majd hozzon létre egy védelmi csoportot a DPM-ben. Útmutatásért lásd: a [biztonsági mentés konfigurálása](https://docs.microsoft.com//system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup) a DPM dokumentációjában.
+A SharePoint-farm biztonsági mentéséhez konfigurálja a SharePoint-védelmet a ConfigureSharePoint.exe segítségével, majd hozzon létre egy védelmi csoportot a DPM-ben. Útmutatásért lásd: a [biztonsági mentés konfigurálása](//system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup) a DPM dokumentációjában.
 
 ## <a name="monitoring"></a>Figyelés
 
-A biztonsági mentési feladat figyeléséhez kövesse a [DPM biztonsági mentésének figyelése](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#monitoring) című témakör útmutatását.
+A biztonsági mentési feladat figyeléséhez kövesse a [DPM biztonsági mentésének figyelése](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#monitoring) című témakör útmutatását.
 
 ## <a name="restore-sharepoint-data"></a>SharePoint-adatok helyreállítása
 
-A SharePoint-elemek DPM-alapú lemezről történő visszaállításáról a SharePoint- [adatok visszaállítása](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#restore-sharepoint-data)című témakörben olvashat bővebben.
+A SharePoint-elemek DPM-alapú lemezről történő visszaállításáról a SharePoint- [adatok visszaállítása](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#restore-sharepoint-data)című témakörben olvashat bővebben.
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>SharePoint-adatbázis visszaállítása az Azure-ból a DPM használatával
 
@@ -71,9 +71,9 @@ A SharePoint-elemek DPM-alapú lemezről történő visszaállításáról a Sha
 
 ## <a name="switching-the-front-end-web-server"></a>Az előtér-webkiszolgáló váltása
 
-Ha több előtér-webkiszolgálóval rendelkezik, és át szeretné váltani a DPM által a farm védeleméhez használt kiszolgálót, kövesse az [előtér-webkiszolgáló váltásának](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server)utasításait.
+Ha több előtér-webkiszolgálóval rendelkezik, és át szeretné váltani a DPM által a farm védeleméhez használt kiszolgálót, kövesse az [előtér-webkiszolgáló váltásának](/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server)utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Backup Server és DPM – gyakori kérdések](backup-azure-dpm-azure-server-faq.md)
 * [A System Center Data Protection Manager hibaelhárítása](backup-azure-scdpm-troubleshooting.md)

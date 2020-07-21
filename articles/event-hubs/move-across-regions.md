@@ -3,12 +3,12 @@ title: Azure Event Hubs-névtér áthelyezése másik régióba | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan helyezhet át egy Azure Event Hubs-névteret az aktuális régióból egy másik régióba.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: a70397772d22a65046f87877deab6263d4b2104f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51b02c34b0c28420a7e27da56b107ed3925a761b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312961"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537071"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Azure Event Hubs-névtér áthelyezése másik régióba
 Különböző helyzetekben érdemes áthelyezni a meglévő Event Hubs névteret az egyik régióból a másikba. Előfordulhat például, hogy létre szeretne hozni egy névteret ugyanazzal a konfigurációval a teszteléshez. A vész- [helyreállítási tervezés](event-hubs-geo-dr.md#setup-and-failover-flow)részeként másodlagos névteret is létre kell hoznia egy másik régióban.
@@ -52,7 +52,7 @@ A sablon üzembe helyezésével hozzon létre egy Event Hubs névteret a célké
 
 3. Válassza a **template Deployment**lehetőséget.
 
-4. Válassza a **Létrehozás** lehetőséget.
+4. Kattintson a **Létrehozás** gombra.
 
 5. Válassza **a saját sablon létrehozása lehetőséget a szerkesztőben**.
 
@@ -103,10 +103,10 @@ Event Hubs névtér (forrás vagy cél) törlése a Azure Portal használatával
 
 3. Az **erőforrások törlése*** lapon ellenőrizze a kiválasztott erőforrásokat, és erősítse meg a törlést az **Igen**érték beírásával, majd válassza a **Törlés**lehetőséget. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Azure Event Hubs névteret helyezett át egyik régióból a másikba, és megtisztította a forrás erőforrásait.  Ha többet szeretne megtudni a régiók és a vész-helyreállítás között az Azure-ban, tekintse meg a következőt:
 
 
-- [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Azure-beli virtuális gépek áthelyezése egy másik régióba](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+- [Azure-beli virtuális gépek áthelyezése egy másik régióba](../site-recovery/azure-to-azure-tutorial-migrate.md)

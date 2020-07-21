@@ -3,11 +3,12 @@ title: A Recovery Services-tárolók áttekintése
 description: Áttekintés és összehasonlítás Recovery Services-tárolók és Azure Backup-tárolók között.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11a218badfab141c41430c3f48a5e930bfa1af8b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248906"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539040"
 ---
 # <a name="recovery-services-vaults-overview"></a>A helyreállítási tárak áttekintése
 
@@ -35,9 +36,9 @@ Recovery Services-tárolók az Azure Azure Resource Manager modelljén alapulnak
 
 A Recovery Services-tároló egy olyan entitás, amely az idő múlásával létrehozott biztonsági mentéseket és helyreállítási pontokat tárolja. A Recovery Services-tároló a védett virtuális gépekhez társított biztonsági mentési házirendeket is tartalmazza.
 
-A Azure Backup automatikusan kezeli a tároló tárterületét. Megtudhatja, hogyan [módosíthatók a tárolási beállítások](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy).
+A Azure Backup automatikusan kezeli a tároló tárterületét. Megtudhatja, hogyan [módosíthatók a tárolási beállítások](./backup-create-rs-vault.md#set-storage-redundancy).
 
-A tárterület-redundanciával kapcsolatos további tudnivalókért tekintse meg a [geo](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) és a [helyi](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs) redundancia című cikket.
+A tárterület-redundanciával kapcsolatos további tudnivalókért tekintse meg a [geo](../storage/common/storage-redundancy.md) és a [helyi](../storage/common/storage-redundancy.md) redundancia című cikket.
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Recovery Services-tárolók kezelése a portálon
 
@@ -61,7 +62,7 @@ A következő szakaszokban olyan cikkekre mutató hivatkozások találhatók, am
 ### <a name="back-up-data"></a>Adatok biztonsági mentése
 
 - [Azure-beli virtuális gép biztonsági mentése](backup-azure-vms-first-look-arm.md)
-- [Windows Server-vagy Windows-munkaállomás biztonsági mentése](backup-try-azure-backup-in-10-mins.md)
+- [Windows Server-vagy Windows-munkaállomás biztonsági mentése](./backup-windows-with-mars-agent.md)
 - [DPM-munkaterhelések biztonsági mentése az Azure-ba](backup-azure-dpm-introduction.md)
 - [Munkaterhelések biztonsági mentésének előkészítése Azure Backup Server használatával](backup-azure-microsoft-azure-backup.md)
 
@@ -81,13 +82,13 @@ A következő szakaszokban olyan cikkekre mutató hivatkozások találhatók, am
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
-A [Azure Advisor](https://docs.microsoft.com/azure/advisor/) egy személyre szabott felhőalapú tanácsadó, amely segít optimalizálni az Azure használatát. Elemzi az Azure-használatot, és időben ajánlásokat nyújt az üzemelő példányok optimalizálásához és biztonságossá tételéhez. Négy kategóriában nyújt javaslatokat: magas rendelkezésre állás, biztonság, teljesítmény és költséghatékonyság.
+A [Azure Advisor](../advisor/index.yml) egy személyre szabott felhőalapú tanácsadó, amely segít optimalizálni az Azure használatát. Elemzi az Azure-használatot, és időben ajánlásokat nyújt az üzemelő példányok optimalizálásához és biztonságossá tételéhez. Négy kategóriában nyújt javaslatokat: magas rendelkezésre állás, biztonság, teljesítmény és költséghatékonyság.
 
-A Azure Advisor óránként [javaslatokat](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion) nyújt a virtuális gépekről, amelyekről nem készül biztonsági mentés, így soha nem marad a fontos virtuális gépek biztonsági mentése. Az ajánlásokat úgy is szabályozhatja, hogy a késleltetéssel megadhatja őket.  Kattintson a javaslatra, és engedélyezze a biztonsági mentést a virtuális gépeken, a tároló (a biztonsági másolatok tárolási helye) és a biztonsági mentési szabályzat (biztonsági mentések ütemezése és biztonsági másolatok megőrzése) megadásával.
+A Azure Advisor óránként [javaslatokat](../advisor/advisor-high-availability-recommendations.md#protect-your-virtual-machine-data-from-accidental-deletion) nyújt a virtuális gépekről, amelyekről nem készül biztonsági mentés, így soha nem marad a fontos virtuális gépek biztonsági mentése. Az ajánlásokat úgy is szabályozhatja, hogy a késleltetéssel megadhatja őket.  Kattintson a javaslatra, és engedélyezze a biztonsági mentést a virtuális gépeken, a tároló (a biztonsági másolatok tárolási helye) és a biztonsági mentési szabályzat (biztonsági mentések ütemezése és biztonsági másolatok megőrzése) megadásával.
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkek használhatók:</br>
 [IaaS virtuális gép biztonsági mentése](backup-azure-arm-vms-prepare.md)</br>

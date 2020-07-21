@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 569731faffd97e816567af3f6ed1cf8cdf49f240
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740450"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539329"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Útmutató a Log Analytics és Application Insights tárolt személyes adatszolgáltatásokhoz
 
@@ -66,8 +67,8 @@ A Log Analytics egy rugalmas tároló, amely egy séma az adatokhoz való előí
     | where timestamp > ago(1d)
     | project $table, timestamp, name, customDimensions 
     ```
-* *Memóriában tárolt és átvitel*alatt álló adat: Application Insights a kivételeket, a kérelmeket, a függőségi hívásokat és a nyomkövetéseket fogja követni. A magánjellegű adatokat gyakran a kód és a HTTP-hívás szintjén lehet gyűjteni. Tekintse át a kivételeket, a kérelmeket, a függőségeket és a nyomkövetési táblázatokat az ilyen jellegű adat azonosításához. Ha lehetséges, használja a [telemetria-inicializálást](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling) , ahol a lehető legtöbbet használhatja ezeket az adatfájlokat.
-* *Snapshot Debugger Captures*: a Application Insights [Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger) szolgáltatása lehetővé teszi a hibakeresési Pillanatképek gyűjtését, ha kivétel történik az alkalmazás éles példányán. A pillanatképek lehetővé teszik a teljes verem nyomon követését, amely a kivételekhez vezet, valamint a helyi változók értékeit a verem minden lépésében. Ez a funkció sajnos nem teszi lehetővé a Snap pontok szelektív törlését, illetve az adatokhoz való programozott hozzáférést a pillanatképen belül. Ezért ha az alapértelmezett pillanatkép-megőrzési arány nem felel meg a megfelelőségi követelményeknek, a javaslat a funkció kikapcsolására szolgál.
+* *Memóriában tárolt és átvitel*alatt álló adat: Application Insights a kivételeket, a kérelmeket, a függőségi hívásokat és a nyomkövetéseket fogja követni. A magánjellegű adatokat gyakran a kód és a HTTP-hívás szintjén lehet gyűjteni. Tekintse át a kivételeket, a kérelmeket, a függőségeket és a nyomkövetési táblázatokat az ilyen jellegű adat azonosításához. Ha lehetséges, használja a [telemetria-inicializálást](../app/api-filtering-sampling.md) , ahol a lehető legtöbbet használhatja ezeket az adatfájlokat.
+* *Snapshot Debugger Captures*: a Application Insights [Snapshot Debugger](../app/snapshot-debugger.md) szolgáltatása lehetővé teszi a hibakeresési Pillanatképek gyűjtését, ha kivétel történik az alkalmazás éles példányán. A pillanatképek lehetővé teszik a teljes verem nyomon követését, amely a kivételekhez vezet, valamint a helyi változók értékeit a verem minden lépésében. Ez a funkció sajnos nem teszi lehetővé a Snap pontok szelektív törlését, illetve az adatokhoz való programozott hozzáférést a pillanatképen belül. Ezért ha az alapértelmezett pillanatkép-megőrzési arány nem felel meg a megfelelőségi követelményeknek, a javaslat a funkció kikapcsolására szolgál.
 
 ## <a name="how-to-export-and-delete-private-data"></a>Magánjellegű adatexportálás és-törlés
 
@@ -100,7 +101,7 @@ A Azure Resource Manager szerepkör hozzárendelése után két új API-elérés
 
 #### <a name="log-data"></a>Naplóadatok
 
-* Törlés [után](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge) – egy olyan objektumot vesz fel, amely meghatározza a törölni kívánt adatok paramétereit, és egy hivatkozás GUID azonosítóját adja vissza. 
+* Törlés [után](/rest/api/loganalytics/workspacepurge/purge) – egy olyan objektumot vesz fel, amely meghatározza a törölni kívánt adatok paramétereit, és egy hivatkozás GUID azonosítóját adja vissza. 
 * Kiürítési állapot beolvasása – a törlés utáni hívás egy "x-MS-status-Location" fejlécet ad vissza, amely tartalmaz egy URL-címet, amelyet meghívhat a kiürítő API állapotának meghatározásához. Például:
 
     ```
@@ -112,7 +113,7 @@ A Azure Resource Manager szerepkör hozzárendelése után két új API-elérés
 
 #### <a name="application-data"></a>Alkalmazásadatok
 
-* Törlés [után](https://docs.microsoft.com/rest/api/application-insights/components/purge) – egy olyan objektumot vesz fel, amely meghatározza a törölni kívánt adatok paramétereit, és egy hivatkozás GUID azonosítóját adja vissza.
+* Törlés [után](/rest/api/application-insights/components/purge) – egy olyan objektumot vesz fel, amely meghatározza a törölni kívánt adatok paramétereit, és egy hivatkozás GUID azonosítóját adja vissza.
 * Kiürítési állapot beolvasása – a törlés utáni hívás egy "x-MS-status-Location" fejlécet ad vissza, amely tartalmaz egy URL-címet, amelyet meghívhat a kiürítő API állapotának meghatározásához. Például:
 
    ```
@@ -122,6 +123,6 @@ A Azure Resource Manager szerepkör hozzárendelése után két új API-elérés
 > [!IMPORTANT]
 >  Habár a kitisztítási műveletek túlnyomó többsége sokkal gyorsabban teljesíthető, mint az SLA, mivel jelentős hatással vannak az Application Insights által használt adatplatformra, **a törlési műveletek befejezésére vonatkozó formális SLA 30 napon belül be van állítva**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ha többet szeretne megtudni a Log Analytics adatok gyűjtéséről, feldolgozásáról és védelméről, tekintse meg a [log Analytics az adatbiztonságot](../../azure-monitor/platform/data-security.md)ismertető témakört.
 - Ha többet szeretne megtudni a Application Insights adatok gyűjtéséről, feldolgozásáról és védelméről, tekintse meg a [Application Insights az adatbiztonságot](../../azure-monitor/app/data-retention-privacy.md)ismertető témakört.

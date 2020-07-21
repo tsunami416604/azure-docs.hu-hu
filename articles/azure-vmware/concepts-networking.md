@@ -3,11 +3,12 @@ title: Fogalmak – hálózati kapcsolat
 description: Ismerje meg az Azure VMware-megoldás (AVS) legfontosabb szempontjait és a Hálózatkezelés és az összekapcsolhatóság alkalmazási eseteit
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 35d886fe0f6a68e522d7f2cf20b450b5d9afc199
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2378ad56e2754b2d2fde7f895f6673e7d7d561c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629207"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539142"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware-megoldás (AVS) – előzetes hálózati és összekapcsolási fogalmak
 
@@ -74,12 +75,11 @@ Az alhálózatok:
 | Virtuális gépek számítási feladatai | `/24`   | `10.10.2.0/24`   |
 | ExpressRoute-társítás | `/24`    | `10.10.3.8/30`   |
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 A következő lépés a [saját Felhőbeli tárolási fogalmak](concepts-storage.md)megismerése.
 
 <!-- LINKS - external -->
-[enable Global Reach]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-set-global-reach
+[enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md
 
 <!-- LINKS - internal -->
-

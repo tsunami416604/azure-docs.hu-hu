@@ -4,15 +4,16 @@ description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azur
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82800651"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538768"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
-Ez a cikk az Azure-beli virtuális gépek [Azure Backup](backup-introduction-to-azure-backup.md) szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre ad választ.
+Ez a cikk az Azure-beli virtuális gépek [Azure Backup](./backup-overview.md) szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="backup"></a>Backup
 
@@ -82,7 +83,7 @@ Nem lehet pillanatképeket felvenni a WA-kompatibilis lemezre. A Azure Backup sz
 
 Azure Backup nem tud biztonsági másolatot készíteni a WA-kompatibilis lemezről, de kizárhatja azt a biztonsági mentésből. A biztonsági mentés azonban nem biztosít adatbázis-konzisztenciát, mert a WA-kompatibilis lemezen található információk nem rendelkeznek biztonsági mentéssel. Ebben a konfigurációban biztonsági mentést készíthet a lemezekről, ha az operációs rendszer lemezének biztonsági mentését kívánja végezni, valamint a nem a WA-kompatibilis lemezek biztonsági mentését.
 
-A Azure Backup egy 15 perces RPO rendelkező SAP HANA-adatbázisokhoz biztosít streaming biztonsági mentési megoldást. Az SAP által tanúsított Backint natív biztonsági mentési támogatást biztosítanak a SAP HANA natív API-jai kihasználásához. További [információ a SAP HANA adatbázisok Azure-beli virtuális gépeken történő biztonsági mentéséről](https://docs.microsoft.com/azure/backup/sap-hana-db-about).
+A Azure Backup egy 15 perces RPO rendelkező SAP HANA-adatbázisokhoz biztosít streaming biztonsági mentési megoldást. Az SAP által tanúsított Backint natív biztonsági mentési támogatást biztosítanak a SAP HANA natív API-jai kihasználásához. További [információ a SAP HANA adatbázisok Azure-beli virtuális gépeken történő biztonsági mentéséről](./sap-hana-db-about.md).
 
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>Mi a maximális késleltetés a virtuális gép biztonsági mentési házirendjében beállított ütemezett biztonsági mentési idő alapján a biztonsági mentés kezdési idején?
 
@@ -128,7 +129,11 @@ A visszaállítási folyamat változatlan marad. Ha a helyreállítási pont oly
 
 [További](backup-azure-vms-automation.md#restore-an-azure-vm) információ a PowerShellben való használatáról.
 
-### <a name="can-i-restore-the-vm-thats-been-deleted"></a>Visszaállíthatom a törölt virtuális gépet?
+### <a name="if-the-restore-fails-to-create-the-vm-what-happens-to-the-disks-included-in-the-restore"></a>Ha a visszaállítás nem sikerül létrehozni a virtuális gépet, mi történik a visszaállításban található lemezekkel?
+
+Felügyelt virtuális gépek visszaállítása esetén, még akkor is, ha a virtuális gép létrehozása meghiúsul, a lemezeket továbbra is visszaállítja a rendszer.
+
+### <a name="can-i-restore-a-vm-thats-been-deleted"></a>Visszaállíthatok egy törölt virtuális gépet?
 
 Igen. Még ha törli is a virtuális gépet, a tárolóban található megfelelő biztonsági másolati elemre kattintva visszaállíthatja a helyreállítási pontot.
 
@@ -142,13 +147,13 @@ Az [azonnali visszaállítási](backup-instant-restore-capability.md) funkció s
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Mi történik, ha módosítjuk a titkosított virtuális gép Key Vault-beállításait?
 
-Miután módosította a kulcstároló beállításait a titkosított virtuális gép számára, a biztonsági mentések továbbra is az új készlettel fognak működni. A helyreállítási pont visszaállítása után azonban a módosítás előtt vissza kell állítania a kulcstartóban lévő titkos kulcsokat, mielőtt a virtuális gépet létre tudja hozni belőle. További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret).
+Miután módosította a kulcstároló beállításait a titkosított virtuális gép számára, a biztonsági mentések továbbra is az új készlettel fognak működni. A helyreállítási pont visszaállítása után azonban a módosítás előtt vissza kell állítania a kulcstartóban lévő titkos kulcsokat, mielőtt a virtuális gépet létre tudja hozni belőle. További információkért tekintse meg [ezt a cikket](./backup-azure-restore-key-secret.md).
 
-Az olyan műveletek, mint a titkos kulcs/kulcsok átadása nem igénylik ezt a lépést, és ugyanazt a kulcstartót is használhatják a visszaállítás után.
+Az olyan műveletek, mint a titkos kulcs/kulcsok átadása nem igénylik ezt a lépést, és ugyanezt a kulcstartót is használhatja a visszaállítás után.
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>A virtuális gép a tartományvezérlővel megszakadt kapcsolattal rendelkező virtuális gépek miatt is elérhető a helyreállításhoz?
 
-Igen, a virtuális gépet a rendszer visszaállította a tartományvezérlővel megszakadt kapcsolatot biztosító virtuális gép miatt. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)
+Igen, a virtuális gépet a rendszer visszaállította a tartományvezérlővel megszakadt kapcsolatot biztosító virtuális gép miatt. További információkért tekintse meg ezt a [cikket](./backup-azure-arm-restore-vms.md#post-restore-steps)
 
 ## <a name="manage-vm-backups"></a>Virtuális gép biztonsági mentéseinek kezelése
 

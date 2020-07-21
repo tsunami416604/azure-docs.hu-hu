@@ -3,11 +3,12 @@ title: Azure Files visszaállítása a PowerShell-lel
 description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza Azure Files a Azure Backup szolgáltatás és a PowerShell használatával.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23de6e1e352a1b72d1435fc65d6a59ab37d838b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201953"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538547"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure Files visszaállítása a PowerShell-lel
 
@@ -23,7 +24,7 @@ Visszaállíthat egy teljes fájlmegosztást vagy adott fájlokat a megosztáson
 
 ## <a name="fetch-recovery-points"></a>Helyreállítási pontok beolvasása
 
-A [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) használatával listázhatja a biztonsági másolatban szereplő elemek összes helyreállítási pontját.
+A [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) használatával listázhatja a biztonsági másolatban szereplő elemek összes helyreállítási pontját.
 
 A következő parancsfájlban:
 
@@ -62,7 +63,7 @@ A megfelelő helyreállítási pont kiválasztása után visszaállíthatja a f�
 
 ## <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Azure-fájlmegosztás visszaállítása másik helyre
 
-A [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) használatával állítsa vissza a kijelölt helyreállítási pontot. Adja meg ezeket a paramétereket a másik hely azonosításához:
+A [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) használatával állítsa vissza a kijelölt helyreállítási pontot. Adja meg ezeket a paramétereket a másik hely azonosításához:
 
 * **TargetStorageAccountName**: a Storage-fiók, amelyhez a biztonsági másolat tartalma vissza lesz állítva. A célként megadott Storage-fióknak a tárolóval megegyező helyen kell lennie.
 * **TargetFileShareName**: a fájlmegosztás azon fiókján belüli megosztás, amelyhez a biztonsági másolat tartalma vissza lesz állítva.
@@ -85,7 +86,7 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 ## <a name="restore-an-azure-file-to-an-alternate-location"></a>Azure-fájl visszaállítása másik helyre
 
-A [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) használatával állítsa vissza a kijelölt helyreállítási pontot. Adja meg ezeket a paramétereket a másik hely azonosításához, valamint a visszaállítani kívánt fájl egyedi azonosításához.
+A [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) használatával állítsa vissza a kijelölt helyreállítási pontot. Adja meg ezeket a paramétereket a másik hely azonosításához, valamint a visszaállítani kívánt fájl egyedi azonosításához.
 
 * **TargetStorageAccountName**: a Storage-fiók, amelyhez a biztonsági másolat tartalma vissza lesz állítva. A célként megadott Storage-fióknak a tárolóval megegyező helyen kell lennie.
 * **TargetFileShareName**: a fájlmegosztás azon fiókján belüli megosztás, amelyhez a biztonsági másolat tartalma vissza lesz állítva.
@@ -120,7 +121,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File 
 
 ## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Több fájl vagy mappa visszaállítása eredetire vagy másik helyre
 
-A [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) parancs használatával adja meg az összes olyan fájl vagy mappa elérési útját, amelyet vissza szeretne állítani a **MultipleSourceFilePath** paraméter értékeként.
+A [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) parancs használatával adja meg az összes olyan fájl vagy mappa elérési útját, amelyet vissza szeretne állítani a **MultipleSourceFilePath** paraméter értékeként.
 
 ### <a name="restore-multiple-files"></a>Több fájl visszaállítása
 
@@ -168,6 +169,6 @@ azurefiles           Restore           InProgress      4/5/2020 8:01:24 AM      
 
 Ha több fájlt vagy mappát kíván visszaállítani másik helyre, használja a fenti parancsfájlokat a célhelyhez kapcsolódó paraméterek értékének megadásával, ahogy azt az [Azure-fájl visszaállítása egy másik helyre](#restore-an-azure-file-to-an-alternate-location)című részben leírtak szerint.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók](restore-afs.md) a Azure Portal Azure Files visszaállításáról.

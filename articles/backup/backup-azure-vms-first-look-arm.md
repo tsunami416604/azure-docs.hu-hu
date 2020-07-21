@@ -3,11 +3,12 @@ title: Azure-beli virtuális gép biztonsági mentése a virtuális gép beáll�
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést egy egyedi Azure-beli vagy több Azure-beli virtuális gépről a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 580cb1ad5f611991212bc8cdb48c66339f14d8e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76705445"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538887"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Azure-beli virtuális gép biztonsági mentése a virtuális gép beállításaiból
 
@@ -25,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot készíteni az Azur
 
 Az Azure-beli virtuális gépek biztonsági mentéséhez Azure Backup telepít egy bővítményt a gépen futó virtuálisgép-ügynökön. Ha a virtuális gép Azure Piactéri rendszerképből lett létrehozva, az ügynök futni fog. Bizonyos esetekben például létrehozhat egy egyéni virtuális gépet, vagy áttelepítheti a gépet a helyszínről. Előfordulhat, hogy manuálisan kell telepítenie az ügynököt.
 
-- Ha manuálisan kell telepítenie a virtuálisgép-ügynököt, kövesse a Windows vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) [rendszerű](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) virtuális gépekre vonatkozó utasításokat.
+- Ha manuálisan kell telepítenie a virtuálisgép-ügynököt, kövesse a Windows vagy [Linux](../virtual-machines/extensions/agent-linux.md) [rendszerű](../virtual-machines/extensions/agent-windows.md) virtuális gépekre vonatkozó utasításokat.
 - Miután telepítette az ügynököt, a biztonsági mentés engedélyezésekor Azure Backup telepíti a biztonsági mentési bővítményt az ügynöknek. A felhasználó beavatkozása nélkül frissíti és kibővíti a bővítményt.
 
 ## <a name="back-up-from-azure-vm-settings"></a>Biztonsági mentés az Azure-beli virtuális gép beállításaiból
@@ -84,7 +85,7 @@ A cikk utasításait követve engedélyezheti az Azure-beli virtuális gépek bi
 >
 >**Az előzetes verzióra való feliratkozáshoz írjon nekünk a következőt:AskAzureBackupTeam@microsoft.com**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha a jelen cikkben ismertetett eljárások valamelyikével kapcsolatban nehézségekbe ütközik, tekintse meg a [hibaelhárítási útmutatót](backup-azure-vms-troubleshoot.md).
 - [További](backup-azure-manage-vms.md) információ a biztonsági másolatok kezeléséről.

@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
-ms.openlocfilehash: 261e5f17e787fd96697b06a9b338e74ea0409454
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 072f8fd44fa45648afd15cb40cba26bb427c7b56
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507075"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539618"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs-áttekintés engedélyezése
 
 Ez a cikk áttekintést nyújt azokról a lehetőségekről, amelyek lehetővé teszik a Azure Monitor for VMs számára a következők állapotának és teljesítményének figyelését:
 
-- Azure virtuális gépek 
+- Azure-beli virtuális gépek 
 - Azure-beli virtuálisgép-méretezési csoportok
 - Az Azure arc-hoz csatlakozó hibrid virtuális gépek
 - Helyszíni virtuális gépek
@@ -43,21 +43,21 @@ A Azure Monitor for VMs a következő régiókban támogatja a Log Analytics mun
 
 - USA nyugati középső régiója
 - USA nyugati régiója
-- USA nyugati régiója, 2.
+- USA 2. nyugati régiója
 - USA déli középső régiója
 - USA keleti régiója
 - USA 2. keleti régiója
-- USA középső régiója
+- Central US
 - USA északi középső régiója
 - US Gov az
 - US Gov VA
 - Közép-Kanada
 - Az Egyesült Királyság déli régiója
 - Észak-Európa
-- Nyugat-Európa
+- West Europe
 - Kelet-Ázsia
 - Délkelet-Ázsia
-- Közép-India
+- Central India
 - Kelet-Japán
 - Kelet-Ausztrália
 - Délkelet-Ausztrália
@@ -68,8 +68,8 @@ A Azure Monitor for VMs a következő régiókban támogatja a Log Analytics mun
 
 Ha nem rendelkezik Log Analytics munkaterülettel, létrehozhat egyet az egyik erőforrás használatával:
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
-* [Azure Portalra](../../azure-monitor/learn/quick-create-workspace.md)
+* [PowerShell](../platform/powershell-workspace-configuration.md)
+* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
 Létrehozhat egy munkaterületet is, miközben egy Azure-beli virtuális gép vagy egy virtuálisgép-méretezési csoport figyelését engedélyezi a Azure Portalban.
@@ -171,11 +171,11 @@ Hibrid környezetben a függőségi ügynököt manuálisan vagy automatikus mó
 
 A következő táblázat azokat a csatlakoztatott forrásokat ismerteti, amelyeket a Térkép funkció támogat egy hibrid környezetben.
 
-| Csatlakoztatott forrás | Támogatott | Description |
+| Csatlakoztatott forrás | Támogatott | Leírás |
 |:--|:--|:--|
-| Windows-ügynökök | Yes | A Windows [log Analytics ügynökével](../../azure-monitor/platform/log-analytics-agent.md)együtt a Windows-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
-| Linux-ügynökök | Yes | A [Linux rendszerhez készült log Analytics-ügynökkel](../../azure-monitor/platform/log-analytics-agent.md)együtt a Linux-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
-| System Center Operations Manage felügyeleti csoport | No | |
+| Windows-ügynökök | Igen | A Windows [log Analytics ügynökével](../../azure-monitor/platform/log-analytics-agent.md)együtt a Windows-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
+| Linux-ügynökök | Igen | A [Linux rendszerhez készült log Analytics-ügynökkel](../../azure-monitor/platform/log-analytics-agent.md)együtt a Linux-ügynököknek szüksége van a függőségi ügynökre. További információ: [támogatott operációs rendszerek](#supported-operating-systems). |
+| System Center Operations Manage felügyeleti csoport | Nem | |
 
 A függőségi ügynököt a következő helyekről töltheti le:
 
@@ -194,7 +194,7 @@ A Log Analytics munkaterület elérésének szabályozásáról a [munkaterület
 
 Azure Monitor for VMs engedélyezése a táblázatban leírt módszerek egyikének használatával:
 
-| Központi telepítés állapota | Metódus | Description |
+| Központi telepítés állapota | Metódus | Leírás |
 |------------------|--------|-------------|
 | Egyetlen Azure-beli virtuális gép, Azure-VMSS vagy Azure arc-gép | [Engedélyezés a portálról](vminsights-enable-single-vm.md) | Válassza **ki** az eredményeket közvetlenül a Azure Portal menüjéből. |
 | Több Azure-beli virtuális gép, Azure-VMSS vagy Azure-beli ív | [Engedélyezés Azure Policy](vminsights-enable-at-scale-policy.md) | A Azure Policy használatával automatikusan engedélyezheti a virtuális gépek vagy VMSS létrehozását. |
@@ -219,6 +219,6 @@ További információ az adatok gyűjtéséről és használatáról: a [Microso
 
 Most, hogy engedélyezte a virtuális gép figyelését, a figyelési információk a Azure Monitor for VMs elemzéséhez érhetők el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Teljesítményfigyelő funkció használatának megismeréséhez tekintse meg a [Azure monitor for VMS teljesítményének megtekintése](vminsights-performance.md)című témakört. A felderített alkalmazások függőségeinek megtekintéséhez lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md).

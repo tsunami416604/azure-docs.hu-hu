@@ -3,11 +3,12 @@ title: SQL Server adatbázis biztonsági mentésének hibáinak megoldása
 description: Hibaelhárítási információk az Azure-beli virtuális gépeken futó SQL Server adatbázisok biztonsági mentéséhez Azure Backup-mel.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: a4397f0bfa50990a7ad8080579261ed4587c4958
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 879a7edab77bad9671bea51e0e496f3eca96ee81
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84247954"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538717"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>SQL Server adatbázis biztonsági mentésének hibáinak megoldása Azure Backup használatával
 
@@ -29,11 +30,11 @@ A biztonsági mentési konfiguráció során, ha az SQL-alapú virtuális gép �
 
 ### <a name="step-1-discovery-dbs-in-vms"></a>1. lépés: a virtuális gépeken futó felderítési adatbázisok
 
-- Ha a virtuális gép nem szerepel a felderített virtuális gépek listájában, és nem regisztrált az SQL Backup szolgáltatásban egy másik tárolóban, kövesse a [felderítési SQL Server biztonsági mentési](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#discover-sql-server-databases) lépéseit.
+- Ha a virtuális gép nem szerepel a felderített virtuális gépek listájában, és nem regisztrált az SQL Backup szolgáltatásban egy másik tárolóban, kövesse a [felderítési SQL Server biztonsági mentési](./backup-sql-server-database-azure-vms.md#discover-sql-server-databases) lépéseit.
 
 ### <a name="step-2-configure-backup"></a>2. lépés: biztonsági mentés konfigurálása
 
-- Ha az a tároló, amelyben az SQL virtuális gép regisztrálva van az adatbázisok védelméhez használt tárban, kövesse a [biztonsági mentés konfigurálása](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#configure-backup) lépéseit.
+- Ha az a tároló, amelyben az SQL virtuális gép regisztrálva van az adatbázisok védelméhez használt tárban, kövesse a [biztonsági mentés konfigurálása](./backup-sql-server-database-azure-vms.md#configure-backup) lépéseit.
 
 Ha az SQL virtuális gépet regisztrálni kell az új tárolóban, akkor azt törölni kell a régi tárból.  Egy SQL virtuális gép tárolóból való regisztrációjának megszüntetéséhez az összes védett adatforrást le kell állítani, és ezután törölheti a biztonsági másolatok adatait. A biztonsági másolatba mentett adathalmazok törlése romboló művelet.  Miután áttekintette és elvégezte az összes óvintézkedést az SQL virtuális gép regisztrációjának megszüntetéséhez, regisztrálja ugyanezt a virtuális gépet egy új tárolóval, és próbálkozzon újra a biztonsági mentési művelettel.
 
@@ -59,7 +60,7 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
 ### <a name="backup-type-unsupported"></a>A biztonsági mentés típusa nem támogatott
 
-| Severity | Description | Lehetséges okok | Javasolt művelet |
+| Súlyosság | Leírás | Lehetséges okok | Javasolt művelet |
 |---|---|---|---|
 | Figyelmeztetés | Az adatbázis jelenlegi beállításai nem támogatják a társított szabályzatban található egyes biztonsági mentési típusokat. | <li>A Master adatbázison csak a teljes adatbázis biztonsági mentési művelete hajtható végre. Sem a különbözeti biztonsági mentés, sem a tranzakciós napló biztonsági mentése nem lehetséges. </li> <li>Az egyszerű helyreállítási modellben lévő adatbázisok nem teszik lehetővé a tranzakciónaplók biztonsági mentését.</li> | Módosítsa az adatbázis beállításait úgy, hogy a szabályzat összes biztonsági mentési típusa támogatott legyen. Vagy módosítsa a jelenlegi szabályzatot úgy, hogy csak a támogatott biztonsági mentési típusokat tartalmazza. Ellenkező esetben a rendszer kihagyja a nem támogatott biztonsági mentési típusokat az ütemezett biztonsági mentés során, vagy a biztonsági mentési feladat sikertelen lesz az igény szerinti biztonsági mentés során.
 
@@ -67,7 +68,7 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
-| Ez az SQL-adatbázis nem támogatja a kért típusú biztonsági mentést. | Akkor következik be, amikor az adatbázis-helyreállítási modell nem engedélyezi a kért biztonsági mentési típust. A hiba a következő helyzetekben fordulhat elő: <br/><ul><li>Az egyszerű helyreállítási modellt használó adatbázisok nem teszik lehetővé A naplók biztonsági mentését.</li><li>A Master adatbázis esetében nem engedélyezett a különbségi és a napló biztonsági mentése.</li></ul>További részletekért tekintse meg a [SQL Server Recovery models](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) dokumentációját. | Ha a napló biztonsági mentése nem sikerül az adatbázishoz az egyszerű helyreállítási modellben, próbálja ki a következő lehetőségek egyikét:<ul><li>Ha az adatbázis egyszerű helyreállítási módban van, tiltsa le a naplók biztonsági mentését.</li><li>A [SQL Server dokumentációjának](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) használatával megváltoztathatja az adatbázis-helyreállítási modellt teljes vagy tömegesen naplózott értékre. </li><li> Ha nem szeretné módosítani a helyreállítási modellt, és rendelkezik egy szabványos házirenddel a nem módosítható adatbázisok biztonsági mentésére, hagyja figyelmen kívül a hibát. A teljes és a különbözeti biztonsági mentések ütemezés szerint fognak működni. A rendszer kihagyja a naplók biztonsági másolatait, ami ebben az esetben várható.</li></ul>Ha ez egy Master adatbázis, és beállította a különbözeti vagy a napló biztonsági mentését, használja a következő lépések egyikét:<ul><li>A portál használatával módosíthatja a biztonsági mentési szabályzat ütemezését a Master adatbázisra vonatkozóan, a teljes értékre.</li><li>Ha olyan általános házirenddel rendelkezik, amely nem módosítható több adatbázis biztonsági mentésére van beállítva, hagyja figyelmen kívül a hibát. A teljes biztonsági mentés ütemterv szerint fog működni. A különbözeti vagy a napló biztonsági mentése nem történik meg, ami ebben az esetben várható.</li></ul> |
+| Ez az SQL-adatbázis nem támogatja a kért típusú biztonsági mentést. | Akkor következik be, amikor az adatbázis-helyreállítási modell nem engedélyezi a kért biztonsági mentési típust. A hiba a következő helyzetekben fordulhat elő: <br/><ul><li>Az egyszerű helyreállítási modellt használó adatbázisok nem teszik lehetővé A naplók biztonsági mentését.</li><li>A Master adatbázis esetében nem engedélyezett a különbségi és a napló biztonsági mentése.</li></ul>További részletekért tekintse meg a [SQL Server Recovery models](/sql/relational-databases/backup-restore/recovery-models-sql-server) dokumentációját. | Ha a napló biztonsági mentése nem sikerül az adatbázishoz az egyszerű helyreállítási modellben, próbálja ki a következő lehetőségek egyikét:<ul><li>Ha az adatbázis egyszerű helyreállítási módban van, tiltsa le a naplók biztonsági mentését.</li><li>A [SQL Server dokumentációjának](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) használatával megváltoztathatja az adatbázis-helyreállítási modellt teljes vagy tömegesen naplózott értékre. </li><li> Ha nem szeretné módosítani a helyreállítási modellt, és rendelkezik egy szabványos házirenddel a nem módosítható adatbázisok biztonsági mentésére, hagyja figyelmen kívül a hibát. A teljes és a különbözeti biztonsági mentések ütemezés szerint fognak működni. A rendszer kihagyja a naplók biztonsági másolatait, ami ebben az esetben várható.</li></ul>Ha ez egy Master adatbázis, és beállította a különbözeti vagy a napló biztonsági mentését, használja a következő lépések egyikét:<ul><li>A portál használatával módosíthatja a biztonsági mentési szabályzat ütemezését a Master adatbázisra vonatkozóan, a teljes értékre.</li><li>Ha olyan általános házirenddel rendelkezik, amely nem módosítható több adatbázis biztonsági mentésére van beállítva, hagyja figyelmen kívül a hibát. A teljes biztonsági mentés ütemterv szerint fog működni. A különbözeti vagy a napló biztonsági mentése nem történik meg, ami ebben az esetben várható.</li></ul> |
 | A művelet megszakadt, mert egy ütköző művelet már futott ugyanazon az adatbázison. | A párhuzamosan futó [biztonsági mentési és visszaállítási korlátozásokról a blogbejegyzésben](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/) talál további információt.| [A biztonsági mentési feladatok figyeléséhez használja a SQL Server Management Studio (SSMS)](manage-monitor-sql-database-backup.md)szolgáltatást. Az ütköző művelet sikertelensége után indítsa újra a műveletet.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
@@ -86,7 +87,7 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
-| Azure Backup nem tud csatlakozni az SQL-példányhoz. | Azure Backup nem tud csatlakozni a SQL Server példányhoz. | A Azure Portali hiba menüben található további részletek segítségével Szűkítse le a kiváltó okokat. A hiba elhárításához tekintse meg az [SQL biztonsági mentéssel kapcsolatos hibaelhárítást](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) .<br/><ul><li>Ha az alapértelmezett SQL-beállítások nem engedélyezik a távoli kapcsolatokat, módosítsa a beállításokat. A beállítások módosításával kapcsolatos információkért tekintse meg a következő cikkeket:<ul><li>[MSSQLSERVER_ – 1](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error?view=sql-server-ver15)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Ha bejelentkezési problémák léptek fel, a következő hivatkozásokat használhatja a kijavításához:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Azure Backup nem tud csatlakozni az SQL-példányhoz. | Azure Backup nem tud csatlakozni a SQL Server példányhoz. | A Azure Portali hiba menüben található további részletek segítségével Szűkítse le a kiváltó okokat. A hiba elhárításához tekintse meg az [SQL biztonsági mentéssel kapcsolatos hibaelhárítást](/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) .<br/><ul><li>Ha az alapértelmezett SQL-beállítások nem engedélyezik a távoli kapcsolatokat, módosítsa a beállításokat. A beállítások módosításával kapcsolatos információkért tekintse meg a következő cikkeket:<ul><li>[MSSQLSERVER_ – 1](/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Ha bejelentkezési problémák léptek fel, a következő hivatkozásokat használhatja a kijavításához:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
@@ -98,7 +99,7 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
-| A biztonsági mentés nem végezhető el, mert az adatforrás tranzakciónaplója megtelt. | Az adatbázis tranzakciós naplózási területe megtelt. | A probléma megoldásához tekintse meg a [SQL Server dokumentációját](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error). |
+| A biztonsági mentés nem végezhető el, mert az adatforrás tranzakciónaplója megtelt. | Az adatbázis tranzakciós naplózási területe megtelt. | A probléma megoldásához tekintse meg a [SQL Server dokumentációját](/sql/relational-databases/errors-events/mssqlserver-9002-database-engine-error). |
 
 ### <a name="usererrorcannotrestoreexistingdbwithoutforceoverwrite"></a>UserErrorCannotRestoreExistingDBWithoutForceOverwrite
 
@@ -110,7 +111,7 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
-| A visszaállítás nem sikerült, mert az adatbázist nem lehetett offline állapotba helyezni. | A visszaállítás során a célként megadott adatbázist offline állapotba kell állítani. Azure Backup nem tud offline állapotba hozni ezeket az adatfájlokat. | A Azure Portali hiba menüben található további részletek segítségével Szűkítse le a kiváltó okokat. További információért tekintse meg [az SQL Server dokumentációját](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
+| A visszaállítás nem sikerült, mert az adatbázist nem lehetett offline állapotba helyezni. | A visszaállítás során a célként megadott adatbázist offline állapotba kell állítani. Azure Backup nem tud offline állapotba hozni ezeket az adatfájlokat. | A Azure Portali hiba menüben található további részletek segítségével Szűkítse le a kiváltó okokat. További információért tekintse meg [az SQL Server dokumentációját](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
 ### <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
@@ -122,7 +123,7 @@ Időnként véletlenszerű hibák fordulnak elő a biztonsági mentési és viss
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
-| A helyreállításhoz használt naplóalapú biztonsági mentés tömegesen naplózott módosításokat tartalmaz. Nem használható az SQL-irányelvek alapján tetszőleges időpontban történő leállításra. | Ha egy adatbázis tömegesen naplózott helyreállítási módban van, a tömegesen naplózott tranzakció és a következő naplózási tranzakció közötti adatmennyiség nem állítható helyre. | Válasszon egy másik időpontot a helyreállításhoz. [További információk](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15).
+| A helyreállításhoz használt naplóalapú biztonsági mentés tömegesen naplózott módosításokat tartalmaz. Nem használható az SQL-irányelvek alapján tetszőleges időpontban történő leállításra. | Ha egy adatbázis tömegesen naplózott helyreállítási módban van, a tömegesen naplózott tranzakció és a következő naplózási tranzakció közötti adatmennyiség nem állítható helyre. | Válasszon egy másik időpontot a helyreállításhoz. [További információ](/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -164,7 +165,7 @@ A művelet le van tiltva, mert a tároló elérte a maximális korlátot az ilye
 
 | Hibaüzenet | Lehetséges okok | Javasolt művelet |
 |---|---|---|
-Az internetkapcsolattal kapcsolatos problémák miatt a virtuális gép nem tud kapcsolatba lépni Azure Backup szolgáltatással. | A virtuális gépnek kimenő kapcsolatra van szüksége Azure Backup szolgáltatáshoz, az Azure Storage-hoz vagy Azure Active Directory-szolgáltatásokhoz.| – Ha a NSG-t használja a kapcsolat korlátozására, akkor a AzureBackup szolgáltatás címkével kell rendelkeznie a Azure Backup szolgáltatáshoz, az Azure Storage-hoz vagy a Azure Active Directory-szolgáltatásokhoz való kimenő Azure Backup hozzáféréshez. A hozzáférés engedélyezéséhez kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#allow-access-using-nsg-tags) .<br>– Győződjön meg arról, hogy a DNS feloldja az Azure-végpontokat.<br>– Ellenőrizze, hogy a virtuális gép az internet-hozzáférést blokkoló terheléselosztó mögött van-e. Ha nyilvános IP-címet rendel a virtuális gépekhez, a felderítés működni fog.<br>– Győződjön meg arról, hogy nincs olyan tűzfal/víruskereső/proxy, amely blokkolja a fenti három cél szolgáltatás hívásait.
+Az internetkapcsolattal kapcsolatos problémák miatt a virtuális gép nem tud kapcsolatba lépni Azure Backup szolgáltatással. | A virtuális gépnek kimenő kapcsolatra van szüksége Azure Backup szolgáltatáshoz, az Azure Storage-hoz vagy Azure Active Directory-szolgáltatásokhoz.| – Ha a NSG-t használja a kapcsolat korlátozására, akkor a AzureBackup szolgáltatás címkével kell rendelkeznie a Azure Backup szolgáltatáshoz, az Azure Storage-hoz vagy a Azure Active Directory-szolgáltatásokhoz való kimenő Azure Backup hozzáféréshez. A hozzáférés engedélyezéséhez kövesse az alábbi [lépéseket](./backup-sql-server-database-azure-vms.md#nsg-tags) .<br>– Győződjön meg arról, hogy a DNS feloldja az Azure-végpontokat.<br>– Ellenőrizze, hogy a virtuális gép az internet-hozzáférést blokkoló terheléselosztó mögött van-e. Ha nyilvános IP-címet rendel a virtuális gépekhez, a felderítés működni fog.<br>– Győződjön meg arról, hogy nincs olyan tűzfal/víruskereső/proxy, amely blokkolja a fenti három cél szolgáltatás hívásait.
 
 ## <a name="re-registration-failures"></a>Ismételt regisztrálási hibák
 
@@ -190,7 +191,7 @@ Ezek a tünetek a következő okok valamelyike miatt merülhetnek fel:
 - A virtuális gép törölve lett, és egy másik virtuális gép lett létrehozva ugyanazzal a névvel és ugyanabban az erőforráscsoporthoz, mint a törölt virtuális gép.
 - A rendelkezésre állási csoport csomópontjainak egyike nem kapta meg a teljes biztonsági mentési konfigurációt. Ez akkor fordulhat elő, ha a rendelkezésre állási csoport regisztrálva van a tárolóban, vagy új csomópont van hozzáadva.
 
-Az előző forgatókönyvekben azt javasoljuk, hogy a virtuális gépen újra regisztrálja a műveletet. A feladat PowerShellben történő végrehajtásával kapcsolatban [itt](https://docs.microsoft.com/azure/backup/backup-azure-sql-automation#enable-backup) talál útmutatást.
+Az előző forgatókönyvekben azt javasoljuk, hogy a virtuális gépen újra regisztrálja a műveletet. A feladat PowerShellben történő végrehajtásával kapcsolatban [itt](./backup-azure-sql-automation.md#enable-backup) talál útmutatást.
 
 ## <a name="size-limit-for-files"></a>Fájlok maximális mérete
 
@@ -208,7 +209,7 @@ Most rendezze a következő formátumot:
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 ```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
@@ -237,7 +238,7 @@ A fájl tartalmának a következő formátumúnak kell lennie:
 ]
 ```
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 ```json
 [
@@ -264,6 +265,6 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
 
 Ezt a fájlt a visszaállítási művelet elindítása előtt kell elhelyezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A SQL Server virtuális gépek (nyilvános előzetes verzió) Azure Backupával kapcsolatos további információkért lásd: [Azure Backup SQL virtuális gépekhez](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup).

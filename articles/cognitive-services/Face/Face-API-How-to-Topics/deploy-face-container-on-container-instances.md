@@ -8,24 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 4df5949e24e3fa59d37379c058a777c93dda2c44
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5fbe316580cfa2ca280a2587536df037146e8d02
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878364"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538122"
 ---
 # <a name="deploy-the-face-container-to-azure-container-instances"></a>A Face tároló üzembe helyezése Azure Container Instances
+
+> [!IMPORTANT]
+> Elérte a Face Container-felhasználókra vonatkozó korlátot. Jelenleg nem fogadunk el új alkalmazásokat a Face tárolóhoz.
 
 Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [Face](../face-how-to-install-containers.md) tárolót az Azure [Container Instancesban](https://docs.microsoft.com/azure/container-instances/). Ez az eljárás egy Azure Face-erőforrás létrehozását mutatja be. Ezután megbeszéljük a társított tároló-rendszerkép kihúzását. Végezetül kiemeljük a két böngészőből való összehangolás lehetőségét. A tárolók használatával az alkalmazások fejlesztésére összpontosíthat a fejlesztők figyelmét arra, hogy az infrastruktúra kezelése helyett.
 
 [!INCLUDE [Prerequisites](../../containers/includes/container-preview-prerequisites.md)]
-
-## <a name="request-access-to-the-private-container-registry"></a>Hozzáférés kérése a Private Container registryhez
-
-[!INCLUDE [Request access to private container registry](../../../../includes/cognitive-services-containers-request-access.md)]
 
 [!INCLUDE [Create a Cognitive Services Face resource](../includes/create-face-resource.md)]
 

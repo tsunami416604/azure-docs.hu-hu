@@ -4,12 +4,12 @@ description: Az intelligens szerződések integrációs mintáinak áttekintése
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254633"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538343"
 ---
 # <a name="smart-contract-integration-patterns"></a>Intelligens szerződések integrációs mintái
 
@@ -134,7 +134,7 @@ Ez a minta jellemzően a következő módszer használatával valósítható meg
 -   Az állapot változása eseményként felszínre kerül egy alsóbb rétegbeli fogyasztó számára.
 -   Az alárendelt fogyasztó megkapja az eseményt, és elindítja a külső kód végrehajtását.
 
-![Átváltási vezérlés külső folyamatra](./media/integration-patterns/transition-external-process.png)
+![A diagramon az állapot változása látható a szerződésen belül, ami egy eseményt mutat be az elosztott főkönyvbe. A Blockchain Workbench ezután felveszi az eseményt, és közzéteszi azt.](./media/integration-patterns/transition-external-process.png)
 
 #### <a name="return-of-control-from-the-smart-contract"></a>Az intelligens szerződés vezérlésének visszaadása
 
@@ -142,7 +142,7 @@ A külső rendszer testreszabásának lehetősége attól függően előfordulha
 
 ##### <a name="direct-delivery-of-an-azure-blockchain-workbench-in-the-expected-format"></a>Azure Blockchain Workbench közvetlen kézbesítése a várt formátumban
 
-![](./media/integration-patterns/direct-delivery.png)
+![Az ábrán látható egy P I üzenet a külső rendszerről, amelyet a Blockchain Workbench a Service Buson keresztül felvesz. Az Blockchain Workbench ezután az ügynök nevében küldi el az üzenetet tranzakcióként az elosztott főkönyvnek. A rendszer átadja a szerződést a szerződésnek, ahol az állapot változását okozza.](./media/integration-patterns/direct-delivery.png)
 
 Ebben a modellben a szerződéssel és az azt követő állapottal való kommunikáció az előző folyamat után történik, ahol:
 

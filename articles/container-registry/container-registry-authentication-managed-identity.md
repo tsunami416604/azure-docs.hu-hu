@@ -3,12 +3,12 @@ title: Hitelesítés felügyelt identitással
 description: Hozzáférés biztosítása a privát tároló beállításjegyzékében lévő rendszerképekhez felhasználó által hozzárendelt vagy rendszer által hozzárendelt Azure-identitás használatával.
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: d3a1f0f9c9e814cabaa205fbb0abf05333fd6daf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e5fd8ead989838c0ba74b42a9766bc63936379fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259099"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537901"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Azure-beli felügyelt identitás használata az Azure Container registryben való hitelesítéshez 
 
@@ -79,6 +79,7 @@ ssh azureuser@publicIpAddress
 Futtassa a következő parancsot a Docker telepítéséhez a virtuális gépen:
 
 ```bash
+sudo apt update
 sudo apt install docker.io -y
 ```
 

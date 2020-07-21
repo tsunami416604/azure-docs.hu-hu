@@ -1,14 +1,14 @@
 ---
-title: DevOps-LUIS tesztelése
+title: A LUIS-alkalmazások DevOps tesztelése
 description: A Language Understanding (LUIS) alkalmazás tesztelése DevOps-környezetben.
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: dceced66d47ec78364b6f18462e66cb3eb407c85
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 2556d2e904aff720bc02e4c7d58bf5a72af4d413
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783694"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538071"
 ---
 # <a name="testing-for-luis-devops"></a>A LUIS DevOps tesztelése
 
@@ -131,7 +131,7 @@ Ennek a nem determinisztikus-képzésnek az eredménye az, hogy a [különböző
 
 Ha szeretné letiltani a nem determinisztikus betanítást azon LUIS-alkalmazások esetében, amelyek tesztelés céljából készülnek, használja a [Version Settings API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) -t a `UseAllTrainingData` beállítás értékeként `true` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók a [CI/CD-munkafolyamatok megvalósításáról](luis-concept-devops-automation.md)
 * Ismerje meg, hogyan valósítható meg a [DevOps for Luis a GitHub](luis-how-to-devops-with-github.md) használatával

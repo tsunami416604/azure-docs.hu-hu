@@ -3,18 +3,18 @@ title: A funkciók áttekintése – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk részletesen ismerteti az Azure Event Hubs funkcióit és terminológiáját.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5b646c1a0730b046dd3e66a5d5324b659999f83a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 034983074ddc6faf324d70a18a9a49b8df659649
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320706"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537309"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Az Azure Event Hubs funkciói és terminológiája
 
-Az Azure Event Hubs egy skálázható esemény-feldolgozási szolgáltatás, amely nagy mennyiségű eseményt és adatot tölt be és dolgoz fel, alacsony késéssel és magas megbízhatósággal. Lásd: [Mi az Event Hubs?](event-hubs-what-is-event-hubs.md) a magas szintű áttekintéshez.
+Az Azure Event Hubs egy skálázható esemény-feldolgozási szolgáltatás, amely nagy mennyiségű eseményt és adatot tölt be és dolgoz fel, alacsony késéssel és magas megbízhatósággal. Lásd: [Mi az Event Hubs?](./event-hubs-about.md) a magas szintű áttekintéshez.
 
-Ez a cikk az [áttekintő cikkben](event-hubs-what-is-event-hubs.md)található információkra épül, valamint a Event Hubs összetevőkkel és szolgáltatásokkal kapcsolatos technikai és megvalósítási részleteket tartalmaz.
+Ez a cikk az [áttekintő cikkben](./event-hubs-about.md)található információkra épül, valamint a Event Hubs összetevőkkel és szolgáltatásokkal kapcsolatos technikai és megvalósítási részleteket tartalmaz.
 
 ## <a name="namespace"></a>Névtér
 Az Event Hubs névtér egy egyedi hatókörű tárolót biztosít, amelyet a [teljes tartományneve](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)hivatkozik, amelyben létrehoz egy vagy több Event hub-vagy Kafka-témakört. 
@@ -33,7 +33,7 @@ Bármely entitás, amely adatokat küld az Event hub-nak, esemény-előállító
 
 ### <a name="publishing-an-event"></a>Esemény közzététele
 
-A AMQP 1,0, Kafka 1,0 (és újabb) vagy HTTPS protokollon keresztül tehet közzé eseményt. A Event Hubs [ügyféloldali kódtárakat és osztályokat](event-hubs-dotnet-framework-api-overview.md) biztosít a .net-ügyfelek eseményeinek közzétételéhez. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](https://qpid.apache.org/). Az eseményeket közzéteheti egyenként vagy kötegelve is. Egyetlen kiadvány (Event adatpéldány) legfeljebb 1 MB méretű lehet, függetlenül attól, hogy egyetlen eseményről vagy kötegről van szó. A küszöbértéket meghaladó közzétételi események hibát eredményeznek. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
+A AMQP 1,0, Kafka 1,0 (és újabb) vagy HTTPS protokollon keresztül tehet közzé eseményt. A Event Hubs [ügyféloldali kódtárakat és osztályokat](./event-hubs-dotnet-framework-getstarted-send.md) biztosít a .net-ügyfelek eseményeinek közzétételéhez. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](https://qpid.apache.org/). Az eseményeket közzéteheti egyenként vagy kötegelve is. Egyetlen kiadvány (Event adatpéldány) legfeljebb 1 MB méretű lehet, függetlenül attól, hogy egyetlen eseményről vagy kötegről van szó. A küszöbértéket meghaladó közzétételi események hibát eredményeznek. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
 
 Az AMQP vagy HTTPS használata a használati forgatókönyvtől függ. Az AMQP használatához ki kell alakítani egy állandó kétirányú szoftvercsatornát az TLS vagy SSL/TLS mellett. A AMQP magasabb hálózati költségekkel rendelkezik a munkamenet inicializálásakor, azonban a HTTPS minden kérelem esetében további TLS-terhelést igényel. Gyakori közzététel esetén az AMQP nagyobb teljesítményt biztosít.
 
@@ -67,7 +67,7 @@ A Event Hubs *megosztott hozzáférési aláírásokat*használ, amelyek a névt
 
 Minden olyan entitás, amely az Event hub esemény-adatait olvassa be, az *esemény fogyasztója*. Minden Event Hubs-felhasználó az AMQP 1.0-munkameneten keresztül csatlakozik, amelyben az események azonnal megjelennek, amint elérhetővé válnak. Az ügyfélnek nem kell lekérdeznie az adatok rendelkezésre állását.
 
-### <a name="consumer-groups"></a>Felhasználói csoportok
+### <a name="consumer-groups"></a>Fogyasztói csoportok
 
 A Event Hubs közzétételi/előfizetési mechanizmusa *felhasználói csoportokon*keresztül engedélyezhető. A felhasználói csoport a teljes eseményközpont egyik nézete (állapot, pozíció vagy eltolás). A felhasználói csoportok révén több felhasználó alkalmazás rendelkezhet az eseménystream külön nézetével, és a többitől függetlenül saját tempójában és saját eltolásával olvashatja a streamet.
 
@@ -94,14 +94,14 @@ Az *eltolás* egy esemény pozíciója a partíción belül. Az eltolásokat tek
 
 ![Event Hubs](./media/event-hubs-features/partition_offset.png)
 
-### <a name="checkpointing"></a>Ellenőrzőpontok használata
+### <a name="checkpointing"></a>Ellenőrző pontok használata
 
 Az *ellenőrzőpontok használatával* az olvasók megjelölhetik vagy véglegesíthetik pozíciójukat a partíciók eseménysorozatában. Az ellenőrzőpontok használata a felhasználó felelőssége, és partíciónkénti alapon történik a felhasználói csoportban. A felelősség itt azt jelenti, hogy mindegyik felhasználói csoport esetében mindegyik partícióolvasónak nyilván kell tartania aktuális pozícióját az eseménystreamben, és tájékoztathatja a szolgáltatást, amikor az adatstreamet befejezettnek tekinti.
 
 Ha egy olvasó lecsatlakozik egy partícióról, az újracsatlakozáskor az adott felhasználói csoportban az adott partíció utolsó olvasója által elküldött ellenőrzőpontnál kezdi az olvasást. Amikor az olvasó csatlakozik, átadja az eltolást az Event hub számára, hogy megadja a helyet, ahol az olvasást el szeretné indítani. Az ellenőrzőpontok használatával az alárendelt alkalmazások így megjelölhetik az eseményeket „befejezettként”, valamint biztosítható a rugalmasság a különböző gépeken futó olvasók közötti feladatátvétel esetén. Lehetséges visszatérni a régebbi adatokhoz egy alacsonyabb értékű eltolás megadásával az ellenőrzőpontok használata során. Ezzel a mechanizmussal az ellenőrzőpontok használata rugalmasságot biztosít feladatátvétel esetén, és lehetővé teszi az eseménystream visszajátszását.
 
 > [!NOTE]
-> Ha Azure Blob Storaget használ az ellenőrzőpont-tárolóként olyan környezetben, amely támogatja a Storage blob SDK egy másik verzióját, mint az Azure-ban, akkor a Storage szolgáltatás API-verziójának az adott környezet által támogatott verzióra való módosításához programkódot kell használnia. Ha például [egy 2002-es Azure stack hub-os verzióban](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)futtatja az Event Hubs-t, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben programkódot kell használnia a Storage szolgáltatás API-verziójának 2017-11-09-re való célzásához. Az adott tárolási API-verzió célzására vonatkozó példát a GitHubon található példákban talál: 
+> Ha Azure Blob Storaget használ az ellenőrzőpont-tárolóként olyan környezetben, amely támogatja a Storage blob SDK egy másik verzióját, mint az Azure-ban, akkor a Storage szolgáltatás API-verziójának az adott környezet által támogatott verzióra való módosításához programkódot kell használnia. Ha például [egy 2002-es Azure stack hub-os verzióban](/azure-stack/user/event-hubs-overview)futtatja az Event Hubs-t, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben programkódot kell használnia a Storage szolgáltatás API-verziójának 2017-11-09-re való célzásához. Az adott tárolási API-verzió célzására vonatkozó példát a GitHubon található példákban talál: 
 > - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) vagy [írógéppel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
@@ -133,7 +133,7 @@ Eseményadatok:
 
 Az eltolás kezelése a felhasználó felelőssége.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi hivatkozásokat:
 

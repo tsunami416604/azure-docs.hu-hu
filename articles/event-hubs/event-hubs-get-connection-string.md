@@ -3,12 +3,12 @@ title: A kapcsolatok karakterláncának beolvasása – Azure Event Hubs | Micro
 description: Ez a cikk útmutatást nyújt olyan kapcsolati karakterlánc beszerzéséhez, amelyet az ügyfelek használhatnak az Azure-Event Hubshoz való kapcsolódáshoz.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 271d4dcc1f2fab08dc7f625ce36e021eda225b87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320493"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537190"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs-kapcsolatok karakterláncának beolvasása
 
@@ -69,9 +69,9 @@ az eventhubs eventhub authorization-rule keys list --resource-group dummyresourc
 
 Az Event Hubs Azure CLI-parancsaival kapcsolatos további információkért lásd: [Az Azure CLI a Event Hubshoz](/cli/azure/eventhubs).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
-* [Event Hubs áttekintése](event-hubs-what-is-event-hubs.md)
-* [Event hub létrehozása](event-hubs-create.md)
+* [Event Hubs áttekintése](./event-hubs-about.md)
+* [Eseményközpont létrehozása](event-hubs-create.md)

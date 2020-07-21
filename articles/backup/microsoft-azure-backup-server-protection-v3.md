@@ -3,11 +3,12 @@ title: Milyen Azure Backup Server v3 RTM biztonsági mentést készíthet
 description: Ez a cikk egy védelmi mátrixot tartalmaz, amely felsorolja az összes olyan munkaterhelést, adattípust és telepítést, amely Azure Backup a v3 RTM védelmét szolgálja.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 742b43d748fbd4c1235d0555ac3bd4419880db5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aebd1d1f90a2c0b84d7a6e1cb77d0e50915b091e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84632086"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538566"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server v3 RTM védelmi mátrix
 
@@ -97,7 +98,7 @@ A Microsoft-partnerekkel válassza ki a következő szolgáltatásokat/régióka
 * Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)
 * Azure Storage (az Recovery Services-tároló helyének megfelelően)
 
-További részletekért tekintse meg a [ExpressRoute útválasztási követelményeit](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+További részletekért tekintse meg a [ExpressRoute útválasztási követelményeit](../expressroute/expressroute-routing.md).
 
 >[!NOTE]
 >Az új áramkörök esetében a nyilvános társítás elavult.

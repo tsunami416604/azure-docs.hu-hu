@@ -2,13 +2,13 @@
 title: Azure DevTest Labs GYIK | Microsoft Docs
 description: Ez a cikk a Azure DevTest Labs kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: b687ae5c7b64239387dad7a51e124fa2f507f2b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 707b66fadab482a31ac02f10460d581997931a0b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481663"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537485"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Választ kaphat a Azure DevTest Labsával kapcsolatos leggyakoribb kérdésekre.
@@ -175,7 +175,7 @@ Javasoljuk, hogy a megfelelő engedélyeket a labor szintjén állítsa be úgy,
 > [!NOTE]
 > Ha a tesztkörnyezet felhasználója olyan külső felhasználó, aki Microsoft-fiók rendelkezik, de nem tagja a szervezet Active Directory példányának, a felhasználó hibaüzenetet kap, amikor megpróbálnak hozzáférni a megosztott hivatkozáshoz. Ha egy külső felhasználó hibaüzenetet jelenít meg, kérje meg a felhasználót, hogy válassza ki a nevét a Azure Portal jobb felső sarkában. Ezután a menü címtár szakaszában a felhasználó kiválaszthatja azt a könyvtárat, ahol a labor létezik.
 
-## <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
+## <a name="virtual-machines"></a>Virtuális gépek
 
 ### <a name="why-cant-i-see-vms-on-the-virtual-machines-page-that-i-see-in-devtest-labs"></a>Miért nem látom a virtuális gépeket a DevTest Labs szolgáltatásban megjelenő Virtual Machines oldalon?
 Amikor létrehoz egy virtuális gépet a DevTest Labs szolgáltatásban, engedélyt kap a virtuális géphez való hozzáférésre. A virtuális gépet a Labs lapon és a **Virtual Machines** oldalon is megtekintheti. A **DevTest Labs tulajdonosi** szerepkörhöz hozzárendelt felhasználók a labor **összes Virtual Machines** oldalán a laborban létrehozott összes virtuális gépet megtekinthetik. Az **DevTest Labs felhasználói** szerepkörrel rendelkező felhasználók azonban nem kapnak automatikusan olvasási hozzáférést a többi felhasználó által létrehozott virtuálisgép-erőforrásokhoz. Így ezek a virtuális gépek nem jelennek meg a **Virtual Machines** oldalon.
@@ -200,7 +200,7 @@ Meglévő virtuális gépek másolása a DevTest Labs szolgáltatásba:
 Igen, több lemezt is csatolhat a virtuális gépekhez.
 
 ### <a name="are-gen-2-images-supported-by-devtest-labs"></a>A DevTest Labs támogatja a 2. generációs képeket?
-Nem. A DevTest Labs szolgáltatás nem támogatja a [2. generációs képeket](../virtual-machines/windows/generation-2.md). Ha az 1. és a 2. generációs verziók egyaránt elérhetők egy képhez, a DevTest Labs csak a rendszerkép 1. generációs verzióját jeleníti meg a virtuális gép létrehozásakor. A rendszerkép nem jelenik meg, ha csak a 2. generációs verziója érhető el. 
+Igen. A DevTest Labs szolgáltatás a [2. generációs rendszerképeket](../virtual-machines/windows/generation-2.md)támogatja. Ha azonban az 1. és a 2. generációs verziók egyaránt elérhetők egy képhez, a DevTest Labs csak a rendszerkép 1. generációs verzióját jeleníti meg a virtuális gép létrehozásakor. Ekkor megjelenik a rendszerkép, ha csak a 2. generációs verziója érhető el. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Ha Windows operációsrendszer-rendszerképet kívánok használni a teszteléshez, meg kell vásárolni egy MSDN-előfizetést?
 Ha a Windows ügyfél operációsrendszer-lemezképeit (Windows 7 vagy újabb verziót) szeretné használni a fejlesztéshez vagy a teszteléshez az Azure-ban, hajtsa végre a következő lépések egyikét:
@@ -212,7 +212,7 @@ Az egyes MSDN-ajánlatokhoz tartozó Azure-kreditekről további információt a
 
 
 ### <a name="how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab"></a>Hogyan automatizálni a laborban lévő összes virtuális gép törlésének folyamatát?
-A labor tulajdonosaként a Azure Portalon törölheti a virtuális gépeket a laborból. A laborban lévő összes virtuális gépet egy PowerShell-szkript használatával is törölheti. A következő példában a Megjegyzés **módosítása** elemnél módosítsa a paraméterek értékeit. A subscriptionId, a labResourceGroup és a labName értékeket a Azure Portal labor paneljéről kérheti le.
+A labor tulajdonosaként a Azure Portalon törölheti a virtuális gépeket a laborból. A laborban lévő összes virtuális gépet egy PowerShell-szkript használatával is törölheti. A következő példában a Megjegyzés **módosítása** elemnél módosítsa a paraméterek értékeit. A `subscriptionId` , a és az `labResourceGroup` értékeket a `labName` Azure Portal Lab paneljéről kérheti le.
 
 ```powershell
 # Delete all the VMs in a lab.
@@ -337,12 +337,12 @@ A következő blogbejegyzések útmutatást és információkat nyújtanak az Az
 
 Más folyamatos integrációs (CI)/Continuous kézbesítési (CD) eszközlánccal esetében ugyanezeket a forgatókönyveket [Azure PowerShell-parancsmagok](../azure-resource-manager/templates/deploy-powershell.md) és [.net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/)-k használatával, [Azure Resource Manager-sablonokkal](https://azure.microsoft.com/resources/templates/) is elérheti. A [DevTest Labs REST API](https://aka.ms/dtlrestapis) -jait is használhatja a toolchain való integráláshoz.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Mikor hozzon létre egy új virtuális hálózatot a DevTest Labs-környezethez és egy meglévő virtuális hálózat használatával?
-Ha a virtuális gépeknek kapcsolatba kell lépniük a meglévő infrastruktúrával, akkor érdemes lehet egy meglévő virtuális hálózatot használni a DevTest Labs-környezetben. Ha a ExpressRoute-t használja, érdemes lehet minimálisra csökkenteni a virtuális hálózatok/alhálózatok mennyiségét, hogy az előfizetésekben való használatra kiosztott IP-címtartomány ne legyen feldarabolva.
+Ha a virtuális gépeknek kapcsolatba kell lépniük a meglévő infrastruktúrával, akkor érdemes lehet egy meglévő virtuális hálózatot használni a DevTest Labs-környezetben. Ha a ExpressRoute-t használja, érdemes lehet a virtuális hálózatok/alhálózatok számának minimalizálására, hogy az előfizetésekben használt IP-címtartomány ne legyen kiosztva.
 
-Vegye fontolóra a VNet-társítási minta használatát ([sugaras modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) is. Ez a megközelítés lehetővé teszi az vnet/alhálózati kommunikációt az előfizetések között. Ellenkező esetben minden DevTest Labs-környezet rendelkezhet saját virtuális hálózattal.
+Érdemes lehet használni a virtuális hálózati társítási mintát ([sugaras modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) is. Ez a megközelítés lehetővé teszi az vnet/alhálózati kommunikációt az előfizetések között. Ellenkező esetben minden DevTest Labs-környezet rendelkezhet saját virtuális hálózattal.
 
 Az előfizetéshez tartozó virtuális hálózatok száma [korlátozott](../azure-resource-manager/management/azure-subscription-service-limits.md) . Az alapértelmezett érték 50, de ez a korlát 100-re is kiemelhető.
 

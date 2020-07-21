@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 664e61697c1fb0c339a4c2caf8d0125a73e608c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28bbf9749375a4523237e840c217977853cd4ddd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319634"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539822"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -21,7 +21,7 @@ Ha a mérőszámok a portálon jelennek meg, akkor a rendszer a mintavétel sor�
 ## <a name="brief-summary"></a>Rövid összefoglalás
 
 * Három különböző típusú mintavétel létezik: adaptív mintavételezés, rögzített sebességű mintavételezés és betöltési mintavételezés.
-* Az adaptív mintavételezés alapértelmezés szerint engedélyezve van a Application Insights ASP.NET és ASP.NET Core szoftverfejlesztői készletek (SDK-k) legújabb verzióiban. [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview)is használja.
+* Az adaptív mintavételezés alapértelmezés szerint engedélyezve van a Application Insights ASP.NET és ASP.NET Core szoftverfejlesztői készletek (SDK-k) legújabb verzióiban. [Azure functions](../../azure-functions/functions-overview.md)is használja.
 * A rögzített méretű mintavételezés a ASP.NET, a ASP.NET Core, a Java (az ügynök és az SDK), valamint a Python Application Insights SDK-k legújabb verzióiban érhető el.
 * A betöltési mintavételezés a Application Insights szolgáltatási végponton működik. Ez csak akkor érvényes, ha más mintavételezés nem érvényes. Ha az SDK mintákat vesz fel a telemetria, a betöltési mintavételezés le van tiltva.
 * Webalkalmazások esetén, ha egyéni eseményeket naplóz, és meg kell győződnie arról, hogy az események egy csoportjának megőrzése vagy elvetése együtt történik, az eseményeknek azonos `OperationId` értékkel kell rendelkezniük.
@@ -33,10 +33,11 @@ A következő táblázat összefoglalja az egyes SDK-típusokhoz és az alkalmaz
 | Application Insights SDK | Adaptív mintavételezés támogatott | Rögzített arányú mintavételezés támogatott | A betöltési mintavételezés támogatott |
 |-|-|-|-|
 | ASP.NET | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-aspnet-applications) | [Igen](#configuring-fixed-rate-sampling-for-aspnet-applications) | Csak akkor, ha nincs más mintavételezés |
-| ASP.NET-mag | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Igen](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Csak akkor, ha nincs más mintavételezés |
-| Azure Functions | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-azure-functions) | No | Csak akkor, ha nincs más mintavételezés |
-| Java | No | [Igen](#configuring-fixed-rate-sampling-for-java-applications) | Csak akkor, ha nincs más mintavételezés |
-| Python | No | [Igen](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Csak akkor, ha nincs más mintavételezés |
+| ASP.NET Core | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Igen](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Csak akkor, ha nincs más mintavételezés |
+| Azure Functions | [Igen (alapértelmezés szerint)](#configuring-adaptive-sampling-for-azure-functions) | Nem | Csak akkor, ha nincs más mintavételezés |
+| Java | Nem | [Igen](#configuring-fixed-rate-sampling-for-java-applications) | Csak akkor, ha nincs más mintavételezés |
+| Node.JS | Nem | [Igen](./nodejs.md#sampling) | Csak akkor, ha nincs más mintavételezés
+| Python | Nem | [Igen](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Csak akkor, ha nincs más mintavételezés |
 | Minden más | Nem | Nem | [Igen](#ingestion-sampling) |
 
 > [!NOTE]
@@ -209,7 +210,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>Az adaptív mintavételezés konfigurálása Azure Functionshoz
 
-Az ezen a [lapon](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling) található utasításokat követve konfigurálhatja a Azure functions futó alkalmazások adaptív mintavételezését.
+Az ezen a [lapon](../../azure-functions/functions-monitoring.md#configure-sampling) található utasításokat követve konfigurálhatja a Azure functions futó alkalmazások adaptív mintavételezését.
 
 ## <a name="fixed-rate-sampling"></a>Rögzített arányú mintavételezés
 
@@ -481,7 +482,7 @@ Ha a mintavételezés más formáinak használatára vonatkozó feltételek nem 
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>Annak ismerete, hogy a mintavétel működik-e
 
-Ha a tényleges mintavételezési sebességet szeretné felderíteni, függetlenül attól, hogy hol alkalmazták, használjon egy [elemzési lekérdezést](../../azure-monitor/app/analytics.md) , például a következőt:
+Ha a tényleges mintavételezési sebességet szeretné felderíteni, függetlenül attól, hogy hol alkalmazták, használjon egy [elemzési lekérdezést](../log-query/log-query-overview.md) , például a következőt:
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces
@@ -583,7 +584,7 @@ A fix sebességű mintavételezés az SDK egyik funkciója, amely a 2.0.0 és a 
 
 A v 2.5.0 előtt – a ASP.NET SDK Beta2, valamint a ASP.NET Core SDK-hoz készült v 2.2.0-beta3 a mintavételi döntés alapjául a felhasználói azonosító kivonata a "user" (azaz a leggyakoribb webalkalmazások) definiáló alkalmazásokhoz. Azon alkalmazások típusai esetében, amelyek nem határoznak meg felhasználókat (például webszolgáltatásokat), a mintavételi döntés a kérelem műveleti AZONOSÍTÓján alapul. A ASP.NET és ASP.NET Core SDK-k legújabb verziói a mintavételi döntés műveleti AZONOSÍTÓját használják.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [szűréssel](../../azure-monitor/app/api-filtering-sampling.md) szigorúbban VEZÉRELHETI az SDK által küldött adatokat.
-* Olvassa el a fejlesztői hálózat című cikket a [telemetria optimalizálása Application Insightsával](https://msdn.microsoft.com/magazine/mt808502.aspx).
+* Olvassa el a fejlesztői hálózat című cikket a [telemetria optimalizálása Application Insightsával](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights).

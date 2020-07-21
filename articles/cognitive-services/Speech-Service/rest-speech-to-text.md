@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: c4eb1419859d4a87e53371a266dcef52e632b6c8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636087"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537969"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -223,10 +223,10 @@ A listában szereplő objektum a következőket `NBest` tartalmazhatja:
 | `ITN` | A felismert szöveg, a telefonszámok, a számok, a rövidítések ("doktor Smith" – "Dr Smith") és az alkalmazott egyéb átalakítások inverz szövege. |
 | `MaskedITN` | A ITN űrlap a káromkodás maszkolásával lett alkalmazva, ha szükséges. |
 | `Display` | A felismert szöveg megjelenítési formája, írásjelekkel és nagybetűkkel kiegészítve. Ez a paraméter megegyezik a `DisplayText` Formátum beállításakor megadott értékkel `simple` . |
-| `AccuracyScore` | A megadott beszéd kiejtési pontosságát jelző pontszám |
-| `FluencyScore` | A megadott beszéd folyékonyan megjelenő pontszáma. |
-| `CompletenessScore` | Az adott beszéd teljességét jelző pontszám a Kiejtett szavak arányának a teljes bemenetre való kiszámításával. |
-| `PronScore` | Az adott beszéd kiejtési minőségét jelző összesített pontszám. A számítás a `AccuracyScore` `FluencyScore` és `CompletenessScore` a súlyozás alapján történik. |
+| `AccuracyScore` | A beszéd kiejtésének pontossága. A pontosság azt jelzi, hogy a fonémák milyen szorosan illeszkedik a natív beszélő kiejtéséhez. A Word és a teljes szöveges szint pontossági pontszáma a fonéma szint pontossági pontszámával van összesítve. |
+| `FluencyScore` | Az adott beszédet. A gördülékenység azt jelzi, hogy a beszéd milyen szorosan illeszkedik a szavak közötti csendes szünetekhez. |
+| `CompletenessScore` | A beszéd teljessége, amelyet a Kiejtett szavak arányának kiszámításával határozhat meg a szöveges bevitelre való hivatkozáshoz. |
+| `PronScore` | Az adott beszéd kiejtési minőségét jelző összesített pontszám. Ez az Összesítés a `AccuracyScore` `FluencyScore` és `CompletenessScore` a súlyozással történik. |
 | `ErrorType` | Ez az érték azt jelzi, hogy egy szó ki van-e hagyva, be van-e jelölve vagy rosszul van-e kiválasztva `ReferenceText` . A lehetséges értékek: `None` (azaz nincs hiba ezen a szónak), `Omission` `Insertion` és `Mispronunciation` . |
 
 ## <a name="sample-responses"></a>Mintául szolgáló válaszok

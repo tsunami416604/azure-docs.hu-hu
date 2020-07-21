@@ -3,12 +3,12 @@ title: Gyakori kérdések – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azure Event Hubs és azok válaszait illetően.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0094be0eef4595662477ef1c7914ae9f118b8e25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bec50da97bc826eb1bd26452e8f69f5c11f2d65d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320583"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537180"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
@@ -33,7 +33,7 @@ Az Azure Event Hubs standard szintje az alapszintű szinten elérhető funkciók
 * Hosszú esemény megőrzése
 * További felügyelt kapcsolatok, amelyek több mint a megadott számon felüli díjat tartalmaznak
 * Több, mint egyetlen [fogyasztói csoport](event-hubs-features.md#consumer-groups)
-* [Rögzítése](event-hubs-capture-overview.md)
+* [Rögzítés](event-hubs-capture-overview.md)
 * [Kafka-integráció](event-hubs-for-kafka-ecosystem-overview.md)
 
 A díjszabással kapcsolatos további információkért, beleértve a dedikált Event Hubs is, tekintse meg a [Event Hubs díjszabási részleteit](https://azure.microsoft.com/pricing/details/event-hubs/).
@@ -261,14 +261,14 @@ Event Hubs a [diagnosztikai naplók](event-hubs-diagnostic-logs.md) két típus�
 
 ### <a name="support-and-sla"></a>Támogatás és SLA
 
-A Event Hubs technikai támogatása a [Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-service-bus.html)keresztül érhető el Azure Service Bus. A számlázási és előfizetés-kezelési támogatást díjmentesen biztosítjuk.
+A Event Hubs technikai támogatása a [Microsoft Q&](/answers/topics/azure-service-bus.html)keresztül érhető el Azure Service Bus. A számlázási és előfizetés-kezelési támogatást díjmentesen biztosítjuk.
 
 Ha többet szeretne megtudni az SLA-ról, tekintse meg a [szolgáltatói szerződéseket](https://azure.microsoft.com/support/legal/sla/) ismertető oldalt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
-* [Event Hubs áttekintése](event-hubs-what-is-event-hubs.md)
-* [Event hub létrehozása](event-hubs-create.md)
+* [Event Hubs áttekintése](./event-hubs-about.md)
+* [Eseményközpont létrehozása](event-hubs-create.md)
 * [Event Hubs automatikus kiemelés](event-hubs-auto-inflate.md)

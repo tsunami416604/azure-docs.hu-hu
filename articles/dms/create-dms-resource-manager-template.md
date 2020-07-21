@@ -1,35 +1,39 @@
 ---
 title: DMS-példány létrehozása (Azure Resource Manager sablon)
-description: Megtudhatja, hogyan hozhat létre Database Migration Service Azure Resource Manager sablon használatával.
+description: Megtudhatja, hogyan hozhat létre Database Migration Service a Azure Resource Manager Template (ARM-sablon) használatával.
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: dms
-ms.openlocfilehash: 9e0d537a948e960c90737cc3f367940a0ffca74c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: dbc09c3fa1dc1878d4feea5c5e7fd8b68e0c11f1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852521"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537445"
 ---
-# <a name="create-instance-of-azure-database-migration-service-azure-resource-manager-template"></a>Azure Database Migration Service-példány létrehozása (Azure Resource Manager sablon)
+# <a name="quickstart-create-instance-of-azure-database-migration-service-using-arm-template"></a>Gyors útmutató: Azure Database Migration Service példányának létrehozása ARM-sablonnal
 
-Ezzel a Azure Resource Manager sablonnal telepítheti a Azure Database Migration Service egy példányát. 
+Ezzel a Azure Resource Manager sablonnal (ARM-sablon) telepítheti a Azure Database Migration Service egy példányát. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-database-migration-simple-deploy%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure Database Migration Service ARM-sablonhoz a következők szükségesek: 
 
-- Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) és/vagy a [PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7)legújabb verziója. 
+- Az [Azure CLI](/cli/azure/install-azure-cli) és/vagy a [PowerShell](/powershell/scripting/install/installing-powershell)legújabb verziója. 
 - Azure-előfizetés. Ha még nem rendelkezik ilyennel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-azure-database-migration-simple-deploy/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-azure-database-migration-simple-deploy/) közül származik.
 
 :::code language="json" source="~/quickstart-templates/101-azure-database-migration-simple-deploy/azuredeploy.json" highlight="33-75":::
 
@@ -39,7 +43,7 @@ Három Azure-erőforrás van definiálva a sablonban:
 - [Microsoft. Network/virtualNetworks/Subnets](/azure/templates/microsoft.network/virtualnetworks/subnets): létrehozza az alhálózatot. 
 - [Microsoft. DataMigration/Services](/azure/templates/microsoft.datamigration/services): központilag telepíti a Azure Database Migration Service egy példányát. 
 
-További Azure Database Migration Services-sablonok a rövid útmutató [sablonjának](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datamigration)katalógusában találhatók.
+További Azure Database Migration Services-sablonok a rövid útmutató [sablonjának](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Datamigration&pageNumber=1&sort=Popular)katalógusában találhatók.
 
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
@@ -105,9 +109,9 @@ Write-Host "Press [ENTER] to continue..."
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 A Azure Database Migration Service központi telepítésének egyéb módjaival kapcsolatban lásd: 
-- [Azure Portalra](quickstart-create-data-migration-service-portal.md)
+- [Azure Portal](quickstart-create-data-migration-service-portal.md)
 
 További információ: [Azure Database Migration Service áttekintése](dms-overview.md)

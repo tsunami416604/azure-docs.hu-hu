@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b5ce0cba68d4374d6a0403af28ec3f03920acf6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81419306"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537598"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Töltse be az 1 TB-ot Azure SQL Data Warehouse 15 perc alatt Data Factory
 > [!NOTE]
@@ -46,7 +46,7 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure Blob Storage: Ez a kísérlet az Azure Blob Storaget (GRS) használja a TPC-H tesztelési adatkészlet tárolásához.  Ha nem rendelkezik Azure Storage-fiókkal, Ismerje meg, [hogyan hozhat létre egy Storage](../../storage/common/storage-account-create.md)-fiókot.
-* [TPC-h-](http://www.tpc.org/tpch/) adat: a TPC-h-t a tesztelési adatkészletként fogjuk használni.  Ehhez a `dbgen` TPC-H eszközkészletből kell használnia, amely segít az adatkészlet létrehozásában.  Le is töltheti a forráskódot a `dbgen` [TPC-eszközökről](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) , és lefordíthatja saját magát, vagy letöltheti a lefordított bináris fájlt a [githubról](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Futtassa a dbgen.exe a következő parancsokkal 1 TB-os Flat-fájl létrehozásához a `lineitem` táblázatos elosztott fájlok között 10 fájlban:
+* [TPC-h-](http://www.tpc.org/tpch/) adat: a TPC-h-t a tesztelési adatkészletként fogjuk használni.  Ehhez a `dbgen` TPC-H eszközkészletből kell használnia, amely segít az adatkészlet létrehozásában.  Le is töltheti a forráskódot a `dbgen` [TPC-eszközökről](http://www.tpc.org/tpc_documents_current_versions/current_specifications5.asp) , és lefordíthatja saját magát, vagy letöltheti a lefordított bináris fájlt a [githubról](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Futtassa a dbgen.exe a következő parancsokkal 1 TB-os Flat-fájl létrehozásához a `lineitem` táblázatos elosztott fájlok között 10 fájlban:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`
@@ -212,6 +212,6 @@ Alapértelmezés szerint be van jelölve a " **Base** " jelölőnégyzet.  Katti
 
 Részletekért tekintse [meg Azure SQL Data Warehouse ajánlott eljárásait](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Data Factory másolási varázsló](data-factory-copy-wizard.md) – ez a cikk a másolás varázsló részleteit tartalmazza.
 * [Másolási tevékenység teljesítményének és finomhangolásának útmutatója](data-factory-copy-activity-performance.md) – ez a cikk a referenciák teljesítményének méréseit és hangolási útmutatóját tartalmazza.

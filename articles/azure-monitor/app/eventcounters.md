@@ -3,15 +3,16 @@ title: Az Application Insightsban lévő események számlálói | Microsoft Doc
 description: A rendszer és az egyéni .NET/.NET Core EventCounters figyelése Application Insightsban.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 37d0e1e741548986788be78860830f36add1f5a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83700433"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539941"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters bemutatása
 
-`EventCounter`a .NET/.NET Core mechanizmusa számlálók vagy statisztikák közzétételére és felhasználására szolgál. [Ez](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) a dokumentum áttekintést nyújt és `EventCounters` példákkal szolgál az alkalmazások közzétételére és felhasználására. A EventCounters minden operációsrendszer-platformon támogatott – Windows, Linux és macOS. Azt is megteheti, hogy a [PerformanceCounters](https://docs.microsoft.com/dotnet/api/system.diagnostics.performancecounter) platformfüggetlen, csak Windows rendszerekben támogatott.
+`EventCounter`a .NET/.NET Core mechanizmusa számlálók vagy statisztikák közzétételére és felhasználására szolgál. [Ez](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) a dokumentum áttekintést nyújt és `EventCounters` példákkal szolgál az alkalmazások közzétételére és felhasználására. A EventCounters minden operációsrendszer-platformon támogatott – Windows, Linux és macOS. Azt is megteheti, hogy a [PerformanceCounters](/dotnet/api/system.diagnostics.performancecounter) platformfüggetlen, csak Windows rendszerekben támogatott.
 
 Míg a felhasználók bármilyen egyéni személyt közzétehetnek az `EventCounters` igényeinek megfelelően, a .net Core 3,0 futtatókörnyezet alapértelmezés szerint közzéteszi ezeket a számlálókat. A dokumentum végigvezeti a begyűjtéséhez és megtekintéséhez `EventCounters` (rendszer által definiált vagy felhasználó által definiált) az Azure Application Insights.
 
@@ -90,14 +91,14 @@ Az alábbi példa bemutatja, hogyan adhat hozzá vagy távolíthat el számlál�
 
 ## <a name="event-counters-in-metric-explorer"></a>Az események számlálói a metrika Explorerben
 
-Az EventCounter mérőszámok megjelenítéséhez a [metrika-kezelőben](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)válassza ki Application Insights erőforrást, majd a log-alapú metrikákat metrikai névtérként. Ezután az EventCounter mérőszámok az egyéni kategória alatt jelennek meg.
+Az EventCounter mérőszámok megjelenítéséhez a [metrika-kezelőben](../platform/metrics-charts.md)válassza ki Application Insights erőforrást, majd a log-alapú metrikákat metrikai névtérként. Ezután az EventCounter mérőszámok az egyéni kategória alatt jelennek meg.
 
 > [!div class="mx-imgBorder"]
 > ![Application Insightsban jelentett események számlálói](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Az elemzési események számlálói
 
-Az **customMetrics** táblában is kereshet és megjeleníthet Event Counter-jelentéseket az [Analyticsben](../../azure-monitor/app/analytics.md).
+Az **customMetrics** táblában is kereshet és megjeleníthet Event Counter-jelentéseket az [Analyticsben](../log-query/log-query-overview.md).
 
 Például a következő lekérdezés futtatásával tekintheti meg, hogy a rendszer milyen számlálókat gyűjt, és hogyan érhető el a lekérdezéshez:
 
@@ -143,7 +144,7 @@ A EventCounter nem igényel speciális engedélyeket, és a .NET Core 3,0 össze
 
 ### <a name="i-have-enabled-application-insights-from-azure-web-app-portal-but-i-cant-see-eventcounters"></a>Engedélyeztem Application Insights az Azure Web App Portalon. De nem látom a EventCounters.?
 
- ASP.NET Core [Application Insights bővítmény](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps) még nem támogatja ezt a funkciót. Ez a dokumentum akkor frissül, ha ez a funkció támogatott.
+ ASP.NET Core [Application Insights bővítmény](./azure-web-apps.md) még nem támogatja ezt a funkciót. Ez a dokumentum akkor frissül, ha ez a funkció támogatott.
 
 ## <a name="next-steps"></a><a name="next"></a>További lépések
 

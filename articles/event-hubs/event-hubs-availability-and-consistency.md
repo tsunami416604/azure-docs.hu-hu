@@ -3,12 +3,12 @@ title: Rendelkezésre állás és konzisztencia – Azure Event Hubs | Microsoft
 description: Hogyan biztosítható a maximális rendelkezésre állás és konzisztencia az Azure Event Hubs partíciók használatával.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 497a6e7430c4e6f8e29f903294ca94a4cb23012b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 45ca5cc5790824d6c67a47a23691c6b0cae0b9f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315766"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537207"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Rendelkezésre állás és konzisztencia az Event Hubsban
 
@@ -138,8 +138,8 @@ await producer.SendAsync(data);
 
 Ez a példa az eseményt az Event hub egyik elérhető partíciójában küldi el, és beállítja az alkalmazáshoz tartozó sorozatszámot. Ehhez a megoldáshoz a feldolgozó alkalmazásnak meg kell őriznie az állapotot, de a küldők számára nagyobb valószínűséggel elérhetőnek kell lennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
-* [Event Hubs szolgáltatás áttekintése](event-hubs-what-is-event-hubs.md)
-* [Eseményközpont létrehozása](event-hubs-create.md)
+* [Event Hubs szolgáltatás áttekintése](./event-hubs-about.md)
+* [Event hub létrehozása](event-hubs-create.md)

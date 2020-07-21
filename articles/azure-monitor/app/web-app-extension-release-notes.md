@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 978cb7ece1f8b3e16815c1dc49e4983dc393cbfc
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: b9da3b0647d5abe60dd8f6cb21163ff21f07205b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937537"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539720"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Az Azure webalkalmazás-bővítmény kibocsátási megjegyzései Application Insights
 
@@ -21,7 +21,7 @@ Ez a cikk az Azure Web Apps-bővítmény kiadási megjegyzéseit tartalmazza a f
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 - A bővítmény aktuális verziójának megkeresése
-    - Nyissa meg a következőt: `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights`. További információkért tekintse meg [a bővítmény/ügynök alapú figyelés részletes hibaelhárítási útmutatóját](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net#troubleshooting) .
+    - Nyissa meg a következőt: `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights`. További információkért tekintse meg [a bővítmény/ügynök alapú figyelés részletes hibaelhárítási útmutatóját](./azure-web-apps.md?tabs=net#troubleshooting) .
 
 - Mi a teendő, ha privát bővítményeket használok?
     - Távolítsa el a Private site Extensions szolgáltatást, mert már nem támogatott.
@@ -73,6 +73,6 @@ Ez a cikk az Azure Web Apps-bővítmény kiadási megjegyzéseit tartalmazza a f
 
 - Javítsa ki az ASP.NET Core-alkalmazások hiányos HTML-válaszát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure App Services figyelésének konfigurálásával kapcsolatos további információkért tekintse meg az [Azure app Service dokumentációját](azure-web-apps.md) . 

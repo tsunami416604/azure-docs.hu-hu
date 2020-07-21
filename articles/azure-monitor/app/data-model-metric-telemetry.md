@@ -4,11 +4,12 @@ description: Application Insights adatmodell metrikus telemetria
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44f0b070a7c0da416002d9bf7e509d643a96dc7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671970"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540009"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Metrikus telemetria: Application Insights adatmodell
 
@@ -23,7 +24,7 @@ A rendszerszintű és a folyamat számlálóit jelölő metrika:
 | **.NET-név**             | **Platform agnosztikus neve** | **REST API neve** | **Leírás**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | Munka folyamatban... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | számítógép teljes PROCESSZORa
-| `\Memory\Available Bytes`                 | Munka folyamatban... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | A számítógépen futó folyamatok számára elérhető fizikai memória mennyiségét jeleníti meg bájtban. A kiszámításához a rendszer a nulla, az ingyenes és a készenléti memória listán lévő tárterület összegét összesíti. A szabad memória készen áll a használatra. a letiltott memória a nullával kitöltött memóriából áll, hogy megakadályozza a későbbi folyamatok számára az előző folyamat által használt adatok megtekintését; a készenléti memória olyan memória, amely el lett távolítva egy folyamat munkakészletéről (fizikai memóriája) a lemezre, de továbbra is visszahívható. Lásd: [memória objektum](https://msdn.microsoft.com/library/ms804008.aspx)
+| `\Memory\Available Bytes`                 | Munka folyamatban... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | A számítógépen futó folyamatok számára elérhető fizikai memória mennyiségét jeleníti meg bájtban. A kiszámításához a rendszer a nulla, az ingyenes és a készenléti memória listán lévő tárterület összegét összesíti. A szabad memória készen áll a használatra. a letiltott memória a nullával kitöltött memóriából áll, hogy megakadályozza a későbbi folyamatok számára az előző folyamat által használt adatok megtekintését; a készenléti memória olyan memória, amely el lett távolítva egy folyamat munkakészletéről (fizikai memóriája) a lemezre, de továbbra is visszahívható. Lásd: [memória objektum](/previous-versions/ms804008(v=msdn.10))
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | Munka folyamatban... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | Az alkalmazást működtető folyamat PROCESSZORa
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | Munka folyamatban... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | az alkalmazást működtető folyamat által használt memória
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | Munka folyamatban... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | az alkalmazás futtatásának folyamata által futtatott I/O-műveletek sebessége
@@ -62,7 +63,7 @@ Az egyéni tulajdonsággal `CustomPerfCounter` beállított metrika `true` azt j
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan használhatja [a Application INSIGHTS API-t egyéni eseményekhez és mérőszámokhoz](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric).
 - Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.

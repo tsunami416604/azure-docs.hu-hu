@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 6435535ee14450c590a79ea68c8855c29df8bd9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d13a7cf87ba22dce96992c362f8b800ba79f6976
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637870"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539635"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Adatok gyűjtése egy Windows rendszerű számítógépről hibrid környezetben Azure Monitor
 
@@ -26,9 +26,9 @@ ms.locfileid: "80637870"
 
 A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott Windows operációs rendszerek](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) és [hálózati tűzfal konfigurálása](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)című témakört.
  
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="sign-in-to-azure-portal"></a>Jelentkezzen be az Azure Portalon
+## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen. 
 
@@ -112,7 +112,7 @@ A Azure Monitor a hosszú távú elemzéshez és jelentéskészítéshez a Windo
  
 3. Válassza az **Adatok**, majd a **Windows Eseménynaplók** lehetőséget.  
 
-4. Az Eseménynapló hozzáadásához írja be a napló nevét. Adja meg a **rendszer**elemet, majd válassza a pluszjelet (**+**).  
+4. Az Eseménynapló hozzáadásához írja be a napló nevét. Adja meg a **rendszer**elemet, majd válassza a pluszjelet ( **+** ).  
 
 5. A táblázatban válassza ki a **hibát** és a **Figyelmeztetési** megszakításokat.
 
@@ -142,7 +142,7 @@ Most, hogy engedélyezte az adatgyűjtést, futtasson egy egyszerű naplót, hog
 
     ![Log Analytics naplóbeli keresés eredménye](media/quick-collect-azurevm/log-analytics-search-perf.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége rájuk, távolítsa el az ügynököt a számítógépről, és törölje a Log Analytics munkaterületet.  
 
@@ -158,11 +158,11 @@ A korábban létrehozott Log Analytics munkaterület törléséhez válassza ki 
 
 ![Log Analytics munkaterület törlése](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy operatív és teljesítményadatokat gyűjt a Windows rendszerű számítógépéről, könnyedén megkezdheti az összegyűjtött adatok feltárását, elemzését és *kezelését.*  
 
 Az adatmegtekintés és-elemzés megismeréséhez folytassa az oktatóanyagot:
 
 > [!div class="nextstepaction"]
-> [Adatok megtekintése és elemzése a Log Analyticsben](tutorial-viewdata.md)
+> [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/get-started-portal.md)

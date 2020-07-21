@@ -4,12 +4,12 @@ description: Egyéni napi/heti/havi jelentések automatizálása Azure Applicati
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: cf251d63645efc70ee93e84827db47ae3055ae33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb580b90c0bf9acafc4e8f805c2eef7eaae06d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82161481"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540077"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Egyéni jelentések automatizálása Azure Application Insights-beli adatkezeléssel
 
@@ -31,9 +31,9 @@ Minden vállalat egyedi jelentéskészítési igényeivel rendelkezik, például
 
 Programozott módon [lekérdezheti Application Insightsi](https://dev.applicationinsights.io/) adataikat, hogy egyéni jelentéseket készítsenek az ütemterv alapján. A következő lehetőségek segíthetnek a gyors kezdésben:
 
-* [Jelentések automatizálása Microsoft Flow](automate-with-flow.md)
+* [Jelentések automatizálása Microsoft Flow](../platform/logicapp-flow-connector.md)
 * [Jelentések automatizálása Logic Apps](automate-with-logic-apps.md)
-* A figyelési forgatókönyvben használja a "Application Insights ütemezett kivonatoló" [Azure-függvény](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function) sablonját. Ez a függvény a SendGrid használatával továbbítja az e-mailt. 
+* A figyelési forgatókönyvben használja a "Application Insights ütemezett kivonatoló" [Azure-függvény](../../azure-functions/functions-create-first-azure-function.md) sablonját. Ez a függvény a SendGrid használatával továbbítja az e-mailt. 
 
     ![Azure-függvény sablonja](./media/automate-custom-reports/azure-function-template.png)
 
@@ -72,7 +72,7 @@ availabilityResults
 
 1. Hozzon létre egy Azure-függvényalkalmazás. ( _a_ Application Insights csak akkor szükséges, ha az új függvényalkalmazás Application Insights) szeretné figyelni.
 
-   Az Azure Functions dokumentációjában megtudhatja, hogyan [hozhat létre egy Function-alkalmazást](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)
+   Az Azure Functions dokumentációjában megtudhatja, hogyan [hozhat létre egy Function-alkalmazást](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app)
 
 2. Miután az új függvényalkalmazás befejezte az üzembe helyezést, válassza az **Ugrás az erőforráshoz**lehetőséget.
 
@@ -83,7 +83,7 @@ availabilityResults
 4. Válassza ki a **_Application Insights ütemezett kivonatoló sablont_**.
 
      > [!NOTE]
-     > Alapértelmezés szerint a Function apps a Runtime 3. x verziójával jön létre. Az Application Insights ütemezett kivonatoló sablon használatához a Azure Functions Runtime **1. x** [verzióját kell megcéloznia](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) . A futtatókörnyezet verziójának módosításához lépjen a Configuration > Function Runtime-beállítások menüpontra. ![futtatókörnyezet képernyőképe](./media/automate-custom-reports/change-runtime-v.png)
+     > Alapértelmezés szerint a Function apps a Runtime 3. x verziójával jön létre. Az Application Insights ütemezett kivonatoló sablon használatához a Azure Functions Runtime **1. x** [verzióját kell megcéloznia](../../azure-functions/set-runtime-version.md) . A futtatókörnyezet verziójának módosításához lépjen a Configuration > Function Runtime-beállítások menüpontra. ![futtatókörnyezet képernyőképe](./media/automate-custom-reports/change-runtime-v.png)
 
    ![Új függvény Application Insights sablon képernyőképe](./media/automate-custom-reports/function-app-04.png)
 
@@ -95,7 +95,7 @@ availabilityResults
 
     ![Az Azure Function alkalmazás beállításainak képernyőképe](./media/automate-custom-reports/config.png)
 
-7. Három új Alkalmazásbeállítások létrehozása megfelelő megfelelő értékekkel, ``AI_APP_ID`` ``AI_APP_KEY`` és ``SendGridAPI`` . Kattintson a **Mentés** gombra.
+7. Három új Alkalmazásbeállítások létrehozása megfelelő megfelelő értékekkel, ``AI_APP_ID`` ``AI_APP_KEY`` és ``SendGridAPI`` . Válassza a **Mentés** lehetőséget.
 
      ![Function Integration Interface – képernyőfelvétel](./media/automate-custom-reports/app-settings.png)
     
@@ -106,7 +106,7 @@ availabilityResults
    * SendGridAPI = SendGrid API-kulcs
 
      > [!NOTE]
-     > Ha nem rendelkezik SendGrid-fiókkal, létrehozhat egyet. A Azure Functions SendGrid dokumentációja [itt](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid)található. Ha csak minimális magyarázatot szeretne arról, hogyan kell beállítani a SendGrid-t, és egy API-kulcsot kell előállítania, a cikk végén található. 
+     > Ha nem rendelkezik SendGrid-fiókkal, létrehozhat egyet. A Azure Functions SendGrid dokumentációja [itt](../../azure-functions/functions-bindings-sendgrid.md)található. Ha csak minimális magyarázatot szeretne arról, hogyan kell beállítani a SendGrid-t, és egy API-kulcsot kell előállítania, a cikk végén található. 
 
 8. Válassza az **integráció** lehetőséget, majd a kimenetek területen kattintson a **SendGrid ($Return)** elemre.
 
@@ -148,9 +148,9 @@ Ezek a lépések csak akkor érvényesek, ha még nem rendelkezik konfigurált S
 
    ![Az API-kulcs másolása képernyőfelvétel](./media/automate-custom-reports/function-app-17.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [elemzési lekérdezések](../../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
 * További információ az [Application Insights adatainak programozott lekérdezéséről](https://dev.applicationinsights.io/)
-* További tudnivalók a [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) szolgáltatásról
+* További tudnivalók a [Logic Apps](../../logic-apps/logic-apps-overview.md) szolgáltatásról
 * További információ a [Microsoft Flowról](https://ms.flow.microsoft.com).

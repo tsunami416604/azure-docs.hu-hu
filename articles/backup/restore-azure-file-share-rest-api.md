@@ -3,15 +3,16 @@ title: Azure-fájlmegosztás visszaállítása REST API
 description: Megtudhatja, hogyan használhatja a REST APIt az Azure-fájlmegosztás vagy a megadott fájlok visszaállítására Azure Backup által létrehozott visszaállítási pontról
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1c3160491ef92c62745af1468556e7d5c30437fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a1f2999fa1b50507fd3d1b6f21f508ec9f82841
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710575"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86538156"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Azure-fájlmegosztás visszaállítása REST API használatával
 
-Ez a cikk azt ismerteti, hogyan állíthatja vissza a teljes fájlmegosztást vagy adott fájlokat egy [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) által létrehozott visszaállítási pontról a REST API használatával.
+Ez a cikk azt ismerteti, hogyan állíthatja vissza a teljes fájlmegosztást vagy adott fájlokat egy [Azure Backup](./backup-overview.md) által létrehozott visszaállítási pontról a REST API használatával.
 
 A cikk végén megtudhatja, hogyan hajthatja végre a következő műveleteket a REST API használatával:
 
@@ -32,7 +33,7 @@ Ebben a cikkben a következő erőforrásokat fogjuk használni:
 
 ## <a name="fetch-containername-and-protecteditemname"></a>ContainerName és ProtectedItemName beolvasása
 
-A visszaállítással kapcsolatos API-hívások többsége esetében a {containerName} és {protectedItemName} URI paraméterek értékeit kell átadnia. Használja az ID attribútumot a [backupprotectableitems beolvasása](https://docs.microsoft.com/rest/api/backup/protecteditems/get) művelet válasz törzsében a paraméterek értékeinek lekéréséhez. A példában a védelemmel ellátni kívánt fájlmegosztás azonosítója a következő:
+A visszaállítással kapcsolatos API-hívások többsége esetében a {containerName} és {protectedItemName} URI paraméterek értékeit kell átadnia. Használja az ID attribútumot a [backupprotectableitems beolvasása](/rest/api/backup/protecteditems/get) művelet válasz törzsében a paraméterek értékeinek lekéréséhez. A példában a védelemmel ellátni kívánt fájlmegosztás azonosítója a következő:
 
 `"/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;afsaccount/protectableItems/azurefileshare;azurefiles`
 
@@ -43,7 +44,7 @@ A visszaállítással kapcsolatos API-hívások többsége esetében a {containe
 
 ## <a name="fetch-recovery-points-for-backed-up-azure-file-share"></a>Helyreállítási pontok beolvasása az Azure-fájlmegosztás biztonsági mentéséhez
 
-A mentett fájlmegosztás vagy fájlok visszaállításához először válasszon ki egy helyreállítási pontot a visszaállítási művelet végrehajtásához. A biztonsági másolatban szereplő elemek helyreállítási pontjai a [helyreállítási pontok listájának](https://docs.microsoft.com/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) REST API hívásával is felvehetők. Ez egy GET művelet az összes releváns értékkel.
+A mentett fájlmegosztás vagy fájlok visszaállításához először válasszon ki egy helyreállítási pontot a visszaállítási művelet végrehajtásához. A biztonsági másolatban szereplő elemek helyreállítási pontjai a [helyreállítási pontok listájának](/rest/api/site-recovery/recoverypoints/listbyreplicationprotecteditems) REST API hívásával is felvehetők. Ez egy GET művelet az összes releváns értékkel.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13&$filter={$filter}
@@ -143,7 +144,7 @@ A rendszer a fenti válaszban a (z) {Name} mezővel azonosítja a helyreállít�
 ## <a name="full-share-recovery-using-rest-api"></a>Teljes megosztás helyreállítása a REST API használatával
 
 Ezzel a visszaállítási lehetőséggel visszaállíthatja a teljes fájlmegosztást az eredeti vagy egy másik helyen.
-A RESTORE utasítás egy POST-kérelem, amely a [trigger Restore](https://docs.microsoft.com/rest/api/backup/restores/trigger) REST API használatával hajthatja végre ezt a műveletet.
+A RESTORE utasítás egy POST-kérelem, amely a [trigger Restore](/rest/api/backup/restores/trigger) REST API használatával hajthatja végre ezt a műveletet.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -159,11 +160,11 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Egy Azure-fájlmegosztás visszaállításának elindításához a kérelem törzsének összetevői a következők:
 
-Name |  Típus   |   Description
+Név |  Típus   |   Leírás
 --- | ---- | ----
 Tulajdonságok | AzureFileShareRestoreRequest | RestoreRequestResource tulajdonságai
 
-A kérelem törzsének és egyéb részleteinek teljes listájáért tekintse meg az [trigger Restore REST API dokumentumot](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+A kérelem törzsének és egyéb részleteinek teljes listájáért tekintse meg az [trigger Restore REST API dokumentumot](/rest/api/backup/restores/trigger#request-body).
 
 ### <a name="restore-to-original-location"></a>Visszaállítás az eredeti helyre
 
@@ -216,9 +217,9 @@ A következő kérelem törzse visszaállítja a *azurefiles* fájlmegosztást a
 }
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
-A visszaállítási művelet indítása [aszinkron művelet](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
+A visszaállítási művelet indítása [aszinkron művelet](../azure-resource-manager/management/async-operations.md). Ez a művelet egy másik műveletet hoz létre, amelyet külön kell nyomon követni.
 Két választ ad vissza: 202 (elfogadva), ha egy másik művelet jön létre, és 200 (OK), amikor a művelet befejeződik.
 
 #### <a name="response-example"></a>Példa válaszra
@@ -349,7 +350,7 @@ A másodlagos hely helyreállításához a válasz törzse a következőhöz has
 }
 ```
 
-Mivel a biztonsági mentési feladat hosszú ideig futó művelet, azt a [feladatok figyelése REST API dokumentum használatával](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)című részben leírtak szerint kell követni.
+Mivel a biztonsági mentési feladat hosszú ideig futó művelet, azt a [feladatok figyelése REST API dokumentum használatával](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job)című részben leírtak szerint kell követni.
 
 ## <a name="item-level-recovery-using-rest-api"></a>Elemszintű helyreállítás REST API használatával
 
@@ -369,11 +370,11 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Egy Azure-fájlmegosztás visszaállításának elindításához a kérelem törzsének összetevői a következők:
 
-Name |  Típus   |   Description
+Név |  Típus   |   Leírás
 --- | ---- | ----
 Tulajdonságok | AzureFileShareRestoreRequest | RestoreRequestResource tulajdonságai
 
-A kérelem törzsének és egyéb részleteinek teljes listájáért tekintse meg az [trigger Restore REST API dokumentumot](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
+A kérelem törzsének és egyéb részleteinek teljes listájáért tekintse meg az [trigger Restore REST API dokumentumot](/rest/api/backup/restores/trigger#request-body).
 
 ### <a name="restore-to-original-location"></a>Visszaállítás az eredeti helyre
 
@@ -432,6 +433,6 @@ Kérelem törzsének létrehozása
 
 A választ ugyanúgy kell kezelni, mint a fentiekben ismertetett [teljes megosztást](#full-share-recovery-using-rest-api).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [kezelheti az Azure file share Backup szolgáltatást a REST API használatával](manage-azure-file-share-rest-api.md).

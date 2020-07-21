@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 3140c0de6fbe090e3d040202cd581c455f03b6d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5984cbf8cf618a938ee85638d981f7867c6ec8b5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77655256"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539363"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager összekötése a Azure Monitor
 A Microsoft Endpoint Configuration Manager-Azure Monitor környezet összekapcsolásával szinkronizálhatja az eszköz-gyűjtési adatait, és Azure Monitor és Azure Automation is hivatkozhat ezekre a gyűjteményekre.  
@@ -20,7 +21,7 @@ A Microsoft Endpoint Configuration Manager-Azure Monitor környezet összekapcso
 Azure Monitor támogatja Configuration Manager aktuális ág, 1606-es és újabb verzióját.
 
 >[!NOTE]
->A Configuration Manager Log Analytics munkaterülettel való összekapcsolásának funkciója nem kötelező, és alapértelmezés szerint nincs engedélyezve. A funkció használatához engedélyeznie kell ezt a funkciót. További információ: [Enable optional features from updates](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options).
+>A Configuration Manager Log Analytics munkaterülettel való összekapcsolásának funkciója nem kötelező, és alapértelmezés szerint nincs engedélyezve. A funkció használatához engedélyeznie kell ezt a funkciót. További információ: [Enable optional features from updates](/configmgr/core/servers/manage/install-in-console-updates#bkmk_options).
 
 ## <a name="configuration-overview"></a>Konfiguráció áttekintése
 
@@ -65,7 +66,7 @@ Tekintse át a [Windows rendszerű Azure monitor számítógépek csatlakoztatá
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>Configuration Manager összekötése Log Analytics munkaterülettel
 
 >[!NOTE]
-> Log Analytics kapcsolat hozzáadásához a Configuration Manager-környezetnek online módba konfigurált [szolgáltatási kapcsolódási ponttal](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point) kell rendelkeznie.
+> Log Analytics kapcsolat hozzáadásához a Configuration Manager-környezetnek online módba konfigurált [szolgáltatási kapcsolódási ponttal](/configmgr/core/servers/deploy/configure/about-the-service-connection-point) kell rendelkeznie.
 
 > [!NOTE]
 > A hierarchiában lévő legfelső szintű helyet Azure Monitorra kell kapcsolni. Ha egy önálló elsődleges helyet csatlakoztat Azure Monitor, majd egy központi adminisztrációs helyet ad hozzá a környezethez, törölnie kell, majd újra létre kell hoznia a kapcsolatot az új hierarchián belül.
@@ -111,7 +112,7 @@ Tekintse át a [Windows rendszerű Azure monitor számítógépek csatlakoztatá
 
 9. A kapcsolatok létrehozásának és konfigurálásának megkezdéséhez tekintse át a beállításokat a **Beállítások megerősítése** lapon, majd a **tovább** gombra kattintva.
 
-10. Ha a konfiguráció elkészült, megjelenik a **Befejezés** lap. Kattintson a **Bezárás** gombra. 
+10. Ha a konfiguráció elkészült, megjelenik a **Befejezés** lap. Válassza a **Bezárás** lehetőséget. 
 
 Miután csatolta Configuration Managert a Azure Monitorhoz, hozzáadhat vagy eltávolíthat gyűjteményeket, és megtekintheti a kapcsolat tulajdonságait.
 
@@ -146,6 +147,6 @@ A gyűjtemények importálása után láthatja, hány számítógépet észlelt 
 
 Ha rákattint valamelyikre, a naplófájl-szerkesztő megnyílik az összes importált csoport vagy az egyes csoportokhoz tartozó összes számítógép között. A [naplóbeli keresés](../../azure-monitor/log-query/log-query-overview.md)használatával további részletes elemzéseket végezhet a gyűjtemény tagsági adataiban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [naplók keresési](../../azure-monitor/log-query/log-query-overview.md) funkciójának használatával megtekintheti a Configuration Manager adataival kapcsolatos részletes információkat.

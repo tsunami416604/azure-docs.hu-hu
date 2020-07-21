@@ -4,11 +4,12 @@ description: Megtudhatja, hogyan hozhat létre egy logikai alkalmazást, amely a
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05349554f4c5e076562a75d48d58e0849986d6cc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77668230"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539499"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>A közös riasztási séma integrálása a Logic Apps
 
@@ -22,13 +23,13 @@ A [Common Alert séma](https://aka.ms/commonAlertSchemaDocs) szabványosított �
 ## <a name="prerequisites"></a>Előfeltételek 
 
 Ez a cikk azt feltételezi, hogy az olvasó ismeri a következőt 
-* Riasztási szabályok beállítása ([metrika](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric), [napló](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log), [műveletnapló](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log))
-* [Műveleti csoportok](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) beállítása
-* A [Common Alert-séma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema#how-do-i-enable-the-common-alert-schema) engedélyezése a műveleti csoportokon belül
+* Riasztási szabályok beállítása ([metrika](./alerts-metric.md), [napló](./alerts-log.md), [műveletnapló](./alerts-activity-log.md))
+* [Műveleti csoportok](./action-groups.md) beállítása
+* A [Common Alert-séma](./alerts-common-schema.md#how-do-i-enable-the-common-alert-schema) engedélyezése a műveleti csoportokon belül
 
 ## <a name="create-a-logic-app-leveraging-the-common-alert-schema"></a>A Common Alert sémát használó logikai alkalmazás létrehozása
 
-1. Kövesse a [logikai alkalmazás létrehozásához szükséges lépéseket](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups-logic-app). 
+1. Kövesse a [logikai alkalmazás létrehozásához szükséges lépéseket](./action-groups-logic-app.md). 
 
 1.  Válassza ki a triggert: **http-kérés fogadásakor**.
 
@@ -129,13 +130,12 @@ Ez a cikk azt feltételezi, hogy az olvasó ismeri a következőt
       if(equals(triggerBody()?['data']?['essentials']?['monitoringService'],'Application Insights'),triggerBody()?['data']?['alertContext']?['SearchResults'],'NA')
     ```
     
-     További információ a [Logic app-kifejezések írásáról](https://docs.microsoft.com/azure/logic-apps/workflow-definition-language-functions-reference#logical-comparison-functions).
+     További információ a [Logic app-kifejezések írásáról](../../logic-apps/workflow-definition-language-functions-reference.md#logical-comparison-functions).
 
     
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a műveleti csoportokról](../../azure-monitor/platform/action-groups.md).
 * [További információ a közös riasztási sémáról](https://aka.ms/commonAlertSchemaDocs).
-

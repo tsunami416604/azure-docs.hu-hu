@@ -4,11 +4,12 @@ description: Az autoskálázási beállítások részletes részletezése és m�
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03019b35a85d8d511e3ada131eff890a60fd57f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75364305"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539380"
 ---
 # <a name="understand-autoscale-settings"></a>Ismerkedés az automatikus méretezési beállításokkal
 Az automatikus skálázási beállítások segítségével gondoskodhat arról, hogy megfelelő mennyiségű erőforrást futtasson az alkalmazás változó terhelésének kezeléséhez. Az automatikus skálázási beállításokat beállíthatja úgy, hogy a terhelést vagy teljesítményt jelző mérőszámok alapján induljon el, vagy egy ütemezett dátumon és időpontban aktiválódik. Ez a cikk részletesen ismerteti az autoskálázási beállítások anatómiáját. A cikk a beállítások sémájával és tulajdonságaival kezdődik, majd végigvezeti a különböző konfigurálható profilok típusain. Végül a cikk bemutatja, hogyan értékeli ki az Azure-ban az autoscale funkció az adott időpontban végrehajtandó profilt.
@@ -84,7 +85,7 @@ Az autoskálázási beállítás sémájának szemléltetéséhez a következő 
 }
 ```
 
-| Section | Elem neve | Description |
+| Section | Elem neve | Leírás |
 | --- | --- | --- |
 | Beállítás | ID | Az autoskálázási beállítás erőforrás-azonosítója. Az autoskálázási beállítások egy Azure Resource Manager erőforrás. |
 | Beállítás | name | Az autoskálázási beállítás neve. |
@@ -105,7 +106,7 @@ Az autoskálázási beállítás sémájának szemléltetéséhez a következő 
 | metricTrigger | timeAggregation | A mintául szolgáló mérőszámok összesítéséhez használt összesítési módszer. Például a **TimeAggregation = "Average"** értéknek összesíteni kell a mintavételezési metrikákat az átlag kiszámításával. Az előző esetben végezze el a TEN 1 perces mintákat, és az átlagot. |
 | szabály | scaleAction | A szabály metricTrigger elindításához végrehajtandó művelet. |
 | scaleAction | irány | "Növelje" a méretezéshez, vagy "csökkentse" a méretezést a alkalmazásban.|
-| scaleAction | value | Mennyit növelheti vagy csökkentheti az erőforrás kapacitását. |
+| scaleAction | Érték | Mennyit növelheti vagy csökkentheti az erőforrás kapacitását. |
 | scaleAction | cooldown | Az a várakozási idő, ameddig a méretezési művelet a méretezés előtt újra meg nem telik. Ha például a **cooldown = "PT10M"**, az autoskálázás nem próbálkozik újra a méretezéssel újabb 10 percre. A cooldown a példányok hozzáadását vagy eltávolítását követően a mérőszámok stabilizálását teszi lehetővé. |
 
 ## <a name="autoscale-profiles"></a>Autoskálázási profilok
@@ -297,12 +298,11 @@ Az autoscale kiszámítja az egyes szabályok **scaleAction** által meghatároz
 
 Tegyük fel például, hogy van egy virtuálisgép-méretezési csoport, amelynek a jelenlegi kapacitása 10. Két méretezési szabály létezik: az egyik, amely 50 százalékkal csökkenti a kapacitást, és egy, a kapacitást 3 számmal csökkenti. Az első szabály az 5 új kapacitását eredményezi, a második szabály pedig 7 kapacitást eredményezne. A szolgáltatás rendelkezésre állásának biztosítása érdekében az autoscale kiválasztja a maximális kapacitást eredményező műveletet, így a második szabály van kiválasztva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az autoskálázásról:
 
 * [Az automatikus méretezés áttekintése](../../azure-monitor/platform/autoscale-overview.md)
 * [Általános mérőszámok Azure Monitor](../../azure-monitor/platform/autoscale-common-metrics.md)
 * [Ajánlott eljárások az Azure Monitor automatikus skálázásához](../../azure-monitor/platform/autoscale-best-practices.md)
 * [E-mailek és webhookok riasztási értesítéseinek küldése az autoscale műveletekkel](../../azure-monitor/platform/autoscale-webhook-email.md)
-* [REST API méretezése](https://msdn.microsoft.com/library/dn931953.aspx)
-
+* [REST API méretezése](/rest/api/monitor/autoscalesettings)

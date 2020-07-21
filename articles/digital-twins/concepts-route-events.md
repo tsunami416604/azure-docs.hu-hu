@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7c1f0c18fc8b867e16ce539a24839637e1d14379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390788"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86537511"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Események irányítása az Azure digitális Twins-n belül és kívül
 
@@ -46,7 +46,7 @@ Azt is megteheti, hogy az üzenet az üzenetet küldő forrás-iker AZONOSÍTÓj
 
 A számítási erőforrásnak emellett a biztonsági és hozzáférési engedélyeket egymástól függetlenül kell létrehoznia.
 
-Az Azure-függvények digitális kettős események feldolgozására való beállításának folyamatát lásd: [útmutató: Azure-függvény beállítása az adat feldolgozásához](how-to-create-azure-function.md).
+Az Azure-függvények digitális kettős események feldolgozására való beállításának folyamatát lásd: [*útmutató: Azure-függvény beállítása az adat feldolgozásához*](how-to-create-azure-function.md).
 
 ## <a name="create-an-endpoint"></a>Végpont létrehozása
 
@@ -87,10 +87,10 @@ A IoT Hub és az Azure Digital Twins különböző típusú eseményei különb�
 
 [!INCLUDE [digital-twins-notifications.md](../../includes/digital-twins-notifications.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd: események útvonalának beállítása és kezelése:
-* [Útmutató: végpontok és útvonalak kezelése](how-to-manage-routes.md)
+* [*Útmutató: végpontok és útvonalak kezelése*](how-to-manage-routes.md)
 
 Vagy tekintse meg a Azure Functions használata az események útválasztásához az Azure digitális Ikrekben:
-* [Útmutató: Azure-függvény beállítása az adat feldolgozásához](how-to-create-azure-function.md)
+* [*Útmutató: Azure-függvény beállítása az adat feldolgozásához*](how-to-create-azure-function.md)

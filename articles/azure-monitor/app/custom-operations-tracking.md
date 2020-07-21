@@ -4,12 +4,12 @@ description: Egyéni műveletek nyomon követése az Azure Application Insights 
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49c2ad44dab5e4f57db2f11c17c269289e56d2d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82690867"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540043"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Egyéni műveletek nyomon követése Application Insights .NET SDK-val
 
@@ -346,7 +346,7 @@ Ha a hangszer-üzenetek törlését végzi, ügyeljen rá, hogy a művelet (korr
 
 ### <a name="dependency-types"></a>Függőségi típusok
 
-Application Insights függőségi típust használ a felhasználói felületi élmények testreszabásához. A várólisták esetében a következő típusokat ismeri fel `DependencyTelemetry` , amelyek javítják a [tranzakciós diagnosztika élményét](/azure/azure-monitor/app/transaction-diagnostics):
+Application Insights függőségi típust használ a felhasználói felületi élmények testreszabásához. A várólisták esetében a következő típusokat ismeri fel `DependencyTelemetry` , amelyek javítják a [tranzakciós diagnosztika élményét](./transaction-diagnostics.md):
 - `Azure queue`Azure Storage-várólisták esetén
 - `Azure Event Hubs`Azure-Event Hubs
 - `Azure Service Bus`Azure Service Bus
@@ -425,7 +425,7 @@ public async Task RunMyTaskAsync()
 
 Az ártalmatlanítási művelet leállítja a műveletet, így nem kell meghívnia `StopOperation` .
 
-*Figyelmeztetés*: bizonyos esetekben a nem kezelt kivételek miatt [Előfordulhat,](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` hogy a rendszer nem tudja követni a műveleteket.
+*Figyelmeztetés*: bizonyos esetekben a nem kezelt kivételek miatt [Előfordulhat,](/dotnet/csharp/language-reference/keywords/try-finally) `finally` hogy a rendszer nem tudja követni a műveleteket.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Párhuzamos műveletek feldolgozása és nyomon követése
 
@@ -475,7 +475,7 @@ A tevékenységek a Application Insights és az automatikus függőségek, valam
 
 Minden Application Insights művelet (kérelem vagy függőség) magában foglalja `Activity` a-ha `StartOperation` a neve, a tevékenység a következőt hozza létre:. `StartOperation`a kérések vagy függőségi telemetriáiról manuális nyomon követése ajánlott módszer, és minden összefügg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg a [telemetria korrelációjának](correlation.md) alapjaival Application Insightsban.
 - Tekintse át a korrelált adatkezelési [tranzakciós diagnosztika](../../azure-monitor/app/transaction-diagnostics.md) és az [alkalmazás-hozzárendelés](../../azure-monitor/app/app-map.md)módját.

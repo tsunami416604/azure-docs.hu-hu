@@ -3,17 +3,18 @@ title: Memóriavesztés észlelése – Azure Application Insights intelligens �
 description: Alkalmazások figyelése az Azure Application Insights a lehetséges memória-szivárgáshoz.
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.openlocfilehash: 85d138518dfb1313a810657016e9fe3143887b6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fe58cd7d61246c5565cd89fa782c8a977f09499
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671698"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539890"
 ---
 # <a name="memory-leak-detection-preview"></a>Memóriavesztés észlelése (előzetes verzió)
 
 A Application Insights automatikusan elemzi az alkalmazásban az egyes folyamatok memória-felhasználását, és figyelmezteti a lehetséges memória-szivárgásra vagy a megnövekedett memória-felhasználásra.
 
-Ehhez a szolgáltatáshoz nem szükséges speciális beállítás, az alkalmazáshoz tartozó [teljesítményszámlálók](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) kivételével. Aktív, ha az alkalmazás elegendő memóriát generál a teljesítményszámlálók telemetria (például privát bájt).
+Ehhez a szolgáltatáshoz nem szükséges speciális beállítás, az alkalmazáshoz tartozó [teljesítményszámlálók](./performance-counters.md) kivételével. Aktív, ha az alkalmazás elegendő memóriát generál a teljesítményszámlálók telemetria (például privát bájt).
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Mikor kapok ilyen típusú intelligens észlelési értesítést?
 Egy tipikus értesítés hosszú időn keresztül, egy vagy több folyamaton és/vagy egy vagy több gépen, az alkalmazás részét képező, állandó növekedést követ. A gépi tanulási algoritmusok a memória-szivárgás mintázatának megfelelő megnövekedett memóriahasználat észlelésére szolgálnak.

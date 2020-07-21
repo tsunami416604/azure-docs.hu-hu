@@ -3,11 +3,12 @@ title: A munkaterhelések biztonsági mentésének Azure Backup Server használa
 description: Ebből a cikkből megtudhatja, hogyan készítheti elő a környezetet a munkaterhelések Microsoft Azure Backup kiszolgáló (MABS) használatával történő védeleméhez és biztonsági mentéséhez.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74706e772371c39b96b0cb02bd09ec70ad4d43f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84247274"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539125"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 
@@ -27,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan készítse elő a környezetet a munkaterhelése
 >
 >
 
-Az Azure-beli virtuális gépen üzembe helyezett MABS biztonsági mentést készíthetnek a virtuális gépekről az Azure-ban, de a biztonsági mentési művelet engedélyezéséhez ugyanabban a tartományban kell lenniük. Az Azure-beli virtuális gépek biztonsági mentésének folyamata ugyanaz marad, mint a helyszíni virtuális gépek biztonsági mentése, azonban a MABS az Azure-ban való üzembe helyezése bizonyos korlátozásokkal rendelkezik. A korlátozással kapcsolatos további információkért lásd: [DPM Azure-beli virtuális gép](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
+Az Azure-beli virtuális gépen üzembe helyezett MABS biztonsági mentést készíthetnek a virtuális gépekről az Azure-ban, de a biztonsági mentési művelet engedélyezéséhez ugyanabban a tartományban kell lenniük. Az Azure-beli virtuális gépek biztonsági mentésének folyamata ugyanaz marad, mint a helyszíni virtuális gépek biztonsági mentése, azonban a MABS az Azure-ban való üzembe helyezése bizonyos korlátozásokkal rendelkezik. A korlátozással kapcsolatos további információkért lásd: [DPM Azure-beli virtuális gép](/system-center/dpm/install-dpm#setup-prerequisites)
 
 > [!NOTE]
 > Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/management/deployment-models.md). Ez a cikk a Resource Manager-modell használatával üzembe helyezett virtuális gépek visszaállításával kapcsolatos információkat és eljárásokat ismerteti.
@@ -45,9 +46,9 @@ A Azure Backup Server működésének első lépése a Windows Server beállít�
 
 ### <a name="using-a-server-in-azure"></a>Kiszolgáló használata az Azure-ban
 
-Azure Backup Server futtatására szolgáló kiszolgáló kiválasztásakor javasoljuk, hogy a Windows Server 2016 Datacenter vagy a Windows Server 2019 Datacenter katalógusával kezdjen. Az [első Windows rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)című cikk útmutatást nyújt az Azure-ban javasolt virtuális gép használatának megkezdéséhez, még akkor is, ha korábban még nem használta az Azure-t. A kiszolgáló virtuális géphez (VM) ajánlott minimális követelmények: Standard_A4_v2 négy maggal és 8 GB RAM-mal.
+Azure Backup Server futtatására szolgáló kiszolgáló kiválasztásakor javasoljuk, hogy a Windows Server 2016 Datacenter vagy a Windows Server 2019 Datacenter katalógusával kezdjen. Az [első Windows rendszerű virtuális gép létrehozása a Azure Portalban](../virtual-machines/windows/quick-create-portal.md?toc=/azure/virtual-machines/windows/toc.json)című cikk útmutatást nyújt az Azure-ban javasolt virtuális gép használatának megkezdéséhez, még akkor is, ha korábban még nem használta az Azure-t. A kiszolgáló virtuális géphez (VM) ajánlott minimális követelmények: Standard_A4_v2 négy maggal és 8 GB RAM-mal.
 
-A munkaterhelések Azure Backup Serversal való védelme számos árnyalattal rendelkezik. A [MABS védelmi mátrixa](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix) segít megmagyarázni ezeket az árnyalatokat. A gép üzembe helyezése előtt olvassa el ezt a cikket teljesen.
+A munkaterhelések Azure Backup Serversal való védelme számos árnyalattal rendelkezik. A [MABS védelmi mátrixa](./backup-mabs-protection-matrix.md) segít megmagyarázni ezeket az árnyalatokat. A gép üzembe helyezése előtt olvassa el ezt a cikket teljesen.
 
 ### <a name="using-an-on-premises-server"></a>Helyszíni kiszolgáló használata
 
@@ -58,7 +59,7 @@ Ha nem szeretné futtatni az alapkiszolgálót az Azure-ban, akkor futtathatja a
 | Windows Server 2019 |64 bit |Standard, Datacenter, Essentials |
 | Windows Server 2016 és legújabb SPs |64 bit |Standard, Datacenter, Essentials  |
 
-A DPM-tárolót a Windows Server deduplikálása használatával lehet deduplikálni. További információ arról, hogyan működik együtt a [DPM és a deduplikálás](https://docs.microsoft.com/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) a Hyper-V virtuális gépeken való üzembe helyezés során.
+A DPM-tárolót a Windows Server deduplikálása használatával lehet deduplikálni. További információ arról, hogyan működik együtt a [DPM és a deduplikálás](/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019) a Hyper-V virtuális gépeken való üzembe helyezés során.
 
 > [!NOTE]
 > Azure Backup Server úgy lett kialakítva, hogy dedikált, egycélú kiszolgálón fusson. A Azure Backup Server nem telepíthető a következőre:
@@ -79,7 +80,7 @@ Függetlenül attól, hogy az Azure-ba küld biztonsági mentési vagy helyi tá
 
 ### <a name="set-storage-replication"></a>Tárreplikáció beállítása
 
-A tárreplikáció lehetősége lehetővé teszi, hogy georedundáns tárolás és helyileg redundáns tárolás között válasszon. Alapértelmezés szerint a Recovery Services-tárolók a Geo-redundáns tárolást használják. Ha ez a tár az elsődleges tároló, hagyja a Storage beállítást a Geo-redundáns tárolás beállításnál. Ha egy olcsóbb, rövidebb élettartamú megoldást szeretne, válassza a helyileg redundáns tárolást. A [georedundáns](../storage/common/storage-redundancy-grs.md) és a [helyileg redundáns](../storage/common/storage-redundancy-lrs.md) tárolási lehetőségekről többet olvashat az [Azure tárreplikáció áttekintése](../storage/common/storage-redundancy.md) című cikkben.
+A tárreplikáció lehetősége lehetővé teszi, hogy georedundáns tárolás és helyileg redundáns tárolás között válasszon. Alapértelmezés szerint a Recovery Services-tárolók a Geo-redundáns tárolást használják. Ha ez a tár az elsődleges tároló, hagyja a Storage beállítást a Geo-redundáns tárolás beállításnál. Ha egy olcsóbb, rövidebb élettartamú megoldást szeretne, válassza a helyileg redundáns tárolást. A [georedundáns](../storage/common/storage-redundancy.md) és a [helyileg redundáns](../storage/common/storage-redundancy.md) tárolási lehetőségekről többet olvashat az [Azure tárreplikáció áttekintése](../storage/common/storage-redundancy.md) című cikkben.
 
 A tárreplikációs beállítás szerkesztése:
 
@@ -128,7 +129,7 @@ A tárreplikációs beállítás szerkesztése:
     A **biztonsági mentési varázsló első lépések** a munkaterhelések Azure-ba való biztonsági mentésére vonatkozó **előkészítő** eszközre vált.
 
    > [!NOTE]
-   > Ha csak a fájlokról és mappákról szeretne biztonsági mentést készíteni, javasoljuk, hogy használja a Azure Backup-ügynököt, és kövesse a cikk útmutatását, [első lépésként: fájlok és mappák biztonsági mentése](backup-try-azure-backup-in-10-mins.md). Ha több, mint fájlt és mappát szeretne védelemmel ellátni, vagy a jövőben szeretné kibővíteni a védelmi igényeket, válassza ki ezeket a számítási feladatokat.
+   > Ha csak a fájlokról és mappákról szeretne biztonsági mentést készíteni, javasoljuk, hogy használja a Azure Backup-ügynököt, és kövesse a cikk útmutatását, [első lépésként: fájlok és mappák biztonsági mentése](./backup-windows-with-mars-agent.md). Ha több, mint fájlt és mappát szeretne védelemmel ellátni, vagy a jövőben szeretné kibővíteni a védelmi igényeket, válassza ki ezeket a számítási feladatokat.
    >
    >
 
@@ -189,7 +190,7 @@ Miután a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet a
     * Adatbázis: a DatabaseName ReportServer $\<SQLInstanceName>
     * Webes portál URL-címe: a "virtuális könyvtár" legyen Reports_\<SQLInstanceName>
 
-    [További](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) információ az SSRS-konfigurációról.
+    [További](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode) információ az SSRS-konfigurációról.
 
     > [!NOTE]
     > A MABS-adatbázisként használt SQL Server licencelését a [Microsoft Online Services feltételei](https://www.microsoft.com/licensing/product-licensing/products) (OST) szabályozzák. Az OST szerint a MABS-mel rendelkező SQL Server csak a MABS-adatbázisként használható.
@@ -198,7 +199,7 @@ Miután a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet a
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    A semmiből vonatkozó hely az Azure-ba történő biztonsági mentésre vonatkozó követelmény. Győződjön meg arról, hogy a hely a felhőbe történő biztonsági mentéshez tervezett adatmennyiség legalább 5%-a. A lemezek védelme érdekében a telepítés befejeződése után külön lemezeket kell konfigurálni. A Storage-készletekkel kapcsolatos további információkért lásd: [az adattároló előkészítése](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
+    A semmiből vonatkozó hely az Azure-ba történő biztonsági mentésre vonatkozó követelmény. Győződjön meg arról, hogy a hely a felhőbe történő biztonsági mentéshez tervezett adatmennyiség legalább 5%-a. A lemezek védelme érdekében a telepítés befejeződése után külön lemezeket kell konfigurálni. A Storage-készletekkel kapcsolatos további információkért lásd: [az adattároló előkészítése](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
 5. Adjon meg egy erős jelszót a korlátozott helyi felhasználói fiókokhoz, és kattintson a **tovább**gombra.
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -226,7 +227,7 @@ A telepítési lépés befejezése után a rendszer asztali ikonjait is létreho
 
 ### <a name="add-backup-storage"></a>Biztonsági mentési tár hozzáadása
 
-Az első biztonsági másolat a Azure Backup Server géphez csatolt tárterületen marad. A lemezek hozzáadásával kapcsolatos további információkért lásd: a [tárolási készletek és a lemezes tárolás konfigurálása](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage).
+Az első biztonsági másolat a Azure Backup Server géphez csatolt tárterületen marad. A lemezek hozzáadásával kapcsolatos további információkért lásd: a [tárolási készletek és a lemezes tárolás konfigurálása](./backup-mabs-add-storage.md).
 
 > [!NOTE]
 > Akkor is fel kell vennie a biztonsági mentési tárolót, ha az Azure-ba történő adatküldést tervezi. A Azure Backup Server jelenlegi architektúrájában a Azure Backup-tároló tárolja az adatgyűjtés *második* másolatát, miközben a helyi tárterület az első (és a kötelező) biztonsági másolatot tárolja.
@@ -235,7 +236,7 @@ Az első biztonsági másolat a Azure Backup Server géphez csatolt tárterület
 
 ### <a name="install-and-update-the-data-protection-manager-protection-agent"></a>A Data Protection Manager védelmi ügynök telepítése és frissítése
 
-A MABS a System Center Data Protection Manager védelmi ügynököt használja. Az alábbi [lépéseket követve](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-1807) telepítheti a védelmi ügynököt a védelmi kiszolgálókra.
+A MABS a System Center Data Protection Manager védelmi ügynököt használja. Az alábbi [lépéseket követve](/system-center/dpm/deploy-dpm-protection-agent) telepítheti a védelmi ügynököt a védelmi kiszolgálókra.
 
 Az alábbi szakaszok azt ismertetik, hogyan lehet frissíteni az ügyfélszámítógépek védelmi ügynökeit.
 
@@ -291,10 +292,10 @@ Ha már ismeri az Azure-kapcsolat állapotát és az Azure-előfizetést, az al�
 | Kapcsolat állapota | Azure-előfizetés | Biztonsági mentés az Azure platformra | Biztonsági mentés lemezre | Visszaállítás az Azure-ból | Visszaállítás lemezről |
 | --- | --- | --- | --- | --- | --- |
 | Csatlakozva |Aktív |Engedélyezve |Engedélyezve |Engedélyezve |Engedélyezve |
-| Csatlakozva |Lejárt |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
+| Csatlakozva |Lejárat |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
 | Csatlakozva |Felfüggesztést |Leállítva |Leállítva |Leállított és Azure helyreállítási pontok törölve |Leállítva |
 | Elveszett kapcsolat > 15 nap |Aktív |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
-| Elveszett kapcsolat > 15 nap |Lejárt |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
+| Elveszett kapcsolat > 15 nap |Lejárat |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
 | Elveszett kapcsolat > 15 nap |Felfüggesztést |Leállítva |Leállítva |Leállított és Azure helyreállítási pontok törölve |Leállítva |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Helyreállítás a kapcsolat elvesztése miatt
@@ -313,7 +314,7 @@ Ha ExpressRoute Microsoft-társat használ, válassza ki a következő szolgált
 * Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)
 * Azure Storage (az Recovery Services-tároló helyének megfelelően)
 
-További részletekért keresse fel a [ExpressRoute útválasztási követelményeit](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+További részletekért keresse fel a [ExpressRoute útválasztási követelményeit](../expressroute/expressroute-routing.md).
 
 Ha az Azure-hoz való kapcsolódást visszaállították a Azure Backup Server gépre, az elvégezhető műveleteket az Azure-előfizetés állapota határozza meg. A fenti táblázat tartalmazza azokat a műveleteket, amelyeket a gép a csatlakozás után engedélyez.
 
@@ -352,16 +353,16 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
 
 3. Frissítse a védelmi ügynököket a védett kiszolgálókon.
 4. A biztonsági mentéseket az üzemi kiszolgálók újraindítása nélkül kell folytatni.
-5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [További információk](backup-mabs-add-storage.md).
+5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [További információ](backup-mabs-add-storage.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha Microsoft Azure Backup kiszolgáló hibával leáll a telepítési fázisban (vagy biztonsági mentés vagy visszaállítás), további információért tekintse meg ezt a [hibakódot tartalmazó dokumentumot](https://support.microsoft.com/kb/3041338) .
 [Azure Backup kapcsolódó gyakori kérdések](backup-azure-backup-faq.md) is megtekinthetők
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Részletes információkat itt talál a [környezet DPM való előkészítéséről](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019). Emellett olyan támogatott konfigurációkról is tartalmaz információkat, amelyeken Azure Backup Server telepíthető és használható. Számos művelet végrehajtásához több [PowerShell-parancsmagot](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) is használhat.
+Részletes információkat itt talál a [környezet DPM való előkészítéséről](/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-2019). Emellett olyan támogatott konfigurációkról is tartalmaz információkat, amelyeken Azure Backup Server telepíthető és használható. Számos különböző művelet végrehajtásához [PowerShell-parancsmagokat](/powershell/module/dataprotectionmanager/) is használhat.
 
 Ezekkel a cikkekkel részletesebben megismerheti a munkaterhelés-védelmet Microsoft Azure Backup kiszolgáló használatával.
 

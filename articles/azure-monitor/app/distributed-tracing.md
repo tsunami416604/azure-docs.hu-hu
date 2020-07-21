@@ -6,11 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9eb753981821a6b53d81b1d03e65abf68e0064dc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80892257"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86539992"
 ---
 # <a name="what-is-distributed-tracing"></a>Mi az elosztott nyomkövetés?
 
@@ -20,9 +21,9 @@ A monolitikus architektúrákban a hívási veremekkel való hibakereséshez kap
 
 Ez az a hely, ahol az elosztott nyomkövetés bekerül.  
 
-Az elosztott nyomkövetés a modern felhő-és a szolgáltatás-architektúrák hívási helyeinek megfelelője, és a rendszer leegyszerűsíti a teljesítményt. Azure Monitor két, az elosztott nyomkövetési adat felhasználására szolgáló élményt biztosítunk. Az első a [tranzakciós diagnosztika](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) nézete, amely olyan, mint a hívási verem, amelyhez egy idődimenzió van hozzáadva. A tranzakciós diagnosztika nézet egyetlen tranzakció/kérelem megjelenítését teszi lehetővé, és hasznos lehet a megbízhatósági problémák kiváltó okának és a teljesítmény szűk keresztmetszetének megkeresésére a kérelmek alapján.
+Az elosztott nyomkövetés a modern felhő-és a szolgáltatás-architektúrák hívási helyeinek megfelelője, és a rendszer leegyszerűsíti a teljesítményt. Azure Monitor két, az elosztott nyomkövetési adat felhasználására szolgáló élményt biztosítunk. Az első a [tranzakciós diagnosztika](./transaction-diagnostics.md) nézete, amely olyan, mint a hívási verem, amelyhez egy idődimenzió van hozzáadva. A tranzakciós diagnosztika nézet egyetlen tranzakció/kérelem megjelenítését teszi lehetővé, és hasznos lehet a megbízhatósági problémák kiváltó okának és a teljesítmény szűk keresztmetszetének megkeresésére a kérelmek alapján.
 
-A Azure Monitor egy [alkalmazás-hozzárendelési](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) nézetet is kínál, amely számos tranzakciót összesít, hogy a rendszer hogyan befolyásolja a rendszerek működését, és hogy az átlagos teljesítmény és a hibák milyen arányban jelenjenek meg. 
+A Azure Monitor egy [alkalmazás-hozzárendelési](./app-map.md) nézetet is kínál, amely számos tranzakciót összesít, hogy a rendszer hogyan befolyásolja a rendszerek működését, és hogy az átlagos teljesítmény és a hibák milyen arányban jelenjenek meg. 
 
 ## <a name="how-to-enable-distributed-tracing"></a>Az elosztott nyomkövetés engedélyezése
 
@@ -32,16 +33,16 @@ Az elosztott nyomkövetés engedélyezése egy alkalmazás szolgáltatásaiban o
 
 A .NET, .NET Core, Java, Node.js és JavaScript Application Insights ügynökök és/vagy SDK-k mind támogatják az elosztott nyomkövetést natív módon. Az egyes Application Insights SDK-hoz történő telepítésére és konfigurálására vonatkozó utasítások alább érhetők el:
 
-* [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
-* [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
-* [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [.NET](../learn/quick-monitor-portal.md)
+* [.NET Core](../learn/dotnetcore-quick-start.md)
+* [Java](./java-in-process-agent.md)
+* [Node.js](../learn/nodejs-quick-start.md)
+* [JavaScript](./javascript.md)
 * [Python](opencensus-python.md)
 
-A megfelelő Application Insights SDK telepítésével és konfigurálásával az SDK-függőségi automatikus gyűjtők automatikusan gyűjtik a nyomkövetési információkat a népszerű keretrendszerek, könyvtárak és technológiák számára. A támogatott technológiák teljes listája [a függőségi automatikus gyűjtemény dokumentációjában](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)érhető el.
+A megfelelő Application Insights SDK telepítésével és konfigurálásával az SDK-függőségi automatikus gyűjtők automatikusan gyűjtik a nyomkövetési információkat a népszerű keretrendszerek, könyvtárak és technológiák számára. A támogatott technológiák teljes listája [a függőségi automatikus gyűjtemény dokumentációjában](./auto-collect-dependencies.md)érhető el.
 
- Emellett a technológia manuálisan is nyomon követhető a [TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) hívásával.
+ Emellett a technológia manuálisan is nyomon követhető a [TelemetryClient](./api-custom-events-metrics.md) [TrackDependency](./api-custom-events-metrics.md) hívásával.
 
 ## <a name="enable-via-opencensus"></a>Engedélyezés a OpenCensus-n keresztül
 
@@ -51,7 +52,7 @@ A Application Insights SDK-k mellett Application Insights is támogatja az elosz
 
 A OpenCensus webhely a [Python](https://opencensus.io/api/python/trace/usage.html) és a [Go](https://godoc.org/go.opencensus.io)API-referenciájának dokumentációját, valamint a OpenCensus használatának különböző útmutatóit tartalmazza. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [OpenCensus Python használati útmutató](https://opencensus.io/api/python/trace/usage.html)
 * [Alkalmazás-hozzárendelés](./../../azure-monitor/app/app-map.md)
