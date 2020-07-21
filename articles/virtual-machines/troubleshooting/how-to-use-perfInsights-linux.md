@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 19b2fcaed2c80d4ca52ada9f9f0898479e73bcf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79266987"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526799"
 ---
 # <a name="how-to-use-perfinsights"></a>A PerfInsights használata
 
@@ -43,7 +44,7 @@ Ez a forgatókönyv olyan alapszintű adatokat gyűjt, mint például a virtuál
 
 - Tárolási információk
 
-- Azure-beli virtuális gépek konfigurálása (az [azure instance metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)használatával gyűjtöttük össze)
+- Azure-beli virtuális gépek konfigurálása (az [azure instance metadata Service](../windows/instance-metadata-service.md)használatával gyűjtöttük össze)
 
 - Futó folyamatok, lemezek, memória és CPU-használat listája
 
@@ -77,7 +78,7 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
   - Profilkészítési rögzítés a PROCESSZORon és a CPU-használat feldolgozása 5 másodperces intervallumban
   - Profilkészítés – a folyamatok memória-használatának 5 másodperces intervallumon belüli rögzítése
 
-- Hálózat  
+- Hálózatkezelés  
   - Adapterek statisztikáit tartalmazó hálózati adapterek listája
   - Hálózati útválasztási táblázat
   - Nyitott portok és állapot
@@ -108,7 +109,7 @@ A Linux rendszerű virtuális gépre, az operációs rendszerre, az eszközök l
   - /etc/waagent.config
   - A journalctl kimenete az elmúlt öt napban
 
-- [Azure virtuálisgép-példány metaadatainak](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+- [Azure virtuálisgép-példány metaadatainak](../windows/instance-metadata-service.md)
 
 >[!Note]
 >[ `*` ] A PCI-információk gyűjtése még nem történt meg a Debian és a SLES disztribúcióban
@@ -243,7 +244,7 @@ A **Linux** lapon a virtuális gépen futó hardverre és operációs rendszerre
 
 ![A Linux lap képernyőképe](media/how-to-use-perfinsights-linux/perfinsights-linux-tab.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A diagnosztikai naplókat és jelentéseket feltöltheti Microsoft ügyfélszolgálata további áttekintés céljából. Ha a Microsoft ügyfélszolgálata munkatársaival dolgozik, kérheti, hogy továbbítsa a PerfInsights által generált kimenetet, hogy segítséget nyújtson a hibaelhárítási folyamathoz.
 

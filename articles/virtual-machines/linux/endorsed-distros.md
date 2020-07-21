@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: guybo
-ms.openlocfilehash: e51eeb32ecd306986dc22d6bfa09ee95b8b87852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2edc8d0116778e292f0e44761100d3c1e9212ff
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658694"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527387"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Támogatott Linux-disztribúciók az Azure-ban
 
-A partnerek linuxos rendszerképeket biztosítanak az Azure piactéren. A Microsoft különböző Linux-közösségekkel működik együtt, hogy még több ízt adjon hozzá a támogatott terjesztési listához. A piactéren nem elérhető disztribúciók esetében a [Linux operációs rendszert tartalmazó virtuális merevlemez létrehozása és feltöltése](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)című rész útmutatását követve mindig saját Linux-t hozhat létre.
+A partnerek linuxos rendszerképeket biztosítanak az Azure piactéren. A Microsoft különböző Linux-közösségekkel működik együtt, hogy még több ízt adjon hozzá a támogatott terjesztési listához. A piactéren nem elérhető disztribúciók esetében a [Linux operációs rendszert tartalmazó virtuális merevlemez létrehozása és feltöltése](./create-upload-generic.md)című rész útmutatását követve mindig saját Linux-t hozhat létre.
 
 ## <a name="supported-distributions-and-versions"></a>Támogatott disztribúciók és verziók
 
@@ -35,17 +36,17 @@ Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-lemezké
 | --- | --- | --- | --- |
 | CentOS a szélhámos Wave szoftverrel |CentOS 6. x, 7. x, 8. x |CentOS 6,3: [lis Letöltés](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: a kernelben |Csomag [: a tárházban a "](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> A CoreOS mostantól a 2020. május 26-án [véget ért](https://coreos.com/os/eol/) . |Már nem érhető el | | |
-| Debian by Credativ |8. x, 9. x |A kernelben |Csomag: a tárházban a "waagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-|Flatcar-tároló linuxos Kinvolk szerint| Stabil, Edge| | |
-| Oracle-Oracle Linux |6. x, 7. x, 8. x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| A Red Hat Red Hat Enterprise Linux |6. x, 7. x, 8. x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Debian by Credativ |8.x, 9.x |A kernelben |Csomag: a tárházban a "waagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+|Flatcar-tároló linuxos Kinvolk szerint| Stable, Edge| | |
+| Oracle-Oracle Linux |6.x, 7.x, 8.x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| A Red Hat Red Hat Enterprise Linux |6.x, 7.x, 8.x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise a SUSE használatával |SLES/SLES for SAP 11. x, 12. x, 15. x <br/> [SUSE nyilvános Felhőbeli rendszerképek életciklusa](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |A kernelben |Csomag<p> 11 a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza<br>a "nyilvános felhő" modulban a "Python-Azure-Agent" alatt található 12.<br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| openSUSE – SUSE |openSUSE ugrás 15. x |A kernelben |Csomag: a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza a "Python-Azure-Agent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| openSUSE – SUSE |openSUSE Leap 15.x |A kernelben |Csomag: a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza a "Python-Azure-Agent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu Canonical alapján |Ubuntu-kiszolgáló és Pro. 16. x, 18. x, 20. x<p>Az Ubuntu 12,04 és 14,04 kiterjesztett támogatásával kapcsolatos információk itt találhatók: [Ubuntu Extended Security karbantartás](https://www.ubuntu.com/esm). |A kernelben |Csomag: a tárházban a "walinuxagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="image-update-cadence"></a>Rendszerkép frissítésének ritmusa
 
-Az Azure-nak szüksége van arra, hogy a támogatott Linux-disztribúciók közzétevői rendszeresen frissítse lemezképeit az Azure Marketplace-en a legújabb javításokkal és biztonsági javításokkal, negyedévente vagy gyorsabb ütemben. Az Azure Marketplace-en frissített lemezképek automatikusan elérhetők az ügyfelek számára a lemezkép SKU új verzióiként. További információ a Linux-rendszerképek megkereséséről: Linux rendszerű [virtuális gépek rendszerképeinek megkeresése az Azure piactéren](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage).
+Az Azure-nak szüksége van arra, hogy a támogatott Linux-disztribúciók közzétevői rendszeresen frissítse lemezképeit az Azure Marketplace-en a legújabb javításokkal és biztonsági javításokkal, negyedévente vagy gyorsabb ütemben. Az Azure Marketplace-en frissített lemezképek automatikusan elérhetők az ügyfelek számára a lemezkép SKU új verzióiként. További információ a Linux-rendszerképek megkereséséről: Linux rendszerű [virtuális gépek rendszerképeinek megkeresése az Azure piactéren](./cli-ps-findimage.md).
 
 ## <a name="azure-tuned-kernels"></a>Azure által hangolt kernelek
 

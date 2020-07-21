@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan helyezhet át App Service erőforrásokat az eg
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: c19c18e8d9980b75acd9790dba712fbb6b2a4b1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87a2da31802a8b6858e875c23ef1dbd2d6d006bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945477"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524854"
 ---
-# <a name="move-an-app-service-app-to-another-region"></a>App Service alkalmazás áthelyezése másik régióba
+# <a name="move-an-app-service-resource-to-another-region"></a>App Service erőforrás áthelyezése másik régióba
 
 Ez a cikk azt ismerteti, hogyan helyezhet át App Service erőforrásokat egy másik Azure-régióba. Az erőforrásokat több okból is áthelyezheti egy másik régióba. Ha például egy új Azure-régió előnyeit szeretné kihasználni, csak meghatározott régiókban elérhető szolgáltatásokat vagy szolgáltatásokat telepíthet, a belső házirend-és irányítási követelmények teljesítéséhez, vagy a kapacitás megtervezésének követelményeire reagálva.
 
@@ -106,6 +106,6 @@ Bizonyos erőforrások, például az importált tanúsítványok vagy a hibrid k
 
 A forrásoldali alkalmazás és App Service terv törlése. [A nem ingyenes csomagban lévő App Service terv díjat számít fel, még akkor is, ha nem fut alkalmazás.](app-service-plan-manage.md#delete-an-app-service-plan)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazások klónozásának Azure App Service a PowerShell használatával](app-service-web-app-cloning.md)

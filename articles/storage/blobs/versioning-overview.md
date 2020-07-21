@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd620e253e661f986f67a440272937026cb4ff7f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84433587"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528400"
 ---
 # <a name="blob-versioning-preview"></a>BLOB verziószámozása (előzetes verzió)
 
@@ -175,7 +176,7 @@ A blob verziószámozása úgy lett kialakítva, hogy az adatok véletlen vagy r
 
 Az alábbi táblázatban látható, hogy mely RBAC műveletek támogatják a Blobok vagy a Blobok verzióinak törlését.
 
-| Description | Blob service művelet | RBAC-adatművelet szükséges | RBAC beépített szerepkör-támogatás |
+| Leírás | Blob service művelet | RBAC-adatművelet szükséges | RBAC beépített szerepkör-támogatás |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | A blob aktuális verziójának törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/delete** | Storage blob adatközreműködői |
 | Verzió törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/deleteBlobVersion/Action** | Storage blob-adattulajdonos |
@@ -194,6 +195,10 @@ A következő táblázat a blob-verziók törléséhez szükséges engedélyeket
 
 A blob verziószámozása a következő régiókban érhető el előzetes verzióban:
 
+- USA 2. keleti régiója
+- Central US
+- Észak-Európa
+- West Europe
 - Közép-Franciaország
 - Kelet-Kanada
 - Közép-Kanada

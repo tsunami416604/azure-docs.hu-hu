@@ -8,11 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 754baa66d79d169f830332f3c39660f1d71f608a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219968"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527914"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -39,7 +40,7 @@ azcopy login [flags]
 
 - [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
 - [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
-- [Adatok átvitele a AzCopy és a file Storage szolgáltatással](storage-use-azcopy-files.md)
+- [Adatok átvitele az AzCopy használatával és fájltárolás](storage-use-azcopy-files.md)
 - [AzCopy konfigurálása, optimalizálása és megoldása](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>Példák
@@ -83,7 +84,7 @@ azcopy login --identity --identity-resource-id "/subscriptions/<subscriptionId>/
 Jelentkezzen be egyszerű szolgáltatásként egy ügyfél-titkos kulcs használatával. Állítsa a környezeti változót AZCOPY_SPA_CLIENT_SECRET a titkos kulcson alapuló egyszerű szolgáltatás hitelesítéséhez.
 
 ```azcopy
-azcopy login --service-principal
+azcopy login --service-principal --application-id "YOUR_APP_ID" --tenant-id "YOUR_TENANT_ID"
 ```
 
 Jelentkezzen be egyszerű szolgáltatásként tanúsítvány és jelszó használatával. Állítsa be a környezeti változót a tanúsítvány-alapú egyszerű szolgáltatás hitelesítéséhez AZCOPY_SPA_CERT_PASSWORD a tanúsítvány jelszavára.
@@ -98,7 +99,7 @@ azcopy login --service-principal --certificate-path /path/to/my/cert
 
 ## <a name="options"></a>Beállítások
 
-|Beállítás|Description|
+|Beállítás|Leírás|
 |--|--|
 |--HRE-végpont|A használandó Azure Active Directory végpont. Az alapértelmezett ( `https://login.microsoftonline.com` ) helyes a nyilvános Azure-felhőben. Adja meg ezt a paramétert a hitelesítéshez a nemzeti felhőben. Lásd: [Azure ad-hitelesítési végpontok](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 Ez a jelző nem szükséges a Managed Service Identityhoz.|
@@ -114,7 +115,7 @@ Ez a jelző nem szükséges a Managed Service Identityhoz.|
 
 ## <a name="options-inherited-from-parent-commands"></a>A szülő parancsoktól örökölt beállítások
 
-|Beállítás|Description|
+|Beállítás|Leírás|
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|

@@ -11,11 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 19503fa2257f42cf896dbfb831d4165e329134b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250349"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525415"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat frissítési infrastruktúra az igény szerinti Red Hat Enterprise Linux virtuális gépek számára az Azure-ban
  A [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi, hogy a felhőalapú szolgáltatók, például az Azure, a Red Hat-ban üzemeltetett tárház tartalmait tükrözze, egyéni tárházat hozzon létre az Azure-specifikus tartalommal, és elérhetővé tegye a végfelhasználói virtuális gépek számára.
@@ -85,7 +86,7 @@ Az Extended Update support (EUS) adattárházak olyan ügyfelek számára érhet
 Az írás időpontjában a EUS-támogatás befejeződött a RHEL <= 7,4 esetében. További részletekért tekintse meg a [Red Hat dokumentációjának](https://access.redhat.com/support/policy/updates/errata/#Long_Support) "Red Hat Enterprise Linux kiterjesztett karbantartás" című szakaszát.
 * RHEL 7,4 EUS-támogatás vége augusztus 31., 2019
 * RHEL 7,5 EUS támogatás vége április 30., 2020
-* RHEL 7,6 EUS-támogatás vége 2020. október 31.
+* RHEL 7,6 EUS-támogatás vége május 31., 2021
 * RHEL 7,7 EUS-támogatás vége augusztus 30-ig 2021
 
 ### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL virtuális gép átváltása a EUS-re (verzió – egy adott alverzióra való zárolás)
@@ -167,7 +168,7 @@ Ha hálózati konfigurációt használ a RHEL TB virtuális gépekről való hoz
 >Az új Azure US government-rendszerképek a 2020-as számú Azure-beli nyilvános IP-címen lesznek használva.
 
 >[!NOTE]
->Azt is vegye figyelembe, hogy az Azure Germany a németországi régiók mellett elavult. Az Azure Germany-ügyfelekre vonatkozó javaslat az [alábbi lépésekkel](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#manual-update-procedure-to-use-the-azure-rhui-servers)indul el a nyilvános RHUI.
+>Azt is vegye figyelembe, hogy az Azure Germany a németországi régiók mellett elavult. Az Azure Germany-ügyfelekre vonatkozó javaslat az [alábbi lépésekkel](#manual-update-procedure-to-use-the-azure-rhui-servers)indul el a nyilvános RHUI.
 
 ## <a name="azure-rhui-infrastructure"></a>Azure RHUI-infrastruktúra
 
@@ -244,7 +245,7 @@ Ez az eljárás csak referenciául szolgál. A RHEL TB-lemezképek már rendelke
         ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Red Hat Enterprise Linux virtuális gép Azure Marketplace-TB rendszerképből való létrehozásához, valamint az Azure által üzemeltetett RHUI használatához látogasson el az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/RedHat.RHEL_6)-re.
 * Ha többet szeretne megtudni az Azure-beli Red Hat-lemezképekről, lépjen a [dokumentáció lapra](./redhat-images.md).
 * A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.

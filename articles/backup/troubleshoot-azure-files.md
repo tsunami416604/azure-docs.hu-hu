@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentésének hibáinak megoldása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d09c89433be17e16ad768e2d28305819146e6b5e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079887"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524488"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása
 
@@ -57,6 +57,9 @@ A Azure Portal nyissa **meg a tároló**  >  **biztonsági mentési infrastrukt�
 >A Recovery Services-tároló csak a tárban regisztrált összes Storage-fiók regisztrációjának törlése után törölhető.
 
 ## <a name="common-backup-or-restore-errors"></a>Gyakori biztonsági mentési vagy visszaállítási hibák
+
+>[!NOTE]
+>Tekintse át [ezt a dokumentumot](./backup-rbac-rs-vault.md#minimum-role-requirements-for-the-azure-file-share-backup) , és győződjön meg arról, hogy megfelelő engedélyekkel rendelkezik a biztonsági mentési és visszaállítási műveletek végrehajtásához.
 
 ### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>FileShareNotFound – a művelet sikertelen volt, mert a fájlmegosztás nem található
 
@@ -313,9 +316,9 @@ Hibakód: UserErrorBackupAFSInDeleteState
 
 Hibaüzenet: a biztonsági mentés nem sikerült, mert a társított Azure-fájlmegosztás véglegesen törölve lett
 
-Ellenőrizze, hogy a mentett fájlmegosztás véglegesen törölve lett-e. Ha igen, állítsa le a fájlmegosztás biztonsági mentését, hogy elkerülje az ismételt biztonsági mentési hibákat. A védelem leállításával kapcsolatos további információkért lásd: [Az Azure-fájlmegosztás védelmének leállítása](https://docs.microsoft.com/azure/backup/manage-afs-backup#stop-protection-on-a-file-share)
+Ellenőrizze, hogy a mentett fájlmegosztás véglegesen törölve lett-e. Ha igen, állítsa le a fájlmegosztás biztonsági mentését, hogy elkerülje az ismételt biztonsági mentési hibákat. A védelem leállításával kapcsolatos további információkért lásd: [Az Azure-fájlmegosztás védelmének leállítása](./manage-afs-backup.md#stop-protection-on-a-file-share)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure-fájlmegosztás biztonsági mentéséről további információt a következő témakörben talál:
 

@@ -1,20 +1,20 @@
 ---
-title: 'VPN Gateway: VPN-ügyfél az OpenVPN protokoll P2S kapcsolataihoz: Azure AD-hitelesítés'
+title: 'VPN Gateway: VPN-ügyfél a P2S OpenVPN protokoll kapcsolataihoz: Azure AD-hitelesítés'
 description: A P2S VPN használatával kapcsolódhat a VNet az Azure AD-hitelesítés használatával
 services: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: alzam
-ms.openlocfilehash: 868bcfc898fc6bc804f36516f2cc01a52ad2db47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c14d300e2c09316e0665ece3f3e15f7036d5b9a1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85414334"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525075"
 ---
-# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>VPN-ügyfél konfigurálása P2S OpenVPN protokollt használó kapcsolatokhoz: Azure AD-hitelesítés
+# <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory hitelesítés: VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhat VPN-ügyfelet egy virtuális hálózathoz pont – hely VPN és Azure Active Directory hitelesítés használatával való csatlakozáshoz. Az Azure AD-vel való kapcsolat és hitelesítés előtt először konfigurálnia kell az Azure AD-bérlőt. További információ: [Azure ad-bérlő konfigurálása](openvpn-azure-ad-tenant.md).
 
@@ -88,11 +88,11 @@ Ha van egy működő profilja, és el kell terjesztenie más felhasználóknak, 
 
 1. Válassza ki a törölni kívánt ügyfél-profil melletti ellipsziseket. Ezután válassza az **Eltávolítás**lehetőséget.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![törlés](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Válassza az **Eltávolítás** elemet a törléshez.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![törlés](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="create-a-connection"></a><a name="connection"></a>Kapcsolat létrehozása
 

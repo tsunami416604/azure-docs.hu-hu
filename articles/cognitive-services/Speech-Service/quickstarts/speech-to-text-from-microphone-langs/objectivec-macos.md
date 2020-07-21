@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: beszéd felismerése mikrofonból, Objective-C-Speech szolgáltatás'
+title: 'Gyors útmutató: beszédfelismerés felismerése, Objective-C-Speech Service (macOS)'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan ismerheti fel a beszédfelismerést a macOS-ben a Speech SDK használatával
+description: Megtudhatja, hogyan hozhat létre olyan alkalmazást, amely a Cognitive Services Speech SDK-val egy macOS rendszerű számítógép beszédét ismeri fel a Objective-C alkalmazásban.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: chlandsi
-ms.openlocfilehash: 8f94f2ed810204d739dfd2e6d5e88ef0977ad9a4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: b73925165552fe428be7df465b33701eeed157cc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391519"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524233"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>Gyors útmutató: beszéd felismerése a macOS-ben a "Objective-C"-ben a Speech SDK használatával
 

@@ -1,5 +1,5 @@
 ---
-title: Red Hat Enterprise Linux rendszerképek az Azure-ban | Microsoft Docs
+title: Red Hat Enterprise Linux rendszerképek áttekintése az Azure-ban
 description: Ismerkedjen meg Red Hat Enterprise Linux rendszerképekkel Microsoft Azureban.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de7ead8acd059d957673b2f063dd3d330cf473f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80239879"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525500"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux rendszerképek áttekintése
 
@@ -26,7 +26,7 @@ Ez a cikk az Azure Marketplace-en elérhető Red Hat Enterprise Linux-(RHEL-) le
 További információ a RHEL összes verziójának Red Hat-támogatási szabályzatáról: [Red Hat Enterprise Linux életciklusa](https://access.redhat.com/support/policy/updates/errata). A díjszabással kapcsolatos részletekért lásd: az [Azure díjszabási kalkulátora](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 >[!IMPORTANT]
-> Az Azure Marketplace-en jelenleg elérhető RHEL-lemezképek a saját előfizetések (BYOS) vagy az utólagos elszámolású licencelési modellek használatát támogatják. A BYOS és az utólagos elszámolású licencelés közötti [Azure Hybrid use Benefit](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) és dinamikus váltás nem támogatott. A licencelési mód váltásához újra kell telepítenie a virtuális gépet a megfelelő rendszerképből.
+> Az Azure Marketplace-en jelenleg elérhető RHEL-lemezképek a saját előfizetések (BYOS) vagy az utólagos elszámolású licencelési modellek használatát támogatják. A BYOS és az utólagos elszámolású licencelés közötti [Azure Hybrid use Benefit](../../windows/hybrid-use-benefit-licensing.md) és dinamikus váltás nem támogatott. A licencelési mód váltásához újra kell telepítenie a virtuális gépet a megfelelő rendszerképből.
 
 >[!NOTE]
 > Az Azure Marketplace-en található RHEL-lemezképekkel kapcsolatos bármilyen probléma esetén a Microsoft támogatási jegyet nyújt.
@@ -64,8 +64,8 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:lat
 ```
 
 >[!NOTE]
-> Általánosságban elmondható, hogy a verziók összehasonlítása a legújabbat követi a [compareto metódus végrehajtása metódus](https://msdn.microsoft.com/library/a5ts8tb6.aspx)szabályainak megfelelően.
-A rendszerkép-verzió összehasonlítását úgy végezheti el, hogy az értékeket egy [Version](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8) objektumként hasonlítja össze, nem karakterláncként.
+> Általánosságban elmondható, hogy a verziók összehasonlítása a legújabbat követi a [compareto metódus végrehajtása metódus](/dotnet/api/system.version.compareto?view=netcore-3.1#system_version_compareto_system_version_)szabályainak megfelelően.
+A rendszerkép-verzió összehasonlítását úgy végezheti el, hogy az értékeket egy [Version](/dotnet/api/system.version.-ctor?view=netframework-4.8) objektumként hasonlítja össze, nem karakterláncként.
 
 ## <a name="rhel-6-image-types"></a>RHEL 6 Képtípus
 
@@ -105,7 +105,7 @@ A RHEL 8 képtípusának részletei alább láthatók.
 |Publisher | Ajánlat | SKU-érték | Verzió | Részletek
 |----------|-------|------------|---------|--------
 |RedHat | RHEL | 8 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.0.20191023) | Ezek a képek a standard Red Hat-adattárakhoz csatlakoztatott, 8 LVM-particionált rendszerképek RHEL.
-|RedHat | RHEL | 8 – Gen2 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.0.20191024) | Ezek a lemezképek a Hyper-V 2. generációs RHEL 8 LVM-particionált rendszerképek a standard Red Hat-tárházhoz csatlakoztatva. További információ az Azure-beli 2. generációs virtuális gépekről: a [2. generációs virtuális gépek támogatása az Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)-ban.
+|RedHat | RHEL | 8 – Gen2 | A RHEL alverzió és a közzétett dátum összefűzött értékei (például 8.0.20191024) | Ezek a lemezképek a Hyper-V 2. generációs RHEL 8 LVM-particionált rendszerképek a standard Red Hat-tárházhoz csatlakoztatva. További információ az Azure-beli 2. generációs virtuális gépekről: a [2. generációs virtuális gépek támogatása az Azure](../../linux/generation-2.md)-ban.
 
 ## <a name="rhel-longer-support-add-ons"></a>A RHEL már támogatja a bővítményeket
 
@@ -147,7 +147,7 @@ Másodlagos verzió |EUS-rendszerkép – példa              |EUS állapota    
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Az április 2019-es és újabb verzióiban közzétett lemezképek alapértelmezés szerint EUS.|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | A 2019-es és újabb verziókon közzétett lemezképek alapértelmezés szerint EUS. |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | A 2019-es és újabb verzióiban közzétett rendszerképek alapértelmezés szerint EUS. |
-RHEL 8,0      |N.A.                            | A Red Hat nem érhető el EUS.                               |
+RHEL 8,0      |n.a.                            | A Red Hat nem érhető el EUS.                               |
 
 ### <a name="update-services-for-sap"></a>SAP-szolgáltatások frissítése
 
@@ -177,7 +177,7 @@ Egy adott rendszerkép-családban csak az aktuális alverziót frissítjük. Egy
 
 Az aktuális szabályzat az összes korábban közzétett rendszerkép megőrzése. Fenntartjuk a jogot arra, hogy olyan rendszerképeket távolítson el, amelyek bármilyen típusú problémát okozhatnak. Előfordulhat például, hogy a következő platform vagy összetevő frissítései miatt helytelen konfigurációval rendelkező lemezképek el lesznek távolítva. Az esetlegesen eltávolított lemezképek az aktuális Azure Marketplace-szabályzat alapján biztosítanak értesítést akár 30 nappal a lemezkép eltávolítása előtt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure-ban elérhető RHEL-lemezképek teljes listájának megtekintéséhez lásd: [Red Hat Enterprise Linux (RHEL) lemezképek az Azure-ban](./redhat-imagelist.md).
 * További információ az Azure Red Hat frissítési infrastruktúráról: [Red Hat frissítési infrastruktúra az igény szerinti RHEL virtuális gépekhez az Azure-ban](https://aka.ms/rhui-update).

@@ -6,11 +6,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: f2dc43e1f07d449bf2f8ed39ce4523c99b551dae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6481bfe265786ca8b79f96bbcac7fe4d58076911
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77115611"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525823"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Mi a teendő, ha az Azure-szolgáltatás megszakadásának hatására az Azure virtuális gépek
 A Microsoftnál keményen dolgozunk, hogy a szolgáltatások mindig elérhetők legyenek, amikor szüksége van rájuk. A szabályozáson kívüli erők időnként a nem tervezett szolgáltatások megszakadását okozó módokat érintik.
@@ -34,17 +35,17 @@ Ez a legjobb megoldás, ha nem állított be Azure Site Recovery, a megszakadás
 
 
 > [!NOTE]
-> Ügyeljen arra, hogy a folyamat felett ne legyen vezérlés, és csak az egész régióra kiterjedő szolgáltatásokkal kapcsolatos fennakadások esetén fog történni. Emiatt a legmagasabb szintű rendelkezésre állás elérése érdekében más alkalmazásspecifikus biztonsági mentési stratégiákra is támaszkodnia kell. További információ: a vész- [helyreállítási adatstratégiákkal](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)foglalkozó szakasz.
+> Ügyeljen arra, hogy a folyamat felett ne legyen vezérlés, és csak az egész régióra kiterjedő szolgáltatásokkal kapcsolatos fennakadások esetén fog történni. Emiatt a legmagasabb szintű rendelkezésre állás elérése érdekében más alkalmazásspecifikus biztonsági mentési stratégiákra is támaszkodnia kell. További információ: a vész- [helyreállítási adatstratégiákkal](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)foglalkozó szakasz.
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az Azure-beli virtuális gépeken futó alkalmazások védelmének](https://aka.ms/a2a-getting-started) megkezdése Azure site Recovery használatával
 
 - Ha többet szeretne megtudni a vész-helyreállítási és a magas rendelkezésre állási stratégia megvalósításáról, tekintse meg a vész [-helyreállítási és magas rendelkezésre állású Azure-alkalmazások](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)című témakört.
 
-- A felhőalapú platform képességeinek részletes technikai megismeréséhez lásd: az [Azure rugalmasságával kapcsolatos technikai útmutató](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance).
+- A felhőalapú platform képességeinek részletes technikai megismeréséhez lásd: az [Azure rugalmasságával kapcsolatos technikai útmutató](../data-lake-store/data-lake-store-disaster-recovery-guidance.md).
 
 
 - Ha az utasítások nem egyértelműek, vagy ha szeretné, hogy a Microsoft végezze el a műveleteket az Ön nevében, forduljon az [ügyfélszolgálathoz](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

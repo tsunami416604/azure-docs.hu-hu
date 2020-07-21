@@ -1,5 +1,5 @@
 ---
-title: Rendszernézetek
+title: A szinapszis SQL-workspaces előzetes verziójában támogatott rendszernézetek
 description: Hivatkozások a szinapszis SQL-ben támogatott rendszernézetek dokumentációjában.
 author: filippopovic
 ms.service: synapse-analytics
@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f58c34a46f4eb1bffe4516f2a6f9f17a799fbfb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab6d7266daf96a38f81566725a6931aebaf7e7d9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82786597"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527795"
 ---
 # <a name="system-views-supported-in-synapse-sql"></a>A szinapszis SQL-ben támogatott rendszernézetek
 Hivatkozások a szinapszis SQL-ben támogatott T-SQL-utasítások dokumentációjában.
@@ -247,7 +247,7 @@ A következő DMV alkalmazhatók az SQL-készletre, de a **Master** adatbázisho
 * [VIEW_TABLE_USAGE](/sql/relational-databases/system-information-schema-views/view-table-usage-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [KILÁTÁSSAL](/sql/relational-databases/system-information-schema-views/views-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [t-SQL-utasítások a SZINAPSZIS SQL-ben](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-language-elements)és a [t-SQL nyelvi elemei a szinapszis SQL-ben](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements).
 

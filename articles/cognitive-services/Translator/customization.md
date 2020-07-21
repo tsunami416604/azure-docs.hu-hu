@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 6db43300632ec5b2c4f6c18848442901a40561b0
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8d49d9b9d29116d95173c1daf5133622c3694de6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996998"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523995"
 ---
 # <a name="customize-your-text-translations"></a>A szöveges fordítások testreszabása
 
@@ -47,8 +47,8 @@ Az elérhető adatok alapján történő Testreszabás különböző szintjeirő
 
 ## <a name="custom-translator-versus-hub"></a>Egyéni fordító és hub
 
-|   | **Hub** | **Custom Translator**|
-|:-----|:----:|:----:|
+| Funkció | Hub | Custom Translator |
+| ------- | :-: | :---------------: |
 |Testreszabási funkció állapota    | Általános elérhetőség    | Általános elérhetőség |
 | Szöveges API-verzió    | Csak v2    | Csak v3 |
 | SMT testreszabása    | Igen    | Nem |
@@ -61,7 +61,7 @@ Az elérhető adatok alapján történő Testreszabás különböző szintjeirő
 > [!NOTE]
 > A 2018. február 1-től a AddTranslation () és a AddTranslationArray () már nem használható a Translator v 2.0-s verziójával. Ezek a metódusok sikertelenek lesznek, és semmi sem íródik. A Translator v 3.0 nem támogatja ezeket a metódusokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Testreszabott nyelvi rendszer beállítása egyéni Translator használatával](https://aka.ms/CustomTranslatorDocs)

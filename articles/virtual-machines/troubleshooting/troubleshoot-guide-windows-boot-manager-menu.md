@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 5d2fb62870e2c41af635627f5d692f08c67f8394
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373348"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526538"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>A Windows rendszerű virtuális gép a Windows rendszerindítási kezelője miatt nem indítható el
 
@@ -29,7 +29,7 @@ Ez a cikk az Azure-beli virtuális gépek (VM) rendszerindítását megakadályo
 
 A virtuális gép egy felhasználói kérésre várakozik, és nem indul el, hacsak manuálisan nem utasította.
 
-Ha [rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használatával tekinti meg a virtuális gép képernyőképét, láthatja, hogy a képernyőkép megjeleníti a Windows rendszerindítási kezelőt az üzenet alapján, majd a *TAB billentyű lenyomásával kijelöl egy eszközt:*.
+Ha [rendszerindítási diagnosztika](./boot-diagnostics.md) használatával tekinti meg a virtuális gép képernyőképét, láthatja, hogy a képernyőkép megjeleníti a Windows rendszerindítási kezelőt az üzenet alapján, majd a *TAB billentyű lenyomásával kijelöl egy eszközt:*.
 
 1. ábra
  
@@ -53,7 +53,7 @@ Folyamat áttekintése:
 
 Ha rendelkezik hozzáféréssel a soros konzolhoz, kétféleképpen érheti el gyorsabban a rendszerindítási időpontokat. Csökkentse a *displaybootmenu* várakozási idejét, vagy távolítsa el a jelzőt teljesen.
 
-1. Kövesse az [Azure soros konzoljának a Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) rendszerhez való elérésének lépéseit, hogy hozzáférjen a szöveges konzolhoz.
+1. Kövesse az [Azure soros konzoljának a Windows](./serial-console-windows.md) rendszerhez való elérésének lépéseit, hogy hozzáférjen a szöveges konzolhoz.
 
    > [!NOTE]
    > Ha nem fér hozzá a soros konzolhoz, ugorjon előre a [javítási virtuális gép létrehozásához és eléréséhez](#create-and-access-a-repair-vm).
@@ -77,7 +77,7 @@ Ha rendelkezik hozzáféréssel a soros konzolhoz, kétféleképpen érheti el g
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A virtuálisgép- [javítási parancsok 1-3-es lépéseit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) használva készítse elő a javítási virtuális gépet.
+1. A virtuálisgép- [javítási parancsok 1-3-es lépéseit](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) használva készítse elő a javítási virtuális gépet.
 2. Távoli asztali kapcsolat kapcsolódjon a javítási virtuális géphez.
 
 ### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>Gyorsabb rendszerindítási idő beállítása a javítási virtuális gépen
@@ -154,4 +154,4 @@ A memóriakép-gyűjtés és a soros konzol engedélyezéséhez futtassa a köve
 
 ### <a name="rebuild-the-original-vm"></a>Az eredeti virtuális gép újraépítése
 
-A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

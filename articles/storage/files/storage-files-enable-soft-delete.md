@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 84da8993bd1b0a61ef885d03f7c2bc80b92d47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f432c544d8632a548c397b63ffa8066f63424f67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510817"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528383"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>A Soft delete engedélyezése az Azure-fájlmegosztás esetében
 
@@ -23,7 +23,7 @@ A következő részekben bemutatjuk, hogyan engedélyezheti és használhatja a 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Navigáljon a Storage-fiókjához, és válassza a **Soft delete** elemet a **file Service**lehetőségnél.
 1. Válassza az **engedélyezve** lehetőséget a fájlmegosztás helyreállítható **törléséhez**.
 1. Válassza ki a **fájlmegosztás megőrzési időtartamát napokban** , és adja meg a választott számot.
@@ -33,7 +33,7 @@ A következő részekben bemutatjuk, hogyan engedélyezheti és használhatja a 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A Soft delete engedélyezéséhez frissítenie kell egy fájl ügyfél szolgáltatásának tulajdonságait. A következő példa egy Storage-fiókban lévő összes fájlmegosztás esetében lehetővé teszi a Soft delete használatát:
+A Soft delete parancsmagok az az. Storage modul 2.1.1-Preview verziójában érhetők el. A Soft delete engedélyezéséhez frissítenie kell egy fájl ügyfél szolgáltatásának tulajdonságait. A következő példa egy Storage-fiókban lévő összes fájlmegosztás esetében lehetővé teszi a Soft delete használatát:
 
 ```azurepowershell-interactive
 $rgName = "yourResourceGroupName"
@@ -70,7 +70,7 @@ A törölt fájlmegosztás visszaállítása:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A helyreállítható törölt fájlmegosztás visszaállításához használja a következő parancsot:
+A Soft delete parancsmagok az az. Storage modul 2.1.1-Preview verziójában érhetők el. A helyreállítható törölt fájlmegosztás visszaállításához használja a következő parancsot:
 
 ```azurepowershell-interactive
 Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -DeletedShareVersion 01D5E2783BDCDA97
@@ -91,13 +91,13 @@ Ha szeretné leállítani a Soft delete használatát, vagy véglegesen töröln
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A következő parancs használatával tilthatja le a helyreállítható törlést a Storage-fiókjában:
+A Soft delete parancsmagok az az. Storage modul 2.1.1-Preview verziójában érhetők el. A következő parancs használatával tilthatja le a helyreállítható törlést a Storage-fiókjában:
 
 ```azurepowershell-interactive
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatvédelem és a helyreállítás más formájával kapcsolatos további információkért tekintse meg a [Azure Files-Pillanatképek megosztásának áttekintését](storage-snapshots-files.md)ismertető cikket.

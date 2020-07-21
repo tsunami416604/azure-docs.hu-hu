@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d2a14a501ebcf0913804ce39019a3fa4018ca141
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362373"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524301"
 ---
 # <a name="add-parameters-to-commands"></a>Paraméterek hozzáadása parancsokhoz
 
@@ -52,7 +52,7 @@ Szerkessze a meglévő **TurnOn** -parancsot a több eszköz bekapcsolásához �
 
        | Konfiguráció      | Ajánlott érték     | Leírás                                                      |
        | ------------------ | ----------------| ---------------------------------------------------------------------|
-       | Name (Név)               | `OnOff`           | A paraméter leíró neve                                                                           |
+       | Név               | `OnOff`           | A paraméter leíró neve                                                                           |
        | Globális          | nincs bejelölve       | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke globálisan az alkalmazás összes parancsára vonatkozik-e|
        | Kötelező           | ellenőrizni         | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt |
        | A kötelező paraméterre adott válasz      |Egyszerű szerkesztő >`On or Off?`      | A paraméter értékének megadására vonatkozó kérés, ha nem ismert |
@@ -62,8 +62,11 @@ Szerkessze a meglévő **TurnOn** -parancsot a több eszköz bekapcsolásához �
        
         
    1. Előre definiált bemeneti értékek hozzáadásához válassza az **előre definiált bevitel hozzáadása** lehetőséget, majd az **új elem** ablakban írja be a **nevet** a fenti táblázatban megadott módon. Ebben az esetben nem használunk aliasokat, így üresen hagyhatjuk. 
+
     > [!div class="mx-imgBorder"]
-        > ![Paraméter létrehozása](media/custom-commands/create-on-off-parameter.png)
+
+    > ![Paraméter létrehozása](media/custom-commands/create-on-off-parameter.png)
+
    1. A paraméter összes konfigurációjának mentéséhez válassza a **Mentés** lehetőséget.
  
  ### <a name="add-subjectdevice-parameter"></a>SubjectDevice paraméter hozzáadása 
@@ -73,7 +76,7 @@ Szerkessze a meglévő **TurnOn** -parancsot a több eszköz bekapcsolásához �
 
        | Beállítás            | Ajánlott érték       |
        | ------------------ | --------------------- |
-       | Name (Név)               | `SubjectDevice`         |
+       | Name               | `SubjectDevice`         |
        | Globális          | nincs bejelölve             |
        | Kötelező           | ellenőrizni               |
        | A kötelező paraméterre adott válasz     | Egyszerű szerkesztő >`Which device do you want to control?`    | 
@@ -82,7 +85,7 @@ Szerkessze a meglévő **TurnOn** -parancsot a több eszköz bekapcsolásához �
        | Előre megadott bemeneti értékek | `tv`, `fan`               |
        | Aliasok ( `tv` )      | `television`, `telly`     |
 
-   1. Kattintson a **Mentés** gombra
+   1. Válassza a **Mentés** lehetőséget
 
 ### <a name="modify-example-sentences"></a>Példa mondatok módosítása
 
@@ -104,7 +107,7 @@ turn something {OnOff}
 turn something
 ```
 
-Kattintson a **Mentés** gombra.
+Válassza a **Mentés** lehetőséget.
 
 > [!TIP]
 > A példában a mondatok szerkesztő kapcsos zárójeleket használ a paraméterekre való hivatkozáshoz. - `turn {OnOff} the {SubjectDevice}`Használja a TAB billentyűt a korábban létrehozott paraméterek által támogatott automatikus befejezéshez.
@@ -121,7 +124,7 @@ Módosítsa a meglévő befejezési szabály **ConfirmationResponse**.
     ```
     Ok, turning the {SubjectDevice} {OnOff}
     ```
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="try-it-out"></a>Próba
 1. A jobb oldali ablaktábla tetején válassza a **vonat** ikont.
@@ -146,7 +149,7 @@ Módosítsa a **SetTemperature** parancsot úgy, hogy az a felhasználó által 
 
 | Konfiguráció      | Ajánlott érték     |
 | ------------------ | ----------------|
-| Name (Név)               | `Temperature`           |
+| Name               | `Temperature`           |
 | Kötelező           | ellenőrizni         |
 | A kötelező paraméterre adott válasz      | Egyszerű szerkesztő >`What temperature would you like?`
 | Típus               | Szám          |
@@ -183,7 +186,7 @@ Adja hozzá a **datetime** nevű paramétert a következő konfigurációval.
 
    | Beállítás                           | Ajánlott érték                     | 
    | --------------------------------- | ----------------------------------------|
-   | Name (Név)                              | `DateTime`                               |
+   | Name                              | `DateTime`                               |
    | Kötelező                          | ellenőrizni                                 |
    | A kötelező paraméterre adott válasz   | Egyszerű szerkesztő >`For what time?`            | 
    | Típus                              | DateTime                                |
@@ -234,7 +237,7 @@ Tesztelje a mindhárom parancsot együtt a különböző parancsokhoz kapcsolód
 - Bemenet: 5
 - Kimenet: ok, riasztás beállítása 2020-05-01 17:00:00
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató: konfigurációk hozzáadása parancsok paramétereinek](./how-to-custom-commands-add-parameter-configuration.md)

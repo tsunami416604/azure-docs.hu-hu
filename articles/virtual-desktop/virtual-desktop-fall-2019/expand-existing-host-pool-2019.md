@@ -1,5 +1,5 @@
 ---
-title: Meglévő címkészlet kibontása új munkamenet-gazdagépekkel – Azure
+title: Meglévő címkészlet kibontása az új munkamenet-gazdagépek alá 2019 – Azure
 description: Meglévő címkészlet kibontása új munkamenet-gazdagépekkel a Windows Virtual Desktopban.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 956934bd536d8eb5e692ed193cad1424929db24b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 291dc32453001dd1e188bacae8be372bb3645ece
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260765"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527540"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel
+# <a name="expand-an-existing-host-pool-with-new-session-hosts-fall-2019"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel (2019-as)
 
 >[!IMPORTANT]
 >Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../expand-existing-host-pool.md).

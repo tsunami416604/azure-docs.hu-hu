@@ -9,11 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer
-ms.openlocfilehash: 756e0d62927b67d26ae75af90c64facfe9c92d31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70d7eb000ed2d50bc22bb005621ee7515e5a2a61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310563"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527455"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure spot virtuális gépek virtuálisgép-méretezési csoportokhoz 
 
@@ -29,7 +30,7 @@ A helyszíni példányok díjszabása a régió és az SKU alapján változó. T
 
 A változó díjszabással maximális árat állíthat be az USA dollárban (USD), legfeljebb 5 tizedesjegyet használva. Az érték például a `0.98765` maximális díj $0,98765 USD/óra. Ha a maximális árat állítja be `-1` , a példány árát a rendszer nem fogja kizárni. A példány díja a helyszíni aktuális díj, vagy egy standard példány díjszabása, amely soha nem kevesebb, ha rendelkezésre áll kapacitás és kvóta.
 
-## <a name="eviction-policy"></a>Kizárási szabályzat
+## <a name="eviction-policy"></a>Kiürítési szabályzat
 
 A direktszínes méretezési csoportok létrehozásakor beállíthatja a kizárási házirendet a *felszabadításhoz* (alapértelmezett) vagy a *törléshez*. 
 
@@ -43,10 +44,10 @@ A felhasználók eldönthetik, hogy a virtuális gép értesítéseit az [Azure 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Direktszínű virtuális gépek üzembe helyezése méretezési csoportokban
 
 A helyszíni virtuális gépek méretezési csoportokon történő üzembe helyezéséhez beállíthatja az új *prioritás* jelzőt a *helyszínen*. A méretezési csoport összes virtuális gépe a következőre lesz beállítva:. A helyszíni virtuális gépekkel rendelkező méretezési csoport létrehozásához használja az alábbi módszerek egyikét:
-- [Azure Portalra](#portal)
+- [Azure Portal](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
-- [Azure Resource Manager-sablonok](#resource-manager-templates)
+- [Azure Resource Manager sablonok](#resource-manager-templates)
 
 ## <a name="portal"></a>Portál
 
@@ -114,12 +115,12 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a paraméter
 
 **K:** Hogyan történik a kvóta kezelése a helyszínen?
 
-**A:** A helyszíni példányok és a standard példányok külön kvótával rendelkeznek. A helyszíni kvóta a virtuális gépek és a méretezési csoport példányai között lesz megosztva. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+**A:** A helyszíni példányok és a standard példányok külön kvótával rendelkeznek. A helyszíni kvóta a virtuális gépek és a méretezési csoport példányai között lesz megosztva. További információk: [Az Azure-előfizetések és -szolgáltatások korlátozásai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 
 **K:** Igényelhetek további kvótát a helyszínen?
 
-**A:** Igen, elküldheti a kérést, hogy növelje a helyszíni virtuális gépek kvótáját a [normál kvóta-kérési folyamaton](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)keresztül.
+**A:** Igen, elküldheti a kérést, hogy növelje a helyszíni virtuális gépek kvótáját a [normál kvóta-kérési folyamaton](../azure-portal/supportability/per-vm-quota-requests.md)keresztül.
 
 
 **K:** Válthatok-e meglévő méretezési csoportokat a méretezési csoportok számára?
@@ -155,18 +156,18 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a paraméter
 
 | Azure-csatornák               | Azure helyszíni virtuális gépek rendelkezésre állása       |
 |------------------------------|-----------------------------------|
-| Nagyvállalati Szerződés         | Yes                               |
-| Használatalapú fizetés                | Yes                               |
-| Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Előnyök                     | Nem érhető el                     |
-| Szponzorált                    | Yes                               |
-| Ingyenes próbaverzió                   | Nem érhető el                     |
+| Nagyvállalati Szerződés         | Igen                               |
+| Használatalapú fizetés                | Igen                               |
+| Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](/partner-center/azure-plan-get-started) |
+| Előnyök                     | Nem elérhető                     |
+| Szponzorált                    | Igen                               |
+| Ingyenes próba                   | Nem elérhető                     |
 
 
 **K:** Hol tehetek közzé kérdéseket?
 
-**A:** A kérdését a következő címen teheti közzé és címkézheti `azure-spot` : [Q&a](https://docs.microsoft.com/answers/topics/azure-spot.html). 
+**A:** A kérdését a következő címen teheti közzé és címkézheti `azure-spot` : [Q&a](/answers/topics/azure-spot.html). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A díjszabással kapcsolatos részletekért tekintse meg a [virtuálisgép-méretezési csoport díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) .

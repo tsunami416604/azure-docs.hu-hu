@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 11/14/2019
+ms.date: 07/20/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b351a828c47058025247a3edd95f31dc6cc84295
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6c6dd18ba57d83aa235f66285e7cb2ed42c1703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806180"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524964"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Több webhelyet üzemeltető alkalmazásátjáró létrehozása az Azure PowerShell használatával
 
@@ -30,7 +30,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
 > * CNAME rekord létrehozása a tartományban
 
-![Többhelyes útválasztási példa](./media/tutorial-multiple-sites-powershell/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-powershell/scenario.png" alt-text="Többhelyes Application Gateway":::
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -40,7 +40,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure PowerShell-modul 1.0.0-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Login-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával.  
 
@@ -125,6 +125,10 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 A figyelők ahhoz szükségesek, hogy az alkalmazásátjáró megfelelően irányítsa a forgalmat a háttércímkészletekhez. Ebben a cikkben két figyelőt hoz létre a két tartományhoz. A figyelők a *contoso.com* és a *fabrikam.com* tartományok számára jönnek létre.
 
 Hozza létre az első figyelőt a [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) használatával az előtér-konfigurációval és a korábban létrehozott frontend-porttal. A szabály ahhoz szükséges, hogy a figyelő tudja, melyik háttérkészletet használja a bejövő forgalomhoz. Hozzon létre egy *contosoRule* nevű alapszintű szabályt a [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)használatával.
+
+>[!NOTE]
+> A Application Gateway vagy a WAF v2 SKU használatával legfeljebb 5 állomásnév állítható be a figyelőhöz, és használhat helyettesítő karaktereket is az állomásnévben. További információ: [helyettesítő karakterek nevei a figyelőben](multiple-site-overview.md#wildcard-host-names-in-listener-preview) .
+>Ha Azure PowerShell használatával több állomásnevet és helyettesítő karaktert szeretne használni egy figyelőben, a helyett a következőt kell használnia: `-HostNames` `-HostName` . Az állomásnevek esetében legfeljebb 5 állomásnév adható meg vesszővel tagolt értékként. Például: `-HostNames "*.contoso.com,*.fabrikam.com"`
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `
@@ -300,6 +304,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az Applicat
 Remove-AzResourceGroup -Name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-powershell.md)

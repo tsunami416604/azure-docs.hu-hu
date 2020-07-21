@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 187098f557cb691e023abb282a265b11e975c544
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629265"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526010"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>A virtuális gép nem válaszol Csoportházirend helyi felhasználók és csoportok házirend alkalmazásakor
 
@@ -26,7 +27,7 @@ Ez a cikk olyan problémák megoldását ismerteti, amelyekben a betöltési ké
 
 ## <a name="symptoms"></a>Probléma
 
-Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használ a virtuális gép képernyőképének megtekintéséhez, a képernyő betöltődik a következő üzenettel: "csoportházirend helyi felhasználók és csoportok házirend alkalmazása".
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, a képernyő betöltődik a következő üzenettel: "csoportházirend helyi felhasználók és csoportok házirend alkalmazása".
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="Képernyőkép a Csoportházirend helyi felhasználók és csoportok betöltésének alkalmazásáról (Windows Server 2012 R2).":::
 
@@ -43,7 +44,7 @@ A problémás szabályzat:
 
 `Computer Configuration\Policies\Administrative Templates\System/User Profiles\Delete user profiles older than a specified number of days on system restart`
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 ### <a name="process-overview"></a>Folyamat áttekintése
 
@@ -57,7 +58,7 @@ A problémás szabályzat:
 
 ### <a name="step-1-create-and-access-a-repair-vm"></a>1. lépés: a javítási virtuális gép létrehozása és elérése
 
-1. A virtuálisgép- [javítási parancsok 1-3-es lépéseit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) használva készítse elő a javítási virtuális gépet.
+1. A virtuálisgép- [javítási parancsok 1-3-es lépéseit](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) használva készítse elő a javítási virtuális gépet.
 2. A Távoli asztali kapcsolat használatával csatlakozhat a javítási virtuális géphez.
 
 ### <a name="step-2-disable-the-policy"></a>2. lépés: a szabályzat letiltása
@@ -139,7 +140,7 @@ A memóriakép-gyűjtés és a soros konzol engedélyezéséhez futtassa a köve
 
 ### <a name="step-4-rebuild-the-vm"></a>4. lépés: a virtuális gép újraépítése
 
-A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .
 
 Ha a probléma kijavítva van, a házirend mostantól helyileg le lesz tiltva. Állandó megoldásként ne használja a CleanupProfiles házirendet a virtuális gépeken. Használjon más módszert a profilok tisztításának elvégzéséhez.
 
@@ -147,6 +148,6 @@ Ne használja ezt a házirendet:
 
 `Machine\Admin Templates\System\User Profiles\Delete user profiles older than a specified number of days on system restart`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha a Windows Update alkalmazása során problémák merülnek fel, tekintse meg [a virtuális gép nem válaszol "C01A001D" hibaüzenettel a Windows Update alkalmazásakor](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/unresponsive-vm-apply-windows-update).
+Ha a Windows Update alkalmazása során problémák merülnek fel, tekintse meg [a virtuális gép nem válaszol "C01A001D" hibaüzenettel a Windows Update alkalmazásakor](./unresponsive-vm-apply-windows-update.md).

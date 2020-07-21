@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7774ea5138e6d77547e386531e573457cd6d2862
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77561949"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525942"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>A Linux rendszerű virtuális gép a grub Rescue-t indítja
 
@@ -33,8 +34,8 @@ A kapott hibától függően kövesse az alábbi kockázatcsökkentő lépéseke
 
 * Ha a rendszer **ismeretlen**hibát észlel, akkor ez a hiba a rendszerindító partíció fájlrendszerének sérülése vagy helytelen kernel-konfiguráció miatt eredményezhet.
 
-   * Fájlrendszerrel kapcsolatos problémák esetén hajtsa végre a következő cikkben ismertetett lépéseket [: Linux Recovery: nem lehet SSH-t Linux virtuális géphez a fájlrendszer hibái miatt (fsck, inode)](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/).
-   * Kernel-problémák esetén kövesse a [Linux helyreállítás: a kernel problémákkal kapcsolatos nem rendszerindítási problémák manuális kijavítása](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/), illetve a Linux-helyreállítás című cikk lépéseit [: a nem rendszerindítási problémák kijavítása kernel-problémákról a kromát használatával](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/).
+   * Fájlrendszerrel kapcsolatos problémák esetén hajtsa végre a következő cikkben ismertetett lépéseket [: Linux Recovery: nem lehet SSH-t Linux virtuális géphez a fájlrendszer hibái miatt (fsck, inode)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes).
+   * Kernel-problémák esetén kövesse a [Linux helyreállítás: a kernel problémákkal kapcsolatos nem rendszerindítási problémák manuális kijavítása](/archive/blogs/linuxonazure/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems), illetve a Linux-helyreállítás című cikk lépéseit [: a nem rendszerindítási problémák kijavítása kernel-problémákról a kromát használatával](/archive/blogs/linuxonazure/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot).
    
 ### <a name="error---file-not-found"></a>Hiba – a fájl nem található
 
@@ -50,7 +51,7 @@ A kapott hibától függően kövesse az alábbi kockázatcsökkentő lépéseke
 
 ### <a name="error---no-such-partition"></a>Hiba – nincs ilyen partíció
 
-* Ha **nem kap ilyen partíciót**, tekintse meg az [eseti forgatókönyvet: "nincs ilyen partíció" hibaüzenetet, miközben megpróbálta ELINDÍTANI a virtuális gépet az operációs rendszer meghajtójának kibővítésére tett kísérlet után](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/).
+* Ha **nem kap ilyen partíciót**, tekintse meg az [eseti forgatókönyvet: "nincs ilyen partíció" hibaüzenetet, miközben megpróbálta ELINDÍTANI a virtuális gépet az operációs rendszer meghajtójának kibővítésére tett kísérlet után](/archive/blogs/shwetanayak/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive).
 
 ### <a name="error---grubcfg-file-not-found"></a>Hiba – a grub. cfg fájl nem található
 
@@ -64,8 +65,7 @@ A kapott hibától függően kövesse az alábbi kockázatcsökkentő lépéseke
 
    * Ha a hiányzó fájl `/boot/grub/menu.lst` , akkor ez a hiba a régebbi operációsrendszer-verziók esetében (**RHEL 6. x**, **CentOS 6. x** és **Ubuntu 14,04**), így a parancsok elhalasztható. Hozzon létre egy régi kiszolgálót, és ellenőrizze, hogy a megfelelő parancsok vannak-e megadva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Virtual Machine Agent áttekintése](../extensions/agent-windows.md)
 * [Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez](../extensions/features-windows.md)
-

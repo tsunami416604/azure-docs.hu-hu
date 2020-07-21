@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 896e69bad9cd75b57ef2bf93048c332ef4d974c0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7abff8c33ea276b8b8aaeffd010d5f5e09440d9b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207697"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526639"
 ---
-# <a name="how-to-use-perfinsights"></a>A PerfInsights használata
+# <a name="how-to-use-perfinsights-in-azure"></a>A PerfInsights használata az Azure-ban
 
 A [PerfInsights](https://aka.ms/perfinsightsdownload) egy önsegítő diagnosztikai eszköz, amely összegyűjti és elemzi a diagnosztikai adatokat, és jelentést nyújt a Windows rendszerű virtuális gépek teljesítményével kapcsolatos problémák megoldásához az Azure-ban. A PerfInsights virtuális gépeken is futtathatók önálló eszközként, közvetlenül a portálról az [Azure Virtual Machines teljesítmény-diagnosztika](performance-diagnostics.md)használatával vagy az [Azure Performance Diagnostics virtuálisgép-bővítményének](performance-diagnostics-vm-extension.md)telepítésével.
 
@@ -65,7 +65,7 @@ Ez a forgatókönyv a [Diskspd](https://github.com/Microsoft/diskspd) teljesítm
 
 ### <a name="performance-analysis"></a>Teljesítmény elemzése
 
-Ez a forgatókönyv [teljesítményszámláló](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) -nyomkövetést futtat a RuleEngineConfig.jsfájlon megadott számlálók használatával. Ha a virtuális gép a SQL Server rendszert futtató kiszolgálóként van azonosítva, a teljesítményszámláló-nyomkövetés fut. Ezt a fájl RuleEngineConfig.jstalálható számlálók használatával végezheti el. Ez a forgatókönyv a teljesítmény-diagnosztikai adatait is tartalmazza.
+Ez a forgatókönyv [teljesítményszámláló](/windows/win32/perfctrs/performance-counters-portal) -nyomkövetést futtat a RuleEngineConfig.jsfájlon megadott számlálók használatával. Ha a virtuális gép a SQL Server rendszert futtató kiszolgálóként van azonosítva, a teljesítményszámláló-nyomkövetés fut. Ezt a fájl RuleEngineConfig.jstalálható számlálók használatával végezheti el. Ez a forgatókönyv a teljesítmény-diagnosztikai adatait is tartalmazza.
 
 ### <a name="azure-files-analysis"></a>Azure Files elemzése
 
@@ -300,9 +300,9 @@ A Diskspd egy Storage Load Generator és Performance test eszköz a Microsofttó
 
 ### <a name="xperf"></a>Xperf
 
-A XPerf egy parancssori eszköz, amely a Windows Performance Toolkit nyomkövetéseit rögzíti. További információ: [Windows Performance Toolkit – XPerf](https://blogs.msdn.microsoft.com/ntdebugging/2008/04/03/windows-performance-toolkit-xperf/).
+A XPerf egy parancssori eszköz, amely a Windows Performance Toolkit nyomkövetéseit rögzíti. További információ: [Windows Performance Toolkit – XPerf](/archive/blogs/ntdebugging/windows-performance-toolkit-xperf).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A diagnosztikai naplókat és jelentéseket feltöltheti Microsoft ügyfélszolgálata további áttekintés céljából. A támogatás kérheti, hogy továbbítsa a PerfInsights által generált kimenetet, hogy segítséget nyújtson a hibaelhárítási folyamathoz.
 
@@ -313,4 +313,3 @@ Az alábbi képernyőképen egy, a következőhöz hasonló üzenet látható:
 Az üzenetben található utasításokat követve férhet hozzá a fájlátviteli munkaterülethez. A további biztonság érdekében meg kell változtatnia a jelszavát az első használatkor.
 
 A bejelentkezést követően egy párbeszédpanel jelenik meg, amely feltölti a PerfInsights által gyűjtött **PerformanceDiagnostics \_ éééé-hh-nn \_hh-mm-ss-fff.zip** fájlt.
-

@@ -10,15 +10,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1cf6c7417aa86d47e59e08786e7807e32c175a25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08d32e4b7806ec53f48389b127ab34371271cf07
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759573"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527234"
 ---
 # <a name="configure-prerequisites"></a>Előfeltételek konfigurálása
 
-Mielőtt felhasználja a Piactéri ajánlatot egy önállóan felügyelt OpenShift Container platform 3,11-fürt üzembe helyezéséhez az Azure-ban, néhány előfeltételt be kell állítani.  A [OpenShift előfeltételeit](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites) ismertető cikkben megtudhatja, hogyan hozhat létre SSH-kulcsot (jelszó nélkül), az Azure Key vaultot, a Key Vault secrett és egy egyszerű szolgáltatást.
+Mielőtt felhasználja a Piactéri ajánlatot egy önállóan felügyelt OpenShift Container platform 3,11-fürt üzembe helyezéséhez az Azure-ban, néhány előfeltételt be kell állítani.  A [OpenShift előfeltételeit](./openshift-container-platform-3x-prerequisites.md) ismertető cikkben megtudhatja, hogyan hozhat létre SSH-kulcsot (jelszó nélkül), az Azure Key vaultot, a Key Vault secrett és egy egyszerű szolgáltatást.
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Üzembe helyezés a Piactéri ajánlat használatával
@@ -52,7 +53,7 @@ Kattintson az ajánlatra az ajánlat részleteinek megtekintéséhez. Az ajánla
    ![Ajánlat címe lap](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
 <br>
 
-**Alapvető beállítások**
+**Alapbeállítások**
 
 Ha segítséget szeretne kérni bármelyik bemeneti paraméterről, vigye a kurzort ***a paraméter neve melletti*** fölé.
 
@@ -63,7 +64,7 @@ Adja meg a bemeneti paraméterek értékeit, majd kattintson **az OK**gombra.
 | Virtuális gép rendszergazdájának felhasználóneve | Az összes virtuálisgép-példányon létrehozandó rendszergazda felhasználó |
 | Nyilvános SSH-kulcs rendszergazdai felhasználóhoz | Virtuális gépre való bejelentkezéshez használt nyilvános SSH-kulcs – nem lehet hozzáférési kód |
 | Előfizetés | Azure-előfizetés a fürt üzembe helyezéséhez |
-| Erőforráscsoport | Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő üres erőforráscsoportot a fürt erőforrásaihoz |
+| Resource Group (Erőforráscsoport) | Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő üres erőforráscsoportot a fürt erőforrásaihoz |
 | Hely | Azure-régió a fürt üzembe helyezéséhez |
 
    ![Ajánlat alapjai panel](media/openshift-marketplace-self-managed/ocp-basics.png)  
@@ -198,7 +199,7 @@ Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforrásc
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
 - [A OpenShift üzembe helyezésének hibája az Azure-ban](./openshift-container-platform-3x-troubleshooting.md)

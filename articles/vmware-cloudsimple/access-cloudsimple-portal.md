@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 91d3dd2eee6f771df23b72eae7a33122c42f1690
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2e5a4d057e1074c6cce0f374846bc9e0a64950
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869334"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525092"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>A VMware-megoldás elérése a CloudSimple-portálon a Azure Portal
 
@@ -20,9 +21,9 @@ Az egyszeri bejelentkezés támogatott a CloudSimple-portálhoz való hozzáfér
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A beépített **tulajdonosi** és **közreműködői** szerepkörökkel rendelkező felhasználók hozzáférhetnek a CloudSimple-portálhoz.  A szerepköröket olyan erőforráscsoporthoz kell konfigurálni, ahol a CloudSimple szolgáltatás telepítve van.  A szerepkörök is konfigurálhatók a CloudSimple szolgáltatás objektumán.  A szerepkör ellenőrzésével kapcsolatos további információkért tekintse meg a [szerepkör-hozzárendelések megtekintése](https://docs.microsoft.com/azure/role-based-access-control/check-access) című cikket. Csak a beépített **tulajdonosi** és **közreműködői** szerepkörökkel rendelkező felhasználók férhetnek hozzá a CloudSimple-portálhoz.  A szerepköröket az előfizetésen kell konfigurálni.  A szerepkör ellenőrzésével kapcsolatos további információkért tekintse meg a [szerepkör-hozzárendelések megtekintése](https://docs.microsoft.com/azure/role-based-access-control/check-access) című cikket.
+A beépített **tulajdonosi** és **közreműködői** szerepkörökkel rendelkező felhasználók hozzáférhetnek a CloudSimple-portálhoz.  A szerepköröket olyan erőforráscsoporthoz kell konfigurálni, ahol a CloudSimple szolgáltatás telepítve van.  A szerepkörök is konfigurálhatók a CloudSimple szolgáltatás objektumán.  A szerepkör ellenőrzésével kapcsolatos további információkért tekintse meg a [szerepkör-hozzárendelések megtekintése](../role-based-access-control/check-access.md) című cikket. Csak a beépített **tulajdonosi** és **közreműködői** szerepkörökkel rendelkező felhasználók férhetnek hozzá a CloudSimple-portálhoz.  A szerepköröket az előfizetésen kell konfigurálni.  A szerepkör ellenőrzésével kapcsolatos további információkért tekintse meg a [szerepkör-hozzárendelések megtekintése](../role-based-access-control/check-access.md) című cikket.
 
-Ha egyéni szerepköröket használ, a szerepkörnek a következő műveletek bármelyikével kell rendelkeznie ```Actions``` .  Az egyéni szerepkörökkel kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).  Ha bármelyik művelet a részét képezi ```NotActions``` , a felhasználó nem férhet hozzá a CloudSimple-portálhoz.
+Ha egyéni szerepköröket használ, a szerepkörnek a következő műveletek bármelyikével kell rendelkeznie ```Actions``` .  Az egyéni szerepkörökkel kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure-erőforrásokhoz](../role-based-access-control/custom-roles.md).  Ha bármelyik művelet a részét képezi ```NotActions``` , a felhasználó nem férhet hozzá a CloudSimple-portálhoz.
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -68,7 +69,7 @@ Ha az engedélyei nem engedélyezik a hozzáférést a CloudSimple-portálhoz, f
 
 ![Hozzájárulás a CloudSimple szolgáltatás engedélyezéséhez – rendszergazdákat igényel](media/cloudsimple-azure-consent-requires-administrator.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Megtudhatja, hogyan [hozhat létre saját felhőt](https://docs.microsoft.com/azure/vmware-cloudsimple/create-private-cloud/)
+* Megtudhatja, hogyan [hozhat létre saját felhőt](./create-private-cloud.md)
 * Ismerje meg, hogyan [konfigurálhatja a saját felhőalapú környezetét](quickstart-create-private-cloud.md)

@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: d7d251370aefdfadc0b77a67f6dad1be2dcb9e9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbd67903223bf4c8c2117f5356bc987665217362
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759443"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527030"
 ---
 # <a name="deploy-okd-in-azure"></a>OKD üzembe helyezése az Azure-ban
 
@@ -118,7 +119,7 @@ A különböző kiadások különböző paraméterekkel rendelkezhetnek, ezért 
 
 
 > [!NOTE] 
-> A következő parancshoz Azure CLI-2.0.8 vagy újabb verzió szükséges. A CLI-verziót a `az --version` paranccsal ellenőrizheti. A CLI verziójának frissítéséhez lásd: az [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> A következő parancshoz Azure CLI-2.0.8 vagy újabb verzió szükséges. A CLI-verziót a `az --version` paranccsal ellenőrizheti. A CLI verziójának frissítéséhez lásd: az [Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 A következő példa a OKD-fürtöt és az összes kapcsolódó erőforrást egy openshiftrg nevű erőforráscsoporthoz helyezi üzembe a myOpenShiftCluster központi telepítési nevével. A sablont közvetlenül a GitHub-tárházból kell hivatkozni, amikor egy azuredeploy.parameters.jsnevű helyi paramétereket tartalmazó fájlt használ.
 
@@ -155,7 +156,7 @@ Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforrásc
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
 - [OpenShift-telepítés hibáinak megoldása](./openshift-container-platform-3x-troubleshooting.md)

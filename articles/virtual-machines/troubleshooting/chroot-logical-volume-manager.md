@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0041a835c02263f23c5cdc6f839756edfb070c1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74684134"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526877"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Linux rendszerű virtuális gép hibaelhárítása, ha nincs hozzáférés az Azure soros konzolhoz, és a lemez elrendezése az LVM (logikai kötet kezelője) használatával történik.
 
@@ -28,7 +29,7 @@ Ez a hibaelhárítási útmutató olyan forgatókönyvek esetén hasznos, amikor
 
 Készítsen pillanatképet az érintett virtuális gépről. 
 
-A pillanatkép ezután csatolva lesz egy **mentési** virtuális géphez. A **Pillanatképek**elvégzéséhez kövesse az [alábbi utasításokat.](https://docs.microsoft.com/azure/virtual-machines/linux/snapshot-copy-managed-disk#use-azure-portal)
+A pillanatkép ezután csatolva lesz egy **mentési** virtuális géphez. A **Pillanatképek**elvégzéséhez kövesse az [alábbi utasításokat.](../linux/snapshot-copy-managed-disk.md#use-azure-portal)
 
 ## <a name="create-a-rescue-vm"></a>Mentési virtuális gép létrehozása
 Általában egy azonos vagy hasonló operációsrendszer-verzióval rendelkező mentési virtuális gép ajánlott. Az érintett virtuális gép azonos **régiójának** és **erőforráscsoportának** használata
@@ -208,7 +209,7 @@ Ha szükséges, távolítsa el vagy frissítse a speciális **kernelt**
 
 
 ### <a name="example-3---enable-serial-console"></a>3. példa – soros konzol engedélyezése
-Ha a hozzáférés nem volt lehetséges az Azure soros konzolon, ellenőrizze a GRUB-konfigurációs paramétereket a linuxos virtuális gépen, és javítsa ki azokat. Részletes információkat [ebben a dokumentumban](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration) találhat
+Ha a hozzáférés nem volt lehetséges az Azure soros konzolon, ellenőrizze a GRUB-konfigurációs paramétereket a linuxos virtuális gépen, és javítsa ki azokat. Részletes információkat [ebben a dokumentumban](./serial-console-grub-proactive-configuration.md) találhat
 
 ### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>4. példa – kernel betöltése problémás LVM swap-kötettel
 
@@ -268,9 +269,9 @@ Hajtsa végre a mezőket a **kiválasztott lemez** az előző lépésben levála
 Ha a virtuális gép futtatja a lemezes cserét, állítsa le, indítsa újra a virtuális gépet a lemezes swap művelet befejeződése után.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ
 
  [Azure soros konzol]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
 
-[Egyfelhasználós mód](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)
+[Egyfelhasználós mód](./serial-console-grub-single-user-mode.md)

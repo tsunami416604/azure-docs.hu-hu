@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b8d47b69b4aba14c86fb09176b662aee7d5482d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f386cbf09bb2b62e0c54826affc50a050c095fa6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335520"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524590"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adathalmazok renderelése egy raszteres térképen
 
@@ -29,7 +29,7 @@ Az egyéni pushpins, címkék és geometriai átfedések megjelenítéséhez has
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps-fiók létrehozása
 
-A cikkben ismertetett eljárások elvégzéséhez először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie a Maps-fiók kulcsát. Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) egy Azure Maps fiók előfizetésének létrehozásához című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
+A cikkben ismertetett eljárások elvégzéséhez először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie a Maps-fiók kulcsát. Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account) egy Azure Maps fiók előfizetésének létrehozásához című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Pushpins megjelenítése címkékkel és egyéni képpel
@@ -219,7 +219,7 @@ A kör-és pushpins egyéni címkékkel történő megjelenítéséhez kövesse 
 
 Hasonlóképpen megváltoztathatja, hozzáadhatja és eltávolíthatja a többi stílus-módosítót is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 * Ismerkedjen meg a [Azure Maps Map RENDSZERKÉP API](https://docs.microsoft.com/rest/api/maps/render/getmapimage) dokumentációjának használatával.

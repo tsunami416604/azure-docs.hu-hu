@@ -1,5 +1,5 @@
 ---
-title: RDP-tulajdonságok testreszabása a PowerShell használatával – Azure
+title: RDP-tulajdonságok testreszabása a PowerShell Spring 2020 – Azure
 description: A Windows rendszerű virtuális asztal RDP-tulajdonságainak testreszabása PowerShell-parancsmagokkal.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d41df8fe4f411cf28af83c8b4b667f1e86bdb45d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c666a11f8d5e13d022309eddab16edb6aab76381
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259919"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527761"
 ---
-# <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Gazdagépek RDP protokoll tulajdonságainak testreszabása
+# <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>A gazdagépek RDP protokoll (RDP) tulajdonságainak testreszabása
 
 >[!IMPORTANT]
 >Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md).
@@ -37,7 +37,7 @@ Alapértelmezés szerint a közzétett RDP-fájlok a következő tulajdonságoka
 
 |RDP-tulajdonságok | Asztali számítógépek | RemoteApp-alkalmazások |
 |---|---| --- |
-| Többszörös figyelési mód | Engedélyezve | N/A |
+| Többszörös figyelési mód | Engedélyezve | n.a. |
 | Meghajtó-átirányítások engedélyezve | Meghajtók, vágólap, nyomtatók, COM-portok, USB-eszközök és intelligens kártyák| Meghajtók, vágólap és nyomtatók |
 | Távoli hang mód | Helyi lejátszás | Helyi lejátszás |
 

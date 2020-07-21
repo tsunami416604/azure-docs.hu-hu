@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: beszéd felismerése mikrofonból, Swift-Speech szolgáltatás'
+title: 'Gyors útmutató: beszédfelismerési szolgáltatás felismerése, Swift-Speech Service (macOS)'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan ismerheti fel a macOS-beli Swift-beszédfelismerést a Speech SDK használatával
+description: Megtudhatja, hogyan hozhat létre olyan alkalmazást, amely a Cognitive Services Speech SDK-t használó macOS-számítógépeken a gyors beszédfelismerést ismeri fel.
 services: cognitive-services
 author: cbasoglu
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: cbasoglu
-ms.openlocfilehash: 440addd017e7a819d9d3d02a8b77b9432b68b9af
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 68947446d18ce1632b63ac3ba27311f648f3deea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391417"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524113"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Gyors útmutató: a beszédfelismerési szolgáltatás felismerése a macOS rendszeren a Speech SDK használatával
 

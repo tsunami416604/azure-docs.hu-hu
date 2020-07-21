@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8c5e384e85861cdced3ed6dbe60733128b499407
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039007"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524505"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS Docker-tárolók telepítése és futtatása
 
@@ -32,9 +32,9 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 A LUIS-tároló futtatásához vegye figyelembe a következő előfeltételeket:
 
-|Kötelező|Szerep|
+|Kötelező|Cél|
 |--|--|
-|Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
+|A Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
 |A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók lemezképéről, valamint az alapszintű `docker` parancsokról.|
 |Azure `Cognitive Services` -erőforrás és Luis [csomagolt alkalmazás](luis-how-to-start-new-app.md) fájlja |A tároló használatához a következőket kell tennie:<br><br>* Egy _Cognitive Services_ Azure-erőforrás és a kapcsolódó számlázási kulcs a számlázási végpont URI-ja. Mindkét érték elérhető az erőforrás áttekintés és kulcsok oldalain, és a tároló indításához szükséges. <br>* Egy betanított vagy közzétett alkalmazás, amely csatlakoztatott bemenetként van csomagolva a tárolóhoz a hozzá tartozó alkalmazás-AZONOSÍTÓval. A csomagolt fájlt a LUIS portálról vagy a szerzői API-k használatával szerezheti be. Ha a [szerzői API](#authoring-apis-for-package-file)-kkal becsomagolta a Luis csomagolási alkalmazást, a _szerzői kulcsra_is szüksége lesz.<br><br>Ezek a követelmények a parancssori argumentumok átadására szolgálnak a következő változókra:<br><br>**{AUTHORING_KEY}**: ezzel a kulccsal lekérheti a csomagolt alkalmazást a felhőben található Luis szolgáltatásból, és feltöltheti a lekérdezési naplókat a felhőbe. A formátum `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}**: ez az azonosító az alkalmazás kiválasztására szolgál. A formátum `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}**: Ez a kulcs a tároló elindítására szolgál. A végpont kulcsa két helyen található. Az első az _Cognitive Services_ erőforrás kulcsai listán szereplő Azure Portal. A végpont kulcsa a LUIS portálon is elérhető a kulcsok és a végpont beállításai lapon. Ne használja az alapszintű kulcsot.<br><br>**{ENDPOINT_URI}**: az Áttekintés lapon megadott végpont.<br><br>A [szerzői kulcs és a végpont kulcsa](luis-limits.md#key-limits) eltérő célokat szolgál. Ne használja szinonimaként. |
 
@@ -53,7 +53,7 @@ API-k készítése csomagolt alkalmazásokhoz:
 
 ### <a name="container-requirements-and-recommendations"></a>A tárolóra vonatkozó követelmények és javaslatok
 
-Ez a tároló a beállítások minimális és ajánlott értékeit támogatja:
+Az alábbi táblázat a tároló gazdagép minimális és ajánlott értékeit sorolja fel. A követelmények a forgalmi mennyiségtől függően változhatnak.
 
 |Tároló| Minimális | Ajánlott | TPS<br>(Minimum, maximum)|
 |-----------|---------|-------------|--|
@@ -239,42 +239,42 @@ Az API v2 és [v3](luis-migration-api-v3.md) verziója is elérhető a tárolób
 
 ## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontjának lekérdezése
 
-A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat biztosít. A közzétett (átmeneti vagy éles) alkalmazások végpontjai _eltérő_ útvonalon rendelkeznek, mint a verziószámok a verzióval ellátott alkalmazások esetében.
+A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat nyújt. A közzétett (átmeneti vagy éles) alkalmazások végpontjai _eltérő_ útvonalon rendelkeznek, mint a verziószámok a verzióval ellátott alkalmazások esetében.
 
-A tároló API-k esetében használja a gazdagépet `http://localhost:5000` .
+A tároló API-khoz használja a gazdagépet (`http://localhost:5000`).
 
 # <a name="v3-prediction-endpoint"></a>[V3 előrejelzési végpont](#tab/v3)
 
-|Csomag típusa|HTTP-parancs|Útválasztás|Lekérdezési paraméterek|
+|Csomag típusa|HTTP-parancs|Útvonal|Lekérdezési paraméterek|
 |--|--|--|--|
 |Közzétett|LETÖLTÉS, KÖZZÉTÉTEL|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 |Verziószámmal|LETÖLTÉS, KÖZZÉTÉTEL|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 
 A lekérdezési paraméterek a lekérdezési válaszban megadhatják, hogy hogyan és mit ad vissza:
 
-|Lekérdezési paraméter|Típus|Szerep|
+|Lekérdezési paraméter|Típus|Cél|
 |--|--|--|
 |`query`|sztring|A felhasználó megnyilatkozása.|
-|`verbose`|logikai|Logikai érték, amely azt jelzi, hogy az összes metaadatot vissza kell-e adni az előre jelzett modellekhez. Az alapértelmezett érték a false (hamis).|
-|`log`|logikai|Naplózza a lekérdezéseket, amelyek később az [aktív tanuláshoz](luis-how-to-review-endpoint-utterances.md)is felhasználhatók. Az alapértelmezett érték a false (hamis).|
-|`show-all-intents`|logikai|Logikai érték, amely azt jelzi, hogy a rendszer visszaküldi-e az összes szándékot vagy a felső pontozási szándékot. Az alapértelmezett érték a false (hamis).|
+|`verbose`|boolean|Logikai érték, amely azt jelzi, hogy az összes metaadatot vissza kell-e adni az előre jelzett modellekhez. Az alapértelmezett érték a false (hamis).|
+|`log`|boolean|Naplózza a lekérdezéseket, amelyek később az [aktív tanuláshoz](luis-how-to-review-endpoint-utterances.md)is felhasználhatók. Az alapértelmezett érték a false (hamis).|
+|`show-all-intents`|boolean|Logikai érték, amely azt jelzi, hogy a rendszer visszaküldi-e az összes szándékot vagy a felső pontozási szándékot. Az alapértelmezett érték a false (hamis).|
 
 # <a name="v2-prediction-endpoint"></a>[V2 előrejelzési végpont](#tab/v2)
 
-|Csomag típusa|HTTP-parancs|Útválasztás|Lekérdezési paraméterek|
+|Csomag típusa|HTTP-parancs|Útvonal|Lekérdezési paraméterek|
 |--|--|--|--|
 |Közzétett|[Letöltés](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78), [Közzététel](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
 |Verziószámmal|LETÖLTÉS, KÖZZÉTÉTEL|`/luis/v2.0/apps/{appId}/versions/{versionId}?`|`q={q}`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]|
 
 A lekérdezési paraméterek a lekérdezési válaszban megadhatják, hogy hogyan és mit ad vissza:
 
-|Lekérdezési paraméter|Típus|Szerep|
+|Lekérdezési paraméter|Típus|Cél|
 |--|--|--|
 |`q`|sztring|A felhasználó megnyilatkozása.|
 |`timezoneOffset`|szám|A timezoneOffset lehetővé teszi az előre elkészített entitások datetimeV2 által használt [időzóna módosítását](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) .|
-|`verbose`|logikai|Az összes leképezést és azok pontszámát adja vissza, ha igaz értékre van állítva. Az alapértelmezett érték a False (hamis), amely csak a felső leképezést adja vissza.|
-|`staging`|logikai|Az átmeneti környezet eredményeiből származó lekérdezést adja vissza, ha igaz értékre van állítva. |
-|`log`|logikai|Naplózza a lekérdezéseket, amelyek később az [aktív tanuláshoz](luis-how-to-review-endpoint-utterances.md)is felhasználhatók. Alapértelmezett érték: true (igaz).|
+|`verbose`|boolean|Az összes leképezést és azok pontszámát adja vissza, ha igaz értékre van állítva. Az alapértelmezett érték a False (hamis), amely csak a felső leképezést adja vissza.|
+|`staging`|boolean|Az átmeneti környezet eredményeiből származó lekérdezést adja vissza, ha igaz értékre van állítva. |
+|`log`|boolean|Naplózza a lekérdezéseket, amelyek később az [aktív tanuláshoz](luis-how-to-review-endpoint-utterances.md)is felhasználhatók. Alapértelmezett érték: true (igaz).|
 
 ***
 
@@ -372,7 +372,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta a Language Understanding (LUIS) tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 
@@ -385,7 +385,7 @@ Ebben a cikkben megtanulta a Language Understanding (LUIS) tárolók letöltés�
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett képet vagy szöveget) a Microsoftnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [tárolók konfigurálása](luis-container-configuration.md) konfigurációs beállításokat.
 * Tekintse meg a [Luis Container korlátozásait](luis-container-limitations.md) az ismert képességekre vonatkozó korlátozásokról.

@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2667ff571070b2e62dcfa4af6e202f1851aa3e80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870270"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525772"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Több hálózati adapterrel rendelkező Windows rendszerű virtuális gép létrehozása és kezelése
 Az Azure-ban a virtuális gépek (VM-EK) több virtuális hálózati adapterrel (NIC) is rendelkezhetnek hozzájuk. Gyakori forgatókönyv, hogy különböző alhálózatokat kell létrehozni az előtér-és háttér-kapcsolathoz. Több hálózati adaptert is hozzárendelhet egy virtuális GÉPHEZ több alhálózathoz, de ezek az alhálózatok mind ugyanabban a virtuális hálózatban (vNet) találhatók. Ez a cikk részletesen ismerteti, hogyan hozható létre több hálózati adapterrel rendelkező virtuális gép. Azt is megtudhatja, hogyan adhat hozzá vagy távolíthat el hálózati adaptereket egy meglévő virtuális gépről. A különböző virtuálisgép- [méretek](sizes.md) eltérő számú hálózati adaptert támogatnak, ezért a virtuális gépet ennek megfelelően kell méretezni.
@@ -32,7 +33,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 ### <a name="create-virtual-network-and-subnets"></a>Virtuális hálózat és alhálózatok létrehozása
 Gyakori forgatókönyv, hogy egy virtuális hálózat két vagy több alhálózattal rendelkezik. Egy alhálózat lehet az előtér-forgalomhoz, a másik a háttér-forgalomhoz. Ha mindkét alhálózathoz szeretne csatlakozni, több hálózati adaptert is használhat a virtuális gépen.
 
-1. Hozzon létre két virtuális hálózati alhálózatot a [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig). A következő példa a *mySubnetFrontEnd* és a *mySubnetBackEnd*alhálózatait definiálja:
+1. Hozzon létre két virtuális hálózati alhálózatot a [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). A következő példa a *mySubnetFrontEnd* és a *mySubnetBackEnd*alhálózatait definiálja:
 
     ```powershell
     $mySubnetFrontEnd = New-AzVirtualNetworkSubnetConfig -Name "mySubnetFrontEnd" `
@@ -41,7 +42,7 @@ Gyakori forgatókönyv, hogy egy virtuális hálózat két vagy több alhálóza
         -AddressPrefix "192.168.2.0/24"
     ```
 
-2. Hozza létre a virtuális hálózatot és az alhálózatokat a [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork). A következő példában létrehozunk egy *myVnet*nevű virtuális hálózatot:
+2. Hozza létre a virtuális hálózatot és az alhálózatokat a [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). A következő példában létrehozunk egy *myVnet*nevű virtuális hálózatot:
 
     ```powershell
     $myVnet = New-AzVirtualNetwork -ResourceGroupName "myResourceGroup" `
@@ -53,7 +54,7 @@ Gyakori forgatókönyv, hogy egy virtuális hálózat két vagy több alhálóza
 
 
 ### <a name="create-multiple-nics"></a>Több hálózati adapter létrehozása
-Hozzon létre két hálózati adaptert a [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface). Csatoljon egy hálózati adaptert az előtér-alhálózathoz és egy hálózati adaptert a háttérbeli alhálózathoz. A következő példa a *myNic1* és a *MyNic2*nevű hálózati adaptereket hozza létre:
+Hozzon létre két hálózati adaptert a [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface). Csatoljon egy hálózati adaptert az előtér-alhálózathoz és egy hálózati adaptert a háttérbeli alhálózathoz. A következő példa a *myNic1* és a *MyNic2*nevű hálózati adaptereket hozza létre:
 
 ```powershell
 $frontEnd = $myVnet.Subnets|?{$_.Name -eq 'mySubnetFrontEnd'}
@@ -80,13 +81,13 @@ Most kezdje el létrehozni a virtuális gép konfigurációját. Minden virtuál
     $cred = Get-Credential
     ```
 
-2. Adja meg a virtuális gépet a [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig). Az alábbi példa egy *myVM* nevű virtuális gépet definiál, és olyan virtuálisgép-méretet használ, amely több mint két hálózati adaptert támogat (*Standard_DS3_v2*):
+2. Adja meg a virtuális gépet a [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig). Az alábbi példa egy *myVM* nevű virtuális gépet definiál, és olyan virtuálisgép-méretet használ, amely több mint két hálózati adaptert támogat (*Standard_DS3_v2*):
 
     ```powershell
     $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_DS3_v2"
     ```
 
-3. Hozza létre a virtuális gép többi konfigurációját a [set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) és a [set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage). A következő példa egy Windows Server 2016 rendszerű virtuális gépet hoz létre:
+3. Hozza létre a virtuális gép többi konfigurációját a [set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) és a [set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage). A következő példa egy Windows Server 2016 rendszerű virtuális gépet hoz létre:
 
     ```powershell
     $vmConfig = Set-AzVMOperatingSystem -VM $vmConfig `
@@ -102,14 +103,14 @@ Most kezdje el létrehozni a virtuális gép konfigurációját. Minden virtuál
         -Version "latest"
    ```
 
-4. Csatolja a korábban a [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface)által létrehozott két hálózati adaptert:
+4. Csatolja a korábban a [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)által létrehozott két hálózati adaptert:
 
     ```powershell
     $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic1.Id -Primary
     $vmConfig = Add-AzVMNetworkInterface -VM $vmConfig -Id $myNic2.Id
     ```
 
-5. Hozzon létre egy új virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm):
+5. Hozzon létre egy új virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm):
 
     ```powershell
     New-AzVM -VM $vmConfig -ResourceGroupName "myResourceGroup" -Location "EastUs"
@@ -120,19 +121,19 @@ Most kezdje el létrehozni a virtuális gép konfigurációját. Minden virtuál
 ## <a name="add-a-nic-to-an-existing-vm"></a>Hálózati adapter hozzáadása meglévő virtuális géphez
 Ha virtuális NIC-t szeretne hozzáadni egy meglévő virtuális GÉPHEZ, szabadítsa fel a virtuális GÉPET, adja hozzá a virtuális hálózati adaptert, majd indítsa el a virtuális GÉPET. A különböző virtuálisgép- [méretek](sizes.md) eltérő számú hálózati adaptert támogatnak, ezért a virtuális gépet ennek megfelelően kell méretezni. Ha szükséges, [átméretezheti a virtuális gépet](resize-vm.md).
 
-1. Szabadítsa fel a virtuális gépet a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm). Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet a *myResourceGroup*-ben:
+1. Szabadítsa fel a virtuális gépet a [stop-AzVM](/powershell/module/az.compute/stop-azvm). Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet a *myResourceGroup*-ben:
 
     ```powershell
     Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. Szerezze be a virtuális gép meglévő konfigurációját a [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). A következő példa a *myVM* nevű virtuális gép adatait olvassa be a *myResourceGroup*-ben:
+2. Szerezze be a virtuális gép meglévő konfigurációját a [Get-AzVm](/powershell/module/az.compute/get-azvm). A következő példa a *myVM* nevű virtuális gép adatait olvassa be a *myResourceGroup*-ben:
 
     ```powershell
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. A következő példa egy olyan virtuális hálózati adaptert hoz létre, amely a *mySubnetBackEnd*-hez csatolt, [új AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) nevű *myNic3* rendelkezik. Ezután csatolja a virtuális hálózati adaptert a *myVM* nevű virtuális géphez a *myResourceGroup* -ben az [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface)használatával:
+3. A következő példa egy olyan virtuális hálózati adaptert hoz létre, amely a *mySubnetBackEnd*-hez csatolt, [új AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) nevű *myNic3* rendelkezik. Ezután csatolja a virtuális hálózati adaptert a *myVM* nevű virtuális géphez a *myResourceGroup* -ben az [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface)használatával:
 
     ```powershell
     # Get info for the back end subnet
@@ -165,7 +166,7 @@ Ha virtuális NIC-t szeretne hozzáadni egy meglévő virtuális GÉPHEZ, szabad
     Update-AzVM -VM $vm -ResourceGroupName "myResourceGroup"
     ```
 
-4. Indítsa el a virtuális gépet a [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm):
+4. Indítsa el a virtuális gépet a [Start-AzVm](/powershell/module/az.compute/start-azvm):
 
     ```powershell
     Start-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
@@ -176,19 +177,19 @@ Ha virtuális NIC-t szeretne hozzáadni egy meglévő virtuális GÉPHEZ, szabad
 ## <a name="remove-a-nic-from-an-existing-vm"></a>NIC eltávolítása meglévő virtuális gépről
 Ha egy virtuális hálózati adaptert szeretne eltávolítani egy meglévő virtuális gépről, szüntesse meg a virtuális gép felszabadítását, távolítsa el a virtuális hálózati adaptert, majd indítsa el a virtuális GÉPET.
 
-1. Szabadítsa fel a virtuális gépet a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm). Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet a *myResourceGroup*-ben:
+1. Szabadítsa fel a virtuális gépet a [stop-AzVM](/powershell/module/az.compute/stop-azvm). Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet a *myResourceGroup*-ben:
 
     ```powershell
     Stop-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-2. Szerezze be a virtuális gép meglévő konfigurációját a [Get-AzVm](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). A következő példa a *myVM* nevű virtuális gép adatait olvassa be a *myResourceGroup*-ben:
+2. Szerezze be a virtuális gép meglévő konfigurációját a [Get-AzVm](/powershell/module/az.compute/get-azvm). A következő példa a *myVM* nevű virtuális gép adatait olvassa be a *myResourceGroup*-ben:
 
     ```powershell
     $vm = Get-AzVm -Name "myVM" -ResourceGroupName "myResourceGroup"
     ```
 
-3. A hálózati adapter eltávolításával kapcsolatos információk lekérése a [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkinterface). Az alábbi példa a *myNic3*kapcsolatos információkat ismerteti:
+3. A hálózati adapter eltávolításával kapcsolatos információk lekérése a [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface). Az alábbi példa a *myNic3*kapcsolatos információkat ismerteti:
 
     ```powershell
     # List existing NICs on the VM if you need to determine NIC name
@@ -197,14 +198,14 @@ Ha egy virtuális hálózati adaptert szeretne eltávolítani egy meglévő virt
     $nicId = (Get-AzNetworkInterface -ResourceGroupName "myResourceGroup" -Name "myNic3").Id   
     ```
 
-4. Távolítsa el a hálózati adaptert a [Remove-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/remove-azvmnetworkinterface) , majd frissítse a virtuális gépet a [Update-AzVm](https://docs.microsoft.com/powershell/module/az.compute/update-azvm). Az alábbi példa eltávolítja a *myNic3* `$nicId` az előző lépésben kapott módon:
+4. Távolítsa el a hálózati adaptert a [Remove-AzVMNetworkInterface](/powershell/module/az.compute/remove-azvmnetworkinterface) , majd frissítse a virtuális gépet a [Update-AzVm](/powershell/module/az.compute/update-azvm). Az alábbi példa eltávolítja a *myNic3* `$nicId` az előző lépésben kapott módon:
 
     ```powershell
     Remove-AzVMNetworkInterface -VM $vm -NetworkInterfaceIDs $nicId | `
         Update-AzVm -ResourceGroupName "myResourceGroup"
     ```   
 
-5. Indítsa el a virtuális gépet a [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm):
+5. Indítsa el a virtuális gépet a [Start-AzVm](/powershell/module/az.compute/start-azvm):
 
     ```powershell
     Start-AzVM -Name "myVM" -ResourceGroupName "myResourceGroup"
@@ -220,7 +221,7 @@ Azure Resource Manager-sablonok segítségével az erőforrások több példány
 }
 ```
 
-További információ: [több példány létrehozása a *copy*paranccsal](../../resource-group-create-multiple.md). 
+További információ: [több példány létrehozása a *copy*paranccsal](../../azure-resource-manager/templates/copy-resources.md). 
 
 A `copyIndex()` segítségével egy számot is csatolhat egy erőforrás nevéhez. Ezután létrehozhat *myNic1*, *MyNic2* és így tovább. Az alábbi kód egy példát mutat be az index értékének hozzáfűzésére:
 
@@ -286,7 +287,5 @@ Az Azure egy alapértelmezett átjárót rendel hozzá a virtuális géphez csat
 
     Az **átjáró**alatt a *192.168.1.1* listázott útvonal az elsődleges hálózati adapter alapértelmezett útvonala. Az **átjáró**alatti *192.168.2.1* útvonal a hozzáadott útvonal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha több hálózati adapterrel rendelkező virtuális gépet próbál létrehozni, tekintse át a [Windows rendszerű virtuális gépek méretét](sizes.md) . Ügyeljen arra, hogy az egyes VM-méretek hány hálózati adaptert támogatnak. 
-
-

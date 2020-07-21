@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7e43995c4221127580333c3f013fcb209730f863
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791119"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524743"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>A Azure Maps rajzolási hiba láthatóvá tesző használata
 
@@ -23,7 +23,7 @@ A felderített rajzolási hiba egy önálló webalkalmazás, amely megjeleníti 
 
 A rajzolási hiba megjelenítésének megkezdése előtt a következőket kell tennie:
 
-1. [Azure Maps-fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Azure Maps-fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
 3. [Létrehozó erőforrás létrehozása](how-to-manage-creator.md)
 
@@ -54,7 +54,7 @@ Ez az oktatóanyag a [Poster](https://www.postman.com/) alkalmazást használja,
 
 4. Töltse le a rajzolási csomag hibájának láthatóvá tételét `HTTP-GET` az URL-címre vonatkozó kérelem elküldésével `diagnosticPackageLocation` .
 
-## <a name="setup"></a>Telepítés
+## <a name="setup"></a>Előkészületek
 
 A hivatkozáson belül a letöltött tömörített csomagban `diagnosticPackageLocation` két fájl található.
 
@@ -88,7 +88,7 @@ Ha a fájl _ConversionWarningsAndErrors.js_ betöltődik, megjelenik a rajzolás
 
 :::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Rajzolási hiba – az alkalmazás – hibák és figyelmeztetések":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a [rajzfájl megfelel a követelményeknek](drawing-requirements.md), a [Azure Maps adatkészlet szolgáltatással](https://docs.microsoft.com/rest/api/maps/conversion) átalakíthatja a rajzi csomagot egy adatkészletbe. Ezután használhatja a beltéri térképek webes modult az alkalmazás fejlesztéséhez. További információért olvassa el a következő cikkeket:
 

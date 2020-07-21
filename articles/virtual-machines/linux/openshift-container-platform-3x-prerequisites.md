@@ -9,11 +9,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 26b190515819378309c2b0705efdbc349ecccbe2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 244bea1aaf5457601ced9bac05c8dae43e5b9199
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759508"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527132"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>A OpenShift Container platform 3,11 Azure-beli üzembe helyezésének gyakori előfeltételei
 
@@ -52,7 +53,7 @@ Jelentkezzen be az Azure-előfizetésbe az az [login](/cli/azure/reference-index
 az login
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A Key Vault üzemeltetéséhez dedikált erőforráscsoportot kell használnia. Ez a csoport a OpenShift-fürt erőforrásainak üzembe helyezéséhez használt erőforráscsoporthoz eltér.
 
@@ -83,7 +84,7 @@ ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 > [!NOTE]
 > Az SSH-kulcspárt nem lehet jelszó/hozzáférési kód.
 
-A Windows SSH-kulcsaival kapcsolatos további információkért lásd: [ssh-kulcsok létrehozása Windows](/azure/virtual-machines/linux/ssh-from-windows)rendszeren. Ügyeljen arra, hogy az OpenSSH formátumban exportálja a titkos kulcsot.
+A Windows SSH-kulcsaival kapcsolatos további információkért lásd: [ssh-kulcsok létrehozása Windows](./ssh-from-windows.md)rendszeren. Ügyeljen arra, hogy az OpenSSH formátumban exportálja a titkos kulcsot.
 
 ## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>A titkos SSH-kulcs tárolása Azure Key Vault
 A OpenShift üzemelő példány a létrehozott SSH-kulcsot használja a OpenShift-főkiszolgáló hozzáférésének biztosításához. Ha engedélyezni szeretné a központi telepítés számára az SSH-kulcs biztonságos lekérését, az alábbi paranccsal tárolja Key Vault a kulcsot:
@@ -133,7 +134,7 @@ Jegyezze fel a parancs által visszaadott appId tulajdonságot és jelszót:
  > [!WARNING] 
  > Ügyeljen arra, hogy a biztonságos jelszót írja le, mert a jelszó újbóli beolvasása nem lehetséges.
 
-Az egyszerű szolgáltatásokkal kapcsolatos további információkért lásd: [Azure-szolgáltatásnév létrehozása az Azure CLI-vel](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
+Az egyszerű szolgáltatásokkal kapcsolatos további információkért lásd: [Azure-szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Csak Resource Manager-sablonra vonatkozó előfeltételek
 
@@ -162,7 +163,7 @@ Hozza létre a titkokat az Azure CLI használatával. Alább látható egy péld
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a következő témákat tárgyalta:
 > [!div class="checklist"]

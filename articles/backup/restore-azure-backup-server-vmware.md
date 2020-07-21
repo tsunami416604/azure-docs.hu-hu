@@ -3,15 +3,16 @@ title: VMware virtuális gépek visszaállítása az Azure Backup Server haszná
 description: A VMware vCenter/ESXi-kiszolgálón futó VMware virtuális gépek visszaállításához használja a Azure Backup Server (MABS) szolgáltatást.
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.openlocfilehash: ab2fb4f8f79fa5a664f5cb0ba1bb537c1df658c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d11b9259a44c32891f5fefa6f175681838927586
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77212357"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524522"
 ---
 # <a name="restore-vmware-virtual-machines"></a>VMware virtuális gépek visszaállítása
 
-Ez a cikk bemutatja, hogyan állíthatja vissza a VMware virtuális gépek helyreállítási pontjait a Microsoft Azure Backup Server (MABS) használatával. A MABS az adatok helyreállítására való használatáról a [védett adatok helyreállítása](https://docs.microsoft.com/azure/backup/backup-azure-alternate-dpm-server)című cikkben olvashat bővebben. A MABS felügyeleti konzol kétféleképpen találhat helyreállítható adatkeresést vagy tallózást. Az Adathelyreállítás során előfordulhat, hogy nem kívánja visszaállítani az adathalmazt vagy egy virtuális gépet ugyanarra a helyre. Emiatt a MABS három helyreállítási lehetőséget támogat a VMware virtuális gépek biztonsági másolatainak:
+Ez a cikk bemutatja, hogyan állíthatja vissza a VMware virtuális gépek helyreállítási pontjait a Microsoft Azure Backup Server (MABS) használatával. A MABS az adatok helyreállítására való használatáról a [védett adatok helyreállítása](./backup-azure-alternate-dpm-server.md)című cikkben olvashat bővebben. A MABS felügyeleti konzol kétféleképpen találhat helyreállítható adatkeresést vagy tallózást. Az Adathelyreállítás során előfordulhat, hogy nem kívánja visszaállítani az adathalmazt vagy egy virtuális gépet ugyanarra a helyre. Emiatt a MABS három helyreállítási lehetőséget támogat a VMware virtuális gépek biztonsági másolatainak:
 
 * **Eredeti hely helyreállítása (OLR)** – a védett virtuális gép eredeti helyükre történő visszaállításához használja a OLR-t. A virtuális gépeket csak akkor állíthatja vissza az eredeti helyükre, ha nincs lemez hozzáadva vagy törölve, mert a biztonsági mentés történt. Ha lemezek lettek hozzáadva vagy törölve, akkor másik helyre történő helyreállítást kell használnia.
 
@@ -77,6 +78,6 @@ A védett virtuális gépek helyreállítási pontjairól is visszaállíthatja 
 9. A **helyreállítási beállítások megadása** képernyőn válassza ki, hogy melyik biztonsági beállítást kívánja alkalmazni. Dönthet úgy, hogy módosítja a hálózati sávszélesség-használat szabályozását, de alapértelmezés szerint le van tiltva a szabályozás. Továbbá a **Tárolóhálózati helyreállítás** és az **értesítés** nincs engedélyezve.
 10. Az **Összefoglalás** képernyőn tekintse át a beállításokat, majd **kattintson a helyreállítás** elemre a helyreállítási folyamat elindításához. A **helyreállítás állapota** képernyőn a helyreállítási művelet előrehaladása látható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Backup Server használata során felmerülő problémák elhárításához tekintse át [Azure Backup Server hibaelhárítási útmutatóját](./backup-azure-mabs-troubleshoot.md).

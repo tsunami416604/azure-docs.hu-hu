@@ -1,5 +1,5 @@
 ---
-title: Windows rendszerű virtuális asztali munkamenetgazda – Azure
+title: A Windows rendszerű virtuális asztali munkamenetgazda 2019-es verziójának hibája – Azure
 description: A Windows rendszerű virtuális asztali munkamenetgazda virtuális gépek konfigurálásakor felmerülő problémák megoldása.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0dd03508a745a231f10cfc6d09953067618043e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f4a288ab83ca9f20434c55a180c2d9b30be5d4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362509"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527659"
 ---
-# <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
+# <a name="troubleshoot-session-host-virtual-machine-configuration"></a>A munkamenet-gazdagép virtuális gép konfigurációjának hibáinak megoldása
 
 >[!IMPORTANT]
 >Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../troubleshoot-vm-configuration.md).
@@ -351,7 +351,7 @@ Ha a felhasználók egy biztonsági hiba miatt nem sikerült csatlakozni a távo
 
 A szabályzattal kapcsolatos további információkért lásd: [bejelentkezés engedélyezése távoli asztali szolgáltatásokon](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview-2019.md).
 - A bérlők és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [bérlői és az alkalmazáskészletek létrehozását](troubleshoot-set-up-issues-2019.md)ismertető részt.

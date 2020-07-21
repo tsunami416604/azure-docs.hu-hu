@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e10d1d5aa5b45c0ea0e31df4d5d847f8541838b9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 60053f24aa4231f1100d0b00cb6cf70b851b1939
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86218237"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526034"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
 
@@ -138,11 +138,11 @@ A virtuálisgép-méretekről, valamint a IOPS, az átviteli sebességről és a
 Az i/o-kérések az alkalmazás által elvégezhető bemeneti/kimeneti műveletek egységei. Az i/o-kérések, véletlenszerű vagy szekvenciális, olvasási vagy írási, kis-és nagybetűk azonosításához segítséget nyújt az alkalmazás teljesítménybeli követelményeinek meghatározásában. Fontos megérteni az IO-kérelmek természetét, hogy a megfelelő döntéseket hozza az alkalmazás-infrastruktúra tervezésekor. Az IOs-t egyenletesen kell terjeszteni a lehető legjobb teljesítmény eléréséhez.
 
 Az IO-méret az egyik legfontosabb tényező. Az i/o-méret az alkalmazás által generált bemeneti/kimeneti műveletre vonatkozó kérelem mérete. Az i/o-méret jelentős hatással van a teljesítményre, különösen a IOPS és a sávszélességre, amelyet az alkalmazás képes elérni. A következő képlet a IOPS, az i/o-méret és a sávszélesség/átviteli sebesség közötti kapcsolatot mutatja.  
-    ![](media/premium-storage-performance/image1.png)
+    ![Egy diagram, amely az I O P S i/o-időpontok közötti adatátviteli sebességet mutatja.](media/premium-storage-performance/image1.png)
 
 Egyes alkalmazások lehetővé teszik az IO-méret módosítását, míg egyes alkalmazások nem. A SQL Server például meghatározza az optimális IO-méretet, és nem biztosítja a felhasználóknak semmilyen gomb megváltoztatását. Másfelől az Oracle egy [db- \_ blokk \_ méret](https://docs.oracle.com/cd/B19306_01/server.102/b14211/iodesign.htm#i28815) nevű paramétert biztosít, amellyel konfigurálhatja az adatbázis I/O-kérelmének méretét.
 
-Ha olyan alkalmazást használ, amely nem teszi lehetővé az i/o-méret módosítását, a cikk útmutatásai alapján optimalizálhatja az alkalmazáshoz leginkább kapcsolódó teljesítménymutatókat. Példa:
+Ha olyan alkalmazást használ, amely nem teszi lehetővé az i/o-méret módosítását, a cikk útmutatásai alapján optimalizálhatja az alkalmazáshoz leginkább kapcsolódó teljesítménymutatókat. Például:
 
 * Egy OLTP-alkalmazás több millió kis-és véletlenszerű IO-kérelmet hoz létre. Az ilyen típusú IO-kérelmek kezeléséhez meg kell terveznie az alkalmazás-infrastruktúrát, hogy nagyobb IOPS kapjon.  
 * Az adattárház-alkalmazások nagy és szekvenciális IO-kérelmeket generálnak. Az ilyen típusú IO-kérelmek kezeléséhez meg kell terveznie az alkalmazás-infrastruktúrát, hogy nagyobb sávszélességet vagy átviteli sebességet kapjon.
@@ -252,7 +252,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| Nincsenek |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| Egyik sem |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 
@@ -371,17 +371,17 @@ SQL Server például a lekérdezés MAXDOP értékét "4" értékre állítja be
 
 *Az optimális üzenetsor mélysége*  
 A nagyon magas várólista-mélységi érték a hátrányaival is rendelkezik. Ha a várólista mélysége túl magas, az alkalmazás nagyon magas IOPS próbál meg vezetni. Ha az alkalmazás rendelkezik olyan állandó lemezzel, amely elegendő kiosztott IOPS rendelkezik, ez negatív hatással lehet az alkalmazás késésére. A következő képlet a IOPS, a késés és a várólista mélysége közötti kapcsolatot mutatja.  
-    ![](media/premium-storage-performance/image6.png)
+    ![Egy diagram, amely azt mutatja, hogy az I/O P S időpontok késése a várólista mélységével egyenlő.](media/premium-storage-performance/image6.png)
 
 A várakozási sor mélységét ne konfigurálja olyan magas értékre, hanem egy optimális értékre, amely a késések hiánya nélkül is elegendő IOPS tud adni az alkalmazás számára. Ha például az alkalmazás késésének 1 ezredmásodpercnek kell lennie, a 5 000 IOPS eléréséhez szükséges üzenetsor-mélység: QD = 5000 x 0,001 = 5.
 
 *A csíkozott kötet üzenetsor-mélysége*  
 A csíkozott kötetek esetében elég magas a várólista mélységének megőrzése, hogy minden lemezhez külön-külön legyen a maximális várólista mélysége. Vegyünk például egy olyan alkalmazást, amely egy 2. üzenetsor-mélységet küld, és négy lemez van a sávban. A két IO-kérelem két lemezre mutat, és a fennmaradó két lemez üresjáratban lesz. Ezért konfigurálja úgy a várólista mélységét, hogy az összes lemez foglalható legyen. Az alábbi képlet azt mutatja be, hogyan határozható meg a csíkozott kötetek üzenetsor-mélysége.  
-    ![](media/premium-storage-performance/image7.png)
+    ![Egy olyan diagram, amely a Q D/lemez/idő oszlopban megadott számú oszlop számát mutatja, és a köteten a csíkozott kötet Q D értékkel egyenlő.](media/premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>Throttling
 
 Az Azure Premium Storage a kiválasztott virtuálisgép-mérettől és a választott IOPS függően megadott számú adatmennyiséget és átviteli sebességet biztosít. Bármikor, amikor az alkalmazás megkísérli a IOPS vagy az átviteli sebesség megadását a virtuális gép vagy a lemez által kezelhető korlátok felett, Premium Storage fogja szabályozni. Ez a jegyzék az alkalmazás csökkentett teljesítményének formáját képezi. Ez magasabb késést, alacsonyabb átviteli sebességet vagy alacsonyabb IOPS jelenthet. Ha Premium Storage nem szabályozza a szabályozást, az alkalmazás teljesen meghiúsulhat, ha túllépi az erőforrások eléréséhez szükséges erőforrásokat. Így a teljesítménybeli problémák elkerülése érdekében a szabályozás miatt mindig elegendő erőforrást kell kiépíteni az alkalmazáshoz. Vegye figyelembe, hogy a fentiekben ismertetett virtuálisgép-méretek és a lemez méretei című szakaszban leírt módon. A teljesítményértékelés a legjobb módszer arra, hogy kiderítse, milyen erőforrásokra lesz szüksége az alkalmazás üzemeltetéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 

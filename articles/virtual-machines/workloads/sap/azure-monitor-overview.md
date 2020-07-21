@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: fc4e8766f77a41a3a53e3db3098a6d9cefd628d6
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 306983e612793eb92dd95fe57e7177da17874893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964226"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525432"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP-megoldások Azure monitorja (előzetes verzió)
 
 ## <a name="overview"></a>Áttekintés  
 
-Az SAP-megoldások Azure Monitor az Azure-beli natív figyelési termék, amely az Azure-beli SAP-tájakat futtatja az ügyfelek számára. A termék az [azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started) és az [SAP Azure-beli nagyméretű példányokon](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)is működik.  
+Az SAP-megoldások Azure Monitor az Azure-beli natív figyelési termék, amely az Azure-beli SAP-tájakat futtatja az ügyfelek számára. A termék az [azure Virtual Machines](./hana-get-started.md) és az [SAP Azure-beli nagyméretű példányokon](./hana-overview-architecture.md)is működik.  
 Az SAP-megoldások Azure Monitor segítségével az ügyfelek egy központi helyen gyűjthetik össze az Azure-infrastruktúrából és-adatbázisokból származó telemetria adatokat, és a gyorsabb hibaelhárítás érdekében vizuálisan korrelálják a telemetria adatokat.  
 
 Az SAP-megoldások Azure Monitor az Azure Marketplace-en keresztül érhető el. Egyszerű, intuitív telepítési élményt nyújt, és mindössze néhány kattintással üzembe helyezi az erőforrást Azure Monitor SAP-megoldások (más néven SAP- **figyelő erőforrás**) számára.  
@@ -42,7 +42,7 @@ Támogatott adatbázisok:
 - SAP HANA-adatbázis 
 - Microsoft SQL Server  
 
-Az SAP-megoldások Azure Monitor a meglévő [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) képességek, például a log Analytics és a [munkafüzetek](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) hatékonyságát is lehetővé teszi a további figyelési képességek biztosításához. Az ügyfelek [Egyéni vizualizációkat](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview#getting-started) hozhatnak létre az SAP-megoldások Azure monitor által biztosított alapértelmezett munkafüzetek szerkesztésével, [Egyéni lekérdezések](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) írásához és [egyéni riasztások](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response) létrehozásához az Azure log Analytics-munkaterületen, kihasználva a [rugalmas megőrzési időt](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period) , és összekapcsolhatók a megfigyelési adatokkal a jegyrendszer használatával.
+Az SAP-megoldások Azure Monitor a meglévő [Azure monitor](../../../azure-monitor/overview.md) képességek, például a log Analytics és a [munkafüzetek](../../../azure-monitor/platform/workbooks-overview.md) hatékonyságát is lehetővé teszi a további figyelési képességek biztosításához. Az ügyfelek [Egyéni vizualizációkat](../../../azure-monitor/platform/workbooks-overview.md#getting-started) hozhatnak létre az SAP-megoldások Azure monitor által biztosított alapértelmezett munkafüzetek szerkesztésével, [Egyéni lekérdezések](../../../azure-monitor/log-query/get-started-portal.md) írásához és [egyéni riasztások](../../../azure-monitor/learn/tutorial-response.md) létrehozásához az Azure log Analytics-munkaterületen, kihasználva a [rugalmas megőrzési időt](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) , és összekapcsolhatók a megfigyelési adatokkal a jegyrendszer használatával.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>Az SAP-megoldások Azure Monitor milyen adatokat gyűjtenek?
 
@@ -87,11 +87,11 @@ Az architektúra legfontosabb összetevői a következők:
 - Azure Monitor SAP-megoldások erőforráshoz – az ügyfelek számára az a hely, ahol megtekintheti a figyelési telemetria 
 - Felügyelt erőforráscsoport – az SAP-megoldások erőforrás-telepítésének Azure Monitor részeként automatikusan települt. A felügyelt erőforráscsoport súgójában üzembe helyezett erőforrások a telemetria gyűjteményében találhatók. Az üzembe helyezett fő erőforrások és a céljuk a következők:  
    - Azure-beli virtuális gép: *gyűjtő virtuális*gépnek is nevezzük. Ez egy Standard_B2ms virtuális gép. Ennek a virtuális gépnek a fő célja a *figyelési tartalom*üzemeltetése. A figyelési tartalom arra a logikára utal, amely a telemetria és a begyűjtött adatoknak a megfigyelési keretrendszerbe való továbbítására szolgál. A fenti ábrán a figyelési tartalom tartalmazza azt a logikát, amely az SQL-porton keresztül SAP HANA adatbázishoz csatlakozik.
-   - [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/basic-concepts): ezt az erőforrást úgy helyezi üzembe, hogy biztonságosan tárolja SAP HANA adatbázis hitelesítő adatait, és adatokat tároljon a [szolgáltatókról](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/azure-monitor-providers).  
+   - [Azure Key Vault](../../../key-vault/general/basic-concepts.md): ezt az erőforrást úgy helyezi üzembe, hogy biztonságosan tárolja SAP HANA adatbázis hitelesítő adatait, és adatokat tároljon a [szolgáltatókról](./azure-monitor-providers.md).  
    - Log Analytics munkaterület: az a cél, ahol a telemetria-adat található.  
-      - A vizualizáció az [Azure-munkafüzetek](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview)használatával log Analytics telemetria épül. Az ügyfelek testre szabhatják a vizualizációt. Az ügyfelek az Azure irányítópulton is rögzíthetik a munkafüzeteket vagy adott vizualizációkat az Azure irányítópulton az autofrissítési képességhez, amely a legalacsonyabb részletességgel 30 percet vesz igénybe.  
+      - A vizualizáció az [Azure-munkafüzetek](../../../azure-monitor/platform/workbooks-overview.md)használatával log Analytics telemetria épül. Az ügyfelek testre szabhatják a vizualizációt. Az ügyfelek az Azure irányítópulton is rögzíthetik a munkafüzeteket vagy adott vizualizációkat az Azure irányítópulton az autofrissítési képességhez, amely a legalacsonyabb részletességgel 30 percet vesz igénybe.  
       - Az ügyfelek a meglévő munkaterületet az adott előfizetésen belül, az SAP-figyelő erőforrással is használhatják, ha ezt a lehetőséget választja az üzembe helyezés időpontjában. 
-      - A Kusto lekérdezési nyelv (KQL) segítségével az ügyfelek [lekérdezéseket](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) futtathatnak log Analytics munkaterületen belüli nyers táblákon. Tekintse meg az *Egyéni naplókat*.  
+      - A Kusto lekérdezési nyelv (KQL) segítségével az ügyfelek [lekérdezéseket](../../../azure-monitor/log-query/log-query-overview.md) futtathatnak log Analytics munkaterületen belüli nyers táblákon. Tekintse meg az *Egyéni naplókat*.  
 
 > [!Note]
 > Az ügyfelek feladata a felügyelt erőforráscsoport keretében üzembe helyezett virtuális gép javítása és karbantartása.  
@@ -110,8 +110,8 @@ Az architektúra legfontosabb főbb jellemzői a következők:
 ## <a name="pricing"></a>Díjszabás
 Az SAP-megoldások Azure Monitor egy ingyenes termék (nincs licenc díj). Az ügyfelek feladata, hogy kifizessék a felügyelt erőforráscsoport mögöttes összetevőinek költségeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a szolgáltatókat, és hozza létre az első Azure Monitor az SAP Solutions-erőforráshoz.
- - További információ a [szolgáltatókról](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/azure-monitor-providers)
- - Kérdése van az SAP-megoldások Azure Monitorával kapcsolatban? Olvassa el a [Gyakori kérdések](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/azure-monitor-faq) szakaszt.
+ - További információ a [szolgáltatókról](./azure-monitor-providers.md)
+ - Kérdése van az SAP-megoldások Azure Monitorával kapcsolatban? Olvassa el a [Gyakori kérdések](./azure-monitor-faq.md) szakaszt.

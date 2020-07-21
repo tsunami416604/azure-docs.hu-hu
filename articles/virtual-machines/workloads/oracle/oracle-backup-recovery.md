@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 5a491bf85546c982db126ef4d6260a46ca8bf88b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7f6b9ddfd5b25ea8482e0bbf5622fa16bc450662
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224451"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525602"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Oracle Database 12c-adatbázis biztonsági mentése és helyreállítása Azure-beli linuxos virtuális gépen
 
 Az Azure CLI-vel Azure-erőforrásokat hozhat létre és kezelhet a parancssorban, illetve parancsfájlokat is használhat. Ebben a cikkben az Azure CLI-szkriptekkel telepítünk egy Oracle Database 12c-adatbázist egy Azure Marketplace Gallery-rendszerképből.
 
-Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van. További információ: az [Azure CLI telepítési útmutatója](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van. További információ: az [Azure CLI telepítési útmutatója](/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése
 
@@ -33,7 +33,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy az Azure CLI telepítve van. 
 
 *   A biztonsági mentési és helyreállítási folyamat végrehajtásához először létre kell hoznia egy linuxos virtuális gépet, amelyen Oracle Database 12c telepített példánya van. A virtuális gép létrehozásához használt Piactéri rendszerkép neve *Oracle: Oracle-Database-EE: 12.1.0.2: Latest*.
 
-    Az Oracle-adatbázisok létrehozásával kapcsolatos információkért tekintse meg az [Oracle Create Database](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)rövid útmutatóját.
+    Az Oracle-adatbázisok létrehozásával kapcsolatos információkért tekintse meg az [Oracle Create Database](./oracle-database-quick-create.md)rövid útmutatóját.
 
 
 ### <a name="step-2-connect-to-the-vm"></a>2. lépés: Kapcsolódás a virtuális géphez
@@ -567,11 +567,8 @@ Ha már nincs szüksége a virtuális gépre, a következő paranccsal távolít
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Oktatóanyag: kiválóan elérhető virtuális gépek létrehozása](../../linux/create-cli-complete.md)
 
 [A virtuális gépek üzembe helyezésének megismerése Azure CLI-mintákkal](../../linux/cli-samples.md)
-
-
-

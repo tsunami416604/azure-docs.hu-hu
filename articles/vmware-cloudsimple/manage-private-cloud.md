@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81869301"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524996"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>Saját Felhőbeli erőforrások és tevékenységek kezelése
 
@@ -36,13 +37,13 @@ További információért és műveletekhez válasszon ki egy privát felhőt.
 
 ## <a name="private-cloud-summary"></a>Saját felhő összefoglalása
 
-A kiválasztott privát felhő átfogó összefoglalásának megtekintése.  Az összefoglalás lapon a privát felhőben üzembe helyezett DNS-kiszolgálók szerepelnek.  A DNS-továbbítást beállíthatja a helyszíni DNS-kiszolgálókról a saját felhőalapú DNS-kiszolgálóira.  A DNS-továbbítással kapcsolatos további információkért lásd: [a DNS konfigurálása névfeloldáshoz a saját felhőalapú vCenter](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/)a helyszíni környezetből.
+A kiválasztott privát felhő átfogó összefoglalásának megtekintése.  Az összefoglalás lapon a privát felhőben üzembe helyezett DNS-kiszolgálók szerepelnek.  A DNS-továbbítást beállíthatja a helyszíni DNS-kiszolgálókról a saját felhőalapú DNS-kiszolgálóira.  A DNS-továbbítással kapcsolatos további információkért lásd: [a DNS konfigurálása névfeloldáshoz a saját felhőalapú vCenter](./on-premises-dns-setup.md)a helyszíni környezetből.
 
 ![Saját felhő összefoglalása](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>Elérhető műveletek
 
-* [Indítsa el a vSphere-ügyfelet](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access). A vCenter elérése ehhez a privát felhőhöz.
+* [Indítsa el a vSphere-ügyfelet](./vcenter-access.md). A vCenter elérése ehhez a privát felhőhöz.
 * [Megvásárlási csomópontok](create-nodes.md). Csomópontok hozzáadása ehhez a privát felhőhöz.
 * [Bontsa ki](expand-private-cloud.md)a elemet. Csomópontok hozzáadása ehhez a privát felhőhöz.
 * **Frissítés**. Az oldalon található információk frissítése.
@@ -57,10 +58,10 @@ Megtekintheti a kijelölt VLAN-ok/alhálózatok listáját a kiválasztott priv�
 
 ### <a name="available-actions"></a>Elérhető műveletek
 
-* [VLAN-ok/alhálózatok hozzáadása](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/). Adjon hozzá egy VLAN/részhalmazt ehhez a privát felhőhöz.
+* [VLAN-ok/alhálózatok hozzáadása](./create-vlan-subnet.md). Adjon hozzá egy VLAN/részhalmazt ehhez a privát felhőhöz.
 
 Válasszon VLAN-t/alhálózatot a következő műveletekhez
-* [Tűzfalszabály csatolása](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/). Csatoljon egy tűzfalat ehhez a privát felhőhöz.
+* [Tűzfalszabály csatolása](./firewall.md). Csatoljon egy tűzfalat ehhez a privát felhőhöz.
 * **Szerkesztés**
 * **Törlés** (csak a felhasználó által definiált VLAN-ok/alhálózatok)
 
@@ -87,7 +88,7 @@ A saját felhőben jelenleg konfigurált VMware felügyeleti erőforrások és v
 
 ![Saját felhőalapú vSphere felügyeleti hálózat](media/private-cloud-vsphere-management-network.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [VMware rendszerű virtuális gépek felhasználása az Azure-ban](quickstart-create-vmware-virtual-machine.md)
 * További információ a [privát felhőkről](cloudsimple-private-cloud.md)

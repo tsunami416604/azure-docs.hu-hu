@@ -3,12 +3,12 @@ title: Korlátok és határok – QnA Maker
 description: A QnA Maker meta-korlátozásokkal rendelkezik a Tudásbázis és a szolgáltatás részeihez. A teszteléshez és közzétételhez fontos, hogy megőrizze a tudásbázist a korlátokon belül.
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: 6a600bcb25bc524cda38d1e35a777d23d47b15c9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855556"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524437"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker Tudásbázis korlátai és határai
 
@@ -18,7 +18,7 @@ Az alább megadott QnA Maker korlátok az [Azure Cognitive Search díjszabási s
 
 A tudásbázisok maximális száma az [Azure Cognitive Search szintű korlátokon](../../search/search-limits-quotas-capacity.md)alapul.
 
-|**Azure Cognitive Search-szintű** | **Ingyenes** | **Alapszintű** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure Cognitive Search-szintű** | **Ingyenes** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |A közzétett tudásbázisok maximális száma engedélyezett|2|14|49|199|199|2 999|
 
@@ -61,7 +61,7 @@ A metaadatok szöveges kulcsként jelennek meg: érték pár, például `product
 
 A metaadatok mezőinek maximális száma a Tudásbázisban az Azure- **[Cognitive Search szint korlátain](../../search/search-limits-quotas-capacity.md)** alapul.
 
-|**Azure Cognitive Search-szintű** | **Ingyenes** | **Alapszintű** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure Cognitive Search-szintű** | **Ingyenes** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Metaadat-mezők maximális száma QnA Maker szolgáltatásban (az összes Tudásbázis)|1,000|100 *|1,000|1,000|1,000|1,000|
 
@@ -79,7 +79,8 @@ A metaadatok nevének és értékének hosszát és elfogadható karaktereit a k
 A Tudásbázis tartalmának általános korlátai:
 * Válasz szövegének hossza: 25 000
 * A szóban forgó szöveg hossza: 1 000
-* Metaadat-kulcs/érték szövegének hossza: 100
+* A metaadat-kulcs szövegének hossza: 100
+* A metaadatok értékének hossza szöveg: 500
 * A metaadatok nevének támogatott karakterei: ábécék, számjegyek és`_`
 * A metaadatok értékének támogatott karaktereinek száma: az összes kivételével `:` , és`|`
 * Fájlnév hossza: 200
@@ -101,6 +102,6 @@ Ezek a frissítési műveletek korlátainak felelnek meg; a UpdateKnowledgeBase 
 * A hozzáadott vagy törölt metaadat-mezők maximális száma: 10
 * A frissíthető URL-címek maximális száma: 5
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, mikor és hogyan módosíthatja a [szolgáltatás díjszabási szintjeit](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku).

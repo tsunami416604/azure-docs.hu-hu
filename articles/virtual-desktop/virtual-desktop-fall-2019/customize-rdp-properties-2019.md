@@ -1,5 +1,5 @@
 ---
-title: RDP-tulajdonságok testreszabása a PowerShell használatával – Azure
+title: RDP-tulajdonságok testreszabása a PowerShell Fall 2019 – Azure
 description: A Windows rendszerű virtuális asztal RDP-tulajdonságainak testreszabása PowerShell-parancsmagokkal.
 services: virtual-desktop
 author: Heidilohr
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: eeab433bbbfc9db0f1c5f5546ae80434899a91dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 844c59c6e5ea6d730c64fea5fb2dee51f602c382
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259218"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527625"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Gazdagépek RDP protokoll tulajdonságainak testreszabása
 
@@ -36,7 +36,7 @@ Alapértelmezés szerint a közzétett RDP-fájlok a következő tulajdonságoka
 
 |RDP-tulajdonságok | Asztali számítógépek | RemoteApp-alkalmazások |
 |---|---| --- |
-| Többszörös figyelési mód | Engedélyezve | N/A |
+| Többszörös figyelési mód | Engedélyezve | n.a. |
 | Meghajtó-átirányítások engedélyezve | Meghajtók, vágólap, nyomtatók, COM-portok, USB-eszközök és intelligens kártyák| Meghajtók, vágólap és nyomtatók |
 | Távoli hang mód | Helyi lejátszás | Helyi lejátszás |
 

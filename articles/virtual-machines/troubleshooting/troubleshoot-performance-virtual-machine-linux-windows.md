@@ -13,15 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75772618"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526656"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Azure-beli virtuális gépek teljesítményének megoldása Linux vagy Windows rendszeren
 
-Ez a cikk a virtuális gép (VM) általános teljesítményének hibaelhárítását ismerteti a szűk keresztmetszetek figyelésével és megfigyelésével, valamint az esetlegesen felmerülő problémák megoldásával kapcsolatos esetleges szervizelést. A monitorozás mellett a Perfinsights is használható, amely az ajánlott eljárásokkal kapcsolatos ajánlásokat és az IO/CPU/memória körüli szűk keresztmetszeteket tartalmazó jelentést biztosít. A Perfinsights [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) és [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) rendszerű virtuális gépekhez is elérhető az Azure-ban.
+Ez a cikk a virtuális gép (VM) általános teljesítményének hibaelhárítását ismerteti a szűk keresztmetszetek figyelésével és megfigyelésével, valamint az esetlegesen felmerülő problémák megoldásával kapcsolatos esetleges szervizelést. A monitorozás mellett a Perfinsights is használható, amely az ajánlott eljárásokkal kapcsolatos ajánlásokat és az IO/CPU/memória körüli szűk keresztmetszeteket tartalmazó jelentést biztosít. A Perfinsights [Windows](./how-to-use-perfinsights.md) és [Linux](./how-to-use-perfinsights-linux.md) rendszerű virtuális gépekhez is elérhető az Azure-ban.
 
 Ez a cikk végigvezeti a teljesítménybeli szűk keresztmetszetek diagnosztizálásának monitorozásán.
 
@@ -29,7 +30,7 @@ Ez a cikk végigvezeti a teljesítménybeli szűk keresztmetszetek diagnosztizá
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IAAS-beli virtuális gépek figyelése
 
-A vendég virtuális gép figyeléséhez használja az Azure-beli virtuális gépek figyelését, amely riasztást küld az egyes magas szintű erőforrás-feltételekről. Ellenőrizze, hogy engedélyezve van-e a virtuálisgép-diagnosztika, lásd: [Azure-erőforrások naplói – áttekintés](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs). Ha a következő jelenik meg, akkor valószínűleg nincs engedélyezve a diagnosztika:
+A vendég virtuális gép figyeléséhez használja az Azure-beli virtuális gépek figyelését, amely riasztást küld az egyes magas szintű erőforrás-feltételekről. Ellenőrizze, hogy engedélyezve van-e a virtuálisgép-diagnosztika, lásd: [Azure-erőforrások naplói – áttekintés](../../azure-monitor/learn/tutorial-resource-logs.md). Ha a következő jelenik meg, akkor valószínűleg nincs engedélyezve a diagnosztika:
 
 ![A figyelés nincs engedélyezve](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -68,7 +69,7 @@ A tárterület nagyon fontos, ha az Azure-ban egy virtuális gép i/o-teljesítm
 
 A következő beállítások konfigurálása:
 
-1.  Válassza a **Metrika** lehetőséget.
+1.  Válassza a **Metrikák** lehetőséget.
 2.  Válassza ki az **erőforrást** (Storage-fiók).
 3.  Válassza ki a **névteret**
 4.  Válassza a **metrika**elemet.
@@ -100,7 +101,7 @@ Annak megállapításához, hogy van-e erőforrás-szűk keresztmetszete, tekint
 
 ### <a name="cpu-observe-trends"></a>A CPU megfigyelésének trendjei
 
-Ha teljesítménnyel kapcsolatos problémákat tapasztal, vegye figyelembe a trendeket, és Ismerje meg, ha azok érintik Önt. A következő fejezetekben a portálon a figyelési grafikonokat használjuk a trendek megjelenítéséhez. Emellett hasznosak lehetnek az erőforrás-viselkedésre vonatkozó kereszthivatkozások egyazon időszakban. A diagramok testreszabásához kattintson [Azure monitor adatplatformra](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform).
+Ha teljesítménnyel kapcsolatos problémákat tapasztal, vegye figyelembe a trendeket, és Ismerje meg, ha azok érintik Önt. A következő fejezetekben a portálon a figyelési grafikonokat használjuk a trendek megjelenítéséhez. Emellett hasznosak lehetnek az erőforrás-viselkedésre vonatkozó kereszthivatkozások egyazon időszakban. A diagramok testreszabásához kattintson [Azure monitor adatplatformra](../../azure-monitor/platform/data-platform.md).
 
 Beszúró – a beszúró folyamat egy ütemezett feladathoz/ismert eseményhez kapcsolódhat. Ha azonosítani tudja a feladatot, állapítsa meg, hogy a feladat a szükséges teljesítményszint szerint fut-e. Ha a teljesítmény elfogadható, előfordulhat, hogy nem kell megemelnie az erőforrásokat.
 
@@ -119,7 +120,7 @@ Ha az alkalmazás vagy folyamat nem a megfelelő teljesítményszint fut, és a 
 
 Ha megnövelte a virtuális gépet, és a processzor továbbra is 95%-ot futtat, állapítsa meg, hogy ez a beállítás a jobb teljesítményt vagy magasabb szintű alkalmazások átviteli sebességét kínálja elfogadható szintre. Ha nem, akkor hárítsa el az egyes application\process.
 
-A Perfinsights for [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) vagy a [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) segítségével elemezheti, hogy melyik folyamat hajtja a CPU-felhasználást. 
+A Perfinsights for [Windows](./how-to-use-perfinsights.md) vagy a [Linux](./how-to-use-perfinsights-linux.md) segítségével elemezheti, hogy melyik folyamat hajtja a CPU-felhasználást. 
 
 ## <a name="check-for-memory-bottleneck"></a>Memória szűk keresztmetszetének keresése
 
@@ -150,13 +151,13 @@ A magas memóriahasználat feloldásához hajtsa végre a következő feladatok 
 
 Ha egy nagyobb virtuális gépre való frissítés után kiderül, hogy továbbra is állandó a 100%-os folyamatos növekedés, azonosítsa az alkalmazást/folyamatot és a hibakeresést.
 
-A Perfinsights [Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) rendszeren is használható, hogy elemezze, melyik folyamat használja a memóriát. 
+A Perfinsights [Windows](./how-to-use-perfinsights.md) vagy [Linux](./how-to-use-perfinsights-linux.md) rendszeren is használható, hogy elemezze, melyik folyamat használja a memóriát. 
 
 ## <a name="check-for-disk-bottleneck"></a>A lemez szűk keresztmetszetének keresése
 
 A virtuális gép tárolási alrendszerének ellenőrzéséhez tekintse meg a diagnosztika az Azure-beli virtuálisgép-szinten a virtuális gép diagnosztika és a Storage-fiók diagnosztika használatával.
 
-A virtuálisgép-specifikus hibaelhárítás esetében használhatja a Perfinsights for Windows vagy [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) [rendszert](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) , ami segíthet elemezni, hogy melyik folyamat hajtja az IO-t. 
+A virtuálisgép-specifikus hibaelhárítás esetében használhatja a Perfinsights for Windows vagy [Linux](./how-to-use-perfinsights-linux.md) [rendszert](./how-to-use-perfinsights.md) , ami segíthet elemezni, hogy melyik folyamat hajtja az IO-t. 
 
 Ne feledje, hogy a zónák redundáns és Premium Storage fiókjaihoz nem tartoznak számlálók. Az ezekkel a számlálókkal kapcsolatos problémák esetén egy támogatási esetet kell megnövelni.
 
@@ -207,7 +208,7 @@ Ha meg szeretné állapítani, hogy az IOPS-korlátot használja-e, lépjen be a
 
 Ha a standard szintű tárolóban új lemezes ajánlatokat használ, a IOPS és az átviteli sebesség korlátai eltérőek lehetnek, de a standard szintű Storage-fiók összesített korlátja 20000 IOPS (a Premium Storage-nak eltérő korlátai vannak a fiók vagy a lemez szintjén). További információ a különböző standard szintű lemezes ajánlatokról és a lemezes korlátokról:
 
-* A [Windows rendszerű virtuálisgép-lemezek méretezhetősége és teljesítménybeli céljai](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+* A [Windows rendszerű virtuálisgép-lemezek méretezhetősége és teljesítménybeli céljai](../windows/disk-scalability-targets.md).
 
 #### <a name="references"></a>Hivatkozások
 
@@ -223,19 +224,19 @@ A virtuális géphez csatlakoztatott virtuális merevlemezek átviteli sebesség
 
 A standard szintű tárolóban az új lemezes ajánlatok különböző IOPS és átviteli korlátokkal rendelkeznek (a IOPS nem teszik közzé VHD-n). Tekintse meg az adatait, és ellenőrizze, hogy a virtuális merevlemezen a VHD (k) kombinált átviteli sebessége (i) a lemez olvasása és írása paranccsal, majd a virtuális gép tárolási konfigurációjának optimalizálása a múltbeli egyszeri VHD-korlátok skálázására. További információ a különböző standard szintű lemezes ajánlatokról és a lemezes korlátokról:
 
-* A [Windows rendszerű virtuálisgép-lemezek méretezhetősége és teljesítménybeli céljai](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
+* A [Windows rendszerű virtuálisgép-lemezek méretezhetősége és teljesítménybeli céljai](../windows/disk-scalability-targets.md).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Nagy lemezterület-kihasználtság/késés szervizelése
 
 Csökkentse az ügyfelek késését, és optimalizálja a virtuális gépek IO-jét a korábbi VHD-korlátok méretezéséhez
 
-* [A Windows rendszerhez készült IO optimalizálása az Azure-ban](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-performance-best-practices/)
+* [A Windows rendszerhez készült IO optimalizálása az Azure-ban](../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md?toc=/azure/virtual-machines/windows/toc.json)
 
-* [Az IO for Linux optimalizálása az Azure-ban](https://blogs.msdn.microsoft.com/igorpag/2014/10/23/azure-storage-secrets-and-linux-io-optimizations/)
+* [Az IO for Linux optimalizálása az Azure-ban](/archive/blogs/igorpag/azure-storage-secrets-and-linux-io-optimizations)
 
 #### <a name="reduce-throttling"></a>A szabályozás csökkentése
 
-Ha a Storage-fiókok felső korlátait sújtja, a virtuális merevlemezek átkerülnek a Storage-fiókok között. Tekintse át az [Azure Storage skálázhatósági és teljesítményi célkitűzéseit](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/).
+Ha a Storage-fiókok felső korlátait sújtja, a virtuális merevlemezek átkerülnek a Storage-fiókok között. Tekintse át az [Azure Storage skálázhatósági és teljesítményi célkitűzéseit](../../storage/common/scalability-targets-standard-account.md).
 
 ### <a name="increase-throughput-and-reduce-latency"></a>Az átviteli sebesség növelése és a késés csökkentése
 
@@ -243,11 +244,11 @@ Ha késésre érzékeny alkalmazásra van szüksége, és magas átviteli sebess
 
 Ezek a cikkek a konkrét forgatókönyveket tárgyalják:
 
-* [Áttelepítés Azure Premium Storage-ba](https://azure.microsoft.com/documentation/articles/storage-migration-to-premium-storage/)
+* [Áttelepítés Azure Premium Storage-ba](../windows/migrate-to-managed-disks.md)
 
-* [Az Azure Premium Storage használata a SQL Server](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
+* [Az Azure Premium Storage használata a SQL Server](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-premium-storage)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és stack overflow fórumokon](https://azure.microsoft.com/support/forums/).
 

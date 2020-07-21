@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 789d70f77558bbade854ba31fd10ecd2b8e7b853
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6285c25c44b7b8c5b2c1d9c148424fc36912b57c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194705"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528703"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob Storage-életciklus felügyelete
 
@@ -36,7 +36,7 @@ Az életciklus-kezelési házirend általános célú v2 (GPv2) fiókokkal, blob
 
 ## <a name="pricing"></a>Díjszabás
 
-Az életciklus-kezelési szolgáltatás díjmentes. Az ügyfelek a [List Blobok](https://docs.microsoft.com/rest/api/storageservices/list-blobs) szokásos üzemeltetési költségeit és a [blob-rétegek](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API-hívásait terhelik. A törlési művelet ingyenes. A díjszabással kapcsolatos további információkért lásd a [Blobok díjszabásának blokkolása](https://azure.microsoft.com/pricing/details/storage/blobs/)című témakört.
+Az életciklus-kezelési szolgáltatás díjmentes. A blob szintű API-hívások [beállításakor](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) a rendszer a szokásos működési költséget számítja fel. A törlési művelet ingyenes. A díjszabással kapcsolatos további információkért lásd a [Blobok díjszabásának blokkolása](https://azure.microsoft.com/pricing/details/storage/blobs/)című témakört.
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
@@ -235,7 +235,7 @@ A szabályzaton belüli szabályok több paraméterrel rendelkeznek:
 | Paraméter neve | Paraméter típusa | Jegyzetek | Kötelező |
 |----------------|----------------|-------|----------|
 | `name`         | Sztring |A szabály neve legfeljebb 256 alfanumerikus karaktert tartalmazhat. A szabály neve megkülönbözteti a kis-és nagybetűket.  Egy szabályzaton belül egyedinek kell lennie. | Igaz |
-| `enabled`      | Logikai | Egy nem kötelező logikai érték, amely lehetővé teszi egy szabály ideiglenes letiltását. Az alapértelmezett érték igaz, ha nincs beállítva. | Hamis | 
+| `enabled`      | Logikai érték | Egy nem kötelező logikai érték, amely lehetővé teszi egy szabály ideiglenes letiltását. Az alapértelmezett érték igaz, ha nincs beállítva. | Hamis | 
 | `type`         | Enumerálási érték | A jelenlegi érvényes típus: `Lifecycle` . | Igaz |
 | `definition`   | Az életciklus-szabályt meghatározó objektum | Mindegyik definíció egy szűrő készletből és egy műveleti készletből áll. | Igaz |
 
@@ -315,7 +315,7 @@ Az életciklus-kezelés támogatja a Blobok kiszervezését és törlését, val
 
 A futtatási feltételek életkoron alapulnak. Az alapblobok az utolsó módosítás idejét használják a kor nyomon követéséhez, a blob-Pillanatképek pedig a pillanatkép létrehozásának idejét használják a kor nyomon követéséhez.
 
-| Művelet futtatási feltétele             | Feltétel értéke                          | Description                             |
+| Művelet futtatási feltétele             | Feltétel értéke                          | Leírás                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | Egész számú érték, amely a kora napokat jelzi | Az alap blob-műveletek feltétele     |
 | daysAfterCreationGreaterThan     | Egész számú érték, amely a kora napokat jelzi | A blob-Pillanatképek műveleteinek feltétele |
@@ -483,7 +483,7 @@ A frissített szabályzat akár 24 óráig is eltarthat. Ha a házirend érvény
 **Manuálisan rehidratáltam egy archivált blobot, hogyan tudom megakadályozni, hogy átmenetileg visszakerüljön az archiválási szintre?**  
 Ha egy blobot egy hozzáférési rétegből egy másikba helyez át, az utolsó módosítás időpontja nem változik. Ha az archivált blobokat manuálisan rehidratálja a gyors szintre, az életciklus-kezelő motor vissza fogja helyezni az archiválási szintre. Tiltsa le az ezt a blobot érintő szabályt ideiglenesen annak megakadályozása érdekében, hogy az archiválható legyen. Engedélyezze újra a szabályt, ha a blob biztonságosan visszahelyezhető az archiválási szintre. Azt is megteheti, hogy a blobot egy másik helyre másolja, ha a gyors vagy lassú elérésű szinten kell maradni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan állíthatja helyre az adatokat a véletlen törlés után:
 

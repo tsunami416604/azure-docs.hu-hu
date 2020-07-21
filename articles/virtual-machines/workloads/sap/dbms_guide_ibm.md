@@ -12,11 +12,12 @@ ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb9d46adf63f9cd0f4b19e4eace0a2f4a7129226
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 110e8d3be88fb2e1bd958f40d5defa23f8c679f3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022607"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525398"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
 
@@ -25,7 +26,7 @@ Az SAP Business Suite IBM DB2-on való futtatásával kapcsolatos általános in
 
 Az Azure-beli LUW-hez készült SAP on-vel kapcsolatos további információkért lásd: SAP Note [2233094]. 
 
-Az Azure-ban megjelent SAP számítási feladatok különböző cikkei.  Javasoljuk, hogy az [Azure-beli SAP-számítási feladatok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) elindításához használja az első lépéseket, majd válassza ki az érdeklődési területét
+Az Azure-ban megjelent SAP számítási feladatok különböző cikkei.  Javasoljuk, hogy az [Azure-beli SAP-számítási feladatok](./get-started.md) elindításához használja az első lépéseket, majd válassza ki az érdeklődési területét
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak, a jelen dokumentumban foglalt területeken:
 
@@ -43,7 +44,7 @@ A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak, a jelen dok
 | [2002167] |Red Hat Enterprise Linux 7. x: telepítés és frissítés |
 | [1597355] |A Linux rendszerhez készült swap-space-javaslat |
 
-A jelen dokumentumban leírtak szerint olvassa el az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP-munkaterheléshez](dbms_guide_general.md) és az [Azure-dokumentáció SAP-munkaterhelésének](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)egyéb útmutatói című dokumentumait. 
+A jelen dokumentumban leírtak szerint olvassa el az [azure Virtual Machines adatbázis-kezelő üzembe helyezése az SAP-munkaterheléshez](dbms_guide_general.md) és az [Azure-dokumentáció SAP-munkaterhelésének](./get-started.md)egyéb útmutatói című dokumentumait. 
 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-version-support"></a>IBM DB2 Linux-, UNIX-és Windows-verzió-támogatáshoz
@@ -72,7 +73,7 @@ Azt is megteheti, hogy a Windows Storage-készleteket (csak a Windows Server 201
 
 A sapdata-és saptmp-címtárakhoz tartozó DB2 Storage-elérési utakat tartalmazó lemezek esetében meg kell adnia a 512 KB méretű fizikai lemez szektor méretét. Windows Storage-készletek használatakor manuálisan kell létrehoznia a tárolási készleteket parancssori felületen keresztül a paraméter használatával `-LogicalSectorSizeDefault` . További információ: <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
-Az Azure M sorozatú virtuális gépek esetében a tranzakciós naplókba írt késések az Azure írásgyorsító használatakor az Azure Premium Storage teljesítményéhez képest csökkenhetnek. Ezért telepítenie kell az Azure-írásgyorsító a DB2-tranzakciónaplók kötetét alkotó virtuális merevlemez (ek) számára. A részletek olvashatók a dokumentumban [írásgyorsító](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
+Az Azure M sorozatú virtuális gépek esetében a tranzakciós naplókba írt késések az Azure írásgyorsító használatakor az Azure Premium Storage teljesítményéhez képest csökkenhetnek. Ezért telepítenie kell az Azure-írásgyorsító a DB2-tranzakciónaplók kötetét alkotó virtuális merevlemez (ek) számára. A részletek olvashatók a dokumentumban [írásgyorsító](../../windows/how-to-enable-write-accelerator.md).
 
 ### <a name="backuprestore"></a>Biztonsági mentés/visszaállítás
 A LUW IBM DB2 biztonsági mentési/helyreállítási funkciója ugyanúgy támogatott, mint a normál Windows Server operációs rendszereken és a Hyper-V-ben.

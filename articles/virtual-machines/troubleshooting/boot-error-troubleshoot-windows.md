@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5ab1262def78da4971ea6e5535f3ac915a38ec8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678766"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526758"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Az Azure Windows rendszerű virtuális gépek leállítása a "újraindítás", "Leállítás" vagy "szolgáltatások leállítása" esetén beragadt
 
@@ -24,7 +25,7 @@ Ez a cikk a Windows rendszerű virtuális gépek (VM-EK) Microsoft Azure törté
 
 ## <a name="symptoms"></a>Probléma
 
-Ha [rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használatával tekinti meg a virtuális gép képernyőképét, láthatja, hogy a képernyőképen az "újraindítás", a "Leállítás" vagy a "szolgáltatások leállítása" üzenet jelenik meg.
+Ha [rendszerindítási diagnosztika](./boot-diagnostics.md) használatával tekinti meg a virtuális gép képernyőképét, láthatja, hogy a képernyőképen az "újraindítás", a "Leállítás" vagy a "szolgáltatások leállítása" üzenet jelenik meg.
 
 ![A szolgáltatások képernyőjének újraindítása, leállítása és leállítása](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
@@ -40,7 +41,7 @@ A Windows a leállítási folyamattal hajtja végre a rendszerkarbantartási mű
 
 2. Válassza le a működő virtuális gépről szükséges fájlokat tartalmazó lemezt, és csatlakoztassa a lemezt a hibás virtuális géphez. Ezt a lemezt hívjuk a **segédprogram lemezének**.
 
-A következő lépések végrehajtásához használja a [soros konzolt](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) :
+A következő lépések végrehajtásához használja a [soros konzolt](./serial-console-windows.md) :
 
 1. Nyisson meg egy felügyeleti PowerShellt, és keresse meg azt a szolgáltatást, amely nem válaszol a leállítás után.
 
@@ -80,13 +81,13 @@ Ha a probléma nem oldódik meg a módosítások feldolgozásának megkezdése u
 
 **Az operációsrendszer-lemez csatlakoztatása egy helyreállítási virtuális géphez**
 
-1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
 
-2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md).
 
 3. Távoli asztalról a helyreállítási virtuális gépre.
 
-4. Ha az operációsrendszer-lemez titkosítva van, ki kell kapcsolnia a titkosítást, mielőtt továbblép a következő lépésre. További információ: [a titkosított operációsrendszer-lemez visszafejtése a virtuális gépen, amely nem indítható el](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution).
+4. Ha az operációsrendszer-lemez titkosítva van, ki kell kapcsolnia a titkosítást, mielőtt továbblép a következő lépésre. További információ: [a titkosított operációsrendszer-lemez visszafejtése a virtuális gépen, amely nem indítható el](./troubleshoot-bitlocker-boot-error.md#solution).
 
 **Memóriaképfájl megkeresése és támogatási jegy beküldése**
 
@@ -141,7 +142,7 @@ A memóriakép és a soros konzol engedélyezéséhez futtassa az alábbi szkrip
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+5. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md).
 
 6. Indítsa el a virtuális gépet, és nyissa meg a soros konzolt.
 

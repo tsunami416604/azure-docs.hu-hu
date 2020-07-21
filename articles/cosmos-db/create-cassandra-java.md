@@ -1,5 +1,5 @@
 ---
-title: Java-alkalmazás létrehozása Azure Cosmos DB Cassandra API
+title: Java-alkalmazás Azure Cosmos DB Cassandra API a Java 3,0 SDK-val
 description: Ez a rövid útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Cassandra API profilalkalmazások létrehozására az Azure Portal és a Java használatával
 ms.service: cosmos-db
 author: TheovanKraay
@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 0136dce793fea1672b68062480420e5a05c75253
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 2522d1def3407d9e2bd49363c3da8e462231c70c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118372"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523859"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB Cassandra API-alapú adatkezeléshez (v3-illesztőprogram)
 
@@ -148,7 +148,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="Felhasználónév megtekintése és másolás az Azure Portal Kapcsolati sztring oldaláról":::
 
-2. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-java/copy-button-azure-portal.png) a CONTACT POINT érték másolásához.
+2. A :::image type="icon" source="./media/create-cassandra-java/copy-button-azure-portal.png"::: kapcsolódási pont értékének másolásához használja a képernyő jobb oldalán található gombot. 
 
 3. Nyissa meg a *config. properties* fájlt a *C:\git-samples\azure-cosmosdb-Cassandra-Java-Getting-started\java-examples\src\main\resources* mappából. 
 
@@ -212,7 +212,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy Azure Cosmos DB fiókot a Cassandra API, és hogyan futtathat egy Cassandra Java-alkalmazást, amely létrehoz egy Cassandra-adatbázist és-tárolót. Mostantól további adatait is importálhatja a Azure Cosmos DB-fiókjába. 
 

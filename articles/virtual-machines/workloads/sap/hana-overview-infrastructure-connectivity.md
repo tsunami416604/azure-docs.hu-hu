@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cea89087742f1987f693b8bfb627bd71038a0c14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98ecb9ab208b6ead3944455b95f7fe6baa044d35
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616922"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525109"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>SAP HANA (nagyméretű példányok) üzembe helyezése 
 
@@ -35,7 +36,7 @@ A Microsoft a következő információkat igényli a HANA nagyméretű példány
 - Minden Azure-beli üzembe helyezési régióban:
     - A/29 IP-címtartomány az olyan ER-P2P kapcsolatok esetében, amelyek az Azure-beli virtuális hálózatokat a HANA nagyméretű példányaihoz kötik.
     - A HANA nagyméretű példányok kiszolgálói IP-készletéhez használt a/24 CIDR-blokk.
-    - Nem kötelező, ha a [ExpressRoute-Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) használatával engedélyezi a közvetlen útválasztást a helyszínről a nagyméretű példányok számára, vagy a különböző Azure-régiókban lévő HANA nagyméretű példány-egységek közötti útválasztást, egy másik/29 IP-címtartományt kell fenntartania. Ez az adott tartomány nem fedi át a korábban definiált többi IP-címtartományt.
+    - Nem kötelező, ha a [ExpressRoute-Global REACH](../../../expressroute/expressroute-global-reach.md) használatával engedélyezi a közvetlen útválasztást a helyszínről a nagyméretű példányok számára, vagy a különböző Azure-régiókban lévő HANA nagyméretű példány-egységek közötti útválasztást, egy másik/29 IP-címtartományt kell fenntartania. Ez az adott tartomány nem fedi át a korábban definiált többi IP-címtartományt.
 - A HANA nagyméretű példányokhoz csatlakozó összes Azure-beli virtuális hálózat virtuális hálózati címtartomány attribútumában használt IP-címtartomány értékei.
 - Az egyes HANA Large instances rendszerekhez tartozó adatmennyiség:
   - A kívánt állomásnév, ideális esetben egy teljesen minősített tartománynév.
@@ -52,4 +53,3 @@ A következő műveletsorral csatlakozhat a HANA nagyméretű példányaihoz a M
 1. [Azure-beli virtuális gépek csatlakoztatása nagyméretű HANA-példányokhoz](hana-connect-azure-vm-large-instances.md)
 2. [VNet csatlakoztatása a HANA Large instances ExpressRoute](hana-connect-vnet-express-route.md)
 3. [További hálózati követelmények (nem kötelező)](hana-additional-network-requirements.md)
-

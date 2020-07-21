@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: tanmaygore
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: fa97935c10b2a5df70c9babf031a889a9c1e9f34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d05386f1dfbab28d5fe42d02b8e9be0f257afafd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837911"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527208"
 ---
 ## <a name="what-is-the-time-required-for-migration"></a>Mennyi idő szükséges az áttelepítéshez?
 
@@ -29,7 +29,7 @@ Azok az ügyfelek, akik aktívak vagy leállítottak, de a IaaS virtuális gépe
 
 ## <a name="why-am-i-getting-an-error-stating-newclassicvmcreationnotallowedforsubscription"></a>Miért kapok hibaüzenetet, amely a "NewClassicVMCreationNotAllowedForSubscription"?
 
-A nyugdíjazási folyamat részeként a IaaS VM (klasszikus) már nem érhető el az új ügyfelek számára. Új ügyfelekként azonosította Önt, ezért a művelet nem volt engedélyezve. Erősen ajánlott az [Azure Virtual Machines használata az ARM használatával](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Ha nem tudja használni az Azure virtuális gépeket az ARM használatával, forduljon a támogatási szolgálathoz az előfizetés engedélyezési listájának megtekintéséhez.
+A nyugdíjazási folyamat részeként a IaaS VM (klasszikus) már nem érhető el az új ügyfelek számára. Új ügyfelekként azonosította Önt, ezért a művelet nem volt engedélyezve. Erősen ajánlott az [Azure Virtual Machines használata az ARM használatával](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell). Ha nem tudja használni az Azure virtuális gépeket az ARM használatával, forduljon az ügyfélszolgálathoz, és adja hozzá az előfizetését az engedélyezési listához.
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Érinti ez a migrálási terv az Azure virtuális gépeken futó meglévő szolgáltatásaimat és alkalmazásaimat? 
 

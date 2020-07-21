@@ -7,13 +7,14 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6c621219bc424b7e0df6de286a066fd5b94af4a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a836f4ce40f4d2e0871f99122d25bb6c6f346d05
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514970"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527880"
 ---
-# <a name="transfer-data-with-azcopy-and-file-storage"></a>Adatok átvitele a AzCopy és a file Storage szolgáltatással 
+# <a name="transfer-data-with-azcopy-and-file-storage"></a>Adatok átvitele az AzCopy használatával és fájltárolás 
 
 Az AzCopy egy parancssori segédprogram, amellyel blobokat és fájlokat másolhat a tárfiókok között. Ez a cikk a Azure Filesekkel használható példákat tartalmaz.
 
@@ -22,7 +23,7 @@ Mielőtt elkezdené, tekintse meg az első [lépések a AzCopy](storage-use-azco
 > [!TIP]
 > A cikkben szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. Használjon egy idézőjelet az összes parancs-rendszerhéjon, kivéve a Windows parancs-rendszerhéjt (cmd.exe). Ha Windows parancs-rendszerhéjt (cmd.exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé foglalja a Path argumentumokat ("").
 
-## <a name="create-file-shares"></a>Fájlmegosztás létrehozása
+## <a name="create-file-shares"></a>Fájlmegosztások létrehozása
 
 A [azcopy make](storage-ref-azcopy-make.md) paranccsal fájlmegosztást hozhat létre. Az ebben a szakaszban szereplő példa egy nevű fájlmegosztást hoz létre `myfileshare` .
 
@@ -48,7 +49,7 @@ Ez a szakasz a következő példákat tartalmazza:
 > [!TIP]
 > A feltöltési műveletet opcionális jelzők használatával is megteheti. Íme néhány példa.
 >
-> |Forgatókönyv|Jelző|
+> |Forgatókönyv|Jelölő|
 > |---|---|
 > |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek** = \[ igaz \| hamis\]|
 > |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--az SMB-info megőrzése** = \[ igaz \| hamis\]|
@@ -117,7 +118,7 @@ A fájlokat a lehetőség használatával is kizárhatja `--exclude-path` . Tov�
 
 #### <a name="use-wildcard-characters"></a>Helyettesítő karakterek használata
 
-Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket a semicolin () használatával válassza el `;` .
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket pontosvesszővel () válassza el `;` .
 
 |    |     |
 |--------|-----------|
@@ -143,7 +144,7 @@ Ez a szakasz a következő példákat tartalmazza:
 > [!TIP]
 > A letöltési műveletet opcionális jelzők használatával is megteheti. Íme néhány példa.
 >
-> |Forgatókönyv|Jelző|
+> |Forgatókönyv|Jelölő|
 > |---|---|
 > |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek** = \[ igaz \| hamis\]|
 > |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--az SMB-info megőrzése** = \[ igaz \| hamis\]|
@@ -188,7 +189,7 @@ Megadhatja a teljes fájlnevet, vagy használhat részleges neveket helyettesít
 
 #### <a name="specify-multiple-complete-file-names"></a>Több teljes fájlnevet kell megadni
 
-Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-path` kapcsolóval. Különálló fájlnevek elkülönítése semicolin () használatával `;` .
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-path` kapcsolóval. Az egyes fájlneveket pontosvesszővel () válassza el egymástól `;` .
 
 |    |     |
 |--------|-----------|
@@ -201,7 +202,7 @@ A fájlokat a lehetőség használatával is kizárhatja `--exclude-path` . Tov�
 
 #### <a name="use-wildcard-characters"></a>Helyettesítő karakterek használata
 
-Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket a semicolin () használatával válassza el `;` .
+Használja az [azcopy Copy](storage-ref-azcopy-copy.md) parancsot a `--include-pattern` kapcsolóval. Adjon meg olyan részleges neveket, amelyek tartalmazzák a helyettesítő karaktereket. A neveket pontosvesszővel () válassza el `;` .
 
 |    |     |
 |--------|-----------|
@@ -229,7 +230,7 @@ Ez a szakasz a következő példákat tartalmazza:
 > [!TIP]
 > A másolási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 >
-> |Forgatókönyv|Jelző|
+> |Forgatókönyv|Jelölő|
 > |---|---|
 > |A hozzáférés-vezérlési listák (ACL-ek) másolása a fájlokkal együtt.|**--megőrzése-SMB-engedélyek** = \[ igaz \| hamis\]|
 > |Az SMB-tulajdonságok adatainak másolása a fájlokkal együtt.|**--az SMB-info megőrzése** = \[ igaz \| hamis\]|
@@ -280,7 +281,7 @@ Ha a `--delete-destination` jelzőt úgy állítja be, hogy a `true` AzCopy tör
 > [!TIP]
 > A szinkronizálási műveletet opcionális jelzők használatával is megadhatja. Íme néhány példa.
 >
-> |Forgatókönyv|Jelző|
+> |Forgatókönyv|Jelölő|
 > |---|---|
 > |Itt adhatja meg, hogy a letöltéskor a szigorúan MD5-kivonatokat kell-e érvényesíteni.|**--ellenőrzési-MD5** = \[ Nincs \| bejelentkezett bejelentkezési \| FailIfDifferent \| FailIfDifferentOrMissing\]|
 > |Fájlok kizárása mintázat alapján.|**--kizárás – elérési út**|
@@ -317,7 +318,7 @@ Az ebben a parancsban megjelenő első fájlmegosztás a forrás. Az URI végén
 
 További információ a megosztási pillanatképekről: [Azure Files-megosztási Pillanatképek áttekintése](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További példákat a következő cikkekben talál:
 

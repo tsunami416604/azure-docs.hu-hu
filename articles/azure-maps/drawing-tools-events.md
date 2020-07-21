@@ -1,5 +1,5 @@
 ---
-title: Rajzolási eszköztár hozzáadása térképhez | Microsoft Azure térképek
+title: Rajzolási eszköz eseményei | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan adhat hozzá rajzolási eszköztárat térképekhez Microsoft Azure Maps web SDK használatával
 author: rbrundritt
 ms.author: richbrun
@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: d8509af7829910bdda8bba3d63553e83626fe784
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5cbd5311c6070f59f8a5953d8b99789ab758c9c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80804673"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524607"
 ---
 # <a name="drawing-tool-events"></a>Rajzolási eszköz eseményei
 
 Térképeken a rajzolási eszközök használatakor hasznos lehet reagálni bizonyos eseményekre, amikor a felhasználó a térképen rajzol. Ez a táblázat felsorolja az osztály által támogatott összes eseményt `DrawingManager` .
 
-| Esemény | Description |
+| Esemény | Leírás |
 |-------|-------------|
 | `drawingchanged` | Az alakzatban lévő bármely koordináta hozzáadása vagy módosítása történt. | 
 | `drawingchanging` | Akkor aktiválódik, amikor megjelenik egy alakzat előnézeti koordinátái. Ez az esemény például többször is kigyullad, mivel a rendszer a koordinátákat húzza. | 
@@ -76,7 +77,7 @@ Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>mérési 
 
 <br/>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan használhatja a rajzolási eszközök modul további funkcióit:
 

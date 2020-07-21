@@ -8,17 +8,17 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 194610845d9625139ff826711fc361bd9670a426
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 14b2e3df6d7ea3f72c1968cfed222a1b9b0d636d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202660"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525857"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Windows rendszerű virtuálisgép-rendszerképek létrehozása a csomagoló használatával az Azure-ban
 Az Azure-ban minden virtuális gép (VM) egy olyan rendszerképből jön létre, amely meghatározza a Windows-disztribúciót és az operációs rendszer verzióját. A képek tartalmazhatnak előre telepített alkalmazásokat és konfigurációkat is. Az Azure Marketplace számos első és harmadik féltől származó rendszerképet biztosít a leggyakoribb operációsrendszer-és alkalmazás-környezetekhez, vagy létrehozhat saját igényeire szabott egyéni rendszerképeket is. Ez a cikk részletesen ismerteti, hogyan lehet egyéni lemezképeket definiálni és létrehozni az Azure-ban a nyílt forráskódú eszköz [csomagoló](https://www.packer.io/) használatával.
 
-Ez a cikk az 2/21/2019-es, a [PowerShell-modul](https://docs.microsoft.com/powershell/azure/install-az-ps) Version 1.3.0 és a [Packer](https://www.packer.io/docs/install) Version 1.3.4 használatával tesztelte utoljára.
+Ez a cikk az 2/21/2019-es, a [PowerShell-modul](/powershell/azure/install-az-ps) Version 1.3.0 és a [Packer](https://www.packer.io/docs/install) Version 1.3.4 használatával tesztelte utoljára.
 
 > [!NOTE]
 > Az Azure-ban már van egy szolgáltatás, egy Azure Image Builder (előzetes verzió), amellyel meghatározhatja és létrehozhatja saját egyéni rendszerképeit. Az Azure rendszerkép-szerkesztő a Csomagolón alapul, így a meglévő csomagoló rendszerhéj-szkripteket is használhatja. Az Azure rendszerkép-szerkesztő megkezdéséhez tekintse meg [a Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-készítővel](image-builder.md)című témakört.
@@ -26,7 +26,7 @@ Ez a cikk az 2/21/2019-es, a [PowerShell-modul](https://docs.microsoft.com/power
 ## <a name="create-azure-resource-group"></a>Azure-erőforráscsoport létrehozása
 A kiépítési folyamat során a csomagoló ideiglenes Azure-erőforrásokat hoz létre, mivel létrehozza a forrás virtuális gépet. Ahhoz, hogy a forrás virtuális gép lemezképként használható legyen, meg kell határoznia egy erőforráscsoportot. Ez az erőforráscsoport tárolja a csomagoló-összeállítási folyamat kimenetét.
 
-Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
+Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurepowershell
 $rgName = "myResourceGroup"
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Azure-beli hitelesítő adatok létrehozása
 A csomagoló az Azure-ban egy egyszerű szolgáltatásnév használatával hitelesíti magát. Az Azure egyszerű szolgáltatás olyan biztonsági identitás, amely az alkalmazásokkal, szolgáltatásokkal és automatizálási eszközökkel, például a csomagoló eszközzel használható. Ön szabályozhatja és meghatározhatja az engedélyeket az Azure-ban az egyszerű szolgáltatás által elvégezhető műveletekhez.
 
-Hozzon létre egy egyszerű szolgáltatást [új AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) , és rendeljen engedélyeket az egyszerű szolgáltatásnév számára, hogy erőforrásokat hozzon létre és kezeljen a [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)használatával. Az értéknek `-DisplayName` egyedinek kell lennie; szükség esetén cserélje le a értéket a saját értékére.  
+Hozzon létre egy egyszerű szolgáltatást [új AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) , és rendeljen engedélyeket az egyszerű szolgáltatásnév számára, hogy erőforrásokat hozzon létre és kezeljen a [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)használatával. Az értéknek `-DisplayName` egyedinek kell lennie; szükség esetén cserélje le a értéket a saját értékére.  
 
 ```azurepowershell
 $sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
@@ -54,7 +54,7 @@ $sp.ApplicationId
 ```
 
 
-Az Azure-ban való hitelesítéshez az Azure-bérlőt és az előfizetési azonosítókat is be kell szereznie a [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription)használatával:
+Az Azure-ban való hitelesítéshez az Azure-bérlőt és az előfizetési azonosítókat is be kell szereznie a [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription)használatával:
 
 ```powershell
 Get-AzSubscription
@@ -213,7 +213,7 @@ Eltarthat néhány percig, amíg a csomagoló létrehozza a virtuális gépet, f
 
 
 ## <a name="create-a-vm-from-the-packer-image"></a>Virtuális gép létrehozása a csomagoló rendszerképből
-Most létrehozhat egy virtuális gépet a rendszerképből a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)használatával. A támogató hálózati erőforrások akkor jönnek létre, ha még nem léteznek. Ha a rendszer kéri, adjon meg egy rendszergazdai felhasználónevet és jelszót, amelyet létre kell hozni a virtuális gépen. Az alábbi példa egy *myVM* nevű virtuális gépet hoz létre a *myPackerImage*:
+Most létrehozhat egy virtuális gépet a rendszerképből a [New-AzVM](/powershell/module/az.compute/new-azvm)használatával. A támogató hálózati erőforrások akkor jönnek létre, ha még nem léteznek. Ha a rendszer kéri, adjon meg egy rendszergazdai felhasználónevet és jelszót, amelyet létre kell hozni a virtuális gépen. Az alábbi példa egy *myVM* nevű virtuális gépet hoz létre a *myPackerImage*:
 
 ```powershell
 New-AzVm `
@@ -228,13 +228,13 @@ New-AzVm `
     -Image "myPackerImage"
 ```
 
-Ha virtuális gépeket szeretne létrehozni egy másik erőforráscsoporthoz vagy régióban, mint a csomagoló-rendszerkép, a rendszerkép neve helyett adja meg a rendszerkép AZONOSÍTÓját. A rendszerkép-azonosítót a [Get-AzImage](https://docs.microsoft.com/powershell/module/az.compute/Get-AzImage)használatával szerezheti be.
+Ha virtuális gépeket szeretne létrehozni egy másik erőforráscsoporthoz vagy régióban, mint a csomagoló-rendszerkép, a rendszerkép neve helyett adja meg a rendszerkép AZONOSÍTÓját. A rendszerkép-azonosítót a [Get-AzImage](/powershell/module/az.compute/get-azimage)használatával szerezheti be.
 
 A virtuális gép létrehozása néhány percet vesz igénybe a csomagoló rendszerképből.
 
 
 ## <a name="test-vm-and-webserver"></a>Virtuális gép és webkiszolgáló tesztelése
-Szerezze be a virtuális gép nyilvános IP-címét a [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott *myPublicIP* IP-címét kéri le:
+Szerezze be a virtuális gép nyilvános IP-címét a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott *myPublicIP* IP-címét kéri le:
 
 ```powershell
 Get-AzPublicIPAddress `
@@ -247,5 +247,5 @@ Ha szeretné megtekinteni a virtuális gépet, amely tartalmazza az IIS telepít
 ![Alapértelmezett IIS-webhely](./media/build-image-with-packer/iis.png) 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az [Azure rendszerkép-készítővel](image-builder.md)meglévő csomagoló-kiépítési parancsfájlokat is használhat.

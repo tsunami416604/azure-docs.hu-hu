@@ -1,5 +1,5 @@
 ---
-title: Delegált hozzáférés a Windows rendszerű virtuális asztalon – Azure
+title: Delegált hozzáférés a Windows rendszerű virtuális asztalon 2019-Azure
 description: Felügyeleti képességek delegálása Windows rendszerű virtuális asztali környezetben, például példákkal.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 899e42e3b592ce1bc92d7d47578e10355b1c6de7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91be20de49f549f3530e6c817906f1abf8f106b6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614433"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527557"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop"></a>Delegált hozzáférés a Windows Virtual Desktopon
+# <a name="delegated-access-in-windows-virtual-desktop-fall-2019"></a>Delegált hozzáférés a Windows rendszerű virtuális asztalon 2019
 
 >[!IMPORTANT]
 >Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../delegated-access-virtual-desktop.md).
@@ -66,7 +66,7 @@ Az alapszintű három parancsmagot a következő paraméterekkel módosíthatja:
 * **SignInName**: a felhasználó e-mail-címe vagy egyszerű felhasználóneve.
 * **TenantName**: a távoli asztal bérlő neve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyes szerepkörök által használható PowerShell-parancsmagok teljes listájáért tekintse meg a [PowerShell-referenciát](/powershell/windows-virtual-desktop/overview).
 

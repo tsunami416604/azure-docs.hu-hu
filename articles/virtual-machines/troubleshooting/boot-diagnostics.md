@@ -10,11 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: fe2427d008b49daa6222ca981994f0dc2fbea355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 092d3893c3cc5473debf8f7d51f393751cfd82bf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79476586"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526818"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>A rendszerindítási diagnosztika használata az Azure-beli virtuális gépek hibáinak megoldásához
 
@@ -95,5 +96,4 @@ A módosítás érvénybe léptetéséhez újra kell indítania a virtuális gé
 
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>A rendszerindítási diagnosztika engedélyezése az Azure CLI használatával
 
-Az Azure CLI-vel engedélyezheti a rendszerindítási diagnosztika használatát egy meglévő Azure-beli virtuális gépen. További információ: [az VM boot-Diagnostics](
-https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest).
+Az Azure CLI-vel engedélyezheti a rendszerindítási diagnosztika használatát egy meglévő Azure-beli virtuális gépen. További információ: [az VM boot-Diagnostics](/cli/azure/vm/boot-diagnostics?view=azure-cli-latest).

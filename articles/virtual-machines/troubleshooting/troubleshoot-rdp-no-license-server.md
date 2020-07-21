@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 154160f9a3fbd485ee6383bf3d5ff1c291520a75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 276be92ea4c03b9ebeb3e13df69ce1b10328dcaf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71088520"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526469"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Távoli asztal licenckiszolgáló Azure-beli virtuális géphez való csatlakozáskor nem érhető el
 
@@ -122,7 +122,7 @@ A probléma megoldásához végezze el [az operációsrendszer-lemez biztonsági
        telnet <FQDN / IP License Server> 135
        ```
 
-3. Ha a környezetben nincs Távoli asztal licenckiszolgálóra, és azt szeretné, hogy egy [Távoli asztal licencelési szerepkör-szolgáltatást telepítsen](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11)). Ezután [konfigurálja az RDS licencelést](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383).
+3. Ha a környezetben nincs Távoli asztal licenckiszolgálóra, és azt szeretné, hogy egy [Távoli asztal licencelési szerepkör-szolgáltatást telepítsen](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc731765(v=ws.11)). Ezután [konfigurálja az RDS licencelést](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383).
 
 4. Ha egy Távoli asztal licenckiszolgáló konfigurálva van és kifogástalan állapotú, győződjön meg arról, hogy a Távoli asztal licenckiszolgáló engedélyezve van-e az Cal-ban.
 

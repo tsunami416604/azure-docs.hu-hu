@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 085647c392bb6cec51fba8b6e42cb8f03707223c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1c2050969e95b521554bba100b688add3a987a80
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134576"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526741"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>A Windows aktiválása sikertelen a kényszerített bújtatási forgatókönyvben
 
@@ -53,9 +53,9 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
  
 
 > [!NOTE] 
-> Az aktiválás nyilvános IP-címeket használ, és egy szabványos SKU Load Balancer konfiguráció fogja érinteni. A követelmények megismeréséhez körültekintően tekintse át a [kimenő kapcsolatokat az Azure-ban](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) .
+> Az aktiválás nyilvános IP-címeket használ, és egy szabványos SKU Load Balancer konfiguráció fogja érinteni. A követelmények megismeréséhez körültekintően tekintse át a [kimenő kapcsolatokat az Azure-ban](../../load-balancer/load-balancer-outbound-connections.md) .
 
-1. Nyissa meg Azure PowerShell, majd [Jelentkezzen be az Azure-előfizetésbe](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Nyissa meg Azure PowerShell, majd [Jelentkezzen be az Azure-előfizetésbe](/powershell/azure/authenticate-azureps).
 2. Futtassa az alábbi parancsot:
 
     ```powershell
@@ -77,7 +77,7 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
     Set-AzVirtualNetwork -VirtualNetwork $vnet
     ```
-3. Lépjen az aktiválási problémákkal rendelkező virtuális gépre. A [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) használatával ellenőrizze, hogy a KMS-kiszolgáló elérheti-e a következőt:
+3. Lépjen az aktiválási problémákkal rendelkező virtuális gépre. A [PsPing](/sysinternals/downloads/psping) használatával ellenőrizze, hogy a KMS-kiszolgáló elérheti-e a következőt:
 
     ```console
     psping kms.core.windows.net:1688
@@ -89,7 +89,7 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-1. Nyissa meg Azure PowerShell, majd [Jelentkezzen be az Azure-előfizetésbe](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+1. Nyissa meg Azure PowerShell, majd [Jelentkezzen be az Azure-előfizetésbe](/powershell/azure/authenticate-azureps).
 2. Futtassa az alábbi parancsot:
 
     ```powershell
@@ -107,7 +107,7 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
     -RouteTableName "VNet-DM-KmsRouteTable"
     ```
 
-3. Lépjen az aktiválási problémákkal rendelkező virtuális gépre. A [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) használatával ellenőrizze, hogy a KMS-kiszolgáló elérheti-e a következőt:
+3. Lépjen az aktiválási problémákkal rendelkező virtuális gépre. A [PsPing](/sysinternals/downloads/psping) használatával ellenőrizze, hogy a KMS-kiszolgáló elérheti-e a következőt:
 
     ```console
     psping kms.core.windows.net:1688
@@ -117,7 +117,5 @@ Az egyéni útvonal hozzáadásához kövesse az alábbi lépéseket:
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [KMS-ügyfél telepítési kulcsai](https://docs.microsoft.com/windows-server/get-started/kmsclientkeys
-)
-- [Aktiválási módszerek áttekintése és kiválasztása](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj134256(v=ws.11)
-)
+- [KMS-ügyfél telepítési kulcsai](/windows-server/get-started/kmsclientkeys)
+- [Aktiválási módszerek áttekintése és kiválasztása](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj134256(v=ws.11))

@@ -7,16 +7,19 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d52877129fe256253410f1d38011fa0343dd433d
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 5205506e3e7a32423dd9b438b648ff4af5136caa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84455943"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528553"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v11 a .NET-hez
 
 Ismerkedés az Azure Blob Storage .NET-hez készült ügyféloldali kódtár-v11. Az Azure Blob Storage a Microsoft objektum-tárolási megoldás a felhőhöz. Kövesse a csomag telepítésének lépéseit, és próbálja ki például az alapszintű feladatokhoz tartozó kódot. A Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva.
+
+> [!NOTE]
+> Ez a rövid útmutató az Azure Blob Storage ügyféloldali függvénytárának örökölt verzióját használja. A legújabb verzió használatának megkezdéséhez tekintse meg a gyors üzembe helyezési útmutató [: Azure Blob Storage ügyféloldali kódtára a .net-hez](storage-quickstart-blobs-dotnet.md)című témakört.
 
 Használja az Azure Blob Storage .NET-hez készült ügyféloldali kódtárat a következőhöz:
 
@@ -27,7 +30,12 @@ Használja az Azure Blob Storage .NET-hez készült ügyféloldali kódtárat a 
 * Egy tároló összes blobjának listázása
 * Tároló törlése
 
-[API-referenciák dokumentációja](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Blob)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)  |  [Példák](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
+További források:
+
+* [API-referenciadokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [Könyvtár forráskódja](https://github.com/Azure/azure-storage-net/tree/master/Blob)
+* [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+* [Példák](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -383,7 +391,7 @@ Az **Enter** billentyű lenyomása után az alkalmazás törli a Storage-tárol�
 
 A fájlok ellenőrzése után nyomja le bármelyik billentyűt a bemutató befejezéséhez és a tesztfájlok törléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ennek a rövid útmutatónak a segítségével megismerkedett a blobok a .NET használatával való fel- és letöltésével, valamint kilistázásával.
 

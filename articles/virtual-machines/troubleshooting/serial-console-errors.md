@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: 61ae0ef92fe522a2a038a6076a5e0c0a10ee47b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cad12a55332a6c7898f9709776c58d7dba8dd81a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80060687"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86526435"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Gyakori hibák az Azure soros konzolon belül
 Az Azure soros konzolon az ismert hibák halmaza található. Ezek a hibák és a hozzájuk tartozó enyhítő lépések listája.
 
 ## <a name="common-errors"></a>Gyakori hibák
 
-Hiba                             |   Kezelés
+Hiba                             |   Kockázatcsökkentés
 :---------------------------------|:--------------------------------------------|
 "Az Azure soros konzoljának engedélyezni kell a rendszerindítási diagnosztika használatát. Kattintson ide a virtuális gép rendszerindítási diagnosztika konfigurálásához. " | Győződjön meg arról, hogy a virtuális gép vagy a virtuálisgép-méretezési csoport számára engedélyezve van a [rendszerindítási diagnosztika](boot-diagnostics.md) . Ha a soros konzolt egy virtuálisgép-méretezési csoport példányán használja, győződjön meg arról, hogy a példánya rendelkezik a legújabb modellel.
 "Az Azure soros konzoljának működéséhez virtuális gépnek kell futnia. A virtuális gép elindításához használja a fenti Start gombot. "  | A virtuális gép vagy virtuálisgép-méretezési csoport példányának elindított állapotban kell lennie a soros konzol eléréséhez (a virtuális gép nem állítható le vagy nem foglalható le). Győződjön meg arról, hogy a virtuális gép vagy virtuálisgép-méretezési csoport példánya fut, és próbálkozzon újra.
@@ -40,8 +40,8 @@ Nem határozható meg a rendszerindítási diagnosztikai fiók * &lt; STORAGEACC
 A virtuális gép üzembe helyezése még nem sikerült. Győződjön meg arról, hogy a virtuális gép teljesen telepítve van, majd próbálja megismételni a soros konzol kapcsolatát. | Lehetséges, hogy a virtuális gép vagy a virtuálisgép-méretezési csoport továbbra is kiépíthető. Várjon egy kis időt, és próbálkozzon újra.
 A webes szoftvercsatorna be van zárva, vagy nem nyitható meg. | Előfordulhat, hogy hozzá kell adnia a tűzfalhoz való hozzáférést `*.console.azure.com` . Egy részletesebb, de hosszabb módszer a tűzfal hozzáférésének engedélyezése a [Microsoft Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek meglehetősen rendszeresen változnak.
 A Serial console a Azure Data Lake Storage Gen2 hierarchikus névtereket használó Storage-fiókkal nem működik. | Ez egy ismert probléma a hierarchikus névterek esetében. A megoldáshoz győződjön meg arról, hogy a virtuális gép rendszerindítási diagnosztikai tárolási fiókja nem Azure Data Lake Storage Gen2 használatával jön létre. Ez a beállítás csak a Storage-fiók létrehozásakor állítható be. Előfordulhat, hogy létre kell hoznia egy különálló rendszerindítási diagnosztikai Storage-fiókot anélkül, hogy Azure Data Lake Storage Gen2 engedélyezve lenne a probléma enyhítése érdekében.
-A soros konzol kapcsolata a virtuális géppel hibát észlelt: "tiltott" (SubscriptionNotEnabled) – az előfizetés nem definiált neve, az azonosító \<subscription id> nem engedélyezett állapotú, nincs definiálva | Ez a probléma akkor fordulhat elő, ha az előfizetés, amellyel a felhasználó létrehozta Cloud Shell Storage-fiókját, le van tiltva. A megoldás elindításához indítsa el Cloud Shell, és [hajtsa végre a szükséges lépéseket](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#unmount-clouddrive-1) ahhoz, hogy a jelenlegi előfizetésben Cloud Shell a biztonsági mentést végző fiók újralétesítéséhez.
+A soros konzol kapcsolata a virtuális géppel hibát észlelt: "tiltott" (SubscriptionNotEnabled) – az előfizetés nem definiált neve, az azonosító \<subscription id> nem engedélyezett állapotú, nincs definiálva | Ez a probléma akkor fordulhat elő, ha az előfizetés, amellyel a felhasználó létrehozta Cloud Shell Storage-fiókját, le van tiltva. A megoldás elindításához indítsa el Cloud Shell, és [hajtsa végre a szükséges lépéseket](../../cloud-shell/persisting-shell-storage.md#unmount-clouddrive-1) ahhoz, hogy a jelenlegi előfizetésben Cloud Shell a biztonsági mentést végző fiók újralétesítéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [Linux rendszerű virtuális gépekhez készült Azure soros konzolról](./serial-console-linux.md)
 * További információ a [Windows rendszerű virtuális gépekhez készült Azure soros konzolról](./serial-console-windows.md)

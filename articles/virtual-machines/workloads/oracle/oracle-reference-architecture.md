@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: 9125d8d2177b9bc40bb280f414cdfb2797ccf8fe
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: dd5e3cf8ce9e52768c28598a819a28ad1ec4413c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221612"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86525517"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Az Azure-beli Oracle Database Enterprise Edition hivatkozási architektúrái
 
@@ -37,13 +37,13 @@ A magas rendelkezésre állás elérése a felhőben fontos része minden szerve
 
 A Felhőbeli natív eszközök és ajánlatok mellett az Oracle olyan megoldásokat kínál a magas rendelkezésre álláshoz, mint például az [Oracle-adatvédelem](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7), az [FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html) [, a](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)horizontális skálázás és az Azure-ban beállítható [GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html) . Ez az útmutató az egyes megoldások hivatkozási architektúráit ismerteti.
 
-Végül, ha a felhőhöz telepít át vagy hoz létre alkalmazásokat, fontos, hogy az alkalmazás kódját a Felhőbeli natív mintázatok, például az [újrapróbálkozási](https://docs.microsoft.com/azure/architecture/patterns/retry) minta és az [áramkör-megszakító minta](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)hozzáadásával lehessen felvenni. A [Felhőbeli tervezési minták útmutatójában](https://docs.microsoft.com/azure/architecture/patterns/) meghatározott további minták segíthetnek az alkalmazás rugalmasabb működésében.
+Végül, ha a felhőhöz telepít át vagy hoz létre alkalmazásokat, fontos, hogy az alkalmazás kódját a Felhőbeli natív mintázatok, például az [újrapróbálkozási](/azure/architecture/patterns/retry) minta és az [áramkör-megszakító minta](/azure/architecture/patterns/circuit-breaker)hozzáadásával lehessen felvenni. A [Felhőbeli tervezési minták útmutatójában](/azure/architecture/patterns/) meghatározott további minták segíthetnek az alkalmazás rugalmasabb működésében.
 
 ### <a name="oracle-rac-in-the-cloud"></a>Oracle-RAC a felhőben
 
 Az Oracle Real Application Cluster (RAC) egy olyan megoldás, amelyet az Oracle az ügyfelek számára nagy teljesítményű adatforgalom eléréséhez biztosít, mivel számos példány fér hozzá egy adatbázis-tárolóhoz (közös – minden architektúra minta). Habár az Oracle RAC a helyszíni magas rendelkezésre álláshoz is használható, az Oracle-RAC önmagában nem használható magas rendelkezésre álláshoz a felhőben, mivel csak a példányok szintjének meghibásodása elleni védelmet nyújt, és nem az állvány-vagy adatközpont-szintű hibák ellen. Ezért az Oracle a magas rendelkezésre állás érdekében azt javasolja, hogy az Oracle-adatvédelmet az adatbázissal (akár egy példány vagy RAC) használja. Az ügyfeleknek általában magas SLA-ra van szükségük a kritikus fontosságú alkalmazások futtatásához. Az Oracle-RAC jelenleg nem hitelesített vagy nem támogatott az Azure-on. Az Azure azonban olyan funkciókat kínál, mint például az Azure, Availability Zones és tervezett karbantartási időszakokat, amelyek segítenek a példány-szintű hibák elleni védelemben. Ezen kívül az ügyfelek olyan technológiákat is használhatnak, mint például az Oracle-adatvédelem, az Oracle-GoldenGate és az Oracle-skálázás a nagy teljesítmény és a rugalmasság érdekében azáltal, hogy az adatbázisait a rack-szintű, valamint az adatközponti szintű és a földrajzilag fellépő hibák védik.
 
-Ha az Oracle-adatbázisok több [rendelkezésre állási zónában](https://docs.microsoft.com/azure/availability-zones/az-overview) futnak Oracle-adatgárda vagy GoldenGate használatával, az ügyfeleknek 99,99%-os üzemidőt biztosító SLA-t is igénybe vehetik. Azokon az Azure-régiókban, ahol a rendelkezésre állási zónák még nincsenek jelen, az ügyfelek használhatják a [rendelkezésre állási csoportokat](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) , és 99,95%-os üzemidőt biztosítanak.
+Ha az Oracle-adatbázisok több [rendelkezésre állási zónában](../../../availability-zones/az-overview.md) futnak Oracle-adatgárda vagy GoldenGate használatával, az ügyfeleknek 99,99%-os üzemidőt biztosító SLA-t is igénybe vehetik. Azokon az Azure-régiókban, ahol a rendelkezésre állási zónák még nincsenek jelen, az ügyfelek használhatják a [rendelkezésre állási csoportokat](../../linux/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) , és 99,95%-os üzemidőt biztosítanak.
 
 >Megjegyzés: a rendelkezésre állási cél sokkal nagyobb, mint a Microsoft által biztosított üzemidő.
 
@@ -51,7 +51,7 @@ Ha az Oracle-adatbázisok több [rendelkezésre állási zónában](https://docs
 
 Ha a kritikus fontosságú alkalmazásokat a felhőben üzemelteti, fontos megtervezni a magas rendelkezésre állást és a katasztrófa utáni helyreállítást.
 
-Oracle Database Enterprise Edition az Oracle-adatőr hasznos szolgáltatás a vész-helyreállításhoz. Beállíthat egy készenléti adatbázis-példányt egy [párosított Azure-régióban](/azure/best-practices-availability-paired-regions) , és beállíthatja az adatkezelő feladatátvételét a vész-helyreállításhoz. A nulla adatvesztés érdekében javasoljuk, hogy az aktív adatvédelem mellett telepítsen egy Oracle-adatvédelmet futtató távoli szinkronizálási példányt. 
+Oracle Database Enterprise Edition az Oracle-adatőr hasznos szolgáltatás a vész-helyreállításhoz. Beállíthat egy készenléti adatbázis-példányt egy [párosított Azure-régióban](../../../best-practices-availability-paired-regions.md) , és beállíthatja az adatkezelő feladatátvételét a vész-helyreállításhoz. A nulla adatvesztés érdekében javasoljuk, hogy az aktív adatvédelem mellett telepítsen egy Oracle-adatvédelmet futtató távoli szinkronizálási példányt. 
 
 Ha az alkalmazás engedélyezi a késést (alapos tesztelésre van szükség), érdemes lehet beállítani az adatvédelemre vonatkozó távoli szinkronizálási példányt egy másik rendelkezésre állási zónában, mint az Oracle elsődleges adatbázisa. A **maximális rendelkezésre állási** mód használatával állíthatja be az ismételt fájlok szinkron átvitelét a távoli szinkronizálási példányra. Ezeket a fájlokat a rendszer aszinkron módon továbbítja a készenléti adatbázisba. 
 
@@ -79,7 +79,7 @@ A következő ábra egy ajánlott architektúra az Oracle-adatvédelem az Azure-
 
 ![Oracle Database a rendelkezésre állási zónák használatával a adatőr-közvetítővel – FSFO](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
-Az előző ábrán az ügyfélrendszer az Oracle-háttérrel rendelkező egyéni alkalmazást a weben keresztül éri el. A webes felület egy terheléselosztó-ben van konfigurálva. A webes frontend kezdeményezi a megfelelő alkalmazáskiszolgáló számára a munka kezelését. Az alkalmazáskiszolgáló lekérdezi az elsődleges Oracle-adatbázist. Az Oracle-adatbázis egy hiperszálas [memória-optimalizált virtuális géppel](../../../virtual-machines/windows/sizes-memory.md) lett konfigurálva, amelynek [korlátozott alapszintű vCPU](../../../virtual-machines/windows/constrained-vcpu.md) a licencelési költségek mentése és a teljesítmény maximalizálása. A teljesítmény és a magas rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatos.
+Az előző ábrán az ügyfélrendszer az Oracle-háttérrel rendelkező egyéni alkalmazást a weben keresztül éri el. A webes felület egy terheléselosztó-ben van konfigurálva. A webes frontend kezdeményezi a megfelelő alkalmazáskiszolgáló számára a munka kezelését. Az alkalmazáskiszolgáló lekérdezi az elsődleges Oracle-adatbázist. Az Oracle-adatbázis egy hiperszálas [memória-optimalizált virtuális géppel](../../sizes-memory.md) lett konfigurálva, amelynek [korlátozott alapszintű vCPU](../../../virtual-machines/windows/constrained-vcpu.md) a licencelési költségek mentése és a teljesítmény maximalizálása. A teljesítmény és a magas rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatos.
 
 Az Oracle-adatbázisok több rendelkezésre állási zónába kerülnek a magas rendelkezésre állás érdekében. Minden zóna egy vagy több független energiaellátással, hűtéssel és hálózatkezeléssel ellátott adatközpontból áll. A rugalmasság biztosítása érdekében a rendszer legalább három különálló zónát állít be az összes engedélyezett régióban. A rendelkezésre állási zónák a régión belüli fizikai elkülönítése védi az adatközpont hibáiból származó adatok védelmét. Emellett két FSFO megfigyelő is be van állítva két rendelkezésre állási zónában, hogy az adatbázis a másodlagos állapotba kerüljön és feladatátvételt hajtson végre, ha áramkimaradás történik. 
 
@@ -113,7 +113,7 @@ A következő ábra egy olyan architektúra, amely az Oracle-adatkezelő FSFO é
 
 A GoldenGate lehetővé teszi, hogy a tranzakciós szinten lévő adatcsere és-manipuláció több, heterogén platformon legyen a vállalaton belül. Tranzakciós integritással és minimális terheléssel helyezi el a véglegesített tranzakciókat a meglévő infrastruktúrán. A moduláris architektúrája rugalmasságot biztosít a kiválasztott adatrekordok, tranzakciós változások és DDL (adatdefiníciós nyelv) változásainak különböző topológiák közötti kinyeréséhez és replikálásához.
 
-Az Oracle GoldenGate kétirányú replikálás biztosításával lehetővé teszi az adatbázis magas rendelkezésre állású konfigurálását. Ez lehetővé teszi, hogy beállítson egy **több főkiszolgálós** vagy **aktív-aktív konfigurációt**. A következő ábra egy ajánlott architektúra az Azure-beli GoldenGate Active-Active Setup-hoz. A következő architektúrában az Oracle-adatbázis egy hiperszálas [memória-optimalizált virtuális géppel](../../../virtual-machines/windows/sizes-memory.md) lett konfigurálva, amely [korlátozott alapszintű vCPU](../../../virtual-machines/windows/constrained-vcpu.md) rendelkezik a licencelési költségek mentéséhez és a teljesítmény maximalizálásához. A teljesítmény és a rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatos.
+Az Oracle GoldenGate kétirányú replikálás biztosításával lehetővé teszi az adatbázis magas rendelkezésre állású konfigurálását. Ez lehetővé teszi, hogy beállítson egy **több főkiszolgálós** vagy **aktív-aktív konfigurációt**. A következő ábra egy ajánlott architektúra az Azure-beli GoldenGate Active-Active Setup-hoz. A következő architektúrában az Oracle-adatbázis egy hiperszálas [memória-optimalizált virtuális géppel](../../sizes-memory.md) lett konfigurálva, amely [korlátozott alapszintű vCPU](../../../virtual-machines/windows/constrained-vcpu.md) rendelkezik a licencelési költségek mentéséhez és a teljesítmény maximalizálásához. A teljesítmény és a rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatos.
 
 ![Oracle Database a rendelkezésre állási zónák használatával a adatőr-közvetítővel – FSFO](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -215,7 +215,7 @@ A virtuális gép operációs rendszerének javítását [Azure Automation](../.
 
 ## <a name="architecture-and-design-considerations"></a>Architektúra és kialakítási szempontok
 
-- Vegye fontolóra a hiperszálas [memória-optimalizált virtuális gép](../../../virtual-machines/windows/sizes-memory.md) [korlátozott alapszintű Oracle Database vCPU](../../../virtual-machines/windows/constrained-vcpu.md) való használatát a licencelési költségek megtakarítása és a teljesítmény maximalizálása érdekében. A teljesítmény és a rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatát használhatja.
+- Vegye fontolóra a hiperszálas [memória-optimalizált virtuális gép](../../sizes-memory.md) [korlátozott alapszintű Oracle Database vCPU](../../../virtual-machines/windows/constrained-vcpu.md) való használatát a licencelési költségek megtakarítása és a teljesítmény maximalizálása érdekében. A teljesítmény és a rendelkezésre állás érdekében több prémium vagy Ultra lemez (Managed Disks) használatát használhatja.
 - A felügyelt lemezek használatakor a lemez/eszköz neve változhat az újraindítások során. Javasoljuk, hogy a név helyett az eszköz UUID-t használja, hogy a csatlakoztatások megmaradjanak az újraindítások között. További információt [itt](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab)találhat.
 - A rendelkezésre állási zónák használatával magas rendelkezésre állást érhet el a régióban.
 - Érdemes lehet Ultra Disks (ha elérhető) vagy prémium szintű lemezeket használni az Oracle-adatbázishoz.
@@ -226,7 +226,7 @@ A virtuális gép operációs rendszerének javítását [Azure Automation](../.
 - Az [Azure-folyamatokkal](/azure/devops/pipelines/get-started/what-is-azure-pipelines) az adatbázis javításait és frissítéseit leállás nélkül kezelheti.
 - A Felhőbeli natív mintázatok, például az [újrapróbálkozási minta](/azure/architecture/patterns/retry), az [áramkör-megszakító mintázata](/azure/architecture/patterns/circuit-breaker)és a [Felhőbeli tervezési minták útmutatójában](/azure/architecture/patterns/) definiált egyéb minták hozzáadásával az alkalmazáshoz tartozó kód finomhangolása is rugalmasabb lehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a forgatókönyvre vonatkozó alábbi Oracle-hivatkozási cikkeket.
 

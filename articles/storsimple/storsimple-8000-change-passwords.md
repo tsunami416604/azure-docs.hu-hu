@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: becbf7f89266fb0f56aaa053eb7cba9291da6896
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 038084ba9ae43e14bc2eb42bf258912be27d062c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514092"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86527863"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple jelszavának módosítására
 
@@ -36,25 +36,25 @@ A regisztráció során a Windows PowerShell felületén először beállított 
 
 2. Az eszközök táblázatos listájából válassza ki, majd kattintson arra az eszközre, amelynek a jelszavát módosítani kívánja.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd1.png)
+    ![Képernyőfelvétel: a StorSimple Eszközkezelő szolgáltatás. A felügyelet területen válassza az eszközök lehetőséget. Az eszközök listájában egy eszköz van kiválasztva.](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. A **Beállítások** panelen válassza az **eszközbeállítások > biztonság lehetőséget**.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd2.png)
+    ![A Eszközkezelő szolgáltatás beállítások paneljét ábrázoló képernyőfelvétel. Az eszközbeállítások területen válassza a biztonság lehetőséget.](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. A **biztonsági beállítások** panelen kattintson a **jelszó** lehetőségre az eszköz rendszergazdai jelszavának módosításához.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd3.png)
+    ![A biztonsági beállítások panelt ábrázoló képernyőfelvétel A jelszó gomb ki van emelve.](./media/storsimple-8000-change-passwords/changepwd3.png)
 
 5. A **jelszó** panelen adjon meg egy 8 – 15 karaktert tartalmazó rendszergazdai jelszót. A jelszónak 3 vagy több nagybetűből, kisbetűkből, számokból és speciális karakterekből álló kombinációnak kell lennie.
 
 6. Erősítse meg a jelszót.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd4.png)
+    ![A jelszó panelt ábrázoló képernyőfelvétel Az eszköz rendszergazdai jelszava alatt az új jelszó és a Jelszó megerősítése mezők ki lesznek töltve.](./media/storsimple-8000-change-passwords/changepwd4.png)
 
 7. Kattintson a **Mentés** gombra, és amikor a rendszer megerősítést kér, kattintson az **Igen**gombra.
 
-    ![](./media/storsimple-8000-change-passwords/changepwd6.png)
+    ![A jelszó panelt ábrázoló képernyőfelvétel A Mentés gomb ki van emelve.](./media/storsimple-8000-change-passwords/changepwd6.png)
 
 Most frissíteni kell az eszköz rendszergazdai jelszavát. Ezt a módosított jelszót használhatja a Windows PowerShell felületének eléréséhez.
 
@@ -70,29 +70,29 @@ A StorSimple Snapshot Manager jelszavát a Azure Portal használatával állíth
 
 2. Az eszközök táblázatos listájából válassza ki, majd kattintson arra az eszközre, amelynek a StorSimple meg kívánja határozni vagy módosítani szeretné a Snapshot Manager jelszavát.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd1.png)
+     ![Képernyőfelvétel: a StorSimple Eszközkezelő szolgáltatás. A felügyelet területen válassza az eszközök lehetőséget. Az eszközök listájában egy eszköz van kiválasztva.](./media/storsimple-8000-change-passwords/changepwd1.png)
 
 3. A **Beállítások** panelen válassza az **eszközbeállítások > biztonság lehetőséget**.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd2.png)
+     ![A Eszközkezelő szolgáltatás beállítások paneljét ábrázoló képernyőfelvétel. Az eszközbeállítások területen válassza a biztonság lehetőséget.](./media/storsimple-8000-change-passwords/changepwd2.png)
 
 4. A **biztonsági beállítások** panelen kattintson a **jelszó** gombra a StorSimple Snapshot Manager jelszavának beállításához vagy módosításához.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd3.png) 
+     ![A biztonsági beállítások panelt ábrázoló képernyőfelvétel A jelszó gomb ki van emelve.](./media/storsimple-8000-change-passwords/changepwd3.png) 
 
 5. A **jelszó** panelen adjon meg egy 14 vagy 15 karakterből álló jelszót. Győződjön meg arról, hogy a jelszó 3 vagy több nagybetűt, kisbetűt, számot és speciális karaktert tartalmaz.
 
 6. Erősítse meg a jelszót.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd5.png)
+     ![A jelszó panelt ábrázoló képernyőfelvétel A jelszó Snapshot Manager alatt az új jelszó és a Jelszó megerősítése mezők ki lesznek töltve.](./media/storsimple-8000-change-passwords/changepwd5.png)
 
 7. Kattintson a **Mentés** gombra, és amikor a rendszer megerősítést kér, kattintson az **Igen**gombra.
 
-     ![](./media/storsimple-8000-change-passwords/changepwd6.png)
+     ![A jelszó panelt ábrázoló képernyőfelvétel A Mentés gomb ki van emelve.](./media/storsimple-8000-change-passwords/changepwd6.png)
 
 Most frissíteni kell a StorSimple Snapshot Manager jelszavát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple biztonságáról](storsimple-8000-security.md).
 * További információ az [eszköz konfigurációjának módosításáról](storsimple-8000-modify-device-config.md).
 * További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).
