@@ -1,23 +1,20 @@
 ---
-title: Hivatkozások
-description: ''
+title: Azure FarmBeats API-k
+description: Ismerje meg az Azure FarmBeats API-kat, amelyek egy szabványosított REST-felülettel és JSON-alapú válaszokkal biztosítják a mezőgazdasági vállalkozásokat.
 author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488035"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536572"
 ---
-# <a name="references"></a>Hivatkozások
+# <a name="azure-farmbeats-apis"></a>Azure FarmBeats API-k
 
-Ez a cikk az Azure FarmBeats API-kat ismerteti.
-
-## <a name="rest-api"></a>REST API
-
-Az Azure FarmBeats API-k szabványosított REST-felületet biztosító, JSON-alapú válaszokat biztosítanak a mezőgazdasági vállalkozásoknak az Azure FarmBeats képességeinek kihasználása érdekében, például:
+Ez a cikk az Azure FarmBeats API-kat ismerteti. Az Azure FarmBeats API-k szabványosított REST-felületet biztosító, JSON-alapú válaszokat biztosítanak a mezőgazdasági vállalkozásoknak az Azure FarmBeats képességeinek kihasználása érdekében, például:
 
 - API-k az érzékelő, a kamera, a drone, az időjárás, a műhold és a megválogatott alapértékek beszerzéséhez.
 - Az adatnormalizálás és contextualization a közös adatszolgáltatókon keresztül.
@@ -32,7 +29,7 @@ A FarmBeats API-k hencegő technikai dokumentációt tartalmaznak. Az API-kkal �
 
 A következő táblázat összefoglalja a FarmBeats-Datahub található összes objektumot és erőforrást:
 
-| Objektumok és erőforrások | Description
+| Objektumok és erőforrások | Leírás
 --- | ---|
 Farm | A farm a FarmBeats rendszeren belüli fizikai helynek felel meg. Minden Farm rendelkezik egy farm nevével és egy egyedi Farm-AZONOSÍTÓval. |
 Eszköz  | Az eszköz megfelel a farmon található fizikai eszköznek. Minden eszköz egyedi AZONOSÍTÓval rendelkezik. Az eszközök általában Farm-AZONOSÍTÓval rendelkező farmhoz vannak kiépítve.
@@ -62,7 +59,7 @@ Ahhoz, hogy a REST API-khoz hitelesített kérelmet lehessen készíteni, az üg
 
 A hozzáférési jogkivonatot a következő API-kérelmekben kell elküldeni a fejléc szakaszban, ahogy:
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**}
 ```
 
@@ -110,9 +107,9 @@ Ha például lekérdezi az eszközök listáját (/Device hívása), a következ
 
 Az Azure FarmBeats Datahub API-jai a szabványos HTTP-hibákat adják vissza. A leggyakoribb hibakódok a következők:
 
- |Hibakód             | Description |
+ |Hibakód             | Leírás |
  |---                    | --- |
- |200                    | Sikeres |
+ |200                    | Success |
  |201                    | Sikeres létrehozás (post) |
  |400                    | Hibás kérelem. Hiba történt a kérelemben. |
  |401                    | Jogosulatlan. Az API hívója nem jogosult az erőforrás elérésére. |
@@ -152,7 +149,7 @@ Az Azure FarmBeats API-kat egy felhasználó vagy egy alkalmazás-regisztráció
     - Adjon meg egy nevet.
     - **Csak a szervezeti címtárban válassza ki a fiókokat (egyetlen bérlő)**.
     - Használja a többi mező alapértelmezett értékeit.
-    - Kattintson a **Register** (Regisztrálás) elemre.
+    - Válassza a **Regisztráció** lehetőséget.
 
 3. Az új és meglévő alkalmazás-regisztráció **– Áttekintés** panelen tegye a következőket:
 
@@ -181,6 +178,6 @@ Az előző lépések befejezése után az alkalmazás regisztrálása (ügyfél)
 
 A hozzáférési jogkivonat segítségével küldje el azt a következő API-kérelmekben a fejléc szakaszban, ahogy:
 
-```
+```http
 headers = {"Authorization": "Bearer " + **access_token**, "Content-Type" : "application/json" }
 ```

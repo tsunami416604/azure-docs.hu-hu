@@ -1,6 +1,6 @@
 ---
 title: Privát link szolgáltatás létrehozása az Azure Private linkben
-description: Ebben a rövid útmutatóban egy Azure Resource Manager sablont használ egy privát kapcsolati szolgáltatás létrehozásához.
+description: Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy privát kapcsolati szolgáltatás létrehozásához.
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: c9ed628501e8fa02b816a1564b91620404dfc379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a3c7245a4e6c69e87791ca3364ad588b82572c6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817622"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529607"
 ---
-# <a name="quickstart-create-a-private-link-service-by-using-an-azure-resource-manager-template"></a>Rövid útmutató: privát link szolgáltatás létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>Rövid útmutató: privát hivatkozási szolgáltatás létrehozása ARM-sablonnal
 
-Ebben a rövid útmutatóban egy Azure Resource Manager sablont használ egy privát kapcsolati szolgáltatás létrehozásához.
+Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy privát kapcsolati szolgáltatás létrehozásához.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Ezt a rövid útmutatót a [Azure Portal](create-private-link-service-portal.md), [Azure PowerShell](create-private-link-service-powershell.md)vagy az [Azure CLI](create-private-link-service-cli.md)használatával is elvégezheti.
 
-## <a name="prerequisite"></a>Előfeltétel
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Előfeltételek
 
 Aktív előfizetéssel rendelkező Azure-fiókra van szüksége. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-private-link-service"></a>Privát kapcsolati szolgáltatás létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Ez a sablon létrehoz egy magánhálózati kapcsolati szolgáltatást.
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-privatelink-service/) közül származik.
 
 :::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json" range="001-432" highlight="263-289":::
 
@@ -48,13 +50,13 @@ Több Azure-erőforrás van definiálva a sablonban:
 - [**Microsoft. Network/nyilvános IP**](/azure/templates/microsoft.network/publicIpAddresses): két nyilvános IP-cím létezik, egyet az egyes virtuális gépekhez.
 - [**Microsoft. Network/privateendpoints**](/azure/templates/microsoft.network/privateendpoints): a szolgáltatás eléréséhez használt privát végpont.
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A Azure Resource Manager-sablon üzembe helyezése az Azure-ban:
+Az ARM-sablon üzembe helyezése az Azure-ban:
 
 1. Az Azure-ba való bejelentkezéshez és a sablon megnyitásához válassza az **üzembe helyezés az Azure**-ban lehetőséget. A sablon létrehoz egy virtuális gépet, a standard Load balancert, a privát kapcsolati szolgáltatást, a privát végpontot, a hálózatot és a virtuális gépet az ellenőrzéshez.
 
-   [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+   [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-privatelink-service%2Fazuredeploy.json)
 
 2. Válassza ki vagy hozza létre az erőforráscsoportot.
 3. Írja be a virtuális gép rendszergazdai felhasználónevét és jelszavát.
@@ -63,7 +65,7 @@ A Azure Resource Manager-sablon üzembe helyezése az Azure-ban:
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
 > [!NOTE]
-> A Azure Resource Manager sablon a (z)<b>{UniqueID}</b> virtuális gép myConsumerVm egyedi nevét hozza létre. Helyettesítse be a generált értéket **{UniqueID}** értékre.
+> Az ARM-sablon egyedi nevet hoz létre a (z)<b>{UniqueID}</b> virtuális gép myConsumerVm. Helyettesítse be a generált értéket **{UniqueID}** értékre.
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
@@ -73,7 +75,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myConsumerVm az internetről a 
 
 2.  Kattintson a **Csatlakozás** gombra. Megnyílik **a virtuális géphez való kapcsolódás** .
 
-3.  Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll (_. rdp_) fájlt, és letölti a számítógépre.
+3.  Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (_. rdp_) fájlt, és letölti a számítógépre.
 
 4.  Nyissa meg a letöltött .rdp fájlt.
 
@@ -84,7 +86,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myConsumerVm az internetről a 
     > [!NOTE]
     > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
 
-5.  Válassza az **OK** lehetőséget.
+5.  Kattintson az **OK** gombra.
 
 6.  A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
 
@@ -95,7 +97,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myConsumerVm az internetről a 
 A következő lépésekkel csatlakozhat a http-szolgáltatáshoz a virtuális gépről a privát végpont használatával.
 
 1.  Ugrás a _(távoli asztal) {UniqueID} myConsumerVm_.
-2.  Nyisson meg egy böngészőt, és adja meg a magánhálózati végpont címe: http://10.0.0.5/ .
+2.  Nyisson meg egy böngészőt, és adja meg a magánhálózati végpont címe: `http://10.0.0.5/` .
 3.  Megjelenik az alapértelmezett IIS-oldal.
 
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
@@ -108,6 +110,6 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name <your resource group name>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure Private linkről](private-link-overview.md).

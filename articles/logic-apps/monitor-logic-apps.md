@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82732002"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536250"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Futtatási állapot monitorozása, triggerelőzmények áttekintése és riasztások beállítása az Azure Logic Appshez
 
@@ -48,7 +48,7 @@ Minden alkalommal, amikor az eseményindító egy elemhez vagy eseményhez tüze
 
    | Állapot | Leírás |
    |--------|-------------|
-   | **Lemondva** | A munkafolyamat futott, de megszakítási kérelmet kapott |
+   | **Megszakítva** | A munkafolyamat futott, de megszakítási kérelmet kapott |
    | **Sikertelen** | Legalább egy művelet meghiúsult, és a munkafolyamatban nem lettek beállítva újabb műveletek a hiba kezelésére. |
    | **Fut** | A munkafolyamat jelenleg fut. <p>Ez az állapot a szabályozott munkafolyamatok esetében vagy a jelenlegi díjszabási csomag miatt is megjelenhet. További információkért tekintse meg a [díjszabási oldalon található műveletek korlátait](https://azure.microsoft.com/pricing/details/logic-apps/). Ha beállítja a [diagnosztikai naplózást](../logic-apps/monitor-logic-apps.md), információt kaphat az esetlegesen előforduló szabályozási eseményekről. |
    | **Sikeres** | Az összes művelet sikeres volt. <p>**Megjegyzés**: Ha valamilyen hiba történt egy adott művelet során, a munkafolyamat egy későbbi művelete ezt a hibát kezelte. |
@@ -71,7 +71,7 @@ Minden alkalommal, amikor az eseményindító egy elemhez vagy eseményhez tüze
 
    ![Tekintse át a Futtatás egyes lépéseinek részleteit](./media/monitor-logic-apps/review-logic-app-run-details.png)
 
-   Lekérheti például a Futtatás **korrelációs azonosító** tulajdonságát, amelyre szükség lehet, ha a [Logic apps REST API](https://docs.microsoft.com/rest/api/logic)használja.
+   Lekérheti például a Futtatás **korrelációs azonosító** tulajdonságát, amelyre szükség lehet, ha a [Logic apps REST API](/rest/api/logic)használja.
 
 1. Ha további információra van szükség egy adott lépésről, válassza az egyik lehetőséget:
 
@@ -138,7 +138,7 @@ Az egyes logikai alkalmazások futtatása triggerrel kezdődik. Az aktiválási 
 
 ## <a name="set-up-monitoring-alerts"></a>Figyelési riasztások beállítása
 
-Ha a logikai alkalmazáshoz meghatározott mérőszámok alapján vagy túllépte a riasztásokat, állítson be [riasztásokat a Azure monitorban](../azure-monitor/platform/alerts-overview.md). Ismerje meg [Az Azure mérőszámait](../monitoring-and-diagnostics/monitoring-overview-metrics.md). Ha [Azure monitor](../log-analytics/log-analytics-overview.md)használata nélkül szeretné beállítani a riasztásokat, kövesse az alábbi lépéseket.
+Ha a logikai alkalmazáshoz meghatározott mérőszámok alapján vagy túllépte a riasztásokat, állítson be [riasztásokat a Azure monitorban](../azure-monitor/platform/alerts-overview.md). Ismerje meg [Az Azure mérőszámait](../azure-monitor/platform/data-platform.md). Ha [Azure monitor](../azure-monitor/log-query/log-query-overview.md)használata nélkül szeretné beállítani a riasztásokat, kövesse az alábbi lépéseket.
 
 1. A logikai alkalmazás menüjében, a **figyelés**területen válassza a **riasztások**  >  **új riasztási szabály**lehetőséget.
 
@@ -189,6 +189,6 @@ Ha a logikai alkalmazáshoz meghatározott mérőszámok alapján vagy túllépt
 > * [Szöveg küldése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
 > * [Üzenet hozzáadása egy várólistához](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Logikai alkalmazások figyelése Azure Monitor használatával](../logic-apps/monitor-logic-apps-log-analytics.md)

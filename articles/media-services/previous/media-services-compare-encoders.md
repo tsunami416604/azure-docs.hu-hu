@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 4767f7bb5ba02c838c0e21721e55a6564a14acd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca17ffdc2a54b25bbfd855834a366ed381a54678
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69016659"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530388"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Az Azure igény szerinti adathordozó-kódolóinak összehasonlítása  
 
@@ -34,7 +34,7 @@ Az alábbi táblázat a Media Encoder Standard (MES) és a Media Encoder Premium
 |---|---|---|
 |Feltételes logika alkalmazása kódolás közben<br/>(Ha például a bemenet HD, akkor kódolja a 5,1 hangot)|Nem|Igen|
 |Kódolt feliratok|Nem|[Igen](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[A Dolby® professzionális hangzásának javítása](https://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> a párbeszéd intelligenciával™|Nem|Igen|
+|[A Dolby &reg; Professional-hangerő javítása](https://professional.dolby.com/product/broadcast/vm600/)<br/> a párbeszéd intelligenciával&trade;|Nem|Igen|
 |Kiküszöbölhető, inverz telecine|Alapszintű|Szórási minőség|
 |Fekete szegélyek észlelése és eltávolítása <br/>(pillarboxes, postafiókok)|Nem|Igen|
 |Miniatűr létrehozása|[Igen](media-services-dotnet-generate-thumbnail-with-mes.md)|[Igen](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
@@ -44,7 +44,7 @@ Az alábbi táblázat a Media Encoder Standard (MES) és a Media Encoder Premium
 |Több hang nyelvi nyomon követése|Korlátozott|[Igen](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
 ## <a name="billing-meter-used-by-each-encoder"></a><a id="billing"></a>Az egyes kódolók által használt számlázási fogyasztásmérő
-| Adathordozó-feldolgozó neve | Érvényes díjszabás | Megjegyzések |
+| Adathordozó-feldolgozó neve | Érvényes díjszabás | Jegyzetek |
 | --- | --- | --- |
 | **Media Encoder Standard** |ENCODER |A kódolási feladatokat a rendszer az [itt][1]megadott sebességgel az összes, a kimenetként létrehozott médiafájl teljes időtartama (percben) alapján, a kódoló oszlop alatt számítja fel. |
 | **Media Encoder Premium-munkafolyamat** |PRÉMIUM SZINTŰ KÓDOLÓ |A kódolási feladatokat a rendszer a prémium szintű KÓDOLÓ oszlopban [lévő, a][1]kimenetként előállított médiafájlok teljes időtartama (percben) alapján számítja fel. |
@@ -52,7 +52,7 @@ Az alábbi táblázat a Media Encoder Standard (MES) és a Media Encoder Premium
 ## <a name="input-containerfile-formats"></a>Bemeneti tároló/fájlformátumok
 | Bemeneti tároló/fájlformátum | Media Encoder Standard | Media Encoder Premium-munkafolyamat |
 | --- | --- | --- |
-| Adobe® Flash® F4V |Igen |Igen |
+| Adobe &reg; Flash- &reg; F4V |Igen |Igen |
 | MXF/SMPTE 377M |Igen |Igen |
 | GXF |Igen |Igen |
 | MPEG-2 átviteli streamek |Igen |Igen |
@@ -73,7 +73,7 @@ Az alábbi táblázat a Media Encoder Standard (MES) és a Media Encoder Premium
 | Avid DNxHD (MXF-ben) |Igen |Igen |
 | DVCPro/DVCProHD (MXF-ben) |Igen |Igen |
 | JPEG2000 |Igen |Igen |
-| MPEG-2 (akár 422-es profil és magas szintű, beleértve a XDCAM, a XDCAM HD, a XDCAM IMX, a CableLabs® és a D10 változatokat) |Akár 422-es profilig |Igen |
+| MPEG-2 (akár 422-es profil és magas szintű, beleértve a XDCAM, a XDCAM HD, a XDCAM IMX, a CableLabs és a D10 változatokat &reg; ) |Akár 422-es profilig |Igen |
 | MPEG-1 |Igen |Igen |
 | Windows Media Video/VC-1 |Igen |Igen |
 | Canopus HQ/HQX |Nem |Nem |
@@ -91,9 +91,9 @@ Az alábbi táblázat a Media Encoder Standard (MES) és a Media Encoder Premium
 | Bemeneti hangkodekek | Media Encoder Standard | Media Encoder Premium-munkafolyamat |
 | --- | --- | --- |
 | AES (SMPTE 331M és 302 M, AES3-2003) |Nem |Igen |
-| Dolby® E |Nem |Igen |
-| Dolby® Digital (AC3) |Nem |Igen |
-| Dolby® Digital (E-AC3) |Nem |Igen |
+| Dolby &reg; E |Nem |Igen |
+| Dolby &reg; Digital (AC3) |Nem |Igen |
+| Dolby &reg; Digital Plus (E-AC3) |Nem |Igen |
 | AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1-esig) |Igen |Igen |
 | MPEG 2 réteg |Igen |Igen |
 | MP3 (MPEG-1, 3 hangréteg) |Igen |Igen |
@@ -106,7 +106,7 @@ Az alábbi táblázat a Media Encoder Standard (MES) és a Media Encoder Premium
 ## <a name="output-containerfile-formats"></a>Kimeneti tároló/fájlformátumok
 | Kimeneti tároló/fájlformátumok | Media Encoder Standard | Media Encoder Premium-munkafolyamat |
 | --- | --- | --- |
-| Adobe® Flash® F4V |Nem |Igen |
+| Adobe &reg; Flash- &reg; F4V |Nem |Igen |
 | MXF (OP1a, XDCAM és AS02) |Nem |Igen |
 | DPP (beleértve a AS11-t) |Nem |Igen |
 | GXF |Nem |Igen |
@@ -122,7 +122,7 @@ Az alábbi táblázat a Media Encoder Standard (MES) és a Media Encoder Premium
 | AVC (H. 264; 8 bites; legfeljebb magas profil, 5,2-as szint; 4K Ultra HD; AVC-n belüli) |Csak 8 bites 4:2:0 |Igen |
 | HEVC (H. 265; 8 bites és 10 bites;)  |Nem |Igen |
 | Avid DNxHD (MXF-ben) |Nem |Igen |
-| MPEG-2 (akár 422-es profil és magas szintű, beleértve a XDCAM, a XDCAM HD, a XDCAM IMX, a CableLabs® és a D10 változatokat) |Nem |Igen |
+| MPEG-2 (akár 422-es profil és magas szintű, beleértve a XDCAM, a XDCAM HD, a XDCAM IMX, a CableLabs és a D10 változatokat &reg; ) |Nem |Igen |
 | MPEG-1 |Nem |Igen |
 | Windows Media Video/VC-1 |Nem |Igen |
 | JPEG-miniatűr létrehozása |Igen |Igen |
@@ -133,15 +133,15 @@ Az alábbi táblázat a Media Encoder Standard (MES) és a Media Encoder Premium
 | Kimeneti hangkodekek | Media Encoder Standard | Media Encoder Premium-munkafolyamat |
 | --- | --- | --- |
 | AES (SMPTE 331M és 302 M, AES3-2003) |Nem |Igen |
-| Dolby® Digital (AC3) |Nem |Igen |
-| Dolby® Digital Plus (E-AC3) akár 7,1 |Nem |Igen |
+| Dolby &reg; Digital (AC3) |Nem |Igen |
+| Dolby &reg; Digital Plus (E-AC3) akár 7,1 |Nem |Igen |
 | AAC (AAC-LC, AAC-HE és AAC-HEv2; akár 5.1-esig) |Igen |Igen |
 | MPEG 2 réteg |Nem |Igen |
 | MP3 (MPEG-1, 3 hangréteg) |Nem |Igen |
 | Windows Media Audio |Nem |Igen |
 
 >[!NOTE]
->Ha a Dolby® Digital (AC3) kódolást végez, a kimenet csak ISO MP4-fájlba írható.
+>Ha &reg; a Dolby Digital (AC3) kódolást végez, a kimenet csak ISO MP4-fájlba írható.
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

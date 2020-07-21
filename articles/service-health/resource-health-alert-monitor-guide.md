@@ -3,11 +3,12 @@ title: Resource Health riasztások létrehozása az Azure Portal használatával
 description: Riasztás létrehozása Azure Portal használatával, amely értesíti Önt, ha az Azure-erőforrások elérhetetlenné válnak.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: 2ba7597283ed254b8c03e8ea58c3c7b1257250ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b44df4f63fa2ae2bde9be431e2df268144a036fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85218037"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529216"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Resource Health-riasztások konfigurálása az Azure Portal használatával
 
@@ -18,7 +19,7 @@ Azure Resource Health folyamatosan tájékoztat az Azure-erőforrások aktuális
 > [!NOTE]
 > Resource Health riasztás jelenleg előzetes verzióban érhető el.
 
-Az erőforrás-állapotra vonatkozó értesítések tárolása az [Azure-tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview) történik, mivel a tevékenység naplójában tárolt adatok valószínűleg nagy mennyiségű információval rendelkeznek, külön felhasználói felület áll rendelkezésre, amely megkönnyíti a riasztások megtekintését és beállítását az erőforrás-állapottal kapcsolatos értesítéseken.
+Az erőforrás-állapotra vonatkozó értesítések tárolása az [Azure-tevékenység naplójában](../azure-monitor/platform/platform-logs-overview.md) történik, mivel a tevékenység naplójában tárolt adatok valószínűleg nagy mennyiségű információval rendelkeznek, külön felhasználói felület áll rendelkezésre, amely megkönnyíti a riasztások megtekintését és beállítását az erőforrás-állapottal kapcsolatos értesítéseken.
 Riasztást kaphat, ha az Azure-erőforrás Resource Health-értesítéseket küld az Azure-előfizetésre. A riasztást a következő alapján állíthatja be:
 
 * Az érintett előfizetés.
@@ -34,9 +35,9 @@ Azt is beállíthatja, hogy a rendszer kik számára küldje a riasztást:
 * Válasszon ki egy meglévő műveleti csoportot.
 * Hozzon létre egy új műveleti csoportot (amely a jövőbeli riasztásokhoz használható).
 
-A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) szóló cikkben talál.
+A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../azure-monitor/platform/action-groups.md) szóló cikkben talál.
 
-Az erőforrás-állapot értesítési értesítéseinek Azure Resource Manager sablonok használatával történő konfigurálásával kapcsolatos információkért lásd: [Resource Manager-sablonok](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide).
+Az erőforrás-állapot értesítési értesítéseinek Azure Resource Manager sablonok használatával történő konfigurálásával kapcsolatos információkért lásd: [Resource Manager-sablonok](./resource-health-alert-arm-template-guide.md).
 Riasztás Resource Health Azure Portal használatával
 
 ## <a name="resource-health-alert-using-azure-portal"></a>Riasztás Resource Health az Azure Portal használatával
@@ -58,14 +59,14 @@ Riasztás Resource Health Azure Portal használatával
     1. **Riasztási szabály neve**: az új riasztási szabály neve.
     2. **Leírás**: az új riasztási szabály leírása.
     3. **Riasztás mentése az erőforráscsoporthoz**: válassza ki azt az erőforráscsoportot, amelybe menteni szeretné ezt az új szabályt.
-7. A **Művelettípus**alatt, a legördülő menüből válassza ki azt a műveleti csoportot, amelyet hozzá szeretne rendelni ehhez az új riasztási szabályhoz. Vagy [hozzon létre egy új műveleti csoportot](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) , és rendelje hozzá az új szabályhoz. Új csoport létrehozásához válassza az + **új csoport**lehetőséget.
+7. A **Művelettípus**alatt, a legördülő menüből válassza ki azt a műveleti csoportot, amelyet hozzá szeretne rendelni ehhez az új riasztási szabályhoz. Vagy [hozzon létre egy új műveleti csoportot](../azure-monitor/platform/action-groups.md) , és rendelje hozzá az új szabályhoz. Új csoport létrehozásához válassza az + **új csoport**lehetőséget.
 8. Ha a létrehozás után engedélyezni szeretné a szabályokat, válassza az **Igen** lehetőséget a **szabály engedélyezése a létrehozáskor** beállításnál.
 9. Válassza a **Riasztási szabály létrehozása** lehetőséget.
 
 A rendszer létrehozza a műveletnapló új riasztási szabályát, és egy megerősítő üzenet jelenik meg az ablak jobb felső sarkában.
-Engedélyezheti, letilthatja, szerkesztheti vagy törölheti a szabályokat. További információ a [műveletnapló szabályainak kezeléséről](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#view-and-manage-in-the-azure-portal).
+Engedélyezheti, letilthatja, szerkesztheti vagy törölheti a szabályokat. További információ a [műveletnapló szabályainak kezeléséről](../azure-monitor/platform/alerts-activity-log.md#view-and-manage-in-the-azure-portal).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Resource Healthról:
 
@@ -74,6 +75,6 @@ További információ a Resource Healthról:
 
 Service Health riasztások létrehozása:
 
-* [Riasztások konfigurálása Service Healthhoz](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+* [Riasztások konfigurálása Service Healthhoz](./alerts-activity-log-service-notifications-portal.md) 
 * [Azure Activity log esemény sémája](../azure-monitor/platform/activity-log-schema.md)
-* [Resource Health-riasztások konfigurálása Resource Manager-sablonok használatával](https://docs.microsoft.com/azure/service-health/resource-health-alert-arm-template-guide)
+* [Resource Health-riasztások konfigurálása Resource Manager-sablonok használatával](./resource-health-alert-arm-template-guide.md)

@@ -1,18 +1,18 @@
 ---
 title: A nyeremények összegzésének áttekintése – Azure Marketplace
 description: A nyeremények összegzése az ajánlatával kapcsolatban szerzett pénz részleteit jeleníti meg. Azt is megtudhatja, hogy mikor kapja meg a befizetéseket és mennyit fizet.
-ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.service: marketplace
+ms.topic: article
 author: mingshen
 ms.author: mingshen
-ms.date: 04/24/2020
-ms.openlocfilehash: 29a8eb72814d865cb02bd632e084cec0cc06a1ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 087f7df8f8e3cc5e6e01ff023a88306d5fc4102d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118477"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535960"
 ---
 # <a name="payout-summary-overview"></a>Fizetési összegzés áttekintése
 
@@ -42,19 +42,6 @@ Ezek a kifizetési jelentés eléréséhez szükséges szerepkörök és engedé
 | Adózási profil | Frissíthet | Nincs hozzáférés | Nincs hozzáférés | Nincs hozzáférés | Frissíthet | Nincs hozzáférés |
 | Kifizetés összegzése | Megtekinthető | Nincs hozzáférés | Nincs hozzáférés | Nincs hozzáférés | Megtekinthető | Nincs hozzáférés  |
 | | | | | | | |
-
-## <a name="payout-report-differences"></a>A kifizetési jelentések eltérései
-
-A Cloud Partner Portal (régi) és a partner Center (új) közötti kifizetési jelentés különbségei:
-
-| Felhőpartnerportál | Partneri központ |
-| --- | --- |
-| **Hivatkozás**:https://cloudpartner.azure.com/ | **Hivatkozás**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory éshttps://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **Navigáció**: a bejelentések kifizetésében megadott kifizetési jelentések | **Navigáció**: a partner Centerben megadott kifizetési jelentés – kifizetés ikon |
-| **Hatókör**:<ul><li>A tranzakció/sorban lévő elemek láthatók a folyamatban lévő, begyűjtött és fizetős gyűjteményekhez.</li><li>Jelentéskészítés – az összes sor elemet megjeleníti a beszerzési sorrend létrehozása után, beleértve a folyamatban lévő gyűjteményt és a számlázást, valamint a gyűjtemény állapotát és a sorokra vonatkozó olyan elemeket, amelyek még nem jogosultak a kifizetésre.</li></ul> | **Hatókör**:<ul><li>Megjeleníti a sorban lévő elemeket, miután a rendszer jogosult bevételnek tekinti őket.</li><li>Az ügyfelek először fizetnek a Microsoftnak, majd az ISV-ket láthatják a kifizetési jelentés megkezdéséről.</li><li>A kifizetési jelentés nem jeleníti meg a folyamatban lévő gyűjteményt, és a számlázás folyamatban van.</li></ul> |
-| A **tranzakció nem áll készen a kifizetésre**: a számlázás folyamatban van | A **tranzakció nem áll készen a kifizetésre**: következő becsült fizetés: a kifizetés állapota a feldolgozatlan állapotban van. |
-| **Kifizetés állapota**: n/a | **Kifizetés állapota**:<ul><li>Feldolgozatlan: a kereset fizetésre jogosult.</li><li>Közelgő: a befizetést a következő havi kifizetés keretében küldi el a rendszer a közzétevőnek.</li><li>Elküldve: a rendszer elküldje a fizetést a banknak.</li></ul> |
-| | |
 
 ## <a name="payment-schedules"></a>Fizetési ütemtervek
 

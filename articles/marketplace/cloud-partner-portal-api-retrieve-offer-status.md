@@ -4,18 +4,20 @@ description: API az ajánlat aktuális állapotának lekéréséhez.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: 897c2517c3836e1c3940db02efae0e5d94667a65
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 5652e7b6123a9836c574059e83101a073eea56ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114074"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535875"
 ---
 # <a name="retrieve-offer-status"></a>Ajánlat állapotának lekérése
 
 > [!NOTE]
-> A Cloud Partner Portal API-k integrálva vannak a partneri központtal, és továbbra is működni fognak, miután az ajánlatokat áttelepítik a partner központba. Az integráció kis változásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működni fog a partneri központba való Migrálás után.
+> A Cloud Partner Portal API-k integrálva vannak a-vel, és továbbra is működnek a partner Centerben. Az áttérés kis változásokat mutat be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működőképes legyen a partneri központba való áttérés után. A CPP API-kat csak olyan meglévő termékekhez szabad használni, amelyek már integrálva lettek a partneri központba való áttérés előtt. az új termékeknek a partner Center beküldési API-kat kell használniuk.
 
 Az ajánlat aktuális állapotának beolvasása.
 
@@ -23,13 +25,12 @@ Az ajánlat aktuális állapotának beolvasása.
 
 ## <a name="uri-parameters"></a>URI-paraméterek
 
-|  **Name (Név)**       |   **Leírás**                            |  **Adattípus** |
+|  **Név**       |   **Leírás**                            |  **Adattípus** |
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | Közzétevő azonosítója, például:`Contoso`  |     Sztring     |
 |  offerId        | Az ajánlatot egyedileg azonosító GUID      |     Sztring     |
 |  api-verzió    | Az API legújabb verziója                        |     Dátum       |
 |  |  |
-
 
 ## <a name="header"></a>Fejléc
 
@@ -42,8 +43,7 @@ Az ajánlat aktuális állapotának beolvasása.
 
 ## <a name="body-example"></a>Példa szövegtörzsre
 
-
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ``` json
   {
@@ -116,10 +116,9 @@ Az ajánlat aktuális állapotának beolvasása.
   }
 ```
 
-
 ### <a name="response-body-properties"></a>Válasz törzsének tulajdonságai
 
-|  **Name (Név)**             |    **Leírás**                                                                             |
+|  **Név**             |    **Leírás**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
 |  status               | Az ajánlat állapota. A lehetséges értékek listájáért lásd az [ajánlat állapota](#offer-status) alább. |
 |  üzenet             | Az ajánlattal társított üzenetek tömbje                                                    |
@@ -138,7 +137,7 @@ Az ajánlat aktuális állapotának beolvasása.
 
 ### <a name="response-status-codes"></a>Válasz-állapotkódok
 
-| **Code** |   **Leírás**                                                                                 |
+| **Kód** |   **Leírás**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
 |  200     |  `OK`– A kérés feldolgozása sikeres volt, és az ajánlat aktuális állapota vissza lett állítva. |
 |  400     | `Bad/Malformed request`– A hiba-válasz törzse több információt is tartalmazhat.                 |
@@ -147,7 +146,7 @@ Az ajánlat aktuális állapotának beolvasása.
 
 ### <a name="offer-status"></a>Ajánlat állapota
 
-|  **Name (Név)**                    |    **Leírás**                                       |
+|  **Név**                    |    **Leírás**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
 |  NeverPublished              | Az ajánlatot még soha nem tették közzé.                          |
 |  NotStarted                  | Az ajánlat új, és nem indult el.                            |
@@ -160,7 +159,7 @@ Az ajánlat aktuális állapotának beolvasása.
 
 ### <a name="step-status"></a>Lépés állapota
 
-|  **Name (Név)**                    |    **Leírás**                           |
+|  **Név**                    |    **Leírás**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | A lépés nem indult el.                        |
 |  Folyamatban                  | A lépés fut.                             |

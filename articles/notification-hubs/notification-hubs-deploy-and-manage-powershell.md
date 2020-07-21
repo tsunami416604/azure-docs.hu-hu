@@ -16,11 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e6334659d41ba201cfdde190ccc9bfa0d58009e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d45b98f291a7524dac2927fc74c5dc52400209f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82891201"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529981"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Értesítési központok üzembe helyezése és kezelése a PowerShell-lel
 
@@ -31,7 +32,7 @@ Ez a cikk bemutatja, hogyan használható az Azure Notification Hubs létrehozá
 - Értesítési központ létrehozása
 - Hitelesítő adatok beállítása
 
-Ha új Service Bus-névteret is létre kell hoznia az értesítési központok számára, olvassa el a [Service Bus kezelése a PowerShell használatával](../service-bus-messaging/service-bus-powershell-how-to-provision.md)című témakört.
+Ha új Service Bus-névteret is létre kell hoznia az értesítési központok számára, olvassa el a [Service Bus kezelése a PowerShell használatával](../service-bus-messaging/service-bus-manage-with-ps.md)című témakört.
 
 Az értesítések központjának felügyeletét nem támogatja közvetlenül a Azure PowerShellhoz tartozó parancsmagok. A PowerShell legjobb megközelítése az Microsoft.Azure.NotificationHubs.dll szerelvényre való hivatkozás. A szerelvény elosztása a [Microsoft Azure Notification Hubs NuGet csomaggal](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)történik.
 
@@ -147,9 +148,9 @@ else
 
 ## <a name="additional-resources"></a>További források
 
-- [A Service Bus kezelése a PowerShell használatával](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-- [Service Bus várólisták, témakörök és előfizetések létrehozása PowerShell-parancsfájl használatával](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
-- [Service Bus névtér és az Event hub létrehozása PowerShell-parancsfájl használatával](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
+- [A Service Bus kezelése a PowerShell használatával](../service-bus-messaging/service-bus-manage-with-ps.md)
+- [Service Bus várólisták, témakörök és előfizetések létrehozása PowerShell-parancsfájl használatával](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+- [Service Bus névtér és az Event hub létrehozása PowerShell-parancsfájl használatával](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 
 Néhány előre elkészített szkript letöltése is elérhető:
 
@@ -159,7 +160,7 @@ Néhány előre elkészített szkript letöltése is elérhető:
 [Tag ajánlatok]: https://azure.microsoft.com/pricing/member-offers/
 [Ingyenes próba]: https://azure.microsoft.com/pricing/free-trial/
 [Azure PowerShell telepítése és konfigurálása]: /powershell/azureps-cmdlets-docs
-[.NET API a Notification Hubshoz]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
-[Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
-[New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace
-[Get-AzureSBAuthorizationRule]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbauthorizationrule
+[.NET API a Notification Hubshoz]: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+[Get-AzureSBNamespace]: /powershell/module/servicemanagement/azure/get-azuresbnamespace
+[New-AzureSBNamespace]: /powershell/module/servicemanagement/azure/new-azuresbnamespace
+[Get-AzureSBAuthorizationRule]: /powershell/module/servicemanagement/azure/get-azuresbauthorizationrule

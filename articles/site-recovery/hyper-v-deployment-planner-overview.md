@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: mayg
-ms.openlocfilehash: 3db3d619118be74ec1429ace70f580558c0a6c9d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e4f1931aab056306ac5e9f9e9ef402ca26ec2d19
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134364"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528944"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Az Azure-ba irányuló Hyper-V vész-helyreállítás Azure Site Recovery Deployment Planner
 
@@ -70,7 +70,7 @@ Az eszköz a következő részleteket biztosítja:
 
 ## <a name="support-matrix"></a>Támogatási mátrix
 
-| | **VMware – Azure** |**Hyper-V – Azure**|**Azure – Azure**|**Hyper-V – másodlagos hely**|**VMware – másodlagos hely**
+|**Kategóriák** | **VMware – Azure** |**Hyper-V – Azure**|**Azure – Azure**|**Hyper-V – másodlagos hely**|**VMware – másodlagos hely**
 --|--|--|--|--|--
 Támogatott esetek |Igen|Igen|Nem|Igen*|Nem
 Támogatott verzió | vCenter 6,7, 6,5, 6,0 vagy 5,5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
@@ -90,19 +90,24 @@ Az eszköz Hyper-V esetén három fő fázisból áll: virtuálisgép-lista lek�
  |
 
 ## <a name="steps-to-add-servers-into-trustedhosts-list"></a>Kiszolgálók a TrustedHosts listához való hozzáadásának lépései
-1.  Az összes profillal ellátni kívánt gazdagépnek szerepelnie kell azon virtuális gép TrustedHosts listájában, ahonnan az eszközt telepíteni kívánja. Az ügyfél TrustedHosts listához való hozzáadásához futtassa a következő parancsot a virtuális gépen egy emelt szintű PowerShell-munkamenetből. A virtuális gép Windows Server 2012 R2 vagy Windows Server 2016 rendszerű lehet. 
+1. Az összes profillal ellátni kívánt gazdagépnek szerepelnie kell azon virtuális gép TrustedHosts listájában, ahonnan az eszközt telepíteni kívánja. Az ügyfél TrustedHosts listához való hozzáadásához futtassa a következő parancsot a virtuális gépen egy emelt szintű PowerShell-munkamenetből. A virtuális gép Windows Server 2012 R2 vagy Windows Server 2016 rendszerű lehet. 
 
-            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
-
-1.  A profillal ellátni kívánt összes Hyper-V-gazdagépen a következők megléte szükséges:
+   ```powershell
+   set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+   ```
+1. A profillal ellátni kívánt összes Hyper-V-gazdagépen a következők megléte szükséges:
 
     a. A virtuális gép, amelyen az eszközt futtatni kívánja hozzá van adva a TrustedHosts listájához. Futtassa a következő parancsot a Hyper-V-gazdagépen egy emelt szintű PowerShell-munkamenetből.
 
-            set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+      ```powershell
+      set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
+      ```
 
     b. Engedélyezve van a PowerShell távoli eljáráshívás.
 
-            Enable-PSRemoting -Force
+      ```powershell
+      Enable-PSRemoting -Force
+      ```
 
 ## <a name="download-and-extract-the-deployment-planner-tool"></a>Az üzembehelyezés-tervező eszköz letöltése és kibontása
 

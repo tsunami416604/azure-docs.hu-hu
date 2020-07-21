@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 71d55471de6fc8681f19a56cd67bb9ba7390e026
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248802"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530172"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott felhasználóknak az Azure Notification Hubs
 
@@ -41,7 +41,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez az oktatóanyag feltételezi, hogy létrehozta és konfigurálta az értesítési központot a [leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával](ios-sdk-get-started.md)című cikkben leírtak szerint. Ez az oktatóanyag a [biztonságos leküldéses (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) oktatóanyag előfeltétele is.
-Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a [Mobile apps Ismerkedés a leküldéssel](../app-service-mobile/app-service-mobile-ios-get-started-push.md)című témakört.
+Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a [Mobile apps Ismerkedés a leküldéssel](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)című témakört.
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
@@ -492,7 +492,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
 
     ![iOS-teszt címkézett értesítése][4]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott felhasználóknak, akik a regisztrációjukhoz társított címkével rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet helyalapú értesítéseket, lépjen tovább a következő oktatóanyagra: 
 

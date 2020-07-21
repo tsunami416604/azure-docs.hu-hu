@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300790"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529029"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>A Site Recovery monitorozása az Azure Monitor naplóival
 
@@ -35,7 +36,7 @@ A következőkre lesz szüksége:
 
 - Legalább egy gép védve van egy Recovery Services-tárolóban.
 - Log Analytics munkaterület Site Recovery naplók tárolására. [További](../azure-monitor/learn/quick-create-workspace.md) információ a munkaterület beállításáról.
-- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információk](../azure-monitor/log-query/get-started-portal.md).
+- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információ](../azure-monitor/log-query/get-started-portal.md).
 
 Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási kérdéseket](monitoring-common-questions.md) .
 
@@ -48,7 +49,7 @@ Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási ké
 2. A **diagnosztikai beállítások**területen adjon meg egy nevet, és jelölje be a **Küldés log Analyticsre**jelölőnégyzetet.
 3. Válassza ki a Azure Monitor naplók előfizetését és a Log Analytics munkaterületet.
 4. Válassza a **Azure Diagnostics** lehetőséget a váltásban.
-5. A naplók listából válassza ki az összes naplót a **AzureSiteRecovery**előtaggal. Ezt követően kattintson az **OK** gombra.
+5. A naplók listából válassza ki az összes naplót a **AzureSiteRecovery**előtaggal. Ezután kattintson az **OK** gombra.
 
     ![Munkaterület kiválasztása](./media/monitoring-log-analytics/select-workspace.png)
 
@@ -67,8 +68,8 @@ Az adatváltozási arány adatait és a forrás adatfeltöltési sebességét a 
 7. A telepítés befejezése után lépjen Log Analytics munkaterületre, és kattintson a **Speciális beállítások**elemre. Nyissa meg az **adat** lapot, és kattintson a **Windows-teljesítményszámlálók**elemre. 
 8. A **"+"** gombra kattintva adja hozzá a következő két számlálót a mintavételi időköz 300 másodpercben:
 
-        ASRAnalytics(*)\SourceVmChurnRate 
-        ASRAnalytics(*)\SourceVmThrpRate 
+    - ASRAnalytics(*)\SourceVmChurnRate
+    - ASRAnalytics(*)\SourceVmThrpRate
 
 Az adatforgalom és a feltöltési arány adatok bekerülnek a munkaterületre.
 
@@ -358,6 +359,6 @@ AzureDiagnostics  
 
 A riasztáshoz állítsa 1 **értékre a küszöbértéket** , az utolsó **nap során pedig** az 1440 percet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [További információ a](site-recovery-monitor-and-troubleshoot.md) beépített site Recovery figyelésről.

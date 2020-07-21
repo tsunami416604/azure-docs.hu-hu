@@ -5,12 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 777febb86e6a1fa719b6a7d74c32defebcf3b58c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/17/2020
+ms.openlocfilehash: 4cfbc757b33c10ac559e7f8d6b62b9ccdaed404e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099825"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536096"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Virtuális hálózati szolgáltatásvégpontok és szabályok használata az Azure Database for MariaDB-hez
 
@@ -22,6 +23,8 @@ Virtuális hálózati szabály létrehozásához először [virtuális hálózat
 
 > [!NOTE]
 > Ez a funkció az Azure minden régiójában elérhető, ahol a Azure Database for MariaDB általános célú és a memóriára optimalizált kiszolgálók esetében van telepítve.
+
+Azt is megteheti, hogy [privát hivatkozást](concepts-data-access-security-private-link.md) használ a kapcsolatokhoz. A privát hivatkozás egy magánhálózati IP-címet biztosít a Azure Database for MariaDB-kiszolgáló VNet.
 
 <a name="anch-terminology-and-description-82f"></a>
 
@@ -61,11 +64,6 @@ Az IP-címet a virtuális gép *statikus* IP-címének beszerzésével lehet meg
 
 A statikus IP-cím azonban nehezen kezelhető, és költséges, ha nagy léptékben történik. A virtuális hálózati szabályok könnyebben hozhatók létre és kezelhetők.
 
-### <a name="c-cannot-yet-have-azure-database-for-mariadb-on-a-subnet-without-defining-a-service-endpoint"></a>C. Egy alhálózaton még nem lehet Azure Database for MariaDB a szolgáltatási végpont definiálását nem
-
-Ha a **Microsoft. SQL** Server a virtuális hálózat egyik alhálózatának csomópontja volt, a virtuális hálózaton belüli összes csomópont kommunikálhat a Azure Database for MariaDB-kiszolgálóval. Ebben az esetben a virtuális gépek kommunikálhatnak a Azure Database for MariaDB anélkül, hogy virtuális hálózati szabályokat vagy IP-szabályokat kellene megadnia.
-
-Azonban augusztus 2018-én a Azure Database for MariaDB szolgáltatás még nem tartozik az alhálózathoz közvetlenül hozzárendelhető szolgáltatások közé.
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -118,6 +116,8 @@ Azure Database for MariaDB esetében a virtuális hálózati szabályok funkció
 
 - A VNet szolgáltatás-végpontok támogatása csak a általános célú és a memóriára optimalizált kiszolgálók esetében támogatott.
 
+- Ha a **Microsoft. SQL** engedélyezve van egy alhálózatban, az azt jelzi, hogy csak a VNet-szabályokat szeretné használni a kapcsolódáshoz. Az alhálózaton lévő erőforrások [nem VNet tűzfalszabályok](concepts-firewall-rules.md) nem fognak működni.
+
 - A tűzfalon az IP-címtartományok a következő hálózati elemekre vonatkoznak, a virtuális hálózati szabályok azonban nem:
     - [Helyek közötti (S2S) virtuális magánhálózat (VPN)][vpn-gateway-indexmd-608y]
     - Helyszíni [ExpressRoute][expressroute-indexmd-744v] -on keresztül
@@ -130,7 +130,7 @@ Ha engedélyezni szeretné az áramkörről a Azure Database for MariaDB felé i
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET-tűzfalszabály hozzáadása a kiszolgálóhoz a VNET szolgáltatás végpontjai bekapcsolása nélkül
 
-Pusztán egy tűzfalszabály beállítása nem segít a kiszolgálónak a VNet való biztonságossá tételében. **A VNet** szolgáltatás-végpontokat is be kell kapcsolni a biztonság érvénybe léptetéséhez. Ha bekapcsolja **a**szolgáltatási végpontokat, a VNet-alhálózat az állásidőt, amíg be nem fejeződik a **kikapcsolás** és **a**közötti átmenet. Ez különösen igaz a nagyméretű virtuális hálózatok kontextusában. A **IgnoreMissingServiceEndpoint** jelzővel csökkentheti vagy törölheti az állásidőt az áttérés során.
+Pusztán egy VNet-tűzfalszabály beállítása nem nyújt segítséget a kiszolgálónak a VNet való biztonságossá tételében. **A VNet** szolgáltatás-végpontokat is be kell kapcsolni a biztonság érvénybe léptetéséhez. Ha bekapcsolja **a**szolgáltatási végpontokat, a VNet-alhálózat az állásidőt, amíg be nem fejeződik a **kikapcsolás** és **a**közötti átmenet. Ez különösen igaz a nagyméretű virtuális hálózatok kontextusában. A **IgnoreMissingServiceEndpoint** jelzővel csökkentheti vagy törölheti az állásidőt az áttérés során.
 
 A **IgnoreMissingServiceEndpoint** jelzőt az Azure CLI vagy a portál használatával állíthatja be.
 
@@ -138,7 +138,7 @@ A **IgnoreMissingServiceEndpoint** jelzőt az Azure CLI vagy a portál használa
 - [Azure-beli virtuális hálózatok][vm-virtual-network-overview]
 - [Azure Virtual Network szolgáltatásbeli végpontok][vm-virtual-network-service-endpoints-overview-649d]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A VNet-szabályok létrehozásával kapcsolatos cikkekért lásd:
 - [Azure Database for MariaDB VNet-szabályok létrehozása és kezelése a Azure Portal használatával](howto-manage-vnet-portal.md)
  

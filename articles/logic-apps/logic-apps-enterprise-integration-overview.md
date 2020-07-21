@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 9356cecb22672ae15505d14b5ac73d5baeef09e0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: adf15904d4490647074d6e2b46ac7e9e871dd388
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77191375"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536402"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>B2B vállalati integrációs megoldások Azure Logic Apps és Enterprise Integration Pack
 
@@ -42,7 +42,7 @@ A B2B Logic app-munkafolyamatok EIP való létrehozásának megkezdéséhez a k�
 
 * Térképek és sémák létrehozásához használhatja a Visual Studio 2015 2,0 és a Visual Studio 2015 [Microsoft Azure Logic Apps vállalati integráció eszközeit](https://aka.ms/vsmapsandschemas) .
 
-Miután létrehozott egy integrációs fiókot, és hozzáadja az összetevőkhöz, elindíthatja a VÁLLALATKÖZI munkafolyamatokat ezekkel az összetevőkkel egy logikai alkalmazás létrehozásával a Azure Portalban. Ha most ismerkedik a Logic apps [szolgáltatással, hozzon létre egy alapszintű logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ezeknek az összetevőknek a működéséhez először össze kell kapcsolnia az integrációs fiókot a logikai alkalmazással. Ezután a logikai alkalmazás elérheti az integrációs fiókját. A Visual Studióval vagy a [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp)-lel is létrehozhat, kezelhet és telepíthet logikai alkalmazásokat.
+Miután létrehozott egy integrációs fiókot, és hozzáadja az összetevőkhöz, elindíthatja a VÁLLALATKÖZI munkafolyamatokat ezekkel az összetevőkkel egy logikai alkalmazás létrehozásával a Azure Portalban. Ha most ismerkedik a Logic apps [szolgáltatással, hozzon létre egy alapszintű logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ezeknek az összetevőknek a működéséhez először össze kell kapcsolnia az integrációs fiókot a logikai alkalmazással. Ezután a logikai alkalmazás elérheti az integrációs fiókját. A Visual Studióval vagy a [PowerShell](/powershell/module/az.logicapp)-lel is létrehozhat, kezelhet és telepíthet logikai alkalmazásokat.
 
 A B2B Logic Apps-alkalmazások létrehozásának első lépései:
 
@@ -52,7 +52,7 @@ A B2B Logic Apps-alkalmazások létrehozásának első lépései:
 
 [AS2-üzeneteket küldő és fogadó teljes mértékben működőképes minta logikai alkalmazás üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Kereskedelmi partnerek létrehozása](logic-apps-enterprise-integration-partners.md)
 * [Szerződések létrehozása](../logic-apps/logic-apps-enterprise-integration-agreements.md)

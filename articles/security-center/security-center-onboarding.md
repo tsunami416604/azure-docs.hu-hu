@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
-ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f14f5412b701ce055713fee347175c2dffd5c5b7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77912052"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529417"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Regisztráció az Azure Security Center Standardra a biztonság növelése érdekében
 Frissítsen Security Center szabványra, hogy kihasználhassa a fokozott biztonság kezelése és a fenyegetések elleni védelem előnyeit a hibrid felhőalapú számítási feladatokhoz. Megpróbálkozhat a standard szintű ingyenes kipróbálással is. További információért tekintse meg a Security Center [díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/) .
@@ -104,7 +105,7 @@ A következő ábrán látható módon adhat hozzá számítógépet a **Onboard
 
    A **közvetlen ügynök** panel egy hivatkozást tartalmaz egy Windows-vagy Linux-ügynök letöltésére, valamint az ügynök konfigurálásához használandó munkaterület-azonosítóra és kulcsokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a cikkből megtudhatta, hogyan végezheti el az Azure-beli és nem Azure-erőforrások bevezetését az Security Center fokozott biztonságának kihasználása érdekében. A beérkező erőforrásokkal kapcsolatos további információkért lásd:
 
 - [Az adatgyűjtés engedélyezése](security-center-enable-data-collection.md)

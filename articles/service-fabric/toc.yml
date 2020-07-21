@@ -143,6 +143,8 @@
           href: cluster-security-certificates.md
         - name: Tanúsítványkezelés a Service Fabricben
           href: cluster-security-certificate-management.md
+        - name: Biztonsági alapkonfiguráció az Azure biztonsági teljesítményteszthez
+          href: security-baseline.md
     - name: Terminológia
       href: service-fabric-technical-overview.md
     - name: Alkalmazások létrehozása

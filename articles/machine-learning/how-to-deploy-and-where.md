@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: 57e1ecb080d816898b862951846b15a4b5709e38
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146551"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536385"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése az Azure Machine Learninggel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -441,9 +441,9 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 Ebben a példában a konfiguráció a következő beállításokat adja meg:
 
-* A modellhez Python szükséges.
+* A modellhez Python szükséges
 * A [beléptetési parancsfájl](#script), amely a központilag telepített szolgáltatásnak küldött webes kérelmek kezelésére szolgál.
-* A következtetéshez szükséges Python-csomagokat ismertető Conda-fájl.
+* A következtetéshez szükséges Python-csomagokat ismertető Conda-fájl
 
 További információ a következtetési konfigurációval rendelkező egyéni Docker-rendszerképek használatáról: [modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md).
 
@@ -537,7 +537,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 
 ## <a name="deploy-to-target"></a>Üzembe helyezés célhelyre
 
-Az üzemelő példány a konfiguráció központi telepítési konfigurációjának használatával helyezi üzembe a modelleket. A telepítési folyamat a számítási céltól függetlenül hasonló. Az AK-ra való üzembe helyezés némileg eltérő, mert meg kell adnia egy hivatkozást az AK-fürthöz.
+Az üzemelő példány a konfiguráció központi telepítési konfigurációjának használatával helyezi üzembe a modelleket. A telepítési folyamat a számítási céltól függetlenül hasonló. Az Azure Kubernetes szolgáltatás (ak) üzembe helyezése némileg eltérő, mert meg kell adnia egy hivatkozást az AK-fürthöz.
 
 ### <a name="choose-a-compute-target"></a>Számítási cél kiválasztása
 
@@ -629,7 +629,7 @@ Lásd: [Azure Container instances üzembe helyezése](how-to-deploy-azure-contai
 Lásd: [üzembe helyezés az Azure Kubernetes szolgáltatásban](how-to-deploy-azure-kubernetes-service.md).
 
 ### <a name="ab-testing-controlled-rollout"></a>A/B tesztelés (vezérelt bevezetés)
-További információkért lásd: [ml modellek szabályozott bevezetése](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview) .
+További információ: ML- [modellek szabályozott bevezetése](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview) további információkhoz.
 
 ## <a name="consume-web-services"></a>Webszolgáltatások felhasználása
 
@@ -914,6 +914,12 @@ service_name = 'onnx-mnist-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+A modellek kiértékeléséhez tekintse meg a [webszolgáltatásként üzembe helyezett Azure Machine learning modell felhasználása](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)című témakört. Számos ONNX-projekt protopuf-fájlokat használ a betanítási és érvényesítési adatmennyiségek tömörítéséhez, ami megnehezíti a szolgáltatás által várt adatformátum megismeretét. Modell fejlesztőként dokumentálja a fejlesztőket:
+
+* Bemeneti formátum (JSON vagy bináris)
+* Bemeneti adatok alakja és típusa (például az alakban lévő lebegőpontos tömb [100100, 3])
+* Tartományi információk (például egy képnek, a színtérnek, az összetevők sorrendjének, valamint az értékek normalizálása)
+
 Ha a Pytorch-t használja, a [Pytorch-ről a ONNX-re való exportáláskor a rendszer](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb) az átalakítással és korlátozásokkal kapcsolatos részleteket tartalmaz. 
 
 ### <a name="scikit-learn-models"></a>Scikit – modellek megismerése
@@ -939,7 +945,7 @@ service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
-Megjegyzés: a predict_probat támogató modellek alapértelmezés szerint ezt a metódust fogják használni. Ennek felülbírálásához a következőképpen módosíthatja a POST törzset:
+Megjegyzés: a predict_proba támogató modellek alapértelmezés szerint ezt a metódust fogják használni. Ennek felülbírálásához a következőképpen módosíthatja a POST törzset:
 ```python
 import json
 
@@ -1104,7 +1110,7 @@ A tároló leállításához használja a következő parancsot egy másik rends
 docker kill mycontainer
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Központilag telepített webszolgáltatás törléséhez használja a következőt: `service.delete()` .
 Regisztrált modell törléséhez használja a következőt: `model.delete()` .
@@ -1222,12 +1228,12 @@ def run(request):
 > Azure Machine Learning csak a POST és a GET kérelmeket irányítja a pontozási szolgáltatást futtató tárolók számára. Ez hibákhoz vezethet, mert a böngészők a CORS-kérelmekre vonatkozó beállításokat használnak.
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)
 * [Webszolgáltatás biztonságossá tétele a TLS használatával Azure Machine Learning](how-to-secure-web-service.md)
-* [Webszolgáltatásként üzembe helyezett Azure Machine Learning-modell felhasználása](how-to-consume-web-service.md)
+* [Azure Machine Learning-modell felhasználása webszolgáltatásként](how-to-consume-web-service.md)
 * [A Azure Machine Learning modellek monitorozása a Application Insights](how-to-enable-app-insights.md)
 * [Adatok gyűjtése a termelési modellekhez](how-to-enable-data-collection.md)
 * [Esemény-riasztások és eseményindítók létrehozása a modell üzembe helyezéséhez](how-to-use-event-grid.md)

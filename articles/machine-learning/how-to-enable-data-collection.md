@@ -1,31 +1,34 @@
 ---
 title: Adatok gyűjtése az üzemi modelleken
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan gyűjthet Azure Machine Learning bemeneti modell adatait az Azure Blob Storage-ban.
+description: Ismerje meg, hogyan gyűjthet adatokat egy üzembe helyezett Azure Machine Learning modellből
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.reviewer: laobri
+ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
-ms.date: 11/12/2019
+ms.date: 07/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 75402c71316f7cc7d068c12a240f3123569a00ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7e3aeba14373861d831056678576c52f6b2184f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84432991"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536318"
 ---
-# <a name="collect-data-for-models-in-production"></a>Adatok gyűjtése a termelési modellekhez
+# <a name="collect-data-from-models-in-production"></a>Adatok gyűjtése üzemi modellből
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ez a cikk bemutatja, hogyan gyűjtheti be a bemeneti modell adatait Azure Machine Learningból. Azt is bemutatja, hogyan helyezheti üzembe a bemeneti adatokat egy Azure Kubernetes szolgáltatásbeli (ak-beli) fürtön, és hogyan tárolhatja a kimeneti adatokat az Azure Blob Storage-ban.
+Ez a cikk bemutatja, hogyan gyűjthet adatokat egy Azure Kubernetes Service (ak) fürtön üzembe helyezett Azure Machine Learning modellből. Ezután az összegyűjtött adatokat az Azure Blob Storage tárolja.
 
 A gyűjtemény engedélyezése után az összegyűjtött adatok segítenek a következőkben:
 
-* [Figyelje az adateltolódásokat](how-to-monitor-data-drift.md) , mivel a termelési adatként bekerül a modellbe.
+* [Figyelje az adatok eltolódásait](how-to-monitor-datasets.md) az összegyűjtött éles adatokon.
+
+* Összegyűjtött adatok elemzése [Power bi](#powerbi) vagy [Azure Databricks](#databricks) használatával
 
 * Jobb döntéseket hozhat a modell újratanítása vagy optimalizálása során.
 
@@ -56,15 +59,15 @@ A blob kimeneti adatelérési útja a következő szintaxist követi:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://aka.ms/AMLFree) a virtuális gép létrehozásának megkezdése előtt.
 
-- Telepíteni kell egy AzureMachine learning-munkaterületet, egy helyi könyvtárat, amely tartalmazza a parancsfájlokat, valamint a Pythonhoz készült Azure Machine Learning SDK-t. A telepítésének megismeréséhez tekintse meg [a fejlesztési környezet konfigurálása](how-to-configure-environment.md)című témakört.
+- Telepíteni kell egy Azure Machine Learning munkaterületet, a parancsfájlokat tartalmazó helyi könyvtárat és a Pythonhoz készült Azure Machine Learning SDK-t. A telepítésének megismeréséhez tekintse meg [a fejlesztési környezet konfigurálása](how-to-configure-environment.md)című témakört.
 
 - Szüksége van egy betanított gépi tanulási modellre, amelyet AK-ra kell telepíteni. Ha nem rendelkezik modellel, tekintse meg a [betanítási modell besorolása](tutorial-train-models-with-aml.md) című oktatóanyagot.
 
 - Szüksége van egy AK-fürtre. További információ a létrehozásáról és telepítéséről: a [telepítés és a hol](how-to-deploy-and-where.md).
 
-- [Állítsa be a környezetet](how-to-configure-environment.md) , és telepítse a [Azure Machine learning monitoring SDK](https://aka.ms/aml-monitoring-sdk)-t.
+- [Állítsa be a környezetet](how-to-configure-environment.md) , és telepítse a [Azure Machine learning monitoring SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t.
 
 ## <a name="enable-data-collection"></a>Az adatgyűjtés engedélyezése
 
@@ -74,7 +77,7 @@ Az adatgyűjtés engedélyezéséhez a következőket kell tennie:
 
 1. Nyissa meg a pontozási fájlt.
 
-1. Adja hozzá a [következő kódot](https://aka.ms/aml-monitoring-sdk) a fájl elejéhez:
+1. Adja hozzá a következő kódot a fájl elejéhez:
 
    ```python 
    from azureml.monitoring import ModelDataCollector
@@ -115,41 +118,10 @@ Az adatgyűjtés engedélyezéséhez a következőket kell tennie:
 
 1. Új rendszerkép létrehozásához és a Machine learning-modell üzembe helyezéséhez tekintse meg a [hogyan kell üzembe helyezni és hol](how-to-deploy-and-where.md).
 
-Ha már van olyan szolgáltatás, amelynek függőségei a környezet fájljában és a pontozási fájlban vannak telepítve, az alábbi lépéseket követve engedélyezze az adatgyűjtést:
-
-1. Lépjen [Azure Machine learning](https://ml.azure.com).
-
-1. Nyissa meg a munkaterületet.
-
-1. Válassza a **központi telepítés**lehetőséget,  >  **majd válassza a szolgáltatás**  >  **szerkesztése**lehetőséget.
-
-   ![A szolgáltatás szerkesztése](././media/how-to-enable-data-collection/EditService.PNG)
-
-1. A **Speciális beállítások**területen válassza az **Application Insights diagnosztika és adatgyűjtés engedélyezése**lehetőséget.
-
-1. A módosítások alkalmazásához válassza a **frissítés** elemet.
 
 ## <a name="disable-data-collection"></a>Adatgyűjtés letiltása
 
-Bármikor leállíthatja az adatgyűjtést. A Python-kód vagy a Azure Machine Learning használatával tiltsa le az adatgyűjtést.
-
-### <a name="option-1---disable-data-collection-in-azure-machine-learning"></a>1. lehetőség – adatgyűjtés letiltása a Azure Machine Learningban
-
-1. Jelentkezzen be [Azure Machine Learningba](https://ml.azure.com).
-
-1. Nyissa meg a munkaterületet.
-
-1. Válassza a **központi telepítés**lehetőséget,  >  **majd válassza a szolgáltatás**  >  **szerkesztése**lehetőséget.
-
-   [![Válassza a szerkesztés lehetőséget](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
-
-1. A **Speciális beállítások**területen törölje a **diagnosztika és az adatgyűjtés engedélyezése Application Insights**.
-
-1. A módosítás alkalmazásához válassza a **frissítés** elemet.
-
-Ezeket a beállításokat a munkaterületen is elérheti [Azure Machine Learningban](https://ml.azure.com).
-
-### <a name="option-2---use-python-to-disable-data-collection"></a>2. lehetőség – az adatgyűjtés letiltása a Python használatával
+Bármikor leállíthatja az adatgyűjtést. A Python-kód használatával tiltsa le az adatgyűjtést.
 
   ```python 
   ## replace <service_name> with the name of the web service
@@ -162,7 +134,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
 ### <a name="quickly-access-your-blob-data"></a>BLOB-adatai gyors elérése
 
-1. Jelentkezzen be [Azure Machine Learningba](https://ml.azure.com).
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com).
 
 1. Nyissa meg a munkaterületet.
 
@@ -177,7 +149,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
    # example: /modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/12/31/data.csv
    ```
 
-### <a name="analyze-model-data-using-power-bi"></a>A modell adatai elemzése Power BI használatával
+### <a name="analyze-model-data-using-power-bi"></a><a id="powerbi"></a>A modell adatai elemzése Power BI használatával
 
 1. Töltse le és nyissa meg [Power bi Desktop](https://www.powerbi.com).
 
@@ -203,7 +175,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
     [![Power BI tartalom](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. Válassza az **OK** lehetőséget. Az adatelőre betöltött sorok.
+1. Kattintson az **OK** gombra. Az adatelőre betöltött sorok.
 
     [![Power BI fájlok egyesítése](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
@@ -213,7 +185,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
 1. Megkezdheti az egyéni jelentések összeállítását a modell adatain.
 
-### <a name="analyze-model-data-using-azure-databricks"></a>A modell adatai elemzése Azure Databricks használatával
+### <a name="analyze-model-data-using-azure-databricks"></a><a id="databricks"></a>A modell adatai elemzése Azure Databricks használatával
 
 1. Hozzon létre egy [Azure Databricks munkaterületet](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
 
@@ -227,7 +199,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
     [![Databricks-tábla létrehozása](./media/how-to-enable-data-collection/dbtable.PNG)](././media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
-1. Frissítse az adatai helyét. Például:
+1. Frissítse az adatai helyét. Alább bemutatunk egy példát:
 
     ```
     file_location = "wasbs://mycontainer@storageaccountname.blob.core.windows.net/modeldata/1a2b3c4d-5e6f-7g8h-9i10-j11k12l13m14/myresourcegrp/myWorkspace/aks-w-collv9/best_model/10/inputs/2018/*/*/data.csv" 
@@ -237,3 +209,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
     [![Databricks-telepítő](./media/how-to-enable-data-collection/dbsetup.png)](././media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
 1. Az adatai megtekintéséhez és elemzéséhez kövesse a sablon lépéseit.
+
+## <a name="next-steps"></a>Következő lépések
+
+A gyűjtött adatokra vonatkozó [adateltolódás észlelése](how-to-monitor-datasets.md) .

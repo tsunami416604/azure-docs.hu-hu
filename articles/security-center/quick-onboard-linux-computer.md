@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 72c0c33c973219a9701c8a7c8d45324681e14850
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80435981"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529777"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Rövid útmutató: Linux rendszerű számítógépek felvétele a Security Centerbe
 Az Azure-előfizetések előkészítése után az ügynök kiépítésével engedélyezheti az Azure-on kívül, például a helyszínen vagy más felhőkben futó Linux-erőforrások Security Centerét. Az ügynököt Log Analytics ügynöknek nevezzük, de OMS-ügynöknek is nevezzük.
@@ -34,12 +34,12 @@ Ennek a rövid útmutatónak a megkezdése előtt a Security Center Standard dí
 ## <a name="add-new-linux-computer"></a>Új Linux rendszerű számítógép hozzáadása
 
 1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
-2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő.
+2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. **Security Center – az Áttekintés** megnyílik.
 
    ![Security Center – Áttekintés][2]
 
 3. A Security Center főmenüjében válassza az **Első lépések** elemet.
-4. Válassza az első **lépések** fület ![. első lépések][3]
+4. Válassza az **első lépések** fület. ![ Első lépések][3]
 
 5. Az **Új nem Azure-beli számítógépek hozzáadása** menüpont alatt kattintson a **Konfigurálás** elemre, hogy megjelenítse a Log Analytics-munkaterületek listáját. Ha van ilyen, a lista tartalmazza azt az alapértelmezett munkaterületet is, amelyet a Security Center hozott létre, amikor az automatikus kiépítés engedélyezve volt. Válassza ki ezt a munkaterületet, vagy egy másik használni kívánt munkaterületet.
 
@@ -56,7 +56,7 @@ Ennek a rövid útmutatónak a megkezdése előtt a Security Center Standard dí
 
    ![Az ügynök telepítése][5]
 
-Az ügynök naplói a következő helyen találhatók: */var/opt/Microsoft/omsagent/\<Workspace ID>/log/*
+Az ügynök naplói a következő helyen találhatók: */var/opt/Microsoft/omsagent/ \<workspace id> /log/*
 
   ![Az ügynök naplói][6]
 
@@ -70,7 +70,7 @@ Mostantól egy helyről felügyelheti az Azure-beli virtuális gépeket és a ne
 
   ![icon2](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha már nincs rá szükség, eltávolíthatja az ügynököt a Linux rendszerű számítógépről.
 
 Az ügynök eltávolítása:
@@ -80,7 +80,7 @@ Az ügynök eltávolítása:
 
     `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban egy Linux rendszerű számítógépen kiépített egy ügynököt. Ha többet szeretne megtudni a Security Center használatáról, tekintse meg a biztonsági szabályzat konfigurálásával és az erőforrások biztonságának felmérésével foglalkozó oktatóanyagot is.
 
 > [!div class="nextstepaction"]

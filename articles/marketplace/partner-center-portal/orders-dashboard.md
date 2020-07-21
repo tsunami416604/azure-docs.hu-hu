@@ -3,14 +3,14 @@ title: A partner Center Orders irányítópultja a kereskedelmi piactér elemzé
 description: Megtudhatja, hogyan érheti el a Piactéri ajánlatokra vonatkozó analitikus jelentéseket grafikus és letölthető formátumban.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 4f5e18a2cebc309475c4fbcf84d7baaa28c6e61d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118358"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536130"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>A Rendelések irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -29,12 +29,9 @@ Az **elemzés** menü **orders (megrendelések) irányítópultja** megjeleníti
 - [Megrendelések földrajz szerint](#orders-by-geography)
 - [Megrendelések ajánlatok szerint](#orders-by-offers)
 - [Orders trend per site/Seat](#orders-trend-per-site-versus-per-seat)
-- [Rendelések SKU szerint](#orders-by-skus)
+- [Megrendelések csomagok szerint](#orders-by-plans)
 - [Megrendelések és ülőhelyek trendje](#orders-and-seats-trend)
 - [Rendelés részletei tábla](#order-details-table)
-
-> [!NOTE]
-> Az elemzési jelentések az Cloud Partner Portal (CPP) és a partner Center új kereskedelmi piactér programjában jelennek meg. Az egyik konkrét módszer az, hogy a CPP-beli **értékesítői** elemzések olyan **Orders & használati** lapokkal rendelkeznek, amelyek a használati és a nem használaton alapuló ajánlatok adatait jelenítik meg. A partner Centerben a **megrendelések** oldalon külön lap található az SaaS-ajánlatok számára.
 
 ## <a name="order-dashboard-details"></a>Rendelési irányítópult részletei
 
@@ -76,16 +73,16 @@ A **Orders by ajánlatok** a fánk-gráfok szerint rendezik a rendeléseket (bel
 
 A **helyek közötti** és az munkaállomásonkénti fánk-diagram a helyek és az ügyfelek által megvásárolt munkaállomásonkénti SaaS-utasítások részletezését jelöli (ez a diagram a megszakított rendeléseket is tartalmazza). Az oszlopdiagram a site SaaS és az ügyfelek által vásárolt munkaállomásonkénti SaaS-megrendelések trendjét jelöli (ez a diagram a megszakított rendeléseket is tartalmazza).
 
-### <a name="orders-by-skus"></a>Rendelések SKU szerint
+### <a name="orders-by-plans"></a>Megrendelések csomagok szerint
 
-A **megrendelések az SKU** -diagram szerint az összes ajánlathoz tartozó készletezési egység (SKU) szintjén szerepelnek (ez tartalmazza a megszakított rendeléseket is). A fánk diagram az első öt SKU-megrendelés részletezését jelöli, az oszlopdiagram pedig az első öt SKU megrendeléseinek tendenciáját jelöli.
+A **Orders by Plans (megrendelések a tervek szerint** ) diagram az összes ajánlat (Ez magában foglalja a megszakított megrendelések) megrendelésének trendjét mutatja. A fánk diagram az első öt csomag megrendelésének részletezését jelöli, az oszlopdiagram pedig az első öt csomag rendeléseinek tendenciáját jelöli.
 
 ### <a name="orders-and-seats-trend"></a>Megrendelések és ülőhelyek trendje
 
 A **Orders and seats trend** diagram a legmagasabb számú rendeléssel rendelkező első 50-ajánlatokat mutatja be. Ezek a ranglistán jelennek meg, és a sorrendjük a legmagasabb rendelési szám és a megrendelés százaléka alapján történik.
 
-- **Rendelések SKU szerint**: válasszon egy ajánlatot a diagramon az első öt SKU-hoz tartozó rendelési szám részletezésének megtekintéséhez.
-- **Helyek SKU szerint**: az első öt SKU-ra vonatkozó ülések havi trendje. Ha a kiválasztott ajánlat nem egy munkaállomásonkénti ajánlat, akkor ebben a területen nem jelenik meg az összes információ.
+- **Megrendelések csomagok szerint** – válasszon egy ajánlatot a diagram első öt tervéhez tartozó sorrendek részletezésének megtekintéséhez.
+- **Ülőhelyek csomagok szerint** – az első öt csomaghoz tartozó ülések havi trendje. Ha a kiválasztott ajánlat nem egy munkaállomásonkénti ajánlat, akkor ebben a területen nem jelenik meg az összes információ.
 
 ### <a name="canceled-orders-by-offers"></a>Megszakított megrendelések ajánlatok szerint
 

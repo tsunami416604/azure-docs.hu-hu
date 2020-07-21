@@ -1,5 +1,5 @@
 ---
-title: Képmodell pontozása
+title: A pontszám szintű & Deep ajánló modul használata
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan használhatja a score Wide & Deep ajánló modulját Azure Machine Learning az adathalmazokra vonatkozó javaslati előrejelzések pontozásához.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 1d566d270f9e4b7017171a79fddf58090e21cdec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df723824b2d80694913e32904ed81972381c5bcb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84740063"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536215"
 ---
 # <a name="score-wide-and-deep-recommender"></a>Wide and Deep ajánló pontozása
 
@@ -181,6 +181,6 @@ Ha a széles és mély ajánlóval kísérletezett, majd a modellt éles környe
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg Azure Machine learning elérhető modulok készletét](module-reference.md) . 

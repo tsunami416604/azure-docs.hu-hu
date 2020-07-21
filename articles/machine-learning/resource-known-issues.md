@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: bc41152bb39b0f5022d51dbefe16e3d56107c457
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223458"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536113"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Ismert problémák és hibaelhárítás a Azure Machine Learningban
 
@@ -96,6 +96,22 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
     ```bash
     automl_setup
     ```
+    
+* **Hiba: "Brand" a AutoML helyi számítási vagy Azure Databricks fürtön való futtatásakor**
+
+    Ha egy új környezet 2020. június 10. után lett létrehozva az SDK-1.7.0 vagy a korábbi verzióban, a betanítás sikertelen lehet, mert a rendszer egy, a cpuinfo-csomagban található frissítést használ. (Az 2020. június 10. előtt vagy azt megelőzően létrehozott környezetek nem érintettek, mivel a kísérletek távoli számításokon futnak, mert a rendszer gyorsítótárazott képzési lemezképeket használ.) A probléma megkerüléséhez végezze el a következő két lépés valamelyikét:
+    
+    * Frissítse az SDK-verziót a 1.8.0 vagy újabb verzióra (ez a következőt is visszaminősíti: cpuinfo-5.0.0):
+    
+      ```bash
+      pip install --upgrade azureml-sdk[automl]
+      ```
+    
+    * A cpuinfo és a 5.0.0 telepített verziójának visszaminősítése:
+    
+      ```bash
+      pip install py-cpuinfo==5.0.0
+      ```
   
 * **Hibaüzenet: nem távolítható el a (z) PyYAML**
 
@@ -146,6 +162,12 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
 > Ha áthelyezi a Azure Machine Learning munkaterületet egy másik előfizetésbe, vagy áthelyezi a tulajdonosi előfizetést egy új bérlőre, nem támogatott. Ez hibákhoz vezethet.
 
 * **Azure Portal**: Ha közvetlenül a munkaterületet tekinti meg az SDK-ból vagy a portálról, akkor nem fogja tudni megtekinteni a normál **áttekintő** oldalt a bővítmény előfizetési adataival. Nem válthat másik munkaterületre is. Ha meg kell tekintenie egy másik munkaterületet, lépjen közvetlenül a [Azure Machine learning studióra](https://ml.azure.com) , és keresse meg a munkaterület nevét.
+
+* A **Azure Machine learning Studio webportálon támogatott böngészők**: javasoljuk, hogy az operációs rendszerével kompatibilis legújabb böngészőt használja. A következő böngészők támogatottak:
+  * Microsoft Edge (az új Microsoft Edge, legújabb verzió. Nem a Microsoft Edge örökölt)
+  * Safari (csak Mac, legújabb verzió)
+  * Chrome (legújabb verzió)
+  * Firefox (legújabb verzió)
 
 ## <a name="set-up-your-environment"></a>A környezet kialakítása
 
@@ -217,9 +239,16 @@ Az adatdrift figyelőkkel kapcsolatos korlátozások és ismert problémák:
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Designer
 
-Ismert problémák:
+* **Hosszú számítási előkészítési idő:**
 
-* **Hosszú számítási előkészítési idő**: lehet, hogy néhány perc vagy még hosszabb, amikor először csatlakozik vagy létrehoz egy számítási célt. 
+Előfordulhat, hogy néhány perc vagy még ennél is több van, amikor először csatlakozik vagy létrehoz egy számítási célt. 
+
+A modell adatgyűjtője akár 10 percet is igénybe vehet, amíg az adatok megérkeznek a blob Storage-fiókba. Várjon 10 percet, hogy az alábbi cellák biztosan fussanak.
+
+```python
+import time
+time.sleep(600)
+```
 
 ## <a name="train-models"></a>Modellek betanítása
 
@@ -340,7 +369,7 @@ Ha egy távoli feladatból származó számítási célra hajt végre felügyele
 
 Ha például megpróbál létrehozni vagy csatolni egy számítási célt egy olyan ML-folyamatból, amely távoli végrehajtásra van elküldve, a rendszer hibaüzenetet küld.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További hibaelhárítási cikkek a Azure Machine Learning:
 

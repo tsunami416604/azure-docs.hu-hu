@@ -1,20 +1,20 @@
 ---
 title: Bejelentkezés engedélyezése Azure Machine Learning
 description: Megtudhatja, hogyan engedélyezheti a naplózást Azure Machine Learning az alapértelmezett Python-naplózási csomaggal, valamint az SDK-specifikus funkciók használatával.
-ms.author: trbye
-author: trevorbye
+ms.author: larryfr
+author: BlackMist
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.reviewer: trbye
 ms.date: 03/05/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 25c0f906cdf8a351d868dcae0b794d4ea833466e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8f9923f9a5c4954fbc4682f464100b18eb469eb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560240"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536198"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Bejelentkezés engedélyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -112,6 +112,6 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése](how-to-enable-app-insights.md)

@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 09b77862ad3379efeb8b3063a9d6c60b062ca2d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b618513965298889fb656750419dedd79729f7f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905124"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536470"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Régiók közötti vész-helyreállítás beállítása a Azure Logic Apps integrációs fiókjaihoz
 
@@ -59,7 +60,7 @@ Logic Apps integrációs fiókban az üzletmenet folytonossága a X12, az AS2 é
 
 Katasztrófa esetén, ha az elsődleges régió nem érhető el az üzletmenet folytonossága érdekében, a másodlagos régió felé irányuló közvetlen forgalom. Egy másodlagos régió segíti a vállalkozásokat a funkciók gyors helyreállításában, hogy azok megfeleljenek a partnerek által elfogadott RPO/RTO. Emellett az egyik régióból egy másik régióba történő feladatátvételre irányuló erőfeszítéseket is csökkentheti. 
 
-Az elsődleges régióból a másodlagos régióba való másolás során várható késés történt. Ha el szeretné kerülni, hogy a rendszer elküldje a duplikált vezérlőelemeket a partnereknek a katasztrófa-események során, a másodlagos régión belüli szerződésekben a [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)használatával növelje a vezérlőelem-számokat.
+Az elsődleges régióból a másodlagos régióba való másolás során várható késés történt. Ha el szeretné kerülni, hogy a rendszer elküldje a duplikált vezérlőelemeket a partnereknek a katasztrófa-események során, a másodlagos régión belüli szerződésekben a [PowerShell-parancsmagok](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)használatával növelje a vezérlőelem-számokat.
 
 ## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Visszatérés egy elsődleges régióba, a katasztrófa utáni esemény után
 
@@ -67,7 +68,7 @@ Ha elérhetővé kívánja tenni az elsődleges régiót, kövesse az alábbi l�
 
 1. A másodlagos régióban lévő partnerektől érkező üzenetek fogadásának leállítása.  
 
-2. A [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)használatával növelje az összes elsődleges régióra vonatkozó szerződés generált vezérlőelem-számát.  
+2. A [PowerShell-parancsmagok](/powershell/module/azurerm.logicapp/set-azurermintegrationaccountgeneratedicn?view=azurermps-6.13.0)használatával növelje az összes elsődleges régióra vonatkozó szerződés generált vezérlőelem-számát.  
 
 3. Közvetlen forgalom a másodlagos régióból az elsődleges régióba.
 
@@ -237,7 +238,6 @@ Az AS2 protokollt használó dokumentumok üzletmenet-folytonossága az üzenet 
 
 Az időtartam alapján a növekményes futtatókörnyezet állapota az elsődleges régióból a másodlagos régióba replikálódik. Katasztrófa esetén, ha az elsődleges régió nem érhető el, az üzletmenet folytonossága érdekében a másodlagos régió felé irányuló közvetlen forgalom. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [B2B-üzenetek monitorozása Azure Monitor-naplókkal](../logic-apps/monitor-b2b-messages-log-analytics.md)
-

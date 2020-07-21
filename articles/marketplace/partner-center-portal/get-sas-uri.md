@@ -3,22 +3,22 @@ title: Virtuálisgép-lemezképek közös hozzáférés-aláírási URI-ja – A
 description: Közös hozzáférésű aláírás (SAS) URI létrehozása a virtuális merevlemezekhez (VHD) az Azure Marketplace-en.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: article
 author: anbene
 ms.author: mingshen
-ms.date: 04/09/2020
-ms.openlocfilehash: 0fbd7aa42bf65ee0e553282b9961f1a9302b7903
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 569d9ce04422230c1d6b9ebb0957f01c320c5ba0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121724"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536147"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>A virtuálisgép-rendszerkép közös hozzáférésű aláírási URI-azonosítójának beolvasása
 
 Ez a cikk azt ismerteti, hogyan hozhatja ki a közös hozzáférésű aláírás (SAS) egységes erőforrás-azonosítóját (URI) az egyes virtuális merevlemezekhez (VHD).
 
-A közzétételi folyamat során meg kell adnia egy URI-t minden olyan virtuális merevlemezhez, amely hozzá van rendelve a csomagokhoz. Ezeket a csomagokat korábban SKU-ként, vagy készlet-tartási egységként emlegetik. A minősítési folyamat során a Microsoftnak hozzá kell férnie a virtuális merevlemezekhez. Ezt az URI-t a partner Center **csomagok** lapján adhatja meg.
+A közzétételi folyamat során meg kell adnia egy URI-t minden olyan virtuális merevlemezhez, amely hozzá van rendelve a csomagokhoz (korábbi nevén SKU). A minősítési folyamat során a Microsoftnak hozzá kell férnie a virtuális merevlemezekhez. Ezt az URI-t a partner Center **csomagok** lapján adhatja meg.
 
 Ha SAS URI-ket hoz létre a virtuális merevlemezekhez, kövesse az alábbi követelményeket:
 
@@ -110,7 +110,7 @@ A SAS-cím (URL) létrehozásához két gyakori eszköz használható:
 
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
-Ismételje meg ezeket a lépéseket a közzétenni kívánt SKU-k minden virtuális merevlemezén.
+Ismételje meg ezeket a lépéseket a közzétenni kívánt csomagok minden virtuális merevlemezén.
 
 ## <a name="verify-the-sas-uri"></a>Az SAS URI ellenőrzése
 

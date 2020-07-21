@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: e9ba5a516293eb72a715dc9d0df7db4d5a4ea3c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5baa4d4d968adb25b5520ca91149970f5c5578e9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76907980"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536268"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-b2b-messages-in-azure-logic-apps"></a>Azure Monitor-naplók beállítása és diagnosztikai adatok begyűjtése a B2B-üzenetekre vonatkozóan az Azure Logic Appsben
 
-Miután beállította a VÁLLALATKÖZI kommunikációt a kereskedelmi partnerek között az integrációs fiókban, ezek a partnerek olyan protokollok használatával válthatnak be üzeneteket, mint az AS2, a X12 és a EDIFACT. Annak ellenőrzését, hogy a kommunikáció a várt módon működik-e, beállíthat [Azure monitor naplókat](../azure-monitor/platform/data-platform-logs.md) az integrációs fiókjához. [Azure monitor](../azure-monitor/overview.md) segít a felhő és a helyszíni környezetek monitorozásában, így könnyebben megtarthatja a rendelkezésre állást és a teljesítményt. Azure Monitor naplók használatával rögzítheti és tárolhatja a futtatókörnyezet adatait és eseményeit, például az események aktiválását, az események futtatását és a műveleti eseményeket egy [log Analytics munkaterületen](../azure-monitor/platform/resource-logs-collect-workspace.md). Az üzenetek esetében a naplózás a következő információkat is gyűjti:
+Miután beállította a VÁLLALATKÖZI kommunikációt a kereskedelmi partnerek között az integrációs fiókban, ezek a partnerek olyan protokollok használatával válthatnak be üzeneteket, mint az AS2, a X12 és a EDIFACT. Annak ellenőrzését, hogy a kommunikáció a várt módon működik-e, beállíthat [Azure monitor naplókat](../azure-monitor/platform/data-platform-logs.md) az integrációs fiókjához. [Azure monitor](../azure-monitor/overview.md) segít a felhő és a helyszíni környezetek monitorozásában, így könnyebben megtarthatja a rendelkezésre állást és a teljesítményt. Azure Monitor naplók használatával rögzítheti és tárolhatja a futtatókörnyezet adatait és eseményeit, például az események aktiválását, az események futtatását és a műveleti eseményeket egy [log Analytics munkaterületen](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). Az üzenetek esetében a naplózás a következő információkat is gyűjti:
 
 * Üzenetek száma és állapota
 * Nyugták állapota
@@ -162,7 +163,7 @@ A logikai alkalmazás futtatása után megtekintheti a Log Analytics munkaterül
 
    * To search results with prebuilt queries, select **Favorites**.
 
-   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../log-analytics/log-analytics-log-searches.md).
+   * Learn [how to build queries by adding filters](../logic-apps/create-monitoring-tracking-queries.md). Or learn more about [how to find data with log searches in Azure Monitor logs](../azure-monitor/log-query/log-query-overview.md).
 
    * To change query in the search box, update the query with the columns and values that you want to use as filters.
 -->
@@ -186,10 +187,10 @@ Az alábbiakban láthatók az egyes AS2-üzenetek tulajdonságainak leírása.
 | **Logikai alkalmazás** | A logikai alkalmazás, amelyben az AS2-műveletek vannak beállítva |
 | **Állapot** | Az AS2-üzenet állapota <br>Sikeres = kapott vagy elküldött egy érvényes AS2-üzenetet. Nincs beállítva MDN. <br>Sikeres = kapott vagy elküldött egy érvényes AS2-üzenetet. A MDN beállítása és fogadása, vagy a MDN küldése történik. <br>Sikertelen = érvénytelen AS2-üzenetet kapott. Nincs beállítva MDN. <br>Függőben = fogadott vagy küldött egy érvényes AS2-üzenetet. A MDN beállítása megtörténik, és a rendszer MDN vár. |
 | **NYUGTA** | A MDN üzenet állapota <br>Elfogadva = pozitív MDN kapott vagy küldött. <br>Függőben = várakozás egy MDN fogadására vagy elküldésére. <br>Elutasítva = fogadott vagy negatív MDN küldött. <br>Nem kötelező = a MDN nincs beállítva a szerződésben. |
-| **Irányba** | Az AS2-üzenet iránya |
+| **Irány** | Az AS2-üzenet iránya |
 | **Követési azonosító** | A logikai alkalmazásban lévő összes eseményindítót és műveletet összekapcsoló azonosító |
 | **Üzenetazonosító** | Az AS2-üzenet azonosítója az AS2-üzenetek fejlécében |
-| **Időbélyeg** | Az az idő, amikor az AS2-művelet feldolgozta az üzenetet |
+| **Timestamp** | Az az idő, amikor az AS2-művelet feldolgozta az üzenetet |
 |||
 
 <!--
@@ -219,12 +220,12 @@ Az alábbiakban az egyes X12-üzenetekhez tartozó tulajdonságok leírását ol
 | **Logikai alkalmazás** | Az a logikai alkalmazás, amelyben a X12 műveletek be vannak állítva |
 | **Állapot** | A X12 üzenet állapota <br>Sikeres = fogadott vagy elküldött egy érvényes X12 üzenetet. Nincs beállítva funkcionális ACK. <br>Sikeres = fogadott vagy elküldött egy érvényes X12 üzenetet. A funkcionális ACK beállítása és fogadása, vagy egy funkcionális ACK küldése. <br>Sikertelen = kapott vagy érvénytelen X12 üzenetet küldött. <br>Függőben = fogadott vagy küldött egy érvényes X12 üzenetet. A funkcionális ACK beállítása be van állítva, és a rendszer funkcionális ACK-t vár. |
 | **NYUGTA** | Funkcionális ACK (997) állapot <br>Elfogadva = kapott vagy pozitív működési nyugtát küldött. <br>Elutasítva = kapott vagy negatív működési nyugtát küldött. <br>Függőben = várt működési ACK, de nem érkezett. <br>Függőben = létrehozta a funkcionális ACK-t, de nem tud elküldeni a partnernek. <br>Nem kötelező = a funkcionális ACK nincs beállítva. |
-| **Irányba** | A X12 üzenet iránya |
+| **Irány** | A X12 üzenet iránya |
 | **Követési azonosító** | A logikai alkalmazásban lévő összes eseményindítót és műveletet összekapcsoló azonosító |
 | **Msg típusa** | Az EDI X12 üzenet típusa |
 | **ICN** | A X12-üzenethez tartozó Interchange Control-szám |
 | **TSCN** | A X12 üzenethez tartozó készlettranzakció-készlet vezérlőelem száma |
-| **Időbélyeg** | Az az idő, amikor a X12 művelet feldolgozta az üzenetet |
+| **Timestamp** | Az az idő, amikor a X12 művelet feldolgozta az üzenetet |
 |||
 
 <!--
@@ -254,12 +255,12 @@ Az alábbiakban az egyes EDIFACT-üzenetekhez tartozó tulajdonságok leírásá
 | **Logikai alkalmazás** | Az a logikai alkalmazás, amelyben a EDIFACT műveletek be vannak állítva |
 | **Állapot** | A EDIFACT üzenet állapota <br>Sikeres = fogadott vagy elküldött egy érvényes EDIFACT üzenetet. Nincs beállítva funkcionális ACK. <br>Sikeres = fogadott vagy elküldött egy érvényes EDIFACT üzenetet. A funkcionális ACK beállítása és fogadása, vagy egy funkcionális ACK küldése. <br>Sikertelen = kapott vagy érvénytelen EDIFACT üzenetet küldött <br>Függőben = fogadott vagy küldött egy érvényes EDIFACT üzenetet. A funkcionális ACK beállítása be van állítva, és a rendszer funkcionális ACK-t vár. |
 | **NYUGTA** | Funkcionális ACK (CONTRL) állapot <br>Elfogadva = kapott vagy pozitív működési nyugtát küldött. <br>Elutasítva = kapott vagy negatív működési nyugtát küldött. <br>Függőben = várt működési ACK, de nem érkezett. <br>Függőben = létrehozta a funkcionális ACK-t, de nem tud elküldeni a partnernek. <br>Nem kötelező = a funkcionális ACK nincs beállítva. |
-| **Irányba** | A EDIFACT üzenet iránya |
+| **Irány** | A EDIFACT üzenet iránya |
 | **Követési azonosító** | A logikai alkalmazásban lévő összes eseményindítót és műveletet összekapcsoló azonosító |
 | **Msg típusa** | A EDIFACT üzenet típusa |
 | **ICN** | A EDIFACT-üzenethez tartozó Interchange Control-szám |
 | **TSCN** | A EDIFACT üzenethez tartozó készlettranzakció-készlet vezérlőelem száma |
-| **Időbélyeg** | Az az idő, amikor a EDIFACT művelet feldolgozta az üzenetet |
+| **Timestamp** | Az az idő, amikor a EDIFACT művelet feldolgozta az üzenetet |
 |||
 
 <!--
@@ -276,6 +277,6 @@ Here are the name formats for each downloaded EDIFACT message folder and files.
 |||
 -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Monitorozási és nyomkövetési lekérdezések létrehozása](../logic-apps/create-monitoring-tracking-queries.md)

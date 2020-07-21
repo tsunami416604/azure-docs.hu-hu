@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: 'Oktatóanyag: szabályok konfigurálása motor – Azure bejárati ajtó'
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a szabályok motorját a Azure Portal és a parancssori felületen.
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: a931a12889cec67baf6ef2db09091c8ec581ef08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b40bb0e426571acc66d4f5f1b992fb4c6b67494a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321562"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536952"
 ---
 # <a name="configure-your-rules-engine"></a>A szabályok motor konfigurálása
 
@@ -90,7 +90,7 @@ az network front-door routing-rule update -g {rg} -f {front_door} -n {routing_ru
 
 További információkért tekintse meg az AFD Rules Engine parancsainak teljes listáját [itt](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/rules-engine?view=azure-cli-latest).   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [AFD-szabályok motorról](front-door-rules-engine.md). 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).

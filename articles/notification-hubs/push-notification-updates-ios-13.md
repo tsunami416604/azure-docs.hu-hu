@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b3ea9f07475affca76c8a3ff71de61abcadde8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74228144"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529709"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Azure Notification Hubs frissítések iOS 13 rendszerhez
 
@@ -57,7 +58,7 @@ request.Headers.Add("ServiceBusNotification-Format", "apple");
 request.Headers.Add("apns-push-type", "alert");
 ```
 
-Ha az Azure Notification Hubs olyan értesítést észlel, amely nem rendelkezik a `apns-push-type` készlettel, a szolgáltatás kikövetkezteti a leküldéses típust az értesítési kérelemből, és automatikusan beállítja az értéket. Ne feledje, hogy az Azure Notification Hubs-t úgy kell konfigurálnia, hogy jogkivonat-alapú hitelesítést használjon a szükséges fejléc beállításához. További információ: [jogkivonat-alapú (http/2) hitelesítés a APNS](notification-hubs-push-notification-http2-token-authentification.md).
+Ha az Azure Notification Hubs olyan értesítést észlel, amely nem rendelkezik a `apns-push-type` készlettel, a szolgáltatás kikövetkezteti a leküldéses típust az értesítési kérelemből, és automatikusan beállítja az értéket. Ne feledje, hogy az Azure Notification Hubs-t úgy kell konfigurálnia, hogy jogkivonat-alapú hitelesítést használjon a szükséges fejléc beállításához. További információ: [jogkivonat-alapú (http/2) hitelesítés a APNS](./notification-hubs-push-notification-http2-token-authentication.md).
 
 ## <a name="apns-priority"></a>APNS prioritása
 

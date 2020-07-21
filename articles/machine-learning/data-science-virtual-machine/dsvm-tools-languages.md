@@ -11,11 +11,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c81f2a23474ff98c202cdbe5b455dd3d15535c96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d3ab058d76186f73fa1a985d7e8af38dbd7a6f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557465"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536181"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>A Data Science Virtual Machine támogatott nyelvek 
 
@@ -23,7 +24,7 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 ## <a name="python-windows-server-2016-edition"></a>Python (Windows Server 2016 kiadás)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | Python 2,7 és 3,7 |
 | Támogatott DSVM-kiadások      | Windows Server 2016     |
@@ -67,13 +68,14 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 ## <a name="python-linux-edition"></a>Python (Linux kiadás)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | Python 2,7 és 3,5 |
 | Támogatott DSVM-kiadások      | Linux   |
 | Hogyan van konfigurálva/telepítve a DSVM?  | Két globális `conda` környezet jön létre: <br /> * `root`a-ben található környezet a `/anaconda/` Python 2,7. <br/> * `py35`a-ben található környezet a `/anaconda/envs/py35` Python 3,5.       |
 | Mintákra mutató hivatkozások      | A Pythonhoz készült minta Jupyter-jegyzetfüzetek is elérhetők.     |
 | A DSVM kapcsolódó eszközök      | PySpark, R, Julia      |
+
 ### <a name="how-to-use-and-run-it"></a>Használat és Futtatás    
 
 * Futtatás terminálon:
@@ -105,13 +107,14 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 ## <a name="r"></a>R
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | Microsoft R Open 3. x (100%-kompatibilis a CRAN-R-vel)<br /> Microsoft R Server 9. x Developer Edition (skálázható, nagyvállalati használatra kész R platform)|
 | Támogatott DSVM-kiadások      | Linux, Windows     |
 | Hogyan van konfigurálva/telepítve a DSVM?  | Windows`C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux`/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Mintákra mutató hivatkozások      | Az R-hez készült minta Jupyter-jegyzetfüzeteket tartalmazza.     |
 | A DSVM kapcsolódó eszközök      | Sparker, Python, Julia      |
+
 ### <a name="how-to-use-and-run-it"></a>Használat és Futtatás    
 
 **Windows**:
@@ -153,13 +156,14 @@ A Data Science Virtual Machine (DSVM) számos előre elkészített nyelvet és f
 
 ## <a name="julia"></a>Julia
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott nyelvi verziók | 0,6 |
 | Támogatott DSVM-kiadások      | Linux, Windows     |
 | Hogyan van konfigurálva/telepítve a DSVM?  | Windows: telepítve`C:\JuliaPro-VERSION`<br /> Linux: telepítve`/opt/JuliaPro-VERSION`    |
 | Mintákra mutató hivatkozások      | A Julia-hez készült minta Jupyter-jegyzetfüzetek beletartoznak.     |
 | A DSVM kapcsolódó eszközök      | Python, R      |
+
 ### <a name="how-to-use-and-run-it"></a>Használat és Futtatás    
 
 **Windows**:

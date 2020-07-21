@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: b03ac554ed578633b55ffa2fde4838c691d04d59
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d7ee72b5f6441f2b3b3ea9a7eaa41a3e1b650745
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132198"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86528961"
 ---
 # <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>Becsült költségbecslés a VMware Deployment Planner 
 
@@ -150,16 +150,16 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Támogatott pénznemek
 Az Azure Site Recovery Deployment Planner az alábbi pénznemek bármelyikének használatával létre tudja hozni a költségjelentést.
 
-|Currency (Pénznem)|Name||Currency (Pénznem)|Name||Currency (Pénznem)|Name|
+|Currency (Pénznem)|Name|Currency (Pénznem)|Name|Currency (Pénznem)|Name|
 |---|---|---|---|---|---|---|---|
-|ARS|Argentin peso ($)||AUD|Ausztrál dollár ($)||BRL|Brazil real (R$)|
-|CAD|Kanadai dollár ($)||CHF|Svájci frank (chf)||DKK|Dán korona (kr)|
-|EUR|Euró (€)||GBP|Angol font (£)||HKD|Hongkongi dollár (HK$)|
-|IDR|Indonéz rúpia (Rp)||INR|Indiai rúpia (₹)||JPY|Japán jen (¥)|
-|KRW|Koreai won (₩)||MXN|Mexikói peso (MX$)||MYR|Maláj ringgit (RM$)|
-|NOK|Norvég korona (kr)||NZD|Új-zélandi dollár ($)||RUB|Orosz rubel (руб)|
-|SAR|Szaúdi riál (SR)||SEK|Svéd korona (kr)||TWD|Tajvani új dollár (NT$)|
-|TRY|Török líra (TL)||USD| Amerikai dollár ($)||ZAR|Dél-afrikai rand (R)|
+|ARS|Argentin peso ($)|AUD|Ausztrál dollár ($)|BRL|Brazil real (R$)|
+|CAD|Kanadai dollár ($)|CHF|Svájci frank (chf)|DKK|Dán korona (kr)|
+|EUR|Euró (€)|GBP|Angol font (£)|HKD|Hongkongi dollár (HK$)|
+|IDR|Indonéz rúpia (Rp)|INR|Indiai rúpia (₹)|JPY|Japán jen (¥)|
+|KRW|Koreai won (₩)|MXN|Mexikói peso (MX$)|MYR|Maláj ringgit (RM$)|
+|NOK|Norvég korona (kr)|NZD|Új-zélandi dollár ($)|RUB|Orosz rubel (руб)|
+|SAR|Szaúdi riál (SR)|SEK|Svéd korona (kr)|TWD|Tajvani új dollár (NT$)|
+|TRY|Török líra (TL)|USD| Amerikai dollár ($)|ZAR|Dél-afrikai rand (R)|
 
 ## <a name="next-steps"></a>Következő lépések
 Többet tudhat meg az [Azure-ba migrált VMware virtuális gépek védelméről az Azure Site Recoveryvel](./vmware-azure-tutorial.md).

@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9da629929ca88f406dc503710477104be94c47e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ae4b984d0ce66dec2a32b3431301ed97fe2c3fd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71212190"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86530134"
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs Rich push
 
@@ -31,7 +31,7 @@ Ha szeretné, hogy a felhasználók Instant Rich Content szolgáltatással legye
 
 Ez az oktatóanyag kompatibilis az iOS 7 & 8 rendszerrel.
 
-  ![][IOS1]
+  ![Három képernyőkép: egy alkalmazás képernyőjén egy leküldéses gomb, egy eszközön lévő kezdőképernyő és egy vissza gombbal rendelkező Windows-embléma.][IOS1]
 
 Magas szinten:
 
@@ -49,7 +49,7 @@ Magas szinten:
 3. Kattintson a Megoldáskezelő **összes fájl megjelenítése** elemre, majd kattintson a jobb gombbal a **projektbe felvenni**kívánt mappára.
 4. Ha a rendszerkép be van jelölve, módosítsa a Build műveletét Tulajdonságok ablak a **beágyazott erőforrásra**.
 
-    ![][IOS2]
+    ![Képernyőkép a Megoldáskezelőról. A képfájl ki van választva, és a tulajdonságok ablaktáblájában a beágyazott erőforrás a Build műveletként jelenik meg.][IOS2]
 5. A alkalmazásban `Notifications.cs` adja hozzá a következő using utasítást:
 
     ```csharp
@@ -137,7 +137,7 @@ Magas szinten:
     }
     ```
 8. Most újra telepítjük ezt az alkalmazást egy Azure-webhelyre, hogy minden eszközről elérhetővé váljon. Kattintson jobb gombbal az **AppBackend** projektre, és válassza a **Publish** (Közzététel) lehetőséget.
-9. A közzétételi célként válassza az Azure-webhely lehetőséget. Jelentkezzen be az Azure-fiókjával, és válasszon ki egy meglévő vagy új webhelyet, és jegyezze fel a **cél URL** -tulajdonságot a **kapcsolatok** lapon. Ebben az oktatóanyagban a *háttérbeli végpontként* erre az URL-címre fogunk hivatkozni. Kattintson a **Publish** (Közzététel) gombra.
+9. A közzétételi célként válassza az Azure-webhely lehetőséget. Jelentkezzen be az Azure-fiókjával, és válasszon ki egy meglévő vagy új webhelyet, és jegyezze fel a **cél URL** -tulajdonságot a **kapcsolatok** lapon. Ebben az oktatóanyagban a *háttérbeli végpontként* erre az URL-címre fogunk hivatkozni. Kattintson a **Közzététel** gombra.
 
 ## <a name="modify-the-ios-project"></a>Az iOS-projekt módosítása
 
@@ -146,12 +146,12 @@ Most, hogy módosította az alkalmazás-hátteret, hogy csak az értesítés *az
 1. Nyissa meg az iOS-projektet, és engedélyezze a távoli értesítéseket a **célok** szakaszának fő alkalmazási céljával.
 2. Kattintson a **képességek lehetőségre**, kapcsolja be a **háttér üzemmódot**, és jelölje be a **távoli értesítések** jelölőnégyzetet.
 
-    ![][IOS3]
+    ![Képernyőfelvétel a képességek képernyőt bemutató iOS-projektről. A háttérben lévő üzemmód be van kapcsolva, és a távoli értesítések jelölőnégyzet be van jelölve.][IOS3]
 3. Nyissa meg a következőt `Main.storyboard` :, és győződjön meg róla, hogy rendelkezik egy nézet-vezérlővel (a jelen oktatóanyag Kezdőlap nézet vezérlője) az [értesítési felhasználói](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) oktatóanyagban.
 4. Vegyen fel egy **navigációs vezérlőt** a storyboardba, és a vezérlőre húzással húzza a Kezdőlap nézet vezérlőt, hogy a **legfelső szintű nézetet** adja meg a navigáláshoz. Győződjön meg arról, hogy a csak a navigációs vezérlőhöz van kiválasztva a **kezdeti nézet vezérlő** az attributes Inspector-ben.
 5. Adjon hozzá egy **nézet vezérlőt** a storyboardhoz, és adjon hozzá egy **képnézetet**. Ez az oldal a felhasználók számára jelenik meg, ha úgy dönt, hogy további információkat szeretne megtudni az értesítésre kattintva. A történetnek a következőképpen kell kinéznie:
 
-    ![][IOS4]
+    ![Képernyőkép egy történetről. Három alkalmazás-képernyő látható: egy navigációs nézet, egy otthoni nézet és egy Képnézet.][IOS4]
 6. Kattintson a storyboard **Kezdőlap nézet vezérlőre** , és győződjön meg róla, hogy a **homeViewController** az Identity Inspector alatt **Egyéni OSZTÁLYként** és **storyboard-azonosítóként** rendelkezik.
 7. Tegye ugyanezt a Képnézet vezérlőre **imageViewController**.
 8. Ezután hozzon létre egy új, a **imageViewController** nevű View Controller osztályt az imént létrehozott felhasználói felület kezeléséhez.

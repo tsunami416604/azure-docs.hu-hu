@@ -11,11 +11,12 @@ ms.date: 01/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b5682334bd3fb23fbbebed5fc8ece6d55e9c5652
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1aab92bd192119f72bb057347f5a3ea2d980336
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81733228"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536850"
 ---
 # <a name="cloud-to-device-communications-guidance"></a>A felhőből az eszközre irányuló kommunikációs útmutató
 
@@ -31,12 +32,12 @@ A IoT Hub három lehetőséget biztosít az eszközök alkalmazásai számára a
 
 Itt látható a felhőből az eszközre irányuló különböző kommunikációs lehetőségek részletes összevetése.
 
-|  | Közvetlen metódusok | A Twin kívánt tulajdonságai | Felhőből az eszközre irányuló üzenetek |
-| ---- | ------- | ---------- | ---- |
+| Kategóriák | Közvetlen metódusok | A Twin kívánt tulajdonságai | Felhőből az eszközre irányuló üzenetek |
+| ---------- | -------------- | ------------------------- | ------------------------ |
 | Forgatókönyv | Azonnali megerősítést igénylő parancsok, például ventilátor bekapcsolása. | Hosszú ideig futó parancsok, amelyek célja, hogy az eszköz egy bizonyos kívánt állapotba kerüljön. Állítsa be például a telemetria küldési időközét 30 percre. | Egyirányú értesítések az eszköz alkalmazásához. |
 | Adatfolyam | Kétirányú. Az eszköz azonnal válaszolhat a metódusra. A megoldás háttérbe kerül a kérelem kontextusa. | Egyirányú. Az alkalmazás értesítést kap a tulajdonság változásáról. | Egyirányú. Az eszköz megkapja az üzenetet
 | Tartósság | A leválasztott eszközök nincsenek kapcsolatba. A megoldás háttér-végpontja értesítést kap arról, hogy az eszköz nincs csatlakoztatva. | A tulajdonság értékei megmaradnak az eszköz Twin-ben. Az eszköz a következő újracsatlakoztatáskor fogja olvasni. A tulajdonságértékek a [IoT hub lekérdezési nyelvvel](iot-hub-devguide-query-language.md)olvashatók be. | Az üzenetek IoT Hub akár 48 óráig is megmaradnak. |
-| Célokat | Egy eszköz, amely **deviceId**-t vagy több eszközt használ a [feladatok](iot-hub-devguide-jobs.md)használatával. | Egy eszköz, amely **deviceId**-t vagy több eszközt használ a [feladatok](iot-hub-devguide-jobs.md)használatával. | Egyetlen eszköz az **deviceId**alapján. |
+| Targets | Egy eszköz, amely **deviceId**-t vagy több eszközt használ a [feladatok](iot-hub-devguide-jobs.md)használatával. | Egy eszköz, amely **deviceId**-t vagy több eszközt használ a [feladatok](iot-hub-devguide-jobs.md)használatával. | Egyetlen eszköz az **deviceId**alapján. |
 | Méret | A közvetlen metódusok maximális hasznos mérete 128 KB. | A kívánt tulajdonságok maximális mérete 32 KB. | Akár 64 KB-os üzenet. |
 | Gyakoriság | Magas. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Közepes. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Alacsony. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). |
 | Protokoll | A MQTT vagy a AMQP használatával érhető el. | A MQTT vagy a AMQP használatával érhető el. | Minden protokollon elérhető. Az eszköznek a HTTPS használatakor kell lekérdezni. |

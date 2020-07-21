@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: edf669eb813240505cba8faef41e166785cc5b18
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: b0ab1e2e43210ecd7a61b7dffcb12d2c7c5c1c46
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232066"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536606"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Az Azure Time Series Insights integrálása a távoli monitorozással
 
@@ -66,7 +66,7 @@ Ezután telepítse a Time Series Insightst további erőforrásként a távoli f
     | SKU |**S1** |
     | Kapacitás | **1** |
 
-    ![Time Series Insights létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
+    ![A Time Series Insights létrehozása](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
 1. Kattintson a **Létrehozás** lehetőségre. A környezet létrehozása eltarthat egy kis ideig.
 
@@ -244,7 +244,7 @@ Konfigurálja az üzemelő példányok környezetét `basic` a frissített Servi
 
 Konfigurálja az üzemelő `standard` példány környezetét a fenti frissített Micro Services-szolgáltatásokhoz
 
-1. A parancssorban futtassa a parancsot `kubectl proxy` . További információ: [hozzáférés a KUBERNETES API](https://kubernetes.io/docs/reference/access-authn-authz/)-hoz.
+1. A parancssorban futtassa a parancsot `kubectl proxy` . További információ: [hozzáférés a KUBERNETES API](https://kubernetes.io/docs/reference/access-authn-authz/#using-kubectl-to-start-a-proxy-server)-hoz.
 
 1. Nyissa meg a Kubernetes felügyeleti konzolt.
 
@@ -296,7 +296,7 @@ Konfigurálja az üzemelő `standard` példány környezetét a fenti frissítet
             key: telemetry.storage.type
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogyan vizsgálhatja meg adatait, és hogyan diagnosztizálhatja a riasztásokat a Time Series Insights Explorerben, tekintse meg a [kiváltó okok elemzését](iot-accelerators-remote-monitoring-root-cause-analysis.md)ismertető oktatóanyagot.
 

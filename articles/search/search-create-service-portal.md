@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 06/24/2020
-ms.openlocfilehash: f802ec10410d0a412e29d9ad51bb409a5d099f31
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 07/14/2020
+ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85562539"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86529624"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search-szolgáltatások létrehozása a portálon
 
@@ -27,11 +27,11 @@ Szívesebben használja a PowerShellt? Használja az Azure Resource Manager [szo
 
 ## <a name="before-you-start"></a>Előkészületek
 
-A szolgáltatás élettartamára a következő szolgáltatási tulajdonságok vannak rögzítve, és a módosításhoz új szolgáltatás szükséges. A szolgáltatás létrehozásakor gondolja át, hogyan fogja használni:
+A szolgáltatás élettartamára a következő szolgáltatási tulajdonságok vannak rögzítve – a változtatások bármelyike új szolgáltatást igényel. Mivel ezek rögzítettek, vegye figyelembe a használati szempontokat az egyes tulajdonságok kitöltése során:
 
-* név (a szolgáltatási nevekre vonatkozó [javaslatok](#name-the-service) áttekintése)
-* szint (ingyenes, alapszintű, standard [befolyásolja a számlázást](search-sku-tier.md) , és beállítja a kapacitás korlátját)
-* régió (válassza ki a kapcsolódó szolgáltatásokat tartalmazó helyet. Cognitive Services vagy Azure Machine Learning integrációja esetén az azonos régióban található szolgáltatások közös elhelyezése követelmény)
+* a szolgáltatás neve az URL-végpont részévé válik (a hasznos szolgáltatások neveire vonatkozó[tippek áttekintése](#name-the-service) ).
+* a szolgáltatási szinten [befolyásolja a számlázást](search-sku-tier.md) , és beállítja a kapacitás felső határát.
+* a szolgáltatási régió képes meghatározni bizonyos forgatókönyvek rendelkezésre állását. Ha érdekli az adatbányászat és a mesterséges intelligencia-bővítés, akkor Cognitive Services és valószínűleg Azure Machine Learning ugyanabban a régióban, mint az Azure Cognitive Search.
 
 ## <a name="subscribe-free-or-paid"></a>Feliratkozás (ingyenes vagy fizetős)
 
@@ -169,7 +169,7 @@ Bár az ügyfelek többsége csak egy szolgáltatást használ, szükség lehet 
 
 A magas rendelkezésre álláshoz nincs szükség második szolgáltatásra. A lekérdezések magas rendelkezésre állása úgy érhető el, hogy egyazon szolgáltatáson belül 2 vagy több replikát használ. A replika frissítései szekvenciálisak, ami azt jelenti, hogy legalább egy működőképes a szolgáltatás frissítésekor. További információ az üzemidőről: [szolgáltatói szerződések](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A szolgáltatás kiépítés után folytathatja a portálon az első index létrehozását.
 

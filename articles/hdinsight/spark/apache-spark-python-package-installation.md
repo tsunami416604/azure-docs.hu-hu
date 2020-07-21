@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 67dfc0b2da753f005c1723ff0cf3370ce288c6de
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8c13dc43f4b7c66bd804fd9ec016f5e1a467bd8b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086619"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86536765"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -33,7 +33,7 @@ A Microsoft Azure HDInsight szolgáltatás olyan nyílt forráskódú technológ
 
 A HDInsight szolgáltatásban kétféle nyílt forráskódú összetevő érhető el:
 
-|Összetevő |Description |
+|Összetevő |Leírás |
 |---|---|
 |Beépített|Ezek az összetevők előre telepítve vannak a HDInsight-fürtökön, és biztosítják a fürt alapvető funkcióit. Például Apache Hadoop a fonal Resource Manager, a Apache Hive lekérdezési nyelv (HiveQL) és a Mahout könyvtár ehhez a kategóriához tartozik. A fürt összetevőinek teljes listája a [HDInsight által biztosított Apache Hadoop-fürt verziójának újdonságai](../hdinsight-component-versioning.md)című részében érhető el.|
 |Egyéni|A fürt felhasználója a munkaterhelésben telepítheti vagy használhatja a Közösségben elérhető vagy Ön által létrehozott összetevőket.|
@@ -47,11 +47,11 @@ A HDInsight szolgáltatásban kétféle nyílt forráskódú összetevő érhet�
 
 A HDInsight Spark-fürt az anaconda telepítésével jön létre. Két Python-telepítés van a fürtben, az anaconda Python 2,7 és a Python 3,5. Az alábbi táblázat a Spark, a Livy és a Jupyter alapértelmezett Python-beállításait mutatja be.
 
-| |Python 2,7|Python 3,5|
+|Beállítás |Python 2,7|Python 3,5|
 |----|----|----|
 |Elérési út|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Alapértelmezett érték 2,7|N.A.|
-|Livy|Alapértelmezett érték 2,7|N.A.|
+|Spark-verzió|Alapértelmezett érték 2,7|n.a.|
+|Livy verziója|Alapértelmezett érték 2,7|n.a.|
 |Jupyter|PySpark kernel|PySpark3 kernel|
 
 ## <a name="safely-install-external-python-packages"></a>Külső Python-csomagok biztonságos telepítése
@@ -150,7 +150,7 @@ Létezik egy ismert hiba a anaconda-verzió `4.7.11` , a és a esetében `4.7.12
 
 A anaconda verziójának megadásához SSH-t használhat a fürt fejlécére, és futtathatja a parancsot `/usr/bin/anaconda/bin/conda --v` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 * [Külső csomagok Jupyter notebookokkal Apache Spark](apache-spark-jupyter-notebook-use-external-packages.md)

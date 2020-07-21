@@ -4,48 +4,44 @@ description: API az ajánlatok összefoglaló listájának lekéréséhez a köz
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: ab5f09d0d81d8a6aa526576faea0b11a6536381a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 22d22feb3931f466647c2c4d94bdf924568f2dc5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113479"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86535892"
 ---
-<a name="retrieve-offers"></a>Ajánlatok lekérése
-===============
+# <a name="retrieve-offers"></a>Ajánlatok lekérése
 
 > [!NOTE]
-> A Cloud Partner Portal API-k integrálva vannak a partneri központtal, és továbbra is működni fognak, miután az ajánlatokat áttelepítik a partner központba. Az integráció kis változásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működni fog a partneri központba való Migrálás után.
+> A Cloud Partner Portal API-k integrálva vannak a-vel, és továbbra is működnek a partner Centerben. Az áttérés kis változásokat mutat be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működőképes legyen a partneri központba való áttérés után. A CPP API-kat csak olyan meglévő termékekhez szabad használni, amelyek már integrálva lettek a partneri központba való áttérés előtt. az új termékeknek a partner Center beküldési API-kat kell használniuk.
 
 Az ajánlatok összefoglaló listájának beolvasása a közzétevői névtérben.
 
  `GET https://cloudpartner.azure.com/api/publishers/<publisherId>/offers?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI-paraméterek
---------------
+## <a name="uri-parameters"></a>URI-paraméterek
 
-| **Name (Név)**         |  **Leírás**                         |  **Adattípus** |
+| **Név**         |  **Leírás**                         |  **Adattípus** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | Közzétevő azonosítója, például:`contoso` |   Sztring    |
 |  api-verzió     | Az API legújabb verziója                    |    Dátum        |
 |  |  |
 
+## <a name="header"></a>Fejléc
 
-<a name="header"></a>Fejléc
-------
-
-|  **Name (Név)**        |         **Érték**       |
+|  **Név**        |         **Érték**       |
 |  --------------- |       ----------------  |
 |  Content-Type    | `application/json`      |
 |  Engedélyezés   | `Bearer YOUR_TOKEN`     |
 |  |  |
 
+## <a name="body-example"></a>Példa szövegtörzsre
 
-<a name="body-example"></a>Példa szövegtörzsre
-------------
-
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ``` json
   200 OK 
@@ -66,7 +62,7 @@ Az ajánlatok összefoglaló listájának beolvasása a közzétevői névtérbe
 
 ### <a name="response-body-properties"></a>Válasz törzsének tulajdonságai
 
-|  **Name (Név)**       |       **Leírás**                                                                                                  |
+|  **Név**       |       **Leírás**                                                                                                  |
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
 |  offerTypeId    | Az ajánlat típusát azonosítja.                                                                                           |
 |  publisherId    | A közzétevőt egyedileg azonosító azonosító                                                                      |
@@ -77,10 +73,9 @@ Az ajánlatok összefoglaló listájának beolvasása a közzétevői névtérbe
 |  changedTime    | Az ajánlat utolsó módosításának UTC-ideje                                                                              |
 |  |  |
 
-
 ### <a name="response-status-codes"></a>Válasz-állapotkódok
 
-| **Code**  |  **Leírás**                                                                                                   |
+| **Kód**  |  **Leírás**                                                                                                   |
 | -------   |  ----------------------------------------------------------------------------------------------------------------- |
 |  200      | `OK`– A kérés feldolgozása sikeres volt, és a közzétevő alatt lévő összes ajánlat vissza lett küldve az ügyfélnek.  |
 |  400      | `Bad/Malformed request`– A hiba-válasz törzse több információt is tartalmazhat.                                    |
@@ -88,10 +83,9 @@ Az ajánlatok összefoglaló listájának beolvasása a közzétevői névtérbe
 |  404      | `Not found`– A megadott entitás nem létezik.                                                                 |
 |  |  |
 
-
 ### <a name="offer-status"></a>Ajánlat állapota
 
-|  **Name (Név)**                    | **Leírás**                                  |
+|  **Név**                    | **Leírás**                                  |
 |  ------------------------    | -----------------------------------------------  |
 |  NeverPublished              | Az ajánlatot még soha nem tették közzé.                  |
 |  NotStarted                  | Az ajánlat új, de nem indult el.                 |
