@@ -385,6 +385,8 @@
                           href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Titkosítási kulcs biztosítása kérésre
                   href: storage-blob-customer-provided-key.md
+                - name: Titkosítási hatókörök kezelése
+                  href: encryption-scope-manage.md
                 - name: Infrastruktúra titkosításának engedélyezése a tárfiókban
                   href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Ügyféloldali titkosítás konfigurálása
@@ -489,8 +491,6 @@
           items:
             - name: Figyelés az Azure Portalon (klasszikus)
               href: ../common/storage-monitor-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Oktatóanyag a hibaelhárításhoz (klasszikus)
-              href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Hibaelhárítás
           items:
             - name: Késési problémák
@@ -554,6 +554,8 @@
               href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
             - name: A Storage Explorer hibaelhárítása
               href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: A Storage Explorer támogatási szabályzata és életciklusa
+              href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: Storage Explorer – kisegítő lehetőségek
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure Storage-fórum

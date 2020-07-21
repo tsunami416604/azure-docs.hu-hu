@@ -29,6 +29,9 @@
     - name: Az első lekérdezés futtatása – Python
       displayName: 'library, azure-mgmt, cli'
       href: ./first-query-python.md
+    - name: Az első lekérdezés futtatása – Ruby
+      displayName: 'gem, azure-mgmt'
+      href: ./first-query-ruby.md
     - name: Az első lekérdezés futtatása – REST
       displayName: 'armclient, postman'
       href: ./first-query-rest-api.md

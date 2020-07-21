@@ -19,6 +19,8 @@
       href: fhir-oss-powershell-quickstart.md
     - name: Az FHIR Server for Azure üzembe helyezése – parancssori felület
       href: fhir-oss-cli-quickstart.md
+    - name: IoT-összekötő üzembe helyezése – portál
+      href: iot-fhir-portal-quickstart.md
 - name: Oktatóanyagok
   expanded: false
   items:
@@ -37,6 +39,11 @@
       href: access-fhir-postman-tutorial.md
     - name: A SMART használata FHIR-proxyn
       href: use-smart-on-fhir-proxy.md
+    - name: Adatok betöltése IoT-eszközökről
+      expanded: false
+      items:
+        - name: Adatok fogadása az Azure IoT Hubon keresztül
+          href: device-data-through-iot-hub.md
 - name: Példák
   items:
     - name: Az Azure Policy beépített elemei
@@ -79,6 +86,8 @@
       href: enable-diagnostic-logging.md
     - name: Jogkivonat beszerzése az Azure API for FHIR-hoz – parancssori felület
       href: get-healthcare-apis-access-token-cli.md
+    - name: Hibák elhárítása az IoT-összekötőben
+      href: iot-troubleshoot-guide.md
 - name: Alapelvek
   expanded: false
   items:
@@ -88,6 +97,13 @@
       href: azure-ad-hcapi-token-validation.md
     - name: Egyéni HTTP-fejlécek használata az adatoknak az auditnaplókhoz való hozzáadásához
       href: use-custom-headers.md
+    - name: IoT-összekötő működése
+      expanded: false
+      items:
+        - name: IoT-összekötő adatfolyama
+          href: iot-data-flow.md
+        - name: IoT-összekötő leképezési sablonjai
+          href: iot-mapping-templates.md
 - name: További források
   items:
     - name: GYIK

@@ -9,54 +9,54 @@ metadata:
   ms.subservice: time-series-insights
   ms.topic: landing-page
   ms.collection: collection
-  author: KingdomOfEnds
-  ms.author: v-adgera
-  ms.date: 02/12/2020
-  ms.openlocfilehash: 1119c4ec7c0b57f1b3707708ecb9227d737e2898
-  ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+  author: shreyasharmamsft
+  ms.author: shresha
+  ms.date: 07/09/2020
+  ms.openlocfilehash: 95ebe3a05a76c7fc6a725cc565f8dc5a3e457a04
+  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/07/2020
-  ms.locfileid: "86043121"
+  ms.lasthandoff: 07/20/2020
+  ms.locfileid: "86495278"
 landingContent:
 - title: Az Azure Time Series Insights ismertetése
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi az Azure Time Series Insights előzetes verziója?
-      url: time-series-insights-update-overview.md
-    - text: Az Azure Time Series Insights GA ismertetése
-      url: time-series-insights-overview.md
+    - text: Mi az az Azure Time Series Insights Gen2?
+      url: overview-what-is-tsi.md
+    - text: Használati esetek
+      url: overview-use-cases.md
     - text: Ügyféloldali SDK-mintavizualizáció
       url: https://tsiclientsample.azurewebsites.net/
   - linkListType: concept
     links:
-    - text: Adatvizualizáció a Time Series Insights Explorer előzetes verziójával
-      url: time-series-insights-update-explorer.md
+    - text: Adatvizualizáció a Time Series Insights Explorerrel
+      url: concepts-ux-panels.md
     - text: Time Series-modell
       url: concepts-model-overview.md
   - linkListType: video
     links:
-    - text: Time Series Insights IoT-alkalmazásokhoz. (13:31)
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics
-- title: Bevezetés az előzetes verzió használatába
+    - text: Adatok elemzése a Time Series Insights Gen2-vel
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Deep-Dive-Analyzing-IoT-data-using-Time-Series-Insights
+- title: Bevezetés
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Ismerkedés az Azure Time Series Insights előzetes verziójával
-      url: time-series-insights-update-quickstart.md
+    - text: Ismerkedés az Azure Time Series Insights Gen2-vel
+      url: quickstart-explore-tsi.md
   - linkListType: tutorial
     links:
-    - text: Oktatóanyag az Azure Time Series Insights előzetes verziójához
-      url: time-series-insights-update-create-environment.md
+    - text: Az Azure Time Series Insights Gen2 oktatóanyaga
+      url: tutorials-set-up-tsi-environment.md
   - linkListType: deploy
     links:
     - text: Csatlakozás az Event Hubshoz
-      url: time-series-insights-how-to-add-an-event-source-eventhub.md
+      url: how-to-ingest-data-event-hub.md
     - text: Csatlakozás az IoT Hubhoz
-      url: time-series-insights-how-to-add-an-event-source-iothub.md
+      url: how-to-ingest-data-iot-hub.md
     - text: A környezet megtervezése
-      url: time-series-insights-update-plan.md
+      url: how-to-plan-your-environment.md
     - text: Az adatbetöltés áttekintése
       url: concepts-ingestion-overview.md
   - linkListType: how-to-guide
@@ -65,15 +65,17 @@ landingContent:
       url: time-series-insights-update-how-to-manage.md
     - text: Adathozzáférés biztosítása
       url: time-series-insights-data-access.md
+    - text: Time Series-modell létrehozása
+      url: how-to-edit-your-model.md
+    - text: Adatok lekérdezése
+      url: concepts-query-overview.md
 - title: API-hivatkozás
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure Time Series Insights
-      url: /rest/api/time-series-insights/
-    - text: Adathozzáférési fogalmak előzetes verziója
-      url: /rest/api/time-series-insights/preview
-    - text: Adathozzáférés, általános hozzáférés
-      url: /rest/api/time-series-insights/ga
+    - text: REST API-k áttekintése
+      url: https://docs.microsoft.com/rest/api/time-series-insights/
+    - text: A Gen2 adathozzáférési fogalmai
+      url: https://docs.microsoft.com/rest/api/time-series-insights/preview
     - text: JavaScript ügyféloldali SDK
       url: https://github.com/microsoft/tsiclient/blob/master/docs/API.md

@@ -179,6 +179,8 @@
           href: azure-nfs-volume.md
         - name: Azure NetApp Files
           href: azure-netapp-files.md
+        - name: Azure-ultralemezek használata (előzetes verzió)
+          href: use-ultra-disks.md
     - name: Hálózatkezelés konfigurálása
       items:
         - name: Meglévő virtuális hálózat létrehozása vagy használata
@@ -191,8 +193,6 @@
           href: internal-lb.md
         - name: Standard terheléselosztó használata
           href: load-balancer-standard.md
-        - name: Felhasználó által megadott útvonal használata a kimenő forgalomhoz
-          href: egress-outboundtype.md
         - name: Statikus IP-cím használata
           href: static-ip.md
         - name: Bejövő forgalom
@@ -215,7 +215,13 @@
                 - name: Statikus nyilvános IP-cím használata
                   href: ingress-static-ip.md
         - name: Kimenő forgalom
-          href: egress.md
+          items:
+            - name: Fürt kimenő forgalmának korlátozása és szabályozása
+              href: limit-egress-traffic.md
+            - name: Felhasználó által megadott útvonal használata a kimenő forgalomhoz
+              href: egress-outboundtype.md
+            - name: Alapszintű terheléselosztó és statikus IP-cím használata
+              href: egress.md
         - name: CoreDNS testreszabása
           href: coredns-custom.md
     - name: Biztonság és hitelesítés
@@ -238,13 +244,11 @@
           href: ../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/aks/toc.json
         - name: Fürt hitelesítő adatainak frissítése
           href: update-credentials.md
-        - name: Fürt kimenő forgalmának korlátozása és szabályozása
-          href: limit-egress-traffic.md
         - name: Azure Active Directory-integráció engedélyezése
           items:
-            - name: AKS által kezelt AAD (előzetes verzió)
+            - name: AKS által felügyelt AAD
               href: managed-aad.md
-            - name: Az Azure parancssori felületének használata
+            - name: AAD integrálása (régi)
               href: azure-ad-integration-cli.md
         - name: Azure RBAC használata Kubernetes-engedélyezéshez (előzetes verzió)
           href: manage-azure-rbac.md
@@ -291,8 +295,6 @@
       items:
         - name: Helyi folyamat és Kubernetes használata a Visual Studio Code-dal (előzetes verzió)
           href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
-        - name: Helyi folyamat és Kubernetes használata a Visual Studióval (előzetes verzió)
-          href: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
         - name: Meglévő alkalmazások telepítése Helm használatával
           href: kubernetes-helm.md
         - name: Az OpenFaaS használata
@@ -383,10 +385,10 @@
       href: 'https://azure.microsoft.com/pricing/details/container-service/'
     - name: Támogatási szabályzatok
       href: support-policies.md
-    - name: Ütemterv
+    - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
-    - name: Termékkel kapcsolatos visszajelzés küldése
-      href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
+    - name: AKS-ütemterv
+      href: 'https://github.com/Azure/AKS/projects/1'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: Videók

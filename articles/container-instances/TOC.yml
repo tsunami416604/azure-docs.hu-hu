@@ -16,6 +16,8 @@
     - name: Tárolópéldány üzembe helyezése – ARM-sablon
       displayName: Resource Manager
       href: container-instances-quickstart-template.md
+    - name: Tárolópéldány üzembe helyezése – Docker parancssori felülete
+      href: container-instances-quickstart-docker-cli.md
 - name: Oktatóanyagok
   items:
     - name: Tárolórendszerkép létrehozása és üzembe helyezése
@@ -94,8 +96,10 @@
           href: container-instances-gpu.md
         - name: SSL-végpont engedélyezése a Sidecarban
           href: container-instances-container-group-ssl.md
-        - name: Statikus IP-cím közzététele
+        - name: Statikus IP-cím közzététele az App Gateway segítségével
           href: container-instances-application-gateway.md
+        - name: Az Azure Firewall használata bejövő és kimenő adatforgalomhoz
+          href: container-instances-egress-ip-address.md
     - name: Adatkötetek csatlakoztatása
       items:
         - name: Azure-fájlmegosztás

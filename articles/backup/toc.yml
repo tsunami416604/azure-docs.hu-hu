@@ -323,11 +323,11 @@
               href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
-            - name: Azure-beli virtuális gépek az Azure Portalon
+            - name: Azure-beli virtuális gépek
               href: backup-azure-vms-automation.md
-            - name: DPM az Azure Portalon
+            - name: Data Protection Manager (DPM)
               href: backup-dpm-automation.md
-            - name: Windows Server az Azure Portalon
+            - name: MARS-ügynököt használó Windows Server
               href: backup-client-automation.md
             - name: SQL az Azure-beli virtuális gépek biztonsági mentésein
               href: backup-azure-sql-automation.md
@@ -422,7 +422,7 @@
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-backup.html'
+      href: /answers/topics/azure-backup.html
     - name: Díjkalkulátor
       href: azure-backup-pricing.md
     - name: Szolgáltatási hírek

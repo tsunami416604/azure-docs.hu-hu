@@ -1,6 +1,7 @@
 - name: A Security Center dokumentációja
   href: index.yml
 - name: Áttekintés
+  expanded: true
   items:
     - name: Tudnivalók a Security Centerről
       href: security-center-intro.md
@@ -18,8 +19,11 @@
       href: recommendations-reference.md
     - name: Biztonsági riasztások és a szándékos törlési lánc
       href: alerts-reference.md
+    - name: Engedélyek
+      href: security-center-permissions.md
+    - name: Díjszabás
+      href: security-center-pricing.md
 - name: Rövid útmutatók
-  expanded: true
   items:
     - name: Azure-előfizetések
       href: security-center-get-started.md
@@ -29,6 +33,12 @@
       href: quick-onboard-linux-computer.md
     - name: Azure Stackbeli virtuális gépek
       href: quick-onboard-azure-stack.md
+    - name: Előkészítés automatizálása a PowerShell használatával
+      href: security-center-powershell-onboarding.md
+    - name: Adatgyűjtés konfigurálása
+      href: security-center-enable-data-collection.md
+    - name: E-mail-értesítések beállítása
+      href: security-center-provide-security-contact-details.md
 - name: Oktatóanyagok
   items:
     - name: Tervezési és működtetési útmutató
@@ -39,21 +49,36 @@
       href: tutorial-security-incident.md
     - name: Előírásoknak való megfelelés javítása
       href: security-center-compliance-dashboard.md
-- name: Példák
-  items:
-    - name: Az Azure Policy beépített elemei
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: Alapelvek
   items:
-    - name: Biztonsági pontszám
-      href: secure-score-security-controls.md
-    - name: Engedélyek
-      href: security-center-permissions.md
+    - name: 'Biztonsági pontszám, javaslatok és szabályzatok'
+      items:
+        - name: Biztonsági pontszám
+          href: secure-score-security-controls.md
+        - name: Biztonsági javaslatok áttekintése
+          href: security-center-recommendations.md
+        - name: A biztonsági szabályzatok áttekintése
+          href: tutorial-security-policy.md
+        - name: Beépített biztonsági szabályzatok
+          href: security-center-policy-definitions.md
+        - name: Javaslatok használata a biztonság növelése érdekében
+          href: security-center-using-recommendations.md
+    - name: Fenyegetésvédelem és biztonsági riasztások
+      items:
+        - name: Fenyegetésvédelem áttekintése a Security Centerben
+          href: threat-protection.md
+        - name: Biztonsági riasztások áttekintése
+          href: security-center-alerts-overview.md
+        - name: Riasztások hivatkozási listája
+          href: alerts-reference.md
+        - name: Riasztási sémák
+          href: alerts-schemas.md
+        - name: Biztonsági incidensek áttekintése
+          href: security-center-alerts-cloud-smart.md
     - name: Adatbiztonság
       href: security-center-data-security.md
-    - name: Javaslatok használata a biztonság növelése érdekében
-      href: security-center-using-recommendations.md
+    - name: Virtuális gépek igény szerinti elérése
+      href: just-in-time-explained.md
     - name: Bérlők közötti felügyelet
       href: security-center-cross-tenant-management.md
     - name: Tárolóbiztonság
@@ -64,32 +89,18 @@
           href: azure-container-registry-integration.md
         - name: Integráció az Azure Kubernetes Service-szel
           href: azure-kubernetes-service-integration.md
-    - name: Fenyegetésvédelem és biztonsági riasztások
-      items:
-        - name: Fenyegetésvédelem az Azure Security Centerben
-          href: threat-protection.md
-        - name: Biztonsági riasztások áttekintése
-          href: security-center-alerts-overview.md
-        - name: Riasztások hivatkozási listája
-          href: alerts-reference.md
-        - name: Riasztási sémák
-          href: alerts-schemas.md
-        - name: Biztonsági riasztások kezelése
-          href: security-center-managing-and-responding-alerts.md
-        - name: Biztonsági riasztások mellőzési szabályai
-          href: alerts-suppression-rules.md
-        - name: Biztonsági incidensek kezelése
-          href: security-center-incident.md
-        - name: Felhőbeli intelligens riasztások korrelációi (incidensek)
-          href: security-center-alerts-cloud-smart.md
-        - name: Fenyegetésekkel kapcsolatos jelentések
-          href: security-center-threat-report.md
-        - name: Riasztások érvényesítése (EICAR-tesztfájl)
-          href: security-center-alert-validation.md
 - name: Útmutatók
   items:
     - name: Frissítés speciális biztonsági megoldásra
       href: security-center-onboarding.md
+    - name: Biztonsági szabályzatok és megfelelőségi előírások konfigurálása
+      items:
+        - name: Egyéni biztonsági szabályzatok létrehozása
+          href: custom-security-policies.md
+        - name: Szabályzatok kezelése az Azure Policy REST API-val
+          href: configure-security-policy-azure-policy.md
+        - name: A megfelelőségi irányítópultra vonatkozó szabványok kiválasztása
+          href: update-regulatory-compliance-packages.md
     - name: Biztonsági rések meglétének ellenőrzése virtuális gépeken
       items:
         - name: A biztonsági rések ellenőrzésének áttekintése
@@ -98,54 +109,28 @@
           href: built-in-vulnerability-assessment.md
         - name: Külső ellenőrzők használata
           href: partner-vulnerability-assessment.md
-    - name: Saját tárolók figyelése
-      href: monitor-container-security.md
-    - name: Kiszolgálóvédelem a Microsoft Defender ATP-vel
-      href: security-center-wdatp.md
-    - name: Az Advanced Data Security használata SQL-gépeken
-      href: security-center-iaas-advanced-data.md
-    - name: Az alkalmazások védelme az App Service-szel
-      href: security-center-app-services.md
-    - name: Biztonsági szabályzatok használata
+    - name: Fenyegetésvédelem konfigurálása és biztonsági riasztások kezelése
       items:
-        - name: A biztonsági szabályzatok áttekintése
-          href: tutorial-security-policy.md
-        - name: Beépített biztonsági szabályzatok használata
-          href: security-center-policy-definitions.md
-        - name: Egyéni biztonsági szabályzatok létrehozása
-          href: custom-security-policies.md
-        - name: Szabályzatok kezelése az Azure Policy REST API-val
-          href: configure-security-policy-azure-policy.md
-    - name: A megfelelőségi irányítópultra vonatkozó szabványok kiválasztása
-      href: update-regulatory-compliance-packages.md
-    - name: Az Information Protection-szabályzat testreszabása
-      href: security-center-info-protection-policy.md
-    - name: Biztonsági megoldások kezelése
-      href: security-center-partner-integration.md
-    - name: Előkészítés automatizálása a PowerShell használatával
-      href: security-center-powershell-onboarding.md
-    - name: Integráció a Windows Admin Centerrel
-      href: windows-admin-center-integration.md
-    - name: Alapértékek összehasonlítása fájlintegritási monitorozással
-      href: security-center-file-integrity-monitoring-baselines.md
-    - name: Riasztásokra és javaslatokra adott válaszok automatizálása
-      href: workflow-automation.md
-    - name: Riasztások és javaslatok exportálása
-      href: continuous-export.md
-    - name: Adatgyűjtés konfigurálása
-      href: security-center-enable-data-collection.md
-    - name: Az Advanced Threat Protection beállítása az Azure Key Vaulthoz
-      href: advanced-threat-protection-key-vault.md
-    - name: E-mail-értesítések beállítása
-      href: security-center-provide-security-contact-details.md
-    - name: Díjszabás
-      href: security-center-pricing.md
-    - name: Bérlőszintű áttekintés
-      href: security-center-management-groups.md
-    - name: Biztonsági javaslatok megvalósítása
+        - name: Biztonsági riasztások kezelése
+          href: security-center-managing-and-responding-alerts.md
+        - name: Riasztásletiltási szabályok létrehozása és kezelése
+          href: alerts-suppression-rules.md
+        - name: Az Advanced Threat Protection beállítása az Azure Key Vaulthoz
+          href: advanced-threat-protection-key-vault.md
+        - name: Biztonsági incidensek kezelése
+          href: security-center-incident.md
+        - name: Fenyegetésfelderítési jelentés előállítása
+          href: security-center-threat-report.md
+        - name: Riasztási konfiguráció érvényesítése (EICAR-tesztfájl)
+          href: security-center-alert-validation.md
+        - name: Az Advanced Data Security használata Azure-beli virtuális gépeken futó SQL-hez
+          href: security-center-iaas-advanced-data.md
+        - name: Riasztásokra adott válaszok automatizálása
+          href: workflow-automation.md
+        - name: Riasztások exportálása
+          href: continuous-export.md
+    - name: Biztonsági javaslatok használata a biztonság javításához
       items:
-        - name: Mik azok a biztonsági javaslatok
-          href: security-center-recommendations.md
         - name: Szervizelési javaslatok
           href: security-center-remediate-recommendations.md
         - name: Biztonsági helyzet megerősítése
@@ -160,8 +145,20 @@
           href: security-center-sql-service-recommendations.md
         - name: Identitás és hozzáférés védelme
           href: security-center-identity-access.md
-        - name: Felhasználói adatok vizsgálatának kezelése
-          href: security-center-investigation-user-data.md
+        - name: Javaslatokra adott válaszok automatizálása
+          href: workflow-automation.md
+        - name: Javaslatok exportálása
+          href: continuous-export.md
+    - name: Integráció más eszközökkel és szolgáltatásokkal
+      items:
+        - name: Integráció a Windows Admin Centerrel
+          href: windows-admin-center-integration.md
+        - name: Azure App Service-webalkalmazások és -API-k védelme
+          href: security-center-app-services.md
+        - name: Integráció a Microsoft Defender ATP-vel
+          href: security-center-wdatp.md
+        - name: Biztonsági megoldások és adatforrások integrálása
+          href: security-center-partner-integration.md
     - name: Felhővédelmi funkciók alkalmazása
       items:
         - name: Igény szerinti hozzáférés kezelése
@@ -170,8 +167,18 @@
           href: security-center-adaptive-application.md
         - name: Fájlintegritás monitorozása
           href: security-center-file-integrity-monitoring.md
+        - name: Alapértékek összehasonlítása fájlintegritási monitorozással
+          href: security-center-file-integrity-monitoring-baselines.md
         - name: Adaptív hálózat-megerősítés
           href: security-center-adaptive-network-hardening.md
+    - name: Saját tárolók figyelése
+      href: monitor-container-security.md
+    - name: Az Information Protection-szabályzat testreszabása
+      href: security-center-info-protection-policy.md
+    - name: Felhasználói adatok vizsgálatának kezelése
+      href: security-center-investigation-user-data.md
+    - name: Bérlőszintű áttekintés
+      href: security-center-management-groups.md
 - name: Referencia
   items:
     - name: REST API-k
