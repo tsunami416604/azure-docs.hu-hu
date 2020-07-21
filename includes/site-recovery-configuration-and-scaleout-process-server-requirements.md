@@ -1,20 +1,20 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 06/23/2020
+ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: c8c51d671cd98a606c11a39b6cf489aa288d71b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60012f79c3c04a4ff14c4a7f0609b6940d3402c4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85292177"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544795"
 ---
 **A konfigurációs és a feldolgozási kiszolgáló követelményei**
 
@@ -61,6 +61,9 @@ time.windows.com | A rendszer és a globális idő közötti idő-szinkronizál�
 https: \/ /dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi  | A MySQL letöltésének befejezéséhez. </br> Néhány régióban a letöltés átirányítva lesz a CDN URL-címére. Szükség esetén győződjön meg arról, hogy a CDN URL-címe is engedélyezett.
 |
 
+> [!NOTE]
+> Ha Site Recovery-tárolóval rendelkezik [magánhálózati kapcsolattal](../articles/site-recovery/hybrid-how-to-enable-replication-private-endpoints.md) , nincs szükség további internet-hozzáférésre a konfigurációs kiszolgálóhoz. Kivételt jelent ez alól, miközben a CS-gépet a petesejtek sablonnal állítja be, a privát kapcsolatokhoz való hozzáféréshez, a-hoz és a-hoz tartozó következő URL-címekhez is hozzá kell férnie https://management.azure.com https://www.live.com https://www.microsoft.com . Ha nem szeretné engedélyezni a hozzáférést ezekhez az URL-címekhez, állítsa be a CS-t az egyesített telepítő használatával.
+
 ## <a name="required-software"></a>Szükséges szoftverek
 
 **Összetevő** | **Követelmény** 
@@ -74,7 +77,7 @@ MYSQL | Telepíteni kell a MySQL-t. Manuálisan is telepítheti, vagy Site Recov
 A következő táblázat összefoglalja a konfigurációs kiszolgáló kapacitásának követelményeit. Több VMware virtuális gép replikálásakor tekintse át a [kapacitás megtervezésével kapcsolatos szempontokat](../articles/site-recovery/site-recovery-plan-capacity-vmware.md) , és futtassa az [Azure site Recovery Deployment Planner eszközt](../articles/site-recovery/site-recovery-deployment-planner.md).
 
 
-**CPU** | **Memory (Memória)** | **Lemez gyorsítótára** | **Adatváltozási arány** | **Replikált gépek**
+**CPU** | **Memória** | **Lemez gyorsítótára** | **Adatváltozási arány** | **Replikált gépek**
 --- | --- | --- | --- | ---
 8 vCPU<br/><br/> 2 szoftvercsatorna * 4 mag \@ 2,5 GHz | 16 GB | 300 GB | 500 GB vagy kevesebb | < 100 gép
 12 vCPU<br/><br/> 2 SOCKS * 6 mag \@ 2,5 GHz | 18 GB | 600 GB | 500 GB – 1 TB | 100 – 150 gép
