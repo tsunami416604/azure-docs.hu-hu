@@ -9,49 +9,49 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: d4d811d782acdd75550f05a8be28711be41ad343
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 7db367222d96d7bc9dae48242992ee76a89c849d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038373"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544128"
 ---
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
-Ebben a rövid útmutatóban egy Android-alkalmazást hozhat létre a semmiből, és integrálhatja a magával ragadó olvasót. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin)egy teljes körű működő minta érhető el.
+Ebben a rövid útmutatóban egy Android-alkalmazást hozhat létre a semmiből, és integrálhatja a magával ragadó olvasót. Ennek a rövid útmutatónak a teljes működő mintája elérhető [a githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin).
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](../../how-to-create-immersive-reader.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
-* [Git](https://git-scm.com/)
-* [Magával ragadó olvasói SDK](https://github.com/microsoft/immersive-reader-sdk)
-* [Android Studio](https://developer.android.com/studio)
+* A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](../../how-to-create-immersive-reader.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékeket kell megadnia. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
+* [Git](https://git-scm.com/).
+* [Magával ragadó olvasói SDK](https://github.com/microsoft/immersive-reader-sdk).
+* [Android Studio](https://developer.android.com/studio).
 
 ## <a name="create-an-android-project"></a>Android-projekt létrehozása
 
-Új projekt elindítása Android Studioban. Ehhez a példához a forrásként szolgáló [olvasó SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin) részeként érhető el
+Új projekt elindítása Android Studioban. Ehhez a példához tartozó forráskód a [magával ragadó olvasó SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-kotlin)részeként érhető el.
 
 ![Új projekt](../../media/android/kotlin/android-studio-create-project.png)
 
-A projekt kiválasztása ablakban válassza az **üres tevékenység** elemet, majd kattintson a Tovább gombra.
+A **projekt kiválasztása** ablakban válassza az **üres tevékenység**elemet, majd kattintson a **tovább**gombra.
 
 ![Üres tevékenység projekt](../../media/android/kotlin/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>A projekt konfigurálása
 
-Nevezze el a projekt QuickstartKotlin', válassza ki a mentési helyet, és válassza a Kotlin' lehetőséget a programozási nyelvként, majd kattintson a Befejezés gombra.
+Nevezze el a projekt **QuickstartKotlin**, és válassza ki a menteni kívánt helyet. A programozási nyelvként válassza a **Kotlin** lehetőséget, majd kattintson a **Befejezés gombra**.
 
 ![A projekt konfigurálása](../../media/android/kotlin/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Eszközök és hitelesítés beállítása
 
-Új **/assets** -mappa létrehozása
+Hozzon létre egy új **/assets** mappát.
 
 ![Új eszközök mappa létrehozása](../../media/android/kotlin/android-studio-assets-folder.png)
 
- Hozzon létre egy **env** nevű fájlt az eszközök mappában. Adja hozzá a következőt, ha szükséges, adja meg az értékeket. Ügyeljen arra, hogy ne véglegesítse ezt az ENV-fájlt a verziókövetés során, mert olyan titkot tartalmaz, amelyet nem kell nyilvánosságra hozni.
+ Hozzon létre egy **env** nevű fájlt az eszközök mappában. Adja hozzá a következő neveket és értékeket, és adja meg a megfelelő értékeket. Ne véglegesítse ezt az ENV-fájlt a verziókövetés során, mert olyan titkos kulcsokat tartalmaz, amelyeket nem szabad nyilvánosságra hozni.
 
 ![Új env-fájl létrehozása](../../media/android/kotlin/android-studio-create-env-file.png)
 
@@ -65,7 +65,7 @@ SUBDOMAIN=<YOUR_SUBDOMAIN>
 
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
-Cserélje le a **Build. gradle** fájl meglévő függőségeit az alábbi implementációkkal a couroutines (aszinkron programozás), a GSON (JSON-elemzés és szerializálás) és a dotenv engedélyezéséhez, hogy az ENV-fájlban definiált változókra hivatkozzon. Előfordulhat, hogy újra kell szinkronizálnia a projektet a MainActivity. kt a rövid útmutató későbbi szakaszában való megvalósításakor.
+Cserélje le a **Build. gradle** fájl meglévő függőségeit a következő implementációkkal, hogy engedélyezze a (aszinkron programozás), a GSON (JSON-elemzés és szerializálás) és a dotenv az ENV fájlban definiált változókat. Előfordulhat, hogy újra kell szinkronizálnia a projektet, amikor a rövid útmutató egy későbbi lépésében implementálja a MainActivity. kt-t.
 
 ```build.gradle
 dependencies {
@@ -88,7 +88,7 @@ dependencies {
 
 ## <a name="update-app-strings-and-layout-resources"></a>Alkalmazás-karakterláncok és elrendezési erőforrások frissítése
 
-Cserélje le a **res/Strings/strings.xml** tartalmait az alkalmazásban használandó alábbi karakterláncokra.
+Cserélje le a **res/Strings/strings.xml** tartalmait az alkalmazásban használandó következő karakterláncokra.
 
 ![Alkalmazás strings.xml](../../media/android/kotlin/android-studio-strings.png)
 
@@ -106,7 +106,7 @@ Cserélje le a **res/Strings/strings.xml** tartalmait az alkalmazásban használ
 </resources>
 ```
 
-Cserélje le a **res/layout/activity_main.xml** tartalmát az alkalmazásban használni kívánt XML-fájlra. Ez az alkalmazás felhasználói felületének elrendezése.
+Cserélje le a **res/layout/activity_main.xml** tartalmait a következő XML-fájlra az alkalmazásban való használathoz. Ez az XML az alkalmazás felhasználói felületének elrendezése.
 
 ![Alkalmazás activity_main.xml](../../media/android/kotlin/android-studio-activity-main-xml.png)
 
@@ -207,7 +207,7 @@ Cserélje le a **res/layout/activity_main.xml** tartalmát az alkalmazásban has
 
 ## <a name="set-up-the-app-kotlin-code-javascript-interface"></a>Az alkalmazás Kotlin-kód JavaScript-felületének beállítása
 
-A **/Java/com.example.quickstartkotlin** mappában hozzon létre egy új Kotlin osztályt, és nevezze el **WebAppInterface**, majd adja hozzá az alábbi kódot. Ez lehetővé teszi az alkalmazás számára, hogy a HTML-ben lévő JavaScript-függvények felületén egy későbbi lépésben hozzá lehessen adni.
+A **/Java/com.example.quickstartkotlin** mappában hozzon létre egy új Kotlin osztályt, és nevezze el a **WebAppInterface**. Ezután adja hozzá a következő kódot. Ez a kód lehetővé teszi, hogy az alkalmazás a HTML-ben lévő JavaScript-függvényekkel, majd egy későbbi lépésben legyen felvéve.
 
 ![com. example. quickstartkotlin mappa](../../media/android/kotlin/android-studio-com-folder.png)
 
@@ -262,7 +262,7 @@ class WebAppInterface(private val mContext: Context, var parentLayout: LinearLay
 
 ## <a name="set-up-the-app-kotlin-code-main-activity"></a>Az alkalmazás Kotlin-kódjának fő tevékenységének beállítása
 
-A **/Java/com.example.quickstartkotlin** mappában egy meglévő **MainActivity. kt** Kotlin-osztály jelenik meg. Itt jön létre az alkalmazás logikája. Cserélje le a tartalmát a következő kódra.
+A **/Java/com.example.quickstartkotlin** mappában egy meglévő **MainActivity. kt** Kotlin-osztály jelenik meg. Ez a fájl az alkalmazás logikájának szerzője. Cserélje le a tartalmát a következő kódra:
 
 ```MainActivity.kt
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -290,10 +290,10 @@ import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.util.*
 
-// This sample app uses the Dotenv is a module that loads environment variables from a .env file to better manage secrets.
+// This sample app uses the Dotenv. It's a module that loads environment variables from a .env file to better manage secrets.
 // https://github.com/cdimascio/java-dotenv
-// Be sure to add a "env" file to the /assets folder
-// instead of '.env', use 'env'
+// Be sure to add a "env" file to the /assets folder.
+// Instead of '.env', use 'env'.
 
 class MainActivity : AppCompatActivity() {
     private val dotEnv = dotenv {
@@ -313,10 +313,10 @@ class MainActivity : AppCompatActivity() {
         immersiveReaderButton.setOnClickListener { GlobalScope.launch { handleLoadImmersiveReaderWebView() } }
     }
 
-    // Assigns values to the objects sent to the Immersive Reader SDK
+    // Assigns values to the objects sent to the Immersive Reader SDK,
     // acquires the token and authorizes the app, then launches
     // the Web View to get the response and load the Immersive Reader
-    // When the button is clicked in HTML.
+    // when the button is clicked in HTML.
     private suspend fun handleLoadImmersiveReaderWebView() {
         val exampleActivity = this
         val subdomain = dotEnv["SUBDOMAIN"]
@@ -358,7 +358,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // The next two functions get the token from the Immersive Reader SDK
-    // and authorizes the app.
+    // and authorize the app.
     private suspend fun getImmersiveReaderTokenAsync(): String {
         return getToken()
     }
@@ -416,7 +416,7 @@ class MainActivity : AppCompatActivity() {
                   var options: Options? = null)
 
     // Only includes Immersive Reader options relevant to Android apps.
-    // For a complete list visit https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference
+    // For a complete list, visit https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference
     class Options(var uiLang: String? = null, // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
                   var timeout: Int? = null, // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
                   var uiZIndex: Int? = null, // Z-index of the iframe that will be created (default is 1000)
@@ -507,9 +507,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                // This is where the WebAppInterface Class is used
+                // This is where the WebAppInterface Class is used.
                 // Affords a way for JavaScript to work with the app directly from
-                // the Web View's HTML
+                // the Web View's HTML.
                 val jsInterface = WebAppInterface(exampleActivity, parentLayout, contextualWebView)
                 contextualWebView.addJavascriptInterface(jsInterface, "Android")
                 contextualWebView.loadUrl("file:///android_asset/immersiveReader.html")
@@ -521,13 +521,13 @@ class MainActivity : AppCompatActivity() {
 
 ## <a name="add-the-app-html-to-the-web-view"></a>Az alkalmazás HTML-fájljának hozzáadása a webes nézethez
 
-A webes nézet implementációjának HTML-re lesz szüksége a működéshez. Kattintson a jobb gombbal a **/assets** mappára, és hozzon létre egy új fájlt, és nevezze el **immersiveReader.html**.
+A webes nézet implementációjának HTML-re van szüksége a működéséhez. Kattintson a jobb gombbal a **/assets** mappára, hozzon létre egy új fájlt, és nevezze el **immersiveReader.html**-ként.
 
 ![Új HTML-fájl létrehozása](../../media/android/kotlin/android-studio-immersive-reader-html.png)
 
 ![HTML-eszköz helye](../../media/android/kotlin/android-studio-immersive-reader-html-assets.png)
 
-Adja hozzá az alábbi HTML-kódot és JavaScriptet. Ezzel hozzáadja a magával ragadó olvasói SDK-t az alkalmazáshoz, és a segítségével elindíthatja a magával ragadó olvasót az általunk írt alkalmazás kódjával.
+Adja hozzá a következő HTML-és JavaScript-kódot. Ez a kód hozzáadja a magával ragadó olvasói SDK-t az alkalmazáshoz, és a segítségével megnyithatja a magával ragadó olvasót az általunk írt alkalmazás kódjával.
 
 ```immersiveReader.html
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
@@ -576,7 +576,7 @@ Licensed under the MIT License. -->
 
 ![AndroidManifest](../../media/android/kotlin/android-studio-android-manifest-xml.png)
 
-Mivel az alkalmazásnak a működéséhez hálózati hívásokat kell kezdeményezni a zavartalan olvasó SDK-hoz, biztosítani kell, hogy az alkalmazás engedélyei a hálózati hozzáférés engedélyezésére legyenek konfigurálva. Cserélje le a **/manifests/AndroidManifest.xml** tartalmát az alábbi XML-fájlra.
+Mivel az alkalmazásnak a zavartalan olvasó SDK-hoz való működéséhez hálózati hívásokat kell végeznie, gondoskodni kell arról, hogy az alkalmazás engedélyei a hálózati hozzáférés engedélyezésére legyenek konfigurálva. Cserélje le a **/manifests/AndroidManifest.xml** tartalmát a következő XML-fájlra:
 
 ```AndroidManifest.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -604,12 +604,12 @@ Mivel az alkalmazásnak a működéséhez hálózati hívásokat kell kezdemény
 </manifest>
 ```
 
-## <a name="running-the-app"></a>Az alkalmazás futtatása
+## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-A Android Studio használatával futtathatja az alkalmazást egy eszköz-emulátoron. Ha a **magától** megjelenő olvasó gombra kattint, megjelenik az alkalmazásban a tartalommal megjelenő lebilincselő olvasó.
+A Android Studio használatával futtathatja az alkalmazást egy eszköz-emulátoron. Amikor kijelöli az **olvasót**, a magával ragadó olvasó megnyílik az alkalmazás tartalmával.
 
 ![Modern olvasó](../../media/android/kotlin/android-studio-device-emulator.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](../../reference.md)
+Fedezze fel az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -t és a [magára ejtő olvasó SDK-referenciát](../../reference.md).

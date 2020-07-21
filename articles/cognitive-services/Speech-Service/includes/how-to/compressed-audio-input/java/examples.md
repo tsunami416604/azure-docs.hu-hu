@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: 666decfe3982ea58f5db3561eb9fb6e96965df5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: caada98d3a2bcc4acb566cb02065c6451c233066
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81421977"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86545093"
 ---
-Ha tömörített hangformátumot szeretne továbbítani a beszédfelismerési szolgáltatásba, hozzon létre egy `PullAudioInputStream` vagy `PushAudioInputStream`. Ezután hozzon létre `AudioConfig` egy példányt a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
+Ha tömörített hangformátumot szeretne továbbítani a beszédfelismerési szolgáltatásba, hozzon létre egy `PullAudioInputStream` vagy `PushAudioInputStream` . Ezután hozzon létre egy `AudioConfig` példányt a stream osztály egy példányáról, és adja meg az adatfolyam tömörítési formátumát.
 
-Tegyük fel, hogy rendelkezik egy nevű `pullStream` bemeneti stream-osztállyal, és az Opus/OGG-t használja. A kód így néz ki:
+Tegyük fel, hogy rendelkezik egy nevű bemeneti stream-osztállyal `pullStream` , és az Opus/OGG-t használja. A kód így néz ki:
 
 ```java
 import com.microsoft.cognitiveservices.speech.audio.AudioConfig;
@@ -40,7 +40,7 @@ AudioConfig audioConfig =
         audioFormat);
 
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, audioConfig);
-SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get()
+SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
 
 String text = result.getText();
 ```

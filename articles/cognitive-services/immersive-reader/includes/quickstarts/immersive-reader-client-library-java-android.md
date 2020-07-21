@@ -9,49 +9,49 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/10/2020
 ms.author: dylankil
-ms.openlocfilehash: f1d5a5cf6fb23ce3ccf92faf75d80cbe760b9bdc
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: d7b027ead90c0bde8611fc08f19f261c934de2e8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038387"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544976"
 ---
 A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integráltan kialakított eszköz, amely bevált technikákat valósít meg az olvasási szövegértés javítására.
 
-Ebben a rövid útmutatóban egy Android-alkalmazást hozhat létre a semmiből, és integrálhatja a magával ragadó olvasót. Ebben a [rövid útmutatóban](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android)egy teljes körű működő minta érhető el.
+Ebben a rövid útmutatóban egy Android-alkalmazást hozhat létre a semmiből, és integrálhatja a magával ragadó olvasót. Ennek a rövid útmutatónak a teljes működő mintája elérhető [a githubon](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android).
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](../../how-to-create-immersive-reader.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
-* [Git](https://git-scm.com/)
-* [Magával ragadó olvasói SDK](https://github.com/microsoft/immersive-reader-sdk)
-* [Android Studio](https://developer.android.com/studio)
+* A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](../../how-to-create-immersive-reader.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékeket kell megadnia. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
+* [Git](https://git-scm.com/).
+* [Magával ragadó olvasói SDK](https://github.com/microsoft/immersive-reader-sdk).
+* [Android Studio](https://developer.android.com/studio).
 
 ## <a name="create-an-android-project"></a>Android-projekt létrehozása
 
-Új projekt elindítása Android Studioban. Ehhez a példához a forrásként szolgáló [olvasó SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) részeként érhető el
+Új projekt elindítása Android Studioban. Ehhez a példához tartozó forráskód a [magával ragadó olvasó SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android)részeként érhető el.
 
 ![Új projekt](../../media/android/java/android-studio-create-project.png)
 
-A projekt kiválasztása ablakban válassza az **üres tevékenység** elemet, majd kattintson a Tovább gombra.
+A **projekt kiválasztása** ablakban válassza az **üres tevékenység**elemet, majd kattintson a **tovább**gombra.
 
 ![Üres tevékenység projekt](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>A projekt konfigurálása
 
-Nevezze el a "QuickstartJava" projektet, válassza ki a mentési helyet, és válassza a "Java" lehetőséget a programozási nyelvként, majd kattintson a "Befejezés" gombra.
+Nevezze el a projekt **QuickstartJava**, és válassza ki a menteni kívánt helyet. A programozási nyelvként válassza a **Java** lehetőséget, majd kattintson a **Befejezés gombra**.
 
 ![A projekt konfigurálása](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>Eszközök és hitelesítés beállítása
 
-Új **/assets** -mappa létrehozása
+Hozzon létre egy új **/assets** mappát.
 
 ![Új eszközök mappa létrehozása](../../media/android/java/android-studio-assets-folder.png)
 
- Hozzon létre egy **env** nevű fájlt az eszközök mappában. Adja hozzá a következőt, ha szükséges, adja meg az értékeket. Ügyeljen arra, hogy ne véglegesítse ezt az ENV-fájlt a verziókövetés során, mert olyan titkot tartalmaz, amelyet nem kell nyilvánosságra hozni.
+ Hozzon létre egy **env** nevű fájlt az eszközök mappában. Adja hozzá a következő neveket és értékeket, és adja meg a megfelelő értékeket. Ne véglegesítse ezt az ENV-fájlt a verziókövetés során, mert olyan titkos kulcsokat tartalmaz, amelyeket nem szabad nyilvánosságra hozni.
 
 ![Új env-fájl létrehozása](../../media/android/java/android-studio-create-env-file.png)
 
@@ -65,7 +65,7 @@ SUBDOMAIN=<YOUR_SUBDOMAIN>
 
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
-Cserélje le a **Build. gradle** fájl meglévő függőségeit az alábbi implementációkkal, hogy engedélyezze a GSON (JSON-elemzés és-szerializálás) és a dotenv az ENV fájlban definiált változókra való hivatkozáshoz. Előfordulhat, hogy újra kell szinkronizálnia a projektet a rövid útmutató későbbi szakaszaiban végzett tevékenységek végrehajtásakor.
+Cserélje le a **Build. gradle** fájl meglévő függőségeit a következő implementációkkal, hogy engedélyezze a GSON (JSON-elemzés és-szerializálás) és a dotenv az ENV fájlban definiált változókra való hivatkozáshoz. Előfordulhat, hogy újra kell szinkronizálnia a projektet, amikor a rövid útmutató későbbi részében tevékenységeket hajt végre.
 
 ```build.gradle
 dependencies {
@@ -80,11 +80,11 @@ dependencies {
 }
 ```
 
-![Alkalmazás-Gradle implementációk](../../media/android/java/android-studio-build-gradle.png)
+![Alkalmazás-gradle implementációk](../../media/android/java/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>Alkalmazás-karakterláncok és elrendezési erőforrások frissítése
 
-Cserélje le a **res/Strings/strings.xml** tartalmait az alkalmazásban használandó alábbi karakterláncokra.
+Cserélje le a **res/Strings/strings.xml** tartalmait az alkalmazásban használandó következő karakterláncokra.
 
 ![Alkalmazás strings.xml](../../media/android/java/android-studio-strings.png)
 
@@ -102,7 +102,7 @@ Cserélje le a **res/Strings/strings.xml** tartalmait az alkalmazásban használ
 </resources>
 ```
 
-Cserélje le a **res/layout/activity_main.xml** tartalmát az alkalmazásban használni kívánt XML-fájlra. Ez az alkalmazás felhasználói felületének elrendezése.
+Cserélje le a **res/layout/activity_main.xml** tartalmait a következő XML-fájlra az alkalmazásban való használathoz. Ez az XML az alkalmazás felhasználói felületének elrendezése.
 
 ![Alkalmazás activity_main.xml](../../media/android/java/android-studio-activity-main-xml.png)
 
@@ -203,7 +203,7 @@ Cserélje le a **res/layout/activity_main.xml** tartalmát az alkalmazásban has
 
 ## <a name="add-the-web-view-layout"></a>A webes nézet elrendezésének hozzáadása
 
-A **res/layout/** mappában hozzon létre egy új elrendezési erőforráscsoportot, és nevezze el **activity_immersive_reader**, majd cserélje le a tartalmát az alábbi XML-fájlra. Ezzel hozzáadja a webnézet összetevőt, amelyet a IRActivity Java-kód használ, amelyet egy későbbi lépésben fog létrehozni, mert most már nincs meghatározva, és hibákat okoz.
+A **res/layout/** mappában hozzon létre egy új elrendezési erőforrás-fájlt, és nevezze el **activity_immersive_reader**. Ezután cserélje le a tartalmát a következő XML-fájlra. Ez az XML hozzáadja a webnézet összetevőt, amelyet a IRActivity Java-kód használ, amelyet egy későbbi lépésben fog létrehozni. Egyelőre nem definiált, és hibákat okoz.
 
 ![Új elrendezési erőforrásfájl létrehozása](../../media/android/java/android-studio-new-layout-resource.png)
 
@@ -232,7 +232,7 @@ A **res/layout/** mappában hozzon létre egy új elrendezési erőforráscsopor
 
 ## <a name="set-up-the-app-java-code"></a>Az alkalmazás Java-kódjának beállítása
 
-A **/Java/com.example.quickstartjava** mappában megtekintheti a meglévő **MainActivity. Java** Java-osztály fájlt. Ez a mappa az alkalmazás logikájának szerzője.
+A **/Java/com.example.quickstartjava** mappában megjelenik egy meglévő **MainActivity. Java** Java-osztály fájl. Ez a mappa az alkalmazás logikájának szerzője.
 
 ![MainActivity](../../media/android/java/android-studio-main-activity-java.png)
 
@@ -256,9 +256,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Creates a new activity, finds its content and the Immersive Reader button
- * when clicked the app sends the content to the Immersive Reader SDK and
- * Launches the Immersive Reader
+ * Creates a new activity, finds its content and the Immersive Reader button.
+ * When clicked, the app sends the content to the Immersive Reader SDK and
+ * launches the Immersive Reader.
  */
 public class MainActivity extends Activity {
 
@@ -287,13 +287,13 @@ public class MainActivity extends Activity {
 }
 ```
 
-A **/Java/com.example.quickstartjava** mappában 16 további Java-osztályt hozunk létre. Az alkalmazás ezeket az osztályokat használja a magával foglalt olvasói SDK integrálására. Minden új fájlnál van néhány olyan osztály, amely még nem létezik, és később lesz létrehozva. Ha az összes osztály létrejött, akkor nem lehet null hivatkozási hiba.
+16 további Java-osztály fájlt hozunk létre a **/Java/com.example.quickstartjava** mappában. Az alkalmazás ezeket az osztályokat használja a lebilincselő olvasói SDK integrálására. Minden új fájl esetében van néhány olyan, a kódban hivatkozott osztály, amely még nem létezik, és később jön létre. Az összes osztály létrehozása után nem lehet null hivatkozási hiba.
 
-Hozzon létre egy új **ImmersiveReader. Java** Java-osztályt úgy, hogy jobb gombbal a mappára kattint Android Studio majd az "új" lehetőséget választja, majd kiválasztja a "Java class" elemet. Ugyanezt a módszert fogja használni a Java-osztályok fájljainak létrehozásához minden létrehozott új Java Class-fájlhoz.
+Új **ImmersiveReader. Java** Java-osztály létrehozásához kattintson a jobb gombbal a mappára Android Studioban, válassza az **új**, majd a **Java-osztály**elemet. Ugyanezt a módszert fogja használni a Java-osztályok fájljainak létrehozásához minden létrehozott új Java-osztályhoz.
 
 ![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
 
-Cserélje le az **ImmersiveReader. Java** tartalmát a következő kódra.
+Cserélje le az **ImmersiveReader. Java** tartalmát a következő kódra:
 
 ```ImmersiveReader.java
 /**
@@ -347,7 +347,7 @@ public class ImmersiveReader {
      * @param dataToRead - Content to be read
      * @return IRError - IRError, with following error codes:
      * a) Error.NONE in case of successful launch of Immersive Reader
-     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token.
+     * b) Error.INVALID_ACCESS_TOKEN in case of empty access token
      * c) Error.INVALID_STATE in case of empty activity
      * d) Error.INVALID_CONTENT in case of empty list of text chunks
      */
@@ -377,7 +377,7 @@ Hozzon létre egy új **IRActivity. Java** Java-osztály fájlt.
 
 ![IRActivity](../../media/android/java/android-studio-iractivity-java.png)
 
-Cserélje le az **IRActivity. Java** tartalmát a következő kódra.
+Cserélje le az **IRActivity. Java** tartalmát a következő kódra:
 
 ```IRActivity.java
 /**
@@ -408,8 +408,8 @@ public class ImmersiveReader {
 
     /**
      * Interface to accept access token from client app.
-     * Note that it is client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
-     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string
+     * Note that it is the client's responsibility to give a valid Access Token whenever getAccessToken() is requested.
+     * In favor of latency perf, there would be no further validation by Immersive Reader module except to ensure that the provided access token is non-empty string.
      */
     @Keep
     public interface IAuthenticator {
@@ -461,7 +461,7 @@ Hozzon létre egy új **IRError. Java** Java-osztály fájlt.
 
 ![IRError](../../media/android/java/android-studio-irerror-java.png)
 
-Cserélje le az **IRError. Java** tartalmát a következő kódra.
+Cserélje le az **IRError. Java** tartalmát a következő kódra:
 
 ```IRError.java
 /**
@@ -540,7 +540,7 @@ Hozzon létre egy új **error. Java** Java-osztály fájlt.
 
 ![Hiba](../../media/android/java/android-studio-error-java.png)
 
-Cserélje le a **error. Java** tartalmát a következő kódra.
+Cserélje le a **error. Java** tartalmát a következő kódra:
 
 ```Error.java
 /**
@@ -571,7 +571,7 @@ Hozzon létre egy új **ReadableContent. Java** Java-osztály fájlt.
 
 ![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
 
-Cserélje le az **ReadableContent. Java** tartalmát a következő kódra.
+Cserélje le az **ReadableContent. Java** tartalmát a következő kódra:
 
 ```ReadableContent.java
 /**
@@ -615,7 +615,7 @@ Hozzon létre egy új **ReadableTextChunk. Java** Java-osztály fájlt.
 
 ![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
 
-Cserélje le az **ReadableTextChunk. Java** tartalmát a következő kódra.
+Cserélje le az **ReadableTextChunk. Java** tartalmát a következő kódra:
 
 ```ReadableTextChunk.java
 /**
@@ -647,7 +647,7 @@ Hozzon létre egy új **IRDataHolder. Java** Java-osztály fájlt.
 
 ![IRDataHolder](../../media/android/java/android-studio-irdataholder-java.png)
 
-Cserélje le az **IRDataHolder. Java** tartalmát a következő kódra.
+Cserélje le az **IRDataHolder. Java** tartalmát a következő kódra:
 
 ```IRDataHolder.java
 /**
@@ -663,7 +663,7 @@ import androidx.annotation.Keep;
  * A thin singleton class that is used to hold the Client's IAuthenticator's implementation and the Content to be read.
  * This is required for two reasons:
  * 1) As per Android guidelines, data being passed via intent should be limited to a few KBs. Alternative is to use Singleton holder classes like this one.
- * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios
+ * 2) We need a way to make callbacks survive app configuration changes and killed in background scenarios.
  */
 
 @Keep
@@ -712,7 +712,7 @@ Hozzon létre egy új **IRAuthenticator. Java** Java-osztály fájlt.
 
 ![IRAuthenticator](../../media/android/java/android-studio-irauthenticator-java.png)
 
-Cserélje le az **IRAuthenticator. Java** tartalmát a következő kódra.
+Cserélje le az **IRAuthenticator. Java** tartalmát a következő kódra:
 
 ```IRAuthenticator.java
 /**
@@ -739,10 +739,10 @@ import java.net.URL;
 
 import static java.net.HttpURLConnection.HTTP_OK;
 
-// This sample app uses the Dotenv is a module that loads environment variables from a .env file to better manage secrets.
+// This sample app uses the Dotenv. It's a module that loads environment variables from a .env file to better manage secrets.
 // https://github.com/cdimascio/java-dotenv
-// Be sure to add a "env" file to the /assets folder
-// instead of '.env', use 'env'
+// Be sure to add a "env" file to the /assets folder.
+// Instead of '.env', use 'env'.
 
 public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
     private static final String LOG_TAG = "IRAuthenticator";
@@ -823,7 +823,7 @@ Hozzon létre egy új **IRLauncher. Java** Java-osztály fájlt.
 
 ![IRLauncher](../../media/android/java/android-studio-irlauncher-java.png)
 
-Cserélje le az **IRLauncher. Java** tartalmát a következő kódra.
+Cserélje le az **IRLauncher. Java** tartalmát a következő kódra:
 
 ```IRLauncher.java
 /**
@@ -853,7 +853,7 @@ import java.util.concurrent.Callable;
 import io.github.cdimascio.dotenv.Dotenv;
 
 /**
- * Responsible for setting up the web view with appropriate bridging between JS and Java to launch the Immersive reader url for reading the content
+ * Responsible for setting up the web view with appropriate bridging between JavaScript and Java to launch the Immersive Reader url for reading the content.
  */
 
 public class IRLauncher {
@@ -876,7 +876,7 @@ public class IRLauncher {
         // Invoked in case of empty access token or empty content request to be read
         void onFailure(IRError error);
 
-        // Invoked when Immersive reader is exiting (e.g.) user pressed back in the immersive reader experience
+        // Invoked when Immersive Reader is exiting (e.g.) user pressed back in the Immersive Reader experience
         void onExit();
     }
 
@@ -981,7 +981,7 @@ public class IRLauncher {
             }
         });
 
-        // Prepare and set the WebAppInterface to hear back from the JS
+        // Prepare and set the WebAppInterface to hear back from the JavaScript
         WebAppInterface jsInterface = new WebAppInterface(new WebAppInterface.WebAppListener() {
             @Override
             public void onShowToast(String toast) {
@@ -1016,7 +1016,7 @@ Hozzon létre egy új **IRStore. Java** Java-osztály fájlt.
 
 ![IRStore](../../media/android/java/android-studio-irstore-java.png)
 
-Cserélje le az **IRStore. Java** tartalmát a következő kódra.
+Cserélje le az **IRStore. Java** tartalmát a következő kódra:
 
 ```IRStore.java
 /**
@@ -1041,7 +1041,7 @@ Hozzon létre egy új **AuthenticationTask. Java** Java-osztály fájlt.
 
 ![AuthenticationTask](../../media/android/java/android-studio-authenticationtask-java.png)
 
-Cserélje le az **AuthenticationTask. Java** tartalmát a következő kódra.
+Cserélje le az **AuthenticationTask. Java** tartalmát a következő kódra:
 
 ```AuthenticationTask.java
 /**
@@ -1098,7 +1098,7 @@ Hozzon létre egy új **darab. Java** Java-osztály fájlt.
 
 ![Adattömb](../../media/android/java/android-studio-chunk-java.png)
 
-Cserélje le a **darab. Java** tartalmát a következő kódra.
+Cserélje le a **darab. Java** tartalmát a következő kódra:
 
 ```Chunk.java
 /**
@@ -1112,8 +1112,8 @@ import androidx.annotation.Keep;
 
 /**
  * The chunk object that will be sent to the Immersive Reader SDK.
- * The content is a string of text, the lang is a string, e.g. 'll-cc'
- * and the mimeType is also a string, e.g. 'text/plain'
+ * The content is a string of text, the lang is a string, e.g. 'll-cc',
+ * and the mimeType is also a string, e.g. 'text/plain'.
  */
 
 @Keep
@@ -1135,7 +1135,7 @@ Hozzon létre egy új **Content. Java** Java-osztály fájlt.
 
 ![Tartalom](../../media/android/java/android-studio-content-java.png)
 
-Cserélje le a **Content. Java** tartalmát a következő kódra.
+Cserélje le a **Content. Java** tartalmát a következő kódra:
 
 ```Content.java
 /**
@@ -1171,7 +1171,7 @@ Hozzon létre egy új **Options. Java** Java Class fájlt.
 
 ![Beállítások](../../media/android/java/android-studio-options-java.png)
 
-Cserélje le a **Options. Java** tartalmát a következő kódra.
+Cserélje le a **Options. Java** tartalmát a következő kódra:
 
 ```Options.java
 /**
@@ -1205,7 +1205,7 @@ Hozzon létre egy új **Message. Java** Java-osztály fájlt.
 
 ![Üzenet](../../media/android/java/android-studio-message-java.png)
 
-Cserélje le az **üzenet. Java** tartalmát a következő kódra.
+Cserélje le az **üzenet. Java** tartalmát a következő kódra:
 
 ```Message.java
 /**
@@ -1217,7 +1217,7 @@ import androidx.annotation.Keep;
 
 /**
  * The message object that will be sent to the Immersive Reader SDK.
- * This object contains the access token, sub domain, Content and Options.
+ * This object contains the access token, sub domain, Content, and Options.
  */
 
 @Keep
@@ -1243,7 +1243,7 @@ Hozzon létre egy új **WebAppInterface. Java** Java-osztály fájlt.
 
 ![WebAppInterface](../../media/android/java/android-studio-webappinterface-java.png)
 
-Cserélje le az **WebAppInterface. Java** tartalmát a következő kódra.
+Cserélje le az **WebAppInterface. Java** tartalmát a következő kódra:
 
 ```WebAppInterface.java
 /**
@@ -1257,7 +1257,7 @@ import androidx.annotation.Keep;
 import android.webkit.JavascriptInterface;
 
 /**
- * JavaScript interface implementation passed to the WebView to enable talking between JS and Java
+ * JavaScript interface implementation passed to the WebView to enable talking between JavaScript and Java.
  */
 
 @Keep
@@ -1290,13 +1290,13 @@ public class WebAppInterface {
 
 ## <a name="add-the-app-html-to-the-web-view"></a>Az alkalmazás HTML-fájljának hozzáadása a webes nézethez
 
-A webes nézet implementációjának HTML-re lesz szüksége a működéshez. Kattintson a jobb gombbal a **/assets** mappára, és hozzon létre egy új fájlt, és nevezze el **immersiveReader.html**.
+A webes nézet implementációjának HTML-re van szüksége a működéséhez. Kattintson a jobb gombbal a **/assets** mappára, hozzon létre egy új fájlt, és nevezze el **immersiveReader.html**-ként.
 
 ![Új HTML-fájl létrehozása](../../media/android/java/android-studio-immersive-reader-html.png)
 
 ![HTML-eszköz helye](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
-Adja hozzá az alábbi HTML-kódot és JavaScriptet. Ezzel hozzáadja a magával ragadó olvasói SDK-t az alkalmazáshoz, és a segítségével elindíthatja a magával ragadó olvasót az általunk írt alkalmazás kódjával.
+Adja hozzá a következő HTML-és JavaScript-kódot. Ez a kód hozzáadja a magával ragadó olvasói SDK-t az alkalmazáshoz, és a segítségével megnyithatja a magával ragadó olvasót az általunk írt alkalmazás kódjával.
 
 ```immersiveReader.html
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
@@ -1353,7 +1353,7 @@ Licensed under the MIT License. -->
 
 ![AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
 
-Mivel az alkalmazásnak a működéséhez hálózati hívásokat kell kezdeményezni a zavartalan olvasó SDK-hoz, biztosítani kell, hogy az alkalmazás engedélyei a hálózati hozzáférés engedélyezésére legyenek konfigurálva. Cserélje le a **/manifests/AndroidManifest.xml** tartalmát az alábbi XML-fájlra.
+Mivel az alkalmazásnak a zavartalan olvasó SDK-hoz való működéséhez hálózati hívásokat kell végeznie, gondoskodni kell arról, hogy az alkalmazás engedélyei a hálózati hozzáférés engedélyezésére legyenek konfigurálva. Cserélje le a **/manifests/AndroidManifest.xml** tartalmát a következő XML-fájlra:
 
 ```AndroidManifest.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -1384,12 +1384,12 @@ Mivel az alkalmazásnak a működéséhez hálózati hívásokat kell kezdemény
 </manifest>
 ```
 
-## <a name="running-the-app"></a>Az alkalmazás futtatása
+## <a name="run-the-app"></a>Az alkalmazás futtatása
 
-A Android Studio használatával futtathatja az alkalmazást egy eszköz-emulátoron. Ha a **magától** megjelenő olvasó gombra kattint, megjelenik az alkalmazásban a tartalommal megjelenő lebilincselő olvasó.
+A Android Studio használatával futtathatja az alkalmazást egy eszköz-emulátoron. Amikor kijelöli az **olvasót**, a magával ragadó olvasó megnyílik az alkalmazás tartalmával.
 
 ![Modern olvasó](../../media/android/java/android-studio-device-emulator.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerkedjen meg a [magára az olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -val és az [olvasói SDK-referenciával](../../reference.md)
+Fedezze fel az [olvasói SDK](https://github.com/microsoft/immersive-reader-sdk) -t és a [magára ejtő olvasó SDK-referenciát](../../reference.md).

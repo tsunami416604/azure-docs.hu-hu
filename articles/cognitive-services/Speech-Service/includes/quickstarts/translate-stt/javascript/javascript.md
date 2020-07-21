@@ -4,11 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: ad3e005f65b1660bd843bf2819f41eddbed44e9c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b6829f52cb8aaac6f243d3a4a1fa7f6bc1b150d7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86035573"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544728"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -24,7 +25,7 @@ Hozzon létre egy új, üres mappát. Abban az esetben, ha a mintát egy webkisz
 
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>A JavaScripthez készült Speech SDK kicsomagolása a mappába
 
-Töltse le a Speech SDK-t [.zip-csomagként](https://aka.ms/csspeech/jsbrowserpackage), és csomagolja ki az újonnan létrehozott mappába. Ennek eredményeképpen a rendszer két fájlt csomagol ki, `microsoft.cognitiveservices.speech.sdk.bundle.js` és `microsoft.cognitiveservices.speech.sdk.bundle.js.map` .
+Töltse le a Speech SDK-t [.zip-csomagként](https://aka.ms/csspeech/jsbrowserpackage), és csomagolja ki az újonnan létrehozott mappába. Ennek eredményeképpen öt fájlt csomagol ki a rendszer, beleértve a és a csomagot is `microsoft.cognitiveservices.speech.sdk.bundle.js` `microsoft.cognitiveservices.speech.sdk.bundle.js.map` .
 Az utóbbi fájl nem kötelező, és az SDK-kódban való hibakereséshez hasznos.
 
 ## <a name="create-an-indexhtml-page"></a>Az index.html lap létrehozása

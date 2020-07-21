@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan lehet kódot és konfigurálást Durable Functi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82733413"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540298"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions futtatása webjobsként
 
@@ -31,7 +31,7 @@ Ez a cikk azt feltételezi, hogy már ismeri a webjobs SDK, a C# Azure Functions
 
 A cikkben szereplő lépések végrehajtásához:
 
-* [Telepítse a Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/) -et az **Azure-fejlesztési** számítási feladattal.
+* [Telepítse a Visual Studio 2019](/visualstudio/install/) -et az **Azure-fejlesztési** számítási feladattal.
 
   Ha már rendelkezik a Visual Studióval, de nem rendelkezik ezzel a számítási feladattal, adja hozzá a munkaterhelést az **eszközök**  >  **beolvasása eszközök és szolgáltatások beszerzése**lehetőség
 
@@ -119,14 +119,14 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Függvények
 
 A webjobs-feladatok kontextusában a Durable Functions a Azure Functions kontextusában különbözik a Durable Functionstől. Fontos, hogy tisztában legyenek a kódok írásához szükséges különbségekkel.
 
 A webjobs SDK nem támogatja a következő Azure Functions funkciókat:
 
 * [Függvénynév attribútum](#functionname-attribute)
-* [HTTP eseményindító](#http-trigger)
+* [HTTP-eseményindító](#http-trigger)
 * [Durable Functions HTTP Management API](#http-management-api)
 
 ### <a name="functionname-attribute"></a>Függvénynév attribútum
@@ -224,7 +224,7 @@ A legfontosabb változás a .net Core használata a .NET-keretrendszer helyett. 
     * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. A .NET Core konfigurációs keretrendszer használatával állítsa be a tárolási és a Application Insightsi kialakítási kulcsot a fájl egy *appsettings.js* . Íme egy példa:
+1. A .NET Core konfigurációs keretrendszer használatával állítsa be a tárolási és a Application Insightsi kialakítási kulcsot a fájl egy *appsettings.js* . Bemutatunk egy példát:
 
     ```json
         {
@@ -233,7 +233,7 @@ A legfontosabb változás a .net Core használata a .NET-keretrendszer helyett. 
         }
     ```
 
-1. Módosítsa a `Main` metódus kódját. Íme egy példa:
+1. Módosítsa a `Main` metódus kódját. Bemutatunk egy példát:
 
    ```cs
    static void Main(string[] args)
@@ -269,6 +269,6 @@ A legfontosabb változás a .net Core használata a .NET-keretrendszer helyett. 
    }
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A webjobs SDK-val kapcsolatos további tudnivalókért tekintse meg a [Webjobs SDK használatát](../../app-service/webjobs-sdk-how-to.md)ismertető témakört.

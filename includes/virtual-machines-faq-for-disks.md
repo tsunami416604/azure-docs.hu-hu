@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9764d3964a38408493bafe0e9c8ca059b055ca21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efec7656675b649d365a479c184de06a67d33db0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85242207"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86545075"
 ---
 Ez a cikk az Azure Managed Disks és az Azure prémium SSD-lemezekkel kapcsolatos gyakori kérdésekre ad választ.
 
@@ -94,7 +95,7 @@ Az ügyfelek pillanatképet készíthetnek a felügyelt lemezekről, majd a pill
 
 Igen, a nem felügyelt és a felügyelt lemezek is támogatottak. Javasoljuk, hogy felügyelt lemezeket használjon új munkaterhelésekhez, és telepítse át az aktuális számítási feladatokat a felügyelt lemezekre.
 
-**Megkereshetem a nem felügyelt és felügyelt lemezeket ugyanazon a virtuális gépen?**
+**Megkereshetem a nem felügyelt és a felügyelt lemezeket ugyanazon a virtuális gépen?**
 
 Nem.
 
@@ -157,15 +158,19 @@ Az Azure-lemezek foglalása egy adott régióra és SKU-ra (például az USA 2. 
 **Mi történik, ha az Azure-lemezek foglalása lejár?**    
 Az e-mail-értesítéseket a lejárat előtt 30 nappal, a lejárati dátum után pedig újra megkapja. Ha a foglalás lejár, a telepített lemezek továbbra is futni fognak, és az utólagos elszámolású [díjszabással](https://azure.microsoft.com/pricing/details/managed-disks/)számolunk fel díjat.
 
+**Standard SSD lemezek támogatják az "egypéldányos VM SLA" szolgáltatást?**
+
+Igen, az összes lemez típusa támogatja az Egypéldányos VM SLA-t.
+
 ### <a name="azure-shared-disks"></a>Azure megosztott lemezek
 
 **Támogatottak-e a megosztott lemezek szolgáltatás nem felügyelt lemezek vagy Blobok esetén?**
 
-Nem, csak a prémium szintű SSD által felügyelt lemezek esetében támogatott.
+Nem, csak az ultra-lemezek és a prémium szintű SSD által felügyelt lemezek esetében támogatott.
 
 **Mely régiók támogatják a megosztott lemezeket?**
 
-Jelenleg csak az USA nyugati középső régiója.
+A regionális információkhoz tekintse meg a [fogalmi cikket](../articles/virtual-machines/linux/disks-shared.md).
 
 **Használhatók-e a megosztott lemezek operációsrendszer-lemezként?**
 
@@ -173,11 +178,11 @@ Nem, a megosztott lemezek csak adatlemezek esetén támogatottak.
 
 **Milyen méretű lemezek támogatják a megosztott lemezeket?**
 
-Csak a P15 vagy nagyobb támogatást biztosító SSD-k támogatják a megosztott lemezeket.
+A támogatott méretekért tekintse meg a [fogalmi cikket](../articles/virtual-machines/linux/disks-shared.md).
 
-**Ha van meglévő prémium SSD-je, Engedélyezem a megosztott lemezeket?**
+**Ha van meglévő lemezem, Engedélyezem a megosztott lemezeket?**
 
-Az API 2019-07-01-es vagy újabb verziójával létrehozott összes felügyelt lemez engedélyezheti a megosztott lemezeket. Ehhez le kell választania a lemezt az összes olyan virtuális gépről, amelyhez hozzá van csatolva. Ezután szerkessze a `maxShares` tulajdonságot a lemezen.
+Az API 2019-07-01-es vagy újabb verziójával létrehozott összes felügyelt lemez engedélyezheti a megosztott lemezeket. Ehhez le kell választania a lemezt az összes olyan virtuális gépről, amelyhez hozzá van csatolva. Ezután szerkessze a **maxShares** tulajdonságot a lemezen.
 
 **Ha már nem szeretném használni a lemezt megosztott módban, hogyan lehet letiltani?**
 
@@ -193,7 +198,7 @@ Nem.
 
 **Engedélyezhető a gazdagép gyorsítótárazása olyan lemez esetében, amelyen engedélyezve van a megosztott lemez?**
 
-Az egyetlen támogatott gazdagép-gyorsítótárazási beállítás a "None".
+Az egyetlen támogatott gazdagép-gyorsítótárazási beállítás **nincs.**
 
 ## <a name="ultra-disks"></a>Ultralemezek
 
@@ -204,7 +209,7 @@ Ha nem biztos abban, hogy mit kell beállítania a lemez átviteli sebességéne
 A lemez szabályozásán kívül van egy IO-szabályozás, amely a virtuális gép szintjén lesz kiszabva. Győződjön meg arról, hogy a használt virtuális gép mérete támogatja a lemezeken konfigurált szinteket. A virtuális gép által kiszabott IO-korlátokkal kapcsolatos részletekért lásd: a [Windows rendszerű virtuális gépek méretei az Azure-ban](../articles/virtual-machines/windows/sizes.md).
 
 **Használhatok gyorsítótárazási szinteket Ultra lemezzel?**
-Nem, az ultra-lemezek nem támogatják a más típusú lemezeken támogatott különböző gyorsítótárazási módszereket. Állítsa a lemezes gyorsítótárazást a none értékre.
+Nem, az ultra-lemezek nem támogatják a más típusú lemezeken támogatott különböző gyorsítótárazási módszereket. Állítsa a lemezes gyorsítótárazást a **none**értékre.
 
 **A meglévő virtuális géphez is csatlakoztatok egy ultra-lemezt?**
 Előfordulhat, hogy a virtuális gépnek egy olyan régióban és rendelkezésre állási zónában kell lennie, amely támogatja az ultra-lemezeket. További részletekért lásd: [az ultra Disks szolgáltatás első lépései](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md) .
@@ -262,9 +267,6 @@ Standard SSD lemezek jobb késést, következetességet, rendelkezésre állást
 **Használhatom a standard SSD-ket nem felügyelt lemezként?**
 Nem, a standard SSD lemezek csak Managed Disksként érhetők el.
 
-**Standard SSD lemezek támogatják az "egypéldányos VM SLA" szolgáltatást?**
-Nem, a standard SSD-k nem rendelkeznek egyetlen példányú VM SLA-val. Az Egypéldányos VM SLA-hoz prémium SSD lemezeket használjon.
-
 ## <a name="migrate-to-managed-disks"></a>Migrálás felügyelt lemezekre
 
 **Van-e hatással az áttelepítés a Managed Disks teljesítményére?**
@@ -301,7 +303,7 @@ Nem. Azure Site Recovery Azure-ról Azure-ra, Managed Disks elérhető virtuáli
 
 **Áttelepíthetem a virtuális gépeket olyan nem felügyelt lemezekkel, amelyek olyan tárolási fiókokon találhatók, amelyek korábban felügyelt lemezekre lettek titkosítva?**
 
-Yes
+Igen
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks és Storage Service Encryption
 
@@ -339,7 +341,7 @@ Igen. Minden felügyelt pillanatkép és rendszerkép automatikusan titkosítva 
 
 **Átalakíthatók-e a virtuális gépek olyan nem felügyelt lemezekkel, amelyek olyan Storage-fiókokon találhatók, amelyek korábban felügyelt lemezekre lettek titkosítva?**
 
-Yes
+Igen
 
 **Egy felügyelt lemezről exportált virtuális merevlemez vagy egy pillanatkép is titkosítva lesz?**
 
@@ -412,7 +414,7 @@ Nem kell frissítenie meglévő Azure-eszközeit az 1 TiB-nál nagyobb lemezek l
 |Azure-eszközök      | Támogatott verziók                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Verziószám 4.1.0: június 2017 vagy újabb kiadás|
-|Azure CLI v1     | Verziószám 0.10.13: május 2017 vagy újabb kiadás|
+|Azure CLI v1     | Verziószám 0.10.13: május 2017 vagy újabb kiadás|
 |Azure CLI v2     | Verziószám 2.0.12: július 2017 vagy újabb kiadás|
 |AzCopy              | Verziószám 6.1.0: június 2017 vagy újabb kiadás|
 
@@ -450,7 +452,41 @@ A 8 TiB, 16 TiB és 32 TiB Lemezes SKU minden régióban támogatott a globális
 
 **Támogatjuk a gazdagépek gyorsítótárazásának engedélyezését az összes lemez méretén?**
 
-A gazdagépek gyorsítótárazása (írásvédett és olvasási/írási) a 4 TiB-nál kisebb méretű lemezek esetében támogatott. Ez azt jelenti, hogy a 4095 GiB-ra kiépített bármely lemez kihasználhatja a gazdagépek gyorsítótárazásának előnyeit. Az állomás-gyorsítótárazás nem támogatott a 4096 GiB-nál nagyobb vagy azzal egyenlő méretű lemezek esetében. Például a 4095 GiB-on kiépített P50 prémium lemez kihasználhatja a gazdagépek gyorsítótárazásának előnyeit, és a 4096 GiB által kiépített P50-lemez nem tudja kihasználni a gazdagépek gyorsítótárazását. Javasoljuk, hogy a kisebb méretű lemezek gyorsítótárazását olyankor is érdemes kihasználni, ahol a virtuális géphez gyorsítótárazott adatoknál nagyobb teljesítménybeli növekedést várhat.
+A gazdagépek gyorsítótárazása (**írásvédett** és **olvasási/írási**) a 4 TiB-nál kisebb méretű lemezek esetében támogatott. Ez azt jelenti, hogy a 4095 GiB-ra kiépített bármely lemez kihasználhatja a gazdagépek gyorsítótárazásának előnyeit. Az állomás-gyorsítótárazás nem támogatott a 4096 GiB-nál nagyobb vagy azzal egyenlő méretű lemezek esetében. Például a 4095 GiB-on kiépített P50 prémium lemez kihasználhatja a gazdagépek gyorsítótárazásának előnyeit, és a 4096 GiB által kiépített P50-lemez nem tudja kihasználni a gazdagépek gyorsítótárazását. Javasoljuk, hogy a kisebb méretű lemezek gyorsítótárazását olyankor is érdemes kihasználni, ahol a virtuális géphez gyorsítótárazott adatoknál nagyobb teljesítménybeli növekedést várhat.
+
+## <a name="private-links-for-securely-exporting-and-importing-managed-disks"></a>Privát hivatkozások a Managed Disks biztonságos exportálásához és importálásához
+
+**Milyen előnyökkel jár az Managed Disks exportálására és importálására szolgáló privát hivatkozások használata?**
+
+Az Exportálás és az importálás csak az Azure-beli virtuális hálózatról Managed Disksra való korlátozására használhat privát hivatkozásokat. 
+
+**Mit biztosíthatok arról, hogy egy lemez csak privát hivatkozások használatával exportálható vagy importálható?**
+
+A `DiskAccessId` tulajdonságot egy lemez-hozzáférési objektum egy példányára kell beállítania, és a NetworkAccessPolicy tulajdonságot is a értékre kell állítania `AllowPrivate` .
+
+**Több virtuális hálózatot is Csatolhatok ugyanahhoz a lemezes hozzáférési objektumhoz?**
+
+Nem. A lemezes hozzáférési objektumok jelenleg csak egyetlen virtuális hálózathoz kapcsolhatók.
+
+**Kapcsolhatok egy virtuális hálózatot egy másik előfizetéshez tartozó lemezes hozzáférési objektumhoz?**
+
+Nem. A lemezes hozzáférési objektumok jelenleg ugyanahhoz az előfizetéshez tartozó virtuális hálózathoz kapcsolhatók.
+
+**Kapcsolhatok egy virtuális hálózatot egy másik előfizetéshez tartozó lemezes hozzáférési objektumhoz?**
+
+Nem. A lemezes hozzáférési objektumok jelenleg ugyanahhoz az előfizetéshez tartozó virtuális hálózathoz kapcsolhatók.
+
+**Az azonos lemezes hozzáférési objektummal egyszerre több exportálás vagy importálás is történhet?**
+
+5
+
+**Használhatok egy lemez vagy pillanatkép SAS URI-JÁT egy virtuális gép mögöttes virtuális merevlemezének letöltéséhez ugyanabban az alhálózatban, mint a lemezhez társított privát végpont alhálózatát?**
+
+Igen.
+
+**Használhatok egy lemez vagy pillanatkép SAS URI-JÁT egy olyan virtuális gép mögöttes virtuális merevlemezének letöltéséhez, amely nem ugyanabban az alhálózatban található, mint a privát végpont alhálózata, amely nincs a lemezhez társítva?**
+
+Nem.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
 

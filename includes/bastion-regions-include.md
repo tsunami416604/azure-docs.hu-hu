@@ -1,19 +1,19 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 05/19/2020
+ms.date: 07/16/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b4cdb787fe65c52a77fa4761a65e9108e7927c40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a924cb42ce1c5fccde3d49fa8f9c2d402997df52
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83721262"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544124"
 ---
 >[!NOTE]
 >Keményen dolgozunk további régiók hozzáadásával. Egy régió hozzáadásakor a rendszer hozzáadja a listához.
@@ -29,7 +29,7 @@ ms.locfileid: "83721262"
 * USA déli középső régiója
 * USA nyugati középső régiója
 * USA nyugati régiója
-* USA nyugati régiója, 2.
+* USA 2. nyugati régiója
 
 **Európa**
 * Közép-Franciaország
@@ -39,7 +39,7 @@ ms.locfileid: "83721262"
 * Észak-Svájc
 * Az Egyesült Királyság déli régiója
 * Az Egyesült Királyság nyugati régiója
-* Nyugat-Európa
+* West Europe
 
 **Ázsia és a Csendes-óceáni térség**
 * Ausztrália 2. középső régiója
@@ -51,7 +51,7 @@ ms.locfileid: "83721262"
 * Dél-Korea középső régiója
 * Dél-Korea déli régiója
 * Délkelet-Ázsia
-* Közép-India
+* Central India
 * Nyugat-India
 
 **Közel-Kelet és Afrika**
@@ -65,3 +65,6 @@ ms.locfileid: "83721262"
 * US Gov Iowa
 * USA-beli államigazgatás – Texas
 * USA-beli államigazgatás – Virginia
+
+**Azure China**
+* Észak-Kína 2

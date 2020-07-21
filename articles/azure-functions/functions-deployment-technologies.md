@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: glenga
-ms.openlocfilehash: ec5e9da2ab80f4728d342303e1eb08c49f765485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63c52b8b1ee9b9448a1ba6f78873ae6a036e3563
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735300"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540213"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
@@ -21,8 +21,8 @@ Néhány különböző technológiával üzembe helyezheti Azure Functions-proje
 
 Azure Functions támogatja a többplatformos helyi fejlesztést és üzemeltetést Windows és Linux rendszeren. Jelenleg három üzemeltetési csomag érhető el:
 
-+ [Fogyasztás](functions-scale.md#consumption-plan)
-+ [Prémium](functions-scale.md#premium-plan)
++ [Használat](functions-scale.md#consumption-plan)
++ [Prémium szintű](functions-scale.md#premium-plan)
 + [Dedikált (App Service)](functions-scale.md#app-service-plan)
 
 Minden csomag eltérő viselkedéssel rendelkezik. Nem minden központi telepítési technológia érhető el Azure Functions minden egyes ízét. A következő diagramon látható, hogy mely telepítési technológiák támogatottak az operációs rendszer és a üzemeltetési csomag minden kombinációja esetén:
@@ -179,7 +179,7 @@ A portálon alapuló szerkesztőben közvetlenül szerkesztheti a Function alkal
 
 A következő táblázat a portál szerkesztését támogató operációs rendszereket és nyelveket tartalmazza:
 
-| | Windows-felhasználás | Windows Premium | Dedikált Windows | Linux-felhasználás | Linux Premium | Linux dedikált |
+| Nyelv | Windows-felhasználás | Windows Premium | Dedikált Windows | Linux-felhasználás | Linux Premium | Linux dedikált |
 |-|:-----------------: |:----------------:|:-----------------:|:-----------------:|:-------------:|:---------------:|
 | C# | | | | | |
 | C#-parancsfájl |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
@@ -196,7 +196,7 @@ A következő táblázat a portál szerkesztését támogató operációs rendsz
 
 Amikor üzembe helyezi a Function alkalmazást az Azure-ban, az üzembe helyezést külön üzembe helyezheti közvetlenül az éles környezet helyett. Az üzembe helyezési pontokkal kapcsolatos további információkért tekintse meg a részleteket a [Azure functions üzembe helyezési](../app-service/deploy-staging-slots.md) pontok dokumentációjában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el ezeket a cikkeket a Function apps üzembe helyezésével kapcsolatos további információkért: 
 

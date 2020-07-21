@@ -1,24 +1,24 @@
 ---
-title: fájlbefoglalás
+title: fájl belefoglalása
 titleSuffix: Azure
-description: fájlbefoglalás
+description: fájl belefoglalása
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 3a5485475e3d8030bf85734faec53b0ff0747499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee071f2cf6e31d46ccd483935f137f16bcacf337
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81678477"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544916"
 ---
 A parancsmagok futtatásához használhatja a Azure Cloud Shellt, amely egy ingyenes interaktív rendszerhéj. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Válassza a **Másolás** elemet a kód másolásához, majd illessze be Cloud Shellba. Ezután válassza az **ENTER billentyűt** a futtatásához. A Cloud Shell elindításának néhány módja van:
 
 
-|  |   |
+| Indítási módszer | Képernyőfelvétel  |
 |-----------------------------------------------|---|
 | Nyissa meg a Cloud Shellt a böngészőben. | [![https://shell.azure.com/powershell](../media/launchcloudshell.png)](https://shell.azure.com/powershell) |
 | Kattintson a **Cloud Shell** gombra a Azure Portal jobb felső sarkában található eszköztáron. | [![A Cloud Shell a portálon](../media/cloud-shell-menu.png)](https://portal.azure.com) |

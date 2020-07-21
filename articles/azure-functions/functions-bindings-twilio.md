@@ -6,11 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8116abda71ae78b05786ede03256eb9e9bb59345
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76715058"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540264"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions Twilio kötése
 
@@ -240,7 +241,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az alábbi példa bemutatja, hogyan lehet SMS-üzenetet küldeni a [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -jegyzet használatával. `to` `from` Az attribútumok definíciójában a, a és az értékek `body` szükségesek, még akkor is, ha programozott módon felülbírálja őket.
+Az alábbi példa bemutatja, hogyan lehet SMS-üzenetet küldeni a [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -jegyzet használatával. `to` `from` Az attribútumok definíciójában a, a és az értékek `body` szükségesek, még akkor is, ha programozott módon felülbírálja őket.
 
 ```java
 package com.function;
@@ -318,7 +319,7 @@ A Python nem támogatja az attribútumokat.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Helyezzen [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -jegyzetet egy [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) paraméterre, ahol `T` bármilyen natív Java-típus lehet, például,, `int` `String` `byte[]` vagy egy POJO típus.
+Helyezzen [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) -jegyzetet egy [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) paraméterre, ahol `T` bármilyen natív Java-típus lehet, például,, `int` `String` `byte[]` vagy egy POJO típus.
 
 ---
 
@@ -326,20 +327,20 @@ Helyezzen [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.az
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `TwilioSms` .
 
-| v1 function.jsa tulajdonságon | v2 function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+| v1 function.jsa tulajdonságon | v2 function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|---------|----------------------|
 |**típusa**|**típusa**| értékre kell állítani `twilioSms` .|
-|**direction**|**direction**| értékre kell állítani `out` .|
+|**irányba**|**irányba**| értékre kell állítani `out` .|
 |**név**|**név**| A Twilio SMS szöveges üzenethez tartozó Function Code-ban használt változó neve. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ezt az értéket egy olyan Alkalmazásbeállítás nevére kell beállítani, amely a Twilio-fiók SID () azonosítóját tartalmazza `TwilioAccountSid` . Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAccountSid". |
 |**Aad**|**authTokenSetting**|**AuthTokenSetting**| Ezt az értéket egy olyan Alkalmazásbeállítások nevére kell beállítani, amely a Twilio hitelesítési tokent () tárolja `TwilioAccountAuthToken` . Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAuthToken". |
-|**hogy**| N/A – megadás a kódban | **Hogy**| Ez az érték arra a telefonszámra van beállítva, amelyre az SMS-szöveg érkezik.|
+|**a következőre:**| N/A – megadás a kódban | **Hogy**| Ez az érték arra a telefonszámra van beállítva, amelyre az SMS-szöveg érkezik.|
 |**a**|**a** | **A**| Ez az érték arra a telefonszámra van beállítva, amelyet az SMS-szöveg elküldésére használt.|
 |**törzse**|**törzse** | **Törzs**| Ez az érték használható az SMS szöveges üzenet kódolására, ha nem kell dinamikusan beállítania a függvény kódjában. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

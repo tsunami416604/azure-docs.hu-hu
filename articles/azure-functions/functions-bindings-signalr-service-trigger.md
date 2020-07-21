@@ -5,12 +5,12 @@ author: chenyl
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: c2ad9b6c4410a62d5652050406e05be4cde5fab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830706"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540230"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>A signaler szolgáltatás triggerének kötése Azure Functions
 
@@ -43,7 +43,7 @@ public class SignalRTestHub : ServerlessHub
 
 ### <a name="with-traditional-model"></a>Hagyományos modellel
 
-A hagyományos modell a C# által fejlesztett Azure Function egyezményt engedelmeskedik. Ha még nem ismeri, megismerheti a [dokumentumokat](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-class-library).
+A hagyományos modell a C# által fejlesztett Azure Function egyezményt engedelmeskedik. Ha még nem ismeri, megismerheti a [dokumentumokat](./functions-dotnet-class-library.md).
 
 ```cs
 [FunctionName("SignalRTest")]
@@ -168,10 +168,10 @@ def main(invocation) -> None:
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `SignalRTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa**| n.a. | Értékre kell állítani `SignalRTrigger` .|
-|**direction**| n.a. | Értékre kell állítani `in` .|
+|**irányba**| n.a. | Értékre kell állítani `in` .|
 |**név**| n.a. | A függvény kódjában használt változó neve a trigger meghívása környezeti objektumhoz. |
 |**hubName**|**HubName**| Ezt az értéket az aktiválni kívánt függvény jelző központjajának nevére kell beállítani.|
 |**Kategória**|**Kategória**| Ezt az értéket úgy kell beállítani, hogy az üzenetek kategóriája legyen az elindítható függvény számára. A kategória a következő értékek egyike lehet: <ul><li>**kapcsolatok**: a *csatlakoztatott* és a *leválasztott* eseményeket is beleértve</li><li>**üzenetek**: beleértve az összes többi eseményt, kivéve a *kapcsolatok* kategóriájában lévőket</li></ul> |
@@ -187,7 +187,7 @@ Az trigger típusú bemeneti típust `InvocationContext` vagy egyéni típuskén
 
 A InvocationContext tartalmazza az üzenetben a Signaler szolgáltatásból küldött összes tartalmat.
 
-|Tulajdonság a InvocationContext | Description|
+|Tulajdonság a InvocationContext | Leírás|
 |------------------------------|------------|
 |Argumentumok| Az *üzenetek* kategóriához érhető el. *Argumentumokat* tartalmaz a [Meghívási üzenetben](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)|
 |Hiba| *Leválasztott* eseményhez elérhető. Ez akkor lehet üres, ha a kapcsolatok hiba nélkül lezárult, vagy a hibaüzeneteket tartalmazza.|
@@ -231,7 +231,7 @@ Az az `API_KEY` Azure Function által generált. A `API_KEY` from Azure Portal a
 
 Ezt az URL-címet a `UrlTemplate` signaler szolgáltatás felsőbb rétegbeli beállításainál kell beállítania.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Functions fejlesztése és konfigurálása az Azure SignalR szolgáltatással](../azure-signalr/signalr-concept-serverless-development-config.md)
 * [A signaler szolgáltatás Triggerének kötési mintája](https://github.com/Azure/azure-functions-signalrservice-extension/tree/dev/samples/bidirectional-chat)

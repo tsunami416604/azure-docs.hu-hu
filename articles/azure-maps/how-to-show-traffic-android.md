@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92e111a6e76dbe285dd8cc7a93ce75f556142565
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335379"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86540145"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Forgalmi adatok megjelenítése a térképen Azure Maps Android SDK használatával
 
@@ -21,9 +21,9 @@ A flow-adatok és az incidensek az adatok a térképen megjeleníthető kétfél
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy megjelenjen a forgalom a térképen, [Azure-fiókot kell létrehoznia](quick-demo-map-app.md#create-an-account-with-azure-maps), és [be kell szereznie egy előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account). Ezután telepítenie kell a [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) -t, és be kell töltenie egy térképet.
+Ahhoz, hogy megjelenjen a forgalom a térképen, [Azure-fiókot kell létrehoznia](quick-demo-map-app.md#create-an-azure-maps-account), és [be kell szereznie egy előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account). Ezután telepítenie kell a [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) -t, és be kell töltenie egy térképet.
 
-## <a name="incidents-traffic-data"></a>Incidensek forgalmi adatok 
+## <a name="incidents-traffic-data"></a>Incidensek forgalmi adatok
 
 A következő könyvtárakat kell importálnia a híváshoz `setTraffic` , és `incidents` :
 
@@ -53,7 +53,7 @@ import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 
 Az alábbi kódrészlettel állíthatja be a forgalmi folyamatra vonatkozó adatokat. Az előző szakaszban szereplő kódhoz hasonlóan a metódus visszatérési értékét is átadjuk a `flow` `setTraffic` metódusnak. Négy érték adható át `flow` , és minden érték `flow` a megfelelő értéket adja vissza. A visszatérési értéke a következő `flow` argumentumként lesz átadva: `setTraffic` . A következő négy értéknél tekintse meg az alábbi táblázatot:
 
-| | |
+|Folyamat értéke | Leírás|
 | :-- | :-- |
 | Forgalomáramlási. NONE | Nem jeleníti meg a forgalmi adatokat a térképen |
 | Forgalomáramlási. relatív | Az út szabad áramlási sebességéhez viszonyított forgalmi adatokat jeleníti meg |
@@ -229,7 +229,7 @@ Egy adott szolgáltatás incidensének beszerzéséhez használhatja az alábbi 
 
    </center>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő útmutatókból megtudhatja, hogyan adhat hozzá további információkat a térképhez:
 
