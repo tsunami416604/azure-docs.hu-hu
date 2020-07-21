@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 7a99038f41043b899886c7161f9b12c77c807c4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a89eb16c8042efc86bb5cc8bd5fba7c821dc341
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81641814"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520969"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Áttekintés: üzembe helyezés automatizálása Azure Logic Appshez Azure Resource Manager sablonok használatával
 
@@ -38,7 +39,7 @@ A minta logikai alkalmazások sablonjai a következő példákban találhatók:
 * A témakörben szereplő példákhoz használt [teljes sablon](#full-example-template)
 * [Minta rövid útmutató Logic app-sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create) a githubban
 
-A logikai alkalmazásokhoz, az integrációs fiókokhoz és az integrációs fiók összetevőihez kapcsolódó sablon-erőforrásokra vonatkozó információk: [Microsoft. Logic erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions).
+A logikai alkalmazásokhoz, az integrációs fiókokhoz és az integrációs fiók összetevőihez kapcsolódó sablon-erőforrásokra vonatkozó információk: [Microsoft. Logic erőforrástípusok](/azure/templates/microsoft.logic/allversions).
 
 <a name="template-structure"></a>
 
@@ -318,16 +319,16 @@ A logikai alkalmazás erőforrás-definíciója az `properties` objektummal kezd
 
 A logikai alkalmazás erőforrás-definíciójának attribútumai a következők:
 
-| Attribútum | Kötelező | Típus | Description |
+| Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
-| `state` | Yes | Sztring | A logikai alkalmazás állapota az üzembe helyezéskor `Enabled` azt jelenti, hogy a logikai alkalmazás él, és `Disabled` azt jelenti, hogy a logikai alkalmazás inaktív. Ha például nem áll készen a logikai alkalmazás életbe léptetésére, de a vázlat verzióját szeretné telepíteni, használhatja a `Disabled` lehetőséget. |
-| `integrationAccount` | No | Objektum | Ha a logikai alkalmazás egy integrációs fiókot használ, amely a vállalatok közötti (B2B) forgatókönyvek összetevőit tárolja, ez az objektum tartalmazza az `id` attribútumot, amely meghatározza az integrációs fiók azonosítóját. |
-| `definition` | Yes | Objektum | A logikai alkalmazás mögöttes munkafolyamat-definíciója, amely ugyanaz az objektum, amely a kód nézetben jelenik meg, és teljes mértékben le van írva a [séma-referenciában a munkafolyamat-definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md) témakörben. Ebben a munkafolyamat-definícióban az `parameters` objektum deklarálja a Logic app Runtime-ban használandó értékek paramétereit. További információ: [munkafolyamat-definíció és paraméterek](#workflow-definition-parameters). <p><p>Ha meg szeretné tekinteni a logikai alkalmazás munkafolyamat-definíciójában lévő attribútumokat, váltson a "design View" kifejezésre a "Code View" értékre a Azure Portal vagy a Visual Studióban, vagy egy olyan eszköz használatával, mint például a [Azure erőforrás-kezelő](https://resources.azure.com). |
-| `parameters` | No | Objektum | A Logic app Runtime-ban használandó [munkafolyamat-definíciós paraméter értéke](#workflow-definition-parameters) . Ezekhez az értékekhez tartozó definíciók a [munkafolyamat-definíció Parameters objektumán](#workflow-definition-parameters)belül jelennek meg. Továbbá, ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md) használ a más szolgáltatások és rendszerek eléréséhez, ez az objektum tartalmaz egy `$connections` objektumot, amely beállítja a futásidőben használandó kapcsolódási értékeket. |
-| `accessControl` | No | Objektum | A logikai alkalmazás biztonsági attribútumainak megadásához, például az eseményindítók igényléséhez vagy a futtatási előzményekhez és kimenetekhez való IP-hozzáférés korlátozásához. További információ: [a Logic apps biztonságos elérése](../logic-apps/logic-apps-securing-a-logic-app.md). |
+| `state` | Igen | Sztring | A logikai alkalmazás állapota az üzembe helyezéskor `Enabled` azt jelenti, hogy a logikai alkalmazás él, és `Disabled` azt jelenti, hogy a logikai alkalmazás inaktív. Ha például nem áll készen a logikai alkalmazás életbe léptetésére, de a vázlat verzióját szeretné telepíteni, használhatja a `Disabled` lehetőséget. |
+| `integrationAccount` | Nem | Objektum | Ha a logikai alkalmazás egy integrációs fiókot használ, amely a vállalatok közötti (B2B) forgatókönyvek összetevőit tárolja, ez az objektum tartalmazza az `id` attribútumot, amely meghatározza az integrációs fiók azonosítóját. |
+| `definition` | Igen | Objektum | A logikai alkalmazás mögöttes munkafolyamat-definíciója, amely ugyanaz az objektum, amely a kód nézetben jelenik meg, és teljes mértékben le van írva a [séma-referenciában a munkafolyamat-definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md) témakörben. Ebben a munkafolyamat-definícióban az `parameters` objektum deklarálja a Logic app Runtime-ban használandó értékek paramétereit. További információ: [munkafolyamat-definíció és paraméterek](#workflow-definition-parameters). <p><p>Ha meg szeretné tekinteni a logikai alkalmazás munkafolyamat-definíciójában lévő attribútumokat, váltson a "design View" kifejezésre a "Code View" értékre a Azure Portal vagy a Visual Studióban, vagy egy olyan eszköz használatával, mint például a [Azure erőforrás-kezelő](https://resources.azure.com). |
+| `parameters` | Nem | Objektum | A Logic app Runtime-ban használandó [munkafolyamat-definíciós paraméter értéke](#workflow-definition-parameters) . Ezekhez az értékekhez tartozó definíciók a [munkafolyamat-definíció Parameters objektumán](#workflow-definition-parameters)belül jelennek meg. Továbbá, ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md) használ a más szolgáltatások és rendszerek eléréséhez, ez az objektum tartalmaz egy `$connections` objektumot, amely beállítja a futásidőben használandó kapcsolódási értékeket. |
+| `accessControl` | Nem | Objektum | A logikai alkalmazás biztonsági attribútumainak megadásához, például az eseményindítók igényléséhez vagy a futtatási előzményekhez és kimenetekhez való IP-hozzáférés korlátozásához. További információ: [a Logic apps biztonságos elérése](../logic-apps/logic-apps-securing-a-logic-app.md). |
 ||||
 
-A logikai alkalmazásokhoz, az integrációs fiókokhoz és az integrációs fiók összetevőihez kapcsolódó sablon-erőforrásokra vonatkozó információk: [Microsoft. Logic erőforrástípusok](https://docs.microsoft.com/azure/templates/microsoft.logic/allversions).
+A logikai alkalmazásokhoz, az integrációs fiókokhoz és az integrációs fiók összetevőihez kapcsolódó sablon-erőforrásokra vonatkozó információk: [Microsoft. Logic erőforrástípusok](/azure/templates/microsoft.logic/allversions).
 
 <a name="workflow-definition-parameters"></a>
 
@@ -909,7 +910,7 @@ Az alábbi példa egy Azure Blob Storage-kapcsolathoz tartozó fiók nevét és 
 
 ### <a name="authenticate-connections"></a>Kapcsolatok hitelesítése
 
-Az üzembe helyezés után a logikai alkalmazás teljes körűen működik, és érvényes paraméterekkel rendelkezik. A [hitelesítő adatok hitelesítéséhez](../active-directory/develop/authentication-scenarios.md)azonban továbbra is engedélyezni kell minden OAuth-kapcsolatot, hogy érvényes hozzáférési jogkivonatokat állítson elő. További információ: OAuth- [kapcsolatok engedélyezése](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections).
+Az üzembe helyezés után a logikai alkalmazás teljes körűen működik, és érvényes paraméterekkel rendelkezik. A [hitelesítő adatok hitelesítéséhez](../active-directory/develop/authentication-vs-authorization.md)azonban továbbra is engedélyezni kell minden OAuth-kapcsolatot, hogy érvényes hozzáférési jogkivonatokat állítson elő. További információ: OAuth- [kapcsolatok engedélyezése](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections).
 
 Néhány kapcsolat támogatja az [Azure ad-ben regisztrált](../active-directory/develop/quickstart-register-app.md)logikai alkalmazások kapcsolatainak engedélyezését Azure Active Directory (Azure ad) [egyszerű szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md) használatával. Ez a Azure Data Lake kapcsolati erőforrás-definíció például azt mutatja be, hogyan lehet hivatkozni az egyszerű szolgáltatásnév adatait kezelő sablon-paraméterekre, valamint arról, hogy a sablon hogyan deklarálja ezeket a paramétereket:
 
@@ -1005,7 +1006,7 @@ A sablon legfelső szintű `parameters` objektuma deklarálja ezeket a paraméte
 Az egyszerű szolgáltatásokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
 
 * [Egyszerű szolgáltatásnév létrehozása a Azure Portal használatával](../active-directory/develop/howto-create-service-principal-portal.md)
-* [Azure-szolgáltatásnév létrehozása Azure PowerShell használatával](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+* [Azure-szolgáltatásnév létrehozása Azure PowerShell használatával](/powershell/azure/create-azure-service-principal-azureps)
 * [Egyszerű szolgáltatás létrehozása tanúsítvánnyal Azure PowerShell használatával](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 <a name="parameter-references"></a>
@@ -1244,7 +1245,7 @@ Itt látható a témakörben ismertetett paraméteres minta sablon, amelyet a k�
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Logikaialkalmazás-sablonok létrehozása](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)

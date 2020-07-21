@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/24/2019
 ms.author: allensu
-ms.openlocfilehash: 2dff916bf005b307f27264ad7a17864fbba50872
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0484bc393ac97dc88fed5858f736f01fc41b507a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367393"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521061"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Terheléselosztás és kimenő szabályok konfigurálása standard Load Balancerban a Azure Portal használatával
 
@@ -40,7 +40,7 @@ Ebben a szakaszban létrehoz egy terheléselosztó, amely terheléselosztást v�
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetés               | Válassza ki az előfizetését.    |    
+    | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a **myresourcegroupslb erőforráscsoportban** szöveget a szövegmezőbe.|
     | Name                   | **myLoadBalancer**                                   |
     | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
@@ -48,7 +48,7 @@ Ebben a szakaszban létrehoz egy terheléselosztó, amely terheléselosztást v�
     | Termékváltozat           | Válassza a **standard**lehetőséget. |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. Ha meglévő nyilvános IP-címmel szeretne használni, válassza a **meglévő használata**lehetőséget.  A meglévő nyilvános IP-nek **standard** SKU-nak kell lennie.  Az alapszintű nyilvános IP-címek nem kompatibilisek a **standard** SKU Load balancerrel.  |
     | Nyilvános IP-cím              | Írja be a **myPublicIP** szöveget a szövegmezőbe.|
-    | Rendelkezésreállási zóna | Rugalmas Load Balancer létrehozásához válassza a **felesleges zóna** lehetőséget. A zóna Load Balancer létrehozásához válasszon ki egy 1, 2 vagy 3 zónát egy adott zónából |
+    | A rendelkezésre állási zóna | Rugalmas Load Balancer létrehozásához válassza a **felesleges zóna** lehetőséget. A zóna Load Balancer létrehozásához válasszon ki egy 1, 2 vagy 3 zónát egy adott zónából |
 
 3. Fogadja el az alapértelmezett beállításokat a többi konfigurációnál.
 4. Válassza a **felülvizsgálat + létrehozás** lehetőséget
@@ -81,13 +81,13 @@ A rendszer az alkalmazás állapotának figyelésére használja az állapotot. 
     
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg a **myHealthProbe**. |
+    | Név | Adja meg a **myHealthProbe**. |
     | Protokoll | Válassza a **http**lehetőséget. |
     | Port | Adja meg a **80**értéket.|
-    | Intervallum | A mintavételi kísérletek közötti időtartam másodpercben megadott számú **intervallumában** adja meg a **15** értéket. |
+    | Időköz | A mintavételi kísérletek közötti időtartam másodpercben megadott számú **intervallumában** adja meg a **15** értéket. |
     | Nem kifogástalan állapot küszöbértéke | Válassza a **2** értéket a nem megfelelő **állapotú küszöbértékek** vagy egymást követő mintavételi hibák számának megadásához, amelyeknek a virtuális gép nem megfelelő állapotba kell kerülnie.|
     | | |
-4. Válassza az **OK** lehetőséget.
+4. Kattintson az **OK** gombra.
 
 ### <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossza el a forgalmat a virtuális gépek között. 
@@ -108,10 +108,10 @@ A következő szakaszban létrehoz egy:
     
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg a **: myhttprule**. |
-    | Protokoll | Válassza a **TCP**lehetőséget. |
+    | Név | Adja meg a **: myhttprule**. |
+    | Protokoll | Válassza a **TCP** lehetőséget. |
     | Port | Adja meg a **80**értéket.|
-    | Háttér-port | Adja meg a **80**értéket. |
+    | Háttérport | Adja meg a **80**értéket. |
     | A háttérkészlet | Válassza a **myBackendPool**lehetőséget.|
     | Állapotadat-mintavétel | Válassza a **myHealthProbe**lehetőséget. |
     | Implicit kimenő szabályok létrehozása | Válassza a **Nem** lehetőséget. Egy későbbi szakaszban hozunk létre kimenő szabályokat egy dedikált nyilvános IP-cím használatával. |
@@ -130,12 +130,12 @@ A terheléselosztó kimenő szabályai a háttér-készletben lévő virtuális 
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg a **LoadBalancerFrontEndOutbound**. |
+    | Név | Adja meg a **LoadBalancerFrontEndOutbound**. |
     | IP-cím verziója | Válassza az **IPv4** lehetőséget. |
-    | IP-cím típusa | Válassza ki az **IP-címet**.|
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. A **nyilvános IP-cím hozzáadása**mezőben adja meg a **myPublicIPOutbound**.  Válassza az **OK** lehetőséget. |
+    | IP-cím típusa | Válasszon **IP-címet** vagy **IP-előtagot**.|
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **nyilvános IP-cím hozzáadása**mezőben adja meg a **myPublicIPOutbound**. </br> Ha IP-előtagot használ, a **nyilvános IP-cím hozzáadása**mezőben adja meg a **myPublicIPPrefixOutbound**. Válasszon egy **előtag-méretet** a nyilvános IP-előtaghoz </br> Kattintson az **OK** gombra.  |
 
-4. Válassza a **Hozzáadás** elemet.
+4. Válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="create-an-outbound-backend-pool"></a>Kimenő háttérrendszer-készlet létrehozása
 
@@ -155,22 +155,22 @@ A terheléselosztó kimenő szabályai a háttér-készletben lévő virtuális 
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg a **myOutboundRule**. |
+    | Név | Adja meg a **myOutboundRule**. |
     | Előtérbeli IP-cím | Válassza a **LoadBalancerFrontEndOutbound**lehetőséget. |
-    | Üresjárati időkorlát (perc) | Mozgassa a csúszkát * * 15 percre.|
+    | Üresjárati időkorlát (perc) | Mozgassa a csúszkát **15 percre**.|
     | TCP alaphelyzetbe állítása | Válassza az **Engedélyezve** lehetőséget.|
     | A háttérkészlet | **MyBackendPoolOutbound** kiválasztása |
     | Port kiosztása – > a portok kiosztása | Válassza ki **manuálisan a kimenő portok számának** kiválasztása lehetőséget. |
     | Kimenő portok – > választhat | Válassza ki a **portok száma példányt** |
     | Kimenő portok – > portok/példányok száma | Adja meg a **10 000**értéket. |
 
-4. Válassza a **Hozzáadás** elemet.
+4. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosztót és az összes kapcsolódó erőforrást. Válassza ki azt az erőforráscsoportot, amely tartalmazza a terheléselosztó **myresourcegroupslb erőforráscsoportban** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A cikk tartalma:
  - Létrehozta a standard Load balancert.

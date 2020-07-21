@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a39e27c0a9fc7999d7f363767ad62513d383192
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708042"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520732"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Apps
 
-A logikai alkalmazásokkal kapcsolatos részletes hibakeresési információk a futtatókörnyezetben való futtatásához beállíthatja és használhatja [Azure monitor naplókat](../azure-monitor/platform/data-platform-logs.md) a futásidejű adatok és események adatainak rögzítésére és tárolására, például az események aktiválására, az események futtatására és a műveleti eseményekre egy [log Analytics munkaterületen](../azure-monitor/platform/resource-logs-collect-workspace.md). [Azure monitor](../azure-monitor/overview.md) segít a felhő és a helyszíni környezetek monitorozásában, így könnyebben megtarthatja a rendelkezésre állást és a teljesítményt. Azure Monitor naplók használatával olyan [napló-lekérdezéseket](../azure-monitor/log-query/log-query-overview.md) hozhat létre, amelyek segítenek az információk gyűjtésében és áttekintésében. [A diagnosztikai adatait más Azure-szolgáltatásokkal is használhatja](#extend-data), mint például az Azure Storage és az Azure Event Hubs.
+A logikai alkalmazásokkal kapcsolatos részletes hibakeresési információk a futtatókörnyezetben való futtatásához beállíthatja és használhatja [Azure monitor naplókat](../azure-monitor/platform/data-platform-logs.md) a futásidejű adatok és események adatainak rögzítésére és tárolására, például az események aktiválására, az események futtatására és a műveleti eseményekre egy [log Analytics munkaterületen](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace). [Azure monitor](../azure-monitor/overview.md) segít a felhő és a helyszíni környezetek monitorozásában, így könnyebben megtarthatja a rendelkezésre állást és a teljesítményt. Azure Monitor naplók használatával olyan [napló-lekérdezéseket](../azure-monitor/log-query/log-query-overview.md) hozhat létre, amelyek segítenek az információk gyűjtésében és áttekintésében. [A diagnosztikai adatait más Azure-szolgáltatásokkal is használhatja](#extend-data), mint például az Azure Storage és az Azure Event Hubs.
 
 A logikai alkalmazás naplózásának beállításához [engedélyezheti a log Analytics a logikai alkalmazás létrehozásakor](#logging-for-new-logic-apps), vagy a meglévő logikai alkalmazások log Analytics munkaterületén is [telepítheti a Logic apps felügyeleti megoldást](#install-management-solution) . Ez a megoldás összesített információt biztosít a logikai alkalmazás futtatásához, és konkrét részleteket tartalmaz, például az állapotot, a végrehajtási időt, az újraküldési állapotot és a korrelációs azonosítókat. Ezután a naplózás engedélyezéséhez és a lekérdezések létrehozásához hozzon létre [Azure monitor naplókat](#set-up-resource-logs).
 
@@ -22,7 +23,7 @@ Ez a cikk bemutatja, hogyan engedélyezheti Log Analytics a logikai alkalmazáso
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Kezdés előtt [log Analytics munkaterületre](../azure-monitor/platform/resource-logs-collect-workspace.md)van szükség. Ha nem rendelkezik munkaterülettel, ismerkedjen meg [log Analytics munkaterület létrehozásával](../azure-monitor/learn/quick-create-workspace.md).
+A Kezdés előtt [log Analytics munkaterületre](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)van szükség. Ha nem rendelkezik munkaterülettel, ismerkedjen meg [log Analytics munkaterület létrehozásával](../azure-monitor/learn/quick-create-workspace.md).
 
 <a name="logging-for-new-logic-apps"></a>
 
@@ -175,15 +176,15 @@ A logikai alkalmazás futtatása után megtekintheti a futtatások adatait a Log
 
 A Azure Monitor naplókkal együtt kiterjesztheti a logikai alkalmazás diagnosztikai adatait más Azure-szolgáltatásokkal, például a következő módon:
 
-* [Azure-beli erőforrás-naplók archiválása a Storage-fiókba](../azure-monitor/platform/resource-logs-collect-storage.md)
-* [Azure platform-naplók továbbítása az Azure Event Hubsba](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+* [Azure-beli erőforrás-naplók archiválása a Storage-fiókba](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+* [Azure platform-naplók továbbítása az Azure Event Hubsba](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
 
 Ezt követően valós idejű monitorozást érhet el a telemetria és az Analytics használatával más szolgáltatásokból, például a [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md) és az [Power bi](../azure-monitor/platform/powerbi.md). Például:
 
 * [Stream-adatok Event Hubsról Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Adatfolyamok elemzése Stream Analytics és valós idejű elemzési irányítópult létrehozása Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)
 
-Annak a helynek a alapján, ahol diagnosztikai adatküldést szeretne végezni, először [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-create-storage-account.md) , vagy [hozzon létre egy Azure Event hub](../event-hubs/event-hubs-create.md)-t. Ezután kiválaszthatja azokat a célhelyeket, amelyeken el szeretné küldeni ezeket az adatfájlokat. A megőrzési időszakok csak akkor érvényesek, ha Storage-fiókot használ.
+Annak a helynek a alapján, ahol diagnosztikai adatküldést szeretne végezni, először [hozzon létre egy Azure Storage-fiókot](../storage/common/storage-account-create.md) , vagy [hozzon létre egy Azure Event hub](../event-hubs/event-hubs-create.md)-t. Ezután kiválaszthatja azokat a célhelyeket, amelyeken el szeretné küldeni ezeket az adatfájlokat. A megőrzési időszakok csak akkor érvényesek, ha Storage-fiókot használ.
 
 ![Adatküldés az Azure Storage-fiókba vagy az Event hub-ba](./media/monitor-logic-apps-log-analytics/diagnostics-storage-event-hub-log-analytics.png)
 
@@ -191,7 +192,7 @@ Annak a helynek a alapján, ahol diagnosztikai adatküldést szeretne végezni, 
 
 ## <a name="azure-monitor-diagnostics-events"></a>Diagnosztikai események Azure Monitor
 
-Minden diagnosztikai esemény a logikai alkalmazással és az eseménysel kapcsolatos részleteket tartalmaz, például az állapotot, a kezdési időt, a befejezési időpontot és így tovább. A figyelés, a nyomon követés és a naplózás programozott beállításához ezeket REST API az információkat a [Azure Logic Appshoz](https://docs.microsoft.com/rest/api/logic) és a [Azure monitor Rest APIához](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)használhatja. Használhatja a `clientTrackingId` és a tulajdonságokat is `trackedProperties` , amelyek megjelennek a 
+Minden diagnosztikai esemény a logikai alkalmazással és az eseménysel kapcsolatos részleteket tartalmaz, például az állapotot, a kezdési időt, a befejezési időpontot és így tovább. A figyelés, a nyomon követés és a naplózás programozott beállításához ezeket REST API az információkat a [Azure Logic Appshoz](/rest/api/logic) és a [Azure monitor Rest APIához](../azure-monitor/platform/metrics-supported.md#microsoftlogicworkflows)használhatja. Használhatja a `clientTrackingId` és a tulajdonságokat is `trackedProperties` , amelyek megjelennek a 
 
 * `clientTrackingId`: Ha nincs megadva, az Azure automatikusan létrehozza ezt az azonosítót, és korrelálja az eseményeket egy logikai alkalmazás futása során, beleértve a logikai alkalmazásból meghívott beágyazott munkafolyamatokat is. Ezt az azonosítót manuálisan is megadhatja egy triggerben, ha egy fejlécet ad meg a `x-ms-client-tracking-id` trigger-kérelemben szereplő egyéni azonosító értékkel. Használhat kérelem-triggert, HTTP-triggert vagy webhook-triggert.
 
@@ -278,7 +279,7 @@ Ez a példa azt szemlélteti `ActionCompleted` , hogyan tartalmazza az esemény 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Monitorozási és nyomkövetési lekérdezések létrehozása](../logic-apps/create-monitoring-tracking-queries.md)
 * [B2B-üzenetek monitorozása Azure Monitor-naplókkal](../logic-apps/monitor-b2b-messages-log-analytics.md)

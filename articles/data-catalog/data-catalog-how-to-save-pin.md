@@ -4,16 +4,17 @@ description: Útmutató a Azure Data Catalog képességeinek kiemeléséhez az a
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: a8545939fd027989519e0f7a161f750ec676749a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d0baed53441893ec294784f0f8092fe89a347c9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68976816"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523706"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Keresések mentése és adategységek rögzítése Azure Data Catalog
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 Azure Data Catalog az adatforrás-felderítés funkcióit biztosítja. Gyorsan kereshet és szűrheti a katalógust, hogy megkeresse az adatforrásokat, és megértse a kívánt célokat, így könnyebben megtalálhatja a feladathoz kapcsolódó megfelelő adatok körét.
 
 De mi a teendő, ha rendszeresen ugyanazt az adatmennyiséget kell használnia? És mi a teendő, ha Ön és más felhasználók rendszeresen járulnak hozzá az Ön tudomásához a katalógusban szereplő adatforrásokhoz? Ezekben az esetekben az azonos keresések ismételt kibocsátása nem hatékony. A mentett keresés és a rögzített adategységek segíthetnek.
@@ -73,5 +74,5 @@ A Data Catalog portál kezdőlapján szerepel a **saját eszközök** szakasz, a
 
 ![A Kezdőlap saját eszközök szakasza](./media/data-catalog-how-to-save-pin/07-my-assets.png)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Azure Data Catalog olyan képességeket biztosít, amelyek megkönnyítik a szükséges adatforrások felderítését, így Ön és más szervezeti tagok kevesebb időt keresnek az adatkeresésre, és több időt is igénybe vehetnek. A mentett keresések és a rögzített adategységek ezekre az alapvető képességekre épülnek, így a felhasználók könnyen azonosíthatják azokat az adatforrásokat, amelyeket többször is dolgoznak.

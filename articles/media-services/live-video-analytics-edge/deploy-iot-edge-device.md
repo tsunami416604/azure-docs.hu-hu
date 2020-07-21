@@ -3,12 +3,12 @@ title: Élő videó-elemzés üzembe helyezése egy IoT Edge eszközön – Azur
 description: Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az élő videó-elemzések IoT Edge eszközön való üzembe helyezésében. Ezt például akkor teheti meg, ha rendelkezik hozzáféréssel egy helyi linuxos számítógéphez, és/vagy korábban létrehozott egy Azure Media Services fiókot.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: eaaa793bb5b84ac4ae352f242215b8d3e7d56cf1
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 415d22a47e6563e10a1880429537ab182d1ff7a5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026967"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519898"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Élő videó-elemzés üzembe helyezése IoT Edge eszközön
 
@@ -24,7 +24,7 @@ Ez a cikk azokat a lépéseket sorolja fel, amelyek segítséget nyújtanak az �
 * [Az Azure IoT Edge-futtatókörnyezet telepítése Debian-alapú Linux rendszereken](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
 * [Azure Media Services-fiók létrehozása](../latest/create-account-howto.md)
     * Használja az alábbi régiók egyikét: USA 2. keleti régiója, USA középső régiója, USA északi középső régiója, Kelet-Japán, USA 2. nyugati régiója, Nyugat-Európa, Kelet-Kanada, Egyesült Királyság déli régiója, Franciaország középső régiója, Dél-Franciaország, Észak-Svájc, Nyugat-Svájc és Nyugat-Japán.
-    * Javasoljuk, hogy az általános célú v2-(GPv2-) tárolási fiókokat használja.
+    * Az általános célú v2-(GPv2-) Storage-fiókok használata javasolt
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>Azure-erőforrások konfigurálása a Live Video Analytics használatához
 
@@ -34,7 +34,7 @@ Lásd: [egyéni Azure Resource Manager szerepkör létrehozása](create-custom-a
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>Prémium szintű streaming-végpont beállítása
 
-Ha élő videó-elemzést szeretne használni a felhőbe való videó rögzítéséhez, majd azt követően újra le szeretné játszani, akkor frissítenie kell a Media Service-t, hogy a [prémium szintű streaming-végpontot](../latest/streaming-endpoint-concept.md#types)használja.  
+Ha élő videó-elemzést szeretne használni a videók felhőbe való folyamatos rögzítéséhez, és ezt követően használja a [lekérdezési API-kat](playback-recordings-how-to.md#query-api) a lejátszás előtt, javasoljuk, hogy frissítse a Media Service-t egy [prémium szintű streaming-végpont](../latest/streaming-endpoint-concept.md#types)használatára.  
 
 Ez egy választható lépés. Ezt az Azure CLI-parancsot használhatja:
 
@@ -227,7 +227,7 @@ A központi telepítés létrehozása után térjen vissza az IoT hub IoT Edge l
 Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd visszaküldhető a IoT Hubra. Frissítse az oldalt, és tekintse meg a frissített állapotot.
 Állapotkód: 200 – az OK érték azt jelenti, hogy [az IoT Edge futtatókörnyezet](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime) kifogástalan, és működik.
 
-![Állapot](./media/deploy-iot-edge-device/status.png)
+![status](./media/deploy-iot-edge-device/status.png)
 
 #### <a name="invoke-a-direct-method"></a>Közvetlen metódus meghívása
 
@@ -257,6 +257,6 @@ A következő lépésként lehetővé teszi a minta tesztelését egy közvetlen
 
     ![Az 200-es állapotú üzenet](./media/deploy-iot-edge-device/connection-timeout.png) 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyors útmutató: első lépések – élő videó-elemzés IoT Edge](get-started-detect-motion-emit-events-quickstart.md)

@@ -3,12 +3,12 @@ title: Folyamatos átviteli események rögzítése – Azure Event Hubs | Micro
 description: Ez a cikk áttekintést nyújt a capture szolgáltatásról, amely lehetővé teszi az Azure-Event Hubs keresztüli adatfolyamok rögzítését.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: be5a8bed06f5df0ffcee66c277f8ba5fa1a1bf74
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 201fde24e50fc9403d5e9faf314550520fb7b865
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985258"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522125"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Események rögzítése Azure-Event Hubs az Azure-ban Blob Storage vagy Azure Data Lake Storage
 Az Azure Event Hubs lehetővé teszi, hogy automatikusan rögzítsen egy [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) -ban található Event Hubs adatfolyam-adatait, vagy [Azure Data Lake Storage 1. vagy 2. generációs](https://azure.microsoft.com/services/data-lake-store/) fiókot, és a rugalmasságot az idő vagy a méret megadásával. A rögzítés beállítása gyorsan elvégezhető, ezért a futtatásához nincs szükség felügyeleti költségekre, és a rendszer automatikusan méretezi Event Hubs [átviteli egységekkel](event-hubs-scalability.md#throughput-units). A Event Hubs Capture a legegyszerűbb módszer az adatfolyamok Azure-ba való betöltésére, és lehetővé teszi az adatfeldolgozásra koncentrálva az adatrögzítés helyett.
@@ -51,7 +51,7 @@ A konfigurálást követően Event Hubs rögzítés automatikusan elindul, amiko
 
 ## <a name="setting-up-event-hubs-capture"></a>Event Hubs rögzítésének beállítása
 
-A rögzítést az Event hub létrehozási idején konfigurálhatja a [Azure Portal](https://portal.azure.com)használatával, vagy Azure Resource Manager sablonok használatával. További információért tekintse át a következő cikkeket:
+A rögzítést az Event hub létrehozási idején konfigurálhatja a [Azure Portal](https://portal.azure.com)használatával, vagy Azure Resource Manager sablonok használatával. További információkért tekintse át a következő cikkeket:
 
 - [Az Event Hubs Capture engedélyezése az Azure Portal használatával](event-hubs-capture-enable-through-portal.md)
 - [Event Hubs-névtér létrehozása egy eseményközponttal és a Rögzítés funkció engedélyezése az Azure Resource Manager-sablonjának használatával](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
@@ -89,7 +89,7 @@ A [Apache Spark][Apache Spark] egy "egységes analitikai motor a nagyméretű ad
 
 - [HDInsight: az Azure Storage-ban tárolt fájlok címei][HDInsight: Address files in Azure storage]
 - [Azure Databricks: Azure Blob Storage][Azure Databricks: Azure Blob Storage]
-- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/spark-job) 
+- [Azure Kubernetes Service](../aks/spark-job.md) 
 
 ### <a name="use-avro-tools"></a>Avro-eszközök használata
 
@@ -134,7 +134,7 @@ A rögzítés nem használja fel a kimenő forgalomra vonatkozó kvótát, mivel
 
 Létrehozhat egy Azure Event Grid-előfizetést egy Event Hubs névtér forrásaként. A következő oktatóanyag azt mutatja be, hogyan hozhat létre egy Event Grid-előfizetést egy Event hub forrásként és egy Azure Functions alkalmazásként fogadóként: a [rögzített Event Hubs-adatforrások feldolgozásához és áttelepítéséhez SQL Data Warehouse Event Grid és Azure functions használatával](store-captured-data-data-warehouse.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Event Hubs Capture az Azure-ba való adatgyűjtésének legegyszerűbb módja. A Azure Data Lake, a Azure Data Factory és az Azure HDInsight használatával kötegelt feldolgozást és egyéb elemzéseket végezhet a választott eszközök és platformok használatával, bármilyen méretezéssel.
 
 Ismerje meg, hogyan engedélyezheti ezt a funkciót a Azure Portal és a Azure Resource Manager sablonnal:
@@ -152,7 +152,7 @@ Ismerje meg, hogyan engedélyezheti ezt a funkciót a Azure Portal és a Azure R
 [Avro Tools]: https://downloads.apache.org/avro/stable/java/
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md
 [HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anbene
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: f97692b604408437bc2ee457bb04ad9b855c7290
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119293"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520272"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>IoT Edge modul ajánlatának létrehozása, konfigurálása és közzététele az Azure Marketplace-en
 
@@ -230,7 +230,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Name
-7. Összefoglalás
+7. Összegzés
 8. Leírás
 9. Hasznos hivatkozások
 10. Képernyőképek/videók
@@ -251,7 +251,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 
 #### <a name="call-out-descriptions"></a>Lehívási leírások
 
-1. Name
+1. Név
 2. Leírás
 3. Hasznos hivatkozások
 4. Képernyőképek
@@ -286,17 +286,17 @@ A következő szakaszra való továbblépés előtt válassza a **Piszkozat ment
 
 ### <a name="plan-overview"></a>A terv áttekintése
 
-Ezen a lapon különböző csomag-beállításokat adhat meg a partner Center ugyanazon ajánlatán belül. Ezeket a csomagokat korábban SKU-ként, vagy készlet-tartási egységként emlegetik. A csomagok különbözőek lehetnek az elérhető felhőktől, például a globális felhőktől, a kormányzati felhőktől és a csomag által hivatkozott képpel. Az ajánlat a piactéren való listázásához be kell állítania legalább egy csomagot.
+Ezen a lapon különböző csomag-beállításokat adhat meg a partner Center ugyanazon ajánlatán belül. A (korábban SKU-nak nevezett) csomagok eltérhetnek az elérhető felhőktől, például a globális felhőktől, a kormányzati felhőktől és a csomag által hivatkozott képpel. Az ajánlat a piactéren való listázásához be kell állítania legalább egy csomagot.
 
 A csomagok létrehozása után a **terv áttekintése** lap a következőket jeleníti meg:
 
 - Csomag neve
 - Díjszabási modell
-- Felhőbeli rendelkezésre állás (globális vagy kormányzati)
+- Azure-régiók (globális vagy kormányzati)
 - Jelenlegi közzétételi állapot
 - Bármely elérhető művelet
 
-A terv áttekintésében elérhető műveletek a csomag aktuális állapotától függően változnak. Ezek például az alábbi jelentések lehetnek:
+A terv áttekintésében elérhető műveletek a csomag aktuális állapotától függően változnak. Ezek közé tartoznak például az alábbiak:
 
 - **Piszkozat törlése**: Ha a terv állapota vázlat.
 - **Eladási terv leállítása**: Ha a csomag állapota élőben van közzétéve.
@@ -312,7 +312,7 @@ A **terv neve** mezőbe írja be a csomag nevét. Az ügyfelek ezt a nevet látj
 > [!NOTE]
 > A terv azonosítója a **Létrehozás**gombra kattintva nem módosítható.
 
-Válassza a **Létrehozás** lehetőséget.
+Kattintson a **Létrehozás** gombra.
 
 ### <a name="plan-setup"></a>Csomag beállítása
 
@@ -329,7 +329,7 @@ Válassza a [Azure Government](../../azure-government/documentation-government-w
 
 #### <a name="azure-government-certifications"></a>Azure Government minősítések
 
-Ez a beállítás csak akkor látható, ha a **Azure Government** a **felhő rendelkezésre állása**területen van kiválasztva.
+Ez a beállítás csak akkor látható, ha **Azure Government** az **Azure-régiók**területen van kiválasztva.
 
 Azure Government szolgáltatások kezelik bizonyos kormányzati előírások és követelmények hatálya alá eső adatmennyiséget. Például: FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD L4 és CJIS. A programok minősítésének megismeréséhez akár 100 hivatkozást is megadhat, amelyek a minősítéseket írják le. Ezek a program közvetlenül vagy a saját webhelyére mutató hivatkozásokat is magukban foglalhatnak. Ezek a hivatkozások csak Azure Government ügyfelek számára láthatók.
 
@@ -465,7 +465,7 @@ Ha például egy modulhoz port kötés szükséges, adja meg a következő létr
 
 "HostConfig": {"PortBindings": {"5012/TCP": [{"HostPort": "5012"}]}
 
-## <a name="review-and-publish"></a>Áttekintés és közzététel
+## <a name="review-and-publish"></a>Felülvizsgálat és közzététel
 
 Miután elvégezte az összes szükséges szakaszt, elküldheti azt a felülvizsgálat és közzététel lehetőségre.
 

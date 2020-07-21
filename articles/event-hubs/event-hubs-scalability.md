@@ -3,12 +3,12 @@ title: Skálázhatóság – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk az Azure-Event Hubs partíciók és átviteli egységek használatával történő skálázását ismerteti.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6d1c7bc5a0206b634e5a85243f25b2c926762d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315483"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521955"
 ---
 # <a name="scaling-with-event-hubs"></a>Méretezés Event Hubs
 
@@ -23,7 +23,7 @@ A Event Hubs átviteli kapacitását az *átviteli egységek*vezérlik. Az átvi
 * Bejövő forgalom: másodpercenként legfeljebb 1 MB vagy 1000 esemény másodpercenként (amelyik előbb bekövetkezik).
 * Kimenő forgalom: másodpercenként legfeljebb 2 MB vagy 4096 esemény másodpercenként.
 
-A megvásárolt átviteli egységek kapacitásán túli bemenő forgalmat a rendszer korlátozza, és [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) választ ad vissza. A kimenő forgalom nem eredményez korlátozási kivételeket, azonban a megvásárolt átviteli egységek kapacitására van korlátozva. Ha közzétételi sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt a névtérhez. Az átviteli egységek kezelése a névterek **Méretezés** panelén történik az [Azure Portalon](https://portal.azure.com). Az átviteli egységeket programozott módon is kezelheti a [Event Hubs API](event-hubs-api-overview.md)-k használatával.
+A megvásárolt átviteli egységek kapacitásán túli bemenő forgalmat a rendszer korlátozza, és [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) választ ad vissza. A kimenő forgalom nem eredményez korlátozási kivételeket, azonban a megvásárolt átviteli egységek kapacitására van korlátozva. Ha közzétételi sebességhez kapcsolódó kivételeket kap, vagy nagyobb kimenő forgalomra számított, ellenőrizze, hány átviteli egységet vásárolt a névtérhez. Az átviteli egységek kezelése a névterek **Méretezés** panelén történik az [Azure Portalon](https://portal.azure.com). Az átviteli egységeket programozott módon is kezelheti a [Event Hubs API](./event-hubs-samples.md)-k használatával.
 
 Az átviteli egységek előzetes megvásárlása és óránkénti számlázása. Miután megvásárolta, az átviteli egységek után legalább egy órányi díjat ki kell fizetni. Egy Event Hubs névtérhez legfeljebb 20 átviteli egység vásárolható meg, és az adott névtérben található összes Event hub esetében meg van osztva.
 
@@ -46,8 +46,8 @@ A [partíciós kulcs](event-hubs-programming-guide.md#partition-key) használat�
 Az esemény-közzétevő csak a partíciókulcsot ismeri, azt a partíciót nem, amelyre az esemény közzé lesz téve. A kulcs és a partíció szétválasztása révén a küldőnek nem szükséges behatóan ismernie az alárendelt feldolgozási folyamatokat. Az eszközszintű vagy egyedi felhasználói identitás remek partíciókulcs lehet, de más tulajdonságok, például a földrajzi hely alapján szintén lehetséges az események csoportosítása egyetlen partícióra.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 - [Átviteli egységek automatikus skálázása](event-hubs-auto-inflate.md)
-- [Event Hubs szolgáltatás áttekintése](event-hubs-what-is-event-hubs.md)
+- [Event Hubs szolgáltatás áttekintése](./event-hubs-about.md)

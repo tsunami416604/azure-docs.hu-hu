@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 86d88787d024029b11d9718f8dbc834ae7217707
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78cc1fe1a84f1fd596d0c581f034f312cb1a0c3d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260644"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523808"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>A Graph tömeges végrehajtó .NET-kódtár használata tömeges műveletek végrehajtásához Azure Cosmos DB Gremlin API-ban
 
@@ -128,7 +128,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 Ez az adattár tartalmazza a GraphBulkExecutor mintát a következő fájlokkal:
 
-Fájl|Description
+Fájl|Leírás
 ---|---
 `App.config`|Itt vannak megadva az alkalmazás- és adatbázis-specifikus paraméterek. Ezt a fájlt előbb módosítani kell, hogy a céladatbázishoz és -gyűjteményekhez csatlakozzon.
 `Program.cs`| Ez a fájl tartalmazza a `DocumentClient` gyűjtemény létrehozása, a tisztítások kezelését és a tömeges végrehajtó kérések küldésének logikáját.
@@ -136,7 +136,7 @@ Fájl|Description
 
 Az `App.config` fájlban az alábbi konfigurációs értékek adhatók meg:
 
-Beállítás|Description
+Beállítás|Leírás
 ---|---
 `EndPointUrl`|Ez a **.NET SDK-végpont**, amely az Azure Cosmos DB Gremlin API-adatbázisfiók Áttekintés paneljén található. A formátuma a következő: `https://your-graph-database-account.documents.azure.com:443/`
 `AuthorizationKey`|Ez az Azure Cosmos DB-fiók alatt listázott elsődleges vagy másodlagos kulcs. További információért tekintse meg [az Azure Cosmos DB-adatokhoz való hozzáférés biztonságossá tételével foglalkozó cikket](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys).
@@ -154,7 +154,8 @@ Beállítás|Description
 2. Futtassa az alkalmazást. Ez kétszer hívja meg a `BulkImportAsync` metódust, egyszer a csúcsok és egyszer az élek importálása végett. Ha bármelyik objektum beszúrása során hiba lép fel, a rendszer felveszi az objektumot a `.\BadVertices.txt` vagy a `.\BadEdges.txt` fájlba.
 3. Ellenőrizze az eredményeket a gráfadatbázis lekérdezésével. Ha a `ShouldCleanupOnFinish` beállítás értéke true (igaz), az adatbázis automatikusan törölve lesz.
 
-## <a name="next-steps"></a>További lépések
-* További információ a Nuget csomag részleteiről és a tömeges végrehajtó .NET-függvénytár kibocsátási megjegyzéséről: [tömeges végrehajtó SDK – részletek](sql-api-sdk-bulk-executor-dot-net.md). 
+## <a name="next-steps"></a>Következő lépések
+
+* További információ a NuGet csomag részleteiről és a tömeges végrehajtó .NET-függvénytár kibocsátási megjegyzéséről: [tömeges végrehajtó SDK – részletek](sql-api-sdk-bulk-executor-dot-net.md). 
 * Tekintse át a [teljesítménnyel kapcsolatos tippeket](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips) a tömeges végrehajtó használatának további optimalizálása érdekében.
 * Az ebben a névtérben definiált osztályokkal és névterekkel kapcsolatos további információért olvassa el [a BulkExecutor.Graph áttekintését tartalmazó cikket](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet).

@@ -1,5 +1,5 @@
 ---
-title: A IoT csatlakoztatása Plug and Play minta-eszköz kódja a IoT Hubhoz | Microsoft Docs
+title: IoT-Plug and Play-előnézeti kód összekapcsolásának IoT Hub – Java | Microsoft Docs
 description: A Java használatával IoT Plug and Play előnézeti minta eszköz kódját, amely egy IoT hubhoz csatlakozik. Az Azure IoT Explorer eszköz használatával megtekintheti az eszköz által a hubhoz továbbított adatokat.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: aa676dd374eccf2a4b5c4622689ed402c8679e5a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c85763ffb12ac93f3aff667c4660afa22ca6a99f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76964821"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521241"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-java"></a>Gyors útmutató: minta IoT csatlakoztatása Plug and Play előnézeti eszköz alkalmazása IoT Hub (Java) szolgáltatáshoz
 
@@ -93,7 +93,7 @@ Láthatja, hogy az eszköz csatlakoztatva van, különböző telepítési lépé
 
 [!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt egy IoT hubhoz. Ha többet szeretne megtudni arról, hogyan hozhat létre olyan megoldást, amely együttműködik a IoT Plug and Play eszközökkel, tekintse meg a következőt:
 

@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 2ccd352950117d8427809616f78f4a0691319cdf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f5f321beb873ffcd6d120e94f8416a650d0de3cf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023669"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523553"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js mongúz-alkalmazás összekötése Azure Cosmos DB
 
@@ -157,7 +157,7 @@ Ez a szakasz ismerteti, hogyan érheti el ezt Azure Cosmos DB API-MongoDB. Ez a 
             { firstName: "Patrick", gender: "male", grade: 7 }
         ],
         pets: [
-            { givenName: "Blackie" }
+            { givenName: "Buddy" }
         ],
         address: { country: "USA", state: "WA", city: "Seattle" }
     });
@@ -275,7 +275,7 @@ Itt létrehozunk egy alapszintű objektummodellt, meghatározunk egy megkülönb
            { firstName: "Patrick", gender: "male", grade: 7 }
        ],
        pets: [
-           { givenName: "Blackie" }
+           { givenName: "Buddy" }
        ],
        address: { country: "USA", state: "WA", city: "Seattle" }
       });
@@ -317,7 +317,7 @@ Amint láthatja, a Mongoose diszkriminátorok könnyen használhatók. Tehát ha
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [használhatja a Studio 3T](mongodb-mongochef.md) Azure Cosmos db API-ját a MongoDB.
 - Ismerje meg, hogyan [használhatja a Robo 3T](mongodb-robomongo.md) -t a Azure Cosmos db API-MongoDB.

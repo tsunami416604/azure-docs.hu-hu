@@ -4,13 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan biztosítható a adatkatalógusok �
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b0972be2b8a6e05d3d90cde7354b4890ea95cbe4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a429c09b6f8082c95e29bcea62d27ec4fb46fd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68976764"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523383"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>A adatforrásokhoz és adateszközökhöz való hozzáférés biztonságossá tétele
 
@@ -61,6 +62,6 @@ Az adatkatalógushoz való hozzáférés biztosítása egy felhasználónak vagy
 - A biztonsági csoportokhoz hozzárendelt engedélyek az adalékanyag. Tegyük fel, hogy a felhasználó két csoportban van. Az egyik csoport Megjegyzés-jogosultságokkal rendelkezik, és az egyéb csoportok nem rendelkeznek megjegyzési engedélyekkel. Ezután a felhasználó jegyzetekkel rendelkezik engedéllyel. 
 - A felhasználóhoz explicit módon hozzárendelt engedélyek felülbírálják a felhasználóhoz tartozó csoportokhoz rendelt engedélyeket. Az előző példában tegyük fel, hogy explicit módon felvette a felhasználót a katalógusba a felhasználók számára, és nem rendel hozzá feliratozási engedélyeket. A felhasználó nem láthatja az adategységeket, annak ellenére, hogy a felhasználó egy olyan csoport tagja, amelynek van jegyzetekkel kapcsolatos engedélye.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerkedés az Azure Data Catalog szolgáltatással](data-catalog-get-started.md)

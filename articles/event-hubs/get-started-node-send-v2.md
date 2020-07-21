@@ -3,12 +3,12 @@ title: Események küldése vagy fogadása az Azure Event Hubs a JavaScript hasz
 description: Ez a cikk egy olyan JavaScript-alkalmazás létrehozásának bemutatóját ismerteti, amely az Azure-Event Hubs a legújabb Azure/Event-hubok 5-ös verziójának használatával küld/fogad eseményeket.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: ad9a78aa48ee0d4c01e2748b8b52192e259add7b
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 7ec97d07843a9844387ad1038c075ed55e304a2c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85312932"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521887"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Események küldése vagy fogadása az Event hubokból a JavaScript használatával (Azure/Event-hubok 5-ös verzió)
 Ez a rövid útmutató bemutatja, hogyan lehet eseményeket küldeni és fogadni az Event hub eseményeiről az **Azure/Event-hubok 5. verziójú JavaScript-** csomag használatával. 
@@ -106,13 +106,13 @@ Gratulálunk! Már elvégezte az események elküldése az Event hubhoz.
 Ebben a szakaszban egy esemény-központból származó eseményeket kap egy Azure Blob Storage ellenőrzőpont-tároló használatával egy JavaScript-alkalmazásban. Metaadat-ellenőrzőpontokat végez a fogadott üzenetekben, rendszeres időközönként egy Azure Storage-blobban. Ezzel a módszerrel egyszerűen folytathatja az üzenetek fogadását, ahonnan abbahagyta a kapcsolatot.
 
 > [!NOTE]
-> Ha Azure Stack hub-on fut, akkor a platform a Storage blob SDK egy másik verzióját is támogatja, mint az Azure-ban általában elérhető. Ha például [Azure stack Hub 2002-es verzióján](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)fut, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben a szakasz következő lépésein kívül kódot is hozzá kell adnia a Storage szolgáltatás API 2017-11-09-es verziójának célzásához. Egy adott tárolási API-verzió célzására vonatkozó példát a [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) és az [írógéppel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) példák a githubon című témakörben talál. Az Azure Stack hub által támogatott Azure Storage szolgáltatás verziójával kapcsolatos további információkért tekintse meg [Azure stack hub Storage: különbségek és megfontolások](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)című témakört.
+> Ha Azure Stack hub-on fut, akkor a platform a Storage blob SDK egy másik verzióját is támogatja, mint az Azure-ban általában elérhető. Ha például [Azure stack Hub 2002-es verzióján](/azure-stack/user/event-hubs-overview)fut, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben a szakasz következő lépésein kívül kódot is hozzá kell adnia a Storage szolgáltatás API 2017-11-09-es verziójának célzásához. Egy adott tárolási API-verzió célzására vonatkozó példát a [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) és az [írógéppel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) példák a githubon című témakörben talál. Az Azure Stack hub által támogatott Azure Storage szolgáltatás verziójával kapcsolatos további információkért tekintse meg [Azure stack hub Storage: különbségek és megfontolások](/azure-stack/user/azure-stack-acs-differences)című témakört.
 
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Azure Storage-fiók és blob-tároló létrehozása
 Hozzon létre egy Azure Storage-fiókot és egy BLOB-tárolót a következő műveletekkel:
 
-1. [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md?tabs=azure-portal)  
+1. [Azure-tárfiók létrehozása](../storage/common/storage-account-create.md?tabs=azure-portal)  
 2. [BLOB-tároló létrehozása a Storage-fiókban](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
 3. [A Storage-fiókhoz tartozó kapcsolódási karakterlánc lekérése](../storage/common/storage-configure-connection-string.md)
 
@@ -184,7 +184,7 @@ A fogadási kódban jegyezze fel a kapcsolódási karakterláncot és a tároló
 
 Gratulálunk! Most már kapott eseményeket az Event hub-ból. A fogadó program az Event hub alapértelmezett fogyasztói csoportjának összes partíciójának eseményeit fogja fogadni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg ezeket a mintákat a GitHubon:
 
 - [JavaScript-minták](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/javascript)

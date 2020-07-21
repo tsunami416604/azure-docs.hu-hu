@@ -7,16 +7,20 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: rambala
-ms.openlocfilehash: 4c3c6ae5fbdd91e6e44438be7fef2a3a91564a34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da90bbbce485616afdac5997576da99ac4d62c6f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74076682"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521904"
 ---
 # <a name="designing-for-high-availability-with-expressroute"></a>Magas rendelkezésre állás tervezése a ExpressRoute
 
 A ExpressRoute magas rendelkezésre állású, hogy a szolgáltatói szintű magánhálózati kapcsolatot biztosítson a Microsoft erőforrásaihoz. Más szóval, a Microsoft hálózaton belüli ExpressRoute útvonalon nem létezik egyetlen meghibásodási pont. A rendelkezésre állás maximalizálása érdekében a ExpressRoute-áramkör ügyfelének és szolgáltatói szegmensének is magas rendelkezésre állást kell megtervezni. Ebben a cikkben először nézzük meg a hálózati architektúrával kapcsolatos szempontokat a robusztus hálózati kapcsolatok ExpressRoute használatával történő kiépítéséhez, majd nézzük meg a finomhangolási funkciókat, amelyek segítenek a ExpressRoute-áramkör magas rendelkezésre állásának javításában.
 
+>[!NOTE]
+>Az ebben a cikkben ismertetett fogalmak akkor is érvényesek, ha egy ExpressRoute-áramkör virtuális WAN vagy azon kívül jön létre.
+>
 
 ## <a name="architecture-considerations"></a>Architektúrával kapcsolatos megfontolások
 
@@ -76,7 +80,7 @@ Az Azure-régiók rendelkezésre állási zónái egy tartalék tartomány és e
 
 A ExpressRoute támogatja a BFD. A BFD csökkenti a hiba észlelési idejét a 2. rétegbeli hálózat között a Microsoft Enterprise Edge (Msee) és a helyi oldalon lévő BGP-szomszédok között, körülbelül 3 percen belül (alapértelmezett), és kevesebb mint egy másodpercig. A gyors észlelési idő segít felgyorsítani a sikertelen helyreállítást. További információ: [BFD konfigurálása ExpressRoute][BFD]-en keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy ExpressRoute-áramköri kapcsolat magas rendelkezésre állásának kialakítását ismertetjük. Egy ExpressRoute-áramköri pont egy földrajzi helyre van rögzítve, ezért a teljes helyet érintő katasztrofális meghibásodás okozhatja. 
 

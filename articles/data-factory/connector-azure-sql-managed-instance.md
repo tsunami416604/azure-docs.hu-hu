@@ -10,12 +10,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 907579d44575de56f95e0828c3313d0d1682b29c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: d67a050ccd590e220c51e02b827013ace7707ee2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513899"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523247"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>Adatok másolása az Azure SQL felügyelt példányára és onnan a Azure Data Factory használatával
 
@@ -48,7 +49,7 @@ Az SQL felügyelt példány [nyilvános végpontjának](../azure-sql/managed-ins
 
 Az SQL felügyelt példány privát végpontjának eléréséhez állítson be egy saját üzemeltetésű [integrációs](create-self-hosted-integration-runtime.md) modult, amely hozzáfér az adatbázishoz. Ha a saját üzemeltetésű integrációs modult ugyanabban a virtuális hálózatban hozza létre, mint a felügyelt példányát, győződjön meg arról, hogy az integrációs modul számítógépe a felügyelt példánytól eltérő alhálózaton van. Ha a saját üzemeltetésű integrációs modult a felügyelt példánytól eltérő virtuális hálózaton helyezi üzembe, a virtuális hálózati kapcsolatok vagy virtuális hálózatok használatával virtuális hálózati kapcsolatot is használhat. További információ: [az alkalmazás összekötése az SQL felügyelt példányával](../azure-sql/managed-instance/connect-application-instance.md).
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -60,12 +61,12 @@ Az SQL felügyelt példány társított szolgáltatása a következő tulajdons�
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot **AzureSqlMI**értékre kell beállítani. | Yes |
-| connectionString |Ez a tulajdonság határozza meg az SQL-hitelesítés használatával a felügyelt példányhoz való kapcsolódáshoz szükséges **ConnectionString** -információkat. További információkért tekintse meg az alábbi példákat. <br/>Az alapértelmezett port a 1433-as számú. Ha nyilvános végponttal rendelkező SQL felügyelt példányt használ, explicit módon megadhatja a 3342-as portot.<br> A jelszó Azure Key Vaultban is elhelyezhető. Ha SQL-hitelesítéssel rendelkezik, húzza `password` ki a konfigurációt a kapcsolatok sztringből. További információ: a táblázatot követő JSON-példa és a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md). |Yes |
+| típus | A Type tulajdonságot **AzureSqlMI**értékre kell beállítani. | Igen |
+| connectionString |Ez a tulajdonság határozza meg az SQL-hitelesítés használatával a felügyelt példányhoz való kapcsolódáshoz szükséges **ConnectionString** -információkat. További információkért tekintse meg az alábbi példákat. <br/>Az alapértelmezett port a 1433-as számú. Ha nyilvános végponttal rendelkező SQL felügyelt példányt használ, explicit módon megadhatja a 3342-as portot.<br> A jelszó Azure Key Vaultban is elhelyezhető. Ha SQL-hitelesítéssel rendelkezik, húzza `password` ki a konfigurációt a kapcsolatok sztringből. További információ: a táblázatot követő JSON-példa és a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md). |Igen |
 | servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Igen, ha Azure AD-hitelesítést használ egy egyszerű szolgáltatással |
 | servicePrincipalKey | Az alkalmazás kulcsának meghatározása. A mező megjelölése **SecureString** -ként a biztonságos tárolás Azure Data Factory vagy [Azure Key Vault tárolt titkos kód hivatkozása](store-credentials-in-key-vault.md)alapján. | Igen, ha Azure AD-hitelesítést használ egy egyszerű szolgáltatással |
 | Bérlő | Adja meg a bérlői adatokat, például a tartománynevet vagy a bérlő AZONOSÍTÓját, amely alatt az alkalmazás található. Lekéri a Azure Portal jobb felső sarkában lévő egér fölé. | Igen, ha Azure AD-hitelesítést használ egy egyszerű szolgáltatással |
-| Connectvia tulajdonsággal | Ez az [integrációs](concepts-integration-runtime.md) modul az adattárhoz való kapcsolódásra szolgál. Használhatja a saját üzemeltetésű integrációs modult vagy egy Azure Integration Runtime-t, ha a felügyelt példány nyilvános végponttal rendelkezik, és lehetővé teszi Azure Data Factory számára a hozzáférését. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime-t használja. |Yes |
+| Connectvia tulajdonsággal | Ez az [integrációs](concepts-integration-runtime.md) modul az adattárhoz való kapcsolódásra szolgál. Használhatja a saját üzemeltetésű integrációs modult vagy egy Azure Integration Runtime-t, ha a felügyelt példány nyilvános végponttal rendelkezik, és lehetővé teszi Azure Data Factory számára a hozzáférését. Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime-t használja. |Igen |
 
 Különböző hitelesítési típusok esetén tekintse át az előfeltételek és JSON-minták következő, az előfeltételeket és a JSON-mintákat ismertető szakaszt:
 
@@ -229,9 +230,9 @@ Az SQL felügyelt példányra irányuló és onnan érkező adatok másolásáho
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát **AzureSqlMITable**értékre kell állítani. | Yes |
-| séma | A séma neve. |Nem, forrás, igen, fogadó  |
-| tábla | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
+| típus | Az adatkészlet Type tulajdonságát **AzureSqlMITable**értékre kell állítani. | Igen |
+| schema | A séma neve. |Nem, forrás, igen, fogadó  |
+| table | A tábla vagy nézet neve. |Nem, forrás, igen, fogadó  |
 | tableName | A tábla/nézet neve a sémával. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a és a elemet `schema` `table` . | Nem, forrás, igen, fogadó |
 
 **Példa**
@@ -265,11 +266,11 @@ Az SQL felügyelt példányból származó adatok másolásához a másolási te
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát **SqlMISource**értékre kell állítani. | Yes |
-| sqlReaderQuery |Ez a tulajdonság az egyéni SQL-lekérdezést használja az adatolvasáshoz. Például: `select * from MyTable`. |No |
-| sqlReaderStoredProcedureName |Ez a tulajdonság annak a tárolt eljárásnak a neve, amely beolvassa az adatokat a forrás táblából. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |No |
-| storedProcedureParameters |Ezek a paraméterek a tárolt eljáráshoz tartoznak.<br/>Az engedélyezett értékek név vagy érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |No |
-| isolationLevel | Meghatározza az SQL-forrás tranzakció-zárolási viselkedését. Az engedélyezett értékek a következők: **ReadCommitted** (alapértelmezett) **, ReadUncommitted**, **RepeatableRead**, **szerializálható**, **Pillanatkép**. További részletekért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) . | No |
+| típus | A másolási tevékenység forrásának Type tulajdonságát **SqlMISource**értékre kell állítani. | Igen |
+| sqlReaderQuery |Ez a tulajdonság az egyéni SQL-lekérdezést használja az adatolvasáshoz. Például: `select * from MyTable`. |Nem |
+| sqlReaderStoredProcedureName |Ez a tulajdonság annak a tárolt eljárásnak a neve, amely beolvassa az adatokat a forrás táblából. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |Nem |
+| storedProcedureParameters |Ezek a paraméterek a tárolt eljáráshoz tartoznak.<br/>Az engedélyezett értékek név vagy érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |Nem |
+| isolationLevel | Meghatározza az SQL-forrás tranzakció-zárolási viselkedését. Az engedélyezett értékek a következők: **ReadCommitted** (alapértelmezett) **, ReadUncommitted**, **RepeatableRead**, **szerializálható**, **Pillanatkép**. További részletekért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel) . | Nem |
 
 **Vegye figyelembe a következő szempontokat:**
 
@@ -372,15 +373,15 @@ Az SQL felügyelt példányba történő adatmásoláshoz a másolási tevékeny
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység fogadójának Type tulajdonságát **SqlMISink**értékre kell állítani. | Yes |
-| preCopyScript |Ez a tulajdonság határozza meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az SQL felügyelt példányba írna. A rendszer csak egyszer hívja meg a példányt. Ezt a tulajdonságot használhatja az előre betöltött adatértékek törléséhez. |No |
-| tableOption | Meghatározza, hogy a rendszer automatikusan létrehozza-e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az automatikus tábla létrehozása nem támogatott, ha a fogadó a tárolt eljárást vagy a szakaszos másolást a másolási tevékenységben konfigurálja. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate` . |No |
-| sqlWriterStoredProcedureName | Annak a tárolt eljárásnak a neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába. <br/>Ezt a tárolt eljárást batch-ként kell *meghívni*. Olyan műveletekhez, amelyek csak egyszer futnak, és nem kell megtenniük a forrásadatokat, például törlés vagy csonkítás, használja a `preCopyScript` tulajdonságot.<br>Lásd: példa [egy tárolt eljárás meghívására egy SQL-](#invoke-a-stored-procedure-from-a-sql-sink)fogadóból. | No |
-| storedProcedureTableTypeParameterName |A tárolt eljárásban megadott tábla típusú paraméter neve.  |No |
-| sqlWriterTableType |A tárolt eljárásban használandó táblanév neve. A másolási tevékenység lehetővé teszi az áthelyezett adatáthelyezést egy ideiglenes táblában, amely ebben a táblázatban szerepel. A tárolt eljárási kód ezután egyesítheti a folyamatban lévő adattal másolt adatfájlokat. |No |
-| storedProcedureParameters |A tárolt eljárás paraméterei.<br/>Az engedélyezett értékek név és érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. | No |
-| writeBatchSize |A *kötegekben*az SQL-táblába beszúrandó sorok száma.<br/>Az engedélyezett értékek a sorok számának egésze. Alapértelmezés szerint a Azure Data Factory dinamikusan meghatározza a megfelelő batch-méretet a sor mérete alapján.  |No |
-| writeBatchTimeout |Ez a tulajdonság határozza meg, hogy a kötegelt beszúrási művelet várakozási ideje befejeződjön, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a TimeSpan vonatkoznak. Ilyen például a "00:30:00", amely 30 percet vesz igénybe. |No |
+| típus | A másolási tevékenység fogadójának Type tulajdonságát **SqlMISink**értékre kell állítani. | Igen |
+| preCopyScript |Ez a tulajdonság határozza meg a másolási tevékenység futtatásához szükséges SQL-lekérdezést, mielőtt az SQL felügyelt példányba írna. A rendszer csak egyszer hívja meg a példányt. Ezt a tulajdonságot használhatja az előre betöltött adatértékek törléséhez. |Nem |
+| tableOption | Meghatározza, hogy a [rendszer automatikusan létrehozza](copy-activity-overview.md#auto-create-sink-tables) -e a fogadó táblát, ha az nem létezik a forrásoldali séma alapján. Az automatikus tábla létrehozása nem támogatott, ha a fogadó a tárolt eljárást vagy a szakaszos másolást a másolási tevékenységben konfigurálja. Az engedélyezett értékek a következők: `none` (alapértelmezett), `autoCreate` . |Nem |
+| sqlWriterStoredProcedureName | Annak a tárolt eljárásnak a neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába. <br/>Ezt a tárolt eljárást batch-ként kell *meghívni*. Olyan műveletekhez, amelyek csak egyszer futnak, és nem kell megtenniük a forrásadatokat, például törlés vagy csonkítás, használja a `preCopyScript` tulajdonságot.<br>Lásd: példa [egy tárolt eljárás meghívására egy SQL-](#invoke-a-stored-procedure-from-a-sql-sink)fogadóból. | Nem |
+| storedProcedureTableTypeParameterName |A tárolt eljárásban megadott tábla típusú paraméter neve.  |Nem |
+| sqlWriterTableType |A tárolt eljárásban használandó táblanév neve. A másolási tevékenység lehetővé teszi az áthelyezett adatáthelyezést egy ideiglenes táblában, amely ebben a táblázatban szerepel. A tárolt eljárási kód ezután egyesítheti a folyamatban lévő adattal másolt adatfájlokat. |Nem |
+| storedProcedureParameters |A tárolt eljárás paraméterei.<br/>Az engedélyezett értékek név és érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. | Nem |
+| writeBatchSize |A *kötegekben*az SQL-táblába beszúrandó sorok száma.<br/>Az engedélyezett értékek a sorok számának egésze. Alapértelmezés szerint a Azure Data Factory dinamikusan meghatározza a megfelelő batch-méretet a sor mérete alapján.  |Nem |
+| writeBatchTimeout |Ez a tulajdonság határozza meg, hogy a kötegelt beszúrási művelet várakozási ideje befejeződjön, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a TimeSpan vonatkoznak. Ilyen például a "00:30:00", amely 30 percet vesz igénybe. |Nem |
 
 **1. példa: az adathozzáfűzés**
 
@@ -568,7 +569,7 @@ Amikor az SQL felügyelt példányra másolta az adatok másolását, a rendszer
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Bájt [] |
-| bit |Logikai |
+| bit |Logikai érték |
 | char |Karakterlánc, char [] |
 | dátum |DateTime |
 | Datetime |DateTime |
@@ -576,7 +577,7 @@ Amikor az SQL felügyelt példányra másolta az adatok másolását, a rendszer
 | DateTimeOffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribútum (varbinary (max)) |Bájt [] |
-| Float |Double |
+| Float |Dupla |
 | image |Bájt [] |
 | int |Int32 |
 | pénzt |Decimal |
@@ -639,5 +640,5 @@ Pontosabban:
 
 4. Ennek megfelelően hozzon létre adatkészletet és másolási tevékenységet az ODBC-típussal. További tudnivalók az [ODBC-összekötőről](connector-odbc.md) című cikkben olvashatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

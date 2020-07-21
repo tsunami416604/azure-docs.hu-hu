@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: 24ce0ff2fa5e0b023f2a0d6b92e657299518c044
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 723690c29cd6ce77d7615fc613e50740ef2a45c7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120500"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520153"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Fiók áttelepítése Cloud Partner Portalról a partneri központba
 
@@ -27,7 +27,7 @@ Ha egy adott fiókhoz tartozó tulajdonosi szerepkörrel rendelkező felhasznál
 
 ### <a name="your-account-has-been-migrated-to-partner-center"></a>A fiókja át lett telepítve a partner központba
 
-Minden olyan fiók esetében, amely a CPP-ből a partneri központba való áttelepítést végezte, a fiókkezelés a partner Centerben fog történni. A módosításokat, például a felhasználók hozzáadását/törlését a rendszer szinkronizálja a CPP-vel.
+Most már kezelheti a fiókját a partner Centerben. A módosításokat, például a felhasználók hozzáadását/törlését a rendszer szinkronizálja a CPP-vel.
 
 ### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>Még nem telepítette át a fiókját a partner központba
 
@@ -45,7 +45,7 @@ A fiók áttelepítési folyamatának elindításához kattintson a szalagcímre
 
 ## <a name="publishers-moving-from-cpp"></a>A CPP-ből áthelyezett közzétevők
 
-Ha a fiókja át lett telepítve a [Cloud Partner Portalról (CPP)](https://cloudpartner.azure.com), nem kell létrehoznia egy új partner Center-fiókot. A meglévő CPP-fiókba való bejelentkezést követően egyedi hivatkozást kell kapnia az új partner Center-fiókhoz, valamint egy szalagcím-értesítésben.
+Ha a fiókját áttelepítette a CPP-ből, nem kell új partner Center-fiókot létrehoznia. A meglévő CPP-fiókba való bejelentkezés után testreszabott hivatkozást kell kapnia az új partner Center-fiókhoz az e-mailben és a szalagcím-értesítésben.
 
 Miután engedélyezte az új partner Center-fiókot a testreszabott hivatkozás meglátogatásával, visszatérhet a fiókjához, ha meglátogatja a partner Center [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) .
 

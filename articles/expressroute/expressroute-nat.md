@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9f5c5cc3a943ad4a8882a91ffdcee89c2ad39743
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62effa04fd6130c35d3e2e64a401c124fe383200
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79272967"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521921"
 ---
 # <a name="expressroute-nat-requirements"></a>Az ExpressRoute NAT-követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, NAT-okat kell beállítania és kezelnie. Egyes kapcsolatszolgáltatók felügyelt szolgáltatásként kínálják a NAT beállítását és kezelését. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínál-e ilyen szolgáltatást. Ha nem, akkor meg kell felelnie az alább ismertetett követelményeknek. 
@@ -21,7 +22,7 @@ A különböző útválasztási tartományok áttekintését az [ExpressRoute-ka
 ## <a name="nat-requirements-for-microsoft-peering"></a>A Microsoft társviszony-létesítésre vonatkozó NAT-követelmények
 A Microsoft társviszony-létesítési útvonal lehetővé teszi, hogy az Azure nyilvános társviszony-létesítési útvonalon keresztül nem támogatott Microsoft-felhőszolgáltatásokhoz csatlakozzon. A szolgáltatások listája magában foglalja az Office 365-szolgáltatásokat, például az Exchange Online-t, a SharePoint Online-t és a Skype vállalati verzióit. A Microsoft tervezi a kétirányú kapcsolatok támogatását a Microsoft társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalmat forrásoldali hálózati címfordítással érvényes nyilvános IPv4-címekké kell alakítani, mielőtt belép a Microsoft hálózatába. A Microsoft felhőszolgáltatásai felől az Ön hálózata felé irányuló forgalmon forrásoldali hálózati címfordítást kell végrehajtani az internetes peremhálózaton az [aszimmetrikus útválasztás](expressroute-asymmetric-routing.md) megelőzése érdekében. Az alábbi ábra magas szintű képet biztosít arról, hogyan kell beállítani a NAT-t a Microsoft-társak számára.
 
-![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
+![Magas szintű diagram, amely bemutatja, hogyan kell beállítani a NAT-t a Microsoft-partnerek számára.](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 
 ### <a name="traffic-originating-from-your-network-destined-to-microsoft"></a>Az Ön hálózatából eredő, a Microsoft felé irányuló forgalom
 * Biztosítania kell, hogy a forgalom a Microsoft társviszony-létesítési útvonalra érvényes nyilvános IPv4-címmel lépjen be. A Microsoftnak képesnek kell lennie ellenőriznie az IPv4 NAT-címkészlet tulajdonosát egy regionális útválasztási internetes jegyzékben (RIR) vagy egy internetes útválasztási jegyzékben (RIR) A rendszer a NAT-tal társviszonyban lévő AS-szám és az ahhoz használt IP-címek alapján ellenőrzést hajt végre. Az útválasztási nyilvántartásokkal kapcsolatos információkért tekintse meg [az ExpressRoute útválasztási követelményeit](expressroute-routing.md) ismertető oldalt.
@@ -52,7 +53,7 @@ Az Azure nyilvános társviszony-létesítési útvonal használatával az Azure
 
 A Microsoft Azure felé a nyilvános társviszony-létesítésen keresztül irányuló forgalmat forrásoldali hálózati címfordítással érvényes nyilvános IPv4-címekké kell alakítani, mielőtt belép a Microsoft hálózatába. Az alábbi ábrán annak magas szintű ábrázolása látható, hogy hogyan kell beállítani a NAT-ot a fenti követelmények teljesítéséhez.
 
-![](./media/expressroute-nat/expressroute-nat-azure-public.png) 
+![Magas szintű diagram, amellyel a NAT beállítható úgy, hogy az érvényes nyilvános IPv4-címekre címfordítást, mielőtt belépnek a Microsoft hálózatba.](./media/expressroute-nat/expressroute-nat-azure-public.png) 
 
 ### <a name="nat-ip-pool-and-route-advertisements"></a>NAT IP-készlet és útvonalhirdetések
 Biztosítania kell, hogy a forgalom az Azure nyilvános társviszony-létesítési útvonalra érvényes nyilvános IPv4-címmel lépjen be. A Microsoftnak képesnek kell lennie ellenőriznie az IPv4 NAT-címkészlet tulajdonjogát egy regionális útválasztási internetes jegyzékben (RIR) vagy egy internetes útválasztási jegyzékben (RIR) A rendszer a NAT-tal társviszonyban lévő AS-szám és az ahhoz használt IP-címek alapján ellenőrzést hajt végre. Az útválasztási nyilvántartásokkal kapcsolatos információkért tekintse meg [az ExpressRoute útválasztási követelményeit](expressroute-routing.md) ismertető oldalt.
@@ -64,7 +65,7 @@ A társviszony-létesítésen keresztül hirdetett NAT IP-előtag hosszára nem 
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Tekintse meg az [Útválasztás](expressroute-routing.md) és a [QoS](expressroute-qos.md) követelményeit.
 * További információkért lásd: [ExpressRoute-kapcsolatcsoportok kiépítési munkafolyamatai és kapcsolatcsoport-állapotok](expressroute-workflows.md).
 * Az ExpressRoute-kapcsolat konfigurálása.

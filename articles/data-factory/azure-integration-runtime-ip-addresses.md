@@ -11,11 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: f3eed03c585ba6b48a21b36c21cb77585456fc2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c64a38295754e4754326dec126bfbc36e1bef61
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660268"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523332"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime – IP-címek
 
@@ -24,7 +25,7 @@ ms.locfileid: "84660268"
 A Azure Integration Runtime által használt IP-címek attól a régiótól függenek, ahol az Azure Integration Runtime található. *Az összes* Az azonos régióban található Azure Integration Runtime azonos IP-címtartományt használ.
 
 > [!IMPORTANT]  
-> Az adatfolyamatok nem támogatják a rögzített IP-címtartományok használatát.
+> A felügyelt Virtual Networkt engedélyező adatfolyamatok és Azure Integration Runtime nem támogatják a rögzített IP-címtartományok használatát.
 >
 > Ezeket az IP-tartományokat az adatáthelyezéshez, a folyamathoz és a külső tevékenységek végrehajtásához is használhatja. Ezek az IP-címtartományok az Azure Integration Runtime-ból bejövő hozzáféréshez használt adattárakban/hálózati biztonsági csoportban (NSG)/tűzfalakon való engedélyezési feladatokhoz használhatók. 
 
@@ -39,6 +40,6 @@ Az Azure Integration Runtime számára felsorolt IP-címekről érkező forgalom
 
   Ehelyett javasoljuk, [hogy megbízható szolgáltatásokat használjon az Azure Storage-hoz való csatlakozáskor](https://techcommunity.microsoft.com/t5/azure-data-factory/data-factory-is-now-a-trusted-service-in-azure-storage-and-azure/ba-p/964993). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Azure Data Factory adatáthelyezésének biztonsági szempontjai](data-movement-security-considerations.md)

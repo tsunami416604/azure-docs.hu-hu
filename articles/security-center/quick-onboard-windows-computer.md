@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 2840b6636c2b511ab57a8bae8adf411f4d8a27d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ecbdb6dc73082fc0fab04c8802c43219cabb6a79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80435931"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519762"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rövid útmutató: Windows rendszerű számítógépek felvétele az Azure Security Centerbe
 Az Azure-előfizetések előkészítése után engedélyezheti Security Center az Azure-on kívül, például a helyszínen vagy más felhőkben futó erőforrásokhoz az Log Analytics ügynök kiépítésével.
@@ -29,12 +29,12 @@ Ez a rövid útmutató bemutatja, hogyan telepítheti a Log Analytics ügynökö
 ## <a name="prerequisites"></a>Előfeltételek
 A Security Center használatához Microsoft Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
 
-A rövid útmutató megkezdése előtt rendelkeznie kell a Security Center Standard tarifacsomagjával. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+Ennek a rövid útmutatónak a megkezdése előtt a Security Center Standard díjszabási szintjéhez kell tartoznia. A frissítési utasításokért lásd az [Azure-előfizetés a Security Center Standard verziójába történő felvételét](security-center-get-started.md) ismertető szakaszt. Security Center Standard díjmentesen is kipróbálható. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-windows-computer"></a>Új, Windows rendszerű számítógép hozzáadása
 
 1. Jelentkezzen be az [Azure Portalra](https://azure.microsoft.com/features/azure-portal/).
-2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. Megnyílik a **Security Center – Áttekintés** képernyő.
+2. A **Microsoft Azure** menüben válassza a **Security Center** elemet. **Security Center – az Áttekintés** megnyílik.
 
    ![Security Center – Áttekintés][2]
 
@@ -86,7 +86,7 @@ A **Számítás** panelen kétféle ikon található:
 
 ![icon2](./media/quick-onboard-windows-computer/security-center-monitoring-icon2.png) Azure VM
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 Ha már nincs rá szükség, eltávolíthatja az ügynököt a Windows rendszerű számítógépről.
 
 Az ügynök eltávolítása:
@@ -95,7 +95,7 @@ Az ügynök eltávolítása:
 2. Nyissa meg a **Programok és szolgáltatások** részt.
 3. A **programok és szolgáltatások**területen válassza ki **log Analytics ügynököt** , majd kattintson az **Eltávolítás**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban kiépítte a Log Analytics ügynököt egy Windows rendszerű számítógépen. Ha többet szeretne megtudni a Security Center használatáról, tekintse meg a biztonsági szabályzat konfigurálásával és az erőforrások biztonságának felmérésével foglalkozó oktatóanyagot is.
 
 > [!div class="nextstepaction"]

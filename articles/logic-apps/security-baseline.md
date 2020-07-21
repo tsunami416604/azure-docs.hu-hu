@@ -7,24 +7,24 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a37f57bc12e5756b493bb009268beb067e7faaab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d27abfda789a9bb1bd5479b059355703388333f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833978"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520646"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps Azure biztonsági alapterve
 
 Az Logic Apps Azure biztonsági alapkonfigurációja olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
-A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](https://docs.microsoft.com/azure/security/benchmarks/overview)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
+A szolgáltatás alapterve az [Azure Security Benchmark 1,0-es verziójából](../security/benchmarks/overview.md)származik, amely javaslatokat tesz arra vonatkozóan, hogy miként védheti meg felhőalapú megoldásait az Azure-ban az ajánlott eljárásokat ismertető útmutató segítségével.
 
-További információ: az [Azure biztonsági alaptervek áttekintése](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+További információ: az [Azure biztonsági alaptervek áttekintése](../security/benchmarks/security-baselines-overview.md).
 
 ## <a name="network-security"></a>Hálózati biztonság
 
-*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*További információkért lásd [: biztonsági ellenőrzés: hálózati biztonság](../security/benchmarks/security-control-network-security.md).*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1,1: Azure-erőforrások biztosítása virtuális hálózatokon belül
 
@@ -36,25 +36,25 @@ Az ISE létrehozásakor dönthet úgy, hogy belső vagy külső hozzáférési v
 
 Győződjön meg arról, hogy az ISE-hez kapcsolódó összes virtuális hálózati alhálózat üzembe helyezése egy hálózati biztonsági csoporttal rendelkezik, amely az alkalmazás megbízható portjaira és forrásaira jellemző hálózati hozzáférés-vezérléssel van alkalmazva. Ha egy ISE-ben helyezi üzembe a logikai alkalmazásokat, használja a privát hivatkozást. Az Azure Private-hivatkozás lehetővé teszi, hogy a virtuális hálózat egy privát végpontján keresztül hozzáférjen az Azure Pásti-szolgáltatásokhoz és az Azure által üzemeltetett felhasználói/partneri szolgáltatásokhoz. Ha konkrét használati esettel rendelkezik, a Azure Firewall megvalósításával is teljesítheti ezt a követelményt. A biztonsági szabályok beállításakor a bonyolultság csökkentése érdekében az adott Azure-szolgáltatáshoz tartozó IP-cím-előtagokat képviselő szolgáltatás-címkéket használjon.
 
-* [Logic Apps-összekötők ismertetése](https://docs.microsoft.com/azure/connectors/apis-list)
+* [Logic Apps-összekötők ismertetése](../connectors/apis-list.md)
 
-* [A szolgáltatási címkék megismerése az Azure-ban](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [A szolgáltatási címkék megismerése az Azure-ban](../virtual-network/service-tags-overview.md)
 
-* [Az Azure Virtual Network-erőforrásokhoz való hozzáférés megismerése Azure Logic Apps az Integration Service Environment (ISEs) használatával](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview)
+* [Az Azure Virtual Network-erőforrásokhoz való hozzáférés megismerése Azure Logic Apps az Integration Service Environment (ISEs) használatával](./connect-virtual-network-vnet-isolated-environment-overview.md)
 
-* [Virtual Network szolgáltatási végpontok ismertetése](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
+* [Virtual Network szolgáltatási végpontok ismertetése](../virtual-network/virtual-network-service-endpoints-overview.md)
 
-* [Az Azure privát hivatkozásának megismerése](https://docs.microsoft.com/azure/private-link/private-link-overview)
+* [Az Azure privát hivatkozásának megismerése](../private-link/private-link-overview.md)
 
-* [Az ISE Endpoint Access ismertetése](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview#ise-endpoint-access)
+* [Az ISE Endpoint Access ismertetése](./connect-virtual-network-vnet-isolated-environment-overview.md#ise-endpoint-access)
 
-* [Virtual Network létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Virtual Network létrehozása](../virtual-network/quick-create-portal.md)
 
-* [Biztonsági konfigurációval rendelkező NSG létrehozása](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [Biztonsági konfigurációval rendelkező NSG létrehozása](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall üzembe helyezése és konfigurálása](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall üzembe helyezése és konfigurálása](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Az ISE hozzáférésének engedélyezése](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment#enable-access-for-ise)
+* [Az ISE hozzáférésének engedélyezése](./connect-virtual-network-vnet-isolated-environment.md#enable-access-for-ise)
 
 **Azure Security Center figyelés**: N/A
 
@@ -64,11 +64,11 @@ Győződjön meg arról, hogy az ISE-hez kapcsolódó összes virtuális hálóz
 
 **Útmutató**: Ha a Logic Apps szolgáltatást egy külső hozzáférési pontot használó integrációs szolgáltatási környezetben (ISE) futtatja, akkor a hálózati biztonsági csoport (NSG) segítségével csökkentheti az adatkiszűrése kockázatát. NSG-adatforgalmi naplók engedélyezése és naplók küldése Azure Storage-fiókba forgalom-ellenőrzés céljából. NSG-naplókat is küldhet Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
-* [Az ISE Endpoint Access ismertetése](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview#ise-endpoint-access)
+* [Az ISE Endpoint Access ismertetése](./connect-virtual-network-vnet-isolated-environment-overview.md#ise-endpoint-access)
 
-* [A NSG folyamat naplófájljainak engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [A NSG folyamat naplófájljainak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [A Traffic Analytics engedélyezése és használata](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [A Traffic Analytics engedélyezése és használata](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -94,19 +94,19 @@ A NSG konfigurálásához használja a Azure Security Center igény szerinti há
 
 Azure Security Center adaptív hálózati korlátozással olyan NSG-konfigurációkat javasolhat, amelyek a portok és a forrás IP-címeket korlátozzák a tényleges forgalom és a veszélyforrások felderítése alapján.
 
-* [Bejövő hívások biztonságossá tétele Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-request-based-triggers)
+* [Bejövő hívások biztonságossá tétele Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
 
-* [Bejövő IP-címek korlátozása](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#restrict-inbound-ip-addresses)
+* [Bejövő IP-címek korlátozása](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
-* [A DDoS Protection konfigurálása](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [A DDoS Protection konfigurálása](../virtual-network/manage-ddos-protection.md)
 
-* [Azure Firewall üzembe helyezése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall üzembe helyezése](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Az Azure Security Center integrált veszélyforrások felderítésének megismerése](../security-center/threat-protection.md)
 
-* [Azure Security Center adaptív hálózat megerősítésének ismertetése](https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening)
+* [Azure Security Center adaptív hálózat megerősítésének ismertetése](../security-center/security-center-adaptive-network-hardening.md)
 
-* [Azure Security Center az időponthoz tartozó hálózati Access Control ismertetése](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Azure Security Center az időponthoz tartozó hálózati Access Control ismertetése](../security-center/security-center-just-in-time.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -120,15 +120,15 @@ A hálózati forgalomra vonatkozó további védelem és információk biztosít
 
 Ellenkező esetben egy külső gyártótól származó megoldást is használhat a piactéren, hogy megfeleljen ennek a követelménynek.
 
-* [Az ISE Endpoint Access ismertetése](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview#ise-endpoint-access)
+* [Az ISE Endpoint Access ismertetése](./connect-virtual-network-vnet-isolated-environment-overview.md#ise-endpoint-access)
 
-* [A NSG folyamat naplófájljainak engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [A NSG folyamat naplófájljainak engedélyezése](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [A Traffic Analytics engedélyezése és használata](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [A Traffic Analytics engedélyezése és használata](../network-watcher/traffic-analytics.md)
 
-* [API Management integrálása belső VNET a Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [API Management integrálása belső VNET a Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [A WAF-hozzáférési naplók megismerése](https://docs.microsoft.com/azure/web-application-firewall/ag/web-application-firewall-logs#access-log)
+* [A WAF-hozzáférési naplók megismerése](../web-application-firewall/ag/web-application-firewall-logs.md#access-log)
 
 **Azure Security Center figyelés**: N/A
 
@@ -142,9 +142,9 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [Azure Firewall üzembe helyezése](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall üzembe helyezése](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Riasztások konfigurálása Azure Firewall](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Riasztások konfigurálása Azure Firewall](../firewall/threat-intel.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -154,11 +154,11 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 **Útmutató**: Ha logikai alkalmazásokat futtat egy integrációs szolgáltatási környezetben (ISE), telepítse az Azure Application Gateway-t.
 
-* [API Management integrálása belső VNET a Application Gateway](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [API Management integrálása belső VNET a Application Gateway](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [A Application Gateway konfigurálása a HTTPS használatára](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+* [A Application Gateway konfigurálása a HTTPS használatára](../application-gateway/create-ssl-portal.md)
 
-* [A 7. rétegbeli terheléselosztás és az Azure-webalkalmazás-átjárók ismertetése](https://docs.microsoft.com/azure/application-gateway/overview)
+* [A 7. rétegbeli terheléselosztás és az Azure-webalkalmazás-átjárók ismertetése](../application-gateway/overview.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -168,7 +168,7 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 **Útmutató**: a Azure Logic apps példányokhoz hozzáférést igénylő erőforrásokhoz használjon virtuális hálózati szolgáltatás címkéit a hálózati biztonsági csoportokon vagy Azure Firewall a hálózati hozzáférés-vezérlés definiálásához. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. A szolgáltatási címke nevének (például LogicApps, LogicAppsManagement) megadásával egy szabály megfelelő forrás vagy cél mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-* [További információ a szolgáltatási címkék használatáról](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [További információ a szolgáltatási címkék használatáról](../virtual-network/service-tags-overview.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -184,9 +184,9 @@ DDoS Protection a standardot engedélyezni kell
 
 Az Azure-tervezetek segítségével leegyszerűsítheti a nagy léptékű Azure-környezetek központi telepítését a főbb környezeti összetevők, például a Azure Resource Manager sablonok, szerepköralapú hozzáférés-vezérlés (RBAC) és szabályzatok használatával egyetlen tervezet-definícióban. Egyszerűen alkalmazhatja a tervrajzot új előfizetésekre és környezetekre, és részletesen beállíthatja a vezérlést és a felügyeletet a verziószámozással.
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Blueprint létrehozása](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint létrehozása](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -200,13 +200,13 @@ A címkézéshez kapcsolódó beépített Azure Policy definíciók bármelyiké
 
 A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon.
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-* [Virtual Network létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Virtual Network létrehozása](../virtual-network/quick-create-portal.md)
 
-* [NSG létrehozása biztonsági konfigurációval](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [NSG létrehozása biztonsági konfigurációval](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Logic Apps Azure Policy definícióinak listája](https://docs.microsoft.com/azure/logic-apps/policy-samples)
+* [Logic Apps Azure Policy definícióinak listája](./policy-samples.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -216,9 +216,9 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 **Útmutató**: az Azure-tevékenység naplójának használatával figyelheti a hálózati erőforrás-konfigurációkat, és azonosíthatja a Azure Logic apps-példányokhoz kapcsolódó hálózati erőforrások változásait. Hozzon létre riasztásokat Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus hálózati erőforrásokra vonatkozó módosításokat végrehajtják
 
-* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Riasztások létrehozása a Azure Monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -226,7 +226,7 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 ## <a name="logging-and-monitoring"></a>Naplózás és figyelés
 
-*További információ [: Security Control: naplózás és figyelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*További információ [: Security Control: naplózás és figyelés](../security/benchmarks/security-control-logging-monitoring.md).*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2,1: a jóváhagyott idő-szinkronizálási források használata
 
@@ -242,11 +242,11 @@ A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshe
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
 
-* [Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/monitor-logic-apps-log-analytics)
+* [Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Apps](./monitor-logic-apps-log-analytics.md)
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -258,11 +258,11 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
 
-* [Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/monitor-logic-apps-log-analytics)
+* [Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Apps](./monitor-logic-apps-log-analytics.md)
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -282,9 +282,9 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 A Azure Monitor a szervezet megfelelőségi előírásai szerint állítsa be a Azure Logic Apps példányokhoz társított naplók naplójának megőrzési időtartamát.
 
-* [A futtatási állapot figyelése, az aktiválási előzmények áttekintése és a Azure Logic Apps riasztások beállítása](https://docs.microsoft.com/azure/logic-apps/monitor-logic-apps)
+* [A futtatási állapot figyelése, az aktiválási előzmények áttekintése és a Azure Logic Apps riasztások beállítása](./monitor-logic-apps.md)
 
-* [Napló-megőrzési paraméterek beállítása](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+* [Napló-megőrzési paraméterek beállítása](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center figyelés**: N/A
 
@@ -298,13 +298,13 @@ Engedélyezheti az Azure műveletnapló diagnosztikai beállításait is, és el
 
 Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel vagy egy harmadik féltől származó SIEM-et.
 
-* [Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/monitor-logic-apps-log-analytics)
+* [Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Apps](./monitor-logic-apps-log-analytics.md)
 
-* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy)
+* [Diagnosztikai beállítások engedélyezése az Azure-beli tevékenység naplójában](../azure-monitor/platform/activity-log.md)
 
-* [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analyticsban Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-collect)
+* [Azure-Tevékenységnaplók összegyűjtése és elemzése Log Analyticsban Azure Monitor](../azure-monitor/platform/activity-log.md)
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -316,11 +316,11 @@ Alternatív megoldásként engedélyezheti és elvégezheti az Azure Sentinel va
 
 Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfeldolgozást az Azure Sentinel szolgáltatásban.
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-* [Riasztások kezelése Azure Security Centerban](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Riasztások kezelése Azure Security Centerban](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Riasztás a log Analytics-naplófájlok adatkezeléséről](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Riasztás a log Analytics-naplófájlok adatkezeléséről](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -352,7 +352,7 @@ Alternatív megoldásként engedélyezheti és elvégezheti a fedélzeti adatfel
 
 ## <a name="identity-and-access-control"></a>Identitás- és hozzáférés-vezérlés
 
-*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*További információkért lásd: a [biztonság szabályozása: identitás-és hozzáférés-vezérlés](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: a felügyeleti fiókok leltárának karbantartása
 
@@ -362,13 +362,13 @@ A Azure Active Directory (Azure AD) által védett egyéb erőforrások egyszer�
 
 A logikai alkalmazás minden kérelem végpontja közös hozzáférési aláírással (SAS) rendelkezik a végpont URL-címében. Ha egy kérelem-alapú trigger végpontjának URL-címét megosztja más felekkel, létrehozhat olyan visszahívási URL-címeket, amelyek meghatározott kulcsokat használnak, és lejárati dátummal rendelkeznek. Így zökkenőmentesen válthat kulcsokat, vagy korlátozhatja a hozzáférést a logikai alkalmazás aktiválására egy adott TimeSpan alapján.
 
-* [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Címtárbeli szerepkör beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity)
+* [Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps](./create-managed-service-identity.md)
 
-* [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Címtárbeli szerepkör tagjainak beszerzése az Azure AD-ben a PowerShell-lel](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [A Azure Logic Apps hozzáférésének és adatvédelmének védelme SAS használatával](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-request-based-triggers)
+* [A Azure Logic Apps hozzáférésének és adatvédelmének védelme SAS használatával](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
 
 **Azure Security Center figyelés**: N/A
 
@@ -382,9 +382,9 @@ Ha alapszintű hitelesítést használ, meg kell adnia egy felhasználónevet é
 
 Ha kódot használ, ne tárolja a jelszavakat a kódban, Ehelyett használja a Azure Key Vault a hitelesítő adatok tárolására és lekérésére.
 
-* [Az Logic Apps-beli adatvédelme és-hozzáférés](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app)
+* [Az Logic Apps-beli adatvédelme és-hozzáférés](./logic-apps-securing-a-logic-app.md)
 
-* [Titkos kód beállítása és beolvasása Azure Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal)
+* [Titkos kód beállítása és beolvasása Azure Key Vault](../key-vault/secrets/quick-create-portal.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -399,9 +399,9 @@ Emellett a dedikált rendszergazdai fiókok nyomon követésének elősegítése
 - A tulajdonosi engedélyekkel rendelkező elavult fiókokat el kell távolítani az előfizetésből
 - A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 
-* [Az identitás és a hozzáférés figyelésének Azure Security Center használata (előzetes verzió)](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Az identitás és a hozzáférés figyelésének Azure Security Center használata (előzetes verzió)](../security-center/security-center-identity-access.md)
 
-* [A Azure Policy használata](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [A Azure Policy használata](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -415,13 +415,13 @@ Számos összekötő azt is megköveteli, hogy először létre kell hoznia egy 
 
 Azure Active Directory (Azure AD) OAuth használó összekötők esetén a kapcsolat létrehozása a szolgáltatásba való bejelentkezést jelenti, például az Office 365, a Salesforce vagy a GitHub szolgáltatást, ahol a hozzáférési token titkosított, és biztonságosan tárolható egy Azure titkos tárolóban. Más összekötők, például az FTP és az SQL esetében olyan kapcsolatra van szükség, amely konfigurációs adatokat tartalmaz, például a kiszolgáló címe, a Felhasználónév és a jelszó. Ezeket a kapcsolati konfigurációs adatokat is titkosítja és biztonságosan tárolja.
 
-* [Az Azure REST API-k meghívása](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
+* [Az Azure REST API-k meghívása](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-* [Az ügyfélalkalmazás (egyszerű szolgáltatásnév) regisztrálása az Azure AD-vel](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+* [Az ügyfélalkalmazás (egyszerű szolgáltatásnév) regisztrálása az Azure AD-vel](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-* [Munkafolyamat-eseményindítók API-adatai](https://docs.microsoft.com/rest/api/logic/workflowtriggers)
+* [Munkafolyamat-eseményindítók API-adatai](/rest/api/logic/workflowtriggers)
 
-* [Az összekötő konfigurációjának ismertetése](https://docs.microsoft.com/azure/connectors/apis-list])
+* [Az összekötő konfigurációjának ismertetése](../connectors/apis-list.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -431,9 +431,9 @@ Azure Active Directory (Azure AD) OAuth használó összekötők esetén a kapcs
 
 **Útmutató**: a Azure Active Directory (AD) multi-Factor Authentication (MFA) engedélyezése és a Azure Security Center identitás-és hozzáférés-kezelési javaslatainak követése.
 
-* [Az MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Identitás és hozzáférés figyelése Azure Security Centeron belül](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Identitás és hozzáférés figyelése Azure Security Centeron belül](../security-center/security-center-identity-access.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -443,9 +443,9 @@ Azure Active Directory (Azure AD) OAuth használó összekötők esetén a kapcs
 
 **Útmutató**: az Azure-erőforrások bevezetésére és konfigurálására konfigurált, multi-Factor Authentication (MFA) rendszerjogosultságú hozzáférési munkaállomások használata.
 
-* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [További tudnivalók a privilegizált hozzáférésű munkaállomásokról](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Az MFA engedélyezése az Azure-ban](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Az MFA engedélyezése az Azure-ban](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -457,9 +457,9 @@ Azure Active Directory (Azure AD) OAuth használó összekötők esetén a kapcs
 
 Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos felhasználói viselkedéssel kapcsolatos riasztások és jelentések megtekintéséhez.
 
-* [Privileged Identity Management (PIM) üzembe helyezése](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management (PIM) üzembe helyezése](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Az Azure AD kockázati észlelések ismertetése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Az Azure AD kockázati észlelések ismertetése](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -471,9 +471,9 @@ Emellett az Azure AD kockázati észleléseit is használhatja a kockázatos fel
 
 Emellett a logikai alkalmazás minden kérelem végpontja közös hozzáférési aláírással (SAS) rendelkezik a végpont URL-címében. Korlátozhatja, hogy a logikai alkalmazás csak bizonyos IP-címekről fogadjon kérelmeket.
 
-* [Elnevezett helyszínek konfigurálása az Azure-ban](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Elnevezett helyszínek konfigurálása az Azure-ban](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-* [Megtudhatja, hogyan korlátozhatja a bejövő IP-címeket Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#restrict-inbound-ip-addresses)
+* [Megtudhatja, hogyan korlátozhatja a bejövő IP-címeket Logic Apps](./logic-apps-securing-a-logic-app.md#restrict-inbound-ip-addresses)
 
 **Azure Security Center figyelés**: N/A
 
@@ -491,9 +491,9 @@ Azure Logic Apps a rendszer által hozzárendelt és felhasználó által hozzá
 - Azure API Management
 - Azure App Services
 
-* [Azure AD-példány létrehozása és konfigurálása](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [Azure AD-példány létrehozása és konfigurálása](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-* [Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity)
+* [Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps](./create-managed-service-identity.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -503,9 +503,9 @@ Azure Logic Apps a rendszer által hozzárendelt és felhasználó által hozzá
 
 **Útmutató**: a Azure Active Directory (ad) olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
-* [Az Azure AD jelentéskészítés ismertetése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+* [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
-* [Az Azure Identity hozzáférési felülvizsgálatok használata](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -519,9 +519,9 @@ Hozzáférése van az Azure AD bejelentkezési tevékenységeihez, a naplózási
 
 Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz létre az Azure AD felhasználói fiókjaihoz, és elküldi a naplókat és a bejelentkezési naplókat egy Log Analytics munkaterületre. Log Analytics belül is konfigurálhatja a kívánt naplózási riasztásokat.
 
-* [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-* [A fedélzeti Azure Sentinel ismertetése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [A fedélzeti Azure Sentinel ismertetése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -531,11 +531,11 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: az Azure ad kockázatkezelési és identitás-védelmi funkcióival konfigurálhatja a felhasználói identitásokkal kapcsolatos gyanús műveletekre vonatkozó automatizált válaszokat. További vizsgálat céljából az Azure Sentinelbe is betöltheti az adatmennyiséget.
 
-* [Az Azure AD kockázatos bejelentkezések megtekintése](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Az Azure AD kockázatos bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Az Azure Sentinel előkészítése](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -545,7 +545,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 **Útmutató**: jelenleg nem érhető el; Azure Logic Apps esetében Ügyfélszéf még nem támogatott.
 
-* [Ügyfélszéf által támogatott szolgáltatások listája](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [Ügyfélszéf által támogatott szolgáltatások listája](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center figyelés**: N/A
 
@@ -553,13 +553,13 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 ## <a name="data-protection"></a>Adatvédelem
 
-*További információkért lásd [: biztonsági ellenőrzés:](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)adatvédelem.*
+*További információkért lásd [: biztonsági ellenőrzés:](../security/benchmarks/security-control-data-protection.md)adatvédelem.*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: bizalmas információk leltárának fenntartása
 
 **Útmutató**: a címkék használatával segítheti a bizalmas adatokat tároló vagy feldolgozó Azure-erőforrások nyomon követését.
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -575,15 +575,15 @@ Az ISE létrehozásakor dönthet úgy, hogy belső vagy külső hozzáférési v
 
 Emellett különálló előfizetések és felügyeleti csoportok használatával különítse el az elkülönítést az egyes biztonsági tartományokhoz, például a környezeti típusokhoz és az adatérzékeny szintekhez. Korlátozhatja az alkalmazásaihoz és a vállalati környezetekhez igénybe veheti az Azure-erőforrásokhoz való hozzáférés szintjét. Az Azure-erőforrásokhoz való hozzáférést az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével szabályozhatja.
 
-* [Logic Apps-összekötők ismertetése](https://docs.microsoft.com/azure/connectors/apis-list)
+* [Logic Apps-összekötők ismertetése](../connectors/apis-list.md)
 
-* [Hozzáférés az Azure Virtual Network-erőforrásokhoz a Azure Logic Apps integrációs szolgáltatási környezetek (ISEs) használatával](https://docs.microsoft.com/azure/logic-apps/connect-virtual-network-vnet-isolated-environment-overview)
+* [Hozzáférés az Azure Virtual Network-erőforrásokhoz a Azure Logic Apps integrációs szolgáltatási környezetek (ISEs) használatával](./connect-virtual-network-vnet-isolated-environment-overview.md)
 
-* [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Management Groups létrehozása](../governance/management-groups/create.md)
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -597,7 +597,7 @@ Egy külső gyártótól származó megoldást használhat fel az Azure Marketpl
 
 A Microsoft kezeli a Azure Logic Apps alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-* [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -611,17 +611,17 @@ A kérelem-trigger csak Transport Layer Security (TLS) 1,2-t támogat a bejövő
 
 Kövesse Azure Security Center a inaktív adatok titkosítására és az átvitel közbeni titkosításra vonatkozó ajánlásokat, ahol lehetséges.
 
-* [Biztonságos hozzáférés és az adatAzure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app)
+* [Biztonságos hozzáférés és az adatAzure Logic Apps](./logic-apps-securing-a-logic-app.md)
 
-* [Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps](https://docs.microsoft.com/azure/connectors/connectors-native-reqres#tls-support)
+* [Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps](../connectors/connectors-native-reqres.md#tls-support)
 
-* [Szolgáltatásvégpontok HTTP-n vagy HTTPS-en keresztül történő meghívása az Azure Logic Appsből](https://docs.microsoft.com/azure/connectors/connectors-native-http#tls-support)
+* [Szolgáltatásvégpontok HTTP-n vagy HTTPS-en keresztül történő meghívása az Azure Logic Appsből](../connectors/connectors-native-http.md#tls-support)
 
-* [A titkosítás ismertetése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [A titkosítás ismertetése az Azure-ban](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Az adatok titkosításának megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [Az adatok titkosításának megismerése az Azure-ban](../security/fundamentals/encryption-atrest.md)
 
-* [Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához](./customer-managed-keys-integration-service-environment.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -633,9 +633,9 @@ Kövesse Azure Security Center a inaktív adatok titkosítására és az átvite
 
 A Microsoft kezeli a Azure Logic Apps alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-* [Biztonságos hozzáférés a futtatási előzményekhez](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-run-history-data)
+* [Biztonságos hozzáférés a futtatási előzményekhez](./logic-apps-securing-a-logic-app.md#access-to-run-history-data)
 
-* [Az ügyfelek adatvédelmének megismerése az Azure-ban](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Az ügyfelek adatvédelmének megismerése az Azure-ban](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -649,7 +649,7 @@ A Microsoft kezeli a Azure Logic Apps alapjául szolgáló infrastruktúrát, é
 
 Annak megakadályozása érdekében, hogy mások módosíthassák vagy töröljék a logikai alkalmazást, használhatja az Azure erőforrás-zárolást. Ez a funkció megakadályozza, hogy mások módosíthassák vagy töröljék a termelési erőforrásokat.
 
-* [Biztonságos hozzáférés Azure Logic Apps műveletekhez](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-logic-app-operations)
+* [Biztonságos hozzáférés Azure Logic Apps műveletekhez](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Security Center figyelés**: N/A
 
@@ -659,7 +659,7 @@ Annak megakadályozása érdekében, hogy mások módosíthassák vagy törölj�
 
 **Útmutató**: nem alkalmazható; Ez a javaslat számítási erőforrások számára készült. A Microsoft kezeli a Azure Logic Apps alapjául szolgáló infrastruktúrát, és szigorú ellenőrzéseket vezetett be az ügyféladatok elvesztésének vagy kihatásának megelőzésére.
 
-* [Azure Customer-adatvédelem](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure Customer-adatvédelem](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -671,7 +671,7 @@ Annak megakadályozása érdekében, hogy mások módosíthassák vagy törölj�
 
 Ha integrációs szolgáltatási környezetet (ISE) hoz létre a logikai alkalmazások üzemeltetéséhez, és az Azure Storage által használt titkosítási kulcsok hatékonyabb vezérlését szeretné végezni, akkor a Azure Key Vault használatával beállíthatja, használhatja és kezelheti a saját kulcsát. Ezt a képességet "Bring Your Own Key" (BYOK) néven is nevezik, és a kulcs neve "ügyfél által felügyelt kulcs".
 
-* [Inaktív adatok titkosítása az integrációs szolgáltatási környezetekben Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Inaktív adatok titkosítása az integrációs szolgáltatási környezetekben Azure Logic Apps](./customer-managed-keys-integration-service-environment.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -681,7 +681,7 @@ Ha integrációs szolgáltatási környezetet (ISE) hoz létre a logikai alkalma
 
 **Útmutató**: a Azure monitor és az Azure-tevékenység naplójának használata riasztások létrehozásához, ha a módosítások Azure Logic apps, valamint más kritikus vagy kapcsolódó erőforrások esetében is megtörténik.
 
-* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Riasztások létrehozása az Azure-tevékenységek naplózási eseményeihez](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -689,7 +689,7 @@ Ha integrációs szolgáltatási környezetet (ISE) hoz létre a logikai alkalma
 
 ## <a name="vulnerability-management"></a>Biztonságirés-kezelés
 
-*További információ [: Security Control: sebezhetőségi kezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*További információ [: Security Control: sebezhetőségi kezelés](../security/benchmarks/security-control-vulnerability-management.md).*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: automatikus biztonsági rések vizsgálatára szolgáló eszközök futtatása
 
@@ -733,7 +733,7 @@ Ha integrációs szolgáltatási környezetet (ISE) hoz létre a logikai alkalma
 
 ## <a name="inventory-and-asset-management"></a>Leltár- és eszközfelügyelet
 
-*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*További információkért lásd [: biztonsági vezérlés: leltár és eszközkezelés](../security/benchmarks/security-control-inventory-asset-management.md).*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6,1: automatikus eszköz-felderítési megoldás használata
 
@@ -741,11 +741,11 @@ Ha integrációs szolgáltatási környezetet (ISE) hoz létre a logikai alkalma
 
 Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keresztül lehetséges, erősen ajánlott a Azure Resource Manager erőforrások létrehozása és használata.
 
-* [Lekérdezések létrehozása az Azure Resource Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
-* [Azure-előfizetések megtekintése](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure-előfizetések megtekintése](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Az Azure RBAC ismertetése](../role-based-access-control/overview.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -755,7 +755,7 @@ Bár a klasszikus Azure-erőforrások felderítése az erőforrás-gráfon keres
 
 **Útmutató**: címkéket alkalmazhat az Azure-erőforrásokra, így a metaadatok logikailag rendszerezve lesznek a besorolásban.
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -769,11 +769,11 @@ Emellett a Azure Policy használatával korlátozásokat állíthat be az ügyf�
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
-* [További Azure-előfizetések létrehozása](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-* [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Management Groups létrehozása](../governance/management-groups/create.md)
 
-* [Címkék létrehozása és használata](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -785,11 +785,11 @@ Emellett a Azure Policy használatával korlátozásokat állíthat be az ügyf�
 
 Megjegyzés: a Google adatai és adatvédelmi szabályzatai miatt a Gmail-összekötő csak a Google által jóváhagyott szolgáltatásokkal használható. Ez a helyzet folyamatosan fejlődik, és a jövőben más Google-összekötőket is érinthet.
 
-* [Az összes Logic Apps összekötő listája](https://docs.microsoft.com/connectors/connector-reference/connector-reference-logicapps-connectors)
+* [Az összes Logic Apps összekötő listája](/connectors/connector-reference/connector-reference-logicapps-connectors)
 
-* [A Gmail-összekötők problémáinak és korlátainak megismerése](https://docs.microsoft.com/connectors/gmail/#known-issues-and-limitations)
+* [A Gmail-összekötők problémáinak és korlátainak megismerése](/connectors/gmail/#known-issues-and-limitations)
 
-* [További információ a Google adatvédelmi szabályzatáról](https://docs.microsoft.com/azure/connectors/connectors-google-data-security-privacy-policy)
+* [További információ a Google adatvédelmi szabályzatáról](../connectors/connectors-google-data-security-privacy-policy.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -801,9 +801,9 @@ Megjegyzés: a Google adatai és adatvédelmi szabályzatai miatt a Gmail-össze
 
 Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az előfizetése (ke) n belüli erőforrásait. Győződjön meg arról, hogy a környezetben lévő összes Azure-erőforrás jóvá van hagyva.
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Lekérdezések létrehozása az Azure Resource Graph használatával](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Lekérdezések létrehozása az Azure Resource Graph használatával](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -839,9 +839,9 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 - Nem engedélyezett erőforrástípusok
 - Engedélyezett erőforrástípusok
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Adott erőforrástípus megtagadása a következővel Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Adott erőforrástípus megtagadása a következővel Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
 
 **Azure Security Center figyelés**: N/A
 
@@ -859,7 +859,7 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 **Útmutató**: az Azure feltételes hozzáférésének konfigurálása a felhasználók "Microsoft Azure felügyelet" alkalmazáshoz való hozzáférésének tiltása a Azure Resource Manager való interakcióra.
 
-* [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [A feltételes hozzáférés konfigurálása a Azure Resource Managerhoz való hozzáférés blokkolásához](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -879,13 +879,13 @@ Az Azure Resource Graph segítségével lekérdezheti vagy felderítheti az elő
 
 Az üzleti műveletekhez szükséges Logic Apps azonban nagyobb kockázatot jelenthetnek a szervezet számára, ha lehetséges, külön erőforrás-csoportok és RBAC-határok használatával kell elkülöníteni.
 
-* [Virtuális hálózat létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Virtuális hálózat létrehozása](../virtual-network/quick-create-portal.md)
 
-* [NSG létrehozása biztonsági konfigurációval](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [NSG létrehozása biztonsági konfigurációval](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Management Groups létrehozása](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [Management Groups létrehozása](../governance/management-groups/create.md)
 
-* [Logic Apps-hozzáférés biztonságossá tétele a RBAC-on keresztül](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-logic-app-operations)
+* [Logic Apps-hozzáférés biztonságossá tétele a RBAC-on keresztül](./logic-apps-securing-a-logic-app.md#access-to-logic-app-operations)
 
 **Azure Security Center figyelés**: N/A
 
@@ -893,7 +893,7 @@ Az üzleti műveletekhez szükséges Logic Apps azonban nagyobb kockázatot jele
 
 ## <a name="secure-configuration"></a>Biztonságos konfiguráció
 
-*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*További információkért lásd [: biztonság-vezérlés: biztonságos konfiguráció](../security/benchmarks/security-control-secure-configuration.md).*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: biztonságos konfigurációk létrehozása az összes Azure-erőforráshoz
 
@@ -903,19 +903,19 @@ Emellett a Azure Resource Manager képes a sablon exportálására JavaScript Ob
 
 Emellett biztonságos paramétereket is használhat a bizalmas adatok és a titkos kulcsok védelméhez.
 
-* [Az elérhető Azure Policy aliasok megtekintése](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Az elérhető Azure Policy aliasok megtekintése](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Összekötők által létrehozott kapcsolatok blokkolása Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/block-connections-connectors)
+* [Összekötők által létrehozott kapcsolatok blokkolása Azure Logic Apps](./block-connections-connectors.md)
 
-* [Egy-és többerőforrásos exportálás Azure Portal sablonba](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése](https://docs.microsoft.com/azure/logic-apps/logic-apps-deploy-azure-resource-manager-templates)
+* [Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése](./logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [A biztonságos művelet paramétereinek ismertetése](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-action-parameters)
+* [A biztonságos művelet paramétereinek ismertetése](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
-* [Paraméterekkel kapcsolatos biztonsági javaslatok](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#security-recommendations-for-parameters)
+* [Paraméterekkel kapcsolatos biztonsági javaslatok](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
 **Azure Security Center figyelés**: N/A
 
@@ -939,21 +939,21 @@ Emellett a Azure Resource Manager képes a sablon exportálására JavaScript Ob
 
 Továbbá ügyeljen arra, hogy a futtatási előzményekben lévő adatvédelmet a elhomályosítás használatával biztosítsa.
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy effektusok ismertetése](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy effektusok ismertetése](../governance/policy/concepts/effects.md)
 
-* [Összekötők által létrehozott kapcsolatok blokkolása Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/block-connections-connectors)
+* [Összekötők által létrehozott kapcsolatok blokkolása Azure Logic Apps](./block-connections-connectors.md)
 
-* [Egy-és többerőforrásos exportálás Azure Portal sablonba](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
-* [Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése](https://docs.microsoft.com/azure/logic-apps/logic-apps-deploy-azure-resource-manager-templates)
+* [Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése](./logic-apps-deploy-azure-resource-manager-templates.md)
 
-* [Biztonságos hozzáférés a futtatási előzményekhez bemenetekhez és kimenetekhez](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#obfuscate)
+* [Biztonságos hozzáférés a futtatási előzményekhez bemenetekhez és kimenetekhez](./logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [Biztonságos hozzáférés a paraméterek bemenetéhez](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-action-parameters)
+* [Biztonságos hozzáférés a paraméterek bemenetéhez](./logic-apps-securing-a-logic-app.md#secure-action-parameters)
 
-* [Paraméterekkel kapcsolatos biztonsági javaslatok](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#security-recommendations-for-parameters)
+* [Paraméterekkel kapcsolatos biztonsági javaslatok](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
 **Azure Security Center figyelés**: N/A
 
@@ -973,11 +973,11 @@ Továbbá ügyeljen arra, hogy a futtatási előzményekben lévő adatvédelmet
 
 Emellett a Azure Resource Manager képes a sablon exportálására JavaScript Object Notation (JSON), amelyet át kell tekinteni annak biztosításához, hogy a konfigurációk megfelelnek vagy meghaladják a szervezete biztonsági követelményeit.
 
-* [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Kód tárolása az Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Az Azure Repos dokumentációja](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Az Azure Repos dokumentációja](/azure/devops/repos/index?view=azure-devops)
 
-* [Egy-és többerőforrásos exportálás Azure Portal sablonba](https://docs.microsoft.com/azure/azure-resource-manager/templates/export-template-portal)
+* [Egy-és többerőforrásos exportálás Azure Portal sablonba](../azure-resource-manager/templates/export-template-portal.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -995,7 +995,7 @@ Emellett a Azure Resource Manager képes a sablon exportálására JavaScript Ob
 
 **Útmutató**: beépített Azure Policy definíciók és Azure Policy aliasok használata a "Microsoft. Logic" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszerkonfigurációk kényszerítéséhez. Az Azure Policy Aliasok használatával egyéni szabályzatokat hozhat létre az Azure-erőforrások hálózati konfigurációjának naplózásához vagy érvénybe léptetéséhez. Emellett dolgozzon ki egy folyamatot és egy folyamatot a házirend-kivételek kezeléséhez.
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1013,7 +1013,7 @@ Emellett a Azure Resource Manager képes a sablon exportálására JavaScript Ob
 
 **Útmutató**: beépített Azure Policy definíciók és Azure Policy aliasok használata a "Microsoft. Logic" névtérben egyéni szabályzatok létrehozásához a riasztáshoz, a naplózáshoz és a rendszerkonfigurációk kényszerítéséhez. Az Azure-erőforrások konfigurációinak automatikus érvényesítéséhez használja a Azure Policy [audit], [megtagadás] és [üzembe helyezés, ha nem létezik] lehetőséget.
 
-* [Azure Policy konfigurálása és kezelése](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1033,15 +1033,15 @@ Emellett a Azure Resource Manager képes a sablon exportálására JavaScript Ob
 
 Ha integrációs szolgáltatási környezetet (ISE) hoz létre a logikai alkalmazások üzemeltetéséhez, és az Azure Storage által használt titkosítási kulcsok hatékonyabb vezérlését szeretné végezni, akkor a Azure Key Vault használatával beállíthatja, használhatja és kezelheti a saját kulcsát. Ezt a képességet "Bring Your Own Key" (BYOK) néven is nevezik, és a kulcs neve "ügyfél által felügyelt kulcs".
 
-* [Biztonságos bemenetek és kimenetek a futtatási előzményekben Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#obfuscate)
+* [Biztonságos bemenetek és kimenetek a futtatási előzményekben Azure Logic Apps](./logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [Paraméterekkel kapcsolatos biztonsági javaslatok](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#security-recommendations-for-parameters)
+* [Paraméterekkel kapcsolatos biztonsági javaslatok](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Biztonságos hozzáférés a paraméterek bemenetéhez Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-parameter-inputs)
+* [Biztonságos hozzáférés a paraméterek bemenetéhez Azure Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
-* [Biztonságos paraméterek értékének továbbítása az üzembe helyezés során Azure Key Vault](https://docs.microsoft.com/azure/azure-resource-manager/templates/key-vault-parameter)
+* [Biztonságos paraméterek értékének továbbítása az üzembe helyezés során Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
-* [Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához](./customer-managed-keys-integration-service-environment.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1057,7 +1057,7 @@ Jelenleg csak az adott beépített eseményindítók és műveletek támogatják
 - Azure API Management
 - Azure App Services
 
-* [Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/create-managed-service-identity)
+* [Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps](./create-managed-service-identity.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1069,13 +1069,13 @@ Jelenleg csak az adott beépített eseményindítók és műveletek támogatják
 
 A hitelesítő adatoknak a kódban való azonosítására is lehetőség van a hitelesítőadat-olvasó bevezetésére. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze.
 
-* [Biztonságos bemenetek és kimenetek a futtatási előzményekben Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#obfuscate)
+* [Biztonságos bemenetek és kimenetek a futtatási előzményekben Azure Logic Apps](./logic-apps-securing-a-logic-app.md#obfuscate)
 
-* [Paraméterekkel kapcsolatos biztonsági javaslatok](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#security-recommendations-for-parameters)
+* [Paraméterekkel kapcsolatos biztonsági javaslatok](../azure-resource-manager/templates/template-best-practices.md#security-recommendations-for-parameters)
 
-* [Biztonságos hozzáférés a paraméterek bemenetéhez Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-parameter-inputs)
+* [Biztonságos hozzáférés a paraméterek bemenetéhez Azure Logic Apps](./logic-apps-securing-a-logic-app.md#access-to-parameter-inputs)
 
-* [Biztonságos paraméterek értékének továbbítása az üzembe helyezés során Azure Key Vault](https://docs.microsoft.com/azure/azure-resource-manager/templates/key-vault-parameter)
+* [Biztonságos paraméterek értékének továbbítása az üzembe helyezés során Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * [A hitelesítő adatok beolvasójának beállítása](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -1085,7 +1085,7 @@ A hitelesítő adatoknak a kódban való azonosítására is lehetőség van a h
 
 ## <a name="malware-defense"></a>Kártevők elleni védelem
 
-*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*További információkért lásd [: biztonsági ellenőrzés: kártevők elleni védelem](../security/benchmarks/security-control-malware-defense.md).*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: központilag felügyelt kártevő szoftverek használata
 
@@ -1103,9 +1103,9 @@ A nem számítási Azure-erőforrásokra feltöltött fájlok előzetes vizsgál
 
 A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure Security Center veszélyforrások észlelését az adatszolgáltatásokhoz.
 
-* [Ismerje meg a Microsoft kártevő szoftvereket az Azure Cloud Services és Virtual Machines](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
+* [Ismerje meg a Microsoft kártevő szoftvereket az Azure Cloud Services és Virtual Machines](../security/fundamentals/antimalware.md)
 
-* [Az adatszolgáltatások fenyegetés-észlelésének megismerése Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-data-services)
+* [Az adatszolgáltatások fenyegetés-észlelésének megismerése Azure Security Center](../security-center/threat-protection.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1121,7 +1121,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 ## <a name="data-recovery"></a>Adat-helyreállítás
 
-*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*További információkért lásd [: biztonsági ellenőrzés: adat-helyreállítás](../security/benchmarks/security-control-data-recovery.md).*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9,1: rendszeres automatizált biztonsági másolatok biztosítása
 
@@ -1131,9 +1131,9 @@ Ez a vész-helyreállítási stratégia arra összpontosít, hogy egy másik hel
 
 Emellett ki kell bővíteni a logikai alkalmazás mögöttes munkafolyamat-definícióját egy Azure Resource Manager sablonban. Ez a sablon határozza meg az infrastruktúrát, az erőforrásokat, a paramétereket és az egyéb információkat a logikai alkalmazás üzembe helyezéséhez és telepítéséhez.
 
-* [További információ az üzletmenet folytonosságáról és a Azure Logic Apps vész-helyreállításról](https://docs.microsoft.com/azure/logic-apps/business-continuity-disaster-recovery-guidance)
+* [További információ az üzletmenet folytonosságáról és a Azure Logic Apps vész-helyreállításról](./business-continuity-disaster-recovery-guidance.md)
 
-* [A Azure Logic Apps üzembe helyezésének automatizálása Azure Resource Manager sablonok használatával](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
+* [A Azure Logic Apps üzembe helyezésének automatizálása Azure Resource Manager sablonok használatával](./logic-apps-azure-resource-manager-templates-overview.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1149,13 +1149,13 @@ Emellett ki kell bővíteni a logikai alkalmazás mögöttes munkafolyamat-defin
 
 A logikai alkalmazás minden kérelem végpontja közös hozzáférési aláírással (SAS) rendelkezik a végpont URL-címében. Ha Azure Key Vaultt használ a titkok tárolására, gondoskodjon arról, hogy a kulcsok és URL-címek rendszeres automatikus biztonsági mentést készítsenek.
 
-* [További információ az üzletmenet folytonosságáról és a Azure Logic Apps vész-helyreállításról](https://docs.microsoft.com/azure/logic-apps/business-continuity-disaster-recovery-guidance)
+* [További információ az üzletmenet folytonosságáról és a Azure Logic Apps vész-helyreállításról](./business-continuity-disaster-recovery-guidance.md)
 
-* [A Azure Logic Apps üzembe helyezésének automatizálása Azure Resource Manager sablonok használatával](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
+* [A Azure Logic Apps üzembe helyezésének automatizálása Azure Resource Manager sablonok használatával](./logic-apps-azure-resource-manager-templates-overview.md)
 
-* [A Azure Logic Apps hozzáférésének és adatvédelmének védelme SAS használatával](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#access-to-request-based-triggers)
+* [A Azure Logic Apps hozzáférésének és adatvédelmének védelme SAS használatával](./logic-apps-securing-a-logic-app.md#access-to-request-based-triggers)
 
-* [Key Vault kulcsok biztonsági mentése](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
+* [Key Vault kulcsok biztonsági mentése](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1167,11 +1167,11 @@ A logikai alkalmazás minden kérelem végpontja közös hozzáférési aláír�
 
 Tesztelje az ügyfél által felügyelt kulcsok biztonsági mentésének visszaállítását. Vegye figyelembe, hogy ez csak az Integration Service Environment (ISE) környezetben futó Logic Appsekre vonatkozik.
 
-* [További információ az üzletmenet folytonosságáról és a Azure Logic Apps vész-helyreállításról](https://docs.microsoft.com/azure/logic-apps/business-continuity-disaster-recovery-guidance)
+* [További információ az üzletmenet folytonosságáról és a Azure Logic Apps vész-helyreállításról](./business-continuity-disaster-recovery-guidance.md)
 
-* [Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához](./customer-managed-keys-integration-service-environment.md)
 
-* [Key Vault-kulcsok visszaállítása az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Key Vault-kulcsok visszaállítása az Azure-ban](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1185,11 +1185,11 @@ Az ügyfél által felügyelt kulcsok biztonsági mentésének biztosítása. Ve
 
 A kulcsok véletlen vagy rosszindulatú Törlés elleni védelme érdekében engedélyezze a Key Vault a védelem törlését és kiürítését.
 
-* [További információ az üzletmenet folytonosságáról és a Azure Logic Apps vész-helyreállításról](https://docs.microsoft.com/azure/logic-apps/business-continuity-disaster-recovery-guidance)
+* [További információ az üzletmenet folytonosságáról és a Azure Logic Apps vész-helyreállításról](./business-continuity-disaster-recovery-guidance.md)
 
-* [Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához](https://docs.microsoft.com/azure/logic-apps/customer-managed-keys-integration-service-environment)
+* [Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához](./customer-managed-keys-integration-service-environment.md)
 
-* [A helyreállítható törlés és a védelem engedélyezése a Key Vaultban](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [A helyreállítható törlés és a védelem engedélyezése a Key Vaultban](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1197,7 +1197,7 @@ A kulcsok véletlen vagy rosszindulatú Törlés elleni védelme érdekében eng
 
 ## <a name="incident-response"></a>Incidensmegoldás
 
-*További információ [: Security Control: incidens válasza](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*További információ [: Security Control: incidens válasza](../security/benchmarks/security-control-incident-response.md).*
 
 ### <a name="101-create-an-incident-response-guide"></a>10,1: incidens-válaszi útmutató létrehozása
 
@@ -1219,9 +1219,9 @@ A kulcsok véletlen vagy rosszindulatú Törlés elleni védelme érdekében eng
 
 Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezetben, nem gyártva) címkék használatával és elnevezési rendszer létrehozása az Azure-erőforrások egyértelmű azonosításához és kategorizálásához, különösen a bizalmas adatok feldolgozásához. Az Ön felelőssége, hogy rangsorolja a riasztások szervizelését az Azure-erőforrások és-környezet kritikus jellemzői alapján, ahol az incidens történt.
 
-* [Biztonsági riasztások az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-* [Címkék használata az Azure-erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék használata az erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1241,7 +1241,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a Microsoft a biztonsági incidensek elérhetőségi adatait arra használja fel, hogy felvegye Önnel a kapcsolatot, ha a Microsoft Security Response Center (MSRC) felfedi, hogy az adatokat egy törvénytelen vagy jogosulatlan fél is hozzáférte. A problémák megoldása érdekében tekintse át az incidenseket a tény után.
 
-* [A Azure Security Center biztonsági kapcsolattartó beállítása](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [A Azure Security Center biztonsági kapcsolattartó beállítása](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1251,9 +1251,9 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: az Azure Security Center-riasztások és javaslatok exportálása a folyamatos exportálás funkcióval az Azure-erőforrásokkal kapcsolatos kockázatok azonosítása érdekében. A folyamatos exportálás lehetővé teszi a riasztások és javaslatok manuális és folyamatos exportálását. Az Azure Security Center adatösszekötővel továbbíthatja a riasztásokat az Azure Sentinel szolgáltatásba.
 
-* [Folyamatos exportálás konfigurálása](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [Folyamatos exportálás konfigurálása](../security-center/continuous-export.md)
 
-* [Riasztások továbbítása az Azure Sentinelbe](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Riasztások továbbítása az Azure Sentinelbe](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1263,7 +1263,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Útmutató**: a Azure Security Center munkafolyamat-automatizálási funkciója segítségével automatikusan elindíthatja a válaszokat az "Logic apps" használatával a biztonsági riasztások és az Azure-erőforrások védelme érdekében javasolt javaslatok alapján.
 
-* [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [A Munkafolyamat-automatizálás és a Logic Apps konfigurálása](../security-center/workflow-automation.md)
 
 **Azure Security Center figyelés**: N/A
 
@@ -1271,7 +1271,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Behatolási tesztek és Red Team-gyakorlatok
 
-*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*További információkért lásd [: biztonsági ellenőrzés: behatolási tesztek és Red Team-gyakorlatok](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md).*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: az Azure-erőforrások rendszeres behatolásának tesztelése, valamint az összes kritikus biztonsági vizsgálat szervizelésének biztosítása
 
@@ -1285,7 +1285,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
+- További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

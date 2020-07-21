@@ -7,11 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: 3e1583abd5cca4ea1f961353eb84a4b93a997e51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7055964f9515189450fac5c993f6acda946bfd4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836277"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524165"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Ismerkedés az Oracle Database-összekötővel
 
@@ -57,30 +58,30 @@ Ez a cikk bemutatja, hogyan használhatja a Oracle Database-összekötőt egy lo
 
 2. A logikai alkalmazás elején válassza a **kérelem/válasz-kérelem** triggert: 
 
-    ![](./media/connectors-create-api-oracledatabase/request-trigger.png)
+    ![Megjelenik egy párbeszédpanel, amelyen az összes eseményindító kereshető. Egyetlen trigger is megjelenik, a "kérés/válasz-kérelem", egy kijelölési gombbal.](./media/connectors-create-api-oracledatabase/request-trigger.png)
 
-3. Kattintson a **Mentés** gombra. Mentéskor a rendszer automatikusan létrehoz egy kérelem URL-címét. 
+3. Válassza a **Mentés** lehetőséget. Mentéskor a rendszer automatikusan létrehoz egy kérelem URL-címét. 
 
 4. Jelölje ki az **Új lépés**, majd a **Művelet hozzáadása** lehetőséget. Az elérhető műveletek megtekintéséhez írja be a következőt `oracle` : 
 
-    ![](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
+    ![A keresőmező "Oracle" kifejezést tartalmaz. A keresés egy "Oracle Database" címkével rendelkező találatot hoz létre. Van egy Többlapos oldal, egy lap, amely az "ESEMÉNYINDÍTÓk (0)", egy másik pedig a "műveletek (6)" mutatót jeleníti meg. Hat művelet szerepel a felsorolásban. Ezek közül az első a "sor beolvasása" előzetes verzió.](./media/connectors-create-api-oracledatabase/oracledb-actions.png)
 
     > [!TIP]
     > Ez a leggyorsabb módja annak, hogy megtekintse az összekötők számára elérhető eseményindítókat és műveleteket. Írja be az összekötő nevének egy részét, például: `oracle` . A tervező felsorolja az összes eseményindítót és műveletet. 
 
 5. Válassza ki az egyik műveletet, például **Oracle Database-beolvasás sort**. **A helyszíni adatátjárón keresztül válassza a kapcsolat**lehetőséget. Adja meg az Oracle-kiszolgáló nevét, a hitelesítési módszert, a felhasználónevet és a jelszót, majd válassza ki az átjárót:
 
-    ![](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
+    ![A párbeszédpanel "Oracle Database-sor beolvasása" címmel jelenik meg. A "kapcsolat helyszíni adatátjárón keresztül" feliratú jelölőnégyzet be van jelölve. Az alábbi öt másik szövegmező.](./media/connectors-create-api-oracledatabase/create-oracle-connection.png)
 
 6. Csatlakozás után válasszon ki egy táblázatot a listából, és írja be a sor AZONOSÍTÓját a táblába. Ismernie kell az azonosítót a táblához. Ha nem tudja, forduljon a Oracle DB rendszergazdájához, és kérje le a kimenetét `select * from yourTableName` . Ez megadja a folytatáshoz szükséges azonosításra alkalmas adatokat.
 
     A következő példában a rendszer a feladatok adatait egy emberi erőforrás-adatbázisból adja vissza: 
 
-    ![](./media/connectors-create-api-oracledatabase/table-rowid.png)
+    ![A "sor beolvasása (előzetes verzió)" nevű párbeszédpanel két szövegmezőt tartalmaz: "Table Name" (tábla neve), amely tartalmazza a "HRJOBS" karakterláncot, és tartalmaz egy legördülő listát, és a "sor azonosítója", amely tartalmazza a "SA_REP" nevet.](./media/connectors-create-api-oracledatabase/table-rowid.png)
 
-7. Ebben a következő lépésben használhatja a többi összekötőt a munkafolyamat felépítéséhez. Ha tesztelni szeretné az Oracle-ből származó adatok beolvasását, akkor küldjön Önnek egy e-mailt az Oracle-adatokkal az e-mail küldéses összekötők (például az Office 365 Outlook) használatával. Az Oracle-táblázat dinamikus jogkivonatait használva hozza létre a `Subject` és az `Body` e-mail-címét:
+7. Ebben a következő lépésben használhatja a többi összekötőt a munkafolyamat felépítéséhez. Ha szeretné tesztelni az Oracle-adatok beolvasását, akkor küldjön Önnek egy e-mailt az Oracle-adatokkal az e-mailek küldése, például az Office 365 Outlook használatával. Az Oracle-táblázat dinamikus jogkivonatait használva hozza létre a `Subject` és az `Body` e-mail-címét:
 
-    ![](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
+    ![Két párbeszédpanel van. Az "e-mail küldése Box" mező a "szövegtörzs", a "tárgy" és a "to" címet határozza meg az e-mailben. A dinamikus tartalom hozzáadása párbeszédpanel a folyamat alkalmazásaiból és szolgáltatásaiból származó dinamikus tartalmak keresését teszi lehetővé.](./media/connectors-create-api-oracledatabase/oracle-send-email.png)
 
 8. **Mentse** a logikai alkalmazást, majd válassza a **Futtatás**lehetőséget. Zárjuk be a tervezőt, és tekintse meg az állapot futtatási előzményeit. Ha nem sikerül, válassza a hibás üzenet sort. Megnyílik a tervező, és megmutatja, hogy melyik lépés nem sikerült, és a hiba adatait is megjeleníti. Ha ez sikeres, akkor e-mailt kell kapnia a hozzáadott információkkal.
 
@@ -89,11 +90,11 @@ Ez a cikk bemutatja, hogyan használhatja a Oracle Database-összekötőt egy lo
 
 * Figyelni szeretné a #oracle hashtaget, és egy adatbázisba helyezi a tweeteket, hogy lekérdezhető legyen, és más alkalmazásokban is használható legyen. Egy logikai alkalmazásban adja hozzá az `Twitter - When a new tweet is posted` triggert, és adja meg a **#oracle** hashtaget. Ezután adja hozzá a `Oracle Database - Insert row` műveletet, és válassza ki a táblát:
 
-    ![](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
+    ![Az "új Tweet közzétételekor" párbeszédpanel a "hashtag Oracle" kifejezést jeleníti meg keresési szövegként, és lehetővé teszi az ellenőrzési gyakoriság megadását. Ez a párbeszédpanel a "Oracle Database" párbeszédpanelt eredményezi, amely lehetővé teszi a művelet kiválasztását.](./media/connectors-create-api-oracledatabase/twitter-oracledb.png)
 
 * Az üzenetek küldése egy Service Bus várólistára történik. Ezeket az üzeneteket szeretné lekérni, és egy adatbázisba helyezi őket. A logikai alkalmazásban adja hozzá az `Service Bus - when a message is received in a queue` triggert, majd válassza ki a várólistát. Ezután adja hozzá a `Oracle Database - Insert row` műveletet, és válassza ki a táblát:
 
-    ![](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
+    ![A "Ha egy üzenet érkezik..." párbeszédpanel a "megrendelések" nevet jeleníti meg "várólista neve" néven, és lehetővé teszi az ellenőrzési gyakoriság megadását. Ez a mező a "sor beszúrása (előnézet)" párbeszédpanelt eredményezi, amely lehetővé teszi a "táblanév" kiválasztását.](./media/connectors-create-api-oracledatabase/sbqueue-oracledb.png)
 
 ## <a name="common-errors"></a>Gyakori hibák
 
@@ -126,5 +127,5 @@ A [Microsoft Q&egy kérdés oldal a Azure Logic apps](https://docs.microsoft.com
 Segítheti a Logic Apps és összekötők fejlesztését a szavazással és az ötletek elküldésével [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) . 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md), és fedezze fel az elérhető összekötőket Logic apps API-k [listájában](apis-list.md).

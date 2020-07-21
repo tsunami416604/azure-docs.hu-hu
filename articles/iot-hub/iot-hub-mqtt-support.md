@@ -10,11 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c3fa56daee5d2dba98fa9fd420524a9b7e4c60ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726111"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521122"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -50,7 +51,7 @@ Az alábbi táblázat az egyes támogatott nyelvekre mutató hivatkozásokat tar
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | Azure-IOT-Device-mqtt. Mqtt | Azure-IOT-Device-mqtt. MqttWs |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol. MQTT_WS |
-| [C#](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
+| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
 | [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). Mqtt | A TransportType. Mqtt visszaesik a MQTT-ra, ha a MQTT meghibásodik. Ha csak a webes szoftvercsatornák MQTT szeretné megadni, használja a TransportType. Mqtt_WebSocket_Only |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Alapértelmezés szerint a MQTT támogatja | Hozzáadás a `websockets=True` -ügyfél létrehozásához a hívásban |
 
@@ -75,11 +76,11 @@ Annak biztosítása érdekében, hogy az ügyfél/IoT Hub-kapcsolatok életben m
 
 |Nyelv  |Alapértelmezett életben tartási időköz  |Konfigurálható  |
 |---------|---------|---------|
-|Node.js     |   180 másodperc      |     No    |
-|Java     |    230 másodperc     |     No    |
-|C#     | 240 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
+|Node.js     |   180 másodperc      |     Nem    |
+|Java     |    230 másodperc     |     Nem    |
+|C     | 240 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (v2)   | 60 másodperc |  No   |
+|Python (v2)   | 60 másodperc |  Nem   |
 
 A következő [MQTT spec](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081), IoT hub Keep-Alive ping intervalluma 1,5 alkalommal az ügyfél életben tartási értéke. A IoT Hub azonban korlátozza a kiszolgálóoldali időtúllépési korlátot 29,45 percre (1767 másodpercre), mert az összes Azure-szolgáltatás az Azure Load Balancer TCP üresjárati időkorlátjának (29,45 perc) van kötve. 
 
@@ -303,7 +304,21 @@ Az üzenetek IoT Hubból való fogadásához az eszköznek a használatával kel
 
 Az eszköz nem kap semmilyen üzenetet a IoT Hubtól, amíg sikeresen előfizette az eszközre jellemző végpontra, amelyet a `devices/{device_id}/messages/devicebound/#` témakör szűrője képvisel. Az előfizetés létrejötte után az eszköz megkapja a felhőből az eszközre irányuló üzeneteket, amelyeket az előfizetés időpontja után küldtek el. Ha az eszköz a **CleanSession** jelzővel csatlakozik **0-ra**, az előfizetés a különböző munkamenetek között marad meg. Ebben az esetben a következő alkalommal, amikor az eszköz a **CleanSession** -hez csatlakozik, a kapcsolat megszakadása közben minden, a számára elküldött függő üzenetet fogad. Ha az eszköz a **CleanSession** jelzőt **1-re** állítja, akkor a IoT hub addig nem kap üzenetet, amíg előfizet az eszköz-végpontra.
 
-IoT Hub kézbesíti az üzeneteket a **témakör nevével** `devices/{device_id}/messages/devicebound/` , vagy `devices/{device_id}/messages/devicebound/{property_bag}` Ha üzenet tulajdonságai vannak. `{property_bag}`URL-kódolású kulcs/érték párokat tartalmaz az üzenet tulajdonságaiban. Csak az alkalmazás tulajdonságai és a felhasználó által beállítható Rendszertulajdonságok (például **messageId** vagy **correlationId**) szerepelnek a tulajdonság táskájában. A Rendszertulajdonságok nevei előtaggal rendelkeznek **$** , az alkalmazás tulajdonságai az eredeti tulajdonságnév előtag nélküli nevet használnak.
+IoT Hub kézbesíti az üzeneteket a **témakör nevével** `devices/{device_id}/messages/devicebound/` , vagy `devices/{device_id}/messages/devicebound/{property_bag}` Ha üzenet tulajdonságai vannak. `{property_bag}`URL-kódolású kulcs/érték párokat tartalmaz az üzenet tulajdonságaiban. Csak az alkalmazás tulajdonságai és a felhasználó által beállítható Rendszertulajdonságok (például **messageId** vagy **correlationId**) szerepelnek a tulajdonság táskájában. A Rendszertulajdonságok nevei előtaggal rendelkeznek **$** , az alkalmazás tulajdonságai az eredeti tulajdonságnév előtag nélküli nevet használnak. A tulajdonság táska formátumával kapcsolatos további részletekért tekintse meg az [eszközről a felhőbe irányuló üzenetek küldését](#sending-device-to-cloud-messages)ismertető témakört.
+
+A felhőből az eszközre irányuló üzenetekben a tulajdonságok táskájában lévő értékek a következő táblázatban látható módon jelennek meg:
+
+| Tulajdonság értéke | Képviselet | Leírás |
+|----|----|----|
+| `null` | `key` | Csak a kulcs jelenik meg a tulajdonság táskájában |
+| üres karakterlánc | `key=` | A kulcsot, és nem értékkel rendelkező egyenlőségjelet kell írni |
+| nem null értékű, nem üres érték | `key=value` | A kulcsot, majd egy egyenlőségjelet és egy értéket. |
+
+Az alábbi példa egy olyan tulajdonságot mutat be, amely három alkalmazás-tulajdonságot tartalmaz: a **prop1** értékkel `null` . **prop2**, üres karakterlánc (""); és **prop3** "a string" értékkel.
+
+```mqtt
+/?prop1&prop2=&prop3=a%20string
+```
 
 Ha egy eszköz egy, a **QoS 2-es**verzióra való előfizetést tartalmaz, a IoT hub maximális QoS-szintet biztosít a **SUBACK** -csomagban. Ezután a IoT Hub a QoS 1 használatával továbbítja az üzeneteket az eszköznek.
 
@@ -333,7 +348,7 @@ A lehetséges állapotkódok a következők:
 
 |Állapot | Leírás |
 | ----- | ----------- |
-| 200 | Sikeres |
+| 200 | Success |
 | 429 | Túl sok kérés (szabályozott) a [IoT hub szabályozása](iot-hub-devguide-quotas-throttling.md) szerint |
 | 5 * * | Kiszolgálóhibák |
 
@@ -418,7 +433,7 @@ További információ: a [közvetlen módszer fejlesztői útmutatója](iot-hub-
 
 Végső megfontolásként, ha testre kell szabnia a MQTT protokoll viselkedését a felhős oldalon, tekintse át az [Azure IoT Protocol Gatewayt](iot-hub-protocol-gateway.md). Ez a szoftver lehetővé teszi egy olyan nagy teljesítményű egyéni protokoll-átjáró üzembe helyezését, amely közvetlenül a IoT Hub. Az Azure IoT Protocol Gateway lehetővé teszi, hogy testreszabja az eszköz protokollját, hogy az rozsdaövezetek rehabilitálása MQTT-telepítések vagy más egyéni protokollok is megfeleljenek. Ez a megközelítés azonban megköveteli, hogy egy egyéni protokoll-átjárót futtasson és működtessen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az MQTT protokollról, tekintse meg a [MQTT dokumentációját](https://mqtt.org/documentation).
 

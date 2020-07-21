@@ -5,19 +5,19 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.openlocfilehash: 05a76a1434b5a63229b335fb3973897896ec733d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 07/14/2020
+ms.openlocfilehash: d36b4fd433af716ebd97d88d05922d94bd74c309
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955812"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523536"
 ---
-# <a name="pricing-model-in-azure-cosmos-db"></a>Díjszabási modell az Azure Cosmos DB-ben 
+# <a name="pricing-model-in-azure-cosmos-db"></a>Díjszabási modell az Azure Cosmos DB-ben
 
 Az Azure Cosmos DB díjszabási modellje leegyszerűsíti a költségkezelést és -tervezést. Az Azure Cosmos DB-vel a kiosztott átviteli sebességért és a felhasznált tárterületért fizet.
 
-* **Kiépített átviteli sebesség**: a kiépített átviteli sebesség (más néven fenntartott átviteli sebesség) garantálja a nagy teljesítményt bármilyen méretben. Meg kell adnia a szükséges átviteli sebességet (RU/mp), és Azure Cosmos DB a konfigurált átviteli sebesség biztosításához szükséges erőforrásokat. A maximális kiosztott átviteli sebességért óradíjat számolunk fel egy adott órában.
+* **Kiépített átviteli sebesség**: a [kiépített átviteli sebesség](how-to-choose-offer.md) (más néven fenntartott átviteli sebesség) garantálja a nagy teljesítményt bármilyen méretben. Meg kell adnia a szükséges átviteli sebességet (RU/mp), és Azure Cosmos DB a konfigurált átviteli sebesség biztosításához szükséges erőforrásokat. A maximális kiosztott átviteli sebességért óradíjat számolunk fel egy adott órában. Manuálisan is kiépítheti az átviteli sebességet, vagy használhatja az [autoskálázást](provision-throughput-autoscale.md).
 
    > [!NOTE]
    > Mivel a kiépített átviteli sebességi modell erőforrásokat rendel a tárolóhoz vagy az adatbázishoz, akkor is a kiosztott átviteli sebességért kell fizetnie, akkor is, ha nem futtat semmilyen munkaterhelést.
@@ -41,9 +41,11 @@ Ahogy az előző táblázatban is látható, a Azure Cosmos DB minimális átvit
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Az Azure Cosmos DB ingyenes kipróbálása
 
-Azure Cosmos DB számos lehetőséget kínál a fejlesztők számára ingyenesen. Ezek a lehetőségek a következők:
+A Azure Cosmos DB számos lehetőséget kínál a fejlesztők számára ingyenesen elérhetővé. Ezek a lehetőségek a következők:
 
-* **Ingyenes Azure-fiók**: az Azure [ingyenes szintet](https://azure.microsoft.com/free/) kínál, amely az első 30 nap során $200 az Azure-kreditekben, és korlátozott mennyiségű ingyenes szolgáltatást biztosít 12 hónapig. További információkért lásd az [ingyenes Azure-fiókot](../cost-management-billing/manage/avoid-charges-free-account.md) ismertető cikket. Azure Cosmos DB az ingyenes Azure-fiók része. Kifejezetten a Azure Cosmos DB esetében ez az ingyenes fiók 5 GB tárhelyet és 400 RUs-t biztosít az egész évre kiépített átviteli sebességhez. 
+* **Azure Cosmos db ingyenes**szinten: a Azure Cosmos db ingyenes szintje megkönnyíti az alkalmazások megkezdését, fejlesztését és tesztelését, vagy akár kisebb éles számítási feladatokat is futtathat ingyenesen. Ha az ingyenes szintet engedélyezi egy fiókon, az első 400 RU/s és 5 GB tárterület ingyenesen elérhető a fiók élettartama alatt. Az Azure-előfizetések esetében akár egy ingyenes szintű fiókot is beállíthat, és a fiók létrehozásakor be kell jelentkeznie. Első lépésként [hozzon létre egy új fiókot Azure Portal az ingyenes szintet engedélyezve](create-cosmosdb-resources-portal.md) , vagy használjon [ARM-sablont](manage-sql-with-resource-manager.md#free-tier).
+
+* **Ingyenes Azure-fiók**: az Azure [ingyenes szintet](https://azure.microsoft.com/free/) kínál, amely az első 30 nap során $200 az Azure-kreditekben, és korlátozott mennyiségű ingyenes szolgáltatást biztosít 12 hónapig. További információkért lásd az [ingyenes Azure-fiókot](../cost-management-billing/manage/avoid-charges-free-account.md) ismertető cikket. Azure Cosmos DB az ingyenes Azure-fiók része. Különösen Azure Cosmos DB esetében ez az ingyenes fiók 5 GB tárhelyet és 400 RU/s-t biztosít az egész évre kiépített átviteli sebességhez.
 
 * **Próbálja ki a Azure Cosmos db**ingyen: Azure Cosmos db az ingyenes fiókok kipróbálása Azure Cosmos db használatával korlátozott időt kínál. Létrehozhat egy Azure Cosmos DB fiókot, létrehozhat adatbázisokat és gyűjteményeket, és futtathat egy minta alkalmazást a rövid útmutatók és oktatóanyagok segítségével. A minta alkalmazást futtathatja egy Azure-fiókra való feliratkozás vagy a bankkártya használata nélkül is. [Próbálja ki a Azure Cosmos db ingyenes](https://azure.microsoft.com/try/cosmosdb/) ajánlatokat egy hónapig Azure Cosmos db a fiókját tetszőleges számú alkalommal megújíthatja.
 
@@ -55,7 +57,7 @@ Azure Cosmos DB [fenntartott kapacitással](cosmos-db-reserved-capacity.md) pén
 
 A fenntartott kapacitás számlázási kedvezményt nyújt, és nincs hatással az Azure Cosmos DB-erőforrások futtatási állapotára. A fenntartott kapacitás minden API-hoz elérhető, amely magában foglalja az MongoDB, a Cassandra, az SQL, a Gremlin és az Azure-táblákat, valamint a világ minden régióját. A fenntartott kapacitást előre is megtudhatja, [ha Azure Cosmos db erőforrásokhoz fenntartott](cosmos-db-reserved-capacity.md) kapacitással rendelkezik, és fenntartott kapacitást vásárol a [Azure Portal](https://portal.azure.com/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Cosmos DB-erőforrások költségeinek optimalizálásáról a következő cikkekben tájékozódhat:
 

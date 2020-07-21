@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 06/30/2020
+ms.date: 07/07/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 35938ca3b9d8f3aedd0892740a3dbfa0fb5b036a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2193584996ed9f2c4cf5e858b8855c6878159a84
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186860"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520698"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Hálózati elkülönítés a betanítás során & privát virtuális hálózatokkal való következtetés
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,6 +109,24 @@ Miután hozzáadta a munkaterületet és a Storage-szolgáltatásfiókot a virtu
 
 Az __Azure Blob Storage__esetében a munkaterület által felügyelt identitást is hozzáadja [blob-adatolvasóként](../role-based-access-control/built-in-roles.md#storage-blob-data-reader) , így az adatok a blob Storage-ból olvashatók.
 
+
+### <a name="azure-machine-learning-designer-default-datastore"></a>Azure Machine Learning Designer alapértelmezett adattár
+
+A tervező a munkaterülethez csatolt Storage-fiókot használja a kimenet alapértelmezett tárolásához. Megadhatja azonban azt is, hogy a kimenetet minden olyan adattárhoz tárolja, amelyhez hozzáfér. Ha a környezete virtuális hálózatokat használ, ezekkel a vezérlőelemekkel biztosíthatja, hogy az adatai biztonságosak és elérhetők maradjanak.
+
+Új alapértelmezett tároló beállítása egy folyamathoz:
+
+1. A folyamat piszkozata lapon válassza a **Beállítások fogaskerék ikont** a folyamat címe közelében.
+1. Válassza az **alapértelmezett adattár kiválasztása**lehetőséget.
+1. Új adattárt kell megadnia.
+
+Az alapértelmezett adattárat is felülbírálhatja egy modul alapján. Ez lehetővé teszi az egyes modulok tárolási helyének szabályozását.
+
+1. Válassza ki azt a modult, amelynek kimenetét meg kívánja adni.
+1. Bontsa ki a **kimeneti beállítások** szakaszt.
+1. Válassza az **alapértelmezett kimeneti beállítások felülbírálása**lehetőséget.
+1. Válassza a **kimeneti beállítások megadása**lehetőséget.
+1. Új datstore ad meg.
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage Gen2 hozzáférés-vezérlés
 
@@ -286,8 +304,8 @@ Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlá
 - A kimenő internetkapcsolat megtagadása a NSG szabályok használatával.
 
 - __Számítási példány__ vagy __számítási fürt__esetén korlátozza a kimenő forgalmat a következő elemekre:
-   - Azure Storage a __Storage. RegionName__ __szolgáltatási címkéjével__ . Ahol az `{RegionName}` egy Azure-régió neve.
-   - Azure Container Registry a __AzureContainerRegistry. RegionName__ __szolgáltatási címkéje__ segítségével. Ahol az `{RegionName}` egy Azure-régió neve.
+   - Az Azure Storage a __Storage__ __szolgáltatás címkéjének__ használatával.
+   - Azure Container Registry a __AzureContainerRegistry__ __szolgáltatási címkéjének__ használatával.
    - Azure Machine Learning a __AzureMachineLearning__ __szolgáltatási címkéjének__ használatával
    - Azure Resource Manager a __AzureResourceManager__ __szolgáltatási címkéjének__ használatával
    - Azure Active Directory a __AzureActiveDirectory__ __szolgáltatási címkéjének__ használatával
@@ -326,11 +344,15 @@ A Azure Portal NSG-szabályának konfigurációja a következő képen látható
 > run = exp.submit(est)
 > ```
 
-### <a name="user-defined-routes-for-forced-tunneling"></a>A kényszerített bújtatáshoz tartozó felhasználó által megadott útvonalak
+### <a name="forced-tunneling"></a>Alagúthasználat kényszerítése
 
-Ha a Machine Learning Compute kényszerített bújtatást használ, adja hozzá a [felhasználó által megadott útvonalakat (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) a számítási erőforrást tartalmazó alhálózathoz.
+Ha [kényszerített bújtatást](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm) használ Azure Machine learning számítási feladatokkal, akkor engedélyeznie kell a kommunikációt a nyilvános internettel a számítási erőforrást tartalmazó alhálózatból. Ez a kommunikáció a feladatütemezés és az Azure Storage elérésére szolgál.
 
-* Hozzon létre egy UDR minden olyan IP-címhez, amelyet a Azure Batch szolgáltatás használ azon a régióban, ahol az erőforrásai léteznek. Ezek a UDR lehetővé teszik a Batch szolgáltatás számára a feladatütemezés számítási csomópontjaival való kommunikációját. Adja hozzá azt a Azure Machine Learning-szolgáltatáshoz tartozó IP-címet is, ahol az erőforrások léteznek, mivel ez szükséges a számítási példányokhoz való hozzáféréshez. A Batch szolgáltatás és a Azure Machine Learning szolgáltatás IP-címeinek listájának megjelenítéséhez használja a következő módszerek egyikét:
+Ez kétféleképpen valósítható meg:
+
+* [Virtual Network NAT](../virtual-network/nat-overview.md)használata. A NAT-átjáró kimenő internetkapcsolatot biztosít a virtuális hálózat egy vagy több alhálózatához. További információ: [virtuális hálózatok tervezése NAT Gateway-erőforrásokkal](../virtual-network/nat-gateway-resource.md).
+
+* Adja hozzá a [felhasználó által megadott útvonalakat (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) a számítási erőforrást tartalmazó alhálózathoz. Hozzon létre egy UDR minden olyan IP-címhez, amelyet a Azure Batch szolgáltatás használ azon a régióban, ahol az erőforrásai léteznek. Ezek a UDR lehetővé teszik a Batch szolgáltatás számára a feladatütemezés számítási csomópontjaival való kommunikációját. Adja hozzá azt a Azure Machine Learning-szolgáltatáshoz tartozó IP-címet is, ahol az erőforrások léteznek, mivel ez szükséges a számítási példányokhoz való hozzáféréshez. A Batch szolgáltatás és a Azure Machine Learning szolgáltatás IP-címeinek listájának megjelenítéséhez használja a következő módszerek egyikét:
 
     * Töltse le az [Azure IP-címtartományok és a szolgáltatás címkéit](https://www.microsoft.com/download/details.aspx?id=56519) , és keresse meg a és a fájlt `BatchNodeManagement.<region>` `AzureMachineLearning.<region>` , ahol `<region>` az az Azure-régió.
 
@@ -340,14 +362,15 @@ Ha a Machine Learning Compute kényszerített bújtatást használ, adja hozzá 
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
+    
+    A UDR hozzáadásakor adja meg az útvonalat az egyes kapcsolódó batch IP-címek előtagjaként, és állítsa be a __következő ugrás típusát__ az __Internet__értékre. Az alábbi képen látható példa erre a UDR mutat a Azure Portalban:
 
-* A helyszíni hálózati berendezés nem tilthatja le az Azure Storage-ba irányuló kimenő forgalmat. Pontosabban az URL-címek a és a formátumúak `<account>.table.core.windows.net` `<account>.queue.core.windows.net` `<account>.blob.core.windows.net` .
+    ![UDR – példa a címek előtagjaként való használatra](./media/how-to-enable-virtual-network/user-defined-route.png)
 
-A UDR hozzáadásakor adja meg az útvonalat az egyes kapcsolódó batch IP-címek előtagjaként, és állítsa be a __következő ugrás típusát__ az __Internet__értékre. Az alábbi képen látható példa erre a UDR mutat a Azure Portalban:
+    Az Ön által meghatározott UDR kívül az Azure Storage-ba irányuló kimenő forgalmat a helyszíni hálózati berendezésen keresztül kell engedélyezni. A forgalom URL-címei a következő formákban találhatók: `<account>.table.core.windows.net` , `<account>.queue.core.windows.net` és `<account>.blob.core.windows.net` . 
 
-![UDR – példa a címek előtagjaként való használatra](./media/how-to-enable-virtual-network/user-defined-route.png)
+    További információ: [Azure batch készlet létrehozása egy virtuális hálózaton](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
 
-További információ: [Azure batch készlet létrehozása egy virtuális hálózaton](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>Számítási fürt létrehozása egy virtuális hálózaton
 
@@ -480,6 +503,40 @@ Alapértelmezés szerint egy nyilvános IP-cím van hozzárendelve az AK-beli ü
 
 A magánhálózati IP-címek a _belső terheléselosztó_használatára való konfigurálásával engedélyezhetők. 
 
+#### <a name="network-contributor-role"></a>Hálózati közreműködő szerepkör
+
+> [!IMPORTANT]
+> Ha AK-fürtöt hoz létre vagy csatol egy korábban létrehozott virtuális hálózattal, akkor meg kell adnia a szolgáltatásnév (SP) vagy a felügyelt identitást az AK-fürt számára a _hálózati közreműködő_ szerepkört a virtuális hálózatot tartalmazó erőforráscsoporthoz. Ezt a belső terheléselosztó magánhálózati IP-re való módosítása előtt kell elvégezni.
+>
+> Az identitás hálózati közreműködőként való hozzáadásához kövesse az alábbi lépéseket:
+
+1. Az alábbi Azure CLI-parancsokkal keresheti meg az egyszerű szolgáltatásnév vagy a felügyelt identitás AZONOSÍTÓját. Cserélje le a `<aks-cluster-name>` nevet a fürt nevére. A helyére írja be az `<resource-group-name>` _AK-fürtöt tartalmazó_erőforráscsoport nevét:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
+    ``` 
+
+    Ha a parancs egy értéket ad vissza `msi` , használja a következő parancsot a felügyelt identitás résztvevő-azonosítójának azonosításához:
+
+    ```azurecli-interactive
+    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
+    ```
+
+1. A virtuális hálózatot tartalmazó erőforráscsoport AZONOSÍTÓjának megkereséséhez használja a következő parancsot. Cserélje le a `<resource-group-name>` nevet a _virtuális hálózatot tartalmazó_erőforráscsoport nevére:
+
+    ```azurecli-interactive
+    az group show -n <resource-group-name> --query id
+    ```
+
+1. Ha a szolgáltatásnevet vagy a felügyelt identitást hálózati közreműködőként szeretné felvenni, használja a következő parancsot. Cserélje le az értéket az `<SP-or-managed-identity>` egyszerű szolgáltatásnév vagy a felügyelt identitás számára visszaadott azonosítóra. Cserélje le a értéket a `<resource-group-id>` virtuális hálózatot tartalmazó erőforráscsoport által visszaadott azonosítóra:
+
+    ```azurecli-interactive
+    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
+    ```
+A belső terheléselosztó az AK-val való használatáról további információt a [belső Load Balancer használata az Azure Kubernetes szolgáltatással](/azure/aks/internal-lb)című témakörben talál.
+
+#### <a name="enable-private-ip"></a>Magánhálózati IP-cím engedélyezése
+
 > [!IMPORTANT]
 > Az Azure Kubernetes Service-fürt létrehozásakor nem engedélyezheti a magánhálózati IP-címet. Engedélyezni kell egy meglévő fürt frissítését.
 
@@ -570,38 +627,6 @@ aks_target.update(update_config)
 aks_target.wait_for_completion(show_output = True)
 ```
 
-__Hálózati közreműködő szerepkör__
-
-> [!IMPORTANT]
-> Ha AK-fürtöt hoz létre vagy csatol egy korábban létrehozott virtuális hálózattal, akkor meg kell adnia a szolgáltatásnév (SP) vagy a felügyelt identitást az AK-fürt számára a _hálózati közreműködő_ szerepkört a virtuális hálózatot tartalmazó erőforráscsoporthoz. Ezt a belső terheléselosztó magánhálózati IP-re való módosítása előtt kell elvégezni.
->
-> Az identitás hálózati közreműködőként való hozzáadásához kövesse az alábbi lépéseket:
-
-1. Az alábbi Azure CLI-parancsokkal keresheti meg az egyszerű szolgáltatásnév vagy a felügyelt identitás AZONOSÍTÓját. Cserélje le a `<aks-cluster-name>` nevet a fürt nevére. A helyére írja be az `<resource-group-name>` _AK-fürtöt tartalmazó_erőforráscsoport nevét:
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
-    ``` 
-
-    Ha a parancs egy értéket ad vissza `msi` , használja a következő parancsot a felügyelt identitás résztvevő-azonosítójának azonosításához:
-
-    ```azurecli-interactive
-    az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
-    ```
-
-1. A virtuális hálózatot tartalmazó erőforráscsoport AZONOSÍTÓjának megkereséséhez használja a következő parancsot. Cserélje le a `<resource-group-name>` nevet a _virtuális hálózatot tartalmazó_erőforráscsoport nevére:
-
-    ```azurecli-interactive
-    az group show -n <resource-group-name> --query id
-    ```
-
-1. Ha a szolgáltatásnevet vagy a felügyelt identitást hálózati közreműködőként szeretné felvenni, használja a következő parancsot. Cserélje le az értéket az `<SP-or-managed-identity>` egyszerű szolgáltatásnév vagy a felügyelt identitás számára visszaadott azonosítóra. Cserélje le a értéket a `<resource-group-id>` virtuális hálózatot tartalmazó erőforráscsoport által visszaadott azonosítóra:
-
-    ```azurecli-interactive
-    az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
-    ```
-A belső terheléselosztó az AK-val való használatáról további információt a [belső Load Balancer használata az Azure Kubernetes szolgáltatással](/azure/aks/internal-lb)című témakörben talál.
-
 ## <a name="use-azure-container-instances-aci"></a>Azure Container Instances használata (ACI)
 
 A Azure Container Instances a modell telepítésekor dinamikusan jönnek létre. Annak engedélyezéséhez, hogy a Azure Machine Learning az ACI-t a virtuális hálózaton belül hozza létre, engedélyeznie kell az alhálózati __delegálást__ az üzemelő példány által használt alhálózathoz.
@@ -630,6 +655,7 @@ További információ a Azure Machine Learning és a Azure Firewall használatá
 > A Azure Container Registry (ACR) egy virtuális hálózaton belül helyezhető el, azonban a következő előfeltételeknek kell megfelelnie:
 >
 > * A Azure Machine Learning munkaterületének Enterprise Edition rendszernek kell lennie. A frissítéssel kapcsolatos további információkért lásd: [frissítés a Enterprise Edition](how-to-manage-workspace.md#upgrade)verzióra.
+> * A Azure Machine Learning munkaterület-régiónak [magánhálózati kapcsolaton keresztül engedélyezett régiónak](https://docs.microsoft.com/azure/private-link/private-link-overview#availability)kell lennie. 
 > * A Azure Container Registrynak prémium verziójúnak kell lennie. További információ a frissítésről: a [SKU módosítása](/azure/container-registry/container-registry-skus#changing-skus).
 > * A Azure Container Registrynak ugyanabban a virtuális hálózatban és alhálózatban kell lennie, mint a betanításhoz vagy következtetéshez használt Storage-fióknak és számítási céloknak.
 > * A Azure Machine Learning-munkaterületnek tartalmaznia kell egy [Azure Machine learning számítási fürtöt](how-to-set-up-training-targets.md#amlcompute).
@@ -798,7 +824,7 @@ Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a mun
 1. Csatlakoztassa a virtuális gépet vagy a HDInsight-fürtöt a Azure Machine Learning munkaterülethez. További információ: [számítási célok beállítása a modell betanításához](how-to-set-up-training-targets.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Betanítási környezetek beállítása](how-to-set-up-training-targets.md)
 * [Privát végpontok beállítása](how-to-configure-private-link.md)

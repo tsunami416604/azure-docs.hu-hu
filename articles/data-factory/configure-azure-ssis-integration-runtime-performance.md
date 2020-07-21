@@ -10,12 +10,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 6a3b463196142691a59f625429953d1e82502f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6aaa02c2e14cfc31a11da260da38705ba064ba79
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255534"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523315"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>A Azure-SSIS Integration Runtime konfigurálása nagy teljesítményhez
 
@@ -104,11 +104,15 @@ Ha nem rendelkezik sok csomag futtatásával, és azt szeretné, hogy a csomagok
 
 Ez az adat egyetlen feldolgozó csomóponton egyetlen csomag-végrehajtást jelöl. A csomag 3 000 000 rekordot tölt be az Azure Blob Storage-ból utónév és vezetéknév oszlopokkal, és teljes nevet hoz létre, és a teljes névvel ellátott rekordokat írja a 20 karakternél hosszabb ideig az Azure Blob Storageba.
 
+Az y tengely azon csomagok száma, amelyek egy órán belül befejezték a végrehajtást. Vegye figyelembe, hogy ez csak egy memóriahasználat típusú csomag tesztelési eredménye. Ha tudni szeretné a csomag átviteli sebességét, azt javasoljuk, hogy saját maga végezze el a tesztet.
+
 ![SSIS Integration Runtime csomag végrehajtásának sebessége](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
 
 ### <a name="configure-for-overall-throughput"></a>Konfigurálás a teljes átviteli sebességhez
 
 Ha sok csomagot kell futtatnia, és Ön a teljes átviteli sebességről gondoskodik, akkor az alábbi táblázatban szereplő információk alapján válasszon egy, a forgatókönyvnek megfelelő virtuálisgép-típust.
+
+Az y tengely azon csomagok száma, amelyek egy órán belül befejezték a végrehajtást. Vegye figyelembe, hogy ez csak egy memóriahasználat típusú csomag tesztelési eredménye. Ha tudni szeretné a csomag átviteli sebességét, azt javasoljuk, hogy saját maga végezze el a tesztet.
 
 ![SSIS Integration Runtime maximális átviteli sebesség](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
 
@@ -163,5 +167,5 @@ Az adatbázis díjszabási szintjét a Azure Portal elérhető adatbázis- [tran
 ## <a name="design-for-high-performance"></a>Nagy teljesítményű rendszer tervezése
 Az Azure-on futó SSIS-csomagok tervezése eltér a helyszíni végrehajtáshoz szükséges csomagok tervezésének. Az egyazon csomagban található több független feladat egyesítése helyett a Azure-SSIS IR hatékonyabb végrehajtásához válassza el őket több csomagra. Hozzon létre egy csomag-végrehajtást minden csomaghoz, így nem kell megvárniuk egymás befejezését. Ez a megközelítés az Azure-SSIS integrációs modul skálázhatóságának előnyeit és a teljes átviteli sebességet javítja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Azure-SSIS Integration Runtimeról. Lásd: [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).

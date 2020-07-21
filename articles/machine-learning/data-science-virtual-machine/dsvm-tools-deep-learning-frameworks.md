@@ -11,18 +11,19 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 25ce99d3dced3caf1ec4bcce13b062b28774642d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c56c7a0d6f0400811d085f60fd71fe72b88bf9ee
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557482"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520561"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Mély tanulási és AI-keretrendszerek az Azure Data Science VM
 Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="caffe"></a>[Caffe](https://github.com/BVLC/caffe)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | |
 | Támogatott DSVM-kiadások      | Linux (Ubuntu)     |
@@ -31,7 +32,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | |
 | Támogatott DSVM-kiadások      | Linux (Ubuntu)     |
@@ -40,7 +41,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="chainer"></a>[Chainer](https://chainer.org/)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | 5,2 |
 | Támogatott DSVM-kiadások      | Linux (Ubuntu)     |
@@ -49,7 +50,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA, cuDNN, NVIDIA illesztőprogram](https://developer.nvidia.com/cuda-toolkit)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | 10.0.130|
 | Támogatott DSVM-kiadások      | Windows és Linux   |
@@ -59,7 +60,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="horovod"></a>[Horovod](https://github.com/uber/horovod)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | 0.16.1|
 | Támogatott DSVM-kiadások      | Linux (Ubuntu)   |
@@ -68,7 +69,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="keras"></a>[Keras](https://keras.io/)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | 2.2.4 |
 | Támogatott DSVM-kiadások      | Windows és Linux   |
@@ -77,7 +78,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="microsoft-cognitive-toolkit-cntk"></a>[Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | 2.5.1 |
 | Támogatott DSVM-kiadások      | Windows és Linux   |
@@ -85,7 +86,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 | Futtatás      | Terminál: aktiválja a megfelelő környezetet, és futtassa a Pythont. <br/>Jupyter: kapcsolódjon a [Jupyter](provision-vm.md) vagy a [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)-hez, majd nyissa meg a CNTK könyvtárat a mintákhoz. |
 
 ## <a name="mxnet"></a>[MXNet](https://mxnet.apache.org/)
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | 1.3.0 |
 | Támogatott DSVM-kiadások      | Windows és Linux   |
@@ -94,7 +95,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="mxnet-model-server"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | 1.0.1 |
 | Támogatott DSVM-kiadások      | Windows és Linux   |
@@ -103,7 +104,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia rendszerkezelési felület (NVIDIA-SMI)](https://developer.nvidia.com/nvidia-system-management-interface)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) |  |
 | Támogatott DSVM-kiadások      | Windows és Linux   |
@@ -113,7 +114,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | 1.2.0 (Ubuntu 16,04, Windows 2016), 1.4.0 (Ubuntu 18,04, Windows 2019) |
 | Támogatott DSVM-kiadások      | Linux |
@@ -122,7 +123,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="tensorflow"></a>[TensorFlow](https://www.tensorflow.org/)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | 1.13 |
 | Támogatott DSVM-kiadások      | Windows, Linux |
@@ -131,7 +132,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="tensorflow-serving"></a>[TensorFlow Serving](https://www.tensorflow.org/serving/)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | 1.12 |
 | Támogatott DSVM-kiadások      | Linux |
@@ -141,7 +142,7 @@ Az alábbi lista mély tanulási keretrendszerek a DSVM.
 
 ## <a name="theano"></a>[Theano](https://github.com/Theano/Theano)
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
 | Támogatott verzió (k) | 1.0.3 |
 | Támogatott DSVM-kiadások      | Linux |

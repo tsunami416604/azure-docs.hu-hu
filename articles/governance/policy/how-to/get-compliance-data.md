@@ -1,14 +1,14 @@
 ---
 title: Szabályzatok megfelelőségi állapotának beolvasása
 description: Azure Policy értékelések és hatások határozzák meg a megfelelőséget. Ismerje meg, hogyan kérheti le Azure-erőforrásai megfelelőségi adatait.
-ms.date: 05/20/2020
+ms.date: 07/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 53c946c59862451859616cb87d1101ae8fd5f15b
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 8da1876842e89e806b61bba611db74795a6710d1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045195"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521534"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
 
@@ -44,7 +44,19 @@ A hozzárendelt szabályzatok és kezdeményezések értékelése a különböz�
 
 ### <a name="on-demand-evaluation-scan"></a>Igény szerinti értékelési vizsgálat
 
-Egy előfizetéshez vagy egy erőforráscsoporthoz tartozó próbaverziós vizsgálat elindítható Azure PowerShell vagy a REST API hívásával. Ez a vizsgálat egy aszinkron folyamat.
+Egy előfizetés vagy egy erőforráscsoport próbaverziós vizsgálatát elindíthatja az Azure CLI-vel, Azure PowerShell vagy a REST API meghívásával. Ez a vizsgálat egy aszinkron folyamat.
+
+#### <a name="on-demand-evaluation-scan---azure-cli"></a>Igény szerinti értékelés vizsgálata – Azure CLI
+
+A megfelelőségi vizsgálat az az [Policy State trigger-Scan](/cli/azure/policy/state#az-policy-state-trigger-scan) paranccsal indítható el.
+
+Alapértelmezés szerint `az policy state trigger-scan` a elindítja az aktuális előfizetésben lévő összes erőforrás értékelését. Egy adott erőforráscsoport értékelésének elindításához használja az **Erőforrás-csoport** paramétert. Az alábbi példa a _MyRG_ erőforráscsoport aktuális előfizetésében elindítja a megfelelőségi vizsgálatot:
+
+```azurecli-interactive
+az policy state trigger-scan --resource-group "MyRG"
+```
+
+Azt is megteheti, hogy nem várja meg az aszinkron folyamat befejeződését, mielőtt folytatná a **nem várt** paramétert.
 
 #### <a name="on-demand-evaluation-scan---azure-powershell"></a>Igény szerinti értékelés vizsgálata – Azure PowerShell
 
@@ -53,7 +65,7 @@ A megfelelőségi vizsgálat a [Start-AzPolicyComplianceScan](/powershell/module
 Alapértelmezés szerint `Start-AzPolicyComplianceScan` a elindítja az aktuális előfizetésben lévő összes erőforrás értékelését. Egy adott erőforráscsoport értékelésének elindításához használja a **ResourceGroupName** paramétert. Az alábbi példa a _MyRG_ erőforráscsoport aktuális előfizetésében elindítja a megfelelőségi vizsgálatot:
 
 ```azurepowershell-interactive
-Start-AzPolicyComplianceScan -ResourceGroupName MyRG
+Start-AzPolicyComplianceScan -ResourceGroupName 'MyRG'
 ```
 
 Az eredmények kimenetének megadását, illetve a háttérben futtatott [feladatok](/powershell/module/microsoft.powershell.core/about/about_jobs)futtatása előtt PowerShell-várakozást is kérhet az aszinkron hívás befejezéséhez. Ha a háttérben a megfelelőségi vizsgálat futtatásához PowerShell-feladatot szeretne használni, használja az **AsJob** paramétert, és állítsa az értéket egy objektumra, például `$job` a következő példában:
@@ -120,10 +132,10 @@ A következő táblázat bemutatja, hogyan működnek a különböző szabályza
 
 | Erőforrás állapota | Hatás | Szabályzat kiértékelése | Megfelelőségi állapot |
 | --- | --- | --- | --- |
-| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True (Igaz) | Nem megfelelő |
-| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False (Hamis) | Megfelelő |
-| Új | Naplózás, AuditIfNotExist\* | True (Igaz) | Nem megfelelő |
-| Új | Naplózás, AuditIfNotExist\* | False (Hamis) | Megfelelő |
+| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Igaz | Nem megfelelő |
+| Létezik | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Hamis | Megfelelő |
+| Új | Naplózás, AuditIfNotExist\* | Igaz | Nem megfelelő |
+| Új | Naplózás, AuditIfNotExist\* | Hamis | Megfelelő |
 
 \* Az Append, a DeployIfNotExist és az AuditIfNotExist hatás esetében az IF utasításnak TRUE értéket kell visszaadnia.
 Emellett a létezési feltételnek FALSE értéket kell visszaadnia ahhoz, hogy a szabályzat nem megfelelőnek minősüljön. TRUE érték esetén az IF feltétel kiváltja a vonatkozó erőforrások létezési feltételének kiértékelését.
@@ -184,8 +196,7 @@ Ha egy erőforrás úgy van meghatározva, hogy **nem megfelelőnek**minősül, 
 
 ## <a name="command-line"></a>Parancssor
 
-A portálon megjelenő információk a REST API (beleértve a [ARMClient](https://github.com/projectkudu/ARMClient)is), az Azure PowerShell és az Azure CLI (előzetes verzió) használatával kérhetők le.
-A REST API részletes ismertetését lásd: [Azure Policy](/rest/api/policy-insights/) -információk áttekintése. Az REST API-hivatkozási lapokon minden művelethez zöld "kipróbálás" gomb tartozik, amely lehetővé teszi, hogy közvetlenül a böngészőben próbálja ki.
+A portálon megjelenő információk a REST API (beleértve a [ARMClient](https://github.com/projectkudu/ARMClient)-t), az Azure PowerShell és az Azure CLI-vel is kérhetők le. A REST API részletes ismertetését lásd: [Azure Policy](/rest/api/policy-insights/) -információk áttekintése. Az REST API-hivatkozási lapokon minden művelethez zöld "kipróbálás" gomb tartozik, amely lehetővé teszi, hogy közvetlenül a böngészőben próbálja ki.
 
 Használjon ARMClient vagy hasonló eszközt az Azure-ba való hitelesítés kezeléséhez az REST API példákkal.
 
@@ -207,7 +218,7 @@ A kimenet összefoglalja az előfizetést. Az alábbi példában szereplő kimen
         "@odata.id": null,
         "@odata.context": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#summary/$entity",
         "results": {
-            "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false",
+            "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant'",
             "nonCompliantResources": 15,
             "nonCompliantPolicies": 1
         },
@@ -215,7 +226,7 @@ A kimenet összefoglalja az előfizetést. Az alábbi példában szereplő kimen
             "policyAssignmentId": "/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77",
             "policySetDefinitionId": "",
             "results": {
-                "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
+                "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77'",
                 "nonCompliantResources": 15,
                 "nonCompliantPolicies": 1
             },
@@ -224,7 +235,7 @@ A kimenet összefoglalja az előfizetést. Az alábbi példában szereplő kimen
                 "policyDefinitionId": "/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
                 "effect": "deny",
                 "results": {
-                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
+                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'",
                     "nonCompliantResources": 15
                 }
             }]
@@ -235,10 +246,10 @@ A kimenet összefoglalja az előfizetést. Az alábbi példában szereplő kimen
 
 ### <a name="query-for-resources"></a>Erőforrások lekérdezése
 
-A fenti példában az **Value. policyAssignments. policyDefinitions. Results. queryResultsUri** egy minta URI-t biztosít egy adott házirend-definícióhoz tartozó összes nem megfelelő erőforráshoz. Ha a **$Filter** értéket keresi, a IsCompliant értéke (EQ) hamis értékre van beállítva, PolicyAssignmentId van megadva a házirend-definícióhoz, majd maga a PolicyDefinitionId. A szűrőben lévő PolicyAssignmentId belefoglalásának oka, hogy a PolicyDefinitionId különböző hatókörű házirend-vagy kezdeményezési hozzárendelésekben létezhetnek. A PolicyAssignmentId és a PolicyDefinitionId megadásával explicit módon megadhatjuk a keresett eredményeket. Korábban a **legújabb**PolicyStates használtuk, amely az elmúlt 24 órában automatikusan beállítja a **from** és **az** időpontot.
+A fenti példában az **Value. policyAssignments. policyDefinitions. Results. queryResultsUri** egy minta URI-t biztosít egy adott házirend-definícióhoz tartozó összes nem megfelelő erőforráshoz. Ha a **$Filter** értéket keresi, a ComplianceState egyenlő (EQ) a "nem megfelelő" értékre, a PolicyAssignmentId meg van adva a házirend-definícióhoz, majd maga a PolicyDefinitionId. A szűrőben lévő PolicyAssignmentId belefoglalásának oka, hogy a PolicyDefinitionId különböző hatókörű házirend-vagy kezdeményezési hozzárendelésekben létezhetnek. A PolicyAssignmentId és a PolicyDefinitionId megadásával explicit módon megadhatjuk a keresett eredményeket. Korábban a **legújabb**PolicyStates használtuk, amely az elmúlt 24 órában automatikusan beállítja a **from** és **az** időpontot.
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=IsCompliant eq false and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'
 ```
 
 Az alábbi példában szereplő válasz egyetlen nem megfelelő erőforrásra van kimetszve a rövidség kedvéért. A részletes válasz több adatot tartalmaz az erőforrásról, a házirendről vagy a kezdeményezésről, valamint a hozzárendelésről. Figyelje meg, hogy azt is láthatja, hogy milyen hozzárendelési paramétereket adtak át a szabályzat-definíciónak.
@@ -255,7 +266,7 @@ Az alábbi példában szereplő válasz egyetlen nem megfelelő erőforrásra va
         "policyAssignmentId": "/subscriptions/{subscriptionId}/resourceGroups/rg-tags/providers/Microsoft.Authorization/policyAssignments/37ce239ae4304622914f0c77",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
         "effectiveParameters": "",
-        "isCompliant": false,
+        "ComplianceState": "NonCompliant",
         "subscriptionId": "{subscriptionId}",
         "resourceType": "/Microsoft.Compute/virtualMachines",
         "resourceLocation": "westus2",
@@ -303,10 +314,207 @@ Az eredmények a következő példához hasonlók:
 
 A házirend-események lekérdezésével kapcsolatos további információkért tekintse meg a [Azure Policy Events](/rest/api/policy-insights/policyevents) Reference című cikket.
 
+### <a name="azure-cli"></a>Azure CLI
+
+A Azure Policyhez készült [Azure CLI](/cli/azure/what-is-azure-cli) -parancs a REST-ben vagy Azure PowerShellban elérhető legtöbb műveletet magában foglalja. Az elérhető parancsok teljes listájáért lásd: az [Azure CLI – Azure Policy áttekintése](/cli/azure/policy).
+
+Példa: az állapot összegzésének beolvasása a legfelső szintű hozzárendelt szabályzathoz a legmagasabb számú nem megfelelő erőforrással.
+
+```azurecli-interactive
+az policy state summarize --top 1
+```
+
+A válasz felső része a következő példához hasonlít:
+
+```json
+{
+    "odatacontext": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#summary/$entity",
+    "odataid": null,
+    "policyAssignments": [{
+            "policyAssignmentId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policyassignments/e0704696df5e4c3c81c873e8",
+            "policyDefinitions": [{
+                "effect": "audit",
+                "policyDefinitionGroupNames": [
+                    ""
+                ],
+                "policyDefinitionId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policydefinitions/2e3197b6-1f5b-4b01-920c-b2f0a7e9b18a",
+                "policyDefinitionReferenceId": "",
+                "results": {
+                    "nonCompliantPolicies": null,
+                    "nonCompliantResources": 398,
+                    "policyDetails": [{
+                        "complianceState": "noncompliant",
+                        "count": 1
+                    }],
+                    "policyGroupDetails": [{
+                        "complianceState": "noncompliant",
+                        "count": 1
+                    }],
+                    "queryResultsUri": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2020-07-14 14:01:22Z&$to=2020-07-15 14:01:22Z and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/providers/microsoft.authorization/policyassignments/e0704696df5e4c3c81c873e8' and PolicyDefinitionId eq '/subscriptions/{subscriptionId}/providers/microsoft.authorization/policydefinitions/2e3197b6-1f5b-4b01-920c-b2f0a7e9b18a'",
+                    "resourceDetails": [{
+                            "complianceState": "noncompliant",
+                            "count": 398
+                        },
+                        {
+                            "complianceState": "compliant",
+                            "count": 4
+                        }
+                    ]
+                }
+            }],
+    ...
+```
+
+Példa: az állapot rekordjának beolvasása a legutóbb kiértékelt erőforráshoz (alapértelmezés szerint az időbélyegző csökkenő sorrendben történik).
+
+```azurecli-interactive
+az policy state list --top 1
+```
+
+```json
+[
+  {
+    "complianceReasonCode": "",
+    "complianceState": "Compliant",
+    "effectiveParameters": "",
+    "isCompliant": true,
+    "managementGroupIds": "{managementgroupId}",
+    "odatacontext": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+    "odataid": null,
+    "policyAssignmentId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policyassignments/securitycenterbuiltin",
+    "policyAssignmentName": "SecurityCenterBuiltIn",
+    "policyAssignmentOwner": "tbd",
+    "policyAssignmentParameters": "",
+    "policyAssignmentScope": "/subscriptions/{subscriptionId}",
+    "policyAssignmentVersion": "",
+    "policyDefinitionAction": "auditifnotexists",
+    "policyDefinitionCategory": "tbd",
+    "policyDefinitionGroupNames": [
+      ""
+    ],
+    "policyDefinitionId": "/providers/microsoft.authorization/policydefinitions/aa633080-8b72-40c4-a2d7-d00c03e80bed",
+    "policyDefinitionName": "aa633080-8b72-40c4-a2d7-d00c03e80bed",
+    "policyDefinitionReferenceId": "identityenablemfaforownerpermissionsmonitoring",
+    "policyDefinitionVersion": "",
+    "policyEvaluationDetails": null,
+    "policySetDefinitionCategory": "security center",
+    "policySetDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
+    "policySetDefinitionName": "1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
+    "policySetDefinitionOwner": "",
+    "policySetDefinitionParameters": "",
+    "policySetDefinitionVersion": "",
+    "resourceGroup": "",
+    "resourceId": "/subscriptions/{subscriptionId}",
+    "resourceLocation": "",
+    "resourceTags": "tbd",
+    "resourceType": "Microsoft.Resources/subscriptions",
+    "subscriptionId": "{subscriptionId}",
+    "timestamp": "2020-07-15T08:37:07.903433+00:00"
+  }
+]
+```
+
+Példa: az összes nem megfelelő virtuális hálózati erőforrás adatainak beolvasása.
+
+```azurecli-interactive
+az policy state list --filter "ResourceType eq 'Microsoft.Network/virtualNetworks'"
+```
+
+```json
+[
+  {
+    "complianceReasonCode": "",
+    "complianceState": "NonCompliant",
+    "effectiveParameters": "",
+    "isCompliant": false,
+    "managementGroupIds": "{managementgroupId}",
+    "odatacontext": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+    "odataid": null,
+    "policyAssignmentId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policyassignments/e0704696df5e4c3c81c873e8",
+    "policyAssignmentName": "e0704696df5e4c3c81c873e8",
+    "policyAssignmentOwner": "tbd",
+    "policyAssignmentParameters": "",
+    "policyAssignmentScope": "/subscriptions/{subscriptionId}",
+    "policyAssignmentVersion": "",
+    "policyDefinitionAction": "audit",
+    "policyDefinitionCategory": "tbd",
+    "policyDefinitionGroupNames": [
+      ""
+    ],
+    "policyDefinitionId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policydefinitions/2e3197b6-1f5b-4b01-920c-b2f0a7e9b18a",
+    "policyDefinitionName": "2e3197b6-1f5b-4b01-920c-b2f0a7e9b18a",
+    "policyDefinitionReferenceId": "",
+    "policyDefinitionVersion": "",
+    "policyEvaluationDetails": null,
+    "policySetDefinitionCategory": "",
+    "policySetDefinitionId": "",
+    "policySetDefinitionName": "",
+    "policySetDefinitionOwner": "",
+    "policySetDefinitionParameters": "",
+    "policySetDefinitionVersion": "",
+    "resourceGroup": "RG-Tags",
+    "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Microsoft.Network/virtualNetworks/RG-Tags-vnet",
+    "resourceLocation": "westus2",
+    "resourceTags": "tbd",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "subscriptionId": "{subscriptionId}",
+    "timestamp": "2020-07-15T08:37:07.901911+00:00"
+  }
+]
+```
+
+Példa: olyan nem megfelelő virtuális hálózati erőforrásokhoz kapcsolódó események beszerzése, amelyek egy adott dátum után történtek.
+
+```azurecli-interactive
+az policy state list --filter "ResourceType eq 'Microsoft.Network/virtualNetworks'" --from '2020-07-14T00:00:00Z'
+```
+
+```json
+[
+  {
+    "complianceReasonCode": "",
+    "complianceState": "NonCompliant",
+    "effectiveParameters": "",
+    "isCompliant": false,
+    "managementGroupIds": "{managementgroupId}",
+    "odatacontext": "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+    "odataid": null,
+    "policyAssignmentId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policyassignments/e0704696df5e4c3c81c873e8",
+    "policyAssignmentName": "e0704696df5e4c3c81c873e8",
+    "policyAssignmentOwner": "tbd",
+    "policyAssignmentParameters": "",
+    "policyAssignmentScope": "/subscriptions/{subscriptionId}",
+    "policyAssignmentVersion": "",
+    "policyDefinitionAction": "audit",
+    "policyDefinitionCategory": "tbd",
+    "policyDefinitionGroupNames": [
+      ""
+    ],
+    "policyDefinitionId": "/subscriptions/{subscriptionId}/providers/microsoft.authorization/policydefinitions/2e3197b6-1f5b-4b01-920c-b2f0a7e9b18a",
+    "policyDefinitionName": "2e3197b6-1f5b-4b01-920c-b2f0a7e9b18a",
+    "policyDefinitionReferenceId": "",
+    "policyDefinitionVersion": "",
+    "policyEvaluationDetails": null,
+    "policySetDefinitionCategory": "",
+    "policySetDefinitionId": "",
+    "policySetDefinitionName": "",
+    "policySetDefinitionOwner": "",
+    "policySetDefinitionParameters": "",
+    "policySetDefinitionVersion": "",
+    "resourceGroup": "RG-Tags",
+    "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Microsoft.Network/virtualNetworks/RG-Tags-vnet",
+    "resourceLocation": "westus2",
+    "resourceTags": "tbd",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "subscriptionId": "{subscriptionId}",
+    "timestamp": "2020-07-15T08:37:07.901911+00:00"
+  }
+]
+```
+
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-A Azure Policy Azure PowerShell modulja a PowerShell-galéria az az [. PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights)néven érhető el.
-A PowerShellGet használatával telepítheti a modult a használatával (ellenőrizze, `Install-Module -Name Az.PolicyInsights` hogy a legújabb [Azure PowerShell](/powershell/azure/install-az-ps) van-e telepítve):
+A Azure Policy Azure PowerShell modulja a PowerShell-galéria az az [. PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights)néven érhető el. A PowerShellGet használatával telepítheti a modult a használatával (ellenőrizze, `Install-Module -Name Az.PolicyInsights` hogy a legújabb [Azure PowerShell](/powershell/azure/install-az-ps) van-e telepítve):
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
@@ -351,7 +559,7 @@ ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-T
 PolicyAssignmentId         : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
                              crosoft.Authorization/policyAssignments/37ce239ae4304622914f0c77
 PolicyDefinitionId         : /providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62
-IsCompliant                : False
+ComplianceState            : NonCompliant
 SubscriptionId             : {subscriptionId}
 ResourceType               : /Microsoft.Network/networkInterfaces
 ResourceLocation           : westus2
@@ -377,7 +585,7 @@ ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-T
 PolicyAssignmentId         : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
                              crosoft.Authorization/policyAssignments/37ce239ae4304622914f0c77
 PolicyDefinitionId         : /providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62
-IsCompliant                : False
+ComplianceState            : NonCompliant
 SubscriptionId             : {subscriptionId}
 ResourceType               : /Microsoft.Network/virtualNetworks
 ResourceLocation           : westus2
@@ -403,7 +611,7 @@ ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-T
 PolicyAssignmentId         : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
                              crosoft.Authorization/policyAssignments/37ce239ae4304622914f0c77
 PolicyDefinitionId         : /providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62
-IsCompliant                : False
+ComplianceState            : NonCompliant
 SubscriptionId             : {subscriptionId}
 ResourceType               : /Microsoft.Network/virtualNetworks
 ResourceLocation           : eastus
@@ -433,7 +641,7 @@ Ha [Log Analytics workspace](../../../azure-monitor/log-query/log-query-overview
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Megfelelőség Azure Policy Azure Monitor naplók használatával" border="false":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

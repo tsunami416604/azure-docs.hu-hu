@@ -4,13 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan lehet megtekinteni a kiválasztott 
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 212ba647e6eb44e800a589928620f56fba65107c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb5352b4cc84801296d9e621053672328b02692a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68737018"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523366"
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Hogyan tekintheti meg a kapcsolódó adategységeket a Azure Data Catalogban?
 Azure Data Catalog lehetővé teszi a kiválasztott adategységhez kapcsolódó adategységek megtekintését, valamint a közöttük fennálló kapcsolatok megtekintését. 
@@ -45,5 +46,5 @@ Ha további részleteket szeretne látni, például az oszlop teljes nevét, vig
 
 Ha a már regisztrált eszközök közötti kapcsolatokat szeretné felvenni, regisztrálja újra az eszközöket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Adategységek felügyelete](data-catalog-how-to-manage.md)

@@ -2,14 +2,14 @@
 title: Erőforrás-naplók & gyűjtése
 description: Megtudhatja, hogyan küldhet erőforrás-naplókat és-eseményeket a Azure Container Instances lévő tároló-csoportokból Azure Monitor naplókba
 ms.topic: article
-ms.date: 07/02/2020
+ms.date: 07/13/2020
 ms.author: danlep
-ms.openlocfilehash: d9f3e844e9d82e540776cdcf821770929d238e3f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: efd71d181059ab395aeec4da364110a42d2cccd3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259608"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86524012"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Tároló csoport és példány naplózása Azure Monitor naplókkal
 
@@ -38,11 +38,10 @@ Az Azure Container Instancesnek engedélyre van szüksége ahhoz, hogy adatokat 
 A log Analytics-munkaterület AZONOSÍTÓjának és elsődleges kulcsának beszerzése:
 
 1. Az Azure Portalon lépjen a saját Log Analytics-munkaterületére
-1. A **Beállítások**területen válassza a **Speciális beállítások** lehetőséget.
-1. **Csatlakoztatott források**kiválasztása  >  **Windows-kiszolgálók** (vagy Linux- **kiszolgálók**) – az azonosító és a kulcsok mindkét esetében azonosak.)
+1. A **Beállítások**területen válassza az **ügynökök kezelése** elemet.
 1. Jegyezze fel a következőket:
-   * **MUNKATERÜLET AZONOSÍTÓJA**
-   * **ELSŐDLEGES KULCS**
+   * **Munkaterület azonosítója**
+   * **Elsődleges kulcs**
 
 ## <a name="create-container-group"></a>Tárolócsoport létrehozása
 
@@ -102,7 +101,9 @@ Röviddel a parancs kiadását követően választ kell kapnia az Azure-tól, am
 
 ## <a name="view-logs"></a>Naplók megtekintése
 
-A tárolócsoport üzembe helyezése után néhány percbe telik (legfeljebb 10 percbe), hogy az Azure Portalon megjelenjenek az első naplóbejegyzések. A tároló csoport naplóinak megtekintése a `ContainerInstanceLog_CL` táblában:
+A tárolócsoport üzembe helyezése után néhány percbe telik (legfeljebb 10 percbe), hogy az Azure Portalon megjelenjenek az első naplóbejegyzések. 
+
+A tároló csoport naplóinak megtekintése a `ContainerInstanceLog_CL` táblában:
 
 1. Az Azure Portalon lépjen a saját Log Analytics-munkaterületére
 1. Az **általános**területen válassza a **naplók** lehetőséget.  

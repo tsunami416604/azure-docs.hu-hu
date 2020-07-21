@@ -6,19 +6,27 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 07/10/2020
-ms.openlocfilehash: d2567a5a0374fd05f17e1153c3b2d7f3df50e0d9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/15/2020
+ms.openlocfilehash: 238ede3e79b7d7c5a22d24dfc52530fe391b600b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246996"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519626"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprakészen tarthatja a szolgáltatást.
 
-## <a name="feature-announcements"></a>Szolgáltatások hirdetményei
+## <a name="feature-announcements-in-2020"></a>Szolgáltatások hirdetményei a 2020-ben
+
+### <a name="july-2020"></a>2020. július
+
+|Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
+|---------|------------------|-------------|---------------|
+| [**.NET-ügyfélkódtár**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK | Az Azure SDK csapata által kiadott új ügyféloldali kódtár, amely az egyéb .NET-ügyfél-kódtárakkal való konzisztencia kialakítására szolgál. 11-es verzió. | Általánosan elérhető. </br> Telepítse a [Azure.Search.Documents csomagot](https://www.nuget.org/packages/Azure.Search.Documents/) a NuGet-ből. |
+| [**Python-ügyfélkódtár**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK | Az Azure SDK csapata által kiadott új ügyféloldali kódtár, amely más Python-ügyfél-kódtárakkal való konzisztencia kialakítására szolgál. 11-es verzió. | Általánosan elérhető. </br> Telepítse az [Azure-Search-Documents csomagot](https://pypi.org/project/azure-search-documents/) a PyPI webhelyről. |
+| [**JavaScript ügyféloldali kódtár**](https://azuresdkdocs.blob.core.windows.net/$web/javascript/azure-search-documents/11.0.0/index.html)  | Azure SDK | Az Azure SDK csapata által kiadott új ügyféloldali kódtár, amely más JavaScript-ügyfél-kódtárakkal való konzisztencia kialakítására szolgál. 11-es verzió. | Általánosan elérhető. </br> Telepítse a [ @azure/search-documents csomagot](https://www.npmjs.com/package/@azure/search-documents) a NPM-ből. |
 
 ### <a name="june-2020"></a>2020. június
 

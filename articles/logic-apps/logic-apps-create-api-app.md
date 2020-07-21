@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 45b53b0e692a1272ba59719655c8d60c90fd6c96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83834492"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520800"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Egyéni API-k létrehozása, melyeket hívhat Azure Logic Apps
 
@@ -53,8 +54,8 @@ A Microsoft minősítéshez regisztrált összekötőket is kijelölheti. Ezzel 
 További információ az egyéni összekötők használatáról: 
 
 * [Egyéni összekötők áttekintése](../logic-apps/custom-connector-overview.md)
-* [Egyéni összekötők létrehozása webes API-kkal](../logic-apps/custom-connector-build-web-api-app-tutorial.md)
-* [Egyéni összekötők regisztrálása Azure Logic Apps](../logic-apps/logic-apps-custom-connector-register.md)
+* [Egyéni összekötők létrehozása webes API-kkal](/connectors/custom-connectors/create-web-api-connector)
+* [Egyéni összekötők regisztrálása Azure Logic Apps](/connectors/custom-connectors/)
 
 ## <a name="helpful-tools"></a>Hasznos eszközök
 
@@ -172,8 +173,8 @@ Ha például rendszeresen szeretné ellenőrizni a szolgáltatást az új fájlo
 
 | A kérelem tartalmazza `triggerState` ? | API-válasz | 
 | -------------------------------- | -------------| 
-| No | Egy HTTP `202 ACCEPTED` -állapotot, valamint egy fejlécet ad vissza, amely `location` `triggerState` az aktuális időpontra, az `retry-after` intervallum pedig 15 másodpercre van állítva. | 
-| Yes | Győződjön meg arról, hogy a szolgáltatásban a `DateTime` for () után hozzáadott fájlok szerepelnek `triggerState` . | 
+| Nem | Egy HTTP `202 ACCEPTED` -állapotot, valamint egy fejlécet ad vissza, amely `location` `triggerState` az aktuális időpontra, az `retry-after` intervallum pedig 15 másodpercre van állítva. | 
+| Igen | Győződjön meg arról, hogy a szolgáltatásban a `DateTime` for () után hozzáadott fájlok szerepelnek `triggerState` . | 
 ||| 
 
 | Talált fájlok száma | API-válasz | 
@@ -227,11 +228,11 @@ Ahhoz, hogy az egyéni API-kat elérhetővé tegye a Logic Apps, a Power automat
 
 * Az egyéni API-kkal kapcsolatos speciális segítségért forduljon a következőhöz: [customapishelp@microsoft.com](mailto:customapishelp@microsoft.com) .
 
-* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](/answers/topics/azure-logic-apps.html).
 
 * Ha szeretne segíteni a Logic Apps fejlesztésében, szavazzon vagy küldje el javaslatait a [Logic Apps felhasználói visszajelzések oldalon](https://aka.ms/logicapps-wish). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Hibák és kivételek kezelése](../logic-apps/logic-apps-exception-handling.md)
 * [Logikai alkalmazások hívása, triggere vagy beágyazása HTTP-végpontokkal](../logic-apps/logic-apps-http-endpoint.md)

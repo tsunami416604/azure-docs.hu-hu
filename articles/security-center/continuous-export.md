@@ -8,11 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84299944"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519697"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Biztonsági riasztások és javaslatok exportálása
 
@@ -28,7 +29,6 @@ Az alábbi eszközöket használhatja:
 
 
 
-
 ## <a name="availability"></a>Rendelkezésre állás
 
 - Kiadás állapota: **általánosan elérhető**
@@ -36,10 +36,7 @@ Az alábbi eszközöket használhatja:
     - Az exportálási konfigurációt tartalmazó előfizetés **olvasója**
     - **Biztonsági rendszergazdai szerepkör** az erőforráscsoporthoz (vagy **tulajdonos**)
     - A cél erőforráshoz is írási engedéllyel kell rendelkeznie
-- Felhők 
-    - ✔ Kereskedelmi felhők
-    - ✔ US Gov
-    - ✘ China gov, egyéb gov
+- Felhők: ✔ kereskedelmi felhők ✔ US Gov ✘ China gov, other gov
 
 
 ## <a name="setting-up-a-continuous-export"></a>Folyamatos exportálás beállítása
@@ -58,7 +55,7 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
 
 1. Az "exportálási cél" területen válassza ki, hogy hová szeretné menteni az adatok mentését. Az adattárolók egy másik előfizetésben lévő célhelyre menthetők (például egy központi Event hub-példányon vagy egy központi Log Analytics munkaterületen).
 
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 
 
@@ -134,7 +131,7 @@ A riasztások vagy javaslatok CSV-jelentésének letöltéséhez nyissa meg a **
 > [!NOTE]
 > Ezek a jelentések riasztásokat és javaslatokat tartalmaznak az aktuálisan kijelölt előfizetésekben lévő erőforrásokra vonatkozóan.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja a javaslatok és riasztások folyamatos exportálását. Azt is megtanulta, hogyan töltheti le a riasztási adatait CSV-fájlként. 
 
@@ -142,5 +139,5 @@ Kapcsolódó anyagok esetében tekintse meg a következő dokumentációt:
 
 - [Az Azure Event Hubs dokumentációja](https://docs.microsoft.com/azure/event-hubs/)
 - [Az Azure Sentinel dokumentációja](https://docs.microsoft.com/azure/sentinel/)
-- [Azure Monitor dokumentáció](https://docs.microsoft.com/azure/azure-monitor/)
+- [Az Azure Monitor dokumentációja](https://docs.microsoft.com/azure/azure-monitor/)
 - [Munkafolyamat-automatizálás és folyamatos exportálás adattípusú sémák](https://aka.ms/ASCAutomationSchemas)

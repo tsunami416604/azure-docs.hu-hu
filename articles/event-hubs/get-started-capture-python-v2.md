@@ -3,12 +3,12 @@ title: Az Azure Event Hubs rögzített adatok beolvasása egy Python-alkalmazás
 description: Ebből a cikkből megtudhatja, hogyan írhat Python-kódot az Event hub számára elküldett adatok rögzítéséhez, és beolvashatja az Azure Storage-fiókból a rögzített események adatait.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 752a582e59b438f7449d6722b222969dc641880c
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: eb7e8a2c1e567e474ad7d0766d9b12e5b43de3ae
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315287"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521870"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Event Hubs-információk rögzítése az Azure Storage-ban és a Python használatával (Azure-eventhub 5-ös verzió)
 
@@ -35,7 +35,7 @@ Ebben a rövid útmutatóban a következőket hajtja végre:
 - Aktív Event Hubs névtér és Event hub.
 [Hozzon létre egy Event Hubs névteret és egy Event hubot a névtérben](event-hubs-create.md). Jegyezze fel a Event Hubs névtér nevét, az Event hub nevét és a névtér elsődleges elérési kulcsát. A hozzáférési kulcs beszerzéséhez tekintse meg [Event Hubs kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)című témakört. Az alapértelmezett kulcsnév a *RootManageSharedAccessKey*. Ebben a rövid útmutatóban csak az elsődleges kulcsra van szükség. Nincs szüksége a kapcsolatok karakterláncára.  
 - Egy Azure Storage-fiók, egy blob-tároló a Storage-fiókban, valamint egy kapcsolódási sztring a Storage-fiókhoz. Ha nem rendelkezik ezekkel az elemekkel, tegye a következőket:  
-    1. [Azure Storage-fiók létrehozása](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)  
+    1. [Azure-tárfiók létrehozása](../storage/common/storage-account-create.md?tabs=azure-portal)  
     1. [BLOB-tároló létrehozása a Storage-fiókban](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
     1. [A Storage-fiókhoz tartozó kapcsolódási karakterlánc lekérése](../storage/common/storage-configure-connection-string.md)
 
@@ -173,7 +173,7 @@ Ebben a példában a rögzített adattárolók tárolása az Azure Blob Storage-
 
    Ez a rögzítési processzor a helyi könyvtár használatával tölti le az összes blobot a Storage-fiókból és-tárolóból. Feldolgozza azokat, amelyek nem üresek, és az eredményeket CSV-fájlként írja a helyi könyvtárba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse [meg a Python-mintákat a githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples). 
 
 
@@ -182,4 +182,4 @@ Tekintse [meg a Python-mintákat a githubon](https://github.com/Azure/azure-sdk-
 [1]: ./media/event-hubs-archive-python/event-hubs-python1.png
 [About Azure storage accounts]:../storage/common/storage-create-storage-account.md
 [Visual Studio Code]: https://code.visualstudio.com/
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md

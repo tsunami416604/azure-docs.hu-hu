@@ -5,12 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: a82d2317314c79a82fe80c5a25afc950fb728815
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: c677b0278d29c499d4369967c1c76132a1ae9d21
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76155196"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519847"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL kiszolgálói tűzfalszabályok
 A tűzfalak mindaddig megakadályozzák az adatbázis-kiszolgáló elérését, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. A tűzfal az egyes kérések származó IP-címe alapján engedélyezi a hozzáférést a kiszolgálóhoz.
@@ -65,8 +66,12 @@ Vegye figyelembe a következő szempontokat, amikor a MySQL-kiszolgáló szolgá
 
 * **Úgy tűnik, hogy a kiszolgáló IP-címe nyilvános:** A Azure Database for MySQL-kiszolgálóval létesített kapcsolatok egy nyilvánosan elérhető Azure-átjárón keresztül irányíthatók. A kiszolgáló tényleges IP-címét azonban tűzfal védi. További információért tekintse meg a [kapcsolati architektúráról szóló cikket](concepts-connectivity-architecture.md). 
 
-## <a name="next-steps"></a>További lépések
+* **Nem lehet kapcsolatot létesíteni az Azure-erőforrással az engedélyezett IP-címmel:** Győződjön meg arról, hogy engedélyezve van-e a **Microsoft. SQL** szolgáltatási végpontja azon az alhálózaton, amelyhez csatlakozik. Ha a **Microsoft. SQL** engedélyezve van, az azt jelzi, hogy csak a [VNet-szolgáltatás végponti szabályait](concepts-data-access-and-security-vnet.md) szeretné használni az adott alhálózaton.
+
+   Előfordulhat például, hogy a következő hiba jelenik meg, ha egy Azure-beli virtuális gépről csatlakozik egy olyan alhálózaton, amelyhez engedélyezve van a **Microsoft. SQL** , de nincs megfelelő VNet-szabálya:`FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Database for MySQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./howto-manage-firewall-using-portal.md)
 * [Azure Database for MySQL tűzfalszabályok létrehozása és kezelése az Azure CLI-vel](./howto-manage-firewall-using-cli.md)
-- [VNet szolgáltatásbeli végpontok a Azure Database for MySQL](./concepts-data-access-and-security-vnet.md)
+* [VNet szolgáltatásbeli végpontok a Azure Database for MySQL](./concepts-data-access-and-security-vnet.md)

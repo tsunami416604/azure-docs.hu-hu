@@ -8,11 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: e300bf9c9aa0acf0bed6426eb73f690f9a38bd74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75980429"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520749"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Streaming Customer bepillantást tartalmazó irányítópult létrehozása Azure Logic Apps és Azure Functions
 
@@ -21,7 +22,7 @@ Az Azure olyan [kiszolgáló](https://azure.microsoft.com/solutions/serverless/)
 Ebben a megoldásban a következő Azure-összetevőket használja a kiszolgáló nélküli alkalmazásokhoz: [Azure functions](https://azure.microsoft.com/services/functions/) és [Azure Logic apps](https://azure.microsoft.com/services/logic-apps/).
 A Azure Logic Apps kiszolgáló nélküli munkafolyamat-motort biztosít a felhőben, így összehangolhatja a kiszolgáló nélküli összetevőket, és csatlakozhat 200 + szolgáltatáshoz és API-hoz. Azure Functions kiszolgáló nélküli számítástechnikai szolgáltatásokat biztosít a felhőben. Ez a megoldás Azure Functions használ az ügyfelek tweetek megjelölésére előre definiált kulcsszavak alapján.
 
-Ebben a forgatókönyvben egy logikai alkalmazást hoz létre, amely elindítja az ügyfelek visszajelzéseit. Néhány összekötő, amely segítséget nyújt a felhasználói visszajelzések megválaszolásához, például a Outlook.com, az Office 365, a Survey Monkey, a Twitter és egy [webes űrlap http-kérelme](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/). A létrehozott munkafolyamat a Twitteren lévő hashtag-t figyeli.
+Ebben a forgatókönyvben egy logikai alkalmazást hoz létre, amely elindítja az ügyfelek visszajelzéseit. Néhány összekötő, amely segítséget nyújt a felhasználói visszajelzések megválaszolásához, például a Outlook.com, az Office 365, a Survey Monkey, a Twitter és egy [webes űrlap http-kérelme](/archive/blogs/logicapps/calling-a-logic-app-from-an-html-form). A létrehozott munkafolyamat a Twitteren lévő hashtag-t figyeli.
 
 [A teljes megoldást felépítheti a Visual Studióban](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) , és [Azure Resource Manager sablonnal is üzembe helyezheti a megoldást](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md). A megoldás létrehozásával kapcsolatos videós bemutatóban [tekintse meg ezt a Channel 9 videót](https://aka.ms/logicappsdemo). 
 
@@ -66,7 +67,7 @@ Létrehozhat egy Azure-függvényt is, amely segítségével egyéni feldolgozá
 
 ## <a name="process-data-with-azure-functions"></a>Az adatfeldolgozás Azure Functions
 
-A függvények létrehozása előtt hozzon létre egy Function alkalmazást az Azure-előfizetésében. Emellett ahhoz, hogy a logikai alkalmazás közvetlenül hívjon egy függvényt, a függvénynek rendelkeznie kell egy HTTP-trigger kötéssel, például használja a **HttpTrigger** sablont. Ismerje meg, [hogyan hozhatja létre az első Function-alkalmazást és-függvényt a Azure Portalban](../azure-functions/functions-create-first-azure-function-azure-portal.md).
+A függvények létrehozása előtt hozzon létre egy Function alkalmazást az Azure-előfizetésében. Emellett ahhoz, hogy a logikai alkalmazás közvetlenül hívjon egy függvényt, a függvénynek rendelkeznie kell egy HTTP-trigger kötéssel, például használja a **HttpTrigger** sablont. Ismerje meg, [hogyan hozhatja létre az első Function-alkalmazást és-függvényt a Azure Portalban](../azure-functions/functions-create-first-azure-function.md).
 
 Ebben az esetben a tweet szövege legyen az Azure-függvény kérés törzse. A függvény kódjában adja meg azt a logikát, amely meghatározza, hogy a tweet szövege tartalmaz-e kulcsszót vagy kifejezést. A függvényt a forgatókönyvhöz szükséges egyszerűként vagy összetettebbként tartsa meg.
 A függvény végén a logikai alkalmazásra adott válaszként egy adott adatra, például egy egyszerű logikai értékre (például `containsKeyword` vagy egy összetett objektumra) vonatkozó választ ad vissza.
@@ -107,7 +108,7 @@ A Logic app-megoldás létrehozása után [Azure Resource Manager sablonként](.
 
 Egy Azure-függvényt tartalmazó központi telepítési sablonhoz az [Azure Gyorsindítás sablon adattárában](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)tájékozódhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További példák és forgatókönyvek a Azure Logic Apps](logic-apps-examples-and-scenarios.md)
 

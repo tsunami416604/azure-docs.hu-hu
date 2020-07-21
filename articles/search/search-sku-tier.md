@@ -7,12 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 1f65feee8806b0c8dc85e14cdcd6e2687e040456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84119222"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519733"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Válasszon árképzési szintet az Azure Cognitive Search
 
@@ -22,14 +23,17 @@ A legtöbb ügyfél az ingyenes szintjével kezdődik, így kiértékelheti a sz
 
 ## <a name="feature-availability-by-tier"></a>A szolgáltatás rendelkezésre állása rétegek szerint
 
-Szinte minden szolgáltatás minden szinten elérhető, beleértve az ingyenes szolgáltatást is, de az erőforrás-igényes funkció vagy munkafolyamat nem működik megfelelően, kivéve, ha elegendő kapacitást biztosít. Például az [AI-dúsítás](cognitive-search-concept-intro.md) olyan hosszan futó képességekkel rendelkezik, amelyek egy ingyenes szolgáltatás esetében időtúllépést mutatnak, kivéve, ha az adatkészlet kicsi.
-
 Az alábbi táblázat a réteggel kapcsolatos szolgáltatások megkötéseit ismerteti.
 
-| Szolgáltatás | Korlátozások |
+| Funkció | Korlátozások |
 |---------|-------------|
 | [indexelők](search-indexer-overview.md) | Az indexelő nem érhető el az S3 HD-ben. |
+| [MI-bővítés](search-security-manage-encryption-keys.md) | Az ingyenes szinten fut, de nem ajánlott. |
 | [Ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) | Az ingyenes szinten nem érhető el. |
+| [IP-tűzfal-hozzáférés](service-configure-firewall.md) | Az ingyenes szinten nem érhető el. |
+| [Integráció az Azure Private linkkel](service-create-private-endpoint.md) | Az ingyenes szinten nem érhető el. |
+
+A legtöbb funkció minden szinten elérhető, beleértve az ingyenes, de az erőforrás-igényes funkciók nem működnek megfelelően, kivéve, ha elegendő kapacitást biztosít. Például az [AI-dúsítás](cognitive-search-concept-intro.md) olyan hosszan futó képességekkel rendelkezik, amelyek egy ingyenes szolgáltatás esetében időtúllépést mutatnak, kivéve, ha az adatkészlet kicsi.
 
 ## <a name="tiers-skus"></a>Rétegek (SKU)
 
@@ -56,10 +60,10 @@ További információt a [díjszabási oldalon](https://azure.microsoft.com/pric
 
 Az Azure Cognitive Search-ra épülő megoldások a következő módokon vehetik igénybe a költségeket:
 
-+ Magának a szolgáltatásnak a rögzített díja, nonstop futtatása, minimális konfiguráció esetén (egy partíció és egy replika)
-+ Növekményes díj a felskálázáskor (replikák vagy partíciók hozzáadása)
++ Magának a szolgáltatásnak a díja, nonstop futtatása, minimális konfiguráció esetén (egy partíció és egy replika)
++ Kapacitás (replikák vagy partíciók) hozzáadása
 + Sávszélességgel kapcsolatos díjak (kimenő adatforgalom) 
-+ Kognitív keresés (Cognitive Services csatlakoztatása AI-bővítéshez vagy az Azure Storage használata a Knowledge Store-hoz)
++ Kiegészítő szolgáltatások, például AI-bővítés (Cognitive Services csatolása az szakértelmével-ben, amely az AI-feldolgozást definiálja vagy az Azure Storage használata a Knowledge Store-hoz) vagy keresési szolgáltatás üzembe helyezése egy magánhálózati virtuális hálózaton
 
 ### <a name="service-costs"></a>Szolgáltatási költségek
 
@@ -71,7 +75,7 @@ Ha megbecsüli egy keresési megoldás költségét, ne feledje, hogy a díjszab
 
 ### <a name="bandwidth-charges"></a>Sávszélességgel kapcsolatos díjak
 
-Az [Azure Cognitive Search indexek](search-indexer-overview.md) használata a szolgáltatások helyétől függően a számlázásra is hatással lehet. Ha az Azure Cognitive Search szolgáltatást ugyanabban a régióban hozza létre, mint az adatait, teljes mértékben kiküszöbölheti az adatforgalom díját. Íme néhány információ a sávszélesség- [díjszabási lapról](https://azure.microsoft.com/pricing/details/bandwidth/):
+Az [Indexelő](search-indexer-overview.md) használata a szolgáltatások helyétől függően a számlázásra is hatással lehet. Ha az Azure Cognitive Search szolgáltatást ugyanabban a régióban hozza létre, mint az adatait, teljes mértékben kiküszöbölheti az adatforgalom díját. Íme néhány információ a sávszélesség- [díjszabási lapról](https://azure.microsoft.com/pricing/details/bandwidth/):
 
 + A Microsoft nem számít fel semmilyen beérkező adatforgalmat az Azure egyik szolgáltatására sem, sem az Azure-Cognitive Search kimenő adatait.
 + A többszolgáltatásos megoldásokban nem számítunk fel díjat a vezeték nélküli adatforgalomért, ha az összes szolgáltatás ugyanabban a régióban található.
@@ -107,7 +111,7 @@ A legtöbb ügyfél csak egy részét a teljes kapacitás online állapotba hely
 
 ## <a name="how-to-manage-costs"></a>A költségek kezelése
 
-A következő javaslatok segíthetnek a költségek minimális megtartásában:
+A következő javaslatok segítségével csökkentheti a költségeket, vagy hatékonyabban kezelheti a költségeket:
 
 + Hozza létre az összes erőforrást ugyanabban a régióban, vagy a lehető legkevesebb régióban, hogy csökkentse vagy eltávolítsa a sávszélességgel kapcsolatos díjakat.
 
@@ -140,7 +144,7 @@ A szolgáltatás üzemeltetésének kapacitása és költségei. A rétegek két
 
 Az üzleti követelmények általában a szükséges indexek számát írják elő. Előfordulhat például, hogy globális indexre van szüksége a dokumentumok nagyméretű tárházához. Vagy előfordulhat, hogy több indexre van szüksége a régió, az alkalmazás vagy az üzleti Niche alapján.
 
-Az indexek méretének meghatározásához [létre kell egyet](search-create-index-portal.md). A mérete az importált és az index konfiguráción alapul, például az, hogy engedélyezi-e a javaslatokat, a szűrést és a rendezést. További információ a mérettel kapcsolatos konfigurációs hatásról: [alapszintű index létrehozása ](search-what-is-an-index.md).
+Az indexek méretének meghatározásához [létre kell egyet](search-what-is-an-index.md). A mérete az importált és az index konfiguráción alapul, például az, hogy engedélyezi-e a javaslatokat, a szűrést és a rendezést.
 
 A teljes szöveges kereséshez az elsődleges adatstruktúra egy [fordított index](https://en.wikipedia.org/wiki/Inverted_index) -struktúra, amely különböző tulajdonságokkal rendelkezik, mint a forrásadatok. A fordított indexek esetében a méretet és az összetettséget a tartalom határozza meg, nem feltétlenül a betáplált adatmennyiség. Egy nagy redundanciával rendelkező nagyméretű adatforrás kisebb indexet eredményezhet, mint egy nagy mértékben változó tartalmat tartalmazó kisebb adathalmaz. Így ritkán lehet az index méretét az eredeti adatkészlet méretétől függően kikövetkeztetni.
 
@@ -154,7 +158,7 @@ A kapacitás becslésének egyik megközelítése az ingyenes szinten való kezd
 
 + [Hozzon létre egy ingyenes szolgáltatást](search-create-service-portal.md).
 + Készítsen elő egy kis, reprezentatív adatkészletet.
-+ [Hozzon létre egy kezdeti indexet a portálon](search-create-index-portal.md) , és jegyezze fel a méretét. A funkciók és attribútumok hatással vannak a tárterületre. Például a javaslatok hozzáadásával (keresési típusú lekérdezések) növelheti a tárolási követelményeket. Ha ugyanazt az adatkészletet használja, előfordulhat, hogy egy index több verzióját is létrehozhatja az egyes mezők különböző attribútumaival, hogy megtekintse, hogyan változnak a tárolási követelmények. További információkért lásd: [alapszintű index létrehozása "tárolási vonzatok"](search-what-is-an-index.md#index-size).
++ [Hozzon létre egy kezdeti indexet a portálon](search-get-started-portal.md) , és jegyezze fel a méretét. A funkciók és attribútumok hatással vannak a tárterületre. Például a javaslatok hozzáadásával (keresési típusú lekérdezések) növelheti a tárolási követelményeket. Ha ugyanazt az adatkészletet használja, előfordulhat, hogy egy index több verzióját is létrehozhatja az egyes mezők különböző attribútumaival, hogy megtekintse, hogyan változnak a tárolási követelmények. További információkért lásd: [alapszintű index létrehozása "tárolási vonzatok"](search-what-is-an-index.md#index-size).
 
 A durva becsléssel megduplázhatja ezt a költségvetést két index (fejlesztés és éles környezet) esetében, majd a szintet ennek megfelelően kiválaszthatja.
 
@@ -170,7 +174,7 @@ A dedikált erőforrások nagyobb mintavételezési és feldolgozási időt bizt
     + Ha tudja, hogy nagy léptékű indexelési és lekérdezési terheléssel fog rendelkezni, indítsa el a magas, S2-es vagy akár S3-as értékeket is.
     + Ha nagy mennyiségű adatmennyiséget indexel, és a lekérdezés terhelése viszonylag alacsony, mint egy belső üzleti alkalmazás esetében, az optimalizált tárolóval kezdődik az L1 vagy az L2.
 
-1. [Hozzon létre egy kezdeti indexet](search-create-index-portal.md) annak meghatározására, hogy a forrásadatok hogyan fordíthatók le egy indexre. Ez az egyetlen módszer az index méretének becslésére.
+1. [Hozzon létre egy kezdeti indexet](search-what-is-an-index.md) annak meghatározására, hogy a forrásadatok hogyan fordíthatók le egy indexre. Ez az egyetlen módszer az index méretének becslésére.
 
 1. A portálon [megfigyelheti a tárterületet, a szolgáltatási korlátokat, a lekérdezési kötetet és a késést](search-monitor-usage.md) . A portálon másodpercenként megjelennek a lekérdezések, a szabályozott lekérdezések és a keresési késések. Ezeknek az értékeknek a segítségével eldöntheti, hogy a megfelelő szintet választotta-e. 
 
@@ -200,7 +204,7 @@ Az ingyenes szint és az előzetes verzió funkciói nem biztosítanak [szolgál
 
 + Ne feledje, hogy a kiépítés alatti egyetlen hátránya, hogy előfordulhat, hogy le kell bontania egy szolgáltatást, ha a tényleges követelmények nagyobbak az előrejelzéseknél. A szolgáltatás megszakadásának elkerülése érdekében hozzon létre egy új szolgáltatást egy magasabb szintű szinten, és futtassa azt egymás mellett, amíg az összes alkalmazás és kérelem meg nem célozza az új végpontot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kezdje egy ingyenes csomaggal, és hozzon létre egy kezdeti indexet az adatok egy részhalmazának használatával, hogy megértse a jellemzőit. Az Azure Cognitive Search adatstruktúrája fordított index struktúra. A fordított index méretét és összetettségét a tartalom határozza meg. Ne feledje, hogy a nagyon redundáns tartalom általában kisebb indexet eredményez, mint a nagymértékben szabálytalan tartalom. Így az adatkészlet mérete helyett a tartalom jellemzői határozzák meg az index tárolási követelményeit.
 

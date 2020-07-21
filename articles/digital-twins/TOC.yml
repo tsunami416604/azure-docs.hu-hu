@@ -72,6 +72,10 @@
           href: how-to-manage-routes.md
         - name: Integrálás az Azure Mapsszel
           href: how-to-integrate-maps.md
+    - name: Hibaelhárítás
+      items:
+        - name: Ismert problémák
+          href: troubleshoot-known-issues.md
 - name: Referencia
   items:
     - name: Digital Twins szolgáltatási korlátok

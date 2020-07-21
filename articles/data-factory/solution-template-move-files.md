@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: 81f072822226e4a573cf0086cac7e64ca1cfe45f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6baea73c0c4964bb3937304603a2a92a13d52b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628163"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522720"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Fájlok áthelyezése Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Ez a cikk egy megoldás-sablont ismertet, amellyel a fájlokat áthelyezheti egyik mappából a másikba a fájl alapú tárolók között. A sablon használatának egyik leggyakoribb forgatókönyve: a fájlok folyamatosan el lesznek dobva a forrás-áruház egy leszálló mappájába. Az ütemezett triggerek létrehozásával az ADF-folyamat rendszeres időközönként áthelyezheti ezeket a fájlokat a forrásról a célhelyre.  Az ADF-folyamat a "fájlok áthelyezése" értékkel éri el a fájlokat a lekérési mappából, és mindegyiket egy másik mappába másolja a célhelyen, majd törli ugyanezeket a fájlokat a forrás-áruházban található kihelyezett mappából.
+Az ADF másolási tevékenység beépített támogatást nyújt az "áthelyezés" forgatókönyvhöz, amikor bináris fájlokat másol a tárolók között.  A "deleteFilesAfterCompletion" beállítás engedélyezése a másolási tevékenységben igaz. Ha így tesz, a másolási tevékenység a feladatok befejezése után törli a fájlokat az adatforrás-tárolóból. 
+
+Ez a cikk egy megoldási sablont mutat be egy másik módszerként, amely az ADF rugalmas vezérlési folyamatát, valamint a másolási tevékenységet és a törlési tevékenységet alkalmazza ugyanazon forgatókönyv eléréséhez. A sablon használatának egyik leggyakoribb forgatókönyve: a fájlok folyamatosan el lesznek dobva a forrás-áruház egy leszálló mappájába. Az ütemezett triggerek létrehozásával az ADF-folyamat rendszeres időközönként áthelyezheti ezeket a fájlokat a forrásról a célhelyre.  Az ADF-folyamat a "fájlok áthelyezése" értékkel éri el a fájlokat a lekérési mappából, és mindegyiket egy másik mappába másolja a célhelyen, majd törli ugyanezeket a fájlokat a forrás-áruházban található kihelyezett mappából.
 
 > [!NOTE]
 > Vegye figyelembe, hogy a sablon úgy lett kialakítva, hogy a mappák áthelyezése helyett fájlokat helyezzen át.  Ha úgy szeretné áthelyezni a mappát, hogy úgy módosítja az adatkészletet, hogy csak a mappa elérési útját tartalmazza, majd a másolási tevékenység és a törlés tevékenység használatával ugyanarra az adatkészletre hivatkozzon, amely egy mappát jelképez, nagyon Körültekintőnek kell lennie. Ennek az az oka, hogy meg kell győződnie arról, hogy a másolási művelet és a törlési művelet között nem lesznek új fájlok a mappába. Ha a másolási tevékenység csak a másolási művelet befejezése után új fájlok érkeznek, de a törlési tevékenység nem lett kitöltve, lehetséges, hogy a törlési tevékenység törli ezt az új, a célhelyre még nem másolt fájlt, a teljes mappa törlésével.
@@ -68,7 +70,7 @@ A sablon négy paramétert határoz meg:
 
     ![Az eredmény áttekintése](media/solution-template-move-files/move-files6.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Új és módosított fájlok másolása a LastModifiedDate használatával Azure Data Factory](solution-template-copy-new-files-lastmodifieddate.md)
 

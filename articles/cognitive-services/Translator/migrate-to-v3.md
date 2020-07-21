@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8fae863c03ccbc17e9ec6621e73ddf475f759569
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: fb907e0b9c923a77c6956723f6df397fabd84da8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996210"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523978"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator v2 – v3 Migrálás
 
@@ -49,8 +49,8 @@ A v2 és v3 metódusok következő listája a v2-vel kapott funkciókat biztosí
 | `GetLanguagesForTranslate`     | [Nyelvek](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| `Detect`     | [Észlelés](reference/v3-0-detect.md)         |
-| `DetectArray`     | [Észlelés](reference/v3-0-detect.md)         |
+| `Detect`     | [Kinyomoz](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Kinyomoz](reference/v3-0-detect.md)         |
 | `AddTranslation`     | A szolgáltatás már nem támogatott       |
 | `AddTranslationArray`    | A szolgáltatás már nem támogatott          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
@@ -116,8 +116,8 @@ A Microsoft Translator v3 alapértelmezés szerint neurális gépi fordítást h
 
 A v3 Text API-val való neurális fordítás nem támogatja a szabványos kategóriák használatát (SMT, Speech, Tech, generalnn).
 
-| |Végpont|    GDPR processzor megfelelősége|    Translator hub használata|    Egyéni fordító használata (előzetes verzió)|
-|:-----|:-----|:-----|:-----|:-----|
+| Verzió | Végpont | GDPR processzor megfelelősége | Translator hub használata | Egyéni fordító használata (előzetes verzió) |
+| :------ | :------- | :------------------------ | :----------------- | :------------------------------ |
 |Translator 2. verzió|    api.microsofttranslator.com|    Nem    |Igen    |Nem|
 |Translator 3. verzió|    api.cognitive.microsofttranslator.com|    Igen|    Nem|    Igen|
 
@@ -143,7 +143,7 @@ A fordító egyik verziója sem hoz létre egy rekordot a fordításokról. A fo
 * [Jogi információk Microsoft Azure](https://azure.microsoft.com/support/legal)
 * [Online szolgáltatások használati feltételei](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A V 3.0 dokumentációjának megtekintése](reference/v3-0-reference.md)

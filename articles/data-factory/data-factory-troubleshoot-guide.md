@@ -8,11 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: ac6081f02ad532b512ecca335b949eec71c060ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 568739ebdce632ae955da5e1cec12635c86af57c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83836158"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522856"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Az Azure Data Factory hibaelhárítása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -122,6 +123,14 @@ A másolási tevékenységgel kapcsolatos kapcsolódási hibák, például a kö
 - **OK**: a hibaüzenetek különböző problémákat jeleznek, például egy váratlan fürt állapotát vagy egy adott tevékenységet. Gyakran nem jelenik meg hibaüzenet.
 
 - **Javaslat**: N/A
+
+### <a name="error-code-3208"></a>Hibakód: 3208
+
+- **Üzenet**:`An error occurred while sending the request.`
+
+- **OK**: a Databricks szolgáltatáshoz való hálózati kapcsolódás megszakadt.
+
+- **Javaslat**: Ha saját üzemeltetésű integrációs modult használ, győződjön meg arról, hogy a hálózati kapcsolatok megbízhatók az Integration Runtime csomópontjain. Ha Azure Integration Runtime-t használ, az Újrapróbálkozás általában működik.
  
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
@@ -1045,7 +1054,7 @@ A **Hegedűs** használata a figyelt webalkalmazás http-munkamenetének létreh
 
 További információ: [Bevezetés a Hegedűs](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)használatába.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További hibaelhárítási segítségért próbálja ki ezeket az erőforrásokat:
 

@@ -4,18 +4,20 @@ description: API az ajánlat összes műveletének lekéréséhez, vagy egy adot
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 04/08/2020
-ms.openlocfilehash: c0611cb3cbc24e2b105cdef134e30a7c2fbdd445
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: dsindona
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 90ff7c4a85fd9e48ac3aa49ace99f43eb0244603
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113462"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520289"
 ---
 # <a name="retrieve-operations"></a>Műveletek lekérése
 
 > [!NOTE]
-> A Cloud Partner Portal API-k integrálva vannak a partneri központtal, és továbbra is működni fognak, miután az ajánlatokat áttelepítik a partner központba. Az integráció kis változásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működni fog a partneri központba való Migrálás után.
+> A Cloud Partner Portal API-k integrálva vannak a-vel, és továbbra is működnek a partner Centerben. Az áttérés kis változásokat mutat be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működőképes legyen a partneri központba való áttérés után. A CPP API-kat csak olyan meglévő termékekhez szabad használni, amelyek már integrálva lettek a partneri központba való áttérés előtt. az új termékeknek a partner Center beküldési API-kat kell használniuk.
 
 Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasása a megadott operationId. Előfordulhat, hogy az ügyfél lekérdezési paramétereket használ a futó műveletek szűréséhez.
 
@@ -27,10 +29,9 @@ Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasás
 
 ```
 
-
 ## <a name="uri-parameters"></a>URI-paraméterek
 
-|  **Name (Név)**          |      **Leírás**                                                                                           | **Adattípus** |
+|  **Név**          |      **Leírás**                                                                                           | **Adattípus** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  publisherId       |  Közzétevő azonosítója, például:`Contoso`                                                                   |  Sztring       |
 |  offerId           |  Ajánlat azonosítója                                                                                              |  Sztring       |
@@ -40,17 +41,15 @@ Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasás
 
 ## <a name="header"></a>Fejléc
 
-
-|  **Name (Név)**          |  **Érték**           |
+|  **Név**          |  **Érték**           |
 |  ---------------   | -------------------- |
 |  Content-Type      | `application/json`   |
 |  Engedélyezés     | `Bearer YOUR_TOKEN`  |
 |  |  |
 
-
 ## <a name="body-example"></a>Példa szövegtörzsre
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 #### <a name="get-operations"></a>Műveletek beolvasása
 
@@ -170,7 +169,7 @@ Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasás
 
 ### <a name="response-body-properties"></a>Válasz törzsének tulajdonságai
 
-|  **Name (Név)**                    |  **Leírás**                                                                                  |
+|  **Név**                    |  **Leírás**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | A műveletet egyedileg azonosító GUID                                                       |
 |  submissionType              | Meghatározza az ajánlathoz jelentett művelet típusát, például:`Publish/GoLive`      |
@@ -182,7 +181,7 @@ Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasás
 
 ### <a name="response-step-properties"></a>Válasz lépés tulajdonságai
 
-|  **Name (Név)**                    |  **Leírás**                                                                                  |
+|  **Név**                    |  **Leírás**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 | estimatedTimeFrame | A művelet becsült időtartama |
 | id | A lépés folyamatának egyedi azonosítója |
@@ -195,7 +194,7 @@ Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasás
 
 ### <a name="response-status-codes"></a>Válasz-állapotkódok
 
-| **Code**  |   **Leírás**                                                                                  |
+| **Kód**  |   **Leírás**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
 |  200      | `OK`– A kérés feldolgozása sikeres volt, és a kért művelet (ek) vissza lettek küldve.        |
 |  400      | `Bad/Malformed request`– A hiba-válasz törzse több információt is tartalmazhat.                    |

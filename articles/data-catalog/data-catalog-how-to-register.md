@@ -4,16 +4,17 @@ description: Ez a cikk bemutatja, hogyan regisztrálhat adatforrásokat Azure Da
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 0c5fdac7df41fec3a6206dbd78af74b7f1b58c7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8c6c6e33577fe3d49d8f0c7a94a941827f5cf68
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68736322"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523434"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Adatforrások regisztrálása a Azure Data Catalogban
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 A Azure Data Catalog egy teljes körűen felügyelt felhőalapú szolgáltatás, amely a vállalati adatforrások regisztrálási és felderítési rendszereként szolgál. Más szóval a Data Catalog segít az embereknek felderíteni, értelmezni és használni az adatforrásokat, és segít a szervezeteknek a meglévő adatokból származó további értékek megszerzésében. Az adatforrások Data Catalogon keresztüli felderíthetővé tételének első lépése az adatforrás regisztrálása.
 
 ## <a name="register-data-sources"></a>Adatforrások regisztrálása
@@ -73,8 +74,8 @@ Az adatforrások regisztrálása a Data Catalog során felderíthetővé teszi a
 
 Egy már regisztrált adatforrás újbóli regisztrálása "upsert" műveletet hajt végre: a meglévő objektumok frissülnek, és új objektumok jönnek létre. A felhasználók által a Data Catalog portálon biztosított metaadatok megmaradnak.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Mivel az adatforrásból származó strukturális és leíró metaadatokat másolja a Catalog szolgáltatásba, az adatforrást a Data Catalogban regisztrálva az adatok könnyebben felderíthető és megérthetővé válik. Miután regisztrálta az adatforrást, a Data Catalog-portálon láthatja, felügyelheti és derítheti fel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az adatforrások regisztrálásával kapcsolatos további információkért tekintse meg az [első lépések Azure Data Catalog](data-catalog-get-started.md) oktatóanyagot.

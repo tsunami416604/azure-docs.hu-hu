@@ -4,20 +4,20 @@ description: Az ajánlaton jelenleg folyamatban lévő művelet megszakításár
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: anbene
+author: emuench
 ms.author: mingshen
-ms.date: 06/16/2020
-ms.openlocfilehash: e65f0a8ee0a5dfafab681010006fe190cb5bad70
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/14/2020
+ms.openlocfilehash: 462ca525be9cf46c87acdf4025223a98afaf8e3b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102752"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520374"
 ---
 # <a name="cancel-operation"></a>Művelet megszakítása
 
 > [!NOTE]
-> A Cloud Partner Portal API-k integrálva vannak a partneri központtal, és továbbra is működni fognak, miután az ajánlatokat áttelepítik a partner központba. Az integráció kis változásokat vezet be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működni fog a partneri központba való Migrálás után.
+> A Cloud Partner Portal API-k integrálva vannak a-vel, és továbbra is működnek a partner Centerben. Az áttérés kis változásokat mutat be. Tekintse át a [Cloud Partner Portal API-hivatkozásban](./cloud-partner-portal-api-overview.md) felsorolt módosításokat, hogy a kód továbbra is működőképes legyen a partneri központba való áttérés után. A CPP API-kat csak olyan meglévő termékekhez szabad használni, amelyek már integrálva lettek a partneri központba való áttérés előtt. az új termékeknek a partner Center beküldési API-kat kell használniuk.
 
 Ez az API megszakítja az ajánlaton jelenleg folyamatban lévő műveletet. Az [Operations API beolvasása](./cloud-partner-portal-api-retrieve-operations.md) paranccsal továbbíthatja ezt az API-t `operationId` . A megszakítás általában egy szinkron művelet, azonban bizonyos összetett forgatókönyvek esetén új műveletre lehet szükség a meglévő megszakítása érdekében. Ebben az esetben a HTTP-válasz törzse tartalmazza a művelet azon helyét, amelyet az állapot lekérdezéséhez kell használni.
 
@@ -27,7 +27,7 @@ Ez az API megszakítja az ajánlaton jelenleg folyamatban lévő műveletet. Az 
 
 --------------
 
-|  **Name (Név)**    |      **Leírás**                                  |    **Adattípus**  |
+|  **Név**    |      **Leírás**                                  |    **Adattípus**  |
 | ------------ |     ----------------                                  |     -----------   |
 | publisherId  |  Közzétevő azonosítója, például:`contoso`         |   Sztring          |
 | offerId      |  Ajánlat azonosítója                                     |   Sztring          |
@@ -37,7 +37,7 @@ Ez az API megszakítja az ajánlaton jelenleg folyamatban lévő műveletet. Az 
 ## <a name="header"></a>Fejléc
 ------
 
-|  **Name (Név)**              |  **Érték**         |
+|  **Név**              |  **Érték**         |
 |  ---------             |  ----------        |
 |  Content-Type          |  application/json  |
 |  Engedélyezés         |  A TOKEN birtokosa |
@@ -46,7 +46,7 @@ Ez az API megszakítja az ajánlaton jelenleg folyamatban lévő műveletet. Az 
 ## <a name="body-example"></a>Példa szövegtörzsre
 ------------
 
-### <a name="request"></a>Kérés
+### <a name="request"></a>Kérelem
 
 ``` json
 {
@@ -58,12 +58,12 @@ Ez az API megszakítja az ajánlaton jelenleg folyamatban lévő műveletet. Az 
 
 ### <a name="request-body-properties"></a>Kérelem törzsének tulajdonságai
 
-|  **Name (Név)**                |  **Leírás**                                               |
+|  **Név**                |  **Leírás**                                               |
 |  --------                |  ---------------                                               |
 |  értesítés – e-mailek     | Az e-mail-azonosítók vesszővel tagolt listája, amelyekről értesíteni kell a közzétételi művelet állapotát. |
 |  |  |
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 #### <a name="migrated-offers"></a>Áttelepített ajánlatok
 
@@ -75,14 +75,14 @@ Ez az API megszakítja az ajánlaton jelenleg folyamatban lévő műveletet. Az 
 
 ### <a name="response-header"></a>Válaszfejléc
 
-|  **Name (Név)**             |    **Érték**                       |
+|  **Név**             |    **Érték**                       |
 |  ---------            |    ----------                      |
 | Hely    | A művelet állapotának lekéréséhez szükséges relatív elérési út. |
 |  |  |
 
 ### <a name="response-status-codes"></a>Válasz-állapotkódok
 
-| **Code**  |  **Leírás**                                                                       |
+| **Kód**  |  **Leírás**                                                                       |
 |  ------   |  ------------------------------------------------------------------------               |
 |  200      | oké. A rendszer sikeresen feldolgozta a kérést, és a művelet szinkron módon megszakítva. |
 |  202      | Elfogadott. A rendszer sikeresen feldolgozta a kérést, és a művelet megszakítása folyamatban van. A visszavonási művelet helye a válasz fejlécében lesz visszaadva. |

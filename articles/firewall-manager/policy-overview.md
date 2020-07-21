@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 88b7dc60b865325ef7dcd9e79015fdee10b4f9a2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6e532634fb40eee100e73a333ac6aa7e0a79cf3c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563709"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521649"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Azure Firewall Manager-házirend áttekintése
 
@@ -47,8 +47,8 @@ A NAT-szabályok gyűjteményei nem öröklődnek, mert egy adott tűzfalra vona
 A Azure Firewall a hagyományos szabályokat és szabályzatokat is támogatja. A következő táblázat összehasonlítja a szabályzatokat és a szabályokat:
 
 
-|         |Szabályzat  |Szabályok  |
-|---------|---------|---------|
+| Tárgy | Szabályzat  | Szabályok |
+| ------- | ------- | ----- |
 |Contains     |NAT, hálózat, alkalmazás-szabályok, egyéni DNS-és DNS-proxybeállítások, IP-csoportok és fenyegetések intelligencia-beállításai (beleértve az engedélyezési listát)|NAT-, hálózati és alkalmazás-szabályok, egyéni DNS-és DNS-proxybeállítások, IP-csoportok és fenyegetések intelligencia-beállításai (beleértve az engedélyezési listát)|
 |Védi     |Virtuális hubok és virtuális hálózatok|Csak virtuális hálózatok|
 |Portal-felület     |Központi felügyelet a Firewall Manager használatával|Önálló tűzfal-élmény|
@@ -60,6 +60,6 @@ A Azure Firewall a hagyományos szabályokat és szabályzatokat is támogatja. 
 
 A szabályzatok a tűzfal-társítások alapján lesznek kiszámlázva. Egy nulla vagy egy tűzfal társítással rendelkező szabályzat díjmentes. A több tűzfallal foglalkozó szabályzatot rögzített díjszabás szerint számítjuk fel. További információ: [Azure Firewall Manager díjszabása](https://azure.microsoft.com/pricing/details/firewall-manager/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Firewall telepítésének megismeréséhez tekintse meg [az oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Managerrel a Azure Portal használatával](secure-cloud-network.md)című témakört.

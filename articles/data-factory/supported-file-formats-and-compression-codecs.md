@@ -1,21 +1,22 @@
 ---
-title: A Azure Data Factory támogatott fájlformátumai
-description: Ez a témakör azokat a fájlformátumokat és tömörítési kódokat ismerteti, amelyeket a Azure Data Factory található fájl alapú összekötők támogatnak.
+title: A másolási tevékenység által támogatott fájlformátumok Azure Data Factory
+description: Ez a témakör azokat a fájlformátumokat és tömörítési kódokat ismerteti, amelyeket a Azure Data Factory másolási tevékenysége támogat.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 07/16/2020
 ms.author: jingwang
-ms.openlocfilehash: 24edeb686136a1264d75e81fd9527feff3d17c48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c044208699bf5bebb6383cfef00bf53b744369d0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84191089"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522439"
 ---
-# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Támogatott fájlformátumok és tömörítési kodekek a Azure Data Factory
+# <a name="supported-file-formats-and-compression-codecs-by-copy-activity-in-azure-data-factory"></a>Támogatott fájlformátumok és tömörítési kodekek másolási tevékenységgel Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 *Ez a cikk az alábbi összekötőket érinti [: Amazon S3](connector-amazon-simple-storage-service.md), [azure blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure file Storage](connector-azure-file-storage.md), [File System](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)és [SFTP](connector-sftp.md).*
@@ -32,7 +33,7 @@ Emellett egy adott formátumú fájlokat is elemezheti vagy létrehozhatja. Pél
 * Adatok másolása gzip tömörített szövegfájlba (CSV) az Azure Blob Storage-ból, és a Azure SQL Databasebe írás.
 * Számos további tevékenység, amelyek szerializálást/deszerializálást vagy tömörítést/kibontást igényelnek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Lásd a másolási tevékenység egyéb cikkeit:
 

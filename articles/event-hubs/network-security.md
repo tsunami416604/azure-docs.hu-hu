@@ -3,12 +3,12 @@ title: Hálózati biztonság az Azure Event Hubs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a hozzáférés a privát végpontokról
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: de4c5c6ddc658aab549ccf6960edbca3285e338d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddb816e872625da06e370a7e130b4dd444de8de7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312842"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521853"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Hálózati biztonság az Azure Event Hubs 
 Ez a cikk azt ismerteti, hogyan használható az Azure Event Hubs a következő biztonsági funkciókkal: 
@@ -24,7 +24,7 @@ A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csopo
 
 A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/security-overview.md#security-rules)   vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például **EventHub**) megadásával a szabály megfelelő *forrás*   vagy *cél*   mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
 
-| Szolgáltatáscímke | Szerep | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
+| Szolgáltatáscímke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **EventHub** | Azure Event Hubs. | Kimenő | Igen | Igen |
 
@@ -32,7 +32,7 @@ A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](.
 ## <a name="ip-firewall"></a>IP-tűzfal 
 Alapértelmezés szerint a Event Hubs névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
 
-Ez a funkció olyan helyzetekben hasznos, amikor az Azure Event Hubs csak bizonyos jól ismert helyekről elérhető. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekből származó forgalom fogadásához. Ha például az [Azure Express Route](/azure/expressroute/expressroute-faqs#supported-services)Event Hubst használja, létrehozhat egy **tűzfalszabályet** , amely lehetővé teszi, hogy csak a helyszíni infrastruktúra IP-címeiről érkező forgalmat engedélyezze. 
+Ez a funkció olyan helyzetekben hasznos, amikor az Azure Event Hubs csak bizonyos jól ismert helyekről elérhető. A tűzfalszabályok lehetővé teszik a szabályok konfigurálását az adott IPv4-címekből származó forgalom fogadásához. Ha például az [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services)Event Hubst használja, létrehozhat egy **tűzfalszabályet** , amely lehetővé teszi, hogy csak a helyszíni infrastruktúra IP-címeiről érkező forgalmat engedélyezze. 
 
 Az IP-tűzfalszabályok a Event Hubs névtér szintjén lesznek alkalmazva. Ezért a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával. Olyan IP-címről érkező csatlakozási kísérletek, amely nem felel meg a Event Hubs névtérben lévő engedélyezett IP-szabálynak, a rendszer nem engedélyezettként fogadja el. A válasz nem említi az IP-szabályt. Az IP-szűrési szabályok sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
 
@@ -81,7 +81,7 @@ A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcso
 További információ: [privát végpontok konfigurálása az Event hub-hoz](private-link-service.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Az IP-tűzfal konfigurálása az Event hub esetében](event-hubs-ip-filtering.md)

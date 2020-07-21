@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4863ff0005f09ca325125667062455357687fdd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82144342"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521139"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Üzenetek küldése, fogadása és kötegelt feldolgozása Azure Logic Apps
 
@@ -37,7 +37,7 @@ Vagy regisztráljon az utólagos elszámolású [előfizetésre](https://azure.m
 * E-mail-fiók minden [Azure Logic apps által támogatott e-mail-szolgáltatóval](../connectors/apis-list.md)
 
   > [!IMPORTANT]
-  > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -218,7 +218,7 @@ A Batch-küldő logikai alkalmazás percenként fut, és egy véletlenszerűen g
 > [!IMPORTANT]
 > Ha végzett a teszteléssel, győződjön meg arról, hogy letiltotta a BatchSender logikai alkalmazást az üzenetek küldésének leállításához és a beérkezett fájlok túlterhelésének elkerüléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [EDI-üzenetek kötegelése és küldése](../logic-apps/logic-apps-scenario-edi-send-batch-messages.md)
 * [A Logic app-definíciók létrehozása JSON használatával](../logic-apps/logic-apps-author-definitions.md)

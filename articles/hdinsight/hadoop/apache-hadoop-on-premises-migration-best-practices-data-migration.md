@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: b48a2ef65aeb6e8de784c7443cf4be527197464a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 9794dd47949dc7dea891893dbcf261808ab335fd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081808"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521377"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>Helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight – az adatáttelepítés ajánlott eljárásai
 
@@ -36,9 +36,8 @@ Két fő lehetőség áll rendelkezésre a helyszíni adatok Azure-környezetbe 
 
 Az alábbi táblázat az adatmennyiség és a hálózati sávszélesség alapján közelíti meg az adatátviteli időtartamot. Adatmező használata, ha az adatáttelepítés várhatóan három hétig is eltarthat.
 
-|Adatmennyiség|Hálózati sávszélesség||||
-|---|---|---|---|---|
-|| **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**|
+|Adatmennyiség | Hálózati sávszélesség<br>/<br>**45 Mbps (T3)**|Hálózati sávszélesség<br>/<br>**100 Mbit/s**|Hálózati sávszélesség<br>/<br>**1 Gbit/s**|Hálózati sávszélesség<br>/<br>**10 Gbit/s**|
+|---|:---:|:---:|:---:|:---:|
 |1 TB|2 nap|1 nap| 2 óra|14 perc|
 |10 TB|22 nap|10 nap|1 nap|2 óra|
 |35 TB|76 nap|34 nap|3 nap|8 óra|
@@ -115,7 +114,7 @@ A struktúra metaadattár áttelepíthetők a parancsfájlok használatával vag
 - Alakítsa át a helyszíni HDFS-alapú útvonalakat a WASB/ADLS-ra egy olyan eszköz használatával, mint az XSLT.
 - Importálja a szabályzatokat a HDInsight-on futó Rangerre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a következő cikket a sorozatban:
 

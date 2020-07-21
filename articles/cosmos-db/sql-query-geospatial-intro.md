@@ -6,11 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bb7fd69073dbc960904e8f7b44459ed85e98cdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79367584"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86523519"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Térinformatikai és GeoJSON helye Azure Cosmos DB
 
@@ -20,9 +21,19 @@ Ez a cikk a Azure Cosmos DB térinformatikai funkciójának bevezetését ismert
 * Hogyan lehet lekérdezni a térinformatikai adatAzure Cosmos DB az SQL és a LINQ szolgáltatásban?
 * Hogyan engedélyezheti vagy letilthatja a térbeli indexelést a Azure Cosmos DBban?
 
+## <a name="spatial-data-use-cases"></a>Térbeli adatfelhasználási esetek
+
+A térinformatikai adatai gyakran tartalmaznak közelségi lekérdezéseket, például "a jelenlegi tartózkodási helyük közelében található összes kávézó megkeresése". Gyakori használati esetek:
+
+* Térinformatikai elemzések, meghatározott marketing-kezdeményezések.
+* Hely-alapú személyre szabás, több iparág, mint például a kiskereskedelmi és az egészségügyi szolgáltatások.
+* Logisztikai fejlesztés, átviteli optimalizálás.
+* Kockázatelemzés, különösen a biztosítási és pénzügyi vállalatok számára.
+* A riasztások és értesítések esetén a helyzet ismerete.
+
 ## <a name="introduction-to-spatial-data"></a>A térbeli adatainak bemutatása
 
-A térbeli adatmennyiségek a térben lévő objektumok helyzetét és alakját ismertetik. A legtöbb alkalmazásban ezek a föld és a térinformatikai adat objektumainak felelnek meg. A térbeli adat használható egy személy, egy hely vagy egy város határának, illetve egy-tó helyének a jelölésére. Gyakori használati esetek gyakran tartalmaznak közelségi lekérdezéseket, például "az aktuális hely közelében található összes kávézó megkeresése".
+A térbeli adatmennyiségek a térben lévő objektumok helyzetét és alakját ismertetik. A legtöbb alkalmazásban ezek a föld és a térinformatikai adat objektumainak felelnek meg. A térbeli adat használható egy személy, egy hely vagy egy város határának, illetve egy-tó helyének a jelölésére.
 
 A Azure Cosmos DB SQL API két térbeli adattípust támogat: a **geometria** adattípust és a **Földrajz** adattípust.
 
@@ -200,7 +211,7 @@ await container.CreateItemAsync( new UserProfile
 
 Ha nem rendelkezik a szélességi és a hosszúsági adatokkal, de a fizikai címeket vagy a hely nevét, például a várost vagy az országot/régiót, megkeresheti a tényleges koordinátákat egy olyan helymeghatározáshoz-szolgáltatás használatával, mint a Bing Maps REST Services. További információ a Bing Maps helymeghatározáshoz [itt](https://msdn.microsoft.com/library/ff701713.aspx).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megtanulta, hogyan kezdheti meg a térinformatikai támogatás használatát Azure Cosmos DBban, a következő lehetőségekkel:
 

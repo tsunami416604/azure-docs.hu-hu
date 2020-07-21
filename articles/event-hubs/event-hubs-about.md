@@ -3,15 +3,15 @@ title: Mi az Azure Event Hubs? – Big adatfeldolgozási szolgáltatás | Micros
 description: További tudnivalók az Azure Event Hubsról, amely egy másodpercenként több millió eseményt feldolgozó Big Data streamszolgáltatás.
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 175f7e249e02d5c85dd38cf49821b2893de159a3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: b442a7e0b10f3f882f12943c642ccdd6feef3114
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314260"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522108"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – A big data streaming platform és az esemény-betöltési szolgáltatás
-Az Azure Event Hubs egy big data streaming platform és esemény-betöltési szolgáltatás. Másodpercenként több millió eseményt képes fogadni és feldolgozni. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
+Az Azure Event Hubs egy big data streaming platform és esemény-betöltési szolgáltatás. Másodpercenként több millió esemény fogadására és feldolgozására képes. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók.
 
 A következő forgatókönyvek néhány olyan forgatókönyvet érintenek, amelyekben a Event Hubs használható:
 
@@ -44,7 +44,7 @@ Valós időben töltheti be, pufferelheti, tárolhatja és dolgozhatja fel a str
 
 Az adatok közel valós idejű [rögzítése](event-hubs-capture-overview.md) [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) -ban vagy [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)   a hosszú távú adatmegőrzéshez vagy a mikro-kötegelt feldolgozáshoz. Ezt a viselkedést a valós idejű elemzések elvégzéséhez használt adatfolyamon érheti el. Az események rögzítésének beállítása gyors. Nincs felügyeleti költség a futtatásához, és a rendszer automatikusan méretezi Event Hubs [átviteli egységekkel](event-hubs-scalability.md#throughput-units). A Event Hubs lehetővé teszi az adatfeldolgozásra koncentrálva az adatrögzítés helyett.
 
-Az Azure Event Hubs az [Azure Functions](/azure/azure-functions/) szolgáltatással is integrálható egy kiszolgáló nélküli architektúra keretein belül.
+Az Azure Event Hubs az [Azure Functions](../azure-functions/index.yml) szolgáltatással is integrálható egy kiszolgáló nélküli architektúra keretein belül.
 
 ## <a name="scalable"></a>Méretezhető
 
@@ -74,10 +74,10 @@ A Event Hubs on Azure Stack hub lehetővé teszi a hibrid Felhőbeli forgatókö
 
 A Event Hubs kiadásai (Azure Stack hub és az Azure-on) magas fokú szolgáltatási paritást kínálnak. Ez a paritás azt jelenti, hogy az SDK-k, minták, PowerShell, CLI és portálok hasonló élményt nyújtanak, néhány különbséggel. 
 
-A nyilvános előzetes verzióban a Event Hubs on stack ingyenes. További információ: [Event Hubs Azure stack hub – áttekintés](https://docs.microsoft.com/azure-stack/user/event-hubs-overview).
+A nyilvános előzetes verzióban a Event Hubs on stack ingyenes. További információ: [Event Hubs Azure stack hub – áttekintés](/azure-stack/user/event-hubs-overview).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Event Hubs használatának megkezdéséhez tekintse meg az **események küldése és fogadása** oktatóanyagokat:
 
@@ -94,5 +94,3 @@ Az Event Hubsszal kapcsolatos további információkért olvassa el a következ�
 
 - [Az Event Hubs-szolgáltatások áttekintése](event-hubs-features.md)
 - [Gyakran ismételt kérdések](event-hubs-faq.md).
-
-

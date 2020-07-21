@@ -7,14 +7,14 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: c832634a4b9154ec800da8c8ff25c6d81c620e9f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 95a999f38104e0bb3cfd6a510bd8f9e3d5440562
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610151"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521088"
 ---
-# <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault integrálása az Azure Private-hivatkozással
+# <a name="integrate-key-vault-with-azure-private-link"></a>A Key Vault és az Azure Private Link integrálása
 
 Az Azure Private link Service lehetővé teszi az Azure-szolgáltatások (például az Azure Key Vault, az Azure Storage és a Azure Cosmos DB) és az Azure által üzemeltetett ügyfél-és partneri szolgáltatások elérését a virtuális hálózat privát végpontján keresztül.
 
@@ -66,7 +66,7 @@ Ekkor megtekintheti a konfigurált privát végpontot. Most már lehetősége va
 
 Ha már rendelkezik kulcstartóval, a következő lépések végrehajtásával hozhat létre privát kapcsolati kapcsolatot:
 
-1. Jelentkezzen be az Azure portálra. 
+1. Jelentkezzen be az Azure Portalra. 
 1. A keresősáv mezőbe írja be a "Key Vaults" kifejezést.
 1. Válassza ki a kulcstárolót a listából, amelyhez privát végpontot szeretne hozzáadni.
 1. Válassza a "hálózatkezelés" fület a beállítások alatt.
@@ -126,6 +126,17 @@ az network private-dns zone create --resource-group {RG} --name privatelink.vaul
 ```console
 az network private-dns link vnet create --resource-group {RG} --virtual-network {vNet NAME} --zone-name privatelink.vaultcore.azure.net --name {dnsZoneLinkName} --registration-enabled true
 ```
+### <a name="add-private-dns-records"></a>saját DNS rekordok hozzáadása
+```console
+# https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
+az network private-dns zone list -g $rg_name
+az network private-dns record-set a add-record -g $rg_name -z "privatelink.vaultcore.azure.net" -n $vault_name -a $kv_network_interface_private_ip
+az network private-dns record-set list -g $rg_name -z "privatelink.vaultcore.azure.net"
+
+# From home/public network, you wil get a public IP. If inside a vnet with private zone, nslookup will resolve to the private ip.
+nslookup $vault_name.vault.azure.net
+nslookup $vault_name.privatelink.vaultcore.azure.net
+```
 ### <a name="create-a-private-endpoint-automatically-approve"></a>Privát végpont létrehozása (automatikus jóváhagyás) 
 ```console
 az network private-endpoint create --resource-group {RG} --vnet-name {vNet NAME} --subnet {subnet NAME} --name {Private Endpoint Name}  --private-connection-resource-id "/subscriptions/{AZURE SUBSCRIPTION ID}/resourceGroups/{RG}/providers/Microsoft.KeyVault/vaults/ {KEY VAULT NAME}" --group-ids vault --connection-name {Private Link Connection Name} --location {AZURE REGION}
@@ -146,7 +157,7 @@ Négy kiépítési állapot létezik:
 
 | Szolgáltatás-nyújtási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
-| Nincs | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| Egyik sem | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
 | Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
 | Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |

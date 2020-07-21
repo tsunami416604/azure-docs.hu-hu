@@ -8,11 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792877"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86520715"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Séma frissítései Azure Logic Apps – június 1-től 2016
 
@@ -28,7 +29,7 @@ A logikai alkalmazások 2015-as augusztus 1-től a 2016-es verzióra való friss
 
 ## <a name="scopes"></a>Hatókörök
 
-Ez a séma hatóköröket tartalmaz, amelyek lehetővé teszik a műveletek együttes csoportosítását, vagy egymáson belüli műveletek beágyazását. Egy feltétel például tartalmazhat egy másik feltételt is. További tudnivalók a [hatókör szintaxisáról](../logic-apps/logic-apps-loops-and-scopes.md), vagy az alapvető hatókör áttekintése:
+Ez a séma hatóköröket tartalmaz, amelyek lehetővé teszik a műveletek együttes csoportosítását, vagy egymáson belüli műveletek beágyazását. Egy feltétel például tartalmazhat egy másik feltételt is. További tudnivalók a [hatókör szintaxisáról](./logic-apps-control-flow-loops.md), vagy az alapvető hatókör áttekintése:
 
 ```json
 {
@@ -54,7 +55,7 @@ Ez a séma hatóköröket tartalmaz, amelyek lehetővé teszik a műveletek egy�
 
 ## <a name="conditions-and-loops-changes"></a>Feltételek és hurkok változásai
 
-A korábbi sémák verzióiban a feltételek és a hurkok egyetlen művelethez társított paraméterek voltak. Ez a séma feloldja ezt a korlátozást, így a feltételek és a hurkok mostantól művelettípusként érhetők el. További információ a [hurkok és hatókörökről](../logic-apps/logic-apps-loops-and-scopes.md), a [feltételekről](../logic-apps/logic-apps-control-flow-conditional-statement.md), illetve az alapvető példa, amely egy feltétel műveletét mutatja be:
+A korábbi sémák verzióiban a feltételek és a hurkok egyetlen művelethez társított paraméterek voltak. Ez a séma feloldja ezt a korlátozást, így a feltételek és a hurkok mostantól művelettípusként érhetők el. További információ a [hurkok és hatókörökről](./logic-apps-control-flow-loops.md), a [feltételekről](../logic-apps/logic-apps-control-flow-conditional-statement.md), illetve az alapvető példa, amely egy feltétel műveletét mutatja be:
 
 ```json
 {
@@ -130,7 +131,7 @@ A frissített definícióban az eszköz a legjobb erőfeszítést teszi az igaz 
 
 #### <a name="foreach-loop-with-condition"></a>"foreach" hurok feltétellel
 
-Az új sémában a szűrés művelettel replikálhatja azt a mintát, amely **minden** hurokhoz egy feltétellel rendelkező hurkot használ. A módosítás azonban automatikusan megtörténik a frissítéskor. A feltétel egy szűrési művelet lesz, amely az **egyes** ciklusok előtt jelenik meg, és csak a feltételnek megfelelő elemek tömbjét adja vissza, és a tömböt az **egyes** műveletekhez adja át. Példa: [hurkok és hatókörök](../logic-apps/logic-apps-loops-and-scopes.md).
+Az új sémában a szűrés művelettel replikálhatja azt a mintát, amely **minden** hurokhoz egy feltétellel rendelkező hurkot használ. A módosítás azonban automatikusan megtörténik a frissítéskor. A feltétel egy szűrési művelet lesz, amely az **egyes** ciklusok előtt jelenik meg, és csak a feltételnek megfelelő elemek tömbjét adja vissza, és a tömböt az **egyes** műveletekhez adja át. Példa: [hurkok és hatókörök](./logic-apps-control-flow-loops.md).
 
 ### <a name="resource-tags"></a>Erőforráscímkék
 
@@ -171,7 +172,7 @@ A műveletek most már rendelkezhetnek további tulajdonsággal `trackedProperti
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Munkafolyamat-definíciók létrehozása logikai alkalmazásokhoz](../logic-apps/logic-apps-author-definitions.md)
 * [A logikai alkalmazás üzemelő példányának automatizálása](logic-apps-azure-resource-manager-templates-overview.md)

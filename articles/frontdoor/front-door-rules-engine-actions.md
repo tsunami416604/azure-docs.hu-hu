@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door
+title: Azure bejárati ajtó szabályait végrehajtó műveletek
 description: Ez a cikk felsorolja az Azure bejárati szabályainak motorjának különböző műveleteit.
 services: frontdoor
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: mebeatty
-ms.openlocfilehash: e11555e883a323bcb5b0be1c62b2825bce77524e
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 74c0a2617a01e8c24cd93a015b667081250657ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314008"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86521496"
 ---
-# <a name="azure-front-door-rules-engine-actions"></a>Azure bejárati ajtó szabályait végrehajtó műveletek
+# <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door szabálymotor műveletei
 
 A [AFD-szabályok motorjában](front-door-rules-engine.md) a szabály nulla vagy több egyeztetési feltételt és műveletet tartalmaz. Ez a cikk a AFD-szabályok motorjában használható műveletek részletes leírását tartalmazza.
 
@@ -33,9 +33,9 @@ Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek a forrásnak k�
 
 ### <a name="required-fields"></a>Kötelező mezők
 
-Műveletek | HTTP-fejléc neve | Érték
+Művelet | HTTP-fejléc neve | Érték
 -------|------------------|------
-Hozzáfűzés | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a rendszer hozzáfűzi az értéket a meglévő értékhez. | Sztring
+Append (Hozzáfűzés) | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a rendszer hozzáfűzi az értéket a meglévő értékhez. | Sztring
 Felülírás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a kérelemhez a megadott értékkel. Ha a fejléc már létezik, a megadott érték felülírja a meglévő értéket. | Sztring
 Törlés | Ha ez a beállítás be van jelölve, a szabály egyezik, és a szabályban megadott fejléc jelen van, a rendszer törli a fejlécet a kérelemből. | Sztring
 
@@ -45,13 +45,13 @@ Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek az ügyfeleknek
 
 ### <a name="required-fields"></a>Kötelező mezők
 
-Műveletek | HTTP-fejléc neve | Érték
+Művelet | HTTP-fejléc neve | Érték
 -------|------------------|------
-Hozzáfűzés | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, a rendszer hozzáfűzi az **értéket** a meglévő értékhez. | Sztring
+Append (Hozzáfűzés) | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, a rendszer hozzáfűzi az **értéket** a meglévő értékhez. | Sztring
 Felülírás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, az **érték** felülírja a meglévő értéket. | Sztring
 Törlés | Ha ez a beállítás be van jelölve, a szabály egyezik, és a szabályban megadott fejléc jelen van, a rendszer törli a fejlécet a válaszból. | Sztring
 
-## <a name="route-configuration-overrides"></a>Útvonal-konfiguráció felülbírálásai 
+## <a name="route-configuration-overrides"></a>Útválasztó-konfigurációk felülírása 
 
 ### <a name="route-type-redirect"></a>Útvonal típusa: átirányítás
 
@@ -105,7 +105,7 @@ Dinamikus tömörítés | A bejárati ajtó dinamikusan tömörítheti a tartalm
 Lekérdezési paraméterek | A gyorsítótárazás alapjául szolgáló engedélyezett (vagy nem engedélyezett) paraméterek vesszővel tagolt listája.
 Gyorsítótár időtartama | Gyorsítótár lejárati időtartama (nap, óra, perc, másodperc) Minden értéknek int-nek kell lennie. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan állíthatja be az első [szabályok motorjának konfigurációját](front-door-tutorial-rules-engine.md). 
 - További információ a [szabályok motorjának egyeztetési feltételeiről](front-door-rules-engine-match-conditions.md)

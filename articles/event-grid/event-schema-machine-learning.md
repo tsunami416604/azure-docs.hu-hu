@@ -3,12 +3,12 @@ title: Azure Machine Learning Event Grid forrásként
 description: A Machine Learning-munkaterület eseményekhez megadott tulajdonságokat ismerteti Azure Event Grid
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b5a39539a6f39c78251a3cc7788b8e5ee4babbf9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e72123a4f609b93e191c82f11443cbb1de7d012d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86181522"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86522074"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning Event Grid forrásként
 
@@ -151,7 +151,7 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 [{
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearningServices/workspaces/{workspace-name}",
   "subject": "experiments/0fa9dfaa-cba3-4fa7-b590-23e48548f5c1/runs/AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-  "eventType": "Microsoft.MachineLearningServices.RunCompleted",
+  "eventType": "Microsoft.MachineLearningServices.RunStatusChanged",
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
   "data": {
@@ -193,7 +193,7 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| adatok | objektum | BLOB Storage-események |
+| adatok | object | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -205,8 +205,8 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 | -------- | ---- | ----------- |
 | Modellnév | sztring | A regisztrált modell neve. |
 | ModelVersion | sztring | A regisztrált modell verziója. |
-| ModelTags | objektum | A regisztrált modell címkéi. |
-| ModelProperties | objektum | A regisztrált modell tulajdonságai. |
+| ModelTags | object | A regisztrált modell címkéi. |
+| ModelProperties | object | A regisztrált modell tulajdonságai. |
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. ModelDeployed
 
@@ -215,8 +215,8 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 | ServiceName | sztring | A telepített szolgáltatás neve. |
 | ServiceComputeType | sztring | A központilag telepített szolgáltatás számítási típusa (pl. ACI, ak). |
   | ModelIds | sztring | A modell-azonosítók vesszővel tagolt listája. A szolgáltatásban üzembe helyezett modellek azonosítói. |
-| ServiceTags | objektum | A telepített szolgáltatás címkéi. |
-| ServiceProperties | objektum | A telepített szolgáltatás tulajdonságai. |
+| ServiceTags | object | A telepített szolgáltatás címkéi. |
+| ServiceProperties | object | A telepített szolgáltatás tulajdonságai. |
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft. MachineLearningServices. RunCompleted
 
@@ -226,8 +226,8 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 | ExperimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
 | RunId | sztring | A befejezett Futtatás azonosítója. |
 | RunType | sztring | A befejezett Futtatás típusa. |
-| RunTags | objektum | A befejezett futtatások címkéi. |
-| RunProperties | objektum | A befejezett Futtatás tulajdonságai. |
+| RunTags | object | A befejezett futtatások címkéi. |
+| RunProperties | object | A befejezett Futtatás tulajdonságai. |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft. MachineLearningServices. DatasetDriftDetected
 
@@ -250,8 +250,8 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 | ExperimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
 | RunId | sztring | A befejezett Futtatás azonosítója. |
 | RunType | sztring | A befejezett Futtatás típusa. |
-| RunTags | objektum | A befejezett futtatások címkéi. |
-| RunProperties | objektum | A befejezett Futtatás tulajdonságai. |
+| RunTags | object | A befejezett futtatások címkéi. |
+| RunProperties | object | A befejezett Futtatás tulajdonságai. |
 | RunStatus | sztring | A Futtatás állapota. |
 
 ## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
@@ -259,7 +259,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 | ----- | ----- |
 | [Azure Machine Learning események felhasználása](../machine-learning/concept-event-grid-integration.md) | A Azure Machine Learning és a Event Grid integrálásának áttekintése. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetési séma](subscription-creation-schema.md)
