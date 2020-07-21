@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d66c690c3a0ba638a92150c9aa1dbb0dc2a41268
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82562066"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506161"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions-proxyk használata
 
@@ -89,7 +89,7 @@ A válasz paramétereit az ügyfélre adott válasz módosításának részekén
 
 ### <a name="reference-application-settings"></a><a name="use-appsettings"></a>Hivatkozási alkalmazás beállításai
 
-A Function alkalmazáshoz [definiált Alkalmazásbeállítások](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings) is hivatkozhatók, ha a beállítási nevet a százalék jelek (%) értékre helyezi.
+A Function alkalmazáshoz [definiált Alkalmazásbeállítások](./functions-how-to-use-azure-function-app-settings.md) is hivatkozhatók, ha a beállítási nevet a százalék jelek (%) értékre helyezi.
 
 Például a (z) "% ORDER_PROCESSING_HOST%" nevű háttérbeli URL-cím a *https://%ORDER_PROCESSING_HOST%/api/orders* ORDER_PROCESSING_HOST beállítás értékével lett lecserélve.
 
@@ -110,7 +110,7 @@ A nyomkövetést teljes egészében letilthatja az `"debug":false` adott proxyho
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
-A konfigurált proxyk a fájlban lévő *proxies.js* tárolódnak, amely a Function app-címtár gyökerében található. Ezt a fájlt manuálisan szerkesztheti, és az alkalmazás részeként telepítheti, ha a függvények által támogatott [központi telepítési módszereket](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) használja. 
+A konfigurált proxyk a fájlban lévő *proxies.js* tárolódnak, amely a Function app-címtár gyökerében található. Ezt a fájlt manuálisan szerkesztheti, és az alkalmazás részeként telepítheti, ha a függvények által támogatott [központi telepítési módszereket](./functions-continuous-deployment.md) használja. 
 
 > [!TIP] 
 > Ha nem állította be az egyik telepítési módszert, akkor a portálon található fájl *proxies.js* is dolgozhat. Nyissa meg a Function alkalmazást, válassza a **platform szolgáltatások**elemet, majd válassza a **app Service Editor**lehetőséget. Ezzel megtekintheti a Function alkalmazás teljes fájljának szerkezetét, majd módosításokat végezhet.
@@ -243,8 +243,8 @@ A konfiguráció például a következőhöz hasonló lehet:
 > [!NOTE] 
 > Ebben a példában a válasz törzse közvetlenül van beállítva, így nincs `backendUri` szükség tulajdonságra. A példa bemutatja, hogyan használhatja a Azure Functions-proxykt az API-k modellezéséhez.
 
-[Azure Portalra]: https://portal.azure.com
-[HTTP-eseményindítók]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
+[Azure Portal]: https://portal.azure.com
+[HTTP-eseményindítók]: ./functions-bindings-http-webhook.md
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [RequestOverrides objektum definiálása]: #requestOverrides

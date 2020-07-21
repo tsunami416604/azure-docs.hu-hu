@@ -6,11 +6,12 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5a868167f80aaa735e4fbeab32fd1d308dd6da1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fef975c9822cd44b94074874621e1c87a60ed27d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114430"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505448"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
 > [!WARNING]
@@ -175,7 +176,7 @@ Ha Resource Manager-sablonnal szeretne riasztást létrehozni, hozzon létre egy
 }
 ```
 
-A riasztási szabály sémájának és tulajdonságainak magyarázata [itt érhető el](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+A riasztási szabály sémájának és tulajdonságainak magyarázata [itt érhető el](/rest/api/monitor/alertrules).
 
 ## <a name="resource-manager-template-for-a-resource-with-a-classic-metric-alert"></a>Resource Manager-sablon egy klasszikus metrikai riasztással rendelkező erőforráshoz
 A Resource Manager-sablonokon a riasztások leggyakrabban akkor hasznosak, ha egy erőforrás létrehozásakor egy riasztást hoz létre. Előfordulhat például, hogy a virtuális gépek minden egyes telepítésekor be kell állítania egy "CPU% > 80" szabályt. Ehhez adja hozzá a riasztási szabályt erőforrásként a virtuálisgép-sablon erőforrás-tömbben, és adjon hozzá egy függőséget a `dependsOn` tulajdonsággal a virtuális gép erőforrás-azonosítójával. Itt egy teljes példa, amely létrehoz egy Windows rendszerű virtuális gépet, és riasztást ad, amely értesíti az előfizetési rendszergazdákat, ha a CPU-kihasználtság 80% fölé esik.
@@ -401,4 +402,3 @@ A Resource Manager-sablonokon a riasztások leggyakrabban akkor hasznosak, ha eg
 * [További információ a riasztásokról](alerts-overview.md)
 * [Diagnosztikai beállítások hozzáadása](../../azure-monitor/platform/diagnostic-settings-template.md) a Resource Manager-sablonhoz
 * A JSON szintaxis és tulajdonságok esetében lásd: [Microsoft. alertrules/](/azure/templates/microsoft.insights/alertrules) a sablon referenciája.
-

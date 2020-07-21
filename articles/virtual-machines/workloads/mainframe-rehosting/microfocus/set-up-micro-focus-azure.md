@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 7647283444ba41a5d629ba8a26fc711a699cd78d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc61d842550f82dc8b408ed5cd421af65d0e2be6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561162"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507896"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>A Micro Focus Enterprise Server 5,0 és Enterprise Developer 5,0 telepítése az Azure-ban
 
@@ -42,7 +42,7 @@ Az első lépések előtt tekintse át az alábbi előfeltételeket:
     > [!Note]
     > Néhány lehetőség van a virtuális gépekhez való hozzáférés szabályozására:
     > -   Az ajánlott eljárás az [Azure Bastion](https://azure.microsoft.com/services/azure-bastion/)beállítása.
-    > -   [Helyek közötti virtuális magánhálózati (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell) alagút.
+    > -   [Helyek közötti virtuális magánhálózati (VPN)](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md) alagút.
     > -   Egy Jumpbox virtuális gép.
 
 ## <a name="install-enterprise-server"></a>Az Enterprise Server telepítése
@@ -125,8 +125,8 @@ A nagyvállalati fejlesztők betöltik a Micro Focus fejlesztési és tesztelés
 
 **Következő lépések**
 
--   [A BankDemo alkalmazás beállítása](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/demo)
+-   [A BankDemo alkalmazás beállítása](./demo.md)
 
--   [Vállalati kiszolgáló futtatása Docker-tárolókban](https://docs.microsoft.com/azure/virtual-machines/workloads/mainframe-rehosting/microfocus/run-enterprise-server-container)
+-   [Vállalati kiszolgáló futtatása Docker-tárolókban](./run-enterprise-server-container.md)
 
--   [Nagyszámítógépes alkalmazásmigrálás](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)
+-   [Nagyszámítógépes alkalmazásmigrálás](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/application-strategies)

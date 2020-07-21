@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93a12d40e876293eb587ffba865a1d3b1f5f4983
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676131"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506026"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions megbízható események feldolgozása
 
@@ -69,7 +70,7 @@ A hibák kezelésére szolgáló kódtárak bevezetése a függvények számára
 > [!NOTE]
 > A [Polly](https://github.com/App-vNext/Polly) egy példa arra, hogy hogyan használható a rugalmasság és az átmeneti hibák kezelésére szolgáló függvénytár C#-alkalmazásokhoz.
 
-Az előzetesen teljesített C#-kódtárak használatakor a [kivételi szűrők](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) lehetővé teszik a kód futtatását, amikor kezeletlen kivétel történik.
+Az előzetesen teljesített C#-kódtárak használatakor a [kivételi szűrők](/dotnet/csharp/language-reference/keywords/try-catch) lehetővé teszik a kód futtatását, amikor kezeletlen kivétel történik.
 
 A kivételi szűrők használatát bemutató példák a [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) -tárházban érhetők el.
 
@@ -119,14 +120,14 @@ Az e-mail-címzett megvizsgálhatja az áramkör állapotát, és ha szükséges
 
 Ennek a módszernek a használatával egyetlen üzenet sem vész el, az összes üzenet feldolgozása sorrendben történik, és szükség esetén az áramkört is megszüntetheti.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Források
 
 - [Megbízható esemény-feldolgozási minták](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
 - [Azure tartós entitás áramkör-megszakítója](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információkért lásd a következőket:
+További információkat találhat az alábbi forrásokban:
 
 - [Azure Functions hibakezelés](./functions-bindings-error-pages.md)
 - [Feltöltött képek átméretezésének automatizálása az Event Grid használatával](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08fb794839adf9e8a986f53da00b4855e5535af5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77919413"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508865"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Az Azure-beli virtuális gép rendszer-újraindításának ismertetése
 
@@ -33,7 +34,7 @@ A rendelkezésre állási csoportokkal kapcsolatos további információkért l�
 
 ## <a name="resource-health-information"></a>Resource Health információk
 
-Azure Resource Health egy olyan szolgáltatás, amely lehetővé teszi az egyes Azure-erőforrások állapotát, és gyakorlati útmutatást nyújt a problémák elhárításához. Olyan felhőalapú környezetben, ahol nem lehet közvetlenül hozzáférni a kiszolgálókhoz vagy infrastruktúra-elemekhez, a Resource Health célja, hogy csökkentse a hibaelhárítás során eltöltött időt. A cél az, hogy csökkentse azt az időpontot, ameddig a probléma kihasználása az alkalmazásban vagy az Azure platformon belüli eseményben rejlik. További információ: [Resource Health megismerése és használata](../../resource-health/resource-health-overview.md).
+Azure Resource Health egy olyan szolgáltatás, amely lehetővé teszi az egyes Azure-erőforrások állapotát, és gyakorlati útmutatást nyújt a problémák elhárításához. Olyan felhőalapú környezetben, ahol nem lehet közvetlenül hozzáférni a kiszolgálókhoz vagy infrastruktúra-elemekhez, a Resource Health célja, hogy csökkentse a hibaelhárítás során eltöltött időt. A cél az, hogy csökkentse azt az időpontot, ameddig a probléma kihasználása az alkalmazásban vagy az Azure platformon belüli eseményben rejlik. További információ: [Resource Health megismerése és használata](../../service-health/resource-health-overview.md).
 
 ## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>Műveletek és események, amelyek a virtuális gép újraindítását okozhatják
 
@@ -45,8 +46,8 @@ Néhány frissítéshez azonban újraindítás szükséges. Ilyen esetekben a vi
 
 Az Azure tervezett karbantartásának megismeréséhez és a linuxos virtuális gépek rendelkezésre állásának befolyásolásához tekintse meg az itt felsorolt cikkeket. A cikkek háttértudást biztosítanak az Azure tervezett karbantartási folyamatáról, illetve arról, hogy miként ütemezheti úgy a tervezett karbantartást, hogy az a lehető legkisebb hatást gyakorolja.
 
-- [A virtuális gépek tervezett karbantartása az Azure-ban](../windows/planned-maintenance.md)
-- [Azure-beli virtuális gépek tervezett karbantartásának ütemezése](../windows/classic/planned-maintenance-schedule.md)
+- [A virtuális gépek tervezett karbantartása az Azure-ban](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)
+- [Azure-beli virtuális gépek tervezett karbantartásának ütemezése](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)
 
 ### <a name="memory-preserving-updates"></a>Memóriamegőrző frissítések
 
@@ -71,7 +72,7 @@ Más forgatókönyvek, amelyek általában a virtuális gép újraindítását o
 
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center és Windows Update
 
-Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépeket az operációs rendszer frissítéseinek hiányában. Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját Windows Update vagy Windows Server Update Services (WSUS) szolgáltatásból attól függően, hogy melyik szolgáltatást konfigurálja a Windows rendszerű virtuális gépeken. A Security Center a linuxos rendszerek legújabb frissítéseit is ellenőrzi. Ha a virtuális gép hiányzik a rendszerfrissítésből, Security Center javasolja a rendszerfrissítések alkalmazását. A rendszerfrissítések alkalmazásának vezérlése a Azure Portal Security Centeron keresztül történik. Néhány frissítés alkalmazása után szükség lehet a virtuális gépek újraindítására. További információ: [rendszerfrissítések alkalmazása Azure Security Centerban](../../security-center/security-center-apply-system-updates.md).
+Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépeket az operációs rendszer frissítéseinek hiányában. Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját Windows Update vagy Windows Server Update Services (WSUS) szolgáltatásból attól függően, hogy melyik szolgáltatást konfigurálja a Windows rendszerű virtuális gépeken. A Security Center a linuxos rendszerek legújabb frissítéseit is ellenőrzi. Ha a virtuális gép hiányzik a rendszerfrissítésből, Security Center javasolja a rendszerfrissítések alkalmazását. A rendszerfrissítések alkalmazásának vezérlése a Azure Portal Security Centeron keresztül történik. Néhány frissítés alkalmazása után szükség lehet a virtuális gépek újraindítására. További információ: [rendszerfrissítések alkalmazása Azure Security Centerban](../../security-center/security-center-virtual-machine-protection.md).
 
 A helyszíni kiszolgálókhoz hasonlóan az Azure nem küldi le a frissítéseket a Windows Updateról a Windows rendszerű virtuális gépekre, mert ezeket a gépeket a felhasználók számára kívánja felügyelni. Javasoljuk azonban, hogy engedélyezze az automatikus Windows Update beállítást. A frissítések Windows Updateról történő automatikus telepítése a frissítések alkalmazása után is okozhat újraindítást. További információ: [Windows Update GYIK](https://support.microsoft.com/help/12373/windows-update-faq).
 
@@ -114,7 +115,7 @@ A Leállítás időtartama akár öt percet is igénybe vehet, de jóval hosszab
 
 **IO-korlátok túllépése**
 
-Előfordulhat, hogy a virtuális gépek átmenetileg le vannak állítva az I/o-kérelmek következetes szabályozása miatt, mert a másodpercenkénti I/o-műveletek mennyisége (IOPS) meghaladja a lemez I/O-korlátait. (A standard szintű lemezes tárolás 500 IOPS van korlátozva.) A probléma megoldásához használjon lemezes csíkozást, vagy konfigurálja a tárterületet a vendég virtuális gépen a munkaterheléstől függően. Részletekért lásd: [Azure-beli virtuális gépek konfigurálása optimális tárolási teljesítményhez](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
+Előfordulhat, hogy a virtuális gépek átmenetileg le vannak állítva az I/o-kérelmek következetes szabályozása miatt, mert a másodpercenkénti I/o-műveletek mennyisége (IOPS) meghaladja a lemez I/O-korlátait. (A standard szintű lemezes tárolás 500 IOPS van korlátozva.) A probléma megoldásához használjon lemezes csíkozást, vagy konfigurálja a tárterületet a vendég virtuális gépen a munkaterheléstől függően. 
 
 ### <a name="other-incidents"></a>Egyéb incidensek
 

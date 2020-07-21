@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: amverma
-ms.openlocfilehash: 62e4d3dbd7357f8c98df3307c1c8fe52cbed1c5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed5606da84d8311785752cc8319b7a3c642c1f5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67707775"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508032"
 ---
 # <a name="hb-series-virtual-machines-overview"></a>A HB sorozatú virtuális gépek áttekintése
 
@@ -46,7 +46,7 @@ Az alábbi ábrán az Azure Hypervisorhoz és a HB sorozatú virtuális géphez 
 | Cores                            | 60 (SMT letiltva)                |
 | CPU                              | AMD EPYC 7551 *                   |
 | CPU-gyakoriság (nem AVX)          | ~ 2,55 GHz (egyetlen és minden mag)   |
-| Memory (Memória)                           | 4 GB/mag (240 összesen)            |
+| Memória                           | 4 GB/mag (240 összesen)            |
 | Helyi lemez                       | 700 GB NVMe                      |
 | InfiniBand                       | 100 GB EDR Mellanox ConnectX-5 * * |
 | Network (Hálózat)                          | 50 GB Ethernet (40 GB használható) Azure második Gen SmartNIC * * * |
@@ -65,6 +65,6 @@ Az alábbi ábrán az Azure Hypervisorhoz és a HB sorozatú virtuális géphez 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ az Azure-beli [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) és [Windows rendszerhez](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc) készült HPC VM-méretekről.
+* További információ az Azure-beli [Linux](../../sizes-hpc.md) és [Windows rendszerhez](../../sizes-hpc.md) készült HPC VM-méretekről.
 
-* További információ az Azure-beli [HPC](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) szolgáltatásról.
+* További információ az Azure-beli [HPC](/azure/architecture/topics/high-performance-computing/) szolgáltatásról.

@@ -7,20 +7,21 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 50ad9d57b24fab9ee57c2f9caae8f4c39d2681f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a97fd56f1dc3409666ad86e81a7ac74fee076fa1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669080"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505686"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Műveleti csoport létrehozása Resource Manager-sablonnal
-Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablont](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) a műveleti csoportok konfigurálásához. A sablonok használatával automatikusan beállíthat olyan műveleti csoportokat, amelyek bizonyos típusú riasztásokban újra felhasználhatók. Ezek a műveleti csoportok biztosítják, hogy az összes megfelelő fél értesítést kapjon, ha riasztást vált ki.
+Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablont](../../azure-resource-manager/templates/template-syntax.md) a műveleti csoportok konfigurálásához. A sablonok használatával automatikusan beállíthat olyan műveleti csoportokat, amelyek bizonyos típusú riasztásokban újra felhasználhatók. Ezek a műveleti csoportok biztosítják, hogy az összes megfelelő fél értesítést kapjon, ha riasztást vált ki.
 
 Az alapszintű lépések a következők:
 
 1. Hozzon létre egy sablont JSON-fájlként, amely leírja, hogyan kell létrehozni a műveleti csoportot.
 
-2. Telepítse a sablont [bármely üzembe helyezési módszer](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)használatával.
+2. Telepítse a sablont [bármely üzembe helyezési módszer](../../azure-resource-manager/templates/deploy-powershell.md)használatával.
 
 Először is leírjuk, hogyan hozhat létre Resource Manager-sablont egy olyan műveleti csoporthoz, ahol a műveleti definíciók a sablonban nehezen kódoltak. Másodszor, leírjuk, hogyan hozhat létre olyan sablont, amely a webhook konfigurációs adatait bemeneti paraméterekként veszi igénybe a sablon telepítésekor.
 
@@ -161,8 +162,7 @@ Ha Resource Manager-sablonnal szeretne létrehozni egy műveleti csoportot, lét
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [műveleti csoportokról](../../azure-monitor/platform/action-groups.md).
 * További információ a [riasztásokról](alerts-overview.md).
 * Megtudhatja, hogyan adhat hozzá [riasztásokat Resource Manager-sablonok használatával](../../azure-monitor/platform/alerts-activity-log.md).
-

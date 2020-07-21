@@ -5,19 +5,19 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 3f16f2ef077a1fc3c82075aaf7b7685f941d0a31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6810ba76379e78d3cde4f3cd341d501be3725257
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82559589"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506332"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions-kötések Mobile Apps 
 
 > [!NOTE]
 > Az Azure Mobile Apps-kötések csak az 1. x Azure Functions számára érhetők el. A Azure Functions 2. x vagy újabb verziókban nem támogatottak.
 
-Ez a cikk azt ismerteti, hogyan használhatók az [Azure Mobile apps](../app-service-mobile/app-service-mobile-value-prop.md) -kötések a Azure Functionsban. A Azure Functions a Mobile Appshoz tartozó bemeneti és kimeneti kötéseket támogatja.
+Ez a cikk azt ismerteti, hogyan használhatók az [Azure Mobile apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) -kötések a Azure Functionsban. A Azure Functions a Mobile Appshoz tartozó bemeneti és kimeneti kötéseket támogatja.
 
 A Mobile Apps kötések lehetővé teszik adattáblák olvasását és frissítését a Mobile apps szolgáltatásban.
 
@@ -137,10 +137,10 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 | **típusa**| n.a. | "MobileTable" értékre kell állítani|
-| **direction**| n.a. |"In" értékre kell állítani|
+| **irányba**| n.a. |"In" értékre kell állítani|
 | **név**| n.a. | A függvény aláírásában szereplő bemeneti paraméter neve.|
 |**tableName** |**Táblanév**|A Mobile alkalmazás adattáblájának neve|
-| **ID**| **ID** | A beolvasandó rekord azonosítója. Lehet statikus vagy a függvényt meghívó trigger alapján. Ha például egy üzenetsor-triggert használ a függvényhez, az `"id": "{queueTrigger}"` üzenetsor értékeként a lekérdezni kívánt rekord azonosítóját használja.|
+| **id**| **ID** | A beolvasandó rekord azonosítója. Lehet statikus vagy a függvényt meghívó trigger alapján. Ha például egy üzenetsor-triggert használ a függvényhez, az `"id": "{queueTrigger}"` üzenetsor értékeként a lekérdezni kívánt rekord azonosítóját használja.|
 |**kapcsolat**|**Kapcsolat**|A Mobile App URL-címét tartalmazó Alkalmazásbeállítás neve. A függvény ezt az URL-címet használja a szükséges REST-műveletek létrehozásához a mobil alkalmazáson. Hozzon létre egy alkalmazás-beállítást a Function alkalmazásban, amely tartalmazza a Mobile App URL-címét, majd adja meg az Alkalmazásbeállítás nevét a `connection` bemeneti kötés tulajdonságában. Az URL-cím így néz ki `http://<appname>.azurewebsites.net` .
 |**apiKey**|**ApiKey**|A Mobile App API-kulcsát tartalmazó Alkalmazásbeállítás neve. Adja meg az API-kulcsot, ha [implementál egy API-kulcsot a Node.js Mobile alkalmazásban](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), vagy [implementál egy API-kulcsot a .net Mobile-alkalmazásban](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). A kulcs megadásához hozzon létre egy alkalmazást a Function alkalmazásban, amely tartalmazza az API-kulcsot, majd adja hozzá a (z `apiKey` ) tulajdonságot a bemeneti kötésben az Alkalmazásbeállítás nevével. |
 
@@ -295,7 +295,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 |function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 | **típusa**| n.a. | "MobileTable" értékre kell állítani|
-| **direction**| n.a. |"Out" értékre kell állítani|
+| **irányba**| n.a. |"Out" értékre kell állítani|
 | **név**| n.a. | A függvény aláírásában szereplő kimeneti paraméter neve.|
 |**tableName** |**Táblanév**|A Mobile alkalmazás adattáblájának neve|
 |**kapcsolat**|**MobileAppUriSetting**|A Mobile App URL-címét tartalmazó Alkalmazásbeállítás neve. A függvény ezt az URL-címet használja a szükséges REST-műveletek létrehozásához a mobil alkalmazáson. Hozzon létre egy alkalmazás-beállítást a Function alkalmazásban, amely tartalmazza a Mobile App URL-címét, majd adja meg az Alkalmazásbeállítás nevét a `connection` bemeneti kötés tulajdonságában. Az URL-cím így néz ki `http://<appname>.azurewebsites.net` .
@@ -316,7 +316,7 @@ A C#-parancsfájlok függvények esetében a `out object` kimeneti rekord elér�
 
 Node.js függvényekben a használatával `context.bindings.<name>` férhet hozzá a kimeneti rekordhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ az Azure functions-eseményindítók és-kötésekről](functions-triggers-bindings.md)

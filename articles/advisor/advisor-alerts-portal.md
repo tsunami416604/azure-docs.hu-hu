@@ -3,18 +3,18 @@ title: Azure Advisor riasztások létrehozása az új javaslatokhoz a Azure Port
 description: Új javaslat Azure Advisor riasztások létrehozása
 ms.topic: article
 ms.date: 09/09/2019
-ms.openlocfilehash: 351d1faf0cb049babe1091aaac465ff975ab47cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b3984b82cd5265f4940cd88597ccb29d51e1118
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85568662"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507216"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations-using-the-azure-portal"></a>Azure Advisor riasztások létrehozása az új javaslatokhoz a Azure Portal használatával 
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a riasztásokat a Azure Advisor új ajánlásaihoz a Azure Portal használatával. 
 
-Ha Azure Advisor észleli az egyik erőforrásra vonatkozó új javaslatot, egy eseményt az [Azure-tevékenység naplójában](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview)tárol a rendszer. Az eseményekre vonatkozó riasztásokat a Azure Advisor-specifikus riasztások létrehozási felületének használatával állíthatja be. Kiválaszthat egy előfizetést, és opcionálisan egy erőforráscsoportot is megadhatja azokat az erőforrásokat, amelyekről riasztást szeretne kapni. 
+Ha Azure Advisor észleli az egyik erőforrásra vonatkozó új javaslatot, egy eseményt az [Azure-tevékenység naplójában](../azure-monitor/platform/platform-logs-overview.md)tárol a rendszer. Az eseményekre vonatkozó riasztásokat a Azure Advisor-specifikus riasztások létrehozási felületének használatával állíthatja be. Kiválaszthat egy előfizetést, és opcionálisan egy erőforráscsoportot is megadhatja azokat az erőforrásokat, amelyekről riasztást szeretne kapni. 
 
 A következő tulajdonságokkal is meghatározhatja a javaslatok típusait:
 
@@ -57,7 +57,7 @@ A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok 
 
     ![Advisor riasztási műveleti csoport](./media/advisor-alerts/create6.png)
 
-7. A **műveleti csoportok** szakaszban válassza a **meglévő hozzáadása** elemet a már létrehozott műveleti csoport használatához, vagy válassza az **új létrehozása** lehetőséget egy új [műveleti csoport](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)beállításához. 
+7. A **műveleti csoportok** szakaszban válassza a **meglévő hozzáadása** elemet a már létrehozott műveleti csoport használatához, vagy válassza az **új létrehozása** lehetőséget egy új [műveleti csoport](../azure-monitor/platform/action-groups.md)beállításához. 
 
     ![Advisor-riasztás meglévő hozzáadása](./media/advisor-alerts/create7.png)
 
@@ -199,6 +199,6 @@ A Azure Advisorban szerkesztheti, törölheti vagy letilthatja és engedélyezhe
 4. A riasztások törléséhez, engedélyezéséhez vagy letiltásához kattintson a sor végén található ellipszisre, majd válassza ki a végrehajtani kívánt műveletet.
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Tekintse át a tevékenységek naplójának riasztásait](../azure-monitor/platform/alerts-overview.md), és Ismerje meg, hogyan fogadhat riasztásokat.
 - További információ a [műveleti csoportokról](../azure-monitor/platform/action-groups.md).

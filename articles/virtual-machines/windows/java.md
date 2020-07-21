@@ -8,11 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: e6218906760baad0673b6599a278d50c6c73e1a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f73abe108ca9c33a8ec6865a760400d16393e51
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84232975"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508491"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban Java használatával
 
@@ -22,10 +23,10 @@ Egy [Azure-beli virtuális gépnek](overview.md?toc=%2fazure%2fvirtual-machines%
 > * Maven-projekt létrehozása
 > * Függőségek hozzáadása
 > * Hitelesítő adatok létrehozása
-> * Erőforrások létrehozása
+> * Az erőforrások létrehozása
 > * Felügyeleti feladatok végrehajtása
 > * Erőforrások törlése
-> * Alkalmazás futtatása
+> * Az alkalmazás futtatása
 
 Ezek a lépések körülbelül 20 percet vesznek igénybe.
 
@@ -177,7 +178,7 @@ A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy
 
     ```
 
-## <a name="create-resources"></a>Erőforrások létrehozása
+## <a name="create-resources"></a>Az erőforrások létrehozása
 
 ### <a name="create-the-resource-group"></a>Az erőforráscsoport létrehozása
 
@@ -450,7 +451,7 @@ Mivel az Azure-ban használt erőforrásokért kell fizetnie, mindig érdemes t�
 
 2. Mentse az app. Java fájlt.
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig.
 
@@ -463,6 +464,5 @@ Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes k
 2. Mielőtt megnyomja az **ENTER** billentyűt az erőforrások törlésének megkezdéséhez, eltarthat néhány percig, hogy ellenőrizze az erőforrások létrehozását a Azure Portalban. A központi telepítésre vonatkozó információk megtekintéséhez kattintson a központi telepítés állapotára.
 
 
-## <a name="next-steps"></a>További lépések
-* További információ a [Javához készült Azure-kódtárak](https://docs.microsoft.com/java/azure/java-sdk-azure-overview)használatáról.
-
+## <a name="next-steps"></a>Következő lépések
+* További információ a [Javához készült Azure-kódtárak](/java/azure/java-sdk-azure-overview)használatáról.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80300978"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509035"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Rendszerindítási hiba – ez nem rendszerindító lemez
 
@@ -27,7 +27,7 @@ Ez a cikk olyan problémák megoldását ismerteti, amelyekben a lemez nem indí
 
 ## <a name="symptoms"></a>Probléma
 
-Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen megjelenik egy üzenet, amely a következő üzenetet jeleníti meg: "ez nem rendszerindító lemez. Helyezzen be egy rendszerindító lemezt, és nyomja le az egyik billentyűt az újbóli próbálkozáshoz...
+Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen megjelenik egy üzenet, amely a következő üzenetet jeleníti meg: "ez nem rendszerindító lemez. Helyezzen be egy rendszerindító lemezt, és nyomja le az egyik billentyűt az újbóli próbálkozáshoz...
 
    1. ábra
 
@@ -52,7 +52,7 @@ Ez a hibaüzenet azt jelenti, hogy az operációs rendszer rendszerindítási fo
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A virtuálisgép- [javítási parancsok](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
+1. A virtuálisgép- [javítási parancsok](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
 2. A Távoli asztali kapcsolat kapcsolódása a javítási virtuális géphez.
 
 ### <a name="set-partition-status-to-active"></a>Partíció állapotának beállítása aktívra
@@ -148,4 +148,4 @@ A memóriakép-gyűjtés és a soros konzol engedélyezéséhez futtassa a köve
 
 ### <a name="rebuild-the-original-vm"></a>Az eredeti virtuális gép újraépítése
 
-A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

@@ -5,12 +5,12 @@ ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: b7566260786b6fcfa639f244e2eff0cc8304ed9e
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d489ed9dbf9b8075951258e0841675877e11be38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85205794"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506791"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rövid útmutató: ASP.NET Core Webalkalmazás létrehozása az Azure-ban
 
@@ -42,7 +42,7 @@ Hozzon létre egy ASP.NET Core webalkalmazást a Visual Studióban a következő
 
    ![A webalkalmazás-projekt konfigurálása](./media/app-service-web-get-started-dotnet/configure-web-app-project.png)
 
-1. Bármilyen típusú ASP.NET Core webalkalmazást üzembe helyezhet az Azure-ban, de ebben a rövid útmutatóban a **webalkalmazás** sablont is kiválaszthatja. Győződjön meg arról, hogy a **hitelesítés** **Nincs hitelesítés**, és nincs más lehetőség kiválasztva. Ezután válassza a **Létrehozás**lehetőséget.
+1. Bármilyen típusú ASP.NET Core webalkalmazást üzembe helyezhet az Azure-ban, de ebben a rövid útmutatóban a **webalkalmazás** sablont is kiválaszthatja. Győződjön meg arról, hogy a **hitelesítés** **Nincs hitelesítés**, és nincs más lehetőség kiválasztva. Ezután kattintson a **Létrehozás** elemre.
 
    ![Új ASP.NET Core Webalkalmazás létrehozása](./media/app-service-web-get-started-dotnet/create-aspnet-core-web-app.png) 
    
@@ -142,7 +142,7 @@ A webalkalmazás **áttekintő** lapja olyan alapszintű felügyeleti lehetősé
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban a Visual studiót használta egy ASP.NET Core webalkalmazás létrehozásához és üzembe helyezéséhez Azure App Service.
 
@@ -153,3 +153,8 @@ A következő cikkből megtudhatja, hogyan hozhat létre .NET Core-alkalmazást,
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core alkalmazás konfigurálása](configure-language-dotnetcore.md)
+
+Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
+
+> [!div class="nextstepaction"]
+> [A költségek elemzésének megkezdése a Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

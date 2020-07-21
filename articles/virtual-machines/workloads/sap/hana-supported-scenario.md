@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4946524768d0cff483feb4045a2cc5fba169a7a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617182"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507947"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>A HANA nagyméretű példányainak támogatott forgatókönyvei
 Ez a cikk a HANA Large instances (HLI) támogatott forgatókönyveit és architektúrájának részleteit ismerteti.
@@ -64,11 +65,11 @@ Minden egyes kiépített kiszolgáló az előre konfigurált Ethernet-adapterek 
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Csomópont – csomópont|
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | STONITH |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Csomópont – csomópont|
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | STONITH |
 
 A felületet a HLI egységen konfigurált topológia alapján választhatja ki. A "B" illesztőfelület például a csomópontok közötti kommunikációhoz van beállítva, ami akkor lehet hasznos, ha kibővíthető topológia van konfigurálva. Ez az illesztőfelület nem használatos egyetlen csomóponthoz, Felskálázási konfigurációhoz. Az illesztőfelület-használattal kapcsolatos további információkért tekintse át a szükséges forgatókönyveket (a cikk későbbi részében). 
@@ -136,11 +137,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -171,11 +172,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -194,7 +195,7 @@ A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 ### <a name="key-considerations"></a>Fő szempontok
 - a/usr/sap/SID a/hana/shared/SID. szimbolikus hivatkozása
-- A kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)című témakört.
+- A kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](./hana-overview-architecture.md)című témakört.
 
 ## <a name="single-node-with-dr-using-storage-replication"></a>Önálló csomópont a Storage-replikációt használó DR használatával
  
@@ -211,11 +212,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -231,9 +232,9 @@ A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 ### <a name="key-considerations"></a>Fő szempontok
 - a/usr/sap/SID a/hana/shared/SID. szimbolikus hivatkozása
-- A MCOS esetében: a kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)című témakört.
+- A MCOS esetében: a kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](./hana-overview-architecture.md)című témakört.
 - A DR helyen: a kötetek és a csatlakoztatási pontok konfigurálva vannak ("a HANA telepítéséhez szükséges" jelöléssel) a DR HLI egységben a termelési HANA-példány telepítéséhez. 
-- A DR helyen: az adatokat, a naplók biztonsági mentését és a megosztott köteteket (a "Storage Replication" jelöléssel jelölte meg) az üzemi helyről pillanatképen keresztül replikálja a rendszer. Ezek a kötetek csak feladatátvételkor vannak csatlakoztatva. További információ: vész- [helyreállítási feladatátvételi eljárás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery).
+- A DR helyen: az adatokat, a naplók biztonsági mentését és a megosztott köteteket (a "Storage Replication" jelöléssel jelölte meg) az üzemi helyről pillanatképen keresztül replikálja a rendszer. Ezek a kötetek csak feladatátvételkor vannak csatlakoztatva. További információ: vész- [helyreállítási feladatátvételi eljárás](./hana-overview-high-availability-disaster-recovery.md).
 - A rendszer az *I. típusú SKU* rendszerindító kötetét a Dr csomópontba replikálja.
 
 
@@ -252,11 +253,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -280,9 +281,9 @@ A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 ### <a name="key-considerations"></a>Fő szempontok
 - a/usr/sap/SID a/hana/shared/SID. szimbolikus hivatkozása
-- A MCOS esetében: a kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)című témakört.
+- A MCOS esetében: a kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](./hana-overview-architecture.md)című témakört.
 - A DR helyen: a kötetek és a csatlakoztatási pontok konfigurálva vannak ("a HANA telepítéséhez szükséges" jelöléssel) a DR HLI egységben a termelési HANA-példány telepítéséhez. 
-- A DR helyen: az adatokat, a naplók biztonsági mentését és a megosztott köteteket (a "Storage Replication" jelöléssel jelölte meg) az üzemi helyről pillanatképen keresztül replikálja a rendszer. Ezek a kötetek csak feladatátvételkor vannak csatlakoztatva. További információ: vész- [helyreállítási feladatátvételi eljárás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- A DR helyen: az adatokat, a naplók biztonsági mentését és a megosztott köteteket (a "Storage Replication" jelöléssel jelölte meg) az üzemi helyről pillanatképen keresztül replikálja a rendszer. Ezek a kötetek csak feladatátvételkor vannak csatlakoztatva. További információ: vész- [helyreállítási feladatátvételi eljárás](./hana-overview-high-availability-disaster-recovery.md). 
 - A DR helyen: a QA-példány telepítéséhez be kell állítani az adatokat, a naplók biztonsági mentését, a naplót és a közös köteteket a QA számára (a "QA példány telepítése" jelöléssel).
 - A rendszer az *I. típusú SKU* rendszerindító kötetét a Dr csomópontba replikálja.
 
@@ -307,11 +308,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | A STONITH esetében használatos |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | A STONITH esetében használatos |
 
 ### <a name="storage"></a>Storage
@@ -332,7 +333,7 @@ A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 ### <a name="key-considerations"></a>Fő szempontok
 - a/usr/sap/SID a/hana/shared/SID. szimbolikus hivatkozása
-- A MCOS esetében: a kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)című témakört.
+- A MCOS esetében: a kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](./hana-overview-architecture.md)című témakört.
 - STONITH: egy SBD van konfigurálva a STONITH-telepítőhöz. A STONITH használata azonban nem kötelező.
 
 
@@ -353,11 +354,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | A STONITH esetében használatos |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | A STONITH esetében használatos |
 
 ### <a name="storage"></a>Storage
@@ -386,11 +387,11 @@ A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 ### <a name="key-considerations"></a>Fő szempontok
 - a/usr/sap/SID a/hana/shared/SID. szimbolikus hivatkozása
-- A MCOS esetében: a kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)című témakört.
+- A MCOS esetében: a kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](./hana-overview-architecture.md)című témakört.
 - STONITH: egy SBD van konfigurálva a STONITH-telepítőhöz. A STONITH használata azonban nem kötelező.
 - A DR helyen: az elsődleges és a másodlagos csomópont replikálásához *két tárolási kötet szükséges* .
 - A DR helyen: a kötetek és a csatlakoztatási pontok konfigurálva vannak ("a HANA telepítéséhez szükséges" jelöléssel) a DR HLI egységben a termelési HANA-példány telepítéséhez. 
-- A DR helyen: az adatokat, a naplók biztonsági mentését és a megosztott köteteket (a "Storage Replication" jelöléssel jelölte meg) az üzemi helyről pillanatképen keresztül replikálja a rendszer. Ezek a kötetek csak feladatátvételkor vannak csatlakoztatva. További információ: vész- [helyreállítási feladatátvételi eljárás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- A DR helyen: az adatokat, a naplók biztonsági mentését és a megosztott köteteket (a "Storage Replication" jelöléssel jelölte meg) az üzemi helyről pillanatképen keresztül replikálja a rendszer. Ezek a kötetek csak feladatátvételkor vannak csatlakoztatva. További információ: vész- [helyreállítási feladatátvételi eljárás](./hana-overview-high-availability-disaster-recovery.md). 
 - A DR helyen: a QA-példány telepítéséhez be kell állítani az adatokat, a naplók biztonsági mentését, a naplót és a közös köteteket a QA számára (a "QA példány telepítése" jelöléssel).
 - A rendszer az *I. típusú SKU* rendszerindító kötetét a Dr csomópontba replikálja.
 
@@ -412,11 +413,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Csomópont-csomópont típusú kommunikáció |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Csomópont-csomópont típusú kommunikáció |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -453,11 +454,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Csomópont-csomópont típusú kommunikáció |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Csomópont-csomópont típusú kommunikáció |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -489,11 +490,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Csomópont-csomópont típusú kommunikáció |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Csomópont-csomópont típusú kommunikáció |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -528,11 +529,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Csomópont-csomópont típusú kommunikáció |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Csomópont-csomópont típusú kommunikáció |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -554,7 +555,7 @@ A következő csatlakoztatási pontok előre konfigurálva vannak:
 ### <a name="key-considerations"></a>Fő szempontok
 - a/usr/sap/SID a/hana/shared/SID. szimbolikus hivatkozása
 -  A DR helyen: a kötetek és a csatlakoztatási pontok konfigurálva vannak ("a HANA telepítéséhez szükséges" jelöléssel) a DR HLI egységben a termelési HANA-példány telepítéséhez. 
-- A DR helyen: az adatokat, a naplók biztonsági mentését és a megosztott köteteket (a "Storage Replication" jelöléssel jelölte meg) az üzemi helyről pillanatképen keresztül replikálja a rendszer. Ezek a kötetek csak feladatátvételkor vannak csatlakoztatva. További információ: vész- [helyreállítási feladatátvételi eljárás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
+- A DR helyen: az adatokat, a naplók biztonsági mentését és a megosztott köteteket (a "Storage Replication" jelöléssel jelölte meg) az üzemi helyről pillanatképen keresztül replikálja a rendszer. Ezek a kötetek csak feladatátvételkor vannak csatlakoztatva. További információ: vész- [helyreállítási feladatátvételi eljárás](./hana-overview-high-availability-disaster-recovery.md). 
 - A rendszer az *I. típusú SKU* rendszerindító kötetét a Dr csomópontba replikálja.
 
 
@@ -573,11 +574,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI/HSR |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI/HSR |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -593,9 +594,9 @@ A következő csatlakoztatási pontok előre konfigurálva vannak a HLI-egysége
 
 ### <a name="key-considerations"></a>Fő szempontok
 - a/usr/sap/SID a/hana/shared/SID. szimbolikus hivatkozása
-- A MCOS esetében: a kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)című témakört.
+- A MCOS esetében: a kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](./hana-overview-architecture.md)című témakört.
 - Az elsődleges csomópont a DR csomóponttal szinkronizálódik a HANA rendszerreplikáció használatával. 
-- A [Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) a ExpressRoute-áramkörök összekapcsolására szolgál, hogy a helyi hálózatok között magánhálózati hálózatot hozzon össze.
+- A [Global REACH](../../../expressroute/expressroute-global-reach.md) a ExpressRoute-áramkörök összekapcsolására szolgál, hogy a helyi hálózatok között magánhálózati hálózatot hozzon össze.
 
 
 
@@ -614,11 +615,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI/HSR |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI/HSR |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -643,11 +644,11 @@ A következő csatlakoztatási pontok előre konfigurálva vannak:
 
 ### <a name="key-considerations"></a>Fő szempontok
 - a/usr/sap/SID a/hana/shared/SID. szimbolikus hivatkozása
-- A MCOS esetében: a kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)című témakört.
+- A MCOS esetében: a kötet méretének eloszlása a memória adatbázisának méretétől függ. Ha szeretné megtudni, hogy a memóriában hány adatbázis-méret támogatott a több SID-alapú környezetben, tekintse meg az [Áttekintés és az architektúra](./hana-overview-architecture.md)című témakört.
 - A DR helyen: a kötetek és a csatlakoztatási pontok konfigurálva vannak (a Dr-helyen lévő "GYÁRTÁSIRENDELÉS-példányként" van megjelölve) a DR HLI egységben lévő éles HANA-példány telepítéséhez. 
 - A DR helyen: a QA-példány telepítéséhez be kell állítani az adatokat, a naplók biztonsági mentését, a naplót és a közös köteteket a QA számára (a "QA példány telepítése" jelöléssel).
 - Az elsődleges csomópont a DR csomóponttal szinkronizálódik a HANA rendszerreplikáció használatával. 
-- A [Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) a ExpressRoute-áramkörök összekapcsolására szolgál, hogy a helyi hálózatok között magánhálózati hálózatot hozzon össze.
+- A [Global REACH](../../../expressroute/expressroute-global-reach.md) a ExpressRoute-áramkörök összekapcsolására szolgál, hogy a helyi hálózatok között magánhálózati hálózatot hozzon össze.
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr"></a>Magas rendelkezésre állás és vész-helyreállítás a HSR 
  
@@ -664,11 +665,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI/HSR |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI/HSR |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -692,7 +693,7 @@ A következő csatlakoztatási pontok előre konfigurálva vannak:
 - a/usr/sap/SID a/hana/shared/SID. szimbolikus hivatkozása
 - A DR helyen: a kötetek és a csatlakoztatási pontok konfigurálva vannak ("PROD DR-példányként" jelölve) a DR HLI egységben a termelési HANA-példány telepítéséhez. 
 - Az elsődleges hely csomópontja a DR csomóponttal szinkronizálódik a HANA rendszerreplikáció használatával. 
-- A [Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) a ExpressRoute-áramkörök összekapcsolására szolgál, hogy a helyi hálózatok között magánhálózati hálózatot hozzon össze.
+- A [Global REACH](../../../expressroute/expressroute-global-reach.md) a ExpressRoute-áramkörök összekapcsolására szolgál, hogy a helyi hálózatok között magánhálózati hálózatot hozzon össze.
 
 ## <a name="high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>Magas rendelkezésre állás és vész-helyreállítás a HSR (Cost optimalizált)
  
@@ -709,11 +710,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI/HSR |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Konfigurálva, de nincs használatban |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI/HSR |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Konfigurálva, de nincs használatban |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -741,7 +742,7 @@ A következő csatlakoztatási pontok előre konfigurálva vannak:
 - A DR helyen: a kötetek és a csatlakoztatási pontok konfigurálva vannak ("PROD DR-példányként" jelölve) a DR HLI egységben a termelési HANA-példány telepítéséhez. 
 - A DR helyen: a QA-példány telepítéséhez be kell állítani az adatokat, a naplók biztonsági mentését, a naplót és a közös köteteket a QA számára (a "QA példány telepítése" jelöléssel).
 - Az elsődleges hely csomópontja a DR csomóponttal szinkronizálódik a HANA rendszerreplikáció használatával. 
-- A [Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) a ExpressRoute-áramkörök összekapcsolására szolgál, hogy a helyi hálózatok között magánhálózati hálózatot hozzon össze.
+- A [Global REACH](../../../expressroute/expressroute-global-reach.md) a ExpressRoute-áramkörök összekapcsolására szolgál, hogy a helyi hálózatok között magánhálózati hálózatot hozzon össze.
 
 ## <a name="scale-out-with-dr-using-hsr"></a>Vertikális felskálázás DR használatával HSR
  
@@ -760,11 +761,11 @@ A következő hálózati adapterek előre konfigurálva vannak:
 | --- | --- | --- | --- | --- |
 | A | TÍPUS | eth0. Bérlő | eno1. Bérlő | Ügyfél – HLI/HSR |
 | B | TÍPUS | eth2. Bérlő | eno3. Bérlő | Csomópont-csomópont típusú kommunikáció |
-| C# | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
+| C | TÍPUS | eth1. Bérlő | eno2. Bérlő | Csomópontok közötti |
 | D | TÍPUS | eth4. Bérlő | eno4. Bérlő | Konfigurálva, de nincs használatban |
 | A | II. TÍPUS | VLAN\<tenantNo> | team0. Bérlő | Ügyfél – HLI/HSR |
 | B | II. TÍPUS | VLAN\<tenantNo+2> | team0. Bérlő + 2 | Csomópont-csomópont típusú kommunikáció |
-| C# | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
+| C | II. TÍPUS | VLAN\<tenantNo+1> | team0. Bérlő + 1 | Csomópontok közötti |
 | D | II. TÍPUS | VLAN\<tenantNo+3> | team0. Bérlő + 3 | Konfigurálva, de nincs használatban |
 
 ### <a name="storage"></a>Storage
@@ -788,9 +789,9 @@ A következő csatlakoztatási pontok előre konfigurálva vannak:
 - a/usr/sap/SID a/hana/shared/SID. szimbolikus hivatkozása
 - A DR helyen: a kötetek és a csatlakoztatási pontok a DR HLI egységben a termelési HANA-példány telepítéséhez vannak konfigurálva. 
 - Az elsődleges hely csomópontja a DR csomóponttal szinkronizálódik a HANA rendszerreplikáció használatával. 
-- A [Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) a ExpressRoute-áramkörök összekapcsolására szolgál, hogy a helyi hálózatok között magánhálózati hálózatot hozzon össze.
+- A [Global REACH](../../../expressroute/expressroute-global-reach.md) a ExpressRoute-áramkörök összekapcsolására szolgál, hogy a helyi hálózatok között magánhálózati hálózatot hozzon össze.
 
 
-## <a name="next-steps"></a>További lépések
-- [Infrastruktúra és kapcsolat](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity) a HANA nagyméretű példányaihoz
-- [Magas rendelkezésre állás és vész-helyreállítási](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) szolgáltatás nagyméretű HANA-példányokhoz
+## <a name="next-steps"></a>Következő lépések
+- [Infrastruktúra és kapcsolat](./hana-overview-infrastructure-connectivity.md) a HANA nagyméretű példányaihoz
+- [Magas rendelkezésre állás és vész-helyreállítási](./hana-overview-high-availability-disaster-recovery.md) szolgáltatás nagyméretű HANA-példányokhoz

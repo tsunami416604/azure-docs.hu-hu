@@ -6,24 +6,25 @@ ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 543b566300ce56bc2d765087f9a9e269c5b0cc99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41495f6f10f7337c065a06d0d9b71142475bb5c4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77586172"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506315"
 ---
 # <a name="azure-event-hubs-trigger-and-bindings-for-azure-functions"></a>Azure Event Hubs triggerek és kötések a Azure Functionshoz
 
-Ez a cikk azt ismerteti, hogyan használhatók az [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md) -kötések a Azure Functionshoz. Azure Functions támogatja az aktiválási és kimeneti kötéseket a Event Hubshoz.
+Ez a cikk azt ismerteti, hogyan használhatók az [Azure Event Hubs](../event-hubs/event-hubs-about.md) -kötések a Azure Functionshoz. Azure Functions támogatja az aktiválási és kimeneti kötéseket a Event Hubshoz.
 
-| Műveletek | Típus |
+| Művelet | Típus |
 |--------|------|
 | Válasz az Event hub esemény-adatfolyamba küldött eseményekre. | [Eseményindító](./functions-bindings-event-hubs-trigger.md) |
 | Események írása egy esemény-adatfolyamba | [Kimeneti kötés](./functions-bindings-event-hubs-output.md) |
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Válasz az Event hub esemény-adatfolyamba küldött eseményekre (trigger)](./functions-bindings-event-hubs-trigger.md)
 - [Események írása egy esemény-adatfolyamba (kimeneti kötés)](./functions-bindings-event-hubs-output.md)

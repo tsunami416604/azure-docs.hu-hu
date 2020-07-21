@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 05dd9f6c2f1f08ec0e420bd4257d2c26e1963e5b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: d99af6965e4d2e73ed302530d76126e0e6e8a3ef
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850062"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505924"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gyors útmutató: adatok gyűjtése Linux rendszerű számítógépről hibrid környezetben Azure Monitor
 
@@ -79,7 +79,7 @@ Az alábbi lépésekkel konfigurálhatóak az ügynök beállításai a Log Anal
 
 Ha a Linux rendszerű számítógépnek proxykiszolgálón keresztül kell kommunikálnia a Log Analytics szolgáltatással, a proxykonfiguráció a parancssorban a `-p [protocol://][user:password@]proxyhost[:port]` záradékkal adható meg.  A *proxyhost* tulajdonság a proxykiszolgáló teljes tartománynevét vagy IP-címét fogadja el. 
 
-Például:`https://user01:password@proxy01.contoso.com:30443`
+Például: `https://user01:password@proxy01.contoso.com:30443`
 
 1. A Linux rendszerű számítógép Log Analytics munkaterülethez való kapcsolódásának konfigurálásához futtassa a következő parancsot, amely a munkaterület-azonosítót és az elsődleges kulcsot a korábban másolta. A következő parancs letölti, majd az ellenőrzőösszeg érvényesítése után telepíti az ügynököt. 
     
@@ -161,11 +161,11 @@ A munkaterület törléséhez válassza ki a korábban létrehozott Log Analytic
 
 ![Log Analytics-erőforrás törlése](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már gyűjti a működési és teljesítményadatokat a linuxos számítógépéről, könnyen nekiláthat az *ingyenesen* gyűjtött adatok felfedezésének és elemzésének, és reagálhat a kapott eredményekre.  
 
 Az adatok megtekintésének és elemzésének ismertetéséhez lépjen tovább az útmutatóhoz.
 
 > [!div class="nextstepaction"]
-> [Adatok megtekintése és elemzése a Log Analyticsben](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/get-started-portal.md)

@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 11/27/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 354cd8d291f8ad5c842d33b5ac63b0deb58b7d41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3c37d42cc6cda644063b098cb53f05079455339
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870045"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508525"
 ---
 # <a name="manage-the-availability-of-windows-virtual-machines-in-azure"></a>Azure-beli Windows rendszerű virtuális gépek rendelkezésre állásának kezelése 
 
@@ -20,10 +21,10 @@ Ismerje meg, hogyan állíthat be és kezelhet több virtuális gépet, hogy mag
 
 [!INCLUDE [virtual-machines-common-manage-availability](../../../includes/virtual-machines-common-manage-availability.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a virtuális gépek terheléselosztásáról, tekintse meg a [virtuális gépek](tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)terheléselosztását ismertető témakört.
 
 Az N szintű alkalmazások SQL Server IaaS való futtatására szolgáló hivatkozási architektúrák megtekintése
 
-* [Windows N szintű alkalmazás az Azure-ban SQL Server](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
-* [N szintű alkalmazás futtatása több Azure-régióban a magas rendelkezésre állás érdekében](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+* [Windows N szintű alkalmazás az Azure-ban SQL Server](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+* [N szintű alkalmazás futtatása több Azure-régióban a magas rendelkezésre állás érdekében](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)

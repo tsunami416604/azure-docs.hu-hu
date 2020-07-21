@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
-ms.openlocfilehash: 4c10a2dcd55c1605cfafe6c67cfefd9d8a3c5f9d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f5a414f00ffa50114f090fc19f37b8a85428547
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71057988"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509001"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nem lehet távolról csatlakozni a Windows 10 vagy Windows Server 2016 rendszerű virtuális géphez az Azure-ban netvsc.sys
 
@@ -69,7 +69,7 @@ Kapcsolódjon [a soros konzolhoz, nyisson meg egy PowerShell-példányt](serial-
 
 ### <a name="repair-the-vm-offline"></a>A virtuális gép kijavítása kapcsolat nélküli üzemmódban
 
-1. [Csatlakoztassa a rendszerlemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Csatlakoztassa a rendszerlemezt egy helyreállítási virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md).
 
 2. Távoli asztal-Kapcsolódás elindítása a helyreállítási virtuális géphez.
 
@@ -114,7 +114,7 @@ Kapcsolódjon [a soros konzolhoz, nyisson meg egy PowerShell-példányt](serial-
     reg unload HKLM\BROKENSYSTEM
     ```
 
-16. [Válassza le a rendszerlemezt, és hozza létre újra a virtuális gépet](../windows/troubleshoot-recovery-disks-portal.md).
+16. [Válassza le a rendszerlemezt, és hozza létre újra a virtuális gépet](./troubleshoot-recovery-disks-portal-windows.md).
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 

@@ -1,15 +1,15 @@
 ---
-title: Windows Server-tároló létrehozása Azure Kubernetes Service (ak) fürtön
+title: Windows Server-tároló létrehozása AK-fürtön a PowerShell használatával
 description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogyan helyezhet üzembe egy alkalmazást egy Windows Server-tárolóban az Azure Kubernetes szolgáltatásban (ak) a PowerShell használatával.
 services: container-service
 ms.topic: article
 ms.date: 05/26/2020
-ms.openlocfilehash: 036c97d406e37e038474287daf39182ddce194a1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cf195c439a1a53d8a720505edae3c9b6d379d157
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250872"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507046"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Windows Server-tároló létrehozása Azure Kubernetes-szolgáltatásbeli (ak-) fürtön a PowerShell használatával
 
@@ -45,7 +45,7 @@ A következő további korlátozások érvényesek a Windows Server Node-készle
 * Az AK-fürt legfeljebb 100 csomópontot tartalmazhat az egyes csomópont-készletekben.
 * A Windows Server-csomópontok készletének neve legfeljebb 6 karakterből állhat.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) olyan logikai csoport, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup][new-azresourcegroup] parancsmag használatával.
 

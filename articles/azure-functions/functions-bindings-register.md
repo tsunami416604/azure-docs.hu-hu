@@ -5,11 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dde784e2f67266b2f6c6ccd7da20f01546bbda7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697340"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506485"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions kötési bővítmények regisztrálása
 
@@ -28,7 +29,7 @@ A következő táblázat azt mutatja be, hogy mikor és hogyan regisztrálja a k
 |Azure Portal|Automatikus|Automatikus|
 |Non-.NET-nyelvek vagy helyi Azure Core-eszközök fejlesztése|Automatikus|[Azure Functions Core Tools-és bővítmény-csomagok használata](#extension-bundles)|
 |C# Class Library a Visual Studióval|[NuGet-eszközök használata](#vs)|[NuGet-eszközök használata](#vs)|
-|C# Class Library a Visual Studio Code használatával|N.A.|[A .NET Core parancssori felülete használata](#vs-code)|
+|C# Class Library a Visual Studio Code használatával|n.a.|[A .NET Core parancssori felülete használata](#vs-code)|
 
 ## <a name="extension-bundles-for-local-development"></a><a name="extension-bundles"></a>Kiterjesztési csomagok helyi fejlesztéshez
 
@@ -48,7 +49,7 @@ A bővítmények használatához frissítse a fájl *host.jsét* , hogy tartalma
 
 ## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>C \# osztályú könyvtár a Visual Studióval
 
-A **Visual Studióban**a Package Manager konzolon telepítheti a csomagokat az [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) paranccsal, ahogy az alábbi példában is látható:
+A **Visual Studióban**a Package Manager konzolon telepítheti a csomagokat az [Install-Package](/nuget/tools/ps-ref-install-package) paranccsal, ahogy az alábbi példában is látható:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
@@ -62,7 +63,7 @@ Ha `Install-Package` egy kötésre mutató hivatkozást használ, nem kell haszn
 
 ## <a name="c-class-library-with-visual-studio-code"></a><a name="vs-code"></a>C# szintű függvénytár a Visual Studio Code-ban
 
-A **Visual Studio Code**-ban telepítsen egy C# Class Library-projekthez tartozó csomagokat a parancssorból a a .net Core parancssori felülete a [csomag hozzáadása](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) parancs használatával. Az alábbi példa bemutatja, hogyan adhat hozzá kötéseket:
+A **Visual Studio Code**-ban telepítsen egy C# Class Library-projekthez tartozó csomagokat a parancssorból a a .net Core parancssori felülete a [csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancs használatával. Az alábbi példa bemutatja, hogyan adhat hozzá kötéseket:
 
 ```terminal
 dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>
@@ -74,6 +75,6 @@ A helyére írja be annak a `<BINDING_TYPE_NAME>` csomagnak a nevét, amely a sz
 
 Cserélje le a `<TARGET_VERSION>` példát a csomag egy adott verziójára, például: `3.0.0-beta5` . Az érvényes verziók a [NuGet.org](https://nuget.org)-on található egyedi csomag oldalain találhatók. Az 1. x vagy 2. x függvényeknek megfelelő főverziók a kötésre vonatkozó hivatkozási cikkben vannak megadva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 > [!div class="nextstepaction"]
 > [Az Azure Function trigger és a kötési példa](./functions-bindings-example.md)

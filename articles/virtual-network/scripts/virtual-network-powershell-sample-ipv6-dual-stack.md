@@ -12,13 +12,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5e8102cbf89d601c027e3b969c1c431da8807018
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4dfc6da8dcf33f49ceb203b32e81033fd81fa329
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77201365"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507488"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>IPv6-végpontok konfigurálása a Virtual Network script Sample (előzetes verzió) szolgáltatásban
+# <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>IPv6-végpontok konfigurálása virtuális hálózatban Azure PowerShell parancsfájl-mintával (előzetes verzió)
 
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy kettős verem (IPv4 + IPv6) alkalmazást az Azure-ban, amely egy Dual stack-alhálózattal rendelkező kettős veremű virtuális hálózatot, egy kettős (IPv4 + IPv6-alapú) előtér-konfigurációkat, a kettős IP-konfigurációval rendelkező virtuális gépeket, a kettős hálózati biztonsági csoport szabályait és a kettős nyilvános IP-címeket tartalmazza.
 
@@ -266,7 +267,7 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [New-AzVM](/powershell/module/az.compute/new-azvm)  | Létrehozza a virtuális gépet, és csatlakoztatja a hálózati kártyához, a virtuális hálózathoz, az alhálózathoz és az NSG-hez. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai jelszavakat.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/azure/overview).
 

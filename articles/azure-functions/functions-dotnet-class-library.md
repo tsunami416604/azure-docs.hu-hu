@@ -3,12 +3,12 @@ title: Azure Functions C# – fejlesztői dokumentáció
 description: Ismerje meg, hogyan fejlesztheti Azure Functions a C# használatával.
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.openlocfilehash: 038c1db2d4bb4d8bd80801d36cf5feec1905bbc1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9ecc2dad8d1d520b44972022d47c312f495d5c38
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254367"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506512"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# – fejlesztői dokumentáció
 
@@ -202,6 +202,28 @@ Ha a NPM használatával telepíti az alapvető eszközöket, amelyek nem érint
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
+## <a name="readytorun"></a>ReadyToRun
+
+A Function alkalmazást [ReadyToRun bináris](/dotnet/core/whats-new/dotnet-core-3-0#readytorun-images)fájlként is lefordíthatja. A ReadyToRun az előre megadott fordítási forma, amely javíthatja az indítási teljesítményt, így csökkentheti a [fogyasztási tervben](functions-scale.md#consumption-plan)való futáskor felhasználható [rendszerindítási](functions-scale.md#cold-start) hatásokat.
+
+A ReadyToRun a .NET 3,0-es verzióban érhető el, és [a Azure functions futtatókörnyezet 3,0](functions-versions.md)-es verzióját igényli.
+
+A projekt ReadyToRun való fordításához frissítse a projektfájlt a `<PublishReadyToRun>` és elemek hozzáadásával `<RuntimeIdentifier>` . A következő konfiguráció a Windows 32 bites Function alkalmazásban való közzétételre szolgál.
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+  <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+  <PublishReadyToRun>true</PublishReadyToRun>
+  <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+</PropertyGroup>
+```
+
+> [!IMPORTANT]
+> A ReadyToRun jelenleg nem támogatja a fordítást. Az alkalmazást az üzembe helyezési célként megadott platformon kell létrehoznia. Ügyeljen arra is, hogy a Function alkalmazásban konfigurált "bitszáma" is figyeljen. Ha például az Azure-beli Function-alkalmazás Windows 64 bites, akkor az alkalmazást Windows rendszeren kell lefordítani futtatókörnyezet- `win-x64` [azonosítóként](/dotnet/core/rid-catalog).
+
+Az alkalmazást a parancssorból is létrehozhatja a ReadyToRun. További információ: `-p:PublishReadyToRun=true` [`dotnet publish`](/dotnet/core/tools/dotnet-publish) .
+
 ## <a name="supported-types-for-bindings"></a>A kötések támogatott típusai
 
 Minden kötés saját támogatott típusokkal rendelkezik; például egy blob trigger attribútumot lehet alkalmazni egy karakterlánc-paraméterre, egy POCO paraméterre, egy `CloudBlockBlob` paraméterre vagy számos más támogatott típusra. A [blob-kötések kötési útmutatója](functions-bindings-storage-blob-trigger.md#usage) felsorolja az összes támogatott paraméter-típust. További információ: [triggerek és kötések](functions-triggers-bindings.md) , valamint az [egyes kötési típusok kötési dokumentációja](functions-triggers-bindings.md#next-steps).
@@ -238,7 +260,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Naplózás
 
-Ha a kimeneti adatokat a C#-ban szeretné naplózni, adjon meg egy [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot. Azt javasoljuk, hogy nevezze el `log` , ahogy az alábbi példában is látható:  
+Ha a kimeneti adatokat a C#-ban szeretné naplózni, adjon meg egy [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot. Azt javasoljuk, hogy nevezze el `log` , ahogy az alábbi példában is látható:  
 
 ```csharp
 public static class SimpleExample
@@ -257,7 +279,7 @@ Ne használja `Console.Write` a Azure functions. További információ: [naplók
 
 ## <a name="async"></a>Aszinkron
 
-A függvény [aszinkron](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)működéséhez használja a `async` kulcsszót, és egy `Task` objektumot ad vissza.
+A függvény [aszinkron](/dotnet/csharp/programming-guide/concepts/async/)működéséhez használja a `async` kulcsszót, és egy `Task` objektumot ad vissza.
 
 ```csharp
 public static class AsyncExample
@@ -330,7 +352,7 @@ public static class EnvironmentVariablesExample
 
 Az Alkalmazásbeállítások a helyi fejlesztésekor és az Azure-ban való futtatáskor is beolvashatók környezeti változókból. Helyi fejlesztés esetén az Alkalmazásbeállítások a `Values` fájlban lévő *local.settings.js* gyűjteményből származnak. Mindkét környezetben, a helyi és az Azure-ban a `GetEnvironmentVariable("<app setting name>")` megnevezett alkalmazás értékét kérdezi le. Ha például helyileg fut, akkor a "saját hely neve" értéket adja vissza, ha a *local.settings.js* fájl tartalmazza `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` .
 
-A [System.Configuration.ConfigurationManager. appSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) tulajdonság egy alternatív API az Alkalmazásbeállítások értékének beolvasásához, de azt javasoljuk, hogy használja az `GetEnvironmentVariable` itt látható módon.
+A [System.Configuration.ConfigurationManager. appSettings](/dotnet/api/system.configuration.configurationmanager.appsettings) tulajdonság egy alternatív API az Alkalmazásbeállítások értékének beolvasásához, de azt javasoljuk, hogy használja az `GetEnvironmentVariable` itt látható módon.
 
 ## <a name="binding-at-runtime"></a>Kötés futásidőben
 

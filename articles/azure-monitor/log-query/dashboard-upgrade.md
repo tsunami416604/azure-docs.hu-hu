@@ -6,12 +6,12 @@ ms.topic: article
 author: rboucher
 ms.author: robb
 ms.date: 07/01/2020
-ms.openlocfilehash: 6fb9f691afc8874b19ca4575408027357f07cc89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2824d46917536957839a5734a8d446da7a44ee9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833536"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505771"
 ---
 # <a name="upgrading-your-log-analytics-dashboard-visualizations"></a>Log Analytics irányítópult-vizualizációk frissítése
 
@@ -25,7 +25,7 @@ Ez az új vizualizációs technológia a lekérdezési eredményhalmaz új és t
 
 Az Azure-irányítópultok lehetővé teszik a teljes Azure Surface-terület állapotának megjelenítését. Ezek úgy lettek kialakítva, hogy egyetlen panelt biztosítanak az Azure Estate-állapothoz, és számos különböző parancsikont engedélyezzen a gyakori műveletekhez. 
 
-További információ: Azure- [irányítópultok](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)
+További információ: Azure- [irányítópultok](../../azure-portal/azure-portal-dashboards.md)
 
 
 ## <a name="upgrading-log-analytics-dashboard-parts"></a>Log Analytics irányítópult-részek frissítése
@@ -68,7 +68,7 @@ Az irányítópultra rögzített vizualizációk Log Analytics az optimális fel
 
 ### <a name="query-time-scope---30-day-limit"></a>Lekérdezési idő hatóköre – 30 napos korlát
 
-Mivel az irányítópultok több lekérdezésből több vizualizációt is tartalmazhatnak, az egyetlen rögzített lekérdezés időbeli hatóköre 30 napra korlátozódik. Egyetlen lekérdezés csak kisebb vagy egyenlő 30 napos időtartamon futhat. Ez a korlátozás egy ésszerű irányítópult-betöltési idő biztosítása.
+Mivel az irányítópultok több lekérdezésből származó vizualizációkat tartalmazhatnak, egy adott rögzített lekérdezés időtartomány-korlátja 30 nap. Egyetlen lekérdezés csak kisebb vagy egyenlő 30 napos időtartamon futhat. Ez a korlátozás egy ésszerű irányítópult-betöltési idő biztosítása.
 
 ### <a name="query-data-values---25-values-and-other-grouping"></a>Adatértékek lekérdezése – 25 érték és egyéb csoportosítás
 
@@ -80,6 +80,6 @@ Az irányítópultok vizuálisan tömörek és összetettebbek lehetnek. Az irá
 
 Az irányítópultok a terhelés után frissülnek. Az irányítópulton rögzített Log Analytics-vizualizációkkal kapcsolatos összes lekérdezés végrehajtása történik, és az irányítópult a betöltés után frissül. Ha az irányítópult lapja nyitva marad, az irányítópulton lévő összes 60 percenként frissül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Irányítópultok létrehozása és megosztása Log Analytics](../learn/tutorial-logs-dashboards.md)

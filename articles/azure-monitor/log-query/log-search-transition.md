@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f34389785c0f4a43bfcab3e50f2dcd132b2cb629
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670134"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505805"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Áttérés Log Analytics naplóbeli keresésről Azure Monitor naplókra
 A naplóbeli keresés a Log Analytics nemrég váltotta fel a Azure Monitor naplók elemzésére szolgáló új felhasználói élményt. A naplóbeli keresés oldal jelenleg továbbra is elérhető a **naplók (klasszikus)** menüpontban a Azure Portal **log Analytics munkaterületek** lapján, de 2019. február 15-én el lesz távolítva. Ez a cikk a két funkció közötti különbségeket ismerteti, amelyek segítenek a naplók közötti keresésben való áttérésben. 
@@ -57,7 +58,7 @@ Azure Monitor naplókban módosítania kell a lekérdezést a rekordok visszakü
 ![Naplók lebontása Azure Monitor](media/log-search-transition/drilldown-logs.png)
 
 ## <a name="take-action"></a>Művelet elvégzése
-A naplók keresése lehetőségre kattintva [elindíthat egy runbook](take-action.md) egy keresési eredményből a **művelet elvégzése**lehetőség kiválasztásával.
+A naplók keresése lehetőségre kattintva [elindíthat egy runbook](../platform/action-groups.md) egy keresési eredményből a **művelet elvégzése**lehetőség kiválasztásával.
 
 ![Művelet elvégzése](media/log-search-transition/take-action-log-search.png)
 
@@ -65,6 +66,6 @@ Azure Monitor naplókban [hozzon létre egy riasztást a napló lekérdezésből
 
 ![Műveletcsoport](media/log-search-transition/action-group.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az új [Azure monitor naplókról](get-started-portal.md).

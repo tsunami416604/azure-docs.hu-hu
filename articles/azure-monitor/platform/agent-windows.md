@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 644d1094ec57e148804941297d50398e36b1b068
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80ece5b0704869c31ab0656eed922b3f21ba9928
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996429"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505754"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows rendszerű számítógépek összekapcsolásának Azure Monitor
 
@@ -43,7 +44,7 @@ A Windows Log Analytics-ügynök telepítése előtt szüksége lesz a munkater�
 5. Másolja és illessze be kedvenc szerkesztőjét, a **munkaterület azonosítóját** és az **elsődleges kulcsot**.    
    
 ## <a name="configure-agent-to-use-tls-12"></a>Az ügynök konfigurálása a TLS 1,2 használatára
-Ha a [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12) protokoll használatát szeretné konfigurálni a Windows-ügynök és a log Analytics szolgáltatás közötti kommunikációhoz, az alábbi lépéseket követve engedélyezheti az ügynök telepítését a virtuális gépen, vagy később is.
+Ha a [TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12) protokoll használatát szeretné konfigurálni a Windows-ügynök és a log Analytics szolgáltatás közötti kommunikációhoz, az alábbi lépéseket követve engedélyezheti az ügynök telepítését a virtuális gépen, vagy később is.
 
 >[!NOTE]
 >Ha a Windows Server 2008 SP2 x64-et futtató virtuális gépet a TLS 1,2 használatára konfigurálja, először telepítenie kell a következő [SHA-2 kód-aláírás támogatási frissítését](https://support.microsoft.com/help/4474419/sha-2-code-signing-support-update) az alábbi lépések végrehajtása előtt. 
@@ -57,7 +58,7 @@ Ha a [TLS 1,2](https://docs.microsoft.com/windows-server/security/tls/tls-regist
     * **Engedélyezve** [érték = 1]
     * **DisabledByDefault** [érték = 0]  
 
-Konfigurálja a .NET-keretrendszer 4,6-es vagy újabb verzióját a biztonságos titkosítás támogatásához, ahogy az alapértelmezés szerint le van tiltva. Az [erős titkosítás](https://docs.microsoft.com/dotnet/framework/network-programming/tls#schusestrongcrypto) biztonságosabb hálózati protokollokat használ, mint például a TLS 1,2, és blokkolja a nem biztonságos protokollokat. 
+Konfigurálja a .NET-keretrendszer 4,6-es vagy újabb verzióját a biztonságos titkosítás támogatásához, ahogy az alapértelmezés szerint le van tiltva. Az [erős titkosítás](/dotnet/framework/network-programming/tls#schusestrongcrypto) biztonságosabb hálózati protokollokat használ, mint például a TLS 1,2, és blokkolja a nem biztonságos protokollokat. 
 
 1. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \\ . NETFramework\v4.0.30319**.  
 2. Hozza létre az **1**értékkel rendelkező **alatt** DWORD értéket.  
@@ -66,7 +67,7 @@ Konfigurálja a .NET-keretrendszer 4,6-es vagy újabb verzióját a biztonságos
 5. A beállítások érvénybe léptetéséhez indítsa újra a rendszert. 
 
 ## <a name="install-the-agent-using-setup-wizard"></a>Az ügynök telepítése a telepítővarázsló használatával
-A következő lépésekkel telepítheti és konfigurálhatja az Log Analytics-ügynököt az Azure-ban, és Azure Government a felhőt a számítógépén található ügynök telepítővarázslója segítségével. Ha szeretné megismerni, hogyan konfigurálhatja az ügynököt egy System Center Operations Manager felügyeleti csoportnak való jelentésre is, tekintse meg [a Operations Manager ügynök telepítése az ügynök telepítése varázslóval](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard)című témakört.
+A következő lépésekkel telepítheti és konfigurálhatja az Log Analytics-ügynököt az Azure-ban, és Azure Government a felhőt a számítógépén található ügynök telepítővarázslója segítségével. Ha szeretné megismerni, hogyan konfigurálhatja az ügynököt egy System Center Operations Manager felügyeleti csoportnak való jelentésre is, tekintse meg [a Operations Manager ügynök telepítése az ügynök telepítése varázslóval](/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard)című témakört.
 
 1. A Log Analytics munkaterületen, a **Windows-kiszolgálók** lapon, amelyről korábban navigált, válassza ki a Windows- **ügynök** megfelelő verzióját a letöltéshez a Windows operációs rendszer processzor-architektúrája alapján.   
 2. Futtassa a telepítőt, és telepítse az ügynököt a számítógépre.
@@ -119,7 +120,7 @@ Az alábbi táblázat az ügynök számára a telepítő által támogatott para
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Telepítse az ügynököt a DSC használatával Azure Automation
 
-A következő parancsfájl-példa használatával telepítheti az ügynököt Azure Automation DSC használatával.   Ha nem rendelkezik Automation-fiókkal, tekintse meg a [Azure Automation](/azure/automation/) használatának első lépéseit ismertető témakört, amely a Automation DSC használata előtt szükséges Automation-fiók létrehozásának követelményeit és lépéseit ismerteti.  Ha nem ismeri a Automation DSCt, tekintse át [a Automation DSC első lépéseivel foglalkozó](../../automation/automation-dsc-getting-started.md)oktatóanyagot.
+A következő parancsfájl-példa használatával telepítheti az ügynököt Azure Automation DSC használatával.   Ha nem rendelkezik Automation-fiókkal, tekintse meg a [Azure Automation](../../automation/index.yml) használatának első lépéseit ismertető témakört, amely a Automation DSC használata előtt szükséges Automation-fiók létrehozásának követelményeit és lépéseit ismerteti.  Ha nem ismeri a Automation DSCt, tekintse át [a Automation DSC első lépéseivel foglalkozó](../../automation/automation-dsc-getting-started.md)oktatóanyagot.
 
 Az alábbi példa a 64 bites ügynököt telepíti, amelyet az `URI` érték azonosít. Az 32 bites verziót is használhatja az URI értékének lecserélésével. Mindkét verzió URI-je a következő:
 
@@ -132,7 +133,7 @@ Az alábbi példa a 64 bites ügynököt telepíti, amelyet az `URI` érték azo
 
 Az ügynök csomagjához tartozó 32-bites és 64-bites verziók különböző termékkódok és új verziók is egyedi értékkel rendelkeznek.  A termékkód egy olyan GUID, amely egy alkalmazás vagy termék rendszerbiztonsági azonosítóját jelöli, és a Windows Installer **ProductCode** tulajdonság képviseli.  A `ProductId` **MMAgent.ps1** parancsfájlban szereplő értéknek meg kell egyeznie a 32 bites vagy a 64 bites ügynök telepítőcsomag kódjával.
 
-Ha közvetlenül az ügynök telepítési csomagjából szeretné lekérni a termékkód beolvasását, akkor a Orca.exet a [Windows SDK Windows Installer összetevőkből](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) is használhatja, amelyek a Windows szoftverfejlesztői készlet összetevője, vagy a PowerShell használatával egy Microsoft értékes szakember (MVP) által írt [parancsfájlt](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) követve.  Mindkét módszer esetében először ki kell bontania a **MOMagent.msi** fájlt a MMASetup telepítési csomagjából.  Ez a következő szakaszban látható az [ügynök telepítése parancssor használatával](#install-the-agent-using-the-command-line)című szakasz első lépésében.  
+Ha közvetlenül az ügynök telepítési csomagjából szeretné lekérni a termékkód beolvasását, akkor a Orca.exet a [Windows SDK Windows Installer összetevőkből](/windows/win32/msi/platform-sdk-components-for-windows-installer-developers) is használhatja, amelyek a Windows szoftverfejlesztői készlet összetevője, vagy a PowerShell használatával egy Microsoft értékes szakember (MVP) által írt [parancsfájlt](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) követve.  Mindkét módszer esetében először ki kell bontania a **MOMagent.msi** fájlt a MMASetup telepítési csomagjából.  Ez a következő szakaszban látható az [ügynök telepítése parancssor használatával](#install-the-agent-using-the-command-line)című szakasz első lépésében.  
 
 1. Importálja a xPSDesiredStateConfiguration DSC-modult [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) Azure Automation-ba.  
 2.    Hozzon létre Azure Automation változó eszközöket *OPSINSIGHTS_WS_ID* és *OPSINSIGHTS_WS_KEYhoz*. Állítsa be *OPSINSIGHTS_WS_ID* a log Analytics munkaterület-azonosítóra, és állítsa *OPSINSIGHTS_WS_KEY* a munkaterület elsődleges kulcsára.
@@ -198,7 +199,7 @@ Egy egyszerű napló-lekérdezést is végrehajthat a Azure Portal.
 
 Az eredményül kapott keresési eredmények között meg kell jelennie a szívverési rekordoknak, amely jelzi, hogy a számítógép csatlakoztatva van, és jelentést küld a szolgáltatásnak.   
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Windows és Linux rendszerhez készült log Analytics ügynök felügyeletét és karbantartását](agent-manage.md) , hogy megtudja, hogyan lehet újrakonfigurálni, frissíteni vagy eltávolítani az ügynököt a virtuális gépről.
 

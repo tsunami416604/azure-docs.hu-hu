@@ -1,16 +1,16 @@
 ---
-title: Olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
+title: HTTP-kérésekre válaszoló függvény létrehozása az Azure-ban
 description: Ismerje meg, hogyan hozhat létre függvényt a parancssorból, majd hogyan teheti közzé a helyi projektet a Azure Functions kiszolgáló nélküli üzemeltetéséhez.
 ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 671404b952156ff6ad20eaf082d7af33058923a3
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85100021"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506349"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
 
@@ -40,7 +40,7 @@ A cikk [Visual Studio Code-alapú verziója](functions-create-first-function-vs-
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> Ha a Maven nem az Ön által előnyben részesített fejlesztői eszköz, tekintse meg a Java-fejlesztőknek szóló hasonló oktatóanyagokat a [Gradle](/azure/azure-functions/functions-create-first-java-gradle), a [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) és a [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)használatával.
+> Ha a Maven nem az Ön által előnyben részesített fejlesztői eszköz, tekintse meg a Java-fejlesztőknek szóló hasonló oktatóanyagokat a [Gradle](./functions-create-first-java-gradle.md), a [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) és a [Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)használatával.
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
@@ -101,7 +101,7 @@ mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArti
 A Maven megkéri, hogy a projektnek a telepítéskor való létrehozásának befejezéséhez szükséges értékeket is megkeresse.   
 Ha a rendszer kéri, adja meg a következő értékeket:
 
-| Kérdés | Érték | Leírás |
+| Adatkérés | Érték | Leírás |
 | ------ | ----- | ----------- |
 | **csoportazonosító** | `com.fabrikam` | Egy érték, amely egyedileg azonosítja a projektet az összes projektben, a Java [csomag elnevezési szabályait](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) követve. |
 | **artifactId** | `fabrikam-functions` | Egy érték, amely a jar neve, verziószám nélkül. |
@@ -139,7 +139,7 @@ A *HttpExample.cs* olyan `Run` metódust tartalmaz, amely a változóban fogadja
 
 :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
 
-A Return objektum egy [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) , amely egy válaszüzenetet ad vissza [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) vagy [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp).
+A Return objektum egy [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) , amely egy válaszüzenetet ad vissza [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) vagy [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](./functions-bindings-http-webhook.md?tabs=csharp).
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
@@ -169,7 +169,7 @@ az * \_ \_ init \_ \_ .* a (z `main()` ) egy Python-függvényt tartalmaz, amely
 
 :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
 
-HTTP-trigger esetén a függvény a `req` *function.json*megadottak szerint fogadja a kérelmeket a változóban. `req`az [Azure. functions. HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest)egy példánya. Afunction.json értékben definiált visszatérési objektum az `$return` [Azure. functions. HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse)egy példánya. *function.json* További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=python).
+HTTP-trigger esetén a függvény a `req` *function.json*megadottak szerint fogadja a kérelmeket a változóban. `req`az [Azure. functions. HttpRequest osztály](/python/api/azure-functions/azure.functions.httprequest)egy példánya. Afunction.json értékben definiált visszatérési objektum az `$return` [Azure. functions. HttpResponse osztály](/python/api/azure-functions/azure.functions.httpresponse)egy példánya. *function.json* További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](./functions-bindings-http-webhook.md?tabs=python).
 ::: zone-end
 
 ::: zone pivot="programming-language-javascript"
@@ -179,7 +179,7 @@ HTTP-trigger esetén a függvény a `req` *function.json*megadottak szerint foga
 
 :::code language="javascript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/index.js":::
 
-HTTP-trigger esetén a függvény a `req` *function.json*megadottak szerint fogadja a kérelmeket a változóban. A (z `$return` ) *function.jsban*definiált visszatérési objektum a válasz. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](/azure/azure-functions/functions-bindings-http-webhook?tabs=javascript).
+HTTP-trigger esetén a függvény a `req` *function.json*megadottak szerint fogadja a kérelmeket a változóban. A (z `$return` ) *function.jsban*definiált visszatérési objektum a válasz. További információ: [Azure FUNCTIONS http-eseményindítók és-kötések](./functions-bindings-http-webhook.md?tabs=javascript).
 ::: zone-end
 
 ::: zone pivot="programming-language-typescript"
@@ -419,7 +419,7 @@ az group delete --name java-functions-group
 A virtuális környezetből való kilépéshez futtassa a parancsot `deactivate` .
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md)

@@ -9,11 +9,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: cf8d4cd3c70e28a6c70ab9321a8f55271ead754f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3aa4a7db9982d41cf32c1ddc4de6762bf1fdecf4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807502"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508797"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Felügyelt rendszerkép létrehozása általánosított Azure-beli virtuális gépből
 
@@ -23,9 +24,9 @@ Egy felügyelt rendszerkép akár 20 egyidejű telepítést is támogat. Ha töb
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Windows rendszerű virtuális gép általánosítása a Sysprep használatával
 
-A Sysprep eltávolítja az összes személyes fiókot és biztonsági információt, majd előkészíti a gépet képként való használatra. További információ a Sysprep eszközről: a [Sysprep áttekintése](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+A Sysprep eltávolítja az összes személyes fiókot és biztonsági információt, majd előkészíti a gépet képként való használatra. További információ a Sysprep eszközről: a [Sysprep áttekintése](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) és a nem [támogatott forgatókönyvekhez](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios). A Sysprep megköveteli a meghajtók teljes visszafejtését a végrehajtás előtt. Ha engedélyezte a titkosítást a virtuális gépen, tiltsa le a titkosítást a Sysprep futtatása előtt.
+Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles) és a nem [támogatott forgatókönyvekhez](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview#unsupported-scenarios). A Sysprep megköveteli a meghajtók teljes visszafejtését a végrehajtás előtt. Ha engedélyezte a titkosítást a virtuális gépen, tiltsa le a titkosítást a Sysprep futtatása előtt.
 
 > [!IMPORTANT]
 > Miután futtatta a sysprept egy virtuális gépen, a virtuális gép *általánosított* minősül, és nem indítható újra. A virtuális gép általánosítása nem vonható vissza. Ha meg kell őriznie az eredeti virtuális gép működését, hozzon létre egy [másolatot a virtuális](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) gépről, és általánosítsa a másolatát. 
@@ -44,14 +45,14 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
    
 4. A **leállítási beállításoknál**válassza a **Leállítás**lehetőséget.
    
-5. Válassza az **OK** lehetőséget.
+5. Kattintson az **OK** gombra.
    
     ![A Sysprep elindítása](./media/upload-generalized-managed/sysprepgeneral.png)
 
 6. A Sysprep befejezésekor a rendszer leállítja a virtuális gépet. Ne indítsa újra a virtuális gépet.
 
 > [!TIP]
-> Nem **kötelező** A [DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) használatával optimalizálja a rendszerképet, és csökkentse a virtuális gép első indításának idejét.
+> Nem **kötelező** A [DISM](/windows-hardware/manufacture/desktop/dism-optimize-image-command-line-options) használatával optimalizálja a rendszerképet, és csökkentse a virtuális gép első indításának idejét.
 >
 > A rendszerkép optimalizálásához csatlakoztassa a virtuális merevlemezt úgy, hogy duplán rákattint rá a Windows Intézőben, majd futtassa a DISM eszközt a `/optimize-image` paraméterrel.
 >
@@ -244,6 +245,5 @@ Ha olyan virtuális gépről szeretne felügyelt rendszerképet létrehozni, ame
     ```
 
     
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Hozzon létre egy virtuális gépet egy felügyelt rendszerképből](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
-

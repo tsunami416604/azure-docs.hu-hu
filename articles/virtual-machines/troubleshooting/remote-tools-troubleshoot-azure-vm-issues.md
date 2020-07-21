@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5abb509f1753c65554bd74ababe9acca4103c15a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80422610"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509086"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Távoli eszközök használata az Azure-beli virtuális gépekkel kapcsolatos problémák elhárításához
 
@@ -31,7 +31,7 @@ Az [azure Virtual Machines soros konzoljának](serial-console-windows.md) haszn�
 
 ## <a name="remote-cmd"></a>Távoli CMD
 
-Töltse le a [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec). Kapcsolódjon a virtuális géphez a következő parancs futtatásával:
+Töltse le a [PsExec](/sysinternals/downloads/psexec). Kapcsolódjon a virtuális géphez a következő parancs futtatásával:
 
 ```cmd
 psexec \\<computer>-u user -s cmd
@@ -249,11 +249,9 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 5. Végezze el a szükséges módosításokat a szolgáltatásokban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Az ENTER-PSSession parancsmaggal kapcsolatos további információkért lásd: [ENTER-PSSession](https://technet.microsoft.com/library/hh849707.aspx).
-- További információ a Windowshoz készült egyéni parancsfájl-bővítményről a klasszikus üzemi modell használatával: [egyéni parancsfájl-bővítmény a Windowshoz](../extensions/custom-script-classic.md).
+- Az ENTER-PSSession parancsmaggal kapcsolatos további információkért lásd: [ENTER-PSSession](/powershell/module/microsoft.powershell.core/enter-pssession?view=powershell-5.1).
+- További információ a Windowshoz készült egyéni parancsfájl-bővítményről a klasszikus üzemi modell használatával: [egyéni parancsfájl-bővítmény a Windowshoz](../extensions/custom-script-windows.md).
 - A PsExec a [PsTools csomag](https://download.sysinternals.com/files/PSTools.zip)része.
-- A PSTools csomaggal kapcsolatos további információkért lásd: [PsTools](https://docs.microsoft.com/sysinternals/downloads/pstools).
-
-
+- A PSTools csomaggal kapcsolatos további információkért lásd: [PsTools](/sysinternals/downloads/pstools).

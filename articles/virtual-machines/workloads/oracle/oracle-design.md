@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: b553256d3e6a498e36e8b5c98d90c6c14b10df75
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224570"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507930"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Oracle-adatbázis tervezése és implementálása az Azure-ban
 
@@ -43,17 +43,17 @@ Az egyik fontos különbség az, hogy egy Azure-implementációban az erőforrá
 
 Az alábbi táblázat a helyszíni megvalósítás és az Oracle-adatbázisok Azure-beli megvalósítása közötti különbségeket ismerteti.
 
-> 
-> |  | **Helyszíni megvalósítás** | **Azure-implementáció** |
-> | --- | --- | --- |
-> | **Hálózat** |LAN/WAN  |SDN (szoftveresen definiált hálózat)|
-> | **Biztonsági csoport** |IP-/portokra vonatkozó korlátozási eszközök |[Hálózati biztonsági csoport (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
-> | **Rugalmasság** |MTBF (a hibák közötti átlagos idő) |MTTR (a helyreállítás átlagos ideje)|
-> | **Tervezett karbantartás** |Javítások/frissítések|[Rendelkezésre állási készletek](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (az Azure által kezelt javítások/frissítések) |
-> | **Erőforrás** |Dedikált  |Megosztva más ügyfelekkel|
-> | **Régiók** |Adatközpontok |[Régiópárok](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Storage-fiók** |SAN/fizikai lemezek |[Azure által felügyelt tároló](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **Méretezés** |Függőleges skála |Horizontális skálázhatóság|
+
+|  | Helyszíni megvalósítás | Azure-implementáció |
+| --- | --- | --- |
+| **Hálózat** |LAN/WAN  |SDN (szoftveresen definiált hálózat)|
+| **Biztonsági csoport** |IP-/portokra vonatkozó korlátozási eszközök |[Hálózati biztonsági csoport (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
+| **Rugalmasság** |MTBF (a hibák közötti átlagos idő) |MTTR (a helyreállítás átlagos ideje)|
+| **Tervezett karbantartás** |Javítások/frissítések|[Rendelkezésre állási készletek](../../windows/infrastructure-example.md) (az Azure által kezelt javítások/frissítések) |
+| **Erőforrás** |Dedikált  |Megosztva más ügyfelekkel|
+| **Régiók** |Adatközpontok |[Régiópárok](../../regions.md#region-pairs)|
+| **Storage-fiók** |SAN/fizikai lemezek |[Azure által felügyelt tároló](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+| **Méretezés** |Függőleges skála |Horizontális skálázhatóság|
 
 
 ### <a name="requirements"></a>Követelmények
@@ -116,11 +116,11 @@ Az alábbi ábrán az olvasási és írási műveletek teljes I/O-értéke láth
 
 #### <a name="2-choose-a-vm"></a>2. Válasszon egy virtuális gépet
 
-A AWR jelentésből összegyűjtött információk alapján a következő lépés egy hasonló méretű virtuális gép kiválasztása, amely megfelel az igényeinek. A rendelkezésre álló virtuális gépek listáját a cikk a [memória optimalizált](../../linux/sizes-memory.md)verziójában találja.
+A AWR jelentésből összegyűjtött információk alapján a következő lépés egy hasonló méretű virtuális gép kiválasztása, amely megfelel az igényeinek. A rendelkezésre álló virtuális gépek listáját a cikk a [memória optimalizált](../../sizes-memory.md)verziójában találja.
 
 #### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. a virtuális gép méretezése a ACU alapuló hasonló virtuálisgép-sorozattal
 
-A virtuális gép kiválasztása után figyeljen a virtuális gép ACU. Választhat egy másik virtuális gépet is a ACU érték alapján, amely jobban megfelel a követelményeinek. További információ: [Azure számítási egység](https://docs.microsoft.com/azure/virtual-machines/windows/acu).
+A virtuális gép kiválasztása után figyeljen a virtuális gép ACU. Választhat egy másik virtuális gépet is a ACU érték alapján, amely jobban megfelel a követelményeinek. További információ: [Azure számítási egység](../../acu.md).
 
 ![Képernyőfelvétel a ACU-egységek oldalról](./media/oracle-design/acu_units.png)
 
@@ -143,8 +143,8 @@ A hálózati sávszélességre vonatkozó követelmények alapján különböző
 
 - A hálózati késés magasabb a helyszíni üzembe helyezéshez képest. A hálózati utak csökkentése jelentősen növelheti a teljesítményt.
 - Az egyidejű váltás csökkentése érdekében a nagy tranzakciós vagy "Csevegő" alkalmazásokkal rendelkező alkalmazások összevonása ugyanazon a virtuális gépen.
-- A gyorsabb hálózati teljesítmény érdekében a Virtual Machinest [gyorsított hálózatkezeléssel](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) használhatja.
-- Bizonyos Linux-disztribúciók esetében érdemes lehet a [Trim/leképezésének megszüntetése támogatásának](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm#trimunmap-support)engedélyezése.
+- A gyorsabb hálózati teljesítmény érdekében a Virtual Machinest [gyorsított hálózatkezeléssel](../../../virtual-network/create-vm-accelerated-networking-cli.md) használhatja.
+- Bizonyos Linux-disztribúciók esetében érdemes lehet a [Trim/leképezésének megszüntetése támogatásának](../../linux/configure-lvm.md#trimunmap-support)engedélyezése.
 - Telepítse az [Oracle Enterprise Managert](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) egy különálló virtuális gépre.
 - Alapértelmezés szerint a hatalmas lapok nincsenek engedélyezve a Linuxon. Érdemes lehet hatalmas lapokat engedélyezni és beállítani `use_large_pages = ONLY` a Oracle db. Ez segíthet a teljesítmény növelésében. További információt [itt](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)találhat.
 
@@ -187,7 +187,7 @@ Az I/O-követelmények egyértelmű képe után kiválaszthatja a követelménye
 - Az adattömörítés használatával csökkentheti az I/O-t (az adatmennyiség és az indexek esetében egyaránt).
 - Válassza el a naplók, a rendszer és a temps elválasztását, és vonja vissza a TS-t külön adatlemezeken.
 - Ne helyezzen minden alkalmazásfájl alapértelmezett operációsrendszer-lemezre (/dev/sda). Ezek a lemezek nem optimalizálták a virtuális gép rendszerindítási idejét, és előfordulhat, hogy nem biztosítanak jó teljesítményt az alkalmazás számára.
-- Ha az M sorozatú virtuális gépeket Premium Storage-on használja, engedélyezze a [írásgyorsítót](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator) a naplók megismétlése lemezre.
+- Ha az M sorozatú virtuális gépeket Premium Storage-on használja, engedélyezze a [írásgyorsítót](../../linux/how-to-enable-write-accelerator.md) a naplók megismétlése lemezre.
 
 ### <a name="disk-cache-settings"></a>Lemezgyorsítótár beállításai
 
@@ -225,14 +225,14 @@ Az Azure-környezet beállítása és konfigurálása után a következő lépé
 - *Magánhálózat* (alhálózatok): javasoljuk, hogy az Application Service-t és az adatbázist külön alhálózatokon, így a NSG szabályzat által beállítható jobb szabályozás.
 
 
-## <a name="additional-reading"></a>További olvasnivaló
+## <a name="additional-reading"></a>További információ
 
 - [Oracle ASM konfigurálása](configure-oracle-asm.md)
 - [Oracle Data Guard konfigurálása](configure-oracle-dataguard.md)
 - [Az Oracle Golden Gate konfigurálása](configure-oracle-golden-gate.md)
 - [Oracle biztonsági mentés és helyreállítás](oracle-backup-recovery.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: kiválóan elérhető virtuális gépek létrehozása](../../linux/create-cli-complete.md)
 - [A virtuális gépek üzembe helyezésének megismerése Azure CLI-mintákkal](../../linux/cli-samples.md)

@@ -7,11 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: e65b2c94b5042f857a6ea5fc61136c572b780764
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678511"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510038"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Tervezett karbantartási értesítések feldolgozása
 
@@ -24,7 +25,7 @@ Az Azure rendszeresen végez frissítéseket a virtuális gépeket futtató infr
 
 Az újraindítást igénylő tervezett karbantartás hullámokban van ütemezve. Minden egyes hullám különböző hatókörrel (régiókkal) rendelkezik.
 
-- A Wave az ügyfeleknek küldött értesítésekkel kezdődik. Alapértelmezés szerint a rendszer értesítést küld a szolgáltatás-rendszergazdának és a társ-rendszergazdáknak. A [műveletnapló értesítéseivel](../service-health/alerts-activity-log-service-notifications.md)további címzetteket és üzenetküldési lehetőségeket, például e-maileket, SMS-t és webhookokat adhat hozzá.  
+- A Wave az ügyfeleknek küldött értesítésekkel kezdődik. Alapértelmezés szerint a rendszer értesítést küld a szolgáltatás-rendszergazdának és a társ-rendszergazdáknak. A [műveletnapló értesítéseivel](../service-health/alerts-activity-log-service-notifications-portal.md)további címzetteket és üzenetküldési lehetőségeket, például e-maileket, SMS-t és webhookokat adhat hozzá.  
 - Ha egy értesítés bekerül, az *önkiszolgáló ablak* elérhetővé válik. Ebben az ablakban lekérdezheti, hogy mely virtuális gépek érintettek, és hogyan kezdheti el a karbantartást a saját ütemezési igényei alapján. Az önkiszolgáló ablak általában körülbelül 35 nap.
 - Az önkiszolgáló ablak után megkezdődik az *ütemezett karbantartási* időszak. Ezen az időszakon belül az Azure ütemezni fogja a szükséges karbantartást a virtuális gépen. 
 
@@ -75,7 +76,7 @@ A következő esetekben ajánlott önkiszolgáló karbantartást használni:
 
 **A:** A rendelkezésre állási csoportokban vagy virtuálisgép-méretezési csoportokban üzembe helyezett virtuális gépek a frissítési tartományok (UD) fogalmát jelentik. A karbantartás végrehajtásakor az Azure tiszteletben tartja az UD korlátozást, és nem indít újra a virtuális gépeket a különböző UD-ból (ugyanazon rendelkezésre állási csoporton belül).  Az Azure a virtuális gépek következő csoportjára való áttérés előtt is legalább 30 percet vár. 
 
-További információ a magas rendelkezésre állásról: [virtuális gépek rendelkezésre állása az Azure-ban](./linux/availability.md).
+További információ a magas rendelkezésre állásról: [virtuális gépek rendelkezésre állása az Azure-ban](availability.md).
 
 **K: Hogyan értesítést kap a tervezett karbantartásról?**
 
@@ -118,7 +119,6 @@ További információ a magas rendelkezésre állásról: [virtuális gépek ren
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Azure CLI](maintenance-notifications-cli.md), [Azure PowerShell](maintenance-notifications-powershell.md) vagy [Portal](maintenance-notifications-portal.md)használatával kezelheti a tervezett karbantartást.
-

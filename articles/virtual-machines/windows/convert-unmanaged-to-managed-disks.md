@@ -7,11 +7,12 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 6173f2f60f5dd0b2b06c415bbf55ed31bacbe8b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b5d2e82b439454ff33a263af7710fe79f246893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658193"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508610"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows rendszerű virtuális gép átállítása nem felügyelt lemezekről felügyelt lemezekre
 
@@ -34,7 +35,7 @@ Ha már van olyan Windows rendszerű virtuális gép (VM), amely nem felügyelt 
 ## <a name="convert-single-instance-vms"></a>Egypéldányos virtuális gépek konvertálása
 Ez a szakasz bemutatja, hogyan alakíthatja át a nem felügyelt lemezekről származó egypéldányos Azure-beli virtuális gépeket a felügyelt lemezekre. (Ha a virtuális gépek rendelkezésre állási csoportban találhatók, tekintse meg a következő szakaszt.) 
 
-1. Szabadítsa fel a virtuális gépet a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) parancsmag használatával. A következő példa felszabadítja a nevű virtuális gépet `myVM` a nevű erőforráscsoporthoz `myResourceGroup` : 
+1. Szabadítsa fel a virtuális gépet a [stop-AzVM](/powershell/module/az.compute/stop-azvm) parancsmag használatával. A következő példa felszabadítja a nevű virtuális gépet `myVM` a nevű erőforráscsoporthoz `myResourceGroup` : 
 
    ```azurepowershell-interactive
    $rgName = "myResourceGroup"
@@ -42,7 +43,7 @@ Ez a szakasz bemutatja, hogyan alakíthatja át a nem felügyelt lemezekről sz�
    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
    ```
 
-2. Alakítsa át a virtuális gépet felügyelt lemezekre a [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk) parancsmag használatával. A következő folyamat átalakítja az előző virtuális gépet, beleértve az operációsrendszer-lemezt és az adatlemezeket, és elindítja a virtuális gépet:
+2. Alakítsa át a virtuális gépet felügyelt lemezekre a [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk) parancsmag használatával. A következő folyamat átalakítja az előző virtuális gépet, beleértve az operációsrendszer-lemezt és az adatlemezeket, és elindítja a virtuális gépet:
 
    ```azurepowershell-interactive
    ConvertTo-AzVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
@@ -54,7 +55,7 @@ Ez a szakasz bemutatja, hogyan alakíthatja át a nem felügyelt lemezekről sz�
 
 Ha a felügyelt lemezekre átalakítani kívánt virtuális gépek rendelkezésre állási csoportba kerülnek, először át kell alakítania a rendelkezésre állási készletet egy felügyelt rendelkezésre állási csoportba.
 
-1. Alakítsa át a rendelkezésre állási készletet az [Update-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/update-azavailabilityset) parancsmag használatával. Az alábbi példa frissíti a nevű erőforráscsoport-beli rendelkezésre állási `myAvailabilitySet` csoportot `myResourceGroup` :
+1. Alakítsa át a rendelkezésre állási készletet az [Update-AzAvailabilitySet](/powershell/module/az.compute/update-azavailabilityset) parancsmag használatával. Az alábbi példa frissíti a nevű erőforráscsoport-beli rendelkezésre állási `myAvailabilitySet` csoportot `myResourceGroup` :
 
    ```azurepowershell-interactive
    $rgName = 'myResourceGroup'
@@ -71,7 +72,7 @@ Ha a felügyelt lemezekre átalakítani kívánt virtuális gépek rendelkezésr
    Update-AzAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
    ```
 
-2. Szabadítson fel és alakítsa át a virtuális gépeket a rendelkezésre állási csoportba. A következő szkript felszabadítja az egyes virtuális gépeket a [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) parancsmag használatával, átalakítja azt a [ConvertTo-AzVMManagedDisk](https://docs.microsoft.com/powershell/module/az.compute/convertto-azvmmanageddisk)használatával, és automatikusan újraindítja az átalakítási folyamaton kívül:
+2. Szabadítson fel és alakítsa át a virtuális gépeket a rendelkezésre állási csoportba. A következő szkript felszabadítja az egyes virtuális gépeket a [stop-AzVM](/powershell/module/az.compute/stop-azvm) parancsmag használatával, átalakítja azt a [ConvertTo-AzVMManagedDisk](/powershell/module/az.compute/convertto-azvmmanageddisk)használatával, és automatikusan újraindítja az átalakítási folyamaton kívül:
 
    ```azurepowershell-interactive
    $avSet = Get-AzAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -102,9 +103,8 @@ A nem felügyelt lemezeket a Azure Portal használatával is konvertálhatja a f
 
 A rendszer a Migrálás befejezése után leállítja és újraindítja a virtuális gépet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Standard szintű felügyelt lemezek átalakítása prémium szintre](convert-disk-storage.md)
 
 [Pillanatképek](snapshot-copy-managed-disk.md)használatával készítsen egy virtuális gép írásvédett másolatát.
-

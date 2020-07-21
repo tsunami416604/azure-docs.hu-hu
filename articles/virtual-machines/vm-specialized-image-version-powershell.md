@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: fdf1e6cf15279a0ff5be4b45385a13a3b967d22e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44fbbbdb1c36f74a4131d4e5a82de6ef058381f8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374627"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508751"
 ---
 # <a name="create-a-vm-using-a-specialized-image"></a>Virtuális gép létrehozása speciális rendszerkép használatával 
 
 Hozzon létre egy virtuális gépet egy megosztott rendszerkép-gyűjteményben tárolt speciális rendszerkép-verzióból. Ha általánosított rendszerkép-verzió használatával szeretne virtuális gépet létrehozni, tekintse meg [a virtuális gép létrehozása általánosított rendszerkép használatával](vm-generalized-image-version-powershell.md)című témakört.
 
-Ha speciális rendszerkép-verziót használ, létrehozhat egy vagy több új virtuális gépet is. A [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag használata. 
+Ha speciális rendszerkép-verziót használ, létrehozhat egy vagy több új virtuális gépet is. A [New-AzVM](/powershell/module/az.compute/new-azvm) parancsmag használata. 
 
 Ebben a példában a rendszerkép-definíció AZONOSÍTÓját használjuk annak biztosítására, hogy az új virtuális gép a rendszerkép legújabb verzióját fogja használni. Egy adott verziót is használhat a rendszerkép-verziójának AZONOSÍTÓjának használatával `Set-AzVMSourceImage -Id` . Például a következő rendszerkép *-verzió használata* `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` : 
 
@@ -123,7 +123,7 @@ Add-AzVMDataDisk `
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az [Azure rendszerkép-szerkesztő (előzetes verzió)](./linux/image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](./linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
 
 Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrásokat. Több Azure Gyorsindítás-sablon is elérhető: 

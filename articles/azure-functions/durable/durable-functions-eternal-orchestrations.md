@@ -3,14 +3,14 @@ title: Örök Összehangolók a Durable Functionsban – Azure
 description: Megtudhatja, hogyan valósítható meg az örök Összehangolók a Azure Functions Durable Functions-bővítményének használatával.
 author: cgillum
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d55e08fecbd1338284607ac59fe354c6fa8cb1ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34c70f4305ebb2c45757d982ab558aea6450003f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80478814"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506366"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Örök összeszerelések Durable Functionsban (Azure Functions)
 
@@ -22,7 +22,7 @@ Ahogy az a előkészítési [Előzmények](durable-functions-orchestrations.md#o
 
 ## <a name="resetting-and-restarting"></a>Alaphelyzetbe állítás és újraindítás
 
-A végtelen hurkok használata helyett a Orchestrator functions a `ContinueAsNew` (.net) vagy `continueAsNew` a (JavaScript) metódus [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger)meghívásával állítja vissza az állapotukat. Ez a metódus egy JSON-szerializálható paramétert használ, amely a következő Orchestrator-függvény új bemenete lesz.
+A végtelen hurkok használata helyett a Orchestrator functions a `ContinueAsNew` (.net), `continueAsNew` (JavaScript) vagy `continue_as_new` ( [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger)Python) metódus meghívásával állítja vissza az állapotukat. Ez a metódus egy JSON-szerializálható paramétert használ, amely a következő Orchestrator-függvény új bemenete lesz.
 
 Ha `ContinueAsNew` a hívása megtörténik, a példány enqueues egy üzenetet, mielőtt kilép. Az üzenet újraindítja a példányt az új bemeneti értékkel. A rendszer megőrzi a példány AZONOSÍTÓját, de a Orchestrator függvény előzményeit a rendszer gyakorlatilag csonkolja.
 
@@ -70,13 +70,32 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    yield context.call_activity("DoCleanup")
+
+    # sleep for one hour between cleanups
+    next_cleanup = context.current_utc_datetime + timedelta(hours = 1)
+    yield context.create_timer(next_cleanup)
+
+    context.continue_as_new(None)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 A példa és az időzítő által aktivált függvény közötti különbség az, hogy a törlési kiváltó idő itt nem menetrend alapján történik. Például egy olyan CRON-ütemterv, amely óránként hajt végre egy függvényt, a 1:00-es, 2:00-es, 3:00-as és más-más időpontban hajtja végre, és az átfedésben lévő problémákba ütközik. Ebben a példában azonban, ha a tisztítás 30 percet vesz igénybe, akkor a rendszer a 1:00, 2:30, 4:00 stb. időpontban ütemezi, és az átfedés nem lehetséges.
 
 ## <a name="starting-an-eternal-orchestration"></a>Örök összehangolás indítása
 
-A `StartNewAsync` (.net) vagy a `startNew` (JavaScript) metódussal elindíthat egy örök előkészítést, ugyanúgy, mint bármely más előkészítési funkciót.  
+A `StartNewAsync` (.net), a `startNew` (JavaScript), `start_new` (Python) metódussal elindíthat egy örök előkészítést, ugyanúgy, mint bármely más előkészítési funkciót.  
 
 > [!NOTE]
 > Ha meg kell győződnie arról, hogy egy egypéldányos örök előkészítés fut, fontos, hogy ugyanazt a példányt őrizze meg az előkészítés `id` megkezdése során. További információ: [példányok kezelése](durable-functions-instance-management.md).
@@ -115,6 +134,19 @@ module.exports = async function (context, req) {
     return client.createCheckStatusResponse(context.bindingData.req, instanceId);
 };
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    instance_id = 'StaticId'
+
+    await client.start_new('Periodic_Cleanup_Loop', instance_id, None)
+
+    logging.info(f"Started orchestration with ID = '{instance_id}'.")
+    return client.create_check_status_response(req, instance_id)
+
+```
 
 ---
 
@@ -122,9 +154,9 @@ module.exports = async function (context, req) {
 
 Ha egy Orchestrator függvénynek végül végre kell hajtania a műveletet, akkor mindössze annyit kell tennie, hogy *nem* hívja meg `ContinueAsNew` a függvényt, és hagyja ki a funkciót.
 
-Ha egy Orchestrator-függvény végtelen ciklusban van, és le kell állítani, a `TerminateAsync` megállításhoz használja a (.net) vagy `terminate` a (JavaScript) metódust a koordinációs [ügyfél kötéséhez](durable-functions-bindings.md#orchestration-client) . További információ: [példányok kezelése](durable-functions-instance-management.md).
+Ha egy Orchestrator-függvény végtelen ciklusban van, és le kell állítani, a `TerminateAsync` beállítás leállításához használja a (.net), `terminate` (JavaScript) vagy `terminate` a ( [orchestration client binding](durable-functions-bindings.md#orchestration-client) Python) metódust. További információ: [példányok kezelése](durable-functions-instance-management.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan valósítható meg az Egypéldányos előkészítés](durable-functions-singletons.md)

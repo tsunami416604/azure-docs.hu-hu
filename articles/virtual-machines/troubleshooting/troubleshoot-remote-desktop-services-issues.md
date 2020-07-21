@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: f41f3bd38013cb0ebd2cad55168551c303c1d231
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b00785fed7708986885e9da9102e8f1b4fd4539
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084327"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508882"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Távoli asztali szolgáltatások nem Azure-beli virtuális gépen indul
 
@@ -218,7 +218,7 @@ A probléma megoldásához használja a soros konzolt. Másik lehetőségként [
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy helyreállítási virtuális géphez
 
-1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md).
 2. Távoli asztal-Kapcsolódás elindítása a helyreállítási virtuális géphez. Győződjön meg arról, hogy a csatlakoztatott lemez **online** állapotban van megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet.
 3. Nyisson meg egy rendszergazda jogú parancssor-példányt (**Futtatás rendszergazdaként**). Ezután futtassa az alábbi szkriptet. Feltételezzük, hogy a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjel **F**. Cserélje le a megfelelő értékre a virtuális gépen. 
 
@@ -234,7 +234,7 @@ A probléma megoldásához használja a soros konzolt. Másik lehetőségként [
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [Válassza le az operációsrendszer-lemezt, és hozza létre újra a virtuális gépet](../windows/troubleshoot-recovery-disks-portal.md). Ezután győződjön meg arról, hogy a probléma megoldódott-e.
+4. [Válassza le az operációsrendszer-lemezt, és hozza létre újra a virtuális gépet](./troubleshoot-recovery-disks-portal-windows.md). Ezután győződjön meg arról, hogy a probléma megoldódott-e.
 
 ## <a name="need-help-contact-support"></a>Segítségre van szüksége? Kapcsolatfelvétel a támogatási szolgáltatással
 

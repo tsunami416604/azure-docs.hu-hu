@@ -4,16 +4,16 @@ description: A Azure Functions használatával ütemezhet egy olyan feladatot, a
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 974d9da9bb5782672603f1ae8c58742941899a14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29e90838d91de69af43ae9cf8ec0d99b534f66be
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254276"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506077"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions használata Azure SQL Databasehoz való kapcsolódáshoz
 
-Ez a cikk bemutatja, hogyan használható a Azure Functions egy Azure SQL Database vagy Azure SQL felügyelt példányhoz csatlakozó ütemezett feladatok létrehozásához. A függvény kódja megtisztítja a sorokat egy táblában az adatbázisban. Az új C#-függvény egy előre definiált időzítő-trigger sablon alapján jön létre a Visual Studio 2019-ben. Ennek a forgatókönyvnek a támogatásához egy adatbázis-kapcsolódási karakterláncot kell beállítania egy alkalmazás-beállításként a Function alkalmazásban. Az Azure SQL felügyelt példányához engedélyeznie kell a [nyilvános végpontot](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) , hogy csatlakozni tudjon a Azure functions. Ez a forgatókönyv egy tömeges műveletet használ az adatbázison. 
+Ez a cikk bemutatja, hogyan használható a Azure Functions egy Azure SQL Database vagy Azure SQL felügyelt példányhoz csatlakozó ütemezett feladatok létrehozásához. A függvény kódja megtisztítja a sorokat egy táblában az adatbázisban. Az új C#-függvény egy előre definiált időzítő-trigger sablon alapján jön létre a Visual Studio 2019-ben. Ennek a forgatókönyvnek a támogatásához egy adatbázis-kapcsolódási karakterláncot kell beállítania egy alkalmazás-beállításként a Function alkalmazásban. Az Azure SQL felügyelt példányához engedélyeznie kell a [nyilvános végpontot](../azure-sql/managed-instance/public-endpoint-configure.md) , hogy csatlakozni tudjon a Azure functions. Ez a forgatókönyv egy tömeges műveletet használ az adatbázison. 
 
 Ha első alkalommal használja a C# függvények használatát, olvassa el a [Azure functions C# fejlesztői referenciát](functions-dotnet-class-library.md).
 
@@ -23,7 +23,7 @@ Ha első alkalommal használja a C# függvények használatát, olvassa el a [Az
 
 + Ez a cikk egy Transact-SQL-parancsot mutat be, amely egy tömeges karbantartási műveletet hajt végre a AdventureWorksLT-mintaadatbázis **SalesOrderHeader** táblájában. A AdventureWorksLT-mintaadatbázis létrehozásához hajtsa végre a következő cikkben ismertetett lépéseket: [Azure SQL Database adatbázis létrehozása a Azure Portal használatával](../azure-sql/database/single-database-create-quickstart.md).
 
-+ A rövid útmutatóhoz használt számítógép nyilvános IP-címéhez hozzá kell adnia egy [kiszolgálói szintű tűzfalszabály-szabályt](../sql-database/sql-database-get-started-portal-firewall.md) . Ez a szabály szükséges ahhoz, hogy hozzáférhessen a SQL Database-példányhoz a helyi számítógépről.  
++ A rövid útmutatóhoz használt számítógép nyilvános IP-címéhez hozzá kell adnia egy [kiszolgálói szintű tűzfalszabály-szabályt](../azure-sql/database/firewall-create-server-level-portal-quickstart.md) . Ez a szabály szükséges ahhoz, hogy hozzáférhessen a SQL Database-példányhoz a helyi számítógépről.  
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 
@@ -122,7 +122,7 @@ Most hozzáadhatja a SQL Databasehoz csatlakozó C#-függvény kódját.
 
 Ha azt tervezi, hogy [közzéteszi ezt a függvényt](functions-develop-vs.md#publish-to-azure), ne felejtse el módosítani az `TimerTrigger` attribútumot egy ésszerű [cron-ütemtervre](functions-bindings-timer.md#ncrontab-expressions) , mint 15 másodpercenként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépésben megtudhatja, hogyan használható. A más szolgáltatásokkal való integrációhoz Logic Apps függvényekkel.
 

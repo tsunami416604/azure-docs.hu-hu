@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
-ms.openlocfilehash: eeb43247253386d6dd58a4c35ef0cba15a991b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ad1c3bfd7a7bb3dba36790d8dae0f503ba938c3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086198"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508627"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Korlátozott vCPU képességgel rendelkező VM-méretek
 
@@ -24,12 +24,11 @@ ms.locfileid: "82086198"
 
 
 ## <a name="other-sizes"></a>Egyéb méretek
-- [Számításra optimalizált](../windows/sizes-compute.md)
-- [Memóriaoptimalizált](sizes-memory.md)
-- [Tárolásra optimalizált](sizes-storage.md)
-- [GPU](sizes-gpu.md)
-- [Nagy teljesítményű számítás](sizes-hpc.md)
+- [Számításoptimalizált](../sizes-compute.md)
+- [Memóriaoptimalizált](../sizes-memory.md)
+- [Tároptimalizált](../sizes-storage.md)
+- [GPU](../sizes-gpu.md)
+- [Nagy teljesítményű számítás](../sizes-hpc.md)
 
-## <a name="next-steps"></a>További lépések
-További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.
-
+## <a name="next-steps"></a>Következő lépések
+További információ arról, hogy az [Azure számítási egységei (ACU)](../acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

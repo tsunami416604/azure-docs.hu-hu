@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: 1ab2861f73d66987230c9e3398227c8e80665e96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c56ee4b9e541aa4b374acbb59cf64da34046a06c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84769608"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509069"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Azure Virtual Machines rendszerindítási hibák elhárítása
 
@@ -32,8 +33,8 @@ Ez a cikk azokat a gyakori rendszerindítási hibákat sorolja fel, amelyeket a 
 * [EGY KULCSFONTOSSÁGÚ SZOLGÁLTATÁS MEGHIÚSULT” hibával a kék képernyőn](troubleshoot-critical-service-failed-boot-error.md)
 * [Újraindítási hurokkal kapcsolatos probléma](troubleshoot-reboot-loop.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rendszerindítási diagnosztika](boot-diagnostics.md)
-- [VM soros konzol](../windows/serial-console.md)
-- [Windows rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez helyreállítási virtuális géphez való csatolásával](../windows/troubleshoot-recovery-disks.md)
+- [VM soros konzol](./serial-console-windows.md)
+- [Windows rendszerű virtuális gép hibáinak elhárítása az operációsrendszer-lemez helyreállítási virtuális géphez való csatolásával](./troubleshoot-recovery-disks-windows.md)

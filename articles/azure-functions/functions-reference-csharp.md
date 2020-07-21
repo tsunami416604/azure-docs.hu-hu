@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: a8041f2514f59ac2511fcd64eeb0283565a0e07a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 177e9fcd872c594fbfb5f29077235113c6342860
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249240"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506146"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# parancsfájl (. CSX) fejlesztői referenciája
 
@@ -238,7 +238,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 
 ## <a name="logging"></a>Naplózás
 
-Ha a kimeneti adatokat a C#-ban szeretné naplózni, adjon meg egy [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot. Azt javasoljuk, hogy nevezze el `log` . Ne használja `Console.Write` a Azure functions.
+Ha a kimeneti adatokat a C#-ban szeretné naplózni, adjon meg egy [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)típusú argumentumot. Azt javasoljuk, hogy nevezze el `log` . Ne használja `Console.Write` a Azure functions.
 
 ```csharp
 public static void Run(string myBlob, ILogger log)
@@ -252,7 +252,7 @@ public static void Run(string myBlob, ILogger log)
 
 ## <a name="async"></a>Aszinkron
 
-A függvény [aszinkron](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)működéséhez használja a `async` kulcsszót, és egy `Task` objektumot ad vissza.
+A függvény [aszinkron](/dotnet/csharp/programming-guide/concepts/async/)működéséhez használja a `async` kulcsszót, és egy `Task` objektumot ad vissza.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(

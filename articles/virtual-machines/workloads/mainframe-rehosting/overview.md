@@ -10,11 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1ab9834d4bf25c7c18171ecb271f18b213d15b0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289798"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507879"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>A nagyszámítógépek Azure-beli virtuális gépeken való üzemeltetése
 
@@ -69,11 +70,11 @@ Első lépések:
 
 Az IBM DB2 pureScale-környezet az Azure-hoz készült adatbázis-fürtöt biztosít. Nem azonos az eredeti környezettel, de hasonló rendelkezésre állást és méretezést biztosít, mint az IBM DB2 a párhuzamos Sysplex-telepítésben futó z/OS-hez.
 
-Első lépésként tekintse [meg az IBM DB2 pureScale az Azure](/azure/virtual-machines/linux/ibm-db2-purescale-azure)-ban című témakört.
+Első lépésként tekintse [meg az IBM DB2 pureScale az Azure](../../linux/ibm-db2-purescale-azure.md)-ban című témakört.
 
 ## <a name="considerations"></a>Megfontolandó szempontok
 
-Ha nagyszámítógépes számítási feladatokat telepít át az Azure-infrastruktúra szolgáltatásként (IaaS), többféle igény szerinti, méretezhető számítástechnikai erőforrás közül választhat, beleértve az Azure-beli virtuális gépeket is. Az Azure [Linux](/azure/virtual-machines/linux/overview) -és Windows- [alapú](/azure/virtual-machines/windows/overview) virtuális gépek széles választékát kínálja.
+Ha nagyszámítógépes számítási feladatokat telepít át az Azure-infrastruktúra szolgáltatásként (IaaS), többféle igény szerinti, méretezhető számítástechnikai erőforrás közül választhat, beleértve az Azure-beli virtuális gépeket is. Az Azure [Linux](../../linux/overview.md) -és Windows- [alapú](../../windows/overview.md) virtuális gépek széles választékát kínálja.
 
 ### <a name="compute"></a>Compute
 
@@ -85,21 +86,21 @@ Ismerje meg, hogyan [helyezheti át a nagyszámítógépeket az Azure-](./concep
 
 Az Azure kötelezettségvállalási alapú szolgáltatói szerződéseket (SLA-kat) kínál. A több-kilences rendelkezésre állás az alapértelmezett, a SLA-kat pedig a szolgáltatások helyi vagy geo alapú replikálásával lehet optimalizálni. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
 
-Az Azure IaaS, például a virtuális gépek esetében az adott rendszerfunkciók feladatátvételi támogatást biztosítanak, például a feladatátvételi fürtszolgáltatás példányai és a rendelkezésre állási készletek. Ha az Azure platformot szolgáltatásként (Pásti) használja, a platform automatikusan kezeli a feladatátvételt. Ilyenek például a [Azure SQL Database](/azure/sql-database/sql-database-technical-overview) és a [Azure Cosmos db](/azure/cosmos-db/introduction).
+Az Azure IaaS, például a virtuális gépek esetében az adott rendszerfunkciók feladatátvételi támogatást biztosítanak, például a feladatátvételi fürtszolgáltatás példányai és a rendelkezésre állási készletek. Ha az Azure platformot szolgáltatásként (Pásti) használja, a platform automatikusan kezeli a feladatátvételt. Ilyenek például a [Azure SQL Database](../../../azure-sql/database/sql-database-paas-overview.md) és a [Azure Cosmos db](../../../cosmos-db/introduction.md).
 
-### <a name="scalability"></a>Méretezhetőség
+### <a name="scalability"></a>Skálázhatóság
 
-A nagyszámítógépek jellemzően vertikális felskálázást, míg a felhőalapú környezetek felskálázása. Az Azure számos [Linux](/azure/virtual-machines/linux/sizes) -és [Windows](/azure/virtual-machines/windows/sizes) -méretet kínál, hogy megfeleljen az igényeinek. A felhő a pontos felhasználói specifikációknak megfelelően felfelé vagy lefelé is méretezhető. A számítási teljesítmény, a tárolás és a szolgáltatások igény szerinti [skálázása](/azure/architecture/best-practices/auto-scaling) használaton alapuló számlázási modell keretében történik.
+A nagyszámítógépek jellemzően vertikális felskálázást, míg a felhőalapú környezetek felskálázása. Az Azure számos [Linux](../../linux/sizes.md) -és [Windows](../../windows/sizes.md) -méretet kínál, hogy megfeleljen az igényeinek. A felhő a pontos felhasználói specifikációknak megfelelően felfelé vagy lefelé is méretezhető. A számítási teljesítmény, a tárolás és a szolgáltatások igény szerinti [skálázása](/azure/architecture/best-practices/auto-scaling) használaton alapuló számlázási modell keretében történik.
 
 ### <a name="storage"></a>Storage
 
-A felhőben számos rugalmas és skálázható tárolási lehetőség áll rendelkezésre, és csak azért kell fizetnie, amire szüksége van. Az [Azure Storage](/azure/storage/common/storage-introduction) egy nagymértékben méretezhető objektum-tárolót biztosít az adatobjektumokhoz, egy fájlrendszer-szolgáltatáshoz a felhőhöz, egy megbízható üzenetkezelési tárolóhoz és egy NoSQL-tárolóhoz. A virtuális gépek esetében a felügyelt és a nem felügyelt lemezek állandó, biztonságos lemezes tárolást biztosítanak.
+A felhőben számos rugalmas és skálázható tárolási lehetőség áll rendelkezésre, és csak azért kell fizetnie, amire szüksége van. Az [Azure Storage](../../../storage/common/storage-introduction.md) egy nagymértékben méretezhető objektum-tárolót biztosít az adatobjektumokhoz, egy fájlrendszer-szolgáltatáshoz a felhőhöz, egy megbízható üzenetkezelési tárolóhoz és egy NoSQL-tárolóhoz. A virtuális gépek esetében a felügyelt és a nem felügyelt lemezek állandó, biztonságos lemezes tárolást biztosítanak.
 
 Ismerje meg, hogyan [helyezheti át a mainframe-tárolót az Azure-](./concepts/mainframe-storage-azure.md)ba.
 
 ### <a name="backup-and-recovery"></a>Biztonsági másolat és helyreállítás
 
-A saját vész-helyreállítási hely fenntartása költséges lehet. Az Azure könnyen megvalósítható és költséghatékony lehetőségeket kínál a [biztonsági mentéshez](/azure/backup/backup-introduction-to-azure-backup), a [helyreállításhoz](/azure/site-recovery/site-recovery-overview)és a [Redundanciához](/azure/storage/common/storage-redundancy) helyi vagy regionális szinten, vagy geo-redundancia segítségével.
+A saját vész-helyreállítási hely fenntartása költséges lehet. Az Azure könnyen megvalósítható és költséghatékony lehetőségeket kínál a [biztonsági mentéshez](../../../backup/backup-overview.md), a [helyreállításhoz](../../../site-recovery/site-recovery-overview.md)és a [Redundanciához](../../../storage/common/storage-redundancy.md) helyi vagy regionális szinten, vagy geo-redundancia segítségével.
 
 ## <a name="azure-government-for-mainframe-migrations"></a>Azure Government a nagyszámítógépek áttelepítéséhez
 
@@ -109,7 +110,7 @@ Azure Government egy ideiglenes hatóságot (P-ATO) kapott ahhoz, hogy a FedRAMP
 
 Első lépésként töltse le [Microsoft Azure Government felhőt a nagyszámítógépek alkalmazásaihoz](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kérje [partnereit](partner-workloads.md) , hogy segítsenek áttelepíteni vagy áthelyezni a nagyszámítógépű alkalmazásokat. 
 
@@ -117,7 +118,7 @@ Lásd még:
 
 - [A nagyszámítógépekkel kapcsolatos témákról szóló tanulmány](mainframe-white-papers.md)
 - [Nagyszámítógép migrálása](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Hibaelhárítás](/azure/virtual-machines/troubleshooting/)
+- [Hibaelhárítás](../../troubleshooting/index.yml)
 - [Demystifying mainframe – Azure Migrálás](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

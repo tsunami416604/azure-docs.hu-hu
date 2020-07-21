@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 03804229221c2b1deb94f6c32a5be9defd304ff6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ed567ee20835cfe076c9b06234f2cba23f3a8bd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628282"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509120"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Windows rendszerű virtuális gépek Azure-beli üzembe helyezése során előforduló problémák elhárítása
 
@@ -70,7 +70,7 @@ Nagyvállalati szerződés:
 
 • Töltsön fel egy egyéni virtuális gépet, és telepítsen egy Resource Manager-sablon vagy Azure PowerShell használatával.
 
-További információkért lásd a következőket:
+További információkat találhat az alábbi forrásokban:
 
  - [Azure Hybrid Use Benefit áttekintése](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
@@ -78,7 +78,7 @@ További információkért lásd a következőket:
 
  - [Azure Hybrid use Benefit a Windows Server és a Windows ügyfél számára](../windows/hybrid-use-benefit-licensing.md).
 
- - [Hogyan használhatom a Hybrid use benefitet az Azure-ban](https://blogs.msdn.microsoft.com/azureedu/2016/04/13/how-can-i-use-the-hybrid-use-benefit-in-azure)
+ - [Hogyan használhatom a Hybrid use benefitet az Azure-ban](/archive/blogs/azureedu/how-can-i-use-the-hybrid-use-benefit-in-azure)
 
 ## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>A havi kreditek Hogyan aktiválása a Visual Studio Enterprise (BizSpark) szolgáltatáshoz
 
@@ -128,7 +128,7 @@ Válassza ki a rendelkezésre állási csoport fürtjét támogató méretet. Az
 Igen. Meglévő klasszikus virtuális gépet hozzáadhat egy új vagy meglévő rendelkezésre állási csoporthoz. További információ: [meglévő virtuális gép hozzáadása egy rendelkezésre állási csoporthoz](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is.
 
 Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

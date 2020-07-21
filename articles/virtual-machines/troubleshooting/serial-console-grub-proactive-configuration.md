@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f4846947b18adb1d3f33f1d46482b5c02ee831e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309832"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509154"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proaktív módon biztosíthatja, hogy hozzáférjen a GRUB-hoz, és a SYSRQ rengeteg időt takaríthat meg
 
@@ -36,11 +37,11 @@ A virtuális gépek helyreállításának okai sok esetben a következők lehetn
    - Összekeveredett sshd-konfigurációk fájljai
    - Hálózati konfigurációk
 
- Számos más forgatókönyv, amely részletesen [itt](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux#common-scenarios-for-accessing-the-serial-console) látható
+ Számos más forgatókönyv, amely részletesen [itt](./serial-console-linux.md#common-scenarios-for-accessing-the-serial-console) látható
 
 Ellenőrizze, hogy elérhető-e a GRUB és a Serial console az Azure-ban üzembe helyezett virtuális gépeken. 
 
-Ha a soros konzol új, tekintse meg [ezt a hivatkozást](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux/).
+Ha a soros konzol új, tekintse meg [ezt a hivatkozást](./serial-console-linux.md).
 
 > [!TIP]
 > A módosítások végrehajtása előtt készítsen biztonsági mentést a fájlokról
@@ -345,7 +346,7 @@ Az ESC billentyű lenyomása nélkül a GRUB menünek meg kell jelennie a képer
 ## <a name="suse"></a>SuSE
 
 ## <a name="sles-12-sp1"></a>SLES 12 SP1
-Használja a YaST bootloadert a hivatalos [dokumentumok](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#grub-access-in-suse-sles) szerint
+Használja a YaST bootloadert a hivatalos [dokumentumok](./serial-console-grub-single-user-mode.md#grub-access-in-suse-sles) szerint
 
 Vagy a Hozzáadás/módosítás/etc/default/grub a következő paraméterekkel:
 
@@ -429,11 +430,11 @@ Indítsa újra a virtuális gépet a
 Előfordulhat, hogy egy felhasználói vagy vészhelyzeti módban is hozzá kell férnie a virtuális géphez. Válassza ki a indítani vagy megszakítani kívánt kernelt a nyílbillentyűk használatával.
 Adja meg a kívánt módot úgy, hogy hozzáfűzi az **egy** vagy **1** kulcsszót a kernel rendszerindítási sorához. A RHEL rendszereken a **Rd. break**utótagot is használhatja.
 
-További információ az egyfelhasználós mód eléréséről: Ez a [dokumentum](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode#general-single-user-mode-access) 
+További információ az egyfelhasználós mód eléréséről: Ez a [dokumentum](./serial-console-grub-single-user-mode.md#general-single-user-mode-access) 
 
 
 ![single_user_ubuntu](./media/virtual-machines-serial-console/single-user-ubuntu.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az [Azure soros konzolról]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)

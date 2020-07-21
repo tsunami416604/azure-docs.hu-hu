@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: apimpm
-ms.openlocfilehash: dacf1329d35117c65bcc48a82ac27a767ebd2b3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0894203be4867e305c8e15467a2a867b9bfdc727
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203182"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506808"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása
 
@@ -49,7 +49,7 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 
 ## <a name="use-the-azure-portal-to-set-a-custom-domain-name-for-your-self-hosted-gateway"></a>Egyéni tartománynév beállítása a saját üzemeltetésű átjáróhoz a Azure Portal használatával
 
-1. Válassza ki az **átjárókat** a **Beállítások**területen.
+1. Válassza ki az **átjárókat** az **üzembe helyezés és az infrastruktúra**területen.
 2. Válassza ki azt a saját üzemeltetésű átjárót, amelyhez konfigurálni kívánja a tartománynevet.
 3. Válassza a **gazdagépek** lehetőséget a **Beállítások**területen.
 4. Válassza a **+ Hozzáadás** lehetőséget
@@ -61,6 +61,6 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
     > Ezt a beállítást az átjáróhoz konfigurált összes tartománynév megosztja.
 9. A **Hozzáadás** gombra kattintva rendelje hozzá az egyéni tartománynevet a kiválasztott saját üzemeltetésű átjáróhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A szolgáltatás frissítése és méretezése](upgrade-and-scale.md)

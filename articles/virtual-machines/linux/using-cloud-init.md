@@ -8,19 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/15/2020
 ms.author: danis
-ms.openlocfilehash: bebf4967d96177038aba64be59d43f49458b82be
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e303b713adf2925af8bc012a5b858c6f5740fccf
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920191"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86510072"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Cloud-init támogatás az Azure-beli virtuális gépekhez
 Ez a cikk ismerteti a [Cloud-init](https://cloudinit.readthedocs.io) számára elérhető támogatást a virtuális gép (VM) vagy virtuálisgép-méretezési csoportok konfigurálásához az Azure üzembe helyezési idején. Ezek a Cloud-init konfigurációk az első rendszerindítás során futnak az Azure-erőforrások kiépítése után.  
 
 A virtuális gépek üzembe helyezése az a folyamat, amelyben az Azure leállítja a virtuális gépet, így például az állomásnév, a Felhasználónév, a jelszó stb., és elérhetővé teheti őket a virtuális gép számára, ahogy elindul. A "kiépítési ügynök" felhasználja ezeket az értékeket, konfigurálja a virtuális gépet, és visszaküldi a jelentést, amikor a művelet befejeződött. 
 
-Az Azure két üzembe helyezési ügynököt támogat a [Cloud-init](https://cloudinit.readthedocs.io)és az [Azure Linux Agent (Wala)](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)számára.
+Az Azure két üzembe helyezési ügynököt támogat a [Cloud-init](https://cloudinit.readthedocs.io)és az [Azure Linux Agent (Wala)](../extensions/agent-linux.md)számára.
 
 ## <a name="cloud-init-overview"></a>Cloud-init – áttekintés
 a [Cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux RENDSZERű virtuális gépek első indításakor való testre szabására. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a Cloud-init a kezdeti rendszerindítási folyamat során hívásra kerül, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.  A `#cloud-config` fájlok vagy más bemenetek megfelelő formázásáról további információt a [Cloud-init dokumentációs webhelyén](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)talál.  `#cloud-config`a fájlok a Base64 kódolású szövegfájlok.
@@ -46,7 +46,7 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 | Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |igen | igen – a csomag verziószámának támogatása: *18.2-1. el7_6.2*|
-|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | N.A. |
+|RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | n.a. |
 |RedHat 7,7 (Gen1)|RHEL |7.7 | 7.7.2020051912 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
 |RedHat 7,7 (Gen2)|RHEL | 77 – Gen2 | 7.7.2020051913 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
 |RedHat 7,7 (Gen1)|RHEL |7 – LVM | 7.7.2020051921 | igen | igen – a csomag verziójának támogatása: *18,5 -6. el7*|
@@ -61,7 +61,7 @@ A Cloud-init két fázisban érhető el az Azure-beli támogatott Linux-disztrib
 
 | Közzétevő/verzió | Ajánlat | Termékváltozat | Verzió | rendszerkép-felhő – init Ready | Cloud-init csomag támogatása az Azure-ban|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | N.A. |
+|OpenLogic 7,7 |CentOS |7-CI |7.7.20190920 |Igen (Megjegyzés: ez egy előnézeti kép, **és nem** használható többé, ezért ez a 2020. szeptember 1-től lesz eltávolítva) | n.a. |
 |OpenLogic 7,7 |CentOS | 7.7 |7.7.2020062400 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
 |OpenLogic 7,7 (Gen2) |CentOS | 7_7 – Gen2 |7.7.2020062401 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
 |OpenLogic 7,7 |CentOS – HPC | 7.7 |7.6.2020062600 |igen | igen – a csomag verziójának támogatása:`18.5-6.el7.centos.5`|
@@ -106,7 +106,7 @@ Ezek a SLES-lemezképek a Cloud-init használatával lettek kiépítve, a Gen2 l
 Jelenleg Azure Stack támogatni fogja a Cloud-init-kompatibilis lemezképek kiépítési folyamatát.
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Mi a különbség a Cloud-init és a Linux-ügynök (WALA) között?
-A WALA egy Azure platform-specifikus ügynök, amely virtuális gépek kiépítésére és konfigurálására, valamint az [Azure-bővítmények](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux)kezelésére szolgál. 
+A WALA egy Azure platform-specifikus ügynök, amely virtuális gépek kiépítésére és konfigurálására, valamint az [Azure-bővítmények](../extensions/features-linux.md)kezelésére szolgál. 
 
 A virtuális gépeknek a Linux-ügynök helyett a Cloud-init használatára való konfigurálásának feladatát fejlesztjük annak érdekében, hogy a meglévő felhő-init-ügyfelek használhassák a jelenlegi felhőalapú init-parancsfájlokat, vagy új ügyfeleket használjanak a Cloud-init konfigurációs funkcióinak kihasználásához. Ha meglévő beruházásai vannak a Cloud-init parancsfájlokban a linuxos rendszerek konfigurálásához, **nincs szükség további beállításokra** a Cloud-init folyamat engedélyezéséhez. 
 
@@ -160,7 +160,7 @@ A virtuális gép üzembe helyezése után a Cloud-init a `--custom-data` virtu�
 
 A Cloud-init naplózással kapcsolatos további részletekért tekintse meg a [Cloud-init dokumentációját](https://cloudinit.readthedocs.io/en/latest/topics/logging.html) . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Cloud-init hibáinak elhárítása](cloud-init-troubleshooting.md).
 

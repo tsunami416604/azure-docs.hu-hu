@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bbd81730ea822381f1d0f0e15011fb4ed0c29e64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efb26260d0e1f59e78c8328de298c3d4d92c19d3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735914"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509313"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU-ra optimalizált virtuálisgép-méretek
 
@@ -31,13 +31,13 @@ A GPU-ra optimalizált virtuálisgép-méretek olyan speciális virtuális gépe
 
 Az Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához telepíteni kell az NVIDIA vagy az AMD GPU-illesztőprogramokat.
 
-- Az NVIDIA GPU-k által támogatott virtuális gépek esetén az [NVIDIA GPU illesztőprogram-bővítmény](/azure/virtual-machines/extensions/hpccompute-gpu-windows) telepíti a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](/azure/virtual-machines/extensions/hpccompute-gpu-windows) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez. A virtuálisgép-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuális gépek bővítményei és szolgáltatásai](/azure/virtual-machines/extensions/overview).
+- Az NVIDIA GPU-k által támogatott virtuális gépek esetén az [NVIDIA GPU illesztőprogram-bővítmény](./extensions/hpccompute-gpu-windows.md) telepíti a megfelelő NVIDIA CUDA-vagy Grid-illesztőprogramokat. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [NVIDIA GPU illesztőprogram-bővítmény dokumentációját](./extensions/hpccompute-gpu-windows.md) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez. A virtuálisgép-bővítményekkel kapcsolatos általános információkért lásd: [Azure-beli virtuális gépek bővítményei és szolgáltatásai](./extensions/overview.md).
 
-   Azt is megteheti, hogy manuálisan telepíti az NVIDIA GPU-illesztőprogramokat. Lásd: [NVIDIA GPU-illesztőprogramok telepítése a Windows rendszerű n sorozatú virtuális gépeken](/azure/virtual-machines/windows/n-series-driver-setup) , illetve az [NVIDIA GPU-illesztőprogramok telepítése az n sorozatú virtuális gépeken Linux rendszerű](/azure/virtual-machines/linux/n-series-driver-setup) , támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések esetén.
+   Azt is megteheti, hogy manuálisan telepíti az NVIDIA GPU-illesztőprogramokat. Lásd: [NVIDIA GPU-illesztőprogramok telepítése a Windows rendszerű n sorozatú virtuális gépeken](./windows/n-series-driver-setup.md) , illetve az [NVIDIA GPU-illesztőprogramok telepítése az n sorozatú virtuális gépeken Linux rendszerű](./linux/n-series-driver-setup.md) , támogatott operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések esetén.
 
-- Az AMD GPU-k által támogatott virtuális gépek esetén lásd: az [AMD GPU-illesztőprogramok telepítése az N sorozatú virtuális gépeken](/azure/virtual-machines/windows/n-series-amd-driver-setup) , amelyeken a Windows operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések futnak.
+- Az AMD GPU-k által támogatott virtuális gépek esetén lásd: az [AMD GPU-illesztőprogramok telepítése az N sorozatú virtuális gépeken](./windows/n-series-amd-driver-setup.md) , amelyeken a Windows operációs rendszerek, illesztőprogramok, telepítési és ellenőrzési lépések futnak.
 
-## <a name="deployment-considerations"></a>Telepítési szempontok
+## <a name="deployment-considerations"></a>Üzembe helyezési megfontolások
 
 - Az N sorozatú virtuális gépek elérhetőségét lásd: [régiónként elérhető termékek](https://azure.microsoft.com/regions/services/).
 
@@ -52,12 +52,12 @@ Az Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához te
 ## <a name="other-sizes"></a>Egyéb méretek
 
 - [Általános célú](sizes-general.md)
-- [Számításra optimalizált](sizes-compute.md)
+- [Számításoptimalizált](sizes-compute.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Memóriaoptimalizált](sizes-memory.md)
-- [Tárolásra optimalizált](sizes-storage.md)
+- [Tároptimalizált](sizes-storage.md)
 - [Előző generációk](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

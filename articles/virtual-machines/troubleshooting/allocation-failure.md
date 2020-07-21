@@ -12,11 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: daberry
-ms.openlocfilehash: fdbf07fa51adf8151e80d230734ebe53d36b5390
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3766c31add02799c62bca7e9063e723e0a5b498e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124788"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509358"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>A virtuális gépek Azure-beli telepítése, újraindítása vagy átméretezése során jelentkező foglalási hibák elhárítása
 
@@ -78,7 +79,7 @@ Ha rendelkezésre állási zónákat használ, próbáljon meg egy másik zóná
 
 Ha a kiosztási kérelem nagy (több mint 500 mag), tekintse meg a következő részekben ismertetett útmutatást, hogy a kérést kisebb telepítésekre lehessen bontani.
 
-Próbálja meg újból [üzembe helyezni a virtuális gépet](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows). A virtuális gép újbóli üzembe helyezése a virtuális gépet a régión belüli új fürthöz rendeli.
+Próbálja meg újból [üzembe helyezni a virtuális gépet](./redeploy-to-new-node-windows.md). A virtuális gép újbóli üzembe helyezése a virtuális gépet a régión belüli új fürthöz rendeli.
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>Foglalási hibák régebbi virtuálisgép-méretek esetében (Av1, Dv1, DSv1, D15v2, DS15v2 stb.)
 
@@ -93,7 +94,7 @@ Az Azure-infrastruktúra kibővítésekor üzembe helyezünk újabb generációs
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Nagy méretű (500 magnál többet használó) környezetek foglalási hibái
 
-Csökkentse a kért VM-méret példányainak számát, majd próbálja megismételni a telepítési műveletet. Emellett nagyobb telepítések esetén érdemes lehet kiértékelni az [Azure virtuálisgép-méretezési csoportokat](https://docs.microsoft.com/azure/virtual-machine-scale-sets/). A virtuálisgép-példányok száma automatikusan növelheti vagy csökkentheti az igény szerinti vagy egy meghatározott ütemezésre adott válaszokat, és nagyobb eséllyel lehet kiosztani, mivel a központi telepítések több fürtön is elterjedhetnek. 
+Csökkentse a kért VM-méret példányainak számát, majd próbálja megismételni a telepítési műveletet. Emellett nagyobb telepítések esetén érdemes lehet kiértékelni az [Azure virtuálisgép-méretezési csoportokat](../../virtual-machine-scale-sets/index.yml). A virtuálisgép-példányok száma automatikusan növelheti vagy csökkentheti az igény szerinti vagy egy meghatározott ütemezésre adott válaszokat, és nagyobb eséllyel lehet kiosztani, mivel a központi telepítések több fürtön is elterjedhetnek. 
 
 ## <a name="background-information"></a>Háttér-információk
 ### <a name="how-allocation-works"></a>A foglalás működése
@@ -104,5 +105,3 @@ Az Azure-adatközpontokban lévő kiszolgálók fürtökre vannak particionálva
 Ha egy foglalási kérelem egy fürtre van rögzítve, nagyobb eséllyel nem talál szabad erőforrásokat, mert a rendelkezésre álló erőforráskészlet kisebb. Továbbá, ha a foglalási kérelem egy fürthöz van rögzítve, de a kért erőforrás típusa nem támogatott az adott fürtben, a kérés sikertelen lesz, még akkor is, ha a fürt rendelkezik szabad erőforrásokkal. A következő ábra azt az esetet mutatja be, amikor egy rögzített foglalás meghiúsul, mert az egyetlen jelölt fürtnek nincs szabad erőforrása. A 4. ábra azt szemlélteti, hogy a rögzített foglalás meghiúsul, mert az egyetlen jelölt fürt nem támogatja a kért virtuálisgép-méretet, annak ellenére, hogy a fürt rendelkezik szabad erőforrásokkal.
 
 ![Rögzített foglalási hiba](./media/virtual-machines-common-allocation-failure/Allocation2.png)
-
-

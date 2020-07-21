@@ -2,19 +2,19 @@
 title: 'Virtuális WAN: Azure AD-bérlő különböző felhasználói csoportokhoz: Azure AD-hitelesítés'
 description: A P2S VPN használatával kapcsolódhat a VNet az Azure AD-hitelesítés használatával
 services: virtual-wan
-author: anzaman
+author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: alzam
-ms.openlocfilehash: a1471226bcc22373904e65f95d0c07c2d5041f55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ca57ccc40669a607cd0541dc738e3a3eacf3e88
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749836"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507692"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory-bérlő létrehozása P2S OpenVPN-protokollkapcsolatokhoz
+# <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory (AD) bérlő létrehozása a P2S OpenVPN protokoll kapcsolataihoz
 
 A VNet való csatlakozáskor tanúsítványalapú hitelesítést vagy RADIUS-hitelesítést használhat. Ha azonban a nyílt VPN protokollt használja, akkor Azure Active Directory hitelesítést is használhat. Ha azt szeretné, hogy a különböző felhasználók a különböző átjárók számára is képesek legyenek csatlakozni, több alkalmazást is regisztrálhat az AD-ben, és összekapcsolhatja őket különböző átjárókkal.
 
@@ -123,11 +123,11 @@ Ezzel a [hivatkozással](https://go.microsoft.com/fwlink/?linkid=2117554) tölth
 
 1. Válassza a törölni kívánt ügyféloldali profil melletti három pontot (...). Ezután válassza az **Eltávolítás**lehetőséget.
 
-    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
+    ![törlés](./media/openvpn-azure-ad-tenant-multi-app/delete/delete1.jpg)
 
 2. Válassza az **Eltávolítás** elemet a törléshez.
 
-    ![delete](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
+    ![törlés](./media/openvpn-azure-ad-tenant-multi-app/delete/delete2.jpg)
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>A kapcsolódási problémák diagnosztizálása
 
@@ -163,6 +163,6 @@ Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGrou
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.

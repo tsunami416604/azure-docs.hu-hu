@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
-ms.openlocfilehash: 6b81aba553fc775821c80631aa83bbb3e8ac63b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dda2df64dc116a950498aaf581ec39a86db72bb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631798"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505737"
 ---
-# <a name="azure-monitor-log-queries"></a>Azure Monitor log-lekérdezések
+# <a name="azure-monitor-log-queries"></a>Azure Monitor-naplólekérdezések
 
 Azure Monitor naplók az Azure Adatkezelő-ra épülnek, és Azure Monitor a napló lekérdezései ugyanazt a Kusto-lekérdezési nyelvet használják. A [Kusto lekérdezési nyelv dokumentációja](/azure/kusto/query) tartalmazza a nyelv összes részletét, és az elsődleges erőforrásnak kell lennie Azure monitor log-lekérdezések írásához. Ez a lap más forrásokra mutató hivatkozásokat tartalmaz, amelyekkel megtudhatja, hogyan írhat lekérdezéseket és a nyelv Azure Monitor megvalósításával kapcsolatos különbségeket.
 
@@ -24,10 +24,10 @@ Azure Monitor naplók az Azure Adatkezelő-ra épülnek, és Azure Monitor a nap
 - Első [lépések a Azure Monitor log Analytics](get-started-portal.md) a lekérdezések írásához és az eredményekkel való együttműködéshez szükséges lecke a Azure Portalban.
 - A [Azure monitor log-lekérdezések használatának első lépései](get-started-queries.md) a lekérdezések Azure monitor naplózási adataival való írásának tanulságai.
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 
 - A [Azure monitor naplózási információinak elemzése](../../azure-monitor/log-query/log-query-overview.md) rövid áttekintést nyújt a naplók lekérdezéséről, és leírja, hogyan épülnek fel Azure monitor naplózási információk.
-- A [naplózási adatok megtekintése és elemzése Azure monitor ismerteti azokat](../../azure-monitor/log-query/portals.md) a portálokat, amelyeken a naplók létrehozása és futtatása folyamatban van.
+- A [naplózási adatok megtekintése és elemzése Azure monitor ismerteti azokat](./log-query-overview.md) a portálokat, amelyeken a naplók létrehozása és futtatása folyamatban van.
 
 ## <a name="reference"></a>Referencia
 
@@ -55,6 +55,6 @@ Azure Monitor naplók az Azure Adatkezelő-ra épülnek, és Azure Monitor a nap
 - [Az SQL – Azure monitor a log lekérdezés](sql-cheatsheet.md) segítséget nyújt a már ismerős SQL-felhasználók számára.
 - [A Splunk Azure monitor log lekérdezés](splunk-cheatsheet.md) segítséget nyújt a splunk már ismerős felhasználók számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Nyissa [meg a Kusto lekérdezési nyelvének teljes dokumentációját](/azure/kusto/query/).

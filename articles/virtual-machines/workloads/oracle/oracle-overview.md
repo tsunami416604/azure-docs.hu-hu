@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: rogardle
-ms.openlocfilehash: e9a61c631e8a74bbbd58bb991848fcf60f81ff6a
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6a516fc75880e3b6a5bc5b5907e8d968dce2ae31
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224434"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507862"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Az Azure-beli Oracle-alkalmazások és-megoldások áttekintése
 
@@ -55,13 +55,13 @@ Nagyvállalati alkalmazások futtatása az Azure-ban támogatott Oracle Linux re
 
 * A [Azure site Recovery](../../../site-recovery/site-recovery-overview.md) segítségével összehangolhatja és kezelheti az Azure-beli és a fizikai kiszolgálókon futó Oracle Linux virtuális gépek vész-helyreállítását. 
 
-* Az Oracle Real Application Clusters (RAC) engedélyezése az Azure-ban az [Azure VMware megoldás](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) vagy a [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)használatával.
+* Az Oracle Real Application Clusters (RAC) engedélyezése az Azure-ban az [Azure VMware megoldás](../../../vmware-cloudsimple/oracle-real-application-clusters.md) vagy a [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)használatával.
 
 ## <a name="backup-oracle-workloads"></a>Oracle számítási feladatok biztonsági mentése
 
-* Oracle-alapú virtuális gépek biztonsági mentése [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) használatával
+* Oracle-alapú virtuális gépek biztonsági mentése [Azure Backup](../../../backup/backup-overview.md) használatával
 
-* Készítsen biztonsági másolatot a Oracle Database az Oracle Oláh Anna, és igény szerint az [Azure Blob Fuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) használatával egy [nagyon redundáns Azure Blob Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-redundancy) csatlakoztathat, és további rugalmasságot is megadhat a Oláh Anna biztonsági mentéséhez.
+* Készítsen biztonsági másolatot a Oracle Database az Oracle Oláh Anna, és igény szerint az [Azure Blob Fuse](../../../storage/blobs/storage-how-to-mount-container-linux.md) használatával egy [nagyon redundáns Azure Blob Storage-fiókot](../../../storage/common/storage-redundancy.md) csatlakoztathat, és további rugalmasságot is megadhat a Oláh Anna biztonsági mentéséhez.
 
 ## <a name="integration-of-azure-with-oci"></a>Az Azure és az OCI integrációja
 
@@ -89,11 +89,11 @@ Az Azure-ban olyan egyéni alkalmazásokat is üzembe helyezhet, amelyek a OCI �
 Az Azure-ban futó Oracle-szoftverekkel együtt Oracle Database Cloud Services (autonóm adatbázis, RAC, Exadata, DBaaS, Single node) használható. További információ a [OCI adatbázis-beállításairól](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
 Az Oracle-alkalmazások Azure-beli üzembe helyezése a "saját licenc használata" modellen alapul. Feltételezi, hogy Ön megfelelő licenccel rendelkezik az Oracle-szoftverek használatához, valamint arról, hogy az Oracle-vel meglévő támogatási szerződése van érvényben. Az Oracle garantálta a helyszíni Azure-ba történő licenc-mobilitást. Tekintse meg az Oracle-Azure [GYIK](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)-et.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudjon meg többet a [Weblogic Server Azure-alkalmazásokról](oracle-weblogic.md) és az általuk támogatott Azure-szolgáltatás-integrációról.
 

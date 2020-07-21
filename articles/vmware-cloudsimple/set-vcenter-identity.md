@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5355e43ca6ac075e76a76ceb51be135cf4b62b0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e040f42db195760cf40f6dbdf651826b544b65a4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77564023"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507573"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identitások beállítása a Active Directory használatára
 
@@ -52,7 +53,7 @@ A Active Directory tartományának beállításakor használja az alábbi tábl�
 
 | **Beállítás** | **Leírás** |
 |------------|-----------------|
-| **Name (Név)** | Az Identity forrás neve. |
+| **Név** | Az Identity forrás neve. |
 | **A felhasználók alapszintű megkülönböztető neve** | A felhasználók alapszintű megkülönböztető neve. |
 | **Tartománynév** | A tartomány teljes tartományneve, például example.com. Ne adjon meg IP-címet ebben a szövegmezőben. |
 | **Tartomány aliasa** | A tartomány NetBIOS-neve. Adja hozzá a Active Directory tartomány NetBIOS-nevét az Identity forrás aliasként, ha az SSPI-hitelesítést használja. |
@@ -60,7 +61,7 @@ A Active Directory tartományának beállításakor használja az alábbi tábl�
 | **Elsődleges kiszolgáló URL-címe** | A tartomány elsődleges tartományvezérlője LDAP-kiszolgálója.<br><br>A formátumot használja  `ldap://hostname:port`    `ldaps://hostname:port` . A port általában a 389 LDAP-kapcsolatokhoz és 636 for LDAPs-kapcsolatokhoz. Active Directory többtartományos tartományvezérlő üzembe helyezése esetén a port általában az LDAP-hez és a 3269-hoz 3268.<br><br>Az  `ldaps://`   elsődleges vagy másodlagos LDAP URL-cím használata esetén olyan tanúsítványra van szükség, amely a Active Directory kiszolgáló LDAPS végpontjának megbízhatóságát hozza létre. |
 | **Másodlagos kiszolgáló URL-címe** | A feladatátvételhez használt másodlagos tartományvezérlői LDAP-kiszolgáló címe. |
 | **Tanúsítvány kiválasztása** | Ha LDAPs-t szeretne használni a Active Directory LDAP-kiszolgálóval vagy a OpenLDAP-kiszolgáló identitásával, akkor  `ldaps://`   az URL-cím szövegmezőbe való beírása után a tanúsítvány választása gomb jelenik meg. Másodlagos URL-cím megadása nem kötelező. |
-| **Username** | Azon felhasználó azonosítója, aki legalább olvasási hozzáféréssel rendelkezik a felhasználók és csoportok alapszintű DN-hez. |
+| **Felhasználónév** | Azon felhasználó azonosítója, aki legalább olvasási hozzáféréssel rendelkezik a felhasználók és csoportok alapszintű DN-hez. |
 | **Jelszó** | A Felhasználónév által megadott felhasználó jelszava. |
 
 Ha az előző táblázatban szereplő adatokkal rendelkezik, a helyszíni Active Directory egyszeri bejelentkezési identitásként adhatja hozzá a vCenter-on.
@@ -79,7 +80,7 @@ Beállíthat egy új Active Directory tartományt a saját felhőben, és haszn�
 * Egy vagy több, a Microsoft Windows Servert futtató virtuális gép tartományvezérlőként való használatára az új Active Directory erdő és tartomány számára.
 * Egy vagy több DNS-szolgáltatást futtató virtuális gép névfeloldáshoz.
 
-A részletes lépésekért lásd: [új Windows Server 2012 Active Directory erdő telepítése](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-) .
+A részletes lépésekért lásd: [új Windows Server 2012 Active Directory erdő telepítése](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-forest--level-200-) .
 
 > [!TIP]
 > A szolgáltatások magas rendelkezésre állása érdekében ajánlott több tartományvezérlő és DNS-kiszolgáló beállítása.
@@ -93,7 +94,7 @@ A Active Directory erdő és tartomány beállítása után az új Active Direct
 * Helyek közötti VPN-kapcsolat a Active Directory erdő helyére.
 * DNS-kiszolgáló a meglévő Active Directory erdő nevének feloldásához.
 
-A részletes lépésekért lásd: [új Windows Server 2012 Active Directory gyermek-vagy fatartomány telepítése](https://docs.microsoft.com/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-) .
+A részletes lépésekért lásd: [új Windows Server 2012 Active Directory gyermek-vagy fatartomány telepítése](/windows-server/identity/ad-ds/deploy/install-a-new-windows-server-2012-active-directory-child-or-tree-domain--level-200-) .
 
 A Active Directory tartomány beállítása után az új Active Directoryhoz [hozzáadhat egy vCenter az identitás forrásához](#add-an-identity-source-on-vcenter) .
 

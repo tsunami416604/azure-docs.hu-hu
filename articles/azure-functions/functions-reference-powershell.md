@@ -4,11 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a PowerShell hasz
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b8c84583bd80a7c3cbadde1caba231eed801c1f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84697272"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506128"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
 
@@ -18,7 +19,7 @@ A PowerShell Azure-függvény (Function) egy PowerShell-parancsfájlként jeleni
 
 Más típusú függvényekhez hasonlóan a PowerShell-parancsfájlok is a fájlban meghatározott összes bemeneti kötés nevével egyező paramétereket fogadnak el `function.json` . Egy `TriggerMetadata` paraméter is át lett adva, amely további információkat tartalmaz a függvényt elindító triggerről.
 
-Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői referenciát](functions-reference.md). Az első PowerShell-függvény létrehozásához a [PowerShell](functions-create-first-function-powershell.md) functions rövid útmutatóját is be kell fejeznie.
+Ez a cikk azt feltételezi, hogy már elolvasta a [Azure functions fejlesztői referenciát](functions-reference.md). Az első PowerShell-függvény létrehozásához a [PowerShell](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) functions rövid útmutatóját is be kell fejeznie.
 
 ## <a name="folder-structure"></a>Mappa szerkezete
 
@@ -124,7 +125,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 A következő érvényes paraméterek használhatók a híváshoz `Push-OutputBinding` :
 
-| Name | Típus | Pozíció | Description |
+| Név | Típus | Pozíció | Leírás |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Sztring | 1 | A beállítani kívánt kimeneti kötés neve. |
 | **`-Value`** | Objektum | 2 | A beállítani kívánt kimeneti kötés értéke, amelyet a rendszer a folyamat ByValue fogad el. |
@@ -233,7 +234,7 @@ A PowerShell-függvények naplózása ugyanúgy működik, mint a rendszeres Pow
 | ------------- | -------------- |
 | Hiba | **`Write-Error`** |
 | Figyelmeztetés | **`Write-Warning`**  | 
-| Információ | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Információ | _Az_ adatszint naplózásának megírása. |
+| Tájékoztatás | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Tájékoztatás | _Az_ adatszint naplózásának megírása. |
 | Hibakeresés | **`Write-Debug`** |
 | Nyomkövetés | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
@@ -295,7 +296,7 @@ A parancsfájlba átadott kérelem-objektum típusa a `HttpRequestContext` köve
 
 | Tulajdonság  | Leírás                                                    | Típus                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Egy objektum, amely tartalmazza a kérelem törzsét. `Body`a a legjobb típusra van szerializálva az adathalmaz alapján. Ha például az adatfájl JSON, a rendszer szórótábla adja át. Ha az érték karakterlánc, akkor karakterláncként adja át a rendszer. | objektum |
+| **`Body`**    | Egy objektum, amely tartalmazza a kérelem törzsét. `Body`a a legjobb típusra van szerializálva az adathalmaz alapján. Ha például az adatfájl JSON, a rendszer szórótábla adja át. Ha az érték karakterlánc, akkor karakterláncként adja át a rendszer. | object |
 | **`Headers`** | A kérések fejléceit tartalmazó szótár.                | Szótár<karakterlánc, karakterlánc><sup>*</sup> |
 | **`Method`** | A kérelem HTTP-metódusa.                                | sztring                    |
 | **`Params`**  | Egy objektum, amely a kérelem útválasztási paramétereit tartalmazza. | Szótár<karakterlánc, karakterlánc><sup>*</sup> |
@@ -310,7 +311,7 @@ A visszaküldeni kívánt válasz objektum típusa a `HttpResponseContext` köve
 
 | Tulajdonság      | Leírás                                                 | Típus                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Egy objektum, amely tartalmazza a válasz törzsét.           | objektum                    |
+| **`Body`**  | Egy objektum, amely tartalmazza a válasz törzsét.           | object                    |
 | **`ContentType`** | Egy rövid kéz a válasz tartalomtípusának beállításához. | sztring                    |
 | **`Headers`** | Egy objektum, amely tartalmazza a válasz fejléceit.               | Szótár vagy szórótábla   |
 | **`StatusCode`**  | A válasz HTTP-állapotkódot.                       | karakterlánc vagy int             |
@@ -419,7 +420,7 @@ Ha frissíti a requirements.psd1 fájlt, a rendszer újraindítást követően t
 
 A következő Alkalmazásbeállítások segítségével megváltoztathatja a felügyelt függőségek letöltésének és telepítésének módját. Az alkalmazás frissítése a-n belül elindul `MDMaxBackgroundUpgradePeriod` , és a frissítési folyamat körülbelül a-ban fejeződik be `MDNewSnapshotCheckPeriod` .
 
-| függvényalkalmazás beállítás              | Alapértelmezett érték             | Description                                         |
+| függvényalkalmazás beállítás              | Alapértelmezett érték             | Leírás                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00`(7 nap)     | Minden PowerShell-munkavégző folyamat kezdeményezi a modul frissítéseinek ellenőrzését a PowerShell-galéria a folyamat indításakor, majd minden `MDMaxBackgroundUpgradePeriod` után. Ha egy új modul verziója elérhető a PowerShell-galériaban, a rendszer telepíti a fájlrendszerre, és elérhetővé teszi őket a PowerShell-feldolgozók számára. Ennek az értéknek a csökkentése lehetővé teszi, hogy a Function alkalmazás hamarabb lekérje a modul újabb verzióit, de az alkalmazás erőforrás-használatát is növeli (hálózati I/O-, CPU-és tárolási). Az érték növelése csökkenti az alkalmazás erőforrás-használatát, de az új modulok verzióinak az alkalmazásba való kézbesítése is késleltethető. | 
 | **`MDNewSnapshotCheckPeriod`**         | `01:00:00`(1 óra)       | Miután telepítette az új modul-verziókat a fájlrendszerbe, minden PowerShell-munkavégző folyamatot újra kell indítani. A PowerShell-feldolgozók újraindítása hatással van az alkalmazás rendelkezésre állására, mivel ez megszakíthatja az aktuális függvény végrehajtását. Amíg az összes PowerShell-munkavégző folyamat újra nem indul, a függvény meghívása a régi vagy az új modul verzióját is használhatja. Az összes PowerShell-feldolgozó újraindítása a alkalmazáson belül `MDNewSnapshotCheckPeriod` . Az érték növelésével csökken a megszakítások gyakorisága, de az is előfordulhat, hogy a függvény meghívásakor a régi vagy az új modul nem determinisztikus módon verzióját használja. |
@@ -598,9 +599,9 @@ Azure Functions a [kiszolgáló nélküli üzemeltetési modellben](functions-sc
 
 A szkript minden meghívásnál fut. Kerülje a használatát `Install-Module` a parancsfájlban. Ehelyett használja a `Save-Module` közzététel előtt, hogy a függvénynek ne kelljen időt pazarolnia a modul letöltésével. Ha a ritkán használt funkciók hatással vannak a függvényekre, érdemes lehet a Function alkalmazást egy olyan [app Service-csomagra](functions-scale.md#app-service-plan) telepíteni *, amely* a [prémium szintű csomagra](functions-scale.md#premium-plan)van beállítva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információkért lásd a következőket:
+További információkat találhat az alábbi forrásokban:
 
 * [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)

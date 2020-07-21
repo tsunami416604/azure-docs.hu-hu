@@ -8,11 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: c6fbe66d8fbbb92c7fb668cc565da8446d97ab0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76ff9ff9479351eb3ec2a0e973fe3c44562adf55
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83653610"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508423"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Futtatás parancs használatával
 
@@ -22,7 +23,7 @@ A futtatási parancs funkció a virtuális gép (VM) ügynököt használja Powe
 
 ## <a name="benefits"></a>Előnyök
 
-Több módon is elérheti a virtuális gépeket. A Run parancs a virtuálisgép-ügynök használatával távolról is futtathat parancsfájlokat a virtuális gépeken. A Futtatás parancsot a Windows rendszerű virtuális gépekhez tartozó Azure Portalon, [Rest APIon](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)vagy [powershellen](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) keresztül használhatja.
+Több módon is elérheti a virtuális gépeket. A Run parancs a virtuálisgép-ügynök használatával távolról is futtathat parancsfájlokat a virtuális gépeken. A Futtatás parancsot a Windows rendszerű virtuális gépekhez tartozó Azure Portalon, [Rest APIon](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)vagy [powershellen](/powershell/module/az.compute/invoke-azvmruncommand) keresztül használhatja.
 
 Ez a képesség minden olyan helyzetben hasznos, ahol parancsfájlt szeretne futtatni egy virtuális gépen belül. Ez az egyik lehetőség az olyan virtuális gépek hibáinak elhárítására és szervizelésére, amelyek nem rendelkeznek az RDP-vagy SSH-porttal, mert nem megfelelő hálózati vagy rendszergazdai konfigurációval rendelkeznek.
 
@@ -50,7 +51,7 @@ Ez a táblázat a Windows rendszerű virtuális gépekhez elérhető parancsok l
 The entity was not found in this Azure location
 ```
 
-|**Name (Név)**|**Leírás**|
+|**Név**|**Leírás**|
 |---|---|
 |**RunPowerShellScript**|PowerShell-parancsfájlt futtat.|
 |**EnableRemotePS**|A távoli PowerShell engedélyezését konfigurálja a gépen.|
@@ -93,7 +94,7 @@ A parancs kiválasztása után válassza a **Futtatás** parancsot a szkript fut
 
 ## <a name="powershell"></a>PowerShell
 
-Az alábbi példa a [meghívó-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) parancsmag használatával futtat PowerShell-parancsfájlt egy Azure-beli virtuális gépen. A parancsmag arra vár, `-ScriptPath` hogy a paraméterben hivatkozott parancsfájl helyi legyen, ahol a parancsmag fut.
+Az alábbi példa a [meghívó-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) parancsmag használatával futtat PowerShell-parancsfájlt egy Azure-beli virtuális gépen. A parancsmag arra vár, `-ScriptPath` hogy a paraméterben hivatkozott parancsfájl helyi legyen, ahol a parancsmag fut.
 
 ```azurepowershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
@@ -107,6 +108,6 @@ A parancs futtatásához `Microsoft.Compute/virtualMachines/runCommand/action` e
 
 Használhatja a [beépített szerepkörök](../../role-based-access-control/built-in-roles.md) egyikét, vagy létrehozhat egy [Egyéni szerepkört](../../role-based-access-control/custom-roles.md) a futtatási parancs használatához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni a parancsfájlok és parancsok távoli virtuális gépen való futtatásának egyéb módjairól, olvassa el a [parancsfájlok futtatása a Windows rendszerű virtuális gépen](run-scripts-in-vm.md)című témakört.

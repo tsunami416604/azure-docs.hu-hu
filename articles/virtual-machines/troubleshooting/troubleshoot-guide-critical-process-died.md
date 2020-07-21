@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 9e4c4b9c809a626c71b4a7e9235d917b442be160
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80373361"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86509103"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows Stop Error-#0x000000EF "kritikus folyamat meghalt"
 
@@ -27,13 +27,13 @@ Ez a cikk az Azure-beli virtuális gépek indításakor felmerülő problémák 
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha [rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használatával tekinti meg a virtuális gép képernyőképét, láthatja, hogy a képernyőképen megjelenik az üzenet *kritikus folyamatának elhalálozásakor* *#0x000000EF* hibaüzenet.
+Ha [rendszerindítási diagnosztika](./boot-diagnostics.md) használatával tekinti meg a virtuális gép képernyőképét, láthatja, hogy a képernyőképen megjelenik az üzenet *kritikus folyamatának elhalálozásakor* *#0x000000EF* hibaüzenet.
 
 !["A számítógép hibát észlelt, és újra kell indítania. Most gyűjtünk néhány hibaüzenetet, majd újraindíthatjuk. (# #% kész) Ha további információra van szüksége, később is megkeresheti a következő hibaüzenetet: 0x000000EF "](media/troubleshoot-guide-critical-process-died/1.jpg)
 
 ## <a name="cause"></a>Ok
 
-Ezt általában az okozza, hogy egy kritikus rendszerfolyamat nem működik a rendszerindítás során. A kritikus folyamatokkal kapcsolatos problémákról bővebben a "[hiba-ellenőrzési 0xEF: CRITICAL_PROCESS_DIED](https://docs.microsoft.com/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)" webhelyen olvashat.
+Ezt általában az okozza, hogy egy kritikus rendszerfolyamat nem működik a rendszerindítás során. A kritikus folyamatokkal kapcsolatos problémákról bővebben a "[hiba-ellenőrzési 0xEF: CRITICAL_PROCESS_DIED](/windows-hardware/drivers/debugger/bug-check-0xef--critical-process-died)" webhelyen olvashat.
 
 ## <a name="solution"></a>Megoldás
 
@@ -49,7 +49,7 @@ Ezt általában az okozza, hogy egy kritikus rendszerfolyamat nem működik a re
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A virtuálisgép- [javítási parancsok 1-3-es lépéseit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) használva készítse elő a javítási virtuális gépet.
+1. A virtuálisgép- [javítási parancsok 1-3-es lépéseit](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) használva készítse elő a javítási virtuális gépet.
 2. A Távoli asztali kapcsolat kapcsolódása a javítási virtuális géphez.
 
 ### <a name="fix-any-os-corruption"></a>Javítsa ki az operációs rendszer sérülését
@@ -61,7 +61,7 @@ Ezt általában az okozza, hogy egy kritikus rendszerfolyamat nem működik a re
 
    * Ahol < rendszerindító lemezmeghajtó > a javítási virtuális gép rendszerindító kötete (jellemzően "C:"), és < sérült lemezmeghajtó > a csatlakoztatott lemez meghajtóbetűjele lesz a hibás virtuális gépről. Cserélje le a nagyobb vagy kisebb szimbólumot, valamint a bennük található szöveget, például: "< szöveg itt >", a megfelelő betűvel.
 
-3. Ezután használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) a virtuális gép újraösszeállításához, és ellenőrizze, hogy elindul-e.
+3. Ezután használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) a virtuális gép újraösszeállításához, és ellenőrizze, hogy elindul-e.
 4. Ha a virtuális gép még nem indul el, folytassa a memóriakép fájljának gyűjtésével.
 
 ### <a name="collect-the-memory-dump-file"></a>A memóriakép fájljának összegyűjtése
@@ -70,7 +70,7 @@ Ha a probléma az SFC futtatása után sem szűnik meg, akkor a probléma okána
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy új javítási virtuális géphez
 
-1. Egy új javítási virtuális gép előkészítéséhez használja [a virtuális gép javítási parancsainak 1-3. lépéseit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) .
+1. Egy új javítási virtuális gép előkészítéséhez használja [a virtuális gép javítási parancsainak 1-3. lépéseit](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) .
 2. A Távoli asztali kapcsolat kapcsolódása a javítási virtuális géphez.
 
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>A memóriaképfájl megkeresése és támogatási jegy beküldése
@@ -128,4 +128,4 @@ Ha nincs elég hely az operációsrendszer-lemezen, akkor módosítania kell a m
 
 ### <a name="rebuild-the-original-vm"></a>Az eredeti virtuális gép újraépítése
 
-A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

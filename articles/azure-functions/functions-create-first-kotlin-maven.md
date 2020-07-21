@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: e4ac4f669d38f07d9fe4edbd600cc06f135fac03
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8abf6cdf8506dc491f4e026c9a61ac1391f6ea4
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80674103"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506298"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Rövid útmutató: az első függvény létrehozása a Kotlin és a Maven használatával
 
@@ -25,7 +25,7 @@ A függvények Kotlin használatával történő fejlesztéséhez a következők
 
 - A [Java Developer Kit](https://aka.ms/azure-jdks) 8-as verziója
 - Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verzió
 
 > [!IMPORTANT]
@@ -43,7 +43,7 @@ mvn archetype:generate \
 ```
 
 > [!NOTE]
-> Ha a parancs futtatásával kapcsolatos problémákat tapasztal, tekintse meg, hogy milyen `maven-archetype-plugin` verziót használ. Mivel a parancsot egy üres, fájl nélküli `.pom` könyvtárban futtatja, előfordulhat, hogy a régebbi verzió beépülő modulját próbálja használni, `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` ha a mavent egy régebbi verzióról frissítette. Ha igen, próbálja meg törölni `maven-archetype-plugin` a könyvtárat, és futtassa újra a parancsot.
+> Ha a parancs futtatásával kapcsolatos problémákat tapasztal, tekintse meg, hogy milyen `maven-archetype-plugin` verziót használ. Mivel a parancsot egy üres, fájl nélküli könyvtárban futtatja `.pom` , előfordulhat, hogy a régebbi verzió beépülő modulját próbálja használni, `~/.m2/repository/org/apache/maven/plugins/maven-archetype-plugin` Ha a mavent egy régebbi verzióról frissítette. Ha igen, próbálja meg törölni a `maven-archetype-plugin` könyvtárat, és futtassa újra a parancsot.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```powershell
@@ -79,7 +79,7 @@ Az alábbi `com.fabrikam.functions` és `fabrikam-functions` azonosítók példa
 [INFO] Parameter: artifactId, Value: fabrikam-function
 </pre>
 
-A Maven az _artifactId_ nevét viselő új mappában hozza létre a projektfájlokat, amely ebben a példában `fabrikam-functions`. A projekten belül létrehozott futásra kész kód egy egyszerű [HTTP-triggert](/azure/azure-functions/functions-bindings-http-webhook) használó függvény, amely a kérés törzsét adja vissza:
+A Maven az _artifactId_ nevét viselő új mappában hozza létre a projektfájlokat, amely ebben a példában `fabrikam-functions`. A projekten belül létrehozott futásra kész kód egy egyszerű [HTTP-triggert](./functions-bindings-http-webhook.md) használó függvény, amely a kérés törzsét adja vissza:
 
 ```kotlin
 class Function {
@@ -119,7 +119,7 @@ class Function {
 }
 ```
 
-## <a name="run-the-function-locally"></a>Függvény helyi futtatása
+## <a name="run-the-function-locally"></a>A függvény helyi futtatása
 
 Módosítsa a könyvtárt az újonnan létrehozott projektmappára, majd hozza létre és futtassa a függvényt a Maven használatával:
 
@@ -185,7 +185,7 @@ Az üzembe helyezés végén megjelenik az URL-cím, amellyel bejelentkezhet az 
 Tesztelje az Azure-ban futó függvényalkalmazást a `cURL` használatával. Az alábbi mintában található URL-címet módosítsa az előző lépésben üzembe helyezett saját függvényalkalmazása címére.
 
 > [!NOTE]
-> Győződjön meg arról, hogy a **hozzáférési jogosultságokat** a `Anonymous`következőre állítja be:. Ha az alapértelmezett szintet választja `Function`, akkor a függvény-végpont eléréséhez a kérelmekben be kell mutatnia a [függvény kulcsát](functions-bindings-http-webhook-trigger.md#authorization-keys) .
+> Győződjön meg arról, hogy a **hozzáférési jogosultságokat** a következőre állítja be: `Anonymous` . Ha az alapértelmezett szintet választja `Function` , akkor a függvény-végpont eléréséhez a kérelmekben be kell mutatnia a [függvény kulcsát](functions-bindings-http-webhook-trigger.md#authorization-keys) .
 
 ```
 curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/HttpTrigger-Java -d AzureFunctions
@@ -234,7 +234,7 @@ A [függvények eseményindítóinak és](functions-triggers-bindings.md) a http
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Egy egyszerű HTTP-triggerrel létrehozott egy Kotlin-függvény alkalmazást, és üzembe helyezte azt a Azure Functions.
 

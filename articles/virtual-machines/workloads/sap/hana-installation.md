@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae4a7dc400b347a963e07a8c696e7581e2dcd703
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83117121"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507845"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure-ban
 
@@ -41,11 +42,11 @@ A HANA telepítésének megkezdése előtt ellenőrizze az alábbiakat:
 
 Miután megkapta a HANA nagyméretű példányának egységét a Microsofttól, ellenőrizze a következő beállításokat, és szükség szerint módosítsa azt.
 
-Az **első lépés** a HANA nagyméretű példányának megérkezése és a példányok elérésének és kapcsolatának létrehozása után a Azure Portal, hogy a példány (ok) megjelenik-e a megfelelő SKU-k és operációs rendszer használatával. Olvassa el az [Azure HANA nagyméretű példányok vezérlését Azure Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal) az ellenőrzések végrehajtásához szükséges lépésekhez.
+Az **első lépés** a HANA nagyméretű példányának megérkezése és a példányok elérésének és kapcsolatának létrehozása után a Azure Portal, hogy a példány (ok) megjelenik-e a megfelelő SKU-k és operációs rendszer használatával. Olvassa el az [Azure HANA nagyméretű példányok vezérlését Azure Portal](./hana-li-portal.md) az ellenőrzések végrehajtásához szükséges lépésekhez.
 
 A **második lépés** a HANA nagyméretű példányának megérkezése és a példányok elérésének és kapcsolatának létrehozása után a példány operációs rendszerének regisztrálása az operációs rendszer szolgáltatójával. Ez a lépés tartalmazza a SUSE Linux operációs rendszernek az Azure-beli virtuális gépen üzembe helyezett SUSE SMT-példányban való regisztrálását. 
 
-A HANA nagyméretű példány egysége csatlakozhat ehhez az SMT-példányhoz. (További információ: az [SMT-kiszolgáló beállítása SUSE Linux](hana-setup-smt.md)rendszerhez). Azt is megteheti, hogy a Red Hat operációs rendszernek regisztrálnia kell a Red Hat előfizetés-kezelővel, amelyhez csatlakoznia kell. További információkért tekintse [meg a mi SAP HANA az Azure-ban (nagyméretű példányok)](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)című témakörben található megjegyzéseket. 
+A HANA nagyméretű példány egysége csatlakozhat ehhez az SMT-példányhoz. (További információ: az [SMT-kiszolgáló beállítása SUSE Linux](hana-setup-smt.md)rendszerhez). Azt is megteheti, hogy a Red Hat operációs rendszernek regisztrálnia kell a Red Hat előfizetés-kezelővel, amelyhez csatlakoznia kell. További információkért tekintse [meg a mi SAP HANA az Azure-ban (nagyméretű példányok)](./hana-overview-architecture.md?toc=/azure/virtual-machines/linux/toc.json)című témakörben található megjegyzéseket. 
 
 Ez a lépés az operációs rendszer javításához szükséges, amely az ügyfél feladata. A SUSE-es [verzióban](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html)keresse meg az SMT telepítéséhez és konfigurálásához szükséges dokumentációt ezen az oldalon.
 
@@ -123,13 +124,13 @@ SAP HANA az Azure-ban (nagyméretű példányok) az Azure-ban végzett időszink
 Ennek eredményeképpen be kell állítania egy külön időkiszolgálót, amelyet az Azure-beli virtuális gépeken futó SAP-alkalmazások és a HANA nagyméretű példányokon futó SAP HANA adatbázis-példányok használhatnak. A nagyméretű példányokban tárolt tárolási infrastruktúra időközben szinkronizálva van az NTP-kiszolgálókkal.
 
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 Feltételezzük, hogy követte az Azure-beli virtuális hálózatok megtervezésének és a virtuális hálózatok a HANA nagyméretű példányokhoz való csatlakoztatásának javaslatait, az alábbi dokumentumokban leírtak szerint:
 
-- [SAP HANA (nagyméretű példány) áttekintése és architektúrája az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [SAP HANA (nagyméretű példány) áttekintése és architektúrája az Azure-ban](./hana-overview-architecture.md)
 - [SAP HANA (nagyméretű példányok) infrastruktúrája és kapcsolódás az Azure-ban](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Néhány részletet érdemes megemlíteni az önálló egységek hálózatkezelésével kapcsolatban. Minden HANA nagyméretű példány-egység két vagy három IP-címmel rendelkezik, amelyek két vagy három NIC-porthoz vannak rendelve. Három IP-cím használatos a HANA kibővíthető konfigurációkban és a HANA rendszer replikációs forgatókönyvében. Az egység hálózati adapteréhez rendelt egyik IP-cím kívül esik a kiszolgáló IP-készletéből, amely [SAP HANA (nagyméretű példányok) áttekintésében és az Azure architektúrájában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)szerepel.
+Néhány részletet érdemes megemlíteni az önálló egységek hálózatkezelésével kapcsolatban. Minden HANA nagyméretű példány-egység két vagy három IP-címmel rendelkezik, amelyek két vagy három NIC-porthoz vannak rendelve. Három IP-cím használatos a HANA kibővíthető konfigurációkban és a HANA rendszer replikációs forgatókönyvében. Az egység hálózati adapteréhez rendelt egyik IP-cím kívül esik a kiszolgáló IP-készletéből, amely [SAP HANA (nagyméretű példányok) áttekintésében és az Azure architektúrájában](./hana-overview-architecture.md)szerepel.
 
 Az architektúra Ethernet-adataival kapcsolatos további információkért tekintse meg a [HLI által támogatott forgatókönyveket](hana-supported-scenario.md).
 
@@ -264,7 +265,3 @@ Tekintse át a [HLI által támogatott forgatókönyveket](hana-supported-scenar
 
 
  
-
-
-
-

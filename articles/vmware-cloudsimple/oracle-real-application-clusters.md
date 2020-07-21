@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cc2f954f4255c00b7c3549ab5d33d71b240fb70
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82793040"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507670"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizálja CloudSimple saját Felhőjét az Oracle RAC telepítéséhez
 
@@ -43,16 +44,16 @@ Az Oracle RAC virtuális gépek több lemezzel rendelkeznek, amelyek adott függ
 
 A következő példa az alábbi táblázatban definiált lemezeket használja.
 
-| Lemez                                      | Szerep                                       | Megosztott lemez |
+| Lemez                                      | Cél                                       | Megosztott lemez |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| Operációs rendszer                                        | Operációsrendszer-lemez                         | No          |
-| RÁCS                                      | Az Oracle Grid szoftver telepítési helye     | No          |
-| ADATBÁZIS                                  | Az Oracle Database szoftver telepítési helye | No          |
-| ORAHOME                                   | Az Oracle Database bináris fájljainak alaphelye    | No          |
-| DATA1, DATA2, DATA3, DATA4                | Az Oracle-adatbázisfájlok tárolására szolgáló lemez   | Yes         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Naplófájlok visszaállítása                                | Yes         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Szavazó lemezek                                  | Yes         |
-| FRA1, FRA2                                | Gyors helyreállítási területek lemezei                      | Yes         |
+| Operációs rendszer                                        | Operációsrendszer-lemez                         | Nem          |
+| RÁCS                                      | Az Oracle Grid szoftver telepítési helye     | Nem          |
+| ADATBÁZIS                                  | Az Oracle Database szoftver telepítési helye | Nem          |
+| ORAHOME                                   | Az Oracle Database bináris fájljainak alaphelye    | Nem          |
+| DATA1, DATA2, DATA3, DATA4                | Az Oracle-adatbázisfájlok tárolására szolgáló lemez   | Igen         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Naplófájlok visszaállítása                                | Igen         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Szavazó lemezek                                  | Igen         |
+| FRA1, FRA2                                | Gyors helyreállítási területek lemezei                      | Igen         |
 
 ![Oracle virtuális gép lemezének konfigurációja](media/oracle-vmdk.png)
 
@@ -168,7 +169,7 @@ A vSphere-fürt saját felhőben történő üzembe helyezéséhez kövesse az a
 
 a vSAN-szabályzatok meghatározzák a virtuálisgép-lemezeken tárolt adattárolási és lemezes csíkozási hibákat.  A létrehozott tárolási szabályzatot a virtuális gép létrehozásakor kell alkalmazni a virtuálisgép-lemezeken.
 
-1. [Jelentkezzen be a privát felhő vSphere-ügyfelébe](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access) .
+1. [Jelentkezzen be a privát felhő vSphere-ügyfelébe](./vcenter-access.md) .
 2. A felső menüben válassza a **házirendek és profilok**lehetőséget.
 3. A bal oldali menüben válassza ki a virtuálisgép- **tárolási házirendek** elemet, majd válassza **a virtuális gép tárolási házirendjének létrehozása**lehetőséget.
 4. Írjon be egy értelmes nevet a Szabályzathoz, majd kattintson a **tovább**gombra.

@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: f957ee5293d2804298d4723ed3a763fabac9dc93
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b3ad8fdce873b31c8ea6b1c8176ed41587b4b298
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244531"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507097"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) alkalmazásainak és fürtjeinek biztonsági fogalmai
 
@@ -54,9 +54,9 @@ A Kubernetes-környezetek (ak-ban vagy máshol) jelenleg nem teljesen biztonság
 
 ### <a name="compute-isolation"></a>Számítási elkülönítés
 
- Bizonyos munkaterhelések esetén a megfelelőségi vagy szabályozási követelmények miatt a többi ügyfél-munkaterheléstől való nagyfokú elkülönítésre lehet szükség. Ezekben a számítási feladatokban az Azure [elkülönített virtuális gépeket](../virtual-machines/linux/isolation.md)biztosít, amelyek egy AK-fürt ügynök-csomópontjaiként használhatók. Ezek az elkülönített virtuális gépek egy adott hardver-típushoz vannak elkülönítve, és egyetlen ügyfél számára vannak kijelölve. 
+ Bizonyos munkaterhelések esetén a megfelelőségi vagy szabályozási követelmények miatt a többi ügyfél-munkaterheléstől való nagyfokú elkülönítésre lehet szükség. Ezekben a számítási feladatokban az Azure [elkülönített virtuális gépeket](../virtual-machines/isolation.md)biztosít, amelyek egy AK-fürt ügynök-csomópontjaiként használhatók. Ezek az elkülönített virtuális gépek egy adott hardver-típushoz vannak elkülönítve, és egyetlen ügyfél számára vannak kijelölve. 
 
- Ha ezeket az elkülönített virtuális gépeket egy AK-fürttel szeretné használni, válassza ki az [itt](../virtual-machines/linux/isolation.md) felsorolt elkülönített virtuálisgép-méretek egyikét a **csomópont MÉRETEként** az AK-fürt létrehozásakor vagy egy csomópont-készlet hozzáadásakor.
+ Ha ezeket az elkülönített virtuális gépeket egy AK-fürttel szeretné használni, válassza ki az [itt](../virtual-machines/isolation.md) felsorolt elkülönített virtuálisgép-méretek egyikét a **csomópont MÉRETEként** az AK-fürt létrehozásakor vagy egy csomópont-készlet hozzáadásakor.
 
 
 ## <a name="cluster-upgrades"></a>Fürt frissítései
@@ -81,6 +81,8 @@ A helyszíni hálózatokkal létesített kapcsolat és biztonság érdekében az
 ### <a name="azure-network-security-groups"></a>Azure-beli hálózati biztonsági csoportok
 
 A virtuális hálózatok forgalmának szűréséhez az Azure hálózati biztonsági csoportokra vonatkozó szabályokat használ. Ezek a szabályok határozzák meg az erőforrásokhoz való hozzáférést engedélyező vagy megtagadott forrás-és cél IP-tartományokat, portokat és protokollokat. Az alapértelmezett szabályok úgy jönnek létre, hogy engedélyezzék a TLS-forgalmat a Kubernetes API-kiszolgálónak. Amikor terheléselosztó, port-hozzárendelés vagy bejövő útvonalak használatával hoz létre szolgáltatásokat, az AK automatikusan módosítja a hálózati biztonsági csoportot a megfelelő forgalomra.
+
+Azokban az esetekben, amikor saját alhálózatot biztosít az AK-fürthöz, és módosítani szeretné a forgalom áramlását, ne módosítsa az alhálózati szintű hálózati biztonsági csoportot, amelyet az AK felügyel. További alhálózat-szintű hálózati biztonsági csoportokat is létrehozhat, amelyekkel módosíthatja a forgalom áramlását, ha nem zavarja a fürt felügyeletéhez szükséges forgalmat, például a terheléselosztó elérését, a vezérlési síkon való kommunikációt és a [kimenő][aks-limit-egress-traffic]forgalmat.
 
 ### <a name="kubernetes-network-policy"></a>Kubernetes hálózati házirend
 
@@ -123,6 +125,7 @@ Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információk
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[aks-limit-egress-traffic]: limit-egress-traffic.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md

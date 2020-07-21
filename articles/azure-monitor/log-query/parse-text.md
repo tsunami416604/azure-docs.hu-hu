@@ -6,14 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c76cf939959d198d2c28181295a695a65ae46af9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672446"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505703"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Szöveges adatelemzés Azure Monitor naplókban
-Néhány Azure Monitor által összegyűjtött naplózási adat több adatot is tartalmaz egyetlen tulajdonságban. Ha ezeket az adatelemzéseket több tulajdonságba elemezze, egyszerűbbé teheti a lekérdezésekben való használatát. Az általános példa egy olyan [Egyéni napló](../../log-analytics/log-analytics-data-sources-custom-logs.md) , amely egy teljes naplóbejegyzést gyűjt több értékkel egyetlen tulajdonságban. A különböző értékek külön tulajdonságainak létrehozásával megkeresheti és összesítheti az egyes értékeket.
+Néhány Azure Monitor által összegyűjtött naplózási adat több adatot is tartalmaz egyetlen tulajdonságban. Ha ezeket az adatelemzéseket több tulajdonságba elemezze, egyszerűbbé teheti a lekérdezésekben való használatát. Az általános példa egy olyan [Egyéni napló](../platform/data-sources-custom-logs.md) , amely egy teljes naplóbejegyzést gyűjt több értékkel egyetlen tulajdonságban. A különböző értékek külön tulajdonságainak létrehozásával megkeresheti és összesítheti az egyes értékeket.
 
 Ez a cikk különböző lehetőségeket ismertet a naplófájlok elemzéséhez Azure Monitor az adatfeldolgozás során, valamint a lekérdezésekben való lekéréskor, az egyes lehetőségek relatív előnyeinek összehasonlításával.
 
@@ -22,7 +23,7 @@ Ez a cikk különböző lehetőségeket ismertet a naplófájlok elemzéséhez A
 Az adatokat betöltési időben is elemezheti, ha az adatok gyűjtése vagy lekérdezési ideje történik az adatok lekérdezéssel történő elemzésekor. Minden stratégia egyedi előnyökkel rendelkezik, az alábbiakban leírtak szerint.
 
 ### <a name="parse-data-at-collection-time"></a>Adatgyűjtés a gyűjtés időpontjában
-Amikor begyűjtési időpontban elemezi az adatelemzést, olyan [egyéni mezőket](../../log-analytics/log-analytics-custom-fields.md) állít be, amelyek új tulajdonságokat hoznak létre a táblában. A lekérdezéseknek nem kell semmilyen elemzési logikát tartalmazniuk, és egyszerűen ezeket a tulajdonságokat kell használniuk a tábla bármely más mezőjéhez.
+Amikor begyűjtési időpontban elemezi az adatelemzést, olyan [egyéni mezőket](../platform/custom-fields.md) állít be, amelyek új tulajdonságokat hoznak létre a táblában. A lekérdezéseknek nem kell semmilyen elemzési logikát tartalmazniuk, és egyszerűen ezeket a tulajdonságokat kell használniuk a tábla bármely más mezőjéhez.
 
 A módszer előnyei többek között a következők:
 
@@ -186,5 +187,5 @@ MyCustomCSVLog
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](log-query-overview.md) .

@@ -5,12 +5,12 @@ description: Ismerje meg az ismert korlátozásokat a Windows Server Node-készl
 services: container-service
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: c420eb850313900d3726b93dd97f911a428d3560
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a86d6f0fe942a72a96c504a61d5030624f161cd5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339874"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507012"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>A Windows Server Node-készletek és az alkalmazások számítási feladatainak jelenlegi korlátai az Azure Kubernetes szolgáltatásban (ak)
 
@@ -44,7 +44,11 @@ Egy AK-fürt fő csomópontjai (a vezérlő síkja) a szolgáltatásban találha
 
 ## <a name="what-network-plug-ins-are-supported"></a>Milyen hálózati beépülő modulok támogatottak?
 
-A Windows Node-készletekkel rendelkező AK-fürtöknek az Azure CNI (Advanced) hálózatkezelési modellt kell használniuk. A Kubenet (alapszintű) hálózatkezelés nem támogatott. További információ a hálózati modellekkel kapcsolatos különbségekről: az [AK-beli alkalmazások hálózati fogalmai][azure-network-models]. – Az Azure CNI Network Model további tervezést és szempontokat igényel az IP-címek kezeléséhez. Az Azure-CNI tervezésével és megvalósításával kapcsolatos további információkért lásd: [Az Azure CNI hálózatkezelésének konfigurálása az AK-ban][configure-azure-cni].
+A Windows Node-készletekkel rendelkező AK-fürtöknek az Azure CNI (Advanced) hálózatkezelési modellt kell használniuk. A Kubenet (alapszintű) hálózatkezelés nem támogatott. További információ a hálózati modellekkel kapcsolatos különbségekről: az [AK-beli alkalmazások hálózati fogalmai][azure-network-models]. Az Azure CNI hálózati modellje további tervezést és szempontokat igényel az IP-címek kezeléséhez. Az Azure-CNI tervezésével és megvalósításával kapcsolatos további információkért lásd: [Az Azure CNI hálózatkezelésének konfigurálása az AK-ban][configure-azure-cni].
+
+## <a name="is-preserving-the-client-source-ip-supported"></a>Az ügyfél forrás-IP-címének megőrzése támogatott?
+
+A Windows-csomópontok jelenleg nem támogatják az [ügyfél forrás IP-címének megőrzését][client-source-ip] .
 
 ## <a name="can-i-change-the-max--of-pods-per-node"></a>Módosítható a max. a hüvelyek száma egy csomóponton?
 
@@ -103,11 +107,19 @@ A csoportosan felügyelt szolgáltatásfiókok (gMSA) támogatása jelenleg nem 
 
 Igen, azonban Azure Monitor nyilvános előzetes verzióban érhető el a naplók (StdOut, stderr) és a Windows-tárolók metrikáinak összegyűjtéséhez. Az stdout-naplók élő streamjét egy Windows-tárolóból is csatlakoztathatja.
 
+## <a name="are-there-any-limitations-on-the-number-of-services-on-a-cluster-with-windows-nodes"></a>Vannak korlátozások a Windows-csomópontokkal rendelkező fürtökön található szolgáltatások számával kapcsolatban?
+
+A Windows-csomópontokkal rendelkező fürtök körülbelül 500 szolgáltatással rendelkezhetnek a portok kimerülése előtt.
+
+## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Használhatom a Kubernetes webes irányítópultot Windows-tárolókkal?
+
+Igen, használhatja a [Kubernetes webes irányítópultot][kubernetes-dashboard] a Windows-tárolókkal kapcsolatos információk eléréséhez, de jelenleg nem futtathatja a *kubectl exec* alkalmazást egy futó Windows-tárolóba közvetlenül a Kubernetes webes irányítópultján. További információ a futó Windows-tárolóhoz való csatlakozásról: [Csatlakozás RDP-vel az Azure Kubernetes Service (ak) fürthöz Windows Server-csomópontok karbantartáshoz vagy hibaelhárításhoz][windows-rdp].
+
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Mi a teendő, ha olyan szolgáltatásra van szükségem, amely nem támogatott?
 
 Keményen dolgozunk, hogy az összes olyan funkciót felhasználjuk, amire szüksége van az AK-ban, de ha hiányosságok lépnek fel, a nyílt forráskódú és a felsőbb rétegbeli [AK-motor][aks-engine] projekt egyszerű és teljes mértékben testreszabható módot kínál a Kubernetes Azure-ban való futtatására, beleértve a Windows-támogatást is. Kérjük, tekintse meg a következő, az AK- [útitervtel][aks-roadmap]kapcsolatos szolgáltatások ütemtervét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Windows Server-tárolók az AK-ban való megkezdéséhez [hozzon létre egy olyan csomópont-készletet, amely a Windows Server rendszerű][windows-node-cli]
 
@@ -132,3 +144,6 @@ A Windows Server-tárolók az AK-ban való megkezdéséhez [hozzon létre egy ol
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
 [azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
+[client-source-ip]: concepts-network.md#ingress-controllers
+[kubernetes-dashboard]: kubernetes-dashboard.md
+[windows-rdp]: rdp.md

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4e75329444c2ddb9401f32bccea400d90b633294
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f79ff9af1272ca908c7a5ba35fbaa1e8bb87fc50
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361523"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506709"
 ---
 # <a name="connect-with-power-bi"></a>Kapcsolódás Power BI-jal
 
@@ -36,6 +36,9 @@ Miután létrehozott egy kiszolgálót az Azure-ban, és egy táblázatos modell
     Az **élő** és az **importálási** beállítások egyaránt támogatottak. Javasoljuk azonban, hogy élő kapcsolatokat használjon, mivel az importálási mód bizonyos korlátozásokkal rendelkezik; a legtöbb esetben az importálás során hatással lehet a kiszolgáló teljesítményére. Továbbá, ha a modellt frissíteni kell a Power BI szolgáltatásban, a **hozzáférés engedélyezése Power bi** beállítás csak akkor érvényes, ha az **élő kapcsolat**lehetőséget választja.
 
 5. Ha a rendszer kéri, adja meg a bejelentkezési adatait. 
+
+   > [!NOTE]
+   > Az egyszeri jelszavas (OTP) fiókok nem támogatottak. 
 
 6. A **Navigátorban**bontsa ki a kiszolgálót, majd válassza ki azt a modellt vagy perspektívát, amelyhez csatlakozni szeretne, majd kattintson a **Kapcsolódás**elemre. Kattintson egy modellre vagy perspektívára az adott nézet összes objektumának megjelenítéséhez.
 

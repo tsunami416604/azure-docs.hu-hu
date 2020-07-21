@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 578d674a197936c6222d4520893fdb1afa00161e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8db47cd94f508803964398f19353e79f3d93d92a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84981999"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506570"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -337,6 +337,58 @@ Több tartományalapú (gazdagép-alapú) útválasztáshoz létrehozhat többhe
 
 Nem, csak alfanumerikus karaktereket használjon a. pfx-fájl jelszavában.
 
+### <a name="my-ev-certificate-is-issued-by-digicert-and-my-intermediate-certificate-has-been-revoked-how-do-i-renew-my-certificate-on-application-gateway"></a>A saját EV-tanúsítványt a DigiCert állítja ki, és a köztes tanúsítvány vissza lett vonva. Hogyan megújítani a tanúsítványt a Application Gatewayon?
+
+A hitelesítésszolgáltató (CA) böngésző tagjai a közelmúltban közzétett jelentések részletesen ismertetik az ügyfelek, a Microsoft és a szélesebb technológiai Közösség által a nyilvánosan megbízható hitelesítésszolgáltatókra vonatkozó iparági szabványoknak megfelelő, a HITELESÍTÉSSZOLGÁLTATÓ által kibocsátott tanúsítványokat.A nem megfelelő hitelesítésszolgáltatókkal kapcsolatos jelentések itt találhatók:  
+
+* [1649951-es hiba](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
+* [1650910-es hiba](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
+
+Az iparág megfelelőségi követelményeinek megfelelően a CA-szállítók elkezdték visszavonni a nem megfelelő CAs-t és a megfelelő hitelesítésszolgáltatókat, amelyekhez az ügyfeleknek újra ki kell állítani a tanúsítványokat.A Microsoft szorosan együttműködik ezekkel a szállítókkal, hogy csökkentse az Azure-szolgáltatásokkal kapcsolatos lehetséges hatásokat, **azonban a "saját tanúsítvány használata" (BYOC) forgatókönyvekben használt saját tanúsítványok vagy tanúsítványok továbbra is a váratlanul visszavont állapottal rendelkeznek**.
+
+Annak ellenőrzése, hogy az alkalmazás által használt tanúsítványok vissza lettek-e vonva a [DigiCert bejelentésére](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) és a [tanúsítvány-visszavonási nyomon követésre](https://misissued.com/#revoked). Ha visszavonták a tanúsítványokat, vagy visszavonják őket, új tanúsítványokat kell kérnie az alkalmazásokban használt HITELESÍTÉSSZOLGÁLTATÓI gyártótól. Ha el szeretné kerülni az alkalmazás rendelkezésre állását, mert a tanúsítványok váratlanul visszavonják a tanúsítványokat, vagy egy visszavont tanúsítvány frissítését, tekintse meg az Azure Updates-bejegyzéseket az BYOC-t támogató különféle Azure-szolgáltatások szervizelési hivatkozásaira vonatkozóan:https://azure.microsoft.com/updates/certificateauthorityrevocation/
+
+Application Gateway-specifikus információk:
+
+Ha egy visszavont nemzetközi árumegállapodások vagy által kiállított tanúsítványt használ, az alkalmazás rendelkezésre állása megszakadhat, és az alkalmazástól függően előfordulhat, hogy számos hibaüzenetet kap, többek között a következőket: 
+
+1.  Érvénytelen tanúsítvány/visszavont tanúsítvány
+2.  A kapcsolatok időkorlátja lejárt
+3.  HTTP 502
+
+Ha el szeretné kerülni az alkalmazás megszakítását a probléma miatt, vagy egy visszavont HITELESÍTÉSSZOLGÁLTATÓ újbóli kibocsátását, a következő műveleteket kell végrehajtania: 
+
+1.  A tanúsítványok újbóli kiállításához forduljon a tanúsítványhoz
+2.  Az újrakiadást követően frissítse tanúsítványait az Azure Application Gateway/WAF a teljes [megbízhatósági lánctal](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (levél, köztes, főtanúsítvány). Ha a tanúsítványt használja, a figyelőn vagy a Application Gateway HTTP-beállításain az alábbi lépéseket követve frissítse a tanúsítványokat, és tekintse meg a további információkat tartalmazó dokumentáció hivatkozásait.
+3.  Frissítse a háttérbeli alkalmazás-kiszolgálókat az újból kiállított tanúsítvány használatára. Az Ön által használt háttér-kiszolgálótól függően a tanúsítvány frissítési lépései eltérőek lehetnek. Keresse meg a gyártótól származó dokumentációt.
+
+A figyelőben lévő tanúsítvány frissítése:
+
+1.  A [Azure Portal](https://portal.azure.com/)nyissa meg Application Gateway erőforrását
+2.  A tanúsítványhoz társított figyelő beállításainak megnyitása
+3.  Kattintson a "kijelölt tanúsítvány megújítása vagy szerkesztése" lehetőségre.
+4.  Töltse fel az új PFX-tanúsítványt a jelszóval, és kattintson a Mentés gombra.
+5.  Nyissa meg a webhelyét, és ellenőrizze, hogy a hely a várt módon működik-e további információkért, és ellenőrizze [a dokumentációt](https://docs.microsoft.com/azure/application-gateway/renew-certificates).
+
+Ha a Application Gateway figyelőben lévő Azure-kulcstartóból származó tanúsítványokra hivatkozik, javasoljuk, hogy végezze el a következő lépéseket a gyors módosításhoz:
+
+1.  A [Azure Portal](https://portal.azure.com/)navigáljon az Azure-beli kulcstartó-beállításokhoz, amelyek a Application Gatewayhoz vannak társítva
+2.  A kiállított tanúsítvány hozzáadása/importálása a tárolóban. Az útmutatóval kapcsolatos további információkért tekintse meg [a dokumentációt](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal) .
+3.  A tanúsítvány importálása után navigáljon a Application Gateway figyelő beállításaihoz, és a "tanúsítvány kiválasztása a Key Vault" alatt kattintson a "tanúsítvány" legördülő listára, és válassza ki a legutóbb hozzáadott tanúsítványt.
+4.  Kattintson a Save (Mentés) gombra a Application Gateway TLS-leállításával kapcsolatos további információkért Key Vault tanúsítványokkal kapcsolatban, [itt](https://docs.microsoft.com/azure/application-gateway/key-vault-certs)tájékozódhat.
+
+
+A tanúsítvány frissítése a HTTP-beállításokban:
+
+Ha a Application Gateway/WAF szolgáltatás v1-es verzióját használja, akkor a háttér-hitelesítési tanúsítványként fel kell töltenie az új tanúsítványt.
+1.  A [Azure Portal](https://portal.azure.com/)nyissa meg Application Gateway erőforrását
+2.  A tanúsítványhoz társított HTTP-beállítások megnyitása
+3.  Kattintson a tanúsítvány hozzáadása gombra, és töltse fel a kiállított tanúsítványt, és kattintson a Save (Mentés) gombra.
+4.  A régi tanúsítvány később is eltávolítható, ha a "..." gombra kattint. a régi tanúsítvány melletti beállítások gombra, és válassza a Törlés lehetőséget, majd kattintson a Mentés gombra.
+További információkért tekintse meg a [dokumentációt](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers).
+
+Ha a Application Gateway/WAF szolgáltatás v2 SKU-át használja, nem kell feltöltenie az új tanúsítványt a HTTP-beállításokba, mivel a v2 SKU a "megbízható főtanúsítványok" szolgáltatást használja, és itt nem kell műveletet végrehajtania.
+
 ## <a name="configuration---ingress-controller-for-aks"></a>Konfiguráció – bejövő forgalom vezérlője AK-hoz
 
 ### <a name="what-is-an-ingress-controller"></a>Mi az a beáramló vezérlő?
@@ -439,6 +491,6 @@ Ha azonban csak privát IP-címmel szeretné használni a Application Gateway v2
 NSG-konfiguráció a magánhálózati IP-címekhez csak hozzáférés: ![ Application Gateway v2 NSG konfiguráció csak magánhálózati IP-hozzáféréshez](./media/application-gateway-faq/appgw-privip-nsg.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Application Gatewayről: [Mi az az Azure Application Gateway?](overview.md).

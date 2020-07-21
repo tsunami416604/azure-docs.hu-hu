@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: a028d597c3eb2a1c66df0e40266c2822e5cd7aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b4083bdc896ce2f78484fe4ab083b234c4c5d12
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726961"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508576"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Virtuális gép létrehozása felügyelt rendszerképből
 
@@ -35,11 +35,11 @@ Egy felügyelt rendszerkép akár 20 egyidejű telepítést is támogat. Ha töb
 
 ## <a name="use-powershell"></a>A PowerShell használata
 
-A PowerShell használatával létrehozhat egy virtuális gépet egy rendszerképből a [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag egyszerűsített paraméterének használatával. A rendszerképnek ugyanabban az erőforráscsoporthoz kell lennie, ahol létre szeretné hozni a virtuális gépet.
+A PowerShell használatával létrehozhat egy virtuális gépet egy rendszerképből a [New-AzVm](/powershell/module/az.compute/new-azvm) parancsmag egyszerűsített paraméterének használatával. A rendszerképnek ugyanabban az erőforráscsoporthoz kell lennie, ahol létre szeretné hozni a virtuális gépet.
 
  
 
-A [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) egyszerűsített paraméterének csak azt kell megadnia, hogy a virtuális gép rendszerképből való létrehozásához meg kell adnia egy nevet, egy erőforráscsoportot és egy rendszerkép nevét. A New-AzVm a **-Name** paraméter értékét fogja használni az összes automatikusan létrehozott erőforrás neveként. Ebben a példában részletesebb nevet adunk az egyes erőforrásokhoz, de a parancsmag automatikusan létrehozza azokat. Előre is létrehozhat erőforrásokat, például a virtuális hálózatot, és átadhatja az erőforrás nevét a parancsmagnak. A New-AzVm a meglévő erőforrásokat fogja használni, ha azok nevük alapján megtalálják őket.
+A [New-AzVm](/powershell/module/az.compute/new-azvm) egyszerűsített paraméterének csak azt kell megadnia, hogy a virtuális gép rendszerképből való létrehozásához meg kell adnia egy nevet, egy erőforráscsoportot és egy rendszerkép nevét. A New-AzVm a **-Name** paraméter értékét fogja használni az összes automatikusan létrehozott erőforrás neveként. Ebben a példában részletesebb nevet adunk az egyes erőforrásokhoz, de a parancsmag automatikusan létrehozza azokat. Előre is létrehozhat erőforrásokat, például a virtuális hálózatot, és átadhatja az erőforrás nevét a parancsmagnak. A New-AzVm a meglévő erőforrásokat fogja használni, ha azok nevük alapján megtalálják őket.
 
 A következő példa egy *myVMFromImage*nevű virtuális gépet hoz létre a *myResourceGroup* -erőforráscsoporthoz a *myImage*nevű rendszerképből. 
 
@@ -61,4 +61,3 @@ New-AzVm `
 
 ## <a name="next-steps"></a>Következő lépések
 [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-

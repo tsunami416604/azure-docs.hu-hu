@@ -8,11 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65167169248d83ebfec2c49c308673ec9315934e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab772bd9cb415045ef70cb4cf9a518791befb192
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77019757"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86507658"
 ---
 # <a name="migrating-data-to-azure-vmware-solution-by-using-azure-data-box"></a>Az Azure VMware-megoldásba való Migrálás Azure Data Box használatával
 
@@ -53,7 +54,7 @@ Kapcsolódjon a Data Box helyi webes felhasználói felületéhez a következő 
 
     ![NFS-ügyfélhozzáférés konfigurálása 1](media/nfs-client-access.png)
 
-2. Adja meg a VMware ESXi gazdagépek IP-címét, majd válassza a **Hozzáadás**lehetőséget. A vSphere-fürtben lévő összes gazdagép hozzáférését a következő lépés megismétlésével állíthatja be. Válassza az **OK** lehetőséget.
+2. Adja meg a VMware ESXi gazdagépek IP-címét, majd válassza a **Hozzáadás**lehetőséget. A vSphere-fürtben lévő összes gazdagép hozzáférését a következő lépés megismétlésével állíthatja be. Kattintson az **OK** gombra.
 
     ![NFS-ügyfélhozzáférés konfigurálása 2](media/nfs-client-access2.png)
 > [!IMPORTANT]
@@ -63,8 +64,8 @@ A blokkblob- és lapblobmegosztások alatti első szintű entitások tárolók, 
 
 Az alábbi táblázat a Data Boxon található megosztások UNC elérési útját és az adatok feltöltéséhez használt Azure Storage elérési útjának URL-címét mutatja. Az Azure Storage elérési útjának végső URL-címe a megosztás UNC elérési útjából származik.
  
-|                   |                                                            |
-|-------------------|--------------------------------------------------------------------------------|
+| Blobok és fájlok | Elérési út és URL-cím |
+|---------------- | ------------ |
 | Azure-blokkblobok | <li>A megosztások UNC elérési útja: `//<DeviceIPAddress>/<StorageAccountName_BlockBlob>/<ContainerName>/files/a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li> |  
 | Azure-lapblobok  | <li>A megosztások UNC elérési útja: `//<DeviceIPAddres>/<StorageAccountName_PageBlob>/<ContainerName>/files/a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.blob.core.windows.net/<ContainerName>/files/a.txt`</li>   |  
 | Azure Files       |<li>A megosztások UNC elérési útja: `//<DeviceIPAddres>/<StorageAccountName_AzFile>/<ShareName>/files/a.txt`</li><li>Az Azure Storage URL-címe: `https://<StorageAccountName>.file.core.windows.net/<ShareName>/files/a.txt`</li>        |
@@ -326,7 +327,7 @@ Miután az összes fájlt átmásolta a saját felhőbe, eltávolíthatja az NFS
     
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Data Boxról](../databox/data-box-overview.md).
 * További információ a [számítási feladatok saját felhőbe való áttelepítésének](migrate-workloads.md)különböző lehetőségeiről.

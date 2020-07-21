@@ -4,11 +4,12 @@ description: A földrajzi régiók használata a redundancia és a feladatátvé
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: 481a716bd6ced5c304da41c70fdcfc687b76661d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 446a76b823ce3592a83d0c2f898041951361b47e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79080232"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506281"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo-vész-helyreállítás
 
@@ -21,7 +22,7 @@ A Azure Functions egy adott régióban futnak.  A magasabb rendelkezésre állá
 * Aktív/aktív. Mindkét régió aktív és eseményeket fogad (ismétlődő vagy rotációs). Az aktív/aktív funkció a HTTPS-függvények esetében ajánlott az Azure bejárati ajtóval együtt.
 * Aktív/passzív. Az egyik régió aktív és fogad eseményeket, míg a másodlagos üresjáratban van.  Ha feladatátvételre van szükség, a másodlagos régió aktiválva lesz, és átveszi a feldolgozást.  Ez olyan nem HTTP-függvények esetén ajánlott, mint a Service Bus és a Event Hubs.
 
-További információ a többrégiós környezetekről: [alkalmazások futtatása több régióban](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region) .
+További információ a többrégiós környezetekről: [alkalmazások futtatása több régióban](/azure/architecture/reference-architectures/app-service-web-app/multi-region) .
 
 ## <a name="activeactive-for-https-functions"></a>Aktív/aktív HTTPS-függvények esetén
 
@@ -51,7 +52,7 @@ A feladatátvétel előtt a megosztott aliasnak küldött közzétevők átirán
 
 A feladatátvételsel kapcsolatos tudnivalókat és szempontokat a [Service Bus](../service-bus-messaging/service-bus-geo-dr.md) és az [Event hubok](../event-hubs/event-hubs-geo-dr.md)című témakörben olvashatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure-beli bejárati ajtó létrehozása](../frontdoor/quickstart-create-front-door.md)
 * [Event Hubs feladatátvételi megfontolások](../event-hubs/event-hubs-geo-dr.md#considerations)

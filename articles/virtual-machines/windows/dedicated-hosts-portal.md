@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 53a9cd33f7bd2223be1c9f199b7a6d10d876c322
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 444f7cd7094a688c43d9aedce67d293e3c32e273
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82082934"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86508559"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Virtuális gépek üzembe helyezése dedikált gazdagépeken a portál használatával
 
@@ -42,7 +42,7 @@ Hozzáadhat egy meglévő virtuális gépet egy dedikált gazdagéphez, de a vir
 
 - A virtuális gép méretének azonos méretűnek kell lennie, mint a dedikált gazdagépnek. Ha például a dedikált gazdagép DSv3, akkor a virtuális gép mérete Standard_D4s_v3, de nem lehet Standard_A4_v2. 
 - A virtuális gépnek ugyanabban a régióban kell lennie, ahol a dedikált gazdagép található.
-- A virtuális gép nem lehet a közelségi elhelyezési csoport része. A dedikált gazdagépre való áthelyezés előtt távolítsa el a virtuális gépet a közelségi csoportból. További információ: [virtuális gép áthelyezése a közelségi csoportból](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- A virtuális gép nem lehet a közelségi elhelyezési csoport része. A dedikált gazdagépre való áthelyezés előtt távolítsa el a virtuális gépet a közelségi csoportból. További információ: [virtuális gép áthelyezése a közelségi csoportból](./proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group)
 - A virtuális gép nem lehet rendelkezésre állási készletben.
 - Ha a virtuális gép egy rendelkezésre állási zónában van, akkor a gazdagép-csoporttal megegyező rendelkezésre állási zónának kell lennie. A virtuális gép rendelkezésre állási zónájának beállításai és a gazdagép csoportjának egyeznie kell.
 
@@ -56,7 +56,7 @@ Helyezze át a virtuális gépet egy dedikált gazdagépre a [portál](https://p
 1. Miután hozzáadta a virtuális gépet a gazdagéphez, válassza az **Áttekintés** lehetőséget a bal oldali menüben.
 1. A lap tetején kattintson a **Start** gombra a virtuális gép újraindításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információt a [dedikált gazdagépek](dedicated-hosts.md) áttekintése című témakörben talál. 
 

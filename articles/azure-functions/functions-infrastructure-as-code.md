@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b73b8418b202563ca7c4a73181b1b1b404db6ee2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: e56c76583f601c2e13ab4a35c1fef2996d2e3e67
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170394"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506230"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A Function alkalmazás erőforrás-telepítésének automatizálása Azure Functions
 
@@ -112,7 +112,7 @@ Emellett a kialakítási kulcsot is meg kell adni a Function alkalmazásnak az `
 A üzemeltetési csomag definíciója változó, és a következők egyike lehet:
 * [Felhasználási terv](#consumption) (alapértelmezett)
 * [Prémium szintű csomag](#premium)
-* [App Service-csomag](#app-service-plan)
+* [App Service terv](#app-service-plan)
 
 ### <a name="function-app"></a>Függvényalkalmazás
 
@@ -309,7 +309,7 @@ A Prémium csomag ugyanazt a skálázást kínálja, mint a használati terv, de
 
 ### <a name="create-a-premium-plan"></a>Prémium csomag létrehozása
 
-A Prémium csomag egy speciális "kiszolgálófarm" típusú erőforrás. Megadhatja azt a vagy a `EP1` , `EP2` vagy a `EP3` `Name` tulajdonság értékének használatával a `sku` [Leírás objektumban](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object).
+A Prémium csomag egy speciális "kiszolgálófarm" típusú erőforrás. Megadhatja azt a vagy a `EP1` , `EP2` vagy a `EP3` `Name` tulajdonság értékének használatával a `sku` [Leírás objektumban](/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object).
 
 ```json
 {
@@ -516,7 +516,7 @@ A Linux-alkalmazásoknak tartalmaznia kell egy `linuxFxVersion` tulajdonságot i
 }
 ```
 
-Ha [Egyéni tároló lemezképet helyez üzembe](./functions-create-function-linux-custom-image.md), meg kell adnia azt a-val, és tartalmaznia kell egy olyan `linuxFxVersion` konfigurációt, amely lehetővé teszi a lemezkép leválasztását a [Web App for containers](/azure/app-service/containers). Emellett állítsa a (z) értékre, `WEBSITES_ENABLE_APP_SERVICE_STORAGE` `false` mert az alkalmazás tartalma a tárolóban van megadva:
+Ha [Egyéni tároló lemezképet helyez üzembe](./functions-create-function-linux-custom-image.md), meg kell adnia azt a-val, és tartalmaznia kell egy olyan `linuxFxVersion` konfigurációt, amely lehetővé teszi a lemezkép leválasztását a [Web App for containers](../app-service/containers/index.yml). Emellett állítsa a (z) értékre, `WEBSITES_ENABLE_APP_SERVICE_STORAGE` `false` mert az alkalmazás tartalma a tárolóban van megadva:
 
 ```json
 {
@@ -689,7 +689,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "MyResourceGroup" -TemplateFile
 
 A központi telepítés teszteléséhez használhat egy olyan [sablont](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-function-app-create-dynamic/azuredeploy.json) , amely a Windowsban egy használati alkalmazást hoz létre egy felhasználási tervben. Cserélje le a `<function-app-name>` függvényt egy egyedi névre a Function alkalmazáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Functions fejlesztéséről és konfigurálásáról.
 

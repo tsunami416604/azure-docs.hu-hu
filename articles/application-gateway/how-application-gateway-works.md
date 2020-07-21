@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: 7622ac319929548dd50a3af763b1b65ea8a36d2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d33ec829e490ae45d38d33f5784126a71ae2d0aa
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250230"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86506553"
 ---
 # <a name="how-an-application-gateway-works"></a>Az Application Gateway működése
 
@@ -62,8 +62,8 @@ Az Application Gateway négy további fejlécet szúr be az összes kérelembe, 
 
 Az x által továbbított-proto érvényes értékei HTTP vagy HTTPS. X – továbbított – a port megadja azt a portot, ahol a kérés elérte az Application Gatewayt. Az X-Original-Host fejléc tartalmazza azt az eredeti állomásfejléc-fejlécet, amelyhez a kérés érkezett. Ez a fejléc az Azure-webhelyek integrációjában hasznos, ahol a bejövő állomásfejléc módosul, mielőtt a rendszer átirányítja a forgalmat a háttérbe. Ha a munkamenet-affinitás engedélyezve van, akkor egy átjáró által felügyelt affinitási cookie-t adhat hozzá.
 
-Az Application Gateway beállítható úgy, hogy a fejléceket a [HTTP-fejlécek újraírásával](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) vagy az URI elérési útjának módosításával módosítsa az elérési út felülbírálása beállítás használatával. Ha azonban erre nincs konfigurálva, az összes bejövő kérelem a háttérbe kerül.
+Az Application Gateway beállítható úgy, hogy módosítsa a kérések és válaszok fejléceit és URL-címét a [HTTP-fejlécek és URL-cím újraírásával](rewrite-http-headers-url.md) , vagy az URI elérési útjának módosításához egy elérésiút-felülbírálási beállítás használatával. Ha azonban erre nincs konfigurálva, az összes bejövő kérelem a háttérbe kerül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Tudnivalók az Application Gateway összetevőiről](application-gateway-components.md)
