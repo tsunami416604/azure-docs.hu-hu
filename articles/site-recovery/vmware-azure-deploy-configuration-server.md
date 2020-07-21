@@ -42,7 +42,7 @@ A konfigurációs kiszolgáló Azure Site Recovery-szolgáltatásokkal való reg
     - Ellenőrizze, hogy az alkalmazás fejlesztői szerepköre hozzá van-e rendelve a felhasználóhoz. Ha nem, használja ezt az engedélyt használó felhasználót, vagy forduljon [a rendszergazdához, és engedélyezze az engedélyt](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Ha az alkalmazás fejlesztői szerepköre nem rendelhető hozzá, győződjön meg arról, hogy a **felhasználók regisztrálhatják az alkalmazások** jelölőjét **true (igaz** ) értékre állítva, ha a felhasználó identitást hoz létre. Az engedélyek engedélyezése:
-    - Jelentkezzen be az Azure portálra.
+    - Jelentkezzen be az Azure Portalra.
     - Lépjen **Azure Active Directory**  >  **felhasználói beállítások menüpontra**.
     - A **Alkalmazásregisztrációk**alatt a **felhasználók regisztrálhatják az alkalmazásokat**. Válassza az **Igen**lehetőséget.
 
@@ -92,7 +92,7 @@ A konfigurációs kiszolgáló Azure Site Recovery-szolgáltatásokkal való reg
 Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgálóhoz, adja hozzá azt a tárolóban lévő kiszolgáló regisztrálása előtt. A regisztrálást követően további adapterek hozzáadása nem támogatott.
 
 1. A vSphere Client-leltárban kattintson a jobb gombbal a virtuális gépre, és válassza az **Edit Settings** (Beállítások szerkesztése) elemet.
-2. A **Hardware** (Hardver) területen válassza az **Add** > **Ethernet Adapter** (Hozzáadás > Ethernet-adapter) elemet. Ezután válassza a **tovább**lehetőséget.
+2. A **Hardware** (Hardver) területen válassza az **Add** > **Ethernet Adapter** (Hozzáadás > Ethernet-adapter) elemet. Ezután kattintson a **Tovább** gombra.
 3. Válassza ki a hálózati adapter típusát és a hálózatot.
 4. Ha a virtuális hálózati adaptert a virtuális gép bekapcsolása után szeretné összekapcsolni, válassza a **Csatlakozás a Power-on**lehetőséget. Ezután válassza a **következő**  >  **Befejezés**  >  **OK**elemet.
 
@@ -102,7 +102,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 2. A virtuális gép a bekapcsolásakor egy Windows Server 2016 telepítési folyamatot indít el. Fogadja el a licencszerződést, és adjon meg egy rendszergazdai jelszót.
 3. A telepítés befejezése után jelentkezzen be rendszergazdaként a virtuális gépre.
 4. Amikor először jelentkezik be, néhány másodpercen belül elindul a Azure Site Recovery konfigurációs eszköz.
-5. Adjon meg egy nevet, amelyen a konfigurációs kiszolgálót regisztrálja a Site Recovery szolgáltatásban. Ezután válassza a **tovább**lehetőséget.
+5. Adjon meg egy nevet, amelyen a konfigurációs kiszolgálót regisztrálja a Site Recovery szolgáltatásban. Ezután kattintson a **Tovább** gombra.
 6. Az eszköz ellenőrzi, hogy a virtuális gép tud-e csatlakozni az Azure-hoz. A kapcsolat létrejötte után a **Sign in** (Bejelentkezés) gombra kattintva jelentkezzen be az Azure-előfizetésbe.</br>
     a. Olyan hitelesítő adatokra van szükség, amelyekkel hozzá lehet férni a tárolóhoz, amelyben regisztrálni kívánja a konfigurációs kiszolgálót.</br>
     b. Győződjön meg arról, hogy a kiválasztott felhasználói fiók rendelkezik engedéllyel az Azure-beli alkalmazás létrehozásához. A szükséges engedélyek engedélyezéséhez kövesse az [Azure Active Directory engedélyekkel kapcsolatos követelmények](#azure-active-directory-permission-requirements)című szakaszban található útmutatást.
@@ -111,7 +111,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 
 ### <a name="configure-settings"></a>Beállítások konfigurálása
 
-1. A konfigurációs kiszolgáló kezelése varázslóban válassza a **kapcsolat beállítása**lehetőséget. A legördülő listából válassza ki azt a hálózati adaptert, amelyet a beépített Process Server használ a mobilitási szolgáltatás felderítéséhez és leküldéses telepítéséhez a forrásoldali gépeken. Ezután válassza ki azt a hálózati adaptert, amelyet a konfigurációs kiszolgáló használ az Azure-hoz való kapcsolódáshoz. Kattintson a **Mentés** gombra. Ez a beállítás a konfigurálás után nem módosítható. Ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg arról, hogy a konfigurációs kiszolgálóhoz rendelt IP-cím statikus IP-cím, nem DHCP-IP-cím.
+1. A konfigurációs kiszolgáló kezelése varázslóban válassza a **kapcsolat beállítása**lehetőséget. A legördülő listából válassza ki azt a hálózati adaptert, amelyet a beépített Process Server használ a mobilitási szolgáltatás felderítéséhez és leküldéses telepítéséhez a forrásoldali gépeken. Ezután válassza ki azt a hálózati adaptert, amelyet a konfigurációs kiszolgáló használ az Azure-hoz való kapcsolódáshoz. Válassza a **Mentés** lehetőséget. Ez a beállítás a konfigurálás után nem módosítható. Ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg arról, hogy a konfigurációs kiszolgálóhoz rendelt IP-cím statikus IP-cím, nem DHCP-IP-cím.
 2. A **Recovery Services**-tároló kiválasztása lapon jelentkezzen be a Microsoft Azure a [konfigurációs kiszolgáló regisztrálása a Azure site Recovery Services szolgáltatással](#register-the-configuration-server-with-azure-site-recovery-services)című 6. lépésében használt hitelesítő adatokkal.
 3. Bejelentkezés után válassza ki az Azure-előfizetését, valamint a megfelelő erőforráscsoportot és tárolót.
 
