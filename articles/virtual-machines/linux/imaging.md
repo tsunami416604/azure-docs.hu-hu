@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 40d028ade5429c89ce40b718c90c601dfcb0e470
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85308150"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502180"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Linux-rendszerképek készítése és létrehozása az Azure-ban
 
@@ -25,7 +25,7 @@ Ez a cikk a rendszerképekkel kapcsolatos döntési pontokon és követelmények
 ## <a name="difference-between-managed-disks-and-images"></a>A felügyelt lemezek és a lemezképek közötti különbség
 
 
-Az Azure lehetővé teszi, hogy egy virtuális merevlemezt a platformra, [felügyelt lemezként](https://docs.microsoft.com/azure/virtual-machines/windows/faq-for-disks#managed-disks)használja, vagy a lemezkép forrásaként használja. 
+Az Azure lehetővé teszi, hogy egy virtuális merevlemezt a platformra, [felügyelt lemezként](../windows/faq-for-disks.md#managed-disks)használja, vagy a lemezkép forrásaként használja. 
 
 Az Azure Managed Disks egyetlen virtuális merevlemez. Létrehozhat egy meglévő VHD-t, és létrehozhat egy felügyelt lemezt, vagy létrehozhat egy üres, felügyelt lemezt. Létrehozhat virtuális gépeket a felügyelt lemezekről úgy, hogy csatlakoztatja a lemezt a virtuális géphez, de csak egy virtuális géppel rendelkező virtuális merevlemezt tud használni. Az operációs rendszer tulajdonságai nem módosíthatók, az Azure csak a virtuális gép bekapcsolását és a lemez használatának megkezdését kísérli meg. 
 
@@ -49,16 +49,16 @@ Az Azure két fő képtípust kínál, általánosítva és specializálva. Az �
 Az általánosított rendszerkép olyan rendszerkép, amely az első rendszerindításkor a telepítés befejezését igényli. Az első rendszerindításkor például az állomásnév, a rendszergazda felhasználó és más virtuálisgép-specifikus konfigurációk állíthatók be. Ez akkor hasznos, ha azt szeretné, hogy a rendszer többször is felhasználja a képet, és ha a létrehozás során paramétereket szeretne megadni a paraméterekben. Ha az általánosított rendszerkép tartalmazza az Azure-ügynököt, akkor az ügynök feldolgozza a paramétereket, és visszaküldi azt a platformra, amelyen a kezdeti konfiguráció befejeződött. Ezt a folyamatot **üzembe**helyezésnek nevezzük. 
 
 A kiépítés megköveteli, hogy a rendszerkép tartalmazza a kiépítés részét. Két kiépítés létezik:
-- [Azure Linux-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)
-- [Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)
+- [Azure Linux-ügynök](../extensions/agent-linux.md)
+- [Cloud-init](./using-cloud-init.md)
 
-Ezek a rendszerképek létrehozásának [előfeltételei](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) .
+Ezek a rendszerképek létrehozásának [előfeltételei](./create-upload-generic.md) .
 
 
 ### <a name="specialized-images"></a>Speciális rendszerképek
 Ezek olyan rendszerképek, amelyek teljesen konfigurálva vannak, és nem igénylik a virtuális gépeket és a speciális paramétereket, a platform csak a virtuális gépet kapcsolja be, a virtuális gépen egyedivé kell tennie, mint például a hostname beállítása, hogy elkerülje a DNS-ütközéseket ugyanazon a VNET. 
 
-Ezekhez a lemezképekhez nem szükségesek kiépítési ügynökök, azonban lehetséges, hogy a bővítmények kezelési képességei is rendelkezésre állnak. Telepítheti a Linux-ügynököt, de letilthatja a létesítési lehetőséget. Annak ellenére, hogy nincs szüksége kiépítési ügynökre, a rendszerképnek meg kell felelnie az Azure-lemezképek [előfeltételeinek](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic) .
+Ezekhez a lemezképekhez nem szükségesek kiépítési ügynökök, azonban lehetséges, hogy a bővítmények kezelési képességei is rendelkezésre állnak. Telepítheti a Linux-ügynököt, de letilthatja a létesítési lehetőséget. Annak ellenére, hogy nincs szüksége kiépítési ügynökre, a rendszerképnek meg kell felelnie az Azure-lemezképek [előfeltételeinek](./create-upload-generic.md) .
 
 
 ## <a name="image-storage-options"></a>Rendszerkép-tárolási beállítások
@@ -94,22 +94,20 @@ Magas szinten létre kell hoznia egy SIG-t, amely az alábbiakból áll:
 
 ## <a name="hyper-v-generation"></a>Hyper-V generáció
 
-Az Azure támogatja a Hyper-V 1. generációs (Gen1) és a 2. generációs (Gen2), a Gen2 a legújabb generációt, és további funkciókat nyújt a Gen1-hoz. Például: megnövekedett memória, Intel Software Guard Extensions (Intel SGX ENKLÁVÉHOZ) és virtualizált állandó memória (vPMEM). A 2. generációs virtuális gépek a helyszínen futnak, az Azure-ban még nem támogatott funkciók vannak. További információ: szolgáltatások és képességek szakasz. További információkért tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2). Ha további funkciókra van szüksége, hozzon létre Gen2-lemezképeket.
+Az Azure támogatja a Hyper-V 1. generációs (Gen1) és a 2. generációs (Gen2), a Gen2 a legújabb generációt, és további funkciókat nyújt a Gen1-hoz. Például: megnövekedett memória, Intel Software Guard Extensions (Intel SGX ENKLÁVÉHOZ) és virtualizált állandó memória (vPMEM). A 2. generációs virtuális gépek a helyszínen futnak, az Azure-ban még nem támogatott funkciók vannak. További információ: szolgáltatások és képességek szakasz. További információkért tekintse meg ezt a [cikket](../windows/generation-2.md). Ha további funkciókra van szüksége, hozzon létre Gen2-lemezképeket.
 
-Ha továbbra is létre kell hoznia egy saját rendszerképet, győződjön meg arról, hogy megfelel a [rendszerkép előfeltételeinek](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic), és feltölti az Azure-ba. Terjesztési specifikus követelmények:
+Ha továbbra is létre kell hoznia egy saját rendszerképet, győződjön meg arról, hogy megfelel a [rendszerkép előfeltételeinek](./create-upload-generic.md), és feltölti az Azure-ba. Terjesztési specifikus követelmények:
 
 
 - [CentOS-alapú disztribúciók](create-upload-centos.md)
 - [Debian Linux](debian-create-upload-vhd.md)
+- [Flatcar Container Linux](flatcar-create-upload-vhd.md)
 - [Oracle Linux](oracle-create-upload-vhd.md)
 - [Red Hat Enterprise Linux](redhat-create-upload-vhd.md)
 - [SLES és openSUSE](suse-create-upload-vhd.md)
 - [Ubuntu](create-upload-ubuntu.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan hozhat létre [megosztott képtárat](tutorial-custom-images.md).
-
-
-

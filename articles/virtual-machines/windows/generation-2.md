@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: fef582048d1e1093a4a4d69229185e8a3d8dc229
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 1ebba13de14935d931d5d21ab786889d9a3755da
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144862"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500310"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2. generációs virtuális gépek támogatása az Azure-ban
 
@@ -21,30 +21,30 @@ A 2. generációs virtuális gépek (VM-EK) támogatása már elérhető az Azur
 
 A 2. generációs virtuális gépek támogatják az 1. generációs virtuális gépek által nem támogatott főbb funkciókat. A szolgáltatások közé tartozik a megnövekedett memória, az Intel Software Guard Extensions (Intel SGX ENKLÁVÉHOZ) és a virtualizált állandó memória (vPMEM). A 2. generációs virtuális gépek a helyszínen futnak, az Azure-ban még nem támogatott funkciók vannak. További információ: [szolgáltatások és képességek](#features-and-capabilities) szakasz.
 
-A 2. generációs virtuális gépek az új UEFI-alapú rendszerindítási architektúrát használják az 1. generációs virtuális gépek által használt BIOS-alapú architektúra helyett. Az 1. generációs virtuális gépekhez képest a 2. generációs virtuális gépeknél a rendszerindítási és a telepítési idő is javult. A 2. generációs virtuális gépek, valamint az 1. és a 2. generáció közötti különbségek némelyikének áttekintését lásd: [1. vagy 2. generációs virtuális gépek létrehozása a Hyper-V-ben?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+A 2. generációs virtuális gépek az új UEFI-alapú rendszerindítási architektúrát használják az 1. generációs virtuális gépek által használt BIOS-alapú architektúra helyett. Az 1. generációs virtuális gépekhez képest a 2. generációs virtuális gépeknél a rendszerindítási és a telepítési idő is javult. A 2. generációs virtuális gépek, valamint az 1. és a 2. generáció közötti különbségek némelyikének áttekintését lásd: [1. vagy 2. generációs virtuális gépek létrehozása a Hyper-V-ben?](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 ## <a name="generation-2-vm-sizes"></a>2. generációs VM-méretek
 
 Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja az Azure-ban (kivéve a Mv2-sorozatú virtuális gépeket). Az Azure immár 2. generációs támogatást nyújt a következő kiválasztott virtuálisgép-sorozatokhoz:
 
-* [B sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
+* [B sorozat](../sizes-b-series-burstable.md)
 * [DCsv2 sorozat](../dcv2-series.md)
 * [DSv2](../dv2-dsv2-series.md) és [Dsv3 sorozat](../dv3-dsv3-series.md)
-* [Dasv4 sorozat](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)
+* [Dasv4 sorozat](../dav4-dasv4-series.md)
 * [Esv3 sorozat](../ev3-esv3-series.md)
-* [Easv4 sorozat](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series)
+* [Easv4 sorozat](../eav4-easv4-series.md)
 * [Fsv2 sorozat](../fsv2-series.md)
-* [GS sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
+* [GS sorozat](../sizes-previous-gen.md#gs-series)
 * [HB-sorozat](../hb-series.md)
 * [HC-sorozat](../hc-series.md)
-* Az [ls-sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) és a [Lsv2 sorozat](../lsv2-series.md)
+* Az [ls-sorozat](../sizes-previous-gen.md#ls-series) és a [Lsv2 sorozat](../lsv2-series.md)
 * [M sorozat](../m-series.md)
 * [Mv2 –](../mv2-series.md)<sup>1</sup> . sorozat
 * [NCv2](../ncv2-series.md) és [NCv3 sorozat](../ncv3-series.md)
 * [ND sorozat](../nd-series.md)
 * [NVv3 sorozat](../nvv3-series.md)
 
-<sup>1</sup> a Mv2 sorozat nem támogatja az 1. generációs virtuálisgép-rendszerképeket, és csak a 2. generációs lemezképek egy részhalmazát támogatja. A részletekért tekintse meg a [Mv2-sorozat dokumentációját](https://docs.microsoft.com/azure/virtual-machines/mv2-series) .
+<sup>1</sup> a Mv2 sorozat nem támogatja az 1. generációs virtuálisgép-rendszerképeket, és csak a 2. generációs lemezképek egy részhalmazát támogatja. A részletekért tekintse meg a [Mv2-sorozat dokumentációját](../mv2-series.md) .
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>2. generációs VM-lemezképek az Azure Marketplace-en
 
@@ -78,7 +78,7 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 ### <a name="generation-1-vs-generation-2-features"></a>1. generációs, 2. generációs funkciók
 
-| Szolgáltatás | 1. generációs | 2. generációs |
+| Funkció | 1. generációs | 2. generációs |
 |---------|--------------|--------------|
 | Indítás             | PCAT                      | UEFI                               |
 | Lemezvezérlő-vezérlők | IDE                       | SCSI                               |
@@ -110,7 +110,7 @@ Az alábbi lépéseket követve hozhat létre 2. generációs (Gen2) virtuális 
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
 1. Kattintson az **összes** megjelenítése lehetőségre a bal oldalon található Azure piactéren.
 1. Válasszon olyan képet, amely támogatja a Gen2.
-1. Kattintson a **Létrehozás** elemre.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. A **speciális** lapon, a **virtuális gép létrehozása** szakaszban válassza a 2. **generációs** lehetőséget.
 1. Az **alapvető beállítások** lap **példány részletei**területén válassza a **méret** elemet, és nyissa meg a **virtuális gép méretének kiválasztása panelt** .
 1. Válasszon egy [támogatott 2. generációs virtuális gépet](#generation-2-vm-sizes).
@@ -211,8 +211,8 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
     1. A **speciális** lapon ellenőrizze, hogy a virtuálisgép- **létrehozási** tulajdonság a **Gen 2** értékre van-e beállítva.
     1. Győződjön meg arról, hogy olyan virtuálisgép- [méretet keres, amely támogatja a Gen2 virtuális gépeket](#generation-2-vm-sizes).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerkedjen meg a [2. generációs virtuális gépekkel a Hyper-V-ben](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+* Ismerkedjen meg a [2. generációs virtuális gépekkel a Hyper-V-ben](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 * Megtudhatja, hogyan [készítheti elő a virtuális merevlemezeket](prepare-for-upload-vhd-image.md) a helyszíni rendszerekről az Azure-ba való feltöltéshez.

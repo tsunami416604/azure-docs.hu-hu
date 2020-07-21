@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 04c5d9c8eceb14ab68ca0d96f994bf6a64bbc431
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5f7e3f763fc7107ba1b4be1dc8b19e55aa88b5a8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045372"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504690"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Az Azure SQL-kapcsolatok beállításai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -37,7 +37,7 @@ Ha a **nyilvános hálózati hozzáférés megtagadása** beállítást az **Ige
 
  ![Képernyőfelvétel a nyilvános hálózati hozzáférés megtagadásával létesített kapcsolatról][2]
 
-A **nyilvános hálózati hozzáférés megtagadási** beállításának az **Igen** értékre állítására tett kísérletek a logikai kiszolgálón meglévő privát végpontok nélkül is sikertelenek lesznek, és a következőhöz hasonló hibaüzenet jelenik meg:  
+A **nyilvános hálózati hozzáférés megtagadási** beállításának az **Igen** értékre állítására tett kísérletek a logikai kiszolgálón lévő meglévő privát végpontok nélkül sikertelenek lesznek, és a következőhöz hasonló hibaüzenet jelenik meg:  
 
 ```output
 Error 42102
@@ -217,7 +217,7 @@ az resource show --ids %sqlserverid%
 az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure SQL Database kapcsolatok működésének áttekintését lásd: [kapcsolati architektúra](connectivity-architecture.md)
 - További információ a kiszolgálók kapcsolódási házirendjének módosításáról: [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).

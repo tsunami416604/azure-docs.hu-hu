@@ -3,11 +3,13 @@ title: Az offline biztonsági mentés áttekintése
 description: További információ az offline biztonsági mentés összetevőiről. Az Azure import/export szolgáltatás alapján Azure Data Box és offline biztonsági mentésen alapuló offline biztonsági mentést is tartalmaznak.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: c5e0f4e722e2dd15b7277a484af2a101844344e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628347"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503625"
 ---
 # <a name="overview-of-offline-backup"></a>Az offline biztonsági mentés áttekintése
 
@@ -43,7 +45,7 @@ Ha Azure Data Box alapján szeretné használni az offline biztonsági mentést,
 
 ## <a name="offline-backup-based-on-the-azure-importexport-service"></a>Offline biztonsági mentés az Azure import/export szolgáltatás alapján
 
-Ezt a beállítást Microsoft Azure Backup kiszolgáló (MABS), a System Center Data Protection Manager (DPM) DPM-A és a MARS-ügynök támogatja. Az [Azure import/export szolgáltatást](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)használja. A kezdeti biztonsági mentési adatok az Azure-ba a saját Azure-kompatibilis lemezek és összekötők használatával vihetők át. Ennek a megközelítésnek az a módja, hogy ideiglenes tárolót kell kiépíteni átmeneti helyként, és az előre elkészített segédprogramokkal formázza és másolja a biztonsági mentési adataikat az ügyfél tulajdonában lévő lemezekre.
+Ezt a beállítást Microsoft Azure Backup kiszolgáló (MABS), a System Center Data Protection Manager (DPM) DPM-A és a MARS-ügynök támogatja. Az [Azure import/export szolgáltatást](../storage/common/storage-import-export-service.md)használja. A kezdeti biztonsági mentési adatok az Azure-ba a saját Azure-kompatibilis lemezek és összekötők használatával vihetők át. Ennek a megközelítésnek az a módja, hogy ideiglenes tárolót kell kiépíteni átmeneti helyként, és az előre elkészített segédprogramokkal formázza és másolja a biztonsági mentési adataikat az ügyfél tulajdonában lévő lemezekre.
 
 Itt látható egy architektúra, amely leírja a biztonsági másolatok áthelyezését ezzel a lehetőséggel.
 
@@ -57,9 +59,9 @@ Az architektúra összefoglalása:
 4. Az Azure-adatközpontban a lemezeken lévő adattárakat egy Azure Storage-fiókba másolja a rendszer.
 5. Azure Backup átmásolja a biztonsági mentési adatait a Storage-fiókból a Recovery Services-tárolóba. A növekményes biztonsági mentések ütemezve vannak.
 
-Ha az Azure import/export szolgáltatáson alapuló offline biztonsági mentést szeretné használni a MARS-ügynökkel, tekintse [meg a Azure Backup offline biztonsági mentési munkafolyamatát](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export).
+Ha az Azure import/export szolgáltatáson alapuló offline biztonsági mentést szeretné használni a MARS-ügynökkel, tekintse [meg a Azure Backup offline biztonsági mentési munkafolyamatát](./backup-azure-backup-import-export.md).
 
-Ha a MABS vagy a DPM-A szolgáltatással együtt szeretné használni, tekintse meg a [DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export).
+Ha a MABS vagy a DPM-A szolgáltatással együtt szeretné használni, tekintse meg a [DPM és a Azure Backup Server offline biztonsági mentési munkafolyamatát](./backup-azure-backup-server-import-export.md).
 
 ## <a name="offline-backup-support-summary"></a>Offline biztonsági mentési támogatás összegzése
 
@@ -68,17 +70,17 @@ A következő táblázat összehasonlítja a két elérhető lehetőséget, így
 | **Szempont**                                            | **Offline biztonsági mentés Azure Data Box alapján**                     | **Offline biztonsági mentés az Azure import/export szolgáltatás alapján**                |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Azure Backup üzembe helyezési modellek                              | MARS-ügynök (előzetes verzió)                                              | MARS-ügynök, MABS, DPM-A                                           |
-| Biztonsági másolatok maximális száma kiszolgálónként (MARS) vagy védelmi csoportonként (MABS, DPM-A) | [Azure Data Box lemez](https://docs.microsoft.com/azure/databox/data-box-disk-overview) – 7,2 TB <br> [Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) – 80 TB       | 80 TB (legfeljebb 10 lemez 8 TB-ig)                          |
-| Biztonság (adategységek, eszközök és szolgáltatások)                           | Adataes 256 [bites titkosítású](https://docs.microsoft.com/azure/databox/data-box-security#data-box-data-protection) <br> [Eszköz](https://docs.microsoft.com/azure/databox/data-box-security#data-box-device-protection) – robusztus eset, tulajdonosi, hitelesítő adatokra épülő felület az adatok másolásához <br> Az Azure biztonsági szolgáltatásai által [védett szolgáltatások](https://docs.microsoft.com/azure/databox/data-box-security#data-box-service-protection) | Adatátvitel – BitLocker – titkosított                                 |
-| Ideiglenes előkészítési hely kiépítés                     | Nem kötelező                                                | A biztonsági másolatok becsült méretének nagyobb vagy egyenlőnek kell lennie        |
-| Támogatott régiók                                           | [Azure Data Box lemezterület](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) <br> [Azure Data Box régiók](https://docs.microsoft.com/azure/databox/data-box-disk-overview#region-availability) | [Azure import/export szolgáltatás régiói](https://docs.microsoft.com/azure/storage/common/storage-import-export-service#region-availability) |
+| Biztonsági másolatok maximális száma kiszolgálónként (MARS) vagy védelmi csoportonként (MABS, DPM-A) | [Azure Data Box lemez](../databox/data-box-disk-overview.md) – 7,2 TB <br> [Azure Data Box](../databox/data-box-overview.md) – 80 TB       | 80 TB (legfeljebb 10 lemez 8 TB-ig)                          |
+| Biztonság (adategységek, eszközök és szolgáltatások)                           | Adataes 256 [bites titkosítású](../databox/data-box-security.md#data-box-data-protection) <br> [Eszköz](../databox/data-box-security.md#data-box-device-protection) – robusztus eset, tulajdonosi, hitelesítő adatokra épülő felület az adatok másolásához <br> Az Azure biztonsági szolgáltatásai által [védett szolgáltatások](../databox/data-box-security.md#data-box-service-protection) | Adatátvitel – BitLocker – titkosított                                 |
+| Ideiglenes előkészítési hely kiépítés                     | Nem szükséges                                                | A biztonsági másolatok becsült méretének nagyobb vagy egyenlőnek kell lennie        |
+| Támogatott régiók                                           | [Azure Data Box lemezterület](../databox/data-box-disk-overview.md#region-availability) <br> [Azure Data Box régiók](../databox/data-box-disk-overview.md#region-availability) | [Azure import/export szolgáltatás régiói](../storage/common/storage-import-export-service.md#region-availability) |
 | Országok közötti szállítás                                     | Nem támogatott  <br>    A forrás-és a cél Azure-adatközpontnak ugyanabban az országban/régióban kell lennie * | Támogatott                                                    |
 | Adatátviteli logisztika (szállítás, szállítás, pickup)           | Teljes mértékben Microsoft által felügyelt                                     | Ügyfél által felügyelt                                            |
 | Díjszabás                                                      | [Díjszabás Azure Data Box](https://azure.microsoft.com/pricing/details/databox/) <br> [Azure Data Box lemez díjszabása](https://azure.microsoft.com/pricing/details/databox/disk/) | [Azure import/export szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage-import-export/) |
 
 * Ha az országa vagy régiója nem rendelkezik Azure-adatközpontgal, a lemezeket egy másik országban/régióban lévő Azure-adatközpontba kell szállítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Offline biztonsági mentés Azure Backup Azure Data Box használatával](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
 - [Offline biztonsági mentési munkafolyamat a Azure Backup](backup-azure-backup-import-export.md)

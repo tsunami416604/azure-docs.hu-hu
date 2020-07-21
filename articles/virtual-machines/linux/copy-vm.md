@@ -7,15 +7,16 @@ ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: 406eda6902ae451c7fdf79e1bd1215c035a66750
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8532c0da7d9977b12a4d1099e430584de1e17fe0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82792224"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502741"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Linux rendszerű virtuális gép másolatának létrehozása az Azure CLI és a Managed Disks használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre egy Linux rendszerű virtuális gépet az Azure CLI használatával. A virtuálisgép-lemezképek méretekben történő másolásához, létrehozásához, tárolásához és megosztásához tekintse meg a [megosztott lemezképek gyűjteményét](shared-images.md).
+Ez a cikk bemutatja, hogyan hozhat létre egy Linux rendszerű virtuális gépet az Azure CLI használatával. A virtuálisgép-lemezképek méretekben történő másolásához, létrehozásához, tárolásához és megosztásához tekintse meg a [megosztott lemezképek gyűjteményét](../shared-images-cli.md).
 
 A virtuális [merevlemezeket feltöltheti és létrehozhatja egy VHD-ről](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)is.
 
@@ -123,6 +124,6 @@ az vm create --resource-group myResourceGroup \
     --attach-os-disk myCopiedDisk
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Megtudhatja, hogyan kezelheti a virtuálisgép-lemezképeket a [megosztott képtárban](shared-images.md) .
+Megtudhatja, hogyan kezelheti a virtuálisgép-lemezképeket a [megosztott képtárban](../shared-images-cli.md) .

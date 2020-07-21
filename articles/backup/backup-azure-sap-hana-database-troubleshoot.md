@@ -3,11 +3,12 @@ title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 5c1ad55a86e80808b9055fd1b34a2d72209464a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88d8f5e500c39f51e5bc1afbc2ec7804b9bc79db
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83697065"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503608"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -45,14 +46,14 @@ A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeke
 | Hibaüzenet      | <span style="font-weight:normal">A megadott SAP HANA művelet nem támogatott</span>              |
 | ------------------ | ------------------------------------------------------------ |
 | **Lehetséges okok**    | A SAP HANA készült Azure Backup nem támogatja a növekményes biztonsági mentést és a SAP HANA natív ügyfeleken végrehajtott műveleteket (Studio/cockpit/DBA pilótafülke) |
-| **Javasolt művelet** | További [információkért tekintse](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)meg a következő témakört:. |
+| **Javasolt művelet** | További [információkért tekintse](./sap-hana-backup-support-matrix.md#scenario-support)meg a következő témakört:. |
 
 ### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
 
 | Hibaüzenet      | <span style="font-weight:normal">Ez a SAP HANA-adatbázis nem támogatja a kért biztonsági mentési típust</span>  |
 | ------------------ | ------------------------------------------------------------ |
 | **Lehetséges okok**    | Az Azure Backup nem támogatja a növekményes biztonsági mentést és biztonsági mentést Pillanatképek használatával |
-| **Javasolt művelet** | További [információkért tekintse](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)meg a következő témakört:. |
+| **Javasolt művelet** | További [információkért tekintse](./sap-hana-backup-support-matrix.md#scenario-support)meg a következő témakört:. |
 
 ### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
 
@@ -66,14 +67,14 @@ A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeke
 | Hibaüzenet      | <span style="font-weight:normal">SDC a MDC frissítését észlelte</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
 | **Lehetséges okok**    | A SAP HANA példány frissítve lett a SDC-ről a MDC-re. A frissítés után a biztonsági mentések sikertelenek lesznek. |
-| **Javasolt művelet** | A probléma megoldásához kövesse a SDC-ben felsorolt lépéseket a [MDC frissítéséhez](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) |
+| **Javasolt művelet** | A probléma megoldásához kövesse a SDC-ben felsorolt lépéseket a [MDC frissítéséhez](#sdc-to-mdc-upgrade-with-a-change-in-sid) |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
 | Hibaüzenet      | <span style="font-weight:normal">A rendszer érvénytelen backint-konfigurációt észlelt</span>                       |
 | ------------------ | ------------------------------------------------------------ |
 | **Lehetséges okok**    | Helytelenül vannak megadva a háttérbeli paraméterek az Azure Backup szolgáltatáshoz |
-| **Javasolt művelet** | Ellenőrizze, hogy a következő (backint) paraméterek be vannak-e állítva:<br/>\*[catalog_backup_using_backint: true]<br/>\*[enable_accumulated_catalog_backup: FALSE]<br/>\*[parallel_data_backup_backint_channels: 1]<br/>\*[log_backup_timeout_s: 900)]<br/>\*[backint_response_timeout: 7200]<br/>Ha backint paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a [védelem leállítása és a biztonsági mentési adatok megőrzése](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) a Azure Portal, majd válassza a **biztonsági mentés folytatása**lehetőséget. |
+| **Javasolt művelet** | Ellenőrizze, hogy a következő (backint) paraméterek be vannak-e állítva:<br/>\*[catalog_backup_using_backint: true]<br/>\*[enable_accumulated_catalog_backup: FALSE]<br/>\*[parallel_data_backup_backint_channels: 1]<br/>\*[log_backup_timeout_s: 900)]<br/>\*[backint_response_timeout: 7200]<br/>Ha backint paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a [védelem leállítása és a biztonsági mentési adatok megőrzése](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a Azure Portal, majd válassza a **biztonsági mentés folytatása**lehetőséget. |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
 
@@ -201,6 +202,6 @@ Ezek a tünetek a következő okok valamelyike miatt merülhetnek fel:
 
 Az előző forgatókönyvekben azt javasoljuk, hogy a virtuális gépen újra regisztrálja a műveletet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Tekintse át az Azure-beli virtuális gépeken SAP HANA adatbázisok biztonsági mentésével kapcsolatos [gyakori kérdéseket](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm) .
+- Tekintse át az Azure-beli virtuális gépeken SAP HANA adatbázisok biztonsági mentésével kapcsolatos [gyakori kérdéseket](./sap-hana-faq-backup-azure-vm.md) .

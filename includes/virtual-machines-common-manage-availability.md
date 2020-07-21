@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8f65912d0e2ab322d73315828a98cc48274850fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0f9bbf4e0d8edd153798b39f880f0adb8be6587
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83696527"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502280"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Az Azure-beli virtuális gépeket három forgatókönyv befolyásolja: nem tervezett hardveres karbantartás, váratlan leállás és tervezett karbantartás.
@@ -34,7 +34,7 @@ Az ilyen események okozta állásidő hatásainak csökkentése érdekében jav
 * [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel]
 * [Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
 * [Az egyes alkalmazások szintjeinek konfigurálása különálló rendelkezésre állási csoportokra]
-* [Load Balancer összevonása rendelkezésre állási csoportokkal]
+* [Terheléselosztók és rendelkezésre állási csoportok együttes alkalmazása]
 * [A rendelkezésre állási zónák használata az adatközponti szintű hibák elleni védelemhez]
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>A rendelkezésre állási zónák használata az adatközponti szintű hibák elleni védelemhez
@@ -45,7 +45,7 @@ Az Azure-régiók rendelkezésre állási zónái egy tartalék **tartomány** �
 
 Az Azure Availability Zones az iparág legjobb 99,99%-os rendelkezésre állását kínálja a virtuális gép számára. Ha a megoldásait a zónákban lévő replikált virtuális gépek használatára kívánja használni, az alkalmazások és az adatok az adatközpont elvesztése miatt is védhetők. Ha egy zóna biztonsága sérül, a replikált alkalmazások és az adatszolgáltatások azonnal elérhetők lesznek egy másik zónában.
 
-![Rendelkezésre állási zónák](./media/virtual-machines-common-regions-and-availability/three-zones-per-region.png)
+![Rendelkezésre állási zónák](./media/virtual-machines-common-manage-availability/three-zones-per-region.png)
 
 További információ a Windows vagy [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) [rendszerű](../articles/virtual-machines/windows/create-powershell-availability-zone.md) virtuális gépek rendelkezésre állási zónában való üzembe helyezéséről.
 
@@ -108,7 +108,7 @@ A rendelkezésre állási zónák közötti terheléselosztással kapcsolatos ok
 
 <!-- Link references -->
 [Több virtuális gép rendelkezésre állási csoportba konfigurálása a redundancia biztosítása érdekében]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[Load Balancer összevonása rendelkezésre állási csoportokkal]: #combine-a-load-balancer-with-availability-zones-or-sets
+[Terheléselosztók és rendelkezésre állási csoportok együttes alkalmazása]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel]: #use-managed-disks-for-vms-in-an-availability-set
 [A rendelkezésre állási zónák használata az adatközponti szintű hibák elleni védelemhez]: #use-availability-zones-to-protect-from-datacenter-level-failures

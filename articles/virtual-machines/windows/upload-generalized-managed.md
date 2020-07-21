@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 12/12/2019
 ms.author: cynthn
-ms.openlocfilehash: b0947d1cc4e53763c0f31444b8f3d27ba45b19a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d8e48e393f006c05e0a17b80e6f8cfe7e1d6ea
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82096408"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500276"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Általános VHD feltöltése, majd azzal új Azure-beli virtuális gép létrehozása
 
@@ -28,9 +28,9 @@ A minta parancsfájlt a [virtuális merevlemezek Azure-ba való feltöltéséhez
  
 ## <a name="generalize-the-source-vm-by-using-sysprep"></a>A forrás virtuális gép általánosítása a Sysprep használatával
 
-Ha még nem tette meg, az Azure-ba való feltöltés előtt telepítenie kell a virtuális gépet. A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet pedig előkészíti rendszerképként való használatra. A Sysprep eszközről a [Sysprep áttekintése](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)című témakörben olvashat bővebben.
+Ha még nem tette meg, az Azure-ba való feltöltés előtt telepítenie kell a virtuális gépet. A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet pedig előkészíti rendszerképként való használatra. A Sysprep eszközről a [Sysprep áttekintése](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)című témakörben olvashat bővebben.
 
-Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
+Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kiszolgálói szerepköröket. További információ: a [Sysprep-támogatás a kiszolgálói szerepkörökhöz](/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles).
 
 > [!IMPORTANT]
 > Ha azt tervezi, hogy először a virtuális merevlemezt az Azure-ba való feltöltés előtt szeretné futtatni, győződjön meg arról, hogy [előkészítette a virtuális gépet](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -41,7 +41,7 @@ Győződjön meg arról, hogy a Sysprep támogatja a számítógépen futó kisz
 2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a%WINDIR%\system32\sysprep értékre, majd futtassa a parancsot `sysprep.exe` .
 3. A **rendszer-előkészítő eszköz** párbeszédpanelen jelölje be a rendszerindítási folyamat **megadása (OOBE)** jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** jelölőnégyzet be van jelölve.
 4. A **leállítási beállításoknál**válassza a **Leállítás**lehetőséget.
-5. Válassza az **OK** lehetőséget.
+5. Kattintson az **OK** gombra.
    
     ![A Sysprep elindítása](./media/upload-generalized-managed/sysprepgeneral.png)
 6. A Sysprep befejezésekor a rendszer leállítja a virtuális gépet. Ne indítsa újra a virtuális gépet.
@@ -53,7 +53,7 @@ Most már közvetlenül is feltölthet egy virtuális merevlemezt egy felügyelt
 
 
 
-Miután feltöltötte a VHD-t a felügyelt lemezre, a [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk) használatával kell beolvasnia a felügyelt lemezt.
+Miután feltöltötte a VHD-t a felügyelt lemezre, a [Get-AzDisk](/powershell/module/az.compute/get-azdisk) használatával kell beolvasnia a felügyelt lemezt.
 
 ```azurepowershell-interactive
 $disk = Get-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'myDiskName'
@@ -91,7 +91,7 @@ $image = New-AzImage `
    -Image $imageConfig
 ```
 
-## <a name="create-the-vm"></a>Virtuális gép létrehozása
+## <a name="create-the-vm"></a>A virtuális gép létrehozása
 
 Most, hogy már van egy rendszerképe, létrehozhat belőle egy vagy több új virtuális gépet. Ez a példa egy *myVM* nevű virtuális gépet hoz létre a *MyImage*, a *myResourceGroup*-ben.
 
@@ -110,7 +110,6 @@ New-AzVm `
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Jelentkezzen be az új virtuális gépre. További információ: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
-

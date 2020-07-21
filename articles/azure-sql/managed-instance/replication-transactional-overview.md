@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: 00f456d87bd5791b7d49644cb801dca20431b0b5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ee481067a3904c208061607b7109fcba0f3faaa7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086398"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504067"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Tranzakciós replikáció az Azure SQL felügyelt példányával
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -43,9 +43,9 @@ A tranzakciós replikáció legfontosabb összetevői a **közzétevő**, a **te
 
 | Szerepkör | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| **Publisher** | No | Yes |
-| **Terjesztő** | No | Yes|
-| **Lekéréses előfizető** | No | Yes|
+| **Publisher** | Nem | Igen |
+| **Terjesztő** | Nem | Igen|
+| **Lekéréses előfizető** | Nem | Igen|
 | **Leküldéses előfizető**| Igen | Igen|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -72,11 +72,11 @@ A replikáció különböző [típusú](https://docs.microsoft.com/sql/relationa
 
 | Replikáció | Azure SQL Database | Felügyelt Azure SQL-példány |
 | :----| :------------- | :--------------- |
-| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Yes |
-| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Yes|
+| [**Normál tranzakciós**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Igen (csak előfizetőként) | Igen |
+| [**Pillanatkép**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Igen (csak előfizetőként) | Igen|
 | [**Replikálás egyesítése**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nem | Nem|
-| [**Társ-társ**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
-| [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Yes|
+| [**Egyenrangú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nem | Nem|
+| [**Kétirányú**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nem | Igen|
 | [**Frissíthető előfizetések**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nem | Nem|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -104,11 +104,10 @@ A tranzakciós replikáció a következő esetekben hasznos:
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Adatszinkronizálás összehasonlítása tranzakciós replikációval
 
-| | Adatszinkronizálás | Tranzakciós replikáció |
+| Kategória | Adatszinkronizálás | Tranzakciós replikáció |
 |---|---|---|
 | Előnyök | – Aktív-aktív támogatás<br/>– A helyszíni és a Azure SQL Database közötti kétirányú irányítás | – Alacsonyabb késés<br/>– Tranzakciós konzisztencia<br/>-Meglévő topológia újrafelhasználása az áttelepítés után |
 | Hátrányok | – 5 perc vagy több késés<br/>– Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
-| | | |
 
 ## <a name="common-configurations"></a>Gyakori konfigurációk
 
@@ -189,7 +188,7 @@ Ha a Geo-replikáció engedélyezve van egy feladatátvételi csoport **előfize
 - Adatvesztéssel rendelkező feladatátvétel esetén a replikáció is működik. A rendszer újra replikálja az elveszett módosításokat.
 - Adatvesztéssel rendelkező feladatátvétel esetén az adatvesztés azonban a terjesztési adatbázis megőrzési idején kívül esik, az SQL felügyelt példányának rendszergazdájának újra kell inicializálnia az előfizetés-adatbázist.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A tranzakciós replikáció konfigurálásával kapcsolatos további információkért tekintse meg a következő oktatóanyagokat:
 

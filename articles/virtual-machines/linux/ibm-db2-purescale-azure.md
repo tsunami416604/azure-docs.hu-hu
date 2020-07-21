@@ -10,11 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: d8309a69c9c38610fa7bea3fee202a60d836980c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa2b936f97b037bdc62a01f607945ad270faa13
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78945057"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502333"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2-pureScale az Azure-ban
 
@@ -66,7 +67,7 @@ Ez az architektúra az Azure-beli virtuális gépeken futtatja az alkalmazások,
 
 -   Egy DB2 pureScale-fürt. Az Azure-ban szükséges számítási erőforrások típusa a beállítástól függ. Általánosságban elmondható, hogy két módszert használ:
 
-    -   Többcsomópontos, nagy teljesítményű számítástechnikai (HPC) stílusú hálózat használata, ahol kis-és közepes méretű példányok férnek hozzá a megosztott tárolóhoz. Ebben a HPC-típusú konfigurációban az Azure memóriára optimalizált E-sorozat-vagy Storage-optimalizált L sorozatú [virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) biztosítják a szükséges számítási teljesítményt.
+    -   Többcsomópontos, nagy teljesítményű számítástechnikai (HPC) stílusú hálózat használata, ahol kis-és közepes méretű példányok férnek hozzá a megosztott tárolóhoz. Ebben a HPC-típusú konfigurációban az Azure memóriára optimalizált E-sorozat-vagy Storage-optimalizált L sorozatú [virtuális gépek](../windows/sizes.md) biztosítják a szükséges számítási teljesítményt.
 
     -   Használjon kevesebb nagyméretű virtuálisgép-példányt az adatkezelők számára. Nagyméretű példányok esetén a legnagyobb memóriára optimalizált [M sorozatú](https://azure.microsoft.com/pricing/details/virtual-machines/series/) virtuális gépek ideálisak a nagy mennyiségű memóriabeli számítási feladatokhoz. A DB2 futtatásához használt logikai partíció (LPAR) méretétől függően szükség lehet egy dedikált példányra.
 
@@ -95,14 +96,14 @@ A nagyméretű DB2 pureScale-fürtök 200 terabájt (TB) vagy több prémium szi
 
 Az IBM a InfiniBand hálózatkezelést javasolja egy DB2 pureScale-fürt összes tagjához. A DB2 pureScale a távoli közvetlen memória-hozzáférést (RDMA) is használja, ahol elérhető, a CFs számára.
 
-A telepítés során létre kell hoznia egy Azure- [erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) , amely tartalmazza az összes virtuális gépet. Általánosságban elmondható, hogy az erőforrásokat az élettartamuk alapján csoportosítják, és ki fogják kezelni őket. Az architektúrában található virtuális gépek [gyorsított hálózatkezelést](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)igényelnek. Ez egy olyan Azure-szolgáltatás, amely egységes, rendkívül alacsony hálózati késést biztosít egy virtuális gép számára egy gyökérszintű I/O-virtualizálás (SR-IOV) használatával.
+A telepítés során létre kell hoznia egy Azure- [erőforráscsoportot](../../azure-resource-manager/management/overview.md) , amely tartalmazza az összes virtuális gépet. Általánosságban elmondható, hogy az erőforrásokat az élettartamuk alapján csoportosítják, és ki fogják kezelni őket. Az architektúrában található virtuális gépek [gyorsított hálózatkezelést](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)igényelnek. Ez egy olyan Azure-szolgáltatás, amely egységes, rendkívül alacsony hálózati késést biztosít egy virtuális gép számára egy gyökérszintű I/O-virtualizálás (SR-IOV) használatával.
 
-Minden Azure-beli virtuális gép üzembe helyezése egy alhálózattal rendelkező virtuális hálózatban történik: Main, Gluster FS előtér (gfsfe), Gluster FS háttérrendszer (bfsbe), DB2 pureScale (db2be) és DB2 pureScale előtér (db2fe). A telepítési parancsfájl az elsődleges hálózati [adaptereket](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics) is létrehozza a fő alhálózatban lévő virtuális gépeken.
+Minden Azure-beli virtuális gép üzembe helyezése egy alhálózattal rendelkező virtuális hálózatban történik: Main, Gluster FS előtér (gfsfe), Gluster FS háttérrendszer (bfsbe), DB2 pureScale (db2be) és DB2 pureScale előtér (db2fe). A telepítési parancsfájl az elsődleges hálózati [adaptereket](./multiple-nics.md) is létrehozza a fő alhálózatban lévő virtuális gépeken.
 
-Használjon [hálózati biztonsági csoportokat](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) a virtuális hálózaton belüli hálózati forgalom korlátozására és az alhálózatok elkülönítésére.
+Használjon [hálózati biztonsági csoportokat](../../virtual-network/virtual-network-vnet-plan-design-arm.md) a virtuális hálózaton belüli hálózati forgalom korlátozására és az alhálózatok elkülönítésére.
 
 Az Azure-ban a DB2-pureScale a TCP/IP protokollt kell használnia hálózati kapcsolódásként a tároláshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 -   [Az architektúra üzembe helyezése az Azure-ban](deploy-ibm-db2-purescale-azure.md)

@@ -11,11 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 65331136b5b137c44577fd09f3914e8869cc2dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1567d38f8e582c062aa024b40cf0ede1d8b691f6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84042798"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504330"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Egyetlen bérlő visszaállítása adatbázis-bérlői SaaS-alkalmazással
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +29,7 @@ Ebben az oktatóanyagban két adathelyreállítási mintát tanul:
 > * Adatbázis visszaállítása párhuzamos adatbázisba (egymás mellett).
 > * Állítsa vissza az adatbázist helyben, a meglévő adatbázist lecserélve.
 
-|||
+| Mintázat | Leírás |
 |:--|:--|
 | Visszaállítás egy párhuzamos adatbázisba | Ez a minta olyan feladatokhoz használható, mint például a felülvizsgálat, a naplózás és a megfelelőség, hogy a bérlő egy korábbi pontról vizsgálja meg az adataikat. A bérlő aktuális adatbázisa online állapotú és változatlan marad. |
 | Visszaállítás helyben | Ez a minta jellemzően egy bérlő korábbi pontra történő helyreállítására szolgál, miután egy bérlő véletlenül törli vagy megsérült az adatokat. Az eredeti adatbázis ki van kapcsolva a sorban, és a visszaállított adatbázisra vált. |

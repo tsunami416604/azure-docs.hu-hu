@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: c297a40a5452938d8e706bf2e0791e4a7d03210c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 57e364d8cbd3cb9e1e2996786ee6414b7d7e04a8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267290"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504955"
 ---
 # <a name="quickstart-use-ruby-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányban lévő adatbázis lekérdezése a Ruby használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,7 +30,7 @@ A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 
 - Egy adatbázis. Az alábbi rövid útmutatók segítségével hozhatja létre és konfigurálhatja az adatbázist:
 
-  || SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
+  | Művelet | SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
   |:--- |:--- |:---|:---|
   | Létrehozás| [Portál](single-database-create-quickstart.md) | [Portál](../managed-instance/instance-create-quickstart.md) | [Portál](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [Parancssori felület](scripts/create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -104,7 +104,7 @@ A Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolati
    
 1. Győződjön meg arról, hogy az adatbázisból az első 20 kategória/termék sorait adja vissza. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)
 - [GitHub-adattár a TinyTDS-hez](https://github.com/rails-sqlserver/tiny_tds)
 - [Problémák jelentése és kérdezés a TinyTDS-sel kapcsolatban](https://github.com/rails-sqlserver/tiny_tds/issues)

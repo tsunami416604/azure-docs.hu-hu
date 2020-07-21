@@ -1,6 +1,6 @@
 ---
-title: Adatbázis lekérdezése a Node. js használatával
-description: Hogyan használható a Node. js egy olyan program létrehozásához, amely Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz kapcsolódik, és T-SQL-utasítások használatával kérdezi le.
+title: Adatbázis lekérdezése Node.js használatával
+description: Hogyan használható a Node.js egy olyan program létrehozásához, amely Azure SQL Database vagy Azure SQL felügyelt példányban található adatbázishoz kapcsolódik, és T-SQL-utasítások használatával kérdezi le.
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,17 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 05/29/2020
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2 
-ms.openlocfilehash: 6860aa07d7547df6eeebf5d35fa9a921f0f9dada
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7135b3630d7b780d2c5d18f22b2a05ee6aedf8ed
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267375"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504537"
 ---
-# <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rövid útmutató: a Node. js használatával lekérdezheti a Azure SQL Database vagy az Azure SQL felügyelt példányain lévő adatbázisokat
+# <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rövid útmutató: adatbázis lekérdezése Node.js használatával Azure SQL Database vagy az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Ebben a rövid útmutatóban a Node. js használatával kapcsolódhat egy adatbázishoz, és lekérdezheti azokat.
+Ebben a rövid útmutatóban a Node.js segítségével csatlakozhat egy adatbázishoz, és lekérdezheti azokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -30,7 +30,7 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-  || SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
+  | Művelet | SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
   |:--- |:--- |:---|:---|
   | Létrehozás| [Portál](single-database-create-quickstart.md) | [Portál](../managed-instance/instance-create-quickstart.md) | [Portál](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [Parancssori felület](scripts/create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -42,19 +42,19 @@ A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
   |||
 
 
-- [Node. js](https://nodejs.org)-hez kapcsolódó szoftverek
+- [Node.js](https://nodejs.org)kapcsolódó szoftverek
 
   # <a name="macos"></a>[macOS](#tab/macos)
 
-  Telepítse a Homebrew-t és a Node. js-t, majd telepítse az ODBC-illesztőt és a SQLCMD-t a **1,2** -es és **1,3** -as lépések használatával a [Node. js-alkalmazások létrehozása a SQL Server](https://www.microsoft.com/sql-server/developer-get-started/node/mac/)
+  Telepítse a Homebrew-t és a Node.js-t, majd telepítse az ODBC-illesztőt és a SQLCMD-t a **1,2** -es és **1,3** Node.js-as lépések használatával a [MacOS rendszeren SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
 
   # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  Telepítse a Node. js-t, majd telepítse az ODBC-illesztőt és a SQLCMD-t a **1,2** -es és **1,3** -as lépések használatával a [Node. js-alkalmazások létrehozása SQL Server használatával Ubuntu rendszeren](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
+  Telepítse Node.js, majd telepítse az ODBC-illesztőt és az SQLCMD Node.js-t a **1,2** -es és a **1,3** -es lépések használatával az [Ubuntu-SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
 
   # <a name="windows"></a>[Windows](#tab/windows)
 
-  Telepítse a csokoládét és a Node. js-t, majd telepítse az ODBC-illesztőt és a SQLCMD-t a **1,2** -es és **1,3** -as lépések használatával a [Node. js-alkalmazások létrehozása a Windows SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/node/windows/)
+  Telepítse a csokoládét és a Node.js, majd telepítse az ODBC-illesztőt és a SQLCMD-t az **1,2** -es és a **1,3** -Node.js es lépések használatával a [Windows SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
 
   ---
 
@@ -92,7 +92,7 @@ Nyisson meg egy parancssort, és hozzon létre egy *sqltest* nevű mappát. Nyis
 
 ## <a name="add-code-to-query-the-database"></a>Kód hozzáadása az adatbázis lekérdezéséhez
 
-1. A kedvenc szövegszerkesztőben hozzon létre egy új, *sqltest. js*fájlt.
+1. A kedvenc szövegszerkesztőben hozzon létre egy új fájlt, *sqltest.js*.
 
 1. Cserélje le a tartalmát a következő kódra. Ezután adja hozzá a kiszolgáló, az adatbázis, a felhasználó és a jelszó megfelelő értékeit.
 
@@ -167,7 +167,7 @@ Nyisson meg egy parancssort, és hozzon létre egy *sqltest* nevű mappát. Nyis
 
 1. Ellenőrizze, hogy az első 20 sor vissza lett-e jelenítve, és az alkalmazás ablakának lezárása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Microsoft Node.js illesztőprogram az SQL Serverhez](/sql/connect/node-js/node-js-driver-for-sql-server)
 

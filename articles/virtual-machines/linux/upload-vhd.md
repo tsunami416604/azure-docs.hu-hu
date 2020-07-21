@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 3306647078c46a7c66b3d7b257b213c7a48e690d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 854421452228a54833da4b0f05669c6d5f1c842f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81460426"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501738"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Linuxos virtuális gép létrehozása egyéni lemezről az Azure CLI-vel
 
@@ -40,10 +40,10 @@ A következő lépések elvégzéséhez a következőkre lesz szüksége:
 - Az Azure-ban használatra előkészített Linux rendszerű virtuális gép. Ez a cikk a [virtuális gép előkészítése](#prepare-the-vm) című szakasza ismerteti, hogyan lehet megkeresni a disztribúcióval kapcsolatos információkat az Azure Linux-ügynök (waagent) telepítésével kapcsolatban, amely szükséges ahhoz, hogy SSH-val csatlakozzon egy virtuális géphez.
 - Egy meglévő [Azure által támogatott Linux-disztribúcióból](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) származó vhd-fájl (vagy a [nem támogatott disztribúciókkal kapcsolatos információk](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) egy virtuális lemezre a VHD formátumban. Több eszköz létezik a virtuális gép és a virtuális merevlemez létrehozásához:
   - Telepítse és konfigurálja a [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) -t vagy a [KVM](https://www.linux-kvm.org/page/RunningKVM)-t, ügyelve arra, hogy a VHD-t használja képformátumként. Ha szükséges, [konvertálhat egy képet](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) a használatával `qemu-img convert` .
-  - A Hyper-V-t [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) vagy [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx)rendszeren is használhatja.
+  - A Hyper-V-t [Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) vagy [Windows Server 2012/2012 R2](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))rendszeren is használhatja.
 
 > [!NOTE]
-> Az újabb VHDX formátum nem támogatott az Azure-ban. Amikor létrehoz egy virtuális gépet, a VHD formátumot kell megadnia formátumként. Ha szükséges, átalakíthatja a VHDX lemezeket virtuális merevlemezre a [QEMU-IMG konvertálása](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) vagy a [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) PowerShell-parancsmag használatával. Az Azure nem támogatja a dinamikus virtuális merevlemezek feltöltését, ezért a feltöltés előtt át kell alakítania ezeket a lemezeket a statikus virtuális merevlemezekre. Az Azure-ba való feltöltésének folyamata során olyan eszközöket használhat, mint például az [Azure VHD-segédprogramok](https://github.com/Microsoft/azure-vhd-utils-for-go) , amelyek a dinamikus lemezek átalakítására szolgálnak.
+> Az újabb VHDX formátum nem támogatott az Azure-ban. Amikor létrehoz egy virtuális gépet, a VHD formátumot kell megadnia formátumként. Ha szükséges, átalakíthatja a VHDX lemezeket virtuális merevlemezre a [QEMU-IMG konvertálása](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) vagy a [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) PowerShell-parancsmag használatával. Az Azure nem támogatja a dinamikus virtuális merevlemezek feltöltését, ezért a feltöltés előtt át kell alakítania ezeket a lemezeket a statikus virtuális merevlemezekre. Az Azure-ba való feltöltésének folyamata során olyan eszközöket használhat, mint például az [Azure VHD-segédprogramok](https://github.com/Microsoft/azure-vhd-utils-for-go) , amelyek a dinamikus lemezek átalakítására szolgálnak.
 > 
 > 
 
@@ -117,7 +117,7 @@ az disk create \
     --source $snapshotId
 ```
 
-## <a name="create-the-vm"></a>Virtuális gép létrehozása
+## <a name="create-the-vm"></a>A virtuális gép létrehozása
 
 Hozza létre a virtuális gépet az az [VM Create](/cli/azure/vm#az-vm-create) paranccsal, és csatolja a felügyelt lemezt operációsrendszer-lemezként. Az alábbi példa egy *myNewVM* nevű virtuális gépet hoz létre a feltöltött VHD-ből létrehozott felügyelt lemez használatával:
 
@@ -132,5 +132,5 @@ az vm create \
 
 A forrás virtuális gép hitelesítő adataival SSH-val csatlakozhat a virtuális géphez. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután felkészítette és feltöltötte az egyéni virtuális lemezt, további információt olvashat a [Resource Manager és a sablonok használatáról](../../azure-resource-manager/management/overview.md). Előfordulhat, hogy [adatlemezt](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) is szeretne hozzáadni az új virtuális gépekhez. Ha olyan alkalmazások futnak a virtuális gépeken, amelyekhez hozzá kell férnie, ne felejtse el [megnyitni a portokat és a végpontokat](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: 1ad1a66d67be7aefe4d9a7acae993e8788cbb193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79e2bc04a32755413625b3fb4b2b4de2ad12ad7f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80066740"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502707"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD lemezkép létrehozása és feltöltése az Azure-ba
 Ebből a cikkből megtudhatja, hogyan hozhat létre és tölthet fel egy OpenBSD operációs rendszert tartalmazó virtuális merevlemezt (VHD-t). A feltöltés után saját képként is létrehozhatja a virtuális gépet (VM) az Azure CLI használatával.
@@ -22,7 +22,7 @@ Ez a cikk azt feltételezi, hogy a következő elemek vannak:
 
 * **Azure-előfizetés** – ha nem rendelkezik fiókkal, mindössze néhány perc alatt létrehozhat egyet. Ha rendelkezik MSDN-előfizetéssel, tekintse meg [a Visual Studio-előfizetőknek szóló havi Azure-kreditet](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Ellenkező esetben megtudhatja, hogyan [hozhat létre ingyenes próbaverziós fiókot](https://azure.microsoft.com/pricing/free-trial/).  
 * **Azure CLI** – ellenőrizze, hogy a legújabb [Azure CLI](/cli/azure/install-azure-cli) telepítve van-e, és bejelentkezett-e az Azure-fiókjába az [az login](/cli/azure/reference-index)paranccsal.
-* **. Vhd-fájlba telepített OpenBSD operációs rendszer** – a támogatott OpenBSD operációs rendszer (6,6-es[verzió](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)) virtuális merevlemezre kell, hogy telepítve legyen. Több eszköz létezik a. vhd fájlok létrehozásához. Használhat például egy virtualizációs megoldást, például a Hyper-V-t a. vhd fájl létrehozásához és az operációs rendszer telepítéséhez. A Hyper-V telepítésével és használatával kapcsolatos utasításokért lásd: [a Hyper-v telepítése és virtuális gép létrehozása](https://technet.microsoft.com/library/hh846766.aspx).
+* **. Vhd-fájlba telepített OpenBSD operációs rendszer** – a támogatott OpenBSD operációs rendszer (6,6-es[verzió](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)) virtuális merevlemezre kell, hogy telepítve legyen. Több eszköz létezik a. vhd fájlok létrehozásához. Használhat például egy virtualizációs megoldást, például a Hyper-V-t a. vhd fájl létrehozásához és az operációs rendszer telepítéséhez. A Hyper-V telepítésével és használatával kapcsolatos utasításokért lásd: [a Hyper-v telepítése és virtuális gép létrehozása](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
 
 ## <a name="prepare-openbsd-image-for-azure"></a>OpenBSD-rendszerkép előkészítése az Azure-hoz
@@ -87,7 +87,7 @@ Most leállíthatja a virtuális gépet.
 
 
 ## <a name="prepare-the-vhd"></a>A virtuális merevlemez előkészítése
-A VHDX formátuma nem támogatott az Azure-ban, csak a **rögzített VHD**. A lemezt rögzített VHD formátumba konvertálhatja a Hyper-V kezelőjével vagy a PowerShell [Convert-VHD](https://technet.microsoft.com/itpro/powershell/windows/hyper-v/convert-vhd) parancsmag használatával. Ilyen például a következő.
+A VHDX formátuma nem támogatott az Azure-ban, csak a **rögzített VHD**. A lemezt rögzített VHD formátumba konvertálhatja a Hyper-V kezelőjével vagy a PowerShell [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=win10-ps) parancsmag használatával. Ilyen például a következő.
 
 ```powershell
 Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
@@ -165,7 +165,7 @@ ssh azureuser@<ip address>
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a Hyper-V-támogatásról az OpenBSD 6.1-es verzióban, olvassa el az [openbsd 6,1](https://www.openbsd.org/61.html) -es és a [HyperV. 4](https://man.openbsd.org/hyperv.4).
 
 Ha egy virtuális gépet szeretne létrehozni a felügyelt lemezről, olvassa el [az az Disk](/cli/azure/disk). 

@@ -3,15 +3,16 @@ title: Tudnivalók az Azure-beli virtuális gépeken SAP HANA adatbázis biztons
 description: Ez a cikk az Azure Virtual Machines szolgáltatásban futó SAP HANA adatbázisok biztonsági mentését ismerteti.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 52c235c95cea73a0c51c62fcb55f7f711d2eff21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 980278b3cdb9c97a5a483354a004a8278a745b3b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79476457"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503506"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Tudnivalók az Azure-beli virtuális gépeken SAP HANA adatbázis biztonsági mentéséről
 
-SAP HANA adatbázisok olyan kritikus fontosságú munkaterhelések, amelyek alacsony helyreállítási időcélkitűzést (RPO) és gyors helyreállítási időszakot (RTO) igényelnek. [Az Azure-beli virtuális gépeken futó SAP HANA-adatbázisok biztonsági mentését](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)használatával végezheti el.
+SAP HANA adatbázisok olyan kritikus fontosságú munkaterhelések, amelyek alacsony helyreállítási időcélkitűzést (RPO) és gyors helyreállítási időszakot (RTO) igényelnek. [Az Azure-beli virtuális gépeken futó SAP HANA-adatbázisok biztonsági mentését](./tutorial-backup-sap-hana-db.md) [Azure Backup](./backup-overview.md)használatával végezheti el.
 
 Azure Backup az SAP által [tanúsított Backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) , hogy natív biztonsági mentési támogatást nyújtson a SAP HANA natív API-jai segítségével. Ez az ajánlat olyan Azure Backup, amely az **infrastruktúra-alapú** biztonsági mentések Azure Backupi Mantra szolgáltatásával összhangban van, így nincs szükség a biztonsági mentési infrastruktúra üzembe helyezésére és felügyeletére. Mostantól zökkenőmentesen végezheti el az Azure-beli virtuális gépeken futó SAP HANA-adatbázisok biztonsági mentését és visszaállítását (az[M sorozatú virtuális gépek](../virtual-machines/m-series.md) mostantól is támogatottak), és a Azure Backup által biztosított vállalati felügyeleti képességeket
 
@@ -24,18 +25,18 @@ SAP HANA adatbázisok biztonsági mentése és visszaállítása Azure Backup ha
 * **Hosszú távú adatmegőrzés**: szigorú megfelelőségi és naplózási igények. Megtarthatja a biztonsági mentéseket évekig, a megőrzési időtartam alapján, amelyen keresztül a helyreállítási pontokat automatikusan metszi a beépített életciklus-kezelési képesség.
 * **Biztonsági mentési felügyelet az Azure-ból**: Azure Backup felügyeleti és figyelési képességeinek használata a jobb felügyeleti élmény érdekében. Az Azure CLI-t is támogatja.
 
-A jelenleg támogatott biztonsági mentési és visszaállítási forgatókönyvek megtekintéséhez tekintse meg a [SAP HANA forgatókönyv támogatási mátrixát](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support).
+A jelenleg támogatott biztonsági mentési és visszaállítási forgatókönyvek megtekintéséhez tekintse meg a [SAP HANA forgatókönyv támogatási mátrixát](./sap-hana-backup-support-matrix.md#scenario-support).
 
 ## <a name="backup-architecture"></a>Biztonsági mentési architektúra
 
 ![Biztonsági mentési architektúra diagramja](./media/sap-hana-db-about/backup-architecture.png)
 
-* A biztonsági mentési folyamat [egy Recovery Services-tároló létrehozásával](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#create-a-recovery-service-vault) kezdődik az Azure-ban. Ezt a tárolót fogja használni a biztonsági másolatok és a létrehozott helyreállítási pontok tárolásához az idő múlásával.
-* A SAP HANA-kiszolgálót futtató Azure-beli virtuális gép regisztrálva van a tárolóban, és a biztonsági mentésre kerülő adatbázisokat a rendszer [felderíti](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#discover-the-databases). Ahhoz, hogy a Azure Backup szolgáltatás lehetővé váljon az adatbázisok felderítése, egy [előregisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) kell futtatni a HANA-kiszolgálón root felhasználóként.
+* A biztonsági mentési folyamat [egy Recovery Services-tároló létrehozásával](./tutorial-backup-sap-hana-db.md#create-a-recovery-service-vault) kezdődik az Azure-ban. Ezt a tárolót fogja használni a biztonsági másolatok és a létrehozott helyreállítási pontok tárolásához az idő múlásával.
+* A SAP HANA-kiszolgálót futtató Azure-beli virtuális gép regisztrálva van a tárolóban, és a biztonsági mentésre kerülő adatbázisokat a rendszer [felderíti](./tutorial-backup-sap-hana-db.md#discover-the-databases). Ahhoz, hogy a Azure Backup szolgáltatás lehetővé váljon az adatbázisok felderítése, egy [előregisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) kell futtatni a HANA-kiszolgálón root felhasználóként.
 * Ez a szkript létrehozza a **AZUREWLBACKUPHANAUSER** db-felhasználót és a megfelelő kulcsot ugyanazzal a névvel a **hdbuserstore**-ben. Ha többet szeretne megtudni a parancsfájlról, tekintse meg a [Mi az előzetes regisztrációs parancsfájlt](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) ismertető szakaszát.
 * Azure Backup a szolgáltatás most telepíti a HANA-hoz készült **Azure Backup beépülő modult** a regisztrált SAP HANA kiszolgálón.
 * Az előregisztrációs parancsfájl által létrehozott **AZUREWLBACKUPHANAUSER** db-felhasználót a HANA-hoz készült **Azure Backup beépülő modul** használja az összes biztonsági mentési és visszaállítási művelet elvégzéséhez. Ha a parancsfájl futtatása nélkül kísérli meg SAP HANA-adatbázisok biztonsági mentésének konfigurálását, a következő hibaüzenet jelenhet meg: **UserErrorHanaScriptNotRun**.
-* Ha a [biztonsági mentést](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#configure-backup) a felderített adatbázisokon szeretné konfigurálni, válassza ki a szükséges biztonsági mentési szabályzatot, és engedélyezze a biztonsági mentéseket.
+* Ha a [biztonsági mentést](./tutorial-backup-sap-hana-db.md#configure-backup) a felderített adatbázisokon szeretné konfigurálni, válassza ki a szükséges biztonsági mentési szabályzatot, és engedélyezze a biztonsági mentéseket.
 
 * A biztonsági mentés konfigurálása után Azure Backup szolgáltatás a következő Backint paramétereket állítja be a védett SAP HANA-kiszolgálón lévő adatbázis szintjén:
   * [catalog_backup_using_backint: true]
@@ -71,7 +72,7 @@ SAP HANA rendszert futtató virtuális gép visszaállításához kövesse az al
 * Miután az összes többi konfiguráció (például az IP, a rendszer neve stb.) be van állítva, a virtuális gép az Azure Backup szolgáltatásban található adatbázis-adatok fogadására van beállítva.
 * Most állítsa vissza az adatbázist a virtuális gépre az [Azure SAP HANA db biztonsági másolatból](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point) a kívánt időpontra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Megtudhatja, hogyan [állíthatja vissza egy Azure-beli virtuális gépen futó SAP HANA-adatbázist](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
-* Megtudhatja, hogyan [kezelheti SAP HANA-adatbázisok biztonsági mentését a Azure Backup használatával](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)
+* Megtudhatja, hogyan [állíthatja vissza egy Azure-beli virtuális gépen futó SAP HANA-adatbázist](./sap-hana-db-restore.md)
+* Megtudhatja, hogyan [kezelheti SAP HANA-adatbázisok biztonsági mentését a Azure Backup használatával](./sap-hana-db-manage.md)

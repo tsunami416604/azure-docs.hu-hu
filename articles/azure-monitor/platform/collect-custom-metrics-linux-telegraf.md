@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 06c344130156ae5f72f6e65baa519c11adff2bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57eb005109b97a423f9218ee6a47ce5bb06c3853
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186441"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505346"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-ben-Graf ügynökkel
 
@@ -25,7 +25,7 @@ A-ben egy olyan beépülő modulra [épülő](https://docs.influxdata.com/telegr
  ![A távíró-ügynök áttekintése](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
 > [!NOTE]  
-> Az egyéni metrikák nem támogatottak az összes régióban. A támogatott régiók [itt](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#supported-regions) vannak felsorolva
+> Az egyéni metrikák nem támogatottak az összes régióban. A támogatott régiók [itt](./metrics-custom-overview.md#supported-regions) vannak felsorolva
 
 ## <a name="send-custom-metrics"></a>Egyéni metrikák küldése 
 
@@ -44,7 +44,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Adja meg a virtuális gép nevét, például **MyTelegrafVM**.  
 1. Hagyja meg a lemez típusát **SSD**-ként. Ezután adjon meg egy **felhasználónevet**, például: **azureuser**. 
 1. A **Hitelesítés típusa**mezőben válassza a **jelszó**lehetőséget. Ezután adjon meg egy jelszót, amelyet később az SSH-ba fog használni a virtuális gépen. 
-1. **Új erőforráscsoport létrehozásához**válassza az elemet. Ezután adjon meg egy nevet, például **myResourceGroup**. Válassza ki a **helyet**. Ezután kattintson az **OK** gombra. 
+1. **Új erőforráscsoport létrehozásához**válassza az elemet. Ezután adjon meg egy nevet, például **myResourceGroup**. Válassza ki a **helyet**. Ez után válassza az **OK** gombot. 
 
     ![Ubuntu rendszerű virtuális gép létrehozása](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
@@ -111,7 +111,7 @@ Az ügynök mostantól összegyűjti a megadott bemeneti beépülő modulok metr
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>A saját Graf metrikáinak ábrázolása a Azure Portalban 
 
-1. Nyissa meg a [Azure Portal](https://portal.azure.com). 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
 
 1. Navigáljon az új **figyelő** lapra. Ezután válassza a **metrikák**lehetőséget.  
 
@@ -135,8 +135,5 @@ Emellett ebben az útmutatóban a (z)-ben a (z)-ben a (z)-ben a (z)-ügynök üz
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, és válassza a **Törlés**lehetőséget. Ezután erősítse meg a törölni kívánt erőforráscsoport nevét. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.
-
-
-

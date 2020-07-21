@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 686a488934d20894298f7adc80470424a60b29b3
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a21fbcd04c5916e686f13e375bc1854935d1c4fe
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207632"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500344"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>Gyakori kérdések a Windows Virtual Machines
 Ez a cikk az Azure-ban a Resource Manager-alapú üzemi modellel létrehozott Windows rendszerű virtuális gépekkel kapcsolatos gyakori kérdéseket tárgyalja. A jelen témakör Linux-verziójával kapcsolatban lásd: [Linux Virtual Machines kapcsolatos gyakori kérdések](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -32,7 +32,7 @@ Az Azure Storage-fiókok az operációs rendszer lemezét és az adatlemezeket i
 ## <a name="how-can-i-access-my-virtual-machine"></a>Hogyan lehet hozzáférni a virtuális géphez?
 Hozzon létre egy távoli kapcsolatot egy Windows rendszerű virtuális gép Távoli asztali kapcsolat (RDP) használatával. Útmutatásért lásd: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Legfeljebb két egyidejű kapcsolat támogatott, kivéve, ha a kiszolgáló Távoli asztali szolgáltatások munkamenet-gazdagépként van konfigurálva.  
 
-Ha problémákat tapasztal a Távoli asztalával kapcsolatban, tekintse [meg a Windows-alapú Azure-beli virtuális gépek távoli asztal kapcsolatainak hibaelhárításával](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)foglalkozó témakört. 
+Ha problémákat tapasztal a Távoli asztalával kapcsolatban, tekintse [meg a Windows-alapú Azure-beli virtuális gépek távoli asztal kapcsolatainak hibaelhárításával](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json)foglalkozó témakört. 
 
 Ha már ismeri a Hyper-V-t, előfordulhat, hogy a VMConnect hasonló eszközt keres. Az Azure nem nyújt hasonló eszközt, mert a virtuális géphez való hozzáférés nem támogatott.
 

@@ -5,28 +5,28 @@ ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref
-ms.openlocfilehash: 602d11b20e50ec5ba56d0d9c1762292c07d0b67b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e25e85f811d1c5d854b471bf0417e75ab1686d72
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945341"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505125"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure monitoring REST API útmutató
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a cikk bemutatja, hogyan végezheti el a hitelesítést, hogy a kód használhassa a [Microsoft Azure Monitor REST API-referenciát](https://docs.microsoft.com/rest/api/monitor/).
+Ez a cikk bemutatja, hogyan végezheti el a hitelesítést, hogy a kód használhassa a [Microsoft Azure Monitor REST API-referenciát](/rest/api/monitor/).
 
 A Azure Monitor API lehetővé teszi az elérhető alapértelmezett metrikai definíciók, részletességi és metrikai értékek programozott beolvasását. Az adattárak külön adattárba menthetők, például Azure SQL Database, Azure Cosmos DB vagy Azure Data Lake. A további elemzések igény szerint elvégezhetők.
 
-A különböző metrikai adatpontok használata mellett a figyelő API is lehetővé teszi a riasztási szabályok listázását, a tevékenységek naplóinak megtekintését és sok más további munkát. Az elérhető műveletek teljes listáját a [Microsoft Azure Monitor REST API-referenciája](https://docs.microsoft.com/rest/api/monitor/)című témakörben tekintheti meg.
+A különböző metrikai adatpontok használata mellett a figyelő API is lehetővé teszi a riasztási szabályok listázását, a tevékenységek naplóinak megtekintését és sok más további munkát. Az elérhető műveletek teljes listáját a [Microsoft Azure Monitor REST API-referenciája](/rest/api/monitor/)című témakörben tekintheti meg.
 
 ## <a name="authenticating-azure-monitor-requests"></a>Azure Monitor kérelmek hitelesítése
 
 Az első lépés a kérelem hitelesítése.
 
-A Azure Monitor API-val végrehajtott összes feladat a Azure Resource Manager hitelesítési modellt használja. Ezért az összes kérelmet hitelesíteni kell Azure Active Directory (Azure AD). Az ügyfélalkalmazás hitelesítésének egyik módja az, ha létrehoz egy Azure AD-szolgáltatásnevet, és lekéri a hitelesítési (JWT) jogkivonatot. Az alábbi példa azt mutatja be, hogyan hozható létre egy Azure AD-szolgáltatásnév a PowerShell használatával. Részletesebb útmutatásért tekintse meg a dokumentációt, amely a [Azure PowerShell használatával hoz létre egy egyszerű szolgáltatásnevet az erőforrásokhoz való hozzáféréshez](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps). [A Azure Portal használatával is létrehozhat egyszerű szolgáltatásnevet](../../active-directory/develop/howto-create-service-principal-portal.md).
+A Azure Monitor API-val végrehajtott összes feladat a Azure Resource Manager hitelesítési modellt használja. Ezért az összes kérelmet hitelesíteni kell Azure Active Directory (Azure AD). Az ügyfélalkalmazás hitelesítésének egyik módja az, ha létrehoz egy Azure AD-szolgáltatásnevet, és lekéri a hitelesítési (JWT) jogkivonatot. Az alábbi példa azt mutatja be, hogyan hozható létre egy Azure AD-szolgáltatásnév a PowerShell használatával. Részletesebb útmutatásért tekintse meg a dokumentációt, amely a [Azure PowerShell használatával hoz létre egy egyszerű szolgáltatásnevet az erőforrásokhoz való hozzáféréshez](/powershell/azure/create-azure-service-principal-azureps). [A Azure Portal használatával is létrehozhat egyszerű szolgáltatásnevet](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 ```powershell
 $subscriptionId = "{azure-subscription-id}"
@@ -85,13 +85,13 @@ A hitelesítés után a lekérdezések végrehajthatók a Azure Monitor REST API
 2. Metrika értékeinek beolvasása
 
 > [!NOTE]
-> Az Azure REST API való hitelesítéssel kapcsolatos további információkért tekintse meg az [azure REST API-referenciát](https://docs.microsoft.com/rest/api/azure/).
+> Az Azure REST API való hitelesítéssel kapcsolatos további információkért tekintse meg az [azure REST API-referenciát](/rest/api/azure/).
 >
 >
 
 ## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>Metrika-definíciók beolvasása (többdimenziós API)
 
-A szolgáltatáshoz elérhető metrikák listájának eléréséhez használja a [Azure monitor metrikai definíciókat REST API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) .
+A szolgáltatáshoz elérhető metrikák listájának eléréséhez használja a [Azure monitor metrikai definíciókat REST API](/rest/api/monitor/metricdefinitions) .
 
 **Metódus**: Get
 
@@ -228,7 +228,7 @@ Az eredményül kapott JSON-válasz a következő példához hasonló lenne: (ve
 
 ## <a name="retrieve-dimension-values-multi-dimensional-api"></a>Dimenzió értékének beolvasása (többdimenziós API)
 
-Ha a rendelkezésre álló metrika-definíciók ismertek, lehet, hogy vannak olyan mérőszámok, amelyek dimenziókkal rendelkeznek. A metrika lekérdezése előtt érdemes lehet felderíteni, hogy mi az értékek tartománya a dimenzióban. Ezek alapján a dimenzióértékeket kiválasztva szűrheti vagy szegmentálhatja a mérőszámokat a dimenzió értékei alapján a metrikák lekérdezése során.  Ennek eléréséhez használja a [Azure monitor metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics) .
+Ha a rendelkezésre álló metrika-definíciók ismertek, lehet, hogy vannak olyan mérőszámok, amelyek dimenziókkal rendelkeznek. A metrika lekérdezése előtt érdemes lehet felderíteni, hogy mi az értékek tartománya a dimenzióban. Ezek alapján a dimenzióértékeket kiválasztva szűrheti vagy szegmentálhatja a mérőszámokat a dimenzió értékei alapján a metrikák lekérdezése során.  Ennek eléréséhez használja a [Azure monitor metrikák REST API](/rest/api/monitor/metrics) .
 
 A metrika neve "value" (nem a "localizedValue") az összes szűrési kérelemhez. Ha nincsenek megadva szűrők, a rendszer az alapértelmezett metrikát adja vissza. Ennek az API-nak a használata lehetővé teszi, hogy az egyik dimenzióban legyen helyettesítő szűrő.
 
@@ -301,7 +301,7 @@ Az eredményül kapott JSON-válasz törzse a következő példához hasonló le
 
 ## <a name="retrieve-metric-values-multi-dimensional-api"></a>Metrikai értékek beolvasása (többdimenziós API)
 
-Ha a rendelkezésre álló metrika-definíciók és a lehetséges dimenzió értékek ismertek, akkor lehetséges, hogy beolvassa a kapcsolódó metrikai értékeket.  Ennek eléréséhez használja a [Azure monitor metrikák REST API](https://docs.microsoft.com/rest/api/monitor/metrics) .
+Ha a rendelkezésre álló metrika-definíciók és a lehetséges dimenzió értékek ismertek, akkor lehetséges, hogy beolvassa a kapcsolódó metrikai értékeket.  Ennek eléréséhez használja a [Azure monitor metrikák REST API](/rest/api/monitor/metrics) .
 
 A metrika neve "value" (nem a "localizedValue") az összes szűrési kérelemhez. Ha nincsenek megadva dimenzió szűrők, a rendszer az összegzett összesített metrikát adja vissza. Ha egy metrika-lekérdezés több idősor ad vissza, akkor a "Top" és a "OrderBy" lekérdezési paraméterekkel lehet visszaadni a idősor korlátozott sorrendű listáját.
 
@@ -387,7 +387,7 @@ Az eredményül kapott JSON-válasz törzse a következő példához hasonló le
 
 ## <a name="retrieve-metric-definitions"></a>Metrika-definíciók beolvasása
 
-A szolgáltatáshoz elérhető metrikák listájának eléréséhez használja a [Azure monitor metrikai definíciókat REST API](https://msdn.microsoft.com/library/mt743621.aspx) .
+A szolgáltatáshoz elérhető metrikák listájának eléréséhez használja a [Azure monitor metrikai definíciókat REST API](/rest/api/monitor/metricdefinitions) .
 
 **Metódus**: Get
 
@@ -451,7 +451,7 @@ Az eredményül kapott JSON-válasz törzse a következő példához hasonló le
 }
 ```
 
-További információkért tekintse meg az [erőforrás metrikai definícióinak listáját Azure Monitor REST API](https://msdn.microsoft.com/library/azure/mt743621.aspx) dokumentációban.
+További információkért tekintse meg az [erőforrás metrikai definícióinak listáját Azure Monitor REST API](/rest/api/monitor/metricdefinitions) dokumentációban.
 
 ## <a name="retrieve-metric-values"></a>Metrikai értékek beolvasása
 
@@ -594,7 +594,7 @@ armclient GET /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups
 
 ## <a name="retrieve-the-resource-id"></a>Erőforrás-azonosító lekérése
 
-A REST API használatával valóban megismerheti az elérhető metrikák definícióit, részletességét és kapcsolódó értékeit. Ez az információ az [Azure felügyeleti könyvtárának](https://msdn.microsoft.com/library/azure/mt417623.aspx)használatakor hasznos.
+A REST API használatával valóban megismerheti az elérhető metrikák definícióit, részletességét és kapcsolódó értékeit. Ez az információ az [Azure felügyeleti könyvtárának](/previous-versions/azure/reference/mt417623(v=azure.100))használatakor hasznos.
 
 Az előző kód esetében a használandó erőforrás-azonosító a kívánt Azure-erőforrás teljes elérési útja. Ha például egy Azure-webalkalmazásra szeretne lekérdezni, az erőforrás-azonosító a következő lesz:
 
@@ -705,7 +705,7 @@ Az eredménynek az alábbi példához hasonlónak kell lennie:
 
 ## <a name="retrieve-activity-log-data"></a>Műveletnapló-adatlekérdezés
 
-A mérőszám-definíciók és a kapcsolódó értékek mellett a Azure Monitor REST API is használható az Azure-erőforrásokkal kapcsolatos további érdekes információk lekéréséhez. Példaként lehetséges a [tevékenységi naplóban](https://msdn.microsoft.com/library/azure/dn931934.aspx) tárolt adatlekérdezés. A következő példák a Azure Monitor REST API használják a műveletnapló lekérdezéséhez.
+A mérőszám-definíciók és a kapcsolódó értékek mellett a Azure Monitor REST API is használható az Azure-erőforrásokkal kapcsolatos további érdekes információk lekéréséhez. Példaként lehetséges a [tevékenységi naplóban](/rest/api/monitor/activitylogs) tárolt adatlekérdezés. A következő példák a Azure Monitor REST API használják a műveletnapló lekérdezéséhez.
 
 Tevékenységek naplóinak beolvasása szűrővel:
 
@@ -731,9 +731,9 @@ Tevékenységek naplóinak beolvasása szűrés vagy kiválasztás nélkül:
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [figyelés áttekintését](../../azure-monitor/overview.md).
 * A [támogatott metrikák megtekintése Azure monitor](metrics-supported.md).
-* Tekintse át a [Microsoft Azure figyelő REST API referenciát](https://msdn.microsoft.com/library/azure/dn931943.aspx).
-* Tekintse át az [Azure felügyeleti könyvtárát](https://msdn.microsoft.com/library/azure/mt417623.aspx).
+* Tekintse át a [Microsoft Azure figyelő REST API referenciát](/rest/api/monitor/).
+* Tekintse át az [Azure felügyeleti könyvtárát](/previous-versions/azure/reference/mt417623(v=azure.100)).

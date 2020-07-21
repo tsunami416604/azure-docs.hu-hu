@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 585d3729a886f3a01dff6dcd9afdab63669c05b5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: b5dcadd2381596509a3d2f512d0f4ebbbfbba893
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86225178"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502877"
 ---
 # <a name="create-an-image-from-a-vhd-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Rendszerkép létrehozása virtuális merevlemezről vagy pillanatképből egy megosztott képtárban az Azure CLI használatával
 
@@ -69,7 +69,7 @@ A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. 
 
 A rendszerkép meghatározásakor győződjön meg arról, hogy a megfelelő információval rendelkezik. Ebben a példában feltételezzük, hogy a pillanatkép vagy virtuális merevlemez egy használatban lévő virtuális gépről származik, és nem lett általánosítva. Ha a VHD-t vagy pillanatképet egy általánosított operációs rendszerből (a Sysprep futtatása után Windows-vagy [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` vagy Linux rendszeren) készítette, `-deprovision+user` akkor módosítsa a alkalmazást `-OsState` `generalized` . 
 
-További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](./linux/shared-image-galleries.md#image-definitions).
 
 Hozzon létre egy rendszerkép-definíciót a galériában az [az SIG rendszerkép-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)paranccsal.
 
@@ -120,10 +120,10 @@ Ha az adatlemezeket is bele kívánja foglalni a lemezképbe, akkor azt is `--da
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 >
-> Az összes rendszerkép-verzió replikáját a [zóna redundáns tárolójában](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) is tárolhatja `--storage-account-type standard_zrs` a rendszerkép verziójának létrehozásakor.
+> Az összes rendszerkép-verzió replikáját a [zóna redundáns tárolójában](../storage/common/storage-redundancy.md) is tárolhatja `--storage-account-type standard_zrs` a rendszerkép verziójának létrehozásakor.
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hozzon létre egy virtuális gépet egy [speciális rendszerkép-verzióból](vm-specialized-image-version-cli.md).
 

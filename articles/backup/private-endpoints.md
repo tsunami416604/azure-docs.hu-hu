@@ -3,16 +3,16 @@ title: Privát végpontok
 description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Backuphoz, és hogy a saját végpontok használata hogyan segít megőrizni az erőforrások biztonságát.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 8ce767073e9acfe271e6e57f9e6d1237910b33e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9c8f142e9781946f572f6f3a744d8bc2736a3de
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124255"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503761"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
-Azure Backup lehetővé teszi az adatok biztonságos biztonsági mentését és visszaállítását a Recovery Services-tárolóból [privát végpontok](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)használatával. A privát végpontok egy vagy több magánhálózati IP-címet használnak a VNet, és így hatékonyan helyezik üzembe a szolgáltatást a VNet.
+Azure Backup lehetővé teszi az adatok biztonságos biztonsági mentését és visszaállítását a Recovery Services-tárolóból [privát végpontok](../private-link/private-endpoint-overview.md)használatával. A privát végpontok egy vagy több magánhálózati IP-címet használnak a VNet, és így hatékonyan helyezik üzembe a szolgáltatást a VNet.
 
 Ez a cikk segít megérteni a Azure Backup magánhálózati végpontok létrehozásának folyamatát, valamint azokat a forgatókönyveket, amelyekben a privát végpontok használata hozzájárul az erőforrások biztonságának fenntartásához.
 
@@ -45,7 +45,7 @@ Ez a szakasz a virtuális hálózatokon belüli Azure Backup magánhálózati v�
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-[Ebből a szakaszból](#create-a-recovery-services-vault-using-the-azure-resource-manager-client) megtudhatja, hogyan hozhat létre tárolót az Azure Resource Manager-ügyfél használatával. Ezzel létrehoz egy tárolót, amelynek felügyelt identitása már engedélyezve van. További információ a Recovery Services-tárolóról [.](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)
+[Ebből a szakaszból](#create-a-recovery-services-vault-using-the-azure-resource-manager-client) megtudhatja, hogyan hozhat létre tárolót az Azure Resource Manager-ügyfél használatával. Ezzel létrehoz egy tárolót, amelynek felügyelt identitása már engedélyezve van. További információ a Recovery Services-tárolóról [.](./backup-azure-recovery-services-vault-overview.md)
 
 ## <a name="enable-managed-identity-for-your-vault"></a>Felügyelt identitás engedélyezése a tárolóhoz
 
@@ -91,7 +91,7 @@ Két kötelező DNS-zónát kell létrehoznia:
     | **Zóna**                           | **Szolgáltatás** | **Előfizetés és erőforráscsoport (RG) részletei**                  |
     | ---------------------------------- | ----------- | ------------------------------------------------------------ |
     | `privatelink.blob.core.windows.net`  | Blob        | **Előfizetés**: ugyanaz, mint ahol a privát végpontot létre kell hozni **RG**: vagy a VNET vagy a privát végponthoz tartozó RG. |
-    | `privatelink.queue.core.windows.net` | Várólista       | **RG**: vagy a VNET vagy a privát végponthoz tartozó RG |
+    | `privatelink.queue.core.windows.net` | Üzenetsor       | **RG**: vagy a VNET vagy a privát végponthoz tartozó RG |
 
     ![saját DNS zóna létrehozása](./media/private-endpoints/create-private-dns-zone.png)
 
@@ -111,9 +111,9 @@ Tekintse át [ezt a listát](https://download.microsoft.com/download/1/2/6/126a4
 
 Az URL-címek elnevezési konvenciói a nemzeti régiókban:
 
-- [Kína](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure)
-- [Németország](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)
-- [US Gov](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide)
+- [Kína](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+- [Németország](../germany/germany-developer-guide.md#endpoint-mapping)
+- [US Gov](../azure-government/documentation-government-developer-guide.md)
 
 ### <a name="linking-private-dns-zones-with-your-virtual-network"></a>Privát DNS-zónák összekapcsolása a virtuális hálózattal
 
@@ -499,7 +499,7 @@ Létre kell hoznia három privát DNS-zónát, és csatolnia kell őket a virtu�
 | ------------------------------------------------------------ | ----------- |
 | `privatelink.<geo>.backup.windowsazure.com`      | Backup      |
 | `privatelink.blob.core.windows.net`                            | Blob        |
-| `privatelink.queue.core.windows.net`                           | Várólista       |
+| `privatelink.queue.core.windows.net`                           | Üzenetsor       |
 
 >[!NOTE]
 >A fenti szövegben a *geo* a régiókódra hivatkozik. Például: *wcus* és *ne* az USA nyugati középső régiójában és Észak-Európában.
@@ -566,6 +566,6 @@ A. Igen, használhatja a saját DNS-kiszolgálóit. Azonban győződjön meg arr
 K. Kell-e további lépéseket végrehajtani a kiszolgálón, miután követtem a jelen cikkben leírt eljárást?<br>
 A. A cikkben részletezett folyamat után nem kell további munkát végeznie a privát végpontok használatához a biztonsági mentéshez és a visszaállításhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Backup összes biztonsági szolgáltatásáról](security-overview.md)

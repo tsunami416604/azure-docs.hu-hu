@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e85ae50321b9aa034f6a6d2cadcc329a24dafa62
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67707784"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500018"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>A HB és a HC sorozatú virtuális gépek ismert problémái
 
@@ -87,6 +87,6 @@ A következő kernel figyelmeztető üzenetek jelenhetnek meg a HB sorozatú vir
 
 Ezt a figyelmeztetést figyelmen kívül hagyhatja. Ennek az az oka, hogy az Azure hypervisor egy ismert korlátozása, amely az idő múlásával lesz kezelve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ a [nagy teljesítményű számítástechnikai](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/) szolgáltatásokról az Azure-ban.
+További információ a [nagy teljesítményű számítástechnikai](/azure/architecture/topics/high-performance-computing/) szolgáltatásokról az Azure-ban.

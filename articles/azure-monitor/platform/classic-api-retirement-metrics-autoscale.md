@@ -4,11 +4,12 @@ description: A metrikák és a klasszikus API-k, más néven Azure Service Manag
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65ce7a5c876c7a8e96f945d9d4db871c84f86a4e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114233"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505431"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>A klasszikus üzembe helyezési modell API-jai kiAzure Monitor a metrikák és az autoskálázás számára
 
@@ -28,9 +29,9 @@ Ez a cikk Önre vonatkozik, ha a következő összetevőket használja:
 
 - **Klasszikus Azure** -beli betekintő SDK – ha a [klasszikus Azure](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)betekintő SDK-t használja, váltson az új Azure monitor SDK for [.net](https://github.com/azure/azure-libraries-for-net#download) vagy a [Java](https://github.com/azure/azure-libraries-for-java#download)használatára. Töltse le a [Azure monitor SDK NuGet csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/).
 
-- **Klasszikus automatikus méretezés** – ha a [klasszikus automatikus méretezési beállítások API-kat](https://msdn.microsoft.com/library/azure/mt348562.aspx) az egyéni eszközökkel vagy a [klasszikus Azure](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)-beli elemzések SDK-val hívja meg, váltson a [Resource Manager Azure monitor REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)használatára.
+- **Klasszikus automatikus méretezés** – ha a [klasszikus automatikus méretezési beállítások API-kat](/previous-versions/azure/reference/mt348562(v=azure.100)) az egyéni eszközökkel vagy a [klasszikus Azure](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)-beli elemzések SDK-val hívja meg, váltson a [Resource Manager Azure monitor REST API](/rest/api/monitor/autoscalesettings)használatára.
 
-- **Klasszikus mérőszámok** – ha a [klasszikus REST API](https://msdn.microsoft.com/library/azure/dn510374.aspx) -kkal vagy a [klasszikus Azure](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) -elemzéssel rendelkező, egyéni eszközökről származó mérőszámokat használ, váltson a [Resource Manager Azure monitor REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings)használatára. 
+- **Klasszikus mérőszámok** – ha a [klasszikus REST API](/previous-versions/azure/reference/dn510374(v=azure.100)) -kkal vagy a [klasszikus Azure](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) -elemzéssel rendelkező, egyéni eszközökről származó mérőszámokat használ, váltson a [Resource Manager Azure monitor REST API](/rest/api/monitor/autoscalesettings)használatára. 
 
 Ha nem biztos abban, hogy a kód vagy az egyéni eszközök meghívja a klasszikus API-kat, tekintse meg a következőket:
 
@@ -42,11 +43,11 @@ Ha nem biztos abban, hogy a kód vagy az egyéni eszközök meghívja a klasszik
 
 - Ha az alábbi hivatkozások bármelyikén a dokumentációban hivatkozott hívásokat használja, a régebbi klasszikus API-kat használja.
 
-  - [Windows. Azure. Management. monitoring osztály könyvtára](https://docs.microsoft.com/previous-versions/azure/dn510414(v=azure.100))
+  - [Windows. Azure. Management. monitoring osztály könyvtára](/previous-versions/azure/dn510414(v=azure.100))
 
-  - [Monitorozás (klasszikus) .NET](https://docs.microsoft.com/previous-versions/azure/reference/mt348562(v%3dazure.100))
+  - [Monitorozás (klasszikus) .NET](/previous-versions/azure/reference/mt348562(v%3dazure.100))
 
-  - [IMetricOperations felület](https://docs.microsoft.com/previous-versions/azure/reference/dn802395(v%3dazure.100))
+  - [IMetricOperations felület](/previous-versions/azure/reference/dn802395(v%3dazure.100))
 
 ## <a name="why-you-should-switch"></a>Miért érdemes váltania
 
@@ -86,5 +87,5 @@ Ha kérdése van, lépjen kapcsolatba velünk a következő címen: MonitorClass
 
 ## <a name="references"></a>Hivatkozások
 
-- [Újabb REST API-k a Azure Monitorhoz](https://docs.microsoft.com/rest/api/monitor/) 
+- [Újabb REST API-k a Azure Monitorhoz](/rest/api/monitor/) 
 - [Újabb Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

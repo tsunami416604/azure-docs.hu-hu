@@ -6,17 +6,18 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: baf7201176fc3d6c70881817ff21b44c2615241a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38532fba2be1fedd275ed2e7f9dfc1bf5752499d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84676891"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501653"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Erőforrások áthelyezése egy karbantartási vezérlő konfigurációjában egy másik régióba
 
 Ebből a cikkből megtudhatja, hogyan helyezhet át egy karbantartási vezérlési konfigurációhoz társított erőforrásokat egy másik Azure-régióba. Előfordulhat, hogy több okból is át kívánja helyezni a konfigurációt. Ha például egy új régió előnyeit szeretné kihasználni, egy adott régióban elérhető szolgáltatásokat vagy szolgáltatásokat kíván üzembe helyezni, a belső házirend-és irányítási követelmények teljesítésére, vagy a kapacitás megtervezésére reagálva.
 
-A karbantartási szabályozás, amely testreszabott karbantartási konfigurációkkal rendelkezik, lehetővé teszi a platformok frissítéseinek Windows-és [Linux](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) - [alapú](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) virtuális gépekre, illetve az Azure dedikált gazdagépekre való alkalmazásának szabályozását. A karbantartási ellenőrzés több régióban is áthelyezhető:
+A karbantartási szabályozás, amely testreszabott karbantartási konfigurációkkal rendelkezik, lehetővé teszi a platformok frissítéseinek Windows-és [Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable) - [alapú](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) virtuális gépekre, illetve az Azure dedikált gazdagépekre való alkalmazásának szabályozását. A karbantartási ellenőrzés több régióban is áthelyezhető:
 
 - Ha a karbantartási konfigurációhoz társított erőforrásokat szeretné áthelyezni, a konfigurációt azonban nem, akkor kövesse ezt a cikket.
 - Ha át szeretné helyezni a karbantartási vezérlő konfigurációját, de nem a konfigurációhoz társított erőforrásokat, kövesse az [alábbi utasításokat](move-region-maintenance-configuration.md).
@@ -48,7 +49,7 @@ Mielőtt megkezdené a karbantartási vezérlő konfigurációjával kapcsolatos
     $adh | Dedikált állomásnév | "myHost"
     $adhParentName | Szülő erőforrás neve | HostGroup
     
-2. A karbantartási konfigurációk beolvasása a PowerShell [Get-AZConfigurationAssignment](https://docs.microsoft.com/powershell/module/az.maintenance/Get-AzConfigurationAssignment?view=azps-3.5.0) parancs használatával:
+2. A karbantartási konfigurációk beolvasása a PowerShell [Get-AZConfigurationAssignment](/powershell/module/az.maintenance/get-azconfigurationassignment?view=azps-3.5.0) parancs használatával:
 
     - Azure dedikált gazdagépek esetén futtassa a következőt:
         ```
@@ -60,7 +61,7 @@ Mielőtt megkezdené a karbantartási vezérlő konfigurációjával kapcsolatos
         ```
         Get-AzConfigurationAssignment -ResourceGroupName $rgName -ResourceName $vmName -ProviderName Microsoft.Compute -ResourceType virtualMachines | Format-Table Name
         ```
-3. A karbantartási konfigurációk beolvasása a parancssori felületről a [karbantartási hozzárendelés](https://docs.microsoft.com/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest) paranccsal:
+3. A karbantartási konfigurációk beolvasása a parancssori felületről a [karbantartási hozzárendelés](/cli/azure/ext/maintenance/maintenance/assignment?view=azure-cli-latest) paranccsal:
 
     - Azure dedikált gazdagépek esetén:
 
@@ -77,7 +78,7 @@ Mielőtt megkezdené a karbantartási vezérlő konfigurációjával kapcsolatos
 
 ## <a name="move"></a>Áthelyezés 
 
-1. [Kövesse ezeket az utasításokat](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) az Azure-beli virtuális gépek új régióba való áthelyezéséhez.
+1. [Kövesse ezeket az utasításokat](../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json) az Azure-beli virtuális gépek új régióba való áthelyezéséhez.
 2. Az erőforrások áthelyezését követően a karbantartási konfigurációkat a megfelelő módon alkalmazza újra az új régióban lévő erőforrásokra, attól függően, hogy áthelyezte-e a karbantartási konfigurációkat. A [PowerShell](../virtual-machines/maintenance-control-powershell.md) vagy a [parancssori](../virtual-machines/maintenance-control-cli.md)felület használatával karbantartási konfigurációt alkalmazhat egy erőforrásra.
 
 
@@ -90,6 +91,6 @@ Ellenőrizze az új régióban lévő erőforrásokat, és ellenőrizze az új r
 Az áthelyezést követően érdemes törölni az áthelyezett erőforrásokat a forrás régióban.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kövesse [ezeket az utasításokat](move-region-maintenance-configuration.md) , ha a karbantartási konfigurációkat át kell helyeznie. 

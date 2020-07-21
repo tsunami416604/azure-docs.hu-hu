@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7baabe455128bf420a3c3e11ea83bb5357ed35c8
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83655921"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505159"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek/-szolgáltatások összekapcsolása IT Service Management-összekötővel
 Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](../../azure-monitor/platform/itsmc-overview.md).
@@ -38,7 +39,7 @@ Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 - A Service Manager webalkalmazás (Web App) telepítése és konfigurálása történik. A webalkalmazással kapcsolatos információk [itt](#create-and-deploy-service-manager-web-app-service)találhatóak.
 - A hibrid kapcsolatok létrehozása és konfigurálása megtörtént. További információ: [a hibrid kapcsolatok konfigurálása](#configure-the-hybrid-connection).
 - A Service Manager támogatott verziói: 2012 R2 vagy 2016.
-- Felhasználói szerepkör: [speciális kezelő](https://technet.microsoft.com/library/ff461054.aspx).
+- Felhasználói szerepkör: [speciális kezelő](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10)).
 
 ### <a name="connection-procedure"></a>Csatlakoztatási eljárás
 
@@ -158,7 +159,7 @@ A következő eljárással konfigurálhatja a figyelő telepítőjét a hibrid k
 
 3. Jelentkezzen be az Azure-beli hitelesítő adataival, és válassza ki az előfizetését, ahol a hibrid kapcsolatok létrejöttek.
 
-4. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Mentés** gombra.
 
 A hibrid kapcsolat sikeresen csatlakoztatva van.
 
@@ -200,12 +201,12 @@ A **ServiceNow-rendszergazdáknak a következőket kell tenniük a ServiceNow-p�
 > A végén kattintson a frissítés gombra.
 > 2) **Javasoljuk, hogy hozzon létre egy belső eljárást annak biztosítására, hogy a kapcsolat életben maradjon:** A jogkivonat frissítésének élettartama alapján. Győződjön meg arról, hogy a következő műveletek végrehajtása a korábbi frissítési jogkivonat várható lejárati ideje (néhány nappal azelőtt, hogy a frissítési jogkivonat élettartama lejár):
 >
-> 1. [ITSM-összekötő konfigurálásának manuális szinkronizálási folyamatának befejezése](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 1. [ITSM-összekötő konfigurálásának manuális szinkronizálási folyamatának befejezése](./itsmc-resync-servicenow.md)
 > 2. Vonja vissza a régi frissítési tokent, mivel a régi kulcsok biztonsági okokból való megőrzése nem ajánlott. A ServiceNow panelen keresse meg a rendszer OAuth, mint a tokenek kezelése lehetőséget. A OAuth neve és a lejárati dátum szerint válassza ki a régi tokent a listából.
 > ![A SNOW System OAuth definíciója](media/itsmc-connections/snow-system-oauth.png)
 > 3. Kattintson a hozzáférés visszavonása, majd a visszavonás lehetőségre.
 
-- Telepítse a Microsoft Log Analytics Integration (ServiceNow app) felhasználói alkalmazását. [További információk](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+- Telepítse a Microsoft Log Analytics Integration (ServiceNow app) felhasználói alkalmazását. [További információ](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Integrációs felhasználói szerepkör létrehozása a telepített felhasználói alkalmazáshoz. Az integrációs felhasználói szerepkör létrehozásával kapcsolatos információkat [itt](#create-integration-user-role-in-servicenow-app)találja.
 
 ### <a name="connection-procedure"></a>**Csatlakoztatási eljárás**
@@ -229,7 +230,7 @@ ServiceNow-kapcsolatok létrehozásához kövesse az alábbi eljárást:
 | --- | --- |
 | **Kapcsolat neve**   | Írja be annak a ServiceNow-példánynak a nevét, amelyhez csatlakozni kíván a ITSMC.  Ezt a nevet később Log Analytics, ha munkaelemeket konfigurál ebben a ITSM/részletes log Analytics nézetben. |
 | **Partner típusa**   | Válassza a **ServiceNow**lehetőséget. |
-| **Username**   | Írja be a ServiceNow alkalmazásban létrehozott integrációs felhasználónevet, hogy támogassa a ITSMC való kapcsolódást. További információ: [ServiceNow-alkalmazás felhasználói szerepkör létrehozása](#create-integration-user-role-in-servicenow-app).|
+| **Felhasználónév**   | Írja be a ServiceNow alkalmazásban létrehozott integrációs felhasználónevet, hogy támogassa a ITSMC való kapcsolódást. További információ: [ServiceNow-alkalmazás felhasználói szerepkör létrehozása](#create-integration-user-role-in-servicenow-app).|
 | **Jelszó**   | Írja be a felhasználónévhez tartozó jelszót. **Megjegyzés**: a felhasználónevet és a jelszót csak a hitelesítési jogkivonatok létrehozásához használja a rendszer, és a ITSMC szolgáltatásban bárhol tárolja őket.  |
 | **Kiszolgáló URL-címe**   | Írja be annak az ServiceNow-példánynak az URL-címét, amelyhez csatlakozni szeretne a ITSMC. Az URL-címnek a ". servicenow.com" utótaggal rendelkező, támogatott SaaS-verzióra kell mutatnia.|
 | **Ügyfél-azonosító**   | Írja be a korábban létrehozott OAuth2-hitelesítéshez használni kívánt ügyfél-azonosítót.  További információ az ügyfél-azonosító és a titkos kulcs létrehozásáról: [OAuth Setup](https://wiki.servicenow.com/index.php?title=OAuth_Setup). |
@@ -247,6 +248,10 @@ ServiceNow-kapcsolatok létrehozásához kövesse az alábbi eljárást:
 - Incidenseket hozhat létre Log Analytics riasztásokból, illetve a naplóbejegyzésekből vagy az Azure-riasztásokból ebben az ServiceNow-példányban.
 
 További információ: [ITSM-munkaelemek létrehozása az Azure-riasztásokból](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+
+
+> [!NOTE]
+> A ServiceNow-ben a kérelmek óránkénti száma. A korlát konfigurálásához használja a "bejövő REST API arány korlátozása" kifejezést a ServiceNow-példányban.
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>Integrációs felhasználói szerepkör létrehozása a ServiceNow alkalmazásban
 
@@ -324,7 +329,7 @@ A következő eljárással hozhat létre egy elővance-kapcsolatokat:
 | --- | --- |
 | **Kapcsolat neve**   | Adja meg a ITSMC-vel összekapcsoláshoz használni kívánt elővance-példány nevét.  Ezt a nevet később is használhatja, ha munkaelemeket konfigurál ebben a ITSM/részletes log Analytics nézetben. |
 | **Partner típusa**   | Válassza az **elővance**elemet. |
-| **Username**   | Írja be azt a felhasználónevet, amely csatlakozhat a ITSMC.    |
+| **Felhasználónév**   | Írja be azt a felhasználónevet, amely csatlakozhat a ITSMC.    |
 | **Jelszó**   | Írja be a felhasználónévhez tartozó jelszót. **Megjegyzés:** A rendszer csak a hitelesítési jogkivonatok létrehozásához használja a felhasználónevet és a jelszót, és a ITSMC szolgáltatásban bárhol nem tárolja őket. _|
 | **Kiszolgáló URL-címe**   | Írja be a ITSMC-hez csatlakozni kívánt Előa-példány URL-címét. |
 | **Ügyfél-azonosító**   | Adja meg az ügyfél-azonosítót a-kiszolgáló hitelesítéséhez, amelyet a elővizsgálati példányban hozott létre.  További információ az ügyfél-AZONOSÍTÓról: [Active Directory-hitelesítés konfigurálása](../../app-service/configure-authentication-provider-aad.md). |
@@ -375,7 +380,7 @@ A következő eljárással hozhat létre egy elővance-kapcsolatokat:
 | --- | --- |
 | **Kapcsolat neve**   | Írja be annak a Cherwell-példánynak a nevét, amelyhez csatlakozni szeretne a ITSMC.  Ezt a nevet később is használhatja, ha munkaelemeket konfigurál ebben a ITSM/részletes log Analytics nézetben. |
 | **Partner típusa**   | Válassza a **Cherwell lehetőséget.** |
-| **Username**   | Írja be azt a Cherwell-felhasználónevet, amely tud csatlakozni a ITSMC. |
+| **Felhasználónév**   | Írja be azt a Cherwell-felhasználónevet, amely tud csatlakozni a ITSMC. |
 | **Jelszó**   | Írja be a felhasználónévhez tartozó jelszót. **Megjegyzés:** A rendszer csak a hitelesítési jogkivonatok létrehozásához használja a felhasználónevet és a jelszót, és a ITSMC szolgáltatásban bárhol nem tárolja őket.|
 | **Kiszolgáló URL-címe**   | Írja be annak a Cherwell-példánynak az URL-címét, amelyhez csatlakozni szeretne a ITSMC. |
 | **Ügyfél-azonosító**   | Adja meg az ügyfél-azonosítót a Cherwell-példányban létrehozott, a kapcsolatok hitelesítéséhez.   |
@@ -405,5 +410,5 @@ Az ügyfél-azonosító/-kulcs Cherwell való létrehozásához kövesse az alá
     ![Cherwell-felhasználói azonosító](media/itsmc-connections/itsmc-cherwell-client-id.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  - [ITSM-munkaelemek létrehozása az Azure-riasztásokból](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)

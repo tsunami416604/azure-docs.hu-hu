@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: e87f2436f69abed4c0d0ee415226f99b52f2e804
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20236ccf1ec8e1f8d8113f0597d37c20e2788987
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085365"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500429"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Windows rendszerű virtuális merevlemez letöltése az Azure-ból
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan tölthet le egy Windows rendszerű virtuá
 
 ## <a name="optional-generalize-the-vm"></a>Nem kötelező: a virtuális gép általánosítása
 
-Ha a virtuális merevlemezt [képként](tutorial-custom-images.md) szeretné létrehozni más virtuális gépek létrehozásához, akkor a [sysprept](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) kell használnia az operációs rendszer általánosítása érdekében. 
+Ha a virtuális merevlemezt [képként](tutorial-custom-images.md) szeretné létrehozni más virtuális gépek létrehozásához, akkor a [sysprept](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation) kell használnia az operációs rendszer általánosítása érdekében. 
 
 Ha a virtuális merevlemezt képként szeretné használni más virtuális gépek létrehozásához, általánosítsa a virtuális gépet.
 
@@ -45,7 +45,7 @@ Egy virtuális merevlemez nem tölthető le az Azure-ból, ha egy futó virtuál
 
 ## <a name="generate-download-url"></a>Letöltési URL-cím előállítása
 
-A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL-címét kell létrehoznia. Az URL-cím létrehozásakor a rendszer lejárati időt rendel az URL-címhez.
+A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) URL-címét kell létrehoznia. Az URL-cím létrehozásakor a rendszer lejárati időt rendel az URL-címhez.
 
 1. A virtuális gép lapján kattintson a bal oldali menüben a **lemezek** elemre.
 1. Válassza ki a virtuális gép operációsrendszer-lemezét.
@@ -63,9 +63,8 @@ A VHD-fájl letöltéséhez egy [közös hozzáférési aláírás (SAS)](../../
 1. A létrehozott URL-cím alatt kattintson a VHD-fájl letöltése elemre.
 1. Előfordulhat, hogy a letöltés indításához a böngészőben a **Mentés** gombra kell kattintania. A VHD-fájl alapértelmezett neve *ABCD*.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [tölthet fel egy VHD-fájlt az Azure-](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ba. 
 - [Felügyelt lemezek létrehozása a nem felügyelt lemezekről egy Storage-fiókban](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - [Azure-lemezek kezelése a PowerShell](tutorial-manage-data-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)-lel.
-

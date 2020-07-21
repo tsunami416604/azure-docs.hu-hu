@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
-ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e351abeede6d1057a9b37ab1f1cfb9021ccd06e
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658489"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505090"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Egyéni nézetek létrehozása a Azure Monitor View Designer használatával
 A Azure Monitor Tervező nézetében számos egyéni nézetet hozhat létre a Azure Portalban, amelyek segíthetnek a Log Analytics munkaterületen lévő adatmegjelenítésben. Ez a cikk áttekintést nyújt az egyéni nézetek létrehozásához és szerkesztéséhez szükséges tervezőről és eljárásokról.
@@ -31,7 +32,7 @@ A nézetek a Azure Portal Azure Monitor **Áttekintés** lapján jelennek meg. N
 
 A tervező nézettel létrehozott nézetek a következő táblázatban ismertetett elemeket tartalmazzák:
 
-| Rész | Description |
+| Rész | Leírás |
 |:--- |:--- |
 | Csempék | Megjelenik a Azure Monitor **áttekintése** oldalon. Az egyes csempék az általa képviselt egyéni nézet vizuális összegzését jelenítik meg. Mindegyik csempe típusa különböző vizualizációkat biztosít a rekordokhoz. Az egyéni nézet megjelenítéséhez ki kell választania egy csempét. |
 | Egyéni nézet | Egy csempe kiválasztásakor jelenik meg. Minden nézet egy vagy több vizualizációs alkatrészt tartalmaz. |
@@ -48,10 +49,10 @@ A tervező nézettel létrehozott nézetek a következő beállításokat jelen�
 
 A beállításokat a következő táblázat ismerteti:
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 |:--|:--|
 | Frissítés   | A legújabb adattal frissíti a nézetet. | 
-| Naplók      | Megnyitja a [log Analytics](../log-query/portals.md) , hogy a rendszer naplózza az adatelemzési lekérdezéseket. |
+| Naplók      | Megnyitja a [log Analytics](../log-query/log-query-overview.md) , hogy a rendszer naplózza az adatelemzési lekérdezéseket. |
 | Szerkesztés       | A nézet megnyitása a tervezőben a tartalom és a konfiguráció szerkesztéséhez.  |
 | Klónozás      | Létrehoz egy új nézetet, és megnyitja a Tervező nézetben. Az új nézet neve megegyezik az eredeti névvel, de a *Másolás* hozzá van fűzve. |
 | Dátumtartomány | Állítsa be a nézetbe foglalt adatok dátum-és időtartomány-szűrőjét. Ezt a dátumtartományt a nézetben a lekérdezésekben beállított dátumtartomány előtt alkalmazza a rendszer.  |
@@ -94,7 +95,7 @@ A nézetek szerkesztési módban való használatának lehetőségeit az alábbi
 
 ![Szerkesztés menü](media/view-designer/edit-menu.png)
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 |:--|:--|
 | Mentés        | Menti a módosításokat, és bezárja a nézetet. |
 | Mégse      | Elveti a módosításokat, és bezárja a nézetet. |
@@ -103,6 +104,6 @@ A nézetek szerkesztési módban való használatának lehetőségeit az alábbi
 | Importálás      | Importálja a másik munkaterületről exportált *omsview* fájlt. Ez a művelet felülírja a meglévő nézet konfigurációját. |
 | Klónozás       | Létrehoz egy új nézetet, és megnyitja a Tervező nézetben. Az új nézet neve megegyezik az eredeti névvel, de a *Másolás* hozzá van fűzve. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Csempék](view-designer-tiles.md) hozzáadása az egyéni nézethez.
 * [Vizualizációs részek](view-designer-parts.md) hozzáadása az egyéni nézethez.

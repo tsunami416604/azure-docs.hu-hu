@@ -8,22 +8,23 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: a8531ec2a3284eac64cb900f2d95ec02b9ffdd45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3c4c4ea25a8f8057a5830ad2207bb674d9cc011
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678086"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501551"
 ---
-# <a name="save-costs-with-a-reserved-instance-of-azure-dedicated-hosts"></a>Költségek megtakarítása az Azure dedikált gazdagépek fenntartott példányával
+# <a name="save-costs-with-azure-dedicated-host-reservations"></a>Költségek megtakarítása az Azure dedikált gazdagép foglalásával
 
-Ha az Azure dedikált gazdagépek fenntartott példányát véglegesíti, akkor pénzt takaríthat meg. A foglalási kedvezményt a rendszer automatikusan alkalmazza a foglalási hatókörhöz és attribútumokhoz tartozó dedikált gazdagépek számára. A kedvezmények beszerzéséhez nem szükséges foglalást hozzárendelni egy dedikált gazdagéphez. A fenntartott példányok vásárlása csak a használat számítási részét fedi le, és a licencelési költségeket is magában foglalja. Tekintse [meg a virtuális gépekhez készült Azure dedikált gazdagépek áttekintését](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts).
+Ha az Azure dedikált gazdagépek fenntartott példányát véglegesíti, akkor pénzt takaríthat meg. A foglalási kedvezményt a rendszer automatikusan alkalmazza a foglalási hatókörhöz és attribútumokhoz tartozó dedikált gazdagépek számára. A kedvezmények beszerzéséhez nem szükséges foglalást hozzárendelni egy dedikált gazdagéphez. A fenntartott példányok vásárlása csak a használat számítási részét fedi le, és a licencelési költségeket is magában foglalja. Tekintse [meg a virtuális gépekhez készült Azure dedikált gazdagépek áttekintését](./windows/dedicated-hosts.md).
 
 ## <a name="determine-the-right-dedicated-host-sku-before-you-buy"></a>A megfelelő dedikált gazdagép SKU meghatározása a vásárlás előtt
 
 
 A foglalás megvásárlása előtt meg kell határoznia, hogy melyik dedikált gazdagépre van szüksége. A virtuálisgép-sorozatot és-típust jelképező dedikált gazdagéphez SKU van definiálva. 
 
-A virtuális gép sorozatának azonosításához a [Windows rendszerű virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) és a [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) által támogatott méretek közül válassza az első lépéseket.
+A virtuális gép sorozatának azonosításához a [Windows rendszerű virtuális gépek](./windows/sizes.md) és a [Linux](./linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) által támogatott méretek közül válassza az első lépéseket.
 
 Ezt követően győződjön meg arról, hogy az Azure dedikált gazdagépeken támogatott. Az [Azure dedikált gazdagépek díjszabási](https://aka.ms/ADHPricing) oldalán megtalálhatók a dedikált gazdagépek, a CPU-adatok és a különböző díjszabási lehetőségek (beleértve a fenntartott példányokat is) teljes listáját.
 
@@ -39,7 +40,7 @@ A foglalási kedvezmények nem vonatkoznak a következőkre:
 
 - **Felhők**   – A foglalások nem vásárolhatók meg németországi vagy kínai régiókban.
 
-- Nem **elegendő kvóta**   – Egy adott előfizetésre vonatkozó foglalásnak az új fenntartott példány előfizetésében elérhető vCPU-kvótával kell rendelkeznie. Ha például a cél előfizetéshez 10 vCPU van korlátozva a DSv3 sorozathoz, akkor nem vásárolhat olyan foglalási dedikált gazdagépeket, amelyek támogatják ezt a sorozatot. A foglalások kvótájának keresése magában foglalja az előfizetésben már üzembe helyezett virtuális gépeket és dedikált gazdagépeket. A probléma megoldásához [kvóta-növelési kérelmet hozhat létre](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)   .
+- Nem **elegendő kvóta**   – Egy adott előfizetésre vonatkozó foglalásnak az új fenntartott példány előfizetésében elérhető vCPU-kvótával kell rendelkeznie. Ha például a cél előfizetéshez 10 vCPU van korlátozva a DSv3 sorozathoz, akkor nem vásárolhat olyan foglalási dedikált gazdagépeket, amelyek támogatják ezt a sorozatot. A foglalások kvótájának keresése magában foglalja az előfizetésben már üzembe helyezett virtuális gépeket és dedikált gazdagépeket. A probléma megoldásához [kvóta-növelési kérelmet hozhat létre](../azure-portal/supportability/resource-manager-core-quotas-request.md)   .
 
 - **Kapacitás korlátozásai**   – Ritka körülmények között az Azure korlátozza az új foglalások megvásárlását a dedikált gazdagépek alkészletei számára a régió alacsony kapacitása miatt.
 
@@ -47,7 +48,7 @@ A foglalási kedvezmények nem vonatkoznak a következőkre:
 
 A [Azure Portalban](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)vásárolhat egy Azure dedikált gazdagép-példány fenntartott példányát is.
 
-A foglalást [elöl vagy havi fizetéssel](https://docs.microsoft.com/azure/billing/billing-monthly-payments-reservations)kell fizetni. Ezek a követelmények a fenntartott dedikált gazdagép-példány megvásárlására vonatkoznak:
+A foglalást [elöl vagy havi fizetéssel](../cost-management-billing/reservations/prepare-buy-reservation.md)kell fizetni. Ezek a követelmények a fenntartott dedikált gazdagép-példány megvásárlására vonatkoznak:
 
 - Legalább egy EA-előfizetéshez vagy egy utólagos elszámolású előfizetéshez tartozó tulajdonosi szerepkörrel kell rendelkeznie.
 
@@ -80,13 +81,13 @@ Ha nagyvállalati szerződéssel rendelkezik, a további példányok gyors hozz�
 
 - **Egyszeri előfizetés hatóköre**   – A foglalási kedvezményt a kiválasztott előfizetésben lévő megfelelő erőforrásokra alkalmazza.
 
-- **Megosztott hatókör**   – A foglalási kedvezményt a megfelelő, a számlázási környezetben található jogosult előfizetésekhez tartozó erőforrások egyeztetésére alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.
+- **Megosztott hatókör**   – A foglalási kedvezményt a megfelelő, a számlázási környezetben található jogosult előfizetésekhez tartozó erőforrások egyeztetésére alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. Egyéni, használatalapú fizetéses előfizetések esetében a számlázási környezet a fiókadminisztrátor által létrehozott összes jogosult előfizetés.
 
 ## <a name="usage-data-and-reservation-utilization"></a>Használati adatok és foglalás kihasználtsága
 
 A használati adatok ára nulla azon használat esetében, amelyre érvényes a foglalási kedvezmény. Láthatja, hogy melyik virtuálisgép-példány fogadta el a foglalási kedvezményt az egyes foglalásokhoz.
 
-További információ arról, hogyan jelennek meg a foglalási kedvezmények a használati adatok között: az [Azure foglalási szolgáltatás használatának ismertetése a nagyvállalati beléptetéshez](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea),   ha Ön EA-ügyfél. Ha egyéni előfizetéssel rendelkezik, tekintse meg [Az Azure foglalás használatának megismerése](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)az utólagos elszámolású előfizetéshez című témakört.
+További információ arról, hogyan jelennek meg a foglalási kedvezmények a használati adatok között: az [Azure foglalási szolgáltatás használatának ismertetése a nagyvállalati beléptetéshez](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md),   ha Ön EA-ügyfél. Ha egyéni előfizetéssel rendelkezik, tekintse meg [Az Azure foglalás használatának megismerése](../cost-management-billing/reservations/understand-reserved-instance-usage.md)az utólagos elszámolású előfizetéshez című témakört.
 
 ## <a name="change-a-reservation-after-purchase"></a>Foglalás módosítása a vásárlás után
 
@@ -114,7 +115,7 @@ Ha szeretné módosítani a módosításokat, lehetősége van a foglalások *c
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információ: [önkiszolgáló cserék és visszatérítések Azure Reservations számára](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információ: [önkiszolgáló cserék és visszatérítések Azure Reservations számára](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 
@@ -122,26 +123,24 @@ Ha kérdése van vagy segítségre van szüksége,  [hozzon létre egy támogat
 
 ## <a name="next-steps"></a>További lépések
 
-A foglalások kezeléséről a [Azure Reservations kezelése](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)című témakörben olvashat bővebben.
+A foglalások kezeléséről a [Azure Reservations kezelése](../cost-management-billing/reservations/manage-reserved-vm-instance.md)című témakörben olvashat bővebben.
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Mi az az Azure Reservations?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
+- [Mi az az Azure Reservations?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
 
-- [Azure-beli dedikált gazdagépek használata](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)
+- [Azure-beli dedikált gazdagépek használata](./windows/dedicated-hosts.md)
 
 - [Dedikált gazdagépek díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/dedicated-host/)
 
-- [A Reservations kezelése az Azure-ban](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
+- [A Reservations kezelése az Azure-ban](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 
-- [A foglalási kedvezmény alkalmazásának ismertetése](https://docs.microsoft.com/azure/billing/billing-understand-vm-reservation-charges)
+- [A foglalási kedvezmény alkalmazásának ismertetése](../cost-management-billing/manage/understand-vm-reservation-charges.md)
 
-- [A foglalási használat ismertetése használatalapú fizetéses előfizetés esetén](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
+- [A foglalási használat ismertetése használatalapú fizetéses előfizetés esetén](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
 
-- [A foglalási kihasználtság ismertetése vállalati regisztrációnál](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)
+- [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 
-- [A Reservations díjában nem szereplő Windows-szoftverköltségek](https://docs.microsoft.com/azure/billing/billing-reserved-instance-windows-software-costs)
+- [A Reservations díjában nem szereplő Windows-szoftverköltségek](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
 
-- [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](https://docs.microsoft.com/partner-center/azure-reservations)
-
-
+- [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](/partner-center/azure-reservations)

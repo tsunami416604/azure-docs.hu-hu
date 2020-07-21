@@ -8,17 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 7488ef45d665d95a28f69b7af887b98dd5a76376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c3e55d13c0b5fbf5b813f1669587836bf8b5e2d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678375"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503013"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>A IaaS-erőforrások migrálása a Azure Resource Managerra 2023. március 1-től 
 
 2014-én a IaaS-t elindítottuk Azure Resource Manageron, és azóta is javultak a képességek. Mivel [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) mostantól teljes körű IaaS képességekkel és egyéb fejlesztésekkel rendelkezik, a IaaS-alapú virtuális gépek felügyeletét az Service Manager Azure-on keresztül, a 2020. február 28-án, és ez a funkció teljes mértékben megszűnik, 2023. március 1-jén. 
 
-Napjainkban a IaaS virtuális gépek 90%-a Azure Resource Manager használ. Ha az Azure Service Manager (ASM) használatával IaaS-erőforrásokat használ, kezdje el megtervezni az áttelepítést, és fejezze be azt a 2023-as számú [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/)kihasználása érdekében.
+Napjainkban a IaaS virtuális gépek 90%-a Azure Resource Manager használ. Ha az Azure Service Manager (ASM) használatával IaaS-erőforrásokat használ, kezdje el megtervezni az áttelepítést, és fejezze be azt a 2023-as számú [Azure Resource Manager](../azure-resource-manager/management/index.yml)kihasználása érdekében.
 
 A klasszikus virtuális gépek a [modern életciklus-szabályzatot](https://support.microsoft.com/help/30881/modern-lifecycle-policy) követik a nyugdíjazáshoz.
 
@@ -38,10 +39,10 @@ Ez a nyugdíjazás **nem** érinti a következő Azure-szolgáltatásokat és-fu
 
 - Kezdje el megtervezni az áttelepítés megtervezését Azure Resource Managerre, ma. 
 
-- [További](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview) információ a klasszikus [Linux](./linux/migration-classic-resource-manager-plan.md) -és Windows- [alapú](./windows/migration-classic-resource-manager-plan.md) virtuális gépek Azure Resource Manager való áttelepítéséről.
+- [További](./windows/migration-classic-resource-manager-overview.md) információ a klasszikus [Linux](./linux/migration-classic-resource-manager-plan.md) -és Windows- [alapú](./windows/migration-classic-resource-manager-plan.md) virtuális gépek Azure Resource Manager való áttelepítéséről.
 
-- További információkért tekintse meg a [klasszikusról Azure Resource Manager áttelepítésre vonatkozó gyakori kérdéseket](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq) .
+- További információkért tekintse meg a [klasszikusról Azure Resource Manager áttelepítésre vonatkozó gyakori kérdéseket](./windows/migration-classic-resource-manager-faq.md) .
 
-- Technikai kérdésekkel, problémákkal és előfizetés-engedélyezési listával [forduljon az ügyfélszolgálathoz](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+- Technikai kérdések, problémák és előfizetések hozzáadása az engedélyezési listához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 - A gyakori kérdések és visszajelzések nem részei a következő megjegyzésekben olvashatók.

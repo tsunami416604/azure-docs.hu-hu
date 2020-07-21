@@ -12,11 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75443582"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86500922"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows újraindítási hurok Azure-beli virtuális gépen
 Ez a cikk a Windows rendszerű virtuális gépeken (VM) tapasztalható újraindítási hurkot ismerteti Microsoft Azureban.
@@ -49,7 +50,7 @@ A fájlrendszer sérülése ezt okozhatta. Azonban nehéz diagnosztizálni és a
 
 ## <a name="solution"></a>Megoldás
 
-A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági mentését](../windows/snapshot-copy-managed-disk.md), és [csatlakoztassa az operációsrendszer-lemezt egy mentési virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md), majd kövesse a megoldás beállításait, vagy próbálja meg egyenként a megoldásokat.
+A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági mentését](../windows/snapshot-copy-managed-disk.md), és [csatlakoztassa az operációsrendszer-lemezt egy mentési virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md), majd kövesse a megoldás beállításait, vagy próbálja meg egyenként a megoldásokat.
 
 ### <a name="solution-for-cause-1"></a>Megoldás az 1. ok esetén
 
@@ -93,7 +94,7 @@ A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági
 
 16. [Hozzon létre egy új virtuális gépet az operációsrendszer-lemezről](../windows/create-vm-specialized.md).
 
-17. Ha a probléma kijavítva van, előfordulhat, hogy újra kell telepítenie a [RDAgent](https://blogs.msdn.microsoft.com/mast/2014/04/07/install-the-vm-agent-on-an-existing-azure-vm/) (WaAppAgent.exe).
+17. Ha a probléma kijavítva van, előfordulhat, hogy újra kell telepítenie a [RDAgent](/archive/blogs/mast/install-the-vm-agent-on-an-existing-azure-vm) (WaAppAgent.exe).
 
 ### <a name="solution-for-cause-2"></a>Megoldás a 2. ok esetén
 
@@ -112,5 +113,3 @@ A probléma megoldásához [végezze el az operációsrendszer-lemez biztonsági
 4. Távolítsa el a lemezt a hibaelhárítási virtuális gépről, és várjon 2 percet, amíg az Azure kiadja ezt a lemezt.
 
 5. [Hozzon létre egy új virtuális gépet az operációsrendszer-lemezről](../windows/create-vm-specialized.md).
-
-

@@ -6,13 +6,14 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bf8191b0a76ad442ac5d2b286c214f6ee9da822
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73747651"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504852"
 ---
-# <a name="resiliency-and-disaster-recovery"></a>Rugalmasság és vészhelyreállítás
+# <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Rugalmasság és vész-helyreállítás az Azure Signaler szolgáltatásban
 
 A rugalmasság és a vész-helyreállítás gyakran szükséges az online rendszerekhez. Az Azure Signaler szolgáltatás már garantálja a 99,9%-os rendelkezésre állást, de továbbra is regionális szolgáltatás.
 A szolgáltatási példány mindig egy régióban fut, és nem lesz feladatátvétel egy másik régióba, ha az egész régióra kiterjedő leállás van.
@@ -130,7 +131,7 @@ Ha a használni kívánt mintákat nem számítja ki, akkor az egyes szignáló 
 A Signaler-kapcsolatok jellegéből adódóan (ez egy hosszú csatlakozás), az ügyfelek a kapcsolódást akkor fogják tapasztalni, ha katasztrófa és feladatátvétel történik.
 Ezeket az eseteket az ügyféloldali oldalon kell kezelnie ahhoz, hogy transzparensek legyenek a végfelhasználók számára. Tegyük fel például, hogy újracsatlakozik a kapcsolat lezárása után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja az alkalmazást, hogy rugalmasságot biztosítson a Signaler szolgáltatás számára. Ha többet szeretne megtudni a kiszolgálóról/az ügyfél kapcsolatáról és a kapcsolati útválasztásról a Signaler szolgáltatásban, olvassa el [ezt a cikket](signalr-concept-internals.md) a signaler szolgáltatás belső szolgáltatásaihoz.
 

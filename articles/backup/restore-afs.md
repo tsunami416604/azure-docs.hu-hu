@@ -3,15 +3,16 @@ title: Azure-fájlmegosztás visszaállítása
 description: Ebből a témakörből megtudhatja, hogyan állíthatja vissza a teljes fájlmegosztást vagy adott fájlokat a Azure Backup által létrehozott visszaállítási pontról a Azure Portal használatával.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 5668328637ae9b5a5dd3db02085a7f15de2a2456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0e232fcde12a0c035afa139e3043bfa52fbe714
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82980645"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86503642"
 ---
 # <a name="restore-azure-file-shares"></a>Azure-fájlmegosztás visszaállítása
 
-Ez a cikk azt ismerteti, hogyan lehet a Azure Portal használatával visszaállítani egy teljes fájlmegosztást vagy adott fájlokat a [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)által létrehozott visszaállítási pontról.
+Ez a cikk azt ismerteti, hogyan lehet a Azure Portal használatával visszaállítani egy teljes fájlmegosztást vagy adott fájlokat a [Azure Backup](./backup-overview.md)által létrehozott visszaállítási pontról.
 
 Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
@@ -161,6 +162,6 @@ A visszaállítási folyamat figyelését a Recovery Services-tárolóból is ny
 
     ![A visszaállított részletek megtekintése](./media/restore-afs/restore-details.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg, hogyan [kezelheti az Azure-fájlmegosztás biztonsági másolatait](manage-afs-backup.md).

@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 443751ee974dae3c426f36cbc262bc1a3af65bd0
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77658030"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504937"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor munkafüzetek vizualizációi
 
@@ -50,7 +51,7 @@ A munkafüzetek a naplók és a metrikus adatforrások diagramjait támogatják.
 1. Az eszköztár **szerkesztése** elemre kattintva váltson át a munkafüzet szerkesztési módjára.
 2. A **lekérdezés hozzáadása** hivatkozásra kattintva hozzáadhat egy log lekérdezési vezérlőt a munkafüzethez.
 3. Válassza ki a lekérdezés típusát **naplóként**, erőforrástípusként (például Application Insights) és a célként megadott erőforrásokat.
-4. A lekérdezéstervező segítségével adja meg az elemzés [KQL](https://docs.microsoft.com/azure/kusto/query/) (például a kérelmek trendje).
+4. A lekérdezéstervező segítségével adja meg az elemzés [KQL](/azure/kusto/query/) (például a kérelmek trendje).
 5. Állítsa a vizualizációt a következőre **: terület**, **sáv**, **sáv (kategorikus)**, **vonal**, torta **,** pont vagy **idő**. **Pie**
 6. Szükség esetén más paramétereket is beállíthat, például a vizualizációt, a méretet, a színpalettát és a jelmagyarázatot.
 
@@ -249,7 +250,7 @@ Az alábbi ábrán egy számítógépnek a külső számítógépekre irányuló
 
 ![Képernyőfelvétel a csempe összefoglaló nézetéről](./media/workbooks-visualizations/graph-settings.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Munkafüzetek [üzembe helyezése](workbooks-automate.md) Azure Resource Managersal.
 * A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.

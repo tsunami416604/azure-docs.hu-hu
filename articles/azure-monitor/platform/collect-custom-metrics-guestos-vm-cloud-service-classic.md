@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 46716cf5bd810225cbfc3b54d246917c9559f78f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ff76ea3bd39f31880d0140e182ad99f293689e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85124459"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505363"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Vendég operációs rendszer metrikáinak küldése a klasszikus Azure Monitor metrikai tárolóba Cloud Services 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-A Azure Monitor [Diagnostics bővítmény](diagnostics-extension-overview.md)használatával metrikákat és naplókat gyűjthet a virtuális gép, a Cloud Service vagy a Service Fabric fürt részeként futó vendég operációs rendszerből (vendég operációs rendszerből). A bővítmény [több különböző helyen](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) is elküldheti a telemetria.
+A Azure Monitor [Diagnostics bővítmény](diagnostics-extension-overview.md)használatával metrikákat és naplókat gyűjthet a virtuális gép, a Cloud Service vagy a Service Fabric fürt részeként futó vendég operációs rendszerből (vendég operációs rendszerből). A bővítmény [több különböző helyen](./data-platform.md?toc=/azure/azure-monitor/toc.json) is elküldheti a telemetria.
 
 Ez a cikk ismerteti a vendég operációs rendszer teljesítményének mérőszámait a klasszikus Azure Cloud Services a Azure Monitor metrika-tárolóba való küldésének folyamatát. A diagnosztika 1,11-es verziójától kezdődően a metrikák közvetlenül a Azure Monitor metrikák tárolójába írhatók, ahol a standard platform metrikái már begyűjtése megtörtént. 
 
@@ -30,9 +30,9 @@ Az ebben a cikkben ismertetett folyamat csak az Azure Cloud Services teljesítm�
 
 - Az Azure-előfizetéséhez [szolgáltatás-rendszergazdának vagy társ-rendszergazdának](../../cost-management-billing/manage/add-change-subscription-administrator.md) kell lennie. 
 
-- Az előfizetést regisztrálni kell a [Microsoft. ininsights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)szolgáltatásban. 
+- Az előfizetést regisztrálni kell a [Microsoft. ininsights](../../azure-resource-manager/management/resource-providers-and-types.md)szolgáltatásban. 
 
-- [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve kell lennie.
+- [Azure PowerShell](/powershell/azure) vagy [Azure Cloud Shell](../../cloud-shell/overview.md) telepítve kell lennie.
 
 - A felhőalapú szolgáltatásnak olyan régióban kell lennie [, amely támogatja az egyéni metrikákat](metrics-custom-overview.md#supported-regions).
 
@@ -46,7 +46,7 @@ Az ebben a cikkben ismertetett folyamat csak az Azure Cloud Services teljesítm�
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása 
 
-Hozzon létre egy egyszerű szolgáltatásnevet a Azure Active Directory-bérlőben a használati portál utasításait követve [hozzon létre egy Azure Active Directory alkalmazást és egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Vegye figyelembe, hogy a folyamat a következő lépésekkel halad át: 
+Hozzon létre egy egyszerű szolgáltatásnevet a Azure Active Directory-bérlőben a használati portál utasításait követve [hozzon létre egy Azure Active Directory alkalmazást és egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz](../../active-directory/develop/howto-create-service-principal-portal.md). Vegye figyelembe, hogy a folyamat a következő lépésekkel halad át: 
 
 - A bejelentkezési URL-címhez bármilyen URL-címet behelyezhet.  
 - Hozzon létre új ügyfél-titkos kulcsot ehhez az alkalmazáshoz.  
@@ -189,7 +189,6 @@ A dimenzió-szűrés és a felosztási képességek segítségével megtekinthet
 
  ![Metrikák Azure Portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.
-

@@ -4,11 +4,12 @@ description: A Azure Policy használatával méretezhető Azure Monitor szolgál
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4be403f8efc8e328548b6ef38b36be78a8fb96d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbfc0cafe83f53bd7cab2b93899e9c2cb02d52e3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678698"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505210"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Monitor üzembe helyezése méretezéssel Azure Policy használatával
 Néhány Azure Monitor funkció egyszer vagy korlátozott számú alkalommal van konfigurálva, másokat meg kell ismételni minden figyelni kívánt erőforrásnál. Ez a cikk azokat a módszereket ismerteti, amelyekkel a Azure Policy használatával méretezhetők a Azure Monitorek, így biztosítható, hogy az összes Azure-erőforrás monitorozása következetes legyen és pontosan legyen konfigurálva.
@@ -23,14 +24,14 @@ A Azure Policy segítségével megadhatja a létrehozott erőforrások konfigur�
 
 A Azure Policy a következő táblázatban szereplő objektumokból áll. Az egyes elemek részletes ismertetését lásd: [Azure Policy objektumok](../../governance/policy/overview.md#azure-policy-objects) .
 
-| Item | Description |
+| Elem | Leírás |
 |:---|:---|
 | Szabályzatdefiníció | Ismerteti az erőforrás-megfelelőségi feltételeket, valamint azt, hogy egy adott feltétel teljesül-e. Ez lehet egy adott típus összes erőforrása, vagy csak bizonyos tulajdonságokkal egyező erőforrások. Ennek hatására egyszerűen megjelölheti az erőforrást a megfelelőség szempontjából, vagy egy kapcsolódó erőforrást is üzembe helyezhet. A szabályzat-definíciók a JSON használatával íródnak, [Azure Policy definíciós struktúrában](../../governance/policy/concepts/definition-structure.md)leírtak szerint. A hatások ismertetése a [Azure Policy effektusok ismertetése](../../governance/policy/concepts/effects.md)című témakörben található.
 | Házirend kezdeményezése | Csoportházirend-definíciók egy csoportja, amelyeket együtt kell alkalmazni. Előfordulhat például, hogy egy házirend-definícióban erőforrás-naplókat küld egy Log Analytics munkaterületre, és egy másikat, hogy erőforrás-naplókat küldjön az Event huboknak. Hozzon létre egy olyan kezdeményezést, amely mindkét házirend-definíciót tartalmazza, és alkalmazza a kezdeményezést az erőforrásokra az egyes házirend-definíciók helyett. A kezdeményezések a JSON használatával íródnak [Azure Policy kezdeményezési struktúrában](../../governance/policy/concepts/initiative-definition-structure.md)leírt módon. |
 | Hozzárendelés | Egy házirend-definíció vagy kezdeményezés csak akkor lép érvénybe, ha hozzá van rendelve egy hatókörhöz. Például hozzárendelhet egy szabályzatot egy erőforráscsoporthoz, hogy az az adott erőforrásban létrehozott összes erőforrásra alkalmazza azt, vagy alkalmazza azt egy előfizetésre, hogy alkalmazza az adott előfizetés összes erőforrására.  További részletekért tekintse meg [Azure Policy hozzárendelési struktúrát](../../governance/policy/concepts/assignment-structure.md). |
 
 ## <a name="built-in-policy-definitions-for-azure-monitor"></a>A Azure Monitor beépített szabályzat-definíciói
-Azure Policy tartalmaz több, Azure Monitorhoz kapcsolódó előre összeépített definíciót is. Ezeket a házirend-definíciókat hozzárendelheti meglévő előfizetéséhez, vagy felhasználhatja azokat a saját egyéni definícióinak létrehozásához. A **figyelés** kategóriájában található beépített szabályzat teljes listájáért lásd: [Azure Policy beépített házirend-definíciók a Azure monitorhoz](../policy-samples.md).
+Azure Policy tartalmaz több, Azure Monitorhoz kapcsolódó előre összeépített definíciót is. Ezeket a házirend-definíciókat hozzárendelheti meglévő előfizetéséhez, vagy felhasználhatja azokat a saját egyéni definícióinak létrehozásához. A **figyelés** kategóriájában található beépített szabályzat teljes listájáért lásd: [Azure Policy beépített házirend-definíciók a Azure monitorhoz](../samples/policy-samples.md).
 
 A figyeléshez kapcsolódó beépített szabályzat-definíciók megtekintéséhez hajtsa végre a következőket:
 
@@ -59,7 +60,7 @@ A beépített házirenddel nem rendelkező erőforrástípusok esetén létre ke
 A [create-AzDiagPolicy](https://www.powershellgallery.com/packages/Create-AzDiagPolicy) parancsfájl a PowerShell vagy a parancssori felület használatával telepíthető adott erőforrástípus számára hoz létre házirend-fájlokat. A következő eljárással hozhat létre egyéni szabályzat-definíciót a diagnosztikai beállításokhoz.
 
 
-1. Győződjön meg arról, hogy [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) telepítve van.
+1. Győződjön meg arról, hogy [Azure PowerShell](/powershell/azure/install-az-ps) telepítve van.
 2. Telepítse a parancsfájlt a következő paranccsal:
   
     ```azurepowershell
@@ -112,7 +113,7 @@ A kezdeményezési paraméterek használatával megadhatja a munkaterületet vag
 
 ![Kezdeményezési paraméterek](media/deploy-scale/initiative-parameters.png)
 
-### <a name="remediation"></a>Kockázatcsökkentés
+### <a name="remediation"></a>Szervizelés
 A kezdeményezés a létrehozott virtuális gépekre lesz érvényes. Egy [szervizelési feladat](../../governance/policy/how-to/remediate-resources.md) központilag telepíti a házirend-definíciókat a meglévő erőforrások számára, így lehetővé teszi a már létrehozott erőforrások diagnosztikai beállításainak létrehozását. Amikor a Azure Portal használatával hozza létre a hozzárendelést, lehetősége van egy szervizelési feladat egyidejű létrehozására. A szervizeléssel kapcsolatos részletekért tekintse meg a [nem megfelelő erőforrások szervizelése Azure Policy](../../governance/policy/how-to/remediate-resources.md) című témakört.
 
 ![Kezdeményezés szervizelése](media/deploy-scale/initiative-remediation.png)
@@ -130,7 +131,7 @@ A folyamat részleteiért lásd: [Azure monitor for VMS engedélyezése Azure Po
 ![Azure Monitor for VMs házirend](../platform/media/deploy-scale/vminsights-policy.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policyról](../../governance/policy/overview.md).
 - További információ a [diagnosztikai beállításokról](diagnostic-settings.md).

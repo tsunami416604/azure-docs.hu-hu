@@ -4,11 +4,12 @@ description: Útmutató a webes URL-címek meghívásához vagy e-mail-értesít
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
-ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b1f13fd1ce8bedcbe58385d4cee321f1d1405df
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77120685"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505519"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>E-mailek és webhookok riasztási értesítéseinek küldése a Azure Monitorban az autoskálázási műveletek használatával
 Ebből a cikkből megtudhatja, hogyan állíthatja be az eseményindítókat, hogy konkrét webes URL-címeket hívjon fel, vagy az Azure-ban végzett autoskálázási műveletek alapján küldjön e-mailt.  
@@ -28,7 +29,7 @@ Cloud Services és kiszolgálófarm (App Services) Azure Portal is bejelentkezhe
 
 ## <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
 A Resource Managerrel (virtuálisgép-méretezési csoportokkal) létrehozott újabb Virtual Machines a REST API, a Resource Manager-sablonok, a PowerShell és a parancssori felület használatával konfigurálható. Egy portál felülete még nem érhető el.
-A REST API vagy Resource Manager-sablon használatakor a következő beállításokkal adja meg az értesítések elemet a [autoscalesettings](https://docs.microsoft.com/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) .
+A REST API vagy Resource Manager-sablon használatakor a következő beállításokkal adja meg az értesítések elemet a [autoscalesettings](/azure/templates/microsoft.insights/2015-04-01/autoscalesettings) .
 
 ```
 "notifications": [
@@ -55,7 +56,7 @@ A REST API vagy Resource Manager-sablon használatakor a következő beállítá
     ]
 ```
 
-| Mező | Kötelező? | Description |
+| Mező | Kötelező? | Leírás |
 | --- | --- | --- |
 | művelet |igen |az értéknek "Scale" értékűnek kell lennie |
 | sendToSubscriptionAdministrator |igen |az értéknek "true" vagy "false" értékűnek kell lennie |
@@ -98,22 +99,21 @@ Az autoskálázási értesítés létrehozásakor a webhook hasznos adatai a kö
 ```
 
 
-| Mező | Kötelező? | Description |
+| Mező | Kötelező? | Leírás |
 | --- | --- | --- |
 | status |igen |Az az állapot, amely azt jelzi, hogy egy autoskálázási művelet létrejött |
 | művelet |igen |A példányok növekedése a "vertikális felskálázás", a példányok csökkenése pedig a "skálázás" lesz. |
 | összefüggésben |igen |Az autoscale művelet kontextusa |
 | időbélyeg |igen |Az autoskálázási művelet elindítására szolgáló időbélyegző |
-| id |Yes |Az autoskálázási beállítás Resource Manager-azonosítója |
-| name |Yes |Az autoskálázási beállítás neve |
-| Részletek |Yes |Az autoskálázási szolgáltatás és a példányszám változásának magyarázata |
-| subscriptionId |Yes |A méretezni kívánt cél erőforrás előfizetés-azonosítója |
-| resourceGroupName |Yes |A méretezni kívánt cél erőforrás erőforráscsoport-neve |
-| resourceName |Yes |A méretezni kívánt cél erőforrás neve |
-| resourceType |Yes |A három támogatott érték: "Microsoft. classiccompute/tartománynév/bővítőhely/szerepkörök" – Cloud Service roles, "Microsoft. számítás/virtualmachinescalesets"-Virtual Machine Scale Sets és "Microsoft. Web/kiszolgálófarmok" – Web App |
-| resourceId |Yes |A méretezni kívánt cél erőforrás Resource Manager-azonosítója |
-| portalLink |Yes |Azure Portal hivatkozás a cél erőforrás Összegzés lapjára |
-| oldCapacity |Yes |Az aktuális (régi) példányok száma, ha az autoskálázás skálázási műveletet vett igénybe |
-| newCapacity |Yes |Az új példányszám az erőforrás méretezése |
-| properties |No |Választható. <kulcs, érték> párok (például szótár <karakterlánc, karakterlánc>) készlete. A Properties (Tulajdonságok) mező nem kötelező. Egyéni felhasználói felületen vagy logikai alkalmazáson alapuló munkafolyamatban megadhatja azokat a kulcsokat és értékeket, amelyek átadhatók a hasznos adatok használatával. Ha az egyéni tulajdonságokat vissza szeretné adni a kimenő webhook-hívásra, akkor a webhook URI-ja (lekérdezési paraméterekként) is használható. |
-
+| id |Igen |Az autoskálázási beállítás Resource Manager-azonosítója |
+| name |Igen |Az autoskálázási beállítás neve |
+| Részletek |Igen |Az autoskálázási szolgáltatás és a példányszám változásának magyarázata |
+| subscriptionId |Igen |A méretezni kívánt cél erőforrás előfizetés-azonosítója |
+| resourceGroupName |Igen |A méretezni kívánt cél erőforrás erőforráscsoport-neve |
+| resourceName |Igen |A méretezni kívánt cél erőforrás neve |
+| resourceType |Igen |A három támogatott érték: "Microsoft. classiccompute/tartománynév/bővítőhely/szerepkörök" – Cloud Service roles, "Microsoft. számítás/virtualmachinescalesets"-Virtual Machine Scale Sets és "Microsoft. Web/kiszolgálófarmok" – Web App |
+| resourceId |Igen |A méretezni kívánt cél erőforrás Resource Manager-azonosítója |
+| portalLink |Igen |Azure Portal hivatkozás a cél erőforrás Összegzés lapjára |
+| oldCapacity |Igen |Az aktuális (régi) példányok száma, ha az autoskálázás skálázási műveletet vett igénybe |
+| newCapacity |Igen |Az új példányszám az erőforrás méretezése |
+| properties |Nem |Választható. <kulcs, érték> párok (például szótár <karakterlánc, karakterlánc>) készlete. A Properties (Tulajdonságok) mező nem kötelező. Egyéni felhasználói felületen vagy logikai alkalmazáson alapuló munkafolyamatban megadhatja azokat a kulcsokat és értékeket, amelyek átadhatók a hasznos adatok használatával. Ha az egyéni tulajdonságokat vissza szeretné adni a kimenő webhook-hívásra, akkor a webhook URI-ja (lekérdezési paraméterekként) is használható. |

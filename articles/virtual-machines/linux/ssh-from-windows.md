@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 81dfac2a1623253a110833a96fddd1b41bd11b26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fc411d3833fcd47477e7e0fe11c6da9e2114143
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390227"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86502027"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>SSH-kulcsok használata az Azure-ban a Windowsban
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan hozhatók létre és használhatók a *Secure Shell*
 ## <a name="windows-packages-and-ssh-clients"></a>Windows-csomagok és SSH-ügyfelek
 Az Azure-beli Linux rendszerű virtuális gépeket *SSH-ügyfél*használatával lehet csatlakozni és felügyelni. A Linux vagy macOS rendszerű számítógépek általában SSH-parancsokkal rendelkeznek SSH-kulcsok létrehozásához és kezeléséhez, valamint SSH-kapcsolatok készítéséhez. 
 
-A Windows rendszerű számítógépek nem mindig rendelkeznek hasonló SSH-parancsokkal. A Windows 10-es legújabb verziói [OpenSSH-ügyfél-parancsokat](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) biztosítanak az ssh-kulcsok létrehozásához és kezeléséhez, valamint az SSH-kapcsolatok parancssorból való futtatásához. A legújabb Windows 10-es verziók közé tartozik a [Linux rendszerhez készült Windows alrendszer](https://docs.microsoft.com/windows/wsl/about) is, amely egy bash-rendszerhéjon natív módon futtatja és érheti el a segédprogramokat, például egy SSH-ügyfelet. 
+A Windows rendszerű számítógépek nem mindig rendelkeznek hasonló SSH-parancsokkal. A Windows 10-es legújabb verziói [OpenSSH-ügyfél-parancsokat](https://devblogs.microsoft.com/commandline/windows10v1803/) biztosítanak az ssh-kulcsok létrehozásához és kezeléséhez, valamint az SSH-kapcsolatok parancssorból való futtatásához. A legújabb Windows 10-es verziók közé tartozik a [Linux rendszerhez készült Windows alrendszer](/windows/wsl/about) is, amely egy bash-rendszerhéjon natív módon futtatja és érheti el a segédprogramokat, például egy SSH-ügyfelet. 
 
 A helyileg telepíthető egyéb gyakori Windows SSH-ügyfelek a következő csomagokban találhatók:
 
@@ -117,10 +117,10 @@ Ha telepítette a [Putty letöltési csomagot](https://www.chiark.greenend.org.u
 
 4. Kattintson a **Megnyitás** gombra a virtuális géphez való kapcsolódáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az SSH-kulcsok használatának részletes lépéseiről, lehetőségeiről és speciális példáit az [SSH-kulcspár létrehozásának részletes lépései](create-ssh-keys-detailed.md)című cikkben tekintheti meg.
 
 * A PowerShellt Azure Cloud Shell is használhatja SSH-kulcsok létrehozásához és SSH-kapcsolatok létrehozásához Linux rendszerű virtuális gépekhez. Tekintse meg a [PowerShell](../../cloud-shell/quickstart-powershell.md#ssh)rövid útmutatóját.
 
-* Ha az SSH használatával nem tud csatlakozni a Linux rendszerű virtuális gépekhez, tekintse meg [az SSH-kapcsolatok Azure Linux rendszerű virtuális géphez](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)való kapcsolódásával kapcsolatos problémát.
+* Ha az SSH használatával nem tud csatlakozni a Linux rendszerű virtuális gépekhez, tekintse meg [az SSH-kapcsolatok Azure Linux rendszerű virtuális géphez](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)való kapcsolódásával kapcsolatos problémát.

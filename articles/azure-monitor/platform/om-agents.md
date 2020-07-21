@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62d16bc9ca6c4238ff7c6304c5e1964c2956c898
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847404"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86505295"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager összekötése a Azure Monitor
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-A [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) meglévő beruházásainak fenntartásához és a kibővített képességek Azure monitor-nal való használatához integrálhatja a Operations Managert a log Analytics munkaterületére. Ez lehetővé teszi, hogy kihasználja Azure Monitor naplók lehetőségeit, miközben továbbra is használja a Operations Manager:
+A [System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807) meglévő beruházásainak fenntartásához és a kibővített képességek Azure monitor-nal való használatához integrálhatja a Operations Managert a log Analytics munkaterületére. Ez lehetővé teszi, hogy kihasználja Azure Monitor naplók lehetőségeit, miközben továbbra is használja a Operations Manager:
 
 * Az informatikai szolgáltatások állapotának monitorozása az Operations Managerrel
 * Az incidens- és problémakezelést támogató ITSM-megoldásokkal való integráció megőrzése
@@ -46,14 +46,14 @@ A Kezdés előtt tekintse át az alábbi követelményeket.
 * Támogatott régiók – a System Center Operations Manager csak a következő Azure-régiókat támogatja Log Analytics munkaterülethez való kapcsolódáshoz:
     - USA nyugati középső régiója
     - Délkelet-Ausztrália
-    - Nyugat-Európa
+    - West Europe
     - USA keleti régiója
     - Délkelet-Ázsia
     - Kelet-Japán
     - Az Egyesült Királyság déli régiója
-    - Közép-India
+    - Central India
     - Közép-Kanada
-    - USA nyugati régiója, 2.
+    - USA 2. nyugati régiója
 
 >[!NOTE]
 >Az Azure API-k legutóbbi módosításai megakadályozzák, hogy az ügyfelek sikeresen konfigurálhatják a felügyeleti csoportjuk és a Azure Monitor közötti integrációt. Azon ügyfelek esetében, akik már integrálták a felügyeleti csoportot a szolgáltatással, nem érinti a rendszer, kivéve, ha újra kell konfigurálnia a meglévő kapcsolatokat.  
@@ -72,15 +72,15 @@ Az alábbi információk a Operations Manager ügynökhöz, a felügyeleti kiszo
 |Erőforrás | Portszám| HTTP-ellenőrzés kihagyása|  
 |---------|------|-----------------------|  
 |**Ügynök**|||  
-|\*.ods.opinsights.azure.com| 443 |Yes|  
-|\*.oms.opinsights.azure.com| 443|Yes|  
-|\*.blob.core.windows.net| 443|Yes|  
-|\*.azure-automation.net| 443|Yes|  
+|\*.ods.opinsights.azure.com| 443 |Igen|  
+|\*.oms.opinsights.azure.com| 443|Igen|  
+|\*.blob.core.windows.net| 443|Igen|  
+|\*.azure-automation.net| 443|Igen|  
 |**Felügyeleti kiszolgáló**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Yes|  
-|\*.ods.opinsights.azure.com| 443| Yes|  
-|*.azure-automation.net | 443| Yes|  
+|\*.blob.core.windows.net| 443| Igen|  
+|\*.ods.opinsights.azure.com| 443| Igen|  
+|*.azure-automation.net | 443| Igen|  
 |**Konzol Operations Manager Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -154,7 +154,7 @@ Ha a proxykiszolgáló hitelesítést igényel, a következő lépésekkel konfi
 1. Nyissa meg az Operations Manager-konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
 1. A **RunAs Configuration** (RunAs-konfiguráció) területen válassza a **Profiles** (Profilok) lehetőséget.
 1. Nyissa meg a **System Center Advisor Run As Profile Proxy** (System Center Advisor RunAs-profiljának proxyja) profilt.
-1. A futtatásiprofil-varázslóban kattintson az Add (Hozzáadás) lehetőségre egy futtató fiók használatához. Létrehozhat egy [futtató fiókot](https://technet.microsoft.com/library/hh321655.aspx), vagy használhat egy meglévő fiókot is. Ennek a fióknak rendelkeznie kell a megfelelő engedélyekkel a proxykiszolgálón való áthaladáshoz.
+1. A futtatásiprofil-varázslóban kattintson az Add (Hozzáadás) lehetőségre egy futtató fiók használatához. Létrehozhat egy [futtató fiókot](/previous-versions/system-center/system-center-2012-R2/hh321655(v=sc.12)), vagy használhat egy meglévő fiókot is. Ennek a fióknak rendelkeznie kell a megfelelő engedélyekkel a proxykiszolgálón való áthaladáshoz.
 1. A felügyelni kívánt fiók beállításához válassza az **Egy kijelölt osztály, csoport vagy objektum** lehetőséget, kattintson a **Kiválasztás…** gombra, majd kattintson a **Csoport...** gombra a **Csoport keresése** keresőmező megnyitásához.
 1. Keresse meg és válassza ki a **Microsoft System Center Advisor Monitoring Server Group** (Microsoft System Center Advisor monitorozásikiszolgáló-csoport) nevű csoportot. Miután kiválasztotta a csoportot, kattintson az **OK** gombra a **Csoport keresése** keresőmező bezárásához.
 1. A **futtató fiók hozzáadása** mező bezárásához kattintson **az OK** gombra.
@@ -173,7 +173,7 @@ A konfiguráció befejezése után a Operations Manager felügyeleti csoport kap
 * **Microsoft.SystemCenter. Advisor. MPUpdate** – frissíti az alap Azure monitor felügyeleti csomagokat. Alapértelmezés szerint 12 óránként fut.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** – A munkaterületen engedélyezett megoldások felügyeleti csomagjait frissíti. Alapértelmezés szerint öt (5) percenként fut.
 
-A két szabály felülbírálásával megakadályozhatja az automatikus letöltést, ha letiltja őket, vagy módosítani szeretné, hogy a felügyeleti kiszolgáló milyen gyakran szinkronizálja Azure Monitor annak megállapítására, hogy elérhető-e új felügyeleti csomag, és le kell-e tölteni. A [Szabály vagy figyelő felülbírálása](https://technet.microsoft.com/library/hh212869.aspx) cikkben ismertetett lépések mentén módosíthatja a **Gyakoriság** paraméter másodpercben kifejezett értékét, amely a szinkronizálás ütemezését adja meg, vagy az **Engedélyezve** paraméter módosításával letilthatja a szabályokat. Ezeket a szabálymódosításokat az Operations Manager felügyeleti csoport osztályban lévő minden objektumra alkalmazza.
+A két szabály felülbírálásával megakadályozhatja az automatikus letöltést, ha letiltja őket, vagy módosítani szeretné, hogy a felügyeleti kiszolgáló milyen gyakran szinkronizálja Azure Monitor annak megállapítására, hogy elérhető-e új felügyeleti csomag, és le kell-e tölteni. A [Szabály vagy figyelő felülbírálása](/previous-versions/system-center/system-center-2012-R2/hh212869(v=sc.12)) cikkben ismertetett lépések mentén módosíthatja a **Gyakoriság** paraméter másodpercben kifejezett értékét, amely a szinkronizálás ütemezését adja meg, vagy az **Engedélyezve** paraméter módosításával letilthatja a szabályokat. Ezeket a szabálymódosításokat az Operations Manager felügyeleti csoport osztályban lévő minden objektumra alkalmazza.
 
 Ha továbbra is szeretné folytatni a felügyeleti csomagok kiadásának szabályozását az éles felügyeleti csoportban, letilthatja a szabályokat, és engedélyezheti azokat adott időpontokban a frissítések engedélyezésekor. Ha a környezetében van olyan fejlesztési vagy QA-felügyeleti csoporttal, amely tud kapcsolódni az internetre, konfigurálhatja a felügyeleti csoportot egy Log Analytics-munkaterülettel, amely támogatja ezt a forgatókönyvet. Ez lehetővé teszi, hogy áttekintse és kiértékelje a Azure Monitor felügyeleti csomagok ismétlődő kiadásait, mielőtt felszabadítja őket az éles felügyeleti csoportba.
 
@@ -352,6 +352,6 @@ Ha a felügyeleti csoport Log Analytics munkaterületre való újrakapcsolódás
 * A forrás-adathordozón a `\ManagementPacks` System Center 2016 – Operations Manager mappában vagy felette.
 * A felügyeleti csoporton alkalmazott legújabb kumulatív frissítésben. A Operations Manager 2012, a forrás mappa `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` és a 2012 R2 esetében a következő helyen található: `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A funkciók hozzáadásával és az adatok összegyűjtésével kapcsolatban lásd: [Azure monitor megoldások hozzáadása a Solutions Gallery](../../azure-monitor/insights/solutions.md).

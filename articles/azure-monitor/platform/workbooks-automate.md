@@ -9,11 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 76ecc3ee17353ebd0bbead1bba959f85d521d0df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2463c2ea4044af0b20a1dee91b30870639dc7ce
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982139"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86504920"
 ---
 # <a name="programmatically-manage-workbooks"></a>Munkafüzetek programozott kezelése
 
@@ -77,7 +78,7 @@ A munkafüzet-erőforrások két típusa felügyelhető programozott módon:
     }
     ```
 1. Az `galleries` objektumban töltse ki az `name` értékeket a és a `category` kulcsokkal. További információ a [paraméterekről](#parameters) a következő szakaszban.
-2. Telepítse ezt a Azure Resource Manager sablont a [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), a [parancssori felület](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), a [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)stb. használatával.
+2. Telepítse ezt a Azure Resource Manager sablont a [Azure Portal](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template), a [parancssori felület](../../azure-resource-manager/templates/deploy-cli.md), a [PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)stb. használatával.
 3. Nyissa meg a Azure Portalt, és navigáljon a Azure Resource Manager sablonban kiválasztott munkafüzet-gyűjteményhez. A példa sablonban navigáljon a Azure Monitor munkafüzet-gyűjteményhez:
     1. Nyissa meg a Azure Portal, és navigáljon a Azure Monitor
     2. Megnyitás `Workbooks` a tartalomjegyzékből
@@ -211,6 +212,6 @@ A munkafüzetek típusai határozzák meg, hogy melyik munkafüzet-gyűjteményb
 ### <a name="limitations"></a>Korlátozások
 Technikai okokból ez a mechanizmus nem használható munkafüzet-példányok létrehozására a Application Insights _munkafüzetek_ galériájában. Dolgozunk ennek a korlátozásnak a kezelésén. Addig is javasoljuk, hogy a hibaelhárítási útmutató (workbookType: `tsg` ) használatával Application Insights kapcsolódó munkafüzeteket telepítsen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan használják a munkafüzetek az új Azure Monitor a [tárolási élményhez](../insights/storage-insights-overview.md).

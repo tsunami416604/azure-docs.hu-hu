@@ -7,11 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 5541dec748f31818a0e9485fc0c56b7926ccaae7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a9ced48295fa4c396ed6c72fe021ed1e1be484b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758479"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86501891"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Serial Console használata SysRq- és NMI-hívásokhoz
 
@@ -22,11 +23,11 @@ A SysRq-sorozatot követően a kernel konfigurációja vezérli, hogy a rendszer
 
 Az Azure soros konzol használatával SysRq küldhet egy Azure-beli virtuális gépre az alább látható parancssáv billentyűzet ikonjával.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Képernyőkép az Azure soros konzolról. A billentyűzet ikon ki van emelve, és a menü látható. Ez a menü tartalmazza a Send SysRq parancsot.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 Ha a "Send SysRq parancs" lehetőséget választja, megnyílik egy párbeszédpanel, amely általános SysRq lehetőségeket biztosít, vagy elfogadja a párbeszédpanelen megadott SysRq parancsok sorrendjét.  Ez lehetővé teszi, hogy a SysRq sorozata magas szintű műveletet végezzen, például biztonságos újraindítás a következő használatával: `REISUB` .
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![Képernyőkép a SysRq küldése parancsról a vendég párbeszédpanelre. A parancsok beírásának lehetősége ki van választva, és a parancs REISUB tartalmaz.](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 A SysRq parancs nem használható olyan virtuális gépeken, amelyek leállnak, vagy amelyek kernele nem válaszoló állapotban van. (például egy kernel pánik).
 
@@ -95,7 +96,7 @@ A nem maszkolt megszakítás (NMI) úgy van kialakítva, hogy egy olyan jelet ho
 
 A soros konzol segítségével NMI küldhet egy Azure-beli virtuális gépre az alább látható parancssáv billentyűzet ikonjával. A NMI elszállítása után a virtuális gép konfigurációja vezérli, hogy a rendszer hogyan reagáljon.  A Linux operációs rendszerek összeomolhatnak, és a memóriakép létrehozásával az operációs rendszer NMI kap.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![Képernyőfelvétel a soros konzolról. A billentyűzet ikon ki van emelve, és a menü látható. Ez a menü tartalmaz egy nem maszkolt megszakítási elem küldését.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 Olyan Linux rendszerekhez, amelyek támogatják a sysctl-t a rendszermag paramétereinek konfigurálásához, a következő lépésekkel engedélyezheti a pánikot a NMI fogadásakor:
 1. A sor hozzáadása a */etc/sysctl.conf* <br>
@@ -119,8 +120,8 @@ A Linux kernel-konfigurációkkal kapcsolatos további információkért, beleé
 ### <a name="coreos"></a>CoreOS 
 - [Összeomlási naplók gyűjtése](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
-## <a name="next-steps"></a>További lépések
-* [Itt](serial-console.md)található a soros konzolhoz tartozó fő Linux Dokumentációs oldal.
+## <a name="next-steps"></a>Következő lépések
+* [Itt](../troubleshooting/serial-console-linux.md)található a soros konzolhoz tartozó fő Linux Dokumentációs oldal.
 * A soros konzol használatával indítsa el a [grub-t, és adjon meg egy felhasználói módot](serial-console-grub-single-user-mode.md)
-* A soros konzol a [Windows](../windows/serial-console.md) rendszerű virtuális gépekhez is elérhető
-* További információ a [rendszerindítási diagnosztika](boot-diagnostics.md) szolgáltatásról
+* A soros konzol a [Windows](../troubleshooting/serial-console-windows.md) rendszerű virtuális gépekhez is elérhető
+* További információ a [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) szolgáltatásról
