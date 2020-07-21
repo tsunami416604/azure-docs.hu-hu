@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5350e728ad9c30a6e9258ce9c7615baf020473a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f1eae9cc067f8aa10ad49d70dfe0393f4bed6c5
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995122"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518419"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Feltételes hozzáférés: hozzáférés letiltása hely szerint
 
@@ -42,19 +43,17 @@ A feltételes hozzáférés hely feltételével kapcsolatos további informáci�
 1. Adjon nevet a szabályzatnak. Javasoljuk, hogy a szervezetek értelmes szabványt hozzanak létre a szabályzatok nevében.
 1. A **hozzárendelések**alatt válassza a **felhasználók és csoportok** lehetőséget.
    1. A **Belefoglalás**területen válassza a **minden felhasználó**lehetőséget.
-   1. Válassza a **Done** (Kész) lehetőséget.
-1. A **Cloud apps vagy a műveletek**területen válassza a  >  **Include** **minden felhőalapú alkalmazás**lehetőséget, majd kattintson a **kész**gombra.
+1. A **Cloud apps vagy a műveletek**területen  >  válassza a **minden felhőalapú alkalmazás**lehetőséget.**Include**
 1. A **feltételek**  >  **helye**alatt.
    1. **Konfigurálás** beállítása **Igen** értékre
-   1. **Include** **Kiválasztott helyszínek** kijelölése
+   1. A **Belefoglalás**területen válassza a **kiválasztott helyszínek** elemet.
    1. Válassza ki a szervezet számára létrehozott tiltott helyet.
-   1. Kattintson a **kiválasztás**kész lehetőségre  >  **Done**  >  **Done**.
-1. A **feltételek**  >  **ügyfélalkalmazások (előzetes verzió)** területen állítsa **Configure** az **Igen**értékre, majd válassza a **kész**lehetőséget.
-1. A **hozzáférés-vezérlések**  >  **blokk**alatt, és válassza a **kiválasztás**lehetőséget.
+   1. Válassza a **Kiválasztás** lehetőséget.
+1. A **hozzáférés-vezérlés** > válassza a **hozzáférés letiltása**lehetőséget, majd válassza a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
-1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.
+1. Feltételes hozzáférési szabályzat létrehozásához válassza a **Létrehozás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Feltételes hozzáférés – közös szabályzatok](concept-conditional-access-policy-common.md)
 

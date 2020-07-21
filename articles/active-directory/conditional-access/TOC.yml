@@ -47,8 +47,6 @@
       href: controls.md
     - name: Klasszikus szabályzatok migrálása
       href: policy-migration.md
-    - name: Alapvető védelmi szabályzatok
-      href: concept-baseline-protection.md
 - name: Útmutatók
   expanded: true
   items:

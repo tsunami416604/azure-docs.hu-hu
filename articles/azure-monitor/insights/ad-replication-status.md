@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 30b0c7c87f6d55586b931be1445b175ce58565d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65ced5021305dce15236ded59cf79a6578e7372a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80055902"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516787"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Active Directory replikáció állapotának figyelése Azure Monitor
 
@@ -64,7 +64,7 @@ Az alábbi táblázat az adatgyűjtés módszereit és a AD Replication Status a
 
 [!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-A AD Replication Status csempe megjeleníti, hogy hány replikációs hiba van jelenleg. A **kritikus replikálási hibák** olyan hibák, amelyek a Active Directory erdő [törlésre kijelölt élettartamának](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) 75%-ában vagy annál újabbnál nagyobbak.
+A AD Replication Status csempe megjeleníti, hogy hány replikációs hiba van jelenleg. A **kritikus replikálási hibák** olyan hibák, amelyek a Active Directory erdő [törlésre kijelölt élettartamának](/previous-versions/windows/it-pro/windows-server-2003/cc784932(v=ws.10)) 75%-ában vagy annál újabbnál nagyobbak.
 
 ![AD Replication Status csempe](./media/ad-replication-status/oms-ad-replication-tile.png)
 
@@ -156,5 +156,5 @@ Ha segítségre van szüksége a tartományvezérlők csatlakoztatásához, megt
 
 Ha nem szeretne közvetlenül a tartományvezérlőhöz csatlakozni Azure Monitor vagy a System Center Operations Managerhoz, tekintse meg a [nem tartományvezérlő engedélyezése](#enable-non-domain-controller)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A [Azure monitorban található naplók](../../azure-monitor/log-query/log-query-overview.md) használatával megtekintheti a Active Directory replikációs állapotadatok részletes állapotát.

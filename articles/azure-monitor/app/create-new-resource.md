@@ -3,11 +3,12 @@ title: Új Azure Application Insights-erőforrás létrehozása | Microsoft Docs
 description: Application Insights figyelésének manuális beállítása egy új élő alkalmazáshoz.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb47453140c7659ca2f5e6da2e40d9d78405f8e7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83200659"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517093"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 
@@ -25,13 +26,13 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre 
 
    | Beállítások        |  Érték           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Name (Név)**      | `Unique value` | A figyelt alkalmazást azonosító név. |
+   | **Név**      | `Unique value` | A figyelt alkalmazást azonosító név. |
    | **Erőforráscsoport**     | `myResourceGroup`      | Az új vagy meglévő erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. |
    | **Régió** | `East US` | Válasszon egy Önhöz közeli helyet, vagy a közelében, ahol az alkalmazás üzemeltetve van. |
    | **Erőforrás mód** | `Classic` vagy `Workspace-based` | A munkaterület-alapú erőforrások jelenleg nyilvános előzetes verzióban érhetők el, és lehetővé teszik, hogy egy közös Log Analytics munkaterületre küldje el Application Insights telemetria. További információt a [munkaterület-alapú erőforrások című cikkben](create-workspace-resource.md)talál.
 
 > [!NOTE]
-> Habár ugyanazt az erőforrást használhatja a különböző erőforráscsoportok között, hasznos lehet globálisan egyedi nevet használni. Ez akkor lehet hasznos, ha [több erőforrás-lekérdezést kell végrehajtania](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) , mivel leegyszerűsíti a szükséges szintaxist.
+> Habár ugyanazt az erőforrást használhatja a különböző erőforráscsoportok között, hasznos lehet globálisan egyedi nevet használni. Ez akkor lehet hasznos, ha [több erőforrás-lekérdezést kell végrehajtania](../log-query/cross-workspace-query.md#identifying-an-application) , mivel leegyszerűsíti a szükséges szintaxist.
 
 Adja meg a megfelelő értékeket a kötelező mezőkben, majd válassza a **felülvizsgálat + létrehozás**elemet.
 
@@ -69,7 +70,7 @@ New-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Locat
 ```powershell
 New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
 ```
-#### <a name="results"></a>Results (Eredmények)
+#### <a name="results"></a>Eredmények
 
 ```powershell
 Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test1027
@@ -92,7 +93,7 @@ SamplingPercentage :
 TenantId           : {subid}
 ```
 
-A parancsmag teljes PowerShell-dokumentációját és a kialakítási kulcs beolvasásának megismeréséhez tekintse meg a [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0).
+A parancsmag teljes PowerShell-dokumentációját és a kialakítási kulcs beolvasásának megismeréséhez tekintse meg a [Azure PowerShell dokumentációját](/powershell/module/az.applicationinsights/new-azapplicationinsights?view=azps-2.5.0).
 
 ### <a name="azure-cli-preview"></a>Azure CLI (előzetes verzió)
 
@@ -121,7 +122,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location westus2 --kind web -g demoRg --application-type web
 ```
 
-#### <a name="results"></a>Results (Eredmények)
+#### <a name="results"></a>Eredmények
 
 ```azurecli
 az monitor app-insights component create --app demoApp --location eastus --kind web -g demoApp  --application-type web
@@ -149,12 +150,12 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 }
 ```
 
-A parancs teljes Azure CLI-dokumentációja, valamint a rendszerállapot-kulcs beolvasásának megismeréséhez tekintse meg az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
+A parancs teljes Azure CLI-dokumentációja, valamint a rendszerállapot-kulcs beolvasásának megismeréséhez tekintse meg az [Azure CLI dokumentációját](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Diagnosztikai keresés](../../azure-monitor/app/diagnostic-search.md)
 * [Metrikák böngészése](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics-lekérdezések](../../azure-monitor/app/analytics.md)
+* [Analytics-lekérdezések](../log-query/log-query-overview.md)
 
 <!--Link references-->
 

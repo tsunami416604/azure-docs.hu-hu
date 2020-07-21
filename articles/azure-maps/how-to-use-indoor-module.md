@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c0b043bdb20cad508950a11853403958340acadf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e7b6c7ddb33d42cca66698c87c82477f3e55621
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434194"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517467"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>A Azure Maps Indoor Maps modul használata
 
@@ -20,7 +21,7 @@ A Azure Maps web SDK tartalmazza a *Azure Maps beltéri* modult. A *Azure Maps b
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Létrehozó erőforrás létrehozása](how-to-manage-creator.md)
 3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
 4. A `tilesetId` és a a beszerzése `statesetId` a [beltéri térképek létrehozásával foglalkozó oktatóanyag](tutorial-creator-indoor-maps.md)elvégzésével.
@@ -244,7 +245,7 @@ Ha szeretné megtekinteni a beltéri térképet, töltse be azt egy webböngész
 
   ![beltéri Térkép képe](media/how-to-use-indoor-module/indoor-map-graphic.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Olvassa el a *Azure Maps beltéri* modulhoz kapcsolódó API-kat:
 

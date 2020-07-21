@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d19381094e027bd567ffc503d32f9212ef56a948
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a0859b58e2db0d3f644db01cfcde8c533b6871
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583101"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518130"
 ---
 # <a name="supported-account-types"></a>Támogatott fióktípusok
 
@@ -45,13 +45,12 @@ Bizonyos típusú fiókok nem használhatók bizonyos hitelesítési folyamatokk
 - A Daemon-alkalmazásokat csak az Azure AD-szervezetekkel lehet használni. Nincs értelme a Microsoft személyes fiókjainak kezeléséhez használt Daemon-alkalmazásokkal próbálkozni. A rendszergazdai beleegyező engedély soha nem lesz megadva.
 - Az integrált Windows-hitelesítési folyamat csak munkahelyi vagy iskolai fiókkal (a szervezetben vagy bármely szervezetben) használható. Az integrált Windows-hitelesítés tartományi fiókokkal működik, és megköveteli, hogy a gépek tartományhoz legyenek csatlakoztatva, vagy az Azure AD csatlakoztatva legyen. Ez a folyamat nem értelmezi a személyes Microsoft-fiókokat.
 - Az [erőforrás-tulajdonos jelszavának hitelesítő adatai](./v2-oauth-ropc.md) (username/Password) nem használhatók személyes Microsoft-fiókokkal. A személyes Microsoft-fiókok megkövetelik, hogy a felhasználó hozzájáruljon a személyes erőforrások eléréséhez az egyes bejelentkezési munkamenetekben. Ez az oka, hogy ez a viselkedés nem kompatibilis a nem interaktív folyamatokkal.
-- Az eszköz kódjának folyamata nem működik személyes Microsoft-fiókokkal.
 
 ## <a name="account-types-in-national-clouds"></a>Az országos felhőkben lévő fiókok típusai
 
 Az alkalmazások az [országos felhőkben](authentication-national-cloud.md)is bejelentkezhetnek a felhasználókba. A Microsoft személyes fiókjai azonban ezekben a felhőkben nem támogatottak. Ezért csökkenthető a támogatott fióktípus, ezek a felhők, a szervezet (egyetlen bérlő) vagy bármely szervezet (több-bérlős alkalmazások).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Active Directory-beli bérletről](./single-and-multi-tenant-apps.md).
 - További információ az [országos felhőkről](./authentication-national-cloud.md).

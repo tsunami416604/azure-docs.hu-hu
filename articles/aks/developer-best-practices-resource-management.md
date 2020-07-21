@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 538db1f2a757dd5216839ac9ac37ad0c06c5e9ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3fab2515bb15cce35070de9326cd6afcc034b20
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976065"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517745"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az alkalmazások fejlesztői számára az erőforrások kezeléséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -100,7 +100,7 @@ Az Kube-Advisor eszköz jelentést készíthet az erőforrás-kérésekről, val
 
 A sok fejlesztői csapatot és alkalmazást üzemeltető AK-fürtben nehéz lehet a hüvelyek nyomon követése az erőforrás-kérelmek és a korlátok beállítása nélkül. Ajánlott eljárásként rendszeresen futtasson `kube-advisor` az AK-fürtökön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az ajánlott eljárási cikk a fürt és a számítási feladatok fürtözési perspektívából való futtatására koncentrál. További információ az ajánlott felügyeleti gyakorlatokról: a [cluster operátor ajánlott eljárásai az elkülönítéshez és az erőforrás-kezeléshez az Azure Kubernetes szolgáltatásban (ak)][operator-best-practices-isolation].
 
@@ -117,7 +117,7 @@ Az ajánlott eljárások némelyikének megvalósításához tekintse meg a köv
 
 <!-- INTERNAL LINKS -->
 [aks-kubeadvisor]: kube-advisor-tool.md
-[dev-spaces]: ../dev-spaces/how-dev-spaces-works-local-process-kubernetes.md
+[dev-spaces]: /visualstudio/containers/overview-local-process-kubernetes
 [operator-best-practices-isolation]: operator-best-practices-cluster-isolation.md
 [resource-quotas]: operator-best-practices-scheduler.md#enforce-resource-quotas
 [k8s-node-selector]: concepts-clusters-workloads.md#node-selectors

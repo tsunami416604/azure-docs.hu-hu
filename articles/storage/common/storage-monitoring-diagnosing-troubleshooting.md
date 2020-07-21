@@ -9,11 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 1137a51ab7feb5a6d18c7d137d957d8e779d170e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94d952bcb0693941624199370de092a581d7479b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513386"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518589"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -75,10 +76,10 @@ Az Azure Storage-alkalmazásokkal kapcsolatos teljes körű hibaelhárítást a 
   * [4. függelék: az Excel használata a metrikák és a naplózási adatok megtekintéséhez]
   * [5. függelék: az Azure DevOps Application Insights figyelése]
 
-## <a name="introduction"></a><a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a><a name="introduction"></a>Bevezetés
 Ez az útmutató bemutatja, hogyan használhatók olyan szolgáltatások, mint például az Azure Storage Analytics, az ügyféloldali naplózás az Azure Storage ügyféloldali Kódtáraban, valamint más, harmadik féltől származó eszközök az Azure Storage-hoz kapcsolódó problémák azonosításához, diagnosztizálásához és hibaelhárításához.
 
-![][1]
+![Az ügyfélalkalmazások és az Azure Storage-szolgáltatások közötti információáramlást ábrázoló diagram.][1]
 
 Ez az útmutató elsősorban olyan online szolgáltatások fejlesztői számára készült, akik az Azure Storage-szolgáltatásokat és az ilyen online szolgáltatások kezeléséért felelős informatikai szakembereket használják. Az útmutató célja:
 
@@ -117,7 +118,7 @@ Folyamatosan figyelje az Azure-alkalmazásokat, hogy azok kifogástalan állapot
 
 Az alábbi ábrán látható diagramok azt szemléltetik, hogy az óránkénti metrikák átlagosan előforduló mérőszámai elrejtik-e a tevékenységben lévő tüskéket. Az óránkénti mérőszámok úgy jelennek meg, hogy állandó kérelmeket jelenítenek meg, míg a percenkénti mérőszámok felfedik a ténylegesen zajló ingadozásokat.
 
-![][3]
+![Azok a diagramok, amelyek bemutatják, hogy az óránkénti mérőszámok átlagosan előforduló átlaga Hogyan rejthető el a tevékenységekben.][3]
 
 A szakasz további része a figyelni kívánt metrikákat és azok okát ismerteti.
 
@@ -199,7 +200,7 @@ Az alkalmazás felhasználói értesítést kaphatnak az ügyfélalkalmazás ál
 Az alábbi erőforrások hasznosak a tárolási szolgáltatásokkal kapcsolatos állapot- és hibakódok megértéséhez:
 
 * [Gyakori REST API hibakódok](https://msdn.microsoft.com/library/azure/dd179357.aspx)
-* [A Blob Service hibakódjai](https://msdn.microsoft.com/library/azure/dd179439.aspx)
+* [BLOB Service-hibakódok](https://msdn.microsoft.com/library/azure/dd179439.aspx)
 * [Üzenetsor-szolgáltatási hibakódok](https://msdn.microsoft.com/library/azure/dd179446.aspx)
 * [Table Service-hibakódok](https://msdn.microsoft.com/library/azure/dd179438.aspx)
 * [File Service-hibakódok](https://msdn.microsoft.com/library/azure/dn690119.aspx)
@@ -347,7 +348,7 @@ A probléma az egyik tárolási szolgáltatás elérhetőségével kapcsolatos?
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>A mérőszámok magas AverageE2ELatency és alacsony AverageServerLatency értéket mutatnak
 Az [Azure Portal](https://portal.azure.com) monitorozási eszköz alább látható ábrája egy példát mutat be, ahol a **AverageE2ELatency** jelentősen nagyobb, mint a **averageserverlatency értéket mutatnak**.
 
-![][4]
+![A Azure Portal illusztrációja, amely egy példát mutat be, ahol a AverageE2ELatency jelentősen nagyobb, mint a Averageserverlatency értéket mutatnak.][4]
 
 A Storage szolgáltatás csak a sikeres kérések metrikai **AverageE2ELatency** számítja ki, és a **averageserverlatency értéket mutatnak**-től eltérően azt az időpontot is tartalmazza, amikor az ügyfél elküldi az adatokat, és nyugtát fogad a tárolási szolgáltatástól. Ezért a **AverageE2ELatency** és a **averageserverlatency értéket mutatnak** közötti különbség oka az lehet, hogy az ügyfélalkalmazás nem válaszol, vagy a hálózat feltételei miatt.
 
@@ -470,14 +471,14 @@ Ha az ügyfélalkalmazás HTTP 403 (Tiltott) hibákat jelez, annak egyik valósz
 
 | Forrás | Részletesség | Részletesség | Ügyfélkérelem azonosítója | Művelet szövege |
 | --- | --- | --- | --- | --- |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |A művelet megkezdése az elsődleges hellyel (Location Mode) PrimaryOnly. |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |Szinkron kérelem indítása<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |Várakozás a válaszra. |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |A művelet megkezdése az elsődleges hellyel (Location Mode) PrimaryOnly. |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |Szinkron kérelem indítása<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |Várakozás a válaszra. |
 | Microsoft. Azure. Storage |Figyelmeztetés |2 |85d077ab-... |Kivétel történt a válaszra való várakozás közben: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott. |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |Válasz érkezett. Állapotkód = 403, kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, tartalom-MD5 =, ETag =. |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |Válasz érkezett. Állapotkód = 403, kérelem azonosítója = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d, tartalom-MD5 =, ETag =. |
 | Microsoft. Azure. Storage |Figyelmeztetés |2 |85d077ab-... |Kivétel történt a művelet során: a távoli kiszolgáló a következő hibát adta vissza: (403) tiltott.. |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |Annak ellenőrzése, hogy a műveletet újra kell-e próbálni. Újrapróbálkozás száma = 0, HTTP-állapotkód = 403, kivétel = a távoli kiszolgáló hibát adott vissza: (403) tiltott.. |
-| Microsoft. Azure. Storage |Információ |3 |85d077ab-... |A következő hely az elsődleges értékre van állítva, a hely mód alapján. |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |Annak ellenőrzése, hogy a műveletet újra kell-e próbálni. Újrapróbálkozás száma = 0, HTTP-állapotkód = 403, kivétel = a távoli kiszolgáló hibát adott vissza: (403) tiltott.. |
+| Microsoft. Azure. Storage |Tájékoztatás |3 |85d077ab-... |A következő hely az elsődleges értékre van állítva, a hely mód alapján. |
 | Microsoft. Azure. Storage |Hiba |1 |85d077ab-... |Az újrapróbálkozási szabályzat nem engedélyezte az újrapróbálkozást. A távoli kiszolgáló meghibásodása hibát adott vissza: (403) tiltott. |
 
 Ebben az esetben meg kell vizsgálnia, hogy miért jár le az SAS-token, mielőtt az ügyfél elküldi a jogkivonatot a kiszolgálónak:
@@ -497,7 +498,7 @@ Ha az ügyfélalkalmazás egy HTTP 404 (Nem található) üzenetet kap a kiszolg
 * [Az ügyféloldali JavaScript-kód nem rendelkezik engedéllyel az objektumhoz való hozzáféréshez]
 * [Hálózati hiba]
 
-#### <a name="the-client-or-another-process-previously-deleted-the-object"></a><a name="client-previously-deleted-the-object"></a>Az ügyfél vagy egy másik folyamat korábban törölte az objektumot
+#### <a name="the-client-or-another-process-previously-deleted-the-object"></a><a name="client-previously-deleted-the-object"></a>Az ügyfél vagy egy másik folyamat korábban törölte az objektumot.
 Olyan esetekben, amikor az ügyfél egy tárolási szolgáltatásban lévő adatok olvasását, frissítését vagy törlését kísérli meg, általában könnyen azonosítható a kiszolgálóoldali naplók egy korábbi művelet, amely törölte a szóban forgó objektumot a Storage szolgáltatásból. A naplófájlok gyakran azt mutatják, hogy egy másik felhasználó vagy folyamat törölte az objektumot. A kiszolgálóoldali tároló naplózási naplójában a művelet típusa és a kért-Object-Key oszlopok azt mutatják be, hogy egy ügyfél törölte az objektumot.
 
 Abban az esetben, ha az ügyfél egy objektumot próbál beszúrni, előfordulhat, hogy nem azonnal nyilvánvaló, hogy ez az eredmény olyan HTTP 404 (nem található) választ eredményez, amely miatt az ügyfél új objektumot hoz létre. Ha azonban az ügyfél blobot hoz létre, akkor képesnek kell lennie a blob-tároló megtalálására, ha az ügyfél egy üzenetet hoz létre, és képesnek kell lennie a várólista megkeresésére, és ha az ügyfél egy sor hozzáadásával képesnek kell lennie a tábla megkeresésére.
@@ -506,7 +507,7 @@ A Storage ügyféloldali kódtár ügyféloldali naplójának használatával r�
 
 A Storage ügyféloldali kódtár által létrehozott következő ügyféloldali napló szemlélteti a problémát, ha az ügyfél nem találja a létrehozandó blob tárolóját. Ez a napló a következő tárolási műveletek részleteit tartalmazza:
 
-| Kérelemazonosító | Művelet |
+| Kérés azonosítója | Művelet |
 | --- | --- |
 | 07b26a5d-... |**Deleteifexists paranccsal** metódus a blob-tároló törléséhez. Vegye figyelembe, hogy ez a művelet egy **Head** kérést tartalmaz a tároló létezésének ellenőrzéséhez. |
 | e2d06d78... |**Createifnotexists metódust** metódus a blob-tároló létrehozásához. Vegye figyelembe, hogy ez a művelet egy **Head** kérést tartalmaz, amely ellenőrzi a tároló létezését. A **fej** 404 üzenetet ad vissza, de folytatja. |
@@ -514,7 +515,7 @@ A Storage ügyféloldali kódtár által létrehozott következő ügyféloldali
 
 Naplóbejegyzések:
 
-| Kérelemazonosító | Művelet szövege |
+| Kérés azonosítója | Művelet szövege |
 | --- | --- |
 | 07b26a5d-... |Szinkron kérelem indítása a következőhöz: `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = HEAD.............. x-MS-Client-Request-ID: 07b26a5d-.... x-MS-Date: kedd, 03 jún 2014 10:33:11 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. RESTYPE: tároló. |
@@ -557,7 +558,7 @@ Naplóbejegyzések:
 
 Ebben a példában a napló azt mutatja, hogy az ügyfél a **createifnotexists metódust** metódustól érkező kéréseket (e2d06d78...) kéri a **UploadFromStream** metódustól érkező kérésekkel (de8b1c3c-...). Ez az elhagyás azért történik, mert az ügyfélalkalmazás aszinkron módon hívja meg ezeket a metódusokat. Módosítsa az ügyfél aszinkron kódját annak biztosításához, hogy az létrehozza a tárolót, mielőtt az adott tárolóban lévő blobba feltölthet bármilyen adatfeltöltés előtt. Ideális esetben minden tárolót előre kell létrehoznia.
 
-#### <a name="a-shared-access-signature-sas-authorization-issue"></a><a name="SAS-authorization-issue"></a>Egy közös hozzáférésű jogosultságkód (SAS) engedélyezési problémája
+#### <a name="a-shared-access-signature-sas-authorization-issue"></a><a name="SAS-authorization-issue"></a>A közös hozzáférésű aláírás (SAS) engedélyezési hibája
 Ha az ügyfélalkalmazás olyan SAS-kulcsot próbál használni, amely nem tartalmazza a művelethez szükséges engedélyeket, a Storage szolgáltatás HTTP 404 (nem található) üzenetet ad vissza az ügyfélnek. Ugyanakkor a mérőszámokban nem nulla értéket is láthat a **SASAuthorizationError** .
 
 A következő táblázat a tárolási naplózási naplófájlban található példa kiszolgálóoldali naplófájlt jeleníti meg:
@@ -568,7 +569,7 @@ A következő táblázat a tárolási naplózási naplófájlban található pé
 | Művelettípus     | GetBlobProperties            |
 | Kérelem állapota     | SASAuthorizationError        |
 | HTTP-állapotkód   | 404                            |
-| Hitelesítés típusa| Sas                          |
+| Hitelesítéstípus| Sas                          |
 | Szolgáltatás típusa       | Blob                         |
 | URL-cím kérése         | `https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt` |
 | &nbsp;                 |   ? SV = 2014-02-14&SR = c&si = mypolicy&SIG = XXXXX &; API-Version = 2014-02-14 |
@@ -578,7 +579,7 @@ A következő táblázat a tárolási naplózási naplófájlban található pé
 
 Vizsgálja meg, hogy az ügyfélalkalmazás miért próbálkozik olyan művelet végrehajtásával, amelyhez nem adta meg az engedélyeket.
 
-#### <a name="client-side-javascript-code-does-not-have-permission-to-access-the-object"></a><a name="JavaScript-code-does-not-have-permission"></a>Az ügyféloldali JavaScript-kód nem rendelkezik engedéllyel az objektumhoz való hozzáféréshez
+#### <a name="client-side-javascript-code-does-not-have-permission-to-access-the-object"></a><a name="JavaScript-code-does-not-have-permission"></a>Az ügyféloldali JavaScript-kód nem jogosult az objektum elérésére
 Ha JavaScript-ügyfelet használ, és a Storage szolgáltatás HTTP 404-üzeneteket ad vissza, a böngészőben a következő JavaScript-hibákat kell megkeresni:
 
 ```
@@ -627,7 +628,7 @@ Ha ez a probléma gyakran előfordul, vizsgálja meg, hogy az ügyfél miért ne
 ### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>Az ügyfél HTTP 409 (Ütközés) hibaüzeneteket kap
 Az alábbi táblázat a kiszolgálóoldali napló kivonatát mutatja be két ügyfél-művelethez: a **deleteifexists paranccsal** a **createifnotexists metódust** által azonnal követte a blob-tároló nevét használva. Minden ügyfél-művelet két kérelmet küld a kiszolgálónak, először egy **GetContainerProperties** -kérést, hogy ellenőrizze, hogy létezik-e a tároló, majd kövesse a **DeleteContainer** vagy a **CreateContainer** kérelmet.
 
-| Időbélyeg | Művelet | Eredmény | Tárolónév | Ügyfélkérelem azonosítója |
+| Timestamp | Művelet | Eredmény | Tárolónév | Ügyfélkérelem azonosítója |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |
@@ -726,7 +727,7 @@ A Hegedűs elindítása után megkezdi a HTTP-és HTTPS-forgalom rögzítését 
 
 A Hegedűs által rögzített forgalom mennyiségének korlátozásához használhatja a **szűrők** lapon konfigurált szűrőket. Az alábbi képernyőfelvételen egy szűrő látható, amely csak az **contosoemaildist.table.Core.Windows.net** -tároló végpontjának továbbított forgalmat rögzíti:
 
-![][5]
+![Képernyőkép, amely egy olyan szűrőt mutat be, amely csak a contosoemaildist.table.core.windows.net-tároló végpontjának továbbított forgalmat rögzíti.][5]
 
 ### <a name="appendix-2-using-wireshark-to-capture-network-traffic"></a><a name="appendix-2"></a>2. függelék: hálózati forgalom rögzítése a Wireshark használatával
 A [Wireshark](https://www.wireshark.org/) egy hálózati protokoll-elemző, amely lehetővé teszi a különböző hálózati protokollok részletes csomagjainak megtekintését.
@@ -738,18 +739,18 @@ Az alábbi eljárás bemutatja, hogyan rögzíthet részletes csomagokat a helyi
 3. Kattintson a **rögzítési beállítások**elemre.
 4. Vegyen fel egy szűrőt a **rögzítési szűrő** szövegmezőbe. A **gazdagép contosoemaildist.table.Core.Windows.net** például úgy konfigurálja a Wireshark-t, hogy csak a **contosoemaildist** -fiókban lévő Table Service-végponton vagy onnan küldött csomagokat rögzítsen. Tekintse meg a [rögzítési szűrők teljes listáját](https://wiki.wireshark.org/CaptureFilters).
 
-   ![][6]
+   ![Képernyőkép, amely bemutatja, hogyan adhat hozzá szűrőt a rögzítési szűrő szövegmezőhöz.][6]
 5. Kattintson a **Start**gombra. A Wireshark most rögzíti az összes olyan csomagot, amelyet a tábla szolgáltatási végpontja küld, vagy amelyről az ügyfélalkalmazás a helyi gépen való használatakor kerül.
 6. Ha elkészült, a főmenün kattintson a **rögzítés** , majd a **Leállítás**lehetőségre.
 7. A rögzített Wireshark-rögzítési fájlban lévő fájlok mentéséhez a főmenüben kattintson a **fájl** , majd a **Mentés**elemre.
 
 A WireShark kiemel minden, a **packetlist** ablakban található hibát. A hibák és figyelmeztetések összefoglalásának megtekintéséhez használhatja a **szakértői információs** ablakot is (kattintson az **elemzés**, majd a **szakértői adatok**elemre).
 
-![][7]
+![Képernyőkép a szakértői információk ablakról, amelyen megtekintheti a hibák és figyelmeztetések összegzését.][7]
 
 Azt is megteheti, hogy megtekinti a TCP-adatforrást, mivel az alkalmazási réteg úgy látja, hogy a jobb gombbal a TCP-adatforrásra kattint, és kiválasztja a **TCP stream** Ez akkor hasznos, ha rögzítési szűrő nélkül rögzítette a memóriaképet. További információért lásd a [következő TCP-streameket](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
 
-![][8]
+![Képernyőkép, amely bemutatja, hogyan tekintheti meg a TCP-adatértékeket az alkalmazás rétege számára.][8]
 
 > [!NOTE]
 > A Wireshark használatával kapcsolatos további információkért tekintse meg a [Wireshark felhasználói útmutatóját](https://www.wireshark.org/docs/wsug_html_chunked).
@@ -782,11 +783,11 @@ Amellett, hogy a Microsoft Message Analyzer **webproxy** nyomkövetését haszn�
 
 Az alábbi képernyőfelvételen egy példa a **helyi hivatkozás rétegének** nyomon követésére és a **DiagnosisTypes** oszlop egyes **tájékoztató** üzeneteire mutat. Ha a **DiagnosisTypes** oszlop egyik ikonjára kattint, az üzenet részletei láthatók. Ebben a példában a kiszolgáló újraküldött üzenetet #305, mert nem kapott nyugtát az ügyféltől:
 
-![][9]
+![Képernyőkép, amely egy példát mutat a helyi kapcsolati réteg nyomon követésére a DiagnosisTypes oszlop egyes tájékoztató üzeneteivel][9]
 
 Amikor létrehozza a nyomkövetési munkamenetet a Microsoft Message Analyzerben, megadhat szűrőket a nyomkövetésben lévő zaj mennyiségének csökkentéséhez. A **rögzítés/nyomkövetés** lapon, ahol a nyomkövetést definiálja, kattintson a **Microsoft-Windows-NDIS-PacketCapture**melletti **configure (Konfigurálás** ) hivatkozásra. Az alábbi képernyőfelvételen egy olyan konfiguráció látható, amely a TCP-forgalmat a három tárolási szolgáltatás IP-címeire szűri:
 
-![][10]
+![Képernyőkép, amely egy olyan konfigurációt mutat be, amely a TCP-forgalmat a három tárolási szolgáltatás IP-címeire szűri.][10]
 
 A Microsoft Message Analyzer helyi kapcsolati rétegének nyomkövetésével kapcsolatos további információkért lásd: [Microsoft-PEF-NDIS-PacketCapture Provider](https://technet.microsoft.com/library/jj659264.aspx).
 
@@ -809,7 +810,7 @@ A teljesítmény és a rendelkezésre állás monitorozásának részeként hasz
 
 További információ: [Mi a Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Storage-beli elemzéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 

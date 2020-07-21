@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: c58f70126c72a84b09f6eadc251949a0f0021657
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3006bdd0cb90c22123c8db103a12ef3c0bee75a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84628293"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519337"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritás monitorozása az Azure Security Centerben
 Ismerje meg, hogyan konfigurálhatja a fájlok integritásának figyelését (FIM) Azure Security Center az útmutató segítségével.
@@ -45,7 +46,7 @@ Security Center a fájl integritásának figyelése ellenőrzi a Windows-fájlok
 Security Center javasolja az entitások figyelését, amelyekkel egyszerűen engedélyezheti a FIM-t. Megadhatja saját FIM-házirendjeit vagy a figyelni kívánt entitásokat is. Ez az útmutató bemutatja, hogyan.
 
 > [!NOTE]
-> A Windows és Linux rendszerű számítógépek és virtuális gépek esetében a fájl integritás-figyelése (FIM) szolgáltatás működik, és a standard szintű Security Center érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md). A FIM feltölti az adatokat a Log Analytics munkaterületre. Az adatforgalmi díjak a feltöltött adatok mennyiségétől függően érvényesek. További információkért tekintse meg a [log Analytics díjszabását](https://azure.microsoft.com/pricing/details/log-analytics/) .
+> A Windows és Linux rendszerű számítógépek és virtuális gépek esetében a fájl integritás-figyelése (FIM) szolgáltatás működik, és Security Center Standard szinten érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md). A FIM feltölti az adatokat a Log Analytics munkaterületre. Az adatforgalmi díjak a feltöltött adatok mennyiségétől függően érvényesek. További információkért tekintse meg a [log Analytics díjszabását](https://azure.microsoft.com/pricing/details/log-analytics/) .
 
 A FIM az Azure Change Tracking megoldást használja a környezet változásainak nyomon követésére és azonosítására. Ha engedélyezve van a fájl integritásának figyelése, akkor egy **megoldás**típusú **change Tracking** erőforrással rendelkezik. Az adatgyűjtési gyakoriság részleteivel kapcsolatban lásd az Azure Change Trackingre vonatkozó [változáskövetési adatgyűjtés részleteit](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details).
 
@@ -194,7 +195,7 @@ A **change details** (módosítás részletei) elemre kattintva megadhatja a ker
 
    ![Új elem hozzáadása a figyeléshez][14]
 
-3. Válassza a **Hozzáadás** elemet. **A hozzáadás Change Tracking** megnyílik.
+3. Válassza a **Hozzáadás** lehetőséget. **A hozzáadás Change Tracking** megnyílik.
 
    ![Adja meg a kért adatokat][15]
 
@@ -218,7 +219,7 @@ A **change details** (módosítás részletei) elemre kattintva megadhatja a ker
 
    ![Beállítás engedélyezve hamis értékre][19]
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 ## <a name="folder-and-path-monitoring-using-wildcards"></a>Mappa és elérési út figyelése helyettesítő karakterek használatával
 
@@ -239,7 +240,7 @@ A FIM letiltható. A FIM az Azure Change Tracking megoldást használja a körny
 
 4. A letiltáshoz válassza az **Eltávolítás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan használhatja a fájlok integritásának figyelését (FIM) a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő lapokat:
 
 * [Biztonsági házirendek beállítása](tutorial-security-policy.md) – megtudhatja, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és-erőforráscsoportok számára.

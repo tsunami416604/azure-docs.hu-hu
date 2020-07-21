@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 214d379525f2ee534415d713aa298ec858a84c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1fab15cade2ce23e053bc73028e6420692c3d8a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868847"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518274"
 ---
 # <a name="protected-web-api-app-registration"></a>Védett webes API: alkalmazás regisztrálása
 
@@ -29,15 +29,15 @@ Az alkalmazások regisztrálásának általános lépéseiért tekintse meg a r�
 
 A Microsoft Identity platform végpontja 1.0 tokeneket és v 2.0 tokeneket tud kiadni. További információ ezekről a jogkivonatokról: [hozzáférési tokenek](access-tokens.md).
 
-Az elfogadott jogkivonat verziója az alkalmazás létrehozásakor választott **támogatott fióktípus** értéktől függ.
+Az API által elfogadott jogkivonat-verzió a **támogatott fióktípus** beállításától függ, amikor létrehozza a webes API-alkalmazás regisztrációját a Azure Portal.
 
-- Ha a **támogatott fióktípus** a **szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com) lévő fiókok**, az elfogadott jogkivonat-verzió a v 2.0.
-- Ellenkező esetben az elfogadott jogkivonat-verzió a v 1.0.
+- Ha a **támogatott fióktípus** a **szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com) lévő fiókok**, az elfogadott jogkivonat-verziónak v 2.0-nak kell lennie.
+- Ellenkező esetben az elfogadott jogkivonat-verzió v 1.0 lehet.
 
 Az alkalmazás létrehozása után az alábbi lépéseket követve meghatározhatja vagy módosíthatja az elfogadott jogkivonat verzióját:
 
 1. A Azure Portal válassza ki az alkalmazást, majd válassza a **manifest (jegyzékfájl**) lehetőséget.
-1. Keresse meg a jegyzékfájlban a **accessTokenAcceptedVersion** tulajdonságot. A tulajdonság alapértelmezett értéke 2.
+1. Keresse meg a jegyzékfájlban a **accessTokenAcceptedVersion** tulajdonságot.
 1. Az érték határozza meg, hogy Azure Active Directory (Azure AD) melyik jogkivonat-verziót fogadja a webes API.
     - Ha az érték 2, a webes API a 2.0-s verzióban található jogkivonatokat fogadja el.
     - Ha az érték **Null**, a webes API elfogadja a v 1.0 jogkivonatokat.
@@ -52,7 +52,7 @@ A webes API-knak nem kell regisztrálniuk egy átirányítási URI-t, mert egyet
 
 ## <a name="exposed-api"></a>Elérhető API
 
-A webes API-kra vonatkozó egyéb beállítások a kitett API-k és az elérhető hatókörök.
+A webes API-kra vonatkozó egyéb beállítások a kitett API-k, illetve a közzétett hatókörök vagy alkalmazás-szerepkörök.
 
 ### <a name="application-id-uri-and-scopes"></a>Alkalmazás-azonosító URI-ja és hatókörök
 
@@ -64,7 +64,7 @@ Az alkalmazás regisztrálása során meg kell határoznia ezeket a paraméterek
 - Egy vagy több hatókör
 - Egy vagy több alkalmazás-szerepkör
 
-Alapértelmezés szerint az alkalmazás regisztrációs portálja azt javasolja, hogy az erőforrás URI-JÁT használja `api://{clientId}` . Ez az URI egyedi, de nem olvasható. Ha megváltoztatja az URI-t, ellenőrizze, hogy az új érték egyedi-e.
+Alapértelmezés szerint az alkalmazás regisztrációs portálja azt javasolja, hogy az erőforrás URI-JÁT használja `api://{clientId}` . Ez az URI egyedi, de nem olvasható. Ha megváltoztatja az URI-t, ellenőrizze, hogy az új érték egyedi-e. Az alkalmazás regisztrációs portálján meg kell győződnie arról, hogy [konfigurált közzétevői tartományt](howto-configure-publisher-domain.md) használ
 
 Az *ügyfélalkalmazások számára a* hatókörök *meghatalmazott engedélyekként* és az alkalmazás szerepköreiként jelennek meg a webes API-hoz.
 
@@ -72,6 +72,8 @@ A hatókörök az alkalmazás felhasználói számára megjelenített engedélye
 
 - A felhasználó által látottak szerint.
 - A bérlői rendszergazda látja, hogy ki adhat rendszergazdai jóváhagyást.
+
+Az alkalmazási szerepköröket nem lehet egy felhasználó (például egy olyan alkalmazás használja, amely a webes API-t hívja saját maga nevében). A bérlői rendszergazdának hozzá kell adnia a webes API-nak az alkalmazás szerepköreihez tartozó ügyfélalkalmazások számára. Részletekért tekintse meg a [rendszergazdai beleegyezik](v2-admin-consent.md)
 
 ### <a name="exposing-delegated-permissions-scopes"></a>Delegált engedélyek elmagyarázása (hatókörök)
 
@@ -147,7 +149,7 @@ A fokozott biztonság hozzáadása:
    >
    > Az előző szakaszban leírtaknak megfelelően azonban a webes API-k mindig ellenőrizhetik, hogy az alkalmazás rendelkezik-e a megfelelő szerepkörrel, amelyet a bérlői rendszergazda is jóváhagy. Az API végrehajtja ezt az ellenőrzést annak ellenőrzésével, hogy a hozzáférési jogkivonat rendelkezik szerepkör-jogcímvel, és hogy a jogcím értéke helyes-e. Az előző JSON-mintában az érték a ( `access_as_application` ).
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

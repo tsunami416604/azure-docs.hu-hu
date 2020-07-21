@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 40e788099a159e1f60c0af02deccd7e3bef82744
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4904cd95dc81aad959c88c1dfdb09416923046e6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82181732"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518181"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webes API-kat meghívó webalkalmazás: az alkalmazás jogkivonatának beszerzése
 
@@ -50,6 +50,7 @@ A `ITokenAcquisition` szolgáltatást a ASP.net a függőségi befecskendezés h
 Itt látható a művelethez tartozó egyszerűsített kód `HomeController` , amely a Microsoft Graph meghívására szolgáló tokent kap:
 
 ```csharp
+[AuthorizeForScopes(Scopes = new[] { "user.read" })]
 public async Task<IActionResult> Profile()
 {
  // Acquire the access token.
@@ -65,6 +66,8 @@ public async Task<IActionResult> Profile()
 
 A forgatókönyvhöz szükséges kód jobb megismeréséhez tekintse meg a 2. fázis ([2-1-Web App calls Microsoft Graph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-1-Call-MSGraph)) lépést az [MS-Identity-aspnetcore-WebApp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) oktatóanyagban.
 
+A `AuthorizeForScopes` vezérlő művelet (vagy a borotva-sablon használata esetén a borotva oldal) tetején található attribútumot a Microsoft. Identity. Web biztosíthatja. Gondoskodik arról, hogy a felhasználó szükség esetén, és növekményes módon megválaszolja a felhasználót.
+
 Más összetett változatok is léteznek, például:
 
 - Több API meghívása.
@@ -79,6 +82,36 @@ A ASP.NET kódja hasonló a ASP.NET Corehoz megjelenített kódhoz:
 - Egy [engedélyezés] attribútum által védett vezérlő művelet kibontja a vezérlő tagjának bérlői AZONOSÍTÓját és felhasználói AZONOSÍTÓját `ClaimsPrincipal` . (A ASP.NET használja `HttpContext.User` .)
 - Innentől kezdve létrehoz egy MSAL.NET `IConfidentialClientApplication` objektumot.
 - Végezetül meghívja a `AcquireTokenSilent` bizalmas ügyfélalkalmazás metódusát.
+- Ha interakcióra van szükség, a webalkalmazásnak meg kell vitatnia a felhasználót (újra be kell jelentkeznie), és további jogcímeket kell kérnie.
+
+A következő kódrészletet a rendszer kinyeri a [HomeController. cs # L157-L192](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Controllers/HomeController.cs#L157-L192) az [MS-Identity-ASPNET-webapp-openidconnect](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect) ASP.net MVC kód minta:
+
+```C#
+public async Task<ActionResult> ReadMail()
+{
+    IConfidentialClientApplication app = MsalAppBuilder.BuildConfidentialClientApplication();
+    AuthenticationResult result = null;
+    var account = await app.GetAccountAsync(ClaimsPrincipal.Current.GetMsalAccountId());
+    string[] scopes = { "Mail.Read" };
+
+    try
+    {
+        // try to get token silently
+        result = await app.AcquireTokenSilent(scopes, account).ExecuteAsync().ConfigureAwait(false);
+    }
+    catch (MsalUiRequiredException)
+    {
+        ViewBag.Relogin = "true";
+        return View();
+    }
+
+    // More code here
+    return View();
+}
+```
+
+További részletekért tekintse meg a [BuildConfidentialClientApplication ()](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Utils/MsalAppBuilder.cs) és a [GetMsalAccountId](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/257c8f96ec3ff875c351d1377b36403eed942a18/WebApp/Utils/ClaimPrincipalExtension.cs#L38) kódot a kódban
+
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -163,7 +196,7 @@ def graphcall():
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Webes API-hívás](scenario-web-app-call-api-call-api.md)

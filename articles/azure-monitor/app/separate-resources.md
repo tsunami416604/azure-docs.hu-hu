@@ -3,12 +3,12 @@ title: A Application Insights üzembe helyezésének megtervezése – egy vagy 
 description: A különböző erőforrásokhoz való közvetlen telemetria fejlesztési, tesztelési és üzemi bélyegzők.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 53fe54d1e674a9d15cab5a3fac0c85f415e40260
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ff301887aebf64d26d0fb391a8a16adefc8a3860
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107427"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516719"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hány Application Insights erőforrást kell üzembe helyezni
 
@@ -35,7 +35,7 @@ Minden Application Insights erőforráshoz elérhető metrikák tartoznak. Ha a 
 
 ### <a name="other-things-to-keep-in-mind"></a>További tudnivalók a következőkről:
 
--   Előfordulhat, hogy egyéni kódot kell hozzáadnia ahhoz, hogy a rendszer a [Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name) attribútumban az értelmes értékeket adja meg. Az attribútumhoz beállított értelmes értékek hiányában a portál egyik felhasználói felülete *sem* fog működni.
+-   Előfordulhat, hogy egyéni kódot kell hozzáadnia ahhoz, hogy a rendszer a [Cloud_RoleName](./app-map.md?tabs=net#set-cloud-role-name) attribútumban az értelmes értékeket adja meg. Az attribútumhoz beállított értelmes értékek hiányában a portál egyik felhasználói felülete *sem* fog működni.
 - Service Fabric-alkalmazások és a klasszikus Cloud Services esetében az SDK automatikusan beolvassa az Azure szerepkör-környezetet, és beállítja ezeket. Minden más típusú alkalmazás esetében valószínűleg ezt explicit módon kell beállítania.
 -   Az élő metrikai élmény nem támogatja a szerepkör-név szerinti felosztást.
 
@@ -76,7 +76,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="create-additional-application-insights-resources"></a>További Application Insights erőforrások létrehozása
 
-Az Application ininsights-erőforrások létrehozásához kövesse az [Erőforrás-létrehozási útmutatót](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
+Az Application ininsights-erőforrások létrehozásához kövesse az [Erőforrás-létrehozási útmutatót](./create-new-resource.md).
 
 ### <a name="getting-the-instrumentation-key"></a>A kialakítási kulcs beolvasása
 A kialakítási kulcs azonosítja a létrehozott erőforrást.

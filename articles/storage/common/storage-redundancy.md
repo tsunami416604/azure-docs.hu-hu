@@ -10,11 +10,12 @@ ms.date: 06/22/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9502194b2020723801469b511f46d3e806290ba5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 903560f5c0400a906918f0c17eafb2e1e09bdd30
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213992"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518504"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -61,8 +62,8 @@ A következő táblázat azt mutatja be, hogy milyen típusú Storage-fiókok t�
 |    Tárfiók típusa    |    Támogatott régiók    |    Támogatott szolgáltatások    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 |    Általános célú v2<sup>1</sup>    | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Észak-Európa<br />  Nyugat-Európa<br /> Közép-Franciaország<br /> Kelet-Japán<br /> Dél-Afrika északi régiója<br /> Az Egyesült Királyság déli régiója<br /> USA középső régiója<br /> USA keleti régiója<br /> USA 2. keleti régiója<br /> USA 2. nyugati régiója    |    Blokkblobok<br /> <sup>2</sup> . oldal Blobok<br /> Fájlmegosztás (standard)<br /> Táblák<br /> Üzenetsorok<br /> |
-|    <sup>1</sup> . BlockBlobStorage    | Délkelet-Ázsia<br /> Nyugat-Európa<br /> USA keleti régiója    |    Csak Blobok letiltása    |
-|    FileStorage    | Délkelet-Ázsia<br /> Nyugat-Európa<br /> USA keleti régiója    |    Csak Azure Files    |
+|    <sup>1</sup> . BlockBlobStorage    | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Nyugat-Európa<br /> USA keleti régiója    |    Csak Blobok letiltása    |
+|    FileStorage    | Délkelet-Ázsia<br /> Kelet-Ausztrália<br /> Nyugat-Európa<br /> USA keleti régiója    |    Csak Azure Files    |
 
 <sup>1</sup> az archiválási szint jelenleg nem támogatott a ZRS-fiókok esetében.<br />
 <sup>2</sup> a virtuális gépekhez készült Azure Managed Disks-t tartalmazó Storage-fiókok mindig a LRS-t használják. Az Azure Unmanaged Disks szolgáltatásnak a LRS is használnia kell. Létrehozhat egy Storage-fiókot az Azure nem felügyelt, GRS használó lemezek számára, de az aszinkron geo-replikációval kapcsolatos lehetséges problémák miatt nem ajánlott. Sem a felügyelt, sem a nem felügyelt lemezek támogatják a ZRS vagy a GZRS. A felügyelt lemezekkel kapcsolatos további információkért lásd: [Az Azure Managed Disks díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -160,7 +161,7 @@ Az alábbi táblázat azt jelzi, hogy az adatai tartósak-e, és elérhetőek-e 
 | Kimaradási forgatókönyv                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Az adatközpontban lévő csomópont elérhetetlenné válik                                                                 | Igen                             | Igen                              | Igen                                  | Igen                                 |
-| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik                                           | Nem                              | Igen                              | Igen<sup>1</sup>                                  | Yes                                  |
+| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik                                           | Nem                              | Igen                              | Igen<sup>1</sup>                                  | Igen                                  |
 | Az elsődleges régióban az egész régióra kiterjedő leállás következik be                                                                                     | Nem                              | Nem                               | Igen<sup>1</sup>                                  | Igen<sup>1</sup>                                  |
 | A másodlagos régióhoz való olvasási hozzáférés akkor érhető el, ha az elsődleges régió elérhetetlenné válik | Nem                              | Nem                               | Igen (az RA-GRS-vel)                                   | Igen (az RA-GZRS-vel)                                 |
 

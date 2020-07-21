@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: c864a9cc5dd5658bcb3205ce2cbe4f6142cf45a1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255489"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518045"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrálás az Azure Kubernetes szolgáltatásba (ak)
 
@@ -51,7 +51,7 @@ Az AK egy felügyelt szolgáltatás, amely az alacsonyabb felügyeleti terhelés
 
 Javasoljuk, hogy [Virtual Machine Scale sets](../virtual-machine-scale-sets/index.yml) és az [Azure standard Load BALANCER](./load-balancer-standard.md) által támogatott AK-fürtöket használjon, így biztosítva a [több csomópontos készlet](./use-multiple-node-pools.md), a [Availability Zones](../availability-zones/az-overview.md), az [engedélyezett IP-címtartományok](./api-server-authorized-ip-ranges.md), a [fürt autoskálázása](./cluster-autoscaler.md), [a Azure Policy for AK](../governance/policy/concepts/policy-for-kubernetes.md)és más új funkciók használatát.
 
-A [virtuális gépek rendelkezésre állási csoportjai](../virtual-machine-scale-sets/availability.md#availability-sets) által támogatott AK-fürtök számos ilyen funkció esetében nem támogatottak.
+A [virtuális gépek rendelkezésre állási csoportjai](../virtual-machines/availability.md#availability-sets) által támogatott AK-fürtök számos ilyen funkció esetében nem támogatottak.
 
 A következő példa létrehoz egy AK-fürtöt egyetlen, virtuálisgép-méretezési csoporttal támogatott egycsomópontos készlettel. Standard Load balancert használ. Emellett lehetővé teszi a fürthöz tartozó automéretezőt a fürt csomópont-készletén, és legalább *1* és legfeljebb *3* csomópontot állít be:
 

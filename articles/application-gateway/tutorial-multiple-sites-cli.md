@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0a559ec7f9138810611841eed4a035f30662bc39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79a239148647467185e407e1e07fdea658a7be40
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806266"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517900"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Több webhelyet üzemeltető Application Gateway létrehozása az Azure CLI használatával
 
@@ -30,7 +30,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Virtuálisgép-méretezési csoportok létrehozása a háttérkészletekkel
 > * CNAME rekord létrehozása a tartományban
 
-![Többhelyes útválasztási példa](./media/tutorial-multiple-sites-cli/scenario.png)
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Többhelyes Application Gateway":::
 
 Ha szeretné, az eljárást [Azure PowerShell](tutorial-multiple-sites-powershell.md)használatával végezheti el.
 
@@ -40,7 +40,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal.
 
@@ -119,9 +119,13 @@ az network application-gateway address-pool create \
   --name fabrikamPool
 ```
 
-### <a name="add-backend-listeners"></a>Háttérfigyelők hozzáadása
+### <a name="add-listeners"></a>Figyelők hozzáadása
 
-Adja hozzá a forgalom irányításához szükséges háttérfigyelőket az [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) paranccsal.
+Vegyen fel olyan figyelőket, amelyek szükségesek a forgalom irányításához az [az Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create)paranccsal.
+
+>[!NOTE]
+> A Application Gateway vagy a WAF v2 SKU használatával legfeljebb 5 állomásnév állítható be a figyelőhöz, és használhat helyettesítő karaktereket is az állomásnévben. További információ: [helyettesítő karakterek nevei a figyelőben](multiple-site-overview.md#wildcard-host-names-in-listener-preview) .
+>Ha több állomásnevet és helyettesítő karaktert szeretne használni egy figyelőben az Azure CLI használatával, a helyett a következőt kell használnia: `--host-names` `--host-name` . A host-names használata esetén legfeljebb 5 állomásnév adható meg vesszővel tagolt értékként. Például: `--host-names "*.contoso.com,*.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -252,6 +256,6 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmaz
 az group delete --name myResourceGroupAG
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazásátjáró létrehozása URL-alapú útválasztási szabályokkal](./tutorial-url-route-cli.md)

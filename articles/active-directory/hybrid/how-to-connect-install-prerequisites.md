@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bd19093034b4427d9e1b637a653a90e0568cddf
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 11d5c1bb133f0aea241fbc55f96ab5f8818e5ed6
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223924"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518113"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és a Azure AD Connect hardverre vonatkozó követelményeit.
@@ -34,7 +34,7 @@ A Azure AD Connect telepítése előtt néhány dolog szükséges.
   * A [Azure Portal](https://portal.azure.com).
   * Az [Office-portálon](https://portal.office.com).  
 * [Adja hozzá és ellenőrizze az](../active-directory-domains-add-azure-portal.md) Azure ad-ben használni kívánt tartományt. Ha például contoso.com kíván használni a felhasználók számára, akkor győződjön meg arról, hogy a tartomány ellenőrzése megtörtént, és nem csak a contoso.onmicrosoft.com alapértelmezett tartományát használja.
-* Az Azure AD-bérlők alapértelmezés szerint 50 000 objektumot is lehetővé tesznek. A tartomány ellenőrzésekor a korlát a 300k-objektumokra nő. Ha még több objektumra van szüksége az Azure AD-ben, akkor meg kell nyitnia egy támogatási esetet, hogy a korlát még tovább is megnövekszik. Ha 500k-nál több objektumra van szüksége, akkor szüksége lesz egy licencre, például az Office 365, alapszintű Azure AD, prémium szintű Azure AD vagy a nagyvállalati mobilitásra és a biztonságra.
+* Az Azure AD-bérlők alapértelmezés szerint 50 000 objektumot is lehetővé tesznek. A tartomány ellenőrzésekor a korlát a 300k-objektumokra nő. Ha még több objektumra van szüksége az Azure AD-ben, akkor meg kell nyitnia egy támogatási esetet, hogy a korlát még tovább is megnövekszik. Ha 500k-nál több objektumra van szüksége, akkor olyan licencre van szüksége, mint például az Office 365, az prémium szintű Azure AD vagy az Enterprise Mobility and Security.
 
 ### <a name="prepare-your-on-premises-data"></a>A helyszíni adatfeldolgozás előkészítése
 * Az Azure AD-hez és az Office 365-hoz való szinkronizálás előtt a [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) segítségével azonosíthatja a hibákat, például az ismétlődéseket és a formázási problémákat a címtárban.
@@ -56,7 +56,7 @@ További információ a Active Directory környezet biztonságossá tételéről
 
 #### <a name="installation-prerequisites"></a>Telepítési előfeltételek 
 
-- A Azure AD Connectt tartományhoz csatlakoztatott Windows Server 2012 vagy újabb rendszerre kell telepíteni. Erősen ajánlott, hogy ez a kiszolgáló egy tartományvezérlő. 
+- A Azure AD Connectt tartományhoz csatlakoztatott Windows Server 2012 vagy újabb rendszerre kell telepíteni. 
 - Azure AD Connect nem telepíthető a Small Business Server vagy a Windows Server Essentials rendszerre, mielőtt 2019 (a Windows Server Essentials 2019 támogatott). A kiszolgálónak a Windows Server standard vagy magasabb szintűnek kell lennie.  
 - A Azure AD Connect-kiszolgálónak teljes grafikus felhasználói felülettel kell rendelkeznie. A Azure AD Connect telepítése nem támogatott a Windows Server Core-on. 
 - Ha Azure AD Connect varázslót használ az ADFS-konfiguráció felügyeletéhez, a Azure AD Connect kiszolgáló nem rendelkezhet a PowerShell átírásával Csoportházirend. Ha Azure AD Connect varázslót használ a szinkronizálási konfiguráció kezelésére, engedélyezheti a PowerShell átírását. 
@@ -90,7 +90,7 @@ A Microsoft azt javasolja, hogy a Azure AD Connect kiszolgáló megerősítse a 
 * Ha az [expressz beállításokat](reference-connect-accounts-permissions.md#express-settings-installation) használja, vagy a frissítését a (z) rendszerről, akkor vállalati rendszergazdai fiókkal kell rendelkeznie a helyszíni Active Directoryhoz.
 * Ha az egyéni beállítások telepítési útvonalát használja, több lehetőség is rendelkezésre áll. További információ: [egyéni telepítési beállítások](reference-connect-accounts-permissions.md#custom-installation-settings).
 
-### <a name="connectivity"></a>Kapcsolat
+### <a name="connectivity"></a>Kapcsolatok
 * A Azure AD Connect-kiszolgálónak az intraneten és az interneten egyaránt DNS-feloldásra van szüksége. A DNS-kiszolgálónak képesnek kell lennie a nevek feloldására a helyszíni Active Directory és az Azure AD-végpontokon.
 * Ha tűzfallal rendelkezik az intraneten, és meg kell nyitnia a portokat a Azure AD Connect-kiszolgálók és a tartományvezérlők között, további információért lásd: [Azure ad Connect portok](reference-connect-ports.md) .
 * Ha a proxy vagy a tűzfal korlátozza, hogy mely URL-címek érhetők el, akkor meg kell nyitni az [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) által dokumentált URL-címeket.

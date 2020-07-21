@@ -3,11 +3,12 @@ title: Intelligens észlelés az Azure Application Insightsban | Microsoft Docs
 description: Application Insights végrehajtja az alkalmazás telemetria automatikus elemzését, és figyelmezteti a lehetséges problémákra.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad6580a0a62d331a7851c47d71b46d3ea6c81468
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83700835"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516872"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligens detektálás az Application Insightsban
  Az intelligens észlelés automatikusan figyelmezteti a webalkalmazás lehetséges teljesítménybeli problémáit és meghibásodási rendellenességeit. Az alkalmazás által a [Application Insightsnak](../../azure-monitor/app/app-insights-overview.md)küldött telemetria proaktív elemzését végzi. Ha hirtelen megnőtt a meghibásodások aránya, vagy az ügyfél vagy a kiszolgáló teljesítménye rendellenes, akkor riasztást kap. Ehhez a szolgáltatáshoz nincs szükség konfigurációra. Akkor működik, ha az alkalmazása elég telemetria küld.
@@ -33,7 +34,7 @@ Az intelligens észlelés észleli és értesíti a különböző problémákró
 
 * [Intelligens észlelés – hibák rendellenességei](../../azure-monitor/app/proactive-failure-diagnostics.md). A gépi tanulás segítségével megadhatja az alkalmazáshoz való sikertelen kérelmek várható arányát, a terhelést és más tényezőket. Ha a hiba aránya a várt borítékon kívül esik, riasztást küldünk.
 * [Intelligens észlelés – teljesítménybeli rendellenességek](../../azure-monitor/app/proactive-performance-diagnostics.md). Értesítéseket kaphat, ha egy művelet vagy függőségi időtartam válaszideje lelassul a korábbi alapkonfigurációhoz képest, vagy ha rendellenes mintázatot azonosít a válaszidő vagy az oldal betöltési ideje alapján.   
-* Az általános romlások és problémák, például a [nyomkövetés romlása](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity), a [memória szivárgása](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), a kivételek és a [biztonság elleni](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack) [eltérések rendellenes növekedése](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) .
+* Az általános romlások és problémák, például a [nyomkövetés romlása](./proactive-trace-severity.md), a [memória szivárgása](./proactive-potential-memory-leak.md), a kivételek és a [biztonság elleni](./proactive-application-security-detection-pack.md) [eltérések rendellenes növekedése](./proactive-exception-volume.md) .
 
 (A Súgó hivatkozásai az egyes értesítésekben a megfelelő cikkekre mutatnak.)
 
@@ -43,13 +44,13 @@ Az _előzetes_verzióként megjelölt szabályok kivételével az összes intell
 
 Az e-mail-értesítések egy adott intelligens észlelési szabályhoz való konfigurálásához nyissa meg az intelligens észlelési **Beállítások** panelt, és válassza ki azt a szabályt, amely megnyitja a **szabály szerkesztése** panelt.
 
-Azt is megteheti, hogy Azure Resource Manager-sablonok használatával módosítja a konfigurációt. További részletekért [lásd: Application Insights intelligens észlelési szabályok kezelése Azure Resource Manager-sablonok használatával](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) .
+Azt is megteheti, hogy Azure Resource Manager-sablonok használatával módosítja a konfigurációt. További részletekért [lásd: Application Insights intelligens észlelési szabályok kezelése Azure Resource Manager-sablonok használatával](./proactive-arm-config.md) .
 
 ## <a name="video"></a>Videó
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ezek a diagnosztikai eszközök segítenek megvizsgálni a telemetria az alkalmazásból:
 
 * [Metrika-kezelő](../../azure-monitor/platform/metrics-charts.md)
@@ -60,4 +61,3 @@ Az intelligens észlelés teljesen automatikus. De lehet, hogy néhány riasztá
 
 * [Manuálisan konfigurált metrikai riasztások](../../azure-monitor/platform/alerts-log.md)
 * [Rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md) 
-

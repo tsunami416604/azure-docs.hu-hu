@@ -4,16 +4,17 @@ description: A klasszikus riasztások elavultak. A riasztások lehetővé teszik
 ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: e9c269db870f582c176783a4654b5de251e24412
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d120550d17dcac7410a259e131ad81feb0afdf9
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114500"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86515954"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik a Microsoft Azure klasszikus riasztásai?
 
 > [!NOTE]
-> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](../../azure-monitor/platform/alerts-overview.md). A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)még nem támogatják az új riasztásokat. 
+> Ez a cikk bemutatja, hogyan hozhat létre régebbi klasszikus metrikai riasztásokat. Azure Monitor mostantól támogatja [az újabb, közel valós idejű metrikai riasztásokat és új riasztási élményt](../../azure-monitor/platform/alerts-overview.md). A klasszikus riasztások kivonásra kerülnek, de továbbra is korlátozott mértékben használják azokat az [erőforrásokat, amelyek](./monitoring-classic-retirement.md)még nem támogatják az új riasztásokat. 
 >
 
 A riasztások lehetővé teszik az adatfeltételek konfigurálását, és értesítést kapnak, ha a feltételek megfelelnek a legújabb figyelési adatnak.
@@ -81,14 +82,14 @@ A webhookok lehetővé teszik az automatizálást és a szervizelést, például
 - Azure logikai alkalmazás
 - harmadik féltől származó szolgáltatás
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Információk kérése a riasztási szabályokról és a konfigurálásuk a használatával:
 
 * További információ a [metrikákkal](data-platform.md) kapcsolatban
 * [Klasszikus metrikai riasztások konfigurálása Azure Portal használatával](alerts-classic-portal.md)
 * [Klasszikus metrikai riasztások PowerShell](alerts-classic-portal.md) konfigurálása
 * [Klasszikus metrikai riasztások parancssori felületének konfigurálása (CLI)](alerts-classic-portal.md)
-* [Klasszikus metrikai riasztások konfigurálása Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Klasszikus metrikai riasztások konfigurálása Azure Monitor REST API](/rest/api/monitor/alertrules)
 * További információ a [tevékenység naplóról](platform-logs-overview.md)
 * [Műveletnapló riasztások konfigurálása Azure Portal használatával](activity-log-alerts.md)
 * [Műveletnapló riasztások konfigurálása a Resource Manager használatával](alerts-activity-log.md)

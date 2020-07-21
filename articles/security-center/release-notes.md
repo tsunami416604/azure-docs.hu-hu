@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 997b7b1442d29c4daa4e47c89a7f53d46c3b8c81
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: e8dc2edf19279aff05e5d5be6096505acf1b3438
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85969585"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519584"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -33,6 +33,9 @@ Ez az oldal rendszeresen frissül, ezért gyakran újra felkeresik. Ha hat hóna
 
 A júliusban elérhető frissítések a következők:
 - [Az Azure Storage veszélyforrások elleni védelme kibővült Azure Files és Azure Data Lake Storage Gen2 (előzetes verzió)](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [Hat házirend a speciális SQL-adatbiztonsághoz – elavult](#six-policies-for-sql-advanced-data-security-deprecated)
+
+
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Az Azure Storage veszélyforrások elleni védelme kibővült Azure Files és Azure Data Lake Storage Gen2 (előzetes verzió)
 
@@ -41,6 +44,23 @@ Az Azure Storage veszélyforrások elleni védelme észleli az Azure Storage-fi�
 Az Ön adatai védetté tehetik, hogy blob-tárolóként, fájlmegosztásként vagy adattavakként vannak tárolva. 
 
 További információ az [Azure Storage veszélyforrások elleni védelméről](threat-protection.md#threat-protection-for-azure-storage-).
+
+
+### <a name="six-policies-for-sql-advanced-data-security-deprecated"></a>Hat házirend a speciális SQL-adatbiztonsághoz – elavult
+
+Az SQL-gépek speciális adatvédelmével kapcsolatos hat szabályzat elavult:
+
+- Az összetett veszélyforrások elleni védelem típusait "all" értékre kell beállítani az SQL felügyelt példány speciális adatbiztonsági beállításainál
+- Az összetett veszélyforrások elleni védelem típusait "all" értékre kell állítani az SQL Server speciális adatbiztonsági beállításaiban
+- Az SQL által felügyelt példány speciális biztonsági beállításaiban szerepelnie kell egy e-mail-címnek a biztonsági riasztások fogadásához
+- Az SQL Server speciális biztonsági beállításaiban szerepelnie kell egy e-mail-címnek a biztonsági riasztások fogadásához
+- A rendszergazdáknak és az előfizetések tulajdonosainak szóló e-mailes értesítéseket engedélyezni kell az SQL felügyelt példány speciális biztonsági beállításaiban.
+- A rendszergazdák és az előfizetések tulajdonosainak szóló e-mail-értesítéseket engedélyezni kell az SQL Server speciális adatbiztonsági beállításaiban
+
+További információ a [beépített szabályzatokról](security-center-policy-definitions.md).
+
+
+
 
 
 ## <a name="june-2020"></a>2020. június

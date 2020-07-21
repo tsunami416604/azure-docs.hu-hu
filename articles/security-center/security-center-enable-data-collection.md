@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: be212de7a24b416ad4e5dc08998ba1147c6f3753
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7aca2820e599c4f3dad364f1ea14eadc634a548
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855925"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519714"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Adatgyűjtés az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a virtuálisgép-méretezési csoportokról, a IaaS-tárolók és a nem Azure-beli (beleértve a helyszíni) számítógépekről a biztonsági rések és fenyegetések figyeléséhez. Az adatok gyűjtése a Log Analytics ügynök használatával történik, amely beolvassa a különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat a gépről, és az adatokat a munkaterületre másolja az elemzéshez. Ilyenek például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó.
@@ -42,7 +42,7 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 
 3. Válassza **az adatgyűjtés**lehetőséget.
 4. Az automatikus **kiépítés**területen válassza **a** be lehetőséget az automatikus kiépítés engedélyezéséhez.
-5. Kattintson a **Mentés** gombra. Az ügynök 15 percen belül minden virtuális gépre telepítve lesz. 
+5. Válassza a **Mentés** lehetőséget. Az ügynök 15 percen belül minden virtuális gépre telepítve lesz. 
 
 >[!TIP]
 > Ha egy munkaterületet ki kell építeni, az ügynök telepítése akár 25 percet is igénybe vehet.
@@ -70,7 +70,7 @@ Security Center által létrehozott munkaterület kiválasztása:
 1. Az **alapértelmezett munkaterület konfigurálása**területen jelölje be a Security Center által létrehozott munkaterület (ok) használata jelölőnégyzetet.
    ![Árképzési szintek kiválasztása][10] 
 
-1. Kattintson a **Save** (Mentés) gombra.<br>
+1. Kattintson a **Mentés** gombra.<br>
     Security Center létrehoz egy új erőforráscsoportot és egy alapértelmezett munkaterületet az adott földrajzi helyhez, és csatlakoztatja az ügynököt az adott munkaterülethez. A munkaterület és az erőforráscsoport elnevezési konvenciója a következő:<br>
    **Munkaterület: Alapértelmezettmunkaterület-[előfizetés-azonosító]-[geo] <br> erőforráscsoport: DefaultResourceGroup-[geo]**
 
@@ -78,7 +78,7 @@ Security Center által létrehozott munkaterület kiválasztása:
 1. Security Center automatikusan engedélyezi a Security Center megoldást a munkaterületen az előfizetéshez beállított díjszabási szinten. 
 
 > [!NOTE]
-> A Security Center által létrehozott munkaterületek Log Analytics árképzési szintje nem befolyásolja Security Center számlázást. A Security Center árazása minden esetben a Security Center biztonsági szabályzat és az egyes munkaterületekre telepített megoldások alapján történik. Az ingyenes szinten a Security Center a *SecurityCenterFree* megoldást teszi elérhetővé az alapértelmezett munkaterületen. A Standard szinten a Security Center a *Security* megoldást teszi elérhetővé az alapértelmezett munkaterületen.
+> A Security Center által létrehozott munkaterületek Log Analytics árképzési szintje nem befolyásolja Security Center számlázást. A Security Center árazása minden esetben a Security Center biztonsági szabályzat és az egyes munkaterületekre telepített megoldások alapján történik. Az ingyenes szinten a Security Center a *SecurityCenterFree* megoldást teszi elérhetővé az alapértelmezett munkaterületen. A standard szint esetében Security Center engedélyezi a *biztonsági* megoldást az alapértelmezett munkaterületen.
 > Az adatok Log Analyticsban való tárolása további díjakat eredményezhet az adattároláshoz. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/security-center/) olvasható.
 
 A meglévő log Analytics-fiókokkal kapcsolatos további információkért lásd: [meglévő log Analytics-ügyfelek](./faq-azure-monitor-logs.md).
@@ -106,7 +106,7 @@ Meglévő Log Analytics munkaterület kiválasztása:
    >
    >
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 4. A **Mentés**gombra kattintva a rendszer megkérdezi, hogy szeretné-e újrakonfigurálni azokat a figyelt virtuális gépeket, amelyek korábban egy alapértelmezett munkaterülethez voltak csatlakoztatva.
 
    - Válassza a **nem** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások csak az új virtuális gépeken legyenek érvényesek. Az új munkaterület-beállítások csak az új ügynök telepítésére érvényesek; újonnan felderített virtuális gépek, amelyeken nincs telepítve a Log Analytics ügynök.
@@ -184,7 +184,7 @@ Itt látható az egyes készletekhez tartozó biztonsági és alkalmazás-zárol
 
 A szűrési házirend kiválasztásához:
 1. Az **adatgyűjtés** lapon válassza ki a szűrési házirendet a **biztonsági események**alatt.
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 
    ![Szűrési házirend kiválasztása][5]
 
@@ -217,7 +217,7 @@ A biztonsági házirendben a beállítás kikapcsolásával bármikor kikapcsolh
 1. Térjen vissza a Security Center főmenüre, és válassza ki a biztonsági házirendet.
 2. Kattintson a **beállítások szerkesztése** elemre azon előfizetés sorában, amely esetében le szeretné tiltani az automatikus kiépítés beállítást.
 3. A **biztonsági házirend – adatgyűjtési** lap **automatikus kiépítés** területén válassza ki a **ki**lehetőséget.
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
    ![Automatikus kiépítés letiltása][6]
 
@@ -293,7 +293,7 @@ Manuálisan is telepítheti a Log Analytics-ügynököt, így Security Center a 
     Ha további információra van szükség arról, hogy Security Center miért nem tudja sikeresen figyelni a virtuális gépeket és a számítógépeket az automatikus kiépítés során, tekintse meg a [figyelési ügynök állapotával kapcsolatos problémákat](security-center-troubleshooting-guide.md#mon-agent).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez a cikk bemutatja, hogyan működik az adatgyűjtés és az automatikus kiépítés a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő lapokat:
 
 * [Azure Security Center – gyakran ismételt kérdések](faq-general.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

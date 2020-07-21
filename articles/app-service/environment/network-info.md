@@ -4,15 +4,15 @@ description: Ismerkedjen meg a bevezető hálózati forgalommal, valamint a hál
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 06/29/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10cb1149880c70d991dd5ab49acceab3283372a7
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80477685"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517853"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service-környezet hálózati megfontolásai #
 
@@ -53,7 +53,7 @@ Vertikális fel-vagy leskálázáskor a rendszer hozzáadja a megfelelő méret�
 
 Ahhoz, hogy a bejelentési funkció működjön, a beadáshoz a következő portok megnyitása szükséges:
 
-| Használat | Feladó | Művelet |
+| Használat | Forrás | Művelet |
 |-----|------|----|
 | Kezelés | Felügyeleti címek App Service | Bekapcsolási alhálózat: 454, 455 |
 |  Belső belső kommunikáció | Bekapcsolási alhálózat: minden port | Bekapcsolási alhálózat: minden port
@@ -109,7 +109,7 @@ Ha megváltoztatja a VNet DNS-beállítását, akkor újra kell indítania a szo
 A központilag működő működési függőségek mellett a portál felületének néhány további eleme is van. A Azure Portal egyes képességei az _SCM-helyhez_való közvetlen hozzáféréstől függenek. Azure App Service minden alkalmazásához két URL van. Az első URL-cím az alkalmazás elérésére szolgál. A második URL-cím az SCM-hely elérésére szolgál, amely más néven a _kudu-konzol_. Az SCM-helyet használó szolgáltatások a következők:
 
 -   WebJobs
--   Functions
+-   Függvények
 -   Naplózási adatfolyam
 -   Kudu
 -   Bővítmények
@@ -153,18 +153,20 @@ A NSG konfigurálható a Azure Portal vagy a PowerShell használatával. Az itt 
 A NSG szükséges, a beosztási funkcióhoz tartozó bejegyzések lehetővé teszik a forgalom használatát:
 
 **Bejövő**
-* az IP-AppServiceManagement a 454 455-es portokon
-* a terheléselosztó a 16001-as porton
+* TCP az IP-szolgáltatás címkéjének AppServiceManagement a 454 455-as porton
+* TCP a terheléselosztó által a 16001-es porton
 * a bekapcsolási alhálózatból az összes porton lévő bekapcsoló alhálózatba
 
 **Kimenő**
-* az 123-es porton lévő összes IP-cím
-* az 80-es porton lévő összes IP-cím, 443
-* az IP-szolgáltatási címke AzureSQL az 1433-as porton
-* az 12000-es porton lévő összes IP-cím
+* UDP – az 123-es port összes IP-címe
+* TCP a 80-es portok összes IP-címeire, 443
+* TCP és az IP-szolgáltatás címkéje AzureSQL az 1433-as porton
+* TCP és az összes IP-cím a 12000-as porton
 * az összes porton lévő bekapcsolási alhálózatra
 
-A DNS-portot nem kell hozzáadni a DNS-be irányuló forgalomhoz, a NSG-szabályok nem érintik. Ezek a portok nem tartalmazzák azokat a portokat, amelyeket az alkalmazásai a sikeres használathoz igényelnek. A normál alkalmazás-hozzáférési portok a következők:
+Ezek a portok nem tartalmazzák azokat a portokat, amelyeket az alkalmazásai a sikeres használathoz igényelnek. Előfordulhat például, hogy az alkalmazásnak meg kell hívnia egy MySQL-kiszolgálót a 3306-as porton a (z) 53-es porton, a NSG-szabályok nem érintik a DNS-re irányuló forgalmat. A 123-es porton futó Network Time Protocol (NTP) az operációs rendszer által használt Time szinkronizációs protokoll. Az NTP-végpontok nem kifejezetten a App Servicesra vonatkoznak, az operációs rendszertől függően változhatnak, és nem szerepelnek jól meghatározott címek listáján. Az időszinkronizálási problémák megelőzése érdekében engedélyeznie kell az UDP-forgalmat az 123-es porton található összes címhez. Az 12000-es porthoz tartozó kimenő TCP a rendszer támogatásához és elemzéséhez szükséges. A végpontok dinamikusak, és nincsenek pontosan meghatározott címekben.
+
+A normál alkalmazás-hozzáférési portok a következők:
 
 | Használat | Portok |
 |----------|-------------|
@@ -200,7 +202,7 @@ Ha ugyanazt az útvonalat manuálisan szeretné létrehozni, kövesse az alábbi
 
 3. Az útválasztási táblázat felhasználói felületén válassza az **útvonalak**  >  **Hozzáadás**lehetőséget.
 
-4. Állítsa a **következő ugrás típusát** az **Internet** értékre, a **címnek** pedig **0.0.0.0/0**értékre. Kattintson a **Mentés** gombra.
+4. Állítsa a **következő ugrás típusát** az **Internet** értékre, a **címnek** pedig **0.0.0.0/0**értékre. Válassza a **Mentés** lehetőséget.
 
     Ekkor a következőhöz hasonló jelenik meg:
 

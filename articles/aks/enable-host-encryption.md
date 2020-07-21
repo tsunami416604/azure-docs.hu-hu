@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan konfigurálhat gazdagép-alapú titkosítást e
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 7b9d930d62d0acea30af9b5e7e12e43fa8fcd5da
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d2b34d8c3090eb6ae3f1445ff1fc663d90367977
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244310"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517722"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Gazdagép-alapú titkosítás az Azure Kubernetes szolgáltatásban (ak) (előzetes verzió)
 
@@ -27,18 +27,18 @@ Ez a funkció csak a fürt létrehozásakor vagy a csomópont-készlet létrehoz
 
 - Győződjön meg arról, hogy a `aks-preview` CLI-bővítmény v 0.4.55 vagy újabb verziója van telepítve
 - Győződjön meg arról, hogy engedélyezve van a `EncryptionAtHost` funkció jelzője `Microsoft.Compute` .
-- Győződjön meg arról, hogy engedélyezve van a `EncryptionAtHost` funkció jelzője `Microsoft.ContainerService` .
+- Győződjön meg arról, hogy engedélyezve van a `EnableEncryptionAtHostPreview` funkció jelzője `Microsoft.ContainerService` .
 
 ### <a name="register-encryptionathost--preview-features"></a>Előzetes verziójú funkciók regisztrálása `EncryptionAtHost`
 
-Ha gazdagép-alapú titkosítást használó AK-fürtöt szeretne létrehozni, engedélyeznie kell a `EncryptionAtHost` szolgáltatás jelölőjét az előfizetésében.
+Ha gazdagép-alapú titkosítást használó AK-fürtöt szeretne létrehozni, engedélyeznie kell a `EnableEncryptionAtHostPreview` és a `EncryptionAtHost` szolgáltatás jelzőit az előfizetésében.
 
 Regisztrálja a `EncryptionAtHost` szolgáltatás jelölőjét az az [Feature Register][az-feature-register] paranccsal az alábbi példában látható módon:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
 
-az feature register --namespace "Microsoft.ContainerService"  --name "EncryptionAtHost"
+az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 Néhány percet vesz igénybe, amíg az állapot *regisztrálva*jelenik meg. A regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával tekintheti meg:
@@ -46,7 +46,7 @@ Néhány percet vesz igénybe, amíg az állapot *regisztrálva*jelenik meg. A r
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
 
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EncryptionAtHost')].{Name:name,State:properties.state}"
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 Ha elkészült, frissítse a `Microsoft.ContainerService` és az erőforrás- `Microsoft.Compute` szolgáltató regisztrációját az az [Provider Register][az-provider-register] paranccsal:
@@ -58,12 +58,12 @@ az provider register --namespace Microsoft.ContainerService
 ```
 
 > [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További részletekért tekintse meg a következő támogatási cikkeket:
+> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További információkért tekintse meg a következő támogatási cikkeket:
 >
 > - [AK-támogatási szabályzatok](support-policies.md)
 > - [Azure-támogatás – gyakori kérdések](faq.md)
 
-### <a name="install-aks-preview-cli-extension"></a>Az Kabai szolgáltatás telepítése – előnézeti CLI-bővítmény
+### <a name="install-aks-preview-cli-extension"></a>Az aks-preview CLI-bővítmény telepítése
 
 A gazdagép-alapú titkosítással rendelkező AK-fürtök létrehozásához a legújabb *AK-előnézet CLI-* bővítményre van szükség. Telepítse az *AK – előzetes* verzió Azure CLI-bővítményét az az [Extension Add][az-extension-add] paranccsal, vagy keresse meg a rendelkezésre álló frissítéseket az az [Extension Update][az-extension-update] paranccsal:
 

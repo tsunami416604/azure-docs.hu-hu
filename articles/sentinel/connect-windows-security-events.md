@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 8da05da1b4aa9966b7743bc38b09d1c4b34c8cc8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6573237cbba8951bdd45c5b32c572b9af772ee5a
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555713"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519257"
 ---
 # <a name="connect-windows-security-events"></a>A Windows biztonsági eseményeinek csatlakoztatása 
 
@@ -79,7 +79,7 @@ Windowsos biztonsági események összegyűjtése az Azure Sentinelben:
 
 1. Válassza ki, hogy melyik eseményazonosító ([az összes, a Common vagy a minimum](#event-sets)) legyen továbbítva.
 
-1. Kattintson a **Frissítés** parancsra.
+1. Kattintson a **Frissítés** lehetőségre.
 
 1. Ha a Windows biztonsági eseményeihez a Log Analytics vonatkozó sémát szeretné használni, írja be a következőt `SecurityEvent` a lekérdezési ablakba:.
 
@@ -87,9 +87,31 @@ Windowsos biztonsági események összegyűjtése az Azure Sentinelben:
 
 Előfordulhat, hogy körülbelül 20 percet vesz igénybe, amíg a naplók meg nem jelennek a Log Analyticsban. 
 
+### <a name="configure-the-security-events-connector-for-anomalous-rdp-login-detection"></a>A biztonsági események összekötő konfigurálása rendellenes RDP-bejelentkezés észleléséhez
 
+> [!IMPORTANT]
+> A rendellenes RDP-bejelentkezési észlelés jelenleg nyilvános előzetes verzióban érhető el.
+> Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott.
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="next-steps"></a>További lépések
+Az Azure Sentinel gépi tanulást (ML) alkalmazhat a biztonsági események adataira a rendellenes RDP protokoll (RDP) bejelentkezési tevékenységek azonosításához. A forgatókönyvek a következők:
+
+- **Szokatlan IP** – az IP-címet az elmúlt 30 napban ritkán vagy soha nem észlelték
+
+- **Szokatlan földrajzi hely** – az elmúlt 30 napban az IP-cím, a város, az ország és az ASN nem észlelhető
+
+- **Új felhasználó** – az új felhasználó egy IP-címről és földrajzi helyről jelentkezik be, és mindkettőt nem várták a 30 nappal korábbi adatok alapján.
+
+**Konfigurációs utasítások**
+
+1. Az RDP bejelentkezési adatok (eseményazonosító: 4624) gyűjtését a **biztonsági események** adatösszekötőn keresztül kell gyűjteni. Győződjön meg arról, hogy a "None" érték mellett kiválasztott egy [eseményt](#event-sets) az Azure sentinelbe való továbbításhoz.
+
+1. Az Azure Sentinel-portálon kattintson **az elemzés**lehetőségre, majd a **szabály sablonok** lapra. Válassza ki az **(előzetes verzió) rendellenes RDP-bejelentkezés észlelési** szabályát, és **engedélyezze**az **állapot** csúszkát.
+
+    > [!NOTE]
+    > Mivel a gépi tanulási algoritmus 30 napos adatmennyiséget igényel a felhasználói viselkedés alapkonfigurációjának összeállításához, az incidensek észlelése előtt 30 napig kell engedélyeznie a biztonsági események gyűjtését.
+
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtanulta, hogyan csatlakoztathatók a Windows biztonsági eseményei az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerkedjen meg a fenyegetések észlelésével az Azure Sentinel használatával, [beépített](tutorial-detect-threats-built-in.md) vagy [Egyéni](tutorial-detect-threats-custom.md) szabályokkal.

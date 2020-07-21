@@ -1,18 +1,18 @@
 ---
-title: Azure-erőforrás figyelése Azure Monitor
-description: Megtudhatja, hogyan gyűjthet és elemezheti az Azure-erőforrások adatait Azure Monitorban.
+title: Azure-beli virtuális gép figyelése Azure Monitor
+description: Megtudhatja, hogyan gyűjthet és elemezheti az Azure-beli virtuális gépek adatait Azure Monitorban.
 ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 99e8afa0a92ba8bb53505e2519efec7baafbcf48
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 40c7b9e5a8b7c38c9468d54e69ca7a73c5f2d46b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805105"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516396"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Gyors útmutató: Azure-beli virtuális gép figyelése Azure Monitor
 [Azure monitor](../overview.md) elindítja az adatok gyűjtését az Azure-beli virtuális gépekről a létrehozásuk pillanatában. Ebben a rövid útmutatóban röviden ismerteti az Azure-beli virtuális gépek számára automatikusan összegyűjtött adatokat, valamint azt, hogy miként tekintheti meg a Azure Portalban. Ezután engedélyezi [Azure monitor for VMS](../insights/vminsights-overview.md) a virtuális géphez, amely lehetővé teszi az ügynökök számára a virtuális gép számára az adatok gyűjtését és elemzését a vendég operációs rendszerből, beleértve a folyamatokat és a függőségeiket.
@@ -48,7 +48,7 @@ A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gy
 
 6. A virtuális gépet az előfizetésében szereplő összes más virtuális géppel megtekintheti. Válassza a **nem figyelt** lapot, ha szeretné megtekinteni az előfizetésében nem szereplő virtuális gépeket.
 
-    ![Bevezetés](media/quick-monitor-azure-vm/get-started.png)
+    ![Első lépések](media/quick-monitor-azure-vm/get-started.png)
 
 
 ## <a name="configure-workspace"></a>Munkaterület konfigurálása
@@ -103,8 +103,8 @@ A rendszer a gazdagép-virtuális gép metrikáit és tevékenységi naplóit gy
 
     ![Log Analytics](media/quick-monitor-azure-vm/log-analytics.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a rövid útmutatóban engedélyezte a Azure Monitor for VMst egy virtuális géphez, és konfigurálta az Log Analytics munkaterületet a vendég operációs rendszer eseményeinek gyűjtésére. Az adatok megtekintésének és elemzésének ismertetéséhez lépjen tovább az útmutatóhoz.
 
 > [!div class="nextstepaction"]
-> [Adatok megtekintése és elemzése a Log Analyticsben](../../azure-monitor/learn/tutorial-viewdata.md)
+> [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/get-started-portal.md)

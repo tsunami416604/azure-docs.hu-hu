@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: yelevin
-ms.openlocfilehash: d76f8e2d750b8ab2d82e9424f929d8b8353ac25a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596d0f4870d9331a332dfb81bd7d2d224964a593
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816450"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519013"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Az Azure Sentinel kiterjesztése munkaterületek és bérlők között
 
@@ -29,7 +29,7 @@ Az Azure Sentinel egy Log Analytics munkaterületre épül. Figyelje meg, hogy a
 
 Egyetlen munkaterület használata esetén az Azure Sentinel használatának teljes előnyeit élvezheti. Ennek ellenére bizonyos esetekben előfordulhat, hogy több munkaterületre van szükség. Az alábbi táblázat felsorolja ezeket a helyzeteket, és ha lehetséges, azt javasolja, hogy a követelmény hogyan lehet megfelelni egyetlen munkaterülettel:
 
-| Követelmény | Description | A munkaterületek számának csökkentési módjai |
+| Követelmény | Leírás | A munkaterületek számának csökkentési módjai |
 |-------------|-------------|--------------------------------|
 | Szuverenitás és szabályozási megfelelőség | Egy munkaterület egy adott régióhoz van kötve. Ha a szabályozás követelményeinek kielégítéséhez különböző [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) -régiókban kell megőrizni az adatmennyiséget, külön munkaterületekre kell bontani. |  |
 | Az adatok tulajdonjoga | Az adattulajdonos határai, például a leányvállalatok vagy a kapcsolt vállalatok, jobban körülhatárolva vannak külön munkaterületek használatával. |  |
@@ -37,7 +37,7 @@ Egyetlen munkaterület használata esetén az Azure Sentinel használatának tel
 | Részletes adathozzáférés-vezérlés | Előfordulhat, hogy egy szervezetnek a szervezeten belül vagy kívül különböző csoportokat is engedélyeznie kell az Azure Sentinel által összegyűjtött adatok eléréséhez. Például:<br><ul><li>Erőforrás-tulajdonosok hozzáférése az erőforrásokhoz kapcsolódó adatforrásokhoz</li><li>A SOCs regionális vagy leányvállalati hozzáférése a szervezet részeihez kapcsolódóan</li></ul> | [Erőforrás-RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/controlling-access-to-azure-sentinel-data-resource-rbac/ba-p/1301463) vagy a [tábla szintjének RBAC](https://techcommunity.microsoft.com/t5/azure-sentinel/table-level-rbac-in-azure-sentinel/ba-p/965043) használata |
 | Részletes adatmegőrzési beállítások | A különböző adattípusok esetében a több munkaterületet is csak a különböző adatmegőrzési időszakok beállítására lehet beállítani. A táblázat szintű adatmegőrzési beállítások bevezetésének köszönhetően számos esetben már nincs szükség erre. | [Táblázat szintű adatmegőrzési beállítások](https://techcommunity.microsoft.com/t5/azure-sentinel/new-per-data-type-retention-is-now-available-for-azure-sentinel/ba-p/917316) használata vagy [az adatok törlésének](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) automatizálása |
 | Felosztott számlázás | A munkaterületek külön előfizetésbe helyezésével különböző feleknek is kiszámlázható. | Használati jelentéskészítés és túlterhelés |
-| Örökölt architektúra | Több munkaterület használata olyan korábbi kialakításokból eredhet, amelyek figyelembe vették a korlátozásokat vagy az ajánlott eljárásokat, amelyek nem rendelkeznek többé igaz értékűek. Az is előfordulhat, hogy egy tetszőleges kialakítási lehetőség is van, amelyet úgy módosíthat, hogy jobban megfeleljen az Azure Sentinelnek.<br><br>Példák:<br><ul><li>Előfizetés alapértelmezett munkaterületének használata Azure Security Center telepítésekor</li><li>A részletes hozzáférés-vezérlési vagy adatmegőrzési beállítások szükségessége, amelyek viszonylag új megoldások</li></ul> | Munkaterületek újratervezése |
+| Örökölt architektúra | Több munkaterület használata olyan korábbi kialakításokból eredhet, amelyek figyelembe vették a korlátozásokat vagy az ajánlott eljárásokat, amelyek nem rendelkeznek többé igaz értékűek. Az is előfordulhat, hogy egy tetszőleges kialakítási lehetőség is van, amelyet úgy módosíthat, hogy jobban megfeleljen az Azure Sentinelnek.<br><br>Erre példák a következők:<br><ul><li>Előfizetés alapértelmezett munkaterületének használata Azure Security Center telepítésekor</li><li>A részletes hozzáférés-vezérlési vagy adatmegőrzési beállítások szükségessége, amelyek viszonylag új megoldások</li></ul> | Munkaterületek újratervezése |
 
 ### <a name="managed-security-service-provider-mssp"></a>Felügyelt biztonsági szolgáltató (MSSP)
 
@@ -103,12 +103,18 @@ A [munkafüzetek](./overview.md#workbooks) irányítópultokat és alkalmazások
 
 A munkafüzetek a három módszer egyikében biztosíthatnak több munkaterületet érintő lekérdezéseket, amelyek mindegyike különböző szintű végfelhasználói szakértelmet tartalmaz:
 
-| Metódus  | Description | Mikor érdemes használni? |
+| Metódus  | Leírás | Mikor érdemes használni? |
 |---------|-------------|--------------------|
 | Több munkaterületet tartalmazó lekérdezések írása | A munkafüzet létrehozója a munkafüzetben több munkaterület-lekérdezést is írhat (lásd fent). | Ez a beállítás lehetővé teszi, hogy a munkafüzet-készítők teljes mértékben védjék a felhasználót a munkaterület struktúrájától. |
 | Munkaterület-választó hozzáadása a munkafüzethez | A munkafüzet létrehozója a munkafüzet részeként implementálhatja a munkaterület-választót az [itt](https://techcommunity.microsoft.com/t5/azure-sentinel/making-your-azure-sentinel-workbooks-multi-tenant-or-multi/ba-p/1402357)leírtak szerint. | Ez a beállítás lehetővé teszi a felhasználó számára a munkafüzet által megjelenített munkaterületek vezérlését egy könnyen használható legördülő lista segítségével. |
 | A munkafüzet interaktív szerkesztése | Egy meglévő munkafüzetet módosító speciális felhasználó szerkesztheti a lekérdezéseket, és kiválasztja a kívánt munkaterületeket a szerkesztő munkaterület-választójának használatával. | Ez a beállítás lehetővé teszi, hogy a Kiemelt felhasználók könnyedén módosíthassák a meglévő munkafüzeteket több munkaterülettel való együttműködéshez. |
 |
+
+### <a name="cross-workspace-hunting"></a>Munkaterületek közötti vadászat
+
+Az Azure Sentinel előre feltöltött lekérdezési mintákat biztosít a kezdéshez, és megismerheti a táblákat és a lekérdezési nyelvet. Ezeket a beépített vadászati lekérdezéseket folyamatosan fejlesztjük a Microsoft biztonsági kutatói, az új lekérdezések hozzáadásával és a meglévő lekérdezések finomhangolásával, így lehetővé teszi az új észlelések keresését és az esetlegesen a biztonsági eszközök által észrevétlenül felderített behatolási jelek azonosítását.  
+
+A több munkaterületre kiterjedő vadászati funkciók lehetővé teszik, hogy a fenyegetésekkel kapcsolatos vadászok új vadászati lekérdezéseket hozzanak létre, vagy meglévőket igazítsanak a több munkaterület lefedéséhez, a Union operátor és a munkaterület () kifejezés használatával.
 
 ## <a name="cross-workspace-management-using-automation"></a>Több munkaterület közötti felügyelet az Automation használatával
 
@@ -123,15 +129,13 @@ A következő szolgáltatások nem támogatottak a munkaterületek között:
 
 - Az ütemezett riasztási szabályok több munkaterületen nem futhatnak több munkaterület közötti lekérdezés használatával.
 
-- A vadászati lekérdezések nem támogatják a több munkaterületre kiterjedő lekérdezéseket.
-
 ## <a name="managing-workspaces-across-tenants-using-azure-lighthouse"></a>Munkaterületek kezelése a bérlők között az Azure Lighthouse használatával
 
 A fentiekben említettek szerint a különböző Azure Sentinel-munkaterületek különböző Azure AD-bérlők között lehetnek. Az [Azure Lighthouse](../lighthouse/overview.md) használatával kiterjesztheti a több munkaterületre kiterjedő tevékenységeket a bérlői határokon belül, így az Ön által kezelt bérlő felhasználói az összes bérlőre kiterjedő Azure Sentinel-munkaterületeken is dolgozhatnak. Az Azure Lighthouse bevezetését követően használja a Azure Portal [Directory + előfizetés választóját](./multiple-tenants-service-providers.md#how-to-access-azure-sentinel-from-other-tenants) a felügyelni kívánt munkaterületeket tartalmazó összes előfizetés kiválasztásához [, hogy](../lighthouse/how-to/onboard-customer.md)azok mind elérhetők legyenek a portál különböző munkaterület-választói között.
 
 Az Azure Lighthouse használata esetén ajánlott minden egyes Azure Sentinel-szerepkörhöz csoportot létrehozni, és az egyes bérlők engedélyeit delegálni ezekre a csoportokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudta, hogyan bővíthető az Azure Sentinel képességei több munkaterületre és bérlőre. Az Azure Sentinel több-munkaterület architektúrájának megvalósításával kapcsolatos gyakorlati útmutatásért tekintse meg a következő cikkeket:
 
 - Ismerje meg, hogyan [dolgozhat több Bérlővel](./multiple-tenants-service-providers.md) az Azure sentinelben az Azure Lighthouse használatával.

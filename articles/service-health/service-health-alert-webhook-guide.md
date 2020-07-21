@@ -4,12 +4,12 @@ description: Személyre szabott értesítések küldése a szolgáltatás állap
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05b0572c89a29fddc881f9977ee437d1319e6254
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062859"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518928"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Rendszerállapot-értesítések konfigurálása a probléma-felügyeleti rendszerekhez webhook használatával
 
@@ -113,7 +113,7 @@ Kövesse az alábbi lépéseket:
 
 1. Nyissa meg a [PagerDuty](https://www.pagerduty.com/) , és ellenőrizze, hogy sikeresen beállította-e az integrációt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](../azure-monitor/platform/service-notifications.md).
+- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](./service-notifications.md).
 - További információ a [műveleti csoportokról](../azure-monitor/platform/action-groups.md).

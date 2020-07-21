@@ -4,11 +4,12 @@ description: Ismerje meg a webhook URL-címére küldött JSON sémáját, ha a 
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1db12f352ec79a3112eada68d82279c9e0343a04
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669046"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516158"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookok az Azure-beli tevékenység naplójának értesítéseihez
 A műveleti csoport definíciójának részeként konfigurálhat webhook-végpontokat a műveletnapló riasztási értesítéseinek fogadására. A webhookok segítségével ezeket az értesítéseket más rendszerekre irányíthatja a feldolgozás utáni vagy egyéni műveletekhez. Ez a cikk bemutatja, hogyan néz ki a HTTP-POST webhookhoz tartozó hasznos adat.
@@ -127,7 +128,7 @@ A POST műveletben található JSON-adattartalom eltér a hasznos adatok. Contex
 }
 ```
 
-### <a name="recommendation"></a>Ajánlás
+### <a name="recommendation"></a>Javaslat
 
 ```json
 {
@@ -213,7 +214,7 @@ A POST műveletben található JSON-adattartalom eltér a hasznos adatok. Contex
 }
 ```
 
-A szolgáltatás állapotával kapcsolatos értesítési tevékenységekről értesítő riasztásokról a [szolgáltatás állapotáról szóló értesítésekben](../../azure-monitor/platform/service-notifications.md)talál további információt. Emellett megtudhatja, hogyan [konfigurálhatja a Service Health webhook-értesítéseket a meglévő probléma-kezelési megoldásokkal](../../service-health/service-health-alert-webhook-guide.md).
+A szolgáltatás állapotával kapcsolatos értesítési tevékenységekről értesítő riasztásokról a [szolgáltatás állapotáról szóló értesítésekben](../../service-health/service-notifications.md)talál további információt. Emellett megtudhatja, hogyan [konfigurálhatja a Service Health webhook-értesítéseket a meglévő probléma-kezelési megoldásokkal](../../service-health/service-health-alert-webhook-guide.md).
 
 ### <a name="resourcehealth"></a>ResourceHealth
 
@@ -253,7 +254,7 @@ A szolgáltatás állapotával kapcsolatos értesítési tevékenységekről ér
 }
 ```
 
-| Elem neve | Description |
+| Elem neve | Leírás |
 | --- | --- |
 | status |Metrikus riasztásokhoz használatos. Mindig az "aktivált" értékre kell beállítani a tevékenység naplójának riasztásai esetében. |
 | összefüggésben |Az esemény kontextusa. |
@@ -285,10 +286,9 @@ A szolgáltatás állapotával kapcsolatos értesítési tevékenységekről ér
 
 Az egyéb műveletnapló-riasztásokkal kapcsolatos konkrét séma részleteiért lásd: [Az Azure-tevékenység naplójának áttekintése](../../azure-monitor/platform/platform-logs-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [További információ a tevékenység naplóról](../../azure-monitor/platform/platform-logs-overview.md).
 * [Azure Automation-parancsfájlok (runbookok-EK) végrehajtása az Azure-riasztásokon](https://go.microsoft.com/fwlink/?LinkId=627081).
 * [Egy logikai alkalmazás használatával SMS-t küldhet egy Azure-riasztásból a Twilio-on keresztül](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Ez a példa metrikus riasztásokra vonatkozik, de úgy módosítható, hogy működjön a tevékenység naplójának riasztásával.
 * [Egy logikai alkalmazás használatával Slack-üzenetet küldhet egy Azure-riasztásból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Ez a példa metrikus riasztásokra vonatkozik, de úgy módosítható, hogy működjön a tevékenység naplójának riasztásával.
 * [Logikai alkalmazás használatával küldhet üzenetet egy Azure-üzenetsor számára egy Azure-riasztásból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app). Ez a példa metrikus riasztásokra vonatkozik, de úgy módosítható, hogy működjön a tevékenység naplójának riasztásával.
-

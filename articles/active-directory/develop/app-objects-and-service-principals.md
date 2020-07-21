@@ -13,12 +13,12 @@ ms.date: 06/29/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 453efd7735c6843ccdaf8dfd86b18d0b2ef8b06d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8ff8ced1723a3cdc969b4a951c31ea1da2d3093
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604624"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518297"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Alkalmazás- és szolgáltatásnév-objektumok az Azure Active Directoryban
 
@@ -47,7 +47,7 @@ Egy egyszerű szolgáltatásnév egy globális Application objektum helyi képvi
 
 Ha egy alkalmazás engedélyt kap a bérlő erőforrásainak elérésére (regisztráció vagy [beleegyezés](developer-glossary.md#consent)esetén), létrejön egy egyszerű szolgáltatásnév objektum. A [Azure PowerShell](howto-authenticate-service-principal-powershell.md), az Azure CLI, a [Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?view=graph-rest-1.0&tabs=http), a [Azure Portal][AZURE-Portal]és más eszközök használatával is létrehozhat egyszerű szolgáltatásnév-objektumokat a bérlőn.  A portál használatakor a rendszer automatikusan létrehoz egy szolgáltatásnevet az alkalmazások regisztrálásakor.
 
-A portál **vállalati alkalmazások** paneljén az egyszerű szolgáltatások listázása és kezelése történik a bérlőben. Megtekintheti az egyszerű szolgáltatás engedélyeit, a felhasználó által megadott engedélyeket, amelyeket a felhasználók megtettek a beleegyezéssel, a bejelentkezési adatokkal és egyéb lehetőségekkel.
+A portál **vállalati alkalmazások** paneljén az egyszerű szolgáltatások listázása és kezelése történik a bérlőben. Megtekintheti az egyszerű szolgáltatás engedélyeit, a felhasználó által megadott engedélyeket, amelyeket a felhasználók megtettek a beleegyezés, a bejelentkezési adatok és egyebek között.
 
 A Microsoft Graph [ServicePrincipal entitás][MS-Graph-Sp-Entity] definiálja az egyszerű szolgáltatásnév objektumának sémáját.
 
@@ -76,13 +76,13 @@ Az alábbi ábrán az alkalmazás alkalmazás-objektuma és a hozzá tartozó eg
 
 Ebben a példában a következő forgatókönyvben:
 
-| Lépés | Description |
+| Lépés | Leírás |
 |------|-------------|
 | 1    | Az alkalmazás és a szolgáltatás egyszerű objektumainak létrehozásának folyamata az alkalmazás kezdőlapjának bérlője. |
 | 2    | Ha a contoso és a fabrikam rendszergazdája teljes körű beleegyezik, a rendszer létrehoz egy egyszerű szolgáltatásnév-objektumot a vállalat Azure AD-bérlőben, és hozzárendeli a rendszergazda által megadott engedélyeket. Azt is vegye figyelembe, hogy a HR-alkalmazás konfigurálható/úgy lett kialakítva, hogy engedélyezze a felhasználók számára az egyéni használatra való hozzájárulásukat. |
 | 3    | A HR-alkalmazás (contoso és Fabrikam) fogyasztói bérlői mindegyike saját egyszerű szolgáltatásnév-objektummal rendelkezik. Mindegyik azt jelenti, hogy az alkalmazás egy példányát futásidőben, a megfelelő rendszergazda által eljuttatott engedélyek szabályozzák. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az alkalmazás és a szolgáltatás egyszerű objektumainak lekérdezéséhez használhatja a [Microsoft Graph Explorert](https://developer.microsoft.com/graph/graph-explorer) is.
 - Az alkalmazás alkalmazás-objektumát a Microsoft Graph API, a [Azure Portal][AZURE-Portal] Application manifest Editor vagy az [Azure ad PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)segítségével érheti el, ahogyan azt a OData [alkalmazási entitása][MS-Graph-App-Entity]képviseli.

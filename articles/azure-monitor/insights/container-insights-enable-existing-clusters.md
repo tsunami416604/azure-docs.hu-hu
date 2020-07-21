@@ -3,15 +3,17 @@ title: Az Azure Kubernetes Service (ak)-fürt üzembe helyezésének figyelése 
 description: Megtudhatja, hogyan engedélyezheti az előfizetésében már üzembe helyezett tárolók Azure Monitor az Azure Kubernetes Service-(ak-) fürtök figyelését.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 2dabbe7a5c0e183363fe05bc4e75da0b6a346e6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: 438e9cfeebc561815c5c0cdbc70123fab718fed1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337969"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516651"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>A már üzembe helyezett Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
-Ez a cikk azt ismerteti, hogyan állíthat be Azure Monitor a tárolók számára az [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) -ben üzemeltetett felügyelt Kubernetes-fürtök figyelésére, amelyek már telepítve vannak az előfizetésében.
+Ez a cikk azt ismerteti, hogyan állíthat be Azure Monitor a tárolók számára az [Azure Kubernetes Service](../../aks/index.yml) -ben üzemeltetett felügyelt Kubernetes-fürtök figyelésére, amelyek már telepítve vannak az előfizetésében.
 
 Engedélyezheti a már üzembe helyezett AK-fürtök figyelését a támogatott módszerek egyikével:
 
@@ -166,7 +168,7 @@ Ha nem ismeri az erőforrások sablon használatával történő központi telep
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
-Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.59 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
 ### <a name="create-and-execute-a-template"></a>Sablon létrehozása és végrehajtása
 
@@ -376,7 +378,7 @@ Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JS
   }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 

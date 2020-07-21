@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b22c653d25dc23bbcb249344affaf83a07f190af
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 77eb3ddfdbf2525aa031c462a38df5dcb8d31217
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024890"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518758"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>A Azure Portal használatával rendeljen hozzá egy RBAC-szerepkört a blob-és üzenetsor-adat eléréséhez
 
@@ -66,7 +66,7 @@ Az itt bemutatott eljárás egy tárolóra vonatkozó hatókört rendel hozzá, 
 
     ![A RBAC-szerepkör hozzárendelését bemutató képernyőkép](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
 
-1. Kattintson a **Save** (Mentés) gombra. Az az identitás, akihez a szerepkört hozzárendelte, megjelenik az adott szerepkör alatt. Az alábbi képen például látható, hogy a felhasználó hozzáadta a *minta-tároló*nevű tárolóban lévő adatok olvasási engedélyét.
+1. Kattintson a **Mentés** gombra. Az az identitás, akihez a szerepkört hozzárendelte, megjelenik az adott szerepkör alatt. Az alábbi képen például látható, hogy a felhasználó hozzáadta a *minta-tároló*nevű tárolóban lévő adatok olvasási engedélyét.
 
     ![A szerepkörhöz hozzárendelt felhasználók listáját megjelenítő képernyőkép](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
@@ -83,7 +83,7 @@ Ha a felhasználóknak el kell tudniuk érni a blobokat a Azure Portalban, majd 
 
 Kövesse az alábbi lépéseket az **olvasó** szerepkör hozzárendeléséhez, hogy egy felhasználó hozzáférhessen a blobokhoz a Azure Portal. Ebben a példában a hozzárendelés a Storage-fiókra terjed ki:
 
-1. A [Azure Portal](https://portal.azure.com)navigáljon a Storage-fiókjához.
+1. Az [Azure Portalon](https://portal.azure.com) lépjen a tárfiókra.
 1. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget a Storage-fiók hozzáférés-vezérlési beállításainak megjelenítéséhez. Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez.
 1. A **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki az **olvasó** szerepkört. 
 1. A **hozzáférés kiosztása** mezőben válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**elemet.
@@ -95,7 +95,7 @@ Az **olvasó** szerepkör kiosztása csak olyan felhasználók számára szüks�
 > [!IMPORTANT]
 > A Azure Portal Storage Explorer előzetes verziója nem támogatja az Azure AD-beli hitelesítő adatok használatát a blob-vagy üzenetsor-adatok megtekintésére és módosítására. Storage Explorer a Azure Portal mindig a fiók kulcsait használja az adateléréshez. A Azure Portal Storage Explorer használatához olyan szerepkört kell hozzárendelni, amely tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a tárolási erőforrások RBAC szerepköreiről: az [Azure-blobok és-várólisták hozzáférésének hitelesítése Azure Active Directory használatával](storage-auth-aad.md). 
 - További információ a RBAC: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).

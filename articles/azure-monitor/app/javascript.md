@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b3d489477a0ee0cc201d4383b5ed960de515c7d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464572"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517110"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -103,7 +104,7 @@ Az egyes konfigurációs beállítások egy új sorban jelennek meg, ha nem szer
 
 Az elérhető konfigurációs lehetőségek a következők 
 
-| Name | Típus | Description
+| Név | Típus | Leírás
 |------|------|----------------
 | src | karakterlánc **[kötelező]** | Az a teljes URL-cím, ahová be kell tölteni az SDK-t. Ezt az értéket egy dinamikusan hozzáadott parancsfájl vagy címke "src" attribútumához használja a rendszer &lt; &gt; . Használhatja a nyilvános CDN-helyet vagy a saját privát üzemeltetését.
 | name | karakterlánc *[nem kötelező]* | A inicializált SDK globális neve, az alapértelmezett érték a appInsights. Így ```window.appInsights``` a inicializált példányra mutató hivatkozás lesz. Megjegyzés: Ha egy név értéket ad meg, vagy egy korábbi példányt rendel hozzá (a globális név appInsightsSDK), akkor ez a name érték a globális névtérben is definiálva lesz ```window.appInsightsSDK=<name value>``` , ezt az SDK inicializálási kódja megköveteli, hogy a rendszer inicializálja és frissítse a megfelelő kódrészletet és proxy metódusokat.
@@ -152,9 +153,9 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguráció
 A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező, kivéve a következőt: `instrumentationKey` .
 
-| Name | Alapértelmezett | Description |
+| Name | Alapértelmezett | Leírás |
 |------|---------|-------------|
-| instrumentationKey | null | **Szükséges**<br>A Azure Portaltól beszerzett kialakítási kulcs. |
+| instrumentationKey | null | **Kötelező**<br>A Azure Portaltól beszerzett kialakítási kulcs. |
 | accountId | null | Egy nem kötelező fiókazonosító, ha az alkalmazás a felhasználókat fiókokba csoportosítja. Nincsenek szóközök, vesszők, pontosvesszők, egyenlők vagy függőleges sávok |
 | sessionRenewalMs | 1800000 | A rendszer naplózza a munkamenetet, ha a felhasználó ennél az időtartamnál ezredmásodpercben inaktív. Az alapértelmezett érték 30 perc |
 | sessionExpirationMs | 86400000 | A rendszer naplózza a munkamenetet, ha ez az időtartam ezredmásodpercben továbbra is fennáll. Az alapértelmezett érték 24 óra |
@@ -169,30 +170,30 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 | samplingPercentage | 100 | Az elküldeni kívánt események százalékos aránya. Az alapértelmezett érték 100, ami azt jelenti, hogy az összes esemény el lesz küldve. Állítsa be ezt, ha nagy méretű alkalmazásokhoz szeretné megőrizni az adatkorlátot. |
 | autoTrackPageVisitTime | hamis | Ha az értéke igaz, a rendszer nyomon követi az előző műszeres lap megtekintési idejét, és telemetria, és új időzítőt indít el az aktuális oldalmegtekintéshez. Az alapértelmezett érték a false (hamis). |
 | disableAjaxTracking | hamis | Ha az értéke igaz, a rendszer nem gyűjti az Ajax-hívásokat. Az alapértelmezett érték a false (hamis). |
-| disableFetchTracking | igaz | Ha az értéke igaz, a rendszer nem gyűjti be a kérelmeket. Az alapértelmezett érték TRUE (igaz) |
+| disableFetchTracking | true | Ha az értéke igaz, a rendszer nem gyűjti be a kérelmeket. Az alapértelmezett érték TRUE (igaz) |
 | overridePageViewDuration | hamis | Ha az értéke TRUE (igaz), a rendszer a trackPageView alapértelmezett viselkedését az oldal nézet időtartamának végére rögzíti, amikor a trackPageView hívása történik. Ha hamis, és nem ad meg egyéni időtartamot a trackPageView, a rendszer a navigációs időzítési API használatával számítja ki az oldal nézetének teljesítményét. Az alapértelmezett érték a false (hamis). |
 | maxAjaxCallsPerView | 500 | Alapértelmezett 500 – meghatározza, hogy hány AJAX-hívást fog figyelni az oldal nézetében. Az-1 értékre állítva az összes (korlátlan) AJAX-hívást a lapon figyelheti. |
-| disableDataLossAnalysis | igaz | Hamis érték esetén a rendszer a belső telemetria-küldő puffereket a még el nem küldött elemek indításakor ellenőrzi. |
+| disableDataLossAnalysis | true | Hamis érték esetén a rendszer a belső telemetria-küldő puffereket a még el nem küldött elemek indításakor ellenőrzi. |
 | disableCorrelationHeaders | hamis | Hamis érték esetén az SDK két fejlécet ("Request-id" és "kérés-környezet") hoz létre az összes függőségi kérelemhez, hogy azok összekapcsolják őket a kiszolgálói oldalon található megfelelő kérelmekkel. Az alapértelmezett érték a false (hamis). |
 | correlationHeaderExcludedDomains |  | A korrelációs fejlécek letiltása adott tartományokban |
 | correlationHeaderDomains |  | Korrelációs fejlécek engedélyezése adott tartományokhoz |
 | disableFlushOnBeforeUnload | hamis | Alapértelmezett hamis érték. Ha az értéke TRUE (igaz), a flush metódus nem lesz meghívva, ha a onBeforeUnload esemény-eseményindítók |
-| enableSessionStorageBuffer | igaz | Alapértelmezett érték: true (igaz). Ha az értéke igaz, a rendszer az összes el nem juttatott telemetria rendelkező puffert tárolja a munkamenet-tárolóban. A rendszer visszaállítja a puffert az oldal betöltésekor |
+| enableSessionStorageBuffer | true | Alapértelmezett érték: true (igaz). Ha az értéke igaz, a rendszer az összes el nem juttatott telemetria rendelkező puffert tárolja a munkamenet-tárolóban. A rendszer visszaállítja a puffert az oldal betöltésekor |
 | isCookieUseDisabled | hamis | Alapértelmezett hamis érték. Ha az érték TRUE (igaz), az SDK nem tárol és nem olvas be semmilyen cookie-t.|
 | cookieDomain | null | Egyéni cookie-tartomány. Ez akkor hasznos, ha Application Insights cookie-kat szeretne megosztani altartományokon keresztül. |
 | isRetryDisabled | hamis | Alapértelmezett hamis érték. Ha hamis, próbálkozzon újra 206 (részleges siker), 408 (időtúllépés), 429 (túl sok kérés), 500 (belső kiszolgálóhiba), 503 (a szolgáltatás nem érhető el) és 0 (offline, csak ha észlelhető) |
 | isStorageUseDisabled | hamis | Ha az érték TRUE (igaz), az SDK nem tárolja és nem olvassa be a helyi és munkamenet-tárolóból származó összes adatforrást. Az alapértelmezett érték a false (hamis). |
-| isBeaconApiDisabled | igaz | Ha hamis, az SDK az összes telemetria elküldi a [Beacon API](https://www.w3.org/TR/beacon) használatával |
+| isBeaconApiDisabled | true | Ha hamis, az SDK az összes telemetria elküldi a [Beacon API](https://www.w3.org/TR/beacon) használatával |
 | onunloadDisableBeacon | hamis | Alapértelmezett hamis érték. Ha a TAB be van zárva, az SDK az összes fennmaradó telemetria elküldi a [Beacon API](https://www.w3.org/TR/beacon) használatával. |
 | sdkExtension | null | Beállítja az SDK-bővítmény nevét. Csak alfabetikus karakterek engedélyezettek. A bővítmény neve előtagként szerepel az "Ai. internal. sdkVersion" címkében (például "ext_javascript: 2.0.0"). Az alapértelmezett érték null. |
-| isBrowserLinkTrackingEnabled | hamis | Az alapértelmezett érték a false (hamis). Ha az érték TRUE (igaz), az SDK nyomon fogja követni az összes [böngészőbeli hivatkozás](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink) kérését. |
+| isBrowserLinkTrackingEnabled | hamis | Az alapértelmezett érték a false (hamis). Ha az érték TRUE (igaz), az SDK nyomon fogja követni az összes [böngészőbeli hivatkozás](/aspnet/core/client-side/using-browserlink) kérését. |
 | appId | null | A AppId az AJAX-függőségek közötti korrelációt használja a kiszolgálóoldali kérelmekkel az ügyfélen. Ha a Beacon API engedélyezve van, nem használható automatikusan, de manuálisan is beállítható a konfigurációban. Az alapértelmezett érték null |
 | enableCorsCorrelation | hamis | Ha az értéke igaz, az SDK két fejlécet ("Request-id" és "Request-Context") ad hozzá az összes CORS-kérelemhez a kimenő AJAX-függőségek összekapcsolásához a kiszolgálói oldalon található megfelelő kérelmekkel. Az alapértelmezett érték false (hamis) |
 | namePrefix | nem definiált | Egy nem kötelezően megadandó érték, amely a localStorage és a cookie neveként a Postfix nevet fogja használni.
 | enableAutoRouteTracking | hamis | Az útvonalak változásainak automatikus követése egyoldalas alkalmazásokban (SPA). Ha az érték TRUE (igaz), akkor minden útvonal változása egy új oldalmegtekintést küld Application Insightsnak. A kivonatoló útvonalak változásai ( `example.com/foo#bar` ) új oldalletöltésekként is rögzítve lesznek.
 | enableRequestHeaderTracking | hamis | Igaz értéke esetén az AJAX & a lekérési kérelmek fejlécének nyomon követése, az alapértelmezett érték a false.
 | enableResponseHeaderTracking | hamis | Igaz értéke esetén a rendszer az AJAX & beolvasási kérelem válaszának fejléceit nyomon követi, az alapértelmezett érték a false.
-| distributedTracingMode | `DistributedTracingModes.AI` | Beállítja az elosztott nyomkövetési módot. Ha AI_AND_W3C mód vagy W3C mód van beállítva, a rendszer a W3C nyomkövetési környezet fejléceit (traceparent/tracestate) hozza létre és tartalmazza az összes kimenő kérelemben. AI_AND_W3C biztosítva a visszamenőleges kompatibilitáshoz bármely örökölt Application Insights által biztosított szolgáltatással. Lásd [itt](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps)a példát.
+| distributedTracingMode | `DistributedTracingModes.AI` | Beállítja az elosztott nyomkövetési módot. Ha AI_AND_W3C mód vagy W3C mód van beállítva, a rendszer a W3C nyomkövetési környezet fejléceit (traceparent/tracestate) hozza létre és tartalmazza az összes kimenő kérelemben. AI_AND_W3C biztosítva a visszamenőleges kompatibilitáshoz bármely örökölt Application Insights által biztosított szolgáltatással. Lásd [itt](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)a példát.
 | enableAjaxErrorStatusText | hamis | Alapértelmezett hamis érték. Ha az értéke TRUE (igaz), a nem a sikertelen AJAX-kérelmekhez tartozó függőségi esemény szövege
 | enableAjaxPerfTracking | hamis | Alapértelmezett hamis érték. A felkeresett és a további böngészőablakokat is tartalmazó jelző. a jelentett Ajax (x/óra és beolvasás) teljesítménybeli időzítései jelentettek mérőszámokat.
 | maxAjaxPerfLookupAttempts | 3 | Az alapértelmezett érték 3. Az ablak keresésének maximális száma. a teljesítmény időzítése (ha elérhető), ez azért szükséges, mert nem minden böngésző tölti ki az ablakot. a teljesítmény az x/h-kérelem végének bejelentése előtt, valamint a beolvasási kérelmeknél ez a befejezés után lesz hozzáadva.
@@ -210,34 +211,34 @@ Jelenleg egy külön [reakciós beépülő modult](#react-extensions)is kínálu
 
 ## <a name="configuration-autotrackpagevisittime"></a>Konfiguráció: autoTrackPageVisitTime
 
-A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az egyes lapokon töltött idő nyomon követhető. Minden egyes új Oldalmegtekintésnél az *előző* oldalon eltöltött felhasználói időtartamot [Egyéni metrikaként](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) kell elküldeni `PageVisitTime` . Ez az egyéni metrika a [Metrikaböngésző](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) "napló alapú metrika" néven látható.
+A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az egyes lapokon töltött idő nyomon követhető. Minden egyes új Oldalmegtekintésnél az *előző* oldalon eltöltött felhasználói időtartamot [Egyéni metrikaként](../platform/metrics-custom-overview.md) kell elküldeni `PageVisitTime` . Ez az egyéni metrika a [Metrikaböngésző](../platform/metrics-getting-started.md) "napló alapú metrika" néven látható.
 
 ## <a name="react-extensions"></a>Reakciós bővítmények
 
 | Bővítmények |
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [Natív reagálás](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Böngésző-és ügyféloldali adat megismerése
 
 A böngésző-és ügyféloldali adatokat a **metrikák** segítségével tekintheti meg, és hozzáadhatja az Önt érdeklő egyéni metrikákat:
 
-![](./media/javascript/page-view-load-time.png)
+![Képernyőkép a Application Insights metrikáinak oldaláról, amely egy webalkalmazás metrikáinak adatait jeleníti meg.](./media/javascript/page-view-load-time.png)
 
 Az adatait a JavaScript SDK-ból is megtekintheti a portálon elérhető böngésző használatával.
 
 Válassza a **böngésző** lehetőséget, majd válassza a **hibák** vagy a **teljesítmény**lehetőséget.
 
-![](./media/javascript/browser.png)
+![Képernyőkép a Application Insights böngésző oldaláról, amely bemutatja, hogyan adhatók hozzá böngészőbeli hibák vagy a böngésző teljesítménye a webalkalmazáshoz megtekinthető mérőszámokhoz.](./media/javascript/browser.png)
 
 ### <a name="performance"></a>Teljesítmény
 
-![](./media/javascript/performance-operations.png)
+![Képernyőkép a Application Insights teljesítményéről, amely megjeleníti a webalkalmazás műveleti metrikáinak grafikus megjelenítését.](./media/javascript/performance-operations.png)
 
 ### <a name="dependencies"></a>Függőségek
 
-![](./media/javascript/performance-dependencies.png)
+![Képernyőkép a teljesítmény oldaláról Application Insights a webalkalmazások függőségi metrikáinak megjelenítését bemutató ábrán.](./media/javascript/performance-dependencies.png)
 
 ### <a name="analytics"></a>Elemzés
 
@@ -270,7 +271,7 @@ A Application Insights-erőforrást saját Azure Blob Storage-tárolóhoz csatol
 
 1. Válasszon ki egy kivételt telemetria elemet a Azure Portal a "végpontok közötti tranzakció részletei" megtekintéséhez.
 2. Azonosítsa, hogy mely forrás-térképek felelnek meg ehhez a hívási veremnek. A forrás-hozzárendelésnek egyeznie kell egy verem-keret forrásfájljait, de utótagja`.map`
-3. Húzza át a forrást a hívási verembe a Azure Portal![](https://i.imgur.com/Efue9nU.gif)
+3. Húzza a forrás leképező térképeket a hívási verembe a Azure Portal ![ egy animált képet, amely bemutatja, hogyan húzhatja át a forrás-leképezési fájlokat egy Build mappából a Azure Portal hívási verem ablakába.](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights webes alapszintű
 

@@ -11,14 +11,14 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ef482804c80602771963633bcc46feaf014c363
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efcf2df4e472d022fcdec0c9b7c69c73192c503f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373828"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518470"
 ---
-# <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect GYIK
+# <a name="azure-active-directory-connect-cloud-provisioning-faq"></a>Azure Active Directory Connect Cloud kiépítés – gyakori kérdések
 
 További információ az Azure Active Directory (Azure AD) felhőalapú kiépítés összekapcsolásával kapcsolatos gyakori kérdésekről.
 
@@ -84,7 +84,7 @@ Nem, a Server Core-ügynök telepítése nem támogatott.
 
 Nem, az átmeneti kiszolgálók nem támogatottak.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

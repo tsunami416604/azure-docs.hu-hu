@@ -2,24 +2,20 @@
 title: Biztonsági technikai képességek az Azure-ban – Microsoft Azure
 description: Az Azure-beli Security Services bemutatása, amely segít a felhőben tárolt adatvédelemben, erőforrásokban és alkalmazásokban.
 services: security
-documentationcenter: na
-author: UnifyCloud
-manager: barbkess
-editor: TomSh
+author: terrylanfear
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/31/2019
-ms.author: TomSh
-ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.author: terrylan
+ms.openlocfilehash: 29e6aa96ea1c435e4d734e80824e1cedcfe9a761
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76845344"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519320"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességei
 Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítségével megvédheti adatait, erőforrásait és alkalmazásait a felhőben, és teljesítheti a vállalata biztonsági igényeit.
@@ -82,7 +78,7 @@ A következő alapvető Azure Identity Management-képességek:
 
 - Privileged Identity Management
 
-- Identitásvédelem
+- Identity protection
 
 #### <a name="single-sign-on"></a>Egyszeri bejelentkezés
 
@@ -144,7 +140,7 @@ A Azure AD Privileged Identity Management a következőket teszi lehetővé:
 
 - A Kiemelt szerepkörhöz való hozzáférésre vonatkozó riasztások beszerzése
 
-#### <a name="identity-protection"></a>Identitásvédelem
+#### <a name="identity-protection"></a>Identity protection
 
 A [Azure ad Identity Protection](../../active-directory/identity-protection/overview.md) egy olyan biztonsági szolgáltatás, amely összevont nézetet biztosít a szervezet identitásait érintő kockázati észlelések és potenciális sebezhetőségek számára. Az Identity Protection meglévő Azure Active Directory anomáliák észlelési képességeit használja (az Azure AD rendellenes tevékenységi jelentésein keresztül érhető el), és új kockázati észlelési típusokat vezet be, amelyek valós időben észlelik a rendellenességeket.
 
@@ -169,77 +165,11 @@ Az RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a c
 A felhőben az adatvédelem egyik kulcsa az, hogy milyen állapotokban lehet az adatai, és hogy milyen vezérlők érhetők el az adott állapotban. Az Azure adatbiztonsággal és a titkosítással kapcsolatos ajánlott eljárások az alábbi adatállapotok körüli javaslatok.
 
 - A REST-on: magában foglalja az összes olyan adattárolási objektumot, tárolót és típust, amely statikusan, fizikai adathordozón található, mágneses vagy optikai lemez.
-
 - Tranzitban: Ha az adatok átvitele az összetevők, a helyszínek és a programok között történik, például a hálózaton keresztül, a helyszíniről a felhőbe és fordítva, beleértve a hibrid kapcsolatokat, például a ExpressRoute-t, vagy egy bemeneti/kimeneti folyamat során, úgy gondolja, hogy mozgásban van.
 
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
-Ha a titkosítást szeretné elérni a nyugalmi állapotban, tegye a következőket:
-
-Az alábbi táblázatban szereplő ajánlott titkosítási modellek legalább egyikét támogatja az adattitkosításhoz.
-
-| Titkosítási modellek |  |  |  |
-| ----------------  | ----------------- | ----------------- | --------------- |
-| Kiszolgáló titkosítása | Kiszolgáló titkosítása | Kiszolgáló titkosítása | Ügyfél-titkosítás
-| Kiszolgálóoldali titkosítás a szolgáltatás által felügyelt kulcsokkal | Kiszolgálóoldali titkosítás az ügyfél által felügyelt kulcsok használatával Azure Key Vault | Kiszolgálóoldali titkosítás a helyszíni ügyfél által felügyelt kulcsok használatával |
-| • Az Azure-erőforrás-szolgáltatók végrehajtják a titkosítási és a visszafejtési műveleteket <br> • A Microsoft kezeli a kulcsokat <br>• Teljes körű Felhőbeli funkciók | • Az Azure-erőforrás-szolgáltatók végrehajtják a titkosítási és a visszafejtési műveleteket<br>• Ügyfél-vezérlési kulcsok Azure Key Vaulton keresztül<br>• Teljes körű Felhőbeli funkciók | • Az Azure-erőforrás-szolgáltatók végrehajtják a titkosítási és a visszafejtési műveleteket <br>• Customer Controls-kulcsok a helyszínen <br> • Teljes körű Felhőbeli funkciók| • Az Azure-szolgáltatások nem látják a visszafejtett információt <br>• Az ügyfelek a helyszínen (vagy más biztonságos áruházakban) is megőrzik a kulcsokat. A kulcsok nem érhetők el az Azure-szolgáltatások számára <br>• Csökkentett Felhőbeli funkciók|
-
-### <a name="enabling-encryption-at-rest"></a>Titkosítás engedélyezése nyugalmi állapotban
-
-**Az adattárolók által tárolt összes hely azonosítása**
-
-A REST titkosítás célja az összes adat titkosítása. Ezzel kiküszöbölhető a fontos vagy az összes megőrzött helyszín hiányának lehetősége. Az alkalmazás által tárolt összes adathalmaz enumerálása.
-
-> [!Note]
-> Nem csupán az "Alkalmazásadatok" vagy a "személyes adatok", hanem az alkalmazással kapcsolatos összes adat, beleértve a fiók metaadatait (előfizetés-hozzárendeléseket, szerződési adatokat, személyes adatokat).
-
-Gondolja át, milyen tárolókat használ az adattároláshoz. Például:
-
-- Külső tárterület (például SQL Azure, dokumentum-adatbázis, Hdinsight, Data Lake stb.)
-
-- Ideiglenes tároló (bármely helyi gyorsítótár, amely tartalmazza a bérlői adatmennyiséget)
-
-- Memóriában tárolt gyorsítótár (lehet a lapozófájlba helyezni.)
-
-### <a name="leverage-the-existing-encryption-at-rest-support-in-azure"></a>Kihasználhatja a meglévő titkosítást a REST-támogatásban az Azure-ban
-
-Minden egyes használt áruház esetében használja a meglévő titkosítást a REST-támogatásban.
-
-- Azure Storage: tekintse [meg az azure Storage Service encryption az inaktív adatokról szóló](../../storage/common/storage-service-encryption.md)témakört.
-
-- SQL Azure: lásd [transzparens adattitkosítás (TDE), SQL Always encrypted](https://msdn.microsoft.com/library/mt163865.aspx)
-
-- VM & helyi lemezes tárolás ([Azure Disk Encryption](../azure-security-disk-encryption-overview.md))
-
-A virtuális gép és a helyi lemezes tárolás Azure Disk Encryption, ahol a támogatott:
-
-#### <a name="iaas"></a>IaaS
-
-A IaaS-alapú virtuális gépekkel (Windows vagy Linux) rendelkező szolgáltatásoknak [Azure Disk Encryption](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx) kell használniuk az ügyféladatokat tartalmazó kötetek titkosításához.
-
-#### <a name="paas-v2"></a>Pásti v2
-
-A Pásti v2-ben futó szolgáltatások a Service Fabric használatával a (z) [VMSS] virtuálisgép-méretezési csoportnál használhatják az Azure Disk Encryption szolgáltatást a saját Pásti v2 virtuális gépek titkosításához.
-
-#### <a name="paas-v1"></a>Pásti v1
-
-A Azure Disk Encryption jelenleg nem támogatott a Pásti v1-es verzióban. Ezért az alkalmazás szintű titkosítást kell használnia a megőrzött adatok titkosításához.  Ez magában foglalja a, de nem kizárólagosan, az alkalmazásadatok, az ideiglenes fájlok, a naplók és az összeomlási memóriaképek mennyiségét.
-
-A legtöbb szolgáltatásnak meg kell próbálnia kihasználnia egy tárolási erőforrás-szolgáltató titkosítását. Egyes szolgáltatásoknak explicit titkosítást kell végezniük, például a megőrzött kulcsfontosságú anyagokat (tanúsítványokat, gyökér/főkulcsokat) Key Vault kell tárolni.
-
-Ha az ügyfél által felügyelt kulcsokkal támogatja a szolgáltatási oldali titkosítást, akkor az ügyfélnek meg kell szereznie a kulcsot a számunkra. A támogatott és ajánlott módszer a Azure Key Vault (AKV) integrálásával. Ebben az esetben az ügyfelek felvehetik és kezelhetik a kulcsaikat Azure Key Vaultban. Az ügyfél megtudhatja, hogyan használhatja a AKV-t [a első lépések és a Key Vault](https://go.microsoft.com/fwlink/?linkid=521402)segítségével.
-
-A Azure Key Vault-nal való integráláshoz programkódot kell hozzáadnia ahhoz, hogy AKV a kulcs igényléséhez, ha a visszafejtéshez szükséges.
-
-- A AKV-nal való integrálásával kapcsolatos információkért tekintse meg a [Azure Key Vault – részletes](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step/) útmutató című témakört.
-
-Ha támogatja az ügyfél által felügyelt kulcsokat, meg kell adnia egy UX-t az ügyfél számára annak meghatározásához, hogy melyik Key Vault (vagy Key Vault URI) kívánja használni.
-
-Mivel a REST-titkosítás magában foglalja a gazdagép-, infrastruktúra-és bérlői adatok titkosítását, a rendszerhiba vagy rosszindulatú tevékenység miatt a kulcsok elvesztése azt jelentheti, hogy a titkosított adatok elvesznek. Ezért fontos, hogy a titkosítás a REST-megoldásban átfogó vész-helyreállítási történetet biztosítson a rendszerhibákkal és a rosszindulatú tevékenységekkel szemben.
-
-A REST-titkosítást megvalósító szolgáltatások általában továbbra is hajlamosak a gazdagép meghajtóján titkosítatlan titkosítási kulcsokra vagy adatokra (például a gazdagép operációs rendszerének lapozófájljában). Ezért a szolgáltatásoknak biztosítaniuk kell, hogy a szolgáltatások gazdagép-kötete titkosítva legyen. Ennek elősegítése érdekében a számítási csapat engedélyezte a gazdagép titkosításának telepítését, amely a [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) NKP és bővítményeit használja a DCM szolgáltatásnak és az ügynöknek a gazdagép kötetének titkosítására.
-
-A legtöbb szolgáltatás a standard Azure-beli virtuális gépeken valósul meg. Az ilyen szolgáltatásoknak automatikusan kell lekérniük a [gazdagépek titkosítását](../azure-security-disk-encryption-overview.md) , ha a számítási funkció engedélyezve van. A számítási felügyelt fürtök gazdagépének titkosítása szolgáltatásban futó szolgáltatások esetében a rendszer automatikusan engedélyezi a Windows Server 2016-es verzióját.
+A inaktív adatok titkosítását részletesen ismertetjük az Azure-beli [adattitkosításban](encryption-atrest.md).
 
 ### <a name="encryption-in-transit"></a>Átvitel közbeni titkosítás
 
@@ -280,7 +210,7 @@ Az [adatbesorolásra](https://download.microsoft.com/download/0/A/3/0A3BE969-85C
 ## <a name="secure-your-application"></a>Az alkalmazás biztonságossá tétele
 Míg az Azure felelős az alkalmazás által futtatott infrastruktúra és platform védelméért, az Ön felelőssége, hogy saját maga is biztonságossá tegye az alkalmazást. Más szóval az alkalmazás kódjának és tartalmának biztonságos módon történő fejlesztését, üzembe helyezését és kezelését kell végeznie. Ennek hiányában az alkalmazás kódja vagy tartalma továbbra is sebezhető lehet a fenyegetésekkel szemben.
 
-### <a name="web-application-firewall"></a>Web application firewall (Webalkalmazási tűzfal)
+### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
 A [webalkalmazási tűzfal (WAF)](../../application-gateway/waf-overview.md) a [Application Gateway](../../application-gateway/overview.md) szolgáltatása, amely központosított védelmet biztosít a webalkalmazások számára a gyakori biztonsági rések és sebezhetőségek ellen.
 
 A webalkalmazási tűzfal az [alapvető OWASP-szabálykészletek](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0-s vagy 2.2.9-es verzióinak szabályai alapján működik. A webalkalmazások egyre inkább ki vannak téve rosszindulatú támadásoknak, amelyek az ismert biztonsági réseket használják ki. Az ilyen jellegű támadások között például gyakoriak az SQL-injektálásos és a webhelyek közötti, parancsprogramot alkalmazó támadások. Az ilyen támadások megakadályozása az alkalmazás kódjában kihívást jelenthet, és szigorú felügyeletet, javítást és megfigyelést igényelhet az alkalmazás topológiájának több rétegén. A központosított webalkalmazási tűzfal egyszerűbbé teszi a biztonságfelügyeletet, és segít az alkalmazás-rendszergazdáknak a fenyegetések vagy a behatolások elleni védekezésben. Emellett a WAF-megoldás gyorsabban képes kezelni a biztonsági fenyegetéseket azáltal, hogy kijavítja az ismert biztonsági réseket egy központi helyen, ahelyett hogy az egyes webalkalmazások védelmét biztosítaná. A meglévő alkalmazásátjárókat egyszerűen át lehet alakítani webalkalmazási tűzfallal rendelkező alkalmazásátjárókká.
@@ -409,7 +339,7 @@ Ezzel a módszerrel különböző forrásokból is összevonhatja az adatait, í
 
 A Security Center a potenciális biztonsági hiányosságok azonosítása érdekében elemzi az Azure-erőforrások biztonsági állapotát. A javaslatok listája végigvezeti Önt a szükséges szabályozási folyamatok konfigurálásának folyamatán.
 
-Példák:
+Erre példák a következők:
 
 - Kártevőirtók kiépítése a kártékony szoftverek azonosításához és eltávolításához
 
@@ -500,7 +430,7 @@ A Resource Manager számos előnyt kínál:
 > [!Note]
 > A Resource Manager egy új módot kínál a megoldások telepítésére és kezelésére. Ha a korábbi üzemi modellt használta, és szeretne többet megtudni a változásokról, tekintse meg a [Resource Manager-telepítés és a klasszikus üzembe helyezés ismertetése](../../azure-resource-manager/management/deployment-models.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A biztonságról további információt a részletes biztonsági témakörökben talál:
 

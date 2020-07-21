@@ -4,11 +4,12 @@ description: Az aktív javaslatok rendszeres összefoglalásának beolvasása
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
-ms.openlocfilehash: 98f1bfd42a486e005cd1e777a83f5b615a7c8304
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e446fca11e029e28e44ada884efd071f3142514c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79502463"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518079"
 ---
 # <a name="configure-periodic-summary-for-recommendations"></a>Javaslatok rendszeres összegzésének konfigurálása
 
@@ -20,7 +21,7 @@ Az Advisor **Ajánlói kivonatok** egyszerű és proaktív módszert biztosítan
 Az **ajánlás kivonatoló** létrehozási élménye segít az összefoglalás konfigurálásában. A konfigurációk alábbi paraméterei közül választhat:
 1. Kategória: javasoljuk, hogy a költségeket, a magas rendelkezésre állást, a teljesítményt és az üzemeltetési kiválóságot is felkínáljuk. A funkció még nem érhető el biztonsági javaslatokhoz.
 2. Kivonatoló gyakoriság: az összegző értesítések gyakorisága hetente, kéthetente és havonta is elvégezhető.
-3. Műveleti Csoport: választhat egy meglévő műveleti csoportot, vagy létrehozhat egy új műveleti csoportot. A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups).
+3. Műveleti Csoport: választhat egy meglévő műveleti csoportot, vagy létrehozhat egy új műveleti csoportot. A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése](../azure-monitor/platform/action-groups.md).
 4. A kivonatoló nyelve
 5. Javaslat kivonatoló neve: használhat egy felhasználóbarát karakterláncot a kivonatok jobb nyomon követéséhez és figyeléséhez.
 
@@ -43,14 +44,14 @@ Az **ajánlási kivonat** létrehozásának lépései a következők:
 
    ![Ajánlási kivonatoló beviteli feltételek megadása](./media/digest-2.png)
 
-* **5. lépés:** A **műveleti csoport** szakaszban válassza ki a kivonatoló **műveleti csoportot** . További információt itt talál: [műveleti csoportok létrehozása és kezelése](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+* **5. lépés:** A **műveleti csoport** szakaszban válassza ki a kivonatoló **műveleti csoportot** . További információt itt talál: [műveleti csoportok létrehozása és kezelése](../azure-monitor/platform/action-groups.md)
 
    ![Ajánlás kivonatoló bemeneti műveleti csoportjának megadása](./media/digest-3.png)
 
 * **6. lépés:** Ebben az utolsó szakaszban a **kivonatoló adatokhoz**nevet és állapotot rendelhet a javaslat kivonatához. A beállítás befejezéséhez nyomja meg az **ajánlás létrehozása kivonatot** .
    ![Javaslatok kivonatának teljes létrehozása](./media/digest-4.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Advisor ajánlásaival kapcsolatos további információkért lásd:
 * [Bevezetés a Azure Advisorba](advisor-overview.md)
@@ -59,4 +60,4 @@ Az Advisor ajánlásaival kapcsolatos további információkért lásd:
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)
 * [Advisor biztonsági javaslatok](advisor-security-recommendations.md)
 * [Advisor működési kiválósági javaslatok](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

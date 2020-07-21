@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/09/2020
-ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4882ec9eb8b81ae27a1e8eed2e5b4349fbeac3f
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83196286"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516192"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor naplók szerkezete
 A Azure Monitor hatékony funkciója, hogy gyorsan betekintést nyerjen az adataiba a [log lekérdezés](log-query-overview.md) használatával. Hatékony és hasznos lekérdezések létrehozásához ismernie kell néhány olyan alapfogalmakat, mint például a keresett adatok, valamint a strukturált adatok. Ez a cikk az első lépésekhez szükséges alapvető fogalmakat ismerteti.
@@ -29,7 +29,7 @@ Az alábbi képen a példák olyan adatforrásokra mutatnak, amelyek különböz
 ![Táblák](media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
-A Azure Monitor naplók által összegyűjtött összes adatokat, kivéve a Application Insights [log Analytics munkaterületen](../platform/manage-access.md)vannak tárolva. Az adott követelményektől függően egy vagy több munkaterületet is létrehozhat. Az [adatforrások](../platform/data-sources.md) , például az Azure-erőforrások, a virtuális gépeken lévő ügynökök és az adatelemzési és figyelési megoldások által készített adatnaplók és erőforrások naplófájljai a bevezetésük részeként konfigurált munkaterületekre fognak írni. Más szolgáltatások, mint például a [Azure Security Center](/azure/security-center/) és az [Azure Sentinel](/azure/sentinel/) is egy log Analytics munkaterületet használ az adatok tárolására, így a naplózási lekérdezésekkel együtt, más forrásokból származó figyelési adatokkal is elemezhetők.
+A Azure Monitor naplók által összegyűjtött összes adatokat, kivéve a Application Insights [log Analytics munkaterületen](../platform/manage-access.md)vannak tárolva. Az adott követelményektől függően egy vagy több munkaterületet is létrehozhat. Az [adatforrások](../platform/data-sources.md) , például az Azure-erőforrások, a virtuális gépeken lévő ügynökök és az adatelemzési és figyelési megoldások által készített adatnaplók és erőforrások naplófájljai a bevezetésük részeként konfigurált munkaterületekre fognak írni. Más szolgáltatások, mint például a [Azure Security Center](../../security-center/index.yml) és az [Azure Sentinel](../../sentinel/index.yml) is egy log Analytics munkaterületet használ az adatok tárolására, így a naplózási lekérdezésekkel együtt, más forrásokból származó figyelési adatokkal is elemezhetők.
 
 A különböző típusú adattípusok a munkaterület különböző tábláiban vannak tárolva, és mindegyik tábla egyedi tulajdonságokkal rendelkezik. A rendszer a létrehozott munkaterületekhez egy szabványos készletet ad hozzá, és új táblákat ad hozzá a különböző adatforrásokhoz, megoldásokhoz és szolgáltatásokhoz, mint a bevezetésük. Az [adatgyűjtő API](../platform/data-collector-api.md)használatával egyéni táblákat is létrehozhat.
 
@@ -45,7 +45,7 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-A létrehozott táblák részleteit az egyes adatforrások dokumentációja tartalmazza. Ilyenek például az [ügynök adatforrásaira](../platform/agent-data-sources.md), az [erőforrás-naplókra](../platform/diagnostic-logs-schema.md)és a [figyelési megoldásokra](../insights/solutions-inventory.md)vonatkozó cikkek.
+A létrehozott táblák részleteit az egyes adatforrások dokumentációja tartalmazza. Ilyenek például az [ügynök adatforrásaira](../platform/agent-data-sources.md), az [erőforrás-naplókra](../platform/resource-logs-schema.md)és a [figyelési megoldásokra](../monitor-reference.md)vonatkozó cikkek.
 
 ### <a name="workspace-permissions"></a>Munkaterület engedélyei
 Tekintse meg a munkaterületen lévő információk elérését biztosító hozzáférés-vezérlési stratégiát és javaslatokat a [Azure monitor naplók üzembe helyezésének megtervezése](../platform/design-logs-deployment.md) című témakörben. A munkaterülethez való hozzáférés biztosítása mellett a [tábla szintű RBAC](../platform/manage-access.md#table-level-rbac)használatával korlátozhatja az egyes táblákhoz való hozzáférést.
@@ -88,5 +88,5 @@ Míg Azure Monitor naplók minden táblája saját sémával rendelkezik, az ös
 | _BilledSize   |            | Meghatározza a számlázandó adatmennyiség bájtban kifejezett méretét. |
 
 ## <a name="next-steps"></a>Következő lépések
-- Tudnivalók a [naplók keresésének létrehozásához és szerkesztéséhez log Analytics](../log-query/portals.md)használatáról.
+- Tudnivalók a [naplók keresésének létrehozásához és szerkesztéséhez log Analytics](./log-query-overview.md)használatáról.
 - Az új lekérdezési nyelv használatával tekintse [meg a lekérdezések írásához szóló oktatóanyagot](../log-query/get-started-queries.md) .

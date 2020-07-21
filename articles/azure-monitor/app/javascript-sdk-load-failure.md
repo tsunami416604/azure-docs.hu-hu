@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
-ms.openlocfilehash: dae6b40e7ec8a2bb6f635a6ffca4886ed09c1364
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: a76ed65ebc1c56232d4fa42c6df20f619fe14ca3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229533"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517059"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Az SDK betöltési hibáinak elhárítása JavaScript-webalkalmazásokhoz
 
@@ -63,7 +63,7 @@ Ugyanez igaz akkor is, ha az SDK-t NPM-csomagok megoldáson keresztül használj
 
 [NPM-csomagokat](#use-npm-packages-to-embed-the-application-insight-sdk) is használhat a Application Insights SDK beágyazásához.
 
-Az időszakos hálózati kapcsolódási hibák csökkentése érdekében Implementáljuk a gyorsítótár-vezérlő fejléceket az összes CDN-fájlon, így ha a végfelhasználó böngészője letöltötte az SDK aktuális verzióját, akkor nem kell újra letöltenie, és a böngésző újra felhasználja a korábban beszerzett példányt (lásd: a [gyorsítótárazás működése](https://docs.microsoft.com/azure/cdn/cdn-how-caching-works)). Ha a gyorsítótárazási ellenőrzés meghiúsul, vagy új kiadás van, akkor a végfelhasználó böngészőjében le kell töltenie a frissített verziót. Így előfordulhat, hogy a _"Noise" ("zaj"_ ) hátterét a sikertelenség ellenőrzése vagy egy ideiglenes tüske okozza, amikor új kiadás történik, és általánosan elérhetővé válik (a CDN-ben üzembe helyezett).
+Az időszakos hálózati kapcsolódási hibák csökkentése érdekében Implementáljuk a gyorsítótár-vezérlő fejléceket az összes CDN-fájlon, így ha a végfelhasználó böngészője letöltötte az SDK aktuális verzióját, akkor nem kell újra letöltenie, és a böngésző újra felhasználja a korábban beszerzett példányt (lásd: a [gyorsítótárazás működése](../../cdn/cdn-how-caching-works.md)). Ha a gyorsítótárazási ellenőrzés meghiúsul, vagy új kiadás van, akkor a végfelhasználó böngészőjében le kell töltenie a frissített verziót. Így előfordulhat, hogy a _"Noise" ("zaj"_ ) hátterét a sikertelenség ellenőrzése vagy egy ideiglenes tüske okozza, amikor új kiadás történik, és általánosan elérhetővé válik (a CDN-ben üzembe helyezett).
  
 ## <a name="application-insights-cdn-outage"></a>Application Insights CDN-kimaradás
 
@@ -206,6 +206,6 @@ A kódrészlet és a nyilvános CDN-végpontok használata helyett használhatja
 A kódrészlethez hasonlóan az is előfordulhat, hogy a saját parancsfájlokat (az SDK-NPM csomagok használatával vagy anélkül) érintheti az itt felsorolt blokkoló problémák, így az alkalmazástól, a felhasználóktól és a keretrendszertől függően érdemes lehet megfontolni a kódrészlet logikájának megvalósítását, hogy észlelje és jelentse ezeket a problémákat.
 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 - [További segítség kérése a GitHubon történt probléma bejelentésével](https://github.com/Microsoft/ApplicationInsights-JS/issues)
 - [Weblap használatának figyelése](javascript.md)

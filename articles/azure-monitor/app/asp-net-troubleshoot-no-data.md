@@ -3,12 +3,12 @@ title: Adathiány hibaelhárítása – Application Insights .NET-hez
 description: Nem látja az Azure Application Insightsban tárolt adatmegjelenítést? Próbálja ki itt.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 3f1c4a741bf092ab89638fdca130a52d96318157
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 351ef145ab65fee8397034912f9a6ce295f1f909
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221034"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517168"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>A .NET/.NET Core rendszerhez nem szükséges adatApplication Insightsek hibaelhárítása
 
@@ -42,7 +42,7 @@ ms.locfileid: "86221034"
 *Ha a jobb gombbal egy meglévő projektre kattintok Megoldáskezelő, nem látok semmilyen Application Insights lehetőséget.*
 
 * Az eszközök nem támogatják az összes típusú .NET-projektet. A web-és WCF-projektek támogatottak. Más projekttípus, például asztali vagy szolgáltatási alkalmazások esetén [manuálisan is hozzáadhat egy Application INSIGHTS SDK-t a projekthez](../../azure-monitor/app/windows-desktop.md).
-* Győződjön meg arról, hogy a [Visual Studio 2013 Update 3 vagy újabb verzió](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)van. A fejlesztői elemzési eszközökkel előre telepítve van, amelyek biztosítják a Application Insights SDK-t.
+* Győződjön meg arról, hogy a [Visual Studio 2013 Update 3 vagy újabb verzió](/visualstudio/releasenotes/vs2013-update3-rtm-vs)van. A fejlesztői elemzési eszközökkel előre telepítve van, amelyek biztosítják a Application Insights SDK-t.
 * Válassza az **eszközök**, **bővítmények és frissítések** lehetőséget, és győződjön meg arról, hogy a **fejlesztői elemzési eszközök** telepítve és engedélyezve vannak. Ha igen, kattintson a **frissítések** lehetőségre, és ellenőrizze, hogy van-e elérhető frissítés.
 * Nyissa meg az új projekt párbeszédpanelt, és válassza a ASP.NET webalkalmazás lehetőséget. Ha megjelenik a Application Insights lehetőség, akkor a rendszer telepíti az eszközöket. Ha nem, próbálja meg eltávolítani, majd telepítse újra a fejlesztői elemzési eszközöket.
 
@@ -132,7 +132,7 @@ Javítsa ki
   * A Visual Studio Megoldáskezelő kattintson a jobb gombbal a projektre, és válassza a Application Insights, majd a Konfigurálás lehetőséget. Állítsa vissza az alkalmazást, hogy telemetria küldjön a megfelelő erőforrásnak.
   * Ha nem találja a megfelelő kulcsokat, ellenőrizze, hogy a Visual Studióban ugyanazokat a bejelentkezési hitelesítő adatokat használja-e, mint a portálon.
 * A [Microsoft Azure Kezdőlap irányítópulton](https://portal.azure.com)tekintse meg a Service Health térképet. Ha vannak riasztási jelzések, várjon, amíg vissza nem tért az OK gombra, majd zárjunk be és nyissa meg újra a Application Insights alkalmazás paneljét.
-* Tekintse meg [az állapot blogját](https://blogs.msdn.microsoft.com/servicemap-status/)is.
+* Tekintse meg [az állapot blogját](https://techcommunity.microsoft.com/t5/azure-monitor-status/bg-p/AzureMonitorStatusBlog)is.
 * Írt olyan kódot a [KISZOLGÁLÓOLDALI SDK-](../../azure-monitor/app/api-custom-events-metrics.md) hoz, amely megváltoztathatja a kialakítási kulcsot a `TelemetryClient` példányokban vagy a-ben `TelemetryContext` ? Vagy olyan [szűrőt vagy mintavételezési konfigurációt](../../azure-monitor/app/api-filtering-sampling.md) írt, amely túl sok szűrést eredményezhet?
 * Ha ApplicationInsights.config szerkesztett, gondosan ellenőrizze a [TelemetryInitializers és a TelemetryProcessors](../../azure-monitor/app/api-filtering-sampling.md)konfigurációját. Egy helytelenül elnevezett típus vagy paraméter hatására az SDK nem tud adatküldést küldeni.
 
@@ -154,7 +154,7 @@ A Teljesítményadatok (CPU, IO-sebesség stb.) a [Java-webszolgáltatásokhoz](
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>Nem (kiszolgáló) adatai, mert közzétettem az alkalmazást a kiszolgálón
 * Győződjön meg arról, hogy ténylegesen másolta az összes Microsoftot. ApplicationInsights a DLL-eket a kiszolgálóra, valamint a Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll
 * Előfordulhat, hogy [meg kell nyitnia néhány TCP-portot](../../azure-monitor/app/ip-addresses.md)a tűzfalon.
-* Ha proxyt kell használnia a vállalati hálózatról történő küldéshez, a [defaultProxy](https://msdn.microsoft.com/library/aa903360.aspx) beállítása Web.config
+* Ha proxyt kell használnia a vállalati hálózatról történő küldéshez, a [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) beállítása Web.config
 * Windows Server 2008: Ellenőrizze, hogy telepítette-e a következő frissítéseket: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Felhasználtam az adatmegjelenítést, de leállt
@@ -170,7 +170,7 @@ A szolgáltatás letiltható, de ez nem ajánlott. A mintavétel úgy lett kiala
 Február 5 2018-án bejelentettük, hogy az ügyfél IP-címének naplózása el lett távolítva. Ez nem befolyásolja a földrajzi helyet.
 
 > [!NOTE]
-> Ha az IP-cím első 3 oktettje szükséges, a [telemetria inicializáló](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#addmodify-properties-itelemetryinitializer) használatával egyéni attribútumokat adhat hozzá.
+> Ha az IP-cím első 3 oktettje szükséges, a [telemetria inicializáló](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) használatával egyéni attribútumokat adhat hozzá.
 > Ez nincs hatással a 2018. február 5. előtt összegyűjtött adatokra.
 
 ## <a name="wrong-geographical-data-in-user-telemetry"></a>Helytelen földrajzi érték a felhasználói telemetria
@@ -206,9 +206,9 @@ Az alábbi útmutatást követve rögzítheti a keretrendszer hibaelhárítási 
 
 ### <a name="net-core"></a>.NET Core
 
-1. Telepítse a [Microsoft. AspNet. ApplicationInsights. HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) csomagot a NuGet webhelyről. A telepített verziónak meg kell egyeznie a jelenlegi telepített verziójával`Microsoft.ApplicationInsights`
+1. Telepítse a [Application INSIGHTS SDK NuGet csomagot ASP.net Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) csomaghoz a NuGet-ból. A telepített verziónak meg kell egyeznie a jelenlegi telepített verziójával `Microsoft.ApplicationInsights` .
 
-A Microsoft. ApplicationInsights. AspNetCore legújabb verziója a 2.8.2, és a Microsoft. ApplicationInsights 2.11.2 verziójára hivatkozik. Ezért a Microsoft. AspNet. ApplicationInsights. HostingStartup telepítendő verziójának 2.11.2 kell lennie
+   A Microsoft. ApplicationInsights. AspNetCore legújabb verziója a 2.14.0, és a Microsoft. ApplicationInsights 2.14.0 verziójára hivatkozik. Ezért a Microsoft. ApplicationInsights. AspNetCore telepítendő verziójának 2.14.0 kell lennie.
 
 2. Módosítsa `ConfigureServices` a metódust az `Startup.cs` osztályban.:
 
@@ -249,7 +249,7 @@ További információk:
 
 ## <a name="collect-logs-with-dotnet-trace"></a>Naplók összegyűjtése a DotNet-tracevel
 
-Alternatív módszer a hibakeresési naplók gyűjtésére, amelyek különösen hasznosak lehetnek a Linux-alapú környezetekben[`dotnet-trace`](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace)
+Alternatív módszer a hibakeresési naplók gyűjtésére, amelyek különösen hasznosak lehetnek a Linux-alapú környezetekben[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace)
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
@@ -260,4 +260,4 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 Megtudhatja, hogyan távolíthatja el Application Insights a Visual Studióban az eltávolítási [cikkben](../../azure-monitor/app/remove-application-insights.md)leírt lépéseket követve.
 
 ## <a name="still-not-working"></a>Még mindig nem működik...
-* [A Microsoft Q&egy kérdés oldalt Application Insights](https://docs.microsoft.com/answers/topics/azure-monitor.html)
+* [A Microsoft Q&egy kérdés oldalt Application Insights](/answers/topics/azure-monitor.html)

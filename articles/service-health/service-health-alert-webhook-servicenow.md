@@ -3,12 +3,12 @@ title: Azure szolgáltatás állapotára vonatkozó riasztások küldése a Serv
 description: Személyre szabott értesítések beszerzése a ServiceNow-példány szolgáltatás állapotával kapcsolatos eseményekről.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 5cd17af080714fdf2e9e5b168e72f975c8d3a3f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 96c181991fc962b08e777a55d891b881fc1bdba3
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260199"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519070"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a ServiceNow webhookok használatával
 
@@ -147,7 +147,7 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Riasztás létrehozása a Azure Portal ServiceNow használatával
 ### <a name="for-a-new-action-group"></a>Új műveleti csoport esetén:
-1. Kövesse a [cikk](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 1 – 8. lépését, hogy riasztást hozzon létre egy új műveleti csoporttal.
+1. Kövesse a [cikk](./alerts-activity-log-service-notifications-portal.md) 1 – 8. lépését, hogy riasztást hozzon létre egy új műveleti csoporttal.
 
 1. Definiálás a **műveletek**listájában:
 
@@ -195,5 +195,5 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 ## <a name="next-steps"></a>Következő lépések
 - Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md).
 - Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](../azure-monitor/platform/service-notifications.md).
+- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](./service-notifications.md).
 - További információ a [műveleti csoportokról](../azure-monitor/platform/action-groups.md).

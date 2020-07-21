@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 77946694253ff0c1c6953d0b20836d3cb6733801
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e6fb2f09200e42f7ad7781716bb83ab418134509
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86082301"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516141"
 ---
 # <a name="azure-activity-log"></a>Azure-tevékenység naplója
 A műveletnapló egy Azure-beli [platform-napló](platform-logs-overview.md) , amely betekintést nyújt az előfizetési szintű eseményekre. Ez olyan adatokat tartalmaz, mint amikor egy erőforrás módosul, vagy amikor a virtuális gép elindul. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. További funkciókért hozzon létre egy diagnosztikai beállítást, amely elküldi a tevékenység naplóját [Azure monitor naplókba](data-platform-logs.md), az Azure Event Hubs az Azure-on kívülre vagy az Azure Storage-ba az archiváláshoz. Ez a cikk részletesen ismerteti a tevékenység naplójának megtekintését és a különböző célhelyekre való küldését.
@@ -43,9 +43,9 @@ Ha az eseményhez kapcsolódó változások vannak, akkor a kiválasztott módos
 ### <a name="other-methods-to-retrieve-activity-log-events"></a>A műveletnapló eseményeinek beolvasására szolgáló egyéb metódusok
 A tevékenység-naplózási eseményeket a következő módszerekkel érheti el.
 
-- A [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) parancsmaggal kérheti le a tevékenység naplóját a powershellből. Lásd: [Azure monitor PowerShell-minták](../samples/powershell-samples.md#retrieve-activity-log).
-- Az az [monitor Activity-log](https://docs.microsoft.com/cli/azure/monitor/activity-log) paranccsal kérheti le a tevékenység naplóját a parancssori felületről.  Lásd: [Azure monitor CLI-minták](../samples/cli-samples.md#view-activity-log).
-- A [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) használatával kérheti le a tevékenység naplóját egy Rest-ügyfélről. 
+- A [Get-AzLog](/powershell/module/az.monitor/get-azlog) parancsmaggal kérheti le a tevékenység naplóját a powershellből. Lásd: [Azure monitor PowerShell-minták](../samples/powershell-samples.md#retrieve-activity-log).
+- Az az [monitor Activity-log](/cli/azure/monitor/activity-log) paranccsal kérheti le a tevékenység naplóját a parancssori felületről.  Lásd: [Azure monitor CLI-minták](../samples/cli-samples.md#view-activity-log).
+- A [Azure Monitor REST API](/rest/api/monitor/) használatával kérheti le a tevékenység naplóját egy Rest-ügyfélről. 
 
 
 ## <a name="send-to-log-analytics-workspace"></a>Küldés a Log Analytics-munkaterületre
@@ -58,9 +58,9 @@ A tevékenység-naplózási eseményeket a következő módszerekkel érheti el.
 - 90 napnál hosszabb ideig tárolhatja a tevékenység naplójának bejegyzéseit.
 - Nincs adatfeldolgozási vagy adatmegőrzési díj a Log Analytics munkaterületen tárolt műveletnapló-adatokra vonatkozóan.
 
-[Hozzon létre egy diagnosztikai beállítást](diagnostic-settings.md) a műveletnapló log Analytics munkaterületre való elküldéséhez. A tevékenység naplóját bármely előfizetésből akár öt munkaterületre is elküldheti. A naplók a bérlők közötti gyűjtéséhez az [Azure Lighthouse](/azure/lighthouse)szükséges.
+[Hozzon létre egy diagnosztikai beállítást](diagnostic-settings.md) a műveletnapló log Analytics munkaterületre való elküldéséhez. A tevékenység naplóját bármely előfizetésből akár öt munkaterületre is elküldheti. A naplók a bérlők közötti gyűjtéséhez az [Azure Lighthouse](../../lighthouse/index.yml)szükséges.
 
-A Log Analytics munkaterületen található műveletnapló-adattábla egy *AzureActivity* nevű táblázatban található, amelyet a [log Analytics](../log-query/get-started-portal.md) [napló lekérdezésével](../log-query/log-query-overview.md) lehet lekérni. A tábla szerkezete a [naplóbejegyzés kategóriájára](activity-log-schema.md)függően változik. A táblázat tulajdonságainak leírását a [Azure monitor adathivatkozás](https://docs.microsoft.com/azure/azure-monitor/reference/tables/azureactivity)című részben tekintheti meg.
+A Log Analytics munkaterületen található műveletnapló-adattábla egy *AzureActivity* nevű táblázatban található, amelyet a [log Analytics](../log-query/get-started-portal.md) [napló lekérdezésével](../log-query/log-query-overview.md) lehet lekérni. A tábla szerkezete a [naplóbejegyzés kategóriájára](activity-log-schema.md)függően változik. A táblázat tulajdonságainak leírását a [Azure monitor adathivatkozás](/azure/azure-monitor/reference/tables/azureactivity)című részben tekintheti meg.
 
 Ha például meg szeretné tekinteni az egyes kategóriákhoz tartozó műveletnapló-rekordok számát, használja a következő lekérdezést.
 
@@ -201,12 +201,12 @@ Ha már létezik egy bejelentkezési profil, először el kell távolítania a m
 
     | Tulajdonság | Kötelező | Leírás |
     | --- | --- | --- |
-    | Name |Yes |A napló profiljának neve. |
-    | StorageAccountId |No |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni kell a tevékenység naplóját. |
-    | serviceBusRuleId |No |Service Bus a Service Bus névtérhez tartozó szabály AZONOSÍTÓját, amelybe az Event hub-t létre szeretné hozni. Ez a következő formátumú karakterlánc: `{service bus resource ID}/authorizationrules/{key name}` . |
+    | Név |Igen |A napló profiljának neve. |
+    | StorageAccountId |Nem |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni kell a tevékenység naplóját. |
+    | serviceBusRuleId |Nem |Service Bus a Service Bus névtérhez tartozó szabály AZONOSÍTÓját, amelybe az Event hub-t létre szeretné hozni. Ez a következő formátumú karakterlánc: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Hely |Igen |Azoknak a régióknak a vesszővel tagolt listája, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. |
-    | RetentionInDays |Yes |Ennyi nap elteltével kell megőrizni az eseményeket a Storage-fiókban 1 és 365 között. A nulla érték határozatlan ideig tárolja a naplókat. |
-    | Kategória |No |Az összegyűjteni kívánt események kategóriáinak vesszővel tagolt listája. A lehetséges értékek a következők: _írás_, _Törlés_és _művelet_. |
+    | RetentionInDays |Igen |Ennyi nap elteltével kell megőrizni az eseményeket a Storage-fiókban 1 és 365 között. A nulla érték határozatlan ideig tárolja a naplókat. |
+    | Kategória |Nem |Az összegyűjteni kívánt események kategóriáinak vesszővel tagolt listája. A lehetséges értékek a következők: _írás_, _Törlés_és _művelet_. |
 
 ### <a name="example-script"></a>Példaszkript
 A következő példa egy PowerShell-szkriptet hoz létre egy olyan log-profil létrehozásához, amely a tevékenység naplóját a Storage-fiókra és az Event hub-ra írja.
@@ -244,12 +244,12 @@ Ha már létezik egy naplózási profil, először el kell távolítania a megl�
 
     | Tulajdonság | Kötelező | Leírás |
     | --- | --- | --- |
-    | name |Yes |A napló profiljának neve. |
-    | Storage-Account-ID |Yes |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni szeretné a tevékenység naplóit. |
-    | helyek |Yes |Szóközzel tagolt lista azoknak a régióknak a listájához, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. Az előfizetéshez tartozó összes régió listáját megtekintheti a használatával `az account list-locations --query [].name` . |
-    | nap |Yes |Azon napok száma, amelyekhez meg kell őrizni az eseményeket 1 és 365 között. A nulla érték a naplókat határozatlan ideig (Forever) tárolja.  Ha nulla, akkor az engedélyezett paramétert false értékre kell állítani. |
-    |engedélyezve | Yes |Igaz vagy hamis.  Az adatmegőrzési szabály engedélyezésére vagy letiltására szolgál.  Ha az értéke igaz, akkor a Days paraméternek 0-nál nagyobbnak kell lennie.
-    | kategóriák |Yes |Az összegyűjteni kívánt események kategóriáinak szóközzel tagolt listája. A lehetséges értékek a következők: írás, törlés és művelet. |
+    | name |Igen |A napló profiljának neve. |
+    | Storage-Account-ID |Igen |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni szeretné a tevékenység naplóit. |
+    | helyek |Igen |Szóközzel tagolt lista azoknak a régióknak a listájához, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. Az előfizetéshez tartozó összes régió listáját megtekintheti a használatával `az account list-locations --query [].name` . |
+    | nap |Igen |Azon napok száma, amelyekhez meg kell őrizni az eseményeket 1 és 365 között. A nulla érték a naplókat határozatlan ideig (Forever) tárolja.  Ha nulla, akkor az engedélyezett paramétert false értékre kell állítani. |
+    |engedélyezve | Igen |Igaz vagy hamis?  Az adatmegőrzési szabály engedélyezésére vagy letiltására szolgál.  Ha az értéke igaz, akkor a Days paraméternek 0-nál nagyobbnak kell lennie.
+    | kategóriák |Igen |Az összegyűjteni kívánt események kategóriáinak szóközzel tagolt listája. A lehetséges értékek a következők: írás, törlés és művelet. |
 
 
 ### <a name="log-analytics-workspace"></a>Log Analytics-munkaterület
@@ -281,7 +281,7 @@ A következő táblázat oszlopai elavultak a frissített sémában. Továbbra i
 | ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]
-> Bizonyos esetekben az oszlopok értékei az összes nagybetűvel rendelkezhetnek. Ha olyan lekérdezéssel rendelkezik, amely tartalmazza ezeket az oszlopokat, a [= ~ operátort](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators) kell használnia a kis-és nagybetűk megkülönböztetésének összehasonlításához.
+> Bizonyos esetekben az oszlopok értékei az összes nagybetűvel rendelkezhetnek. Ha olyan lekérdezéssel rendelkezik, amely tartalmazza ezeket az oszlopokat, a [= ~ operátort](/azure/kusto/query/datatypes-string-operators) kell használnia a kis-és nagybetűk megkülönböztetésének összehasonlításához.
 
 A következő oszlop lett hozzáadva a *AzureActivity* -hez a frissített sémában:
 
@@ -396,7 +396,7 @@ Hamarosan többé nem fogja tudni felvenni a tevékenység naplóinak elemzési 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A platform naplófájljainak áttekintése](platform-logs-overview.md)
 * [Diagnosztikai beállítás létrehozása a tevékenységek naplófájljainak más célhelyekre való küldéséhez](diagnostic-settings.md)

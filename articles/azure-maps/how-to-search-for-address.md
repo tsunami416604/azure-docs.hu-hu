@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d8c7ce62f7c592c396fa1ea7a7f5e7dc7df2dc1
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335429"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517586"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Hely keresése Azure Maps Search Services használatával
 
@@ -29,7 +29,7 @@ Ebben a cikkben a következőket fogja elsajátítani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikkben szereplő lépések végrehajtásához először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie a Maps-fiók előfizetési kulcsát. Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) egy Azure Maps fiók előfizetésének létrehozásához című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
+A cikkben szereplő lépések végrehajtásához először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie a Maps-fiók előfizetési kulcsát. Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account) egy Azure Maps fiók előfizetésének létrehozásához című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
 Ez a cikk a [Poster alkalmazást](https://www.getpostman.com/apps) használja a REST-hívások létrehozásához. Bármilyen, Ön által előnyben részesített API-fejlesztési környezetet használhat.
 
@@ -57,7 +57,7 @@ Ha a geocode címei vannak, a [keresési cím KÖTEGELT API](https://docs.micros
 
 | Kulcs | Érték | 
 |------------------|-------------------------| 
-| api-verzió | 1.0 | 
+| api-verzió | 1,0 | 
 | előfizetés – kulcs | \<your Azure Maps key\> | 
 | lekérdezés | 400 Broad St, Seattle, WA 98109 | 
 
@@ -75,7 +75,7 @@ Ebben az esetben teljes címzési lekérdezést adott meg, és egyetlen eredmén
 
 | Kulcs | Érték | 
 |-----|------------| 
-| typeahead | igaz | 
+| typeahead | true | 
 
 A **typeahead** jelző azt jelzi, hogy a címek keresési API-ját részleges bemenetként kezeli a lekérdezés, és a prediktív értékek tömbjét adja vissza.
 
@@ -107,7 +107,7 @@ A legtöbb keresési lekérdezés alapértelmezett értéke a `maxFuzzyLevel=1` 
 
     | Kulcs | Érték |
     |------------------|-------------------------|
-    | api-verzió | 1.0 |
+    | api-verzió | 1,0 |
     | előfizetés – kulcs | \<your Azure Maps key\> |
     | lekérdezés | pizza |
 
@@ -161,7 +161,7 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
   
     | Kulcs | Érték |
     |------------------|-------------------------|
-    | api-verzió | 1.0 |
+    | api-verzió | 1,0 |
     | előfizetés – kulcs | \<your Azure Maps key\> |
     | lekérdezés | 47.591180,-122,332700 |
   
@@ -173,7 +173,7 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
 
     | Kulcs | Érték |
     |-----|------------|
-    | szám | igaz |
+    | szám | true |
 
     Ha a kérelemben a [Number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paramétert küldi a rendszer, akkor a válasz az utca oldalát (balra vagy jobbra), valamint az adott szám eltolási pozícióját is tartalmazhatja.
   
@@ -181,7 +181,7 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
 
     | Kulcs | Érték |
     |-----|------------|
-    | returnSpeedLimit | igaz |
+    | returnSpeedLimit | true |
   
     Ha a [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paraméter be van állítva, a válasz a közzétett sebesség korlátot adja vissza.
 
@@ -189,7 +189,7 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
 
     | Kulcs | Érték |
     |-----|------------|
-    | returnRoadUse | igaz |
+    | returnRoadUse | true |
 
     Ha a [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paraméter be van állítva, a válasz a közúti használatot a fordított geocodes az utca szintjén adja vissza.
 
@@ -197,7 +197,7 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
 
     | Kulcs | Érték |
     |-----|------------|
-    | roadUse | igaz |
+    | roadUse | true |
 
     A fordított geocode-lekérdezést egy adott típusú útra korlátozhatja a [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paraméter használatával.
   
@@ -219,13 +219,13 @@ Ha a geocode több koordináta-hellyel rendelkezik, a [post Search reverse batch
   
     | Kulcs | Érték |
     |------------------|-------------------------|
-    | api-verzió | 1.0 |
+    | api-verzió | 1,0 |
     | előfizetés – kulcs | \<your Azure Maps key\> |
     | lekérdezés | 47.591180,-122,332700 |
   
 4. Kattintson a **Küldés** gombra, és tekintse át a válasz törzsét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerkedjen meg a [Azure Maps Search Service REST API dokumentációval](https://docs.microsoft.com/rest/api/maps/search).
 - Ismerkedjen meg [Azure Maps Search Service ajánlott eljárásaival](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search) és a lekérdezések optimalizálásával.

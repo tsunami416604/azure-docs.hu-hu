@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 0c9ee65a50b9fff13fca7a1989e7bb8801e5f621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d464897c031522b2227c682f9581f0d34c8db64b
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465184"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518741"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)
 
@@ -70,7 +71,7 @@ A Azure Portal használatával engedélyezze a Storage-fiók módosítási csato
 
 4. Kattintson a **Save (Mentés** ) gombra az **adatvédelmi** beállítások megerősítéséhez.
 
-    ![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+    ![Képernyőkép, amely az adatvédelmi beállításokat jeleníti meg.](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -336,7 +337,7 @@ A Change feed olyan megoldás, amely tranzakciós naplót biztosít a sikeres mu
 ### <a name="should-i-use-change-feed-or-storage-events"></a>Használhatom a Change feed vagy a Storage eseményt?
 Mindkét funkciót kihasználhatja, mivel a memória-és [blob-tárolási események](storage-blob-event-overview.md) is ugyanazokat az információkat nyújtják, mint a kézbesítés megbízhatósági garanciája, és a fő különbség az, hogy az események rekordjainak késése, rendezése és tárolása is megmarad. A módosítási hírcsatorna a változást követően néhány percen belül közzéteszi a rekordokat a naplóba, és a módosítási műveletek sorrendjét is megtartja blobban. A tárolási események valós időben lesznek leküldve, és előfordulhat, hogy nem rendelhető meg. A tartósan a Storage-fiókban tárolt adatok módosítása csak olvasható stabil naplókat tartalmaz a saját meghatározott adatmegőrzéssel, míg a tárolási események átmenetiek, ha kifejezetten tárolja őket. A változási hírcsatornával tetszőleges számú alkalmazás használhatja a naplókat a saját kényelmében a blob API-k vagy SDK-k használatával. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a változási hírcsatorna .NET-ügyfélalkalmazás használatával történő beolvasásának példáját. Lásd: [Az Azure Blob Storageban található adatcsatorna-naplók feldolgozása](storage-blob-change-feed-how-to.md).
 - Ismerje meg, hogyan reagálhat az eseményekre valós időben. További tudnivalók [a blob Storage eseményekre való reagálásról](storage-blob-event-overview.md)

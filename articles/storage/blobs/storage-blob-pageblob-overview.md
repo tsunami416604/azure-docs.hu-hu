@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 2338c523c13b16b4a63ee9de0d966182e26c3286
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 447653cdcaeb1a0bbf891a26e8bc0af5ead87fdb
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223295"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518707"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Az Azure-oldal Blobok áttekintése
 
@@ -33,6 +33,10 @@ Az első féltől származó Microsoft-szolgáltatások, mint például a Azure 
 * Az alkalmazás által irányított növekményes Pillanatképek kezelése: az alkalmazások a blob-pillanatképeket és a REST API-kat használhatják az alkalmazás-ellenőrzőpontok az adatok költséges duplikálása nélkül történő mentéséhez. Az Azure Storage támogatja az oldal Blobok helyi pillanatképeit, amelyek nem igénylik a teljes blob másolását. Ezek a nyilvános pillanatkép-API-k lehetővé teszik a pillanatképek közötti különbözetek elérését és másolását is.
 * Alkalmazások és adatok élő áttelepítése a helyszínről a felhőbe: másolja a helyszíni adatok és a REST API-k használatával közvetlenül egy Azure-oldal blobba írhat, miközben a helyszíni virtuális gép továbbra is fut. Ha a cél már megtörtént, gyorsan feladatátvételt hajthat végre az Azure-beli virtuális gépen az adott adattal. Ily módon áttelepítheti a virtuális gépeket és a virtuális lemezeket a helyszínről a felhőbe minimális állásidővel, mivel az adatok áttelepítése a háttérben történik, miközben a virtuális gép továbbra is használatban van, és a feladatátvételhez szükséges állásidő rövid lesz (percben).
 * [SAS-alapú](../common/storage-sas-overview.md) közös hozzáférés, amely olyan forgatókönyveket tesz lehetővé, mint például a több olvasó és egy író, amely támogatja a Egyidejűség-vezérlést.
+
+## <a name="pricing"></a>Díjszabás
+
+Az oldal-blobokhoz kínált mindkét típusú tárterület saját díjszabási modellel rendelkezik. A Premium Page Blobok a Managed Disks díjszabási modelljét követik, míg a standard oldal blobokat a felhasznált méret és az egyes tranzakciók alapján számítjuk fel. További információkért tekintse meg az [Azure Page Blobs díjszabási oldalát](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 
 ## <a name="page-blob-features"></a>Lapblobok funkciói
 

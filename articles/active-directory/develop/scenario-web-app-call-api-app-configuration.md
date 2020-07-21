@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 3a6f92022a4e26c84efc2d5f68c3aad8b4685d30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 662520b9e31b4fe9a0925683fd0e661ce179e5b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558793"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518147"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webalkalmazás: kód konfigurálása
 
@@ -30,9 +31,9 @@ A [felhasználói forgatókönyvekben bejelentkező webalkalmazás](scenario-web
 
 A Microsoft Authentication Library (MSAL) következő kódtárai támogatják a webes alkalmazások engedélyezési kódjának áramlását:
 
-| MSAL-könyvtár | Description |
+| MSAL-könyvtár | Leírás |
 |--------------|-------------|
-| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatása. A Univerzális Windows-platform (UWP), a Xamarin. iOS és a Xamarin. Android nem támogatott, mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozására használhatók. ASP.NET Core webalkalmazások és webes API-k esetében a MSAL.NET a Microsoft. Identity. Web nevű magasabb szintű könyvtárban van beágyazva.|
+| ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatása. A Univerzális Windows-platform (UWP), a Xamarin. iOS és a Xamarin. Android nem támogatott, mivel ezek a platformok nyilvános ügyfélalkalmazások létrehozására használhatók. ASP.NET Core webalkalmazások és webes API-k esetében a MSAL.NET a [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) nevű magasabb szintű könyvtárban van beágyazva.|
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> Pythonhoz készült MSAL | Python-webalkalmazások támogatása. |
 | ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> Javához készült MSAL | Java-webalkalmazások támogatása. |
 
@@ -48,8 +49,8 @@ public void ConfigureServices(IServiceCollection services)
 {
     // more code here
 
-    services.AddSignIn(Configuration, "AzureAd")
-            .AddWebAppCallsProtectedWebApi(Configuration,
+    services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd")
+            .AddMicrosoftWebAppCallsdWebApi(Configuration,
                                            initialScopes: new string[] { "user.read" })
             .AddInMemoryTokenCaches();
 
@@ -90,7 +91,7 @@ A minta jelenleg lehetővé teszi a MSAL. A Python előkészíti az engedélyez�
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-A Microsoft. Identity. Web leegyszerűsíti a kódot úgy, hogy beállítja a megfelelő OpenID Connect-beállításokat, előfizet a kóddal fogadott eseményre, és beváltja a kódot. Az engedélyezési kód beváltásához nem szükséges további kód.
+A Microsoft. Identity. Web leegyszerűsíti a kódot úgy, hogy beállítja a megfelelő OpenID Connect-beállításokat, előfizet a kóddal fogadott eseményre, és beváltja a kódot. Az engedélyezési kód beváltásához nem szükséges további kód. Ennek működéséről a [Microsoft. Identity. Web forráskódjában](https://github.com/AzureAD/microsoft-identity-web/blob/c29f1a7950b940208440bebf0bcb524a7d6bee22/src/Microsoft.Identity.Web/WebAppExtensions/WebAppCallsWebApiAuthenticationBuilderExtensions.cs#L140) talál további információt.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -271,8 +272,8 @@ A ASP.NET Core oktatóanyag függőségi befecskendezést használ, hogy eldönt
 
 ```csharp
 // Use a distributed token cache by adding:
-    services.AddSignIn(Configuration, "AzureAd")
-            .AddWebAppCallsProtectedWebApi(Configuration,
+    services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd")
+            .AddMicrosoftWebAppCallsWebApi(Configuration,
                                            initialScopes: new string[] { "user.read" })
             .AddDistributedTokenCaches();
 
@@ -296,7 +297,7 @@ services.AddDistributedSqlServerCache(options =>
 });
 ```
 
-További információ a jogkivonat-gyorsítótár szolgáltatókról: a [ASP.net Core Web App oktatóanyagok | Az oktatóanyag jogkivonat-gyorsítótárazási](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) fázisa.
+A jogkivonat-gyorsítótár szolgáltatókkal kapcsolatos részletekért lásd még: Microsoft. Identity. Web [token cache szerializálási](https://aka.ms/ms-id-web/token-cache-serialization) cikk, valamint a [ASP.net Core Web App oktatóanyagok | ](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)A Web Apps-oktatóanyag token-gyorsítótárai szakasza.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -391,7 +392,7 @@ def _build_msal_app(cache=None):
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezen a ponton, amikor a felhasználó bejelentkezik, a rendszer a jogkivonat-gyorsítótárban tárolja a tokent. Lássuk, hogyan használják majd a webalkalmazás más részeiben.
 

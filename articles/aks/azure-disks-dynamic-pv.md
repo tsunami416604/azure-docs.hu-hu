@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Ismerje meg, hogyan hozhat létre dinamikusan állandó kötetet Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 03/01/2019
-ms.openlocfilehash: 44741452f95995327914978bbfd5b0a49566faa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.openlocfilehash: 0e7bc057d756215b1aa155f0e227c75c99c8737c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751358"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518011"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Állandó kötet létrehozása és használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
@@ -31,14 +31,14 @@ Szüksége lesz az Azure CLI 2.0.59 vagy újabb verziójára is, valamint a tele
 
 A tárolási osztály segítségével határozható meg, hogy egy adott tárolási egység hogyan legyen dinamikusan létrehozva állandó kötettel. További információ a Kubernetes tárolásával kapcsolatban: [Kubernetes Storage classs][kubernetes-storage-classes].
 
-Mindegyik AK-fürt két, előre létrehozott tárolási osztályt tartalmaz, amelyek az Azure-lemezekkel való együttműködésre vannak konfigurálva:
+Mindegyik AK-fürt négy előre létrehozott tárolási osztályt tartalmaz, amelyek közül kettő az Azure-lemezekkel való együttműködésre van konfigurálva:
 
-* Az *alapértelmezett* tárolási osztály szabványos Azure-lemezt foglal le.
-    * A standard szintű tárterületet a HDD-k végzik, és költséghatékony tárterületet biztosít, miközben még folyamatban van. A standard szintű lemezek ideálisak a költséghatékony fejlesztési és tesztelési feladatok elvégzésére.
+* Az *alapértelmezett* Storage osztály egy standard SSD Azure-lemezt foglal le.
+    * A standard szintű SSD-k a standard szintű SSD-k által támogatottak, és költséghatékony tárterületet biztosítanak, miközben továbbra is megbízható teljesítményt nyújt. 
 * A *felügyelt Premium* Storage osztály egy prémium szintű Azure-lemezt foglal le.
     * A prémium lemezek SSD-alapú, nagy teljesítményű, kis késleltetésű lemezek. Az éles számítási feladatokat futtató virtuális gépek esetén érdemes a használatuk mellett dönteni. Ha a fürt AK-csomópontjai a Premium Storage-t használják, válassza a *felügyelt prémium* osztályt.
     
-Ha az alapértelmezett tárolási osztályok egyikét használja, a kötet mérete nem frissíthető a tárolási osztály létrehozása után. Ahhoz, hogy a tárolási osztály létrehozása után frissíteni lehessen a kötet méretét, adja hozzá a sort az `allowVolumeExpansion: true` egyik alapértelmezett tárolási osztályhoz, vagy létrehozhat saját egyéni tárolási osztályt is. A meglévő tárolási osztályokat a parancs használatával szerkesztheti `kubectl edit sc` . 
+Ha az alapértelmezett tárolási osztályok egyikét használja, a kötet mérete nem frissíthető a tárolási osztály létrehozása után. Ahhoz, hogy a tárolási osztály létrehozása után frissíteni lehessen a kötet méretét, adja hozzá a sort az `allowVolumeExpansion: true` egyik alapértelmezett tárolási osztályhoz, vagy létrehozhat saját egyéni tárolási osztályt is. Vegye figyelembe, hogy a PVC méretének csökkentése nem támogatott (az adatvesztés elkerülése érdekében). A meglévő tárolási osztályokat a parancs használatával szerkesztheti `kubectl edit sc` . 
 
 Ha például 4 TiB méretű lemezt szeretne használni, létre kell hoznia egy tárolási osztályt, amely meghatározza, hogy a `cachingmode: None` [lemezes gyorsítótárazás nem támogatott a 4 TIB és nagyobb lemezek esetén](../virtual-machines/windows/premium-storage-performance.md#disk-caching).
 
@@ -152,6 +152,9 @@ Events:
 [...]
 ```
 
+## <a name="use-ultra-disks"></a>Ultra-lemezek használata
+Az ultra Disk kihasználása lásd: az [Azure Kubernetes Service (ak) szolgáltatáson](use-ultra-disks.md)keresztüli Ultra Disks használata.
+
 ## <a name="back-up-a-persistent-volume"></a>Állandó kötet biztonsági mentése
 
 Az állandó köteten lévő adatok biztonsági mentéséhez készítsen pillanatképet a kötet felügyelt lemezéről. Ezt a pillanatképet használhatja a visszaállított lemez létrehozásához és a hüvelyekhez való csatolásához az adatok visszaállításához.
@@ -253,7 +256,7 @@ Volumes:
 [...]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a tároláshoz és a biztonsági mentéshez az AK-ban][operator-best-practices-storage].
 
@@ -284,3 +287,11 @@ További információ az állandó kötetek Kubernetes az Azure-lemezek használ
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: bde0db179216426c4279e5b03b416a04176430bb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 48c05bf7b4cbecb09ef3bb113832974bee4bc6b2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056786"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518775"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Útvonalak az Azure statikus Web Apps előzetes verziójában
 
@@ -37,9 +37,9 @@ A következő táblázat felsorolja a megfelelő helyet, amellyel a _routes.jsa_
 |Keretrendszer/könyvtár | Hely  |
 |---------|----------|
 | Angular | _eszközök_   |
-| React   | _nyilvános_  |
-| Karcsú  | _nyilvános_   |
-| Vue     | _nyilvános_ |
+| React   | _public_  |
+| Karcsú  | _public_   |
+| Vue     | _public_ |
 
 ## <a name="defining-routes"></a>Útvonalak meghatározása
 
@@ -47,10 +47,10 @@ Az útvonalak a (z) _routes.js_ fájlon vannak definiálva az útválasztási sz
 
 | Szabály tulajdonsága  | Kötelező | Alapértelmezett érték | Megjegyzés                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
-| `route`        | Yes      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak. Például az útvonal _rendszergazdája/ \* _ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.<li>Az útvonal alapértelmezett fájlja _index.html_.</ul>|
-| `serve`        | No       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat. A fájl elérési útja és neve eltérő lehet a kért elérési útról. Ha `serve` nincs megadva érték, a rendszer a kért elérési utat használja. A querystring paraméterek nem támogatottak; `serve`az értékeknek tényleges fájlokra kell mutatniuk.  |
-| `allowedRoles` | No       | névtelen     | A szerepkörök neveinek tömbje. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör minden nem `anonymous` hitelesített felhasználóra érvényes.<li>A beépített szerepkör `authenticated` minden bejelentkezett felhasználóra érvényes.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni. Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.<li>Az egyes felhasználók a szerepkörökhöz a [meghívások](authentication-authorization.md)útján vannak társítva.</ul> |
-| `statusCode`   | No       | 200           | A kérelem [http-állapotkód](https://wikipedia.org/wiki/List_of_HTTP_status_codes) -válasza. |
+| `route`        | Igen      | n.a.          | A hívó által kért útvonal-minta.<ul><li>A [helyettesítő karakterek](#wildcards) az útvonal-elérési utak végén támogatottak. Például az útvonal _rendszergazdája/ \* _ a _rendszergazdai_ elérési úton található bármely útvonalra illeszkedik.<li>Az útvonal alapértelmezett fájlja _index.html_.</ul>|
+| `serve`        | Nem       | n.a.          | Meghatározza a kérelemből visszaadott fájlt vagy elérési utat. A fájl elérési útja és neve eltérő lehet a kért elérési útról. Ha `serve` nincs megadva érték, a rendszer a kért elérési utat használja. A querystring paraméterek nem támogatottak; `serve`az értékeknek tényleges fájlokra kell mutatniuk.  |
+| `allowedRoles` | Nem       | névtelen     | A szerepkörök neveinek tömbje. <ul><li>Érvényes karakterek a következők:,, `a-z` `A-Z` `0-9` és `_` .<li>A beépített szerepkör minden nem `anonymous` hitelesített felhasználóra érvényes.<li>A beépített szerepkör `authenticated` minden bejelentkezett felhasználóra érvényes.<li>A felhasználóknak legalább egy szerepkörhöz kell tartoznia.<li>A szerepköröket _vagy_ azok alapján kell egyeztetni. Ha egy felhasználó a felsorolt szerepkörök valamelyikében szerepel, akkor a rendszer hozzáférést biztosít.<li>Az egyes felhasználók a szerepkörökhöz a [meghívások](authentication-authorization.md)útján vannak társítva.</ul> |
+| `statusCode`   | Nem       | 200           | A kérelem [http-állapotkód](https://wikipedia.org/wiki/List_of_HTTP_status_codes) -válasza. |
 
 ## <a name="securing-routes-with-roles"></a>Útvonalak biztonságossá tétele szerepkörökkel
 
@@ -157,7 +157,7 @@ Előfordulhat, hogy a felhasználók számos különböző szituációba ütköz
 
 A következő táblázat az elérhető platform-hibák felülbírálásait sorolja fel:
 
-| Hiba típusa  | HTTP-állapotkód | Description |
+| Hiba típusa  | HTTP-állapotkód | Leírás |
 |---------|---------|---------|
 | `NotFound` | 404  | Nem található lap a kiszolgálón. |
 | `Unauthenticated` | 401 | A felhasználó nincs bejelentkezve egy [hitelesítési szolgáltatóval](authentication-authorization.md). |
@@ -295,7 +295,7 @@ Az alábbi példák azt írják le, mi történik, ha egy kérelem megfelel egy 
 | _/unknown-folder_ | A _/custom-404.html_ fájl kézbesítve. |
 | `.custom`Kiterjesztésű fájlok | A `text/html` MIME-típussal szolgál |
 
-- Az összes válasz tartalmazza a `content-security-policy` fejléceket, amelyeknek értéke `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` .
+Az összes válasz tartalmazza a `content-security-policy` fejléceket, amelyeknek értéke `default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'` .
 
 <sup>1</sup> az API functions esetében az útválasztási szabályok csak az [átirányításokat](#redirects) támogatják, és [a szerepkörökkel biztosítják az útvonalak védelmét](#securing-routes-with-roles).
 
@@ -308,7 +308,7 @@ Az alábbi példák azt írják le, mi történik, ha egy kérelem megfelel egy 
 
 Az általános korlátozásokról és korlátozásokról a [kvóták című cikkben](quotas.md) olvashat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hitelesítés és engedélyezés beállítása](authentication-authorization.md)

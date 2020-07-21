@@ -4,12 +4,12 @@ description: Értesítés küldése SMS-ben, webhookon, SMS-ben, e-mailben és m
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 1a932aba55ec9bd5d92c60338a3c1fc4bb481c1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82137705"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516124"
 ---
 # <a name="alerts-on-activity-log"></a>Tevékenységnaplóval kapcsolatos riasztások
 
@@ -25,11 +25,11 @@ Az értesítések fogadásához általában a következő esetekben kell létreh
 * Az Azure-előfizetésében lévő erőforrásokra adott műveletek vonatkoznak, gyakran adott erőforrás-csoportokra vagy erőforrásokra is kiterjednek. Előfordulhat például, hogy értesítést szeretne kapni, ha a myProductionResourceGroup valamelyik virtuális gépe törölve van. Vagy előfordulhat, hogy értesítést szeretne kapni, ha az előfizetésben lévő felhasználóhoz új szerepkörök vannak rendelve.
 * A szolgáltatás állapotára vonatkozó esemény történik. A szolgáltatás állapotával kapcsolatos események az előfizetésben lévő erőforrásokra vonatkozó incidensek és karbantartási események értesítését tartalmazzák.
 
-A tevékenység naplójában a riasztási szabályok létrehozására szolgáló feltételek értelmezése egyszerű hasonlóságot jelent, ha az eseményeket a [Azure Portal tevékenység naplóján](activity-log-view.md#azure-portal)keresztül vizsgálja vagy szűri. A Azure Monitor-Activity naplóban egy szűrő vagy megkeresheti a szükséges eseményt, majd létrehozhat egy riasztást a **tevékenység naplójának hozzáadása riasztás** gomb használatával.
+A tevékenység naplójában a riasztási szabályok létrehozására szolgáló feltételek értelmezése egyszerű hasonlóságot jelent, ha az eseményeket a [Azure Portal tevékenység naplóján](./activity-log.md#view-the-activity-log)keresztül vizsgálja vagy szűri. A Azure Monitor-Activity naplóban egy szűrő vagy megkeresheti a szükséges eseményt, majd létrehozhat egy riasztást a **tevékenység naplójának hozzáadása riasztás** gomb használatával.
 
 Mindkét esetben a műveletnapló riasztása csak az előfizetésben lévő azon eseményekhez figyeli a riasztást, amelyekben a riasztás létrejött.
 
-Egy műveletnapló-eseményen a JSON-objektum minden legfelső szintű tulajdonsága alapján beállíthat egy tevékenység naplójának riasztását. További információ: Kategóriák a [tevékenység naplójában](activity-log-view.md#categories-in-the-activity-log). További információ a szolgáltatás állapotával kapcsolatos eseményekről: [fogadási tevékenység naplójának riasztásai a szolgáltatási értesítéseken](alerts-activity-log-service-notifications.md). 
+Egy műveletnapló-eseményen a JSON-objektum minden legfelső szintű tulajdonsága alapján beállíthat egy tevékenység naplójának riasztását. További információ: Kategóriák a [tevékenység naplójában](./activity-log.md#view-the-activity-log). További információ a szolgáltatás állapotával kapcsolatos eseményekről: [fogadási tevékenység naplójának riasztásai a szolgáltatási értesítéseken](../../service-health/alerts-activity-log-service-notifications-portal.md). 
 
 A műveletnapló riasztásai néhány gyakori lehetőséggel rendelkeznek:
 
@@ -56,9 +56,9 @@ Ha egy műveletnapló-riasztás aktiválva van, a műveletek vagy értesítések
 A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése a Azure Portalban](action-groups.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A riasztások áttekintése](alerts-overview.md).
 - Tudnivalók a [műveletnapló-riasztások létrehozásáról és módosításáról](alerts-activity-log.md).
 - Tekintse át a [tevékenység naplójának riasztása webhook sémáját](activity-log-alerts-webhook.md).
-- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](service-notifications.md).
+- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](../../service-health/service-notifications.md).

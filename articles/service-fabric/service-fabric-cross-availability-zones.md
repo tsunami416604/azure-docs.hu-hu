@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: a8f883457c2d6da6d2776bb2119caf5d09565170
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d763511032ebff9116702b1f649751a4b7b52afd
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246418"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518996"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
@@ -170,7 +170,7 @@ Ha egy zónát szeretne engedélyezni egy virtuálisgép-méretezési csoporton,
     "properties": {
         "type": "ServiceFabricNode",
         "autoUpgradeMinorVersion": false,
-        "publisher": "Microsoft.Azure.ServiceFabric.Test",
+        "publisher": "Microsoft.Azure.ServiceFabric",
         "settings": {
             "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
             "nodeTypeRef": "[parameters('vmNodeType1Name')]",

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52488eb43377978d7f936ba0aa452cc872f8d899
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82024880"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519354"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -32,7 +33,7 @@ A Azure Security Center a kiválasztott szabályzatok alapján hozza meg a bizto
 
 Security Center a következő lehetőségeket kínálja a biztonsági házirendek használatához:
 
-* **A beépített alapértelmezett házirend megtekintése és szerkesztése – a** Security Center engedélyezésekor az "ASC default" nevű beépített kezdeményezés automatikusan hozzá van rendelve az összes Security Center regisztrált előfizetéshez (ingyenes vagy standard szint). A kezdeményezés testreszabásához engedélyezheti vagy letilthatja az egyes házirendeket. Tekintse meg a [beépített biztonsági szabályzatok](security-center-policy-definitions.md) listáját, amelyből megismerheti a rendelkezésre álló lehetőségeket.
+* **A beépített alapértelmezett házirend megtekintése és szerkesztése – a** Security Center engedélyezésekor az "ASC default" nevű beépített kezdeményezés automatikusan hozzá van rendelve az összes Security Center regisztrált előfizetéshez (ingyenes vagy standard díjszabási szint). A kezdeményezés testreszabásához engedélyezheti vagy letilthatja az egyes házirendeket. Tekintse meg a [beépített biztonsági szabályzatok](security-center-policy-definitions.md) listáját, amelyből megismerheti a rendelkezésre álló lehetőségeket.
 
 * **Saját egyéni szabályzatok hozzáadása** – Ha testre szeretné szabni az előfizetésre alkalmazott biztonsági kezdeményezéseket, akkor a Security Centeron belül megteheti. Ezután javaslatokat fog kapni, ha a gépek nem követik a létrehozott házirendeket. Az egyéni házirendek létrehozásával és hozzárendelésével kapcsolatos utasításokért lásd: [egyéni biztonsági házirendek használata](custom-security-policies.md).
 
@@ -85,14 +86,18 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
 
 A biztonsági szabályzatokat a Azure Policy-portálon, REST API vagy a Windows PowerShell használatával szerkesztheti.
 
-A Security Center szerepköralapú hozzáférés-vezérlést (RBAC) használ, amelynek beépített szerepköreit az Azure különböző csoportjaihoz, felhasználóihoz és szolgáltatásaihoz rendelheti. Security Center megnyitásakor a felhasználók csak azokat az adatokat látják, amelyekhez hozzáféréssel rendelkeznek. Ez azt jelenti, hogy a felhasználók a *tulajdonos*, *közreműködő*vagy *olvasó* szerepkört rendelik hozzá az erőforrás előfizetéséhez. Továbbá a szerepkörökhöz két konkrét Security Center szerepkör tartozik:
+A Security Center szerepköralapú Access Control (RBAC) használ, amely beépített szerepköröket biztosít az Azure-felhasználók,-csoportok és-szolgáltatások számára. Security Center megnyitásakor a felhasználók csak az elérhető erőforrásokhoz kapcsolódó információkat látják. Ez azt jelenti, hogy a felhasználók a *tulajdonos*, *közreműködő*vagy *olvasó* szerepkört rendelik hozzá az erőforrás előfizetéséhez. Két konkrét Security Center szerepkör is létezik:
 
-- **Biztonsági olvasó**: megtekintheti a Security Centerra vonatkozó jogosultságokat, amelyekben javaslatok, riasztások, szabályzatok és állapotok szerepelnek, de nem módosíthatók.
-- **Biztonsági rendszergazda**: ugyanazok a megtekintési jogosultságok, mint a *biztonsági olvasó*, továbbá frissíthetik a biztonsági házirendet, és elérhetik a javaslatokat és a riasztásokat.
+- **Biztonsági olvasó**: jogosult a Security Center elemek, például javaslatok, riasztások, szabályzatok és állapotok megtekintésére. Nem lehet módosítani.
+- **Biztonsági rendszergazda**: a *biztonsági olvasóval*megegyező megtekintési jogosultsággal rendelkezik. A a biztonsági házirend frissítése és a riasztások elvetése is megtehető.
 
 
-## <a name="disable-security-policies"></a>Biztonsági házirendek letiltása
-Ha az alapértelmezett biztonsági házirend olyan javaslatot hoz létre, amely nem releváns a környezetében, leállíthatja a javaslatot küldő szabályzat-definíció letiltásával.
+## <a name="disable-security-policies-and-disable-recommendations"></a>Biztonsági házirendek letiltása és javaslatok letiltása
+
+Ha a biztonsági kezdeményezés olyan javaslatot indít, amely a környezet szempontjából lényegtelen, megakadályozhatja, hogy a javaslat újból megjelenjen. Egy javaslat letiltásához tiltsa le a javaslatot létrehozó konkrét szabályzatot.
+
+A letiltani kívánt javaslat továbbra is megjelenik, ha a Security Center szabályozási megfelelőségi eszközeivel alkalmazott szabályozási szabványhoz szükséges. Még ha a szabályzatot is letiltotta a beépített kezdeményezésben, a szabályozási standard kezdeményezési szabályzata továbbra is elindítja a javaslatot, ha a megfelelőséghez szükséges. A szabályzatokat nem lehet letiltani a szabályozási standard kezdeményezésekben.
+
 A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése](security-center-recommendations.md).
 
 1. Security Center a **házirend & megfelelőség** szakaszban válassza a **biztonsági házirend**elemet.
@@ -116,15 +121,15 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
 
    ![házirend letiltása](./media/tutorial-security-policy/disable-policy.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
    > [!NOTE]
    > A házirend-letiltási módosítások érvénybe léptetéséhez akár 12 órát is igénybe vehet.
 
 
 
-## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta a biztonsági szabályzatokat. A kapcsolódó információk a következő cikkekben találhatók:
+## <a name="next-steps"></a>Következő lépések
+Ez a cikk a biztonsági szabályzatokat ismerteti. A kapcsolódó információk a következő cikkekben találhatók:
 
 * A házirendek PowerShell használatával történő beállításával kapcsolatos útmutatásért lásd [: rövid útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához a Azure PowerShell modul használatával](../governance/policy/assign-policy-powershell.md)
 

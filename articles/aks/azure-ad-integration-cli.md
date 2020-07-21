@@ -1,25 +1,28 @@
 ---
-title: Az Azure Active Directory Azure Kubernetes Service-szel való integrálása
-description: Megtudhatja, hogyan használhatja az Azure CLI-t az Azure Kubernetes Service (ak) fürt létrehozásához és Azure Active Directoryéhez
+title: Azure Active Directory integrálása az Azure Kubernetes szolgáltatással (örökölt)
+description: Ismerje meg, hogyan használhatja az Azure CLI-t az Azure Kubernetes Service (ak) fürt létrehozásához és Azure Active Directoryéhez (örökölt)
 services: container-service
 author: TomGeske
 ms.topic: article
-ms.date: 07/08/2020
+ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: 0bbaca733eb9c1fffbc5c6781b51429edd73fb46
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dfc3a546f4845d5eb2e4e144b66b5d97e4a68829
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252079"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518028"
 ---
-# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Azure Active Directory integrálása az Azure Kubernetes szolgáltatással az Azure CLI használatával
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure Active Directory integrálása az Azure Kubernetes szolgáltatással az Azure CLI használatával (örökölt)
 
 Az Azure Kubernetes Service (ak) konfigurálható úgy, hogy Azure Active Directory (AD) használatát használja a felhasználói hitelesítéshez. Ebben a konfigurációban egy Azure AD-hitelesítési jogkivonat használatával tud bejelentkezni egy AK-fürtbe. A Kubernetes szerepköralapú hozzáférés-vezérlést (RBAC) is konfigurálhat a felhasználó identitása vagy a címtár csoporttagság alapján.
 
 Ez a cikk bemutatja, hogyan hozhatja létre a szükséges Azure AD-összetevőket, hogyan helyezhet üzembe egy Azure AD-kompatibilis fürtöt, és hogyan hozhat létre alapszintű RBAC-szerepkört az AK-fürtben.
 
 Az ebben a cikkben használt teljes minta szkripttel kapcsolatban lásd: [Azure CLI-minták – AK-integráció az Azure ad-vel][complete-script].
+
+> [!Important]
+> Az AK egy új, továbbfejlesztett [AK által felügyelt Azure ad-][managed-aad] felülettel rendelkezik, amely nem igényli a kiszolgáló vagy az ügyfélalkalmazás felügyeletét. Ha át szeretné telepíteni az áttelepítést, kövesse az [itt][managed-aad-migrate]található utasításokat.
 
 ## <a name="the-following-limitations-apply"></a>Az alábbi korlátozások érvényesek:
 
@@ -280,3 +283,5 @@ Az identitás-és erőforrás-vezérléssel kapcsolatos ajánlott eljárásokér
 [rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[managed-aad]: managed-aad.md
+[managed-aad-migrate]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration

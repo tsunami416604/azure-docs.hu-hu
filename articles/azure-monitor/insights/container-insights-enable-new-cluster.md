@@ -3,16 +3,17 @@ title: Új Azure Kubernetes Service-(ak-) fürt figyelése | Microsoft Docs
 description: Megtudhatja, hogyan engedélyezheti a figyelést egy új Azure Kubernetes Service (ak) fürthöz a Azure Monitor for containers előfizetéssel.
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-terraform
+ms.openlocfilehash: 86ace49ea60bf1bd11633b5a883401f678ecaf8d
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847208"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516634"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Új Azure Kubernetes Service-(ak-) fürt figyelésének engedélyezése
 
-Ez a cikk azt ismerteti, hogyan állítható be Azure Monitor for containers az [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) -ben üzemeltetett felügyelt Kubernetes-fürt figyelésére, amelyet az előfizetésében üzembe helyezésre készül.
+Ez a cikk azt ismerteti, hogyan állítható be Azure Monitor for containers az [Azure Kubernetes Service](../../aks/index.yml) -ben üzemeltetett felügyelt Kubernetes-fürt figyelésére, amelyet az előfizetésében üzembe helyezésre készül.
 
 A támogatott módszerek egyikének használatával engedélyezheti az AK-fürtök figyelését:
 
@@ -24,7 +25,7 @@ A támogatott módszerek egyikének használatával engedélyezheti az AK-fürt�
 Az Azure CLI-vel létrehozott új AK-fürt figyelésének engedélyezéséhez kövesse a rövid útmutató című cikk lépéseit az [AK-fürt létrehozása](../../aks/kubernetes-walkthrough.md#create-aks-cluster)című szakaszban.  
 
 >[!NOTE]
->Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.74 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. Ha telepítette az AK-előnézet CLI-bővítményének 0.4.12 vagy újabb verzióját, távolítsa el az előnézeti bővítmény engedélyezéséhez szükséges módosításokat, mivel ez felülbírálhatja az alapértelmezett Azure CLI-viselkedést, mivel az AK előzetes verziójának funkciói nem érhetők el az Azure US Governmnet-felhőben.
+>Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.74 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört. Ha telepítette az AK-előnézet CLI-bővítményének 0.4.12 vagy újabb verzióját, távolítsa el az előnézeti bővítmény engedélyezéséhez szükséges módosításokat, mivel ez felülbírálhatja az alapértelmezett Azure CLI-viselkedést, mivel az AK előzetes verziójának funkciói nem érhetők el az Azure US Governmnet-felhőben.
 
 ## <a name="enable-using-terraform"></a>Engedélyezés a Terraform használatával
 
@@ -112,7 +113,7 @@ Néhány perc elteltével a parancs befejeződik, és a megoldáshoz tartozó JS
   }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha problémákat tapasztal a megoldás bevezetésére tett kísérlet során, tekintse át a [hibaelhárítási útmutatót](container-insights-troubleshoot.md) .
 

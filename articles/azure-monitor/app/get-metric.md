@@ -7,11 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aacb951d449583c875c71f260957a9d3bc8c663
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82927904"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517144"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Egyéni metrika-gyűjtemény a .NET-ben és a .NET Core-ban
 
@@ -21,7 +22,7 @@ Az Azure Monitor Application Insights .NET-és .NET Core SDK-k két különböz�
 
 `TrackMetric()`egy mérőszámot jelölő nyers telemetria küld. Nem hatékony egyetlen telemetria-elem küldése minden értékhez. `TrackMetric()`a teljesítmény szempontjából nem hatékony, mivel minden `TrackMetric(item)` a telemetria inicializálók és processzorok teljes SDK-folyamatán keresztül halad. `TrackMetric()`A-től eltérően `GetMetric()` a a helyi összesítést kezeli, és ezt követően csak egy perc rögzített intervallumában küldi el az összesített összefoglaló metrikát. Tehát ha a második vagy akár az ezredmásodperc szintjén is figyelnie kell néhány egyéni metrikát, akkor a tárolási és hálózati forgalmi költségek csak percenkénti figyeléssel járnak. Ez jelentősen csökkenti a szabályozás kockázatát is, mivel az összesített metrika számára küldendő telemetria elemek teljes száma jelentősen csökken.
 
-Application Insights a-n keresztül gyűjtött egyéni metrikák `TrackMetric()` `GetMetric()` nem tartoznak a [mintavételezésbe](https://docs.microsoft.com/azure/azure-monitor/app/sampling). A mintavétel fontos mérőszámai olyan forgatókönyvekhez vezethetnek, amelyekben előfordulhat, hogy a metrikák körére épülő riasztások megbízhatatlanok lehetnek. Az egyéni mérőszámok soha nem mintavételezésével általában biztos lehet abban, hogy a riasztási küszöbértékek megszegése esetén a riasztás tüzet fog okozni.  Mivel azonban az egyéni metrikák nem mintául szolgálnak, néhány lehetséges probléma van.
+Application Insights a-n keresztül gyűjtött egyéni metrikák `TrackMetric()` `GetMetric()` nem tartoznak a [mintavételezésbe](./sampling.md). A mintavétel fontos mérőszámai olyan forgatókönyvekhez vezethetnek, amelyekben előfordulhat, hogy a metrikák körére épülő riasztások megbízhatatlanok lehetnek. Az egyéni mérőszámok soha nem mintavételezésével általában biztos lehet abban, hogy a riasztási küszöbértékek megszegése esetén a riasztás tüzet fog okozni.  Mivel azonban az egyéni metrikák nem mintául szolgálnak, néhány lehetséges probléma van.
 
 Ha másodpercenként egy metrika trendeket kell követnie, vagy egy még részletesebb intervallumban, ez a következőket eredményezheti:
 
@@ -29,16 +30,16 @@ Ha másodpercenként egy metrika trendeket kell követnie, vagy egy még részle
 - Megnövekedett hálózati forgalom/teljesítmény terhelése. (Bizonyos helyzetekben ez a pénzügyi és az alkalmazások teljesítményével is járhat.)
 - A betöltési szabályozás kockázata. (A Azure Monitor szolgáltatás adatpontokat veszít ("szabályozás"), ha az alkalmazás nagyon nagy telemetria rövid idő alatt küldi el.)
 
-A szabályozás különösen fontos a mintavétel során, mivel a szabályozás nem fogadott riasztásokat eredményezhet, mert a riasztás kiváltásának feltétele helyileg, majd a betöltési végponton, a túl sok adat elküldése miatt eldobásra kerül. A .NET és a .NET Core esetében miért nem javasoljuk a használatát, `TrackMetric()` hacsak nem implementálta a saját helyi összesítési logikáját. Ha az összes példányt nyomon szeretné követni egy adott időszakra vonatkozóan, előfordulhat, hogy ez [`TrackEvent()`](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics#trackevent) jobb illeszkedést biztosít. Habár ne feledje, hogy az egyéni metrikákkal ellentétben az egyéni események mintavételezése is megtörténik. Természetesen továbbra is használhatja a `TrackMetric()` saját helyi összesítésének megírása nélkül, de ha így tesz, vegye figyelembe a buktatókat.
+A szabályozás különösen fontos a mintavétel során, mivel a szabályozás nem fogadott riasztásokat eredményezhet, mert a riasztás kiváltásának feltétele helyileg, majd a betöltési végponton, a túl sok adat elküldése miatt eldobásra kerül. A .NET és a .NET Core esetében miért nem javasoljuk a használatát, `TrackMetric()` hacsak nem implementálta a saját helyi összesítési logikáját. Ha az összes példányt nyomon szeretné követni egy adott időszakra vonatkozóan, előfordulhat, hogy ez [`TrackEvent()`](./api-custom-events-metrics.md#trackevent) jobb illeszkedést biztosít. Habár ne feledje, hogy az egyéni metrikákkal ellentétben az egyéni események mintavételezése is megtörténik. Természetesen továbbra is használhatja a `TrackMetric()` saját helyi összesítésének megírása nélkül, de ha így tesz, vegye figyelembe a buktatókat.
 
 Az összefoglalás az `GetMetric()` ajánlott megközelítés, mivel az előzetes összesítést végzi, az összes Track () hívás értékeit összesíti, és percenként egyszer küld egy összegzést/összesítést. Ez jelentősen csökkentheti a költségek és a teljesítmény terhelését azáltal, hogy kevesebb adatpontot küld el, miközben továbbra is összegyűjti az összes releváns információt.
 
 > [!NOTE]
-> Csak a .NET-és .NET Core SDK-k rendelkeznek GetMetric () metódussal. Ha Java-t használ, használhat [mikrométer mérőszámokat](https://docs.microsoft.com/azure/azure-monitor/app/micrometer-java) vagy `TrackMetric()` . Python esetén a [OpenCensus. stats](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#metrics) használatával egyéni metrikákat küldhet. A JavaScript és a Node.js továbbra is használhatja `TrackMetric()` , de tartsa szem előtt az előző szakaszban leírt kikötéseket.
+> Csak a .NET-és .NET Core SDK-k rendelkeznek GetMetric () metódussal. Ha Java-t használ, használhat [mikrométer mérőszámokat](./micrometer-java.md) vagy `TrackMetric()` . Python esetén a [OpenCensus. stats](./opencensus-python.md#metrics) használatával egyéni metrikákat küldhet. A JavaScript és a Node.js továbbra is használhatja `TrackMetric()` , de tartsa szem előtt az előző szakaszban leírt kikötéseket.
 
 ## <a name="getting-started-with-getmetric"></a>A GetMetric első lépései
 
-Példánkban egy alapszintű .NET Core 3,1 Worker Service-alkalmazást fogunk használni. Ha pontosan szeretné replikálni a fenti példákkal használt tesztkörnyezetben, 1-6 kövesse a Application Insights [figyelése a Worker Service](https://docs.microsoft.com/azure/azure-monitor/app/worker-service#net-core-30-worker-service-application) -ben című cikket, és vegye fel egy alapszintű feldolgozó szolgáltatás projekt-sablonba. Ezek a fogalmak minden olyan általános alkalmazásra érvényesek, ahol az SDK használható, beleértve a Web Apps és a konzol alkalmazásait is.
+Példánkban egy alapszintű .NET Core 3,1 Worker Service-alkalmazást fogunk használni. Ha pontosan szeretné replikálni a fenti példákkal használt tesztkörnyezetben, 1-6 kövesse a Application Insights [figyelése a Worker Service](./worker-service.md#net-core-30-worker-service-application) -ben című cikket, és vegye fel egy alapszintű feldolgozó szolgáltatás projekt-sablonba. Ezek a fogalmak minden olyan általános alkalmazásra érvényesek, ahol az SDK használható, beleértve a Web Apps és a konzol alkalmazásait is.
 
 ### <a name="sending-metrics"></a>Metrikák küldése
 
@@ -110,7 +111,7 @@ Ha megvizsgáljuk a Application Insights erőforrást a naplók (Analytics) szol
 > [!NOTE]
 > Míg a nyers telemetria-tétel nem tartalmazott explicit Sum tulajdonságot/mezőt a betöltés után, akkor létrehozunk egyet. Ebben az esetben mind a `value` , mind a `valueSum` tulajdonság ugyanazt a dolgot jelöli.
 
-Az egyéni metrika telemetria a portál [_mérőszámok_](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) szakaszában is elérheti. [Naplózási és egyéni metrika](pre-aggregated-metrics-log-metrics.md)is. (Az alábbi képernyőképen a log-alapú példa látható.) ![Metrikák Explorer nézet](./media/get-metric/metrics-explorer.png)
+Az egyéni metrika telemetria a portál [_mérőszámok_](../platform/metrics-charts.md) szakaszában is elérheti. [Naplózási és egyéni metrika](pre-aggregated-metrics-log-metrics.md)is. (Az alábbi képernyőképen a log-alapú példa látható.) ![Metrikák Explorer nézet](./media/get-metric/metrics-explorer.png)
 
 ### <a name="caching-metric-reference-for-high-throughput-usage"></a>Gyorsítótárazási metrika referenciája a nagy átviteli sebességű használathoz
 
@@ -299,10 +300,10 @@ SeverityLevel.Error);
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [További ](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)információ a Worker Service-alkalmazások figyeléséről.
-* További részletek a [naplózási és előre összesített metrikákkal](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics)kapcsolatban.
-* [Metrika-kezelő](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)
+* [További ](./worker-service.md)információ a Worker Service-alkalmazások figyeléséről.
+* További részletek a [naplózási és előre összesített metrikákkal](./pre-aggregated-metrics-log-metrics.md)kapcsolatban.
+* [Metrika-kezelő](../platform/metrics-getting-started.md)
 * [ASP.net Core alkalmazások](asp-net-core.md) Application Insightsának engedélyezése
 * Application Insights engedélyezése a ASP.NET- [alkalmazásokhoz](asp-net.md)

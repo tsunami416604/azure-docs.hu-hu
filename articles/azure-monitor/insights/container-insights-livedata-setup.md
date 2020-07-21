@@ -4,12 +4,12 @@ description: Ez a cikk bemutatja, hogyan állíthatja be a tároló-naplók val�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9d60836af350e9af99355db9a7cc140a949d1492
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbd697f743d0d3369a8c35537ac2755ae5d3fc8c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337949"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516464"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Az élő adatszolgáltatások (előzetes verzió) beállításának beállítása
 
@@ -19,7 +19,7 @@ Ez a szolgáltatás a következő módszereket támogatja a naplók, események 
 
 - AK Kubernetes RBAC-hitelesítés nélkül engedélyezve
 - AK engedélyezve a Kubernetes RBAC-engedélyezéssel
-    - A fürt szerepkörének kötési ** [CLUSTERMONITORINGUSER](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0) konfigurált AK**
+    - A fürt szerepkörének kötési ** [CLUSTERMONITORINGUSER](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0) konfigurált AK**
 - Azure Active Directory (AD) SAML-alapú egyszeri bejelentkezéssel engedélyezett AK
 
 Ezek az utasítások rendszergazdai hozzáférést igényelnek a Kubernetes-fürthöz, és ha úgy konfigurálja, hogy az Azure Active Directory (AD) felhasználó-hitelesítésre, rendszergazdai hozzáférés az Azure AD-hoz.
@@ -108,7 +108,7 @@ Az Azure AD-ügyfél regisztrációját újra be kell állítani, hogy a Azure P
 A Kubernetes speciális biztonsági beállításaival kapcsolatos további információkért tekintse át a [Kubernetes dokumentációját](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 >[!NOTE]
->Ha új RBAC-kompatibilis fürtöt hoz létre, tekintse meg a [Azure Active Directory integrálása az Azure Kubernetes szolgáltatással](../../aks/azure-ad-integration.md) című témakört, és kövesse az Azure ad-hitelesítés konfigurálásának lépéseit. Az ügyfélalkalmazás létrehozásának lépései során az ebben a szakaszban található Megjegyzés kiemeli a két átirányítási URL-címet, amelyeket az alábbi 3. lépésben megadott tárolók Azure Monitorához kell létrehoznia.
+>Ha új RBAC-kompatibilis fürtöt hoz létre, tekintse meg a [Azure Active Directory integrálása az Azure Kubernetes szolgáltatással](../../aks/azure-ad-integration-cli.md) című témakört, és kövesse az Azure ad-hitelesítés konfigurálásának lépéseit. Az ügyfélalkalmazás létrehozásának lépései során az ebben a szakaszban található Megjegyzés kiemeli a két átirányítási URL-címet, amelyeket az alábbi 3. lépésben megadott tárolók Azure Monitorához kell létrehoznia.
 
 ### <a name="client-registration-reconfiguration"></a>Ügyfél-regisztráció újrakonfigurálása
 
@@ -138,6 +138,6 @@ Minden Azure AD-fióknak engedéllyel kell rendelkeznie a megfelelő API-khoz a 
 
 Az AK-fürt **ClusterRoleBinding**konfigurálásával kapcsolatos további segítségért lásd: [RBAC-kötés létrehozása](../../aks/azure-ad-integration-cli.md#create-rbac-binding).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy beállította a hitelesítést, a fürtből valós időben megtekintheti a [metrikákat](container-insights-livedata-metrics.md), a [központi telepítéseket](container-insights-livedata-deployments.md), valamint az [eseményeket és a naplókat](container-insights-livedata-overview.md) .

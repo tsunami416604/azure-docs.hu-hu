@@ -5,20 +5,22 @@ description: Megtudhatja, hogyan hozhat létre és használhat statikus nyilván
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: f66a33f49d856abde97756a2b4b483cfa6050d0a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: f7ea25c3348b96ec6d8818e8e1db4660b308dabc
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205778"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517773"
 ---
-# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-cím használata a kimenő forgalomhoz az Azure Kubernetes szolgáltatásban (ak)
+# <a name="use-a-static-public-ip-address-for-egress-traffic-with-a-basic-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-cím használata a kimenő forgalomhoz egy *alapszintű* SKU Load Balancer használatával az Azure Kubernetes szolgáltatásban (ak)
 
-Alapértelmezés szerint a rendszer véletlenszerűen rendeli hozzá a kimenő IP-címet egy Azure Kubernetes-szolgáltatás (ak) fürtjéből. Ez a konfiguráció nem ideális, ha meg kell határoznia egy IP-címet a külső szolgáltatásokhoz való hozzáféréshez, például:. Ehelyett előfordulhat, hogy hozzá kell rendelnie egy statikus IP-címet, amely engedélyezhető a szolgáltatás eléréséhez.
+Alapértelmezés szerint a rendszer véletlenszerűen rendeli hozzá a kimenő IP-címet egy Azure Kubernetes-szolgáltatás (ak) fürtjéből. Ez a konfiguráció nem ideális, ha meg kell határoznia egy IP-címet a külső szolgáltatásokhoz való hozzáféréshez, például:. Ehelyett előfordulhat, hogy hozzá kell rendelnie egy statikus IP-címet egy engedélyezési listához a szolgáltatás eléréséhez.
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat egy statikus nyilvános IP-címet egy AK-fürt kimenő forgalmának használatával.
 
 ## <a name="before-you-begin"></a>Előkészületek
+
+Ez a cikk azt feltételezi, hogy az Azure alapszintű Load Balancer használja.  Javasoljuk, hogy az [Azure standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)használatát használja, és az [AK kimenő forgalmának szabályozására](https://docs.microsoft.com/azure/aks/limit-egress-traffic)szolgáló fejlettebb funkciókkal is rendelkezik.
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
@@ -105,7 +107,7 @@ Annak ellenőrzéséhez, hogy a statikus nyilvános IP-cím használatban van-e,
 Alapszintű *Debian* Pod elindítása és csatlakoztatása:
 
 ```console
-kubectl run -it --rm aks-ip --image=debian --generator=run-pod/v1
+kubectl run -it --rm aks-ip --image=debian
 ```
 
 Webhelynek a tárolóból való eléréséhez használja a `apt-get` t `curl` a tárolóba való telepítéshez.
@@ -122,7 +124,7 @@ $ curl -s checkip.dyndns.org
 <html><head><title>Current IP Check</title></head><body>Current IP Address: 40.121.183.52</body></html>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha el szeretné kerülni a Azure Load Balancer több nyilvános IP-cím fenntartását, használhat egy bejövő vezérlőt is. A beáramlási vezérlők további előnyöket biztosítanak, például az SSL/TLS-megszakítást, az URI-újraírások támogatását és az SSL/TLS-titkosítást. További információkért lásd: [alapszintű bejövő vezérlő létrehozása az AK-ban][ingress-aks-cluster].
 

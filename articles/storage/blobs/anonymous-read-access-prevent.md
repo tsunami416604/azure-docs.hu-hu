@@ -1,34 +1,34 @@
 ---
 title: Tárolók és Blobok névtelen nyilvános olvasási hozzáférésének tiltása
 titleSuffix: Azure Storage
-description: ''
+description: Megtudhatja, hogyan elemezheti a névtelen kérelmeket egy Storage-fiókkal, és hogyan akadályozhatja meg a névtelen hozzáférést a teljes Storage-fiókhoz vagy egy adott tárolóhoz.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 07/13/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 90d7cd65bbc07524391f34fe0efce2b044664cef
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 24d726f7600c3ba80833640be8036bf0daa2c014
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209649"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86518724"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Tárolók és Blobok névtelen nyilvános olvasási hozzáférésének tiltása
 
-Az Azure Storage szolgáltatásban tárolt tárolók és Blobok névtelen nyilvános olvasási hozzáférése kényelmes módszer az adatmegosztáshoz, de biztonsági kockázatot jelenthet. Fontos, hogy megfontoltan engedélyezze a névtelen hozzáférést, és Ismerje meg, hogyan értékelheti ki a névtelen hozzáférést az adataihoz. Az üzemeltetés bonyolultsága, az emberi hiba, vagy a nyilvánosan elérhető adatvédelemmel szembeni rosszindulatú támadás költséges adatvesztést eredményezhet. A Microsoft azt javasolja, hogy csak akkor engedélyezze a névtelen hozzáférést, ha az alkalmazási forgatókönyvhöz szükséges.
+Az Azure Storage szolgáltatásban tárolt tárolók és Blobok névtelen nyilvános olvasási hozzáférése kényelmes módszer az adatmegosztáshoz, de biztonsági kockázatot jelenthet. Fontos, hogy megfontoltan kezelje a névtelen hozzáférést, és Ismerje meg, hogyan értékelheti ki a névtelen hozzáférést az adataihoz. Az üzemeltetés bonyolultsága, az emberi hiba, vagy a nyilvánosan elérhető adatvédelemmel szembeni rosszindulatú támadás költséges adatvesztést eredményezhet. A Microsoft azt javasolja, hogy csak akkor engedélyezze a névtelen hozzáférést, ha az alkalmazási forgatókönyvhöz szükséges.
 
-Alapértelmezés szerint a Storage-fiók lehetővé teszi, hogy a felhasználó megfelelő engedélyekkel konfigurálja a tárolók és a Blobok nyilvános hozzáférését. Ezt a funkciót a Storage-fiók szintjén tilthatja le, hogy a fiókban lévő tárolók és Blobok ne legyenek nyilvános hozzáférésre konfigurálva.
+Alapértelmezés szerint a megfelelő engedélyekkel rendelkező felhasználók a tárolók és a Blobok nyilvános hozzáférését is konfigurálhatják. A Storage-fiók szintjén megtilthatja az összes nyilvános hozzáférést. Ha letiltja a nyilvános Blobok hozzáférését a Storage-fiókhoz, a fiókban lévő tárolók nem konfigurálhatók nyilvános hozzáférésre. A nyilvános hozzáférésre már konfigurált tárolók már nem fogadják el a névtelen kérelmeket. További információ: [Névtelen nyilvános olvasási hozzáférés beállítása tárolók és Blobok](anonymous-read-access-configure.md)számára.
 
 Ez a cikk bemutatja, hogyan elemezheti a névtelen kérelmeket egy Storage-fiókkal, és hogyan akadályozhatja meg a névtelen hozzáférést a teljes Storage-fiókhoz vagy egy adott tárolóhoz.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>Ügyfélalkalmazások névtelen kérelmének észlelése
 
-Ha letiltja a nyilvános olvasási hozzáférést egy Storage-fiókhoz, a rendszer elutasítja a hozzáférést a tárolók és a Blobok számára, amelyek jelenleg nyilvános hozzáférésre vannak konfigurálva. A Storage-fiókhoz való nyilvános hozzáférés letiltása felülbírálja a Storage-fiókban lévő összes tároló nyilvános hozzáférési beállításait. Ha a nyilvános hozzáférés le van tiltva a Storage-fiókhoz, a fiókra vonatkozó jövőbeli névtelen kérelmek sikertelenek lesznek.
+Ha nem engedélyezi a nyilvános olvasási hozzáférést egy Storage-fiókhoz, a rendszer elutasítja a hozzáférést a tárolók és a Blobok számára, amelyek jelenleg nyilvános hozzáférésre vannak konfigurálva. A Storage-fiókhoz való nyilvános hozzáférés letiltása felülbírálja a Storage-fiókban lévő összes tároló nyilvános hozzáférési beállításait. Ha a Storage-fiókhoz való nyilvános hozzáférés nem engedélyezett, a fiókra vonatkozó jövőbeli névtelen kérelmek sikertelenek lesznek.
 
-Annak megismeréséhez, hogy a nyilvános hozzáférés letiltása milyen hatással lehet az ügyfélalkalmazások alkalmazására, a Microsoft javasolja, hogy engedélyezze a naplózást és a metrikákat az adott fiókhoz, és elemezze a névtelen kérések mintáit egy adott időszakban. A metrikák használatával határozza meg a Storage-fiókhoz való névtelen kérések számát, és a naplók segítségével határozza meg, hogy mely tárolók névtelenül érhetők el.
+Annak megismeréséhez, hogy a nyilvános hozzáférés letiltása milyen hatással lehet az ügyfélalkalmazások alkalmazására, a Microsoft javasolja, hogy engedélyezze a naplózást és a metrikákat az adott fiókhoz, és elemezze a névtelen kérések mintáit egy adott időtartamon belül. A metrikák használatával határozza meg a Storage-fiókhoz való névtelen kérések számát, és a naplók segítségével határozza meg, hogy mely tárolók névtelenül érhetők el.
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>Névtelen kérelmek figyelése Metrikaböngésző
 
@@ -92,7 +92,7 @@ A Azure Monitor Azure Storage-naplókban elérhető mezőkre vonatkozó hivatkoz
 
 Az Azure Storage-naplók a Azure Monitorban tartalmazzák azt a hitelesítési típust, amelyet egy kérésnek a Storage-fiókhoz való elvégzéséhez használt. A napló lekérdezésében szűrje a **AuthenticationType** tulajdonságot a névtelen kérések megtekintéséhez.
 
-Ha a blob Storage-hoz való névtelen kérelmek esetében az elmúlt 7 nap naplóit szeretné lekérni, nyissa meg Log Analytics munkaterületét. Ezután illessze be a következő lekérdezést egy új napló-lekérdezésbe, és futtassa. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
+Ha a blob Storage-hoz való névtelen kérelmek esetében az elmúlt 7 nap naplóit szeretné lekérni, nyissa meg Log Analytics munkaterületét. Ezután illessze be a következő lekérdezést egy új napló-lekérdezésbe, és futtassa azt:
 
 ```kusto
 StorageBlobLogs
@@ -106,13 +106,13 @@ A lekérdezésen alapuló riasztási szabályt úgy is konfigurálhat, hogy ért
 
 Miután kiértékelte a névtelen kérelmeket tárolók és Blobok számára a Storage-fiókban, a nyilvános hozzáférés korlátozásához vagy megtiltásához is végezhet műveleteket. Ha előfordulhat, hogy a Storage-fiók egyes tárolóinak elérhetőnek kell lenniük a nyilvános hozzáféréshez, a Storage-fiókban lévő egyes tárolók nyilvános hozzáférési beállításait is konfigurálhatja. Ez a lehetőség a nyilvános hozzáférés legrészletesebbebb szabályozását teszi lehetővé. További információ: [a tároló nyilvános hozzáférési szintjének beállítása](anonymous-read-access-configure.md#set-the-public-access-level-for-a-container).
 
-A fokozott biztonság érdekében letilthatja a nyilvános hozzáférést egy teljes Storage-fiókhoz. A Storage-fiók nyilvános hozzáférési beállítása felülbírálja a fiókban lévő tárolók egyedi beállításait. Ha letilt egy Storage-fiókhoz való nyilvános hozzáférést, a nyilvános hozzáférés engedélyezésére konfigurált tárolók már nem érhetőek el névtelenül. További információ: [nyilvános olvasási hozzáférés engedélyezése vagy letiltása egy Storage-fiókhoz](anonymous-read-access-configure.md#enable-or-disable-public-read-access-for-a-storage-account).
+A fokozott biztonság érdekében a teljes Storage-fiókhoz való nyilvános hozzáférést nem engedélyezheti. A Storage-fiók nyilvános hozzáférési beállítása felülbírálja a fiókban lévő tárolók egyedi beállításait. Ha a Storage-fiókhoz való nyilvános hozzáférést nem engedélyezi, a nyilvános hozzáférés engedélyezésére konfigurált tárolók már nem érhetőek el névtelenül. További információ: [a Storage-fiók nyilvános olvasási hozzáférésének engedélyezése vagy letiltása](anonymous-read-access-configure.md#allow-or-disallow-public-read-access-for-a-storage-account).
 
-Ha a forgatókönyv megköveteli, hogy bizonyos tárolók elérhetők legyenek a nyilvános hozzáféréshez, célszerű lehet áthelyezni ezeket a tárolókat és a blobokat a nyilvános hozzáférésre fenntartott Storage-fiókokba. Ezután letilthatja a nyilvános hozzáférést bármely más Storage-fiókhoz.
+Ha a forgatókönyv megköveteli, hogy bizonyos tárolóknak elérhetőknek kell lenniük a nyilvános hozzáféréshez, célszerű lehet áthelyezni ezeket a tárolókat és a blobokat a nyilvános hozzáférésre fenntartott Storage-fiókokba. Ezután letilthatja a nyilvános hozzáférést bármely más Storage-fiókhoz.
 
 ### <a name="verify-that-public-access-to-a-blob-is-not-permitted"></a>Annak ellenőrzése, hogy a blobhoz való nyilvános hozzáférés nem engedélyezett
 
-Annak ellenőrzéséhez, hogy a megadott blobhoz való nyilvános hozzáférés meg van-e tagadva, megkísérelheti letölteni a blobot az URL-címén keresztül. Ha a letöltés sikeres, a blob továbbra is nyilvánosan elérhető. Ha a blob nem nyilvánosan elérhető, mert a Storage-fiókhoz való nyilvános hozzáférés le van tiltva, akkor egy hibaüzenet jelenik meg, amely jelzi, hogy a nyilvános hozzáférés nem engedélyezett ezen a Storage-fiókon.
+Annak ellenőrzéséhez, hogy egy adott blobhoz való nyilvános hozzáférés nem engedélyezett-e, megkísérelheti letölteni a blobot az URL-címén keresztül. Ha a letöltés sikeres, a blob továbbra is nyilvánosan elérhető. Ha a blob nem érhető el nyilvánosan, mert a Storage-fiókhoz való nyilvános hozzáférés nem engedélyezett, akkor egy hibaüzenet jelenik meg, amely jelzi, hogy a nyilvános hozzáférés nem engedélyezett ezen a Storage-fiókon.
 
 Az alábbi példa bemutatja, hogyan használható a PowerShell a blob letöltésére az URL-cím használatával. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
@@ -124,7 +124,7 @@ Invoke-WebRequest -Uri $url -OutFile $downloadTo -ErrorAction Stop
 
 ### <a name="verify-that-modifying-the-containers-public-access-setting-is-not-permitted"></a>Annak ellenőrzése, hogy a tároló nyilvános hozzáférési beállításának módosítása nem engedélyezett-e
 
-Annak ellenőrzéséhez, hogy a tároló nyilvános hozzáférési beállítása nem módosítható-e, miután a nyilvános hozzáférés le van tiltva a Storage-fiókhoz, megkísérelheti módosítani a beállítást. A tároló nyilvános hozzáférési beállításának módosítása sikertelen lesz, ha a nyilvános hozzáférés le van tiltva a Storage-fiókhoz.
+Annak ellenőrzéséhez, hogy a tároló nyilvános hozzáférési beállítása nem módosítható-e, miután a Storage-fiókhoz nem engedélyezett a nyilvános hozzáférés, megkísérelheti módosítani a beállítást. A tároló nyilvános hozzáférési beállításának módosítása sikertelen lesz, ha a nyilvános hozzáférés nem engedélyezett a Storage-fiók esetében.
 
 Az alábbi példa bemutatja, hogyan lehet a PowerShell használatával módosítani egy tároló nyilvános hozzáférési beállításait. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
 
@@ -141,10 +141,10 @@ Set-AzStorageContainerAcl -Context $ctx -Container $containerName -Permission Bl
 
 ### <a name="verify-that-creating-a-container-with-public-access-enabled-is-not-permitted"></a>Győződjön meg arról, hogy az engedélyezett nyilvános hozzáférésű tároló létrehozása nem engedélyezett
 
-Ha a Storage-fiókhoz a nyilvános hozzáférés le van tiltva, akkor nem fog tudni új tárolót létrehozni, amely lehetővé teszi a nyilvános hozzáférést. Az ellenőrzéshez próbáljon meg egy olyan tárolót létrehozni, amelyen engedélyezve van a nyilvános hozzáférés.
+Ha a Storage-fiókhoz nem engedélyezett a nyilvános hozzáférés, akkor nem fog tudni új tárolót létrehozni, amelyen engedélyezve van a nyilvános hozzáférés. Az ellenőrzéshez próbáljon meg egy olyan tárolót létrehozni, amelyen engedélyezve van a nyilvános hozzáférés.
 
 Az alábbi példa bemutatja, hogyan lehet a PowerShell használatával olyan tárolót létrehozni, amelyen engedélyezve van a nyilvános hozzáférés. Ne felejtse el lecserélni a zárójelben lévő helyőrző értékeket a saját értékeire:
- 
+
 ```powershell
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"
@@ -156,7 +156,7 @@ $ctx = $storageAccount.Context
 New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Névtelen nyilvános olvasási hozzáférés konfigurálása a tárolók és a Blobok számára](anonymous-read-access-configure.md)
 - [Nyilvános tárolók és Blobok elérése névtelenül a .NET-tel](anonymous-read-access-client.md)

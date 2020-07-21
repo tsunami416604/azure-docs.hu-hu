@@ -1,29 +1,29 @@
 ---
-title: 'Gyors útmutató: Node. js figyelése Azure Monitor Application Insights'
-description: Útmutatást nyújt a Node. js-webalkalmazások gyors beállításához a Azure Monitor Application Insights való figyeléshez
+title: 'Gyors útmutató: Node.js figyelése Azure Monitor Application Insights'
+description: Útmutatást nyújt egy Node.js webalkalmazás gyors beállításához Azure Monitor-alapú figyeléshez Application Insights
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 694d2ae529202223869fcbb2a084e32bccaedbf1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e50daf3d94d30e4799bf7a645f46bb70fd6750c
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77660223"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516498"
 ---
-# <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rövid útmutató: a Node. js-webalkalmazás figyelésének megkezdése az Azure Application Insights
+# <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Gyors útmutató: Node.js webalkalmazás figyelésének megkezdése az Azure-ban Application Insights
 
-Ebben a rövid útmutatóban hozzáadja a Node. js-hez készült Application Insights SDK 0,22-es verzióját egy meglévő Node. js-webalkalmazáshoz.
+Ebben a rövid útmutatóban egy meglévő Node.js webalkalmazáshoz adja hozzá a Node.js Application Insights SDK 0,22-es verzióját.
 
 Az Azure Application Insights segítségével egyszerűen monitorozhatja webalkalmazása rendelkezésre állását, teljesítményét és használatát. Emellett egyszerűen azonosíthatja és diagnosztizálhatja az alkalmazás hibáit anélkül, hogy meg kellene várnia, amíg egy felhasználó jelenti azokat. Az SDK 0.20-as verziós kiadásától kezdve a gyakori külsős csomagok, például a MongoDB, a MySQL és a Redis monitorozása is lehetségessé vált.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Egy működő Node. js-alkalmazás.
+* Működő Node.js alkalmazás.
 
 ## <a name="enable-application-insights"></a>Az Application Insights engedélyezése
 
@@ -31,12 +31,12 @@ A Application Insights bármely internetkapcsolattal rendelkező alkalmazásból
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza **az erőforrás** > **létrehozása fejlesztői eszközök** > **Application Insights**elemet.
+2. Válassza **az erőforrás létrehozása**  >  **fejlesztői eszközök**  >  **Application Insights**elemet.
 
    ![Azure Application Insights-erőforrás hozzáadása](./media/nodejs-quick-start/azure-app-insights-create-resource.png)
 
    > [!NOTE]
-   >Ha első alkalommal hoz létre egy Application Insights-erőforrást, további információt az [Application Insights erőforrás létrehozása](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) doc webhelyén olvashat.
+   >Ha első alkalommal hoz létre egy Application Insights-erőforrást, további információt az [Application Insights erőforrás létrehozása](../app/create-new-resource.md) doc webhelyén olvashat.
 
    Megjelenik egy konfigurációs oldal; a beviteli mezők kitöltéséhez használja az alábbi táblázatot. 
 
@@ -60,7 +60,7 @@ A Application Insights bármely internetkapcsolattal rendelkező alkalmazásból
    npm install applicationinsights --save
    ```
 
-3. Szerkessze az alkalmazás első *. js* fájlját, és adja hozzá az alábbi két sort a szkript legfelső részéhez. Ha a [Node. js Gyorsindítás alkalmazást](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs)használja, akkor módosítania kell az *index. js* fájlt. Cserélje `<instrumentation_key>` le az alkalmazást az alkalmazás Instrumentation-kulcsára. 
+3. Szerkessze az alkalmazás első *. js* fájlját, és adja hozzá az alábbi két sort a szkript legfelső részéhez. Ha a [Node.js Gyorsindítás alkalmazást](../../app-service/app-service-web-get-started-nodejs.md)használja, akkor módosítania kell a *index.js* fájlt. Cserélje le az `<instrumentation_key>` alkalmazást az alkalmazás Instrumentation-kulcsára. 
 
    ```JavaScript
    const appInsights = require('applicationinsights');
@@ -82,7 +82,7 @@ A Application Insights bármely internetkapcsolattal rendelkező alkalmazásból
 
    ![Application Insights alkalmazás-hozzárendelés](./media/nodejs-quick-start/azure-app-insights-application-map.png)
 
-3. Válassza az **app Analytics** ikon ![alkalmazás-hozzárendelés](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) ikon **nézetét az elemzés elemnél**.  Ez a művelet megnyitja **Application Insights Analytics szolgáltatást**, amely részletes lekérdezési nyelvet biztosít a Application Insights által összegyűjtött összes információ elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
+3. Válassza az **app Analytics** ikon ![ alkalmazás-hozzárendelés ikon ](./media/nodejs-quick-start/azure-app-insights-analytics-icon.png) **nézetét az elemzés elemnél**.  Ez a művelet megnyitja **Application Insights Analytics szolgáltatást**, amely részletes lekérdezési nyelvet biztosít a Application Insights által összegyűjtött összes információ elemzéséhez. Esetünkben most egy lekérdezés jön létre, amely a kérések számát egy diagramon jeleníti meg. A további adatok elemzéséhez írhat saját lekérdezéseket is.
 
    ![Application Insights elemzési gráfok](./media/nodejs-quick-start/azure-app-insights-analytics-queries.png)
 
@@ -116,9 +116,9 @@ A Application Insights bármely internetkapcsolattal rendelkező alkalmazásból
 
    ![Application Insights kiszolgálói metrikák gráfja](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
-A Node. js figyelésével kapcsolatos további információkért tekintse meg a [további AppInsights Node. js-dokumentációt](../../azure-monitor/app/nodejs.md).
+A Node.js figyelésével kapcsolatos további információkért tekintse meg a [további AppInsights Node.js dokumentációját](../../azure-monitor/app/nodejs.md).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez kövesse az alábbi lépéseket.
 
@@ -128,7 +128,7 @@ Ha végzett a teszteléssel, törölheti az erőforráscsoportot és az összes 
 1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget, majd válassza a **myResourceGroup**lehetőséget.
 2. Az erőforráscsoport lapon válassza a **Törlés**lehetőséget, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Teljesítményproblémák észlelése és diagnosztizálása](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [Teljesítményproblémák észlelése és diagnosztizálása](../log-query/log-query-overview.md)

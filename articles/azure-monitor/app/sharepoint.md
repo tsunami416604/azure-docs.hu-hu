@@ -3,15 +3,19 @@ title: SharePoint-hely megfigyelése az Application Insights segítségével
 description: Új alkalmazás figyelésének megkezdése új kialakítási kulccsal
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.openlocfilehash: b9b31a715b19d6c06cbddb91c0bd9279088c4447
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a545a24b5a9af883200f25cc83486e3c5621bd78
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221051"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86516889"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>SharePoint-hely megfigyelése az Application Insights segítségével
+
 Az Azure Application Insights figyeli alkalmazásai rendelkezésre állását, teljesítményét és használatát. Ebből a cikkből megismerheti, hogyan állíthatja be egy SharePoint-helyhez.
+
+> [!NOTE]
+> Biztonsági okokból a jelen cikkben ismertetett parancsfájlt nem lehet közvetlenül felvenni a SharePoint modern UX weblapjára. Alternatív megoldásként használhatja a [SharePoint Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) szolgáltatást, amellyel létrehozhat egy egyéni bővítményt, amellyel a SharePoint-webhelyekre Application Insights telepíthet. További információért lásd: [SPFx-bővítményi megoldás létrehozása a AppInsights-ben telepített](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) , vagy [a minta megtekintése](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample). 
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 Az [Azure Portalon](https://portal.azure.com) hozzon létre egy új Application Insights-erőforrást. Az alkalmazás típusának válassza az ASP.NET lehetőséget.
@@ -137,5 +141,3 @@ function onRequestFail(sender, args) {
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md) más típusú alkalmazásokhoz.
 
 <!--Link references-->
-
-

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 1e3ef1133628f0470ee92237abf20d3bb0a9e21a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0245a23e46770840295904685c913826950c0642
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254667"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86517841"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -146,7 +146,7 @@ Amikor az Azure Portal használatával hoz létre egy Application Gateway-t, a f
 
 - Ha azt szeretné, hogy minden kérelem (bármely tartományhoz) el legyen fogadva és továbbítva legyen a háttérbeli készletekbe, válassza az alapszintű lehetőséget. Útmutató az [Application Gateway alapszintű figyelővel való létrehozásához](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
 
-- Ha a kérelmeket a *állomásfejléc* vagy az állomásnév alapján különböző háttérbeli készletekre szeretné továbbítani, válassza a többhelyes figyelő lehetőséget, ahol meg kell adnia a bejövő kérelemnek megfelelő állomásnevet is. Ennek az az oka, hogy Application Gateway a HTTP 1,1 állomásfejléc-ra támaszkodik, hogy egynél több webhelyet működtessen ugyanazon a nyilvános IP-címen és porton.
+- Ha a kérelmeket különböző háttér-készletekbe szeretné továbbítani a *állomásfejléc* vagy az állomásnevek alapján, válassza a többhelyes figyelő lehetőséget, ahol meg kell adnia a bejövő kérelemnek megfelelő állomásnevet is. Ennek az az oka, hogy Application Gateway a HTTP 1,1 állomásfejléc-ra támaszkodik, hogy egynél több webhelyet működtessen ugyanazon a nyilvános IP-címen és porton. További információ: [több webhely üzemeltetése Application Gateway használatával](multiple-site-overview.md).
 
 #### <a name="order-of-processing-listeners"></a>Feldolgozási figyelők sorrendje
 
@@ -279,12 +279,16 @@ További információ az átirányítással kapcsolatban:
 - [Forgalom átirányítása egy külső helyre a PowerShell használatával](redirect-external-site-powershell.md)
 - [Forgalom átirányítása egy külső helyre a parancssori felület használatával](redirect-external-site-cli.md)
 
-#### <a name="rewrite-the-http-header-setting"></a>A HTTP-fejléc beállításának újraírása
+### <a name="rewrite-http-headers-and-url"></a>HTTP-fejlécek és URL-cím újraírása
 
-Ezzel a beállítással a HTTP-kérések és a válaszok fejlécei is hozzáadhatók, eltávolíthatók vagy frissülnek, míg a kérelmek és válaszok csomagjai az ügyfél és a háttérbeli készletek között mozognak. További információkért lásd:
+Az Újraírási szabályok használatával a HTTP (S) kérések és válaszok fejléceit, valamint az URL-cím és a lekérdezési karakterlánc paramétereit is hozzáadhatja, eltávolíthatja vagy frissítheti, mivel a kérelmek és válaszok csomagjai az Application Gateway segítségével az ügyfél és a háttérbeli készletek között mozognak.
 
- - [HTTP-fejlécek újraírása – áttekintés](rewrite-http-headers.md)
+A fejlécek és URL-paraméterek statikus értékekre vagy más fejlécekre és kiszolgálói változókra állíthatók be. Ez segíti a fontos használati eseteket, például az ügyfél IP-címeinek kinyerését, a háttér bizalmas adatainak eltávolítását, a nagyobb biztonság hozzáadását stb.
+További információ:
+
+ - [HTTP-fejlécek újraírása – áttekintés](rewrite-http-headers-url.md)
  - [HTTP-fejléc újraírásának konfigurálása](rewrite-http-headers-portal.md)
+ - [URL-cím újraírásának konfigurálása](rewrite-url-portal.md)
 
 ## <a name="http-settings"></a>HTTP-beállítások
 
@@ -357,7 +361,7 @@ Ez a beállítás egy [Egyéni](application-gateway-probe-overview.md#custom-hea
 > [!NOTE]
 > Az egyéni mintavétel nem figyeli a háttér-készlet állapotát, kivéve, ha a megfelelő HTTP-beállítás explicit módon hozzá van rendelve egy figyelőhöz.
 
-### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>Állomásnév kiválasztása a háttérbeli címről
+### <a name="pick-host-name-from-back-end-address"></a><a name="pick"></a>Állomásnév kiválasztása a háttérbeli címről
 
 Ez a funkció dinamikusan beállítja a kérésben szereplő *állomásfejléc* -fejlécet a háttérbeli készlet állomásneve számára. IP-címet vagy teljes tartománynevet használ.
 
@@ -391,7 +395,7 @@ Az Application Gateway alapértelmezés szerint figyeli az összes erőforrás �
 > [!NOTE]
 > Az egyéni állapotú mintavétel létrehozása után hozzá kell rendelnie azt egy háttérbeli HTTP-beállításhoz. Az egyéni mintavétel nem figyeli a háttér-készlet állapotát, kivéve, ha a megfelelő HTTP-beállítás explicit módon van társítva egy figyelővel egy szabály használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a Application Gateway összetevőket, a következőket teheti:
 

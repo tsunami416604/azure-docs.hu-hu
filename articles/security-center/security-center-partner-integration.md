@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
-ms.openlocfilehash: 48869140ba8cd1a9598562b0057b0005d8fcd9c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd694fd013069c33e4f3af2c81447e014d41b691
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758018"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86519231"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Biztonsági megoldások integrálása az Azure Security Centerbe
 Ez a dokumentum az Azure Security Centerhez már csatlakoztatott biztonsági megoldások kezelésében és újak hozzáadásában segít.
@@ -90,7 +91,7 @@ Válassza a **nézet** lehetőséget További információk és beállítások m
 Security Center automatikusan felderíti az Azure-ban futó biztonsági megoldásokat, de nem kapcsolódik Security Centerhoz, és megjeleníti a megoldásokat a **felderített megoldások** szakaszban. Ezen megoldások közé tartoznak az Azure-megoldások, például a [Azure ad Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)és a partneri megoldások.
 
 > [!NOTE]
-> A Felderített megoldások funkcióhoz a Standard szintű Security Centerre az előfizetés szintjén van szükség. A díjszabással kapcsolatos további információkért tekintse meg a [díjszabást](security-center-pricing.md) .
+> A felderített megoldások szolgáltatás előfizetési szintjén a Security Center standard szintű csomag szükséges. A díjszabással kapcsolatos további információkért tekintse meg a [díjszabást](security-center-pricing.md) .
 >
 
 Válassza a **Kapcsolódás** a megoldás alatt lehetőséget a Security Center való integráláshoz és a biztonsági riasztások értesítéséhez.
@@ -103,7 +104,7 @@ Az **Adatforrások hozzáadása** szakasz sorolja fel az egyéb csatlakoztathat�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben megismerkedett a partnermegoldások Security Centerrel való integrálásával. A kapcsolódó információk a következő cikkekben találhatók:
 
