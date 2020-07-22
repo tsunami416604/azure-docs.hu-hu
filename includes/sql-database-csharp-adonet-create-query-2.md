@@ -4,11 +4,12 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
-ms.openlocfilehash: 7943ea13d93fa68b76d333bda5438fb5738f5cd1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bca885f9b19086302fd91d29b8ff6553b7205f28
+ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86050492"
+ms.lasthandoff: 07/20/2020
+ms.locfileid: "86544842"
 ---
 ## <a name="c-program-example"></a>C# program – példa
 
@@ -16,7 +17,7 @@ A cikk következő fejezetei egy C#-programot jelentenek, amely a ADO.NET haszn�
 
 - [Kapcsolódás SQL Database a ADO.NET használatával](#cs_1_connect)
 - [Metódusok, amelyek T-SQL-utasításokat adnak vissza](#cs_2_return)
-    - Táblázatok létrehozása
+    - Táblák létrehozása
     - Táblázatok feltöltése adatokkal
     - Az Adatfrissítés, törlés és kijelölés
 - [T-SQL küldése az adatbázisba](#cs_3_submit)
@@ -79,7 +80,7 @@ A C# program logikailag egy. cs fájl, és fizikailag több kódrészletre van o
     View the report output here, then press any key to end the program...
     ```
 
-<a name="cs_1_connect"/>
+<a name="cs_1_connect"></a>
 
 ### <a name="connect-to-sql-database-using-adonet"></a>Kapcsolódás SQL Database a ADO.NET használatával
 
@@ -129,7 +130,7 @@ namespace csharp_db_test
         }
 ```
 
-<a name="cs_2_return"/>
+<a name="cs_2_return"></a>
 
 ### <a name="methods-that-return-t-sql-statements"></a>Metódusok, amelyek T-SQL-utasításokat adnak vissza
 
@@ -237,7 +238,7 @@ static string Build_6_Tsql_SelectEmployees()
 }
 ```
 
-<a name="cs_3_submit"/>
+<a name="cs_3_submit"></a>
 
 ### <a name="submit-t-sql-to-the-database"></a>T-SQL küldése az adatbázisba
 
