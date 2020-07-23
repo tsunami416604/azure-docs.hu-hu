@@ -91,7 +91,7 @@ A folyamat a következő:
 
 Az ultra-lemezek további szabályozást kínálnak, összesen két szabályozásra. Ennek köszönhetően az ultra-lemezek foglalási folyamata a korábbi szakaszban leírtak szerint működhet, vagy részletesebben szabályozhatja és terjesztheti a teljesítményt.
 
-:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Egy tábla képe, amely a "ReadOnly" vagy "olvasási/írási" hozzáférést ábrázolja a foglalási tulajdonos, a regisztrált és mások számára.":::
+:::image type="content" source="media/virtual-machines-disks-shared-disks/ultra-reservation-table.png" alt-text="Egy tábla képe, amely a ReadOnly vagy olvasási/írási hozzáférést ábrázolja a foglalási tulajdonos, a regisztrált és mások számára.":::
 
 ## <a name="performance-throttles"></a>Teljesítmény-szabályozások
 
