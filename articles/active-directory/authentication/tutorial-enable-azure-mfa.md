@@ -5,23 +5,28 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/11/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 253eb23be03c1cc0f2abf4ad1fed734426dc287d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1df88e26284dc868267cbc79e27df6f0e25f1250
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77154822"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035060"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Oktatóanyag: felhasználói bejelentkezési események biztonságossá tétele az Azure Multi-Factor Authentication
 
 A többtényezős hitelesítés (MFA) olyan folyamat, amelyben a rendszer a bejelentkezési esemény során kéri a felhasználót, hogy további azonosítási formákat keressen. Ezt a kérést lehet megadnia a mobiloddal vagy egy ujjlenyomat-vizsgálat megadásához. Ha a hitelesítés második formáját igényli, a biztonság megnövekszik, mivel ez a további tényező nem a támadók számára könnyen beszerezhető vagy duplikálható.
 
 Az Azure Multi-Factor Authentication és a feltételes hozzáférési házirendek rugalmasságot biztosítanak a felhasználók számára, hogy az adott bejelentkezési események során engedélyezzék az MFA használatát.
+
+> [!IMPORTANT]
+> Ez az oktatóanyag egy rendszergazdát mutat be az Azure Multi-Factor Authentication engedélyezéséhez.
+>
+> Ha az IT-csapat nem engedélyezte az Azure Multi-Factor Authentication használatát, vagy ha a bejelentkezés során problémákba lépett, további segítségért forduljon az ügyfélszolgálathoz.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -38,9 +43,9 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
     * Ha szükséges, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Globális rendszergazdai* jogosultságokkal rendelkező fiók.
 * Egy nem rendszergazda felhasználó, aki ismeri a jelszót, például *tesztfelhasználó*. Ebben az oktatóanyagban tesztelheti a végfelhasználói Azure Multi-Factor Authentication élményt ebben a fiókban.
-    * Ha létre kell hoznia egy felhasználót, tekintse meg a rövid útmutató [: új felhasználók hozzáadása a Azure Active Directoryhoz](../add-users-azure-active-directory.md)című témakört.
+    * Ha létre kell hoznia egy felhasználót, tekintse meg a rövid útmutató [: új felhasználók hozzáadása a Azure Active Directoryhoz](../fundamentals/add-users-azure-active-directory.md)című témakört.
 * Olyan csoport, amelynek a nem rendszergazda felhasználó tagja, például *MFA-test-Group*. Ebben az oktatóanyagban engedélyezi az Azure Multi-Factor Authenticationt ehhez a csoporthoz.
-    * Ha csoportot kell létrehoznia, tekintse meg [a csoport létrehozása és a tagok hozzáadása a Azure Active Directory-ben](../active-directory-groups-create-azure-portal.md)című témakört.
+    * Ha csoportot kell létrehoznia, tekintse meg [a csoport létrehozása és a tagok hozzáadása a Azure Active Directory-ben](../fundamentals/active-directory-groups-create-azure-portal.md)című témakört.
 
 ## <a name="create-a-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
@@ -102,14 +107,14 @@ Lássuk a feltételes hozzáférési szabályzatot és az Azure Multi-Factor Aut
 
 Most jelentkezzen be a Azure Portalba. Mivel a Azure Portal a feltételes hozzáférési házirendben a további ellenőrzés megköveteléséhez lett konfigurálva, egy Azure Multi-Factor Authentication-kérést kap.
 
-1. Nyisson meg egy új böngészőablakot InPrivate-vagy inkognitóban-módban, [https://portal.azure.com](https://portal.azure.com)és keresse meg a következőt:.
+1. Nyisson meg egy új böngészőablakot InPrivate-vagy inkognitóban-módban, és keresse meg a következőt: [https://portal.azure.com](https://portal.azure.com) .
 1. Jelentkezzen be a nem rendszergazda felhasználóval, például *tesztfelhasználó*. Az Azure Multi-Factor Authentication regisztrálásához és használatához regisztrálnia kell. Az utasításokat követve fejezze be a folyamatot, és ellenőrizze, hogy sikeresen bejelentkezett-e a Azure Portalba.
 
     ![A bejelentkezéshez kövesse a böngészőben megjelenő utasításokat, majd a regisztrált multi-Factor Authentication-kérést](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 1. Zárja be a böngészőablakot.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem szeretné, hogy a feltételes hozzáférési szabályzattal engedélyezze az Azure Multi-Factor Authentication konfigurálását az oktatóanyag részeként, törölje a szabályzatot a következő lépésekkel:
 
@@ -120,7 +125,7 @@ Ha nem szeretné, hogy a feltételes hozzáférési szabályzattal engedélyezze
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban engedélyezte az Azure Multi-Factor Authentication használatát a kiválasztott felhasználói csoportok feltételes hozzáférési házirendjeivel. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban engedélyezte az Azure Multi-Factor Authentication használatát a kiválasztott felhasználói csoportok feltételes hozzáférési házirendjeivel. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Feltételes hozzáférési szabályzat létrehozása az Azure Multi-Factor Authentication Azure AD-felhasználók csoportjának engedélyezéséhez

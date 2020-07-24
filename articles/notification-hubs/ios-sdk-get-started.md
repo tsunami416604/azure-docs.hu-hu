@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: bf6477fed1840daa326f411862a7304018f39e3c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252202"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022429"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával
 
@@ -185,7 +185,7 @@ A második lehetőség számos előnnyel jár a tanúsítványok használata sor
 
    Ez az a jogkivonat-érték, amelyet később a Notification Hubs konfigurálásához fog használni.
 
-Ezeknek a lépéseknek a végén a következő információkat kell használnia az [értesítési központ APNS-információkkal való konfigurálásának](notification-hubs-ios-push-notifications-swift-apps-get-started.md#configure-your-notification-hub-with-apns-information)későbbi használatához:
+Ezeknek a lépéseknek a végén a következő információkat kell használnia az [értesítési központ APNS-információkkal való konfigurálásának](#configure-the-notification-hub-with-apns-information)későbbi használatához:
 
 - **Csoport azonosítója**   (lásd az 1. lépést)
 - **Köteg azonosítója**   (lásd az 1. lépést)
@@ -264,7 +264,7 @@ Ebben a szakaszban létrehoz egy értesítési központot, és konfigurálja a h
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>Az értesítési központ konfigurálása APNS-adatokkal
 
-A **Notification Services**alatt válassza az **Apple (APNS)** lehetőséget, majd kövesse a megfelelő lépéseket a [tanúsítvány létrehozása Notification Hubs](notification-hubs-ios-push-notifications-swift-apps-get-started.md#creating-a-certificate-for-notification-hubs)szakaszban korábban kiválasztott megközelítés alapján   .
+A **Notification Services**alatt válassza az **Apple (APNS)** lehetőséget, majd kövesse a megfelelő lépéseket a [tanúsítvány létrehozása Notification Hubs](#create-a-certificate-for-notification-hubs)szakaszban korábban kiválasztott megközelítés alapján   .
 
 > [!NOTE]
 > Csak akkor használjon **éles** **alkalmazási módot** , ha leküldéses értesítéseket szeretne küldeni az alkalmazást az áruházból megvásárolt felhasználóknak.
@@ -306,4 +306,4 @@ Most már konfigurálta az értesítési központot a APNS. Az alkalmazás regis
 
 Ebben az oktatóanyagban létrehozott és konfigurált egy értesítési központot az Azure-ban, és úgy konfigurálta, hogy engedélyezze az értesítések küldését az alkalmazásnak Apple Push Notification Service (APNS) használatával. Ezután létrehozunk egy minta iOS-alkalmazást, és integráljuk az Azure Notifications hubok SDK-t úgy, hogy az a Azure Portalon keresztül küldött leküldéses értesítéseket fogadhasson. Folytassa a következő oktatóanyaggal a választott nyelv alapján:
 
-- [Oktatóanyag: integrálás egy iOS-alkalmazással Swift használatával](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
+- [Oktatóanyag: integrálás egy iOS-alkalmazással Swift használatával]()

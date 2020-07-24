@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27615b0c76b5c23bbc79788431b0e909b8bf22a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 84a93d4fb8a6a3890ddd2c94b4f0a5c9114bd84d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67092768"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058193"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>Oktatóanyag: a Replicon és a Azure Active Directory integrálása
 
@@ -39,6 +39,9 @@ Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [itt](https://azure.microsoft.com/pricing/free-trial/)kérhet egy hónapos ingyenes próbaverziót.
 * Replicon egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+
+> [!NOTE]
+> Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -113,9 +116,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     * Az alábbi ábrán a teljes URL-cím sémája látható:`https://na2.replicon.com/\<YourCompanyKey\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2`
 
-   b. Kattintson a **+** elemre a **v20Configuration** szakasz kibontásához.
+   b. Kattintson a elemre **+** a **v20Configuration** szakasz kibontásához.
 
-   c. Kattintson a **+** elemre a **metaDataConfiguration** szakasz kibontásához.
+   c. Kattintson a elemre **+** a **metaDataConfiguration** szakasz kibontásához.
 
    d. **Sha256** kiválasztása a xmlSignatureAlgorithm
 
@@ -129,9 +132,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `BrittaSimon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -171,7 +174,7 @@ Ennek a szakasznak a célja egy B. Simon nevű felhasználó létrehozása a Rep
 
     ![Felhasználói profil](./media/replicon-tutorial/ic777808.png "Felhasználói profil")
 
-    a. A **bejelentkezési név** szövegmezőbe írja be azon Azure ad-beli e-mail címet, amelyet szeretne kiépíteni `B.Simon@contoso.com`.
+    a. A **bejelentkezési név** szövegmezőbe írja be azon Azure ad-beli e-mail címet, amelyet szeretne kiépíteni `B.Simon@contoso.com` .
 
     > [!NOTE]
     > A bejelentkezési névnek egyeznie kell a felhasználó e-mail-címével az Azure AD-ben

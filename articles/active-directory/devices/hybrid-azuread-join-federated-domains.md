@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46bb3517af31e328efae89afef8f3e83ccbc8bfa
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: c44d2d80e311fd42f0e2167cb0495a4070d0a313
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778750"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025863"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz
 
@@ -183,7 +183,7 @@ Az eszköz állapotának megállapításához és ellenőrzéséhez az alábbi 3
 ### <a name="locally-on-the-device"></a>Helyileg az eszközön
 
 1. Nyissa meg a Windows PowerShellt.
-2. Írja be a `dsregcmd /status` (igen) kifejezést.
+2. Írja be a következő szöveget: `dsregcmd /status`
 3. Ellenőrizze, hogy a **AzureAdJoined** és a **DomainJoined** is **Igen**értékre van-e állítva.
 4. Használhatja a **DeviceID** eszközt, és összehasonlíthatja a szolgáltatás állapotát a Azure Portal vagy a PowerShell használatával.
 
@@ -196,7 +196,7 @@ Az eszköz állapotának megállapításához és ellenőrzéséhez az alábbi 3
 
 ### <a name="using-powershell"></a>A PowerShell használata
 
-A **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** használatával ellenőrizze az eszköz regisztrációs állapotát az Azure-bérlőben. Ez a parancsmag a [Azure Active Directory PowerShell-modulban](/powershell/azure/install-msonlinev1?view=azureadps-2.0)található.
+A **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** használatával ellenőrizze az eszköz regisztrációs állapotát az Azure-bérlőben. Ez a parancsmag a [Azure Active Directory PowerShell-modulban](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)található.
 
 Ha a **Get-MSolDevice** parancsmagot használja a szolgáltatás részleteinek megtekintéséhez:
 

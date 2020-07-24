@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 1bed17084af39fa75fe01d68fbdd33c586d48e67
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: f77c20faa87adf28a2dda43412a59867309c7cf8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114282"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066920"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-jával a MongoDB-hoz való kapcsolódáshoz a mongúz használatával Cosmos DB
 
@@ -30,7 +30,7 @@ Az oktatóanyag ezen részében a következőket fogja elsajátítani:
 > * Hozza létre a Hero szolgáltatást a Hero-adatlekérdezéshez.
 > * Futtassa helyben az alkalmazást.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -230,7 +230,7 @@ Egy perc alatt áttekintheti az előző kódot, és elvégezheti az átjárást.
 
 Ezután futtassa az alkalmazást az alábbi lépések végrehajtásával:
 
-1. A Visual Studio Code-ban mentse az összes módosítást. **A bal oldalon válassza a hibakeresés** gomb ![ hibakeresés ikonját a Visual Studio Code-ban ](./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png) , majd kattintson a **hibakeresés indítása** gombra ![ hibakeresés ikon a Visual Studio Code-ban ](./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png) .
+1. A Visual Studio Code-ban mentse az összes módosítást. A bal oldalon válassza a **hibakeresés** gombot :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/debug-button.png"::: , majd kattintson a **hibakeresés indítása** gombra :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part5/start-debugging-button.png"::: .
 
 1. Most váltson a böngészőre. Nyissa meg a **fejlesztői eszközöket** és a **hálózat lapot**. Itt `http://localhost:3000` láthatja az alkalmazást.
 

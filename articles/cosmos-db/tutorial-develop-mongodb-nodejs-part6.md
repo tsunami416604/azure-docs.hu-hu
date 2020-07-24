@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: de9e7fd605a1d53d1078523c77cd33065c03ca85
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: c4d44b1bf645132f5c2d6e863dbe0c93f024c7ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118967"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066943"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – a szifilisz-függvények hozzáadása az alkalmazáshoz
 
@@ -36,7 +36,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>Post függvény hozzáadása a főképszolgáltatáshoz
 
-1. A Visual Studio Code-ban nyissa meg a **routes.js** és a **hero.service.js** fájlt egymás mellett a **Split Editor** (Osztott szerkesztő) gomb megnyomásával ![Osztott szerkesztő gomb a Visual Studióban](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png).
+1. A Visual Studio Code-ban nyissa meg a **routes.js** és a **hero.service.js** egymás mellé. ehhez kattintson a **felosztott szerkesztő** gombra :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png"::: .
 
     Láthatja, hogy a routes.js 7. sora meghívja a `getHeroes` függvényt a **hero.service.js** 5. sorában.  Ugyanilyen párosítást kell létrehoznunk a Post, Put és Delete függvényekhez. 
 
@@ -84,7 +84,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
     });
     ```
 
-5. Az alkalmazást futtatva ellenőrizze, hogy minden működik-e. A Visual Studio Code-ban mentse az összes módosítást, válassza a **Debug** (Hibakeresés) gombot ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png) a bal oldalon, majd a **Start Debugging** (Hibakeresés indítása) gombot ![Hibakeresés indítása ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png).
+5. Az alkalmazást futtatva ellenőrizze, hogy minden működik-e. A Visual Studio Code-ban mentse az összes módosítást, **Debug** válassza a :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png"::: bal oldalon található hibakeresés gombot, majd kattintson a **hibakeresés indítása** gombra :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png"::: .
 
 6. Most lépjen vissza a webböngészőjére, és nyissa meg a Fejlesztői eszközök Hálózat lapját – ehhez a legtöbb gépen az F12 billentyűt kell lenyomni. Lépjen a `http://localhost:3000` helyre, és tekintse meg a hálózaton keresztül végzett hívásokat.
 
@@ -169,7 +169,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
     };
     ```
 
-4. Most, hogy frissítettük a kódot, válassza a **Restart** (Újraindítás) gombot ![Újraindítás gomb a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png) a Visual Studio Code-ban.
+4. Most, hogy frissítettük a kódot, kattintson az **Újraindítás** gombra a :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png"::: Visual Studio Code-ban.
 
 5. Frissítse az oldalt a webböngészőben, és válassza az **Add New Hero** (Új fő kép hozzáadása) gombot. Adjon hozzá egy új fő képet a „9” azonosítóval, a „Starlord” névvel és a „Hi” üzenettel. Az új fő kép mentéséhez válassza a **Save** (Mentés) gombot.
 

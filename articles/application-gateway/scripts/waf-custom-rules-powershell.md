@@ -6,14 +6,14 @@ ms.service: application-gateway
 ms.topic: sample
 ms.date: 6/7/2019
 ms.author: victorh
-ms.openlocfilehash: ffdde80598322222e2a8f000eee8be269becdd11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4ffbab992732c39054818b9b4f21871687b05dcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "66743422"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083140"
 ---
-# <a name="create-waf-custom-rules-with-azure-powershell"></a>Egyéni WAF-szabályok létrehozása a Azure PowerShell
+# <a name="create-web-application-firewall-waf-custom-rules-with-azure-powershell"></a>Webalkalmazási tűzfal (WAF) egyéni szabályainak létrehozása a Azure PowerShell
 
 Ez a szkript létrehoz egy Application Gateway webalkalmazási tűzfalat, amely egyéni szabályokat használ. Az egyéni szabály blokkolja a forgalmat, ha a kérelem fejléce felhasználói ügynök *evilbot*tartalmaz.
 
@@ -24,7 +24,7 @@ Ez a szkript létrehoz egy Application Gateway webalkalmazási tűzfalat, amely 
 Ha a Azure PowerShell helyi telepítését és használatát választja, akkor ehhez a parancsfájlhoz a Azure PowerShell modul 2.1.0 vagy újabb verziójára van szükség.
 
 1. A verzió megkereséséhez futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
-2. Az Azure-beli kapcsolatok létrehozásához futtassa `Connect-AzAccount`a parancsot.
+2. Az Azure-beli kapcsolatok létrehozásához futtassa a parancsot `Connect-AzAccount` .
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,7 +44,7 @@ Remove-AzResourceGroup -Name CustomRulesTest
 
 A szkript a következő parancsokat használja az üzemelő példány létrehozásához. A táblázatban lévő összes elem a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Új – AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) | Létrehozza az alhálózatkonfigurációt. |
@@ -70,5 +70,5 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 ## <a name="next-steps"></a>További lépések
 
 - További információ az egyéni WAF-szabályokról: [webalkalmazási tűzfal egyéni szabályai](../custom-waf-rules-overview.md)
-- Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
+- Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 - Az alkalmazásátjárókkal használható további PowerShell-példaszkripteket [Az Application Gateway dokumentációjában](../powershell-samples.md) találhat.

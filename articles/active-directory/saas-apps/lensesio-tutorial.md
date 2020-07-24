@@ -15,19 +15,19 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fa73253c49f49647d3415340b2601f1395f912c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c2b630111261be8e3615ab45e95633040e799551
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172780"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050986"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lensesio"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Lenses.io
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Lenses.io DataOps-portálon.
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Lenses.io a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Lenses.io-t az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a [Lenses.IO](https://lenses.io/) DataOps portált Azure Active Directory (Azure ad) használatával. Ha integrálja az Lenses.io-t az Azure AD-vel, a következőket teheti:
 
-* A Lenses.io-hez hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Lenses.io az Azure AD-fiókjával.
+* A Lenses.io-portálhoz hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a lencsékre az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
@@ -37,7 +37,8 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Lenses.io egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* A lencsék portál egy példánya. [Többféle módon](https://lenses.io/product/deployment/)is üzembe helyezhet egy objektívek-portált.
+* Egyszeri bejelentkezést (SSO) támogató Lenses.io- [licenc](https://lenses.io/product/pricing/) .
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -61,15 +62,15 @@ A Lenses.io Azure AD-be való integrálásának konfigurálásához hozzá kell 
 
 ## <a name="configure-and-test-azure-ad-sso-for-lensesio"></a>Azure AD SSO konfigurálása és tesztelése a Lenses.io-hez
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Lenses.io a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Lenses.io-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a Lenses.io-portálon egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Lenses.io-ben.
 
 Az Azure AD SSO és a Lenses.io konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Hozzon létre egy Azure ad-teszt felhasználót és csoportot](#create-an-azure-ad-test-user-and-group)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. **[LENSES.IO SSO konfigurálása](#configure-lensesio-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[Hozzon létre Lenses.IO-teszt felhasználót](#create-lensesio-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Lenses.IO rendelkezik.
+    1. **[Lenses.IO-tesztelési csoport engedélyeinek létrehozása](#create-lensesio-test-group-permissions)** – annak szabályozására, hogy a B. Simon milyen mértékben férhessen hozzá a Lenses.IO (engedélyezéshez).
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -84,26 +85,26 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CUSTOMER_LENSES_BASE_URL>`
+    a. A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<CUSTOMER_LENSES_BASE_URL>` például`https://lenses.my.company.com`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CUSTOMER_LENSES_BASE_URL>`
+    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<CUSTOMER_LENSES_BASE_URL>` például`https://lenses.my.company.com`
 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`
+    emelkedés pl`https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, a válasz URL-címével és az azonosítóval. Az értékek lekéréséhez forduljon a Lenses.io ügyfélszolgálati [csapatához](mailto:support@lenses.io) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, a válasz URL-címével és az azonosítóval a lencsék-portál példányának alap URL-címe alapján. További információt a [LENSES.IO SSO dokumentációjában](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)talál.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-1. A **Lenses.IO beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
+1. A **Lenses.IO beállítása** szakaszban a fenti XML-fájl segítségével konfigurálja a lencséket az Azure SSO-ra.
 
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+### <a name="create-an-azure-ad-test-user-and-group"></a>Azure AD-teszt felhasználó és csoport létrehozása
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
-
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven. Emellett létre fog hozni egy tesztelési csoportot is a B. Simon számára, amelyet a B. Simon elérésének szabályozására használ a lencsékben.
+Azt is megtudhatja, hogyan használja a lencsék csoporttagság-leképezést a [lencsék SSO-dokumentációjában](https://docs.lenses.io/install_setup/configuration/security.html#id3)
 
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
@@ -112,6 +113,23 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** lehetőségre.
+
+A csoport létrehozása:
+1. Lépjen vissza a **Azure Active Directoryra**, majd válassza a **csoportok** lehetőséget.
+1. Válassza az **új csoport** lehetőséget a képernyő tetején.
+1. A **csoport tulajdonságainál**kövesse az alábbi lépéseket:
+   1. A **csoport típusa** mezőben válassza a elemet `Security` .
+   1. A **csoport neve** mezőbe írja be a`LensesUsers`
+   1. Kattintson a **Létrehozás** lehetőségre.
+1. Válassza ki a csoportot `LensesUsers` , és jegyezze fel az **objektum azonosítóját** (például `f8b5c1ec-45de-4abd-af5c-e874091fb5f7` ). Ezt az azonosítót fogja használni a lencsékben a csoport felhasználóinak a [megfelelő engedélyekkel](https://docs.lenses.io/install_setup/configuration/security.html#id3)való leképezéséhez.  
+   
+A csoport társítása a teszt felhasználóhoz: 
+1. Lépjen vissza **Azure Active Directoryre**, majd válassza a **felhasználók**lehetőséget.
+1. Válassza ki a felhasználó tesztelését `B.Simon` .
+1. Válassza a **csoportok**lehetőséget.
+1. Válassza a **tagság hozzáadása** lehetőséget a képernyő tetején.
+1. Keresse `LensesUsers` meg és jelölje ki.
+1. Válassza a **Kiválasztás** lehetőséget.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -133,19 +151,23 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-lensesio-sso"></a>Lenses.io SSO konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Lenses.IO** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Lenses.IO támogatási csapatának](mailto:support@lenses.io). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az egyszeri bejelentkezés az **Lenses.IO** -portálon való konfigurálásához telepítse a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** a lencsék-példányra, és [konfigurálja a lencséket az egyszeri bejelentkezés engedélyezéséhez](https://docs.lenses.io/install_setup/configuration/security.html#configure-lenses). 
 
-### <a name="create-lensesio-test-user"></a>Lenses.io-tesztelési felhasználó létrehozása
+### <a name="create-lensesio-test-group-permissions"></a>Lenses.io-tesztelési csoport engedélyeinek létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Lenses.io-ben. Együttműködik a [Lenses.IO támogatási csapatával](mailto:support@lenses.io) , hogy hozzáadja a felhasználókat a Lenses.IO platformhoz. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy, a **Object Id** `LensesUsers` felhasználó [létrehozása szakaszban](#create-an-azure-ad-test-user-and-group)feljegyzett csoport objektumazonosító alapján hozzon létre egy csoportot a lencséken.
+A kívánt engedélyeket a `B.Simon` lencsékben kell megadni.
+További információkat az [Azure-objektívek csoport leképezéséről](https://docs.lenses.io/install_setup/configuration/security.html#azure-groups)talál.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a Lenses.io csempére kattint, automatikusan be kell jelentkeznie arra a Lenses.io, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Lenses.io csempére kattint, automatikusan be kell jelentkeznie a Lenses.io-portálra, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
+
+- [Egyszeri bejelentkezés beállítása a Lenses.io-példányban](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

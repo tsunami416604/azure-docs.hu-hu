@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352f52a2a6d84d352bb46e09f104efde303307f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 341be30c30f7b4a2a53f70f18e1c2a3a30de1cb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478046"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034418"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel
+# <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Oktatóanyag: egyszeri bejelentkezés (SSO) konfigurálása Azure Active Directory és F5 között
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az F5-et Azure Active Directory (Azure AD) használatával. Az F5 és az Azure AD integrálásával a következőket teheti:
 
@@ -177,9 +177,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -221,7 +221,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Emellett **SSL-tanúsítványra lesz szüksége az alkalmazás állomásneve számára. Navigáljon a System > tanúsítványkezelő > adatforgalom-tanúsítvány kezelése > SSL-tanúsítvány listára**. Válassza az **Importálás** lehetőséget a jobb oldali sarokban. AZ **Importálás típusa** **PKCS 12 (IIS)** lesz. Adja meg a **kulcs nevét** (a konfiguráció későbbi részében lesz hivatkozva), majd adja meg a pfx-fájlt. A PFX-fájl **jelszavának** megadása. Kattintson az **Importálás**gombra.
 
     >[!NOTE]
-    >A példában az alkalmazás neve az `Headerapp.superdemo.live`, hogy egy wild card-tanúsítványt használunk a kulcsnévben `WildCard-SuperDemo.live`.
+    >A példában az alkalmazás neve az `Headerapp.superdemo.live` , hogy egy wild card-tanúsítványt használunk a kulcsnévben `WildCard-SuperDemo.live` .
 
     ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure13.png)
 
@@ -286,7 +286,7 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 1. Navigáljon a **System > tanúsítványkezelő > adatforgalom-tanúsítvány kezelése > SSL-tanúsítvány listára**. Válassza az **Importálás** lehetőséget a jobb oldali sarokban. AZ **Importálás típusa** **PKCS 12 (IIS)** lesz. Adja meg a **kulcs nevét** (a konfiguráció későbbi részében lesz hivatkozva), majd adja meg a pfx-fájlt. A PFX-fájl **jelszavának** megadása. Kattintson az **Importálás**gombra.
 
     >[!NOTE]
-    >A példában az alkalmazás neve az `Headerapp.superdemo.live`, hogy egy wild card-tanúsítványt használunk a kulcsnévben `WildCard-SuperDemo.live`.
+    >A példában az alkalmazás neve az `Headerapp.superdemo.live` , hogy egy wild card-tanúsítványt használunk a kulcsnévben `WildCard-SuperDemo.live` .
   
     ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure17.png)
 
@@ -346,7 +346,7 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
  
     ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure29.png)
 
-    a. Tallózással keresse meg az Azure AD-ből letöltött metadata. xml fájlt, és adjon meg egy **identitás-szolgáltató nevét**.
+    a. Tallózással keresse meg metadata.xml az Azure AD-ból letöltött fájlt, és adjon meg egy **identitás-szolgáltató nevét**.
 
     b. Kattintson **az OK**gombra.
 
@@ -360,7 +360,7 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 
     f. **Egyező forrás =% {Session. Server. landinguri}** 
 
-    g. **Egyező érték =/***
+    : **Egyező érték =/***
 
     h. Kattintson a **frissítés** gombra
 
@@ -394,7 +394,7 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 
     ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure35.png)
  
-    g. Kattintson a **vizualizációs házirend-szerkesztőre**, és módosítsa a **hozzáférési szabályzatot a profil** hivatkozáshoz.
+    : Kattintson a **vizualizációs házirend-szerkesztőre**, és módosítsa a **hozzáférési szabályzatot a profil** hivatkozáshoz.
 
     h. Kattintson a + jelre a vizualizációs házirend-szerkesztőben, majd válassza az **SAML-hitelesítés**lehetőséget.
 
@@ -418,7 +418,7 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 
 1. Rendelje hozzá a hozzáférési profilt a virtuális kiszolgálóhoz, hogy az F5 BIG-IP APM alkalmazza a profil beállításait a bejövő forgalomra, és futtassa a korábban meghatározott hozzáférési szabályzatot.
 
-    a. Kattintson a **fő** > **helyi forgalom** > **virtuális kiszolgálók**elemre.
+    a. Kattintson a **fő**  >  **helyi forgalom**  >  **virtuális kiszolgálók**elemre.
 
     ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure40.png)
  
@@ -438,11 +438,11 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
  
     Ha RULE_INIT {set static::d ebug 0}, ha ACCESS_ACL_ALLOWED {
 
-    AZUREAD_USERNAME beállítása [hozzáférés:: a munkamenet-adatelérés "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameSession.SAML.Last.attr.name."], ha {$static::d ebug} {log local0. "AZUREAD_USERNAME = $AZUREAD _USERNAME"} ha {! ( [HTTP:: a fejléc létezik "AZUREAD_USERNAME"]) } {HTTP:: fejléc beszúrása "AZUREAD_USERNAME" $AZUREAD _USERNAME}
+    AZUREAD_USERNAME beállítása [hozzáférés:: a munkamenet-adatelérés "session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name "], ha {$static::d ebug} {log local0. "AZUREAD_USERNAME = $AZUREAD _USERNAME"} ha {! ( [HTTP:: a fejléc létezik "AZUREAD_USERNAME"]) } {HTTP:: fejléc beszúrása "AZUREAD_USERNAME" $AZUREAD _USERNAME}
 
-    AZUREAD_DISPLAYNAME beállítása [hozzáférés:: a munkamenet-adatelérés "http://schemas.microsoft.com/identity/claims/displaynameSession.SAML.Last.attr.name."], ha {$static::d ebug} {log local0. "AZUREAD_DISPLAYNAME = $AZUREAD _DISPLAYNAME"} ha {! ( [HTTP:: a fejléc létezik "AZUREAD_DISPLAYNAME"]) } {HTTP:: fejléc beszúrása "AZUREAD_DISPLAYNAME" $AZUREAD _DISPLAYNAME}
+    AZUREAD_DISPLAYNAME beállítása [hozzáférés:: a munkamenet-adatelérés "session.saml.last.attr.name. http://schemas.microsoft.com/identity/claims/displayname "], ha {$static::d ebug} {log local0. "AZUREAD_DISPLAYNAME = $AZUREAD _DISPLAYNAME"} ha {! ( [HTTP:: a fejléc létezik "AZUREAD_DISPLAYNAME"]) } {HTTP:: fejléc beszúrása "AZUREAD_DISPLAYNAME" $AZUREAD _DISPLAYNAME}
 
-    AZUREAD_EMAILADDRESS beállítása [hozzáférés:: a munkamenet-adatelérés "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddressSession.SAML.Last.attr.name."], ha {$static::d ebug} {log local0. "AZUREAD_EMAILADDRESS = $AZUREAD _EMAILADDRESS"} ha {! ( [HTTP:: a fejléc létezik "AZUREAD_EMAILADDRESS"]) } {HTTP:: fejléc beszúrása "AZUREAD_EMAILADDRESS" $AZUREAD _EMAILADDRESS}}
+    AZUREAD_EMAILADDRESS beállítása [hozzáférés:: a munkamenet-adatelérés "session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress "], ha {$static::d ebug} {log local0. "AZUREAD_EMAILADDRESS = $AZUREAD _EMAILADDRESS"} ha {! ( [HTTP:: a fejléc létezik "AZUREAD_EMAILADDRESS"]) } {HTTP:: fejléc beszúrása "AZUREAD_EMAILADDRESS" $AZUREAD _EMAILADDRESS}}
 
     **Példa a kimenetre**
 
@@ -458,7 +458,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor a hozzáférési panelen az F5 csempére kattint, automatikusan be kell jelentkeznie az F5-be, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

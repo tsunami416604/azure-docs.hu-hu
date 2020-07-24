@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: df4092ecc3f7d075f1a2821854cdb668ee2cebe5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0ba272d76cade53529b198876f0ad06c4ae79649
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77191219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074517"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>Oktatóanyag: távoli fájl kódolása URL-cím alapján és stream a video-.NET
 
@@ -34,8 +34,8 @@ Az oktatóanyag végére egy videót is továbbíthat.
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-et.
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).<br/>Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
-- Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](access-api-cli-how-to.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md).<br/>Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
+- Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](./access-api-howto.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
 
 ## <a name="download-and-configure-the-sample"></a>A minta letöltése és konfigurálása
 
@@ -47,7 +47,7 @@ Klónozza a gépre a streamelési .NET-mintát tartalmazó GitHub-adattárat a k
 
 A minta az [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) mappában található.
 
-Nyissa meg a [appSettings. JSON](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) fájlt a letöltött projektben. Cserélje le az értékeket az API-k [eléréséhez](access-api-cli-how-to.md)kapott hitelesítő adatokkal.
+Nyissa meg [appsettings.jsa](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/appsettings.json) letöltött projektben. Cserélje le az értékeket az API-k [eléréséhez](./access-api-howto.md)kapott hitelesítő adatokkal.
 
 A minta a következő műveleteket hajtja végre:
 
@@ -61,7 +61,7 @@ A minta a következő műveleteket hajtja végre:
 
 A minta egyes funkcióinak leírásáért vizsgálja meg a kódot, és tekintse meg az [ebben a forrásfájlban](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) található megjegyzéseket.
 
-## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
+## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
 Az alkalmazás futtatásakor megjelennek a videó különböző protokollokkal való lejátszására szolgáló URL-ek. 
 
@@ -79,7 +79,7 @@ Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez
 > [!NOTE]
 > Ha a lejátszót egy HTTPS-hely futtatja, az URL-t módosítsa a HTTPS-protokoll használatára.
 
-1. Nyisson meg egy webböngészőt, [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)és navigáljon a következőhöz:.
+1. Nyisson meg egy webböngészőt, és navigáljon a következőhöz: [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) .
 2. Az **URL** mezőbe illessze be az alkalmazás futtatásakor kapott streamelési URL-értékek egyikét. 
  
      Az URL-címet HLS, Dash vagy Smooth formátumban is beillesztheti, és a Azure Media Player a megfelelő folyamatos átviteli protokollra vált az eszközön való automatikus lejátszás érdekében.
@@ -87,7 +87,7 @@ Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez
 
 Az Azure Media Player használható tesztelésre, az éles környezetben való használata azonban nem ajánlott. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az erőforráscsoport egyik erőforrására sem, beleértve az oktatóanyaghoz létrehozott Media Services-és Storage-fiókokat, törölje az erőforráscsoportot.
 
@@ -105,7 +105,7 @@ A [fájlok feltöltésével, kódolásával és streamelésével](stream-files-t
 
 ### <a name="job-error-codes"></a>Feladathibakódok
 
-Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Lásd: [hibakódok](/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="multithreading"></a>Több szál használata
 

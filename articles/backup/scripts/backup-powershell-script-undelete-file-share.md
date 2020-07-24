@@ -3,12 +3,12 @@ title: PowerShell-parancsfájl – törölt fájlmegosztás törlésének vissza
 description: Útmutató a véletlenül törölt fájlmegosztás törlésének visszavonásához Azure PowerShell szkript használatával.
 ms.topic: sample
 ms.date: 02/02/2020
-ms.openlocfilehash: 199cb4720c2efe03d47fd06ea0cf41eae29d06fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d3a3ad3c2904b98f7a3350d3672b51f3a1e9415e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513234"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007632"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>PowerShell-parancsfájl a véletlenül törölt fájlmegosztás törlésének visszavonásához
 
@@ -154,7 +154,7 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. A szkript futtatása előtt telepítse a legújabb Azure PowerShell az az modulok ebből a [hivatkozásból](//powershell/azure/install-az-ps) .
+1. A szkript futtatása előtt telepítse a legújabb Azure PowerShell az az modulok ebből a [hivatkozásból](/powershell/azure/install-az-ps) .
 2. A következő részleteket érdemes megtartania, mivel a parancsfájl különböző paramétereinek értékeiként át kell adnia őket:
 
     * **-SubscriptionId** – annak az előfizetésnek az azonosítója, amelyben a fájlmegosztás megtalálható.

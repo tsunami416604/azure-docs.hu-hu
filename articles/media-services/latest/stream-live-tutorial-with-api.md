@@ -15,27 +15,27 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 0b6667965ddd1fce30bb2da2593e2a9274b595ed
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b92d26da837cab72a4c4404a7b5b3de5d3116480
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79472016"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043355"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>Oktatóanyag: élő közvetítés Media Services
 
 > [!NOTE]
-> Annak ellenére, hogy az oktatóanyag [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használ, az általános lépések ugyanazok a [REST API](https://docs.microsoft.com/rest/api/media/liveevents), a [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetén.
+> Annak ellenére, hogy az oktatóanyag [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használ, az általános lépések ugyanazok a [REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetén.
 
-Azure Media Services az élő adatfolyam-tartalmak feldolgozásához az [élő események](https://docs.microsoft.com/rest/api/media/liveevents) felelősek. Az élő esemény egy bemeneti végpontot (betöltési URL-címet) biztosít, amelyet aztán egy élő kódolóhoz biztosít. Az élő esemény fogadja az élő kódoló élő bemeneti streamjét, és egy vagy több [folyamatos átviteli végponton](https://docs.microsoft.com/rest/api/media/streamingendpoints)keresztül teszi elérhetővé a folyamatos átvitelt. Az élő események egy előzetes verziójú végpontot (előzetes verziójú URL-címet) is biztosítanak, amelyet a további feldolgozás és a továbbítás előtt a stream előzetes verziójának megtekintéséhez és ellenőrzéséhez használhat. Ez az oktatóprogram bemutatja, hogyan hozhat létre **átmenő** típusú élő eseményt a .NET Core használatával.
+Azure Media Services az élő adatfolyam-tartalmak feldolgozásához az [élő események](/rest/api/media/liveevents) felelősek. Az élő esemény egy bemeneti végpontot (betöltési URL-címet) biztosít, amelyet aztán egy élő kódolóhoz biztosít. Az élő esemény fogadja az élő kódoló élő bemeneti streamjét, és egy vagy több [folyamatos átviteli végponton](/rest/api/media/streamingendpoints)keresztül teszi elérhetővé a folyamatos átvitelt. Az élő események egy előzetes verziójú végpontot (előzetes verziójú URL-címet) is biztosítanak, amelyet a további feldolgozás és a továbbítás előtt a stream előzetes verziójának megtekintéséhez és ellenőrzéséhez használhat. Ez az oktatóprogram bemutatja, hogyan hozhat létre **átmenő** típusú élő eseményt a .NET Core használatával.
 
 Ez az oktatóanyag a következőket mutatja be:
 
 > [!div class="checklist"]
 > * Töltse le a következő témakörben ismertetett minta alkalmazást:.
 > * Vizsgálja meg az élő közvetítést végző kódot.
-> * Tekintse meg az [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) eseményt Azure Media Player [https://ampdemo.azureedge.net](https://ampdemo.azureedge.net)címen.
-> * Erőforrások karbantartása.
+> * Tekintse meg az eseményt [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) címen [https://ampdemo.azureedge.net](https://ampdemo.azureedge.net) .
+> * Az erőforrások eltávolítása.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,8 +44,8 @@ Ez az oktatóanyag a következőket mutatja be:
 Az oktatóanyag elvégzésének feltételei a következők:
 
 - Telepítse a Visual Studio Code vagy a Visual Studio alkalmazást.
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).<br/>Ügyeljen arra, hogy jegyezze fel az erőforráscsoport neveként használt értékeket, és Media Services a fiók nevét.
-- Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](access-api-cli-how-to.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md).<br/>Ügyeljen arra, hogy jegyezze fel az erőforráscsoport neveként használt értékeket, és Media Services a fiók nevét.
+- Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](./access-api-howto.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
 - Egy olyan kamera vagy eszköz (például laptop), amely az események közvetítésére szolgál.
 - Helyszíni élő kódoló, amely a kamerából származó jeleket átalakítja a Media Services élő közvetítési szolgáltatásnak küldött adatfolyamokra: [ajánlott helyszíni élő kódolók](recommended-on-premises-live-encoders.md). A streamnek **RTMP** vagy **Smooth Streaming** formátumúnak kell lennie.
 
@@ -62,7 +62,7 @@ Klónozza a gépre a streamelési .NET-mintát tartalmazó GitHub-adattárat a k
 
 Az elő streamelési minta az [Élő](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live/MediaV3LiveApp) mappában található.
 
-Nyissa meg a [appSettings. JSON](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/appsettings.json) fájlt a letöltött projektben. Cserélje le az értékeket az API-khoz [való hozzáféréshez](access-api-cli-how-to.md)kapott hitelesítő adatokkal.
+Nyissa meg [appsettings.jsa](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/appsettings.json) letöltött projektben. Cserélje le az értékeket az API-khoz [való hozzáféréshez](./access-api-howto.md)kapott hitelesítő adatokkal.
 
 > [!IMPORTANT]
 > Ez a minta minden erőforráshoz egyedi utótagot használ. Ha megszakítja a hibakeresést, vagy leállítja az alkalmazást a rendszeren keresztül, akkor a fiókjában több élő esemény fog megjelenni. <br/>Győződjön meg arról, hogy leállítja a futó élő eseményeket. Ellenkező esetben a **számlázás**!
@@ -167,11 +167,11 @@ Ha végzett a folyamatos átviteli eseményekkel, és törölni szeretné a kor�
 
 ## <a name="watch-the-event"></a>Esemény megtekintése
 
-Az esemény megtekintéséhez másolja az adatfolyam-kereső létrehozása című témakörben leírtak szerint kapott streaming URL-címet. Az Ön által választott médialejátszó is használható. [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) elérhető a stream teszteléséhez https://ampdemo.azureedge.net.
+Az esemény megtekintéséhez másolja az adatfolyam-kereső létrehozása című témakörben leírtak szerint kapott streaming URL-címet. Az Ön által választott médialejátszó is használható. [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) elérhető a stream teszteléséhez https://ampdemo.azureedge.net .
 
 Az élő esemény automatikusan átalakítja az eseményeket az igény szerinti tartalomba, ha leállt. Az esemény leállítása és törlése után a felhasználók az archivált tartalmat igény szerint videóként is továbbíthatja, feltéve, hogy nem törli az eszközt. Egy eszköz nem törölhető, ha egy esemény használja. először törölni kell az eseményt.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
 

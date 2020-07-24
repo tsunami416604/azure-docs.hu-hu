@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e50f025ebd22cbe231dcd01e277a76b0f8e9b56d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 1aa87d72bf2b73b1fa616d7ff7535dac4da9b7fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198260"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029623"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Lemezek létrehozása és használata virtuálisgép-méretezési csoportokhoz Azure CLI-vel
 A virtuálisgép-méretezési csoportok lemezeket használnak a virtuálisgép-példányok operációs rendszereinek, alkalmazásainak és adatainak tárolására. Méretezési csoportok létrehozásakor és kezelésekor fontos szempont, hogy a számítási feladatok jelentette várható terhelésnek megfelelő lemezméretet és konfigurációt válasszon ki. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet virtuálisgép-lemezeket. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -23,7 +23,7 @@ A virtuálisgép-méretezési csoportok lemezeket használnak a virtuálisgép-p
 > * Operációsrendszer-lemezek és ideiglenes lemezek
 > * Adatlemezek
 > * Standard és Prémium lemezek
-> * Lemezek teljesítménye
+> * Lemezteljesítmény
 > * Adatlemezek csatolása és előkészítése
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
@@ -43,12 +43,12 @@ Egy méretezési csoport létrehozásakor vagy skálázásakor a rendszer két l
 ### <a name="temporary-disk-sizes"></a>Ideiglenes lemezek méretei
 | Típus | Gyakori méretek | Ideiglenes lemez max. mérete (GiB) |
 |----|----|----|
-| [Általános célú](../virtual-machines/linux/sizes-general.md) | A, B és D sorozat | 1600 |
-| [Számításra optimalizált](../virtual-machines/linux/sizes-compute.md) | F sorozat | 576 |
-| [Memóriaoptimalizált](../virtual-machines/linux/sizes-memory.md) | D, E, G és M sorozat | 6144 |
-| [Tárolásra optimalizált](../virtual-machines/linux/sizes-storage.md) | L sorozat | 5630 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N sorozat | 1440 |
-| [Nagy teljesítmény](../virtual-machines/linux/sizes-hpc.md) | A és H sorozat | 2000 |
+| [Általános célú](../virtual-machines/sizes-general.md) | A, B és D sorozat | 1600 |
+| [Számításoptimalizált](../virtual-machines/sizes-compute.md) | F sorozat | 576 |
+| [Memóriaoptimalizált](../virtual-machines/sizes-memory.md) | D, E, G és M sorozat | 6144 |
+| [Tároptimalizált](../virtual-machines/sizes-storage.md) | L sorozat | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N sorozat | 1440 |
+| [Nagy teljesítmény](../virtual-machines/sizes-hpc.md) | A és H sorozat | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure-adatlemezek
@@ -112,7 +112,7 @@ az vmss disk attach \
 ## <a name="prepare-the-data-disks"></a>Az adatlemezek előkészítése
 A méretezési csoport virtuálisgép-példányaihoz létrehozott és hozzácsatolt lemezek nyers lemezek. Mielőtt adatokhoz vagy alkalmazásokhoz használhatná őket, a lemezeket elő kell készíteni. A lemezek előkészítéséhez létrehoz egy partíciót, egy fájlrendszert és beolvassa azokat.
 
-A folyamat a méretezési csoport több virtuálisgép-példányán való automatizálásához használja az Azure egyéni szkriptek futtatására szolgáló bővítményét. A bővítmény képes a szkriptek helyi végrehajtására az egyes virtuálisgép-példányokon, például előkészíti a csatlakoztatott adatlemezeket. További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/linux/extensions-customscript.md).
+A folyamat a méretezési csoport több virtuálisgép-példányán való automatizálásához használja az Azure egyéni szkriptek futtatására szolgáló bővítményét. A bővítmény képes a szkriptek helyi végrehajtására az egyes virtuálisgép-példányokon, például előkészíti a csatlakoztatott adatlemezeket. További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/extensions/custom-script-linux.md).
 
 Az alábbi példa végrehajtja a GitHub mintatárból származó szkriptet az egyes virtuálisgép-példányokon az [az vmss extension set](/cli/azure/vmss/extension) paranccsal, és előkészíti az összes csatlakoztatott nyers adatlemezt:
 
@@ -271,7 +271,7 @@ az vmss disk detach \
 ```
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 A méretezési csoport és a lemezek eltávolításához törölje az erőforráscsoportot és az ahhoz tartozó összes erőforrást az [az group delete](/cli/azure/group) paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive
@@ -286,7 +286,7 @@ Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre és használhat lemez
 > * Operációsrendszer-lemezek és ideiglenes lemezek
 > * Adatlemezek
 > * Standard és Prémium lemezek
-> * Lemezek teljesítménye
+> * Lemezteljesítmény
 > * Adatlemezek csatolása és előkészítése
 
 A következő oktatóanyag azt mutatja be, hogyan használhat egyedi rendszerképeket a méretezési csoport virtuálisgép-példányaihoz.

@@ -3,7 +3,7 @@ title: Oktatóanyag – hozzáférési csomag létrehozása – Azure AD-jogosul
 description: Lépésenkénti útmutató az első hozzáférési csomag létrehozásához Azure Active Directory jogosultságok kezelésében.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 03/30/2020
-ms.author: ajburnle
+ms.date: 07/22/2020
+ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b79a631ba82d0b4a420ef27684e5a62571ddf85a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410590"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034576"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Oktatóanyag: az első hozzáférési csomag létrehozása az Azure AD-jogosultságok kezelésében
 
@@ -29,7 +29,7 @@ A szervezetek számára fontos funkció az összes erőforráshoz, például a c
 
 Ebben az oktatóanyagban a Woodgrove Bank rendszergazdaként működik. A rendszer arra kérte, hogy hozzon létre egy erőforrás-csomagot egy olyan marketingkampányok számára, amelyet a belső felhasználók önkiszolgáló kéréssel használhatnak. A kérések nem igényelnek jóváhagyást, és a felhasználó hozzáférése 30 nap után lejár. Ebben az oktatóanyagban a marketing kampány erőforrásai csak egyetlen csoport tagjai, de lehetnek csoportok, alkalmazások vagy SharePoint Online-webhelyek gyűjteményei.
 
-![Forgatókönyv áttekintése](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
+![A forgatókönyv áttekintése](./media/entitlement-management-access-package-first/elm-scenario-overview.png)
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -65,9 +65,9 @@ Egy erőforrás-címtárhoz egy vagy több megosztani kívánt erőforrás tarto
 
 1. Hozza létre vagy konfigurálja a következő két felhasználót. Ezeket a neveket vagy más neveket is használhatja. A **Rendszergazda1** lehet az a felhasználó, aki jelenleg be van jelentkezve.
 
-    | Name (Név) | Címtárszerepkör |
+    | Name | Címtárszerepkör |
     | --- | --- |
-    | **Rendszergazda1** | Globális rendszergazda<br/>– vagy –<br/>Felhasználói rendszergazda |
+    | **Rendszergazda1** | Globális rendszergazda<br/>-vagy-<br/>Felhasználói rendszergazda |
     | **Requestor1** | Felhasználó |
 
 1. Hozzon létre egy **marketing-erőforrások** nevű Azure ad biztonsági csoportot a **hozzárendelt**tagsági típussal.
@@ -118,7 +118,7 @@ A *hozzáférési csomag* olyan erőforrások kötege, amelyekhez egy csoportnak
 
     >[!NOTE]
     > [Dinamikus csoportok](../users-groups-roles/groups-create-rule.md) használatakor a tulajdonoson kívül más szerepkörök is nem érhetők el. Ez az elvárt működés.
-    > ![Forgatókönyv áttekintése](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
+    > ![A forgatókönyv áttekintése](./media/entitlement-management-access-package-first/dynamic-group-warning.png)
 
 12. A **tovább** gombra kattintva nyissa meg a **kérelmek** lapot.
 
@@ -134,7 +134,7 @@ A *hozzáférési csomag* olyan erőforrások kötege, amelyekhez egy csoportnak
 
     ![Új hozzáférési csomag – kérelmek lap – felhasználók és csoportok kiválasztása](./media/entitlement-management-access-package-first/requests-select-users-groups.png)
 
-16. Kattintson a **Kiválasztás** gombra.
+16. Válassza a **Kiválasztás** lehetőséget.
 
 17. Görgessen le a **jóváhagyás** és a **kérelmek engedélyezése** szakaszban.
 
@@ -264,4 +264,4 @@ Ebben a lépésben eltávolítja a végrehajtott módosításokat, és törli a 
 
 A következő cikkből megismerheti a jogosultságok kezelésének gyakori forgatókönyveit.
 > [!div class="nextstepaction"]
-> [Gyakori helyzetek](entitlement-management-scenarios.md)
+> [Gyakori forgatókönyvek](entitlement-management-scenarios.md)

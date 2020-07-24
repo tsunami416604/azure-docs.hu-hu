@@ -1,16 +1,16 @@
 ---
-title: Párhuzamos számítási feladatok futtatása
+title: Párhuzamos számítási feladatok futtatása a .NET API használatával
 description: Oktatóanyag – Médiafájlok párhuzamos átkódolása ffmpeg segítségével az Azure Batchben a Batch .NET ügyfélkódtár használatával
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: d8a5db6c6c63d680514e21bef0e5a8bc6b3ea550
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: afa660a7138f3b69b2a6f7c478550095f357e29b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733073"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062586"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a .NET API használatával
 
@@ -45,8 +45,8 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Adja hozzá az Azure Portal segítségével az ffmpeg-et a Batch-fiókjához [alkalmazáscsomagként](batch-application-packages.md). Az alkalmazáscsomagok segítenek a tevékenységalkalmazások kezelésében, valamint a készlet számítási csomópontjain való üzembe helyezésükben. 
 
-1. A Azure Portal kattintson a **További szolgáltatások** > **Batch-fiókok**elemre, majd kattintson a Batch-fiókja nevére.
-3. Kattintson az **alkalmazások** > **Hozzáadás**gombra.
+1. A Azure Portal kattintson a **További szolgáltatások**  >  **Batch-fiókok**elemre, majd kattintson a Batch-fiókja nevére.
+3. Kattintson az **alkalmazások**  >  **Hozzáadás**gombra.
 4. Az **Alkalmazásazonosító**mezőben adja meg az *ffmpeg*, a csomag verziójánál pedig a *3.4* értéket. Válassza ki a korábban letöltött ffmpeg zip-fájlt, és kattintson az **OK** gombra. Ezzel hozzáadta az ffmpeg alkalmazáscsomagját a Batch-fiókjához.
 
 ![Alkalmazáscsomag hozzáadása](./media/tutorial-parallel-dotnet/add-application.png)
@@ -118,7 +118,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-A készlet, a számítási csomópontok, a feladat és a tevékenységek figyeléséhez lépjen az Azure Portalon a Batch-fiókjába. Ha például meg szeretné tekinteni a készletben lévő számítási csomópontok Heat térképét, kattintson a **készletek** > *WinFFmpegPool*elemre.
+A készlet, a számítási csomópontok, a feladat és a tevékenységek figyeléséhez lépjen az Azure Portalon a Batch-fiókjába. Ha például meg szeretné tekinteni a készletben lévő számítási csomópontok Heat térképét, kattintson a **készletek**  >  *WinFFmpegPool*elemre.
 
 A tevékenységek futásakor a hőtérkép az alábbihoz hasonló:
 
@@ -245,7 +245,7 @@ await job.CommitAsync();
 
 A minta tevékenységeket hoz létre a feladatban az `AddTasksAsync` metódus meghívásával, amely létrehoz egy listát a [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask)-objektumokról. Minden `CloudTask` az ffmpeg futtatásával dolgoz fel egy bemeneti `ResourceFile`-objektumot egy [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) tulajdonság segítségével. Az ffmpeg már korábban, a készlet létrehozásakor telepítve lett minden egyes csomóponton. Itt a parancssor az ffmpeg futtatásával konvertálja az egyes bemeneti MP4-videofájlokat MP3-hangfájllá.
 
-A minta a parancssor futtatása után létrehoz egy [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) objektumot az MP3-fájlhoz. A rendszer az összes tevékenység kimeneti fájlját (ebben az esetben egyet) feltölti egy, a társított Storage-fiókban lévő tárolóba a tevékenység [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) tulajdonsága segítségével. Korábban a kód mintájában egy közös hozzáférésű aláírási URL`outputContainerSasUrl`-címet () kapott, amely írási hozzáférést biztosít a kimeneti tárolóhoz. Jegyezze fel az `outputFile` objektumon beállított feltételeket. Egy tevékenységből származó kimeneti fájl csak a feladat sikeres befejeződése után lesz feltöltve a tárolóba (`OutputFileUploadCondition.TaskSuccess`). További részletekért tekintse meg a GitHubon a teljes [kód mintát](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) .
+A minta a parancssor futtatása után létrehoz egy [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) objektumot az MP3-fájlhoz. A rendszer az összes tevékenység kimeneti fájlját (ebben az esetben egyet) feltölti egy, a társított Storage-fiókban lévő tárolóba a tevékenység [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) tulajdonsága segítségével. Korábban a kód mintájában egy közös hozzáférésű aláírási URL-címet ( `outputContainerSasUrl` ) kapott, amely írási hozzáférést biztosít a kimeneti tárolóhoz. Jegyezze fel az `outputFile` objektumon beállított feltételeket. Egy tevékenységből származó kimeneti fájl csak a feladat sikeres befejeződése után lesz feltöltve a tárolóba ( `OutputFileUploadCondition.TaskSuccess` ). További részletekért tekintse meg a GitHubon a teljes [kód mintát](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) .
 
 Ezt követően a minta tevékenységeket ad a feladathoz az [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) metódussal, amely várólistára helyezi azokat a számítási csomópontokon való futtatáshoz.
 
@@ -309,7 +309,7 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 A tevékenységek futtatása után az alkalmazás automatikusan törli a létrehozott bemeneti Storage-tárolót, és felkínálja a Batch-készlet és -feladat törlésének lehetőségét. A BatchClient [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) és [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) osztálya is rendelkezik megfelelő törlési metódusokkal, amelyeket a rendszer meghív, ha megerősíti a törlést. Bár magukért a feladatokért és tevékenységekért nem kell fizetnie, a számítási csomópontokért igen. Ezért ajánlott csak szükség szerint lefoglalni a készleteket. A készlet törlésekor a rendszer a csomópont összes tevékenységének kimenetét is törli. A kimeneti fájlok azonban megmaradnak a Storage-fiókban.
 

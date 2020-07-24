@@ -8,11 +8,12 @@ ms.date: 07/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: e4bdf1c06a4a52a9483b3d2bbae8d2737c531eb0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 97ded67b9f9daa2652b2740a21a4b7d6a0ac2bdd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86060485"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068257"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-powershell"></a>App Service alkalmazás létrehozása és privát végpont üzembe helyezése a PowerShell használatával
 
@@ -123,5 +124,5 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
+- Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 - A Azure App Service Web Apps további Azure PowerShell mintákat talál a [Azure PowerShell mintákban](../samples-powershell.md).

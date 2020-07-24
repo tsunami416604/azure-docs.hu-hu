@@ -3,17 +3,17 @@ title: Oktatóanyag – általános Python-ügyfélalkalmazás összekötése az
 description: Ebből az oktatóanyagból megtudhatja, hogyan lehet egy eszköz fejlesztőként csatlakozni egy Python-ügyfélprogramot futtató eszközhöz az Azure IoT Central-alkalmazáshoz. Eszköz-sablon létrehozása eszköz-képességi modell importálásával és olyan nézetek hozzáadásával, amelyek lehetővé teszik a csatlakoztatott eszköz használatát
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: tracking-python
-ms.openlocfilehash: 98aa452e8b0b5cf04edd319298c2b35e6097148e
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f89a8caf5b91fb22cca020b1d146905b68c6ed96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971062"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002085"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central-alkalmazással (Python)
 
@@ -38,7 +38,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-* Egy Azure IoT Central-alkalmazás, amely az **egyéni alkalmazás** sablonnal lett létrehozva. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+* Egy Azure IoT Central-alkalmazás, amely az **egyéni alkalmazás** sablonnal lett létrehozva. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md). Az alkalmazást a 07/14/2020-es vagy későbbi, vagy azt követően kell létrehozni.
 * Egy, a [Python](https://www.python.org/) 3,7-es vagy újabb verzióját futtató fejlesztési gép. A `python3 --version` parancssorban futtatva ellenőrizhető a verzió. A Python számos operációs rendszer számára elérhető. Az oktatóanyagban szereplő utasítások feltételezik, hogy a Windows-parancssorban futtatja a **python3** parancsot.
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -214,18 +214,18 @@ A következő lépések bemutatják, hogyan hozhat létre olyan Python-ügyféla
 
     Az operátor megtekintheti a válasz adattartalmát a parancs előzményeiben.
 
-1. Adja hozzá a következő függvényeket a `main` függvényen belül a IoT Central alkalmazásból eljuttatott tulajdonságok kezeléséhez:
+1. Adja hozzá a következő függvényeket a `main` függvényen belül a IoT Central alkalmazásból eljuttatott tulajdonságok kezeléséhez. Az az üzenet, amelyet az eszköz az [írható tulajdonság frissítésére](concepts-telemetry-properties-commands.md#writeable-property-types) válaszként küld, tartalmaznia kell a `av` és a `ac` mezőket. A `ad` mező megadása nem kötelező:
 
     ```python
       async def name_setting(value, version):
         await asyncio.sleep(1)
         print(f'Setting name value {value} - {version}')
-        await device_client.patch_twin_reported_properties({'name' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+        await device_client.patch_twin_reported_properties({'name' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
       async def brightness_setting(value, version):
         await asyncio.sleep(5)
         print(f'Setting brightness value {value} - {version}')
-        await device_client.patch_twin_reported_properties({'brightness' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+        await device_client.patch_twin_reported_properties({'brightness' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
       settings = {
         'name': name_setting,
@@ -261,7 +261,7 @@ A következő lépések bemutatják, hogyan hozhat létre olyan Python-ügyféla
 
       if device_client is not None and device_client.connected:
         print('Send reported properties on startup')
-        await device_client.patch_twin_reported_properties({'state': 'true'})
+        await device_client.patch_twin_reported_properties({'state': 'true', 'processorArchitecture': 'ARM', 'swVersion': '1.0.0'})
         tasks = asyncio.gather(
           send_telemetry(),
           command_listener(),
@@ -303,6 +303,10 @@ Láthatja, hogy az eszköz csatlakozik az Azure IoT Central-alkalmazáshoz, és 
 Láthatja, hogy az eszköz hogyan válaszol a parancsokra és a tulajdonságokra:
 
 ![Az ügyfélalkalmazás megfigyelése](media/tutorial-connect-device-python/run-application-2.png)
+
+## <a name="view-raw-data"></a>Nyers adattárolók megtekintése
+
+[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
 
 ## <a name="next-steps"></a>További lépések
 

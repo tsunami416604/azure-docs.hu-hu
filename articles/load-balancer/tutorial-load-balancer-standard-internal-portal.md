@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: b8fcef13fbe41ac26b2a31d6871896428649eaa1
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f7f16093074b48610c1db8fec7f05ee01e7ab1ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920855"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078764"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>Oktatóanyag: a belső forgalom terheléselosztása standard Load balancerrel a Azure Portal
 
@@ -32,25 +32,23 @@ Ha szeretné, hajtsa végre ezeket a lépéseket az [Azure CLI](load-balancer-ge
 
 Az oktatóanyag lépéseinek végrehajtásához jelentkezzen be a Azure Portalba a következő címen: [https://portal.azure.com](https://portal.azure.com) .
 
-## <a name="create-a-vnet-back-end-servers-and-a-test-vm"></a>VNet, háttér-kiszolgálók és tesztelési virtuális gép létrehozása
+## <a name="virtual-network-and-parameters"></a>Virtuális hálózat és paraméterek
+Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekben az alábbi információkkal:
 
-Először hozzon létre egy virtuális hálózatot (VNet). A VNet hozzon létre két virtuális gépet a standard Load Balancer háttér-készletéhez, valamint egy harmadik virtuális gépet, amelyet a terheléselosztó teszteléséhez használ. 
+| Paraméter                   | Érték                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | Myresourcegroupslb erőforráscsoportban |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | USA 2. keleti régiója      |
+| **\<IPv4-address-space>**   | 10.3.0.0 \ 16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0 \ 24          |
 
-### <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
-
-1. A portál bal felső részén válassza az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **virtuális hálózat**lehetőséget.
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
    
-1. A **virtuális hálózat létrehozása** panelen írja be vagy válassza ki a következő értékeket:
-   
-   - **Név**: írja be a **MyVNet**nevet.
-   - **ResourceGroup**: válassza az **új létrehozása**elemet, majd írja be a **Myresourcegrouplb erőforráscsoportban**, majd kattintson **az OK gombra**. 
-   - **Alhálózat**  >  **Név**: írja be a **MyBackendSubnet**nevet.
-   
-1. Válassza a **Létrehozás** lehetőséget.
 
-   ![Virtuális hálózat létrehozása](./media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
-### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
+## <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
 
 1. A portál bal felső részén válassza az **erőforrás létrehozása**  >  **számítás**  >  **Windows Server 2016 Datacenter**elemet. 
    
@@ -94,14 +92,14 @@ Hozzon létre egy standard belső terheléselosztó-t a portál használatával.
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Előfizetés               | Válassza ki az előfizetését.    |    
+    | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *myresourcegrouplb erőforráscsoportban* szöveget a szövegmezőbe.|
     | Name                   | *myLoadBalancer*                                   |
     | Régió         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
     | Típus          | Válassza a **belső**lehetőséget.                                        |
     | Termékváltozat           | Válassza a **standard**lehetőséget.                          |
     | Virtuális hálózat           | Válassza a *MyVNet*lehetőséget.                          |    
-    | IP-cím hozzárendelése              | Válassza a **statikus**lehetőséget.   |
+    | IP-cím hozzárendelése              | Válassza a **Statikus** lehetőséget.   |
     | Magánhálózati IP-cím|Írjon be egy olyan címeket, amely a virtuális hálózat és az alhálózat címterület területén található, például *10.3.0.7*.  |
 
 3. A **felülvizsgálat + létrehozás** lapon kattintson a **Létrehozás**gombra. 
@@ -119,7 +117,7 @@ A forgalom a virtuális gépekre való terjesztéséhez a terheléselosztó egy 
 
 1. A bal oldali menüben válassza az **összes erőforrás** lehetőséget, majd válassza a **MyLoadBalancer** lehetőséget az erőforrások listájából.
    
-1. A **Beállítások** alatt válassza a **Háttérkészletek**, majd a **Hozzáadás** lehetőséget.
+1. A **Beállítások** területen válassza a **Háttérkészletek**, majd a **Hozzáadás** lehetőséget.
    
 1. A **háttérrendszer-készlet hozzáadása** lapon írja be vagy válassza ki a következő értékeket:
    
@@ -154,7 +152,7 @@ Ha engedélyezni szeretné a terheléselosztó számára a virtuális gép álla
    - **Időköz**: Type **15**. Az intervallum a mintavételi kísérletek között eltelt másodpercek száma.
    - Nem megfelelő **állapot küszöbértéke**: Type **2**. Ez az érték azon egymást követő mintavételi hibák száma, amelyek a virtuális gép nem megfelelő állapotának tekintendők.
    
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
    
    ![Mintavétel hozzáadása](./media/tutorial-load-balancer-basic-internal-portal/4-load-balancer-probes.png)
 
@@ -182,7 +180,7 @@ A **MyLoadBalancerRule** nevű terheléselosztó-szabály a 80-es portot figyeli
    
 Ha a [magas rendelkezésre állású portokat](load-balancer-ha-ports-overview.md) a Azure Portal használatával szeretné konfigurálni, jelölje be a **Ha portok** jelölőnégyzetet. Ha be van jelölve, a rendszer automatikusan kitölti a kapcsolódó portot és a protokoll konfigurációját. 
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
    
    ![Terheléselosztási szabály hozzáadása](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
 

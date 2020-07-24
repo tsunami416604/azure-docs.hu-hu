@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: d2e10c2a02bf14f7a01ce03bc70f6e3f43b96385
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7ba6a059a35bee0b122659d8fc70466595112fca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700832"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011032"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: virtuálisgép-méretezési csoportok automatikus skálázása az Azure PowerShell-lel
 
@@ -99,7 +99,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
 ## <a name="create-a-rule-to-autoscale-in"></a>Automatikus leskálázási szabály létrehozása
 Az este vagy a hétvége folyamán az alkalmazás igényei csökkenhetnek. Ha a csökkent terhelés egy adott időtartam alatt állandó, akkor megadhatja, hogy az automatikus skálázási szabály csökkentse a virtuálisgép-példányok számát a méretezési csoportban. A horizontális leskálázási művelet csökkenti a méretezési csoport futtatásának költségeit, mivel csak az aktuális igényt kielégítő számú példányt futtat.
 
-Hozzunk létre egy másik szabályt a [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) paranccsal a méretezési csoportban lévő virtuálisgép-példányok csökkentésére, ha az átlagos processzorterhelés ezután 5 percen keresztül nem éri el a 30%-ot. A szabály aktiválásakor a virtuálisgép-példányok száma eggyel csökken. A következő példa egy *myRuleScaleDown* nevű objektumot hoz létre, amely a felskálázási szabályt tárolja. A *-MetricResourceId* az előfizetés-azonosítóhoz, az erőforráscsoport-névhez és méretezésicsoport-névhez korábban definiált változókat alkalmazza:
+Hozzunk létre egy másik szabályt a [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) paranccsal a méretezési csoportban lévő virtuálisgép-példányok csökkentésére, ha az átlagos processzorterhelés ezután 5 percen keresztül nem éri el a 30%-ot. A szabály indításakor a virtuálisgép-példányok száma eggyel csökken. A következő példa egy *myRuleScaleDown* nevű objektumot hoz létre, amely tartalmazza ezt a leskálázási szabályt. A *-MetricResourceId* az előfizetés-azonosítóhoz, az erőforráscsoport-névhez és méretezésicsoport-névhez korábban definiált változókat alkalmazza:
 
 ```azurepowershell-interactive
 $myRuleScaleIn = New-AzureRmAutoscaleRule `
@@ -247,7 +247,7 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan lehet automatikusan horizontálisan le- illetve felskálázni egy méretezési csoportot az Azure PowerShell használatával:
 
 > [!div class="checklist"]

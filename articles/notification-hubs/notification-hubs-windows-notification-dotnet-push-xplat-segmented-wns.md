@@ -17,12 +17,12 @@ ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: 9151870836b1a616a79e54275ed185a425c11f0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: be20cd583be7c9c87d9f3a3cebc6609764384c9a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72385603"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084228"
 ---
 # <a name="tutorial-send-notifications-to-specific-devices-running-universal-windows-platform-applications"></a>Oktatóanyag: értesítések küldése Univerzális Windows-platform alkalmazást futtató adott eszközökre
 
@@ -81,9 +81,9 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     </Grid>
     ```
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, majd válassza az**osztály** **hozzáadása** > elemet. Az **új elem hozzáadása**lapon adja meg az osztály *értesítéseinek*nevét, majd válassza a **Hozzáadás**lehetőséget. Ha szükséges, adja hozzá `public` a módosítót az osztály definícióhoz.
+1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, majd **Add**válassza az  >  **osztály**hozzáadása elemet. Az **új elem hozzáadása**lapon adja meg az osztály *értesítéseinek*nevét, majd válassza a **Hozzáadás**lehetőséget. Ha szükséges, adja hozzá a `public` módosítót az osztály definícióhoz.
 
-1. Adja hozzá a `using` következő utasításokat az új fájlhoz:
+1. Adja hozzá a következő `using` utasításokat az új fájlhoz:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -134,7 +134,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     }
     ```
 
-    Ez az osztály a helyi tárolóban tárolja a hírkategóriákat, amelyeket ennek az eszköznek meg kell kapnia. A `RegisterNativeAsync` metódus meghívása helyett hívja `RegisterTemplateAsync` meg a regisztrációt a kategóriákhoz a sablon regisztrációjának használatával.
+    Ez az osztály a helyi tárolóban tárolja a hírkategóriákat, amelyeket ennek az eszköznek meg kell kapnia. A metódus meghívása helyett `RegisterNativeAsync` hívja `RegisterTemplateAsync` meg a regisztrációt a kategóriákhoz a sablon regisztrációjának használatával.
 
     Ha egynél több sablont szeretne regisztrálni, adja meg a sablon nevét (például *simpleWNSTemplateExample*). A sablonok elnevezése lehetővé teszi a frissítésüket vagy törlésüket. Előfordulhat, hogy több sablont is regisztrálnia kell, hogy legyen egy a pirítóssal kapcsolatos értesítések és egy a csempék számára.
 
@@ -149,7 +149,7 @@ Az első lépésben hozzá kell adni a felhasználói felületi elemeket a megl�
     public Notifications notifications = new Notifications("<hub name>", "<connection string with listen access>");
     ```
 
-    Ezt a tulajdonságot használja egy `Notifications` példány létrehozásához és eléréséhez.
+    Ezt a tulajdonságot használja egy példány létrehozásához és eléréséhez `Notifications` .
 
     A `<hub name>` és a `<connection string with listen access>` helyőrzőt cserélje le a kódban az értesítési központ nevére és a **DefaultListenSharedAccessSignature** korábban beszerzett kapcsolati sztringjére.
 
@@ -194,7 +194,7 @@ Ebben a szakaszban elvégzi az értesítési központban való regisztrációt a
 > [!NOTE]
 > Mivel a Windows Notification Service (WNS) által hozzárendelt csatorna URI bármikor megváltozhat, gyakran regisztráljon az értesítésekre, hogy elkerülhesse az értesítési hibákat. Ebben a példában a rendszer az alkalmazás minden egyes indításakor regisztrál az értesítésekre. A gyakran használt alkalmazások esetében például naponta többször is kihagyhatja a regisztrációt a sávszélesség megőrzése érdekében, ha a korábbi regisztráció óta kevesebb mint egy nap telt el.
 
-1. Ha az `notifications` osztályt a kategóriák alapján szeretné használni, nyissa meg a *app.XAML.cs* fájlt, és frissítse `InitNotificationsAsync` a metódust.
+1. Ha az `notifications` osztályt a kategóriák alapján szeretné használni, nyissa meg a *app.XAML.cs* fájlt, és frissítse a `InitNotificationsAsync` metódust.
 
     ```csharp
     // *** Remove or comment out these lines ***
@@ -265,8 +265,8 @@ Ebben a cikkben megismerhette a friss hírek kategóriák szerinti küldését. 
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started/
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Windows Store]: https://msdn.microsoft.com/library/jj927172.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
+[Notification Hubs How-To for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253

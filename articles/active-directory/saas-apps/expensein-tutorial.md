@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/11/2019
+ms.date: 07/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf7e3659aa3044a4453574a2cd171303d00abc19
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 377499b1dd263398e1be42379f8db60e8a0477f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85606681"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017516"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Oktatóanyag: a ExpenseIn és a Azure Active Directory integrálása
 
@@ -42,7 +41,10 @@ Első lépésként a következő elemeket kell megadnia:
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A ExpenseIn **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. 
+* A ExpenseIn **az SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja.
+* A ExpenseIn konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
 
 ## <a name="adding-expensein-from-the-gallery"></a>ExpenseIn hozzáadása a gyűjteményből
 
@@ -55,20 +57,20 @@ A ExpenseIn Azure AD-be való integrálásának konfigurálásához hozzá kell 
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **ExpenseIn** kifejezést a keresőmezőbe.
 1. Válassza ki a **ExpenseIn** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
+## <a name="configure-and-test-azure-ad-sso-for-expensein"></a>Azure AD SSO konfigurálása és tesztelése a ExpenseIn-hez
 
 Konfigurálja és tesztelje az Azure AD SSO-t a ExpenseIn a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a ExpenseIn-ben.
 
 Az Azure AD SSO és a ExpenseIn konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
-2. **[Konfigurálja a ExpenseIn](#configure-expensein)** az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
-3. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-5. **[Hozzon létre ExpenseIn-tesztelési felhasználót](#create-expensein-test-user)** , hogy a ExpenseIn B. Simon párja legyen, amely a felhasználó Azure ad-képviseletéhez van csatolva.
-6. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
+    1. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Konfigurálja a EXPENSEIN SSO](#configure-expensein-sso)** -t az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+    1. **[Hozzon létre ExpenseIn-tesztelési felhasználót](#create-expensein-test-user)** , hogy a ExpenseIn B. Simon párja legyen, amely a felhasználó Azure ad-képviseletéhez van csatolva.
+1. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
-### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
@@ -78,14 +80,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
-
-    A **Válasz URL-címe** szövegmezőbe írja be az URL-cím egyikét:
-
-    ```https
-    https://app.expensein.com/samlcallback
-    https://mobileapi.expensein.com/identity/samlcallback
-    ```
+4. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania a lépéseket, mivel az alkalmazás már előre integrálva van az Azure-ban.
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
@@ -98,38 +93,6 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. A **ExpenseIn beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
-
-### <a name="configure-expensein"></a>ExpenseIn konfigurálása
-
-1. A ExpenseIn belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
-
-    ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
-
-2. Miután hozzáadta a bővítményt a böngészőhöz, kattintson a **telepítés ExpenseIn** gombra a ExpenseIn alkalmazáshoz. Itt adja meg a rendszergazdai hitelesítő adatokat a ExpenseIn való bejelentkezéshez. A böngésző bővítménye automatikusan konfigurálja az alkalmazást, és automatizálja az 3-5-es lépést.
-
-    ![Telepítési konfiguráció](common/setup-sso.png)
-
-3. Ha manuálisan szeretné beállítani a ExpenseIn, nyisson meg egy új böngészőablakot, és jelentkezzen be a ExpenseIn vállalati webhelyére rendszergazdaként, és hajtsa végre a következő lépéseket:
-
-4. Kattintson a **rendszergazda** elemre az oldal tetején, majd navigáljon az **egyszeri bejelentkezéshez** , és kattintson a **szolgáltató hozzáadása**parancsra.
-
-     ![ExpenseIn-konfiguráció](./media/expenseIn-tutorial/config01.png)
-
-5. Az **új identitás-szolgáltató** előugró ablakában hajtsa végre a következő lépéseket:
-
-    ![ExpenseIn-konfiguráció](./media/expenseIn-tutorial/config02.png)
-
-    a. A **szolgáltató neve** szövegmezőbe írja be a következő nevet: pl.: Azure.
-
-    b. Válassza az **Igen** lehetőséget, ha **engedélyezi a szolgáltató Intitated való bejelentkezést**.
-
-    c. A **cél URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
-
-    d. A **kiállító** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portalból másolt.
-
-    e. Nyissa meg a tanúsítványt (Base64) a Jegyzettömbben, másolja ki a tartalmát, és illessze be a **tanúsítvány** szövegmezőbe.
-
-    f. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -161,6 +124,31 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
+
+## <a name="configure-expensein-sso"></a>ExpenseIn SSO konfigurálása
+
+1. Nyisson meg egy új böngészőablakot, és jelentkezzen be a ExpenseIn vállalati webhelyre rendszergazdaként.
+
+1. Kattintson a **rendszergazda** elemre az oldal tetején, majd navigáljon az **egyszeri bejelentkezéshez** , és kattintson a **szolgáltató hozzáadása**parancsra.
+
+     ![ExpenseIn-konfiguráció](./media/expenseIn-tutorial/config01.png)
+
+1. Az **új identitás-szolgáltató** előugró ablakában hajtsa végre a következő lépéseket:
+
+    ![ExpenseIn-konfiguráció](./media/expenseIn-tutorial/config02.png)
+
+    a. A **szolgáltató neve** szövegmezőbe írja be a nevet; például: Azure.
+
+    b. Válassza az **Igen** lehetőséget a **szolgáltató Intitiated való bejelentkezéshez**.
+
+    c. A **cél URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
+
+    d. A **kiállító** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portalból másolt.
+
+    e. Nyissa meg a tanúsítványt (Base64) a Jegyzettömbben, másolja ki a tartalmát, és illessze be a **tanúsítvány** szövegmezőbe.
+
+    f. Kattintson a **Létrehozás** lehetőségre.
+
 ### <a name="create-expensein-test-user"></a>ExpenseIn-tesztelési felhasználó létrehozása
 
 Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a ExpenseIn, a ExpenseIn kell kiépíteni őket. A ExpenseIn-ben a kiépítés manuális feladat.
@@ -185,7 +173,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ex
 
     d. Kattintson a **Létrehozás** lehetőségre.
 
-### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Amikor kiválasztja a ExpenseIn csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a ExpenseIn, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
@@ -196,3 +184,9 @@ Amikor kiválasztja a ExpenseIn csempét a hozzáférési panelen, automatikusan
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [A ExpenseIn kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [A ExpenseIn és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

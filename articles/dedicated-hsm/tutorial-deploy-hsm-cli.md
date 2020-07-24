@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 76b7a97a5be5e7952b0ac11d93bd68656ff8f1ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6c5484c421807f5657fe5fc460342d39d442bcda
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79454312"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048573"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>Oktatóanyag: HSM üzembe helyezése meglévő virtuális hálózaton a parancssori felület használatával
 
@@ -47,7 +47,7 @@ Előfeltételek:
 - Ehhez az erőforráshoz létrehozott egy erőforráscsoportot, és az ebben az oktatóanyagban üzembe helyezett új eszközök csatlakoznak ehhez a csoporthoz.
 - Már létrehozta a szükséges virtuális hálózatot, alhálózatot és virtuális gépeket a fenti ábrán látható módon, és most integrálni szeretné a 2 HSM az adott üzembe helyezésbe.
 
-Az alábbi utasítások feltételezik, hogy már elindította a Azure Portal, és megnyitotta a Cloud shell (a\>\_portál jobb felső részén válassza a "" lehetőséget).
+Az alábbi utasítások feltételezik, hogy már elindította a Azure Portal, és megnyitotta a Cloud Shell (a portál jobb felső részén válassza a " \> \_ " lehetőséget).
 
 ## <a name="provisioning-a-dedicated-hsm"></a>Dedikált HSM kiépítés
 
@@ -63,21 +63,13 @@ az feature show \
    --name AzureDedicatedHSM
 ```
 
-A következő parancs ellenőrzi a dedikált HSM szolgáltatáshoz szükséges hálózatkezelési funkciókat.
-
-```azurecli
-az feature show \
-   --namespace Microsoft.Network \
-   --name AllowBaremetalServers
-```
-
-Mindkét parancsnak "regisztrált" állapotot kell visszaadnia (az alább látható módon). Ha a parancsok nem adnak vissza "regisztrált" értéket a szolgáltatáshoz való regisztrációhoz, forduljon a Microsoft-fiók képviselőjéhez.
+A parancsoknak a "regisztrált" állapotot kell visszaadniuk (az alább látható módon). Ha a parancsok nem adják vissza a "regisztrált" értéket, akkor regisztrálnia kell a szolgáltatást, ha kapcsolatba lép a Microsoft-fiók képviselőjével.
 
 ![előfizetés állapota](media/tutorial-deploy-hsm-cli/subscription-status.png)
 
 ### <a name="creating-hsm-resources"></a>HSM-erőforrások létrehozása
 
-A HSM üzembe helyezése egy ügyfél virtuális hálózatában történik, így a virtuális hálózat és az alhálózat szükséges. A HSM-függőség, amely lehetővé teszi a virtuális hálózat és a fizikai eszköz közötti kommunikációt, egy ExpressRoute-átjáró, és végül egy virtuális gépnek kell hozzáférnie a HSM-eszközhöz a Gemalto-ügyfélszoftver használatával. Ezeket az erőforrásokat a rendszer egy, a megfelelő paramétert tartalmazó fájlba gyűjtötte a könnyű használat érdekében. A fájlok közvetlenül a Microsofttal való kapcsolatfelvételsel érhetők HSMrequest@Microsoft.comel.
+A HSM üzembe helyezése egy ügyfél virtuális hálózatában történik, így a virtuális hálózat és az alhálózat szükséges. A HSM-függőség, amely lehetővé teszi a virtuális hálózat és a fizikai eszköz közötti kommunikációt, egy ExpressRoute-átjáró, és végül egy virtuális gépnek kell hozzáférnie a HSM-eszközhöz a Gemalto-ügyfélszoftver használatával. Ezeket az erőforrásokat a rendszer egy, a megfelelő paramétert tartalmazó fájlba gyűjtötte a könnyű használat érdekében. A fájlok közvetlenül a Microsofttal való kapcsolatfelvételsel érhetők el HSMrequest@Microsoft.com .
 
 Miután megtörtént a fájlok használata, szerkesztenie kell a paramétert, hogy beszúrja az erőforrások előnyben részesített nevét. Sorok szerkesztése a "value": "" értékkel.
 
@@ -126,7 +118,7 @@ A társított Azure Resource Manager sablonfájl 6 erőforrást hoz létre a kö
 - Egy HSM az 1. stampben
 - Egy HSM a 2. stampben
 
-A paraméterek beállítása után a fájlokat fel kell tölteni Azure Portal Cloud Shell-fájlmegosztás használatára. A Azure Portal kattintson a\>\_"" Cloud Shell Symbol jobb felső sarokban, így a képernyő alsó részén egy parancssori környezet jelenik meg. Az ehhez tartozó beállítások a BASH és a PowerShell, és ha még nincs beállítva, válassza a BASH lehetőséget.
+A paraméterek beállítása után a fájlokat fel kell tölteni Azure Portal Cloud Shell-fájlmegosztás használatára. A Azure Portal kattintson a " \> \_ " Cloud Shell Symbol jobb felső sarokban, így a képernyő alsó részén egy parancssori környezet jelenik meg. Az ehhez tartozó beállítások a BASH és a PowerShell, és ha még nincs beállítva, válassza a BASH lehetőséget.
 
 A parancs rendszerhéjának feltöltési/letöltési lehetősége van az eszköztáron, és ezt a beállítást kell választania a sablon és a paraméter fájljainak a fájlmegosztás számára való feltöltéséhez:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel | Microsoft Docs'
+title: 'Oktatóanyag: az Azure AD egyszeri bejelentkezéses integrációja F5-mel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és F5 között.
 services: active-directory
 documentationCenter: na
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a24ec98e9d5978a6f896715b25bd6b08d4a0262d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 8d64774bd76a88c2ee8c1981fb3509c7265f4736
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232185"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017448"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az F5-mel
 
@@ -179,7 +179,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -282,45 +282,45 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 A hozzáférés-vezérlési kezelőben (APM) Active Directory AAA-kiszolgálót kell konfigurálnia a felhasználók hitelesítéséhez használandó APM-EK és hitelesítő adatok megadásához.
 
-1.    A fő lapon kattintson a **hozzáférési házirend > AAA-kiszolgálók > Active Directory**elemre. Megnyílik a Active Directory Servers List képernyő.
+1. A fő lapon kattintson a **hozzáférési házirend > AAA-kiszolgálók > Active Directory**elemre. Megnyílik a Active Directory Servers List képernyő.
 
-2.    Kattintson a **Létrehozás** elemre. Megnyílik az új kiszolgáló tulajdonságai képernyő.
+2. Kattintson a **Létrehozás** lehetőségre. Megnyílik az új kiszolgáló tulajdonságai képernyő.
 
-3.    A **név** mezőbe írjon be egy egyedi nevet a hitelesítési kiszolgálónak.
+3. A **név** mezőbe írjon be egy egyedi nevet a hitelesítési kiszolgálónak.
 
-4.    A **tartomány neve** mezőbe írja be a Windows-tartomány nevét.
+4. A **tartomány neve** mezőbe írja be a Windows-tartomány nevét.
 
-5.    A **Kiszolgálói kapcsolatok** beállításnál válassza a következő lehetőségek egyikét:
+5. A **Kiszolgálói kapcsolatok** beállításnál válassza a következő lehetőségek egyikét:
 
-    * Válassza a **készlet használata** lehetőséget az AAA-kiszolgáló magas rendelkezésre állásának beállításához.
+   * Válassza a **készlet használata** lehetőséget az AAA-kiszolgáló magas rendelkezésre állásának beállításához.
 
-    * Válassza a **közvetlen** lehetőséget az AAA-kiszolgáló önálló működéshez való beállításához.
+   * Válassza a **közvetlen** lehetőséget az AAA-kiszolgáló önálló működéshez való beállításához.
 
-6.    Ha a **közvetlen**lehetőséget választotta, adjon meg egy nevet a **tartományvezérlő** mezőben.
+6. Ha a **közvetlen**lehetőséget választotta, adjon meg egy nevet a **tartományvezérlő** mezőben.
 
-7.    Ha a **készlet**használata lehetőséget választotta, konfigurálja a készletet:
+7. Ha a **készlet**használata lehetőséget választotta, konfigurálja a készletet:
 
-    * Írjon be egy nevet a **tartományvezérlő készletének neve** mezőbe.
+   * Írjon be egy nevet a **tartományvezérlő készletének neve** mezőbe.
 
-    * Adja meg a készletben lévő **tartományvezérlőket** úgy, hogy mindegyikhez beírja az IP-címet és az állomásnevet, majd a **Hozzáadás** gombra kattint.
+   * Adja meg a készletben lévő **tartományvezérlőket** úgy, hogy mindegyikhez beírja az IP-címet és az állomásnevet, majd a **Hozzáadás** gombra kattint.
 
-    * Az AAA-kiszolgáló állapotának figyeléséhez lehetősége van az állapotfigyelő kiválasztására: ebben az esetben csak az **gateway_icmp** figyelő szükséges. kiválaszthatja a **kiszolgálói készlet figyelője** listából.
+   * Az AAA-kiszolgáló állapotának figyeléséhez lehetősége van az állapotfigyelő kiválasztására: ebben az esetben csak az **gateway_icmp** figyelő szükséges. kiválaszthatja a **kiszolgálói készlet figyelője** listából.
 
-8.    A rendszergazda **neve** mezőbe írja be a kis-és nagybetűket megkülönböztető nevet egy olyan rendszergazdának, aki Active Directory rendszergazdai jogosultságokkal rendelkezik. Az APM az AD-lekérdezéshez tartozó **rendszergazdai név** és **rendszergazdai jelszó** mezőkben szereplő információkat használja. Ha a Active Directory névtelen lekérdezésekhez van konfigurálva, nem kell megadnia a Rendszergazdá nevét. Ellenkező esetben az APM-nek olyan fiókra van szüksége, amely megfelelő jogosultsággal rendelkezik a Active Directory-kiszolgálóhoz való kötéshez, a felhasználói csoport adatainak beolvasásához, valamint Active Directory jelszóházirend beolvasásához a jelszóval kapcsolatos funkciók támogatásához. (Az APM-nek be kell olvasnia a szabályzatokat, például ha bejelöli a jelszó módosításának kérése a felhasználótól az AD-lekérdezési művelet lejárata előtt beállítást.) Ha nem ad meg rendszergazdai fiókot ebben a konfigurációban, az APM a felhasználói fiók használatával kéri le az adatokat. Ez akkor működik, ha a felhasználói fióknak megfelelő jogosultsága van.
+8. A rendszergazda **neve** mezőbe írja be a kis-és nagybetűket megkülönböztető nevet egy olyan rendszergazdának, aki Active Directory rendszergazdai jogosultságokkal rendelkezik. Az APM az AD-lekérdezéshez tartozó **rendszergazdai név** és **rendszergazdai jelszó** mezőkben szereplő információkat használja. Ha a Active Directory névtelen lekérdezésekhez van konfigurálva, nem kell megadnia a Rendszergazdá nevét. Ellenkező esetben az APM-nek olyan fiókra van szüksége, amely megfelelő jogosultsággal rendelkezik a Active Directory-kiszolgálóhoz való kötéshez, a felhasználói csoport adatainak beolvasásához, valamint Active Directory jelszóházirend beolvasásához a jelszóval kapcsolatos funkciók támogatásához. (Az APM-nek be kell olvasnia a szabályzatokat, például ha bejelöli a jelszó módosításának kérése a felhasználótól az AD-lekérdezési művelet lejárata előtt beállítást.) Ha nem ad meg rendszergazdai fiókot ebben a konfigurációban, az APM a felhasználói fiók használatával kéri le az adatokat. Ez akkor működik, ha a felhasználói fióknak megfelelő jogosultsága van.
 
-9.    A **rendszergazdai jelszó** mezőbe írja be a tartománynévhez társított rendszergazdai jelszót.
+9. A **rendszergazdai jelszó** mezőbe írja be a tartománynévhez társított rendszergazdai jelszót.
 
-10.    A **rendszergazdai jelszó ellenőrzése** mezőben írja be újra a **tartománynév** beállításhoz társított rendszergazdai jelszót.
+10. A **rendszergazdai jelszó ellenőrzése** mezőben írja be újra a **tartománynév** beállításhoz társított rendszergazdai jelszót.
 
-11.    A **csoport gyorsítótárának élettartama** mezőben adja meg a napok számát. Az alapértelmezett élettartam 30 nap.
+11. A **csoport gyorsítótárának élettartama** mezőben adja meg a napok számát. Az alapértelmezett élettartam 30 nap.
 
-12.    A **jelszó biztonsági objektum gyorsítótárának élettartama** mezőben adja meg a napok számát. Az alapértelmezett élettartam 30 nap.
+12. A **jelszó biztonsági objektum gyorsítótárának élettartama** mezőben adja meg a napok számát. Az alapértelmezett élettartam 30 nap.
 
-13.    A **Kerberos előhitelesítés titkosítási típusa** listából válassza ki a titkosítási típust. Az alapértelmezett érték a **none**. Ha titkosítási típust ad meg, a BIG-IP rendszer az első hitelesítési szolgáltatási kérelem (AS-REQ) csomagján belül Kerberos-előhitelesítést is tartalmaz.
+13. A **Kerberos előhitelesítés titkosítási típusa** listából válassza ki a titkosítási típust. Az alapértelmezett érték a **none**. Ha titkosítási típust ad meg, a BIG-IP rendszer az első hitelesítési szolgáltatási kérelem (AS-REQ) csomagján belül Kerberos-előhitelesítést is tartalmaz.
 
-14.    Az **időtúllépés** mezőben adja meg az AAA-kiszolgáló időtúllépési intervallumát (másodpercben). (Ez a beállítás nem kötelező.)
+14. Az **időtúllépés** mezőben adja meg az AAA-kiszolgáló időtúllépési intervallumát (másodpercben). (Ez a beállítás nem kötelező.)
 
-15.    Kattintson a **kész**gombra. Az új kiszolgáló megjelenik a listán. Ezzel hozzáadja az új Active Directory-kiszolgálót a Active Directory kiszolgálók listájához.
+15. Kattintson a **kész**gombra. Az új kiszolgáló megjelenik a listán. Ezzel hozzáadja az új Active Directory-kiszolgálót a Active Directory kiszolgálók listájához.
 
     ![F5 (Kerberos) konfiguráció](./media/kerbf5-tutorial/configure17.png)
 

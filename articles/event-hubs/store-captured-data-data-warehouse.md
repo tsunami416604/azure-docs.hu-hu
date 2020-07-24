@@ -4,16 +4,16 @@ description: 'Oktatóanyag: ez az oktatóanyag bemutatja, hogyan rögzíthet az 
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: b5f38c1a5b60dc8c8f0d9e8710c5dbc95434fe78
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 8d45681b53aa2dd8df8c2288fecdde1b45fb7bd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322490"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039497"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Oktatóanyag: rögzített Event Hubs-adatSQL Data Warehousek migrálása a Event Grid és Azure Functions használatával
 
-Az Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) a legegyszerűbb megoldás a streamelt Event Hubs-adatok Azure Blob Storage- vagy Azure Data Lake Store-fiókba történő automatikus továbbítására. Később feldolgozhatja és kézbesítheti az adatokat bármely más választott tárolási célhelyre, például az SQL Data Warehouse vagy Cosmos DB tárhelyekre. Ebben az oktatóanyagban megtudhatja, hogyan rögzíthet adatokat az eseményközpontból az SQL Data Warehouse-ba egy [eseményrács](https://docs.microsoft.com/azure/event-grid/overview) által meghívott Azure-függvénnyel.
+Az Event Hubs [Capture](./event-hubs-capture-overview.md) a legegyszerűbb megoldás a streamelt Event Hubs-adatok Azure Blob Storage- vagy Azure Data Lake Store-fiókba történő automatikus továbbítására. Később feldolgozhatja és kézbesítheti az adatokat bármely más választott tárolási célhelyre, például az SQL Data Warehouse vagy Cosmos DB tárhelyekre. Ebben az oktatóanyagban megtudhatja, hogyan rögzíthet adatokat az eseményközpontból az SQL Data Warehouse-ba egy [eseményrács](../event-grid/overview.md) által meghívott Azure-függvénnyel.
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
@@ -113,11 +113,11 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![Függvényalkalmazás közzététele](./media/store-captured-data-data-warehouse/publish-function-app.png)
 
-1. Válassza az **Azure-függvényalkalmazás**, majd a **Meglévő kiválasztása** lehetőséget. Kattintson a **Közzététel** lehetőségre.
+1. Válassza az **Azure-függvényalkalmazás**, majd a **Meglévő kiválasztása** lehetőséget. Kattintson a **Publish** (Közzététel) elemre.
 
    ![Cél függvényalkalmazás](./media/store-captured-data-data-warehouse/pick-target.png)
 
-1. Válassza ki a sablonnal üzembe helyezett függvényalkalmazást. Válassza az **OK** lehetőséget.
+1. Válassza ki a sablonnal üzembe helyezett függvényalkalmazást. Kattintson az **OK** gombra.
 
    ![Függvényalkalmazás kiválasztása](./media/store-captured-data-data-warehouse/select-function-app.png)
 
@@ -130,7 +130,7 @@ A függvény közzététele után feliratkozhat a rögzítés eseményre az Even
 
 ## <a name="create-an-event-grid-subscription-from-the-functions-app"></a>Event Grid-előfizetés létrehozása a Functions-alkalmazásból
  
-1. Lépjen a [Azure Portal](https://portal.azure.com/). Válassza ki az erőforráscsoportot és a függvényalkalmazást.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Válassza ki az erőforráscsoportot és a függvényalkalmazást.
 
    ![Függvényalkalmazás megtekintése](./media/store-captured-data-data-warehouse/view-function-app.png)
 
@@ -178,7 +178,4 @@ Néhány perc elteltével kérdezze le az SQL adattárház tábláját. Megfigye
 ## <a name="next-steps"></a>További lépések 
 Ha gyakorlatban is használható elemzésekre vágyik, használjon hatékony adatvizualizációs eszközöket az adattárházával.
 
-Ez a cikk bemutatja a [Power BI és SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi) használatát
-
-
-
+Ez a cikk bemutatja a [Power BI és SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi) használatát

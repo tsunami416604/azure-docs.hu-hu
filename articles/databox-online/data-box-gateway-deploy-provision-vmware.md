@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b62441a4b1307a232ad2f592f13253c0759b5431
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 64a33b12da0e9b90eaeb7039f65b2493a839a0c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564206"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054121"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Oktatóanyag: Azure Data Box Gateway kiépítése a VMware-ben
 
@@ -93,7 +93,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
   
 3. Töltse fel a VMDK-t az ESXi-kiszolgálóra. A Navigátor panelen kattintson a **Storage** (Tároló) lehetőségre.
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image2.png)
+   ![Képernyőkép az ESXi-kiszolgáló helyének egy oldaláról, amely a navigátor panelt a kiválasztott Storage lehetőséggel jeleníti meg.](./media/data-box-gateway-deploy-provision-vmware/image2.png)
 
 4. A jobb oldali panelen a **Datastores** (Adattárak) területen válassza ki azt az adattárat, amelybe fel kívánja tölteni a VMDK-t. 
 
@@ -120,7 +120,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 
     ![Válassza ki a feltölteni kívánt fájlt](./media/data-box-gateway-deploy-provision-vmware/image7.png)
 
-10. Kattintson az **Open** (Megnyitás) elemre. Megkezdődik a VMDK-fájl feltöltése a megadott adattárra. A feltöltés több percig is eltarthat.
+10. Kattintson a **Megnyitás** gombra. Megkezdődik a VMDK-fájl feltöltése a megadott adattárra. A feltöltés több percig is eltarthat.
 11. A feltöltést követően a fájl megjelenik az adattáron a létrehozott mappában. Most töltse fel a második VMDK-fájlt is ugyanarra az adattárra. Ha mindkét fájlt feltöltötte, a rendszer egyesíti őket egyetlen fájlba. Ezután a könyvtárban egyetlen fájl lesz látható.
 
     ![Két VMDK-fájl egyetlen fájlba van egyesítve](./media/data-box-gateway-deploy-provision-vmware/image8.png)

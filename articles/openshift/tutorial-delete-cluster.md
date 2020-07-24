@@ -2,16 +2,17 @@
 title: Oktatóanyag – Azure Red Hat OpenShift-fürt törlése
 description: Ebből az oktatóanyagból megtudhatja, hogyan törölhet egy Azure Red Hat OpenShift-fürtöt az Azure CLI használatával
 author: sakthi-vetrivel
+ms.custom: fasttrack-edit
 ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: 2de60b90eb6fb75ef013a2fd8785f1b8b616fba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6fdc36dbf270be61457dcd00dd1988808a80d062
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82232138"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030096"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt törlése
 
@@ -49,7 +50,7 @@ RESOURCE_GROUP=yourresourcegroup
 A következő értékek használatával törölje a fürtöt:
 
 ```bash
-az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
+az aro delete --resource-group $RESOURCE_GROUP --name $CLUSTER
 ```
 
 Ekkor a rendszer felszólítja, hogy erősítse meg, hogy törölni kívánja-e a fürtöt. A jóváhagyását követően `y` több percet is igénybe vehet, hogy törölje a fürtöt. A parancs befejeződése után a teljes erőforráscsoport és a benne lévő összes erőforrás – beleértve a fürtöt is – törlődik.

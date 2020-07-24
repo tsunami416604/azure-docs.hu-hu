@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 8c78913486610b171b7577d0bc239e0e7060038e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 32a3ec0caae303c37cad771b2bbbd1b7840512a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560394"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075434"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
@@ -39,7 +39,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 Az oktatóanyag elvégzéséhez először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie az elsődleges kulcsot (előfizetési kulcs). 
 
-Azure Maps fiók előfizetésének létrehozásához kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)című témakör utasításait. Az S1 árszintje Azure Maps fiók-előfizetésre van szüksége. 
+Azure Maps fiók előfizetésének létrehozásához kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)című témakör utasításait. Az S1 árszintje Azure Maps fiók-előfizetésre van szüksége. 
 
 A fiók elsődleges előfizetési kulcsának beszerzéséhez kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account)című témakör utasításait.
 
@@ -82,14 +82,14 @@ Próbálja meg megismerni a jegyzetfüzet-fájlban megvalósított funkciókat. 
 
 A kód a jegyzetfüzetben való futtatásához a következő lépések végrehajtásával telepítse a csomagokat a projekt szintjén:
 
-1. Töltse le a [*követelmények. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) fájlt a [Azure Maps Jupyter jegyzetfüzet-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook), majd töltse fel a projektbe.
+1. Töltse le a [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) fájlt a [Azure Maps Jupyter jegyzetfüzet-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook), majd töltse fel a projektbe.
 1. A projekt irányítópultján válassza a **projekt beállításai**lehetőséget. 
 1. A **projekt beállításai** ablaktáblán válassza a **környezet** lapot, majd kattintson a **Hozzáadás**gombra.
 1. A **környezet beállítása lépésekben**tegye a következőket:   
-    a. Az első legördülő listában válassza a **követelmények. txt**elemet.  
-    b. A második legördülő listában válassza ki a *követelmények. txt* fájlt.  
+    a. Az első legördülő listában válassza a **Requirements.txt**lehetőséget.  
+    b. A második legördülő listában válassza ki a *requirements.txt* fájlt.  
     c. A harmadik legördülő listában válassza ki a **Python 3,6** -es verzióját.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     ![Csomagok telepítése](./media/tutorial-ev-routing/install-packages.png)
 
@@ -387,7 +387,7 @@ display(Image(staticMapImage))
 
 ![Az útvonalat ábrázoló Térkép](./media/tutorial-ev-routing/route.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan hívhatja közvetlenül a Azure Maps REST API-kat, és hogyan jelenítheti meg Azure Maps-adatok a Python használatával.
 

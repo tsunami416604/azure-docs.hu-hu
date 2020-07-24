@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7f0bc04bb8e7358f5bdb2e4dfc3db198e24303f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 104583522c7041d89d9c63ba67a5633a3bd383f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67085644"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016466"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Oktatóanyag: Azure Active Directory integráció a Zscaler privát hozzáférési rendszergazdájával
 
@@ -33,7 +33,7 @@ A Zscaler privát hozzáférés-rendszergazdájának az Azure AD-vel való integ
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,6 +41,9 @@ Az Azure AD-integráció Zscaler való konfigurálásához a következő elemek 
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, [ingyenes fiókot](https://azure.microsoft.com/free/) szerezhet be
 * Zscaler-hozzáférés a rendszergazdai egyszeri bejelentkezéshez – engedélyezett előfizetés
+
+> [!NOTE]
+> Ez az integráció az Azure AD USA kormányzati felhőalapú környezetének használatával is elérhető. Ezt az alkalmazást az Azure AD US government Cloud Application Galleryben találja, és ugyanúgy konfigurálhatja, mint a nyilvános felhőben.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -163,7 +166,7 @@ Ha az Azure AD egyszeri bejelentkezést a Zscaler privát hozzáférési rendsze
 
     d. Válassza ki a tartományt a **tartományok** mezőben.
     
-    e. Kattintson a **Save** (Mentés) gombra.
+    e. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -183,11 +186,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    b. A **Felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`a nevet. Például: BrittaSimon@contoso.com
+    b. A Felhasználónév mezőbe írja be a **nevet** `brittasimon@yourcompanydomain.extension` . Például: BrittaSimon@contoso.com
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás**gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -239,7 +242,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Zs
 
     ![Zscaler privát hozzáférés-adminisztrátor felhasználói rendszergazdája](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a. A **Felhasználónév** szövegmezőbe írja be a felhasználóhoz hasonló BrittaSimon@contoso.come-mail címet.
+    a. A **Felhasználónév** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet BrittaSimon@contoso.com .
 
     b. A **jelszó** szövegmezőbe írja be a jelszót.
 
@@ -247,13 +250,13 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Zs
 
     d. Válassza ki a **szerepkört** **Zscaler privát hozzáférési rendszergazdaként**.
 
-    e. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló BrittaSimon@contoso.come-mail címet.
+    e. Az **e-mail** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet BrittaSimon@contoso.com .
 
     f. A **telefon** szövegmezőbe írja be a telefonszámot.
 
-    g. Az **időzóna** szövegmezőben válassza ki az időzónát.
+    : Az **időzóna** szövegmezőben válassza ki az időzónát.
 
-    h. Kattintson a **Save** (Mentés) gombra.
+    h. Kattintson a **Mentés** gombra.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

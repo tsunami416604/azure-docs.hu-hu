@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 46c27f18f8f16f783248790f03364654d0b3c2fe
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: a594a754f33ae60d151215deb5a5ed57f87126c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986828"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050646"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
 
@@ -122,7 +122,7 @@ Ha a-től eltérő altartománnyal rendelkezik `www` , cserélje le az `www` alt
 
 Altartomány hozzárendelése az alkalmazás alapértelmezett tartománynevéhez (ahol az az `<app_name>.azurewebsites.net` `<app_name>` alkalmazás neve). Ha CNAME leképezést szeretne létrehozni az `www` altartományhoz, hozzon létre két rekordot:
 
-| Rekordtípus | Gazdagép | Érték | Megjegyzések |
+| Rekordtípus | Gazda | Érték | Megjegyzések |
 | - | - | - |
 | CNAME | `www` | `<app_name>.azurewebsites.net` | Maga a tartomány-hozzárendelés. |
 | TXT | `asuid.www` | [A korábban kapott ellenőrző azonosító](#get-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. |
@@ -194,7 +194,7 @@ Az **Egyéni tartományok** oldalon másolja az alkalmazás IP-címét.
 
 Ha egy rekordot egy alkalmazáshoz szeretne hozzárendelni, általában a legfelső szintű tartományhoz, hozzon létre két rekordot:
 
-| Rekordtípus | Gazdagép | Érték | Megjegyzések |
+| Rekordtípus | Gazda | Érték | Megjegyzések |
 | - | - | - |
 | A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím | Maga a tartomány-hozzárendelés ( `@` általában a legfelső szintű tartományt jelenti). |
 | TXT | `asuid` | [A korábban kapott ellenőrző azonosító](#get-domain-verification-id) | App Service hozzáfér a `asuid.<subdomain>` txt-rekordhoz az egyéni tartomány tulajdonjogának ellenőrzéséhez. A gyökérszintű tartományhoz használja a következőt: `asuid` . |
@@ -202,7 +202,7 @@ Ha egy rekordot egy alkalmazáshoz szeretne hozzárendelni, általában a legfel
 > [!NOTE]
 > Egy altartomány (például) egy `www.contoso.com` , az ajánlott [CNAME-rekord](#map-a-cname-record)helyett egy rekord használatával való hozzáadásához a rekordnak és a txt-rekordnak a következő táblázathoz hasonlóan kell kinéznie:
 >
-> | Rekordtípus | Gazdagép | Érték |
+> | Rekordtípus | Gazda | Érték |
 > | - | - | - |
 > | A | `www` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
 > | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
@@ -329,7 +329,7 @@ A művelet befejezése után az alkalmazásnak vissza kell adni a jobb oldalt a 
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 
-Szkriptekkel automatizálhatja az egyéni tartományok felügyeletét az [Azure CLI](/cli/azure/install-azure-cli) vagy az [Azure PowerShell](/powershell/azure/overview) használatával. 
+Szkriptekkel automatizálhatja az egyéni tartományok felügyeletét az [Azure CLI](/cli/azure/install-azure-cli) vagy az [Azure PowerShell](/powershell/azure/) használatával. 
 
 ### <a name="azure-cli"></a>Azure CLI 
 

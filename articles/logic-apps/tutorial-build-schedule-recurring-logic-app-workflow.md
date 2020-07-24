@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 5d4990fd806aed75d9b5e5ddd3e9a615631d9d65
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 977f138fad1f2eb1eae95049d2bd8a730ba5687e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82146526"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048734"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Oktatóanyag: automatizált, ütemezett és ismétlődő munkafolyamatok létrehozása Azure Logic Apps használatával
 
@@ -36,12 +36,12 @@ Az elkészült logikai alkalmazás nagyjából a következő munkafolyamathoz ha
 
 * Azure-előfizetés. Ha nem rendelkezik előfizetéssel, [regisztráljon egy ingyenes Azure-fiókot a](https://azure.microsoft.com/free/) Kezdés előtt.
 
-* Egy Logic Apps által támogatott e-mail-szolgáltatótól (például Office 365 Outlook, Outlook.com vagy Gmail) származó e-mail-fiók. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](https://docs.microsoft.com/connectors/). Ez a rövid útmutató egy Office 365 Outlook-fiókot használ. Ha más e-mail-fiókot használ, az általános lépések változatlanok maradnak, de a felhasználói felület némileg eltérő lehet.
+* Egy Logic Apps által támogatott e-mail-szolgáltatótól (például Office 365 Outlook, Outlook.com vagy Gmail) származó e-mail-fiók. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](/connectors/). Ez a rövid útmutató egy Office 365 Outlook-fiókot használ. Ha más e-mail-fiókot használ, az általános lépések változatlanok maradnak, de a felhasználói felület némileg eltérő lehet.
 
   > [!IMPORTANT]
-  > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
-* Az útvonal megtételéhez szükséges idő lekéréséhez szükség van a Bing Térképek API hozzáférési kulcsára. A kulcs lekéréséhez kövesse a [Bing Térképek-kulcs lekérése](https://docs.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key) lépéseit.
+* Az útvonal megtételéhez szükséges idő lekéréséhez szükség van a Bing Térképek API hozzáférési kulcsára. A kulcs lekéréséhez kövesse a [Bing Térképek-kulcs lekérése](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key) lépéseit.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -49,30 +49,30 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja h
 
 ## <a name="create-your-logic-app"></a>A logikai alkalmazás létrehozása
 
-1. Az Azure fő menüjében válassza az **erőforrás** > létrehozása**integrációs** > **logikai alkalmazás**lehetőséget.
+1. Az Azure fő menüjében válassza az **erőforrás létrehozása**  >  **integrációs**  >  **logikai alkalmazás**lehetőséget.
 
    ![A logikai alkalmazás erőforrásának létrehozása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
 
-1. A **Logikai alkalmazás létrehozása** területen adja meg a logikai alkalmazás alábbi adatait az itt látható módon. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+1. A **Logikai alkalmazás létrehozása** területen adja meg a logikai alkalmazás alábbi adatait az itt látható módon. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
    ![Adja meg a logikai alkalmazással kapcsolatos információkat](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
-   | **Név** | LA-TravelTime | A logikai alkalmazás neve, amely csak betűket, számokat`-`, kötőjeleket (), aláhúzásokat (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "LA-TravelTime" kifejezést használja. |
+   | **Név** | LA-TravelTime | A logikai alkalmazás neve, amely csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ), zárójeleket ( `(` , `)` ) és pontokat ( `.` ) tartalmazhat. Ez a példa a "LA-TravelTime" kifejezést használja. |
    | **Előfizetés** | <*saját-Azure-előfizetés-név*> | Az Azure-előfizetés neve |
    | **Erőforráscsoport** | LA-TravelTime-RG | A kapcsolódó erőforrások rendszerezéséhez használt [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md)neve. Ez a példa a "LA-TravelTime-RG" protokollt használja. |
    | **Hely** | USA nyugati régiója | A logikai alkalmazás adatainak tárolására szolgáló AA-régió. Ez a példa a "West US"-t használja. |
-   | **Log Analytics** | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. |
+   | **Naplóelemzés** | Kikapcsolva | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. |
    ||||
 
-1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztáron válassza az **értesítések** > **Ugrás az erőforráshoz** lehetőséget a telepített logikai alkalmazáshoz.
+1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztáron válassza az **értesítések**  >  **Ugrás az erőforráshoz** lehetőséget a telepített logikai alkalmazáshoz.
 
    ![Ugrás az új Logic app-erőforrásra](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
 
    Vagy megkeresheti és kiválaszthatja a logikai alkalmazást úgy, hogy beírja a nevet a keresőmezőbe.
 
-   Megnyílik a Logic Apps Designer, és egy bemutató videót és gyakran használt triggereket és logikai alkalmazási mintákat tartalmazó oldalt jelenít meg. A **Sablonok** területen válassza az **Üres logikai alkalmazás** elemet.
+   Megnyílik a Logic Apps Designer, és egy bemutató videót és gyakran használt triggereket és logikai alkalmazási mintákat tartalmazó oldalt jelenít meg. A **Sablonok** szakaszban válassza az **Üres logikai alkalmazás** lehetőséget.
 
    ![Üres logikai alkalmazás sablonjának kiválasztása](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-logic-app-template.png)
 
@@ -94,8 +94,8 @@ Ezután adja hozzá az ismétlődési [eseményindítót](../logic-apps/logic-ap
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Időköz** | Igen | 1 | Az ellenőrzések között kivárt intervallumok száma |
-   | **Gyakoriság** | Igen | Hét | Az ismétlődéshez használni kívánt időegység |
+   | **Intervallum** | Yes | 1 | Az ellenőrzések között kivárt intervallumok száma |
+   | **Gyakoriság** | Yes | Hét | Az ismétlődéshez használni kívánt időegység |
    |||||
 
 1. Az **intervallum** és a **gyakoriság**területen nyissa meg az **új paraméter hozzáadása** listát, és válassza ki ezeket a tulajdonságokat az triggerhez való hozzáadáshoz.
@@ -143,8 +143,8 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Kapcsolat neve** | Igen | BingMapsConnection | Adja meg a kapcsolat nevét. Ez a példa a "BingMapsConnection" kifejezést használja. |
-   | **API-kulcs** | Igen | <*a-Bing-Maps-Key*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, [hogyan kérhet le kulcsot](https://msdn.microsoft.com/library/ff428642.aspx). |
+   | **Kapcsolat neve** | Yes | BingMapsConnection | Adja meg a kapcsolat nevét. Ez a példa a "BingMapsConnection" kifejezést használja. |
+   | **API-kulcs** | Yes | <*a-Bing-Maps-Key*> | Adja meg a korábban kapott Bing Térképek-kulcsot. Ha nem rendelkezik Bing Térképek-kulccsal, tudja meg, [hogyan kérhet le kulcsot](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key). |
    |||||
 
 1. Nevezze át a műveletet a következő leírásra: `Get route and travel time with traffic`
@@ -163,14 +163,14 @@ Most, hogy van eseményindítója, adjon hozzá egy olyan [műveletet](../logic-
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **1. útvonalpont** | Igen | <*Start – hely*> | Az útvonal kiindulópontja |
-   | **2. útvonalpont** | Igen | <*végső hely*> | Az útvonal célállomása |
-   | **Optimalizálás** | Nem | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a "timeWithTraffic" paramétert. |
-   | **Távolság mértékegysége** | Nem | <*saját preferencia*> | Az útvonalhoz használt távolság-mértékegység. Ez a példa az "Mile" egységet használja egységként. |
-   | **Közlekedési mód** | Nem | Vezetés | Az útvonalhoz használt közlekedési mód. Válassza a "vezetés" módot. |
+   | **1. útvonalpont** | Yes | <*Start – hely*> | Az útvonal kiindulópontja |
+   | **2. útvonalpont** | Yes | <*végső hely*> | Az útvonal célállomása |
+   | **Optimalizálás** | No | timeWithTraffic | Az útvonal optimalizálására szolgáló paraméter (például távolság, utazási idő a jelenlegi forgalom mellett stb.). Válassza ki a "timeWithTraffic" paramétert. |
+   | **Távolság mértékegysége** | No | <*saját preferencia*> | Az útvonalhoz használt távolság-mértékegység. Ez a példa az "Mile" egységet használja egységként. |
+   | **Közlekedési mód** | No | Vezetés | Az útvonalhoz használt közlekedési mód. Válassza a "vezetés" módot. |
    ||||
 
-   További információk ezekről a paraméterekről: [Útvonal kiszámítása](https://docs.microsoft.com/bingmaps/rest-services/routes/calculate-a-route).
+   További információk ezekről a paraméterekről: [Útvonal kiszámítása](/bingmaps/rest-services/routes/calculate-a-route).
 
 1. Mentse a logikai alkalmazást.
 
@@ -194,9 +194,9 @@ Alapértelmezés szerint az előző **Útvonal lekérése** művelet a jelenlegi
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Név** | Igen | travelTime | A változó neve. Ez a példa a "travelTime" kifejezést használja. |
-   | **Típus** | Igen | Egész szám | A változó adattípusa |
-   | **Érték** | Nem| Egy kifejezés, amely átalakítja a jelenlegi utazási időt másodpercekből percekké (lásd a táblázat alatti lépéseket). | A változó kezdeti értéke |
+   | **Név** | Yes | travelTime | A változó neve. Ez a példa a "travelTime" kifejezést használja. |
+   | **Típus** | Yes | Egész szám | A változó adattípusa |
+   | **Érték** | No| Egy kifejezés, amely átalakítja a jelenlegi utazási időt másodpercekből percekké (lásd a táblázat alatti lépéseket). | A változó kezdeti értéke |
    ||||
 
    1. Az **érték** tulajdonsághoz tartozó kifejezés létrehozásához kattintson a szövegmezőbe, hogy megjelenjen a dinamikus tartalmak listája. Ha szükséges, állítsa szélesebbre a böngésző ablakát, amíg meg nem jelenik a lista. A dinamikus tartalom listában válassza a **kifejezés**lehetőséget.
@@ -351,13 +351,13 @@ Az **ismétlődési** eseményindítót használó egyéb logikai alkalmazások 
 * Régebbi Azure-blobok törlése.
 * Üzenet hozzáadása egy Azure Storage-üzenetsorhoz.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége a minta logikai alkalmazásra, törölje a logikai alkalmazást és a kapcsolódó erőforrásokat tartalmazó erőforráscsoportot. 
 
 1. Az Azure főmenüjében lépjen az **Erőforráscsoportok** elemre, és válassza ki a logikai alkalmazás erőforráscsoportját.
 
-1. Az erőforráscsoport menüben válassza az **Áttekintés** > az**erőforráscsoport törlése**elemet. 
+1. Az erőforráscsoport menüben válassza az Áttekintés az **Overview**  >  **erőforráscsoport törlése**elemet. 
 
    ![„Áttekintés” > „Erőforráscsoport törlése”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 

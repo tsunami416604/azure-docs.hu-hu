@@ -4,12 +4,12 @@ description: Útmutató blockchain-alkalmazások létrehozásához az Azure Bloc
 ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
-ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74324803"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073103"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Oktatóanyag: blockchain-alkalmazás létrehozása az Azure Blockchain Workbenchhez
 
@@ -42,7 +42,7 @@ Kövesse az alkalmazásfájlok létrehozásához szükséges lépéseket, vagy [
 
 A konfigurációs metaadatok a blockchain alkalmazás magas szintű munkafolyamatait és interakciós modelljét határozzák meg. A konfigurációs metaadatok a blockchain alkalmazás munkafolyamat-szakaszainak és interakciós modelljének felelnek meg.
 
-1. A kedvenc szerkesztőjében hozzon létre egy nevű `HelloBlockchain.json`fájlt.
+1. A kedvenc szerkesztőjében hozzon létre egy nevű fájlt `HelloBlockchain.json` .
 2. Adja hozzá a következő JSON-t a blockchain alkalmazás konfigurációjának definiálásához.
 
     ``` json
@@ -220,7 +220,7 @@ Az intelligens szerződések a blockchain alkalmazás üzleti logikáját jelent
 
 Az intelligens szerződések a Soliding-ben hasonlóak az objektumorientált nyelvekhez tartozó osztályokhoz. Minden szerződés tartalmaz állapotot és függvényeket az intelligens szerződés szakaszainak és műveleteinek megvalósításához.
 
-A kedvenc szerkesztőjében hozzon létre egy nevű `HelloBlockchain.sol`fájlt.
+A kedvenc szerkesztőjében hozzon létre egy nevű fájlt `HelloBlockchain.sol` .
 
 ### <a name="version-pragma"></a>Sorpragmákat verziója
 
@@ -238,7 +238,7 @@ A Blockchain Workbench a konfigurációs fájl és az intelligens szerződés k�
 
 ### <a name="contract"></a>Szerződés
 
-Adja hozzá a **Szerződés** fejlécét `HelloBlockchain.sol` az intelligens szerződés kódját tartalmazó fájlhoz.
+Adja hozzá a **Szerződés** fejlécét az `HelloBlockchain.sol` intelligens szerződés kódját tartalmazó fájlhoz.
 
 ``` solidity
 contract HelloBlockchain {
@@ -248,7 +248,7 @@ contract HelloBlockchain {
 
 Az állapot változói az egyes szerződési példányok állapotának értékét tárolják. A szerződésben szereplő állapot változóinak meg kell egyezniük a konfigurációs fájlban meghatározott munkafolyamat-tulajdonságokkal.
 
-Adja hozzá az állapot változóit a szerződéséhez `HelloBlockchain.sol` az intelligens szerződés kódjának fájljában.
+Adja hozzá az állapot változóit a szerződéséhez az `HelloBlockchain.sol` intelligens szerződés kódjának fájljában.
 
 ``` solidity
     //Set of States
@@ -287,7 +287,7 @@ A függvények az üzleti logika végrehajtható egységei egy adott szerződés
 
 Írjon bármilyen üzleti logikát, amelyet végre szeretne hajtani a függvényben. Például egy állapotjelző változó értékének módosítása.
 
-1. Adja hozzá a következő függvényeket a szerződéséhez `HelloBlockchain.sol` az intelligens szerződés kódjának fájljában.
+1. Adja hozzá a következő függvényeket a szerződéséhez az `HelloBlockchain.sol` intelligens szerződés kódjának fájljában.
 
     ``` solidity
         // call this function to send a request
@@ -319,23 +319,23 @@ A függvények az üzleti logika végrehajtható egységei egy adott szerződés
 
 Ha blockchain-alkalmazást szeretne hozzáadni a Blockchain Workbenchhez, töltse fel a konfigurációs és az intelligens szerződés fájljait az alkalmazás definiálásához.
 
-1. Egy böngészőben nyissa meg a Blockchain Workbench webcímet. `https://{workbench URL}.azurewebsites.net/` A webalkalmazás például a Blockchain Workbench telepítésekor jön létre. További információ a Blockchain Workbench-webcím megkereséséről: [Blockchain Workbench webes URL-](deploy.md#blockchain-workbench-web-url) címe
+1. Egy böngészőben nyissa meg a Blockchain Workbench webcímet. `https://{workbench URL}.azurewebsites.net/`A webalkalmazás például a Blockchain Workbench telepítésekor jön létre. További információ a Blockchain Workbench-webcím megkereséséről: [Blockchain Workbench webes URL-](deploy.md#blockchain-workbench-web-url) címe
 2. Jelentkezzen be [Blockchain Workbench-rendszergazdaként](manage-users.md#manage-blockchain-workbench-administrators).
-3. Válassza az**új** **alkalmazások** > elemet. Megjelenik az **új alkalmazás** panel.
-4. Válassza a **Szerződés-konfiguráció** > feltöltése**Tallózás** lehetőséget a létrehozott **HelloBlockchain. JSON** konfigurációs fájl megkereséséhez. A konfigurációs fájl automatikusan érvényesítve lesz. Az érvényesítési hibák megjelenítéséhez kattintson a **Megjelenítés** hivatkozásra. Az alkalmazás üzembe helyezése előtt javítsa ki az érvényesítési hibákat.
-5. Válassza a **szerződéssablon** > feltöltése**Tallózás** lehetőséget a **HelloBlockchain. Sol** intelligens szerződés kódjának megkereséséhez. A rendszer automatikusan érvényesíti a kódot. Az érvényesítési hibák megjelenítéséhez kattintson a **Megjelenítés** hivatkozásra. Az alkalmazás üzembe helyezése előtt javítsa ki az érvényesítési hibákat.
+3. Válassza **Applications**az  >  **új**alkalmazások elemet. Megjelenik az **új alkalmazás** panel.
+4. Válassza a **Szerződés-konfiguráció feltöltése**  >  **Tallózás** lehetőséget, hogy megkeresse a létrehozott konfigurációs fájl **HelloBlockchain.js** . A konfigurációs fájl automatikusan érvényesítve lesz. Az érvényesítési hibák megjelenítéséhez kattintson a **Megjelenítés** hivatkozásra. Az alkalmazás üzembe helyezése előtt javítsa ki az érvényesítési hibákat.
+5. Válassza a **szerződéssablon feltöltése**  >  **Tallózás** lehetőséget a **HelloBlockchain. Sol** intelligens szerződés kódjának megkereséséhez. A rendszer automatikusan érvényesíti a kódot. Az érvényesítési hibák megjelenítéséhez kattintson a **Megjelenítés** hivatkozásra. Az alkalmazás üzembe helyezése előtt javítsa ki az érvényesítési hibákat.
 6. Válassza a **telepítés** lehetőséget a blockchain alkalmazás létrehozásához a konfiguráció és az intelligens szerződés fájljai alapján.
 
 A blockchain alkalmazás üzembe helyezése néhány percet vesz igénybe. Az üzembe helyezés befejezésekor az új alkalmazás megjelenik az **alkalmazásokban**. 
 
 > [!NOTE]
-> A blockchain-alkalmazásokat az [Azure Blockchain Workbench REST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)használatával is létrehozhatja.
+> A blockchain-alkalmazásokat az [Azure Blockchain Workbench REST API](/rest/api/azure-blockchain-workbench)használatával is létrehozhatja.
 
 ## <a name="add-blockchain-application-members"></a>Blockchain-alkalmazás tagjainak hozzáadása
 
 Alkalmazások tagjainak hozzáadása az alkalmazáshoz a szerződések elindításához és a műveletek elvégzéséhez. Az alkalmazás tagjainak hozzáadásához [Blockchain Workbench rendszergazdának](manage-users.md#manage-blockchain-workbench-administrators)kell lennie.
 
-1. Válassza **Applications** > **a Hello, Blockchain!** alkalmazások elemet.
+1. Válassza **Applications**  >  **a Hello, Blockchain!** alkalmazások elemet.
 2. Az alkalmazáshoz társított tagok száma az oldal jobb felső sarkában jelenik meg. Új alkalmazás esetén a tagok száma nulla lesz.
 3. Válassza ki a **tagok** hivatkozást az oldal jobb felső sarkában. Megjelenik az alkalmazás tagjainak aktuális listája.
 4. A tagság listán válassza a **Tagok hozzáadása**elemet.

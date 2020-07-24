@@ -1,13 +1,14 @@
 ---
 title: ISO 27001 tervrajzi minta üzembe helyezése
 description: Üzembe helyezheti az önálló ISO 27001 tervrajzi minta lépéseit, beleértve a Blueprint-összetevők paraméterének részleteit.
-ms.date: 01/13/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 9eaf559f0c1e6c99d3a2469d63eddea1c1ae9867
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6580c4f8bc66238ad45fe3d969caa7a4b3b4ce82
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044651"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006806"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>Az ISO 27001 tervrajzi minta üzembe helyezése
 
@@ -61,7 +62,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
-   - Alapvető beállítások
+   - Alapbeállítások
 
      - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
      - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.

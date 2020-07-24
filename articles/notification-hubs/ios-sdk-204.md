@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 2103c93e553cc5e1e94941b1567bd3c0f168eabf
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 80a9a98043a39b654f0d62a84ae81e12797b15b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126372"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022361"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>Oktatóanyag: leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs (2.0.4 verzió) használatával
 
@@ -481,7 +481,7 @@ Ebben az egyszerű példában leküldéses értesítéseket küld a regisztrált
 
 [Oktatóanyag: leküldéses értesítések adott eszközökre](notification-hubs-ios-xplat-segmented-apns-push-notification.md)
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
 - [Az Azure Notification Hubs áttekintése](notification-hubs-push-notification-overview.md)
 - [Notification Hubs REST API-k](/rest/api/notificationhubs/)
@@ -491,7 +491,7 @@ További információért tekintse át a következő cikkeket:
 - [Regisztrációkezelés](notification-hubs-push-notification-registration-management.md)
 - [Címkék használata](notification-hubs-tags-segment-push-message.md)
 - [Egyéni sablonok használata](notification-hubs-templates-cross-platform-push-messages.md)
-- [Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal](/azure/service-bus-messaging/service-bus-sas)
+- [Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal](../service-bus-messaging/service-bus-sas.md)
 - [SAS-tokenek programozott módon történő előállítása](/rest/api/eventhub/generate-sas-token)
 - [Apple Security: általános kriptográfia](https://developer.apple.com/security/)
 - [UNIX-kor időpontja](https://en.wikipedia.org/wiki/Unix_time)

@@ -1,14 +1,14 @@
 ---
 title: ISO 27001-es bevezetési/SQL munkaterhelés-tervezeti minta üzembe helyezése
 description: Az ISO 27001 App Service Environment/SQL Database munkaterhelés-tervezet lépéseinek üzembe helyezése minta, beleértve a tervrajz-összetevő paraméterének részleteit.
-ms.date: 01/13/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 6b8f3b753f1dd8cfbc247a77f2004e3c4d3423bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 74f2670b79d1968755e376d1f5a75bbb76e6e6c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75922576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072892"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 App Service Environment/SQL Database munkaterhelés tervrajzi minta üzembe helyezése
 
@@ -20,7 +20,7 @@ Az Azure-tervezetek üzembe helyezéséhez ISO 27001 App Service Environment/SQL
 > - A minta másolatának megjelölése **közzétettként**
 > - A terv másolatának kiosztása meglévő előfizetéshez
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
 
 ## <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 Shared Services Blueprint minta üzembe helyezése
 
@@ -70,7 +70,7 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
 
-   - Alapvető beállítások
+   - Alapbeállítások
 
      - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
      - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
@@ -109,14 +109,14 @@ Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzá
 
 A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
 
-|Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
+|Összetevő neve|Összetevő típusa|Paraméter neve|Description|
 |-|-|-|-|
-|Log Analytics erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** , `-workload-log-rg` hogy az erőforráscsoport egyedi legyen.|
+|Log Analytics erőforráscsoport|Erőforráscsoport|Name|**Zárolva** – összefűzi a **szervezet nevét** , `-workload-log-rg` hogy az erőforráscsoport egyedi legyen.|
 |Log Analytics erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
-|Log Analytics sablon|Resource Manager-sablon|Szolgáltatásszint|Beállítja a Log Analytics munkaterület szintjét. Az alapértelmezett érték a _PerNode_.|
+|Log Analytics sablon|Resource Manager-sablon|Szolgáltatási szint|Beállítja a Log Analytics munkaterület szintjét. Az alapértelmezett érték a _PerNode_.|
 |Log Analytics sablon|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
 |Log Analytics sablon|Resource Manager-sablon|Hely|A Log Analytics munkaterület létrehozásához használt régió. Az alapértelmezett érték az _USA 2. nyugati_régiója.|
-|Hálózati erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** , `-workload-net-rg` hogy az erőforráscsoport egyedi legyen.|
+|Hálózati erőforráscsoport|Erőforráscsoport|Name|**Zárolva** – összefűzi a **szervezet nevét** , `-workload-net-rg` hogy az erőforráscsoport egyedi legyen.|
 |Hálózati erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
 |Hálózati biztonsági csoport sablonja|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Azure tűzfal magánhálózati IP-címe|Az [Azure tűzfal](../../../../firewall/overview.md)magánhálózati IP-címének konfigurálása. Az _ISO 27001: Shared Services_ összetevő-paraméterben definiált CIDR-jelölésnek kell lennie **Azure Firewall alhálózati címek előtagja**. Az alapértelmezett érték a _10.0.4.4_.|
@@ -124,21 +124,21 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Virtual Network címzési előtag|A virtuális hálózat CIDR-jelölése. Az alapértelmezett érték a _10.1.0.0/16_.|
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|Alhálózat alapértelmezett címének előtagja|A virtuális hálózat alapértelmezett alhálózatának CIDR-jelölése. Az alapértelmezett érték a _10.1.0.0/16_.|
 |Virtual Network és útválasztási táblázat sablonja|Resource Manager-sablon|IP-cím HOZZÁADÁSával|Az első virtuális gép IP-címe. Ezt az értéket használja a rendszer egyéni VNET DNS-ként.|
-|Key Vault erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** , `-workload-kv-rg` hogy az erőforráscsoport egyedi legyen.|
+|Key Vault erőforráscsoport|Erőforráscsoport|Name|**Zárolva** – összefűzi a **szervezet nevét** , `-workload-kv-rg` hogy az erőforráscsoport egyedi legyen.|
 |Key Vault erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
 |Key Vault sablon|Resource Manager-sablon|HRE objektum azonosítója|Annak a fióknak a HRE-azonosítója, amelyhez hozzáférést kell adni a Key Vault-példányhoz. Nincs alapértelmezett érték, és nem hagyható üresen. Ha meg szeretné keresni ezt az értéket a Azure Portal, keresse meg és válassza a "felhasználók" lehetőséget a _szolgáltatások_területen. A _Name (név_ ) mező használatával szűrheti a fióknevet, és kiválaszthatja a fiókot. A _felhasználói profil_ lapon válassza az _objektumazonosító_melletti "kattintson ide a másoláshoz" ikont.|
 |Key Vault sablon|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
 |Key Vault sablon|Resource Manager-sablon|Key Vault SKU|A létrehozott Key Vault SKU-jának meghatározása. Az alapértelmezett érték a _prémium_.|
 |Key Vault sablon|Resource Manager-sablon|Azure SQL Server-rendszergazdai Felhasználónév|Az Azure SQL Server eléréséhez használt Felhasználónév. Meg kell egyeznie a tulajdonság értékével **Azure SQL Database sablonban**. Az alapértelmezett érték az _SQL-Admin-User_.|
-|Azure SQL Database erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** , `-workload-azsql-rg` hogy az erőforráscsoport egyedi legyen.|
+|Azure SQL Database erőforráscsoport|Erőforráscsoport|Name|**Zárolva** – összefűzi a **szervezet nevét** , `-workload-azsql-rg` hogy az erőforráscsoport egyedi legyen.|
 |Azure SQL Database erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
 |Azure SQL Database sablon|Resource Manager-sablon|Azure SQL Server-rendszergazdai Felhasználónév|Az Azure-SQL Server felhasználóneve. Meg kell egyeznie a tulajdonság értékével **Key Vault sablonban**. Az alapértelmezett érték az _SQL-Admin-User_.|
-|Azure SQL Database sablon|Resource Manager-sablon|Azure SQL Server rendszergazdai jelszó (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-azonosítója. Használja a "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" kifejezést `{subscriptionId}` , és cserélje le az `{orgName}` előfizetés-azonosítóra és a **szervezet neve** Blueprint paraméterre.|
+|Azure SQL Database sablon|Resource Manager-sablon|Azure SQL Server rendszergazdai jelszó (Key Vault erőforrás-azonosító)|A Key Vault erőforrás-azonosítója. Használja a "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" kifejezést, és cserélje le az `{subscriptionId}` előfizetés-azonosítóra és `{orgName}` a **szervezet neve** Blueprint paraméterre.|
 |Azure SQL Database sablon|Resource Manager-sablon|Azure SQL Server rendszergazdai jelszó (Key Vault titkos kulcs neve)|A SQL Server-rendszergazda felhasználóneve. Az értéknek meg kell egyeznie **Key Vault sablon** tulajdonság **Azure SQL Server rendszergazdai Felhasználónév**.|
 |Azure SQL Database sablon|Resource Manager-sablon|Napló megőrzési ideje (nap)|Adatok megőrzése napokban. Az alapértelmezett érték a _365_.|
 |Azure SQL Database sablon|Resource Manager-sablon|HRE rendszergazdai objektum azonosítója|Azon felhasználó HRE-azonosítója, amely Active Directory-rendszergazdaként lesz hozzárendelve. Nincs alapértelmezett érték, és nem hagyható üresen. Ha meg szeretné keresni ezt az értéket a Azure Portal, keresse meg és válassza a "felhasználók" lehetőséget a _szolgáltatások_területen. A _Name (név_ ) mező használatával szűrheti a fióknevet, és kiválaszthatja a fiókot. A _felhasználói profil_ lapon válassza az _objektumazonosító_melletti "kattintson ide a másoláshoz" ikont.|
 |Azure SQL Database sablon|Resource Manager-sablon|HRE-rendszergazdai bejelentkezés|Jelenleg a Microsoft-fiókok (például a live.com vagy a outlook.com) nem állíthatók be rendszergazdaként. Csak a szervezeten belüli felhasználók és biztonsági csoportok állíthatók be rendszergazdaként. Nincs alapértelmezett érték, és nem hagyható üresen. Ha meg szeretné keresni ezt az értéket a Azure Portal, keresse meg és válassza a "felhasználók" lehetőséget a _szolgáltatások_területen. A _Name (név_ ) mező használatával szűrheti a fióknevet, és kiválaszthatja a fiókot. A _felhasználói profil_ lapon másolja a _felhasználónevet_.|
-|App Service Environment erőforráscsoport|Erőforráscsoport|Name (Név)|**Zárolva** – összefűzi a **szervezet nevét** , `-workload-ase-rg` hogy az erőforráscsoport egyedi legyen.|
+|App Service Environment erőforráscsoport|Erőforráscsoport|Name|**Zárolva** – összefűzi a **szervezet nevét** , `-workload-ase-rg` hogy az erőforráscsoport egyedi legyen.|
 |App Service Environment erőforráscsoport|Erőforráscsoport|Hely|**Zárolt** – a terv paramétert használja.|
 |App Service Environment sablon|Resource Manager-sablon|Tartománynév|A minta által létrehozott Active Directory neve. Az alapértelmezett érték a _contoso.com_.|
 |App Service Environment sablon|Resource Manager-sablon|Bemutató hely|App Service Environment hely. Az alapértelmezett érték az _USA 2. nyugati_régiója.|
@@ -149,8 +149,8 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 Most, hogy áttekintette az ISO 27001 App Service Environment/SQL Database munkaterhelés-tervezet üzembe helyezésének lépéseit, tekintse meg az alábbi cikkeket az architektúra és a vezérlés leképezésének megismeréséhez:
 
 > [!div class="nextstepaction"]
-> [ISO 27001 app Service Environment/SQL Database munkaterhelés tervezete – áttekintés](./index.md)
-> [ISO 27001 app Service Environment/SQL Database munkaterhelés terv – vezérlés leképezése](./control-mapping.md)
+> [ISO 27001 app Service Environment/SQL Database munkaterhelés tervezete – áttekintés](./index.md) 
+>  [ISO 27001 app Service Environment/SQL Database munkaterhelés-tervezet – vezérlés leképezése](./control-mapping.md)
 
 További cikkek a tervekről és a használatukról:
 

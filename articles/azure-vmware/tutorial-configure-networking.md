@@ -2,126 +2,129 @@
 title: Oktatóanyag – a VMware Private Cloud hálózatkezelésének konfigurálása az Azure-ban
 description: Megtudhatja, hogyan hozhatja létre és konfigurálhatja a privát felhő üzembe helyezéséhez szükséges hálózatkezelést az Azure-ban
 ms.topic: tutorial
-ms.date: 05/04/2020
-ms.openlocfilehash: 6cac420fb77526746dbdbfef5a88b071c007d555
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.date: 07/22/2020
+ms.openlocfilehash: aa4247f60c3e1ec54bfcde336d1ae8c8f70ff7a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148106"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079435"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Oktatóanyag: az Azure-beli VMware Private-felhő hálózatkezelésének konfigurálása
 
-Egy Azure VMware-megoldás (AVS) privát felhőhöz virtuális hálózat szükséges. Mivel az AVS nem támogatja a helyszíni vCenter az előzetes verzióban, szükség van a helyszíni környezettel való integráció további lépéseire. A ExpressRoute-áramkör és a Virtual Network átjáró beállítása is szükséges, és ebben az oktatóanyagban fog foglalkozni.
+Egy Azure VMware-megoldás (AVS) privát felhőhöz Azure-Virtual Network szükséges. Mivel az AVS nem támogatja a helyszíni vCenter az előzetes verzióban, szükség van a helyszíni környezettel való integráció további lépéseire. A ExpressRoute áramkör és a virtuális hálózati átjáró beállítása is szükséges, és ez az oktatóanyag tartalmazza azt.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Virtuális hálózat létrehozása
-> * Virtual Network átjáró létrehozása
+> * Virtuális hálózati átjáró létrehozása
 > * A ExpressRoute-áramkör összekapcsolása az átjáróval
 > * A vCenter és a NSX Manager URL-címeinek megkeresése
 
-## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
-
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+## <a name="prerequisites"></a>Előfeltételek 
+A virtuális hálózat létrehozása előtt győződjön meg arról, hogy létrehozott egy [AVS Private-felhőt](tutorial-create-private-cloud.md). 
 
 ## <a name="create-a-virtual-network"></a>Virtuális hálózat létrehozása
 
-Navigáljon az [előző oktatóanyagban](tutorial-create-private-cloud.md)létrehozott erőforráscsoporthoz, és válassza a **+ Hozzáadás** elemet egy új erőforrás definiálásához.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-A **Keresés a piactér** szövegmezőbe írja be a következőt: **Virtual Network**. Keresse meg a Virtual Network erőforrást, és válassza ki.
+1. Navigáljon a [saját felhő létrehozása oktatóanyagban](tutorial-create-private-cloud.md) létrehozott erőforráscsoporthoz, és válassza a **+ Hozzáadás** lehetőséget egy új erőforrás definiálásához. 
 
-A Virtual Network lapon válassza a **Létrehozás** lehetőséget, hogy beállítsa a virtuális hálózatot a saját felhőhöz.
+1. A **Keresés a piactéren** szövegmezőbe írja be a következőt: **Virtual Network**. Keresse meg a Virtual Network erőforrást, és válassza ki.
 
-A **Virtual Network létrehozása** lapon adja meg a virtuális hálózat vonatkozó részleteit, a tulajdonságok leírását a következő táblázat mutatja:
+1. A **Virtual Network** lapon válassza a **Létrehozás** lehetőséget, hogy beállítsa a virtuális hálózatot a saját felhőhöz.
 
-> [!IMPORTANT]
-> Az előző oktatóanyagban olyan címtartományt kell használnia, amely **nem** fedi át a privát felhő létrehozásakor használt címterületet.
+1. A **Virtual Network létrehozása** lapon adja meg a virtuális hálózat adatait.
 
-Az **alapvető beállítások** lapon adja meg a virtuális hálózat nevét, és válassza ki a megfelelő régiót, majd válassza a **tovább lehetőséget: IP-címek**
+1. Az **alapvető beállítások** lapon adja meg a virtuális hálózat nevét, és válassza ki a megfelelő régiót, majd válassza a **Tovább: IP-címek**lehetőséget.
 
-Az **IP-címek** lap IPv4- **címterület**területén adja meg az előző oktatóanyagban létrehozott címtartományt.
+1. Az **IP-címek** lap IPv4- **címterület**területén adja meg az előző oktatóanyagban létrehozott címtartományt.
 
-Válassza az **+ alhálózat hozzáadása**lehetőséget, majd az **alhálózat hozzáadása** lapon adja meg az alhálózat nevét és a megfelelő címtartományt. Amikor végzett, válassza a **Hozzáadás** elemet.
+   > [!IMPORTANT]
+   > Az előző oktatóanyagban olyan címtartományt kell használnia, amely **nem** fedi át a privát felhő létrehozásakor használt címterületet.
 
-Válassza a **felülvizsgálat + létrehozás** lehetőséget
+1. Válassza az **+ alhálózat hozzáadása**lehetőséget, majd az **alhálózat hozzáadása** lapon adja meg az alhálózat nevét és a megfelelő címtartományt. Amikor végzett, válassza a **Hozzáadás** elemet.
 
-:::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="virtuális hálózat létrehozása" border="true":::
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-Ellenőrizze az adatokat, és válassza a **Létrehozás**lehetőséget. Miután az üzembe helyezés befejeződött, a virtuális hálózat megjelenik az erőforráscsoporthoz.
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="virtuális hálózat létrehozása" border="true":::
 
-## <a name="create-a-virtual-network-gateway"></a>Virtual Network átjáró létrehozása
+1. Ellenőrizze az adatokat, és válassza a **Létrehozás**lehetőséget. Miután az üzembe helyezés befejeződött, a virtuális hálózat megjelenik az erőforráscsoporthoz.
 
-Az előző szakaszban létrehozott egy virtuális hálózatot, most létrehoz egy Virtual Network-átjárót.
+## <a name="create-a-virtual-network-gateway"></a>Virtuális hálózati átjáró létrehozása
 
-Az erőforráscsoporthoz válassza a **+ Hozzáadás** lehetőséget egy új erőforrás hozzáadásához.
+Most, hogy létrehozott egy virtuális hálózatot, létre fog hozni egy virtuális hálózati átjárót.
 
-A **Keresés a piactér** szövegmezőbe írja be a **virtuális hálózati átjárót**. Keresse meg a Virtual Network erőforrást, és válassza ki.
+1. Az erőforráscsoporthoz válassza a **+ Hozzáadás** lehetőséget egy új erőforrás hozzáadásához.
 
-A **Virtual Network átjáró** lapon válassza a **Létrehozás**lehetőséget.
+1. A **Keresés a piactér** szövegmezőbe írja be a **virtuális hálózati átjárót**. Keresse meg a Virtual Network erőforrást, és válassza ki.
 
-A **virtuális hálózati átjáró létrehozása** lap alapok lapján adja meg a mezők értékeit. a mezők leírása a következő táblázatban látható:
+1. A **Virtual Network átjáró** lapon válassza a **Létrehozás**lehetőséget.
 
-| Mező | Érték |
-| --- | --- |
-| **Előfizetés** | Ez az érték már fel van töltve azzal az előfizetéssel, amelyhez az erőforráscsoport tartozik. |
-| **Erőforráscsoport** | Ez az érték már fel van töltve az aktuális erőforráscsoporthoz. Ez lehet az előző tesztben létrehozott erőforráscsoport. |
-| **Név** | Adja meg a virtuális hálózati átjáró egyedi nevét. |
-| **Régió** | Válassza ki a virtuális hálózati átjáró földrajzi helyét. |
-| **Átjáró típusa** | Válassza a **ExpressRoute**lehetőséget. |
-| **VPN-típus** | Válassza az **útvonal-alapú**lehetőséget. |
-| **Termékváltozat** | Hagyja meg az alapértelmezett értéket: **standard**. |
-| **Virtuális hálózat** | Válassza ki a korábban létrehozott virtuális hálózatot. Ha nem látja a virtuális hálózatot, győződjön meg arról, hogy az átjáró régiója megegyezik a virtuális hálózat régiójával. |
-| **Átjáró alhálózati címtartomány** | Ez az érték a virtuális hálózat kiválasztásakor lesz feltöltve. Ne módosítsa az alapértelmezett értéket. |
-| **Nyilvános IP-cím** | Válassza az **Új létrehozása** lehetőséget. |
+1. A **virtuális hálózati átjáró létrehozása** lap alapok lapján adja meg a mezők értékeit, majd válassza a **felülvizsgálat + létrehozás**elemet. 
 
-:::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="átjáró létrehozása" border="true":::
+   | Mező | Érték |
+   | --- | --- |
+   | **Előfizetés** | Ez az érték már fel van töltve azzal az előfizetéssel, amelyhez az erőforráscsoport tartozik. |
+   | **Erőforráscsoport** | Ez az érték már fel van töltve az aktuális erőforráscsoporthoz. Ez lehet az előző tesztben létrehozott erőforráscsoport. |
+   | **Név** | Adja meg a virtuális hálózati átjáró egyedi nevét. |
+   | **Régió** | Válassza ki a virtuális hálózati átjáró földrajzi helyét. |
+   | **Átjáró típusa** | Válassza a **ExpressRoute**lehetőséget. |
+   | **Termékváltozat** | Hagyja meg az alapértelmezett értéket: **standard**. |
+   | **Virtuális hálózat** | Válassza ki a korábban létrehozott virtuális hálózatot. Ha nem látja a virtuális hálózatot, győződjön meg arról, hogy az átjáró régiója megegyezik a virtuális hálózat régiójával. |
+   | **Átjáró alhálózati címtartomány** | Ez az érték a virtuális hálózat kiválasztásakor lesz feltöltve. Ne módosítsa az alapértelmezett értéket. |
+   | **Nyilvános IP-cím** | Válassza az **Új létrehozása** lehetőséget. |
 
-Válassza a **felülvizsgálat + létrehozás**lehetőséget, a következő oldalon ellenőrizze, hogy helyesek-e a részletek, majd válassza a **Létrehozás** lehetőséget a virtuális hálózati átjáró üzembe helyezésének megkezdéséhez. Az üzembe helyezés befejezése után lépjen az oktatóanyag következő szakaszára, hogy összekapcsolja a ExpressRoute-kapcsolatot a saját felhőjét tartalmazó virtuális hálózattal.
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="átjáró létrehozása" border="true":::
 
-## <a name="connect-expressroute-to-the-virtual-network-gateway"></a>A ExpressRoute és a Virtual Network átjáró összekötése
+1. Ellenőrizze, hogy helyesek-e a részletek, majd válassza a **Létrehozás** lehetőséget a virtuális hálózati átjáró üzembe helyezésének elindításához. 
+1. Az üzembe helyezés befejezése után lépjen a következő szakaszra, hogy összekapcsolja a ExpressRoute-kapcsolatot az AVS Private Cloud-t tartalmazó virtuális hálózati átjáróval.
 
-Ez a szakasz végigvezeti a kapcsolat hozzáadásán az AVS Private Cloud és a létrehozott virtuális hálózati átjáró között.
+## <a name="connect-expressroute-to-the-virtual-network-gateway"></a>A ExpressRoute és a virtuális hálózati átjáró összekötése
 
-Navigáljon az előző oktatóanyagban létrehozott saját felhőhöz, és válassza a **kezelés**alatt a **kapcsolat** lehetőséget, és válassza a **ExpressRoute** lapot.
+Most, hogy telepített egy virtuális hálózati átjárót, hozzá fog adni egy kapcsolatot az IT és az AVS Private Cloud között.
 
-Másolja az engedélyezési kulcsot. Ha nincs engedélyezési kulcs, létre kell hoznia egyet, ehhez a Select **+ Request an Authorization Key**
+1. Navigáljon az előző oktatóanyagban létrehozott saját felhőhöz, és válassza a **kezelés**alatt a **kapcsolat** lehetőséget, és válassza a **ExpressRoute** lapot.
 
-:::image type="content" source="./media/tutorial-configure-networking/request-auth-key.png" alt-text="engedélyezési kulcs kérése" border="true":::
+1. Másolja az engedélyezési kulcsot. Ha nincs engedélyezési kulcs, létre kell hoznia egyet, ehhez a Select **+ Request an Authorization Key**
 
-Lépjen az előző lépésben létrehozott Virtual Network átjáróra, és a **Beállítások**területen válassza a **kapcsolatok**lehetőséget. A **kapcsolatok** lapon válassza a **+ Hozzáadás**lehetőséget.
+   :::image type="content" source="./media/tutorial-configure-networking/request-auth-key.png" alt-text="engedélyezési kulcs kérése" border="true":::
 
-A **kapcsolatok hozzáadása** lapon adja meg a mezők értékeit. A mezők leírása a következő táblázatban látható:
+1. Lépjen az előző lépésben létrehozott Virtual Network átjáróra, és a **Beállítások**területen válassza a **kapcsolatok**lehetőséget. A **kapcsolatok** lapon válassza a **+ Hozzáadás**lehetőséget.
 
-| Mező | Érték |
-| --- | --- |
-| **Név**  | Adjon egy nevet a kapcsolatnak.  |
-| **Kapcsolat típusa**  | Válassza a **ExpressRoute**lehetőséget.  |
-| **Engedély beváltása**  | Győződjön meg arról, hogy a jelölőnégyzet be van jelölve.  |
-| **Virtuális hálózati átjáró** | A korábban létrehozott virtuális hálózati átjáró  |
-| **Engedélyezési kulcs**  | Másolja és illessze be az engedélyezési kulcsot az erőforráscsoport ExpressRoute lapjáról. |
-| **Társ áramkör URI-ja**  | Másolja és illessze be a ExpressRoute-azonosítót az erőforráscsoport ExpressRoute lapjáról.  |
+1. A **kapcsolatok hozzáadása** lapon adja meg a mezők értékeit, majd kattintson **az OK gombra**. 
 
-Kattintson az **OK** gombra. Ez létrehozza a kapcsolatot a ExpressRoute-áramkör és a virtuális hálózat között.
+   | Mező | Érték |
+   | --- | --- |
+   | **Név**  | Adjon egy nevet a kapcsolatnak.  |
+   | **Kapcsolat típusa**  | Válassza a **ExpressRoute**lehetőséget.  |
+   | **Engedély beváltása**  | Győződjön meg arról, hogy a jelölőnégyzet be van jelölve.  |
+   | **Virtuális hálózati átjáró** | A korábban létrehozott Virtual Network átjáró.  |
+   | **Engedélyezési kulcs**  | Másolja és illessze be az engedélyezési kulcsot az erőforráscsoport ExpressRoute lapjáról. |
+   | **Társ áramkör URI-ja**  | Másolja és illessze be a ExpressRoute-azonosítót az erőforráscsoport ExpressRoute lapjáról.  |
 
-:::image type="content" source="./media/tutorial-configure-networking/add-connection.png" alt-text="kapcsolatok hozzáadása" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/add-connection.png" alt-text="kapcsolatok hozzáadása" border="true":::
+
+Létrejön a ExpressRoute-áramkör és a Virtual Network közötti kapcsolat.
+
+
 
 ## <a name="locate-the-urls-for-vcenter-and-nsx-manager"></a>A vCenter és a NSX Manager URL-címeinek megkeresése
 
-A vVenter és a NSX Manager alkalmazásba való bejelentkezéshez szüksége lesz az vCenter webes ügyfelének és a NSX-T Manager-hely URL-címeire. Az URL-címek megkeresése:
+A vCenter és a NSX Manager alkalmazásba való bejelentkezéshez szüksége lesz az vCenter webes ügyfelének és a NSX-T Manager-hely URL-címeire. 
 
 Navigáljon az AVS Private-felhőhöz, a **kezelés**alatt válassza az **identitás**lehetőséget, itt megtalálja a szükséges információkat.
 
 :::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="a vCenter URL-címeinek megkeresése" border="true":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Virtuális hálózat létrehozása
-> * Virtual Network átjáró létrehozása
+> * Virtuális hálózati átjáró létrehozása
 > * A ExpressRoute-áramkör összekapcsolása az átjáróval
 > * A vCenter és a NSX Manager URL-címeinek megkeresése
 

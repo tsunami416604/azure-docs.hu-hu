@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: ed552bfb37f01200a4dba38ea733a1189768d56a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067151"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – a felhasználói felület felépítése szögletes
 
@@ -41,7 +41,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [2
 
 ## <a name="build-the-ui"></a>A felhasználói felület létrehozása
 
-1. A Visual Studio Code-ban kattintson a Stop gombra ![A Leállítás gomb a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png) a Node alkalmazás leállításához.
+1. A Visual Studio Code-ban kattintson a Leállítás gombra a :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png"::: Node alkalmazás leállításához. 
 
 2. Írja be a következő parancsot a Windows-parancssorba vagy a Mac-terminálablakba egy főképösszetevő létrehozásához. A kódban a g a létrehozás, a c az összetevő, a heroes az összetevő neve, és egyszintű fájlstruktúrát (--flat) használ, azaz a rendszer nem hoz hozzá létre almappát.
 
@@ -474,7 +474,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
 6. Mentse az összes módosítást a Visual Studio Code-ban.
 
-## <a name="build-the-app"></a>Alkalmazás készítése
+## <a name="build-the-app"></a>Az alkalmazás létrehozása
 
 1. A parancssorban adja meg a következő parancsot az Angular-alkalmazás létrehozásához. 
 
@@ -486,7 +486,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
     Most pedig futtassuk az alkalmazást.
 
-2. A Visual Studio Code-ban kattintson a **Debug** (Hibakeresés) gombra ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) a bal oldalon, majd a **Start Debugging** (Hibakeresés indítása) gombra ![Hibakeresés ikon a Visual Studio Code-ban](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png).
+2. A Visual Studio Code-ban kattintson a **hibakeresés** gombra a :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png"::: bal oldalon, majd kattintson a **hibakeresés indítása** gombra :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png"::: .
 
 3. Nyisson meg egy webböngészőt, és lépjen a **localhost:3000** helyre, ahol megtekintheti a helyileg futó alkalmazást.
 

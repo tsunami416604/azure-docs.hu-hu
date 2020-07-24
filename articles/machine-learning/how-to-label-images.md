@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a9c9dee94dd50462109a8864ffb413ce991c8dbd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147020"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072399"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben 
 
@@ -65,6 +65,10 @@ Az Azure lehetővé teszi a **Küldés** gombot, amikor címkézte az összes k�
 Miután elküldte a címkéket az adatokhoz, az Azure frissíti a lapot egy új rendszerképekkel a munkahelyi sorból.
 
 ### <a name="assisted-machine-learning-preview"></a>Támogatott gépi tanulás (előzetes verzió) 
+
+> [!IMPORTANT]
+> A támogatott gépi tanulás jelenleg nyilvános előzetes verzióban érhető el.
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Előfordulhat, hogy a gépi tanulási algoritmusok aktiválva vannak. Ha ezek az algoritmusok engedélyezve vannak a projektben, a következők jelenhetnek meg:
 

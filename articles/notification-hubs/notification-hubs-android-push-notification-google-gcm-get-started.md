@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3f2ad007ff0e1012f957c718d125b2e5b2e40964
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: d5bd8f5e57e73fd0ff63394f119ecca678b17e60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85249235"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022583"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: leküldéses értesítések Android-eszközökre az Azure Notification Hubs és Google Cloud Messaging használatával (elavult)
 
@@ -485,7 +485,7 @@ Továbbá győződjön meg arról, hogy Google-fiókját hozzáadta a futó emul
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>(Nem kötelező) Leküldéses értesítések küldése közvetlenül az alkalmazásból
 
-Az értesítések elküldése általában háttérkiszolgáló használatával történik. Bizonyos esetekben előfordulhat, hogy közvetlenül az ügyfélalkalmazásból kíván leküldéses értesítéseket küldeni. Ez a szakasz az ügyfélből, az [Azure Notification Hub REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx) használatával történő értesítésküldést mutatja be.
+Az értesítések elküldése általában háttérkiszolgáló használatával történik. Bizonyos esetekben előfordulhat, hogy közvetlenül az ügyfélalkalmazásból kíván leküldéses értesítéseket küldeni. Ez a szakasz az ügyfélből, az [Azure Notification Hub REST API](/previous-versions/azure/reference/dn223264(v=azure.100)) használatával történő értesítésküldést mutatja be.
 
 1. Android Studio Project nézetben bontsa ki az **app**  >  **src**  >  **fő**  >  **res**  >  **elrendezése**elemet. Nyissa meg az `activity_main.xml` elrendezésfájlt, majd kattintson a **Text** (Szöveg) fülre a fájl szöveges tartalmának frissítéséhez. Frissítse az alábbi kóddal, amely új `Button` és `EditText` vezérlőket vesz fel, amelyekkel a leküldéses értesítési üzenetek elküldhetők az értesítési központba. A kódot az alsó részen, közvetlenül a `</RelativeLayout>` rész elé adja hozzá.
 
@@ -544,7 +544,7 @@ Az értesítések elküldése általában háttérkiszolgáló használatával t
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. Az értesítési központba történő üzenetküldéshez hozzon létre egy Software Access Signature (SaS)-jogkivonatot, amely hitelesíti a POST-kéréseket. Elemezze a kapcsolati sztring legfontosabb adatait, majd az SaS-jogkivonat létrehozását, ahogyan az az [általánosan használt fogalmakat ismertető](https://msdn.microsoft.com/library/azure/dn495627.aspx) REST API-referenciában szerepel. Az alábbi kód egy megvalósítási példát szemléltet.
+6. Az értesítési központba történő üzenetküldéshez hozzon létre egy Software Access Signature (SaS)-jogkivonatot, amely hitelesíti a POST-kéréseket. Elemezze a kapcsolati sztring legfontosabb adatait, majd az SaS-jogkivonat létrehozását, ahogyan az az [általánosan használt fogalmakat ismertető](/previous-versions/azure/reference/dn495627(v=azure.100)) REST API-referenciában szerepel. Az alábbi kód egy megvalósítási példát szemléltet.
 
     A `MainActivity.java` fájlban adja hozzá a `MainActivity` osztályhoz az alábbi metódust a kapcsolati sztring elemzéséhez.
 
@@ -741,7 +741,7 @@ Ebben az oktatóanyagban szórásos értesítéseket küldött a háttérrendsze
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md 
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com

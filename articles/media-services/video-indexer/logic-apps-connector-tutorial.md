@@ -1,25 +1,25 @@
 ---
 title: A Video Indexer összekötők a Logic app és a Power automatizáló oktatóanyaggal.
 description: Ez az oktatóanyag bemutatja, hogyan oldhatja fel az új tapasztalatokat és a bevételi lehetőségeket, Video Indexer összekötőket a Logic app és a Power automatizáló használatával.
-author: anikaz
+author: anzaman
 manager: johndeu
-ms.author: anzaman
+ms.author: alzam
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 932f52aa694c13fd3696d82872135304a4e41bdc
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801127"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047104"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Oktatóanyag: Video Indexer használata a Logic app és a Power automatizáló használatával
 
 Azure Media Services [video Indexer v2 REST API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Delete-Video?) a kiszolgálók közötti és az ügyfél és a kiszolgáló közötti kommunikációt is támogatja, és lehetővé video Indexer teszi a felhasználók számára, hogy a videó-és hangelemzéseket egyszerűen integrálják az alkalmazási logikába, új tapasztalatokat és bevételi lehetőségeket lehessen kizárni.
 
-Ahhoz, hogy az integráció még könnyebbé váljon, támogatjuk az API-val kompatibilis [Logic apps](https://azure.microsoft.com/services/logic-apps/) és [automatizálási](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/) összekötőket. Az összekötők segítségével egyéni munkafolyamatokat állíthat be, amelyekkel hatékonyan indexelheti és kinyerheti a nagy mennyiségű videó-és hangfájlból származó elemzéseket anélkül, hogy egyetlen sor kódot kellene írnia. Emellett az integrációs összekötők segítségével jobb láthatóságot biztosít a munkafolyamat állapotával és a hibakereséshez.  
+Ahhoz, hogy az integráció még könnyebbé váljon, [Logic Apps](https://azure.microsoft.com/services/logic-apps/)támogatjuk az   API-val kompatibilis Logic apps és [automatizálási](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)   összekötőket. Az összekötők segítségével egyéni munkafolyamatokat állíthat be, amelyekkel hatékonyan indexelheti és kinyerheti a nagy mennyiségű videó-és hangfájlból származó elemzéseket anélkül, hogy egyetlen sor kódot kellene írnia. Emellett az integrációs összekötők segítségével jobb láthatóságot biztosít a munkafolyamat állapotával és a hibakereséshez.  
 
 Ha segítségre van szüksége a Video Indexer-összekötők gyors megkezdéséhez, egy példát láthat a logikai alkalmazásra és a beállítható automatizálási megoldásra. 
 
@@ -64,7 +64,7 @@ Ezután nyissa meg az "SAS URI létrehozása elérési út alapján" műveletet,
 
 ![SAS URI elérési út alapján](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-Töltse ki a [fiók helyét és azonosítóját](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-use-apis#location) az video Indexer Account token beszerzéséhez.
+Töltse ki a [fiók helyét és azonosítóját](./video-indexer-use-apis.md#account-id)   az video Indexer Account token beszerzéséhez.
 
 ![Fiók hozzáférési jogkivonatának beolvasása](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -90,7 +90,7 @@ A folyamat beállításához újra meg kell adnia a Video Indexer API-kulcsot é
 
 Az trigger esetében megjelenik egy HTTP POST URL-cím mező. Az URL-cím csak a folyamat mentése után hozható létre. Végül azonban szüksége lesz az URL-címre. Vissza fogunk térni erre. 
 
-Töltse ki a [fiók helyét és azonosítóját](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-use-apis#location) az video Indexer Account token beszerzéséhez.  
+Töltse ki a [fiók helyét és azonosítóját](./video-indexer-use-apis.md#account-id)   az video Indexer Account token beszerzéséhez.  
 
 Nyissa meg a "video index beolvasása" műveletet, és töltse ki a szükséges paramétereket. A videó azonosítója mezőben adja meg a következő kifejezést: triggerOutputs () [' kérdezgető '] [' id '] 
 
@@ -116,7 +116,7 @@ Győződjön meg arról, hogy mindkét folyamat el van mentve, és máris elvég
 
 Próbálja ki az újonnan létrehozott logikai alkalmazást vagy a Power automatizáló megoldást egy videó hozzáadásával az Azure Blobs-tárolóba, és térjen vissza néhány perccel később, hogy az információk megjelenjenek a célmappában. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült ezzel az Oktatóanyaggal, nyugodtan megtarthatja ezt a logikai alkalmazást, vagy automatizálhatja a megoldást, ha szükséges. Ha azonban nem szeretné megtartani ezt a futást, és nem szeretné számlázni, kapcsolja ki mindkét folyamatot, ha a Power automatizálás szolgáltatást használja. Ha Logic Apps használ, tiltsa le mindkét folyamatot. 
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 609ac66ca27d5cad7dd2fb295c3a2a721a1cda16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 80393042191abc2a8eb74182cf18581d252222a5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81392698"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056471"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Oktatóanyag: Azure Kubernetes Service- (AKS-) fürt üzembe helyezése
 
@@ -33,7 +33,9 @@ Ehhez az oktatóanyaghoz az Azure CLI 2.0.53 vagy újabb verzióját kell futtat
 
 Az AKS-fürtök képesek a Kubernetes szerepköralapú hozzáférés-vezérlők (RBAC) használatára. Ezekkel a vezérlőkkel a felhasználókhoz rendelt szerepkörök alapján definiálható az erőforrásokhoz való hozzáférés. Az engedélyek kombinálva vannak, ha egy felhasználó több szerepkörhöz van rendelve, és az engedélyek hatóköre egyetlen névtérre vagy a teljes fürtre is kiterjed. Alapértelmezés szerint az Azure CLI automatikusan engedélyezi az RBAC-t az AKS-fürtök létrehozásakor.
 
-AKS-fürtöket az [az aks create][] paranccsal hozhat létre. A következő példában létrehozunk egy *myAKSCluster* nevű fürtöt a *myResourceGroup* nevű erőforráscsoportban. Ezt az erőforráscsoportot [az előző oktatóanyagban][aks-tutorial-prepare-acr] hoztuk létre. Annak engedélyezéséhez, hogy egy AK-fürt más Azure-erőforrásokkal is működjön, automatikusan létrejön egy Azure Active Directory egyszerű szolgáltatás, mert nem adott meg ilyet. Ebben az egyszerű szolgáltatásban [megkapta a jogot arra, hogy][container-registry-integration] az előző oktatóanyagban létrehozott Azure Container Registry (ACR) példányból lekérje a lemezképeket. Vegye figyelembe, hogy egy egyszerű szolgáltatásnév helyett [felügyelt identitást](use-managed-identity.md) használhat a könnyebb kezelés érdekében.
+AKS-fürtöket az [az aks create][] paranccsal hozhat létre. A következő példában létrehozunk egy *myAKSCluster* nevű fürtöt a *myResourceGroup* nevű erőforráscsoportban. Ez az erőforráscsoport az [előző oktatóanyagban][aks-tutorial-prepare-acr] , a *eastus* régióban lett létrehozva. A következő példa nem ad meg régiót, így az AK-fürt is létrejön az *eastus* régióban. Az AK-ra vonatkozó erőforrás-korlátokkal és a régió rendelkezésre állásával kapcsolatos további információkért lásd: [kvóták, virtuálisgép-méretre vonatkozó korlátozások és régiók rendelkezésre állása az Azure Kubernetes szolgáltatásban (ak)][quotas-skus-regions] .
+
+Annak engedélyezéséhez, hogy egy AK-fürt más Azure-erőforrásokkal is működjön, automatikusan létrejön egy Azure Active Directory egyszerű szolgáltatás, mert nem adott meg ilyet. Ebben az egyszerű szolgáltatásban [megkapta a jogot arra, hogy][container-registry-integration] az előző oktatóanyagban létrehozott Azure Container Registry (ACR) példányból lekérje a lemezképeket. Vegye figyelembe, hogy egy egyszerű szolgáltatásnév helyett [felügyelt identitást](use-managed-identity.md) használhat a könnyebb kezelés érdekében.
 
 ```azurecli
 az aks create \
@@ -80,7 +82,7 @@ aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy Kubernetes-fürtöt helyezett üzembe az AKS-ben, és úgy konfigurálta a `kubectl` elemet, hogy a fürthöz csatlakozzon. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban egy Kubernetes-fürtöt helyezett üzembe az AKS-ben, és úgy konfigurálta a `kubectl` elemet, hogy a fürthöz csatlakozzon. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az Azure Container registryben hitelesítésre képes Kubernetes AK-fürt üzembe helyezése
@@ -108,3 +110,4 @@ A következő oktatóanyag azt mutatja be, hogyan helyezhet üzembe egy alkalmaz
 [az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-registry-integration]: ./cluster-container-registry-integration.md
+[quotas-skus-regions]: quotas-skus-regions.md

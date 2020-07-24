@@ -9,12 +9,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: Ebből az oktatóanyagból megtudhatja, hogyan használható az Azure dev Spaces és a Visual Studio a Team Development szolgáltatásra a .NET Core-alkalmazásokban az Azure Kubernetes Service-ben
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: c84c77fe7a425318700903427ff1c4aaa4e73a11
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d917dc71ef02b5197ed8d20ec31c538a1af4c14
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166036"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072979"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Csoportmunka-fejlesztés a .NET Core és a Visual Studióval az Azure dev Spaces használatával
 
@@ -36,7 +36,7 @@ A minta alkalmazása jelenleg nem összetett. A valóságban a fejlesztés sorá
 * Néhány fejlesztő ilyenkor szimulációba kezd, vagy utánzatokat készít a szolgáltatás függőségeiről. Ez a megközelítés segíthet, de az ilyen modellek kezelése hamarosan hatással lehet a fejlesztési díjakra. Emellett ez a megközelítés az éles környezettől eltérő fejlesztési környezetet eredményez, amely finom hibákhoz vezethet.
 * Ebből következik, hogy az integrációs tesztek bármilyen típusát megnehezíti. Az integráció tesztelése a valóságban csak a véglegesítés után történhet meg, ami azt jelenti, hogy a fejlesztési ciklus későbbi szakaszaiban problémákat tapasztalhat.
 
-    ![](media/common/microservices-challenges.png)
+    ![Az integrációs tesztek összetettségét ábrázoló kép, amely az App Service és a függőségei közötti kapcsolatokat szemlélteti.](media/common/microservices-challenges.png)
 
 ### <a name="work-in-a-shared-dev-space"></a>Munka egy megosztott Dev Spaces-térben
 Az Azure Dev Spaces segítségével beállíthat egy *megosztott* Dev Spaces-teret az Azure-ban. Minden fejlesztőnek csak az alkalmazásból rá eső részre kell koncentrálnia, és iterációs módszerrel fejlesztheti a *véglegesítés előtti kódot* egy olyan Dev Spaces-térben, amely már tartalmaz minden olyan szolgáltatást és felhőerőforrást, amelyektől az egyes forgatókönyvek függhetnek. A függőségek mindig naprakészek, a fejlesztők pedig mindig az éles környezetet tükröző módon dolgozhatnak.
@@ -45,7 +45,7 @@ Az Azure Dev Spaces segítségével beállíthat egy *megosztott* Dev Spaces-ter
 A szolgáltatás kódjának fejlesztése során, de még leadás előtt a kód sokszor nincs optimális állapotban. Az iteratív módszerrel újra és újra kell formálni, tesztelni kell, megoldásokkal kísérletezni. Az Azure Dev Spaces biztosítja a **tér** fogalmát, amely lehetővé teszi, hogy elszigetelten dolgozhasson, anélkül, hogy a többi csapattag munkájára kihatással lennének a fejlesztési munkálatok.
 
 ## <a name="use-dev-spaces-for-team-development"></a>Fejlesztői területek használata a csapatmunkához
-Bemutatjuk ezeket az ötleteket egy konkrét példával a *webfrontend* -> *mywebapi* -minta alkalmazás használatával. Képzeljük el, hogy egy fejlesztő, Scott, a *mywebapi* szolgáltatást kell módosítania, és *csak* ezt a szolgáltatást kell használnia. A *webfrontend* nem kell változtatnia a Scott frissítésének részeként.
+Bemutatjuk ezeket az ötleteket egy konkrét példával a *webfrontend*  ->  *mywebapi* -minta alkalmazás használatával. Képzeljük el, hogy egy fejlesztő, Scott, a *mywebapi* szolgáltatást kell módosítania, és *csak* ezt a szolgáltatást kell használnia. A *webfrontend* nem kell változtatnia a Scott frissítésének részeként.
 
 A dev Spaces használata _nélkül_ Scott számos módon fejlesztheti és tesztelheti a frissítését, amelyek közül egyik ideális megoldás:
 * Az összes összetevőt helyileg futtassa, amelyhez a Docker által telepített és potenciálisan MiniKube nagyobb teljesítményű fejlesztői gépek szükségesek.
@@ -63,8 +63,8 @@ Először üzembe kell helyeznie a szolgáltatásaink alapkonfigurációját. Ez
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, majd válassza a **Tulajdonságok** lehetőséget.
 1. Válassza a **Hibakeresés** lehetőséget a bal oldalon az Azure Dev Spaces-beállítások megjelenítéséhez.
 1. A **módosítás** gombra kattintva hozza létre az F5 vagy a CTRL + F5 billentyűkombinációt a szolgáltatáshoz használni kívánt terület létrehozásához.
-1. A hely legördülő menüben válassza az ** \<új terület létrehozása... lehetőséget. \>**.
-1. Győződjön meg arról, hogy ** \<\>** a szülő terület none értékre van állítva, és adja meg a Space name **dev**értéket. Kattintson az OK gombra.
+1. A hely legördülő menüben válassza a elemet **\<Create New Space…\>** .
+1. Győződjön meg arról, hogy a szülő terület értékre van állítva **\<none\>** , majd adja meg a Space name **dev**értéket. Kattintson az OK gombra.
 1. Nyomja le a CTRL + F5 billentyűkombinációt a _mywebapi_ futtatásához a hibakereső csatolása nélkül.
 1. Váltson a Visual Studio ablakába a _webfrontend_ -projekttel, és nyomja le a CTRL + F5 billentyűkombinációt a futtatásához is.
 
@@ -88,21 +88,21 @@ A Visual Studióból létrehozhat további tereket, amelyek akkor lesznek haszn�
 2. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, majd válassza a **Tulajdonságok** lehetőséget.
 3. Válassza a **Hibakeresés** lehetőséget a bal oldalon az Azure Dev Spaces-beállítások megjelenítéséhez.
 4. Itt módosíthatja vagy létrehozhatja azt a fürtöt és/vagy teret, amelyet a program akkor használ, ha lenyomja az F5, illetve a Ctrl+F5 billentyűt. *Győződjön meg róla, hogy a korábban létrehozott Azure Dev Spaces-tér van kiválasztva*.
-5. A hely legördülő menüben válassza az ** \<új terület létrehozása... lehetőséget. \>**.
+5. A hely legördülő menüben válassza a elemet **\<Create New Space…\>** .
 
-    ![](media/get-started-netcore-visualstudio/Settings.png)
+    ![Képernyőfelvétel: a Visual Studio Megoldáskezelő hibakeresési projekt tulajdonságai lapján a hely legördülő menüjében válassza az új terület létrehozása elemet.](media/get-started-netcore-visualstudio/Settings.png)
 
 6. A **terület hozzáadása** párbeszédpanelen állítsa a szülő területet a **dev**értékre, és adja meg az új terület nevét. Használhatja a saját nevét (pl.: „scott”) az új térhez, így munkatársai számára is könnyen beazonosítható a munkájához használt tér. Kattintson az **OK** gombra.
 
-    ![](media/get-started-netcore-visualstudio/AddSpace.png)
+    ![Képernyőfelvétel: a terület hozzáadása párbeszédpanel, amely egy új fejlesztői terület hozzáadását mutatja be a csoport fejlesztéséhez.](media/get-started-netcore-visualstudio/AddSpace.png)
 
 7. Most már láthatja az AKS-fürtöt és az új, a projekttulajdonságok oldalán kiválasztott teret.
 
-    ![](media/get-started-netcore-visualstudio/Settings2.png)
+    ![A Visual Studio Megoldáskezelő hibakeresési projekt tulajdonságai lapján kiválasztott "MyAKS" AK-fürt és a "Scott" szóköz látható.](media/get-started-netcore-visualstudio/Settings2.png)
 
 ### <a name="update-code-for-mywebapi"></a>Kód frissítése a *mywebapi*-hoz
 
-1. A *mywebapi* projektben a következő módon végezze el `string Get(int id)` a kód módosítását a fájlban `Controllers/ValuesController.cs` :
+1. A *mywebapi* projektben a következő módon végezze el a kód módosítását a `string Get(int id)` fájlban `Controllers/ValuesController.cs` :
  
     ```csharp
     [HttpGet("{id}")]
@@ -117,19 +117,19 @@ A Visual Studióból létrehozhat további tereket, amelyek akkor lesznek haszn�
 
 Ez az ábra segít megérteni, hogyan működnek a különféle terek. A lila elérési útja a _fejlesztői_ területtől érkező kérést jeleníti meg, amely az alapértelmezett elérési út, amelyet az URL-cím nem előtagértéke. A rózsaszín elérési út a _dev/Scott_ Space használatával jeleníti meg a kérést.
 
-![](media/common/Space-Routing.png)
+![Az újonnan létrehozott "dev/Scott" terület és az alapértelmezett "dev" terület közötti különbségeket bemutató diagram.](media/common/Space-Routing.png)
 
 Az Azure Dev Spaces e beépített funkciója lehetővé teszi, hogy végpontok között tesztelhesse a kódot egy megosztott környezetben anélkül, hogy minden egyes fejlesztőnek ismételten létre kellene hoznia a saját terük teljes szolgáltatási vermét. Ez az útválasztás megköveteli, hogy a propagálási fejlécek továbbítva legyenek az alkalmazáskódban, ahogy az az útmutató előző lépésében is látható.
 
 ### <a name="test-code-running-in-the-_devscott_-space"></a>A _fejlesztői/Scott_ -térben futó kód tesztelése
-A *mywebapi* új verziójának a *webfrontendtel*való együttes teszteléséhez nyissa meg a böngészőt a *webfrontend* nyilvános hozzáférési pontjának URL-címére `http://dev.webfrontend.123456abcdef.eus.azds.io`(például), és lépjen a névjegy lapra. Az eredeti, „Hello from webfrontend and Hello from mywebapi” üzenetnek kell megjelennie.
+A *mywebapi* új verziójának a *webfrontendtel*való együttes teszteléséhez nyissa meg a böngészőt a *webfrontend* nyilvános hozzáférési pontjának URL-címére (például `http://dev.webfrontend.123456abcdef.eus.azds.io` ), és lépjen a névjegy lapra. Az eredeti, „Hello from webfrontend and Hello from mywebapi” üzenetnek kell megjelennie.
 
-Most adja hozzá a „scott.s” kifejezést az URL-cím részeként olvasson be valamit\:, például http//Scott.s.dev.webfrontend.123456abcdef.EUs.azds.IO, és frissítse a böngészőt. A *mywebapi* -projektben megadott töréspontnak találatot kell kapnia. Nyomja le az F5-öt a folytatáshoz. A böngészőben megjelenik az új üzenet: „Hello from webfrontend and mywebapi now says something new.” Ennek az az oka, hogy a frissített kód elérési útja a *mywebapi* -ben a _dev/Scott_ -térben fut.
+Most adja hozzá a „scott.s” kifejezést az URL-cím részeként olvasson be valamit, például http \: //Scott.s.dev.webfrontend.123456abcdef.EUs.azds.IO, és frissítse a böngészőt. A *mywebapi* -projektben megadott töréspontnak találatot kell kapnia. Nyomja le az F5-öt a folytatáshoz. A böngészőben megjelenik az új üzenet: „Hello from webfrontend and mywebapi now says something new.” Ennek az az oka, hogy a frissített kód elérési útja a *mywebapi* -ben a _dev/Scott_ -térben fut.
 
 Ha olyan _fejlesztői_ területtel rendelkezik, amely mindig tartalmazza a legújabb módosításokat, és feltételezi, hogy az alkalmazás úgy van kialakítva, hogy kihasználja a DevSpace-alapú útválasztást az oktatóanyag szakaszban leírtak szerint, remélhetőleg könnyen megtekintheti, hogy a fejlesztői helyek hogyan segíthetnek a nagyobb alkalmazások környezetében rejlő új szolgáltatások tesztelésében. Ahelyett, hogy az _összes_ szolgáltatást a saját tárhelyére kellene telepítenie, létrehozhat egy olyan privát helyet, amely a _dev_-ből származik, és csak a ténylegesen használt szolgáltatások közül választhat. A dev Spaces útválasztási infrastruktúrája a REST-t úgy fogja kezelni, hogy a saját tárterületének számos szolgáltatását használja, miközben a keresés közben a legújabb verzióra, a _fejlesztői_ térben pedig az alapértelmezett értékre kerül. És még jobb, ha _több_ fejlesztő is aktívan fejleszti a különböző szolgáltatásokat a saját területén anélkül, hogy megzavarja egymást.
 
-### <a name="well-done"></a>Remek!
-Elvégezte az első lépéseket ismertető útmutatót! Megismerte, hogyan végezheti el az alábbi műveleteket:
+### <a name="well-done"></a>Szép munka!
+Elvégezte az első lépéseket ismertető útmutatót! Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
@@ -140,7 +140,7 @@ Elvégezte az első lépéseket ismertető útmutatót! Megismerte, hogyan vége
 
 Most, hogy megismerte az Azure Dev Spacest, [megoszthatja a létrehozott Dev Spaces-teret egy csapattaggal](how-to/share-dev-spaces.md), és megmutathatja neki, milyen egyszerű az együttműködés.
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 Ha egy fürt egy Azure Dev Spaces-példányát teljesen, az összes Dev Spaces-térrel és benne futó szolgáltatással együtt törölni szeretné, használja az `az aks remove-dev-spaces` parancsot. Tartsa észben, hogy ez a művelet nem vonható vissza. Újra hozzáadhat Azure Dev Spaces-támogatást a fürtön, de azt a rendszer úgy kezeli, mintha elölről kezdené a folyamatot. A régi szolgáltatások és a tárolóhelyek nem állíthatók vissza.
 
 Az alábbi példa listázza az aktív előfizetése Azure Dev Spaces-vezérlőit, majd törli a myaks-rg erőforráscsoportban lévő myaks AKS-fürthöz társított Azure Dev Spaces-vezérlőt.

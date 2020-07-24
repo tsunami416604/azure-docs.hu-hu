@@ -15,12 +15,12 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: f78f24ee68545b386169e29a5a52ccc572849ad7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 232bd96373f22957a88c94585f53237e05d5e5cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80127060"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076701"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>Oktatóanyag: értesítések küldése Univerzális Windows-platform alkalmazások számára az Azure-ban Notification Hubs
 
@@ -43,7 +43,7 @@ Hajtsa végre a következő lépéseket:
 
 - **Azure-előfizetés**. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókot a](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) Kezdés előtt.
 - Microsoft Visual Studio 2017 vagy újabb verzió. Az oktatóanyagban szereplő példa a [Visual Studio 2019](https://www.visualstudio.com/products)-et használja.
-- [UWP-alkalmazások telepített fejlesztőeszközei](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
+- [UWP-alkalmazások telepített fejlesztőeszközei](/windows/uwp/get-started/get-set-up)
 - Aktív Windows Áruházbeli fiók
 - Győződjön meg arról, hogy az **alkalmazások és más küldők értesítésének beolvasása** beállítás engedélyezve van. 
     - A **Beállítások** ablak elindítása a számítógépen.
@@ -108,7 +108,7 @@ Ezzel konfigurálta az értesítési központot a WNS-sel folytatott együttműk
     ![A NuGet-csomagok kezelése ablak][20]
 
     A művelet a [Microsoft.Azure.NotificationHubs NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs) használatával letölti és telepíti a Windows rendszerhez készült Azure Notification Hubs kódtárat, és hozzáad egy rá mutató referenciát is.
-9. Nyissa `App.xaml.cs` meg a projektfájlt, és adja hozzá a következő utasításokat:
+9. Nyissa meg a `App.xaml.cs` projektfájlt, és adja hozzá a következő utasításokat:
 
     ```csharp
     using Windows.Networking.PushNotifications;
@@ -116,7 +116,7 @@ Ezzel konfigurálta az értesítési központot a WNS-sel folytatott együttműk
     using Windows.UI.Popups;
     ```
 
-10. A projekt `App.xaml.cs` fájljában keresse meg az `App` osztályt, és adja hozzá a `InitNotificationsAsync` következő metódus-definíciót. Cserélje `<your hub name>` le a elemet a Azure Portal létrehozott értesítési központ nevére, és cserélje le `<Your DefaultListenSharedAccessSignature connection string>` az értesítési `DefaultListenSharedAccessSignature` központ **hozzáférési** szabályzatok lapján található kapcsolati karakterláncra:
+10. A projekt `App.xaml.cs` fájljában keresse meg az `App` osztályt, és adja hozzá a következő `InitNotificationsAsync` metódus-definíciót. Cserélje le a elemet a `<your hub name>` Azure Portal létrehozott értesítési központ nevére, és cserélje le az `<Your DefaultListenSharedAccessSignature connection string>` `DefaultListenSharedAccessSignature` értesítési központ **hozzáférési** szabályzatok lapján található kapcsolati karakterláncra:
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -139,9 +139,9 @@ Ezzel konfigurálta az értesítési központot a WNS-sel folytatott együttműk
     Ez a kód lekéri a csatorna URI azonosítóját az alkalmazás számára a WNS-ből, majd regisztrálja a csatorna URI azonosítóját az értesítési központban.
 
     >[!NOTE]
-    > Cserélje le `hub name` a helyőrzőt az értesítési központ Azure Portalban megjelenő nevére. A kapcsolati karakterlánc helyőrzőjét is cserélje `DefaultListenSharedAccessSignature` le az értesítési központ előző szakaszban megadott **hozzáférési** szabályzatok oldaláról beszerzett kapcsolati karakterláncra.
+    > Cserélje le a `hub name` helyőrzőt az értesítési központ Azure Portalban megjelenő nevére. A kapcsolati karakterlánc helyőrzőjét is cserélje le az `DefaultListenSharedAccessSignature` értesítési központ előző szakaszban megadott **hozzáférési** szabályzatok oldaláról beszerzett kapcsolati karakterláncra.
 
-11. A alkalmazásban `OnLaunched` `App.xaml.cs`az eseménykezelő tetején adja hozzá a következő hívást az új `InitNotificationsAsync` metódushoz:
+11. A `OnLaunched` alkalmazásban az eseménykezelő tetején `App.xaml.cs` adja hozzá a következő hívást az új `InitNotificationsAsync` metódushoz:
 
     ```csharp
     InitNotificationsAsync();
@@ -165,7 +165,7 @@ Ha gyorsan le szeretné tesztelni, hogyan fogadja az alkalmazás az értesítés
 2. A **Tesztküldés** ablakban hajtsa végre az alábbi műveleteket:
     1. A **Platformok** beállításnál válassza a **Windows** lehetőséget.
     2. Az **Értesítés típusa** beállításnál válassza a **Bejelentés** lehetőséget.
-    3. Válassza a **Küldés**lehetőséget.
+    3. Válassza a **Küldés** lehetőséget.
 
         ![A Tesztküldés panel](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
 3. A Küldés művelet eredményét az ablak alján található **Eredmény** listában láthatja. Emellett egy figyelmeztető üzenet is megjelenik.
@@ -191,6 +191,6 @@ notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
 <!-- URLs. -->
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[toast catalog]: https://msdn.microsoft.com/library/windows/apps/hh761494.aspx
-[tile catalog]: https://msdn.microsoft.com/library/windows/apps/hh761491.aspx
-[badge overview]: https://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+[toast catalog]: /previous-versions/windows/apps/hh761494(v=win.10)
+[tile catalog]: /previous-versions/windows/apps/hh761491(v=win.10)
+[badge overview]: /previous-versions/windows/apps/hh779719(v=win.10)

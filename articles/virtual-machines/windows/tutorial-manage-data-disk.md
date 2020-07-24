@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c9f514b70eda7d74950576a1a6f3a1199cddb232
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f7f3e0dfd7da98cade0183825463c6b17f49dc1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100328"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077438"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Oktatóanyag – Azure-lemezek kezelése az Azure PowerShell-lel
 
@@ -25,14 +25,14 @@ Az Azure-beli virtuális gépek lemezeket használnak a virtuális gépek operá
 > * Operációsrendszer-lemezek és ideiglenes lemezek
 > * Adatlemezek
 > * Standard és Prémium lemezek
-> * Lemezek teljesítménye
+> * Lemezteljesítmény
 > * Adatlemezek csatolása és előkészítése
 
-## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="default-azure-disks"></a>Alapértelmezett Azure-lemezek
 
@@ -63,10 +63,10 @@ Míg a fenti táblázatban a lemezenkénti maximális IOPS-érték látható, na
 
 Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre. Ha szükséges, hozzon létre egy virtuális gépet az alábbi parancsokkal.
 
-A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal:
+A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) paranccsal:
 
 
-Hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Amikor a rendszer kéri, adja meg a virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát.
+Hozza létre a virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm). Amikor a rendszer kéri, adja meg a virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -80,7 +80,7 @@ New-AzVm `
 ```
 
 
-Hozza létre a kezdeti konfigurációt a [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig). A következő példa egy 128 GB méretű lemezt konfigurál.
+Hozza létre a kezdeti konfigurációt a [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig). A következő példa egy 128 GB méretű lemezt konfigurál.
 
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
@@ -89,7 +89,7 @@ $diskConfig = New-AzDiskConfig `
     -DiskSizeGB 128
 ```
 
-Hozza létre az adatlemezt a [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) paranccsal.
+Hozza létre az adatlemezt a [New-AzDisk](/powershell/module/az.compute/new-azdisk) paranccsal.
 
 ```azurepowershell-interactive
 $dataDisk = New-AzDisk `
@@ -98,13 +98,13 @@ $dataDisk = New-AzDisk `
     -Disk $diskConfig
 ```
 
-Szerezze be azt a virtuális gépet, amelyhez hozzá szeretné adni az adatlemezt a [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) paranccsal.
+Szerezze be azt a virtuális gépet, amelyhez hozzá szeretné adni az adatlemezt a [Get-AzVM](/powershell/module/az.compute/get-azvm) paranccsal.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-Adja hozzá az adatlemezt a virtuális gép konfigurációjához az [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) paranccsal.
+Adja hozzá az adatlemezt a virtuális gép konfigurációjához az [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) paranccsal.
 
 ```azurepowershell-interactive
 $vm = Add-AzVMDataDisk `
@@ -115,7 +115,7 @@ $vm = Add-AzVMDataDisk `
     -Lun 1
 ```
 
-Frissítse a virtuális gépet az [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) paranccsal.
+Frissítse a virtuális gépet az [Update-AzVM](/powershell/module/az.compute/add-azvmdatadisk) paranccsal.
 
 ```azurepowershell-interactive
 Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm
@@ -165,7 +165,7 @@ Ebben az oktatóanyagban a virtuálisgép-lemezekkel kapcsolatos témakörökkel
 > * Operációsrendszer-lemezek és ideiglenes lemezek
 > * Adatlemezek
 > * Standard és Prémium lemezek
-> * Lemezek teljesítménye
+> * Lemezteljesítmény
 > * Adatlemezek csatolása és előkészítése
 
 Folytassa a következő oktatóanyaggal, amely a virtuális gép konfigurálásának automatizálását ismerteti.

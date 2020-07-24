@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 41d52eff2dc2d9fc1e4c956c893a2f14c91d9f92
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 9d35ed0ee657e90ebc77c16ed654d32975ed9580
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560375"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024843"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 
@@ -35,7 +35,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 Az oktatóanyag elvégzéséhez először a következőket kell tennie:
 
-1. Hozzon létre egy Azure Maps fiók-előfizetést a S0 díjszabási szinten a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)című témakör utasításait követve.
+1. Hozzon létre egy Azure Maps fiók-előfizetést a S0 díjszabási szinten a [fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)című témakör utasításait követve.
 2. Szerezze be a fiókjához tartozó elsődleges előfizetési kulcsot, kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account)című témakör utasításait.
 
 
@@ -183,7 +183,7 @@ Az alábbi diagramok megjelenítik az előrejelzési adatértékeket. A szél se
 ![Szél sebességét ábrázoló ](./media/weather-service-tutorial/speed-date-plot.png) ![ szél irányának ábrázolása](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hívhat meg Azure Maps REST API-kat az időjárási előrejelzési adatok beszerzéséhez. Azt is megtanulta, hogyan jelenítheti meg a gráfokban tárolt adatmegjelenítést.
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: ae2a4ce3c8c1b3760dc83d01def9694b1d20fea0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: cf6e29ccc5e12969031f4c99f86d7356e7bbfadf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196939"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063326"
 ---
 # <a name="use-powershell-to-copy-a-database-to-a-new-server"></a>Adatbázis másolása új kiszolgálóra a PowerShell használatával
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -46,7 +46,7 @@ Remove-AzResourceGroup -ResourceGroupName $targetresourcegroupname
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Adatbázisokat és rugalmas készleteket futtató kiszolgálót hoz létre. |
@@ -57,6 +57,6 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/overview).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/).
 
 További SQL Database PowerShell szkriptminták találhatók az [Azure SQL Database PowerShell szkriptekben](../powershell-script-content-guide.md).

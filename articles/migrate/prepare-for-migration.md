@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan készítheti elő a helyszíni gépeket a Azure
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: aec2e95b65be2e3c69b2d29111fa1cfdbd66674e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: b92a26732f59235dac4c03f4e648d36dadd6c4ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223618"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077966"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
 
@@ -128,6 +128,18 @@ Más verziók esetében készítse elő a gépeket a táblázatban foglaltak sze
 **Hálózati adapterek frissítése** | Hálózati adapterek frissítése a DHCP-alapú IP-cím fogadására. NST | A fentiekben leírtak kivételével az összes verzióhoz manuálisan frissítse a frissítést.
 **SSH engedélyezése** | Győződjön meg arról, hogy az SSH engedélyezve van, és az sshd szolgáltatás automatikusan elindul az újraindításkor.<br/><br/> Győződjön meg arról, hogy az operációs rendszer tűzfala nem blokkolja a bejövő SSH-kapcsolatok kéréseit.| A fentiekben leírtak kivételével engedélyezze manuálisan az összes verziót.
 
+A következő táblázat összefoglalja a fent felsorolt operációs rendszerek automatikusan végrehajtott lépéseit.
+
+| Műveletek                                      | Ügynökön \- alapuló VMware-áttelepítés | Ügynök nélküli VMware-áttelepítés | Hyper\-V   |
+|---------------------------------------------|-------------------------------|----------------------------|------------|
+| A Hyper \- V Linux Integration Services telepítése | Igen                           | Igen                        | Nem szükséges |
+| Az Azure soros konzol naplózásának engedélyezése         | Igen                           | Igen                        | No         |
+| Eszköz-hozzárendelési fájl frissítése                      | Yes                           | Nem                         | Nem         |
+| Fstab-bejegyzések frissítése                        | Igen                           | Igen                        | No         |
+| Udev-szabály eltávolítása                            | Igen                           | Igen                        | No         |
+| Hálózati adapterek frissítése                   | Igen                           | Igen                        | No         |
+| SSH engedélyezése                                  | Nem                            | Nem                         | Nem         |
+
 További információ a [Linux rendszerű virtuális gépek Azure-beli futtatásáról](../virtual-machines/linux/create-upload-generic.md), valamint a népszerű Linux-disztribúciók használati lépéseiről.
 
 
@@ -171,7 +183,7 @@ Az áttelepítés után hajtsa végre a következő lépéseket a létrehozott A
 3. A virtuális gép megtekintéséhez tekintse meg a [rendszerindítási diagnosztikát](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) .
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Döntse el, hogy melyik módszert szeretné használni a [VMWare virtuális gépek Azure-ba való áttelepítéséhez](server-migrate-overview.md) , vagy a [Hyper-V virtuális gépek](tutorial-migrate-hyper-v.md) vagy [fizikai kiszolgálók, illetve virtualizált vagy felhőalapú virtuális gépek](tutorial-migrate-physical-virtual-machines.md)áttelepítésének megkezdéséhez.
 

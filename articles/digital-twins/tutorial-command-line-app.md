@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d670ee0cb2396858d908ac13f70819efd57d7f63
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: fcedec126c925ff218b8a0fb17b81dbf5ac1d769
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391825"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044233"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Ismerje meg az Azure Digital Twins-t egy minta ügyfélalkalmazás alkalmazásával
 
-Ez az oktatóanyag egy olyan minta alkalmazást vezet be, amely egy parancssori ügyfélalkalmazás megvalósítását teszi lehetővé egy Azure digitális Twins-példánnyal való interakcióhoz. Az ügyfélalkalmazás hasonló az [oktatóanyagban írt útmutatóhoz: az ügyfélalkalmazás kódolása](tutorial-code.md).
+Ez az oktatóanyag egy olyan minta alkalmazást vezet be, amely egy parancssori ügyfélalkalmazás megvalósítását teszi lehetővé egy Azure digitális Twins-példánnyal való interakcióhoz. Az ügyfélalkalmazás hasonló az [*oktatóanyagban írt útmutatóhoz: az ügyfélalkalmazás kódolása*](tutorial-code.md).
 
 Ezt a mintát használhatja olyan alapvető Azure-beli digitális Twins-műveletek elvégzéséhez, mint például a modellek feltöltése, az ikrek létrehozása és módosítása, valamint kapcsolatok létrehozása. A minta kódját is megtekintheti az Azure Digital Twins API-k megismeréséhez, valamint a saját parancsok megvalósításának gyakorlásához, ha módosítani szeretné a minta projektet.
 
@@ -129,7 +129,7 @@ CreateModels Room
 ```
 
 Mivel a modellek nem írhatók felül, a szolgáltatás hibaüzenetet ad vissza.
-A meglévő modellek törlésével kapcsolatos részletekért lásd [: útmutató: egyéni modellek kezelése](how-to-manage-model.md).
+A meglévő modellek törlésével kapcsolatos részletekért lásd [*: útmutató: egyéni modellek kezelése*](how-to-manage-model.md).
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -283,9 +283,9 @@ Az Azure Digital Twins egyik fő funkciója, hogy könnyen és hatékonyan [lek�
 
     :::image type="content" source="media/tutorial-command-line-app/output-query-compound.png" alt-text="Az összetett lekérdezés eredménye, amely nem mutat eredményt":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
-Az oktatóanyagban szereplő projekt a következő oktatóanyag alapjául szolgál, [oktatóanyag: végpontok közötti megoldás összekötése](tutorial-end-to-end.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított erőforrásokat, hogy továbbra is használhassa ezt az Azure Digital Twins-példányt és konfigurált minta alkalmazást.
+Az oktatóanyagban szereplő projekt a következő oktatóanyag alapjául szolgál, [*oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md). Ha továbbra is a következő oktatóanyagot tervezi, megtarthatja az itt beállított erőforrásokat, hogy továbbra is használhassa ezt az Azure Digital Twins-példányt és konfigurált minta alkalmazást.
 * Ebben az esetben a minta alkalmazás `DeleteAllTwins` és a `DeleteAllModels` parancsok segítségével törölheti az ikreket és a modelleket a példányában. Ez a következő oktatóanyaghoz biztosít tiszta lappal.
 
 Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, a következő lépésekkel törölheti őket.
@@ -309,17 +309,17 @@ az ad app delete --id <your-application-ID>
 
 Végezetül törölje a helyi gépre letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 Ebben az oktatóanyagban megkezdte az Azure Digital Twins használatát egy példány és egy ügyfélalkalmazás beállításával a példánnyal való interakcióhoz. Az ügyfélalkalmazás felhasználta az Azure digitális ikrek felfedezését, a modellek, a digitális ikrek és a kapcsolatok létrehozását. Néhány lekérdezést is futtatott a megoldással kapcsolatban, hogy megtudja, milyen kérdésekre ad választ az Azure Digital Twins a környezetről.
 
 Folytassa a következő oktatóanyaggal, amely a minta parancssori alkalmazást más Azure-szolgáltatásokkal együtt használja egy adatvezérelt, végpontok közötti forgatókönyv végrehajtásához:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: végpontok közötti megoldás összekötése](tutorial-end-to-end.md)
+> [*Oktatóanyag: végpontok közötti megoldás összekötése*](tutorial-end-to-end.md)
 
 Vagy tekintse meg a koncepció dokumentációját, ahol további információt talál az oktatóanyagban használt elemekről:
-* [Fogalmak: egyéni modellek](concepts-models.md)
+* [*Fogalmak: egyéni modellek*](concepts-models.md)
 
 Az oktatóanyag folyamatairól részletesebben is tájékozódhat a következő útmutatók elindításával:
-* [Útmutató: az Azure digitális Twins parancssori felületének használata](how-to-use-cli.md)
+* [*Útmutató: az Azure digitális Twins parancssori felületének használata*](how-to-use-cli.md)

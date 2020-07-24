@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5842d21f9fb35cd8fddc5521d630d597aedcc2ba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 0ac13dc669ed20df58f05c672926b7bee55dbc90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983149"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035026"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Oktatóanyag: a felhasználók számára lehetővé teszi a fiók zárolásának feloldását vagy a jelszavak alaphelyzetbe állítását Azure Active Directory önkiszolgáló jelszó-visszaállítás használatával
 
 A Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) lehetővé teszi a felhasználók számára a jelszavuk módosítását vagy alaphelyzetbe állítását, rendszergazdai vagy ügyfélszolgálati beavatkozás nélkül. Ha a felhasználó fiókja zárolva van, vagy elfelejti a jelszavát, akkor az utasításokat követve letilthatja önmagát, és visszatérhet a munkához. Ez a funkció csökkenti az ügyfélszolgálati hívásokat és a termelékenység elvesztését, ha a felhasználó nem tud bejelentkezni az eszközére vagy alkalmazására.
 
 > [!IMPORTANT]
-> Ez a rövid útmutató egy rendszergazdát mutat be, amely lehetővé teszi az önkiszolgáló jelszó-visszaállítást. Ha a végfelhasználó már regisztrálva van az önkiszolgáló jelszó-visszaállításhoz, és vissza kell kérnie a fiókját, lépjen a következőre: https://aka.ms/sspr .
+> Ez az oktatóanyag egy rendszergazdát mutat be, amely lehetővé teszi az önkiszolgáló jelszó-visszaállítást. Ha a végfelhasználó már regisztrálva van az önkiszolgáló jelszó-visszaállításhoz, és vissza kell kérnie a fiókját, lépjen a következőre: https://aka.ms/sspr .
 >
 > Ha az informatikai csapat nem engedélyezte a saját jelszavának alaphelyzetbe állítását, további segítségért forduljon az ügyfélszolgálathoz.
 
@@ -41,9 +41,9 @@ Az oktatóanyag elvégzéséhez a következő erőforrásokra és jogosultságok
     * Ha szükséges, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * *Globális rendszergazdai* jogosultságokkal rendelkező fiók.
 * Egy nem rendszergazda felhasználó, aki ismeri a jelszót, például *tesztfelhasználó*. Ebben az oktatóanyagban tesztelheti a végfelhasználói SSPR felhasználói élményét.
-    * Ha létre kell hoznia egy felhasználót, tekintse meg a rövid útmutató [: új felhasználók hozzáadása a Azure Active Directoryhoz](../add-users-azure-active-directory.md)című témakört.
+    * Ha létre kell hoznia egy felhasználót, tekintse meg a rövid útmutató [: új felhasználók hozzáadása a Azure Active Directoryhoz](../fundamentals/add-users-azure-active-directory.md)című témakört.
 * Olyan csoport, amelynek a nem rendszergazda felhasználó tagja, például *SSPR-test-Group*. Ebben az oktatóanyagban engedélyezheti a csoport SSPR.
-    * Ha csoportot kell létrehoznia, tekintse meg [a csoport létrehozása és a tagok hozzáadása a Azure Active Directory-ben](../active-directory-groups-create-azure-portal.md)című témakört.
+    * Ha csoportot kell létrehoznia, tekintse meg [a csoport létrehozása és a tagok hozzáadása a Azure Active Directory-ben](../fundamentals/active-directory-groups-create-azure-portal.md)című témakört.
 
 ## <a name="enable-self-service-password-reset"></a>Új jelszó önkiszolgáló kérésének engedélyezése
 
@@ -78,8 +78,8 @@ Ha a felhasználóknak fel kell oldaniuk a fiókját, vagy alaphelyzetbe kell á
     * *Mobilalkalmazás-kód*
     * *E-mail*
     * *Mobiltelefon*
-    * *Irodai telefon*
-    * *Biztonsági kérdések*
+
+    A további hitelesítési módszerek, például az *irodai telefonos* vagy *biztonsági kérdések*az üzleti igényeknek megfelelően engedélyezhetők.
 
 1. A hitelesítési módszerek alkalmazásához válassza a **Mentés**lehetőséget.
 
@@ -95,7 +95,7 @@ A rendszergazda manuálisan megadhatja a kapcsolattartási adatokat, vagy a felh
 
 ## <a name="configure-notifications-and-customizations"></a>Értesítések és testreszabások konfigurálása
 
-Ha szeretné, hogy a felhasználók tájékoztassanak a fiók tevékenységéről, beállíthatja, hogy a rendszer e-mail-értesítéseket küldjön, amikor SSPR esemény történik. Ezek az értesítések a normál felhasználói fiókokra és a rendszergazdai fiókokra is kiterjednek. A rendszergazdai fiókok esetében ez az értesítés további figyelmet nyújt, ha a jogosultsági szintű rendszergazdai fiók jelszava alaphelyzetbe áll a SSPR használatával.
+Ha szeretné, hogy a felhasználók tájékoztassanak a fiók tevékenységéről, beállíthatja, hogy a rendszer e-mail-értesítéseket küldjön, amikor SSPR esemény történik. Ezek az értesítések a normál felhasználói fiókokra és a rendszergazdai fiókokra is kiterjednek. A rendszergazdai fiókok esetében ez az értesítés további figyelmet nyújt, ha a jogosultsági szintű rendszergazdai fiók jelszava alaphelyzetbe áll a SSPR használatával. Az összes globális rendszergazda értesítést kap, ha SSPR használ egy rendszergazdai fiókban.
 
 1. Az **értesítések** lap bal oldali menüjében adja meg a következő beállításokat:
 
@@ -140,7 +140,7 @@ Ha már nem szeretné használni az oktatóanyag részeként konfigurált SSPR f
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban engedélyezte az Azure AD önkiszolgáló jelszó-visszaállítását egy kiválasztott felhasználói csoport számára. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban engedélyezte az Azure AD önkiszolgáló jelszó-visszaállítását egy kiválasztott felhasználói csoport számára. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Önkiszolgáló jelszó-visszaállítás engedélyezése Azure AD-felhasználók egy csoportjára

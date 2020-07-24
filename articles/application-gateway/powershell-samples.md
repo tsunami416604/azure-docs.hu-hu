@@ -7,20 +7,19 @@ ms.service: application-gateway
 ms.topic: sample
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: d45fd7bf88e6988b83a621eda2689c10356441a4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 045009f695197277ab576c8ff41f36af43957be7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74129744"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067777"
 ---
-# <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure PowerShell példák az Azure Application Gateway
+# <a name="azure-powershell-examples-for-azure-application-gateway-ag"></a>Azure PowerShell példák az Azure Application Gateway (AG) szolgáltatásra
 
 Az alábbi táblázat az Azure Application Gateway Azure PowerShell parancsfájlokra mutató hivatkozásokat tartalmaz.
 
-| | |
-|---|---|
+| Példa | Description |
+|-------- | ----------- |
 | [Webes forgalom kezelése](./scripts/create-vmss-powershell.md) | Létrehoz egy Application Gateway és az összes kapcsolódó erőforrást.|
 | [Webes forgalom korlátozása](./scripts/create-vmss-waf-powershell.md) | Olyan Application Gateway hoz létre, amely a OWASP-szabályok használatával korlátozza a forgalmat.|
-|[Egyéni WAF v2-szabályok](scripts/waf-custom-rules-powershell.md)|Létrehoz egy Application Gateway webalkalmazási tűzfal v2 egyéni szabályokkal.
-| | |
+|[Egyéni WAF v2-szabályok](scripts/waf-custom-rules-powershell.md)|Létrehoz egy Application Gateway webalkalmazási tűzfal v2 egyéni szabályokkal.|

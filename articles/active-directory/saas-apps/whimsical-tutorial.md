@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 401ca1a22b47555f530e1785e25653269403812c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1c16f83be4cd10f53705633b9c4f4eb522c8408e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666125"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058152"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whimsical"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a szeszélyes szolgáltatással
 
@@ -37,7 +37,7 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* A szeszélyes egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
+* Furcsa csapat munkaterülete.
 
 > [!NOTE]
 > Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
@@ -93,9 +93,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://whimsical.com/@<TENANT_NAME>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Ezeknek az értékeknek a megszerzéséhez forduljon a [szeszélyes ügyfél-támogatási csapathoz](mailto:help@whimsical.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. A speciális értékek megjelennek az SAML-beállítások képernyőn a szeszélyes munkaterület beállításaiban. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A szeszélyes alkalmazás egy adott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
+1. A szeszélyes alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
     ![image](common/default-attributes.png)
 
@@ -124,7 +124,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -146,7 +146,11 @@ Ebben a szakaszban lehetővé teszi, hogy B. Simon használja az Azure egyszeri 
 
 ## <a name="configure-whimsical-sso"></a>Szeszélyes egyszeri bejelentkezés konfigurálása
 
-Ha egyszeri bejelentkezést szeretne beállítani a **szeszélyes** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a [szeszélyes támogatási csapatba](mailto:help@whimsical.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést a **szeszélyes** oldalon szeretné beállítani, fel kell töltenie az imént letöltött **összevonási metaadatokat tartalmazó XML-fájlt** a [munkaterület beállításaiba](https://whimsical.com/workspace/settings).
+
+![Szeszélyes munkaterület SAML-beállítása](media/whimsical-tutorial/saml-setup.png)
+
+Az **összevonási metaadatok XML-kódjának** feltöltéséhez az egyetlen lépésnek kell megjelennie az SAML SSO-kapcsolatok beállításához.
 
 ### <a name="create-whimsical-test-user"></a>Szeszélyes tesztelési felhasználó létrehozása
 

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 455860b2ccdfe3188c4985b64bd76ce51ab991ca
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 792fede4fd76469ee3f8ae2550d0e3f3a25126a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708467"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073428"
 ---
 # <a name="use-powershell-to-create-a-managed-instance"></a>Felügyelt példány létrehozása a PowerShell használatával
 
@@ -66,6 +66,6 @@ Ez a szkript a következő parancsokat használja. Az alábbi táblázatban szer
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/overview).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/).
 
 Az Azure SQL felügyelt példányaihoz további PowerShell-szkriptek is megtalálhatók az [Azure SQL felügyelt példány PowerShell-parancsfájljaiban](../../database/powershell-script-content-guide.md).

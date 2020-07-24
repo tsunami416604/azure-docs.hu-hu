@@ -6,12 +6,13 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
-ms.openlocfilehash: 0d3fcbbb317ef70687c83ff21e2ab817d89051a6
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-java
+ms.openlocfilehash: c31c52d278c1e40b18b3308ca154b934d060d403
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142464"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071175"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Oktatóanyag: a Spring Cloud-erőforrások figyelése riasztások és műveleti csoportok használatával
 
@@ -81,7 +82,7 @@ A **riasztások**konfigurálásához térjen vissza a **riasztások** lapra, maj
 
    ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3-2.png)
 
-1. Kattintson a **Done** (Kész) gombra.
+1. Kattintson a **Kész** gombra.
 
 A figyeléshez rendelkezésre álló feltételek részleteiért lásd: [felhasználói portál metrikái – beállítások](spring-cloud-concept-metrics.md#user-metrics-options).
 
@@ -93,7 +94,7 @@ A figyeléshez rendelkezésre álló feltételek részleteiért lásd: [felhaszn
 
 1. Állítsa be a **súlyosságot**.
 
-1. Kattintson a **riasztási szabály létrehozása**elemre.
+1. Kattintson a **Riasztási szabály létrehozása** lehetőségre.
 
    ![Képernyőkép-portál új riasztási szabálya](media/alerts-action-groups/alerts-3-4.png)
 
@@ -110,7 +111,7 @@ A **metrikák** lapról is létrehozhat egy szabályt:
 Ebben az oktatóanyagban megtanulta, hogyan állíthat be riasztásokat és műveleti csoportokat egy Azure Spring Cloud-alkalmazáshoz. A műveleti csoportokról további információt a következő témakörben talál:
 
 > [!div class="nextstepaction"]
-> [Műveleti csoportok létrehozása és kezelése a Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+> [Műveletcsoportok létrehozása és felügyelete az Azure Portalon](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 
 > [!div class="nextstepaction"]
 > [SMS-riasztás viselkedése a műveleti csoportokban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)

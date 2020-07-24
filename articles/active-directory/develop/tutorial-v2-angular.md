@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7cd2d5d8728e2a0539d5f106ab39c563e6e7c382
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: ee7c95cc25e911ba0ffe1e2815f219e040aaca31
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231692"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058254"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy szögletes egyoldalas alkalmazásból
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag azt mutatja be, hogyan használható a szögletes egyoldalas 
 
 ## <a name="how-the-sample-app-works"></a>A minta alkalmazás működése
 
-![Diagram, amely bemutatja, hogyan működik az oktatóanyagban létrehozott minta alkalmazás](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
+![Diagram, amely bemutatja, hogyan működik az oktatóanyagban létrehozott minta alkalmazás](./media/tutorial-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 ### <a name="more-information"></a>További információ
 
@@ -43,7 +43,7 @@ Ebben az esetben a felhasználó bejelentkezése után hozzáférési jogkivonat
 
 Ez az oktatóanyag a következő könyvtárat használja:
 
-|Kódtár|Leírás|
+|Kódtár|Description|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library JavaScript szögletes Burkolóhoz|
 
@@ -148,7 +148,7 @@ Adja hozzá a következő kódot a `AppComponent` felhasználóhoz való bejelen
 ```javascript
 export class AppComponent implements OnInit {
     constructor(private broadcastService: BroadcastService, private authService: MsalService) { }
-    
+
     ngOnInit() { }
 
     login() {
@@ -340,7 +340,7 @@ Ha egy háttérbeli API-nak nincs szüksége hatókörre (nem ajánlott), a *cli
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha most ismerkedik az identitás-és hozzáférés-kezeléssel, számos cikk segít a modern hitelesítési fogalmak megismerésében, a hitelesítés és az [Engedélyezés](authentication-vs-authorization.md)megkezdése előtt.
 

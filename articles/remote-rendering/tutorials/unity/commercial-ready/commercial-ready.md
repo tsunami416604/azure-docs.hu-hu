@@ -1,16 +1,16 @@
 ---
-title: Kereskedelmi használatra kész Azure-alapú távoli renderelési alkalmazás létrehozása
+title: Forgalmazásra kész Azure Remote Rendering-alkalmazás létrehozása
 description: A kereskedelmi használatra kész alkalmazások Azure Remote rendering használatával történő létrehozásának stratégiái és szempontjai
-author: m-the-hoff
-ms.author: v-michof
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: fa1a49aeef8b86230dc1d5ea898832cfb1cee852
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e827f7eff707f5a7c467f53eacab6973bff2ef2f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569775"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076422"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Oktatóanyag: kereskedelmi használatra kész Azure Remote rendering-alkalmazás létrehozása
 
@@ -248,7 +248,7 @@ A vegyes valóság egyik meggyőző használati esete a CAD-munkafolyamatok terv
 
 A sokkal egyszerűbb, de valamivel kevésbé áramvonalas megközelítés automatizálhatja a 3D modell helyi merevlemezre mentésének folyamatát, majd kezdeményezheti a mentett fájlnak a SAS bemeneti tárolóba való továbbításának folyamatát.
 
-### <a name="azure-marketplace"></a>Azure Piactér
+### <a name="azure-marketplace"></a>Azure Marketplace
 
 Számos nagyvállalati ügyfél azt adja meg, hogy a Azure Stack a saját Azure-fiókjaik és a hitelesítő adataik biztonsági okokból történő üzembe helyezésére is szükség van. Ennek elvégzéséhez érdemes megfontolnia az Azure által felügyelt alkalmazások csomagolását úgy, hogy az Azure Marketplace-en is közzétehető legyen az Azure piactéren.
 
@@ -263,7 +263,7 @@ Fontos, hogy az alapoktól kezdve a teljes körű Azure távoli renderelési meg
 
 * Hitelesítési stratégiák
 * Hozzáférés-kezelés – csoportok, házirendek és engedélyek
-* Több-bérlős rendszer
+* Több-bérlős üzemmód
 * Adattárolás és adatátviteli titkosítás
 * Ideiglenes használati tokenek
 * Elosztott szolgáltatásmegtagadási (DDoS) támadások

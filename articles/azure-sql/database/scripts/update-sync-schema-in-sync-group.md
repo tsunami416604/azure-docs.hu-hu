@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 1cfc6f71543787fb6e8393fe4a5162ffefb0a3a0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 44a9b0b4d609013147f799ae19f750c34e81837c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196660"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084874"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>PowerShell használata meglévő szinkronizálási csoport szinkronizálási sémájának frissítéséhez
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -58,7 +58,7 @@ UpdateSyncSchema.ps1 -SubscriptionId <subscriptionId> -ResourceGroupName <resour
 
 Az **UpdateSyncSchema** szkript a következő paramétereket tartalmazza:
 
-| Paraméter | Megjegyzések |
+| Paraméter | Jegyzetek |
 |---|---|
 | $subscriptionId | Az előfizetés, amelyben a szinkronizálási csoport létrejön. |
 | $resourceGroupName | Az erőforráscsoport, amelyben a szinkronizálási csoport létrejön.|
@@ -76,7 +76,7 @@ Az **UpdateSyncSchema** szkript a következő paramétereket tartalmazza:
 
 Az **UpdateSyncSchema** szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Get-AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlsyncgroup) | Egy szinkronizálási csoport adatait adja vissza. |
 | [Frissítés – AzSqlSyncGroup](https://docs.microsoft.com/powershell/module/az.sql/update-azsqlsyncgroup) | Frissít egy szinkronizálási csoportot. |
@@ -86,7 +86,7 @@ Az **UpdateSyncSchema** szkript a következő parancsokat használja. A tábláz
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShellről [az Azure PowerShell dokumentációjában](/powershell/azure/overview) talál további információt.
+Az Azure PowerShellről [az Azure PowerShell dokumentációjában](/powershell/azure/) talál további információt.
 
 Az [Azure SQL Database PowerShell-szkriptekben](../powershell-script-content-guide.md) további SQL Database PowerShell-szkriptminták találhatók.
 

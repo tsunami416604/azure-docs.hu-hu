@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3790da8674732c50d55a85c84367f0d2fe3e08f5
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: aacaec5ff632385a1f1686610370bb92eb63c349
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85256143"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017550"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Ekarda
 
@@ -151,12 +151,12 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **rendszergazdai**  ->  **fiók**lehetőségre.
 
-    ![Ekarda-konfiguráció](./media/ekarda-tutorial/ekarda.PNG)    
+    ![Ekarda-konfiguráció](./media/ekarda-tutorial/ekarda.png)    
 
 1. A lap alján megtalálja az **SAML-beállítások** szakaszt, ahol konfigurálni fogja az SAML-integrációt.
 1. A következő oldalon hajtsa végre a következő lépéseket:
 
-    ![Ekarda-konfiguráció](./media/ekarda-tutorial/ekarda1.PNG)
+    ![Ekarda-konfiguráció](./media/ekarda-tutorial/ekarda1.png)
 
     a. Kattintson a **szolgáltatói metaadatok** hivatkozásra, és mentse fájlba a számítógépén.
 
@@ -188,13 +188,14 @@ Ha a hozzáférési panelen a Ekarda csempére kattint, automatikusan be kell je
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [A Ekarda kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
+- A [Ekarda vállalati ecard-megoldásával](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise) tetszőleges számú munkatárs küldhet olyan eCards-t, amely a céges emblémával rendelkezik a saját ügyfelei és kollégái számára. További információ az [Ekarda egyszeri bejelentkezési megoldásként való](https://support.ekarda.com/#SSO-Implementation)üzembe helyezéséről.
+
 - [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [A Ekarda és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

@@ -8,27 +8,27 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c576ac1f56a29fc73f92e2292b457262828c5046
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14d0190a97c22a805065ceaf41dcd655b9e8182b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100464"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065284"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>Oktatóanyag – Alkalmazások telepítése Windows virtuális gépekre az Azure-ban az egyéni szkriptbővítménnyel
 
-A virtuális gépek gyors és konzisztens konfigurálásához használhatja a [Windowshoz készült egyéni parancsfájl-bővítményt](extensions-customscript.md). Ezen oktatóanyag segítségével megtanulhatja a következőket:
+A virtuális gépek gyors és konzisztens konfigurálásához használhatja a [Windowshoz készült egyéni parancsfájl-bővítményt](../extensions/custom-script-windows.md). Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
 > * IIS telepítése az egyéni szkriptek bővítményével
 > * Az egyéni szkriptek bővítményét használó virtuális gép létrehozása
 > * Futó IIS-hely megtekintése a bővítmény alkalmazása után
 
-## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="custom-script-extension-overview"></a>Az egyéni szkriptek bővítményének áttekintése
 Az egyéni szkriptek bővítménye szkripteket tölt le és futtat az Azure-beli virtuális gépeken. A bővítmény az üzembe helyezést követő konfiguráció, szoftvertelepítés, illetve bármely konfigurációs/felügyeleti feladat végrehajtása során hasznos. A szkriptek az Azure Storage-ból vagy a GitHubról tölthetők le, illetve megadhatók az Azure Portalon a bővítmény futásidejében.
@@ -39,13 +39,13 @@ Az egyéni szkriptek bővítménye Windows és Linux rendszerű virtuális gépe
 
 
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
-Állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát a [Get-hitelesítőadat használatával](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát a [Get-hitelesítőadat használatával](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1):
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Most már létrehozhatja a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)használatával. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre az *USA keleti régiója* helyen. Ha még nem léteznek, létrejön a *myResourceGroupAutomate* nevű erőforráscsoport és a támogató hálózati erőforrások. A webes forgalom engedélyezéséhez a parancsmag megnyitja a *80*-as portot is.
+Most már létrehozhatja a virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm)használatával. Az alábbi példában egy *myVM* nevű virtuális gépet hozunk létre az *USA keleti régiója* helyen. Ha még nem léteznek, létrejön a *myResourceGroupAutomate* nevű erőforráscsoport és a támogató hálózati erőforrások. A webes forgalom engedélyezéséhez a parancsmag megnyitja a *80*-as portot is.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -64,7 +64,7 @@ Az erőforrások és a virtuális gép létrehozása néhány percig tart.
 
 
 ## <a name="automate-iis-install"></a>Az IIS-telepítés automatizálása
-A [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) használatával telepítse az egyéni szkriptek bővítményét. A bővítmény a `powershell Add-WindowsFeature Web-Server` parancs futtatásával telepíti az IIS-webkiszolgálót, majd a *Default.htm* lapot frissítve megjeleníti a virtuális gép eszköznevét:
+A [set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) használatával telepítse az egyéni szkriptek bővítményét. A bővítmény a `powershell Add-WindowsFeature Web-Server` parancs futtatásával telepíti az IIS-webkiszolgálót, majd a *Default.htm* lapot frissítve megjeleníti a virtuális gép eszköznevét:
 
 ```azurepowershell-interactive
 Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
@@ -79,7 +79,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
 
 
 ## <a name="test-web-site"></a>Webhely tesztelése
-Szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott *myPublicIPAddress* IP-címét kéri le:
+Szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). A következő példa a korábban létrehozott *myPublicIPAddress* IP-címét kéri le:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `
@@ -94,7 +94,7 @@ A nyilvános IP-címet beírhatja egy böngészőbe. Ekkor megjelenik a webhely,
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az IIS telepítését automatizálta egy virtuális gépen. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban az IIS telepítését automatizálta egy virtuális gépen. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * IIS telepítése az egyéni szkriptek bővítményével

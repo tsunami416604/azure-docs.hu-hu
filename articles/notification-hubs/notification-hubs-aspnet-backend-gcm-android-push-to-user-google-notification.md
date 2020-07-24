@@ -17,12 +17,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 709926671e1ad4d8beefaf0f1cff4c56b1948ca3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b96f337b27e40c5eaec88e220ca3fee6904df905
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80127366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022276"
 ---
 # <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: leküldéses értesítés küldése adott Android-felhasználóknak az Azure Notification Hubs és Google Cloud Messaging (elavult) használatával
 
@@ -50,7 +50,7 @@ Ezen oktatóanyag elvégzése előtt végezze el az [Oktatóanyag: Leküldéses 
 
 A következő lépés az [Oktatóanyag: Leküldéses értesítések küldése Android-eszközökre az Azure Notification Hubs és a Google Cloud Messaging használatával](notification-hubs-android-push-notification-google-gcm-get-started.md) elvégzése során létrehozott Android-alkalmazás frissítése.
 
-1. Nyissa `res/layout/activity_main.xml` meg a fájlt, cserélje le a következő tartalmi definíciókat:
+1. Nyissa meg a `res/layout/activity_main.xml` fájlt, cserélje le a következő tartalmi definíciókat:
 
     Új EditText vezérlőket ad hozzá a felhasználóként való bejelentkezéshez. Egy felhasználónév-címke számára kijelölt mezőt is hozzáad, amely szerepelni fog az elküldött értesítésekben:
 
@@ -141,7 +141,7 @@ A következő lépés az [Oktatóanyag: Leküldéses értesítések küldése An
     />  
     </RelativeLayout>
     ```
-2. Nyissa `res/values/strings.xml` meg a fájlt, `send_button` és cserélje le a definíciót a következő sorokra, amelyek `send_button` újradefiniálják a karakterláncot a és a más vezérlőkhöz tartozó karakterláncok hozzáadásához:
+2. Nyissa meg a `res/values/strings.xml` fájlt, és cserélje le a `send_button` definíciót a következő sorokra, amelyek újradefiniálják a karakterláncot a `send_button` és a más vezérlőkhöz tartozó karakterláncok hozzáadásához:
 
     ```xml
     <string name="usernameHint">Username</string>
@@ -154,8 +154,8 @@ A következő lépés az [Oktatóanyag: Leküldéses értesítések küldése An
 
     A `main_activity.xml` grafikus elrendezésnek ekkor az alábbi képhez hasonlóan kell kinéznie:
 
-    ![][A1]
-3. Hozzon létre egy nevű `RegisterClient` új osztályt ugyanabban a csomagban `MainActivity` , mint az osztályt. Használja az alábbi kódot az új osztályfájlhoz.
+    ![Képernyőkép az alkalmazásról a Felhasználónév, a jelszó, a címzett és az üzenet mezőivel, valamint a bejelentkezéshez és az értesítések küldéséhez szükséges gombokkal.][A1]
+3. Hozzon létre egy nevű új osztályt `RegisterClient` ugyanabban a csomagban, mint az `MainActivity` osztályt. Használja az alábbi kódot az új osztályfájlhoz.
 
     ```java
     import java.io.IOException;
@@ -406,7 +406,7 @@ A következő lépés az [Oktatóanyag: Leküldéses értesítések küldése An
     }
     ```
 
-    A `login` **bejelentkezési** gomb kezelője egy alapszintű hitelesítési tokent hoz létre a bemeneti Felhasználónév és jelszó használatával (ez a hitelesítési séma által használt bármely tokent jelöli) `RegisterClient` , majd a használatával meghívja a háttérrendszer regisztrációját.
+    A `login` **bejelentkezési** gomb kezelője egy alapszintű hitelesítési tokent hoz létre a bemeneti Felhasználónév és jelszó használatával (ez a hitelesítési séma által használt bármely tokent jelöli), majd `RegisterClient` a használatával meghívja a háttérrendszer regisztrációját.
 
     A `sendPush` metódus a háttérrendszer meghívásával aktiválja egy biztonságos értesítés küldését a felhasználónak a felhasználói címke alapján. A `sendPush` által megcélzott platformértesítési szolgáltatás az átadott `pns` sztringtől függ.
 
@@ -461,7 +461,7 @@ A következő lépés az [Oktatóanyag: Leküldéses értesítések küldése An
         }
     }
     ```
-12. A `build.gradle` fájlban adja hozzá a következő sort `android` a szakaszhoz a `buildTypes` szakasz után.
+12. A `build.gradle` fájlban adja hozzá a következő sort a szakaszhoz a `android` szakasz után `buildTypes` .
 
     ```java
     useLibrary 'org.apache.http.legacy'
@@ -474,7 +474,7 @@ A következő lépés az [Oktatóanyag: Leküldéses értesítések küldése An
 2. Az Android-alkalmazásban adjon meg egy felhasználónevet és jelszót. Mindkettőnek ugyanazon sztringértéknek kell lennie, és nem tartalmazhatnak szóközt vagy különleges karaktert.
 3. Az Android-alkalmazásban kattintson a **Bejelentkezés**elemre. Várjon, amíg megjelenik egy bejelentési üzenet a **Logged in and registered** (Bejelentkezve és regisztrálva) szöveggel. Ezzel elérhetővé válik a **Send Notification** (Értesítés küldése) gomb.
 
-    ![][A2]
+    ![Képernyőkép az alkalmazásról. Egy olyan Toast-üzenet, amely megerősíti, hogy a felhasználó be van jelentkezve és regisztrálva van, és megjelenik az értesítés küldése gomb.][A2]
 4. Kattintson a váltógombokra az összes olyan platform engedélyezéséhez, amelyen futtatta az alkalmazást és regisztrált felhasználókat.
 5. Adja meg az értesítési üzenet címzettjének felhasználónevét. Ennek feltétele, hogy a felhasználó fel legyen iratkozva az értesítésekre a céleszközökön.
 6. Adjon meg egy üzenetet, amelyet a felhasználó leküldéses értesítés formájában fog megkapni.

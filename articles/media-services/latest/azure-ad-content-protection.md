@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2dbd75748d30a67c22ac729a8a2130a2d43aef9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 81c83cd8dcea5f8746b67a7bd52ea52a09c8a711
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205210"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001400"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Oktatóanyag: végpontok közötti tartalomvédelem az Azure AD használatával
 
@@ -48,13 +48,13 @@ A rendszer a következő legújabb technológiai verziókat és fogalmakat haszn
 Nem kötelező, de javasoljuk, hogy Ismerje meg a következő fogalmakat az oktatóanyag megkezdése előtt:
 
 * Digitális Rights Management (DRM)
-* [Azure Media Services (AMS) v3](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
+* [Azure Media Services (AMS) v3](./media-services-overview.md)
 * A [tartalmi kulcsokra vonatkozó HÁZIRENDEK](content-key-policy-concept.md) AMS API v3, Azure Portal vagy a [Azure Media Services Explorer (AMSE) eszköz](https://github.com/Azure/Azure-Media-Services-Explorer) használatával
-* Azure AD v2-végpontok a [Microsoft Identity platformon](https://docs.microsoft.com/azure/active-directory/develop/)
-* Modern felhőalapú hitelesítés, például [OAuth 2,0 és OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols)
-  * [Engedélyezési kód flow a OAuth 2,0-ben](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow) és miért szükséges a PKCE
-  * [Delegált engedély vs alkalmazás engedélye](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#permissions)
-* [JWT-jogkivonat](https://docs.microsoft.com/azure/active-directory/develop/access-tokens), jogcímek és az aláíró kulcsok átállítása (a mintában szerepel)
+* Azure AD v2-végpontok a [Microsoft Identity platformon](../../active-directory/develop/index.yml)
+* Modern felhőalapú hitelesítés, például [OAuth 2,0 és OpenID Connect](../../active-directory/develop/active-directory-v2-protocols.md)
+  * [Engedélyezési kód flow a OAuth 2,0-ben](../../active-directory/develop/v2-oauth2-auth-code-flow.md) és miért szükséges a PKCE
+  * [Delegált engedély vs alkalmazás engedélye](../../active-directory/develop/developer-glossary.md#permissions)
+* [JWT-jogkivonat](../../active-directory/develop/access-tokens.md), jogcímek és az aláíró kulcsok átállítása (a mintában szerepel)
 
 ### <a name="prerequisite-code-and-installations"></a>Előfeltételként szükséges kód és telepítések
 
@@ -63,7 +63,7 @@ Nem kötelező, de javasoljuk, hogy Ismerje meg a következő fogalmakat az okta
 * Node.js telepítése. Itt töltheti le Node.js [https://nodejs.org](https://nodejs.org) . A NPM a telepítéshez tartozik.
 * Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 * Egy Azure Media Services-(AMS-) fiók.
-* @azure/msal-browserv 2.0, a [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) SDK termékcsalád egyik tagja a különböző ügyféloldali platformokhoz
+* @azure/msal-browserv 2.0, a [Microsoft Authentication Library (MSAL)](../../active-directory/develop/msal-overview.md) SDK termékcsalád egyik tagja a különböző ügyféloldali platformokhoz
 * A [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)legújabb verziója (a minta része)
 * FPS hitelesítő adatok az Apple-től, ha a FairPlay DRM-t és az CORS-ben üzemeltetett alkalmazás-tanúsítványt is szeretné használni az ügyféloldali JavaScript használatával.
 
@@ -98,7 +98,7 @@ Az alrendszer kialakítása az alábbi ábrán látható.  Három rétegből ál
 
 ![JWT-tokenek elemzésére szolgáló képernyő](media/aad-ams-content-protection/subsystem.svg)
 
-Az alrendszersel kapcsolatos további részletekért olvassa el a [multi-DRM tartalomkezelő rendszer kialakítását az Access Control](https://docs.microsoft.com/azure/media-services/latest/design-multi-drm-system-with-access-control) használatával.
+Az alrendszersel kapcsolatos további részletekért olvassa el a [multi-DRM tartalomkezelő rendszer kialakítását az Access Control](./design-multi-drm-system-with-access-control.md) használatával.
 
 ## <a name="understand-the-single-page-app"></a>Az egyoldalas alkalmazás megismerése
 
@@ -339,7 +339,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 }
 ```
 
-A *groups* jogcím egy [korlátozott jogcímek készletének](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claim-sets) tagja az Azure ad-ben.
+A *groups* jogcím egy [korlátozott jogcímek készletének](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets) tagja az Azure ad-ben.
 
 #### <a name="test"></a>Teszt
 
@@ -371,12 +371,12 @@ Az ügyfél ezután megkeresheti a beállításokat, bejelentkezhet a vendég fi
 
 Előfordulhat, hogy a Microsoft-előfizetéssel rendelkező Microsoft-bérlőben vagy a Microsoft-előfizetéssel rendelkező egyéni bérlőn belül a mintaoldat is be van állítva. Az Azure Media Service-példány a Bérlővel egy másik előfizetésből is származhat.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 > [!WARNING]
 > Ha nem folytatja az alkalmazás használatát, törölje az oktatóanyag követése során létrehozott erőforrásokat. Ellenkező esetben fizetni kell rájuk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Gyors útmutató: tartalom titkosítása](encrypt-content-quickstart.md)

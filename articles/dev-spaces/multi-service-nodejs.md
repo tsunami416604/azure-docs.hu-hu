@@ -1,18 +1,18 @@
 ---
-title: 'Több függő szolgáltatás futtatása: Node. js & Visual Studio Code'
+title: 'Több függő szolgáltatás futtatása: Node.js & Visual Studio Code'
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy több szolgáltatásból álló Node. js-alkalmazás hibakereséséhez az Azure Kubernetes szolgáltatásban
+description: Ez az oktatóanyag bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy több szolgáltatásból álló Node.js alkalmazások hibakereséséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
-ms.openlocfilehash: a5fa0aae3a966dd96ee95e6bcafc3b2eec4e6837
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2c87dedda1db97a033526c809de735fe036120ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438294"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006982"
 ---
-# <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Több függő szolgáltatás futtatása: Node. js és Visual Studio Code az Azure dev Spaces-szel
+# <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>Több függő szolgáltatás futtatása: a Node.js és a Visual Studio Code az Azure dev Spaces-szel
 
 Ebből az oktatóanyagból megtudhatja, hogyan fejleszthet többszolgáltatásos alkalmazásokat az Azure dev Spaces használatával, valamint a dev Spaces által biztosított további előnyökkel.
 
@@ -20,10 +20,10 @@ Ebből az oktatóanyagból megtudhatja, hogyan fejleszthet többszolgáltatásos
 
 Ebben a szakaszban egy második, `mywebapi` nevű szolgáltatást fog létrehozni, és a `webfrontend` használatával fogja hívni azt. Minden szolgáltatás különálló tárolókban fut. Ezt követően hibakeresést fog futtatni mindkét tárolóban.
 
-![](media/common/multi-container.png)
+![Az ábrán a webfrontend szolgáltatás hívása látható (amelyet a nyíl jelez) a mywebapi szolgáltatás.](media/common/multi-container.png)
 
 ### <a name="open-sample-code-for-mywebapi"></a>Mintakód megnyitása a *mywebapi* szolgáltatáshoz
-`mywebapi` Ehhez az útmutatóhoz már egy nevű `samples` mappában (ha nem, https://github.com/Azure/dev-spaces válassza a **klónozás vagy a letöltés** lehetőséget a GitHub-tárház letöltéséhez). Ennek a szakasznak a kódja a `samples/nodejs/getting-started/mywebapi`következő:.
+`mywebapi`Ehhez az útmutatóhoz már egy nevű mappában `samples` (ha nem, https://github.com/Azure/dev-spaces válassza a **klónozás vagy a letöltés** lehetőséget a GitHub-tárház letöltéséhez). Ennek a szakasznak a kódja a következő: `samples/nodejs/getting-started/mywebapi` .
 
 ### <a name="run-mywebapi"></a>A *mywebapi* szolgáltatás futtatása
 1. Nyissa meg a `mywebapi` mappát egy *különálló VS Code-ablakban*.
@@ -62,12 +62,12 @@ Az előző példakód továbbítja az `azds-route-as` fejlécet a bejövő kére
 
 ### <a name="debug-across-multiple-services"></a>Hibakeresés több szolgáltatásban
 1. Ezen a ponton a `mywebapi` elvileg még mindig fut a hozzácsatolt hibakeresővel. Ha nem fut, nyomja le az F5 billentyűt a `mywebapi` projektben.
-1. Állítson be egy töréspontot az `/` alapértelmezett Get kezelőn belül a [8 `server.js`. sorban ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/mywebapi/server.js#L8).
+1. Állítson be egy töréspontot az alapértelmezett GET `/` Kezelőn belül a [ `server.js` 8. sorban ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/mywebapi/server.js#L8).
 1. A `webfrontend` projektben állítson be egy töréspontot, mielőtt az GET kérést küld a `http://mywebapi` felé.
 1. Nyomja le az F5 billentyűt a `webfrontend` projektben.
 1. Nyissa meg a webalkalmazást, és tekintse át a kódot mindkét szolgáltatásban. A webalkalmazásban a két szolgáltatás által összefűzött üzenetnek kell megjelennie: „Üdvözöljük a webfrontendben és Üdvözöljük a mywebapiban.”
 
-### <a name="well-done"></a>Remek!
+### <a name="well-done"></a>Szép munka!
 Most már rendelkezik egy többtárolós alkalmazással, ahol az egyes tárolók külön-külön fejleszthetők és helyezhetők üzembe.
 
 ## <a name="next-steps"></a>További lépések

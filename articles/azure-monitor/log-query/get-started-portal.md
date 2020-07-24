@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798255"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075331"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Oktatóanyag: Log Analytics lekérdezések első lépései
 
@@ -189,9 +189,9 @@ Lekérdezés mentése:
    
    A lekérdezés függvényként való mentéséhez adjon meg egy **függvény aliast**, amely egy rövid név a lekérdezés meghívásához használni kívánt egyéb lekérdezések számára.
    
-1. Adja meg a lekérdezéshez használni kívánt **lekérdezési tallózó** **kategóriáját** .
+1. Ha Log Analytics munkaterületen található, adjon meg egy **kategóriát** a lekérdezési **tallózó** számára a lekérdezéshez. (A kategóriák nem érhetők el az Applications-lekérdezések lekérdezéséhez)
    
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
    
    ![Függvény mentése](media/get-started-portal/save-function.png)
 
@@ -202,6 +202,10 @@ Mentett lekérdezés betöltéséhez válassza a jobb felső sarokban találhat�
 
 ### <a name="export-and-share-queries"></a>Lekérdezések exportálása és megosztása
 Egy lekérdezés exportálásához válassza az **Exportálás** lehetőséget a felső sávon, majd válassza az **Exportálás CSV-ként – minden oszlop**, **Exportálás CSV-ben megjelenített oszlopokra**lehetőséget, vagy **exportálja Power bi (M lekérdezés)** értékre a legördülő listából.
+
+A következő videó bemutatja, hogyan integrálhatja Log Analytics az Excelben.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Asme]
 
 Ha egy lekérdezésre mutató hivatkozást szeretne megosztani, válassza a felső sávon a **hivatkozás másolása** lehetőséget, majd válassza a **hivatkozás másolása lekérdezéshez**, a **lekérdezési szöveg másolása**vagy a **lekérdezési eredmények** másolása lehetőséget a vágólapra másoláshoz. A lekérdezési hivatkozást elküldheti másoknak is, akik ugyanahhoz a munkaterülethez férnek hozzá.
 

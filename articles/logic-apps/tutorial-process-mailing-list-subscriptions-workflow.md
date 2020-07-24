@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: 7d7f573e5b18e6e0e63d3275aecefe408a9143fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c1ed32a95864c20690607912bc32c01e3e597a65
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75456611"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048602"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Oktatóanyag: automatikus jóváhagyási alapú munkafolyamatok létrehozása Azure Logic Apps használatával
 
@@ -47,30 +47,30 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja h
 
 ## <a name="create-your-logic-app"></a>A logikai alkalmazás létrehozása
 
-1. Az Azure fő menüjében válassza az **erőforrás** > létrehozása**integrációs** > **logikai alkalmazás**lehetőséget.
+1. Az Azure fő menüjében válassza az **erőforrás létrehozása**  >  **integrációs**  >  **logikai alkalmazás**lehetőséget.
 
    ![Új logikai alkalmazás erőforrásának létrehozása](./media/tutorial-process-mailing-list-subscriptions-workflow/create-new-logic-app-resource.png)
 
-1. A **Logikai alkalmazás létrehozása** területen adja meg a logikai alkalmazás alábbi adatait az itt látható módon. Amikor elkészült, válassza a **Létrehozás** lehetőséget.
+1. A **Logikai alkalmazás létrehozása** területen adja meg a logikai alkalmazás alábbi adatait az itt látható módon. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
    ![Adja meg a logikai alkalmazással kapcsolatos információkat](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
-   | **Név** | LA-MailingList | A logikai alkalmazás neve, amely csak betűket, számokat`-`, kötőjeleket (), aláhúzásokat (`_`), zárójeleket (`(`, `)`) és pontokat (`.`) tartalmazhat. Ez a példa a "LA-MailingList" kifejezést használja. |
+   | **Név** | LA-MailingList | A logikai alkalmazás neve, amely csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ), zárójeleket ( `(` , `)` ) és pontokat ( `.` ) tartalmazhat. Ez a példa a "LA-MailingList" kifejezést használja. |
    | **Előfizetés** | <*saját-Azure-előfizetés-név*> | Az Azure-előfizetés neve |
    | **Erőforráscsoport** | LA-MailingList-RG | A kapcsolódó erőforrások rendszerezéséhez használt [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md)neve. Ez a példa a "LA-MailingList-RG" protokollt használja. |
    | **Hely** | USA nyugati régiója | A logikai alkalmazás adatainak tárolására szolgáló AA-régió. Ez a példa a "West US"-t használja. |
-   | **Log Analytics** | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. |
+   | **Naplóelemzés** | Kikapcsolva | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. |
    ||||
 
-1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztáron válassza az **értesítések** > **Ugrás az erőforráshoz** lehetőséget a telepített logikai alkalmazáshoz.
+1. Miután az Azure üzembe helyezte az alkalmazást, az Azure eszköztáron válassza az **értesítések**  >  **Ugrás az erőforráshoz** lehetőséget a telepített logikai alkalmazáshoz.
 
    ![Ugrás az új Logic app-erőforrásra](./media/tutorial-process-mailing-list-subscriptions-workflow/go-to-logic-app-resource.png)
 
    Vagy megkeresheti és kiválaszthatja a logikai alkalmazást úgy, hogy beírja a nevet a keresőmezőbe.
 
-   Megnyílik a Logic Apps Designer, és egy bemutató videót és gyakran használt triggereket és logikai alkalmazási mintákat tartalmazó oldalt jelenít meg. A **Sablonok** területen válassza az **Üres logikai alkalmazás** elemet.
+   Megnyílik a Logic Apps Designer, és egy bemutató videót és gyakran használt triggereket és logikai alkalmazási mintákat tartalmazó oldalt jelenít meg. A **Sablonok** szakaszban válassza az **Üres logikai alkalmazás** lehetőséget.
 
    ![Üres logikai alkalmazás sablonjának kiválasztása](./media/tutorial-process-mailing-list-subscriptions-workflow/select-logic-app-template.png)
 
@@ -98,7 +98,7 @@ Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.m
       | Tulajdonság | Érték | Leírás |
       |----------|-------|-------------|
       | **Mappa** | `Inbox` | A monitorozni kívánt e-mail-mappa |
-      | **Időköz** | `1` | Az ellenőrzések között kivárt intervallumok száma |
+      | **Intervallum** | `1` | Az ellenőrzések között kivárt intervallumok száma |
       | **Gyakoriság** | `Hour` | Az ismétlődéshez használni kívánt időegység |
       ||||
 
@@ -106,7 +106,7 @@ Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.m
 
       ![A "tulajdonos szűrő" tulajdonság hozzáadása az aktiváláshoz](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-add-properties.png)
 
-      Az trigger tulajdonságaival kapcsolatos további információkért tekintse meg az [Office 365 Outlook Connector-referenciát](https://docs.microsoft.com/connectors/office365/) vagy az [Outlook.com-összekötő referenciáját](https://docs.microsoft.com/connectors/outlook/).
+      Az trigger tulajdonságaival kapcsolatos további információkért tekintse meg az [Office 365 Outlook Connector-referenciát](/connectors/office365/) vagy az [Outlook.com-összekötő referenciáját](/connectors/outlook/).
 
    1. Miután a tulajdonság megjelenik az triggerben, írja be a következő szöveget:`subscribe-test-members-ML`
 
@@ -138,14 +138,14 @@ Most, hogy van egy triggere, adjon hozzá egy [műveletet](../logic-apps/logic-a
 
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
-   | **Címzett** | <*saját e-mail cím*> | A jóváhagyó e-mail-címe. Tesztelési célokra használhatja a saját címét. Ez a példa a kitaláltsophia.owen@fabrikam.com"" e-mail-címet használja. |
+   | **Hogy** | <*saját e-mail cím*> | A jóváhagyó e-mail-címe. Tesztelési célokra használhatja a saját címét. Ez a példa a kitalált " sophia.owen@fabrikam.com " e-mail-címet használja. |
    | **Tárgy** | `Approve member request for test-members-ML` | Egy leíró e-mail-tárgy |
    | **Felhasználói választási lehetőségek** | `Approve, Reject` | A jóváhagyó által választható válaszok. Alapértelmezés szerint a jóváhagyó a válaszként a "jóváhagyás" vagy az "elutasítás" lehetőséget is választhatja. |
    ||||
 
    Egyelőre hagyja figyelmen kívül a dinamikus tartalmak listáját, amely akkor jelenik meg, amikor rákattint a megadott szerkesztési mezőkre. Ez a lista lehetővé teszi, hogy az előző műveletekből származó elérhető kimenetet válassza, amelyet bemenetként használhat a munkafolyamatban.
 
-   A művelet tulajdonságaival kapcsolatos további információkért tekintse meg az [Office 365 Outlook Connector-referenciát](https://docs.microsoft.com/connectors/office365/) vagy az [Outlook.com-összekötő referenciáját](https://docs.microsoft.com/connectors/outlook/).
+   A művelet tulajdonságaival kapcsolatos további információkért tekintse meg az [Office 365 Outlook Connector-referenciát](/connectors/office365/) vagy az [Outlook.com-összekötő referenciáját](/connectors/outlook/).
  
 1. Mentse a logikai alkalmazást.
 
@@ -193,7 +193,7 @@ Most adjon hozzá egy műveletet, amely hozzáadja a jóváhagyott tagot a level
 
 1. A feltétel **igaz** ága esetén válassza a **művelet hozzáadása**lehetőséget.
 
-1. A **válasszon műveletet**területen adja meg `mailchimp` a szűrőt, és válassza a **tag hozzáadása a listához** műveletet.
+1. A **válasszon műveletet**területen adja meg a `mailchimp` szűrőt, és válassza a **tag hozzáadása a listához** műveletet.
 
    ![Válassza a "tag hozzáadása a listához" műveletet.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -205,12 +205,12 @@ Most adjon hozzá egy műveletet, amely hozzáadja a jóváhagyott tagot a level
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Listaazonosító** | Igen | `test-members-ML` | A MailChimp levelezési lista neve. Ez a példa a "test-Members-ML" kifejezést használja. |
-   | **Állapot** | Igen | `subscribed` | Válassza ki az új tag előfizetési állapotát. Ez a példa az "előfizetett" kifejezést használja. <p>További információ: [Feliratkozók kezelése a MailChimp API-val](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
-   | **E-mail-cím** | Igen | <*új tag – e-mail-cím*> | A dinamikus tartalmak listájából **válassza ki az** új **üzenet érkezésekor**lehetőséget, amely az új tag e-mail-címét adja meg. |
+   | **Listaazonosító** | Yes | `test-members-ML` | A MailChimp levelezési lista neve. Ez a példa a "test-Members-ML" kifejezést használja. |
+   | **Állapot** | Yes | `subscribed` | Válassza ki az új tag előfizetési állapotát. Ez a példa az "előfizetett" kifejezést használja. <p>További információ: [Feliratkozók kezelése a MailChimp API-val](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/). |
+   | **E-mail-cím** | Yes | <*új tag – e-mail-cím*> | A dinamikus tartalmak listájából **válassza ki az** új **üzenet érkezésekor**lehetőséget, amely az új tag e-mail-címét adja meg. |
    ||||
 
-   További információ a művelet tulajdonságairól: [MailChimp-összekötő leírása](https://docs.microsoft.com/connectors/mailchimp/).
+   További információ a művelet tulajdonságairól: [MailChimp-összekötő leírása](/connectors/mailchimp/).
 
 1. Mentse a logikai alkalmazást.
 
@@ -248,7 +248,7 @@ Ezután állítsa be az elküldendő e-maileket, amelyek arról értesítik, hog
 
    ![A "ha igaz" ág esetében válassza a "művelet hozzáadása" lehetőséget.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success.png)
 
-1. A **válasszon műveletet**területen a keresőmezőbe írja be `outlook send email` szűrőként a kifejezést, majd válassza az **e-mail küldése** műveletet.
+1. A **válasszon műveletet**területen a keresőmezőbe írja be szűrőként a kifejezést, `outlook send email` majd válassza az **e-mail küldése** műveletet.
 
    !["E-mail küldése" művelet hozzáadása](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-2.png)
 
@@ -260,9 +260,9 @@ Ezután állítsa be az elküldendő e-maileket, amelyek arról értesítik, hog
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Címzett** | Igen | <*saját e-mail cím*> | Az e-mail-cím, amelyre a sikeres műveletet jelző e-mail érkezik. Tesztelési célokra használhatja a saját e-mail-címét. |
-   | **Tárgy** | Igen | <*tulajdonos – siker – e-mail*> | A sikeres műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`Success! Member added to "test-members-ML": ` <p>A dinamikus tartalom listából válassza ki az **E-mail cím** tulajdonságot a **tag hozzáadása a listához**területen. |
-   | **Törzs** | Igen | <*törzs a sikerhez – e-mail*> | A sikeres műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`New member has joined "test-members-ML":` <p>A dinamikus tartalom listából válassza ki az **E-mail cím** tulajdonságot. <p>A következő sorban adja meg ezt a szöveget:`Member opt-in status: ` <p> A dinamikus tartalom listából válassza ki az **állapot** tulajdonságot a **tag hozzáadása a listához**területen. |
+   | **Hogy** | Yes | <*saját e-mail cím*> | Az e-mail-cím, amelyre a sikeres műveletet jelző e-mail érkezik. Tesztelési célokra használhatja a saját e-mail-címét. |
+   | **Tárgy** | Yes | <*tulajdonos – siker – e-mail*> | A sikeres műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`Success! Member added to "test-members-ML": ` <p>A dinamikus tartalom listából válassza ki az **E-mail cím** tulajdonságot a **tag hozzáadása a listához**területen. |
+   | **Törzs** | Yes | <*törzs a sikerhez – e-mail*> | A sikeres műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`New member has joined "test-members-ML":` <p>A dinamikus tartalom listából válassza ki az **E-mail cím** tulajdonságot. <p>A következő sorban adja meg ezt a szöveget:`Member opt-in status: ` <p> A dinamikus tartalom listából válassza ki az **állapot** tulajdonságot a **tag hozzáadása a listához**területen. |
    |||||
 
 1. Mentse a logikai alkalmazást.
@@ -273,7 +273,7 @@ Ezután állítsa be az elküldendő e-maileket, amelyek arról értesítik, hog
 
    ![A "If false" (hamis) ág esetében válassza a "művelet hozzáadása" lehetőséget.](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed.png)
 
-1. A **válasszon műveletet**területen a keresőmezőbe írja be `outlook send email` szűrőként a kifejezést, majd válassza az **e-mail küldése** műveletet.
+1. A **válasszon műveletet**területen a keresőmezőbe írja be szűrőként a kifejezést, `outlook send email` majd válassza az **e-mail küldése** műveletet.
 
    ![E-mail küldése művelet hozzáadása](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-2.png)
 
@@ -285,9 +285,9 @@ Ezután állítsa be az elküldendő e-maileket, amelyek arról értesítik, hog
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Címzett** | Igen | <*saját e-mail cím*> | Az e-mail-cím, amelyre a sikertelen műveletet jelző e-mail érkezik. Tesztelési célokra használhatja a saját e-mail-címét. |
-   | **Tárgy** | Igen | <*hiba tárgya – e-mail*> | A sikertelen műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`Failed, member not added to "test-members-ML": ` <p>A dinamikus tartalom listából válassza ki az **E-mail cím** tulajdonságot a **tag hozzáadása a listához**területen. |
-   | **Törzs** | Igen | <*törzs – hiba – e-mail*> | A sikertelen műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`Member might already exist. Check your MailChimp account.` |
+   | **Hogy** | Yes | <*saját e-mail cím*> | Az e-mail-cím, amelyre a sikertelen műveletet jelző e-mail érkezik. Tesztelési célokra használhatja a saját e-mail-címét. |
+   | **Tárgy** | Yes | <*hiba tárgya – e-mail*> | A sikertelen műveletet jelző e-mail tárgya. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`Failed, member not added to "test-members-ML": ` <p>A dinamikus tartalom listából válassza ki az **E-mail cím** tulajdonságot a **tag hozzáadása a listához**területen. |
+   | **Törzs** | Yes | <*törzs – hiba – e-mail*> | A sikertelen műveletet jelző e-mail szövegtörzse. Ebben az oktatóanyagban adja meg a következő szöveget: <p>`Member might already exist. Check your MailChimp account.` |
    |||||
 
 1. Mentse a logikai alkalmazást. 
@@ -318,13 +318,13 @@ Következő lépésként tesztelje a logikai alkalmazást, amely most az alábbi
 
 Gratulálunk, sikeresen létrehozott és futtatott egy logikai alkalmazást, amely adatokat integrál különböző Azure- és Microsoft-szolgáltatások, illetve egyéb SaaS-alkalmazások között.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége a minta logikai alkalmazásra, törölje a logikai alkalmazást és a kapcsolódó erőforrásokat tartalmazó erőforráscsoportot. 
 
 1. Az Azure főmenüjében lépjen az **Erőforráscsoportok** elemre, és válassza ki a logikai alkalmazás erőforráscsoportját.
 
-1. Az erőforráscsoport menüben válassza az **Áttekintés** > az**erőforráscsoport törlése**elemet. 
+1. Az erőforráscsoport menüben válassza az Áttekintés az **Overview**  >  **erőforráscsoport törlése**elemet. 
 
    ![„Áttekintés” > „Erőforráscsoport törlése”](./media/tutorial-process-mailing-list-subscriptions-workflow/delete-resource-group.png)
 

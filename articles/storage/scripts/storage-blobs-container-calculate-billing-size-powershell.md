@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 12b32256c91dfcf93ca55eeb348cc78613ba860e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f8bd47a8fde700382f9789ab1c77ff35e9b1f4f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067109"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999530"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>BLOB-tároló teljes számlázási méretének kiszámítása
 
@@ -33,7 +33,7 @@ A blob-tároló teljes mérete magában foglalja a tároló méretét, valamint 
 
 A következő szakasz ismerteti, hogyan számítja ki a tárolási kapacitást a blob-tárolók és a Blobok számára.A következő szakaszban a len (X) a karakterláncban szereplő karakterek számát jelenti.
 
-### <a name="blob-containers"></a>BLOB-tárolók
+### <a name="blob-containers"></a>Blobtárolók
 
 A következő számítás azt ismerteti, hogyan lehet megbecsülni a blob-tárolók által felhasznált tárterület méretét:
 
@@ -120,6 +120,6 @@ A következő részletezés:
 
 - Az Azure Storage számlázási szolgáltatásával kapcsolatos további információkért lásd: a [Windows Azure Storage szolgáltatás számlázásának ismertetése](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-- További információ a Azure PowerShell modullal kapcsolatban: [Azure PowerShell dokumentáció](https://docs.microsoft.com/powershell/azure/overview).
+- További információ a Azure PowerShell modullal kapcsolatban: [Azure PowerShell dokumentáció](https://docs.microsoft.com/powershell/azure/).
 
 - Az [Azure Storage](../blobs/storage-samples-blobs-powershell.md)-hoz készült PowerShell-minták további Storage PowerShell-parancsfájlokat is találhatnak.

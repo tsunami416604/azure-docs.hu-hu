@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d269b95e5e6fb8491afd4c2f9729cbb047cf3419
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7fe1c01542df2fcc38982fe2a30f9e94c712eacb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100447"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065252"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása és üzembe helyezése az Azure PowerShell-lel
 
@@ -37,17 +37,17 @@ Vegyünk például egy tipikus virtuálisgép-alapú megoldást négy előtérbe
 
 Használjon rendelkezésre állási csoportokat, ha megbízható VM-alapú megoldásokat szeretne üzembe helyezni az Azure-ban.
 
-## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 ## <a name="create-an-availability-set"></a>Rendelkezésre állási csoport létrehozása
 
 Az egy adott helyen lévő hardver több frissítési és a tartalék tartományra van osztva. A **frissítési tartomány** virtuális gépek és mögöttes fizikai hardverelemek csoportja, amelyek egyszerre indíthatók újra. Az egyazon **tartalék tartományba** tartozó virtuális gépek közös tárolóval, valamint közös áramforrással és hálózati kapcsolóval rendelkeznek.  
 
-A [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset)használatával létrehozhat egy rendelkezésre állási készletet. Ebben a példában a frissítési és a tartalék tartományok száma *2* , a rendelkezésre állási csoport neve pedig *myAvailabilitySet*.
+A [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset)használatával létrehozhat egy rendelkezésre állási készletet. Ebben a példában a frissítési és a tartalék tartományok száma *2* , a rendelkezésre állási csoport neve pedig *myAvailabilitySet*.
 
 Hozzon létre egy erőforráscsoportot.
 
@@ -57,7 +57,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-Hozzon létre egy felügyelt rendelkezésre állási készletet `-sku aligned` a [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) és a paraméter használatával.
+Hozzon létre egy felügyelt rendelkezésre állási készletet a [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) és a `-sku aligned` paraméter használatával.
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -73,15 +73,15 @@ New-AzAvailabilitySet `
 A virtuális gépeket a rendelkezésre állási csoporton belül kell létrehozni annak biztosításához, hogy megfelelően legyenek elosztva a hardveren. A létrehozás után nem adhat hozzá meglévő virtuális gépet egy rendelkezésre állási csoporthoz. 
 
 
-Amikor [új AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)hoz létre egy virtuális gépet, a `-AvailabilitySetName` paraméter használatával megadhatja a rendelkezésre állási csoport nevét.
+Amikor [új AzVM](/powershell/module/az.compute/new-azvm)hoz létre egy virtuális gépet, a `-AvailabilitySetName` paraméter használatával megadhatja a rendelkezésre állási csoport nevét.
 
-Először a [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) paranccsal állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát:
+Először a [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) paranccsal állítsa be a virtuális gép rendszergazdai felhasználónevét és jelszavát:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Most hozzon létre két virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) a rendelkezésre állási csoporton belül.
+Most hozzon létre két virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm) a rendelkezésre állási csoporton belül.
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -101,13 +101,13 @@ for ($i=1; $i -le 2; $i++)
 
 A két virtuális gép létrehozása és konfigurálása néhány percet vesz igénybe. Ha befejeződött, két virtuális géppel rendelkezik majd elosztva a mögöttes hardveren. 
 
-Ha megtekinti a rendelkezésre állási **csoportot** > a portálon, az erőforráscsoportok**myResourceGroupAvailability** > **myAvailabilitySet**, látnia kell, hogyan oszlanak meg a virtuális gépek a két hiba és a frissítési tartomány között.
+Ha megtekinti a rendelkezésre állási csoportot a portálon, az **erőforráscsoportok**  >  **myResourceGroupAvailability**  >  **myAvailabilitySet**, látnia kell, hogyan oszlanak meg a virtuális gépek a két hiba és a frissítési tartomány között.
 
 ![Rendelkezésre állási csoport a portálon](./media/tutorial-availability-sets/fd-ud.png)
 
 ## <a name="check-for-available-vm-sizes"></a>Elérhető virtuálisgép-méretek ellenőrzése 
 
-Amikor létrehoz egy virtuális gépet egy rendelkezésre állási csoporton belül, tudnia kell, hogy milyen virtuálisgép-méretek érhetők el a hardveren. Használja a [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) parancsot a rendelkezésre állási csoportba központilag telepíthető virtuális gépek összes elérhető méretének lekéréséhez.
+Amikor létrehoz egy virtuális gépet egy rendelkezésre állási csoporton belül, tudnia kell, hogy milyen virtuálisgép-méretek érhetők el a hardveren. Használja a [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) parancsot a rendelkezésre állási csoportba központilag telepíthető virtuális gépek összes elérhető méretének lekéréséhez.
 
 ```azurepowershell-interactive
 Get-AzVMSize `
@@ -136,5 +136,3 @@ Folytassa a következő oktatóanyaggal, amely a virtuálisgép-méretezési cso
 
 > [!div class="nextstepaction"]
 > [Virtuálisgép-méretezési csoport létrehozása](tutorial-create-vmss.md)
-
-

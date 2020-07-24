@@ -13,17 +13,17 @@ ms.topic: tutorial
 ms.date: 07/09/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2ab87990981f08164bb47cef9eaa1876514f1ad6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e5c74f6356c8b07cfef923dfb5e12547aa4693ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202845"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053557"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Oktatóanyag: videók elemzése Media Services v3-val
 
 > [!NOTE]
-> Bár ez az oktatóanyag a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használja, az általános lépések megegyeznek [a REST API](https://docs.microsoft.com/rest/api/media/liveevents), a [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetében.
+> Bár ez az oktatóanyag a [.net SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -példákat használja, az általános lépések megegyeznek [a REST API](/rest/api/media/liveevents), a [CLI](/cli/azure/ams/live-event?view=azure-cli-latest)vagy más támogatott [SDK](media-services-apis-overview.md#sdks)-k esetében.
 
 Az oktatóanyag bemutatja, hogyan elemezhet videókat az Azure Media Serviceszel. Bizonyos esetekben szüksége lehet a rögzített video- és audiotartalmak részletesebb elemzésére. Egy vállalatnál például a vásárlói elégedettség növelése érdekében szükség lehet a beszéd szöveggé alakítására, hogy az ügyfélszolgálati beszélgetéseket kereshető katalógussá alakítsák, amelyhez indexek és irányítópultok érhetőek el. Ezután betekintést nyerhetnek a vállalatba. Ezek az információk tartalmazzák a gyakori panaszok listáját, az ilyen panaszok forrásait és egyéb hasznos információkat.
 
@@ -45,8 +45,8 @@ Fontos megjegyezni, hogy meg kell felelnie a Video Indexer használatának össz
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nincs telepítve a Visual Studio, szerezze be a [Visual Studio Community 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)-es frissítést.
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).<br/>Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
-- Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](access-api-cli-how-to.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md).<br/>Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
+- Kövesse a [Azure Media Services API-nak az Azure CLI-vel való elérésének](./access-api-howto.md) lépéseit, és mentse a hitelesítő adatokat. Ezeket az API-k eléréséhez kell használnia.
 
 ## <a name="download-and-configure-the-sample"></a>A minta letöltése és konfigurálása
 
@@ -58,7 +58,7 @@ Klónozza a gépre a .NET-mintát tartalmazó GitHub-adattárat a következő pa
 
 A minta az [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos) mappában található.
 
-Nyissa meg [appsettings.jsa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) letöltött projektben. Cserélje le az értékeket az API-khoz [való hozzáféréshez](access-api-cli-how-to.md)kapott hitelesítő adatokkal.
+Nyissa meg [appsettings.jsa](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) letöltött projektben. Cserélje le az értékeket az API-khoz [való hozzáféréshez](./access-api-howto.md)kapott hitelesítő adatokkal.
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>A megadott videót elemző kód vizsgálata
 
@@ -84,33 +84,33 @@ Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre 
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Bemeneti objektum létrehozása és helyi fájl feltöltés az objektumba 
 
-A **CreateInputAsset** függvény létrehoz egy új bemeneti [objektumot](https://docs.microsoft.com/rest/api/media/assets), és feltölti az objektumba a megadott helyi videofájlt. Az objektum lesz a kódolási feladat bemenete. A Media Services 3-as verziójában a feladat bemenete lehet egy objektum vagy egy olyan tartalom, amelyet egy HTTPS URL-cím használatával tesz elérhetővé a Media Services-fiók számára. A HTTPS URL-címekről történő kódolásról [ebben](job-input-from-http-how-to.md) a cikkben talál további információt.  
+A **CreateInputAsset** függvény létrehoz egy új bemeneti [objektumot](/rest/api/media/assets), és feltölti az objektumba a megadott helyi videofájlt. Az objektum lesz a kódolási feladat bemenete. A Media Services 3-as verziójában a feladat bemenete lehet egy objektum vagy egy olyan tartalom, amelyet egy HTTPS URL-cím használatával tesz elérhetővé a Media Services-fiók számára. A HTTPS URL-címekről történő kódolásról [ebben](job-input-from-http-how-to.md) a cikkben talál további információt.  
 
 A Media Services 3-as verziójában Azure Storage API-k használatával tölthet fel fájlokat. Ennek módját a következő .NET-kódrészlet mutatja be.
 
 A következő függvény hajtja végre ezeket a műveleteket:
 
 * Létrehoz egy eszközt.
-* Egy írható [sas URL-cím](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) beolvasása az eszköz tárolójában a [tárolóban](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container).
+* Egy írható [sas URL-cím](../../storage/common/storage-sas-overview.md) beolvasása az eszköz tárolójában a [tárolóban](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container).
 
-    Ha az eszköz [ListContainerSas](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) funkcióját használja a sas URL-címek beszerzéséhez, vegye figyelembe, hogy a függvény több sas URL-címet ad vissza, mivel mindegyik Storage-fiókhoz két Storage-fiók kulcsa van. A Storage-fiók két kulccsal rendelkezik, mert lehetővé teszi a Storage-fiókok kulcsainak zökkenőmentes rotációját (például egy másik, az új kulcs használatának megkezdése és a másik kulcs elforgatása). Az 1. SAS URL-cím a Storage key1 és a második tárolási key2 jelöli.
+    Ha az eszköz [ListContainerSas](/rest/api/media/assets/listcontainersas) funkcióját használja a sas URL-címek beszerzéséhez, vegye figyelembe, hogy a függvény több sas URL-címet ad vissza, mivel mindegyik Storage-fiókhoz két Storage-fiók kulcsa van. A Storage-fiók két kulccsal rendelkezik, mert lehetővé teszi a Storage-fiókok kulcsainak zökkenőmentes rotációját (például egy másik, az új kulcs használatának megkezdése és a másik kulcs elforgatása). Az 1. SAS URL-cím a Storage key1 és a második tárolási key2 jelöli.
 * Feltölti a fájlt a Storage tárolóba a SAS URL-cím használatával.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateInputAsset)]
 
 ### <a name="create-an-output-asset-to-store-the-result-of-the-job"></a>Kimeneti objektum létrehozása a feladat eredményeinek tárolásához
 
-A kimeneti [objektum](https://docs.microsoft.com/rest/api/media/assets) tárolja a feladat eredményeit. A projekt határozza meg a **DownloadResults** függvényt, amely letölti az eredményt ebből a kimeneti objektumból az „output” mappába, hogy megtekinthesse.
+A kimeneti [objektum](/rest/api/media/assets) tárolja a feladat eredményeit. A projekt határozza meg a **DownloadResults** függvényt, amely letölti az eredményt ebből a kimeneti objektumból az „output” mappába, hogy megtekinthesse.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateOutputAsset)]
 
 ### <a name="create-a-transform-and-a-job-that-analyzes-videos"></a>Átalakítás és videókat elemző feladat létrehozása
 
-A Media Services tartalmának kódolásakor vagy feldolgozásakor gyakori minta a kódolási beállítások beállítása Receptként. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Új feladatok elküldésével minden új videóhoz ezt a receptet alkalmazza a könyvtárában lévő összes videóra. Media Services egy receptet **átalakítónak**nevezzük. További információ: [átalakítások és feladatok](transform-concept.md). Az ebben az oktatóanyagban leírt minta meghatároz egy receptet a megadott videó elemzésére.
+A Media Services tartalmának kódolásakor vagy feldolgozásakor gyakori minta a kódolási beállítások beállítása Receptként. Ezután elküld egy **feladatot**, amely alkalmazza ezt a receptet egy videóra. Új feladatok elküldésével minden új videóhoz ezt a receptet alkalmazza a könyvtárában lévő összes videóra. Media Services egy receptet **átalakítónak**nevezzük. További információ: [átalakítások és feladatok](./transforms-jobs-concept.md). Az ebben az oktatóanyagban leírt minta meghatároz egy receptet a megadott videó elemzésére.
 
 #### <a name="transform"></a>Átalakítás
 
-Egy új [átalakításpéldány](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor meg kell adnia, milyen kimenetet szeretne létrehozni. A **TransformOutput** egy kötelező paraméter. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. Ebben a példában a rendszer a **VideoAnalyzerPreset** -készletet használja, és a nyelvet ("en-us") adja át a konstruktorának ( `new VideoAnalyzerPreset("en-US")` ). Ez az előzetes beállítás lehetővé teszi több audio- és videoelemzés elvégzését a videón. Az **AudioAnalyzerPreset** előzetes beállítás akkor lehet hasznos, ha több audioelemzést szeretne elvégezni a videón.
+Egy új [átalakításpéldány](/rest/api/media/transforms) létrehozásakor meg kell adnia, milyen kimenetet szeretne létrehozni. A **TransformOutput** egy kötelező paraméter. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. Ebben a példában a rendszer a **VideoAnalyzerPreset** -készletet használja, és a nyelvet ("en-us") adja át a konstruktorának ( `new VideoAnalyzerPreset("en-US")` ). Ez az előzetes beállítás lehetővé teszi több audio- és videoelemzés elvégzését a videón. Az **AudioAnalyzerPreset** előzetes beállítás akkor lehet hasznos, ha több audioelemzést szeretne elvégezni a videón.
 
 **Átalakítás**létrehozásakor először ellenőrizze, hogy a **Get** metódus használatával már létezik-e már az alábbi kódban látható módon. A Media Services 3-as verziója esetében a **Get** metódusok **null** értéket adnak vissza, ha az entitás nem létezik (a kis- és nagybetűket meg nem különböztető névellenőrzés történik).
 
@@ -118,7 +118,7 @@ Egy új [átalakításpéldány](https://docs.microsoft.com/rest/api/media/trans
 
 #### <a name="job"></a>Feladat
 
-Ahogy korábban említettük, az [átalakítási](https://docs.microsoft.com/rest/api/media/transforms) objektum a recept, a [feladat](https://docs.microsoft.com/rest/api/media/jobs) pedig maga a kérés a Media Services számára, hogy alkalmazza az adott **átalakítást** egy meghatározott bemeneti video- vagy audiotartalomra. A **feladatok** olyan információkat határoznak meg, mint a bemeneti videó helye és a kimenet helye. A videó helyét a következők használatával adhatja meg: HTTPS URL-címek, SAS URL-címek, vagy a Media Service-fiókban található objektumok.
+Ahogy korábban említettük, az [átalakítási](/rest/api/media/transforms) objektum a recept, a [feladat](/rest/api/media/jobs) pedig maga a kérés a Media Services számára, hogy alkalmazza az adott **átalakítást** egy meghatározott bemeneti video- vagy audiotartalomra. A **feladatok** olyan információkat határoznak meg, mint a bemeneti videó helye és a kimenet helye. A videó helyét a következők használatával adhatja meg: HTTPS URL-címek, SAS URL-címek, vagy a Media Service-fiókban található objektumok.
 
 A jelen példában a feladat bemeneti objektuma egy helyi videó.  
 
@@ -126,7 +126,7 @@ A jelen példában a feladat bemeneti objektuma egy helyi videó.
 
 ### <a name="wait-for-the-job-to-complete"></a>Várakozás a feladat befejeződésére
 
-A feladatok elvégzése hosszabb időt vesz igénybe. Ha igen, értesítést szeretne kapni. Több módon is kérhet értesítést a [feladat](https://docs.microsoft.com/rest/api/media/jobs) végrehajtásáról. A legegyszerűbb lehetőség (ez az itt látható) a lekérdezés használata.
+A feladatok elvégzése hosszabb időt vesz igénybe. Ha igen, értesítést szeretne kapni. Több módon is kérhet értesítést a [feladat](/rest/api/media/jobs) végrehajtásáról. A legegyszerűbb lehetőség (ez az itt látható) a lekérdezés használata.
 
 A lekérdezés nem ajánlott eljárás az üzemi alkalmazások számára a lehetséges késés miatt. Túlzott használat esetén a lekérdezés kapacitása korlátozott lehet egy adott fiókban. Fejlesztőknek inkább az Event Grid használata javasolt.
 
@@ -138,11 +138,11 @@ A **feladat** a következő állapotokon halad végig: **Ütemezve**, **Váróli
 
 ### <a name="job-error-codes"></a>Feladathibakódok
 
-Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Lásd: [hibakódok](/rest/api/media/jobs/get#joberrorcode).
 
 ### <a name="download-the-result-of-the-job"></a>A feladat eredményének letöltése
 
-A következő függvény letölti a kimeneti [eszköz](https://docs.microsoft.com/rest/api/media/assets) eredményeit a "kimenet" mappába, így ellenőrizheti a feladat eredményét.
+A következő függvény letölti a kimeneti [eszköz](/rest/api/media/assets) eredményeit a "kimenet" mappába, így ellenőrizheti a feladat eredményét.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 
@@ -152,7 +152,7 @@ A következő függvény letölti a kimeneti [eszköz](https://docs.microsoft.co
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
 
-## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
+## <a name="run-the-sample-app"></a>A mintaalkalmazás futtatása
 
 A *AnalyzeVideos* alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt.
 
@@ -160,9 +160,9 @@ A program futtatásakor a feladat külön miniatűrt hoz létre a videóban tal�
 
 ## <a name="examine-the-output"></a>A kimenet vizsgálata
 
-A videók elemzésekor keletkező kimeneti fájl neve insights.json. Ez a fájl tartalmazza a videó elemzésének eredményeit. A [médiaintelligenciával](intelligence-concept.md) kapcsolatos cikk részletesen leírja a json-fájl elemeit.
+A videók elemzésekor keletkező kimeneti fájl neve insights.json. Ez a fájl tartalmazza a videó elemzésének eredményeit. A [médiaintelligenciával](./analyzing-video-audio-files-concept.md) kapcsolatos cikk részletesen leírja a json-fájl elemeit.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az erőforráscsoportban lévő egyik erőforrásra sem, beleértve a jelen oktatóanyagban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott erőforráscsoportot.
 
@@ -180,7 +180,7 @@ A Azure Media Services v3 SDK-k nem a szálon biztonságosak. Többszálas alkal
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: fájlok feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)

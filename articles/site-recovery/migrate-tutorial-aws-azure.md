@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1070230d968a6239a5a4aab5ac412280393d17da
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: bcc0651bace15280127bb725c21b32673f8cdb6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133177"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071209"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag bemutatja, hogyan telepíthet át Amazon Web Services (AWS) v
 
 
 > [!TIP]
-> A Azure Site Recovery szolgáltatás helyett a Azure Migrate szolgáltatást kell használnia az AWS virtuális gépek Azure-ba való áttelepítéséhez. [További információk](../migrate/tutorial-migrate-physical-virtual-machines.md).
+> A Azure Site Recovery szolgáltatás helyett a Azure Migrate szolgáltatást kell használnia az AWS virtuális gépek Azure-ba való áttelepítéséhez. [További információ](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
 
 > [!div class="checklist"]
@@ -34,7 +34,7 @@ Ez az oktatóanyag bemutatja, hogyan telepíthet át Amazon Web Services (AWS) v
 > * A feladatátvétel tesztelése annak ellenőrzésére, hogy minden működik-e
 > * Azure-ba irányuló egyszeri feladatátvételi teszt futtatása
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -115,7 +115,7 @@ Az Azure Portalon lévő tárolóoldal **Bevezetés** szakaszában válassza a *
 
 A **Védelmi cél** oldalon válassza a következő értékeket:
 
-|    |  |
+| Lépés | Kiválasztás |
 |---------|-----------|
 | Hol találhatók a gépek? |Válassza a **Helyszíni** lehetőséget.|
 | Hová szeretné replikálni a gépeket? |Válassza **Az Azure-ba** lehetőséget.|
@@ -140,7 +140,7 @@ A **Forrás előkészítése** lapon válassza a **+ Konfigurációs kiszolgál�
 
     1. Az **Előkészületek** területen válassza **A konfigurációs kiszolgáló és a folyamatkiszolgáló telepítése** lehetőséget, majd válassza a **Tovább** lehetőséget.
     2. A **Független gyártótól származó szoftverlicenc** területen jelölje be az **Elfogadom a független gyártó licencszerződését** lehetőséget, majd válassza a **Tovább** lehetőséget.
-    3. A **Regisztráció** területen válassza a **Tallózás** lehetőséget, és navigáljon arra a helyre, ahová a tárolóregisztrációs kulcsfájlt mentette. Kattintson a **Tovább** gombra.
+    3. A **Regisztráció** területen válassza a **Tallózás** lehetőséget, és navigáljon arra a helyre, ahová a tárolóregisztrációs kulcsfájlt mentette. Válassza a **Tovább** lehetőséget.
     4. Az **Internetbeállítások** területen válassza a **Közvetlen csatlakozás az Azure Site Recoveryhez proxykiszolgáló nélkül**, majd a **Tovább** lehetőséget.
     5. Az **Előfeltételek ellenőrzése** lapon több elem ellenőrzése is lefut. Ha befejeződött, válassza a **Tovább** lehetőséget.
     6. A **MySQL-konfiguráció** területen adja meg a szükséges jelszavakat, majd válassza a **Tovább** lehetőséget.
@@ -181,7 +181,7 @@ Engedélyezze a replikálást mindegyik migrálni kívánt virtuális gép eset�
 2. A **Helyszíni gépek és Azure-beli virtuális gépek esetében** területen válassza az **1. lépés: Az alkalmazás replikálása** elemet. Töltse ki a varázsló lapjait az alábbi adatokkal. Minden oldalon válassza az **OK** lehetőséget, ha elkészült:
    - 1. A forrás konfigurálása
 
-     |  |  |
+     | Paraméter | Érték |
      |-----|-----|
      | Forrás: | Válassza a **Helyszíni** lehetőséget.|
      | Forrás helye:| Adja meg a konfigurációs kiszolgáló EC2-példányának nevét.|
@@ -190,7 +190,7 @@ Engedélyezze a replikálást mindegyik migrálni kívánt virtuális gép eset�
 
    - 2. A cél konfigurálása
 
-     |  |  |
+     | Paraméter | Érték |
      |-----|-----|
      | Cél: | Hagyja meg az alapértelmezett értéket.|
      | Előfizetés: | Válassza ki a használt előfizetést.|

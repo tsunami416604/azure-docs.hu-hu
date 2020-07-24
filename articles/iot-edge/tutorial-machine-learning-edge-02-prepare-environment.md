@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 42c776d4d6c3973e7c222c9c9adf3e5105f6c84f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22628af5b3e62edfc96699ad051b6a00cf9c1429
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79296802"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078948"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Oktatóanyag: környezet beállítása a gépi tanuláshoz IoT Edge
 
@@ -38,11 +38,11 @@ A fejlesztői virtuális gép a következőket fogja beállítani:
 * [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/?view=azps-1.1.0)
 * [VS Code-bővítmények](https://marketplace.visualstudio.com/search?target=VSCode)
   * [Azure IoT-eszközök](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  * [C #](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+  * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
   * [Docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
   * [PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 
@@ -52,7 +52,7 @@ A virtuális gép létrehozása és konfigurálása körülbelül 30 percet vesz
 
 1. A Machine Learning klónozása vagy letöltése a helyi számítógépre [IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) .
 
-1. Nyissa meg a PowerShellt rendszergazdaként, és navigáljon a gyökérkönyvtár alatt található **\IoTEdgeAndMlSample\DevVM** könyvtárhoz, ahol letöltötte a kódot. A forrás gyökérkönyvtárát a következő módon `srcdir`fogjuk megtekinteni:.
+1. Nyissa meg a PowerShellt rendszergazdaként, és navigáljon a gyökérkönyvtár alatt található **\IoTEdgeAndMlSample\DevVM** könyvtárhoz, ahol letöltötte a kódot. A forrás gyökérkönyvtárát a következő módon fogjuk megtekinteni: `srcdir` .
 
     ```powershell
     cd c:\srcdir\IoTEdgeAndMlSample\DevVM
@@ -66,7 +66,7 @@ A virtuális gép létrehozása és konfigurálása körülbelül 30 percet vesz
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-1. Futtassa a Create-AzureDevVM. ps1 parancsot.
+1. Create-AzureDevVM.ps1 futtatása.
 
     ```powershell
     .\Create-AzureDevVm.ps1
@@ -181,7 +181,7 @@ Az IoT hub létrehozásának részeként az előző szakaszban futtatott szkript
 
 1. Nyissa meg a [Azure Portalt](https://portal.azure.com) , és keresse meg az oktatóanyaghoz használt erőforráscsoportot.
 
-1. Az erőforrások listájában válassza ki a parancsfájl által létrehozott IoT Hub. A név egy véletlenszerű karakterrel végződő névvel fog rendelkezni `IotEdgeAndMlHub-jrujej6de6i7w`, például:.
+1. Az erőforrások listájában válassza ki a parancsfájl által létrehozott IoT Hub. A név egy véletlenszerű karakterrel végződő névvel fog rendelkezni, például: `IotEdgeAndMlHub-jrujej6de6i7w` .
 
 1. A bal oldali ablaktábla **üzenetkezelés**területén válassza az üzenet- **Útválasztás**lehetőséget.
 
@@ -193,7 +193,7 @@ Az IoT hub létrehozásának részeként az előző szakaszban futtatott szkript
 
    A **turbofanDeviceStorage** az egyéni végpontok listájában látható. Figyelje meg a végpont alábbi jellemzőit:
 
-   * A létrehozott `devicedata` blob Storage-tárolóra mutat, amelyet a **tároló neve**jelez.
+   * A létrehozott blob Storage-tárolóra mutat, amelyet a `devicedata` **tároló neve**jelez.
    * A **Fájlnév formátuma** a név utolsó elemének partíciója. Ezt a formátumot úgy találjuk, hogy az oktatóanyag későbbi részében Azure Notebooks a fájl műveleteihez.
    * Az **állapota** kifogástalannak kell lennie.
 

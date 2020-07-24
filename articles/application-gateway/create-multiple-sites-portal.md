@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 07/20/2020
 ms.author: victorh
-ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2f1501438c5fde5be401411ee51b212323427761
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74075153"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068115"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Oktatóanyag: Application Gateway létrehozása és konfigurálása több webhelynek a Azure Portal használatával történő üzemeltetéséhez
 
@@ -29,9 +29,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Útválasztási szabályok létrehozása
 > * CNAME rekord létrehozása a tartományban
 
-![Többhelyes útválasztási példa](./media/create-multiple-sites-portal/scenario.png)
+:::image type="content" source="./media/create-multiple-sites-portal/scenario.png" alt-text="Többhelyes Application Gateway":::
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -50,7 +50,7 @@ Jelentkezzen be a Azure Portal[https://portal.azure.com](https://portal.azure.co
    - **Erőforráscsoport**: válassza ki az erőforráscsoport **myResourceGroupAG** . Ha nem létezik, válassza az **új létrehozása** elemet a létrehozásához.
    - **Application Gateway neve**: írja be a *myAppGateway* nevet az Application Gateway neveként.
 
-     ![Új Application Gateway létrehozása: alapismeretek](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="Application Gateway létrehozása":::
 
 2.  Ahhoz, hogy az Azure kommunikáljon a létrehozott erőforrások között, szüksége van egy virtuális hálózatra. Hozzon létre egy új virtuális hálózatot, vagy használjon egy meglévőt. Ebben a példában egy új virtuális hálózatot fog létrehozni az Application Gateway létrehozásakor. Application Gateway példányok külön alhálózatokban jönnek létre. Ebben a példában két alhálózatot hoz létre: egyet az Application Gateway számára, és egy másikat a háttér-kiszolgálók számára.
 
@@ -66,7 +66,7 @@ Jelentkezzen be a Azure Portal[https://portal.azure.com](https://portal.azure.co
 
     A **virtuális hálózat létrehozása** ablak bezárásához és a virtuális hálózat beállításainak mentéséhez kattintson **az OK gombra** .
 
-     ![Új Application Gateway létrehozása: virtuális hálózat](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="VNet létrehozása":::
     
 3. Az **alapvető** beállítások lapon fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **Next (tovább): frontends**elemet.
 
@@ -78,7 +78,7 @@ Jelentkezzen be a Azure Portal[https://portal.azure.com](https://portal.azure.co
 
 2. Válassza a **nyilvános IP-cím** **új létrehozása** lehetőséget, és adja meg a *myAGPublicIPAddress* a nyilvános IP-cím neveként, majd kattintson **az OK gombra**. 
 
-     ![Új Application Gateway létrehozása: frontendek](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="VNet létrehozása":::
 
 3. Válassza a Next (tovább) lehetőséget **: háttérrendszer**.
 
@@ -96,7 +96,7 @@ A háttér-készlet arra szolgál, hogy a kérelmeket a kérést kiszolgáló h�
 3. A háttérbeli **készlet hozzáadása** ablakban válassza a **Hozzáadás** elemet a háttérbeli készlet konfigurációjának mentéséhez, és térjen vissza a **háttérrendszer** lapra.
 4. Most adjon hozzá egy *fabrikamPool*nevű másik háttér-készletet.
 
-     ![Új Application Gateway létrehozása: háttérrendszer](./media/create-multiple-sites-portal/backend-pools.png)
+    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="Háttérrendszer létrehozása":::
 
 4. A **háttérrendszer** lapon válassza a **Tovább: konfigurálás**lehetőséget.
 
@@ -117,9 +117,12 @@ A **konfiguráció** lapon összekapcsolja az útválasztási szabály használa
    - **Figyelő típusa**: több hely
    - **Állomásnév**: **www.contoso.com**
 
+>[!NOTE]
+> A Application Gateway vagy a WAF v2 SKU használatával legfeljebb 5 állomásnév állítható be a figyelőhöz, és használhat helyettesítő karaktereket is az állomásnévben. További információ: [helyettesítő karakterek nevei a figyelőben](multiple-site-overview.md#wildcard-host-names-in-listener-preview) . Azure Portal az Állomásnév mezőben külön szövegmezőket adhat meg.
+
    Fogadja el az alapértelmezett értékeket a **figyelő** lapon a többi beállításnál, majd válassza a **háttérbeli célok** fület a többi útválasztási szabály konfigurálásához.
 
-   ![Új Application Gateway létrehozása: figyelő](./media/create-multiple-sites-portal/routing-rule.png)
+   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="Útválasztási szabály létrehozása":::
 
 4. A **háttérbeli célok** lapon válassza a **ContosoPool** lehetőséget a **háttérbeli célként**.
 
@@ -128,7 +131,7 @@ A **konfiguráció** lapon összekapcsolja az útválasztási szabály használa
 6. Az útválasztási szabály **hozzáadása** ablakban válassza a **Hozzáadás** lehetőséget az útválasztási szabály mentéséhez és a **konfiguráció** laphoz való visszatéréshez.
 7. Válassza a **szabály hozzáadása** lehetőséget, és adjon hozzá egy hasonló szabályt, figyelőt, háttér-célt és http-beállítást a fabrikam számára.
 
-     ![Új Application Gateway létrehozása: útválasztási szabály](./media/create-multiple-sites-portal/fabrikamRule.png)
+     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Fabrikam-szabály":::
 
 7. Válassza a **Next (tovább** ) gombot, majd a **következőt: felülvizsgálat + létrehozás**.
 
@@ -203,7 +206,7 @@ Ebben a példában az IIS-t csak akkor telepíti a virtuális gépekre, ha ellen
 
     ![Háttérkiszolgálók hozzáadása](./media/create-multiple-sites-portal/edit-backend-pool.png)
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 7. Ismételje meg a *fabrikamVM* és az illesztőfelület hozzáadását a *fabrikamPool*.
 
 Várjon, amíg a telepítés befejeződik, mielőtt továbblép a következő lépésre.
@@ -228,7 +231,7 @@ Miután az Application Gateway nyilvános IP-címmel lett létrehozva, lekérhet
 
     ![Fabrikam webhely tesztelése az alkalmazásátjáróban](./media/create-multiple-sites-portal/application-gateway-iistest2.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az Application Gateway használatával létrehozott erőforrásokra, távolítsa el az erőforráscsoportot. Az erőforráscsoport eltávolításakor az Application Gateway és az összes kapcsolódó erőforrás is törlődik.
 

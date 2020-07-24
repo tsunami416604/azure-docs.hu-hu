@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 66c62156cec79a65b856a6f4c8f2ad34aa687b05
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: d5af288ea564c4118e010c8d0f0f86c5337ce170
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83854491"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024053"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Resource Manager-sablonok – minták Log Analytics munkaterületekhez Azure Monitor
 Ez a cikk mintákat [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz log Analytics munkaterületek létrehozásához és konfigurálásához Azure monitorban. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
@@ -24,10 +24,10 @@ Ez a cikk mintákat [Azure Resource Manager sablonokat](../../azure-resource-man
 - [Microsoft. OperationalInsights-munkaterületek](/azure/templates/microsoft.operationalinsights/2020-03-01-preview/workspaces) 
 - [Microsoft. OperationalInsights-munkaterületek/adatforrások](/azure/templates/microsoft.operationalinsights/2020-03-01-preview/workspaces/datasources)
 
-## <a name="create-a-log-analytics-workspace"></a>A Log Analytics-munkaterület létrehozása
+## <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
 Az alábbi minta egy új üres Log Analytics munkaterületet hoz létre.
 
-### <a name="notes"></a>Megjegyzések
+### <a name="notes"></a>Jegyzetek
 
 - Ha **ingyenes**díjszabási szintet ad meg, távolítsa el a **retentionInDays** elemet.
 
@@ -156,7 +156,7 @@ Az alábbi minta egy új üres Log Analytics munkaterületet hoz létre.
 ## <a name="collect-windows-events"></a>Windows-események gyűjtése
 Az alábbi példa [Windows-események](../platform/data-sources-windows-events.md) gyűjteményét adja hozzá egy meglévő munkaterülethez.
 
-### <a name="notes"></a>Megjegyzések
+### <a name="notes"></a>Jegyzetek
 
 - Vegyen fel egy **adatforrást** a gyűjteni kívánt eseménynaplóba. Az egyes naplókhoz különböző típusú eseménytípus is megadható.
 
@@ -251,7 +251,7 @@ Az alábbi példa [Windows-események](../platform/data-sources-windows-events.m
 ## <a name="collect-syslog"></a>Syslog begyűjtése
 A következő minta a syslog- [események](../platform/data-sources-syslog.md) gyűjteményét adja hozzá egy meglévő munkaterülethez.
 
-### <a name="notes"></a>Megjegyzések
+### <a name="notes"></a>Jegyzetek
 
 - Vegyen fel egy **adatforrást** az egyes létesítmények összegyűjtéséhez. Az egyes létesítményeknél különböző súlyossági szintet adhat meg.
 
@@ -389,7 +389,7 @@ A következő minta a syslog- [események](../platform/data-sources-syslog.md) g
 ## <a name="collect-windows-performance-counters"></a>Windows-teljesítményszámlálók gyűjtése
 Az alábbi példa egy meglévő munkaterülethez hozzáadja a [Windows](../platform/data-sources-performance-counters.md) -teljesítményszámlálók gyűjteményét.
 
-### <a name="notes"></a>Megjegyzések
+### <a name="notes"></a>Jegyzetek
 
 - Vegyen fel egy **adatforrást** az egyes számlálók és példányok összegyűjtéséhez. Az egyes számlálók és példányok kombinációi esetében különböző gyűjtési arányt adhat meg.
   
@@ -493,7 +493,7 @@ Az alábbi példa egy meglévő munkaterülethez hozzáadja a [Windows](../platf
 ## <a name="collect-linux-performance-counters"></a>Linux-teljesítményszámlálók gyűjtése
 Az alábbi példa egy meglévő munkaterülethez tartozó [Linux](../platform/data-sources-performance-counters.md) -teljesítményszámlálók gyűjteményét adja hozzá.
 
-### <a name="notes"></a>Megjegyzések
+### <a name="notes"></a>Jegyzetek
 
 - Vegyen fel egy **adatforrást** az egyes objektumok és példányok összegyűjtéséhez. Különböző számlálókat adhat meg az egyes objektumok és példányok kombinációja számára, de csak egyetlen díjat adhat meg az összes számlálóhoz.
   
@@ -607,9 +607,9 @@ Az alábbi példa egy meglévő munkaterülethez tartozó [Linux](../platform/da
 ## <a name="collect-custom-logs"></a>Egyéni naplók gyűjtése
 Az alábbi minta [egyéni naplók](../platform/data-sources-custom-logs.md) gyűjteményét adja hozzá egy meglévő munkaterülethez.
 
-### <a name="notes"></a>Megjegyzések
+### <a name="notes"></a>Jegyzetek
 
-- Az elválasztó karakterek és a kinyerések konfigurálása összetett lehet. Ha segítségre van szüksége, egyéni naplót határozhat meg a Azure Portal használatával, valamint a konfiguráció lekérése a [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.8.0) és a **-Kind** beállítás használatával a **szokás**.
+- Az elválasztó karakterek és a kinyerések konfigurálása összetett lehet. Ha segítségre van szüksége, egyéni naplót határozhat meg a Azure Portal használatával, valamint a konfiguráció lekérése a [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.8.0) és a **-Kind** beállítás használatával a **szokás**.
 
   
 ### <a name="template-file"></a>Sablonfájl

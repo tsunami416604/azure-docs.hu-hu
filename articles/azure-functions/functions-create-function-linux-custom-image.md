@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 57468a4b4234809ca6293ca39ed54a3934f9a4fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d5dd74c55f1f355c95da93d8d42e6637f1fa78fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506383"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055984"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszerben egyéni tárolóval
 
@@ -106,6 +106,8 @@ Ha a rendszer kéri, adja meg a következő értékeket:
 `Y`A megerősítéshez írja be vagy nyomja le az ENTER billentyűt.
 
 A Maven létrehoz egy új, _artifactId_nevű mappában található projektfájlt, amely ebben a példában a `fabrikam-functions` . 
+
+Ahhoz, hogy a Java 11-es verzióban fusson az Azure-ban, módosítania kell az értékeket a pom.xml fájlban. További információ: Java- [verziók](functions-reference-java.md#java-versions).
 ::: zone-end
 A `--docker` beállítás létrehoz egy `Dockerfile` projektet a projekthez, amely egy megfelelő egyéni tárolót határoz meg a Azure functions és a kiválasztott futtatókörnyezettel való használatra.
 
@@ -156,7 +158,15 @@ Ha a `HttpExample` végpont megjelenik a kimenetben, keresse meg a következőt:
 
 ## <a name="build-the-container-image-and-test-locally"></a>A tároló rendszerképének létrehozása és helyi tesztelése
 
-Választható Vizsgálja meg a * Docker a projekt mappájának gyökerében. A Docker leírja a szükséges környezetet a Function alkalmazás Linux rendszeren való futtatásához.  A Azure Functions által támogatott alaplemezképek teljes listája megtalálható a [Azure functions alap lemezképe lapon](https://hub.docker.com/_/microsoft-azure-functions-base).
+Választható Vizsgálja meg a *Docker* gyökerében. A Docker leírja a szükséges környezetet a Function alkalmazás Linux rendszeren való futtatásához.  A Azure Functions által támogatott alaplemezképek teljes listája megtalálható a [Azure functions alap lemezképe lapon](https://hub.docker.com/_/microsoft-azure-functions-base).
+
+::: zone pivot="programming-language-java"  
+Ha Java 11 (előzetes) verziót használ, módosítsa a `JAVA_VERSION` Build argumentumot a generált Docker a következőre: 
+
+```docker
+ARG JAVA_VERSION=11
+```
+::: zone-end
     
 A legfelső szintű projekt mappában futtassa a [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, és adjon meg egy nevet, `azurefunctionsimage` és egy címkét `v1.0.0` . A `<DOCKER_ID>` helyére a Docker Hub-fiók azonosítóját írja. Ez a parancs létrehozza a tároló Docker-rendszerképét.
 
@@ -513,7 +523,7 @@ A folyamatos költségek elkerülése érdekében törölje az `AzureFunctionsCo
 az group delete --name AzureFunctionsContainer-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Figyelési függvények](functions-monitoring.md)
 + [Méretezési és üzemeltetési lehetőségek](functions-scale.md)

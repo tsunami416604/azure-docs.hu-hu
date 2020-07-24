@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b225b6471dd59275b3963bc2de09607c97a21465
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 7fd1b815a56a21e502decb440806040c626c13d2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373403"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019641"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
@@ -47,7 +47,7 @@ Az alkalmazásproxy használatához Windows Server 2012 R2 vagy újabb rendszert
 Az éles környezetben való magas rendelkezésre állás érdekében javasoljuk, hogy egynél több Windows Servert válasszon. Ebben az oktatóanyagban az egyik Windows-kiszolgáló elegendő.
 
 > [!IMPORTANT]
-> Ha az összekötőt a Windows Server 2019-es verzióra telepíti, le kell tiltania a HTTP2 protokoll támogatását a WinHttp összetevőben. Ez alapértelmezés szerint le van tiltva a támogatott operációs rendszerek korábbi verzióiban. A következő beállításkulcs hozzáadásával és a kiszolgáló újraindításával letiltja azt a Windows Server 2019 rendszeren. Vegye figyelembe, hogy ez egy számítógép-szintű beállításkulcs.
+> Ha az összekötőt a Windows Server 2019-es verzióra telepíti, le kell tiltania a HTTP2 protokoll támogatását a WinHttp-összetevőben a Kerberos által korlátozott delegáláshoz, hogy megfelelően működjön. Ez alapértelmezés szerint le van tiltva a támogatott operációs rendszerek korábbi verzióiban. A következő beállításkulcs hozzáadásával és a kiszolgáló újraindításával letiltja azt a Windows Server 2019 rendszeren. Vegye figyelembe, hogy ez egy számítógép-szintű beállításkulcs.
 >
 > ```
 > Windows Registry Editor Version 5.00
@@ -95,6 +95,9 @@ A TLS 1,2 engedélyezése:
 
 Először is engedélyezze az Azure-adatközpontok kommunikációját, hogy előkészítse a környezetet az Azure AD Application Proxy számára. Ha van tűzfal az elérési úton, győződjön meg róla, hogy meg van nyitva. A nyílt tűzfal lehetővé teszi, hogy az összekötő HTTPS-(TCP-) kéréseket hozzon az alkalmazásproxy számára.
 
+> [!IMPORTANT]
+> Ha a Azure Government-felhőhöz tartozó összekötőt telepíti, kövesse az [Előfeltételek](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) és a [telepítés lépéseit](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud). Ehhez engedélyezni kell a hozzáférést egy másik URL-készlethez, és egy további paramétert a telepítés futtatásához.
+
 ### <a name="open-ports"></a>Portok megnyitása
 
 Nyissa meg a következő portokat a **kimenő** forgalom számára.
@@ -121,6 +124,7 @@ Engedélyezheti a \* . msappproxy.net és a. servicebus.Windows.net kapcsolatait
 ## <a name="install-and-register-a-connector"></a>Összekötő telepítése és regisztrálása
 
 Az alkalmazásproxy használatához telepítsen egy összekötőt az alkalmazásproxy szolgáltatással használt összes Windows-kiszolgálón. Az összekötő egy olyan ügynök, amely a helyszíni alkalmazás-kiszolgálókról az Azure AD-ben lévő alkalmazásproxy felé irányuló kimenő kapcsolatokat kezeli. Olyan kiszolgálókra is telepíthet összekötőket, amelyeken más hitelesítési ügynökök is telepítve vannak, például Azure AD Connect.
+
 
 Az összekötő telepítése:
 
@@ -188,7 +192,7 @@ Most, hogy előkészítette a környezetet, és telepített egy összekötőt, k
 
     | Mező | Leírás |
     | :---- | :---------- |
-    | **Name (Név)** | Annak az alkalmazásnak a neve, amely megjelenik majd a hozzáférési panelen és a Azure Portal. |
+    | **Név** | Annak az alkalmazásnak a neve, amely megjelenik majd a hozzáférési panelen és a Azure Portal. |
     | **Belső URL-cím** | Az alkalmazásnak a magánhálózaton belüli elérésére szolgáló URL-cím. Megadhat egyedi elérési utat a háttérkiszolgálón a közzétételhez, míg a kiszolgáló további része nem lesz közzétéve. Így különböző webhelyeket tehet közzé ugyanazon a kiszolgálón, mint a különböző alkalmazásokat, és mindegyiknek saját nevet és hozzáférési szabályokat adhat.<br><br>Ha közzétesz egy útvonalat, győződjön meg róla, hogy az tartalmaz minden szükséges lemezképet, szkriptet és stíluslapot az alkalmazásához. Ha például az alkalmazás a https:/yourapp/app címen található, \/ és a https:/yourapp/Media helyen található rendszerképeket használja \/ , akkor a https:/yourapp/útvonalat kell közzétennie \/ . A belső URL-címnek nem kell a felhasználók által megjelenített kezdőlapnak lennie. További információt a [közzétett alkalmazások egyéni kezdőlapjának beállítása](application-proxy-configure-custom-home-page.md)című témakörben talál. |
     | **Külső URL-cím** | A felhasználók számára az alkalmazásnak a hálózaton kívülről való eléréséhez használt címe. Ha nem szeretné az alapértelmezett alkalmazásproxy-tartományt használni, olvassa el az [Azure ad Application proxy egyéni tartományait](application-proxy-configure-custom-domain.md)ismertető témakört.|
     | **Előzetes hitelesítés** | Hogyan ellenőrzi az alkalmazásproxy a felhasználókat, mielőtt hozzáférést adna nekik az alkalmazáshoz.<br><br>**Azure Active Directory** – az alkalmazásproxy átirányítja a felhasználókat, hogy jelentkezzenek be az Azure ad-be, amely hitelesíti a címtár és az alkalmazás engedélyeit. Azt javasoljuk, hogy ezt a beállítást az alapértelmezett módon tartsa elérhetővé, így kihasználhatja az Azure AD biztonsági funkcióit, például a feltételes hozzáférést és a Multi-Factor Authentication. Az alkalmazás Microsoft Cloud alkalmazás-biztonsággal való figyeléséhez **Azure Active Directory** szükséges.<br><br>**Továbbító** – a felhasználóknak nem kell hitelesíteniük az Azure ad-vel az alkalmazás eléréséhez. Továbbra is beállíthatja a háttérbeli hitelesítési követelményeket. |
@@ -196,7 +200,7 @@ Most, hogy előkészítette a környezetet, és telepített egy összekötőt, k
 
 6. Ha szükséges, konfigurálja a **további beállításokat**. A legtöbb alkalmazás esetében ezeket a beállításokat az alapértelmezett állapotukban kell megőrizni. 
 
-    | Mező | Description |
+    | Mező | Leírás |
     | :---- | :---------- |
     | **Háttérbeli alkalmazások időtúllépése** | Csak akkor állítsa be **ezt az értéket** , ha az alkalmazása lassú a hitelesítéshez és a kapcsolódáshoz. Alapértelmezés szerint a háttérbeli alkalmazás időkorlátja 85 másodpercnél hosszabb. Ha hosszú értékre van állítva, a háttérbeli időtúllépés 180 másodpercre nő. |
     | **Csak HTTP-cookie használata** | Állítsa ezt az értéket **Igen** értékre, ha az alkalmazásproxy-cookie-k tartalmazzák a HTTPOnly jelzőt a http-válasz fejlécében. Távoli asztali szolgáltatások használata esetén a **nem**értékre állítsa ezt az értéket.|
@@ -234,7 +238,7 @@ Az alkalmazásba való bejelentkezés tesztelése:
 
 Hibaelhárítás: az [alkalmazásproxy problémáinak elhárítása és a hibaüzenetek](application-proxy-troubleshoot.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban előkészítette a helyszíni környezetet, hogy működjön az Application proxyval, majd telepítse és regisztrálja az alkalmazásproxy-összekötőt. Ezután hozzáadott egy alkalmazást az Azure AD-bérlőhöz. Ellenőrizte, hogy egy felhasználó Azure AD-fiókkal tud-e bejelentkezni az alkalmazásba.
 

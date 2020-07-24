@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 704c56745ad89e9ed2f79e8a863f1d0bc9845bf9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77021287"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001825"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Oktatóanyag: folyamatos, beteg monitorozási alkalmazás sablonjának üzembe helyezése és áttekintése
 
@@ -85,13 +85,16 @@ Ha az **eszközbeállítások** lapra kattint, látni fogja, hogy a sablonhoz k�
 >[!div class="mx-imgBorder"] 
 >![Intelligens Vitals patch-eszköz sablonja](media/smart-vitals-device-template.png)
 
-Ha az eszközcsoport (eszközcsoport **) lapra kattint** , azt is láthatja, hogy ezekhez az eszközökhöz automatikusan vannak létrehozva az erőforráscsoportok.
+### <a name="device-groups"></a>Device groups 
+Az eszközcsoport lehetővé teszi, hogy logikailag csoportosítsa az eszközök készletét, majd tömeges lekérdezéseket vagy műveleteket hajtson végre rajtuk. 
+
+Ha az eszközcsoport (eszközcsoport) lapra kattint, látni fogja, hogy az alkalmazás minden egyes eszköz-sablonjaihoz létrehozott néhány alapértelmezett erőforráscsoportot. Megfigyelheti, hogy két további, "eszközök kiosztása" és "az elavult belső vezérlőprogram" eszközöket használó minta-csoportot is létrehoztunk. Ezeket a minta-eszközöket bemenetként fogjuk használni a [feladatok](#jobs)futtatásához.
 
 ### <a name="rules"></a>Szabályok
 
 A szabályok lapra ugráskor három, az alkalmazás sablonjában található szabály jelenik meg:
 
-* **Kapcsos zárójel hőmérséklete**: Ez a szabály akkor aktiválódik, ha az intelligens térd zárójelének hőmérséklete nagyobb, mint&deg;95 F egy 5 perces ablakban. Ezt a szabályt használhatja arra, hogy figyelmeztesse a betegeket és a gondozási csapatot, és távolról lehűtsük az eszközt.
+* **Kapcsos zárójel hőmérséklete**: Ez a szabály akkor aktiválódik, ha az intelligens térd zárójelének hőmérséklete nagyobb, mint 95 &deg; F egy 5 perces ablakban. Ezt a szabályt használhatja arra, hogy figyelmeztesse a betegeket és a gondozási csapatot, és távolról lehűtsük az eszközt.
 
 * **Fall észlelve**: Ez a szabály akkor aktiválódik, ha a beteg bukása észlelhető. Ezt a szabályt egy olyan művelet konfigurálására használhatja, amely egy operatív csapat üzembe helyezését segíti az elhullott beteg számára.
 
@@ -99,6 +102,13 @@ A szabályok lapra ugráskor három, az alkalmazás sablonjában található sza
 
 >[!div class="mx-imgBorder"] 
 >![Kapcsos zárójel hőmérséklete – magas szabály](media/brace-temp-rule.png)
+
+### <a name="jobs"></a>Feladatok
+
+A feladatok lehetővé teszik a tömeges műveletek futtatását egy [adott eszközön](#device-groups) , az eszközcsoport használatával bemenetként. Az alkalmazás sablonját két olyan feladattal láttuk el, amelyet a megoldás kezelője az eszközök életciklusának bizonyos pontjain kell futtatnia:
+* A **térd zárójel belső vezérlőprogram frissítése**: Ez a művelet az eszközök "elavult belső vezérlőprogram" nevű eszközét fogja találni, és egy parancs futtatásával frissítheti ezeket az eszközöket a térd kapcsos zárójel legújabb verziójára. Ez a példa azt feltételezi, hogy az eszközökön a "Update" parancs fogadására és a belső vezérlőprogram fájljainak közvetlenül a felhőből való beolvasására van lehetőség.  
+
+* **Eszközök újbóli kiépítése**: Ha olyan eszközökkel rendelkezik, amelyekről nemrég tért vissza a kórházba, és újra kell kiépíteni a következő csoportba, a feladatot a kiépítési eszközök tömeges frissítéséhez is futtathatja. Ebben az esetben a rendszer az összes eszközt egy "eszközök kiosztása" nevű eszközcsoport-csoportba helyezi, és egy parancsot hajt végre a kiépítéshez. 
 
 ### <a name="devices"></a>Eszközök
 
@@ -113,7 +123,11 @@ A **parancsok** lap lehetővé teszi, hogy az eszköz sablonjának részeként m
 >[!div class="mx-imgBorder"] 
 >![Térd zárójelek nézetei](media/knee-brace-dashboard.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="data-export"></a>Adatexportálás
+
+Az adatexportálás lehetővé teszi, hogy folyamatosan exportálja IoT Central eszközének adatait a többi Azure-szolgáltatásba, beleértve a [FHIR készült Azure API](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir)-t.
+
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az **adminisztráció > alkalmazás beállításai** között, és kattintson a **Törlés**gombra.
 

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ae2d6259bac6a2034edc98de9b0405f32f17fbc3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 225fb1099c1a095a4ec5bced4acc010d7cec6835
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849496"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043879"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>CSR létrehozása és egyesítése Key Vault
 
@@ -80,6 +80,23 @@ A következő lépések segítséget nyújtanak olyan hitelesítésszolgáltató
 9.  Miután a HITELESÍTÉSSZOLGÁLTATÓ aláírja a kérést, hozza vissza a tanúsítványfájl-t az **aláírt kérelem egyesítéséhez** ugyanabban a tanúsítvány-művelet képernyőn.
 
 A tanúsítványkérelem sikeresen egyesítve lett.
+
+## <a name="adding-more-information-to-csr"></a>További információk hozzáadása a CSR-hez
+
+Ha további információt szeretne felvenni a CSR létrehozásakor, például: 
+    - Ország:
+    - Város/helység:
+    - Állam/megye:
+    - Szervezete
+    - Szervezeti egység: az subjectName-ben való definiálásával minden információt hozzáadhat a CSR létrehozásához.
+
+Példa
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+
+>[!Note]
+>Ha a CSR-ben lévő összes adathoz DV-tanúsítványt kér, a HITELESÍTÉSSZOLGÁLTATÓ elutasítja a kérést, mert előfordulhat, hogy a HITELESÍTÉSSZOLGÁLTATÓ nem tudja érvényesíteni a kérésben szereplő összes információt. Ha OV-tanúsítványt kér, akkor megfelelőbb lenne az összes ilyen információt hozzáadni a CSR-ben.
+
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 

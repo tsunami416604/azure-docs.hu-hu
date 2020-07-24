@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cac918f369a10a8084cdc7d0c66d5c0c4c400cc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f098b866eee6fd8555cafcec0f64a0a5f261f9e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458539"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079978"
 ---
 # <a name="restart-vms"></a>Virtuális gépek újraindítása
 
@@ -84,17 +84,17 @@ az group delete -n myResourceGroup --no-wait --yes
 
 A szkript a következő parancsokat használja egy erőforráscsoport, egy virtuális gép, egy rendelkezésre állási csoport, egy terheléselosztó és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Létrehozza a virtuális gépeket.  |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm) | A `--query` elemmel együtt használva az újraindítás előtt megbizonyosodik arról, hogy a virtuális gépek ki vannak építve, majd lekéri a virtuális gépek azonosítóját az újraindításhoz. |
-| [az resource list](https://docs.microsoft.com/cli/azure/vm) | A `--query` elemmel együtt használva lekéri a címkével rendelkező virtuális gépek azonosítóját. |
-| [az vm restart](https://docs.microsoft.com/cli/azure/vm) | Újraindítja a virtuális gépeket. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
+| [az group create](/cli/azure/group) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az vm create](/cli/azure/vm/availability-set) | Létrehozza a virtuális gépeket.  |
+| [az vm list](/cli/azure/vm) | A `--query` elemmel együtt használva az újraindítás előtt megbizonyosodik arról, hogy a virtuális gépek ki vannak építve, majd lekéri a virtuális gépek azonosítóját az újraindításhoz. |
+| [az resource list](/cli/azure/vm) | A `--query` elemmel együtt használva lekéri a címkével rendelkező virtuális gépek azonosítóját. |
+| [az vm restart](/cli/azure/vm) | Újraindítja a virtuális gépeket. |
+| [az group delete](/cli/azure/vm/extension) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
 A virtuális gépekhez kapcsolódó további CLI-példaszkripteket az [Azure Linux rendszerű virtuális gépekre vonatkozó dokumentációjában](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) találhat.

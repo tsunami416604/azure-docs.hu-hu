@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 520022be8ee2054d6c0c89ee3f027de9094ae1af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055257"
 ---
 # <a name="azure-monitor-powershell-samples"></a>PowerShell-minták Azure Monitor
 Ebből a cikkből megtudhatja, hogyan érheti el Azure Monitor szolgáltatásait a PowerShell-parancsok segítségével.
@@ -22,10 +22,10 @@ Ebből a cikkből megtudhatja, hogyan érheti el Azure Monitor szolgáltatásait
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="set-up-powershell"></a>A PowerShell beállítása
-Ha még nem tette meg, állítsa be a PowerShellt úgy, hogy a számítógépen fusson. További információ: [a PowerShell telepítése és konfigurálása](/powershell/azure/overview).
+Ha még nem tette meg, állítsa be a PowerShellt úgy, hogy a számítógépen fusson. További információ: [a PowerShell telepítése és konfigurálása](/powershell/azure/).
 
 ## <a name="examples-in-this-article"></a>Példák ebben a cikkben
-A cikkben szereplő példák bemutatják, hogyan használhatja Azure Monitor parancsmagokat. Áttekintheti Azure Monitor PowerShell-parancsmagok teljes listáját Azure Monitor (betekintő [) parancsmagok](https://docs.microsoft.com/powershell/module/az.applicationinsights)esetén is.
+A cikkben szereplő példák bemutatják, hogyan használhatja Azure Monitor parancsmagokat. Áttekintheti Azure Monitor PowerShell-parancsmagok teljes listáját Azure Monitor (betekintő [) parancsmagok](/powershell/module/az.applicationinsights)esetén is.
 
 ## <a name="sign-in-and-use-subscriptions"></a>Bejelentkezés és előfizetés használata
 Először jelentkezzen be az Azure-előfizetésbe.
@@ -53,7 +53,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log"></a>Tevékenység naplójának beolvasása
-Használja a [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) parancsmagot.  Az alábbiakban néhány gyakori példát talál. A tevékenység naplójában a műveletek utolsó 90 napja szerepel. Az idő előtti dátumok használata hibaüzenetet eredményez.  
+Használja a [Get-AzLog](/powershell/module/az.monitor/get-azlog) parancsmagot.  Az alábbiakban néhány gyakori példát talál. A tevékenység naplójában a műveletek utolsó 90 napja szerepel. Az idő előtti dátumok használata hibaüzenetet eredményez.  
 
 Az alábbi parancsokban megtekintheti, hogy az aktuális dátum/idő milyen időpontot használjon:
 ```powershell
@@ -116,7 +116,7 @@ Egy adott riasztási szabály előzményeinek megtekintéséhez használhatja a 
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-A `Get-AzAlertHistory` parancsmag a különböző paramétereket támogatja. További információ: [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx).
+A `Get-AzAlertHistory` parancsmag a különböző paramétereket támogatja. További információ: [Get-AlertHistory](/previous-versions/azure/mt282453(v=azure.100)).
 
 ## <a name="retrieve-information-on-alert-rules"></a>Riasztási szabályokkal kapcsolatos információk lekérése
 A következő parancsok mindegyike egy "legszélesebb" nevű erőforráscsoport esetében működik.
@@ -139,7 +139,7 @@ A célként megadott erőforráshoz beállított összes riasztási szabály beo
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule`más paramétereket is támogat. További információ: [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) .
+`Get-AzAlertRule`más paramétereket is támogat. További információ: [Get-AlertRule](/previous-versions/azure/mt282459(v=azure.100)) .
 
 ## <a name="create-metric-alerts"></a>Metrikákhoz kapcsolódó riasztások létrehozása
 A `Add-AlertRule` parancsmag használatával riasztási szabályt hozhat létre, frissíthet vagy tilthatja le.
@@ -148,9 +148,9 @@ E-mailek és webhook-tulajdonságok a és a használatával is létrehozhatók `
 
 A következő táblázat a riasztások metrika használatával történő létrehozásához használt paramétereket és értékeket ismerteti.
 
-| parameter | value |
+| parameter | Érték |
 | --- | --- |
-| Name (Név) |simpletestdiskwrite |
+| Name |simpletestdiskwrite |
 | A riasztási szabály helye |USA keleti régiója |
 | ResourceGroup |legtöbbször |
 | Targetresourceid azonosítója |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
@@ -201,7 +201,7 @@ Az alábbi példa egy táblázatot hoz létre a metrika nevével és a hozzá ta
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-A rendelkezésre álló lehetőségek teljes listája a `Get-AzMetricDefinition` [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)címen érhető el.
+A rendelkezésre álló lehetőségek teljes listája a `Get-AzMetricDefinition` [Get-MetricDefinitions](/previous-versions/azure/mt282458(v=azure.100))címen érhető el.
 
 ## <a name="create-and-manage-activity-log-alerts"></a>Műveletnapló-riasztások létrehozása és kezelése
 A `Set-AzActivityLogAlert` parancsmag segítségével beállíthatja a műveletnapló riasztását. A műveletnapló riasztásához először meg kell határoznia a feltételeket szótárként, majd létre kell hoznia egy riasztást, amely ezeket a feltételeket használja.
@@ -272,7 +272,7 @@ Végül hozza létre az autoskálázási beállítást a korábban létrehozott 
 Add-AzAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
 ```
 
-Az autoscale-beállítások kezelésével kapcsolatos további információkért lásd: [Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx).
+Az autoscale-beállítások kezelésével kapcsolatos további információkért lásd: [Get-AutoscaleSetting](/previous-versions/azure/mt282461(v=azure.100)).
 
 ## <a name="autoscale-history"></a>Az autoskálázás előzményei
 Az alábbi példa bemutatja, hogyan tekintheti meg a legutóbbi méretezési és riasztási eseményeket. A tevékenység naplójának keresési funkciójának használatával megtekintheti az autoskálázási előzményeket.
@@ -287,7 +287,7 @@ A `Get-AzAutoScaleHistory` parancsmag használatával lekérheti az automatikusa
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
 ```
 
-További információ: [Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx).
+További információ: [Get-AutoscaleHistory](/previous-versions/azure/mt282464(v=azure.100)).
 
 ### <a name="view-details-for-an-autoscale-setting"></a>Egy autoskálázási beállítás részleteinek megtekintése
 A `Get-Autoscalesetting` parancsmaggal további információkat kérhet le az automatikusan méretezhető beállításról.
@@ -399,4 +399,3 @@ Vegye figyelembe, hogy a munkaterület azonosítója tulajdonság a munkaterüle
 ```
 
 Ezek a parancsok kombinálhatók több célhelyre történő adatküldéshez is.
-

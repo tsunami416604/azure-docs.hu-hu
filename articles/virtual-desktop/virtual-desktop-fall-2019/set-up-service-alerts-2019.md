@@ -1,5 +1,5 @@
 ---
-title: Szolgáltatási riasztások beállítása a Windows rendszerű virtuális asztali környezethez – Azure
+title: Szolgáltatási riasztások beállítása a Windows rendszerű virtuális asztalhoz – Fall 2019 – Azure
 description: Azure Service Health beállítása a szolgáltatás értesítéseinek fogadására a Windows rendszerű virtuális asztali számítógépeken.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2eead8dfd1f4d88d28de1f70134dcfcad8471d3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5b3a29e97fbdf2579e2ef6a86b8dadf91f679366
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259755"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085826"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>Oktatóanyag: szolgáltatási riasztások beállítása
+# <a name="tutorial-set-up-service-alerts---fall-2019"></a>Oktatóanyag: szolgáltatási riasztások beállítása – Fall 2019
 
 >[!IMPORTANT]
 >Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../set-up-service-alerts.md).

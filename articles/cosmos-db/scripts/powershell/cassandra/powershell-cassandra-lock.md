@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: 9debd77699a33854d639cc911437a4b533dafc54
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: be0ba84b323f235d15761ed5bf85a380f48276a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126287"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082919"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-cassandra-api-keyspace-and-table-using-azure-powershell"></a>Erőforrás-zárolás létrehozása az Azure Cosmos Cassandra API a webtárhely és a tábla használatával Azure PowerShell
 
@@ -21,7 +21,7 @@ ms.locfileid: "85126287"
 [!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
 
 > [!IMPORTANT]
-> Az erőforrás-zárolások nem működnek a Cassandra SDK, a CQL Shell vagy az Azure Portal használatával csatlakozó felhasználók által végzett változtatások esetén, kivéve, ha a Cosmos DB fiók először zárolva van az `disableKeyBasedMetadataWriteAccess` engedélyezett tulajdonsággal. Ha többet szeretne megtudni a tulajdonság engedélyezéséről, tekintse meg az SDK-k [módosításainak megelőzését](../../../role-based-access-control.md#preventing-changes-from-cosmos-sdk)ismertető témakört.
+> Az erőforrás-zárolások nem működnek a Cassandra SDK, a CQL Shell vagy az Azure Portal használatával csatlakozó felhasználók által végzett változtatások esetén, kivéve, ha a Cosmos DB fiók először zárolva van az `disableKeyBasedMetadataWriteAccess` engedélyezett tulajdonsággal. Ha többet szeretne megtudni a tulajdonság engedélyezéséről, tekintse meg az SDK-k [módosításainak megelőzését](../../../role-based-access-control.md#prevent-sdk-changes)ismertető témakört.
 
 ## <a name="sample-script"></a>Példaszkript
 

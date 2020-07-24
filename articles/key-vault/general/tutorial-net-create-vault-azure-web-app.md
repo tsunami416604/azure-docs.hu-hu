@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 4e236be298f92506e40a7f5197b2abeb065e7eed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013266"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Oktatóanyag: felügyelt identitás használata a Key Vault Azure-webalkalmazáshoz való összekapcsolásához a .NET használatával
 
@@ -28,9 +28,9 @@ Az oktatóanyag elvégzéséhez:
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * A [.net Core 3,1 SDK vagy újabb verzió](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/overview)
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/)
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Key vaultot és a webalkalmazást is felkészíti az az [Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal:
 
@@ -51,7 +51,7 @@ Kulcstartó létrehozásához használja az az Key [Vault Create](/cli/azure/key
 az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 ```
 
-Jegyezze fel a visszaadott értéket `vaultUri` , amely a "https://<Your-kulcstartó-name>. Vault.Azure.net/" formátumban jelenik meg. Ezt a [kód frissítése](#update-the-code) lépésben fogjuk használni.
+Jegyezze fel a visszaadott értéket `vaultUri` , amely a "https:// &lt; Your-kulcstartó-name &gt; . Vault.Azure.net/" formátumban jelenik meg. Ezt a [kód frissítése](#update-the-code) lépésben fogjuk használni.
 
 Most már elhelyezheti a titkos kulcsot a Key vaultban az az kulcstartó [Secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) paranccsal. Állítsa be a titkos kulcs nevét "keresési kifejezésként" értékre, és a "sikeres!" értéket.
 

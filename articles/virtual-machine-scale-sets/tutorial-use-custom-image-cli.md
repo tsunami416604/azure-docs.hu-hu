@@ -9,20 +9,20 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.reviewer: akjosh
-ms.openlocfilehash: 22f3fd44fbeb3d951d4add7b90a0e9aebd863ebf
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 159ded093f278672a8251263f7bab1050a945e11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792836"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085843"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és használata virtuálisgép-méretezési csoportokhoz az Azure CLI-vel
 Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a virtuálisgép-példányok üzembe helyezésekor. Egyéni virtuálisgép-rendszerkép használatával csökkentheti a feladatok számát a virtuálisgép-példányok üzembe helyezése után. Ez az egyéni virtuálisgép-rendszerkép tartalmaz minden szükséges alkalmazástelepítést és -konfigurációt. A méretezési csoportban létrehozott összes virtuálisgép-példány az egyéni virtuálisgép-rendszerképet használja, és készen állnak az alkalmazás forgalmának kiszolgálására. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Megosztott Képtár létrehozása
+> * Shared Image Gallery létrehozása
 > * Speciális rendszerkép-definíció létrehozása
-> * Rendszerkép-verzió létrehozása
+> * Rendszerképverzió létrehozása
 > * Méretezési csoport létrehozása speciális rendszerképből
 > * Képtár megosztása
 
@@ -69,7 +69,7 @@ A virtuális gép testre szabásához telepítünk egy alapszintű webkiszolgál
 sudo apt-get install -y nginx
 ```
 
-Ha elkészült, az SSH- `exit` kapcsolat leválasztásához írja be a következőt:.
+Ha elkészült, `exit` az SSH-kapcsolat leválasztásához írja be a következőt:.
 
 ## <a name="create-an-image-gallery"></a>Rendszerkép-gyűjtemény létrehozása 
 
@@ -90,13 +90,13 @@ A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. 
 
 A képdefiníciók nevei kis-és nagybetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. 
 
-Győződjön meg arról, hogy a megfelelő típus a rendszerkép definíciója. Ha általánosított a virtuális gépet (a Windows Sysprep használatával vagy a Linux-waagent), akkor létre kell hoznia egy általánosított rendszerkép-definíciót a `--os-state generalized`használatával. Ha a virtuális gépet a meglévő felhasználói fiókok eltávolítása nélkül szeretné használni, hozzon létre egy speciális rendszerkép `--os-state specialized`-definíciót a használatával.
+Győződjön meg arról, hogy a megfelelő típus a rendszerkép definíciója. Ha általánosított a virtuális gépet (a Windows Sysprep használatával vagy a Linux-waagent), akkor létre kell hoznia egy általánosított rendszerkép-definíciót a használatával `--os-state generalized` . Ha a virtuális gépet a meglévő felhasználói fiókok eltávolítása nélkül szeretné használni, hozzon létre egy speciális rendszerkép-definíciót a használatával `--os-state specialized` .
 
-További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](../virtual-machines/linux/shared-image-galleries.md#image-definitions).
 
 Hozzon létre egy rendszerkép-definíciót a galériában az [az SIG rendszerkép-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)paranccsal.
 
-Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [speciális](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. Ha Windows operációs rendszert használó lemezképek definícióját szeretné létrehozni, `--os-type Windows`használja a következőt:. 
+Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [speciális](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. Ha Windows operációs rendszert használó lemezképek definícióját szeretné létrehozni, használja a következőt: `--os-type Windows` . 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -122,7 +122,7 @@ A képverzió megengedett karaktereinek száma számok és időszakok. A számok
 
 Ebben a példában a rendszerkép verziója a *1.0.0* , és 1 replikát fogunk létrehozni az *USA déli középső* régiójában és 1 replika az *USA 2. keleti* régiójában. A replikációs régióknak tartalmaznia kell azt a régiót, amelyben a forrás virtuális gép található.
 
-Cserélje le a példában `--managed-image` szereplő értéket a virtuális gép azonosítójával az előző lépésből.
+Cserélje le a `--managed-image` példában szereplő értéket a virtuális gép azonosítójával az előző lépésből.
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -137,18 +137,18 @@ az sig image-version create \
 > [!NOTE]
 > Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
 >
-> A rendszerképet a Premium Storage szolgáltatásban is tárolhatja a `--storage-account-type  premium_lrs`rendszerkép verziójának létrehozásakor a Hozzáadás `--storage-account-type  standard_zrs` vagy a [zóna redundáns tárterülete](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) használatával.
+> A rendszerképet a Premium Storage szolgáltatásban is tárolhatja a `--storage-account-type  premium_lrs` rendszerkép verziójának létrehozásakor a Hozzáadás vagy a [zóna redundáns tárterülete](../storage/common/storage-redundancy.md) használatával `--storage-account-type  standard_zrs` .
 >
 
 
 
 
 ## <a name="create-a-scale-set-from-the-image"></a>Méretezési csoport létrehozása a rendszerképből
-Méretezési csoport létrehozása a speciális rendszerképből a [`az vmss create`](/cli/azure/vmss#az-vmss-create)használatával. 
+Méretezési csoport létrehozása a speciális rendszerképből a használatával [`az vmss create`](/cli/azure/vmss#az-vmss-create) . 
 
-A méretezési csoport [`az vmss create`](/cli/azure/vmss#az-vmss-create) létrehozásához használja a--speciális paramétert, ezzel jelezve, hogy a rendszerkép egy speciális rendszerkép. 
+A méretezési csoport létrehozásához használja [`az vmss create`](/cli/azure/vmss#az-vmss-create) a--speciális paramétert, ezzel jelezve, hogy a rendszerkép egy speciális rendszerkép. 
 
-A rendszerkép `--image` -definíció azonosítójának használatával hozza létre a méretezési csoport példányait az elérhető lemezkép legújabb verziójából. A méretezési csoport példányait egy adott verzióból is létrehozhatja, ha megadja a rendszerkép-verziójának AZONOSÍTÓját `--image`. 
+A rendszerkép-definíció AZONOSÍTÓjának használatával `--image` hozza létre a méretezési csoport példányait az elérhető lemezkép legújabb verziójából. A méretezési csoport példányait egy adott verzióból is létrehozhatja, ha megadja a rendszerkép-verziójának AZONOSÍTÓját `--image` . 
 
 Hozzon létre egy *myScaleSet* nevű méretezési készletet a korábban létrehozott *myImageDefinition* -rendszerkép legújabb verziójával.
 
@@ -208,7 +208,7 @@ az sig show \
    --query id
 ```
 
-Használja az objektumazonosító hatókörként, valamint egy e-mail-cím és [az az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create) lehetőséget, hogy a felhasználók hozzáférhessenek a megosztott képgyűjteményhez. Cserélje `<email-address>` le `<gallery iD>` a és a értékét a saját adataira.
+Használja az objektumazonosító hatókörként, valamint egy e-mail-cím és [az az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create) lehetőséget, hogy a felhasználók hozzáférhessenek a megosztott képgyűjteményhez. Cserélje le `<email-address>` a és a értékét `<gallery iD>` a saját adataira.
 
 ```azurecli-interactive
 az role assignment create \
@@ -217,10 +217,10 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-Az erőforrások RBAC használatával történő megosztásával kapcsolatos további információkért lásd: [hozzáférés kezelése a RBAC és az Azure CLI használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
+Az erőforrások RBAC használatával történő megosztásával kapcsolatos további információkért lásd: [hozzáférés kezelése a RBAC és az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md).
 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és a hozzá tartozó összes erőforrást az [az Group delete](/cli/azure/group)paranccsal. A `--no-wait` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét. A `--yes` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat.
 
 ```azurecli-interactive
@@ -232,9 +232,9 @@ az group delete --name myResourceGroup --no-wait --yes
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképet a méretezési csoportjai esetében az Azure CLI-vel:
 
 > [!div class="checklist"]
-> * Megosztott Képtár létrehozása
+> * Shared Image Gallery létrehozása
 > * Speciális rendszerkép-definíció létrehozása
-> * Rendszerkép-verzió létrehozása
+> * Rendszerképverzió létrehozása
 > * Méretezési csoport létrehozása speciális rendszerképből
 > * Képtár megosztása
 

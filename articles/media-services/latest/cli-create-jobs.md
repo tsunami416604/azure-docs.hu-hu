@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 08caf4b78b1042d5753dba2bc73e93fa3a250a17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b9d9f66b638eba2503f1650ba64fcd6b4652dc24
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71122381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023416"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>CLI-példa: Feladat létrehozása és elküldése
 
@@ -27,17 +27,17 @@ A Media Services v3-ban a videófeldolgozási feladatok indításakor meg kell a
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-[Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
+[Hozzon létre egy Media Services fiókot](./create-account-howto.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>Példaszkript
 
-A futtatásakor `az ams job start`beállíthat egy címkét a feladatok kimenetén. A címke később is használható annak azonosítására, hogy mi ez a kimeneti eszköz. 
+A futtatásakor beállíthat `az ams job start` egy címkét a feladatok kimenetén. A címke később is használható annak azonosítására, hogy mi ez a kimeneti eszköz. 
 
 - Ha a címkéhez értéket rendel, állítsa a "--output-assets" kifejezést "assetname = label" értékre.
 - Ha nem rendel értéket a címkéhez, állítsa a "--output-assets" értéket a "assetname =" értékre.
-  Figyelje meg, hogy hozzáadja a "=" `output-assets`kifejezést a következőhöz:. 
+  Figyelje meg, hogy hozzáadja a "=" kifejezést a következőhöz: `output-assets` . 
 
 ```azurecli
 az ams job start \
@@ -87,4 +87,4 @@ Ehhez hasonló választ kap:
 
 ## <a name="next-steps"></a>További lépések
 
-[az AMS Job (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+[az AMS Job (CLI)](/cli/azure/ams/job?view=azure-cli-latest)

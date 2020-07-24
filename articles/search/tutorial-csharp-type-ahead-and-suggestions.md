@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 04/15/2020
-ms.openlocfilehash: 63c098ccd42a438f8daab787afb54cf13cd053c3
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 07/15/2020
+ms.openlocfilehash: 760624b06d00a873ff48c659ef65f9af62cd6454
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780555"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084024"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Oktatóanyag: automatikus kiegészítés és javaslatok hozzáadása a .NET SDK használatával
 
@@ -42,7 +42,7 @@ Kezdjük a legegyszerűbb esettel, ha alternatívákat ajánlunk fel a felhaszn�
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-2. Ezt az utasítást követve a záró ** &lt;/div&gt;** után adja meg ezt a parancsfájlt. Ez a szkript kihasználja az [automatikus kiegészítési widgetet](https://api.jqueryui.com/autocomplete/) a nyílt forráskódú jQuery UI könyvtárból, hogy bemutassa a javasolt eredmények legördülő listáját. 
+2. Ezt az utasítást követve a záró ** &lt; /div &gt; **után adja meg ezt a parancsfájlt. Ez a szkript kihasználja az [automatikus kiegészítési widgetet](https://api.jqueryui.com/autocomplete/) a nyílt forráskódú jQuery UI könyvtárból, hogy bemutassa a javasolt eredmények legördülő listáját. 
 
     ```javascript
     <script>
@@ -61,7 +61,7 @@ Kezdjük a legegyszerűbb esettel, ha alternatívákat ajánlunk fel a felhaszn�
 
 ### <a name="add-references-to-jquery-scripts-to-the-view"></a>Hivatkozások hozzáadása a jQuery-parancsfájlokhoz a nézethez
 
-1. A jQuery-könyvtár eléréséhez módosítsa a &lt;nézet&gt; fájljának Head szakaszát a következő kódra:
+1. A jQuery-könyvtár eléréséhez módosítsa a &lt; &gt; nézet fájljának Head szakaszát a következő kódra:
 
     ```cs
     <head>
@@ -308,7 +308,7 @@ Vannak olyan kódtárak, amelyek ezt a funkciót használják – gyakran "beág
 
     Az **eredmények** listájának tetején egy autocomplete beállítást ad vissza, amelyet a javaslatok követnek.
 
-2. A nézetben először egy olyan trükköt teszünk elérhetővé, hogy egy világosszürke autocomplete szó közvetlenül a felhasználó által megadott merészebb-szöveg alatt legyen megjelenítve. A HTML relatív elhelyezést is tartalmaz erre a célra. Módosítsa a **TextBoxFor** utasítást (és a körülötte &lt;lévő&gt; div-utasításokat) a következőre, és ha úgy gondolja, hogy az **alatta** lévő második keresőmező közvetlenül a normál keresőmező alatt található, akkor a keresőmező 39 képpont kihúzásával állítsa le az alapértelmezett helyükről.
+2. A nézetben először egy olyan trükköt teszünk elérhetővé, hogy egy világosszürke autocomplete szó közvetlenül a felhasználó által megadott merészebb-szöveg alatt legyen megjelenítve. A HTML relatív elhelyezést is tartalmaz erre a célra. Módosítsa a **TextBoxFor** utasítást (és a körülötte &lt; &gt; lévő div-utasításokat) a következőre, és ha úgy gondolja, hogy az **alatta** lévő második keresőmező közvetlenül a normál keresőmező alatt található, akkor a keresőmező 39 képpont kihúzásával állítsa le az alapértelmezett helyükről.
 
     ```cs
     <div id="underneath" class="searchBox" style="position: relative; left: 0; top: 0">

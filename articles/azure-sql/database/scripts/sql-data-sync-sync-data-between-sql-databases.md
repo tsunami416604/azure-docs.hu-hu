@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: af45e3ea33a1997b4a75d047cc5a2ec4edb3bf12
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4f24a061f94cc61cb915d088606a61ede3fb247f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196699"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084909"
 ---
 # <a name="use-powershell-to-sync-data-between-multiple-databases-in-azure-sql-database"></a>A PowerShell használatával szinkronizálhatja az adatAzure SQL Database több adatbázisa között
 
@@ -274,7 +274,7 @@ Remove-AzResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [Új – AzSqlSyncAgent](/powershell/module/az.sql/New-azSqlSyncAgent) |  Létrehoz egy új szinkronizáló ügynököt. |
 | [Új – AzSqlSyncAgentKey](/powershell/module/az.sql/New-azSqlSyncAgentKey) |  Létrehozza a Szinkronizáló ügynökhöz társított ügynök kulcsát. |
@@ -289,7 +289,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure PowerShellről [az Azure PowerShell dokumentációjában](/powershell/azure/overview) talál további információt.
+Az Azure PowerShellről [az Azure PowerShell dokumentációjában](/powershell/azure/) talál további információt.
 
 Az [Azure SQL Database PowerShell-szkriptekben](../powershell-script-content-guide.md) további SQL Database PowerShell-szkriptminták találhatók.
 

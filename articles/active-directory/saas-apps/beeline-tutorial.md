@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0e41b9578beb68f497c1a0fa7968064b6b91cee
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: cca1b4b9f27a8711d0340389359320a2f99a918a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85607990"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018514"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Oktatóanyag: Azure Active Directory integráció a beelintel
 
@@ -33,7 +33,7 @@ Az Azure AD-vel való integráció az alábbi előnyöket nyújtja:
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -46,7 +46,7 @@ Az Azure AD-integráció bevezetéssel való konfigurálásához a következő e
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A Beeline támogatja a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést
+* A Beeline csak a **identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést támogatja
 
 ## <a name="adding-beeline-from-the-gallery"></a>Beeline hozzáadása a katalógusból
 
@@ -106,19 +106,18 @@ Az Azure AD egyszeri bejelentkezés bekapcsolásával történő konfigurálás�
 
     ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak Beeline](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://projects.beeline.net/<instancename>`
+    a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:`https://projects.beeline.com/<ProjInstanceName>`
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
     ```https
-    https://projects.beeline.net/<instancename>/SSO_External.ashx
-    https://projects.beeline.net/<companyname>/SSO_External.ashx
+    https://projects.beeline.com/<ProjInstanceName>/SSO_External.ashx
     ```
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Vegye fel a kapcsolatot az [ügyfél-támogatási csapattal](https://www.beeline.com/contact-us/) , hogy lekérje ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Vegye fel a kapcsolatot az [ügyfél-támogatási csapattal](https://www.beeline.com/support-beeline/) , hogy lekérje ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. A Beeline alkalmazás meghatározott formátumban várja az SAML-kijelentéseket. Először a [Beeline támogatási csapatot](https://www.beeline.com/contact-us/) kell használnia ahhoz, hogy azonosítsa a megfelelő felhasználói azonosítót, amely az alkalmazáshoz lesz rendelve. Kérjük, olvassa el a [Beeline támogatási csapatának](https://www.beeline.com/contact-us/) útmutatását arra az attribútumra vonatkozóan, amelyet a leképezéshez használni szeretne. Az attribútum értékét az alkalmazás **felhasználói attribútumok** lapján kezelheti. A következő képernyőképen egy példa látható. Itt leképezte a **felhasználói azonosító** jogcímet a **userPrincipalName** attribútummal, amely egyedi felhasználói azonosítót biztosít, amelyet a rendszer a minden sikeres SAML-válaszban elküld a Beeline alkalmazásnak.
+5. A Beeline alkalmazás meghatározott formátumban várja az SAML-kijelentéseket. Először a [Beeline támogatási csapatot](https://www.beeline.com/support-beeline/) kell használnia ahhoz, hogy azonosítsa a megfelelő felhasználói azonosítót, amely az alkalmazáshoz lesz rendelve. Kérjük, olvassa el a [Beeline támogatási csapatának](https://www.beeline.com/support-beeline/) útmutatását arra az attribútumra vonatkozóan, amelyet a leképezéshez használni szeretne. Az attribútum értékét az alkalmazás **felhasználói attribútumok** lapján kezelheti. A következő képernyőképen egy példa látható. Itt leképezte a **felhasználói azonosító** jogcímet a **userPrincipalName** attribútummal, amely egyedi felhasználói azonosítót biztosít, amelyet a rendszer minden sikeres SAML-válaszban elküld a Beeline alkalmazásnak.
 
     ![image](common/edit-attribute.png)
 
@@ -126,19 +125,14 @@ Az Azure AD egyszeri bejelentkezés bekapcsolásával történő konfigurálás�
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-7. A **set up Deeline** szakaszban másolja ki a megfelelő URL-címeket (ek) a követelmény szerint.
+7. A [Azure Portal](https://portal.azure.com/)a **Beeline** alkalmazás-integráció lapon válassza a **Tulajdonságok** lehetőséget, és másolja a felhasználói hozzáférési URL-címet.
 
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+    ![Felhasználói hozzáférési URL-cím másolása](media/beeline-tutorial/client-access-url.png)
 
-    a. Bejelentkezési URL
-
-    b. Azure ad-azonosító
-
-    c. Kijelentkezési URL-cím
 
 ### <a name="configure-beeline-single-sign-on"></a>Beeline egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálásához el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** **és a megfelelő** másolt url-címeket a Azure Portalról a [támogatási csoportba](https://www.beeline.com/contact-us/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az egyszeri bejelentkezés konfigurálásához el kell **Beeline** küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a felhasználói hozzáférési URL-címet a Azure Portal tulajdonságaiból a [támogatási csoportba](https://www.beeline.com/support-beeline/). A metaadatok és a felhasználói hozzáférési URL-cím megkövetelése, hogy az SAML SSO-kapcsolat megfelelően legyen konfigurálva mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -193,13 +187,13 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-beeline-test-user"></a>Beeline tesztelési felhasználó létrehozása
 
-Ebben a szakaszban létrehoz egy Britta Simon nevű felhasználót a Beeline-ben. Az egyszeri bejelentkezés előtt be kell állítani az alkalmazás összes felhasználóját az alkalmazásban való üzembe helyezéshez. Ezért a [Beeline támogatási csapattal](https://www.beeline.com/contact-us/) együttműködve kiépítheti ezeket a felhasználókat az alkalmazásba.
+Ebben a szakaszban egy, a Britta Simon-t használó felhasználót hoz létre a Beeline-ben. A Beeline alkalmazásnak az egyszeri bejelentkezés előtt az alkalmazásban kell kiépíteni az összes felhasználót. Ezért a [Beeline támogatási csapattal](https://www.beeline.com/support-beeline/) együttműködve kiépítheti ezeket a felhasználókat az alkalmazásba.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a Beeline csempére kattint, automatikusan be kell jelentkeznie a beelinbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor a hozzáférési panelen a Beeline csempére kattint, automatikusan be kell jelentkeznie a Beeline példányba, amelyben be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4bfe55c4ebe722e98f0816078b64c0131a30d03
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 007763d65021b0730c6e4e81ada33790d3cf4c02
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778726"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025778"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása
 
@@ -25,7 +25,7 @@ Az Azure Active Directory (Azure AD) eszközkezelés révén biztosíthatja, hog
 > [!TIP]
 > Ha a Azure AD Connect használata lehetőséggel rendelkezik, tekintse meg a kapcsolódó oktatóanyagokat a [felügyelt](hybrid-azuread-join-managed-domains.md) vagy [összevont](hybrid-azuread-join-federated-domains.md) tartományokhoz. A Azure AD Connect használatával jelentősen egyszerűsítheti a hibrid Azure AD-csatlakozás konfigurációját.
 
-Ha helyszíni Active Directory-környezettel rendelkezik, és csatlakoztatni szeretné a tartományokhoz csatlakoztatott eszközeit az Azure AD-hoz, ezt hibrid Azure AD-csatlakoztatott eszközök konfigurálásával teheti meg. Az oktatóanyag a következőket ismerteti:
+Ha helyszíni Active Directory-környezettel rendelkezik, és csatlakoztatni szeretné a tartományokhoz csatlakoztatott eszközeit az Azure AD-hoz, ezt hibrid Azure AD-csatlakoztatott eszközök konfigurálásával teheti meg. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hibrid Azure AD-csatlakozás manuális konfigurálása
@@ -112,7 +112,7 @@ A következő Windows PowerShell-parancsfájllal ellenőrizheti az objektum lét
    $scp.Keywords;
    ```
 
-A **$SCP. A kulcsszavak** kimenete az Azure ad-bérlő információit jeleníti meg. Íme egy példa:
+A **$SCP. A kulcsszavak** kimenete az Azure ad-bérlő információit jeleníti meg. Bemutatunk egy példát:
 
    ```
    azureADName:microsoft.com
@@ -527,13 +527,13 @@ AD FSban hozzá kell adnia egy kiállítási átalakítási szabályt, amely át
 1. Kattintson a jobb gombbal a Microsoft Office 365 Identity Platform megbízható függő entitás elemre, és válassza a **Jogcímszabályok szerkesztése** lehetőséget.
 1. A **Kiállítási átalakítószabályok** lapon válassza a **Szabály hozzáadása** lehetőséget.
 1. A **Jogcímszabály** sablonlistában válassza a **Jogcímek küldése egyéni szabállyal** lehetőséget.
-1. Kattintson a **Tovább** gombra.
+1. Válassza a **Tovább** lehetőséget.
 1. A **jogcím-szabály neve** mezőbe írja be az **Auth Method jogcím szabályt**.
 1. A **jogcím szabály** mezőjébe írja be a következő szabályt:
 
    `c:[Type == "http://schemas.microsoft.com/claims/authnmethodsreferences"] => issue(claim = c);`
 
-1. Az összevonási kiszolgálón adja meg a következő PowerShell-parancsot. Cserélje le az ** \< RPObjectName \> ** -t az Azure ad függő entitás megbízhatósági objektumának függő entitás nevű objektumára. Ezen objektum neve általában **Microsoft Office 365 Identity Platform**.
+1. Az összevonási kiszolgálón adja meg a következő PowerShell-parancsot. Cserélje le az értékét **\<RPObjectName\>** Az Azure ad függő entitás megbízhatósági objektumának függő entitás nevű objektumára. Ezen objektum neve általában **Microsoft Office 365 Identity Platform**.
 
    `Set-AdfsRelyingPartyTrust -TargetName <RPObjectName> -AllowedAuthenticationClassReferences wiaormultiauthn`
 
@@ -554,7 +554,7 @@ Az eszköz állapotának megállapításához és ellenőrzéséhez az alábbi 3
 ### <a name="locally-on-the-device"></a>Helyileg az eszközön
 
 1. Nyissa meg a Windows PowerShellt.
-2. Írja be a `dsregcmd /status` (igen) kifejezést.
+2. Írja be a következő szöveget: `dsregcmd /status`
 3. Ellenőrizze, hogy a **AzureAdJoined** és a **DomainJoined** is **Igen**értékre van-e állítva.
 4. Használhatja a **DeviceID** eszközt, és összehasonlíthatja a szolgáltatás állapotát a Azure Portal vagy a PowerShell használatával.
 
@@ -567,7 +567,7 @@ Az eszköz állapotának megállapításához és ellenőrzéséhez az alábbi 3
 
 ### <a name="using-powershell"></a>A PowerShell használata
 
-A **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** használatával ellenőrizze az eszköz regisztrációs állapotát az Azure-bérlőben. Ez a parancsmag a [Azure Active Directory PowerShell-modulban](/powershell/azure/install-msonlinev1?view=azureadps-2.0)található.
+A **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** használatával ellenőrizze az eszköz regisztrációs állapotát az Azure-bérlőben. Ez a parancsmag a [Azure Active Directory PowerShell-modulban](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)található.
 
 Ha a **Get-MSolDevice** parancsmagot használja a szolgáltatás részleteinek megtekintéséhez:
 
@@ -612,7 +612,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 Ha a tartományhoz csatlakoztatott Windows-eszközök hibrid Azure AD-csatlakozásának kitöltésével kapcsolatos problémákat tapasztal, tekintse meg a következőt:
 
 - [Eszközök hibaelhárítása a dsregcmd paranccsal](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
-- [Hibrid Azure Active Directory csatlakoztatott eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
+- [Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök hibaelhárítása](troubleshoot-hybrid-join-windows-current.md)
 - [A hibrid Azure Active Directory csatlakoztatása a régebbi verziójú eszközökhöz](troubleshoot-hybrid-join-windows-legacy.md)
 
 ## <a name="next-steps"></a>További lépések

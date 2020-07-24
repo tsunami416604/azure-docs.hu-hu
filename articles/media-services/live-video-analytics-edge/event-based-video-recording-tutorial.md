@@ -3,12 +3,12 @@ title: Eseményvezérelt videó rögzítése a felhőben és lejátszás a Felh�
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Live Video Analytics szolgáltatást a Azure IoT Edgeon, hogy rögzítse a felhőbe, és hogyan játssza vissza a felhőből.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 938bae28b1a523e23ea9f8f1ba79bbe6c487d5db
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: cbd00bf5737e9833a860e154c629bb344416b6ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765199"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011770"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Oktatóanyag: esemény-alapú videofelvétel a felhőbe és a felhőből való lejátszás
 
@@ -32,9 +32,9 @@ A Kezdés előtt olvassa el a következő cikkeket:
 * [Élő videó-elemzések IoT Edge terminológiában](terminology.md)
 * [A Media Graph alapfogalmai](media-graph-concept.md) 
 * [Eseményalapú videófelvétel](event-based-video-recording-concept.md)
-* [Oktatóanyag: IoT Edge modul fejlesztése](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [Oktatóanyag: IoT Edge modul fejlesztése](../../iot-edge/tutorial-develop-for-linux.md)
 * [Az üzembe helyezés szerkesztése. * .template.jsbekapcsolva](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
-* Az [útvonalak deklarálása IoT Edge telepítési jegyzékben –](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) szakasz
+* Az [útvonalak deklarálása IoT Edge telepítési jegyzékben –](../../iot-edge/module-composition.md#declare-routes) szakasz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,9 +52,9 @@ Ezen lépések végén az Azure-előfizetésében üzembe helyezett Azure-erőfo
 * Azure IoT Hub
 * Azure Storage-fiók
 * Azure Media Services fiók
-* Linux rendszerű virtuális gép az Azure-ban, telepített [IoT Edge futtatókörnyezettel](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* Linux rendszerű virtuális gép az Azure-ban, telepített [IoT Edge futtatókörnyezettel](../../iot-edge/how-to-install-iot-edge-linux.md)
 
-## <a name="concepts"></a>Alapelvek
+## <a name="concepts"></a>Fogalmak
 
 Az Event-alapú videofelvétel arra utal, hogy az esemény által aktivált videók rögzítése folyamatban van. Ez az esemény a következőből hozható létre:
 - Maga a videojel feldolgozása, például amikor egy mozgó objektumot észlel a videóban.
@@ -135,9 +135,9 @@ Az src/Edge/deployment.objectCounter.template.jsmegnyitása a következőn:. A *
 * **rtspsim**: ez az RTSP-szimulátor.
 * **objectCounter**: ez az a modul, amely a yolov3 eredményeiből származó adott objektumokat keresi.
 
-A objectCounter modul esetében tekintse meg a "rendszerkép" értékhez használt karakterláncot ($ {modules. objectCounter}). Ez a IoT Edge modul fejlesztésének [oktatóanyagán](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux) alapul. A Visual Studio Code automatikusan felismeri, hogy a objectCounter modul kódja az src/Edge/modules/objectCounter. 
+A objectCounter modul esetében tekintse meg a "rendszerkép" értékhez használt karakterláncot ($ {modules. objectCounter}). Ez a IoT Edge modul fejlesztésének [oktatóanyagán](../../iot-edge/tutorial-develop-for-linux.md) alapul. A Visual Studio Code automatikusan felismeri, hogy a objectCounter modul kódja az src/Edge/modules/objectCounter. 
 
-Olvassa el [ezt a szakaszt](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) az útvonalak deklarálása a IoT Edge telepítési jegyzékben. Ezután vizsgálja meg az útvonalakat a sablon JSON-fájljában. Vegye figyelembe a következőket:
+Olvassa el [ezt a szakaszt](../../iot-edge/module-composition.md#declare-routes) az útvonalak deklarálása a IoT Edge telepítési jegyzékben. Ezután vizsgálja meg az útvonalakat a sablon JSON-fájljában. Vegye figyelembe a következőket:
 
 * A LVAToObjectCounter adott események küldésére szolgál egy adott végpontra a objectCounter modulban.
 * A ObjectCounterToLVA egy eseményindító-eseménynek egy adott végpontra való küldésére szolgál (amely az IoT Hub forrás csomópontja) a lvaEdge modulban.
@@ -150,7 +150,7 @@ Olvassa el [ezt a szakaszt](https://docs.microsoft.com/azure/iot-edge/module-com
 
 Az üzembe helyezési jegyzék meghatározza, hogy milyen modulok vannak üzembe helyezve egy peremhálózati eszközön és a modulok konfigurációs beállításaiban. Kövesse az alábbi lépéseket egy jegyzékfájl létrehozásához a sablonból, majd telepítse azt a peremhálózati eszközre.
 
-A Visual Studio Code használatával a Docker-be való bejelentkezéshez kövesse az [alábbi utasításokat](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) . Ezután válassza **a létrehozás és Leküldés IoT Edge megoldást**. Ehhez a lépéshez használja az src/Edge/deployment.objectCounter.template.js-t.
+A Visual Studio Code használatával a Docker-be való bejelentkezéshez kövesse az [alábbi utasításokat](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) . Ezután válassza **a létrehozás és Leküldés IoT Edge megoldást**. Ehhez a lépéshez használja az src/Edge/deployment.objectCounter.template.js-t.
 
 ![IoT Edge-megoldás létrehozása és leküldése](./media/event-based-video-recording-tutorial/build-push.png)
 
@@ -259,7 +259,7 @@ A objectCounter modul eseményeinek és az élő videó Analytics IoT Edge modul
 
 ## <a name="interpret-the-results"></a>Az eredmények értelmezése 
 
-A Media Graph futtatásakor az élő videó Analytics IoT Edge modulban bizonyos diagnosztikai és műveleti eseményeket küld az IoT Edge hubhoz. Ezek az események a Visual Studio Code **kimeneti** ablakában látható üzenetek. A törzs szakaszt és egy applicationProperties szakaszt tartalmaznak. A következő fejezeteinek megismeréséhez lásd: [IoT hub üzenetek létrehozása és olvasása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+A Media Graph futtatásakor az élő videó Analytics IoT Edge modulban bizonyos diagnosztikai és műveleti eseményeket küld az IoT Edge hubhoz. Ezek az események a Visual Studio Code **kimeneti** ablakában látható üzenetek. A törzs szakaszt és egy applicationProperties szakaszt tartalmaznak. A következő fejezeteinek megismeréséhez lásd: [IoT hub üzenetek létrehozása és olvasása](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 A következő üzenetekben az alkalmazás tulajdonságait és a törzs tartalmát az élő videó elemzési modulja határozza meg.
 
@@ -413,4 +413,4 @@ Ha szeretné kipróbálni a többi oktatóanyagot, tartsa be a létrehozott erő
 ## <a name="next-steps"></a>További lépések
 
 * Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera) , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Az ONVIF-kompatibilis [termékek lapon](https://www.onvif.org/conformant-products/) megkeresheti az RTSP-támogatással rendelkező IP-kamerákat a G, S vagy T profiloknak megfelelő eszközök keresésével.
-* AMD64 vagy x64 Linux rendszerű eszköz használata (Azure Linux rendszerű virtuális gép használata). Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse a következő témakör utasításait: [Install Azure IoT Edge Runtime on Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux). Ezután kövesse az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközre című](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) rövid útmutatót az eszköz Azure IoT hub való regisztrálásához.
+* AMD64 vagy x64 Linux rendszerű eszköz használata (Azure Linux rendszerű virtuális gép használata). Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse a következő témakör utasításait: [Install Azure IoT Edge Runtime on Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Ezután kövesse az [első IoT Edge modul üzembe helyezése virtuális Linux-eszközre című](../../iot-edge/quickstart-linux.md) rövid útmutatót az eszköz Azure IoT hub való regisztrálásához.

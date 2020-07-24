@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.openlocfilehash: 3311a9a92cc5e63a6fa20e4dd0d2af00fdacc95c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ac3e163ffefcb7b164860b0c4fa42edc866227e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194484"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065628"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Oktatóanyag: Apache Spark feladatdefiníció létrehozása a szinapszis Studióban
 
@@ -24,7 +24,7 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 
 * Apache Spark feladatdefiníció létrehozása a PySpark (Python)
 * Apache Spark feladatdefiníció létrehozása a Sparkhoz (Scala)
-* Apache Spark feladatdefiníció létrehozása a .NET Sparkhoz (C#)
+* Apache Spark feladatdefiníció létrehozása a .NET Sparkhoz (C#/F #)
 * Apache Spark feladatdefiníció beküldése batch-feladatokként
 * Apache Spark feladatdefiníció hozzáadása a folyamathoz
 
@@ -42,7 +42,7 @@ Ebben a szakaszban a PySpark (Python) Apache Spark feladatainak definícióját 
 
 1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
 
-2. A **WordCount. jar** és a **shakespear.txt**letöltéséhez Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) megtekintheti a fájlokat. Ezután töltse fel ezeket a fájlokat az Azure Storage-ba: kattintson **az adatok**elemre, válassza a **Storage-fiókok**lehetőséget, és töltse fel a kapcsolódó fájlokat a ADLS Gen2 fájlrendszerbe. Hagyja ki ezt a lépést, ha a fájlok már az Azure Storage-ban vannak. 
+2. A **WordCount.py** és a **shakespear.txt**letöltéséhez Apache Spark-feladatdefiníciók [létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python) is megtekintheti a fájlokat. Ezután töltse fel ezeket a fájlokat az Azure Storage-ba: kattintson **az adatok**elemre, válassza a **Storage-fiókok**lehetőséget, és töltse fel a kapcsolódó fájlokat a ADLS Gen2 fájlrendszerbe. Hagyja ki ezt a lépést, ha a fájlok már az Azure Storage-ban vannak. 
 
      ![Python-fájl feltöltése](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -57,9 +57,9 @@ Ebben a szakaszban a PySpark (Python) Apache Spark feladatainak definícióját 
      |  Tulajdonság   | Leírás   |  
      | ----- | ----- |  
      |Feladatdefiníció neve| Adja meg a Apache Spark-feladatdefiníció nevét. Ez a név bármikor frissíthető, amíg közzé nem teszi. Minta`job definition sample`|
-     |Fő definíciós fájl| A feladatokhoz használt fő fájl. Válasszon ki egy fájlt a tárolóból. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. Minta`abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/fileexists.py`|
-     |Parancssori argumentumok| A feladatokhoz nem kötelező argumentumok. Minta`shakespeare.txt`|
-     |Hivatkozási fájlok| A fő definíciós fájlban való hivatkozáshoz használt további fájlok. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. Minta`abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/shakespeare.txt`|
+     |Fő definíciós fájl| A feladatokhoz használt fő fájl. Válasszon ki egy fájlt a tárolóból. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. Minta`abfss://…/path/to/wordcount.py`|
+     |Parancssori argumentumok| A feladatokhoz nem kötelező argumentumok. Minta`abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |Hivatkozási fájlok| A fő definíciós fájlban való hivatkozáshoz használt további fájlok. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. |
      |Spark-készlet| A rendszer elküldi a feladatot a kiválasztott Apache Spark-készletbe.|
      |Spark-verzió| A Apache Spark-készletet futtató Apache Spark verziója.|
      |Végrehajtók| A feladathoz megadott Apache Spark készletben megadható végrehajtók száma.|
@@ -92,9 +92,9 @@ Ebben a szakaszban létrehoz egy Apache Spark Apache Spark (Scala) feladatdefin�
      |  Tulajdonság   | Leírás   |  
      | ----- | ----- |  
      |Feladatdefiníció neve| Adja meg a Apache Spark-feladatdefiníció nevét. Ez a név bármikor frissíthető, amíg közzé nem teszi. Minta`job definition sample`|
-     |Fő definíciós fájl| A feladatokhoz használt fő fájl. Válasszon ki egy JAR-fájlt a tárolóból. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. Minta`abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/wordcount.jar`|
+     |Fő definíciós fájl| A feladatokhoz használt fő fájl. Válasszon ki egy JAR-fájlt a tárolóból. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. Minta`abfss://…/path/to/wordcount.jar`|
      |Fő osztály neve| A fő definíciós fájlban lévő teljes azonosító vagy fő osztály. Minta`WordCount`|
-     |Parancssori argumentumok| A feladatokhoz nem kötelező argumentumok. Minta`abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/result`|
+     |Parancssori argumentumok| A feladatokhoz nem kötelező argumentumok. Minta`abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |Hivatkozási fájlok| A fő definíciós fájlban való hivatkozáshoz használt további fájlok. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba.|
      |Spark-készlet| A rendszer elküldi a feladatot a kiválasztott Apache Spark-készletbe.|
      |Spark-verzió| A Apache Spark-készletet futtató Apache Spark verziója.|
@@ -109,9 +109,9 @@ Ebben a szakaszban létrehoz egy Apache Spark Apache Spark (Scala) feladatdefin�
      ![a Scala definíciójának közzététele](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
 
-## <a name="create-an-apache-spark-job-definition-for-net-sparkc"></a>Apache Spark feladatdefiníció létrehozása a .NET Sparkhoz (C#)
+## <a name="create-an-apache-spark-job-definition-for-net-sparkcf"></a>Apache Spark feladatdefiníció létrehozása a .NET Sparkhoz (C#/F #)
 
-Ebben a szakaszban létrehoz egy Apache Spark-feladatdefiníció a .NET Spark (C#) számára.
+Ebben a szakaszban létre fog hozni egy Apache Spark feladatdefiníció a .NET Sparkhoz (C#/F #).
  1. Nyissa meg az [Azure szinapszis Studio alkalmazást](https://web.azuresynapse.net/).
 
  2. A **wordcount.zip** és a **shakespear.txt**letöltéséhez [Apache Spark feladatdefiníció létrehozásához](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET) tekintse meg a fájlok mintaképét. Ezután töltse fel ezeket a fájlokat az Azure Storage-ba: kattintson **az adatok**elemre, válassza a **Storage-fiókok**lehetőséget, és töltse fel a kapcsolódó fájlokat a ADLS Gen2 fájlrendszerbe. Hagyja ki ezt a lépést, ha a fájlok már az Azure Storage-ban vannak. 
@@ -125,12 +125,13 @@ Ebben a szakaszban létrehoz egy Apache Spark-feladatdefiníció a .NET Spark (C
  4. Válassza a **.net Spark (C#/f #)** lehetőséget a Apache Spark Job definition főablakában található nyelv legördülő listából.
 
  5. Adja meg Apache Spark-feladatdefiníció adatait. A mintaadatok másolására is lehetőség van.
+    
      |  Tulajdonság   | Leírás   |  
      | ----- | ----- |  
      |Feladatdefiníció neve| Adja meg a Apache Spark-feladatdefiníció nevét. Ez a név bármikor frissíthető, amíg közzé nem teszi. Minta`job definition sample`|
-     |Fő definíciós fájl| A feladatokhoz használt fő fájl. Válasszon egy ZIP-fájlt, amely tartalmazza a .NET for Apache Spark alkalmazást (azaz a fő végrehajtható fájlt, a felhasználó által definiált függvényeket tartalmazó DLL-eket és az egyéb szükséges fájlokat) a tárolóból. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. Minta`abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/wordcount.zip`|
+     |Fő definíciós fájl| A feladatokhoz használt fő fájl. Válasszon egy ZIP-fájlt, amely tartalmazza a .NET for Apache Spark alkalmazást (azaz a fő végrehajtható fájlt, a felhasználó által definiált függvényeket tartalmazó DLL-eket és az egyéb szükséges fájlokat) a tárolóból. A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba. Minta`abfss://…/path/to/wordcount.zip`|
      |Fő végrehajtható fájl| A fő végrehajtható fájl a fő definíciós ZIP-fájlban. Minta`WordCount`|
-     |Parancssori argumentumok| A feladatokhoz nem kötelező argumentumok. Minta`abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/result`|
+     |Parancssori argumentumok| A feladatokhoz nem kötelező argumentumok. Minta`abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |Hivatkozási fájlok| További fájlok szükségesek a munkavégző csomópontok számára a .NET Apache Spark alkalmazáshoz való végrehajtásához, amely nem szerepel a fő definíciós ZIP-fájlban (azaz függő tégelyekben, a felhasználó által definiált függvény dll-jei és más konfigurációs fájlokban). A fájl **feltöltése** lehetőség kiválasztásával feltöltheti a fájlt egy Storage-fiókba.|
      |Spark-készlet| A rendszer elküldi a feladatot a kiválasztott Apache Spark-készletbe.|
      |Spark-verzió| A Apache Spark-készletet futtató Apache Spark verziója.|

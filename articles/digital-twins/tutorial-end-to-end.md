@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bd1c41f23164d8dda2712ef2c361498cdaed6105
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206557"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032296"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>Hozzon létre egy végpontok közötti megoldást
 
@@ -26,6 +26,9 @@ Ebben az oktatóanyagban a következő lesz:...
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="set-up-cloud-shell-session"></a>Cloud Shell munkamenet beállítása
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
 [!INCLUDE [Azure Digital Twins tutorial: configure the sample project](../../includes/digital-twins-tutorial-sample-configure.md)]
@@ -177,7 +180,7 @@ Az eszköz kapcsolódásának beállításához a következő műveleteket kell 
 4. A szimulált eszköz futtatása és a telemetria előállítása
 5. Az Azure digitális Twins lekérdezése az élő eredmények megtekintéséhez
 
-### <a name="create-an-iot-hub-instance"></a>IoT Hub példány létrehozása
+### <a name="create-an-iot-hub-instance"></a>IoT Hub-példány létrehozása
 
 Az Azure Digital Twins úgy lett kialakítva, hogy [IoT hub](../iot-hub/about-iot-hub.md), egy Azure-szolgáltatást, amely az eszközök és az adatkezelési szolgáltatások mellett működik. Ebben a lépésben egy IoT hubot fog beállítani, amely az oktatóanyagban felügyeli a minta eszközt.
 
@@ -407,7 +410,7 @@ Itt látható az oktatóanyagban kiépített forgatókönyv áttekintése.
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="A teljes építési forgatókönyv ábrája. Az eszközről a IoT Hubba, egy Azure-függvénnyel (B. nyíl) egy Azure Digital Twins-példányra (A szakasz), Event Grid majd egy másik Azure-függvényre (A C. nyílra) átáramló adatok ábrázolása.":::
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, a következő lépésekkel törölheti őket. 
 
@@ -428,12 +431,12 @@ az ad app delete --id <your-application-ID>
 
 Végezetül törölje a helyi gépről letöltött Project Sample mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy teljes körű forgatókönyvet, amely bemutatja, hogy az Azure digitális ikrek az élő eszközön tárolt adatmennyiségen alapulnak.
 
 Ezután tekintse meg a koncepció dokumentációját, ahol további információt talál az oktatóanyagban használt elemekről:
-* [Fogalmak: egyéni modellek](concepts-models.md)
+* [*Fogalmak: egyéni modellek*](concepts-models.md)
 
 Vagy részletesebben is megtudhatja az oktatóanyag folyamatait az útmutató cikkeinek elindításával:
-* [Útmutató: az Azure digitális Twins parancssori felületének használata](how-to-use-cli.md)
+* [*Útmutató: az Azure digitális Twins parancssori felületének használata*](how-to-use-cli.md)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cf1d732391f86bec9c0ec2de1e6bace2e808bb19
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1f0668a897f5bc88fbaeb770bc045e56dae2d48f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318926"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075488"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Oktatóanyag: a IoT térbeli elemzés megvalósítása Azure Maps használatával
 
@@ -85,13 +85,13 @@ A következő ábra a kék színnel jelölt geokerítésen jelöli. A bérleti j
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy erőforráscsoportot a Azure Portal. Erőforráscsoport létrehozásához hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza az **Erőforráscsoportok** lehetőséget.
+2. Válassza az **erőforráscsoportok**lehetőséget.
     
    ![Erőforráscsoportok](./media/tutorial-iot-hub-maps/resource-group.png)
 
@@ -110,7 +110,7 @@ Az oktatóanyag lépéseinek elvégzéséhez először létre kell hoznia egy er
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps-fiók létrehozása 
 
-Az üzleti logika Azure Maps térbeli elemzésen alapuló megvalósításához létre kell hozni egy Azure Maps fiókot az általunk létrehozott erőforráscsoporthoz. Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) Azure Maps fiók előfizetésének S1 árképzési szinten való létrehozásához című témakör utasításait. A fiók elsődleges kulcsának beszerzéséhez kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account) című témakör lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
+Az üzleti logika Azure Maps térbeli elemzésen alapuló megvalósításához létre kell hozni egy Azure Maps fiókot az általunk létrehozott erőforráscsoporthoz. Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account) Azure Maps fiók előfizetésének S1 árképzési szinten való létrehozásához című témakör utasításait. A fiók elsődleges kulcsának beszerzéséhez kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account) című témakör lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
 
 
@@ -241,7 +241,7 @@ Ekkor a rendszer a blob-tárolóban tárolja az összes releváns eseményt. Az 
 
 6. Másolja a [C#-kódot](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) a függvénybe.
  
-7. A C# parancsfájlban cserélje le a következő paramétereket. Kattintson a **Save** (Mentés) gombra. Még ne kattintson a **Futtatás** gombra
+7. A C# parancsfájlban cserélje le a következő paramétereket. Kattintson a **Mentés** gombra. Még ne kattintson a **Futtatás** gombra
     * Cserélje le a **SUBSCRIPTION_KEYt** a Azure Maps fiók elsődleges előfizetési kulcsára.
     * Cserélje le a **UDID** a feltöltött geokerítésen UDID. 
     * A szkriptben a **CreateBlobAsync** függvény egy blobot hoz létre eseményként az adattároló-fiókban. Cserélje le a **ACCESS_KEY**, **ACCOUNT_NAME**és **STORAGE_CONTAINER_NAME** a Storage-fiók hozzáférési kulcsára, a fiók nevére és az adattároló-tárolóra.

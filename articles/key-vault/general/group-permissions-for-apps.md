@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 21cb7133bad27013895a5e717cb7729b71795ce9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126229"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078953"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Hozzáférés-vezérlési házirenddel Key Vault hitelesítés megadása
 
@@ -39,7 +39,7 @@ A Key Vault hozzáférés-vezérléssel kapcsolatos részletes információkért
    - [Kulcstartó létrehozása az Azure CLI-vel](../secrets/quick-create-cli.md)
    - [Key Vault létrehozása Azure PowerShell](../secrets/quick-create-powershell.md)
    - [Hozzon létre egy Key vaultot a Azure Portal](../secrets/quick-create-portal.md).
-- Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/overview). Azt is megteheti, hogy a [Azure Portal](https://portal.azure.com)is használja.
+- Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/). Azt is megteheti, hogy a [Azure Portal](https://portal.azure.com)is használja.
 
 ## <a name="grant-access-to-your-key-vault"></a>Hozzáférés biztosítása a kulcstartóhoz
 

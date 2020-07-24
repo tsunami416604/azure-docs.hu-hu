@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.openlocfilehash: ff38f923f7b33c4bc893246970c1e47d33e59269
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.custom: devx-track-java
+ms.openlocfilehash: 426336802f55b5f68d8c3e04cdb932b984c2adc7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780405"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037219"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Meglévő egyéni tartomány leképezése az Azure Spring Cloud-ra
 Az elosztott név szolgáltatás (DNS) a hálózati csomópontok nevének hálózaton belüli tárolására szolgáló módszer. Ez az oktatóanyag egy tartományt, például a www.contoso.com-t egy CNAME-rekord használatával képezi le. Az egyéni tartományt egy tanúsítvánnyal védi, és bemutatja, hogyan lehet kényszeríteni a Transport Layer Security (TLS), más néven SSL (SSL) használatát. 
@@ -34,7 +35,7 @@ A tanúsítvány feltöltése a Key vaultba:
 1. A **tanúsítvány létrehozása** párbeszédpanel **tanúsítvány létrehozása módjában**válassza a lehetőséget `Import` .
 1. A **tanúsítványfájl feltöltése**területen navigáljon a tanúsítvány helyére, és jelölje ki.
 1. A **jelszó**területen adja meg a tanúsítvány titkos kulcsát.
-1. Kattintson a **Létrehozás**gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
     ![1. tanúsítvány importálása](./media/custom-dns-tutorial/import-certificate-a.png)
 
@@ -142,7 +143,7 @@ az spring-cloud app custom-domain list --app <app name>
 ## <a name="add-ssl-binding"></a>SSL-kötés hozzáadása
 Az egyéni tartomány táblában válassza az **SSL-kötés hozzáadása** lehetőséget az előző ábrán látható módon.  
 1. Válassza ki a **tanúsítványt** , vagy importálja.
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
     ![SSL-kötés hozzáadása](./media/custom-dns-tutorial/add-ssl-binding.png)
 
@@ -169,7 +170,7 @@ az spring-cloud app update -name <app-name> --https-only <true|false> -g <resour
 
 Ha a művelet befejeződött, navigáljon az alkalmazására mutató HTTPS URL-címek bármelyikéhez. Vegye figyelembe, hogy a HTTP-URL-címek nem működnek.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 * [Tanúsítvány importálása](https://docs.microsoft.com/azure/key-vault/certificate-scenarios#import-a-certificate)
 * [A Spring Cloud-alkalmazás elindítása az Azure CLI használatával](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli)

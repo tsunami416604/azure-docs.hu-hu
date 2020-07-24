@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: 9e3638c9823ed0fbae61a0dc5a93dff2e211d3f3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6477d8f59d66c053ced4ceebed98082d51f92c2f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022641"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076007"
 ---
 # <a name="use-cli-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>BACPAC-fájl importálása a parancssori felület használatával SQL Database
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 A szkript a következő parancsokat használja. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| | |
+| Parancs | Leírás |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | Kiszolgálói parancsok. |
 | [az SQL db import](/cli/azure/sql/db#az-sql-db-import) | Adatbázis-importálási parancs. |
