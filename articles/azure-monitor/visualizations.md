@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 0176454b38dfa88480e63fedfae175a63192eaee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4c5290d9f5ec47969ae43e5986d31484927a0ac5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498593"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081355"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Adatok megjelenítése az Azure Monitorból
 Ez a cikk az Azure Monitorban tárolt napló-és metrikai adatok megjelenítéséhez használható módszerek összegzését tartalmazza.
@@ -40,6 +40,8 @@ A [munkafüzetek](../azure-monitor/platform/workbooks-overview.md) olyan interak
 Az [Azure irányítópultok](../azure-portal/azure-portal-dashboards.md) az Azure elsődleges irányítópult-technológiái. Különösen hasznosak lehetnek az Azure-infrastruktúra és-szolgáltatások egyetlen ablaktáblájának biztosításában, amely lehetővé teszi a fontos problémák gyors azonosítását.
 
 ![Irányítópult](media/visualizations/dashboard.png)
+
+Itt látható egy útmutató az irányítópultok létrehozásához.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
@@ -135,7 +137,7 @@ A naplózási és metrikai adatokban lévő adatokhoz a Azure Monitor API-n kere
 - Nem támogatott több munkaterület vagy Application Insights alkalmazások lekérdezése.
 - A lekérdezések mérete legfeljebb 8 MB, a lekérdezés végrehajtási ideje pedig 110 másodperc.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tudnivalók a [Azure monitor által gyűjtött adatokról](platform/data-platform.md).
 - Ismerje meg az [Azure-irányítópultokat](../azure-portal/azure-portal-dashboards.md).
 - A [Azure monitor nézeteinek](platform/view-designer.md)megismerése.

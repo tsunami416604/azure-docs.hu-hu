@@ -3,12 +3,12 @@ title: Integrálás a Apache Kafka összekapcsolásával – Azure Event Hubs | 
 description: Ez a cikk tájékoztatást nyújt arról, hogyan használható a Apache Spark az Azure Event Hubs for Kafka szolgáltatással.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 2e7a6b406b6d33c94c6fddea2f73b70c24f45f86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c63d27549df40120a90b2594ab54337c11168b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320172"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079096"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Az Apache Kafka Connect-támogatás és az Azure Event Hubs integrálása (előzetes verzió)
 Az üzleti igények növekedésével arra is egyre nagyobb igény jelentkezik, hogy a rendszer képes legyen különböző külső források és fogadók betöltésére. Az [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) által biztosított keretrendszer egy Kafka-fürtön keresztül képes csatlakozni és adatokat importálni/exportálni olyan külső rendszerekből, mint a MySQL, a HDFS és különböző fájlrendszerek. Ez az oktatóanyag végigvezeti a Kafka csatlakozási keretrendszernek a Event Hubssal való használatával.
@@ -34,7 +34,7 @@ A bemutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbi
 - [Git](https://www.git-scm.com/downloads)
 - Linux/MacOS
 - Kafka-példány (1.1.1-es verzió, 2.11-es Scala verzió), amely a [kafka.apache.org](https://kafka.apache.org/downloads#1.1.1) webhelyről tölthető le
-- Az [Apache Kafkához készült Event Hubsot](https://docs.microsoft.com/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview) ismertető cikket is mindenképpen olvassa át.
+- Az [Apache Kafkához készült Event Hubsot](./event-hubs-for-kafka-ecosystem-overview.md) ismertető cikket is mindenképpen olvassa át.
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 Az Event Hubs-szolgáltatásokból való küldéshez és fogadáshoz szükség van egy Event Hubs-névtérre. A névtér és az Event hub létrehozásával kapcsolatos utasításokért tekintse meg az [Event hub létrehozása](event-hubs-create.md) című témakört. Szerezze be az Event Hubs kapcsolati sztringjét és teljes tartománynevét (FQDN) későbbi használatra. Útmutatásért lásd az [Event Hubs kapcsolati sztring lekérésével](event-hubs-get-connection-string.md) foglalkozó témakört. 

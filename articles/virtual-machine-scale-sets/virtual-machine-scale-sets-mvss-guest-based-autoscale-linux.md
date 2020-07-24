@@ -9,23 +9,24 @@ ms.subservice: autoscale
 ms.date: 04/26/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: aa004cc3ad6c02937ae3c3c8bdb1d5ebd225f434
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 549f8fbc1e3acf435011f223faeb5b8240f0c55d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124805"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080420"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Autoskálázás a vendég metrikák használatával egy Linux-méretezési csoport sablonjában
 
 Az Azure-ban két, a virtuális gépek és a méretezési csoportok által gyűjtött mérőszámok találhatók: a gazdagép metrikái és a vendég metrikái. Ha a normál processzor-, lemez-és hálózati metrikákat szeretné használni, akkor a gazdagép metrikái jól illeszkednek. Ha azonban nagyobb számú mérőszámra van szüksége, akkor a vendég metrikákat kell keresnie.
 
-A gazdagép metrikái nem igényelnek további telepítést, mivel azokat a gazda virtuális gép gyűjti, míg a vendég metrikák megkövetelik a [Windows Azure Diagnostics bővítmény](../virtual-machines/windows/extensions-diagnostics-template.md) vagy a [Linux Azure Diagnostics bővítmény](../virtual-machines/linux/diagnostic-extension.md) telepítését a vendég virtuális gépen. Az egyik gyakori oka, hogy a vendég metrikák használata a gazdagép metrikái helyett az, hogy a vendég mérőszámok nagyobb választékot biztosítanak a metrikák számára, mint a gazdagép metrikái. Az egyik ilyen példa a memória-felhasználás mérőszámai, amelyek csak a vendég metrikák használatával érhetők el. A támogatott gazdagép-metrikák [itt](../azure-monitor/platform/metrics-supported.md)vannak felsorolva, és gyakran használt vendég metrikák szerepelnek [itt](../azure-monitor/platform/autoscale-common-metrics.md). Ez a cikk bemutatja, hogyan módosíthatja az [alapszintű, életképes méretezési csoport sablonját](virtual-machine-scale-sets-mvss-start.md) az autoskálázási szabályok használatára a Linux-méretezési csoportok vendég metrikái alapján.
+A gazdagép metrikái nem igényelnek további telepítést, mivel azokat a gazda virtuális gép gyűjti, míg a vendég metrikák megkövetelik a [Windows Azure Diagnostics bővítmény](../virtual-machines/extensions/diagnostics-template.md) vagy a [Linux Azure Diagnostics bővítmény](../virtual-machines/extensions/diagnostics-linux.md) telepítését a vendég virtuális gépen. Az egyik gyakori oka, hogy a vendég metrikák használata a gazdagép metrikái helyett az, hogy a vendég mérőszámok nagyobb választékot biztosítanak a metrikák számára, mint a gazdagép metrikái. Az egyik ilyen példa a memória-felhasználás mérőszámai, amelyek csak a vendég metrikák használatával érhetők el. A támogatott gazdagép-metrikák [itt](../azure-monitor/platform/metrics-supported.md)vannak felsorolva, és gyakran használt vendég metrikák szerepelnek [itt](../azure-monitor/platform/autoscale-common-metrics.md). Ez a cikk bemutatja, hogyan módosíthatja az [alapszintű, életképes méretezési csoport sablonját](virtual-machine-scale-sets-mvss-start.md) az autoskálázási szabályok használatára a Linux-méretezési csoportok vendég metrikái alapján.
 
 ## <a name="change-the-template-definition"></a>A sablon definíciójának módosítása
 
 Egy [korábbi cikkben](virtual-machine-scale-sets-mvss-start.md) egy alapszintű méretezési csoport sablont hoztunk létre. Most ezt a korábbi sablont fogjuk használni, és úgy módosítjuk, hogy olyan sablont hozzon létre, amely a vendég metrika-alapú autoscale használatával üzembe helyez egy Linux-méretezési készletet.
 
-Először adja hozzá a és a paramétereit `storageAccountName` `storageAccountSasToken` . A diagnosztikai ügynök metrikus adatokat tárol ebben a Storage-fiókban található [táblában](../cosmos-db/table-storage-how-to-use-dotnet.md) . A Linux diagnosztikai ügynök 3,0-es verziójától kezdve a Storage-hozzáférési kulcs használata már nem támogatott. Ehelyett használjon sas- [tokent](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Először adja hozzá a és a paramétereit `storageAccountName` `storageAccountSasToken` . A diagnosztikai ügynök metrikus adatokat tárol ebben a Storage-fiókban található [táblában](../cosmos-db/tutorial-develop-table-dotnet.md) . A Linux diagnosztikai ügynök 3,0-es verziójától kezdve a Storage-hozzáférési kulcs használata már nem támogatott. Ehelyett használjon sas- [tokent](../storage/common/storage-sas-overview.md).
 
 ```diff
      },
@@ -41,7 +42,7 @@ Először adja hozzá a és a paramétereit `storageAccountName` `storageAccount
    },
 ```
 
-Ezután módosítsa a méretezési csoportját, `extensionProfile` hogy tartalmazza a diagnosztikai bővítményt. Ebben a konfigurációban adja meg annak a méretezési csoportnak az erőforrás-AZONOSÍTÓját, amely a metrikák gyűjtését, valamint a metrikák tárolásához használható Storage-fiókot és SAS-jogkivonatot használja. Itt adhatja meg, hogy a metrikák milyen gyakran legyenek összesítve (ebben az esetben percenként), és mely mérőszámokat kell követni (ebben az esetben a felhasznált memória százalékaránya). További információ erről a konfigurációról és a felhasznált memória százalékos arányáról: [ebben a dokumentációban](../virtual-machines/linux/diagnostic-extension.md).
+Ezután módosítsa a méretezési csoportját, `extensionProfile` hogy tartalmazza a diagnosztikai bővítményt. Ebben a konfigurációban adja meg annak a méretezési csoportnak az erőforrás-AZONOSÍTÓját, amely a metrikák gyűjtését, valamint a metrikák tárolásához használható Storage-fiókot és SAS-jogkivonatot használja. Itt adhatja meg, hogy a metrikák milyen gyakran legyenek összesítve (ebben az esetben percenként), és mely mérőszámokat kell követni (ebben az esetben a felhasznált memória százalékaránya). További információ erről a konfigurációról és a felhasznált memória százalékos arányáról: [ebben a dokumentációban](../virtual-machines/extensions/diagnostics-linux.md).
 
 ```diff
                  }

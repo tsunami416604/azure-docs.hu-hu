@@ -6,11 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e2f732a8cf51c51de1b6125717eafb672d7fff74
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 90ca46ace5f774e288b40a969f8f7e9802e79857
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027409"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080879"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Adattitkosítás Azure Database for MySQL ügyfél által felügyelt kulccsal
 
@@ -51,7 +52,7 @@ Ahhoz, hogy egy MySQL-kiszolgáló a ADATTITKOSÍTÁSI kulcsot titkosításához
 * **wrapKey**: a adattitkosítási kulcsot titkosítása.
 * **unwrapKey**: a adattitkosítási kulcsot visszafejtéséhez.
 
-A Key Vault rendszergazdája [engedélyezheti Key Vault naplózási események naplózását](../azure-monitor/insights/azure-key-vault.md)is, így később is naplózhatja őket.
+A Key Vault rendszergazdája [engedélyezheti Key Vault naplózási események naplózását](../azure-monitor/insights/key-vault-insights-overview.md)is, így később is naplózhatja őket.
 
 Ha a kiszolgáló a Key vaultban tárolt ügyfél által felügyelt kulcs használatára van konfigurálva, a kiszolgáló elküldi a ADATTITKOSÍTÁSI kulcsot a titkosításhoz a Key vaultba. Key Vault a felhasználói adatbázisban tárolt titkosított ADATTITKOSÍTÁSI kulcsot adja vissza. Hasonlóképpen, ha szükséges, a kiszolgáló a védett ADATTITKOSÍTÁSI kulcsot a Key vaultba küldi a visszafejtéshez. A könyvvizsgálók a Azure Monitor segítségével ellenőrizhetik Key Vault naplózási eseménynaplókat, ha engedélyezve van a naplózás.
 

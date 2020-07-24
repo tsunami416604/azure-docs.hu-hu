@@ -1,5 +1,5 @@
 ---
-title: Adatterületek a Windows rendszerű virtuális asztali környezethez – Azure
+title: Adathelyszínek a Windows rendszerű virtuális asztali Spring 2020 – Azure
 description: Röviden áttekintheti, hogy a Windows rendszerű virtuális asztali adatok és metaadatok mely helyein vannak tárolva.
 services: virtual-desktop
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 853f5766c4fd6344eecfd7be1d7911163133a8a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96072b8008f42f58ec6a3aff32728c087b8e3290
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611534"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080573"
 ---
-# <a name="data-locations-for-windows-virtual-desktop"></a>Adatterületek a Windows rendszerű virtuális asztali környezethez
+# <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>A Windows rendszerű virtuális asztali adatok és metaadatok helyei
 
 >[!IMPORTANT]
 >Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/data-locations-2019.md).

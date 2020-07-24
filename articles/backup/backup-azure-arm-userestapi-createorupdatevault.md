@@ -4,15 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan kezelheti az Azure-beli virtu
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0170bda1ca956efe971695e34dc0d14b68eb109a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173419"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079332"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-tároló létrehozása REST API használatával
 
-Az Azure Recovery Services-tárolók REST API használatával történő létrehozásának lépései a tár [létrehozása REST API](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate) dokumentációjában találhatók. Ezt a dokumentumot hivatkozásként használjuk a "testVault" nevű tár létrehozásához az "USA nyugati régiójában".
+Az Azure Recovery Services-tárolók REST API használatával történő létrehozásának lépései a tár [létrehozása REST API](/rest/api/recoveryservices/vaults/createorupdate) dokumentációjában találhatók. Ezt a dokumentumot hivatkozásként használjuk a "testVault" nevű tár létrehozásához az "USA nyugati régiójában".
 
 Azure Recovery Services-tároló létrehozásához vagy frissítéséhez használja a következő *put* műveletet.
 
@@ -29,7 +30,7 @@ A következő fejlécek megadása kötelező:
 | Kérelem fejléce   | Leírás |
 |------------------|-----------------|
 | *Content-Type* (Tartalomtípus):  | Kötelező. Állítsa `application/json` értékre. |
-| *Authorization* (Engedélyezés): | Kötelező. Állítsa egy érvényes `Bearer` [hozzáférési jogkivonatra](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Authorization* (Engedélyezés): | Kötelező. Állítsa egy érvényes `Bearer` [hozzáférési jogkivonatra](/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
 További információ a kérelem létrehozásáról: [REST API kérelem/válasz összetevői](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -40,9 +41,9 @@ A kérelem törzsének létrehozásához a következő általános definíciók 
 |Name  |Kötelező  |Típus  |Description  |
 |---------|---------|---------|---------|
 |eTag     |         |   Sztring      |  Opcionális eTag       |
-|location     |  igaz       |Sztring         |   Erőforrás helye      |
-|properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tár tulajdonságai       |
-|SKU     |         |  [SKU](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Az egyes Azure-erőforrások egyedi rendszerazonosítójának azonosítása     |
+|location     |  true       |Sztring         |   Erőforrás helye      |
+|properties     |         | [VaultProperties](/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  A tár tulajdonságai       |
+|SKU     |         |  [SKU](/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Az egyes Azure-erőforrások egyedi rendszerazonosítójának azonosítása     |
 |tags     |         | Objektum        |     Erőforráscímkék    |
 
 Vegye figyelembe, hogy a tár neve és az erőforráscsoport neve a PUT URI-ban van megadva. A kérelem törzse határozza meg a helyet.
@@ -65,10 +66,10 @@ A következő példában egy tárolót hoz létre a "West US"-ben. Itt adhatja m
 
 Két sikeres válasz van a művelethez egy Recovery Services-tároló létrehozásához vagy frissítéséhez:
 
-|Name  |Típus  |Description  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
-|200 OK     |   [Vault](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
-|201 létrehozva     | [Vault](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Létrehozva      |
+|200 OK     |   [Tároló](/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
+|201 létrehozva     | [Tároló](/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Létrehozva      |
 
 További információ a REST API válaszokról: [a válaszüzenet feldolgozása](/rest/api/azure/#process-the-response-message).
 

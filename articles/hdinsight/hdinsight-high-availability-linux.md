@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 21ecf33291924097f076aa28088eb4eac652ce67
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f97b4877d87acec923812fd0289d5161529dbe7a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849660"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081032"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Apache Hadoop-fürtök rendelkezésre állása és megbízhatósága a HDInsight-ben
 
@@ -97,7 +97,7 @@ További információ a Ambari REST API használatáról: a [HDInsight figyelés
 
 A következő módszerekkel csatlakozhat olyan csomópontokhoz, amelyek nem érhetők el közvetlenül az interneten keresztül:
 
-|Metódus |Description |
+|Metódus |Leírás |
 |---|---|
 |SSH|Miután az SSH-val csatlakozott egy Head csomóponthoz, a fő csomóponton található SSH használatával csatlakozhat a fürt más csomópontjaihoz. További információ: [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).|
 |SSH-alagút|Ha az egyik olyan csomóponton üzemeltetett webszolgáltatáshoz kell hozzáférni, amely nem érhető el az interneten, SSH-alagutat kell használnia. További információ: [SSH-alagút használata HDInsight](hdinsight-linux-ambari-ssh-tunnel.md) -dokumentummal.|
@@ -268,7 +268,7 @@ A Ambari webes felhasználói felületén válassza ki azt a szolgáltatást, am
 
 A csomópontok mérete csak a fürt létrehozásakor választható ki. A HDInsight elérhető különböző virtuálisgép-méretek listáját a [HDInsight díjszabása lapon](https://azure.microsoft.com/pricing/details/hdinsight/)találja.
 
-Fürt létrehozásakor megadhatja a csomópontok méretét. A következő információk útmutatást nyújtanak a méret megadásához az [Azure Portal](https://portal.azure.com/), [Azure PowerShell modul](/powershell/azureps-cmdlets-docs)az és az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használatával:
+Fürt létrehozásakor megadhatja a csomópontok méretét. A következő információk útmutatást nyújtanak a méret megadásához az [Azure Portal](https://portal.azure.com/), [Azure PowerShell modul](/powershell/azure/)az és az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használatával:
 
 * **Azure Portal**: fürt létrehozásakor beállíthatja a fürt által használt csomópontok méretét:
 
@@ -284,6 +284,6 @@ Ha többet szeretne megtudni a cikkben tárgyalt elemekről, tekintse meg a köv
 
 * [Apache Ambari – REST-dokumentáció](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 * [Az Azure CLI telepítése és konfigurálása](https://docs.microsoft.com//cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Azure PowerShell modul telepítése és konfigurálása az](/powershell/azure/overview)
+* [Azure PowerShell modul telepítése és konfigurálása az](/powershell/azure/)
 * [HDInsight-kezelés az Apache Ambari használatával](hdinsight-hadoop-manage-ambari.md)
 * [Linux-alapú HDInsight-fürtök kiépítése](hdinsight-hadoop-provision-linux-clusters.md)

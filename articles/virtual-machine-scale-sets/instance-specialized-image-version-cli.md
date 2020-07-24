@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e1b260b1249af25ac5a8364798c532dcb3885cb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e47ed9b5505966973644bee0578d5b13d1659766
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887879"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080556"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Méretezési csoport létrehozása speciális rendszerkép-verzióval az Azure CLI használatával
 
-Méretezési csoport létrehozása egy megosztott rendszerkép-katalógusban tárolt [speciális rendszerkép-verzióból](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) . Ha általánosított rendszerkép-verzió használatával szeretne méretezési készletet létrehozni, tekintse meg [a méretezési csoport létrehozása általánosított rendszerképből](instance-generalized-image-version-cli.md)című témakört.
+Méretezési csoport létrehozása egy megosztott rendszerkép-katalógusban tárolt [speciális rendszerkép-verzióból](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) . Ha általánosított rendszerkép-verzió használatával szeretne méretezési készletet létrehozni, tekintse meg [a méretezési csoport létrehozása általánosított rendszerképből](instance-generalized-image-version-cli.md)című témakört.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.4.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -60,6 +60,3 @@ Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrá
 - [Shared Image Gallery létrehozása](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [Rendszerkép-definíció létrehozása Shared Image Galleryben](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Rendszerképverzió létrehozása Shared Image Galleryben](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-
-
-

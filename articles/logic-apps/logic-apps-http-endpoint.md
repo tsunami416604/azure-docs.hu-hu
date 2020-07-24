@@ -6,11 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/28/2020
-ms.openlocfilehash: b5c4005c95a88a40a836b9c0f6d1fd01e0417ed0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8211127d7c886b86f97e83a61b3b3ebb055851e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170273"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078673"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logikai alkalmazások hívása, elindítása vagy beágyazása HTTPS-végpontok használatával Azure Logic Apps
 
@@ -18,7 +19,7 @@ Annak érdekében, hogy a logikai alkalmazás egy URL-címen legyen meghívható
 
 A hívható végpontok beállításához használhatja az alábbi típusú triggereket, amelyek lehetővé teszik a logikai alkalmazások számára a bejövő kérések fogadását:
 
-* [Kérés](../connectors/connectors-native-reqres.md)
+* [Kérelem](../connectors/connectors-native-reqres.md)
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 * Felügyelt összekötő-eseményindítók, amelyek rendelkeznek [ApiConnectionWebhook-típussal](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) , és fogadhatnak Bejövő HTTPS-kéréseket
 
@@ -387,7 +388,7 @@ A válasz művelet JSON-definíciójának és a logikai alkalmazás teljes JSON-
 
 #### <a name="q-what-about-url-security"></a>K: Mi az URL-biztonság?
 
-**A**: az Azure biztonságos módon generálja a logikai alkalmazás visszahívási URL-címeit [közös hozzáférésű aláírás (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)használatával. Ez az aláírás lekérdezési paraméterként halad át, és a logikai alkalmazás futtatása előtt érvényesíteni kell. Az Azure egy titkos kulcs egyedi kombinációjával, a trigger nevével és a végrehajtott művelettel hozza létre az aláírást. Tehát ha valaki hozzáfér a titkos logikai alkalmazás kulcsához, nem tud érvényes aláírást előállítani.
+**A**: az Azure biztonságos módon generálja a logikai alkalmazás visszahívási URL-címeit [közös hozzáférésű aláírás (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature)használatával. Ez az aláírás lekérdezési paraméterként halad át, és a logikai alkalmazás futtatása előtt érvényesíteni kell. Az Azure egy titkos kulcs egyedi kombinációjával, a trigger nevével és a végrehajtott művelettel hozza létre az aláírást. Tehát ha valaki hozzáfér a titkos logikai alkalmazás kulcsához, nem tud érvényes aláírást előállítani.
 
 > [!IMPORTANT]
 > A termelési és a magasabb biztonsági rendszerek esetében erősen ajánljuk, hogy a logikai alkalmazás közvetlenül a böngészőből hívja meg a következő okokat:

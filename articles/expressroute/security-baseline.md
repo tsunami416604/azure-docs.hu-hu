@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e539e2a26e53ded8a2c42491c1e1e596a2180ed7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5c81897f74163191de4b167ffa56225ca0698ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85269057"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079043"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Azure biztonsági alapkonfiguráció a ExpressRoute-hez
 
@@ -116,7 +116,7 @@ A címkézéshez kapcsolódó beépített Azure Policy definíciók bármelyiké
 
 A Azure PowerShell vagy az Azure CLI használatával a címkék alapján kereshet vagy végezhet műveleteket az erőforrásokon.
 
-* [Címkék használata az Azure-erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [Címkék használata az erőforrások rendszerezéséhez](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -246,7 +246,7 @@ Emellett a ExpressRoute partner Resource Manager API-t használó partnerek szer
 
 * [A RBAC megismerése az Azure-ban](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [A RBAC kihasználása a ExpressRoute-partner Resource Manager API-ban](https://docs.microsoft.com/azure/expressroute/cross-connections-api-developmentment)
+* [A RBAC kihasználása a ExpressRoute-partner Resource Manager API-ban](https://docs.microsoft.com/azure/expressroute/cross-connections-api-development)
 
 **Azure Security Center figyelés**: igen
 

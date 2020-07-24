@@ -2,16 +2,17 @@
 title: A Azure Functions futtatókörnyezet verzióinak megcélzása
 description: Azure Functions támogatja a futtatókörnyezet több verzióját. Megtudhatja, hogyan határozhatja meg az Azure-ban üzemeltetett Function app futásidejű verzióját.
 ms.topic: conceptual
-ms.date: 11/26/2018
-ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: 3d4e40af1ba1e28bc9e9a433872e1315ffbe7747
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77151955"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079655"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>A Azure Functions futtatókörnyezet verzióinak megcélzása
 
-A Function alkalmazás a Azure Functions futtatókörnyezet egy adott verziójára fut. Három fő verzió létezik: [1. x, 2. x és 3. x](functions-versions.md). Alapértelmezés szerint a Function apps a futtatókörnyezet 2. x verziójában jön létre. Ez a cikk azt ismerteti, hogyan konfigurálható egy Function alkalmazás az Azure-ban a kiválasztott verzió futtatásához. A helyi fejlesztési környezet adott verzióra való konfigurálásával kapcsolatos információkért lásd: [kód-és tesztelési Azure functions helyileg](functions-run-local.md).
+A Function alkalmazás a Azure Functions futtatókörnyezet egy adott verziójára fut. Három fő verzió létezik: [1. x, 2. x és 3. x](functions-versions.md). Alapértelmezés szerint a Function apps a futtatókörnyezet 3. x verziójában jön létre. Ez a cikk azt ismerteti, hogyan konfigurálható egy Function alkalmazás az Azure-ban a kiválasztott verzió futtatásához. A helyi fejlesztési környezet adott verzióra való konfigurálásával kapcsolatos információkért lásd: [kód-és tesztelési Azure functions helyileg](functions-run-local.md).
 
 ## <a name="automatic-and-manual-version-updates"></a>Az automatikus és a manuális verzió frissítései
 

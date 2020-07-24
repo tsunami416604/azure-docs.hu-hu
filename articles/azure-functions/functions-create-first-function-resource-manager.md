@@ -1,24 +1,28 @@
 ---
 title: Az első függvény létrehozása Azure Resource Manager sablonok használatával
-description: Hozzon létre és helyezzen üzembe az Azure-ban egy egyszerű HTTP-triggert futtató kiszolgáló nélküli függvényt Azure Resource Manager sablonnal.
+description: Hozzon létre és helyezzen üzembe az Azure-ban egy egyszerű, HTTP által aktivált kiszolgáló nélküli függvényt egy Azure Resource Manager sablon (ARM-sablon) használatával.
 ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
-ms.openlocfilehash: 403ff6407105574c78b8e600c37efbe61d2f8b79
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e409b3b64ac6bc39ba4cb58397506723a67a0de2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740444"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081712"
 ---
-# <a name="quickstart-create-and-deploy-azure-functions-resources-from-a-resource-manager-template"></a>Gyors útmutató: Azure Functions erőforrások létrehozása és központi telepítése Resource Manager-sablonból
+# <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Rövid útmutató: Azure Functions-erőforrások létrehozása és üzembe helyezése ARM-sablonból
 
-Ebben a cikkben egy Azure Resource Manager sablon használatával hoz létre egy olyan függvényt, amely válaszol a HTTP-kérelmekre. 
+Ebben a cikkben egy Azure Resource Manager sablon (ARM-sablon) használatával hoz létre egy olyan függvényt, amely válaszol a HTTP-kérelmekre. 
 
 A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-function-app-create-dynamic%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,13 +52,11 @@ Válasszon egyet az alábbi lapok közül, kövesse a hivatkozást, és fejezze 
 
 Miután létrehozta a projektet helyileg, létrehozza az új funkció Azure-ban való futtatásához szükséges erőforrásokat. 
 
-## <a name="create-a-serverless-function-app-in-azure"></a>Kiszolgáló nélküli Function-alkalmazás létrehozása az Azure-ban
+## <a name="review-the-template"></a>A sablon áttekintése
 
-### <a name="review-the-template"></a>A sablon áttekintése
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-function-app-create-dynamic/) közül származik.
 
-Az ebben a gyorsútmutatóban használt sablon az [Azure gyorsindítási sablontárból](https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic) származik.
-
-:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" :::
+:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" range="1-140" highlight="55-136":::
 
 A sablon a következő négy Azure-erőforrást hozza létre:
 
@@ -63,7 +65,7 @@ A sablon a következő négy Azure-erőforrást hozza létre:
 + [**Microsoft. Web/Sites**](/azure/templates/microsoft.web/sites): Function-alkalmazás létrehozása.
 + [**Microsoft. bepillantások/összetevők**](/azure/templates/microsoft.insights/components): Application Insights-példány létrehozása a figyeléshez.
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli-interactive
@@ -145,7 +147,7 @@ A következőhöz hasonló választ kell megjelennie:
 
 <pre>Hello Functions!</pre>
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha folytatja a következő lépéssel, és hozzáadja az Azure Storage-várólista kimeneti kötését, az összes erőforrást helyben kell tartania, ahogy a már elvégzett műveletekre épít.
 

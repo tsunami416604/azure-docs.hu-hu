@@ -13,12 +13,12 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: 3014a66c633a4293de8cd6eb325e962366c103b9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d32bae48348e482e0e175760a416097ffbc17a1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208263"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080947"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rövid útmutató: Azure Notification hub létrehozása az Azure CLI használatával
 
@@ -95,7 +95,7 @@ Notification Hubs az Azure CLI 2.0.67 vagy újabb verzióját igényli. Futtassa
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
    ```
 
-   Ha az `--name` Ön által megadott `az notification-hub namespace create` parancs nem érhető el, vagy nem felel meg az [Azure-erőforrások elnevezési szabályainak és korlátozásainak](/azure/azure-resource-manager/management/resource-name-rules), az Azure CLI a következő kimeneti kimenettel fog válaszolni:
+   Ha az `--name` Ön által megadott `az notification-hub namespace create` parancs nem érhető el, vagy nem felel meg az [Azure-erőforrások elnevezési szabályainak és korlátozásainak](../azure-resource-manager/management/resource-name-rules.md), az Azure CLI a következő kimeneti kimenettel fog válaszolni:
 
    ```output
    #the name is not available
@@ -148,7 +148,7 @@ Notification Hubs az Azure CLI 2.0.67 vagy újabb verzióját igényli. Futtassa
 
 1. Egy értesítési központ hozzáférési szabályzatának listázása.
 
-   Az Azure Notification Hubs a hozzáférési házirendek használatával [közös hozzáférés-aláírási biztonságot](/azure/notification-hubs/notification-hubs-push-notification-security) használ.  Értesítési központ létrehozásakor a rendszer automatikusan létrehoz két házirendet.  A leküldéses értesítések konfigurálásához a szabályzatok kapcsolódási karakterláncai szükségesek.  Az az [Notification-hub Authorization-Rule List](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) parancs a szabályzatok és a hozzájuk tartozó erőforráscsoportok listáját tartalmazza.
+   Az Azure Notification Hubs a hozzáférési házirendek használatával [közös hozzáférés-aláírási biztonságot](./notification-hubs-push-notification-security.md) használ.  Értesítési központ létrehozásakor a rendszer automatikusan létrehoz két házirendet.  A leküldéses értesítések konfigurálásához a szabályzatok kapcsolódási karakterláncai szükségesek.  Az az [Notification-hub Authorization-Rule List](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) parancs a szabályzatok és a hozzájuk tartozó erőforráscsoportok listáját tartalmazza.
 
    ```azurecli
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
@@ -167,7 +167,7 @@ Notification Hubs az Azure CLI 2.0.67 vagy újabb verzióját igényli. Futtassa
 
 3. Értesítési központ hozzáférési házirendjéhez tartozó kulcsok és kapcsolati karakterláncok listázása
 
-   Az egyes hozzáférési házirendekhez két kulcs és kapcsolati karakterlánc van.  Az [értesítési központ konfigurálásához](/azure/notification-hubs/configure-notification-hub-portal-pns-settings)később szüksége lesz rájuk.  Az értesítési központ hozzáférési házirendjéhez tartozó kulcsok és kapcsolatok karakterláncok listázásához használja az az [Notification-hub Authorization-Rule List-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) parancsot.
+   Az egyes hozzáférési házirendekhez két kulcs és kapcsolati karakterlánc van.  Az [értesítési központ konfigurálásához](./configure-notification-hub-portal-pns-settings.md)később szüksége lesz rájuk.  Az értesítési központ hozzáférési házirendjéhez tartozó kulcsok és kapcsolatok karakterláncok listázásához használja az az [Notification-hub Authorization-Rule List-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) parancsot.
 
    ```azurecli
    #query the keys and connection strings for DefaultListenSharedAccessSignature
@@ -182,7 +182,7 @@ Notification Hubs az Azure CLI 2.0.67 vagy újabb verzióját igényli. Futtassa
    > [!NOTE]
    > Az [értesítési központ névtere](/cli/azure/ext/notification-hub/notification-hub/namespace/authorization-rule#ext-notification-hub-az-notification-hub-namespace-authorization-rule-list-keys) és az [értesítési központ](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) külön hozzáférési házirendekkel rendelkezik.  Győződjön meg arról, hogy a megfelelő Azure CLI-hivatkozást használja a kulcsok és a kapcsolódási karakterláncok lekérdezéséhez.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrást.
 

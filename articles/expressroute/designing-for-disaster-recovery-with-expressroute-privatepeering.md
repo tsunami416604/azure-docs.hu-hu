@@ -7,17 +7,22 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
 ms.author: rambala
-ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8adfb0ef0d9aa79d1b14127453f76223f035d62a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74076704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081168"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Vészhelyzeti helyreállítás tervezése ExpressRoute-alapú privát partnerekkel
 
 A ExpressRoute magas rendelkezésre állású, hogy a szolgáltatói szintű magánhálózati kapcsolatot biztosítson a Microsoft erőforrásaihoz. Más szóval, a Microsoft hálózaton belüli ExpressRoute útvonalon nem létezik egyetlen meghibásodási pont. A ExpressRoute áramkör rendelkezésre állásának maximalizálására szolgáló tervezési szempontokat lásd: [a magas rendelkezésre állás tervezése a ExpressRoute][HA].
 
 Azonban a Murphy népszerű példabeszédének betartása –*Ha bármi rosszat tud,* ez a cikk figyelembe veszi, hogy olyan megoldásokra koncentrálunk, amelyek túlmutatnak az egyetlen ExpressRoute áramkörrel kapcsolatos hibákon. Más szóval, ebben a cikkben megvizsgáljuk a hálózati architektúra szempontjait a robusztus háttérbeli hálózati kapcsolat kiépítéséhez a vész-helyreállításhoz a Geo-redundáns ExpressRoute-áramkörök használatával.
+
+>[!NOTE]
+>Az ebben a cikkben ismertetett fogalmak akkor is érvényesek, ha egy ExpressRoute-áramkör virtuális WAN vagy azon kívül jön létre.
+>
 
 ## <a name="need-for-redundant-connectivity-solution"></a>Redundáns csatlakozási megoldásra van szükség
 

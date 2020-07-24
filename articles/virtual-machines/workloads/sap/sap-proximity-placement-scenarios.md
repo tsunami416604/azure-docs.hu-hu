@@ -15,11 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aa71062c86d57cabe8579e13011956137804f74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76277595"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079791"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal
 Az SAP NetWeaver vagy az SAP S/4HANA architektúrán alapuló SAP-alkalmazások érzékenyek az SAP-alkalmazási rétegek és az SAP-adatbázis szintjei közötti hálózati késésre. Ez az érzékenység az alkalmazási rétegben futó üzleti logika legnagyobb része. Mivel az SAP-alkalmazás rétege futtatja az üzleti logikát, nagy gyakorisággal kérdezi le a lekérdezéseket az adatbázis-rétegre, és másodpercenként több ezer vagy több tízezer értéket ad meg. A legtöbb esetben a lekérdezések természete egyszerű. Általában 500-s vagy annál kisebb adatbázis-szinten futnak.
@@ -28,7 +29,7 @@ A hálózaton töltött idő a lekérdezés az alkalmazás szintjéről az adatb
 
 Számos Azure-régióban az adatközpontok száma nőtt. Ezt a növekedést a Availability Zones bevezetésével is elindították. Ugyanakkor az ügyfelek, különösen a magas szintű SAP-rendszerek esetében, több speciális VM SKU-t használnak az M sorozatú családban, vagy a HANA nagyméretű példányain. Ezek az Azure-beli virtuálisgép-típusok nem érhetők el egy adott Azure-régió összes adatközpontjában. A két tendencia miatt az ügyfelek olyan hálózati késést tapasztaltak, amely nem az optimális tartományban van. Bizonyos esetekben ez a késés az SAP-rendszerek inoptimális teljesítményét eredményezi.
 
-Ezen problémák elkerülése érdekében az Azure [közelségi csoportokat](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)biztosít. Ez az új funkció már használatban van különböző SAP-rendszerek üzembe helyezéséhez. A közelségi elhelyezési csoportokra vonatkozó korlátozásokért tekintse meg a bekezdés elején említett cikket. Ez a cikk azokat az SAP-forgatókönyveket ismerteti, amelyekben az Azure Proximity-elhelyezési csoportok használhatók.
+Ezen problémák elkerülése érdekében az Azure [közelségi csoportokat](../../linux/co-location.md)biztosít. Ez az új funkció már használatban van különböző SAP-rendszerek üzembe helyezéséhez. A közelségi elhelyezési csoportokra vonatkozó korlátozásokért tekintse meg a bekezdés elején említett cikket. Ez a cikk azokat az SAP-forgatókönyveket ismerteti, amelyekben az Azure Proximity-elhelyezési csoportok használhatók.
 
 ## <a name="what-are-proximity-placement-groups"></a>Mik azok a közelségi elhelyezési csoportok? 
 Az Azure Proximity-elhelyezési csoport egy logikai szerkezet. Ha meg van adva, az egy Azure-régióhoz és egy Azure-erőforráscsoporthoz van kötve. Virtuális gépek telepítésekor a rendszer a következőkre hivatkozik:
@@ -39,7 +40,7 @@ Az Azure Proximity-elhelyezési csoport egy logikai szerkezet. Ha meg van adva, 
 > [!NOTE]
 > Ha nincs olyan gazdagép-hardver telepítve, amely egy adott virtuálisgép-típust futtat az adatközpontban, ahol az első virtuális gép el lett helyezve, a kért virtuálisgép-típus telepítése sikertelen lesz. Hibaüzenetet kap.
 
-Egyetlen [Azure-erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) több közelségi elhelyezési csoporttal is rendelkezhet. A közelségi elhelyezési csoportok azonban csak egy Azure-erőforráscsoport számára rendelhetők hozzá.
+Egyetlen [Azure-erőforráscsoport](../../../azure-resource-manager/management/manage-resources-portal.md) több közelségi elhelyezési csoporttal is rendelkezhet. A közelségi elhelyezési csoportok azonban csak egy Azure-erőforráscsoport számára rendelhetők hozzá.
 
 Az elhelyezési csoportok használatakor vegye figyelembe az alábbi szempontokat:
 
@@ -48,9 +49,9 @@ Az elhelyezési csoportok használatakor vegye figyelembe az alábbi szempontoka
 - A hardver leszerelése miatt a Microsoft létrehozhat egy másik adatközpontban használt virtuálisgép-típust, nem pedig azt, amelyet eredetileg használt. Ebben az esetben előfordulhat, hogy át kell helyeznie az összes közelségi elhelyezési csoport virtuális gépe egy másik adatközpontba.
 
 ## <a name="proximity-placement-groups-with-sap-systems-that-use-only-azure-vms"></a>Földrajzi elhelyezési csoportok olyan SAP-rendszerekkel, amelyek csak Azure-beli virtuális gépeket használnak
-Az Azure-ban a legtöbb SAP NetWeaver és S/4HANA rendszer telepítése nem használ [HANA nagyméretű példányokat](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). A HANA nagyméretű példányokat nem használó központi telepítések esetében fontos, hogy optimális teljesítményt nyújtson az SAP-alkalmazás rétege és az adatbázis-kezelői réteg között. Ehhez Definiáljon egy Azure közelségi elhelyezési csoportot a rendszer számára.
+Az Azure-ban a legtöbb SAP NetWeaver és S/4HANA rendszer telepítése nem használ [HANA nagyméretű példányokat](./hana-overview-architecture.md). A HANA nagyméretű példányokat nem használó központi telepítések esetében fontos, hogy optimális teljesítményt nyújtson az SAP-alkalmazás rétege és az adatbázis-kezelői réteg között. Ehhez Definiáljon egy Azure közelségi elhelyezési csoportot a rendszer számára.
 
-A legtöbb ügyfél-telepítésben az ügyfeleknek egyetlen [Azure-erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) kell kiépíteniük az SAP-rendszerekhez. Ebben az esetben egy-az-egyhez kapcsolat áll fenn, például az éles környezetben futó ERP rendszererőforrás-csoport és a közelségi elhelyezési csoport között. Más esetekben az ügyfelek horizontálisan rendszerezik az erőforráscsoportot, és az összes éles rendszert összegyűjtik egyetlen erőforráscsoporthoz. Ebben az esetben egy-a-többhöz kapcsolatot kell kialakítania az erőforráscsoport és az éles környezetben futó SAP-rendszerek, valamint az éles környezetben futó SAP ERP, SAP BW és egyéb földrajzi elhelyezési csoportok között.
+A legtöbb ügyfél-telepítésben az ügyfeleknek egyetlen [Azure-erőforráscsoportot](../../../azure-resource-manager/management/manage-resources-portal.md) kell kiépíteniük az SAP-rendszerekhez. Ebben az esetben egy-az-egyhez kapcsolat áll fenn, például az éles környezetben futó ERP rendszererőforrás-csoport és a közelségi elhelyezési csoport között. Más esetekben az ügyfelek horizontálisan rendszerezik az erőforráscsoportot, és az összes éles rendszert összegyűjtik egyetlen erőforráscsoporthoz. Ebben az esetben egy-a-többhöz kapcsolatot kell kialakítania az erőforráscsoport és az éles környezetben futó SAP-rendszerek, valamint az éles környezetben futó SAP ERP, SAP BW és egyéb földrajzi elhelyezési csoportok között.
 
 Ne adjon meg több SAP-éles vagy nem éles rendszert egyetlen közelségi elhelyezési csoportban. Ha kis számú SAP-rendszerre vagy egy SAP-rendszerre van szükség, és néhány alkalmazásnak alacsony késésű hálózati kommunikációra van szüksége, érdemes lehet áthelyezni ezeket a rendszereket egy közelségi elhelyezési csoportba. Érdemes elkerülni a rendszerek kötegeit, mert annál több rendszer van csoportosítva a közelségi elhelyezési csoportban, annál nagyobb eséllyel:
 
@@ -64,11 +65,11 @@ A következőképpen néz ki az ideális konfiguráció:
 Ebben az esetben egyetlen SAP-rendszer van csoportosítva az egyik erőforráscsoporthoz, egy közelségi elhelyezési csoporttal. Nem függ attól, hogy a HANA kibővített vagy az adatbázis-kezelői Felskálázási konfigurációkat használja-e.
 
 ## <a name="proximity-placement-groups-and-hana-large-instances"></a>Proximity elhelyezési csoportok és HANA nagyméretű példányok
-Ha az SAP-rendszerek némelyike az alkalmazási réteg [Hana nagyméretű példányaira](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) támaszkodik, jelentős mértékű fejlesztéseket tapasztalhat a Hana nagyméretű példányok egysége és az Azure-beli virtuális gépek között, ha olyan Hana Large instances-egységeket használ, amelyek [4. változatban vagy bélyegzőben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)vannak telepítve. Az egyik javítás az, hogy a HANA Large instances egységeket üzembe helyezik, központi elhelyezési csoporttal. Az alkalmazási rétegbeli virtuális gépek üzembe helyezéséhez használhatja az adott közelségi csoportot. Ennek eredményeképpen ezek a virtuális gépek ugyanabban az adatközpontban lesznek telepítve, amely a HANA Large instances egységet üzemelteti.
+Ha az SAP-rendszerek némelyike az alkalmazási réteg [Hana nagyméretű példányaira](./hana-overview-architecture.md) támaszkodik, jelentős mértékű fejlesztéseket tapasztalhat a Hana nagyméretű példányok egysége és az Azure-beli virtuális gépek között, ha olyan Hana Large instances-egységeket használ, amelyek [4. változatban vagy bélyegzőben](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)vannak telepítve. Az egyik javítás az, hogy a HANA Large instances egységeket üzembe helyezik, központi elhelyezési csoporttal. Az alkalmazási rétegbeli virtuális gépek üzembe helyezéséhez használhatja az adott közelségi csoportot. Ennek eredményeképpen ezek a virtuális gépek ugyanabban az adatközpontban lesznek telepítve, amely a HANA Large instances egységet üzemelteti.
 
-Annak megállapításához, hogy a HANA nagyméretű példányainak egysége 4. változatban van-e telepítve, tekintse meg az [Azure HANA nagyméretű példányok vezérlése a Azure Portal használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#look-at-attributes-of-single-hli-unit)című cikket. A HANA Large instances egység attribútumok áttekintésében a közelségi elhelyezési csoport nevét is meghatározhatja, mivel a HANA nagyméretű példányok egységének telepítésekor jött létre. Az attribútumok áttekintésében megjelenő név annak a közelségi helynek a neve, amelyre az alkalmazási rétegbeli virtuális gépeket telepíteni kell.
+Annak megállapításához, hogy a HANA nagyméretű példányainak egysége 4. változatban van-e telepítve, tekintse meg az [Azure HANA nagyméretű példányok vezérlése a Azure Portal használatával](./hana-li-portal.md#look-at-attributes-of-single-hli-unit)című cikket. A HANA Large instances egység attribútumok áttekintésében a közelségi elhelyezési csoport nevét is meghatározhatja, mivel a HANA nagyméretű példányok egységének telepítésekor jött létre. Az attribútumok áttekintésében megjelenő név annak a közelségi helynek a neve, amelyre az alkalmazási rétegbeli virtuális gépeket telepíteni kell.
 
-A csak az Azure-beli virtuális gépeket használó SAP-rendszerekhez képest, ha HANA nagyméretű példányokat használ, kevesebb rugalmasságot biztosít annak eldöntésében, hogy hány [Azure-erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/manage-resources-portal) használ. A [Hana Large instances bérlő](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-know-terms) összes Hana Large instances egysége egyetlen erőforráscsoport szerint van csoportosítva, a [jelen cikkben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal#display-of-hana-large-instance-units-in-the-azure-portal)leírtak szerint. Hacsak nem a különböző bérlők számára végez telepítést, például üzemi és nem éles rendszerek vagy más rendszerek esetében, az összes HANA Large instances-egység egy HANA Large instances-bérlőn lesz üzembe helyezve. A bérlő egy-az-egyhez kapcsolattal rendelkezik egy erőforráscsoporthoz. Azonban minden egyes egységhez külön közelségi elhelyezési csoport lesz meghatározva.
+A csak az Azure-beli virtuális gépeket használó SAP-rendszerekhez képest, ha HANA nagyméretű példányokat használ, kevesebb rugalmasságot biztosít annak eldöntésében, hogy hány [Azure-erőforráscsoportot](../../../azure-resource-manager/management/manage-resources-portal.md) használ. A [Hana Large instances bérlő](./hana-know-terms.md) összes Hana Large instances egysége egyetlen erőforráscsoport szerint van csoportosítva, a [jelen cikkben](./hana-li-portal.md#display-of-hana-large-instance-units-in-the-azure-portal)leírtak szerint. Hacsak nem a különböző bérlők számára végez telepítést, például üzemi és nem éles rendszerek vagy más rendszerek esetében, az összes HANA Large instances-egység egy HANA Large instances-bérlőn lesz üzembe helyezve. A bérlő egy-az-egyhez kapcsolattal rendelkezik egy erőforráscsoporthoz. Azonban minden egyes egységhez külön közelségi elhelyezési csoport lesz meghatározva.
 
 Ennek eredményeképpen az Azure-erőforráscsoportok és a közelségi elhelyezési csoportok közötti kapcsolatok egyetlen bérlő esetében az alábbiak szerint jelennek meg:
 
@@ -161,8 +162,7 @@ Ha már rendelkezik telepített SAP-rendszerekkel, érdemes lehet optimalizálni
 ## <a name="next-steps"></a>További lépések
 Tekintse meg a dokumentációt:
 
-- [SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
-- [Előzetes verzió: virtuális gépek üzembe helyezése az Azure CLI-vel a közeli elhelyezési csoportokban](https://docs.microsoft.com/azure/virtual-machines/linux/proximity-placement-groups)
-- [Előzetes verzió: virtuális gépek üzembe helyezése a közeli elhelyezési csoportokban a PowerShell használatával](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)
-- [Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterhelésekhez](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-
+- [SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista](./sap-deployment-checklist.md)
+- [Előzetes verzió: virtuális gépek üzembe helyezése az Azure CLI-vel a közeli elhelyezési csoportokban](../../linux/proximity-placement-groups.md)
+- [Előzetes verzió: virtuális gépek üzembe helyezése a közeli elhelyezési csoportokban a PowerShell használatával](../../windows/proximity-placement-groups.md)
+- [Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterhelésekhez](./dbms_guide_general.md)

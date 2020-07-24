@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 77bba9433052c00df671caf73198ff75356b1c9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0f43d1f780f838fdc49eb055536204026edcc729
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400169"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079227"
 ---
 # <a name="text-to-speech-rest-api"></a>Szövegfelolvasás REST API
 
@@ -61,19 +61,19 @@ A `voices/list` végpont lehetővé teszi, hogy egy adott régióhoz vagy végpo
 | Az Egyesült Királyság déli régiója | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Nyugat-Európa | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA nyugati régiója | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA nyugati régiója, 2. | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA 2. nyugati régiója | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
 ### <a name="request-headers"></a>Kérésfejlécek
 
 Ez a táblázat a szöveg-beszéd kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
-| Fejléc | Leírás | Kötelező/nem kötelező |
+| Fejléc | Description | Kötelező/nem kötelező |
 |--------|-------------|---------------------|
-| `Authorization` | A szó `Bearer`előtt egy engedélyezési jogkivonat. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
+| `Authorization` | A szó előtt egy engedélyezési jogkivonat `Bearer` . További információért lásd: [Hitelesítés](#authentication). | Kötelező |
 
 ### <a name="request-body"></a>A kérés törzse
 
-A végpontra `GET` irányuló kérésekhez nincs szükség törzsre.
+A `GET` végpontra irányuló kérésekhez nincs szükség törzsre.
 
 ### <a name="sample-request"></a>Példa a kérelemre
 
@@ -155,7 +155,7 @@ Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
 
 ## <a name="convert-text-to-speech"></a>Szöveg átalakítása beszéddé
 
-A `v1` végpont lehetővé teszi szöveg-beszéd átalakítását a [Speech szintézis MARKUP Language (SSML)](speech-synthesis-markup.md)használatával.
+A `v1` végpont lehetővé teszi szöveg-beszéd átalakítását a [Speech szintézis Markup Language (SSML)](speech-synthesis-markup.md)használatával.
 
 ### <a name="regions-and-endpoints"></a>Régiók és végpontok
 
@@ -167,33 +167,33 @@ Ezek a régiók a REST API használatával történő szöveg-beszéd kommuniká
 
 Ez a táblázat a szöveg-beszéd kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
-| Fejléc | Leírás | Kötelező/nem kötelező |
+| Fejléc | Description | Kötelező/nem kötelező |
 |--------|-------------|---------------------|
-| `Authorization` | A szó `Bearer`előtt egy engedélyezési jogkivonat. További információért lásd: [Hitelesítés](#authentication). | Kötelező |
-| `Content-Type` | Megadja a megadott szöveg tartalomtípusát. Elfogadott érték: `application/ssml+xml`. | Kötelező |
+| `Authorization` | A szó előtt egy engedélyezési jogkivonat `Bearer` . További információért lásd: [Hitelesítés](#authentication). | Kötelező |
+| `Content-Type` | Megadja a megadott szöveg tartalomtípusát. Elfogadott érték: `application/ssml+xml` . | Kötelező |
 | `X-Microsoft-OutputFormat` | Megadja az audió kimeneti formátumot. Az elfogadott értékek teljes listájáért lásd: [hang kimenetek](#audio-outputs). | Kötelező |
 | `User-Agent` | Az alkalmazás neve. A megadott értéknek 255 karakternél rövidebbnek kell lennie. | Kötelező |
 
 ### <a name="audio-outputs"></a>Hangkimenetek
 
-Az egyes kérésekben a `X-Microsoft-OutputFormat` fejlécként elküldhető támogatott hangformátumok listája. Mindegyik tartalmaz egy bitrátát és egy kódolási típust. A Speech Service 24 kHz, 16 kHz és 8 kHz audió kimenetet támogat.
+Az egyes kérésekben a fejlécként elküldhető támogatott hangformátumok listája `X-Microsoft-OutputFormat` . Mindegyik tartalmaz egy bitrátát és egy kódolási típust. A Speech Service 24 kHz, 16 kHz és 8 kHz audió kimenetet támogat.
 
-|||
-|-|-|
-| `raw-16khz-16bit-mono-pcm` | `raw-8khz-8bit-mono-mulaw` |
-| `riff-8khz-8bit-mono-alaw` | `riff-8khz-8bit-mono-mulaw` |
-| `riff-16khz-16bit-mono-pcm` | `audio-16khz-128kbitrate-mono-mp3` |
-| `audio-16khz-64kbitrate-mono-mp3` | `audio-16khz-32kbitrate-mono-mp3` |
-| `raw-24khz-16bit-mono-pcm` | `riff-24khz-16bit-mono-pcm` |
-| `audio-24khz-160kbitrate-mono-mp3` | `audio-24khz-96kbitrate-mono-mp3` |
-| `audio-24khz-48kbitrate-mono-mp3` | |
+```output
+raw-16khz-16bit-mono-pcm            raw-8khz-8bit-mono-mulaw
+riff-8khz-8bit-mono-alaw            riff-8khz-8bit-mono-mulaw
+riff-16khz-16bit-mono-pcm           audio-16khz-128kbitrate-mono-mp3
+audio-16khz-64kbitrate-mono-mp3     audio-16khz-32kbitrate-mono-mp3
+raw-24khz-16bit-mono-pcm            riff-24khz-16bit-mono-pcm
+audio-24khz-160kbitrate-mono-mp3    audio-24khz-96kbitrate-mono-mp3
+audio-24khz-48kbitrate-mono-mp3     ogg-24khz-16bit-mono-opus
+```
 
 > [!NOTE]
-> Ha a kiválasztott hang-és kimeneti formátum eltérő átviteli sebességű, akkor a rendszer szükség szerint újratervezi a hangot. Azonban a 24 kHz-es hangok nem `audio-16khz-16kbps-mono-siren` támogatják `riff-16khz-16kbps-mono-siren` a és a kimeneti formátumokat.
+> Ha a kiválasztott hang-és kimeneti formátum eltérő átviteli sebességű, akkor a rendszer szükség szerint újratervezi a hangot. az OGG-24khz-16bit-mono-Opus dekódolása [Opus codec](https://opus-codec.org/downloads/) használatával
 
 ### <a name="request-body"></a>A kérés törzse
 
-Az egyes `POST` kérések törzse a [Speech szintézis MARKUP Language (SSML) nyelven](speech-synthesis-markup.md)lesz elküldve. A SSML lehetővé teszi a szöveg-beszéd szolgáltatás által visszaadott szintetizált beszéd hangjának és nyelvének kiválasztását. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg.
+Az egyes kérések törzse a `POST` [Speech szintézis Markup Language (SSML) nyelven](speech-synthesis-markup.md)lesz elküldve. A SSML lehetővé teszi a szöveg-beszéd szolgáltatás által visszaadott szintetizált beszéd hangjának és nyelvének kiválasztását. A támogatott hangok teljes listáját a [nyelvi támogatás](language-support.md#text-to-speech)című témakörben tekintheti meg.
 
 > [!NOTE]
 > Egyéni hang használata esetén a kérelem törzse egyszerű szövegként (ASCII vagy UTF-8) is elküldhető.
@@ -233,11 +233,11 @@ Az egyes válaszok HTTP-állapotkód sikeres vagy gyakori hibákat jelez.
 | 400 | Hibás kérés | Egy kötelező paraméter hiányzik, üres vagy NULL értékű. Vagy a kötelező vagy választható paraméternek átadott érték érvénytelen. Gyakori probléma egy túl hosszú fejléc. |
 | 401 | Nem engedélyezett | A kérés nincs engedélyezve. Győződjön meg arról, hogy az előfizetési kulcs vagy token érvényes, és a megfelelő régióban található. |
 | 413 | A kérelem entitása túl nagy | A SSML bemenete hosszabb 1024 karakternél. |
-| 415 | Nem támogatott adathordozó-típus | Lehetséges, hogy a helytelen `Content-Type` volt megadva. `Content-Type`értékre kell állítani `application/ssml+xml`. |
+| 415 | Nem támogatott adathordozó-típus | Lehetséges, hogy a helytelen `Content-Type` volt megadva. `Content-Type`értékre kell állítani `application/ssml+xml` . |
 | 429 | Túl sok kérelem | Túllépte az előfizetéshez engedélyezett kvótát vagy kérelmek arányát. |
 | 502 | Hibás átjáró    | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejléceket is jelezhet. |
 
-Ha a HTTP-állapot `200 OK`értéke, a válasz törzse egy hangfájlt tartalmaz a kért formátumban. Ezt a fájlt áthelyezték, pufferbe mentve vagy fájlba mentve lehet lejátszani.
+Ha a HTTP-állapot értéke `200 OK` , a válasz törzse egy hangfájlt tartalmaz a kért formátumban. Ezt a fájlt áthelyezték, pufferbe mentve vagy fájlba mentve lehet lejátszani.
 
 ## <a name="next-steps"></a>További lépések
 

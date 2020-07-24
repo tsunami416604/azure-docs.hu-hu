@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7664cebbd12e075e9b9ea7ea75021b61569a80cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080284"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépeken
 
@@ -205,13 +205,13 @@ Az alábbi táblázat a meglévő vagy futó virtuális gépek Resource Manager-
 | forceUpdateTag | Adjon meg egy egyedi értéket, például egy GUID-azonosítót, amikor a műveletnek kényszerített futtatást kell futtatnia. |
 | location | Az összes erőforrás helyei. |
 
-A Linux rendszerű virtuális gép lemezének titkosítási sablonjának konfigurálásával kapcsolatos további információkért lásd: [Azure Disk Encryption Linux rendszerhez](https://docs.microsoft.com/azure/virtual-machines/extensions/azure-disk-enc-linux).
+A Linux rendszerű virtuális gép lemezének titkosítási sablonjának konfigurálásával kapcsolatos további információkért lásd: [Azure Disk Encryption Linux rendszerhez](../extensions/azure-disk-enc-linux.md).
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>A EncryptFormatAll funkció használata a Linux rendszerű virtuális gépeken található adatlemezekhez
 
 A **EncryptFormatAll** paraméter csökkenti a Linux-adatlemezek titkosításának idejét. A bizonyos feltételeknek megfelelő partíciók a jelenlegi fájlrendszerrel együtt lesznek formázva, majd a parancs végrehajtása előtt újra lecsatlakoznak a rendszerbe. Ha ki szeretne zárni egy olyan adatlemezt, amely megfelel a feltételeknek, leválaszthatja azt a parancs futtatása előtt.
 
- A parancs futtatása után a korábban csatlakoztatott meghajtók formázva lesznek, és a titkosítási réteg a most üres meghajtón lesz elindítva. Ha ez a beállítás be van jelölve, a virtuális géphez csatolt ideiglenes lemez is titkosítva lesz. Ha az ideiglenes lemez alaphelyzetbe áll, a rendszer a következő lehetőségnél újraformázza és újra titkosítja a virtuális gépet a Azure Disk Encryption megoldással. Az erőforrás-lemez titkosítása után a [Microsoft Azure Linux-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) nem fogja tudni kezelni az erőforrás lemezét, és engedélyezi a lapozófájlt, de manuálisan is konfigurálhatja a lapozófájlt.
+ A parancs futtatása után a korábban csatlakoztatott meghajtók formázva lesznek, és a titkosítási réteg a most üres meghajtón lesz elindítva. Ha ez a beállítás be van jelölve, a virtuális géphez csatolt ideiglenes lemez is titkosítva lesz. Ha az ideiglenes lemez alaphelyzetbe áll, a rendszer a következő lehetőségnél újraformázza és újra titkosítja a virtuális gépet a Azure Disk Encryption megoldással. Az erőforrás-lemez titkosítása után a [Microsoft Azure Linux-ügynök](../extensions/agent-linux.md) nem fogja tudni kezelni az erőforrás lemezét, és engedélyezi a lapozófájlt, de manuálisan is konfigurálhatja a lapozófájlt.
 
 >[!WARNING]
 > A EncryptFormatAll nem használható, ha a virtuális gép adatkötetein szükség van a szükséges értékekre. A lemezek a titkosításból való leválasztásával zárhatók ki. Először próbálja ki először a EncryptFormatAll a tesztelési virtuális gépen, és tekintse át a funkció paraméterét és annak következményeit az éles virtuális gépen való kipróbálás előtt. A EncryptFormatAll beállítás az adatlemezt formázza, és a rajta lévő összes adattal elvész. A továbblépés előtt ellenőrizze, hogy a kizárni kívánt lemezek megfelelően le vannak-e választva. </br></br>
@@ -262,7 +262,7 @@ Javasoljuk, hogy legyen egy LVM-on-Crypt beállítás. Az alábbi példákban cs
 
 1. Formázza, csatlakoztassa és adja hozzá ezeket a lemezeket az fstab-fájlhoz.
 
-1. Válasszon egy partíciós szabványt, hozzon létre egy partíciót, amely a teljes meghajtót felöleli, majd formázza a partíciót. Az Azure által generált symlink-ket itt fogjuk használni. A symlink-EK használata elkerüli az eszközök nevének változásával kapcsolatos problémákat. További információt az [eszközök neveivel kapcsolatos problémák elhárítása](troubleshoot-device-names-problems.md) című cikkben talál.
+1. Válasszon egy partíciós szabványt, hozzon létre egy partíciót, amely a teljes meghajtót felöleli, majd formázza a partíciót. Az Azure által generált symlink-ket itt fogjuk használni. A symlink-EK használata elkerüli az eszközök nevének változásával kapcsolatos problémákat. További információt az [eszközök neveivel kapcsolatos problémák elhárítása](../troubleshooting/troubleshoot-device-names-problems.md) című cikkben talál.
     
     ```bash
     parted /dev/disk/azure/scsi1/lun0 mklabel gpt
@@ -332,7 +332,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-cli"></a>A titkosítás engedélyezése az újonnan hozzáadott lemezeken az Azure CLI-vel
 
- Ha a virtuális gép korábban "all" titkosítással lett titkosítva, akkor a--Volume-Type paraméternek "all" értékűnek kell maradnia. Mind az operációs rendszer és az adatlemezek is szerepelnek. Ha a virtuális gépet korábban "operációs rendszer" típusú kötettel titkosítták, akkor a--Volume-type paramétert az "all" értékre kell módosítani, hogy az operációs rendszer és az új adatlemez is szerepelni fog. Ha a virtuális gépet csak az "adatmennyiség" mennyiségi típussal titkosították, akkor az alább látható módon "az" adatforgalom maradhat. Az új adatlemezek virtuális géphez való hozzáadása és csatolása nem elegendő a titkosítás előkészítéséhez. Az újonnan csatlakoztatott lemeznek a titkosítás engedélyezése előtt a virtuális gépen is formázottnak és megfelelően kell csatlakoztatnia. Linux rendszeren a lemezt egy [állandó blokk-eszköz nevével](troubleshoot-device-names-problems.md)kell csatlakoztatni az/etc/fstab-ben.  
+ Ha a virtuális gép korábban "all" titkosítással lett titkosítva, akkor a--Volume-Type paraméternek "all" értékűnek kell maradnia. Mind az operációs rendszer és az adatlemezek is szerepelnek. Ha a virtuális gépet korábban "operációs rendszer" típusú kötettel titkosítták, akkor a--Volume-type paramétert az "all" értékre kell módosítani, hogy az operációs rendszer és az új adatlemez is szerepelni fog. Ha a virtuális gépet csak az "adatmennyiség" mennyiségi típussal titkosították, akkor az alább látható módon "az" adatforgalom maradhat. Az új adatlemezek virtuális géphez való hozzáadása és csatolása nem elegendő a titkosítás előkészítéséhez. Az újonnan csatlakoztatott lemeznek a titkosítás engedélyezése előtt a virtuális gépen is formázottnak és megfelelően kell csatlakoztatnia. Linux rendszeren a lemezt egy [állandó blokk-eszköz nevével](../troubleshooting/troubleshoot-device-names-problems.md)kell csatlakoztatni az/etc/fstab-ben.  
 
 A PowerShell-szintaxissal ellentétben a parancssori felület nem igényli, hogy a felhasználó egyedi sorozatot adjon meg a titkosítás engedélyezésekor. A CLI automatikusan generálja és felhasználja a saját egyedi sorszámának értékét.
 
@@ -413,7 +413,7 @@ A Azure Disk Encryption a következő Linux-forgatókönyvek, funkciók és tech
 - Egy "beágyazott csatlakoztatási ponttal" rendelkező virtuális gép; Ez azt eredményezi, hogy több csatlakoztatási pont van egyetlen elérési úton (például "/1stmountpoint/Data/2stmountpoint").
 - Egy virtuális gép, amely egy operációsrendszer-mappához csatlakoztatott adatmeghajtóval rendelkezik.
 - Az M sorozatú virtuális gépek írásgyorsító lemezzel.
-- [Kiszolgálóoldali titkosítás alkalmazása az ügyfél által felügyelt kulcsokkal](disk-encryption.md) az ade által titkosított virtuális gépekre, valamint fordítva.
+- Az ADE alkalmazása olyan virtuális gépre, amely egy, az [ügyfél által felügyelt kulcsokkal](disk-encryption.md) (SSE + CMK) rendelkező, kiszolgálóoldali titkosítással titkosított adatlemezzel rendelkezik, vagy ha az az ade-vel titkosított virtuális gép adatlemezére ALKALMAZZA az SSE + CMK.
 - Az ADE-sel titkosított virtuális gépek áttelepítése az [ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosításra](disk-encryption.md).
 
 ## <a name="next-steps"></a>További lépések

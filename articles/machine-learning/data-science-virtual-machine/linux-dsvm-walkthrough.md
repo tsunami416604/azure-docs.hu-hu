@@ -9,11 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed552a57e51ce9249f84bab6bb72bfe783e43edb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682474"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078103"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Adatelemzés Linux-Data Science Virtual Machine az Azure-ban
 
@@ -29,8 +30,8 @@ A Linux-DSVM használatához a következő előfeltételek szükségesek:
 
 * **Azure-előfizetés**. Azure-előfizetés beszerzéséhez tekintse [meg még ma az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/)című témakört.
 * [**Linux Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). A virtuális gép kiépítésével kapcsolatos további információkért lásd: [a linuxos Data Science Virtual Machine kiépítése](linux-dsvm-intro.md).
-* A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](linux-dsvm-intro.md#x2go).
-* Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` jelölőt `about:config` . [További információk](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). A beállítást is érdemes megfontolni `mousewheel.enable_pixel_scrolling` `False` . [További információk](https://support.mozilla.org/questions/981140).
+* A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](dsvm-ubuntu-intro.md#x2go).
+* Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` jelölőt `about:config` . [További információ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). A beállítást is érdemes megfontolni `mousewheel.enable_pixel_scrolling` `False` . [További információ](https://support.mozilla.org/questions/981140).
 * **Azure Machine learning fiók**. Ha még nem rendelkezik ilyennel, regisztráljon egy új fiókot a [Azure Machine learning kezdőlapján](https://azure.microsoft.com/free/services/machine-learning//).
 
 ## <a name="download-the-spambase-dataset"></a>A spambase adatkészlet letöltése
@@ -495,7 +496,7 @@ Első lépésként nyissa meg a mókus SQL **alkalmazást az alkalmazások** men
 1. Kattintson a jobb gombbal a **PostgreSQL** elemre, és válassza az **illesztőprogram módosítása**lehetőséget.
 1. Válassza a **további osztály elérési útja**  >  **Hozzáadás**lehetőséget.
 1. A **fájlnév**mezőben adja meg a **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**nevet.
-1. Válassza az **Open** (Megnyitás) elemet.
+1. Válassza a **Megnyitás** lehetőséget.
 1. Válassza az **illesztőprogramok listázása**lehetőséget. Az **Osztálynév**mezőben válassza a **org. PostgreSQL. Driver**elemet, majd kattintson **az OK gombra**.
 
 A helyi kiszolgálóhoz való kapcsolódás beállítása:
@@ -505,7 +506,7 @@ A helyi kiszolgálóhoz való kapcsolódás beállítása:
 1. Az **illesztőprogram**esetében válassza a **PostgreSQL**lehetőséget.
 1. Állítsa be az URL-címet a **JDBC: PostgreSQL://localhost/spam**értékre.
 1. Adja meg a felhasználónevét és a jelszavát.
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 1. A **kapcsolódási** ablak megnyitásához kattintson duplán a **Levélszemét-adatbázis** aliasára.
 1. Kattintson a **Csatlakozás** gombra.
 

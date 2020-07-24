@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: 897e615234e17cfe36790778d00cd56371afd91f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560138"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081423"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor munkafüzetek adatforrásai
 
@@ -61,7 +61,7 @@ Ha szeretné, hogy egy lekérdezés vezérlőelem használja ezt az adatforrást
 
 ## <a name="azure-data-explorer"></a>Azure Data Explorer
 
-A munkafüzetek mostantól támogatják az [Azure adatkezelő](https://docs.microsoft.com/azure/data-explorer/) -fürtökről való lekérdezést a hatékony [Kusto](https://docs.microsoft.com/azure/kusto/query/index) -lekérdezési nyelvvel.   
+A munkafüzetek mostantól támogatják az [Azure adatkezelő](/azure/data-explorer/) -fürtökről való lekérdezést a hatékony [Kusto](/azure/kusto/query/index) -lekérdezési nyelvvel.   
 
 ![Képernyőfelvétel a Kusto-lekérdezési ablakról](./media/workbooks-overview/data-explorer.png)
 
@@ -90,7 +90,7 @@ A JSON-szolgáltató lehetővé teszi a statikus JSON-tartalmak lekérdezési er
 > [!NOTE]
 > Az Azure-riasztási adatok lekérdezésének javasolt módja az [Azure Resource Graph](#azure-resource-graph) -adatforrás használata a tábla lekérdezésével `AlertsManagementResources` .
 >
-> Tekintse meg az [Azure Resource Graph-táblázat referenciáját](https://docs.microsoft.com/azure/governance/resource-graph/reference/supported-tables-resources), vagy példákat a [riasztások sablonra](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook) .
+> Tekintse meg az [Azure Resource Graph-táblázat referenciáját](../../governance/resource-graph/reference/supported-tables-resources.md), vagy példákat a [riasztások sablonra](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook) .
 >
 > A riasztások adatforrás egy ideig elérhető marad, míg a szerzők az ARG használatára váltanak. Az adatforrás használata a sablonokban nem ajánlott. 
 
@@ -113,5 +113,5 @@ Ha nem szeretne automatikusan hívásokat kezdeményezni a nem megbízható gazd
 
 * [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
 * A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.
-* [Log Analytics lekérdezés-optimalizálási tippek](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization)
+* [Log Analytics lekérdezés-optimalizálási tippek](../log-query/query-optimization.md)
 * 

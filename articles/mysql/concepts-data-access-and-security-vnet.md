@@ -5,12 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 045b938e2612aa7e5b366f93c22669412f2d98e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/17/2020
+ms.openlocfilehash: 91980972dcbe7af28a1b222f6cd3002a7420145d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080845"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Virtuális hálózati szolgáltatásvégpontok és szabályok használata az Azure Database for MySQL-hez
 
@@ -23,6 +24,8 @@ Virtuális hálózati szabály létrehozásához először [virtuális hálózat
 > [!NOTE]
 > Ez a funkció az Azure minden régiójában elérhető, ahol a Azure Database for MySQL általános célú és a memóriára optimalizált kiszolgálók esetében van telepítve.
 > VNet esetén, ha a forgalom egy közös VNet-átjárón keresztül áramlik a szolgáltatási végpontokkal, és a partnernek kell lennie, hozzon létre egy ACL/VNet szabályt, amely lehetővé teszi, hogy az Azure Virtual Machines az átjáró VNet hozzáférjenek a Azure Database for MySQL-kiszolgálóhoz.
+
+Azt is megteheti, hogy [privát hivatkozást](concepts-data-access-security-private-link.md) használ a kapcsolatokhoz. A privát hivatkozás egy magánhálózati IP-címet biztosít a Azure Database for MySQL-kiszolgáló VNet.
 
 <a name="anch-terminology-and-description-82f"></a>
 
@@ -61,12 +64,6 @@ A Azure Database for MySQL tűzfal lehetővé teszi olyan IP-címtartományok me
 Az IP-címet a virtuális gép *statikus* IP-címének beszerzésével lehet megmenteni. Részletekért lásd: [a virtuális gép magánhálózati IP-címeinek konfigurálása a Azure Portal használatával][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
 
 A statikus IP-cím azonban nehezen kezelhető, és költséges, ha nagy léptékben történik. A virtuális hálózati szabályok könnyebben hozhatók létre és kezelhetők.
-
-### <a name="c-cannot-yet-have-azure-database-for-mysql-on-a-subnet-without-defining-a-service-endpoint"></a>C. Egy alhálózaton még nem lehet Azure Database for MySQL a szolgáltatási végpont definiálását nem
-
-Ha a **Microsoft. SQL** Server a virtuális hálózat egyik alhálózatának csomópontja volt, a virtuális hálózaton belüli összes csomópont kommunikálhat a Azure Database for MySQL-kiszolgálóval. Ebben az esetben a virtuális gépek kommunikálhatnak a Azure Database for MySQL anélkül, hogy virtuális hálózati szabályokat vagy IP-szabályokat kellene megadnia.
-
-Azonban augusztus 2018-én a Azure Database for MySQL szolgáltatás még nem tartozik az alhálózathoz közvetlenül hozzárendelhető szolgáltatások közé.
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -119,6 +116,8 @@ Azure Database for MySQL esetében a virtuális hálózati szabályok funkció a
 
 - A VNet szolgáltatás-végpontok támogatása csak a általános célú és a memóriára optimalizált kiszolgálók esetében támogatott.
 
+- Ha a **Microsoft. SQL** engedélyezve van egy alhálózatban, az azt jelzi, hogy csak a VNet-szabályokat szeretné használni a kapcsolódáshoz. Az alhálózaton lévő erőforrások [nem VNet tűzfalszabályok](concepts-firewall-rules.md) nem fognak működni.
+
 - A tűzfalon az IP-címtartományok a következő hálózati elemekre vonatkoznak, a virtuális hálózati szabályok azonban nem:
     - [Helyek közötti (S2S) virtuális magánhálózat (VPN)][vpn-gateway-indexmd-608y]
     - Helyszíni [ExpressRoute][expressroute-indexmd-744v] -on keresztül
@@ -131,7 +130,7 @@ Ha engedélyezni szeretné az áramkörről a Azure Database for MySQL felé ir�
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET-tűzfalszabály hozzáadása a kiszolgálóhoz a VNET szolgáltatás végpontjai bekapcsolása nélkül
 
-Pusztán egy tűzfalszabály beállítása nem segít a kiszolgálónak a VNet való biztonságossá tételében. **A VNet** szolgáltatás-végpontokat is be kell kapcsolni a biztonság érvénybe léptetéséhez. Ha bekapcsolja **a**szolgáltatási végpontokat, a VNet-alhálózat az állásidőt, amíg be nem fejeződik a **kikapcsolás** és **a**közötti átmenet. Ez különösen igaz a nagyméretű virtuális hálózatok kontextusában. A **IgnoreMissingServiceEndpoint** jelzővel csökkentheti vagy törölheti az állásidőt az áttérés során.
+Pusztán egy VNet-tűzfalszabály beállítása nem nyújt segítséget a kiszolgálónak a VNet való biztonságossá tételében. **A VNet** szolgáltatás-végpontokat is be kell kapcsolni a biztonság érvénybe léptetéséhez. Ha bekapcsolja **a**szolgáltatási végpontokat, a VNet-alhálózat az állásidőt, amíg be nem fejeződik a **kikapcsolás** és **a**közötti átmenet. Ez különösen igaz a nagyméretű virtuális hálózatok kontextusában. A **IgnoreMissingServiceEndpoint** jelzővel csökkentheti vagy törölheti az állásidőt az áttérés során.
 
 A **IgnoreMissingServiceEndpoint** jelzőt az Azure CLI vagy a portál használatával állíthatja be.
 

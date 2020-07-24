@@ -3,11 +3,12 @@ title: A Azure Functions tárolási szempontjai
 description: Ismerje meg a Azure Functions tárolási követelményeit és a tárolt adat titkosítását.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2efd583b319e3f3b1fa3db307ea4a3cf53710165
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648793"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079604"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>A Azure Functions tárolási szempontjai
 
@@ -40,7 +41,7 @@ Minden Function alkalmazás működéséhez szükség van egy Storage-fiókra. H
 
 A Storage-fiók kapcsolatai a [AzureWebJobsStorage alkalmazás-beállításban](./functions-app-settings.md#azurewebjobsstorage)maradnak. 
 
-A Storage-fiók kapcsolódási karakterláncát frissíteni kell a tárolási kulcsok újragenerálása során. [További információ a Storage Key managementről](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+A Storage-fiók kapcsolódási karakterláncát frissíteni kell a tárolási kulcsok újragenerálása során. [További információ a Storage Key managementről](../storage/common/storage-account-create.md).
 
 ### <a name="shared-storage-accounts"></a>Megosztott Storage-fiókok
 
@@ -79,5 +80,3 @@ További információ a Azure Functions üzemeltetési lehetőségeiről.
 
 > [!div class="nextstepaction"]
 > [Az Azure Functions méretezése és üzemeltetése](functions-scale.md)
-
-

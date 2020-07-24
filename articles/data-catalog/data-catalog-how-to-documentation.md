@@ -4,17 +4,18 @@ description: Útmutató az adategységek Azure Data Catalogban való dokumentál
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: e9e9013d354585d04f205feb93a84d94c0f05905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3674c316e34b1e54ed8282ac7d2c228a2b774c06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68950192"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081219"
 ---
 # <a name="how-to-document-data-sources-in-azure-data-catalog"></a>Adatforrások dokumentálása Azure Data Catalog
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 A **Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőalapú szolgáltatás, amely a vállalati adatforrások regisztrálási és felderítési rendszereként szolgál. Ez azt jelenti, hogy **Azure Data Catalog** az a célja, hogy segítsen az embereknek felderíteni, *megérteni*és használni az adatforrásokat, és hogy segítse a szervezeteket abban, hogy a meglévő adatokból több értéket kapjanak.
 
 Ha egy adatforrás regisztrálva van **Azure Data Catalog**, a metaadatokat a szolgáltatás átmásolja és indexeli, de a történet nem fejeződik be. **Azure Data Catalog** azt is lehetővé teszi, hogy a felhasználók saját teljes dokumentációt adjanak meg, amely leírja az adatforrás használati és általános forgatókönyveit.
@@ -40,5 +41,5 @@ A dokumentáció szintje az adategység-tároló jellemzőinek és értékének 
 * Csak a táblákat dokumentálja: a tartalom az adott objektumra vonatkozik, de a felhasználók több hellyel rendelkeznek a dokumentumokhoz.
 * Document containers and Tables: legátfogóbb megközelítés, de a dokumentumok további karbantartását is bevezethetik.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az adatforrások **Azure Data Catalogsal** való dokumentálása a szükséges részletességgel részletes információkkal szolgálhat az adategységekről.  A hivatkozások használatával egy meglévő tartalom-tárházban tárolt tartalomhoz csatolhat, amely a meglévő docs-és adategységeket együtt hozza össze. Miután a felhasználók felderítik a megfelelő adategységeket, a dokumentáció teljes készletét használhatja.

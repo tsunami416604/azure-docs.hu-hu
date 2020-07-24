@@ -1,5 +1,5 @@
 ---
-title: Az alapszintű nyilvános verzióról a standard Public-Azure Load Balancer
+title: Frissítés alapszintű belsőről standard nyilvánosra – Azure Load Balancer
 description: Ez a cikk bemutatja, hogyan frissítheti az Azure alapszintű belső Load Balancer a standard szintű nyilvános Load Balancerre
 services: load-balancer
 author: irenehua
@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 6b4d2a5cf441eb702bc33fc862fec9cc28a998b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 225252f2cd47c36de2c7eed4ed1e5dae3ebd81b2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809353"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078758"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure belső Load Balancer frissítése – kimenő kapcsolatok szükségesek
 Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/skus#skus). Mivel a standard belső Load Balancer nem biztosít kimenő kapcsolatokat, megoldást biztosítunk a standard nyilvános Load Balancer létrehozására.
@@ -104,7 +104,7 @@ Először ellenőrizze, hogy a parancsfájl sikeresen létrehozott-e egy új sta
    
     1. Válassza ki azt a háttér-készletet, amely megfelel az alapszintű Load Balancer háttér-készletének, válassza ki a következő értéket: 
       - **Virtuális gép**: a legördülő listából válassza ki a virtuális gépeket az alapszintű Load Balancer megfelelő háttérbeli készletéből.
-    1. Kattintson a **Mentés** gombra.
+    1. Válassza a **Mentés** lehetőséget.
     >[!NOTE]
     >A nyilvános IP-címmel rendelkező virtuális gépek esetében először a szabványos IP-címeket kell létrehoznia, ahol az IP-cím nem garantált. A virtuális gépeket az alapszintű IP-címekről társíthatja, és társíthatja őket az újonnan létrehozott szabványos IP-címekkel. Ezt követően az utasításokat követve hozzáadhat virtuális gépeket standard Load Balancer háttérbeli készletéből. 
 

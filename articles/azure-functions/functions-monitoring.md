@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c3d43bc20c31475a00a0ea81e4abdeb5405162a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170411"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081797"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -58,22 +58,22 @@ Ha Application Insights szeretne megnyitni egy Function alkalmazásból a Azure 
 
 ![Application Insights megnyitása a Function app – áttekintés oldalon](media/functions-monitoring/ai-link.png)
 
-A Application Insights használatáról az [Application Insights dokumentációjában](https://docs.microsoft.com/azure/application-insights/)olvashat bővebben. Ez a szakasz néhány példát mutat be a Application Insights lévő adatmegjelenítésre. Ha már ismeri a Application Insightst, közvetlenül [a telemetria-adatainak konfigurálásával és testreszabásával foglalkozó fejezetekre](#configure-categories-and-log-levels)léphet.
+A Application Insights használatáról az [Application Insights dokumentációjában](/azure/application-insights/)olvashat bővebben. Ez a szakasz néhány példát mutat be a Application Insights lévő adatmegjelenítésre. Ha már ismeri a Application Insightst, közvetlenül [a telemetria-adatainak konfigurálásával és testreszabásával foglalkozó fejezetekre](#configure-categories-and-log-levels)léphet.
 
 ![Application Insights Áttekintés lap](media/functions-monitoring/metrics-explorer.png)
 
 Az Application Insights következő területei hasznosak lehetnek a függvények viselkedésének, teljesítményének és hibáinak kiértékelése során:
 
-| Vizsgálat | Leírás |
+| Vizsgálat | Description |
 | ---- | ----------- |
 | **[Hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Diagramok és riasztások létrehozása a függvények hibái és a kiszolgálói kivételek alapján. A **művelet** neve a függvény neve. A függőségek meghibásodása csak akkor jelenik meg, ha egyéni telemetria valósít meg a függőségekhez. |
 | **[Teljesítmény](../azure-monitor/app/performance-counters.md)** | A teljesítménnyel kapcsolatos problémák elemzéséhez tekintse meg az erőforrás-kihasználtságot és az átviteli sebességet a **felhőalapú szerepkör példányain**. Ez az adat hasznos lehet olyan forgatókönyvek hibakereséséhez, ahol a függvények a mögöttes erőforrások leállását végzik. |
-| **[Mérőszámok](../azure-monitor/app/metrics-explorer.md)** | Metrikák alapján létrehozhat diagramokat és riasztásokat. A metrikák közé tartozik a Function meghívások száma, a végrehajtási idő és a sikerességi arány. |
+| **[Mérőszámok](../azure-monitor/platform/metrics-charts.md)** | Metrikák alapján létrehozhat diagramokat és riasztásokat. A metrikák közé tartozik a Function meghívások száma, a végrehajtási idő és a sikerességi arány. |
 | **[Élő metrikák](../azure-monitor/app/live-stream.md)** | A metrikák adatait a közel valós időben létrehozva tekintheti meg. |
 
 ## <a name="query-telemetry-data"></a>Telemetria-adatbázis lekérdezése
 
-[Application Insights Analytics](../azure-monitor/app/analytics.md) hozzáférést biztosít minden telemetria-adatbázishoz egy adatbázisban lévő táblák formájában. Az elemzés lekérdezési nyelvet biztosít az adatok kinyeréséhez, módosításához és megjelenítéséhez. 
+[Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md) hozzáférést biztosít minden telemetria-adatbázishoz egy adatbázisban lévő táblák formájában. Az elemzés lekérdezési nyelvet biztosít az adatok kinyeréséhez, módosításához és megjelenítéséhez. 
 
 Válassza a **naplók** lehetőséget a naplózott események felderítéséhez vagy lekérdezéséhez.
 
@@ -135,7 +135,7 @@ Ha a függvény kódjában írja be a naplókat, a kategória `Function.<YOUR_FU
 
 A Azure Functions naplózó *naplózási szintet* is tartalmaz minden naplóval. A [naplózási szint](/dotnet/api/microsoft.extensions.logging.loglevel) egy enumerálás, és az egész szám kód relatív fontosságot jelez:
 
-|Naplózási szint    |Kód|
+|Naplózási szint    |Code|
 |------------|---|
 |Nyomkövetés       | 0 |
 |Hibakeresés       | 1 |
@@ -143,7 +143,7 @@ A Azure Functions naplózó *naplózási szintet* is tartalmaz minden naplóval.
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|Nincsenek        | 6 |
+|Nincs        | 6 |
 
 A naplózási szintet `None` a következő szakaszban ismertetjük. 
 
@@ -153,7 +153,7 @@ A [host.jsa] fájlban azt konfigurálja, hogy a Function app hogyan küldje el a
 
 ### <a name="version-2x-and-higher"></a>2. x vagy újabb verzió
 
-A functions futtatókörnyezet v2. x és újabb verziói a [.net Core naplózási szűrő-hierarchiát](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)használják. 
+A functions futtatókörnyezet v2. x és újabb verziói a [.net Core naplózási szűrő-hierarchiát](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)használják. 
 
 ```json
 {
@@ -246,7 +246,7 @@ Ahogy az előző szakaszban is látható, a futtatókörnyezet összesíti a fü
 
 ## <a name="configure-sampling"></a>Mintavételezés konfigurálása
 
-Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.md) funkciót, amely képes arra, hogy túl sok telemetria-adatmennyiséget állítson elő a befejezett végrehajtásokon a maximális terhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, Application Insights véletlenszerűen figyelmen kívül hagyja a bejövő végrehajtások némelyikét. A másodpercenkénti végrehajtások maximális számának alapértelmezett beállítása 20 (öt az 1. x verzióban). A mintavételezésthost.js- [on](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights)is konfigurálhatja.  Bemutatunk egy példát:
+Application Insights tartalmaz egy [mintavételi](../azure-monitor/app/sampling.md) funkciót, amely képes arra, hogy túl sok telemetria-adatmennyiséget állítson elő a befejezett végrehajtásokon a maximális terhelés idején. Ha a bejövő végrehajtások aránya meghaladja a megadott küszöbértéket, Application Insights véletlenszerűen figyelmen kívül hagyja a bejövő végrehajtások némelyikét. A másodpercenkénti végrehajtások maximális számának alapértelmezett beállítása 20 (öt az 1. x verzióban). A mintavételezésthost.js- [on](./functions-host-json.md#applicationinsights)is konfigurálhatja.  Bemutatunk egy példát:
 
 ### <a name="version-2x-and-later"></a>2. x vagy újabb verzió
 
@@ -285,9 +285,9 @@ A függvény kódjában olyan naplókat írhat, amelyek nyomkövetésként jelen
 
 ### <a name="ilogger"></a>ILogger
 
-Paraméter helyett használja a functions [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) paraméterét `TraceWriter` . A "Go to Application Insights" használatával létrehozott naplók `TraceWriter` , de `ILogger` lehetővé teszi a [strukturált naplózást](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
+Paraméter helyett használja a functions [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) paraméterét `TraceWriter` . A "Go to Application Insights" használatával létrehozott naplók `TraceWriter` , de `ILogger` lehetővé teszi a [strukturált naplózást](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
 
-Ha egy `ILogger` objektummal rendelkezik, a `Log<level>` [ILogger bővítményi metódusokat hívhat meg a](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) naplók létrehozásához. A következő kód a `Information` "Function. <YOUR_FUNCTION_NAME> kategóriába írja a naplókat. Felhasználó. "
+Ha egy `ILogger` objektummal rendelkezik, a `Log<level>` [ILogger bővítményi metódusokat hívhat meg a](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) naplók létrehozásához. A következő kód a `Information` "Function. <YOUR_FUNCTION_NAME> kategóriába írja a naplókat. Felhasználó. "
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -553,7 +553,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -577,7 +577,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.operationId};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -679,14 +679,11 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-[Azure PowerShell](/powershell/azure/overview)használatával engedélyezheti a folyamatos átviteli naplókat. A PowerShell esetében használja az alábbi parancsokat az Azure-fiók hozzáadásához, és válassza ki az előfizetését és a stream naplófájljait:
+[Azure PowerShell](/powershell/azure/)használatával engedélyezheti a folyamatos átviteli naplókat. A PowerShell esetében a [set-AzWebApp](/powershell/module/az.websites/set-azwebapp) paranccsal engedélyezheti a naplózást a Function alkalmazásban, ahogy az a következő kódrészletben látható: 
 
-```powershell
-Add-AzAccount
-Get-AzSubscription
-Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
-Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
-```
+:::code language="powershell" source="~/powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1" range="19-20":::
+
+További információ: [példa a teljes programkódra](../app-service/scripts/powershell-monitor.md#sample-script). 
 
 ## <a name="scale-controller-logs-preview"></a>Kontroller-naplók méretezése (előzetes verzió)
 

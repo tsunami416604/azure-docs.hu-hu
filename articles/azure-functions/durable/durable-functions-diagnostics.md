@@ -5,11 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcd92f1f134b79d23da6848cbb04894b242fcec0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698002"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081814"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>A Durable Functions diagnosztikája az Azure-ban
 
@@ -19,7 +20,7 @@ Több lehetőség is van a [Durable Functionsával](durable-functions-overview.m
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) a diagnosztika és a figyelés ajánlott módszere Azure Functionsokban. Ugyanez vonatkozik a Durable Functionsra is. A Application Insightsnek a Function alkalmazásban való kihasználása áttekintését lásd: [Azure functions figyelése](../functions-monitoring.md).
 
-A Azure Functions tartós bővítmény olyan *követési eseményeket* is kibocsát, amelyek segítségével nyomon követheti a folyamat végpontok közötti végrehajtását. Ezek a követési események a Azure Portal [Application Insights Analytics](../../azure-monitor/app/analytics.md) eszközének használatával találhatók meg és kérhetők le.
+A Azure Functions tartós bővítmény olyan *követési eseményeket* is kibocsát, amelyek segítségével nyomon követheti a folyamat végpontok közötti végrehajtását. Ezek a követési események a Azure Portal [Application Insights Analytics](../../azure-monitor/log-query/log-query-overview.md) eszközének használatával találhatók meg és kérhetők le.
 
 ### <a name="tracking-data"></a>Adatkövetés
 
@@ -380,9 +381,9 @@ Azure Functions támogatja a hibakeresési funkció programkódjának közvetlen
 > [!TIP]
 > Ha töréspontokat állít be a Orchestrator függvényekben, ha csak a nem újrajátszható végrehajtást szeretné megszakítani, beállíthat egy feltételes töréspontot, amely csak akkor szakad meg, ha `IsReplaying` a értéke `false` .
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
-Alapértelmezés szerint a Durable Functions az Azure Storage-ban tárolja az állapotot. Ez azt jelenti, hogy a munkafolyamatok állapotát a [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)eszközzel ellenőrizheti.
+Alapértelmezés szerint a Durable Functions az Azure Storage-ban tárolja az állapotot. Ez azt jelenti, hogy a munkafolyamatok állapotát a [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)eszközzel ellenőrizheti.
 
 ![Képernyőkép Azure Storage Explorer](./media/durable-functions-diagnostics/storage-explorer.png)
 

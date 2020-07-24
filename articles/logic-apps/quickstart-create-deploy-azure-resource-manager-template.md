@@ -7,20 +7,20 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 06/30/2020
-ms.openlocfilehash: 466b9258962c27457962ce51b72d2aeb2c029cc2
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 10cc89d1a0cc975df4384e551dddde32be0a4a72
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85570059"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078123"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Gyors útmutató: logikai alkalmazások munkafolyamatainak létrehozása és üzembe helyezése ARM-sablon használatával
 
-A [Azure Logic apps](../logic-apps/logic-apps-overview.md) egy felhőalapú szolgáltatás, amellyel olyan automatizált munkafolyamatokat hozhat létre és futtathat, amelyek az adatok, az alkalmazások, a felhőalapú szolgáltatások és a helyszíni rendszerek integrálását teszik lehetővé [több száz összekötő](https://docs.microsoft.com/connectors/connector-reference/connector-reference-logicapps-connectors)kiválasztásával. Ez a rövid útmutató egy Azure Resource Manager-sablon (ARM-sablon) üzembe helyezésének folyamatát tárgyalja egy olyan alapszintű logikai alkalmazás létrehozásához, amely az Azure-t óránkénti időrendben ellenőrzi. 
+A [Azure Logic apps](../logic-apps/logic-apps-overview.md) egy felhőalapú szolgáltatás, amellyel olyan automatizált munkafolyamatokat hozhat létre és futtathat, amelyek az adatok, az alkalmazások, a felhőalapú szolgáltatások és a helyszíni rendszerek integrálását teszik lehetővé [több száz összekötő](/connectors/connector-reference/connector-reference-logicapps-connectors)kiválasztásával. Ez a rövid útmutató egy Azure Resource Manager-sablon (ARM-sablon) üzembe helyezésének folyamatát tárgyalja egy olyan alapszintű logikai alkalmazás létrehozásához, amely az Azure-t óránkénti időrendben ellenőrzi. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-logic-app-create%2fazuredeploy.json)
 
@@ -32,11 +32,11 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 Ez a rövid útmutató a [**logikai alkalmazás létrehozása**](https://azure.microsoft.com/resources/templates/101-logic-app-create/) sablont használja, amelyet az Azure rövid útmutató [sablonjai](https://azure.microsoft.com/resources/templates) között talál, de túl hosszú az itt való megjelenítéshez. Ehelyett áttekintheti a gyors üzembe helyezési sablon ["azuredeploy.jsfájlján"](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) című részét a sablonok galériában.
 
-A gyors üzembe helyezési sablon egy olyan logikai alkalmazás-munkafolyamatot hoz létre, amely az ismétlődési eseményindítót használja, amely óránkénti futásra van beállítva, valamint egy HTTP [ *beépített* művelet](https://docs.microsoft.com/azure/connectors/apis-list#connector-types), amely egy olyan URL-címet hív meg, amely az Azure állapotát adja vissza. A beépített művelet natív a Azure Logic Apps platformon.
+A gyors üzembe helyezési sablon egy olyan logikai alkalmazás-munkafolyamatot hoz létre, amely az ismétlődési eseményindítót használja, amely óránkénti futásra van beállítva, valamint egy HTTP [ *beépített* művelet](../connectors/apis-list.md#connector-types), amely egy olyan URL-címet hív meg, amely az Azure állapotát adja vissza. A beépített művelet natív a Azure Logic Apps platformon.
 
 Ez a sablon a következő Azure-erőforrást hozza létre:
 
-* [**Microsoft. Logic/munkafolyamatok**](https://docs.microsoft.com/azure/templates/microsoft.logic/workflows), amely létrehoz egy logikai alkalmazás munkafolyamatát.
+* [**Microsoft. Logic/munkafolyamatok**](/azure/templates/microsoft.logic/workflows), amely létrehoz egy logikai alkalmazás munkafolyamatát.
 
 Ha további rövid útmutató-sablonokat szeretne Azure Logic Appshoz, tekintse át a [Microsoft. Logic](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic) sablonokat a katalógusban.
 
@@ -46,12 +46,12 @@ Ha további rövid útmutató-sablonokat szeretne Azure Logic Appshoz, tekintse 
 
 Kövesse a Gyorsindítás sablon üzembe helyezéséhez használni kívánt beállítást:
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 |--------|-------------|
-| [Azure Portalra](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | Ha az Azure-környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, ezek a lépések segítenek közvetlenül az Azure-ba bejelentkezni, és megnyitják a gyors üzembe helyezési sablont a Azure Portal. További információ: [erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal](../azure-resource-manager/templates/deploy-portal.md). |
-| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Az Azure parancssori felülete (Azure CLI) az Azure-erőforrások létrehozására és kezelésére szolgáló parancsok halmaza. A parancsok futtatásához az Azure CLI 2,6-es vagy újabb verziójára lesz szükség. A CLI verziójának megadásához írja be a következőt: `az --version` . További információt az alábbi témakörökben talál: <p><p>- [Mi az az Azure CLI?](https://docs.microsoft.com/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Ismerkedés az Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
-| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Az Azure PowerShell olyan parancsmagok készletét kínálja, amelyek az Azure Resource Manager modellt használják az Azure-erőforrások kezeléséhez. További információt az alábbi témakörökben talál: <p><p>- [Azure PowerShell áttekintése](https://docs.microsoft.com/powershell/azure/azurerm/overview) <br>- [A Azure PowerShell bemutatása az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) <br>- [Ismerkedés a Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) |
-| [Azure erőforrás-kezelési REST API](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Az Azure olyan reprezentációs állapot-átadási (REST) API-kat biztosít, amelyek olyan szolgáltatási végpontok, amelyek támogatják a szolgáltatás erőforrásaihoz való hozzáférés létrehozására, lekérésére, frissítésére vagy törlésére használt HTTP-műveleteket (metódusokat). További információ: Ismerkedés [Az Azure Rest APIval](https://docs.microsoft.com/rest/api/azure/). |
+| [Azure Portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | Ha az Azure-környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, ezek a lépések segítenek közvetlenül az Azure-ba bejelentkezni, és megnyitják a gyors üzembe helyezési sablont a Azure Portal. További információ: [erőforrások üzembe helyezése ARM-sablonokkal és Azure Portal](../azure-resource-manager/templates/deploy-portal.md). |
+| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Az Azure parancssori felülete (Azure CLI) az Azure-erőforrások létrehozására és kezelésére szolgáló parancsok halmaza. A parancsok futtatásához az Azure CLI 2,6-es vagy újabb verziójára lesz szükség. A CLI verziójának megadásához írja be a következőt: `az --version` . További információt az alábbi témakörökben talál: <p><p>- [Mi az az Azure CLI?](/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Ismerkedés az Azure CLI-vel](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
+| [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Az Azure PowerShell olyan parancsmagok készletét kínálja, amelyek az Azure Resource Manager modellt használják az Azure-erőforrások kezeléséhez. További információt az alábbi témakörökben talál: <p><p>- [Azure PowerShell áttekintése](/powershell/azure/azurerm/overview) <br>- [A Azure PowerShell bemutatása az Module](/powershell/azure/new-azureps-module-az) <br>- [Ismerkedés a Azure PowerShell](/powershell/azure/get-started-azureps) |
+| [Azure erőforrás-kezelési REST API](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Az Azure olyan reprezentációs állapot-átadási (REST) API-kat biztosít, amelyek olyan szolgáltatási végpontok, amelyek támogatják a szolgáltatás erőforrásaihoz való hozzáférés létrehozására, lekérésére, frissítésére vagy törlésére használt HTTP-műveleteket (metódusokat). További információ: Ismerkedés [Az Azure Rest APIval](/rest/api/azure/). |
 |||
 
 <a name="deploy-azure-portal"></a>
@@ -97,7 +97,7 @@ read
 
 További információt az alábbi témakörökben talál:
 
-* [Azure CLI: az üzembe helyezési csoport](https://docs.microsoft.com/cli/azure/deployment/group)
+* [Azure CLI: az üzembe helyezési csoport](/cli/azure/deployment/group)
 * [Erőforrások üzembe helyezése ARM-sablonokkal és Azure CLI-vel](../azure-resource-manager/templates/deploy-cli.md)
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -117,8 +117,8 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 További információt az alábbi témakörökben talál:
 
-* [Azure PowerShell: New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)
-* [Azure PowerShell: New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment)
+* [Azure PowerShell: New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)
+* [Azure PowerShell: New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment)
 * [Erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 
 #### <a name="rest-api"></a>[REST API](#tab/rest-api)
@@ -143,8 +143,8 @@ További információt az alábbi témakörökben talál:
 
    További információt az alábbi témakörökben talál:
 
-   * [Azure REST API-referenciák – az Azure REST API-k meghívása](https://docs.microsoft.com/rest/api/azure/)
-   * [Erőforrás-kezelési REST API: erőforráscsoportok – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/resources/resourcegroups/createorupdate).
+   * [Azure REST API-referenciák – az Azure REST API-k meghívása](/rest/api/azure/)
+   * [Erőforrás-kezelési REST API: erőforráscsoportok – létrehozás vagy frissítés](/rest/api/resources/resourcegroups/createorupdate).
 
 1. A gyors üzembe helyezési sablon az erőforráscsoporthoz való telepítéséhez kövesse ezt a szintaxist az erőforrás-kezelés REST API küldött kérelemnél:
 
@@ -165,7 +165,7 @@ További információt az alábbi témakörökben talál:
    PUT https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourcegroups/Check-Azure-Status-RG/providers/Microsoft.Resources/deployments/Check-Azure-Status-LA?api-version=2019-10-01
    ```
 
-   További információ [: erőforrás-kezelés REST API: központi telepítések – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/resources/deployments/createorupdate).
+   További információ [: erőforrás-kezelés REST API: központi telepítések – létrehozás vagy frissítés](/rest/api/resources/deployments/createorupdate).
 
 1. Ha meg szeretné adni a központi telepítéshez használandó értékeket, például az Azure-régiót, valamint a gyors üzembe helyezési sablonra és a [paraméterre](../azure-resource-manager/templates/template-parameters.md)mutató hivatkozásokat, amelyek a telepítéskor használandó gyorsindítási sablon értékeit tartalmazzák, kövesse ezt a szintaxist az erőforrás-kezelési REST API küldött kérelem törzse számára:
 
@@ -191,7 +191,7 @@ További információt az alábbi témakörökben talál:
    | `location`| <*Azure-régió*> | Az üzembe helyezéshez használandó Azure-régió. Ez a példa a következőt használja: `West US` . |
    | `templateLink` : `uri` | <*gyors útmutató – sablon-URL*> | A központi telepítéshez használandó rövid útmutató sablonjának URL-címe: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |
    | `parametersLink` : `uri` | <*gyors útmutató – sablon-paraméter-fájl-URL*> | A rövid útmutató sablonjának a központi telepítéshez használandó paraméter-fájljának URL-címe: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.parameters.json` <p><p>További információ a Resource Manager-paraméter fájljáról: <p><p>- [Resource Manager-paraméter fájljának létrehozása](../azure-resource-manager/templates/parameter-files.md) <br>- [Oktatóanyag: paraméterek használata az ARM-sablon üzembe helyezéséhez](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md) |
-   | `mode` | <*központi telepítés – üzemmód*> | Futtasson növekményes frissítést, vagy fejezze be a frissítést. Ez a példa `Incremental` az alapértelmezett értéket használja. További információ: [Azure Resource Manager telepítési módok](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes). |
+   | `mode` | <*központi telepítés – üzemmód*> | Futtasson növekményes frissítést, vagy fejezze be a frissítést. Ez a példa `Incremental` az alapértelmezett értéket használja. További információ: [Azure Resource Manager telepítési módok](../azure-resource-manager/templates/deployment-modes.md). |
    |||
 
    Például:
@@ -215,7 +215,7 @@ További információt az alábbi témakörökben talál:
 
 További információt az alábbi témakörökben talál:
 
-* [Erőforrás-kezelési REST API](https://docs.microsoft.com/rest/api/resources/)
+* [Erőforrás-kezelési REST API](/rest/api/resources/)
 * [Erőforrások üzembe helyezése ARM-sablonokkal és Resource Manager-REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ---
@@ -245,7 +245,7 @@ az logic workflow show --name $logicAppName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-További információt az [Azure CLI: az Logic workflow show](https://docs.microsoft.com/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show)című témakörben talál.
+További információt az [Azure CLI: az Logic workflow show](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show)című témakörben talál.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -255,7 +255,7 @@ Get-AzLogicApp -Name $logicAppName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-További információ [: Azure PowerShell: Get-AzLogicApp](https://docs.microsoft.com/powershell/module/az.logicapp/get-azlogicapp).
+További információ [: Azure PowerShell: Get-AzLogicApp](/powershell/module/az.logicapp/get-azlogicapp).
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -276,11 +276,11 @@ Például:
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG/providers/Microsoft.Logic/workflows/Check-Azure-Status-LA?api-version=2016-06-01
 ```
 
-További információ [: Logic Apps REST API: munkafolyamatok – Get](https://docs.microsoft.com/rest/api/logic/workflows/get).
+További információ [: Logic Apps REST API: munkafolyamatok – Get](/rest/api/logic/workflows/get).
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, érdemes megtartania ezeket az erőforrásokat. Ha már nincs szüksége a logikai alkalmazásra, törölje az erőforráscsoportot a Azure Portal, az Azure CLI, az Azure PowerShell vagy az erőforrás-kezelés REST API használatával.
 
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-További információt az [Azure CLI: az Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete)című témakörben talál.
+További információt az [Azure CLI: az Group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete)című témakörben talál.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -313,7 +313,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 Write-Host "Press [ENTER] to continue..."
 ```
 
-További információt a [Azure PowerShell: Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup)című témakörben talál.
+További információt a [Azure PowerShell: Remove-AzResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup)című témakörben talál.
 
 ### <a name="rest-api"></a>[REST API](#tab/rest-api)
 
@@ -333,7 +333,7 @@ Például:
 GET https://management.azure.com/subscriptions/xxxxXXXXxxxxXXXXX/resourceGroups/Check-Azure-Status-RG?api-version=2019-10-01
 ```
 
-További információ [: erőforrás-kezelés REST API: erőforráscsoportok – törlés](https://docs.microsoft.com/rest/api/resources/resourcegroups/delete).
+További információ [: erőforrás-kezelés REST API: erőforráscsoportok – törlés](/rest/api/resources/resourcegroups/delete).
 
 ---
 

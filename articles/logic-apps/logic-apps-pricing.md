@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 9ce807238e1e373701305f8b6bb03451e0202633
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a5511d7cd4b5bb0f3fe901a735535f8db9036ee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964634"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078168"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>A Azure Logic Apps díjszabási modellje
 
@@ -77,27 +77,27 @@ Az ISE-ben létrehozott és futtatott Logic apps esetén a következő képessé
 
 ## <a name="connectors"></a>Összekötők
 
-A Azure Logic Apps-összekötők a logikai alkalmazások számára megkönnyítik a felhőben vagy a helyszínen lévő alkalmazásokhoz, szolgáltatásokhoz és rendszerekhez való hozzáférést, így [eseményindítókat](#triggers), [műveleteket](#actions)vagy mindkettőt biztosítanak. Az összekötők a standard vagy a vállalat kategóriába tartoznak. Az összekötők áttekintését lásd: [összekötők Azure Logic Appshoz](../connectors/apis-list.md). Ha nem érhetők el előre elkészített összekötők a logikai alkalmazásokban használni kívánt REST API-khoz, létrehozhat [Egyéni összekötőket](https://docs.microsoft.com/connectors/custom-connectors), amelyek csak a REST API-k körébe tartozó burkolók. Az egyéni összekötők szabványos összekötőként vannak kiszámlázva. A következő szakaszokban további információk találhatók az eseményindítók és műveletek számlázásával kapcsolatban.
+A Azure Logic Apps-összekötők a logikai alkalmazások számára megkönnyítik a felhőben vagy a helyszínen lévő alkalmazásokhoz, szolgáltatásokhoz és rendszerekhez való hozzáférést, így [eseményindítókat](#triggers), [műveleteket](#actions)vagy mindkettőt biztosítanak. Az összekötők a standard vagy a vállalat kategóriába tartoznak. Az összekötők áttekintését lásd: [összekötők Azure Logic Appshoz](../connectors/apis-list.md). Ha nem érhetők el előre elkészített összekötők a logikai alkalmazásokban használni kívánt REST API-khoz, létrehozhat [Egyéni összekötőket](/connectors/custom-connectors), amelyek csak a REST API-k körébe tartozó burkolók. Az egyéni összekötők szabványos összekötőként vannak kiszámlázva. A következő szakaszokban további információk találhatók az eseményindítók és műveletek számlázásával kapcsolatban.
 
 <a name="triggers"></a>
 
 ## <a name="triggers"></a>Triggerek
 
-Az eseményindítók olyan speciális műveletek, amelyek egy adott esemény bekövetkezésekor létrehoznak egy Logic app-példányt. Az eseményindítók különböző módokon működnek, amelyek befolyásolják a logikai alkalmazás mérési módját. Itt láthatók a Azure Logic Appsban található különféle triggerek:
+Az eseményindító mindig a logikai alkalmazás munkafolyamatának első lépése, és egy speciális művelet, amely egy Logic App-példány létrehozására és futtatására szolgál, ha meghatározott feltételek teljesülnek, vagy egy adott esemény történik. Az eseményindítók különböző módokon működnek, amelyek befolyásolják a logikai alkalmazás mérési módját. Itt láthatók a Azure Logic Appsban található különféle triggerek:
 
-* **Lekérdezési trigger**: ez az aktiválás folyamatosan ellenőrzi a végpontot olyan üzenetek esetében, amelyek megfelelnek a logikai alkalmazás példányának létrehozási feltételeinek, és elindítja a munkafolyamatot. Ha a rendszer még akkor sem hoz létre logikai alkalmazás-példányt, Logic Apps minden lekérdezési kérelem végrehajtásként. A lekérdezési időköz megadásához állítsa be a triggert a Logic app Designer használatával.
+* **Ismétlődési eseményindító**: ezt az általános eseményindítót használhatja, amely nem kifejezetten semmilyen szolgáltatásra vagy rendszerre vonatkozik, a logikai alkalmazások munkafolyamatainak elindításához és az Eseményindítóban beállított ismétlődési időköz alapján létrehozott logikai alkalmazás-példány létrehozásához. Beállíthat például egy ismétlődési eseményindítót, amely háromhavonta vagy összetettebb ütemezésen fut.
+
+* **Lekérdezési eseményindító**: ezt a speciális ismétlődési eseményindítót használhatja, amely általában egy adott szolgáltatáshoz vagy rendszerhez tartozó felügyelt összekötőhöz van társítva, hogy olyan eseményeket vagy üzeneteket keressen, amelyek megfelelnek a Logic App-példány létrehozásának és futtatásának feltételeinek az Eseményindítóban beállított Ismétlődési intervallum alapján. Akkor is, ha a rendszer nem hoz létre logikai alkalmazás-példányt, például ha kihagyja az eseményindítókat, a Logic Apps szolgáltatás minden lekérdezési kérelem végrehajtásként szolgál. A lekérdezési időköz megadásához állítsa be a triggert a Logic app Designer használatával.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhook-trigger**: ez az trigger arra vár, hogy egy ügyfél kérést küldjön egy adott végpontnak. A webhook-végpontnak elküldett kérelmek művelet-végrehajtásnak számítanak. A kérelem és a HTTP webhook eseményindítója például webhook-eseményindítókat is tartalmaz.
-
-* **Ismétlődési eseményindító**: ez az eseményindító létrehoz egy Logic app-példányt az Eseményindítóban beállított Ismétlődési intervallum alapján. Beállíthat például egy ismétlődési eseményindítót, amely háromhavonta vagy összetettebb ütemezésen fut.
+* **Webhook-trigger**: a lekérdezési trigger használata helyett egy webhook-trigger használatával megvárhatja, hogy az ügyfél kérést küldjön a logikai alkalmazásnak egy adott VÉGPONTI URL-címen. A webhook-végpontnak elküldett minden kérelem művelet-végrehajtásnak számít. A kérelem és a HTTP webhook eseményindító például általános webhook-eseményindítókat is tartalmaz. A szolgáltatások vagy rendszerek egyes összekötői is rendelkeznek webhook-eseményindítókkal.
 
 <a name="actions"></a>
 
 ## <a name="actions"></a>Műveletek
 
-A "beépített" műveletek (például a HTTP) Azure Logic Apps mérőszámok natív műveletként. A beépített műveletek közé tartoznak például a HTTP-hívások, a Azure Functions vagy API Management hívásai, valamint a folyamat lépései, például a feltételek, a hurkok és a Switch utasítások. Mindegyik műveletnek saját Művelettípus van. Például az [összekötőket](https://docs.microsoft.com/connectors) meghívó műveletek "ApiConnection" típusúak. Ezek az összekötők standard vagy nagyvállalati összekötőként vannak besorolva, amelyek [díjszabása](https://azure.microsoft.com/pricing/details/logic-apps)a megfelelő díjszabás alapján történik. Az *előzetes* verzióban elérhető vállalati összekötők standard szintű összekötőként lesznek felszámítva.
+A "beépített" műveletek (például a HTTP) Azure Logic Apps mérőszámok natív műveletként. A beépített műveletek közé tartoznak például a HTTP-hívások, a Azure Functions vagy API Management hívásai, valamint a folyamat lépései, például a feltételek, a hurkok és a Switch utasítások. Mindegyik műveletnek saját Művelettípus van. Például az [összekötőket](/connectors) meghívó műveletek "ApiConnection" típusúak. Ezek az összekötők standard vagy nagyvállalati összekötőként vannak besorolva, amelyek [díjszabása](https://azure.microsoft.com/pricing/details/logic-apps)a megfelelő díjszabás alapján történik. Az *előzetes* verzióban elérhető vállalati összekötők standard szintű összekötőként lesznek felszámítva.
 
 A Azure Logic Apps az összes sikeres és sikertelen műveletet végrehajtja végrehajtásként. Logic Apps azonban nem méri ezeket a műveleteket:
 
@@ -122,7 +122,7 @@ Ha a [Premium vagy a Developer](../logic-apps/connect-virtual-network-vnet-isola
 
 Az ingyenes, az alapszintű vagy a standard integrációs fiók közötti választáshoz tekintse át az alábbi használati esetek leírását:
 
-* **Ingyenes**: Ha szeretné kipróbálni a feltáró forgatókönyveket, nem pedig éles környezetben. Ez a lehetőség csak az Azure nyilvános régiói esetében érhető el, például az USA nyugati régiójában vagy Délkelet-Ázsiában, de nem az [Azure China 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) vagy a [Azure Government](../azure-government/documentation-government-welcome.md).
+* **Ingyenes**: Ha szeretné kipróbálni a feltáró forgatókönyveket, nem pedig éles környezetben. Ez a lehetőség csak az Azure nyilvános régiói esetében érhető el, például az USA nyugati régiójában vagy Délkelet-Ázsiában, de nem az [Azure China 21Vianet](/azure/china/overview-operations) vagy a [Azure Government](../azure-government/documentation-government-welcome.md).
 
 * **Alapszintű**: Ha csak az üzenetkezelést szeretné használni, vagy olyan kisméretű üzleti partnerként tevékenykedik, amely egy nagyobb üzleti egységgel rendelkező kereskedelmi partneri kapcsolattal rendelkezik
 

@@ -4,16 +4,17 @@ description: 'Útmutató: a Azure Data Catalog használatával felderített adat
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 1190a0f34206004b72730a6af85bbe5db7d9961a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53a861761f819c2127228e7ef688f04d91744d25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68976773"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081253"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Kapcsolódás az adatforrásokhoz
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 A **Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőalapú szolgáltatás, amely a vállalati adatforrások regisztrálási és felderítési rendszereként szolgál. Ez azt jelenti, hogy **Azure Data Catalog** az a célja, hogy segítsen az embereknek felderíteni, megérteni és használni az adatforrásokat, és hogy segítse a szervezeteket abban, hogy a meglévő adatokból több értéket kapjanak. Ennek a forgatókönyvnek a fő aspektusa az adatforrások használata – Ha a felhasználó felvesz egy adatforrást, és megértette a célját, a következő lépés az adatforráshoz való kapcsolódás, hogy az adatai használhatók legyenek.
 
 ## <a name="data-source-locations"></a>Adatforrás helyei
@@ -55,7 +56,7 @@ Annak érdekében, hogy könnyebb legyen az adatforrást felderítő felhasznál
 
  ![Kapcsolódási információk a kérelemhez megadott hozzáférési utasításokkal](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az adatforrások **Azure Data Catalogsal** való regisztrálása lehetővé teszi, hogy az adatforrásból a katalógus szolgáltatásba másolja a strukturális és leíró metaadatokat az adatokból. Miután regisztrálta az adatforrást, és felderített, a felhasználók csatlakozhatnak az adatforráshoz a **Azure Data Catalog** -portál Megnyitás a következőben:... Válassza a menü vagy a saját adateszközeinek használatát.
 
 ## <a name="see-also"></a>Lásd még

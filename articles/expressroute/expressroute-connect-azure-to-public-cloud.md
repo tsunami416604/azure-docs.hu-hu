@@ -7,11 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
-ms.openlocfilehash: b8a454c2a104dfe8545cf734bf0b020b8f749bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80863b56334b0d2d76cdf505dcd15c5cc4c14c52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73889626"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081100"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>Az Azure csatlakoztatása nyilvános Felhőkkel
 
@@ -33,7 +34,7 @@ A Layer3-szolgáltatók általában IP VPN-vagy MPLS VPN-szolgáltatók néven i
  
 A Layer3-szolgáltatón keresztüli csatlakozáskor a Microsoft a BGP-n keresztül hirdeti az ügyfél VNET útvonalakat a szolgáltatónak. A szolgáltatónak két különböző implementációja lehet.
 
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
+![Egy Layer3-szolgáltatót bemutató diagram.](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
 Előfordulhat, hogy a szolgáltató minden felhőalapú szolgáltatót külön VRF, ha az összes felhőalapú szolgáltatótól érkező forgalom eléri az ügyfél útválasztóját. Ha az ügyfél a BGP-t futtatja a szolgáltatónál, a rendszer alapértelmezés szerint ezeket az útvonalakat más felhőalapú szolgáltatók számára is újra meghirdeti. 
 
@@ -44,7 +45,7 @@ Minden nyilvános felhő eltérő előtag-korláttal rendelkezik, ezért az útv
 ### <a name="layer2-provider-and-direct-connection"></a>Layer2-szolgáltató és közvetlen kapcsolatok
 
 Bár a fizikai kapcsolat mindkét modellben eltérő, de a Layer3 BGP közvetlenül a MSEE és az ügyfél-útválasztó között jön. A közvetlen ExpressRoute ügyfél közvetlenül a MSEE-hoz csatlakozik. A Layer2 esetében a szolgáltató kiterjeszti a VLAN-t az ügyfél helyszínéről a felhőbe. Az ügyfelek BGP-t futtatnak a Layer2-hálózaton a tartományvezérlők felhőhöz való összekapcsolásához.
-![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
+![Diagram, amely egy Layer2-szolgáltatót és közvetlen kapcsolatokat mutat be.](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
 Mindkét esetben az ügyfél pont-pont típusú kapcsolattal fog rendelkezni a nyilvános Felhőkkel. Az ügyfél külön BGP-kapcsolatot hoz létre minden nyilvános felhőhöz. Az egyik felhőalapú szolgáltató által fogadott útvonalakat a rendszer alapértelmezés szerint más Felhőbeli szolgáltatónak hirdeti. Az egyes felhőalapú szolgáltatók különböző előtag-korláttal rendelkeznek, így az útvonalakon megjelenő ügyfelek a korlátozásokat is figyelembe vehetik. Az ügyfél a szokásos BGP-gombokat a Microsofttal is használhatja, miközben más nyilvános felhőkből is hirdet útvonalakat.
 
 ## <a name="direct-connection-with-expressroute"></a>Közvetlen kapcsolatok a ExpressRoute

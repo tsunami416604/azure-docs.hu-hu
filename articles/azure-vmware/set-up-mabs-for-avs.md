@@ -3,12 +3,12 @@ title: Azure Backup Server beállítása Azure VMware-megoldáshoz
 description: Állítsa be az Azure VMware-megoldási környezetét a virtuális gépek biztonsági mentésére Azure Backup Server használatával.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c56ebaff6b08f3d6586dfe025fdb2a5bfc708fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84816863"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079536"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure Backup Server beállítása Azure VMware-megoldáshoz
 
@@ -309,7 +309,7 @@ Ha a szoftvercsomagot egy másik kiszolgálóra töltötte le, másolja a fájlo
    * **Adatbázis**: a **databasename** **reportserver $ \<SQLInstanceName> **-nek kell lennie.
    * **Webportál URL-címe**: a **virtuális könyvtárnak** **Reports_nak \<SQLInstanceName> **kell lennie.
 
-   [További](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) információ az SSRS-konfigurációról.
+   [További](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) információ az SSRS-konfigurációról.
 
    > [!NOTE]
    > A [Microsoft Online Services használati feltételei](https://www.microsoft.com/licensing/product-licensing/products) (OST) szabályozzák a Azure Backup Server-adatbázisként használt SQL Server licencelését. Az OST-nek megfelelően a SQL Server a csomagban Azure Backup Server csak a Azure Backup Server adatbázisa használható.
@@ -319,7 +319,7 @@ Ha a szoftvercsomagot egy másik kiszolgálóra töltötte le, másolja a fájlo
 1. Adja meg Microsoft Azure Backup Server-fájlok telepítésének helyét, majd kattintson a **Tovább gombra**.
 
    > [!NOTE]
-   > Az Azure-ba történő biztonsági mentéshez meg kell adni a tartalék helyet. Győződjön meg arról, hogy a hely a felhőbe történő biztonsági mentéshez tervezett adatmennyiség legalább 5%-a. A lemezes védelemhez a telepítés befejezése után külön lemezeket kell konfigurálni. További információ a Storage-készletekről: a [tárolási készletek és a lemezes tárolás konfigurálása](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
+   > Az Azure-ba történő biztonsági mentéshez meg kell adni a tartalék helyet. Győződjön meg arról, hogy a hely a felhőbe történő biztonsági mentéshez tervezett adatmennyiség legalább 5%-a. A lemezes védelemhez a telepítés befejezése után külön lemezeket kell konfigurálni. További információ a Storage-készletekről: a [tárolási készletek és a lemezes tárolás konfigurálása](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12)).
 
    ![Microsoft Azure Backup telepítési beállítások](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
@@ -393,4 +393,3 @@ Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan konfigur�
 
 > [!div class="nextstepaction"]
 > [Azure VMware-megoldás virtuális gépek biztonsági mentésének konfigurálása](backup-avs-vms-with-mabs.md)
-

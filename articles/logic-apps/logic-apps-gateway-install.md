@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c52e8dfa3cda40cc663b5d7f27b67c7d2ad0b60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83659276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078646"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése az Azure Logic Appshez
 
@@ -21,7 +22,7 @@ A helyszíni [adatforrásokhoz való kapcsolódáshoz Azure Logic apps](../logic
 * [Microsoft Power apps helyszíni adatátjáró](/powerapps/maker/canvas-apps/gateway-reference)
 * [Helyszíni adatátjáró Azure Analysis Services](../analysis-services/analysis-services-gateway.md)
 
-Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a helyszíni adatátjárót, hogy a helyszíni adatforrások hozzáférhessenek Azure Logic Apps. További információ arról, [hogy az adatátjáró hogyan működik a](#gateway-cloud-service) témakör későbbi részében. Az átjáróval kapcsolatos további információkért lásd: [Mi az a helyszíni átjáró](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)? Az átjáró telepítési és felügyeleti feladatainak automatizálásához látogasson el a PowerShell-galériába a [DataGateway PowerShell-parancsmagokhoz](https://www.powershellgallery.com/packages/DataGateway/3000.15.15).
+Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a helyszíni adatátjárót, hogy a helyszíni adatforrások hozzáférhessenek Azure Logic Apps. További információ arról, [hogy az adatátjáró hogyan működik a](#gateway-cloud-service) témakör későbbi részében. Az átjáróval kapcsolatos további információkért lásd: [Mi az a helyszíni átjáró](/data-integration/gateway/service-gateway-onprem)? Az átjáró telepítési és felügyeleti feladatainak automatizálásához látogasson el a PowerShell-galériába a [DataGateway PowerShell-parancsmagokhoz](https://www.powershellgallery.com/packages/DataGateway/3000.15.15).
 
 <a name="requirements"></a>
 
@@ -79,7 +80,7 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
   * Az átjárónak két módja van: a standard mód és a személyes mód, amely csak a Power BIre vonatkozik. Ugyanazon a számítógépen nem lehet egynél több olyan átjáró, amely ugyanazon a módban fut.
 
-  * Azure Logic Apps támogatja az olvasási és írási műveleteket az átjárón keresztül. Ezek a műveletek azonban [korlátokkal rendelkeznek a hasznos adatok méretétől függően](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+  * Azure Logic Apps támogatja az olvasási és írási műveleteket az átjárón keresztül. Ezek a műveletek azonban [korlátokkal rendelkeznek a hasznos adatok méretétől függően](/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 
@@ -142,8 +143,8 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
 A helyszíni adatátjáró a felhőalapú kapcsolat [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) függ, és létrehozza a megfelelő kimenő kapcsolatokat az átjáróhoz tartozó Azure-régióhoz. Ha a munkahelyi környezet megköveteli, hogy a forgalom egy proxyn vagy tűzfalon keresztül hozzáférjen az internethez, akkor ez a korlátozás megakadályozhatja, hogy a helyszíni adatátjáró csatlakozzon az átjáró Cloud Service-hez, és Azure Service Bus. Az átjáró számos kommunikációs beállítással rendelkezik, amelyeket módosíthat. További információt az alábbi témakörökben talál:
 
-* [A helyszíni adatátjáró kommunikációs beállításainak módosítása](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [Helyszíni adatátjáró proxybeállításainak konfigurálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [A helyszíni adatátjáró kommunikációs beállításainak módosítása](/data-integration/gateway/service-gateway-communication)
+* [Helyszíni adatátjáró proxybeállításainak konfigurálása](/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
@@ -155,7 +156,7 @@ Ha el szeretné kerülni a helyszíni adathozzáféréshez szükséges egyetlen 
 
 * Az elsődleges átjárónak az átjáró frissítését november 2017 vagy újabb verzióra kell futtatnia.
 
-Miután beállította az elsődleges átjárót, amikor egy másik átjárót telepít, válassza a **Hozzáadás meglévő átjáró-fürthöz**lehetőséget, válassza ki az elsődleges átjárót, amely az első telepített átjáró, és adja meg az adott átjáró helyreállítási kulcsát. További információ: [magas rendelkezésre állású fürtök helyszíni adatátjáróhoz](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
+Miután beállította az elsődleges átjárót, amikor egy másik átjárót telepít, válassza a **Hozzáadás meglévő átjáró-fürthöz**lehetőséget, válassza ki az elsődleges átjárót, amely az első telepített átjáró, és adja meg az adott átjáró helyreállítási kulcsát. További információ: [magas rendelkezésre állású fürtök helyszíni adatátjáróhoz](/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
 
 <a name="update-gateway-installation"></a>
 
@@ -185,7 +186,7 @@ Ha módosítania kell az átjáró helyét, helyezze át az átjáró telepíté
 
 ## <a name="tenant-level-administration"></a>Bérlői szintű felügyelet
 
-Az Azure AD-bérlőben található összes helyszíni adatátjáró megismeréséhez a bérlő globális rendszergazdái bejelentkezhetnek a [Power platform felügyeleti központjába](https://powerplatform.microsoft.com) bérlői rendszergazdaként, és az **adatátjárók** lehetőségre is kiválaszthatók. További információ: [bérlői szintű felügyelet a helyszíni adatátjáróhoz](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
+Az Azure AD-bérlőben található összes helyszíni adatátjáró megismeréséhez a bérlő globális rendszergazdái bejelentkezhetnek a [Power platform felügyeleti központjába](https://powerplatform.microsoft.com) bérlői rendszergazdaként, és az **adatátjárók** lehetőségre is kiválaszthatók. További információ: [bérlői szintű felügyelet a helyszíni adatátjáróhoz](/data-integration/gateway/service-gateway-tenant-level-admin).
 
 <a name="restart-gateway"></a>
 
@@ -196,7 +197,7 @@ Alapértelmezés szerint az átjáró helyi számítógépen történő telepít
 > [!NOTE]
 > A Windows-szolgáltatásfiók eltér a helyszíni adatforrásokhoz való csatlakozáshoz használt fióktól és az Azure-fióktól, amelyet a Cloud Services szolgáltatásba való bejelentkezéskor használ.
 
-A többi Windows-szolgáltatáshoz hasonlóan a különböző módokon is elindíthatja és leállíthatja az átjárót. További információ: [helyszíni adatátjáró újraindítása](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
+A többi Windows-szolgáltatáshoz hasonlóan a különböző módokon is elindíthatja és leállíthatja az átjárót. További információ: [helyszíni adatátjáró újraindítása](/data-integration/gateway/service-gateway-restart).
 
 <a name="gateway-cloud-service"></a>
 
@@ -217,11 +218,11 @@ Ezek a lépések azt írják le, hogy mi történik, ha egy helyszíni adatforr�
 
 1. A Cloud Service létrehoz egy lekérdezést az adatforrás titkosított hitelesítő adataival együtt. A szolgáltatás ezután elküldi a lekérdezést és a hitelesítő adatokat az átjáró várólistájának feldolgozásra.
 
-1. Az átjáró Cloud Service elemzi a lekérdezést, és leküldi a kérést Azure Service Bus.
+1. Az átjáró-felhőszolgáltatás elemzi a lekérdezést, és leküldi a kérelmet az Azure Service Bus szolgáltatásba.
 
-1. Azure Service Bus elküldi a függőben lévő kéréseket az átjárónak.
+1. Az Azure Service Bus elküldi a függőben lévő kérelmeket az átjárónak.
 
-1. Az átjáró lekéri a lekérdezést, visszafejti a hitelesítő adatokat, és egy vagy több adatforráshoz csatlakozik ezekkel a hitelesítő adatokkal.
+1. Az átjáró beolvassa a lekérdezést, visszafejti a hitelesítő adatokat, és csatlakozik egy vagy több adatforráshoz ezekkel a hitelesítő adatokkal.
 
 1. Az átjáró elküldi a lekérdezést az adatforrásnak a futtatásához.
 
@@ -260,9 +261,9 @@ Az alábbi módokon lehet megfelelni a helyszíni Active Directory-fiókoknak az
 
 ## <a name="faq-and-troubleshooting"></a>Gyakori kérdések és hibaelhárítás
 
-* [Helyszíni adatátjáró – GYIK](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [A helyszíni adatátjáró hibaelhárítása](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Átjáró teljesítményének monitorozása és optimalizálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Helyszíni adatátjáró – GYIK](/data-integration/gateway/service-gateway-onprem-faq)
+* [A helyszíni adatátjáró hibaelhárítása](/data-integration/gateway/service-gateway-tshoot)
+* [Átjáró teljesítményének monitorozása és optimalizálása](/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>További lépések
 

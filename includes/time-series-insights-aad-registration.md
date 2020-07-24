@@ -1,6 +1,6 @@
 ---
-title: fájlbefoglalás
-description: fájlbefoglalás
+title: fájl belefoglalása
+description: fájl belefoglalása
 ms.topic: include
 ms.custom: include file
 services: time-series-insights
@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 02/03/2020
-ms.openlocfilehash: 5be6e7937a6e1f710b8e2576a9058963413fb6c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2e86a92c253bc1926386269e289cdb7ae578746
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76984569"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080767"
 ---
 1. A [Azure Portal](https://ms.portal.azure.com/)válassza a **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.
 
@@ -66,7 +66,7 @@ ms.locfileid: "76984569"
    > [!NOTE]
    > Lehetőség van egy tanúsítvány importálására. A fokozott biztonság érdekében ajánlott a tanúsítvány használata. A tanúsítvány használatához válassza a **tanúsítvány feltöltése**lehetőséget.
 
-1. A Azure Active Directory alkalmazásának Azure TIme Series-beli bepillantást kell rendelnie. Válassza az **API-engedélyek**lehetőséget a  >  **Add a permission**  >  **szervezetem által használt API**-k hozzáadása lehetőségre. 
+1. A Azure Active Directory alkalmazás Azure Time Series Insightsének hozzárendelése. Válassza az **API-engedélyek**lehetőséget a  >  **Add a permission**  >  **szervezetem által használt API**-k hozzáadása lehetőségre. 
 
     [![API hozzárendelése a Azure Active Directory-alkalmazáshoz](media/time-series-insights-aad-registration/active-directory-app-api-permission.png)](media/time-series-insights-aad-registration/active-directory-app-api-permission.png#lightbox)
 

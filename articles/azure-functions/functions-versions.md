@@ -3,11 +3,12 @@ title: Azure Functions futtatókörnyezet-verziók áttekintése
 description: Azure Functions támogatja a futtatókörnyezet több verzióját. Megtudhatja, hogy miben különböznek egymástól, és hogyan választhatja ki az Önnek legmegfelelőbbet.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0989795d802b21e07ad9fea3bd417f0408df706c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29dd4a1ea60c463655c5b9a17fedcf6d51eee927
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83996720"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081678"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions futtatókörnyezet-verziók áttekintése
 
@@ -90,7 +91,7 @@ A 2. x alkalmazás 3. x verzióra való frissítése előtt a következő módos
 
 #### <a name="net"></a>.NET
 
-* A [szinkron kiszolgáló műveletei alapértelmezés szerint le vannak tiltva](https://docs.microsoft.com/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers).
+* A [szinkron kiszolgáló műveletei alapértelmezés szerint le vannak tiltva](/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers).
 
 ### <a name="changing-version-of-apps-in-azure"></a>Alkalmazások verziójának módosítása az Azure-ban
 
@@ -194,7 +195,7 @@ A következő táblázat bemutatja, hogy az egyes futásidejű verziók milyen k
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért lásd a következőket:
+További információkat találhat az alábbi forrásokban:
 
 * [Az Azure Functions helyi kódolása és tesztelése](functions-run-local.md)
 * [A Azure Functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md)

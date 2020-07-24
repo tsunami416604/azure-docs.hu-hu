@@ -9,16 +9,16 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 7a21fb1c8da365176c27921bd58a5dffae468d2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b69bb480112993c42a22c71227b64943f33585e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735948"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080369"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4 és Edsv4 sorozat
 
-A Edv4 és a Edsv4 sorozat az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut egy Hyper-threaded konfigurációban, és ideális a különböző, nagy mennyiségű Nagyvállalati alkalmazások számára, és akár 504 GIB RAM, az [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Emellett támogatják az [Intel &reg; Deep learning fellendítését](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)is. Ezek az új virtuálisgép-méretek 50%-kal nagyobb helyi tárterülettel rendelkeznek, valamint jobb helyi lemez-IOPS is használhatók a [Ev3-/Esv3](https://docs.microsoft.com/azure/virtual-machines/ev3-esv3-series) -méretekhez és a Gen2-alapú virtuális [gépekhez](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) képest.
+A Edv4 és a Edsv4 sorozat az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade Lake) processzorokon fut egy Hyper-threaded konfigurációban, és ideális a különböző, nagy mennyiségű Nagyvállalati alkalmazások számára, és akár 504 GIB RAM, az [Intel &reg; Turbo Boost Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), az [Intel &reg; Hyper-Threading Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) és az [Intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Emellett támogatják az [Intel &reg; Deep learning fellendítését](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)is. Ezek az új virtuálisgép-méretek 50%-kal nagyobb helyi tárterülettel rendelkeznek, valamint jobb helyi lemez-IOPS is használhatók a [Ev3-/Esv3](./ev3-esv3-series.md) -méretekhez és a Gen2-alapú virtuális [gépekhez](./linux/generation-2.md) képest.
 
 ## <a name="edv4-series"></a>Edv4 sorozat
 
@@ -71,7 +71,7 @@ Memória megőrzésének frissítései: támogatott
 | Standard_E48ds_v4 | 48 | 384 | 1800 | 32 | 462000/2904 (1200) | 76800/1152 | 8/24000 |
 | Standard_E64ds_v4 <sup>1</sup> | 64 | 504 | 2400 | 32 | 615000/3872 (1600) | 80000/1200 | 8/30000 |
 
-<sup>1</sup> [korlátozott méretű alapméret érhető el)](https://docs.microsoft.com/azure/virtual-machines/windows/constrained-vcpu).
+<sup>1</sup> [korlátozott méretű alapméret érhető el)](./windows/constrained-vcpu.md).
 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
@@ -80,7 +80,7 @@ Memória megőrzésének frissítései: támogatott
 
 - [Általános célú](sizes-general.md)
 - [Memóriaoptimalizált](sizes-memory.md)
-- [Tárolásra optimalizált](sizes-storage.md)
+- [Tároptimalizált](sizes-storage.md)
 - [GPU-optimalizált](sizes-gpu.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)

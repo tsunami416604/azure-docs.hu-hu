@@ -3,15 +3,16 @@ title: Durable Functions Publishing to Azure Event Grid (előzetes verzió)
 description: Ismerje meg, hogyan konfigurálhatja a Durable Functions automatikus Azure Event Grid közzétételét.
 ms.topic: conceptual
 ms.date: 04/25/2020
-ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4651dd7548ba76380bfc2d1b314e67d7abe63d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83124258"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081746"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions Publishing to Azure Event Grid (előzetes verzió)
 
-Ebből a cikkből megtudhatja, hogyan állíthatja be a Durable Functionst a munkafolyamatok életciklusával kapcsolatos események (például a létrehozás, a Befejezés és a sikertelen) közzétételéhez egy egyéni [Azure Event Grid témakörben](https://docs.microsoft.com/azure/event-grid/overview).
+Ebből a cikkből megtudhatja, hogyan állíthatja be a Durable Functionst a munkafolyamatok életciklusával kapcsolatos események (például a létrehozás, a Befejezés és a sikertelen) közzétételéhez egy egyéni [Azure Event Grid témakörben](../../event-grid/overview.md).
 
 Az alábbiakban néhány olyan forgatókönyvet ismertetünk, amelyekben ez a funkció hasznos:
 
@@ -25,13 +26,13 @@ Az alábbiakban néhány olyan forgatókönyvet ismertetünk, amelyekben ez a fu
 
 * Telepítse a [Microsoft. Azure. webjobs. Extensions. DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) programot a Durable functions-projektbe.
 * Telepítse az [Azure Storage emulatort](../../storage/common/storage-use-emulator.md) (csak Windows), vagy használjon egy meglévő Azure Storage-fiókot.
-* Az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) telepítése vagy a [Azure Cloud Shell](../../cloud-shell/overview.md) használata
+* Az [Azure CLI](/cli/azure/?view=azure-cli-latest) telepítése vagy a [Azure Cloud Shell](../../cloud-shell/overview.md) használata
 
 ## <a name="create-a-custom-event-grid-topic"></a>Egyéni Event Grid-témakör létrehozása
 
 Hozzon létre egy Event Grid témakört az események Durable Functionsból való küldéséhez. Az alábbi utasítások bemutatják, hogyan hozhat létre egy témakört az Azure CLI használatával. A témakört a [PowerShell](../../event-grid/custom-event-quickstart-powershell.md) vagy [a Azure Portal](../../event-grid/custom-event-quickstart-portal.md)használatával is létrehozhatja.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az `az group create` paranccsal. A Azure Event Grid jelenleg nem támogatja az összes régiót. További információ a támogatott régiókról: [Azure Event Grid Overview (áttekintés](../../event-grid/overview.md)).
 
@@ -167,7 +168,7 @@ A Azure Portal használatával hozzon létre egy másik Function alkalmazást a 
 
 ### <a name="add-an-event-grid-subscription"></a>Event Grid előfizetés hozzáadása
 
-Mostantól hozzáadhat egy Event Grid-előfizetést a létrehozott Event Grid témakörhöz. További információkért tekintse [meg a Azure Event Grid fogalmak](https://docs.microsoft.com/azure/event-grid/concepts)című témakört.
+Mostantól hozzáadhat egy Event Grid-előfizetést a létrehozott Event Grid témakörhöz. További információkért tekintse [meg a Azure Event Grid fogalmak](../../event-grid/concepts.md)című témakört.
 
 1. Az új függvényben válassza az **integráció** , majd a **Event Grid trigger (eventGridEvent)** lehetőséget. 
 
@@ -181,7 +182,7 @@ Mostantól hozzáadhat egy Event Grid-előfizetést a létrehozott Event Grid t�
 
 1. Válassza ki az előfizetést. Ezután válassza ki az Event Grid témakörhöz létrehozott erőforráscsoportot és erőforrást. 
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
     :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Event Grid-előfizetés létrehozása." border="true":::
 

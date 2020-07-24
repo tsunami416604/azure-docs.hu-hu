@@ -2,13 +2,13 @@
 title: Üzembe helyezés az Azure-ban gomb
 description: Azure Resource Manager-sablonok GitHub-tárházból való üzembe helyezéséhez használja a gombot.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: e403d095f7419ed13742dcfa8e8407a92ad10be0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: 9fe69eba2a91bf19e0662ae071c222905c348666
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82744090"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079476"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Sablonok üzembe helyezése a GitHub-tárházból a központi telepítés gomb használatával
 
@@ -28,7 +28,11 @@ A rendszerkép a következőképpen jelenik meg:
 
 ## <a name="create-url-for-deploying-template"></a>URL-cím létrehozása sablon üzembe helyezéséhez
 
-A sablon URL-címének létrehozásához a tárházban található sablon nyers URL-címével Kezdje a következőket:
+A sablon URL-címének létrehozásához Kezdje a tárházban található sablon nyers URL-címével. A nyers URL-cím megjelenítéséhez válassza a **RAW**elemet.
+
+:::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="Nyers kiválasztása":::
+
+Az URL-cím formátuma:
 
 ```html
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json

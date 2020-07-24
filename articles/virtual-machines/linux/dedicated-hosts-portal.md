@@ -7,11 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 195a19ef881f235ad8e42f23b53da9e667ef88d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 068f6e85a0b2a56bb20c8581ec4fa59d50009088
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79086765"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080318"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Virtuális gépek üzembe helyezése dedikált gazdagépeken a portál használatával
 
@@ -45,7 +46,7 @@ A kilépő virtuális gépet egy dedikált gazdagéphez is hozzáadhatja, de a v
 
 - A virtuális gép méretének azonos méretűnek kell lennie, mint a dedikált gazdagépnek. Ha például a dedikált gazdagép DSv3, akkor a virtuális gép mérete Standard_D4s_v3, de nem lehet Standard_A4_v2. 
 - A virtuális gépnek ugyanabban a régióban kell lennie, ahol a dedikált gazdagép található.
-- A virtuális gép nem lehet a közelségi elhelyezési csoport része. A dedikált gazdagépre való áthelyezés előtt távolítsa el a virtuális gépet a közelségi csoportból. További információ: [virtuális gép áthelyezése a közelségi csoportból](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- A virtuális gép nem lehet a közelségi elhelyezési csoport része. A dedikált gazdagépre való áthelyezés előtt távolítsa el a virtuális gépet a közelségi csoportból. További információ: [virtuális gép áthelyezése a közelségi csoportból](../windows/proximity-placement-groups.md#move-an-existing-vm-out-of-a-proximity-placement-group)
 - A virtuális gép nem lehet rendelkezésre állási készletben.
 - Ha a virtuális gép egy rendelkezésre állási zónában van, akkor a gazdagép-csoporttal megegyező rendelkezésre állási zónának kell lennie. A virtuális gép rendelkezésre állási zónájának beállításai és a gazdagép csoportjának egyeznie kell.
 
@@ -66,6 +67,3 @@ Helyezze át a virtuális gépet egy dedikált gazdagépre a [portál](https://p
 - [Itt](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)található egy minta sablon, amely mindkét zónát és tartalék tartományt használja a maximális rugalmasság érdekében egy régióban.
 
 - A dedikált gazdagépeket az [Azure CLI](dedicated-hosts-cli.md)használatával is üzembe helyezheti.
-
-
-

@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e4f33f0974462197382ea6ac5d2b68d61909f73b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965246"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079240"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch renderelés használata
 
@@ -19,7 +19,7 @@ A Azure Batch renderelés többféleképpen is használható:
 * API-k:
   * Kód írása a Batch API-k bármelyikének használatával.  A fejlesztők a meglévő alkalmazásokhoz vagy munkafolyamatokhoz, akár a felhőben, akár a helyszínen is integrálhatja Azure Batch képességeit.
 * Parancssori eszközök:
-  * Az [Azure-parancssor](/cli/azure/) vagy a [PowerShell](/powershell/azure/overview) használható a Batch-használat parancsfájlhoz.
+  * Az [Azure-parancssor](/cli/azure/) vagy a [PowerShell](/powershell/azure/) használható a Batch-használat parancsfájlhoz.
   * Különösen a [Batch CLI-sablon támogatása](./batch-cli-templates.md) sokkal egyszerűbbé teszi a készletek létrehozását és a feladatok elküldését.
 * Batch Explorer felhasználói felület:
   * A [Batch Explorer](https://github.com/Azure/BatchLabs) egy platformfüggetlen ügyfél-eszköz, amely lehetővé teszi a Batch-fiókok felügyeletét és figyelését is.

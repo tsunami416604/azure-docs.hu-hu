@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e682232afa401f443ffe8f14f617b075978117ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080046"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Az Azure-infrastruktúra előkészítése az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS közös lemezének használatával
 
@@ -372,7 +372,7 @@ A példánkban az Azure Virtual Network példány 10.0.0.0/16. Az alhálózat ne
 A szükséges DNS IP-címek megadásához hajtsa végre a következő lépéseket:
 
 1. A Azure Portal **DNS-kiszolgálók** ablaktáblájában győződjön meg arról, hogy a virtuális hálózati **DNS-kiszolgálók** beállítás **Egyéni DNS-** re van beállítva.
-2. Válassza ki a beállításokat a hálózat típusa alapján. További információkért lásd a következőket:
+2. Válassza ki a beállításokat a hálózat típusa alapján. További információkat találhat az alábbi forrásokban:
    * Adja hozzá a helyszíni DNS-kiszolgálók IP-címeit.  
    A helyszíni DNS-kiszolgálókat az Azure-ban futó virtuális gépekre is kiterjesztheti. Ebben az esetben felveheti azon Azure-beli virtuális gépek IP-címeit, amelyeken a DNS szolgáltatást futtatja.
    * Az Azure-ban elkülönített virtuálisgép-példányok esetén: helyezzen üzembe egy további virtuális gépet ugyanabban a Virtual Network-példányban, amely DNS-kiszolgálóként szolgál. Adja hozzá a DNS-szolgáltatás futtatásához beállított Azure-beli virtuális gépek IP-címeit.
@@ -555,7 +555,7 @@ Ha az SAP ASCS/SCS-példányt mindkét fürtcsomóponton szeretné felvenni, el�
 | Változó neve |`KeepAliveTime` |
 | Változó típusa |REG_DWORD (decimális) |
 | Érték |120000 |
-| Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
+| Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957549.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
 
 **3. táblázat:** Az első TCP/IP-paraméter módosítása
 
@@ -566,7 +566,7 @@ Ezt követően adja hozzá ezt a Windows beállításjegyzékbeli bejegyzést az
 | Változó neve |`KeepAliveInterval` |
 | Változó típusa |REG_DWORD (decimális) |
 | Érték |120000 |
-| Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
+| Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957548.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 **4. táblázat:** A második TCP/IP-paraméter módosítása
 

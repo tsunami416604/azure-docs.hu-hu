@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: acfe4695b94fe9337296d70ef4a2864794730ec4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506349"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081729"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
 
@@ -111,6 +111,9 @@ Ha a rendszer kéri, adja meg a következő értékeket:
 `Y`A megerősítéshez írja be vagy nyomja le az ENTER billentyűt.
 
 A Maven létrehoz egy új, _artifactId_nevű mappában található projektfájlt, amely ebben a példában a `fabrikam-functions` . 
+
+Ahhoz, hogy a Java 11-es verzióban fusson az Azure-ban, módosítania kell az értékeket a pom.xml fájlban. További információ: Java- [verziók](functions-reference-java.md#java-versions). 
+
 ::: zone-end  
 Navigáljon a projekt mappájába:
 
@@ -157,6 +160,8 @@ Az alkalmazás üzemeltetéséhez létrehozott Azure-erőforrások beállítása
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 Ezen beállítások módosításával szabályozhatja, hogy az erőforrások hogyan jöjjenek létre az Azure-ban, például a verzióról a verzióra való váltással a `runtime.os` `windows` `linux` kezdeti üzembe helyezés előtt. A Maven beépülő modul által támogatott beállítások teljes listájáért tekintse meg a [konfiguráció részleteit](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
+
+Ha Java 11-es verzió helyett a Function alkalmazást szeretné futtatni, a Java 11 értékekkel manuálisan kell frissítenie a pom.xml fájlt. További információ: Java- [verziók](functions-reference-java.md#java-versions). Ha Java 11 rendszeren fut, győződjön meg róla, hogy  
 
 #### <a name="functiontestjava"></a>FunctionTest. Java
 
@@ -367,7 +372,7 @@ Ez a következő erőforrásokat hozza létre az Azure-ban:
 + Erőforráscsoport. Neve: _Java-functions-Group_.
 + Storage-fiók. A függvények igénylik. A név véletlenszerűen jön létre a Storage-fióknév követelményei alapján.
 + Üzemeltetési csomag. A _westus_ régióban lévő Function App kiszolgáló nélküli üzemeltetése. A név a _Java-functions-app-Service-Plan_.
-+ Function alkalmazás. A functions alkalmazás a függvények üzembe helyezési és végrehajtási egysége. A név véletlenszerűen jön létre a _artifactId_alapján, véletlenszerűen generált számmal hozzáfűzve. 
++ Function alkalmazás. A functions alkalmazás a függvények üzembe helyezési és végrehajtási egysége. A név véletlenszerűen jön létre a _artifactId_alapján, amely véletlenszerűen generált számmal van hozzáfűzve. 
 
 A központi telepítés a Project fájljait csomagolja és telepíti az új Function alkalmazásba a [zip-telepítés](functions-deployment-technologies.md#zip-deploy)használatával. A kód a központi telepítési csomagból fut az Azure-ban.
 ::: zone-end
@@ -419,7 +424,7 @@ az group delete --name java-functions-group
 A virtuális környezetből való kilépéshez futtassa a parancsot `deactivate` .
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md)

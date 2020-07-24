@@ -1,5 +1,5 @@
 ---
-title: 'Azure Premium Storage: Linux rendszerű virtuális gépek teljesítményének kialakítása | Microsoft Docs'
+title: 'Azure Premium Storage: nagy teljesítményű kialakítás | Microsoft Docs'
 description: Nagy teljesítményű alkalmazások tervezése az Azure Premium SSD Managed Disks használatával. A Premium Storage nagy teljesítményű, kis késleltetésű lemezes támogatást biztosít az Azure-Virtual Machines futó I/O-igényes számítási feladatokhoz.
 author: roygara
 ms.service: virtual-machines-linux
@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 91968a9701c46114d56b30ec6e3a93cfa76bf023
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c654be5f85d5f8b8330e6c08d2655f27d3b2660d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84022163"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080199"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
 [!INCLUDE [virtual-machines-common-premium-storage-introduction](../../../includes/virtual-machines-common-premium-storage-introduction.md)]

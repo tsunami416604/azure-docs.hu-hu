@@ -7,22 +7,22 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5ea17edc61988f13df5137686d823a424f6752ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103959"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080862"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>A Azure Migrate korábbi verziójának használata
 
-Ez a cikk a Azure Migrate korábbi verziójának használatáról nyújt információt.
+Ez a cikk a Azure Migrate korábbi verziójának használatáról nyújt információt. 
 
 
 A Azure Migrate szolgáltatásnak két verziója van:
 
 - **Aktuális verzió**: ezzel a verzióval Azure Migrate projekteket hozhat létre, felderítheti a helyszíni gépeket, és összehangolhatja az értékeléseket és áttelepítéseket. [További](whats-new.md) információ az ebben a verzióban található újdonságokról.
-- **Előző verzió**: ha a Azure Migrate korábbi verzióját használja (csak a helyszíni VMWare virtuális gépek felmérése támogatott), akkor most az aktuális verziót kell használnia. Ha továbbra is az előző verzióban létrehozott Azure Migrate projekteket kell használnia, akkor ez a következő lehet:
+- **Előző verzió**: ha a Azure Migrate korábbi verzióját használja (csak a helyszíni VMWare virtuális gépek felmérése támogatott), akkor most az aktuális verziót kell használnia. A korábbi verziójú projekteket klasszikus projekteknek nevezzük ebben a cikkben. Ha továbbra is az előző verzióban létrehozott Azure Migrate projekteket kell használnia, akkor ez a következő lehet:
     - Már nem hozhat létre áttelepítési projekteket.
     - Javasoljuk, hogy ne végezzen új felfedezéseket.
     - Továbbra is hozzáférhet a meglévő projektekhez.
@@ -31,7 +31,7 @@ A Azure Migrate szolgáltatásnak két verziója van:
 
 ## <a name="upgrade-between-versions"></a>Frissítés verziók között
 
-Az előző verzióban lévő projektek vagy összetevők nem frissíthetők az új verzióra. [Létre kell hoznia egy új Azure Migrate projektet](how-to-add-tool-first-time.md), és hozzá kell adnia az értékelési és áttelepítési eszközöket.
+Az előző verzióban lévő projektek vagy összetevők nem frissíthetők az új verzióra. [Létre kell hoznia egy új Azure Migrate projektet](create-manage-projects.md), és [hozzá kell adnia az értékelési és áttelepítési eszközöket](how-to-add-tool-first-time.md) . Az oktatóanyagok segítségével megismerheti, hogyan használhatja az elérhető értékelési és áttelepítési eszközöket. Ha egy klasszikus projekthez csatlakoztatott Log Analytics munkaterülettel rendelkezik, a klasszikus projekt törlése után csatolhatja azt egy aktuális verzió projekthez.
 
 ## <a name="find-projects-from-previous-version"></a>Projektek keresése az előző verzióból
 
@@ -39,7 +39,16 @@ Az előző verzióból származó projekteket a következőképpen keresheti meg
 
 1. A Azure Portal > **minden szolgáltatás**területen keresse meg és válassza ki **Azure Migrate**. 
 2. A Azure Migrate irányítópulton van egy értesítés és egy hivatkozás a régi Azure Migrate projektek eléréséhez.
-3. Kattintson a hivatkozásra a v1-projektek megnyitásához.
+3. A klasszikus projektek megnyitásához kattintson a hivatkozásra.
+
+## <a name="delete-projects-from-previous-version"></a>A korábbi verzióból származó projektek törlése
+
+Az előző verzióból származó projekteket a következőképpen keresheti meg és törölheti:
+
+1. A Azure Portal > **minden szolgáltatás**területen keresse meg és válassza ki **Azure Migrate**. 
+2. A Azure Migrate irányítópulton van egy értesítés és egy hivatkozás a régi Azure Migrate projektek eléréséhez.
+3. A klasszikus projektek megnyitásához kattintson a hivatkozásra.
+4. Válassza ki a törölni és törölni kívánt projektet. 
 
 
 ## <a name="create-an-assessment"></a>Értékelés létrehozása
@@ -56,7 +65,7 @@ Hozzon létre egy értékelést az alábbiak szerint:
 3. Hozza létre a csoportot, és adja meg a nevét.
 4. Válassza ki a csoporthoz hozzáadni kívánt gépeket.
 5. A csoport és az értékelés létrehozásához kattintson az **Értékelés létrehozása** elemre.
-6. Az értékelés létrehozása után tekintse meg az **Áttekintés**  >  **irányítópulton**.
+6. Az értékelést a létrehozását követően az **Áttekintés** > **Irányítópult** menüpontban tekintheti meg.
 7. Az értékelés az **Értékelés exportálása** gombra kattintva Excel-fájlként letölthető.
 
 Ha szeretné egy meglévő értékelését a legújabb teljesítményadatokkal frissíteni, akkor ezt az értékelés **Újraszámítás** parancsával teheti meg.
@@ -92,7 +101,7 @@ A készültség számos virtuálisgép-tulajdonságot figyelembe vesz, hogy megt
 --- | --- | ---
 **Rendszerindítás típusa** | A BIOS támogatott. Az UEFI nem támogatott. | Feltételesen üzemkész, ha a rendszerindítás UEFI típusú.
 **Cores** | A Machines Core <= az Azure-beli virtuális gépek számára támogatott magok maximális száma (128).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate figyelembe veszi a felhasznált magokat.<br/>Ha az értékelési beállításokban meg van adva egy kényelmi tényező, a kihasználatlan magok számát a Comfort faktor megszorozza.<br/><br/> Ha nincsenek teljesítménybeli előzmények, Azure Migrate a lefoglalt magokat használja a komfort tényező alkalmazása nélkül. | Ha a korlát értéke kisebb vagy egyenlő, akkor készen áll.
-**Memory (Memória)** | A számítógép memóriájának mérete <= a maximális memória (3892 GB az Azure M sorozat Standard_M128m &nbsp; <sup>2</sup>) egy Azure-beli virtuális gépen. [További információk](../virtual-machines/windows/sizes.md).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate a felhasznált memóriát veszi figyelembe.<br/><br/>Ha meg van adva egy kényelmi tényező, a kihasznált memóriát a komfort tényező szorozza meg.<br/><br/> Ha nincs előzmény, a rendszer a lefoglalt memóriát használja a komfort tényező alkalmazása nélkül.<br/><br/> | A határértékeken belül készen áll.
+**Memória** | A számítógép memóriájának mérete <= a maximális memória (3892 GB az Azure M sorozat Standard_M128m &nbsp; <sup>2</sup>) egy Azure-beli virtuális gépen. [További információ](../virtual-machines/windows/sizes.md).<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate a felhasznált memóriát veszi figyelembe.<br/><br/>Ha meg van adva egy kényelmi tényező, a kihasznált memóriát a komfort tényező szorozza meg.<br/><br/> Ha nincs előzmény, a rendszer a lefoglalt memóriát használja a komfort tényező alkalmazása nélkül.<br/><br/> | A határértékeken belül készen áll.
 **Storage-lemez** | A lemez lefoglalt méretének 4 TB (4096 GB) vagy kevesebbnek kell lennie.<br/><br/> A géphez csatolt lemezek számának 65 vagy annál kisebbnek kell lennie, beleértve az operációsrendszer-lemezt is. | A határértékeken belül készen áll.
 **Hálózat** | A számítógépnek 32 vagy annál kevesebb hálózati adapterrel kell rendelkeznie. | A határértékeken belül készen áll.
 
@@ -244,7 +253,7 @@ Az ügynök telepítése Linux rendszerű gépre:
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Az MMA-ügynök telepítése Operations Manager által figyelt gépre
 
-A System Center Operations Manager 2012 R2 vagy újabb verziói által monitorozott gépek esetében nincs szükség az MMA-ügynök telepítésére. Service Map integrálódik a Operations Manager MMA-val a szükséges függőségi adatok összegyűjtéséhez. [További információk](../azure-monitor/insights/service-map-scom.md#prerequisites). A függőségi ügynököt telepíteni kell.
+A System Center Operations Manager 2012 R2 vagy újabb verziói által monitorozott gépek esetében nincs szükség az MMA-ügynök telepítésére. Service Map integrálódik a Operations Manager MMA-val a szükséges függőségi adatok összegyűjtéséhez. [További információ](../azure-monitor/insights/service-map-scom.md#prerequisites). A függőségi ügynököt telepíteni kell.
 
 ### <a name="install-the-dependency-agent"></a>A függőségi ügynök telepítése
 
@@ -340,5 +349,5 @@ VMConnection
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További](migrate-services-overview.md) információ a Azure Migrate legújabb verziójáról.

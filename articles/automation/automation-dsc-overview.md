@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079740"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation állapot konfigurációjának áttekintése
 
@@ -73,7 +73,7 @@ A Windows rendszert futtató csomópontok esetében a következő verziók támo
 >[!NOTE]
 >A [Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) önálló termék SKU nem tartalmazza a DSC implementációját. Így nem felügyelhető a PowerShell DSC-vel vagy Azure Automation állapot-konfigurációval.
 
-A Linux rendszerű csomópontok esetében a DSC linuxos bővítmény a [támogatott Linux-disztribúciók](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)alatt felsorolt összes Linux-disztribúciót támogatja.
+A Linux rendszerű csomópontok esetében a DSC Linux bővítmény támogatja a [POWERSHELL DSC dokumentációjában](/powershell/scripting/dsc/getting-started/lnxgettingstarted)felsorolt összes Linux-disztribúciót.
 
 ### <a name="dsc-requirements"></a>DSC-követelmények
 

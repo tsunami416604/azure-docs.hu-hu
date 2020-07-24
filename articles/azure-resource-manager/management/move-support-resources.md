@@ -3,12 +3,12 @@ title: Művelet támogatásának áthelyezése erőforrástípus szerint
 description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 7b7f6f05c9cae80cffb64245a3fc8a6b0890d577
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 16197210326d73284a4a83edc7876e4faddded86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539227"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079498"
 ---
 # <a name="move-operation-support-for-resources"></a>Erőforrás-áthelyezési műveletek támogatása
 
@@ -288,6 +288,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftapimanagement"></a>Microsoft. ApiManagement
 
+> [!IMPORTANT]
+> Nem helyezhető át olyan API Management szolgáltatás, amely a felhasználási SKU-ra van beállítva.
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -298,9 +301,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | reportfeedback | Nem | Nem |
 > | szolgáltatás | Igen | Igen |
 > | validateservicename | Nem | Nem |
-
-> [!IMPORTANT]
-> Nem helyezhető át olyan API Management szolgáltatás, amely a felhasználási SKU-ra van beállítva.
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
@@ -330,15 +330,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftappservice"></a>Microsoft. AppService
 
+> [!IMPORTANT]
+> Lásd: [app Service áthelyezési útmutató](./move-limitations/app-service-move-limitations.md).
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | apiapps | Nem | Nem |
 > | appidentities | Nem | Nem |
 > | átjárók | Nem | Nem |
-
-> [!IMPORTANT]
-> Lásd: [app Service áthelyezési útmutató](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftattestation"></a>Microsoft. igazolás
 
@@ -375,6 +375,11 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
+> [!IMPORTANT]
+> A runbookok ugyanabban az erőforráscsoporthoz kell tartoznia, mint az Automation-fióknak.
+>
+> További információ: [Azure Automation-fiók áthelyezése másik előfizetésre](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json).
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -388,11 +393,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | automationaccounts / softwareupdateconfigurations | Nem | Nem |
 > | automationaccounts/webhookok | Nem | Nem |
 > | műveletek | Nem | Nem |
-
-> [!IMPORTANT]
-> A runbookok ugyanabban az erőforráscsoporthoz kell tartoznia, mint az Automation-fióknak.
->
-> További információ: [Azure Automation-fiók áthelyezése másik előfizetésre](../../automation/how-to/move-account.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftavs"></a>Microsoft. AVS
 
@@ -626,6 +626,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftcache"></a>Microsoft. cache
 
+> [!IMPORTANT]
+> Ha az Azure cache for Redis-példány virtuális hálózattal van konfigurálva, a példány nem helyezhető át egy másik előfizetésbe. Lásd: [hálózati áthelyezési korlátozások](./move-limitations/networking-move-limitations.md).
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -638,9 +641,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Redis/eventgridfilters | Nem | Nem |
 > | Redis/privatelinkresources | Nem | Nem |
 > | redisenterprise | Nem | Nem |
-
-> [!IMPORTANT]
-> Ha az Azure cache for Redis-példány virtuális hálózattal van konfigurálva, a példány nem helyezhető át egy másik előfizetésbe. Lásd: [hálózati áthelyezési korlátozások](./move-limitations/networking-move-limitations.md).
 
 ## <a name="microsoftcapacity"></a>Microsoft. Capacity
 
@@ -700,6 +700,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
+> [!IMPORTANT]
+> Lásd: [app Service áthelyezési útmutató](./move-limitations/app-service-move-limitations.md).
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -707,9 +710,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | tanúsítványrendelések/tanúsítványok | Nem | Nem |
 > | műveletek | Nem | Nem |
 > | validatecertificateregistrationinformation | Nem | Nem |
-
-> [!IMPORTANT]
-> Lásd: [app Service áthelyezési útmutató](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftchangeanalysis"></a>Microsoft. ChangeAnalysis
 
@@ -720,12 +720,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
+> [!IMPORTANT]
+> Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | képességek | Nem | Nem |
 > | checkdomainnameavailability | Nem | Nem |
-> | tartománynevek | Igen | Nem |
+> | tartománynevek | Yes | No |
 > | tartománynevek/képességek | Nem | Nem |
 > | tartománynevek/internalloadbalancers | Nem | Nem |
 > | tartománynevek/servicecertificates | Nem | Nem |
@@ -741,25 +744,25 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kvóták | Nem | Nem |
 > | resourcetypes | Nem | Nem |
 > | validatesubscriptionmoveavailability | Nem | Nem |
-> | virtualmachines | Igen | Nem |
+> | virtualmachines | Igen | No |
 > | virtualmachines / diagnosticsettings | Nem | Nem |
 > | virtualmachines / metricdefinitions | Nem | Nem |
 > | virtualmachines/mérőszámok | Nem | Nem |
 
+## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft. ClassicInfrastructureMigrate
+
 > [!IMPORTANT]
 > Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
-
-## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft. ClassicInfrastructureMigrate
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | classicinfrastructureresources | Nem | Nem |
 
+## <a name="microsoftclassicnetwork"></a>Microsoft. ClassicNetwork
+
 > [!IMPORTANT]
 > Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
-
-## <a name="microsoftclassicnetwork"></a>Microsoft. ClassicNetwork
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -776,10 +779,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | virtualnetworks/remotevirtualnetworkpeeringproxies | Nem | Nem |
 > | virtualnetworks/virtualnetworkpeerings | Nem | Nem |
 
+## <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
+
 > [!IMPORTANT]
 > Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
-
-## <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -793,7 +796,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | osplatformimages | Nem | Nem |
 > | publicimages | Nem | Nem |
 > | kvóták | Nem | Nem |
-> | storageaccounts | Igen | Nem |
+> | storageaccounts | Yes | No |
 > | storageaccounts/blobservices | Nem | Nem |
 > | storageaccounts/fileservices | Nem | Nem |
 > | storageaccounts/metricdefinitions | Nem | Nem |
@@ -807,18 +810,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | storageaccounts/lemezképet | Nem | Nem |
 > | lemezképet | Nem | Nem |
 
+## <a name="microsoftclassicsubscription"></a>Microsoft. ClassicSubscription
+
 > [!IMPORTANT]
 > Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
-
-## <a name="microsoftclassicsubscription"></a>Microsoft. ClassicSubscription
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | műveletek | Nem | Nem |
-
-> [!IMPORTANT]
-> Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft. CognitiveServices
 
@@ -843,6 +843,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | usageaggregates | Nem | Nem |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
+
+> [!IMPORTANT]
+> Lásd: [Virtual Machines áthelyezési útmutató](./move-limitations/virtual-machines-move-limitations.md).
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -888,9 +891,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | virtualmachinescalesets/nyilvános IP | Nem | Nem |
 > | virtualmachinescalesets/virtualmachines | Nem | Nem |
 > | virtualmachinescalesets/virtualmachines/networkinterfaces | Nem | Nem |
-
-> [!IMPORTANT]
-> Lásd: [Virtual Machines áthelyezési útmutató](./move-limitations/virtual-machines-move-limitations.md).
 
 ## <a name="microsoftconsumption"></a>Microsoft. felhasználás
 
@@ -1437,10 +1437,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | labcenters | Nem | Nem |
-> | Labs | Igen | Nem |
+> | Labs | Yes | No |
 > | Labs/környezetek | Igen | Igen |
 > | Labor/servicerunners | Igen | Igen |
-> | Labor/virtualmachines | Igen | Nem |
+> | Labor/virtualmachines | Yes | No |
 > | helyek | Nem | Nem |
 > | helyszínek/műveletek | Nem | Nem |
 > | műveletek | Nem | Nem |
@@ -1613,6 +1613,11 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsofthdinsight"></a>Microsoft. HDInsight
 
+> [!IMPORTANT]
+> A HDInsight-fürtöket új előfizetésre vagy erőforráscsoporthoz helyezheti át. Azonban a HDInsight-fürthöz társított hálózati erőforrások (például a virtuális hálózat, a hálózati adapter vagy a terheléselosztó) nem helyezhetők át az előfizetésekben. Emellett a fürthöz tartozó virtuális géphez csatlakoztatott hálózati adapterek nem helyezhetők át egy új erőforráscsoporthoz.
+>
+> Amikor új előfizetésre helyez át egy HDInsight-fürtöt, először helyezze át a többi erőforrást (például a Storage-fiókot). Ezután saját maga helyezheti át a HDInsight-fürtöt.
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -1627,11 +1632,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | helyszínek/használat | Nem | Nem |
 > | helyszínek/validatecreaterequest | Nem | Nem |
 > | műveletek | Nem | Nem |
-
-> [!IMPORTANT]
-> A HDInsight-fürtöket új előfizetésre vagy erőforráscsoporthoz helyezheti át. Azonban a HDInsight-fürthöz társított hálózati erőforrások (például a virtuális hálózat, a hálózati adapter vagy a terheléselosztó) nem helyezhetők át az előfizetésekben. Emellett a fürthöz tartozó virtuális géphez csatlakoztatott hálózati adapterek nem helyezhetők át egy új erőforráscsoporthoz.
->
-> Amikor új előfizetésre helyez át egy HDInsight-fürtöt, először helyezze át a többi erőforrást (például a Storage-fiókot). Ezután saját maga helyezheti át a HDInsight-fürtöt.
 
 ## <a name="microsofthealthcareapis"></a>Microsoft. HealthcareApis
 
@@ -1699,6 +1699,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftinsights"></a>Microsoft. bepillantások
 
+> [!IMPORTANT]
+> Ügyeljen arra, hogy az új előfizetésre való áttérés ne haladja meg az [előfizetési kvótákat](azure-subscription-service-limits.md#azure-monitor-limits)
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -1754,9 +1757,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | munkafüzetek | Igen | Igen |
 > | workbooktemplates | Igen | Igen |
 
-> [!IMPORTANT]
-> Ügyeljen arra, hogy az új előfizetésre való áttérés ne haladja meg az [előfizetési kvótákat](azure-subscription-service-limits.md#azure-monitor-limits)
-
 ## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
 
 > [!div class="mx-tableFixed"]
@@ -1779,6 +1779,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftkeyvault"></a>Microsoft. kulcstartó
 
+> [!IMPORTANT]
+> A lemezes titkosításhoz használt kulcstartók nem helyezhetők át ugyanabba az előfizetésbe vagy előfizetésbe tartozó erőforráscsoporthoz.
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -1795,9 +1798,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | tárolók/accesspolicies | Nem | Nem |
 > | tárolók/eventgridfilters | Nem | Nem |
 > | tárolók/titkok | Nem | Nem |
-
-> [!IMPORTANT]
-> A lemezes titkosításhoz használt kulcstartók nem helyezhetők át ugyanabba az előfizetésbe vagy előfizetésbe tartozó erőforráscsoporthoz.
 
 ## <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
@@ -1866,8 +1866,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | Nem | Nem |
 > | integrationaccounts | Igen | Igen |
-> | integrationserviceenvironments | Igen | Nem |
-> | integrationserviceenvironments/król | Igen | Nem |
+> | integrationserviceenvironments | Yes | No |
+> | integrationserviceenvironments/król | Yes | No |
 > | isolatedenvironments | Nem | Nem |
 > | helyek | Nem | Nem |
 > | helyszínek/munkafolyamatok | Nem | Nem |
@@ -1884,7 +1884,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | helyszínek/műveletek | Nem | Nem |
 > | helyszínek/operationsstatus | Nem | Nem |
 > | műveletek | Nem | Nem |
-> | WebServices | Igen | Nem |
+> | WebServices | Yes | No |
 > | munkaterületek | Igen | Igen |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
@@ -2115,6 +2115,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
+> [!IMPORTANT]
+> Lásd: [hálózati áthelyezési útmutató](./move-limitations/networking-move-limitations.md).
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -2194,10 +2197,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | networkinterfaces | Igen | Igen |
 > | networkprofiles | Nem | Nem |
 > | networksecuritygroups | Igen | Igen |
-> | networkwatchers | Igen | Nem |
-> | networkwatchers / connectionmonitors | Igen | Nem |
-> | networkwatchers / flowlogs | Igen | Nem |
-> | networkwatchers / pingmeshes | Igen | Nem |
+> | networkwatchers | Yes | No |
+> | networkwatchers / connectionmonitors | Yes | No |
+> | networkwatchers / flowlogs | Yes | No |
+> | networkwatchers / pingmeshes | Yes | No |
 > | műveletek | Nem | Nem |
 > | p2svpngateways | Nem | Nem |
 > | privatednsoperationresults | Nem | Nem |
@@ -2237,9 +2240,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | vpnserverconfigurations | Nem | Nem |
 > | vpnsites (virtuális WAN) | Nem | Nem |
 
-> [!IMPORTANT]
-> Lásd: [hálózati áthelyezési útmutató](./move-limitations/networking-move-limitations.md).
-
 ## <a name="microsoftnotificationhubs"></a>Microsoft. NotificationHubs
 
 > [!div class="mx-tableFixed"]
@@ -2272,6 +2272,11 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft. OperationalInsights
 
+> [!IMPORTANT]
+> Ügyeljen arra, hogy az új előfizetésre való áttérés ne haladja meg az [előfizetési kvótákat](azure-subscription-service-limits.md#azure-monitor-limits).
+>
+> A csatolt Automation-fiókkal rendelkező munkaterületek nem helyezhetők át. Az áthelyezési művelet megkezdése előtt ne felejtse el összekapcsolni az Automation-fiókokat.
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -2289,11 +2294,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | munkaterületek/metaadatok | Nem | Nem |
 > | munkaterületek/lekérdezés | Nem | Nem |
 > | munkaterületek/scopedprivatelinkproxies | Nem | Nem |
-
-> [!IMPORTANT]
-> Ügyeljen arra, hogy az új előfizetésre való áttérés ne haladja meg az [előfizetési kvótákat](azure-subscription-service-limits.md#azure-monitor-limits).
->
-> A csatolt Automation-fiókkal rendelkező munkaterületek nem helyezhetők át. Az áthelyezési művelet megkezdése előtt ne felejtse el összekapcsolni az Automation-fiókokat.
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 
@@ -2406,6 +2406,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft. Recoveryservices szolgáltatónál
 
+> [!IMPORTANT]
+> Lásd: [Recovery Services áthelyezési útmutató](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -2426,9 +2429,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | műveletek | Nem | Nem |
 > | replicationeligibilityresults | Nem | Nem |
 > | boltívek | Igen | Igen |
-
-> [!IMPORTANT]
-> Lásd: [Recovery Services áthelyezési útmutató](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftredhatopenshift"></a>Microsoft. RedHatOpenShift
 
@@ -2523,7 +2523,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | alkalmazások | Igen | Nem |
+> | alkalmazások | Igen | No |
 > | checkmoderneligibility | Nem | Nem |
 > | checknameavailability | Nem | Nem |
 > | operationresults | Nem | Nem |
@@ -2531,6 +2531,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | saasresources | Nem | Nem |
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
+
+> [!IMPORTANT]
+> Egy műveletben nem helyezhető át több keresési erőforrás különböző régiókban. Ehelyett külön műveletekben helyezze át őket.
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -2540,9 +2543,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | műveletek | Nem | Nem |
 > | resourcehealthmetadata | Nem | Nem |
 > | searchservices | Igen | Igen |
-
-> [!IMPORTANT]
-> Egy műveletben nem helyezhető át több keresési erőforrás különböző régiókban. Ehelyett külön műveletekben helyezze át őket.
 
 ## <a name="microsoftsecurity"></a>Microsoft. Security
 
@@ -2748,6 +2748,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
+> [!IMPORTANT]
+> Az adatbázisnak és a kiszolgálónak ugyanabban az erőforráscsoporthoz kell tartoznia. Ha egy SQL Servert helyez át, az összes adatbázisa is át lesz helyezve. Ez a viselkedés a Azure SQL Database és az Azure szinapszis Analytics adatbázisaira vonatkozik.
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -2922,9 +2925,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kiszolgálók/vulnerabilityassessments | Nem | Nem |
 > | virtualclusters | Igen | Igen |
 
-> [!IMPORTANT]
-> Az adatbázisnak és a kiszolgálónak ugyanabban az erőforráscsoporthoz kell tartoznia. Ha egy SQL Servert helyez át, az összes adatbázisa is át lesz helyezve. Ez a viselkedés a Azure SQL Database és az Azure szinapszis Analytics adatbázisaira vonatkozik.
-
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
@@ -3012,6 +3012,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft. StreamAnalytics
 
+> [!IMPORTANT]
+> Stream Analytics feladatok futási állapotban nem helyezhetők át.
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -3020,9 +3023,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | helyszínek/kvóták | Nem | Nem |
 > | műveletek | Nem | Nem |
 > | streamingjobs | Igen | Igen |
-
-> [!IMPORTANT]
-> Stream Analytics feladatok futási állapotban nem helyezhetők át.
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft. StreamAnalyticsExplorer
 
@@ -3110,6 +3110,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftvisualstudio"></a>Microsoft. VisualStudio
 
+> [!IMPORTANT]
+> Az Azure DevOps-előfizetés módosításához tekintse meg [a számlázáshoz használt Azure-előfizetés módosítása](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)című témakört.
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
@@ -3118,9 +3121,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | fiók/projekt | Nem | Nem |
 > | checknameavailability | Nem | Nem |
 > | műveletek | Nem | Nem |
-
-> [!IMPORTANT]
-> Az Azure DevOps-előfizetés módosításához tekintse meg [a számlázáshoz használt Azure-előfizetés módosítása](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)című témakört.
 
 ## <a name="microsoftvmware"></a>Microsoft. VMware
 
@@ -3178,12 +3178,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 
+> [!IMPORTANT]
+> Lásd: [app Service áthelyezési útmutató](./move-limitations/app-service-move-limitations.md).
+
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | availablestacks | Nem | Nem |
 > | billingmeters | Nem | Nem |
-> | tanúsítványok | Nem | Igen |
+> | tanúsítványok | No | Yes |
 > | checknameavailability | Nem | Nem |
 > | connectiongateways | Igen | Igen |
 > | kapcsolatok | Igen | Igen |
@@ -3233,9 +3236,6 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | érvényesít | Nem | Nem |
 > | verifyhostingenvironmentvnet | Nem | Nem |
 
-> [!IMPORTANT]
-> Lásd: [app Service áthelyezési útmutató](./move-limitations/app-service-move-limitations.md).
-
 ## <a name="microsoftwindowsesu"></a>Microsoft. WindowsESU
 
 > [!div class="mx-tableFixed"]
@@ -3281,7 +3281,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 A harmadik féltől származó szolgáltatások jelenleg nem támogatják az áthelyezési műveletet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az erőforrások áthelyezésére szolgáló parancsokért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](move-resource-group-and-subscription.md).
 
 Ha ugyanazokat az adatokkal szeretné lekérni a vesszővel tagolt értékeket tartalmazó fájlokat, töltse le [move-support-resources.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/move-support-resources.csv).

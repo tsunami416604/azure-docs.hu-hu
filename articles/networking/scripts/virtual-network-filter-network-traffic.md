@@ -11,13 +11,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: e91e59e8e8acbf76ed35cff6b2f654103bb763b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb62def47e46e6f72a2f04efaefaa9d36ef9e72c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73888560"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080900"
 ---
-# <a name="filter-inbound-and-outbound-vm-network-traffic"></a>Virtuális gép kimenő és bejövő hálózati forgalmának szűrése
+# <a name="use-an-azure-cli-script-to-filter-inbound-and-outbound-vm-network-traffic"></a>Azure CLI-szkript használata a bejövő és kimenő virtuálisgép-hálózati forgalom szűréséhez
 
 Ez a példaszkript előtérbeli és háttérbeli alhálózattal rendelkező virtuális hálózatot hoz létre. Az előtér-alhálózatra irányuló bejövő hálózati forgalom a HTTP, a HTTPS és az SSH protokollra korlátozódik, míg a háttérbeli alhálózatról az internetre irányuló kimenő forgalom nem engedélyezett. A szkript futtatása után egyetlen, két NIC-vel rendelkező virtuális gép fog a rendelkezésére állni. Mindegyik NIC eltérő alhálózathoz csatlakozik.
 

@@ -3,19 +3,20 @@ title: Azure Functions biztonságossá tétele
 description: Ismerje meg, hogyan teheti meg az Azure-ban futó funkció kódját az általános támadásokkal szemben.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259422"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079689"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions biztonságossá tétele
 
-A kiszolgáló nélküli függvények biztonságos fejlesztésének, üzembe helyezésének és működésének megtervezése számos szempontból ugyanaz, mint bármely webalapú vagy felhőben üzemeltetett alkalmazás esetében. [Azure app Service](/azure/app-service/) biztosítja az üzemeltetési infrastruktúrát a Function apps-alkalmazásokhoz. Ez a cikk biztonsági stratégiákat biztosít a függvény kódjának futtatásához, valamint arról, hogy App Service hogyan segíthet a függvények biztonságossá tételében. 
+A kiszolgáló nélküli függvények biztonságos fejlesztésének, üzembe helyezésének és működésének megtervezése számos szempontból ugyanaz, mint bármely webalapú vagy felhőben üzemeltetett alkalmazás esetében. [Azure app Service](../app-service/index.yml) biztosítja az üzemeltetési infrastruktúrát a Function apps-alkalmazásokhoz. Ez a cikk biztonsági stratégiákat biztosít a függvény kódjának futtatásához, valamint arról, hogy App Service hogyan segíthet a függvények biztonságossá tételében. 
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
-Az [Azure biztonsági teljesítménytesztet](/azure/security/benchmarks/overview)követő biztonsági javaslatokért lásd: [Azure functions Azure biztonsági alapterve](security-baseline.md).
+Az [Azure biztonsági teljesítménytesztet](../security/benchmarks/overview.md)követő biztonsági javaslatokért lásd: [Azure functions Azure biztonsági alapterve](security-baseline.md).
 
 ## <a name="secure-operation"></a>Biztonságos művelet 
 

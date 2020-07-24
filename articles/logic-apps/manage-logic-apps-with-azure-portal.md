@@ -8,13 +8,13 @@ ms.author: ladolan
 ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/29/2020
-ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/20/2020
+ms.openlocfilehash: d50f577a7170982be004cc8957114f79675fbc6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598164"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078621"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Logikai alkalmazások kezelése a Azure Portalban
 
@@ -32,11 +32,11 @@ A Logic apps a [Azure Portal](https://portal.azure.com) vagy a [Visual Studio](m
 
 A logikai alkalmazás megkereséséhez és megnyitásához kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) az Azure-fiókjával.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
 1. Az Azure Search sávban írja be a kifejezést `logic apps` , majd válassza a **Logic apps**lehetőséget.
 
-   ![A "Logic Apps" megkeresése és kiválasztása](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
+   ![Képernyőkép a Azure Portal menüjéről, Logic Apps kereséssel és kijelöléssel a keresősávban.](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
 
 1. A **Logic apps** lapon keresse meg és válassza ki a kezelni kívánt logikai alkalmazást.
 
@@ -54,7 +54,7 @@ A logikai alkalmazás megkereséséhez és megnyitásához kövesse az alábbi l
 
 1. A **Tulajdonságok** panelen megtekintheti és átmásolhatja a logikai alkalmazással kapcsolatos alábbi adatokat:
 
-   * **Name (Név)**
+   * **Név**
    * **Erőforrás-azonosító**
    * **Erőforráscsoport**
    * **Hely**
@@ -100,19 +100,19 @@ A logikai alkalmazás letiltása a munkafolyamat-példányokat érinti, és az a
 
    * Az eszköztáron válassza a **Letiltás**lehetőséget.
 
-     ![Egyetlen logikai alkalmazás letiltása a Azure Portalban](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
+     ![Képernyőkép a logikai alkalmazás eszköztáráról, amely a Letiltás gomb kiválasztásával jelenik meg.](./media/manage-logic-apps-with-azure-portal/disable-single-logic-app.png)
 
      Ha a logikai alkalmazás már le van tiltva, csak az **enable (Engedélyezés** ) lehetőség jelenik meg.
 
    * Az eszköztáron válassza az **Engedélyezés**lehetőséget.
 
-     ![Egyetlen logikai alkalmazás engedélyezése Azure Portal](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
+     ![Képernyőkép a logikai alkalmazás eszköztáráról, amely az Engedélyezés gombot választja.](./media/manage-logic-apps-with-azure-portal/enable-single-logic-app.png)
 
      Ha a logikai alkalmazás már engedélyezve van, csak a **Letiltás** lehetőség jelenik meg. 
 
    A Azure Portal egy értesítést jelenít meg a fő Azure-eszköztáron, amely megerősíti, hogy a művelet sikeres vagy sikertelen volt-e.
 
-   ![Értesítés a művelet állapotának megerősítéséről](./media/manage-logic-apps-with-azure-portal/operation-confirmation-notification.png)
+   ![A Azure Portal képernyőképe, amely a művelet állapotának megerősítésére szolgáló értesítést jeleníti meg](./media/manage-logic-apps-with-azure-portal/operation-confirmation-notification.png)
 
 <a name="disable-or-enable-multiple-logic-apps"></a>
 
@@ -122,15 +122,15 @@ A logikai alkalmazás letiltása a munkafolyamat-példányokat érinti, és az a
 
 1. Annak ellenőrzéséhez, hogy egy logikai alkalmazás jelenleg engedélyezve vagy le van-e tiltva, a **Logic apps** lapon tekintse át az adott logikai alkalmazás **állapot** oszlopát. 
 
-   ![Logic Apps állapot oszlop](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
+   ![Képernyőkép a Azure Portal Logic Apps oldalról, amely megjeleníti a logikai alkalmazások állapotát oszlop szerint rendezve.](./media/manage-logic-apps-with-azure-portal/view-logic-app-status.png)
 
    Ha az **állapot** oszlop nem látható, akkor a **Logic apps** eszköztáron válassza az **előnézet kipróbálása**lehetőséget.
 
-   ![Előzetes verzió bekapcsolása](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
+   ![Képernyőkép a Azure Portal Logic Apps oldalról, amely az előzetes előnézet gomb kiválasztásával jelenik meg.](./media/manage-logic-apps-with-azure-portal/select-try-preview.png)
 
 1. A jelölőnégyzet oszlopban válassza ki a letiltani vagy engedélyezni kívánt logikai alkalmazásokat. Az eszköztáron válassza a **Letiltás** vagy az **Engedélyezés**lehetőséget.
 
-   ![Több logikai alkalmazás engedélyezése vagy letiltása a Azure Portal](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
+   ![Képernyőkép a Azure Portal Logic Apps oldalról, amely a több logikai alkalmazás számára engedélyezi és letiltja a gombokat.](./media/manage-logic-apps-with-azure-portal/enable-disable-multiple-logic-apps.png)
 
 1. Ha megjelenik a megerősítő mező, kattintson az **Igen** gombra a folytatáshoz.
 
@@ -158,11 +158,11 @@ A logikai alkalmazás törlése a következő módokon befolyásolja a munkafoly
 
 1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget. A logikai alkalmazás eszköztárán válassza a **Törlés**lehetőséget.
 
-   ![A logikai alkalmazás eszköztárán válassza a Törlés lehetőséget.](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
+   ![Képernyőkép a logikai alkalmazás eszköztáráról, a törlés gomb kiválasztásával.](./media/manage-logic-apps-with-azure-portal/delete-single-logic-app.png)
 
 1. Amikor megjelenik a megerősítő mező, adja meg a logikai alkalmazás nevét, és válassza a **Törlés**lehetőséget.
 
-   ![A logikai alkalmazás törlésének megerősítése](./media/manage-logic-apps-with-azure-portal/delete-confirmation-single-logic-app.png)
+   ![Képernyőkép: Logic Apps Rákérdezés az egyetlen logikai alkalmazás törlésének megerősítéséhez.](./media/manage-logic-apps-with-azure-portal/delete-confirmation-single-logic-app.png)
 
    A Azure Portal egy értesítést jelenít meg a fő Azure-eszköztáron, amely megerősíti, hogy a művelet sikeres vagy sikertelen volt-e.
 
@@ -174,11 +174,11 @@ A logikai alkalmazás törlése a következő módokon befolyásolja a munkafoly
 
 1. A jelölőnégyzet oszlopban válassza ki a törölni kívánt logikai alkalmazásokat. Az eszköztáron válassza a **Törlés**lehetőséget.
 
-   ![Több logikai alkalmazás törlése](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
+   ![Képernyőkép Logic Apps oldalról, amely a törlésre kijelölt listában több logikai alkalmazást mutat be.](./media/manage-logic-apps-with-azure-portal/delete-multiple-logic-apps.png)
 
 1. Amikor megjelenik a megerősítő mező, írja be a szöveget `yes` , majd válassza a **Törlés**lehetőséget.
 
-   ![A logikai alkalmazások törlésének megerősítése](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
+   ![Képernyőkép: Logic Apps Rákérdezés a több logikai alkalmazás törlésének megerősítéséhez.](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 
    A Azure Portal egy értesítést jelenít meg a fő Azure-eszköztáron, amely megerősíti, hogy a művelet sikeres vagy sikertelen volt-e.
 
@@ -196,13 +196,13 @@ A Logic apps verziójának vezérlésére a Azure Portal használhatja. Megtalá
 
 1. A logikai alkalmazás menüjében, a **fejlesztői eszközök**területen válassza a **verziók**elemet.
 
-   ![A logikai alkalmazás menüjében válassza a "verziók" elemet a "fejlesztői eszközök" területen.](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
+   ![Képernyőkép a logikai alkalmazásról Azure Portalban, a verziók kiválasztása oldal a fejlesztői eszközök területen.](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
 
 1. A listából válassza ki a kezelni kívánt logikai alkalmazás **verzióját** . A lista szűréséhez megadhatja a **verziószámot** a keresősávban.
 
 1. Az **Előzmények verziója** lapon az előző verzió részleteit láthatja csak olvasható módban. A Logic Apps **Designer** és a **kód nézet** módok közül választhat.
 
-   ![A Logic app korábbi verziójának lapja a Code View és a Logic apps Designer nézetével](./media/manage-logic-apps-with-azure-portal/history-version.png)
+   ![Képernyőkép a Logic Apps verziótörténete lapon, amely a kód nézet és a Tervező nézet beállításait mutatja.](./media/manage-logic-apps-with-azure-portal/history-version.png)
 
 <a name="promote-previous-versions"></a>
 
@@ -212,11 +212,11 @@ A Logic apps verziójának vezérlésére a Azure Portal használhatja. Megtalá
 
 1. Az **Előzmények verziója** lapon válassza az **előléptetés**lehetőséget.
 
-   ![Előléptetés gomb a Logic app korábbi verzióiban](./media/manage-logic-apps-with-azure-portal/promote-button.png)
+   ![Képernyőkép a Logic app korábbi verzióiról, és megjeleníti a gombot az előző verzió előléptetéséhez.](./media/manage-logic-apps-with-azure-portal/promote-button.png)
 
 1. A megnyíló **Logic apps Designer** oldalon szerkessze a szükséges verziót. Válthat a **tervező** és a **kód nézet** módok között. A **paramétereket**, **sablonokat**és **összekötőket**is frissítheti.
 
-   ![Logic Apps Designer oldal egy korábbi verzió előléptetéséhez](./media/manage-logic-apps-with-azure-portal/promote-page.png)
+   ![Képernyőkép a Logic Apps Designerről, amely a logikai alkalmazás korábbi verziójának előléptetésére szolgáló gombot mutatja.](./media/manage-logic-apps-with-azure-portal/promote-page.png)
 
 1. Az előző verzió előléptetésének és befejezésének megtakarításához válassza a **Mentés**lehetőséget. (Vagy a módosítások megszakításához válassza az **Elvetés**lehetőséget.) 
 

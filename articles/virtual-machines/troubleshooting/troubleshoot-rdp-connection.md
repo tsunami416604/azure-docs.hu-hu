@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: akjosh
-ms.openlocfilehash: a259217280be343f383372a066d4033368c2b651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 831ce1ccb2c09a85ddfff8fa65172b1871119a61
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079893"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure-beli virtuális géphez Távoli asztal kapcsolatok hibáinak megoldása
 A Windows-alapú Azure-beli virtuális gépek (VM) RDP protokollon alapuló kapcsolata több okból is meghiúsulhat. A kapcsolat hiányában nem tudja elérni a virtuális gépet. A probléma forrása lehet a virtuális gép távoli asztali szolgáltatása, a hálózati kapcsolat vagy a gazdaszámítógép távoli asztali ügyfele. Ez a cikk bemutatja az RDP-kapcsolatok hibáinak megoldására szolgáló leggyakoribb módszereket. 
@@ -104,7 +104,7 @@ Az egyes hibaelhárítási lépések után próbálkozzon újra a virtuális gé
 Ha továbbra is RDP-problémákba ütközik, [Nyisson meg egy támogatási kérést](https://azure.microsoft.com/support/options/) , vagy olvassa el [részletesebben az RDP-hibaelhárítási fogalmakat és lépéseket](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="troubleshoot-using-azure-powershell"></a>Hibaelhárítás az Azure PowerShell használatával
-Ha még nem tette meg, [telepítse és konfigurálja a legújabb Azure PowerShell](/powershell/azure/overview).
+Ha még nem tette meg, [telepítse és konfigurálja a legújabb Azure PowerShell](/powershell/azure/).
 
 Az alábbi példák olyan változókat használnak `myResourceGroup` , mint a, a `myVM` és a `myVMAccessExtension` . Cserélje le ezeket a változók nevét és helyét a saját értékeire.
 

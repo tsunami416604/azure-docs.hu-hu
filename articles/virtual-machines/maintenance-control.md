@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 950f4cfda73b40db0de8ba035868573cda1a5017
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3e914b904b0f6f1d3a4fae6c43c81cdf4eae819
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675796"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080012"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>A platform frissítéseinek kezelése a karbantartási ellenőrzéssel 
 
@@ -22,12 +23,12 @@ A karbantartási ellenőrzéssel eldöntheti, hogy mikor alkalmazza a frissíté
 A karbantartási ellenőrzéssel a következőket teheti:
 - A Batch frissítése egyetlen frissítési csomagba.
 - Várjon akár 35 napra a frissítések alkalmazásához. 
-- A karbantartási időszak platform-frissítéseinek automatizálása Azure Functions használatával.
+- A karbantartási időszak platform-frissítéseinek automatizálása [Azure functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)használatával.
 - A karbantartási konfigurációk az előfizetések és az erőforráscsoportok között működnek. 
 
 ## <a name="limitations"></a>Korlátozások
 
-- A virtuális gépeknek [dedikált gazdagépen](./linux/dedicated-hosts.md)kell lenniük, vagy egy elkülönített virtuálisgép- [mérettel](./linux/isolation.md)kell létrehozni.
+- A virtuális gépeknek [dedikált gazdagépen](./linux/dedicated-hosts.md)kell lenniük, vagy egy elkülönített virtuálisgép- [mérettel](isolation.md)kell létrehozni.
 - 35 nap elteltével a rendszer automatikusan alkalmazza a frissítést.
 - A felhasználónak **erőforrás-közreműködői** hozzáféréssel kell rendelkeznie.
 
@@ -37,7 +38,9 @@ A karbantartási konfigurációkat a következő lehetőségek bármelyikével h
 
 - [Azure CLI](maintenance-control-cli.md)
 - [Azure PowerShell](maintenance-control-powershell.md)
-- [Azure Portalra](maintenance-control-portal.md)
+- [Azure Portal](maintenance-control-portal.md)
+
+Azure Functions minta: [karbantartási frissítések ütemezése karbantartási ellenőrzéssel és Azure Functionsával](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler).
 
 ## <a name="next-steps"></a>További lépések
 

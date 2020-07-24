@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 522aed07d850dfdb2782ee8263f33bd3f42eb8c2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 34a02de8a6789a028c776e784ea4aa9692f53d9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258046"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079157"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -54,7 +54,7 @@ Az adatsík API-k használata:
    - megtalálhatja az SDK-forrást, beleértve a példákat tartalmazó mappát is a GitHubban: az [Azure IoT Digital Twins ügyféloldali kódtára a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). 
    - megtekintheti az [SDK-referenciák dokumentációját](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview).
    - a részletes információkat és használati példákat a jelen cikk [.net (C#) SDK (adatsíkja)](#net-c-sdk-data-plane) című szakaszában tekintheti meg.
-* Az autorest használatával egy másik nyelvhez is létrehozhat SDK-t. Kövesse az útmutató [: egyéni SDK-k létrehozása az Azure digitális ikrekhez az autorest használatával](how-to-create-custom-sdks.md)című témakör utasításait.
+* Az autorest használatával egy másik nyelvhez is létrehozhat SDK-t. Kövesse az útmutató [*: egyéni SDK-k létrehozása az Azure digitális ikrekhez az autorest használatával*](how-to-create-custom-sdks.md)című témakör utasításait.
 
 A Date Plant API-kat a [CLI](how-to-use-cli.md)használatával is használhatja az Azure digitális ikrekkel.
 
@@ -71,11 +71,11 @@ Az SDK használatához foglalja bele az **Azure. DigitalTwins. Core** NuGet-csom
 * A .NET parancssori eszköz használatával a következőket végezheti el:
 
     ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
     dotnet add package Azure.identity
     ```
 
-Az API-k gyakorlatban való használatának részletes ismertetését az [oktatóanyag: az ügyfélalkalmazás kódolása](tutorial-code.md)című témakörben tekintheti meg. 
+Az API-k gyakorlatban való használatának részletes ismertetését az [*oktatóanyag: az ügyfélalkalmazás kódolása*](tutorial-code.md)című témakörben tekintheti meg. 
 
 ### <a name="net-sdk-usage-examples"></a>Példák a .NET SDK használatára
 
@@ -137,7 +137,7 @@ await foreach (string twin in result)
 }
 ```
 
-Tekintse meg a következő [oktatóanyagot: az ügyfélalkalmazás kódjának](tutorial-code.md) bejárására szolgáló alkalmazás. 
+Tekintse meg a következő [*oktatóanyagot: az ügyfélalkalmazás kódjának*](tutorial-code.md) bejárására szolgáló alkalmazás. 
 
 További mintákat is talál a GitHub-tárházban a [.net (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)-hoz.
 
@@ -288,10 +288,10 @@ A portál kezdőlapján keresse meg az Azure Digital Twins-példányát, és adj
 
 Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse meg, hogyan használható az API-k egy Azure Digital Twins-példány létrehozásához:
-* [Útmutató: Azure Digital Twins-példány létrehozása](how-to-set-up-instance.md)
+Tekintse meg, hogyan használható az API-k egy Azure digitális Twins-példány és-hitelesítés beállításához:
+* [*Útmutató: példány és hitelesítés beállítása*](how-to-set-up-instance-scripted.md)
 
 Vagy járjon végig egy ügyfélalkalmazás létrehozásához szükséges lépéseken, például a következő útmutatóban használt módon:
-* [Oktatóanyag: ügyfélalkalmazás kódolása](tutorial-code.md)
+* [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)

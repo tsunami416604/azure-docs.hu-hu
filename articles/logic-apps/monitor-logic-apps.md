@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536250"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078198"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Futtatási állapot monitorozása, triggerelőzmények áttekintése és riasztások beállítása az Azure Logic Appshez
 
@@ -86,7 +86,7 @@ Minden alkalommal, amikor az eseményindító egy elemhez vagy eseményhez tüze
      Most már megtekintheti az adott lépéshez tartozó adatokat, például a bemeneteket és kimeneteket, például:
 
    > [!NOTE]
-   > Az összes futásidejű adat és esemény titkosítva van a Logic Apps szolgáltatáson belül. Csak akkor lesznek visszafejtve, ha egy felhasználó az adott adatmegjelenítést kéri. A [futtatási előzményekben elrejtheti a bemeneteket és kimeneteket,](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) vagy vezérelheti az adatok felhasználói hozzáférését az [Azure SZEREPKÖRALAPÚ Access Control (RBAC)](../role-based-access-control/overview.md)használatával.
+   > Az összes futásidejű adat és esemény titkosítva van a Logic Apps szolgáltatáson belül. Csak akkor lesznek visszafejtve, ha egy felhasználó az adott adatmegjelenítést kéri. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)használatával [elrejtheti a futtatási előzményekben szereplő bemeneteket és kimeneteket](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) , vagy vezérelheti a felhasználók hozzáférését ehhez az információhoz.
 
 <a name="review-trigger-history"></a>
 
@@ -189,6 +189,6 @@ Ha a logikai alkalmazáshoz meghatározott mérőszámok alapján vagy túllépt
 > * [Szöveg küldése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
 > * [Üzenet hozzáadása egy várólistához](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Logikai alkalmazások figyelése Azure Monitor használatával](../logic-apps/monitor-logic-apps-log-analytics.md)

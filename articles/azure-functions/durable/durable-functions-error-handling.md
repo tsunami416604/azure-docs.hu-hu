@@ -2,14 +2,14 @@
 title: Hibák Durable Functions-Azure-ban való kezelésére
 description: Megtudhatja, hogyan kezelheti a hibákat a Azure Functions Durable Functions bővítményében.
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 447b3dcf5040835f5a853beff68bde794ece51f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6650322834d491d78470e2d8dbd24e2c6750ae39
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847317"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081695"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Hibák feldolgozása a Durable Functionsban (Azure Functions)
 
@@ -97,6 +97,33 @@ module.exports = df.orchestrator(function*(context) {
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    transfer_details = context.get_input()
+
+    yield context.call_activity('DebitAccount', {
+         'account': transfer_details['sourceAccount'],
+         'amount' : transfer_details['amount']
+    })
+
+    try:
+        yield context.call_activity('CreditAccount', {
+                'account': transfer_details['destinationAccount'],
+                'amount': transfer_details['amount'],
+            })
+    except:
+        yield context.call_activity('CreditAccount', {
+            'account': transfer_details['sourceAccount'],
+            'amount': transfer_details['amount']
+        })
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 
 ---
 
@@ -143,6 +170,23 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    first_retry_interval_in_milliseconds = 5000
+    max_number_of_attempts = 3
+
+    retry_options = df.RetryOptions(first_retry_interval_in_milliseconds, max_number_of_attempts)
+
+    yield context.call_activity_with_retry('FlakyFunction', retry_options)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 Az előző példában szereplő tevékenység függvény hívása egy paramétert fogad el az automatikus újrapróbálkozási házirend konfigurálásához. Az automatikus újrapróbálkozási házirend testreszabására több lehetőség is van:
@@ -156,7 +200,7 @@ Az előző példában szereplő tevékenység függvény hívása egy paraméter
 
 ## <a name="function-timeouts"></a>Függvények időtúllépései
 
-Előfordulhat, hogy egy Orchestrator függvény hívását is el szeretné hagyni, ha túl sokáig tart a Befejezés. Ez a megfelelő módszer a (z) (.net) vagy a (JavaScript) együttes használatával történő [tartós időzítő](durable-functions-timers.md) létrehozásával a `context.CreateTimer` `context.df.createTimer` `Task.WhenAny` `context.df.Task.any` következő példában látható módon:
+Előfordulhat, hogy egy Orchestrator függvény hívását is el szeretné hagyni, ha túl sokáig tart a Befejezés. Ez a megfelelő módszer a (z) (.net) [durable timer](durable-functions-timers.md) , `context.CreateTimer` `context.df.createTimer` (JavaScript) vagy `context.create_timer` (Python) ( `Task.WhenAny` .net), `context.df.Task.any` (JavaScript) vagy (Python) együttes használatával történő tartós időzítő létrehozásával `context.task_any` , ahogy az alábbi példában is látható:
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -213,6 +257,28 @@ module.exports = df.orchestrator(function*(context) {
         return false;
     }
 });
+```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    deadline = context.current_utc_datetime + timedelta(seconds = 30)
+    
+    activity_task = context.call_activity('FlakyFunction')
+    timeout_task = context.create_timer(deadline)
+
+    winner = yield context.task_any(activity_task, timeout_task)
+    if winner == activity_task:
+        timeout_task.cancel()
+        return True
+    else:
+        return False
+
+main = df.Orchestrator.create(orchestrator_function)
 ```
 
 ---

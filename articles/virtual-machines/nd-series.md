@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 6b29125087bd60041f85b1b5023646b039bd6a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 243e5eafd38a35b5afd89e765c3196efbfe5362f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736951"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079995"
 ---
 # <a name="nd-series"></a>ND sorozat
 
@@ -27,7 +27,7 @@ Premium Storage gyorsítótárazás: támogatott
 Memória-megőrzési frissítések: nem támogatott
 
 > [!IMPORTANT]
-> Ennél a virtuálisgép-sorozatnál az előfizetéshez tartozó régiónként vCPU (mag) kvóta kezdetben 0 értékre van állítva. [VCPU-kvóta növelésének kérése](../azure-supportability/resource-manager-core-quotas-request.md) a sorozathoz egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
+> Ennél a virtuálisgép-sorozatnál az előfizetéshez tartozó régiónként vCPU (mag) kvóta kezdetben 0 értékre van állítva. [VCPU-kvóta növelésének kérése](../azure-portal/supportability/resource-manager-core-quotas-request.md) a sorozathoz egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
 >
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma |
 |---|---|---|---|---|---|---|---|---|
@@ -54,7 +54,7 @@ Ha manuálisan telepíti az NVIDIA GPU-illesztőprogramokat, tekintse meg a köv
 
 - [Általános célú](sizes-general.md)
 - [Memóriaoptimalizált](sizes-memory.md)
-- [Tárolásra optimalizált](sizes-storage.md)
+- [Tároptimalizált](sizes-storage.md)
 - [GPU-optimalizált](sizes-gpu.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)
 - [Előző generációk](sizes-previous-gen.md)

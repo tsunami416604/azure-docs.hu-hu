@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7ab7071f504231290f72646e59a30fa855cff6cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d71201da0c4af35720a309fe0dfa068cd2c69630
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944491"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081610"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>A Storage szolgáltatás figyelése Azure Monitor a Storage-ban
 
@@ -31,7 +31,7 @@ A kombinált szolgáltatás a következőket biztosítja:
 
 * **Testreszabható** , ahol megváltoztathatja, hogy mely metrikákat szeretné megtekinteni, módosítani vagy beállítani a határértékekhez igazított küszöbértékeket, és a mentést saját munkafüzetként. A munkafüzetben található diagramok az Azure-irányítópulton rögzíthetők.  
 
-Ez a funkció nem igényli, hogy bármit engedélyezzen vagy konfiguráljan, a Storage-fiókokból származó tárolási metrikák alapértelmezés szerint lesznek gyűjtve. Ha nem ismeri az Azure Storage-ban elérhető metrikákat, tekintse meg az Azure Storage-metrikák leírását és definícióját az [Azure Storage-metrikák](../../storage/common/storage-metrics-in-azure-monitor.md)áttekintésével.
+Ez a funkció nem igényli, hogy bármit engedélyezzen vagy konfiguráljan, a Storage-fiókokból származó tárolási metrikák alapértelmezés szerint lesznek gyűjtve. Ha nem ismeri az Azure Storage-ban elérhető metrikákat, tekintse meg az Azure Storage-metrikák leírását és definícióját az [Azure Storage-metrikák](../../storage/common/monitor-storage.md)áttekintésével.
 
 >[!NOTE]
 >A szolgáltatáshoz való hozzáférés díjmentes, és a [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/) lapon leírtak szerint csak az Ön által konfigurált vagy engedélyezett Azure monitor alapvető funkciókért kell fizetnie.
@@ -198,7 +198,7 @@ Most változtassuk meg a jelentés kapacitási metrikáinak színtémáját, hog
 
 1. Válassza ki az **oszlop beállításait** a metrikák rácsban.
 
-2. Az **oszlop beállításainak szerkesztése** panelen válassza az **oszlopok** szakaszban a **Microsoft. Storage/storageaccounts-Capacity-UsedCapacity $ | Microsoft. Storage/storageaccounts/blobservices-Capacity-BlobCapacity $ | Microsoft. Storage/storageaccounts/fileservices-Capacity-FileCapacity $ | Microsoft. Storage/storageaccounts/queueservices-Capacity-QueueCapacity $ | Microsoft. Storage/storageaccounts/tableservices-Capacity-TableCapacity $** értéket. A legördülő lista **színpalettáján**válassza a **zöld**lehetőséget.
+2. Az **oszlop beállításainak szerkesztése** panelen válassza az **oszlopok** szakaszban a **Microsoft. Storage/storageaccounts-Capacity-UsedCapacity $ `|` Microsoft. Storage/Storageaccounts/blobservices-Capacity-BlobCapacity $ `|` Microsoft. Storage/storageaccounts/fileservices-Capacity-FileCapacity $ `|` Microsoft. Storage/storageaccounts/queueservices-Capacity-QueueCapacity $ `|` Microsoft. Storage/storageaccounts/tableservices-Capacity-TableCapacity $** értéket. A legördülő lista **színpalettáján**válassza a **zöld**lehetőséget.
 
 3. A módosítás véglegesítéhez válassza a **Mentés és bezárás** lehetőséget.
 
@@ -246,7 +246,7 @@ Tekintse át a [rendelkezésre állási küszöbérték módosítása](storage-i
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Hogyan elemezheti és elháríthatja a Azure Monitorban megjelenő, a tárolásra vonatkozó adatelemzést?
 
- Tekintse át a [figyelést, a diagnosztizálást és a hibakeresési Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting) cikket, amelyből megtudhatja, hogyan elemezheti és elháríthatja a Azure monitorban látható Azure Storage-adatokat a tároláshoz.
+ Tekintse át a [figyelést, a diagnosztizálást és a hibakeresési Microsoft Azure Storage](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md) cikket, amelyből megtudhatja, hogyan elemezheti és elháríthatja a Azure monitorban látható Azure Storage-adatokat a tároláshoz.
 
 ### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>Miért nem látom az összes típusú hibát a metrikákban?
 
@@ -269,7 +269,7 @@ A rendszer minden munkafüzetet a Storage-fiókba ment, amelyet a ben mentett. P
 
 ## <a name="next-steps"></a>További lépések
 
-* A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications.md) konfigurálása automatizált riasztások beállításához a problémák észlelése érdekében.
+* A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications-portal.md) konfigurálása automatizált riasztások beállításához a problémák észlelése érdekében.
 
 * Ismerkedjen meg a forgatókönyvekkel, amelyek támogatják az új és a meglévő jelentések testreszabását, valamint az [interaktív jelentések Azure monitor-munkafüzetekkel való létrehozását](../platform/workbooks-overview.md)ismertető áttekintést.
 

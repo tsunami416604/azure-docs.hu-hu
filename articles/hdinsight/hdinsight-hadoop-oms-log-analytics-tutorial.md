@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 05/13/2020
-ms.openlocfilehash: e4096b00ca1bbe1ad7d88c37a846d3f56b2860b1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: e523d468ae53e220cbda1c9748965110e82d48a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085327"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081083"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor-naplók használata HDInsight-fürtök monitorozásához
 
@@ -23,7 +23,7 @@ Megtudhatja, hogyan engedélyezheti Azure Monitor naplók a Hadoop figyelését 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy in
 
   A HDInsight-fürtök létrehozásával kapcsolatos útmutatásért lásd: Ismerkedés [Az Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).  
 
-* Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/overview). Győződjön meg arról, hogy a legújabb verzióval rendelkezik. Ha szükséges, futtassa a parancsot `Update-Module -Name Az` .
+* Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/). Győződjön meg arról, hogy a legújabb verzióval rendelkezik. Ha szükséges, futtassa a parancsot `Update-Module -Name Az` .
 
 * Ha az Azure CLI-t szeretné használni, és még nem telepítette, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
@@ -59,7 +59,7 @@ Ebben a szakaszban egy meglévő HDInsight-Hadoop-fürtöt konfigurál egy Azure
 
 1. A **munkaterület kiválasztása** legördülő listából válasszon ki egy meglévő log Analytics munkaterületet.
 
-1. Kattintson a **Mentés** gombra.  A beállítás mentése néhány percet vesz igénybe.
+1. Válassza a **Mentés** lehetőséget.  A beállítás mentése néhány percet vesz igénybe.
 
     ![HDInsight-fürtök figyelésének engedélyezése](./media/hdinsight-hadoop-oms-log-analytics-tutorial/azure-portal-monitoring.png "HDInsight-fürtök figyelésének engedélyezése")
 

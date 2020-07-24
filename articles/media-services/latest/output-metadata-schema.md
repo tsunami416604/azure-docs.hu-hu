@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: 692fe12d12538bc35e3a22d4af1bd185839f69d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce3d0a5beb5903d29b1deec345cf4673e3492e5d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418714"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080924"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
 
-A kódolási feladatok olyan bemeneti adategységekhez (vagy eszközökhöz) vannak társítva, amelyeken bizonyos kódolási feladatokat kíván végrehajtani. Például kódoljon egy MP4-fájlt H. 264 MP4 adaptív sávszélességű készletbe; miniatűr létrehozása; hozzon létre átfedéseket. Egy feladat befejezése után a rendszer kimeneti eszközt állít elő.  A kimeneti eszköz videó-, hang-, miniatűr-és egyéb fájlokat tartalmaz. A kimeneti eszköz egy olyan fájlt is tartalmaz, amely tartalmazza a kimeneti eszköz metaadatait. A metaadatok JSON-fájljának neve a következő formátumú: `<source_file_name>_manifest.json` (például `BigBuckBunny_manifest.json` ).  
+A kódolási feladatok olyan bemeneti adategységekhez (vagy eszközökhöz) vannak társítva, amelyeken bizonyos kódolási feladatokat kíván végrehajtani. Például kódoljon egy MP4-fájlt H. 264 MP4 adaptív sávszélességű készletbe; miniatűr létrehozása; hozzon létre átfedéseket. Egy feladat befejezése után a rendszer kimeneti eszközt állít elő.  A kimeneti eszköz videó-, hang-, miniatűr-és egyéb fájlokat tartalmaz. A kimeneti eszköz egy olyan fájlt is tartalmaz, amely tartalmazza a kimeneti eszköz metaadatait. A metaadatok JSON-fájljának neve a következő formátumú: `<source_file_name>_manifest.json` (például `BigBuckBunny_manifest.json` ). A forrás fájlnév (csonkítás nélkül) megkereséséhez ellenőrizze, hogy a * _metadata.jsbe van-e kapcsolva, és lekérdezi-e a filepath karakterláncot.
 
 Media Services nem megelőző jelleggel a bemeneti eszközöket a metaadatok létrehozásához. A bemeneti metaadatok csak olyan összetevőként jönnek létre, amikor egy bemeneti objektumot dolgoz fel egy feladatban. Ezért ez az összetevő a kimeneti eszközre íródik. A bemeneti eszközök és a kimeneti eszközök metaadatainak létrehozásához különböző eszközök használhatók. Ezért a bemeneti metaadatok némileg eltérő sémával rendelkeznek, mint a kimeneti metaadatok.
 
@@ -33,12 +34,12 @@ A teljes séma kód és a JSON-példa a cikk végén található.
 
 A kódolási feladatokhoz tartozó AssetFile-bejegyzések gyűjteménye.  
 
-| Name | Description |
+| Név | Leírás |
 | --- | --- |
 | **Források** |A AssetFile létrehozásához feldolgozott bemeneti/forrás médiafájlok gyűjteménye.<br />Például: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|Minden fizikai AssetFile tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható videó-zeneszámot. <br />Lásd: [VideoTracks](#videotracks). |
 | **AudioTracks**|Minden fizikai AssetFile tartalmazhatnak nulla vagy több hangsávot a megfelelő tároló formátumba. Ezen hangsávok gyűjteménye.<br /> További információ: [AudioTracks](#audiotracks). |
-| **Name (Név)**<br />Kötelező |A Media Asset fájljának neve. <br /><br />Például: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
+| **Név**<br />Kötelező |A Media Asset fájljának neve. <br /><br />Például: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
 | **Méret**<br />Kötelező |Az adategység fájljának mérete bájtban megadva. <br /><br />Például: `"Size": 32414631`|
 | **Időtartam**<br />Kötelező |Tartalom lejátszási ideje – időtartam. További információ: [ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html) -formátum. <br /><br />Például: `"Duration": "PT1M10.315S"`|
 
@@ -46,14 +47,14 @@ A kódolási feladatokhoz tartozó AssetFile-bejegyzések gyűjteménye.
 
 Minden fizikai AssetFile tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható videó-zeneszámot. A **VideoTracks** elem az összes videó sáv gyűjteményét jelöli.  
 
-| Name | Description |
+| Név | Leírás |
 | --- | --- |
 | **ID**<br /> Kötelező |A videó nyomon követésének nulla alapú indexe. **Megjegyzés:**  Ez az **azonosító** nem feltétlenül az MP4-fájlban használt TrackID. <br /><br />Például: `"Id": 1`|
 | **FourCC**<br />Kötelező | Az FFmpeg által jelentett video codec FourCC-kód.  <br /><br />Például: `"FourCC": "avc1"`|
 | **Profil** |H264-profil (csak H264-kodekre alkalmazható).  <br /><br />Például: `"Profile": "High"` |
 | **Szintű** |H264-szint (csak H264-kodekre alkalmazható).  <br /><br />Például: `"Level": "3.2"`|
-| **Width**<br />Kötelező |Kódolt videó szélessége képpontban megadva  <br /><br />Például: `"Width": "1280"`|
-| **Height**<br />Kötelező |Kódolt videó magassága képpontban megadva.  <br /><br />Például: `"Height": "720"`|
+| **Szélesség**<br />Kötelező |Kódolt videó szélessége képpontban megadva  <br /><br />Például: `"Width": "1280"`|
+| **Magasság**<br />Kötelező |Kódolt videó magassága képpontban megadva.  <br /><br />Például: `"Height": "720"`|
 | **DisplayAspectRatioNumerator**<br />Kötelező|Videó megjelenítési oldalarányának számlálója  <br /><br />Például: `"DisplayAspectRatioNumerator": 16.0`|
 | **DisplayAspectRatioDenominator**<br />Kötelező |Videó megjelenítési méretarányának nevezője  <br /><br />Például: `"DisplayAspectRatioDenominator": 9.0`|
 | **Képkockasebesség**<br />Kötelező |A képkockák sebességét. 3F formátumban mérjük.  <br /><br />Például: `"Framerate": 29.970`|
@@ -64,7 +65,7 @@ Minden fizikai AssetFile tartalmazhatnak nulla vagy több, a megfelelő tároló
 
 Minden fizikai AssetFile tartalmazhatnak nulla vagy több hangsávot a megfelelő tároló formátumba. A **AudioTracks** elem az összes hangsávok gyűjteményét jelöli.  
 
-| Name  | Description |
+| Név  | Leírás |
 | --- | --- |
 | **ID**<br />Kötelező  |A hangsávok nulla alapú indexe. **Megjegyzés:**  Ez nem feltétlenül az MP4-fájlokban használt TrackID.  <br /><br />Például: `"Id": 2`|
 | **Codec**  |Hangsávok kodekének karakterlánca  <br /><br />Például: `"Codec": "aac"`|

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: cfbd5af7063a4764820b5ce892a9a2b8a305b1b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ac42fe3265163a5a967524fe11063803c9ca91d3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494938"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080590"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Virtuálisgép-méretezési csoport automatikus méretezése a Azure Portal
 Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra.
@@ -48,8 +48,8 @@ Az alkalmazás növekvő igényeivel párhuzamosan a méretezési csoportban lé
     | *Időfelbontási szint statisztikája* | Azt határozza meg, hogy az összegyűjtött mérőszámok hogyan legyenek összesítve az elemzéshez.                             | Átlag        |
     | *Művelet*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb   |
     | *Küszöbérték*            | Az az érték, amelynek hatására az autoskálázási szabály elindítja a műveletet.                                                 | 70             |
-    | *Időtartam*             | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam.                                   | 10 perc     |
-    | *Művelet*            | Meghatározza, hogy a méretezési csoport fel-vagy leskálázása legyen, ha a szabály érvényes, és milyen növekmény                        | Százalék növelésének aránya |
+    | *Időtartam*             | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam. Nem tartalmazza a lehűtési időszakot.                                   | 10 perc     |
+    | *Művelet*            | Meghatározza, hogy a méretezési csoport fel vagy le legyen-e méretezve a szabály alkalmazása és a növekmény alapján.                        | Százalék növelésének aránya |
     | *Példányok száma*       | Megadja, hogy a virtuálisgép-példányok hány százalékát kell módosítani a szabály aktiválásakor.                                            | 20             |
     | *Lehűlés (perc)*  | Mennyi idő teljen el a szabály újbóli alkalmazása előtt, hogy az automatikus skálázási műveletek kifejthessék a hatásukat. | 5 perc      |
 
@@ -120,7 +120,7 @@ Az előző példákban az alapszintű gazdagép-mérőszámokkal, például a CP
 Az automatikus skálázási szabályok alkalmazásának megtekintéséhez válassza a **futtatási előzmények** lehetőséget a **skálázási** ablak tetején. A Graph és az Events (diagramok és események) lista azt mutatja be, hogy az autoskálázási szabályok triggere és a méretezési csoport virtuálisgép-példányainak száma nő vagy csökken.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan használhatja az autoskálázási szabályokat horizontális méretezésre, és növelheti vagy csökkentheti a méretezési csoport virtuálisgép-példányainak *számát* . A virtuálisgép-példány *méretének*növeléséhez vagy csökkentéséhez függőlegesen is méretezheti a méretezést. További információkért lásd: [vertikális autoskálázás virtuális gépi méretezési csoportokkal](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
 A virtuálisgép-példányok kezelésével kapcsolatos információkért lásd: [virtuálisgép-méretezési csoportok kezelése Azure PowerShellokkal](./virtual-machine-scale-sets-manage-powershell.md).

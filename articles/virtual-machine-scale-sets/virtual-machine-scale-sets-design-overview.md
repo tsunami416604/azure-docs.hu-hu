@@ -10,15 +10,15 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: d2160f2c014e1bf7c486c29a48c756936df12788
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aad73db2f01cec8c1c8b0144d29c105b6e8ae0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373981"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080505"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Tervezési szempontok a méretezési csoportokhoz
-Ez a cikk a Virtual Machine Scale Sets kialakításával kapcsolatos szempontokat ismerteti. A Virtual Machine Scale Setsával kapcsolatos információkért tekintse meg a [Virtual Machine Scale sets áttekintését](virtual-machine-scale-sets-overview.md).
+Ez a cikk a Virtual Machine Scale Sets kialakításával kapcsolatos szempontokat ismerteti. A Virtual Machine Scale Setsával kapcsolatos információkért tekintse meg a [Virtual Machine Scale sets áttekintését](./overview.md).
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Mikor kell használni a méretezési csoportokat a virtuális gépek helyett?
 A méretezési csoportok általában hasznosak olyan, magasan elérhető infrastruktúra üzembe helyezéséhez, ahol a különböző gépekhez hasonló konfiguráció tartozik. Bizonyos funkciók azonban csak a méretezési csoportokban érhetők el, míg más szolgáltatások csak a virtuális gépekben érhetők el. Ha tájékozott döntést szeretne hozni arról, hogy mikor érdemes használni az egyes technológiákat, tekintse át a méretezési csoportokban, de nem virtuális gépeken elérhető általánosan használt funkciókat.
@@ -27,8 +27,8 @@ A méretezési csoportok általában hasznosak olyan, magasan elérhető infrast
 
 - Miután megadta a méretezési csoport konfigurációját, frissítheti a *Capacity* tulajdonságot, hogy párhuzamosan helyezzen üzembe több virtuális gépet. Ez a folyamat jobb, mint egy parancsfájl írása, amely összehangolja az egyes virtuális gépek párhuzamos üzembe helyezését.
 - Az [Azure automatikus méretezés használatával automatikusan méretezheti a méretezési csoportokat,](./virtual-machine-scale-sets-autoscale-overview.md) de nem lehet egyéni virtuális gépeket használni.
-- Alaphelyzetbe állíthatja a [méretezési csoport virtuális gépeket](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) , de [nem az egyes virtuális gépeket](https://docs.microsoft.com/rest/api/compute/virtualmachines).
-- A [méretezési](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) csoport virtuális gépei a nagyobb megbízhatóság és a gyorsabb üzembe helyezési idő növelésére is felhasználhatók. Nem lehet túlépíteni az egyes virtuális gépeket, hacsak nem ír egyéni kódot a művelet végrehajtásához.
+- Alaphelyzetbe állíthatja a [méretezési csoport virtuális gépeket](/rest/api/compute/virtualmachinescalesets/reimage) , de [nem az egyes virtuális gépeket](/rest/api/compute/virtualmachines).
+- A [méretezési](#overprovisioning) csoport virtuális gépei a nagyobb megbízhatóság és a gyorsabb üzembe helyezési idő növelésére is felhasználhatók. Nem lehet túlépíteni az egyes virtuális gépeket, hacsak nem ír egyéni kódot a művelet végrehajtásához.
 - Megadhat egy [frissítési szabályzatot](./virtual-machine-scale-sets-upgrade-scale-set.md) , amely megkönnyíti a méretezési csoporton belüli virtuális gépek frissítéseinek kiváltását. Az egyes virtuális gépek esetében saját maga is el kell dolgoznia a frissítéseket.
 
 ### <a name="vm-specific-features"></a>VM-specifikus funkciók
@@ -39,7 +39,7 @@ Néhány funkció jelenleg csak virtuális gépeken érhető el:
 - Áttelepítheti az egyes virtuális gépeket a natív lemezekről a felügyelt lemezekre, de a méretezési csoportokban nem telepíthet át virtuálisgép-példányokat.
 - IPv6 nyilvános IP-címeket rendelhet az egyes VM virtuális hálózati adapterekhez (NIC), de a méretezési csoportokban lévő virtuálisgép-példányokhoz nem. Az IPv6-alapú nyilvános IP-címeket az egyes virtuális gépek vagy a méretezési csoport virtuális gépei előtt is hozzárendelheti.
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Tárolás
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Méretezési készletek az Azure Managed Disks
 A méretezési csoportokat a hagyományos Azure Storage-fiókok helyett [Azure-Managed Disks](../virtual-machines/windows/managed-disks-overview.md) lehet létrehozni. Managed Disks a következő előnyöket biztosítja:
@@ -68,4 +68,3 @@ A felhasználó által felügyelt Storage-fiókokkal konfigurált méretezési c
 Az egyéni rendszerképekre épülő méretezési csoport (amelyet Ön hozott létre) az Azure Managed Disks szolgáltatással akár 600 virtuális gép kapacitása is felhasználható. Ha a méretezési csoport felhasználó által felügyelt Storage-fiókokkal van konfigurálva, akkor az összes operációsrendszer-lemez virtuális merevlemezét egy Storage-fiókon belül kell létrehoznia. Ennek eredményeképpen a méretezési csoportokban az egyéni rendszerképekre és a felhasználó által felügyelt tárterületre épülő virtuális gépek maximálisan ajánlott száma 20. Ha kikapcsolja a túlzott kiépítést, akár 40-ig is megtekintheti.
 
 Ennél a korlátnál több virtuális gép esetén több méretezési csoportot kell telepíteni a [sablonban](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)látható módon.
-

@@ -4,17 +4,18 @@ description: 'Útmutató: a táblázatos és az oszlop szintű adatprofilok bevo
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 698da509be2f375925459bbdd4a35d21c6ff4407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d0f3a45842638915947f5df04e06e2c81a7f5f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84171225"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081185"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Adatprofil adatforrásai Azure Data Catalog
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A **Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőalapú szolgáltatás, amely a vállalati adatforrások regisztrálási és felderítési rendszereként szolgál. Ez azt jelenti, hogy **Azure Data Catalog** az a célja, hogy segítsen az embereknek felderíteni, megérteni és használni az adatforrásokat, és hogy segítse a szervezeteket abban, hogy a meglévő adatokból több értéket kapjanak. Ha egy adatforrás regisztrálva van **Azure Data Catalog**, a metaadatokat a szolgáltatás átmásolja és indexeli, de a történet nem fejeződik be.
 
@@ -83,7 +84,7 @@ A **Azure Data Catalog** adatprofilja a táblázat és az oszlop profiljának ad
 * NULL értékű sorok száma
 * Az oszlopok értékeinek minimális, maximális, átlagos és szórásos szórása
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az adatok profilkészítése statisztikai adatokat és információkat biztosít a regisztrált adategységekről, amelyek segítségével meghatározhatja az üzleti problémák megoldásához szükséges adatok megfelelőségét. A jegyzetek és az adatforrások dokumentálása mellett az adatprofilok mélyebb ismereteket biztosíthatnak a felhasználóknak az adatairól.
 

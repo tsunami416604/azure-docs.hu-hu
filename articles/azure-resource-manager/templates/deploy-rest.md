@@ -2,12 +2,13 @@
 title: Erőforrások üzembe helyezése REST API és sablonnal
 description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Resource Manager REST API használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: a2280d3bb406fd7e5c41558478363de68cbd44b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: 17ea7da3e0b581ed60d2db97d350a70d5250ef28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678409"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079482"
 ---
 # <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>Erőforrások üzembe helyezése ARM-sablonokkal és Resource Manager-REST API
 
@@ -100,7 +101,7 @@ A cikkben szereplő példák az erőforráscsoportok központi telepítését ha
    }
    ```
 
-    Ha a válasz tartalmát, a tartalom kérését vagy mindkettőt szeretné naplózni, vegyen fel **debugSetting** a kérelembe.
+    Ha a válasz tartalmát, a kérés tartalmát vagy mindkettőt szeretné naplózni, vegye `debugSetting` fel a kérelmet a kérelembe.
 
    ```json
    {
@@ -193,6 +194,22 @@ A cikkben szereplő példák az erőforráscsoportok központi telepítését ha
    ```HTTP
    GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-10-01
    ```
+
+## <a name="deployment-name"></a>Központi telepítés neve
+
+Megadhatja az üzemelő példány nevét, például: `ExampleDeployment` .
+
+Minden alkalommal, amikor futtat egy központi telepítést, a rendszer egy bejegyzést ad hozzá az erőforráscsoport telepítési előzményeihez a központi telepítési névvel. Ha egy másik központi telepítést futtat, és ugyanazt a nevet adja, a korábbi bejegyzést a rendszer a jelenlegi telepítéssel helyettesíti. Ha az üzembe helyezési előzményekben egyedi bejegyzéseket kíván fenntartani, adjon meg minden egyes központi telepítést egyedi nevet.
+
+Egyedi név létrehozásához véletlenszerű számot rendelhet hozzá. Vagy adjon hozzá egy dátumérték értéket.
+
+Ha egyazon erőforráscsoporthoz futtat egyidejű központi telepítéseket ugyanazzal a központi telepítési névvel, akkor a rendszer csak az utolsó telepítést hajtja végre. A rendszer a legutóbbi telepítés helyett minden olyan központi telepítést lecserél, amelynek a neve nem fejeződött be. Ha például egy nevű központi telepítést futtat, amely egy nevű `newStorage` Storage-fiókot telepít `storage1` , és egy másik nevű központi telepítési példányt futtat `newStorage` , amely egy nevű Storage-fiókot helyez üzembe `storage2` , csak egy Storage-fiókot telepít. Az eredményül kapott Storage-fiók neve `storage2` .
+
+Ha azonban egy nevű központi telepítést futtat `newStorage` , amely egy nevű Storage-fiókot helyez üzembe `storage1` , és közvetlenül a befejezése után futtat egy másik nevű központi telepítést `newStorage` , amely telepíti a nevű Storage `storage2` -fiókot, akkor két Storage-fiókkal rendelkezik. Az egyik neve `storage1` , a másik pedig a neve `storage2` . Azonban csak egy bejegyzés szerepel az üzembe helyezési előzményekben.
+
+Amikor egyedi nevet ad meg az egyes központi telepítésekhez, ütközés nélkül is futtathatja őket. Ha olyan nevű központi telepítést futtat `newStorage1` , amely egy nevű Storage-fiókot telepít `storage1` , és egy másik nevű központi telepítési példányt futtat `newStorage2` , amely egy nevű Storage-fiókot telepít `storage2` , akkor két Storage-fiókkal és két bejegyzéssel rendelkezik az üzembe helyezési előzményekben.
+
+Az egyidejű központi telepítésekkel való ütközések elkerülése érdekében, valamint a telepítési előzmények egyedi bejegyzéseinek biztosításához adjon egyedi nevet a központi telepítésnek.
 
 ## <a name="next-steps"></a>További lépések
 

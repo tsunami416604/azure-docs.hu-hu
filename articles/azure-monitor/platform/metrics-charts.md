@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e554fe48c3cbf8b744bf2f435f7b51e424d28808
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82980898"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079553"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Az Azure Metrikaböngésző speciális funkciói
 
@@ -20,7 +21,7 @@ ms.locfileid: "82980898"
 
 ## <a name="metrics-in-azure"></a>Metrikák az Azure-ban
 
-A [Azure monitor metrikái](data-platform-metrics.md) a mért értékek, valamint a begyűjtött és az idő múlásával tárolt számok sorozata. Léteznek standard (vagy "platform") mérőszámok és egyéni metrikák. A standard mérőszámokat maga az Azure platform kapja meg. A standard mérőszámok az Azure-erőforrások állapot-és használati statisztikáit tükrözik. Míg az egyéni metrikákat az alkalmazások az Application Insights API használatával küldik el az Azure-ba az [Egyéni eseményekhez és mérőszámokhoz](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), a [Windows Azure Diagnostics (wad) bővítményhez](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)vagy [Azure monitor Rest APIhoz](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api).
+A [Azure monitor metrikái](data-platform-metrics.md) a mért értékek, valamint a begyűjtött és az idő múlásával tárolt számok sorozata. Léteznek standard (vagy "platform") mérőszámok és egyéni metrikák. A standard mérőszámokat maga az Azure platform kapja meg. A standard mérőszámok az Azure-erőforrások állapot-és használati statisztikáit tükrözik. Míg az egyéni metrikákat az alkalmazások az Application Insights API használatával küldik el az Azure-ba az [Egyéni eseményekhez és mérőszámokhoz](../app/api-custom-events-metrics.md), a [Windows Azure Diagnostics (wad) bővítményhez](./diagnostics-extension-overview.md)vagy [Azure monitor Rest APIhoz](./metrics-store-custom-rest-api.md).
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>Nézetek létrehozása több metrikával és diagrammal
 
@@ -175,5 +176,4 @@ A metrikai riasztások beállításával kapcsolatos további információkért 
 
 ## <a name="next-steps"></a>További lépések
 
-  Olvassa el az [Egyéni KPI-irányítópultok létrehozását](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) ismertető témakört, amelyből megtudhatja, hogyan hozhat létre mérőszámokkal rendelkező, gyakorlati irányítópultokat.
-
+  Olvassa el az [Egyéni KPI-irányítópultok létrehozását](../learn/tutorial-app-dashboards.md) ismertető témakört, amelyből megtudhatja, hogyan hozhat létre mérőszámokkal rendelkező, gyakorlati irányítópultokat.

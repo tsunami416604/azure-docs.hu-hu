@@ -5,11 +5,12 @@ author: MS-Santi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7951f216143bef0d48a6b751beff3f8f4316b9bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bddb6af777f36d04bae4a8b68c476789048be1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75433329"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081780"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Vész-helyreállítás és geo-eloszlás az Azure-ban Durable Functions
 
@@ -82,4 +83,4 @@ A többi forgatókönyvhöz hasonlóan fontos szempontokat is figyelembe kell ve
 
 ## <a name="next-steps"></a>További lépések
 
-További információk a [magasan elérhető alkalmazások a ra-GRS használatával történő tervezéséről](../../storage/common/storage-designing-ha-apps-with-ragrs.md)
+További információk a [magasan elérhető alkalmazások a ra-GRS használatával történő tervezéséről](../../storage/common/geo-redundant-design.md)

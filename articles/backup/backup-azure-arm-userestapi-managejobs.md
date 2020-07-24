@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan nyomon követheti és kezelhe
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8dbd6fd7add58f8458c21fc65381a52ff3306d2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847765"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079315"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Biztonsági mentési és visszaállítási feladatok nyomon követése REST API használatával
 
@@ -33,7 +33,7 @@ Egy művelet, például a biztonsági mentés elindítása mindig jobID ad vissz
 }
 ```
 
-Az Azure virtuális gép biztonsági mentési feladatainak azonosítása a "jobId" mező alapján történik, és az [itt](https://docs.microsoft.com/rest/api/backup/jobdetails/) leírtak szerint nyomon követhető egy egyszerű *Get* kérelem használatával.
+Az Azure virtuális gép biztonsági mentési feladatainak azonosítása a "jobId" mező alapján történik, és az [itt](/rest/api/backup/jobdetails/) leírtak szerint nyomon követhető egy egyszerű *Get* kérelem használatával.
 
 ## <a name="tracking-the-job"></a>A feladatok nyomon követése
 
@@ -43,11 +43,11 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 A a `{jobName}` fent említett "jobId". A válasz mindig 200 OK az "állapot" mezővel, amely a feladatok aktuális állapotát jelzi. Ha "befejezett" vagy "CompletedWithWarnings", a "extendedInfo" szakasz a feladattal kapcsolatos további részleteket mutatja be.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
-|Name  |Típus  |Description  |
+|Név  |Típus  |Description  |
 |---------|---------|---------|
-|200 OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
+|200 OK     | [JobResource](/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 
 #### <a name="example-response"></a>Példaválasz
 

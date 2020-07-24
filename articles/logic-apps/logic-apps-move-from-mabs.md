@@ -8,17 +8,18 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 975dcc357e244469f33385f84f2e15a89997597b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76905433"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078213"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Alkalmazások és megoldások migrálása BizTalk Servicesról Azure Logic Apps
 
 Microsoft Azure BizTalk Services (MABS) kivonása. A MABS-integrációs megoldások [Azure Logic Appsba](../logic-apps/logic-apps-overview.md)való áthelyezéséhez kövesse az ebben a cikkben található útmutatást. 
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 BizTalk Services két alszolgáltatásból áll:
 
@@ -31,10 +32,10 @@ BizTalk Services két alszolgáltatásból áll:
 
 Ez a táblázat a Logic Apps BizTalk Services képességeit képezi le.
 
-| BizTalk Services   | Logic Apps            | Szerep                      |
+| BizTalk Services   | Logic Apps            | Cél                      |
 | ------------------ | --------------------- | ---------------------------- |
 | Összekötő          | Összekötő             | Az adatküldés és fogadás   |
-| Bridge             | Logikai alkalmazás             | Folyamat processzora           |
+| Híd             | Logikai alkalmazás             | Folyamat processzora           |
 | Ellenőrzés fázisa     | XML-érvényesítési művelet | XML-dokumentum ellenőrzése sémán keresztül | 
 | Dúsítási szakasz       | Adattokenek           | Tulajdonságok előléptetése üzenetekre vagy útválasztási döntések |
 | Átalakítási fázis    | Átalakítási művelet      | XML-üzenetek konvertálása egyik formátumból a másikba |
@@ -52,13 +53,13 @@ BizTalk Services több fajta összetevővel rendelkezik.
 
 A BizTalk Services-összekötők segítenek az adatküldésben és a fogadásban, beleértve a kétirányú hidakat is, amelyek lehetővé teszik a HTTP-alapú kérelmek/válaszok interakcióját. Logic Apps ugyanazt a terminológiát használja, és több száz összekötőt használ, amelyek ugyanazt a célt szolgálják, és számos különböző technológiához és szolgáltatáshoz csatlakoznak. Az összekötők például elérhetők a Cloud SaaS-és a Pásti-szolgáltatásokhoz, például a OneDrive, a Office 365, a Dynamics CRM és egyebekhez, valamint a helyszíni rendszerekhez a helyszíni adatátjárón keresztül, amely felváltja a BizTalk adapter szolgáltatást a BizTalk Services számára. A BizTalk Services lévő források FTP, SFTP és Service Bus üzenetsor vagy témakör-előfizetésre korlátozódnak.
 
-![](media/logic-apps-move-from-mabs/sources.png)
+![A BizTalk Services folyamatot bemutató diagram.](media/logic-apps-move-from-mabs/sources.png)
 
 Alapértelmezés szerint minden egyes híd egy HTTP-végponttal rendelkezik, amely a futásidejű cím és a híd relatív cím tulajdonságai szerint van konfigurálva. Ha ugyanazokat az eredményeket szeretné elérni Logic Appsekkel, használja a [kérelmek és válaszok](../connectors/connectors-native-reqres.md) műveletet.
 
 ## <a name="xml-processing-and-bridges"></a>XML-feldolgozás és-hidak
 
-BizTalk Services a hidak egy feldolgozási folyamathoz hasonlítanak. Egy híd elvégezheti az összekötőtől érkező adatok fogadását, elvégezheti a munkát az adatokkal, és elküldheti az eredményeket egy másik rendszernek. A Logic Apps ugyanazokat a folyamatokon alapuló interakciós mintákat támogatja, mint BizTalk Services, és egyéb integrációs mintákat is biztosít. Az [XML-kérelem – válasz-híd](https://msdn.microsoft.com/library/azure/hh689781.aspx) BIZTALK Services néven VETER folyamat, amely a következő feladatokat hajtja végre:
+BizTalk Services a hidak egy feldolgozási folyamathoz hasonlítanak. Egy híd elvégezheti az összekötőtől érkező adatok fogadását, elvégezheti a munkát az adatokkal, és elküldheti az eredményeket egy másik rendszernek. A Logic Apps ugyanazokat a folyamatokon alapuló interakciós mintákat támogatja, mint BizTalk Services, és egyéb integrációs mintákat is biztosít. Az [XML-kérelem – válasz-híd](/previous-versions/azure/hh689781(v=azure.100)) BIZTALK Services néven VETER folyamat, amely a következő feladatokat hajtja végre:
 
 * (V) ellenőrzés
 * (E) dúsítás
@@ -68,7 +69,7 @@ BizTalk Services a hidak egy feldolgozási folyamathoz hasonlítanak. Egy híd e
 
 Ez a rendszerkép azt mutatja be, hogyan oszlik meg a feldolgozás a kérelem és válasz között, amely a kérés és a válasz elérési útjai külön-külön, például az egyes elérési utak különböző leképezéseit használja:
 
-![](media/logic-apps-move-from-mabs/xml-request-reply.png)
+![Képernyőkép, amely bemutatja, hogyan oszlik meg a feldolgozás a kérelem és a válasz között.](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
 Emellett az egyirányú XML-híd dekódolást és kódolási fázisokat is felhasznál a feldolgozás elején és végén. Az áteresztő híd egyetlen dúsítási szakaszt tartalmaz.
 
@@ -78,7 +79,7 @@ BizTalk Services különböző típusú XML-üzeneteket fogadhat, és meghatáro
 
 A Logic Apps hasonló képességeket biztosít. A rendszer a különböző protokollokon keresztül egy egyszerű fájlt kap a különböző összekötő-eseményindítók (fájlrendszer, FTP, HTTP stb.) használatával, és a lemezes [dekódolási](../logic-apps/logic-apps-enterprise-integration-flatfile.md) művelettel átalakítja a beérkező adatfájlokat az XML formátumba. Áthelyezheti a meglévő strukturált fájl-sémákat közvetlenül Logic Apps módosítás nélkül, majd az integrációs fiókjába is feltölthet sémákat.
 
-### <a name="validation"></a>Ellenőrzés
+### <a name="validation"></a>Érvényesítés
 
 A bejövő adatfájlok XML-re konvertálása után (vagy ha XML volt az üzenet formátuma), az érvényesítés futtatásával megállapíthatja, hogy az üzenet megfelel-e az XSD-sémának. A feladat Logic Appsban történő végrehajtásához használja az [XML-érvényesítési](../logic-apps/logic-apps-enterprise-integration-xml-validation.md) műveletet. A BizTalk Services a módosítások nélkül is használhatja ugyanezeket a sémákat.
 
@@ -90,7 +91,7 @@ BizTalk Services az átalakítási fázis egy XML-alapú üzenet formátumát á
 
 BizTalk Services a bejövő üzenetek vagy az adatküldés továbbítására szolgáló végpont vagy összekötő útválasztási döntését teszi lehetővé. Az előre konfigurált végpontokból kiválasztható lehetőség az útválasztási szűrő beállítás használatával:
 
-![](media/logic-apps-move-from-mabs/route-filter.png)
+![Az útválasztási szűrő beállítást megjelenítő képernyőkép.](media/logic-apps-move-from-mabs/route-filter.png)
 
 BizTalk Services esetén, ha csak két lehetőség van, egy *feltételt* használva a legjobb módszer az útválasztási szűrők BizTalk Servicesban történő átalakítására. Ha kettőnél több van, akkor használjon egy **kapcsolót**.
 
@@ -102,7 +103,7 @@ BizTalk Services feldolgozás során a dúsítási szakasz tulajdonságokat hoz 
 
 ### <a name="run-custom-code"></a>Egyéni kód futtatása
 
-BizTalk Services lehetővé teszi a saját szerelvényekben feltöltött [egyéni kódok futtatását](https://msdn.microsoft.com/library/azure/dn232389.aspx) . Ezt a funkciót a [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) felület valósítja meg. A híd minden szakasza két tulajdonságot tartalmaz (a beléptetési Ellenőrnél és a kilépési Ellenőrnél), amelyek biztosítják az ezt a felületet megvalósító .NET-típust. Az egyéni kód lehetővé teszi, hogy összetettebb adatfeldolgozást végezzen az adatokon, és lehetővé teszi a meglévő kódok újrafelhasználását olyan szerelvényekben, amelyek közös üzleti logikát végeznek. 
+BizTalk Services lehetővé teszi a saját szerelvényekben feltöltött [egyéni kódok futtatását](/previous-versions/azure/dn232389(v=azure.100)) . Ezt a funkciót a [IMessageInspector](/azure/logic-apps/logic-apps-move-from-mabs) felület valósítja meg. A híd minden szakasza két tulajdonságot tartalmaz (a beléptetési Ellenőrnél és a kilépési Ellenőrnél), amelyek biztosítják az ezt a felületet megvalósító .NET-típust. Az egyéni kód lehetővé teszi, hogy összetettebb adatfeldolgozást végezzen az adatokon, és lehetővé teszi a meglévő kódok újrafelhasználását olyan szerelvényekben, amelyek közös üzleti logikát végeznek. 
 
 A Logic Apps két elsődleges módszert biztosít az egyéni kódok végrehajtásához: Azure Functions és API Apps. Azure Functions létrehozhatók és meghívhatók a Logic apps szolgáltatásban. Lásd: [egyéni kód hozzáadása és futtatása logikai alkalmazásokhoz Azure Functionson keresztül](../logic-apps/logic-apps-azure-functions.md). A saját eseményindítók és műveletek létrehozásához használja a API Appst, Azure App Service egy részét. További információ a [Logic Appshoz használandó egyéni API létrehozásáról](../logic-apps/logic-apps-create-api-app.md). 
 

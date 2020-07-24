@@ -4,12 +4,12 @@ description: A Hyperledger Fabric Consortium Network üzembe helyezése és konf
 ms.date: 07/07/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: e1cbfa56f1e4ea9f8cbaa0ad973d06e8b8d486ca
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1e90eeccb015b4d5ef78b79297565ddde9cfa305
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085804"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081277"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric Consortium az Azure Kubernetes Service-ben (ak)
 
@@ -28,9 +28,9 @@ A megoldási sablon használata előtt hasonlítsa össze a forgatókönyvet az 
 
 Beállítás | Szolgáltatási modell | Gyakori használati eset
 -------|---------------|-----------------
-Megoldássablonok | IaaS | A megoldási sablonok Azure Resource Manager sablonok, amelyekkel teljes körűen konfigurált blockchain-topológiát lehet kiépíteni. A Sablonok Microsoft Azure számítási, hálózatkezelési és tárolási szolgáltatásokat telepítenek és konfigurálnak egy adott blockchain hálózati típushoz. A megoldási sablonokat szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja a [Microsoft Q&a kérdéses lapot](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
+Megoldássablonok | IaaS | A megoldási sablonok Azure Resource Manager sablonok, amelyekkel teljes körűen konfigurált blockchain-topológiát lehet kiépíteni. A Sablonok Microsoft Azure számítási, hálózatkezelési és tárolási szolgáltatásokat telepítenek és konfigurálnak egy adott blockchain hálózati típushoz. A megoldási sablonokat szolgáltatói szerződés nélkül biztosítjuk. Támogatásért használja a [Microsoft Q&a kérdéses lapot](/answers/topics/azure-blockchain-workbench.html) .
 [Azure Blockchain Service](../service/overview.md) | PaaS | Az Azure Blockchain szolgáltatás előzetes verziója leegyszerűsíti a konzorciumi Blockchain hálózatok képződését, kezelését és irányítását. Használja az Azure Blockchain szolgáltatást a Pásti, a konzorciumok felügyeletére, vagy a szerződés és a tranzakció adatvédelmet igénylő megoldásokhoz.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS és Péter | Az Azure Blockchain Workbench előzetes verziója olyan Azure-szolgáltatások és-funkciók gyűjteménye, amelyek segítségével Blockchain-alkalmazásokat hozhat létre és helyezhet üzembe más szervezetekkel való üzleti folyamatok és adatmennyiségek megosztásához. Az Azure Blockchain Workbench használatával Blockchain-megoldást vagy Blockchain-alkalmazást készíthet. Az Azure Blockchain Workbenchre nem vonatkozik szolgáltatói szerződés. Támogatásért használja a [Microsoft Q&a kérdéses lapot](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) .
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS és Péter | Az Azure Blockchain Workbench előzetes verziója olyan Azure-szolgáltatások és-funkciók gyűjteménye, amelyek segítségével Blockchain-alkalmazásokat hozhat létre és helyezhet üzembe más szervezetekkel való üzleti folyamatok és adatmennyiségek megosztásához. Az Azure Blockchain Workbench használatával Blockchain-megoldást vagy Blockchain-alkalmazást készíthet. Az Azure Blockchain Workbenchre nem vonatkozik szolgáltatói szerződés. Támogatásért használja a [Microsoft Q&a kérdéses lapot](/answers/topics/azure-blockchain-workbench.html) .
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger Fabric Consortium-architektúra
 
@@ -113,7 +113,7 @@ Az HLF hálózati összetevők üzembe helyezésének megkezdéséhez navigáljo
     - **DNS-előtag**: tartománynévrendszer (DNS) neve ELŐTAG az AK-fürthöz. A DNS használatával csatlakozhat a Kubernetes API-hoz, amikor a fürt létrehozása után kezeli a tárolókat.
     - **Csomópont mérete**: a Kubernetes csomópont mérete az Azure-ban elérhető virtuálisgép-készletezési egység (SKU) listájából választható ki. Az optimális teljesítmény érdekében javasoljuk a standard DS3 v2 használatát.
     - **Csomópontok**száma: a fürtben telepítendő Kubernetes-csomópontok számának száma. Azt javasoljuk, hogy a csomópont megtartása legalább egyenlő vagy annál nagyobb legyen, mint a háló beállításaiban megadott HLF-csomópontok száma.
-    - **Egyszerű szolgáltatásnév ügyfél-azonosítója**: adja meg egy meglévő egyszerű szolgáltatásnév ügyfél-azonosítóját, vagy hozzon létre egy újat, amely az AK-hitelesítéshez szükséges. Lásd: az [egyszerű szolgáltatásnév létrehozásának](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)lépései.
+    - **Egyszerű szolgáltatásnév ügyfél-azonosítója**: adja meg egy meglévő egyszerű szolgáltatásnév ügyfél-azonosítóját, vagy hozzon létre egy újat, amely az AK-hitelesítéshez szükséges. Lásd: az [egyszerű szolgáltatásnév létrehozásának](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)lépései.
     - **Egyszerű szolgáltatásnév ügyfél titka**: adja meg az egyszerű szolgáltatás ügyfél-azonosítójában megadott szolgáltatásnév ügyfél-titkát.
     - **Ügyfél titkos kulcsának megerősítése**: erősítse meg az ügyfél titkos kulcsában megadott titkos kulcsot.
     - **Tárolók figyelésének engedélyezése**: válassza az AK-figyelés engedélyezése lehetőséget, amely lehetővé teszi az AK-naplók számára a megadott log Analytics munkaterület leküldését.
@@ -138,7 +138,7 @@ Ha a blockchain konzorciumot a rendezési szolgáltatás és a társ-csomóponto
 
 Az Azure HLF-szkript futtatásához szükséges összes parancs az Azure bash parancssorán keresztül hajtható végre. Felület (CLI). Az Azure Shell web Version-be a következővel jelentkezhet be  ![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) lehetőség a Azure Portal jobb felső sarkában. A parancssorba írja be a bash parancsot, és váltson a bash parancssori felületre.
 
-További információt az [Azure-rendszerhéjban](https://docs.microsoft.com/azure/cloud-shell/overview) talál.
+További információt az [Azure-rendszerhéjban](../../cloud-shell/overview.md) talál.
 
 ![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
@@ -285,7 +285,7 @@ A társ szervezeti ügyféltől a következő parancs kiadásával állíthatja 
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
 ```
 
-`<anchorPeersList>`egy szóközzel elválasztott lista, amely összeállított társ-csomópontként van beállítva. Példa:
+`<anchorPeersList>`egy szóközzel elválasztott lista, amely összeállított társ-csomópontként van beállítva. Például:
 
   - Állítsa `<anchorPeersList>` "peer1" értékre, ha csak peer1-csomópontot kíván beállítani.
   - Állítsa `<anchorPeersList>` "peer1" "peer3" értékre, ha a peer1 és a peer3 csomópontot is be szeretné állítani a horgony társként.
@@ -441,6 +441,6 @@ Ha visszajelzést szeretne küldeni, vagy új szolgáltatásokat szeretne kérni
 
 Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szakértőivel.
 
-- [A Microsoft Q&egy kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). A blockchain-sablonok mérnöki támogatása az üzembe helyezési problémákra korlátozódik.
-- [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+- [A Microsoft Q&egy kérdés oldalát](/answers/topics/azure-blockchain-workbench.html). A blockchain-sablonok mérnöki támogatása az üzembe helyezési problémákra korlátozódik.
+- [A Microsoft technikai közössége](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

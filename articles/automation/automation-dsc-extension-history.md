@@ -1,20 +1,17 @@
 ---
 title: Az Azure desired State Configuration bővítmény korábbi verzióinak használata
 description: Ez a cikk azt ismerteti, hogyan használható az Azure-ban a kívánt State Configuration (DSC) bővítmény korábbi verziói.
-ms.date: 06/21/2018
+ms.date: 07/22/2020
 keywords: DSC, PowerShell, Azure, bővítmény
-author: mgoedtel
-ms.author: magoedte
 services: automation
-ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: b45512faf09cfe745023d29d32f89a4432cc3b2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079757"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Az Azure desired State Configuration bővítmény korábbi verzióinak használata
 
@@ -23,6 +20,29 @@ Az Azure desired State Configuration (DSC) virtuálisgép-bővítmény az Azure,
 Ez a cikk információkat nyújt az Azure DSC virtuálisgép-bővítmény minden verziójáról, az általa támogatott környezetekről, valamint az új funkciókkal és változásokkal kapcsolatos megjegyzésekről és megjegyzésekről.
 
 ## <a name="latest-version"></a>Legújabb verzió
+
+### <a name="version-280"></a>2,80-es verzió
+
+- **Kiadás dátuma:**
+  - Szeptember 26., Sep-2019 (Azure) | Július 6., 2020 (Azure China Vianet 21) | Július 20., 2020 (Azure Government)
+- **Operációs rendszer támogatása:**
+  - Windows Server 2019
+  - Windows Server 2016
+  - Windows Server 2012 R2
+  - Windows Server 2012
+  - Windows Server 2008 R2 SP1
+  - Windows-ügyfél 7/8.1/10
+  - Nano Server
+- **WMF-támogatás:**
+  - WMF 5.1
+  - WMF 5,0 RTM
+  - WMF 4,0 frissítés
+  - WMF 4.0
+- **Környezet**
+  - Azure
+  - Azure China Vianet 21
+  - Azure Government
+- **Megjegyzések:** Ebben a kiadásban nem szerepel új funkció.
 
 ### <a name="version-276"></a>2,76-es verzió
 

@@ -4,17 +4,18 @@ description: Útmutató az adategységek Azure Data Catalogban való megjegyzés
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: c1e022591ce1aee073330055744fbd78d97c0b1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61a91ca8a51886c28beee77853d1ae67911e00e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68950266"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081236"
 ---
 # <a name="how-to-annotate-data-sources-in-azure-data-catalog"></a>Adatforrások megjegyzése Azure Data Catalogban
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A **Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőalapú szolgáltatás, amely a vállalati adatforrások regisztrálási és felderítési rendszereként szolgál. Ez azt jelenti, hogy Data Catalog az a célja, hogy segítsen az embereknek felderíteni, megérteni és használni az adatforrásokat, és hogy segítse a szervezeteket abban, hogy a meglévő adatokból több értéket kapjanak. Ha egy adatforrás regisztrálva van Data Catalog, a metaadatokat a szolgáltatás átmásolja és indexeli, de a történet nem fejeződik be. Data Catalog lehetővé teszi a felhasználók számára, hogy saját leíró metaadatokat – például leírásokat és címkéket – adjanak hozzá az adatforrásból kinyert metaadatokhoz, és hogy az adatforrás jobban érthető legyen több személy számára.
 
@@ -56,7 +57,7 @@ Több tábla és nézet kiválasztásakor a Data Catalog-portálon csak azok az 
 ## <a name="annotations-and-discovery"></a>Jegyzetek és felderítés
 Ahogy a regisztráció során az adatforrásból kinyert metaadatok a Data Catalog keresési indexbe kerülnek, a felhasználó által megadott metaadatok is indexelve vannak. Ez azt jelenti, hogy a jegyzetek nem csupán megkönnyítik a felhasználók számára az észlelt adatok megértését, a jegyzetek azt is megkönnyítik a felhasználók számára, hogy a megjegyzések alapján megkeressék a jegyzett adategységeket.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Az adatforrások Data Catalogsal való regisztrálása lehetővé teszi, hogy az adatforrásból a katalógus szolgáltatásba másolja a strukturális és leíró metaadatokat az adatokból. Az adatforrások regisztrálását követően a felhasználók a Data Catalog-portálon belül könnyebben felfedezhetik és megismerhetik a megjegyzéseket.
 
 ## <a name="see-also"></a>Lásd még

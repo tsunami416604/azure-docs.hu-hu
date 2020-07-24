@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84324860"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078735"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Folyamatok exportálása a Power Automate-ből és üzembe helyezés az Azure Logic Appsben
 
@@ -19,9 +20,9 @@ A flow képességeinek bővítéséhez és kibővítéséhez áttelepítheti a f
 > [!NOTE]
 > Nem minden automatizálási összekötő érhető el Azure Logic Appsban. Csak olyan automatizálási folyamatokat telepíthet át, amelyek Azure Logic Appsban egyenértékű összekötővel rendelkeznek. Például a gomb trigger, a jóváhagyási összekötő és az értesítési összekötő kifejezetten a Power automatizálható. A OpenAPI-alapú folyamatok jelenleg nem támogatottak az exportáláshoz és az üzembe helyezéshez logikai alkalmazás-sablonokként.
 >
-> * Ha szeretné megkeresni, hogy mely automatizálási összekötők nem rendelkeznek Logic Apps megfelelővel, tekintse meg a [Power automatizáló összekötők](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors)
+> * Ha szeretné megkeresni, hogy mely automatizálási összekötők nem rendelkeznek Logic Apps megfelelővel, tekintse meg a [Power automatizáló összekötők](/connectors/connector-reference/connector-reference-powerautomate-connectors)
 >
-> * Ha szeretné megkeresni, hogy mely Logic Apps összekötők nem rendelkeznek az automatikus automatizálással, tekintse meg az [összekötők Logic apps](https://docs.microsoft.com/connectors/connector-reference/connector-reference-powerautomate-connectors).
+> * Ha szeretné megkeresni, hogy mely Logic Apps összekötők nem rendelkeznek az automatikus automatizálással, tekintse meg az [összekötők Logic apps](/connectors/connector-reference/connector-reference-powerautomate-connectors).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

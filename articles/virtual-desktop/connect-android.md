@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a7ca15a301de3c54195c0978aa31121c3624a98a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39df24380917c51f3b492bb62c98024d3d090458
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209453"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080658"
 ---
-# <a name="connect-with-the-android-client"></a>Kapcsolódás az Android-ügyféllel
+# <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>Kapcsolódás a Windows rendszerű virtuális asztalhoz az Android-ügyféllel
 
 > A következőkre vonatkozik: Android 4,1 és újabb verziók, Chromebook a ChromeOS 53 és újabb verziókkal.
 

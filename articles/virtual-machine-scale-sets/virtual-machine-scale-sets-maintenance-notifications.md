@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c4b0cb8204891538ef9c4eef3fa0ff5fd9686536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db6a8965b6a0d03c3de95644d3d455ce3c950960
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83200086"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080437"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok – tervezett karbantartás értesítései
 
@@ -80,9 +81,9 @@ Tervezett karbantartási hullám ütemezésekor megtekintheti azoknak a virtuál
 
 Az **önkiszolgáló karbantartási** oszlop most megjelenik a virtuálisgép-méretezési csoportok listájában. A virtuálisgép-méretezési csoportokhoz a következő értékek egyike tartozhat az önkiszolgáló karbantartási oszlophoz:
 
-| Érték | Description |
+| Érték | Leírás |
 |-------|-------------|
-| Yes | A virtuálisgép-méretezési csoport legalább egy virtuális gépe önkiszolgáló ablakban található. Az önkiszolgáló ablakon bármikor elindíthatja a karbantartást. | 
+| Igen | A virtuálisgép-méretezési csoport legalább egy virtuális gépe önkiszolgáló ablakban található. Az önkiszolgáló ablakon bármikor elindíthatja a karbantartást. | 
 | No | Az érintett virtuálisgép-méretezési csoport önkiszolgáló ablakában egyetlen virtuális gép sem található. | 
 | - | A virtuális gépek méretezési csoportjai nem részei a tervezett karbantartási hullámnak.| 
 
@@ -111,7 +112,7 @@ A karbantartás megkezdése után a virtuálisgép-méretezési csoportba tartoz
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>Karbantartási állapot ellenőrzéséhez a PowerShell használatával
 
-A Azure PowerShell használatával megtekintheti, hogy a virtuálisgép-méretezési csoportokban lévő virtuális gépek karbantartásra vannak-e ütemezve. A tervezett karbantartási információk a [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) parancsmag használatával érhetők el, ha a `-InstanceView` paramétert használja.
+A Azure PowerShell használatával megtekintheti, hogy a virtuálisgép-méretezési csoportokban lévő virtuális gépek karbantartásra vannak-e ütemezve. A tervezett karbantartási információk a [Get-AzVmss](/powershell/module/az.compute/get-azvmss) parancsmag használatával érhetők el, ha a `-InstanceView` paramétert használja.
  
 A karbantartási adatokat csak akkor adja vissza a rendszer, ha a karbantartást tervezték. Ha nincs ütemezve olyan karbantartás, amely hatással van a virtuálisgép-példányra, a parancsmag nem ad vissza karbantartási információt. 
 
@@ -121,7 +122,7 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 
 A **MaintenanceRedeployStatus**alatt a következő tulajdonságokat adja vissza: 
 
-| Érték | Description   |
+| Érték | Leírás   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Azt jelzi, hogy a virtuális gép karbantartását jelenleg lehet-e elindítani. |
 | PreMaintenanceWindowStartTime         | A karbantartás önkiszolgáló ablakának kezdete, ha a virtuális gép karbantartását kezdeményezi. |
@@ -152,7 +153,7 @@ az vmss list-instances -g rgName -n vmssName --expand instanceView
 
 Az egyes virtuálisgép-példányok **MaintenanceRedeployStatus** a következő tulajdonságokat adja vissza: 
 
-| Érték | Description   |
+| Érték | Leírás   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Azt jelzi, hogy a virtuális gép karbantartását jelenleg lehet-e elindítani. |
 | PreMaintenanceWindowStartTime         | A karbantartás önkiszolgáló ablakának kezdete, ha a virtuális gép karbantartását kezdeményezi. |

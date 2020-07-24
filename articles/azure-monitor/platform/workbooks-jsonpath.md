@@ -9,15 +9,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efa54933ac7d57ec0dcff9ae11b6fb5c2c87a897
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82892211"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081389"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>JSON-adatfájlok átalakítása a JSONPath használatával a munkafüzetekbe
 
-A munkafüzetek számos forrásból származó adatok lekérdezésére képesek. Egyes végpontok, például a [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) vagy az egyéni végpontok, a JSON-ban lévő eredményeket adhatnak vissza. Ha a lekérdezett végpont által visszaadott JSON-adatmennyiség nem a kívánt formátumban van konfigurálva, a JSONPath az eredmények átalakítására is használható.
+A munkafüzetek számos forrásból származó adatok lekérdezésére képesek. Egyes végpontok, például a [Azure Resource Manager](../../azure-resource-manager/management/overview.md) vagy az egyéni végpontok, a JSON-ban lévő eredményeket adhatnak vissza. Ha a lekérdezett végpont által visszaadott JSON-adatmennyiség nem a kívánt formátumban van konfigurálva, a JSONPath az eredmények átalakítására is használható.
 
 A JSONPath a JSON lekérdezési nyelve, amely az XML XPath-hoz hasonló. Az XPath-hoz hasonlóan a JSONPath lehetővé teszi, hogy a JSON-struktúraből kinyerje az adatgyűjtést és a szűrést.
 
@@ -74,7 +75,7 @@ Tegyük fel, hogy a fenti JSON-objektumot az áruház leltárának ábrázolása
    |:-----------|:-----------------|
    | Cím      | `$.title`        |
    | Szerző     | `$.author`       |
-   | Price      | `$.price`        |
+   | Ár      | `$.price`        |
 
     Az oszlopok azonosítói az oszlopok fejlécei lesznek. A JSON-elérési utak mezői a tábla gyökeréből az oszlop értékére mutató útvonalat jelölik.
 

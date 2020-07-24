@@ -7,12 +7,12 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: a484ab2553aeefbbe8c03ae639bdd667e4d9cb8e
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: f996bb2d5126ef038ca872aee1f1893979a5229b
+ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84661193"
+ms.lasthandoff: 07/02/2020
+ms.locfileid: "87080998"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central-beli adatPower BI-irányítópulton tárolt adatai megjelenítése és elemzése
 
@@ -20,7 +20,7 @@ ms.locfileid: "84661193"
 
 :::image type="content" source="media/howto-connect-powerbi/iot-continuous-data-export.png" alt-text="Power BI megoldási folyamat":::
 
-Az Azure IoT Central Power BI megoldásával hatékony Power BI irányítópultot hozhat létre a IoT-eszközök teljesítményének figyeléséhez. A Power BI-irányítópulton a következőket teheti:
+Az Azure IoT Central v3 Power BI megoldásával hatékony Power BI irányítópultot hozhat létre a IoT-eszközök teljesítményének figyeléséhez. A Power BI-irányítópulton a következőket teheti:
 
 - Az eszközök által az idő múlásával küldött adatok számának nyomon követése
 - Adatkötetek összehasonlítása különböző telemetria-adatfolyamok között
@@ -35,16 +35,19 @@ A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre v
 
 A megoldás beállításához a következő erőforrások szükségesek:
 
-- IoT Central alkalmazás. További információ: [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md).
+- 3. verziójú IoT Central alkalmazás. Az alkalmazás verziószámának megismeréséhez tekintse meg [az alkalmazásról szóló](./howto-get-app-info.md)témakört. IoT Central alkalmazások létrehozásával kapcsolatos további információkért lásd: [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md).
 - Folyamatos adatexportálás a telemetria, eszközök és eszközök Azure Blob Storage-ba való exportálására konfigurálva. További információ: [IoT-információk exportálása az Azure-ba célhelyekre](howto-export-data.md).
   - Győződjön meg arról, hogy csak a IoT Central alkalmazás exportálja az adatait a blob-tárolóba.
   - Az [eszközöknek JSON-kódolású üzeneteket kell küldeniük](../../iot-hub/iot-hub-devguide-messages-d2c.md). Az eszközöknek meg kell adniuk `contentType:application/JSON` és vagy `contentEncoding:utf-8` `contentEncoding:utf-16` vagy vagy `contentEncoding:utf-32` az üzenetrendszer tulajdonságait.
 - Power BI Desktop (legújabb verzió). Lásd: [Power bi letöltések](https://powerbi.microsoft.com/downloads/).
 - Power BI Pro (ha meg szeretné osztani másokkal az irányítópultot).
 
+> [!NOTE]
+> Ha 2. verziójú IoT Central alkalmazást használ, tekintse meg az Azure-beli [IoT Central-információk megjelenítése és elemzése egy Power bi irányítópulton](https://docs.microsoft.com/previous-versions/azure/iot-central/core/howto-connect-powerbi) az előző verziók dokumentációs webhelyén.
+
 ## <a name="install"></a>Telepítés
 
-A folyamat beállításához navigáljon az [Azure IoT Central oldal Power bi megoldásához](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) a **Microsoft AppSource** webhelyen. Válassza a **Letöltés most**lehetőséget, és kövesse az utasításokat.
+A folyamat beállításához navigáljon az Power BI- [megoldáshoz az Azure IoT Central v3](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) oldalához a **Microsoft AppSource** helyen. Válassza a **Letöltés most**lehetőséget, és kövesse az utasításokat.
 
 A PBIX-fájl megnyitásakor ügyeljen rá, hogy olvassa el és kövesse a fedél oldalon található utasításokat. Ezek az utasítások azt írják le, hogyan csatlakoztatható a jelentés az SQL-adatbázishoz.
 
@@ -68,7 +71,7 @@ Az Azure Function alkalmazás minden alkalommal aktiválódik, IoT Central egy �
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-A Azure Data Factory társított szolgáltatásként kapcsolódik az SQL-adatbázishoz. Tárolt eljárásokat futtat, hogy feldolgozza az adatfeldolgozást, és tárolja azt az elemzési táblákban.
+Azure Data Factory csatlakozik a SQL Databasehoz társított szolgáltatásként. Tárolt eljárásokat futtat, hogy feldolgozza az adatfeldolgozást, és tárolja azt az elemzési táblákban.
 
 Azure Data Factory 15 percenként fut, hogy átalakítsa a legutóbbi köteget az SQL-táblákba való betöltéshez (ez a jelenlegi minimális szám a **kieséses ablak-triggernél**).
 
@@ -78,8 +81,8 @@ A Azure Data Factory elemzési táblázatok készletét hozza létre a Power BIh
 
 ## <a name="estimated-costs"></a>Becsült költségek
 
-Az [Azure IoT Central Power bi megoldás](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) a Microsoft AppSource webhelyen tartalmaz egy, a központilag telepített erőforrások díjszabására mutató hivatkozást.
+Az [Azure IoT Central V3 Power bi-megoldás](https://appsource.microsoft.com/product/web-apps/iot-central.power-bi-solution-iot-central) az Microsoft AppSource webhelyén található, a központilag telepített erőforrásokra mutató hivatkozást tartalmaz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan jelenítheti meg az adatait Power BIban, a javasolt következő lépés az [eszközök felügyeletének](howto-manage-devices.md)megismerése.

@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: af0dea5297cca02b12aecdc8252e62030032b93e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 558dd152aa1c6638155ad4215dc16f08d33d2e2f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601343"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080539"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure virtuálisgép-méretezési csoport automatikus operációsrendszer-rendszerképének frissítése
 
@@ -143,7 +143,7 @@ Az operációs rendszer frissítése során a méretezési csoportokban lévő v
 
 A méretezési csoport opcionálisan konfigurálható az Application Health-mintavételekkel, hogy a platform pontos információkat nyújtson az alkalmazás folyamatos állapotáról. Az Application Health-mintavételek olyan egyéni Load Balancer-mintavételek, amelyek állapot-jelzésként használatosak. A méretezési csoport virtuálisgép-példányán futó alkalmazás reagálhat a külső HTTP-vagy TCP-kérelmekre, ami azt jelzi, hogy kifogástalan-e. Az egyéni Load Balancer mintavételek működésével kapcsolatos további információkért lásd: a [Load Balancer-tesztek megismerése](../load-balancer/load-balancer-custom-probe-overview.md). Service Fabric méretezési csoportok nem támogatják az alkalmazás állapotának mintavételét. A nem Service Fabric méretezési csoportoknak az alkalmazás állapotának vagy az [alkalmazás állapotának kiterjesztésére](virtual-machine-scale-sets-health-extension.md)van Load Balancer szükségük.
 
-Ha a méretezési csoport több elhelyezési csoport használatára van konfigurálva, akkor [standard Load Balancert](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) használó mintavételt kell használnia.
+Ha a méretezési csoport több elhelyezési csoport használatára van konfigurálva, akkor [standard Load Balancert](../load-balancer/load-balancer-overview.md) használó mintavételt kell használnia.
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Egyéni Load Balancer mintavétel konfigurálása alkalmazás állapotának mintavétele egy méretezési csoporton
 Ajánlott eljárásként hozzon létre egy Load Balancer-mintavételt explicit módon a méretezési csoport állapotához. Egy meglévő HTTP-mintavételi vagy TCP-mintavételi végpont is használható, de az állapot-mintavétel a hagyományos terheléselosztó-mintavételtől eltérő viselkedést igényelhet. Például a hagyományos terheléselosztó-mintavétel nem megfelelő állapotba kerülhet, ha a példány terhelése túl magas, de ez nem lenne helyénvaló a példány állapotának meghatározására egy automatikus operációsrendszer-frissítés során. Konfigurálja a mintavételt úgy, hogy a magas szondázás sebessége kevesebb, mint két perc.
@@ -161,7 +161,7 @@ A terheléselosztó mintavételét a méretezési csoport *networkProfile* lehet
 ```
 
 > [!NOTE]
-> Ha a Service Fabric használatával automatikus operációsrendszer-frissítést használ, az új operációsrendszer-rendszerképet a frissítési tartomány frissíti a tartomány frissítésével, hogy fenntartsa a Service Fabric futó szolgáltatások magas rendelkezésre állását. Ha az operációs rendszer automatikus frissítését szeretné használni Service Fabric a fürtöt úgy kell konfigurálni, hogy az ezüst tartóssági szintet vagy ennél nagyobbat használjon. A Service Fabric-fürtök tartóssági jellemzőivel kapcsolatos további információkért tekintse meg [ezt a dokumentációt](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
+> Ha a Service Fabric használatával automatikus operációsrendszer-frissítést használ, az új operációsrendszer-rendszerképet a frissítési tartomány frissíti a tartomány frissítésével, hogy fenntartsa a Service Fabric futó szolgáltatások magas rendelkezésre állását. Ha az operációs rendszer automatikus frissítését szeretné használni Service Fabric a fürtöt úgy kell konfigurálni, hogy az ezüst tartóssági szintet vagy ennél nagyobbat használjon. A Service Fabric-fürtök tartóssági jellemzőivel kapcsolatos további információkért tekintse meg [ezt a dokumentációt](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster).
 
 ### <a name="keep-credentials-up-to-date"></a>Hitelesítő adatok naprakészen tartása
 Ha a méretezési csoport bármilyen hitelesítő adatot használ a külső erőforrások eléréséhez, például egy virtuálisgép-bővítményt, amely egy SAS-jogkivonat használatára van konfigurálva a Storage-fiókhoz, akkor győződjön meg arról, hogy a hitelesítő adatok frissülnek. Ha a hitelesítő adatok (beleértve a tanúsítványokat és a jogkivonatokat is) elévültek, a frissítés sikertelen lesz, és a virtuális gépek első kötege sikertelen állapotba kerül.

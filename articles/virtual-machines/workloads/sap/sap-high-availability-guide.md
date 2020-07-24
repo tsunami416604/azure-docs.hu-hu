@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver szolgáltatáshoz | Microsoft Docs
+title: Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver számára
 description: Magas rendelkezésre állási útmutató az Azure-beli SAP NetWeaver-Virtual Machines
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -16,13 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d1b028472785b146a45c22b3d23db7cb241c11da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbdbae3d310d6e4c3224663dd523cb124744dfbd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080182"
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver számára
+# <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>Magas rendelkezésre állású Azure-Virtual Machines az SAP NetWeaver-hoz
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -35,7 +36,7 @@ ms.locfileid: "84557313"
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 [azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
-[dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
+[dbms-guide]:dbms-guide.md
 
 [deployment-guide]:deployment-guide.md
 
@@ -170,7 +171,7 @@ Az üzembe helyezés és a konfiguráció egyszerűsítése érdekében ebben a 
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Előfeltételek
 Mielőtt elkezdené, győződjön meg arról, hogy megfelel az alábbi szakaszokban ismertetett előfeltételeknek. Ügyeljen arra is, hogy ellenőrizze az [erőforrások][sap-ha-guide-2] szakaszban felsorolt összes erőforrást.
 
-Ebben a cikkben Azure Resource Manager sablonokat használunk a [HÁROMRÉTEGŰ SAP NetWeaver-hoz a Managed Disks használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). A sablonok hasznos áttekintését lásd: [SAP Azure Resource Manager-sablonok](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
+Ebben a cikkben Azure Resource Manager sablonokat használunk a [HÁROMRÉTEGŰ SAP NetWeaver-hoz a Managed Disks használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). A sablonok hasznos áttekintését lásd: [SAP Azure Resource Manager-sablonok](/archive/blogs/saponsqlserver/azure-quickstart-templates-for-sap).
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Erőforrások
 Ezek a cikkek a SAP üzembe helyezéseit fedik le az Azure-ban:
@@ -319,7 +320,7 @@ Az SAP Application Server-példányokat futtató összes virtuális gépet ugyan
 * Minden virtuális gép ugyanahhoz a frissítési tartományhoz tartozik. Egy frissítési tartomány például gondoskodik arról, hogy a virtuális gépek ne frissüljenek egyszerre a tervezett karbantartási állásidő során.
 * Minden virtuális gép ugyanahhoz a tartalék tartományhoz tartozik. A tartalék tartomány például gondoskodik arról, hogy a virtuális gépek telepítve legyenek, így egyetlen meghibásodási pont sem befolyásolja az összes virtuális gép rendelkezésre állását.
 
-További információ a [virtuális gépek rendelkezésre állásának kezeléséről][virtual-machines-manage-availability].
+További információ a [virtuális gépek rendelkezésre állásának kezeléséről] [.. /manage-availability.md].
 
 Csak nem felügyelt lemez: mivel az Azure Storage-fiók egy lehetséges meghibásodási pont, fontos, hogy legalább két Azure Storage-fiókkal rendelkezzen, amelyekben legalább két virtuális gép el van osztva. Egy ideális beállítás esetén az SAP-példányt futtató virtuális gépek lemezei egy másik Storage-fiókban lesznek telepítve.
 
@@ -587,7 +588,7 @@ Példánkban az Azure-beli virtuális hálózat 10.0.0.0/16. Az **alhálózat**n
 A szükséges DNS IP-címek megadásához hajtsa végre a következő lépéseket.
 
 1. A Azure Portal **DNS-kiszolgálók** paneljén győződjön meg arról, hogy a virtuális hálózati **DNS-kiszolgálók** beállítás értéke **Egyéni DNS**.
-2. Válassza ki a beállításokat a hálózat típusa alapján. További információkért lásd a következőket:
+2. Válassza ki a beállításokat a hálózat típusa alapján. További információkat találhat az alábbi forrásokban:
    * Adja hozzá a helyszíni DNS-kiszolgálók IP-címeit.  
    A helyszíni DNS-kiszolgálókat az Azure-ban futó virtuális gépekre is kiterjesztheti. Ebben az esetben felveheti azon Azure-beli virtuális gépek IP-címeit, amelyeken a DNS szolgáltatást futtatja.
    * Az Azure-ban elkülönített VM-példányok esetén: helyezzen üzembe egy további virtuális gépet ugyanabban a Virtual Network-példányban, amely DNS-kiszolgálóként szolgál. Adja hozzá a DNS-szolgáltatás futtatásához beállított Azure-beli virtuális gépek IP-címeit.
@@ -770,7 +771,7 @@ Ha az SAP ASCS/SCS-példányt mindkét fürtcsomóponton szeretné felvenni, el�
 | Változó neve |`KeepAliveTime` |
 | Változó típusa |REG_DWORD (decimális) |
 | Érték |120000 |
-| Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
+| Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957549.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
 
 _**3. táblázat:** Az első TCP/IP-paraméter módosítása_
 
@@ -781,7 +782,7 @@ Ezt követően adja hozzá ezt a Windows-beállításjegyzékbeli bejegyzést a 
 | Változó neve |`KeepAliveInterval` |
 | Változó típusa |REG_DWORD (decimális) |
 | Érték |120000 |
-| Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
+| Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957548.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 _**4. táblázat:** A második TCP/IP-paraméter módosítása_
 

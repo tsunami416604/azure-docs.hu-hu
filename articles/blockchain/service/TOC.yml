@@ -71,13 +71,13 @@
     - name: Azure Blockchain fejlesztői készlet
       href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: Blockchain REST API
-      href: 'https://docs.microsoft.com/rest/api/blockchain/'
+      href: /rest/api/blockchain/
     - name: Kódminták
       href: 'https://github.com/Azure-Samples/blockchain'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
     - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-blockchain-service.html'
+      href: /answers/topics/azure-blockchain-service.html
     - name: Közösségi támogatás
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: Stack Overflow-támogatás

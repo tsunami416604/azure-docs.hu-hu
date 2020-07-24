@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: 415895b894261ade9b2332eb3fb926eba74fe937
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078408"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079842"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>A virtuális gép indítása beragadt a Windows rendszerre kész állapotba. A számítógép kikapcsolása az Azure-ban
 
@@ -45,7 +45,7 @@ Ha a probléma nem oldódik meg a módosítások feldolgozásának megkezdése u
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy helyreállítási virtuális géphez
 
 1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
-2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md).
 3. Távoli asztalról a helyreállítási virtuális gépre. 
 4. Ha az operációsrendszer-lemez titkosítva van, ki kell kapcsolnia a titkosítást, mielőtt továbblép a következő lépésre. További információ: [a titkosított operációsrendszer-lemez visszafejtése a virtuális gépen, amely nem indítható el](troubleshoot-bitlocker-boot-error.md#solution).
 
@@ -99,7 +99,7 @@ A memóriakép és a soros konzol engedélyezéséhez futtassa az alábbi szkrip
         reg unload HKLM\BROKENSYSTEM
         ```
 
-3. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+3. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md).
 4. Indítsa el a virtuális gépet, és nyissa meg a soros konzolt.
 5. A memóriakép kiváltásához válassza a **nem maszkolt megszakítás (NMI) küldése** lehetőséget.
     ![a nem maszkolt megszakítások küldésére szolgáló rendszerkép](./media/troubleshoot-vm-configure-update-boot/run-nmi.png)

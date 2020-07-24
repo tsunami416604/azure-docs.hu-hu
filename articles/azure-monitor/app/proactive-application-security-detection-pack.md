@@ -3,17 +3,18 @@ title: Biztonsági észlelési csomag az Azure Application Insights
 description: Az alkalmazások monitorozása az Azure Application Insights és a potenciális biztonsági problémák intelligens észlelése révén.
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.openlocfilehash: b23ada6fe4596a2eee242cc9145789521caf697f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ed304e903bb50591e61e294b6701f8268f9d8e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669726"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081627"
 ---
 # <a name="application-security-detection-pack-preview"></a>Alkalmazás biztonsági észlelési csomagja (előzetes verzió)
 
 Application Insights automatikusan elemzi az alkalmazás által generált telemetria, és észleli a lehetséges biztonsági problémákat. Ez a funkció lehetővé teszi az esetleges biztonsági problémák azonosítását, valamint az alkalmazás kijavításával vagy a szükséges biztonsági intézkedések meghozatalával történő kezelését.
 
-Ehhez a szolgáltatáshoz nem szükséges speciális beállítás, [az alkalmazás nem konfigurálható telemetria küldéséhez](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview).
+Ehhez a szolgáltatáshoz nem szükséges speciális beállítás, [az alkalmazás nem konfigurálható telemetria küldéséhez](./usage-overview.md).
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Mikor kapok ilyen típusú intelligens észlelési értesítést?
 A rendszer háromféle biztonsági problémát észlelt:

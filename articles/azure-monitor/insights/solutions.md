@@ -6,21 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: 4edcb22ed6bd33b1174354cf0cbb9a590e35c207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2da00b44be7018bef80e466231efb75a8eb99754
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906887"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081542"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>A Azure Monitor figyelési megoldásai
+
 A figyelési megoldások kihasználják az Azure szolgáltatásait, hogy további elemzéseket nyújtsanak egy adott alkalmazás vagy szolgáltatás működéséről. Ez a cikk rövid áttekintést nyújt az Azure-beli monitorozási megoldásokról, valamint a használatáról és telepítéséről. A Azure Monitor a használt alkalmazásokhoz és szolgáltatásokhoz is hozzáadhat figyelési megoldásokat. Ezek általában díjmentesen érhetők el, de a használati díjakat meghívó adatokat gyűjtenek.
 
 ## <a name="use-monitoring-solutions"></a>Monitorozási megoldások használata
 
-Nyissa meg Azure Monitor **Áttekintés** lapját, és jelenítse meg a munkaterületen telepített összes megoldás csempéjét. 
+Nyissa meg Azure Monitor **Áttekintés** lapját, és jelenítse meg a munkaterületen telepített összes megoldás csempéjét.
 
-1. Lépjen a [Azure Portal](https://ms.portal.azure.com). Keresse meg és válassza a **figyelő**elemet.
+1. Nyissa meg az [Azure Portalt](https://ms.portal.azure.com). Keresse meg és válassza a **figyelő**elemet.
 1. Az **áttekintések** menüben válassza a **továbbiak**lehetőséget.
 1. A képernyő felső részén található legördülő listák használatával módosíthatja a munkaterületet vagy a csempék időtartományát.
 1. Kattintson a csempére egy megoldás megnyitásához, amely részletesebb elemzést tartalmaz az összegyűjtött adatokról.
@@ -31,12 +32,13 @@ A figyelési megoldások több típusú Azure-erőforrást is tartalmazhatnak, �
 
 ## <a name="list-installed-monitoring-solutions"></a>Telepített figyelési megoldások listázása
 
+### <a name="portal"></a>[Portál](#tab/portal)
+
 Az alábbi eljárás segítségével listázhatja az előfizetésében telepített figyelési megoldásokat.
 
-1. Lépjen a [Azure Portal](https://ms.portal.azure.com). Keresse meg és válassza ki a **megoldásokat**.
+1. Nyissa meg az [Azure Portalt](https://ms.portal.azure.com). Keresse meg és válassza ki a **megoldásokat**.
 1. Az összes munkaterületre telepített megoldások listája látható. A megoldás nevét a-ben telepített munkaterület neve követi.
 1. Az előfizetés vagy az erőforráscsoport alapján történő szűréshez használja a képernyő felső részén található legördülő listákat.
-
 
 ![Az összes megoldás listázása](media/solutions/list-solutions-all.png)
 
@@ -44,7 +46,26 @@ A megoldás nevére kattintva megnyithatja az összefoglalás lapját. Ezen a la
 
 ![Megoldás tulajdonságai](media/solutions/solution-properties.png)
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Használja az az [monitor log-Analytics megoldás listázása](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-list) parancsot az előfizetésében telepített figyelési megoldások listázásához.   A parancs futtatása előtt `list` kövesse a [figyelési megoldás telepítése](#install-a-monitoring-solution)című témakörben található előfeltételeket.
+
+```azurecli
+# List all log-analytics solutions in the current subscription.
+az monitor log-analytics solution list
+
+# List all log-analytics solutions for a specific subscription
+az monitor log-analytics solution list --subscription MySubscription
+
+# List all log-analytics solutions in a resource group
+az monitor log-analytics solution list --resource-group MyResourceGroup
+```
+
+* * *
+
 ## <a name="install-a-monitoring-solution"></a>Figyelési megoldás telepítése
+
+### <a name="portal"></a>[Portál](#tab/portal)
 
 A Microsoft és partnerei által kínált figyelési megoldások az [Azure piactéren](https://azuremarketplace.microsoft.com)érhetők el. A következő eljárással kereshet az elérhető megoldásokban, és telepítheti őket. Megoldás telepítésekor ki kell választania egy [log Analytics munkaterületet](../platform/manage-access.md) , ahol a megoldás telepítve lesz, és az adatok gyűjtése történik.
 
@@ -61,12 +82,76 @@ A Microsoft és partnerei által kínált figyelési megoldások az [Azure piact
 A Közösség tagjai felügyeleti megoldásokat küldhetnek az Azure Gyorsindítás sablonjaiba. Ezeket a megoldásokat közvetlenül is telepítheti, vagy később is letöltheti a sablonokat.
 
 1. A munkaterület és a fiók összekapcsolásához kövesse az [log Analytics munkaterület és az Automation-fiók](#log-analytics-workspace-and-automation-account) című témakörben leírt eljárást.
-2. Ugrás az [Azure Gyorsindítás sablonjaira](https://azure.microsoft.com/documentation/templates/). 
+2. Ugrás az [Azure Gyorsindítás sablonjaira](https://azure.microsoft.com/documentation/templates/).
 3. Keressen egy olyan megoldást, amely érdekli.
 4. A részletek megtekintéséhez válassza ki a megoldást az eredmények közül.
 5. Kattintson az **üzembe helyezés az Azure-** ban gombra.
 6. A rendszer arra kéri, hogy adjon meg olyan információkat, mint például az erőforráscsoport és a hely a megoldás paramétereinek értékei mellett.
 7. A megoldás telepítéséhez kattintson a **vásárlás** gombra.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="prepare-your-environment"></a>A környezet előkészítése
+
+1. Az Azure CLI összetevő telepítése
+
+   A CLI-hivatkozási parancsok futtatása előtt [telepítenie kell az Azure CLI](/cli/azure/install-azure-cli) -t.  Ha szeretné, a Azure Cloud Shell használatával is elvégezheti a jelen cikkben ismertetett lépéseket.  A Azure Cloud Shell egy interaktív rendszerhéj-környezet, amelyet a böngészőben használhat.  Cloud Shell elindítása a következő módszerek egyikével:
+
+   - Nyissa meg Cloud Shell[https://shell.azure.com](https://shell.azure.com)
+
+   - A [Azure Portal](https://portal.azure.com) jobb felső sarkában lévő menüsorban kattintson a **Cloud Shell** gombra
+
+1. Bejelentkezés lehetőséget.
+
+   Ha a parancssori felület helyi telepítését használja, jelentkezzen be az az [login](/cli/azure/reference-index#az-login) parancs használatával.  A hitelesítési folyamat befejezéséhez kövesse a terminálban megjelenő lépéseket.
+
+    ```azurecli
+    az login
+    ```
+
+1. A `log-analytics` bővítmény telepítése
+
+   A `log-analytics` parancs az alapszintű Azure CLI kísérleti bővítménye. További információ a bővítmények [használatáról az Azure CLI használatával](/cli/azure/azure-cli-extensions-overview?).
+
+   ```azurecli
+   az extension add --name log-analytics
+   ```
+
+   A következő figyelmeztetés várható.
+
+   ```output
+   The installed extension `log-analytics` is experimental and not covered by customer support.  Please use with discretion.
+   ```
+
+### <a name="install-a-solution-with-the-azure-cli"></a>Megoldás telepítése az Azure CLI-vel
+
+Megoldás telepítésekor ki kell választania egy [log Analytics munkaterületet](/azure/azure-monitor/platform/manage-access) , ahol a megoldás telepítve lesz, és az adatok gyűjtése történik.  Az Azure CLI-vel a munkaterületek kezelése az az [monitor log-Analytics munkaterület-](/cli/azure/monitor/log-analytics/workspace) referenciák használatával végezhető el.  A munkaterület és a fiók összekapcsolásához kövesse az [log Analytics munkaterület és az Automation-fiók](#log-analytics-workspace-and-automation-account) című témakörben leírt eljárást.
+
+A figyelési megoldás telepítéséhez használja az az [monitor log-Analytics megoldás létrehozása](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) lehetőséget.  Szögletes zárójelben lévő paraméterek megadása nem kötelező.
+
+```azurecli
+az monitor log-analytics solution create --name
+                                         --plan-product
+                                         --plan-publisher
+                                         --resource-group
+                                         --workspace
+                                         [--no-wait]
+                                         [--tags]
+```
+
+Az alábbi mintakód egy log-Analytics megoldást hoz létre a Omsgaléria/tárolók megtervezéséhez.
+
+```azurecli
+az monitor log-analytics solution create --resource-group MyResourceGroup \
+                                         --name Containers({SolutionName}) \
+                                         --tags key=value \
+                                         --plan-publisher Microsoft  \
+                                         --plan-product "OMSGallery/Containers" \
+                                         --workspace "/subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/ \
+                                           Microsoft.OperationalInsights/workspaces/{WorkspaceName}"
+```
+
+* * *
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics munkaterület és Automation-fiók
 
@@ -88,9 +173,25 @@ A következő eljárással ellenőrizheti, hogy Log Analytics munkaterület és 
 
 ## <a name="remove-a-monitoring-solution"></a>Figyelési megoldás eltávolítása
 
-Egy telepített megoldás eltávolításához keresse meg a [telepített megoldások listájában](#list-installed-monitoring-solutions). Kattintson a megoldás nevére az összefoglalás oldal megnyitásához, majd kattintson a **Törlés**gombra.
+### <a name="portal"></a>[Portál](#tab/portal)
+
+Ha a portálon szeretné eltávolítani a telepített megoldásokat, keresse meg a [telepített megoldások listájában](#list-installed-monitoring-solutions). Kattintson a megoldás nevére az összefoglalás oldal megnyitásához, majd kattintson a **Törlés**gombra.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Egy telepített megoldás Azure CLI használatával történő eltávolításához használja az az [monitor log-Analytics Solution delete](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-delete) parancsot.
+
+```azurecli
+az monitor log-analytics solution delete --name
+                                         --resource-group
+                                         [--no-wait]
+                                         [--yes]
+```
+
+* * *
 
 ## <a name="next-steps"></a>További lépések
 
 * Szerezze be a [Microsoft figyelési megoldásainak listáját](solutions-inventory.md).
 * Megtudhatja, hogyan [hozhat létre lekérdezéseket](../log-query/log-query-overview.md) a figyelési megoldások által gyűjtött adatok elemzéséhez.
+* Tekintse [meg Azure monitor összes Azure CLI-parancsát](/cli/azure/azure-cli-reference-for-monitor).

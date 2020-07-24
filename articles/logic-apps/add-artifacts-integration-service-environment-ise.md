@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: a4811bcb47120ba37337c73604e33826d9affcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d8fe945b028b574e71ae24b1483ad8e7fd67b01d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830026"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078727"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Erőforrások hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
 
@@ -44,7 +44,7 @@ Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Name (Név)** | Yes | A létrehozandó logikai alkalmazás neve |
+   | **Név** | Yes | A létrehozandó logikai alkalmazás neve |
    | **Előfizetés** | Yes | A használni kívánt Azure-előfizetés neve |
    | **Erőforráscsoport** | Yes | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
    | **Hely** | Yes | Az **integrációs szolgáltatási környezetek**területen válassza ki a használni kívánt ISE-t, ha még nincs kiválasztva. <p><p> **Fontos**: Ha a logikai alkalmazásokat integrációs fiókkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
@@ -76,10 +76,10 @@ ISE-t használó integrációs fiók létrehozásához kövesse az alábbi lép�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Name (Név)** | Yes | A létrehozni kívánt integrációs fiók neve |
+   | **Név** | Yes | A létrehozni kívánt integrációs fiók neve |
    | **Előfizetés** | Yes | A használni kívánt Azure-előfizetés neve |
    | **Erőforráscsoport** | Yes | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
-   | **Díjszabási csomag** | Yes | Az integrációs fiókhoz használandó díjszabási csomag |
+   | **Tarifacsomag** | Yes | Az integrációs fiókhoz használandó díjszabási csomag |
    | **Hely** | Yes | Az **integrációs szolgáltatási környezetek**területen válassza ki ugyanazt az ISE-t, amelyet a Logic apps használ, ha még nincs kiválasztva. <p><p> **Fontos**: Ha az integrációs fiókot logikai alkalmazásokkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
    ||||
 
@@ -101,7 +101,7 @@ Azok a Microsoft által felügyelt összekötők, amelyek az ISE létrehozása u
 
    ![Felügyelt összekötők megtekintése](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. Az **új felügyelt összekötő hozzáadása** panelen nyissa meg az **összekötő keresése** listát. Válassza ki a használni kívánt ISE-összekötőt, de még nincs telepítve az ISE-ben. Válassza a **Létrehozás** lehetőséget.
+1. Az **új felügyelt összekötő hozzáadása** panelen nyissa meg az **összekötő keresése** listát. Válassza ki a használni kívánt ISE-összekötőt, de még nincs telepítve az ISE-ben. Kattintson a **Létrehozás** gombra.
 
    ![Válassza ki az ISE-ben telepíteni kívánt ISE-összekötőt](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
@@ -127,7 +127,7 @@ Ha az ISE-ben egyéni összekötőket szeretne használni, hozza létre ezeket a
 
    ![Egyéni összekötő kiválasztása és szerkesztése](./media/add-artifacts-integration-service-environment-ise/edit-custom-connectors.png)
 
-1. Folytassa úgy, hogy az összekötőt a szokásos módon hozza létre egy [OpenAPI-definícióból](https://docs.microsoft.com/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition) vagy [SOAP](https://docs.microsoft.com/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector)-ból.
+1. Folytassa úgy, hogy az összekötőt a szokásos módon hozza létre egy [OpenAPI-definícióból](/connectors/custom-connectors/define-openapi-definition#import-the-openapi-definition) vagy [SOAP](/connectors/custom-connectors/create-register-logic-apps-soap-connector#2-define-your-connector)-ból.
 
 1. Az ISE-ben lévő egyéni összekötők kezeléséhez lásd: [az integrációs szolgáltatási környezet kezelése](../logic-apps/ise-manage-integration-service-environment.md).
 

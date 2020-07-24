@@ -5,11 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684016"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078926"
 ---
 # <a name="sensor-partner-integration"></a>Érzékelői partner integrációja
 
@@ -130,7 +131,7 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
 - /**SensorModel**: a SensorModel megfelel az érzékelő metaadatainak, például a gyártó, az érzékelő típusa, amely az analóg vagy a digitális, valamint az érzékelő mértékét, például a környezeti hőmérsékletet és a nyomást.
 - /**Érzékelő**: az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.
 
-  **DeviceModel** |  |
+  DeviceModel | Description |
   --- | ---
   Típus (csomópont, átjáró)  | Az eszköz – csomópont vagy átjáró típusa |
   Gyártó  | A gyártó neve |
@@ -139,7 +140,7 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   Name  | Az erőforrást azonosító név. Például a modell neve vagy a terméknév. |
   Description  | Adjon meg egy értelmes leírást a modellről. |
   Tulajdonságok  | További tulajdonságok a gyártótól. |
-  **Eszköz** |  |
+  **Eszköz** | **Leírás** |
   DeviceModelId  |A társított eszköz-modell azonosítója. |
   HardwareId   |Az eszköz egyedi azonosítója, például egy MAC-címe.  |
   ReportingInterval |Jelentéskészítési időköz (másodperc). |
@@ -148,7 +149,7 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   Name  | Az erőforrást azonosító név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az erőforráspartner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partner oldalán, a felhasználó által definiált nevet is propagálni kell a FarmBeats.  |
   Description  | Adjon meg egy értelmes leírást.  |
   Tulajdonságok  |További tulajdonságok a gyártótól.  |
-  **SensorModel** |  |
+  **SensorModel** | **Leírás** |
   Típus (analóg, digitális)  |Említi az analóg vagy a digitális érzékelőt.|
   Gyártó  | A gyártó neve. |
   ProductCode  | Termékkód vagy modell neve vagy száma. Például RS-CO2-N01.  |
@@ -162,7 +163,7 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   Name  | Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
   Description  | Adjon meg egy értelmes leírást a modellről.
   Tulajdonságok  | További tulajdonságok a gyártótól.
-  **Érzékelő**  |  |
+  **Érzékelő**  | **Leírás** |
   HardwareId  | A gyártó által beállított érzékelő egyedi azonosítója.
   SensorModelId  | A társított érzékelő modell azonosítója.
   Hely  | Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).
@@ -301,7 +302,7 @@ Miután az ügyfelek megvásárolták és telepítették az eszközöket vagy é
    - Ügyfél-azonosító
    - Titkos ügyfélkulcs
    - EventHub-kapcsolatok karakterlánca
-   - Kezdő dátum
+   - Kezdési dátum
 
    > [!NOTE]
    > A kezdő dátum lehetővé teszi, hogy a korábbi adatcsatorna, azaz a felhasználó által megadott dátummal rendelkező adatok legyenek.

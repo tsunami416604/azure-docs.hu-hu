@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7ca4df620739b2ab55b8ba986031cc48fe87f1fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5a4cb788a24252a2de7b9d669b166b25ed48be1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294919"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081593"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights intelligens észlelési szabályok kezelése Azure Resource Manager-sablonok használatával
 
@@ -22,7 +22,7 @@ Ez a módszer akkor használható, ha új Application Insights erőforrásokat t
 
 Az intelligens detektálási szabályokhoz a következő beállításokat konfigurálhatja:
 - Ha a szabály engedélyezve van (az alapértelmezett érték **igaz**.)
-- Ha az e-maileket el kell juttatni az előfizetés [figyelési olvasójának](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) felhasználóinak, illetve a [közreműködői szerepkörök figyelésére](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) , ha észlelés található (az alapértelmezett érték **igaz**.)
+- Ha az e-maileket el kell juttatni az előfizetés [figyelési olvasójának](../../role-based-access-control/built-in-roles.md#monitoring-reader) felhasználóinak, illetve a [közreműködői szerepkörök figyelésére](../../role-based-access-control/built-in-roles.md#monitoring-contributor) , ha észlelés található (az alapértelmezett érték **igaz**.)
 - Minden további e-mail-címzett, akinek értesítést kell kapnia, amikor észlelés található.
     -  Az e-mail-konfiguráció nem érhető el az _előzetes_verzióként megjelölt intelligens észlelési szabályokhoz.
 

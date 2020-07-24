@@ -4,16 +4,17 @@ description: A cikk kiemeli, Hogyan szabályozható a Azure Data Catalogban regi
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: 9905ed72ec54304bbdb0f7ee607cbb013fc645bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d035417b613c81487c493bde90cdcc461f04412
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68736347"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081151"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>Adategységek kezelése Azure Data Catalogban
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 A Azure Data Catalog adatforrások felderítésére szolgál, így könnyen felderítheti és értelmezheti az elemzéshez és a döntések végrehajtásához szükséges adatforrásokat. Ezek a felderítési képességek a legnagyobb hatással lehetnek arra, hogy Ön és más felhasználók megtalálják és megértsék az elérhető adatforrások legszélesebb körét. Ezeket az elemeket szem előtt tartva az Data Catalog alapértelmezett viselkedése minden regisztrált adatforráshoz az összes katalógus-felhasználó számára láthatóvá és felderíthetővé válik.
 
 Data Catalog nem biztosít hozzáférést magához az adatelérési ponthoz. Az adathozzáférést az adatforrás tulajdonosa vezérli. A Data Catalog használatával felderítheti az adatforrásokat, és megtekintheti a katalógusban regisztrált forrásokhoz kapcsolódó metaadatokat.
@@ -62,5 +63,5 @@ Az Adateszközök tulajdonosai vezérelhetik a saját adategységek láthatósá
 ## <a name="catalog-administrators"></a>Katalógus-rendszergazdák
 Data Catalog a rendszergazdák a katalógusban lévő összes eszköz tulajdonosát implicit módon közösen használják. Az eszközök tulajdonosai nem tudják eltávolítani a rendszergazdák láthatóságát, a rendszergazdák pedig kezelhetik a katalógusban lévő összes adategység tulajdonosát és láthatóságát.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A Data Catalog közösségi modell metaadatok és adategységek felderítése lehetővé teszi a katalógus összes felhasználója számára, hogy hozzájáruljanak és felfedezzék. A Data Catalog standard kiadása úgy van kialakítva, hogy az adott adategységek láthatóságának és felhasználásának korlátozásával a tulajdonjogot és a felügyeletet.

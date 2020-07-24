@@ -4,17 +4,18 @@ description: Ez a cikk azt mutatja be, hogyan lehet felderíteni a regisztrált 
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/01/2019
-ms.openlocfilehash: b12cb94832a1ea977fb13f5f2271984dc8780cee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eb689b17df8236a00b5914912d1927804944f25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68736377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081202"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Adatforrások felderítése Azure Data Catalog
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A Azure Data Catalog egy teljes körűen felügyelt felhőalapú szolgáltatás, amely a vállalati adatforrások regisztrálási és felderítési rendszereként szolgál. Más szóval a Data Catalog segít az embereknek felderíteni, értelmezni és használni az adatforrásokat. Segíti a szervezeteket abban, hogy minél több értéket kapjanak a meglévő adatokból. Ha egy adatforrás regisztrálva van Data Catalog, a metaadatokat a szolgáltatás indexeli, így könnyedén keresheti meg a szükséges adatokat.
 
@@ -55,7 +56,7 @@ Az alapértelmezett csempe nézetben a keresési eredményekben megjelenő össz
 
  ![Találatok kiemelése és keresési egyezések a Azure Data Catalog portálon](./media/data-catalog-how-to-discover/search-matches.png)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Mivel az adatforrások Data Catalog példányokkal való regisztrálása az adatforrásból a katalógus-szolgáltatásba másolja a strukturális és leíró metaadatokat, az adatforrás könnyebben felderíthető és értelmezhető lesz. Miután regisztrált egy adatforrást, az Data Catalog-portálon található szűrés és keresés használatával derítheti fel.
 

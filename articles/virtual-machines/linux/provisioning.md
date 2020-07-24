@@ -9,21 +9,21 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6530d05b8e1aa565e64256054e81b785572edfb0
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85308141"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080148"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux rendszerű virtuális gépek üzembe helyezése
 Ha általánosított rendszerképből (megosztott képkatalógusból vagy felügyelt rendszerképből) hoz létre virtuális gépet, a vezérlő síkja lehetővé teszi a virtuális gép létrehozását, valamint paramétereket és beállításokat adhat át a virtuális géphez. Ezt a virtuális gépek *üzembe*helyezésének nevezzük. A kiépítés során a platform lehetővé teszi, hogy a virtuális gép a rendszerindítás során elérhetővé hozzon paramétereket (állomásnév, Felhasználónév, jelszó, SSH-kulcsok, customData). 
 
 A rendszerképbe bekészített kiépítési ügynök a platformmal együtt csatlakozik a több független kiépítési interfészhez, és a tulajdonságokat és a jeleket a befejezett platformra állítja be. 
 
-A kiépítési ügynökök lehetnek az [Azure Linux-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)vagy a [Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init). Ezek az általánosított rendszerképek létrehozásának [előfeltételei](create-upload-generic.md) .
+A kiépítési ügynökök lehetnek az [Azure Linux-ügynök](../extensions/agent-linux.md)vagy a [Cloud-init](./using-cloud-init.md). Ezek az általánosított rendszerképek létrehozásának [előfeltételei](create-upload-generic.md) .
 
-A kiépítési ügynökök támogatást biztosítanak az összes támogatott [Azure Linux-disztribúcióhoz](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros), és számos esetben a támogatott disztribúciós rendszerképeket a Cloud-init és a Linux-ügynökkel is megtalálhatja. Ez lehetőséget biztosít a Cloud-init használatára a kiépítés kezeléséhez, majd a Linux-ügynök támogatást nyújt az [Azure-bővítmények](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows)kezeléséhez. A bővítmények támogatása azt jelenti, hogy a virtuális gép ezután jogosult a további Azure-szolgáltatások támogatására, mint például a virtuális gép jelszavának alaphelyzetbe állítása, az Azure monitoring, a Azure Backup, az Azure Disk Encryption stb.
+A kiépítési ügynökök támogatást biztosítanak az összes támogatott [Azure Linux-disztribúcióhoz](./endorsed-distros.md), és számos esetben a támogatott disztribúciós rendszerképeket a Cloud-init és a Linux-ügynökkel is megtalálhatja. Ez lehetőséget biztosít a Cloud-init használatára a kiépítés kezeléséhez, majd a Linux-ügynök támogatást nyújt az [Azure-bővítmények](../extensions/features-windows.md)kezeléséhez. A bővítmények támogatása azt jelenti, hogy a virtuális gép ezután jogosult a további Azure-szolgáltatások támogatására, mint például a virtuális gép jelszavának alaphelyzetbe állítása, az Azure monitoring, a Azure Backup, az Azure Disk Encryption stb.
 
 A kiépítés befejezése után a Cloud-init minden rendszerindításkor le fog futni. A Cloud-init figyeli a virtuális gép módosításait, például a hálózati változásokat, az ideiglenes lemez csatlakoztatását és formázását, és elindítja a Linux-ügynököt. A Linux-ügynök folyamatosan fut a kiszolgálón, és egy "cél állapotot" (új konfigurációt) keres az Azure platformról, így a bővítmények telepítésekor az ügynök képes lesz feldolgozni őket.
 

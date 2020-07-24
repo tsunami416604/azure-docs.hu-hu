@@ -6,17 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2020
-ms.openlocfilehash: 7093e20473b799a3f05ddf30803721636732241e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e7fcde86c9bbf017ac3fca6025a025104b0d864
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77663257"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081576"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Agent Health megoldás a Azure Monitor
 A Agent Health megoldás az Azure-ban segít megérteni, hogy az összes ügynök, amely közvetlenül a Log Analytics munkaterületen jelent meg Azure Monitor vagy egy Azure Monitorhoz csatlakoztatott System Center Operations Manager felügyeleti csoport, amely nem válaszol, és nem küldi el a működési adatmennyiséget.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
 
 ## <a name="prerequisites"></a>Előfeltételek
-A megoldás üzembe helyezése előtt ellenőrizze, hogy jelenleg támogatottak-e a Log Analytics munkaterületre jelentett [Windows-ügynökök](../../log-analytics/log-analytics-windows-agent.md) , vagy a munkaterülethez integrált [Operations Manager felügyeleti csoportnak](../../azure-monitor/platform/om-agents.md) jelentenek-e jelentéseket.
+A megoldás üzembe helyezése előtt ellenőrizze, hogy jelenleg támogatottak-e a Log Analytics munkaterületre jelentett [Windows-ügynökök](../platform/agent-windows.md) , vagy a munkaterülethez integrált [Operations Manager felügyeleti csoportnak](../../azure-monitor/platform/om-agents.md) jelentenek-e jelentéseket.
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 Ez a megoldás a következő erőforrásokból áll, amelyek a munkaterületéhez lesznek hozzáadva, és ügynökökhöz vagy az Operations Managerhez kapcsolt felügyeleti csoporthoz lesznek közvetlenül hozzákapcsolva.
@@ -47,7 +48,7 @@ Amikor hozzáadja a megoldást a Log Analytics munkaterülethez, a rendszer hozz
 
 Kattintson az **Ügynökállapot** csempére az **Ügynökállapot** irányítópult megnyitásához.  Az irányítópulton az alábbi táblázatban felsorolt oszlopok találhatóak. Mindegyik oszlop felsorolja azt a tíz eseményt, amelyek a legjobban megfelelnek az adott oszlop időtartományi feltételének. Az oszlopok alján jobb oldalon található **Az összes megtekintése** elemet vagy az oszlopok fejlécét kiválasztva a teljes listát lefedő keresést végezhet a naplóban.
 
-| Oszlop | Description |
+| Oszlop | Leírás |
 |--------|-------------|
 | Ügynökök darabszáma egységidő alatt | Az ügynökök számának trendje egy hét napos időszakra vetítve, a Linux- és Windows-ügynököket is beleértve.|
 | Nem válaszoló ügynökök száma | Azon ügynökök listája, amelyek az elmúlt 24 órában nem küldtek szívverést.|
@@ -66,7 +67,7 @@ A megoldás egy típusú rekordot hoz létre a Log Analytics munkaterületen.
 ### <a name="heartbeat-records"></a>Szívverés rekordok
 Egy **Szívverés** típusú rekord készül.  Ezen rekordok tulajdonságait az alábbi táblázat ismerteti.  
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | `Type` | *Szívverés*|
 | `Category` | Az érték lehet *Direct Agent* (Közvetlen ügynök), *SCOM Agent* (SCOM-ügynök) vagy *SCOM Management Server* (SCOM felügyeleti kiszolgáló).|

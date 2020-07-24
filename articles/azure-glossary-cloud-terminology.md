@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: fa7464c70593c83c708aba49235ecdde1be0cc9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a06435d4b5a4c11f74073e67e3f48fd2ed0779d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807761"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079570"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Szószedet: az Azure platform felhőalapú terminológiájának szótára
 
@@ -51,7 +51,7 @@ Parancssori felület, amely az Azure-szolgáltatások Windows, macOS és Linux r
 
 ## <a name="azure-powershell"></a><a name="powershell"></a>Azure PowerShell
 Parancssori felület az Azure-szolgáltatások Windows rendszerű számítógépeken keresztüli parancssorból való kezeléséhez. Egyes szolgáltatások vagy szolgáltatási funkciók csak a PowerShell vagy a parancssori felület használatával kezelhetők.
-Lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)
+Lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/)
 
 ## <a name="azure-resource-manager-deployment-model"></a><a name="arm-model"></a>Azure Resource Manager üzembe helyezési modell
 A két üzembe helyezési [modell](resource-manager-deployment-model.md) egyike, amely a Microsoft Azure erőforrásainak központi telepítésére szolgál (a másik a klasszikus üzembe helyezési modell). Bizonyos Azure-szolgáltatások csak a Resource Manager-alapú üzemi modellt támogatják, némelyikük csak a klasszikus üzemi modellt támogatja, és néhány támogatást is. Az egyes Azure-szolgáltatások dokumentációja határozza meg, hogy mely modell (ek) et támogatják.

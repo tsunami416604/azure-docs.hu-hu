@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 5d0eee6b89ec3e0be944f17c361aafa598724069
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: bc29a62f469b0b9d091fcdef2488afba764a09fe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042118"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080352"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuálisgép-bővítmények és-funkciók Linux rendszerhez
 
@@ -32,7 +32,7 @@ Ez a cikk áttekintést nyújt a virtuálisgép-bővítményekről, az Azure vir
 Számos különböző Azure-beli virtuálisgép-bővítmény érhető el, amelyek mindegyike egy adott használati esettel rendelkezik. Néhány példa:
 
 - A PowerShell kívánt állapot-konfigurációinak alkalmazása a Linux rendszerhez készült DSC-bővítményt futtató virtuális gépre. További információ: az [Azure desired State Configuration bővítménye](https://github.com/Azure/azure-linux-extensions/tree/master/DSC).
-- Egy virtuális gép figyelésének konfigurálása a Microsoft monitoring Agent virtuálisgép-bővítménnyel. További információ: [Linux rendszerű virtuális gép figyelése](../linux/tutorial-monitoring.md).
+- Egy virtuális gép figyelésének konfigurálása a Microsoft monitoring Agent virtuálisgép-bővítménnyel. További információ: [Linux rendszerű virtuális gép figyelése](../linux/tutorial-monitor.md).
 - Konfigurálja az Azure-infrastruktúra figyelését a Chef vagy az Datadoggal bővítménnyel. További információ: [Chef docs](https://docs.chef.io/azure_portal.html) vagy [datadoggal blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 A folyamat-specifikus bővítmények mellett egyéni szkriptek is elérhetők a Windows-és Linux-alapú virtuális gépekhez. A Linuxhoz készült egyéni szkriptek lehetővé teszik a bash-parancsfájlok futtatását egy virtuális gépen. Az egyéni parancsfájlok olyan Azure-beli központi telepítések tervezésekor hasznosak, amelyek a natív Azure-eszközök által biztosított konfigurációt igénylik. További információ: [linuxos virtuális gép egyéni parancsfájl-bővítménye](custom-script-linux.md).
@@ -65,7 +65,7 @@ A bővítmények letöltése az Azure Storage bővítmény-tárházból történ
 > [!IMPORTANT]
 > Ha letiltotta a *168.63.129.16* való hozzáférést a vendég tűzfal használatával, akkor a bővítmények a fentiektől függetlenül meghiúsulnak.
 
-Az ügynököket csak a bővítmény-csomagok és a jelentéskészítési állapotok letöltésére lehet használni. Ha például egy bővítmény telepítéséhez le kell töltenie egy parancsfájlt a GitHubról (egyéni parancsfájlból), vagy hozzá kell férnie az Azure Storage-hoz (Azure Backup), akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. A különböző kiterjesztések eltérő követelményekkel rendelkeznek, mivel ezek az alkalmazások a saját jogukban vannak. Az Azure Storage-hoz hozzáférést igénylő bővítmények esetében engedélyezheti a hozzáférést az Azure NSG Service-címkék használatával a [tároláshoz](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Az ügynököket csak a bővítmény-csomagok és a jelentéskészítési állapotok letöltésére lehet használni. Ha például egy bővítmény telepítéséhez le kell töltenie egy parancsfájlt a GitHubról (egyéni parancsfájlból), vagy hozzá kell férnie az Azure Storage-hoz (Azure Backup), akkor további tűzfal/hálózati biztonsági csoport portjait kell megnyitnia. A különböző kiterjesztések eltérő követelményekkel rendelkeznek, mivel ezek az alkalmazások a saját jogukban vannak. Az Azure Storage-hoz hozzáférést igénylő bővítmények esetében engedélyezheti a hozzáférést az Azure NSG Service-címkék használatával a [tároláshoz](../../virtual-network/security-overview.md#service-tags).
 
 Az ügynök forgalmi kéréseinek átirányításához a Linux-ügynöknek proxykiszolgáló-támogatással kell rendelkezniük. Azonban ez a proxykiszolgáló-támogatás nem alkalmazza a bővítményeket. Az egyes bővítményeket úgy kell konfigurálni, hogy a proxyval működjenek.
 
@@ -259,7 +259,7 @@ Az előző példában a szülő vagy a "Package központilag telepített verzió
 
 A "cél állapotjelző ügynök" az automatikus frissítés verziója.
 
-Erősen ajánlott automatikusan frissíteni az ügynököt, az automatikus [frissítést. enabled = y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). Ha nem rendelkezik ezzel az engedélyezéssel, az ügynököt manuálisan kell frissítenie, és nem kell lekérnie a hibákat és a biztonsági javításokat.
+Erősen ajánlott automatikusan frissíteni az ügynököt, az automatikus [frissítést. enabled = y](./update-linux-agent.md). Ha nem rendelkezik ezzel az engedélyezéssel, az ügynököt manuálisan kell frissítenie, és nem kell lekérnie a hibákat és a biztonsági javításokat.
 
 #### <a name="extension-updates"></a>Bővítmények frissítései
 

@@ -7,15 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/30/2019
+ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 60f2e3f949a4f627839a07137ebaf77518db87a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d19f59635920951b506e41884f4ab79be78e247d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213975"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080726"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Helyettesítő kulcsok létrehozása identitás használatával a szinapszis SQL-készletben
 
@@ -23,7 +24,7 @@ Ebben a cikkben javaslatokat és példákat talál arra, hogy az IDENTITY tulajd
 
 ## <a name="what-is-a-surrogate-key"></a>Mi az a helyettesítő kulcs?
 
-A tábla egy helyettesítő kulcsa az egyes sorok egyedi azonosítóját tartalmazó oszlop. A kulcs nem jön létre a tábla adatainak alapján. Adatmodellek, például helyettesítő kulcsok létrehozása a tábláiban az adatraktár-modellek tervezésekor. Az IDENTITY tulajdonság használatával egyszerűen és hatékonyan érheti el ezt a célt, anélkül, hogy ez befolyásolná a terhelési teljesítményt.  
+A tábla egy helyettesítő kulcsa az egyes sorok egyedi azonosítóját tartalmazó oszlop. A kulcs nem jön létre a tábla adatainak alapján. Adatmodellek, például helyettesítő kulcsok létrehozása a tábláiban az adatraktár-modellek tervezésekor. Az IDENTITY tulajdonság használatával egyszerűen és hatékonyan érheti el ezt a célt, anélkül, hogy ez befolyásolná a terhelési teljesítményt. Az IDENTITY tulajdonsághoz a [create Table-(Transact-SQL-) identitásban (tulajdonság)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)részletezett korlátozások vonatkoznak. Az identitás egyik korlátja, hogy nem garantált egyedi. Az identitás beállításának kikapcsolásával és az identitás értékének kivetésével a rendszer több egyedi értéket fog eredményezni, de nem garantálja az egyediséget minden helyzetben. Ha az identitás korlátozásai miatt nem használhat identitási értékeket, hozzon létre egy külön táblázatot, amely egy aktuális értéket tárol, és kezelje a tábla és a szám hozzárendelésének hozzáférését az alkalmazással. 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Tábla létrehozása azonosító oszloppal
 
@@ -49,7 +50,7 @@ Ez a szakasz a megvalósítás árnyalatait emeli ki, hogy könnyebben megértse
 
 ### <a name="allocation-of-values"></a>Értékek kiosztása
 
-Az IDENTITY tulajdonság nem garantálja a helyettesítő értékek lefoglalásának sorrendjét, amely a SQL Server és Azure SQL Database viselkedését tükrözi. A szinapszis SQL-készletben azonban a garancia hiánya erősebb.
+Az IDENTITY tulajdonság nem garantálja azt a sorrendet, amelyben a helyettesítő értékek le lesznek foglalva az adatraktár elosztott architektúrája miatt. Az IDENTITY tulajdonság úgy lett kialakítva, hogy a kibővítse a szinapszis SQL-készlet összes eloszlását anélkül, hogy ez befolyásolná a terhelési teljesítményt. 
 
 A következő példa egy illusztráció:
 

@@ -7,18 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/27/2020
-ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: e47cd89b2f0a5de4e0fc7663f37a2960e2ada971
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82115499"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078635"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>AS2-üzenetek váltása nagyvállalati integráció esetében az Azure Logic Appsben az Enterprise Integration Pack csomaggal
 
 > [!IMPORTANT]
-> Az eredeti AS2-összekötő elavult, ezért ne felejtse el használni az **AS2 (v2)** összekötőt. Ez a verzió ugyanazokat a képességeket biztosítja, mint az eredeti verzió, a Logic Apps futtatókörnyezetnek natív, és jelentős teljesítménybeli továbbfejlesztéseket biztosít az átviteli sebesség és az üzenetek mérete tekintetében. Emellett a natív v2-összekötő nem igényli, hogy az integrációs fiókhoz hozzon létre egy kapcsolódást. Ehelyett az előfeltételek szakaszban leírtaknak megfelelően ügyeljen arra, hogy összekapcsolja az integrációs fiókját ahhoz a logikai alkalmazáshoz, ahol az összekötőt használni szeretné.
+> Az eredeti AS2-összekötő elavult, így ha nincs szüksége követési képességekre, használja helyette az **AS2 (v2)** összekötőt. A nyomon követés kivételével a v2-összekötő ugyanazokat a funkciókat biztosítja, mint az eredeti verzió, natív az Logic Apps Runtime számára, és jelentős teljesítménybeli továbbfejlesztéseket tartalmaz az üzenetek mérete, az átviteli sebesség és a késés terén. Emellett a v2-összekötő nem igényli, hogy hozzon létre egy kapcsolódást az integrációs fiókjához. Ehelyett az előfeltételek szakaszban leírtaknak megfelelően ügyeljen arra, hogy összekapcsolja az integrációs fiókját ahhoz a logikai alkalmazáshoz, ahol az összekötőt használni szeretné.
 
 Az AS2-üzeneteket az AS2-összekötő segítségével használhatja az Azure Logic Appsben. Az AS2-összekötő triggereket és műveleteket biztosít az AS2-kommunikáció kezeléséhez. Ha például az üzenetek továbbításakor meg szeretné teremteni a biztonságot és a megbízhatóságot, a következő műveleteket használhatja:
 
@@ -119,7 +119,7 @@ Egy teljesen működőképes logikai alkalmazás és példa AS2-forgatókönyv �
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő részletes technikai részleteit, például az összekötő hencegő fájljában leírt műveleteket és korlátokat az összekötő [hivatkozási oldalán](https://docs.microsoft.com/connectors/as2/)találja. 
+Az összekötő részletes technikai részleteit, például az összekötő hencegő fájljában leírt műveleteket és korlátokat az összekötő [hivatkozási oldalán](/connectors/as2/)találja. 
 
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében ez az összekötő ISE által címkézett verziója az [ISE B2B-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)használja.

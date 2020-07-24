@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: d14d8f38ff8a2bed01584d5c5fec56d254cede05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 57f9338841b599e10c8a1d7eec8fd4f371ceecb9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73494742"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081015"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Rövid útmutató: Apache Kafka-fürt létrehozása az Azure HDInsight a PowerShell használatával
 
@@ -25,13 +25,13 @@ Ebben a rövid útmutatóban megismerheti, hogyan hozhat létre [Apache Kafka](h
 
 A Kafka API csak az ugyanazon virtuális hálózaton belüli erőforrások számára érhető el. Ebben a rövid útmutatóban közvetlenül éri el a fürtöt SSH-val. Ha más szolgáltatásokat, hálózatokat vagy virtuális gépeket szeretne csatlakoztatni a Kafkához, először létre kell hoznia egy virtuális hálózatot, majd létre kell hoznia a hálózaton belüli erőforrásokat. További információt a [Csatlakozás az Apache Kafkához virtuális hálózattal](apache-kafka-connect-vpn-gateway.md) című dokumentumban találhat.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* A PowerShell az [modul](https://docs.microsoft.com/powershell/azure/overview) telepítve van.
+* A PowerShell az [modul](https://docs.microsoft.com/powershell/azure/) telepítve van.
 
 * Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -67,7 +67,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 Míg a Kafka HDInsight az Azure Managed Disks használatával tárolja Kafka-adatokat, a fürt az Azure Storage-ban is tárol információkat, például naplókat. A [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) használatával hozzon létre egy új Storage-fiókot.
 
 > [!IMPORTANT]  
-> A Storage- `BlobStorage` fiók típusa csak másodlagos tárolóként használható HDInsight-fürtökhöz.
+> A Storage-fiók típusa `BlobStorage` csak másodlagos tárolóként használható HDInsight-fürtökhöz.
 
 ```azurepowershell-interactive
 $storageName = Read-Host -Prompt "Enter the storage account name"
@@ -317,7 +317,7 @@ Kövesse az alábbi lépéseket a rekordoknak a korábban létrehozott test tém
 
 Szoftveresen is létrehozhat előállítókat és fogyasztókat. Az API használatára példaként tekintse meg a [Apache Kafka producer és fogyasztói API HDInsight-](apache-kafka-producer-consumer-api.md) dokumentummal című témakört.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) paranccsal távolíthatja el az erőforráscsoportot, a HDInsight és az összes kapcsolódó erőforrást.
 

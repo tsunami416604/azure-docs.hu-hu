@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855588"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080471"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets – gyakori kérdések
 
@@ -71,15 +71,15 @@ Igen! További információkért lásd a [méretezési csoport zónájának doku
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Mik az Azure-ra vonatkozó ajánlott eljárások?
 
-Az automatikus skálázás ajánlott eljárásaiért lásd: [ajánlott eljárások a virtuális gépek automatikus skálázásához](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-best-practices).
+Az automatikus skálázás ajánlott eljárásaiért lásd: [ajánlott eljárások a virtuális gépek automatikus skálázásához](../azure-monitor/platform/autoscale-best-practices.md).
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>Hol találom meg a gazdagép-alapú metrikákat használó automatikus skálázás metrikáinak nevét?
 
-A gazdagép-alapú metrikákat használó automatikus skálázás metrikáinak neveivel kapcsolatban lásd: [támogatott metrikák Azure monitor](https://azure.microsoft.com/documentation/articles/monitoring-supported-metrics/).
+A gazdagép-alapú metrikákat használó automatikus skálázás metrikáinak neveivel kapcsolatban lásd: [támogatott metrikák Azure monitor](../azure-monitor/platform/metrics-supported.md).
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Van-e példa az automatikus skálázásra egy Azure Service Bus témakör és a várólista hossza alapján?
 
-Igen. Példa az automatikus skálázásra egy Azure Service Bus témakör és a várólista hossza alapján: az automatikus [skálázás általános metrikáinak Azure monitor](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/).
+Igen. Példa az automatikus skálázásra egy Azure Service Bus témakör és a várólista hossza alapján: az automatikus [skálázás általános metrikáinak Azure monitor](../azure-monitor/platform/autoscale-common-metrics.md).
 
 Service Bus üzenetsor esetében használja a következő JSON-t:
 
@@ -104,9 +104,9 @@ Cserélje le a példában szereplő értékeket az erőforrás egységes erőfor
 
 Egy virtuális gépen létrehozhat egy autoskálázási beállítást, amely a gazdagép szintű metrikák vagy a vendég operációs rendszer alapú metrikák használatára szolgál.
 
-A támogatott metrikák listáját itt tekintheti meg: [Azure monitor általános mérőszámok automatikus skálázása](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics).
+A támogatott metrikák listáját itt tekintheti meg: [Azure monitor általános mérőszámok automatikus skálázása](../azure-monitor/platform/autoscale-common-metrics.md).
 
-A virtuálisgép-méretezési csoportok teljes mintája a [virtuálisgép-méretezési csoportok Resource Manager-sablonjainak használatával: speciális automatikus skálázási konfiguráció](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets).
+A virtuálisgép-méretezési csoportok teljes mintája a [virtuálisgép-méretezési csoportok Resource Manager-sablonjainak használatával: speciális automatikus skálázási konfiguráció](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md).
 
 A minta a gazdagép szintű CPU-metrikát és egy üzenet darabszám metrikáját használja.
 
@@ -114,13 +114,13 @@ A minta a gazdagép szintű CPU-metrikát és egy üzenet darabszám metrikájá
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>Hogyan beállítani a riasztási szabályokat egy virtuálisgép-méretezési csoporton?
 
-A virtuális gépek méretezési csoportjaihoz a PowerShell vagy az Azure CLI használatával riasztásokat hozhat létre. További információ: [Azure monitor PowerShell](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) -gyors példák és [Azure monitor platformfüggetlen CLI-gyors minták](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts).
+A virtuális gépek méretezési csoportjaihoz a PowerShell vagy az Azure CLI használatával riasztásokat hozhat létre. További információ: [Azure monitor PowerShell](../azure-monitor/samples/powershell-samples.md#create-metric-alerts) -gyors példák és [Azure monitor platformfüggetlen CLI-gyors minták](../azure-monitor/samples/cli-samples.md#work-with-alerts).
 
 A virtuálisgép-méretezési csoport Targetresourceid azonosítója a következőképpen néz ki:
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-Bármelyik virtuálisgép-teljesítményszámláló kiválasztható metrikaként a riasztások beállításához. További információkért lásd: [vendég operációs rendszer mérőszámai a Resource Manager-alapú Windows rendszerű virtuális gépekhez](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms) és a Linux rendszerű [virtuális gépek vendég operációs rendszer metrikái](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms) a [Azure monitor automatikus skálázás általános mérőszámai](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/) cikkben.
+Bármelyik virtuálisgép-teljesítményszámláló kiválasztható metrikaként a riasztások beállításához. További információkért lásd: [vendég operációs rendszer mérőszámai a Resource Manager-alapú Windows rendszerű virtuális gépekhez](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms) és a Linux rendszerű [virtuális gépek vendég operációs rendszer metrikái](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms) a [Azure monitor automatikus skálázás általános mérőszámai](../azure-monitor/platform/autoscale-common-metrics.md) cikkben.
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Hogyan beállítani az autoskálázást a virtuálisgép-méretezési csoportokon a PowerShell használatával?
 
@@ -159,7 +159,7 @@ Használja a következő JSON-t:
 
 A kód támogatja a Windowst és a Linuxot.
 
-További információ: virtuálisgép- [méretezési csoport létrehozása vagy frissítése](https://msdn.microsoft.com/library/mt589035.aspx).
+További információ: virtuálisgép- [méretezési csoport létrehozása vagy frissítése](/rest/api/compute/virtualmachinescalesets/createorupdate).
 
 
 ### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Hogyan használhat az Azure Service Fabric-fürtökhöz kiépített önaláírt tanúsítványokat?
@@ -169,7 +169,7 @@ A legújabb példa a következő Azure CLI-utasítást használja az Azure shell
 az sf cluster create -h
 ```
 
-Az önaláírt tanúsítványok nem használhatók a hitelesítésszolgáltató által biztosított elosztott megbízhatósági kapcsolatokhoz, és nem használhatók olyan Service Fabric-fürthöz, amely vállalati üzemi megoldások üzemeltetésére szolgál. További Service Fabric biztonsági útmutatásért tekintse át az [Azure Service Fabric biztonsági eljárásokat](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices) és az [Service Fabric-fürtök biztonsági forgatókönyveit](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/).
+Az önaláírt tanúsítványok nem használhatók a hitelesítésszolgáltató által biztosított elosztott megbízhatósági kapcsolatokhoz, és nem használhatók olyan Service Fabric-fürthöz, amely vállalati üzemi megoldások üzemeltetésére szolgál. További Service Fabric biztonsági útmutatásért tekintse át az [Azure Service Fabric biztonsági eljárásokat](../security/fundamentals/service-fabric-best-practices.md) és az [Service Fabric-fürtök biztonsági forgatókönyveit](../service-fabric/service-fabric-cluster-security.md).
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Megadhatok egy SSH-kulcspárt az SSH-hitelesítéshez egy Resource Manager-sablonból származó linuxos virtuálisgép-méretezési csoport használatával?
 
@@ -197,7 +197,7 @@ Igen. A **osProfile** REST API a standard VM-REST API hasonló.
 
 Ez a JSON-blokk ebben az [Azure gyorsindítási sablonban](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)van használatban.
 
-További információ: virtuálisgép- [méretezési csoport létrehozása vagy frissítése](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration).
+További információ: virtuálisgép- [méretezési csoport létrehozása vagy frissítése](/rest/api/compute/virtualmachinescalesets/createorupdate#linuxconfiguration).
 
 ### <a name="how-do-i-remove-deprecated-certificates"></a>Hogyan eltávolítja az elavult tanúsítványokat?
 
@@ -240,7 +240,7 @@ Ez akkor fordulhat elő, ha ugyanazt a tárat próbálja újra felvenni a meglé
 
 Ha több titkot szeretne hozzáadni ugyanahhoz a kulcstartóhoz, frissítse a $vmss. properties. osProfile. Secrets [0]. vaultCertificates listát.
 
-A várt bemeneti struktúra esetében lásd: [virtuális gép készletének létrehozása vagy frissítése](https://msdn.microsoft.com/library/azure/mt589035.aspx).
+A várt bemeneti struktúra esetében lásd: [virtuális gép készletének létrehozása vagy frissítése](/rest/api/compute/virtualmachinescalesets/createorupdate).
 
 Keresse meg a titkot a Key vaultban található virtuálisgép-méretezési csoport objektumban. Ezután adja hozzá a tanúsítvány referenciáját (az URL-címet és a titkos tároló nevét) a tárolóhoz társított listához.
 
@@ -268,7 +268,7 @@ A rendszer az összes virtuális géphez hozzáadja a tanúsítványokat, még a
 
 ### <a name="where-do-i-put-certificates-for-linux-vms"></a>Hová helyezhetem a Linux rendszerű virtuális gépek tanúsítványait?
 
-A Linux rendszerű virtuális gépek tanúsítványainak központi telepítésének megismeréséhez lásd: [tanúsítványok központi telepítése virtuális gépekre egy ügyfél által felügyelt kulcstartóból](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/).
+A Linux rendszerű virtuális gépek tanúsítványainak központi telepítésének megismeréséhez lásd: [tanúsítványok központi telepítése virtuális gépekre egy ügyfél által felügyelt kulcstartóból](/archive/blogs/kv/deploy-certificates-to-vms-from-customer-managed-key-vault).
 
 ### <a name="how-do-i-add-a-new-vault-certificate-to-a-new-certificate-object"></a>Hogyan új tanúsítványtároló-tanúsítványt egy új tanúsítvány-objektumhoz?
 
@@ -304,7 +304,7 @@ Ha létrehoz egy virtuális gépet, majd a Key vaultban frissíti a titkos kulcs
 
 Ha a. cer nyilvános kulcsait egy virtuálisgép-méretezési csoportba kívánja telepíteni, létrehozhat egy. pfx fájlt, amely csak. cer fájlokat tartalmaz. Ehhez használja a következőt: `X509ContentType = Pfx` . Töltse be például a. cer fájlt X509certificate2)-objektumként a C# vagy a PowerShell használatával, majd hívja meg a metódust.
 
-További információ: [x509. export metódus (X509ContentType, string)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx)).
+További információ: [x509. export metódus (X509ContentType, string)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?view=netcore-3.1#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_).
 
 ### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>A tanúsítványokat Base64-karakterláncként Hogyan továbbítani?
 
@@ -334,7 +334,7 @@ A megfelelőség szempontjából nézve a virtuálisgép-méretezési csoportok 
 
 További információkért lásd: [Microsoft Adatvédelmi központ](https://www.microsoft.com/TrustCenter/Compliance/PCI).
 
-### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>Működik a [felügyelt identitások az Azure-erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/msi-overview) a virtuálisgép-méretezési csoportokkal?
+### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>Működik a [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md) a virtuálisgép-méretezési csoportokkal?
 
 Igen. A [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) és a [Windows rendszerhez](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)készült Azure gyorsindítási sablonokban néhány példát láthat az MSI-sablonokra.
 
@@ -436,7 +436,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>Hogyan egy egyéni parancsfájlt, amelyet egy privát Storage-fiókban futtat?
 
-Egy privát Storage-fiókban üzemeltetett egyéni parancsfájl végrehajtásához állítsa be a védett beállításokat a Storage-fiók kulcsával és nevével. További információ: [Egyéni szkriptek bővítménye](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings).
+Egy privát Storage-fiókban üzemeltetett egyéni parancsfájl végrehajtásához állítsa be a védett beállításokat a Storage-fiók kulcsával és nevével. További információ: [Egyéni szkriptek bővítménye](../virtual-machines/extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json#property-managedidentity).
 
 ## <a name="passwords"></a>Jelszavak
 
@@ -448,7 +448,7 @@ A virtuális gépek jelszava a méretezési csoportokban két fő módon módos�
 
     Frissítse a rendszergazdai hitelesítő adatokat közvetlenül a méretezési csoport modelljében (például a Azure Erőforrás-kezelő, a PowerShell vagy a parancssori felület használatával). A méretezési csoport frissítése után minden új virtuális gép rendelkezik az új hitelesítő adatokkal. A meglévő virtuális gépek csak akkor rendelkeznek új hitelesítő adatokkal, ha alaphelyzetbe állnak.
 
-- Állítsa alaphelyzetbe a jelszót a VM-hozzáférési bővítmények használatával. Győződjön meg arról, hogy az [itt](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)leírtak szerint kövesse a jelszóra vonatkozó követelményeket.
+- Állítsa alaphelyzetbe a jelszót a VM-hozzáférési bővítmények használatával. Győződjön meg arról, hogy az [itt](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)leírtak szerint kövesse a jelszóra vonatkozó követelményeket.
 
     Használja a következő PowerShell-példát:
 
@@ -465,7 +465,7 @@ A virtuális gépek jelszava a méretezési csoportokban két fő módon módos�
     Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
     ```
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>Lehet hálózati biztonsági csoportot (NSG) rendelni egy méretezési csoporthoz, hogy az a készlet összes virtuálisgép-hálózati adapterére vonatkozzon?
 
@@ -635,7 +635,7 @@ Igen, a méretezési csoport erőforrásai áthelyezhetők egy új előfizetésr
 
 ### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>Hogyan frissíthetem a virtuálisgép-méretezési csoportját egy új képre? Hogyan a javítások kezelése?
 
-A virtuálisgép-méretezési csoport új rendszerképre való frissítéséhez és a javítások kezeléséhez tekintse meg [a virtuálisgép-méretezési csoport frissítése](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)című témakört.
+A virtuálisgép-méretezési csoport új rendszerképre való frissítéséhez és a javítások kezeléséhez tekintse meg [a virtuálisgép-méretezési csoport frissítése](./virtual-machine-scale-sets-upgrade-scale-set.md)című témakört.
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Használhatom a rendszerkép visszaállítása műveletet a virtuális gép alaphelyzetbe állításához a rendszerkép módosítása nélkül? (Azaz szeretnék alaphelyzetbe állítani egy virtuális gépet a gyári beállításokra új rendszerkép helyett.)
 
@@ -671,7 +671,7 @@ A rendszerindítási diagnosztika bekapcsolásához először hozzon létre egy 
 }
 ```
 
-Új virtuális gép létrehozásakor a virtuális gép InstanceView tulajdonsága a képernyőkép részleteit jeleníti meg, és így tovább. Íme egy példa:
+Új virtuális gép létrehozásakor a virtuális gép InstanceView tulajdonsága a képernyőkép részleteit jeleníti meg, és így tovább. Bemutatunk egy példát:
 
 ```json
 "bootDiagnostics": {

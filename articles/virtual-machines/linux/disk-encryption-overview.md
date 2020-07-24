@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f8e4843ad71455f8e478ef74ee71975c1dbf2925
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6b0bc3af01c81cdf82da684653ef10099e57d9a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510562"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080267"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
@@ -139,10 +139,10 @@ Az alábbi táblázat az Azure Disk Encryption dokumentációjában használt á
 | Azure CLI | [Az Azure CLI](/cli/azure/install-azure-cli) az Azure-erőforrások parancssorból történő kezelésére és felügyeletére van optimalizálva.|
 | DM-Crypt |A [dm-crypt](https://gitlab.com/cryptsetup/cryptsetup/wikis/DMCrypt) a Linux-alapú, transzparens lemezes titkosítási alrendszer, amely lehetővé teszi a lemezes titkosítás használatát a Linux rendszerű virtuális gépeken. |
 | Kulcs titkosítási kulcsa (KEK) | Az aszimmetrikus kulcs (RSA 2048), amellyel védetté teheti vagy becsomagolhatja a titkos kulcsot. Megadhatja a hardveres biztonsági modul (HSM) által védett kulcsot vagy szoftveresen védett kulcsot. További információkért tekintse meg a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentációját, és [hozzon létre és konfiguráljon egy Key vaultot a Azure Disk Encryptionhoz](disk-encryption-key-vault.md). |
-| PowerShell-parancsmagok | További információ: [Azure PowerShell parancsmagok](/powershell/azure/overview). |
+| PowerShell-parancsmagok | További információ: [Azure PowerShell parancsmagok](/powershell/azure/). |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rövid útmutató – linuxos virtuális gép létrehozása és titkosítása az Azure CLI-vel](disk-encryption-cli-quickstart.md)
 - [Rövid útmutató – linuxos virtuális gép létrehozása és titkosítása az Azure PowerShell-lel](disk-encryption-powershell-quickstart.md)

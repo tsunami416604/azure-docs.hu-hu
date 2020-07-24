@@ -3,11 +3,12 @@ title: Az Azure Application Insights folyamatainak automatizálása Logic Apps h
 description: Megtudhatja, hogyan automatizálható a megismételhető folyamatok gyors automatizálásához, ha hozzáadja a Application Insights-összekötőt a logikai alkalmazáshoz.
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a199023ef37fbda27be59fdf70f6ca5d8481bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79473166"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079621"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Application Insights folyamatok automatizálása Logic Apps használatával
 
@@ -18,7 +19,7 @@ A telemetria-adataiban többször is futtatja ugyanazokat a lekérdezéseket, í
 
 Ezzel az integrációval számos folyamat automatizálható egyetlen sor kód írása nélkül. Létrehozhat egy logikai alkalmazást az Application Insights-összekötővel, amellyel gyorsan automatizálhatja a Application Insights folyamatokat. 
 
-További műveleteket is hozzáadhat. Azure App Service Logic Apps funkciója több száz műveletet tesz elérhetővé. Egy logikai alkalmazás használatával például automatikusan küldhet e-mail-értesítést, vagy létrehozhat egy hibát az Azure DevOps-ben. Használhatja a számos elérhető [sablon](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) egyikét is, hogy felgyorsítsa a logikai alkalmazás létrehozásának folyamatát. 
+További műveleteket is hozzáadhat. Azure App Service Logic Apps funkciója több száz műveletet tesz elérhetővé. Egy logikai alkalmazás használatával például automatikusan küldhet e-mail-értesítést, vagy létrehozhat egy hibát az Azure DevOps-ben. Használhatja a számos elérhető [sablon](../../logic-apps/logic-apps-create-logic-apps-from-templates.md) egyikét is, hogy felgyorsítsa a logikai alkalmazás létrehozásának folyamatát. 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>Logikai alkalmazás létrehozása Application Insightshoz
 
@@ -130,13 +131,8 @@ A logikai alkalmazás futtatásakor az e-mail-listán megadott címzettek a köv
 ## <a name="next-steps"></a>További lépések
 
 - További információ az [elemzési lekérdezések](../../azure-monitor/log-query/get-started-queries.md)létrehozásáról.
-- További tudnivalók a [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) szolgáltatásról
+- További tudnivalók a [Logic Apps](../../logic-apps/logic-apps-overview.md) szolgáltatásról
 
 
 
 <!--Link references-->
-
-
-
-
-

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f996ffa864fb4178ddedecde7c5511d5d9cf39a1
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: df318fea4960601dcbfa84149fdc47bedc9104a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985806"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079825"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>Az RDP általános hibáinak megoldása az Azure-beli virtuális gépen
 
@@ -183,7 +183,7 @@ További információ: [Távoli asztal gyakori leválasztása az Azure-beli virt
 
 #### <a name="step-1-turn-on-remote-desktop"></a>1. lépés: a Távoli asztal bekapcsolása
 
-1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md).
 2. Távoli asztal-Kapcsolódás elindítása a helyreállítási virtuális géphez.
 3. Győződjön meg arról, hogy a lemez **online** állapotban van megjelölve a Lemezkezelés konzolon. Jegyezze fel a csatlakoztatott operációsrendszer-lemezhez rendelt meghajtóbetűjelet.
 4. Távoli asztal-Kapcsolódás elindítása a helyreállítási virtuális géphez.

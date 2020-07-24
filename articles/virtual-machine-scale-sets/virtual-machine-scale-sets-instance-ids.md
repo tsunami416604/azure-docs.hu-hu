@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 430c08fc318a89c4d11575eab90ee524b88a979a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f72d54c0d62748196302ed1b77ea750dede8ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84607346"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080454"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Az Azure virtuálisgép-méretezési csoportbeli virtuális gépek példány-azonosítóinak megismerése
 Ez a cikk a méretezési csoportokhoz tartozó példány-azonosítókat és a felületek különböző módszereit ismerteti.
@@ -22,19 +23,19 @@ Ez a cikk a méretezési csoportokhoz tartozó példány-azonosítókat és a fe
 
 A méretezési csoport minden virtuális gépe egy példány-azonosítót kap, amely egyedileg azonosítja azt. Ez a példány-azonosító a méretezési csoport API-jai között a méretezési csoport egy adott virtuális gépén végzett műveletek végrehajtásához használatos. Például megadhat egy adott példány-azonosítót a rendszerkép alaphelyzetbe állításához a rerendszerkép API használatakor:
 
-REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}` (további tudnivalókért tekintse meg a [REST API dokumentációját](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/reimage))
+REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}` (további tudnivalókért tekintse meg a [REST API dokumentációját](/rest/api/compute/virtualmachinescalesetvms/reimage))
 
-PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (további információért lásd a [PowerShell dokumentációját](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm))
+PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (további információért lásd a [PowerShell dokumentációját](/powershell/module/az.compute/set-azvmssvm))
 
-CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (további információért lásd a [CLI dokumentációját](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
+CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (további információért lásd a [CLI dokumentációját](/cli/azure/vmss?view=azure-cli-latest)).
 
 A példány-azonosítók listáját a méretezési csoport összes példányának listázásával érheti el:
 
-REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (további tudnivalókért tekintse meg a [REST API dokumentációját](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/list))
+REST API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (további tudnivalókért tekintse meg a [REST API dokumentációját](/rest/api/compute/virtualmachinescalesetvms/list))
 
-PowerShell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (további információért lásd a [PowerShell dokumentációját](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm))
+PowerShell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (további információért lásd a [PowerShell dokumentációját](/powershell/module/az.compute/get-azvmssvm))
 
-CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (további információért lásd a [CLI dokumentációját](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
+CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (további információért lásd a [CLI dokumentációját](/cli/azure/vmss?view=azure-cli-latest)).
 
 A méretezési csoportokban lévő virtuális gépek listázásához használhatja a [Resources.Azure.com](https://resources.azure.com) vagy az [Azure SDK](https://azure.microsoft.com/downloads/) -kat is.
 
@@ -65,7 +66,7 @@ Amint láthatja, a "instanceId" tulajdonság csak decimális szám lehet. Előfo
 
 A fenti példában szereplő kimenetben a virtuális gép neve is szerepel. Ez a név a következő formát ölti: "{Scale-set-name} _ {instance-id}". Ez a név a méretezési csoport példányainak listázásakor a Azure Portal látható.
 
-![](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
+![Képernyőfelvétel: a virtuálisgép-méretezési csoport példányainak listája a Azure Portalban.](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
 
 A név {instance-ID} része a korábban tárgyalt "instanceId" tulajdonsághoz tartozó decimális szám.
 

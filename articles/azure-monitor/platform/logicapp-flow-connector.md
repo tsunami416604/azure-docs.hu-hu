@@ -7,14 +7,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6048b5f0a3702e95cef9175933041fe36f2f07bb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248736"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081559"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Azure Monitor a naplók összekötőjét a Logic Apps és a flow számára
-A [Azure Logic apps](/azure/logic-apps/) és a [Power automatizálása](https://ms.flow.microsoft.com) lehetővé teszi, hogy több száz műveletet használó automatizált munkafolyamatokat hozzon létre különböző szolgáltatásokhoz. A Azure Monitor naplók összekötővel olyan munkafolyamatokat hozhat létre, amelyek egy Log Analytics-munkaterületről vagy egy Application Insights alkalmazásból kérik le az adatok lekérését Azure Monitor. Ez a cikk az összekötőhöz tartozó műveleteket ismerteti, és útmutatást nyújt a munkafolyamatok ezen az adatain keresztül történő létrehozásához.
+A [Azure Logic apps](../../logic-apps/index.yml) és a [Power automatizálása](https://ms.flow.microsoft.com) lehetővé teszi, hogy több száz műveletet használó automatizált munkafolyamatokat hozzon létre különböző szolgáltatásokhoz. A Azure Monitor naplók összekötővel olyan munkafolyamatokat hozhat létre, amelyek egy Log Analytics-munkaterületről vagy egy Application Insights alkalmazásból kérik le az adatok lekérését Azure Monitor. Ez a cikk az összekötőhöz tartozó műveleteket ismerteti, és útmutatást nyújt a munkafolyamatok ezen az adatain keresztül történő létrehozásához.
 
 Létrehozhat például egy logikai alkalmazást, amellyel Azure Monitor naplózhatja az adatait az Office 365 e-mail értesítésében, létrehozhat egy hibát az Azure DevOps, vagy közzétehet egy Slack-üzenetet.  A munkafolyamatot egy egyszerű vagy egy csatlakoztatott szolgáltatás egyes műveleteiből is elindíthatja, például e-mail vagy Tweet érkezésekor. 
 
@@ -31,16 +32,16 @@ Az adat méretétől és a használt lekérdezéstől függően előfordulhat, h
 A következő táblázat ismerteti a Azure Monitor naplók összekötőhöz tartozó műveleteket. Mindkettő lehetővé teszi, hogy naplózási lekérdezést futtasson Log Analytics munkaterületen vagy Application Insights alkalmazáson. A különbség az, ahogy az adatvisszaadás történik.
 
 > [!NOTE]
-> A Azure Monitor naplók összekötő helyettesíti az [azure log Analytics-összekötőt](https://docs.microsoft.com/connectors/azureloganalytics/) és az [Azure Application Insights-összekötőt](https://docs.microsoft.com/connectors/applicationinsights/). Ez az összekötő ugyanazokat a funkciókat biztosítja, mint a többi, és az előnyben részesített módszer egy Log Analytics-munkaterületre vagy egy Application Insights alkalmazásra vonatkozó lekérdezés futtatásához.
+> A Azure Monitor naplók összekötő helyettesíti az [azure log Analytics-összekötőt](/connectors/azureloganalytics/) és az [Azure Application Insights-összekötőt](/connectors/applicationinsights/). Ez az összekötő ugyanazokat a funkciókat biztosítja, mint a többi, és az előnyben részesített módszer egy Log Analytics-munkaterületre vagy egy Application Insights alkalmazásra vonatkozó lekérdezés futtatásához.
 
 
-| Műveletek | Description |
+| Művelet | Leírás |
 |:---|:---|
-| [Lekérdezési és listázási eredmények futtatása](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | Az egyes sorok visszaadása saját objektumként. Akkor használja ezt a műveletet, ha az egyes sorokat a munkafolyamat többi részén külön szeretné használni. A műveletet általában az [egyes tevékenységek esetében](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)követi. |
-| [Lekérdezés futtatása és eredmények megjelenítése](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Az eredményhalmaz összes sorát adja vissza egyetlen formázott objektumként. Akkor használja ezt a műveletet, ha az eredmény-készletet a munkafolyamat többi részén együtt szeretné használni, például az eredményeket egy levélben küldje el.  |
+| [Lekérdezési és listázási eredmények futtatása](/connectors/azuremonitorlogs/#run-query-and-list-results) | Az egyes sorok visszaadása saját objektumként. Akkor használja ezt a műveletet, ha az egyes sorokat a munkafolyamat többi részén külön szeretné használni. A műveletet általában az [egyes tevékenységek esetében](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)követi. |
+| [Lekérdezés futtatása és eredmények megjelenítése](/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Az eredményhalmaz összes sorát adja vissza egyetlen formázott objektumként. Akkor használja ezt a műveletet, ha az eredmény-készletet a munkafolyamat többi részén együtt szeretné használni, például az eredményeket egy levélben küldje el.  |
 
 ## <a name="walkthroughs"></a>Útmutatók
-Az alábbi oktatóanyagok a Azure Logic Apps Azure Monitor-összekötők használatát szemléltetik. Ugyanezt a példát a Power automatizálva is végrehajthatja, az egyetlen különbség az, hogy hogyan hozza létre a kezdeti munkafolyamatot, és hogyan futtatja a befejezéskor. A munkafolyamat és a műveletek konfigurálása a kettő között azonos. A kezdéshez lásd: [folyamat létrehozása sablonból a Power gyorsbüféban](https://docs.microsoft.com/power-automate/get-started-logic-template) .
+Az alábbi oktatóanyagok a Azure Logic Apps Azure Monitor-összekötők használatát szemléltetik. Ugyanezt a példát a Power automatizálva is végrehajthatja, az egyetlen különbség az, hogy hogyan hozza létre a kezdeti munkafolyamatot, és hogyan futtatja a befejezéskor. A munkafolyamat és a műveletek konfigurálása a kettő között azonos. A kezdéshez lásd: [folyamat létrehozása sablonból a Power gyorsbüféban](/power-automate/get-started-logic-template) .
 
 
 ### <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása
@@ -124,6 +125,5 @@ Ha a logikai alkalmazás befejeződik, tekintse meg a megadott címzett e-mail-c
 ## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitor lévő naplók lekérdezéséről](../log-query/log-query-overview.md).
-- További információ a [Logic apps](/azure/logic-apps/)
+- További információ a [Logic apps](../../logic-apps/index.yml)
 - További információ a [Microsoft Flowról](https://ms.flow.microsoft.com).
-

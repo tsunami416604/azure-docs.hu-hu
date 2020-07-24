@@ -3,12 +3,12 @@ title: A Microsoft Azure Recovery Services-(MARS-) ügynök telepítése
 description: Ismerje meg, hogyan telepítheti a Microsoft Azure Recovery Services-(MARS-) ügynököt a Windows rendszerű gépek biztonsági mentésére.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 7a43f585e978b7d6974ac89fbb5d93f15aebb1d7
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: b9842f6b07621301a0a8a32f5eb7fae5ece153bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855239"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079366"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>A Azure Backup MARS-ügynök telepítése
 
@@ -42,10 +42,10 @@ A biztonsági mentéshez rendelkezésre álló adatok az ügynök telepítésén
 
 ## <a name="modify-storage-replication"></a>Tárolási replikáció módosítása
 
-Alapértelmezés szerint a [tárolók a Geo-redundáns tárolást (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)használják.
+Alapértelmezés szerint a [tárolók a Geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md)használják.
 
 * Ha a tároló elsődleges biztonsági mentési mechanizmusa, javasoljuk, hogy használja a GRS.
-* A [helyileg redundáns tárolás (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) használatával csökkentheti az Azure Storage szolgáltatás költségeit.
+* A [helyileg redundáns tárolás (LRS)](../storage/common/storage-redundancy.md?toc=/azure/storage/blobs/toc.json) használatával csökkentheti az Azure Storage szolgáltatás költségeit.
 
 A tárolási replikálás típusának módosítása:
 
@@ -95,7 +95,7 @@ A Microsoft-társak használatához válassza ki a következő szolgáltatásoka
 * Azure-régió, az Recovery Services-tároló helyének megfelelően
 * Az Azure Storage a Recovery Services-tároló helyének megfelelően
 
-További információ: ExpressRoute- [útválasztási követelmények](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+További információ: ExpressRoute- [útválasztási követelmények](../expressroute/expressroute-routing.md).
 
 > [!NOTE]
 > Az új áramkörök esetében a nyilvános társítás elavult.
@@ -131,18 +131,18 @@ Ha már telepítette az ügynököt valamelyik gépen, győződjön meg arról, 
 
     ![A tároló hitelesítő adatainak letöltése](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-1. Kattintson a **Mentés** gombra. A rendszer letölti a fájlt a letöltések mappájába. A tár hitelesítő adatait tartalmazó fájl nem nyitható meg.
+1. Válassza a **Mentés** lehetőséget. A rendszer letölti a fájlt a letöltések mappájába. A tár hitelesítő adatait tartalmazó fájl nem nyitható meg.
 
 ## <a name="install-and-register-the-agent"></a>Az ügynök telepítése és regisztrálása
 
 1. Futtassa a *MARSagentinstaller.exe* fájlt azokon a számítógépeken, amelyekről biztonsági másolatot szeretne készíteni.
-1. A MARS-ügynök telepítővarázslója területen válassza a **telepítési beállítások**lehetőséget. Ott válassza ki, hol szeretné telepíteni az ügynököt, és válasszon egy helyet a gyorsítótár számára. Ezután válassza a **tovább**lehetőséget.
+1. A MARS-ügynök telepítővarázslója területen válassza a **telepítési beállítások**lehetőséget. Ott válassza ki, hol szeretné telepíteni az ügynököt, és válasszon egy helyet a gyorsítótár számára. Ezután kattintson a **Tovább** gombra.
    * Azure Backup a gyorsítótár használatával tárolja az adatpillanatképeket, mielőtt elküldené őket az Azure-ba.
    * A gyorsítótár helyének legalább 5%-ának kell lennie a biztonsági mentéshez használt adatmennyiségnek.
 
     ![Válassza a telepítési beállítások elemet a MARS-ügynök telepítése varázslóban.](./media/backup-configure-vault/mars1.png)
 
-1. A **proxy konfigurálása**lapon adhatja meg, hogy a Windows rendszerű gépen futó ügynök hogyan kapcsolódjon az internethez. Ezután válassza a **tovább**lehetőséget.
+1. A **proxy konfigurálása**lapon adhatja meg, hogy a Windows rendszerű gépen futó ügynök hogyan kapcsolódjon az internethez. Ezután kattintson a **Tovább** gombra.
 
    * Ha egyéni proxyt használ, meg kell adnia a szükséges proxybeállításokat és hitelesítő adatokat.
    * Ne feledje, hogy az ügynöknek hozzá kell férnie [bizonyos URL-címekhez](#before-you-start).
@@ -151,7 +151,7 @@ Ha már telepítette az ügynököt valamelyik gépen, győződjön meg arról, 
 
 1. A **telepítéshez**tekintse át az előfeltételeket, majd válassza a **telepítés**lehetőséget.
 1. Az ügynök telepítése után válassza a **Folytatás a regisztrációhoz**lehetőséget.
-1. A **kiszolgáló regisztrálása varázsló**tárolójának  >  **azonosítása**lapon keresse meg és válassza ki a letöltött hitelesítő adatokat tartalmazó fájlt. Ezután válassza a **tovább**lehetőséget.
+1. A **kiszolgáló regisztrálása varázsló**tárolójának  >  **azonosítása**lapon keresse meg és válassza ki a letöltött hitelesítő adatokat tartalmazó fájlt. Ezután kattintson a **Tovább** gombra.
 
     ![Tár hitelesítő adatainak hozzáadása a kiszolgáló regisztrálása varázsló használatával](./media/backup-configure-vault/register1.png)
 
