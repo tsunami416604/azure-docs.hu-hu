@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan használhatja az Azure AD-t az Azur
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9c81e3389f2cc96f2581b8edee5f528237cb9eca
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c17c9cdc02c87037a39b8d6029bc4506afa8ad28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185670"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064385"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Az Azure AD használata az Azure-beli hitelesítéshez
 
@@ -92,11 +92,11 @@ A hitelesítő adatok létrehozásához használhatja a Azure Portal. Ezt a műv
 
 ### <a name="create-the-credential-asset-with-windows-powershell"></a>A hitelesítőadat-eszköz létrehozása a Windows PowerShell használatával
 
-Új hitelesítőadat-eszköz előkészítéséhez a Windows PowerShellben a szkript először létrehoz egy `PSCredential` objektumot a hozzárendelt Felhasználónév és jelszó használatával. A szkript ezután ezt az objektumot használja az eszköz létrehozásához a [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) parancsmag hívásával. Azt is megteheti, hogy a parancsfájl meghívja a [Get-hitelesítőadat](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) parancsmagot, hogy megkérje a felhasználó számára a név és a jelszó megadását. Lásd: [hitelesítő adatok Azure Automationban](shared-resources/credentials.md). 
+Új hitelesítőadat-eszköz előkészítéséhez a Windows PowerShellben a szkript először létrehoz egy `PSCredential` objektumot a hozzárendelt Felhasználónév és jelszó használatával. A szkript ezután ezt az objektumot használja az eszköz létrehozásához a [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential?view=azuresmps-4.0.0) parancsmag hívásával. Azt is megteheti, hogy a parancsfájl meghívja a [Get-hitelesítőadat](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) parancsmagot, hogy megkérje a felhasználó számára a név és a jelszó megadását. Lásd: [hitelesítő adatok Azure Automationban](shared-resources/credentials.md). 
 
 ## <a name="manage-azure-resources-from-an-azure-automation-runbook"></a>Azure-erőforrások kezelése Azure Automation runbook
 
-Az Azure-erőforrásokat Azure Automation runbookok kezelheti a hitelesítőadat-eszköz használatával. Az alábbi példa egy PowerShell-runbook, amely az Azure-előfizetésben lévő virtuális gépek leállításához és elindításához használt hitelesítő adatokat gyűjti. Ez a runbook először `Get-AutomationPSCredential` Az Azure-ban való hitelesítéshez használt hitelesítő adatokat kéri le. Ezután meghívja a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) parancsmagot az Azure-hoz való kapcsolódáshoz a hitelesítő adatok használatával. A szkript a [Select-azuresubscription parancsot](/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0) parancsmagot használja, hogy kiválassza az előfizetést, amellyel dolgozni szeretne. 
+Az Azure-erőforrásokat Azure Automation runbookok kezelheti a hitelesítőadat-eszköz használatával. Az alábbi példa egy PowerShell-runbook, amely az Azure-előfizetésben lévő virtuális gépek leállításához és elindításához használt hitelesítő adatokat gyűjti. Ez a runbook először `Get-AutomationPSCredential` Az Azure-ban való hitelesítéshez használt hitelesítő adatokat kéri le. Ezután meghívja a [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) parancsmagot az Azure-hoz való kapcsolódáshoz a hitelesítő adatok használatával. A szkript a [Select-azuresubscription parancsot](/powershell/module/servicemanagement/azure.service/select-azuresubscription?view=azuresmps-4.0.0) parancsmagot használja, hogy kiválassza az előfizetést, amellyel dolgozni szeretne. 
 
 ```azurepowershell
 Workflow Stop-Start-AzureVM 

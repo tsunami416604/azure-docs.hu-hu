@@ -1,18 +1,19 @@
 ---
 title: Ajánlott eljárások Azure Maps Search Servicehoz | Microsoft Azure térképek
 description: Ismerje meg, hogyan alkalmazhatja az ajánlott eljárásokat a Search Service Microsoft Azure Maps-ből való használatakor.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84264366"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064274"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Ajánlott eljárások Azure Maps Search Service
 
@@ -27,7 +28,7 @@ Ez a cikk azt ismerteti, hogyan alkalmazhatók a helyes eljárások a Azure Maps
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Azure Maps Service API-k hívásához szükség van egy Azure Maps-fiókra és egy kulcsra. További információkért lásd: [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) és [elsődleges kulcs beszerzése](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
+A Azure Maps Service API-k hívásához szükség van egy Azure Maps-fiókra és egy kulcsra. További információkért lásd: [fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account) és [elsődleges kulcs beszerzése](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
 
 A Azure Maps-hitelesítéssel kapcsolatos információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
@@ -84,7 +85,7 @@ Javasoljuk, hogy használja a Azure Maps [Search FUZZY API](https://docs.microso
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Geocode és szűrés egy földrajzi entitás típusához
 
-Ha fordított geocode keresést végez a [keresési fordított API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)-ban, a szolgáltatás a felügyeleti területekhez tartozó sokszögeket adhat vissza. Előfordulhat például, hogy a Yoi szeretné beolvasni egy város területének sokszögét.Ha a keresést egy adott földrajzi egység típusára szeretné szűkíteni, adja `entityType` meg a paramétert a kérésekben. 
+Ha fordított geocode keresést végez a [keresési fordított API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)-ban, a szolgáltatás a felügyeleti területekhez tartozó sokszögeket adhat vissza. Előfordulhat például, hogy le szeretné kérni egy város területének sokszögét.Ha a keresést egy adott földrajzi egység típusára szeretné szűkíteni, adja `entityType` meg a paramétert a kérésekben. 
 
 Az eredményül kapott válasz tartalmazza a földrajzi azonosítót és az egyező entitás típusát. Ha egynél több entitást ad meg, a végpont az *elérhető legkisebb entitást*adja vissza. A visszaadott geometriai azonosító használatával lekérheti a földrajz geometriáját a [keresési sokszög szolgáltatáson](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)keresztül.
 
@@ -94,7 +95,7 @@ Az eredményül kapott válasz tartalmazza a földrajzi azonosítót és az egye
 https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```JSON
 {
@@ -146,7 +147,7 @@ A következő példában a *m*lekérdezése a keresési címtartomány lekérés
 https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1.0&typeahead=true&countrySet=US&lat=47.6370891183&lon=-122.123736172&query=Microsoft
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```JSON
 {
@@ -495,7 +496,7 @@ A márka keresésének megismeréséhez hozzon igénybe egy [POI kategória kere
 https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas%20station&limit=3&lat=47.6413362&lon=-122.1327968
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```JSON
 {
@@ -776,7 +777,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 * **Cross Street**: metszetek. A Cross Streets olyan csomópontokat jelöl, ahol két utca metszi egymást.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 Tekintsük át a válasz struktúráját. Az alábbi válaszban az eredményül kapott objektumok típusai eltérőek. Ha alaposan meggondolja, három típusú eredmény-objektum jelenik meg:
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2cbed4d6dd2a9c5e63e73d89e5327fa3759777fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185874"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064457"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours áttekintése
 
@@ -49,28 +49,28 @@ Nem kell konfigurálnia az engedélyeket, ha Ön közreműködő az előfizetés
 
 ### <a name="permissions-for-pre-existing-automation-account-and-log-analytics-workspace"></a>A meglévő Automation-fiókra és Log Analytics-munkaterületre vonatkozó engedélyek
 
-Ha egy meglévő Automation-fiókkal és Log Analytics munkaterülettel kívánja engedélyezni a virtuális gépeket a Start/Stop VMs during off-hours szolgáltatáshoz, a következő engedélyekre van szükség az erőforráscsoport hatókörén. A szerepkörökkel kapcsolatos további tudnivalókért tekintse meg [Az Azure-erőforrások egyéni szerepkörei](../role-based-access-control/custom-roles.md)című témakört.
+Ha egy meglévő Automation-fiókkal és Log Analytics munkaterülettel kívánja engedélyezni a virtuális gépeket a Start/Stop VMs during off-hours szolgáltatáshoz, a következő engedélyekre van szükség az erőforráscsoport hatókörén. További információ a szerepkörökről: [Egyéni Azure-szerepkörök](../role-based-access-control/custom-roles.md).
 
 | Engedély | Hatókör|
 | --- | --- |
-| Microsoft. Automation/automationAccounts/READ | Erőforráscsoport |
-| Microsoft. Automation/automationAccounts/változók/írás | Erőforráscsoport |
-| Microsoft. Automation/automationAccounts/ütemterv/írás | Erőforráscsoport |
-| Microsoft. Automation/automationAccounts/runbookok/Write | Erőforráscsoport |
-| Microsoft. Automation/automationAccounts/kapcsolatok/írás | Erőforráscsoport |
-| Microsoft. Automation/automationAccounts/tanúsítványok/írás | Erőforráscsoport |
-| Microsoft. Automation/automationAccounts/modulok/írás | Erőforráscsoport |
-| Microsoft. Automation/automationAccounts/modulok/olvasás | Erőforráscsoport |
-| Microsoft. Automation/automationAccounts/jobSchedules/Write | Erőforráscsoport |
-| Microsoft. Automation/automationAccounts/feladatok/írás | Erőforráscsoport |
-| Microsoft. Automation/automationAccounts/feladatok/olvasás | Erőforráscsoport |
-| Microsoft. OperationsManagement/megoldások/írás | Erőforráscsoport |
-| Microsoft. OperationalInsights/munkaterületek/* | Erőforráscsoport |
-| Microsoft. bepillantások/diagnosticSettings/írás | Erőforráscsoport |
-| Microsoft. bepillantások/ActionGroups/írás | Erőforráscsoport |
-| Microsoft. bepillantások/ActionGroups/olvasás | Erőforráscsoport |
-| Microsoft. Resources/Subscriptions/resourceGroups/READ | Erőforráscsoport |
-| Microsoft. Resources/üzemelő példány/* | Erőforráscsoport |
+| Microsoft. Automation/automationAccounts/READ | Resource Group (Erőforráscsoport) |
+| Microsoft. Automation/automationAccounts/változók/írás | Resource Group (Erőforráscsoport) |
+| Microsoft. Automation/automationAccounts/ütemterv/írás | Resource Group (Erőforráscsoport) |
+| Microsoft. Automation/automationAccounts/runbookok/Write | Resource Group (Erőforráscsoport) |
+| Microsoft. Automation/automationAccounts/kapcsolatok/írás | Resource Group (Erőforráscsoport) |
+| Microsoft. Automation/automationAccounts/tanúsítványok/írás | Resource Group (Erőforráscsoport) |
+| Microsoft. Automation/automationAccounts/modulok/írás | Resource Group (Erőforráscsoport) |
+| Microsoft. Automation/automationAccounts/modulok/olvasás | Resource Group (Erőforráscsoport) |
+| Microsoft. Automation/automationAccounts/jobSchedules/Write | Resource Group (Erőforráscsoport) |
+| Microsoft. Automation/automationAccounts/feladatok/írás | Resource Group (Erőforráscsoport) |
+| Microsoft. Automation/automationAccounts/feladatok/olvasás | Resource Group (Erőforráscsoport) |
+| Microsoft. OperationsManagement/megoldások/írás | Resource Group (Erőforráscsoport) |
+| Microsoft. OperationalInsights/munkaterületek/* | Resource Group (Erőforráscsoport) |
+| Microsoft. bepillantások/diagnosticSettings/írás | Resource Group (Erőforráscsoport) |
+| Microsoft. bepillantások/ActionGroups/írás | Resource Group (Erőforráscsoport) |
+| Microsoft. bepillantások/ActionGroups/olvasás | Resource Group (Erőforráscsoport) |
+| Microsoft. Resources/Subscriptions/resourceGroups/READ | Resource Group (Erőforráscsoport) |
+| Microsoft. Resources/üzemelő példány/* | Resource Group (Erőforráscsoport) |
 
 ### <a name="permissions-for-new-automation-account-and-new-log-analytics-workspace"></a>Engedélyek új Automation-fiókhoz és új Log Analytics munkaterület
 
@@ -86,10 +86,10 @@ Az új Automation-fiókkal és Log Analytics munkaterülettel engedélyezheti a 
 | Microsoft. Authorization/engedélyek/olvasás |Előfizetés|
 | Microsoft. Authorization/roleAssignments/olvasás | Előfizetés |
 | Microsoft.Authorization/roleAssignments/write | Előfizetés |
-| Microsoft. Authorization/roleAssignments/delete | Előfizetés || Microsoft. Automation/automationAccounts/kapcsolatok/olvasás | Erőforráscsoport |
-| Microsoft. Automation/automationAccounts/tanúsítványok/olvasás | Erőforráscsoport |
-| Microsoft. Automation/automationAccounts/írás | Erőforráscsoport |
-| Microsoft. OperationalInsights/munkaterületek/írás | Erőforráscsoport |
+| Microsoft. Authorization/roleAssignments/delete | Előfizetés || Microsoft. Automation/automationAccounts/kapcsolatok/olvasás | Resource Group (Erőforráscsoport) |
+| Microsoft. Automation/automationAccounts/tanúsítványok/olvasás | Resource Group (Erőforráscsoport) |
+| Microsoft. Automation/automationAccounts/írás | Resource Group (Erőforráscsoport) |
+| Microsoft. OperationalInsights/munkaterületek/írás | Resource Group (Erőforráscsoport) |
 
 ## <a name="components"></a>Összetevők
 
@@ -104,11 +104,11 @@ A következő táblázat felsorolja azokat a runbookok, amelyeket a szolgáltat�
 
 Az összes szülő runbookok tartalmazza a `WhatIf` paramétert. Ha igaz értékre van állítva, a paraméter támogatja a runbook által a paraméter nélkül futtatott pontos viselkedést, és ellenőrzi, hogy a megfelelő virtuális gépek célozva vannak-e. A runbook csak akkor hajtja végre a definiált műveleteit, ha a `WhatIf` paraméter értéke hamis.
 
-|Forgatókönyv | Paraméterek | Leírás|
+|Forgatókönyv | Paraméterek | Description|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Meghívva a szülő runbook. Ez a runbook a riasztásokat erőforrás-alapon hozza létre az automatikus leállítási forgatókönyvhöz.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true vagy FALSE  | Létrehozza vagy frissíti az Azure riasztási szabályokat a célként megadott előfizetésben vagy erőforráscsoportok virtuális gépeken. <br> `VMList`a a virtuális gépek vesszővel tagolt listája (szóközök nélkül), például: `vm1,vm2,vm3` .<br> `WhatIf`lehetővé teszi a runbook logika érvényesítését a végrehajtás nélkül.|
-|AutoStop_Disable | Nincsenek | Letiltja az automatikus leállítási riasztásokat és az alapértelmezett ütemtervet.|
+|AutoStop_Disable | Nincs | Letiltja az automatikus leállítási riasztásokat és az alapértelmezett ütemtervet.|
 |AutoStop_VM_Child | WebHookData | Meghívva a szülő runbook. A riasztási szabályok meghívja ezt a runbook egy klasszikus virtuális gép leállításához.|
 |AutoStop_VM_Child_ARM | WebHookData |Meghívva a szülő runbook. A riasztási szabályok meghívja ezt a runbook egy virtuális gép leállítására.  |
 |ScheduledStartStop_Base_Classic | Felhőszolgáltatásneve<br> Művelet: indítás vagy leállítás<br> VMList  | Elvégzi a művelet indítását vagy leállítását a klasszikus virtuálisgép-csoportban Cloud Services alapján. |
@@ -156,7 +156,7 @@ A következő táblázat az Automation-fiókban létrehozott alapértelmezett ü
 
 Ne engedélyezze az összes ütemtervet, mert ez az átfedésben lévő ütemezett műveleteket is létrehozhatja. Érdemes eldönteni, hogy mely optimalizálásokat kívánja elvégezni, és ennek megfelelően módosítania kell azokat. További magyarázatért tekintse meg az Áttekintés szakaszban található példákat.
 
-|Ütemterv neve | Gyakoriság | Leírás|
+|Ütemterv neve | Gyakoriság | Description|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 óránként | A **AutoStop_CreateAlert_Parent** runbook 8 óránként futtatja, ami viszont leállítja a virtuálisgép-alapú értékeket `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` és `External_ExcludeVMNames` változókat. Másik lehetőségként megadhatja a virtuális gépek vesszővel tagolt listáját a `VMList` paraméter használatával.|
 |Scheduled_StopVM | Felhasználó által definiált, napi | A **ScheduledStopStart_Parent** runbook minden nap paraméterével futtatja `Stop` a megadott időpontban.A automatikusan leállítja az összes olyan virtuális gépet, amely megfelel a változó eszközök által meghatározott szabályoknak.A kapcsolódó ütemezett ütemezés engedélyezése **– StartVM**.|

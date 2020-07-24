@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 7e8f34f3d68a957dbd5bb13b69f751184d224e2c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 785054222dc3281b11b5e6abe1b82f67e2fc5ace
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961115"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066645"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Belső terheléselosztó létrehozása sablon használatával
 
@@ -40,7 +40,7 @@ A nyilvános tárházban elérhető mintasablon a fent leírt forgatókönyv lé
 
 A letöltött sablon PowerShell használatával történő üzembe helyezéséhez kövesse az alábbi lépéseket.
 
-1. Ha még soha nem használta a Azure PowerShellt, tekintse meg a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview) című témakört, és kövesse az utasításokat egészen az Azure-ba való bejelentkezéshez és az előfizetés kiválasztásához.
+1. Ha még soha nem használta a Azure PowerShellt, tekintse meg a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/) című témakört, és kövesse az utasításokat egészen az Azure-ba való bejelentkezéshez és az előfizetés kiválasztásához.
 2. Töltse le a paramétereket tartalmazó fájlt a helyi lemezre.
 3. Szerkessze a fájlt, majd mentse el.
 4. A **New-AzResourceGroupDeployment** parancsmag futtatásával hozzon létre egy erőforráscsoportot a sablon használatával.

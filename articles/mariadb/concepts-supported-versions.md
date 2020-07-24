@@ -5,12 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/3/2020
-ms.openlocfilehash: a6d340543289fa07370e053681599348a86940cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/20/2020
+ms.openlocfilehash: 0b495bf21b1f78e5e6a9285f67e1769d2d2a0db1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84343404"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065705"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>Támogatott Azure Database for MariaDB Server-verziók
 
@@ -25,15 +26,15 @@ A Azure Database for MariaDB jelenleg a következő verziót támogatja:
 
 ## <a name="mariadb-version-102"></a>MariaDB 10,2-es verzió
 
-Javítás verziója: 10.2.31
+Javítás verziója: 10.2.32
 
-Tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/mariadb-10231-release-notes/) , és ismerkedjen meg a jelen verzióban található javításokkal és javításokkal.
+Tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/mariadb-10232-release-notes/) , és ismerkedjen meg a jelen verzióban található javításokkal és javításokkal.
 
 ## <a name="mariadb-version-103"></a>MariaDB 10,3-es verzió
 
-Javítás verziója: 10.3.22
+Javítás verziója: 10.3.23
 
-Tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/mariadb-10322-release-notes/) , és ismerkedjen meg a jelen verzióban található javításokkal és javításokkal.
+Tekintse meg a [MariaDB dokumentációját](https://mariadb.com/kb/en/mariadb-10323-release-notes/) , és ismerkedjen meg a jelen verzióban található javításokkal és javításokkal.
 
 ## <a name="managing-updates-and-upgrades"></a>Frissítések és frissítések kezelése
 A szolgáltatás automatikusan kezeli a javítások frissítéseit. Például 10.2.21 a 10.2.23.  

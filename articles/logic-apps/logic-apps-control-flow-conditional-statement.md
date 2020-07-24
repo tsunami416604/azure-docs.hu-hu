@@ -6,15 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: a7f9ab478067cecbac6f01a5a969bf48653b6dd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 796558c2579504b673fd15c468ce635c6b1cca8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831500"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066366"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>A Azure Logic Apps munkafolyamat-műveleteinek vezérlésére szolgáló feltételes utasítások létrehozása
 
-Ha konkrét műveleteket szeretne futtatni a logikai alkalmazásban egy megadott feltétel átadását követően, adjon hozzá egy *feltételes utasítást*. Ez a vezérlési struktúra összehasonlítja a munkafolyamatban lévő adatait bizonyos értékekkel vagy mezőkkel. Ezután különböző műveleteket is megadhat, amelyek attól függően futnak, hogy az adott állapot megfelel-e az adott feltételnek. A feltételeket egymásba ágyazhatja.
+Ha konkrét műveleteket szeretne futtatni a logikai alkalmazásban egy megadott feltétel átadását követően, adjon hozzá egy *feltételes utasítást*. Ez a vezérlőstruktúra összehasonlítja a munkafolyamatban lévő adatokat meghatározott értékekkel vagy mezőkkel. Ezután különböző műveleteket is megadhat, amelyek attól függően futnak, hogy az adott állapot megfelel-e az adott feltételnek. A feltételeket egymásba ágyazhatja.
 
 Tegyük fel például, hogy van egy logikai alkalmazás, amely túl sok e-mailt küld, amikor új elemek jelennek meg a webhely RSS-hírcsatornáján. Hozzáadhat egy feltételes utasítást úgy, hogy csak akkor küldjön e-mailt, ha az új elem egy adott karakterláncot tartalmaz. 
 
@@ -109,7 +110,7 @@ Itt látható a feltételes utasítás mögötti magas szintű kód definíciój
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](/answers/topics/azure-logic-apps.html).
 * A szolgáltatásokról és javaslatokról a [Azure Logic apps felhasználói visszajelzéseket ismertető webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
 ## <a name="next-steps"></a>További lépések

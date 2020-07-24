@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4949d5f2621957d6830625fe798601db4472a75d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259172"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064907"
 ---
 # <a name="about-virtual-hub-routing"></a>Információ a virtuális központ útválasztásáról
 
@@ -60,6 +60,9 @@ Minden egyes virtuális központ esetében az **egyik útválasztási tábla sem
 
 :::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Propagálás":::
 
+### <a name="labels"></a><a name="static"></a>Címkék
+A címkék olyan mechanizmust biztosítanak, amely logikailag csoportosítja az útválasztási táblákat. Ez különösen hasznos lehet az útvonalaknak több útválasztási táblába való csatlakozása során. Az alapértelmezett útválasztási táblázat például egy "default" nevű beépített címkével rendelkezik. Amikor a felhasználók propagálják a kapcsolati útvonalakat az "alapértelmezett" címkére, a rendszer automatikusan az összes alapértelmezett útválasztási táblára alkalmazza a virtuális WAN összes csomópontján. 
+
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Statikus útvonalak konfigurálása virtuális hálózati kapcsolatban
 
 A statikus útvonalak konfigurálása egy olyan mechanizmust biztosít, amely egy következő ugrási IP-címen keresztül irányítja át a forgalmat, ami egy virtuális hubhoz csatolt küllős VNet kiépített hálózati virtuális berendezés (NVA) lehet. A statikus útvonal egy útvonal neve, a célhelyek előtagjainak listája, valamint egy következő ugrási IP-cím.
@@ -77,7 +80,7 @@ Az útválasztási táblázat új funkcióinak használatához várjon, amíg az
 
 * **Alapszintű virtuális WAN-ügyfelek meglévő útvonalakkal a Virtual hub-ban**: az útválasztási táblázat új funkcióinak használatához várjon, amíg az Azure-ba való bevezetéshez a 3. augusztusi hét befejeződik. Ha az Útválasztás szakaszban már meglévő útvonalak találhatók a Azure Portal található hubhoz, először törölnie kell őket, majd **frissítenie** kell az alapszintű virtuális WAN-t a standard virtuális WAN-ra. Lásd: [virtuális WAN frissítése alapszintről standard verzióra](upgrade-virtual-wan.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Útválasztás konfigurálásával kapcsolatban lásd: [a virtuális központ útválasztásának konfigurálása](how-to-virtual-hub-routing.md).
 

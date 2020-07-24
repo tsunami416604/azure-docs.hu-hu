@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83739532"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066123"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-üzenetek a B2B vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
 
@@ -86,7 +87,7 @@ A szerződés tulajdonságainak beállítása után beállíthatja, hogy a jelen
 
 ![A bejövő üzenetek sémái](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-schemas.png)
 
-Ebben a szakaszban válasszon ki egy [sémát](../logic-apps/logic-apps-enterprise-integration-schemas.md) az [integrációs fiókjából](../logic-apps/logic-apps-enterprise-integration-accounts.md) az egyes tranzakciótípusok (ST01) és a küldő alkalmazások (GS02) számára. Az EDI fogadási folyamata kibontja a beérkező üzenetet úgy, hogy az ebben a szakaszban beállított értékeket és sémát a ST01 és a GS02 értékeit a bejövő üzenetben és a beérkező üzenet sémájánál adja meg. Az egyes sorok befejezését követően automatikusan megjelenik egy új üres sor.
+Ebben a szakaszban válasszon ki egy [sémát](../logic-apps/logic-apps-enterprise-integration-schemas.md) az [integrációs fiókjából](./logic-apps-enterprise-integration-create-integration-account.md) az egyes tranzakciótípusok (ST01) és a küldő alkalmazások (GS02) számára. Az EDI fogadási folyamata kibontja a beérkező üzenetet úgy, hogy az ebben a szakaszban beállított értékeket és sémát a ST01 és a GS02 értékeit a bejövő üzenetben és a beérkező üzenet sémájánál adja meg. Az egyes sorok befejezését követően automatikusan megjelenik egy új üres sor.
 
 | Tulajdonság | Leírás |
 |----------|-------------|
@@ -173,7 +174,7 @@ A szerződés tulajdonságainak beállítása után beállíthatja, hogy a jelen
    * [Vezérlő verziószáma](#outbound-control-version-number)
    * [Vezérlőelemek száma](#outbound-control-numbers)
    * [Karakterkészletek és elválasztók](#outbound-character-sets-separators)
-   * [Érvényesítés](#outbound-validation)
+   * [Ellenőrzés](#outbound-validation)
 
 1. Ha elkészült, győződjön meg arról, hogy az **OK gombra**kattintva menti a beállításokat.
 
@@ -209,7 +210,7 @@ A szerződés tulajdonságainak beállítása után beállíthatja, hogy a jelen
 
 ![A kimenő üzenetek sémái](./media/logic-apps-enterprise-integration-x12/x12-send-settings-schemas.png)
 
-Ebben a szakaszban minden tranzakciótípus (ST01) esetében válasszon ki egy [sémát](../logic-apps/logic-apps-enterprise-integration-schemas.md) az [integrációs fiókjából](../logic-apps/logic-apps-enterprise-integration-accounts.md) . Az egyes sorok befejezését követően automatikusan megjelenik egy új üres sor.
+Ebben a szakaszban minden tranzakciótípus (ST01) esetében válasszon ki egy [sémát](../logic-apps/logic-apps-enterprise-integration-schemas.md) az [integrációs fiókjából](./logic-apps-enterprise-integration-create-integration-account.md) . Az egyes sorok befejezését követően automatikusan megjelenik egy új üres sor.
 
 | Tulajdonság | Leírás |
 |----------|-------------|
@@ -235,7 +236,7 @@ Ebben a szakaszban minden tranzakciótípus (ST01) esetében válasszon ki egy [
 
 ![A kimenő üzenetek verziószámának vezérlése](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-version-number.png)
 
-Ebben a szakaszban válasszon ki egy [sémát](../logic-apps/logic-apps-enterprise-integration-schemas.md) az [integrációs fiókjából](../logic-apps/logic-apps-enterprise-integration-accounts.md) az egyes adatcserékhez. Az egyes sorok befejezését követően automatikusan megjelenik egy új üres sor.
+Ebben a szakaszban válasszon ki egy [sémát](../logic-apps/logic-apps-enterprise-integration-schemas.md) az [integrációs fiókjából](./logic-apps-enterprise-integration-create-integration-account.md) az egyes adatcserékhez. Az egyes sorok befejezését követően automatikusan megjelenik egy új üres sor.
 
 | Tulajdonság | Leírás |
 |----------|-------------|
@@ -279,7 +280,7 @@ Az **alapértelmezett** sor azt a karakterkészletet jeleníti meg, amelyet hat�
 |----------|-------------|
 | **Használandó karakterkészlet** | A X12 karakterkészlete, amely **Alapszintű**, **bővített**vagy **UTF8**értékű. |
 | **Séma** | A használni kívánt séma. A séma kiválasztása után válassza ki a használni kívánt karakterkészletet az alábbi elválasztó leírások alapján. |
-| **Bevitel típusa** | A karakterkészlet bemeneti típusa |
+| **Bemenet típusa** | A karakterkészlet bemeneti típusa |
 | **Összetevő-elválasztó** | Egyetlen karakter, amely elkülöníti az összetett adatelemeket |
 | **Adatelem-elválasztó** | Egyetlen karakter, amely elválasztja az egyszerű adatelemeket az összetett adatokat |
 | **helyettesítő karakter elválasztója** | Helyettesítő karakter, amely felváltja a hasznos adatokban lévő összes elválasztó karaktert a kimenő X12 üzenet létrehozásakor |
@@ -380,7 +381,7 @@ A dokumentumok verziószámának és az üzenetek típusának megadásához köv
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötővel kapcsolatos további technikai részleteket, például az összekötő hencegő fájljában leírt műveleteket és korlátokat az összekötő [hivatkozási oldalán](https://docs.microsoft.com/connectors/x12/)találja.
+Az összekötővel kapcsolatos további technikai részleteket, például az összekötő hencegő fájljában leírt műveleteket és korlátokat az összekötő [hivatkozási oldalán](/connectors/x12/)találja.
 
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében ez az összekötő ISE által címkézett verziója az [ISE B2B-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)használja.

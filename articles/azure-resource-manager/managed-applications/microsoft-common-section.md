@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 999a7386ee7c5b3ef76f87280cc2d0cd45f143cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 924aff8f2ba3d796b65f52494845f3b10018065c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652254"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063965"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft. Common. szakasz FELHASZNÁLÓIFELÜLET-elem
 
@@ -17,7 +18,7 @@ Egy vezérlőelem, amely egy vagy több elemet csoportosít egy fejléc alá.
 
 ## <a name="ui-sample"></a>Felhasználói felület mintája
 
-![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
+![Microsoft.Common.Section](./media/managed-application-elements/microsoft-common-section.png)
 
 ## <a name="schema"></a>Séma
 
@@ -48,7 +49,7 @@ Egy vezérlőelem, amely egy vagy több elemet csoportosít egy fejléc alá.
 - Ez az elem nem támogatja a `toolTip` tulajdonságot.
 
 ## <a name="sample-output"></a>Példa kimenet
-A elemek kimeneti értékeinek eléréséhez használja az alapértékek `elements` [()](create-uidefinition-functions.md#basics) vagy a [Steps ()](create-uidefinition-functions.md#steps) függvényt és a dot jelölést:
+A elemek kimeneti értékeinek eléréséhez használja az alapértékek `elements` [()](create-ui-definition-referencing-functions.md#basics) vagy a [Steps ()](create-ui-definition-referencing-functions.md#steps) függvényt és a dot jelölést:
 
 ```json
 steps('configuration').section1.text1

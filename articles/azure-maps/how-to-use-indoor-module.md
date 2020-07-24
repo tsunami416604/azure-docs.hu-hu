@@ -3,17 +3,17 @@ title: A Azure Maps Indoor Maps modul használata
 description: Megtudhatja, hogyan használhatja az Microsoft Azure Maps beltéri térképek modult a térképek megjelenítéséhez a modul JavaScript-kódtárainak beágyazásával.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6e7b6c7ddb33d42cca66698c87c82477f3e55621
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f7bca363e22524546e7ee46bf44ddb18dacf00d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517467"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064235"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>A Azure Maps Indoor Maps modul használata
 
@@ -42,16 +42,14 @@ Ha a *Azure Maps beltéri* modul globálisan üzemeltetett Azure Content Deliver
 
  Vagy letöltheti a *Azure Maps beltéri* modult is. A *Azure Maps beltéri* modul tartalmaz egy ügyféloldali kódtárat a Azure Maps szolgáltatások eléréséhez. Az alábbi lépéseket követve telepítheti és betöltheti a *beltéri* modult a webalkalmazásba.  
   
-  1. Töltse le az [Azure-Maps-Indoor csomagot](https://www.npmjs.com/package/azure-maps-indoor).
+  1. Telepítse az [Azure-Maps-Indoor csomagot](https://www.npmjs.com/package/azure-maps-indoor).
   
-  2. Telepítse a NPM csomagot. Győződjön meg arról, hogy rendszergazdai jogosultságokat használ a konzolon:
-
       ```powershell
       >npm install azure-maps-control
       >npm install azure-maps-indoor
       ```
 
-  3. A HTML-fájl elemében a *Azure Maps beltéri* modul JavaScript-és stíluslapjának hivatkozása `<head>` :
+  2. A HTML-fájl elemében a *Azure Maps beltéri* modul JavaScript-és stíluslapjának hivatkozása `<head>` :
 
       ```html
       <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
@@ -71,7 +69,7 @@ const map = new atlas.Map("map-id", {
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
-  authOptions: { 
+  authOptions: {
       authType: 'subscriptionKey',
       subscriptionKey: subscriptionKey
   },
@@ -245,7 +243,7 @@ Ha szeretné megtekinteni a beltéri térképet, töltse be azt egy webböngész
 
   ![beltéri Térkép képe](media/how-to-use-indoor-module/indoor-map-graphic.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Olvassa el a *Azure Maps beltéri* modulhoz kapcsolódó API-kat:
 

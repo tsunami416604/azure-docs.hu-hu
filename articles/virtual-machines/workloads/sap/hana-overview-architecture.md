@@ -13,11 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d413b2babda4c73f9f29ce3750bf7d0461db43c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77616953"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065096"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Mi az SAP HANA az Azure-ban (nagy méretű példányok)?
 
@@ -53,8 +54,8 @@ A HANA nagyméretű példányok különböző dokumentumai a következő terüle
 - [SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure-ban](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [SAP HANA (nagyméretű példányok) magas rendelkezésre állása és vész-helyreállítás az Azure-ban](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [SAP HANA (nagyméretű példányok) hibaelhárítás és monitorozás az Azure-ban](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Magas rendelkezésre állás beállítása a SUSE-ben a STONITH használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [Az operációs rendszer biztonsági mentése és visszaállítása a 3. típusú bélyegzők II. típusához](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [Magas rendelkezésre állás beállítása a SUSE-ben a STONITH használatával](./ha-setup-with-stonith.md)
+- [Az operációs rendszer biztonsági mentése és visszaállítása a 3. típusú bélyegzők II. típusához](./os-backup-type-ii-skus.md)
 
 **Következő lépések**
 - Tekintse át [a feltételeket](hana-know-terms.md)

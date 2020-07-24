@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 986440db7f8d4e1d4d46832543f58fa2985a4df4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ffcda4a33c43866c3b580a60c87c1ffca59bbc4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83831619"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066350"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Munkafolyamatok tevékenységeit ismétlő vagy tömböket feldolgozó hurkok létrehozása az Azure Logic Appsben
 
@@ -161,7 +162,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
 > [!NOTE]
 > Ezek a lépések az Office 365 Outlookot használják, de a Logic Apps által támogatott bármely e-mail-szolgáltatót használhat. 
-> [Itt tekintse meg az összekötők listáját](https://docs.microsoft.com/connectors/). Ha más e-mail-fiókot használ, az általános lépések ugyanazok maradnak, de a felhasználói felület némileg eltérő lehet. 
+> [Itt tekintse meg az összekötők listáját](/connectors/). Ha más e-mail-fiókot használ, az általános lépések ugyanazok maradnak, de a felhasználói felület némileg eltérő lehet. 
 
 1. Üres logikai alkalmazás létrehozása. A Logic app Designerben a keresőmező alatt válassza az **összes**lehetőséget. Keressen rá az "Ismétlődés" kifejezésre. 
    Az eseményindítók listából válassza ki a következő eseményindítót: **Ismétlődés – ütemezése**
@@ -174,7 +175,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
    | Tulajdonság | Érték |
    | -------- | ----- |
-   | **Időköz** | 1 | 
+   | **Intervallum** | 1 | 
    | **Gyakoriság** | Nap |
    | **Ezekben az órákban** | 8 |
    ||| 
@@ -190,7 +191,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
    | Tulajdonság | Érték | Leírás |
    | -------- | ----- | ----------- |
-   | **Name (Név)** | Korlát | A változó neve | 
+   | **Név** | Korlát | A változó neve | 
    | **Típus** | Egész szám | Változó adattípusa | 
    | **Érték** | 0 | A változó kezdő értéke | 
    |||| 
@@ -229,7 +230,7 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
       ![E-mail-tulajdonságok beállítása](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | Tulajdonság | Érték | Description |
+      | Tulajdonság | Érték | Leírás |
       | -------- | ----- | ----------- | 
       | **Hogy** | *\<email-address\@domain>* | A címzett e-mail-címe. Teszteléshez használja a saját e-mail-címét. | 
       | **Tárgy** | A "Limit" jelenlegi értéke **limit** | Határozza meg az e-mail tárgyát. Ebben a példában ellenőrizze, hogy tartalmazza-e a **határérték** változót. | 
@@ -334,7 +335,7 @@ Ebben a példában a "ig" ciklus egy olyan HTTP-végpontot hív meg, amely létr
 
 ## <a name="get-support"></a>Támogatás kérése
 
-* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-logic-apps.html).
+* Ha kérdése van, látogasson el a [Microsoft Q&a Azure Logic apps vonatkozó kérdés oldalára](/answers/topics/azure-logic-apps.html).
 * A szolgáltatásokról és javaslatokról [Azure Logic apps felhasználói visszajelzési webhelyről](https://aka.ms/logicapps-wish)küldhet vagy szavazhat.
 
 ## <a name="next-steps"></a>További lépések

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 28fee67ccfc1e67d89d0151c8e14bd7c0b688749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12c407ecacdce6b9052ca70ef70a2ae87928b6c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207090"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064695"
 ---
 # <a name="how-to-use-image-templates"></a>Rendszerképsablonok használata
 
@@ -148,44 +148,337 @@ Ez a táblázat felsorolja az Azure Maps web SDK-ban jelenleg elérhető összes
 
 **Szimbólum ikon sablonjai**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| marker | jelölő – vastag | jelölő – kör | jelölő – lapos |
-|![jelölő ikon](./media/image-templates/marker.png)|![jelölő – vastag ikon](./media/image-templates/marker-thick.png)|![jelölő – kör ikon](./media/image-templates/marker-circle.png)|![jelölő – lapos ikon](./media/image-templates/marker-flat.png)|
-||||
-| jelölő – négyzet | jelölő-négyzet-fürt | jelölő – nyíl | jelölő – golyós PIN-kód | 
-|![jelölő – négyzet ikon](./media/image-templates/marker-square.png)|![jelölő – négyzet-fürt ikon](./media/image-templates/marker-square-cluster.png)|![jelölő – nyíl ikon](./media/image-templates/marker-arrow.png)|![jelölő-labda-PIN ikon](./media/image-templates/marker-ball-pin.png)|
-||||
-| jelölő – négyzet kerekített | jelölő-négyzet-kerekített fürt | flag | jelölő – háromszög |
-| ![jelölő – négyzet alakú lekerekített ikon](./media/image-templates/marker-square-rounded.png) | ![jelölő-négyzet-lekerekített fürt ikonja](./media/image-templates/marker-square-rounded-cluster.png) | ![jelölő ikon](./media/image-templates/flag.png) | ![jelölő – háromszög ikon](./media/image-templates/flag-triangle.png) |
-||||
-| háromszög | háromszög – vastag | háromszög – nyíl fel | háromszög – nyíl balra |
-| ![háromszög ikon](./media/image-templates/triangle.png) | ![háromszög – vastag ikon](./media/image-templates/triangle-thick.png) | ![háromszög-nyíl ikon](./media/image-templates/triangle-arrow-up.png) | ![háromszög – nyíl bal oldali ikon](./media/image-templates/triangle-arrow-left.png) |
-||||
-| hatszög | hatszög – vastag | hatszög – lekerekített | hatszög – kerekített – vastag |
-| ![hatszög ikon](./media/image-templates/hexagon.png) | ![hatszögletű – vastag ikon](./media/image-templates/hexagon-thick.png) | ![hatszög – lekerekített ikon](./media/image-templates/hexagon-rounded.png) | ![hatszög – kerekített vastagságú ikon](./media/image-templates/hexagon-rounded-thick.png) |
-||||
-| PIN | rögzítési kör | lekerekített négyzet | lekerekített négyzetes vastag |
-| ![gombostű ikon](./media/image-templates/pin.png) | ![rögzítési kör ikonja](./media/image-templates/pin-round.png) | ![lekerekített négyzet ikon](./media/image-templates/rounded-square.png) | ![lekerekített négyzetes vastagságú ikon](./media/image-templates/rounded-square-thick.png) |
-||||
-| nyíl fel | nyíl – vékony | car ||
-| ![nyíl ikon](./media/image-templates/arrow-up.png) | ![nyíl – vékony ikon](./media/image-templates/arrow-up-thin.png) | ![autós ikon](./media/image-templates/car.png) | |
+:::row:::
+   :::column span="":::
+      marker
+   :::column-end:::
+   :::column span="":::
+      jelölő – vastag
+   :::column-end:::
+   :::column span="":::
+      jelölő – kör
+   :::column-end:::
+   :::column span="":::
+      jelölő – lapos
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![jelölő ikon](./media/image-templates/marker.png)
+   :::column-end:::
+   :::column span="":::
+      ![jelölő – vastag ikon](./media/image-templates/marker-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![jelölő – kör ikon](./media/image-templates/marker-circle.png)
+   :::column-end:::
+   :::column span="":::
+      ![jelölő – lapos ikon](./media/image-templates/marker-flat.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      jelölő – négyzet
+   :::column-end:::
+   :::column span="":::
+      jelölő-négyzet-fürt
+   :::column-end:::
+   :::column span="":::
+      jelölő – nyíl
+   :::column-end:::
+   :::column span="":::
+      jelölő – golyós PIN-kód
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![jelölő – négyzet ikon](./media/image-templates/marker-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![jelölő – négyzet-fürt ikon](./media/image-templates/marker-square-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![jelölő – nyíl ikon](./media/image-templates/marker-arrow.png)
+   :::column-end:::
+   :::column span="":::
+      ![jelölő-labda-PIN ikon](./media/image-templates/marker-ball-pin.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      jelölő – négyzet kerekített
+   :::column-end:::
+   :::column span="":::
+      jelölő-négyzet-kerekített fürt
+   :::column-end:::
+   :::column span="":::
+      flag
+   :::column-end:::
+   :::column span="":::
+      jelölő – háromszög
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![jelölő – négyzet alakú lekerekített ikon](./media/image-templates/marker-square-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![jelölő-négyzet-lekerekített fürt ikonja](./media/image-templates/marker-square-rounded-cluster.png)
+   :::column-end:::
+   :::column span="":::
+      ![jelölő ikon](./media/image-templates/flag.png)
+   :::column-end:::
+   :::column span="":::
+      ![jelölő – háromszög ikon](./media/image-templates/flag-triangle.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      háromszög
+   :::column-end:::
+   :::column span="":::
+      háromszög – vastag
+   :::column-end:::
+   :::column span="":::
+      háromszög – nyíl fel
+   :::column-end:::
+   :::column span="":::
+      háromszög – nyíl balra
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![háromszög ikon](./media/image-templates/triangle.png)
+   :::column-end:::
+   :::column span="":::
+      ![háromszög – vastag ikon](./media/image-templates/triangle-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![háromszög-nyíl ikon](./media/image-templates/triangle-arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![háromszög – nyíl bal oldali ikon](./media/image-templates/triangle-arrow-left.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      hatszög
+   :::column-end:::
+   :::column span="":::
+      hatszög – vastag
+   :::column-end:::
+   :::column span="":::
+      hatszög – lekerekített
+   :::column-end:::
+   :::column span="":::
+      hatszög – kerekített – vastag
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![hatszög ikon](./media/image-templates/hexagon.png)
+   :::column-end:::
+   :::column span="":::
+      ![hatszögletű – vastag ikon](./media/image-templates/hexagon-thick.png)
+   :::column-end:::
+   :::column span="":::
+      ![hatszög – lekerekített ikon](./media/image-templates/hexagon-rounded.png)
+   :::column-end:::
+   :::column span="":::
+      ![hatszög – kerekített vastagságú ikon](./media/image-templates/hexagon-rounded-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      PIN
+   :::column-end:::
+   :::column span="":::
+      rögzítési kör
+   :::column-end:::
+   :::column span="":::
+      lekerekített négyzet
+   :::column-end:::
+   :::column span="":::
+      lekerekített négyzetes vastag
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![gombostű ikon](./media/image-templates/pin.png)
+   :::column-end:::
+   :::column span="":::
+      ![rögzítési kör ikonja](./media/image-templates/pin-round.png)
+   :::column-end:::
+   :::column span="":::
+      ![lekerekített négyzet ikon](./media/image-templates/rounded-square.png)
+   :::column-end:::
+   :::column span="":::
+      ![lekerekített négyzetes vastagságú ikon](./media/image-templates/rounded-square-thick.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      nyíl fel
+   :::column-end:::
+   :::column span="":::
+      nyíl – vékony
+   :::column-end:::
+   :::column span="":::
+      car
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![nyíl ikon](./media/image-templates/arrow-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![nyíl – vékony ikon](./media/image-templates/arrow-up-thin.png)
+   :::column-end:::
+   :::column span="":::
+      ![autós ikon](./media/image-templates/car.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+
 
 **Sokszög kitöltési mintájának sablonjai**
 
-|||||
-|:-:|:-:|:-:|:-:|
-| Checker | ellenőr – elforgatva | körök | körökre lefoglalt |
-| ![ellenőrzési ikon](./media/image-templates/checker.png) | ![ellenőr által elforgatott ikon](./media/image-templates/checker-rotated.png) | ![körök ikon](./media/image-templates/circles.png) | ![körökre kihelyezett ikon](./media/image-templates/circles-spaced.png) |
-|||||
-| átlós vonalak – felfelé | átlós vonalak – lefelé | átlós sávok – felfelé | átlós sávok – lefelé |
-| ![átlós vonalak – felfelé ikon](./media/image-templates/diagonal-lines-up.png) | ![átlós vonalak – lefelé ikon](./media/image-templates/diagonal-lines-down.png) | ![átlós sávok – ikon](./media/image-templates/diagonal-stripes-up.png) | ![átlós sáv – lefelé ikon](./media/image-templates/diagonal-stripes-down.png) |
-|||||
-| rács – vonalak | elforgatva – rács – vonalak | elforgatva – Grid-Stripes | x – kitöltés |
-| ![rács – vonalak ikon](./media/image-templates/grid-lines.png) | ![elforgatva – rács – vonalak ikon](./media/image-templates/rotated-grid-lines.png) | ![elforgatva – Grid-Stripes ikon](./media/image-templates/rotated-grid-stripes.png) | ![x-Fill ikon](./media/image-templates/x-fill.png) |
-|||||
-| Zig-Zag | Zig-Zag-vertikális | pontok |  |
-| ![Zig-Zag ikon](./media/image-templates/zig-zag.png) | ![Zig-Zag-függőleges ikon](./media/image-templates/zig-zag-vertical.png) | ![pontok ikon](./media/image-templates/dots.png) | |
+:::row:::
+   :::column span="":::
+      Checker
+   :::column-end:::
+   :::column span="":::
+      ellenőr – elforgatva
+   :::column-end:::
+   :::column span="":::
+      körök
+   :::column-end:::
+   :::column span="":::
+      körökre lefoglalt
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![ellenőrzési ikon](./media/image-templates/checker.png)
+   :::column-end:::
+   :::column span="":::
+      ![ellenőr által elforgatott ikon](./media/image-templates/checker-rotated.png)
+   :::column-end:::
+   :::column span="":::
+      ![körök ikon](./media/image-templates/circles.png)
+   :::column-end:::
+   :::column span="":::
+      ![körökre kihelyezett ikon](./media/image-templates/circles-spaced.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      átlós vonalak – felfelé
+   :::column-end:::
+   :::column span="":::
+      átlós vonalak – lefelé
+   :::column-end:::
+   :::column span="":::
+      átlós sávok – felfelé
+   :::column-end:::
+   :::column span="":::
+      átlós sávok – lefelé
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![átlós vonalak – felfelé ikon](./media/image-templates/diagonal-lines-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![átlós vonalak – lefelé ikon](./media/image-templates/diagonal-lines-down.png)
+   :::column-end:::
+   :::column span="":::
+      ![átlós sávok – ikon](./media/image-templates/diagonal-stripes-up.png)
+   :::column-end:::
+   :::column span="":::
+      ![átlós sáv – lefelé ikon](./media/image-templates/diagonal-stripes-down.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      rács – vonalak
+   :::column-end:::
+   :::column span="":::
+      elforgatva – rács – vonalak
+   :::column-end:::
+   :::column span="":::
+      elforgatva – Grid-Stripes
+   :::column-end:::
+   :::column span="":::
+      x – kitöltés
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![rács – vonalak ikon](./media/image-templates/grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![elforgatva – rács – vonalak ikon](./media/image-templates/rotated-grid-lines.png)
+   :::column-end:::
+   :::column span="":::
+      ![elforgatva – Grid-Stripes ikon](./media/image-templates/rotated-grid-stripes.png)
+   :::column-end:::
+   :::column span="":::
+      ![x-Fill ikon](./media/image-templates/x-fill.png)
+   :::column-end:::
+:::row-end:::
+<br>
+
+:::row:::
+   :::column span="":::
+      Zig-Zag
+   :::column-end:::
+   :::column span="":::
+      Zig-Zag-vertikális
+   :::column-end:::
+   :::column span="":::
+      pontok
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      ![Zig-Zag ikon](./media/image-templates/zig-zag.png)
+   :::column-end:::
+   :::column span="":::
+      ![Zig-Zag-függőleges ikon](./media/image-templates/zig-zag-vertical.png)
+   :::column-end:::
+   :::column span="":::
+      ![pontok ikon](./media/image-templates/dots.png)
+   :::column-end:::
+   :::column span="":::
+      &nbsp;
+   :::column-end:::
+:::row-end:::
+<br>
 
 **Előre feltöltött képikonok**
 

@@ -1,5 +1,5 @@
 ---
-title: Feladatátvételi és vész-helyreállítási Video Indexer
+title: Video Indexer – feladatátvétel és vészhelyreállítás
 titleSuffix: Azure Media Services
 description: Megtudhatja, hogyan hajthat végre feladatátvételt másodlagos Video Indexer-fiókra, ha regionális adatközpont-meghibásodás vagy katasztrófa következik be.
 services: media-services
@@ -14,17 +14,18 @@ ms.topic: article
 ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 17c21900448fcb6d0a40fe5407f3b8bd62f9e3e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eab376c44065979de86e5c70b796be952fccffaa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79499617"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065402"
 ---
-# <a name="video-indexer-failover-and-disaster-recovery"></a>Feladatátvételi és vész-helyreállítási Video Indexer
+# <a name="video-indexer-failover-and-disaster-recovery"></a>Video Indexer – feladatátvétel és vészhelyreállítás
 
-Azure Media Services Video Indexer nem biztosít azonnali feladatátvételt a szolgáltatáshoz, ha van regionális adatközpont-kimaradás vagy meghibásodás. Ez a cikk azt ismerteti, hogyan konfigurálhatja a környezetet a feladatátvételhez, így biztosítva az alkalmazások optimális rendelkezésre állását és a lehető legkevesebb helyreállítási időt, ha katasztrófa következik be.
+Az Azure Media Services Video Indexer nem biztosítja a szolgáltatás azonnali feladatátvételét a regionális adatközpont leállása vagy meghibásodása esetén. Ez a cikk azt ismerteti, hogyan konfigurálhatja a környezetet a feladatátvételhez, így biztosítva az alkalmazások optimális rendelkezésre állását és a lehető legkevesebb helyreállítási időt, ha katasztrófa következik be.
 
-Javasoljuk, hogy az üzletmenet-folytonossági vész-helyreállítást (BCDR) a regionális párokban konfigurálja az Azure elkülönítési és rendelkezésre állási házirendjeinek kihasználása érdekében. További információ: [Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Javasoljuk, hogy az üzletmenet-folytonosság vészhelyreállítását (BCDR) regionális párokban konfigurálja az Azure elkülönítési és rendelkezésreállási szabályzataival járó előnyök kihasználásához. További információ: [Azure párosított régiók](../../best-practices-availability-paired-regions.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +39,7 @@ A BCDR megvalósításához két Video Indexer fiókkal kell rendelkeznie a redu
 1. Ha az elsődleges régióban hiba történt, váltson át az indexelésre a másodlagos fiók használatával.
 
 > [!TIP]
-> A BCDR automatizálásához állítsa be a tevékenységek naplójának riasztásait a szolgáltatás állapotával kapcsolatos értesítésekhez, mint a [szolgáltatási értesítéseken a létrehozási tevékenység naplójának riasztásai](../../service-health/alerts-activity-log-service-notifications.md).
+> A BCDR automatizálásához állítsa be a tevékenységek naplójának riasztásait a szolgáltatás állapotával kapcsolatos értesítésekhez, mint a [szolgáltatási értesítéseken a létrehozási tevékenység naplójának riasztásai](../../service-health/alerts-activity-log-service-notifications-portal.md).
 
 További információ a több bérlő használatáról: [több bérlő kezelése](manage-multiple-tenants.md). A BCDR megvalósításához válasszon egyet a következő két lehetőség közül: [video Indexer fiók/bérlő](manage-multiple-tenants.md#video-indexer-account-per-tenant) vagy [Azure-előfizetés bérlőn](manage-multiple-tenants.md#azure-subscription-per-tenant).
 

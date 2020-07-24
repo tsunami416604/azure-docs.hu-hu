@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 999ab77538a145189e0576c920216fa55d8508f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eed53725507325351dcf51fbe368331c2a4fd2f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85366822"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065131"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 
@@ -120,7 +120,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    </code></pre>
 
    > [!IMPORTANT]
-   > Ha frissítenie kell az Azure kerítés-ügynököt, és ha egyéni szerepkört használ, ügyeljen arra, hogy frissítse az egyéni szerepkört a **következő művelettel**:. További részletekért lásd: [Egyéni szerepkör létrehozása a kerítési ügynökhöz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker#1-create-a-custom-role-for-the-fence-agent).  
+   > Ha frissítenie kell az Azure kerítés-ügynököt, és ha egyéni szerepkört használ, ügyeljen arra, hogy frissítse az egyéni szerepkört a **következő művelettel**:. További részletekért lásd: [Egyéni szerepkör létrehozása a kerítési ügynökhöz](#1-create-a-custom-role-for-the-fence-agent).  
 
 1. **[A]** telepítési állomásnév feloldása
 
@@ -220,7 +220,7 @@ A STONITH-eszköz egy egyszerű szolgáltatásnév használatával engedélyezi 
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** egyéni szerepkör létrehozása a kerítés ügynökéhez
 
-Az egyszerű szolgáltatás alapértelmezés szerint nem rendelkezik az Azure-erőforrások eléréséhez szükséges engedélyekkel. Meg kell adnia a szolgáltatásnév számára a fürt összes virtuális gépe elindításához és leállításához (kikapcsolásához) szükséges engedélyeket. Ha még nem tette meg az egyéni szerepkört, akkor a [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) vagy az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) használatával hozhatja létre
+Az egyszerű szolgáltatás alapértelmezés szerint nem rendelkezik az Azure-erőforrások eléréséhez szükséges engedélyekkel. Meg kell adnia a szolgáltatásnév számára a fürt összes virtuális gépe elindításához és leállításához (kikapcsolásához) szükséges engedélyeket. Ha még nem tette meg az egyéni szerepkört, akkor a [PowerShell](../../../role-based-access-control/role-assignments-powershell.md) vagy az [Azure CLI](../../../role-based-access-control/role-assignments-cli.md) használatával hozhatja létre
 
 Használja az alábbi tartalmat a bemeneti fájlhoz. A tartalmat az előfizetéséhez kell igazítania, a c276fc76-9cd4-44c9-99a7-4fd71546436e és a e91d47c4-76f3-4271-a796-21b4ecfe3624 helyére az előfizetés azonosítóit kell cserélnie. Ha csak egy előfizetéssel rendelkezik, távolítsa el a második bejegyzést a AssignableScopes-ben.
 
@@ -291,7 +291,7 @@ op monitor interval=3600
 </code></pre>
 
 > [!TIP]
->Az Azure kerítés ügynöke a nyilvános végponti pontokhoz kapcsolódóan dokumentált kimenő kapcsolatot igényel, valamint a lehetséges megoldásokkal együtt a [standard szintű ILB használó virtuális gépek nyilvános végponti kapcsolatát](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+>Az Azure kerítés ügynöke a nyilvános végponti pontokhoz kapcsolódóan dokumentált kimenő kapcsolatot igényel, valamint a lehetséges megoldásokkal együtt a [standard szintű ILB használó virtuális gépek nyilvános végponti kapcsolatát](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 ## <a name="next-steps"></a>További lépések
 

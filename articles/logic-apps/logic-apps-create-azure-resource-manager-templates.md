@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: a9e6e8276733eeed88561ed39a6702aec76286a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07fb91f081719a2e51cff45be67bbe9f362123f6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317775"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066068"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager-sablonok létrehozása az Azure Logic Apps-alkalmazások üzembe helyezésének automatizálásához
 
@@ -49,14 +49,14 @@ Tegyük fel például, hogy rendelkezik egy logikai alkalmazással, amely egy Az
 
 Ezek a minták azt mutatják be, hogyan hozhat létre és helyezhet üzembe logikai alkalmazásokat Azure Resource Manager sablonok, Azure-folyamatok Azure DevOps és Azure PowerShell használatával:
 
-* [Minta: Kapcsolódás Azure Service Bus várólistákhoz Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Minta: Kapcsolódás Azure Storage-fiókokhoz Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Minta: Function app-művelet beállítása Azure Logic Appshoz](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [Minta: csatlakozás egy integrációs fiókhoz Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [Minta: Kapcsolódás Azure Service Bus várólistákhoz Azure Logic Apps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Minta: Kapcsolódás Azure Storage-fiókokhoz Azure Logic Apps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Minta: Function app-művelet beállítása Azure Logic Appshoz](/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [Minta: csatlakozás egy integrációs fiókhoz Azure Logic Apps](/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>PowerShell-modulok telepítése
 
-1. Ha még nem tette meg, telepítse a [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+1. Ha még nem tette meg, telepítse a [Azure PowerShell](/powershell/azure/install-az-ps).
 
 1. A LogicAppTemplate modul [PowerShell-galériaból](https://www.powershellgallery.com/packages/LogicAppTemplate)történő telepítésének legegyszerűbb módja a következő parancs futtatása:
 
@@ -80,7 +80,7 @@ Ha ezzel az eszközzel futtatja a `Get-LogicAppTemplate` parancsot, a parancs el
 
 ### <a name="generate-template-with-powershell"></a>Sablon készítése a PowerShell-lel
 
-Futtassa ezt a PowerShell-parancsot a sablon létrehozásához a LogicAppTemplate modul és az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)telepítése után:
+Futtassa ezt a PowerShell-parancsot a sablon létrehozásához a LogicAppTemplate modul és az [Azure CLI](/cli/azure/?view=azure-cli-latest)telepítése után:
 
 ```text
 PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json

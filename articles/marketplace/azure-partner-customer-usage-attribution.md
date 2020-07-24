@@ -7,12 +7,13 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/14/2020
-ms.openlocfilehash: 6997c1aaab8cbe635ccef21967a0fce1f735c1ab
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-terraform
+ms.openlocfilehash: ab729d34219c05ee76a2a14832f41342d29eab21
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103024"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065803"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Kereskedelmi Piactéri partner és ügyfél-használati jóváírás
 
@@ -78,7 +79,7 @@ Miután hozzáadta a GUID azonosítót a sablonhoz vagy a felhasználói ügynö
 
 1. Egynél több GUID-azonosító regisztrálásához válassza ismét a **nyomkövetési GUID hozzáadása** elemet. Az oldalon további mezők jelennek meg.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sablonok használata
 Számos partneri megoldás Azure Resource Manager-sablonok használatával van üzembe helyezve. Ha van olyan Resource Manager-sablonja, amely elérhető az Azure Marketplace-en, a GitHubon vagy egy rövid útmutatóban, a sablon módosításának folyamata, amely lehetővé teszi az ügyfél-használati jóváírást, azonnal továbbítsa.
@@ -146,7 +147,7 @@ Ha engedélyezni szeretné az ügyfelek használati feltételeit, az API-hívás
 
 #### <a name="example-the-python-sdk"></a>Példa: a Python SDK
 
-A Python esetében használja a **config** attribútumot. Az attribútumot csak UserAgent lehet hozzáadni. Íme egy példa:
+A Python esetében használja a **config** attribútumot. Az attribútumot csak UserAgent lehet hozzáadni. Bemutatunk egy példát:
 
 ![Attribútum hozzáadása felhasználói ügynökhöz](media/marketplace-publishers-guide/python-for-lu.PNG)
 

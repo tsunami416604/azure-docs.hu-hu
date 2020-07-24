@@ -1,23 +1,31 @@
 ---
-title: Bevezetés a web Map vezérlőelem használatába | Microsoft Azure térképek
-description: Ismerje meg, hogyan használhatja a Maps és a Embedded Azure Maps funkciókat a webes vagy mobil alkalmazásba a Microsoft Azure Maps Map Control ügyféloldali JavaScript-kódtár használatával.
-author: philmea
-ms.author: philmea
-ms.date: 01/15/2020
+title: Ismerkedés a Microsoft Azure Maps webes Térkép vezérlőelemmel
+description: Ismerje meg, hogyan használhatja a Maps és a Embedded Azure Maps funkciókat a webes vagy mobil alkalmazásba az Microsoft Azure Maps web Map Control ügyféloldali JavaScript-kódtár használatával.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 6becb504671c1fa380207fda9d7d553fca8ceddf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: philmea
+ms.openlocfilehash: bdbdbfada3c7c4cfb4350bb11a33defd743b7195
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80335244"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064215"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Az Azure Maps-térképvezérlő használata
 
 A térképkezelés ügyféloldali JavaScript-kódtár lehetővé teszi a Maps és a Embedded Azure Maps funkcióinak megjelenítését a webes vagy mobil alkalmazásban.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+A térképkezelés weblapon való használatához a következő előfeltételek egyikének kell megfelelnie:
+
+* [Hozzon Azure Maps fiókot](quick-demo-map-app.md#create-an-azure-maps-account) , és [szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
+
+* Szerezze be a Azure Active Directory (HRE) hitelesítő adatait a [hitelesítési beállításokkal](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Új Térkép létrehozása egy weblapon
 
@@ -36,19 +44,18 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
 
     * Töltse be az Azure Maps web SDK forráskódját helyileg az [Azure-Maps-Control](https://www.npmjs.com/package/azure-maps-control) NPM csomag használatával, és működtesse azt az alkalmazással. Ez a csomag írógéppel kapcsolatos definíciókat is tartalmaz.
 
-        > **NPM telepítése Azure-Maps-Control**
+    > **NPM telepítése Azure-Maps-Control**
 
-       Ezután vegyen fel hivatkozásokat az Azure Maps stíluslapra és a parancsfájl forrására mutató hivatkozásokra a `<head>` fájl elemére:
+    Ezután vegyen fel hivatkozásokat a Azure Maps stíluslapra a `<head>` fájl eleméhez:
 
-        ```HTML
-        <link rel="stylesheet" href="node_modules/azure-maps-control/dist/atlas.min.css" type="text/css"> 
-        <script src="node_modules/azure-maps-control/dist/atlas.min.js"></script>
-        ```
+    ```HTML
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+     ```
 
-    > [!Note]
+    > [!NOTE]
     > Az írógéppel definiált definíciók importálhatók az alkalmazásba a következő kód hozzáadásával:
     >
-    > ```Javascript
+    > ```javascript
     > import * as atlas from 'azure-maps-control';
     > ```
 
@@ -70,54 +77,59 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
 4. A lap törzsében adjon hozzá egy elemet, `<div>` és adjon neki egy `id` **myMap**.
 
    ```HTML
-    <body>
+    <body onload="InitMap()">
         <div id="myMap"></div>
     </body>
    ```
 
-5. A Térkép vezérlőelem inicializálásához adjon meg egy új parancsfájl-címkét a HTML-szövegtörzsben. Adja át a `id` térképet `<div>` vagy egy `HTMLElement` (például `document.getElementById('myMap')` ) az első paraméterként az osztály egy példányának létrehozásakor `Map` . Használja a saját Azure Maps fiók kulcsát vagy a Azure Active Directory (HRE) hitelesítő adatait a leképezés [hitelesítésére a hitelesítési beállítások](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)használatával. 
+5. Most pedig inicializáljuk a Térkép vezérlőelemet. A vezérlő hitelesítéséhez szükség van egy Azure Maps előfizetési kulcsra, vagy Azure Active Directory (HRE) hitelesítő adatokat kell használnia a [hitelesítési beállításokkal](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions).
 
-   Ha létre kell hoznia egy fiókot, vagy meg kell keresnie a kulcsot, kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) és az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) című témakör utasításait. 
+    Ha előfizetés-kulcsot használ a hitelesítéshez, másolja és illessze be a következő script elemet az `<head>` elembe, és az első `<script>` elem alatt. Cserélje le a `<Your Azure Maps Key>` t a Azure Maps elsődleges előfizetési kulcsára.
 
-   A **Language (nyelv** ) beállítás határozza meg a címkék és vezérlőelemek leképezéséhez használandó nyelvet. További információ a támogatott nyelvekről: [támogatott nyelvek](supported-languages.md). Ha előfizetés-kulcsot használ a hitelesítéshez, használja a következőt:
-
-   ```HTML
+     ```HTML
     <script type="text/javascript">
-        var map = new atlas.Map('myMap', {
-            center: [-122.33, 47.6],
-            zoom: 12,
-            language: 'en-US',
-            authOptions: {
-                authType: 'subscriptionKey',
-                subscriptionKey: '<Your Azure Maps Key>'
+        function InitMap()
+        {
+            var map = new atlas.Map('myMap', {
+                center: [-122.33, 47.6],
+                zoom: 12,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'subscriptionKey',
+                    subscriptionKey: '<Your Azure Maps Key>'
+                }
             }
         });
     </script>
     ```
 
-   Ha Azure Active Directoryt (HRE) használ a hitelesítéshez, használja a következőt:
+    Ha Azure Active Directoryt (HRE) használ a hitelesítéshez, másolja és illessze be a következő script elemet az `<head>` elembe, és az első `<script>` elem alatt.
 
-   ```HTML
+      ```HTML
     <script type="text/javascript">
-        var map = new atlas.Map('myMap', {
-            center: [-122.33, 47.6],
-            zoom: 12,
-            language: 'en-US',
-            authOptions: {
-                authType: 'aad',
-                clientId: '<Your AAD Client Id>',
-                aadAppId: '<Your AAD App Id>',
-                aadTenant: '<Your AAD Tenant Id>'
+        function InitMap()
+        {
+            var map = new atlas.Map('myMap', {
+                center: [-122.33, 47.6],
+                zoom: 12,
+                language: 'en-US',
+                authOptions: {
+                    authType: 'aad',
+                    clientId: '<Your AAD Client Id>',
+                    aadAppId: '<Your AAD App Id>',
+                    aadTenant: '<Your AAD Tenant Id>'
+                }
             }
         });
     </script>
    ```
 
-   [Itt](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)találhat olyan mintákat, amelyek bemutatják, hogyan integrálható Azure Active Directory (HRE) a Azure maps. 
-    
-   További információkért tekintse meg a [hitelesítés Azure Maps](azure-maps-authentication.md) dokumentummal és a [Azure Maps Azure ad-hitelesítési példákat](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)is.
+    A Azure Maps-hitelesítéssel kapcsolatos további információkért tekintse meg a [hitelesítés Azure Maps](azure-maps-authentication.md) dokumentummal című témakört. Ezen kívül a Azure Active Directory (HRE) Azure Maps használatával történő integrálását bemutató példák listáját [itt](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)találja.
 
-6. Szükség esetén a következő meta kódelem-elemek hozzáadását is megtalálhatja az oldal Head eleméhez:
+    >[!TIP]
+    >Ebben a példában a térképen átadták a következőt: `id` `<div>` . Ezt úgy teheti meg, hogy az `HTMLElement` `document.getElementById('myMap')` első paraméterként továbbítja az objektumot.
+
+6. Igény szerint hasznos lehet a következő elemek hozzáadása az `meta` `head` oldal eleméhez:
 
    ```HTML
     <!-- Ensures that IE and Edge uses the latest version and doesn't emulate an older version -->
@@ -127,7 +139,7 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    ```
 
-7. A HTML-fájl összevonásával a következő kódhoz hasonlóan kell kinéznie:
+7. A HTML-fájl az alábbihoz hasonlóan fog kinézni:
 
    ```HTML
     <!DOCTYPE html>
@@ -147,6 +159,23 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
+
+        <script type="text/javascript">
+            //Create an instance of the map control and set some options.
+            function InitMap()
+            {
+                var map = new atlas.Map('myMap', {
+                    center: [-122.33, 47.6],
+                    zoom: 12,
+                    language: 'en-US',
+                    authOptions: {
+                        authType: 'subscriptionKey',
+                        subscriptionKey: '<Your Azure Maps Key>'
+                    }
+                });
+            }
+        </script>
+
         <style>
             html, body {
                 margin: 0;
@@ -158,21 +187,8 @@ A weblapokon a térképkezelés ügyféloldali JavaScript-kódtár segítségév
             }
         </style>
     </head>
-    <body>
+    <body onload="InitMap()">
         <div id="myMap"></div>
-
-        <script type="text/javascript">
-            //Create an instance of the map control and set some options.
-            var map = new atlas.Map('myMap', {
-                center: [-122.33, 47.6],
-                zoom: 12,
-                language: 'en-US',
-                authOptions: {
-                    authType: 'subscriptionKey',
-                    subscriptionKey: '<Your Azure Maps Key>'
-                }
-            });
-        </script>
     </body>
     </html>
     ```
@@ -206,8 +222,8 @@ map = new atlas.Map('myMap', {
 });
 ```
 
-> [!Note]
-> A web SDK-val több térképes példányt is betölthet ugyanazon az oldalon különböző nyelvi és területi beállításokkal. Emellett ezek a beállítások a Térkép betöltése után is frissíthetők `setStyle` . 
+> [!NOTE]
+> Több térképes példány is betölthető ugyanazon a lapon eltérő nyelvi és területi beállításokkal. Emellett ezek a beállítások a Térkép betöltése után is frissíthetők `setStyle` .
 
 Itt látható egy példa arra, hogy a "fr-FR", a regionális nézet pedig az "Auto" értékre van beállítva Azure Maps.
 
@@ -219,7 +235,7 @@ A támogatott nyelvek és regionális nézetek teljes listáját [itt](supported
 
 A Azure Maps web SDK támogatja a Azure Government-felhőt. A Azure Maps web SDK eléréséhez használt összes JavaScript és CSS URL-cím változatlan marad. A Azure Maps platform Azure Government Cloud-verziójához való kapcsolódáshoz a következő feladatokat kell elvégezni.
 
-Az interaktív térkép vezérlőelem használatakor adja hozzá a következő kódrészletet az osztály egy példányának létrehozása előtt `Map` . 
+Az interaktív térkép vezérlőelem használatakor adja hozzá a következő kódrészletet az osztály egy példányának létrehozása előtt `Map` .
 
 ```javascript
 atlas.setDomain('atlas.azure.us');

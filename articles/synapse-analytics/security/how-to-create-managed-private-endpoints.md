@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy felügyelt magánhálózati végpontot az adatforrás eredményeihez való kapcsolódáshoz.
+title: Felügyelt privát végpont létrehozása az adatforrás eredményeihez való kapcsolódáshoz
 description: Ebből a cikkből megtudhatja, hogyan hozhat létre felügyelt magánhálózati végpontokat az adatforrásokhoz egy Azure szinapszis-munkaterületről.
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: c6f0054364e5bbfb80fc4c1b9db6a4c15f365a81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193889"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065471"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Felügyelt privát végpont létrehozása az adatforráshoz (előzetes verzió)
 
@@ -36,7 +36,7 @@ Válassza ki az adatforrás típusát. Ebben az esetben a célként megadott ada
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>4. lépés: az adatforrással kapcsolatos adatok megadása
 
-A következő ablakban adja meg az adatforrással kapcsolatos adatokat. Ebben a példában egy felügyelt magánhálózati végpontot hozunk létre egy ADLS Gen2-fiókhoz. Adja meg a felügyelt magánhálózati végpont **nevét** . Adja meg az **Azure-előfizetést** és a **Storage-fiók nevét**. Válassza a **Létrehozás** lehetőséget.
+A következő ablakban adja meg az adatforrással kapcsolatos adatokat. Ebben a példában egy felügyelt magánhálózati végpontot hozunk létre egy ADLS Gen2-fiókhoz. Adja meg a felügyelt magánhálózati végpont **nevét** . Adja meg az **Azure-előfizetést** és a **Storage-fiók nevét**. Kattintson a **Létrehozás** gombra.
 ![Adja meg a célként megadott adatforrás részleteit](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>5. lépés: annak ellenőrzése, hogy sikerült-e létrehozni a felügyelt magánhálózati végpontot

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80437705"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066532"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Üzletmenet-folytonosság és vész-helyreállítási Azure Logic Apps
 
@@ -100,10 +100,10 @@ Az adatátjáró-erőforrás egy helyhez vagy egy Azure-régióhoz van társítv
 
 Beállíthatja az elsődleges és a másodlagos helyet, hogy a logikai alkalmazás példányai ezekben a helyekben le tudják játszani ezeket a szerepköröket:
 
-| Elsődleges – másodlagos szerepkör | Leírás |
+| Elsődleges – másodlagos szerepkör | Description |
 |------------------------|-------------|
 | *Aktív – aktív* | Az elsődleges és a másodlagos logikai alkalmazás példányai mindkét helyen aktívan kezelik a kérelmeket a következő minták bármelyikének követésével: <p><p>- *Terheléselosztás*: mindkét példányban szükség esetén megfigyelheti a végpontot, és az egyes példányok forgalmának elosztását is. <p>- *Versengő fogyasztók*: mindkét példány versengő fogyasztóként működhet, így a példányok versengenek az üzenetsor üzeneteihez. Ha egy példány meghibásodik, a másik példány átveszi a munkaterhelést. |
-| *Aktív-passzív* | Az elsődleges logikai alkalmazás példánya aktívan kezeli a teljes munkaterhelést, míg a másodlagos példány passzív (letiltva vagy inaktív). A másodlagos várakozás arra, hogy az elsődleges nem érhető el, vagy nem működik a megszakítás vagy a meghibásodás miatt, és az aktív példány átveszi a munkaterhelést. |
+| *Aktív – passzív* | Az elsődleges logikai alkalmazás példánya aktívan kezeli a teljes munkaterhelést, míg a másodlagos példány passzív (letiltva vagy inaktív). A másodlagos várakozás arra, hogy az elsődleges nem érhető el, vagy nem működik a megszakítás vagy a meghibásodás miatt, és az aktív példány átveszi a munkaterhelést. |
 | Kombinációja | Egyes logikai alkalmazások aktív-aktív szerepkört játszanak, míg más logikai alkalmazások aktív-passzív szerepet játszanak. |
 |||
 
@@ -157,7 +157,7 @@ A logikai alkalmazás indításakor és futtatásakor az alkalmazás állapota u
 
 Az elhagyott folyamatban lévő munkafolyamat-példányok számának minimalizálásához különböző, a megvalósításra alkalmas üzenet-mintákat választhat, például:
 
-* [Rögzített útválasztási SLIP minta](https://docs.microsoft.com/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
+* [Rögzített útválasztási SLIP minta](/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
 
   Ez a vállalati üzenet minta, amely az üzleti folyamatokat kisebb fázisokra osztja fel. Minden egyes szakaszhoz beállíthat egy logikai alkalmazást, amely kezeli az adott fázis munkaterhelését. Az egymással való kommunikációhoz a logikai alkalmazások aszinkron üzenetküldési protokollt használnak, például Azure Service Bus várólistákat vagy témaköröket. Ha kisebb szakaszokra osztja a folyamatot, csökkentheti az üzleti folyamatok számát, amelyek elakadnak egy sikertelen logikai alkalmazás-példányon. A mintával kapcsolatos további általános információkért lásd: [vállalati integrációs minták – útválasztási SLIP](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html).
 
@@ -165,7 +165,7 @@ Az elhagyott folyamatban lévő munkafolyamat-példányok számának minimalizá
 
   ![Üzleti folyamat felosztása a Logic apps által képviselt szakaszokra, amelyek Azure Service Bus várólisták használatával kommunikálnak egymással](./media/business-continuity-disaster-recovery-guidance/fixed-routing-slip-pattern.png)
 
-  Ha mind az elsődleges, mind a másodlagos logikai alkalmazás példánya ugyanazt a kísérőlevél-mintát követi a helyükön, akkor a [versengő fogyasztók mintát](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers) úgy is végrehajthatja, hogy [aktív-aktív szerepköröket](#roles) állít be ezekhez a példányokhoz.
+  Ha mind az elsődleges, mind a másodlagos logikai alkalmazás példánya ugyanazt a kísérőlevél-mintát követi a helyükön, akkor a [versengő fogyasztók mintát](/azure/architecture/patterns/competing-consumers) úgy is végrehajthatja, hogy [aktív-aktív szerepköröket](#roles) állít be ezekhez a példányokhoz.
 
 * [A Process Manager (Broker) mintája](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html)
 
@@ -249,7 +249,7 @@ A vész-helyreállítási perspektívából a logikai alkalmazás elsődleges é
   Például egy üzenetsor beolvasása (például egy Azure Service Bus üzenetsor) kiszolgálóoldali állapotot használ, mivel a várólista-kezelő szolgáltatás zárolja az üzeneteket, így megakadályozva, hogy más ügyfelek is olvassák ugyanezeket az üzeneteket.
 
   > [!NOTE]
-  > Ha a logikai alkalmazásnak egy adott sorrendben kell elolvasnia az üzeneteket, például egy Service Bus sorból, használhatja a versengő fogyasztói mintát, de csak akkor, ha Service Bus-munkamenetekkel együtt, azaz [ *szekvenciális konvojként* ](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)is ismert. Ellenkező esetben be kell állítania a logikai alkalmazás példányait az aktív-passzív szerepkörökkel.
+  > Ha a logikai alkalmazásnak egy adott sorrendben kell elolvasnia az üzeneteket, például egy Service Bus sorból, használhatja a versengő fogyasztói mintát, de csak akkor, ha Service Bus-munkamenetekkel együtt, azaz [ *szekvenciális konvojként* ](/azure/architecture/patterns/sequential-convoy)is ismert. Ellenkező esetben be kell állítania a logikai alkalmazás példányait az aktív-passzív szerepkörökkel.
 
 <a name="request-trigger"></a>
 
@@ -271,7 +271,7 @@ Vész-helyreállítási perspektívából a kérelem trigger passzív fogadó, m
 
 * [Aktív – passzív](#roles): csak az elsődleges példány aktív, és kezeli az összes munkát, míg a másodlagos példány megvárja az elsődleges élmény megszakadását vagy meghibásodását. A hívó vagy útválasztó határozza meg, hogy mikor kell meghívnia a másodlagos példányt.
 
-Ajánlott architektúraként használhatja az Azure API Management proxyként a kérelmek eseményindítóit használó logikai alkalmazásokhoz. A API Management [beépített régiók közötti rugalmasságot biztosít, és lehetővé teszi, hogy több végponton keresztül irányítsa a forgalmat](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region).
+Ajánlott architektúraként használhatja az Azure API Management proxyként a kérelmek eseményindítóit használó logikai alkalmazásokhoz. A API Management [beépített régiók közötti rugalmasságot biztosít, és lehetővé teszi, hogy több végponton keresztül irányítsa a forgalmat](../api-management/api-management-howto-deploy-multi-region.md).
 
 <a name="webhook-trigger"></a>
 
@@ -331,7 +331,7 @@ Ehhez a feladathoz a másodlagos helyen hozzon létre egy watchdog logikai alkal
 
 ### <a name="activate-your-secondary-instance"></a>Másodlagos példány aktiválása
 
-A másodlagos példány automatikus aktiválásához létrehozhat egy logikai alkalmazást, amely meghívja a felügyeleti API-t, például az [Azure Resource Manager-összekötőt](https://docs.microsoft.com/connectors/arm/) a megfelelő logikai alkalmazások aktiválásához a másodlagos helyen. A watchdog alkalmazás kibontásával meghívhatja ezt az aktiválási logikai alkalmazást egy adott számú hiba után.
+A másodlagos példány automatikus aktiválásához létrehozhat egy logikai alkalmazást, amely meghívja a felügyeleti API-t, például az [Azure Resource Manager-összekötőt](/connectors/arm/) a megfelelő logikai alkalmazások aktiválásához a másodlagos helyen. A watchdog alkalmazás kibontásával meghívhatja ezt az aktiválási logikai alkalmazást egy adott számú hiba után.
 
 <a name="collect-diagnostic-data"></a>
 
@@ -348,9 +348,9 @@ Beállíthat naplózást a logikai alkalmazás futtatásához, és elküldheti a
 
 ## <a name="next-steps"></a>További lépések
 
-* [A rugalmasság áttekintése az Azure-ban](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-* [Az egyes Azure-szolgáltatások rugalmasságára vonatkozó ellenőrzőlista](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service)
-* [Adatkezelés a rugalmassághoz az Azure-ban](https://docs.microsoft.com/azure/architecture/framework/resiliency/data-management)
-* [Biztonsági mentési és vész-helyreállítási Azure-alkalmazásokhoz](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)
-* [Helyreállítás egész régióra kiterjedő szolgáltatáskimaradás esetén](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
+* [A rugalmasság áttekintése az Azure-ban](/azure/architecture/framework/resiliency/overview)
+* [Az egyes Azure-szolgáltatások rugalmasságára vonatkozó ellenőrzőlista](/azure/architecture/checklist/resiliency-per-service)
+* [Adatkezelés a rugalmassághoz az Azure-ban](/azure/architecture/framework/resiliency/data-management)
+* [Biztonsági mentési és vész-helyreállítási Azure-alkalmazásokhoz](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [Helyreállítás egész régióra kiterjedő szolgáltatáskimaradás esetén](/azure/architecture/resiliency/recovery-loss-azure-region)
 * [Microsoft szolgáltatói szerződések (SLA-kat) az Azure-szolgáltatásokhoz](https://azure.microsoft.com/support/legal/sla/)

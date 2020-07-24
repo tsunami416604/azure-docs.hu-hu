@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: baee83e08505ddabb4680b5bbb4101479010ea47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47c88e08e5d2eac09fbcd5b60a8ccd73b46c9616
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75652137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063771"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft. számítás. CredentialsCombo FELHASZNÁLÓIFELÜLET-elem
 
@@ -19,15 +20,15 @@ Windows-és Linux-jelszavakhoz, valamint nyilvános SSH-kulcsokhoz beépített e
 
 Windows esetén a felhasználók a következőket látják:
 
-![Microsoft. számítás. CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
+![Microsoft. számítás. CredentialsCombo Windows](./media/managed-application-elements/microsoft-compute-credentialscombo-windows.png)
 
 A Linux és a jelszó kiválasztásával a felhasználók a következőket látják:
 
-![Microsoft. számítás. CredentialsCombo Linux-jelszó](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+![Microsoft. számítás. CredentialsCombo Linux-jelszó](./media/managed-application-elements/microsoft-compute-credentialscombo-linux-password.png)
 
 A Linux és a nyilvános SSH-kulcs kiválasztásával a felhasználók a következőket látják:
 
-![Microsoft. számítás. CredentialsCombo Linux-kulcs](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
+![Microsoft. számítás. CredentialsCombo Linux-kulcs](./media/managed-application-elements/microsoft-compute-credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Séma
 

@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 79c99a8ba2712fe69ec6d3b9b9d32ddf6aa081cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e6abeff8998e55eb7cbf450d1c3cc32f233e382
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580631"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065977"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Csatlakozás helyszíni fájlrendszerekhez az Azure Logic Appsből
 
@@ -35,10 +35,10 @@ Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa pél
 
 * Hozzáférés a használni kívánt fájlrendszerrel rendelkező számítógéphez. Ha például ugyanarra a számítógépre telepíti az adatátjárót, mint a fájlrendszert, szüksége lesz a számítógép fiókjának hitelesítő adataira.
 
-* Egy Logic Apps által támogatott szolgáltató által használt e-mail-fiók, például Office 365 Outlook, Outlook.com vagy gmail. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](https://docs.microsoft.com/connectors/). Ez a logikai alkalmazás Office 365 Outlook-fiókot használ. Ha más e-mail-fiókot használ, a lépések ugyanazok, de a felhasználói felület kissé eltérhet.
+* Egy Logic Apps által támogatott szolgáltató által használt e-mail-fiók, például Office 365 Outlook, Outlook.com vagy gmail. Más szolgáltatók esetén [tekintse át az itt felsorolt összekötőket](/connectors/). Ez a logikai alkalmazás Office 365 Outlook-fiókot használ. Ha más e-mail-fiókot használ, a lépések ugyanazok, de a felhasználói felület kissé eltérhet.
 
   > [!IMPORTANT]
-  > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Ha a Gmail-összekötőt szeretné használni, akkor csak a G-Suite üzleti fiókok használhatják ezt az összekötőt a Logic apps korlátozás nélkül. Ha rendelkezik Gmail-fiókkal, akkor ezt az összekötőt csak meghatározott Google által jóváhagyott szolgáltatásokkal használhatja, vagy [létrehozhat egy Google-ügyfélprogramot, amelyet a Gmail-összekötővel történő hitelesítéshez használhat](/connectors/gmail/#authentication-and-bring-your-own-application). További információkért lásd: [adatbiztonsági és adatvédelmi szabályzatok a Google-összekötők számára a Azure Logic apps](../connectors/connectors-google-data-security-privacy-policy.md).
 
 * Alapvető ismeretek a [logikai alkalmazások létrehozásáról](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ebben a példában egy üres logikai alkalmazásra van szükség.
 
@@ -70,12 +70,12 @@ Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa pél
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    | -------- | -------- | ----- | ----------- |
-   | **Kapcsolat neve** | Igen | <*kapcsolattípus*> | A kapcsolatok kívánt neve |
-   | **Gyökérmappa** | Igen | <*gyökér-mappa neve*> | A fájlrendszer gyökérkönyvtára, például ha telepítette a helyszíni adatátjárót, például egy helyi mappát azon a számítógépen, amelyen a helyszíni adatátjáró telepítve van, vagy egy hálózati megosztás mappája, amelyhez a számítógép hozzáférhet. <p>Például:`\\PublicShare\\DropboxFiles` <p>A gyökérmappa a fő szülő mappa, amely a fájlokkal kapcsolatos összes művelet relatív elérési útjaihoz használható. |
-   | **Hitelesítés típusa** | Nem | <*hitelesítés típusa*> | A fájlrendszer által használt hitelesítés típusa: **Windows** |
-   | **Username** | Igen | <*domain* > \\ tartomány < *Felhasználónév*> <p>-vagy- <p><*helyi – számítógép* > \\ < *Felhasználónév*> | Annak a számítógépnek a felhasználóneve, amelyen a fájlrendszer mappája található. <p>Ha a fájlrendszer mappája ugyanazon a számítógépen található, mint a helyszíni adatátjáró, akkor <*helyi számítógép* > \\ < *felhasználónevét*> használhatja. |
-   | **Jelszó** | Igen | <*saját jelszó*> | A fájlrendszert futtató számítógép jelszava |
-   | **átjáró** | Igen | <*telepítve – átjáró – név*> | A korábban telepített átjáró neve |
+   | **Kapcsolat neve** | Yes | <*kapcsolattípus*> | A kapcsolatok kívánt neve |
+   | **Gyökérmappa** | Yes | <*gyökér-mappa neve*> | A fájlrendszer gyökérkönyvtára, például ha telepítette a helyszíni adatátjárót, például egy helyi mappát azon a számítógépen, amelyen a helyszíni adatátjáró telepítve van, vagy egy hálózati megosztás mappája, amelyhez a számítógép hozzáférhet. <p>Például: `\\PublicShare\\DropboxFiles` <p>A gyökérmappa a fő szülő mappa, amely a fájlokkal kapcsolatos összes művelet relatív elérési útjaihoz használható. |
+   | **Hitelesítés típusa** | No | <*hitelesítés típusa*> | A fájlrendszer által használt hitelesítés típusa: **Windows** |
+   | **Felhasználónév** | Yes | <*domain* > \\ tartomány < *Felhasználónév*> <p>-vagy- <p><*helyi – számítógép* > \\ < *Felhasználónév*> | Annak a számítógépnek a felhasználóneve, amelyen a fájlrendszer mappája található. <p>Ha a fájlrendszer mappája ugyanazon a számítógépen található, mint a helyszíni adatátjáró, akkor <*helyi számítógép* > \\ < *felhasználónevét*> használhatja. |
+   | **Jelszó** | Yes | <*saját jelszó*> | A fájlrendszert futtató számítógép jelszava |
+   | **átjáró** | Yes | <*telepítve – átjáró – név*> | A korábban telepített átjáró neve |
    |||||
 
 1. Ha elkészült, kattintson a **Létrehozás** gombra.
@@ -96,7 +96,7 @@ Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa pél
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/fileconnector/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](/connectors/fileconnector/).
 
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.

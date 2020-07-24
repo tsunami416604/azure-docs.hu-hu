@@ -3,14 +3,14 @@ title: Azure Automation Update Management áttekintése
 description: Ez a cikk áttekintést nyújt a Windows és Linux rendszerű gépek frissítéseinek megvalósítására szolgáló Update Management szolgáltatásról.
 services: automation
 ms.subservice: update-management
-ms.date: 06/23/2020
+ms.date: 07/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 127a83bbe29a5e102a82cf169919a44f52532228
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 228a24fbc4fb68a72f2cb8abb7d4382127be2147
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185687"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064421"
 ---
 # <a name="update-management-overview"></a>Az Update Management áttekintése
 
@@ -80,7 +80,7 @@ A következő táblázat felsorolja a frissítési felmérések és a javításo
 > [!NOTE]
 > A Linux rendszerű gépek frissítési felmérése csak bizonyos régiókban támogatott, az Automation-fiók és a Log Analytics munkaterület- [hozzárendelések táblázatban](./how-to/region-mappings.md#supported-mappings)láthatóak szerint. 
 
-|Operációs rendszer  |Megjegyzések  |
+|Operációs rendszer  |Jegyzetek  |
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2012 ||
 |Windows Server 2008 R2 (RTM és SP1 standard)| Update Management támogatja az operációs rendszer értékeléseit és javításait. A [hibrid Runbook-feldolgozót](automation-windows-hrw-install.md) a Windows Server 2008 R2 támogatja. |
@@ -96,9 +96,9 @@ A következő táblázat felsorolja a frissítési felmérések és a javításo
 
 A következő táblázat a nem támogatott operációs rendszereket sorolja fel:
 
-|Operációs rendszer  |Megjegyzések  |
+|Operációs rendszer  |Jegyzetek  |
 |---------|---------|
-|Windows-ügyfél     | Az ügyféloldali operációs rendszerek (például a Windows 7 és a Windows 10) nem támogatottak.<br> Az Azure Windows Virtual Desktop (WVD) esetében ajánlott módszer<br> a frissítések kezeléséhez [Windows Update a vállalati](/windows/deployment/update/waas-manage-updates-wufb) Windows 10-es ügyfélszámítógépek javításának felügyeletére. |
+|Windows-ügyfél     | Az ügyféloldali operációs rendszerek (például a Windows 7 és a Windows 10) nem támogatottak.<br> Az Azure Windows Virtual Desktop (WVD) esetében ajánlott módszer<br> a frissítések kezeléséhez a [Microsoft Endpoint Configuration Manager](../virtual-desktop/configure-automatic-updates.md) a Windows 10-es ügyfélszámítógépek javításának kezeléséhez. |
 |Windows Server 2016 Nano Server     | Nem támogatott.       |
 |Azure Kubernetes szolgáltatási csomópontok | Nem támogatott. Használja a [biztonsági és kernel-frissítések alkalmazása Linux-csomópontokra az Azure Kubernetes szolgáltatásban (ak)](../aks/node-updates-kured.md) című témakörben ismertetett javítási folyamatot|
 
@@ -166,11 +166,11 @@ A felügyeleti csomagok frissítéseivel kapcsolatos további információkért 
 
 A következő táblázat ismerteti a Update Management által támogatott csatlakoztatott forrásokat:
 
-| Csatlakoztatott forrás | Támogatott | Leírás |
+| Csatlakoztatott forrás | Támogatott | Description |
 | --- | --- | --- |
-| Windows-ügynökök |Igen |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
-| Linux-ügynökök |Igen |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
-| Az Operations Manager felügyeleti csoportja |Igen |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
+| Windows-ügynökök |Yes |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
+| Linux-ügynökök |Yes |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
+| Az Operations Manager felügyeleti csoportja |Yes |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 
@@ -182,7 +182,7 @@ A Update Management a következő szabályok használatával vizsgálja a felüg
 
 A Update Management-t használó gépek átlagos adatfelhasználása Azure Monitor-naplók havonta körülbelül 25 MB. Ez az érték csak egy közelítés, és változhat a környezettől függően. Javasoljuk, hogy figyelje a környezetét, hogy nyomon követhesse a pontos használatot. További információ az adatfelhasználás elemzéséről: a [használat és a Cost kezelése](../azure-monitor/platform/manage-cost-storage.md).
 
-## <a name="network-planning"></a><a name="ports"></a>Hálózattervezés
+## <a name="network-planning"></a><a name="ports"></a>Hálózati tervezés
 
 A következő címek megadása kifejezetten a Update Management. A címekkel folytatott kommunikáció az 443-as porton keresztül történik.
 
@@ -193,15 +193,15 @@ A következő címek megadása kifejezetten a Update Management. A címekkel fol
 |`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
 |`*.azure-automation.net` | `*.azure-automation.us`|
 
+Amikor hálózati biztonsági szabályokat hoz létre, vagy Azure Firewall konfigurálja az Automation szolgáltatás és a Log Analytics munkaterület forgalmának engedélyezéséhez, használja a **GuestAndHybridManagement** és a **AzureMonitor** [szolgáltatási címkét](../virtual-network/service-tags-overview.md#available-service-tags) . Ez leegyszerűsíti a hálózati biztonsági szabályok folyamatos felügyeletét. Ha biztonságosan és magántulajdonban szeretne csatlakozni az Automation szolgáltatáshoz az Azure-beli virtuális gépekről, tekintse át az [Azure Private link használata](how-to/private-link-security.md)című ismertetőt. A helyszíni tűzfal-konfigurációk részét képező aktuális szolgáltatási címke és tartomány információ beszerzéséhez lásd: [letölthető JSON-fájlok](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+
 Windows rendszerű gépek esetén a Windows Update által igényelt végpontokra is engedélyeznie kell a forgalmat. A szükséges végpontok frissített listáját a [http/proxy szolgáltatással kapcsolatos problémák](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)között találja. Ha helyi [Windows Update-kiszolgálóval](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)rendelkezik, engedélyeznie kell a forgalmat a [WSUS-kulcsban](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)megadott kiszolgálóra is.
 
 A Red Hat Linux rendszerű gépek esetében tekintse meg [az IP-címek a RHUI](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) a szükséges végpontokhoz című témakört. Más Linux-disztribúciók esetében tekintse meg a szolgáltatói dokumentációt.
 
 A hibrid Runbook-feldolgozók számára szükséges portokkal kapcsolatos további információkért lásd: [Update Management-címek a hibrid Runbook-feldolgozók](automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker)számára.
 
-Javasoljuk, hogy használja a kivételek meghatározásakor felsorolt címeket. IP-címek esetén letöltheti [Microsoft Azure adatközpont IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653). A fájl hetente frissül, és az IP-címtartományok aktuálisan telepített tartományait és minden közelgő változását tükrözi.
-
-Az internet-hozzáféréssel nem rendelkező számítógépek konfigurálásához kövesse az [Internet-hozzáférés nélküli számítógépek összekapcsolására](../azure-monitor/platform/gateway.md) vonatkozó utasításokat.
+Ha az IT-biztonsági szabályzatok nem engedélyezik a hálózatban lévő gépek számára az internethez való kapcsolódást, beállíthat egy [log Analytics átjárót](../azure-monitor/platform/gateway.md) , majd beállíthatja, hogy a számítógép az átjárón keresztül kapcsolódjon Azure Automation és Azure monitor.
 
 ## <a name="update-classifications"></a>Frissítési besorolások
 

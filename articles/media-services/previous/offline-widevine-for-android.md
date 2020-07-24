@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: f3bd7bc78eeb62cc33a01ed31bb04d94078cae4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b9a47ac9af1d96cbd65ed68dbafccefa3b95bb20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80294337"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065497"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Offline Widevine-streamelés Androidhoz  
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
-> * [3-as verzió](../latest/offline-widevine-for-android.md)
+> * [3\. verzió](../latest/offline-widevine-for-android.md)
 > * [2-es verzió](offline-widevine-for-android.md)
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Az online streaming-tartalmak védelme mellett a Media Content előfizetés és a Rental Services olyan letölthető tartalmakat is kínál, amelyek akkor működnek, ha nem csatlakozik az internethez. Előfordulhat, hogy a hálózati kapcsolat megszakadása esetén a tartalmat le kell töltenie a telefonra vagy a Tablet-ra. További forgatókönyvek, amelyekben előfordulhat, hogy le szeretné tölteni a tartalmat:
 
@@ -181,7 +181,7 @@ Ez azt jelenti, hogy a biztonságos jogkivonat szolgáltatásnak (STS) rendelkez
 
 ### <a name="question"></a>Kérdés
 
-A Widevine biztonsági szintjeinek a Google [WIDEVINE DRM-architektúra áttekintés](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) dokumentációjában három különböző biztonsági szintet határoz meg. A Widevine- [licenc sablonjának Azure Media Services dokumentációjában](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)azonban öt különböző biztonsági szint látható. Mi a kapcsolat vagy a leképezés két különböző biztonsági szint között?
+A Widevine biztonsági szintjeinek a Google [WIDEVINE DRM-architektúra áttekintés](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) dokumentációjában három különböző biztonsági szintet határoz meg. A Widevine- [licenc sablonjának Azure Media Services dokumentációjában](./media-services-widevine-license-template-overview.md)azonban öt különböző biztonsági szint látható. Mi a kapcsolat vagy a leképezés két különböző biztonsági szint között?
 
 ### <a name="answer"></a>Válasz
 
@@ -191,7 +191,7 @@ A Google [WIDEVINE DRM-architektúrájának áttekintése](https://storage.googl
 2.  2. biztonsági szint: titkosítás (de nem a videó feldolgozása) végrehajtása a PÓLÓn belül: a visszafejtett pufferek visszakerülnek az alkalmazás-tartományba, és külön videó hardveren vagy szoftveren keresztül dolgozzák fel azokat. A 2. szinten azonban a titkosítási adatok feldolgozása még csak a PÓLÓn belül történik.
 3.  A 3. biztonsági szint nem rendelkezik PÓLÓval az eszközön. A titkosítási információk és a visszafejtett tartalmak a gazdagép operációs rendszerén való védetté tételéhez megfelelő intézkedéseket lehet tenni. A 3. szintű implementációk hardveres titkosítási motort is tartalmazhatnak, de ez csak a teljesítményt javítja, nem pedig a biztonságot.
 
-Ugyanakkor a [Widevine-licenc sablonjának Azure Media Services dokumentációjában](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)a content_key_specs security_level tulajdonsága a következő öt különböző értékkel rendelkezhet (a lejátszáshoz szükséges ügyfél-megbízhatósági követelmények):
+Ugyanakkor a [Widevine-licenc sablonjának Azure Media Services dokumentációjában](./media-services-widevine-license-template-overview.md)a content_key_specs security_level tulajdonsága a következő öt különböző értékkel rendelkezhet (a lejátszáshoz szükséges ügyfél-megbízhatósági követelmények):
 
 1.  A szoftveres alapú Whitebox-titkosítás szükséges.
 2.  A szoftveres kriptográfia és a megzavarodott dekóder szükséges.
@@ -224,6 +224,6 @@ A letöltési sebesség javítása kétféleképpen lehetséges:
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez a cikk azt ismerteti, hogyan lehet az Android-eszközökön a Widevine által védett DASH-tartalmak offline módú lejátszását megvalósítani.  Emellett a Widevine által védett tartalom offline adatfolyamával kapcsolatos gyakori kérdésekre is válaszolt.

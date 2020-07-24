@@ -13,16 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 7464a9d13e1ffccbc3fab3256fe6c7ab1cb10495
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60c350b10fb3db82af47551591d95e87cacd63a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84321496"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065018"
 ---
-# <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+# <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 <a name="network-security-groups"></a>
 
-Az Azure hálózati biztonsági csoport használatával szűrheti az Azure-beli virtuális hálózatban lévő Azure-erőforrások és azok közötti hálózati forgalmat. A hálózati biztonsági csoportok olyan [biztonsági szabályokat](#security-rules) tartalmaznak, amelyek engedélyezik vagy letiltják a különböző típusú Azure-erőforrások bejövő vagy kimenő hálózati forgalmát. Az egyes szabályokhoz meghatározhatja a forrást és a célt, valamint a használni kívánt portot és protokollt.
+Egy Azure-beli hálózati biztonsági csoport használatával szűrheti az Azure-beli virtuális hálózatban lévő Azure-erőforrások felé irányuló és onnan érkező hálózati forgalmat. A hálózati biztonsági csoportok olyan [biztonsági szabályokat](#security-rules) tartalmaznak, amelyek engedélyezik vagy letiltják a különböző típusú Azure-erőforrások bejövő vagy kimenő hálózati forgalmát. Az egyes szabályokhoz meghatározhatja a forrást és a célt, valamint a használni kívánt portot és protokollt.
 
 Ez a cikk a hálózati biztonsági csoport szabályának tulajdonságait, az alkalmazott [alapértelmezett biztonsági szabályokat](#default-security-rules) , valamint a [kibővített biztonsági](#augmented-security-rules)szabályok létrehozásához módosítható szabály-tulajdonságokat ismerteti.
 
@@ -32,7 +33,7 @@ A hálózati biztonsági csoportok nulla vagy tetszőleges számú szabályt tar
 
 |Tulajdonság  |Magyarázat  |
 |---------|---------|
-|Name|Egy egyedi név a hálózati biztonsági csoporton belül.|
+|Név|Egy egyedi név a hálózati biztonsági csoporton belül.|
 |Prioritás | Egy 100 és 4096 közötti szám. A szabályok feldolgozása prioritási sorrendben történik. Az alacsonyabb sorszámúak feldolgozása a magasabb sorszámúak előtt történik, mivel az alacsonyabb sorszámok magasabb prioritást jelölnek. Ha az adatforgalom megfelel valamelyik szabálynak, a feldolgozás leáll. Ennek eredményeképp az olyan alacsonyabb prioritású (magasabb számú) szabályokat, amelyek attribútumai megegyeznek a magasabb prioritású szabályokéival, a rendszer nem dolgozza fel.|
 |Forrás vagy cél| Bármelyik, vagy egy egyéni IP-cím, Classless Inter-Domain Routing- (CIDR-) blokk (például 10.0.0.0/24), szolgáltatáscímke vagy alkalmazásbiztonsági csoport. Ha egy Azure-erőforrás címét adja meg, az erőforráshoz rendelt magánhálózati IP-címet adja meg. A hálózati biztonsági csoportok feldolgozása azután történik, hogy az Azure a bejövő forgalomhoz a nyilvános IP-címeket magánhálózati IP-címekre fordítja le, de még mielőtt, hogy a magánhálózati IP-címeket nyilvános IP-címekre fordítaná le a kimenő forgalomhoz. . Tartományok, szolgáltatáscímkék vagy alkalmazásbiztonsági csoportok megadásával kevesebb biztonsági szabályt kell majd létrehoznia. Több egyedi IP-cím és tartomány megadásának lehetősége (nem adhat meg több szolgáltatási címkét vagy alkalmazáscsoport) egy szabályban [kibővített biztonsági szabályoknak](#augmented-security-rules)nevezzük. Kibővített biztonsági szabályok kizárólag a Resource Manager-alapú üzemi modellben létrehozott hálózati biztonsági csoportokban hozhatóak létre. A klasszikus üzemi modellben létrehozott hálózati biztonsági csoportokban nem adhat meg több IP-címet vagy -címtartományt.|
 |Protokoll     | TCP, UDP, ICMP vagy any.|
@@ -41,6 +42,7 @@ A hálózati biztonsági csoportok nulla vagy tetszőleges számú szabályt tar
 |Műveletek     | Engedélyezés vagy letiltás        |
 
 A hálózati biztonsági csoportok biztonsági szabályait a rendszer prioritásuk szerint, a rekordokkal kapcsolatos 5 információ (forrás, forrásport, cél, célport és protokoll) alapján értékeli ki, hogy a forgalom engedélyezve vagy tiltva legyen. Egy folyamatrekord jön létre a meglévő kapcsolatokhoz. A kommunikáció a folyamatrekordok kapcsolati állapota alapján lesz engedélyezve vagy tiltva. A folyamatrekord teszi lehetővé a hálózati biztonsági csoport állapotalapú működését. Ha bármely címre meghatároz egy kimenő biztonsági szabályt a 80-as porton keresztül, nem szükséges biztonsági szabályt megadnia a bejövő forgalomra a válaszhoz. Ha a kommunikáció kívülről indul, csak egy bejövő biztonsági szabályt kell meghatároznia. Ennek az ellenkezője is igaz. Ha egy porton engedélyezett a bejövő forgalom, nem szükséges egy kimenő biztonsági szabályt is megadni ugyanazon a porton történő válaszadáshoz.
+
 Előfordulhat, hogy a meglévő kapcsolatok nem szakadnak meg az adatfolyamot engedélyező biztonsági szabály eltávolításakor. Az adatfolyam megszakad, ha a kapcsolatokat leállítják, és legalább néhány percig nincs forgalom egyik irányban sem.
 
 Az egy hálózati biztonsági csoporton belül létrehozható biztonsági szabályok száma korlátozott. További részletek: [Az Azure korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
@@ -67,7 +69,7 @@ Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott
 
 |Prioritás|Forrás|Forrásportok|Cél|Célportok|Protokoll|Access|
 |---|---|---|---|---|---|---|
-|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Bármelyik|Megtagadás|
+|65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Bármely|Megtagadás|
 
 #### <a name="outbound"></a>Kimenő
 
@@ -87,7 +89,7 @@ Az Azure a következő alapértelmezett szabályokat hozza létre a létrehozott
 
 |Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
-| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Bármelyik | Megtagadás |
+| 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Bármely | Megtagadás |
 
 A **Forrás** és a **Cél** oszlopban a *VirtualNetwork*, *AzureLoadBalancer* és *Internet* értékek [szolgáltatáscímkék](service-tags-overview.md), nem IP-címek. A protokoll oszlopban **minden** a TCP, UDP és ICMP protokollt foglalja magában. Szabály létrehozásakor megadhatja a TCP, UDP, ICMP vagy bármelyik lehetőséget. A *0.0.0.0/0* érték a **Forrás** és a **Cél** oszlopban az összes címet jelöli. Az olyan ügyfelek, mint a Azure Portal, az Azure CLI vagy a PowerShell a * vagy bármelyiket használhatja ehhez a kifejezéshez.
  
@@ -99,7 +101,7 @@ A kibővített biztonsági szabályok megkönnyítik a virtuális hálózatok bi
 
 #### <a name="service-tags"></a>Szolgáltatáscímkék
 
-A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. Ez segít a hálózati biztonsági szabályok gyakori frissítéseinek összetettségének minimalizálásában.
+A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csoportját jelöli. Segít csökkenteni a hálózati biztonsági szabályok gyakori frissítéseinek összetettségét.
 
 További információ: Azure- [szolgáltatás címkéi](service-tags-overview.md). A hálózati hozzáférés korlátozásához a Storage szolgáltatás címkével kapcsolatos példát a [hálózati hozzáférés korlátozása a Pásti-erőforrásokhoz](tutorial-restrict-network-access-to-resources.md)című témakörben talál.
 
@@ -140,9 +142,7 @@ A kimenő forgalom esetében az Azure először a hálózati biztonsági csoport
 
 Fontos megjegyezni, hogy az alhálózathoz társított NSG biztonsági szabályai befolyásolhatják a virtuális gépek közötti kapcsolatot. Ha például egy olyan szabályt ad hozzá a *NSG1* -hez, amely megtagadja az összes bejövő és kimenő forgalmat, a *VM1* és a *VM2* többé nem fog tudni kommunikálni egymással. Egy másik szabályt kifejezetten hozzá kell adni ahhoz, hogy ezt engedélyezzék. 
 
-
-
-A hálózati adapterekhez rendelt összesített szabályokat könnyen megismerheti a hálózati adapter [érvényes biztonsági szabályainak](virtual-network-network-interface.md#view-effective-security-rules) megtekintésével. Emellett az Azure Network Watcher [IP-forgalom ellenőrzése](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szolgáltatásával is megállapíthatja, hogy a kommunikáció engedélyezett-e a hálózati adapterre/adapterről. Az IP-forgalom ellenőrzése megmutatja, hogy a kommunikáció engedélyezve vagy blokkolva van-e, valamint hogy melyik hálózati biztonsági szabály engedélyezi vagy blokkolja a forgalmat.
+A hálózati adapterekhez rendelt összesített szabályokat könnyen megismerheti a hálózati adapter [érvényes biztonsági szabályainak](virtual-network-network-interface.md#view-effective-security-rules) megtekintésével. Emellett az Azure Network Watcher [IP-forgalom ellenőrzése](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szolgáltatásával is megállapíthatja, hogy a kommunikáció engedélyezett-e a hálózati adapterre/adapterről. Az IP flow ellenőrzi, hogy a kommunikáció engedélyezett vagy megtagadott-e, valamint hogy melyik hálózati biztonsági szabály engedélyezi vagy tiltja a forgalmat.
 
 > [!NOTE]
 > A hálózati biztonsági csoportok az alhálózatokhoz vagy a klasszikus üzemi modellben üzembe helyezett virtuális gépekhez és felhőalapú szolgáltatásokhoz, valamint a Resource Manager-alapú üzemi modellben lévő alhálózatokhoz vagy hálózati adapterekhez vannak társítva. Az Azure üzembehelyezési modellekkel kapcsolatos további információkért lásd: [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
@@ -160,7 +160,7 @@ A hálózati adapterekhez rendelt összesített szabályokat könnyen megismerhe
 
   Amennyiben 2017. november 15. előtt hozta létre Azure-előfizetését, az SMTP-továbbítási szolgáltatások használata mellett közvetlenül a 25-ös TCP-porton keresztül is küldhet e-maileket. Amennyiben 2017. november 15. után fizetett elő, nem biztos hogy küldhet e-maileket közvetlenül a 25-ös porton keresztül. A 25-ös porton keresztül folytatott kimenő kommunikáció viselkedése az előfizetés típusától függ, amely lehet:
 
-     - **Nagyvállalati szerződés**: 25-ös porton keresztüli kimenő kommunikáció engedélyezve. Közvetlenül a virtuális gépekről küldhet kimenő e-maileket a külső e-mail-szolgáltatóknak, és az Azure platform korlátozásai nem érvényesülnek. 
+     - **Nagyvállalati szerződés**: 25-ös porton keresztüli kimenő kommunikáció engedélyezve. Közvetlenül a virtuális gépekről küldhet kimenő e-maileket a külső e-mail-szolgáltatóknak, az Azure platform korlátozásai nélkül. 
      - **Használatalapú fizetés**: a 25-ös porton keresztüli kimenő kommunikáció minden erőforráson blokkolva van. Ha közvetlenül a virtuális gépéről szeretne e-mailt küldenie egy külső e-mail-szolgáltatónak (hitelesített SMTP-továbbítás használata nélkül), kérheti a korlátozás feloldását. A kérelmeket a Microsoft saját belátása szerint értékeli és hagyja jóvá, a visszaélések kiküszöbölésére szolgáló megfelelő ellenőrzések elvégzése után. Kérelem benyújtásához támogatási esetet kell nyitnia a *Technikai*, *Virtuális hálózati kapcsolat*, *Sikertelen e-mail-küldés (SMTP/25-ös port)* problématípus kiválasztásával. A támogatási esetben részletesen indokolja, hogy előfizetésének miért kell közvetlenül a levelezési szolgáltatónak e-mailt küldenie a hitelesített SMTP-továbbítás használata helyett. Amennyiben előfizetését felmentik a korlátozás alól, csak a mentesítés dátuma után létrehozott virtuális gépek képesek a 25-ös porton keresztüli kimenő kommunikációra.
      - **MSDN, Azure Pass, Azure in Open, Education, BizSpark és ingyenes próbaverzió**: a 25-ös porton keresztüli kimenő kommunikáció minden erőforráson blokkolva van. Nem küldhető kérelem a korlátozás feloldására, mert a kérelmek nem teljesíthetők. Ha mindenképp szeretne e-mailt küldeni a virtuális gépről, használjon SMTP-továbbítási szolgáltatást.
      - **Felhőszolgáltató**: Az Azure-erőforrásokat felhőszolgáltatón keresztül használó ügyfelek létrehozhatnak egy támogatási esetet a felhőszolgáltatónál, és kérhetik, hogy a szolgáltató hozzon létre a nevükben egy feloldási esetet, ha nem használható egy biztonságos SMTP-továbbító.

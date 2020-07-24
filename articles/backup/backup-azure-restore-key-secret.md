@@ -3,12 +3,12 @@ title: Key Vault kulcs visszaállítása a titkosított virtuális gép titkos &
 description: Megtudhatja, hogyan állíthatja vissza Azure Backup Key Vault kulcsát és titkos kódját a PowerShell használatával
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.openlocfilehash: 826b3917fda820ed02cde425ca5a394bffec0df1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49628697b7a271fed55c752026026ab57b17cd4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186821"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067215"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>A titkosított virtuális gépekhez tartozó Key Vault-kulcs és titkos kulcs visszaállítása az Azure Backup használatával
 
@@ -19,7 +19,7 @@ Ez a cikk az Azure-beli virtuális gépek biztonsági mentésének használatár
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Titkosított virtuális gépek biztonsági mentése** – a titkosított Azure-beli virtuális gépek biztonsági mentése a Azure Backup használatával történt. Tekintse át az Azure-beli [virtuális gépek biztonsági mentésének és visszaállításának kezelése a PowerShell használatával](backup-azure-vms-automation.md) című cikket a titkosított Azure-beli virtuális gépek biztonsági mentésének részleteiről.
-* **Azure Key Vault konfigurálása** – győződjön meg arról, hogy az a kulcstartó, amelybe vissza kell állítani a kulcsokat és a titkos kulcsokat, már jelen van. A Key Vault kezelésével kapcsolatos részletekért tekintse meg a [Azure Key Vault első lépéseivel foglalkozó](../key-vault/key-vault-get-started.md) cikket.
+* **Azure Key Vault konfigurálása** – győződjön meg arról, hogy az a kulcstartó, amelybe vissza kell állítani a kulcsokat és a titkos kulcsokat, már jelen van. A Key Vault kezelésével kapcsolatos részletekért tekintse meg a [Azure Key Vault első lépéseivel foglalkozó](../key-vault/general/overview.md) cikket.
 * **Lemez visszaállítása** – ellenőrizze, hogy a [PowerShell-lépések](backup-azure-vms-automation.md#restore-an-azure-vm)használatával a titkosított virtuális gép lemezei visszaállítására szolgáló visszaállítási feladatot aktiválta-e. Ennek az az oka, hogy ez a művelet a titkosított virtuális gép visszaállításához szükséges kulcsokat és titkos kódokat tartalmazó JSON-fájlt hoz létre a Storage-fiókban.
 
 ## <a name="get-key-and-secret-from-azure-backup"></a>Kulcs és titok beolvasása Azure Backup

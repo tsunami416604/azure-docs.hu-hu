@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b2f4e7a16c967b26b545d1405f973bf8b8afaae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086130"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065079"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Milyen SAP-szoftvert támogatnak az Azure-beli üzemelő példányok?
 Ez a cikk azt ismerteti, hogyan tudhatja meg, hogy milyen SAP-szoftverek támogatottak az Azure-környezetekben, valamint hogy a szükséges operációs rendszerek és az adatbázis-kezelők milyen kiadásokkal rendelkeznek.
@@ -87,12 +87,12 @@ A megcélzott Azure-infrastruktúrával támogatott adatbázis-kezelői kiadáso
 Az Azure-ban két szolgáltatás található, amelyek a HANA-adatbázisok futtatására használhatók:
 
 - Azure-alapú virtuális gépek
-- [HANA nagyméretű példányai](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [HANA nagyméretű példányai](./hana-overview-architecture.md)
 
 A SAP HANA futtatásához az SAP több és erősebb feltételekkel rendelkezik, és az infrastruktúrának meg kell felelnie, mint a NetWeaver vagy más SAP-alkalmazások és az adatbázis-kezelők futtatása Ennek eredményeképpen kisebb számú Azure-beli virtuális gép felel meg a SAP HANA adatbázis-kezelő rendszer futtatásának. A SAP HANA által támogatott Azure-infrastruktúra listája az úgynevezett [SAP HANA Hardware könyvtárban](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)található. 
 
 > [!NOTE]
-> A "betű" karakterrel kezdődő egység a [HANA Large instances](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) egység. 
+> A "betű" karakterrel kezdődő egység a [HANA Large instances](./hana-overview-architecture.md) egység. 
 
 > [!NOTE]
 > Az SAP nem rendelkezik a SAP HANA fő kiadásaitól függő speciális minősítéssel. A közös véleménysel ellentétben a [Hana Certified IaaS platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)az oszlop **minősítési forgatókönyve** nem tesz **utasítást a Hana Major vagy**az alverzió minősítésére. Azt feltételezheti, hogy a HANA 1,0 és a HANA 2,0 számára felhasználható összes egység a Hana 1,0 kiadásokban is támogatott, ha az adott egységekhez tartozó minősített operációsrendszer-kiadásokat is támogatja. 
@@ -138,12 +138,11 @@ Az SAP bites 10,1 SP08 támogatását az [SAP támogatási megjegyzése #2451795
 Az SAP Hybris kereskedelmi platformjának támogatása az Azure-ban részletesen szerepel a [Hybris dokumentációjában](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html). Az SAP Hybris kereskedelmi platform támogatott adatbázis-kezelője az alábbi, például:
 
 - SQL Server és Oracle a Windows operációs rendszer platformján. Az SAP NetWeaver esetében ugyanazok a minimális kiadások érvényesek. A részletekért lásd az [SAP támogatási megjegyzéseit #1928533](https://launchpad.support.sap.com/#/notes/1928533)
-- SAP HANA Red Hat és SUSE Linux rendszeren. SAP HANA Certified VM-típusok szükségesek a [jelen dokumentumban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)korábban dokumentált módon. Az SAP (Hybris) kereskedelmi platform OLTP számítási feladatnak számít
+- SAP HANA Red Hat és SUSE Linux rendszeren. SAP HANA Certified VM-típusok szükségesek a [jelen dokumentumban](#sap-hana-support)korábban dokumentált módon. Az SAP (Hybris) kereskedelmi platform OLTP számítási feladatnak számít
 - SQL Azure DB az SAP (Hybris) kereskedelmi platform 1811-es verziójával
 
 
 
 
 ## <a name="next-steps"></a>Következő lépések
-Az [Azure Virtual Machines tervezésének és megvalósításának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) következő lépéseinek elolvasása az SAP NetWeaver-ban
-
+Az [Azure Virtual Machines tervezésének és megvalósításának](./planning-guide.md) következő lépéseinek elolvasása az SAP NetWeaver-ban
