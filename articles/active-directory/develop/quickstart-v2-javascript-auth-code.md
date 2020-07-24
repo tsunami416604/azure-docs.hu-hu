@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/19/2020
+ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 0eaa4a828716f1a52161726e768acc817d1fde17
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
+ms.openlocfilehash: cf86e2b747975e18fc999949340207b618dd8864
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134180"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129797"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési token beszerzése egy JavaScript SPA-ban az Auth Code flow használatával
-
-> [!IMPORTANT]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány aspektusa változhat az általános elérhetősége előtt.
 
 Ebben a rövid útmutatóban egy kódrészletet fog futtatni, amely bemutatja, hogyan jelentkezhet be a JavaScript egyoldalas alkalmazás (SPA) a személyes fiókok, a munkahelyi fiókok és az iskolai fiókok felhasználói számára az engedélyezési kód folyamatának használatával. A kód minta azt is bemutatja, hogyan szerezhet be egy hozzáférési jogkivonatot a webes API meghívásához, ebben az esetben a Microsoft Graph API-t. Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
@@ -42,10 +39,10 @@ Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folya
 >
 > 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókot a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure Active Directory (Azure AD) bérlőre.
-> 1. Válassza a [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)lehetőséget.
+> 1. Válassza az [Alkalmazásregisztrációk](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) lehetőséget.
 > 1. Adja meg az alkalmazás nevét.
 > 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
-> 1. Kattintson a **Register** (Regisztrálás) elemre.
+> 1. Válassza a **Regisztráció** lehetőséget.
 > 1. Lépjen a gyors üzembe helyezés panelre, és kövesse az utasításokat az új alkalmazás letöltéséhez és automatikus konfigurálásához.
 >
 > ### <a name="option-2-manual-register-and-manually-configure-your-application-and-code-sample"></a>2. lehetőség (manuális): az alkalmazás-és a kód-minta regisztrálása és manuális konfigurálása
@@ -54,11 +51,11 @@ Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folya
 >
 > 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 > 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, majd állítsa be a portál munkamenetét a használni kívánt Azure AD-bérlőre.
-> 1. Válassza a [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908)lehetőséget.
+> 1. Válassza az [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) lehetőséget.
 > 1. Válassza az **új regisztráció**lehetőséget.
 > 1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
 > 1. A **támogatott fiókok típusai**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban és személyes Microsoft-fiókban**.
-> 1. Kattintson a **Register** (Regisztrálás) elemre. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
+> 1. Válassza a **Regisztráció** lehetőséget. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 > 1. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
 > 1. A **platform-konfigurációk**területen válassza **a platform hozzáadása**lehetőséget. A megnyíló panelen válassza az **egylapos alkalmazás**lehetőséget.
 > 1. Állítsa be az **átirányítási URI** értékét a következőre: `http://localhost:3000/` .
@@ -198,7 +195,7 @@ Ha Node.js van telepítve, a legújabb verziót a Node.js Package Manager (NPM) 
 npm install @azure/msal-browser
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a rövid útmutatóban használt alkalmazás létrehozásával kapcsolatos részletes útmutatásért tekintse meg a következő oktatóanyagot:
 

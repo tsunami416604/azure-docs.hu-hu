@@ -10,12 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 06/10/2020
-ms.openlocfilehash: 4ffd92c0641b74682a74ffd2898e226999ac2dd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: f71daab55139f6b4690df50472928db466774cb3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668457"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128267"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Rugalmas készletek erőforrás-korlátai a virtuális mag beszerzési modell használatával
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -46,7 +47,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Memória (GB)|7|14|21|28|35|42|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|200|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
 |Maximális adatméret (GB)|512|756|1536|1536|1536|2048|
 |Napló maximális mérete|154|227|461|461|461|614|
 |TempDB maximális adatméret (GB)|32|64|96|128|160|192|
@@ -59,8 +60,8 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
 |Replikák száma|1|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
+|Olvasási felskálázás|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -78,7 +79,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Memória (GB)|49|56|63|70|112|159,5|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|500|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
 |Maximális adatméret (GB)|2048|2048|2048|2048|3584|4096|
 |Napló maximális mérete (GB)|614|614|614|614|1075|1229|
 |TempDB maximális adatméret (GB)|224|256|288|320|512|768|
@@ -91,8 +92,8 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
 |Replikák száma|1|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
+|Olvasási felskálázás|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -112,7 +113,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Memória (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|200|500|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
 |Maximális adatméret (GB)|512|756|1536|1536|1536|2048|2048|
 |Napló maximális mérete (GB)|154|227|461|461|461|614|614|
 |TempDB maximális adatméret (GB)|64|128|192|256|320|384|448|
@@ -125,8 +126,8 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Replikák száma|1|1|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
+|Olvasási felskálázás|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -144,7 +145,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Memória (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|500|500|500|500|500|500|500|
 |Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Memóriában tárolt OLTP-tároló (GB)|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
 |Maximális adatméret (GB)|2048|3072|3072|3072|4096|4096|4096|
 |Napló maximális mérete (GB)|614|922|922|922|1229|1229|1229|
 |TempDB maximális adatméret (GB)|512|576|640|768|1024|1280|2560|
@@ -157,8 +158,8 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
 |Replikák száma|1|1|1|1|1|1|1|
-|Több – AZ|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
-|Olvasási felskálázás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Több – AZ|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
+|Olvasási felskálázás|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
 |Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
@@ -169,31 +170,64 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 
 ## <a name="general-purpose---provisioned-compute---fsv2-series"></a>Általános célú kiépített számítás – Fsv2 sorozat
 
-### <a name="fsv2-series-compute-generation-preview"></a>Fsv2 sorozatú számítási generáció (előzetes verzió)
+### <a name="fsv2-series-compute-generation-part-1"></a>Fsv2 sorozatú számítási generáció (1. rész)
 
-|Számítási méret (szolgáltatási cél)|GP_Fsv2_72|
-|:--- | --: |
-|Számítási generáció|Fsv2 sorozat|
-|Virtuális mag|72|
-|Memória (GB)|136,2|
-|Adatbázisok maximális száma <sup>1</sup> . készletben|500|
-|Oszlopcentrikus-támogatás|Yes|
-|Memóriában tárolt OLTP-tároló (GB)|N.A.|
-|Maximális adatméret (GB)|4096|
-|Napló maximális mérete (GB)|1024|
-|TempDB maximális adatméret (GB)|333|
-|Tárolási típus|Prémium (távoli) tárterület|
-|IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|
-|Maximális adatmennyiség IOPS/készletben <sup>2</sup>|16000|
-|Maximális naplózási arány (MB/s)|37,5|
-|Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|3780|
-|Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|3780|
-|Egyidejű munkamenetek maximális száma|30 000|
-|Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-72|
-|Replikák száma|1|
-|Több – AZ|N.A.|
-|Olvasási felskálázás|N.A.|
-|Mellékelt biztonsági mentési tár|1X DB méret|
+|Számítási méret (szolgáltatási cél)|GP_Fsv2_8|GP_Fsv2_10|GP_Fsv2_12|GP_Fsv2_14| GP_Fsv2_16|
+|:---| ---:|---:|---:|---:|---:|
+|Számítási generáció|Fsv2 sorozat|Fsv2 sorozat|Fsv2 sorozat|Fsv2 sorozat|Fsv2 sorozat|
+|Virtuális mag|8|10|12|14|16|
+|Memória (GB)|15,1|18,9|22,7|26,5|30,2|
+|Adatbázisok maximális száma <sup>1</sup> . készletben|500|500|500|500|500|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|
+|Memóriában tárolt OLTP-tároló (GB)|n.a.|n.a.|n.a.|n.a.|n.a.|
+|Maximális adatméret (GB)|1024|1024|1024|1024|1536|
+|Napló maximális mérete (GB)|336|336|336|336|512|
+|TempDB maximális adatméret (GB)|333|333|333|333|333|
+|Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
+|IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
+|Maximális adatmennyiség IOPS/készletben <sup>2</sup>|2560|3200|3840|4480|5120|
+|Maximális naplózási arány (MB/s)|30|30|30|30|30|
+|Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|400|500|600|700|800|
+|Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|800|1000|1200|1400|1600|
+|Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|
+|Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-8|0-10|0-12|0-14|0-16|
+|Replikák száma|1|1|1|1|1|
+|Több – AZ|n.a.|n.a.|n.a.|n.a.|n.a.|
+|Olvasási felskálázás|n.a.|n.a.|n.a.|n.a.|n.a.|
+|Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
+
+
+<sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
+
+<sup>2</sup> az i/o-méretek maximális értéke 8 kb és 64 kb között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
+
+<sup>3</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
+
+### <a name="fsv2-series-compute-generation-part-2"></a>Fsv2 sorozatú számítási generáció (2. rész)
+
+|Számítási méret (szolgáltatási cél)|GP_Fsv2_18|GP_Fsv2_20|GP_Fsv2_24|GP_Fsv2_32| GP_Fsv2_36|GP_Fsv2_72|
+|:---| ---:|---:|---:|---:|---:|---:|
+|Számítási generáció|Fsv2 sorozat|Fsv2 sorozat|Fsv2 sorozat|Fsv2 sorozat|Fsv2 sorozat|Fsv2 sorozat|
+|Virtuális mag|18|20|24|32|36|72|
+|Memória (GB)|34,0|37,8|45,4|60,5|68,0|136,0|
+|Adatbázisok maximális száma <sup>1</sup> . készletben|500|500|500|500|500|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
+|Memóriában tárolt OLTP-tároló (GB)|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
+|Maximális adatméret (GB)|1536|1536|1536|3072|3072|4096|
+|Napló maximális mérete (GB)|512|512|512|1024|1024|1024|
+|TempDB maximális adatméret (GB)|83,25|92,5|111|148|166,5|333|
+|Tárolási típus|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|Távoli SSD|
+|IO-késés (hozzávetőleges)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|5-7 MS (írás)<br>5-10 MS (olvasás)|
+|Maximális adatmennyiség IOPS/készletben <sup>2</sup>|5760|6400|7680|10240|11520|23040|
+|Maximális naplózási arány (MB/s)|30|30|30|30|30|30|
+|Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|900|1000|1200|1600|1800|3600|
+|Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|1800|2000|2400|3200|3600|7200|
+|Egyidejű munkamenetek maximális száma|30 000|30 000|30 000|30 000|30 000|30 000|
+|Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-18|0-20|0-24|0-32|0-36|0-72|
+|Replikák száma|1|1|1|1|1|1|
+|Több – AZ|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
+|Olvasási felskálázás|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
+|Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
 
@@ -246,7 +280,7 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 |Virtuális mag|7|8|9|10|16|24|
 |Memória (GB)|49|56|63|70|112|159,5|
 |Adatbázisok maximális száma <sup>1</sup> . készletben|100|100|100|100|100|100|
-|Oszlopcentrikus-támogatás|N.A.|N.A.|N.A.|N.A.|N.A.|N.A.|
+|Oszlopcentrikus-támogatás|n.a.|n.a.|n.a.|n.a.|n.a.|n.a.|
 |Memóriában tárolt OLTP-tároló (GB)|7|8|9,5|11|20|36|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |Maximális adatméret (GB)|1024|1024|1024|1024|1024|1024|
@@ -338,31 +372,31 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 
 ## <a name="business-critical---provisioned-compute---m-series"></a>Üzleti szempontból kritikus – kiépített számítás – M sorozat
 
-### <a name="m-series-compute-generation-preview"></a>Az M-sorozat számítási generációja (előzetes verzió)
+### <a name="m-series-compute-generation-part-1"></a>M sorozatú számítási generáció (1. rész)
 
-|Számítási méret (szolgáltatási cél)|BC_M_128|
-|:--- | --: |
-|Számítási generáció|M sorozat|
-|Virtuális mag|128|
-|Memória (GB)|3767,1|
-|Adatbázisok maximális száma <sup>1</sup> . készletben|100|
-|Oszlopcentrikus-támogatás|Yes|
-|Memóriában tárolt OLTP-tároló (GB)|1768|
-|Maximális adatméret (GB)|4096|
-|Napló maximális mérete (GB)|2048|
-|TempDB maximális adatméret (GB)|4096|
-|Tárolási típus|Helyi SSD|
-|IO-késés (hozzávetőleges)|1-2 MS (írás)<br>1-2 MS (olvasás)|
-|Maximális adatmennyiség IOPS/készletben <sup>2</sup>|200,000|
-|Maximális naplózási arány (MB/s)|333|
-|Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|13 440|
-|Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|13 440|
-|Egyidejű munkamenetek maximális száma|30 000|
-|Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-128|
-|Replikák száma|4|
-|Több – AZ|Yes|
-|Olvasási felskálázás|Yes|
-|Mellékelt biztonsági mentési tár|1X DB méret|
+|Számítási méret (szolgáltatási cél)|BC_M_8|BC_M_10|BC_M_12|BC_M_14|BC_M_16|BC_M_18|
+|:---| ---:|---:|---:|---:|---:|---:|
+|Számítási generáció|M sorozat|M sorozat|M sorozat|M sorozat|M sorozat|M sorozat|
+|Virtuális mag|8|10|12|14|16|18|
+|Memória (GB)|235,4|294,3|353,2|412,0|470,9|529,7|
+|Adatbázisok maximális száma <sup>1</sup> . készletben|100|100|100|100|100|100|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|Igen|
+|Memóriában tárolt OLTP-tároló (GB)|64|80|96|112|128|150|
+|Maximális adatméret (GB)|512|640|768|896|1024|1152|
+|Napló maximális mérete (GB)|171|213|256|299|341|384|
+|TempDB maximális adatméret (GB)|256|320|384|448|512|576|
+|Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
+|IO-késés (hozzávetőleges)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|
+|Maximális adatmennyiség IOPS/készletben <sup>2</sup>|12 499|15 624|18 748|21 873|24 998|28 123|
+|Maximális naplózási arány (MB/s)|48|60|72|84|96|108|
+|Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|800|1,000|1200|1400|1600|1800|
+|Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|800|1,000|1200|1400|1600|1800|
+|Egyidejű munkamenetek maximális száma|30000|30000|30000|30000|30000|30000|
+|Rugalmas készlet minimális/maximális virtuális mag-választéka adatbázis szerint|0-8|0-10|0-12|0-14|0-16|0-18|
+|Replikák száma|4|4|4|4|4|4|
+|Több – AZ|Nem|Nem|Nem|Nem|Nem|Nem|
+|Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|Igen|
+|Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
 
 <sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
 
@@ -371,6 +405,42 @@ A szolgáltatási szintet, a számítási méretet (a szolgáltatás célját) �
 <sup>3</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
 
 Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lévő összes adatbázis egyenlő mennyiségű számítási erőforrást kap a lekérdezések feldolgozásához. Azure SQL Database biztosítja az erőforrások egyenlő elosztását az adatbázisok között azáltal, hogy egyenlő mennyiségű számítási időt biztosít. A rugalmas készlet erőforrásainak megosztása a méltányosság érdekében az egyes adatbázisok számára más módon garantált erőforrásokhoz is, ha a virtuális mag min/adatbázis értéke nem nulla értékre van állítva.
+
+
+
+### <a name="m-series-compute-generation-part-2"></a>M sorozatú számítási generáció (2. rész)
+
+|Számítási méret (szolgáltatási cél)|BC_M_20|BC_M_24|BC_M_32|BC_M_64|BC_M_128|
+|:---| ---:|---:|---:|---:|---:|
+|Számítási generáció|M sorozat|M sorozat|M sorozat|M sorozat|M sorozat|
+|Virtuális mag|20|24|32|64|128|
+|Memória (GB)|588,6|706,3|941,8|1883,5|3767,0|
+|Adatbázisok maximális száma <sup>1</sup> . készletben|100|100|100|100|100|100|
+|Oszlopcentrikus-támogatás|Igen|Igen|Igen|Igen|Igen|
+|Memóriában tárolt OLTP-tároló (GB)|172|216|304|704|1768|
+|Maximális adatméret (GB)|1280|1536|2048|4096|4096|
+|Napló maximális mérete (GB)|427|512|683|1024|1024|
+|TempDB maximális adatméret (GB)|4096|2048|1024|768|640|
+|Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
+|IO-késés (hozzávetőleges)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|1-2 MS (írás)<br>1-2 MS (olvasás)|
+|Maximális adatmennyiség IOPS/készletben <sup>2</sup>|31 248|37 497|49 996|99 993|160 000|
+|Maximális naplózási arány (MB/s)|120|144|192|264|264|
+|Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup>|2000|2 400|3 200|6 400|12 800|
+|Egyidejű bejelentkezések maximális száma (kérelem) <sup>3</sup>|2000|2 400|3 200|6 400|12 800|
+|Egyidejű munkamenetek maximális száma|30000|30000|30000|30000|30000|
+|Replikák száma|4|4|4|4|4|
+|Több – AZ|Nem|Nem|Nem|Nem|Nem|
+|Olvasási felskálázás|Igen|Igen|Igen|Igen|Igen|
+|Mellékelt biztonsági mentési tár|1X DB méret|1X DB méret|1X DB méret|1X DB méret|1X DB méret|
+
+<sup>1</sup> további megfontolásokat az [Erőforrás-kezelés sűrű rugalmas készletekben](elastic-pool-resource-management.md) című témakörben talál.
+
+<sup>2</sup> az i/o-méretek maximális értéke 8 kb és 64 kb között mozog. A tényleges IOPS számítási feladatok függenek. Részletekért lásd: [adat IO-szabályozás](resource-limits-logical-server.md#resource-governance).
+
+<sup>3</sup> az egyidejű feldolgozók (kérelmek) maximális száma az egyes adatbázisokhoz: [Egyadatbázisos erőforrás-korlátok](resource-limits-vcore-single-databases.md). Ha például a rugalmas készlet Gen5 használ, és az adatbázis max. virtuális mag értéke 2, akkor az egyidejű feldolgozók maximális száma 200.  Ha az adatbázis max. virtuális mag értéke 0,5, akkor az egyidejű feldolgozók maximális száma értéke 50, mivel a Gen5-ben legfeljebb 100 egyidejű dolgozó van. Ha az adatbázis más maximális virtuális mag-beállításai kevesebb, mint 1 virtuális mag vagy kevesebb, az egyidejű feldolgozók maximális száma hasonlóan átméretezhető.
+
+Ha a rugalmas készlet összes virtuális mag foglalt, akkor a készletben lévő összes adatbázis egyenlő mennyiségű számítási erőforrást kap a lekérdezések feldolgozásához. Azure SQL Database biztosítja az erőforrások egyenlő elosztását az adatbázisok között azáltal, hogy egyenlő mennyiségű számítási időt biztosít. A rugalmas készlet erőforrásainak megosztása a méltányosság érdekében az egyes adatbázisok számára más módon garantált erőforrásokhoz is, ha a virtuális mag min/adatbázis értéke nem nulla értékre van állítva.
+
 
 ## <a name="database-properties-for-pooled-databases"></a>A készletezett adatbázisok adatbázis-tulajdonságai
 

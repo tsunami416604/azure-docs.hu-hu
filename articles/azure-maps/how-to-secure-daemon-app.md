@@ -2,18 +2,19 @@
 title: Démonalkalmazás biztonságossá tétele
 titleSuffix: Azure Maps
 description: A Azure Portal használatával kezelheti a hitelesítést egy megbízható Daemon-alkalmazás konfigurálásához.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4fa3492b0cd71e61900dc4be150cd0f0169379ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 066118622f19d7efac71ddd66ac1abe058008b55
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84988597"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126771"
 ---
 # <a name="secure-a-daemon-application"></a>Daemon-alkalmazás biztonságossá tétele
 
@@ -113,7 +114,7 @@ A nem Azure-beli környezetekben felügyelt identitások nem érhetők el. Ezér
 > [!div class="mx-imgBorder"]
 > ![Elérhető szerepkörök megtekintése](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
-1. Nyissa meg **Azure Maps-fiókját**. Válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelések**lehetőséget.
+1. Nyissa meg **Azure Maps-fiókját**. Válassza a **Hozzáférés-vezérlés (IAM)** > **Szerepkör-hozzárendelések** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![RBAC megadása](./media/how-to-manage-authentication/how-to-grant-rbac.png)
@@ -123,7 +124,7 @@ A nem Azure-beli környezetekben felügyelt identitások nem érhetők el. Ezér
     > [!div class="mx-imgBorder"]
     > ![Szerepkör-hozzárendelés hozzáadása](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. Válasszon egy beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. A **hozzáférés hozzárendelése**területen válassza ki az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** vagy felügyelt identitás elemet a **felhasználóhoz rendelt felügyelt identitásrendszer**  /  **hozzárendelt felügyelt identitásával**. Válassza ki a rendszerbiztonsági tag. Kattintson a **Mentés** gombra.
+3. Válasszon egy beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. A **hozzáférés hozzárendelése**területen válassza ki az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** vagy felügyelt identitás elemet a **felhasználóhoz rendelt felügyelt identitásrendszer**  /  **hozzárendelt felügyelt identitásával**. Válassza ki a rendszerbiztonsági tag. Ez után válassza a **Mentés** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Szerepkör-hozzárendelés hozzáadása](./media/how-to-manage-authentication/how-to-add-role-assignment.png)

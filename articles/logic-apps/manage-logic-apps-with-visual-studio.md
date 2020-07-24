@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cf964b8b5ebbfe5f790a1e325b48cd4179cf4ee
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82598436"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127672"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logikai alkalmazások kezelése a Visual Studióval
 
@@ -35,9 +35,9 @@ Habár logikai alkalmazásokat hozhat létre, szerkeszthet, kezelhet és helyezh
 
     > [!IMPORTANT]
     > A Visual Studio 2019-es vagy 2017-es vagy-es telepítésekor ügyeljen arra, hogy kiválassza az **Azure-fejlesztési** számítási feladatot.
-    > További információ: [Az Azure-fiókokhoz társított erőforrások kezelése a Visual Studio Cloud Explorerben](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
+    > További információ: [Az Azure-fiókokhoz társított erőforrások kezelése a Visual Studio Cloud Explorerben](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer).
 
-    A Cloud Explorer for Visual Studio 2015 telepítéséhez [töltse le a Cloud Explorer alkalmazást a Visual Studio piactérről](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). További információ: [Az Azure-fiókokhoz társított erőforrások kezelése a Visual Studio Cloud Explorerben (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
+    A Cloud Explorer for Visual Studio 2015 telepítéséhez [töltse le a Cloud Explorer alkalmazást a Visual Studio piactérről](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). További információ: [Az Azure-fiókokhoz társított erőforrások kezelése a Visual Studio Cloud Explorerben (2015)](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
 
   * [Azure SDK (2.9.1 vagy újabb)](https://azure.microsoft.com/downloads/)
 
@@ -51,44 +51,46 @@ Habár logikai alkalmazásokat hozhat létre, szerkeszthet, kezelhet és helyezh
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
 
-    Letöltheti és telepítheti az Azure Logic Apps alkalmazást közvetlenül a Visual Studio piacteréről, vagy nézzen utána, [hogyan telepítheti a bővítményt a Visual Studio rendszerén belül](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). Ne feledje, hogy a telepítés után újra kell indítani a Visual Studiót.
+    Letöltheti és telepítheti az Azure Logic Apps alkalmazást közvetlenül a Visual Studio piacteréről, vagy nézzen utána, [hogyan telepítheti a bővítményt a Visual Studio rendszerén belül](/visualstudio/ide/finding-and-using-visual-studio-extensions). Ne feledje, hogy a telepítés után újra kell indítani a Visual Studiót.
+
+  * Ha Azure Government-előfizetéseket szeretné használni a Visual Studióval, tekintse meg a következő témaköröket a további telepítéshez:
+
+    * Visual Studio 2019: gyors útmutató [: Kapcsolódás a Azure Governmenthoz a Visual Studióval](../azure-government/documentation-government-connect-vs.md)
+
+    * Visual Studio 2017: [Az Azure Environment választó Visual Studio bővítmény bemutatása](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), amelyet a [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector)-en tölthet le és telepíthet.
 
 * Hozzáférés a világhálóhoz a Embedded Logic Apps Designer használatával
 
-  A tervezőnek internetkapcsolatra van szüksége, hogy létre tudja hozni az erőforrásokat az Azure-ban, és be tudja olvasni a tulajdonságokat és adatokat a logikai alkalmazásban lévő összekötőkből. Ha például a Dynamics CRM Online-összekötőt használja, a tervező elérhető alapértelmezett és egyéni tulajdonságokat keres a CRM-példányon.
+  A tervezőnek internetkapcsolatra van szüksége, hogy létre tudja hozni az erőforrásokat az Azure-ban, és be tudja olvasni a tulajdonságokat és adatokat a logikai alkalmazásban lévő összekötőkből.
 
 <a name="find-logic-apps-vs"></a>
 
-## <a name="find-your-logic-apps"></a>Logikai alkalmazások keresése
+## <a name="find-logic-apps"></a>Logikai alkalmazások keresése
 
 A Visual Studióban megtalálhatja az Azure-előfizetéshez társított összes logikai alkalmazást, és a Azure Portal a Cloud Explorer használatával telepítheti azokat.
 
 1. Nyissa meg a Visual Studiót. A **nézet** menüben válassza a **Cloud Explorer**lehetőséget.
 
-1. A Cloud Explorerben válassza a **fiókok kezelése**lehetőséget. Válassza ki a logikai alkalmazásokhoz társított Azure-előfizetést, majd válassza az **alkalmaz**lehetőséget. Például:
+1. A Cloud Explorerben válassza a **Fiókkezelés** ikont. Válassza ki a logikai alkalmazásokhoz társított Azure-előfizetést, majd válassza az **alkalmaz**lehetőséget. Például:
 
    !["Fiókkezelés" kiválasztása](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
-1. Attól függően, hogy **erőforráscsoportok** vagy **erőforrástípusok**alapján keres, kövesse az alábbi lépéseket:
+1. A **Fiókkezelés** ikon mellett válassza az **erőforrástípusok**lehetőséget. Az Azure-előfizetése alatt bontsa ki a **Logic apps** , így megtekintheti az előfizetéséhez társított összes telepített logikai alkalmazást.
 
-   * **Erőforráscsoportok**: az Azure-előfizetése alatt a Cloud Explorer megjeleníti az adott előfizetéshez társított összes erőforráscsoportot. Bontsa ki a logikai alkalmazást tartalmazó erőforráscsoportot, majd válassza ki a logikai alkalmazást.
-
-   * **Erőforrástípusok**: az Azure-előfizetése alatt bontsa ki a **Logic apps**elemet. Miután a Cloud Explorer megjeleníti az előfizetéshez társított összes telepített logikai alkalmazást, válassza ki a logikai alkalmazást.
+Ezután nyissa meg a logikai alkalmazást a Logic app Editorban.
 
 <a name="open-designer"></a>
 
-## <a name="open-in-visual-studio"></a>Megnyitás a Visual Studióban
+## <a name="open-logic-apps-in-visual-studio"></a>Logikai alkalmazások megnyitása a Visual Studióban
 
 A Visual Studióban megnyithatja a korábban létrehozott és üzembe helyezett Logic apps-alkalmazásokat közvetlenül a Azure Portal vagy Azure Resource Group-projektekkel a Visual Studióval.
 
-1. Nyissa meg a Cloud Explorert, és keresse meg a logikai alkalmazást.
+1. [Nyissa meg a Cloud Explorert, és keresse meg a logikai alkalmazást](#find-logic-apps-vs).
 
 1. A logikai alkalmazás helyi menüjében válassza a **Megnyitás a Logic app Editor**használatával lehetőséget.
 
    > [!TIP]
    > Ha nem rendelkezik ezzel a paranccsal a Visual Studio 2019-ben, ellenőrizze, hogy rendelkezik-e a legújabb Visual Studio-frissítésekkel.
-
-   Ez a példa az erőforrástípus alapján mutatja be a Logic Apps szolgáltatást, így a logikai alkalmazások a **Logic apps** szakaszban jelennek meg.
 
    ![Üzembe helyezett logikai alkalmazás megnyitása Azure Portal](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
@@ -100,14 +102,14 @@ A Visual Studióban megnyithatja a korábban létrehozott és üzembe helyezett 
 
 A logikai alkalmazásokat letöltheti a [Azure Portalból](https://portal.azure.com) , és mentheti őket [Azure Resource Manager](../azure-resource-manager/management/overview.md) sablonként. Ezután helyileg szerkesztheti a sablonokat a Visual Studióval, és testreszabhatja a logikai alkalmazásokat a különböző üzembe helyezési környezetekhez.  A Logic apps letöltése automatikusan *felparaméterezi* a definíciókat a [Resource Manager-sablonokban](../azure-resource-manager/templates/overview.md), amely a JavaScript Object Notation (JSON) is használja.
 
-1. A Visual Studióban nyissa meg a Cloud Explorert. Keresse meg és válassza ki az Azure-ból letölteni kívánt logikai alkalmazást.
+1. [Nyissa meg az Azure-ból letölteni kívánt logikai alkalmazást](#open-designer)a Visual Studióban a Cloud Explorer használatával.
 
-1. Az alkalmazás helyi menüjében válassza **a Megnyitás a Logic app Editor**használatával lehetőséget.
+1. A logikai alkalmazás helyi menüjében válassza a **Megnyitás a Logic app Editor**használatával lehetőséget.
 
    > [!TIP]
    > Ha nem rendelkezik ezzel a paranccsal a Visual Studio 2019-ben, ellenőrizze, hogy rendelkezik-e a legújabb Visual Studio-frissítésekkel.
 
-   Megnyílik a Logic app Designer, és megjeleníti a logikai alkalmazást. A logikai alkalmazás alapjául szolgáló definíció és struktúra áttekintéséhez kattintson a tervező alján található **kód nézet**elemre.
+   A logikai alkalmazás megnyílik a Logic app Designerben.
 
 1. A tervező eszköztárán válassza a **Letöltés**lehetőséget.
 

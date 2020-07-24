@@ -3,15 +3,16 @@ title: Az erőforrás-hierarchia elleni védelem – Azure-szabályozás
 description: Ismerje meg, hogyan védhető az erőforrás-hierarchia olyan hierarchia-beállításokkal, amelyek tartalmazzák az alapértelmezett felügyeleti csoport beállítását.
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 60c184d176ae62c1af525db656c56a83422cb94a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50b5ba1bccf3d603b6d273892d0c903d433786f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83837415"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127996"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Az erőforrás-hierarchia elleni védelem
 
-Az erőforrások, erőforráscsoportok, előfizetések, felügyeleti csoportok és bérlők együttesen alkotják az erőforrás-hierarchiát. A gyökérszintű felügyeleti csoport beállításai, például az egyéni RBAC szerepkörei vagy a Azure Policy házirend-hozzárendelések hatással lehetnek az erőforrás-hierarchiában található minden egyes erőforrásra. Fontos, hogy megvédje az erőforrás-hierarchiát olyan változásokkal szemben, amelyek negatív hatással lehetnek az összes erőforrásra.
+Az erőforrások, erőforráscsoportok, előfizetések, felügyeleti csoportok és bérlők együttesen alkotják az erőforrás-hierarchiát. A gyökérszintű felügyeleti csoport (például az Azure egyéni szerepkörei vagy Azure Policy szabályzat-hozzárendelések) beállításai hatással lehetnek az erőforrás-hierarchiában található minden egyes erőforrásra. Fontos, hogy megvédje az erőforrás-hierarchiát olyan változásokkal szemben, amelyek negatív hatással lehetnek az összes erőforrásra.
 
 A felügyeleti csoportok már rendelkeznek hierarchia-beállításokkal, amelyek segítségével a bérlői rendszergazda vezérelheti ezeket a viselkedéseket. Ez a cikk ismerteti az összes rendelkezésre álló hierarchia-beállítást és azok beállításának módját.
 

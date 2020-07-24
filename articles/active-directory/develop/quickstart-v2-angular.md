@@ -7,17 +7,17 @@ author: jasonnutter
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: f457e876cb9484fce29cba35c7570572b2771aed
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: a7553eea8941b93e589f38f8229ef35b70361f8e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860052"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129185"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy szögletes egyoldalas alkalmazásban
 
@@ -26,7 +26,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy Azure-előfizetés. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Node. js](https://nodejs.org/en/download/)-fájl.
+* [Node.js](https://nodejs.org/en/download/).
 * A Project Files vagy a [Visual studio 2019](https://visualstudio.microsoft.com/downloads/) a projekt futtatására szolgáló [Visual Studio Code](https://code.visualstudio.com/download) .
 
 > [!div renderon="docs"]
@@ -62,7 +62,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes 
 
 #### <a name="step-2-download-the-code-sample"></a>2. lépés: a mintakód letöltése
 >[!div renderon="docs"]
->A projekt a Node. js használatával webkiszolgálóval való futtatásához, [a minta tárház klónozásához](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) vagy [az alapszintű projektfájlok letöltéséhez](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip). Nyissa meg a fájlokat egy szerkesztővel, például a Visual Studio Code használatával.
+>Ha Node.js használatával szeretné futtatni a projektet egy webkiszolgálóval, [klónozott a minta-tárházat](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) , vagy [le kell töltenie az alapprojekt fájljait](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip). Nyissa meg a fájlokat egy szerkesztővel, például a Visual Studio Code használatával.
 
 > [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [A mintakód letöltése](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip)
@@ -96,7 +96,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes 
 >
 > Cserélje le ezeket az értékeket:
 >
->|Érték neve|Leírás|
+>|Érték neve|Description|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Az alkalmazás regisztrációjának **Áttekintés** lapján ez az **alkalmazás (ügyfél) azonosítójának** értéke. |
 >|Enter_the_Cloud_Instance_Id_Here|Ez az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz írja be a következőt: **https://login.microsoftonline.com** . Az országos felhők (például Kína) esetében lásd: [nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
@@ -107,9 +107,9 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be egy szögletes 
 > > [!TIP]
 > > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
 
-További információ az elérhető konfigurálható lehetőségekről: [ügyfélalkalmazások inicializálása](msal-js-initializing-client-applications.md). 
+További információ az elérhető konfigurálható lehetőségekről: [ügyfélalkalmazások inicializálása](msal-js-initializing-client-applications.md).
 
-A MSAL. js függvénytár forráskódját a GitHubon található [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) adattárban találja.
+A MSAL.js könyvtár forráskódját az [AzureAD/Microsoft-Authentication-Library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) adattáron találja a githubon.
 
 >[!div class="sxs-lookup" renderon="portal"]
 >#### <a name="step-3-run-the-project"></a>3. lépés: a projekt futtatása
@@ -117,7 +117,7 @@ A MSAL. js függvénytár forráskódját a GitHubon található [AzureAD/Micros
 >[!div renderon="docs"]
 >#### <a name="step-4-run-the-project"></a>4. lépés: a projekt futtatása
 
-Ha a Node. js-t használja:
+Ha Node.jst használ:
 
 1. Indítsa el a kiszolgálót a következő parancsok futtatásával a projekt könyvtárából:
 
@@ -126,7 +126,7 @@ Ha a Node. js-t használja:
    npm start
    ```
 
-1. Keresse meg a következőt: **http://localhost:4200/** .
+1. Lépjen a **http://localhost:4200/** lapra.
 1. Válassza a **Bejelentkezés**lehetőséget.
 1. Válassza ki a **profilt** a Microsoft Graph meghívásához.
 
@@ -134,7 +134,7 @@ Ha a böngésző betölti az alkalmazást, válassza a **Bejelentkezés**lehető
 
 ## <a name="how-the-sample-works"></a>A minta működése
 
-![Diagram, amely bemutatja, hogyan működik a jelen rövid útmutatóban szereplő minta alkalmazás](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+![Diagram, amely bemutatja, hogyan működik a jelen rövid útmutatóban szereplő minta alkalmazás](./media/quickstart-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 
 ## <a name="next-steps"></a>További lépések

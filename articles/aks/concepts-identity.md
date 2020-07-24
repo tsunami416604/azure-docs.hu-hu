@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: b7739320fa23bf4469548f61486da1a5ee6110da
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 075837d0c382f5bc6f436a63dfe227c17f0a57a3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507155"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128658"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és identitás-beállítások az Azure Kubernetes Service (AKS) szolgáltatáshoz
 
@@ -105,7 +105,7 @@ Az Azure RBAC egy [Azure Resource Managerra](../azure-resource-manager/managemen
 
 Az Azure RBAC létrehoz egy szerepkör- *definíciót* , amely az alkalmazandó engedélyeket ismerteti. A felhasználó vagy csoport ezt követően egy adott *hatókörhöz*tartozó *szerepkör-hozzárendeléssel* rendeli hozzá ezt a szerepkör-definíciót, amely lehet önálló erőforrás, erőforráscsoport vagy az előfizetés egésze.
 
-További információ: [Mi az az Azure RBAC?][azure-rbac]
+További információ: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?][azure-rbac]
 
 Az AK-fürtök teljes körű működtetéséhez két hozzáférési szint szükséges: 
 1. [Hozzáférés az AK-erőforráshoz az Azure-előfizetésében](#azure-rbac-to-authorize-access-to-the-aks-resource). Ezzel a folyamattal vezérelheti a fürtök méretezését vagy frissítését az AK API-k használatával, valamint a kubeconfig lekérésével.
@@ -147,7 +147,7 @@ Az AK a következő négy beépített szerepkört biztosítja. Hasonlóak a [Kub
 
 **Tekintse meg, hogyan használhat Azure RBAC for Kubernetes-hitelesítést [itt](manage-azure-rbac.md).**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure AD és a Kubernetes RBAC megismeréséhez tekintse meg a következőt: [Azure Active Directory integrálása az AK-val][aks-aad].
 - A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a hitelesítéshez és engedélyezéshez az AK-ban][operator-best-practices-identity].

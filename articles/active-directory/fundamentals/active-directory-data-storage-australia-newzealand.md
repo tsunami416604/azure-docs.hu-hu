@@ -9,30 +9,26 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/13/2019
-ms.custom: it-pro, seodec18
+ms.date: 7/21/2020
+ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dc659f3d580646c1e86e5e97940268311e5546f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 749ee479f19b0855700cf1ca15aefd9b983dd7f7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79460534"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129542"
 ---
-# <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Identitás-adattárolás az ausztráliai és új-zélandi ügyfelek számára Azure Active Directory
+# <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Ügyfél-adattárolás az ausztráliai és új-zélandi ügyfelek számára Azure Active Directory
 
-Az identitás adatait az Azure AD tárolja földrajzi helyen a szervezete által megadott, a Microsoft online szolgáltatásokra, például az Office 365-re és az Azure-ra való feliratkozáskor. További információ a személyazonossági adatok tárolásáról: a Microsoft adatvédelmi központjának [Hol található az adatai?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) szakasza.
+A Azure Active Directory (Azure AD) a Microsoft Online szolgáltatásra való feliratkozáskor megadott ország alapján tárolja az ügyféladatokat a földrajzi helyen. A Microsoft Online Services többek között az Office 365 és az Azure. 
+
+További információ az Azure AD és más Microsoft-szolgáltatások adatairól: hol találhatók az [adatok?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) című rész a Microsoft adatvédelmi központban.
+
+2020. február 26-án a Microsoft megkezdte az Azure AD vásárlói adatainak tárolását az új bérlők számára az ausztráliai vagy új-zélandi számlázási címen az ausztrál adatközpontokon belül. 2020. május 1. és 2020. között a Microsoft olyan meglévő bérlőket telepít át, akik az ausztráliai vagy új-zélandi számlázási címekkel rendelkeznek, és nem igényelnek felhasználói beavatkozást. Az áttelepítési folyamat nem jár leállással az ügyfelek számára, és az áttelepítés során nem befolyásolja a bérlő funkcióit.
+
+Emellett bizonyos Azure AD-funkciók még nem támogatják az ügyféladatok tárolását Ausztráliában. Tekintse meg az [Azure ad-beli adatleképezést](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9)az egyes szolgáltatásokkal kapcsolatos információkért. A Microsoft Azure Multi-Factor Authentication például tárolja az ügyféladatokat az Egyesült Államokban, és globálisan dolgozza fel azokat. Lásd: az [Azure multi-Factor Authentication adattárolási és ügyféladatok](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency).
 
 > [!NOTE]
-> Az Azure AD-vel integrált szolgáltatások és alkalmazások hozzáférhetnek az identitás felhasználói adataihoz. Értékelje ki az egyes szolgáltatásait és alkalmazásait, hogy megtudja, hogyan dolgozza fel az Identity Customer-adatait az adott szolgáltatás és alkalmazás, és hogy megfelelnek-e a vállalat adattárolási követelményeinek. A Microsoft-szolgáltatások adattárolási helyével kapcsolatban a Microsoft biztonsági és adatkezelési központ az adatok tárolási helyével foglalkozó szakaszában találhat további információt.
+> Az Azure AD-vel integrált Microsoft-termékek,-szolgáltatások és harmadik féltől származó alkalmazások hozzáférhetnek az ügyféladatok eléréséhez. Értékelje ki, hogy az egyes termékek, szolgáltatások és alkalmazások hogyan dolgozzák fel az ügyféladatokat az adott termék, szolgáltatás és alkalmazás alapján, és hogy megfelelnek-e a vállalat adattárolási követelményeinek. A Microsoft-szolgáltatások adattárolási helyével kapcsolatban a Microsoft biztonsági és adatkezelési központ [az adatok tárolási helyével](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) foglalkozó szakaszában találhat további információt.
 
-Azon ügyfelek számára, akik Ausztráliában és Új-Zélandon adták meg a címeket, és az Azure AD ingyenes kiadását használják, az Azure AD a személyes adatok védelme érdekében az ausztráliai adatközpontokon belül marad. 
-
-Az összes többi Azure AD Premium-szolgáltatás a globális adatközpontokban tárolja az ügyféladatokat. A szolgáltatás adatközpontjának megkereséséhez lásd: [Azure Active Directory – hol találhatók az adatai?](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
-
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Többtényezős hitelesítés (MFA) Microsoft Azure
-
-Az Azure AD-ben az MFA szolgáltatás a globális adatközpontokban tárolja az identitás-ügyféladatokat. Ha többet szeretne megtudni a felhőalapú Azure MFA és az Azure MFA-kiszolgáló által gyűjtött és tárolt felhasználói adatokról, tekintse meg az [azure multi-Factor Authentication felhasználói adatok gyűjtését](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency)ismertető témakört. Ha az ügyfelek az MFA-t használják, az adatok a nyugalmi állapotban lévő ausztráliai adatközpontokon kívül lesznek tárolva. 
-
-## <a name="next-steps"></a>További lépések
-A fent ismertetett szolgáltatásokkal és funkciókkal kapcsolatos további információkért tekintse meg a következő cikkeket:
-- [Mi az a többtényezős hitelesítés?](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)

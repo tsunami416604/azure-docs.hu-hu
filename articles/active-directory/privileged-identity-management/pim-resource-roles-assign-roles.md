@@ -15,12 +15,12 @@ ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 985342b19baad8b9210e985c9c7dfb9482708a0c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 32b678058e2d24d277eaf56a1aadec3678e25a5b
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023771"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128165"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) felügyel
 - Security Manager
 
 > [!NOTE]
-> A tulajdonos vagy a felhasználói hozzáférés rendszergazdai előfizetési szerepköreihez rendelt felhasználók vagy csoportok tagjai, valamint az Azure ad-előfizetések felügyeletét engedélyező globális rendszergazdák alapértelmezés szerint erőforrás-rendszergazdai jogosultságokkal rendelkeznek. Ezek a rendszergazdák szerepköröket oszthatnak ki, konfigurálják a szerepkör beállításait, és áttekinthetik a hozzáférést az Azure-erőforrások Privileged Identity Management használatával. A felhasználók nem kezelhetnek erőforrás-rendszergazdai jogosultságokkal nem rendelkező erőforrások Privileged Identity Management. Megtekintheti az [Azure-erőforrások beépített szerepköreinek](../../role-based-access-control/built-in-roles.md)listáját.
+> A tulajdonos vagy a felhasználói hozzáférés rendszergazdai előfizetési szerepköreihez rendelt felhasználók vagy csoportok tagjai, valamint az Azure ad-előfizetések felügyeletét engedélyező globális rendszergazdák alapértelmezés szerint erőforrás-rendszergazdai jogosultságokkal rendelkeznek. Ezek a rendszergazdák szerepköröket oszthatnak ki, konfigurálják a szerepkör beállításait, és áttekinthetik a hozzáférést az Azure-erőforrások Privileged Identity Management használatával. A felhasználók nem kezelhetnek erőforrás-rendszergazdai jogosultságokkal nem rendelkező erőforrások Privileged Identity Management. Tekintse meg az [Azure beépített szerepköreinek](../../role-based-access-control/built-in-roles.md)listáját.
 
 ## <a name="assign-a-role"></a>Szerepkör kiosztása
 

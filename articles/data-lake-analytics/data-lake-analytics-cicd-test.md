@@ -2,20 +2,20 @@
 title: A Azure Data Lake Analytics kód tesztelése
 description: Megtudhatja, hogyan adhat hozzá tesztelési eseteket a U-SQL és a kiterjesztett C#-kód számára a Azure Data Lake Analyticshoz.
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+author: liudan66
+ms.author: liud
+ms.reviewer: jasonh
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 08/30/2019
-ms.openlocfilehash: 7965baa5410aeef61221288ce3a36fae97a72803
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 44426598daf1808ef0aee233968b04d2dc7c165f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117338"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129916"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>A Azure Data Lake Analytics kód tesztelése
 
@@ -148,7 +148,7 @@ C# UDO-teszt esetén ügyeljen arra, hogy a következő szerelvényekre hivatkoz
 
 Ha [a Microsoft. Azure. DataLake. USQL. interfaces Nuget-csomagon](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/)keresztül hivatkozik rájuk, ügyeljen arra, hogy a létrehozási folyamat során vegyen fel egy Nuget-visszaállítási feladatot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [CI/CD-folyamat beállítása Azure Data Lake Analyticshoz](data-lake-analytics-cicd-overview.md)
 - [U-SQL-szkript futtatása a helyi gépen](data-lake-analytics-data-lake-tools-local-run.md)

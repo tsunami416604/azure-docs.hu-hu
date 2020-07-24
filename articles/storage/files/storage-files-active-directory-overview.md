@@ -7,11 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: db256c8361af740ac536e059969a5085e57df485
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb57606259fe674519015fd2de741d6c1d08c5e9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263351"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127196"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Az SMB-hozzáférésre vonatkozó Azure Files identitás-alapú hitelesítési beállítások áttekintése
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -45,7 +46,7 @@ Hasznos megérteni az Azure AD tartományi szolgáltatás hitelesítésével kap
 
 -   **Azure-beli szerepköralapú Access Control (RBAC)**
 
-    Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletes hozzáférés-vezérlést biztosít az Azure-hoz. A RBAC használatával kezelheti az erőforrásokhoz való hozzáférést azáltal, hogy a felhasználóknak a feladatok végrehajtásához szükséges legkevesebb jogosultságot biztosítanak. További információ a RBAC: [Mi az az Azure-beli szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
+    Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi a részletes hozzáférés-kezelést az Azure-hoz. A RBAC használatával kezelheti az erőforrásokhoz való hozzáférést azáltal, hogy a felhasználóknak a feladatok végrehajtásához szükséges legkevesebb jogosultságot biztosítanak. További információ a RBAC: [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) az Azure-ban?](../../role-based-access-control/overview.md).
 
 ## <a name="common-use-cases"></a>Gyakori használati helyzetek
 
@@ -104,7 +105,7 @@ Az alábbi ábra a helyszíni AD DS hitelesítését ábrázolja az Azure-fájlm
 
 :::image type="content" source="media/storage-files-active-directory-overview/Files-on-premises-AD-DS-Diagram.png" alt-text="Ábra":::
 
-### <a name="azure-ad-ds"></a>Azure-AD DS
+### <a name="azure-ad-ds"></a>Azure AD DS
 
 Az Azure AD DS hitelesítéshez engedélyeznie kell a Azure AD Domain Services és a tartományhoz való csatlakozást azokhoz a virtuális gépekhez, amelyeken a fájl adatait el szeretné érni. A tartományhoz csatlakoztatott virtuális gépnek ugyanabban a virtuális hálózatban (VNET) kell lennie, mint az Azure AD DS. 
 
@@ -145,7 +146,7 @@ A Storage-fiókjában nem található további szolgáltatás, amely lehetővé 
 ## <a name="next-steps"></a>További lépések
 Az SMB-en keresztüli Azure Files-és identitás-alapú hitelesítéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 
-- [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
+- [Azure Files üzembe helyezésének tervezése](storage-files-planning.md)
 - [Helyszíni Active Directory tartományi szolgáltatások hitelesítés engedélyezése SMB-en keresztül az Azure-fájlmegosztás esetében](storage-files-identity-auth-active-directory-enable.md)
 - [Azure Active Directory Domain Services hitelesítés engedélyezése Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [Gyakori kérdések](storage-files-faq.md)

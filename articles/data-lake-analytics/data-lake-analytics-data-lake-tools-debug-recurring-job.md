@@ -2,19 +2,17 @@
 title: Ismétlődő feladatok hibakeresése Azure Data Lake Analytics
 description: Ismerje meg, hogyan használható a Visual studióhoz készült Azure Data Lake Tools a rendellenes ismétlődő feladatok hibakereséséhez.
 services: data-lake-analytics
-author: yanancai
-ms.author: yanacai
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 05/20/2018
-ms.openlocfilehash: b3fe23d2b4605289c89df1d5ef5033d35986e07c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 86d5134e257d2dae642eceb933a78047773b25a9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86117321"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129950"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Rendellenes ismétlődő feladat hibaelhárítása
 
@@ -66,7 +64,7 @@ Figyeljen a két feladat közötti nagy különbségekre. Ezek a különbségek 
 
 ![Feldolgozási diagram a feladatok közötti különbségek ellenőrzéséhez](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-diff-debugging-flow.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Adathibák elhárítása](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
 * [Felhasználó által definiált C# kód hibakeresése a sikertelen U-SQL-feladatokhoz](data-lake-analytics-debug-u-sql-jobs.md)

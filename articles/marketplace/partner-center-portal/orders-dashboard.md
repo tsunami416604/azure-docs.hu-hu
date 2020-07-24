@@ -1,16 +1,16 @@
 ---
-title: A partner Center Orders irányítópultja a kereskedelmi piactér elemzésében
-description: Megtudhatja, hogyan érheti el a Piactéri ajánlatokra vonatkozó analitikus jelentéseket grafikus és letölthető formátumban.
+title: A partner Center Orders irányítópultja a kereskedelmi piactér elemzésében, Microsoft AppSource és az Azure Marketplace-en
+description: Megtudhatja, hogyan érheti el a kereskedelmi Piactéri ajánlatokra vonatkozó analitikai jelentéseket grafikus és letölthető formában.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/01/2020
-ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+ms.openlocfilehash: 7a704936b35ba5c747ab5884c61f3f5413ac5f07
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536130"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127315"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>A Rendelések irányítópult a kereskedelmi piactér-elemzésekben
 
@@ -33,6 +33,8 @@ Az **elemzés** menü **orders (megrendelések) irányítópultja** megjeleníti
 - [Megrendelések és ülőhelyek trendje](#orders-and-seats-trend)
 - [Rendelés részletei tábla](#order-details-table)
 
+A megrendelések létrehozása és a partner Centerben történő jelentéskészítés közötti maximális késés 48 óra.
+
 ## <a name="order-dashboard-details"></a>Rendelési irányítópult részletei
 
 Ez a szakasz részletesebben ismerteti az elemzési jelentéseket.
@@ -53,7 +55,7 @@ Az összes rendelés melletti százalékos érték a kijelölt dátumtartomány 
 
 ### <a name="orders-by-geography"></a>Megrendelések földrajz szerint
 
-A **Orders by földrajz** hő a megrendelések számát jeleníti meg a globális térképen, és megjeleníti az ügyfél országa/régiója alapján leképezett helyeket. Ez a hő ugyanúgy működik, mint az **[ügyfél földrajzi hő](./customer-dashboard.md#customer-by-geography)**.
+A **földrajzi hőség által megrendelések szerint** a Térkép a megrendelések számát jeleníti meg a globális térképen, és megjeleníti az ügyfél országa/régiója alapján leképezett helyeket. Ez a hő ugyanúgy működik, mint az **[ügyfél földrajzi hő](./customer-dashboard.md#customer-by-geography)**.
 
 ![A partner Center elemzi a rendeléseket földrajz szerint](./media/orders-by-geography.png)
 
@@ -63,7 +65,7 @@ A **Orders by ajánlatok** a fánk-gráfok szerint rendezik a rendeléseket (bel
 
 - A legfontosabb ajánlatok a gráfban jelennek meg, a többi ajánlat pedig "Rest all"-ként van csoportosítva.
 - A jelmagyarázatban megadott ajánlatokat kiválasztva csak a gráfban található ajánlatokat jelenítheti meg.
-- Ha a diagramon egy szelet fölé viszi az egérmutatót, a megrendelések száma és az ajánlat százalékos aránya az összes ajánlaton alapul.
+- Ha a diagramon egy szelet fölé viszi az egérmutatót, a megrendelések száma és az ajánlat százalékos aránya az összes ajánlathoz képest teljes számú rendelésre hasonlít.
 - A **Orders by ajánlatok trend** a havi havi növekedési trendeket jeleníti meg. A hónap oszlop a megrendelések számát jelöli az ajánlat neve alapján. A diagram egy z-tengelyen ábrázolt százalékos növekedési arányt jeleníti meg.
 - A diagram tetején található csúszka segítségével jobbra és balra görgetheti az x tengelyt, és az adott adatpontokra koncentrálhat.
 - A trend diagramot egy adott elem kiválasztásával jelenítheti meg a jelmagyarázatban.
@@ -71,7 +73,7 @@ A **Orders by ajánlatok** a fánk-gráfok szerint rendezik a rendeléseket (bel
 
 ### <a name="orders-trend-per-site-versus-per-seat"></a>Orders trend per site/Seat
 
-A **helyek közötti** és az munkaállomásonkénti fánk-diagram a helyek és az ügyfelek által megvásárolt munkaállomásonkénti SaaS-utasítások részletezését jelöli (ez a diagram a megszakított rendeléseket is tartalmazza). Az oszlopdiagram a site SaaS és az ügyfelek által vásárolt munkaállomásonkénti SaaS-megrendelések trendjét jelöli (ez a diagram a megszakított rendeléseket is tartalmazza).
+A **helyek közötti és az egyes ülések** közötti fánk-diagramok az ügyfelek által megvásárolt, munkaállomásonkénti SaaS-és az ügyfél által megvásárolt SaaS-megrendelések részletezését jelentik (ez a diagram a megszakított rendeléseket is tartalmazza). Az oszlopdiagram a site SaaS és az ügyfelek által vásárolt munkaállomásonkénti SaaS-megrendelések trendjét jelöli (ez a diagram a megszakított rendeléseket is tartalmazza).
 
 ### <a name="orders-by-plans"></a>Megrendelések csomagok szerint
 
@@ -79,16 +81,16 @@ A **Orders by Plans (megrendelések a tervek szerint** ) diagram az összes ajá
 
 ### <a name="orders-and-seats-trend"></a>Megrendelések és ülőhelyek trendje
 
-A **Orders and seats trend** diagram a legmagasabb számú rendeléssel rendelkező első 50-ajánlatokat mutatja be. Ezek a ranglistán jelennek meg, és a sorrendjük a legmagasabb rendelési szám és a megrendelés százaléka alapján történik.
+A **Orders and seats trend** diagram a legmagasabb számú rendeléssel rendelkező első 50-ajánlatokat mutatja be. Ezek a ranglistán jelennek meg, és a legmagasabb rendelési szám és a sorrend százaléka szerint rendezve jelennek meg.
 
 - **Megrendelések csomagok szerint** – válasszon egy ajánlatot a diagram első öt tervéhez tartozó sorrendek részletezésének megtekintéséhez.
-- **Ülőhelyek csomagok szerint** – az első öt csomaghoz tartozó ülések havi trendje. Ha a kiválasztott ajánlat nem egy munkaállomásonkénti ajánlat, akkor ebben a területen nem jelenik meg az összes információ.
+- **Ülőhelyek csomagok szerint** – az első öt csomaghoz tartozó ülések havi trendje. Ha a kiválasztott ajánlat nem egy munkaállomásonkénti ajánlat, itt nem fog megjelenni adatmennyiség.
 
 ### <a name="canceled-orders-by-offers"></a>Megszakított megrendelések ajánlatok szerint
 
 A **megszakított Orders by ajánlatok** kördiagrama az összes megszakított rendelést az ajánlat nevük alapján rendezi. A legfontosabb ajánlatok a gráfban jelennek meg, a többi ajánlat pedig "Rest all"-ként van csoportosítva. A jelmagyarázatban a diagramon megjelenő konkrét ajánlatokat is kiválaszthatja.
 
-- Ha a diagramon egy szelet fölé viszi a kurzort, a rendszer megjeleníti a kiválasztott ajánlathoz tartozó megrendelések számát és százalékos arányát az összes ajánlatban szereplő megrendelések teljes számával szemben.
+- Ha a diagramon egy szelet fölé viszi a mutatót, a megrendelések száma és a kiválasztott ajánlat százalékos aránya a megrendelések teljes számával összehasonlítva jelenik meg az összes ajánlat között.
 - Az oszlopdiagram hónapról hónapra eső trendeket jelenít meg. Az oszlopok az ajánlat neve alapján megszakított megrendelések számát jelölik. A diagram tetején található csúszka segítségével jobbra és balra görgetheti az x tengelyt, és az adott adatpontokra koncentrálhat. A trend diagramot egy adott elem kiválasztásával jelenítheti meg a jelmagyarázatban.
 
 ### <a name="order-details-table"></a>Rendelés részletei tábla
@@ -98,8 +100,8 @@ Az Order Details (megrendelés részletei) tábla a 1000 Top orders (beszerzési
 - A rács minden oszlopa rendezhető.
 - Az adatokat egy TSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
 - Ha a 1000-es számú rekordok száma, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
-- A szűrők az **Order Details (megrendelés részletei) táblára** alkalmazhatók, hogy csak az Önt érdeklő adatokat jelenítsék meg. Az Adatszűrés ország/régió, Azure-licenc típusa, piactér-licenc típusa, ajánlat típusa, megrendelés állapota, ingyenes nyomvonalak, piactér-előfizetés azonosítója, ügyfél-azonosító és cégnév alapján végezhető el.
-- Mivel az Azure Marketplace-en vagy AppSource-n keresztül vásárolt SaaS-ajánlatok nem igényelnek Azure-előfizetést, a piactér-előfizetés azonosítója 00000000-0000-0000-0000-000000000000-ként fog megjelenni a **részletes megrendelések** adatszakaszban.
+- Alkalmazzon szűrőket az **Order details táblára** , hogy csak azokat az adatokat jelenítse meg, amelyekre kíváncsi. Szűrés ország/régió szerint, Azure-licenc típusa, kereskedelmi piactér licencelési típusa, ajánlat típusa, megrendelés állapota, ingyenes nyomvonalak, kereskedelmi piactér-előfizetés azonosítója, ügyfél-azonosító, és a vállalat neve.
+- Mivel az Azure Marketplace-en vagy AppSource keresztül vásárolt SaaS-ajánlatok nem igényelnek Azure-előfizetést, a piactér-előfizetés azonosítója 00000000-0000-0000-0000-000000000000-ként fog megjelenni a **részletes megrendelések** adatterületen.
 
 #### <a name="orders-page-filters"></a>Megrendelések oldal szűrőinek
 
@@ -118,7 +120,7 @@ Több szűrőt is kiválaszthat, hogy a diagramot a megtekinteni kívánt felté
 
      ![A partneri központ elemzési sorrendje egyetlen, a szűrőre alkalmazott értékkel](./media/filters-applied-single.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

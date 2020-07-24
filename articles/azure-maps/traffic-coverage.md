@@ -1,19 +1,19 @@
 ---
 title: Forgalom lefedettsége | Microsoft Azure térképek
 description: Ebben a cikkben megtudhatja, hogyan tekintheti meg Microsoft Azure Maps forgalom lefedettségét.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 836a924bb371aaf2879e951501c6febbe51e182e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 346cd13c021b70dac1501e5ca5a9e6930d407e6e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333949"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129423"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps forgalom lefedettsége
 

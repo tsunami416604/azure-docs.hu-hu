@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ba4188445f9bdf791ef760936bd27ac0f507fb4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d82289366d79f44460b96d75781cac4fa50de53a
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737172"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129729"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Az Azure Digital Twins integrálása más szolgáltatásokkal
 
@@ -24,16 +24,16 @@ Az Azure Digital Twins IoT Hubból származó adatokkal is elvégezhető. Így t
 
 Az Azure digitális Twins nem rendelkezik beépített IoT Hub. Használhat egy meglévő IoT Hub, amelyet jelenleg éles környezetben, vagy üzembe helyezhet egy újat. Ez teljes hozzáférést biztosít a IoT Hub összes eszköz-felügyeleti képességeihez.
 
-Ha IoT Hubről szeretne adatot bevenni az Azure digitális Twinsba, használjon [Azure-függvényt](../azure-functions/functions-overview.md). További információ erről a mintázatról [: telemetria beolvasása a IoT hubból](how-to-ingest-iot-hub-data.md), vagy próbálja ki magát az [Azure Digital Twins oktatóanyagában: teljes körű megoldás összekötése](tutorial-end-to-end.md).
+Ha IoT Hubről szeretne adatot bevenni az Azure digitális Twinsba, használjon [Azure-függvényt](../azure-functions/functions-overview.md). További információ erről a mintázatról [*: telemetria beolvasása a IoT hubból*](how-to-ingest-iot-hub-data.md), vagy próbálja ki magát az Azure Digital Twins [*oktatóanyagában: teljes körű megoldás összekötése*](tutorial-end-to-end.md).
 
 ## <a name="data-egress-services"></a>Adatforgalom-szolgáltatások
 
 Az Azure Digital Twins képes az adatküldés a csatlakoztatott **végpontokra**. A támogatott végpontok a következőket tehetik:
-* [Eseményközpont](../event-hubs/event-hubs-about.md)
+* [Event Hub](../event-hubs/event-hubs-about.md)
 * [Event Grid](../event-grid/overview.md)
 * [Szolgáltatásbusz](../service-bus-messaging/service-bus-messaging-overview.md)
 
-A végpontokat a felügyeleti API-k vagy a Azure Portal használatával csatlakoztatják az Azure Digital Twins szolgáltatáshoz. További információ a végpontok Azure digitális Ikrekhez való csatlakoztatásáról [: végpontok és útvonalak kezelése](how-to-manage-routes.md).
+A végpontokat a felügyeleti API-k vagy a Azure Portal használatával csatlakoztatják az Azure Digital Twins szolgáltatáshoz. További információ a végpontok Azure digitális Ikrekhez való csatlakoztatásáról [*: végpontok és útvonalak kezelése*](how-to-manage-routes.md).
 
 Számos más szolgáltatás is van, ahol érdemes lehet végső soron az adatait, például az [Azure Storage](../storage/common/storage-introduction.md) -t vagy a [Time Series Insightst](../time-series-insights/time-series-insights-update-overview.md)irányítani. Ahhoz, hogy az Ön adatait az alábbi szolgáltatásokhoz küldje, csatolja a rendeltetési szolgáltatást egy végponthoz.
 
@@ -42,7 +42,7 @@ Ha például az [Azure Maps](../azure-maps/about-azure-maps.md) is használja, �
 ## <a name="next-steps"></a>További lépések
 
 További információ a végpontokról és az útválasztási eseményekről a külső szolgáltatásokra:
-* [Fogalmak: az Azure Digital Twins eseményeinek továbbítása](concepts-route-events.md)
+* [*Fogalmak: az Azure Digital Twins eseményeinek továbbítása*](concepts-route-events.md)
 
 Ismerje meg, hogyan állíthatja be az Azure digitális Twins-t az adatok IoT Hubból való betöltéséhez:
-* [Útmutató: telemetria beolvasása IoT Hubból](how-to-ingest-iot-hub-data.md)
+* [*Útmutató: telemetria beolvasása IoT Hubból*](how-to-ingest-iot-hub-data.md)

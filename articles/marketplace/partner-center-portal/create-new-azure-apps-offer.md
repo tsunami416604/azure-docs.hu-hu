@@ -3,14 +3,16 @@ title: Azure-beli alkalmazás-ajánlat létrehozása – Microsoft kereskedelmi 
 description: Ismerje meg az új Azure-alkalmazás létrehozásának lépéseit és szempontjait a partner Center kereskedelmi piactér portálján. Azure-alkalmazásait az Azure Marketplace-en vagy a Cloud Solution Provider (CSP) programon keresztül is listázhatja vagy értékesítheti.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: c5371b2d9379ca861addac07de50d7cdf9c34c8b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+author: qianw211
+ms.author: dsindona
+ms.date: 07/14/2020
+ms.openlocfilehash: 6789e32cbbb1257a668e7be87a8b73a0511b6fb0
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121970"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127434"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -65,7 +67,7 @@ Az Azure Marketplace-hez készült videó- [létrehozási megoldási sablonok é
 
 Az Azure-alkalmazás kezeléséhez válasszon egyet vagy mindkettőt a következő parancsfájl-környezetek közül:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 Javasoljuk, hogy a következő eszközöket adja hozzá a fejlesztői környezethez:
@@ -185,8 +187,8 @@ Ezen a lapon kezelhetők a kereskedelmi Marketplace-ajánlathoz tartozó másola
 4. Használati feltételek
 5. Adatvédelmi szabályzat címe (hivatkozás)
 6. Ajánlat neve
-7. Összefoglalás
-8. Leírás
+7. Összegzés
+8. Description
 9. Képernyőképek/videók
 
 <br>Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Azure Portalban:
@@ -212,7 +214,7 @@ Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú l
 
 Adja meg az ajánlat hosszabb leírását, amely legfeljebb 256 karakter hosszú lehet. Ez a leírás a keresési eredményekben is használható.
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -308,7 +310,7 @@ A technikai konfiguráció meghatározza a szolgáltatás azonosításához hasz
 
 ## <a name="plan-overview"></a>A terv áttekintése
 
-Ezen a lapon megadhatja a különböző csomagokra vonatkozó lehetőségeket ugyanazon az ajánlaton belül. Ezek a csomagok (a Cloud Partner Portal SKU-ként) a csomag típusa (a megoldás sablonja vagy a felügyelt alkalmazás), a monetizálása vagy a célközönség szempontjából eltérőek lehetnek.  Állítson be legalább egy csomagot az ajánlat a piactéren való listázásához.
+Ezen a lapon megadhatja a különböző csomagokra vonatkozó lehetőségeket ugyanazon az ajánlaton belül. Ezek a csomagok (korábbi nevén SKU) a csomag típusa (a megoldás sablonja vagy a felügyelt alkalmazás), a monetizálása vagy a célközönség szempontjából eltérőek lehetnek. Állítson be legalább egy csomagot az ajánlat a piactéren való listázásához.
 
 A létrehozást követően megtekintheti a csomag neveit, azonosítóit, a csomag típusát, a rendelkezésre állást (nyilvános vagy magánjellegű), az aktuális közzétételi állapotot és a lapon elérhető összes műveletet.
 
@@ -510,7 +512,7 @@ Adja meg, hogy ki kell-e kezelni a felügyelt alkalmazáshoz tartozó felügyele
 
 **Engedélyek** – adja meg annak a felhasználónak, csoportnak vagy alkalmazásnak az Azure Active Directory-objektumazonosítóát, amelyhez engedélyeket szeretne adni a felügyelt erőforráscsoport számára. Azonosítsa a felhasználót a résztvevő azonosítója alapján, amely a [Azure Portal Azure Active Directory felhasználók](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)paneljén található.
 
-Minden egyes rendszerbiztonsági tag esetében válassza ki az egyik Azure AD beépített szerepkört a listából (tulajdonos vagy közreműködő). A kiválasztott szerepkör leírja, hogy a rendszerbiztonsági tag milyen engedélyeket fog tartalmazni az ügyfél-előfizetés erőforrásaiban. További információkért lásd az [Azure-erőforrások beépített szerepköreit](../../role-based-access-control/built-in-roles.md). A szerepköralapú hozzáférés-vezérléssel (RBAC) kapcsolatos további információkért lásd: Ismerkedés a [RBAC szolgáltatással a Azure Portalban](../../role-based-access-control/overview.md).
+Minden egyes rendszerbiztonsági tag esetében válassza ki az egyik Azure AD beépített szerepkört a listából (tulajdonos vagy közreműködő). A kiválasztott szerepkör leírja, hogy a rendszerbiztonsági tag milyen engedélyeket fog tartalmazni az ügyfél-előfizetés erőforrásaiban. További információ: [Azure beépített szerepkörök](../../role-based-access-control/built-in-roles.md). A szerepköralapú hozzáférés-vezérléssel (RBAC) kapcsolatos további információkért lásd: Ismerkedés a [RBAC szolgáltatással a Azure Portalban](../../role-based-access-control/overview.md).
 
 >[!Note]
 >Bár a felhőben legfeljebb 100 engedélyezést adhat hozzá, általában könnyebb létrehozni egy Active Directory felhasználói csoportot, és megadhatja annak AZONOSÍTÓját a "résztvevő azonosítója" értékkel. Ez lehetővé teszi, hogy a csomag telepítése után további felhasználókat vegyen fel a felügyeleti csoportba, és csökkentse a terv frissítésének szükségességét, hogy további engedélyeket adjon hozzá.
@@ -592,6 +594,6 @@ A közzétételi folyamat **manuális érvényesítési** lépése az ajánlat �
 
 Ha a közzétételi lépések közül egy vagy több hibát tartalmaz, javítsa ki azokat az ajánlat ismételt közzététele előtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

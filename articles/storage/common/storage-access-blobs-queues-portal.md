@@ -10,12 +10,12 @@ ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9b2de4f320801b20de5bcc9687a723dadb182ef8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db65ba904cdce7bec83b851c6b50316c89fcedfd
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807704"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128726"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>A blob-vagy üzenetsor-információ elérésének Azure Portal használata
 
@@ -25,7 +25,7 @@ Azt is megadhatja, hogyan engedélyezze az egyes Blobok feltöltési műveleteit
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>A blob-vagy üzenetsor-adateléréshez szükséges engedélyek
 
-Attól függően, hogy hogyan kívánja engedélyezni a blob-vagy üzenetsor-információhoz való hozzáférést a Azure Portalban, egyedi engedélyekre van szüksége. A legtöbb esetben ezek az engedélyek szerepköralapú hozzáférés-vezérlésen (RBAC) keresztül érhetők el. További információ a RBAC: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
+Attól függően, hogy hogyan kívánja engedélyezni a blob-vagy üzenetsor-információhoz való hozzáférést a Azure Portalban, egyedi engedélyekre van szüksége. A legtöbb esetben ezek az engedélyek szerepköralapú hozzáférés-vezérlésen (RBAC) keresztül érhetők el. További információ a RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](../../role-based-access-control/overview.md).
 
 ### <a name="use-the-account-access-key"></a>A fiók elérési kulcsának használata
 
@@ -57,7 +57,7 @@ A blob vagy üzenetsor adataihoz való hozzáférést támogató beépített sze
 - [Tárolási várólista adatközreműködői](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): olvasási/írási/törlési engedélyek a várólistákhoz.
 - [Tárolási várólista Adatolvasója](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader): írásvédett engedélyek a várólistákhoz.
 
-Az egyéni szerepkörök a beépített szerepkörök által biztosított azonos engedélyek különböző kombinációit támogatják. Az egyéni RBAC-szerepkörök létrehozásával kapcsolatos további információkért lásd: [Egyéni szerepkörök az Azure-erőforrásokhoz](../../role-based-access-control/custom-roles.md) és [Az Azure-erőforrások szerepkör-definícióinak megismerése](../../role-based-access-control/role-definitions.md).
+Az egyéni szerepkörök a beépített szerepkörök által biztosított azonos engedélyek különböző kombinációit támogatják. Az egyéni Azure-szerepkörök létrehozásával kapcsolatos további információkért lásd: Azure-beli [Egyéni szerepkörök](../../role-based-access-control/custom-roles.md) és [a szerepkör-definíciók ismertetése az Azure-erőforrásokhoz](../../role-based-access-control/role-definitions.md).
 
 A klasszikus előfizetés-rendszergazdai szerepkörrel rendelkező várólisták listázása nem támogatott. A várólisták listázásához a felhasználónak hozzá kell rendelnie a Azure Resource Manager **olvasó** szerepkört, a **tárolási üzenetsor Adatolvasó** szerepkörét vagy a **tárolási várólista adatközreműködői** szerepkörét.
 

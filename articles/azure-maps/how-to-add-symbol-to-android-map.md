@@ -1,19 +1,19 @@
 ---
 title: Szimbólum-réteg hozzáadása az Android Maps-hez | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a pontok információit a térképeken, ha hozzáad egy szimbólum réteget a Microsoft Azure Maps Android SDK használatával.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b6b73fef368dc8dec5d8c042cdac1d3cea899450
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 528c5a5ba4314e44334548334e312d1111768cf5
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242440"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127077"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Szimbólum-réteg hozzáadása térképhez Azure Maps Android SDK használatával
 
@@ -175,7 +175,7 @@ Ezen a ponton, ha futtatja az alkalmazást, látnia kell egy jelölőt a térké
 > [!TIP]
 > Alapértelmezés szerint a szimbólum-rétegek az átfedésben lévő szimbólumok elrejtésével optimalizálja a szimbólumok megjelenítését. A nagyításhoz a rejtett szimbólumok láthatóvá válnak. A funkció letiltásához és az összes szimbólum megjelenítéséhez állítsa be a beállítást a következőre: `iconAllowOverlap` `true` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további dolgokat szeretne hozzáadni a térképhez, tekintse meg a következőt:
 

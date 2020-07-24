@@ -3,18 +3,16 @@ title: U-SQL-feladatok futtatása Python, R és C# rendszereken – Azure Data L
 description: Megtudhatja, hogyan használhatja a Python, az R és a C# mögötti kódot a feladatok elküldéséhez Azure Data Lakeban.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: jejiang
-ms.author: jejiang
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: tracking-python
-ms.openlocfilehash: a9686cefbbdf04d8425de673827f31cbfecb873c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: bdb40fee95c018cbdebac7c28aa131c98e3ee4c3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121231"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129866"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>A U-SQL fejlesztése a Python, az R és a C# használatával Azure Data Lake Analytics a Visual Studio Code-ban
 Ismerje meg, hogy a Visual Studio Code (VSCode) segítségével hogyan írhat Python, R és C# kódokat a U-SQL használatával, és hogyan küldhet feladatokat Azure Data Lake szolgáltatásnak. A VSCode Azure Data Lake eszközeivel kapcsolatos további információkért lásd: [a Azure Data Lake Tools for Visual Studio Code használata](data-lake-analytics-data-lake-tools-for-vscode.md).
@@ -179,7 +177,7 @@ A kód mögötti fájl egy olyan C#-fájl, amely egyetlen U-SQL-parancsfájllal 
     ```
 5. Kattintson a jobb gombbal a **USQL** fájlra, kattintson a **parancsfájl fordítása** vagy a **feladatok** futtatása a feladatokhoz lehetőségre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az Azure Data Lake Tools for Visual Studio kód használata](data-lake-analytics-data-lake-tools-for-vscode.md)
 * [U-SQL helyi Futtatás és helyi hibakeresés a Visual Studio Code-ban](data-lake-tools-for-vscode-local-run-and-debug.md)
 * [Ismerkedés a Data Lake Analytics a PowerShell használatával](data-lake-analytics-get-started-powershell.md)

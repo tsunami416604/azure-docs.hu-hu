@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5522d35faf1888c862e0c42328f08067e7b9be26
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-javascript
+ms.openlocfilehash: 165f3dab2413afc09a67175bb10471c2bd53ea32
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339896"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129168"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: bejelentkezés hozzáadása az OpenID használatával Node.js webalkalmazáshoz
 
@@ -30,7 +30,7 @@ A minta futtatásához a következőkre lesz szüksége:
 
 * [Microsoft-fiók](https://www.outlook.com) vagy [Microsoft 365 fejlesztői program](/office/developer-program/office-365-developer-program)
 
-## <a name="register-your-application"></a>Alkalmazás regisztrálása
+## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. Ha a fiókja több Azure AD-bérlőn is megtalálható:
     - Válassza ki a profilt a lap jobb felső sarkában található menüből, majd **váltson át a könyvtárra**.
@@ -55,7 +55,7 @@ A minta futtatásához a következőkre lesz szüksége:
     - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: `http://localhost:3000` .
     - A **Speciális beállítások > implicit engedélyezési** szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) engedélyezze a bejelentkezést a felhasználó számára.
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 1. A **tanúsítványok & titkok** oldal **ügyfél-titkok** szakaszában válassza az **új ügyfél titka**elemet.
     - Adja meg a kulcs leírását (például az alkalmazás titkos kulcsaként).

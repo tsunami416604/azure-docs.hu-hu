@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da59c0d54fa08194f9d77fc79754cbfbaca1a1e8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70999171"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128403"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez az Azure Storage használatával
 Ebben a cikkben az Azure Storage ajánlott biztonsági eljárásainak gyűjteményét tárgyaljuk, amelyekkel biztosítható a platform-szolgáltatásként szolgáló webes és mobil alkalmazások védelme. Ezek az ajánlott eljárások az Azure tapasztalataiból és az ügyfelek, például saját tapasztalataiból származnak.
@@ -65,7 +65,7 @@ Azok a szervezetek, amelyek nem kényszerítik ki az adathozzáférés-vezérlé
 További információ a RBAC:
 
 - [Hozzáférés kezelése az RBAC és az Azure Portal használatával](/azure/role-based-access-control/role-assignments-portal)
-- [Beépített szerepkörök Azure-erőforrásokhoz](/azure/role-based-access-control/built-in-roles)
+- [Beépített Azure-szerepkörök](/azure/role-based-access-control/built-in-roles)
 - [Azure Storage – biztonsági útmutató](/azure/storage/common/storage-security-guide) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Ügyféloldali titkosítás használata nagy értékű adathoz

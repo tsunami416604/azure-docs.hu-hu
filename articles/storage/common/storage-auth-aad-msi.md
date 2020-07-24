@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 69e88aed1485d07bc4adc57abc0bda02a1def728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2434c5b80fedb7fd5ae61357cadf5d23f9b00934
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808883"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127179"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Hozzáférés engedélyezése a blob-és üzenetsor-szolgáltatásokhoz az Azure-erőforrások felügyelt identitásával
 
@@ -61,7 +61,7 @@ Ha a fejlesztési környezet nem támogatja az egyszeri bejelentkezést vagy a b
 
 #### <a name="create-the-service-principal"></a>A szolgáltatásnév létrehozása
 
-Ha egy egyszerű szolgáltatásnevet szeretne létrehozni az Azure CLI-vel, és hozzárendel egy RBAC-szerepkört, hívja meg az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot. Adjon meg egy Azure Storage-adathozzáférési szerepkört az új egyszerű szolgáltatáshoz való hozzárendeléshez. Továbbá adja meg a szerepkör-hozzárendelés hatókörét. Az Azure Storage beépített szerepköreivel kapcsolatos további információkért lásd: [beépített szerepkörök az Azure-erőforrásokhoz](../../role-based-access-control/built-in-roles.md).
+Ha egy egyszerű szolgáltatásnevet szeretne létrehozni az Azure CLI-vel, és hozzárendel egy RBAC-szerepkört, hívja meg az az [ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) parancsot. Adjon meg egy Azure Storage-adathozzáférési szerepkört az új egyszerű szolgáltatáshoz való hozzárendeléshez. Továbbá adja meg a szerepkör-hozzárendelés hatókörét. Az Azure Storage beépített szerepköreivel kapcsolatos további információkért lásd: az [Azure beépített szerepkörei](../../role-based-access-control/built-in-roles.md).
 
 Ha nem rendelkezik megfelelő engedélyekkel ahhoz, hogy szerepkört rendeljen a szolgáltatáshoz, előfordulhat, hogy meg kell kérnie a fiók tulajdonosát vagy a rendszergazdát, hogy elvégezze a szerepkör-hozzárendelést.
 

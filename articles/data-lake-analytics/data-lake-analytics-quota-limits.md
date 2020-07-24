@@ -5,16 +5,16 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: how-to
 ms.date: 03/15/2018
-ms.openlocfilehash: b51fbfc15183fe5c8defafa6523835f938c1cf49
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0025e35f516543c8fe703daa647ca29ed3fb87e6
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121248"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127587"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Kvóták és korlátok módosítása az Azure Data Lake Analyticsben
 
@@ -79,7 +79,7 @@ Az Azure-korlátokkal kapcsolatos további információkért tekintse meg az [Az
 
 A Microsoft áttekinti a kérését, és a lehető leghamarabb megkísérli az üzleti igények kielégítését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Microsoft Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel](data-lake-analytics-manage-use-powershell.md)

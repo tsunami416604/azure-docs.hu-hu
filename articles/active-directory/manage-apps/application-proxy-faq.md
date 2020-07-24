@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b95ae3c7fcf52a732304bb835f91c52b015801e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386283"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128930"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -52,6 +52,9 @@ Javaslatokért lásd: [az alkalmazásproxy-összekötők és-alkalmazások magas
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Támogatott-e a TLS-lezárás (TLS/HTTPS-ellenőrzés vagy gyorsítás) az összekötő-kiszolgálókról az Azure-ba irányuló forgalomhoz?
 
 Az alkalmazásproxy-összekötő tanúsítvány alapú hitelesítést végez az Azure-ban. A TLS-megszakítás (TLS/HTTPS-ellenőrzés vagy gyorsítás) megszakítja ezt a hitelesítési módszert, és nem támogatott. Az összekötőtől az Azure-ba irányuló forgalomnak meg kell kerülnie a TLS-megszakítást végző eszközöket.  
+
+### <a name="is-tls-12-required-for-all-connections"></a>A TLS 1,2 szükséges minden kapcsolathoz?
+Igen. Ahhoz, hogy a legjobb titkosítást nyújtson ügyfeleinknek, az alkalmazásproxy szolgáltatás csak a TLS 1,2 protokollokra korlátozza a hozzáférést. Ezeket a módosításokat a 2019-es augusztus 31-ig fokozatosan kivezették és hatályba lépnek. Győződjön meg arról, hogy az összes ügyfél-kiszolgáló és böngésző-kiszolgáló kombináció frissítve van a TLS 1,2 használatára az alkalmazásproxy szolgáltatáshoz való csatlakozás fenntartása érdekében. Ezek közé tartoznak azok az ügyfelek, akikkel a felhasználók az Application proxyn keresztül közzétett alkalmazások elérését használják. Lásd: Felkészülés a [TLS 1,2-es verzióra az Office 365-ben](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365) hasznos referenciák és erőforrások.
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>A továbbító kiszolgáló (k) és a háttérrendszer-kiszolgáló között lehet-e továbbítási proxyt elhelyezni?
 Igen, ez a forgatókönyv a 1.5.1526.0-összekötő verziótól kezdődően támogatott. Lásd: [a meglévő helyszíni proxykiszolgálók használata](application-proxy-configure-connectors-with-proxy-servers.md).
@@ -93,6 +96,9 @@ Az alkalmazás-regisztrációk lapon módosíthatja a Kezdőlap URL-címét a c�
 
 Nem, nincs IIS-követelmény a közzétett alkalmazásokhoz. A Windows Serveren kívül más kiszolgálókon futó webalkalmazásokat is közzétehet. Előfordulhat azonban, hogy nem tudja használni az előhitelesítést egy nem Windows Serverrel, attól függően, hogy a webkiszolgáló támogatja-e az egyeztetést (Kerberos-hitelesítés). Az IIS nem szükséges azon a kiszolgálón, amelyen az összekötő telepítve van.
 
+### <a name="can-i-configure-application-proxy-to-add-the-hsts-header"></a>Beállítható az alkalmazásproxy az HSTS-fejléc hozzáadásához?
+Az alkalmazásproxy nem adja hozzá automatikusan a HTTP Strict-Transport-Security fejlécet a HTTPS-válaszokhoz, de megtartja a fejlécet, ha a közzétett alkalmazás által küldött eredeti válaszban szerepel. A funkció engedélyezésére vonatkozó beállítás az ütemterven található. Ha olyan előzetes verziót szeretne, amely lehetővé teszi a hozzáadását a válaszokhoz, a részletekért tekintse meg a aadapfeedback@microsoft.com következőt:.
+
 ## <a name="integrated-windows-authentication"></a>Beépített Windows-hitelesítés
 
 ### <a name="when-should-i-use-the-principalsallowedtodelegatetoaccount-method-when-setting-up-kerberos-constrained-delegation-kcd"></a>Mikor érdemes a PrincipalsAllowedToDelegateToAccount módszert használni a Kerberos által korlátozott delegálás (KCD) beállításakor?
@@ -133,7 +139,7 @@ Igen, a várt érték. Az előhitelesítési forgatókönyvhöz egy olyan Active
 
 ### <a name="is-the-remote-desktop-web-client-html5-supported"></a>Támogatott-e a Távoli asztal Web Client (HTML5)?
 
-Nem, ez a forgatókönyv jelenleg nem támogatott. A szolgáltatás frissítéseiért kövesse a [UserVoice](https://aka.ms/aadapuservoice) visszajelzési fórumát.
+Igen, ez a forgatókönyv jelenleg nyilvános előzetes verzióban érhető el. Tekintse át a [Távoli asztal közzététele az Azure ad Application proxy](application-proxy-integrate-with-remote-desktop-services.md)-ban című témakört.
 
 ### <a name="after-i-configured-the-pre-authentication-scenario-i-realized-that-the-user-has-to-authenticate-twice-first-on-the-azure-ad-sign-in-form-and-then-on-the-rdweb-sign-in-form-is-this-expected-how-can-i-reduce-this-to-one-sign-in"></a>Miután konfiguráltam az előhitelesítési forgatókönyvet, észrevettem, hogy a felhasználónak kétszer kell hitelesítenie magát: először az Azure AD bejelentkezési űrlapján, majd a RDWeb bejelentkezési űrlapján. Ez várható? Hogyan csökkentheti ezt az egyszeri bejelentkezést?
 

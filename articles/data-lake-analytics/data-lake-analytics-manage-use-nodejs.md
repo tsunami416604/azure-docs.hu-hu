@@ -3,18 +3,16 @@ title: Az Azure Data Lake Analytics kezelése az Azure SDK for Node.js használa
 description: Ez a cikk azt ismerteti, hogyan használhatja az Azure SDK for Node.js szolgáltatást a Data Lake Analytics-fiókok, -adatforrások, -feladatok és -felhasználók kezeléséhez.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 9de1bcf4-b15b-4d0b-9284-8889ecf0c438
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: f821f8f8fddfafbdba060fd3f9940ce32c138755
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d5ac360b70cf9e8c3b808d2316698ae223c72362
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121350"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127519"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Az Azure Data Lake Analytics kezelése az Azure SDK for Node.js használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -27,7 +25,7 @@ Az alábbi verziók támogatottak:
 * **Katalógushoz tartozó REST API-verzió: 2015. 10. 01. előzetes verzió**
 * **Feladathoz tartozó REST API-verzió: 2016. 03. 20. előzetes verzió**
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 * Fiókkezelés: létrehozás, lekérés, felsorolás, frissítés és törlés.
 * Feladatkezelés: küldés, lekérés, listázás és visszavonás.
 * Katalóguskezelés: lekérés és listázás.

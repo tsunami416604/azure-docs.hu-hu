@@ -1,21 +1,21 @@
 ---
 title: Az Azure CLI használata RBAC-szerepkör hozzárendeléséhez adathozzáféréshez
 titleSuffix: Azure Storage
-description: Megtudhatja, hogyan rendelhet hozzá engedélyeket egy Azure Active Directory rendszerbiztonsági tag számára az Azure CLI használatával szerepköralapú hozzáférés-vezérléssel (RBAC). Az Azure Storage támogatja a beépített és az egyéni RBAC-szerepköröket az Azure AD-n keresztül történő hitelesítéshez.
+description: Megtudhatja, hogyan rendelhet hozzá engedélyeket egy Azure Active Directory rendszerbiztonsági tag számára az Azure CLI használatával szerepköralapú hozzáférés-vezérléssel (RBAC). Az Azure Storage támogatja az Azure AD-n keresztül történő hitelesítéshez használható beépített és egyéni Azure-szerepköröket.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 25a38fc6f9607ef878ad3c5bf7074f5b63d5c121
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7c74bc8bd92e2d210c8fe5deaff30d55a36bb5e
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808862"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127213"
 ---
 # <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Az Azure CLI használata RBAC-szerepkör hozzárendeléséhez a blob-és üzenetsor-adathoz való hozzáféréshez
 
@@ -23,7 +23,7 @@ Azure Active Directory (Azure AD) a [szerepköralapú hozzáférés-vezérlés (
 
 Ha egy Azure AD-rendszerbiztonsági tag egy RBAC-szerepkört rendel hozzá, az Azure hozzáférést biztosít ezen rendszerbiztonsági tag erőforrásaihoz. A hozzáférés hatóköre az előfizetés, az erőforráscsoport, a Storage-fiók vagy egy adott tároló vagy várólista szintjére is kiterjed. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy csoport, egy egyszerű alkalmazás vagy egy [felügyelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Ez a cikk bemutatja, hogyan használhatja az Azure CLI-t a beépített RBAC-szerepkörök listázásához és a felhasználókhoz való hozzárendeléséhez. További információ az Azure CLI használatáról: [Azure parancssori felület (CLI)](https://docs.microsoft.com/cli/azure).
+Ez a cikk bemutatja, hogyan használhatja az Azure CLI-t a beépített RBAC-szerepkörök listázásához és a felhasználókhoz való hozzárendeléséhez. További információ az Azure CLI használatáról: [Azure parancssori felület (CLI)](/cli/azure).
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>Blobok és várólisták RBAC szerepkörei
 

@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccc5578944dc6eea9a62360045272896d78e2fac
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654868"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128675"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor hálózatok számára (előzetes verzió)
 A hálózati Azure Monitor a konfiguráció nélkül átfogó képet nyújt az összes telepített hálózati erőforrás állapotáról és mérőszámáról. A speciális keresési funkció segítséget nyújt az erőforrás-függőségek azonosításában, így olyan forgatókönyvek engedélyezésével, mint például a webhelyet üzemeltető erőforrások azonosítása, egyszerűen csak a szolgáltatott webhely nevét keresi.
@@ -47,7 +48,7 @@ A rács nézet minden elemére rákattinthat. Kattintson a Health (állapot) iko
 A jobb oldali **riasztások** rács a kiválasztott erőforrásokhoz generált összes riasztást megjeleníti az összes előfizetésben. Kattintson a riasztások száma gombra a részletes riasztások oldal megtekintéséhez.
 
 ## <a name="dependency-view"></a>Függőség nézet
-A **függőség** nézet segít megjeleníteni az erőforrás konfigurálásának módját. A függőségi nézet jelenleg csak Application Gateway esetén támogatott. A függőség nézet a metrikák rács nézetének Application Gateway erőforrás nevére kattintva érhető el.
+A **függőség** nézet segít megjeleníteni az erőforrás konfigurálásának módját. A függőségi nézet mostantól Application Gateway, a virtuális WAN és a Load Balancer esetében is támogatott. Application Gateway esetén például a függőség nézet a metrikák rács nézetében a Application Gateway erőforrás nevére kattintva érhető el. Ez a virtuális WAN-ra és a Load Balancer is vonatkozik. 
 
 ![Application Gateway nézet](media/network-insights-overview/application-gateway.png)
 
@@ -69,4 +70,4 @@ Kattintson a **részletes mérőszám nézetre** egy előre konfigurált munkaf�
 
 ## <a name="next-steps"></a>További lépések 
 
-- További információ a hálózati monitorozásról: Mi az az [Azure Network Watcher?](/azure/network-watcher/network-watcher-monitoring-overview).
+- További információ a hálózati monitorozásról: Mi az az [Azure Network Watcher?](../../network-watcher/network-watcher-monitoring-overview.md).

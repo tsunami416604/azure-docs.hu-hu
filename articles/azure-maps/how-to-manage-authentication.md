@@ -2,19 +2,19 @@
 title: Hitelesítés kezelése
 titleSuffix: Azure Maps
 description: A Azure Portal használatával kezelheti a hitelesítést Microsoft Azure Maps-ben.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 174606b4b070b69aba94f438a3f7177f0d5897f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69dda537beda1d1bec4f019e1d5cadd16bdd5b39
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84981717"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126856"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Hitelesítés kezelése Azure Maps
 
@@ -45,12 +45,12 @@ Az alábbi táblázat a Azure Maps gyakori hitelesítési és engedélyezési fo
 
 | Forgatókönyv                                                                                    | Hitelesítés | Engedélyezés | Fejlesztési tevékenység | Működési tevékenység |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
-| [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Megosztott kulcsos     | N.A.           | Közepes             | Magasság               |
-| [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Azure AD       | Magasság          | Alacsony                | Közepes             |
-| [Web Single Page-alkalmazás interaktív egyszeri bejelentkezéssel](./how-to-secure-spa-users.md) | Azure AD       | Magasság          | Közepes             | Közepes             |
-| [Web Single Page-alkalmazás nem interaktív bejelentkezéssel](./how-to-secure-spa-app.md)      | Azure AD       | Magasság          | Közepes             | Közepes             |
-| [Webalkalmazás interaktív egyszeri bejelentkezéssel](./how-to-secure-webapp-users.md)          | Azure AD       | Magasság          | Magasság               | Közepes             |
-| [IoT eszköz/bemeneti korlátozott eszköz](./how-to-secure-device-code.md)                     | Azure AD       | Magasság          | Közepes             | Közepes             |
+| [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Megosztott kulcsos     | n.a.           | Közepes             | Magas               |
+| [Megbízható démon/nem interaktív ügyfélalkalmazás](./how-to-secure-daemon-app.md)        | Azure AD       | Magas          | Alacsony                | Közepes             |
+| [Web Single Page-alkalmazás interaktív egyszeri bejelentkezéssel](./how-to-secure-spa-users.md) | Azure AD       | Magas          | Közepes             | Közepes             |
+| [Web Single Page-alkalmazás nem interaktív bejelentkezéssel](./how-to-secure-spa-app.md)      | Azure AD       | Magas          | Közepes             | Közepes             |
+| [Webalkalmazás interaktív egyszeri bejelentkezéssel](./how-to-secure-webapp-users.md)          | Azure AD       | Magas          | Magas               | Közepes             |
+| [IoT eszköz/bemeneti korlátozott eszköz](./how-to-secure-device-code.md)                     | Azure AD       | Magas          | Közepes             | Közepes             |
 
 A táblázatban található hivatkozások részletes konfigurációs információkat biztosítanak az egyes forgatókönyvekhez.
 

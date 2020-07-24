@@ -1,19 +1,19 @@
 ---
 title: Nyílt térinformatikai konzorcium (OGC) Térkép réteg hozzáadása | Microsoft Azure térképek
 description: Megtudhatja, hogyan fedi le egy OGC-Térkép réteget a térképen, és hogyan használhatja a OgcMapLayer osztály különböző lehetőségeit.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334285"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128556"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Térkép réteg hozzáadása a Nyílt térinformatikai konzorciumból (OGC)
 
@@ -28,7 +28,7 @@ A következő részekben a osztály által támogatott webszolgáltatás-funkci�
 - A GetFeatureInfo használatához a szolgáltatásnak támogatnia `EPSG:4326` vagy kezelnie kell a kivetítéseket. 
 - Támogatott műveletek:
 
-    | | |
+    | Művelet | Description |
     | :-- | :-- |
     | GetCapabilities | A szolgáltatás metaadatainak beolvasása a támogatott funkciókkal |
     | GetMap | Egy adott régióhoz tartozó térképi rendszerkép lekérése |
@@ -42,7 +42,7 @@ A következő részekben a osztály által támogatott webszolgáltatás-funkci�
 - A TileMatrix azonosítójának olyan egész számnak kell lennie, amely megfelel a Térkép nagyítási szintjének. Az Azure-térképen a nagyítási szint a és a közötti `"0"` érték `"22"` . Tehát `"0"` támogatott, de `"00"` nem támogatott.
 - Támogatott műveletek:
 
-    | | |
+    | Művelet | Description |
     | :-- | :-- |
     | GetCapabilities | A támogatott műveletek és funkciók beolvasása |
     | GetTile | Képek lekérése egy adott csempéhez |

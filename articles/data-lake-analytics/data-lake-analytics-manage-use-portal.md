@@ -3,18 +3,16 @@ title: Azure Data Lake Analytics kezelése a Azure Portal használatával
 description: Ez a cikk azt ismerteti, hogyan használható a Azure Portal a Data Lake Analytics fiókok, adatforrások, felhasználók és & feladatok kezelésére.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: e9709f8ee700958b310b2fa94a546bb3ea4fc511
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7761da75c16e2f89ae145bad3b04cc179f415751
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121316"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127536"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure Data Lake Analytics kezelése az Azure Portal használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -89,7 +87,7 @@ A **felhasználó hozzáadása varázslóval** egyszerűen kiépítheti az új D
 3. Válasszon ki egy felhasználót, majd kattintson a **kiválasztás**elemre.
 4. Válasszon ki egy szerepkört, majd kattintson a **kiválasztás**elemre. Ha új fejlesztőt szeretne beállítani Azure Data Lake használatára, válassza ki a **Data Lake Analytics fejlesztői** szerepkört.
 5. Válassza ki a U-SQL-adatbázisokhoz tartozó hozzáférés-vezérlési listákat (ACL-eket). Ha elégedett a lehetőségeivel, kattintson a **kiválasztás**elemre.
-6. Válassza ki az ACL-eket a fájlokhoz. Az alapértelmezett tároló esetében ne módosítsa a "/" gyökérmappa és a/System mappához tartozó ACL-eket. Kattintson a **Kiválasztás** gombra.
+6. Válassza ki az ACL-eket a fájlokhoz. Az alapértelmezett tároló esetében ne módosítsa a "/" gyökérmappa és a/System mappához tartozó ACL-eket. Válassza a **Kiválasztás** lehetőséget.
 7. Tekintse át a kiválasztott módosításokat, majd kattintson a **Futtatás**gombra.
 8. A varázsló befejezése után kattintson a **kész**gombra.
 
@@ -161,7 +159,7 @@ Az ismétlődő U-SQL-feladatok listájának megtekintése:
 2. Kattintson a **Job bepillantások**elemre. A "minden feladat" lap alapértelmezésben megjelenik, amely megjeleníti a futó, a várólistán lévő és a Befejezett feladatok listáját.
 3. Kattintson az **ismétlődő feladatok** fülre. Az ismétlődő feladatok listája az egyes ismétlődő feladatokhoz tartozó összesített statisztikával együtt jelenik meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 * [Azure Data Lake Analytics kezelése Azure PowerShell használatával](data-lake-analytics-manage-use-powershell.md)

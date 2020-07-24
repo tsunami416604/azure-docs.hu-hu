@@ -1,20 +1,20 @@
 ---
-title: Piactéri ismeretek – Microsoft kereskedelmi piactér
+title: Piactéri ismeretek – Microsoft kereskedelmi piactér, Microsoft AppSource és Azure Marketplace
 description: Elérheti a piactér webes elemzési szolgáltatásának összegzését, amely lehetővé teszi az ügyfelek részvételének mérését Microsoft AppSource és az Azure Marketplace-en.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: 8b5f90449f27007febe93f1193c6d2245b076e7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2019
+ms.openlocfilehash: c72f3c9cce19896557fa9f4114b935fcc5ca8dc2
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120398"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87128947"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Marketplace-beli ismeretek irányítópultja a partner Centerben
 
-Ez a cikk a partner Center Piactéri információk irányítópultján nyújt információt. Ez az irányítópult a piactér webes elemzési szolgáltatásának összegzését jeleníti meg, amely lehetővé teszi a kiadók számára, hogy a piactéren kirakatokban felsorolt termék részletes oldalain megmérjék az ügyfelek részvételét: Microsoft AppSource és az Azure piactéren.
+Ez a cikk a partner Center Piactéri információk irányítópultján nyújt információt. Ez az irányítópult a piactér webes elemzési szolgáltatásának összegzését jeleníti meg, amely lehetővé teszi a kiadók számára, hogy a kereskedelmi piactéren elérhető, a Microsoft AppSource és az Azure Marketplace-en felsorolt termék részletes oldalain megmérjék az ügyfelek részvételét
 
 ## <a name="marketplace-insights-dashboard"></a>Marketplace Insights irányítópult
 
@@ -25,18 +25,20 @@ A következő elemek grafikus ábrázolásait tekintheti meg:
 - [Marketplace-információk összegzése](#marketplace-insights-summary)
 - [Oldalak látogatása földrajz szerint](#page-visits-by-geography)  
 - [Oldal-látogatások és egyedi látogatói trend](#page-visits-versus-unique-visitors-trend)
-- [A CTAs-szel rendelkező egyedi látogatók és a művelet meghívása](#call-to-action-versus-unique-visitors-with-ctas)
+- [A művelet meghívása (CTA) és a CTAs egyedi látogatói](#call-to-action-versus-unique-visitors-with-ctas)
 - [Oldalak látogatása és a művelet meghívása ajánlatok alapján](#page-visits-and-calls-to-action-by-offers)
 - [A művelet százalékos trendjeinek meghívása](#call-to-action-percentage-trend)
 - [Az átirányítási tartományok által felkeresett és kezdeményezett műveletek](#page-visits-and-calls-to-action-by-referral-domains)
 - [Marketplace-információk részleteinek táblázata](#marketplace-insights-details-table)
+
+Az Azure Marketplace-en és a AppSource-on keresztül meglátogatott felhasználók közötti maximális késés 48 óra.
 
 >[!NOTE]
 > Az analitikai terminológia részletes leírását lásd: [a kereskedelmi piactér Analytics szolgáltatással kapcsolatos gyakori kérdések és fogalmak](./faq-terminology.md).
 
 ### <a name="insights-dashboard-layout"></a>Az áttekintések irányítópultjának elrendezése
 
-A piactér metrikáit többféleképpen is megtekintheti:
+Tekintse meg a kereskedelmi piactér mérőszámait többféle módon:
 
 - Kirakat lapok
 - Oldal szűrők
@@ -74,7 +76,7 @@ Ez a szám az oldal szűrőben kiválasztott ajánlat (ok) esetében a kiválasz
 
 ### <a name="call-to-action"></a>Művelet meghívása
 
-Ez a szám azt jelzi, **hogy a művelet meghívása** gombra kattintások száma az ajánlat oldalon (a termék részletes lapján) befejeződött. A **művelet meghívása** akkor számít, ha a **Letöltés most**, az **ingyenes próbaverzió**, a **Kapcsolatfelvétel**és a **Test Drive** gomb van kiválasztva.
+Ez a szám azt jelzi, **hogy a művelet meghívása** gombra kattintások száma az ajánlat oldalon (a termék részletes lapján) befejeződött. A **művelet meghívása** akkor számít, ha a felhasználók kiválasztják a letöltés **most**, az **ingyenes próbaverzió**, a **Kapcsolatfelvétel**vagy a **Test Drive** gombokat.
 
 ![A partner Center-elemzések hívása a művelet összegzésére](./media/insights-summary.png)
 
@@ -128,9 +130,9 @@ Ez a táblázat a látogatások oldalának listáját, valamint a kiválasztott 
 
 - Az adatokat CSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
 - Ha a rekordok száma meghaladja a 1000-et, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
-- A szűrők alkalmazhatók az Önt érdeklő információk megjelenítésére. Az adathalmazok az ajánlatok nevei és a kampányok neve alapján szűrhetők.  
+- Az információk az ajánlatok nevei és a kampányok neve alapján szűrhetők, hogy megjelenjenek az Önt érdeklő információk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

@@ -3,18 +3,16 @@ title: Azure Data Lake Analytics kezelése az Azure Java SDK-val
 description: Ez a cikk azt ismerteti, hogyan lehet az Azure Java SDK használatával olyan alkalmazásokat írni, amelyek Data Lake Analytics feladatokat, adatforrásokat és & felhasználókat kezelhetnek.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: 6409ac10a524f75709cbbf185efb03359606e88c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e5ff12479333c4b36cc7712e0e363a055b9f6dc6
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121367"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87127655"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Azure Data Lake Analytics kezelése Java-alkalmazás használatával
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -317,7 +315,7 @@ Adja meg a kódrészletben felismert paraméterek értékeit:
 * `_clientId`
 * `_clientSecret`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A U-SQL nyelv megismerése: [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md) (Ismerkedés az Azure Data Lake Analytics U-SQL nyelvével). és [U-SQL language reference](https://docs.microsoft.com/u-sql/) (U-SQL nyelvi referencia).
 * Felügyeleti feladatokhoz lásd: [Azure Data Lake Analytics kezelése Azure Portal használatával](data-lake-analytics-manage-use-portal.md).
