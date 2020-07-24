@@ -13,11 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: juliako
-ms.openlocfilehash: fdf29924da31db0347938df89e698cb258c2336b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e188a0e8ee8b5f2037c07c3f15fd78a42852ce9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708297"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023228"
 ---
 # <a name="filters"></a>Szűrők
 
@@ -37,8 +38,8 @@ A Media Services lehetővé teszi, hogy a tartalomhoz hozzon létre **fiók-szű
 
 A szűrők két típusa létezik: 
 
-* [Fiókok szűrői](https://docs.microsoft.com/rest/api/media/accountfilters) (globális) – a Azure Media Services fiókban található bármely eszközre alkalmazható, és a fiók élettartama is megoldható.
-* Adategység- [szűrők](https://docs.microsoft.com/rest/api/media/assetfilters) (helyi) – csak olyan objektumra alkalmazhatók, amelynél a szűrő a létrehozáskor hozzá volt rendelve, az eszköz élettartama. 
+* [Fiókok szűrői](/rest/api/media/accountfilters) (globális) – a Azure Media Services fiókban található bármely eszközre alkalmazható, és a fiók élettartama is megoldható.
+* Adategység- [szűrők](/rest/api/media/assetfilters) (helyi) – csak olyan objektumra alkalmazhatók, amelynél a szűrő a létrehozáskor hozzá volt rendelve, az eszköz élettartama. 
 
 A **fiókok** és az **eszközök szűrőinek** típusai pontosan ugyanazok a tulajdonságok a szűrő definiálásához/leírásához. Az **eszközcsoport**létrehozásakor meg kell adnia azt az objektum nevét, amellyel hozzá szeretné rendelni a szűrőt.
 
@@ -46,7 +47,7 @@ A forgatókönyvtől függően eldöntheti, hogy a szűrő milyen típusú legye
 
 A szűrők leírásához a következő tulajdonságokat használhatja. 
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |firstQuality|A szűrő első minőségi bitrátája.|
 |presentationTimeRange|A megjelenítési idő tartománya. Ez a tulajdonság a jegyzékfájl kezdő/záró pontjainak, a megjelenítési időszak hosszának és az élő indítási pozíciónak a szűrésére szolgál. <br/>További információ: [PresentationTimeRange](#presentationtimerange).|
@@ -56,7 +57,7 @@ A szűrők leírásához a következő tulajdonságokat használhatja.
 
 Ezt a tulajdonságot használja az **Asset Filters**használatával. A tulajdonságot nem ajánlott a **fiók szűrőinek**beállításával beállítani.
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |**endTimestamp**|Az igény szerinti videóra vonatkozik (VoD).<br/>Az élő közvetítés megjelenítéséhez a rendszer csendben figyelmen kívül hagyja és alkalmazza a bemutatót, amikor a bemutató véget ér, és az adatfolyam a VoD-ra változik.<br/>Ez egy hosszú érték, amely a bemutató abszolút végpontját jelöli, a legközelebbi következő GOP-kezdésig kerekítve. Az egység az időskála, így a 1800000000-es endTimestamp 3 percet vesz igénybe.<br/>A startTimestamp és a endTimestamp használatával vágja le a lista (manifest) töredékeit.<br/>Például a startTimestamp = 40000000 és a endTimestamp = 100000000 az alapértelmezett időskálával létrehoz egy olyan lejátszási listát, amely 4 másodperc és 10 másodperc közötti töredékeket tartalmaz a VoD-bemutatóból. Ha egy töredék átnyúlik a határt, a teljes töredék szerepelni fog a jegyzékfájlban.|
 |**forceEndTimestamp**|Csak az élő közvetítésre vonatkozik.<br/>Azt jelzi, hogy a endTimestamp tulajdonságnak jelen kell-e lennie. Ha az értéke igaz, a endTimestamp meg kell adni, vagy rossz kérési kódot ad vissza.<br/>Megengedett értékek: false, True.|
@@ -71,12 +72,12 @@ Itt adhatja meg a szűrési nyomon követési tulajdonságok (FilterTrackPropert
 
 A szűrési tulajdonságok a következő táblázatban ismertetett típusok és műveletek (EQUAL, NotEqual) szerint vannak leírva: Track types (értékek). 
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |**Sávszélességű**|Használja a nyomkövetési sebesség használatát a szűréshez.<br/><br/>A javasolt érték a bitsebességek tartománya, a bitek száma másodpercenként. Például: "0-2427000".<br/><br/>Megjegyzés: egy adott bitráta-érték (például 250000 (bit/másodperc) használata esetén ez a megközelítés nem ajánlott, mivel a pontos bitsebességek az egyik eszközről a másikra ingadoznak.|
 |**FourCC**|A szűrési nyomon követéshez használja a FourCC értékét.<br/><br/>Az érték a codec-formátum első eleme, amely az [RFC 6381](https://tools.ietf.org/html/rfc6381)-ben van megadva. Jelenleg a következő kodekek támogatottak: <br/>Videó: "AVC1", "hev1", "hvc1"<br/>Hang: "mp4a", "EC-3"<br/><br/>Egy adott eszközön lévő zeneszámok FourCC-értékeinek meghatározásához szerezze be és vizsgálja meg a jegyzékfájlt.|
 |**Nyelv**|A szűrési pálya nyelvét használja.<br/><br/>Az érték a felvenni kívánt nyelv címkéje, az RFC 5646-ben megadott módon. Például: "en".|
-|**Name (Név)**|Használja a szűrési pálya nevét.|
+|**Név**|Használja a szűrési pálya nevét.|
 |**Típus**|Használja a szűréshez használt nyomkövetési típust.<br/><br/>A következő értékek engedélyezettek: "videó", "hang" vagy "text".|
 
 ### <a name="example"></a>Példa
@@ -138,7 +139,7 @@ Az alábbi példa egy élő adatfolyam-szűrőt definiál:
 
 ## <a name="associating-filters-with-streaming-locator"></a>Szűrők társítása a streaming Locator használatával
 
-Megadhatja az [eszköz vagy a fiók szűrőinek](filters-concept.md) listáját a [folyamatos átviteli lokátorban](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body). A [dinamikus](dynamic-packaging-overview.md) csomagolás alkalmazza a szűrők listáját, valamint azokat, amelyeket az ügyfél az URL-címben megad. Ez a kombináció létrehoz egy [dinamikus jegyzékfájlt](filters-dynamic-manifest-overview.md), amely a streaming keresőben megadott URL + szűrők szűrői alapján történik. 
+Megadhatja az [eszköz vagy a fiók szűrőinek](filters-concept.md) listáját a [folyamatos átviteli lokátorban](/rest/api/media/streaminglocators/create#request-body). A [dinamikus](dynamic-packaging-overview.md) csomagolás alkalmazza a szűrők listáját, valamint azokat, amelyeket az ügyfél az URL-címben megad. Ez a kombináció létrehoz egy [dinamikus jegyzékfájlt](filters-dynamic-manifest-overview.md), amely a streaming keresőben megadott URL + szűrők szűrői alapján történik. 
 
 Lásd az alábbi példákat:
 
@@ -160,4 +161,3 @@ A következő cikkek bemutatják, hogyan hozhat létre programozott módon szűr
 - [Szűrők létrehozása REST API-kkal](filters-dynamic-manifest-rest-howto.md)
 - [Szűrők létrehozása .NET használatával](filters-dynamic-manifest-dotnet-howto.md)
 - [Szűrők létrehozása a parancssori felület használatával](filters-dynamic-manifest-cli-howto.md)
-

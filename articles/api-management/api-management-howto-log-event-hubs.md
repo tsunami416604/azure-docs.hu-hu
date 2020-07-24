@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: f594d4467e64ead40ff3c26aaf3e3a44cb673a98
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e2bf63558b4bbd55262aa16f70bfba934a42c3ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250294"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024962"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Események naplózása az Azure Event Hubsba az Azure-ban API Management
 Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Event Hubs "bejárati ajtóként" viselkedik egy esemény-adatcsatorna esetében, és az adatok egy Event hubhoz való gyűjtése után átalakítható és tárolható bármely valós idejű elemzési szolgáltató vagy kötegelt/Storage-adapter használatával. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez.
@@ -67,6 +67,9 @@ Bármely olyan kifejezést használhat, amely egy karakterláncot ad vissza a el
 
 A frissített házirend-konfiguráció mentéséhez kattintson a **Mentés** gombra. Amint menti a szabályzatot, a rendszer aktív állapotba kerül, és az eseményeket a kijelölt Event hub-ba naplózza.
 
+> [!NOTE]
+> A API Management szabályzatból az Event hub számára elküldhető maximális támogatott üzenet mérete 200 kilobájt (KB). Ha az Event hub számára küldött üzenet mérete meghaladja a 200 KB-ot, az automatikusan csonkítva lesz, és a csonkolt üzenet az Event hubokba lesz átadva.
+
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>A bejelentkezés előnézete Event Hubs Azure Stream Analytics használatával
 
 A naplót Event Hubs [Azure stream Analytics lekérdezések](../event-hubs/process-data-azure-stream-analytics.md)használatával tekintheti meg. 
@@ -76,7 +79,7 @@ A naplót Event Hubs [Azure stream Analytics lekérdezések](../event-hubs/proce
 3. A **valós idejű** adatvizsgálatok engedélyezése az események kártyáról lapon válassza a **Tallózás**lehetőséget.
 4. A **bemeneti előnézet** lapon megtekintheti a naplót. Ha a megjelenített adatértékek nem aktuálisak, válassza a **frissítés** lehetőséget a legújabb események megtekintéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ az Azure Event Hubs
   * [Ismerkedés az Azure Event Hubs](../event-hubs/event-hubs-c-getstarted-send.md)
   * [Üzenetek fogadása az EventProcessorHost szolgáltatással](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)

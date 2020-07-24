@@ -12,11 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: f1bf8eff4a6f518fc24c87c5fbd24984ef8f8b29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad0079a0a48178f1e662e2fdf1daa685ae768857
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84718886"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024193"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL felügyelt példány hozzáadása feladatátvételi csoporthoz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -46,7 +47,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbi elemekkel:
 
 - Azure-előfizetés. Ha még nem rendelkezik ilyennel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
-- [Azure PowerShell](/powershell/azureps-cmdlets-docs)
+- [Azure PowerShell](/powershell/azure/)
 
 ---
 
@@ -390,7 +391,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Alhálózati konfigurációt rendel egy virtuális hálózathoz. | 
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Lekér egy virtuális hálózatot egy erőforráscsoportban. | 
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Beolvas egy alhálózatot egy virtuális hálózatban. | 
-| [Új – AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Egy hálózati biztonsági csoportot hoz létre. | 
+| [Új – AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Létrehoz egy hálózati biztonsági csoportot. | 
 | [Új – AzRouteTable](/powershell/module/az.network/new-azroutetable) | Létrehoz egy útválasztási táblázatot. |
 | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Egy virtuális hálózat alhálózati konfigurációjának frissítése.  |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Frissíti a virtuális hálózatot.  |
@@ -427,7 +428,7 @@ Virtuális hálózat létrehozásához kövesse az alábbi lépéseket:
 
     | **Mező** | Érték |
     | --- | --- |
-    | **Name (Név)** |  A másodlagos felügyelt példány által használandó virtuális hálózat neve, például: `vnet-sql-mi-secondary` . |
+    | **Név** |  A másodlagos felügyelt példány által használandó virtuális hálózat neve, például: `vnet-sql-mi-secondary` . |
     | **Címtér** | A virtuális hálózat címterület, például: `10.128.0.0/16` . | 
     | **Előfizetés** | Az az előfizetés, amelyben az elsődleges felügyelt példány és az erőforráscsoport található. |
     | **Régió** | Az a hely, ahová a másodlagos felügyelt példányt telepíteni fogja. |
@@ -720,7 +721,7 @@ Az oktatóanyag ezen része a következő PowerShell-parancsmagokat használja:
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Alhálózati konfigurációt rendel egy virtuális hálózathoz. | 
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Lekér egy virtuális hálózatot egy erőforráscsoportban. | 
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Beolvas egy alhálózatot egy virtuális hálózatban. | 
-| [Új – AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Egy hálózati biztonsági csoportot hoz létre. | 
+| [Új – AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Létrehoz egy hálózati biztonsági csoportot. | 
 | [Új – AzRouteTable](/powershell/module/az.network/new-azroutetable) | Létrehoz egy útválasztási táblázatot. |
 | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Egy virtuális hálózat alhálózati konfigurációjának frissítése.  |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Frissíti a virtuális hálózatot.  |
@@ -761,7 +762,7 @@ Hozza létre az elsődleges felügyelt példány virtuális hálózatának átj�
     | **Mező** | Érték |
     | --- | --- |
     | **Előfizetés** |  Az az előfizetés, amelyben az elsődleges felügyelt példánya. |
-    | **Name (Név)** | A virtuális hálózati átjáró neve, például: `primary-mi-gateway` . | 
+    | **Név** | A virtuális hálózati átjáró neve, például: `primary-mi-gateway` . | 
     | **Régió** | Az a régió, ahol az elsődleges felügyelt példánya van. |
     | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
     | **VPN-típus** | Válassza az **útvonal-alapú**lehetőséget. |
@@ -769,7 +770,7 @@ Hozza létre az elsődleges felügyelt példány virtuális hálózatának átj�
     | **Hely**| Az elsődleges felügyelt példány és az elsődleges virtuális hálózat helye.   |
     | **Virtuális hálózat**| Válassza ki a 2. szakaszban létrehozott virtuális hálózatot, például: `vnet-sql-mi-primary` . |
     | **Nyilvános IP-cím**| Válassza az **Új létrehozása** lehetőséget. |
-    | **Nyilvános IP-cím**| Adja meg az IP-cím nevét, például: `primary-gateway-IP` . |
+    | **Nyilvános IP-cím neve**| Adja meg az IP-cím nevét, például: `primary-gateway-IP` . |
     | &nbsp; | &nbsp; |
 
 1. Hagyja meg a többi értéket alapértelmezettként, majd válassza a **felülvizsgálat + létrehozás** lehetőséget a virtuális hálózati átjáró beállításainak áttekintéséhez.
@@ -843,7 +844,7 @@ A Azure Portal használatával ismételje meg az előző szakaszban leírt lép�
    | **Mező** | Érték |
    | --- | --- |
    | **Előfizetés** |  Az előfizetés, amelyben a másodlagos felügyelt példánya van. |
-   | **Name (Név)** | A virtuális hálózati átjáró neve, például: `secondary-mi-gateway` . | 
+   | **Név** | A virtuális hálózati átjáró neve, például: `secondary-mi-gateway` . | 
    | **Régió** | Az a régió, amelyben a másodlagos felügyelt példány található. |
    | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
    | **VPN-típus** | Válassza az **útvonal-alapú**lehetőséget. |
@@ -851,7 +852,7 @@ A Azure Portal használatával ismételje meg az előző szakaszban leírt lép�
    | **Hely**| A másodlagos felügyelt példány és a másodlagos virtuális hálózat helye.   |
    | **Virtuális hálózat**| Válassza ki a 2. szakaszban létrehozott virtuális hálózatot, például: `vnet-sql-mi-secondary` . |
    | **Nyilvános IP-cím**| Válassza az **Új létrehozása** lehetőséget. |
-   | **Nyilvános IP-cím**| Adja meg az IP-cím nevét, például: `secondary-gateway-IP` . |
+   | **Nyilvános IP-cím neve**| Adja meg az IP-cím nevét, például: `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
 
    ![Másodlagos átjáró beállításai](./media/failover-group-add-instance-tutorial/settings-for-secondary-gateway.png)
@@ -1122,7 +1123,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Alhálózati konfigurációt rendel egy virtuális hálózathoz. | 
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Lekér egy virtuális hálózatot egy erőforráscsoportban. | 
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Beolvas egy alhálózatot egy virtuális hálózatban. | 
-| [Új – AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Egy hálózati biztonsági csoportot hoz létre. | 
+| [Új – AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Létrehoz egy hálózati biztonsági csoportot. | 
 | [Új – AzRouteTable](/powershell/module/az.network/new-azroutetable) | Létrehoz egy útválasztási táblázatot. |
 | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Egy virtuális hálózat alhálózati konfigurációjának frissítése.  |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Frissíti a virtuális hálózatot.  |
@@ -1150,7 +1151,7 @@ Nincsenek elérhető parancsfájlok a Azure Portal számára.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy feladatátvételi csoportot konfigurált két felügyelt példány között. Megismerte, hogyan végezheti el az alábbi műveleteket:
+Ebben az oktatóanyagban egy feladatátvételi csoportot konfigurált két felügyelt példány között. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]
 > - Hozzon létre egy elsődleges felügyelt példányt.

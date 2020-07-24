@@ -7,12 +7,12 @@ ms.author: lechen
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
 ms.custom: tracking-python
-ms.openlocfilehash: e1a866799a62c457c2734524c58bb848b8f067e6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 35d56c5318046a0f9ffc52f61fac886c473cf0bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107444"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024367"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Azure Monitor beállítása a Python-alkalmazáshoz
 
@@ -32,12 +32,12 @@ Telepítse a OpenCensus Azure Monitor-exportőröket:
 python -m pip install opencensus-ext-azure
 ```
 
-A csomagok és integrációk teljes listájáért lásd: [OpenCensus-csomagok](https://docs.microsoft.com/azure/azure-monitor/app/nuget#common-packages-for-python-using-opencensus).
+A csomagok és integrációk teljes listájáért lásd: [OpenCensus-csomagok](./nuget.md#common-packages-for-python-using-opencensus).
 
 > [!NOTE]
 > A `python -m pip install opencensus-ext-azure` parancs feltételezi, hogy rendelkezik a `PATH` Python-telepítéshez beállított környezeti változóval. Ha még nem konfigurálta ezt a változót, meg kell adnia a teljes könyvtár elérési útját, ahol a Python-végrehajtható fájl található. Az eredmény az alábbihoz hasonló parancs: `C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\python.exe -m pip install opencensus-ext-azure` .
 
-Az SDK három Azure Monitor-exportálót használ a különböző típusú telemetria küldéséhez Azure Monitor. Ezek a nyomkövetés, a metrikák és a naplók. További információ ezekről a telemetria-típusokról: [az adatplatform áttekintése](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform). Az alábbi útmutatást követve elküldheti ezeket a telemetria-típusokat a három-exportőr használatával.
+Az SDK három Azure Monitor-exportálót használ a különböző típusú telemetria küldéséhez Azure Monitor. Ezek a nyomkövetés, a metrikák és a naplók. További információ ezekről a telemetria-típusokról: [az adatplatform áttekintése](../platform/data-platform.md). Az alábbi útmutatást követve elküldheti ezeket a telemetria-típusokat a három-exportőr használatával.
 
 ## <a name="telemetry-type-mappings"></a>Telemetria típusú leképezések
 
@@ -111,7 +111,7 @@ Itt láthatók azok az exportőrök, amelyeket a OpenCensus biztosít a Azure Mo
 1. Az exportőr a Azure Monitorba küldi a naplózási adatokat. Az adat a alatt található `traces` . 
 
     > [!NOTE]
-    > Ebben a kontextusban `traces` nem ugyanaz, mint a `tracing` . Itt `traces` a használat során Azure monitorban megjelenő telemetria típusára utal `AzureLogHandler` . A `tracing` OpenCensus azonban egy fogalomra hivatkozik, és az [elosztott nyomkövetésre](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)vonatkozik.
+    > Ebben a kontextusban `traces` nem ugyanaz, mint a `tracing` . Itt `traces` a használat során Azure monitorban megjelenő telemetria típusára utal `AzureLogHandler` . A `tracing` OpenCensus azonban egy fogalomra hivatkozik, és az [elosztott nyomkövetésre](./distributed-tracing.md)vonatkozik.
 
     > [!NOTE]
     > A gyökérszintű naplózó a figyelmeztetés szintjével van konfigurálva. Ez azt jelenti, hogy a rendszer figyelmen kívül hagyja az összes olyan naplót, amelyet nem súlyossági szinttel elküldött, de nem küldi el Azure Monitor. További információ: [dokumentáció](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel).
@@ -216,11 +216,11 @@ A OpenCensus-mintavételezéssel kapcsolatos információkért tekintse meg a [m
 
 #### <a name="log-correlation"></a>Napló-összefüggések
 
-A naplók nyomkövetési környezeti adatokkal való bővítésével kapcsolatos részletekért lásd: OpenCensus Python- [naplók integrációja](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation).
+A naplók nyomkövetési környezeti adatokkal való bővítésével kapcsolatos részletekért lásd: OpenCensus Python- [naplók integrációja](./correlation.md#log-correlation).
 
 #### <a name="modify-telemetry"></a>Telemetria módosítása
 
-A nyomon követett telemetria Azure Monitorba való elküldése előtt történő módosításával kapcsolatos részletekért lásd: OpenCensus Python [telemetria processzorok](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
+A nyomon követett telemetria Azure Monitorba való elküldése előtt történő módosításával kapcsolatos részletekért lásd: OpenCensus Python [telemetria processzorok](./api-filtering-sampling.md#opencensus-python-telemetry-processors).
 
 
 ### <a name="metrics"></a>Mérőszámok
@@ -347,16 +347,16 @@ Ezek a teljesítményszámlálók jelenleg el vannak küldve:
 - CPU-használat feldolgozása (százalék)
 - Folyamat saját bájtjai (bájt)
 
-Ezeket a mérőszámokat a alkalmazásban tekintheti meg `performanceCounters` . [További információ: teljesítményszámlálók](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters).
+Ezeket a mérőszámokat a alkalmazásban tekintheti meg `performanceCounters` . [További információ: teljesítményszámlálók](./performance-counters.md).
 
 #### <a name="modify-telemetry"></a>Telemetria módosítása
 
-A nyomon követett telemetria Azure Monitorba való elküldése előtt történő módosításával kapcsolatos információkért lásd: OpenCensus Python [telemetria processzorok](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
+A nyomon követett telemetria Azure Monitorba való elküldése előtt történő módosításával kapcsolatos információkért lásd: OpenCensus Python [telemetria processzorok](./api-filtering-sampling.md#opencensus-python-telemetry-processors).
 
 ### <a name="tracing"></a>Nyomkövetés
 
 > [!NOTE]
-> A OpenCensus-ben az `tracing` [elosztott nyomkövetésre](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)hivatkozik. A `AzureExporter` Küldés `requests` és a `dependency` telemetria Azure monitor.
+> A OpenCensus-ben az `tracing` [elosztott nyomkövetésre](./distributed-tracing.md)hivatkozik. A `AzureExporter` Küldés `requests` és a `dependency` telemetria Azure monitor.
 
 1. Először is hozzon egy nyomkövetési adat helyi előállítását. A Python inaktív vagy a választott szerkesztőben adja meg a következő kódot:
 
@@ -420,8 +420,8 @@ A nyomon követett telemetria Azure Monitorba való elküldése előtt történ�
         main()
     ```
 
-1. A Python-szkript futtatásakor a rendszer továbbra is kéri az értékek megadását, de csak az érték lesz kinyomtatva a rendszerhéjban. A `SpanData` rendszer elküldi a létrehozott Azure monitor. A kibocsátott span-adatmennyiségek a alatt találhatók `dependencies` . A kimenő kérelmekkel kapcsolatos további információkért lásd: OpenCensus Python- [függőségek](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-dependency).
-További információ a bejövő kérésekről: OpenCensus Python- [kérelmek](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python-request).
+1. A Python-szkript futtatásakor a rendszer továbbra is kéri az értékek megadását, de csak az érték lesz kinyomtatva a rendszerhéjban. A `SpanData` rendszer elküldi a létrehozott Azure monitor. A kibocsátott span-adatmennyiségek a alatt találhatók `dependencies` . A kimenő kérelmekkel kapcsolatos további információkért lásd: OpenCensus Python- [függőségek](./opencensus-python-dependency.md).
+További információ a bejövő kérésekről: OpenCensus Python- [kérelmek](./opencensus-python-request.md).
 
 #### <a name="sampling"></a>Mintavételezés
 
@@ -429,11 +429,11 @@ A OpenCensus-mintavételezéssel kapcsolatos információkért tekintse meg a [m
 
 #### <a name="trace-correlation"></a>Nyomkövetési korreláció
 
-A nyomkövetési adatok korrelációjának telemetria kapcsolatos további információkért tekintse meg a OpenCensus Python [telemetria korrelációját](https://docs.microsoft.com/azure/azure-monitor/app/correlation#telemetry-correlation-in-opencensus-python).
+A nyomkövetési adatok korrelációjának telemetria kapcsolatos további információkért tekintse meg a OpenCensus Python [telemetria korrelációját](./correlation.md#telemetry-correlation-in-opencensus-python).
 
 #### <a name="modify-telemetry"></a>Telemetria módosítása
 
-A nyomon követett telemetria a Azure Monitorba való elküldése előtt történő módosításával kapcsolatos további információkért lásd: OpenCensus Python [telemetria processzorok](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#opencensus-python-telemetry-processors).
+A nyomon követett telemetria a Azure Monitorba való elküldése előtt történő módosításával kapcsolatos további információkért lásd: OpenCensus Python [telemetria processzorok](./api-filtering-sampling.md#opencensus-python-telemetry-processors).
 
 ## <a name="configure-azure-monitor-exporters"></a>Azure Monitor-exportőrök konfigurálása
 
@@ -442,7 +442,7 @@ Ahogy az ábrán látható, három különböző Azure Monitor-exportőr támoga
 Mindegyik exportőr elfogadja a konfigurációhoz tartozó argumentumokat, amelyeket a konstruktorok továbbítanak. Itt láthatja a részleteket:
 
 - `connection_string`: A Azure Monitor erőforráshoz való kapcsolódáshoz használt kapcsolati karakterlánc. Elsőbbséget élvez `instrumentation_key` .
-- `enable_standard_metrics`: Használatban `AzureMetricsExporter` . Azt jelzi, hogy az exportőr automatikusan elküldi a [teljesítményszámláló](https://docs.microsoft.com/azure/azure-monitor/platform/app-insights-metrics#performance-counters) -metrikákat a Azure monitor. Alapértelmezett értéke `True` .
+- `enable_standard_metrics`: Használatban `AzureMetricsExporter` . Azt jelzi, hogy az exportőr automatikusan elküldi a [teljesítményszámláló](../platform/app-insights-metrics.md#performance-counters) -metrikákat a Azure monitor. Alapértelmezett értéke `True` .
 - `export_interval`: Az Exportálás másodpercben megadott gyakoriságának meghatározására szolgál.
 - `instrumentation_key`: A Azure Monitor erőforráshoz való csatlakozáshoz használt rendszerállapot-kulcs.
 - `logging_sampling_rate`: Használatban `AzureLogHandler` . Mintavételezési sebességet biztosít [1,0] a naplók exportálásához. Az alapértelmezett érték a 1,0.
@@ -462,7 +462,7 @@ A listában az **aktív**:
 - A Azure Monitor metrikákkal ellátott telemetria esetében az eljuttatott metrikák a alatt jelennek meg `customMetrics` .
 - A Azure Monitor naplók exportőrével eljuttatott telemetria esetében a naplók a alatt jelennek meg `traces` . A kivételek a alatt jelennek meg `exceptions` .
 
-További információ a lekérdezések és naplók használatáról: [naplók a Azure monitorban](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs).
+További információ a lekérdezések és naplók használatáról: [naplók a Azure monitorban](../platform/data-platform-logs.md).
 
 ## <a name="learn-more-about-opencensus-for-python"></a>További információ a Pythonhoz készült OpenCensus
 
@@ -472,7 +472,7 @@ További információ a lekérdezések és naplók használatáról: [naplók a 
 * [OpenCensus-integrációk](https://github.com/census-instrumentation/opencensus-python#extensions)
 * [Azure Monitor minta alkalmazások](https://github.com/Azure-Samples/azure-monitor-opencensus-python)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bejövő kérelmek nyomon követése](./../../azure-monitor/app/opencensus-python-dependency.md)
 * [Folyamatban lévő kérelmek nyomon követése](./../../azure-monitor/app/opencensus-python-request.md)

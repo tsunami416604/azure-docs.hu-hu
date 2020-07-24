@@ -7,12 +7,12 @@ ms.date: 06/17/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: c8a5e1b1324ca49d8b540998a82ebf125b3c5364
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5be21eea9dbb9ea0925ac014fce6272ce8c32a0d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975860"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028141"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>Előzetes verzió: Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-készítővel a PowerShell használatával
 
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan hozhat létre testreszabott Windows-rendszerképeket
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
-Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepítenie kell az az PowerShell-modult, és csatlakoznia kell az Azure-fiókjához a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Az az PowerShell-modul telepítésével kapcsolatos további információkért lásd: [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
 > Az az **. ImageBuilder** és az **az. ManagedServiceIdentity** PowerShell-modulok előzetes verzióban találhatók, ezeket külön kell telepítenie a (z) `Install-Module` paraméterrel rendelkező parancsmaggal `AllowPrerelease` . Amint ezek a PowerShell-modulok általánosan elérhetővé váltak, az a PowerShell-modul kiadásainak és natív módon elérhetővé válnak a Azure Cloud Shellon belül.
@@ -36,7 +36,7 @@ Ha a PowerShell helyi használatát választja, akkor ehhez a cikkhez telepíten
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizetést, amelyben az erőforrásokat számlázni kell. Válasszon ki egy adott előfizetést a [set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) parancsmag használatával.
+Ha több Azure-előfizetéssel rendelkezik, válassza ki a megfelelő előfizetést, amelyben az erőforrásokat számlázni kell. Válasszon ki egy adott előfizetést a [set-AzContext](/powershell/module/az.accounts/set-azcontext) parancsmag használatával.
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -98,9 +98,9 @@ $subscriptionID = (Get-AzContext).Subscription.Id
 Write-Output $subscriptionID
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy [Azure-erőforráscsoportot](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
+Hozzon létre egy [Azure-erőforráscsoportot](../../azure-resource-manager/management/overview.md) a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsmag használatával. Az erőforráscsoport olyan logikai tároló, amelyben a rendszer csoportként helyezi üzembe és kezeli az Azure-erőforrásokat.
 
 A következő példa létrehoz egy erőforráscsoportot a változóban `$imageResourceGroup` megadott régióban található változó alapján `$location` . Ez az erőforráscsoport a rendszerkép-konfigurációs sablon és a rendszerkép tárolására szolgál.
 
@@ -168,7 +168,7 @@ New-AzRoleAssignment @RoleAssignParams
 ```
 
 > [!NOTE]
-> Ha a következő hibaüzenetet kapja: "_New-AzRoleDefinition: a szerepkör-definíció túllépte a korlátot. Nem hozhatók létre további szerepkör-definíciók._", lásd: az [Azure RBAC hibáinak megoldása](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting).
+> Ha a következő hibaüzenetet kapja: "_New-AzRoleDefinition: a szerepkör-definíció túllépte a korlátot. Nem hozhatók létre további szerepkör-definíciók._", lásd: az [Azure RBAC hibáinak megoldása](../../role-based-access-control/troubleshooting.md).
 
 ## <a name="create-a-shared-image-gallery"></a>Shared Image Gallery létrehozása
 
@@ -200,7 +200,7 @@ New-AzGalleryImageDefinition @GalleryParams
 
 ## <a name="create-an-image"></a>Rendszerkép létrehozása
 
-Hozzon létre egy Azure rendszerkép-készítő forrásoldali objektumot. Tekintse [meg a Windows rendszerű virtuális gépek rendszerképeinek megkeresése az Azure Marketplace-](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) en az érvényes paraméterérték Azure PowerShell.
+Hozzon létre egy Azure rendszerkép-készítő forrásoldali objektumot. Tekintse [meg a Windows rendszerű virtuális gépek rendszerképeinek megkeresése az Azure Marketplace-](./cli-ps-findimage.md) en az érvényes paraméterérték Azure PowerShell.
 
 ```azurepowershell-interactive
 $SrcObjParams = @{

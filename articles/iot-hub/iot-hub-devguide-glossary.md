@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 78899f44ba6610f17d19b025f61d968a629c8ad6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b7a81357cc6ee2608d2acd3051dcac3e5d0e07e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023466"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub kifejezések glosszáriuma
 
@@ -26,7 +26,7 @@ Ez a cikk a IoT Hub cikkeiben használt általános kifejezéseket sorolja fel.
 
 A [speciális üzenetsor-kezelési protokoll (AMQP)](https://www.amqp.org/) a [IoT hub](#iot-hub) által támogatott üzenetküldési protokollok egyike az eszközökkel való kommunikációhoz. További információ a IoT Hub által támogatott üzenetküldési protokollokról: [üzenetek küldése és fogadása IoT hub](iot-hub-devguide-messaging.md)használatával.
 
-## <a name="automatic-device-management"></a>Automatikus eszközkezelés
+## <a name="automatic-device-management"></a>Automatikus eszközfelügyelet
 
 Az Azure-ban az automatikus eszközkezelés IoT Hub automatizálja a nagyméretű eszközök flottáinak teljes életciklusával kapcsolatos ismétlődő és összetett feladatokat. Az automatikus eszközkezelés lehetővé teszi, hogy a tulajdonságok alapján csoportosítsa az eszközöket, Definiáljon egy kívánt konfigurációt, és hagyja IoT Hub frissíteni az eszközöket, amikor azok hatókörbe kerülnek.  [Automatikus eszköz-konfigurációkból](iot-hub-auto-device-config.md) és [IoT Edge automatikus központi telepítésből](../iot-edge/how-to-deploy-at-scale.md)áll.
 
@@ -64,7 +64,7 @@ A [Microsoft Azure Portal](https://portal.azure.com) egy központi hely, ahol ü
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-A [Azure PowerShell](/powershell/azure/overview) parancsmagok gyűjteménye, amelyekkel az Azure a Windows PowerShell segítségével kezelhető. A parancsmagok segítségével az Azure platformon keresztül továbbított megoldásokat és szolgáltatásokat hozhat létre, tesztelheti, üzembe helyezheti és kezelheti.
+A [Azure PowerShell](/powershell/azure/) parancsmagok gyűjteménye, amelyekkel az Azure a Windows PowerShell segítségével kezelhető. A parancsmagok segítségével az Azure platformon keresztül továbbított megoldásokat és szolgáltatásokat hozhat létre, tesztelheti, üzembe helyezheti és kezelheti.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 

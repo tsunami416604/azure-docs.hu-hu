@@ -5,21 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42768c61cc46ba97e9bd16a06c85f20219672fdd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83639803"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027597"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Hogyan működik az önkiszolgáló jelszó-visszaállítási visszaírási az Azure Active Directory?
 
 Azure Active Directory (Azure AD) önkiszolgáló jelszó-visszaállítás (SSPR) lehetővé teszi a felhasználók számára, hogy a felhőben visszaállítsa a jelszavukat, de a legtöbb vállalat helyszíni Active Directory tartományi szolgáltatások (AD DS) környezettel is rendelkezik, ahol a felhasználók léteznek. A Password visszaírási egy olyan szolgáltatás, amely [Azure ad Connect](../hybrid/whatis-hybrid-identity.md) lehetővé teszi, hogy a jelszó módosításait a felhőben valós időben lehessen visszaírni egy meglévő helyszíni címtárba. Ebben a konfigurációban, mivel a felhasználók a felhőben a SSPR használatával módosítják vagy alaphelyzetbe állítják a jelszavukat, a frissített jelszavak a helyszíni AD DS-környezetre is visszakerülnek.
+
+> [!IMPORTANT]
+> Ez a fogalmi cikk egy rendszergazdát ismerteti, hogy az önkiszolgáló jelszó-visszaállítási visszaírási működése hogyan működik. Ha a végfelhasználó már regisztrálva van az önkiszolgáló jelszó-visszaállításhoz, és vissza kell kérnie a fiókját, lépjen a következőre: https://aka.ms/sspr .
+>
+> Ha az informatikai csapat nem engedélyezte a saját jelszavának alaphelyzetbe állítását, további segítségért forduljon az ügyfélszolgálathoz.
 
 A jelszó-visszaírási a következő hibrid identitási modelleket használó környezetekben támogatott:
 
@@ -36,7 +42,12 @@ A jelszó visszaírási a következő funkciókat biztosítja:
 * **Nincs szükség bejövő tűzfalszabályok**használatára: a Password visszaírási egy Azure Service Bus továbbítót használ mögöttes kommunikációs csatornaként. Minden kommunikáció a 443-es porton keresztül kimenő.
 
 > [!NOTE]
-> A helyszíni AD-ben található védett csoportokba tartozó rendszergazdai fiókok jelszavas visszaírási is használhatók. A rendszergazdák megváltoztathatják a jelszavukat a felhőben, de nem használhatják a jelszó-visszaállítást az elfelejtett jelszavak alaphelyzetbe állításához. A védett csoportokkal kapcsolatos további információkért lásd: [védett fiókok és csoportok a Active Directory](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+> A helyszíni AD-ben található védett csoportokba tartozó rendszergazdai fiókok jelszavas visszaírási is használhatók. A rendszergazdák megváltoztathatják a jelszavukat a felhőben, de nem használhatják a jelszó-visszaállítást az elfelejtett jelszavak alaphelyzetbe állításához. A védett csoportokkal kapcsolatos további információkért lásd: [védett fiókok és csoportok a AD DS](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-c--protected-accounts-and-groups-in-active-directory).
+
+A SSPR-visszaírási első lépéseihez hajtsa végre a következő oktatóanyagot:
+
+> [!div class="nextstepaction"]
+> [Oktatóanyag: az önkiszolgáló jelszó-visszaállítás (SSPR) visszaírási engedélyezése](tutorial-enable-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>A jelszóvisszaíró működése
 
@@ -52,14 +63,14 @@ Ha egy összevont vagy jelszó-kivonat szinkronizálta a felhasználót a felhő
 1. Ha az üzenet eléri a Service Bus-t, a jelszó-visszaállítási végpont automatikusan felébred, és úgy látja, hogy függőben van egy visszaállítási kérelem.
 1. A szolgáltatás ezután a Cloud Anchor attribútum használatával keresi a felhasználót. Ahhoz, hogy ez a keresés sikeres legyen, a következő feltételeknek kell teljesülniük:
 
-   * A felhasználói objektumnak léteznie kell a Active Directory-összekötő területén.
+   * A felhasználói objektumnak léteznie kell a AD DS-összekötő területén.
    * A felhasználói objektumot a megfelelő Metaverse (MV) objektumhoz kell kapcsolni.
-   * A felhasználói objektumot össze kell kapcsolni a megfelelő Azure Active Directory összekötő objektummal.
-   * Az Active Directory Connector objektumból az MV-ra mutató hivatkozáshoz a hivatkozáson a szinkronizálási szabálynak kell tartoznia `Microsoft.InfromADUserAccountEnabled.xxx` .
+   * A felhasználói objektumnak kapcsolódnia kell a megfelelő Azure AD Connector-objektumhoz.
+   * Az AD DS Connector objektumból az MV-ra mutató hivatkozáshoz a hivatkozáson a szinkronizálási szabálynak kell tartoznia `Microsoft.InfromADUserAccountEnabled.xxx` .
 
-   Ha a hívás a felhőből érkezik, a Szinkronizáló motor a **cloudAnchor** attribútum használatával keresi meg az Azure Active Directory-összekötő terület objektumát. Ezután a hivatkozás visszakerül az MV objektumra, majd a hivatkozás visszakerül a Active Directory objektumra. Mivel több Active Directory objektum (több erdő) is lehet ugyanahhoz a felhasználóhoz, a szinkronizálási motor a hivatkozáson alapul, `Microsoft.InfromADUserAccountEnabled.xxx` hogy kiválassza a megfelelőt.
+   Ha a hívás a felhőből érkezik, a Szinkronizáló motor a **cloudAnchor** attribútum használatával keres az Azure ad-összekötő terület objektumát. Ezután a hivatkozás visszakerül az MV objektumra, majd a hivatkozás visszakerül a AD DS objektumra. Mivel több AD DS objektum (több erdő) is lehet ugyanahhoz a felhasználóhoz, a szinkronizálási motor a hivatkozáson alapul, `Microsoft.InfromADUserAccountEnabled.xxx` hogy kiválassza a megfelelőt.
 
-1. A felhasználói fiók megtalálása után a rendszer megkísérli a jelszó alaphelyzetbe állítását közvetlenül a megfelelő Active Directory erdőben.
+1. A felhasználói fiók megtalálása után a rendszer megkísérli a jelszó alaphelyzetbe állítását közvetlenül a megfelelő AD DS erdőben.
 1. Ha a jelszó-megadási művelet sikeres, a felhasználó azt mondja, hogy a jelszava módosult.
 
    > [!NOTE]
@@ -68,7 +79,7 @@ Ha egy összevont vagy jelszó-kivonat szinkronizálta a felhasználót a felhő
 1. Ha a jelszó-megadási művelet meghiúsul, a rendszer hibaüzenetet kér a felhasználótól, hogy próbálkozzon újra. A művelet a következő okok miatt sikertelen lehet:
     * A szolgáltatás leállt.
     * A kiválasztott jelszó nem felel meg a szervezet házirendjeinek.
-    * Nem található a felhasználó a helyi Active Directoryban.
+    * Nem található a felhasználó a helyi AD DS környezetben.
 
    A hibaüzenetek útmutatást nyújtanak a felhasználóknak, hogy rendszergazdai beavatkozás nélkül is fel tudják oldani a megoldást.
 
@@ -85,7 +96,7 @@ A jelszó visszaírási egy nagyon biztonságos szolgáltatás. Az adatok védel
    1. A titkosított jelszó egy titkosított csatornán küldött HTTPS-üzenetbe kerül, amelyet a Service Bus Relay-hez a Microsoft TLS/SSL-tanúsítványok használatával küld.
    1. Miután az üzenet megérkezik a Service Bus szolgáltatásba, a helyszíni ügynök felébred, és hitelesíti a szolgáltatást a korábban létrehozott erős jelszó használatával.
    1. A helyszíni ügynök felveszi a titkosított üzenetet, és visszafejti azt a titkos kulcs használatával.
-   1. A helyszíni ügynök megpróbálja beállítani a jelszót a AD DS SetPassword API-n keresztül. Ez a lépés lehetővé teszi az Active Directory helyszíni jelszóházirend (például a bonyolultság, az életkor, az előzmények és a szűrők) kényszerítését a felhőben.
+   1. A helyszíni ügynök megpróbálja beállítani a jelszót a AD DS SetPassword API-n keresztül. Ez a lépés lehetővé teszi az AD DS helyszíni jelszóházirend (például a bonyolultság, az életkor, az előzmények és a szűrők) kényszerítését a felhőben.
 * **Üzenet elévülési szabályzatai**
    * Ha az üzenet a Service Bus szolgáltatásban található, mert a helyszíni szolgáltatás nem érhető el, időtúllépést okoz, és néhány perc múlva el lesz távolítva. Az üzenet időtúllépése és eltávolítása még tovább növeli a biztonságot.
 
@@ -94,9 +105,9 @@ A jelszó visszaírási egy nagyon biztonságos szolgáltatás. Az adatok védel
 Miután egy felhasználó elküldte a jelszó alaphelyzetbe állítását, az alaphelyzetbe állítási kérelem több titkosítási lépésen megy keresztül, mielőtt megérkezik a helyszíni környezetbe. Ezek a titkosítási lépések biztosítják a szolgáltatás megbízhatóságának és biztonságának maximális biztonságát. Ezek a következőképpen vannak leírva:
 
 1. **Jelszó-titkosítás 2048 bites RSA-kulccsal**: miután egy felhasználó elküldte a jelszót a helyszíni rendszerbe való visszaíráshoz, a beküldött jelszót egy 2048 bites RSA-kulccsal titkosítja a rendszer.
-1. **Csomag szintű TITKOSÍTÁS AES-GCM**: a teljes csomag, a jelszó és a szükséges metaadatok az AES-GCM használatával titkosítva vannak. Ez a titkosítás megakadályozza, hogy bárki közvetlenül hozzáférhessen a mögöttes ServiceBus-csatornához a tartalom megtekintésével vagy módosításával.
-1. **Minden kommunikáció a TLS/SSL protokollon keresztül**történik: az ServiceBus-mel folytatott kommunikáció egy SSL/TLS-csatornán történik. Ez a titkosítás védi a jogosulatlan harmadik féltől származó tartalmat.
-1. **Automatikus kulcs átadása hat havonta**: minden, hat hónapon át elvégezhető kulcs, vagy ha a jelszó visszaírási le van tiltva, majd újból engedélyezve Azure ad Connecton, a maximális biztonság és biztonság érdekében.
+1. **Csomag szintű TITKOSÍTÁS AES-GCM**: a teljes csomag, a jelszó és a szükséges metaadatok az AES-GCM használatával titkosítva vannak. Ez a titkosítás megakadályozza, hogy bárki közvetlenül hozzáférhessen a mögöttes Service Bus-csatornához a tartalom megtekintésével vagy módosításával.
+1. **Minden kommunikáció a TLS/SSL protokollon keresztül**történik: az Service Bus összes kommunikációja egy SSL/TLS-csatornán történik. Ez a titkosítás védi a jogosulatlan harmadik féltől származó tartalmat.
+1. **Automatikus Key rollover**hathavonta: minden, hat havonta átadott kulcs, vagy a jelszó visszaírási le van tiltva, majd újból engedélyezve Azure ad Connecton, a maximális biztonság és biztonság érdekében.
 
 ### <a name="password-writeback-bandwidth-usage"></a>Jelszó-visszaírási sávszélesség-használat
 

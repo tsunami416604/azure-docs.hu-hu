@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: 11d1a4743f9aaf70d96e6cfd1f22ff31def440f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb2f08c4788c90f8bdb2af9c6ef95fd1ac43b994
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021262"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028668"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Azure-beli virtuális gép helyi Windows-jelszavának visszaállítása kapcsolat nélküli üzemmódban
 Alaphelyzetbe állíthatja az Azure-beli virtuális gép helyi Windows-jelszavát a [Azure Portal vagy Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , ha telepítve van az Azure Guest Agent ügynök. Ez a módszer az Azure-beli virtuális gépek jelszavának alaphelyzetbe állításának elsődleges módja. Ha az Azure vendég ügynökével kapcsolatos problémákba ütközik, vagy ha az egyéni rendszerkép feltöltése után nem sikerül telepíteni, manuálisan is visszaállíthatja a Windows-jelszót. Ez a cikk részletesen ismerteti a helyi fiók jelszavának alaphelyzetbe állítását úgy, hogy a forrás operációs rendszer virtuális lemezét egy másik virtuális géphez csatolja. A cikkben ismertetett lépések nem vonatkoznak a Windows-tartományvezérlőkre. 
@@ -106,7 +107,7 @@ A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe �
 > [!NOTE]
 > A lépések nem vonatkoznak a Windows rendszerű tartományvezérlőkön. Ez csak önálló kiszolgálón vagy olyan kiszolgálón működik, amely tagja egy tartománynak.
 
-A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe állítani a jelszót a [Azure Portal vagy Azure PowerShell](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/reset-rdp) használatával. Mielőtt elkezdené, győződjön meg róla, hogy rendelkezik biztonsági másolattal a virtuális gépről. 
+A következő lépések elvégzése előtt mindig próbálja meg alaphelyzetbe állítani a jelszót a [Azure Portal vagy Azure PowerShell](/previous-versions/azure/virtual-machines/windows/classic/reset-rdp) használatával. Mielőtt elkezdené, győződjön meg róla, hogy rendelkezik biztonsági másolattal a virtuális gépről. 
 
 1. Törölje az érintett virtuális gépet Azure Portal. A virtuális gép törlése csak a metaadatokat, az Azure-ban található virtuális gép hivatkozását törli. A virtuális lemezeket a rendszer a virtuális gép törlésekor megőrzi:
    

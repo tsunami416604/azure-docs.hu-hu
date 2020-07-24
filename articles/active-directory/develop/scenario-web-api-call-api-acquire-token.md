@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 79f8eb9e804502a7c0e61c18e4998fa05db10278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e0701cc5a9bb14800a48e2281dba1eb6ea0cf72
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885140"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026458"
 ---
 # <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Webes API-kat meghívó webes API: az alkalmazás jogkivonatának beszerzése
 
@@ -26,46 +27,38 @@ Miután létrehozott egy ügyfélalkalmazás-objektumot, használja azt egy olya
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Íme egy példa az API-vezérlők műveleteiben meghívott kódra. Egy *ToDoList*nevű alsóbb RÉTEGbeli API-t hív meg.
+Íme egy példa a kód használatára a Microsoft. Identity. Web néven, amely az API-vezérlők műveleteiben található. Egy *ToDoList*nevű alsóbb RÉTEGbeli API-t hív meg. Az alárendelt API meghívására szolgáló jogkivonat lekéréséhez a `ITokenAcquisition` szolgáltatás a vezérlő konstruktorában (vagy az oldal konstruktorában, ha a Blazer használatakor) befecskendezi a szolgáltatást, és a vezérlő műveleteiben használja, a felhasználó ( `GetAccessTokenForUserAsync` ) vagy az alkalmazás () jogkivonatának beszerzése `GetAccessTokenForAppAsync` egy démoni forgatókönyv esetén.
 
 ```csharp
-private async Task GetTodoList(bool isAppStarting)
+[Authorize]
+public class MyApiController : Controller
 {
- ...
- //
- // Get an access token to call the To Do service.
- //
- AuthenticationResult result = null;
- try
- {
-  app = BuildConfidentialClient(HttpContext, HttpContext.User);
-  result = await app.AcquireTokenSilent(Scopes, account)
-                     .ExecuteAsync()
-                     .ConfigureAwait(false);
- }
-...
+    /// <summary>
+    /// The web API will accept only tokens 1) for users, 2) that have the `access_as_user` scope for
+    /// this API.
+    /// </summary>
+    static readonly string[] scopeRequiredByApi = new string[] { "access_as_user" };
+
+     static readonly string[] scopesToAccessDownstreamApi = new string[] { "api://MyTodolistService/access_as_user" };
+
+    private readonly ITokenAcquisition _tokenAcquisition;
+
+    public MyApiController(ITokenAcquisition tokenAcquisition)
+    {
+        _tokenAcquisition = tokenAcquisition;
+    }
+
+    public IActionResult Index()
+    {
+        HttpContext.VerifyUserHasAnyAcceptedScope(scopeRequiredByApi);
+
+        string accessToken = _tokenAcquisition.GetAccessTokenForUserAsync(scopesToAccessDownstreamApi);
+        return await callTodoListService(accessToken);
+    }
 }
 ```
 
-`BuildConfidentialClient()`hasonló a webes API- [kat meghívó webes API](scenario-web-api-call-api-app-configuration.md)-hoz használt forgatókönyvhöz: az alkalmazás konfigurációja. `BuildConfidentialClient()`példányok `IConfidentialClientApplication` egy olyan gyorsítótárral, amely csak egy fiókra vonatkozó információt tartalmaz. A fiókot a metódus biztosítja `GetAccountIdentifier` .
-
-A `GetAccountIdentifier` metódus a felhasználó identitásához társított jogcímeket használja, akik számára a webes API megkapta a JSON web token (JWT):
-
-```csharp
-public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
-{
- string userObjectId = GetObjectId(claimsPrincipal);
- string tenantId = GetTenantId(claimsPrincipal);
-
- if (    !string.IsNullOrWhiteSpace(userObjectId)
-      && !string.IsNullOrWhiteSpace(tenantId))
- {
-  return $"{userObjectId}.{tenantId}";
- }
-
- return null;
-}
-```
+A metódussal kapcsolatos részletekért `callTodoListService` tekintse meg [a webes API-kat meghívó webes API-t: az API meghívása](scenario-web-api-call-api-call-api.md)című témakört.
 
 # <a name="java"></a>[Java](#tab/java)
 Íme egy példa az API-vezérlők műveleteiben meghívott kódra. Meghívja az alsóbb rétegbeli API-Microsoft Graph.

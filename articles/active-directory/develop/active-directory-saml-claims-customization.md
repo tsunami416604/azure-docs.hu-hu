@@ -13,12 +13,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f56427dabdee715412596557fa075c5eb4df500
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478297"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027308"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
@@ -68,7 +68,7 @@ Az átmeneti NameID is támogatott, de nem érhető el a legördülő menüben, 
 
 Válassza ki a kívánt forrást a `NameIdentifier` (vagy NameID) jogcím számára. A következő lehetőségek közül választhat.
 
-| Name | Description |
+| Név | Leírás |
 |------|-------------|
 | E-mail | A felhasználó e-mail címe |
 | userprincipalName | A felhasználó egyszerű felhasználóneve (UPN) |
@@ -98,7 +98,7 @@ Bármilyen állandó (statikus) értéket hozzárendelhet az Azure AD-ben defini
 
 Használhatja a jogcím-átalakítási funkciókat is.
 
-| Függvény | Leírás |
+| Függvény | Description |
 |----------|-------------|
 | **ExtractMailPrefix()** | Eltávolítja a tartományi utótagot az e-mail-címről vagy az egyszerű felhasználónévből. Ez csak a Felhasználónév első részét (például "joe_smith") adja ki a (z joe_smith@contoso.com ) helyett. |
 | **Csatlakozás ()** | Egy attribútumot ellenőrzött tartománnyal társít. Ha a kiválasztott felhasználóazonosító-érték tartományhoz tartozik, a rendszer kibontja a felhasználónevet a kiválasztott ellenőrzött tartomány hozzáfűzéséhez. Ha például az e-mail-címet ( joe_smith@contoso.com ) adja meg a felhasználói azonosító értékként, és a contoso.onmicrosoft.com-t ellenőrzött tartományként választja, akkor ez a következőt eredményezi: joe_smith@contoso.onmicrosoft.com . |
@@ -164,7 +164,7 @@ Jogcím feltételének hozzáadása:
 
 1. A **jogcím kezelése**területen bontsa ki a jogcím feltételeit.
 2. Válassza ki a felhasználó típusát.
-3. Válassza ki azokat a csoportokat, amelyekhez a felhasználónak tartoznia kell. Egy adott alkalmazáshoz tartozó jogcímek között legfeljebb 10 egyedi csoportot választhat ki. 
+3. Válassza ki azokat a csoportokat, amelyekhez a felhasználónak tartoznia kell. Egy adott alkalmazáshoz tartozó jogcímek közül legfeljebb 50 egyedi csoportot választhat ki. 
 4. Válassza ki azt a **forrást** , ahol a jogcím le fogja kérdezni az értékét. Kiválaszthat egy felhasználói attribútumot a forrás attribútum legördülő menüből, vagy alkalmazhat egy átalakítást a felhasználói attribútumra, mielőtt jogcímet kibocsátja jogcímként.
 
 Fontos, hogy milyen sorrendben adja hozzá a feltételeket. Az Azure AD kiértékeli a feltételeket felülről lefelé, hogy eldöntse, melyik értéket kell kibocsátania a jogcímben. 

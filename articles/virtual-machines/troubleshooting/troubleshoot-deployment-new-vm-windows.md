@@ -15,11 +15,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b2f21cab4740013eb2de1d69f558c95461c493e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83120963"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028396"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Új Windowsos virtuális gép Azure-beli létrehozásakor felmerülő üzembe helyezési problémák elhárítása
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -36,7 +37,7 @@ A hibaelhárítás megkezdéséhez Gyűjtse össze a tevékenység naplóit a pr
 
 [Üzembe helyezési műveletek megtekintése](../../azure-resource-manager/templates/deployment-history.md)
 
-[Tevékenységnaplók megtekintése az Azure-erőforrások kezeléséhez](../../resource-group-audit.md)
+[Tevékenységnaplók megtekintése az Azure-erőforrások kezeléséhez](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -52,7 +53,7 @@ A hibaelhárítás megkezdéséhez Gyűjtse össze a tevékenység naplóit a pr
 
 **Resolution** (Osztás)
 
-A hibák elhárításához az [Add-AzVhd használatával töltse fel az eredeti VHD](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)-t, amely a helyszínen elérhető, ugyanazzal a beállítással, mint az operációs rendszer (általánosított/specializált). Az általánosított feltöltéshez ne felejtse el először futtatni a Sysprep programot.
+A hibák elhárításához az [Add-AzVhd használatával töltse fel az eredeti VHD](/powershell/module/az.compute/add-azvhd)-t, amely a helyszínen elérhető, ugyanazzal a beállítással, mint az operációs rendszer (általánosított/specializált). Az általánosított feltöltéshez ne felejtse el először futtatni a Sysprep programot.
 
 **Rögzítési hibák:**
 
@@ -89,5 +90,3 @@ Ez a hiba olyan helyzetekben fordul elő, amikor az új virtuálisgép-kérelem 
 
 ## <a name="next-steps"></a>További lépések
 Ha problémákba ütközik egy leállított Windowsos virtuális gép indításakor vagy egy meglévő Windows rendszerű virtuális gép átméretezése az Azure-ban, tekintse meg a [Resource Manager üzembe helyezésével kapcsolatos hibák elhárítása az Azure-ban meglévő Windows rendszerű virtuális gépek újraindítása vagy átméretezés](restart-resize-error-troubleshooting.md)
-
-

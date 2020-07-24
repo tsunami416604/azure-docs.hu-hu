@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 560ae8d837cf57e471a9f39d5ccdcf152a156b1e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186826"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029076"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Az Azure Linux-ügynök megismerése és használata
 
@@ -344,5 +344,4 @@ Az Ubuntu Cloud images a [Cloud-init](https://launchpad.net/ubuntu/+source/cloud
 * További információt a következő forrásokban talál az erőforrás-lemez csatlakoztatási pontjának konfigurálásához és az Ubuntu Felhőbeli rendszerképeken a kiépítés során felcserélt területről:
   
   * [Ubuntu wiki: swap-partíciók konfigurálása](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Egyéni adatbevitel egy Azure-beli virtuális gépre](../windows/classic/inject-custom-data.md)
-
+  * [Egyéni adatbevitel egy Azure-beli virtuális gépre](../windows/tutorial-automate-vm-deployment.md)

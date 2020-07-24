@@ -1,25 +1,25 @@
 ---
 title: Titkosítási kulcs megadása a blob Storage-kérelemben
 titleSuffix: Azure Storage
-description: Az Azure Blob Storage-ra irányuló kérelmeket használó ügyfelek igény szerint (előzetes verzió) megadhatnak egy titkosítási kulcsot. A kérelemben szereplő titkosítási kulcs részletesen szabályozható a blob Storage-műveletek titkosítási beállításai között.
+description: Az Azure Blob Storage-ra irányuló kérelmeket használó ügyfelek számára a kérések alapján a titkosítási kulcs megadására van lehetőség. A kérelemben szereplő titkosítási kulcs részletesen szabályozható a blob Storage-műveletek titkosítási beállításai között.
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 0e5a85bcc4ded3b4bf3fcbcaf095d7c8ef01c458
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec3d760450fb5cc20deed14dac03f58f23c2b4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805316"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029739"
 ---
-# <a name="provide-an-encryption-key-on-a-request-to-blob-storage-preview"></a>Titkosítási kulcs megadása blob Storage-kérelemre (előzetes verzió)
+# <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>Titkosítási kulcs megadása a blob Storage-kérelemben
 
-Az Azure Blob Storage-ra irányuló kérelmeket használó ügyfelek igény szerint (előzetes verzió) megadhatnak egy titkosítási kulcsot. A kérelemben szereplő titkosítási kulcs részletesen szabályozható a blob Storage-műveletek titkosítási beállításai között. A felhasználó által megadott kulcsok Azure Key Vault vagy egy másik kulcstárolóban tárolhatók.
+Az Azure Blob Storage-ra irányuló kérelmeket használó ügyfelek számára a kérések alapján a titkosítási kulcs megadására van lehetőség. A kérelemben szereplő titkosítási kulcs részletesen szabályozható a blob Storage-műveletek titkosítási beállításai között. A felhasználó által megadott kulcsok Azure Key Vault vagy egy másik kulcstárolóban tárolhatók.
 
 ## <a name="encrypting-read-and-write-operations"></a>Olvasási és írási műveletek titkosítása
 

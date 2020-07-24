@@ -7,17 +7,18 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1dcba7da09cff3b7123521a4daf1028ab17e199a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678358"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029144"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Egyéni és Cloud-init az Azure Virtual Machines
 
 Előfordulhat, hogy egy parancsfájlt vagy más metaadatokat kell beszúrnia egy Microsoft Azure virtuális gépre a kiépítési időpontban.  Más felhőkben ezt a koncepciót gyakran felhasználói adatként is nevezik.  Microsoft Azure az egyéni adatszolgáltatáshoz hasonló funkciót tartalmaz. 
 
-A rendszer csak az első rendszerindítás/kezdeti beállítás során bocsátja elérhetővé a virtuális gép számára, ezt "kiépítés" hívjuk. A kiépítés az a folyamat, amelyben a virtuális gép paramétereket hoz létre (például állomásnév, Felhasználónév, jelszó, tanúsítványok, egyéni adatok, kulcsok stb.) elérhetővé válnak a virtuális gép számára, és a kiépítési ügynök feldolgozza azokat, például a [Linux-ügynököt](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) és a [Cloud-init-](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)t. 
+A rendszer csak az első rendszerindítás/kezdeti beállítás során bocsátja elérhetővé a virtuális gép számára, ezt "kiépítés" hívjuk. A kiépítés az a folyamat, amelyben a virtuális gép paramétereket hoz létre (például állomásnév, Felhasználónév, jelszó, tanúsítványok, egyéni adatok, kulcsok stb.) elérhetővé válnak a virtuális gép számára, és a kiépítési ügynök feldolgozza azokat, például a [Linux-ügynököt](./extensions/agent-linux.md) és a [Cloud-init-](./linux/using-cloud-init.md#troubleshooting-cloud-init)t. 
 
 
 ## <a name="passing-custom-data-to-the-vm"></a>Egyéni adattovábbítás a virtuális gépre
@@ -33,7 +34,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Azure Resource Manager (ARM)-ben egy Base64- [függvény](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#base64)van.
+Azure Resource Manager (ARM)-ben egy Base64- [függvény](../azure-resource-manager/templates/template-functions-string.md#base64)van.
 
 ```json
 "name": "[parameters('virtualMachineName')]",
@@ -73,21 +74,21 @@ Ha engedélyezi az egyéni adatértékeket, és végrehajt egy parancsfájlt, ak
 
 Az egyéni adatvégrehajtás hibakereséséhez tekintse át a */var/log/waagent.log*
 
-* Cloud-init – alapértelmezés szerint a Cloud-init alapértelmezés szerint dolgozza fel az egyéni értékeket, így [több formátumot](https://cloudinit.readthedocs.io/en/latest/topics/format.html) is elfogad, például a Cloud-init konfigurációt, a parancsfájlokat stb. Hasonlóan a Linux-ügynökhöz, amikor a Cloud-init dolgozza fel az egyéni adatértékeket. Ha hibák léptek fel a konfigurációs feldolgozás vagy a parancsfájlok végrehajtása során, nem minősül végzetes kiépítési hibanek, és létre kell hoznia egy értesítési útvonalat, amely riasztást küld a parancsfájl befejezési állapotáról. A Linux-ügynöktől eltérően azonban a Cloud-init nem várja meg a felhasználói egyéni adatkonfigurációk befejeződését, mielőtt a virtuális gép készen áll a platformra történő jelentéskészítésre. Az Azure-beli Cloud-init szolgáltatással kapcsolatos további információkért tekintse át a [dokumentációt](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init).
+* Cloud-init – alapértelmezés szerint a Cloud-init alapértelmezés szerint dolgozza fel az egyéni értékeket, így [több formátumot](https://cloudinit.readthedocs.io/en/latest/topics/format.html) is elfogad, például a Cloud-init konfigurációt, a parancsfájlokat stb. Hasonlóan a Linux-ügynökhöz, amikor a Cloud-init dolgozza fel az egyéni adatértékeket. Ha hibák léptek fel a konfigurációs feldolgozás vagy a parancsfájlok végrehajtása során, nem minősül végzetes kiépítési hibanek, és létre kell hoznia egy értesítési útvonalat, amely riasztást küld a parancsfájl befejezési állapotáról. A Linux-ügynöktől eltérően azonban a Cloud-init nem várja meg a felhasználói egyéni adatkonfigurációk befejeződését, mielőtt a virtuális gép készen áll a platformra történő jelentéskészítésre. Az Azure-beli Cloud-init szolgáltatással kapcsolatos további információkért tekintse át a [dokumentációt](./linux/using-cloud-init.md).
 
 
-Az egyéni adatvégrehajtás hibaelhárításához tekintse át a hibaelhárítási [dokumentációt](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init).
+Az egyéni adatvégrehajtás hibaelhárításához tekintse át a hibaelhárítási [dokumentációt](./linux/using-cloud-init.md#troubleshooting-cloud-init).
 
 
 ## <a name="faq"></a>GYIK
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>A virtuális gép létrehozása után frissíthetem az egyéni adatértékeket?
-Egyetlen virtuális gép esetében a virtuálisgép-modellben lévő egyéni adat nem frissíthető, de a VMSS esetében a VMSS egyéni adatait [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) (PS vagy az CLI-ügyfelek esetében nem alkalmazható) használatával frissítheti. A VMSS modellben lévő egyéni adattípusok frissítésekor:
+Egyetlen virtuális gép esetében a virtuálisgép-modellben lévő egyéni adat nem frissíthető, de a VMSS esetében a VMSS egyéni adatait [REST API](/rest/api/compute/virtualmachinescalesets/update) (PS vagy az CLI-ügyfelek esetében nem alkalmazható) használatával frissítheti. A VMSS modellben lévő egyéni adattípusok frissítésekor:
 * A VMSS lévő meglévő példányok nem kapják meg az egyéni adatok frissítését, csak addig, amíg el nem távolítják őket.
 * A frissített VMSS lévő meglévő példányok nem kapják meg a frissített egyéni adatértékeket.
 * Az új példányok megkapják az új egyéni adatértékeket.
 
 ### <a name="can-i-place-sensitive-values-in-custom-data"></a>Bizalmas értékeket is elhelyezek az egyéni adatokban?
-Javasoljuk, hogy a bizalmas adatokat **ne** tárolja egyéni adatokban. További információ: [Azure Security and encryption – ajánlott eljárások](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices).
+Javasoljuk, hogy a bizalmas adatokat **ne** tárolja egyéni adatokban. További információ: [Azure Security and encryption – ajánlott eljárások](../security/fundamentals/data-encryption-best-practices.md).
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>A IMDS-ben elérhetővé tett egyéni adathalmazok?

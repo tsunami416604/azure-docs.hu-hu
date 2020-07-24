@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 664687d096a3a9c6ce9a6c7de0025604e046b0a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230842"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029977"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba (előzetes verzió)
 
@@ -66,19 +66,19 @@ Számos Azure-erőforrás függőséget tartalmaz egy előfizetéshez vagy egy c
 
 | Szolgáltatás vagy erőforrás | Érintett | Helyreállítható | Hatással van? | Miket végezhet el? |
 | --------- | --------- | --------- | --------- | --------- |
-| Szerepkör-hozzárendelések | Igen | Igen | [Szerepkör-hozzárendelések felsorolása](#save-all-role-assignments) | Az összes szerepkör-hozzárendelés véglegesen törölve lesz. A felhasználókat, csoportokat és egyszerű szolgáltatásokat le kell képeznie a cél könyvtár megfelelő objektumaira. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
-| Egyéni szerepkörök | Igen | Igen | [Egyéni szerepkörök listázása](#save-custom-roles) | Az összes egyéni szerepkör véglegesen törölve lesz. Újra létre kell hoznia az egyéni szerepköröket és a szerepkör-hozzárendeléseket. |
-| Rendszer által hozzárendelt felügyelt identitások | Igen | Igen | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Le kell tiltania, majd újra engedélyeznie kell a felügyelt identitásokat. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
-| Felhasználó által hozzárendelt felügyelt identitások | Igen | Igen | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Törölnie kell, újra létre kell hoznia és csatolnia kell a felügyelt identitásokat a megfelelő erőforráshoz. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
-| Azure Key Vault | Igen | Igen | [Hozzáférési szabályzatok listázása Key Vault](#list-other-known-resources) | Frissítenie kell a kulcstartóhoz társított bérlői azonosítót. Az új hozzáférési házirendeket el kell távolítania és hozzá kell adnia. |
-| Azure SQL Database-adatbázisok az Azure AD-hitelesítéssel | Igen | Nem | [Azure SQL-adatbázisok keresése az Azure AD-hitelesítéssel](#list-other-known-resources) |  |  |
-| Azure Storage és Azure Data Lake Storage Gen2 | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
+| Szerepkör-hozzárendelések | Igen | Yes | [Szerepkör-hozzárendelések felsorolása](#save-all-role-assignments) | Az összes szerepkör-hozzárendelés véglegesen törölve lesz. A felhasználókat, csoportokat és egyszerű szolgáltatásokat le kell képeznie a cél könyvtár megfelelő objektumaira. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
+| Egyéni szerepkörök | Igen | Yes | [Egyéni szerepkörök listázása](#save-custom-roles) | Az összes egyéni szerepkör véglegesen törölve lesz. Újra létre kell hoznia az egyéni szerepköröket és a szerepkör-hozzárendeléseket. |
+| Rendszer által hozzárendelt felügyelt identitások | Igen | Yes | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Le kell tiltania, majd újra engedélyeznie kell a felügyelt identitásokat. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
+| Felhasználó által hozzárendelt felügyelt identitások | Igen | Yes | [Felügyelt identitások listázása](#list-role-assignments-for-managed-identities) | Törölnie kell, újra létre kell hoznia és csatolnia kell a felügyelt identitásokat a megfelelő erőforráshoz. Újra létre kell hoznia a szerepkör-hozzárendeléseket. |
+| Azure Key Vault | Igen | Yes | [Hozzáférési szabályzatok listázása Key Vault](#list-other-known-resources) | Frissítenie kell a kulcstartóhoz társított bérlői azonosítót. Az új hozzáférési házirendeket el kell távolítania és hozzá kell adnia. |
+| Azure SQL Database-adatbázisok az Azure AD-hitelesítéssel | Yes | Nem | [Azure SQL-adatbázisok keresése az Azure AD-hitelesítéssel](#list-other-known-resources) |  |  |
+| Azure Storage és Azure Data Lake Storage Gen2 | Igen | Yes |  | Az ACL-eket újra létre kell hoznia. |
 | Azure Data Lake Storage Gen1 | Igen |  |  | Az ACL-eket újra létre kell hoznia. |
-| Azure Files | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
-| Azure File Sync | Igen | Igen |  |  |
-| Azure Managed Disks | Igen | N/A |  |  |
-| Azure Container Services a Kubernetes-hez | Igen | Igen |  |  |
-| Azure Active Directory Domain Services | Igen | Nem |  |  |
+| Azure Files | Igen | Yes |  | Az ACL-eket újra létre kell hoznia. |
+| Azure File Sync | Igen | Yes |  |  |
+| Azure Managed Disks | Yes | n.a. |  |  |
+| Azure Container Services a Kubernetes-hez | Igen | Yes |  |  |
+| Azure Active Directory tartományi szolgáltatások | Yes | Nem |  |  |
 | Alkalmazásregisztrációk | Igen | Igen |  |  |
 
 Ha olyan erőforráshoz (például egy Storage-fiókhoz vagy SQL-adatbázishoz) használ titkosítást, amely nem ugyanahhoz az előfizetéshez tartozik, mint az átvitt egyik kulcstartó, akkor az egy helyreállíthatatlan forgatókönyvhöz vezethet. Ha ez a helyzet áll fenn, hajtson végre egy másik kulcstartó használatát, vagy átmenetileg tiltsa le az ügyfél által felügyelt kulcsokat a nem helyreállítható forgatókönyv elkerüléséhez.
@@ -145,7 +145,7 @@ A lépések elvégzéséhez a következőkre lesz szüksége:
 
 ### <a name="save-custom-roles"></a>Egyéni szerepkörök mentése
 
-1. Az egyéni szerepkörök listázásához használja az az [role definition List listát](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) . További információ: [Egyéni szerepkörök létrehozása vagy frissítése Azure-erőforrásokhoz az Azure CLI használatával](custom-roles-cli.md).
+1. Az egyéni szerepkörök listázásához használja az az [role definition List listát](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) . További információ: [Azure-beli egyéni szerepkörök létrehozása vagy frissítése az Azure CLI használatával](custom-roles-cli.md).
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -215,7 +215,7 @@ A felügyelt identitások nem frissülnek, ha egy előfizetést egy másik köny
 
 ### <a name="list-key-vaults"></a>Kulcstartók listázása
 
-Kulcstartó létrehozásakor a rendszer automatikusan az alapértelmezett Azure Active Directory bérlői AZONOSÍTÓhoz kapcsolódik ahhoz az előfizetéshez, amelyben létrehozták. A hozzáférési szabályzatok minden bejegyzése is ehhez a bérlőazonosítóhoz kapcsolódik. További információ: [Azure Key Vault áthelyezése másik előfizetésre](../key-vault/general/keyvault-move-subscription.md).
+Kulcstartó létrehozásakor a rendszer automatikusan az alapértelmezett Azure Active Directory bérlői AZONOSÍTÓhoz kapcsolódik ahhoz az előfizetéshez, amelyben létrehozták. A hozzáférési szabályzatok minden bejegyzése is ehhez a bérlőazonosítóhoz kapcsolódik. További információ: [Azure Key Vault áthelyezése másik előfizetésre](../key-vault/general/move-subscription.md).
 
 > [!WARNING]
 > Ha olyan erőforráshoz (például egy Storage-fiókhoz vagy SQL-adatbázishoz) használja a REST-titkosítást, amely nem ugyanahhoz az előfizetéshez tartozik, mint az átvitt egyik kulcstartó, akkor egy helyreállíthatatlan forgatókönyvhöz vezethet. Ha ez a helyzet áll fenn, hajtson végre egy másik kulcstartó használatát, vagy átmenetileg tiltsa le az ügyfél által felügyelt kulcsokat a nem helyreállítható forgatókönyv elkerüléséhez.
@@ -291,7 +291,7 @@ Ebben a lépésben átadja az előfizetés számlázási tulajdonjogát a forrá
 
 ### <a name="create-custom-roles"></a>Egyéni szerepkörök létrehozása
         
-- Az [az role definition Create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) paranccsal hozzon létre minden egyéni szerepkört a korábban létrehozott fájlokból. További információ: [Egyéni szerepkörök létrehozása vagy frissítése Azure-erőforrásokhoz az Azure CLI használatával](custom-roles-cli.md).
+- Az [az role definition Create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) paranccsal hozzon létre minden egyéni szerepkört a korábban létrehozott fájlokból. További információ: [Azure-beli egyéni szerepkörök létrehozása vagy frissítése az Azure CLI használatával](custom-roles-cli.md).
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -339,7 +339,7 @@ Ebben a lépésben átadja az előfizetés számlázási tulajdonjogát a forrá
 
 ### <a name="update-key-vaults"></a>Kulcstartók frissítése
 
-Ez a szakasz a kulcstartók frissítésének alapvető lépéseit ismerteti. További információ: [Azure Key Vault áthelyezése másik előfizetésre](../key-vault/general/keyvault-move-subscription.md).
+Ez a szakasz a kulcstartók frissítésének alapvető lépéseit ismerteti. További információ: [Azure Key Vault áthelyezése másik előfizetésre](../key-vault/general/move-subscription.md).
 
 1. Frissítse az előfizetésben lévő összes meglévő kulcstartóhoz társított bérlői azonosítót a cél könyvtárba.
 

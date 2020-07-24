@@ -5,17 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 295738ee5943a6cf54bc7e1e3ce4bba621dbe29f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9861e8e8be39781ad1b256b9939df3ab03e74be6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658686"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027529"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication felhasználói beállításainak kezelése
 
@@ -26,7 +27,7 @@ Az Azure Multi-Factor Authentication felhasználóinak kezeléséhez megkövetel
 Ha a *hitelesítési rendszergazda* szerepkört rendelte hozzá, megkövetelheti a felhasználóktól a jelszavuk visszaállítását, az MFA regisztrálását, illetve a meglévő MFA-munkamenetek visszavonását a felhasználói objektumból. A felhasználói beállítások kezeléséhez végezze el a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldalon válassza **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
+1. A bal oldalon válassza az **Azure Active Directory** > **Felhasználók** > **Minden felhasználó** lehetőséget.
 1. Válassza ki azt a felhasználót, akinek műveletet kíván végrehajtani, és válassza a **hitelesítési módszerek**lehetőséget. Az ablak tetején válassza a következő lehetőségek egyikét a felhasználó számára:
    - A **jelszó alaphelyzetbe állítása** visszaállítja a felhasználó jelszavát, és egy ideiglenes jelszót rendel hozzá, amelyet a következő bejelentkezéskor módosítani kell.
    - Az **MFA ismételt regisztrálásának megkövetelése** lehetővé teszi, hogy amikor a felhasználó legközelebb bejelentkezik, egy új MFA hitelesítési módszer beállítására van szükség.
@@ -46,13 +47,13 @@ A felhasználók alkalmazási jelszavának törléséhez hajtsa végre a követk
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldali oldalon válassza **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
-1. Válassza a **multi-Factor Authentication**lehetőséget. Előfordulhat, hogy a menüpontra kell görgetni a jobb oldalon. Válassza az alábbi képernyőképet a teljes Azure Portal ablak és menü helyének megtekintéséhez:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication kiválasztása az Azure AD felhasználók ablakában")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. Válassza a **Multi-Factor Authentication** lehetőséget. Előfordulhat, hogy a menüpontra kell görgetni a jobb oldalon. Válassza az alábbi képernyőképet a teljes Azure Portal ablak és menü helyének megtekintéséhez:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication kiválasztása az Azure AD felhasználók ablakában")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Jelölje be a felügyelni kívánt felhasználó vagy felhasználók melletti jelölőnégyzetet. A jobb oldalon megjelenik a gyors lépésre vonatkozó beállítások listája.
 1. Válassza a **felhasználói beállítások kezelése**lehetőséget, majd jelölje be a **kijelölt felhasználók által létrehozott összes meglévő alkalmazás jelszavának törlése**jelölőnégyzetet az alábbi példában látható módon: az ![ összes meglévő alkalmazás jelszavának törlése](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 1. Válassza a **Mentés**, majd a **Bezárás**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk segített az egyes felhasználói beállítások konfigurálásában. Az Azure Multi-Factor Authentication szolgáltatás beállításainak konfigurálásával kapcsolatban lásd: az [azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md)
+Ez a cikk az egyéni felhasználói beállítások konfigurálását mutatja be. Az Azure Multi-Factor Authentication szolgáltatás általános beállításainak konfigurálásával kapcsolatban lásd: az [azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md).
 
-Ha a felhasználóknak segítségre van szüksége, tekintse meg az [Azure multi-Factor Authentication felhasználói útmutatóját](../user-help/multi-factor-authentication-end-user.md).
+Ha a felhasználóknak segítségre van szüksége, tekintse meg az [Azure multi-Factor Authentication felhasználói útmutatóját](../user-help/multi-factor-authentication-end-user-first-time.md).

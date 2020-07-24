@@ -5,20 +5,20 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 093448ad0280ada039f1d4e5abd0e83e4be19b03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d790a6f02fdc07609e374639c6e452b9088262e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482105"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024571"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>Azure Functions figyelése Azure Monitor Application Insights
 
-A [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) az Azure Application Insights beépített integrációját kínálja a függvények figyelésére. 
+A [Azure functions](../../azure-functions/functions-overview.md) az Azure Application Insights beépített integrációját kínálja a függvények figyelésére. 
 
 Application Insights gyűjti a napló-, a teljesítmény-és a hibák adatait, és automatikusan észleli a teljesítménnyel kapcsolatos rendellenességeket. A Application Insights hatékony elemzési eszközöket tartalmaz, amelyek segítenek a problémák diagnosztizálásában és a függvények használatának megismerésében. Ha betekintést nyújt az alkalmazás adataiba, folyamatosan fejlesztheti a teljesítményt és a használhatóságot. Application Insights is használhatja a helyi funkció alkalmazás-projekt fejlesztése során. 
 
-A szükséges Application Insights rendszerállapot-kialakítás be van építve Azure Functionsba. A Function app Application Insights erőforráshoz való összekapcsolásához egyetlen szükséges dolog egy érvényes kialakítási kulcs. Ha a Function app-erőforrást az Azure-ban hozza létre, a kialakítási kulcsot hozzá kell adni az alkalmazás beállításaihoz. Ha a Function alkalmazás még nem rendelkezik ezzel a kulccsal, manuálisan is beállíthatja. További információért olvassa el a [Azure functions figyelését](https://docs.microsoft.com/azure/azure-functions/functions-monitoring?tabs=cmd)ismertető témakört.
+A szükséges Application Insights rendszerállapot-kialakítás be van építve Azure Functionsba. A Function app Application Insights erőforráshoz való összekapcsolásához egyetlen szükséges dolog egy érvényes kialakítási kulcs. Ha a Function app-erőforrást az Azure-ban hozza létre, a kialakítási kulcsot hozzá kell adni az alkalmazás beállításaihoz. Ha a Function alkalmazás még nem rendelkezik ezzel a kulccsal, manuálisan is beállíthatja. További információért olvassa el a [Azure functions figyelését](../../azure-functions/functions-monitoring.md?tabs=cmd)ismertető témakört.
 
 ## <a name="distributed-tracing-for-java-applications-on-windows-public-preview"></a>A Java-alkalmazások elosztott nyomkövetése Windows rendszeren (nyilvános előzetes verzió)
 
@@ -40,8 +40,8 @@ ApplicationInsightsAgent_EXTENSION_VERSION -> ~2
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További útmutatás és információk a figyelés [figyeléséről Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-monitoring)
-* Az [elosztott nyomkövetés](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing) áttekintése
-* Megtudhatja, mit tehet az [alkalmazás-hozzárendelés](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net) a vállalata számára
-* További információ a [Java-alkalmazások kéréseiről és függőségeiről](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
-* További információ a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) és a [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* További útmutatás és információk a figyelés [figyeléséről Azure functions](../../azure-functions/functions-monitoring.md)
+* Az [elosztott nyomkövetés](./distributed-tracing.md) áttekintése
+* Megtudhatja, mit tehet az [alkalmazás-hozzárendelés](./app-map.md?tabs=net) a vállalata számára
+* További információ a [Java-alkalmazások kéréseiről és függőségeiről](./java-in-process-agent.md)
+* További információ a [Azure monitor](../overview.md) és a [Application Insights](./app-insights-overview.md)

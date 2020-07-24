@@ -4,16 +4,17 @@ description: Teljesítmény-és terhelési tesztek beállítása az Azure Applic
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8885a2e511c11317f593706255437e52819adcae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77669862"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024350"
 ---
 # <a name="performance-testing"></a>Teljesítménytesztelés
 
 > [!NOTE]
-> A felhőalapú terhelés-tesztelési szolgáltatás elavult. Az elavultság, a szolgáltatás rendelkezésre állása és az alternatív szolgáltatások további információit [itt](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops)találja.
+> A felhőalapú terhelés-tesztelési szolgáltatás elavult. Az elavultság, a szolgáltatás rendelkezésre állása és az alternatív szolgáltatások további információit [itt](/azure/devops/test/load-test/overview?view=azure-devops)találja.
 
 Application Insights lehetővé teszi, hogy terhelési teszteket készítsen a webhelyekhez. A [rendelkezésre állási tesztekhez](monitor-web-app-availability.md)hasonlóan az Azure-beli tesztelési ügynököktől származó alapszintű kérelmek vagy [több lépésből álló kérések](availability-multistep.md) is küldhetők. A teljesítménytesztek lehetővé teszik akár 20 000 egyidejű felhasználó szimulálása akár 60 percig.
 
@@ -35,7 +36,7 @@ Alapszintű teljesítményteszt létrehozásához válassza ki a **manuális tes
 
 |Beállítás| Maximális érték
 |----------|------------|
-| Felhasználói terhelés | 20000 |
+| Felhasználói terhelés | 20 000 |
 | Időtartam (perc)  | 60 |  
 
 A teszt létrehozása után kattintson a **teszt futtatása**gombra.

@@ -5,20 +5,46 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 06/24/2020
+ms.date: 07/19/2020
 ms.author: abnarain
-ms.openlocfilehash: e77d621d5699c434e691de0a523e58e49166d8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 521756081db938e749849e6f3630dbd60700d24f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315110"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023834"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ez a cikk a Azure Data Factory saját üzemeltetésű integrációs moduljának gyakori hibaelhárítási módszereit vizsgálja.
+
+## <a name="gather-self-hosted-integration-runtime-logs-from-azure-data-factory"></a>Saját üzemeltetésű Integration Runtime-naplók összegyűjtése a Azure Data Factory
+
+A saját üzemeltetésű IR/Shared IR-ben futó sikertelen tevékenységek esetében Azure Data Factory támogatja a hibanapló megtekintését és feltöltését. A hibajelentési azonosító lekéréséhez kövesse az alábbi lépéseket, majd adja meg a jelentés AZONOSÍTÓját a kapcsolódó ismert problémák megkereséséhez.
+
+1. Ugrás a **tevékenység-futtatások** lapra.
+
+1. A **hiba** oszlopban kattintson az alábbi gombra.
+
+    ![Tevékenység-futtatások lapja](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
+
+1. Megjelenik a sikertelen tevékenység futtatásához kapcsolódó naplók. További segítségért kattintson a **naplók küldése** gombra.
+
+    ![Naplók küldése](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
+
+1. Kiválaszthatja azokat a naplókat, amelyeket el szeretne küldeni. A *saját*üzemeltetésű integrációs modul esetében feltölthet olyan naplókat, amelyek a sikertelen tevékenységgel vagy a saját üzemeltetésű IR-csomóponton lévő összes naplóval kapcsolatosak. A *megosztott IR*esetében csak a sikertelen tevékenységhez kapcsolódó naplók tölthetők fel.
+
+    ![Naplók kiválasztása](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
+
+1. A naplók feltöltésekor őrizze meg a jelentés AZONOSÍTÓjának rekordját, ha további segítségre van szüksége a probléma megoldásához.
+
+    ![Naplók feltöltése](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+
+> [!NOTE]
+> A naplózási és a feltöltési kérelmeket az összes online saját üzemeltetésű IR-példányon végrehajtja a rendszer. Győződjön meg arról, hogy az összes saját üzemeltetésű IR-példány online állapotban van, ha a hiányzó naplók. 
+
 
 ## <a name="common-errors-and-resolutions"></a>Gyakori hibák és megoldások
 
@@ -32,7 +58,7 @@ Ez a cikk a Azure Data Factory saját üzemeltetésű integrációs moduljának 
 
 A saját üzemeltetésű integrációs modul nem tud kapcsolódni a Data Factory szolgáltatáshoz (háttér). Ezt a problémát általában a tűzfal hálózati beállításai okozzák.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 1. Győződjön meg arról, hogy fut-e az Integration Runtime szolgáltatás.
     
@@ -99,7 +125,7 @@ Előfordulhat, hogy a saját üzemeltetésű integrált futásidejű csomópont 
 
 Ez a viselkedés akkor fordul elő, ha a csomópontok nem tudnak kommunikálni egymással.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 
 1. Jelentkezzen be a csomópont által üzemeltetett virtuális gépre. Az **alkalmazások és szolgáltatások naplóiban**  >  **Integration Runtime**, nyissa meg Eseménynapló, és szűrje az összes hibát.
 

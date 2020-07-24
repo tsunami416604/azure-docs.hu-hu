@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: fc8304fb068152c800d7b71f77fb601956fb6510
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698306"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023399"
 ---
 # <a name="changelog"></a>Változásnapló #
 
@@ -31,7 +31,7 @@ ms.locfileid: "83698306"
 
 ## <a name="223-official-update-january-9-2019"></a>2.2.3 (hivatalos frissítés, január 9 2019) ##
 
-### <a name="features"></a>Szolgáltatások ###
+### <a name="features"></a>Funkciók ###
 
 - Vonás HLS A hangkövetési menü hozzáadva a Safari HLS lejátszásához
 
@@ -72,7 +72,7 @@ ms.locfileid: "83698306"
 
 ### <a name="changes"></a>Változások ###
 
-- Módosítása [Élő felirat] A 608 és 708 közötti CEA-feliratok API-neve módosítva. További információ: CEA708- [feliratok beállításai](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
+- Módosítása [Élő felirat] A 608 és 708 közötti CEA-feliratok API-neve módosítva. További információ: CEA708- [feliratok beállításai](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
 
 ## <a name="220-official-release"></a>2.2.0 (hivatalos kiadás) ##
 
@@ -448,7 +448,7 @@ ms.locfileid: "83698306"
 
 ### <a name="features-160"></a>Funkciók 1.6.0 ###
 
-- [Funkció] 33%-os méret csökkentése a azuremediaplayer. min. js-ben
+- [Funkció] 33%-os méret csökkentése azuremediaplayer.min.js
 - Vonás [AzureHtml5JS | Edge] [nem tesztelt] a DD + audio streamek támogatása az Edge-ben (a kezdeti választás után nincs szükség a kodekre). Az alkalmazásnak most ki kell választania a megfelelő hangadatfolyamot.
 - Vonás Billentyűparancs-vezérlők (további részletekért lásd: docs)
 - Vonás Időponthoz tartozó tipp – pontos keresés
@@ -615,6 +615,6 @@ ms.locfileid: "83698306"
 
 Kezdeti előzetes kiadás
 
-## <a name="next-steps"></a>Következő lépések ##
+## <a name="next-steps"></a>További lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

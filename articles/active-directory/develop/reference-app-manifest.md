@@ -1,5 +1,6 @@
 ---
 title: A Azure Active Directory alkalmazás jegyzékfájljának ismertetése
+titleSuffix: Microsoft identity platform
 description: A Azure Active Directory alkalmazás jegyzékének részletes lefedettsége, amely egy Azure AD-bérlőben az alkalmazás identitás-konfigurációját jelöli, és a OAuth engedélyezésének, a hozzájárulási élménynek és egyéb megoldásoknak a megkönnyítése érdekében használatos.
 services: active-directory
 author: rwike77
@@ -12,18 +13,18 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: e31c2c69e36b97f5584ee32e6c452525389f7f42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba490a1e88a242f19daf1a74fe38f02e659571da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479249"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026747"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-alkalmazás jegyzékfájlja
 
-Az alkalmazás jegyzékfájlja a Microsoft Identity platform alkalmazás-objektumának összes attribútumának definícióját tartalmazza. Az alkalmazás-objektum frissítésére szolgáló mechanizmusként is szolgál. Az alkalmazás entitásával és annak sémájával kapcsolatos további információkért tekintse meg a [Graph API alkalmazás-entitás dokumentációját](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity).
+Az alkalmazás jegyzékfájlja a Microsoft Identity platform alkalmazás-objektumának összes attribútumának definícióját tartalmazza. Az alkalmazás-objektum frissítésére szolgáló mechanizmusként is szolgál. Az alkalmazás entitásával és annak sémájával kapcsolatos további információkért tekintse meg a [Graph API alkalmazás-entitás dokumentációját](/graph/api/resources/application).
 
-Az alkalmazások attribútumai a Azure Portalon vagy programozott módon konfigurálhatók [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) vagy a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)használatával. Vannak azonban olyan helyzetek, amikor szerkesztenie kell az alkalmazás jegyzékfájlját az alkalmazás attribútumának konfigurálásához. Ezek a forgatókönyvek a következőket biztosítják:
+Az alkalmazások attribútumai a Azure Portalon vagy programozott módon konfigurálhatók [REST API](/graph/api/resources/application) vagy a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)használatával. Vannak azonban olyan helyzetek, amikor szerkesztenie kell az alkalmazás jegyzékfájlját az alkalmazás attribútumának konfigurálásához. Ezek a forgatókönyvek a következőket biztosítják:
 
 * Ha az alkalmazást Azure AD több-bérlős és személyes Microsoft-fiókkal regisztrálta, a felhasználói felületen nem módosíthatja a támogatott Microsoft-fiókokat. Ehelyett az Application manifest Editort kell használnia a támogatott fióktípus módosításához.
 * Ha meg kell határoznia az alkalmazás által támogatott engedélyeket és szerepköröket, módosítania kell az alkalmazás jegyzékfájlját.
@@ -32,8 +33,8 @@ Az alkalmazások attribútumai a Azure Portalon vagy programozott módon konfigu
 
 Az alkalmazás jegyzékfájljának konfigurálása:
 
-1. Lépjen a [Azure Portal](https://portal.azure.com). Keresse meg és válassza ki a **Azure Active Directory** szolgáltatást.
-1. Válassza a **Alkalmazásregisztrációk**lehetőséget.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Keresse meg és válassza ki a **Azure Active Directory** szolgáltatást.
+1. Válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza ki a konfigurálni kívánt alkalmazást.
 1. Az alkalmazás **Áttekintés** lapján válassza az **Alkalmazásjegyzék** szakaszt. Megnyílik egy webalapú jegyzékfájl-szerkesztő, amely lehetővé teszi a jegyzékfájl szerkesztését a portálon belül. Ha szeretné, a **Letöltés** lehetőségre kattintva helyileg szerkesztheti a jegyzékfájlt, majd a **feltöltés** funkcióval újra alkalmazhatja azt az alkalmazásra.
 
@@ -104,7 +105,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| allowPublicClient | Logikai |
+| allowPublicClient | Logikai érték |
 
 Megadja a tartalék alkalmazás típusát. Az Azure AD alapértelmezés szerint kikövetkezteti az alkalmazás típusát a replyUrlsWithType. Vannak olyan helyzetek, amikor az Azure AD nem tudja megállapítani az ügyfél-alkalmazás típusát. Például az egyik ilyen forgatókönyv az a [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) folyamat, amelyben a HTTP-kérelem URL-átirányítás nélkül történik. Ezekben az esetekben az Azure AD az alkalmazás típusát a tulajdonság értéke alapján fogja értelmezni. Ha az érték TRUE (igaz), a tartalék alkalmazás típusa nyilvános ügyfélként van beállítva, például egy mobileszközön futó telepített alkalmazás. Az alapértelmezett érték false (hamis), ami azt jelenti, hogy a tartalék alkalmazás típusa bizalmas ügyfél, például webalkalmazás.
 
@@ -118,7 +119,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| availableToOtherTenants | Logikai |
+| availableToOtherTenants | Logikai érték |
 
 Értéke TRUE (igaz), ha az alkalmazás más Bérlővel van megosztva; Ellenkező esetben hamis.
 
@@ -363,7 +364,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2AllowImplicitFlow | Logikai |
+| oauth2AllowImplicitFlow | Logikai érték |
 
 Azt adja meg, hogy a webalkalmazás igényelhet-e OAuth 2.0 implicit flow-hozzáférési jogkivonatokat. Az alapértelmezett érték a false. Ez a jelző a böngészőalapú alkalmazások, például a JavaScript egyoldalas alkalmazások esetében használatos. További információért írja be `OAuth 2.0 implicit grant flow` a tartalomjegyzékbe, és tekintse meg az implicit folyamattal kapcsolatos témaköröket.
 
@@ -377,7 +378,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2AllowIdTokenImplicitFlow | Logikai |
+| oauth2AllowIdTokenImplicitFlow | Logikai érték |
 
 Megadja, hogy a webalkalmazás igényelhet-e OAuth 2.0 implicit flow ID-tokeneket. Az alapértelmezett érték a false. Ez a jelző a böngészőalapú alkalmazások, például a JavaScript egyoldalas alkalmazások esetében használatos.
 
@@ -416,7 +417,7 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| oauth2RequiredPostResponse | Logikai |
+| oauth2RequiredPostResponse | Logikai érték |
 
 Azt határozza meg, hogy a OAuth 2,0 jogkivonat-kérelmek részeként az Azure AD engedélyezi-e a POST kéréseket, a kérések helyett. Az alapértelmezett érték a False (hamis), amely azt határozza meg, hogy csak a GET kérelmek engedélyezettek lesznek.
 
@@ -433,7 +434,7 @@ Példa:
 | parentalControlSettings | Sztring |
 
 - `countriesBlockedForMinors`azokat az országokat/régiókat határozza meg, amelyekben az alkalmazás a kiskorúak számára le van tiltva.
-- `legalAgeGroupRule`meghatározza az alkalmazás felhasználóira vonatkozó jogi korhatár-szabályt. Beállítható a következőre:,,, `Allow` `RequireConsentForPrivacyServices` `RequireConsentForMinors` `RequireConsentForKids` vagy `BlockMinors` .  
+- `legalAgeGroupRule`meghatározza az alkalmazás felhasználóira vonatkozó jogi korhatár-szabályt. Beállítható a következőre:,,, `Allow` `RequireConsentForPrivacyServices` `RequireConsentForMinors` `RequireConsentForKids` vagy `BlockMinors` .
 
 Példa:
 
@@ -491,9 +492,9 @@ Példa:
 
 | Kulcs | Érték típusa |
 | :--- | :--- |
-| publicClient | Logikai|
+| publicClient | Logikai érték|
 
-Azt határozza meg, hogy az alkalmazás nyilvános-e (például egy mobileszközön futó telepített alkalmazás). 
+Azt határozza meg, hogy az alkalmazás nyilvános-e (például egy mobileszközön futó telepített alkalmazás).
 
 Ez a tulajdonság csak az **Alkalmazásregisztrációk (örökölt)** élményben érhető el. Lecserélte a `allowPublicClient` [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felületén.
 
@@ -669,7 +670,7 @@ Amikor egy korábban letöltött jegyzékfájlt próbál feltölteni, az alábbi
 
 Ha az alábbi hibák valamelyikét látja, a következő műveleteket javasoljuk:
 
-1. Szerkessze az attribútumokat egyenként a jegyzékfájl-szerkesztőben egy korábban letöltött jegyzékfájl feltöltése helyett. A [jegyzékfájlok hivatkozási](#manifest-reference) táblázatával megismerheti a régi és az új attribútumok szintaxisát és szemantikaát, így sikeresen szerkesztheti a kívánt attribútumokat. 
+1. Szerkessze az attribútumokat egyenként a jegyzékfájl-szerkesztőben egy korábban letöltött jegyzékfájl feltöltése helyett. A [jegyzékfájlok hivatkozási](#manifest-reference) táblázatával megismerheti a régi és az új attribútumok szintaxisát és szemantikaát, így sikeresen szerkesztheti a kívánt attribútumokat.
 1. Ha a munkafolyamata megköveteli, hogy később is használhassa a jegyzékfájlokat a forrás-adattárban, javasoljuk, hogy az adattárban lévő mentett jegyzékfájlokat a **Alkalmazásregisztrációk** felhasználói felületén látható értékre alapozza.
 
 ## <a name="next-steps"></a>További lépések

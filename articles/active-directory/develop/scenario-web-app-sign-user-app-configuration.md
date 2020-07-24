@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 72168c54bd7968ce9c0315d3f3e47bae09e45004
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6cc846d8d330459587745795edf21c5ac04f2291
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85052219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026339"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Felhasználók számára bejelentkező webalkalmazás: kód konfigurálása
 
@@ -28,7 +29,7 @@ A webalkalmazások (és webes API-k) elleni védelemhez használt kódtárak a k
 
 | Platform | Kódtár | Description |
 |----------|---------|-------------|
-| ![.NET](media/sample-v2-code/logo_NET.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Model Extensions for .NET azt javasolja, hogy a .net-keretrendszerben és a .NET Core-ban is fusson a DLL-fájlok összessége. Egy ASP.NET vagy ASP.NET Core webalkalmazásból a jogkivonat-érvényesítést a **TokenValidationParameters** osztály használatával (különösen bizonyos partneri forgatókönyvekben) lehet szabályozni. |
+| ![.NET](media/sample-v2-code/logo_NET.png) | [A .NET-hez készült Identity Model-bővítmények](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | A ASP.NET és a ASP.NET Core által közvetlenül használt Microsoft Identity Model Extensions for .NET azt javasolja, hogy a .net-keretrendszerben és a .NET Core-ban is fusson a DLL-fájlok összessége. Egy ASP.NET vagy ASP.NET Core webalkalmazásból a jogkivonat-érvényesítést a **TokenValidationParameters** osztály használatával (különösen bizonyos partneri forgatókönyvekben) lehet szabályozni. A gyakorlatban a bonyolultság a [Microsoft. Identity. Web](https://aka.ms/ms-identity-web) könyvtárban van beágyazva. |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Java-webalkalmazások támogatása |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | Python-webalkalmazások támogatása |
 
@@ -62,7 +63,7 @@ A cikkben szereplő kódrészletek és a következők a Python [webalkalmazásb�
 
 ## <a name="configuration-files"></a>Konfigurációs fájlok
 
-A felhasználókat a Microsoft Identity platform használatával bejelentkező webalkalmazások általában konfigurációs fájlokon keresztül konfigurálhatók. A kitöltendő beállítások a következők:
+A felhasználókat a Microsoft Identity platform használatával bejelentkező webalkalmazások konfigurációs fájlokon keresztül konfigurálhatók. A kitöltendő beállítások a következők:
 
 - A Cloud instance ( `Instance` ), ha azt szeretné, hogy az alkalmazás az országos felhőkben fusson, például:
 - A bérlő AZONOSÍTÓjának () célközönsége `TenantId`
@@ -210,13 +211,21 @@ ASP.NET Core Web Apps (és webes API-k) esetében az alkalmazás védett, mert a
 A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával történő hitelesítés hozzáadásához hozzá kell adnia a következő kódot. A kódban szereplő megjegyzéseknek magától értetődőnek kell lenniük.
 
 > [!NOTE]
-> Ha elindítja a projektet a Visual Studióban található alapértelmezett ASP.NET Core webes projekttel, vagy a `dotnet new mvc --auth SingleAuth` vagy a használatával `dotnet new webapp --auth SingleAuth` , a következőhöz hasonló kódot fog látni: `services.AddAuthentication(AzureADDefaults.AuthenticationScheme).AddAzureAD(options => Configuration.Bind("AzureAd", options));` .
-> 
+> Ha közvetlenül a Microsoft Identity platformhoz tartozó új ASP.NET Core sablonokkal szeretné elindítani a Microsoft. Identity. Web-t, letöltheti a .NET Core 3,1 és a .NET 5,0 rendszerhez készült Project templates (előzetes verziójú) NuGet-csomagot. Ezután a telepítés után közvetlenül hozhat létre ASP.NET Core webalkalmazásokat (MVC vagy Blazer). Részletekért tekintse meg a [Microsoft. Identity. Web Web App Project-sablonokat](https://aka.ms/ms-id-web/webapp-project-templates) . Ez a legegyszerűbb megközelítés, mivel az alábbi lépéseket fogja elvégezni Önnek.
+>
+> Ha úgy szeretné elindítani a projektet, hogy az aktuális alapértelmezett ASP.NET Core webes projekt megjelenjen a Visual Studióban, vagy a vagy a használatával `dotnet new mvc --auth SingleAuth` `dotnet new webapp --auth SingleAuth` , a következőhöz hasonló kódot fog látni:
+>
+>```c#
+>  services.AddAuthentication(AzureADDefaults.AuthenticationScheme)
+>          .AddAzureAD(options => Configuration.Bind("AzureAd", options));
+> ```
+>
 > Ez a kód az örökölt **Microsoft. AspNetCore. Authentication. AzureAD. UI** NuGet-csomagot használja, amely egy Azure ad v 1.0-alkalmazás létrehozásához használatos. Ez a cikk azt ismerteti, hogyan lehet létrehozni egy Microsoft Identity platform (Azure AD v 2.0) alkalmazást, amely felváltja ezt a kódot.
+>
 
-1. Adja hozzá a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) és a [Microsoft. Identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) NuGet-csomagokat a projekthez. Ha a jelen van, távolítsa el a Microsoft. AspNetCore. Authentication. AzureAD. UI NuGet-csomagot.
+1. Adja hozzá a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) és a [Microsoft. Identity. Web. UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) NuGet-csomagokat a projekthez. Ha megtalálható, távolítsa el a Microsoft. AspNetCore. Authentication. AzureAD. UI NuGet-csomagot.
 
-2. Frissítse a kódot `ConfigureServices` úgy, hogy az és a `AddSignIn` `AddMicrosoftIdentityUI` metódusokat használja.
+2. Frissítse a kódot `ConfigureServices` úgy, hogy az és a `AddMicrosoftWebAppAuthentication` `AddMicrosoftIdentityUI` metódusokat használja.
 
    ```c#
    public class Startup
@@ -225,7 +234,7 @@ A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával t
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-     services.AddSignIn(Configuration, "AzureAd");
+     services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd");
 
      services.AddRazorPages().AddMvcOptions(options =>
      {
@@ -250,18 +259,23 @@ A Microsoft Identity platform (korábbi nevén Azure AD v 2.0) használatával t
    ```
 
 A fenti kódban:
-- A `AddSignIn` kiterjesztési módszer a **Microsoft. Identity. webban**van definiálva. Ez
+- A `AddMicrosoftWebAppAuthentication` kiterjesztési módszer a **Microsoft. Identity. webban**van definiálva. Ez
   - Hozzáadja a hitelesítési szolgáltatást.
   - A konfigurációs fájl olvasásához szükséges beállításokat konfigurálja (itt az "AzureAD" szakaszból)
   - Az OpenID Connect beállításainak konfigurálása, hogy a szolgáltató a Microsoft Identity platform végpontja legyen.
   - Ellenőrzi a jogkivonat kiállítóját.
   - Biztosítja, hogy a névnek megfelelő jogcímeket a rendszer az `preferred_username` azonosító jogkivonatban lévő jogcímből rendeli le.
 
-- A konfigurációs objektum mellett megadhatja a konfigurációs szakasz nevét is a híváskor `AddSignIn` . Alapértelmezés szerint ez a érték `AzureAd` .
+- A konfigurációs objektum mellett megadhatja a konfigurációs szakasz nevét is a híváskor `AddMicrosoftWebAppAuthentication` . Alapértelmezés szerint ez a érték `AzureAd` .
 
-- `AddSignIn`más paraméterekkel rendelkezik a speciális forgatókönyvekhez. Az OpenID Connect middleware-események nyomon követése például segíthet a webalkalmazások hibakeresésében, ha a hitelesítés nem működik. Ha a nem kötelező paramétert állítja be, akkor `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` megmutathatja, hogyan dolgozza fel az információkat a ASP.net Core köztes middleware-készlet, mivel a http-válaszból a felhasználó identitására kerül `HttpContext.User` .
+- `AddMicrosoftWebAppAuthentication`más paraméterekkel rendelkezik a speciális forgatókönyvekhez. Az OpenID Connect middleware-események nyomon követése például segíthet a webalkalmazások hibakeresésében, ha a hitelesítés nem működik. Ha a nem kötelező paramétert állítja be, akkor `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` `true` megmutathatja, hogyan dolgozza fel az információkat a ASP.net Core köztes middleware-készlet, mivel a http-válaszból a felhasználó identitására kerül `HttpContext.User` .
 
-- A `AddMicrosoftIdentityUI` kiterjesztési módszer a **Microsoft. Identity. Web. UI fájlon**belül van definiálva. Egy alapértelmezett vezérlőt biztosít a kijelentkezés kezeléséhez.
+- A `AddMicrosoftIdentityUI` kiterjesztési módszer a **Microsoft. Identity. Web. UI fájlon**belül van definiálva. Egy alapértelmezett vezérlőt biztosít a bejelentkezés és a kijelentkezés kezeléséhez.
+
+További információ arról, hogy a Microsoft. Identity. Web segítségével hogyan hozhat létre webalkalmazásokat a következőben:<https://aka.ms/ms-id-web/webapp>
+
+> [!WARNING]
+> Jelenleg a Microsoft. Identity. Web nem támogatja az **egyéni felhasználói fiókok** (a felhasználói fiókok alkalmazásban való tárolása) esetét az Azure ad és a külső bejelentkezési szolgáltató használata esetén. Részletekért lásd: [AzureAD/Microsoft-Identity-web # 133](https://github.com/AzureAD/microsoft-identity-web/issues/133)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

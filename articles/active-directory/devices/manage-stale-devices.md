@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 292ba1d52b107acd164408767747e5a33cb0c67d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94a4b2a44902dde798f760f970ccff2c1e8f15c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025632"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Útmutató: elavult eszközök kezelése az Azure AD-ben
 
@@ -56,7 +57,7 @@ A tevékenység-időbélyegző értékét két módon kérheti le:
 
     ![Tevékenység-időbélyeg](./media/manage-stale-devices/01.png)
 
-- A [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) parancsmaggal
+- A [Get-AzureADDevice](/powershell/module/azuread/Get-AzureADDevice) parancsmag
 
     ![Tevékenység-időbélyeg](./media/manage-stale-devices/02.png)
 
@@ -88,7 +89,7 @@ Amennyiben az eszközt az Intune vagy más MDM-megoldás vezérli, vonja ki az e
 
 ### <a name="system-managed-devices"></a>Rendszer által felügyelt eszközök
 
-A rendszer által felügyelt eszközöket sose törölje. Ezek általában olyan eszközök, mint például az Autopilot. A törlés után ezeket az eszközöket nem lehet újra kiépíteni. Az új `get-msoldevice` parancsmag alapértelmezés szerint kizárja a rendszer által felügyelt eszközöket. 
+A rendszer által felügyelt eszközöket sose törölje. Ezek általában olyan eszközök, mint például az Autopilot. A törlés után ezeket az eszközöket nem lehet újra kiépíteni. Az új `Get-AzureADDevice` parancsmag alapértelmezés szerint kizárja a rendszer által felügyelt eszközöket. 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hibrid Azure AD-csatlakoztatott eszközök
 
@@ -128,26 +129,25 @@ Bár az elavult eszközök törlése az Azure Portalon is elvégezhető, hatéko
 
 A folyamat jellemzően a következő lépésekből áll:
 
-1. Csatlakozás az Azure Active Directoryhoz a [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) parancsmaggal
+1. Kapcsolódás Azure Active Directory a Kapcsolódás a [AzureAD](/powershell/module/azuread/connect-azuread) parancsmag használatával
 1. Az eszközök listájának lekérése
-1. Az eszköz letiltása a [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) parancsmaggal. 
+1. Tiltsa le az eszközt a [set-AzureADDevice](/powershell/module/azuread/Set-AzureADDevice) parancsmaggal (Letiltás a-AccountEnabled kapcsoló használatával). 
 1. Az eszköz törlése előtt várja ki a kívánt hosszúságú türelmi időszakot.
-1. Az eszköz törlése a [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) parancsmaggal.
+1. Távolítsa el az eszközt a [Remove-AzureADDevice](/powershell/module/azuread/Remove-AzureADDevice) parancsmag használatával.
 
 ### <a name="get-the-list-of-devices"></a>Az eszközök listájának lekérése
 
 Az összes eszköz lekérése és a visszaadott adatok tárolása egy CSV-fájlban:
 
 ```PowerShell
-Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, Approxi
-mateLastLogonTimestamp | export-csv devicelist-summary.csv
+Get-AzureADDevice -All:$true | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
 Ha nagy számú eszköz található a címtárban, az időbélyeg-szűrő használatával Szűkítse le a visszaadott eszközök számát. Egy adott dátumnál régebbi időbélyegzővel rendelkező eszközök lekérése, valamint a visszaadott adatok tárolása egy CSV-fájlban: 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>Alapismeretek

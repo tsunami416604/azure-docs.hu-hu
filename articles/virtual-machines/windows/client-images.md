@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 51e4862fe55428f112841ef7176cdb916653de0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0853b08ced0b9ca328d5e7f506ca54299aebeee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083274"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028192"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-ügyfél használata az Azure-ban fejlesztési/tesztelési helyzetekben
 A fejlesztői és tesztelési forgatókönyvekhez használhatja a Windows 7, Windows 8 vagy Windows 10 Enterprise (x64) rendszert az Azure-ban, amennyiben rendelkezik a megfelelő Visual Studio (korábbi MSDN) előfizetéssel. Ez a cikk a Windows 7, a Windows 8,1, a Windows 10 Enterprise és a következő Azure Gallery-lemezképek használatára vonatkozó támogathatósági követelményeket ismerteti.
@@ -58,5 +58,4 @@ Az ajánlat AZONOSÍTÓját az Azure-fiók portál [előfizetés lapján](https:
 ![Az ajánlatok AZONOSÍTÓjának részletei az Azure-fiók portálján](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>További lépések
-Most már üzembe helyezheti a virtuális gépeket a [PowerShell](quick-create-powershell.md), a [Resource Manager-sablonok](ps-template.md)vagy a [Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)használatával.
-
+Most már üzembe helyezheti a virtuális gépeket a [PowerShell](quick-create-powershell.md), a [Resource Manager-sablonok](ps-template.md)vagy a [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)használatával.

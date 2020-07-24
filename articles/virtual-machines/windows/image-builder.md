@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 6fa1f6bcc6c91a493225726bc0df60d2d0b4a1e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0d8a37f0edc161cbd73bf7438dc1c9486c4251b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119188"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027937"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Előzetes verzió: Windows rendszerű virtuális gép létrehozása az Azure rendszerkép-készítővel
 
@@ -93,7 +93,7 @@ Hozzon létre egy változót az előfizetés-AZONOSÍTÓhoz. Ezt a következőve
 ```azurecli-interactive
 subscriptionID=<Your subscription ID>
 ```
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Ez az erőforráscsoport a rendszerkép-konfigurációs sablon és a rendszerkép tárolására szolgál.
 
 
@@ -102,7 +102,7 @@ az group create -n $imageResourceGroup -l $location
 ```
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Felhasználó által hozzárendelt identitás létrehozása és engedélyek beállítása az erőforráscsoporthoz
-A rendszerkép-szerkesztő a megadott [felhasználói identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) fogja használni a rendszerkép az erőforráscsoporthoz való beadásához. Ebben a példában egy Azure-szerepkör-definíciót hoz létre, amely a rendszerkép terjesztésének részletes műveleteit tartalmazni fogja. A szerepkör-definíció ezután a felhasználó-identitáshoz lesz rendelve.
+A rendszerkép-szerkesztő a megadott [felhasználói identitást](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) fogja használni a rendszerkép az erőforráscsoporthoz való beadásához. Ebben a példában egy Azure-szerepkör-definíciót hoz létre, amely a rendszerkép terjesztésének részletes műveleteit tartalmazni fogja. A szerepkör-definíció ezután a felhasználó-identitáshoz lesz rendelve.
 
 ## <a name="create-user-assigned-managed-identity-and-grant-permissions"></a>Felhasználó által hozzárendelt felügyelt identitás létrehozása és engedélyek megadása 
 ```bash
@@ -211,7 +211,7 @@ Várjon, amíg a Build befejeződik. Ez körülbelül 15 percet vesz igénybe.
 Ha bármilyen hibát tapasztal, tekintse át ezeket a [hibaelhárítási](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting) lépéseket.
 
 
-## <a name="create-the-vm"></a>Virtuális gép létrehozása
+## <a name="create-the-vm"></a>A virtuális gép létrehozása
 
 Hozza létre a virtuális gépet a létrehozott rendszerkép használatával. Cserélje le a- *\<password>* t a saját jelszavára a `aibuser` virtuális gépen.
 
@@ -237,7 +237,7 @@ A rendszerkép testreszabása során létrehozott két könyvtárat kell látnia
 - buildActions
 - buildArtifacts
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 Ha elkészült, törölje az erőforrásokat.
 

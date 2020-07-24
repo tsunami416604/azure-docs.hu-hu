@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 10/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 152f7ab6ccb9f01c7fe70553501c8cf8afa1c650
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8c9fbf2d86c2e066566bab11b1701909be64a37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554894"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025846"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
-A szervezetek mostantól Azure Active Directory (AD) hitelesítést használhatnak a **Windows Server 2019 Datacenter Edition** vagy **Windows 10 1809** vagy újabb rendszert futtató Azure-beli virtuális gépek (VM-EK) számára. Az Azure AD használatával a virtuális gépek hitelesítése lehetővé teszi a házirendek központi felügyeletét és betartatását. Az olyan eszközök, mint az Azure szerepköralapú Access Control (RBAC) és az Azure AD feltételes hozzáférése lehetővé teszi, hogy ki férhet hozzá a virtuális géphez. Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat egy Windows Server 2019 rendszerű virtuális gépet az Azure AD-hitelesítés használatához.
+A szervezetek mostantól Azure Active Directory (AD) hitelesítést használhatnak a **Windows Server 2019 Datacenter Edition** vagy **Windows 10 1809** vagy újabb rendszert futtató Azure-beli virtuális gépek (VM-EK) számára. Az Azure AD használatával a virtuális gépek hitelesítése lehetővé teszi a házirendek központi felügyeletét és betartatását. Az olyan eszközök, mint az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) és az Azure AD feltételes hozzáférése lehetővé teszi, hogy ki férhet hozzá a virtuális géphez. Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat egy Windows Server 2019 rendszerű virtuális gépet az Azure AD-hitelesítés használatához.
 
 > [!NOTE]
 > Az Azure AD-bejelentkezés az Azure-beli Windows rendszerű virtuális gépek nyilvános előzetes verziója Azure Active Directory. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -84,7 +84,7 @@ Windows Server 2019 Datacenter rendszerű virtuális gép létrehozása az Azure
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)egy olyan fiókkal, amely hozzáfér a virtuális gépek létrehozásához, majd válassza az **+ erőforrás létrehozása**lehetőséget.
 1. Írja be a **Windows Server** kifejezést a piactér keresési sávjában.
    1. Kattintson a **Windows Server** lehetőségre, és válassza a **Windows Server 2019 Datacenter** elemet a szoftvercsomag kiválasztása listából.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás**gombra.
 1. A "felügyelet" lapon engedélyezze a **HRE hitelesítő adatokkal (előzetes verzió) való bejelentkezést** a Azure Active Directory szakasz alatt, a ki és **be**lehetőségnél.
 1. Győződjön **meg**arról, hogy a **rendszerhez rendelt felügyelt identitás** az identitás szakaszban be értékre van állítva. A műveletnek automatikusan kell történnie, ha engedélyezi a bejelentkezést az Azure AD-beli hitelesítő adatokkal.
 1. Ugorjon végig a virtuális gép létrehozásának további tapasztalatain. Ebben az előzetes verzióban létre kell hoznia egy rendszergazdai felhasználónevet és jelszót a virtuális géphez.
@@ -200,7 +200,10 @@ Az Azure-előfizetések erőforrásaihoz való hozzáférés RBAC használatáva
 A feltételes hozzáférési szabályzatok, például a többtényezős hitelesítés vagy a felhasználói bejelentkezés kockázatának érvényesítése előtt engedélyezheti a hozzáférést az Azure-beli Windows rendszerű virtuális gépekhez, amelyek engedélyezve vannak az Azure AD-bejelentkezéssel. A feltételes hozzáférési szabályzat alkalmazásához ki kell választania az "Azure Windows VM-bejelentkezés" alkalmazást a Cloud apps vagy a műveletek hozzárendelési beállításból, majd a bejelentkezési kockázatot feltételként kell használnia, és/vagy a többtényezős hitelesítést kell megadni hozzáférés-vezérlésként. 
 
 > [!NOTE]
-> Ha a "többtényezős hitelesítés megkövetelése" lehetőséget használja hozzáférés-vezérlésre az "Azure Windows rendszerű virtuális gép bejelentkezési" alkalmazáshoz való hozzáféréshez, akkor az ügyfél részeként meg kell adnia a többtényezős hitelesítési jogcímet, amely az RDP-munkamenetet az Azure-beli cél Windows rendszerű virtuális gépre indítja. Ezt csak akkor érheti el, ha Windows 10-ügyfélen a Windows Hello for Business PIN-kódját vagy biometrikus hitelesítés használja az RDP-ügyféllel. A biometrikus hitelesítés támogatása a Windows 10 1809-es verziójának RDP-ügyfeléhez lett hozzáadva. A Windows Hello for Business hitelesítést használó távoli asztal csak a tanúsítvány-megbízhatósági modellt használó központi telepítések esetén érhető el, és jelenleg nem érhető el a kulcs megbízhatósági modellje számára.
+> Ha a "többtényezős hitelesítés megkövetelése" lehetőséget használja hozzáférés-vezérlésre az "Azure Windows rendszerű virtuális gép bejelentkezési" alkalmazáshoz való hozzáféréshez, akkor az ügyfél részeként meg kell adnia a többtényezős hitelesítési jogcímet, amely az RDP-munkamenetet az Azure-beli cél Windows rendszerű virtuális gépre indítja. Ezt csak akkor érheti el, ha egy Windows 10-ügyfélen a Windows Hello for Business PIN-kódot vagy biometrikus hitelesítést használja az RDP-ügyféllel. A biometrikus hitelesítés támogatása a Windows 10 1809-es verziójának RDP-ügyfeléhez lett hozzáadva. A Windows Hello for Business hitelesítést használó távoli asztal csak a tanúsítvány-megbízhatósági modellt használó központi telepítések esetén érhető el, és jelenleg nem érhető el a kulcs megbízhatósági modellje számára.
+
+> [!WARNING]
+> Felhasználónkénti engedélyezett/kényszerített Azure-Multi-Factor Authentication nem támogatott a virtuális gép bejelentkezéséhez.
 
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Bejelentkezés Azure AD-beli hitelesítő adatokkal egy Windows rendszerű virtuális gépen
 
@@ -211,7 +214,7 @@ Bejelentkezés a Windows Server 2019 rendszerű virtuális gépre az Azure AD ha
 
 1. Navigáljon a virtuális gép áttekintés lapjára, amely engedélyezve van az Azure AD-bejelentkezéssel.
 1. Válassza a **Kapcsolódás** lehetőséget a Kapcsolódás a virtuális géphez panel megnyitásához.
-1. Válassza az **RDP-fájl letöltése**lehetőséget.
+1. Válassza az **RDP-fájl letöltése** lehetőséget.
 1. Válassza a **Megnyitás** lehetőséget az távoli asztali kapcsolat-ügyfél elindításához.
 1. Válassza a **Kapcsolódás** lehetőséget a Windows bejelentkezési párbeszédpanelének elindításához.
 1. Jelentkezzen be az Azure AD-beli hitelesítő adataival.

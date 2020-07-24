@@ -7,11 +7,12 @@ ms.topic: article
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4e342ff44af38b8e79dc8695c1270b1f5c68e0a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3be8863d86fd1525e6f64b46ddf5ca3c702ecdea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80657443"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029229"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>Az LVM és a RAID konfigurálása titkosított eszközökön
 
@@ -44,11 +45,11 @@ A RAID-eszköz hasonló módon jön létre a lemezeken található titkosított 
 
 Javasoljuk, hogy használjon LVM-on-Crypt-t. A RAID olyan lehetőség, ha az LVM nem használható meghatározott alkalmazás-vagy környezeti korlátozások miatt.
 
-A **EncryptFormatAll** kapcsolót fogja használni. További információ erről a lehetőségről: [a Linux rendszerű virtuális gépeken található adatlemezek EncryptFormatAll funkciójának használata](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux#use-encryptformatall-feature-for-data-disks-on-linux-vms).
+A **EncryptFormatAll** kapcsolót fogja használni. További információ erről a lehetőségről: [a Linux rendszerű virtuális gépeken található adatlemezek EncryptFormatAll funkciójának használata](./disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).
 
 Bár ez a módszer akkor használható, ha az operációs rendszert is titkosítja, csak az adatmeghajtókat titkosítjuk.
 
-Az eljárások feltételezik, hogy már áttekintette az előfeltételeket a Linux rendszerű [virtuális gépeken Azure Disk Encryption forgatókönyvekben](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-linux) , valamint a gyors üzembe helyezést [: linuxos virtuális gép létrehozása és titkosítása az Azure CLI](https://docs.microsoft.com/azure/virtual-machines/linux/disk-encryption-cli-quickstart)használatával.
+Az eljárások feltételezik, hogy már áttekintette az előfeltételeket a Linux rendszerű [virtuális gépeken Azure Disk Encryption forgatókönyvekben](./disk-encryption-linux.md) , valamint a gyors üzembe helyezést [: linuxos virtuális gép létrehozása és titkosítása az Azure CLI](./disk-encryption-cli-quickstart.md)használatával.
 
 A Azure Disk Encryption Dual-pass verzió elavult elérési úton van, és az új titkosítások nem használhatók fel többé.
 
@@ -459,4 +460,3 @@ df -h
 ## <a name="next-steps"></a>További lépések
 
 - [Azure Disk Encryption – hibaelhárítás](disk-encryption-troubleshooting.md)
-

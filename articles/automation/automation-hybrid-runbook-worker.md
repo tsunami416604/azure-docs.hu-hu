@@ -3,14 +3,14 @@ title: Azure Automation Hybrid Runbook Worker – áttekintés
 description: Ez a cikk áttekintést nyújt a hibrid Runbook-feldolgozóról, amellyel runbookok futtathatók a helyi adatközpontban vagy a felhőalapú szolgáltatóban található gépeken.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 07/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0960dfe067e5092f3d64f66cad1d49c2bea28ae6
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 69680fbb442b4e636b72f480ed21f36924362a13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186248"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024826"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hibrid runbook-feldolgozó – áttekintés
 
@@ -42,7 +42,7 @@ A hibrid Runbook-feldolgozók telepítésének folyamata az operációs rendszer
 
 Az ajánlott telepítési módszer egy Azure Automation runbook használata a Windows rendszerű gépek konfigurálásának teljes automatizálásához. Ha ez nem valósítható meg, a szerepkör manuális telepítéséhez és konfigurálásához hajtsa végre a lépésenkénti útmutatót. A Linux rendszerű gépeken egy Python-szkriptet futtathat, amely telepíti az ügynököt a gépre.
 
-## <a name="network-planning"></a><a name="network-planning"></a>Hálózattervezés
+## <a name="network-planning"></a><a name="network-planning"></a>Hálózati tervezés
 
 Ahhoz, hogy a hibrid Runbook-feldolgozó csatlakozhasson a Azure Automationhoz való csatlakozáshoz, és regisztrálja őket, hozzáféréssel kell rendelkeznie az ebben a részben ismertetett portszámhoz és URL-címekhez. A munkavégzőnek hozzáféréssel kell rendelkeznie a Log Analytics ügynökhöz a Azure Monitor Log Analytics munkaterülethez való csatlakozáshoz [szükséges portokhoz és URL-címekhez](../azure-monitor/platform/agent-windows.md) .
 
@@ -77,6 +77,17 @@ A Azure Automation szolgáltatáshoz tartozó szolgáltatás címkéje csak a k�
 >[!NOTE]
 >A **GuestAndHybridManagement** szolgáltatás jelenleg nem támogatja a runbook-feladatok végrehajtását egy Azure-beli homokozóban, csak egy hibrid runbook-feldolgozón.
 
+## <a name="support-for-impact-level-5-il5"></a>5. szintű Impact-támogatás (IL5)
+
+Azure Automation Hybrid Runbook Worker Azure Government használható a következő két konfiguráció egyikében az 5. szintű munkaterhelések támogatásához:
+
+* [Elkülönített virtuális gép](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines). Üzembe helyezéskor a virtuális gép teljes fizikai gazdagépét használják, amely biztosítja a IL5 számítási feladatok támogatásához szükséges elkülönítési szintet.
+
+* Az [Azure dedikált gazdagépei](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts)olyan fizikai kiszolgálókat biztosítanak, amelyek egy vagy több virtuális gép üzemeltetésére képesek egy Azure-előfizetéshez.
+
+>[!NOTE]
+>A hibrid Runbook-feldolgozói szerepkörrel való számítási elkülönítés az Azure kereskedelmi és az USA kormányzati felhők számára érhető el. 
+
 ## <a name="update-management-on-hybrid-runbook-worker"></a>Update Management hibrid Runbook-feldolgozón
 
 Ha Azure Automation [Update Management](automation-update-management.md) engedélyezve van, az log Analytics munkaterülethez csatlakoztatott összes gép automatikusan hibrid Runbook-feldolgozóként van konfigurálva. Az egyes feldolgozók támogatják az runbookok megcélozni kívánt frissítéseket.
@@ -85,13 +96,7 @@ Az ily módon konfigurált gépek nincsenek regisztrálva az Automation-fiókban
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>A hibrid Runbook-feldolgozók Update Management címei
 
-A hibrid Runbook-feldolgozó által igényelt szabványos címek és portok felett Update Management a következő táblázatban szereplő címeket kell megadnia. A címekkel folytatott kommunikáció az 443-es portot használja.
-
-|Azure Public  |Azure Government  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`     | `*.ods.opinsights.azure.us`         |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
+A hibrid Runbook-feldolgozó számára szükséges szabványos címek és portok felett Update Management a [hálózati tervezés](automation-update-management.md#ports) szakaszban ismertetett további hálózati konfigurációs követelmények is szerepelnek.
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Állapot-konfiguráció Azure Automation hibrid Runbook-feldolgozón
 
@@ -114,4 +119,5 @@ Mivel a nem Azure-beli erőforrásokhoz férnek hozzá, a hibrid Runbook-feldolg
 ## <a name="next-steps"></a>További lépések
 
 * Ha szeretné megtudni, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálására, tekintse meg a [Runbookok futtatása hibrid Runbook-feldolgozón](automation-hrw-run-runbooks.md)című témakört.
+
 * A hibrid Runbook-feldolgozók hibaelhárításával kapcsolatos további információkért lásd: [hibrid Runbook-feldolgozói problémák elhárítása](troubleshoot/hybrid-runbook-worker.md#general).

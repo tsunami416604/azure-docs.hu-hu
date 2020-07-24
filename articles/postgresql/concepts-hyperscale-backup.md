@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: bcc94b62812f1668bf8c5e5abb268fddf3da1fa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22bc3d6efca24a88b28217b2e06ac79d33f16b2e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82515442"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030079"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Biztonsági mentés és visszaállítás a Azure Database for PostgreSQL-nagy kapacitású (Citus)
 
@@ -32,7 +32,11 @@ Az aktuális biztonsági mentési tár díjszabását a Azure Database for Postg
 
 ## <a name="restore"></a>Visszaállítás
 
-Azure Database for PostgreSQL egy nagy kapacitású-(Citus-) fürt visszaállítása új fürtöt hoz létre az eredeti csomópontok biztonsági másolatai közül.
+Azure Database for PostgreSQL egy nagy kapacitású-(Citus-) fürt visszaállítása új fürtöt hoz létre az eredeti csomópontok biztonsági másolatai közül. 
+
+> [!IMPORTANT]
+>A nagy kapacitású-fürtöt csak ugyanabban az előfizetésben és erőforráscsoporthoz, valamint egy másik fürt nevével állíthatja vissza.
+
 
 > [!IMPORTANT]
 > A törölt nagy kapacitású-(Citus-) fürtök nem állíthatók vissza. Ha törli a fürtöt, a fürthöz tartozó összes csomópont törölve lesz, és nem állítható helyre. A fürt erőforrásainak védelmét, az üzembe helyezést követően a véletlen törlés vagy a váratlan módosítások miatt a rendszergazdák kihasználhatják a [felügyeleti zárolásokat](/azure/azure-resource-manager/management/lock-resources).

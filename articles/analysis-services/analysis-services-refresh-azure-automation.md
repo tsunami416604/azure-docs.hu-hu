@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389972"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025404"
 ---
 # <a name="refresh-with-azure-automation"></a>Frissítés az Azure Automationnel
 
@@ -64,11 +64,14 @@ Az Ön által létrehozott egyszerű szolgáltatásnak kiszolgálói rendszergaz
 
     ![Runbook importálása](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. Tallózással keresse meg a **Refresh-Model.ps1** fájlt, adjon meg egy **nevet** és egy **leírást**, majd kattintson a **Létrehozás**gombra.
+4. Tallózással keresse meg a [Refresh-Model.ps1](#sample-powershell-runbook) fájlt, adjon meg egy **nevet** és egy **leírást**, majd kattintson a **Létrehozás**gombra.
+
+    > [!NOTE]
+    > A dokumentum alján található, [minta PowerShell-Runbook](#sample-powershell-runbook) tartozó parancsfájl használatával hozzon létre egy Refresh-Model.ps1 nevű fájlt, és mentse a helyi gépre a Runbook-be való importáláshoz.
 
     ![Runbook importálása](./media/analysis-services-refresh-azure-automation/9.png)
 
-5. A Runbook létrehozásakor a rendszer automatikusan szerkesztési módba lép.  Kattintson a **Közzététel** lehetőségre.
+5. A Runbook létrehozásakor a rendszer automatikusan szerkesztési módba lép.  Kattintson a **Publish** (Közzététel) elemre.
 
     ![Runbook közzététele](./media/analysis-services-refresh-azure-automation/10.png)
 

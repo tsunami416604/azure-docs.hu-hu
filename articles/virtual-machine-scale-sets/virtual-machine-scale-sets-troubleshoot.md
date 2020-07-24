@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 915b6430378cfff2a847e31de26950fcb9de6ff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374593"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029433"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Az automatikus méretezés hibaelhárítása a Virtual Machine Scale Sets használatával
 **Probléma** – a Azure Resource Manager a virtuálisgép-méretezési csoportok használatával létrehozott egy automatikus skálázási infrastruktúrát, például egy sablon üzembe helyezésével: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale – a méretezési szabályok definiálva vannak, és nagyszerűen működik, kivéve, ha a virtuális gépeken elhelyezett terhelések mennyisége nem automatikus méretezés.
@@ -73,7 +73,7 @@ Néhány megfontolandó szempont:
     Ha az adat nem létezik, az azt jelenti, hogy a probléma a virtuális gépeken futó diagnosztikai bővítmény. Ha az adat ott van, az azt jelenti, hogy probléma van a méretezési szabályokkal vagy az elemzések szolgáltatással. Az [Azure-állapot](https://azure.microsoft.com/status/)ellenõrzése.
     
     Ha a fenti lépésekkel még mindig rendelkezik az autoskálázással kapcsolatos problémákkal, próbálja ki a következő erőforrásokat: 
-    * Tekintse meg a [Microsoft Q&egy kérdés oldalát](https://docs.microsoft.com/answers/topics/azure-virtual-machines.html)vagy a [stack túlcsordulását](https://stackoverflow.com/questions/tagged/azure) 
+    * Tekintse meg a [Microsoft Q&egy kérdés oldalát](/answers/topics/azure-virtual-machines.html)vagy a [stack túlcsordulását](https://stackoverflow.com/questions/tagged/azure) 
     * Egy támogatási hívás naplózása. Készüljön fel a sablon megosztására és a teljesítményadatok megtekintésére.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

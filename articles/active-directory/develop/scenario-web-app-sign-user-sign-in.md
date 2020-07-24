@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 41124e7237c2c16034fe8cce1fa89fa0132d09b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7393b0f3d3004c28e0d6befe2fdbbeda7f9a592
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558922"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026152"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Felhasználók számára bejelentkező webes alkalmazás: bejelentkezés és kijelentkezés
 
@@ -334,7 +335,7 @@ A ASP.NET Core sablonok korábbi verzióiban a `Account` vezérlőt a webalkalma
 - Meghívások `Signout()` , amelyek lehetővé teszi, hogy az OpenID Connect middleware kapcsolatba lépjen a Microsoft Identity platform- `logout` végponttal. A végpont ekkor:
 
   - Törli a munkamenet-cookie-t a böngészőből.
-  - A kijelentkezési URL-címet hívja vissza. Alapértelmezés szerint a kijelentkezési URL-cím megjeleníti a kijelentkezett nézet oldalt [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml). Ez az oldal a MIcrosoft. Identity. Web részeként is elérhető.
+  - A kijelentkezési URL-címet hívja vissza. Alapértelmezés szerint a kijelentkezési URL-cím megjeleníti a kijelentkezett nézet [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs). Ez az oldal a MIcrosoft. Identity. Web részeként is elérhető.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -432,4 +433,4 @@ Ha többet szeretne megtudni a kijelentkezésről, olvassa el az [Open ID csatla
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Áthelyezés éles környezetbe](scenario-web-app-sign-user-production.md)
+> [Átállás éles üzemre](scenario-web-app-sign-user-production.md)

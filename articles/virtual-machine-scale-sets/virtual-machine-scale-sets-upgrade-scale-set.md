@@ -9,11 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 9498babd9605c46d752c5fe1eb1b077f6d911351
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f7a61ed039a3d8ed643e3b1b3d79384e35847986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83121014"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029297"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport módosítása
 
@@ -319,13 +320,13 @@ A globális méretezési csoport tulajdonságainak egyik típusa nem követi a f
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
     ```
 
-- Azure PowerShell a [set-AzVmssVm](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm):
+- Azure PowerShell a [set-AzVmssVm](/powershell/module/az.compute/set-azvmssvm):
 
     ```powershell
     Set-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
     ```
 
-- Azure CLI az [az vmss reképhez](https://docs.microsoft.com/cli/azure/vmss):
+- Azure CLI az [az vmss reképhez](/cli/azure/vmss):
 
     ```azurecli
     az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
@@ -368,12 +369,12 @@ Ha egy alkalmazás egy méretezési csoportra van telepítve kiterjesztéseken k
 Emellett gyakori, hogy az alkalmazások egyéni rendszerkép használatával legyenek üzembe helyezhetők. Ezt a forgatókönyvet a következő szakasz ismerteti.
 
 ### <a name="os-updates"></a>Operációs rendszer frissítései
-Ha Azure platform-rendszerképeket használ, a *imageReference* módosításával frissítheti a lemezképet (További információ: [REST API dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Ha Azure platform-rendszerképeket használ, a *imageReference* módosításával frissítheti a lemezképet (További információ: [REST API dokumentáció](/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 >[!NOTE]
 > A platformmal készített lemezképek esetében gyakori, hogy a "legfrissebb" érték legyen megadva a Képhivatkozás verziójában. A létrehozás, a Kibővítés és az Alaphelyzetbe állítás során a virtuális gépek a legújabb elérhető verzióval jönnek létre. Ez azonban **nem** jelenti azt, hogy az operációsrendszer-rendszerkép automatikusan frissül az új rendszerkép-verziók megjelenésekor. Egy különálló szolgáltatás jelenleg előzetes verzióban érhető el, amely az operációs rendszer automatikus frissítését teszi lehetővé. További információ: az [operációs rendszer verziófrissítésének automatikus dokumentációja](virtual-machine-scale-sets-automatic-upgrade.md).
 
-Ha egyéni lemezképeket használ, a lemezkép frissítéséhez frissítse a *imageReference* azonosítóját (További információ: [REST API dokumentáció](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)).
+Ha egyéni lemezképeket használ, a lemezkép frissítéséhez frissítse a *imageReference* azonosítóját (További információ: [REST API dokumentáció](/rest/api/compute/virtualmachinescalesets/createorupdate)).
 
 ## <a name="examples"></a>Példák
 

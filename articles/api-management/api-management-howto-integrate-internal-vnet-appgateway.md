@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 08e718739971283418d151bef9ad75333e313d85
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: eb2ce196687b2ca6a762a879570e4f8ebac788df
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025115"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Management integrálása egy belső VNET Application Gateway
 
@@ -88,6 +88,11 @@ Ebben az útmutatóban a **fejlesztői portált** külső célközönségeknek i
 
 > [!WARNING]
 > Ha meg szeretné akadályozni, hogy Application Gateway WAF a OpenAPI-specifikáció letöltését a fejlesztői portálon, le kell tiltania a tűzfalszabályok listáját `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"` .
+> 
+> Application Gateway WAF-szabályok, amelyek a portál funkcióinak megszakadása esetén a következők:
+> 
+> - `920330`,,, `931130` `942100` `942110` , `942180` , `942200` , `942260` , `942370` , `949110` , `980130` felügyeleti módban
+> - `942200`,,,, `942260` `942370` `942430` `942440` a közzétett portálhoz
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Erőforráscsoport létrehozása a Resource Managerhez
 

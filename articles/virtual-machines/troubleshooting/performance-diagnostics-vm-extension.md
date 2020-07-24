@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 763e948f58dfc76c3aa7ba67f461438fc752c689
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 62a30fada32a23546323dae34f875ab9c7da228c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135279"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028549"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure teljesítménydiagnosztikai virtuálisgép-bővítmény Windowsra
 
@@ -66,12 +66,12 @@ A következő JSON az Azure Performance Diagnostics virtuálisgép-bővítmény�
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-|   **Name (Név)**   |**Érték/példa**|       **Leírás**      |
+|   **Név**   |**Érték/példa**|       **Leírás**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|Az API verziója.
 |közzétevő|Microsoft. Azure. Performance. Diagnostics|A bővítmény közzétevői névterét.
 |típus|AzurePerformanceDiagnostics|A virtuálisgép-bővítmény típusa.
-|typeHandlerVersion|1.0|A bővítmény kezelőjének verziója.
+|typeHandlerVersion|1,0|A bővítmény kezelőjének verziója.
 |performanceScenario|alapvető|Az a teljesítménnyel kapcsolatos forgatókönyv, amelynek az adatai rögzítésére kerül. Az érvényes értékek a következők: **alapszintű**, **vmslow**, **azurefiles**és **Custom**.
 |traceDurationInSeconds|300|A Nyomkövetések időtartama, ha a nyomkövetési beállítások bármelyike ki van választva.
 |perfCounterTrace|P|A teljesítményszámláló nyomkövetésének engedélyezése lehetőség. Az érvényes értékek: **p** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket.
@@ -233,7 +233,7 @@ A PerfInsights eszköz különböző naplókat, konfigurációkat és diagnoszti
 
 ## <a name="view-and-share-the-results"></a>Az eredmények megtekintése és megosztása
 
-A bővítmény kimenete olyan zip-fájlban található, amely fel van töltve a telepítés során megadott Storage-fiókba, és a megosztott [hozzáférési aláírások (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)használatával 30 napig meg van osztva. Ez a zip-fájl tartalmazza a diagnosztikai naplókat, valamint az eredményeket és javaslatokat tartalmazó jelentést. A kimeneti zip-fájlra mutató SAS-hivatkozás egy *zipfilename*_saslink.txt nevű szövegfájlban található a **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **mappa alatt. Bárki, aki rendelkezik ezzel a hivatkozással, letöltheti a zip-fájlt.
+A bővítmény kimenete olyan zip-fájlban található, amely fel van töltve a telepítés során megadott Storage-fiókba, és a megosztott [hozzáférési aláírások (SAS)](../../storage/common/storage-sas-overview.md)használatával 30 napig meg van osztva. Ez a zip-fájl tartalmazza a diagnosztikai naplókat, valamint az eredményeket és javaslatokat tartalmazó jelentést. A kimeneti zip-fájlra mutató SAS-hivatkozás egy *zipfilename*_saslink.txt nevű szövegfájlban található a **C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics \\ \<version> **mappa alatt. Bárki, aki rendelkezik ezzel a hivatkozással, letöltheti a zip-fájlt.
 
 Ha segítségre van szükség a támogatási szakembernek a támogatási jegyén való munkához, a Microsoft ezt az SAS-hivatkozást használja a diagnosztikai adatai letöltéséhez.
 

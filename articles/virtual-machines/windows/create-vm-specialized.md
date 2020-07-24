@@ -7,13 +7,14 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 7d378f111104feb678d3d89f4a4c51998c67f2e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49554c053af0ceecf2b7f0b1162b7212694239db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234535"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028090"
 ---
-# <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows rendszerű virtuális gép létrehozása speciális lemezről PowerShell-lel
+# <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Windows rendszerű virtuális gép létrehozása specializált lemezből a PowerShell-lel
 
 Hozzon létre egy új virtuális gépet egy speciális felügyelt lemez csatlakoztatásával operációsrendszer-lemezként. A speciális lemezek a virtuális merevlemezek (VHD-k) másolata egy meglévő virtuális gépről, amely tartalmazza az eredeti virtuális gépről származó felhasználói fiókokat, alkalmazásokat és egyéb állapotinformációkat. 
 
@@ -32,7 +33,7 @@ Azt javasoljuk, hogy az egyidejű központi telepítések számát legfeljebb 20
 
 ## <a name="option-1-use-an-existing-disk"></a>1. lehetőség: meglévő lemez használata
 
-Ha már törölt egy virtuális gépet, és újra szeretné használni az operációsrendszer-lemezt egy új virtuális gép létrehozásához, használja a [Get-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk).
+Ha már törölt egy virtuális gépet, és újra szeretné használni az operációsrendszer-lemezt egy új virtuális gép létrehozásához, használja a [Get-AzDisk](/powershell/module/az.compute/get-azdisk).
 
 ```powershell
 $resourceGroupName = 'myResourceGroup'
@@ -67,7 +68,7 @@ Ha egy meglévő virtuális gépet egy másik régióba szeretne másolni, érde
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Pillanatkép készítése az operációsrendszer-lemezről
 
-Pillanatképet készíthet egy teljes virtuális gépről (beleértve az összes lemezt is), vagy csak egyetlen lemezről. A következő lépések bemutatják, hogyan készíthet pillanatképet a virtuális gép operációsrendszer-lemezéről a [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) parancsmaggal. 
+Pillanatképet készíthet egy teljes virtuális gépről (beleértve az összes lemezt is), vagy csak egyetlen lemezről. A következő lépések bemutatják, hogyan készíthet pillanatképet a virtuális gép operációsrendszer-lemezéről a [New-AzSnapshot](/powershell/module/az.compute/new-azsnapshot) parancsmaggal. 
 
 Először állítson be néhány paramétert. 
 
@@ -115,7 +116,7 @@ Ha ezt a pillanatképet szeretné használni a nagy teljesítményt igénylő vi
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Új lemez létrehozása a pillanatképből
 
-Hozzon létre egy felügyelt lemezt a pillanatképből a [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk)használatával. Ez a példa a *myOSDisk* használja a lemez neveként.
+Hozzon létre egy felügyelt lemezt a pillanatképből a [New-AzDisk](/powershell/module/az.compute/new-azdisk)használatával. Ez a példa a *myOSDisk* használja a lemez neveként.
 
 Hozzon létre egy új erőforráscsoportot az új virtuális géphez.
 
@@ -235,7 +236,7 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
 
 ### <a name="add-the-os-disk"></a>Az operációsrendszer-lemez hozzáadása 
 
-Adja hozzá az operációsrendszer-lemezt a konfigurációhoz a [set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk)használatával. Ez a példa a lemez méretét *128 GB* -ra állítja, és a felügyelt lemezt *Windows* operációsrendszer-lemezként csatolja.
+Adja hozzá az operációsrendszer-lemezt a konfigurációhoz a [set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk)használatával. Ez a példa a lemez méretét *128 GB* -ra állítja, és a felügyelt lemezt *Windows* operációsrendszer-lemezként csatolja.
  
 ```powershell
 $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
@@ -244,7 +245,7 @@ $vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Stand
 
 ### <a name="complete-the-vm"></a>A virtuális gép befejezése 
 
-Hozza létre a virtuális gépet a [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) használatával az imént létrehozott konfigurációk alapján.
+Hozza létre a virtuális gépet a [New-AzVM](/powershell/module/az.compute/new-azvm) használatával az imént létrehozott konfigurációk alapján.
 
 ```powershell
 New-AzVM -ResourceGroupName $destinationResourceGroup -Location $location -VM $vm
@@ -269,4 +270,3 @@ $vmList.Name
 
 ## <a name="next-steps"></a>További lépések
 Jelentkezzen be az új virtuális gépre. További információ: [Kapcsolódás és bejelentkezés egy Windows rendszerű Azure-beli virtuális gépre](connect-logon.md).
-

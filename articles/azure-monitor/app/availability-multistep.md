@@ -3,11 +3,12 @@ title: Többlépéses webes tesztek figyelése – Azure Application Insights
 description: Többlépéses webes tesztek beállítása a webalkalmazások Azure-beli figyeléséhez Application Insights
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 04361f7b3306c5f7c164a849d8b05d7cf4756999
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83873348"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024774"
 ---
 # <a name="multi-step-web-tests"></a>Többlépéses webes tesztek
 
@@ -16,7 +17,7 @@ A webhelyeken a többlépéses webes tesztek segítségével figyelheti az URL-c
 > [!NOTE]
 > A többlépéses webes tesztek a Visual Studio webtest-fájloktól függenek. A rendszer [bejelentette](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/) , hogy a Visual Studio 2019 a webteszt funkciójának utolsó verziója. Fontos tisztában lenni azzal, hogy a Visual Studio 2019-es webteszt funkciója továbbra is támogatott, és a termék támogatási életciklusa során továbbra is támogatott lesz. A Azure Monitor termék csapata a több lépésből álló rendelkezésre állási tesztek jövőjével kapcsolatos [here](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)kérdéseket tárgyal.  
 > </br>
-> A többlépéses webes tesztek **nem támogatottak** a [Azure Government](https://docs.microsoft.com/azure/azure-government/) felhőben.
+> A többlépéses webes tesztek **nem támogatottak** a [Azure Government](../../azure-government/index.yml) felhőben.
 
 
 ## <a name="pre-requisites"></a>Előfeltételek
@@ -36,7 +37,7 @@ Az előfeltételként szolgáló tesztelési eszközök megkeresése. Indítsa e
 > [!WARNING]
 > A több lépésből álló rögzítő használata már nem ajánlott. A rögzítő a statikus HTML-lapokra, alapszintű interakciókkal lett kifejlesztve, és nem biztosít funkcionális élményt a modern weblapokhoz.
 
-A Visual Studio webes tesztek létrehozásával kapcsolatos útmutatásért tekintse meg a [hivatalos Visual studio 2019 dokumentációját](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
+A Visual Studio webes tesztek létrehozásával kapcsolatos útmutatásért tekintse meg a [hivatalos Visual studio 2019 dokumentációját](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019).
 
 ## <a name="upload-the-web-test"></a>A webes teszt feltöltése
 

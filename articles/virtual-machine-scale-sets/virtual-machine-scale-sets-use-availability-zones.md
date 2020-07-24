@@ -9,11 +9,12 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: daa469bef999f33feb44983e3b5a7073b4df655e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1c91bf9138e37c6de381ab34ab80413d3040981
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197355"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029314"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Availability Zonest használó virtuálisgép-méretezési csoport létrehozása
 
@@ -57,10 +58,10 @@ Ha egyetlen zónában hoz létre méretezési készletet, akkor szabályozhatja,
 
 Availability Zones használatához a méretezési csoportnak egy [támogatott Azure-régióban](../availability-zones/az-region.md)kell létrehoznia. Availability Zonest használó méretezési csoport létrehozása az alábbi módszerek egyikével végezhető el:
 
-- [Azure Portalra](#use-the-azure-portal)
+- [Azure Portal](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
-- [Azure Resource Manager-sablonok](#use-azure-resource-manager-templates)
+- [Azure Resource Manager sablonok](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
@@ -91,7 +92,7 @@ Az egyzónás méretezési csoport és a hálózati erőforrások teljes példá
 
 ### <a name="zone-redundant-scale-set"></a>Zóna – redundáns méretezési csoport
 
-Zóna – redundáns méretezési csoport létrehozásához *szabványos* SKU nyilvános IP-címet és terheléselosztó-t kell használnia. A bővített redundancia érdekében a *standard* SKU zóna-redundáns hálózati erőforrásokat hoz létre. További információ: [Azure Load Balancer standard áttekintés](../load-balancer/load-balancer-standard-overview.md) és [standard Load Balancer és Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md).
+Zóna – redundáns méretezési csoport létrehozásához *szabványos* SKU nyilvános IP-címet és terheléselosztó-t kell használnia. A bővített redundancia érdekében a *standard* SKU zóna-redundáns hálózati erőforrásokat hoz létre. További információ: [Azure Load Balancer standard áttekintés](../load-balancer/load-balancer-overview.md) és [standard Load Balancer és Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Zóna – redundáns méretezési csoport létrehozásához adja meg a paraméterrel több zónát `--zones` . A következő példa létrehoz egy *myScaleSet* nevű zóna-redundáns méretezési készletet az *1., 2. és 3*. zónában:
 
@@ -208,7 +209,7 @@ Zóna – redundáns méretezési csoport létrehozásához adjon meg több ért
 }
 ```
 
-Ha létrehoz egy nyilvános IP-címet vagy egy terheléselosztó-t, adja meg a *"SKU": {"Name": "standard"} "* tulajdonságot a zóna redundáns hálózati erőforrásainak létrehozásához. A forgalom engedélyezéséhez létre kell hoznia egy hálózati biztonsági csoportot és szabályokat is. További információ: [Azure Load Balancer standard áttekintés](../load-balancer/load-balancer-standard-overview.md) és [standard Load Balancer és Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md).
+Ha létrehoz egy nyilvános IP-címet vagy egy terheléselosztó-t, adja meg a *"SKU": {"Name": "standard"} "* tulajdonságot a zóna redundáns hálózati erőforrásainak létrehozásához. A forgalom engedélyezéséhez létre kell hoznia egy hálózati biztonsági csoportot és szabályokat is. További információ: [Azure Load Balancer standard áttekintés](../load-balancer/load-balancer-overview.md) és [standard Load Balancer és Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md).
 
 A zóna-redundáns méretezési csoport és a hálózati erőforrások teljes példája: [Ez a példa Resource Manager-sablon](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

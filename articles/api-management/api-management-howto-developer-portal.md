@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: ecbd4d97bb092ccbdb286e4865bf04e770ca9473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d479f18e8764a69cdc81f99d723534e4895b0e4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207889"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025081"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -29,6 +29,9 @@ Ez a cikk a API Management fejlesztői portál saját üzemeltetésű és felüg
 ![API Management fejlesztői portál](media/api-management-howto-developer-portal/cover.png)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+
+> [!NOTE]
+> <a name="migrate-from-legacy"></a>Az új fejlesztői portál nem kompatibilis a régi fejlesztői portálral, és az automatikus áttelepítés nem lehetséges. Manuálisan újra létre kell hoznia a tartalmat (lapok, szöveg, médiafájlok), és testre kell szabnia az új portál megjelenését. Útmutatásért tekintse meg [a fejlesztői portál oktatóanyagát](api-management-howto-developer-portal-customize.md) .
 
 ## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a>Felügyelt és saját üzemeltetésű verziók
 
@@ -82,17 +85,11 @@ Ha nem szeretné alaphelyzetbe állítani a portál tartalmát, érdemes lehet a
 
 Ha a portál az általános elérhetőségi bejelentés után lett kiépítve, akkor már az új alapértelmezett tartalmat is be kell építenie. Az oldaláról nincs szükség beavatkozásra.
 
-### <a name="how-can-i-migrate-from-the-old-developer-portal-to-the-developer-portal"></a>Hogyan telepíthetek át a régi fejlesztői portálról a fejlesztői portálra?
-
-A portálok nem kompatibilisek, és manuálisan kell áttelepíteni a tartalmat.
-
-### <a name="does-the-portal-have-all-the-features-of-the-old-portal"></a>A portál rendelkezik a régi portál összes szolgáltatásával?
+### <a name="does-the-portal-have-all-the-features-of-the-legacy-portal"></a>A portál rendelkezik az örökölt portál összes szolgáltatásával?
 
 A fejlesztői portál már nem támogatja az *alkalmazásokat* és a *problémákat*.
 
-Az interaktív Fejlesztői konzolon az OAuth-mel való hitelesítés még nem támogatott. Az előrehaladás nyomon követhető [a GitHub-probléma](https://github.com/Azure/api-management-developer-portal/issues/208)használatával.
-
-### <a name="has-the-old-portal-been-deprecated"></a>Elavult a régi portál?
+### <a name="has-the-legacy-portal-been-deprecated"></a>Elavult a régi portál?
 
 A régi fejlesztői és közzétevői portálok már *örökölt* funkciók – csak a biztonsági frissítéseket kapják meg. Az új szolgáltatások csak az új fejlesztői portálon lesznek implementálva.
 

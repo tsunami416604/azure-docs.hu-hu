@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: f6816da35aad51e88449361d2a80542c4349ffac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3de252b22d7b33e45c3b45e2b6c05e4b33df663d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479419"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027053"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library konfigurációs fájl
 
@@ -34,7 +34,7 @@ Ez a cikk segítséget nyújt a konfigurációs fájl különböző beállítás
 |-----------|------------|-------------|-------|
 | `client_id` | Sztring | Yes | Az alkalmazás ügyfél-azonosítója az [alkalmazás regisztrációs oldaláról](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) |
 | `redirect_uri`   | Sztring | Yes | Az [alkalmazás-regisztrációs oldalának](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) átirányítási URI-ja |
-| `authorities` | Lista\<Authority> | No | Az alkalmazás által igényelt hatóságok listája |
+| `authorities` | Listáját\<Authority> | No | Az alkalmazás által igényelt hatóságok listája |
 | `authorization_user_agent` | AuthorizationAgent (enumerálás) | No | Lehetséges értékek: `DEFAULT` , `BROWSER` ,`WEBVIEW` |
 | `http` | HttpConfiguration | No | Konfigurálás `HttpUrlConnection` `connect_timeout` és`read_timeout` |
 | `logging` | LoggingConfiguration | No | Meghatározza a naplózás részletességi szintjét. A választható konfigurációk a következők: `pii_enabled` , amely egy logikai értéket vesz igénybe, és amely a (z),, `log_level` `ERROR` `WARNING` `INFO` vagy `VERBOSE` . |
@@ -65,7 +65,7 @@ Az Ön által ismert és megbízható hitelesítésszolgáltatók listája. Az i
     "type": "AAD",
     "audience": {
         "type": "AzureADMyOrg",
-        "tenantId": "contoso.com" // Provide your specific tenant ID here
+        "tenant_id": "contoso.com" // Provide your specific tenant ID here
     }
 },
 // Example AzureAD Multiple Organizations
@@ -106,7 +106,7 @@ Az Ön által ismert és megbízható hitelesítésszolgáltatók listája. Az i
 | `type` | Sztring | Yes | A célközönség vagy fiók típusának tükrözése az alkalmazás céljaira. Lehetséges értékek: `AAD` ,`B2C` |
 | `audience` | Objektum | No | Csak akkor érvényes, ha a Type = értéket adja meg `AAD` . Megadja az alkalmazás céljainak identitását. Az alkalmazás regisztrációs értékének használata |
 | `authority_url` | Sztring | Yes | Csak akkor szükséges, ha Type = `B2C` . Megadja az alkalmazás által használandó szolgáltatói URL-címet vagy szabályzatot  |
-| `default` | logikai | Yes | Egy `"default":true` vagy több hatóság megadása esetén egyetlen szükséges. |
+| `default` | boolean | Yes | Egy `"default":true` vagy több hatóság megadása esetén egyetlen szükséges. |
 
 #### <a name="audience-properties"></a>Célközönség tulajdonságai
 
@@ -149,9 +149,9 @@ A következő globális beállítások állnak a naplózásra:
 
 | Tulajdonság | Adattípus  | Kötelező | Jegyzetek |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | logikai | No | Személyes adatkibocsátás |
+| `pii_enabled`  | boolean | No | Személyes adatkibocsátás |
 | `log_level`   | sztring | No | A kimenő üzenetek naplózása. A támogatott naplózási szintek a következők:,, `ERROR` `WARNING` `INFO` és `VERBOSE` . |
-| `logcat_enabled` | logikai | No | Azt jelzi, hogy a log Cat kimenete a naplózási felületen kívül |
+| `logcat_enabled` | boolean | No | Azt jelzi, hogy a log Cat kimenete a naplózási felületen kívül |
 
 ### <a name="account_mode"></a>account_mode
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/15/2020
-ms.openlocfilehash: 2cdac18ed20c90861fe23f0a9ccbd02680d380af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/20/2020
+ms.openlocfilehash: 5be50453dff9acaf4a9876eec1d95b56abebf745
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496689"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029841"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-verziók az Azure Cognitive Search
 
@@ -24,7 +24,7 @@ Szabályként az Azure Cognitive Search csapata csak szükség esetén tesz köz
 Ugyanez a szabály vonatkozik az SDK frissítéseire is. Az Azure Cognitive Search SDK a [szemantikai verziószámozási](https://semver.org/) szabályokat követi, ami azt jelenti, hogy a verziója három részből áll: a fő, a másodlagos és a kiépítési számokból (például 1.1.0). Az SDK új főverziójának kiadása csak a visszamenőleges kompatibilitást megszakító változások esetében engedélyezett. A nem feltörhető szolgáltatások frissítései megnövelik a másodlagos verziót, és a hibajavítások csak a Build verzióját fogják növelni.
 
 > [!Important]
-> A .NET, a Java, a Python és a JavaScript rendszerhez készült Azure SDK-k új ügyféloldali kódtárakat vezetnek be az Azure Cognitive Searchhoz. Jelenleg az Azure SDK-kódtárak egyike sem támogatja a legújabb keresési REST API-kat (2020-06-30) vagy a felügyeleti REST API-kat (2020-03-13), de ez idővel változhat. Rendszeresen megtekintheti ezt az oldalt vagy a funkciók [újdonságait](whats-new.md) a funkcionális fejlesztésekben. 
+> A .NET, a Java, a Python és a JavaScript rendszerhez készült Azure SDK-k új ügyféloldali kódtárakat vezetnek be az Azure Cognitive Searchhoz. Jelenleg az Azure SDK-kódtárak egyike sem támogatja teljes mértékben a legújabb keresési REST API-kat (2020-06-30) vagy a felügyeleti REST API-kat (2020-03-13), de ez idővel változni fog. Rendszeresen megtekintheti ezt az oldalt vagy a funkciók [újdonságait](whats-new.md) a funkcionális fejlesztésekben. 
 
 ## <a name="rest-apis"></a>REST API-k
 
@@ -69,7 +69,7 @@ A csomag korábbi verziói a NuGet.org címen érhetők el. Ez a táblázat az e
 
 | SDK verziója | Állapot | Leírás |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11,0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | Új ügyféloldali kódtár az Azure .NET SDK-ból, 2020. július. A keresési REST API-Version = 2019-05-06 célokat célozza meg. |
+| [Azure.Search.Documents 11,0](https://www.nuget.org/packages/Azure.Search.Documents/1.0.0-preview.4) | Stable | Új ügyféloldali kódtár az Azure .NET SDK-ból, 2020. július. A keresési REST API-Version = 2020-06-30 REST API célozza meg, de még nem támogatja, Geo-szűrők vagy [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet). |
 | [Microsoft. Azure. Search 10,0](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | Kiadás dátuma: 2019. A keresési REST API-Version = 2019-05-06 célokat célozza meg.|
 | [Microsoft. Azure. Search 8,0 – előzetes verzió](https://www.nuget.org/packages/Microsoft.Azure.Search/8.0.0-preview) | Előnézet | megjelent április 2019. A keresési REST API-Version = 2019-05 -06-Preview célokat célozza meg.|
 | [Microsoft. Azure. Management. Search 3.0.0](https://docs.microsoft.com/dotnet/api/overview/azure/search/management?view=azure-dotnet) | Stable | A felügyeleti REST API-Version = 2015-08-19-et célozza meg.  |

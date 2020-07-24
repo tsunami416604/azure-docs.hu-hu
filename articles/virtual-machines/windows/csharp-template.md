@@ -8,18 +8,18 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: dfcc0c550af9df6c884c8cd864ed90daf5f78e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25d8dc467ce8f7e34faaeaa2c61fd0c5da1da4e8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82082917"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027954"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Azure-beli virtuális gép üzembe helyezése C# használatával és Resource Manager-sablonnal
 
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy Azure Resource Manager sablont a C# használatával. A létrehozott sablon egy Windows Server rendszert futtató virtuális gépet telepít egyetlen alhálózattal rendelkező új virtuális hálózatban.
 
-A virtuális gép erőforrásának részletes ismertetését lásd: [virtuális gépek egy Azure Resource Manager sablonban](template-description.md). További információ a sablon összes erőforrásáról: [Azure Resource Manager template walkthrough](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+A virtuális gép erőforrásának részletes ismertetését lásd: [virtuális gépek egy Azure Resource Manager sablonban](template-description.md). További információ a sablon összes erőforrásáról: [Azure Resource Manager template walkthrough](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 Ezek a lépések körülbelül 10 percet vesznek igénybe.
 
@@ -27,7 +27,7 @@ Ezek a lépések körülbelül 10 percet vesznek igénybe.
 
 Ebben a lépésben meg kell győződnie arról, hogy a Visual Studio telepítve van, és létrehoz egy, a sablon üzembe helyezéséhez használt konzol alkalmazást.
 
-1. Ha még nem tette meg, telepítse a [Visual studiót](https://docs.microsoft.com/visualstudio/install/install-visual-studio). A munkaterhelések lapon válassza ki a **.net Desktop Development** elemet, majd kattintson a **telepítés**gombra. Az összegzésben láthatja, hogy a **.NET-keretrendszer 4 – 4,6 fejlesztői eszközei** automatikusan ki vannak választva. Ha már telepítette a Visual studiót, a .NET-munkaterhelést a Visual Studio Launcher használatával adhatja hozzá.
+1. Ha még nem tette meg, telepítse a [Visual studiót](/visualstudio/install/install-visual-studio). A munkaterhelések lapon válassza ki a **.net Desktop Development** elemet, majd kattintson a **telepítés**gombra. Az összegzésben láthatja, hogy a **.NET-keretrendszer 4 – 4,6 fejlesztői eszközei** automatikusan ki vannak választva. Ha már telepítette a Visual studiót, a .NET-munkaterhelést a Visual Studio Launcher használatával adhatja hozzá.
 2. A Visual Studióban kattintson a **fájl**  >  **új**  >  **projekt**elemre.
 3. A **sablonok**  >  **Visual C#**-ban válassza a **konzol alkalmazás (.NET-keretrendszer)** elemet, írja be a *myDotnetProject* nevet a projekt neveként, válassza ki a projekt helyét, majd kattintson **az OK**gombra.
 
@@ -233,7 +233,7 @@ A sablon üzembe helyezése előtt győződjön meg arról, hogy van hozzáfér�
         .WithDefaultSubscription();
     ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az alkalmazás értékeinek megadásához adja hozzá a kódot a Main metódushoz:
 
@@ -315,7 +315,7 @@ Az erőforráscsoport törléséhez adja hozzá ezt a kódot a Main metódushoz:
 azure.ResourceGroups.DeleteByName(groupName);
 ```
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes körűen fusson az elejétől a végéig. 
 
@@ -325,5 +325,5 @@ Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes k
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha probléma merült fel az üzembe helyezés során, a következő lépés az [Azure telepítési hibáinak elhárítása a Azure Resource Manager](../../resource-manager-common-deployment-errors.md)használatával.
+* Ha probléma merült fel az üzembe helyezés során, a következő lépés az [Azure telepítési hibáinak elhárítása a Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md)használatával.
 * Megtudhatja, hogyan helyezhet üzembe egy virtuális gépet és annak támogató erőforrásait az Azure-beli [virtuális gépek C# használatával történő üzembe helyezésének](csharp.md)áttekintésével.

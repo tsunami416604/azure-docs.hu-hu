@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 04/18/2019
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: 597a9e3b018f4ddb68710dff65094f35828b3c4b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 37602f7b9a8669ce0e8db984f7f7617cffdd431c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232661"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029280"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikális automata méretezés a virtuálisgép-méretezési csoportokkal
 
@@ -89,7 +89,7 @@ Beállíthatja a vertikális skálázást úgy, hogy a virtuálisgép-méretezé
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Futtatási képességgel rendelkező Azure Automation fiók létrehozása
 Először létre kell hoznia egy Azure Automation fiókot, amely a virtuálisgép-méretezési csoport példányainak méretezéséhez használt runbookok tárolja. A közelmúltban [Azure Automation](https://azure.microsoft.com/services/automation/) bemutatta a "futtató fiók" funkciót, amely lehetővé teszi az egyszerű szolgáltatás beállítását a runbookok automatikus futtatásához a felhasználó nevében. További információ:
 
-* [Forgatókönyvek hitelesítése Azure-beli futtató fiókkal](../automation/automation-sec-configure-azure-runas-account.md)
+* [Forgatókönyvek hitelesítése Azure-beli futtató fiókkal](../automation/manage-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Azure Automation vertikális skálázási runbookok importálása az előfizetésbe
 
@@ -156,7 +156,7 @@ A riasztások létrehozásával kapcsolatos további információkért tekintse 
 * [PowerShell-minták Azure Monitor](../azure-monitor/samples/powershell-samples.md)
 * [Platformfüggetlen CLI-minták Azure Monitor](../azure-monitor/samples/cli-samples.md)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez a cikk egyszerű vertikális skálázási példákat mutat be. Ilyen építőelemek – Automation-fiók, runbookok, webhookok, riasztások – számos különböző eseményt kapcsolhat össze testreszabott műveletekkel.
 

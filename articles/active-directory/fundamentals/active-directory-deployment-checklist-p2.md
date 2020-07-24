@@ -3,21 +3,22 @@ title: Azure AD-üzembehelyezési ellenőrzőlista
 description: Azure Active Directory funkció üzembe helyezési ellenőrzőlistája
 services: active-directory
 ms.service: active-directory
-ms.subservice: ''
+ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 082e4a35582e9fe643aefc13c0c46a1c75f443e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063645"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025387"
 ---
-# <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory funkció telepítési útmutatója
+# <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory-szolgáltatások telepítési útmutatója
 
 Úgy tűnhet, hogy az Azure Active Directory (Azure AD) üzembe helyezése a szervezet számára, és biztonságban marad. Ez a cikk azokat az általános feladatokat ismerteti, amelyeket az ügyfelek hasznosnak találnak a fázisokban való végrehajtáshoz, akár 30, 60, 90 nap, akár több, a biztonsági helyzetük javítása érdekében. Még az Azure AD-t már üzembe helyezett szervezetek is használhatják ezt az útmutatót annak biztosítására, hogy a lehető leghatékonyabban használják a saját befektetését.
 
@@ -40,7 +41,7 @@ A licenceléssel kapcsolatos további információkért tekintse meg a következ
 
 Ebben a fázisban a rendszergazdák lehetővé teszik az alapkonfiguráció biztonsági funkcióinak, hogy biztonságosabb és könnyen használható alapokat hozzanak létre az Azure AD-ben a normál felhasználói fiókok importálása vagy létrehozása előtt. Ez az alapszintű fázis gondoskodik arról, hogy a kezdeti időszakban biztonságosabb állapotban legyen, és hogy a végfelhasználók csak egyszer legyenek bevezetve az új fogalmakra.
 
-| Tevékenység | Részletek | Szükséges licenc |
+| Feladat | Részletek | Szükséges licenc |
 | ---- | ------ | ---------------- |
 | [Egynél több globális rendszergazda kijelölése](../users-groups-roles/directory-emergency-access.md) | Ha vészhelyzet van, rendeljen legalább két kizárólag felhőalapú, állandó globális rendszergazdai fiókot. Ezeket a fiókokat nem kell naponta használni, és hosszú és összetett jelszavakkal kell rendelkezniük. | Azure AD Free |
 | [A nem globális rendszergazdai szerepkörök használata, ahol lehetséges](../users-groups-roles/directory-assign-admin-roles.md) | Csak azokhoz a területekhez adjon hozzáférést a rendszergazdáknak, akiknek hozzáférésre van szükségük. Nem minden rendszergazdának kell globális rendszergazdának lennie. | Azure AD Free |
@@ -52,16 +53,17 @@ Ebben a fázisban a rendszergazdák lehetővé teszik az alapkonfiguráció bizt
 | [A felhőalapú felhasználói fiókok rendszeres jelszavának alaphelyzetbe állításának letiltása](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Az időszakos jelszó-visszaállítja a felhasználókat a meglévő jelszavaik növelésére. A Microsoft jelszó-útmutatási dokumentációjában található útmutatást követve a helyi házirendet a csak felhőalapú felhasználók számára tükrözheti. | Azure AD Free |
 | [Azure Active Directory intelligens zárolás testreszabása](../authentication/howto-password-smart-lockout.md) | A felhőalapú felhasználók zárolásának leállítása a helyszíni Active Directory felhasználók számára | |
 | [Extranetes intelligens zárolás engedélyezése AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS extranetes zárolás védi a találgatásos támadások elleni támadásokat, miközben érvényes AD FS-felhasználók továbbra is használhatják a fiókjaikat. | |
+| [Az Azure AD-val való örökölt hitelesítés letiltása feltételes hozzáféréssel](../conditional-access/block-legacy-authentication.md) | Olyan örökölt hitelesítési protokollok blokkolása, mint a POP, az SMTP, az IMAP és a MAPI, amelyek nem tudják kikényszeríteni a Multi-Factor Authentication, így előnyben részesített belépési pontot biztosítanak az ellenfelek | Prémium szintű Azure AD P1 |
 | [Azure AD-Multi-Factor Authentication üzembe helyezése feltételes hozzáférési szabályzatok használatával](../authentication/howto-mfa-getstarted.md) | Megkövetelheti a felhasználóktól, hogy a feltételes hozzáférési szabályzatok használatával kétlépéses ellenőrzést végezzenek az érzékeny alkalmazások elérésekor. | Prémium szintű Azure AD P1 |
 | [Azure Active Directory Identity Protection engedélyezése](../identity-protection/overview-identity-protection.md) | A kockázatos bejelentkezések és a feltört hitelesítő adatok nyomon követésének engedélyezése a szervezet felhasználói számára. | Prémium szintű Azure AD P2 |
 | [Kockázati észlelések használata a többtényezős hitelesítés és a jelszó módosításának elindításához](../authentication/tutorial-risk-based-sspr-mfa.md) | Olyan automatizálás engedélyezése, amely képes eseményeket, például a többtényezős hitelesítést, a jelszó-visszaállítást és a bejelentkezések kockázaton alapuló blokkolását. | Prémium szintű Azure AD P2 |
-| [A konvergens regisztráció engedélyezése az önkiszolgáló jelszó-visszaállításhoz és az Azure AD Multi-Factor Authentication (előzetes verzió)](../authentication/concept-registration-mfa-sspr-converged.md) | Lehetővé teheti a felhasználók számára, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületén regisztráljanak. | Prémium szintű Azure AD P1 |
+| [Az önkiszolgáló jelszó-visszaállítás és az Azure AD-Multi-Factor Authentication együttes regisztrációjának engedélyezése](../authentication/concept-registration-mfa-sspr-combined.md) | Lehetővé teheti a felhasználók számára, hogy az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítási szolgáltatás egyik gyakori felhasználói felületén regisztráljanak. | Prémium szintű Azure AD P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>2. fázis: felhasználók importálása, szinkronizálás engedélyezése és eszközök kezelése
 
 Ezután hozzáadjuk az 1. fázisban meghatározott alapítványhoz a felhasználókat és a szinkronizálást, a vendég-hozzáférés megtervezését, valamint a további funkciók támogatásának előkészítését.
 
-| Tevékenység | Részletek | Szükséges licenc |
+| Feladat | Részletek | Szükséges licenc |
 | ---- | ------ | ---------------- |
 | [Az Azure AD Connect telepítése](../connect/active-directory-aadconnect-select-installation.md) | Készítse elő a felhasználók szinkronizálását a meglévő helyszíni címtárból a felhőbe. | Azure AD Free |
 | [Jelszó-kivonatolási szinkronizálás implementálása](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md) | Jelszó-kivonatok szinkronizálása a jelszó-változtatások replikálásához, a jelszavak hibás észleléséhez és szervizeléséhez, valamint a kiszivárgott hitelesítő adatok jelentéséhez. | Azure AD Free |
@@ -77,7 +79,7 @@ Ezután hozzáadjuk az 1. fázisban meghatározott alapítványhoz a felhasznál
 
 Ahogy továbbra is az előző fázisokon dolgozunk, azonosítjuk a tagjelölt alkalmazásokat az Azure AD-vel való áttelepítéshez és integrációhoz, valamint az alkalmazások telepítésének befejezéséhez.
 
-| Tevékenység | Részletek | Szükséges licenc |
+| Feladat | Részletek | Szükséges licenc |
 | ---- | ------ | ---------------- |
 | Alkalmazások azonosítása | A szervezetben használt alkalmazások azonosítása: helyszíni, SaaS-alkalmazások a felhőben és más üzletági alkalmazások. Állapítsa meg, hogy ezeket az alkalmazásokat az Azure AD-vel kell-e felügyelni. | Nincs szükség licencre |
 | [Támogatott SaaS-alkalmazások integrálása a katalógusban](../manage-apps/add-application-portal.md) | Az Azure AD olyan katalógussal rendelkezik, amely több ezer előre integrált alkalmazást tartalmaz. A szervezet által használt alkalmazások némelyike valószínűleg a katalógusban érhető el, közvetlenül a Azure Portal. | Azure AD Free |
@@ -87,7 +89,7 @@ Ahogy továbbra is az előző fázisokon dolgozunk, azonosítjuk a tagjelölt al
 
 A 4. fázis azt látja, hogy a rendszergazdák a legkevesebb jogosultsági alapelveket érvényesítik az adminisztrációhoz, az első hozzáférési felülvizsgálatok befejezését, és lehetővé teszik a közös felhasználói életciklus
 
-| Tevékenység | Részletek | Szükséges licenc |
+| Feladat | Részletek | Szükséges licenc |
 | ---- | ------ | ---------------- |
 | [Privileged Identity Management használatának kikényszerítása](../privileged-identity-management/pim-security-wizard.md) | Távolítsa el a felügyeleti szerepköröket a normál napi és a napi felhasználói fiókok között. A rendszergazda felhasználók jogosultak arra, hogy a szerepkört a multi-Factor Authentication-ellenőrzések sikeres végrehajtása, az üzleti indoklás megadásával vagy a kijelölt jóváhagyók jóváhagyásának kérelmezésével használják. | Prémium szintű Azure AD P2 |
 | [Azure AD-címtárbeli szerepkörök hozzáférési felülvizsgálatának befejezése a PIM-ben](../privileged-identity-management/pim-how-to-start-security-review.md) | A biztonsági és vezetői csapatokkal együttműködve hozhat létre hozzáférési felülvizsgálati szabályzatot a szervezeti szabályzatok alapján történő rendszergazdai hozzáférés áttekintéséhez. | Prémium szintű Azure AD P2 |

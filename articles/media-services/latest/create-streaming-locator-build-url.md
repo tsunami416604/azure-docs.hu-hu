@@ -11,15 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 2972c60aa5874c21a6f7bce21020ad58b5f3b556
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e6e0d18665ac5fc28da2935c20b467f9d7662d8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78304562"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023245"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Streamelési lokátor létrehozása és URL-címek összeállítása
 
-Azure Media Services a streaming URL-cím létrehozásához először létre kell hoznia egy [folyamatos átviteli lokátort](streaming-locators-concept.md). Ezután összefűzi a [streaming Endpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) Host nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, ez az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start** parancsot a streaming megkezdéséhez.
+Azure Media Services a streaming URL-cím létrehozásához először létre kell hoznia egy [folyamatos átviteli lokátort](streaming-locators-concept.md). Ezután összefűzi a [streaming Endpoint](/rest/api/media/streamingendpoints) Host nevét és a **folyamatos átviteli lokátor** elérési útját. Ebben a példában az *alapértelmezett* **adatfolyam-végpontot** használja a rendszer. Amikor először hoz létre egy Media Service-fiókot, ez az *alapértelmezett* **folyamatos átviteli végpont** leállított állapotba kerül, ezért meg kell hívnia a **Start** parancsot a streaming megkezdéséhez.
 
 Ez a cikk bemutatja, hogyan hozhat létre adatfolyam-keresőt, és hogyan készíthet streaming URL-címet Java és .NET SDK-k használatával.
 

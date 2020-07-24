@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/05/2020
 ms.author: v-miegge
-ms.openlocfilehash: 118c81dd52951729bfbbb97a510e693861666ee6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 909481964f8aa3272715e235fa011562225a9422
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83665137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028362"
 ---
 # <a name="troubleshoot-windows-stop-error--directory-service-initialization-failure"></a>A Windows leállási hibáinak hibaelhárítása – címtárszolgáltatás-Inicializálási hiba
 
@@ -26,7 +27,7 @@ Ez a cikk olyan problémák megoldását ismerteti, amelyekben egy Active Direct
 
 ## <a name="symptom"></a>Hibajelenség
 
-Ha [rendszerindítási diagnosztika](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) használatával tekinti meg a virtuális gép képernyőképét, a képernyőfelvétel azt mutatja, hogy a virtuális gépnek egy hiba miatt újra kell indítania a **0XC00002E1** a Windows Server 2008 R2 rendszerben, vagy a Windows Server 2012 vagy újabb verzió **0xC00002E2** .
+Ha [rendszerindítási diagnosztika](./boot-diagnostics.md) használatával tekinti meg a virtuális gép képernyőképét, a képernyőfelvétel azt mutatja, hogy a virtuális gépnek egy hiba miatt újra kell indítania a **0XC00002E1** a Windows Server 2008 R2 rendszerben, vagy a Windows Server 2012 vagy újabb verzió **0xC00002E2** .
 
 ![A Windows Server 2012 indítási képernyőjének állapota "a számítógép hibát észlelt, és újra kell indítani. Most gyűjtünk néhány hibaüzenetet, majd újraindulunk. "](./media/troubleshoot-directory-service-initialization-failure/1.png)
 
@@ -61,7 +62,7 @@ Ezt a hibát a következő feltételek bármelyike okozhatja:
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A virtuálisgép- [javítási parancsok 1-3-es lépéseit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) használva készítse elő a javítási virtuális gépet.
+1. A virtuálisgép- [javítási parancsok 1-3-es lépéseit](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) használva készítse elő a javítási virtuális gépet.
 1. A Távoli asztali kapcsolat kapcsolódása a javítási virtuális géphez.
 
 ### <a name="free-up-space-on-disk"></a>Szabadítson fel lemezterületet a lemezen
@@ -69,11 +70,11 @@ Ezt a hibát a következő feltételek bármelyike okozhatja:
 Mivel a lemez most már egy javító virtuális géphez van csatolva, ellenőrizze, hogy a Active Directory belső adatbázisát tároló lemez elegendő lemezterülettel rendelkezik-e a megfelelő végrehajtáshoz.
 
 1. Győződjön meg arról, hogy a lemez megtelt-e, és kattintson a jobb gombbal a meghajtóra, majd válassza a **Tulajdonságok parancsot**.
-1. Ha a lemez 300 MB-nál kevesebb szabad területtel rendelkezik, [bontsa ki azt legfeljebb 1 TB](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)-ra a PowerShell használatával.
+1. Ha a lemez 300 MB-nál kevesebb szabad területtel rendelkezik, [bontsa ki azt legfeljebb 1 TB](../windows/expand-os-disk.md)-ra a PowerShell használatával.
 1. Ha a lemez elérte a felhasznált lemezterület 1 TB-át, hajtson végre egy Lemezkarbantartó-karbantartási műveletet.
 
-   1. A PowerShell használatával [válassza le az adatlemezt](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-powershell) a hibás virtuális gépről.
-   1. A hibás virtuális gépről való leválasztás után [csatlakoztassa az adatlemezt](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm) egy működő virtuális géphez.
+   1. A PowerShell használatával [válassza le az adatlemezt](../windows/detach-disk.md#detach-a-data-disk-using-powershell) a hibás virtuális gépről.
+   1. A hibás virtuális gépről való leválasztás után [csatlakoztassa az adatlemezt](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm) egy működő virtuális géphez.
    1. A [Lemezkarbantartó eszközzel](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) szabadítson fel további helyet.
 
 1. Nem **kötelező** – Ha további tárhelyre van szükség, nyisson meg egy cmd-példányt, és írja be a `defrag <LETTER ASSIGNED TO THE OS DISK>: /u /x /g` parancsot a detöredezettség a meghajtón való végrehajtásához:
@@ -182,7 +183,7 @@ A memóriakép-gyűjtés és a soros konzol engedélyezéséhez futtassa a köve
 
 ### <a name="rebuild-the-vm"></a>A virtuális gép újraépítése
 
-1. A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+1. A virtuális gép újraösszeállításához használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .
 
 ### <a name="reconfigure-the-storage-area-network-policy"></a>A tárterület hálózati házirendjének újrakonfigurálása
 

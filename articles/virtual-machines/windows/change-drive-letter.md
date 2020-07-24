@@ -9,19 +9,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 511c3aa65bf0a10e42d7a54c98662cc388a5d711
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82083422"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028224"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>A D: meghajtó használata adatmeghajtóként Windows-alapú virtuális gépen
 Ha az alkalmazásnak a D meghajtót kell használnia az adattároláshoz, kövesse az alábbi utasításokat, hogy az ideiglenes lemezhez egy másik meghajtóbetűjelet használjon. Soha ne használja az ideiglenes lemezt a megőrizni kívánt adatmennyiség tárolására.
 
 Ha átméretezi vagy **leállítja (felszabadítja)** a virtuális gépet, akkor ez a virtuális gép új hypervisorba való elhelyezését eredményezheti. Előfordulhat, hogy a tervezett vagy nem tervezett karbantartási esemény is aktiválhatja ezt az elhelyezést. Ebben az esetben az ideiglenes lemezt az első elérhető meghajtóbetűjelhez rendeli hozzá a rendszer. Ha olyan alkalmazással rendelkezik, amelyhez kifejezetten a D: meghajtó szükséges, akkor az alábbi lépéseket követve ideiglenesen helyezze át a pagefile.sys, csatoljon egy új adatlemezt, és rendelje hozzá a D betűt, majd helyezze vissza a pagefile.syst az ideiglenes meghajtóra. Ha elkészült, az Azure nem veszi vissza a D-t: Ha a virtuális gép egy másik hypervisorba kerül.
 
-További információ arról, hogy az Azure hogyan használja az ideiglenes lemezt: [az ideiglenes meghajtó ismertetése Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+További információ arról, hogy az Azure hogyan használja az ideiglenes lemezt: [az ideiglenes meghajtó ismertetése Microsoft Azure Virtual Machines](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines)
 
 ## <a name="attach-the-data-disk"></a>Az adatlemez csatolása
 Először csatlakoztatnia kell az adatlemezt a virtuális géphez. Ha ezt a portálon szeretné elvégezni, tekintse meg a [felügyelt adatlemez csatolása a Azure Portal](attach-managed-disk-portal.md)című témakört.
@@ -59,4 +59,3 @@ Először csatlakoztatnia kell az adatlemezt a virtuális géphez. Ha ezt a port
 
 ## <a name="next-steps"></a>További lépések
 * A virtuális gép számára elérhető tárterületet [további adatlemez csatolásával](attach-managed-disk-portal.md)növelheti.
-

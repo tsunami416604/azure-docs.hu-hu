@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0498a2015b75221763ab5fdd4f6e94428922bd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386742"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027512"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API-összekötő hozzáadása felhasználói folyamathoz
 
@@ -44,7 +44,7 @@ Az API- [Összekötők](api-connectors-overview.md)használatához először lé
 
    ![API-összekötő jogcímeinek beállítása](./media/self-service-sign-up-add-api-connector/api-connector-claims.png)
 
-10. Kattintson a **Mentés** gombra.
+10. Válassza a **Mentés** lehetőséget.
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>API-összekötő engedélyezése felhasználói folyamatokban
 
@@ -61,7 +61,7 @@ Az alábbi lépéseket követve hozzáadhat egy API-összekötőt egy önkiszolg
 
    ![API-k hozzáadása a felhasználói folyamathoz](./media/self-service-sign-up-add-api-connector/api-connectors-user-flow-select.png)
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 Útmutató az [API-összekötők felhasználói folyamatokban való engedélyezéséhez](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow).
 
@@ -76,7 +76,7 @@ POST <API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
@@ -99,7 +99,7 @@ Ha a küldendő jogcím nem rendelkezik értékkel az API-végpont hívásakor, 
 Egyéni attribútumok hozhatók létre a felhasználó számára a **extension_ \<extensions-app-id> _AttributeName** formátum használatával. Az API-nak meg kell várnia, hogy a jogcímeket ugyanabban a szerializált formátumban fogadja. Az API-val vagy anélkül adhat vissza jogcímeket `<extensions-app-id>` . Az egyéni attribútumokkal kapcsolatos további információkért lásd: [Egyéni attribútumok definiálása önkiszolgáló bejelentkezési folyamatokhoz](user-flow-add-custom-attributes.md).
 
 > [!TIP] 
-> az [**identitások ("identitások")**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) és az **e-mail-cím ("email_address")** jogcímek segítségével azonosíthatja a felhasználókat, mielőtt a bérlőben fiókkal rendelkeznek. Az "identitások" jogcímet akkor küldik el a rendszer, ha a felhasználó Google-vagy Facebook-hitelesítéssel rendelkezik, és a "email_address" mindig el lesz küldve.
+> az [**identitások ("identitások")**](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) és az **e-mail-cím ("e-mail")** jogcímek segítségével azonosíthatja a felhasználókat, mielőtt a bérlőben fiókkal rendelkeznek. Az "identitások" jogcímet akkor küldi a rendszer, ha a felhasználó egy Google-vagy Facebook-hitelesítéssel hitelesíti magát, és az "e-mailek" üzenet
 
 ## <a name="expected-response-types-from-the-web-api"></a>Várt válaszok a webes API-ból
 
@@ -136,15 +136,15 @@ Content-type: application/json
 | Paraméter                                          | Típus              | Kötelező | Leírás                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | version                                            | Sztring            | Yes      | Az API verziója.                                                                                                                                                                                                                                                                |
-| action                                             | Sztring            | Yes      | Az értéknek a számnak kell lennie `Continue` .                                                                                                                                                                                                                                                              |
+| művelet                                             | Sztring            | Yes      | Az értéknek a számnak kell lennie `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | No       | Az értékeket a címtárban tárolhatja, ha a felhasználói folyamat API-összekötő konfigurációjában és **felhasználói attribútumaiban** való **fogadásra vonatkozó jogcímként** van kijelölve. Az értékek a tokenben adhatók vissza, ha **alkalmazási jogcímként**van kiválasztva.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | A visszaadott jogcím opcionálisan nem tartalmazhatja a következőt: `_<extensions-app-id>_` . Az értékeket a címtárban kell tárolni, ha a felhasználói folyamat API-összekötő konfigurációjában és **felhasználói attribútumában** való **fogadásra vonatkozó jogcímként** vannak megadva. Egyéni attribútumok nem küldhetők vissza a jogkivonatban. |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | A visszaadott jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . Az értékeket a címtárban kell tárolni, ha a felhasználói folyamat API-összekötő konfigurációjában és **felhasználói attribútumában** való **fogadásra vonatkozó jogcímként** vannak megadva. Egyéni attribútumok nem küldhetők vissza a jogkivonatban. |
 
 ### <a name="blocking-response"></a>Blokkoló válasz
 
 A blokkolási válasz kilép a felhasználói folyamatból. Az API szándékosan kiállíthatja a felhasználói folyamat folytatását úgy, hogy egy blokk lapot jelenít meg a felhasználónak. A blokk oldal megjeleníti az `userMessage` API által biztosított értéket.
 
-A következő példa a blokkolási választ szemlélteti:
+A blokkolási válasz példája:
 
 ```http
 HTTP/1.1 200 OK
@@ -162,11 +162,11 @@ Content-type: application/json
 | Paraméter   | Típus   | Kötelező | Leírás                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | version     | Sztring | Yes      | Az API verziója.                                                    |
-| action      | Sztring | Yes      | Az értéknek szerepelnie kell`ShowBlockPage`                                              |
+| művelet      | Sztring | Yes      | Az értéknek szerepelnie kell`ShowBlockPage`                                              |
 | userMessage | Sztring | Yes      | A felhasználónak megjelenítendő üzenet.                                            |
 | code        | Sztring | No       | Hibakód. Hibakeresési célokra használható. Nem jelenik meg a felhasználó számára. |
 
-#### <a name="end-user-experience-with-a-blocking-response"></a>Végfelhasználói élmény blokkoló választal
+#### <a name="end-user-experience-with-a-blocking-response"></a>Végfelhasználói élmény blokkoló válaszokkal
 
 ![Példa blokk oldalra](./media/api-connectors-overview/blocking-page-response.png)
 
@@ -192,7 +192,7 @@ Content-type: application/json
 | Paraméter   | Típus    | Kötelező | Leírás                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | version     | Sztring  | Yes      | Az API verziója.                                                    |
-| action      | Sztring  | Yes      | Az értéknek a számnak kell lennie `ValidationError` .                                           |
+| művelet      | Sztring  | Yes      | Az értéknek a számnak kell lennie `ValidationError` .                                           |
 | status      | Egész szám | Yes      | ValidationError-válasz értékének kell lennie `400` .                        |
 | userMessage | Sztring  | Yes      | A felhasználónak megjelenítendő üzenet.                                            |
 | code        | Sztring  | No       | Hibakód. Hibakeresési célokra használható. Nem jelenik meg a felhasználó számára. |

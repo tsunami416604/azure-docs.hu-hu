@@ -8,12 +8,12 @@ ms.date: 07/10/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e0773515809ffdc50167a3cba1f767ac8635bcee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9f61835887c26e41b3338286065df4ca9d05f513
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502571"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029008"
 ---
 # <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>Végpontok közötti titkosítás engedélyezése a gazdagépen található titkosítás használatával – Azure CLI
 
@@ -43,34 +43,144 @@ Ha a szolgáltatás engedélyezve van, be kell állítania egy Azure Key Vault �
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-cli](../../../includes/virtual-machines-disks-encryption-create-key-vault-cli.md)]
 
-## <a name="enable-encryption-at-host-for-disks-attached-to-vm-and-virtual-machine-scale-sets"></a>Titkosítás engedélyezése a gazdagépen a virtuális gépekhez és virtuálisgép-méretezési csoportokhoz csatolt lemezek esetén
+## <a name="examples"></a>Példák
 
-A gazdagépen a titkosítást a **2020-06-01** -es és újabb verziójú API-k használatával engedélyezheti a virtuális gépek vagy virtuálisgép-méretezési csoportok securityProfile alatti új tulajdonságának EncryptionAtHost.
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Hozzon létre egy titkosítást használó virtuális gépet az ügyfél által felügyelt kulcsokkal rendelkező gazdagépen. 
 
-`"securityProfile": { "encryptionAtHost": "true" }`
-
-## <a name="example-scripts"></a>Példa parancsfájlok
-
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-customer-managed-keys"></a>Titkosítás engedélyezése a gazdagépen az ügyfél által felügyelt kulcsokkal rendelkező virtuális géphez csatolt lemezek esetén
-
-Hozzon létre egy felügyelt lemezekkel rendelkező virtuális gépet a korábban létrehozott DiskEncryptionSet erőforrás-URI-ja használatával.
-
-Cserélje le a,,,,, `<yourPassword>` `<yourVMName>` `<yourVMSize>` `<yourDESName>` `<yoursubscriptionID>` `<yourResourceGroupName>` , és `<yourRegion>` a parancsot, majd futtassa a parancsfájlt.
+Hozzon létre egy felügyelt lemezekkel rendelkező virtuális gépet a korábban létrehozott DiskEncryptionSet erőforrás-URI-ja használatával, hogy titkosítsa az operációs rendszer és az adatlemezek gyorsítótárát az ügyfél által kezelt kulcsokkal. A rendszer a platform által felügyelt kulcsokkal titkosítja a temp lemezeket. 
 
 ```azurecli
-az group deployment create -g <yourResourceGroupName> \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithCMK.json" \
---parameters "virtualMachineName=<yourVMName>" "adminPassword=<yourPassword>" "vmSize=<yourVMSize>" "diskEncryptionSetId=/subscriptions/<yoursubscriptionID>/resourceGroups/<yourResourceGroupName>/providers/Microsoft.Compute/diskEncryptionSets/<yourDESName>" "region=<yourRegion>"
+rgName=yourRGName
+vmName=yourVMName
+location=eastus
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--encryption-at-host \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--os-disk-encryption-set $diskEncryptionSetId \
+--data-disk-sizes-gb 128 128 \
+--data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
 ```
 
-### <a name="enable-encryption-at-host-for-disks-attached-to-a-vm-with-platform-managed-keys"></a>Titkosítás engedélyezése a gazdagépen a platform által felügyelt kulcsokkal rendelkező virtuális géphez csatlakoztatott lemezek esetén
+### <a name="create-a-vm-with-encryption-at-host-enabled-with-platform-managed-keys"></a>Platform által felügyelt kulcsokkal rendelkező virtuális gép létrehozása titkosítással a gazdagépen. 
 
-Cserélje le a,, `<yourPassword>` `<yourVMName>` ,, `<yourVMSize>` `<yourResourceGroupName>` és `<yourRegion>` a parancsot, majd futtassa a parancsfájlt.
+Hozzon létre egy titkosítással rendelkező virtuális gépet, amelyen engedélyezve van az operációs rendszer/adatlemezek és az ideiglenes lemezek gyorsítótárának titkosítása a platform által felügyelt kulcsokkal. 
 
 ```azurecli
-az group deployment create -g <yourResourceGroupName> \
---template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/EncryptionAtHost/CreateVMWithDisksEncryptedAtHostWithPMK.json" \
---parameters "virtualMachineName=<yourVMName>" "adminPassword=<yourPassword>" "vmSize=<yourVMSize>" "region=<yourRegion>"
+rgName=yourRGName
+vmName=yourVMName
+location=eastus
+vmSize=Standard_DS2_v2
+image=UbuntuLTS 
+
+az vm create -g $rgName \
+-n $vmName \
+-l $location \
+--encryption-at-host \
+--image $image \
+--size $vmSize \
+--generate-ssh-keys \
+--data-disk-sizes-gb 128 128 \
+```
+
+### <a name="update-a-vm-to-enable-encryption-at-host"></a>Frissítsen egy virtuális gépet, hogy engedélyezze a titkosítást a gazdagépen. 
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm update -n $vmName \
+-g $rgName \
+--set securityProfile.encryptionAtHost=true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-vm"></a>A virtuális gép gazdagépén lévő titkosítás állapotának megtekintése
+
+```azurecli
+rgName=yourRGName
+vmName=yourVMName
+
+az vm show -n $vmName \
+-g $rgName \
+--query [securityProfile.encryptionAtHost] -o tsv
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-customer-managed-keys"></a>Hozzon létre egy virtuálisgép-méretezési csoport titkosítással a gazdagépen az ügyfél által felügyelt kulcsokkal. 
+
+Hozzon létre egy virtuálisgép-méretezési készletet felügyelt lemezekkel a korábban létrehozott DiskEncryptionSet erőforrás-URI-ja segítségével, hogy titkosítsa az operációs rendszer és az adatlemezek gyorsítótárát az ügyfél által kezelt kulcsokkal. A rendszer a platform által felügyelt kulcsokkal titkosítja a temp lemezeket. 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMSSName
+location=westus2
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+diskEncryptionSetId=$(az disk-encryption-set show -n $diskEncryptionSetName -g $rgName --query [id] -o tsv)
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--admin-username azureuser \
+--generate-ssh-keys \
+--os-disk-encryption-set $diskEncryptionSetId \
+--data-disk-sizes-gb 64 128 \
+--data-disk-encryption-sets $diskEncryptionSetId $diskEncryptionSetId
+```
+
+### <a name="create-a-virtual-machine-scale-set-with-encryption-at-host-enabled-with-platform-managed-keys"></a>A platform által felügyelt kulcsokkal rendelkező virtuálisgép-méretezési csoport létrehozása titkosítással a gazdagépen. 
+
+Hozzon létre egy virtuálisgép-méretezési csoport titkosítással a gazdagépen, amelyen engedélyezve van a platform által felügyelt kulcsokkal rendelkező operációs rendszer/adatlemezek és ideiglenes lemezek gyorsítótárának titkosítása. 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMSSName
+location=westus2
+vmSize=Standard_DS3_V2
+image=UbuntuLTS 
+
+az vmss create -g $rgName \
+-n $vmssName \
+--encryption-at-host \
+--image UbuntuLTS \
+--upgrade-policy automatic \
+--admin-username azureuser \
+--generate-ssh-keys \
+--data-disk-sizes-gb 64 128 \
+```
+
+### <a name="update-a-virtual-machine-scale-set-to-enable-encryption-at-host"></a>A virtuális gépek méretezési csoportjának frissítése a titkosítás engedélyezéséhez a gazdagépen. 
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss update -n $vmssName \
+-g $rgName \
+--set virtualMachineProfile.securityProfile.encryptionAtHost=true
+```
+
+### <a name="check-the-status-of-encryption-at-host-for-a-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoportnál a gazdagépen lévő titkosítás állapotának megtekintése
+
+```azurecli
+rgName=yourRGName
+vmssName=yourVMName
+
+az vmss show -n $vmssName \
+-g $rgName \
+--query [virtualMachineProfile.securityProfile.encryptionAtHost] -o tsv
 ```
 
 ## <a name="finding-supported-vm-sizes"></a>Támogatott virtuális gépek méretének keresése
@@ -117,7 +227,7 @@ foreach($vmSize in $vmSizes)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy létrehozta és konfigurálta ezeket az erőforrásokat, a segítségével biztonságossá teheti a felügyelt lemezeket. A következő hivatkozás olyan parancsfájlokat tartalmaz, amelyek mindegyike megfelelő forgatókönyvekkel rendelkezik, amelyek segítségével biztonságossá teheti a felügyelt lemezeket.
 

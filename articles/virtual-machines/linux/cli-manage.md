@@ -6,30 +6,31 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 253f2ab1b192d22f43e4082766adf4ec4f86fe71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65c0838c06207435934e36d421b2cafc12ee39bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969253"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029025"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Gyakori Azure CLI-parancsok az Azure-erőforrások kezeléséhez
 
 Az Azure CLI használatával macOS, Linux és Windows rendszeren is létrehozhatja és kezelheti Azure-erőforrásait. Ez a cikk a virtuális gépek (VM-EK) létrehozásával és kezelésével kapcsolatos leggyakoribb parancsokat ismerteti.
 
-Ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissítenie kell, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört. A böngészőből [Cloud Shell](/azure/cloud-shell/quickstart) is használhatja.
+Ehhez a cikkhez az Azure CLI 2.0.4 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissítenie kell, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört. A böngészőből [Cloud Shell](../../cloud-shell/quickstart.md) is használhatja.
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Alapszintű Azure Resource Manager-parancsok az Azure CLI-ben
 Az adott parancssori kapcsolókkal és lehetőségekkel kapcsolatos részletesebb segítségért írja be a következőt: az online parancs súgója és beállításai `az <command> <subcommand> --help` .
 
 ### <a name="create-vms"></a>Virtuális gépek létrehozása
-| Tevékenység | Az Azure parancssori felület parancsai |
+| Feladat | Az Azure parancssori felület parancsai |
 | --- | --- |
-| Erőforráscsoport létrehozása | `az group create --name myResourceGroup --location eastus` |
+| Hozzon létre egy erőforráscsoportot | `az group create --name myResourceGroup --location eastus` |
 | Linux rendszerű virtuális gép létrehozása | `az vm create --resource-group myResourceGroup --name myVM --image ubuntults` |
 | Windows rendszerű virtuális gép létrehozása | `az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter` |
 
 ### <a name="manage-vm-state"></a>Virtuális gép állapotának kezelése
-| Tevékenység | Az Azure parancssori felület parancsai |
+| Feladat | Az Azure parancssori felület parancsai |
 | --- | --- |
 | Virtuális gép elindítása | `az vm start --resource-group myResourceGroup --name myVM` |
 | Virtuális gép leállítása | `az vm stop --resource-group myResourceGroup --name myVM` |
@@ -39,7 +40,7 @@ Az adott parancssori kapcsolókkal és lehetőségekkel kapcsolatos részleteseb
 | Virtuális gép törlése | `az vm delete --resource-group myResourceGroup --name myVM` |
 
 ### <a name="get-vm-info"></a>Virtuális gép adatainak beolvasása
-| Tevékenység | Az Azure parancssori felület parancsai |
+| Feladat | Az Azure parancssori felület parancsai |
 | --- | --- |
 | Virtuális gépek felsorolása | `az vm list` |
 | Virtuális gép adatainak lekérése | `az vm show --resource-group myResourceGroup --name myVM` |
@@ -47,7 +48,7 @@ Az adott parancssori kapcsolókkal és lehetőségekkel kapcsolatos részleteseb
 | Minden elérhető virtuálisgép-méret megtekintése | `az vm list-sizes --location eastus` |
 
 ## <a name="disks-and-images"></a>Lemezek és lemezképek
-| Tevékenység | Az Azure parancssori felület parancsai |
+| Feladat | Az Azure parancssori felület parancsai |
 | --- | --- |
 | Adatlemez hozzáadása egy virtuális géphez | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new` |
 | Adatlemez eltávolítása egy virtuális gépből | `az vm disk detach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk` |
@@ -59,6 +60,3 @@ Az adott parancssori kapcsolókkal és lehetőségekkel kapcsolatos részleteseb
 
 ## <a name="next-steps"></a>További lépések
 A CLI-parancsokkal kapcsolatos további példákért tekintse meg a Linux rendszerű [virtuális gépek létrehozása és kezelése az Azure CLI-vel](tutorial-manage-vm.md) című oktatóanyagot.
-
-
-

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: daberry
-ms.openlocfilehash: f85389d8fc2269b346df22854bb7ddce08844a88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f48963a4d18e80cb67bfbbdc532d34f89b8b5d8a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83118226"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028447"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>A Resource Manager üzembe helyezésével kapcsolatos hibák elhárítása új Linux rendszerű virtuális gép létrehozásával az Azure-ban
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -35,7 +36,7 @@ A hibaelhárítás megkezdéséhez Gyűjtse össze a tevékenység naplóit a pr
 
 [Üzembe helyezési műveletek megtekintése](../../azure-resource-manager/templates/deployment-history.md)
 
-[Tevékenységnaplók megtekintése az Azure-erőforrások kezeléséhez](../../resource-group-audit.md)
+[Tevékenységnaplók megtekintése az Azure-erőforrások kezeléséhez](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -87,5 +88,4 @@ Ez a hiba olyan helyzetekben fordul elő, amikor az új virtuálisgép-kérelem 
   * Adja hozzá az új virtuális gépet ugyanahhoz a virtuális hálózathoz.
 
 ## <a name="next-steps"></a>További lépések
-Ha a leállított linuxos virtuális gép indításakor vagy egy meglévő linuxos virtuális gép Azure-ban való átméretezésével kapcsolatos problémák merülnek fel, tekintse meg a [Resource Manager-alapú üzembe helyezési problémák elhárítása az Azure-ban meglévő linuxos virtuális gépek újraindításával vagy átméretezésével](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+Ha a leállított linuxos virtuális gép indításakor vagy egy meglévő linuxos virtuális gép Azure-ban való átméretezésével kapcsolatos problémák merülnek fel, tekintse meg a [Resource Manager-alapú üzembe helyezési problémák elhárítása az Azure-ban meglévő linuxos virtuális gépek újraindításával vagy átméretezésével](./troubleshoot-deploy-vm-linux.md?toc=/azure/virtual-machines/linux/toc.json)

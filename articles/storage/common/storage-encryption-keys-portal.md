@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 07/13/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 4af70a4e2a698bd280c8c41018bc5aaa1bfa27f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a216714939dc45fd1b220f24414a527969ab7fcb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512549"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029574"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault a Azure Portal használatával
 
@@ -45,9 +45,26 @@ Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kö
 
 ## <a name="specify-a-key"></a>Kulcs meghatározása
 
-Az ügyfél által felügyelt kulcsok engedélyezése után lehetősége van megadnia a Storage-fiókhoz társítandó kulcsot.
+Az ügyfél által felügyelt kulcsok engedélyezése után lehetősége van megadnia a Storage-fiókhoz társítandó kulcsot. Azt is jelezheti, hogy az Azure Storage szolgáltatásnak automatikusan el kell-e forgatnia az ügyfél által felügyelt kulcsot, vagy manuálisan kell elforgatnia a kulcsot.
+
+### <a name="specify-a-key-from-a-key-vault"></a>Kulcs megadása kulcstartóból
+
+Amikor kiválaszt egy ügyfél által felügyelt kulcsot egy kulcstartóból, a kulcs automatikus elforgatása automatikusan engedélyezve lesz. A kulcs verziójának manuális kezeléséhez adja meg helyette a kulcs URI-JÁT, és adja meg a kulcs verzióját. További információ: [kulcs megadása URI-ként](#specify-a-key-as-a-uri).
+
+A Key vaultban lévő kulcs megadásához kövesse az alábbi lépéseket:
+
+1. Válassza a **kiválasztás a Key Vault** lehetőséget.
+1. Válassza ki **a Key Vault és a kulcs kiválasztása**lehetőséget.
+1. Válassza ki a használni kívánt kulcsot tartalmazó kulcstartót.
+1. Válassza ki a kulcsot a Key vaultból.
+
+   ![A Key Vault és a kulcs kiválasztását bemutató képernyőkép](./media/storage-encryption-keys-portal/portal-select-key-from-key-vault.png)
+
+1. Mentse a módosításokat.
 
 ### <a name="specify-a-key-as-a-uri"></a>Kulcs megadása URI-ként
+
+Ha megadja a kulcs URI-JÁT, hagyja ki a kulcs verzióját az ügyfél által felügyelt kulcs automatikus elforgatásának engedélyezéséhez. Ha a kulcs URI-ja tartalmazza a kulcs verzióját, akkor az automatikus rotáció nincs engedélyezve, és a kulcs verzióját saját kezűleg kell kezelnie. A kulcs verziójának frissítésével kapcsolatos további információkért lásd [a kulcs verziójának manuális frissítését](#manually-update-the-key-version)ismertető témakört.
 
 A kulcs URI-ként való megadásához kövesse az alábbi lépéseket:
 
@@ -56,35 +73,29 @@ A kulcs URI-ként való megadásához kövesse az alábbi lépéseket:
 
     ![A Key Vault kulcs URI-JÁT ábrázoló képernyőfelvétel](media/storage-encryption-keys-portal/portal-copy-key-identifier.png)
 
-1. A Storage-fiók **titkosítási** beállításainál kattintson a **kulcs URI-ja megadása** lehetőségre.
-1. Illessze be a vágólapra a **kulcs URI** mezőjébe MÁSOLt URI-t.
+1. A Storage-fiók **titkosítási kulcs** beállításainál válassza a **kulcs URI-azonosítójának megadása** lehetőséget.
+1. Illessze be a vágólapra a **kulcs URI** mezőjébe MÁSOLt URI-t. Hagyja ki a kulcs verzióját az URI-ból az automatikus rotáció engedélyezéséhez.
 
    ![A kulcs URI-azonosítójának megadását bemutató képernyőkép](./media/storage-encryption-keys-portal/portal-specify-key-uri.png)
 
 1. Itt adhatja meg a kulcstárolót tartalmazó előfizetést.
 1. Mentse a módosításokat.
 
-### <a name="specify-a-key-from-a-key-vault"></a>Kulcs megadása kulcstartóból
+A kulcs megadása után a Azure Portal jelzi, hogy engedélyezve van-e az automatikus kulcs elforgatása, és megjeleníti-e a titkosításhoz jelenleg használt kulcs verzióját.
 
-A Key Vault kulcsának megadásához először győződjön meg arról, hogy rendelkezik egy kulcsot tartalmazó kulcstartóval. A Key vaultban lévő kulcs megadásához kövesse az alábbi lépéseket:
+:::image type="content" source="media/storage-encryption-keys-portal/portal-auto-rotation-enabled.png" alt-text="Képernyőfelvétel: az ügyfél által felügyelt kulcsok automatikus elforgatása engedélyezve":::
 
-1. Válassza a **kiválasztás a Key Vault** lehetőséget.
-1. Válassza ki a használni kívánt kulcsot tartalmazó kulcstartót.
-1. Válassza ki a kulcsot a Key vaultból.
+## <a name="manually-update-the-key-version"></a>A kulcs verziójának manuális frissítése
 
-   ![Az ügyfél által felügyelt kulcs beállítását bemutató képernyőfelvétel](./media/storage-encryption-keys-portal/portal-select-key-from-key-vault.png)
+Alapértelmezés szerint az Azure Storage automatikusan elforgatja az ügyfél által felügyelt kulcsokat az előző szakaszokban leírtak szerint. Ha úgy dönt, hogy saját maga kezeli a kulcs verzióját, akkor a kulcs új verziójának létrehozásakor minden alkalommal frissítenie kell a Storage-fiókhoz megadott kulcs verzióját.
 
-1. Mentse a módosításokat.
-
-## <a name="update-the-key-version"></a>A kulcs verziójának frissítése
-
-A kulcs új verziójának létrehozásakor frissítse a Storage-fiókot az új verzió használatára. Kövesse az alábbi lépéseket:
+Ha frissíteni szeretné a Storage-fiókot az új kulcs verziójának használatára, kövesse az alábbi lépéseket:
 
 1. Navigáljon a Storage-fiókjához, és jelenítse meg a **titkosítási** beállításokat.
 1. Adja meg az új kulcs verziójának URI azonosítóját. Másik lehetőségként kiválaszthatja a Key vaultot és a kulcsot is a verzió frissítéséhez.
 1. Mentse a módosításokat.
 
-## <a name="use-a-different-key"></a>Másik kulcs használata
+## <a name="switch-to-a-different-key"></a>Váltás másik kulcsra
 
 Az Azure Storage-titkosításhoz használt kulcs módosításához kövesse az alábbi lépéseket:
 

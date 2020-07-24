@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ecfd6bf9d20309619155bf35c87bdb4c08665f73
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3b2684122e7de97282b1054fa9ad0390469b0f0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169544"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030266"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>A Notification Hubs használata a Java-ból
 
@@ -30,7 +30,7 @@ ms.locfileid: "86169544"
 Ez a témakör az új, teljes mértékben támogatott Azure Notification hub Java SDK főbb funkcióit ismerteti.
 Ez a projekt egy nyílt forráskódú projekt, amely a teljes SDK-kódot a [Java SDK]-ban tekintheti meg.
 
-Általánosságban elmondható, hogy egy Java/PHP/Python/Ruby háttérrendszer összes Notification Hubs funkcióját az értesítési központ REST felületén keresztül érheti el az MSDN témakör [Notification HUBS REST API](https://msdn.microsoft.com/library/dn223264.aspx)-k című részében leírtak szerint. Ez a Java SDK egy vékony burkolót biztosít ezen REST-felületek javában.
+Általánosságban elmondható, hogy egy Java/PHP/Python/Ruby háttérrendszer összes Notification Hubs funkcióját az értesítési központ REST felületén keresztül érheti el az MSDN témakör [Notification HUBS REST API](/previous-versions/azure/reference/dn223264(v=azure.100))-k című részében leírtak szerint. Ez a Java SDK egy vékony burkolót biztosít ezen REST-felületek javában.
 
 Az SDK jelenleg a következőket támogatja:
 
@@ -55,7 +55,7 @@ Létrehozás:
 mvn package
 ```
 
-## <a name="code"></a>Kód
+## <a name="code"></a>Code
 
 ### <a name="notification-hub-cruds"></a>Értesítési központ – SZIFILISZek
 
@@ -387,7 +387,7 @@ Ez a témakör bemutatja, hogyan hozhat létre egy egyszerű Java REST-ügyfelet
   * [Platformfüggetlen értesítések küldése hitelesített felhasználóknak]
 
 [Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
-[Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[Get started tutorial]: ./notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Ismerkedés a Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Legfrissebb hírek küldése]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Honosított feltörési Hírek küldése]: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md

@@ -10,15 +10,15 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/10/2020
+ms.date: 07/22/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: e7323793dcbbd05fc5abf032d140b2caa5975da4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e3acfb9552db9fa972b0a407e52cece014b45389
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249461"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025013"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -119,7 +119,7 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 | */5671, 5672, 443          | Kimenő           | TCP                | VIRTUAL_NETWORK/EventHub            | Az [Event hub-házirend](api-management-howto-log-event-hubs.md) és a figyelési ügynök közötti függőség | Külső & belső  |
 | */445                      | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | Függőség a [git](api-management-configuration-repository-git.md) -hez készült Azure-fájlmegosztástól                      | Külső & belső  |
 | */443                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureCloud            | Állapot-és figyelési bővítmény         | Külső & belső  |
-| */1886, 443                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Diagnosztikai naplók és mérőszámok](api-management-howto-use-azure-monitor.md) és [Resource Health](../service-health/resource-health-overview.md) közzététele                     | Külső & belső  |
+| */1886, 443                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | [Diagnosztikai naplók és mérőszámok](api-management-howto-use-azure-monitor.md)közzététele, [Resource Health](../service-health/resource-health-overview.md) és [Application Insights](api-management-howto-app-insights.md)                   | Külső & belső  |
 | */25, 587, 25028                       | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
 | */6381 – 6383              | Bejövő & kimenő | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | A Redis szolgáltatás elérése a számítógépek közötti [gyorsítótárazási](api-management-caching-policies.md) házirendekhez         | Külső & belső  |
 | */4290              | Bejövő & kimenő | UDP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Számlálók szinkronizálása a számítógépek között a [díjszabási korlátozási](api-management-access-restriction-policies.md#LimitCallRateByKey) házirendekhez         | Külső & belső  |
@@ -152,6 +152,8 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 + **Azure Portal diagnosztika**: ahhoz, hogy a API Management bővítmény egy Virtual Networkon belülről való használatakor lehetővé váljon a diagnosztikai naplók áramlása Azure Portal, a 443-as porton kimenő hozzáférésre `dc.services.visualstudio.com` van szükség. Ez segít a bővítmények használata során felmerülő problémák elhárításában.
 
 + **Azure Load Balancer**: a szolgáltatási címke bejövő kérelmének engedélyezése `AZURE_LOAD_BALANCER` nem követelmény az SKU számára `Developer` , mivel csak egy egységet helyezünk üzembe a számítási feladatokból. A [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) bejövő állapota azonban kritikusra vált, ha a magasabb szintű SKU-ra, például a `Premium` Load Balancer állapotának meghibásodása miatt nem sikerül üzembe helyezést végrehajtani.
+
++ **Application Insights**: Ha az [Azure Application Insights](api-management-howto-app-insights.md) -figyelés engedélyezve van a API Managementon, akkor engedélyeznie kell a kimenő kapcsolatot a [telemetria-végpontnak](/azure/azure-monitor/app/ip-addresses#outgoing-ports) a Virtual Network. 
 
 + A helyszíni **tűzfal felé irányuló forgalom kényszerítése az expressz útvonal vagy a hálózati virtuális berendezés használatával**: a közös ügyfél-konfiguráció a saját alapértelmezett útvonal (0.0.0.0/0) meghatározása, amely a API Management delegált alhálózatról a helyszíni tűzfalon vagy egy hálózati virtuális berendezésen keresztül áramlik át a forgalmat. Ez a forgalmi folyamat mindig megszakítja az Azure API Management kapcsolatát, mivel a kimenő forgalom vagy a helyszínen van letiltva, vagy a NAT-t olyan, a különböző Azure-végpontokkal már nem működő címekből álló halmazba kívánja felismerni. A megoldáshoz pár dolgot kell tennie:
 

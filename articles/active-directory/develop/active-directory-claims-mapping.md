@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d240ed426bb270ac4cf09f3806bd36a6a52d3633
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 00f9e4c1ebd162883f62280e753b6e0c4c13a21d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275393"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027172"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
 
@@ -44,7 +44,7 @@ A jogcím-hozzárendelési házirend olyan **házirend** -objektum, amely módos
 
 Léteznek bizonyos jogcímek, amelyek meghatározzák, hogyan és mikor használják a jogkivonatokban.
 
-| Jogcím-készlet | Leírás |
+| Jogcím-készlet | Description |
 |---|---|
 | Alapszintű jogcímek készlete | Minden jogkivonatban jelen vannak, a szabályzattól függetlenül. Ezek a jogcímek is korlátozottnak minősülnek, és nem módosíthatók. |
 | Alapszintű jogcímek készlete | Tartalmazza azokat a jogcímeket, amelyeket a rendszer alapértelmezés szerint a jogkivonatok számára bocsát ki (az alapszintű jogcímek készletén kívül). Az alapszintű jogcímeket kihagyhatja vagy módosíthatja a jogcím-hozzárendelési szabályzatok használatával. |
@@ -284,7 +284,7 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 
 #### <a name="table-3-valid-id-values-per-source"></a>3. táblázat: érvényes azonosító értékek/forrás
 
-| Forrás | ID | Leírás |
+| Forrás | ID | Description |
 |-----|-----|-----|
 | Felhasználó | surname | Család neve |
 | Felhasználó | givenname | utónév; |
@@ -320,7 +320,7 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 | Felhasználó | extensionAttribute15 | 15. bővítmény-attribútum |
 | Felhasználó | othermail | Egyéb E-mail |
 | Felhasználó | ország | Ország/régió |
-| Felhasználó | city | City |
+| Felhasználó | city | Település |
 | Felhasználó | state | Állapot |
 | Felhasználó | beosztás | Beosztás |
 | Felhasználó | Alkalmazottkód | Alkalmazott azonosítója |
@@ -359,10 +359,10 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>4. táblázat: transzformációs módszerek és várt bemenetek és kimenetek
 
-|TransformationMethod|Várt bemenet|Várt kimenet|Leírás|
+|TransformationMethod|Várt bemenet|Várt kimenet|Description|
 |-----|-----|-----|-----|
 |Csatlakozás|karakterlánc1, karakterlánc2, elválasztó|outputClaim|Összekapcsolja a bemeneti karakterláncokat a között elválasztó használatával. Például: karakterlánc1: " foo@bar.com ", karakterlánc2: "homokozó", elválasztó: "." eredmény a következő outputClaim: " foo@bar.com.sandbox "|
-|ExtractMailPrefix|e-mail vagy egyszerű Felhasználónév|UPN|A ExtensionAttributes 1-15 vagy bármely más olyan séma-bővítmény, amely UPN-vagy e-mail-cím értéket tárol a felhasználó számára, például: johndoe@contoso.com . Egy e-mail-cím helyi részének kibontása. Például: mail: " foo@bar.com " eredmény a outputClaim: "foo". Ha nincs \@ jel, akkor a rendszer az eredeti bemeneti karakterláncot adja vissza.|
+|ExtractMailPrefix|E-mail vagy egyszerű Felhasználónév|kinyert karakterlánc|A ExtensionAttributes 1-15 vagy bármely más olyan séma-bővítmény, amely UPN-vagy e-mail-cím értéket tárol a felhasználó számára, például: johndoe@contoso.com . Egy e-mail-cím helyi részének kibontása. Például: mail: " foo@bar.com " eredmény a outputClaim: "foo". Ha nincs \@ jel, akkor a rendszer az eredeti bemeneti karakterláncot adja vissza.|
 
 **Szabályzattípushoz:** Egy Szabályzattípushoz elem használatával továbbíthatja az adatok átadását a jogcím-séma bejegyzéseiből egy átalakításba. Két attribútummal rendelkezik: **ClaimTypeReferenceId** és **TransformationClaimType**.
 
@@ -385,7 +385,7 @@ A választott módszer alapján a rendszer bemenetek és kimenetek készletét v
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>5. táblázat: az SAML-NameID adatforrásként engedélyezett attribútumai
 
-|Forrás|ID|Leírás|
+|Forrás|ID|Description|
 |-----|-----|-----|
 | Felhasználó | Levelezés|E-mail-cím|
 | Felhasználó | userPrincipalName|Felhasználó egyszerű neve|

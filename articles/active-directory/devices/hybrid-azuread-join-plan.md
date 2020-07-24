@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf21f2ea5aacb36f3a76034e99b748bf4c6c363b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16203ab972f6117cec41e43ee5dd89cda7e95ede
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554771"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025695"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -92,12 +92,12 @@ Első tervezési lépésként tekintse át a környezetet, és állapítsa meg, 
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>Eszközök feldolgozása az Azure AD regisztrált állapotával
 Ha a Windows 10 tartományhoz csatlakoztatott eszközök az Azure AD-t a bérlőhöz [regisztrálják](overview.md#getting-devices-in-azure-ad) , akkor a hibrid Azure ad-hez csatlakoztatott és az Azure ad-beli regisztrált eszközök kettős állapotát eredményezheti. Javasoljuk, hogy a forgatókönyv automatikus megoldásához frissítsen a Windows 10 1803 (KB4489894 alkalmazott) vagy újabb verzióra. Az 1803-os kiadásokban a hibrid Azure AD-csatlakozás engedélyezése előtt manuálisan el kell távolítania az Azure AD-beli regisztrált állapotot. A 1803-es és újabb verzióiban a következő módosítások történtek a kettős állapot elkerüléséhez:
 
-- Egy felhasználó meglévő Azure AD-beli regisztrált állapota automatikusan törlődik, <i>Miután az eszköz hibrid Azure ad-hez csatlakozik, és ugyanaz a felhasználó jelentkezik be</i>. Ha például a felhasználó egy Azure AD-beli regisztrált állapottal rendelkezik az eszközön, akkor az A felhasználó kettős állapota csak akkor törlődik, ha a felhasználó bejelentkezik az eszközre. Ha több felhasználó is van ugyanazon az eszközön, akkor a kettős állapotot a rendszer egyenként megtisztítja, amikor a felhasználók bejelentkeznek.
+- Egy felhasználó meglévő Azure AD-beli regisztrált állapota automatikusan törlődik, <i>Miután az eszköz hibrid Azure ad-hez csatlakozik, és ugyanaz a felhasználó jelentkezik be</i>. Ha például a felhasználó egy Azure AD-beli regisztrált állapottal rendelkezik az eszközön, akkor az A felhasználó kettős állapota csak akkor törlődik, ha a felhasználó bejelentkezik az eszközre. Ha több felhasználó is van ugyanazon az eszközön, akkor a kettős állapotot a rendszer egyenként megtisztítja, amikor a felhasználók bejelentkeznek. Az Azure AD regisztrált állapotának eltávolítása mellett a Windows 10 törli az eszköz regisztrációját az Intune-ból vagy más MDM is, ha a regisztráció az Azure AD regisztrálásának részeként történt automatikus regisztrációval.
 - Megakadályozhatja, hogy a tartományhoz csatlakoztatott eszköz regisztrálva legyen az Azure AD-ben, ha hozzáadja a következő beállításértéket a HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin: "BlockAADWorkplaceJoin" = DWORD: 00000001.
 - Windows 10 1803 rendszerben, ha a vállalati Windows Hello konfigurálva van, a felhasználónak újra kell telepítenie a Windows Hello for businesst a kettős állapot törlése után. Ez a probléma a KB4512509-mel foglalkozott
 
 > [!NOTE]
-> Az Azure AD-beli regisztrált eszköz nem lesz automatikusan eltávolítva, ha az Intune felügyeli.
+> Annak ellenére, hogy a Windows 10 automatikusan eltávolítja az Azure AD-beli regisztrált állapotot, az Azure AD-beli eszköz-objektum nem törlődik azonnal, ha az Intune felügyeli. A dsregcmd/status futtatásával ellenőrizheti az Azure AD regisztrált állapotának eltávolítását, és azt is megvizsgálhatja, hogy az eszköz ne legyen regisztrálva az Azure AD-ben.
 
 ### <a name="additional-considerations"></a>Néhány fontos megjegyzés
 - Ha a környezete virtuális asztali infrastruktúrát (VDI) használ, tekintse meg az [eszköz identitása és az asztali virtualizálási](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)témakört.

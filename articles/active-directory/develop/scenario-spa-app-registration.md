@@ -12,11 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 9dc5b446e2ab26ca43c2a300e1af1237353325a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 238bcc6c706f2fab969c98b73ca879d064498693
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682393"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026509"
 ---
 # <a name="single-page-application-app-registration"></a>Egyoldalas alkalmazás: alkalmazás regisztrálása
 
@@ -28,7 +29,7 @@ A MSAL.js 1,0-és 2,0-alapú alkalmazásokhoz a kezdeti alkalmazás regisztráci
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha a fiókja több bérlőhöz fér hozzá, válassza ki a **könyvtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a bérlőt, amelynek a létrehozni kívánt alkalmazás-regisztrációt tartalmaznia kell.
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
-1. A **kezelés**területen válassza a **Alkalmazásregisztrációk**lehetőséget.
+1. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza az **új regisztráció**lehetőséget, adjon meg egy **nevet** az alkalmazásnak, és válassza ki az alkalmazás **támogatott fiókjának típusát** . Ne **adjon meg** **átirányítási URI**-t. A különböző fióktípus leírását az [új alkalmazás regisztrálása a Azure Portal használatával](quickstart-register-app.md#register-a-new-application-using-the-azure-portal)című témakörben tekintheti meg.
 1. Az alkalmazás regisztrációjának létrehozásához válassza a **regisztráció** lehetőséget.
 
@@ -37,7 +38,7 @@ Ezután konfigurálja az alkalmazás regisztrációját egy **átirányítási U
 - [2,0MSAL.js az Auth Code flow-val](#redirect-uri-msaljs-20-with-auth-code-flow) (ajánlott)
 - [MSAL.js 1,0 implicit folyamattal](#redirect-uri-msaljs-10-with-implicit-flow)
 
-## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Átirányítási URI: MSAL.js 2,0 az Auth Code flow-val
+## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Átirányítási URI: [MSAL.js 2,0 az Auth Code flow-val](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 
 A következő lépésekkel adhat hozzá átirányítási URI-t egy MSAL.js 2,0-es vagy újabb verziót használó alkalmazáshoz. A MSAL.js 2.0 és a PKCE és a CORS által biztosított engedélyezési kód a [böngésző harmadik féltől származó cookie-korlátozásokra](reference-third-party-cookies-spas.md)reagálva támogatja. Az implicit engedélyezési folyamat MSAL.js 2.0 + verzióban nem támogatott.
 
@@ -49,7 +50,9 @@ A következő lépésekkel adhat hozzá átirányítási URI-t egy MSAL.js 2,0-e
 
 Ezzel befejezte az egyoldalas alkalmazás (SPA) regisztrációját, és konfigurált egy átirányítási URI-t, amelybe az ügyfél átirányítja az ügyfelet, és a rendszer minden biztonsági jogkivonatot elküld. Ha az átirányítási URI-t egy **egyoldalas alkalmazás** csempével konfigurálja a **platform hozzáadása** panelen, az alkalmazás regisztrációja úgy van konfigurálva, hogy támogassa az engedélyezési kódot a PKCE és a CORS használatával.
 
-## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Átirányítási URI: MSAL.js 1,0 implicit folyamattal
+További útmutatásért kövesse az [oktatóanyagot](tutorial-v2-javascript-auth-code.md) .
+
+## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Átirányítási URI: [MSAL.js 1,0 implicit folyamattal](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)
 
 A következő lépésekkel adhat hozzá átirányítási URI-t egy egyoldalas alkalmazáshoz, amely MSAL.js 1,3-es vagy korábbi verzióját, valamint az implicit engedélyezési folyamatot használja. A MSAL.js 1,3-es vagy korábbi verzióját használó alkalmazások nem támogatják az Auth-kód folyamatát.
 
@@ -63,6 +66,8 @@ A következő lépésekkel adhat hozzá átirányítási URI-t egy egyoldalas al
 1. Válassza a **Konfigurálás** lehetőséget az átirányítási URI hozzáadásának befejezéséhez.
 
 Ezzel befejezte az egyoldalas alkalmazás (SPA) regisztrációját, és konfigurált egy átirányítási URI-t, amelybe az ügyfél átirányítja az ügyfelet, és a rendszer minden biztonsági jogkivonatot elküld. Egy vagy több **azonosító token** és **hozzáférési jogkivonat**kiválasztásával engedélyezte az implicit engedélyezési folyamatot.
+
+További útmutatásért kövesse az [oktatóanyagot](tutorial-v2-javascript-spa.md) . 
 
 ## <a name="note-about-authorization-flows"></a>Megjegyzés az engedélyezési folyamatokról
 

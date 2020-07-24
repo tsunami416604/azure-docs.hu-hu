@@ -4,11 +4,12 @@ description: Webes teszteket állíthat be az Application Insightsban. Riasztás
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6daa2e4abb1b6580fd70f104e85f3a917f47dcdc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77670032"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024588"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Bármely webhely rendelkezésre állásának monitorozása
 
@@ -22,7 +23,7 @@ A rendelkezésre állási tesztek három típusa létezik:
 
 * [URL-ping teszt](#create-a-url-ping-test): egyszerű teszt, amelyet az Azure Portalon hozhat létre.
 * [Többlépéses webes teszt](availability-multistep.md): a webes kérések sorozatának rögzítése, amely az összetettebb forgatókönyvek tesztelésére használható. A többlépéses webes tesztek a Visual Studio Enterprise-ban jönnek létre, és a portálra lesznek feltöltve a végrehajtáshoz.
-* [Egyéni nyomon követési rendelkezésre állási tesztek](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Ha úgy dönt, hogy egyéni alkalmazást hoz létre a rendelkezésre állási tesztek futtatásához, a `TrackAvailability()` metódus segítségével küldheti el az eredményeket Application Insights.
+* [Egyéni nyomon követési rendelkezésre állási tesztek](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet): Ha úgy dönt, hogy egyéni alkalmazást hoz létre a rendelkezésre állási tesztek futtatásához, a `TrackAvailability()` metódus segítségével küldheti el az eredményeket Application Insights.
 
 **Application Insights erőforráson akár 100 rendelkezésre állási tesztet is létrehozhat.**
 
@@ -50,7 +51,7 @@ Az első rendelkezésre állási kérelem létrehozásához nyissa meg a rendelk
 |**Tesztelési gyakoriság**| Beállítja, hogy a teszt milyen gyakran fusson az egyes tesztelési helyekről. Öt perces alapértelmezett gyakorisággal és öt teszthellyel a helyén átlagosan percenként egy teszt történik.|
 |**Tesztelési helyszínek**| Azok a helyek, ahonnan a kiszolgálók webes kéréseket küldenek az URL-címre. Az **ajánlott tesztelési helyszínek minimális száma öt** annak biztosítására, hogy a hálózati problémák alapján megkülönböztetni tudja a webhelyén felmerülő problémákat. Legfeljebb 16 hely választható ki.
 
-**Ha az URL-cím nem látható a nyilvános internetről, dönthet úgy, hogy szelektíven megnyitja a tűzfalat, hogy csak a tesztelési tranzakciókat engedélyezze**. Ha többet szeretne megtudni a rendelkezésre állási tesztelési ügynökökkel kapcsolatos tűzfal-kivételekről, tekintse meg az [IP-cím útmutatóját](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests).
+**Ha az URL-cím nem látható a nyilvános internetről, dönthet úgy, hogy szelektíven megnyitja a tűzfalat, hogy csak a tesztelési tranzakciókat engedélyezze**. Ha többet szeretne megtudni a rendelkezésre állási tesztelési ügynökökkel kapcsolatos tűzfal-kivételekről, tekintse meg az [IP-cím útmutatóját](./ip-addresses.md#availability-tests).
 
 > [!NOTE]
 > Javasoljuk, hogy több helyről, **legalább öt hellyel**tesztelje a tesztelést. Ennek célja, hogy megakadályozza a hamis riasztásokat, amelyek egy adott hellyel kapcsolatos átmeneti problémákhoz vezethetnek. Emellett azt is találtuk, hogy az optimális konfiguráció a **teszt helyeinek száma a riasztási hely küszöbértéke + 2**.
@@ -112,7 +113,7 @@ Kattintson a kivétel sorra, és tekintse meg a szintetikus rendelkezésre áll�
 
 ![Kiszolgálóoldali diagnosztika](./media/monitor-web-app-availability/open-instance-4.png)
 
-A nyers eredmények mellett két fő rendelkezésre állási metrikát is megtekintheti [Metrikaböngészőban](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started):
+A nyers eredmények mellett két fő rendelkezésre állási metrikát is megtekintheti [Metrikaböngészőban](../platform/metrics-getting-started.md):
 
 1. Rendelkezésre állás: Az összes végrehajtott teszt közül a sikeresen végrehajtott tesztek százalékos aránya.
 2. Tesztek időtartama: A tesztek átlagos időtartama az összes végrehajtás alapján.
@@ -130,5 +131,3 @@ Dedikált [hibaelhárítási cikk](troubleshoot-availability.md).
 
 * [Rendelkezésre állási riasztások](availability-alerts.md)
 * [Többlépéses webes tesztek](availability-multistep.md)
-
-

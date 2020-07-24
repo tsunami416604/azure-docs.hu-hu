@@ -1,5 +1,5 @@
 ---
-title: Feltételes hozzáférési szabályzatok áttelepíteni – Azure Active Directory
+title: Feltételes hozzáférési szabályzatok áttelepíthetők a többtényezős hitelesítéssel – Azure Active Directory
 description: Ez a cikk bemutatja, hogyan telepítheti át a többtényezős hitelesítést igénylő klasszikus szabályzatot a Azure Portalban.
 services: active-directory
 ms.service: active-directory
@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1dc7b7227dbaee488726a75fe7120bd26614dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cc99241f5fa7c09c69db13dcb3f6c3aaa75e376
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83993728"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027393"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Klasszikus szabályzat migrálása a Azure Portal
 
@@ -51,13 +52,13 @@ Az áttelepítési folyamat a következő lépésekből áll:
 1. A **hozzárendelés** szakaszban kattintson a **felhőalapú alkalmazások vagy műveletek**elemre.
 1. A **Cloud apps vagy Actions** oldalon hajtsa végre a következő lépéseket:
    1. Kattintson az **alkalmazások kiválasztása**elemre.
-   1. Kattintson a **Kiválasztás** gombra.
+   1. Válassza a **Kiválasztás** lehetőséget.
    1. A **kiválasztás** lapon válassza ki a felhőalapú alkalmazást, majd kattintson a **kiválasztás**elemre.
    1. A **Cloud apps** lapon kattintson a **kész**gombra.
 1. Ha a **többtényezős hitelesítés** van kiválasztva:
    1. A **hozzáférés-vezérlések** szakaszban kattintson a **Grant (Engedélyezés**) elemre.
    1. A **támogatás** lapon kattintson a **hozzáférés engedélyezése**elemre, majd kattintson a **többtényezős hitelesítés megkövetelése**lehetőségre.
-   1. Kattintson a **Kiválasztás** gombra.
+   1. Válassza a **Kiválasztás** lehetőséget.
 1. Kattintson **a** be gombra a szabályzat engedélyezéséhez, majd válassza a **Mentés**lehetőséget.
 
    ![Feltételes hozzáférési szabályzat létrehozása](./media/policy-migration-mfa/conditional-access-policy-migration.png)

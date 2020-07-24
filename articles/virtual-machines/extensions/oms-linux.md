@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: 905a42c5a9bc297e2c27408a58a5b3019755fdef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7ebb23cfc0ffdcfcac7ecb4ecbd9b9a665e6130
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736653"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029093"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuális gépi bővítmény Linuxhoz
 
@@ -204,7 +204,7 @@ A bővítmény végrehajtásának kimenete a következő fájlba van naplózva:
 
 | Hibakód | Értelmezés | Lehetséges művelet |
 | :---: | --- | --- |
-| 9 | Az engedélyezés idő előtt megszakadt | [Frissítse az Azure Linux-ügynököt](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) a legújabb elérhető verzióra. |
+| 9 | Az engedélyezés idő előtt megszakadt | [Frissítse az Azure Linux-ügynököt](./update-linux-agent.md) a legújabb elérhető verzióra. |
 | 10 | A virtuális gép már csatlakoztatva van egy Log Analytics munkaterülethez | Ha a virtuális gépet a bővítmény sémájában megadott munkaterülethez szeretné kapcsolni, állítsa a stopOnMultipleConnections hamis értékre a nyilvános beállításokban, vagy távolítsa el ezt a tulajdonságot. Ez a virtuális gép minden munkaterülethez, amelyhez kapcsolódik, egyszer kell fizetnie. |
 | 11 | Érvénytelen a bővítmény számára megadott konfiguráció | Az előző példákat követve állítsa be a telepítéshez szükséges összes tulajdonság értékét. |
 | 17 | Log Analytics csomag telepítési hibája | 

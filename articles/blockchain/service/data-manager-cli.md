@@ -4,12 +4,12 @@ description: Azure Blockchain Service-hez készült Blockchain-Data Manager lét
 ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: b7b897f35cb864e2a1fa904bbb3ec13b56986598
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85200460"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023738"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>A Blockchain Data Manager konfigurálása az Azure CLI-vel
 
@@ -25,22 +25,22 @@ A Blockchain Data Manager példányának konfigurálásához a következőket ke
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Telepítse a legújabb [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) -t, és jelentkezzen be a használatával `az login` .
+* Telepítse a legújabb [Azure CLI](/cli/azure/install-azure-cli) -t, és jelentkezzen be a használatával `az login` .
 * Teljes rövid útmutató [: a Visual Studio Code használatával csatlakozhat egy Azure Blockchain Service Consortium-hálózathoz](connect-vscode.md). Az Azure Blockchain Service *standard* szintű Blockchain Data Manager használata esetén ajánlott.
 * [Event Grid témakör](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) létrehozása
 * További információ a [Azure Event Grid-beli eseménykezelőről](../../event-grid/event-handlers.md)
 
-## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell elindítása
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta.
 
 A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/bash](https://shell.azure.com/bash) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.51 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.51 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](https://docs.microsoft.com/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
+Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurecli-interactive
 az group create --name myRG --location eastus
@@ -59,7 +59,7 @@ az resource create \
                    --properties <watcher resource properties>
 ```
 
-| Paraméter | Leírás |
+| Paraméter | Description |
 |-----------|-------------|
 | resource-group | Az erőforráscsoport neve, ahol a Blockchain Data Manager példányt hozza létre. |
 | name | A Blockchain Data Manager példányának neve. |
@@ -79,7 +79,7 @@ JSON-konfiguráció – példa Blockchain Manager-példány létrehozására az 
 }
 ```
 
-| Elem | Description |
+| Elem | Leírás |
 |---------|-------------|
 | location | Az a régió, ahol a figyelő erőforrást létre kell hozni |
 | properties | A figyelők erőforrásának létrehozásakor beállítani kívánt tulajdonságok |
@@ -121,7 +121,7 @@ az resource create \
                    --properties <input resource properties>
 ```
 
-| Paraméter | Leírás |
+| Paraméter | Description |
 |-----------|-------------|
 | resource-group | Az erőforráscsoport neve, ahol a bemeneti erőforrást létre kell hozni. |
 | name | A bemenet neve. |
@@ -147,7 +147,7 @@ Konfiguráció JSON-példa egy bemeneti erőforrás létrehozásához az *USA ke
 }
 ```
 
-| Elem | Description |
+| Elem | Leírás |
 |---------|-------------|
 | location | Az a régió, ahol a bemeneti erőforrást létre kell hozni. |
 | inputType | Az Azure Blockchain-szolgáltatás tagjának főkönyvi típusa. Jelenleg a **Ethereum** támogatott. |
@@ -193,7 +193,7 @@ az resource create \
                    --properties <output resource properties>
 ```
 
-| Paraméter | Leírás |
+| Paraméter | Description |
 |-----------|-------------|
 | resource-group | Az erőforráscsoport neve, ahol a kimeneti erőforrást létre kell hozni. |
 | name | A kimenet neve. |
@@ -219,7 +219,7 @@ Konfigurációs JSON-példa: hozzon létre egy kimeneti erőforrást az *USA kel
 }
 ```
 
-| Elem | Description |
+| Elem | Leírás |
 |---------|-------------|
 | location | Az a régió, ahol a kimeneti erőforrást létre kívánja hozni. |
 | outputType | A kimenet típusa. Jelenleg a **EventGrid** támogatott. |
@@ -270,7 +270,7 @@ az resource create \
                    --properties <Application resource properties>
 ```
 
-| Paraméter | Leírás |
+| Paraméter | Description |
 |-----------|-------------|
 | resource-group | Az erőforráscsoport neve, ahol létre kell hozni az alkalmazás erőforrását. |
 | name | Az alkalmazás neve. |
@@ -301,7 +301,7 @@ Konfigurációs JSON-példa egy alkalmazás-erőforrás létrehozására az *USA
 }
 ```
 
-| Elem | Description |
+| Elem | Leírás |
 |---------|-------------|
 | location | A régió, ahol az alkalmazás-erőforrást létre kell hozni. |
 | artifactType | Az alkalmazás típusa. Jelenleg a **EthereumSmartContract** támogatott. |
@@ -345,9 +345,9 @@ az resource invoke-action \
                           --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/<Watcher name>
 ```
 
-| Paraméter | Leírás |
+| Paraméter | Description |
 |-----------|-------------|
-| action | A figyelő futtatásához használja a **Start** parancsot. |
+| művelet | A figyelő futtatásához használja a **Start** parancsot. |
 | azonosítók | Figyelő erőforrás-azonosítója. Cserélje le a \<Subscription ID\> , a \<Resource group\> és a \<Watcher name\> értéket a figyelők erőforrásának értékeire.|
 
 ### <a name="start-instance-example"></a>Példány indítása példa
@@ -370,9 +370,9 @@ az resource invoke-action \
                           --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/<Watcher name>
 ```
 
-| Paraméter | Leírás |
+| Paraméter | Description |
 |-----------|-------------|
-| action | A figyelő leállításához használja a **Leállítás** lehetőséget. |
+| művelet | A figyelő leállításához használja a **Leállítás** lehetőséget. |
 | azonosítók | A figyelő neve. Cserélje le a \<Subscription ID\> , a \<Resource group\> és a \<Watcher name\> értéket a figyelők erőforrásának értékeire. |
 
 ### <a name="stop-watcher-example"></a>Figyelő leállítása – példa

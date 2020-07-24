@@ -9,16 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 07/21/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fbbf5f9d01ed4a469967dac87faa3b130905757
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82926714"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027104"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
@@ -86,10 +87,10 @@ Ez a lista azokat a JWT jogcímeket jeleníti meg, amelyek alapértelmezés szer
 |`ver` | Karakterlánc, vagy 1,0 vagy 2,0 | Megadja a id_token verzióját. |
 
 > [!NOTE]
-> A v1-es és v2-es id_token különbségek vannak a fenti példákban látható információk mennyiségével. A verzió lényegében azt az Azure AD platform-végpontot határozza meg, ahonnan a kiadást adták. Az [Azure ad OAuth megvalósítása](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) az évek során fejlődött. Jelenleg két különböző oAuth-végponttal rendelkezünk a AzureAD-alkalmazásokhoz. Használhatja a v2-ként kategorizált új végpontokat vagy a régit, amely a v1. A OAuth végpontok mindkettő eltérő. A v2-végpont annál újabb, ahol a v1-végpont összes funkcióját megpróbáljuk áttelepíteni, és az új fejlesztőknek javasoljuk, hogy a v2-végpontot használják.
+> A v 1.0 és a v 22.0 id_token a fenti példákban látható információk mennyiségétől függ. A verzió lényegében azt az Azure AD platform-végpontot határozza meg, ahonnan a kiadást adták. Az [Azure ad OAuth megvalósítása](about-microsoft-identity-platform.md) az évek során fejlődött. Jelenleg két különböző outh-végpont létezik az Azure AD-alkalmazásokhoz. Használhatja a v 2.0 vagy a v 1.0 kategóriába sorolt új végpontokat. Mindkét OAuth végpontja eltérő. A v 2.0-végpont újabb, és a rendszer áttelepíti a v 1.0 végpont funkcióit erre a végpontra. Az új fejlesztőknek a v 2.0-s végpontot kell használniuk.
 >
-> - V1: Azure Active Directory végpontok:`https://login.microsoftonline.com/common/oauth2/authorize`
-> - V2: Microsoft Identity platform-végpontok:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - 1.0-s verzió: Azure AD-végpontok:`https://login.microsoftonline.com/common/oauth2/authorize`
+> - v 2.0: Microsoft identitypPlatform-végpontok:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>Id_token ellenőrzése
 

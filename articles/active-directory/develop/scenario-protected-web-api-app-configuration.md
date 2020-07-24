@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 992c29cb8380cf6acbe970b2fd5e958b6b2b33dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882471"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026713"
 ---
 # <a name="protected-web-api-code-configuration"></a>Védett webes API: kód konfigurálása
 
@@ -91,11 +91,33 @@ Ez a szakasz a tulajdonosi jogkivonatok konfigurálását ismerteti.
 }
 ```
 
+#### <a name="case-where-you-used-a-custom-app-id-uri-for-your-web-api"></a>Ha egyéni alkalmazás-azonosító URI-t használt a webes API-hoz
+
+Ha elfogadta az alkalmazás-regisztrációs portál által javasolt azonosító URI-t, nem kell megadnia a célközönséget (lásd: [alkalmazás-azonosító URI és hatókörök](scenario-protected-web-api-app-registration.md#application-id-uri-and-scopes)). Ellenkező esetben olyan tulajdonságot kell hozzáadnia, `Audience` amelynek értéke a webes API-hoz tartozó alkalmazás-azonosító URI.
+
+```Json
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common",
+    "Audience": "custom App ID URI for your web API"
+  },
+  // more lines
+}
+```
+
 ### <a name="code-initialization"></a>Kód inicializálása
 
 Ha egy alkalmazás hívása olyan vezérlőre történik, amely egy **[engedélyezés]** attribútummal rendelkezik, a ASP.net és a ASP.net Core Kinyeri a hozzáférési jogkivonatot az engedélyezési fejléc tulajdonosi jogkivonatával. Ezután a hozzáférési tokent továbbítjuk a JwtBearer middleware-re, amely meghívja a .NET-hez készült Microsoft IdentityModel-bővítményeket.
 
-A ASP.NET Core-ben ez a köztes kapcsolat inicializálva van a Startup.cs fájlban.
+#### <a name="using-microsoftidentityweb-templates"></a>A Microsoft. Identity. Web sablonok használata
+
+A Microsoft. Identity. Web Project sablonok használatával létrehozhat egy teljesen új webes API-t. További részletek: [Microsoft. Identity. Web-Web API Project sablon](https://aka.ms/ms-id-web/webapi-project-templates)
+
+#### <a name="starting-from-an-existing-aspnet-core-31-application"></a>Egy meglévő ASP.NET Core 3,1-alkalmazástól kezdve
+
+Ma ASP.NET Core 3,1 a Microsoft. AspNetCore. AzureAD. UI könyvtárat használja. A middleware inicializálása a Startup.cs fájlban történik.
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -104,33 +126,37 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 A middleware a webes API-hoz kerül a következő utasítással:
 
 ```csharp
- services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
-         .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services)
+{
+  services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
+          .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+}
 ```
 
- A ASP.NET Core-sablonok jelenleg olyan Azure Active Directory (Azure AD) webes API-kat hoznak létre, amelyek a szervezeten vagy szervezeten belül jelentkeznek be a felhasználókba. Személyes fiókkal nem jelentkezhetnek be a felhasználókba. A sablonokat a Microsoft Identity platform végpontjának használatára is módosíthatja, ha hozzáadja ezt a kódot a Startup.cs:
+ A ASP.NET Core-sablonok jelenleg olyan Azure Active Directory (Azure AD) webes API-kat hoznak létre, amelyek a szervezeten vagy szervezeten belül jelentkeznek be a felhasználókba. Személyes fiókkal nem jelentkezhetnek be a felhasználókba. A sablonokat a Microsoft Identity platform végpontjának használatára is módosíthatja a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web)használatával, amely NuGet-csomagként érhető el, a kód helyére a *Startup.cs*:
 
 ```csharp
-services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
-{
-    // This is a Microsoft identity platform web API.
-    options.Authority += "/v2.0";
-
-    // The web API accepts as audiences both the Client ID (options.Audience) and api://{ClientID}.
-    options.TokenValidationParameters.ValidAudiences = new []
-    {
-     options.Audience,
-     $"api://{options.Audience}"
-    };
-
-    // Instead of using the default validation (validating against a single tenant,
-    // as we do in line-of-business apps),
-    // we inject our own multitenant validation logic (which even accepts both v1 and v2 tokens).
-    options.TokenValidationParameters.IssuerValidator = AadIssuerValidator.GetIssuerValidator(options.Authority).Validate;;
-});
+using Microsoft.Identity.Web;
 ```
 
-Az előző kódrészlet a [Microsoft. Identity. Web/WebApiServiceCollectionExtensions. cs # L50-L63-](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63)ben elérhető webes API növekményes oktatóanyagból lett kiASP.net Core nyerve. A **AddProtectedWebApi** metódus, amely a kódrészletnél többet mutat, hívása a Startup.cs.
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+ // Adds Microsoft Identity platform (AAD v2.0) support to protect this API
+ services.AddMicrosoftWebApiAuthentication(Configuration, "AzureAd");
+
+ services.AddControllers();
+}
+```
+
+> [!NOTE]
+> Ha a Microsoft. Identity. Web-t használja, és nem állítja be a `Audience` *appsettings.json*értékre, a rendszer a következőt használja:
+> -  `$"{ClientId}"`Ha a [hozzáférési jogkivonat elfogadott verzióját](scenario-protected-web-api-app-registration.md#accepted-token-version) `2` vagy Azure ad B2C webes API-k számára állította be.
+> - `$"api://{ClientId}`minden más esetben (1.0-s [hozzáférési jogkivonatok](access-tokens.md)esetén).
+> Részletekért lásd: Microsoft. Identity. Web [forrás kódja](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
+
+Az előző kódrészletet a rendszer kinyeri a [ASP.net Core web API növekményes oktatóanyagból](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28). A **AddMicrosoftWebApiAuthentication** részletei a [Microsoft. Identity. Web webhelyen](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27)érhetők el. Ez a metódus meghívja a [AddMicrosoftWebAPI](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58)-t, amely maga is arra utasítja a middleware-t, hogy hogyan érvényesítse a jogkivonatot. További részletekért tekintse meg a [forráskódját](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122).
 
 ## <a name="token-validation"></a>Jogkivonat ellenőrzése
 
@@ -150,7 +176,7 @@ Az érvényesítési lépések a [Microsoft IdentityModel Extensions for .net](h
 
 Ez a táblázat a validatorokat ismerteti:
 
-| Validator | Leírás |
+| Validator | Description |
 |---------|---------|
 | **ValidateAudience** | Gondoskodik arról, hogy a jogkivonat az alkalmazáshoz legyen hitelesítve, amely érvényesíti a jogkivonatot. |
 | **ValidateIssuer** | Gondoskodik arról, hogy a tokent egy megbízható STS bocsátotta ki, ami azt jelenti, hogy a jogkivonatot megbízhatónak minősíti. |
@@ -159,15 +185,42 @@ Ez a táblázat a validatorokat ismerteti:
 | **ValidateSignature** | Gondoskodik arról, hogy a jogkivonat ne legyen illetéktelenül módosítva. |
 | **ValidateTokenReplay** | Gondoskodik arról, hogy a jogkivonat ne legyen újrajátszva. Van egy speciális eset néhány már használatban lévő protokollhoz. |
 
+#### <a name="customizing-token-validation"></a>Jogkivonat-érvényesítés testreszabása
+
 A validatorok a **TokenValidationParameters** osztály tulajdonságaival vannak társítva. A tulajdonságok a ASP.NET és a ASP.NET Core konfigurációból lesznek inicializálva.
 
-A legtöbb esetben nem kell módosítania a paramétereket. Azok az alkalmazások, amelyek nem önálló bérlők, kivételek. Ezek a webalkalmazások elfogadják a felhasználókat bármely szervezettől vagy személyes Microsoft-fiókból. Ebben az esetben a kiállítókat érvényesíteni kell.
+A legtöbb esetben nem kell módosítania a paramétereket. Azok az alkalmazások, amelyek nem önálló bérlők, kivételek. Ezek a webalkalmazások elfogadják a felhasználókat bármely szervezettől vagy személyes Microsoft-fiókból. Ebben az esetben a kiállítókat érvényesíteni kell. A Microsoft. Identity. web is gondoskodik a kibocsátó érvényesítéséről. Részletekért lásd: Microsoft. Identity. Web [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs).
+
+Ha a jogkivonat-ellenőrzési paramétereket testre szeretné szabni a ASP.NET Coreban, használja a következő kódrészletet a *Startup.cs*:
+
+```c#
+services.AddMicrosoftWebApiAuthentication(Configuration);
+services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
+{
+  var existingOnTokenValidatedHandler = options.Events.OnTokenValidated;
+  options.Events.OnTokenValidated = async context =>
+  {
+       await existingOnTokenValidatedHandler(context);
+      // Your code to add extra configuration that will be executed after the current event implementation.
+      options.TokenValidationParameters.ValidIssuers = new[] { /* list of valid issuers */ };
+      options.TokenValidationParameters.ValidAudiences = new[] { /* list of valid audiences */};
+  }
+});
+```
+
+Az ASP.NET MVC esetében a következő mintakód bemutatja, hogyan végezheti el az egyéni jogkivonat-érvényesítést:
+
+https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation
 
 ## <a name="token-validation-in-azure-functions"></a>Jogkivonat-érvényesítés Azure Functions
 
-A bejövő hozzáférési jogkivonatokat is ellenőrizheti Azure Functionsban. Ilyen érvényesítési példákat a [Microsoft .net](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions), a [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)és a [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)tartalmaz.
+A bejövő hozzáférési jogkivonatokat is ellenőrizheti Azure Functionsban. Ilyen érvényesítési példákat a GitHubon a következő mintakód-mintákon talál:
 
-## <a name="next-steps"></a>Következő lépések
+- .NET: [Azure-Samples/MS-Identity-DotNet-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)
+- Node.js: [Azure-Samples/MS-Identity-NodeJS-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)
+- Python: [Azure-Samples/MS-Identity-Python-webapi-azurefunctions)](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)
+
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Hatókörök és alkalmazás-szerepkörök ellenőrzése a kódban](scenario-protected-web-api-verification-scope-app-roles.md)

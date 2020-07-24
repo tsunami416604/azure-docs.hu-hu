@@ -3,15 +3,16 @@ title: Teljesítményszámlálók a Application Insightsban | Microsoft Docs
 description: A rendszer és az egyéni .NET-teljesítményszámlálók figyelése Application Insightsban.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: 274e02c484c091cbb13ac2cf69bf99672f579f33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e60663d9e767db020fc93eba1f4c1c6babb32294
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83701478"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024418"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Rendszerteljesítmény-számlálók a Application Insightsban
 
-A Windows [teljesítményszámlálók](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) széles választékát biztosítja, amelyek például a processzor foglaltságáról, vagy a memória-, merevlemez- és hálózathasználatról biztosítanak adatokat. Megadhatja saját teljesítményszámlálók is. A teljesítményszámlálók gyűjteménye akkor támogatott, ha az alkalmazás az IIS alatt fut egy helyszíni gazdagépen vagy olyan virtuális gépen, amelyhez rendszergazdai hozzáféréssel rendelkezik. Habár az Azure Web Apps-t futtató alkalmazások nem rendelkeznek közvetlen hozzáféréssel a teljesítményszámlálók eléréséhez, a rendelkezésre álló számlálók egy részét Application Insights gyűjti.
+A Windows [teljesítményszámlálók](/windows/desktop/perfctrs/about-performance-counters) széles választékát biztosítja, amelyek például a processzor foglaltságáról, vagy a memória-, merevlemez- és hálózathasználatról biztosítanak adatokat. Megadhatja saját teljesítményszámlálók is. A teljesítményszámlálók gyűjteménye akkor támogatott, ha az alkalmazás az IIS alatt fut egy helyszíni gazdagépen vagy olyan virtuális gépen, amelyhez rendszergazdai hozzáféréssel rendelkezik. Habár az Azure Web Apps-t futtató alkalmazások nem rendelkeznek közvetlen hozzáféréssel a teljesítményszámlálók eléréséhez, a rendelkezésre álló számlálók egy részét Application Insights gyűjti.
 
 ## <a name="view-counters"></a>Számlálók megtekintése
 
@@ -39,7 +40,7 @@ Ha a használni kívánt teljesítményszámláló nem szerepel a metrikák list
 
     `Get-Counter -ListSet *`
 
-    (Lásd: [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx) .)
+    (Lásd: [`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter?view=powershell-5.1) .)
 2. Nyissa meg ApplicationInsights.config.
 
    * Ha a fejlesztés során Application Insightst adott hozzá az alkalmazáshoz, szerkessze ApplicationInsights.config a projektben, majd telepítse újra a kiszolgálókra.
@@ -108,7 +109,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ```
 
 ## <a name="performance-counters-in-analytics"></a>Teljesítményszámlálók az Analyticsben
-A teljesítményszámláló-jelentéseket az [elemzésekben](../../azure-monitor/app/analytics.md)keresheti meg és jelenítheti meg.
+A teljesítményszámláló-jelentéseket az [elemzésekben](../log-query/log-query-overview.md)keresheti meg és jelenítheti meg.
 
 A **performanceCounters** séma megjeleníti az `category` `counter` egyes teljesítményszámlálók nevét és nevét `instance` .  Az egyes alkalmazások telemetria csak az adott alkalmazás számlálói láthatók. Például a rendelkezésre álló számlálók megtekintéséhez: 
 
@@ -152,4 +153,3 @@ Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../../azure-monito
 
 * [Függőségek nyomon követése](../../azure-monitor/app/asp-net-dependencies.md)
 * [Kivétel követése](../../azure-monitor/app/asp-net-exceptions.md)
-

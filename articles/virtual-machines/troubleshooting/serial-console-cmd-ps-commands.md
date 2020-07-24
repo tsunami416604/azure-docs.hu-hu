@@ -13,17 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 571df9c07e71682e2be51a73e3837c79cb074c3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77167027"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028464"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows-parancsok – CMD és PowerShell
 
 Ez a szakasz példákat tartalmaz a gyakori feladatok végrehajtásához olyan helyzetekben, amikor a Windows rendszerű virtuális gép eléréséhez szükség lehet a SAC használatára, például ha az RDP-kapcsolódási hibák elhárításához szükség van.
 
-A SAC a Windows összes verziójában a Windows Server 2003 óta szerepel, de alapértelmezés szerint le van tiltva. A SAC a kernel- `sacdrv.sys` illesztőprogramra, a `Special Administration Console Helper` szolgáltatásra ( `sacsvr` ) és a `sacsess.exe` folyamatra támaszkodik. További információ: [válságkezelési szolgáltatások eszközei és beállításai](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
+A SAC a Windows összes verziójában a Windows Server 2003 óta szerepel, de alapértelmezés szerint le van tiltva. A SAC a kernel- `sacdrv.sys` illesztőprogramra, a `Special Administration Console Helper` szolgáltatásra ( `sacsvr` ) és a `sacsess.exe` folyamatra támaszkodik. További információ: [válságkezelési szolgáltatások eszközei és beállításai](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v%3dws.10)).
 
 A SAC lehetővé teszi, hogy soros porton keresztül kapcsolódjon a futó operációs rendszerhez. Ha a CMD-t a SACből indítja el, `sacsess.exe` `cmd.exe` az a futó operációs rendszeren belül elindul. Láthatja, hogy a Feladatkezelőban, ha a virtuális gép RDP-kapcsolata egyszerre csatlakozik a SAC szolgáltatáshoz a soros konzolon keresztül. A SAC-n keresztül elért CMD ugyanaz `cmd.exe` , mint amikor RDP-kapcsolaton keresztül csatlakozik. Mindegyik parancs és eszköz elérhető, beleértve a PowerShell indításának lehetőségét is a CMD-példányból. Ez jelentős különbség a SAC és a Windows helyreállítási környezet (WinRE) között, amely lehetővé teszi a futó operációs rendszer felügyeletét, ahol a WinRE egy másik, minimális operációs rendszerbe kerül. Habár az Azure-beli virtuális gépek nem támogatják a WinRE elérésének lehetőségét a soros konzol szolgáltatással, az Azure-beli virtuális gépek a SAC használatával kezelhetők.
 
@@ -90,7 +91,7 @@ vagy
 ### <a name="set-nic-to-use-dhcp"></a>Hálózati adapter beállítása DHCP használatára
 `netsh interface ip set address name="<interface name>" source=dhcp`
 
-A szolgáltatással kapcsolatos további információkért `netsh` [kattintson ide](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts).
+A szolgáltatással kapcsolatos további információkért `netsh` [kattintson ide](/windows-server/networking/technologies/netsh/netsh-contexts).
 
 Az Azure-beli virtuális gépeket mindig úgy kell konfigurálni a vendég operációs rendszeren, hogy DHCP használatával igényeljenek IP-címet. Az Azure statikus IP-beállítása továbbra is DHCP protokollt használ, hogy a statikus IP-címet a virtuális géphez adja.
 ### <a name="ping"></a>Ping
@@ -182,11 +183,11 @@ Ez a példa a virtuális hálózati adapter illesztőprogramjának azon verziój
 ### <a name="scan-for-system-file-corruption"></a>Rendszerfájl sérülésének vizsgálata
 `sfc /scannow`
 
-Lásd még: [Windows-rendszerkép javítása](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Lásd még: [Windows-rendszerkép javítása](/windows-hardware/manufacture/desktop/repair-a-windows-image).
 ### <a name="scan-for-system-file-corruption"></a>Rendszerfájl sérülésének vizsgálata
 `dism /online /cleanup-image /scanhealth`
 
-Lásd még: [Windows-rendszerkép javítása](https://docs.microsoft.com/windows-hardware/manufacture/desktop/repair-a-windows-image).
+Lásd még: [Windows-rendszerkép javítása](/windows-hardware/manufacture/desktop/repair-a-windows-image).
 ### <a name="export-file-permissions-to-text-file"></a>Fájl engedélyeinek exportálása szövegfájlba
 `icacls %programdata%\Microsoft\Crypto\RSA\MachineKeys /t /c > %temp%\MachineKeys_permissions_before.txt`
 ### <a name="save-file-permissions-to-acl-file"></a>Fájlengedélyek mentése az ACL-fájlba
@@ -435,7 +436,7 @@ Az Azure-példány metaadatait az Azure-beli virtuális gépről lekérdezve meg
 
 A példány metaadatainak lekérdezéséhez kifogástalan hálózati kapcsolatra van szükség, mivel az Azure-gazdagépen keresztül REST-hívást kezdeményez a példány metaadatainak szolgáltatásához. Tehát ha le tudja kérdezni a példány metaadatait, hogy a vendég képes legyen kommunikálni a hálózaton keresztül egy Azure által üzemeltetett szolgáltatás felé.
 
-További információ: Azure- [példány metaadatainak szolgáltatása](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service).
+További információ: Azure- [példány metaadatainak szolgáltatása](../windows/instance-metadata-service.md).
 
 ### <a name="instance-metadata"></a>Példány metaadatainak
 `$im = invoke-restmethod -headers @{"metadata"="true"} -uri http://169.254.169.254/metadata/instance?api-version=2017-08-01 -method get`

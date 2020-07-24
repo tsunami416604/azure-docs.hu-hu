@@ -12,11 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d2b029937c58d45a2c1148c568cd396cea336a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec20a1bda8021e61f5147142a8e6bddd6cf5d166
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84634642"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027614"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Rugalmas hozzáférés-vezérlési felügyeleti stratégia létrehozása Azure Active Directory
 
@@ -220,7 +221,7 @@ NPS-bővítmény letiltása:
 -   Állapítsa meg, hogy a VPN elsődleges hitelesítése sikeres-e.
 
 Ha a szolgáltatás helyreállt, és készen áll arra, hogy ismét kikényszerítse az MFA-t a felhasználók számára, engedélyezze az NPS bővítményt: 
--   Fontos a beállításkulcs biztonsági másolatból HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
+-   A beállításkulcs importálása biztonsági másolatból HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\AuthSrv\Parameters 
 -   A változtatások érvénybe léptetéséhez indítsa újra a hálózati házirend szolgáltatás (IAS) szolgáltatást. 
 -   Annak megállapítása, hogy az elsődleges hitelesítés, valamint a VPN másodlagos hitelesítése sikeres-e.
 -   Tekintse át a hálózati házirend-kiszolgálót és a VPN-naplót annak meghatározásához, hogy mely felhasználók jelentkezett be a vészhelyzeti időszakban.
@@ -281,7 +282,7 @@ Ha a szervezet felhasználónkénti MFA örökölt házirendeket használ, akkor
 >[!NOTE]
  > Az Azure MFA [megbízható IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) -címeinek konfigurálása csak [prémium szintű Azure ad licenccel](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)lehetséges.
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 
 * [Az Azure AD-hitelesítés dokumentációja](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Vészhelyzeti hozzáférésű rendszergazdai fiókok kezelése az Azure AD-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)

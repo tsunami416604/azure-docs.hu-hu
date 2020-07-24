@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/17/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c1c9440f7ec70cea98f270f04c3030c800dd0fde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79461112"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023262"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>A tartalmak Media Services dinamikus titkosítással védhetők
 
@@ -243,7 +244,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 `ContentKeyId`a kért kulcs értéke. Akkor használhatja, `AlternativeMediaId` Ha a kérést a saját oldalán lévő entitáshoz szeretné hozzárendelni. Például az `AlternativeMediaId` engedélyek megkeresésének megkönnyítésére használható.
 
-Az egyéni licenc/kulcs beszerzési URL-címeket használó REST-Példákért lásd: streaming policys [– create](https://docs.microsoft.com/rest/api/media/streamingpolicies/create).
+Az egyéni licenc/kulcs beszerzési URL-címeket használó REST-Példákért lásd: streaming policys [– create](/rest/api/media/streamingpolicies/create).
 
 > [!NOTE]
 > A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
@@ -265,4 +266,4 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 * [Többplatformos DRM-védelemmel ellátott tartalomkezelő rendszerek tervezése hozzáférés-vezérléssel](design-multi-drm-system-with-access-control.md)
 * [Tárolási oldal titkosítása](storage-account-concept.md#storage-side-encryption)
 * [Gyakori kérdések](frequently-asked-questions.md)
-* [JSON Web Token kezelő](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)
+* [JSON Web Token kezelő](/dotnet/framework/security/json-web-token-handler)

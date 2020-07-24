@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 2924a950e7b52a41939d1c06305bad2d1b243476
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6902e69ecfd0738a74e6d492b8ed4d2b2d525eaf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554142"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026883"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal ASP.NET Core webalkalmazásba
 Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core webalkalmazás a személyes fiókokban (hotmail.com, outlook.com, Others) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD) példányból. (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
@@ -48,7 +48,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 >    - Az **átirányítási URI**-k lapon adja hozzá a `https://localhost:44321/signin-oidc` elemet, majd válassza a **Mentés**lehetőséget.
 >    - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: `https://localhost:44321/signout-oidc` .
 >    - Az **Implicit engedély** területen jelölje be az **azonosító jogkivonatok** elemet.
->    - Kattintson a **Mentés** gombra.
+>    - Válassza a **Mentés** lehetőséget.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. lépés: az alkalmazás konfigurálása a Azure Portalban
@@ -62,10 +62,10 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 #### <a name="step-2-download-your-aspnet-core-project"></a>2. lépés: a ASP.NET Core-projekt letöltése
 
 > [!div renderon="docs"]
-> [A Visual Studio 2019-megoldás letöltése](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
+> [A ASP.NET Core-megoldás letöltése](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
-> Futtassa a projektet a Visual Studio 2019 használatával.
+> Futtassa a projektet.
 > [!div renderon="portal" id="autoupdate" class="nextstepaction"]
 > [A mintakód letöltése](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
@@ -76,9 +76,9 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
-> #### <a name="step-3-run-your-visual-studio-project"></a>3. lépés: a Visual Studio-projekt futtatása
+> #### <a name="step-3-run-your-aspnet-core-project"></a>3. lépés: a ASP.NET Core projekt futtatása
 > 1. Bontsa ki a zip-fájlt a gyökérmappa egyik helyi mappájába – például **C:\Azure-Samples**
-> 1. A megoldás megnyitása a Visual Studióban
+> 1. A megoldás megnyitása az IDE-ben
 > 1. Szerkessze a **appsettings.js** fájlt. Megkeresheti `ClientId` és frissítheti a `ClientId` regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítójának** értékét.
 >
 >    ```json
@@ -89,7 +89,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be ASP.NET Core we
 
 
 > [!div renderon="docs"]
-> Az elemek magyarázata:
+> Ebben a példában:
 > - `Enter_the_Application_Id_here`– az **alkalmazás (ügyfél) azonosítója** a Azure Portal regisztrált alkalmazáshoz. Az **alkalmazás (ügyfél) azonosítóját** az alkalmazás **Áttekintés** oldalán találja.
 > - `Enter_the_Tenant_Info_Here`-a következő lehetőségek egyike:
 >   - Ha az alkalmazás **csak ebben a szervezeti könyvtárban támogatja a fiókokat**, cserélje le ezt az értéket a **bérlői azonosító** vagy a **bérlő nevére** (például contoso.microsoft.com).
@@ -145,7 +145,7 @@ A metódus `AddAuthentication` úgy konfigurálja a szolgáltatást, hogy cookie
 
 A sort tartalmazó vonal `.AddAzureAd` hozzáadja a Microsoft Identity platform hitelesítését az alkalmazáshoz. Ezt követően a rendszer a Microsoft Identity platform-végpont használatával történő bejelentkezésre van konfigurálva.
 
-> |Ahol | Leírás |
+> |Ahol | Description |
 > |---------|---------|
 > | ClientID  | Az alkalmazás (ügyfél) azonosítója a Azure Portal regisztrált alkalmazásban. |
 > | Authority | A hitelesítést végző felhasználó STS-végpontja. Általában ez a <https://login.microsoftonline.com/{tenant}/v2.0> nyilvános felhő, ahol a (z) {bérlő} a bérlő vagy a bérlői azonosító neve, vagy *közös* a közös végpontra (több-bérlős alkalmazásokhoz használt) való hivatkozásra. |

@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 860616cbea598e40494155e250254b3c607c1173
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476835"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027495"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Az Azure Multi-Factor Authentication felhasználónkénti engedélyezése a bejelentkezési események biztonságossá tételéhez
 
@@ -38,7 +38,7 @@ Az Azure Multi-Factor Authentication felhasználói fiókjai a következő háro
 
 | Állapot | Leírás | Érintett nem böngészőbeli alkalmazások | Érintett böngészőalapú alkalmazások | A modern hitelesítés érintett |
 |:---:| --- |:---:|:--:|:--:|
-| Letiltva | Az Azure Multi-Factor Authenticationban nem regisztrált új felhasználók alapértelmezett állapota. | Nem | Nem | Nem |
+| Disabled (Letiltva) | Az Azure Multi-Factor Authenticationban nem regisztrált új felhasználók alapértelmezett állapota. | Nem | Nem | Nem |
 | Engedélyezve | A felhasználó regisztrálva lett az Azure Multi-Factor Authenticationban, de nem regisztrált hitelesítési módszerekkel. A következő bejelentkezés alkalmával a rendszer felszólítja a regisztrálásra. | Nem.  Továbbra is működnek, amíg a regisztrációs folyamat be nem fejeződik. | Igen. A munkamenet lejárata után az Azure Multi-Factor Authentication regisztrációra van szükség.| Igen. A hozzáférési jogkivonat lejárta után az Azure Multi-Factor Authentication regisztrációra van szükség. |
 | Kényszerítve | A felhasználó regisztrálva lett, és befejezte az Azure Multi-Factor Authentication regisztrációs folyamatát. | Igen. Az alkalmazásokhoz alkalmazások jelszava szükséges. | Igen. Bejelentkezéskor Azure Multi-Factor Authentication szükséges. | Igen. Bejelentkezéskor Azure Multi-Factor Authentication szükséges. |
 
@@ -55,7 +55,7 @@ A következő lépésekkel érheti el a Azure Portal oldalt, amelyen megtekinthe
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
 1. Keresse meg és válassza ki *Azure Active Directory*, majd válassza a **felhasználók**  >  **minden felhasználó**lehetőséget.
-1. Válassza a **multi-Factor Authentication**lehetőséget. Előfordulhat, hogy a menüpontra kell görgetni a jobb oldalon. Válassza az alábbi képernyőképet a teljes Azure Portal ablak és menü helyének megtekintéséhez:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication kiválasztása az Azure AD felhasználók ablakában")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. Válassza a **Multi-Factor Authentication** lehetőséget. Előfordulhat, hogy a menüpontra kell görgetni a jobb oldalon. Válassza az alábbi képernyőképet a teljes Azure Portal ablak és menü helyének megtekintéséhez:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication kiválasztása az Azure AD felhasználók ablakában")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Megnyílik egy új lap, amely megjeleníti a felhasználói állapotot, ahogy az az alábbi példában is látható.
    ![Képernyőkép az Azure-beli felhasználói állapotadatokat bemutató Multi-Factor Authentication](./media/howto-mfa-userstates/userstate1.png)
 
@@ -78,11 +78,11 @@ A felhasználók engedélyezése után értesítse őket e-mailben. Tájékoztas
 
 ## <a name="change-state-using-powershell"></a>Állapot módosítása a PowerShell használatával
 
-Ha a felhasználói állapotot az [Azure ad PowerShell](/powershell/azure/overview)használatával szeretné módosítani, módosítsa `$st.State` egy felhasználói fiók paraméterét. Egy felhasználói fióknak három lehetséges állapota van:
+Ha a felhasználói állapotot az [Azure ad PowerShell](/powershell/azure/)használatával szeretné módosítani, módosítsa `$st.State` egy felhasználói fiók paraméterét. Egy felhasználói fióknak három lehetséges állapota van:
 
 * *Engedélyezve*
 * *Kényszerítve*
-* *Letiltva*  
+* *Disabled*  
 
 Ne helyezze át a felhasználókat közvetlenül a *kényszerített* állapotba. Ha így tesz, a nem böngészőalapú alkalmazások nem működnek, mert a felhasználó nem ment át az Azure Multi-Factor Authentication-regisztrációval, és nem kapott meg egy [alkalmazás jelszavát](howto-mfa-app-passwords.md).
 
@@ -177,12 +177,12 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> Nemrég módosítottuk a viselkedést és a PowerShell-szkriptet. Korábban a parancsfájl mentve az MFA-metódusokból, letiltotta az MFA-t, és visszaállította a metódusokat. Ez már nem szükséges ahhoz, hogy a Letiltás alapértelmezett viselkedése ne törölje a metódusokat.
->
 > Ha a többtényezős hitelesítés engedélyezve van egy olyan felhasználói objektumon, amely már rendelkezik regisztrációs adatokkal, például telefonon vagy e-mailben, akkor a rendszergazdáknak Azure Portal vagy PowerShell használatával újra regisztrálniuk kell az MFA-t. Ha a felhasználó nem regisztrálja újra a regisztrációt, az MFA-állapota nem lesz *engedélyezve* az MFA felügyeleti felhasználói felületén való *kikényszerített* állapotra.
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Multi-Factor Authentication beállításainak, például a megbízható IP-címek, az egyéni hangüzenetek és a csalási riasztások konfigurálásával kapcsolatban lásd: az [azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md). Az Azure Multi-Factor Authentication felhasználói beállításainak kezeléséhez lásd: [felhasználói beállítások kezelése az azure multi-Factor Authentication](howto-mfa-userdevicesettings.md).
+Az Azure Multi-Factor Authentication beállításainak konfigurálásával kapcsolatban lásd: az [azure multi-Factor Authentication beállításainak konfigurálása](howto-mfa-mfasettings.md).
+
+Az Azure Multi-Factor Authentication felhasználói beállításainak kezeléséhez lásd: [felhasználói beállítások kezelése az azure multi-Factor Authentication](howto-mfa-userdevicesettings.md).
 
 Ha meg szeretné tudni, hogy egy felhasználó miért kérdezte meg a felhasználót, vagy nem kéri az MFA-t, olvassa el az [Azure multi-Factor Authentication-jelentések](howto-mfa-reporting.md)

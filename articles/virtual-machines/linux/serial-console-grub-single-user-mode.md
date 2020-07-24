@@ -8,11 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 2aa7110ab4e52fdc5c3804bd27be5f41081fb435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d594f4d8019a7c23da79506cd702adbe9f25038d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758505"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028941"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Serial Console használata a GRUB és az egyfelhasználós mód eléréséhez
 A GRUB a GRand Unified bootloader. A GRUB-ból a rendszerindítási konfigurációt úgy módosíthatja, hogy az egy felhasználói módba induljon, egyebek között.
@@ -77,7 +78,7 @@ Ha a fenti utasításokkal beállította a GRUB és a root elérést, akkor a k�
 1. Nyomja le a CTRL + X billentyűkombinációt a kilépéshez, majd indítsa újra az alkalmazott beállításokkal
 1. A rendszer kérni fogja a rendszergazdai jelszót, mielőtt beírja az egyfelhasználós módot – ez ugyanaz a jelszó, amelyet a fenti utasításokban hozott létre.    
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![Egy parancssori felületet bemutató animált kép. A felhasználó kiválaszt egy kiszolgálót, megkeresi a kernel vonalának végét, majd belép a megadott szövegbe.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Adja meg az egyfelhasználós üzemmódot anélkül, hogy a gyökérszintű fiók engedélyezve van a RHEL
 Ha nem hajtja végre a fenti lépéseket a root felhasználó engedélyezéséhez, akkor továbbra is alaphelyzetbe állíthatja a legfelső szintű jelszót. Kövesse az alábbi utasításokat:
@@ -94,7 +95,7 @@ Ha nem hajtja végre a fenti lépéseket a root felhasználó engedélyezéséhe
 1. Ha egyszeres felhasználói módba indította a rendszerindítást, írja be a következőt a `chroot /sysroot` börtönbe való váltáshoz. `sysroot`
 1. Most már a root. Alaphelyzetbe állíthatja a legfelső szintű jelszót, `passwd` majd a fenti utasítások segítségével megadhatja az egyfelhasználós üzemmódot. Ha `reboot -f` elkészült, írja be az újraindítást.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![Egy parancssori felületet bemutató animált kép. A felhasználó kiválaszt egy kiszolgálót, megkeresi a kernel vonalának végét, és belép a megadott parancsokra.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > Megjegyzés: a fenti utasítások segítségével a rendszer elvégzi a vészhelyzeti rendszerhéjba való futást, így olyan feladatokat is végrehajthat, mint például a Szerkesztés `fstab` . Az általánosan elfogadott javaslat azonban a gyökér jelszavának alaphelyzetbe állítása, és az egyfelhasználós mód megadására használható. 
 
@@ -119,7 +120,7 @@ Alapértelmezés szerint az Ubuntu-lemezképek nem fogják automatikusan megjele
 1. Érték módosítása `GRUB_TIMEOUT` nullától eltérő értékre
 1. Megnyitás `/etc/default/grub` egy tetszőleges szövegszerkesztőben
 1. Megjegyzés a `GRUB_HIDDEN_TIMEOUT=1` sorban
-1. Futtassa a `sudo update-grub` parancsot.
+1. Az `sudo update-grub` parancs futtatásával
 
 ### <a name="single-user-mode-in-ubuntu"></a>Egyszeri felhasználói üzemmód az Ubuntuban
 Ha a szokásos módon nem tud elindulni, az Ubuntu automatikusan egy felhasználói módba kerül. Az egyfelhasználós mód manuális megadásához kövesse az alábbi utasításokat:
@@ -156,7 +157,7 @@ A SLES-ben a GRUB-hozzáféréshez a YaST-n keresztül szükséges a bootloader 
 1. A GRUB megadásához indítsa újra a virtuális gépet, és nyomja le bármelyik billentyűt a rendszerindítási folyamat során, hogy a GRUB a képernyőn maradjon
     - A GRUB alapértelmezett időtúllépése 1s. Ezt úgy módosíthatja, ha módosítja a `GRUB_TIMEOUT` változót a következőben:`/etc/default/grub`
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
+![Egy parancssori felületet bemutató animált kép. A felhasználó megadja a megadott szöveget, kiválasztja a megadott beállítást, és menti a beállításokat.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>Egyetlen felhasználói mód a SUSE SLES
 Ha a SLES normál esetben nem indítható el, a rendszer automatikusan eltávolítja a vészhelyzeti rendszerhéjba. A vészhelyzeti rendszerhéj manuális megadásához kövesse az alábbi utasításokat:
@@ -177,7 +178,7 @@ A Oracle Linux a GRUB engedélyezve van a dobozból. A GRUB megadásához indít
 A fenti RHEL utasításait követve engedélyezze az egyfelhasználós üzemmódot a Oracle Linuxban.
 
 ## <a name="next-steps"></a>További lépések
-* [Itt](serial-console.md)található a soros konzolhoz tartozó fő Linux Dokumentációs oldal.
+* [Itt](../troubleshooting/serial-console-linux.md)található a soros konzolhoz tartozó fő Linux Dokumentációs oldal.
 * Soros konzol használata [NMI-és SYSRQ-hívásokhoz](serial-console-nmi-sysrq.md)
-* A soros konzol a [Windows](../windows/serial-console.md) rendszerű virtuális gépekhez is elérhető
-* További információ a [rendszerindítási diagnosztika](boot-diagnostics.md) szolgáltatásról
+* A soros konzol a [Windows](../troubleshooting/serial-console-windows.md) rendszerű virtuális gépekhez is elérhető
+* További információ a [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) szolgáltatásról

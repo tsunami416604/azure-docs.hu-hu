@@ -1,20 +1,20 @@
 ---
-title: Azure Database for PostgreSQL – nagy kapacitású biztonsági alapterve az Azure biztonsági teljesítményteszthez
+title: Azure biztonsági alapkonfiguráció a Azure Database for PostgreSQL-nagy kapacitású
 description: Az Azure Database for PostgreSQL-nagy kapacitású biztonsági alapkonfiguráció eljárási útmutatást és erőforrásokat biztosít az Azure biztonsági Teljesítménytesztben meghatározott biztonsági javaslatok megvalósításához.
 author: msmbaldwin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca08ac30c5d8e925197a0df1d327bf9a0923b046
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531557"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87030045"
 ---
-# <a name="azure-database-for-postgresql---hyperscale-security-baseline-for-azure-security-benchmark"></a>Azure Database for PostgreSQL – nagy kapacitású biztonsági alapterve az Azure biztonsági teljesítményteszthez
+# <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>Azure biztonsági alapkonfiguráció a Azure Database for PostgreSQL-nagy kapacitású
 
 A Azure Database for PostgreSQL-nagy kapacitású Azure biztonsági alapterve olyan javaslatokat tartalmaz, amelyek segítségével javíthatja az üzemelő példány biztonsági állapotát.
 
@@ -1044,7 +1044,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

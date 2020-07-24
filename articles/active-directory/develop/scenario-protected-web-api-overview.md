@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: cf66757d28a3883664aaacd85baad9cc0dea6956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e530f76c8301dc74f73b675befa6f0710aedab7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537202"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87026628"
 ---
 # <a name="scenario-protected-web-api"></a>Forgatókönyv: védett webes API
 
@@ -32,8 +33,12 @@ A webes API használatához engedélyeznie kell a hitelesített felhasználókat
 
 Itt találja a webes API-k elleni védelemhez szükséges információkat:
 
-- Az alkalmazás regisztrációja legalább egy hatókört ki kell mutatnia. A webes API által elfogadott jogkivonat-verzió a bejelentkezési közönségtől függ.
+- Az alkalmazás regisztrációjának legalább egy *hatókört* vagy egy *alkalmazás-szerepkört*ki kell mutatnia.
+  - A hatóköröket a felhasználók nevében meghívó webes API-k teszik közzé.
+  - Az alkalmazási szerepköröket Daemon-alkalmazások által hívott webes API-k teszik közzé (amelyek a webes API-t a saját nevükön meghívja).
+- Ha új webes API-alkalmazás regisztrációját hozza létre, válassza ki a webes API által elfogadott [hozzáférési jogkivonat verzióját](reference-app-manifest.md#accesstokenacceptedversion-attribute) a következőre: `2` . Az örökölt webes API-k esetében az elfogadott jogkivonat verziója lehet `null` , ez az érték azonban csak a szervezetek számára korlátozza a bejelentkezési célközönséget, és a személyes Microsoft-fiókokat (MSA) nem támogatja a rendszer.
 - A webes API-kód konfigurációjának ellenőriznie kell a webes API meghívásakor használt jogkivonatot.
+- A vezérlő műveleteiben szereplő kódnak ellenőriznie kell a tokenben lévő szerepköröket vagy hatóköröket.
 
 ## <a name="next-steps"></a>További lépések
 
