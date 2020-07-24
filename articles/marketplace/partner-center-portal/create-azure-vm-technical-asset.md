@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: dannyevers
 ms.author: mingshen
 ms.date: 04/13/2020
-ms.openlocfilehash: aee2016b422dcf447dbae047c8a77ae93bf79ab7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5bed073799521498efe5302ab9af616dcdf9f9ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107155"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053577"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure-beli virtuális gépek technikai eszközeinek létrehozása
 
@@ -43,7 +43,7 @@ Ezeknek az eszközöknek a tervezése, fejlesztése és tesztelése időt vesz i
 
 A virtuális gépek és virtuális merevlemezek kezeléséhez a következő parancsfájl-környezetek egyikét érdemes használni:
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://code.visualstudio.com/)
 
 Emellett vegye fontolóra a következő eszközök hozzáadását a fejlesztői környezethez:
@@ -125,7 +125,7 @@ Ez a cikk részletesen ismerteti, hogyan használható a beépített Windows RDP
 
 Linux-alapú virtuális géphez való kapcsolódáshoz Secure Shell Protocol-(SSH-) ügyfélre van szükség. A következő lépések az ingyenes [Putty](https://www.ssh.com/ssh/putty/) SHH-terminált használják.
 
-1. Lépjen a [Azure Portal](https://ms.portal.azure.com/).
+1. Nyissa meg az [Azure Portalt](https://ms.portal.azure.com/).
 2. Keresse meg és válassza ki a **virtuális gépeket**.
 3. Válassza ki azt a virtuális gépet, amelyhez csatlakozni szeretne.
 4. Ha még nem fut, indítsa el a virtuális gépet.
@@ -276,7 +276,7 @@ A következő folyamat általánosít egy Linux rendszerű virtuális gépet, é
     1. A Azure Portal válassza ki az erőforráscsoportot (RG) és a virtuális gép lefoglalását.
     2. A VHD-fájl már általánosítva van, és létrehozhat egy új virtuális gépet a virtuális merevlemez használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása során, tekintse meg a [gyakori problémák a VHD létrehozása során](common-issues-during-vhd-creation.md)című témakört.
 
