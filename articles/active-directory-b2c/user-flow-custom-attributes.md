@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 11/30/2018
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d02a7acf1d59c628e3b83161ab9cabb4a19ca41a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d631c47225fac7d8a95541313593333a1399e07
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384991"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115965"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Egyéni attribútumok definiálása a Azure Active Directory B2Cban
 
@@ -47,8 +48,8 @@ Az egyéni attribútum már elérhető a **felhasználói attribútumok** listá
 
 1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok**lehetőséget.
 1. Válassza ki a szabályzatot (például "B2C_1_SignupSignin") a megnyitásához.
-1. Válassza ki a **felhasználói attribútumok** elemet, majd válassza ki az egyéni attribútumot (például "ShoeSize"). Kattintson a **Save** (Mentés) gombra.
+1. Válassza ki a **felhasználói attribútumok** elemet, majd válassza ki az egyéni attribútumot (például "ShoeSize"). Kattintson a **Mentés** gombra.
 1. Válassza ki az **alkalmazás jogcímeit** , majd válassza ki az egyéni attribútumot.
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 Miután létrehozott egy új felhasználót egy olyan felhasználói folyamattal, amely az újonnan létrehozott egyéni attribútumot használja, az objektum [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)kérdezhető le. Azt is megteheti, hogy a felhasználói folyamat [Futtatás felhasználói folyamat futtatása](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) funkciójával ellenőrzi az ügyfél élményét. Ekkor látnia kell a **ShoeSize** a regisztrációs útvonalon összegyűjtött attribútumok listájában, és az alkalmazásnak visszaadott tokenben tekintheti meg.

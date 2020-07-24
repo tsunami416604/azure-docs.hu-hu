@@ -9,23 +9,24 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fada393dcab61cf00a0a3befcf4af3660bf625dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0a75aecde13abebe4f343d336e2554fc7e31c429
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536521"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116020"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön
 
 Kipróbálhatja Azure IoT Edge ebben a rövid útmutatóban, ha egy virtuális Linux IoT Edge eszközre helyez üzembe tároló kódot. IoT Edge lehetővé teszi a kódok távoli kezelését az eszközökön, így több számítási feladatot is elküldhet a peremhálózat számára. Ebben a rövid útmutatóban azt javasoljuk, hogy használjon egy Azure-beli virtuális gépet a IoT Edge eszközhöz, amely lehetővé teszi, hogy gyorsan hozzon létre egy tesztelési gépet a telepített IoT Edge szolgáltatással, majd törölje azt, ha elkészült.
 
 Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
-
-1. IoT Hub létrehozása
-2. IoT Edge-eszköz regisztrálása az IoT Hubon
-3. Telepítse és indítsa el a IoT Edge futtatókörnyezetet a virtuális eszközön.
-4. Modul távoli üzembe helyezése IoT Edge-eszközön.
+> [!div class="checklist"]
+>
+> * IoT Hub létrehozása
+> * IoT Edge-eszköz regisztrálása az IoT Hubon
+> * Telepítse és indítsa el a IoT Edge futtatókörnyezetet a virtuális eszközön.
+> * Modul távoli üzembe helyezése IoT Edge-eszközön.
 
 ![Diagram – az eszköz és a felhő gyors üzembe helyezési architektúrája](./media/quickstart-linux/install-edge-full.png)
 
@@ -248,7 +249,7 @@ Az erőforráscsoport törlését az erőforráscsoportok listájának megtekint
 az group list
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Edge eszközt, és a Azure IoT Edge Cloud Interface használatával helyezi üzembe a kódot az eszközön. Most már van egy teszteszköze, amely nyers adatokat állít elő a környezetéről.
 

@@ -9,14 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/26/2019
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 394af855b7968d38bf99afada246ae661dc0459a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5879d745de85fe702267dce109e26ebcb07195ce
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549480"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116260"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Facebook-fiókkal Azure Active Directory B2C használatával
 
@@ -50,4 +51,4 @@ Ha Azure Active Directory B2C (Azure AD B2C) identitás- [szolgáltatóként](au
 1. Adjon meg egy **nevet**. Például: *Facebook*.
 1. Az **ügyfél-azonosító**mezőben adja meg a korábban létrehozott Facebook-alkalmazás alkalmazás-azonosítóját.
 1. Az **ügyfél titka**mezőben adja meg a rögzített alkalmazás titkát.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.

@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 12389484f63d35eb31b38d5067061dc99b7284f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 479222cc9b67775d359182740dc78865da8cee38
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505987"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115931"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: Az erőforrásokhoz hozzáférő Azure AD-alkalmazás és -szolgáltatásnév létrehozása a portálon
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan hozhatja létre az egyszerű szolgáltatásnevet a A
 > Egyszerű szolgáltatásnév létrehozása helyett érdemes felügyelt identitásokat használni az Azure-erőforrásokhoz az alkalmazás identitásához. Ha a kód olyan szolgáltatáson fut, amely támogatja a felügyelt identitásokat, és hozzáfér az Azure AD-hitelesítést támogató erőforrásokhoz, a felügyelt identitások jobb megoldást biztosítanak Önnek. Ha többet szeretne megtudni az Azure-erőforrások felügyelt identitásáról, beleértve a jelenleg támogatott szolgáltatásokat, tekintse meg a [Mi az Azure-erőforrások felügyelt identitásai?](../managed-identities-azure-resources/overview.md)című témakört.
 
 ## <a name="app-registration-app-objects-and-service-principals"></a>Alkalmazások regisztrálása, alkalmazás-objektumok és egyszerű szolgáltatások
-A Azure Portal használatával nem lehet közvetlenül létrehozni egyszerű szolgáltatásnevet.  Ha a Azure Portalon keresztül regisztrál egy alkalmazást, az alkalmazás-objektum és a szolgáltatásnév automatikusan létrejön a saját kezdőkönyvtár vagy bérlője számára.  További információ az alkalmazás regisztrációja, az alkalmazásobjektumok és az egyszerű szolgáltatások közötti kapcsolatról [: alkalmazások és egyszerű szolgáltatások objektumainak](app-objects-and-service-principals.md)olvasása Azure Active Directory.
+A Azure Portal használatával nem lehet közvetlenül létrehozni egyszerű szolgáltatásnevet.  Amikor az Azure Portalon keresztül regisztrálja az alkalmazást, a rendszer automatikusan létrehoz egy Application objektumot és egy egyszerű szolgáltatásnevet a saját kezdőkönyvtár vagy bérlője számára.  További információ az alkalmazás regisztrációja, az alkalmazásobjektumok és az egyszerű szolgáltatások közötti kapcsolatról [: alkalmazások és egyszerű szolgáltatások objektumainak](app-objects-and-service-principals.md)olvasása Azure Active Directory.
 
 ## <a name="permissions-required-for-registering-an-app"></a>Az alkalmazások regisztrálásához szükséges engedélyek
 
@@ -77,7 +77,7 @@ Ugorjon egyenesen az identitás létrehozásához. Ha probléma lép fel, ellen�
 
 1. Jelentkezzen be az Azure-fiókjába a [Azure Portalon](https://portal.azure.com)keresztül.
 1. Válassza a **Azure Active Directory**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk**lehetőséget.
+1. Válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza az **új regisztráció**lehetőséget.
 1. Adja meg az alkalmazás nevét. Válasszon egy támogatott számlatípust, amely meghatározza, hogy kik használhatják az alkalmazást. Az **átirányítási URI**területen válassza a **web** lehetőséget a létrehozni kívánt alkalmazás típusához. Adja meg azt az URI-t, ahová a hozzáférési tokent elküldi. [Natív alkalmazás](../manage-apps/application-proxy-configure-native-client-application.md)hitelesítő adatai nem hozhatók létre. Az adott típus nem használható automatikus alkalmazáshoz. Az értékek beállítása után válassza a **regisztráció**lehetőséget.
 
@@ -178,7 +178,7 @@ Ha úgy dönt, hogy nem használ tanúsítványt, létrehozhat egy új alkalmaz�
    ![Másolja a titkos értéket, mert később nem lehet beolvasni](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>Hozzáférési szabályzatok konfigurálása az erőforrásokon
-Ne feledje, hogy az alkalmazáshoz hozzáférő erőforrásokhoz is konfigurálnia kell a hozzáadási engedélyeket. A [Key Vault hozzáférési házirendjeit is frissítenie](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) kell, hogy az alkalmazás hozzáférjen a kulcsokhoz, titkokhoz vagy tanúsítványokhoz.  
+Ne feledje, hogy további engedélyeket kell konfigurálnia az alkalmazás számára szükséges erőforrásokhoz. A [Key Vault hozzáférési házirendjeit is frissítenie](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies) kell, hogy az alkalmazás hozzáférjen a kulcsokhoz, titkokhoz vagy tanúsítványokhoz.  
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon a kulcstartóhoz, és válassza a **hozzáférési szabályzatok**lehetőséget.  
 1. Válassza a **hozzáférési házirend hozzáadása**lehetőséget, majd válassza ki az alkalmazáshoz használni kívánt kulcs-, titkos és tanúsítvány-engedélyeket.  Válassza ki a korábban létrehozott szolgáltatásnevet.

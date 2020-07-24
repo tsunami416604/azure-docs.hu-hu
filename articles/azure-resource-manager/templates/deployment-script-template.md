@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 07/16/2020
 ms.author: jgao
-ms.openlocfilehash: 8906ac7a00a349e2312eb80f5e25e32292a089ab
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: fcdcf563cd88cbf6604877636432a406c1960cff
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134566"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117042"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -601,7 +601,35 @@ A fájlmegosztást úgy is be kell állítania, hogy csatlakoztassa a könyvtár
 
 A parancsfájl sikeres tesztelése után a sablonban használható üzembe helyezési parancsfájlként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="deployment-script-error-codes"></a>Üzembehelyezési parancsfájl hibakódai
+
+| Hibakód | Description |
+|------------|-------------|
+| DeploymentScriptInvalidOperation | Az üzembehelyezési parancsfájl erőforrás-definíciója a sablonban érvénytelen tulajdonságokat tartalmaz. |
+| DeploymentScriptResourceConflict | Nem terminálos állapotú központi telepítési parancsfájl-erőforrás nem törölhető, és a végrehajtás nem haladja meg az 1 órát. Vagy nem futtathatja újra ugyanazt az üzembe helyezési parancsfájlt ugyanazzal az erőforrás-azonosítóval (az előfizetés, az erőforráscsoport neve és az erőforrás neve), de a parancsfájl törzse egyszerre több tartalmat is tartalmaz. |
+| DeploymentScriptOperationFailed | Az üzembe helyezési parancsfájl művelete belső hiba miatt meghiúsult. Forduljon a Microsoft ügyfélszolgálatához. |
+| DeploymentScriptStorageAccountAccessKeyNotSpecified | Nincs megadva a hozzáférési kulcs a meglévő Storage-fiókhoz.|
+| DeploymentScriptContainerGroupContainsInvalidContainers | Az üzembe helyezési parancsfájl szolgáltatás által létrehozott tároló csoport külsőleg módosítva lett, és érvénytelen tárolók lettek hozzáadva. |
+| DeploymentScriptContainerGroupInNonterminalState | Két vagy több üzembe helyezési parancsfájl erőforrás ugyanazt az Azure Container instance-nevet használja ugyanabban az erőforráscsoportban, és egyikük még nem fejezte be a végrehajtást. |
+| DeploymentScriptStorageAccountInvalidKind | A BlobBlobStorage vagy BlobStorage-típus meglévő Storage-fiókja nem támogatja a fájlmegosztás használatát, és nem használható. |
+| DeploymentScriptStorageAccountInvalidKindAndSku | A meglévő Storage-fiók nem támogatja a fájlmegosztást. A támogatott Storage-fiókok listáját a [meglévő Storage-fiók használata](#use-existing-storage-account)című témakörben tekintheti meg. |
+| DeploymentScriptStorageAccountNotFound | A Storage-fiók nem létezik, vagy egy külső folyamat vagy eszköz törölte. |
+| DeploymentScriptStorageAccountWithServiceEndpointEnabled | A megadott Storage-fiók rendelkezik szolgáltatási végponttal. A szolgáltatási végponttal rendelkező Storage-fiókok nem támogatottak. |
+| DeploymentScriptStorageAccountInvalidAccessKey | A meglévő Storage-fiókhoz megadott hozzáférési kulcs érvénytelen. |
+| DeploymentScriptStorageAccountInvalidAccessKeyFormat | A Storage-fiók kulcsának formátuma érvénytelen. Lásd: a [Storage-fiók elérési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md). |
+| DeploymentScriptExceededMaxAllowedTime | A telepítési parancsfájl végrehajtási ideje túllépte a telepítési parancsfájl erőforrás-definíciójában megadott időtúllépési értéket. |
+| DeploymentScriptInvalidOutputs | A telepítési parancsfájl kimenete nem érvényes JSON-objektum. |
+| DeploymentScriptContainerInstancesServiceLoginFailure | A felhasználó által hozzárendelt felügyelt identitás nem tudott bejelentkezni az 1 perces intervallummal 10 próbálkozás után. |
+| DeploymentScriptContainerGroupNotFound | Az üzembe helyezési parancsfájl szolgáltatás által létrehozott tároló csoportot egy külső eszköz vagy folyamat törölte. |
+| DeploymentScriptDownloadFailure | Nem sikerült letölteni egy támogató parancsfájlt. Lásd: [támogató parancsfájl használata](#use-supporting-scripts).|
+| DeploymentScriptError | A felhasználói parancsfájl hibát jelzett. |
+| DeploymentScriptBootstrapScriptExecutionFailed | A rendszerindítási parancsfájl hibát jelzett. A rendszerindítási parancsfájl a telepítési parancsfájl végrehajtásának előkészítésére szolgáló rendszerparancsfájl. |
+| DeploymentScriptExecutionFailed | Ismeretlen hiba történt a telepítési parancsfájl végrehajtása során. |
+| DeploymentScriptContainerInstancesServiceUnavailable | Az Azure Container instance (ACI) létrehozásakor az ACI a szolgáltatás nem érhető el hibát váltott ki. |
+| DeploymentScriptContainerGroupInNonterminalState | Az Azure Container instance (ACI) létrehozásakor egy másik telepítési parancsfájl ugyanazt az ACI-nevet használja ugyanabban a hatókörben (az előfizetés, az erőforráscsoport neve és az erőforrás neve). |
+| DeploymentScriptContainerGroupNameInvalid | Az Azure Container instance megadott neve (ACI) nem felel meg az ACI-követelményeknek. Lásd: [Azure Container instances gyakori problémáinak elhárítása](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment).|
+
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a telepítési parancsfájlokat. Útmutató az üzembe helyezési parancsfájlhoz:
 

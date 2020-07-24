@@ -3,14 +3,14 @@ title: Regisztrációs adatbázis georeplikálása
 description: Ismerkedjen meg a földrajzilag replikált Azure Container Registry létrehozásával és kezelésével, amely lehetővé teszi, hogy a beállításjegyzék több régiót is kiszolgáljon több főkiszolgálós regionális replikával. A Geo-replikáció a prémium szintű szolgáltatási szint egyik funkciója.
 author: stevelas
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 315de5151547c4339255639cb65d1be30f7213ff
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b5d016574fd85047ec349820a747b47d0582958b
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247132"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116788"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replikálás Azure Container Registry
 
@@ -95,7 +95,7 @@ Az ACR megkezdi a lemezképek szinkronizálását a konfigurált replikák köz�
 * Amikor leküldi vagy lekéri a képeket egy földrajzilag replikált beállításjegyzékből, az Azure Traffic Manager a háttérben elküldi a kérést az Ön számára legközelebb eső régióban található beállításjegyzékbe a hálózati késés szempontjából.
 * Miután leküldte a rendszerképet vagy a címkét a legközelebbi régióra, időbe telik, amíg a Azure Container Registry replikálja a jegyzékeket és a rétegeket a többi, Ön által választott régióba. A nagyobb méretű képek replikálásához hosszabb időt is igénybe kell venni, mint a kisebbek. A rendszer a képeket és címkéket szinkronizálja a replikációs régiók között egy végleges konzisztencia-modellel.
 * A földrajzilag replikált beállításjegyzék leküldéses frissítéseitől függő munkafolyamatok kezeléséhez javasoljuk, hogy a [webhookokat](container-registry-webhook.md) úgy konfigurálja, hogy válaszoljanak a leküldéses eseményekre. A regionális webhookok a földrajzilag replikált beállításjegyzékben állíthatók be, hogy nyomon kövessék a leküldéses eseményeket a földrajzilag replikált régiókban.
-* A tartalmi rétegeket képviselő Blobok kiszolgálásához Azure Container Registry adatvégpontokat használ. Engedélyezheti a beállításjegyzékhez tartozó [dedikált adatvégpontokat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) a beállításjegyzék földrajzilag replikált régióiban. Ezek a végpontok lehetővé teszik a szűk hatókörű tűzfal-hozzáférési szabályok konfigurálását.
+* A tartalmi rétegeket képviselő Blobok kiszolgálásához Azure Container Registry adatvégpontokat használ. Engedélyezheti a beállításjegyzékhez tartozó [dedikált adatvégpontokat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints) a beállításjegyzék földrajzilag replikált régióiban. Ezek a végpontok lehetővé teszik a szűk hatókörű tűzfal-hozzáférési szabályok konfigurálását. Hibaelhárítási célból [letilthatja a replikáció útválasztását a](#temporarily-disable-routing-to-replication) replikált adat fenntartása mellett.
 * Ha [privát](container-registry-private-link.md) végpontokat használ a beállításjegyzékhez egy virtuális hálózaton, a földrajzilag replikált régiók dedikált adatvégpontja alapértelmezés szerint engedélyezve van. 
 
 ## <a name="delete-a-replica"></a>Replika törlése
@@ -127,9 +127,36 @@ Ha ez a probléma merül fel, az egyik megoldás egy ügyféloldali DNS-gyorsít
 
 Ha a DNS-feloldást a legközelebbi replikára szeretné optimalizálni, amikor képeket küld, állítson be egy földrajzilag replikált beállításjegyzéket ugyanabban az Azure-régióban, mint a leküldéses műveletek forrása, vagy a legközelebbi régió, amikor az Azure-on kívül dolgozik.
 
-## <a name="next-steps"></a>Következő lépések
+### <a name="temporarily-disable-routing-to-replication"></a>Útválasztás ideiglenes letiltása a replikáláshoz
+
+Ha a földrajzilag replikált beállításjegyzékkel kapcsolatos műveleteket szeretné elhárítani, érdemes lehet ideiglenesen letiltani Traffic Manager útválasztást egy vagy több replikálásra. Az Azure CLI 2,8-es verziójától kezdve megadhat egy `--region-endpoint-enabled` beállítást (előzetes verzió) a replikált régió létrehozásakor vagy frissítésekor. Amikor beállítja a replikálás `--region-endpoint-enabled` lehetőségét `false` , Traffic Manager a már nem irányítja a Docker-leküldéses vagy lekéréses kérelmeket erre a régióra. Alapértelmezés szerint az összes replikációhoz való útválasztás engedélyezve van, és az adatszinkronizálás az összes replikáció során megtörténik, hogy az útválasztás engedélyezve van-e vagy le van tiltva.
+
+Egy meglévő replikáció útválasztásának letiltásához először az [az ACR Replication List][az-acr-replication-list] parancsot kell futtatnia a beállításjegyzékben lévő replikációk listázásához. Ezután futtassa [az ACR Replication Update][az-acr-replication-update] parancsot, és állítson be `--region-endpoint-enabled false` egy adott replikálást. Például a *westus* replikálás beállításának konfigurálása a *myregistry*-ben:
+
+```azurecli
+# Show names of existing replications
+az acr replication list --registry --output table
+
+# Disable routing to replication
+az acr replication update update --name westus \
+  --registry myregistry --resource-group MyResourceGroup \
+  --region-endpoint-enabled false
+```
+
+Az Útválasztás visszaállítása a replikálásra:
+
+```azurecli
+az acr replication update update --name westus \
+  --registry myregistry --resource-group MyResourceGroup \
+  --region-endpoint-enabled true
+```
+
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a három részből álló oktatóanyag-sorozatot, a [geo-replikációt Azure Container Registryban](container-registry-tutorial-prepare-registry.md). Végigvezeti a földrajzilag replikált beállításjegyzék létrehozásán, a tároló kialakításán, majd egyetlen `docker push` paranccsal, több regionális Web Apps a tárolók példányain való üzembe helyezésével.
 
 > [!div class="nextstepaction"]
 > [Geo-replikálás Azure Container Registry](container-registry-tutorial-prepare-registry.md)
+
+[az-acr-replication-list]: /cli/azure/acr/replication#az-acr-replication-list
+[az-acr-replication-update]: /cli/azure/acr/replication#az-acr-replication-update

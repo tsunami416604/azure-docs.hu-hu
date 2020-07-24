@@ -6,14 +6,14 @@ manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: b06f39de9f977a9f777b21a53e93ca744fccdd93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 044786d6a6aa4f9f3d163090c0edfa3832023b10
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116970"
 ---
 # <a name="azure-monitor-workbooks"></a>Munkafüzetek Azure Monitor
 
@@ -52,9 +52,9 @@ A munkafüzetek számos képességet biztosítanak az adatmegjelenítéshez. Az 
 
 A munkafüzetek felületének megismeréséhez először navigáljon a Azure Monitor szolgáltatáshoz. Ezt úgy teheti meg, hogy beírja a **figyelő** kifejezést a Azure Portal található keresőmezőbe.
 
-Ezután válassza a **munkafüzetek (előzetes verzió)** lehetőséget.
+Ezután válassza a **munkafüzetek**lehetőséget.
 
-![Képernyőkép – a munkafüzetek előnézet gombja kiemelve egy piros mezőben](./media/workbooks-overview/workbooks-preview.png)
+![Egy piros mezőben Kiemelt munkafüzetek képernyőképe](./media/workbooks-overview/workbooks.png)
 
 ### <a name="gallery"></a>Katalógus
 

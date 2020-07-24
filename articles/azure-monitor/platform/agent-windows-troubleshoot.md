@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 338fdcb6ee2ebad98972bead7e16c9bc5944f2b3
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80333507"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117066"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>A Windowshoz készült Log Analytics-ügynökkel kapcsolatos hibák elhárítása 
 
@@ -34,11 +34,12 @@ Ellenőrizze, hogy a tűzfal vagy a proxy úgy van-e konfigurálva, hogy engedé
 
 |Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |443-es port |Kimenő|Igen |  
-|*.oms.opinsights.azure.com |443-es port |Kimenő|Igen |  
-|*.blob.core.windows.net |443-es port |Kimenő|Igen |  
+|*.ods.opinsights.azure.com |443-es port |Kimenő|Yes |  
+|*.oms.opinsights.azure.com |443-es port |Kimenő|Yes |  
+|*.blob.core.windows.net |443-es port |Kimenő|Yes |  
+|*. agentsvc.azure-automation.net |443-es port |Kimenő|Yes |  
 
-A Azure Governmentához szükséges tűzfal-információk: [Azure Government Management](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). Ha azt tervezi, hogy a Azure Automation Hybrid Runbook Worker használatával csatlakozik az Automation szolgáltatáshoz, és regisztrálja az runbookok-vagy felügyeleti megoldásokat a környezetben, hozzá kell férnie a portszámhoz és a [hálózat konfigurálása a hibrid Runbook-feldolgozóhoz](../../automation/automation-hybrid-runbook-worker.md#network-planning)című témakörben leírt URL-címekhez. 
+A Azure Governmentához szükséges tűzfal-információk: [Azure Government Management](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs). Ha azt tervezi, hogy a Azure Automation Hybrid Runbook Worker használatával csatlakozik az Automation szolgáltatáshoz, és regisztrálja az runbookok-vagy felügyeleti megoldásokat a környezetben, hozzá kell férnie a portszámhoz és a [hálózat konfigurálása a hibrid Runbook-feldolgozóhoz](../../automation/automation-hybrid-runbook-worker.md#network-planning)című témakörben leírt URL-címekhez. 
 
 Több módon is ellenőrizheti, hogy az ügynök sikeresen kommunikál-e Azure Monitorával.
 
@@ -60,7 +61,7 @@ Több módon is ellenőrizheti, hogy az ügynök sikeresen kommunikál-e Azure M
 
 - Szűrje a *Operations Manager* eseménynaplót az **eseményforrás**  -  *állapotfigyelő szolgáltatás modulok*, a *HealthService*és a *szolgáltatás-összekötő* alapján, és a szűrés **eseményvezérelt** *figyelmeztetéssel* és *hibával* erősítse meg, hogy az alábbi táblázatban szereplő írásos események szerepelnek-e. Ha vannak, tekintse át az egyes lehetséges eseményekhez tartozó megoldási lépéseket.
 
-    |Eseményazonosító |Forrás |Leírás |Megoldás: |
+    |Eseményazonosító |Forrás |Leírás |Feloldás |
     |---------|-------|------------|-----------|
     |2133 & 2129 |Állapotfigyelő szolgáltatás |Nem sikerült kapcsolódni a szolgáltatáshoz az ügynöktől. |Ez a hiba akkor fordulhat elő, ha az ügynök nem tud közvetlenül kommunikálni, vagy tűzfalon vagy proxykiszolgálón keresztül a Azure Monitor szolgáltatáshoz. Ellenőrizze az ügynök proxyjának beállításait, illetve azt, hogy a hálózati tűzfal/proxy lehetővé teszi a TCP-forgalmat a számítógépről a szolgáltatásba.|
     |2138 |Állapotfigyelő szolgáltatás modulok |A proxy hitelesítést igényel |Konfigurálja az ügynök proxyjának beállításait, és adja meg a proxykiszolgáló hitelesítéséhez szükséges felhasználónevet és jelszót. |
@@ -98,9 +99,8 @@ Ha a lekérdezés az eredményeket adja vissza, akkor meg kell határoznia, hogy
 
 3. Ha néhány perc elteltével nem látja a várt információkat a lekérdezés eredményeiben vagy a vizualizációban, attól függően, hogy egy megoldásból vagy betekintésből származó adatok megtekinthetők-e, az *Operations Manager* eseménynaplóban keressen az **eseményforrás** *HealthService* és a *állapotfigyelő szolgáltatás modulok* elemre, és szűrje az **eseményvezérelt szintű** *figyelmeztetést* és *hibát* , és ellenőrizze, hogy az alábbi táblázatból írt-e az eseményeket.
 
-    |Eseményazonosító |Forrás |Leírás |Megoldás: |
+    |Eseményazonosító |Forrás |Leírás |Feloldás |
     |---------|-------|------------|
     |8000 |HealthService |Ez az esemény azt adja meg, hogy a teljesítménygel, eseménnyel vagy más összegyűjtött adattípussal kapcsolatos munkafolyamatok nem tudnak-e továbbítani a szolgáltatásnak a munkaterületre való betöltéshez. | A forrás HealthService származó 2136-es AZONOSÍTÓJÚ esemény ezzel az eseménnyel együtt van írva, és jelezheti, hogy az ügynök nem tud kommunikálni a szolgáltatással, valószínűleg a proxy-és hitelesítési beállítások helytelen konfigurációja, a hálózati leállás vagy a hálózati tűzfal/proxy nem engedélyezi a számítógépről a szolgáltatás felé irányuló TCP-forgalmat.| 
     |10102 és 10103 |Állapotfigyelő szolgáltatás modulok |A munkafolyamat nem tudja feloldani az adatforrást. |Ez akkor fordulhat elő, ha a megadott teljesítményszámláló vagy példány nem létezik a számítógépen, vagy helytelenül van definiálva a munkaterület adatbeállításaiban. Ha ez egy felhasználó által megadott [teljesítményszámláló](data-sources-performance-counters.md#configuring-performance-counters), ellenőrizze, hogy a megadott információ a megfelelő formátumú-e, és létezik-e a célszámítógépen. |
     |26002 |Állapotfigyelő szolgáltatás modulok |A munkafolyamat nem tudja feloldani az adatforrást. |Ez akkor fordulhat elő, ha a megadott Windows-Eseménynapló nem létezik a számítógépen. Ez a hiba nyugodtan figyelmen kívül hagyható, ha a számítógép nem fogja tudni regisztrálni ezt az eseménynaplót, ellenkező esetben ha ez egy felhasználó által megadott [Eseménynapló](data-sources-windows-events.md#configuring-windows-event-logs), ellenőrizze, hogy helyesek-e a megadott adatok. |
-
