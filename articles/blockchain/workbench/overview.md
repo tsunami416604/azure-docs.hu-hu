@@ -4,12 +4,12 @@ description: Az Azure Blockchain Workbench előzetes verziójának és képessé
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 384fa553204a5a86ad479f2cc623ebb70a9a6f5f
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: fbd6be3907dbd10b003d065dfb14031a0e378478
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434136"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003147"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Mi az Azure Blockchain Workbench?
 
@@ -55,11 +55,11 @@ Ha visszajelzést szeretne küldeni, vagy új szolgáltatásokat szeretne kérni
 
 Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szakértőivel.
 
-* [A Microsoft Q&az Azure Blockchain Workbench kérdéseit tartalmazó oldalt](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)
-* [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [A Microsoft Q&az Azure Blockchain Workbench kérdéseit tartalmazó oldalt](/answers/topics/azure-blockchain-workbench.html)
+* [A Microsoft technikai közössége](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure Blockchain Workbench-architektúra](architecture.md)

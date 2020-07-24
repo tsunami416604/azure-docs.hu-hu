@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 9d0964fb28451abe0a77276d6f9d605fcaac2514
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 72ccf2a765f50358635e4a803ed0b92e60bd7d19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012212"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning kurátori környezetek
 
-Ez a cikk a Azure Machine Learning, valamint a bennük előre telepített csomagokat és csatornákat sorolja fel.
+Ez a cikk a Azure Machine Learning, valamint a bennük előre telepített csomagokat és csatornákat sorolja fel. A Azure Machine Learning által biztosított, és a munkaterületen alapértelmezés szerint elérhetővé tett környezetek. Ezek a gyorsítótárban lévő Docker-rendszerképekből származnak, ami csökkenti a Futtatás előkészítési költségeit, és lehetővé teszi a gyorsabb üzembe helyezési időt. Ezekkel a környezetekkel gyorsan megkezdheti a különböző gépi tanulási keretrendszerek használatát.
 
 > [!NOTE]
 > Ez a lista a 2020. júniusi változatban frissül. Használja a Python SDK-t a legfrissebb lista beszerzéséhez. További információ a [környezetekről szóló cikkben](./how-to-use-environments.md#use-a-curated-environment)található.

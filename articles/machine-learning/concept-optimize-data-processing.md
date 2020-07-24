@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Ismerje meg az adatfeldolgozási sebességek optimalizálásának ajánlott eljárásait, valamint azt, hogy milyen integrációs Azure Machine Learning támogatja az adatfeldolgozást a skálán.
 services: machine-learning
 ms.service: machine-learning
-author: sgilley
 ms.author: sgilley
+author: sdgilley
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 09e48bd5c27dc4835ba0261ccd929f858fdb58b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b0badd92a3156f76f99bf1f48fca2093a2bca2f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481884"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012637"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Az adatfeldolgozás optimalizálása Azure Machine Learning
 
@@ -70,7 +70,7 @@ Ha az előző javaslatok nem elégek, és nem tud beolvasni egy olyan virtuális
 
 Az alábbi táblázat a kód-preferencia vagy az adatméret alapján Azure Machine Learningba integrált elosztott keretrendszerek használatát javasolja.
 
-Élmény vagy adatméret | Ajánlás
+Élmény vagy adatméret | Javaslat
 ------|------
 Ha már ismeri a`Pandas`| `Modin`vagy `Dask` dataframe
 Ha szeretné`Spark` | `PySpark`

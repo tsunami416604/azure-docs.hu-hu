@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 82ef70677dd0ede4ddfdd0899747c18f335da5a7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 8350437d04fd019aab8fb22be8ad0e9a4a2831d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077031"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012178"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Adatok áthelyezés SQL Server-kiszolgálóra Azure-beli virtuális gépeken
 
@@ -44,7 +44,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a következővel:
 * Egy **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
 * Egy **Azure Storage-fiók**. Ebben az oktatóanyagban egy Azure Storage-fiókot fog használni az adattároláshoz. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című cikket. A Storage-fiók létrehozása után be kell szereznie a tárolóhoz való hozzáféréshez használt fiók kulcsát. Lásd: a [Storage-fiók elérési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md).
 * Kiépített **SQL Server egy Azure-beli virtuális gépen**. Útmutatásért lásd: [Azure SQL Server virtuális gép beállítása IPython notebook-kiszolgálóként a speciális elemzésekhez](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
-* **Azure PowerShell** helyileg telepítve és konfigurálva. Útmutatásért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
+* **Azure PowerShell** helyileg telepítve és konfigurálva. Útmutatásért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
 
 ## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a>Adatok áthelyezése egy egyszerű fájlból a SQL Serverba egy Azure-beli virtuális gépen
 Ha az adatai egy sor/oszlop formátumú (sorba rendezett) fájlban vannak, a következő módszerekkel lehet áthelyezni SQL Server VM az Azure-ba:

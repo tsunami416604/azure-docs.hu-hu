@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 415c624153971e88afac3b18920a3ba3a8f2cfae
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 118c80b27d10714703d631f0e2560540eb2d39cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147028"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012552"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Mi az Azure Machine Learning munkaterület?
 
@@ -47,13 +47,18 @@ A diagram a munkaterület következő összetevőit jeleníti meg:
 
 A munkaterületet a következő módokon használhatja:
 
+> [!IMPORTANT]
+> Az alábbi megjelölésű eszközök (előzetes verzió) jelenleg nyilvános előzetes verzióban érhetők el.
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 + A weben:
     + [Azure Machine Learning Studio](https://ml.azure.com) 
     + [Azure Machine learning Designer (előzetes verzió)](concept-designer.md) – csak [Enterprise Edition](overview-what-is-azure-ml.md#sku) -munkaterületeken érhető el.
 + Bármely Python-környezetben a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val.
-+ Bármilyen R-környezetben az [r-hez készült Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)-val.
++ Bármilyen R-környezetben az [r-hez készült Azure Machine learning SDK-val (előzetes verzió)](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
 + A parancssorban a Azure Machine Learning [CLI bővítmény](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) használatával
 + [Azure Machine Learning VS Code-bővítmény](how-to-manage-resources-vscode.md#workspaces)
+
 
 ## <a name="machine-learning-with-a-workspace"></a>Gépi tanulás munkaterülettel
 
@@ -71,7 +76,7 @@ A gépi tanulási feladatok beolvassák és/vagy leírják a munkaterületet.
 
 A következő munkaterület-felügyeleti feladatokat is végrehajthatja:
 
-| Munkaterület-felügyeleti feladat   | Portal              | Studio | Python SDK/R SDK       | parancssori felület        | VS Code
+| Munkaterület-felügyeleti feladat   | Portál              | Studio | Python SDK/R SDK       | parancssori felület        | VS Code
 |---------------------------|---------|---------|------------|------------|------------|
 | Munkaterület létrehozása        | **&check;**     | | **&check;** | **&check;** | **&check;** |
 | Munkaterület-hozzáférés kezelése    | **&check;**   || |  **&check;**    ||

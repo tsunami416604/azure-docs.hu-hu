@@ -10,11 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98a1cd883867aa2f785b15f4c7ae4f2266a421ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900047"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012569"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Minták az Azure adatelemzési Virtual Machines
 
@@ -24,7 +25,7 @@ Az Azure adatelemzési Virtual Machines (Dsvm) tartalmaz egy átfogó mintakód-
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A minták futtatásához Data Science Virtual Machine kell kiépíteni. Tekintse meg a [Windows](./provision-vm.md) és az [Ubuntu](./dsvm-ubuntu-intro.md)gyors útmutatóit.
+A minták futtatásához [Ubuntu Data Science Virtual Machine](./dsvm-ubuntu-intro.md)kell kiépíteni.
 
 ## <a name="available-samples"></a>Rendelkezésre álló minták
 | Minták kategóriája | Description | Helyek |

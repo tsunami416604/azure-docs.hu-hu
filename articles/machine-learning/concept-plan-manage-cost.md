@@ -10,11 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: ae1beeebfddfe250ae20a70c3e78ec32774218d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2fc9a1a1c3a08f0530649ae64926c673e2d666e0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996322"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012688"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A Azure Machine Learning költségeinek megtervezése és kezelése
 
@@ -80,7 +81,7 @@ A AmlCompute-fürtök úgy vannak kialakítva, hogy a számítási feladatok ala
 
 Azt is beállíthatja, hogy a csomópont mennyi ideig tétlen legyen a skálázás előtt. Alapértelmezés szerint a leskálázás előtti üresjárati idő 120 másodpercre van állítva.
 
-+ Ha kevesebb iterációs kísérletezést végez, csökkentse ezt az időt a költségek megtakarítása érdekében. 
++ Ha kevesebb iterációs kísérletezést végez, csökkentse ezt az időt a költségek megtakarítása érdekében.
 + Ha nagy mértékben ismétlődő fejlesztési/tesztelési kísérleteket hajt végre, akkor előfordulhat, hogy meg kell nőnie az időt, hogy a képzési parancsfájl vagy környezet minden módosítása után ne fizessen az állandó skálázásra.
 
 A AmlCompute-fürtök konfigurálhatók a munkaterhelési követelmények Azure Portalban való módosításához a [AMLCOMPUTE SDK osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py), a [AmlCompute CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)és a [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable)-k használatával.
@@ -106,31 +107,13 @@ Bizonyos esetekben konfigurálnia kell a betanítási időszakokat, hogy azok az
 * A [hiperparaméter-hangoláshoz](how-to-tune-hyperparameters.md#early-termination)adjon meg egy korai megszakítási szabályzatot egy bandita-házirendből, egy középértékes leállítási házirendből vagy egy csonkolt kiválasztási szabályzatból. A hiperparaméter-lóversenyfogadások további szabályozásához használja a következő paramétereket: `max_total_runs` vagy `max_duration_minutes` .
 * Az [automatizált gépi tanuláshoz](how-to-configure-auto-train.md#exit)állítson be hasonló megszakítási házirendeket a `enable_early_stopping` jelző használatával. Olyan tulajdonságokat is használhat, mint a és a a `iteration_timeout_minutes` `experiment_timeout_minutes` Futtatás maximális időtartamának szabályozására, vagy a teljes kísérletre.
 
-## <a name="use-low-priority-vms"></a>Alacsony prioritású virtuális gépek használata
+## <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a>Alacsony prioritású virtuális gépek használata
 
 Az Azure-ban a virtuálisgép-méretezési csoportok, a Batch és a Machine Learning szolgáltatás által biztosított alacsony prioritású virtuális gépek nem használhatnak feleslegesen kihasználatlan kapacitást. Ezek a foglalások előre emptible, de kedvezményes áron érhetők el a dedikált virtuális gépekhez képest. Általánosságban ajánlott alacsony prioritású virtuális gépeket használni a Batch-munkaterhelésekhez. Azokat is érdemes használni, ahol a megszakítások az Újraküldés (a Batch-következtetések esetében) vagy az újraindítások (az ellenőrzőpontokkal folytatott mély tanulási képzések esetén) helyreállítására használhatók.
 
 Az alacsony prioritású virtuális gépek egyetlen kvótával rendelkeznek a dedikált kvóta értéktől, amely a VM-család. [További információ a AmlCompute-kvótákkal kapcsolatban](how-to-manage-quotas.md).
 
-Állítsa be a virtuális gép prioritását az alábbi módokon:
-
-* A Studióban válassza az **alacsony prioritású** virtuális gép létrehozása lehetőséget.
-
-* A Python SDK-val állítsa be az `vm_priority` attribútumot a létesítési konfigurációban.  
-
-    ```python
-    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
-                                                               vm_priority='lowpriority',
-                                                               max_nodes=4)
-    ```
-
-* A CLI használatával állítsa be a `vm-priority` következőket:
-
-    ```azurecli-interactive
-    az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
-    ```
-
- Az alacsony prioritású virtuális gépek nem működnek a számítási példányok esetében, mivel az interaktív notebook-élmények támogatásához szükségesek. 
+ Az alacsony prioritású virtuális gépek nem működnek a számítási példányok esetében, mivel az interaktív notebook-élmények támogatásához szükségesek.
 
 ## <a name="use-reserved-instances"></a>Fenntartott példányok használata
 
@@ -143,5 +126,5 @@ Azure Machine Learning a számítás a fenntartott példányokat is támogatja. 
 
 További információk:
 * [Erőforrás-kvóták kezelése és növelése](how-to-manage-quotas.md)
-* [Költségek kezelése a [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md)szolgáltatással.
+* [Költségek kezelése a Cost Analysis szolgáltatással](../cost-management-billing/costs/quick-acm-cost-analysis.md).
 * [Azure Machine learning a számítást](how-to-set-up-training-targets.md#amlcompute).

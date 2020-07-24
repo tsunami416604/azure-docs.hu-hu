@@ -10,11 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: d86858f8d7f09628457b718ca3c481934d720081
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 736504febea16af53c2c05bc367513b2dde93ccf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708008"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012314"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Adatfeldolgozási eszközök Data Science Virtual Machine
 
@@ -24,9 +25,9 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 
 ## <a name="adlcopy"></a>AdlCopy
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Eszköz az adatok Azure Blob Storage-ból Azure Data Lake Storeba való másolásához. Az Adatmásolás két Azure Data Lake Store fiók között is elvégezhető.      |
+| mi ez?   | Eszköz az adatok Azure Blob Storage-ból Azure Data Lake Storeba való másolásához. Az Adatmásolás két Azure Data Lake Store fiók között is elvégezhető.      |
 | Támogatott DSVM-verziók      | Windows      |
 | Jellemző felhasználások      | Több blob importálása az Azure Blob Storage-ból Azure Data Lake Storeba.      |
 |  Hogyan használhatja/futtatja?    |   Nyisson meg egy parancssort, és írja be `adlcopy` , hogy segítséget kapjon.    |
@@ -35,9 +36,9 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 
 ## <a name="azure-cli"></a>Azure CLI
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Egy felügyeleti eszköz az Azure-hoz. Emellett parancssori műveleteket is tartalmaz az Azure-beli adatplatformok, például az Azure Blob Storage és a Azure Data Lake Store adatainak áthelyezéséhez.     |
+| mi ez?   | Egy felügyeleti eszköz az Azure-hoz. Emellett parancssori műveleteket is tartalmaz az Azure-beli adatplatformok, például az Azure Blob Storage és a Azure Data Lake Store adatainak áthelyezéséhez.     |
 | Támogatott DSVM-verziók      | Windows, Linux     |
 | Jellemző felhasználások      | Adatok importálása és exportálása az Azure Storage-ba és a Azure Data Lake Storeba.      |
 |  Hogyan használhatja/futtatja?    |   Nyisson meg egy parancssort, és írja be `az` , hogy segítséget kapjon.    |
@@ -47,9 +48,9 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 
 ## <a name="azcopy"></a>AzCopy
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Eszköz helyi fájlokba, Azure Blob Storage-ba, fájlokba és táblákba másolt adatok másolására.      |
+| mi ez?   | Eszköz helyi fájlokba, Azure Blob Storage-ba, fájlokba és táblákba másolt adatok másolására.      |
 | Támogatott DSVM-verziók      | Windows      |
 | Jellemző felhasználások      | Fájlok másolása az Azure Blob Storage-ba és a Blobok másolása a fiókok között.      |
 |  Hogyan használhatja/futtatja?    |   Nyisson meg egy parancssort, és írja be `azcopy` , hogy segítséget kapjon.    |
@@ -59,9 +60,9 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 
 ## <a name="azure-cosmos-db-data-migration-tool"></a>Adatáttelepítési eszköz Azure Cosmos DB
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Eszköz különböző forrásokból származó adatok importálásához a felhőben lévő NoSQL-adatbázisba Azure Cosmos DBba. Ezek a források közé tartoznak a JSON-fájlok, a CSV-fájlok, az SQL, a MongoDB, az Azure Table Storage, az Amazon DynamoDB és a Azure Cosmos DB SQL API-gyűjtemények.      |
+| mi ez?   | Eszköz különböző forrásokból származó adatok importálásához a felhőben lévő NoSQL-adatbázisba Azure Cosmos DBba. Ezek a források közé tartoznak a JSON-fájlok, a CSV-fájlok, az SQL, a MongoDB, az Azure Table Storage, az Amazon DynamoDB és a Azure Cosmos DB SQL API-gyűjtemények.      |
 | Támogatott DSVM-verziók      | Windows      |
 | Jellemző felhasználások      | Fájlok importálása egy virtuális gépről a CosmosDB, adatok importálása az Azure Table Storage-ból a CosmosDB, és adatok importálása egy Microsoft SQL Server adatbázisból a CosmosDB-be.     |
 |  Hogyan használhatja/futtatja?    |   A parancssori verzió használatához nyisson meg egy parancssort, és írja be a következőt: `dt` . A grafikus felhasználói felület eszköz használatához nyisson meg egy parancssort, és írja be a következőt: `dtui` .    |
@@ -70,9 +71,9 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Grafikus felhasználói felület az Azure-felhőben tárolt fájlokkal való interakcióhoz. |
+| mi ez?   | Grafikus felhasználói felület az Azure-felhőben tárolt fájlokkal való interakcióhoz. |
 | Támogatott DSVM-verziók      | Windows      |
 | Jellemző felhasználások      | Adatok importálása és exportálása a DSVM.    |
 |  Hogyan használhatja/futtatja?    | A Start menüben keressen rá a "Azure Storage Explorer" kifejezésre. |
@@ -81,9 +82,9 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 
 ## <a name="bcp"></a>bcp
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | SQL Server eszköz az Adatmásolás SQL Server és az adatfájl között.      |
+| mi ez?   | SQL Server eszköz az Adatmásolás SQL Server és az adatfájl között.      |
 | Támogatott DSVM-verziók      | Windows      |
 | Jellemző felhasználások      | CSV-fájl importálása SQL Server táblába, és SQL Server táblázat exportálása fájlba.      |
 |  Hogyan használhatja/futtatja?    |   Nyisson meg egy parancssort, és írja be `bcp` , hogy segítséget kapjon.    |
@@ -92,9 +93,9 @@ Az adatelemzési vagy AI-projekt első technikai lépéseként meg kell határoz
 
 ## <a name="blobfuse"></a>blobfuse
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Egy eszköz, amely egy Azure Blob Storage-tárolót csatlakoztat a Linux-fájlrendszerben.      |
+| mi ez?   | Egy eszköz, amely egy Azure Blob Storage-tárolót csatlakoztat a Linux-fájlrendszerben.      |
 | Támogatott DSVM-verziók      | Linux      |
 | Jellemző felhasználások      | Egy tárolóban lévő Blobok olvasása és írása.      |
 |  Hogyan kell használni és futtatni?    |   Futtassa a _blobfuse_ -t egy terminálon.    |

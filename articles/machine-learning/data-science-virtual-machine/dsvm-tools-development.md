@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c48cf6a7a82e90d3c9d8dc4c35e37dfb944af99f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42a595246f45b2c7423aaf77c95f17243cf8813c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80282681"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012383"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Fejlesztői eszközök az Azure Data Science Virtual Machine
 
@@ -23,9 +23,9 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 
 ## <a name="visual-studio-community-edition"></a>Visual Studio Community Edition
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Általános célú IDE      |
+| mi ez?   | Általános célú IDE      |
 | Támogatott DSVM-verziók      | Windows: Visual Studio 2017, Windows 2019: Visual Studio 2019      |
 | Jellemző felhasználások      | Szoftverfejlesztés    |
 | Hogyan van konfigurálva és telepítve a DSVM?      | Adatelemzési munkaterhelés (Python és R-eszközök), Azure munkaterhelés (Hadoop, Data Lake), Node.js, SQL Server eszközök, [Azure Machine learning a Visual Studio Code](https://github.com/Microsoft/vs-tools-for-ai) -hoz    |
@@ -37,9 +37,9 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Általános célú IDE      |
+| mi ez?   | Általános célú IDE      |
 | Támogatott DSVM-verziók      | Windows, Linux     |
 | Jellemző felhasználások      | Kódszerkesztő és git-integráció   |
 | Használat és Futtatás      | Asztali parancsikon ( `C:\Program Files (x86)\Microsoft VS Code\Code.exe` ) a Windowsban, asztali parancsikon vagy terminál ( `code` ) a Linux rendszerben    |
@@ -47,9 +47,9 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 
 ## <a name="rstudio-desktop"></a>RStudio Desktop
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Ügyfél IDE az R nyelvhez   |
+| mi ez?   | Ügyfél IDE az R nyelvhez   |
 | Támogatott DSVM-verziók      | Windows, Linux      |
 | Jellemző felhasználások      |  R-fejlesztés     |
 | Használat és Futtatás      | Asztali parancsikon ( `C:\Program Files\RStudio\bin\rstudio.exe` ) Windows rendszeren, asztali parancsikon ( `/usr/bin/rstudio` ) Linuxon      |
@@ -57,10 +57,10 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 
 ## <a name="rstudio-server"></a>RStudio Server
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Ügyfél IDE az R nyelvhez   |
-| Mi ez?   | Web-alapú IDE az R-hez    |
+| mi ez?   | Ügyfél IDE az R nyelvhez   |
+| mi ez?   | Web-alapú IDE az R-hez    |
 | Támogatott DSVM-verziók      | Linux      |
 | Jellemző felhasználások      |  R-fejlesztés     |
 | Használat és Futtatás      | Engedélyezze a szolgáltatást a _systemctl Enable rstudio-Server engedélyezésével_, majd indítsa el a szolgáltatást a _systemctl Start rstudio-Server kiszolgálóval_. Ezután jelentkezzen be a RStudio-kiszolgálóra a http: \/ /Your-VM-IP: 8787 címen.       |
@@ -68,9 +68,9 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 
 ## <a name="juno"></a>Juno 
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Az ügyfél IDE for Julia nyelve   |
+| mi ez?   | Az ügyfél IDE for Julia nyelve   |
 | Támogatott DSVM-verziók      | Windows, Linux      |
 | Jellemző felhasználások      |  Julia-fejlesztés     |
 | Használat és Futtatás      | Asztali parancsikon ( `C:\JuliaPro-0.5.1.1\Juno.bat` ) Windows rendszeren, asztali parancsikon ( `/opt/JuliaPro-VERSION/Juno` ) Linuxon      |
@@ -78,9 +78,9 @@ A Data Science Virtual Machine (DSVM) számos népszerű eszközt csomagol egy r
 
 ## <a name="pycharm"></a>Notebookshoz
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | A Python nyelvhez készült ügyféloldali IDE    |
+| mi ez?   | A Python nyelvhez készült ügyféloldali IDE    |
 | Támogatott DSVM-verziók      | Windows 2019, Linux      |
 | Jellemző felhasználások      |  Python-fejlesztés     |
 | Használat és Futtatás      | Asztali parancsikon ( `C:\Program Files\tk` ) Windows rendszeren. Asztali parancsikon ( `/usr/bin/pycharm` ) Linuxon      |

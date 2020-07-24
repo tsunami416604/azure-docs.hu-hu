@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80282307"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012406"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Gépi tanulási és adatelemzési eszközök az Azure adatelemzési Virtual Machines
 Az Azure adatelemzési Virtual Machines (Dsvm) számos eszközt és kódtárat tartalmaz a gépi tanuláshoz, amely népszerű nyelveken érhető el, például a Python, az R és a Julia.
@@ -26,9 +26,9 @@ Az Azure adatelemzési Virtual Machines (Dsvm) számos eszközt és kódtárat t
 
 Tekintse meg a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)teljes referenciáját.
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   |   A Azure Machine Learning egy felhőalapú szolgáltatás, amely gépi tanulási modellek fejlesztésére és üzembe helyezésére használható. A modelleket a Python SDK használatával követheti, betaníthatja, méretezheti és kezelheti. A modelleket tárolóként helyezheti üzembe, és a felhőben, a helyszínen vagy Azure IoT Edge futtathatja.   |
+| mi ez?   |   A Azure Machine Learning egy felhőalapú szolgáltatás, amely gépi tanulási modellek fejlesztésére és üzembe helyezésére használható. A modelleket a Python SDK használatával követheti, betaníthatja, méretezheti és kezelheti. A modelleket tárolóként helyezheti üzembe, és a felhőben, a helyszínen vagy Azure IoT Edge futtathatja.   |
 | Támogatott kiadások     | Windows (Conda-környezet: AzureML), Linux (Conda-környezet: py36)    |
 | Jellemző felhasználások      | Általános gépi tanulási platform      |
 | Hogyan van konfigurálva vagy telepítve?      |  GPU-támogatással telepítve   |
@@ -38,9 +38,9 @@ Tekintse meg a [Pythonhoz készült Azure Machine learning SDK](https://docs.mic
 
 ## <a name="h2o"></a>H2O
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Egy nyílt forráskódú AI platform, amely támogatja a memóriában, az elosztott, a gyors és a méretezhető gépi tanulást.  |
+| mi ez?   | Egy nyílt forráskódú AI platform, amely támogatja a memóriában, az elosztott, a gyors és a méretezhető gépi tanulást.  |
 | Támogatott verziók      | Linux   |
 | Jellemző felhasználások      | Általános célú elosztott, méretezhető gépi tanulás   |
 | Hogyan van konfigurálva vagy telepítve?      | A H2O telepítve van a-ben `/dsvm/tools/h2o` .      |
@@ -52,9 +52,9 @@ A Dsvm-on számos más gépi tanulási kódtár található, például a népsze
 
 ## <a name="lightgbm"></a>LightGBM
 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Egy gyors, elosztott, nagy teljesítményű színátmenet-fokozó (GBDT, GBRT, GBM vagy MART) keretrendszer döntési fa algoritmusok alapján. Ez a rangsorolás, besorolás és sok más gépi tanulási feladat esetében használatos.    |
+| mi ez?   | Egy gyors, elosztott, nagy teljesítményű színátmenet-fokozó (GBDT, GBRT, GBM vagy MART) keretrendszer döntési fa algoritmusok alapján. Ez a rangsorolás, besorolás és sok más gépi tanulási feladat esetében használatos.    |
 | Támogatott verziók      | Windows, Linux    |
 | Jellemző felhasználások      | Általános célú átmenet – fellendítő keretrendszer      |
 | Hogyan van konfigurálva vagy telepítve?      | Windows rendszeren a LightGBM Python-csomagként van telepítve. Linux rendszeren a parancssori végrehajtható fájl, `/opt/LightGBM/lightgbm` az R-csomag telepítve van, a Python-csomagok pedig telepítve vannak.     |
@@ -62,9 +62,9 @@ A Dsvm-on számos más gépi tanulási kódtár található, például a népsze
 | Kapcsolódó eszközök      | MXNet, XgBoost  |
 
 ## <a name="rattle"></a>Rattle
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   |   Grafikus felhasználói felület az adatbányászathoz az R használatával.   |
+| mi ez?   |   Grafikus felhasználói felület az adatbányászathoz az R használatával.   |
 | Támogatott kiadások     | Windows, Linux     |
 | Jellemző felhasználások      | Általános felhasználói felületi adatbányászati eszköz az R-hez    |
 | Használat vagy Futtatás      | Felhasználói felületi eszközként. Windows rendszeren indítson el egy parancssort, futtassa az R-t, majd az R-ben futtassa a parancsot `rattle()` . Linux rendszeren kapcsolódjon a X2Go, indítson el egy terminált, futtassa az R parancsot, majd az R-ben futtassa a parancsot `rattle()` . |
@@ -72,9 +72,9 @@ A Dsvm-on számos más gépi tanulási kódtár található, például a népsze
 | Kapcsolódó eszközök      |LightGBM, WEKA, XGBoost   |
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   |   Gyors, nyílt forráskódú, nem alapszintű tanulási rendszerkönyvtár    |
+| mi ez?   |   Gyors, nyílt forráskódú, nem alapszintű tanulási rendszerkönyvtár    |
 | Támogatott kiadások     | Windows, Linux     |
 | Jellemző felhasználások      | Általános gépi tanulási könyvtár      |
 | Hogyan van konfigurálva vagy telepítve?      |  Windows: msi-telepítő<br/>Linux: apt-get |
@@ -84,9 +84,9 @@ A Dsvm-on számos más gépi tanulási kódtár található, például a népsze
 
 
 ## <a name="weka"></a>Weka
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   |  Gépi tanulási algoritmusok gyűjteménye adatbányászati feladatokhoz. Az algoritmusokat közvetlenül egy adatkészletre lehet alkalmazni, vagy a saját Java-kódjából hívható meg. A WEKA az adatfeldolgozás, a besorolás, a regresszió, a fürtözés, a társítási szabályok és a vizualizációk eszközeit tartalmazza. |
+| mi ez?   |  Gépi tanulási algoritmusok gyűjteménye adatbányászati feladatokhoz. Az algoritmusokat közvetlenül egy adatkészletre lehet alkalmazni, vagy a saját Java-kódjából hívható meg. A WEKA az adatfeldolgozás, a besorolás, a regresszió, a fürtözés, a társítási szabályok és a vizualizációk eszközeit tartalmazza. |
 | Támogatott kiadások     | Windows, Linux     |
 | Jellemző felhasználások      | Általános gépi tanulási eszköz     |
 | Használat vagy Futtatás      | Windows rendszeren keresse meg a WEKA a **Start** menüben. Linux rendszeren jelentkezzen be a X2Go-be, majd nyissa meg az **alkalmazások**  >  **fejlesztői**  >  **WEKA**. |
@@ -94,9 +94,9 @@ A Dsvm-on számos más gépi tanulási kódtár található, például a népsze
 | Kapcsolódó eszközök      |LightGBM, csörgő, XGBoost   |
 
 ## <a name="xgboost"></a>XGBoost 
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   |   A Python, az R, a Java, a Scala, a C++ és más rendszerekhez készült gyors, hordozható és elosztott gradiens-növelő (GBDT, GBRT vagy GBM) kódtár. Egyetlen gépen fut, Apache Hadoop és Sparkon.    |
+| mi ez?   |   A Python, az R, a Java, a Scala, a C++ és más rendszerekhez készült gyors, hordozható és elosztott gradiens-növelő (GBDT, GBRT vagy GBM) kódtár. Egyetlen gépen fut, Apache Hadoop és Sparkon.    |
 | Támogatott kiadások     | Windows, Linux     |
 | Jellemző felhasználások      | Általános gépi tanulási könyvtár      |
 | Hogyan van konfigurálva vagy telepítve?      |  GPU-támogatással telepítve   |
@@ -105,9 +105,9 @@ A Dsvm-on számos más gépi tanulási kódtár található, például a népsze
 | Kapcsolódó eszközök      | LightGBM, MXNet   |
 
 ## <a name="apache-drill"></a>Apache Drill
-|    |           |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Nyílt forráskódú SQL-lekérdezési motor big data    |
+| mi ez?   | Nyílt forráskódú SQL-lekérdezési motor big data    |
 | Támogatott DSVM-verziók      | Windows 2019, Linux  |
 | Hogyan van konfigurálva és telepítve a DSVM?      |  `/dsvm/tools/drill*`Csak beágyazott módban van telepítve   |
 | Jellemző felhasználások      |  Helyben történő adatfeltáráshoz kinyerési, átalakítási, betöltési (ETL) adatok nélkül. Különböző adatforrások és-formátumok lekérdezése, beleértve a CSV-t, a JSON-t, a rokon táblákat és a Hadoop.     |

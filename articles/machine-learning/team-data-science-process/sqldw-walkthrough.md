@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a748b9284407b5ecd8cc8f6225c6762e7017d4d9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d5a332acbf6550fcc3a4256e1bc0531b31dd6c6a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026117"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012254"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>A csoportos adatelemzési folyamat működés közben: az Azure szinapszis Analytics használata
 Ebben az oktatóanyagban bemutatjuk, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt az Azure szinapszis Analytics használatával egy nyilvánosan elérhető adatkészlethez – a [New York-i taxis](https://www.andresmh.com/nyctaxitrips/) adatkészlethez. A bináris besorolási modell alapján megjósolható, hogy egy adott utazási tipp díjköteles-e.  A modellek többosztályos besorolást tartalmaznak (legyen szó vagy sem a tippről) és a regresszióról (a tip-összeg kifizetésének eloszlása).
@@ -95,7 +95,7 @@ Az Azure-beli szinapszis Analytics-példány kiépítéséhez kövesse a [Azure 
 
 * **Kiszolgáló neve**: \<server Name> . database.Windows.net
 * **SQLDW (adatbázis) neve**
-* **Username**
+* **Felhasználónév**
 * **Jelszó**
 
 **Telepítse a Visual studiót és a SQL Server Data Tools.** Útmutatásért lásd: [első lépések a Visual Studio 2019 for SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
@@ -602,7 +602,7 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
 **Kimenet:** Ez a lekérdezés létrehoz egy táblát (2 803 538 sorral) a felvételi és a lemorzsolódási szélességi és hosszúsági körökkel, valamint a megfelelő közvetlen távolságot mérföldben. Az első három sorra vonatkozó eredmények:
 
-|  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
+| (Sor száma) | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
 | 1 |40,731804 |– 74,001083 |40,736622 |– 73,988953 |.7169601222 |
 | 2 |40,715794 |-74, 010635 |40,725338 |– 74,00399 |.7448343721 |
@@ -1006,7 +1006,7 @@ Az alábbi ábrán egy minta pontozási kísérlet szerepel. Ha készen áll a t
 
 ![Azure ML-közzététel][11]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Ahhoz, hogy beolvassa az ebben az útmutatóban ismertetett oktatóanyagot, létrehozott egy Azure-beli adatelemzési környezetet, amely egy nagyméretű nyilvános adatkészlettel dolgozott, a csoportos adatelemzési folyamaton keresztül, egészen az adatgyűjtésig a modell betanítása, majd egy Azure Machine Learning webszolgáltatás üzembe helyezése során.
 
 ### <a name="license-information"></a>Licencelési információk

@@ -10,11 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: ccb95064f756ef035b7da92d029680f1c195982b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3e1cfa13a3fd568ab2f1253c015880c57f99ce7e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958735"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012485"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>A Data Science Virtual Machine támogatott adatplatformok
 
@@ -24,19 +25,19 @@ A DSVM a következő adatplatform-eszközöket támogatja.
 
 ## <a name="sql-server-developer-edition"></a>SQL Server Developer Edition
 
-| | |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | Helyi viszonyítási adatbázis-példány      |
+| mi ez?   | Helyi viszonyítási adatbázis-példány      |
 | Támogatott DSVM-kiadások      | Windows 2016: SQL Server 2017, Windows 2019: SQL Server 2019      |
-| Jellemző felhasználások      | Gyors fejlesztés helyileg, kisebb adatkészlettel <br/> Futtatás a-adatbázisban R   |
-| Mintákra mutató hivatkozások      |    A New York City-adathalmazok egy kis mintája betöltődik az SQL Database-be:<br/>  `nyctaxi` <br/> A Microsoft Machine Learning Server és az adatbázison belüli elemzéseket bemutató Jupyter-minta a következő helyen található:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
-| A DSVM kapcsolódó eszközök       | SQL Server Management Studio <br/> ODBC/JDBC-illesztőprogramok<br/> pyodbc, RODBC<br />Apache Drill      |
+| Jellemző felhasználások      | <ul><li>Gyors fejlesztés helyileg, kisebb adatkészlettel</li><li>Futtatás a-adatbázisban R</li></ul> |
+| Mintákra mutató hivatkozások      | <ul><li>A New York City-adathalmazok egy kis mintája betöltődik az SQL Database-be:<br/>  `nyctaxi`</li><li>A Microsoft Machine Learning Server és az adatbázison belüli elemzéseket bemutató Jupyter-minta a következő helyen található:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`</li></ul> |
+| A DSVM kapcsolódó eszközök       | <ul><li>Az SQL Server Management Studio</li><li>ODBC/JDBC-illesztőprogramok</li><li>pyodbc, RODBC</li><li>Apache Drill</li></ul> |
 
 > [!NOTE]
 > SQL Server Developer kiadás csak fejlesztési és tesztelési célokra használható. Az üzemi környezetben való futtatásához licencre vagy a SQL Server virtuális gépek egyikére van szükség.
 
 
-### <a name="setup"></a>Telepítés
+### <a name="setup"></a>Előkészületek
 
 Az adatbázis-kiszolgáló már előre konfigurálva van, és a SQL Serverhoz (például) kapcsolódó Windows-szolgáltatások `SQL Server (MSSQLSERVER)` automatikus futásra vannak beállítva. Az egyetlen manuális lépés magában foglalja az adatbázis-elemzések Microsoft Machine Learning Server használatával történő engedélyezését. Az elemzés engedélyezéséhez futtassa a következő parancsot egyszeri műveletként a SQL Server Management Studio (SSMS) alkalmazásban. Futtassa ezt a parancsot a számítógép-rendszergazdaként való bejelentkezés után, nyisson meg egy új lekérdezést a SSMS, és győződjön meg arról, hogy a kiválasztott adatbázis a következő `master` :
 
@@ -61,20 +62,20 @@ Emellett a DSVM ODBC-és JDBC-illesztőprogramokkal is rendelkezik, amelyekkel a
 
 ## <a name="apache-spark-2x-standalone"></a>Apache Spark 2. x (önálló)
 
-| | |
+| Kategória | Érték |
 | ------------- | ------------- |
-| Mi ez?   | A népszerű Apache Spark platform önálló (egyetlen csomóponton belüli) példánya; gyors, nagy léptékű adatfeldolgozási és gépi tanulási rendszer     |
+| mi ez?   | A népszerű Apache Spark platform önálló (egyetlen csomóponton belüli) példánya; gyors, nagy léptékű adatfeldolgozási és gépi tanulási rendszer     |
 | Támogatott DSVM-kiadások      | Linux     |
-| Jellemző felhasználások      | * A Spark/PySpark alkalmazások gyors fejlesztése egy kisebb adatkészlettel és későbbi, nagyméretű Spark-fürtökön, például az Azure HDInsight-ben való üzembe helyezéssel<br/> * Microsoft Machine Learning Server Spark-környezet tesztelése <br />* A SparkML vagy a Microsoft nyílt forráskódú [MMLSpark](https://github.com/Azure/mmlspark) -függvénytárának használata ml-alkalmazások készítéséhez |
-| Mintákra mutató hivatkozások      |    Jupyter minta: <br />&nbsp;&nbsp;* ~/notebooks/SparkML/pySpark <br /> &nbsp;&nbsp;* ~/notebooks/MMLSpark <br /> Microsoft Machine Learning Server (Spark Context):/dsvm/samples/MRS/MRSSparkContextSample.R |
-| A DSVM kapcsolódó eszközök       | PySpark, Scala<br/>Jupyter (Spark/PySpark kernelek)<br/>Microsoft Machine Learning Server, Sparker, Sparklyr <br />Apache Drill      |
+| Jellemző felhasználások      | <ul><li>A Spark-és PySpark-alkalmazások gyors fejlesztése egy kisebb adatkészlettel, és a későbbi üzembe helyezés nagyméretű Spark-fürtökön, például az Azure HDInsight</li><li>Microsoft Machine Learning Server Spark-környezet tesztelése</li><li>A SparkML vagy a Microsoft nyílt forráskódú [MMLSpark](https://github.com/Azure/mmlspark) -függvénytárának használata ml-alkalmazások készítéséhez</li></ul> |
+| Mintákra mutató hivatkozások      |    Jupyter minta:<ul><li>~/notebooks/SparkML/pySpark</li><li>~/notebooks/MMLSpark</li></ul><p>Microsoft Machine Learning Server (Spark Context):/dsvm/samples/MRS/MRSSparkContextSample.R</p> |
+| A DSVM kapcsolódó eszközök       | <ul><li>PySpark, Scala</li><li>Jupyter (Spark/PySpark kernelek)</li><li>Microsoft Machine Learning Server, Sparker, Sparklyr</li><li>Apache Drill</li></ul> |
 
 ### <a name="how-to-use-it"></a>Használat
 A (z `spark-submit` ) vagy parancs futtatásával elküldheti a Spark-feladatokat a parancssorba `pyspark` . Jupyter jegyzetfüzet létrehozásához hozzon létre egy új jegyzetfüzetet a Spark kernel segítségével.
 
 A Spark for R használatával olyan könyvtárakat használhat, mint a Sparker, a Sparklyr és a Microsoft Machine Learning Server, amelyek elérhetők a DSVM. Lásd az előző táblázatban szereplő mintákhoz tartozó mutatókat.
 
-### <a name="setup"></a>Telepítés
+### <a name="setup"></a>Előkészületek
 Mielőtt a (z) Ubuntu Linux DSVM kiadásban Microsoft Machine Learning Server Spark-kontextusban fut, végre kell hajtania egy egyszeri telepítési lépést, amely lehetővé teszi a helyi egycsomópontos Hadoop HDFS és a fonal példányának engedélyezését. Alapértelmezés szerint a Hadoop Services telepítve van, de le van tiltva a DSVM. Az engedélyezéshez futtassa a következő parancsokat root-ként az első alkalommal:
 
 ```bash
