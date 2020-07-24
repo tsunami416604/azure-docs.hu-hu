@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 65e1fa07d2af15e9ccb5f85ce4645e3e6c287952
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 44f10bd49a768004fc63a3287799e6b79dd5bae1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960367"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071899"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming Windows áruházbeli alkalmazás létrehozása  
 
@@ -53,7 +53,7 @@ Ebben a leckében egy MediaElement-vezérlővel rendelkező Windows áruházbeli
 
 ![Példa Smooth Streaming Windows áruházbeli alkalmazásra][PlayerApplication]
 
-A Windows áruházbeli alkalmazások fejlesztésével kapcsolatos további információkért tekintse meg a [Windows 8 rendszerhez készült nagyszerű alkalmazások fejlesztése](https://msdn.microsoft.com/windows/apps/br229512.aspx)című témakört. Ez a lecke az alábbi eljárásokat tartalmazza:
+A Windows áruházbeli alkalmazások fejlesztésével kapcsolatos további információkért tekintse meg a [Windows 8 rendszerhez készült nagyszerű alkalmazások fejlesztése](https://developer.microsoft.com/en-us/windows/)című témakört. Ez a lecke az alábbi eljárásokat tartalmazza:
 
 1. Windows áruházbeli projekt létrehozása
 2. A felhasználói felület megtervezése (XAML)
@@ -1045,4 +1045,3 @@ Elvégezte a 4. leckét.  Ebben a leckében hozzáadja a funkciót a zeneszámok
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-

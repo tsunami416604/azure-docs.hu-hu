@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3ff356ef67630429b72208107541b1696e4eceac
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9d0bfdf4719b4c3a92a0632a1edda63324d700e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958565"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072046"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services darabolt MP4 élő betöltési specifikáció 
 
@@ -48,7 +48,7 @@ Az alábbi lista a Azure Media Servicesba való élő betöltésre vonatkozó sp
 1. Az [1] 3.3.2. szakasza az élő betöltéshez egy **StreamManifestBox** nevű opcionális mezőt határoz meg. Az Azure Load Balancer útválasztási logikája miatt ez a mező elavult. A mező nem lehet jelen a Media Servicesba való betöltéskor. Ha ez a mező megtalálható, Media Services csendben hagyja figyelmen kívül.
 1. Az egyes töredékek esetében az [1] 3.2.3.2-ben definiált **TrackFragmentExtendedHeaderBox** -mezőnek jelen kell lennie.
 1. A **TrackFragmentExtendedHeaderBox** mező 2. verzióját kell használni a több adatközpontban azonos URL-címekkel rendelkező adathordozó-szegmensek létrehozásához. Az index-alapú folyamatos átviteli formátumok, például az Apple HLS és az index-alapú MPEG-kötőjel közötti adatközpont feladatátvételéhez a töredék index mező szükséges. Az adatközpontok feladatátvételének engedélyezéséhez a töredék-indexet több kódolón kell szinkronizálni, és minden egyes egymást követő adathordozó-töredék esetében 1 értékkel kell növelni, még a kódoló újraindítása vagy meghibásodása között is.
-1. A (z) [1] 3.3.6 szakasza a **MovieFragmentRandomAccessBox** (**mfra**) nevű mezőt definiálja, amelyet az élő betöltés végén lehet elküldeni, hogy az adatfolyamot (EOS) a csatornához adja. Media Services betöltési logikája miatt az EOS elavult, és nem lehet elküldeni az élő betöltéshez használt **mfra** mezőt. Ha elküldésre kerül, Media Services csendben hagyja figyelmen kívül. A betöltési pont állapotának alaphelyzetbe állításához a [csatorna alaphelyzetbe állítását](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels)ajánlott használni. Azt is javasoljuk, hogy a [program leállítása](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) paranccsal fejezze be a bemutatót és a streamet.
+1. A (z) [1] 3.3.6 szakasza a **MovieFragmentRandomAccessBox** (**mfra**) nevű mezőt definiálja, amelyet az élő betöltés végén lehet elküldeni, hogy az adatfolyamot (EOS) a csatornához adja. Media Services betöltési logikája miatt az EOS elavult, és nem lehet elküldeni az élő betöltéshez használt **mfra** mezőt. Ha elküldésre kerül, Media Services csendben hagyja figyelmen kívül. A betöltési pont állapotának alaphelyzetbe állításához a [csatorna alaphelyzetbe állítását](/rest/api/media/operations/channel#reset_channels)ajánlott használni. Azt is javasoljuk, hogy a [program leállítása](/rest/api/media/operations/program#stop_programs) paranccsal fejezze be a bemutatót és a streamet.
 1. Az MP4-töredék időtartamának állandónak kell lennie az ügyfél-jegyzékfájlok méretének csökkentése érdekében. Az MP4-töredékek állandó időtartama Emellett javítja az ügyfél letöltési heurisztikus használatát az ismételt címkék használatával. Az időtartam VÁLTOZHAT, hogy kompenzálja a nem egész számok díjszabását.
 1. Az MP4-töredék időtartamának körülbelül 2 – 6 másodpercnek kell lennie.
 1. Az MP4-töredékek időbélyegei és indexei (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` és `fragment_index` ) növekvő sorrendben érkeznek. Bár a Media Services az ismétlődő töredékek esetében is rugalmas, a töredékek átrendezése a média idővonalának megfelelően korlátozott.
@@ -70,12 +70,12 @@ A részletes követelmények a következők:
 1. Ha a HTTP POST kérelem leáll, vagy időtúllépést okoz a TCP-hibánál az adatfolyam vége előtt, akkor a kódolónak új bejegyzéssel kell kiállítania egy új bejegyzést, és követnie kell az előző követelményeket. Emellett a kódolónak újra el kell küldenie az előző két MP4-töredéket az adatfolyamban lévő egyes sávokhoz, és nem kell folytatnia a folytonosságot a média idővonalán. Az utolsó két MP4-töredék Újraküldés az egyes sávok esetében biztosítja, hogy nincs adatvesztés. Más szóval, ha egy stream egy hang-és egy videó-nyomkövetést is tartalmaz, és a jelenlegi POST kérelem meghiúsul, a kódolónak újra kell csatlakoznia, majd újra el kell küldenie a hangsáv utolsó két töredékét, amelyeket korábban sikeresen Elküldöttek, és a videó nyomon követésének utolsó két töredékét, amelyeket korábban sikeresen elküldtek, hogy ne legyen adatvesztés. A kódolónak meg kell őriznie egy "Forward" puffert, amely az újracsatlakozáskor újraküldi az adathordozó töredékeit.
 
 ## <a name="5-timescale"></a>5. időskála
-[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) a **SmoothStreamingMedia** (szakasz 2.2.2.1), a **StreamElement** (szakasz 2.2.2.3), a **StreamFragmentElement** (szakasz 2.2.2.6) és a **LiveSMIL** (szakasz: 2.2.7.3.1) időkeretének használatát ismerteti. Ha az időskála értéke nem létezik, az alapértelmezett érték 10 000 000 (10 MHz). Bár a Smooth Streaming formátum specifikációja nem blokkolja más időskála-értékek használatát, a legtöbb kódoló implementációja ezt az alapértelmezett értéket (10 MHz-et) használja a Smooth Streaming adatok betöltéséhez. Az [Azure Media Dynamic csomagolási](media-services-dynamic-packaging-overview.md) funkciója miatt javasoljuk, hogy a videó streamek és a 44,1 khz vagy 48,1 kHz esetében használjon 90-kHz-es időskálát a hangstreamek számára. Ha különböző időkeret-értékeket használ a különböző adatfolyamokhoz, az adatfolyam-szintű időkeretet el kell juttatni. További információ: [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
+[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) a **SmoothStreamingMedia** (szakasz 2.2.2.1), a **StreamElement** (szakasz 2.2.2.3), a **StreamFragmentElement** (szakasz 2.2.2.6) és a **LiveSMIL** (szakasz: 2.2.7.3.1) időkeretének használatát ismerteti. Ha az időskála értéke nem létezik, az alapértelmezett érték 10 000 000 (10 MHz). Bár a Smooth Streaming formátum specifikációja nem blokkolja más időskála-értékek használatát, a legtöbb kódoló implementációja ezt az alapértelmezett értéket (10 MHz-et) használja a Smooth Streaming adatok betöltéséhez. Az [Azure Media Dynamic csomagolási](./previous/media-services-dynamic-packaging-overview.md) funkciója miatt javasoljuk, hogy a videó streamek és a 44,1 khz vagy 48,1 kHz esetében használjon 90-kHz-es időskálát a hangstreamek számára. Ha különböző időkeret-értékeket használ a különböző adatfolyamokhoz, az adatfolyam-szintű időkeretet el kell juttatni. További információ: [[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx).     
 
 ## <a name="6-definition-of-stream"></a>6. a "Stream" definíciója
 A stream az élő bemutatók előkészítésének, a folyamatos átvitel feladatátvételének és a redundancia-forgatókönyveknek a működésének alapvető működési egysége. Az adatfolyam egy egyedi, töredékes MP4-Bitstream van definiálva, amely egyetlen vagy több zeneszámot tartalmazhat. A teljes élő bemutató egy vagy több streamet tartalmazhat, az élő kódolók konfigurációjától függően. Az alábbi példák a streamek egy teljes élő bemutató összeállításához való használatának különböző lehetőségeit szemléltetik.
 
-**Példa:** 
+**Például** 
 
 Az ügyfél egy élő adatfolyam-bemutatót szeretne létrehozni, amely a következő hang/videó bitrátát tartalmazza:
 
@@ -98,7 +98,7 @@ Ebben a beállításban az ügyfél úgy dönt, hogy a legalacsonyabb sávszéle
 
 ![Streamek – hang-és video-zeneszámok][image4]
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 Ez a példa nem tartalmazza az összes lehetséges betöltési beállítást. Valójában a zeneszámok adatfolyamként történő csoportosítását az élő betöltés támogatja. Az ügyfelek és a kódoló-szállítók a mérnöki komplexitás, a kódoló kapacitása, valamint a redundancia és a feladatátvételi megfontolások alapján választhatják ki a saját implementációkat. A legtöbb esetben azonban csak egyetlen hangsáv van a teljes élő bemutatóhoz. Ezért fontos, hogy gondoskodjon arról, hogy a zeneszámot tartalmazó betöltési stream egészséges legyen. Ez a megfontolás gyakran azt eredményezi, hogy a hangsávot a saját streamben helyezi üzembe (a 2. lehetőségnek megfelelően), vagy a legalacsonyabb sávszélességű videóval (a 3. lehetőséggel) közvetíti. Emellett a jobb redundancia és hibatűrés érdekében ugyanazt a hangsávot kell elküldeni két különböző streamben (2. lehetőség redundáns hangsávokkal), vagy a hangfelvételt legalább két, a legalacsonyabb sávszélességű videó (3. lehetőség, legalább két videó streamben található hang) esetében ajánlott a Media Servicesba való élő betöltéshez.
 
 ## <a name="7-service-failover"></a>7. szolgáltatás feladatátvétele

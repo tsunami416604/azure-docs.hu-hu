@@ -3,12 +3,12 @@ title: Tudnivalók a virtuális gépek tartalmának naplózásáról
 description: Megtudhatja, hogyan használja a Azure Policy a vendég konfigurációs ügynököt a beállítások naplózására a virtuális gépeken belül.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f2f07a3e88984a84ca1529052d5899ad8570a268
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971096"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072822"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy vendégkonfigurációjának ismertetése
 
@@ -35,9 +35,8 @@ A vendég konfiguráció használatához regisztrálnia kell az erőforrás-szol
 A beállítások számítógépeken belüli naplózásához a virtuálisgép- [bővítmény](../../../virtual-machines/extensions/overview.md) engedélyezve van, és a gépnek rendszer által felügyelt identitással kell rendelkeznie. A bővítmény letölti a vonatkozó szabályzat-hozzárendelést és a hozzá tartozó konfigurációs definíciót. Az identitás a gép hitelesítésére szolgál, ahogy az beolvassa és beírja a vendég konfigurációs szolgáltatásba. A bővítmény nem szükséges az arc-csatlakoztatott gépekhez, mert az az arc csatlakoztatott számítógép ügynökének része.
 
 > [!IMPORTANT]
-> Az Azure Virtual Machines szolgáltatásban végzett naplózáshoz a vendég konfigurációs bővítmény szükséges. A bővítmény nagy léptékű üzembe helyezéséhez rendelje hozzá a következő szabályzat-definíciókat: 
->  - [Telepítse az előfeltételeket, hogy engedélyezze a vendég-konfigurációs házirendet a Windows rendszerű virtuális gépeken.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
->  - [Telepítse az előfeltételeket a vendég-konfigurációs szabályzat Linux rendszerű virtuális gépeken való engedélyezéséhez.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> Az Azure-beli virtuális gépek naplózásához a vendég konfiguráció kiterjesztése és a felügyelt identitás szükséges. Az Azure Virtual Machines szolgáltatásban végzett naplózási műveletek elvégzéséhez szükséges a vendég-konfigurációs bővítmény >. A bővítmény nagy léptékű üzembe helyezéséhez rendelje hozzá a következő házirend-kezdeményezést: > telepítse a bővítményt a skálán, és rendelje hozzá a következő szabályzat-definíciókat: 
+>  - [A vendég-konfigurációs szabályzatok virtuális gépeken való engedélyezéséhez szükséges előfeltételek üzembe helyezése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>A bővítményre beállított korlátok
 
@@ -81,10 +80,11 @@ Az Azure-beli vendég-konfigurációs erőforrás-szolgáltatóval való kommuni
 
 ## <a name="managed-identity-requirements"></a>Felügyelt identitásokra vonatkozó követelmények
 
-A bővítményt a virtuális gépekhez hozzáadó **DeployIfNotExists** szabályzatok lehetővé teszik a rendszerhez rendelt felügyelt identitások hozzáadását is, ha az egyik nem létezik.
+A kezdeményezésben szereplő szabályzatok a [vendég-konfigurációs szabályzatok virtuális gépeken való engedélyezésének előfeltételei](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) a rendszer által hozzárendelt felügyelt identitás engedélyezése, ha az egyik nem létezik. Az identitás létrehozását kezelő kezdeményezésben két házirend-definíció található. Ha a házirend-definícióban szereplő feltételek biztosítják a megfelelő viselkedést az Azure-beli gépi erőforrás aktuális állapota alapján.
 
-> [!WARNING]
-> Ne engedélyezze a felhasználóhoz rendelt felügyelt identitást olyan házirendek hatókörében lévő virtuális gépekhez, amelyek lehetővé teszik a rendszerhez rendelt felügyelt identitást. A rendszer lecseréli a felhasználó által hozzárendelt identitást, és a gép nem válaszol.
+Ha a gép jelenleg nem rendelkezik felügyelt identitásokkal, a hatályos szabályzat a következő lesz: [ \[ előnézet \] : rendszerhez rendelt felügyelt identitás hozzáadása a vendég konfigurációs hozzárendeléseinek engedélyezéséhez az identitás nélküli virtuális gépeken](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+
+Ha a gépnek jelenleg van felhasználó által hozzárendelt rendszeridentitása, a hatályos szabályzat a következő: [ \[ előnézet \] : rendszerhez rendelt felügyelt identitás hozzáadása a vendég konfigurációs hozzárendeléseinek a felhasználó által hozzárendelt identitású virtuális gépeken való engedélyezéséhez](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>A vendég konfigurációjának meghatározására vonatkozó követelmények
 

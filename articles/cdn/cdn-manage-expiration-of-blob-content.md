@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: c41e14490842068895aea383d384007f308e9e1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49748b3d77d097e655ee6ec5777022c038841a6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887674"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073129"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Az Azure Blob Storage lejáratának kezelése Azure CDN
 > [!div class="op_single_selector"]
@@ -70,7 +70,7 @@ A blob fejlécének beállításához javasolt módszer a `Cache-Control` Azure 
 
    Ez a globális gyorsítótárazási szabály egy óra gyorsítótári időtartamát állítja be, és a végpontra irányuló összes kérést érinti. Felülbírálja `Cache-Control` `Expires` a végpont által megadott forráskiszolgáló által elküldett bármely vagy HTTP-fejlécet.   
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
  
 **BLOB-fájl gyorsítótár-vezérlő fejlécének beállítása egyéni gyorsítótárazási szabályok használatával:**
 
@@ -84,14 +84,14 @@ A blob fejlécének beállításához javasolt módszer a `Cache-Control` Azure 
 
     Az első egyéni gyorsítótárazási szabály a `/blobcontainer1` végpont által megadott forráskiszolgáló mappájában lévő blob-fájlok esetében négy órányi gyorsítótári időtartamot állít be. A második szabály csak a blob első szabályát felülbírálja, `blob1.txt` és két órás gyorsítótári időtartamot állít be.
 
-2. Kattintson a **Mentés** gombra.
+2. Válassza a **Mentés** lehetőséget.
 
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>A Cache-Control fejlécek beállítása Azure PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/overview) az egyik leggyorsabb és leghatékonyabb módszer az Azure-szolgáltatások felügyeletéhez. A `Get-AzStorageBlob` parancsmag segítségével szerezzen be egy hivatkozást a blobra, majd állítsa be a `.ICloudBlob.Properties.CacheControl` tulajdonságot. 
+[Azure PowerShell](/powershell/azure/) az egyik leggyorsabb és leghatékonyabb módszer az Azure-szolgáltatások felügyeletéhez. A `Get-AzStorageBlob` parancsmag segítségével szerezzen be egy hivatkozást a blobra, majd állítsa be a `.ICloudBlob.Properties.CacheControl` tulajdonságot. 
 
 Például:
 

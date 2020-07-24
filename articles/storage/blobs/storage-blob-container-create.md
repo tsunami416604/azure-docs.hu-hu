@@ -5,14 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/17/2019
+ms.date: 07/22/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24e754a583125c962e67f849edcec8f8609746a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: abf4cb33fa953ec9a257397551b3d17752fe67f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464912"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070735"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Tároló létrehozása vagy törlése az Azure Storage-ban .NET-tel
 
@@ -24,7 +25,7 @@ A tároló nevének érvényes DNS-névnek kell lennie, mivel az a tároló vagy
 
 - A tároló neve 3 – 63 karakter hosszúságú lehet.
 - A tároló nevének betűvel vagy számmal kell kezdődnie, és csak kisbetűket, számokat és kötőjel (-) karaktert tartalmazhat.
-- Két vagy több egymást követő kötőjel karakter nem engedélyezett a tárolók neveiben.
+- A tárolók neveiben két vagy több egymást követő kötőjel karakter nem engedélyezett.
 
 A tároló URI-ja ebben a formátumban van:
 
@@ -34,18 +35,34 @@ A tároló URI-ja ebben a formátumban van:
 
 Tároló létrehozásához hívja a következő módszerek egyikét:
 
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+- [Létrehozás](/dotnet/api/azure.storage.blobs.blobcontainerclient.create)
+- [CreateAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createasync)
+- [Createifnotexists metódust](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexists)
+- [CreateIfNotExistsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexistsasync)
+
+# <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
+
 - [Létrehozás](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.create)
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
 - [Createifnotexists metódust](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
+---
 
 A **create** és a **CreateAsync** metódus kivételt jelez, ha már létezik ilyen nevű tároló.
 
-A **createifnotexists metódust** és a **CreateIfNotExistsAsync** metódus egy logikai értéket ad vissza, amely azt jelzi, hogy létrejött-e a tároló. Ha már létezik ilyen nevű tároló, akkor ezek a metódusok **Hamis értéket** adnak vissza, jelezve, hogy az új tároló nem lett létrehozva.
+A **createifnotexists metódust** és a **CreateIfNotExistsAsync** metódus egy logikai értéket ad vissza, amely azt jelzi, hogy létrejött-e a tároló. Ha már létezik ilyen nevű tároló, ezek a metódusok **Hamis értéket** adnak vissza, jelezve, hogy egy új tároló nem lett létrehozva.
 
 A tárolók közvetlenül a Storage-fiók alatt jönnek létre. Egy tárolót nem lehet beágyazni egy másik alá.
 
 A következő példa aszinkron módon hoz létre egy tárolót:
+
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="CreateSampleContainerAsync":::
+
+# <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
 ```csharp
 private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBlobClient blobClient)
@@ -77,16 +94,23 @@ private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBl
     return container;
 }
 ```
+---
 
 ## <a name="create-the-root-container"></a>A gyökér tároló létrehozása
 
-A legfelső szintű tároló a Storage-fiók alapértelmezett tárolója. Mindegyik Storage-fiók rendelkezhet egy legfelső szintű tárolóval, amelynek neve *$root.*. Explicit módon létre kell hoznia vagy törölnie kell a legfelső szintű tárolót.
+A legfelső szintű tároló a Storage-fiók alapértelmezett tárolója. Mindegyik Storage-fiók rendelkezhet egy legfelső szintű tárolóval, amelynek neve *$root*kell, hogy legyen. A legfelső szintű tárolót explicit módon kell létrehozni vagy törölni.
 
-A gyökér tárolóban tárolt blobokra hivatkozhat a gyökér-tároló nevének megadása nélkül is. A gyökérszintű tároló lehetővé teszi, hogy a Storage-fiók hierarchiájának legfelső szintjén lévő blobra hivatkozzon. Hivatkozhat például egy blobra, amely a következő módon található a gyökér tárolóban:
+A gyökér tárolóban tárolt blobokra hivatkozhat a gyökér-tároló nevének megadása nélkül is. A gyökérszintű tároló lehetővé teszi, hogy a Storage-fiók hierarchiájának legfelső szintjén lévő blobra hivatkozzon. A következő módon hivatkozhat például a gyökér tárolóban található blobokra:
 
 `https://myaccount.blob.core.windows.net/default.html`
 
 A következő példa a gyökérszintű tárolót szinkron módon hozza létre:
+
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="CreateRootContainer":::
+
+# <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
 ```csharp
 private static void CreateRootContainer(CloudBlobClient blobClient)
@@ -113,23 +137,40 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
     }
 }
 ```
+---
 
 ## <a name="delete-a-container"></a>Tároló törlése
 
 A tárolók .NET-ben való törléséhez használja a következő módszerek egyikét:
 
-- [Szabályzat](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.delete)
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+- [Törlés](/dotnet/api/azure.storage.blobs.blobcontainerclient.delete)
+- [DeleteAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteasync)
+- [Deleteifexists paranccsal](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteifexists)
+- [DeleteIfExistsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteifexistsasync)
+
+# <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
+
+- [Törlés](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.delete)
 - [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync)
 - [Deleteifexists paranccsal](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexistsasync)
+---
 
 A **delete** és a **DeleteAsync** metódus kivételt jelez, ha a tároló nem létezik.
 
-A **deleteifexists paranccsal** és a **DeleteIfExistsAsync** metódus egy logikai értéket ad vissza, amely azt jelzi, hogy a tároló törölve lett-e. Ha a megadott tároló nem létezik, akkor ezek a metódusok **Hamis értéket** adnak vissza, jelezve, hogy a tároló nem lett törölve.
+A **deleteifexists paranccsal** és a **DeleteIfExistsAsync** metódus egy logikai értéket ad vissza, amely azt jelzi, hogy a tároló törölve lett-e. Ha a megadott tároló nem létezik, akkor ezek a metódusok **Hamis értéket** adnak vissza, jelezve, hogy a tárolót nem törölték.
 
-A tárolók törlése után nem hozhat létre azonos nevű tárolót legalább 30 másodpercig, és esetleg hosszabb időt is. A tároló törlését követően az azonos nevű tároló létrehozása sikertelen lesz a 409-es HTTP-hibakód miatt (ütközés). A tárolón vagy a benne található blobokon végrehajtott egyéb műveletek sikertelenek lesznek a 404-as HTTP-hibakód miatt (nem található) a tároló törlésekor.
+A tárolók törlése után nem hozhat létre azonos nevű tárolót *legalább* 30 másodpercig. Az azonos nevű tároló létrehozására tett kísérlet sikertelen lesz a 409-as HTTP-hibakódnál (ütközés). A tárolón vagy a benne található blobokon végrehajtott egyéb műveletek meghiúsulnak a 404-as HTTP-hibakód esetén (nem található).
 
 A következő példa törli a megadott tárolót, és kezeli a kivételt, ha a tároló nem létezik:
+
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="DeleteSampleContainerAsync":::
+
+# <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
 ```csharp
 private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient, string containerName)
@@ -151,8 +192,15 @@ private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient,
     }
 }
 ```
+---
 
-Az alábbi példa bemutatja, hogyan törölheti az összes olyan tárolót, amely a megadott előtaggal kezdődik. A példa megszakítja a bérletet, ha van egy meglévő bérlet a tárolóban.
+Az alábbi példa bemutatja, hogyan törölheti az összes olyan tárolót, amely a megadott előtaggal kezdődik.
+
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="DeleteContainersWithPrefixAsync":::
+
+# <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
 ```csharp
 private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)
@@ -163,11 +211,6 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
         foreach (var container in blobClient.ListContainers(prefix))
         {
             Console.WriteLine("\tContainer:" + container.Name);
-            if (container.Properties.LeaseState == LeaseState.Leased)
-            {
-                await container.BreakLeaseAsync(null);
-            }
-
             await container.DeleteAsync();
         }
 
@@ -181,6 +224,7 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
     }
 }
 ```
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

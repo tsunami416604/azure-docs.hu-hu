@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38861ed941d49317e69bfab9afd17638a790bf7b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792390"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072423"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Leképezések létrehozása, amelyek az XML-t különböző formátumokká alakítják át az Azure Logic Appsben az Enterprise Integration Packkel
 
@@ -37,11 +38,11 @@ Most, hogy elvégezte az előfeltételeket, ideje létrehozni a logikai alkalmaz
 
 1. Hozzon létre egy logikai alkalmazást, és [csatolja azt a térképet tartalmazó integrációs fiókhoz](../logic-apps/logic-apps-enterprise-integration-accounts.md "Integrációs fiók összekapcsolása logikai alkalmazással") .
 2. **Kérelem** -trigger hozzáadása a logikai alkalmazáshoz  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
+   ![Képernyőkép a "Microsoft felügyelt API-k megjelenítése" legördülő listáról a kérelem trigger kiválasztásával. A legördülő lista a Visual Studio Vállalati integráció SDK használatával létrehozott logikai alkalmazásban található.](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. Az **átalakítási XML-** művelet hozzáadásához először válassza a **művelet hozzáadása** lehetőséget.   
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
+   ![Képernyőfelvétel: a kérelem trigger képernyőjén kiválasztott "művelet hozzáadása" gomb.](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
 4. A keresőmezőbe írja be a Word *átalakítás* kifejezést a használni kívánt összes művelet szűréséhez  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
+   ![Képernyőfelvétel: az átalakítási XML-művelet megkeresése a "Microsoft felügyelt API-k megjelenítése" legördülő menüben, hogy hozzá lehessen adni a kérelem-triggerhez.](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. **XML-átalakítási** művelet kiválasztása   
 6. Adja hozzá az átalakított XML- **tartalmat** . A HTTP-kérelemben a **tartalomként**kapott XML-adatokat is használhatja. Ebben a példában válassza ki a logikai alkalmazást indító HTTP-kérelem törzsét.
 
@@ -50,9 +51,9 @@ Most, hogy elvégezte az előfeltételeket, ideje létrehozni a logikai alkalmaz
  
 
 7. Válassza ki az átalakítás végrehajtásához használni kívánt **Térkép** nevét. A térképnek már az integrációs fiókjában kell lennie. Egy korábbi lépésben már megadta a logikai alkalmazás hozzáférését a térképet tartalmazó integrációs fiókhoz.      
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
+   ![Képernyőfelvétel: az átalakítási XML-képernyő tartalmának és leképezési mezőinek megjelenítése a kérelem-triggerhez.](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. Munkahelyi mentés  
-    ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
+    ![A Logic Apps Designer mentés gombjára mutató képernyőkép.](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
 Ezen a ponton elkészült a Térkép beállítása. Egy valós alkalmazásban érdemes lehet egy LOB-alkalmazásban (például SalesForce) tárolni az átalakított adatfájlokat. Az átalakítás kimenetét egyszerűen elküldheti Salesforce. 
 
@@ -132,7 +133,7 @@ Alapértelmezés szerint az átalakítás válasza a byte Order Mark (BOM) karak
 
 
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 * [További információ a Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack")  
 * [További információ a mapsről](../logic-apps/logic-apps-enterprise-integration-maps.md "További tudnivalók a vállalati integrációs térképekről")  
 

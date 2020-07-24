@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff6bd1a52e05d55d43969644141f39aed8c8eb63
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75979414"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072643"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-átalakítás térképekkel az Azure Logic Appsben az Enterprise Integration Pack segítségével
 
@@ -35,14 +36,14 @@ Az integrációs fiókokkal és összetevőkkel, például a térképekkel kapcs
   * Szerelvények esetén szüksége van egy Azure Blob-tárolóra, ahol feltöltheti a szerelvényt és a tároló helyét. Így később is megadhatja ezt a helyet, amikor hozzáadja a szerelvényt az integrációs fiókhoz. 
   Ehhez a feladathoz a következő elemek szükségesek:
 
-    | Item | Description |
+    | Elem | Leírás |
     |------|-------------|
     | [Azure Storage-fiók](../storage/common/storage-account-overview.md) | Ebben a fiókban hozzon létre egy Azure BLOB-tárolót a szerelvényhez. Megtudhatja [, hogyan hozhat létre egy Storage-fiókot](../storage/common/storage-account-create.md). |
     | Blobtároló | Ebben a tárolóban feltöltheti a szerelvényt. Erre a tárolóra is szüksége lesz, amikor hozzáadja a szerelvényt az integrációs fiókhoz. Megtudhatja, hogyan [hozhat létre BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md). |
     | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | Ezzel az eszközzel könnyebben kezelhetők a Storage-fiókok és a blob-tárolók. Storage Explorer használatához [töltse le és telepítse a Azure Storage Explorert](https://www.storageexplorer.com/). Ezután csatlakoztasson Storage Explorer a Storage-fiókjához a [Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)első lépéseinek lépéseit követve. További információ: gyors útmutató [: blob létrehozása az objektum-tárolóban Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)használatával. <p>Vagy a Azure Portalban keresse meg és válassza ki a Storage-fiókját. A Storage-fiók menüjében válassza a **Storage Explorer**lehetőséget. |
     |||
 
-  * A Maps esetében jelenleg nagyobb leképezéseket adhat hozzá a [Azure Logic Apps REST API-Maps](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)használatával.
+  * A Maps esetében jelenleg nagyobb leképezéseket adhat hozzá a [Azure Logic Apps REST API-Maps](/rest/api/logic/maps/createorupdate)használatával.
 
 Térképek létrehozásakor és hozzáadásakor nincs szükség logikai alkalmazásra. A Térkép használatához azonban a logikai alkalmazásnak olyan integrációs fiókhoz kell kapcsolódnia, ahol a térképet tárolja. Útmutató [logikai alkalmazások integrációs fiókokhoz való összekapcsolásához](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Ha még nem rendelkezik logikai alkalmazással, Ismerje meg, [hogyan hozhat létre logikai alkalmazásokat](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -219,7 +220,7 @@ A térképre hivatkozó szerelvények feltöltése után már feltöltheti a té
 
 ### <a name="add-maps-more-than-2-mb"></a>Térképek hozzáadása 2 MB-nál több
 
-Jelenleg nagyobb térképek hozzáadásához használja a [Azure Logic Apps REST API-Maps](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)szolgáltatást.
+Jelenleg nagyobb térképek hozzáadásához használja a [Azure Logic Apps REST API-Maps](/rest/api/logic/maps/createorupdate)szolgáltatást.
 
 <!--
 

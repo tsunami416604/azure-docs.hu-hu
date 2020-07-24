@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan segítheti az Azure App Service az üzletmenet-
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 8c57cf5054bea898370cdccc7bea4243877d27b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84947077"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073742"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service alkalmazás áthelyezése másik régióba
 
@@ -43,17 +43,17 @@ Bizonyos erőforrások, például az importált tanúsítványok vagy a hibrid k
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon az érintett alkalmazás felügyeleti lapjára. Egy meghibásodott Azure-régióban az érintett alkalmazás figyelmeztető szöveget jelenít meg. Kattintson a figyelmeztetés szövegére.
 
-    ![](media/manage-disaster-recovery/restore-start.png)
+    ![Képernyőkép az érintett alkalmazás oldaláról. Megjelenik egy figyelmeztető értesítés, amely leírja a helyzetet, és hivatkozást biztosít az alkalmazás visszaállításához.](media/manage-disaster-recovery/restore-start.png)
 
 1. A **biztonsági mentés visszaállítása** lapon konfigurálja a visszaállítási műveletet az alábbi táblázat szerint. Ha elkészült, kattintson **az OK**gombra.
 
-   | Beállítás | Érték | Description |
+   | Beállítás | Érték | Leírás |
    |-|-|-|
    | **Pillanatkép (előzetes verzió)** | Válasszon ki egy pillanatképet. | A két legutóbbi pillanatkép elérhető. |
    | **Cél visszaállítása** | **Meglévő alkalmazás** | Kattintson a lenti megjegyzésre, és **kattintson ide a visszaállítási cél alkalmazás módosításához** , és válassza ki a kívánt alkalmazást. Katasztrófa esetén a pillanatképet csak egy másik Azure-régióban lévő alkalmazásra lehet visszaállítani. |
    | **Hely konfigurációjának visszaállítása** | **Igen** | |
 
-    ![](media/manage-disaster-recovery/restore-configure.png)
+    ![Képernyőkép a biztonsági másolat visszaállítása lapról. Egy adott pillanatkép, az előző táblázatban szereplő beállítások és az OK gomb kiemelve.](media/manage-disaster-recovery/restore-configure.png)
 
 3. Konfigurálja a célalkalmazás [összes más](#prepare) elemét az érintett alkalmazás tükrözéséhez és a konfiguráció ellenőrzéséhez.
 
@@ -65,7 +65,7 @@ Ha csak az érintett alkalmazásból kívánja helyreállítani a fájlokat a vi
 
 1. A [Azure Portal](https://portal.azure.com)navigáljon az érintett alkalmazás felügyeleti lapjára, és kattintson a **közzétételi profil beolvasása**elemre.
 
-    ![](media/manage-disaster-recovery/get-publish-profile.png)
+    ![Képernyőkép az érintett alkalmazás oldaláról. Egy figyelmeztető értesítés látható, de nincs kiemelve. A közzétételi profil beolvasása eleme kiemelve.](media/manage-disaster-recovery/get-publish-profile.png)
 
 1. Nyissa meg a letöltött fájlt, és keresse meg a nevét tartalmazó közzétételi profilt `ReadOnly - FTP` . Ez a vész-helyreállítási profil. Például:
 
@@ -84,7 +84,7 @@ Ha csak az érintett alkalmazásból kívánja helyreállítani a fájlokat a vi
 
 1. Ha csatlakoztatva van, töltse le a teljes */site/wwwroot* mappát. A következő képernyőképen látható, hogyan tölthető le a [FileZilla](https://filezilla-project.org/)-ben.
 
-    ![](media/manage-disaster-recovery/download-content.png)
+    ![Képernyőkép egy FileZilla-fájl hierarchiáról. A WWWroot mappa ki van emelve, és a helyi menü látható. Ebben a menüben a letöltés kiemelve.](media/manage-disaster-recovery/download-content.png)
 
 ## <a name="next-steps"></a>További lépések
 [Azure-beli alkalmazás visszaállítása pillanatképből](app-service-web-restore-snapshots.md)

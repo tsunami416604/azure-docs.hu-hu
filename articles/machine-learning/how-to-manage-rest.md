@@ -10,11 +10,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 01/31/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90ad8cc87f1d6a1893b96f6201a4260c03c94fee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560175"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072203"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Azure ML-erőforrások létrehozása, futtatása és törlése a REST használatával
 
@@ -47,7 +48,7 @@ A rendszergazdai REST-kérelmek hitelesítése OAuth2 implicit folyamattal tört
 - Az ügyfél-azonosító (amely a létrehozott jogkivonathoz lesz társítva)
 - Az ügyfél titkos kulcsa (amelyet védenie kell)
 
-Ezeket az értékeket a szolgáltatásnak a [Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)című szakaszban ismertetett válasz alapján kell megállapítania. Ha céges előfizetését használja, lehet, hogy nincs engedélye egy egyszerű szolgáltatásnév létrehozásához. Ebben az esetben [ingyenes vagy fizetős személyes előfizetést](https://aka.ms/AMLFree)kell használnia.
+Ezeket az értékeket az egyszerű szolgáltatásnév létrehozási válasza alapján kell megkapnia. Ezeket az értékeket a [Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)című szakaszban tárgyaljuk. Ha céges előfizetését használja, lehet, hogy nincs engedélye egy egyszerű szolgáltatásnév létrehozásához. Ebben az esetben [ingyenes vagy fizetős személyes előfizetést](https://aka.ms/AMLFree)kell használnia.
 
 Token lekérése:
 
@@ -199,15 +200,15 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Figyelje meg, hogy az elérési úton megjelenő kísérletek listája a `history/v1.0` modellek listázása mellett kezdődik `modelmanagement/v1.0` . A REST API több operatív csoportba vannak osztva, amelyek mindegyike külön elérési úttal rendelkezik. Az alábbi hivatkozásokon található API-referenciák a különböző műveletekhez tartozó műveletekkel, paraméterekkel és válaszokkal kapcsolatos kódokat felsorolják.
+Figyelje meg, hogy az elérési úton megjelenő kísérletek listája a `history/v1.0` modellek listázása mellett kezdődik `modelmanagement/v1.0` . A REST API több operatív csoportba vannak osztva, amelyek mindegyike külön elérési úttal rendelkezik. 
 
-|Terület|Elérési út|Hivatkozás|
-|-|-|-|
-|Artifacts|összetevő/v 2.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|Adattárolók|adattár/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|Hiperparaméterek finomhangolása|HyperDrive/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|Modellek|modelmanagement/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|Előzmények|végrehajtás/v 1.0/és előzmények/v 1.0/|[REST API-referencia](https://docs.microsoft.com/rest/api/azureml/runs)|
+|Terület|Elérési út|
+|-|-|
+|Artifacts|összetevő/v 2.0/|
+|Adattárolók|adattár/v 1.0/|
+|Hiperparaméterek finomhangolása|HyperDrive/v 1.0/|
+|Modellek|modelmanagement/v 1.0/|
+|Előzmények|végrehajtás/v 1.0/és előzmények/v 1.0/|
 
 A REST API a következő általános mintázattal derítheti fel:
 

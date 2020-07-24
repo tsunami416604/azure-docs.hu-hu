@@ -5,12 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/15/2020
-ms.openlocfilehash: 5d462be1caa3787cb7ff9a455be595ec5784eefe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 38edbfcb8800843b43678e99d6817595ccba3235
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76157270"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071535"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>Tűzfalszabályok Azure Database for PostgreSQL – egyetlen kiszolgáló
 Azure Database for PostgreSQL kiszolgáló tűzfala megakadályozza az adatbázis-kiszolgáló elérését, amíg meg nem adja, hogy mely számítógépek rendelkeznek engedéllyel. A tűzfal az egyes kérések származó IP-címe alapján engedélyezi a hozzáférést a kiszolgálóhoz.
@@ -64,10 +65,13 @@ Vegye figyelembe a következő szempontokat, amikor a PostgreSQL-kiszolgáló Mi
 
    * Szerezze be a statikus IP-címzést az ügyfélszámítógépek helyett, majd adja hozzá a statikus IP-címet tűzfalszabályként.
 
-* **Úgy tűnik, hogy a kiszolgáló IP-címe nyilvános:** A Azure Database for PostgreSQL-kiszolgálóval létesített kapcsolatok egy nyilvánosan elérhető Azure-átjárón keresztül irányíthatók. A kiszolgáló tényleges IP-címét azonban tűzfal védi. További információért tekintse meg a [kapcsolati architektúráról szóló cikket](concepts-connectivity-architecture.md). 
+* **Úgy tűnik, hogy a kiszolgáló IP-címe nyilvános:** A Azure Database for PostgreSQL-kiszolgálóval létesített kapcsolatok egy nyilvánosan elérhető Azure-átjárón keresztül irányíthatók. A kiszolgáló tényleges IP-címét azonban tűzfal védi. További információért tekintse meg a [kapcsolati architektúráról szóló cikket](concepts-connectivity-architecture.md).
+
+* **Nem lehet kapcsolatot létesíteni az Azure-erőforrással az engedélyezett IP-címmel:** Győződjön meg arról, hogy engedélyezve van-e a **Microsoft. SQL** szolgáltatási végpontja azon az alhálózaton, amelyhez csatlakozik. Ha a **Microsoft. SQL** engedélyezve van, az azt jelzi, hogy csak a [VNet-szolgáltatás végponti szabályait](concepts-data-access-and-security-vnet.md) szeretné használni az adott alhálózaton.
+
+   Előfordulhat például, hogy a következő hiba jelenik meg, ha egy Azure-beli virtuális gépről csatlakozik egy olyan alhálózaton, amelyhez engedélyezve van a **Microsoft. SQL** , de nincs megfelelő VNet-szabálya:`FATAL: Client from Azure Virtual Networks is not allowed to access the server`
 
 ## <a name="next-steps"></a>További lépések
-A kiszolgálói szintű és az adatbázis-szintű Tűzfalszabályok létrehozásával kapcsolatos cikkekért lásd:
 * [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](howto-manage-firewall-using-portal.md)
 * [Azure Database for PostgreSQL tűzfalszabályok létrehozása és kezelése az Azure CLI-vel](howto-manage-firewall-using-cli.md)
-- [VNet szolgáltatásbeli végpontok a Azure Database for PostgreSQL](./concepts-data-access-and-security-vnet.md)
+* [VNet szolgáltatásbeli végpontok a Azure Database for PostgreSQL](./concepts-data-access-and-security-vnet.md)

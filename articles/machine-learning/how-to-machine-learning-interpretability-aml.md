@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: mesameki
-author: mesameki
+ms.author: mithigpe
+author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 3830f65a3435c1db0291811c6306ea579bf1d896
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 04d9e82c56979a459734b8732c127922361a1100
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207147"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072370"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Az adatelemzési csomag használata a Python (előzetes verzió) &i előrejelzésekben
 
@@ -129,11 +129,11 @@ Az alábbi példát követve megtekintheti az aggregált (globális) szolgáltat
 
 ```python
 
-# you can use the training data or the test data here
-global_explanation = explainer.explain_global(x_train)
+# you can use the training data or the test data here, but test data would allow you to use Explanation Exploration
+global_explanation = explainer.explain_global(x_test)
 
 # if you used the PFIExplainer in the previous step, use the next line of code instead
-# global_explanation = explainer.explain_global(x_train, true_labels=y_test)
+# global_explanation = explainer.explain_global(x_train, true_labels=y_train)
 
 # sorted feature importance values and feature names
 sorted_global_importance_values = global_explanation.get_ranked_global_values()
@@ -304,7 +304,7 @@ Miután letöltötte a magyarázatokat a helyi Jupyter notebookon, a vizualizác
 
 A következő mintaterületek átfogó képet nyújtanak a betanított modellről, valamint az előrejelzéseit és magyarázatait.
 
-|Telek|Leírás|
+|Telek|Description|
 |----|-----------|
 |Adatelemzés| Az adatkészlet áttekintését jeleníti meg az előrejelzési értékekkel együtt.|
 |Globális fontosság|Az összesítések az egyes datapoints fontossági értékeit jelenítik meg a modell általános felső K (a konfigurálható K) fontos funkcióinak megjelenítéséhez. Segít az alapul szolgáló modell általános működésének megértésében.|
@@ -318,7 +318,7 @@ A következő mintaterületek átfogó képet nyújtanak a betanított modellrő
 
 Bármilyen adatponthoz betöltheti az egyes funkció fontossági területét, ha az összes adatpontra kattint a teljes mintaterületeken.
 
-|Telek|Leírás|
+|Telek|Description|
 |----|-----------|
 |Helyi fontosság|Megjeleníti az egyes előrejelzésekhez tartozó legfontosabb funkciókat (K). Segít bemutatni az alapul szolgáló modell helyi viselkedését egy adott adatponton.|
 |Perturbáció-feltárás (mi a teendő, ha elemzés)|Lehetővé teszi a kijelölt adatponthoz tartozó szolgáltatások értékének módosítását, és megfigyelheti az előrejelzés értékének változásait.|
@@ -354,7 +354,7 @@ A vizualizációs irányítópult betöltéséhez használja a következő kódo
 ```python
 from interpret_community.widget import ExplanationDashboard
 
-ExplanationDashboard(global_explanation, model, x_test)
+ExplanationDashboard(global_explanation, model, dataset=x_test)
 ```
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Vizualizáció a Azure Machine Learning Studióban

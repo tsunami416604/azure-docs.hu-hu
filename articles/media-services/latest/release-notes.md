@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: d09fba2130dc302378a59200349a569cc248234b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 53e337cf4ccbabf7f0b7a227632ba5e996e2b4f3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075433"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072136"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
@@ -36,6 +36,20 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 >
 > Részletekért lásd: [a Media Services v3 Azure Portal korlátozásai](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+## <a name="july-2020"></a>2020. július
+
+### <a name="live-transcriptions"></a>Élő átírások
+
+Az élő átiratok immár 19 nyelvet és 8 régiót támogatnak.
+
+## <a name="protecting-your-content-with-media-services-and-azure-ad"></a>A tartalom védelme Media Services és az Azure AD-vel
+
+Közzétettünk egy teljes körű tartalomvédelem nevű oktatóanyagot [Az Azure ad használatával](./azure-ad-content-protection.md).
+
+### <a name="high-availablity"></a>Magas availablity
+
+Magas rendelkezésre állást tettünk közzé a Media Services és a video on demand (VOD) [áttekintése](./media-services-high-availability-encoding.md) és [mintája](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/master/HighAvailabilityEncodingStreaming)alapján.
+
 ## <a name="june-2020"></a>2020. június
 
 ### <a name="live-video-analytics-on-iot-edge-preview-release"></a>Élő videó-elemzések IoT Edge előzetes kiadásban
@@ -43,16 +57,6 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 A IoT Edge élő videós elemzésének előnézete nyilvános volt. További információ: [kibocsátási megjegyzések](../live-video-analytics-edge/release-notes.md).
 
 A IoT Edge Live Video Analytics szolgáltatás a Media Service-család bővítése. Lehetővé teszi az élő videók elemzését a saját peremhálózati eszközein választott AI-modellekkel, és szükség esetén rögzítheti és rögzítheti a videót. Mostantól a valós idejű videó-elemzéseket tartalmazó alkalmazásokat is létrehozhat, és nem kell aggódnia az élő videós folyamat kiépítésének és működésének összetettsége nélkül.
-
-### <a name="search-by-topics"></a>Keresés témakörök szerint
-
-Mostantól használhatja a Search API-t adott témakörökkel rendelkező videók keresésére (csak API-val).
-
-A témaköröket a (választható paraméter) részeként adja hozzá a rendszer `textScope` . Részletekért lásd az [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) -t.  
-
-### <a name="labels-enhancement"></a>Címkék továbbfejlesztése
-
-A felirat fogójának frissítése megtörtént, és most már több vizuális címkét is tartalmaz, amelyek azonosíthatók.
 
 ## <a name="may-2020"></a>2020. május
 
@@ -79,7 +83,7 @@ Media Services GA'ed a következő Azure Government régiókban: *USA Korm. Ariz
 
 Az élő és a videó igény szerinti folyamatos átviteléhez a CDN támogatását is hozzáadta a *forrás-és a kisegítő* fejlécekhez. olyan ügyfelek számára érhető el, akik közvetlen szerződést kötöttek a Akamai CDN-vel. Forrás – Assist CDN – a Meghívási funkció a következő HTTP-fejléceket foglalja magában a Akamai CDN és a Azure Media Services-forrás között:
 
-|HTTP-fejléc|Értékek|Küldő|Fogadó|Szerep|
+|HTTP-fejléc|Értékek|Küldő|Fogadó|Cél|
 | ---- | ---- | ---- | ---- | ----- |
 |CDN-Origin-Assist-prefektus-enabled | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e|
 |CDN-Origin-Assist-prefektus-Path| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|A CDN elérési útjának biztosítása|
@@ -137,7 +141,7 @@ Media Services v3 bejelenti az élő események élő lineáris kódolásának 2
 
 #### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
 
-Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes*verzió. A nyugdíjazási dátumokért tekintse meg az [örökölt összetevőkkel](../previous/legacy-components.md) foglalkozó témakört. A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
+Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes*verzió. A nyugdíjazási dátumokért tekintse meg az [örökölt összetevőkkel](../previous/legacy-components.md) foglalkozó témakört. A [Azure Media Services video Indexer](../video-indexer/index.yml) ezeket a régi adathordozó-processzorokat váltja fel.
 
 További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](../previous/migrate-indexer-v1-v2.md).
 
@@ -171,9 +175,9 @@ Júliustól az előzetes verzió funkció csak az USA középső és az USA nyug
 
 ### <a name="video-subclipping"></a>Videó kivágása
 
-Most már elvégezheti a videó kivágását vagy alvágását, amikor [feladatokkal](https://docs.microsoft.com/rest/api/media/jobs)kódolja. 
+Most már elvégezheti a videó kivágását vagy alvágását, amikor [feladatokkal](/rest/api/media/jobs)kódolja. 
 
-Ez a funkció a [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -előállítók vagy a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -előállítók használatával létrehozott bármely [átalakítással](https://docs.microsoft.com/rest/api/media/transforms) működik. 
+Ez a funkció a [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -előállítók vagy a [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) -előállítók használatával létrehozott bármely [átalakítással](/rest/api/media/transforms) működik. 
 
 Példák:
 
@@ -212,8 +216,8 @@ A Media Services teljesítmény-fejlesztési funkciókat tartalmazó frissítés
 
 ### <a name="new-presets"></a>Új beállításkészletek
 
-* A rendszer hozzáadta a [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) a beépített analizátor-előkészletekhez.
-* A rendszer hozzáadta a [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) a beépített kódoló-előbeállításokhoz. További információ: [Content-Aware kódolás](content-aware-encoding.md). 
+* A rendszer hozzáadta a [FaceDetectorPreset](/rest/api/media/transforms/createorupdate#facedetectorpreset) a beépített analizátor-előkészletekhez.
+* A rendszer hozzáadta a [ContentAwareEncodingExperimental](/rest/api/media/transforms/createorupdate#encodernamedpreset) a beépített kódoló-előbeállításokhoz. További információ: [Content-Aware kódolás](content-aware-encoding.md). 
 
 ## <a name="march-2019"></a>2019. március
 
@@ -246,21 +250,21 @@ A V3 API GA-kiadásának frissítései a következők:
 
 ## <a name="november-2018"></a>2018. november
 
-A CLI 2,0 modul már elérhető a [Azure Media Services v3 GA](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
+A CLI 2,0 modul már elérhető a [Azure Media Services v3 GA](/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
 
 ### <a name="new-commands"></a>Új parancsok
 
-- [az AMS-fiók](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [az AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [az AMS Asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [az AMS Asset-Filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az AMS Content-Key-Policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az AMS Job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [az AMS Live-Event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az AMS Live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az AMS streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [az AMS streaming-Locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az AMS Account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) -lehetővé teszi a Media szolgáltatás számára fenntartott egységek kezelését. További információ: a [Media szolgáltatás számára fenntartott egységek skálázása](media-reserved-units-cli-how-to.md).
+- [az AMS-fiók](/cli/azure/ams/account?view=azure-cli-latest)
+- [az AMS Account-Filter](/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az AMS Asset](/cli/azure/ams/asset?view=azure-cli-latest)
+- [az AMS Asset-Filter](/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az AMS Content-Key-Policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az AMS Job](/cli/azure/ams/job?view=azure-cli-latest)
+- [az AMS Live-Event](/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az AMS Live-output](/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az AMS streaming-Endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az AMS streaming-Locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [az AMS Account MRU](/cli/azure/ams/account/mru?view=azure-cli-latest) -lehetővé teszi a Media szolgáltatás számára fenntartott egységek kezelését. További információ: a [Media szolgáltatás számára fenntartott egységek skálázása](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Új funkciók és a változások megszakítása
 
@@ -351,7 +355,7 @@ A CMAF és a "CBCS" titkosítási támogatása az Apple HLS (iOS 11 +) és az MP
 
 ### <a name="video-indexer"></a>Video Indexer
 
-A Video Indexer GA kiadása augusztusban jelent meg. A jelenleg támogatott funkciókkal kapcsolatos új információk: [Mi az video Indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
+A Video Indexer GA kiadása augusztusban jelent meg. A jelenleg támogatott funkciókkal kapcsolatos új információk: [Mi az video Indexer](../video-indexer/video-indexer-overview.md?bc=/azure/media-services/video-indexer/breadcrumb/toc.json&toc=/azure/media-services/video-indexer/toc.json). 
 
 ### <a name="plans-for-changes"></a>A változtatások tervei
 

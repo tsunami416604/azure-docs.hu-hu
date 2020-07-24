@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: b22ce64e7058f093a102aebec8b00842c8a41cb5
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: a2292dc789938b8bde709728f5bbffe661529cc2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849412"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072641"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -36,7 +36,7 @@ Azure Load Balancer különböző mechanizmusokon keresztül biztosítja a kimen
 | SNAT-portok| TCP | A SNAT-portok egy adott nyilvános IP-forráscím számára elérhető ideiglenes portok. A rendszer egy SNAT-portot használ egy adott cél IP-címhez, porthoz. Ha több TCP-folyamat ugyanarra a cél IP-címére, portra és protokollra vonatkozik, az egyes TCP-folyamatok egyetlen SNAT-portot használnak. Ez biztosítja, hogy a folyamatok egyediek legyenek, amikor ugyanabból a nyilvános IP-címről származnak, és ugyanarra a cél IP-címére, portra és protokollra mutatnak. Több folyamat, amelyek mindegyike egy másik cél IP-címére, portra és protokollra vonatkozik, egyetlen SNAT-portot kell megosztania. A cél IP-címe, portja és protokollja egyedivé teszi a folyamatokat anélkül, hogy további forrásport szükségesek a nyilvános IP-címtartomány forgalmának megkülönböztetéséhez.|
 |SNAT-portok | UDP | Az UDP-SNAT portjait egy másik algoritmus kezeli, mint a TCP SNAT-portok.  A Load Balancer az UDP protokollhoz "Port-korlátozott kúp NAT" néven ismert algoritmust használ.  A rendszer egy SNAT-portot használ minden egyes folyamathoz, a cél IP-címétől, a porttól függetlenül.|
 | Fogyási | - | A SNAT-portok erőforrásainak kimerítése esetén a kimenő folyamatok meghiúsulnak, amíg a meglévő folyamatok SNAT-portokat nem szabadítanak fel. Load Balancer visszaállítja a SNAT-portokat, amikor a folyamat lezárult, és [4 perces üresjárati időkorlátot](../load-balancer/troubleshoot-outbound-connection.md#idletimeout) használ a SNAT-portok üresjárati forgalomból való visszaigényléséhez. Az UDP-SNAT portok általában sokkal gyorsabbak, mint a TCP SNAT-portok, a használt algoritmus különbsége miatt. Ezeket a különbségeket figyelembe véve kell megterveznie és méreteznie a tesztet.|
-| SNAT-port kiadásának viselkedése | TCP | Ha bármelyik kiszolgáló/ügyfél elküldi a FINACK, a SNAT-port 240 másodperc után lesz felszabadítva. Ha az első látható, a SNAT-port 15 másodperc elteltével jelenik meg. Ha elérte az üresjárati időtúllépést, a rendszer a portot szabadítja fel.|
+| SNAT-port kiadásának viselkedése | TCP | Ha bármelyik kiszolgáló/ügyfél elküldi a FINACK, a SNAT-port 240 másodperc után lesz felszabadítva. Ha az első látható, a SNAT-port 15 másodperc elteltével fog megjelenni. Ha elérte az üresjárati időtúllépést, a rendszer a portot szabadítja fel.|
 | SNAT-port kiadásának viselkedése | UDP |Ha elérte az üresjárati időtúllépést, a rendszer a portot szabadítja fel.|
 | SNAT-port újrafelhasználása | TCP, UDP | A portok felszabadítása után a port igény szerint újra felhasználható.  Egy adott forgatókönyv esetében úgy gondolhatja, hogy a SNAT-portok a legalacsonyabb és a legmagasabb rendelkezésre állási sorba kerülnek, és az első elérhető SNAT-portot használja az új kapcsolatokhoz.|
 

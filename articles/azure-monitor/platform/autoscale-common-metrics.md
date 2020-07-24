@@ -4,11 +4,12 @@ description: Megtudhatja, hogy mely metrikákat használják általában a Cloud
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57bffede3b6c6c137da2feea32ad467a13f71a37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76845561"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073516"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Általános mérőszámok automatikus skálázása Azure Monitor
 
@@ -16,7 +17,7 @@ ms.locfileid: "76845561"
 
 Azure Monitor az automatikus skálázás lehetővé teszi a futó példányok számának méretezését a telemetria-adatok (mérőszámok) alapján. Ez a dokumentum az esetlegesen használni kívánt általános mérőszámokat ismerteti. A Azure Portalban kiválaszthatja a skálázáshoz használandó erőforrás metrikáját. Más erőforrásokból is kiválaszthat bármely mérőszámot a skálázáshoz.
 
-Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)vonatkozik. Más Azure-szolgáltatások eltérő skálázási módszereket használnak.
+Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](../../api-management/api-management-key-concepts.md)vonatkozik. Más Azure-szolgáltatások eltérő skálázási módszereket használnak.
 
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>A Resource Manager-alapú virtuális gépek számítási mérőszámai
 Alapértelmezés szerint a Resource Manager-alapú Virtual Machines és Virtual Machine Scale Sets alapszintű (gazdagép szintű) mérőszámokat bocsát ki. Emellett az Azure-beli virtuális gépek és VMSS diagnosztikai adatgyűjtésének konfigurálásakor az Azure diagnosztikai bővítmény a vendég-operációsrendszer-teljesítményszámlálók (általában "Vendég-OS mérőszámok") kitöltésére is lehetőséget nyújt.  Ezeket a metrikákat az autoskálázási szabályokban használhatja.
@@ -46,7 +47,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 Riasztást a következő mérőszámokhoz hozhat létre:
 
-| Metrika neve | Unit (Egység) |
+| Metrika neve | Egység |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |Százalék |
 | \Processor (_Total) \% Kiemelt idő |Százalék |
@@ -87,7 +88,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
  Riasztást a következő mérőszámokhoz hozhat létre:
 
-| Metrika neve | Unit (Egység) |
+| Metrika neve | Egység |
 | --- | --- |
 | \Memory\AvailableMemory |Bájt |
 | \Memory\PercentAvailableMemory |Százalék |
@@ -140,7 +141,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 Ezeket a metrikákat riasztással vagy méretezhetővé teheti.
 
-| Metrika neve | Unit (Egység) |
+| Metrika neve | Egység |
 | --- | --- |
 | CpuPercentage |Százalék |
 | MemoryPercentage |Százalék |
@@ -185,4 +186,3 @@ A virtuálisgép-méretezési csoportok esetében frissítheti a Resource Manage
 > Service Bus esetében az erőforráscsoport fogalma nem létezik, de a Azure Resource Manager régiónként létrehoz egy alapértelmezett erőforráscsoportot. Az erőforráscsoport általában az "alapértelmezett-ServiceBus-[region]" formátumban van. Például: "default-ServiceBus-EastUS", "default-ServiceBus-WestUS", "default-ServiceBus-AustraliaEast" stb.
 >
 >
-

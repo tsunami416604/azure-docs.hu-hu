@@ -2,12 +2,13 @@
 title: Hibaelhárítási útmutató a Azure Service Bushoz | Microsoft Docs
 description: Ez a cikk felsorolja az Azure Service Bus üzenetkezelési kivételeket és a kivétel bekövetkezésekor végrehajtandó javasolt műveleteket.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 3b2759916e1f9ef0cec660157f577ff54cd39928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 6071aae85daa1852c9384656d7caf5e2deffd84e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340462"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071312"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>A Azure Service Bus hibaelhárítási útmutatója
 Ez a cikk hibaelhárítási tippeket és javaslatokat tartalmaz a Azure Service Bus használatakor esetlegesen előforduló problémákkal kapcsolatban. 
@@ -15,7 +16,7 @@ Ez a cikk hibaelhárítási tippeket és javaslatokat tartalmaz a Azure Service 
 ## <a name="connectivity-certificate-or-timeout-issues"></a>Kapcsolati, tanúsítvány-vagy időtúllépési problémák
 A következő lépések segítséget nyújthatnak a kapcsolat/tanúsítvány/időtúllépési problémák hibaelhárításához a *. servicebus.windows.net alatti összes szolgáltatáshoz. 
 
-- Tallózással keresse meg a következőt: vagy a [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/` . Segít ellenőrizni, hogy rendelkezik-e IP-szűréssel, illetve virtuális hálózati vagy tanúsítványlánc-problémákkal (a Java SDK használatakor leggyakrabban).
+- Tallózással keresse meg a következőt: vagy a [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/` . Segít ellenőrizni, hogy rendelkezik-e IP-szűréssel, illetve virtuális hálózati vagy tanúsítványlánc-problémákkal, amelyek a Java SDK használatakor gyakoriak.
 
     Példa a sikeres üzenetre:
     
@@ -53,25 +54,48 @@ A következő lépések segítséget nyújthatnak a kapcsolat/tanúsítvány/id�
 - Szerezze be a hálózati nyomkövetést, ha az előző lépések nem segítenek és nem elemzik olyan eszközökkel, mint például a [Wireshark](https://www.wireshark.org/). Ha szükséges, forduljon a [Microsoft ügyfélszolgálatahoz](https://support.microsoft.com/) . 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>A szolgáltatás verziófrissítése/újraindítása esetén felmerülő problémák
-A háttérbeli szolgáltatás verziófrissítése és újraindítása a következő hatással lehet az alkalmazásokra:
 
+### <a name="symptoms"></a>Probléma
 - Előfordulhat, hogy a kérelmek egy pillanatra szabályozva vannak.
 - Lehet, hogy elvesznek a bejövő üzenetek/kérelmek.
 - A naplófájl hibaüzeneteket tartalmazhat.
 - Előfordulhat, hogy az alkalmazások néhány másodpercig le lesznek választva a szolgáltatástól.
 
-Ha az alkalmazás kódja az SDK-t használja, az újrapróbálkozási házirend már be van építve és aktív. Az alkalmazás az alkalmazás/munkafolyamat jelentős hatása nélkül újra csatlakozik.
+### <a name="cause"></a>Ok
+A háttér-szolgáltatás verziófrissítése és újraindítása a problémákat okozhatja az alkalmazásokban.
+
+### <a name="resolution"></a>Feloldás
+Ha az alkalmazás kódja SDK-t használ, az újrapróbálkozási házirend már be van építve és aktív. Az alkalmazás az alkalmazás/munkafolyamat jelentős hatása nélkül újra csatlakozik.
 
 ## <a name="unauthorized-access-send-claims-are-required"></a>Jogosulatlan hozzáférés: a jogcímek küldése kötelező
+
+### <a name="symptoms"></a>Probléma 
 Ez a hiba akkor fordulhat elő, amikor a Visual studióból egy, a felhasználó által hozzárendelt, a küldési engedélyekkel rendelkező felügyelt identitás használatával próbál hozzáférni egy Service Bus témakörhöz.
 
 ```bash
 Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perform this operation.
 ```
 
+### <a name="cause"></a>Ok
+Az identitás nem rendelkezik a Service Bus témakör eléréséhez szükséges engedélyekkel. 
+
+### <a name="resolution"></a>Feloldás
 A hiba elhárításához telepítse a [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/) könyvtárat.  További információ: [helyi fejlesztési hitelesítés](..\key-vault\service-to-service-authentication.md#local-development-authentication). 
 
 Ha meg szeretné tudni, hogyan rendelhet hozzá engedélyeket a szerepkörökhöz, tekintse meg [a felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások elérését](service-bus-managed-service-identity.md)ismertető témakört.
+
+## <a name="service-bus-exception-put-token-failed"></a>Service Bus kivétel: a Put token nem sikerült
+
+### <a name="symptoms"></a>Probléma
+Ha több mint 1000 üzenetet próbál elküldeni ugyanazzal a Service Bus-kapcsolatban, a következő hibaüzenet jelenik meg: 
+
+`Microsoft.Azure.ServiceBus.ServiceBusException: Put token failed. status-code: 403, status-description: The maximum number of '1000' tokens per connection has been reached.` 
+
+### <a name="cause"></a>Ok
+Az üzenetek küldésére és fogadására használt tokenek száma korlátozott a Service Bus névtérhez való egyetlen kapcsolaton keresztül. Ez 1000. 
+
+### <a name="resolution"></a>Feloldás
+További üzenetek küldéséhez nyisson meg egy új kapcsolódást a Service Bus névtérhez.
 
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket: 

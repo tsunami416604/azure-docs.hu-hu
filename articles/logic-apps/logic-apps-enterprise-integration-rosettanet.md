@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 2cc2ac08b9624c1d1d9bee9ce91a7c91189d7f2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 833e2a6f64301c39ba2b9e7959585c3edeab9445
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74792418"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072586"
 ---
 # <a name="exchange-rosettanet-messages-for-b2b-enterprise-integration-in-azure-logic-apps"></a>Exchange RosettaNet-üzenetek a B2B vállalati integrációhoz Azure Logic Apps
 
@@ -80,8 +81,8 @@ A PIP-folyamat konfigurációjának az integrációs fiókhoz való hozzáadás�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Name (Név)** | Yes | A PIP neve |
-   | **PIP-kód** | Yes | A PIP háromjegyű kód. További információ: [RosettaNet maggal](https://docs.microsoft.com/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
+   | **Név** | Yes | A PIP neve |
+   | **PIP-kód** | Yes | A PIP háromjegyű kód. További információ: [RosettaNet maggal](/biztalk/adapters-and-accelerators/accelerator-rosettanet/rosettanet-pips). |
    | **PIP verziója** | Yes | A PIP verziószáma, amely a kiválasztott PIP-kód alapján érhető el |
    ||||
 
@@ -111,7 +112,7 @@ A PIP-folyamat konfigurációjának az integrációs fiókhoz való hozzáadás�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Name (Név)** | Yes | A szerződés neve |
+   | **Név** | Yes | A szerződés neve |
    | **Szerződés típusa** | Yes | Válassza a **RosettaNet**lehetőséget. |
    | **Gazda partner** | Yes | Egy szerződéshez a gazdagép és a vendég partner is szükséges. A fogadó partner a szerződést konfiguráló szervezetet jelöli. |
    | **Gazdagép identitása** | Yes | A gazdagép-partner azonosítója |

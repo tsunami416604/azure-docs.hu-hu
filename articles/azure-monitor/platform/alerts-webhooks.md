@@ -6,11 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 0677c7a0521fe1f63c9c2c9fce65d8dbd8e6d5c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5561dfee3ede72f9cd28adbd47caf2db4e634360
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83826910"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073582"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Webhook meghívása klasszikus metrikai riasztással Azure Monitor
 
@@ -25,10 +26,10 @@ A webhook URI-azonosítójának hozzáadásához vagy frissítéséhez lépjen a
 
 ![Riasztási szabály hozzáadása panel](./media/alerts-webhooks/Alertwebhook.png)
 
-Az [Azure PowerShell-parancsmagok](../samples/powershell-samples.md#create-metric-alerts), [platformfüggetlen parancssori](../samples/cli-samples.md#work-with-alerts) [felület vagy Azure monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx)-k használatával riasztást is beállíthat a webhook URI-jának közzétételéhez.
+Az [Azure PowerShell-parancsmagok](../samples/powershell-samples.md#create-metric-alerts), [platformfüggetlen parancssori](../samples/cli-samples.md#work-with-alerts) [felület vagy Azure monitor REST API](/rest/api/monitor/alertrules)-k használatával riasztást is beállíthat a webhook URI-jának közzétételéhez.
 
 ## <a name="authenticate-the-webhook"></a>A webhook hitelesítése
-A webhook a jogkivonat-alapú hitelesítés használatával tud hitelesítést végezni. A webhook URI-ja a jogkivonat-AZONOSÍTÓval lett mentve. Például:`https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
+A webhook a jogkivonat-alapú hitelesítés használatával tud hitelesítést végezni. A webhook URI-ja a jogkivonat-AZONOSÍTÓval lett mentve. Például: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
 
 ## <a name="payload-schema"></a>Hasznos adatok sémája
 A POST művelet a következő JSON-adattartalmat és sémát tartalmazza az összes metrika-alapú riasztáshoz:
@@ -69,32 +70,32 @@ A POST művelet a következő JSON-adattartalmat és sémát tartalmazza az öss
 
 | Mező | Kötelező | Rögzített értékek halmaza | Jegyzetek |
 |:--- |:--- |:--- |:--- |
-| status |I |Aktiválva, megoldva |A riasztás állapota a beállított feltételek alapján. |
-| összefüggésben |I | |A riasztás kontextusa. |
-| időbélyeg |I | |A riasztás aktiválásának időpontja. |
-| id |I | |Minden riasztási szabály egyedi AZONOSÍTÓval rendelkezik. |
-| name |I | |A riasztás neve. |
-| leírás |I | |A riasztás leírása. |
-| conditionType |I |Metrika, esemény |Két típusú riasztás támogatott: metrika és esemény. A metrikai riasztások metrikai feltételen alapulnak. Az események riasztásai a tevékenység naplójában lévő eseményen alapulnak. Ezzel az értékkel ellenőrizhető, hogy a riasztás metrikán vagy eseményen alapul-e. |
-| feltétel |I | |A **conditionType** érték alapján ellenőrizhető konkrét mezők. |
+| status |Y |Aktiválva, megoldva |A riasztás állapota a beállított feltételek alapján. |
+| összefüggésben |Y | |A riasztás kontextusa. |
+| időbélyeg |Y | |A riasztás aktiválásának időpontja. |
+| id |Y | |Minden riasztási szabály egyedi AZONOSÍTÓval rendelkezik. |
+| name |Y | |A riasztás neve. |
+| leírás |Y | |A riasztás leírása. |
+| conditionType |Y |Metrika, esemény |Két típusú riasztás támogatott: metrika és esemény. A metrikai riasztások metrikai feltételen alapulnak. Az események riasztásai a tevékenység naplójában lévő eseményen alapulnak. Ezzel az értékkel ellenőrizhető, hogy a riasztás metrikán vagy eseményen alapul-e. |
+| feltétel |Y | |A **conditionType** érték alapján ellenőrizhető konkrét mezők. |
 | metricName |Metrikus riasztások esetén | |Annak a mérőszámnak a neve, amely meghatározza, hogy mi a szabály figyeli. |
-| metricUnit |Metrikus riasztások esetén |Bájtok, BytesPerSecond, Darabszám, CountPerSecond, százalék, másodperc |A mérőszámban engedélyezett egység. Lásd az [engedélyezett értékeket](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
+| metricUnit |Metrikus riasztások esetén |Bájtok, BytesPerSecond, Darabszám, CountPerSecond, százalék, másodperc |A mérőszámban engedélyezett egység. Lásd az [engedélyezett értékeket](/previous-versions/azure/reference/dn802430(v=azure.100)). |
 | metricValue |Metrikus riasztások esetén | |A riasztást kiváltó metrika tényleges értéke. |
-| threshold |Metrikus riasztások esetén | |Az a küszöbérték, amelyen a riasztás aktiválva van. |
+| küszöb |Metrikus riasztások esetén | |Az a küszöbérték, amelyen a riasztás aktiválva van. |
 | windowSize |Metrikus riasztások esetén | |A riasztási tevékenység küszöbérték alapján történő figyeléséhez használt időtartam. Az értéknek 5 perc és 1 nap közé kell esnie. Az értéknek ISO 8601 időtartam formátumúnak kell lennie. |
-| timeAggregation |Metrikus riasztások esetén |Átlag, utolsó, maximum, minimum, none, összesen |Az összegyűjtött adatok időbeli összevonása. Az alapértelmezett érték az átlag. Lásd az [engedélyezett értékeket](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
+| timeAggregation |Metrikus riasztások esetén |Átlag, utolsó, maximum, minimum, none, összesen |Az összegyűjtött adatok időbeli összevonása. Az alapértelmezett érték az átlag. Lásd az [engedélyezett értékeket](/previous-versions/azure/reference/dn802410(v=azure.100)). |
 | operátor |Metrikus riasztások esetén | |Az aktuális metrikai adatok meghatározott küszöbértékhez való összehasonlításához használt operátor. |
-| subscriptionId |I | |Az Azure-előfizetés azonosítója. |
-| resourceGroupName |I | |Az érintett erőforráshoz tartozó erőforráscsoport neve. |
-| resourceName |I | |Az érintett erőforrás neve. |
-| resourceType |I | |Az érintett erőforrás erőforrástípus. |
-| resourceId |I | |Az érintett erőforrás erőforrás-azonosítója. |
-| resourceRegion |I | |Az érintett erőforrás régiója vagy helye. |
-| portalLink |I | |Közvetlen hivatkozás a portál erőforrás-összefoglalás lapjára. |
+| subscriptionId |Y | |Az Azure-előfizetés azonosítója. |
+| resourceGroupName |Y | |Az érintett erőforráshoz tartozó erőforráscsoport neve. |
+| resourceName |Y | |Az érintett erőforrás neve. |
+| resourceType |Y | |Az érintett erőforrás erőforrástípus. |
+| resourceId |Y | |Az érintett erőforrás erőforrás-azonosítója. |
+| resourceRegion |Y | |Az érintett erőforrás régiója vagy helye. |
+| portalLink |Y | |Közvetlen hivatkozás a portál erőforrás-összefoglalás lapjára. |
 | properties |N |Választható |Az esemény részleteit tartalmazó kulcs/érték párok halmaza. Például: `Dictionary<String, String>`. A Properties (Tulajdonságok) mező nem kötelező. Egyéni felhasználói felületen vagy logikai alkalmazáson alapuló munkafolyamatban a felhasználók megadhatják azokat a kulcs/érték párokat, amelyek átadhatók a hasznos adatokon keresztül. Az egyéni tulajdonságok a webhookba való visszaállításának másik módja a webhook URI-ja (lekérdezési paraméterek). |
 
 > [!NOTE]
-> A **Properties (Tulajdonságok** ) mezőt csak [Azure monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx)-k használatával állíthatja be.
+> A **Properties (Tulajdonságok** ) mezőt csak [Azure monitor REST API](/rest/api/monitor/alertrules)-k használatával állíthatja be.
 >
 >
 
@@ -104,4 +105,3 @@ A POST művelet a következő JSON-adattartalmat és sémát tartalmazza az öss
 * Ismerje meg, hogyan [KÜLDHET SMS-üzenetet a logikai alkalmazással egy Azure-riasztásból a Twilio-on keresztül](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
 * Megtudhatja, hogyan lehet [logikai alkalmazás használatával Slack-üzenetet küldeni egy Azure-riasztásból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
 * Megtudhatja, hogyan [küldhet egy Azure-riasztást egy logikai alkalmazással](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)egy Azure-üzenetsor számára.
-

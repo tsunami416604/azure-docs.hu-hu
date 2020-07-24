@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: mihansen
-ms.openlocfilehash: 4eb4c10a6c98aa847c9fa6c239aacde891db5aae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bdecf0dafa80f72eb528b4771c00befff8355e83
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871895"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072860"
 ---
 # <a name="get-access-token-for-azure-api-for-fhir-using-azure-cli"></a>Hozzáférési jogkivonat beszerzése a FHIR készült Azure API-hoz az Azure CLI használatával
 
@@ -34,7 +34,7 @@ az login
 A FHIR készült Azure API a `resource` vagy a `Audience` FHIR-kiszolgáló URI azonosítójának megfelelő URI-t használ `https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com` . A jogkivonat beszerzése és tárolása egy változóban (nevű `$token` ) a következő paranccsal végezhető el:
 
 ```azurecli-interactive
-token=$(az account get-access-token --resource=https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com | jq -r .accessToken)
+token=$(az account get-access-token --resource=https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com --query accessToken --output tsv)
 ```
 
 ## <a name="use-with-azure-api-for-fhir"></a>Használat az Azure API-val a FHIR-hez

@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: fd288cfb78bb97bd5c05c1cc59af3c082ab549a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e1432cf74dc741a6e2f5d561e9dc203df95007c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072691"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához
 
@@ -38,7 +39,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg sajá
 
 * Egy olyan Azure Key Vault, amely rendelkezik a helyreállítható **törléssel** , és **nem** törölheti az engedélyezett tulajdonságokat
 
-  További információ ezekről a tulajdonságokról: [Azure Key Vault a Soft-delete áttekintése](../key-vault/general/overview-soft-delete.md) és [az ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Ha még nem ismeri a Azure Key Vaultt, megtudhatja, [hogyan hozhat létre kulcstartót](../key-vault/secrets/quick-create-portal.md#create-a-vault) a Azure Portal használatával vagy a [new-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)Azure PowerShell parancs használatával.
+  További információ ezekről a tulajdonságokról: [Azure Key Vault a Soft-delete áttekintése](../key-vault/general/overview-soft-delete.md) és [az ügyfél által felügyelt kulcsok konfigurálása a Azure Key Vault](../storage/common/storage-encryption-keys-portal.md). Ha még nem ismeri a Azure Key Vaultt, megtudhatja, [hogyan hozhat létre kulcstartót](../key-vault/secrets/quick-create-portal.md#create-a-vault) a Azure Portal használatával vagy a [new-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)Azure PowerShell parancs használatával.
 
 * A Key vaultban a következő tulajdonság-értékekkel létrehozott kulcs:
 
@@ -51,7 +52,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be és adhatja meg sajá
 
   ![Az ügyfél által felügyelt titkosítási kulcs létrehozása](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
 
-  További információ: az [ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) vagy a Azure PowerShell paranccsal, [Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Add-AzKeyVaultKey).
+  További információ: az [ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault](../storage/common/storage-encryption-keys-portal.md) vagy a Azure PowerShell paranccsal, [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey).
 
 * Egy eszköz, amellyel létrehozhatja az ISE-t úgy, hogy meghívja a Logic Apps REST API egy HTTPS PUT-kéréssel. Használhatja például a [Poster](https://www.getpostman.com/downloads/)-t, vagy létrehozhat egy logikai alkalmazást, amely elvégzi ezt a feladatot.
 
@@ -198,7 +199,7 @@ A példaként szolgáló kérelem törzse a következő minta értékeket jelen�
 
 *30 percen* belül, miután elküldte a http Put-kérést az ISE létrehozásához, hozzá kell adnia egy hozzáférési szabályzatot a kulcstartóhoz az ISE rendszerhez rendelt identitásához. Ellenkező esetben az ISE létrehozása meghiúsul, és az engedélyek hibaüzenetet kapnak. 
 
-Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsot, vagy a következő lépésekkel követheti el a Azure Portal:
+Ehhez a feladathoz használhatja a Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) parancsot, vagy a következő lépésekkel követheti el a Azure Portal:
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg az Azure Key vaultot.
 

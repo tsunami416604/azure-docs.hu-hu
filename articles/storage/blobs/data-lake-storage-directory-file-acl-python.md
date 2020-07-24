@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: tracking-python
-ms.openlocfilehash: 07708de1326e0aba6485b2cf1fb0610d9710cdf7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 9a3ffd633fc45f054cf335d91e399204d5dda8e4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142469"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070754"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A Python használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
@@ -195,6 +195,8 @@ def manage_directory_permissions():
     except Exception as e:
      print(e) 
 ```
+
+Lekérheti és beállíthatja egy tároló gyökérkönyvtárának ACL-listáját is. A gyökérkönyvtár beszerzéséhez hívja meg a **FileSystemClient. _get_root_directory_client** metódust.
 
 ## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba 
 

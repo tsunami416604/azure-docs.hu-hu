@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: df0541802dfc331ffc94e95be112ea7e005960b5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86049865"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071638"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>A RabbitMQ integrálása a Azure Service Bus használatával
 
@@ -90,7 +90,7 @@ Ahhoz, hogy használhassa a kapcsolódási karakterláncot, át kell alakítania
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="A kapcsolatok karakterláncának konvertálása":::
 
-Most nyissa meg a RabbitMQ-kezelő beépülő modult a böngészőben [http://localhost:15672/#/dynamic-shovels](http://localhost:15672/#/dynamic-shovels) , és lépjen a `Admin -> Shovel Management` címre, ahol felveheti az új lapátot, amely gondoskodik arról, hogy a RabbitMQ-várólistákból üzeneteket küldjön az Azure Service Bus-várólistára.
+Most nyissa meg a RabbitMQ-kezelő beépülő modult a böngészőben `http://localhost:15672/#/dynamic-shovels` , és lépjen a `Admin -> Shovel Management` címre, ahol felveheti az új lapátot, amely gondoskodik arról, hogy a RabbitMQ-várólistákból üzeneteket küldjön az Azure Service Bus-várólistára.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/add-shovel.png" alt-text="RabbitMQ lapát hozzáadása":::
 
@@ -98,7 +98,7 @@ Itt hívja meg a lapátot `azure` , és válassza ki `AMQP 0.9.1` a forrásoldal
 
 A műveletek üzenetsor oldalán használhatja a `azure` várólista nevét. Ha ez a várólista nem létezik, akkor a RabbitMQ létrehozza. Kiválaszthatja azt a várólista-nevet is, amely már létezik. A többi beállítás alapértelmezettként is elhagyható.
 
-Ezután a `destination` dolgok oldalon válassza `AMQP 1.0` a protokollt. A `URI` mezőben adja meg az előző lépésben kapott összekapcsolási karakterláncot, és az Azure-kapcsolati karakterláncot a RabbitMQ formátumra alakította át. A listának így kell kinéznie:
+Ezután a `destination` dolgok oldalon válassza `AMQP 1.0` a protokollt. A `URI` mezőben adja meg az előző lépésben kapott összekapcsolási karakterláncot, és az Azure-kapcsolati karakterláncot a RabbitMQ formátumra alakította át. Így kell kinéznie:
 
 ```
 amqps://rabbitmq-shovel:StringOfRandomChars@rabbitmq.servicebus.windows.net:5671/?sasl=plain

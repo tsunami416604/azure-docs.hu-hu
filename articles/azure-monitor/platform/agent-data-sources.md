@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a183589c3e5274cf747164cdc33d46044f95e716
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708875"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073683"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Ügynök-adatforrások a Azure Monitorban
 Az ügynököktől Azure Monitor gyűjtött adatokat a konfigurált adatforrások határozzák meg.  Az ügynököktől származó adatokat a rendszer egy rekordhalmazsal rendelkező [naplófájlként](data-platform-logs.md) tárolja.  Minden adatforrás egy adott típusú rekordokat hoz létre, amelyek mindegyike rendelkezik saját tulajdonságokkal.
@@ -28,7 +29,7 @@ A következő táblázat felsorolja a Azure Monitor jelenleg elérhető ügynök
 | [IIS-naplók](data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |a naplófájl-átváltási beállítástól függ |
 | [Teljesítményszámlálók](data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |ütemezett, legalább 10 másodperc |
 | [Teljesítményszámlálók](data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |ütemezett, legalább 10 másodperc |
-| [Rendszernapló](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |Azure Storage-ból: 10 perc; ügynöktől: érkezéskor |
+| [Syslog](data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |Azure Storage-ból: 10 perc; ügynöktől: érkezéskor |
 | [Windows-eseménynaplók](data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | érkezéskor |
 
 
@@ -46,7 +47,7 @@ Az adatforrásokat a munkaterület **speciális beállításainak** **adatok** m
 ## <a name="data-collection"></a>Adatgyűjtés
 Az adatforrás-konfigurációk olyan ügynököknek érkeznek, amelyek néhány percen belül közvetlenül kapcsolódnak Azure Monitorhoz.  A megadott adatokat a rendszer az ügynöktől gyűjti, és közvetlenül az egyes adatforrásokra vonatkozó időközönként továbbítja Azure Monitor.  Tekintse meg az egyes adatforrások dokumentációját ezekre a részletekre.
 
-A csatlakoztatott felügyeleti csoportok System Center Operations Manager ügynökei esetében az adatforrás-konfigurációk felügyeleti csomagokba lesznek lefordítva, és alapértelmezés szerint 5 percenként érkeznek a felügyeleti csoportba.  Az ügynök letölti a felügyeleti csomagot, és a megadott adatokat gyűjti. Az adatforrástól függően a rendszer elküldi az adatforrást egy olyan felügyeleti kiszolgálónak, amely továbbítja az adatAzure Monitor, vagy az ügynök elküldi az adatAzure Monitornak a felügyeleti kiszolgáló nélkül. További részletekért lásd: az [Azure-beli figyelési megoldások adatgyűjtési adatai](../insights/solutions-inventory.md) .  A Operations Manager összekapcsolásával és Azure Monitorával kapcsolatos részletekért olvassa el a konfigurációt a System Center Operations Manager- [integráció konfigurálása](om-agents.md)című cikkből.
+A csatlakoztatott felügyeleti csoportok System Center Operations Manager ügynökei esetében az adatforrás-konfigurációk felügyeleti csomagokba lesznek lefordítva, és alapértelmezés szerint 5 percenként érkeznek a felügyeleti csoportba.  Az ügynök letölti a felügyeleti csomagot, és a megadott adatokat gyűjti. Az adatforrástól függően a rendszer elküldi az adatforrást egy olyan felügyeleti kiszolgálónak, amely továbbítja az adatAzure Monitor, vagy az ügynök elküldi az adatAzure Monitornak a felügyeleti kiszolgáló nélkül. További részletekért lásd: az [Azure-beli figyelési megoldások adatgyűjtési adatai](../monitor-reference.md) .  A Operations Manager összekapcsolásával és Azure Monitorával kapcsolatos részletekért olvassa el a konfigurációt a System Center Operations Manager- [integráció konfigurálása](om-agents.md)című cikkből.
 
 Ha az ügynök nem tud csatlakozni a Azure Monitorhoz vagy Operations Managerhoz, akkor továbbra is gyűjti az adatokat, amelyeket a kapcsolat létrehozásakor fog teljesíteni.  Az adatvesztés elvész, ha az adatmennyiség eléri a gyorsítótár maximális méretét az ügyfél számára, vagy ha az ügynök 24 órán belül nem tud kapcsolatot létesíteni.
 

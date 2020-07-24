@@ -4,16 +4,17 @@ description: Méretezés Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 4403c2957cb2d2d9d4af98d64cdb5177ae3d0726
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9ba94d9990e494a8d3e68bbcd7c176bb30e6ce2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83828984"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073491"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Az autoskálázás áttekintése Microsoft Azure
 Ez a cikk ismerteti, hogy mi Microsoft Azure az autoscale, annak előnyeit és a használatának első lépéseit.  
 
-Azure Monitor az autoskálázás csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/), [API Management szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)és [Azure adatkezelő-fürtökre](https://docs.microsoft.com/azure/data-explorer/)vonatkozik.
+Azure Monitor az autoskálázás csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/), [API Management szolgáltatásokra](../../api-management/api-management-key-concepts.md)és [Azure adatkezelő-fürtökre](/azure/data-explorer/)vonatkozik.
 
 > [!NOTE]
 > Az Azure két autoskálázási módszerrel rendelkezik. Az autoscale egy régebbi verziója Virtual Machines (rendelkezésre állási csoportokra) vonatkozik. Ez a funkció korlátozott támogatást nyújt, és javasoljuk, hogy gyorsabban és megbízhatóbban támogassa a virtuálisgép-méretezési csoportokra való áttérést. Ez a cikk a régebbi technológiák használatára mutató hivatkozást tartalmaz.  
@@ -73,12 +74,12 @@ Az autoscale a következő terminológiát és struktúrát használja.
 
 ![Azure-beli autoskálázási beállítás, profil és szabály szerkezete](./media/autoscale-overview/AzureResourceManagerRuleStructure3.png)
 
-A konfigurálható mezők és leírások teljes listája az [autoscale Rest APIban](https://msdn.microsoft.com/library/dn931928.aspx)érhető el.
+A konfigurálható mezők és leírások teljes listája az [autoscale Rest APIban](/rest/api/monitor/autoscalesettings)érhető el.
 
 Példák a kódokra:
 
 * [Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets](autoscale-virtual-machine-scale-sets.md)  
-* [REST API méretezése](https://msdn.microsoft.com/library/dn931953.aspx)
+* [REST API méretezése](/rest/api/monitor/autoscalesettings)
 
 ## <a name="horizontal-vs-vertical-scaling"></a>Vízszintes és függőleges méretezés
 Az autoskálázás csak horizontálisan méretezhető, ami a virtuálisgép-példányok számának növekedése ("out") vagy a csökkenés ("in").  A horizontális megoldás rugalmasabb a Felhőbeli helyzetekben, mivel lehetővé teszi, hogy akár több ezer virtuális gépet futtasson a terhelés kezeléséhez.
@@ -88,30 +89,29 @@ Ezzel szemben a vertikális skálázás eltérő. Ugyanazokat a virtuális gépe
 ## <a name="methods-of-access"></a>Hozzáférési módszerek
 Beállíthatja az autoscale on
 
-* [Azure Portalra](autoscale-get-started.md)
-* [PowerShell](powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+* [Azure Portal](autoscale-get-started.md)
+* [PowerShell](../samples/powershell-samples.md#create-and-manage-autoscale-settings)
 * [Platformfüggetlen parancssori felület (CLI)](../samples/cli-samples.md#autoscale)
-* [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
+* [Azure Monitor REST API](/rest/api/monitor/autoscalesettings)
 
 ## <a name="supported-services-for-autoscale"></a>Az autoscale támogatott szolgáltatásai
 | Szolgáltatás | Séma & docs |
 | --- | --- |
 | Web Apps |[Méretezés Web Apps](autoscale-get-started.md) |
 | Cloud Services |[Felhőalapú szolgáltatás méretezése](../../cloud-services/cloud-services-how-to-scale-portal.md) |
-| Virtual Machines: klasszikus |[A klasszikus virtuális gépek rendelkezésre állási csoportjainak méretezése](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
+| Virtual Machines: klasszikus |[A klasszikus virtuális gépek rendelkezésre állási csoportjainak méretezése](/archive/blogs/kaevans/autoscaling-azurevirtual-machines) |
 | Virtual Machines: Windows-méretezési csoportok |[Virtuálisgép-méretezési csoportok méretezése a Windowsban](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtual Machines: linuxos méretezési csoportok |[Virtuálisgép-méretezési csoportok skálázása Linux rendszeren](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | Virtual Machines: Windows-példa |[Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets](autoscale-virtual-machine-scale-sets.md) |
-| API Management szolgáltatás|[Az Azure API Management-példány automatikus skálázása](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
-| Azure Adatkezelő-fürtök|[Az Azure Adatkezelő-fürtök méretezése a változó igények kielégítése érdekében](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling)|
-| Azure App Service |[Alkalmazások vertikális felskálázása az Azure app Service-ben](https://docs.microsoft.com/azure/app-service/manage-scale-up)|
-| Logic Apps |[Integrációs szolgáltatási környezet (ISE) kapacitásának hozzáadása](https://docs.microsoft.com/azure/logic-apps/ise-manage-integration-service-environment#add-ise-capacity)|
+| API Management szolgáltatás|[Az Azure API Management-példány automatikus skálázása](../../api-management/api-management-howto-autoscale.md)
+| Azure Adatkezelő-fürtök|[Az Azure Adatkezelő-fürtök méretezése a változó igények kielégítése érdekében](/azure/data-explorer/manage-cluster-horizontal-scaling)|
+| Azure App Service |[Alkalmazások vertikális felskálázása az Azure app Service-ben](../../app-service/manage-scale-up.md)|
+| Logic Apps |[Integrációs szolgáltatási környezet (ISE) kapacitásának hozzáadása](../../logic-apps/ise-manage-integration-service-environment.md#add-ise-capacity)|
 ## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni az autoscale használatával kapcsolatban, használja az előzőleg felsorolt, vagy a következő erőforrásokra vonatkozó információkat:
 
 * [Általános mérőszámok Azure Monitor](autoscale-common-metrics.md)
 * [Ajánlott eljárások az Azure Monitor automatikus skálázásához](autoscale-best-practices.md)
 * [E-mailek és webhookok riasztási értesítéseinek küldése az autoscale műveletekkel](autoscale-webhook-email.md)
-* [REST API méretezése](https://msdn.microsoft.com/library/dn931953.aspx)
+* [REST API méretezése](/rest/api/monitor/autoscalesettings)
 * [Az Virtual Machine Scale Sets-méretezés hibaelhárítása](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
-

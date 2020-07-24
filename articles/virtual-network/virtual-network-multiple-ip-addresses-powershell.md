@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/24/2017
 ms.author: allensu
-ms.openlocfilehash: 819b6af0d336e454aeeb67a9be62109cb6b08bb8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5cd050c88fbc954a211c3a75cdabcb557ae998c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708229"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073930"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-powershell"></a>Több IP-cím társítása virtuális gépekhez a PowerShell használatával
 
@@ -33,7 +34,7 @@ Ez a cikk bemutatja, hogyan hozhat létre virtuális gépet (VM) a Azure Resourc
 
 Az alábbi lépések elmagyarázzák, hogyan hozhat létre egy példaként több IP-címmel rendelkező virtuális gépet a forgatókönyvben leírtak szerint. Módosítsa a változó értékeit a megvalósításhoz szükséges módon.
 
-1. Nyisson meg egy PowerShell-parancssort, és hajtsa végre a szakasz további lépéseit egyetlen PowerShell-munkameneten belül. Ha még nincs telepítve és konfigurálva a PowerShell, hajtsa végre a [Azure PowerShell telepítésének és konfigurálásának](/powershell/azure/overview) lépései című cikk lépéseit.
+1. Nyisson meg egy PowerShell-parancssort, és hajtsa végre a szakasz további lépéseit egyetlen PowerShell-munkameneten belül. Ha még nincs telepítve és konfigurálva a PowerShell, hajtsa végre a [Azure PowerShell telepítésének és konfigurálásának](/powershell/azure/) lépései című cikk lépéseit.
 2. Jelentkezzen be a fiókjába a `Connect-AzAccount` paranccsal.
 3. Cserélje le a *myResourceGroup* és a *westus* nevet a választott névre és helyre. Hozzon létre egy erőforráscsoportot. Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -195,7 +196,7 @@ Az alábbi lépések elmagyarázzák, hogyan hozhat létre egy példaként több
 
 Az alábbi lépések végrehajtásával adhat hozzá privát és nyilvános IP-címeket az Azure hálózati adapterhez. Az alábbi szakaszokban szereplő példák azt feltételezik, hogy már rendelkezik egy virtuális géppel, amely a jelen cikkben szereplő [forgatókönyvben](#scenario) ismertetett három IP-konfigurációval rendelkezik, de erre nincs szükség.
 
-1. Nyisson meg egy PowerShell-parancssort, és hajtsa végre a szakasz további lépéseit egyetlen PowerShell-munkameneten belül. Ha még nincs telepítve és konfigurálva a PowerShell, hajtsa végre a [Azure PowerShell telepítésének és konfigurálásának](/powershell/azure/overview) lépései című cikk lépéseit.
+1. Nyisson meg egy PowerShell-parancssort, és hajtsa végre a szakasz további lépéseit egyetlen PowerShell-munkameneten belül. Ha még nincs telepítve és konfigurálva a PowerShell, hajtsa végre a [Azure PowerShell telepítésének és konfigurálásának](/powershell/azure/) lépései című cikk lépéseit.
 2. Módosítsa a következő $Variables értékeit annak a hálózati adapternek a nevére, amelyhez IP-címet kíván adni, valamint a hálózati adapterhez tartozó erőforráscsoportot és helyet:
 
    ```powershell

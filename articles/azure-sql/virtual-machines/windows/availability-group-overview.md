@@ -14,11 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3c7009e5ecb43a809b9a3f703fc5ba289a2fd00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50be33bf0cb89c7baff58e5f8e4a2a23b9a1ecef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669273"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073276"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>SQL Server always on rendelkezésre állási csoportok bemutatása az Azure-on Virtual Machines
 
@@ -40,10 +41,9 @@ A redundancia és a magas rendelkezésre állás növeléséhez a SQL Server vir
 
 |  | Windows Server-verzió | SQL Server verziója | SQL Server kiadás | WSFC kvórum konfigurációja | DR több régióval | Több alhálózatot támogató támogatás | Meglévő AD támogatása | DR többzónás azonos régióval | Dist-AG támogatás AD-tartomány nélkül | A dist-AG támogatása fürt nélkül |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| [SQL VIRTUÁLIS GÉP PARANCSSORI FELÜLETE](availability-group-az-cli-configure.md) | 2016 | 2017 </br>2016   | ENT | Felhőbeli tanúsító | No | Igen | Igen | Igen | Nem | Nem |
-| [Gyorsindítás sablonok](availability-group-quickstart-template-configure.md) | 2016 | 2017</br>2016  | ENT | Felhőbeli tanúsító | No | Igen | Igen | Igen | Nem | Nem |
-| [Kézi](availability-group-manually-configure-prerequisites-tutorial.md) | Mind | Mind | Mind | Mind | Igen | Igen | Igen | Igen | Igen | Igen |
-| &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
+| **[SQL VIRTUÁLIS GÉP PARANCSSORI FELÜLETE](availability-group-az-cli-configure.md)** | 2016 | 2017 </br>2016   | ENT | Felhőbeli tanúsító | No | Igen | Igen | Igen | Nem | Nem |
+| **[Gyorsindítás sablonok](availability-group-quickstart-template-configure.md)** | 2016 | 2017</br>2016  | ENT | Felhőbeli tanúsító | No | Igen | Igen | Igen | Nem | Nem |
+| **[Kézi](availability-group-manually-configure-prerequisites-tutorial.md)** | Mind | Mind | Mind | Mind | Igen | Igen | Igen | Igen | Igen | Igen |
 
 A **SQL Server AlwaysOn-fürt (előzetes verzió)** sablon el lett távolítva az Azure Marketplace-ről, és már nem érhető el. 
 

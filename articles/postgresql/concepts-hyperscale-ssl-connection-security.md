@@ -1,32 +1,43 @@
 ---
-title: TLS-nagy kapacitású (Citus) – Azure Database for PostgreSQL
+title: Transport Layer Security (TLS) – nagy kapacitású (Citus) – Azure Database for PostgreSQL
 description: Útmutatás és információk a Azure Database for PostgreSQL-nagy kapacitású (Citus) és a társított alkalmazások konfigurálásához a TLS-kapcsolatok megfelelő használatához.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.openlocfilehash: 791eed9419375c7245488b8ec61a1c5481be382e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 659f86a107e4b08db4ec5195635ea32d2260d677
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580564"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071453"
 ---
 # <a name="configure-tls-in-azure-database-for-postgresql---hyperscale-citus"></a>A TLS konfigurálása Azure Database for PostgreSQL-nagy kapacitású (Citus)
-Az nagy kapacitású (Citus) koordinátori csomóponthoz tartozó ügyfélalkalmazás Transport Layer Security (TLS), korábbi nevén SSL (SSL) szükséges. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti TLS-kapcsolatok érvényesítésével megvédheti a védelmet a kiszolgáló és az alkalmazás közötti adatfolyam titkosításával.
+Az nagy kapacitású (Citus) koordinátor csomópontjának az Transport Layer Security (TLS) szolgáltatással való kapcsolódáshoz az ügyfélalkalmazások szükségesek. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti TLS-kényszerítés segíti az adatok átvitelét. Az alábbiakban ismertetett további ellenőrzési beállítások a "személyek közti" támadásokkal szembeni védelmet is biztosítanak.
 
 ## <a name="enforcing-tls-connections"></a>TLS-kapcsolatok kényszerítése
-A Azure Portal által kiépített összes Azure Database for PostgreSQL-kiszolgáló esetében a TLS-kapcsolatok kényszerítése alapértelmezés szerint engedélyezve van. 
+Az alkalmazások "kapcsolódási karakterláncot" használnak a céladatbázis és a kapcsolatok beállításainak azonosítására. A különböző ügyfelek eltérő beállításokat igényelnek. Ha meg szeretné tekinteni az általános ügyfelek által használt kapcsolódási karakterláncok listáját, tekintse meg a Azure Portalban található kiszolgálói csoport **kapcsolódási karakterláncok** szakaszát.
 
-Hasonlóképpen, a "kapcsolati karakterláncok" beállításokban előre definiált kapcsolati karakterláncok a Azure Portalban tartalmazzák az adatbázis-kiszolgáló TLS-vel való csatlakozásához szükséges paramétereket a közös nyelvekhez. A TLS-paraméter az összekötőtől függően változik, például: "SSL = true" vagy "sslmode = require" vagy "sslmode = Required" és egyéb variációk.
+A TLS-paraméterek `ssl` és az `sslmode` összekötő képességeitől függően változhatnak, például: `ssl=true` vagy `sslmode=require` vagy `sslmode=required` .
 
 ## <a name="ensure-your-application-or-framework-supports-tls-connections"></a>Győződjön meg arról, hogy az alkalmazás vagy a keretrendszer támogatja a TLS-kapcsolatokat
-Néhány alkalmazás-keretrendszer, amely a PostgreSQL-t használja az adatbázis-szolgáltatásaihoz, alapértelmezés szerint nem engedélyezi a TLS-t a telepítés során. Ha a PostgreSQL-kiszolgáló kikényszeríti a TLS-kapcsolatokat, de az alkalmazás nincs konfigurálva a TLS-hez, előfordulhat, hogy az alkalmazás nem tud csatlakozni az adatbázis-kiszolgálóhoz. A TLS-kapcsolatok engedélyezésével kapcsolatos információkért tekintse meg az alkalmazás dokumentációját.
+Egyes alkalmazás-keretrendszerek alapértelmezés szerint nem engedélyezik a TLS-kapcsolatokat a PostgreSQL-kapcsolatok esetében. Biztonságos kapcsolat nélkül azonban az alkalmazás nem tud csatlakozni egy nagy kapacitású (Citus) koordinátori csomóponthoz. A TLS-kapcsolatok engedélyezésével kapcsolatos információkért tekintse meg az alkalmazás dokumentációját.
 
 ## <a name="applications-that-require-certificate-verification-for-tls-connectivity"></a>A TLS-kapcsolat tanúsítvány-ellenőrzését igénylő alkalmazások
-Bizonyos esetekben az alkalmazásoknak egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl (. cer) alapján létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz. A Azure Database for PostgreSQL-nagy kapacitású (Citus) szolgáltatáshoz való kapcsolódáshoz szükséges tanúsítvány a következő helyen található: https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem . Töltse le a tanúsítványfájl, és mentse a kívánt helyre.
+Bizonyos esetekben az alkalmazásoknak egy megbízható hitelesítésszolgáltató (CA) tanúsítványfájl (. cer) alapján létrehozott helyi tanúsítványfájl szükségesek a biztonságos kapcsolódáshoz. A Azure Database for PostgreSQL-nagy kapacitású (Citus) szolgáltatáshoz való kapcsolódáshoz szükséges tanúsítvány a következő helyen található: https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem . Töltse le a tanúsítványfájl, és mentse a kívánt helyre.
+
+> [!NOTE]
+>
+> A tanúsítvány hitelességének ellenőrzéséhez az OpenSSL parancssori eszköz használatával ellenőrizheti az SHA-256 ujjlenyomatot:
+>
+> ```sh
+> openssl x509 -in DigiCertGlobalRootCA.crt.pem -noout -sha256 -fingerprint
+>
+> # should output:
+> # 43:48:A0:E9:44:4C:78:CB:26:5E:05:8D:5E:89:44:B4:D8:4F:96:62:BD:26:DB:25:7F:89:34:A4:43:C7:01:61
+> ```
 
 ### <a name="connect-using-psql"></a>Összekapcsolás a psql használatával
 Az alábbi példa bemutatja, hogyan csatlakozhat a nagy kapacitású (Citus) koordinátor-csomóponthoz a psql parancssori segédprogram használatával. A `sslmode=verify-full` TLS-tanúsítvány ellenőrzésének érvényesítéséhez használja a kapcsolódási karakterlánc beállítást. Adja át a helyi tanúsítványfájl elérési útját a `sslrootcert` paraméternek.

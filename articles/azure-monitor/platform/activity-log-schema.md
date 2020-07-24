@@ -7,34 +7,34 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 553492a3ca6868279b1aec9446e2ce04ca673ab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d7085f54634ab1175fc0f916e24b7f03dc1bc9b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945358"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073679"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure Activity log esemény sémája
 Az [Azure-tevékenység naplója](platform-logs-overview.md) betekintést nyújt az Azure-ban történt előfizetési szintű eseményekre. Ez a cikk a tevékenységek naplójának kategóriáit és az egyes sémákat ismerteti. 
 
 A séma attól függően változhat, hogy hogyan fér hozzá a naplóhoz:
  
-- A cikkben ismertetett sémák akkor érhetők el, amikor a [Rest APIról](https://docs.microsoft.com/rest/api/monitor/activitylogs)fér hozzá a tevékenység naplójához. Ez a séma akkor is használatos, amikor a Azure Portal egy eseményének megtekintésekor a **JSON** lehetőséget választja.
+- A cikkben ismertetett sémák akkor érhetők el, amikor a [Rest APIról](/rest/api/monitor/activitylogs)fér hozzá a tevékenység naplójához. Ez a séma akkor is használatos, amikor a Azure Portal egy eseményének megtekintésekor a **JSON** lehetőséget választja.
 - Ha [diagnosztikai beállítást](diagnostic-settings.md) használ a műveletnapló Azure Storage-ba vagy Azure Event Hubsba való elküldéséhez, tekintse meg a séma utolsó szakaszának [sémáját a Storage-fiók és az esemény-hubok](#schema-from-storage-account-and-event-hubs) szakaszban.
-- A tevékenység naplójának Log Analytics-munkaterületre való elküldéséhez [diagnosztikai beállítással](diagnostic-settings.md) [Azure monitor adathivatkozást](https://docs.microsoft.com/azure/azure-monitor/reference/) a sémához.
+- A tevékenység naplójának Log Analytics-munkaterületre való elküldéséhez [diagnosztikai beállítással](diagnostic-settings.md) [Azure monitor adathivatkozást](/azure/azure-monitor/reference/) a sémához.
 
 
 ## <a name="categories"></a>Kategóriák
-A tevékenység naplójának minden eseménye egy adott kategóriával rendelkezik, amelyet az alábbi táblázat ismertet. Az egyes kategóriákra és azok sémájára vonatkozó további részletekért tekintse meg az alábbi szakaszt, amikor a portál, a PowerShell, a CLI és a REST API a tevékenység naplóját éri el. A séma különbözik [a tevékenység naplójának tárolóba vagy Event Hubsba való továbbításakor](resource-logs-stream-event-hubs.md). Az [erőforrás-naplók sémájának](diagnostic-logs-schema.md) tulajdonságainak leképezése a cikk utolsó szakaszában található.
+A tevékenység naplójának minden eseménye egy adott kategóriával rendelkezik, amelyet az alábbi táblázat ismertet. Az egyes kategóriákra és azok sémájára vonatkozó további részletekért tekintse meg az alábbi szakaszt, amikor a portál, a PowerShell, a CLI és a REST API a tevékenység naplóját éri el. A séma különbözik [a tevékenység naplójának tárolóba vagy Event Hubsba való továbbításakor](./resource-logs.md#send-to-azure-event-hubs). Az [erőforrás-naplók sémájának](./resource-logs-schema.md) tulajdonságainak leképezése a cikk utolsó szakaszában található.
 
-| Kategória | Description |
+| Kategória | Leírás |
 |:---|:---|
 | [Adminisztratív](#administrative-category) | A Resource Manageren keresztül végrehajtott összes létrehozási, frissítési, törlési és műveleti művelet rekordját tartalmazza. Ilyenek például a _virtuális gépek létrehozása_ és a _hálózati biztonsági csoport törlése_.<br><br>Egy felhasználó vagy alkalmazás által a Resource Managerrel végrehajtott összes művelet egy adott erőforrástípus műveletének megfelelően van modellezve. Ha a művelet típusa _írás_, _Törlés_vagy _művelet_, akkor a művelet kezdési és sikerességi rekordjait is rögzíti a rendszer a felügyeleti kategóriában. A rendszergazdai események az előfizetés szerepköralapú hozzáférés-vezérlésének változásait is tartalmazzák. |
 | [Service Health](#service-health-category) | Az Azure-ban történt összes szolgáltatás-egészségügyi incidens rekordját tartalmazza. Az _USA keleti régiójában SQL Azure Service Health eseménynek például állásidőt tapasztalhat_. <br><br>Az események Service Health hat fajta: _beavatkozás szükséges_, _támogatott helyreállítás_, _incidens_, _karbantartás_, _információ_vagy _Biztonság_. Ezek az események csak akkor jönnek létre, ha van olyan erőforrása az előfizetésben, amelyet az esemény érint.
 | [Resource Health](#resource-health-category) | Az Azure-erőforrásokra vonatkozó összes erőforrás-állapottal kapcsolatos esemény rekordját tartalmazza. Resource Health eseményre például a _virtuális gép állapota nem érhető el értékre módosult_.<br><br>Resource Health események a négy állapot egyikét jelezhetik: _elérhető_, nem _elérhető_, _csökkentett teljesítményű_és _ismeretlen_. Emellett Resource Health eseményeket úgy is kategorizálhatja, hogy _platform kezdeményezett_ vagy _felhasználó által kezdeményezett_. |
 | [Riasztás](#alert-category) | Az Azure-riasztások aktiválási rekordját tartalmazza. Egy riasztási esemény például a _MyVM CPU%-a az elmúlt 5 percben 80_.|
 | [Automatikus méretezés](#autoscale-category) | Az adott előfizetésben definiált bármely, az autoskálázási motor működésével kapcsolatos események rekordját tartalmazza. Az autoskálázási eseményre például _nem sikerült a vertikális Felskálázási művelet_. |
-| [Ajánlás](#recommendation-category) | A Azure Advisor ajánlásainak eseményeit tartalmazza. |
+| [Javaslat](#recommendation-category) | A Azure Advisor ajánlásainak eseményeit tartalmazza. |
 | [Biztonság](#security-category) | A Azure Security Center által generált riasztások rekordját tartalmazza. A biztonsági eseményekre példaként a rendszer _gyanús kettős kiterjesztésű fájlt futtat_. |
 | [Szabályzat](#policy-category) | A Azure Policy által végrehajtott összes hatás művelet műveleteit tartalmazza. Példák a házirendi eseményekre: _naplózás_ és _Megtagadás_. A házirend által végrehajtott összes művelet az erőforráson végzett műveletként van modellezve. |
 
@@ -214,7 +214,7 @@ Ez a kategória tartalmazza az Azure-ban történt összes szolgáltatás-egész
   }
 }
 ```
-A tulajdonságok között található értékekkel kapcsolatos dokumentációért tekintse meg a [Service Health Notifications](./../../azure-monitor/platform/service-notifications.md) című cikket.
+A tulajdonságok között található értékekkel kapcsolatos dokumentációért tekintse meg a [Service Health Notifications](../../service-health/service-notifications.md) című cikket.
 
 ## <a name="resource-health-category"></a>Erőforrás állapotának kategóriája
 Ez a kategória az Azure-erőforrásokra vonatkozó összes erőforrás-állapottal kapcsolatos esemény rekordját tartalmazza. Ebben a kategóriában a "virtuális gép állapota nem érhető el értékre módosult" típusú eseményre mutat példát. Az erőforrás-állapot eseményei a négy állapot egyikét jelezhetik: elérhető, nem elérhető, csökkentett teljesítményű és ismeretlen. Emellett az erőforrás-állapot eseményei a platform által kezdeményezett vagy a felhasználó által kezdeményezett módon kategorizálva is lehetnek.
@@ -793,10 +793,10 @@ Ez a kategória a [Azure Policy](../../governance/policy/overview.md)által vég
 
 
 ## <a name="schema-from-storage-account-and-event-hubs"></a>A Storage-fiók és az Event hubok sémája
-Amikor az Azure-tevékenység naplóját egy Storage-fiókba vagy egy Event hubhoz viszi, az adatforrások az [erőforrás-napló sémáját](diagnostic-logs-schema.md)követik. Az alábbi táblázat a fenti sémák tulajdonságainak hozzárendelését mutatja be az erőforrás-naplók sémába.
+Amikor az Azure-tevékenység naplóját egy Storage-fiókba vagy egy Event hubhoz viszi, az adatforrások az [erőforrás-napló sémáját](./resource-logs-schema.md)követik. Az alábbi táblázat a fenti sémák tulajdonságainak hozzárendelését mutatja be az erőforrás-naplók sémába.
 
 > [!IMPORTANT]
-> A Storage-fiókba írt tevékenység-naplófájlok formátuma JSON-sorokra módosult november 1. és 2018. között. A formátum változásának részleteiért lásd: [felkészülés a formátum módosítására Azure monitor erőforrás-naplók archiválása egy Storage-fiókba](diagnostic-logs-append-blobs.md) .
+> A Storage-fiókba írt tevékenység-naplófájlok formátuma JSON-sorokra módosult november 1. és 2018. között. A formátum változásának részleteiért lásd: [felkészülés a formátum módosítására Azure monitor erőforrás-naplók archiválása egy Storage-fiókba](./resource-logs-append-blobs.md) .
 
 
 | Erőforrás-naplók sémájának tulajdonsága | Műveletnapló REST API Schema tulajdonság | Jegyzetek |
@@ -808,12 +808,12 @@ Amikor az Azure-tevékenység naplóját egy Storage-fiókba vagy egy Event hubh
 | resultType | status. Value | |
 | resultSignature | alállapot. érték | |
 | resultDescription | leírás |  |
-| durationMs | N.A. | Mindig 0 |
+| durationMs | n.a. | Mindig 0 |
 | callerIpAddress | httpRequest. clientIpAddress |  |
 | correlationId | correlationId |  |
 | identity | jogcímek és engedélyezési tulajdonságok |  |
 | Szint | Szint |  |
-| location | N.A. | Az esemény feldolgozásának helye. *Ez nem az erőforrás helye, hanem az eseményt feldolgozták. A rendszer eltávolítja ezt a tulajdonságot egy jövőbeli frissítésben.* |
+| location | n.a. | Az esemény feldolgozásának helye. *Ez nem az erőforrás helye, hanem az eseményt feldolgozták. A rendszer eltávolítja ezt a tulajdonságot egy jövőbeli frissítésben.* |
 | Tulajdonságok | Properties. eventProperties |  |
 | Properties. eventCategory | category | Ha a Properties. eventCategory nincs jelen, a kategória a "rendszergazda" |
 | Properties. eventName | eventName |  |
@@ -885,4 +885,3 @@ A következő példa egy olyan eseményt mutat be, amely ezt a sémát használj
 ## <a name="next-steps"></a>További lépések
 * [További információ a tevékenység naplóról](platform-logs-overview.md)
 * [Diagnosztikai beállítás létrehozása a műveletnapló Log Analytics munkaterületre, Azure Storage-ba vagy Event hubokba való küldéséhez](diagnostic-settings.md)
-

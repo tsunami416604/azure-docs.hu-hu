@@ -2,13 +2,13 @@
 title: Azure Migrate-projektek létrehozása és kezelése
 description: Projektek keresése, létrehozása, kezelése és törlése Azure Migrateban.
 ms.topic: how-to
-ms.date: 04/19/2020
-ms.openlocfilehash: 644ac5ecab9f5384b446c3b1ebe762a5d06aaf12
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/23/2020
+ms.openlocfilehash: d60868f9d0d4c60291cfd92a9e8d11fd3f9a42b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113428"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071808"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate-projektek létrehozása és kezelése
 
@@ -65,7 +65,6 @@ A következőképpen törölheti:
     - Az erőforrástípus a **Microsoft. migrál/migrateprojects**.
     - Ha az erőforráscsoportot kizárólag az Azure Migrate-projekt használja, akkor törölheti a teljes erőforráscsoportot.
 
-
 Vegye figyelembe:
 
 - A törléskor a rendszer a projekt és a felderített gépek metaadatait is törli.
@@ -73,6 +72,7 @@ Vegye figyelembe:
 - Ha függőségi elemzést használ egy Azure Log Analytics-munkaterülettel:
     - Ha Log Analytics munkaterületet csatolt a kiszolgáló-értékelési eszközhöz, a munkaterület nem törlődik automatikusan. Ugyanaz a Log Analytics munkaterület több forgatókönyv esetén is használható.
     - Ha törölni szeretné a Log Analytics munkaterületet, ezt manuálisan végezze el.
+- A projekt törlése nem vonható vissza. A törölt objektumok nem állíthatók helyre.
 
 ### <a name="delete-a-workspace-manually"></a>Munkaterület törlése manuálisan
 
@@ -85,6 +85,6 @@ Vegye figyelembe:
        
 2. A munkaterület törléséhez [kövesse az utasításokat](../azure-monitor/platform/delete-workspace.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Felmérési](how-to-assess.md) vagy [áttelepítési](how-to-migrate.md) eszközök hozzáadása Azure Migrate projektekhez.

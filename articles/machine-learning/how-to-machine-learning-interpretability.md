@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: mesameki
-author: mesameki
+ms.author: mithigpe
+author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
-ms.openlocfilehash: 83fc13362a373686ee027fd642f03003b411cd63
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: deeb47b55253b9bf1659dd5eba7bc3465602583b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201450"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072228"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Modell értelmezése Azure Machine Learningban (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Az értelmező osztályok több SDK-csomagon keresztül érhetők el: (útmutat�
 
 * `azureml.contrib.interpret`, előzetes verzió, és kísérleti funkciók, amelyeket kipróbálhat.
 
-`pip install azureml-interpret`A és `pip install azureml-interpret-contrib` az általános használatra, a `pip install azureml-contrib-interpret` AutoML pedig az értelmező csomagok beszerzésére használható.
+`pip install azureml-interpret` `pip install azureml-contrib-interpret` Általános használatra használható.
 
 
 > [!IMPORTANT]
@@ -70,7 +70,7 @@ Ismerje meg a támogatott értelmező technikákat, a támogatott gépi tanulás
 
  `azureml-interpret`a az [értelmezés – Közösség](https://github.com/interpretml/interpret-community/), a értelmezhető modellek betanítására szolgáló nyílt forráskódú Python-csomag, valamint a tábla AI-rendszerek ismertetésére szolgáló, értelmezhető technikákat használja. A [tolmácsolás – a Közösség](https://github.com/interpretml/interpret-community/) az SDK által támogatott magyarázatokat üzemeltető gazdagépként működik, és jelenleg a következő értelmező módszereket támogatja:
 
-|Értelmező technika|Leírás|Típus|
+|Értelmező technika|Description|Típus|
 |--|--|--------------------|
 |ALAKÍTÁSi fa magyarázata| A SHAP 's Tree [Deformálója](https://github.com/slundberg/shap), amely a **fák és a fák különböző részeire**jellemző, a többhelyes idő gyors formálására szolgáló algoritmusra koncentrál.|Modell-specifikus|
 |Mélyreható magyarázat kialakítása| A SHAPer magyarázata alapján a Deep deformáló "egy nagy sebességű közelítési algoritmus az értékek alakításához a Deep learning-modellekben, amely egy, a [SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)-beli DeepLIFT-ben leírt módon létesített kapcsolatban. A **TensorFlow** modellek és **kerasz** modellek támogatottak a TensorFlow-háttér használatával (a PyTorch előzetes támogatása is elérhető).|Modell-specifikus|

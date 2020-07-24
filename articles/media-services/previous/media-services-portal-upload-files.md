@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3327304916c30863bb4de4b4d18c41ba3c58270d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73e92fa505a994cc5cc2fdb3a297dfd653a596a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982560"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071823"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Fájlok feltöltése Media Services-fiókba az Azure Portalon 
 
@@ -30,7 +30,7 @@ ms.locfileid: "84982560"
 > 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. A naprakész feltöltési fájlok a portálon: a [portál használata a tartalom feltöltésére, kódolására és továbbítására](../latest/manage-assets-quickstart.md).<br/>Továbbá tekintse meg a következőket: [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. A naprakész feltöltési fájlok a portálon: a [portál használata a tartalom feltöltésére, kódolására és továbbítására](../latest/manage-assets-quickstart.md).<br/>Továbbá tekintse meg a következőket: [Media Services v3](../latest/index.yml). Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Az Azure Media Services szolgáltatásban a digitális fájlok feltöltése egy objektumba történik. Az objektum tartalmazhat videót, hangot, képeket, miniatűröket, szövegsávokat és feliratfájlokat (valamint mindezen fájlok metaadatait). A fájlok feltöltése után a tartalom a felhőben lesz biztonságosan tárolva további feldolgozás és streamelés céljából.
 
@@ -65,5 +65,3 @@ A feltöltést követően az új objektum megjelenik az **Objektumok** panelen.
 * Ismerkedjen meg a [feltöltött objektumok kódolásának](media-services-portal-encode.md) módjával.
 
 * Emellett az Azure Functions használatával is elindíthatja a kódolási feladatokat a fájloknak a konfigurált tárolóba történő érkezésekor. További információkért tekintse meg a [Media Services: Az Azure Media Services integrálása Azure Functions- és Logic Apps- alkalmazásokkal](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/) cikkben található mintát.
-
-

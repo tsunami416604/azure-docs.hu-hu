@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 1d1ac838befc905c3c2b860551b26928f5114e96
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8142ef5e2aaaf5831c01215d28eecf8d06e1d8ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955157"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071923"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Speciális kódolás végrehajtása a MES-beállításkészletek testreszabásával 
 
@@ -29,7 +30,7 @@ Ez a témakör bemutatja, hogyan szabhatja testre a Media Encoder Standard beál
 Ha XML-készletet használ, ügyeljen arra, hogy megőrizze az elemek sorrendjét, ahogy az alábbi XML-példákban is látható (például a KeyFrameInterval előtt kell megelőznie a SceneChangeDetection).
 
 > [!NOTE] 
-> A Media Encoder Standard Advanced Media Services v2 számos funkciója jelenleg nem érhető el a v3-as verzióban. További információ: [szolgáltatások hiányosságainak](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis).
+> A Media Encoder Standard Advanced Media Services v2 számos funkciója jelenleg nem érhető el a v3-as verzióban. További információ: [szolgáltatások hiányosságainak](../latest/media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
 
 ## <a name="support-for-relative-sizes"></a>Relatív méretek támogatása
 

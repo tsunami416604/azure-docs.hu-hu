@@ -12,11 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: juliako
-ms.openlocfilehash: 72aa0762d001c28b21d5e27ed8f6f9d099f62bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34b1061519f91c93be2f5eb43f813b83db8305f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79499839"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072006"
 ---
 # <a name="azure-storage-accounts"></a>Azure Storage-fiókok
 
@@ -31,7 +32,7 @@ Javasoljuk, hogy a GPv2 használja, így kihasználhatja a legújabb funkciókat
 > [!NOTE]
 > Csak a gyors elérési szint támogatott a Azure Media Serviceshoz való használathoz, bár a többi hozzáférési réteg is használható a tárolási költségek csökkentéséhez a nem aktívan használt tartalmak esetében.
 
-Különböző SKU-ket is választhat a Storage-fiókhoz. További információ: Storage- [fiókok](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Ha a Storage-fiókokkal szeretne kísérletezni, használja a következőt: `--sku Standard_LRS` . Ha azonban az SKU-t éles környezetben választotta, érdemes figyelembe vennie `--sku Standard_RAGRS` , amely az üzletmenet folytonosságát biztosító földrajzi replikációt biztosít.
+Különböző SKU-ket is választhat a Storage-fiókhoz. További információ: Storage- [fiókok](/cli/azure/storage/account?view=azure-cli-latest). Ha a Storage-fiókokkal szeretne kísérletezni, használja a következőt: `--sku Standard_LRS` . Ha azonban az SKU-t éles környezetben választotta, érdemes figyelembe vennie `--sku Standard_RAGRS` , amely az üzletmenet folytonosságát biztosító földrajzi replikációt biztosít.
 
 ## <a name="assets-in-a-storage-account"></a>A Storage-fiókban lévő eszközök
 
@@ -47,8 +48,8 @@ Az adategységek védelméhez az eszközöket a tárolási oldal titkosításáv
 |Titkosítási beállítás|Description|Media Services v3|
 |---|---|---|
 |Media Services Storage-titkosítás| AES-256 titkosítás, Media Services által felügyelt kulcs. |Nem támogatott. <sup>(1)</sup>|
-|[Tárolási szolgáltatás titkosítása inaktív adatok esetén](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél kezel.|Támogatott.|
-|[Storage ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Az Azure Storage által kínált ügyféloldali titkosítás, amelyet az ügyfél felügyel Key Vaultban.|Nem támogatott.|
+|[Tárolási szolgáltatás titkosítása inaktív adatok esetén](../../storage/common/storage-service-encryption.md)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél kezel.|Támogatott.|
+|[Storage ügyféloldali titkosítás](../../storage/common/storage-client-side-encryption.md)|Az Azure Storage által kínált ügyféloldali titkosítás, amelyet az ügyfél felügyel Key Vaultban.|Nem támogatott.|
 
 <sup>1</sup> a Media Services v3-as verziójában a Storage encryption (AES-256 encryption) csak a visszamenőleges kompatibilitás érdekében támogatott, ha az eszközök Media Services v2-mel lettek létrehozva, ami azt jelenti, hogy a v3 a meglévő tárolók titkosított eszközeivel működik együtt, de nem teszi lehetővé újak létrehozását.
 
@@ -65,8 +66,8 @@ Az alábbiak az elsődleges forgatókönyvek, amelyek a Media Services-fiók a c
 
 ## <a name="azure-storage-firewall"></a>Azure Storage-tűzfal
 
-Azure Media Services nem támogatja a Storage-fiókok használatát az Azure Storage-tűzfallal vagy a [magánhálózati végpontokkal](https://docs.microsoft.com/azure/storage/common/storage-network-security) .
+Azure Media Services nem támogatja a Storage-fiókok használatát az Azure Storage-tűzfallal vagy a [magánhálózati végpontokkal](../../storage/common/storage-network-security.md) .
 
 ## <a name="next-steps"></a>További lépések
 
-Ha szeretné megtudni, hogyan csatolhat Storage-fiókot a Media Services-fiókjához, tekintse meg a [fiók létrehozása](create-account-cli-quickstart.md)című témakört.
+Ha szeretné megtudni, hogyan csatolhat Storage-fiókot a Media Services-fiókjához, tekintse meg a [fiók létrehozása](./create-account-howto.md)című témakört.

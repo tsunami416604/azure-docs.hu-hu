@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 1596503f5f0a333bf061015827596464aed7558e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513641"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070693"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klónozás a StorSimple virtuális tömb biztonsági másolatából
 
@@ -96,7 +96,7 @@ A biztonsági másolatból való klónozáshoz a Azure Portal a megosztás klón
    d. A **csatlakoztatott gazdagépek**esetében kattintson a **kiválasztás**elemre.
    
    ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/clonevolume4.png)
-4. A **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR közül, vagy adjon hozzá egy új ACR-t. Új ACR hozzáadásához meg kell adnia egy ACR-nevet és a gazdagép IQN. Kattintson a **Kiválasztás** gombra.
+4. A **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR közül, vagy adjon hozzá egy új ACR-t. Új ACR hozzáadásához meg kell adnia egy ACR-nevet és a gazdagép IQN. Válassza a **Kiválasztás** lehetőséget.
    
    ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. A klónozott feladatok elindításához kattintson a **klónozás** elemre.
@@ -127,7 +127,7 @@ Minden megosztáshoz tartozik egy *. Backups* mappa, amely a legújabb biztonsá
    * **Scheduled backups** Az &lt; &gt; tulajdonsággal-ÉÉÉÉHHNN-HHMMSS-UTC néven nevű ütemezett biztonsági mentések.
    * Az ad-hoc-ÉÉÉÉHHNN-HHMMSS-UTC nevű **manuális biztonsági másolatok** .
      
-     ![](./media/storsimple-virtual-array-clone/image14.png)
+     ![A. Backups mappát megjelenítő fájlkezelő képernyőképe. A mappában a manuális biztonsági másolatok mappa van kiválasztva.](./media/storsimple-virtual-array-clone/image14.png)
 
 2. Azonosítsa a törölt fájl legújabb verzióját tartalmazó biztonsági mentést. Bár a mappa neve minden korábbi esetben UTC-időbélyeget tartalmaz, a mappa létrehozásának időpontja a tényleges eszköz, amikor a biztonsági mentés elindult. A biztonsági mentések megkereséséhez és azonosításához használja a mappa időbélyegét.
 

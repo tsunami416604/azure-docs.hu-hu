@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/20/2019
 ms.author: allensu
-ms.openlocfilehash: ba67ea9455c8d7f077eae87f582f05b5c2672735
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7ad3034ff3730cdadcfd55765af01c97df78028
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887626"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073065"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>Azure CDN kezelése a PowerShell-lel
 A PowerShell az Azure CDN profilok és végpontok kezelésének egyik legrugalmasabb módszerét biztosítja.  A PowerShellt interaktív módon is használhatja, vagy parancsfájlokat írhat a felügyeleti feladatok automatizálásához.  Ez az oktatóanyag bemutatja, hogyan kezelheti a PowerShell használatával a Azure CDN-profilok és-végpontok kezelésére szolgáló leggyakoribb feladatokat.
@@ -28,7 +28,7 @@ A PowerShell az Azure CDN profilok és végpontok kezelésének egyik legrugalma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ahhoz, hogy a PowerShell használatával kezelhesse a Azure CDN profilokat és végpontokat, telepítve kell lennie a Azure PowerShell modulnak.  További információ a Azure PowerShell telepítéséről és az Azure-hoz való kapcsolódásról a `Connect-AzAccount` parancsmag használatával: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
+Ahhoz, hogy a PowerShell használatával kezelhesse a Azure CDN profilokat és végpontokat, telepítve kell lennie a Azure PowerShell modulnak.  További információ a Azure PowerShell telepítéséről és az Azure-hoz való kapcsolódásról a `Connect-AzAccount` parancsmag használatával: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
 
 > [!IMPORTANT]
 > `Connect-AzAccount`Azure PowerShell-parancsmagok végrehajtása előtt be kell jelentkeznie.

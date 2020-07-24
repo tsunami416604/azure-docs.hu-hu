@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: 4b5a18f0dc5edc06e4800215e88b694e681b5bbb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 254659c58b9830645211596da0095c33d70e8d95
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960462"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072014"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Hozzáférés-vezérlést használó tartalomkezelő rendszer tervezése Azure Media Services 
 
@@ -147,13 +148,13 @@ A következő táblázat a leképezést mutatja be.
 
 | **Építőelem** | **Technológia** |
 | --- | --- |
-| **Lejátszó** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
+| **Player** |[Azure Media Player](https://azure.microsoft.com/services/media-services/media-player/) |
 | **Identitás-szolgáltató (IDENTITÁSSZOLGÁLTATÓ)** |Azure Active Directory (Azure AD) |
 | **Biztonsági jogkivonat szolgáltatás (STS)** |Azure AD |
 | **DRM-védelem munkafolyamata** |Media Services dinamikus védelem |
 | **DRM-licenckézbesítés** |* Media Services licenc kézbesítése (PlayReady, Widevine, FairPlay) <br/>* Axinom-licenckiszolgáló <br/>* Egyéni PlayReady-licenckiszolgáló |
-| **Forrás** |Media Services streaming végpont |
-| **Kulcskezelés** |A hivatkozás megvalósításához nem szükséges |
+| **Származási** |Media Services streaming végpont |
+| **Kulcskezelő** |A hivatkozás megvalósításához nem szükséges |
 | **Tartalomkezelés** |C# konzolos alkalmazás |
 
 Más szóval a IDENTITÁSSZOLGÁLTATÓ és az STS is az Azure AD-vel együtt használható. A lejátszóhoz a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) használatos. Mind a Media Services, mind a Media Player támogatja a DASH és a CENC-et több DRM-mel.
@@ -184,7 +185,7 @@ A folyamat futása közben:
    * Licenc-beszerzési URL-címek.
 * A lejátszó a licencek beszerzésére irányuló kérést a böngésző/DRM által támogatott böngészők alapján teszi elérhetővé. A licenc-beszerzési kérelemben a kulcs AZONOSÍTÓját és a JWT is elküldi a rendszer. A licenc-kézbesítési szolgáltatás ellenőrzi a JWT és a jogcímeket, mielőtt kiadja a szükséges licencet.
 
-## <a name="implementation"></a>Megvalósítás
+## <a name="implementation"></a>Implementálás
 ### <a name="implementation-procedures"></a>Megvalósítási eljárások
 A megvalósítás a következő lépéseket tartalmazza:
 
@@ -226,7 +227,7 @@ További információ: [JWT-jogkivonat hitelesítése Azure Media Services és d
 További információ az Azure AD-ről:
 
 * A fejlesztői információk a [Azure Active Directory fejlesztői útmutatójában](../../active-directory/azuread-dev/v1-overview.md)találhatók.
-* A rendszergazdai információk az [Azure ad-bérlői címtár felügyeletében](../../active-directory/fundamentals/active-directory-administer.md)találhatók.
+* A rendszergazdai információk az [Azure ad-bérlői címtár felügyeletében](../../active-directory/fundamentals/active-directory-whatis.md)találhatók.
 
 ### <a name="some-issues-in-implementation"></a>Néhány probléma a megvalósításban
 A megvalósítással kapcsolatos problémák megoldásához használja az alábbi hibaelhárítási információkat.
@@ -295,7 +296,7 @@ Az aláíró kulcsok átváltásának fontos szempontja, hogy figyelembe vegye a
 
 Az Azure AD az iparági szabványokat használja az Azure AD-t használó saját maga és az alkalmazások közötti megbízhatósági kapcsolat létrehozására. Az Azure AD egy nyilvános és titkos kulcspárből álló aláíró kulcsot használ. Ha az Azure AD olyan biztonsági jogkivonatot hoz létre, amely a felhasználóval kapcsolatos információkat tartalmaz, azt az Azure AD írja alá egy titkos kulccsal, mielőtt visszaküldi az alkalmazásnak. Annak ellenőrzéséhez, hogy a jogkivonat érvényes-e, és az Azure AD-ből származik, az alkalmazásnak ellenőriznie kell a jogkivonat aláírását. Az alkalmazás az Azure AD által elérhető nyilvános kulcsot használja, amelyet a bérlő összevonási metaadatait tartalmazó dokumentum tartalmaz. Ez a nyilvános kulcs és az azt tartalmazó aláíró kulcs ugyanaz, mint az Azure AD összes bérlője számára.
 
-Az Azure AD-kulcsok átváltásával kapcsolatos további információkért tekintse meg az [Azure ad-ban az aláíró kulcsok átváltásával kapcsolatos fontos információkat](../../active-directory/active-directory-signing-key-rollover.md).
+Az Azure AD-kulcsok átváltásával kapcsolatos további információkért tekintse meg az [Azure ad-ban az aláíró kulcsok átváltásával kapcsolatos fontos információkat](../../active-directory/develop/active-directory-signing-key-rollover.md).
 
 A [nyilvános titkos kulcspár](https://login.microsoftonline.com/common/discovery/keys/)között:
 
@@ -328,7 +329,7 @@ Ha azt tapasztalja, hogy egy webalkalmazás hogyan hív meg egy API-alkalmazást
 * Az Azure AD hitelesíti az alkalmazást, és egy JWT hozzáférési tokent ad vissza, amely a webes API meghívásához használatos.
 * HTTPS-kapcsolaton keresztül a webalkalmazás a visszaadott JWT hozzáférési tokent használja, hogy hozzáadja a JWT karakterláncot a "tulajdonos" jelöléssel a webes API-nak küldött kérelem "engedélyezés" fejlécében. A webes API ezt követően ellenőrzi a JWT. Ha az érvényesítés sikeres, akkor a rendszer visszaadja a kívánt erőforrást.
 
-Az alkalmazás-identitás folyamatában a webes API megbízik abban, hogy a webalkalmazás hitelesítette a felhasználót. Emiatt ezt a mintát megbízható alrendszernek nevezzük. Az [engedélyezési folyamat diagramja](https://docs.microsoft.com/azure/active-directory/active-directory-protocols-oauth-code) leírja, hogyan működik az engedélyezési kód – engedélyezés folyamata.
+Az alkalmazás-identitás folyamatában a webes API megbízik abban, hogy a webalkalmazás hitelesítette a felhasználót. Emiatt ezt a mintát megbízható alrendszernek nevezzük. Az [engedélyezési folyamat diagramja](../../active-directory/azuread-dev/v1-protocols-oauth-code.md) leírja, hogyan működik az engedélyezési kód – engedélyezés folyamata.
 
 A jogkivonat-korlátozással rendelkező licenc-beszerzések ugyanazt a megbízható alrendszer mintát követik. A Media Services a licenc kézbesítési szolgáltatása a webes API-erőforrás, vagy a "háttérbeli erőforrás", amelyet egy webalkalmazásnak el kell érnie. Hol található a hozzáférési jogkivonat?
 
@@ -405,7 +406,7 @@ Habár az Azure eredetileg csak Microsoft-fiók felhasználók számára engedé
 
 Mivel az Azure AD megbízhatónak tekinti a Microsoft-fiók tartományt, a következő tartományokból bármelyik fiókot hozzáadhatja az egyéni Azure AD-bérlőhöz, és a fiók használatával jelentkezhet be:
 
-| **Tartománynév** | **Domain** |
+| **Tartománynév** | **Tartomány** |
 | --- | --- |
 | **Egyéni Azure AD-bérlői tartomány** |somename.onmicrosoft.com |
 | **Vállalati tartomány** |microsoft.com |
@@ -469,7 +470,7 @@ Az alábbi képernyőképen egy olyan forgatókönyv látható, amely aszimmetri
 
 Mindkét előző esetben a felhasználói hitelesítés ugyanaz marad. Az Azure AD-n keresztül zajlik. Az egyetlen különbség, hogy a JWTs az Azure AD helyett az egyéni STS állítja ki. A dinamikus CENC-védelem konfigurálásakor a licenc-kézbesítési szolgáltatási korlátozás meghatározza a JWT típusát (szimmetrikus vagy aszimmetrikus kulcs).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez a dokumentum a többszörös natív DRM-mel és hozzáférés-vezérléssel, a CENC, annak kialakításával és az Azure, Media Services és Media Player használatával történő megvalósításával kapcsolatban tárgyalt.
 

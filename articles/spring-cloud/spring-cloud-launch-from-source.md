@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: brendm
-ms.openlocfilehash: 3ab4b1729ea380671b72a9bb01740930a186d5c3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-java
+ms.openlocfilehash: 7057138709f97c2eba2b2301d8363e2524a2042a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79470794"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071099"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Rövid útmutató: a Spring Cloud-alkalmazás elindítása forráskódból
 
@@ -38,7 +39,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy az Azure-előfizetése rendel
 1. [A Git telepítése](https://git-scm.com/)
 2. [A JDK 8 telepítése](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 3. [A Maven 3,0-es vagy újabb verziójának telepítése](https://maven.apache.org/download.cgi)
-4. [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+4. [Az Azure CLI összetevő telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 5. [Feliratkozás Azure-előfizetésre](https://azure.microsoft.com/free/)
 
 > [!TIP]
@@ -119,7 +120,7 @@ az spring-cloud app deployment create --app <app-name> -n <deployment-name> --ja
 Az Azure Spring Cloud a [kpack](https://github.com/pivotal/kpack) használatával hozza létre a projektet.  Az Azure CLI-vel feltöltheti a forráskódot, felépítheti a projektet a kpack használatával, és üzembe helyezheti azt a célalkalmazás alkalmazásban.
 
 > [!WARNING]
-> A projektnek csak egy `main-class` jar-fájlt `MANIFEST.MF` kell létrehoznia `target` (a Maven üzembe helyezéséhez vagy `build/libs` a (Gradle-telepítésekhez).  Több JAR-fájl `main-class` bejegyzéseivel a telepítés sikertelen lesz.
+> A projektnek csak egy JAR-fájlt kell létrehoznia `main-class` (a `MANIFEST.MF` Maven üzembe helyezéséhez vagy a `target` `build/libs` (Gradle-telepítésekhez).  Több JAR-fájl `main-class` bejegyzéseivel a telepítés sikertelen lesz.
 
 Egymodulos Maven/Gradle-projektekhez:
 
@@ -152,7 +153,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Nyilvános végpont társítása az átjáróhoz
 
 1. Nyissa meg az **alkalmazás-irányítópult** lapot.
-2. Válassza ki `gateway` az alkalmazást az **alkalmazás részletei** lap megjelenítéséhez.
+2. Válassza ki az alkalmazást az `gateway` **alkalmazás részletei** lap megjelenítéséhez.
 3. Válassza a **tartomány kiosztása** lehetőséget egy nyilvános végpontnak az átjáróhoz való hozzárendeléséhez. Ez néhány percet is igénybe vehet. 
 4. A futó alkalmazás megtekintéséhez adja meg a hozzárendelt nyilvános IP-címet a böngészőben.
 

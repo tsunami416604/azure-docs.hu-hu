@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: b975ee8cebdac3855c3fca88b20c01145d11baeb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080193"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072781"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – motiváció és előnyök
 
@@ -163,9 +163,9 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 
 ### <a name="azure-requirements-questionnaire"></a>Azure-követelmények – kérdőív
 
-|**Témakör**: **infrastruktúra** |||
-|---|---|---|
 |**Kérdés**|**Példa**|**Válasz**|
+|---|---|---|
+|**Témakör**: **infrastruktúra** |||
 | Előnyben részesített régió|USA keleti régiója||
 |VNet előnyben részesített?|Yes||
 |HA/DR szükséges?|Yes||

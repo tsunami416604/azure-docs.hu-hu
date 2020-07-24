@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: radeltch
-ms.openlocfilehash: ed754e3f69feaf6d5415db8f71cb5c1bb65632e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28e53c5ca53f5be4aafc685445e67dcf4d558773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368250"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074002"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban
 
@@ -41,7 +41,7 @@ Az Azure kerítés ügynökének nem szükséges további virtuális gép (ek) t
 ![Pacemaker on SLES – áttekintés](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
 >[!IMPORTANT]
-> A Linux pacemaker fürtözött csomópontok és SBD tervezése és üzembe helyezése során elengedhetetlen a teljes fürtkonfiguráció teljes megbízhatósága, amely az érintett virtuális gépek és a SBD-eszközt üzemeltető virtuális gép (ek) közötti útválasztás nem halad át semmilyen más eszközön, például a [NVA](https://azure.microsoft.com/solutions/network-appliances/)-en keresztül. Ellenkező esetben a NVA kapcsolatos problémák és karbantartási események negatív hatással lehetnek a fürt általános konfigurációjának stabilitására és megbízhatóságára. Az ilyen akadályok elkerülése érdekében ne határozzon meg olyan NVA vagy [felhasználó által definiált útválasztási szabályok](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) útválasztási szabályait, amelyek a fürtözött csomópontok és a SBD eszközök közötti forgalmat irányítják a NVA és hasonló eszközökön a Linux pacemaker fürtözött csomópontok és SBD-eszközök tervezése és telepítése során. 
+> A Linux pacemaker fürtözött csomópontok és SBD tervezése és üzembe helyezése során elengedhetetlen a teljes fürtkonfiguráció teljes megbízhatósága, amely az érintett virtuális gépek és a SBD-eszközt üzemeltető virtuális gép (ek) közötti útválasztás nem halad át semmilyen más eszközön, például a [NVA](https://azure.microsoft.com/solutions/network-appliances/)-en keresztül. Ellenkező esetben a NVA kapcsolatos problémák és karbantartási események negatív hatással lehetnek a fürt általános konfigurációjának stabilitására és megbízhatóságára. Az ilyen akadályok elkerülése érdekében ne határozzon meg olyan NVA vagy [felhasználó által definiált útválasztási szabályok](../../../virtual-network/virtual-networks-udr-overview.md) útválasztási szabályait, amelyek a fürtözött csomópontok és a SBD eszközök közötti forgalmat irányítják a NVA és hasonló eszközökön a Linux pacemaker fürtözött csomópontok és SBD-eszközök tervezése és telepítése során. 
 >
 
 ## <a name="sbd-fencing"></a>SBD-kerítés
@@ -583,7 +583,7 @@ A STONITH-eszköz egy egyszerű szolgáltatásnév használatával engedélyezi 
 
 ### <a name="1-create-a-custom-role-for-the-fence-agent"></a>**[1]** egyéni szerepkör létrehozása a kerítés ügynökéhez
 
-Az egyszerű szolgáltatás alapértelmezés szerint nem rendelkezik engedéllyel az Azure-erőforrások eléréséhez. A fürt összes virtuális gépe elindításához és leállításához (felszabadításához) engedélyeket kell adni a szolgáltatásnak. Ha még nem tette meg az egyéni szerepkört, akkor a [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-powershell#create-a-custom-role) vagy az [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-cli) használatával hozhatja létre
+Az egyszerű szolgáltatás alapértelmezés szerint nem rendelkezik engedéllyel az Azure-erőforrások eléréséhez. A fürt összes virtuális gépe elindításához és leállításához (felszabadításához) engedélyeket kell adni a szolgáltatásnak. Ha még nem tette meg az egyéni szerepkört, akkor a [PowerShell](../../../role-based-access-control/custom-roles-powershell.md#create-a-custom-role) vagy az [Azure CLI](../../../role-based-access-control/custom-roles-cli.md) használatával hozhatja létre
 
 Használja az alábbi tartalmat a bemeneti fájlhoz. A tartalmat az előfizetéséhez kell igazítania, a c276fc76-9cd4-44c9-99a7-4fd71546436e és a e91d47c4-76f3-4271-a796-21b4ecfe3624 helyére az előfizetés azonosítóit kell cserélnie. Ha csak egy előfizetéssel rendelkezik, távolítsa el a második bejegyzést a AssignableScopes-ben.
 
@@ -616,7 +616,7 @@ Használja az alábbi tartalmat a bemeneti fájlhoz. A tartalmat az előfizetés
 
 Rendelje hozzá az előző fejezetben az egyszerű szolgáltatásnév számára létrehozott "Linux kerítési ügynök szerepkör" egyéni szerepkört. Ne használja többé a tulajdonosi szerepkört!
 
-1. odamegy[https://portal.azure.com](https://portal.azure.com)
+1. Ugrás ide: [https://portal.azure.com](https://portal.azure.com)
 1. Nyissa meg az összes erőforrás panelt
 1. Válassza ki az első fürtcsomópont virtuális gépét.
 1. Kattintson a hozzáférés-vezérlés (IAM) elemre.
@@ -647,11 +647,11 @@ sudo crm configure property stonith-timeout=900
 > A figyelési és a kerítési műveletek deszerializáltak. Ennek eredményeképpen, ha már futó figyelési művelet és egyidejű kerítési esemény van, akkor a fürt feladatátvétele a már futó figyelési művelet miatt nem jár késéssel.
 
 > [!TIP]
->Az Azure kerítés ügynöke a nyilvános végponti pontokhoz kapcsolódóan dokumentált kimenő kapcsolatot igényel, valamint a lehetséges megoldásokkal együtt a [standard szintű ILB használó virtuális gépek nyilvános végponti kapcsolatát](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+>Az Azure kerítés ügynöke a nyilvános végponti pontokhoz kapcsolódóan dokumentált kimenő kapcsolatot igényel, valamint a lehetséges megoldásokkal együtt a [standard szintű ILB használó virtuális gépek nyilvános végponti kapcsolatát](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker-konfiguráció az Azure ütemezett eseményeihez
 
-Az Azure [ütemezett eseményeket](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events)kínál. Az ütemezett események a meta-adatszolgáltatáson keresztül érhetők el, és lehetővé teszik, hogy az alkalmazás előkészítse az eseményeket, például a virtuális gépek leállítását, a virtuális gépek újratelepítését stb. Erőforrás **[-ügynök Azure – események](https://github.com/ClusterLabs/resource-agents/pull/1161)** figyelők az ütemezett Azure-eseményekhez. Ha a rendszer eseményeket észlel, az ügynök megkísérli leállítani az érintett virtuális gép összes erőforrását, és áthelyezi őket a fürt egy másik csomópontjára. A további pacemaker-erőforrások eléréséhez konfigurálni kell. 
+Az Azure [ütemezett eseményeket](../../linux/scheduled-events.md)kínál. Az ütemezett események a meta-adatszolgáltatáson keresztül érhetők el, és lehetővé teszik, hogy az alkalmazás előkészítse az eseményeket, például a virtuális gépek leállítását, a virtuális gépek újratelepítését stb. Erőforrás **[-ügynök Azure – események](https://github.com/ClusterLabs/resource-agents/pull/1161)** figyelők az ütemezett Azure-eseményekhez. Ha a rendszer eseményeket észlel, az ügynök megkísérli leállítani az érintett virtuális gép összes erőforrását, és áthelyezi őket a fürt egy másik csomópontjára. A további pacemaker-erőforrások eléréséhez konfigurálni kell. 
 
 1. **[A]** ellenőrizze, hogy az **Azure-Events** Agent csomag már telepítve van-e és naprakész-e. 
 

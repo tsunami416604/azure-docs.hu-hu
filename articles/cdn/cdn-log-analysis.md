@@ -1,28 +1,38 @@
 ---
-title: Azure CDN használati minták elemzése | Microsoft Docs
+title: Az Azure CDN használati mintáinak elemzése
 description: Ez a cikk a Azure CDN termékekhez elérhető elemzési jelentések különböző típusait ismerteti.
 services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: 95e18b3c-b987-46c2-baa8-a27a029e3076
+manager: KumudD
 ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 7/22/2020
 ms.author: allensu
-ms.openlocfilehash: c78dff9f5258023d90100c70bd244e8e0d016d6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 169889dbb87d00fdde44ff72c0d2004c331604ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81253611"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073036"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Az Azure CDN használati mintáinak elemzése
 
 Miután engedélyezte a CDN-t az alkalmazáshoz, figyelheti a CDN használatát, ellenőrizheti a kézbesítés állapotát, és elháríthatja a lehetséges problémákat. A Azure CDN a következő módokon biztosítja ezeket a funkciókat: 
+
+## <a name="raw-logs-for-azure-cdn-from-microsoft"></a>Nyers naplók a Microsoft Azure CDN
+Szabványos Microsoft-profillal engedélyezheti a nyers naplókat, és kiválaszthatja a naplók továbbítását a következőre:
+
+* Azure Storage
+* Event Hubs
+* Azure Log Analytics
+
+Az Azure Log Analytics megtekintheti a figyelési metrikákat, és beállíthatja a riasztásokat. 
+
+További információ: [Azure CDN http nyers naplók](enable-raw-logs.md).
+
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Alapvető elemzések az Azure diagnosztikai naplóin keresztül
 
@@ -30,16 +40,27 @@ Az alapszintű Analitika minden díjszabási szinten elérhető a CDN-végpontok
 
 ## <a name="verizon-core-reports"></a>Verizon Core-jelentések
 
-Azure CDN felhasználóként a Verizon-profilból származó, a verizontól vagy a **Azure CDN premiumtól** származó **Azure CDN szabványnak** megfelelő Verizon Core-jelentéseket a Verizon kiegészítő portálon tekinthet meg. A Verizon Core-jelentések a Azure Portal **kezelés** lehetőségével érhetők el, és számos gráfot és nézetet biztosítanak. További információ: [a Verizon alapvető jelentései](cdn-analyze-usage-patterns.md).
+**Azure CDN a** Verizon vagy **a prémium szintű Azure CDN a Verizon** -profilok alapszintű jelentéseket biztosítanak. Az alapvető jelentéseket a Verizon kiegészítő portálon tekintheti meg. A Verizon Core-jelentések a Azure Portal **kezelés** lehetőségével érhetők el, és különböző gráfokat és nézeteket biztosítanak. További információ: [a Verizon alapvető jelentései](cdn-analyze-usage-patterns.md).
 
 ## <a name="verizon-custom-reports"></a>Egyéni Verizon-jelentések
 
-A Verizon és a **Azure CDN Premium** **Azure CDN standard szintű** Azure CDN felhasználóként a Verizon kiegészítő portálon megtekintheti a Verizon egyéni jelentéseit. A Verizon egyéni jelentései a Azure Portal **kezelés** lehetőségével érhetők el. Az egyéni Verizon-jelentések lapon az Azure CDN-profilhoz tartozó minden egyes peremhálózati CName rekordhoz tartozó találatok vagy adatforgalom száma látható. Az adat a HTTP-válasz kódja vagy a gyorsítótár állapota tetszőleges időszakon belül csoportosítható. További információ: [egyéni jelentések a verizonban](cdn-verizon-custom-reports.md).
+**Azure CDN a** verizontól vagy **a prémium szintű Azure CDNtól a Verizon** -profiloktól származó, egyéni jelentéseket biztosít. Egyéni jelentéseket a Verizon kiegészítő portálon tekinthet meg. A Verizon egyéni jelentései a Azure Portal **kezelés** lehetőségével érhetők el. 
+
+Az egyéni jelentések megjelenítik a találatok vagy az átvitt adatmennyiségek számát az egyes peremhálózati CNAME-rekordokban. Az adat a HTTP-válasz kódja vagy a gyorsítótár állapota időszakon belül van csoportosítva. További információ: [egyéni jelentések a verizonban](cdn-verizon-custom-reports.md).
 
 ## <a name="azure-cdn-premium-from-verizon-reports"></a>Prémium szintű Azure CDN Verizon-jelentésekben
 
 A **Verizon Azure CDN Premium**csomaggal a következő jelentések is elérhetők:
    * [Speciális HTTP-jelentések](cdn-advanced-http-reports.md)
    * [Valós idejű statisztikák](cdn-real-time-stats.md)
-   * [Határcsomópont teljesítménye](cdn-edge-performance.md)
+   * [Azure CDN Edge-csomópont teljesítménye](cdn-edge-performance.md)
+
+## <a name="next-steps"></a>További lépések
+Ebből a cikkből megtudhatta, hogyan használhatók a Azure CDN elemzési jelentéseinek különböző lehetőségei.
+
+A Azure CDNről és a jelen cikkben említett egyéb Azure-szolgáltatásokról további információt a következő témakörben talál:
+
+* [Mi az Azure CDN?](cdn-overview.md)
+* [HTTP nyers naplók Azure CDN](enable-raw-logs.md)
+
 

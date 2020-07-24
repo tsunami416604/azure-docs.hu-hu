@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b18c34f8c0378d22d138b865d72fa4f351d7b8f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77665153"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073638"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector felügyeleti megoldás (elavult)
 
@@ -46,7 +47,7 @@ A legtöbb más Log Analytics-megoldástól eltérően az ügynökök nem gyűjt
 | [Windows-ügynökök](../../azure-monitor/platform/agent-windows.md) | No | A megoldás nem gyűjt adatokat a Windows-ügynököktől. |
 | [Linux-ügynökök](../../azure-monitor/learn/quick-collect-linux-computer.md) | No | A megoldás nem gyűjt adatokat a Linux-ügynököktől. |
 | [SCOM felügyeleti csoport](../../azure-monitor/platform/om-agents.md) | No | A megoldás nem gyűjt adatokat a csatlakoztatott SCOM felügyeleti csoportba tartozó ügynököktől. |
-| [Azure Storage-fiók](collect-azure-metrics-logs.md) | No | A megoldás nem gyűjt adatokat az Azure Storage-ból. |
+| [Azure Storage-fiók](./resource-logs.md#send-to-log-analytics-workspace) | No | A megoldás nem gyűjt adatokat az Azure Storage-ból. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -59,7 +60,7 @@ A legtöbb más Log Analytics-megoldástól eltérően az ügynökök nem gyűjt
 1. Engedélyezze a Azure Web Apps Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) -en, vagy használja az [Solutions Gallery log Analytics-megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című témakörben leírt eljárást.
 2. Keresse fel az [Azure Portalt](https://portal.azure.com). Application Insights megnyitásához válassza **az összes szolgáltatás** elemet. Ezután keressen rá Application Insights. 
 3. Az **előfizetések**területen válasszon ki egy Application Insights erőforrásokkal rendelkező előfizetést, majd a **név**területen válasszon ki egy vagy több alkalmazást.
-4. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **Mentés** gombra.
 
 Körülbelül 30 perc alatt az adatok elérhetővé válnak, és a Application Insights csempe frissül az adatokkal, például a következő képpel:
 
@@ -186,7 +187,7 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | Kontinens | Az a kontinens, ahol a kérelem származik |
 | Ország | Az ország/régió, ahol a kérés származik |
 | Tartomány | Tartomány, állam vagy területi beállítás, ahol a kérelem származik |
-| Város | A kérést kezdeményező város vagy város |
+| Település | A kérést kezdeményező város vagy város |
 | isSynthetic | Azt jelzi, hogy a kérést egy felhasználó vagy egy automatikus metódus hozta-e létre. True = automatizált metódus vagy hamis = felhasználó által generált |
 | SamplingRate | A portálra eljuttatott SDK által generált telemetria százalékos aránya. Tartomány 0,0 – 100.0. |
 | SampledCount | 100/(SamplingRate). Például: 4 = &gt; 25% |
@@ -244,14 +245,14 @@ Minden típusú bemeneti adathoz létrejön egy *ApplicationInsights* *típusú*
 | Tulajdonság | Leírás |
 | --- | --- |
 | Típus | ApplicationInsights |
-| TelemetryType | Kérés |
+| TelemetryType | Kérelem |
 | ResponseCode | Az ügyfélnek küldött HTTP-válasz |
 | RequestSuccess | Sikert vagy hibát jelez. TRUE (igaz) vagy FALSE (hamis). |
 | RequestID | AZONOSÍTÓ a kérelem egyedi azonosításához |
 | RequestName | GET/POST + URL-cím alapja |
 | RequestDuration | A kérelem időtartamának ideje (másodpercben) |
 | URL-cím | A kérelem URL-címe nem tartalmazza a gazdagépet |
-| Gazdagép | Webkiszolgáló-gazdagép |
+| Gazda | Webkiszolgáló-gazdagép |
 | URLBase | A kérelem teljes URL-címe |
 | ApplicationProtocol | Az alkalmazás által használt protokoll típusa |
 | RequestCount | 100/(mintavételi sebesség). Például: 4 = &gt; 25% |
@@ -303,7 +304,7 @@ $Headers = @{
 $Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
 $ConnectionsJson = $Connections | ConvertTo-Json
 ```
-A szkriptnek rendelkeznie kell egy tulajdonosi hitelesítési jogkivonattal a Azure Active Directory való hitelesítéshez. A token lekérésének egyik módja a [REST API dokumentációs webhelyén](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)található cikk használata. Kattintson a **kipróbálás** gombra, és jelentkezzen be az Azure-előfizetésbe. A tulajdonosi jogkivonatot a **kérelem előzetes** verziójából másolhatja, ahogy az alábbi képen is látható.
+A szkriptnek rendelkeznie kell egy tulajdonosi hitelesítési jogkivonattal a Azure Active Directory való hitelesítéshez. A token lekérésének egyik módja a [REST API dokumentációs webhelyén](/rest/api/loganalytics/datasources/createorupdate)található cikk használata. Kattintson a **kipróbálás** gombra, és jelentkezzen be az Azure-előfizetésbe. A tulajdonosi jogkivonatot a **kérelem előzetes** verziójából másolhatja, ahogy az alábbi képen is látható.
 
 
 ![Tulajdonosi jogkivonat](media/app-insights-connector/bearer-token.png)

@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81867964"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073913"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rövid útmutató – privát felhőalapú környezet konfigurálása
 
@@ -113,7 +114,7 @@ A CloudSimple a számítógépről való csatlakozáshoz VPN-ügyfél szüksége
 1. Indítsa el a CloudSimple portált, és válassza a **hálózat**lehetőséget.
 2. Válassza a **VPN Gateway**lehetőséget.
 3. A VPN-átjárók listájában kattintson a pont – hely VPN-átjáróra.
-4. Válassza a **felhasználók**lehetőséget.
+4. Válassza a **Felhasználók** lehetőséget.
 5. Kattintson **a saját VPN-konfiguráció letöltése**elemre.
 
     ![VPN-konfiguráció letöltése](media/download-p2s-vpn-configuration.png)
@@ -147,7 +148,7 @@ A rendszer létrehozza a VLAN-t/alhálózatot.  Most már használhatja ezt a VL
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Környezet összekötése egy Azure-beli virtuális hálózattal
 
-A CloudSimple ExpressRoute áramkört biztosít a saját felhőhöz. Az Azure-beli virtuális hálózatot a ExpressRoute áramkörhöz is összekapcsolhatja. A kapcsolat beállításával kapcsolatos részletes információkért kövesse az [Azure Virtual Network-kapcsolat](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-azure-network-connection)lépéseit a ExpressRoute használatával.
+A CloudSimple ExpressRoute áramkört biztosít a saját felhőhöz. Az Azure-beli virtuális hálózatot a ExpressRoute áramkörhöz is összekapcsolhatja. A kapcsolat beállításával kapcsolatos részletes információkért kövesse az [Azure Virtual Network-kapcsolat](./cloudsimple-azure-network-connection.md)lépéseit a ExpressRoute használatával.
 
 ## <a name="sign-in-to-vcenter"></a>Bejelentkezés a vCenter
 

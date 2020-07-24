@@ -1,6 +1,6 @@
 ---
 title: Privát végpont létrehozása az Azure Private linkben
-description: Ebben a rövid útmutatóban egy Azure Resource Manager sablonnal hozzon létre egy privát végpontot.
+description: Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy privát végpont létrehozásához.
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: a60edde222a6200a0378cd8c9c4f4774da9c2e50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fde76b86b290e1271f408cb7810e549dd9502a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84817966"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071491"
 ---
-# <a name="quickstart-create-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Rövid útmutató: privát végpont létrehozása Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Rövid útmutató: privát végpont létrehozása ARM-sablonnal
 
-Ebben a rövid útmutatóban egy Azure Resource Manager sablonnal hozzon létre egy privát végpontot.
+Ebben a rövid útmutatóban egy Azure Resource Manager sablont (ARM-sablont) használ egy privát végpont létrehozásához.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 Ezt a rövid útmutatót a [Azure Portal](create-private-endpoint-portal.md), [Azure PowerShell](create-private-endpoint-powershell.md)vagy az [Azure CLI](create-private-endpoint-cli.md)használatával is elvégezheti.
 
-## <a name="prerequisite"></a>Előfeltétel
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
+
+[![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Előfeltételek
 
 Aktív előfizetéssel rendelkező Azure-fiókra van szüksége. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
+## <a name="review-the-template"></a>A sablon áttekintése
 
 Ez a sablon egy Azure SQL Database-példányhoz hoz létre egy privát végpontot.
 
-### <a name="review-the-template"></a>A sablon áttekintése
-
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/) közül származik.
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
@@ -50,9 +52,9 @@ Több Azure-erőforrás van definiálva a sablonban:
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces): a virtuális gép hálózati adaptere.
 - [**Microsoft. számítási/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines): az a virtuális gép, amely a privát végponttal való magánhálózati kapcsolódás tesztelésére használatos a SQL Database példányával.
 
-### <a name="deploy-the-template"></a>A sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
-A Azure Resource Manager-sablon üzembe helyezése az Azure-ban:
+Az ARM-sablon üzembe helyezése az Azure-ban:
 
 1. Az Azure-ba való bejelentkezéshez és a sablon megnyitásához válassza az **üzembe helyezés az Azure**-ban lehetőséget. A sablon létrehozza a privát végpontot, a SQL Database példányát, a hálózati infrastruktúrát és az érvényesíteni kívánt virtuális gépet.
 
@@ -66,7 +68,7 @@ A Azure Resource Manager-sablon üzembe helyezése az Azure-ban:
 ## <a name="validate-the-deployment"></a>Az üzembe helyezés ellenőrzése
 
 > [!NOTE]
-> A Azure Resource Manager sablon egyedi nevet hoz létre a (z)<b>{UniqueID}</b> virtuális gép myVm, valamint a SQL Database SQLServer<b>{UniqueID}</b> erőforráshoz. Helyettesítse be a generált értéket **{UniqueID}** értékre.
+> Az ARM-sablon egyedi nevet hoz létre a (z)<b>{UniqueID}</b> virtuális gép myVm, valamint a SQL Database SQLServer<b>{UniqueID}</b> erőforráshoz. Helyettesítse be a generált értéket **{UniqueID}** értékre.
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>Kapcsolódás virtuális géphez az internetről
 
@@ -76,7 +78,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myVm az internetről a követke
 
 2. Kattintson a **Csatlakozás** gombra. Megnyílik **a virtuális géphez való kapcsolódás** .
 
-3. Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll (_. rdp_) fájlt, és letölti a számítógépre.
+3. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (_. rdp_) fájlt, és letölti a számítógépre.
 
 4. Nyissa meg a letöltött .rdp fájlt.
 
@@ -87,7 +89,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myVm az internetről a követke
       > [!NOTE]
       > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
 
-5. Válassza az **OK** lehetőséget.
+5. Kattintson az **OK** gombra.
 
 6. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
 

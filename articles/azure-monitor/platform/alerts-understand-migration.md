@@ -6,11 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114305"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073624"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>A migrálási eszköz működésének ismertetése
 
@@ -63,7 +64,7 @@ A rendszer minden klasszikus riasztást áttelepíthet a tárolási fiókokon, k
 - SASThrottlingError
 - ThrottlingError
 
-A rendszer a klasszikus riasztási szabályokat a [régi és az új tárolási mérőszámok közötti leképezés](https://docs.microsoft.com/azure/storage/common/storage-metrics-migration#metrics-mapping-between-old-metrics-and-new-metrics)alapján kell áttelepíteni. A küszöbértékeket megfelelően módosítani kell, mert az elérhető új metrika abszolút.
+A rendszer a klasszikus riasztási szabályokat a [régi és az új tárolási mérőszámok közötti leképezés](../../storage/common/storage-metrics-migration.md#metrics-mapping-between-old-metrics-and-new-metrics)alapján kell áttelepíteni. A küszöbértékeket megfelelően módosítani kell, mert az elérhető új metrika abszolút.
 
 A AnonymousThrottlingError, a SASThrottlingError és a ThrottlingError klasszikus riasztási szabályait két új riasztásra kell bontani, mert nincs olyan kombinált metrika, amely ugyanazokat a funkciókat biztosítja. A küszöbértékeket megfelelően ki kell igazítani.
 
@@ -160,7 +161,7 @@ A Storage-fiókokhoz, például a blobhoz, a táblához, a fájlokhoz és a vár
 | SASSuccess | Tranzakciós metrika dimenziókkal "ResponseType" = "sikeres" és "hitelesítés" = "SAS" | |
 | ServerOtherError | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "ServerOtherError" | |
 | ServerTimeOutError | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "ServerTimeOutError"  | |
-| Sikeres | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "sikeres" | |
+| Success | Tranzakciós metrika a következő dimenziókkal: "ResponseType" = "sikeres" | |
 | TotalBillableRequests| Tranzakciók | |
 | TotalEgress | Kimenő forgalom | |
 | TotalIngress | Bejövő forgalom | |

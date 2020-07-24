@@ -3,15 +3,16 @@ title: Üzemi készültség és ajánlott eljárások – Azure
 description: Ez a cikk útmutatást nyújt az éles környezetekben IoT Edge modul élő videós elemzésének konfigurálásához és üzembe helyezéséhez.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a5a2ff78d456d4423facdf5f3533ee94bc25bfc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261071"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071940"
 ---
 # <a name="production-readiness-and-best-practices"></a>Termelési készenlét és ajánlott eljárások
 
-Ez a cikk útmutatást nyújt az éles környezetekben IoT Edge modul élő videós elemzésének konfigurálásához és üzembe helyezéséhez. Tekintse át a [felkészülés a IoT Edge megoldás éles környezetben való üzembe helyezését](https://docs.microsoft.com/azure/iot-edge/production-checklist) ismertető cikket is a IoT Edge megoldás előkészítéséhez. 
+Ez a cikk útmutatást nyújt az éles környezetekben IoT Edge modul élő videós elemzésének konfigurálásához és üzembe helyezéséhez. Tekintse át a [felkészülés a IoT Edge megoldás éles környezetben való üzembe helyezését](../../iot-edge/production-checklist.md) ismertető cikket is a IoT Edge megoldás előkészítéséhez. 
 
 > [!NOTE]
 > A biztonsággal kapcsolatos szempontokért tekintse meg a szervezet IT-részlegeit.

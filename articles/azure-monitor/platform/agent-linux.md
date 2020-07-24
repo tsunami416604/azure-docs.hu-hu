@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: accd7c3ad82853c1f2af0b632326b2798f85b36b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80637527"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073650"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux rendszerű számítógépek összekapcsolásának Azure Monitor
 
@@ -122,9 +123,9 @@ A következő lépésekkel konfigurálhatja az ügynököt az Azure-ban Log Anal
 
 Ha a Linux rendszerű számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics, akkor ez a konfiguráció a parancssorban is megadható `-p [protocol://][user:password@]proxyhost[:port]` . A *Protocol* tulajdonság fogadja `http` vagy a `https` , és a *ProxyHost* tulajdonság fogadja a proxykiszolgáló teljes tartománynevét vagy IP-címét. 
 
-Például:`https://proxy01.contoso.com:30443`
+Például: `https://proxy01.contoso.com:30443`
 
-Ha mindkét esetben hitelesítésre van szükség, meg kell adnia a felhasználónevet és a jelszót. Például:`https://user01:password@proxy01.contoso.com:30443`
+Ha mindkét esetben hitelesítésre van szükség, meg kell adnia a felhasználónevet és a jelszót. Például: `https://user01:password@proxy01.contoso.com:30443`
 
 1. A Linux rendszerű számítógép Log Analytics munkaterülethez való kapcsolódásának konfigurálásához futtassa a következő parancsot a munkaterület-azonosító és az elsődleges kulcs megadásával. A következő parancs letölti, majd az ellenőrzőösszeg érvényesítése után telepíti az ügynököt.
     
@@ -154,6 +155,18 @@ Ha mindkét esetben hitelesítésre van szükség, meg kell adnia a felhasznál�
     ```
     sudo /opt/microsoft/omsagent/bin/service_control restart [<workspace id>]
     ``` 
+
+## <a name="supported-linux-hardening"></a>Támogatott Linux-megerősítés
+A OMS-ügynök korlátozott testreszabási támogatást biztosít a Linux rendszerhez. 
+
+Jelenleg a következők támogatottak: 
+- FIPs
+
+A következők tervezettek, de még nem támogatottak:
+- CIS – SELINUX
+
+Más korlátozási és testreszabási módszerek nem támogatottak és nem tervezettek a OMS-ügynök számára.  
+
 
 ## <a name="upgrade-from-a-previous-release"></a>Frissítés korábbi kiadásról
 

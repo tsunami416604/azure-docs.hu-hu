@@ -3,15 +3,16 @@ title: Azure-fájlmegosztások biztonsági másolatainak kezelése
 description: Ez a cikk a Azure Backup által biztonsági mentés alatt álló Azure-fájlmegosztás felügyeletének és figyelésének általános feladatait ismerteti.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6684cb348c9edb35b5f3e46fb7922e9aa265c725
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712088"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073306"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure-fájlmegosztások biztonsági másolatainak kezelése
 
-Ez a cikk a [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)által biztonsági mentés alatt álló Azure-fájlmegosztás felügyeletének és figyelésének általános feladatait ismerteti. Megtudhatja, hogyan végezheti el a felügyeleti feladatokat a Recovery Services-tárolóban.
+Ez a cikk a [Azure Backup](./backup-overview.md)által biztonsági mentés alatt álló Azure-fájlmegosztás felügyeletének és figyelésének általános feladatait ismerteti. Megtudhatja, hogyan végezheti el a felügyeleti feladatokat a Recovery Services-tárolóban.
 
 ## <a name="monitor-jobs"></a>Feladatok figyelése
 
@@ -164,4 +165,4 @@ A Storage-fiók regisztrációjának törlése:
 
 ## <a name="next-steps"></a>További lépések
 
-További információ: az [Azure-fájlmegosztás biztonsági mentésének hibája](https://docs.microsoft.com/azure/backup/troubleshoot-azure-files).
+További információ: az [Azure-fájlmegosztás biztonsági mentésének hibája](./troubleshoot-azure-files.md).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: cd9a196e5f957782de91cff69c01fbfa5716369a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1717ebd5709c05e33e658d3798494324a702b1d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100498"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074039"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Windows rendszerű virtuális gépek időszinkronizálása az Azure-ban
 
@@ -24,7 +24,7 @@ Az Azure-t mostantól a Windows Server 2016-et futtató infrastruktúra támogat
 >[!NOTE]
 >A Windows időszolgáltatásának gyors áttekintéséhez tekintse meg ezt a [magas szintű áttekintő videót](https://aka.ms/WS2016TimeVideo).
 >
-> További információ: [a Windows Server 2016 pontos ideje](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time). 
+> További információ: [a Windows Server 2016 pontos ideje](/windows-server/networking/windows-time-service/accurate-time). 
 
 ## <a name="overview"></a>Áttekintés
 
@@ -172,9 +172,7 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 
 Az alábbi hivatkozások az idő szinkronizálásával kapcsolatos további részletekre mutatnak:
 
-- [A Windows időszolgáltatás eszközei és beállításai](https://docs.microsoft.com/windows-server/networking/windows-time-service/Windows-Time-Service-Tools-and-Settings)
-- [A Windows Server 2016 fejlesztése](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)
-- [Pontos idő a Windows Server 2016-hoz](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-- [Határ támogatása a Windows időszolgáltatásának magas pontosságú környezetekhez való konfigurálásához](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)
-
-
+- [A Windows időszolgáltatás eszközei és beállításai](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
+- [A Windows Server 2016 fejlesztése](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Pontos idő a Windows Server 2016-hoz](/windows-server/networking/windows-time-service/accurate-time)
+- [Határ támogatása a Windows időszolgáltatásának magas pontosságú környezetekhez való konfigurálásához](/windows-server/networking/windows-time-service/support-boundary)

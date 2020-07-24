@@ -3,11 +3,12 @@ title: Támogatott erőforrástípusok a Azure Resource Healthon keresztül | Mi
 description: Támogatott erőforrástípusok az Azure Resource Health használatával
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 38c7e0754649d650521cc510bcac326496bcec38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f4d622ac6d37059731b51a679e13f824670b9dc8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83816098"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071285"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések az Azure Resource Health-ben
 Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes ellenőrzés teljes listáját tartalmazza.
@@ -231,4 +232,4 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 ## <a name="next-steps"></a>Következő lépések
 -  További információ: [Bevezetés a Azure Service Health irányítópultra](service-health-overview.md) és [a Azure Resource Health bevezetésére](resource-health-overview.md) . 
 -  [Gyakori kérdések a Azure Resource Health](resource-health-faq.md)
-- Riasztások beállítása, hogy értesítést kapjon az állapottal kapcsolatos problémákról. További információ: [riasztások konfigurálása a szolgáltatás állapotára vonatkozó eseményekhez](../azure-monitor/platform/alerts-activity-log-service-notifications.md). 
+- Riasztások beállítása, hogy értesítést kapjon az állapottal kapcsolatos problémákról. További információ: [riasztások konfigurálása a szolgáltatás állapotára vonatkozó eseményekhez](./alerts-activity-log-service-notifications-portal.md). 

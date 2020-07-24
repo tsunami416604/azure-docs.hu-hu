@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: d50a9a064e6fa279d65f196c0f031e60081d86bf
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85979998"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073308"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL felügyelt példányának többmodelles képességei
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -95,9 +95,6 @@ A kapcsolódó modellek helyett a dokumentumok modelljei is használhatók a kü
 ## <a name="spatial-features"></a>Térbeli funkciók
 
 A térbeli adatok a geometriai objektumok fizikai helyével és alakával kapcsolatos információkat jelölik. Ezek az objektumok lehetnek pontok vagy összetettebb objektumok, például országok/régiók, utak vagy tavak.
-
-Az Azure SQL termékcsalád tagjai lehetővé teszik JavaScript Object Notation [(JSON)](https://www.json.org/) formátumban ábrázolt adatelemzést és lekérdezéseket, valamint a rokoni ADATAIk JSON-szövegként való exportálását.
-
 
  A két támogatott térbeli adattípus: 
 

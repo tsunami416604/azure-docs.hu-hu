@@ -7,17 +7,18 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 12bc51e800ef5ccd4ad3c72d3860fb22bac5b749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca8aa62c4119b9b0b7bbed53cf722c694696ef5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77664915"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073565"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights log-alapú metrikák
 
 Application Insights log-alapú metrikák segítségével elemezheti a figyelt alkalmazások állapotát, hatékony irányítópultokat hozhat létre, és beállíthatja a riasztásokat. Kétféle metrika létezik:
 
-* A jelenet mögötti [log-alapú mérőszámok](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) le vannak fordítva a tárolt események [Kusto-lekérdezéseinek](https://docs.microsoft.com/azure/kusto/query/) .
+* A jelenet mögötti [log-alapú mérőszámok](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#log-based-metrics) le vannak fordítva a tárolt események [Kusto-lekérdezéseinek](/azure/kusto/query/) .
 * A [standard mérőszámok](../../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics) előre összesített idősorozatként vannak tárolva.
 
 Mivel a *standard mérőszámok* előzetes összesítése a gyűjtemény során történik, jobb teljesítményt biztosítanak a lekérdezés időpontjában. Ez jobb választást tesz lehetővé az irányítópultok és a valós idejű riasztások számára. A *log-alapú mérőszámok* több dimenzióval rendelkeznek, így az adatelemzés és az alkalmi diagnosztika kiváló lehetőséget biztosít számukra. A [névtér-választóval](metrics-getting-started.md#create-your-first-metric-chart) válthat a log-alapú és a standard mérőszámok között a [metrikák Explorerben](metrics-getting-started.md).
@@ -97,7 +98,7 @@ A böngésző metrikáit a Application Insights JavaScript SDK gyűjti a valós 
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|None|
+|Ezredmásodpercben|Átlag, min, Max|Nincs|
 
 ```Kusto
 browserTimings
@@ -113,7 +114,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|None|
+|Ezredmásodpercben|Átlag, min, Max|Nincs|
 
 ```Kusto
 browserTimings
@@ -129,7 +130,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|None|
+|Ezredmásodpercben|Átlag, min, Max|Nincs|
 
 ```Kusto
 browserTimings
@@ -145,7 +146,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|None|
+|Ezredmásodpercben|Átlag, min, Max|Nincs|
 
 ```Kusto
 browserTimings
@@ -161,7 +162,7 @@ browserTimings
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|
 |---|---|---|
-|Ezredmásodpercben|Átlag, min, Max|None|
+|Ezredmásodpercben|Átlag, min, Max|Nincs|
 
 ```Kusto
 browserTimings
@@ -183,7 +184,7 @@ Ez a metrika a böngészőben futó alkalmazás kódjából kiváltott kivétele
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
 |---|---|---|---|
-|Darabszám|Darabszám|None|A log-alapú verzió a **Sum** összesítést használja.|
+|Darabszám|Darabszám|Nincs|A log-alapú verzió a **Sum** összesítést használja.|
 
 ```Kusto
 exceptions
@@ -198,7 +199,7 @@ A sikertelen függőségi hívások száma.
 
 |Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
 |---|---|---|---|
-|Darabszám|Darabszám|None|A log-alapú verzió a **Sum** összesítést használja.|
+|Darabszám|Darabszám|Nincs|A log-alapú verzió a **Sum** összesítést használja.|
 
 ```Kusto
 dependencies

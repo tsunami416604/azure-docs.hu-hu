@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df995f60867cb2062330e19a2ccfb8c29f173653
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362074"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071446"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 Kérdése van? További információért tekintse meg az alábbi gyakori kérdéseket.
@@ -106,15 +106,17 @@ Az alábbiakban a leggyakoribb elnyomási forgatókönyvek közül kettőt olvas
 
 A CredScan kimeneti fájljából származó titkos kód kivonatának kulcsát az alábbi mintában látható módon kell megadnia.
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
-                "_justification": "Secret used by MSDN sample, it is fake."
-            }
-          ]
-        }
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
+        "_justification": "Secret used by MSDN sample, it is fake."
+    }
+  ]
+}
+```
 
 >[!WARNING]
 > A kivonatoló kulcsot a rendszer az egyező érték vagy a fájl tartalmának egy részével hozza létre. Bármely forráskód-változat megváltoztathatja a kivonatoló kulcsot, és letilthatja az elnyomási szabályt.
@@ -133,19 +135,21 @@ Példák az érvényes letiltási szabályokra:
 - \lib\angular.js
 - angular.js – azonos nevű fájl letiltása
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "file": "\\files\\AdditonalSearcher.xml", 
-                "_justification": "Additional CredScan searcher specific to my team"
-            },
-            {
-                "file": "\\files\\unittest.pfx", 
-                "_justification": "Legitimate UT certificate file with private key"
-            }
-          ]
-        }      
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "file": "\\files\\AdditonalSearcher.xml", 
+        "_justification": "Additional CredScan searcher specific to my team"
+    },
+    {
+        "file": "\\files\\unittest.pfx", 
+        "_justification": "Legitimate UT certificate file with private key"
+    }
+  ]
+}
+```
 
 >[!WARNING] 
 > A rendszer a fájlhoz hozzáadott összes jövőbeli titkot is automatikusan letiltja.

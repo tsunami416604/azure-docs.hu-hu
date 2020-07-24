@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0cfd428e1bd380d17049cbc229bb8850793056e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75832479"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073029"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
 Az Azure Cloud Shell interaktív, hitelesített, böngészőben elérhető felület az Azure-erőforrások felügyeletéhez.
@@ -26,13 +27,13 @@ Rugalmasságot nyújt a munkamódszeréhez leginkább illő héjfelület (akár 
 
 Az alábbi gombra kattintva próbálja ki a shell.azure.com.
 
-[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
+[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)
 
 Próbálja ki a Azure Portalt a Cloud Shell ikon használatával.
 
 ![Portál elindítása](media/overview/portal-launch-icon.png)
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 ### <a name="browser-based-shell-experience"></a>Böngészőalapú rendszerhéj-felület
 A Cloud Shell lehetővé teszi az Azure felügyeleti feladatokkal létrehozott, böngészőalapú parancssori felület elérését.
@@ -60,15 +61,15 @@ Cloud Shell egy integrált grafikus szövegszerkesztőt kínál a nyílt forrás
 
 ### <a name="integrated-with-docsmicrosoftcom"></a>Integrálva a docs.microsoft.com
 
-A Cloud Shell közvetlenül a [docs.microsoft.com](https://docs.microsoft.com)-on tárolt dokumentációból is használhatja. Integrálva van [Microsoft Learn](https://docs.microsoft.com/learn/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) és az [Azure CLI dokumentációjában](https://docs.microsoft.com/cli/azure) – kattintson a kódrészletben található "Try" (kipróbálás) gombra, hogy megnyissa a zökkenőmentes rendszerhéj-élményt. 
+A Cloud Shell közvetlenül a [docs.microsoft.com](https://docs.microsoft.com)-on tárolt dokumentációból is használhatja. Integrálva van [Microsoft Learn](https://docs.microsoft.com/learn/), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) és az [Azure CLI dokumentációjában](https://docs.microsoft.com/cli/azure) – kattintson a kódrészletben található "Try" (kipróbálás) gombra, hogy megnyissa a zökkenőmentes rendszerhéj-élményt. 
 
 ### <a name="multiple-access-points"></a>Több hozzáférési pont
 A Cloud Shell egy rugalmas eszköz, amely a következő helyekről használható:
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
 * [Az Azure CLI dokumentációja](https://docs.microsoft.com/cli/azure)
-* [Azure PowerShell-dokumentáció](https://docs.microsoft.com/powershell/azure/overview)
-* [Azure Mobile Apps](https://azure.microsoft.com/features/azure-portal/mobile-app/)
+* [Azure PowerShell-dokumentáció](https://docs.microsoft.com/powershell/azure/)
+* [Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Microsoft Azure fájlok tárolójának összekötése

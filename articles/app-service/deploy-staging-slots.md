@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 17ba8f5bbbf0ac17e0ccb6881379a511afc7c1c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 19a7bc70bd782f9b684cb48672147f5009e4a08f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833272"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073852"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása az Azure App Service-ben
 <a name="Overview"></a>
@@ -238,7 +238,7 @@ A termelési forgalom automatikus irányítása:
 
 1. Nyissa meg az alkalmazás erőforrás-lapját, és válassza az **üzembe helyezési**pontok lehetőséget.
 
-2. Az átirányítani kívánt tárolóhely **%** oszlopában meg kell adni a százalékos értéket (0 és 100 között), hogy az összes átirányítani kívánt forgalom mennyiségét képviseljék. Kattintson a **Mentés** gombra.
+2. Az átirányítani kívánt tárolóhely **%** oszlopában meg kell adni a százalékos értéket (0 és 100 között), hogy az összes átirányítani kívánt forgalom mennyiségét képviseljék. Válassza a **Mentés** lehetőséget.
 
     ![Forgalmi arány beállítása](./media/web-sites-staged-publishing/RouteTraffic.png)
 
@@ -262,7 +262,7 @@ Ha szeretné, hogy a felhasználók elhagyják a bétaverzióját, például a k
 
 A karakterlánc `x-ms-routing-name=self` meghatározza az üzemi tárolóhelyet. Miután az ügyfél böngészője hozzáfér a hivatkozáshoz, a rendszer átirányítja az éles tárolóhelyre. Minden további kérelem rendelkezik a `x-ms-routing-name=self` cookie-val, amely a munkamenetet az üzemi tárolóhelyre PIN-kódra kéri.
 
-Ha engedélyezni szeretné, hogy a felhasználók belépjenek a bétaverzióba, állítsa ugyanazt a lekérdezési paramétert a nem üzemi tárolóhely nevére. Íme egy példa:
+Ha engedélyezni szeretné, hogy a felhasználók belépjenek a bétaverzióba, állítsa ugyanazt a lekérdezési paramétert a nem üzemi tárolóhely nevére. Bemutatunk egy példát:
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
@@ -288,7 +288,7 @@ Keresse meg és válassza ki az alkalmazást. Válassza az **üzembe helyezési*
 
 Azure PowerShell egy modul, amely parancsmagokat biztosít az Azure-nak a Windows PowerShellen keresztüli felügyeletéhez, beleértve az üzembe helyezési pontok Azure App Service-ben való felügyeletének támogatását.
 
-További információ a Azure PowerShell telepítéséről és konfigurálásáról, valamint az Azure-előfizetéssel végzett Azure PowerShell hitelesítéséről: [Microsoft Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).  
+További információ a Azure PowerShell telepítéséről és konfigurálásáról, valamint az Azure-előfizetéssel végzett Azure PowerShell hitelesítéséről: [Microsoft Azure PowerShell telepítése és konfigurálása](/powershell/azure/).  
 
 ---
 ### <a name="create-a-web-app"></a>Webalkalmazás létrehozása

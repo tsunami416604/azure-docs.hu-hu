@@ -4,11 +4,12 @@ description: Átirányíthatja Azure Monitor és Application Insights az Grafana
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/06/2017
-ms.openlocfilehash: 142e3e19c13710963d239a75bc237b63713c29cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23bba091628eee767fbf292a8a8d772ffab674cb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672208"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073470"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Az Azure-szolgáltatások figyelése a Grafana-ben
 Mostantól a [Azure monitor adatforrás beépülő](https://grafana.com/plugins/grafana-azure-monitor-datasource)modullal is figyelheti az Azure-szolgáltatásokat és-alkalmazásokat a [Grafana](https://grafana.com/) . A beépülő modul a Azure Monitor által összegyűjtött alkalmazás-teljesítményadatokat gyűjti, beleértve a különböző naplókat és mérőszámokat. Ezt az Grafana irányítópulton jelenítheti meg.
@@ -23,7 +24,7 @@ Helyi Grafana-kiszolgáló beállításához [töltse le és telepítse a Grafan
 ### <a name="set-up-grafana-on-azure-through-the-azure-marketplace"></a>Grafana beállítása az Azure-ban az Azure piactéren
 1. Lépjen az Azure Marketplace-re, és válassza a Grafana Labs Grafana.
 
-2. Adja meg a neveket és a részleteket. Hozzon létre egy új erőforráscsoportot. Tartsa nyomon a virtuális gép felhasználóneve, a virtuális gép jelszava és a Grafana-kiszolgáló rendszergazdai jelszava közül kiválasztott értékeket.  
+2. Adja meg a neveket és a részleteket. Új erőforráscsoport létrehozása. Tartsa nyomon a virtuális gép felhasználóneve, a virtuális gép jelszava és a Grafana-kiszolgáló rendszergazdai jelszava közül kiválasztott értékeket.  
 
 3. Válassza a virtuális gép mérete és a Storage-fiók lehetőséget.
 
@@ -58,9 +59,9 @@ Miután sikeresen bejelentkezett, látnia kell, hogy a Azure Monitor adatforrás
 2. Adja meg az adatforrás nevét, és válassza a legördülő listából a **Azure monitor** lehetőséget.
 
 3. Egyszerű szolgáltatásnév létrehozása – a Grafana egy Azure Active Directory egyszerű szolgáltatást használ a Azure Monitor API-khoz való kapcsolódáshoz és az adatok gyűjtéséhez. Az Azure-erőforrásokhoz való hozzáférés kezeléséhez létre kell hoznia egy meglévő szolgáltatásnevet, vagy használnia kell azt.
-    * Egy egyszerű szolgáltatásnév létrehozásához tekintse meg [ezeket az utasításokat](../../azure-resource-manager/resource-group-create-service-principal-portal.md) . Másolja és mentse a bérlői azonosítót (könyvtár-azonosítót), az ügyfél-azonosítót (Application ID) és az ügyfél titkát (az alkalmazás kulcsának értékét).
-    * A figyelni kívánt előfizetés, erőforráscsoport vagy erőforrás Azure Active Directory alkalmazáshoz való hozzárendeléséhez tekintse meg az [alkalmazás társítása szerepkörhöz](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) című részt. 
-    A Log Analytics API-nak szüksége van a [log Analytics olvasó szerepkörre](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader), amely magában foglalja az olvasói szerepkör engedélyeit, és hozzáadja azt.
+    * Egy egyszerű szolgáltatásnév létrehozásához tekintse meg [ezeket az utasításokat](../../active-directory/develop/howto-create-service-principal-portal.md) . Másolja és mentse a bérlői azonosítót (könyvtár-azonosítót), az ügyfél-azonosítót (Application ID) és az ügyfél titkát (az alkalmazás kulcsának értékét).
+    * A figyelni kívánt előfizetés, erőforráscsoport vagy erőforrás Azure Active Directory alkalmazáshoz való hozzárendeléséhez tekintse meg az [alkalmazás társítása szerepkörhöz](../../active-directory/develop/howto-create-service-principal-portal.md) című részt. 
+    A Log Analytics API-nak szüksége van a [log Analytics olvasó szerepkörre](../../role-based-access-control/built-in-roles.md#log-analytics-reader), amely magában foglalja az olvasói szerepkör engedélyeit, és hozzáadja azt.
 
 4. Adja meg a használni kívánt API-k kapcsolati adatait. Csatlakozhat az összeshez vagy egy részhez is. 
     * Ha mindkét metrikához és naplóhoz csatlakozik Azure Monitorban, akkor ugyanazokat a hitelesítő adatokat újra felhasználhatja **Azure monitor API-val megegyező adatok**kiválasztásával.
@@ -158,4 +159,3 @@ Ha a Grafana-környezetet az Azure-ban állította be, akkor a virtuális gépek
 
 ## <a name="next-steps"></a>További lépések
 * [Azure Monitor mérőszámok áttekintése](data-platform.md)
-

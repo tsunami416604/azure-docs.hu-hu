@@ -8,16 +8,20 @@ ms.custom: mvc, devcenter, tracking-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 174c11ba65ccba6389bf3e62d233b1ee56943b97
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 9bb94ee63873dea321af252a4380a7aab10df6ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560943"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071475"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Python használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
 
 Ebben a rövid útmutatóban egy Azure Database for PostgreSQL használhat a Python használatával macOS, Ubuntu Linux vagy Windows rendszeren. A rövid útmutató bemutatja, hogyan csatlakozhat az adatbázishoz, és hogyan lehet SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni. A cikk feltételezi, hogy már ismeri a Pythont, de a Azure Database for PostgreSQL használatának új módszere.
+
+> [!TIP]
+> Ha Django-alkalmazást szeretne felépíteni a PostgreSQL-sel, akkor adja ki az oktatóanyagot, [és telepítsen egy Django-webalkalmazást a PostgreSQL](../app-service/containers/tutorial-python-postgresql-app.md) oktatóanyaggal.
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,7 +64,7 @@ A cikkben szereplő kódok mindegyike esetében:
 1. A fájl futtatásához váltson egy parancssori felületen a Project mappára, és írja be például a következőt `python` : `python postgres-insert.py` .
 
 ## <a name="create-a-table-and-insert-data"></a>Tábla létrehozása és az adatbeszúrás
-A következő kódrészlet a [psycopg2. csatlakoztatási](http://initd.org/psycopg/docs/connection.html) függvénnyel csatlakozik a Azure Database for PostgreSQL-adatbázishoz, és betölti az adatait egy SQL **Insert** utasítással. A [cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) függvény végrehajtja az SQL-lekérdezést az adatbázison. 
+A következő kódrészlet a [psycopg2. csatlakoztatási](http://initd.org/psycopg/docs/connection.html) függvénnyel csatlakozik a Azure Database for PostgreSQL-adatbázishoz, és betölti az adatait egy SQL **Insert** utasítással. Az [cursor.exeCute](http://initd.org/psycopg/docs/cursor.html#execute) függvény végrehajtja az SQL-lekérdezést az adatbázison. 
 
 ```Python
 import psycopg2
@@ -104,7 +108,7 @@ A kód sikeres futtatásakor a következő kimenetet hozza létre:
 ![Parancssori kimenet](media/connect-python/2-example-python-output.png)
 
 ## <a name="read-data"></a>Adatok olvasása
-A következő kódrészlet a Azure Database for PostgreSQL-adatbázishoz kapcsolódik, és a [cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) utasítást használja az SQL **Select** utasítással az adatok olvasásához. Ez a függvény elfogad egy lekérdezést, és visszaad egy eredményhalmaz értékét a [cursor. fetchall ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall)használatával. 
+A következő kódrészlet a Azure Database for PostgreSQL-adatbázishoz kapcsolódik, és az SQL **Select** utasítással az adatok beolvasásához használja az [cursor.exeCute](http://initd.org/psycopg/docs/cursor.html#execute) kifejezést. Ez a függvény elfogad egy lekérdezést, és visszaad egy eredményhalmaz értékét a [cursor. fetchall ()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall)használatával. 
 
 ```Python
 import psycopg2
@@ -138,7 +142,7 @@ conn.close()
 ```
 
 ## <a name="update-data"></a>Adatok frissítése
-A következő kódrészlet a Azure Database for PostgreSQL-adatbázishoz kapcsolódik, és a [cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) parancsot használja az SQL **Update** utasítással az adatok frissítéséhez. 
+A következő kódrészlet a Azure Database for PostgreSQL-adatbázishoz kapcsolódik, és az SQL **Update** utasítással az adatok frissítésére szolgáló [cursor.exeCute](http://initd.org/psycopg/docs/cursor.html#execute) -t használja. 
 
 ```Python
 import psycopg2
@@ -168,7 +172,7 @@ conn.close()
 ```
 
 ## <a name="delete-data"></a>Adat törlése
-A következő kódrészlet a Azure Database for PostgreSQL-adatbázishoz kapcsolódik, és a [cursor. Execute](http://initd.org/psycopg/docs/cursor.html#execute) parancsot használja az SQL **delete** utasítással a korábban beszúrt leltári elemek törléséhez. 
+A következő kódrészlet a Azure Database for PostgreSQL-adatbázishoz kapcsolódik, és az SQL **delete** utasítással [cursor.exearanyos](http://initd.org/psycopg/docs/cursor.html#execute) használatával törli a korábban beszúrt leltározási elemeket. 
 
 ```Python
 import psycopg2
@@ -197,6 +201,6 @@ cursor.close()
 conn.close()
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./howto-migrate-using-export-and-import.md)

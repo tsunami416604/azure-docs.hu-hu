@@ -3,16 +3,16 @@ title: Azure-fájlmegosztás biztonsági mentésének kezelése a REST API-val
 description: Megtudhatja, hogyan kezelheti és figyelheti az Azure Backup által készített biztonsági mentést az Azure-fájlmegosztás REST API használatával.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1e1d3463aa5d6ee10782e2ee17a7c17ffd64cb61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4d1ee187fd1c45dfd043b28c0d4b3d5935f50e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82184911"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073253"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>Azure-fájlmegosztás biztonsági mentésének kezelése REST API
 
-Ez a cikk bemutatja, hogyan végezheti el a [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)által készített biztonsági mentést végző Azure-fájlmegosztás felügyeletére és figyelésére vonatkozó feladatokat.
+Ez a cikk bemutatja, hogyan végezheti el a [Azure Backup](./backup-overview.md)által készített biztonsági mentést végző Azure-fájlmegosztás felügyeletére és figyelésére vonatkozó feladatokat.
 
 ## <a name="monitor-jobs"></a>Feladatok figyelése
 
@@ -38,7 +38,7 @@ Például egy [trigger biztonsági mentési REST API](backup-azure-file-share-re
 }
 ```
 
-Az Azure-fájlmegosztás biztonsági mentési feladatainak azonosítása a **jobId** mező alapján történik, és az [itt](https://docs.microsoft.com/rest/api/backup/jobdetails/) leírtak szerint nyomon követhető a Get kérelem használatával.
+Az Azure-fájlmegosztás biztonsági mentési feladatainak azonosítása a **jobId** mező alapján történik, és az [itt](/rest/api/backup/jobdetails/) leírtak szerint nyomon követhető a Get kérelem használatával.
 
 ### <a name="tracking-the-job"></a>A feladatok nyomon követése
 
@@ -52,9 +52,9 @@ A (z) {jobName} a fent említett "jobId". A válasz mindig "200 OK", a feladatok
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupJobs/e2ca2cf4-2eb9-4d4b-b16a-8e592d2a658b?api-version=2019-05-13'
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
-Name  | Típus  |  Leírás
+Név  | Típus  |  Description
 --- | --- | ----
 200 OK |  JobResource  | OK
 
@@ -190,7 +190,7 @@ GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af
 
 ## <a name="stop-protection-and-delete-data"></a>Védelem leállítása és az adattörlés
 
-A védett fájlmegosztás védelmének eltávolításához és a biztonsági másolati adatok törléséhez hajtsa végre az [itt](https://docs.microsoft.com/rest/api/backup/protecteditems/delete)részletezett törlési műveletet.
+A védett fájlmegosztás védelmének eltávolításához és a biztonsági másolati adatok törléséhez hajtsa végre az [itt](/rest/api/backup/protecteditems/delete)részletezett törlési műveletet.
 
 ```http
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13

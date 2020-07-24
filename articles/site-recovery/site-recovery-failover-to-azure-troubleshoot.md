@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 09a4700ce794458ee4dcad2291a93e0b13ca5feb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 39a92dbdc0bdcd0fdd2bb06efe3fbd4bfe33069d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133774"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071182"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Hibák elhárítása VMware virtuális gépen vagy fizikai gépen az Azure-ba történő feladatátvétel során
 
@@ -54,9 +54,11 @@ A **Windows vendég operációs rendszerhez**tartozó illesztőprogramok indít�
 
     A következő eredményt adja, ha hidratálás szükséges:
 
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system doesn't meet no-hydration requirement.
+    This system doesn't meet no-hydration requirement.
+    ```
 
     Abban az esetben, ha a virtuális gép nem tesz eleget a hidratáció követelményének, a szkript megadja, hogy "Ez a rendszer megfelel a nem-hidratálás követelménynek". Ebben az esetben az Azure-ban és a virtuális gépen nem szükséges az összes illesztőprogram és szolgáltatás az állapotban.
 
@@ -65,12 +67,14 @@ A **Windows vendég operációs rendszerhez**tartozó illesztőprogramok indít�
     `.\Script-no-hydration.ps1 -set`
     
     Ez a művelet átalakítja az illesztőprogramok indítási típusát, és az alábbihoz hasonló eredményt ad:
-    
-        REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
 
-        Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0 
+    ```output
+    REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
-        This system is now no-hydration compatible. 
+    Updating registry:  REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc   start =  0
+
+    This system is now no-hydration compatible.
+    ```
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Nem lehet csatlakozni/RDP/SSH-kapcsolatot létesíteni a feladatátvételi virtuális géppel a virtuális gép szürke kikapcsolási gombja miatt
 
@@ -116,11 +120,15 @@ Ha RDP használatával tud csatlakozni a géphez, de nem tudja megnyitni a soros
 
 * Ha a gép operációs rendszere Red hat vagy Oracle Linux 7. */8.0, futtassa a következő parancsot a feladatátvételi Azure-beli virtuális gépen rendszergazdai jogosultságokkal. Indítsa újra a virtuális gépet a parancs után.
 
-        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+  ```
 
 * Ha a gép operációs rendszere CentOS 7. *, futtassa a következő parancsot a feladatátvételi Azure-beli virtuális gépen rendszergazdai jogosultságokkal. Indítsa újra a virtuális gépet a parancs után.
 
-        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```console
+  grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
+  ```
 
 ## <a name="unexpected-shutdown-message-event-id-6008"></a>Váratlan leállítási üzenet (eseményazonosító 6008)
 
@@ -173,7 +181,7 @@ A hiba megoldása érdekében:
      - Tiltsa le a proxyt a fő célkiszolgálón. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Windows rendszerű virtuális gép RDP-kapcsolatának](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md) hibáinak megoldása
 - Linux rendszerű [virtuális géppel létesített SSH-kapcsolatok](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md) hibáinak megoldása
 

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 1a19bf26418d6a61d3aa2421957614abe6dd04e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27438b0729aa309878eb54a346f04754cb983af1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669197"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073266"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>SQL Server biztonsági mentése és visszaállítása Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -126,7 +127,7 @@ További információkért tekintse meg az alábbi cikkek egyikét a SQL Server 
 
 Az alábbi táblázat összefoglalja az Azure-ban SQL Server virtuális gépek biztonsági mentésének és visszaállításának funkcióit.
 
-|| **Automatikus biztonsági mentés** | **SQL-Azure Backup** | **Manuális biztonsági mentés** |
+| Beállítás | Automatikus biztonsági mentés | SQL-Azure Backup | Manuális biztonsági mentés |
 |---|---|---|---|
 | További Azure-szolgáltatásra van szükség |   | ![Yes](./media/backup-restore/yes.png) |   |
 | Biztonsági mentési szabályzat konfigurálása Azure Portal | ![Yes](./media/backup-restore/yes.png) | ![Igen](./media/backup-restore/yes.png) |   |
