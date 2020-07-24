@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: 44095cb85c62fd40032263d96ad678bdeb5effc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad4c60d6a3facd49f08749b2b3f4b01242d3844c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82159403"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091793"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>A DRM-alrendszerek hibrid tervezése 
 
@@ -95,15 +95,15 @@ Az eszközök kézbesítési házirendjének konfigurálásával szabályozhatja
 
 Az előző szakaszban ismertetett magyarázat alapján a következő öt hibrid forgatókönyv a megfelelő **tartalmi kulcsú** - **eszközök kézbesítési szabályzatának** konfigurációs kombinációit használja (az utolsó oszlopban említett minták követik a táblázatot):
 
-|**& forrást üzemeltető tartalom**|**DRM-titkosítás**|**DRM-licenckézbesítés**|**Tartalom kulcsának konfigurálása**|**Objektumtovábbítási szabályzat konfigurálása**|**Minta**|
+|**& forrást üzemeltető tartalom**|**DRM-titkosítás**|**DRM-licenckézbesítés**|**Tartalom kulcsának konfigurálása**|**Objektumtovábbítási szabályzat konfigurálása**|**Sample**|
 |---|---|---|---|---|---|
 |AMS|AMS|AMS|Igen|Igen|1. példa|
 |AMS|AMS|Harmadik féltől származó|Igen|Igen|2. példa|
-|AMS|Harmadik féltől származó|AMS|Igen|Nem|3. példa|
+|AMS|Harmadik féltől származó|AMS|Yes|No|3. példa|
 |AMS|Harmadik féltől származó|Kívül|Nem|Nem|4. példa|
-|Harmadik féltől származó|Harmadik féltől származó|AMS|Igen|Nem|    
+|Harmadik féltől származó|Harmadik féltől származó|AMS|Yes|No|    
 
-A mintákban a PlayReady-védelem mind a DASH, mind a Smooth streaming esetében működik. Az alábbi videó URL-címek Smooth streaming URL-címek. A megfelelő kötőjel URL-címek lekéréséhez egyszerűen fűzze hozzá a következőt: "(Format = mpd-Time-CSF)". Az [Azure Media test Player](https://aka.ms/amtest) használatával tesztelheti a böngészőt. Lehetővé teszi, hogy beállítsa, melyik Streaming Protocol-protokollt használja, amely alatt a tech. A IE11 és a Microsoft Edge a Windows 10-es rendszeren keresztül támogatja a PlayReady-t az EME-n keresztül. További információ: [a tesztelési eszköz részletei](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/).
+A mintákban a PlayReady-védelem mind a DASH, mind a Smooth streaming esetében működik. Az alábbi videó URL-címek Smooth streaming URL-címek. A megfelelő kötőjel URL-címek lekéréséhez egyszerűen fűzze hozzá a következőt: "(Format = mpd-Time-CSF)". Az [Azure Media test Player](https://aka.ms/amtest) használatával tesztelheti a böngészőt. Lehetővé teszi, hogy beállítsa, melyik Streaming Protocol-protokollt használja, amely alatt a tech. A IE11 és a Microsoft Edge a Windows 10-es rendszeren keresztül támogatja a PlayReady-t az EME-n keresztül. További információ: [a tesztelési eszköz részletei](/azure/media-services/previous/offline-playready-streaming-windows-10).
 
 ### <a name="sample-1"></a>1. példa
 
@@ -131,7 +131,7 @@ A mintákban a PlayReady-védelem mind a DASH, mind a Smooth streaming esetében
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Összefoglalva, Azure Media Services DRM-összetevők rugalmasak, a jelen témakörben leírtaknak megfelelően a tartalom és az eszköz kézbesítési szabályzatának megfelelő konfigurálásával hibrid forgatókönyvekben is használhatók.
 
@@ -142,4 +142,3 @@ Megtekintheti Media Services képzési útvonalakat.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

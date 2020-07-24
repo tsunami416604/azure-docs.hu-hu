@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: c418ed87bd74471ce8c2e8186bd6244eaf6f21de
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921577"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092745"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálásával és kezelésével kapcsolatos problémák: gyakori kérdések (GYIK)
 
@@ -112,7 +113,7 @@ Ezt a feladatot indítási parancsfájl (batch/cmd/PowerShell) használatával a
 
 Ezzel a tanúsítvánnyal titkosíthatja a számítógép kulcsait az Azure web roles szolgáltatásban. További információért tekintse meg [ezt a tanácsadót](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731).
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 - [Felhőalapú szolgáltatás indítási feladatainak konfigurálása és futtatása](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
 - [Gyakori Cloud Service indítási feladatai](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
@@ -127,7 +128,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-Kiválaszthatja a blob vagy a helyi lehetőséget a csdef, és a cscfg feltöltési helye hamarosan elérhető lesz. A [New-AzureDeployment](/powershell/module/servicemanagement/azure/new-azuredeployment?view=azuresmps-4.0.0)használatával megadhatja az egyes helyek értékét.
+Kiválaszthatja a blob vagy a helyi lehetőséget a csdef, és a cscfg feltöltési helye hamarosan elérhető lesz. A [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0)használatával megadhatja az egyes helyek értékét.
 
 A metrikák figyelésének lehetősége a példány szintjén. További figyelési képességek érhetők el a [Cloud Services figyelése című témakörben](cloud-services-how-to-monitor.md).
 
@@ -197,7 +198,7 @@ A Windows 10 és a Windows Server 2016 támogatja a HTTP/2-t mind az ügyfél, m
 5. Indítsa újra a kiszolgálót.
 6. Nyissa meg az **alapértelmezett** webhelyet, és a **kötések**területen hozzon létre egy új TLS-kötést az imént létrehozott önaláírt tanúsítvánnyal. 
 
-További információkért lásd:
+További információ:
 
 - [HTTP/2 az IIS-kiszolgálón](https://blogs.iis.net/davidso/http2)
 - [Videó: HTTP/2 a Windows 10-es verzióban: böngésző, alkalmazások és webkiszolgáló](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -296,7 +297,7 @@ A napló beállításai nem konfigurálhatók, így nem kapcsolhatja ki.
 Az indítási feladatban a PowerShell-parancsfájl használatával engedélyezheti az antimalware-bővítményt. Az alábbi cikkekben ismertetett lépéseket követve implementálhatja azt: 
  
 - [PowerShell indítási feladat létrehozása](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
 
 A kártevő szoftverek üzembe helyezésével kapcsolatos forgatókönyvekről és a portálról történő engedélyezéséről a [kártevők elleni telepítési forgatókönyvek](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)című témakörben olvashat bővebben.
 

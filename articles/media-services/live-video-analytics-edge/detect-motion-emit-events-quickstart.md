@@ -3,12 +3,12 @@ title: A Motion és a kibocsátás eseményeinek észlelése – Azure
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a IoT Edge élő videós elemzéseket a mozgások észlelésére és az események kibocsátására a közvetlen metódusok programozott módon történő meghívásával.
 ms.topic: quickstart
 ms.date: 05/29/2020
-ms.openlocfilehash: 69486515125c624b3ef5d44aba6e6d8f7694a3cc
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: fca773d0583bee3bef4e7254bcca95866b2205e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816704"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091912"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>Rövid útmutató: a mozgás észlelése és az események kibocsátása
 
@@ -36,17 +36,17 @@ Az oktatóanyaghoz a következő Azure-erőforrások szükségesek:
 * IoT Hub
 * Tárfiók
 * Azure Media Services fiók
-* Linux virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) telepítve
+* Linux virtuális gép az Azure-ban, [IoT Edge futtatókörnyezettel](../../iot-edge/how-to-install-iot-edge-linux.md) telepítve
 
 Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lévő szükséges erőforrások üzembe helyezéséhez használja az [élő videó elemzési erőforrásainak telepítési parancsfájlját](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) . Ehhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg [Azure Cloud Shell](https://shell.azure.com).
+1. Nyissa meg az [Azure Cloud Shellt](https://shell.azure.com).
 1. Ha első alkalommal használja a Cloud Shell, a rendszer kérni fogja, hogy válasszon egy előfizetést egy Storage-fiók és egy Microsoft Azure-fájlmegosztás létrehozásához. Válassza a **tároló létrehozása** lehetőséget a Cloud Shell munkamenet-információhoz tartozó Storage-fiók létrehozásához. Ez a Storage-fiók elkülönül a parancsfájl által a Azure Media Services-fiókkal való használatra létrehozott fióktól.
 1. A Cloud Shell ablak bal oldalán lévő legördülő menüben válassza a **bash** lehetőséget a környezetében.
 
     ![Környezeti választó](./media/quickstarts/env-selector.png)
 
-1. Futtassa a következő parancsot.
+1. Futtassa az alábbi parancsot.
 
     ```
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
@@ -228,7 +228,7 @@ A mintakód futtatásához kövesse az alábbi lépéseket:
 
 ## <a name="interpret-results"></a>Eredmények értelmezése
 
-A Media Graph futtatásakor a mozgásérzékelő processzor csomópontjának eredményei áthaladnak a IoT Hub fogadó csomóponton az IoT hubhoz. A Visual Studio Code **kimenet** ablakában látható üzenetek egy `body` szakaszt és egy `applicationProperties` szakaszt tartalmaznak. További információ: [IoT hub üzenetek létrehozása és olvasása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+A Media Graph futtatásakor a mozgásérzékelő processzor csomópontjának eredményei áthaladnak a IoT Hub fogadó csomóponton az IoT hubhoz. A Visual Studio Code **kimenet** ablakában látható üzenetek egy `body` szakaszt és egy `applicationProperties` szakaszt tartalmaznak. További információ: [IoT hub üzenetek létrehozása és olvasása](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 A következő üzenetekben az élő videó elemzési modulja az alkalmazás tulajdonságait és a törzs tartalmát határozza meg.
 

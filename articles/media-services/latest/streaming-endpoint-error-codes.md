@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: juliako
-ms.openlocfilehash: 7d3a85e6fcc5b9d1c5ca1511cd7edd05ff5d9ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fc201cc1f3d4d26ca7b9e949d2917688e6fea8c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091980"
 ---
-# <a name="streaming-endpoint-origin-errors"></a>Adatfolyam-végpont (forrás) hibái 
+# <a name="streaming-endpoint-origin-errors"></a>Streamvégpont (forrás) hibái 
 
 Ez a témakör a Azure Media Services [streaming Endpoint szolgáltatástól](streaming-endpoint-concept.md)kapott hibákat ismerteti.
 
-## <a name="400-bad-request"></a>400 hibás kérelem
+## <a name="400-bad-request"></a>400 Hibás kérés
 
 A kérelem érvénytelen információkat tartalmaz, és a rendszer elutasítja ezeket a hibakódokat, és az alábbi okok egyike miatt:
 
@@ -66,7 +66,7 @@ A művelet olyan erőforráson próbálkozik, amely már nem létezik. Előfordu
 |MPE_METADATA_NOT_FOUND |0x80890257 |Nem található bizonyos metaadatok a jegyzékfájlban, vagy nem található a tárterületről való újraindulási érték. |
 |MPE_STORAGE_RESOURCE_NOT_FOUND |0x808900ED |Tárolási művelet hibája, az erőforrás nem található. |
 
-## <a name="409-conflict"></a>409 ütközés
+## <a name="409-conflict"></a>409 Ütközés
 
 A (z) vagy művelet egy erőforrásához megadott azonosítót egy `PUT` `POST` meglévő erőforrás hozta. A probléma megoldásához használjon másik azonosítót az erőforráshoz.
 
@@ -82,7 +82,7 @@ A (z) vagy művelet egy erőforrásához megadott azonosítót egy `PUT` `POST` 
 
 ## <a name="412-precondition-failure"></a>412 előfeltételi hiba
 
-A művelet olyan eTag adott meg, amely eltér a kiszolgálón elérhető verziótól, azaz egy optimista egyidejűségi hiba. Próbálja megismételni a kérést az erőforrás legújabb verziójának elolvasása és a kérelem eTag frissítése után.
+A művelet olyan eTag adott meg, amely eltér a kiszolgálón elérhető verziótól, azaz egy optimista egyidejűségi hiba. Az erőforrás legfrissebb verziójának beolvasása és a kérés eTagjének frissítése után próbálkozzon újra a kéréssel.
 
 |Hibakód|Hexadecimális érték |Hibaleírás|
 |---|---|---|
@@ -163,7 +163,7 @@ Az élő cikkek és minták esetében lásd:
 - [Koncepció: élő események és élő kimenetek](live-events-outputs-concept.md)
 - [Minta: élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)
 
-## <a name="416-range-not-satisfiable"></a>416 tartomány nem teljesíthető
+## <a name="416-range-not-satisfiable"></a>416 A tartománykérelem nem teljesíthető
 
 |Hibakód|Hexadecimális érték |Hibaleírás|
 |---|---|---|
@@ -184,10 +184,10 @@ A kérelem feldolgozása során Media Services olyan hibába ütközik, amely me
 
 ## <a name="503-service-unavailable"></a>503 A szolgáltatás nem érhető el
 
-A kiszolgáló jelenleg nem tud kéréseket fogadni. Ezt a hibát a szolgáltatás túlzott kérései okozhatják. Media Services szabályozási mechanizmus korlátozza az erőforrás-használatot olyan alkalmazások esetében, amelyek túlzott kérést tesznek elérhetővé a szolgáltatás számára.
+A kiszolgáló jelenleg nem tud kéréseket fogadni. Ezt a hibát a szolgáltatásnak küldött túl sok kérés okozhatja. A Media Services szabályozási mechanizmusa korlátozza azon alkalmazások erőforrás-használatát, amelyek túl sok kérést küldenek a szolgáltatásnak.
 
 > [!NOTE]
-> Tekintse meg a hibaüzenetet, és a hibakód karakterláncában részletesebb információkhoz juthat arról, hogy az 503-as hiba miatt megkapta a hibát. Ez a hiba nem mindig jelenti a szabályozást.
+> A hibaüzenetet és a hibakódsztringet megtekintve juthat részletesebb információhoz az 503-as hiba okáról. Ez a hiba nem mindig jelent szabályozást.
 > 
 
 |Hibakód|Hexadecimális érték |Hibaleírás|
@@ -198,9 +198,9 @@ A kiszolgáló jelenleg nem tud kéréseket fogadni. Ezt a hibát a szolgáltat�
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
-- [Kódolási hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+- [Kódolási hibakódok](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services fogalmak](concepts-overview.md)
 - [Kvóták és korlátok](limits-quotas-constraints.md)
 

@@ -2,19 +2,19 @@
 title: A tárolók Azure Monitor hibáinak megoldása | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani és elhárítani a tárolók Azure Monitorével kapcsolatos problémákat.
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: bc4105dc23445c29364961501f93e42f8c3b683d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: fcd799c63e4afb68d96f67d1c03016a4d3b10f34
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800443"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092830"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>A tárolók Azure Monitor hibaelhárítása
 
 Ha az Azure Kubernetes Service (ak) fürt figyelését konfigurálja Azure Monitor a tárolók számára, előfordulhat, hogy az adatgyűjtés vagy a jelentéskészítés állapotát megakadályozó probléma merülhet fel. Ez a cikk néhány gyakori problémát és hibaelhárítási lépést részletez.
 
-## <a name="authorization-error-during-onboarding-or-update-operation"></a>Engedélyezési hiba a bevezetési vagy frissítési művelet közben
+## <a name="authorization-error-during-onboarding-or-update-operation"></a>Engedélyezési hiba az előkészítési vagy frissítési művelet során
 
 A tárolók Azure Monitorának engedélyezése vagy a fürt frissítése a metrikák gyűjtésének támogatásához a következőhöz hasonló hibaüzenetet kaphat: *az ügyfél <felhasználói identitása> a (z) <felhasználó objectId>) nem jogosult a (z) "Microsoft. Authorization/roleAssignments/Write" művelet végrehajtására a hatókörön* kívül
 
@@ -37,18 +37,18 @@ Ha a tárolók Azure Monitor sikeresen engedélyezve és konfigurálva van, de n
 
     `kubectl get ds omsagent --namespace=kube-system`
 
-    A kimenetnek az alábbihoz hasonlónak kell lennie, ami azt jelzi, hogy megfelelően lett telepítve:
+    A kimenetnek az alábbi példához hasonlónak kell lennie, amely azt jelzi, hogy megfelelően lett telepítve:
 
     ```
     User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
     NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
     omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
     ```
-2. Ha Windows Server-csomópontokkal rendelkezik, akkor ellenőrizze az ügynök állapotát a parancs futtatásával:
+2. Ha Windows Server-csomópontokkal rendelkezik, ellenőrizze az ügynök állapotát a parancs futtatásával:
 
     `kubectl get ds omsagent-win --namespace=kube-system`
 
-    A kimenetnek az alábbihoz hasonlónak kell lennie, ami azt jelzi, hogy megfelelően lett telepítve:
+    A kimenetnek az alábbi példához hasonlónak kell lennie, amely azt jelzi, hogy megfelelően lett telepítve:
 
     ```
     User@aksuser:~$ kubectl get ds omsagent-win --namespace=kube-system
@@ -82,33 +82,6 @@ Ha a tárolók Azure Monitor sikeresen engedélyezve és konfigurálva van, de n
     omsagent-win-6drwq                  1/1       Running   0          1d
     ```
 
-5. Keresse meg az ügynök naplóit. Ha a tároló ügynök üzembe helyezése megtörténik, a rendszer egy gyors ellenőrzés futtatásával a (z) és az ügynök és a szolgáltató verzióját jeleníti meg.
-
-6. Annak ellenőrzéséhez, hogy az ügynök telepítése sikeresen megtörtént-e, futtassa a következő parancsot:`kubectl logs omsagent-484hw --namespace=kube-system`
-
-    Az állapotnak az alábbi példához hasonlónak kell lennie:
-
-    ```
-    User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
-    :
-    :
-    instance of Container_HostInventory
-    {
-        [Key] InstanceID=3a4407a5-d840-4c59-b2f0-8d42e07298c2
-        Computer=aks-nodepool1-39773055-0
-        DockerVersion=1.13.1
-        OperatingSystem=Ubuntu 16.04.3 LTS
-        Volume=local
-        Network=bridge host macvlan null overlay
-        NodeRole=Not Orchestrated
-        OrchestratorType=Kubernetes
-    }
-    Primary Workspace: b438b4f6-912a-46d5-9cb1-b44069212abc    Status: Onboarded(OMSAgent Running)
-    omi 1.4.2.2
-    omsagent 1.6.0.23
-    docker-cimprov 1.0.0.31
-    ```
-
 ## <a name="error-messages"></a>Hibaüzenetek
 
 Az alábbi táblázat összefoglalja a Azure Monitor for containers használata során felmerülő ismert hibákat.
@@ -117,7 +90,7 @@ Az alábbi táblázat összefoglalja a Azure Monitor for containers használata 
 | ---- | --- |
 | Hibaüzenet`No data for selected filters`  | Az újonnan létrehozott fürtök figyelési adatfolyamának beállítása időt vehet idénybe. Legalább 10 – 15 percet is igénybe vehet, amíg az adatai megjelennek a fürt számára. |
 | Hibaüzenet`Error retrieving data` | Az Azure Kubernetes Service-fürt állapota és a teljesítmény figyelése mellett kapcsolat jön létre a fürt és az Azure Log Analytics munkaterület között. A fürt összes figyelési adatait egy Log Analytics munkaterület használatával lehet tárolni. Ez a hiba akkor fordulhat elő, ha a Log Analytics munkaterület törölve lett. Ellenőrizze, hogy a munkaterület törölve lett-e, és ha igen, akkor újra engedélyeznie kell a fürt figyelését Azure Monitor a tárolók számára, és meg kell adnia egy meglévőt, vagy létre kell hoznia egy új munkaterületet. Az ismételt engedélyezéshez [le kell tiltania](container-insights-optout.md) a fürt figyelését, és újra [engedélyeznie](container-insights-enable-new-cluster.md) kell a tárolók Azure monitorét. |
-| `Error retrieving data`Azure Monitor hozzáadása a tárolók számára az az AK CLI használatával | Ha a használatával engedélyezi a figyelést `az aks cli` , akkor előfordulhat, hogy a tárolók Azure monitor nem megfelelően vannak telepítve. Győződjön meg arról, hogy telepítve van-e a megoldás. Ehhez lépjen a Log Analytics munkaterületre, és ellenőrizze, hogy elérhető-e a megoldás a bal oldali ablaktáblán a **megoldások** lehetőség kiválasztásával. A probléma megoldásához újra kell telepítenie a megoldást a [Azure monitor a tárolók telepítésére](container-insights-onboard.md) vonatkozó utasításokat követve. |
+| `Error retrieving data`Azure Monitor hozzáadása a tárolók számára az az AK CLI használatával | Ha a használatával engedélyezi a figyelést `az aks cli` , akkor előfordulhat, hogy a tárolók Azure monitor nem megfelelően vannak telepítve. Győződjön meg arról, hogy telepítve van-e a megoldás. Az ellenőrzéshez lépjen a Log Analytics munkaterületre, és ellenőrizze, hogy elérhető-e a megoldás a bal oldali ablaktáblán a **megoldások** lehetőség kiválasztásával. A probléma megoldásához újra kell telepítenie a megoldást a [Azure monitor a tárolók telepítésére](container-insights-onboard.md) vonatkozó utasításokat követve. |
 
 A probléma diagnosztizálása érdekében az [itt](https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/troubleshoot/TroubleshootError_nonAzureK8s.ps1)elérhető hibaelhárítási parancsfájlt biztosítunk.
 

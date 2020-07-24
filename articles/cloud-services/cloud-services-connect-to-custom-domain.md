@@ -7,18 +7,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fa918a3a6894205ed36c4b576608e7a71e523a92
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75387020"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092711"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Azure Cloud Services-szerepkörök csatlakoztatása az Azure-ban üzemeltetett egyéni AD-tartományvezérlőhöz
 Először be kell állítania egy Virtual Network (VNet) az Azure-ban. Ezután hozzáadunk egy Active Directory-tartomány vezérlőt (amelyet egy Azure-beli virtuális gépen futtat) a VNet. Ezután hozzáadjuk a meglévő Cloud Service-szerepköröket az előre létrehozott VNet, majd összekapcsolhatjuk azokat a tartományvezérlőhöz.
 
 A Kezdés előtt néhány dolgot figyelembe kell venni:
 
-1. Ez az oktatóanyag a PowerShellt használja, ezért győződjön meg arról, hogy van Azure PowerShell telepítve, és készen áll a használatra. Ha segítséget szeretne kérni a Azure PowerShell beállításával kapcsolatban, olvassa el a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview)című témakört.
+1. Ez az oktatóanyag a PowerShellt használja, ezért győződjön meg arról, hogy van Azure PowerShell telepítve, és készen áll a használatra. Ha segítséget szeretne kérni a Azure PowerShell beállításával kapcsolatban, olvassa el a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/)című témakört.
 2. Az AD-tartományvezérlő és a webes/feldolgozói szerepkör példányainak a VNet kell lenniük.
 
 Kövesse ezt a lépésenkénti útmutatót, és ha bármilyen problémába ütközik, a cikk végén küldje el nekünk a megjegyzést. Valaki vissza fog térni Önnel (igen, az olvasási megjegyzéseket olvasjuk).

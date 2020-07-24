@@ -9,11 +9,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 0e60a8a563819b38bbe67a0b532c6dcada6821b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f08352d4a79b8c27b2c163516f44edf578fbe3a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83835631"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092643"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>1. vendég operációsrendszer-család használatból való kivonásáról szóló értesítés
 Az 1. operációsrendszer-család kivonulása először 2013. június 1-jén jelent meg.
@@ -31,7 +32,7 @@ A Cloud Services érintik, ha a következők valamelyike érvényes:
 2. Nem rendelkezik a felhőalapú szolgáltatáshoz tartozó ServiceConfiguration. cscfg fájlban explicit módon megadott osFamily-értékkel. A rendszer jelenleg az alapértelmezett "1" értéket használja ebben az esetben.
 3. A Azure Portal a vendég operációs rendszer családjának értékét a "Windows Server 2008" értékkel listázza.
 
-Annak megállapításához, hogy a Cloud Services melyik operációsrendszer-családot futtatja, a következő parancsfájlt futtathatja Azure PowerShellban, de először [be kell állítania a Azure PowerShell](/powershell/azureps-cmdlets-docs) . További információ a parancsfájlról: [Azure vendég operációs rendszer 1. családjának vége: június 2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
+Annak megállapításához, hogy a Cloud Services melyik operációsrendszer-családot futtatja, a következő parancsfájlt futtathatja Azure PowerShellban, de először [be kell állítania a Azure PowerShell](/powershell/azure/) . További információ a parancsfájlról: [Azure vendég operációs rendszer 1. családjának vége: június 2014](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx).
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {

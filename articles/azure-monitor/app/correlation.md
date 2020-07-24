@@ -7,11 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
-ms.openlocfilehash: ca186fa62605953bfb90c1a4669fc8283eb78469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 432ff655ef072d491227d297e620612203f73d3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559783"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092983"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -301,15 +302,15 @@ A kód futtatásakor a következő nyomatok jelennek meg a konzolon:
 ```
 Figyelje meg, hogy a `spanId` naplózási üzenetnek van jelen a tartományon belül. Ez ugyanaz, mint `spanId` a nevű tartományhoz `hello` .
 
-A naplózási adatai a használatával exportálhatók `AzureLogHandler` . További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs).
+A naplózási adatai a használatával exportálhatók `AzureLogHandler` . További információkért tekintse meg [ezt a cikket](./opencensus-python.md#logs).
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetria korreláció a .NET-ben
 
 Az idő múlásával a .NET számos módszert definiált a telemetria és diagnosztikai naplók összekapcsolásához:
 
-- `System.Diagnostics.CorrelationManager`lehetővé teszi a [LogicalOperationStack és a tevékenységazonosító](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)nyomon követését.
-- `System.Diagnostics.Tracing.EventSource`és Windows esemény-nyomkövetés (ETW) határozza meg a [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) metódust.
-- `ILogger`a [naplózási hatóköröket](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)használja.
+- `System.Diagnostics.CorrelationManager`lehetővé teszi a [LogicalOperationStack és a tevékenységazonosító](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)nyomon követését.
+- `System.Diagnostics.Tracing.EventSource`és Windows esemény-nyomkövetés (ETW) határozza meg a [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) metódust.
+- `ILogger`a [naplózási hatóköröket](/aspnet/core/fundamentals/logging#log-scopes)használja.
 - A Windows Communication Foundation (WCF) és a HTTP-átvitel "aktuális" kontextus-propagálást használ.
 
 Ezek a módszerek azonban nem engedélyezték az automatikus elosztott nyomkövetés támogatását. `DiagnosticSource`támogatja az automatikus gépek közötti korrelációt. A .NET-kódtárak támogatják `DiagnosticSource` és engedélyezik a korrelációs környezet automatikus, a szállításon keresztüli propagálását, például a http-t.
@@ -327,7 +328,7 @@ Az Application Insights SDK, a 2.4.0-béta verziótól kezdődően, a telemetria
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Telemetria korreláció a javában
 
-A [Java-ügynök](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) , valamint a [Java SDK](../../azure-monitor/app/java-get-started.md) 2.0.0 vagy újabb verziója támogatja a telemetria automatikus korrelációját. A rendszer automatikusan kitölti az `operation_id` összes telemetria (például a nyomkövetéseket, a kivételeket és az egyéni eseményeket) a kérelem hatókörén belül. Emellett a HTTP protokollon keresztül terjeszti a korrelációs fejléceket (lásd fentebb) a szolgáltatások közötti hívásokhoz, ha a [Java SDK-ügynök](../../azure-monitor/app/java-agent.md) konfigurálva van.
+A [Java-ügynök](./java-in-process-agent.md) , valamint a [Java SDK](../../azure-monitor/app/java-get-started.md) 2.0.0 vagy újabb verziója támogatja a telemetria automatikus korrelációját. A rendszer automatikusan kitölti az `operation_id` összes telemetria (például a nyomkövetéseket, a kivételeket és az egyéni eseményeket) a kérelem hatókörén belül. Emellett a HTTP protokollon keresztül terjeszti a korrelációs fejléceket (lásd fentebb) a szolgáltatások közötti hívásokhoz, ha a [Java SDK-ügynök](../../azure-monitor/app/java-agent.md) konfigurálva van.
 
 > [!NOTE]
 > Application Insights Java-ügynök automatikusan gyűjti a JMS, a Kafka, a nettó és a webflux szolgáltatáshoz kapcsolódó kéréseket és függőségeket, és így tovább. A Java SDK-hoz csak az Apache HttpClient keresztül kezdeményezett hívások támogatottak a korrelációs szolgáltatásban. Az SDK-ban az automatikus környezeti propagálás nem támogatott az üzenetkezelési technológiák (például a Kafka, a RabbitMQ és a Azure Service Bus) között. 

@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 001d408eaa7ce637bd7cc1f1183dd8748cddf539
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d8e637cd3691e7b1acf1988efe40fc80561a183
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189522"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091674"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offline PlayReady-streamelés Windows 10-hez  
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
-> * [3-as verzió](../latest/offline-plaready-streaming-for-windows-10.md)
+> * [3\. verzió](../latest/offline-plaready-streaming-for-windows-10.md)
 > * [2-es verzió](offline-playready-streaming-windows-10.md)
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Azure Media Services támogatja az offline letöltést/lejátszást a DRM-védelemmel. Ez a cikk a Azure Media Services Windows 10-es/PlayReady-ügyfelekhez való offline támogatását ismerteti. Az alábbi cikkekben olvashat az iOS/FairPlay és az Android/Widevine rendszerű eszközök offline üzemmódjának támogatásáról:
 
@@ -48,7 +48,7 @@ Az offline mód megvalósítása során feltett kihívás a következő:
 * Az MP4-t sok játékos, kódoló eszköz támogatja, de az MP4-tároló és a DRM között nincs kötés.
 * Hosszú távon a CFF és a CENC a következő módon érhető el:. Napjainkban azonban az eszközök/lejátszó-támogatás ökoszisztémája még nem létezik. Jelenleg egy megoldásra van szükségünk.
  
-Az ötlet a következő: Smooth streaming ([PIFF](https://docs.microsoft.com/iis/media/smooth-streaming/protected-interoperable-file-format)) fájlformátum (h264/aac) PLAYREADY (AES-128 CTR) kötéssel rendelkezik. Az egyéni Smooth streaming. ismv-fájl (feltéve, hogy a hang egyesített a videóban) önmagában egy fMP4, és használható a lejátszáshoz. Ha egy zökkenőmentes adatfolyam-továbbítási tartalom PlayReady-titkosításon halad át, akkor mindegyik. ismv fájl PlayReady védett töredezett MP4-re vált. Kiválaszthat egy. ismv-fájlt az előnyben részesített bitrátával, és átnevezheti. mp4-ként a letöltéshez.
+Az ötlet a következő: Smooth streaming ([PIFF](/iis/media/smooth-streaming/protected-interoperable-file-format)) fájlformátum (h264/aac) PLAYREADY (AES-128 CTR) kötéssel rendelkezik. Az egyéni Smooth streaming. ismv-fájl (feltéve, hogy a hang egyesített a videóban) önmagában egy fMP4, és használható a lejátszáshoz. Ha egy zökkenőmentes adatfolyam-továbbítási tartalom PlayReady-titkosításon halad át, akkor mindegyik. ismv fájl PlayReady védett töredezett MP4-re vált. Kiválaszthat egy. ismv-fájlt az előnyben részesített bitrátával, és átnevezheti. mp4-ként a letöltéshez.
 
 A PlayReady Protected MP4 a progresszív letöltéshez két lehetőség áll rendelkezésre:
 

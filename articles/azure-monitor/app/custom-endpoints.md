@@ -4,18 +4,19 @@ description: Az alapértelmezett Azure Monitor Application Insights SDK-végpont
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.custom: references_regions
-ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50a072cd7e509642c36c783e3cc0fd78e4d5adc0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194835"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092864"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights felülbírálja az alapértelmezett végpontokat
 
 Ha Application Insightsről szeretne adatokat küldeni bizonyos régiókba, felül kell bírálnia az alapértelmezett végponti címeket. Az SDK-nak némileg eltérő módosításokra van szüksége, amelyek mindegyike a jelen cikkben szerepel. Ezek a változások megkövetelik a mintakód módosítását, valamint a `QuickPulse_Endpoint_Address` ,, és az `TelemetryChannel_Endpoint_Address` `Profile_Query_Endpoint_address` adott régió tényleges végponti címeinek cseréjét. A cikk végén a végpontok címeire mutató hivatkozások találhatók, ahol ez a konfiguráció szükséges.
 
 > [!NOTE]
-> A [csatlakozási karakterláncok](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) az új előnyben részesített módszerek, amelyekkel egyéni végpontokat állíthat be Application Insightson belül.
+> A [csatlakozási karakterláncok](./sdk-connection-string.md?tabs=net) az új előnyben részesített módszerek, amelyekkel egyéni végpontokat állíthat be Application Insightson belül.
 
 ---
 
@@ -76,7 +77,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-Azure Functions azt javasoljuk, hogy a függvény alkalmazási beállításaiban a [kapcsolódási karakterláncok](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) legyenek beállítva. Ha az alkalmazás beállításait a függvények ablaktáblán belül szeretné elérni, válassza a **Beállítások**  >  **konfigurációs**  >  **alkalmazás beállításai**lehetőséget. 
+Azure Functions azt javasoljuk, hogy a függvény alkalmazási beállításaiban a [kapcsolódási karakterláncok](./sdk-connection-string.md?tabs=net) legyenek beállítva. Ha az alkalmazás beállításait a függvények ablaktáblán belül szeretné elérni, válassza a **Beállítások**  >  **konfigurációs**  >  **alkalmazás beállításai**lehetőséget. 
 
 Név: `APPLICATIONINSIGHTS_CONNECTION_STRING` érték:`Connection String Value`
 
@@ -155,7 +156,7 @@ A opencensus-Python SDK betöltési végpontjának módosításával kapcsolatos
 
 ## <a name="regions-that-require-endpoint-modification"></a>Végpontok módosítását igénylő régiók
 
-Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) és az [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
+Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) és az [Azure China](/azure/china/resources-developer-guide).
 
 |Régió |  Végpont neve | Érték |
 |-----------------|:------------|:-------------|
@@ -179,5 +180,5 @@ Ha jelenleg a "api.applicationinsights.io"-n keresztül hozzáférő [Applicatio
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha többet szeretne megtudni a Azure Government egyéni módosításaival kapcsolatban, tekintse meg az [Azure monitorozásával és](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)felügyeletével kapcsolatos részletes útmutatást.
-- Ha többet szeretne megtudni az Azure China-ról, tekintse meg az [Azure China](https://docs.microsoft.com/azure/china/)forgatókönyvét.
+- Ha többet szeretne megtudni a Azure Government egyéni módosításaival kapcsolatban, tekintse meg az [Azure monitorozásával és](../../azure-government/compare-azure-government-global-azure.md#application-insights)felügyeletével kapcsolatos részletes útmutatást.
+- Ha többet szeretne megtudni az Azure China-ról, tekintse meg az [Azure China](/azure/china/)forgatókönyvét.

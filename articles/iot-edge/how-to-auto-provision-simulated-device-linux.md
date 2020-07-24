@@ -8,16 +8,16 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d6e60329f3c61811aa8a42528244b2883ff4b685
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb1511736b993032df8ca52fac01243f1feafdf4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85834097"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092387"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>IoT Edge-eszköz létrehozása és kiépítése Linux rendszerű TPM-sel
 
-Ez a cikk bemutatja, hogyan tesztelheti az automatikus kiépítés egy Linux IoT Edge-eszközön platformmegbízhatósági modul (TPM) használatával. Automatikusan kiépítheti Azure IoT Edge eszközeit az [eszköz kiépítési szolgáltatásával](../iot-dps/index.yml). Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át az [automatikus kiépítési fogalmakat](../iot-dps/concepts-auto-provisioning.md) .
+Ez a cikk bemutatja, hogyan tesztelheti az automatikus kiépítés egy Linux IoT Edge-eszközön platformmegbízhatósági modul (TPM) használatával. Az eszközök [kiépítési szolgáltatásával](../iot-dps/index.yml)automatikusan kiépítheti Azure IoT Edge eszközöket. Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekintse át az [automatikus kiépítési fogalmakat](../iot-dps/concepts-auto-provisioning.md) .
 
 A feladatok a következők:
 
@@ -55,7 +55,7 @@ A virtuális kapcsolók lehetővé teszik a virtuális gép számára a fizikai 
 
 4. Adja meg az új virtuális kapcsoló nevét, például **EdgeSwitch**. Győződjön meg arról, hogy a kapcsolattípus **külső hálózatra**van beállítva, majd válassza **az OK gombot**.
 
-5. Egy előugró ablak figyelmezteti, hogy a hálózati kapcsolat megszakadhat. A folytatáshoz válassza az **Igen** lehetőséget.
+5. Egy előugró ablak figyelmezteti, hogy a hálózati kapcsolat megszakadhat. Válassza az **Igen** lehetőséget a folytatáshoz.
 
 Ha az új virtuális kapcsoló létrehozásakor hibák jelennek meg, győződjön meg arról, hogy egyetlen másik kapcsoló sem használja az Ethernet-adaptert, és hogy más kapcsolók nem használják ugyanazt a nevet.
 
@@ -170,7 +170,7 @@ Amikor létrehoz egy regisztrációt a DPS-ben, lehetősége van bejelenteni a *
 
    6. Ha szeretné, adjon hozzá egy címke értéket a **kezdeti eszköz iker állapotához** . A címkék használatával megcélozhatja az eszközök csoportjait a modulok üzembe helyezéséhez. További információ: IoT Edge- [modulok üzembe helyezése nagy léptékben](how-to-deploy-at-scale.md).
 
-   7. Kattintson a **Mentés** gombra.
+   7. Válassza a **Mentés** lehetőséget.
 
 Most, hogy az eszközhöz regisztrálva van, a IoT Edge futtatókörnyezet automatikusan kiépítheti az eszközt a telepítés során.
 

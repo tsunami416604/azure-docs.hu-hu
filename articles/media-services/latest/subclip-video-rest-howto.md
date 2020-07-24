@@ -13,15 +13,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
-ms.openlocfilehash: c39aded55fe36cb130459a4f6f119f872b1adbc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b112b3844ddb3758b79a086b624a227127e65ce2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76514323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091878"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Videó kivágása Media Services-REST kódolással
 
-Ha [feladatokkal](https://docs.microsoft.com/rest/api/media/jobs)kódolja a videót, levágja vagy alklipet készíthet. Ez a funkció a [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -előállítók vagy a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -előállítók használatával létrehozott bármely [átalakítással](https://docs.microsoft.com/rest/api/media/transforms) működik. 
+Ha [feladatokkal](/rest/api/media/jobs)kódolja a videót, levágja vagy alklipet készíthet. Ez a funkció a [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -előállítók vagy a [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) -előállítók használatával létrehozott bármely [átalakítással](/rest/api/media/transforms) működik. 
 
 A témakör REST példája egy olyan feladatot hoz létre, amely egy kódolási feladatot elküldő videót metsz el. 
 
@@ -29,7 +30,7 @@ A témakör REST példája egy olyan feladatot hoz létre, amely egy kódolási 
 
 A jelen témakörben ismertetett lépések végrehajtásához a következőket kell tennie:
 
-- [Hozzon létre egy Azure Media Services fiókot](create-account-cli-how-to.md).
+- [Hozzon létre egy Azure Media Services fiókot](./create-account-howto.md).
 - [A Poster beállítása Azure Media Services REST API-hívásokhoz](media-rest-apis-with-postman.md).
     
     Ügyeljen arra, hogy kövesse az [Azure ad-token beszerzése](media-rest-apis-with-postman.md#get-azure-ad-token)című témakör utolsó lépését. 

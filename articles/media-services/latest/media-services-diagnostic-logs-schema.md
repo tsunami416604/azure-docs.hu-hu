@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bc688a61235a31c3d6b6e88cbb90c0d14cca179
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75750870"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092014"
 ---
 # <a name="diagnostic-logs-schemas"></a>Diagnosztikai naplók sémái
 
@@ -29,7 +30,7 @@ Ez a cikk Media Services diagnosztikai naplók sémáit ismerteti.
 
 ## <a name="top-level-diagnostic-logs-schema"></a>Legfelső szintű diagnosztikai naplók sémája
 
-A legfelső szintű diagnosztikai naplók sémájának részletes ismertetését lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplóihoz](../../azure-monitor/platform/tutorial-dashboards.md).
+A legfelső szintű diagnosztikai naplók sémájának részletes ismertetését lásd: [támogatott szolgáltatások, sémák és kategóriák az Azure diagnosztikai naplóihoz](../../azure-monitor/platform/resource-logs-schema.md).
 
 ## <a name="key-delivery-log-schema"></a>Kulcs kézbesítési naplójának sémája
 
@@ -37,7 +38,7 @@ A legfelső szintű diagnosztikai naplók sémájának részletes ismertetését
 
 Ezek a tulajdonságok a Key Delivery log sémára vonatkoznak.
 
-|Name|Description|
+|Név|Leírás|
 |---|---|
 |keyId|A kért kulcs azonosítója.|
 |keyType|A következő értékek egyike lehet: "Clear" (nincs titkosítás), "FairPlay", "PlayReady" vagy "Widevine".|

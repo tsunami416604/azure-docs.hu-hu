@@ -3,12 +3,12 @@ title: Az Azure arc-kompatibilis Kubernetes-fürt konfigurálása az Azure Monit
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a figyelést Azure Monitor az Azure arc-kompatibilis Kubernetes-fürtökön található tárolók esetében.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b1adbd5c1f9f0710a814c91872d3f8a9f1afb50f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261052"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092881"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Az Azure arc-kompatibilis Kubernetes-fürt figyelésének engedélyezése
 
@@ -63,7 +63,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
     >[!IMPORTANT]
     >Az arc-kompatibilis Kubernetes-fürtök figyelésének minimális ügynök-verziója ciprod04162020 vagy újabb.
 
-- Ha a PowerShell-parancsfájl használatával engedélyezi a figyelést, a [PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-6) megadása szükséges.
+- Ha a PowerShell-parancsfájl használatával engedélyezi a figyelést, a [PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6) megadása szükséges.
 
 - Ha a bash parancsfájl használatával engedélyezi a figyelést, a [bash 4-es verziója](https://www.gnu.org/software/bash/) szükséges.
 
@@ -212,7 +212,7 @@ A proxy konfigurációs értékének szintaxisa a következő:`[protocol://][use
 |proxyhost | A proxykiszolgáló címe vagy teljes tartományneve |
 |port | A proxykiszolgáló nem kötelező portszáma |
 
-Például:`http://user01:password@proxy01.contoso.com:3128`
+Például: `http://user01:password@proxy01.contoso.com:3128`
 
 Ha a protokollt **http**-ként adta meg, a HTTP-kérelmek SSL/TLS biztonságos kapcsolat használatával jönnek létre. A proxykiszolgáló támogatja az SSL/TLS protokollokat.
 

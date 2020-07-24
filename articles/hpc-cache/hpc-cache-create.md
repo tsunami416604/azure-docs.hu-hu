@@ -4,17 +4,18 @@ description: Azure HPC cache-példány létrehozása
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 07/10/2020
 ms.author: v-erkel
-ms.openlocfilehash: 894595ee3660532bf046a39e994fa669f7c6b002
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a988f08b2b6e30543c112b20e5b374130ceddc47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434099"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092490"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC-gyorsítótár létrehozása
 
-A gyorsítótár létrehozásához használja a Azure Portal.
+A gyorsítótár létrehozásához használja a Azure Portal vagy az Azure CLI-t.
 
 ![képernyőkép a gyorsítótár áttekintéséről Azure Portalban, a létrehozás gombbal alul](media/hpc-cache-home-page.png)
 
@@ -22,11 +23,13 @@ Az alábbi képre kattintva megtekintheti a gyorsítótár létrehozásának és
 
 [![videó miniatűrje: Azure HPC cache: Setup (kattintson ide a videó oldal megtekintéséhez)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
+## <a name="portal"></a>[Portál](#tab/azure-portal)
+
 ## <a name="define-basic-details"></a>Alapszintű részletek meghatározása
 
 ![képernyőkép a Project details lapról Azure Portal](media/hpc-cache-create-basics.png)
 
-A **projekt részletei**területen válassza ki azt az előfizetést és erőforráscsoportot, amely a gyorsítótárat fogja tárolni. Győződjön meg arról, hogy az előfizetés szerepel a [hozzáférési](hpc-cache-prereqs.md#azure-subscription) listán.
+A **projekt részletei**területen válassza ki azt az előfizetést és erőforráscsoportot, amely a gyorsítótárat fogja tárolni. Győződjön meg arról, hogy az előfizetés szerepel a [hozzáférési](hpc-cache-prerequisites.md#azure-subscription) listán.
 
 A **szolgáltatás részletei**területen adja meg a gyorsítótár nevét és a többi attribútumot:
 
@@ -56,7 +59,7 @@ Az Azure HPC gyorsítótára felügyeli, hogy mely fájlok vannak gyorsítótár
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Azure Key Vault titkosítás engedélyezése (nem kötelező)
 
-Ha a gyorsítótár olyan régióban található, amely támogatja az ügyfél által felügyelt titkosítási kulcsokat, a **lemez titkosítási kulcsainak** lapja a **gyorsítótár** és a **címkék** lapok között jelenik meg. A közzététel ideje alatt ez a lehetőség az USA keleti régiójában, az USA déli középső régiójában és az USA 2. nyugati régiójában támogatott.
+Ha a gyorsítótár olyan régióban található, amely támogatja az ügyfél által felügyelt titkosítási kulcsokat, a **lemez titkosítási kulcsainak** lapja a **gyorsítótár** és a **címkék** lapok között jelenik meg. A régió támogatásával kapcsolatos további információkért olvassa el a [regionális elérhetőséget](hpc-cache-overview.md#region-availability) ismertető témakört.
 
 Ha szeretné kezelni a gyorsítótár-tárolóhoz használt titkosítási kulcsokat, adja meg a Azure Key Vault adatait a **lemez titkosítási kulcsainak** oldalán. A kulcstárolónak ugyanabban a régióban és ugyanabban az előfizetésben kell lennie, mint a gyorsítótárnak.
 
@@ -94,6 +97,99 @@ A létrehozás befejeződése után egy értesítés jelenik meg az új Azure HP
 
 > [!NOTE]
 > Ha a gyorsítótár ügyfél által felügyelt titkosítási kulcsokat használ, előfordulhat, hogy a gyorsítótár megjelenik az erőforrások listájában, mielőtt a központi telepítés állapota befejeződik. Amint a gyorsítótár állapota a **kulcsra vár** , [engedélyezheti](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) a kulcstároló használatát.
+
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+## <a name="create-the-cache-with-azure-cli"></a>A gyorsítótár létrehozása az Azure CLI-vel
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+> [!NOTE]
+> Az Azure CLI jelenleg nem támogatja az ügyfél által felügyelt titkosítási kulcsokkal rendelkező gyorsítótár létrehozását. Használja a Azure Portal.
+
+Hozzon létre egy új Azure HPC-gyorsítótárat az az [HPC-cache Create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) paranccsal.
+
+Adja meg a következő értékeket:
+
+* Gyorsítótár-erőforráscsoport neve
+* Gyorsítótár neve
+* Azure-régió
+* Gyorsítótár-alhálózat, ebben a formátumban:
+
+  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
+nets/<cache_subnet_name>"``
+
+  A gyorsítótár-alhálózatnak legalább 64 IP-címet (/24) kell tartalmaznia, és semmilyen más erőforrást nem tud elhelyezni.
+
+* Gyorsítótár kapacitása. Két érték az Azure HPC-gyorsítótár maximális átviteli sebességét állítja be:
+
+  * A gyorsítótár mérete (GB)
+  * A gyorsítótár-infrastruktúrában használt virtuális gépek SKU-jának
+
+  az [HPC-cache SKUs List](/cli/azure/ext/hpc-cache/hpc-cache/skus) megjeleníti az elérhető SKU-ket és a gyorsítótár méretének érvényes beállításait. A gyorsítótár méretének beállításai 3 TB és 48 TB közé esnek, de csak néhány érték támogatott.
+
+  Ez a diagram azt jeleníti meg, hogy mely gyorsítótár-méret és SKU-kombináció érvényes a dokumentum előkészítésének időpontjában (július 2020).
+
+  | Gyorsítótár mérete | Standard_2G | Standard_4G | Standard_8G |
+  |------------|-------------|-------------|-------------|
+  | 3072 GB    | igen         | nem          | nem          |
+  | 6144 GB    | igen         | igen         | nem          |
+  | 12288 GB   | igen         | igen         | igen         |
+  | 24576 GB   | nem          | igen         | igen         |
+  | 49152 GB   | nem          | nem          | igen         |
+
+  Olvassa el a **gyorsítótár kapacitásának beállítása** szakaszt a portál utasítások lapján, amely fontos információkat tartalmaz a díjszabásról, az átviteli sebességről és a gyorsítótárnak a munkafolyamathoz való megfelelő méretezéséről.
+
+Gyorsítótár-létrehozási példa:
+
+```azurecli
+az hpc-cache create --resource-group doc-demo-rg --name my-cache-0619 \
+    --location "eastus" --cache-size-gb "3072" \
+    --subnet "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default" \
+    --sku-name "Standard_2G"
+```
+
+A gyorsítótár létrehozása több percet vesz igénybe. Sikeres művelet esetén a Create parancs a következőhöz hasonló kimenetet ad vissza:
+
+```azurecli
+{
+  "cacheSizeGb": 3072,
+  "health": {
+    "state": "Healthy",
+    "statusDescription": "The cache is in Running state"
+  },
+  "id": "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.StorageCache/caches/my-cache-0619",
+  "location": "eastus",
+  "mountAddresses": [
+    "10.3.0.17",
+    "10.3.0.18",
+    "10.3.0.19"
+  ],
+  "name": "my-cache-0619",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "doc-demo-rg",
+  "sku": {
+    "name": "Standard_2G"
+  },
+  "subnet": "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default",
+  "tags": null,
+  "type": "Microsoft.StorageCache/caches",
+  "upgradeStatus": {
+    "currentFirmwareVersion": "5.3.42",
+    "firmwareUpdateDeadline": "0001-01-01T00:00:00+00:00",
+    "firmwareUpdateStatus": "unavailable",
+    "lastFirmwareUpdate": "2020-04-01T15:19:54.068299+00:00",
+    "pendingFirmwareVersion": null
+  }
+}
+```
+
+Az üzenet tartalmaz néhány hasznos információt, beleértve az alábbi elemeket is:
+
+* Ügyfél-csatlakoztatási címek – ezeket az IP-címeket akkor használja, ha készen áll az ügyfelek csatlakoztatására a gyorsítótárhoz. További információért olvassa el [Az Azure HPC cache csatlakoztatása](hpc-cache-mount.md) című témakört.
+* Frissítési állapot – a szoftverfrissítés kiadása után ez az üzenet módosul. A [gyorsítótárazási szoftvert manuálisan is frissítheti](hpc-cache-manage.md#upgrade-cache-software) , de néhány nap múlva automatikusan alkalmazza.
+
+---
 
 ## <a name="next-steps"></a>További lépések
 

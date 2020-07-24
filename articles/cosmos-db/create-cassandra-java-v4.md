@@ -1,5 +1,5 @@
 ---
-title: Java-alkalmazás létrehozása Azure Cosmos DB Cassandra API
+title: Java-alkalmazás Azure Cosmos DB Cassandra API a Java 4,0 SDK-val
 description: Ez a rövid útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Cassandra API profilalkalmazások létrehozására az Azure Portal és a Java használatával
 ms.service: cosmos-db
 author: TheovanKraay
@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 59ea78fed27b41199699d5413f605288bbf1a608
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: d0d6b8fbedb88544a5c33a6d04c99ceb50294d22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118389"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092660"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v4-driver"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure Cosmos DB Cassandra API-alapú adatkezeléshez (v4-illesztőprogram)
 
@@ -155,7 +155,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     :::image type="content" source="./media/create-cassandra-java/copy-username-connection-string-azure-portal.png" alt-text="Felhasználónév megtekintése és másolás az Azure Portal Kapcsolati sztring oldaláról":::
 
-2. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-java/copy-button-azure-portal.png) a CONTACT POINT érték másolásához.
+2. A :::image type="icon" source="./media/create-cassandra-java/copy-button-azure-portal.png"::: kapcsolódási pont értékének másolásához használja a képernyő jobb oldalán található gombot.
 
 3. Nyissa meg a *config. properties* fájlt a *C:\git-samples\azure-cosmosdb-Cassandra-Java-Getting-started\java-examples\src\main\resources* mappából. 
 

@@ -3,12 +3,12 @@ title: A Motion & Record Videójának észlelése az Edge-eszközökön – Azur
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a IoT Edge élő videós elemzéseket az élő videó-hírcsatornák (szimulált) IP-kameráról való elemzéséhez, hogy észlelje, hogy van-e mozgás, és ha igen, jegyezzen fel egy MP4-videoklipet a peremhálózati eszköz helyi fájljába.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 32f1ae5e9edbdbe522afb39bd56584cd2423dd33
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 14dcc7b298244a1d53a9b820c641ea87c4f9a016
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817077"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091861"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Rövid útmutató: mozgás észlelése és videó rögzítése a peremhálózati eszközökön
  
@@ -51,7 +51,7 @@ Ebben a rövid útmutatóban a következőket fogja megtekinteni:
 
 1. A Media Graph létrehozása és üzembe helyezése.
 1. Az eredmények értelmezése.
-1. Erőforrások karbantartása.
+1. Az erőforrások eltávolítása.
 
 ## <a name="examine-and-edit-the-sample-files"></a>A mintaadatok vizsgálata és szerkesztése
 A rövid útmutató előfeltételeinek részeként letöltötte a mintakód egy mappába. A mintakód vizsgálatához és szerkesztéséhez kövesse az alábbi lépéseket.
@@ -164,7 +164,7 @@ Győződjön meg arról, hogy végrehajtotta az [események figyelésének elők
      * A végső hívás `GraphTopologyList` azt mutatja, hogy a lista már üres.
 
 ## <a name="interpret-results"></a>Eredmények értelmezése 
-A Media Graph futtatásakor a mozgásérzékelő processzor csomópontjának eredményei áthaladnak a IoT Hub fogadó csomóponton az IoT hubhoz. A Visual Studio Code **kimenet** ablakában látható üzenetek egy `body` szakaszt és egy `applicationProperties` szakaszt tartalmaznak. További információ: [IoT hub üzenetek létrehozása és olvasása](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+A Media Graph futtatásakor a mozgásérzékelő processzor csomópontjának eredményei áthaladnak a IoT Hub fogadó csomóponton az IoT hubhoz. A Visual Studio Code **kimenet** ablakában látható üzenetek egy `body` szakaszt és egy `applicationProperties` szakaszt tartalmaznak. További információ: [IoT hub üzenetek létrehozása és olvasása](../../iot-hub/iot-hub-devguide-messages-construct.md).
 
 A következő üzenetekben az élő videó elemzési modulja az alkalmazás tulajdonságait és a törzs tartalmát határozza meg.
 
@@ -254,7 +254,7 @@ Az MP4-klip lejátszása:
 
     ![Kimenet](./media/quickstarts/samples-output.png) 
 
-1. A [biztonságos másolás (SCP)](https://docs.microsoft.com/azure/virtual-machines/linux/copy-files-to-linux-vm-using-scp) használatával másolja a fájlokat a helyi gépre. 
+1. A [biztonságos másolás (SCP)](../../virtual-machines/linux/copy-files-to-linux-vm-using-scp.md) használatával másolja a fájlokat a helyi gépre. 
 1. A fájlokat a [VLC Media Player](https://www.videolan.org/vlc/) vagy bármely más MP4-lejátszó használatával játssza le.
 
 ## <a name="clean-up-resources"></a>Erőforrások felszabadítása
@@ -267,4 +267,4 @@ Ha szeretné kipróbálni a többi rövid útmutatót, tartsa meg a létrehozott
 * Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 
     * Használjon olyan [IP-kamerát](https://en.wikipedia.org/wiki/IP_camera) , amely támogatja az RTSP-t az RTSP-szimulátor használata helyett. Az RTSP-t támogató IP-kamerákat a [ONVIF-megfelelőségi termékek](https://www.onvif.org/conformant-products) lapon találja. Keresse meg azokat az eszközöket, amelyek megfelelnek a G, S vagy T profiloknak.
-    * A Linux rendszerű virtuális gépek helyett AMD64 vagy x64 Linux-eszközt használjon az Azure-ban. Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse a következő témakör utasításait: [Install Azure IoT Edge Runtime on Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux). Ezután kövesse az [első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) című témakör útmutatását az eszköz Azure IoT hub való regisztrálásához.
+    * A Linux rendszerű virtuális gépek helyett AMD64 vagy x64 Linux-eszközt használjon az Azure-ban. Az eszköznek ugyanabban a hálózaton kell lennie, mint az IP-kamerának. Kövesse a következő témakör utasításait: [Install Azure IoT Edge Runtime on Linux](../../iot-edge/how-to-install-iot-edge-linux.md). Ezután kövesse az [első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön](../../iot-edge/quickstart-linux.md) című témakör útmutatását az eszköz Azure IoT hub való regisztrálásához.

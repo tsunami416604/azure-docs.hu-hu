@@ -6,11 +6,12 @@ author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 121e4699bd6a72f6865d3a6ffdef58c1b3806047
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17de697686485d695586ffa798196efb4a34c251
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79082761"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092915"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Egyéni adatforrásokkal való korreláció Application Insights
 
@@ -34,15 +35,15 @@ Ha még nem rendelkezik ilyennel, hozzon létre egy új Log Analytics munkaterü
 
 Naplózási adatok küldésének megkezdése Azure Monitorba. Több lehetőség is létezik:
 
-- Egy szinkron mechanizmus esetében közvetlenül hívhatja meg az adatgyűjtő [API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) -t, vagy használhatja a Logic app Connectort – egyszerűen keresse meg az "Azure log Analytics" lehetőséget, és válassza az "adatküldés" beállítást:
+- Egy szinkron mechanizmus esetében közvetlenül hívhatja meg az adatgyűjtő [API](../platform/data-collector-api.md) -t, vagy használhatja a Logic app Connectort – egyszerűen keresse meg az "Azure log Analytics" lehetőséget, és válassza az "adatküldés" beállítást:
 
   ![Képernyőkép választása és művelet](./media/custom-data-correlation/01-logic-app-connector.png)  
 
-- Aszinkron beállításhoz használja a adatgyűjtő API-t egy feldolgozási folyamat létrehozásához. További részletekért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) .
+- Aszinkron beállításhoz használja a adatgyűjtő API-t egy feldolgozási folyamat létrehozásához. További részletekért tekintse meg [ezt a cikket](../platform/create-pipeline-datacollector-api.md) .
 
 ## <a name="correlating-data"></a>Az adatok korrelálása
 
-A Application Insights a Azure Monitor log platformon alapul. Ezért az [erőforrás](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) -összekapcsolással összekapcsolhatja a Azure monitorba betöltött összes adatot a Application Insights-adatként.
+A Application Insights a Azure Monitor log platformon alapul. Ezért az [erőforrás](../log-query/cross-workspace-query.md) -összekapcsolással összekapcsolhatja a Azure monitorba betöltött összes adatot a Application Insights-adatként.
 
 Például betöltheti a labor leltározását és helyszíneit egy "LabLocations_CL" nevű táblába egy "faLog Analytics" nevű munkaterületen. Ha ezt követően áttekintjük a "myAI" nevű Application Insights alkalmazásban követett kéréseket, és összekapcsoljuk azokat a számítógépneveket, amelyek a kérelmeket a korábban említett egyéni táblában tárolt gépek helyeire kézbesítik, a következő lekérdezést futtathatja a Application Insights vagy a Azure Monitor környezetből:
 
@@ -56,5 +57,5 @@ app('myAI').requests
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Tekintse meg az [adatgyűjtő API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) -referenciát.
-- További információ az [erőforrások közötti illesztésekről](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).
+- Tekintse meg az [adatgyűjtő API](../platform/data-collector-api.md) -referenciát.
+- További információ az [erőforrások közötti illesztésekről](../log-query/cross-workspace-query.md).

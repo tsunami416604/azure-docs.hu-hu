@@ -3,15 +3,16 @@ title: A Microsoft Business Applications független szoftverszállítói (ISV) C
 description: A következőkben bemutatjuk a Business Applications ISV kapcsolódási program bevezetését.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 6/25/2020
+ms.topic: article
+author: qianw211
 ms.author: dsindona
-ms.openlocfilehash: 37d8c26bd41f06a39d4404c142aef5faa0bf199c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 7/14/2020
+ms.openlocfilehash: 65d18bca4f8f7b5d655d91ece1c9d966311b701b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170241"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092218"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>A Microsoft Business Applications független szoftverszállítói (ISV) Connect programjának előkészítési útmutatója
 
@@ -38,7 +39,7 @@ A programban való részvételhez meg kell vizsgálnia és el kell fogadnia a [B
 
 1.  Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard).
 2.  Válassza a **Beállítások** (fogaskerék ikon) lehetőséget, és válassza a **fejlesztői beállítások**elemet.
-3.  Válassza a **szerződések**lehetőséget. 
+3.  Válassza a **szerződések**lehetőséget.
 4.  Válassza ki a verzió hivatkozást, és tekintse meg a szerződést.
 5.  A szerződés elfogadásához és elfogadásához válassza a **Szerződés elfogadása**lehetőséget.
 
@@ -69,15 +70,14 @@ A Business Applications ISV kapcsolódási programban való regisztráció utols
 - [A Dynamics 365 for Finance and Operations esetében](https://docs.microsoft.com/dynamics365/fin-ops-core/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 > [!IMPORTANT]
-> 6 havonta újra hitelesítenie kell az alkalmazásait, hogy azok élő állapotban maradjanak a AppSource-on. Részletekért lásd: Marketplace Policy [kereskedelmi piactér – minősítési házirendek](https://docs.microsoft.com/legal/marketplace/certification-policies). 
+> 6 havonta újra hitelesítenie kell az alkalmazásait, hogy azok élő AppSource maradjanak. Részletekért lásd: Marketplace Policy [kereskedelmi piactér – minősítési házirendek](https://docs.microsoft.com/legal/marketplace/certification-policies). 
 
 ## <a name="next-steps"></a>További lépések
 
 Kérje a fiókkezelő segítségét, vagy forduljon a [Microsoft partner támogatási szolgálatához](https://aka.ms/marketplacepublishersupport) a fiókjával kapcsolatos segítségért. Az Business Applications ISV csatlakozási program általános információit a következő témakörben tekintheti meg:
 
-- **[ISV-Business Applications (online cikk)](https://aka.ms/bizappsisvweb)**
-
-- **[Az Business Applications ISV-hoz készült új program áttekintése (PDF)](https://aka.ms/bizappsisvprogram)**
-
-- **[ISV csatlakozási program házirendjei](https://aka.ms/bizappsisvpolicies)**
-
+- [ISV-Business Applications](https://partner.microsoft.com/solutions/business-applications/isv-overview) (online cikk)
+- [Az Business Applications ISV-hoz készült új program áttekintése](https://aka.ms/BizAppsISVProgram) (PDF)
+- [Business Applications ISV összekapcsolási program – GYIK](https://assetsprod.microsoft.com/business-applications-partner-faq.pdf) (PDF)
+- [Közelgő program Business Applications ISV](https://cloudblogs.microsoft.com/dynamics365/bdm/2019/04/17/upcoming-program-for-business-applications-isvs/) -ket (blogbejegyzés)
+- [ISV összekapcsolási program házirendjei](https://aka.ms/bizappsisvpolicies) (PDF)

@@ -4,11 +4,12 @@ description: Gyors bevezetés a Batch-erőforrások kezeléséhez használható 
 ms.topic: how-to
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c80da92c7acad5180c763d259357f5369f225f7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83779607"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092779"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-erőforrások kezelése PowerShell-parancsmagokkal
 
@@ -20,7 +21,7 @@ Ez a cikk parancsmagokon alapul az az batch modul 1.0.0-ban. Ajánlott gyakran f
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Telepítse és konfigurálja az Azure PowerShell modul legújabb verzióját](/powershell/azure/overview). Egy adott Azure Batch-modul, például egy kiadás előtti modul telepítésével kapcsolatban lásd a [PowerShell-galériát](https://www.powershellgallery.com/packages/Az.Batch/1.0.0) ismertető cikket.
+* [Telepítse és konfigurálja az Azure PowerShell modul legújabb verzióját](/powershell/azure/). Egy adott Azure Batch-modul, például egy kiadás előtti modul telepítésével kapcsolatban lásd a [PowerShell-galériát](https://www.powershellgallery.com/packages/Az.Batch/1.0.0) ismertető cikket.
 
 * Futtassa a **AzAccount** parancsmagot az előfizetéshez való kapcsolódáshoz (a Azure batch parancsmagok a Azure Resource Manager modulban):
 

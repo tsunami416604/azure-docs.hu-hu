@@ -13,16 +13,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/09/2019
 ms.author: juliako
-ms.openlocfilehash: 3d584ee742aa93cdecf4b04d942afb2ed83a7357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31fa7fe6b16b7ba97b8ce5e6697f1aaaf88aa294
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67305124"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091895"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Videó kivágása Media Services-.NET-kódolással
 
-Ha [feladatokkal](https://docs.microsoft.com/rest/api/media/jobs)kódolja a videót, levágja vagy alklipet készíthet. Ez a funkció a [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -előállítók vagy a [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -előállítók használatával létrehozott bármely [átalakítással](https://docs.microsoft.com/rest/api/media/transforms) működik.
+Ha [feladatokkal](/rest/api/media/jobs)kódolja a videót, levágja vagy alklipet készíthet. Ez a funkció a [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -előállítók vagy a [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) -előállítók használatával létrehozott bármely [átalakítással](/rest/api/media/transforms) működik.
 
 A következő C#-példa egy olyan feladatot hoz létre, amely egy adott eszközön található videót metszi el, mivel kódolási feladatot küld. 
 
@@ -30,7 +30,7 @@ A következő C#-példa egy olyan feladatot hoz létre, amely egy adott eszköz�
 
 A jelen témakörben ismertetett lépések végrehajtásához a következőket kell tennie:
 
-- [Azure Media Services-fiók létrehozása](create-account-cli-how-to.md)
+- [Azure Media Services-fiók létrehozása](./create-account-howto.md)
 - Hozzon létre egy átalakítót és egy bemeneti és kimeneti eszközöket. A .NET-oktatóanyag használatával megtekintheti, hogyan hozhat létre átalakítót és bemeneti és kimeneti eszközöket a [feltöltési, a kódolási és a stream-videóban](stream-files-tutorial-with-api.md) .
 - Tekintse át a [kódolási koncepcióval](encoding-concept.md) foglalkozó témakört.
 

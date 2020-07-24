@@ -8,11 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80811654"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092728"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Egyéni tartománynév konfigurálása Azure felhőszolgáltatáshoz
 Felhőalapú szolgáltatás létrehozásakor az Azure a **cloudapp.net**altartományához rendeli hozzá. Ha például a Cloud Service neve "contoso", a felhasználók az alkalmazáshoz hasonló URL-címen érhetik el az alkalmazást `http://contoso.cloudapp.net` . Az Azure egy virtuális IP-címet is hozzárendel.
@@ -42,7 +43,7 @@ A CNAME rekord egy *adott* tartományt (például **contoso.com** vagy **www \. 
 > [!NOTE]
 > Egyes tartományi regisztrátorok csak CNAME rekordok (például www- \. contoso.com), és nem gyökérszintű nevek (például a contoso.com) használata esetén teszik lehetővé az altartományok leképezését. A CNAME-rekordokkal kapcsolatos további információkért tekintse meg a regisztrátor által biztosított dokumentációt, [a wikipedia bejegyzését a CNAME rekordon](https://en.wikipedia.org/wiki/CNAME_record), vagy az [IETF tartományneveket – megvalósítási és specifikációs](https://tools.ietf.org/html/rfc1035) dokumentumot.
 
-### <a name="a-record"></a>Egy rekord
+### <a name="a-record"></a>A-rekord
 Az *a* rekord leképezi a tartományt, például a **contoso.com** vagy a **www \. contoso.com**, *vagy egy helyettesítő karaktert* (például ** \* . contoso.com**) egy IP-címhez. Azure Cloud Service esetén a szolgáltatás virtuális IP-címe. Tehát a rekordok CNAME rekordon keresztüli fő előnye, hogy egy olyan bejegyzést használhat, amely helyettesítő karaktert (például \* **. contoso.com)** használ, amely több altartományhoz (például **mail.contoso.com**, **login.contoso.com**vagy **www \. contso.com**) érkező kéréseket fog kezelni.
 
 > [!NOTE]
@@ -62,7 +63,7 @@ CNAME rekord létrehozásához hozzá kell adnia egy új bejegyzést a DNS-tábl
        ![a webhely URL-címét bemutató gyors áttekintés szakasz][csurl]
 
        **VAGY**
-   * Telepítse és konfigurálja az [Azure PowerShellt](/powershell/azure/overview), majd használja a következő parancsot:
+   * Telepítse és konfigurálja az [Azure PowerShellt](/powershell/azure/), majd használja a következő parancsot:
 
        ```powershell
        Get-AzureDeployment -ServiceName yourservicename | Select Url
@@ -95,7 +96,7 @@ Rekord létrehozásához először meg kell keresnie a felhőalapú szolgáltat�
        ![a VIP-t bemutató gyors áttekintés szakasz][vip]
 
        **VAGY**
-   * Telepítse és konfigurálja az [Azure PowerShellt](/powershell/azure/overview), majd használja a következő parancsot:
+   * Telepítse és konfigurálja az [Azure PowerShellt](/powershell/azure/), majd használja a következő parancsot:
 
        ```powershell
        get-azurevm -servicename yourservicename | get-azureendpoint -VM {$_.VM} | select Vip
@@ -134,7 +135,7 @@ Ez a példa egy rekord létrehozását mutatja be a gyökértartomány számára
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Azure Portalra]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
 

@@ -11,16 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01972ab02aa901af6144c02171efd36314e2f514
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582759"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091946"
 ---
 # <a name="streaming-policies"></a>Streamelési szabályok
 
-Azure Media Services v3 esetén a [folyamatos átviteli házirendek](https://docs.microsoft.com/rest/api/media/streamingpolicies) lehetővé teszik a folyamatos átviteli protokollok és titkosítási beállítások megadását a [streaming-lokátorok](streaming-locators-concept.md)számára. A Media Services v3 néhány előre definiált adatfolyam-szabályzatot biztosít, hogy azokat közvetlenül próbaverzióhoz vagy éles üzemhez lehessen használni. 
+Azure Media Services v3 esetén a [folyamatos átviteli házirendek](/rest/api/media/streamingpolicies) lehetővé teszik a folyamatos átviteli protokollok és titkosítási beállítások megadását a [streaming-lokátorok](streaming-locators-concept.md)számára. A Media Services v3 néhány előre definiált adatfolyam-szabályzatot biztosít, hogy azokat közvetlenül próbaverzióhoz vagy éles üzemhez lehessen használni. 
 
 A jelenleg elérhető előre definiált folyamatos átviteli szabályzatok:<br/>
 * "Predefined_DownloadOnly"
@@ -44,11 +44,11 @@ Kattintson a képre a teljes méretű megjelenítéshez.
 
 Ha titkosítja a tartalmat, létre kell hoznia egy [tartalmi kulcsra vonatkozó házirendet](content-key-policy-concept.md), a **tartalmi kulcs házirendje** nem szükséges a folyamatos átvitelhez vagy a letöltéshez. 
 
-Ha speciális követelményekkel rendelkezik (például ha különböző protokollokat szeretne megadni, egyéni kulcsú kézbesítési szolgáltatást kell használnia, vagy tiszta hangsávot kell használnia), [létrehozhat](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) egyéni adatfolyam-házirendet. 
+Ha speciális követelményekkel rendelkezik (például ha különböző protokollokat szeretne megadni, egyéni kulcsú kézbesítési szolgáltatást kell használnia, vagy tiszta hangsávot kell használnia), [létrehozhat](/rest/api/media/streamingpolicies/create) egyéni adatfolyam-házirendet. 
 
 ## <a name="get-a-streaming-policy-definition"></a>Folyamatos átviteli szabályzat definíciójának beolvasása  
 
-Ha meg szeretné tekinteni az adatfolyam-szabályzat definícióját, használja a [Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) lehetőséget, és adja meg a szabályzat nevét. Például:
+Ha meg szeretné tekinteni az adatfolyam-szabályzat definícióját, használja a [Get](/rest/api/media/streamingpolicies/get) lehetőséget, és adja meg a szabályzat nevét. Például:
 
 ### <a name="rest"></a>REST
 

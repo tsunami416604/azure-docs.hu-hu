@@ -1,0 +1,201 @@
+---
+title: A sablon specifikációinak áttekintése
+description: Leírja, hogyan lehet létrehozni a sablon specifikációit, és megoszthatja őket a szervezet más felhasználóival.
+ms.topic: conceptual
+ms.date: 07/20/2020
+ms.author: tomfitz
+author: tfitzmac
+ms.openlocfilehash: 47dcf44b35ad5c0b77dd0b88d683071a7f2f4ecb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87096677"
+---
+# <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager sablon specifikációi (előzetes verzió)
+
+A sablon specifikációja egy új erőforrástípus, amellyel egy Azure Resource Manager sablon (ARM-sablon) tárolható az Azure-ban a későbbi üzembe helyezéshez. Ez az erőforrástípus lehetővé teszi, hogy megossza az ARM-sablonokat a szervezet más felhasználóival. A többi Azure-erőforráshoz hasonlóan a szerepköralapú hozzáférés-vezérlés (RBAC) használatával is megoszthatja a sablon specifikációját. a felhasználóknak csak olvasási hozzáférésre van szükségük a sablon specifikációhoz a sablon üzembe helyezéséhez, így a sablon megosztható anélkül, hogy mások is módosíthassák.
+
+A **Microsoft. Resources/templateSpecs** a sablonhoz tartozó specifikációk új erőforrástípus. Egy fő sablonból és tetszőleges számú csatolt sablonból áll. Az Azure biztonságosan tárolja a sablonhoz tartozó specifikációkat az erőforráscsoportok között. A sablon specifikációi támogatják a [verziószámozást](#versioning).
+
+A sablon specifikációjának üzembe helyezéséhez szabványos Azure-eszközöket (például PowerShell, Azure CLI, Azure Portal, REST és más támogatott SDK-kat és ügyfeleket) kell használnia. Ugyanazokat a parancsokat használja, és ugyanazokat a paramétereket adja át a sablonhoz.
+
+A sablon specifikációinak használatának előnye, hogy a munkahelyen lévő csapatoknak nem kell újból létrehozniuk vagy átmásolnia a sablonokat a gyakori forgatókönyvekhez. Kanonikus sablonokat hozhat létre, és megoszthatja őket. A sablonban szerepeltetni kívánt sablonokat a szervezet rendszergazdáinak ellenőriznie kell a szervezet követelményeinek és útmutatásának követése érdekében.
+
+> [!NOTE]
+> A sablonra vonatkozó specifikációk jelenleg előzetes verzióban érhetők el. A használatához regisztrálnia kell [a várakozási listára](https://aka.ms/templateSpecOnboarding).
+
+## <a name="create-template-spec"></a>Sablon létrehozása – spec
+
+Az alábbi példa egy egyszerű sablont mutat be egy Storage-fiók létrehozásához az Azure-ban.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-06-01",
+      "location": "[resourceGroup().location]",
+      "kind": "StorageV2",
+      "sku": {
+        "name": "Premium_LRS",
+        "tier": "Premium"
+      }
+    }
+  ]
+}
+```
+
+A sablon specifikációjának létrehozásakor a PowerShell-vagy CLI-parancsok át lesznek adva a fő sablonfájl számára. Ha a fő sablon a csatolt sablonokra hivatkozik, a parancsok megkeresik és becsomagolják őket a sablon specifikációjának létrehozásához. További információ: [sablon létrehozása spec csatolt sablonokkal](#create-a-template-spec-with-linked-templates).
+
+Hozzon létre egy sablont a specifikáció használatával:
+
+```azurepowershell
+New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -TemplateJsonFile ./mainTemplate.json
+```
+
+Az előfizetéshez tartozó összes sablon specifikációját a alábbiak használatával tekintheti meg:
+
+```azurepowershell
+Get-AzTemplateSpec
+```
+
+Megtekintheti a sablon specifikációjának részleteit, beleértve a verzióit a következőkkel:
+
+```azurepowershell
+Get-AzTemplateSpec -ResourceGroupName templateSpecsRG -Name storageSpec
+```
+
+## <a name="deploy-template-spec"></a>Sablon üzembe helyezése – spec
+
+A sablon specifikációjának létrehozása után a felhasználók olvasási hozzáféréssel láthatják **el** a sablon specifikációját. További információ a hozzáférés biztosításáról: [oktatóanyag: csoport hozzáférésének biztosítása az Azure-erőforrásokhoz Azure PowerShell használatával](../../role-based-access-control/tutorial-role-assignments-group-powershell.md).
+
+A sablonok specifikációi a portálon, a PowerShellen, az Azure CLI-n, vagy egy nagyobb sablon-telepítésben csatolt sablonként is üzembe helyezhetők. A szervezet felhasználói a specifikációt bármely hatókörre üzembe helyezhetik az Azure-ban (erőforráscsoport, előfizetés, felügyeleti csoport vagy bérlő).
+
+Ahelyett, hogy egy sablon elérési útját vagy URI azonosítóját kellene átadnia, az erőforrás-AZONOSÍTÓjának megadásával egy sablont kell telepítenie. Az erőforrás-azonosító formátuma a következő:
+
+**/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Resources/templateSpecs/{template-spec-name}/versions/{template-spec-version}**
+
+Figyelje meg, hogy az erőforrás-azonosító tartalmazza a sablon specifikációjának verziószámát.
+
+Tegyük fel például, hogy a következő PowerShell-paranccsal telepíti a sablon specifikációját.
+
+```azurepowershell
+$id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0"
+
+New-AzResourceGroupDeployment `
+  -TemplateSpecId $id `
+  -ResourceGroupName demoRG
+```
+
+A gyakorlatban általában a `Get-AzTemplateSpec` telepíteni kívánt sablon azonosítójának lekéréséhez fog futni.
+
+```azurepowershell
+$id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Version.Id
+
+New-AzResourceGroupDeployment `
+  -TemplateSpecId $id `
+  -ResourceGroupName demoRG
+```
+
+## <a name="create-a-template-spec-with-linked-templates"></a>Sablon létrehozása a csatolt sablonokkal
+
+Ha a sablon fő sablonja a csatolt sablonokra hivatkozik, akkor a PowerShell és a CLI parancsok automatikusan megtalálják és becsomagolják a csatolt sablonokat a helyi meghajtóról. Nem kell manuálisan konfigurálnia a Storage-fiókokat vagy-adattárakat a sablonhoz tartozó specifikációk futtatásához – minden a sablon spec-erőforrása önálló.
+
+Az alábbi példa egy két csatolt sablonnal rendelkező fő sablonból áll. A példa csak a sablon kivonata. Figyelje meg, hogy egy nevű tulajdonságot használ `relativePath` a többi sablonhoz való hivatkozáshoz. A (z `apiVersion` `2020-06-01` ) vagy újabb verziót kell használnia az üzemelő példányok erőforrásához.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    ...
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            ...
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "relativePath": "artifacts/webapp.json"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            ...
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "relativePath": "artifacts/database.json"
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+
+```
+
+Ha a fenti példában a PowerShell-vagy CLI-parancs létrehozta a sablon specifikációját, a parancs három fájlt talál: a fő sablont, a webalkalmazás sablonját () `webapp.json` és az adatbázis sablonját ( `database.json` ), és becsomagolja őket a sablon specifikációba.
+
+További információ: [oktatóanyag: sablon létrehozása a csatolt sablonokkal](template-specs-create-linked.md).
+
+## <a name="deploy-template-spec-as-a-linked-template"></a>A sablon specifikációjának üzembe helyezése csatolt sablonként
+
+Miután létrehozta a sablon specifikációját, egyszerűen felhasználhatja azt egy ARM-sablonból vagy egy másik sablon-specifikációból. A sablonhoz való hivatkozáshoz adja hozzá az erőforrás-AZONOSÍTÓját a sablonhoz. A társított sablon specifikációja automatikusan települ a fő sablon telepítésekor. Ez a viselkedés lehetővé teszi, hogy moduláris sablon-specifikációkat fejlesszen, és szükség szerint újra felhasználhassa őket.
+
+Létrehozhat például egy olyan sablont, amely hálózati erőforrásokat telepít, és egy másik, a tárolási erőforrásokat telepítő specifikációt. Az ARM-sablonokban erre a két sablonra vonatkozó specifikációra lehet hivatkozni, amikor hálózati vagy tárolási erőforrásokat kell konfigurálnia.
+
+A következő példa hasonló a korábbi példához, de a tulajdonsággal hivatkozik a `id` sablonra, és nem a `relativePath` tulajdonságot a helyi sablonhoz való hivatkozáshoz. Használja az `2020-06-01` API-verziót a központi telepítések erőforrásához. A példában a sablon specifikációi egy **templateSpecsRG**nevű erőforráscsoporthoz tartoznak.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    ...
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "networkingDeployment",
+            ...
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'networkingSpec', '1.0')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "storageDeployment",
+            ...
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+A sablon specifikációinak összekapcsolásával kapcsolatos további információkért lásd [: oktatóanyag: sablonra vonatkozó spec telepítése csatolt sablonként](template-specs-deploy-linked-template.md).
+
+## <a name="versioning"></a>Verziókezelés
+
+A sablon specifikációjának létrehozásakor meg kell adnia a verziószámát. A sablon kódjának megismétlése után frissítheti a meglévő verziót (gyorsjavítások esetén), vagy közzétehet egy új verziót. A verzió egy szöveges karakterlánc. Dönthet úgy, hogy bármely verziószámozási rendszer követését választja, beleértve a szemantikai verziószámozást is. A sablon specifikációjának felhasználói megadhatják a telepítéskor használni kívánt verziószámot.
+
+## <a name="next-steps"></a>További lépések
+
+* A sablon specifikációjának létrehozásához és üzembe helyezéséhez lásd: gyors útmutató [: sablon létrehozása és üzembe helyezése specifikáció](quickstart-create-template-specs.md).
+
+* A sablonokhoz tartozó specifikációk összekapcsolásával kapcsolatos további információkért lásd [: oktatóanyag: sablon létrehozása spec csatolt sablonokkal](template-specs-create-linked.md).
+
+* További információ a sablon specifikációjának csatolt sablonként való üzembe helyezéséről [: oktatóanyag: sablon központi telepítése csatolt sablonként](template-specs-deploy-linked-template.md).

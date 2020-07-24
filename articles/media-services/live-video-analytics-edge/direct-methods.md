@@ -3,15 +3,16 @@ title: Közvetlen módszerek használata az élő videó-elemzésekben IoT Edge 
 description: A IoT Edge Live Video Analytics számos közvetlen módszert tesz elérhetővé. A közvetlen módszerek a jelen témakörben ismertetett konvenciók alapján működnek.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: b87452de6b12b0335afca5e28abb3ef6adb29157
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261372"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091827"
 ---
 # <a name="direct-methods"></a>Közvetlen metódusok
 
-A IoT Edge Live Video Analytics számos közvetlen metódust tesz elérhetővé, amelyek IoT Hubból is meghívhatók. A közvetlen metódusok a kérés-válasz interakciót egy olyan eszközhöz hasonlítják, amely a HTTP-híváshoz hasonlóan sikeres vagy sikertelen (a felhasználó által megadott időtúllépés után). Ez a megközelítés olyan esetekben hasznos, amikor az azonnali művelet végrehajtása eltérő lehet attól függően, hogy az eszköz válaszol-e. További információ: [közvetlen metódusok megismerése és meghívása IoT hubból](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods).
+A IoT Edge Live Video Analytics számos közvetlen metódust tesz elérhetővé, amelyek IoT Hubból is meghívhatók. A közvetlen metódusok a kérés-válasz interakciót egy olyan eszközhöz hasonlítják, amely a HTTP-híváshoz hasonlóan sikeres vagy sikertelen (a felhasználó által megadott időtúllépés után). Ez a megközelítés olyan esetekben hasznos, amikor az azonnali művelet végrehajtása eltérő lehet attól függően, hogy az eszköz válaszol-e. További információ: [közvetlen metódusok megismerése és meghívása IoT hubból](../../iot-hub/iot-hub-devguide-direct-methods.md).
 
 Ez a témakör ezeket a metódusokat és konvenciókat ismerteti.
 
@@ -57,7 +58,7 @@ A közvetlen módszerek a következő egyezményeken alapulnak:
 
 ### <a name="top-level-error-codes"></a>Legfelső szintű hibakódok     
 
-|Állapot |Code   |Üzenet|
+|status |Code   |Üzenet|
 |---|---|---|
 |400|   BadRequest| A kérelem érvénytelen.|
 |400|   InvalidResource|    Az erőforrás érvénytelen|
@@ -97,7 +98,7 @@ Részletes érvényesítési hiba, például a Graph-modul érvényességi adata
 }
 ```
 
-|Állapot|    Részletes kód   |Description|
+|status|    Részletes kód   |Description|
 |---|---|---|
 |400|   GraphValidationError|   Általános gráf-hibák, például ciklusok vagy particionálások stb.|
 |400|   ModuleValidationError|  Modul-specifikus érvényesítési hibák.|
@@ -111,7 +112,7 @@ Részletes érvényesítési hiba, például a Graph-modul érvényességi adata
 
 Ez a közvetlen metódus egyetlen gráf topológiát kérdez le.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Kérelem
 
 ```
 {
@@ -123,7 +124,7 @@ Ez a közvetlen metódus egyetlen gráf topológiát kérdez le.
 }
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```
 {
@@ -139,9 +140,9 @@ Ez a közvetlen metódus egyetlen gráf topológiát kérdez le.
 
 #### <a name="status-codes"></a>Állapotkódok
 
-|Állapot  |Állapotkód    |Részletes hibakód|
+|Feltétel  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|Entitás található|  200 |N.A.
+|Entitás található|  200 |n.a.
 |Általános felhasználói hibák    |400 tartomány  ||
 |Az entitás nem található   |404        ||
 |Általános kiszolgálói hibák| 500 tartomány       ||
@@ -159,7 +160,7 @@ Legfontosabb szempontok:
     * Az eltávolított paramétereket egyetlen gráf sem hivatkozik
 * A topológia frissítései nem engedélyezettek, ha vannak aktív diagramok
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Kérelem
 
 ```
 {
@@ -174,7 +175,7 @@ Legfontosabb szempontok:
 }
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```
 {
@@ -190,10 +191,10 @@ Legfontosabb szempontok:
 
 #### <a name="status-codes"></a>Állapotkódok
 
-|Állapot  |Állapotkód    |Részletes hibakód|
+|Feltétel  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-Meglévő entitás frissítve |200|   N.A.|
-Új entitás létrehozva  |201|   N.A.|
+Meglévő entitás frissítve |200|   n.a.|
+Új entitás létrehozva  |201|   n.a.|
 Általános felhasználói hibák |400 tartomány  ||
 Gráf-érvényesítési hibák |400    |GraphValidationError|
 Modul-ellenőrzési hibák|   400 |ModuleValidationError|
@@ -203,7 +204,7 @@ Modul-ellenőrzési hibák|   400 |ModuleValidationError|
 
 Egyetlen gráf topológiát töröl.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Kérelem
 
 ```
 {
@@ -215,7 +216,7 @@ Egyetlen gráf topológiát töröl.
 }
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```
 {
@@ -226,10 +227,10 @@ Egyetlen gráf topológiát töröl.
 
 #### <a name="status-codes"></a>Állapotkódok
 
-|Állapot  |Állapotkód    |Részletes hibakód|
+|Feltétel  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|Entitás törölve|    200|    N.A.|
-|Az entitás nem található|  204|    N.A.|
+|Entitás törölve|    200|    n.a.|
+|Az entitás nem található|  204|    n.a.|
 |Általános felhasználói hibák|   400 tartomány   ||
 |A Graph-topológiát egy vagy több gráf-példány hivatkozik| 409 |GraphTopologyInUse|
 |Általános kiszolgálói hibák| 500 tartomány   ||
@@ -238,7 +239,7 @@ Egyetlen gráf topológiát töröl.
 
 A szűrési feltételeknek megfelelő gráf-topológiák listájának beolvasása.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Kérelem
 
 ```
 {
@@ -254,7 +255,7 @@ A szűrési feltételeknek megfelelő gráf-topológiák listájának beolvasás
 }
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```
 {
@@ -284,9 +285,9 @@ A szűrési feltételeknek megfelelő gráf-topológiák listájának beolvasás
 
 #### <a name="status-codes"></a>Állapotkódok
 
-|Állapot  |Állapotkód    |Részletes hibakód|
+|Feltétel  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|Sikeres|   200 |N.A.|
+|Success|   200 |n.a.|
 |Általános felhasználói hibák|   400 tartomány   ||
 |Általános kiszolgálói hibák| 500 tartomány   ||
 
@@ -294,7 +295,7 @@ A szűrési feltételeknek megfelelő gráf-topológiák listájának beolvasás
 
 Egyetlen gráf-példányt kér le:
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Kérelem
 
 ```
 {
@@ -306,7 +307,7 @@ Egyetlen gráf-példányt kér le:
 }
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```
 {
@@ -322,9 +323,9 @@ Egyetlen gráf-példányt kér le:
 
 #### <a name="status-codes"></a>Állapotkódok
 
-|Állapot  |Állapotkód    |Részletes hibakód|
+|Feltétel  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|Entitás található   |200|   N.A.|
+|Entitás található   |200|   n.a.|
 |Általános felhasználói hibák|   400 tartomány   ||
 |Az entitás nem található|  404 ||
 |Általános kiszolgálói hibák| 500 tartomány   ||
@@ -341,7 +342,7 @@ Legfontosabb szempontok:
 * A Graph-példány frissítései részben vannak korlátozva, amíg a gráf nem "inaktív" állapotban van.
 * A Graph-példány frissítései nem engedélyezettek az aktív gráfokon.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Kérelem
 
 ```
 {
@@ -356,7 +357,7 @@ Legfontosabb szempontok:
 }
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ````
 {
@@ -372,10 +373,10 @@ Legfontosabb szempontok:
 
 #### <a name="status-codes"></a>Állapotkódok
 
-|Állapot  |Állapotkód    |Részletes hibakód|
+|Feltétel  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|Meglévő entitás frissítve    |200    |N.A.|
-|Új entitás létrehozva|    201 |N.A.|
+|Meglévő entitás frissítve    |200    |n.a.|
+|Új entitás létrehozva|    201 |n.a.|
 |Általános felhasználói hibák|   400 tartomány   ||
 |Gráf-érvényesítési hibák    |400|   GraphValidationError|
 |Modul-ellenőrzési hibák|  400 |ModuleValidationError|
@@ -390,7 +391,7 @@ Legfontosabb szempontok:
 
 * Csak inaktivált gráfokat lehet törölni.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Kérelem
 
 ```
 {
@@ -402,7 +403,7 @@ Legfontosabb szempontok:
 }
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```
 {
@@ -413,10 +414,10 @@ Legfontosabb szempontok:
 
 #### <a name="status-codes"></a>Állapotkódok
 
-|Állapot  |Állapotkód    |Részletes hibakód|
+|Feltétel  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|A gráf törlése sikerült|    200|    N.A.|
-|A gráf nem található|   204|    N.A.|
+|A gráf törlése sikerült|    200|    n.a.|
+|A gráf nem található|   204|    n.a.|
 |Általános felhasználói hibák    |400 tartomány  ||
 |A gráf nem a "leállítva" állapotban van    |409    |OperationNotAllowedInState|
 |Általános kiszolgálói hibák| 500 tartomány   ||
@@ -426,7 +427,7 @@ Legfontosabb szempontok:
 Ez hasonló a GraphTopologyList-hez. Lehetővé teszi a használatot a Graph-példányok enumerálásához.
 Lekéri az összes olyan gráf-példány listáját, amely megfelel a szűrési feltételeknek.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Kérelem
 
 ```
 {
@@ -442,7 +443,7 @@ Lekéri az összes olyan gráf-példány listáját, amely megfelel a szűrési 
 }
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```
 {
@@ -471,9 +472,9 @@ Lekéri az összes olyan gráf-példány listáját, amely megfelel a szűrési 
 
 #### <a name="status-codes"></a>Állapotkódok
 
-|Állapot  |Állapotkód    |Részletes hibakód|
+|Feltétel  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|Sikeres    |200    |N.A.|
+|Success    |200    |n.a.|
 |Általános felhasználói hibák|   400 tartomány   ||
 |Általános kiszolgálói hibák| 500 tartomány   ||
 
@@ -492,7 +493,7 @@ Kulcsfontosságú szempontok
     * Az "aktiválás" állapotú gráf megkezdése ugyanúgy viselkedik, mintha a gráf inaktiválása megtörtént (azaz a hívás blokkolja a gráf aktiválása előtt).
     * Az "aktív" állapotú gráfok aktiválása azonnal sikeres.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Kérelem
 
 ```
 {
@@ -504,7 +505,7 @@ Kulcsfontosságú szempontok
 }
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```
 {
@@ -515,10 +516,10 @@ Kulcsfontosságú szempontok
 
 #### <a name="status-codes"></a>Állapotkódok
 
-|Állapot  |Állapotkód    |Részletes hibakód|
+|Feltétel  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|A gráf sikeresen aktiválva   |200    |N.A.|
-|Új entitás létrehozva |201|   N.A.|
+|A gráf sikeresen aktiválva   |200    |n.a.|
+|Új entitás létrehozva |201|   n.a.|
 |Általános felhasználói hibák    |400 tartomány  ||
 |Modul-ellenőrzési hibák   |400|   ModuleValidationError|
 |Erőforrás-ellenőrzési hibák|    409|    ResourceValidationError|
@@ -541,7 +542,7 @@ Legfontosabb szempontok:
     * Egy gráf inaktiválási állapotba való inaktiválása ugyanúgy viselkedik, mintha a gráf inaktiválása megtörtént (azaz a rendszer blokkolja a blokkokat a gráf inaktiválása előtt).
     * Az "inaktív" állapotú gráfok inaktiválása azonnal sikeres.
 
-#### <a name="request"></a>Kérés
+#### <a name="request"></a>Kérelem
 
 ```
 {
@@ -555,7 +556,7 @@ Legfontosabb szempontok:
 }
 ```
 
-#### <a name="response"></a>Válasz
+#### <a name="response"></a>Reagálás
 
 ```
 {
@@ -564,10 +565,10 @@ Legfontosabb szempontok:
 }
 ```
 
-|Állapot  |Állapotkód    |Részletes hibakód|
+|Feltétel  |Állapotkód    |Részletes hibakód|
 |---|---|---|
-|A gráf sikeresen aktiválva   |200|   N.A.|
-|Új entitás létrehozva |201|   N.A.|
+|A gráf sikeresen aktiválva   |200|   n.a.|
+|Új entitás létrehozva |201|   n.a.|
 |Általános felhasználói hibák    |400 tartomány  ||
 |A gráf aktiváló állapotban van   |409|   OperationNotAllowedInState|
 |Általános kiszolgálói hibák  |500 tartomány  ||

@@ -4,13 +4,14 @@ description: Ismerje meg, hogyan konfigurálhatja az ügyfél által felügyelt 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 07/16/2020
 ms.author: thweiss
-ms.openlocfilehash: 443e037f89508b0fc3b01ba90f884c139f4c64be
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 989fbb123e39f85aeeb8eba9961f9aeab1e76c84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027773"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092607"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurálja a felhasználó által kezelt kulcsokat az Azure Cosmos-fiókjához az Azure Key Vaulttal
 
@@ -227,7 +228,15 @@ Az Azure Cosmos-fiók által használt ügyfél által felügyelt kulcs elforgat
 
   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="Új kulcs verziójának létrehozása":::
 
-- A fiók tulajdonságának frissítésével cserélje le az aktuálisan használt kulcsot egy teljesen eltérő értékre `keyVaultKeyUri` . Útmutató a PowerShellben:
+- Cserélje le az aktuálisan használt kulcsot egy teljesen eltérőre, ha frissíti a kulcs URI-JÁT a fiókjában. A Azure Portal lépjen az Azure Cosmos-fiókjába, és válassza az **adattitkosítás** lehetőséget a bal oldali menüben:
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Az adattitkosítási menü bejegyzése":::
+
+    Ezután cserélje le a **kulcs URI-ját** a használni kívánt új kulcsra, majd válassza a **Mentés**lehetőséget:
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="A kulcs URI-ja frissítése":::
+
+    A PowerShell ugyanezt az eredményt éri el:
 
     ```powershell
     $resourceGroupName = "myResourceGroup"
@@ -286,7 +295,11 @@ Jelenleg nem, de a tároló szintű kulcsok is megtekinthetők.
 
 ### <a name="how-can-i-tell-if-customer-managed-keys-are-enabled-on-my-azure-cosmos-account"></a>Honnan tudhatom meg, hogy az ügyfél által felügyelt kulcsok engedélyezve vannak-e az Azure Cosmos-fiókomban?
 
-Programozott módon beolvashatja az Azure Cosmos-fiók adatait, és megkeresheti a tulajdonság jelenlétét `keyVaultKeyUri` . A fenti módokon megtekintheti a [PowerShellben](#using-powershell) és [Az Azure CLI használatával](#using-azure-cli).
+A Azure Portal lépjen az Azure Cosmos-fiókjába, és figyelje meg a bal oldali menüben található **adattitkosítási** bejegyzést. Ha a bejegyzés létezik, az ügyfél által felügyelt kulcsok engedélyezve vannak a fiókjában:
+
+:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Az adattitkosítási menü bejegyzése":::
+
+Programozott módon is beolvashatja az Azure Cosmos-fiók adatait, és megkeresheti a tulajdonság jelenlétét `keyVaultKeyUri` . A fenti módokon megtekintheti a [PowerShellben](#using-powershell) és [Az Azure CLI használatával](#using-azure-cli).
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Hogyan érintik az ügyfél által felügyelt kulcsok a biztonsági mentést?
 

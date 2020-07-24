@@ -3,11 +3,12 @@ title: Élő videó-elemzések IoT Edge kvóták – Azure
 description: Ez a cikk az élő videók elemzését ismerteti IoT Edge kvóták és korlátozások alapján.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 9b01db8f1120174806f4b687f7e9ebc4e2386f3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90141fa850c9ab3e3abbea15001249da0736ac45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84261050"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091810"
 ---
 # <a name="quotas-and-limitations"></a>Kvóták és korlátozások
 
@@ -46,11 +47,8 @@ Az előzetes kiadásban a különböző csomópontokra vonatkozó korlátozások
 * Signal Gate processzor
    * Közvetlenül az RTSP-forrástól kell, hogy legyen.
 * Eszköz fogadója 
-   * Graph-topológia esetében legfeljebb egy ilyen csomópont lehet.
-      * Ha egy adatkészletet használ, akkor a fájlok fogadója nem lehet jelen, vagy fordítva.
    * Közvetlenül az RTSP-forrás vagy a Signal Gate-processzor között kell lennie.
 * File mosogató
-   * Graph-topológia esetén legfeljebb egy ilyen csomópont lehet (lásd a következő megjegyzést az Asset fogadóval kapcsolatban).
    * Közvetlenül a Signal Gate-processzorról kell, hogy legyen.
    * Nem lehet közvetlenül a HTTP-bővítmény processzora vagy a mozgásérzékelő processzora
 * IoT Hub fogadó

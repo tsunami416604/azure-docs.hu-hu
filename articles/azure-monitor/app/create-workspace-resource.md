@@ -5,11 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18d3460804528d736cfc74c1c2d358eb08013513
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83647892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092966"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Munkaterület-alapú Application Insights erőforrások (előzetes verzió)
 
@@ -24,7 +25,7 @@ Az új felület teszteléséhez jelentkezzen be a [Azure Portalba](https://porta
 
 ![Munkaterület-alapú Application Insights erőforrás](./media/create-workspace-resource/create-workspace-based.png)
 
-Ha még nem rendelkezik meglévő Log Analytics munkaterülettel, [tekintse meg a log Analytics munkaterület-létrehozási dokumentációt](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Ha még nem rendelkezik meglévő Log Analytics munkaterülettel, [tekintse meg a log Analytics munkaterület-létrehozási dokumentációt](../learn/quick-create-workspace.md).
 
 A nyilvános előzetes verzió **munkaterület-alapú erőforrásai jelenleg csak az USA 2. nyugati régiójában, az USA keleti** régiójában és az USA déli középső régiójában vannak.
 
@@ -39,7 +40,7 @@ A kék hivatkozás szövegére kattintva megtekintheti a társított Log Analyti
 
 ## <a name="copy-the-connection-string"></a>A kapcsolati sztring másolása
 
-A [kapcsolódási karakterlánc](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) azonosítja azt az erőforrást, amelyhez hozzá szeretné rendelni a telemetria-adatait. Azt is lehetővé teszi, hogy módosítsa az erőforrás által a telemetria célként használt végpontokat. A kapcsolódási karakterláncot át kell másolnia, és hozzá kell adnia az alkalmazás kódjához vagy egy környezeti változóhoz.
+A [kapcsolódási karakterlánc](./sdk-connection-string.md?tabs=net) azonosítja azt az erőforrást, amelyhez hozzá szeretné rendelni a telemetria-adatait. Azt is lehetővé teszi, hogy módosítsa az erőforrás által a telemetria célként használt végpontokat. A kapcsolódási karakterláncot át kell másolnia, és hozzá kell adnia az alkalmazás kódjához vagy egy környezeti változóhoz.
 
 ## <a name="monitoring-configuration"></a>Figyelési konfiguráció
 
@@ -51,14 +52,14 @@ A kód alapú alkalmazások figyeléséhez csak telepítse a megfelelő Applicat
 
 A Application Insights SDK kód alapú figyeléshez való beállításával kapcsolatos részletes dokumentációért forduljon a nyelvhez vagy a keretrendszerhez kapcsolódó dokumentációhoz:
 
-- [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)
-- [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
-- [Háttér-feladatok & modern konzolon futó alkalmazások (.NET/.NET Core)](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)
-- [Klasszikus konzolos alkalmazások (.NET)](https://docs.microsoft.com/azure/azure-monitor/app/console) 
-- [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started?tabs=maven)
-- [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)
-- [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)
-- [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)
+- [ASP.NET](./asp-net.md)
+- [ASP.NET Core](./asp-net-core.md)
+- [Háttér-feladatok & modern konzolon futó alkalmazások (.NET/.NET Core)](./worker-service.md)
+- [Klasszikus konzolos alkalmazások (.NET)](./console.md) 
+- [Java](./java-get-started.md?tabs=maven)
+- [JavaScript](./javascript.md)
+- [Node.js](./nodejs.md)
+- [Python](./opencensus-python.md)
 
 ### <a name="codeless-monitoring-and-visual-studio-resource-creation"></a>Kód-és Visual Studio-erőforrások létrehozása
 
@@ -101,7 +102,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-A parancshoz tartozó teljes Azure CLI-dokumentációért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
+A parancshoz tartozó teljes Azure CLI-dokumentációért lásd az [Azure CLI dokumentációját](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -197,7 +198,7 @@ A örökölt folyamatos exportálás funkció nem támogatott a munkaterület-al
 ## <a name="next-steps"></a>További lépések
 
 * [Metrikák böngészése](../../azure-monitor/platform/metrics-charts.md)
-* [Analytics-lekérdezések](../../azure-monitor/app/analytics.md)
+* [Analytics-lekérdezések](../log-query/log-query-overview.md)
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md

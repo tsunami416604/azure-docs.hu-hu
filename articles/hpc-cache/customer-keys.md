@@ -4,13 +4,14 @@ description: A Azure Key Vault használata az Azure HPC cache használatával a 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/29/2020
+ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: b7b9e9e6858d709e80642603e77bfb36f2e4c0c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cd97e205d88fe7ead02889f5ae9ad9df0985f07
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092524"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Ügyfél által felügyelt titkosítási kulcsok használata az Azure HPC cache-hez
 
@@ -18,6 +19,8 @@ A Azure Key Vault használatával szabályozhatja az Azure HPC cache-ben tárolt
 
 > [!NOTE]
 > A rendszer alapértelmezés szerint a Microsoft által felügyelt kulcsok használatával titkosítja az Azure-ban tárolt összes, a gyorsítótár-lemezeket is tartalmazó adatforgalomat. A cikkben leírt lépéseket csak akkor kell végrehajtania, ha az adattitkosításhoz használt kulcsokat szeretné kezelni.
+
+Az Azure HPC cache-t a [virtuális gépek gazdagépének titkosítása](../virtual-machines/linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) is védi a gyorsítótárazott adatait tároló felügyelt lemezeken, még akkor is, ha felvesznek egy ügyfél-kulcsot a gyorsítótár-lemezekhez. Az ügyfél által felügyelt kulcs dupla titkosításhoz való hozzáadásával további biztonsági szint biztosítható a magas biztonsági igényeket kielégítő ügyfelek számára. A részletekért olvassa el az [Azure Disk Storage kiszolgálóoldali titkosítását ismertető oldalt](../virtual-machines/linux/disk-encryption.md) .
 
 Ez a funkció csak néhány olyan Azure-régióban érhető el, ahol elérhető az Azure HPC cache. A részletekért tekintse meg a [régió elérhetőségét](hpc-cache-overview.md#region-availability) ismertető listát.
 

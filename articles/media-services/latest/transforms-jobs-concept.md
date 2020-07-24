@@ -12,15 +12,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: ab99b974aed6f8cd5e1da2ee9b427f593b405889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e01d5c8d57752c11b2890c1d109b58a223d260f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73571233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091929"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>Átalakítások és feladatok Media Services
 
-Ez a témakör az [átalakításokkal](https://docs.microsoft.com/rest/api/media/transforms) és a [feladatokkal](https://docs.microsoft.com/rest/api/media/jobs) kapcsolatos adatokat ismerteti, és bemutatja az entitások közötti kapcsolatot.
+Ez a témakör az [átalakításokkal](/rest/api/media/transforms) és a [feladatokkal](/rest/api/media/jobs) kapcsolatos adatokat ismerteti, és bemutatja az entitások közötti kapcsolatot.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -57,7 +58,7 @@ Az **átalakítások** használatával konfigurálhatja a videók kódolására 
 
 ### <a name="viewing-schema"></a>Séma megtekintése
 
-A Media Services v3-as verzióban az előzetes beállítások az API-ban erősen beírt entitások. Ezekhez az objektumokhoz a "séma" definíciója [nyílt API-specifikációban (vagy hencegés)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)található. A [REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset), a [.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)vagy más Media Services v3 SDK dokumentációjában megtekintheti az előre definiált definíciókat (például a **StandardEncoderPreset**-t) is.
+A Media Services v3-as verzióban az előzetes beállítások az API-ban erősen beírt entitások. Ezekhez az objektumokhoz a "séma" definíciója [nyílt API-specifikációban (vagy hencegés)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)található. A [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset), a [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)vagy más Media Services v3 SDK dokumentációjában megtekintheti az előre definiált definíciókat (például a **StandardEncoderPreset**-t) is.
 
 ### <a name="creating-transforms"></a>Átalakítások létrehozása
 
@@ -65,7 +66,7 @@ Az átalakításokat a REST, a CLI vagy a közzétett SDK-k használatával is l
 
 ### <a name="updating-transforms"></a>Átalakítások frissítése
 
-Ha frissítenie kell az [átalakítót](https://docs.microsoft.com/rest/api/media/transforms), használja a **frissítési** műveletet. Ennek célja a Leírás módosítása vagy a mögöttes TransformOutputs prioritása. Javasoljuk, hogy ezeket a frissítéseket az összes folyamatban lévő feladat befejezése után végezze el. Ha újra szeretné írni a receptet, létre kell hoznia egy új átalakítót.
+Ha frissítenie kell az [átalakítót](/rest/api/media/transforms), használja a **frissítési** műveletet. Ennek célja a Leírás módosítása vagy a mögöttes TransformOutputs prioritása. Javasoljuk, hogy ezeket a frissítéseket az összes folyamatban lévő feladat befejezése után végezze el. Ha újra szeretné írni a receptet, létre kell hoznia egy új átalakítót.
 
 ### <a name="transform-object-diagram"></a>Objektum diagramjának átalakítása
 
@@ -77,7 +78,7 @@ Válassza ki a képet a teljes méret megtekintéséhez.
 
 ## <a name="jobs"></a>Feladatok
 
-A **feladatnak** az a tényleges kérése, hogy Media Services az **átalakítást** egy adott bemeneti videóra vagy hangtartalomra alkalmazza. Az átalakítás létrehozása után Media Services API-kkal vagy a közzétett SDK-kkal is elküldheti a feladatokat. A **feladatok** olyan információkat határoznak meg, mint a bemeneti videó helye és a kimenet helye. Megadhatja a bemeneti videó helyét a: HTTPS URL-címek, SAS URL-címek vagy [eszközök](https://docs.microsoft.com/rest/api/media/assets)használatával.  
+A **feladatnak** az a tényleges kérése, hogy Media Services az **átalakítást** egy adott bemeneti videóra vagy hangtartalomra alkalmazza. Az átalakítás létrehozása után Media Services API-kkal vagy a közzétett SDK-kkal is elküldheti a feladatokat. A **feladatok** olyan információkat határoznak meg, mint a bemeneti videó helye és a kimenet helye. Megadhatja a bemeneti videó helyét a: HTTPS URL-címek, SAS URL-címek vagy [eszközök](/rest/api/media/assets)használatával.  
 
 ### <a name="job-input-from-https"></a>Feladathoz tartozó bemenet HTTPS-ről
 
@@ -93,7 +94,7 @@ A feladatok előrehaladását és állapotát a Event Gridával folytatott figye
 
 ### <a name="updating-jobs"></a>Feladatok frissítése
 
-A [feladat](https://docs.microsoft.com/rest/api/media/jobs) entitásban található frissítési művelettel a feladat elküldése után módosíthatja a *leírást* és a *prioritási* tulajdonságokat. A *priority* tulajdonság módosítása csak akkor lép érvénybe, ha a feladat továbbra is várólistán lévő állapotban van. Ha a feladat megkezdte a feldolgozást, vagy befejeződött, a módosítás prioritása nincs hatással.
+A [feladat](/rest/api/media/jobs) entitásban található frissítési művelettel a feladat elküldése után módosíthatja a *leírást* és a *prioritási* tulajdonságokat. A *priority* tulajdonság módosítása csak akkor lép érvénybe, ha a feladat továbbra is várólistán lévő állapotban van. Ha a feladat megkezdte a feldolgozást, vagy befejeződött, a módosítás prioritása nincs hatással.
 
 ### <a name="job-object-diagram"></a>Feladatütemezés diagramja
 
@@ -115,7 +116,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 ## <a name="see-also"></a>Lásd még
 
-* [Hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+* [Hibakódok](/rest/api/media/jobs/get#joberrorcode)
 * [Media Services entitások szűrése, rendezése és lapozása](entities-overview.md)
 
 ## <a name="next-steps"></a>További lépések

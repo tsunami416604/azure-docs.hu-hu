@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 013515e0608bf790ceef8dc13d9d547496306610
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480742"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092847"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>Hibrid környezetek Azure Monitor for VMsának engedélyezése
 
@@ -18,7 +19,7 @@ ms.locfileid: "79480742"
 
 Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs az adatközpontban vagy más felhőalapú környezetben üzemeltetett virtuális gépekhez vagy fizikai számítógépekhez. A folyamat végén sikeresen megkezdte a virtuális gépek monitorozását a környezetben, és megtudhatja, hogy a teljesítmény-és rendelkezésre állási problémákba ütközik-e.
 
-Mielőtt elkezdené, tekintse át az [előfeltételeket](vminsights-enable-overview.md) , és győződjön meg arról, hogy az előfizetés és az erőforrások megfelelnek a követelményeknek. Tekintse át a [log Analytics Linux-és Windows-ügynök](../../log-analytics/log-analytics-agent-overview.md)követelményeit és üzembe helyezési módszereit.
+Mielőtt elkezdené, tekintse át az [előfeltételeket](vminsights-enable-overview.md) , és győződjön meg arról, hogy az előfizetés és az erőforrások megfelelnek a követelményeknek. Tekintse át a [log Analytics Linux-és Windows-ügynök](../platform/log-analytics-agent.md)követelményeit és üzembe helyezési módszereit.
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -155,7 +156,7 @@ Ha nem tudja, hogyan helyezhet üzembe erőforrásokat sablon használatával, t
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/templates/deploy-powershell.md)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
-Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
+Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
 ### <a name="create-and-execute-a-template"></a>Sablon létrehozása és végrehajtása
 
@@ -234,7 +235,7 @@ Ha a függőségi ügynök telepítése sikeres volt, de a számítógép nem je
 
     **Linux**: keresse meg a "Microsoft-függőség – ügynök" futó folyamatot.
 
-2. Ön a [log Analytics ingyenes díjszabási szintjére](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)vonatkozik? Az ingyenes csomag legfeljebb öt egyedi számítógépet tesz lehetővé. A további számítógépek nem jelennek meg a térképen, még akkor is, ha az előző öt már nem küld adatokat.
+2. Ön a [log Analytics ingyenes díjszabási szintjére](./solutions.md)vonatkozik? Az ingyenes csomag legfeljebb öt egyedi számítógépet tesz lehetővé. A további számítógépek nem jelennek meg a térképen, még akkor is, ha az előző öt már nem küld adatokat.
 
 3. A számítógép napló-és teljesítményszámláló-adatokat küld Azure Monitor naplókba? Hajtsa végre a következő lekérdezést a számítógépen:
 

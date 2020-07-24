@@ -2,13 +2,13 @@
 title: A Service Fabric és a tárolók áttekintése
 description: A Service Fabric áttekintése és a tárolók használata a Service-alkalmazások üzembe helyezéséhez. Ez a cikk áttekintést nyújt a tárolók használatáról és a Service Fabric rendelkezésre álló lehetőségeiről.
 ms.topic: conceptual
-ms.date: 8/8/2018
-ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 7/9/2020
+ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259234"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091657"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric és tárolók
 
@@ -53,7 +53,7 @@ Linux-alapú oktatóanyagért lásd: [az első Service Fabric Container-alkalmaz
 
 #### <a name="windows-server-containers"></a>Windows Server-tárolók
 
-A Windows Server 2016 két különböző típusú tárolót biztosít, amelyek elkülönítési szinttől eltérőek. A Windows Server-tárolók és a Docker-tárolók hasonlóak, mert mindkettő rendelkezik névtér-és fájlrendszer-elkülönítéssel, miközben a kernelt a-t futtató gazdagépre osztja. Linux rendszeren ezt az elkülönítést hagyományosan a cgroupokban és a névterek biztosították, a Windows Server-tárolók pedig hasonlóan viselkednek.
+A Windows Server 2016-es és újabb verziói két különböző típusú tárolót biztosítanak, amelyek elkülönítési szinttől eltérőek. A Windows Server-tárolók és a Docker-tárolók hasonlóak, mert mindkettő rendelkezik névtér-és fájlrendszer-elkülönítéssel, miközben a kernelt a-t futtató gazdagépre osztja. Linux rendszeren ezt az elkülönítést hagyományosan a cgroupokban és a névterek biztosították, a Windows Server-tárolók pedig hasonlóan viselkednek.
 
 A Hyper-V-támogatással rendelkező Windows-tárolók nagyobb elkülönítést és biztonságot biztosítanak, mert egyetlen tároló sem osztja meg az operációs rendszer kernelét bármely más tárolóval vagy a gazdagéptel. Ezzel a magasabb szintű biztonsági elkülönítéssel a Hyper-V-t használó tárolók potenciálisan ellenséges, több-bérlős forgatókönyveket céloznak.
 Windows-alapú oktatóanyagért lásd: [az első Service Fabric Container-alkalmazás létrehozása Windows](service-fabric-get-started-containers.md)rendszeren.
@@ -73,7 +73,10 @@ Az alábbi ábrán az elérhető virtualizációs és elkülönítési szintek k
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric-támogatás tárolókhoz
 
-A Service Fabric támogatja a Docker-tárolók telepítését Linux rendszeren és Windows Server-tárolón a Windows Server 2016 rendszeren, a Hyper-V elkülönítési üzemmód támogatása mellett. 
+Service Fabric támogatja a Docker-tárolók telepítését a Linux és a Windows Server-tárolók között a Windows Server 2016-es és újabb verzióin, valamint a Hyper-V elkülönítési üzemmód támogatásával.
+
+> [!NOTE]
+> A tárolók nem támogatottak a helyi önálló csomóponton Service Fabric fürtökön (sem a beépített futó Linux-fürtökön, sem a Windows-fürtökön a helyi Service Fabric-telepítéseken).
 
 A Service Fabric egy olyan [alkalmazás-modellt](service-fabric-application-model.md) biztosít, amelyben a tároló egy olyan alkalmazás-gazdagépet jelöl, amelyben több szolgáltatás replikája van elhelyezve. A Service Fabric támogatja a [vendég végrehajtható fájl](service-fabric-guest-executables-introduction.md) használatát is, amelyben nem a beépített Service Fabric programozási modelleket használja, hanem egy meglévő alkalmazást, amely bármilyen nyelven vagy keretrendszerben, egy tárolón belül lett felhasználva. Ez a forgatókönyv a tárolók általános használati esete.
 
@@ -92,7 +95,7 @@ A Service Fabric számos tároló-képességet biztosít, amelyek segítségéve
 
 Az Azure-beli tárolók támogatásának átfogó áttekintése, például a Kubernetes-fürt létrehozása az Azure Kubernetes szolgáltatással, a privát Docker-beállításjegyzék létrehozása a Azure Container Registry-ben és további információ: [Azure for containers](../containers/index.yml).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogy milyen támogatási Service Fabric biztosít a tárolók futtatásához. Ezután az egyes funkciók példáit követve megtudhatja, hogyan használhatja őket.
 

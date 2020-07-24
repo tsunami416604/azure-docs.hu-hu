@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9fac5d3efabc5d9f796c91d688f35e01aeefdca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965280"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092762"
 ---
 # <a name="rendering-using-azure"></a>Renderelés az Azure használatával
 
@@ -79,7 +79,7 @@ A Azure Batch számos módon használható, amelyek mindegyike a Azure Batch ren
 * API-k:
   * Kód írása a [Rest](/rest/api/batchservice), a [.net](/dotnet/api/overview/azure/batch), a [Python](/python/api/overview/azure/batch), a [Java](/java/api/overview/azure/batch)vagy más támogatott API-k használatával.  A fejlesztők a meglévő alkalmazásokhoz vagy munkafolyamatokhoz, akár a felhőben, akár a helyszínen is integrálhatja Azure Batch képességeit.  A [Autodesk Maya beépülő modul](https://github.com/Azure/azure-batch-maya) például a Batch Python API-t használja a kötegek meghívásához, a készletek létrehozásához és kezeléséhez, a feladatok és a feladatok elküldéséhez, valamint a figyelési állapothoz.
 * Parancssori eszközök:
-  * Az [Azure parancssori](/cli/azure/) vagy [Azure PowerShell](/powershell/azure/overview) használható a Batch-használat parancsfájlhoz.
+  * Az [Azure parancssori](/cli/azure/) vagy [Azure PowerShell](/powershell/azure/) használható a Batch-használat parancsfájlhoz.
   * Különösen a Batch CLI-sablon támogatása sokkal egyszerűbbé teszi a készletek létrehozását és a feladatok elküldését.
 * Felhasználóifelület
   * A [Batch Explorer](https://github.com/Azure/BatchExplorer) egy platformfüggetlen ügyfél-eszköz, amely lehetővé teszi a Batch-fiókok felügyeletét és figyelését is, de a Azure Portal felhasználói felületéhez képest gazdagabb képességeket biztosít.  A készlet és a feladatütemezés készlete minden támogatott alkalmazáshoz testreszabható, és felhasználható a készletek egyszerű létrehozására és a feladatok elküldésére.

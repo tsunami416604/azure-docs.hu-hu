@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 39f564bea8d300d2966afe27ff0239c527f038cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77672327"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092813"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>A felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric diagnosztikai adatbázis küldése Application Insights
 A Cloud Services, a Virtual Machines, a Virtual Machine Scale Sets és a Service Fabric mind a Azure Diagnostics bővítményt használja az adatok gyűjtéséhez.  Az Azure Diagnostics adatokat küld az Azure Storage-táblákba.  Az Azure Diagnostics Extension 1,5-es vagy újabb verziójának használatával azonban az összes vagy egy részhalmazát is áthelyezheti más helyszínekre.
@@ -65,7 +66,7 @@ Példa a fogadó Application Insightsra való konfigurálására:
     - A *Name* attribútum egyedi módon hivatkozik erre a csatornára.
     - A *naplózási szint* attribútum lehetővé teszi a csatorna által engedélyezett naplózási szint megadását. A rendelkezésre álló naplózási szintek a legkevesebb információt a következő sorrendben használják:
         - Részletes
-        - Információ
+        - Tájékoztatás
         - Figyelmeztetés
         - Hiba
         - Kritikus
@@ -212,7 +213,6 @@ Az előző konfigurációban a következő sorok a következő jelentésekkel re
 - **Az Azure Diagnostics bővítmény által gyűjtött blob-adatok nem küldhetők Application Insights.** Például a *címtárak* csomópontban megadott minden adat. Az összeomlási memóriaképek esetében a rendszer a tényleges összeomlási memóriaképet küldi el a blob Storage-nak, és csak egy értesítést küld a rendszer az összeomlási memóriakép létrejöttéről Application Insights.
 
 ## <a name="next-steps"></a>Következő lépések
-* Megtudhatja, hogyan [tekintheti meg az Azure diagnosztikai adatait](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices) Application Insightsban.
+* Megtudhatja, hogyan [tekintheti meg az Azure diagnosztikai adatait](../app/cloudservices.md) Application Insightsban.
 * A [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) használatával engedélyezze az Azure Diagnostics bővítményt az alkalmazáshoz.
 * A [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) használata az Azure Diagnostics bővítmény engedélyezéséhez az alkalmazáshoz
-

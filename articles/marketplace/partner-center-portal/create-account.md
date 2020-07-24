@@ -3,21 +3,24 @@ title: Kereskedelmi piactér-fiók létrehozása a partner Centerben
 description: Ismerje meg, hogyan hozhat létre Microsoft kereskedelmi piactér-fiókot a partner Centerben.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: guide
-ms.date: 04/14/2020
-ms.openlocfilehash: 4a178feb4bdf0bc361185e21e47ccdceac3a7f21
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+ms.openlocfilehash: 5a55d66bfed19f6d88d4ff13a9f59d7e791664cc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110011"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092184"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Kereskedelmi piactér-fiók létrehozása a partner Centerben
 
-Ha közzé szeretné tenni ajánlatait az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en vagy [Microsoft AppSourceon](https://appsource.microsoft.com/), létre kell hoznia egy fiókot a kereskedelmi piactér programban a partner Centerben. Ez a cikk bemutatja, hogyan hozhat létre egy partner Center-fiókot, és hogyan adhat hozzá új közzétevőket a kereskedelmi Piactéri programhoz.
+Ha közzé szeretné tenni ajánlatait az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en vagy [Microsoft AppSourceon](https://appsource.microsoft.com/), létre kell hoznia egy fiókot a partner Center kereskedelmi piactér programjában. Ez a cikk bemutatja, hogyan hozhat létre egy partner Center-fiókot, és hogyan adhat hozzá új közzétevőket a kereskedelmi Piactéri programhoz.
 
 >[!IMPORTANT]
->Ha van olyan fiókja a [Cloud Partner Portalban](https://cloudpartner.azure.com) , amely át lett helyezve a partneri központba, nem kell új fiókot létrehoznia. További információ: [a Cloud Partner Portalról áthelyezett közzétevők](#for-publishers-who-are-moving-from-the-cloud-partner-portal).
+>Az ajánlatok kereskedelmi piactéren való közzétételéhez munkahelyi fiókot kell használnia, amely egy vállalathoz vagy szervezethez van társítva. A személyes fiókok nem támogatottak.
+
+>[!IMPORTANT]
+>Ha már rendelkezik fiókkal a Cloud Partner Portalban (CPP), áthelyezte a partner Centerbe; nem kell új fiókot létrehoznia. További információ: [a Cloud Partner Portal áthelyezett közzétevők](#for-publishers-who-moved-from-the-cloud-partner-portal).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -43,7 +46,7 @@ Akkor használja ezt a módszert, ha még nem ismeri a partner centert, és ninc
 - [Adja meg a közzétevői profilját](#provide-your-publisher-profile)
 
 >[!IMPORTANT]
->Ha olyan [Cloud Partner Portal](https://cloudpartner.azure.com) -fiókkal rendelkezik, amelyet a partner központba helyeztek át, nem kell új fiókot létrehoznia. További információ: [a Cloud Partner Portalról áthelyezett közzétevők](#for-publishers-who-are-moving-from-the-cloud-partner-portal).
+>Ha már rendelkezik fiókkal a Cloud Partner Portalban, áthelyezte a partner Centerbe; nem kell új fiókot létrehoznia. További információ: [a Cloud Partner Portal áthelyezett közzétevők](#for-publishers-who-moved-from-the-cloud-partner-portal).
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>Regisztráljon a partner Center beléptetési oldalán
 
@@ -94,7 +97,7 @@ Mindkét regisztrációs típushoz a következőket kell tennie:
 Ügyeljen arra, hogy a fiók adatai kéznél legyenek.
 
 >[!IMPORTANT]
->Ha van olyan fiókja a [Cloud Partner Portalban](https://cloudpartner.azure.com/) , amely át lett helyezve a partneri központba, nem kell új fiókot létrehoznia. További információ: [a Cloud Partner Portalról áthelyezett közzétevők](#for-publishers-who-are-moving-from-the-cloud-partner-portal).
+>Ha már rendelkezik fiókkal a Cloud Partner Portalban, áthelyezte a partner Centerbe; nem kell új fiókot létrehoznia. További információ: [a Cloud Partner Portal áthelyezett közzétevők](#for-publishers-who-moved-from-the-cloud-partner-portal).
 
 ### <a name="what-if-im-already-enrolled-in-the-microsoft-partner-network"></a>Mi a teendő, ha már regisztráltam a Microsoft Partner Network?
 
@@ -154,15 +157,13 @@ Miután bejelentkezett a partneri központba, fejezze be a fiók beállítását
 
 Most létrehozott egy kereskedelmi piactér-fiókot a partner Centerben. További információ: [kereskedelmi piactér – áttekintés](./commercial-marketplace-overview.md). A kiadók hozzáadásával kapcsolatos segítségért lásd: [új közzétevők hozzáadása a kereskedelmi piactérhez](#add-new-publishers-to-the-commercial-marketplace-program).
 
-## <a name="for-publishers-who-are-moving-from-the-cloud-partner-portal"></a>A Cloud Partner Portalból áthelyezett közzétevők esetében
+## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>A Cloud Partner Portalból áthelyezett közzétevők esetében
 
-Ha a fiókja át lett telepítve a [Cloud Partner Portalról](https://cloudpartner.azure.com), nem kell létrehoznia új partner Center-fiókot. A meglévő Cloud Partner Portal fiókba való bejelentkezés után az új partneri központ fiókjához testreszabott hivatkozást kell kapnia az e-mailekben és a szalagcím-értesítésekben.
+Ha Cloud Partner Portal fiókkal rendelkezett, áthelyezte a partneri központba. Nincs szükség új partner Center-fiók létrehozására. A meglévő Cloud Partner Portal fiókba való bejelentkezés után az új partneri központ fiókjához testreszabott hivatkozást kell kapnia az e-mailekben és a szalagcím-értesítésekben.
 
 Miután kiválasztotta a testreszabott hivatkozást, és engedélyezte az új partner Center-fiókot, visszatérhet a fiókjához, ha a partner Centerben a [kereskedelmi piactér irányítópultra](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) kattint.
 
-A közzétételi szerződés és a vállalati profil adatai átkerülnek az új partner Center-fiókjába, valamint a fiókhoz korábban beállított kifizetési profilokra vonatkozó információk, felhasználói fiókok és engedélyek, valamint a Cloud Partner Portal fiókhoz társított aktív ajánlatok.
-
-Miután a fiók adatait áthelyezte a Cloud Partner Portal a partneri központba, többé nem fogja használni a fiók frissítéseit, sem Cloud Partner Portal a felhasználók, az engedélyek és a számlázás kezelését. Korlátozott ideig a partner Centerben végrehajtott összes fiók frissítése automatikusan megtörténik a csak olvasható Cloud Partner Portal fiókban, amíg a rendszer végül nem elavult.
+A közzétételi szerződés és a vállalati profil adatai áttérnek az új partner Center-fiókra, valamint a fiókhoz korábban beállított kifizetési profilokra vonatkozó információk, felhasználói fiókok és engedélyek, valamint a Cloud Partner Portal fiókhoz társított aktív ajánlatok.
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Új közzétevők hozzáadása a kereskedelmi piactér programhoz
 
@@ -185,6 +186,6 @@ A Azure Active Directory bérlő további felhasználói hozzáadhatnak egy új 
 
 A folyamat befejezése után az újonnan létrehozott közzétevőt a bal oldali ablaktáblán látható kereskedelmi Piactéri fiókkal kezelheti. Ha nem látja a kereskedelmi Piactéri fiókot, frissítse az oldalt. Az új közzétevő megjelenik a **közzétevők** listájában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A kereskedelmi piactér-fiók kezelése a partner Centerben](./manage-account.md)

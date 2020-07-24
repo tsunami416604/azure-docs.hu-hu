@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b1f8b158c511919a72e72629d72b0e5ff73ff7db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58657ca604e7bd0fc081d6a5bb6ef18a8b7b5b48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78268118"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091708"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>DRM-licencek vagy AES-kulcsok továbbítása Media Services használatával 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 A Azure Media Services lehetővé teszi a tartalmak betöltését, kódolását, hozzáadását és a tartalom továbbítását. További információ: [PlayReady és/vagy Widevine Dynamic Common encryption használata](media-services-protect-with-playready-widevine.md). Egyes ügyfelek a Media Services csak a licencek és/vagy kulcsok továbbítására, valamint a helyszíni kiszolgálók használatával történő kódolásra, titkosításra és továbbításra kívánják használni. Ez a cikk azt ismerteti, hogyan használhatók a Media Services a PlayReady és/vagy Widevine licencek továbbítására, de a többit a helyszíni kiszolgálókkal. 
 
