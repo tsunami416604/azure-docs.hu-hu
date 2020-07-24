@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: f136fb666e93adc0fe92aee014e3da9a37bbd6aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82d5c605baf6f95df7fee62379772ce13d696ac6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70035799"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000805"
 ---
 # <a name="use-azure-cli-to-create-an-azure-ad-app-and-configure-it-to-access-media-services-api"></a>Azure AD-alkalmazás létrehozása és konfigurálása a Media Services API eléréséhez az Azure CLI használatával 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Ebből a témakörből megtudhatja, hogyan használhatja az Azure CLI-t egy Azure Active Directory (Azure AD) alkalmazás és egyszerű szolgáltatásnév létrehozásához Azure Media Services erőforrások eléréséhez. 
 
@@ -63,7 +63,7 @@ Például a következő szintek egyike lehet:
 * Az **erőforráscsoport** szintje.
 * Az **erőforrás** szintje (például egy adathordozó-fiók).
 
-További információ: Azure- [szolgáltatásnév létrehozása az Azure CLI-vel](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)
+További információ: Azure- [szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli)
 
 Lásd még: [szerepköralapú Access Control kezelése az Azure parancssori felülettel](../../role-based-access-control/role-assignments-cli.md). 
 

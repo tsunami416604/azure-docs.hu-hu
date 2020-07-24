@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 288b7302b12d607c9090f699af83691b832256a3
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 83e945fccfbfbec207723d6c16f2a4dfc7290c52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170819"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000040"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API áttekintése 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-A **Media Services Operations Rest** API-val feladatok, eszközök, élő csatornák és más erőforrások létrehozására van szükség egy Media Services-fiókban. További információ: [Media Services operations REST API Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+A **Media Services Operations Rest** API-val feladatok, eszközök, élő csatornák és más erőforrások létrehozására van szükség egy Media Services-fiókban. További információ: [Media Services operations REST API Reference](/rest/api/media/operations/azure-media-services-rest-api-reference).
 
 A Media Services olyan REST API biztosít, amely a JSON vagy az Atom + pub XML formátumot is elfogadja. Media Services REST API olyan speciális HTTP-fejléceket igényel, amelyeket az egyes ügyfeleknek el kell küldeniük a Media Serviceshoz való csatlakozáskor, valamint a választható fejlécek készletében. A következő szakaszok azokat a fejléceket és HTTP-műveleteket ismertetik, amelyeket a kérelmek létrehozásakor és a Media Servicestól kapott válaszok fogadásakor használhat.
 
@@ -64,8 +64,8 @@ A Media Servicesban megjelenő minden egyes híváshoz meg kell adni a szükség
 | --- | --- | --- |
 | Engedélyezés |Tulajdonos |A tulajdonos az egyetlen elfogadott engedélyezési mechanizmus. Az értéknek tartalmaznia kell a Azure Active Directory által biztosított hozzáférési jogkivonatot is. |
 | x-MS-Version |Decimal |2,17 (vagy a legújabb verzió)|
-| DataServiceVersion |Decimal |3.0 |
-| MaxDataServiceVersion |Decimal |3.0 |
+| DataServiceVersion |Decimal |3,0 |
+| MaxDataServiceVersion |Decimal |3,0 |
 
 > [!NOTE]
 > Mivel Media Services a OData használatával teszi elérhetővé a REST API-kat, a DataServiceVersion és a MaxDataServiceVersion fejléceket minden kérelembe bele kell foglalni; Ha azonban nem, akkor a jelenleg Media Services feltételezi, hogy a használatban lévő DataServiceVersion értéke 3,0.
@@ -130,4 +130,3 @@ Az Azure AD-hitelesítés Media Services REST API használatával történő has
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

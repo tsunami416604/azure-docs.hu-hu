@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: juliako
-ms.openlocfilehash: 619d40ab56715b4444d8e5649c7fb3401b3f57ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 276cb3e6078fec915f266c5eb9aa557f92973dd7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71937286"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001162"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Media Services események létrehozása és figyelése Event Grid az Azure CLI használatával
 
@@ -31,7 +31,7 @@ Ebben a cikkben az Azure CLI használatával fizethet elő Azure Media Services-
 
     Jelenleg nem minden [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) -parancs működik a Azure Cloud Shellban. Javasoljuk, hogy helyileg használja a CLI-t.
 
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md).
 
     Ügyeljen arra, hogy az erőforráscsoport neveként használt értékeket jegyezze fel, és Media Services a fiók nevét.
 
@@ -109,4 +109,3 @@ Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfize
 ## <a name="next-steps"></a>További lépések
 
 [Feltöltés, kódolás és streamelés](stream-files-tutorial-with-api.md)
-

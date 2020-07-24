@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 6240b0813132f4a14dbe94b870774ebe7a0663aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ac35fde59479ffc13c17f8e63d6fccf65c3be27
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83714576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001706"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure-függvények meghívása az Azure Logic Appsből
 
@@ -256,7 +257,7 @@ A feladat elindítása előtt keresse meg és helyezze el ezeket az értékeket 
 
 * Azure Active Directory (Azure AD) bérlői címtárának azonosítója
 
-  A bérlő címtár-AZONOSÍTÓjának lekéréséhez futtathatja a [`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) PowerShell-parancsot. Vagy a Azure Portal hajtsa végre az alábbi lépéseket:
+  A bérlő címtár-AZONOSÍTÓjának lekéréséhez futtathatja a [`Get-AzureAccount`](/powershell/module/servicemanagement/azure.service/get-azureaccount) PowerShell-parancsot. Vagy a Azure Portal hajtsa végre az alábbi lépéseket:
 
   1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a Function alkalmazást.
 

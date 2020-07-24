@@ -8,11 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 05/09/2020
-ms.openlocfilehash: 81c1c95e2af7b537a12c8c86245b009005aa0aa2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aebce8f284ed4bb21d99efffc8dd6d0c51b39533
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83005347"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001485"
 ---
 # <a name="encode-and-decode-flat-files-in-azure-logic-apps-by-using-the-enterprise-integration-pack"></a>Egybesimított fájlok kódolása és dekódolása az Azure Logic Appsben az Enterprise Integration Packkel
 
@@ -24,7 +25,7 @@ Mielőtt a vállalatközi (B2B) forgatókönyvben üzleti partnernek küldi az X
 
 * Az a logikai alkalmazás, amelyben a **Flat file** Connectort és egy olyan triggert szeretne használni, amely elindítja a logikai alkalmazás munkafolyamatát. A **sima fájl** összekötője csak műveleteket biztosít, nem eseményindítókat. Használhatja az triggert vagy egy másik műveletet, amely az XML-tartalmat a logikai alkalmazásba kódolja kódolásra vagy dekódolásra. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át a gyors útmutató [: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)című útmutatót.
 
-* Az Azure-előfizetéshez társított [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , amely [ahhoz a logikai alkalmazáshoz](logic-apps-enterprise-integration-accounts.md#link-account) van társítva, ahol a **Flat file** Connectort használni szeretné. A logikai alkalmazásnak és az integrációs fióknak ugyanazon a helyen vagy az Azure-régióban kell lennie.
+* Az Azure-előfizetéshez társított [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , amely [ahhoz a logikai alkalmazáshoz](./logic-apps-enterprise-integration-create-integration-account.md#link-account) van társítva, ahol a **Flat file** Connectort használni szeretné. A logikai alkalmazásnak és az integrációs fióknak ugyanazon a helyen vagy az Azure-régióban kell lennie.
 
 * Egy egyszerű fájl [sémája](logic-apps-enterprise-integration-schemas.md) , amelyet az XML-tartalom kódolásához vagy dekódolásához töltött be az integrációs fiókba
 

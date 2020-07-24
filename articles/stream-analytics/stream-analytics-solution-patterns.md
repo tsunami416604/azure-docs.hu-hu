@@ -7,11 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 49c83fab54b7188c3a3838f3162e71d8495989dd
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: cb9c851ca33aa6eeb6d0fe0576f98ecb0693be02
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037511"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999304"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Az Azure Stream Analytics megoldásmintái
 
@@ -21,7 +22,7 @@ Az Azure-ban számos más szolgáltatáshoz hasonlóan a Stream Analytics a legj
 
 A Azure Stream Analytics használatával gyorsan felállíthatók a valós idejű irányítópultok és riasztások. Egy egyszerű megoldás Event Hubs vagy IoT Hubból származó eseményeket tölt be, és [az Power bi irányítópultot adatfolyam-adatkészlettel táplálja](/power-bi/service-real-time-streaming). További információkért tekintse meg a [telefonos hívások adatainak elemzése stream Analytics és az eredmények megjelenítése Power bi irányítópulton](stream-analytics-manage-job.md)című témakört.
 
-![ASA Power BI irányítópult](media/stream-analytics-solution-patterns/pbidashboard.png)
+![ASA Power BI irányítópult](media/stream-analytics-solution-patterns/power-bi-dashboard.png)
 
 Ez a megoldás csak néhány percen belül felépíthető Azure Portal. Nincs jelentős kódolási probléma, és az SQL nyelv az üzleti logika kifejezésére szolgál.
 
@@ -31,7 +32,7 @@ Ez a megoldási minta az eseményforrás legalacsonyabb késését kínálja a b
 
 A Power BI irányítópult alacsony késést biztosít, de nem használható teljes értékű Power BI-jelentések készítéséhez. Az általános jelentéskészítési minta az, hogy az adatokat SQL Database először kiírja. Ezután használja a Power BI SQL-összekötőjét, hogy lekérdezze az SQL-t a legfrissebb adatértékekhez.
 
-![ASA SQL-irányítópult](media/stream-analytics-solution-patterns/sqldashboard.png)
+![ASA SQL-irányítópult](media/stream-analytics-solution-patterns/sql-dashboard.png)
 
 A SQL Database használata nagyobb rugalmasságot biztosít, de valamivel nagyobb késéssel jár. Ez a megoldás optimális olyan feladatokhoz, amelyeknél a késési követelmények egy másodpercnél nagyobbak. Ezzel a módszerrel maximalizálhatja Power BI képességeit, hogy további szeleteket és kockákat tartalmazzon a jelentésekhez, és sokkal több vizualizációs lehetőséget biztosítson. Más irányítópult-megoldások, például a tabló használatának rugalmassága is megszerezhető.
 
@@ -43,7 +44,7 @@ Stream Analytics a második legnépszerűbb használata a valós idejű riasztá
 
 Az alárendelt esemény fogyasztói logikáját a meglévő üzleti munkafolyamatban riasztások létrehozásához kell megvalósítani. Mivel Azure Functionsban egyéni logikát alkalmazhat, Azure Functions a leggyorsabb módszer az integráció végrehajtásához. Az Azure Function Stream Analytics-feladathoz tartozó kimenetként való használatának oktatóanyaga Azure Stream Analytics- [feladatok futtatási Azure Functionsjában](stream-analytics-with-azure-functions.md)található. A Azure Functions különböző típusú értesítéseket is támogat, beleértve a szöveget és az e-maileket. Az integrációhoz a logikai alkalmazás is használható, Event Hubs Stream Analytics és a logikai alkalmazás között.
 
-![ASA-esemény üzenetkezelő alkalmazás](media/stream-analytics-solution-patterns/eventmessagingapp.png)
+![ASA-esemény üzenetkezelő alkalmazás](media/stream-analytics-solution-patterns/event-messaging-app.png)
 
 A Event Hubs viszont a legrugalmasabb integrációs pontot kínálja. Számos más szolgáltatás, például az Azure Adatkezelő és az Time Series Insights a Event Hubsból származó eseményeket képes használni. A szolgáltatások közvetlenül csatlakoztathatók a Azure Stream Analytics Event Hubs-gyűjtőhöz a megoldás befejezéséhez. Az Azure-ban az ilyen integrációs forgatókönyvek esetében a legmagasabb átviteli sebességű üzenetkezelési közvetítő is elérhető. Event Hubs
 
@@ -51,7 +52,7 @@ A Event Hubs viszont a legrugalmasabb integrációs pontot kínálja. Számos m�
 
 A Azure Stream Analytics és az Azure Signaler szolgáltatás használatával egyéni valós idejű vizualizációkat hozhat létre, például irányítópultot vagy térképes vizualizációt. A Signaler használatával a webes ügyfelek frissíthetik a dinamikus tartalmakat, és valós időben jeleníthetők meg.
 
-![ASA dinamikus alkalmazás](media/stream-analytics-solution-patterns/dynamicapp.png)
+![ASA dinamikus alkalmazás](media/stream-analytics-solution-patterns/dynamic-app.png)
 
 ## <a name="incorporate-real-time-insights-into-your-application-through-data-stores"></a>Valós idejű betekintést nyerhet az alkalmazásba az adattárakon keresztül
 
@@ -59,13 +60,13 @@ A legtöbb Web Services és webalkalmazás jelenleg egy kérelem/válasz mintát
 
 A magas adatmennyiség gyakran okoz szűk keresztmetszetet a szifilisz-alapú rendszerekben. Az [Event beszerzési megoldás mintája](/azure/architecture/patterns/event-sourcing) a teljesítmény szűk keresztmetszetének kezelésére szolgál. Az időbeli mintázatok és az elemzések is nehézkesek és nem hatékonyak a hagyományos adattárból való kinyeréshez. A modern, nagy mennyiségű adatvezérelt alkalmazások gyakran adatfolyam-alapú architektúrát alkalmaznak. Azure Stream Analytics a mozgásban lévő adatok számítási motorja egy sarokköve az adott architektúrában.
 
-![ASA-esemény beszerzése alkalmazás](media/stream-analytics-solution-patterns/eventsourcingapp.png)
+![ASA-esemény beszerzése alkalmazás](media/stream-analytics-solution-patterns/event-sourcing-app.png)
 
 Ebben a megoldási mintában az eseményeket Azure Stream Analytics szerint dolgozzák fel és összesíti az adattárakba. Az alkalmazási réteg a hagyományos kérés/válasz minta használatával kommunikál az adattárakkal. A nagyszámú esemény valós idejű feldolgozásának Stream Analyticse miatt az alkalmazás nagy mértékben skálázható az adattár rétegének tömeges felskálázása nélkül. Az adattár-réteg lényegében egy jelentős nézet a rendszeren. [Azure Cosmos DB Azure stream Analytics kimenete azt](stream-analytics-documentdb-output.md) írja le, hogyan használják a Cosmos db stream Analytics kimenetként.
 
 A valós alkalmazásokban, ahol a feldolgozási logika összetett, és a logika bizonyos részeit egymástól függetlenül kell frissíteni, több Stream Analytics feladat is összeállítható együtt a közvetítői esemény-átvitelszervező Event Hubsával.
 
-![ASA komplex esemény-beszerzési alkalmazás](media/stream-analytics-solution-patterns/eventsourcingapp2.png)
+![ASA komplex esemény-beszerzési alkalmazás](media/stream-analytics-solution-patterns/event-sourcing-app-complex.png)
 
 Ez a minta javítja a rendszerek rugalmasságát és kezelhetőségét. Azonban bár a Stream Analytics pontosan egyszer garantálja a feldolgozást, némi esély van arra, hogy az ismétlődő események a közbenső Event Hubsban is megjelenhetnek. Fontos, hogy az alsóbb rétegbeli Stream Analytics feladatokhoz a logikai kulcsok használatával lookback az eseményeket. Az események kézbesítésével kapcsolatos további információkért lásd: [esemény-kézbesítési garanciák](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) referenciája.
 
@@ -75,7 +76,7 @@ A Azure Stream Analytics hivatkozási adatszolgáltatása kifejezetten a végfel
 
 Ez a minta olyan szabályok motorjának megvalósítására is használható, amelyekben a szabályok küszöbértékei a hivatkozási adatok alapján vannak meghatározva. További információ a szabályokról: [konfigurálható küszöbérték-alapú szabályok feldolgozása Azure stream Analyticsban](stream-analytics-threshold-based-rules.md).
 
-![ASA-hivatkozási adatalkalmazás](media/stream-analytics-solution-patterns/refdataapp.png)
+![ASA-hivatkozási adatalkalmazás](media/stream-analytics-solution-patterns/reference-data-app.png)
 
 ## <a name="add-machine-learning-to-your-real-time-insights"></a>Machine Learning hozzáadása a valós idejű adatfelismerésekhez
 
@@ -83,37 +84,39 @@ A beépített [anomáliák észlelési modellje](stream-analytics-machine-learni
 
 A speciális felhasználók számára, akik az online képzést és a pontozást is ugyanabba a Stream Analytics folyamatba kívánják beépíteni, ennek a példának a segítségével a [lineáris regressziót](stream-analytics-high-frequency-trading.md)láthatjuk.
 
-![ASA Machine Learning alkalmazás](media/stream-analytics-solution-patterns/mlapp.png)
+![ASA Machine Learning alkalmazás](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
 ## <a name="near-real-time-data-warehousing"></a>Közel valós idejű adattárház
 
 Egy másik gyakori minta a valós idejű adattárház, más néven adatfolyam-adattárház. Az Event Hubs és IoT Hub az alkalmazásból érkező eseményeken kívül a IoT Edge- [on futó Azure stream Analytics](stream-analytics-edge.md) az adatok megtisztítását, az adatok csökkentését, valamint az adattár és a továbbítási igények teljesítését is felhasználhatja. A IoT Edge-on futó Stream Analytics könnyedén képes kezelni a sávszélesség korlátozását és a kapcsolati problémákat a rendszeren. Az SQL kimeneti adapter a SQL Data Warehouseba való kimenetre használható. a maximális átviteli sebesség azonban 10 MB/s-ra van korlátozva.
 
-![ASA-adattárház](media/stream-analytics-solution-patterns/datawarehousing.png)
+![ASA-adattárház](media/stream-analytics-solution-patterns/data-warehousing.png)
 
 Az átviteli sebesség és a késések növelésének egyik módja az, hogy archiválja az eseményeket az Azure Blob Storage-ba, majd [importálja őket a SQL Data Warehouseba a Base](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)használatával. [Az adatok időbélyegzővel való archiválásával és az](stream-analytics-custom-path-patterns-blob-storage-output.md) importálás időszakonkénti elküldésével manuálisan össze kell fűzve a stream Analyticsból a blob Storage-ba és a blob Storage-ból SQL Data Warehouse való adatbevitelt.
 
 Ebben a használati mintában a rendszer a közel valós idejű ETL-motorként használja Azure Stream Analytics. Az újonnan érkező eseményeket a rendszer folyamatosan átalakítja és tárolja az alsóbb rétegbeli elemzési szolgáltatások felhasználásához.
 
-![ASA nagy adatátviteli adattárház](media/stream-analytics-solution-patterns/datawarehousing2.png)
+![ASA nagy adatátviteli adattárház](media/stream-analytics-solution-patterns/data-warehousing-high-throughput.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>Valós idejű adatelemzések archiválása
 
 A legtöbb adatelemzési és elemzési tevékenység továbbra is offline állapotban van. Az adatok archiválása Azure Stream Analytics Azure Data Lake Store Gen2 kimenet és a parketta kimeneti formátuma alapján lehetséges. Ez a képesség eltávolítja a súrlódást, hogy közvetlenül a Azure Data Lake Analyticsba, Azure Databricksba és az Azure HDInsight irányítsa az adatcsatornákat. A Azure Stream Analytics a megoldásban közel valós idejű ETL-motorként használható. Az archivált adatok Data Lake különböző számítási motorokkal is megismerhetik.
 
-![ASA offline Analitika](media/stream-analytics-solution-patterns/offlineanalytics.png)
+> [!div class="mx-imgBorder"]
+> ![ASA offline Analitika](media/stream-analytics-solution-patterns/offline-analytics.png)
 
 ## <a name="use-reference-data-for-enrichment"></a>Referenciák használata a dúsításhoz
 
 Az adatgazdagítás gyakran az ETL-motorok követelménye. Azure Stream Analytics támogatja a SQL Database és az Azure Blob Storage [-ból származó adatokkal való](stream-analytics-use-reference-data.md) gazdagodás támogatását. Az adatgyűjtést a Azure Data Lake és SQL Data Warehouseban egyaránt megteheti.
 
-![ASA offline elemzés az adatgazdagítás használatával](media/stream-analytics-solution-patterns/offlineanalytics.png)
+
+![ASA offline elemzés az adatgazdagítás használatával](media/stream-analytics-solution-patterns/offline-analytics-enriched.png)
 
 ## <a name="operationalize-insights-from-archived-data"></a>Működővé tenni az archivált adatokból
 
 Ha az offline elemzési mintát a közel valós idejű alkalmazási mintával kombinálja, létrehozhat egy visszajelzési hurkot. A visszajelzési hurok lehetővé teszi, hogy az alkalmazás automatikusan igazodjon az adatmodellek módosításához. Ez a visszajelzési hurok olyan egyszerű lehet, mint a riasztások küszöbértékének módosítása vagy a Machine Learning modellek átképzésének összetett módja. Ugyanez a megoldási architektúra alkalmazható a felhőben és a IoT Edge futó ASA-feladatokra is.
 
-![ASA-bepillantást operacionalizálási](media/stream-analytics-solution-patterns/insightsoperationalization.png)
+![ASA-bepillantást operacionalizálási](media/stream-analytics-solution-patterns/insights-operationalization.png)
 
 ## <a name="how-to-monitor-asa-jobs"></a>Az ASA-feladatok figyelése
 
@@ -162,7 +165,7 @@ Abban az esetben, ha a bejövő események mindegyike késleltetve van, lehetsé
 
 Szerencsére az előző adatarchiválási minta felhasználható az ilyen késői események kecses feldolgozására. Ennek az az elképzelése, hogy az archiválási feladatokba beérkező események bekerülnek az érkezési időben, és az események az Azure-Blobba kerülnek be a megfelelő időben, vagy Azure Data Lake Store az esemény idejével. Nem számít, hogy milyen későn érkezik egy esemény, soha nem kerül eldobásra. A program mindig a megfelelő időben landol. A helyreállítás során újra feldolgozhatja az archivált eseményeket, és backfill az eredményeket a választott tárolóba. Ez hasonló a lambda-mintázatok megvalósításához.
 
-![ASA-backfill](media/stream-analytics-solution-patterns/backfill.png)
+![ASA-backfill](media/stream-analytics-solution-patterns/back-fill.png)
 
 A backfill folyamatot egy offline batch-feldolgozó rendszerrel kell elvégezni, amely valószínűleg a Azure Stream Analytics eltérő programozási modellel rendelkezik. Ez azt jelenti, hogy újra végre kell hajtania a teljes feldolgozási logikát.
 

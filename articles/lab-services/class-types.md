@@ -3,11 +3,12 @@ title: Példák a Azure Lab Services-osztályokra | Microsoft Docs
 description: Bizonyos típusú osztályokat biztosít, amelyekhez a Azure Lab Services használatával állíthatja be a laborokat.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8564f5ece9d6df7db852c5ac16f00f1455d013ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21159aacfcd87bb929eaeaf9884b0275c7005e1a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001623"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Osztályok típusai – áttekintés – Azure Lab Services
 
@@ -44,11 +45,6 @@ Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes infor
 A [Jupyter-jegyzetfüzetek](http://jupyter-notebook.readthedocs.io)használatának megtanításához szükséges eszközökkel beállíthatja Azure Lab Servicesban a sablonhoz tartozó gépeket. A Jupyter notebookok egy nyílt forráskódú projekt, amely lehetővé teszi, hogy könnyedén kombinálja a Rich Text és a végrehajtható [Python](https://www.python.org/) -forráskódot egyetlen, jegyzetfüzet nevű vásznon. A jegyzetfüzetek futtatása a bemenetek és kimenetek lineáris rekordját eredményezi.  Ezek a kimenetek tartalmazhatnak szöveget, táblákat, valamint elszórt ábrákat és egyéb adatokat.
 
 Az ilyen típusú laborok beállításával kapcsolatos részletes információkat a [tesztkörnyezet beállítása az adatelemzéshez Python-és Jupyter-jegyzetfüzetekkel](class-type-jupyter-notebook.md)című témakörben talál.
-
-## <a name="mobile-app-development-with-android-studio"></a>Mobilalkalmazások fejlesztése az Android Studio használatával
-Beállíthat egy labort Azure Lab Servicesban egy bevezető Mobile Application Development osztály betanításához. Ez az osztály a [Google Play áruház](https://play.google.com/store/apps)közzétett androidos mobil alkalmazásokra koncentrál.  A tanulók megtudhatják, hogyan hozhat létre alkalmazásokat a [Android Studio](https://developer.android.com/studio) használatával.  Az [Androidhoz készült Visual Studio Emulator](https://visualstudio.microsoft.com/vs/msft-android-emulator/) az alkalmazás helyi tesztelésére szolgál.
-
-Az ilyen típusú tesztkörnyezet beállításával kapcsolatos részletes információkért lásd: [tesztkörnyezet beállítása a mobileszközök fejlesztéséhez Android Studio használatával](class-type-mobile-dev-android-studio.md).
 
 ## <a name="big-data-analytics"></a>Big data elemzése
 Beállíthat egy GPU-labort big data elemzési osztály tanításához. Ilyen típusú osztályok esetén a tanulók megismerhetik a nagy adatmennyiségek kezelését, valamint gépi és statisztikai tanulási algoritmusokat alkalmazhatnak az adatelemzések kinyeréséhez. A tanulók számára a fő cél az, hogy megtanulja az adatelemzési eszközök használatát, mint például a Apache Hadoop nyílt forráskódú szoftvercsomag, amely eszközöket biztosít a big data tárolásához, kezeléséhez és feldolgozásához. 

@@ -7,13 +7,17 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 664819b209aeb09093ce8711456b86ff4d3e8949
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d246adbf8e87d5503bc19bcd497dd00370c0a867
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84249577"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001911"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>IoT Central alkalmazáshoz csatlakoztatott eszközök általános állapotának figyelése
+
+> [!NOTE]
+> A metrikák csak a 3. verziójú IoT Central alkalmazások esetében érhetők el. Az alkalmazás verziószámának megismeréséhez tekintse meg [az alkalmazásról szóló](./howto-get-app-info.md)témakört.
 
 *Ez a cikk a kezelők és a rendszergazdákra vonatkozik.*
 
@@ -34,25 +38,15 @@ IoT Central mérőszámok megtekintése a portálon:
 1. Navigáljon a IoT Central alkalmazás-erőforráshoz a portálon. Alapértelmezés szerint a IoT Central-erőforrások egy **IOTC**nevű erőforráscsoporthoz találhatók.
 1. Ha diagramot szeretne létrehozni az alkalmazás metrikái közül, válassza a **mérőszámok** lehetőséget a **figyelés** szakaszban.
 
+![Azure-metrikák](media/howto-monitor-application-health/metrics.png)
+
 ### <a name="azure-portal-permissions"></a>Engedélyek Azure Portal
 
 A Azure Portal metrikáinak elérését az [Azure szerepköralapú hozzáférés-vezérlés](../../role-based-access-control/overview.md)kezeli. A Azure Portal használatával adhat hozzá felhasználókat a IoT Central alkalmazáshoz/erőforráscsoporthoz vagy előfizetéshez, hogy hozzáférést biztosítson számukra. Hozzá kell adnia egy felhasználót a portálon, még akkor is, ha már hozzá lettek adva a IoT Central alkalmazáshoz. Az [Azure beépített szerepköreivel](../../role-based-access-control/built-in-roles.md) finomabb hozzáférés-vezérlést használhat.
 
 ## <a name="iot-central-metrics"></a>IoT Central metrikák
 
-A következő táblázat ismerteti a IoT Central jelenleg elérhető metrikákat:
-
-| Metrika | Metrika megjelenítendő neve | Unit (Egység) | Összesítés típusa | Description |
-|--------|---------------------|------|------------------|-------------|
-| connectedDeviceCount         | Csatlakoztatott eszközök összesen                              | Darabszám  | Összesen             | IoT Centralhoz csatlakoztatott eszközök száma                               |
-| C2D. Property. Read. success    | Az eszköz tulajdonságainak olvasása IoT Central    | Darabszám  | Összesen             | Az IoT Centralról kezdeményezett sikeres tulajdonságok száma    |
-| C2D. Property. Read. failure    | Nem sikerült beolvasni az eszköz tulajdonságát IoT Central        | Darabszám  | Összesen             | Az IoT Central által kezdeményezett sikertelen tulajdonságok összes olvasásának száma        |
-| D2C. Property. Read. success    | Az eszköz tulajdonságainak olvasása az eszközökről        | Darabszám  | Összesen             | Az eszközökről kezdeményezett sikeres tulajdonságok összes olvasásának száma        |
-| D2C. Property. Read. failure    | Nem sikerült beolvasni az eszköz tulajdonságait az eszközökről            | Darabszám  | Összesen             | Az eszközökről kezdeményezett sikertelen tulajdonságok összes olvasásának száma            |
-| C2D. Property. Update. success  | Az eszköz tulajdonságainak frissítése IoT Central  | Darabszám  | Összesen             | Az IoT Central által kezdeményezett összes sikeres tulajdonság-frissítés száma  |
-| C2D. Property. Update. hiba  | Nem sikerült frissíteni az eszköz tulajdonságait IoT Central      | Darabszám  | Összesen             | Az IoT Central által kezdeményezett sikertelen tulajdonságok frissítéseinek száma      |
-| D2C. Property. Update. success  | Az eszköz tulajdonságainak frissítése az eszközökről      | Darabszám  | Összesen             | Az eszközökről kezdeményezett összes sikeres tulajdonság-frissítés száma      |
-| D2C. Property. Update. hiba  | Nem sikerült az eszköz tulajdonságainak frissítése az eszközökről          | Darabszám  | Összesen             | Az eszközökről indított összes sikertelen tulajdonság-frissítés száma          |
+A IoT Central jelenleg elérhető metrikák listáját a [Azure monitor által támogatott mérőszámok](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftiotcentraliotapps)részben tekintheti meg.
 
 ### <a name="metrics-and-invoices"></a>Metrikák és számlák
 

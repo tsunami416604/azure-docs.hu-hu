@@ -14,17 +14,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: juliako
-ms.openlocfilehash: 231aeb210a7b97e8c0cfd0e21c48053c660b6128
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c5afe45ce864ba76d5d637df3534d426d39167a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995809"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000992"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>Igény szerinti videolejátszás létrehozásához használja az időeltolást és az élő kimeneteket
 
-A Azure Media Services egy [élő kimeneti](https://docs.microsoft.com/rest/api/media/liveoutputs) objektum, például egy digitális videomagnó, amely az élő streamet az Media Services-fiókban lévő adategységbe fogja fogni és rögzíteni. A rögzített tartalom megmarad az [eszköz](https://docs.microsoft.com/rest/api/media/assets) erőforrása által meghatározott tárolóban (a tároló a fiókjához csatolt Azure Storage-fiókban található). Az élő kimenet lehetővé teszi a kimenő élő stream bizonyos tulajdonságainak szabályozását is, például azt, hogy a stream mekkora részét tárolja az archívumban (például a felhőalapú DVR kapacitása), vagy ha a nézők megkezdhetik az élő stream megtekintését. A lemezen lévő archiválás körkörös archív "ablak", amely csak az élő kimenet **archiveWindowLength** tulajdonságában megadott tartalom mennyiségét tárolja. Az ezen az ablakon kívül eső tartalmat a rendszer automatikusan elveti a tárolóból, és nem helyreállítható. A archiveWindowLength érték egy ISO-8601 TimeSpan időtartamot jelöl (például PTHH: PP: MM), amely meghatározza a DVR kapacitását. Az érték legalább egy perctől legfeljebb 25 óráig állítható be.
+A Azure Media Services egy [élő kimeneti](/rest/api/media/liveoutputs) objektum, például egy digitális videomagnó, amely az élő streamet az Media Services-fiókban lévő adategységbe fogja fogni és rögzíteni. A rögzített tartalom megmarad az [eszköz](/rest/api/media/assets) erőforrása által meghatározott tárolóban (a tároló a fiókjához csatolt Azure Storage-fiókban található). Az élő kimenet lehetővé teszi a kimenő élő stream bizonyos tulajdonságainak szabályozását is, például azt, hogy a stream mekkora részét tárolja az archívumban (például a felhőalapú DVR kapacitása), vagy ha a nézők megkezdhetik az élő stream megtekintését. A lemezen lévő archiválás körkörös archív "ablak", amely csak az élő kimenet **archiveWindowLength** tulajdonságában megadott tartalom mennyiségét tárolja. Az ezen az ablakon kívül eső tartalmat a rendszer automatikusan elveti a tárolóból, és nem helyreállítható. A archiveWindowLength érték egy ISO-8601 TimeSpan időtartamot jelöl (például PTHH: PP: MM), amely meghatározza a DVR kapacitását. Az érték legalább egy perctől legfeljebb 25 óráig állítható be.
 
-Az élő esemény és a hozzá tartozó élő kimenetek közötti kapcsolat hasonlít a hagyományos televíziós közvetítéshez, abban az esetben, ha egy csatorna (élő esemény) a videó állandó streamjét jelöli, és a rögzítés (élő kimenet) egy adott időpontra van kiterjedően (például az esti híreket 6: és 7:16:00 között). Ha a stream az élő eseménybe áramlik, megkezdheti a folyamatos átviteli eseményt egy eszköz, egy élő kimenet és a folyamatos átviteli lokátor létrehozásával. Az élő kimenet archiválja a streamet, és elérhetővé teszi a nézők számára a [folyamatos átviteli végponton](https://docs.microsoft.com/rest/api/media/streamingendpoints)keresztül. Létrehozhat több élő kimenetet (legfeljebb három maximumot) egy élő eseményen, eltérő archiválási hosszúságokkal és beállításokkal. Az élő adatfolyam-továbbítási munkafolyamattal kapcsolatos információkért lásd az [általános lépések](live-streaming-overview.md#general-steps) szakaszt.
+Az élő esemény és a hozzá tartozó élő kimenetek közötti kapcsolat hasonlít a hagyományos televíziós közvetítéshez, abban az esetben, ha egy csatorna (élő esemény) a videó állandó streamjét jelöli, és a rögzítés (élő kimenet) egy adott időpontra van kiterjedően (például az esti híreket 6: és 7:16:00 között). Ha a stream az élő eseménybe áramlik, megkezdheti a folyamatos átviteli eseményt egy eszköz, egy élő kimenet és a folyamatos átviteli lokátor létrehozásával. Az élő kimenet archiválja a streamet, és elérhetővé teszi a nézők számára a [folyamatos átviteli végponton](/rest/api/media/streamingendpoints)keresztül. Létrehozhat több élő kimenetet (legfeljebb három maximumot) egy élő eseményen, eltérő archiválási hosszúságokkal és beállításokkal. Az élő adatfolyam-továbbítási munkafolyamattal kapcsolatos információkért lásd az [általános lépések](live-streaming-overview.md#general-steps) szakaszt.
 
 ## <a name="using-a-dvr-during-an-event"></a>DVR használata egy esemény során
 
@@ -38,13 +39,13 @@ Az élő események legfeljebb három párhuzamosan futó élő kimenetet támog
 
 ## <a name="creating-an-archive-for-on-demand-playback"></a>Archiválás létrehozása igény szerinti lejátszáshoz
 
-Az az eszköz, amelyet az élő kimenet archivál, automatikusan egy igény szerinti eszközvé válik az élő kimenet törlésekor. Az élő események leállításához minden élő kimenetet törölnie kell. A nem kötelező jelző [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) használatával automatikusan eltávolíthatja az élő kimeneteket a leállítás után.
+Az az eszköz, amelyet az élő kimenet archivál, automatikusan egy igény szerinti eszközvé válik az élő kimenet törlésekor. Az élő események leállításához minden élő kimenetet törölnie kell. A nem kötelező jelző [removeOutputsOnStop](/rest/api/media/liveevents/stop#request-body) használatával automatikusan eltávolíthatja az élő kimeneteket a leállítás után.
 
 Az esemény leállítása és törlése után a felhasználók az archivált tartalmat igény szerint videóként is továbbíthatja, ha nem törli az eszközt. Egy eszköz nem törölhető, ha egy esemény használja. először törölni kell az eseményt.
 
 Ha közzétette az élő kimenet adategységét egy streaming-lokátor használatával, az élő esemény (a DVR-ablak hosszára számítva) továbbra is megtekinthető marad, amíg a streaming-kereső lejárata vagy törlése megkezdődik.
 
-További információkért lásd:
+További információ:
 
 - [Élő közvetítés – áttekintés](live-streaming-overview.md)
 - [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)

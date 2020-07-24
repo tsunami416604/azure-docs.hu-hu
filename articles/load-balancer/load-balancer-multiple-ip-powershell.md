@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 8f1273f1476ea7da03eb44b700519482deac3284
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8fedad40c18818932bf37dfe93c1b236357c30b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809178"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001604"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Terheléselosztás több IP-konfiguráción a PowerShell használatával
 
@@ -38,7 +38,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Load Balancer több IP-cí
 
 Kövesse az alábbi lépéseket a jelen cikkben ismertetett forgatókönyv megvalósításához:
 
-1. Az Azure PowerShell telepítése. Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
+1. Az Azure PowerShell telepítése. Az Azure PowerShell legfrissebb verziójának telepítésével, a kívánt előfizetés kiválasztásával és a fiókjába való bejelentkezéssel kapcsolatos információkért lásd: [How to install and configure Azure PowerShell](/powershell/azure/) (Az Azure PowerShell telepítése és konfigurálása).
 2. Hozzon létre egy erőforráscsoportot a következő beállítások használatával:
 
     ```powershell
@@ -46,7 +46,7 @@ Kövesse az alábbi lépéseket a jelen cikkben ismertetett forgatókönyv megva
     $myResourceGroup = "contosofabrikam"
     ```
 
-    További információ: az [erőforráscsoport létrehozásának](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)2. lépése.
+    További információ: az [erőforráscsoport létrehozásának](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json)2. lépése.
 
 3. [Hozzon létre egy rendelkezésre állási készletet](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json) , amely tartalmazza a virtuális gépeket. Ehhez a forgatókönyvhöz használja a következő parancsot:
 
@@ -54,14 +54,14 @@ Kövesse az alábbi lépéseket a jelen cikkben ismertetett forgatókönyv megva
     New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
-4. Kövesse a [Windows rendszerű virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) című cikk 3 – 5. lépését a virtuális gép egyetlen hálózati adapterrel való létrehozásának előkészítéséhez. Hajtsa végre az 6,1-es lépést, és a 6,2-es lépés helyett használja a következőt:
+4. Kövesse a [Windows rendszerű virtuális gép létrehozása](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) című cikk 3 – 5. lépését a virtuális gép egyetlen hálózati adapterrel való létrehozásának előkészítéséhez. Hajtsa végre az 6,1-es lépést, és a 6,2-es lépés helyett használja a következőt:
 
     ```powershell
     $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
     New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
-    Ezután [hozzon létre egy Windows rendszerű virtuális gép](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) 6,3 – 6,8. lépéseit.
+    Ezután [hozzon létre egy Windows rendszerű virtuális gép](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fazure%2fload-balancer%2ftoc.json) 6,3 – 6,8. lépéseit.
 
 5. Adjon hozzá egy második IP-konfigurációt az egyes virtuális gépekhez. Kövesse a [több IP-cím társítása virtuális gépekhez](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add) című cikk utasításait. Használja a következő konfigurációs beállításokat:
 

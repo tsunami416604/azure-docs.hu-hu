@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: c9d80ccac311b02d8734663d99a37804f8280771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfe48a1348929bbe8d4af6793d94d52514df9d74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82115533"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001536"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>EDIFACT-üzenetek váltása nagyvállalati integráció esetében az Azure Logic Appsben az Enterprise Integration Pack csomaggal
 
@@ -63,7 +63,7 @@ Az alábbi elemek szükségesek:
 
    | Tulajdonság | Leírás |
    | --- | --- |
-   | Name |A szerződés neve |
+   | Név |A szerződés neve |
    | Szerződés típusa | EDIFACT kell lennie |
    | Gazda partner |Egy szerződéshez a gazdagép és a vendég partner is szükséges. A fogadó partner a szerződést konfiguráló szervezetet jelöli. |
    | Gazdagép identitása |A gazdagép-partner azonosítója |
@@ -128,7 +128,7 @@ A szerződés most már készen áll a kiválasztott beállításoknak megfelel�
 | A tranzakciónapló-vezérlők számának duplikálása nem engedélyezett |A duplikált tranzakciónapló-vezérlők számával (UNH1) való adatmódosítások blokkolásához válassza ezt a tulajdonságot. |
 | EDIFACT nyugtázási vezérlő száma |Ha meg szeretné határozni a tranzakciónapló hivatkozási számait a nyugtán való használatra, adja meg az előtag értékét, a hivatkozási számok egy tartományát és egy utótagot. |
 
-### <a name="validation"></a>Ellenőrzés
+### <a name="validation"></a>Érvényesítés
 
 Az egyes ellenőrzési sorok elvégzése után a rendszer automatikusan hozzáadja a másikat. Ha nem ad meg szabályokat, az érvényesítés az "alapértelmezett" sort használja.
 
@@ -226,7 +226,7 @@ A karakterkészleten kívül más elválasztó karakterek is megadhatók az egye
 | UNG5 (csoport vezérlőelem száma) |Adjon meg egy előtagot, egy értéktartomány-tartományt és egy utótagot. Ezek az értékek a csoport vezérlőelem számának létrehozásához használhatók. Az előtag és az utótag nem kötelező, a vezérlő számának megadása kötelező. A rendszer minden új üzenetnél megnöveli a vezérlő számát, amíg el nem éri a maximális értéket. az előtag és az utótag változatlan marad. |
 | UNH1 (üzenet fejlécének hivatkozási száma) |Adjon meg egy előtagot, egy értéktartomány-tartományt és egy utótagot. Ezek az értékek az üzenet fejlécének hivatkozási számának előállítására szolgálnak. Az előtag és az utótag nem kötelező, míg a hivatkozási számot kötelező megadni. Minden új üzenetnél nő a hivatkozási szám. az előtag és az utótag változatlan marad. |
 
-### <a name="validation"></a>Ellenőrzés
+### <a name="validation"></a>Érvényesítés
 
 Az egyes ellenőrzési sorok elvégzése után a rendszer automatikusan hozzáadja a másikat. Ha nem ad meg szabályokat, az érvényesítés az "alapértelmezett" sort használja.
 
@@ -251,7 +251,7 @@ Az egyes ellenőrzési sorok elvégzése után a rendszer automatikusan hozzáad
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő részletes technikai részleteit, például az összekötő hencegő fájljában leírt műveleteket és korlátokat az összekötő [hivatkozási oldalán](https://docs.microsoft.com/connectors/edifact/)találja.
+Az összekötő részletes technikai részleteit, például az összekötő hencegő fájljában leírt műveleteket és korlátokat az összekötő [hivatkozási oldalán](/connectors/edifact/)találja.
 
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében ez az összekötő ISE által címkézett verziója az [ISE B2B-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)használja.

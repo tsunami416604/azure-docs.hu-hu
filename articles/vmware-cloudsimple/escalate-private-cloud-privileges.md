@@ -9,17 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 628824a3d303184e199452b0974c7f99d99a4933
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870478"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998952"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Saját Felhőbeli vCenter jogosultságok kiemelése a CloudSimple-portálról
 
 A saját felhőalapú vCenter való rendszergazdai hozzáféréshez átmenetileg megadhatja a CloudSimple-jogosultságokat.  Emelt szintű jogosultságok használatával VMware-megoldásokat telepíthet, identitás-forrásokat adhat hozzá, és kezelheti a felhasználókat.
 
-Új felhasználók hozhatók létre a vCenter SSO-tartományon, és hozzáférhetnek a vCenter.  Új felhasználók létrehozásakor a vCenter eléréséhez vegye fel őket a CloudSimple beépített csoportjaiba.  További információ: [CloudSimple Private Cloud Permission Model of VMware vCenter](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/).
+Új felhasználók hozhatók létre a vCenter SSO-tartományon, és hozzáférhetnek a vCenter.  Új felhasználók létrehozásakor a vCenter eléréséhez vegye fel őket a CloudSimple beépített csoportjaiba.  További információ: [CloudSimple Private Cloud Permission Model of VMware vCenter](./learn-private-cloud-permissions.md).
 
 > [!CAUTION]
 > Ne végezzen konfigurációs módosításokat a felügyeleti összetevőkön. Az emelt szintű jogosultságú állapotban végrehajtott műveletek hátrányosan befolyásolhatják a rendszereket, vagy okozhatják, hogy a rendszerek elérhetetlenné váljanak.
@@ -87,5 +88,5 @@ A rendszergazdai feladatok elvégzése után meg kell szüntetnie a jogosultság
 
 ## <a name="next-steps"></a>További lépések
 
-* [VCenter-identitások beállítása a Active Directory használatára](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
-* Biztonsági mentési megoldás telepítése a számítási [feladatok virtuális gépei](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/) számára
+* [VCenter-identitások beállítása a Active Directory használatára](./set-vcenter-identity.md)
+* Biztonsági mentési megoldás telepítése a számítási [feladatok virtuális gépei](./backup-workloads-veeam.md) számára

@@ -7,11 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2d5009086a24a54c9a2ec4734d3c4dcbebb04475
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e90a4e9ec88e074ec7b30d78bc99cfa8bf39ba2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418798"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002352"
 ---
 # <a name="what-are-device-templates"></a>Mik azok az eszközsablonok?
 
@@ -28,7 +29,7 @@ Az eszköz sablonjai a következő szakaszt tartalmazzák:
 - _Testreszabások_. A sablon ezen része lehetővé teszi, hogy a megoldás fejlesztője felülbírálja a DCM egyes definícióit. A testreszabások akkor hasznosak, ha a megoldás fejlesztője szeretné megszabni, hogy az alkalmazás hogyan kezelje az értéket, például egy tulajdonság megjelenített nevének vagy a telemetria értékének megjelenítéséhez használt színnek a módosítását. A testreszabások nem érintik azt a kódot, amelyet az eszköz fejlesztője a DCM megvalósítására ír.
 - _Nézetek_. Az eszközbeállítások ezen része lehetővé teszi, hogy a megoldás fejlesztője a vizualizációkat definiálja az eszköz adatainak megtekintéséhez, valamint az eszközök felügyeletére és vezérlésére szolgáló űrlapokat. A nézetek a DCM, a Cloud Properties és a testreszabásokat használják. A nézetek nem érintik azt a kódot, amelyet az eszköz fejlesztője a DCM megvalósítására ír.
 
-## <a name="device-capability-models"></a>Eszköz képességeinek modelljei
+## <a name="device-capability-models"></a>Eszközképesség-modellek
 
 A DCM azt határozza meg, hogy egy eszköz hogyan kommunikál a IoT Central alkalmazással. Az eszköz fejlesztőinek meg kell győződnie arról, hogy az eszköz megvalósítja a DCM-ben meghatározott viselkedéseket, hogy IoT Central tudja figyelni és kezelni az eszközt. A DCM egy vagy több _illesztőfelületből_áll, és mindegyik csatoló _telemetria_ -típusok, _eszköz-tulajdonságok_és- _parancsok_gyűjteményét is meghatározhatja. A megoldás fejlesztője importálhat egy olyan JSON-fájlt, amely definiálja a DCM-et egy eszköz sablonjában, vagy a IoT Central webes FELÜLETén a DCM létrehozásához vagy szerkesztéséhez használja. A webes felület használatával készített DCM-re való váltáshoz szükség van az [eszköz sablonjának verziószámozására](./howto-version-device-template.md).
 
@@ -193,7 +194,7 @@ Használjon aszinkron parancsokat a hosszan futó műveletekhez. Az eszköz tele
  `iothub-interface-name`: az interfész példányának neve, például `myAssetTracker` .
 - `iothub-command-statuscode`: az eszközről visszaadott állapotkód, például `202` .
 
-## <a name="cloud-properties"></a>Felhő tulajdonságai
+## <a name="cloud-properties"></a>Felhőtulajdonságok
 
 A felhő tulajdonságai az eszköz sablon részét képezik, de nem részei a DCM-nek. A felhő tulajdonságai lehetővé teszik a megoldás fejlesztője számára a IoT Central alkalmazásban tárolni kívánt eszközök metaadatainak megadását. A felhő tulajdonságai nem érintik azt a kódot, amelyet az eszköz fejlesztője a DCM megvalósítására ír.
 
@@ -220,6 +221,6 @@ A nézetekhez felvehető telemetria, tulajdonságokat és parancsokat a DCM, a C
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az eszközök sablonjait, a következő lépésekből megtudhatja, hogyan regisztrálhat [Az Azure IoT Centralhoz](./concepts-get-connected.md) , és hogyan regisztrálja az eszközöket a IoT Central, és hogy miként IoT Central biztonságossá teszi az eszköz kapcsolatait.
+Most, hogy megismerte az eszközök sablonjait, a következő lépés a [telemetria, a Property és a Command hasznos](./concepts-telemetry-properties-commands.md) adatok beolvasása, amelyekkel részletesebben tájékozódhat az eszközök IoT Centralsal való cseréjéről.
 
 A megoldás fejlesztője javasolt következő lépés egy [új IoT-eszköz típusának beolvasása az Azure IoT Central-alkalmazásban](./howto-set-up-template.md) az eszköz sablonjának létrehozásával kapcsolatos további információért.

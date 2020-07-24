@@ -12,11 +12,12 @@ ms.topic: article
 ms.date: 5/28/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ecc8cad4480528477f6bb470c7bc32ee2a20e11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196236"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001349"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Felhők és régiók, amelyekben Azure Media Services v3 létezik
 
@@ -24,11 +25,11 @@ A Azure Media Services v3 a globális Azure-ban, a Azure Government, az Azure Ge
 
 ## <a name="feature-availability-in-azure-clouds"></a>Funkciók elérhetősége az Azure-felhőkben
 
-| Szolgáltatás|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| Funkció|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
-| [Azure EventGrid](reacting-to-media-services-events.md) | Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
-| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
-| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
+| [Azure EventGrid](reacting-to-media-services-events.md) | Elérhető | Nem érhető el | Nem érhető el | Nem elérhető |
+| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem elérhető |
+| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem elérhető |
 | [StandardEncoderPreset](encoding-concept.md) | Elérhető | Elérhető | Elérhető | Elérhető |
 | [LiveEvents](live-streaming-overview.md) | Elérhető | Elérhető | Elérhető | Elérhető |
 | [StreamingEndpoints](streaming-endpoint-concept.md) | Elérhető | Elérhető | Elérhető | Elérhető |
@@ -43,7 +44,7 @@ A [LiveTranscription](live-transcription.md) a következő régiókban érhető 
 - USA keleti régiója
 - USA középső régiója
 - USA déli középső régiója
-- USA nyugati régiója, 2.
+- USA 2. nyugati régiója
 - Dél-Brazília
 
 ## <a name="regionsgeographieslocations"></a>Régiók/földrajzi területek/helyek
@@ -52,7 +53,7 @@ A [LiveTranscription](live-transcription.md) a következő régiókban érhető 
 
 ### <a name="region-code-name"></a>Régiókód neve
 
-Ha meg kell adnia a **Location** paramétert, meg kell adnia a területi kód nevét a **hely** értékeként. Ha szeretné lekérni annak a régiónak a nevét, amelyben a fiókja található, és a hívást át kell irányítani a szolgáltatásba, a következő sort futtathatja az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -ben.
+Ha meg kell adnia a **Location** paramétert, meg kell adnia a területi kód nevét a **hely** értékeként. Ha szeretné lekérni annak a régiónak a nevét, amelyben a fiókja található, és a hívást át kell irányítani a szolgáltatásba, a következő sort futtathatja az [Azure CLI](/cli/azure/?view=azure-cli-latest) -ben.
 
 ```azurecli-interactive
 az account list-locations
@@ -79,32 +80,32 @@ A következő végpontokat fontos tudni, hogy mikor csatlakozhat Media Services-
 
 ### <a name="global-azure"></a>Globális Azure
 
-|Végpontok||
-| --- | --- |
+| Szolgáltatás | Végpont |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.azure.com/` |
 | Hitelesítés | `https://login.microsoftonline.com/` |
 | Jogkivonat célközönsége | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
-|Végpontok||
-| --- | --- |
+| Szolgáltatás | Végpont |
+| ------- | -------- |
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
 | Hitelesítés | `https://login.microsoftonline.us/` |
 | Jogkivonat célközönsége | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Germany
 
-| Végpontok ||
-| --- | --- |  
+| Szolgáltatás | Végpont |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.cloudapi.de/` |
 | Hitelesítés | `https://login.microsoftonline.de/` |
 | Jogkivonat célközönsége | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
 
-|Végpontok||
-| --- | --- |
+| Szolgáltatás | Végpont |
+| ------- | -------- |
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | Hitelesítés | `https://login.chinacloudapi.cn/` |
 | Jogkivonat célközönsége |  `https://management.core.chinacloudapi.cn/` |

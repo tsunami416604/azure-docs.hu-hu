@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 05/03/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 2bcd5f0e6229c4130dddb48c1a20de1c711c6fcf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28525c198bb6863e942f5ff33d17226769efdc21
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519881"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001145"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>Kódolás egyéni átalakítással – .NET
 
@@ -32,7 +32,7 @@ Egyéni beállításkészletek létrehozásakor a következő szempontokat kell 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-[Media Services-fiók létrehozása](create-account-cli-how-to.md)
+[Media Services-fiók létrehozása](./create-account-howto.md)
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -46,9 +46,9 @@ Az egyéni előre definiált minta a [EncodeCustomTransform](https://github.com/
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Átalakítás létrehozása egyéni beállításkészlettel 
 
-Új [átalakítás](https://docs.microsoft.com/rest/api/media/transforms)létrehozásakor meg kell adnia, hogy mit szeretne kimenetként létrehozni. A kötelező paraméter egy [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) objektum, ahogyan az az alábbi kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. A **beállításkészlet** a kívánt **TransformOutput**létrehozásához használt videó-és/vagy hangfeldolgozási műveletek részletes utasításait írja le. Az alábbi **TransformOutput** egyéni kodekeket és rétegbeli kimeneti beállításokat hoz létre.
+Új [átalakítás](/rest/api/media/transforms)létrehozásakor meg kell adnia, hogy mit szeretne kimenetként létrehozni. A kötelező paraméter egy [TransformOutput](/rest/api/media/transforms/createorupdate#transformoutput) objektum, ahogyan az az alábbi kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. A **beállításkészlet** a kívánt **TransformOutput**létrehozásához használt videó-és/vagy hangfeldolgozási műveletek részletes utasításait írja le. Az alábbi **TransformOutput** egyéni kodekeket és rétegbeli kimeneti beállításokat hoz létre.
 
-[Átalakítások](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor ellenőrizze a **Get** metódussal, hogy létezik-e már átalakítás, ahogyan az az alábbi kódban látható. A (z) Media Services v3-as verziójában az entitások metódusának **beolvasása** **Null értéket** ad vissza, ha az entitás nem létezik (kis-és nagybetű nem megkülönbözteti a nevet)
+[Átalakítások](/rest/api/media/transforms) létrehozásakor ellenőrizze a **Get** metódussal, hogy létezik-e már átalakítás, ahogyan az az alábbi kódban látható. A (z) Media Services v3-as verziójában az entitások metódusának **beolvasása** **Null értéket** ad vissza, ha az entitás nem létezik (kis-és nagybetű nem megkülönbözteti a nevet)
 
 ### <a name="example"></a>Példa
 
@@ -56,6 +56,6 @@ Az alábbi példa azokat a kimeneteket határozza meg, amelyeket az átalakító
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Fájlok streamelése](stream-files-tutorial-with-api.md) 

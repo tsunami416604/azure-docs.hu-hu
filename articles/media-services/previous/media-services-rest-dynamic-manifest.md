@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 8166a85d1c3421d95ac2b818e51b6b60e7663165
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9bc351f72f5dac38ebfc1983a7b918d46f5fc8ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170666"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000312"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Szűrők létrehozása Azure Media Services REST API 
 > [!div class="op_single_selector"]
@@ -38,10 +38,10 @@ Ez a cikk bemutatja, hogyan használhatók a REST API-k szűrők létrehozásáh
 ## <a name="types-used-to-create-filters"></a>Szűrők létrehozásához használt típusok
 Szűrők létrehozásakor a következő típusok használatosak:  
 
-* [Szűrő](https://docs.microsoft.com/rest/api/media/operations/filter)
-* [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* [FilterTrackSelect és FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* [Szűrő](/rest/api/media/operations/filter)
+* [AssetFilter](/rest/api/media/operations/assetfilter)
+* [PresentationTimeRange](/rest/api/media/operations/presentationtimerange)
+* [FilterTrackSelect és FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect)
 
 > [!NOTE]
 > 
@@ -217,7 +217,7 @@ x-ms-client-request-id: 00000000
 ```
 
 ## <a name="update-filters"></a>Frissítési szűrők
-Egy szűrő új tulajdonságértékek használatával történő frissítéséhez használja a PATCH, a PUT vagy az MERGE értéket.  További információ ezekről a műveletekről: [javítás, Put, Egyesítés](https://msdn.microsoft.com/library/dd541276.aspx).
+Egy szűrő új tulajdonságértékek használatával történő frissítéséhez használja a PATCH, a PUT vagy az MERGE értéket.  További információ ezekről a műveletekről: [javítás, Put, Egyesítés](/openspecs/windows_protocols/ms-odata/59d5abd3-7b12-490a-a0e2-9d9324b91893).
 
 Ha frissít egy szűrőt, akár két percet is igénybe vehet, amíg a streaming-végpont frissíti a szabályokat. Ha a tartalom a szűrő használatával lett kézbesítve (és gyorsítótárazva van a proxys és a CDN-gyorsítótárban), akkor a szűrő frissítése a Player meghibásodását eredményezheti. A szűrő frissítése után törölje a gyorsítótárat. Ha ez a beállítás nem lehetséges, érdemes lehet egy másik szűrőt használni.  
 
@@ -371,4 +371,3 @@ Az alábbi példák bemutatják, hogyan adhat hozzá szűrőket a folyamatos át
 
 ## <a name="see-also"></a>Lásd még:
 [Dinamikus jegyzékfájlok áttekintése](media-services-dynamic-manifest-overview.md)
-

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/4/2020
 ms.author: inhenkel
-ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f86c157652f6219afdf1df1da9b8ad385f059aa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82791051"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000951"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services élő események hibakódja
 
@@ -26,9 +26,9 @@ Az ebben a szakaszban szereplő táblázatok az [élő események](live-events-o
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-Amikor előfizet egy élő esemény [Event Grid](https://docs.microsoft.com/azure/event-grid/) eseményeire, a következő hibák valamelyikét láthatja a [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected) eseményből.
+Amikor előfizet egy élő esemény [Event Grid](../../event-grid/index.yml) eseményeire, a következő hibák valamelyikét láthatja a [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected) eseményből.
 
-| Eredménykód | Leírás |
+| Eredménykód | Description |
 | ----------- | ----------- |
 | MPE_RTMP_APPID_AUTH_FAILURE | Helytelen betöltési URL-cím |
 | MPE_INGEST_ENCODER_CONNECTION_DENIED | A kódoló IP-címe nem található a beállított IP-engedélyezési listán |
@@ -46,7 +46,7 @@ Amikor előfizet egy élő esemény [Event Grid](https://docs.microsoft.com/azur
 
 A következő hibák valamelyikét láthatja a [LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) eseményből.
 
-|Eredménykód|Leírás|
+|Eredménykód|Description|
 |---|---|
 |MPE_RTMP_SESSION_IDLE_TIMEOUT|Az RTMP-munkamenet időtúllépést követően időtúllépést követett el az engedélyezett időkorlát után.|
 |MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|A videó-vagy hangFLVTag időbélyege érvénytelen az RTMP-kódolótól.|
@@ -54,7 +54,7 @@ A következő hibák valamelyikét láthatja a [LiveEventEncoderDisconnected](me
 |Ismeretlen hibakódok|Ezek a hibakódok a kivonatoló leképezésben a memóriából a duplikált bejegyzések között lehetnek.|
 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Adatfolyam-végpont (forrás) hibakódok](streaming-endpoint-error-codes.md)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 373b863441eb21b52a18bbaece10779260eaeb7a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 76717c580136d23030565c5476f8b282897784a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166196"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000414"
 ---
 # <a name="create-content-keys-with-rest"></a>Tartalom-kulcsok létrehozása REST használatával
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ A következő általános lépésekkel hozhat létre olyan tartalmi kulcsokat, a
 1. Véletlenszerűen generált 16 bájtos AES-kulcsot (a közös és a borítékos titkosításhoz) vagy egy 32 bájtos AES-kulcsot (a tárolási titkosításhoz). 
    
     Ez az eszköz tartalmi kulcsa, ami azt jelenti, hogy az adott objektumhoz társított összes fájlnak ugyanazt a tartalmi kulcsot kell használnia a visszafejtés során. 
-2. Hívja meg a [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) és a [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metódust a megfelelő X. 509 tanúsítvány lekéréséhez, amelyet a tartalmi kulcs titkosításához kell használnia.
+2. Hívja meg a [GetProtectionKeyId](/rest/api/media/operations/rest-api-functions#getprotectionkeyid) és a [GetProtectionKey](/rest/api/media/operations/rest-api-functions#getprotectionkey) metódust a megfelelő X. 509 tanúsítvány lekéréséhez, amelyet a tartalmi kulcs titkosításához kell használnia.
 3. Titkosítsa a tartalmi kulcsot az X. 509 tanúsítvány nyilvános kulcsával. 
    
    Media Services .NET SDK az RSA-t használja a OAEP a titkosítás végrehajtásakor.  Egy példát láthat a [EncryptSymmetricKeyData függvényben](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
@@ -187,7 +187,7 @@ public enum ContentKeyType
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy **ContentKey** egy **ContentKeyType** készlettel ("1") és a **ProtectionKeyType** "0" értékre állítva, hogy JELEZZE, hogy a védelmi kulcs azonosítója az X. 509 tanúsítvány ujjlenyomata.  
 
-Kérés
+Kérelem
 
 ```console
 POST https://media.windows.net/api/ContentKeys HTTP/1.1
@@ -268,4 +268,3 @@ HTTP/1.1 204 No Content
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

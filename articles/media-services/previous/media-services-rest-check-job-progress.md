@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2d5f3382965d9166fabf99ac650e707e29c38a72
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: a8ada16bbfff66c60a1400542742396b667160dc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057095"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000516"
 ---
 # <a name="how-to-check-job-progress"></a>Útmutató: a feladatok előrehaladásának ellenőrzéséhez
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
-A feladatok futtatásakor gyakran szükség van a feladat előrehaladásának nyomon követésére. A feladatok állapotát a feladatok állapot tulajdonságával derítheti fel. További információ az állapot tulajdonságról: a [feladatok entitásának tulajdonságai](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties).
+A feladatok futtatásakor gyakran szükség van a feladat előrehaladásának nyomon követésére. A feladatok állapotát a feladatok állapot tulajdonságával derítheti fel. További információ az állapot tulajdonságról: a [feladatok entitásának tulajdonságai](/rest/api/media/operations/job#job_entity_properties).
 
 ## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: bb7b641a7169c6577320f07a964d278ac1727b1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 596303223554589ef26938486ccfd2281ccd46f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83664696"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999105"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>Operációs rendszer indításának hibája – Windows Update telepítési kapacitás
 
@@ -48,7 +49,7 @@ Ebben az esetben az operációs rendszer (OS) nem tud befejezni egy Windows Upda
 
 ### <a name="create-and-access-a-repair-vm"></a>Javítási virtuális gép létrehozása és elérése
 
-1. A virtuálisgép- [javítási parancsok](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
+1. A virtuálisgép- [javítási parancsok](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) 1-3-es lépéseit használva készítse elő a javítási virtuális gépet.
 1. A Távoli asztali kapcsolat használatával kapcsolódjon a javítási virtuális géphez.
 
 ### <a name="free-up-space-on-the-disk"></a>Szabadítson fel lemezterületet a lemezen
@@ -59,10 +60,10 @@ A probléma megoldásához:
 - Hajtson végre egy Lemezkarbantartó-karbantartási műveletet.
 - A meghajtó dedarabolása.
 
-1. Ellenőrizze, hogy a lemez megtelt-e. Ha a lemez mérete 1 TB-nál kisebb, akkor a [PowerShell használatával](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk)legfeljebb 1 TB-ra bontsa ki.
+1. Ellenőrizze, hogy a lemez megtelt-e. Ha a lemez mérete 1 TB-nál kisebb, akkor a [PowerShell használatával](../windows/expand-os-disk.md)legfeljebb 1 TB-ra bontsa ki.
 1. Ha a lemez már 1 TB, akkor el kell végeznie a lemez karbantartását.
-   1. Válassza le az adatlemezt [a hibás virtuális](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk)gépről.
-   1. Csatlakoztassa az adatlemezt [egy működő virtuális géphez](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm).
+   1. Válassza le az adatlemezt [a hibás virtuális](../windows/detach-disk.md)gépről.
+   1. Csatlakoztassa az adatlemezt [egy működő virtuális géphez](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
    1. Lemezterület felszabadításához használja a [lemezkarbantartó eszközt](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) .
 1. Az átméretezés és a tisztítás befejezése után a következő paranccsal távolíthatja el a meghajtót:
 
@@ -122,4 +123,4 @@ A töredezettség szintjétől függően a detöredezettség több órát is ig�
    
 ### <a name="rebuild-the-vm"></a>A virtuális gép újraépítése
 
-A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) .
+A virtuális gép újraépítéséhez használja [a virtuális gép javítási parancsainak 5. lépését](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) .

@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d19cc4a474324ff3e88ec0c5353a47c157ec715
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80631772"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998476"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>VPN teljesítményének érvényesítése virtuális hálózaton
 
@@ -43,11 +43,11 @@ A következő ábra egy helyszíni hálózat logikai kapcsolatát mutatja be VPN
 
 1. Határozza meg az alkalmazás alapteljesítményre vonatkozó követelményeit.
 1. Határozza meg az Azure VPN Gateway átviteli sebességének korlátait. További segítségért tekintse meg a [VPN Gateway névjegyének](vpn-gateway-about-vpngateways.md#gwsku)"Gateway SKUs" című szakaszát.
-1. Határozza meg az [Azure virtuális gépek átviteli sebességére vonatkozó útmutatót](../virtual-machines/virtual-machines-windows-sizes.md) a virtuális gép méretéhez.
+1. Határozza meg az [Azure virtuális gépek átviteli sebességére vonatkozó útmutatót](../virtual-machines/sizes.md) a virtuális gép méretéhez.
 1. Határozza meg az INTERNETSZOLGÁLTATÓ sávszélességét.
 1. A várt átviteli sebesség kiszámításához a virtuális gép, a VPN Gateway vagy az ISP legkevesebb sávszélességét kell használnia. amelyet a megabit/másodperc (/) mérése nyolc (8) értékkel elosztva.
 
-Ha a számított átviteli sebesség nem felel meg az alkalmazás alapkövetelményének, akkor a szűk keresztmetszetként azonosított erőforrás sávszélességét meg kell emelni. Azure-VPN Gateway átméretezéséhez tekintse meg az [ÁTJÁRÓ SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)-jának módosítása című témakört. A virtuális gépek átméretezésével kapcsolatban lásd: virtuális gép [átméretezése](../virtual-machines/virtual-machines-windows-resize-vm.md). Ha nem tapasztalja a várt internetes sávszélességet, akkor az INTERNETSZOLGÁLTATÓval is kapcsolatba léphet.
+Ha a számított átviteli sebesség nem felel meg az alkalmazás alapkövetelményének, akkor a szűk keresztmetszetként azonosított erőforrás sávszélességét meg kell emelni. Azure-VPN Gateway átméretezéséhez tekintse meg az [ÁTJÁRÓ SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)-jának módosítása című témakört. A virtuális gépek átméretezésével kapcsolatban lásd: virtuális gép [átméretezése](../virtual-machines/windows/resize-vm.md). Ha nem tapasztalja a várt internetes sávszélességet, akkor az INTERNETSZOLGÁLTATÓval is kapcsolatba léphet.
 
 > [!NOTE]
 > A VPN Gateway átviteli sebesség az összes Site-to-Site\VNET-to-VNET vagy pont – hely kapcsolat összesítése.

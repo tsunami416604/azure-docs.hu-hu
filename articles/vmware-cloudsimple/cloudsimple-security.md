@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6d86c90828c081a542fa5574493a46e8a2e44640
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7310c037511fdf1a7d6f3763fd61d292078ea83e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82187477"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998892"
 ---
 # <a name="cloudsimple-security-overview"></a>A CloudSimple biztonsági áttekintése
 
@@ -29,7 +29,7 @@ Az Azure-infrastruktúra biztonsági szempontjai tartalmazzák az adatközpontok
 
 ### <a name="datacenter-security"></a>Adatközpont biztonsága
 
-A Microsoft egy teljes részleggel rendelkezik, amely az Azure-t támogató fizikai létesítmények tervezésével, létrehozásával és működtetésével foglalkozik. A csapat a legkorszerűbb fizikai biztonság fenntartásával lett befektetve. A fizikai biztonsággal kapcsolatos részletekért tekintse meg az [Azure-létesítményeket, a telephelyeket és a fizikai biztonságot](../security/azure-physical-security.md).
+A Microsoft egy teljes részleggel rendelkezik, amely az Azure-t támogató fizikai létesítmények tervezésével, létrehozásával és működtetésével foglalkozik. A csapat a legkorszerűbb fizikai biztonság fenntartásával lett befektetve. A fizikai biztonsággal kapcsolatos részletekért tekintse meg az [Azure-létesítményeket, a telephelyeket és a fizikai biztonságot](../security/fundamentals/physical-security.md).
 
 ### <a name="equipment-location"></a>Berendezések helye
 

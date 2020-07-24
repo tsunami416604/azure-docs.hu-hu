@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30c91b71b952bb68761015325a00ff6926c62dfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201118"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001315"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Kapcsolódás Media Services V3 API-hoz – .NET
 
@@ -26,7 +27,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 .NET SDK-hoz 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen rá, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét
 - Telepítsen egy olyan eszközt, amelyet a .NET-fejlesztéshez szeretne használni. A cikkben ismertetett lépések bemutatják, hogyan használható a [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). A Visual Studio Code-ot használhatja [a C#](https://code.visualstudio.com/docs/languages/csharp)használata című témakörben. Másik lehetőségként más Kódszerkesztő is használható.
 
 > [!IMPORTANT]
@@ -38,7 +39,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 .NET SDK-hoz 
 1. A **fájl** menüben kattintson az **új**  >  **projekt**elemre. 
 1. Hozzon létre egy **.net Core** Console-alkalmazást.
 
-Az ebben a témakörben található minta alkalmazás a célokat célozza meg `netcoreapp2.0` . A kód az "aszinkron Main" protokollt használja, amely a C# 7,1-től kezdődően érhető el. További részletekért tekintse meg ezt a [blogot](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) .
+Az ebben a témakörben található minta alkalmazás a célokat célozza meg `netcoreapp2.0` . A kód az "aszinkron Main" protokollt használja, amely a C# 7,1-től kezdődően érhető el. További részletekért tekintse meg ezt a [blogot](/archive/blogs/benwilli/async-main-is-available-but-hidden) .
 
 ## <a name="add-required-nuget-packages"></a>Szükséges NuGet-csomagok hozzáadása
 
@@ -63,7 +64,7 @@ Az ebben a témakörben található minta alkalmazás a célokat célozza meg `n
 
 ### <a name="set-values-in-appsettingsjson"></a>Értékek beállítása appsettings.json
 
-Futtassa a `az ams account sp create` parancsot a következő témakörben leírtak szerint: [Access API](access-api-cli-how-to.md)-k. A parancs visszaadja a JSON-t, amelyet a "appsettings.jsbe" gombra kell másolni.
+Futtassa a `az ams account sp create` parancsot a következő témakörben leírtak szerint: [Access API](./access-api-howto.md)-k. A parancs visszaadja a JSON-t, amelyet a "appsettings.jsbe" gombra kell másolni.
  
 ## <a name="add-configuration-file"></a>Konfigurációs fájl hozzáadása
 
@@ -242,5 +243,5 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>Lásd még
 
-* [.NET-referencia](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+* [.NET-referencia](/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * További példákat a [.net SDK-minták](https://github.com/Azure-Samples/media-services-v3-dotnet) tárházában talál.

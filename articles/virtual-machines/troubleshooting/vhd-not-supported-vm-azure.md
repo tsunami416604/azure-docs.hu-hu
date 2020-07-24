@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure
 ms.date: 06/29/2020
 ms.author: genli
-ms.openlocfilehash: ff4822b513ed2aea6a18ba45bffc1d060ee2410e
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a843a42de6fc1e6cd8ef788552ab4a8ac17b4e25
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937529"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999054"
 ---
 # <a name="vhd-is-not-supported-when-you-create-a-virtual-machine-in-azure"></a>Virtuális gép Azure-beli létrehozásakor nem támogatott a VHD
 
@@ -41,28 +41,28 @@ Ez a probléma a következő okok egyike miatt fordul elő:
 - A VHD nem felel meg az 1 MB-os igazításnak (eltolásnak). A támogatott lemezméret 1 MB * N. A lemez mérete lehet például 102 401 MB.
 - A VHD sérült vagy nem támogatott. 
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 > [!NOTE]
 > A következő javítás végrehajtásához az ügyfélnek el kell végeznie ezeket a lépéseket, mielőtt feltölti a VHD-t az Azure-ba.
 
 A probléma megoldásához méretezze át a lemezt úgy, hogy megfeleljen az 1 MB-os igazításnak:
 
-- A Windowsban felmerülő probléma megoldásához használja a [Resize-VHD PowerShell-parancsmagot](https://docs.microsoft.com/powershell/module/hyper-v/resize-vhd). Vegye figyelembe, hogy az **átméretezés – VHD** nem Azure PowerShell parancsmag.
+- A Windowsban felmerülő probléma megoldásához használja a [Resize-VHD PowerShell-parancsmagot](/powershell/module/hyper-v/resize-vhd). Vegye figyelembe, hogy az **átméretezés – VHD** nem Azure PowerShell parancsmag.
 
-  1. [A Hyper-V szerepkör telepítése a Windows Serveren](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
-  1. [A virtuális lemez átalakítása rögzített méretű VHD-re](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image#convert-the-virtual-disk-to-a-fixed-size-vhd)
+  1. [A Hyper-V szerepkör telepítése a Windows Serveren](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)
+  1. [A virtuális lemez átalakítása rögzített méretű VHD-re](../windows/prepare-for-upload-vhd-image.md#convert-the-virtual-disk-to-a-fixed-size-vhd)
 
-- A Linux-probléma megoldásához használja a [QEMU-IMG parancsot](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic).
+- A Linux-probléma megoldásához használja a [QEMU-IMG parancsot](../linux/create-upload-generic.md).
 
 Az Azure-beli virtuális gépek létrehozásával és feltöltésével kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Linux rendszerű virtuális gép feltöltése és létrehozása egyéni lemezképből az Azure CLI 1,0 használatával](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd)
-- [Windows Server virtuális merevlemez létrehozása és feltöltése az Azure alkalmazásba](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)
+- [Linux rendszerű virtuális gép feltöltése és létrehozása egyéni lemezképből az Azure CLI 1,0 használatával](../linux/upload-vhd.md)
+- [Windows Server virtuális merevlemez létrehozása és feltöltése az Azure alkalmazásba](../windows/upload-generalized-managed.md)
 
 A folyamatos problémák megsérült VHD-ket jelezhetnek. Ebben az esetben javasoljuk, hogy a virtuális merevlemezt teljesen újra létrehozza.
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
-- [Tudnivalók a Windows VHD-ről](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#about-vhds)
-- [A Linux VHD névjegye](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds#about-vhds)
+- [Tudnivalók a Windows VHD-ről](../windows/managed-disks-overview.md)
+- [A Linux VHD névjegye](../linux/managed-disks-overview.md)

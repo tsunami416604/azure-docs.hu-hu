@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 7ccc2d5956b44a8cd85f19e0905539c32f58bc5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2989343a5cc9612ea0f4d3b177093fdef93f5d73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78163998"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000669"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Médiafájlok indexelése Azure Media Indexer
 
 > [!NOTE]
-> A **Azure Media Indexer** adathordozó-processzor ki lesz vonva. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört. [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) lecseréli ezt az örökölt adathordozó-processzort. További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](migrate-indexer-v1-v2.md).
+> A **Azure Media Indexer** adathordozó-processzor ki lesz vonva. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört. [Azure Media Services video Indexer](../video-indexer/index.yml) lecseréli ezt az örökölt adathordozó-processzort. További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](migrate-indexer-v1-v2.md).
 
 Azure Media Indexer lehetővé teszi, hogy a médiafájlokat kereshetővé tegye, és teljes szöveges átiratot hozzon a kódolt feliratok és kulcsszavak számára. Egy kötegben egy médiafájl vagy több médiafájl is feldolgozható.  
 
@@ -44,7 +45,7 @@ Az indexelési feladatokhoz több részletet is megadhat a feladatok konfigurác
 
 Egy jegyzékfájl használatával egyszerre több médiafájl is feldolgozható.
 
-További információ: [Azure Media Indexer feladatának előre definiálása](https://msdn.microsoft.com/library/dn783454.aspx).
+További információ: [Azure Media Indexer feladatának előre definiálása](/azure/media-services/previous/media-services-analytics-overview).
 
 ## <a name="index-an-asset"></a>Eszköz indexelése
 A következő módszer egy médiafájlt tölt fel egy eszközként, és létrehoz egy feladatot az eszköz indexeléséhez.
@@ -157,7 +158,7 @@ Ha nem az összes bemeneti médiafájl indexelve lett, az indexelési feladatok 
 ## <a name="index-multiple-files"></a>Több fájl indexelése
 A következő módszer több médiafájlt tölt fel egy eszközként, és létrehoz egy feladatot, amely az összes fájlt egy kötegben indexeli.
 
-A rendszer létrehoz egy ". lst" kiterjesztésű jegyzékfájlt, és feltölti az eszközre. A manifest-fájl tartalmazza az összes objektum fájljának listáját. További információ: [Azure Media Indexer feladatának előre definiálása](https://msdn.microsoft.com/library/dn783454.aspx).
+A rendszer létrehoz egy ". lst" kiterjesztésű jegyzékfájlt, és feltölti az eszközre. A manifest-fájl tartalmazza az összes objektum fájljának listáját. További információ: [Azure Media Indexer feladatának előre definiálása](/azure/media-services/previous/media-services-analytics-overview).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -277,4 +278,3 @@ Jelenleg az angol és a spanyol nyelv támogatott.
 [Azure Media Services Analytics áttekintése](media-services-analytics-overview.md)
 
 [Médiafájlok indexelése Azure Media Indexer 2 előzetes verzióval](media-services-process-content-with-indexer2.md)
-

@@ -13,17 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: juliako
-ms.openlocfilehash: e4eee3b9f3f97bf7cd7a7b61425ec5c9a3a198ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd63152776e0268b8f9e3e0ce116fea897cdf4e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76543075"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000873"
 ---
 # <a name="live-event-states-and-billing"></a>Élő események állapotai és számlázása
 
 Azure Media Services egy élő esemény azonnal megkezdi a számlázást, amint az állapota a **futásra**változik. Akkor is számítunk fel díjat, ha nincs a szolgáltatáson keresztül áramló videó. Az élő esemény számlázásának leállításához le kell állítania az élő eseményt. Az élő átiratok számlázása ugyanúgy történik, mint az élő esemény.
 
-Ha az [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) **LiveEventEncodingType** standard vagy Premium1080p értékűre van állítva, akkor Media Services automatikusan kikapcsol minden olyan élő eseményt, amely még mindig a **futó** állapotban van, 12 órával a bemeneti csatorna elvesztése után, és nem fut **élő kimeneti**s. Azonban továbbra is fizetnie kell arra az időre, amíg az élő esemény **futó** állapotban volt.
+Ha az [élő esemény](/rest/api/media/liveevents) **LiveEventEncodingType** standard vagy Premium1080p értékűre van állítva, akkor Media Services automatikusan kikapcsol minden olyan élő eseményt, amely még mindig a **futó** állapotban van, 12 órával a bemeneti csatorna elvesztése után, és nem fut **élő kimeneti**s. Azonban továbbra is fizetnie kell arra az időre, amíg az élő esemény **futó** állapotban volt.
 
 > [!NOTE]
 > Az áteresztő élő események nem állnak le automatikusan, és az API-n keresztül explicit módon le kell állítani őket, hogy elkerülje a túlzott mértékű számlázást. 

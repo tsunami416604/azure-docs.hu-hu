@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 72c012ba9ce28c0ca5dd5a315cf94b8895558a0b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001689"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -41,7 +41,7 @@ A MQTT port (8883) számos vállalati és oktatási hálózati környezetben blo
 
 ## <a name="using-the-device-sdks"></a>Az eszköz SDK-k használata
 
-A MQTT protokollt támogató [eszköz SDK](https://github.com/Azure/azure-iot-sdks) -k Java, Node.js, C, C# és Python nyelveken érhetők el. Az eszköz SDK-k a standard IoT Hub kapcsolati karakterláncot használják az IoT hub-kapcsolat létesítéséhez. Az MQTT protokoll használatához a **MQTT**értékre kell állítani az ügyfél protokoll paraméterét. A MQTT megadhatja a webes szoftvercsatornák között is az ügyféloldali protokoll paraméterében. Alapértelmezés szerint az eszköz SDK-k egy, a **CleanSession** jelzővel rendelkező IoT hubhoz csatlakoznak **, és az** IoT hub használatával történő üzenetváltáshoz a **QoS 1** eszközt használják.
+A MQTT protokollt támogató [eszköz SDK](https://github.com/Azure/azure-iot-sdks) -k Java, Node.js, C, C# és Python nyelveken érhetők el. Az eszköz SDK-k a standard IoT Hub kapcsolati karakterláncot használják az IoT hub-kapcsolat létesítéséhez. Az MQTT protokoll használatához a **MQTT**értékre kell állítani az ügyfél protokoll paraméterét. A MQTT megadhatja a webes szoftvercsatornák között is az ügyféloldali protokoll paraméterében. Alapértelmezés szerint az eszköz SDK-k egy, a **CleanSession** jelzővel rendelkező IoT hubhoz csatlakoznak **, és az** IoT hub használatával történő üzenetváltáshoz a **QoS 1** eszközt használják. Habár lehetséges a **QoS 0** konfigurálása a gyorsabb üzenetváltáshoz, vegye figyelembe, hogy a kézbesítés nem garantált és nem elismert. Emiatt a **QoS 0** kifejezést gyakran "Fire and forget" néven emlegetik.
 
 Ha egy eszköz egy IoT-hubhoz csatlakozik, az eszköz SDK-k olyan metódusokat biztosítanak, amelyek lehetővé teszik, hogy az eszköz üzeneteket cseréljen az IoT hub-ra.
 
@@ -76,11 +76,11 @@ Annak biztosítása érdekében, hogy az ügyfél/IoT Hub-kapcsolatok életben m
 
 |Nyelv  |Alapértelmezett életben tartási időköz  |Konfigurálható  |
 |---------|---------|---------|
-|Node.js     |   180 másodperc      |     Nem    |
-|Java     |    230 másodperc     |     Nem    |
+|Node.js     |   180 másodperc      |     No    |
+|Java     |    230 másodperc     |     No    |
 |C     | 240 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (v2)   | 60 másodperc |  Nem   |
+|Python (v2)   | 60 másodperc |  No   |
 
 A következő [MQTT spec](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081), IoT hub Keep-Alive ping intervalluma 1,5 alkalommal az ügyfél életben tartási értéke. A IoT Hub azonban korlátozza a kiszolgálóoldali időtúllépési korlátot 29,45 percre (1767 másodpercre), mert az összes Azure-szolgáltatás az Azure Load Balancer TCP üresjárati időkorlátjának (29,45 perc) van kötve. 
 
@@ -308,7 +308,7 @@ IoT Hub kézbesíti az üzeneteket a **témakör nevével** `devices/{device_id}
 
 A felhőből az eszközre irányuló üzenetekben a tulajdonságok táskájában lévő értékek a következő táblázatban látható módon jelennek meg:
 
-| Tulajdonság értéke | Képviselet | Leírás |
+| Tulajdonság értéke | Képviselet | Description |
 |----|----|----|
 | `null` | `key` | Csak a kulcs jelenik meg a tulajdonság táskájában |
 | üres karakterlánc | `key=` | A kulcsot, és nem értékkel rendelkező egyenlőségjelet kell írni |
@@ -346,7 +346,7 @@ A válasz törzse a Twin eszköz tulajdonságok szakaszát tartalmazza, ahogy az
 
 A lehetséges állapotkódok a következők:
 
-|Állapot | Leírás |
+|Állapot | Description |
 | ----- | ----------- |
 | 200 | Success |
 | 429 | Túl sok kérés (szabályozott) a [IoT hub szabályozása](iot-hub-devguide-quotas-throttling.md) szerint |
@@ -433,7 +433,7 @@ További információ: a [közvetlen módszer fejlesztői útmutatója](iot-hub-
 
 Végső megfontolásként, ha testre kell szabnia a MQTT protokoll viselkedését a felhős oldalon, tekintse át az [Azure IoT Protocol Gatewayt](iot-hub-protocol-gateway.md). Ez a szoftver lehetővé teszi egy olyan nagy teljesítményű egyéni protokoll-átjáró üzembe helyezését, amely közvetlenül a IoT Hub. Az Azure IoT Protocol Gateway lehetővé teszi, hogy testreszabja az eszköz protokollját, hogy az rozsdaövezetek rehabilitálása MQTT-telepítések vagy más egyéni protokollok is megfeleljenek. Ez a megközelítés azonban megköveteli, hogy egy egyéni protokoll-átjárót futtasson és működtessen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az MQTT protokollról, tekintse meg a [MQTT dokumentációját](https://mqtt.org/documentation).
 

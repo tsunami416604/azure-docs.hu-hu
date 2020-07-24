@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 79c24eb078cc3de764ecc1c814e5b8772777eab6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f7a9f87c73e4c5aa5f905def18534b04688a0a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78199495"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000533"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady és/vagy Widevine Dynamic Common Encryption használata
 
 > [!NOTE]
-> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > nem kerül be új funkciók vagy funkciók a Media Services v2-be. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > nem kerül be új funkciók vagy funkciók a Media Services v2-be. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 >   
 
 ## <a name="overview"></a>Áttekintés
@@ -40,7 +41,7 @@ A Widevine-licencek biztosításához a következő AMS-partnereket is használh
 
 További információkért lásd az integrációt az [Axinom](media-services-axinom-integration.md) és a [castLabs](media-services-castlabs-integration.md) rendszerrel.
 
-A Media Services szolgáltatásban több különböző módot is beállíthat, amelyek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalomkulcs-hitelesítési szabályzat egy vagy több hitelesítési korlátozást tartalmazhat: ezek lehetnek nyitott vagy jogkivonat-korlátozások is. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. A Media Services a [Simple Web Tokens](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) és a [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT) formátumú jogkivonatokat támogatja. 
+A Media Services szolgáltatásban több különböző módot is beállíthat, amelyek segítségével a rendszer hitelesítheti a kulcskérelmet küldő felhasználókat. A tartalomkulcs-hitelesítési szabályzat egy vagy több hitelesítési korlátozást tartalmazhat: ezek lehetnek nyitott vagy jogkivonat-korlátozások is. A jogkivonattal korlátozott szabályzatokat a biztonsági jogkivonatokkal kapcsolatos szolgáltatás (STS) által kiadott jogkivonatnak kell kísérnie. A Media Services a [Simple Web Tokens](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_2) (SWT) és a [JSON Web Token](/previous-versions/azure/azure-services/gg185950(v=azure.100)#BKMK_3) (JWT) formátumú jogkivonatokat támogatja. 
 
 További információ: [a tartalmi kulcs engedélyezési házirendjének konfigurálása](media-services-protect-with-aes128.md#configure_key_auth_policy).
 
@@ -619,6 +620,5 @@ namespace DynamicEncryptionWithDRM
 
 * [CENC használata többszörös DRM-mel és hozzáférés-vezérléssel](media-services-cenc-with-multidrm-access-control.md)
 * [Widevine-csomagolás konfigurálása a Media Services segítségével](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
-* [Az Azure Media Services Java ügyfél-SDK használatának megkezdése](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use)
+* [Az Azure Media Services Java ügyfél-SDK használatának megkezdése](./media-services-java-how-to-use.md)
 * A legfrissebb Media Services PHP SDK letöltéséhez keresse meg a Microsoft/WindowsAzure-csomag 0.5.7-es verzióját a [Packagist-adattárban](https://packagist.org/packages/microsoft/windowsazure#v0.5.7). 
-

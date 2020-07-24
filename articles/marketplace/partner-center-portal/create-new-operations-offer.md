@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 621d657f527e5307ed3a0b583e4c9171005d4f8c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2c6c6b3fb4f863840b39de6f56fe473be693fe87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121842"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001434"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations-ajánlat létrehozása
 
@@ -128,7 +128,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Mi
 1. Embléma
 2. Termékek
 3. Kategóriák
-4. Ágazatok
+4. Iparágak
 5. Támogatási címe (hivatkozás)
 6. Használati feltételek
 7. Adatvédelmi irányelvek
@@ -136,7 +136,7 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk a Mi
 9. Képernyőképek/videók
 10. Leírás
 
-### <a name="name"></a>Name
+### <a name="name"></a>Név
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -144,7 +144,7 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -295,7 +295,7 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
     - **Nincs elindítva** – a szakasz nincs megérintve, és el kell végezni.
     - **Hiányos** – a szakasznak olyan hibákkal kell rendelkeznie, amelyeket meg kell oldani, vagy további információkat kell megadnia. Térjen vissza a szakasz (ok) hoz, és frissítse azt.
     - **Complete (Befejezés** ) – a szakasz elkészült, az összes szükséges adattal megadták, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
-- A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett.
+- A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett. További információ a tesztelési utasításokról és az első közzététel befejezéséről: [AppSource Dynamics 365 pénzügyi és üzemeltetési funkciók ellenőrzése](https://docs.microsoft.com/azure/marketplace/dynamics-365-finance-operations-functional-validation).
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. Küldünk Önnek egy e-mailt, amelyből megtudhatja, hogy az ajánlat előzetes verziója elérhető-e a felülvizsgálathoz és jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvánosságra való közzétételéhez.
 
 ## <a name="next-step"></a>Következő lépés

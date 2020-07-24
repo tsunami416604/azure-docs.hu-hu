@@ -14,17 +14,17 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3adbb9471cc501861b65efd0321b3b4f72b07aea
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: e5978cff8da4697cf130e499c8d9273d75118963
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057857"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000618"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Az Azure Media Services Java ügyfél-SDK használatának megkezdése  
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 Ez az oktatóanyag végigvezeti a lépéseken, amelyek segítségével alapszintű videotartalom-továbbítási szolgáltatást hozhat létre a Java ügyfél-SDK segítségével, az Azure Media Services alkalmazással.
 
@@ -65,7 +65,7 @@ A kód csatlakozik az Azure Media Services API-hoz az Azure AD egyszerű szolgá
 * `clientKey`: Az Azure AD-alkalmazás ügyfélkulcsa
 * `restApiEndpoint`: Az Azure Media Services-fiók REST API-végpontja
 
-Létrehozhat egy Azure AD-alkalmazást, és lekérheti a megelőző konfigurációs értékeket az Azure Portalról. További információt az **Azure Portalon keresztül történő Azure AD-alapú hitelesítést** ismertető cikkben, az [egyszerű szolgáltatásnév hitelesítését](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad) bemutató szakaszban talál.
+Létrehozhat egy Azure AD-alkalmazást, és lekérheti a megelőző konfigurációs értékeket az Azure Portalról. További információt az **Azure Portalon keresztül történő Azure AD-alapú hitelesítést** ismertető cikkben, az [egyszerű szolgáltatásnév hitelesítését](./media-services-portal-get-started-with-aad.md) bemutató szakaszban talál.
 
 A kód egy helyileg tárolt videofájlt is használ. Szerkesztenie kell a kódot, hogy megadhassa a saját feltölteni kívánt helyi fájlját.
 
@@ -320,6 +320,5 @@ A Media Services Javadoc-dokumentációja: [Java-dokumentáció az Azure-könyvt
 
 [Azure Media Services SDK Maven Package]: https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
-[Azure for Java developers]: https://docs.microsoft.com/java/azure/
-[Media Services Client Development]: https://msdn.microsoft.com/library/windowsazure/dn223283.aspx
-
+[Azure for Java developers]: /java/azure/
+[Media Services Client Development]: /previous-versions/azure/dn223283(v=azure.100)

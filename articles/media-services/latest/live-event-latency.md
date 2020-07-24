@@ -13,18 +13,18 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/22/2019
 ms.author: juliako
-ms.openlocfilehash: 720931cf9f955f63075e3881b6b9f2e884bd3a76
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 24eb5f8691c94c1f319820f3133b66065504ace3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232457"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000891"
 ---
 # <a name="live-event-low-latency-settings"></a>Élő esemény alacsony késési beállításai
 
-Ez a cikk bemutatja, hogyan állíthatja be a kis késleltetést egy [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents)esetében. Azt is ismerteti, hogy milyen eredményeket láthat a különböző játékosok alacsony késési beállításainak használatakor. Az eredmények a CDN és a hálózati késés alapján változnak.
+Ez a cikk bemutatja, hogyan állíthatja be a kis késleltetést egy [élő esemény](/rest/api/media/liveevents)esetében. Azt is ismerteti, hogy milyen eredményeket láthat a különböző játékosok alacsony késési beállításainak használatakor. Az eredmények a CDN és a hálózati késés alapján változnak.
 
-Az új **LowLatency** funkció használatához állítsa be a **StreamOptionsFlag** a **LowLatency** értékre a **liveevent**. A HLS-lejátszás [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) létrehozásakor állítsa a [LiveOutput. HLS. fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) az 1 értékre. Ha a stream működik, használhatja a [Azure Media Player](https://ampdemo.azureedge.net/) (amp bemutató oldalt), és beállíthatja a lejátszási beállításokat az "alacsony késleltetésű heurisztikus profil" használatára.
+Az új **LowLatency** funkció használatához állítsa be a **StreamOptionsFlag** a **LowLatency** értékre a **liveevent**. A HLS-lejátszás [LiveOutput](/rest/api/media/liveoutputs) létrehozásakor állítsa a [LiveOutput. HLS. fragmentsPerTsSegment](/rest/api/media/liveoutputs/create#hls) az 1 értékre. Ha a stream működik, használhatja a [Azure Media Player](https://ampdemo.azureedge.net/) (amp bemutató oldalt), és beállíthatja a lejátszási beállításokat az "alacsony késleltetésű heurisztikus profil" használatára.
 
 > [!NOTE]
 > A Azure Media Player LowLatency-HeuristicProfile jelenleg az MPEG-DASH protokollban lévő streamek lejátszására lett tervezve, amelyeknek CSF vagy CMAF formátumúnak kell lenniük (például `format=mdp-time-csf` vagy `format=mdp-time-cmaf` ). 
@@ -79,4 +79,3 @@ Az alábbi táblázatok a késések jellemző eredményeit jelenítik meg (ha a 
 
 - [Élő közvetítés – áttekintés](live-streaming-overview.md)
 - [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)
-

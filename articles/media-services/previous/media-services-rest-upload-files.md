@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: fa7dca62ed51c52b704c199ca04eadb6306be4df
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c3d776362b0447b148c0b2bdedba1287fa56058b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170785"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000193"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Fájlok feltöltése Media Services-fiókba a REST használatával  
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "86170785"
 > * [Portál](media-services-portal-upload-files.md)
 > 
 
-A Media Services szolgáltatásban a digitális fájlok feltöltése egy adategységbe történik. Az [eszköz](https://docs.microsoft.com/rest/api/media/operations/asset) entitás tartalmazhat videó-, hang-, kép-, miniatűr-gyűjtemények, szöveg-és zárt feliratú fájlokat (valamint a fájlokra vonatkozó metaadatokat is).  A fájlok az objektumba való feltöltése után a tartalom biztonságosan tárolódik a felhőben a további feldolgozáshoz és folyamatos átvitelhez. 
+A Media Services szolgáltatásban a digitális fájlok feltöltése egy adategységbe történik. Az [eszköz](/rest/api/media/operations/asset) entitás tartalmazhat videó-, hang-, kép-, miniatűr-gyűjtemények, szöveg-és zárt feliratú fájlokat (valamint a fájlokra vonatkozó metaadatokat is).  A fájlok az objektumba való feltöltése után a tartalom biztonságosan tárolódik a felhőben a további feldolgozáshoz és folyamatos átvitelhez. 
 
 Ebből az oktatóanyagból megtudhatja, hogyan tölthet fel egy fájlt és egyéb műveletet a hozzá társított módon:
 
@@ -45,7 +45,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan tölthet fel egy fájlt és egyé
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
 - [Hozzon létre egy Azure Media Services fiókot a Azure Portal használatával](media-services-portal-create-account.md).
 - Tekintse át a [hozzáférés Azure Media Services API-t a HRE-hitelesítés áttekintésével foglalkozó](media-services-use-aad-auth-to-access-ams-api.md) cikkben.
-- További információkért tekintse át az [Azure ad-hitelesítés használata a Media Services API Rest-mel való elérését](https://docs.microsoft.com/azure/media-services/previous/media-services-rest-connect-with-aad) ismertető cikket.
+- További információkért tekintse át az [Azure ad-hitelesítés használata a Media Services API Rest-mel való elérését](./media-services-rest-connect-with-aad.md) ismertető cikket.
 - Konfigurálja a **Poster** -t a következő témakörben leírtak szerint: [Media Services REST API hívások](media-rest-apis-with-postman.md).
 
 ## <a name="considerations"></a>Megfontolandó szempontok
@@ -106,7 +106,7 @@ Az oktatóanyaghoz tartozó Poster beállításának lépéseit lásd: [Poster k
 >[!NOTE]
 >A különböző AMS-szabályzatok (például a Locator vagy a ContentKeyAuthorizationPolicy) esetében a korlát 1 000 000 szabályzat. Ha mindig ugyanazokat a napokat/hozzáférési engedélyeket használja (például olyan keresők szabályzatait, amelyek hosszú ideig érvényben maradnak, vagyis nem feltöltött szabályzatokat), a szabályzatazonosítónak is ugyanannak kell lennie. További információkért tekintse meg [ezt](media-services-dotnet-manage-entities.md#limit-access-policies) a cikket.
 
-A fájlok blob Storage-ba való feltöltése előtt állítsa be a hozzáférési házirend jogosultságait az eszközre való íráshoz. Ehhez HTTP-kérelmet kell küldenie a AccessPolicies entitás számára. Hozzon létre egy DurationInMinutes értéket a létrehozáskor, vagy ha a rendszer visszaküldi a 500 belső kiszolgálóhiba-hibaüzenetet. További információ a AccessPolicies: [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+A fájlok blob Storage-ba való feltöltése előtt állítsa be a hozzáférési házirend jogosultságait az eszközre való íráshoz. Ehhez HTTP-kérelmet kell küldenie a AccessPolicies entitás számára. Hozzon létre egy DurationInMinutes értéket a létrehozáskor, vagy ha a rendszer visszaküldi a 500 belső kiszolgálóhiba-hibaüzenetet. További információ a AccessPolicies: [AccessPolicy](/rest/api/media/operations/accesspolicy).
 
 ### <a name="create-an-access-policy"></a>Hozzáférési szabályzat létrehozása
 
@@ -121,7 +121,7 @@ A fájlok blob Storage-ba való feltöltése előtt állítsa be a hozzáférés
 
 ### <a name="overview"></a>Áttekintés
 
-Az [eszköz](https://docs.microsoft.com/rest/api/media/operations/asset) a Media Servicesban található objektumok különböző típusaihoz vagy csoportjaihoz tartozó tároló, beleértve a videó, a hang, a képek, a miniatűr gyűjtemények, a szöveges számok és a kódolt feliratok fájljait. A REST APIban az adategység létrehozásához POST-kérést kell küldenie Media Services és az objektumra vonatkozó összes tulajdonságot a kérelem törzsében kell elhelyezni.
+Az [eszköz](/rest/api/media/operations/asset) a Media Servicesban található objektumok különböző típusaihoz vagy csoportjaihoz tartozó tároló, beleértve a videó, a hang, a képek, a miniatűr gyűjtemények, a szöveges számok és a kódolt feliratok fájljait. A REST APIban az adategység létrehozásához POST-kérést kell küldenie Media Services és az objektumra vonatkozó összes tulajdonságot a kérelem törzsében kell elhelyezni.
 
 Az adategységek létrehozásakor felvehető tulajdonságok egyike a **Beállítások**. A következő titkosítási beállítások egyikét megadhatja: **none** (alapértelmezett, nem használt titkosítás), **StorageEncrypted** (az ügyféloldali tárolási titkosítással előre titkosított tartalomhoz), a **CommonEncryptionProtected**vagy a **EnvelopeEncryptionProtected**. Ha titkosított eszközzel rendelkezik, konfigurálnia kell egy kézbesítési házirendet. További információ: az [eszközök kézbesítési házirendjeinek konfigurálása](media-services-rest-configure-asset-delivery-policy.md).
 
@@ -144,9 +144,9 @@ Ebben a példában egy titkosítatlan eszközt hozunk létre.
 
 Miután beállította a AccessPolicy és a lokátort, a rendszer feltölti a tényleges fájlt egy Azure Blob Storage-tárolóba az Azure Storage REST API-kon keresztül. A fájlokat fel kell töltenie blokk blobként. Azure Media Services nem támogatja az oldal blobokat.  
 
-További információ az Azure Storage-Blobok használatáról: [blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+További információ az Azure Storage-Blobok használatáról: [blob Service REST API](/rest/api/storageservices/blob-service-rest-api).
 
-A tényleges feltöltési URL-cím megszerzéséhez hozzon létre egy SAS-lokátort (lásd alább). A lokátorok határozzák meg a kapcsolati végpont kezdési idejét és típusát azon ügyfelek számára, akik egy adott eszköz fájljait szeretnék elérni. Több lokátor entitást is létrehozhat egy adott AccessPolicy és egy adategységhez a különböző ügyfelek kéréseinek és igényeinek kezeléséhez. Ezen lokátorok mindegyike a kezdő és a AccessPolicy DurationInMinutes értékét használja az URL-cím használatának időtartamának meghatározásához. További információ: [lokátor](https://docs.microsoft.com/rest/api/media/operations/locator).
+A tényleges feltöltési URL-cím megszerzéséhez hozzon létre egy SAS-lokátort (lásd alább). A lokátorok határozzák meg a kapcsolati végpont kezdési idejét és típusát azon ügyfelek számára, akik egy adott eszköz fájljait szeretnék elérni. Több lokátor entitást is létrehozhat egy adott AccessPolicy és egy adategységhez a különböző ügyfelek kéréseinek és igényeinek kezeléséhez. Ezen lokátorok mindegyike a kezdő és a AccessPolicy DurationInMinutes értékét használja az URL-cím használatának időtartamának meghatározásához. További információ: [lokátor](/rest/api/media/operations/locator).
 
 A SAS URL-cím formátuma a következő:
 
@@ -175,9 +175,9 @@ Vegye figyelembe a következőket:
 
 Most, hogy már rendelkezik a feltöltési URL-címmel, írnia kell egy kódot az Azure Blob API-k használatával közvetlenül a fájlnak a SAS-tárolóba való feltöltéséhez. További információkért tekintse át a következő cikkeket:
 
-- [Az Azure Storage REST API használata](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [BLOB elhelyezése](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-- [Blobok feltöltése blob Storage-ba](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
+- [Az Azure Storage REST API használata](../../storage/common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [BLOB elhelyezése](/rest/api/storageservices/put-blob)
+- [Blobok feltöltése blob Storage-ba](/previous-versions/azure/storage/storage-use-azcopy#upload-blobs-to-blob-storage)
 
 ### <a name="upload-a-file-with-postman"></a>Poster-fájl feltöltése
 
@@ -209,7 +209,7 @@ A fájlt fel kell tölteni, és hozzá kell adni a metaadatokat.
 
 ## <a name="validate"></a>Érvényesítés
 
-Annak ellenőrzéséhez, hogy a fájl feltöltése sikeresen megtörtént-e, érdemes lehet lekérdezni a [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) , és össze kell hasonlítani a **ContentFileSize** (vagy más részleteit) az új objektumban látható értékkel. 
+Annak ellenőrzéséhez, hogy a fájl feltöltése sikeresen megtörtént-e, érdemes lehet lekérdezni a [AssetFile](/rest/api/media/operations/assetfile) , és össze kell hasonlítani a **ContentFileSize** (vagy más részleteit) az új objektumban látható értékkel. 
 
 A következő **beolvasási** művelet például az adatfájlhoz tartozó adatfájlok (vagy a BigBuckBunny.mp4 fájl) adatait hozza meg. A lekérdezés a korábban beállított [környezeti változókat](postman-environment.md) használja.
 
@@ -229,4 +229,3 @@ A válasz a méretet, a nevet és az egyéb adatokat fogja tartalmazni.
 Most már kódolhatja a feltöltött adategységeket. További információ: [Encode Assets](media-services-portal-encode.md) (Adategységek kódolása).
 
 Emellett az Azure Functions használatával is elindíthatja a kódolási feladatokat a konfigurált tárolóba érkező fájlok alapján. További információkért tekintse meg [ezt a mintát](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
-

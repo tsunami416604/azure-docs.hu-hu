@@ -6,11 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c1976adba0159b54bd64b2c8830c3aaad9959912
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513703"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999517"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Eszköz felügyelete a Windows PowerShell StorSimple-bővítményével
 
@@ -28,7 +29,7 @@ A cikk elolvasása után a következőket teheti:
 
 > [!NOTE]
 > * Windows PowerShell StorSimple-bővítménye-parancsmagokkal felügyelheti a StorSimple-eszközt soros konzolról vagy távolról a Windows PowerShell távelérés használatával. Az ezen felületen használható egyes parancsmagokkal kapcsolatos további információkért tekintse meg a [Windows PowerShell StorSimple-bővítménye parancsmag-referenciáját](https://technet.microsoft.com/library/dn688168.aspx).
-> * A Azure PowerShell StorSimple-parancsmagok a parancsmagok egy másik gyűjteménye, amely lehetővé teszi a StorSimple-és áttelepítési feladatok automatizálását a parancssorból. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg az [Azure StorSimple parancsmag-referenciát](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
+> * A Azure PowerShell StorSimple-parancsmagok a parancsmagok egy másik gyűjteménye, amely lehetővé teszi a StorSimple-és áttelepítési feladatok automatizálását a parancssorból. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg az [Azure StorSimple parancsmag-referenciát](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
 
 
 A Windows PowerShell StorSimple-bővítménye a következő módszerek egyikével érheti el:

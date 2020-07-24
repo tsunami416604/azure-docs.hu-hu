@@ -15,20 +15,21 @@ ms.topic: article
 ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 618803e8e94f96a63e0c39c27b40a933acac7cb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eee718627f35154c878c717e02febe0ea7958fe6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82995531"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000550"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>Offline FairPlay-streamelés iOS-hez 
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
-> * [3-as verzió](../latest/offline-fairplay-for-ios.md)
+> * [3\. verzió](../latest/offline-fairplay-for-ios.md)
 > * [2-es verzió](media-services-protect-hls-with-offline-fairplay.md)
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 A Azure Media Services jól megtervezett [tartalomvédelem-szolgáltatásokat](https://azure.microsoft.com/services/media-services/content-protection/) biztosít, amelyek a következőket fedik le:
 
@@ -53,7 +54,7 @@ Mielőtt offline DRM-t implementál a FairPlay iOS 10 + eszközön:
 * Ismerkedjen meg a FairPlay online tartalomvédelem szolgáltatásával. További információt a következő cikkekben és példákban talál:
 
     - [Általánosan elérhető az Apple FairPlay streaming for Azure Media Services](https://azure.microsoft.com/blog/apple-FairPlay-streaming-for-azure-media-services-generally-available/)
-    - [Az Apple FairPlay vagy a Microsoft PlayReady által védett HLS-tartalmak](https://docs.microsoft.com/azure/media-services/media-services-protect-hls-with-FairPlay)
+    - [Az Apple FairPlay vagy a Microsoft PlayReady által védett HLS-tartalmak](./media-services-protect-hls-with-fairplay.md)
     - [Egy minta az online FPS streaminghez](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-FairPlay/)
 
 * Szerezze be az FPS SDK-t az Apple Developer Network webhelyről. Az FPS SDK két összetevőt tartalmaz:
@@ -210,7 +211,7 @@ A következő gyakran ismételt kérdések segítséget nyújtanak a hibaelhár�
 - **Mit jelent az utolsó paraméter a következő API-ban az FPS kapcsolat nélküli módban?**
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-    Az API dokumentációja: [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration metódus](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet). A paraméter az offline bérlet időtartamát jelöli, a második pedig az egységet.
+    Az API dokumentációja: [FairPlayConfiguration. CreateSerializedFairPlayOptionConfiguration metódus](/dotnet/api/microsoft.windowsazure.mediaservices.client.fairplay.fairplayconfiguration.createserializedfairplayoptionconfiguration?view=azure-dotnet). A paraméter az offline bérlet időtartamát jelöli, a második pedig az egységet.
 - **Mi a letöltött/offline fájl szerkezete iOS-eszközökön?** Az iOS-eszközön a letöltött fájl szerkezete a következő képernyőképre hasonlít. A `_keys` mappa a letöltött fps-licenceket egy áruházbeli fájllal tárolja az egyes licencelési szolgáltatások gazdagépei számára. A `.movpkg` mappa tárolja a hang-és video-tartalmakat. Az első mappa, amelynek a neve szaggatott vonallal végződik, majd egy numerikus tartalmat tartalmaz. A numerikus érték a PeakBandwidth. A második mappa, amelynek neve kötőjel, majd 0, hanganyagot tartalmaz. Az "adat" nevű harmadik mappa az FPS-tartalom fő lejátszási listáját tartalmazza. Végezetül boot.xml a mappa tartalmának teljes leírását tartalmazza `.movpkg` . 
 
 ![Offline FairPlay iOS minta alkalmazás fájljának szerkezete](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)
@@ -248,7 +249,7 @@ Minta boot.xml fájl:
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 Ez a dokumentum az alábbi lépésekkel és információkkal rendelkezik, amelyekkel az FPS offline üzemmódot implementálhatja:
 
 * Media Services a tartalomvédelem konfigurálása a Media Services .NET API-val a dinamikus FairPlay-titkosítás és a FairPlay-licenc kézbesítése a Media Servicesban.

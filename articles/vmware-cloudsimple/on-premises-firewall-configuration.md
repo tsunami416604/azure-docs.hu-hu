@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 539665c4756a7dc87078922421b45a88404f58f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ff057d99e29c7c6fe30e77f38a0bff265dbe7bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868147"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998891"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Hozzáférés a CloudSimple saját felhőalapú környezetéhez és a helyszíni alkalmazásokhoz
 
@@ -23,7 +24,7 @@ Egy kapcsolat beállítható a helyszíni hálózatról az Azure ExpressRoute va
 
 A saját felhőalapú vCenter és a NSX-T kezelőhöz való hozzáféréshez az alábbi táblázatban definiált portokat meg kell nyitni a helyszíni tűzfalon.  
 
-| Port       | Forrás                           | Cél                      | Szerep                                                                                                                |
+| Port       | Forrás                           | Cél                      | Cél                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)   | Helyszíni DNS-kiszolgálók          | Privát Felhőbeli DNS-kiszolgálók        | Szükséges a *az.CLOUDSIMPLE.IO* DNS-keresésének továbbításához a helyszíni hálózatról a saját felhőalapú DNS-kiszolgálókra.       |
 | 53 (UDP)   | Privát Felhőbeli DNS-kiszolgálók        | Helyszíni DNS-kiszolgálók          | A DNS továbbításához a helyszíni tartománynevek a helyszíni DNS-kiszolgálókra való átadásához szükségesek. |
@@ -34,9 +35,9 @@ A saját felhőalapú vCenter és a NSX-T kezelőhöz való hozzáféréshez az 
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>A helyszíni Active Directory identitás forrásaként való használatához szükséges portok
 
-Ha a helyszíni Active Directoryt identitás forrásaként szeretné konfigurálni a saját felhőalapú vCenter, meg kell nyitni a táblázatban definiált portokat.  Lásd: az [Azure ad használata identitás-szolgáltatóként a CloudSimple vCenter a](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-ad/) konfigurációs lépésekhez.
+Ha a helyszíni Active Directoryt identitás forrásaként szeretné konfigurálni a saját felhőalapú vCenter, meg kell nyitni a táblázatban definiált portokat.  Lásd: az [Azure ad használata identitás-szolgáltatóként a CloudSimple vCenter a](./azure-ad.md) konfigurációs lépésekhez.
 
-| Port         | Forrás                           | Cél                                         | Szerep                                                                                                                                          |
+| Port         | Forrás                           | Cél                                         | Cél                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | 53 (UDP)      | Privát Felhőbeli DNS-kiszolgálók        | Helyszíni DNS-kiszolgálók                             | A DNS továbbításához a helyszíni Active Directory-tartománynevek a saját Felhőbeli vCenter a helyszíni DNS-kiszolgálókra való megkeresése szükséges.          |
 | 389 (TCP/UDP) | Saját felhőalapú felügyeleti hálózat | Helyszíni Active Directory-tartományvezérlők     | A Private Cloud vCenter-kiszolgálóról az Active Directory-tartományvezérlők felhasználói hitelesítéshez való LDAP-kommunikációhoz szükséges.                |
@@ -48,7 +49,7 @@ Ha a helyszíni Active Directoryt identitás forrásaként szeretné konfigurál
 
 A privát felhőben futó számítási feladatok virtuális gépei számára szükséges, hogy a helyszíni tűzfalon a portok meg legyenek nyitva.  Az alábbi táblázat a szükséges általános portok némelyikét és azok célját mutatja be.  Az alkalmazás-specifikus portokra vonatkozó követelményekért tekintse meg az alkalmazás dokumentációját.
 
-| Port         | Forrás                         | Cél                          | Szerep                                                                              |
+| Port         | Forrás                         | Cél                          | Cél                                                                              |
 |--------------|--------------------------------|--------------------------------------|--------------------------------------------------------------------------------------|
 | 22 (TCP)      | Helyszíni hálózat            | Saját Felhőbeli számítási feladatok hálózata       | Biztonságos rendszerhéj-hozzáférés a privát felhőben futó linuxos virtuális gépekhez.              |
 | 3389 (TCP)    | Helyszíni hálózat            | Saját Felhőbeli számítási feladatok hálózata       | Távoli asztalról a privát felhőben futó Windows rendszerű virtuális gépekre.                 |
@@ -59,6 +60,6 @@ A privát felhőben futó számítási feladatok virtuális gépei számára sz�
 
 ## <a name="next-steps"></a>További lépések
 
-* [VLAN-ok és alhálózatok létrehozása és kezelése](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)
-* [Kapcsolódás helyszíni hálózathoz az Azure ExpressRoute](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-connection/)
-* [Helyek közötti VPN beállítása a helyszíni környezetből](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway/)
+* [VLAN-ok és alhálózatok létrehozása és kezelése](./create-vlan-subnet.md)
+* [Kapcsolódás helyszíni hálózathoz az Azure ExpressRoute](./on-premises-connection.md)
+* [Helyek közötti VPN beállítása a helyszíni környezetből](./vpn-gateway.md)

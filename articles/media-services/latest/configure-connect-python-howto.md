@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: tracking-python
-ms.openlocfilehash: 3e6e421d346925f751595ce2fb2d0891e31dc108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b283d04c7d9ddf7639c198625ea69ca958170210
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559620"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001179"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Kapcsolódás Media Services V3 API-hoz – Python
 
@@ -28,8 +29,8 @@ Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 Python SDK-ho
 
 - A Python letöltése a [Python.org](https://www.python.org/downloads/) -ből
 - Ügyeljen arra, hogy a `PATH` környezeti változót állítsa be
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
-- Kövesse az API-k [elérését](access-api-cli-how-to.md) ismertető témakör lépéseit. Jegyezze fel az előfizetés-azonosítót, az alkalmazás AZONOSÍTÓját (ügyfél-AZONOSÍTÓját), a hitelesítő kulcsot (Secret) és a bérlő AZONOSÍTÓját, amelyet a későbbi lépésben kell megadnia.
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
+- Kövesse az API-k [elérését](./access-api-howto.md) ismertető témakör lépéseit. Jegyezze fel az előfizetés-azonosítót, az alkalmazás AZONOSÍTÓját (ügyfél-AZONOSÍTÓját), a hitelesítő kulcsot (Secret) és a bérlő AZONOSÍTÓját, amelyet a későbbi lépésben kell megadnia.
 
 > [!IMPORTANT]
 > Tekintse át az [elnevezési konvenciókat](media-services-apis-overview.md#naming-conventions).
@@ -54,7 +55,7 @@ pip3 install azure-mgmt-media==1.1.1
 1. Nyissa meg a fájlt a kedvenc szerkesztőjében
 1. Adja hozzá a következő kódot a fájlhoz. A kód importálja a szükséges modulokat, és létrehozza a Media Serviceshoz való kapcsolódáshoz szükséges Active Directory hitelesítő adatokat tartalmazó objektumot.
 
-      A változók értékeinek beállítása a [hozzáférési API](access-api-cli-how-to.md) -kkal kapott értékekre
+      A változók értékeinek beállítása a [hozzáférési API](./access-api-howto.md) -kkal kapott értékekre
 
       ```
       import adal

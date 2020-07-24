@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 4693ad8b168ce1ddd7c07afe650a89fc1888ccd7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 74827e78017ad3540709fa0e671762a985976cda
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183324"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999003"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Az AMD GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken
 
@@ -23,7 +23,7 @@ Ha manuálisan telepíti az AMD GPU-illesztőprogramokat, ez a cikk a támogatot
 
 A NVv4 virtuális gépeken csak a Microsoft által közzétett GPU-illesztőprogramok támogatottak. Ne telepítse a GPU-illesztőprogramokat bármilyen más forrásból.
 
-Az alapszintű specifikációk, a tárolási kapacitások és a lemezek részleteiért lásd: [GPU Windowsos virtuális gépek méretei](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Az alapszintű specifikációk, a tárolási kapacitások és a lemezek részleteiért lásd: [GPU Windowsos virtuális gépek méretei](../sizes-gpu.md?toc=/azure/virtual-machines/windows/toc.json).
 
 
 
@@ -57,5 +57,3 @@ A Dxdiag használatával ellenőrizheti a GPU megjelenítési tulajdonságait, b
 Ha a Windows 10 Build 1903-es vagy újabb verzióját futtatja, akkor a Dxdiag nem jelenít meg információt a "Display" (megjelenítés) lapon. Használja az összes információ mentése lehetőséget az alján, és a kimeneti fájl megjeleníti az AMD MI25 GPU-val kapcsolatos információkat.
 
 ![GPU-illesztőprogram tulajdonságai](./media/n-series-amd-driver-setup/dxdiag-details.png)
-
-

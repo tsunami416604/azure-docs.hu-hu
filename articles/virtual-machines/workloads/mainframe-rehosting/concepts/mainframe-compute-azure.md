@@ -6,11 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 97f354d0a313d58c671366dd0e5f485504823e13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c5941ec88cd793961ad66245d0dc0b5e0d7772f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76288931"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998935"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>Nagyszámítógépek számítási teljesítményének áthelyezése az Azure-ba
 
@@ -93,13 +94,13 @@ A módszer a LPARs áttelepítése az egyes virtuális gépekre. Ezt követően 
 
 Az Azure-alapú megoldás egyik előnye, hogy kibővíthető. A skálázás szinte korlátlan számítási kapacitást tesz elérhetővé egy alkalmazás számára. Az Azure több módszert is támogat a számítási teljesítmény kiskálázásához:
 
-- **Terheléselosztás fürtön keresztül.** Ebben az esetben az alkalmazás egy [terheléselosztó](/azure/load-balancer/load-balancer-overview) vagy egy erőforrás-kezelő használatával terjeszti ki a munkaterhelést a fürtben lévő több virtuális gép között. Ha további számítási kapacitásra van szükség, további virtuális gépek lesznek hozzáadva a fürthöz.
+- **Terheléselosztás fürtön keresztül.** Ebben az esetben az alkalmazás egy [terheléselosztó](../../../../load-balancer/load-balancer-overview.md) vagy egy erőforrás-kezelő használatával terjeszti ki a munkaterhelést a fürtben lévő több virtuális gép között. Ha további számítási kapacitásra van szükség, további virtuális gépek lesznek hozzáadva a fürthöz.
 
-- **Virtuális gépek méretezési csoportjai.** Ebben a burst forgatókönyvben az alkalmazás a virtuális gépek használata alapján további [számítási erőforrásokra](/azure/virtual-machine-scale-sets/overview) is méretezhető. Ha az igény csökken, a méretezési csoportba tartozó virtuális gépek száma is lemehet, így biztosítva a számítási teljesítmény hatékony kihasználását.
+- **Virtuális gépek méretezési csoportjai.** Ebben a burst forgatókönyvben az alkalmazás a virtuális gépek használata alapján további [számítási erőforrásokra](../../../../virtual-machine-scale-sets/overview.md) is méretezhető. Ha az igény csökken, a méretezési csoportba tartozó virtuális gépek száma is lemehet, így biztosítva a számítási teljesítmény hatékony kihasználását.
 
-- **Pásti skálázás.** Az Azure-beli Pásti-ajánlatok méretezése számítási erőforrások. Az [Azure Service Fabric](/azure/service-fabric/service-fabric-overview) például a kérelmek mennyiségének növeléséhez a számítási erőforrásokat foglalja le.
+- **Pásti skálázás.** Az Azure-beli Pásti-ajánlatok méretezése számítási erőforrások. Az [Azure Service Fabric](../../../../service-fabric/service-fabric-overview.md) például a kérelmek mennyiségének növeléséhez a számítási erőforrásokat foglalja le.
 
-- **Kubernetes-fürtök.** Az Azure-beli alkalmazások [Kubernetes-fürtöket](/azure/aks/concepts-clusters-workloads) használhatnak a számítási szolgáltatások számára a megadott erőforrásokhoz. Az Azure Kubernetes Service (ak) egy felügyelt szolgáltatás, amely Kubernetes-csomópontokat,-készleteket és-fürtöket szervez az Azure-ban.
+- **Kubernetes-fürtök.** Az Azure-beli alkalmazások [Kubernetes-fürtöket](../../../../aks/concepts-clusters-workloads.md) használhatnak a számítási szolgáltatások számára a megadott erőforrásokhoz. Az Azure Kubernetes Service (ak) egy felügyelt szolgáltatás, amely Kubernetes-csomópontokat,-készleteket és-fürtöket szervez az Azure-ban.
 
 A számítási erőforrások méretezésének megfelelő módszer kiválasztásához fontos megérteni, hogy az Azure és a nagyszámítógépek hogyan térnek el egymástól. A legfontosabb az, hogy hogyan történik az adatok megosztása a számítási erőforrások között. Az Azure-ban általában nem több virtuális gép osztja meg az adattípusokat (alapértelmezés szerint). Ha több virtuális gép igényel adatmegosztást egy kibővíthető számítási fürtben, a megosztott adatoknak olyan erőforráson kell lenniük, amely támogatja ezt a funkciót. Az Azure-ban az adatmegosztás magában foglalja a tárolást a következő szakasz ismerteti.
 
@@ -114,7 +115,7 @@ Minden egyes szinten a megfelelő vész-helyreállítási szolgáltatások is me
 ## <a name="next-steps"></a>További lépések
 
 - [Nagyszámítógép migrálása](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Az Azure Virtual Machines-t futtató nagyszámítógépek](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Az Azure Virtual Machines-t futtató nagyszámítógépek](../overview.md)
 - [Nagyszámítógépes tároló áthelyezése az Azure-ba](mainframe-storage-Azure.md)
 
 ### <a name="ibm-resources"></a>IBM-erőforrások

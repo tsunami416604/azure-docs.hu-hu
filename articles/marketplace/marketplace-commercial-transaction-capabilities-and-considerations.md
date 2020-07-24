@@ -4,13 +4,13 @@ description: Ez a cikk a kereskedelmi Piactéri Transact lehetőség díjszabás
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 653c55fa7476fa5fed077002db226297a33dfef6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 29fa4126d8d0b4f3419c729ee3a73ae315b13122
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119429"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001366"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
@@ -134,7 +134,7 @@ Ebben az esetben a Microsoft $100,00-es számlákat küld a szoftverlicenc szám
 |A Microsoft a licencelési díj 80%-ában fizet <br> \*A Microsoft a licencelési díj 90%-át fizet minden minősített SaaS-alkalmazáshoz   |   $80,00/hó <br> \*$90,00/hó    |
 |A Microsoft a licencelési díj 20%-át megtartja <br> \*A Microsoft minden minősített SaaS-alkalmazás esetében megőrzi a licencek költségeit.  |  $20,00/hó <br> \*$10,00     |
 
-A kereskedelmi piactéren közzétett egyes SaaS-termékek esetében a Microsoft a **piactér szolgáltatási díját** 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Ahhoz, hogy ajánlata bejusson, legalább az egyik ajánlatát a Microsoft számára kell kijelölni, vagy az IP-címek közös értékesítésének feltételeit, vagy az IP-címek közös értékesítését. A csökkentett Piactéri szolgáltatási díj a hónapra való fogadásához a jogosultságnak legalább öt munkanapon belül meg kell felelnie az előző naptári hónap vége előtt. A Marketplace szolgáltatási díja nem vonatkozik a kereskedelmi Piactéren keresztül elérhető virtuális gépekre, felügyelt alkalmazásokra vagy más termékekre. Ez a kedvezményes díj a minősített ajánlatok számára érhető el, a Microsoft által a 2019-es és a 2020-es június 30. között gyűjtött licencek díjaival. Ezt követően a díj vissza fog térni a normál mennyiségre.
+A kereskedelmi piactéren közzétett egyes ajánlatok esetében a Microsoft a piactér szolgáltatási díját 20%-kal csökkenti (a Microsoft kiadói szerződésben leírtak szerint) 10%-ra. Az ajánlat (ok) minősítéséhez az ajánlat (oka) t a Microsoft Azure IP közös értékesítésű incetivized kell megjelölni. A jogosultságot minden naptári hónap végét megelőzően legalább öt (5) munkanapon belül teljesíteni kell, hogy megkapják a Marketplace szolgáltatási díját a hónapban. A Piactéri szolgáltatási díj a kereskedelmi Piactéren keresztül elérhető Azure IP-incentivized SaaS-, virtuális gépek, felügyelt alkalmazások és minden más, szakképzett IaaS-ajánlat esetében érvényes.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Ügyfél-számlázás, fizetés, Számlázás és gyűjtemények
 
@@ -180,13 +180,13 @@ A fiókok beállításával kapcsolatos további információkért lásd: [a ker
 
 A Transact Publishing beállítás csak a következő Piactéri ajánlatok esetében használható:
 
-- **Virtuális gép** – válassza az ingyenes, a saját licenc vagy az utólagos elszámolású modelleket, valamint az ajánlat szintjén meghatározott SKU-t. Az ügyfél Azure-számláján a Microsoft a mögöttes Azure-infrastruktúra díjaitól függetlenül bemutatja a kiadói szoftverlicenc-díjat. Az Azure-infrastruktúra díjait a közzétevő szoftver használja.
+- **Virtuális gép** – válassza az ingyenes, a saját licenc vagy az utólagos elszámolású modelleket, és az ajánlati szinten meghatározott csomagokként jelennek meg. Az ügyfél Azure-számláján a Microsoft a mögöttes Azure-infrastruktúra díjaitól függetlenül bemutatja a kiadói szoftverlicenc-díjat. Az Azure-infrastruktúra díjait a közzétevő szoftver használja.
 
 - **Azure-alkalmazás: megoldás-sablon vagy felügyelt** alkalmazás – egy vagy több virtuális gépet kell kiépítenie, és a virtuális gép díjszabásának összegével kell lekérnie. Egyetlen csomagban felügyelt alkalmazások esetén a virtuális gépek díjszabása helyett egy átalánydíjas havi előfizetés is kiválasztható a díjszabási modellként. Bizonyos esetekben az Azure-infrastruktúra használati díjait a rendszer külön adja át az ügyfélnek a szoftverlicenc-díjaktól, de ugyanarra a számlázási utasításra. Ha azonban a felügyelt alkalmazáshoz az ISV-infrastruktúra díjait konfigurálja, az Azure-erőforrások számlázása a kiadóra történik, és az ügyfél egy átalánydíjas díjat kap, amely magában foglalja az infrastruktúra, a szoftverlicenc és a felügyeleti szolgáltatások költségeit.
 
 - **SaaS-alkalmazás** – több-bérlős megoldásnak kell lennie, a hitelesítéshez [Azure Active Directoryt](https://azure.microsoft.com/services/active-directory/) kell használnia, és integrálni kell a [SaaS-megvalósítási API](partner-center-portal/pc-saas-fulfillment-api-v2.md)-kkal. Az Azure-infrastruktúra használatának felügyelete és számlázása közvetlenül Önnek (a partnernek) történik, ezért az Azure-infrastruktúra használati díjait és a szoftveres licencelési díjakat egyetlen költségként kell elszámolni. Részletes útmutatásért lásd: [új SaaS-ajánlat létrehozása a kereskedelmi piactéren](partner-center-portal/create-new-saas-offer.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az ajánlat kiválasztásának és konfigurálásának véglegesítéséhez tekintse át a támogathatósági követelményeket a közzétételi beállítások az ajánlat típusa szerint szakaszban.
 - Tekintse át a közzétételi mintákat a kirakati példákkal, hogy a megoldás hogyan térképezi fel az ajánlat típusát és konfigurációját.

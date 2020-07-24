@@ -8,16 +8,17 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 314d7a4725709f00ba5cdbf54595857502bc5805
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 026b869556e1bd49018b2afce27e732a3109b9fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81865947"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999123"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>IaaS-erőforrások migrálása a Klasszikusból a Azure Resource Managerba a PowerShell használatával
 
 > [!IMPORTANT]
-> Napjainkban a IaaS virtuális gépek 90%-a [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)használ. 2020. február 28-án a klasszikus virtuális gépek elavultak, és 2023. március 1-jén teljesen megszűnnek. [További]( https://aka.ms/classicvmretirement) információ erről az elavult szolgáltatásról, valamint arról, [hogy Ön hogyan befolyásolja Önt](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
+> Napjainkban a IaaS virtuális gépek 90%-a [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)használ. 2020. február 28-án a klasszikus virtuális gépek elavultak, és 2023. március 1-jén teljesen megszűnnek. [További]( https://aka.ms/classicvmretirement) információ erről az elavult szolgáltatásról, valamint arról, [hogy Ön hogyan befolyásolja Önt](../classic-vm-deprecation.md#how-does-this-affect-me).
 
 Ezek a lépések bemutatják, hogyan használhatók Azure PowerShell parancsok a klasszikus üzemi modellből származó infrastruktúra szolgáltatásként (IaaS) a Azure Resource Manager üzembe helyezési modellbe való áttelepítéséhez.
 
@@ -48,7 +49,7 @@ Az alábbi folyamatábra azt határozza meg, hogy milyen sorrendben kell végreh
 ## <a name="step-2-install-the-latest-version-of-powershell"></a>2. lépés: a PowerShell legújabb verziójának telepítése
 Két fő lehetőség van a Azure PowerShell telepítésére: [PowerShell-Galéria](https://www.powershellgallery.com/profiles/azure-sdk/) vagy [webplatform-telepítő (WebPI)](https://aka.ms/webpi-azps). A WebPI havi frissítéseket fogad. A PowerShell-galéria folyamatosan fogadja a frissítéseket. Ez a cikk a Azure PowerShell 2.1.0 verzióján alapul.
 
-A telepítési utasításokért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
+A telepítési utasításokért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
 
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>3. lépés: Győződjön meg arról, hogy Ön az előfizetés rendszergazdája
 Az áttelepítés elvégzéséhez hozzá kell adnia az előfizetéshez tartozó [Azure Portal](https://portal.azure.com).
@@ -220,7 +221,7 @@ Ha az előkészített konfiguráció jól néz ki, a következő parancs haszná
 
 A virtuális gépek virtuális hálózatban való áttelepíthetők a virtuális hálózat áttelepíthetők. A virtuális gépeket a rendszer automatikusan áttelepíti a virtuális hálózattal. Válassza ki az áttelepíteni kívánt virtuális hálózatot.
 > [!NOTE]
-> [Telepítsen egy](migrate-single-classic-to-resource-manager.md) , a klasszikus üzemi modellel létrehozott virtuális gépet úgy, hogy új Resource Manager-alapú virtuális gépet hoz létre Managed Disks a virtuális gép VHD-fájljának (os-és adatfájljainak) használatával.
+> [Telepítsen egy](./create-vm-specialized-portal.md) , a klasszikus üzemi modellel létrehozott virtuális gépet úgy, hogy új Resource Manager-alapú virtuális gépet hoz létre Managed Disks a virtuális gép VHD-fájljának (os-és adatfájljainak) használatával.
 <br>
 
 > [!NOTE]

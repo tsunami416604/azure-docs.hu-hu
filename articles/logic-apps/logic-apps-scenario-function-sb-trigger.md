@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
-ms.openlocfilehash: afd2735bae2a79ad942c347219019ef200b61070
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec2225633e5621c51067b64af2968a0dc0f5da87
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75428711"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001417"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Logikai alkalmazások meghívása vagy elindítása Azure Functions és Azure Service Bus használatával
 
@@ -118,11 +119,11 @@ Ezután hozza létre az triggerként viselkedő függvényt, és figyelje a vár
 
    * Ez a példa az `application/json` üzenet tartalmának típusát használja, de szükség szerint módosíthatja ezt a típust.
    
-   * A lehetséges párhuzamosan futó függvények, nagy kötetek vagy nagy terhelések miatt ne hozza létre a [HTTPClient osztályt](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) az `using` utasítással, és hozzon létre egy kérést közvetlenül a HTTPClient-példányok létrehozásával. További információ: [rugalmas HTTP-kérések implementálása a HttpClientFactory használatával](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
+   * A lehetséges párhuzamosan futó függvények, nagy kötetek vagy nagy terhelések miatt ne hozza létre a [HTTPClient osztályt](/dotnet/api/system.net.http.httpclient) az `using` utasítással, és hozzon létre egy kérést közvetlenül a HTTPClient-példányok létrehozásával. További információ: [rugalmas HTTP-kérések implementálása a HttpClientFactory használatával](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
    
    * Ha lehetséges, használja újra a HTTP-ügyfelek példányát. További információ: [kapcsolatok kezelése Azure Functionsban](../azure-functions/manage-connections.md).
 
-   Ez a példa [aszinkron](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) módban használja a [ `Task.Run` metódust](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) . További információ: [aszinkron programozás aszinkron módon és várakozás](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
+   Ez a példa [aszinkron](/dotnet/csharp/language-reference/keywords/async) módban használja a [ `Task.Run` metódust](/dotnet/api/system.threading.tasks.task.run) . További információ: [aszinkron programozás aszinkron módon és várakozás](/dotnet/csharp/programming-guide/concepts/async/).
 
    ```csharp
    using System;

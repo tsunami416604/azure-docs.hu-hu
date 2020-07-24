@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: aba987ba232a29ffc240f72039b1e24bb87a2ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a635a75a64db59fc56c6890f79af967a58735853
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80345908"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001128"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Feladathoz tartozó bevitel létrehozása helyi fájlból
 
@@ -24,7 +24,7 @@ A Media Services v3-ban a videófeldolgozási feladatok indításakor meg kell a
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-* [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md).
+* [Hozzon létre egy Media Services fiókot](./create-account-howto.md).
 * Tekintse át az [adatkezelési eszközöket](manage-asset-concept.md).
 
 ## <a name="net-sample"></a>.NET-minta
@@ -32,7 +32,7 @@ A Media Services v3-ban a videófeldolgozási feladatok indításakor meg kell a
 A következő kód bemutatja, hogyan hozhat létre bemeneti adategységet, és hogyan használhatja azt bemenetként a feladathoz. A CreateInputAsset függvény a következő műveleteket hajtja végre:
 
 * Az eszköz létrehozása
-* Lekér egy írható [SAS URL-címet](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) az objektum [tárolójába](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container).
+* Lekér egy írható [SAS URL-címet](../../storage/common/storage-sas-overview.md) az objektum [tárolójába](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container).
 * Feltölti a fájlt a tárolóba a SAS URL-cím használatával.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
@@ -47,7 +47,7 @@ A következő kódrészlet elküld egy kódolási feladatot:
 
 ## <a name="job-error-codes"></a>Feladathibakódok
 
-Lásd: [hibakódok](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+Lásd: [hibakódok](/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="next-steps"></a>További lépések
 

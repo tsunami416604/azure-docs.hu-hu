@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: e787617ab6e04a5ff2e7f5d4921a5bf7a4a1eb5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d00dd096bcfba32912337b122aefd0c00195ee8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "64867102"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000856"
 ---
 # <a name="monitor-job-progress-using-net"></a>A feladatok előrehaladásának figyelése a .NET használatával 
 
 > [!NOTE]
-> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> A Media Services v2 nem fog bővülni újabb funkciókkal és szolgáltatásokkal. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 
 A feladatok futtatásakor gyakran szükség van a feladat előrehaladásának nyomon követésére. Az előrehaladás ellenőrzéséhez Definiáljon egy StateChanged eseménykezelőt (a jelen témakörben leírtak szerint), vagy az Azure üzenetsor-tároló használatával figyelje Media Services feladatok értesítéseit (a [jelen](media-services-dotnet-check-job-progress-with-queues.md) témakörben leírtak szerint).
 
@@ -117,4 +117,3 @@ Tekintse át a Media Services képzési terveket.
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
-

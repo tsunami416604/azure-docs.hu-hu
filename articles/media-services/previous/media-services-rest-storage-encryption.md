@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: abf9610dd67c82af0da9a629245ea792bd5a3402
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0e477b95f43c091bf17ec54d2fef9f971d5f6986
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170751"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000160"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>A tartalom titkosítása a Storage encryption szolgáltatással 
 
 > [!NOTE]
-> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > nem kerül be új funkciók vagy funkciók a Media Services v2-be. <br/>Tekintse meg a legújabb, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
+> Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. További információkért lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).   > nem kerül be új funkciók vagy funkciók a Media Services v2-be. <br/>Tekintse meg a legújabb, [Media Services v3](../latest/index.yml)verziót. Lásd még: [az áttelepítési útmutató v2-től v3-ig](../latest/migrate-from-v2-to-v3.md)
 >   
 
 Javasoljuk, hogy helyileg Titkosítsa a tartalmakat AES-256 bites titkosítással, majd töltse fel azt az Azure Storage-ba, ahol a tárolása titkosított állapotban van.
@@ -46,11 +46,11 @@ A Media Servicesban lévő entitásokhoz való hozzáféréskor meg kell adnia a
 
 ### <a name="storage-side-encryption"></a>Tárolási oldal titkosítása
 
-|Titkosítási beállítás|Leírás|Media Services v2|Media Services v3|
+|Titkosítási beállítás|Description|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services Storage-titkosítás|AES-256 titkosítás, Media Services által felügyelt kulcs|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
-|[Inaktív adatok Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél felügyel|Támogatott|Támogatott|
-|[Storage ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Az Azure Storage által kínált ügyféloldali titkosítás, amelyet az ügyfél felügyel Key Vault|Nem támogatott|Nem támogatott|
+|[Inaktív adatok Storage Service Encryption](../../storage/common/storage-service-encryption.md)|Az Azure Storage által kínált kiszolgálóoldali titkosítás, amelyet az Azure vagy az ügyfél felügyel|Támogatott|Támogatott|
+|[Storage ügyféloldali titkosítás](../../storage/common/storage-client-side-encryption.md)|Az Azure Storage által kínált ügyféloldali titkosítás, amelyet az ügyfél felügyel Key Vault|Nem támogatott|Nem támogatott|
 
 <sup>1</sup> míg Media Services támogatja a tartalom törlését, illetve titkosítás nélkül, nem ajánlott.
 
@@ -75,7 +75,7 @@ A következő általános lépésekkel hozhat létre olyan tartalmi kulcsokat, a
 1. A tárolási titkosításhoz véletlenszerűen állítson elő egy 32 bájtos AES-kulcsot. 
    
     Az 32 bájtos AES-kulcs az eszközhöz tartozó tartalmi kulcs, ami azt jelenti, hogy az adott eszközhöz társított összes fájlnak ugyanazt a tartalmi kulcsot kell használnia a visszafejtés során. 
-2. Hívja meg a [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) és a [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metódust a megfelelő X. 509 tanúsítvány lekéréséhez, amelyet a tartalmi kulcs titkosításához kell használnia.
+2. Hívja meg a [GetProtectionKeyId](/rest/api/media/operations/rest-api-functions#getprotectionkeyid) és a [GetProtectionKey](/rest/api/media/operations/rest-api-functions#getprotectionkey) metódust a megfelelő X. 509 tanúsítvány lekéréséhez, amelyet a tartalmi kulcs titkosításához kell használnia.
 3. Titkosítsa a tartalmi kulcsot az X. 509 tanúsítvány nyilvános kulcsával. 
    
    Media Services .NET SDK az RSA-t használja a OAEP a titkosítás végrehajtásakor.  A .NET-példákat a [EncryptSymmetricKeyData függvényben](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)tekintheti meg.
@@ -113,7 +113,7 @@ A következő általános lépésekkel hozhat létre olyan tartalmi kulcsokat, a
 
     A tárolási titkosításhoz a következő tulajdonságokat kell tartalmaznia a kérés törzsében.
 
-    Kérelem törzsének tulajdonsága    | Leírás
+    Kérelem törzsének tulajdonsága    | Description
     ---|---
     Id | A ContentKey azonosítója a következő formátumban jön létre: "NB: Kid: UUID: \<NEW GUID> ".
     ContentKeyType | A tartalmi kulcs típusa egy egész szám, amely meghatározza a kulcsot. A tárolási titkosítási formátum értéke 1.
@@ -203,7 +203,7 @@ A tartalmi kulcs létrehozásakor beállított értékek egyike a típus. A tár
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy **ContentKey** egy **ContentKeyType** készlettel ("1") és a **ProtectionKeyType** "0" értékre állítva, hogy JELEZZE, hogy a védelmi kulcs azonosítója az X. 509 tanúsítvány ujjlenyomata.  
 
-Kérés
+Kérelem
 
 ```console
 POST https://media.windows.net/api/ContentKeys HTTP/1.1
@@ -331,7 +331,7 @@ HTTP/1.1 204 No Content
 ```
 
 ## <a name="create-an-assetfile"></a>AssetFile létrehozása
-A [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) entitás egy blob-tárolóban tárolt videót vagy hangfájlt jelöl. Az adategységek mindig egy adott objektumhoz vannak társítva, és egy adott eszköz egy vagy több adatfájlt is tartalmazhat. A Media Services Encoder feladat meghiúsul, ha egy objektum nem egy blob-tárolóban lévő digitális fájllal van társítva.
+A [AssetFile](/rest/api/media/operations/assetfile) entitás egy blob-tárolóban tárolt videót vagy hangfájlt jelöl. Az adategységek mindig egy adott objektumhoz vannak társítva, és egy adott eszköz egy vagy több adatfájlt is tartalmazhat. A Media Services Encoder feladat meghiúsul, ha egy objektum nem egy blob-tárolóban lévő digitális fájllal van társítva.
 
 A **AssetFile** példány és a tényleges médiafájl két különálló objektum. A AssetFile-példány metaadatokat tartalmaz a médiafájlról, míg a médiafájl tartalmazza a tényleges médiatartalom tartalmát.
 

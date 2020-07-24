@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 38168db9706bd168b3edc2e740eaea40b23d4b0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e293bb98405affd824d4bbc50b6f24c5a0e3c11
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510583"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999615"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Harmadik rész: a könyvtár-és a fájl szintű engedélyek konfigurálása SMB protokollon keresztül 
 
@@ -51,7 +51,16 @@ A fájlmegosztás gyökérkönyvtárában a következő engedélyek szerepelnek:
 `net use`Csatlakoztassa az Azure-fájlmegosztást a Windows parancs használatával. Ne felejtse el lecserélni az alábbi példában szereplő helyőrző értékeket a saját értékeire. A fájlmegosztás csatlakoztatásával kapcsolatos további információkért lásd: [Azure-fájlmegosztás használata a Windowsban](storage-how-to-use-files-windows.md). 
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
+$connectTestResult = Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 445
+if ($connectTestResult.TcpTestSucceeded)
+{
+  net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
+} 
+else 
+{
+  Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN,   Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
+}
+
 ```
 
 Ha a Azure Fileshoz való csatlakozással kapcsolatos problémákat tapasztal, tekintse meg [a hibaelhárítási eszközt, amelyet Azure Files csatlakoztatási hibákhoz tettünk közzé a Windows](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5)rendszeren. Az 445-as port blokkolása esetén [útmutatást](https://docs.microsoft.com/azure/storage/files/storage-files-faq#on-premises-access) is biztosítunk a forgatókönyvek megoldásához. 
@@ -71,7 +80,7 @@ A Windows fájlkezelővel teljes hozzáférést biztosíthat a fájlmegosztás a
 1. Válassza a **Szerkesztés lehetőséget.** az engedélyek módosításához.
 1. Módosíthatja a meglévő felhasználók engedélyeit, vagy kiválaszthatja a **Hozzáadás...** lehetőséget az új felhasználók engedélyeinek megadásához.
 1. Az új felhasználók hozzáadására szolgáló kérdés ablakban adja meg azt a cél felhasználónevet, amely számára engedélyezni kívánja az engedélyek megadását az **adja meg a kijelölendő objektumok nevét** mezőbe, **majd válassza a Névellenőrzés lehetőséget** a MEGcélzott felhasználó teljes UPN-nevének megkereséséhez.
-1.    Válassza az **OK** lehetőséget.
+1.    Kattintson az **OK** gombra.
 1.    A **Biztonság** lapon válassza ki az összes olyan engedélyt, amely számára engedélyezni szeretné az új felhasználót.
 1.    Kattintson az **Alkalmaz** gombra.
 

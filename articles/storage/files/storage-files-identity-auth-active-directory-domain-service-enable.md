@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2d9f7eccae6b87923b52119ded90ced5e4206d7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe2bbc1d6f42819354f48812a34371a49e5acbac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510388"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999632"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Active Directory Domain Services hitelesítés engedélyezése Azure Files
 
-[!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
+[Azure Files](storage-files-introduction.md)   támogatja a kiszolgálói üzenetblokk (SMB) szolgáltatáson keresztüli identitás-alapú hitelesítést a következő két típusú tartományi szolgáltatáson keresztül: helyszíni Active Directory tartományi szolgáltatások (AD DS) és Azure Active Directory Domain Services (Azure AD DS). Javasoljuk, hogy tekintse át a [Hogyan működik című szakaszt](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) a authentcation megfelelő tartományi szolgáltatás kiválasztásához. A beállítás eltérő a választott tartományi szolgáltatástól függ. Ez a cikk az Azure-AD DS Azure-fájlmegosztás segítségével történő hitelesítésének engedélyezésére és konfigurálására koncentrál.
 
-Az Azure-fájlmegosztás SMB protokollon keresztüli Azure AD-hitelesítésének áttekintését lásd: [az SMB protokollon keresztüli Azure Active Directory hitelesítés áttekintése Azure Fileshoz](storage-files-active-directory-overview.md). Ebből a cikkből megtudhatja, hogyan engedélyezheti a (z) Azure Active Directory Domain Services (Azure AD DS) hitelesítését Azure Fileson.
+Ha még nem ismeri az Azure-fájlmegosztás újdonságait, javasoljuk, hogy olvassa el a [tervezési útmutatót](storage-files-planning.md) , mielőtt elolvassa a következő cikksorozatot.
 
 > [!NOTE]
 > Azure Files támogatja a Kerberos-hitelesítést az Azure AD DS és az RC4-HMAC titkosítás révén. Az AES Kerberos-titkosítás még nem támogatott.
@@ -88,7 +88,7 @@ Ha engedélyezni szeretné az Azure AD DS hitelesítést az SMB protokollon kere
 1. A Azure Portal nyissa meg a meglévő Storage-fiókot, vagy [hozzon létre egy Storage-fiókot](../common/storage-account-create.md).
 1. A **Beállítások** szakaszban válassza a **Konfigurálás**lehetőséget.
 1. A **fájlmegosztás identitás-alapú hozzáférése** területen kapcsolja be a **Azure Active Directory tartományi szolgáltatás (HRE DS)** kapcsolóját, hogy **engedélyezve**legyen.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 Az alábbi képen bemutatjuk, hogyan engedélyezhető az Azure AD DS hitelesítés az SMB protokollon keresztül a Storage-fiókhoz.
 

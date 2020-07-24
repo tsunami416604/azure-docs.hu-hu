@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1ac82687cb28344f682c58a132f04d71184d5d74
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74896104"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001196"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Kapcsolódás Media Services V3 API-hoz – Node.js
 
@@ -26,7 +27,7 @@ Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 node.js SDK-h
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Telepítse a [Node.js](https://nodejs.org/en/download/).
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
 
 > [!IMPORTANT]
 > Tekintse át az [elnevezési konvenciókat](media-services-apis-overview.md#naming-conventions).
@@ -69,7 +70,7 @@ npm install azure-arm-mediaservices
 
 1. Hozzon létre egy. js-fájlt a kedvenc szerkesztője segítségével.
 1. Nyissa meg a fájlt, és illessze be a következő kódot.
-1. Állítsa be az "Endpoint config" (végpont konfigurációja) szakaszban található értékeket az [Access API](access-api-cli-how-to.md)-k által kapott értékekre.
+1. Állítsa be az "Endpoint config" (végpont konfigurációja) szakaszban található értékeket az [Access API](./access-api-howto.md)-k által kapott értékekre.
 
 ```js
 'use strict';
@@ -113,7 +114,7 @@ msRestAzure.loginWithServicePrincipalSecret(aadClientId, aadSecret, aadTenantId,
 });
 ```
 
-## <a name="run-your-app"></a>Az alkalmazás futtatása
+## <a name="run-your-app"></a>Futtassa az alkalmazást
 
 Nyisson meg egy parancssort. Keresse meg a minta címtárát, és hajtsa végre a következő parancsokat:
 
@@ -130,4 +131,3 @@ node index.js
 ## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg a Media Services [Node.js ref](/javascript/api/overview/azure/mediaservices/management) dokumentációval, és tekintse meg a Media Services API node.js használatával történő használatát bemutató [mintákat](https://github.com/Azure-Samples/media-services-v3-node-tutorials) .
-

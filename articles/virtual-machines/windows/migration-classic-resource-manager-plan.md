@@ -8,16 +8,17 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 10ae2e1a85d5250e4da836c6f57e3619befd9330
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1e550fde0d43b4d2c7bd1a64856edeac607cab3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81865930"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999088"
 ---
-# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Az IaaS-erőforrások klasszikusból Azure Resource Manager-alapú környezetbe való áttelepítésének megtervezése
+# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-windows"></a>IaaS-erőforrások klasszikusról Azure Resource Managerra való áttelepítésének megtervezése Windows rendszeren
 
 > [!IMPORTANT]
-> Napjainkban a IaaS virtuális gépek 90%-a [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)használ. 2020. február 28-án a klasszikus virtuális gépek elavultak, és 2023. március 1-jén teljesen megszűnnek. [További]( https://aka.ms/classicvmretirement) információ erről az elavult szolgáltatásról, valamint arról, [hogy Ön hogyan befolyásolja Önt](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
+> Napjainkban a IaaS virtuális gépek 90%-a [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)használ. 2020. február 28-án a klasszikus virtuális gépek elavultak, és 2023. március 1-jén teljesen megszűnnek. [További]( https://aka.ms/classicvmretirement) információ erről az elavult szolgáltatásról, valamint arról, [hogy Ön hogyan befolyásolja Önt](../classic-vm-deprecation.md#how-does-this-affect-me).
 
 Míg Azure Resource Manager számos csodálatos funkciót kínál, fontos, hogy megtervezze a migrációs utat, hogy a dolgok zökkenőmentesek legyenek. A tervezés során eltöltött idő biztosítja, hogy az áttelepítési tevékenységek végrehajtása során ne tapasztaljon problémát.
 
@@ -159,7 +160,7 @@ A következő problémák léptek fel a nagyobb áttelepítések során. Ez nem 
 - Ne használja a parancsikonokat, és hagyja ki a száraz futtatások ellenőrzése/előkészítése/megszakítása műveleteit.
 - A lehetséges problémák többsége az érvényesítési/előkészítési/megszakítási lépések során felszínre kerül.
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technikai megfontolások és kompromisszumok
 
@@ -213,8 +214,8 @@ Ne feledje, miért kezdte meg ezt a klasszikus Azure Resource Manager áttelepí
 * [Részletes műszaki útmutató a klasszikusból az Azure Resource Manager-alapú üzemi modellbe történő, platform által támogatott migrálásról](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [A IaaS-erőforrások migrálása a Klasszikusból a Azure Resource Managerba a PowerShell használatával](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [A CLI használatával IaaS-erőforrásokat telepíthet át a klasszikusról Azure Resource Manager](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Klasszikusról VPN Gateway a Resource Manager-áttelepítésre](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-classic-resource-manager-migration)
-* [ExpressRoute-áramkörök és társított virtuális hálózatok áttelepítése a Klasszikusból a Resource Manager-alapú üzemi modellbe](https://docs.microsoft.com/azure/expressroute/expressroute-migration-classic-resource-manager)
+* [Klasszikusról VPN Gateway a Resource Manager-áttelepítésre](../../vpn-gateway/vpn-gateway-classic-resource-manager-migration.md)
+* [ExpressRoute-áramkörök és társított virtuális hálózatok áttelepítése a Klasszikusból a Resource Manager-alapú üzemi modellbe](../../expressroute/expressroute-migration-classic-resource-manager.md)
 * [Közösségi eszközök a IaaS-erőforrások Klasszikusból Azure Resource Managerba való áttelepítésének támogatásához](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [A leggyakoribb áttelepítési hibák áttekintése](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Tekintse át a IaaS-erőforrások klasszikusról Azure Resource Managerra való áttelepítésével kapcsolatos leggyakoribb kérdéseket](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

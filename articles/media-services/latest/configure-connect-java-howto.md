@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2337a7543f84d7eba5f565d875129cf22e8b27ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74888495"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001213"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Kapcsolódás a Media Services V3 API-hoz – Java
 
@@ -33,8 +34,8 @@ Ebben a cikkben a Visual Studio Code-ot használjuk a minta alkalmazás fejleszt
    - Apache Maven
    - Java kiterjesztési csomag
 - Ügyeljen rá, hogy a `JAVA_HOME` és a környezeti változók legyenek beállítva `PATH` .
-- [Hozzon létre egy Media Services fiókot](create-account-cli-how-to.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
-- Kövesse az API-k [elérését](access-api-cli-how-to.md) ismertető témakör lépéseit. Jegyezze fel az előfizetés-azonosítót, az alkalmazás AZONOSÍTÓját (ügyfél-azonosítót), a hitelesítő kulcsot (Secret) és a bérlő AZONOSÍTÓját, amelyre szüksége van egy későbbi lépésben.
+- [Hozzon létre egy Media Services fiókot](./create-account-howto.md). Ügyeljen arra, hogy jegyezze fel az erőforráscsoport nevét és a Media Services fiók nevét.
+- Kövesse az API-k [elérését](./access-api-howto.md) ismertető témakör lépéseit. Jegyezze fel az előfizetés-azonosítót, az alkalmazás AZONOSÍTÓját (ügyfél-azonosítót), a hitelesítő kulcsot (Secret) és a bérlő AZONOSÍTÓját, amelyre szüksége van egy későbbi lépésben.
 
 Tekintse át a következőket is:
 
@@ -93,7 +94,7 @@ A parancs futtatásakor a, a `pom.xml` `App.java` és más fájlok jönnek létr
    import com.microsoft.azure.management.mediaservices.v2018_07_01.implementation.MediaManager;
    import com.microsoft.rest.LogLevel;
    ```
-1. A kérésekhez szükséges Active Directory hitelesítő adatok létrehozásához adja hozzá a következő kódot az App osztály fő metódusához, és állítsa be a [hozzáférési API](access-api-cli-how-to.md)-k által kapott értékeket:
+1. A kérésekhez szükséges Active Directory hitelesítő adatok létrehozásához adja hozzá a következő kódot az App osztály fő metódusához, és állítsa be a [hozzáférési API](./access-api-howto.md)-k által kapott értékeket:
    
    ```java
    final String clientId = "00000000-0000-0000-0000-000000000000";
@@ -129,4 +130,4 @@ A parancs futtatásakor a, a `pom.xml` `App.java` és más fájlok jönnek létr
 
 Mostantól belefoglalhatja `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` és megkezdheti az entitások módosítását.
 
-További példákat a [Java SDK-minták](https://docs.microsoft.com/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) tárházában talál.
+További példákat a [Java SDK-minták](/samples/azure-samples/media-services-v3-java/azure-media-services-v3-samples-using-java/) tárházában talál.

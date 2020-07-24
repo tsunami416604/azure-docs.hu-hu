@@ -7,12 +7,12 @@ ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82099597"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999020"
 ---
 # <a name="monitoring-scheduled-events"></a>Figyelés Scheduled Events
 
@@ -25,7 +25,7 @@ Ebben a cikkben bemutatjuk, hogyan használhatók az ütemezett események olyan
 
 Scheduled Events az [azure instance metadata Service](instance-metadata-service.md)részeként érhető el, amely minden Azure-beli virtuális gépen elérhető. Az ügyfelek írhatnak automatizálást a virtuális gépek végpontjának lekéréséhez, hogy megkeressék az ütemezett karbantartási értesítéseket, és csökkentsék a szükséges megoldásokat, például az állapot mentését és a virtuális gép elforgatásának elvégzését. Javasoljuk, hogy az automatizálás létrehozásával rögzítse a Scheduled Events, így az Azure karbantartási eseményeinek naplózási naplója is lehet. 
 
-Ebből a cikkből megtudhatja, hogyan rögzítheti Log Analytics a karbantartási Scheduled Events. Ezután elindítunk néhány alapszintű értesítési műveletet, például e-mailek küldését a csapatnak, és bemutatjuk a virtuális gépeket érintő összes esemény előzményeit. Az események összesítéséhez és automatizálásához [log Analytics](/azure/azure-monitor/learn/quick-create-workspace)fogjuk használni, de a naplók összegyűjtéséhez és az automatizálás elindításához bármelyik figyelési megoldás használható.
+Ebből a cikkből megtudhatja, hogyan rögzítheti Log Analytics a karbantartási Scheduled Events. Ezután elindítunk néhány alapszintű értesítési műveletet, például e-mailek küldését a csapatnak, és bemutatjuk a virtuális gépeket érintő összes esemény előzményeit. Az események összesítéséhez és automatizálásához [log Analytics](../../azure-monitor/learn/quick-create-workspace.md)fogjuk használni, de a naplók összegyűjtéséhez és az automatizálás elindításához bármelyik figyelési megoldás használható.
 
 ![Az esemény életciklusát ábrázoló diagram](./media/notifications/events.png)
 
@@ -35,7 +35,7 @@ Ebben a példában létre kell hoznia egy [Windows rendszerű virtuális gépet 
 
 Ne törölje a csoport erőforráscsoportot az oktatóanyag végén.
 
-[Létre kell hoznia egy log Analytics munkaterületet](/azure/azure-monitor/learn/quick-create-workspace) is, amelyet a rendelkezésre állási csoportba tartozó virtuális gépek adatainak összesítésére fogunk használni.
+[Létre kell hoznia egy log Analytics munkaterületet](../../azure-monitor/learn/quick-create-workspace.md) is, amelyet a rendelkezésre állási csoportba tartozó virtuális gépek adatainak összesítésére fogunk használni.
 
 ## <a name="set-up-the-environment"></a>A környezet beállítása
 
@@ -112,7 +112,7 @@ Most szeretnénk csatlakozni egy Log Analytics munkaterülethez a gyűjtő virtu
 1. Keresse meg és válassza ki a **myCollectorVM**. 
 1. A **myCollectorVM**új lapján válassza a **kapcsolat**lehetőséget.
 
-Ekkor a rendszer telepíti a [Microsoft monitoring agentet](/azure/virtual-machines/extensions/oms-windows) a virtuális gépre. A virtuális gép a munkaterülethez való összekapcsolásához és a bővítmény telepítéséhez több percet is igénybe vehet. 
+Ekkor a rendszer telepíti a [Microsoft monitoring agentet](../extensions/oms-windows.md) a virtuális gépre. A virtuális gép a munkaterülethez való összekapcsolásához és a bővítmény telepítéséhez több percet is igénybe vehet. 
 
 ## <a name="configure-the-workspace"></a>A munkaterület konfigurálása
 
@@ -132,7 +132,7 @@ Ekkor a rendszer telepíti a [Microsoft monitoring agentet](/azure/virtual-machi
 ## <a name="creating-an-alert-rule-with-azure-monitor"></a>Riasztási szabály létrehozása Azure Monitor 
 
 
-Az események Log Analyticsba való leküldése után a következő [lekérdezés](/azure/azure-monitor/log-query/get-started-portal) futtatásával megkeresheti az ütemezett eseményeket.
+Az események Log Analyticsba való leküldése után a következő [lekérdezés](../../azure-monitor/log-query/get-started-portal.md) futtatásával megkeresheti az ütemezett eseményeket.
 
 1. A lap tetején válassza a **naplók** lehetőséget, majd illessze be a következőt a szövegmezőbe:
 
