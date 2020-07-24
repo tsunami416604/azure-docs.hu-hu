@@ -16,12 +16,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 67df782cf8044593859e7761278d93187d258d26
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 638a7fa96f4112f9805fd46618dc0acd1c2f382f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231934"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063237"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Felügyeleti feladatok automatizálása Azure-beli virtuális gépeken a SQL Server IaaS-ügynök bővítmény használatával
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ A cikk klasszikus verziójának megtekintéséhez lásd: [SQL Server IaaS-ügyn�
 ## <a name="supported-services"></a>Támogatott szolgáltatások
 A SQL Server IaaS-ügynök bővítmény a következő felügyeleti feladatokat támogatja:
 
-| Felügyeleti funkció | Leírás |
+| Felügyeleti funkció | Description |
 | --- | --- |
 | **Automatikus biztonsági mentés SQL Server** |Automatizálja a biztonsági mentések ütemezését az összes adatbázishoz az alapértelmezett példányhoz, vagy a virtuális gépen a SQL Server [megfelelően telepített](frequently-asked-questions-faq.md#administration) példányát. További információ: [SQL Server automatikus biztonsági mentése az Azure Virtual Machines szolgáltatásban (Resource Manager)](automated-backup-sql-2014.md). |
 | **Automatikus javítás SQL Server** |Beállítja a karbantartási időszakot, amely alatt a virtuális gép fontos Windows-frissítései elhelyezhetők, így elkerülhetők a frissítések a számítási feladatok maximális ideje alatt. További információ: [SQL Server automatikus javítása az Azure Virtual Machines szolgáltatásban (Resource Manager)](automated-patching.md). |
@@ -71,7 +71,7 @@ Az alábbi követelmények vonatkoznak a SQL Server IaaS-ügynök bővítmény h
 
 **Azure PowerShell**:
 
-* [A legújabb Azure PowerShell parancsok letöltése és konfigurálása](/powershell/azure/overview)
+* [A legújabb Azure PowerShell parancsok letöltése és konfigurálása](/powershell/azure/)
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 

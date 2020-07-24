@@ -3,12 +3,12 @@ title: A biztonsági funkciók áttekintése
 description: Ismerkedjen meg Azure Backup biztonsági képességekkel, amelyek segítenek a biztonsági másolatok adatainak védelmében és a vállalat biztonsági igényeinek kielégítésében.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: ce6d8a43b48be5189f0459c9f82c69354f40689f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 750ad7b10969ef5f83e0b5058e350066d3f97351
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062611"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>A Azure Backup biztonsági funkcióinak áttekintése
 
@@ -16,7 +16,7 @@ Az adatai védelme érdekében a legfontosabb lépések egyike, hogy megbízhat�
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Az identitás-és felhasználói hozzáférés kezelése és felügyelete
 
-A Recovery Services-tárolók által használt Storage-fiókok el vannak különítve, és a felhasználók nem férhetnek hozzá semmilyen kártékony célra. A hozzáférés csak Azure Backup felügyeleti műveleteken, például a visszaállításon keresztül engedélyezett. Azure Backup lehetővé teszi a felügyelt műveletek felügyeletét az [Azure szerepköralapú Access Control (RBAC)](./backup-rbac-rs-vault.md)használatával történő részletes hozzáféréssel. A RBAC lehetővé teszi a feladatok elkülönítését a csapaton belül, és csak a feladataik elvégzéséhez szükséges felhasználók számára biztosít hozzáférést.
+A Recovery Services-tárolók által használt Storage-fiókok el vannak különítve, és a felhasználók nem férhetnek hozzá semmilyen kártékony célra. A hozzáférés csak Azure Backup felügyeleti műveleteken, például a visszaállításon keresztül engedélyezett. A Azure Backup lehetővé teszi az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](./backup-rbac-rs-vault.md)használatával történő részletes hozzáférés révén a felügyelt műveletek szabályozását. A RBAC lehetővé teszi a feladatok elkülönítését a csapaton belül, és csak a feladataik elvégzéséhez szükséges felhasználók számára biztosít hozzáférést.
 
 A Azure Backup három [beépített szerepkört](../role-based-access-control/built-in-roles.md) biztosít a biztonságimásolat-kezelési műveletek vezérléséhez:
 
@@ -72,7 +72,7 @@ A Azure Backup szolgáltatás a Microsoft Azure Recovery Services (MARS) ügynö
 
 Annak érdekében, hogy a szervezetek megfeleljenek az egyéni adatgyűjtésre és-felhasználásra vonatkozó nemzeti, regionális és iparági követelményeknek, Microsoft Azure & Azure Backup a minősítések és igazolások átfogó készletét kínálja. [Tekintse meg a megfelelőségi tanúsítványok listáját](compliance-offerings.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Biztonsági funkciók a Azure Backupt használó Felhőbeli munkaterhelések védelmének biztosításához](backup-azure-security-feature-cloud.md)
 * [Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez](backup-azure-security-feature.md)

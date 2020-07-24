@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a7d12a2be7f2e3d3556d6c8c3303b2ddb8b8738
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 999c443a63ceb2ebb59fc0de72ecb09d1ccc3905
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503489"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062627"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure biztonsági alapkonfiguráció biztonsági mentéshez
 
@@ -480,7 +480,7 @@ A Microsoft kezeli a Azure Backup alapjául szolgáló infrastruktúrát, és sz
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés szabályozása az Azure RBAC
 
-**Útmutató**: az azure szerepköralapú Access Control (RBAC) lehetővé teszi a részletes hozzáférés-vezérlést az Azure-hoz. Az RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szüksége van.
+**Útmutató**: az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) lehetővé teszi a részletes hozzáférés-kezelést az Azure-hoz. Az RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szüksége van.
 
 A Azure Backup három beépített szerepkört biztosít a biztonságimásolat-kezelési műveletek vezérléséhez: a biztonsági másolatok közreműködői, a biztonságimásolat-felelős és a biztonsági mentési olvasó. A biztonsági másolatok beépített szerepkörei a különböző biztonsági mentési felügyeleti műveletekhez képezhetők le.
 
@@ -1014,7 +1014,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági Alaptervekről](../security/benchmarks/security-baselines-overview.md)

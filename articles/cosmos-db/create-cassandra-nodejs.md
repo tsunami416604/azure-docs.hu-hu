@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: fbb24ac1974c23bf5292a987fc64a84dff69bf7d
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 7575ad7f6444162c7e8ce2a781beeef9555c6240
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118355"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062660"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása Node.js SDK-val és Azure Cosmos DB
 
@@ -170,7 +170,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. A [Azure Portal](https://portal.azure.com/)Azure Cosmos db-fiókjában válassza a **kapcsolatok karakterlánc**lehetőséget. 
 
-1. Válassza a ![a képernyő jobb oldalán található Másolás gombot](./media/create-cassandra-nodejs/copy.png) használatával (a képernyő jobb oldalán) másolja a vágólapra a felső, CONTACT POINT (Kapcsolódási pont) értéket.
+1. A :::image type="icon" source="./media/create-cassandra-nodejs/copy.png"::: képernyő jobb oldalán található gomb használatával másolja a legfelső értéket, a kapcsolódási pontot.
 
     :::image type="content" source="./media/create-cassandra-nodejs/keys.png" alt-text="A CONTACT POINT (Kapcsolódási pont), USERNAME (Felhasználónév) és a PASSWORD (Jelszó) értékek másolása az Azure Portal kapcsolati sztring oldaláról":::
 

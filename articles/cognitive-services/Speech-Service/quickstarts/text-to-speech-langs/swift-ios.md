@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: beszédfelismerési beszéd, Swift-Speech Service'
+title: 'Rövid útmutató: a Swift hangszintézise az iOS-Speech szolgáltatásban'
 titleSuffix: Azure Cognitive Services
 description: Megtudhatja, hogyan szintetizálhat beszédeket a Swift-ben iOS rendszeren a Speech SDK használatával
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 8ce7d963e1d4a3514a0e60435634ba4f4a9cb009
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: e71717bdacbc3c6eb08fbdc8d56ec19c26a1d114
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062282"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>Gyors útmutató: beszédfelismerési útmutató a Swift-ben az iOS-ben a Speech SDK használatával
 
@@ -82,7 +82,7 @@ A további párbeszédpaneleken válassza az alábbi lehetőségeket:
 1. Hozza létre és futtassa a példában szereplő kódot az iOS-szimulátorban. Ehhez válassza a **termék**  >  **futtatása** lehetőséget a menüből, vagy kattintson a **Lejátszás** gombra.
 1. Miután beírt valamilyen szöveget, és rákattintott a gombra az alkalmazásban, hallania kell a szintetizált hanglejátszást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A GitHubon található minták megismerése](https://aka.ms/csspeech/samples)

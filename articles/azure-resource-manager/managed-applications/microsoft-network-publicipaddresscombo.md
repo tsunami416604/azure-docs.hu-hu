@@ -5,11 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0393673663df8f3ca580ff34e16bee910b955f8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5def6db9d551b3882204c9f997f164a0df7ac223
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75651916"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063282"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft. Network. PublicIpAddressCombo FELHASZNÁLÓIFELÜLET-elem
 
@@ -17,7 +18,7 @@ ms.locfileid: "75651916"
 
 ## <a name="ui-sample"></a>Felhasználói felület mintája
 
-![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
+![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft-network-publicipaddresscombo.png)
 
 - Ha a felhasználó a "nincs" lehetőséget választja a nyilvános IP-címhez, a tartománynév feliratának szövegmezője rejtett.
 - Ha a felhasználó kiválaszt egy meglévő nyilvános IP-címet, a tartománynév felirat szövegmező le lesz tiltva. Értéke a kijelölt IP-cím tartománynév-címkéje.

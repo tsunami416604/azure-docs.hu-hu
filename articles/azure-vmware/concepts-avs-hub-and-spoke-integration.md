@@ -3,16 +3,16 @@ title: Koncepció – az Azure VMware-megoldás (AVS) üzembe helyezése egy sug
 description: Ismerje meg az Azure VMware-megoldás (AVS) üzembe helyezésének javaslatait egy meglévő vagy egy új, az Azure-ban küllő architektúrában.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 82937e04fc0a5101c353702b92b6b068d027d7ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d95ed81c5188eab0dc508f5320549c4a402e151
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85375047"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062928"
 ---
 # <a name="integrate-azure-vmware-solution-avs-in-a-hub-and-spoke-architecture"></a>Az Azure VMware-megoldás (AVS) integrálása egy sugaras architektúrába
 
-Ebben a cikkben javaslatot teszünk az Azure VMware-megoldások (AVS) üzembe helyezésére egy meglévő vagy egy új, az Azure-ban működő [architektúrában](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/shared-services) . 
+Ebben a cikkben javaslatot teszünk az Azure VMware-megoldások (AVS) üzembe helyezésére egy meglévő vagy egy új, az Azure-ban működő [architektúrában](/azure/architecture/reference-architectures/hybrid-networking/shared-services) . 
 
 A hub és küllős forgatókönyv hibrid felhőalapú környezetet feltételez a következő munkaterhelésekkel:
 
@@ -24,7 +24,7 @@ A hub és küllős forgatókönyv hibrid felhőalapú környezetet feltételez a
 
 A *hub* egy Azure-Virtual Network, amely központi kapcsolódási pontként működik a helyszíni és az AVS Private Cloud-hoz. A *küllők* olyan virtuális hálózatok, amelyek a központtal együttműködve lehetővé teszik a virtuális hálózat közötti kommunikációt.
 
-A helyszíni adatközpont, az AVS Private Cloud és a hub közötti forgalom ExpressRoute-kapcsolatokon keresztül halad. A küllős virtuális hálózatok általában IaaS-alapú számítási feladatokat tartalmaznak, de olyan Pásti-szolgáltatásokat is tartalmazhatnak, mint például a [app Service Environment](../app-service/environment/intro.md), amelyek közvetlen integrációját Virtual Network vagy más, az [Azure Private linktel](https://docs.microsoft.com/azure/private-link/) rendelkező Pásti szolgáltatásokkal együtt. 
+A helyszíni adatközpont, az AVS Private Cloud és a hub közötti forgalom ExpressRoute-kapcsolatokon keresztül halad. A küllős virtuális hálózatok általában IaaS-alapú számítási feladatokat tartalmaznak, de olyan Pásti-szolgáltatásokat is tartalmazhatnak, mint például a [app Service Environment](../app-service/environment/intro.md), amelyek közvetlen integrációját Virtual Network vagy más, az [Azure Private linktel](../private-link/index.yml) rendelkező Pásti szolgáltatásokkal együtt. 
 
 Az ábrán egy példa látható az Azure-ban a helyszíni és az AVS-alapú ExpressRoute-kapcsolaton keresztül a sugaras üzembe helyezésre.
 
@@ -50,7 +50,7 @@ Az architektúra a következő fő összetevőkből áll:
 
     -   **IaaS küllő:** Egy küllős IaaS az Azure IaaS-alapú számítási feladatait fogja tárolni, beleértve a virtuális gépek rendelkezésre állási készleteit és a virtuálisgép-méretezési csoportokat, valamint a megfelelő hálózati összetevőket.
 
-    -   **Péter küllő:** A Péter beszélt a privát [végpontok](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) és a [privát kapcsolatok](https://docs.microsoft.com/azure/private-link/private-link-overview)révén a magánjellegű címzést használó Azure Pásti-szolgáltatásokat.
+    -   **Péter küllő:** A Péter beszélt a privát [végpontok](../private-link/private-endpoint-overview.md) és a [privát kapcsolatok](../private-link/private-link-overview.md)révén a magánjellegű címzést használó Azure Pásti-szolgáltatásokat.
 
 -   **Azure Firewall:** Központi darabként működik, amely a küllők, a helyszíni és az AVS közötti adatforgalom szegmentálására szolgál.
 
@@ -58,7 +58,7 @@ Az architektúra a következő fő összetevőkből áll:
 
 ## <a name="network-and-security-considerations"></a>Hálózati és biztonsági megfontolások
 
-A ExpressRoute-kapcsolatok lehetővé teszik a helyszíni, az AVS és az Azure hálózati háló közötti forgalom áramlását. Az AVS a [ExpressRoute Global REACH](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) használja a kapcsolat megvalósításához.
+A ExpressRoute-kapcsolatok lehetővé teszik a helyszíni, az AVS és az Azure hálózati háló közötti forgalom áramlását. Az AVS a [ExpressRoute Global REACH](../expressroute/expressroute-global-reach.md) használja a kapcsolat megvalósításához.
 
 A helyszíni kapcsolat ExpressRoute Global Reach is használhat, de nem kötelező.
 
@@ -72,11 +72,11 @@ A helyszíni kapcsolat ExpressRoute Global Reach is használhat, de nem kötelez
   :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="AVS – hub virtuális hálózati forgalom":::
 
 
-Az AVS-hálózatkezeléssel és az összekapcsolással kapcsolatos fogalmakról az [AVS termékdokumentációjában](https://docs.microsoft.com/azure/azure-vmware/concepts-networking)talál további információt.
+Az AVS-hálózatkezeléssel és az összekapcsolással kapcsolatos fogalmakról az [AVS termékdokumentációjában](./concepts-networking.md)talál további információt.
 
 ### <a name="traffic-segmentation"></a>Forgalom szegmentálása
 
-[Azure Firewall](https://docs.microsoft.com/azure/firewall/) a hub virtuális hálózatán üzembe helyezett hub és küllős topológia központi eleme. Használjon Azure Firewall vagy egy másik Azure által támogatott hálózati virtuális készüléket a forgalmi szabályok létrehozásához és a különböző küllők, helyszíni és AVS számítási feladatok közötti kommunikáció szegmentálásához.
+[Azure Firewall](../firewall/index.yml) a hub virtuális hálózatán üzembe helyezett hub és küllős topológia központi eleme. Használjon Azure Firewall vagy egy másik Azure által támogatott hálózati virtuális készüléket a forgalmi szabályok létrehozásához és a különböző küllők, helyszíni és AVS számítási feladatok közötti kommunikáció szegmentálásához.
 
 Hozzon létre útválasztási táblákat a Azure Firewall felé irányuló forgalom irányításához.  A küllős virtuális hálózatok esetében hozzon létre egy útvonalat, amely a Azure Firewall belső felületének alapértelmezett útvonalát állítja be, így ha a Virtual Network munkaterhelésének el kell érnie a tűzfal által kiértékelhető AVS-címtartományt, és alkalmaznia kell a megfelelő forgalmi szabályt, hogy engedélyezze vagy megtagadja.  
 
@@ -104,7 +104,7 @@ Az Azure Application Gateway v1-es és v2-es verziója az AVS-alapú virtuális 
 
 A Jumpbox-mel férhet hozzá az AVS-környezethez, amely egy olyan Windows 10 vagy Windows Server rendszerű virtuális gép, amelyet a hub virtuális hálózatán belül telepítettek a megosztott szolgáltatás alhálózatán.
 
-Ajánlott biztonsági eljárásként a központi virtuális hálózaton belül üzembe helyezheti [Microsoft Azure megerősített](https://docs.microsoft.com/azure/bastion/) szolgáltatást. Az Azure Bastion zökkenőmentes RDP-és SSH-hozzáférést biztosít az Azure-on üzembe helyezett virtuális gépekhez anélkül, hogy nyilvános IP-címeket kellene kiépítenie ezekre az erőforrásokra. Az Azure Bastion szolgáltatás kiépítése után a Azure Portalból férhet hozzá a kiválasztott virtuális géphez. A kapcsolat létrehozása után megnyílik egy új lap, amely megjeleníti a Jumpbox asztalt, és ebből az asztalból elérheti az AVS Private Cloud Management Plant.
+Ajánlott biztonsági eljárásként a központi virtuális hálózaton belül üzembe helyezheti [Microsoft Azure megerősített](../bastion/index.yml) szolgáltatást. Az Azure Bastion zökkenőmentes RDP-és SSH-hozzáférést biztosít az Azure-on üzembe helyezett virtuális gépekhez anélkül, hogy nyilvános IP-címeket kellene kiépítenie ezekre az erőforrásokra. Az Azure Bastion szolgáltatás kiépítése után a Azure Portalból férhet hozzá a kiválasztott virtuális géphez. A kapcsolat létrehozása után megnyílik egy új lap, amely megjeleníti a Jumpbox asztalt, és ebből az asztalból elérheti az AVS Private Cloud Management Plant.
 
 > [!IMPORTANT]
 > Ne adjon meg nyilvános IP-címet a Jumpbox virtuális géphez, vagy tegye elérhetővé a 3389/TCP portot a nyilvános internethez. 
@@ -137,21 +137,19 @@ A helyszíni és az AVS-kiszolgálókat feltételes továbbítókkal lehet konfi
 
 ## <a name="identity-considerations"></a>Identitással kapcsolatos megfontolások
 
-A legjobb megoldás az, ha a központi telepítés során legalább egy AD-tartományvezérlőt üzembe helyez az elosztón a megosztott szolgáltatás alhálózatának használatával, ideális esetben kettőt a zóna által terjesztett módon vagy a virtuális gép rendelkezésre állási csoportján belül. A helyszíni AD-tartomány Azure-ra való kiterjesztését [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain) tekintheti meg.
+A legjobb megoldás az, ha a központi telepítés során legalább egy AD-tartományvezérlőt üzembe helyez az elosztón a megosztott szolgáltatás alhálózatának használatával, ideális esetben kettőt a zóna által terjesztett módon vagy a virtuális gép rendelkezésre állási csoportján belül. A helyszíni AD-tartomány Azure-ra való kiterjesztését [Azure Architecture Center](/azure/architecture/reference-architectures/identity/adds-extend-domain) tekintheti meg.
 
 Emellett helyezzen üzembe egy másik tartományvezérlőt az AVS oldalon, hogy identitásként és DNS-forrásként működjön a vSphere-környezetben.
 
 A vCenter és az SSO esetében állítsa be az identitás forrását a Azure Portalban az ** \> identitás- \> azonosító források kezelése**területen.
 
-Ajánlott eljárásként [az ad-tartomány integrálása a Azure Active Directorysal](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/azure-ad).
+Ajánlott eljárásként [az ad-tartomány integrálása a Azure Active Directorysal](/azure/architecture/reference-architectures/identity/azure-ad).
 
 <!-- LINKS - external -->
-[Azure Architecture Center]: https://docs.microsoft.com/azure/architecture/
+[Azure Architecture Center]: /azure/architecture/
 
-[Hub & Spoke topology]: https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke
+[Hub & Spoke topology]: /azure/architecture/reference-architectures/hybrid-networking/hub-spoke
 
-[Azure networking documentation]: https://docs.microsoft.com/azure/networking/
+[Azure networking documentation]: ../networking/index.yml
 
 <!-- LINKS - internal -->
-
-

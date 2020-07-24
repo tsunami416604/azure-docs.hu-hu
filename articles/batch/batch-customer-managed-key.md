@@ -3,14 +3,14 @@ title: Ügyfél által felügyelt kulcsok konfigurálása a Azure Batch-fiókhoz
 description: Megtudhatja, hogyan titkosíthatja a Batch-információkat a kulcsok használatával
 author: pkshultz
 ms.topic: how-to
-ms.date: 06/02/2020
+ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: d0dcb79d5e319abd46515162ce5a17e935d9693b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 77c0489838685d65d7579f37d6a6cb922af509f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960886"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062531"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Batch-fiókhoz Azure Key Vault és felügyelt identitással
 
@@ -20,7 +20,8 @@ Az Ön által megadott kulcsokat [Azure Key Vault](../key-vault/general/basic-co
 
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok támogatása a Azure Batch jelenleg nyilvános előzetes verzióban érhető el az USA nyugati középső régiójában, az USA keleti régiójában, az USA déli középső régiójában, az USA US Gov Virginia 2. nyugati régiójában, valamint a US Gov Arizona régióban.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-batch-account-with-system-assigned-managed-identity"></a>Batch-fiók létrehozása rendszer által hozzárendelt felügyelt identitással
 
@@ -57,6 +58,9 @@ az batch account show \
     -g $resourceGroupName \
     --query identity
 ```
+
+> [!NOTE]
+> A Batch-fiókban létrehozott, rendszerhez rendelt felügyelt identitás csak az ügyfél által felügyelt kulcsok lekérésére szolgál a Key Vault. Ez az identitás nem érhető el a Batch-készleteken.
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Az Azure Key Vault-példány konfigurálása
 
@@ -145,4 +149,5 @@ az batch account set \
   * **Miután visszaállítottam a hozzáférést, mennyi ideig tart a Batch-fiók újbóli működése?** Akár 10 percet is igénybe vehet, amíg a fiók újra elérhető lesz a hozzáférés visszaállítása után.
   * **Amíg a Batch-fiók nem érhető el, mi történik az erőforrásokkal?** Az ügyfél által felügyelt kulcsokhoz való batch-hozzáférés megszakadását futtató készletek továbbra is futnak. A csomópontok azonban elérhetetlenné válnak, és a tevékenységek nem fognak futni (és újra kell őket várólistára állítani). A hozzáférés visszaállítása után a csomópontok újra elérhetővé válnak, és a feladatok újra lesznek indítva.
   * **A titkosítási mechanizmus a Batch-készletben lévő virtuálisgép-lemezekre vonatkozik?** Nem. A Cloud Service-konfigurációs készletek esetében az operációs rendszer és az ideiglenes lemez titkosítása nem lesz alkalmazva. A virtuális gépek konfigurációs készletei esetében az operációs rendszer és a megadott adatlemezek alapértelmezés szerint a Microsoft platform által felügyelt kulccsal lesznek titkosítva. Jelenleg nem adhat meg saját kulcsot ezekhez a lemezekhez. A Microsoft platform által felügyelt kulccsal rendelkező batch-készletekhez tartozó virtuális gépek ideiglenes lemezének titkosításához engedélyeznie kell a [diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration) tulajdonságot a [virtuálisgép-konfigurációs](/rest/api/batchservice/pool/add#virtualmachineconfiguration) készletben. A fokozottan bizalmas környezetek esetében ajánlott engedélyezni az ideiglenes lemezek titkosítását, és elkerülni az operációs rendszer és az adatlemezek bizalmas adatok tárolására szolgáló adatokat.
+  * **A rendszer által hozzárendelt felügyelt identitás a számítási csomópontokon elérhető batch-fiókban?** Nem. Ezt a felügyelt identitást jelenleg csak az ügyfél által felügyelt kulcs Azure Key Vault elérésére használják.
   

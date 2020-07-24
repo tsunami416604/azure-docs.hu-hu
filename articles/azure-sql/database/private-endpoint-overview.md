@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 730109a096b352b6d179693293128b465e0be83f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343999"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063270"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private-hivatkozás Azure SQL Database és az Azure szinapszis Analyticshez
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -146,7 +146,7 @@ Az eredmény azt mutatja, hogy egy IP-cím működik; a magánhálózati végpon
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Kapcsolat ellenőrzése SQL Server Management Studio használatával (SSMS)
 > [!NOTE]
-> A kiszolgáló **teljes tartománynevét (FQDN)** használja az ügyfelekhez tartozó kapcsolatok karakterláncában. A közvetlenül az IP-címen végrehajtott bejelentkezési kísérletek sikertelenek lesznek. Ez a viselkedés a tervezés szerint történik, mivel a magánhálózati végpont továbbítja a forgalmat a régióbeli SQL-átjáró felé, és a sikeres bejelentkezéshez meg kell adni a teljes tartománynevet.
+> Használja a kiszolgáló teljes tartománynevét **(FQDN)** az ügyfelek () számára a kapcsolatok karakterláncában `<server>.database.windows.net` . A közvetlenül az IP-címhez vagy a privát kapcsolat FQDN () használatával végrehajtott bejelentkezési kísérletek `<server>.privatelink.database.windows.net` sikertelenek lesznek. Ez a viselkedés a tervezés szerint történik, mivel a magánhálózati végpont továbbítja a forgalmat a régión belüli SQL-átjáró felé, és a sikeres bejelentkezéshez meg kell adni a megfelelő teljes tartománynevet.
 
 A [SQL Databasehoz való kapcsolódáshoz](connect-query-ssms.md)kövesse az alábbi lépéseket a SSMS használatához. Miután a SSMS használatával kapcsolódott a SQL Databasehoz, ellenőrizze, hogy az Azure-beli virtuális gép magánhálózati IP-címéről csatlakozik a következő lekérdezés futtatásával:
 
@@ -179,7 +179,7 @@ A helyszíni környezet és a SQL Database-adatbázis közötti kapcsolat létes
 
 A rendszer általában az Azure-beli Storage-fiókokból származó adatok Azure szinapszis Analyticsbe való betöltésére használatos. Ha az Azure Storage-fiók, amelyről az adatok betöltésére vonatkozó korlátozásokat csak a virtuális hálózati alhálózatok egy készletére korlátozza a magánhálózati végpontokon, a szolgáltatási végpontokon vagy az IP-alapú tűzfalakon keresztül, a rendszer megtöri a kapcsolat a fiókból a fiókba való kapcsolódását. Ha az Azure szinapszis Analytics szolgáltatással csatlakozik a virtuális hálózathoz védett Azure Storage-hoz, az importálási és exportálási forgatókönyvek is elérhetők, kövesse az [itt](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)ismertetett lépéseket. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A Azure SQL Database biztonság áttekintését lásd: [az adatbázis biztonságossá tétele](security-overview.md)
 - Az Azure SQL Database kapcsolatok áttekintését lásd: [Azure SQL connectivity Architecture](connectivity-architecture.md)

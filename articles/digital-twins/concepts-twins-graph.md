@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 955a3b8d12eb3b93bc9d44c624953cd5c1007318
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258213"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062063"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>A digitális ikrek és a Twin Graph ismertetése
 
@@ -23,7 +23,7 @@ Egy Azure digitális Twins-megoldásban a környezetében lévő entitásokat az
 
 ## <a name="digital-twins"></a>Digitális Twins
 
-Ahhoz, hogy létre lehessen hozni egy Digital Twin-et az Azure Digital Twins-példányban, rendelkeznie kell egy, a szolgáltatásba feltöltött *modellel* . A modellek a tulajdonságok, a telemetria és az adott Twin kapcsolatok készletét írják le, egyebek között. A modellben definiált információk típusaiért lásd [: fogalmak: egyéni modellek](concepts-models.md).
+Ahhoz, hogy létre lehessen hozni egy Digital Twin-et az Azure Digital Twins-példányban, rendelkeznie kell egy, a szolgáltatásba feltöltött *modellel* . A modellek a tulajdonságok, a telemetria és az adott Twin kapcsolatok készletét írják le, egyebek között. A modellben definiált információk típusaiért lásd [*: fogalmak: egyéni modellek*](concepts-models.md).
 
 Egy modell létrehozása és feltöltése után az ügyfélalkalmazás létrehozhat egy típusú példányt; Ez egy digitális Twin. Például a *Floor*modell létrehozása után létrehozhat egy vagy több olyan digitális ikreket, amelyek ezt a típust használják (például a *Floor*típust, egy másikat *, a* *Floor2*stb.). 
 
@@ -105,7 +105,7 @@ A digitális Twin-és a kapcsolati adatfájlok egyaránt JSON formátumban vanna
 
 Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jeleníti meg:
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 | --- | --- |
 | `$dtId` | A digitális Twin AZONOSÍTÓját jelölő, felhasználó által megadott karakterlánc |
 | `$etag` | A webkiszolgáló által hozzárendelt szabványos HTTP-mező |
@@ -172,7 +172,7 @@ Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jelení
 
 Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő mezőket jeleníti meg:
 
-| Mező neve | Leírás |
+| Mező neve | Description |
 | --- | --- |
 | `$relationshipId` | Egy felhasználó által megadott karakterlánc, amely a kapcsolat AZONOSÍTÓját jelöli. Ez a karakterlánc egyedi a forrásként szolgáló digitális Twin környezetben, ami azt is jelenti, hogy az `sourceId`  +  `relationshipId` Azure Digital Twins-példány kontextusában egyedi. |
 | `$etag` | A webkiszolgáló által hozzárendelt szabványos HTTP-mező |
@@ -194,11 +194,11 @@ Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő me
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: gráf-elemek kezelése az Azure Digital Twin API-kkal:
-* [Útmutató: digitális ikrek kezelése](how-to-manage-twin.md)
-* [Útmutató: a Twin gráf kezelése kapcsolatok használatával](how-to-manage-graph.md)
+* [*Útmutató: digitális ikrek kezelése*](how-to-manage-twin.md)
+* [*Útmutató: a Twin gráf kezelése kapcsolatok használatával*](how-to-manage-graph.md)
 
 Vagy Ismerje meg az Azure Digital ikrek Twin Graph lekérdezését az információkhoz:
-* [Fogalmak: lekérdezési nyelv](concepts-query-language.md)
+* [*Fogalmak: lekérdezési nyelv*](concepts-query-language.md)
