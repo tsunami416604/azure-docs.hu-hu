@@ -3,11 +3,12 @@ title: Használat elemzése az Azure Application Insights használatával | Micr
 description: Ismerje meg a felhasználókat, és hogy mit csinálnak az alkalmazással.
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 7f4f46f183291684fa59e5aa35b65c8ac3352563
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1acc803d66bef29a77266d4e38e1605ffd75f36f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797789"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014065"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Használatelemzés az Application Insights szolgáltatással
 
@@ -33,7 +34,7 @@ A legjobb megoldás a Application Insights telepítésével érhető el az App S
     </script>
     ```
 
-    A webhelyek figyeléséhez szükséges speciális konfigurációk megismeréséhez tekintse meg a [JavaScript SDK-referenciát ismertető cikket](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+    A webhelyek figyeléséhez szükséges speciális konfigurációk megismeréséhez tekintse meg a [JavaScript SDK-referenciát ismertető cikket](./javascript.md).
 
 3. **Mobile App code:** Az App Center SDK használatával gyűjthet eseményeket az alkalmazásból, majd az események másolatait elküldheti az elemzéshez az [útmutató](../../azure-monitor/learn/mobile-center-quickstart.md)alapján Application Insights.
 
@@ -44,7 +45,7 @@ A legjobb megoldás a Application Insights telepítésével érhető el az App S
 ## <a name="include-user-and-session-id-in-your-telemetry"></a>Felhasználói és munkamenet-azonosító belefoglalása a telemetria
 A felhasználók az idő múlásával követhetik nyomon a felhasználókat, Application Insights az azonosítását. Az Events eszköz az egyetlen olyan használati eszköz, amelyhez nincs szükség felhasználói AZONOSÍTÓra vagy munkamenet-AZONOSÍTÓra.
 
-A felhasználói és munkamenet-azonosítók küldésének megkezdése [ezzel a folyamattal](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
+A felhasználói és munkamenet-azonosítók küldésének megkezdése [ezzel a folyamattal](./usage-send-user-context.md).
 
 ## <a name="explore-usage-demographics-and-statistics"></a>A használati demográfia és a statisztika megismerése
 Megtudhatja, hogy mikor használják a felhasználók az alkalmazást, milyen lapokat érdeklik leginkább, hol találhatók a felhasználók, milyen böngészőket és operációs rendszereket használnak. 

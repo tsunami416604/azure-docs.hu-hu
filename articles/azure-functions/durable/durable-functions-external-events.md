@@ -2,14 +2,14 @@
 title: Külső események feldolgozása a Durable Functionsban – Azure
 description: Ismerje meg, hogyan kezelheti a külső eseményeket a Azure Functions Durable Functions bővítményében.
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 387b5d920de4a295366cc7e948862a12cea901d3
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3cd04c93d508bd06c4ddd2e05074084202b9fc60
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165549"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014939"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Külső események Durable Functionsban való feldolgozása (Azure Functions)
 
@@ -20,7 +20,7 @@ A Orchestrator függvények megvárhatják és megfigyelheti a külső eseménye
 
 ## <a name="wait-for-events"></a>Várakozás az eseményekre
 
-A [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.net) és `waitForExternalEvent` a (JavaScript) metódusa a hangolási [eseményindító kötése](durable-functions-bindings.md#orchestration-trigger) lehetővé teszi, hogy egy Orchestrator függvény aszinkron módon várjon, és figyelje a külső eseményt. A Listening Orchestrator függvény deklarálja az esemény *nevét* és a fogadni kívánt *adatok alakját* .
+A [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.net), `waitForExternalEvent` (JavaScript) és `wait_for_external_event` (Python) metódusok a [hangvezérelt eseményindítóhoz kötés](durable-functions-bindings.md#orchestration-trigger) lehetővé teszik, hogy egy Orchestrator függvény aszinkron módon várjon, és figyelje a külső eseményt. A Listening Orchestrator függvény deklarálja az esemény *nevét* és a fogadni kívánt *adatok alakját* .
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -57,6 +57,22 @@ module.exports = df.orchestrator(function*(context) {
         // approval denied - send a notification
     }
 });
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    approved = context.wait_for_external_event('Approval')
+    if approved:
+        # approval granted - do the approved action
+    else:
+        # approval denied - send a notification
+
+main = df.Orchestrator.create(orchestrator_function)
 ```
 
 ---
@@ -116,6 +132,28 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    event1 = context.wait_for_external_event('Event1')
+    event2 = context.wait_for_external_event('Event2')
+    event3 = context.wait_for_external_event('Event3')
+
+    winner = context.task_any([event1, event2, event3])
+    if winner == event1:
+        # ...
+    elif winner == event2:
+        # ...
+    elif winner == event3:
+        # ...
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 Az előző példa a több esemény *bármelyikét* figyeli. Az *összes* eseményre várni is lehet.
@@ -164,12 +202,31 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    application_id = context.get_input()
+    
+    gate1 = context.wait_for_external_event('CityPlanningApproval')
+    gate2 = context.wait_for_external_event('FireDeptApproval')
+    gate3 = context.wait_for_external_event('BuildingDeptApproval')
+
+    yield context.task_all([gate1, gate2, gate3])
+    yield context.call_activity('IssueBuildingPermit', application_id)
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 `WaitForExternalEvent`határozatlan ideig vár néhány bemenetre.  A Function alkalmazás a várakozás közben biztonságosan eltávolítható a memóriából. Ha és ha egy esemény érkezik ehhez a beszerelési példányhoz, a rendszer automatikusan felébreszti az eseményt, és azonnal feldolgozza azt.
 
 > [!NOTE]
-> Ha a Function alkalmazás a használati tervet használja, akkor nem számítunk fel számlázási díjat, amikor egy Orchestrator-függvény a `WaitForExternalEvent` (.net) vagy (JavaScript) feladatra vár, függetlenül attól `waitForExternalEvent` , hogy mennyi ideig vár.
+> Ha a Function alkalmazás a használati tervet használja, akkor nem számítunk fel számlázási díjat, miközben egy Orchestrator függvény a `WaitForExternalEvent` (.net), `waitForExternalEvent` (JavaScript) vagy `wait_for_external_event` (Python) feladatot várja, függetlenül attól, hogy mennyi ideig vár.
 
 ## <a name="send-events"></a>Események küldése
 
@@ -210,9 +267,20 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(instance_id:str, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    await client.raise_event(instance_id, 'Approval', True)
+```
+
 ---
 
-Belsőleg, `RaiseEventAsync` (.net) vagy `raiseEvent` (JavaScript) enqueues egy üzenetet, amely a Waiting Orchestrator függvény által beolvasott üzenetbe kerül. Ha a példány nem várakozik a megadott *esemény nevére,* a rendszer hozzáadja az eseményt a memóriában tárolt várólistához. Ha az *esemény neve* később megkezdi a figyelést, akkor az esemény üzeneteinek várólistáját fogja ellenőriznie.
+Belsőleg, `RaiseEventAsync` (.net), `raiseEvent` (JavaScript) vagy `raise_event` (Python) enqueues egy üzenetet, amely a Waiting Orchestrator függvény által beolvasott üzenetbe kerül. Ha a példány nem várakozik a megadott *esemény nevére,* a rendszer hozzáadja az eseményt a memóriában tárolt várólistához. Ha az *esemény neve* később megkezdi a figyelést, akkor az esemény üzeneteinek várólistáját fogja ellenőriznie.
 
 > [!NOTE]
 > Ha nincs a megadott *példány-azonosítóval*rendelkező előkészítési példány, az esemény üzenetét a rendszer elveti.

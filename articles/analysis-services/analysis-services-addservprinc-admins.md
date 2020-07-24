@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077558"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015408"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz 
 
@@ -44,7 +44,7 @@ A kiszolgáló-rendszergazdákat SQL Server Management Studio (SSMS) használat�
 
 ## <a name="using-a-resource-manager-template"></a>Resource Manager-sablon használata
 
-A kiszolgáló-rendszergazdákat úgy is konfigurálhatja, hogy Azure Resource Manager sablonnal telepíti a Analysis Services kiszolgálót. A központi telepítést futtató identitásnak az erőforrás **közreműködői** szerepköréhez kell tartoznia az [Azure szerepköralapú Access Controlban (RBAC)](../role-based-access-control/overview.md).
+A kiszolgáló-rendszergazdákat úgy is konfigurálhatja, hogy Azure Resource Manager sablonnal telepíti a Analysis Services kiszolgálót. Az üzembe helyezést futtató identitásnak az erőforrás **közreműködői** szerepköréhez kell tartoznia az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)szolgáltatásban.
 
 > [!IMPORTANT]
 > Az egyszerű szolgáltatásnevet a formátum használatával kell hozzáadni `app:{service-principal-client-id}@{azure-ad-tenant-id}` .
@@ -119,5 +119,3 @@ Ezt az ügyfél-azonosítót azután használhatja a bérlői AZONOSÍTÓval egy
 
 * [SQL Server PowerShell-modul letöltése](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [SSMS letöltése](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
-
-

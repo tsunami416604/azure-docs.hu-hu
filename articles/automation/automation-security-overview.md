@@ -6,11 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: d2b9f705c73e667f34e46fdeed3c80af1e65fb12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61aec3936ffef488b989f54894568d206c759b12
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83830106"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014983"
 ---
 # <a name="automation-account-authentication-overview"></a>Az Automation-fiókok hitelesítésének áttekintése
 
@@ -47,5 +48,5 @@ Az adatközpontban vagy más felhőalapú környezetekben, például az AWS-ben 
 ## <a name="next-steps"></a>További lépések
 
 * Ha Automation-fiókot szeretne létrehozni a Azure Portalből, tekintse meg az [önálló Azure Automation fiók létrehozása](automation-create-standalone-account.md)című témakört.
-* Ha sablon használatával szeretné létrehozni a fiókját, tekintse meg [az Automation-fiók létrehozása Azure Resource Manager sablonnal](automation-create-account-template.md)című témakört.
+* Ha sablon használatával szeretné létrehozni a fiókját, tekintse meg [az Automation-fiók létrehozása Azure Resource Manager sablonnal](quickstart-create-automation-account-template.md)című témakört.
 * Amazon Web Services használatával történő hitelesítéssel kapcsolatban lásd: [Runbookok hitelesítése Amazon Web Servicessal](automation-config-aws-account.md).

@@ -6,18 +6,18 @@ ms.topic: overview
 description: Ismerje meg, hogy az Azure dev Spaces hogyan nyújt gyors, ismétlődő Kubernetes-fejlesztési élményt az Azure Kubernetes Service-fürtökben található csapatok számára
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: fd757d5392a7cefcacdd1d77807beb72e34c8f89
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 691845cd888e4d24c1144f2805402a3baf14a86e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873372"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006964"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Mi az Azure Dev Spaces?
 
 Az Azure dev Spaces gyors, ismétlődő Kubernetes-fejlesztési élményt nyújt a csapatok számára az Azure Kubernetes Service (ak) fürtökben. Az Azure dev Spaces lehetővé teszi az alkalmazás összes összetevőjének hibakeresését és tesztelését az AK-ban minimális fejlesztői gép beállításával, a függőségek replikálásának vagy kigúnyolása nélkül.
 
-![](media/azure-dev-spaces/collaborate-graphic.gif)
+![Az ábrán egy alkalmazás két verziója egymástól függetlenül lett kifejlesztve. Ezután egy Azure dev Spaces fejlesztői környezetben egyesítjük őket.](media/azure-dev-spaces/collaborate-graphic.gif)
 
 ## <a name="how-azure-dev-spaces-simplifies-kubernetes-development"></a>Hogyan egyszerűsíti le az Azure Dev Spaces a Kubernetes fejlesztést
 

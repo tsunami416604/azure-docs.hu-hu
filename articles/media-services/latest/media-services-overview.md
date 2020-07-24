@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: bd3890757377525cf9c178866a2a2fbc0791b9de
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5f54d65fcfd8a124b30a785697d53ad120fbf9c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79461010"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000941"
 ---
 # <a name="azure-media-services-v3-overview"></a>Az Azure Media Services v3 áttekintése
 
@@ -31,7 +31,7 @@ Az Azure Media Services egy felhőalapú platform, amellyel olyan megoldások ho
 A Media Services v3 SDK [-k Media Services v3 OpenAPI-specifikáción (henceg)](https://aka.ms/ams-v3-rest-sdk)alapulnak.
 
 > [!NOTE]
-> Jelenleg a [Azure Portal](https://portal.azure.com/) használható a következőhöz: Media Services v3 [élő események](live-events-outputs-concept.md), View (nem felügyelt) v3- [eszközök](assets-concept.md)kezelése, az API-k [elérésére vonatkozó információk lekérése](access-api-portal.md). Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](https://docs.microsoft.com/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
+> Jelenleg a [Azure Portal](https://portal.azure.com/) használható a következőhöz: Media Services v3 [élő események](live-events-outputs-concept.md), View (nem felügyelt) v3- [eszközök](assets-concept.md)kezelése, az API-k [elérésére vonatkozó információk lekérése](./access-api-howto.md). Az összes többi felügyeleti feladathoz (például [átalakításokhoz, feladatokhoz](transforms-jobs-concept.md) és [tartalmak védelméhez](content-protection-overview.md)) használja a [REST API](/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK](media-services-apis-overview.md#sdks)-k egyikét.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,8 +53,8 @@ Media Services a felhőben különböző adathordozó-munkafolyamatokat hozhat l
 * Rögzített video- vagy hangtartalmak elemzése. A vásárlói elégedettség növelése érdekében például a vállalatok szöveggé alakíthatják a beszédet, és keresési indexeket és irányítópultokat hozhatnak létre. Ezután kinyerhetik a gyakori panaszokkal kapcsolatos adatokat, a panaszok forrását és más kapcsolódó adatokat.
 * Előfizetéses videoszolgáltatás létrehozása, és DRM-védelemmel ellátott tartalmak streamelése, ha egy ügyfélnek (például egy filmstúdiónak) korlátoznia kell a szerzői joggal védett munkákhoz való hozzáférést és azok használatát.
 * Offline tartalmak biztosítása repülőn, vonaton és autóban való lejátszáshoz. Előfordulhat, hogy egy ügyfélnek le kell töltenie a tartalmat a telefonjára vagy táblagépére a lejátszáshoz, amikor várhatóan nem fognak hálózathoz csatlakozni.
-* Oktatási e-learning platformot hozhat létre a Azure Media Services és az [Azure Cognitive Services API-k](https://docs.microsoft.com/azure/?pivot=products&panel=ai) a beszéd-szöveges feliratozáshoz, a több nyelvre való fordításhoz és így tovább.
-* A Azure Media Services és az [Azure Cognitive Services API-k](https://docs.microsoft.com/azure/?pivot=products&panel=ai) együttes használatával feliratokat és feliratokat adhat hozzá a videókhoz, hogy a szélesebb közönség számára is elérhető legyen (például a fogyatékkal élők vagy más nyelveken elolvasni kívánt személyek).
+* Oktatási e-learning platformot hozhat létre a Azure Media Services és az [Azure Cognitive Services API-k](../../index.yml?pivot=products&panel=ai) a beszéd-szöveges feliratozáshoz, a több nyelvre való fordításhoz és így tovább.
+* A Azure Media Services és az [Azure Cognitive Services API-k](../../index.yml?pivot=products&panel=ai) együttes használatával feliratokat és feliratokat adhat hozzá a videókhoz, hogy a szélesebb közönség számára is elérhető legyen (például a fogyatékkal élők vagy más nyelveken elolvasni kívánt személyek).
 * Lehetővé teszi, hogy a Azure CDN nagyobb skálázást érjenek el a pillanatnyi magas terhelések jobb kezelése érdekében (például egy termék indítási eseményének megkezdése).
 
 ## <a name="how-can-i-get-started-with-v3"></a>Hogyan kezdhetem meg a v3 használatát? 
@@ -88,14 +88,14 @@ Az oktatóanyagok a leggyakoribb Media Services feladatokhoz tartozó forgatók�
 
 ### <a name="samples"></a>Példák
 
-Használja [ezt a minta böngészőt](https://docs.microsoft.com/samples/browse/?products=azure-media-services) Azure Media Services kódok tallózásához.
+Használja [ezt a minta böngészőt](/samples/browse/?products=azure-media-services) Azure Media Services kódok tallózásához.
 
 ### <a name="how-to-guides"></a>Útmutatók
 
 A útmutatók olyan mintakód-mintákat tartalmaznak, amelyek bemutatják a feladatok végrehajtásának módját. Ebben a szakaszban számos példát talál. Íme néhány közülük:
 
-* [Fiók létrehozása – parancssori felület](create-account-cli-how-to.md)
-* [Adatelérési API-k – parancssori felület](access-api-cli-how-to.md)
+* [Fiók létrehozása – parancssori felület](./create-account-howto.md)
+* [Adatelérési API-k – parancssori felület](./access-api-howto.md)
 * [Kódolás HTTPS-sel, a feladathoz megadott bemenetként – .NET](job-input-from-http-how-to.md)  
 * [Események monitorozása – Portál](monitor-events-portal-how-to.md)
 * [Dinamikus titkosítás a multi-DRM-.NET használatával](protect-with-drm.md) 

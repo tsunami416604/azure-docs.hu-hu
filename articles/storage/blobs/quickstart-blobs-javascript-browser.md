@@ -7,12 +7,12 @@ ms.date: 04/18/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: af76025317436f7046b857731e4c8af9b504201f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f884e6d3cbc2e1f3127b251818f4617fccb6a999
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833417"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011328"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -20,7 +20,12 @@ ms.locfileid: "85833417"
 
 Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A Blobok olyan objektumok, amelyek szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a streaming adathordozókat és az archiválási adatok. Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti a blobokat a JavaScript böngészőben való használatával. Fel kell töltenie és listáznia kell a blobokat, és létre kell hoznia és törölnia kell a tárolókat.
 
-[API-referenciák dokumentációja](/javascript/api/@azure/storage-blob)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-blob)  |  [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+További források:
+
+* [API-referenciadokumentáció](/javascript/api/@azure/storage-blob)
+* [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
+* [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-blob)
+* [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 > [!NOTE]
 > A korábbi SDK-verzió használatának megkezdéséhez lásd [: gyors útmutató: Blobok kezelése a JavaScript v10 SDK-val Node.js](storage-quickstart-blobs-nodejs-legacy.md).
@@ -289,7 +294,7 @@ A [Azure Portal](https://portal.azure.com)a következő lépésekkel ELLENŐRIZH
 3. Válassza a **frissítés**lehetőséget. Az új tároló eltűnik.
 4. A webalkalmazás bezárásához.
 
-### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+### <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Kattintson a **terminál** konzolra a Visual Studio Code-ban, és nyomja le a CTRL + C billentyűkombinációt a webkiszolgáló leállításához.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2d73b87248fff2e99f05d2d6d6263f2bb3abba57
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 4338bc4a11b785b27f6316748f9cbc4eeaaddbea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185636"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015102"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Runbook indítása webhookból
 
@@ -120,7 +120,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Az ügyfél a kérelemből a következő visszatérési kódok egyikét kapja meg `POST` .
 
-| Kód | Szöveg | Leírás |
+| Code | Szöveg | Description |
 |:--- |:--- |:--- |
 | 202 |Elfogadva |A kérést elfogadták, és a runbook sikeresen várólistára került. |
 | 400 |Hibás kérés |A kérelmet a következő okok egyike miatt nem fogadták el: <ul> <li>A webhook lejárt.</li> <li>A webhook le van tiltva.</li> <li>Az URL-címben szereplő jogkivonat érvénytelen.</li>  </ul> |
@@ -133,7 +133,7 @@ Ha a kérelem sikeres, a webhook válasza JSON formátumban tartalmazza a felada
 {"JobIds":["<JobId>"]}
 ```
 
-Az ügyfél nem tudja meghatározni, hogy mikor fejeződött be a runbook-feladatok, vagy a befejezési állapota a webhookban. Ezt az információt a feladattal együtt egy másik mechanizmussal, például a [Windows PowerShell](/powershell/module/servicemanagement/azure/get-azureautomationjob) vagy a [Azure Automation API](/rest/api/automation/job)használatával tekintheti meg.
+Az ügyfél nem tudja meghatározni, hogy mikor fejeződött be a runbook-feladatok, vagy a befejezési állapota a webhookban. Ezt az információt a feladattal együtt egy másik mechanizmussal, például a [Windows PowerShell](/powershell/module/servicemanagement/azure.service/get-azureautomationjob) vagy a [Azure Automation API](/rest/api/automation/job)használatával tekintheti meg.
 
 ## <a name="renew-a-webhook"></a>Webhook megújítása
 

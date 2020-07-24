@@ -73,8 +73,6 @@
               href: how-dev-spaces-works-routing.md
             - name: Távoli hibakeresés
               href: how-dev-spaces-works-remote-debugging.md
-            - name: Helyi folyamat a Kubernetesszel
-              href: how-dev-spaces-works-local-process-kubernetes.md
         - name: A VS Code és a Dev Spaces együttes használata
           href: how-vs-code-works-with-dev-spaces.md
         - name: Hálózati konfiguráció különböző hálózati topológiák esetében
@@ -111,10 +109,6 @@
           href: how-to/ingress-https-traefik.md
         - name: NGINX használata egyéni bejövő és HTTPS-kapcsolatokhoz
           href: how-to/ingress-https-nginx.md
-        - name: Helyi folyamat és Kubernetes használata a Visual Studio Code-dal (előzetes verzió)
-          href: how-to/local-process-kubernetes-vs-code.md
-        - name: Helyi folyamat és Kubernetes használata a Visual Studióval (előzetes verzió)
-          href: how-to/local-process-kubernetes-visual-studio.md
     - name: Hibaelhárítás
       href: troubleshooting.md
     - name: GYIK

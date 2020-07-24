@@ -3,13 +3,14 @@ title: HTTP-szolgáltatások a Durable Functions-Azure Functions
 description: Ismerje meg a Azure Functions Durable Functions bővítményének integrált HTTP-funkcióit.
 author: cgillum
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16a133205b13a3d0a4aa76f75c8ce316f6c09199
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82800719"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014898"
 ---
 # <a name="http-features"></a>HTTP-funkciók
 
@@ -50,9 +51,60 @@ A koordináló [ügyfél-kötés](durable-functions-bindings.md#orchestration-cl
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-**function.jsbekapcsolva**
+**function.json**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+**__init__. a**
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    function_name = req.route_params['functionName']
+    event_data = req.get_body()
+
+    instance_id = await client.start_new(function_name, instance_id, event_data)
+    
+    logging.info(f"Started orchestration with ID = '{instance_id}'.")
+    return client.create_check_status_response(req, instance_id)
+```
+
+**function.json**
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "route": "orchestrators/{functionName}",
+      "methods": [
+        "post",
+        "get"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "starter",
+      "type": "orchestrationClient",
+      "direction": "in"
+    }
+  ]
+}
+```
 
 ---
 
@@ -147,6 +199,22 @@ module.exports = df.orchestrator(function*(context){
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    response = yield context.call_http('GET', url)
+    
+    if response["statusCode"] >= 400:
+        # handling of error codes goes here
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 
 ---
 
@@ -169,7 +237,7 @@ A "HTTP hívása" API automatikusan megvalósíthatja a lekérdezési fogyasztó
 
 A Durable Functions natív módon támogatja a Azure Active Directory (Azure AD) jogkivonatokat fogadó API-hívások engedélyezését. Ez a támogatás az [Azure által felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md) használatával szerzi be ezeket a jogkivonatokat.
 
-A következő kód egy .NET Orchestrator-függvény példája. A függvény hitelesített hívásokat kezdeményez a virtuális gépek újraindításához a Azure Resource Manager [Virtual machines REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines)használatával.
+A következő kód egy .NET Orchestrator-függvény példája. A függvény hitelesített hívásokat kezdeményez a virtuális gépek újraindításához a Azure Resource Manager [Virtual machines REST API](/rest/api/compute/virtualmachines)használatával.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -221,6 +289,30 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    subscription_id = "mySubId"
+    resource_group = "myRg"
+    vm_name = "myVM"
+    api_version = "2019-03-01"
+    token_source = df.ManagedIdentityTokenSource("https://management.core.windows.net")
+
+    # get a list of the Azure subscriptions that I have access to
+    restart_response = yield context.call_http("POST", 
+        f"https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.Compute/virtualMachines/${vm_name}/restart?api-version=${api_version}",
+        None,
+        None,
+        token_source)
+    return restart_response
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 Az előző példában a paraméter a `tokenSource` [Azure Resource Manager](../../azure-resource-manager/management/overview.md)Azure ad-jogkivonatok beszerzésére van konfigurálva. A jogkivonatokat az erőforrás-URI azonosítja `https://management.core.windows.net` . A példa azt feltételezi, hogy az aktuális Function alkalmazás helyileg fut, vagy felügyelt identitású Function alkalmazásként lett telepítve. A rendszer feltételezi, hogy a helyi identitás vagy a felügyelt identitás jogosult a virtuális gépek kezelésére a megadott erőforráscsoporthoz `myRG` .
@@ -255,7 +347,7 @@ Ha a korlátozások bármelyike érintheti a használati esetet, vegye figyelemb
 
 ### <a name="extensibility-net-only"></a>Bővíthetőség (csak .NET)
 
-A folyamat belső HTTP-ügyfelének viselkedését [Azure functions .net-függőségi befecskendezés](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)használatával lehet testreszabni. Ez a képesség hasznos lehet a kisméretű viselkedési változások elvégzéséhez. Emellett hasznos lehet a HTTP-ügyfelet az ál-objektumok befecskendezésével tesztelni.
+A folyamat belső HTTP-ügyfelének viselkedését [Azure functions .net-függőségi befecskendezés](../functions-dotnet-dependency-injection.md)használatával lehet testreszabni. Ez a képesség hasznos lehet a kisméretű viselkedési változások elvégzéséhez. Emellett hasznos lehet a HTTP-ügyfelet az ál-objektumok befecskendezésével tesztelni.
 
 Az alábbi példa azt mutatja be, hogyan használható a függőségi befecskendezés a TLS/SSL-tanúsítvány érvényesítésének letiltására a külső HTTP-végpontokat meghívó Orchestrator függvények esetében.
 

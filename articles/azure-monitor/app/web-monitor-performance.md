@@ -4,11 +4,12 @@ description: A Application Insights első lépései. A helyszíni vagy Microsoft
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b93e7f0fdb909a40667b001fa99929b3cfe27ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80985065"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014165"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Webalkalmazások teljesítményének monitorozása
 
@@ -25,7 +26,7 @@ Ha még nem adott hozzá Application Insightst a projekthez (azaz ha nincs Appli
 * [ASP.NET-webalkalmazások](../../azure-monitor/app/asp-net.md)
   * [Kivétel-figyelés hozzáadása](../../azure-monitor/app/asp-net-exceptions.md)
   * [Függőség figyelésének hozzáadása](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE-alapú webalkalmazások](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
+* [Java EE-alapú webalkalmazások](./java-in-process-agent.md)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Teljesítmény-mérőszámok feltárása
 A [Azure Portal](https://portal.azure.com)tallózással keresse meg az alkalmazáshoz beállított Application Insights-erőforrást. Az Áttekintés panelen az alapvető teljesítményadatok láthatók:
@@ -60,15 +61,15 @@ Szokatlan csúcsokat keres. Általánosságban elmondható, hogy a válaszadási
 
 Kattintson a csempére adott URL-címek lekéréséhez.
 
-![](./media/web-monitor-performance/appinsights-42reqs.png)
+![Képernyőkép az alkalmazás állapota panelről, amely a kérelmek és a válaszidő mozgóátlagának időbeli alakulását mutatja.](./media/web-monitor-performance/appinsights-42reqs.png)
 
 ### <a name="slowest-requests"></a>Leglassabb kérelmek
-![](./media/web-monitor-performance/appinsights-44slowest.png)
+![Képernyőkép a leglassabb kérelmek listájáról és azok válaszideje.](./media/web-monitor-performance/appinsights-44slowest.png)
 
 Megjeleníti, hogy mely kérelmekre lehet szükség a teljesítmény finomhangolásához.
 
 ### <a name="failed-requests"></a>Sikertelen kérelmek
-![](./media/web-monitor-performance/appinsights-46failed.png)
+![Képernyőfelvétel a sikertelen kérelmek számának időbeli alakulásáról; vagyis a nem kezelt kivételeket kidobott kérelmek.](./media/web-monitor-performance/appinsights-46failed.png)
 
 A nem kezelt kivételeket kidobott kérelmek száma.
 
@@ -86,7 +87,7 @@ Bármely metrika kiválasztásával letilthatja azokat a többieket, amelyek nem
 ## <a name="set-alerts"></a>Riasztások beállítása
 Ha bármilyen metrika szokatlan értékeit e-mailben szeretné értesíteni, adjon hozzá egy riasztást. Választhatja azt is, hogy az e-mailt a fiók rendszergazdái vagy adott e-mail-címei számára küldje el.
 
-![](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
+![Képernyőkép a riasztási szabály hozzáadása párbeszédpanelről, valamint a nyilakhoz csatlakoztatott képernyőképekkel, amelyek bemutatják, hogyan érheti el ezt a párbeszédpanelt a Metrikaböngészőból.](./media/web-monitor-performance/appinsights-413setMetricAlert.png)
 
 Adja meg az erőforrást a többi tulajdonság előtt. Ne válassza a webteszt-erőforrásokat, ha riasztásokat szeretne beállítani a teljesítményre vagy a használati metrikára vonatkozóan.
 
@@ -144,12 +145,9 @@ A teljesítmény vizsgálatával kapcsolatos tapasztalatok az arra a példára �
 [availability]: ../../azure-monitor/app/monitor-web-app-availability.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [greenbrown]: ../../azure-monitor/app/asp-net.md
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
 [usage]: usage-overview.md
 [livestream]: ../../azure-monitor/app/live-stream.md
 [snapshot]: ../../azure-monitor/app/snapshot-debugger.md
-
-
-

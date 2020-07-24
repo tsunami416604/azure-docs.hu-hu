@@ -3,12 +3,12 @@ title: 'Gyors útmutató: események küldése és fogadása a go-Azure Event Hu
 description: 'Gyors útmutató: Ez a cikk bemutatja, hogyan hozhat létre olyan go-alkalmazást, amely eseményeket küld az Azure Event Hubsból.'
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320352"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002454"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>Rövid útmutató: események küldése vagy fogadása Event Hubsról a go használatával
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -126,7 +126,7 @@ Gratulálunk! Üzeneteket küldött egy eseményközpontba.
 
 ### <a name="create-a-storage-account-and-container"></a>Storage-fiók és-tároló létrehozása
 
-Az esemény-adatfolyamban lévő partíciók és ellenőrzőpontok bérletei az Azure Storage-tárolók használatával vannak megosztva a fogadók között. Hozzon létre egy Storage-fiókot és egy tárolót a go SDK-val, de az [Azure Storage-fiókok ismertetése](../storage/common/storage-create-storage-account.md)című témakör útmutatását követve létrehozhat egyet is.
+Az esemény-adatfolyamban lévő partíciók és ellenőrzőpontok bérletei az Azure Storage-tárolók használatával vannak megosztva a fogadók között. Hozzon létre egy Storage-fiókot és egy tárolót a go SDK-val, de az [Azure Storage-fiókok ismertetése](../storage/common/storage-account-create.md)című témakör útmutatását követve létrehozhat egyet is.
 
 A go SDK-val tároló összetevők létrehozására szolgáló minták a [Go Samples](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage) adattárában és az oktatóanyagnak megfelelő mintában érhetők el.
 

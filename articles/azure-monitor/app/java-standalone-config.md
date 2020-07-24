@@ -3,12 +3,12 @@ title: Java-alkalmazások bárhol figyelése – Azure Monitor Application Insig
 description: Kód nélküli alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz az alkalmazás kialakítása nélkül. Az elosztott nyomkövetési és az alkalmazás-hozzárendelés használatával megkeresheti a d problémák kiváltó okát.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 0c66ad01f265dde7da2f48b17b3ad4438d59a0ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a01f2e9339f3ba4f8f50fc41617fabf9da9d8cd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319686"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014201"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurációs lehetőségek – Java önálló ügynök a Azure Monitor Application Insights
 
@@ -216,7 +216,7 @@ Az alábbi példa bemutatja, hogyan állíthatja be a mintavételezést az **ös
 
 ## <a name="http-proxy"></a>HTTP-proxy
 
-Ha az alkalmazás tűzfal mögött található, és nem tud közvetlenül kapcsolódni a Application Insightshoz (lásd: [Application Insights által használt IP-címek](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)), akkor a Java 3,0 előzetes verziójának Application Insights konfigurálásával HTTP-proxyt használhat:
+Ha az alkalmazás tűzfal mögött található, és nem tud közvetlenül kapcsolódni a Application Insightshoz (lásd: [Application Insights által használt IP-címek](./ip-addresses.md)), akkor a Java 3,0 előzetes verziójának Application Insights konfigurálásával HTTP-proxyt használhat:
 
 ```json
 {

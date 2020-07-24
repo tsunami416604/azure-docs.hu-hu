@@ -9,19 +9,19 @@ ms.subservice: imaging
 ms.date: 05/04/2020
 ms.reviewer: cynthn
 ms.custom: akjosh
-ms.openlocfilehash: c8e1f33f36b07a754620ad36aa60b00794291e59
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 77634b5e44f228142bef7b37faed2babb9f0e4de
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119688"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011156"
 ---
-# <a name="shared-image-galleries-overview"></a>Megosztott képgyűjtemények – áttekintés
+# <a name="shared-image-galleries-for-vm-images"></a>Megosztott rendszerképek a virtuálisgép-rendszerképekhez
 
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../includes/virtual-machines-common-shared-image-galleries.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan helyezhet üzembe megosztott rendszerképeket az [Azure CLI](shared-images-cli.md) -vel és [Azure PowerShell](shared-images-powershell.md)

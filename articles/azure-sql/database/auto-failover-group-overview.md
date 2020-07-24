@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: a4624d16f29834e8948a7bbc7ef882041727a823
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ecc2925b52679c5807c9fa79a67d7b45411df526
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171873"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014031"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -398,7 +398,7 @@ Vegye figyelembe a következő korlátozásokat:
 
 ## <a name="programmatically-managing-failover-groups"></a>Feladatátvételi csoportok programozott kezelése
 
-Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és az aktív geo-replikáció programozott módon is felügyelhető Azure PowerShell és a REST API használatával. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell parancsmagokat](https://docs.microsoft.com/powershell/azure/overview). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják a szerepköralapú biztonságot (RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú Access Control](../../role-based-access-control/overview.md).
+Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és az aktív geo-replikáció programozott módon is felügyelhető Azure PowerShell és a REST API használatával. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell parancsmagokat](https://docs.microsoft.com/powershell/azure/). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják a szerepköralapú biztonságot (RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú Access Control](../../role-based-access-control/overview.md).
 
 ### <a name="manage-sql-database-failover"></a>SQL Database feladatátvétel kezelése
 
@@ -415,7 +415,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 | [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
 | [az SQL feladatátvétel-csoport törlése](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
@@ -425,7 +425,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="rest-api"></a>[REST API](#tab/rest-api)
 
-| API | Leírás |
+| API | Description |
 | --- | --- |
 | [Feladatátvételi csoport létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Feladatátvételi csoport létrehozása vagy frissítése |
 | [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
@@ -453,7 +453,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Parancs | Leírás |
+| Parancs | Description |
 | --- | --- |
 | [az SQL feladatátvétel-csoport létrehozása](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt mind az elsődleges, mind a másodlagos kiszolgálókon.|
 | [az SQL feladatátvétel-csoport törlése](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Feladatátvételi csoport eltávolítása a kiszolgálóról |
@@ -463,7 +463,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 
 # <a name="rest-api"></a>[REST API](#tab/rest-api)
 
-| API | Leírás |
+| API | Description |
 | --- | --- |
 | [Feladatátvételi csoport létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Feladatátvételi csoport konfigurációjának létrehozása vagy frissítése |
 | [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Feladatátvételi csoport eltávolítása a példányból |

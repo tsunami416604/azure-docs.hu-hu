@@ -3,12 +3,12 @@ title: Hogyan... Az Azure Application Insightsban | Microsoft Docs
 description: Gyakori kérdések a Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: bda0091fe06c93150d5b3cae27f278f3fd9a91ea
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 63a958e1d3fb784651043181bff0428666fad6db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224468"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014593"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
 ## <a name="get-an-email-when-"></a>E-mail küldése, ha...
@@ -74,7 +74,7 @@ Néhány megfontolandó szempont:
 [Új riasztások létrehozása a PowerShell használatával](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Application Insights kezelése a PowerShell használatával
-* [Új erőforrások létrehozása](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
+* [Új erőforrások létrehozása](./create-new-resource.md#creating-a-resource-automatically)
 * [Új riasztások létrehozása](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Különálló telemetria különböző verziókból

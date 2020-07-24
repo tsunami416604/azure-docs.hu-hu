@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6913ae8cbd8c73bd2763bd89172280feee9df973
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 31c769039009889559b6aa05bb76139d63c42feb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185619"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015017"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker üzembe helyezése
 
@@ -173,7 +173,7 @@ A keresési eredmények között meg kell jelennie a gép szívverési rekordjai
 
 2. A hibrid Runbook-feldolgozó verziójának megerősítéséhez keresse meg `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` és jegyezze fel a **verzió** almappát.
 
-### <a name="step-3---install-the-runbook-environment-and-connect-to-azure-automation"></a>3. lépés – a runbook-környezet telepítése és a Azure Automationhoz való kapcsolódás
+### <a name="step-2---install-the-runbook-environment-and-connect-to-azure-automation"></a>2. lépés – a runbook-környezet telepítése és a Azure Automationhoz való kapcsolódás
 
 Ha úgy konfigurálja az ügynököt, hogy egy Log Analytics munkaterületre jelentsen, az Azure Automation szolgáltatás leküldi a `HybridRegistration` parancsmagot tartalmazó PowerShell-modult `Add-HybridRunbookWorker` . Ezzel a parancsmaggal telepítheti a runbook környezetet a gépre, és regisztrálhatja Azure Automation.
 
@@ -202,7 +202,7 @@ A paraméterekhez `Url` és az `Key` Automation-fiók Keys ( **kulcsok** ) lapj�
 
 * Ha szükséges, állítsa be a `Verbose` paramétert a telepítés részleteinek fogadására.
 
-### <a name="step-4----install-powershell-modules"></a>4. lépés – PowerShell-modulok telepítése
+### <a name="step-3----install-powershell-modules"></a>3. lépés – PowerShell-modulok telepítése
 
 A runbookok a Azure Automation környezetében telepített modulokban meghatározott tevékenységeket és parancsmagokat is használhatják. Mivel ezeket a modulokat a rendszer nem telepíti automatikusan a helyszíni gépekre, manuálisan kell telepítenie azokat. A kivétel az Azure-modul. Ez a modul alapértelmezés szerint telepítve van, és hozzáférést biztosít a Azure Automation összes Azure-szolgáltatásának és tevékenységének parancsmagokhoz.
 

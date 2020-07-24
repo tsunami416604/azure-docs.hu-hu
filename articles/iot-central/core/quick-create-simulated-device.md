@@ -3,17 +3,17 @@ title: Rövid útmutató – szimulált eszköz hozzáadása az Azure IoT Centra
 description: Ez a rövid útmutató bemutatja, hogyan hozhat létre egy eszköz-sablont, és hogyan adhat hozzá szimulált eszközt a IoT Central alkalmazáshoz.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 25e1742612c6fc8c326f2918a4d69c55a9888c97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26aba84fcc38fddf43c04550b1c3d1ce2d70b21f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81000440"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001951"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Gyors útmutató: szimulált eszköz hozzáadása a IoT Central alkalmazáshoz
 
@@ -62,20 +62,20 @@ A következő lépések bemutatják, hogyan importálhatja a **MXChip IoT fejles
 
     A MXChip IoT fejlesztői készlet képesség modellje olyan felületeket tartalmaz, mint például a **mxchip_sensor**, a **Mxchip_settings**és az **eszköz adatai**. A felületek határozzák meg egy MXChip-IoT fejlesztői készlet-eszköz képességeit. A képességek közé tartozik az eszköz által küldött telemetria, az eszköz tulajdonságainak jelentése, valamint az eszköz által válaszoló parancsok.
 
-### <a name="add-cloud-properties"></a>Felhő tulajdonságainak hozzáadása
+### <a name="add-cloud-properties"></a>Felhőtulajdonságok hozzáadása
 
-Az eszközök tartalmazhatnak Felhőbeli tulajdonságokat is. A felhő tulajdonságai csak a IoT Central alkalmazásban érhetők el, és a rendszer soha nem továbbítja, vagy nem fogadja az eszközt.
+Az eszközök tartalmazhatnak Felhőbeli tulajdonságokat is. A felhő tulajdonságai csak a IoT Central alkalmazásban érhetők el, és a rendszer soha nem továbbítja, vagy nem fogadja az eszközt. Felhőbeli tulajdonság hozzáadása:
 
 1. Válassza a **felhő tulajdonságai** lehetőséget, majd a **+ felhő tulajdonságot**. A következő táblázatban található információk segítségével két Felhőbeli tulajdonságot adhat hozzá az eszköz sablonhoz:
 
     | Megjelenítendő név      | Szemantikai típus | Séma |
     | ----------------- | ------------- | ------ |
-    | Utolsó szervizelés dátuma | None          | Dátum   |
-    | Ügyfél neve     | None          | Sztring |
+    | Utolsó szervizelés dátuma | Nincs          | Dátum   |
+    | Ügyfél neve     | Nincs          | Sztring |
 
 1. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra:
 
-    ![Felhő tulajdonságai](media/quick-create-simulated-device/cloud-properties.png)
+    ![Felhőtulajdonságok](media/quick-create-simulated-device/cloud-properties.png)
 
 ## <a name="views"></a>Nézetek
 
@@ -128,23 +128,25 @@ Szimulált eszköz az alkalmazáshoz való hozzáadásához használja a létreh
 
 1. Új eszköz hozzáadása operátorként a bal oldali ablaktáblán válassza az **eszközök** lehetőséget. A **Devices (eszközök** ) lapon az **összes eszköz** és a **MXChip IoT fejlesztői készlet** -sablon látható. Válassza a **MXChip IoT fejlesztői készlet**lehetőséget.
 
-1. Szimulált fejlesztői készlet-eszköz hozzáadásához válassza a **+** elemet. Használja a javasolt **eszköz azonosítóját** , vagy adja meg a saját kisbetűs **eszközének azonosítóját**. Megadhatja az új eszköz nevét is. Győződjön meg arról, hogy a **szimulált** váltógomb be van **kapcsolva** , majd válassza a **Létrehozás**lehetőséget.
+1. Szimulált fejlesztői készlet-eszköz hozzáadásához válassza a elemet **+** . Használja a javasolt **eszköz azonosítóját** , vagy adja meg a saját kisbetűs **eszközének azonosítóját**. Megadhatja az új eszköz nevét is. Győződjön meg arról, hogy a **szimulált** váltógomb be van **kapcsolva** , majd válassza a **Létrehozás**lehetőséget.
 
     ![Szimulált eszköz](./media/quick-create-simulated-device/simulated-device.png)
 
 Mostantól a Builder által az eszköz sablonja által létrehozott nézeteket szimulált adatként használhatja:
 
-1. Válassza ki a szimulált eszközt az **eszközök** lapon.
+1. Válassza ki a szimulált eszközt az **eszközök** lapon
 
-1. Az **Áttekintés** nézetben látható a szimulált telemetria ábrázolása:
+    * Az **Áttekintés** nézetben látható a szimulált telemetria ábrázolása:
 
-    ![Áttekintés nézet](./media/quick-create-simulated-device/simulated-telemetry.png)
+        ![Áttekintés nézet](./media/quick-create-simulated-device/simulated-telemetry.png)
 
-1. A **Névjegy** nézet a tulajdonságok értékeit jeleníti meg, beleértve a nézethez hozzáadott felhő-tulajdonságokat is.
+    * A **Névjegy** nézet a tulajdonságok értékeit jeleníti meg, beleértve a nézethez hozzáadott felhő-tulajdonságokat is.
 
-1. A **parancsok** nézetben parancsokat futtathat, például a **villogást** az eszközön.
+    * A **parancsok** nézetben parancsokat futtathat, például a **villogást** az eszközön.
 
-1. Az **eszközök kezelése** nézet a kezelő számára az eszköz kezeléséhez létrehozott űrlap.
+    * Az **eszközök kezelése** nézet a kezelő számára az eszköz kezeléséhez létrehozott űrlap.
+
+    * A **nyers** adatnézet lehetővé teszi az eszköz által elküldhető nyers telemetria és tulajdonságértékek megtekintését. Ez a nézet az eszközök hibakereséséhez használható.
 
 ## <a name="use-a-simulated-device-to-improve-views"></a>A nézetek fejlesztése szimulált eszköz használatával
 

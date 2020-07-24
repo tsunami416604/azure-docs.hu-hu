@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: b6d30aebd4de272ba98fce87f23701b129eacb02
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6f3c173c61e9f6d82a51fcaf7e11cda47eb47c1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726521"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011707"
 ---
 # <a name="azure-media-player-overview"></a>Az Azure Media Player áttekintése #
 
@@ -19,7 +19,7 @@ A Azure Media Player egy webvideós lejátszó, amely a [Microsoft Azure Media S
 
 Microsoft Azure Media Services lehetővé teszi, hogy a tartalom a KÖTŐJELtel, a Smooth Streaming és a HLS adatfolyam-formátumokkal legyen kézbesítve a tartalmak lejátszásához. Azure Media Player a különböző formátumokat veszi figyelembe, és a platform/böngésző képességei alapján automatikusan a legjobb hivatkozást játssza le. Microsoft Azure Media Services a közös titkosítással (PlayReady vagy Widevine) vagy AES-128 bites boríték-titkosítással rendelkező eszközök dinamikus titkosítását is lehetővé teszi. A Azure Media Player lehetővé teszi a PlayReady és az AES-128 bites titkosított tartalom visszafejtését, ha az megfelelően van konfigurálva.  Ennek konfigurálásához tekintse meg a [védett tartalom](azure-media-player-protected-content.md) szakaszt.
 
-Új szolgáltatások igényléséhez adjon meg ötleteket vagy visszajelzést, küldje el a [UserVoice a Azure Media Player](https://aka.ms/ampuservoice). Ha rendelkezik és adott problémákkal, kérdésekkel vagy hibákat talál, dobjon minket egy sorba ampinfo@microsoft.com.
+Új szolgáltatások igényléséhez adjon meg ötleteket vagy visszajelzést, küldje el a [UserVoice a Azure Media Player](https://aka.ms/ampuservoice). Ha rendelkezik és adott problémákkal, kérdésekkel vagy hibákat talál, dobjon minket egy sorba ampinfo@microsoft.com .
 
 [Regisztráljon](https://aka.ms/ampsignup) , hogy soha ne hagyjon ki egy kiadást, és naprakész maradjon a legújabb, Azure Media Player által kínált lehetőségek közül.
 
@@ -28,7 +28,7 @@ Microsoft Azure Media Services lehetővé teszi, hogy a tartalom a KÖTŐJELtel,
 
 ## <a name="license"></a>Licenc ##
 
-A Azure Media Player licenccel rendelkezik, és a Azure Media Player Microsoft szoftverlicenc-feltételeiben ismertetett feltételekre vonatkozik. Tekintse meg a teljes használati feltételeket [tartalmazó licencfeltételeket](azure-media-player-license.md) . További információért tekintse meg az [adatvédelmi nyilatkozatot](https://www.microsoft.com/en-us/privacystatement/default.aspx) .
+A Azure Media Player licenccel rendelkezik, és a Azure Media Player Microsoft szoftverlicenc-feltételeiben ismertetett feltételekre vonatkozik. Tekintse meg a teljes használati feltételeket [tartalmazó licencfeltételeket](/legal/azure-media-player/azure-media-player-license) . További információért tekintse meg az [adatvédelmi nyilatkozatot](https://www.microsoft.com/en-us/privacystatement/default.aspx) .
 
 Copyright 2015 Microsoft Corporation.
 

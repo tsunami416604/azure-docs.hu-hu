@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: d9906e43bad296cc850942c01c83c6bfee2651fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81e27c0f62e921eb468c78521e426c8917da250a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014138"
 ---
 # <a name="connection-strings"></a>Kapcsolati sztringek
 
@@ -25,18 +25,18 @@ A kulcs érték párok egyszerű módszert biztosítanak a felhasználók szám�
 > Nem ajánlott a kapcsolatok karakterláncának és a kialakítási kulcsnak a beállítása. Abban az esetben, ha a felhasználó mindkettőt beállította, akkor a legutóbb beállított érték elsőbbséget élvez. 
 
 
-## <a name="scenario-overview"></a>Forgatókönyv áttekintése 
+## <a name="scenario-overview"></a>A forgatókönyv áttekintése 
 
 Felhasználói forgatókönyvek, ahol a legnagyobb hatással van a következőre:
 
 - Tűzfal-kivételek vagy proxy-átirányítások 
 
-    Ha az intranetes webkiszolgáló figyelésére van szükség, a korábbi megoldásunk arra kérte az ügyfeleket, hogy egyéni szolgáltatási végpontokat adjanak hozzá a konfigurációhoz. További információ: [itt](https://docs.microsoft.com/azure/azure-monitor/app/troubleshoot-faq#can-i-monitor-an-intranet-web-server). 
+    Ha az intranetes webkiszolgáló figyelésére van szükség, a korábbi megoldásunk arra kérte az ügyfeleket, hogy egyéni szolgáltatási végpontokat adjanak hozzá a konfigurációhoz. További információ: [itt](../faq.md#can-i-monitor-an-intranet-web-server). 
     A kapcsolódási karakterláncok jobb alternatívát nyújtanak, ha csökkenti ezt az erőfeszítést egyetlen beállításra. Az egyszerű előtag, az utótagok módosítása lehetővé teszi az összes végpont automatikus populációjának és átirányításának megfelelő szolgáltatásokat. 
 
 - Szuverén vagy hibrid felhőalapú környezetek
 
-    A felhasználók egy meghatározott [Azure Government régióba](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)küldhetik az adatküldést.
+    A felhasználók egy meghatározott [Azure Government régióba](../../azure-government/compare-azure-government-global-azure.md#application-insights)küldhetik az adatküldést.
     A kapcsolódási karakterláncok lehetővé teszik a végponti beállítások megadását az intranetes kiszolgálókhoz vagy a hibrid felhő beállításaihoz. 
 
 ## <a name="getting-started"></a>Első lépések
@@ -276,7 +276,7 @@ Első lépések futtatáskor:
 
 * [Azure-beli virtuális gépek és Azure-beli virtuálisgép-méretezési csoport – IIS által üzemeltetett alkalmazások](../../azure-monitor/app/azure-vm-vmss-apps.md)
 * [IIS-kiszolgáló](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Azure Web Apps](../../azure-monitor/app/azure-web-apps.md)
+* [Azure-webalkalmazások](../../azure-monitor/app/azure-web-apps.md)
 
 Első lépések fejlesztéskor:
 

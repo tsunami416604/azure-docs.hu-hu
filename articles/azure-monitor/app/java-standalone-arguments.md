@@ -3,12 +3,12 @@ title: Bármilyen környezetben futó Java-alkalmazások figyelése – Azure Mo
 description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz a Java önálló ügynökkel az alkalmazás kialakítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6499fbc62a78cb333c623dbea8269144e623921c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82508037"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014241"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>A JVM-argumentumok konfigurálása a Java önálló ügynöke Azure Monitor Application Insights
 
@@ -16,7 +16,7 @@ ms.locfileid: "82508037"
 
 ## <a name="azure-environments"></a>Azure-környezetek
 
-[App Services](https://docs.microsoft.com/azure/app-service/configure-language-java#set-java-runtime-options)konfigurálása.
+[App Services](../../app-service/configure-language-java.md#set-java-runtime-options)konfigurálása.
 
 ## <a name="spring-boot"></a>Spring Boot
 

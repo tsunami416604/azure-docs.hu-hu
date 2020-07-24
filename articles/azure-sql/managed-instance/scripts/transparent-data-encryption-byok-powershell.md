@@ -12,11 +12,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: eba53254d58ddfa2577212723b7234bbb5939a6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34d91b23b0383f4128b7f03619ad0e2b07496f33
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708433"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014150"
 ---
 # <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>transzparens adattitkosítás az SQL felügyelt példányában a saját kulcsának használatával Azure Key Vault
 
@@ -44,6 +45,6 @@ Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtat�
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/overview).
+További információ a Azure PowerShellről: [Azure PowerShell dokumentáció](/powershell/azure/).
 
 Az SQL felügyelt példányaihoz további PowerShell-szkriptek is megtalálhatók az [Azure SQL felügyelt példány PowerShell-parancsfájljaiban](../../database/powershell-script-content-guide.md).

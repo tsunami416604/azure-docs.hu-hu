@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárol
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 909e4638b3b0919919320a09cbfa0e8d9ac92f2e
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8279a32ece16209c1dd5bca13d08e22b283677ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995938"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007004"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes-on: Visual Studio & .NET Core – Azure dev Spaces
 
@@ -25,7 +25,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 
 Az Azure dev Spaces Emellett lehetővé teszi a hibakeresést és a közelítést a használatával:
 - [A Java és a Visual Studio Code](quickstart-java.md)
-- [Node. js és Visual Studio Code](quickstart-nodejs.md)
+- [ANode.js és a Visual Studio Code](quickstart-nodejs.md)
 - [A .NET Core és a Visual Studio Code](quickstart-netcore.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -78,21 +78,21 @@ Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready 
 1. Nevezze el a projekt *webfelületét* , és kattintson a *Létrehozás*gombra.
 1. Ha a rendszer kéri, válassza a *webalkalmazás (Model-View-Controller)* elemet a sablonhoz.
 1. Válassza a *.net Core* és a *ASP.net Core 2,1* elemet a felső részen.
-1. Kattintson a *Létrehozás*gombra.
+1. Kattintson a *Létrehozás* lehetőségre.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>A projekt összekötése a fejlesztői területtel
 
 A projektben válassza az **Azure dev Spaces** lehetőséget az indítási beállítások legördülő listából az alább látható módon.
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![Képernyőfelvétel a Visual Studio felhasználói felületéről a Kiemelt és kiválasztott IIS Express lehetőséggel és az Azure dev Spaces beállítás kiválasztásával.](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
 Az Azure dev Spaces párbeszédpanelen válassza ki az *előfizetését* és az *Azure Kubernetes-fürtöt*. Hagyja üresen a *helyet* az *alapértelmezett* értékre, és engedélyezze a *nyilvánosan elérhető* jelölőnégyzetet. Kattintson az *OK* gombra.
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
+![Képernyőkép az Azure dev Spaces párbeszédpanelről.](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
 Ez a folyamat egy nyilvánosan elérhető URL-címmel telepíti a szolgáltatást az *alapértelmezett* fejlesztői tárhelyre. Ha egy olyan fürtöt választ, amely nincs az Azure Dev Spaceshez konfigurálva, a rendszer egy üzenetben rákérdez, hogy szeretné-e konfigurálni. Kattintson az *OK* gombra.
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![Képernyőkép az Azure Spaces-erőforrás hozzáadása párbeszédpanelről.](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 Az *alapértelmezett* fejlesztői területen futó szolgáltatás nyilvános URL-címe a *kimeneti* ablakban jelenik meg:
 

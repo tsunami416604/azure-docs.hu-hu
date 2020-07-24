@@ -10,12 +10,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 7321331adcfc81e26b40e7a3c4869b8b1e50fc0e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 02962e9c5be2c4b73d121a53a7b595c573ad6cd0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015221"
 ---
 # <a name="deploy-to-azure-kubernetes-service"></a>Üzembe helyezés az Azure Kubernetes Service-ben
 
@@ -29,7 +29,7 @@ Ez a cikk az Azure-API Management saját üzemeltetésű átjáró-összetevőj�
 
 ## <a name="deploy-the-self-hosted-gateway-to-aks"></a>A saját üzemeltetésű átjáró üzembe helyezése az AK-ban
 
-1. Válassza az **átjárók** lehetőséget a **Beállítások**területen.
+1. Válassza az **átjárók** lehetőséget az **üzembe helyezés és az infrastruktúra**területen.
 2. Válassza ki azt a saját üzemeltetésű átjáró-erőforrást, amelyet telepíteni kíván.
 3. Válassza a **telepítés**lehetőséget.
 4. Vegye figyelembe, hogy a **jogkivonat** szövegmezőben lévő új jogkivonat automatikusan lett létrehozva az alapértelmezett **lejárati** és **titkos kulcs** értékeinek használatával. Ha szükséges, módosítsa a vagy mindkettőt, és válassza a **Létrehozás** lehetőséget egy új jogkivonat létrehozásához.
@@ -60,7 +60,7 @@ contosogateway   NodePort    10.110.230.87   <none>        80:32504/TCP,443:3004
 > [!TIP]
 > A <code>kubectl logs <gateway-pod-name></code> parancs használatával megtekintheti a saját üzemeltetésű átjáró naplójának pillanatképét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a saját üzemeltetésű átjáróról: [Azure API Management saját üzemeltetésű átjáró – áttekintés](self-hosted-gateway-overview.md)
 * További információ az [Azure Kubernetes Service](../aks/intro-kubernetes.md) -ről

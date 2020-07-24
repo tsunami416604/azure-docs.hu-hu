@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 5f4b48dfbef7362a0b49e53a17b080e127701c94
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8a951a4920f2f80a4b9738317bdb2da96c613d53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199889"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013045"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -118,7 +118,7 @@ Automatikus gépi tanulási kísérletek esetén a rendszer automatikusan alkalm
 
 Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek. A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre. Ismerje meg, hogyan segít a AutoML a modellekben a [túlzottan illeszkedő és kiegyensúlyozatlan adatértékek megelőzésében](concept-manage-ml-pitfalls.md) .
 
-|Méretezés &nbsp; & &nbsp; normalizálása| Leírás |
+|Méretezés &nbsp; & &nbsp; normalizálása| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Szabványosítási funkciók az átlag és a skálázás egységbeli eltérésének eltávolításával  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Az egyes szolgáltatások méretezésével átalakítja a szolgáltatásokat az adott oszlop minimális és maximális értékével  |
@@ -174,7 +174,7 @@ Vegye figyelembe ezeket az előnyeit és hátrányait a helyi és a távoli hasz
 
  További funkciók érhetők el a távoli számítás használatakor, az alábbi táblázatban látható módon. Ezen funkciók némelyike csak vállalati munkaterületeken érhető el.
 
-| Funkció                                                    | Remote | Helyi | Igényel <br>Vállalati munkaterület |
+| Funkció                                                    | Távoli | Helyi | Igényel <br>Vállalati munkaterület |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Adatfolyam (nagy adatátviteli támogatás, akár 100 GB-ig)          | ✓      |       | ✓                             |
 | DNN – BERT-alapú szöveges featurization és-képzés             | ✓      |       | ✓                             |

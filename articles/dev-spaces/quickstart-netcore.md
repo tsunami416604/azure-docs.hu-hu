@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy .NET Core-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b8ddf2e484b3d1525825f8df3b738091564b0a78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 104e812cc9e792ce71f263085ba1a3474cc2226b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512452"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002777"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes-on: Visual Studio Code és .NET Core – Azure dev Spaces
 
@@ -155,7 +155,7 @@ ViewData["Message"] = "Your application description page in Azure while debuggin
 
 Mentse a fájlt. Kattintson a *hibakeresés* elemre, majd *indítsa újra a hibakeresést* , vagy a hibakeresés *eszköztáron*kattintson a *hibakeresés újraindítása* gombra.
 
-![A hibakeresés eszköztár egy kis ablaktábla az oldal felső középső részén (közvetlenül az oldal címe alatt). Az Újraindítás gomb egy körkörös nyilat jelenít meg, és ki van emelve. A gomb hover-képe: "újraindítás (CTRL + SHIFT + F5)".](media/common/debug-action-refresh.png)
+![A hibakeresés eszköztár egy kis ablaktábla az oldal felső középső részén (közvetlenül az oldal címe alatt). Az Újraindítás gomb egy körkörös nyilat jelenít meg, és ki van emelve. A gomb hover-képe: "restart (Control + Shift + f 5)".](media/common/debug-action-refresh.png)
 
 Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy a frissített üzenet jelenik meg.
 
@@ -167,7 +167,7 @@ Az új Container-lemezképek újraépítése és újratelepítése helyett az Az
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazások fejlesztését több tárolóban, és hogyan egyszerűsítheti az együttműködésen alapuló fejlesztést, ha a kód különböző verzióival vagy ágaival dolgozik a különböző helyeken. 
 

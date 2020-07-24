@@ -7,13 +7,13 @@ tags: azure-resource-manager
 ms.service: analysis-services
 ms.topic: quickstart
 ms.date: 04/14/2020
-ms.custom: subject-armqs
-ms.openlocfilehash: 4dd7906ed32faa630ba074cb29e7987a64205cb5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: subject-armqs, references_regions
+ms.openlocfilehash: 7ba678cb71b9bd7a6b941b8e0dc90a0447d165df
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042101"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015358"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>Gyors útmutató: kiszolgálói ARM-sablon létrehozása
 
@@ -21,7 +21,7 @@ Ez a rövid útmutató azt ismerteti, hogyan hozhat létre Analysis Services Ser
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok használatát, válassza az **üzembe helyezés az Azure** -ban gombot. A sablon megnyílik a Azure Portalban.
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
 
 [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json)
 
@@ -32,7 +32,7 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonok 
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-analysis-services-create/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-analysis-services-create/) közül származik.
 
 :::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json" range="1-79" highlight="63-78":::
 

@@ -4,12 +4,12 @@ description: Ebből a rövid útmutatóból megtudhatja, hogyan állíthatja be 
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: b47f3ce1ebed12d14dffd68e87dd013bb86218ea
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: fa2ecd5d953ec0411a122dc7107ce23de1ae5bc6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801637"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014048"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Rövid útmutató: a webhely figyelésének megkezdése Azure Monitor Application Insights
 
@@ -27,10 +27,10 @@ Az Azure Monitor Application Insights segítségével egyszerűen monitorozhatja
 A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolattal rendelkező alkalmazásokból is gyűjthet telemetria-adatokat. Az alábbi lépések végrehajtásával tekintheti meg ezeket az adatfájlokat:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. Válassza **az erőforrás** > **létrehozása felügyeleti eszközök** > **Application Insights**elemet.
+1. Válassza **az erőforrás létrehozása**  >  **felügyeleti eszközök**  >  **Application Insights**elemet.
 
    > [!NOTE]
-   >Ha első alkalommal hoz létre Application Insights-erőforrást, tekintse meg [Application Insights erőforrás létrehozása](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)című témakört.
+   >Ha első alkalommal hoz létre Application Insights-erőforrást, tekintse meg [Application Insights erőforrás létrehozása](./create-new-resource.md)című témakört.
 1. Amikor megjelenik a konfigurációs mező, a következő táblázat segítségével hajtsa végre a beviteli mezőket:
 
     | Beállítások        | Érték           | Leírás  |
@@ -42,8 +42,8 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
 
 ## <a name="create-an-html-file"></a>HTML-fájl létrehozása
 
-1. A helyi számítógépen hozzon létre egy ``hello_world.html`` nevű fájlt. Ebben a példában hozza létre a fájlt a C meghajtó gyökerén úgy, hogy az a következőképpen ``C:\hello_world.html``néz ki:.
-1. Másolja és illessze be az alábbi szkriptet a következőbe ``hello_world.html``:
+1. A helyi számítógépen hozzon létre egy ``hello_world.html`` nevű fájlt. Ebben a példában hozza létre a fájlt a C meghajtó gyökerén úgy, hogy az a következőképpen néz ki: ``C:\hello_world.html`` .
+1. Másolja és illessze be az alábbi szkriptet a következőbe ``hello_world.html`` :
 
     ```html
     <!DOCTYPE html>
@@ -60,11 +60,11 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
 
 ## <a name="configure-application-insights-sdk"></a>Application Insights SDK konfigurálása
 
-1. Válassza az **Áttekintés** > **Essentials**lehetőséget, majd másolja az alkalmazás kialakítási **kulcsát**.
+1. Válassza az **Áttekintés**  >  **Essentials**lehetőséget, majd másolja az alkalmazás kialakítási **kulcsát**.
 
    ![Új Application Insights-erőforrás űrlap](media/website-monitoring/instrumentation-key-001.png)
 
-1. Adja hozzá a következő parancsfájlt ``hello_world.html`` a fájlhoz a ``</head>`` záró címke előtt:
+1. Adja hozzá a következő parancsfájlt a ``hello_world.html`` fájlhoz a záró ``</head>`` címke előtt:
 
    ```javascript
    <script type="text/javascript">
@@ -86,7 +86,7 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
 
    Az áttekintő oldal négy alapértelmezett diagramjának hatóköre a kiszolgálóoldali alkalmazásadatokra van beállítva. Mivel az ügyfél/böngésző oldali interakciókat a JavaScript SDK-val alakítjuk ki, ez az adott nézet nem érvényes, kivéve, ha egy kiszolgálóoldali SDK is telepítve van.
 
-1. Válassza az **elemzési** ![alkalmazás Térkép](media/website-monitoring/006.png)ikont.  Ez a művelet megnyitja az **elemzést**, amely részletes lekérdezési nyelvet biztosít a Application Insights által összegyűjtött összes adatok elemzéséhez. Az ügyféloldali böngésző kéréseivel kapcsolatos adatmegjelenítéshez futtassa a következő lekérdezést:
+1. Válassza az **elemzési** ![ alkalmazás Térkép ikont ](media/website-monitoring/006.png) .  Ez a művelet megnyitja az **elemzést**, amely részletes lekérdezési nyelvet biztosít a Application Insights által összegyűjtött összes adatok elemzéséhez. Az ügyféloldali böngésző kéréseivel kapcsolatos adatmegjelenítéshez futtassa a következő lekérdezést:
 
     ```kusto
     // average pageView duration by name
@@ -119,7 +119,7 @@ A Application Insights a helyszínen vagy a felhőben futó, internetkapcsolatta
 
 A webhelyek figyelésére szolgáló speciális konfigurációk megismeréséhez tekintse meg a [JavaScript SDK API-referenciáját](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md).
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy további rövid útmutatókkal vagy oktatóanyagokkal dolgozik tovább, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ellenkező esetben a következő lépésekkel törölheti a rövid útmutatóban létrehozott összes erőforrást a Azure Portal.
 
@@ -132,4 +132,4 @@ Ha azt tervezi, hogy további rövid útmutatókkal vagy oktatóanyagokkal dolgo
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Teljesítményproblémák észlelése és diagnosztizálása](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [Teljesítményproblémák észlelése és diagnosztizálása](../log-query/log-query-overview.md)

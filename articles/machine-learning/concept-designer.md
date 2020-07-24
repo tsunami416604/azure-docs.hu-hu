@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: a2074b1ecd37fd18a9a0ac9091f05e734765e40b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199987"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012943"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Mi az az Azure Machine Learning Designer (előzetes verzió)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -90,7 +90,7 @@ Ha segítségre van az elérhető gépi tanulási algoritmusok könyvtárában, 
 
 A munkaterületen lévő számítási erőforrások használatával futtathatja a folyamatot, és üzemeltetheti a telepített modelleket valós idejű végpontok vagy folyamat-végpontok (a Batch-következtetések esetében). A támogatott számítási célok a következők:
 
-| Számítási cél | Betanítás | Üzembe helyezés |
+| Számítási cél | Oktatás | Üzembe helyezés |
 | ---- |:----:|:----:|
 | Azure Machine Learning számítás | ✓ | |
 | Azure Machine Learning számítási példány | ✓ | |
@@ -115,25 +115,6 @@ A közzétett folyamatok rugalmasak, felhasználhatók modellek betanítására 
 A közzétett folyamat az egyes modulokhoz tartozó folyamat piszkozatában definiált számítási erőforrásokon fut.
 
 A tervező létrehoz egy [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) -objektumot, mint az SDK-t.
-
-
-## <a name="moving-from-the-visual-interface-to-the-designer"></a>Áthelyezés a vizualizáció kezelőfelületéről a tervezőbe
-
-A Visual Interface (előzetes verzió) frissítve lett, és mostantól Azure Machine Learning Designer (előzetes verzió). A tervező olyan folyamat-alapú háttérrendszer használatára lett újratervezve, amely teljesen integrálódik a Azure Machine Learning többi szolgáltatásával. 
-
-A frissítések eredményeképpen a vizuális felület egyes fogalmai és kifejezései módosultak vagy átnevezve lettek. A legfontosabb koncepcionális változásokért tekintse meg az alábbi táblázatot. 
-
-| Koncepció a Designerben | Korábban a vizuális felületen |
-| ---- |:----:|
-| Folyamat piszkozata | Experiment |
-| Valós idejű végpont | Webszolgáltatás |
-
-### <a name="migrating-to-the-designer"></a>Migrálás a tervezőbe
-
-A meglévő vizuális felületi kísérleteket és webszolgáltatásokat átalakíthatja folyamatokra és valós idejű végpontokra a tervezőben. A Visual Interface-eszközök áttelepíthetők a következő lépésekkel:
-
-[!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
-
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,26 +1,26 @@
 ---
-title: 'Hibakeresés és iteráció a Kubernetes-on: Visual Studio Code & Node. js'
+title: 'Hibakeresés és iteráció a Kubernetes-on: Visual Studio Code & Node.js'
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy Node. js-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
+description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy Node.js-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 18171a2f8d13bfcf3df76b1453c39c59cab89d7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 370d49b5287a4d5beafc8c2cc5d8f48c269715db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240202"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006944"
 ---
-# <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes Visual Studio Code és Node. js-sel – Azure dev Spaces
+# <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes a Visual Studio Code és a Node.js – Azure dev Spaces
 
-Ebben a rövid útmutatóban egy felügyelt Kubernetes-fürttel állítja be az Azure dev Spaces-t, és a Visual Studio Code-ban egy Node. js-alkalmazással iteratív a kód fejlesztését és hibakeresését a tárolókban. Az Azure dev Spaces lehetővé teszi az alkalmazás összes összetevőjének hibakeresését és tesztelését az Azure Kubernetes szolgáltatásban (ak) a minimális fejlesztői gép beállításával. 
+Ebben a rövid útmutatóban egy felügyelt Kubernetes-fürttel állítja be az Azure dev Spaces-t, és a Visual Studio Code-ban egy Node.js alkalmazás használatával iteratív a kód fejlesztését és hibakeresését a tárolókban. Az Azure dev Spaces lehetővé teszi az alkalmazás összes összetevőjének hibakeresését és tesztelését az Azure Kubernetes szolgáltatásban (ak) a minimális fejlesztői gép beállításával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
-- [A Node. js legújabb verziója](https://nodejs.org/download/).
+- [A Node.jslegújabb verziója ](https://nodejs.org/download/).
 - [Visual Studio Code](https://code.visualstudio.com/download).
 - Az [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) bővítmény a Visual Studio Code-hoz.
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
@@ -40,7 +40,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 A `use-dev-spaces` parancs használatával engedélyezze a fejlesztői szóközöket az AK-fürtön, és kövesse az utasításokat. A következő parancs engedélyezi a dev Spaces szolgáltatást a *MyAKS* -fürtön a *MyResourceGroup* csoportban, és létrehoz egy *alapértelmezett* fejlesztői helyet.
 
 > [!NOTE]
-> A `use-dev-spaces` parancs az Azure dev SPACEs CLI-t is telepíti, ha még nincs telepítve. Nem telepítheti az Azure dev Spaces CLI-t a Azure Cloud Shell.
+> A `use-dev-spaces` parancs az Azure dev Spaces CLI-t is telepíti, ha még nincs telepítve. Nem telepítheti az Azure dev Spaces CLI-t a Azure Cloud Shell.
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -78,11 +78,11 @@ Nyissa meg a Visual Studio Code-ot, válassza a **fájl** , majd a **Megnyitás*
 
 Most már megnyitotta a *webfrontend* -projektet a Visual Studio Code-ban. Az alkalmazás fejlesztői tárhelyen való futtatásához a Docker és a Helm chart objektumokat a parancs paletta Azure dev Spaces bővítményének használatával hozhatja ki.
 
-A Command paletta Visual Studio Code-ban való megnyitásához válassza a **nézet** , majd a **parancs paletta**lehetőséget. Kezdjen `Azure Dev Spaces` el gépelni, majd válassza **Az Azure dev Spaces: konfigurációs fájlok előkészítése az Azure dev Spaces szolgáltatáshoz**lehetőséget.
+A Command paletta Visual Studio Code-ban való megnyitásához válassza a **nézet** , majd a **parancs paletta**lehetőséget. Kezdjen el gépelni `Azure Dev Spaces` , majd válassza **Az Azure dev Spaces: konfigurációs fájlok előkészítése az Azure dev Spaces szolgáltatáshoz**lehetőséget.
 
 ![Konfigurációs fájlok előkészítése az Azure dev Spaces szolgáltatáshoz](./media/common/command-palette.png)
 
-Ha a Visual Studio Code azt is kéri, hogy konfigurálja a nyilvános végpontot `Yes` , válassza a nyilvános végpont engedélyezését.
+Ha a Visual Studio Code azt is kéri, hogy konfigurálja a nyilvános végpontot, válassza a `Yes` nyilvános végpont engedélyezését.
 
 ![Nyilvános végpont kiválasztása](media/common/select-public-endpoint.png)
 
@@ -126,13 +126,13 @@ A szolgáltatás frissített verziójának üzembe helyezéséhez frissítheti a
 
 Indítsa el a szolgáltatást a **Launch Server (AZDS)** használatával.
 
-A **nézet** , majd az **Intéző**lehetőség kiválasztásával térjen vissza a tallózó nézethez. Nyissa meg a *Server. js fájlt* , és kattintson a 13. sorban, hogy a kurzort ott helyezze el. A Töréspont beállításához nyomja meg az **F9** billentyűt, vagy válassza a **hibakeresés** , majd a **töréspont váltása**lehetőséget.
+A **nézet** , majd az **Intéző**lehetőség kiválasztásával térjen vissza a tallózó nézethez. Nyissa meg *server.js* , majd a 13. sorban kattintson a kurzorra. A Töréspont beállításához nyomja meg az **F9** billentyűt, vagy válassza a **hibakeresés** , majd a **töréspont váltása**lehetőséget.
 
 Nyissa meg a szolgáltatást egy böngészőben, és figyelje meg, hogy nem jelenik meg üzenet. Térjen vissza a Visual Studio Code-ba, és figyelje meg, hogy a 13. sor ki van emelve. A megadott töréspont szüneteltette a szolgáltatást a 13. sorban. A szolgáltatás folytatásához nyomja le az **F5** billentyűt, vagy válassza a **hibakeresés** , majd a **Folytatás**lehetőséget. Térjen vissza a böngészőhöz, és figyelje meg, hogy az üzenet most megjelenik.
 
 A szolgáltatás Kubernetes való futtatásakor a hibakeresőhöz csatolva teljes hozzáférése van a hibakeresési adatokhoz, például a hívási verem, a helyi változók és a kivételek adataihoz.
 
-Távolítsa el a töréspontot úgy, hogy az egérmutatót a *Server. js* fájlban, majd az **F9**billentyűt nyomva tartja.
+Távolítsa el a töréspontot úgy, hogy a kurzort a 13. sorban *server.js* és az **F9**billentyű lenyomásával.
 
 Válassza a **hibakeresés** lehetőséget, majd állítsa le a **hibakeresést** a hibakereső leállításához.
 
@@ -140,13 +140,13 @@ Válassza a **hibakeresés** lehetőséget, majd állítsa le a **hibakeresést*
 
 Módosítsa a hibakeresési módot **egy kiszolgálóhoz (AZDS) való csatoláshoz** , és indítsa el a szolgáltatást:
 
-![](media/get-started-node/attach-nodejs.png)
+![Képernyőkép a VS Code felhasználói felületéről, a Csatolás a kiszolgálóhoz (AZDS) lehetőség van kiválasztva.](media/get-started-node/attach-nodejs.png)
 
 Ez a parancs az Azure dev Spaces szolgáltatásban hozza létre és futtatja a szolgáltatást. Emellett a szolgáltatás tárolójában is elindítja a nem [démoni](https://nodemon.io) folyamatot, és a vs Code-ot csatolja hozzá. A nem *démon* folyamat lehetővé teszi az automatikus újraindítást a forráskód módosításakor, ami lehetővé teszi a gyorsabb belső hurok-fejlesztést a helyi gépen való fejlesztéshez hasonló módon.
 
 A szolgáltatás elindítása után navigáljon a böngészővel, és használja azt.
 
-A szolgáltatás futása közben térjen vissza a VS Code-ra, és frissítse a 13. sort a *Server. js*-ben. Például:
+A szolgáltatás futása közben térjen vissza a VS Code-ra, és frissítse a 13. sort *server.js*. Például:
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```

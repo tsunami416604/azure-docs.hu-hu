@@ -3,28 +3,28 @@ title: Telemetria folyamatos exportálása a Application Insightsból | Microsof
 description: A diagnosztikai és használati adatok exportálása a Microsoft Azure tárolóba, és onnan tölthető le.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 8ca2dc30b6e0681b5ee10fa3c77fab15ffb18b1d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 54cd6db6de4aa9c1b8f8894c03a8803ee4aa2b00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110215"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014524"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetria exportálása az Application Insightsból
 Szeretné megőrizni a telemetria a normál megőrzési időtartamnál hosszabb ideig? Vagy dolgozza fel valamilyen speciális módon? A folyamatos exportálás ideális ehhez. A Application Insights-portálon megjelenített események JSON formátumban exportálhatók Microsoft Azureba. Innen letöltheti az adatait, és bármilyen kódot írhat, amelyet fel kell dolgoznia.  
 
 > [!NOTE]
-> A folyamatos Exportálás csak a klasszikus Application Insights-erőforrások esetében támogatott. A [munkaterület-alapú Application Insights erőforrásoknak](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource) [diagnosztikai beállításokat](https://docs.microsoft.com/azure/azure-monitor/app/create-workspace-resource#export-telemetry)kell használniuk.
+> A folyamatos Exportálás csak a klasszikus Application Insights-erőforrások esetében támogatott. A [munkaterület-alapú Application Insights erőforrásoknak](./create-workspace-resource.md) [diagnosztikai beállításokat](./create-workspace-resource.md#export-telemetry)kell használniuk.
 >
 
 A folyamatos exportálás beállítása előtt bizonyos alternatívákat érdemes figyelembe venni:
 
 * A metrikák vagy a Keresés lap tetején található exportálás gomb lehetővé teszi táblázatok és diagramok Excel-számolótáblába való átvitelét.
 
-* Az [elemzés](../../azure-monitor/app/analytics.md) hatékony lekérdezési nyelvet biztosít a telemetria számára. Az eredmények exportálására is használható.
+* Az [elemzés](../log-query/log-query-overview.md) hatékony lekérdezési nyelvet biztosít a telemetria számára. Az eredmények exportálására is használható.
 * Ha [Power BIban lévő adatait szeretné felfedezni](../../azure-monitor/app/export-power-bi.md ), folyamatos exportálás nélkül is megteheti.
 * Az [adatelérési REST API](https://dev.applicationinsights.io/) lehetővé teszi a telemetria programozott módon való elérését.
-* A telepítő [folyamatos exportálását a PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)használatával is elérheti.
+* A telepítő [folyamatos exportálását a PowerShell](/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport)használatával is elérheti.
 
 A folyamatos exportálás után a rendszer a szokásos [megőrzési időszakra](../../azure-monitor/app/data-retention-privacy.md)vonatkozóan a Application Insightsban is elérhetővé teszi az adatok tárolását
 
@@ -32,9 +32,9 @@ A folyamatos exportálás után a rendszer a szokásos [megőrzési időszakra](
 
 A folyamatos exportálás nem **támogatja** a következő Azure Storage-funkciókat/-konfigurációkat:
 
-* A [VNET/Azure Storage-tűzfalak](https://docs.microsoft.com/azure/storage/common/storage-network-security) használata az Azure Blob Storage szolgáltatással együtt.
+* A [VNET/Azure Storage-tűzfalak](../../storage/common/storage-network-security.md) használata az Azure Blob Storage szolgáltatással együtt.
 
-* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
+* [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md).
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a>Folyamatos exportálás létrehozása
 
@@ -58,7 +58,7 @@ A tárolóban lévő adatmennyiség körülbelül egy órával késleltethető.
 
 Az első exportálás befejezése után a következőhöz hasonló struktúra található az Azure Blob Storage-tárolóban: (ez a gyűjtött adatoktól függően változhat.)
 
-|Name | Leírás |
+|Név | Leírás |
 |:----|:------|
 | [Rendelkezésre állás](export-data-model.md#availability) | Jelentések [rendelkezésre állását ismertető webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md).  |
 | [Esemény](export-data-model.md#events) | A [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)által generált egyéni események. 

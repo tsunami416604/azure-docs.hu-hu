@@ -3,12 +3,12 @@ title: Java-alkalmazások figyelése bármilyen környezetben – Azure Monitor 
 description: Alkalmazások teljesítményének figyelése bármilyen környezetben futó Java-alkalmazásokhoz az alkalmazás kialakítása nélkül. Elosztott nyomkövetési és alkalmazás-hozzárendelés.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3e3d108603ad6210143deea58049ff7b230bb6fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85319703"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014337"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>A Java Code unapplication monitoring Azure monitor Application Insights – nyilvános előzetes verzió
 
@@ -32,11 +32,11 @@ Hozzáadás `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.5.jar` a
 
 A tipikus JVM argumentumok közé tartoznak `-Xmx512m` a és a `-XX:+UseG1GC` . Tehát ha tudja, hol adja hozzá ezeket, akkor már tudja, hová adja hozzá ezt a lehetőséget.
 
-Ha további segítségre van az alkalmazás JVM argumentumok konfigurálásához, tekintse meg a [3,0 előzetes verzió: Tippek a JVM argumentumok frissítéséhez](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)című témakört.
+Ha további segítségre van az alkalmazás JVM argumentumok konfigurálásához, tekintse meg a [3,0 előzetes verzió: Tippek a JVM argumentumok frissítéséhez](./java-standalone-arguments.md)című témakört.
 
 **3. irányítsa az ügynököt a Application Insights erőforrásra**
 
-Ha még nem rendelkezik Application Insights erőforrással, létrehozhat egy újat az [Erőforrás-létrehozási útmutató](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)lépéseit követve.
+Ha még nem rendelkezik Application Insights erőforrással, létrehozhat egy újat az [Erőforrás-létrehozási útmutató](./create-new-resource.md)lépéseit követve.
 
 Mutasson az ügynököt a Application Insights erőforrásra, vagy egy környezeti változó beállításával:
 
@@ -80,7 +80,7 @@ A `ApplicationInsights.json` fájlban emellett a következőket is konfigurálha
 * HTTP-proxy
 * Saját diagnosztika
 
-Tekintse meg a részleteket a [3,0 nyilvános előzetes verzióban: konfigurációs beállítások](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
+Tekintse meg a részleteket a [3,0 nyilvános előzetes verzióban: konfigurációs beállítások](./java-standalone-config.md).
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Az újragyűjtött kérelmek, függőségek, naplók és metrikák
 

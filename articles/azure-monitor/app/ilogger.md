@@ -4,17 +4,17 @@ description: Minták az Azure Application Insights ILogger Provider ASP.NET Core
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 33effe9cfec6d766d573617ff03b58564e5b34d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 419813eba371def9eeeb43e45b51b38d1f20c607
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81313660"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014473"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider a .NET Core ILogger-naplókhoz
 
 A ASP.NET Core olyan naplózási API-t támogat, amely különböző típusú beépített és külső naplózási szolgáltatók esetén működik. A naplózást a **log ()** vagy annak egy változata hívja meg a *ILogger* -példányokon. Ez a cikk bemutatja, hogyan rögzíthet ILogger-naplókat a konzolon és ASP.NET Core alkalmazásokban a *ApplicationInsightsLoggerProvider* használatával. A cikk azt is leírja, hogyan integrálható a ApplicationInsightsLoggerProvider más Application Insights telemetria.
-További információ: [bejelentkezés ASP.net Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+További információ: [bejelentkezés ASP.net Core](/aspnet/core/fundamentals/logging).
 
 ## <a name="aspnet-core-applications"></a>Alkalmazások ASP.NET Core
 
@@ -25,7 +25,7 @@ A ApplicationInsightsLoggerProvider alapértelmezés szerint engedélyezve van a
 
 A ApplicationInsightsLoggerProvider által rögzített ILogger-naplók ugyanazon konfigurációra vonatkoznak, mint a többi összegyűjtött telemetria. Ugyanazzal a TelemetryInitializers és TelemetryProcessors rendelkeznek, ugyanazokat a TelemetryChannel használják, és ugyanúgy vannak összehasonlítva és mint a többi telemetria. Ha a 2.7.1-es vagy újabb verzióját használja, a ILogger-naplók rögzítéséhez nincs szükség beavatkozásra.
 
-Alapértelmezés szerint csak a *Figyelmeztetési* vagy a magasabb ILogger-naplók (az összes [kategóriából](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)) lesznek elküldve a Application Insights. A [viselkedés módosításához azonban szűrőket is alkalmazhat](#control-logging-level). A ILogger-naplók **program.cs** vagy **Startup.cs**való rögzítéséhez további lépések szükségesek. (Lásd: [ILogger-naplók rögzítése ASP.net Core alkalmazásokban a Startup.cs és a program.cs](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
+Alapértelmezés szerint csak a *Figyelmeztetési* vagy a magasabb ILogger-naplók (az összes [kategóriából](/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)) lesznek elküldve a Application Insights. A [viselkedés módosításához azonban szűrőket is alkalmazhat](#control-logging-level). A ILogger-naplók **program.cs** vagy **Startup.cs**való rögzítéséhez további lépések szükségesek. (Lásd: [ILogger-naplók rögzítése ASP.net Core alkalmazásokban a Startup.cs és a program.cs](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
 
 Ha a Microsoft. ApplicationInsights. AspNet SDK egy korábbi verzióját használja, vagy ha más Application Insights figyelés nélkül kívánja használni a ApplicationInsightsLoggerProvider-t, kövesse az alábbi eljárást:
 
@@ -207,7 +207,7 @@ A Microsoft. ApplicationInsights. AspNet SDK-verziók a 2.7.1-es verzióban már
 
 Továbbra is használhatja a régi szolgáltatót. (A rendszer csak a főverzió változását veszi át 3 értékre. *XX*.) de azt javasoljuk, hogy a következő okokból telepítse át az új szolgáltatóra:
 
-- Az előző szolgáltató nem támogatja a [naplózási hatóköröket](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes). Az új szolgáltatóban a hatókör tulajdonságai automatikusan egyéni tulajdonságokként lesznek hozzáadva az összegyűjtött telemetria.
+- Az előző szolgáltató nem támogatja a [naplózási hatóköröket](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes). Az új szolgáltatóban a hatókör tulajdonságai automatikusan egyéni tulajdonságokként lesznek hozzáadva az összegyűjtött telemetria.
 - A naplók mostantól jóval korábban is rögzíthetők az alkalmazás indítási folyamatában. A **programból** származó naplók és az **indítási** osztályok mostantól rögzíthetők.
 - Az új szolgáltató esetében a szűrés a keretrendszer szintjén történik. A naplókat a Application Insights szolgáltatóhoz ugyanúgy szűrheti, mint a többi szolgáltatónál, például a beépített szolgáltatók, például a konzol, a hibakeresés és így tovább. Ugyanezeket a szűrőket is alkalmazhatja több szolgáltatóra is.
 - A ASP.NET Core (2,0-es és újabb verziók) esetében a [naplózási szolgáltatók engedélyezésének](https://github.com/aspnet/Announcements/issues/255) ajánlott módja a ILoggingBuilder a **program.cs** -ben való használatának javasolt módszere.
@@ -319,7 +319,7 @@ A következő szakasz bemutatja, hogyan bírálhatja felül az alapértelmezett 
 
 ## <a name="control-logging-level"></a>Vezérlés naplózási szintje
 
-A ASP.NET Core *ILogger* infra beépített mechanizmussal rendelkezik a [naplózási szűrés](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-filtering)alkalmazásához. Így szabályozhatja az egyes regisztrált szolgáltatók számára eljuttatott naplókat, beleértve a Application Insights szolgáltatót is. A szűrés a konfigurációban végezhető el (általában egy *appsettings.js* fájl használatával) vagy kódban. Ezt a lehetőséget maga a keretrendszer biztosítja. Nem jellemző a Application Insights szolgáltatóra.
+A ASP.NET Core *ILogger* infra beépített mechanizmussal rendelkezik a [naplózási szűrés](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-filtering)alkalmazásához. Így szabályozhatja az egyes regisztrált szolgáltatók számára eljuttatott naplókat, beleértve a Application Insights szolgáltatót is. A szűrés a konfigurációban végezhető el (általában egy *appsettings.js* fájl használatával) vagy kódban. Ezt a lehetőséget maga a keretrendszer biztosítja. Nem jellemző a Application Insights szolgáltatóra.
 
 Az alábbi példák a ApplicationInsightsLoggerProvider szűrési szabályokat alkalmaznak.
 
@@ -437,7 +437,7 @@ public class MyController : ApiController
 ```
 
 > [!NOTE]
-> Ha a Microsoft. ApplicationInsights. AspNetCore csomagot használja a Application Insights engedélyezéséhez, módosítsa ezt a kódot `TelemetryClient` közvetlenül a konstruktorba való beolvasáshoz. Példaként tekintse meg [ezt a gyakori kérdéseket](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#frequently-asked-questions).
+> Ha a Microsoft. ApplicationInsights. AspNetCore csomagot használja a Application Insights engedélyezéséhez, módosítsa ezt a kódot `TelemetryClient` közvetlenül a konstruktorba való beolvasáshoz. Példaként tekintse meg [ezt a gyakori kérdéseket](./asp-net-core.md#frequently-asked-questions).
 
 
 ### <a name="what-application-insights-telemetry-type-is-produced-from-ilogger-logs-or-where-can-i-see-ilogger-logs-in-application-insights"></a>Milyen Application Insights telemetria-típust hoz létre a ILogger-naplókból? Vagy Hol láthatom a ILogger-naplókat Application Insights?
@@ -498,5 +498,5 @@ Ez a kód csak önálló naplózási szolgáltató használata esetén szükség
 
 További információk:
 
-* [Bejelentkezés ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)
+* [Bejelentkezés ASP.NET Core](/aspnet/core/fundamentals/logging)
 * [.NET-nyomkövetési naplók a Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)

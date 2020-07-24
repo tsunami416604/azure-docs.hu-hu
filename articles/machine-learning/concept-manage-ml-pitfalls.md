@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012722"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Az automatizált gépi tanulással megakadályozhatja a túlilleszkedő és a kiegyensúlyozatlan adatkezelést
 
@@ -27,7 +27,7 @@ A gépi tanulás túlterhelése akkor fordul elő, ha egy modell túl jól illes
 
 Vegye figyelembe a következő betanított modelleket és a hozzájuk kapcsolódó betanítási és tesztelési pontosság.
 
-| Modell | Vonat pontossága | Teszt pontossága |
+| Modellezés | Vonat pontossága | Teszt pontossága |
 |-------|----------------|---------------|
 | A | 99.9% | 95% |
 | B | 87% | 87% |
@@ -81,7 +81,7 @@ A rendszer a gépi tanulási besorolási forgatókönyvek esetében általában 
 
 Emellett az automatikus ML-futtatások automatikusan létrehozzák a következő diagramokat, amelyek segítségével megismerheti a modell besorolásának helyességét, és azonosíthatja a kiegyensúlyozatlan adatok által potenciálisan érintett modelleket.
 
-Diagram| Leírás
+Diagram| Description
 ---|---
 [Zavart mátrix](how-to-understand-automated-ml.md#confusion-matrix)| Kiértékeli a helyesen kategorizált címkéket az adatok tényleges címkéjén. 
 [Pontosság – visszahívás](how-to-understand-automated-ml.md#precision-recall-chart)| Kiértékeli a helyes feliratok arányát az adatokban található címkézett példányok arányával. 
@@ -101,7 +101,7 @@ Az alábbi módszerek további lehetőségeket biztosítanak az **automatikus ml
 
 - Újramintavételezés még az osztályra is, akár a kisebb osztályok mintavételezésével vagy a nagyobb osztályok mintavételezésével. Ezek a módszerek szaktudást igényelnek a feldolgozáshoz és az elemzéshez.
 
-- Tekintse át a teljesítmény mérőszámait a kiegyensúlyozatlan adatokhoz. Az F1 pontszám például a precizitás és a visszahívás súlyozott átlaga. A pontosság mértéke az osztályozó pontossága – az alacsony pontosság azt jelzi, hogy a téves pozitív érték nagy számú hamis pozitív--,, míg a visszahívási mérték egy osztályozó teljessége – az alacsony visszahívás nagy számú hamis negatív értéket jelez.
+- Tekintse át a teljesítmény mérőszámait a kiegyensúlyozatlan adatokhoz. Az F1 pontszám például a pontosság és a visszahívás harmonikus középértéke. A pontosság mértéke az osztályozó pontossága, ahol a nagyobb pontosság kevesebb hamis pozitív értéket jelez, míg a visszahívás az osztályozó teljességét jelzi, ahol a nagyobb visszahívás kevesebb hamis negatív értéket jelez.
 
 ## <a name="next-steps"></a>További lépések
 

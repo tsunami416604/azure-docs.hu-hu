@@ -3,11 +3,12 @@ title: Azure Application Insights IP-címek gyűjteménye | Microsoft Docs
 description: Az IP-címek és a térinformatikai kezelésének ismertetése az Azure Application Insights
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: c7a4506c6a4246edc007a5ea2158998b472ec316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1576207eb267166a33b84009407ec119de471e6e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807128"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014439"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>Térinformatikai és IP-címek kezelése
 
@@ -26,7 +27,7 @@ Ez a viselkedés úgy működik, hogy segít elkerülni a személyes adatgyűjt�
 
 ## <a name="overriding-default-behavior"></a>Az alapértelmezett viselkedés felülbírálása
 
-Habár az alapértelmezett viselkedés a személyes adatok gyűjtésének csökkentése, továbbra is rugalmasságot biztosítunk az IP-címek adatainak gyűjtéséhez és tárolásához. A személyes adat (például IP-címek) tárolásának megkezdése előtt erősen ajánlott ellenőrizni, hogy ez nem oldja meg a megfelelőségi követelményeket vagy a helyi előírásokat. Ha többet szeretne megtudni a Application Insights személyes adatainak kezeléséről, tekintse meg a [személyes adatainak útmutatását](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt).
+Habár az alapértelmezett viselkedés a személyes adatok gyűjtésének csökkentése, továbbra is rugalmasságot biztosítunk az IP-címek adatainak gyűjtéséhez és tárolásához. A személyes adat (például IP-címek) tárolásának megkezdése előtt erősen ajánlott ellenőrizni, hogy ez nem oldja meg a megfelelőségi követelményeket vagy a helyi előírásokat. Ha többet szeretne megtudni a Application Insights személyes adatainak kezeléséről, tekintse meg a [személyes adatainak útmutatását](../platform/personal-data-mgmt.md).
 
 ## <a name="storing-ip-address-data"></a>IP-címek tárolására szolgáló adattároló
 
@@ -98,7 +99,7 @@ Ha csak egyetlen Application Insights erőforrás viselkedését kell módosíta
 
 ### <a name="rest-api"></a>REST API
 
-A [REST API](https://docs.microsoft.com/rest/api/azure/) -adattartalom, amely ugyanezeket a módosításokat hajtja végre, a következőképpen történik:
+A [REST API](/rest/api/azure/) -adattartalom, amely ugyanezeket a módosításokat hajtja végre, a következőképpen történik:
 
 ```
 PATCH https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/microsoft.insights/components/<resource-name>?api-version=2018-05-01-preview HTTP/1.1
@@ -119,7 +120,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>Telemetria inicializáló
 
-Ha rugalmasabb alternatíva szükséges, mint az `DisableIpMasking` összes IP-cím rögzítése, a [telemetria inicializáló](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#addmodify-properties-itelemetryinitializer) használatával az összeset vagy annak egy részét átmásolhatja egy egyéni mezőbe. 
+Ha rugalmasabb alternatíva szükséges, mint az `DisableIpMasking` összes IP-cím rögzítése, a [telemetria inicializáló](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) használatával az összeset vagy annak egy részét átmásolhatja egy egyéni mezőbe. 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET/ASP.NET Core
 
@@ -232,6 +233,6 @@ Az újonnan összegyűjtött IP-címeknek az oszlopban kell szerepelniük `custo
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a Application Insights [személyes adatainak gyűjtéséről](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt) .
+* További információ a Application Insights [személyes adatainak gyűjtéséről](../platform/personal-data-mgmt.md) .
 
 * További információ arról, hogyan működik az [IP-címek gyűjteménye](https://apmtips.com/posts/2016-07-05-client-ip-address/) Application Insights. (Ez egy régebbi külső blogbejegyzés, amelyet az egyik mérnök írt. Ez a beállítás a jelenlegi alapértelmezett viselkedést, az IP-címet pedig az aktuálisan rögzített állapotba `0.0.0.0` helyezi, de a beépített mechanika nagyobb mélységbe kerül `ClientIpHeaderTelemetryInitializer` .)

@@ -3,12 +3,12 @@ title: Összetevő hozzáadása a laborhoz Azure DevTest Labsban | Microsoft Doc
 description: Ismerje meg, hogyan adhat hozzá egy műtárgy-tárházat a laborhoz az Azure DevTest Labs szolgáltatásban.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0c2c1b5f93e2b4dcaae818b3f529dc16440c3c75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483907"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013455"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban lévő tároló hozzáadása a laborhoz
 A DevTest Labs lehetővé teszi, hogy a virtuális gép létrehozásakor vagy a virtuális gép létrehozása után adja meg a virtuális géphez hozzáadandó összetevőt. Ez az összetevő lehet egy eszköz vagy egy alkalmazás, amelyet telepíteni kíván a virtuális gépre. Az összetevők egy GitHub vagy Azure DevOps git-tárházból betöltött JSON-fájlban vannak meghatározva.
@@ -48,7 +48,7 @@ Ahhoz, hogy egy tárházat vegyen fel a laborba, először szerezze be a legfont
    2. A **szervezet** listában válassza az **összes elérhető szervezet**lehetőséget.
    3. A **lejárat (UTC)** listában válassza a **90 nap**lehetőséget, vagy egy egyéni meghatározott lejárati időszakot.
    4. Válassza ki a hatókörök **teljes hozzáférési** beállítását.
-   5. Válassza a **Létrehozás** lehetőséget.
+   5. Kattintson a **Létrehozás** gombra.
 9. Az új jogkivonat megjelenik a **személyes hozzáférési tokenek** listájában. Válassza a **token másolása**lehetőséget, majd mentse a jogkivonat értékét későbbi használatra.
 10. Folytassa a labor összekapcsolásával a tárház szakaszával.
 
@@ -71,7 +71,7 @@ Ez a szakasz azokat a lépéseket ismerteti, amelyekkel egy összetevő-tárház
    5. **Mappa elérési útjai** Adja meg legalább egy olyan mappa elérési útját, amely az összetevő vagy a Resource Manager-sablon definícióit tartalmazó klónozási URL-címhez képest van. Alkönyvtár megadásakor ügyeljen arra, hogy a mappa elérési útja tartalmazza a továbbítás perjelét.
 
         ![Adattárakhoz tartozó területek](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager sablon használata
 Az Azure erőforrás-kezelési (Azure Resource Manager) Sablonok JSON-fájlok, amelyek az Azure-ban létrehozni kívánt erőforrásokat írják le. További információ ezekről a sablonokról: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/templates/template-syntax.md).
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 A New-AzResourceGroupDeployment sikeres futtatása után a parancs a kiépítési állapothoz hasonló fontos információkat (sikeresnek kell lennie) és a sablon kimeneteit is megjeleníti.
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell használatával
-Ez a szakasz egy PowerShell-parancsfájlt tartalmaz, amely egy összetevő-adattár tesztkörnyezetben való hozzáadására használható. Ha még nem rendelkezik Azure PowerShellval, tekintse meg a telepítési [és konfigurálási Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) részletes útmutatását.
+Ez a szakasz egy PowerShell-parancsfájlt tartalmaz, amely egy összetevő-adattár tesztkörnyezetben való hozzáadására használható. Ha még nem rendelkezik Azure PowerShellval, tekintse meg a telepítési [és konfigurálási Azure PowerShell](/powershell/azure/?view=azps-1.2.0) részletes útmutatását.
 
 ### <a name="full-script"></a>Teljes szkript
 Itt látható a teljes szkript, beleértve néhány részletes üzenetet és megjegyzést:

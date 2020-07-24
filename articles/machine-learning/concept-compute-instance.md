@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 06/22/2020
-ms.openlocfilehash: b53a2c0cb3c709a6f22b57b45bef8b2894594a4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3edb8da6d535ac7817c29db254aa84efd92321b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85602455"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012977"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
@@ -30,7 +30,7 @@ Az üzemi szintű modell képzéséhez használjon [Azure Machine learning szám
 
 A számítási példány egy teljes körűen felügyelt felhőalapú munkaállomás, amely a gépi tanulási fejlesztési környezethez van optimalizálva. A következő előnyöket biztosítja:
 
-|Főbb előnyök||
+|Főbb előnyök|Description|
 |----|----|
 |Termelékenység|A modelleket integrált jegyzetfüzetekkel és a Azure Machine Learning Studio következő eszközeivel hozhatja létre és helyezheti üzembe:<br/>– Jupyter<br/>- JupyterLab<br/>– RStudio (előzetes verzió)<br/>A számítási példány teljes mértékben integrálva van Azure Machine Learning munkaterülettel és Studióval. A jegyzetfüzeteket és az egyéb adatszakértőket a munkaterületen is megoszthatja. A VS Code-távfelügyeleti szolgáltatást [SSH](how-to-set-up-vs-code-remote.md) -val is beállíthatja |
 |Felügyelt & biztonságos|Csökkentse a biztonsági lábnyomot, és adja hozzá a vállalati biztonsági követelményeknek való megfelelést. A számítási példányok robusztus felügyeleti házirendeket és biztonságos hálózati konfigurációkat biztosítanak, például:<br/><br/>– Automatikus kiépítés Resource Manager-sablonokból vagy Azure Machine Learning SDK-ból<br/>- [Szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview)<br/>- [Virtuális hálózatok támogatása](how-to-enable-virtual-network.md#compute-instance)<br/>– SSH-szabályzat az SSH-hozzáférés engedélyezéséhez vagy letiltásához<br/>TLS 1,2 engedélyezve |
@@ -39,8 +39,11 @@ A számítási példány egy teljes körűen felügyelt felhőalapú munkaállom
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Eszközök és környezetek
 
-A Azure Machine Learning számítási példány lehetővé teszi, hogy a munkaterületen teljes mértékben integrált jegyzetfüzet-felülettel készítse el a modelleket, betanítsa és üzembe helyezzen.
+> [!IMPORTANT]
+> Az alábbi megjelölésű eszközök (előzetes verzió) jelenleg nyilvános előzetes verzióban érhetők el.
+> Az előzetes verzió szolgáltatási szintű szerződés nélkül van megadva, és nem ajánlott éles számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+A Azure Machine Learning számítási példány lehetővé teszi, hogy a munkaterületen teljes mértékben integrált jegyzetfüzet-felülettel készítse el a modelleket, betanítsa és üzembe helyezzen.
 
 Ezek az eszközök és környezetek a számítási példányra vannak telepítve: 
 
@@ -140,7 +143,7 @@ A Azure Machine Learning Studio munkaterületén hozzon létre egy új számít�
 :::image type="content" source="media/concept-compute-instance/create-compute-instance.png" alt-text="Új számítási példány létrehozása":::
 
 
-|Mező  |Description  |
+|Mező  |Leírás  |
 |---------|---------|
 |Számítási név     |  <li>A név megadása kötelező, és legfeljebb 3 – 24 karakter hosszúságú lehet.</li><li>Az érvényes karakterek a kis-és nagybetűk, a számjegyek és a karakterek **-** .</li><li>A névnek betűvel kell kezdődnie</li><li>A névnek egyedinek kell lennie az Azure-régióban lévő összes számításban. Ha a választott név nem egyedi, akkor riasztás jelenik meg.</li><li>Ha **-** a karakter használatban van, akkor a névben legalább egy betűt kell követnie.</li>     |
 |Virtuális gép típusa |  Válassza a CPU vagy a GPU lehetőséget. Ez a típus nem módosítható a létrehozás után     |

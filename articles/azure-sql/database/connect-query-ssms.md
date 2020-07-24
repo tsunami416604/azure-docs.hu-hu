@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 14e7f4d09185f76786fd88576eef0b6df02877c4
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85368073"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004154"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Gyors útmutató: Azure SQL Database vagy Azure SQL felügyelt példányhoz való kapcsolódás és lekérdezés a SSMS használatával
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ A rövid útmutató elvégzéséhez a következő elemek szükségesek:
 
 - Egy adatbázis a Azure SQL Databaseban. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
 
-  || SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
+  | Műveletek | SQL Database | Felügyelt SQL-példány | Azure virtuális gépen futó SQL Server |
   |:--- |:--- |:---|:---|
   | Létrehozás| [Portál](single-database-create-quickstart.md) | [Portál](../managed-instance/instance-create-quickstart.md) | [Portál](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [Parancssori felület](scripts/create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -76,7 +76,7 @@ A SSMS-ben kapcsolódjon a kiszolgálóhoz.
    | Beállítás      | Ajánlott érték    | Leírás |
    | ------------ | ------------------ | ----------- |
    | **Kiszolgáló típusa** | Adatbázismotor | Szükséges érték. |
-   | **Kiszolgáló neve** | A teljes kiszolgálónév | Valami hasonló: **servername.database.Windows.net**. |
+   | **Kiszolgálónév** | A teljes kiszolgálónév | Valami hasonló: **servername.database.Windows.net**. |
    | **Hitelesítés** | SQL Server-hitelesítés | Ez az oktatóanyag SQL-hitelesítést használ. |
    | **Bejelentkezés** | Kiszolgáló-rendszergazdai fiók felhasználói azonosítója | A kiszolgáló létrehozásához használt kiszolgálói rendszergazdai fiók felhasználói azonosítója. |
    | **Jelszó** | Kiszolgáló-rendszergazdai fiók jelszava | A kiszolgáló létrehozásához használt kiszolgáló-rendszergazdai fiók jelszava. |
@@ -180,7 +180,7 @@ Futtassa ezt a [delete](/sql/t-sql/statements/delete-transact-sql/) Transact-SQL
 
 2. Válassza a **végrehajtás** lehetőséget a tábla megadott sorának törléséhez `Product` . Megjelenik az **üzenetek** ablaktábla **(1 sor érintett)**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a SSMS: [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms/).
 - A Azure Portal használatával történő kapcsolódáshoz és lekérdezéshez lásd: [Kapcsolódás és lekérdezés a Azure Portal SQL-lekérdezés szerkesztőjével](connect-query-portal.md).

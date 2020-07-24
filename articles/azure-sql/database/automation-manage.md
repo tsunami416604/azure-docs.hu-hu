@@ -11,12 +11,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 3d785edb82e62363dd96d9fd67447f1be7ffe8f5
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: b90acafb9146ec6cd796a0916ad46bf880398b22
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982599"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013980"
 ---
 # <a name="manage-databases-in-azure-sql-database-by-using-azure-automation"></a>Azure SQL Database-adatbázisok kezelése Azure Automation használatával
 
@@ -34,7 +34,7 @@ Csökkentse a működési terhelést, és szabadítson fel informatikai/DevOps-s
 
 ## <a name="how-azure-automation-can-help-manage-your-databases"></a>Hogyan segítheti a Azure Automation az adatbázisok kezelését
 
-A Azure Automation segítségével a [Azure PowerShell-eszközökön](/powershell/azure/overview)elérhető PowerShell- [parancsmagok](https://docs.microsoft.com/powershell/module/servicemanagement/azure/#sql) használatával kezelheti Azure SQL Database adatbázisait. Azure Automation ezen Azure SQL Database PowerShell-parancsmagok elérhetők a dobozból, így az összes SQL Database felügyeleti feladatot elvégezheti a szolgáltatáson belül. Ezeket a parancsmagokat Azure Automation is párosíthatja más Azure-szolgáltatások parancsmagokkal, így összetett feladatokat automatizálhat az Azure-szolgáltatások és a külső rendszerek között.
+A Azure Automation segítségével a [Azure PowerShell-eszközökön](/powershell/azure/)elérhető PowerShell- [parancsmagok](/powershell/module/servicemanagement/azure.service/#sql) használatával kezelheti Azure SQL Database adatbázisait. Azure Automation ezen Azure SQL Database PowerShell-parancsmagok elérhetők a dobozból, így az összes SQL Database felügyeleti feladatot elvégezheti a szolgáltatáson belül. Ezeket a parancsmagokat Azure Automation is párosíthatja más Azure-szolgáltatások parancsmagokkal, így összetett feladatokat automatizálhat az Azure-szolgáltatások és a külső rendszerek között.
 
 A Azure Automation az SQL-kiszolgálókkal való közvetlen kommunikációt is lehetővé teszi az SQL-parancsok a PowerShell használatával történő kiadásával.
 

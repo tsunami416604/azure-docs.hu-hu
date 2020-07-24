@@ -3,12 +3,12 @@ title: A .NET-nyomkövetési naplók megismerése Application Insights
 description: A nyomkövetés, a NLog vagy a Log4Net által létrehozott naplók keresése.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: d010fe4389e22c9909800f5329911b6b5619d7b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aad81855b58ee96789d097fbfbd3e7f9b17f6900
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829533"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014575"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>A .NET/.NET Core és a Python nyomkövetési naplók megismerése Application Insights
 
@@ -84,7 +84,7 @@ Ha a log4net vagy az NLog-t részesíti előnyben, használja a következőket:
 ```
 
 ## <a name="use-eventsource-events"></a>EventSource-események használata
-Konfigurálhatja a [System. Diagnostics. Trace. EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) eseményeket, amelyeket a rendszer a nyomkövetési Application Insights küldendő. Először telepítse a `Microsoft.ApplicationInsights.EventSourceListener` NuGet csomagot. Ezután szerkessze a `TelemetryModules` [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) fájl szakaszát.
+Konfigurálhatja a [System. Diagnostics. Trace. EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) eseményeket, amelyeket a rendszer a nyomkövetési Application Insights küldendő. Először telepítse a `Microsoft.ApplicationInsights.EventSourceListener` NuGet csomagot. Ezután szerkessze a `TelemetryModules` [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) fájl szakaszát.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -190,7 +190,7 @@ Például a következőket teheti:
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 ### <a name="how-do-i-do-this-for-java"></a>Hogyan ezt a javát?
-A Java-kódok nélküli kialakításban (ajánlott) a naplókat a rendszer a [java 3,0-ügynök](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)használatával gyűjti be.
+A Java-kódok nélküli kialakításban (ajánlott) a naplókat a rendszer a [java 3,0-ügynök](./java-in-process-agent.md)használatával gyűjti be.
 
 Ha a Java SDK-t használja, használja a [Java log-adaptereket](../../azure-monitor/app/java-trace-logs.md).
 
@@ -200,7 +200,7 @@ Ha a Java SDK-t használja, használja a [Java log-adaptereket](../../azure-moni
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>A konfigurációs eszközben nincs naplózási adapter beállítás
 * Először telepítse a naplózási keretrendszert.
-* Ha System. Diagnostics. Tracet használ, győződjön meg arról, hogy [a *web.configban *van konfigurálva ](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx).
+* Ha System. Diagnostics. Tracet használ, győződjön meg arról, hogy [a *web.configban *van konfigurálva ](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1).
 * Győződjön meg arról, hogy rendelkezik a Application Insights legújabb verziójával. A Visual Studióban válassza az **eszközök**  >  **bővítmények és frissítések**menüpontot, és nyissa meg a **frissítések** lapot. Ha a **fejlesztői Analitika eszközei** vannak, válassza ki azt a frissítéshez.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>A "rendszerállapot-kulcs nem lehet üres" hibaüzenet jelenik meg
@@ -228,5 +228,5 @@ Ha az alkalmazás terjedelmes mennyiségű adatokat küld, és a ASP.NET 2.0.0-b
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [exceptions]: asp-net-exceptions.md
 [portal]: https://portal.azure.com/
-[qna]: ../../azure-monitor/app/troubleshoot-faq.md
+[qna]: ../faq.md
 [start]: ../../azure-monitor/app/app-insights-overview.md

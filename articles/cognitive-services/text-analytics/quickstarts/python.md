@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/06/2020
+ms.date: 07/20/2020
 ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: feababd3d6f6845142a13ccb3b2b31b78315704b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 99c22edac7acefe3ec34ff40e892a7071b932ada
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027932"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013810"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Rövid útmutató: a Text Analytics kognitív szolgáltatás meghívása a Python REST API használatával 
 <a name="HOLTop"></a>
@@ -64,7 +65,7 @@ Az alábbi szakaszok azt ismertetik, hogyan hívhatók meg az egyes API-funkció
 
 ## <a name="detect-languages"></a>Nyelvek felismerése
 
-Hozzáfűzés a `/text/analytics/v3.0/languages` text Analytics alap végponthoz a nyelvfelismerés URL-címének megalkotása érdekében. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`
+Hozzáfűzés a `/text/analytics/v3.0/languages` text Analytics alap végponthoz a nyelvfelismerés URL-címének megalkotása érdekében. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/languages`
     
 ```python
 language_api_url = endpoint + "/text/analytics/v3.0/languages"
@@ -131,7 +132,7 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>Vélemények elemzése
 
-Ahhoz, hogy észlelni lehessen a dokumentumok egy halmazának pozitív vagy negatív közötti tartományát, fűzze hozzá az `/text/analytics/v3.0/sentiment` text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
+Ahhoz, hogy észlelni lehessen a dokumentumok egy halmazának pozitív vagy negatív közötti tartományát, fűzze hozzá az `/text/analytics/v3.0/sentiment` text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/sentiment`
     
 ```python
 sentiment_url = endpoint + "/text/analytics/v3.0/sentiment"
@@ -220,7 +221,7 @@ A dokumentumra vonatkozó hangulati pontszám 0,0 és 1,0 között van, és egy 
 
 ## <a name="extract-key-phrases"></a>Kulcsszókeresés
  
-Ha a legfontosabb kifejezéseket szeretné kibontani a dokumentumok egy csoportján, fűzze hozzá az `/text/analytics/v3.0/keyPhrases` text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
+Ha a legfontosabb kifejezéseket szeretné kibontani a dokumentumok egy csoportján, fűzze hozzá az `/text/analytics/v3.0/keyPhrases` text Analytics Base végponthoz a nyelvfelismerés URL-címének megadásához. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
     
 ```python
 keyphrase_url = endpoint + "/text/analytics/v3.0/keyphrases"
@@ -294,10 +295,10 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>Entitások azonosítása
 
-A jól ismert entitások (személyek, helyek és dolgok) a szöveges dokumentumokban való azonosításához fűzze hozzá `/text/analytics/v3.0/entities/recognition/general` az Text Analytics Base végpontot a nyelvfelismerés URL-címének létrehozásához. Például:`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
+A jól ismert entitások (személyek, helyek és dolgok) a szöveges dokumentumokban való azonosításához fűzze hozzá `/text/analytics/v3.0/entities/recognition/general` az Text Analytics Base végpontot a nyelvfelismerés URL-címének létrehozásához. Például: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
     
 ```python
-entities_url = endpoint + "/text/analytics/v3.0/entities/recognition/general/recognition/general"
+entities_url = endpoint + "/text/analytics/v3.0/entities/recognition/general"
 ```
 
 Hozzon létre egy gyűjteményt a dokumentumokból, például az előző példákban. 
@@ -348,12 +349,12 @@ pprint(entities)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Text Analytics a Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Lásd még 
 
- [Text Analytics áttekintése](../overview.md)  
+ [A Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)

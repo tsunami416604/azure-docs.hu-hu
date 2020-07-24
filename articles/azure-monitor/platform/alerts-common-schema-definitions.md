@@ -5,12 +5,12 @@ author: ofirmanor
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: 951894bcd047d93809b41f47213ad670823a27e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fff1aac5df50550e43ae3e87c63c2130c6b39644
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445372"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013963"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
 
@@ -71,7 +71,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 
 ## <a name="essentials"></a>Alapvető erőforrások
 
-| Mező | Description|
+| Mező | Leírás|
 |:---|:---|
 | alertId | A riasztási példány egyedi azonosítására szolgáló GUID. |
 | alertRule | Annak a riasztási szabálynak a neve, amely a riasztási példányt generálta. |
@@ -149,7 +149,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 ### <a name="log-alerts"></a>Naplóriasztások
 
 > [!NOTE]
-> Az egyéni e-mail-tulajdonossal és/vagy JSON-adattartalommal rendelkező naplózási riasztások esetén az általános séma az alábbi módon visszaállíthatja az e-mailek tárgyát és/vagy a hasznos adatok sémáját. A közös sémával rendelkező riasztások esetében a riasztások felső korlátja 256 KB. A keresési eredmények nem ágyazhatók be a naplóbeli riasztások hasznos adataiba, ha a riasztás mérete miatt a rendszer átlépi a küszöbértéket. Ezt a jelző ellenőrzésével állapíthatja meg `IncludeSearchResults` . Ha a keresési eredmények nem szerepelnek, használja a keresési lekérdezést a [log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/dataaccess/query/get)-val együtt. 
+> Az egyéni e-mail-tulajdonossal és/vagy JSON-adattartalommal rendelkező naplózási riasztások esetén az általános séma az alábbi módon visszaállíthatja az e-mailek tárgyát és/vagy a hasznos adatok sémáját. A közös sémával rendelkező riasztások esetében a riasztások felső korlátja 256 KB. A keresési eredmények nem ágyazhatók be a naplóbeli riasztások hasznos adataiba, ha a riasztás mérete miatt a rendszer átlépi a küszöbértéket. Ezt a jelző ellenőrzésével állapíthatja meg `IncludeSearchResults` . Ha a keresési eredmények nem szerepelnek, használja a keresési lekérdezést a [log Analytics API](/rest/api/loganalytics/dataaccess/query/get)-val együtt. 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -220,7 +220,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
                     "Heartbeat"
                 ]
             }
-        ]
+        ],
     "IncludeSearchResults": "True",
     "AlertType": "Metric measurement"
     }
@@ -500,5 +500,4 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 ## <a name="next-steps"></a>További lépések
 
 - További információ a [közös riasztási sémáról](https://aka.ms/commonAlertSchemaDocs).
-- Megtudhatja, [hogyan hozhat létre egy logikai alkalmazást, amely az általános riasztási sémát használja az összes riasztás kezeléséhez](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations). 
-
+- Megtudhatja, [hogyan hozhat létre egy logikai alkalmazást, amely az általános riasztási sémát használja az összes riasztás kezeléséhez](./alerts-common-schema-integrations.md). 

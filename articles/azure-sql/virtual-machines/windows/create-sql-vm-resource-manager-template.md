@@ -1,37 +1,41 @@
 ---
-title: SQL Server VM létrehozása (Azure Resource Manager sablon)
-description: Megtudhatja, hogyan hozhat létre SQL Server az Azure-beli virtuális gépen (VM) egy Azure Resource Manager sablon használatával.
+title: SQL Server VM létrehozása ARM-sablonnal
+description: Megtudhatja, hogyan hozhat létre SQL Server az Azure-beli virtuális gépen (VM) egy Azure Resource Manager-sablon (ARM-sablon) használatával.
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 8b165f640548f28e5d94e5a791c0fe8545df4d78
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1b6f54c823f59bb654ac86f041eefe80af3eb5ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852527"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003849"
 ---
-# <a name="create-sql-server-vm-azure-resource-manager-template"></a>SQL Server VM létrehozása (Azure Resource Manager sablon)
+# <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Rövid útmutató: SQL Server VM létrehozása ARM-sablonnal
 
-Ezzel a Azure Resource Manager sablonnal üzembe helyezhet egy SQL Server az Azure-beli virtuális gépen (VM). 
+Ezzel a Azure Resource Manager sablonnal (ARM-sablon) SQL Server helyezhet üzembe egy Azure-beli virtuális gépen (VM). 
 
 [!INCLUDE [About Azure Resource Manager](../../../../includes/resource-manager-quickstart-introduction.md)]
+
+Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonokat, kattintson az **Üzembe helyezés az Azure-ban** gombra. A sablon az Azure Portalon fog megnyílni.
+
+[![Üzembe helyezés az Azure-ban](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az SQL Server VM ARM-sablonhoz a következők szükségesek:
 
-- Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) és/vagy a [PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7)legújabb verziója. 
+- Az [Azure CLI](/cli/azure/install-azure-cli) és/vagy a [PowerShell](/powershell/scripting/install/installing-powershell)legújabb verziója. 
 - Előre konfigurált [erőforráscsoport](../../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) egy előkészített [virtuális hálózattal](../../../virtual-network/quick-create-portal.md) és [alhálózattal](../../../virtual-network/virtual-network-manage-subnet.md#add-a-subnet).
 - Azure-előfizetés. Ha még nem rendelkezik ilyennel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 
 ## <a name="review-the-template"></a>A sablon áttekintése
 
-Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/)származik.
+Az ebben a gyorsútmutatóban használt sablon az [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/101-sql-vm-new-storage/) közül származik.
 
 :::code language="json" source="~/quickstart-templates/101-sql-vm-new-storage/azuredeploy.json" highlight="169-310":::
 
@@ -43,7 +47,7 @@ Az ebben a rövid útmutatóban használt sablon az [Azure Gyorsindítás sablon
 - [Microsoft. számítás/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): virtuális gép létrehozása az Azure-ban. 
 - [Microsoft. SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): regisztrálja a virtuális GÉPET az SQL VM erőforrás-szolgáltatóval. 
 
-Az Azure-beli virtuálisgép-sablonokkal kapcsolatos további SQL Server a gyors üzembe helyezési [sablon galériájában](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine)találhatók.
+Az Azure-beli virtuálisgép-sablonokkal kapcsolatos további SQL Server a gyors üzembe helyezési [sablon galériájában](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular)találhatók.
 
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
@@ -116,10 +120,10 @@ Write-Host "Press [ENTER] to continue..."
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Oktatóanyag: az első ARM-sablon létrehozása és üzembe helyezése](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 A SQL Server VM telepítésének egyéb módjairól a következő témakörben talál további információt: 
-- [Azure Portalra](create-sql-vm-portal.md)
+- [Azure Portal](create-sql-vm-portal.md)
 - [PowerShell](create-sql-vm-powershell.md)
 
 További tudnivalókat az Azure-beli [virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)című témakörben talál.

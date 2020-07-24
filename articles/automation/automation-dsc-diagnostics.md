@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0560d9a5156f06f7ae7473f63359d9d17926b7ab
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186452"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015153"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integrálás Azure Monitor naplókkal
 
@@ -34,7 +34,7 @@ Azure Monitor naplók nagyobb működési láthatóságot biztosítanak az Autom
 
 Az Automation-állapotra vonatkozó konfigurációs jelentések Azure Monitor naplókba való küldésének megkezdéséhez a következőkre lesz szüksége:
 
-- A [Azure PowerShell](/powershell/azure/overview) november 2016-es vagy újabb kiadása (v 2.3.0).
+- A [Azure PowerShell](/powershell/azure/) november 2016-es vagy újabb kiadása (v 2.3.0).
 - Egy Azure Automation-fiókra. További információ: [Bevezetés a Azure Automationba](automation-intro.md).
 - Egy Log Analytics munkaterületen egy Automation & Control Service-ajánlattal. További információ: [Bevezetés a log Analytics használatába Azure monitor](../azure-monitor/log-query/get-started-portal.md).
 - Legalább egy Azure Automation állapot-konfigurációs csomópont. További információ: [bevezetési gépek felügyeletre Azure Automation állapot-konfiguráció alapján](automation-dsc-onboarding.md).

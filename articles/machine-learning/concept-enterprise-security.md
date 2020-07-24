@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 5afa6b9127317fcd1a683651be86cdfe078cfcd6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 94724ea44b52ae885594fe55b67d74a03e339dab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259443"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012881"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -34,7 +34,7 @@ A többtényezős hitelesítés akkor támogatott, ha a Azure Active Directory (
 1. Az ügyfél az Azure Resource Manager és az összes Azure Machine Learning számára megadja a tokent.
 1. A Machine Learning szolgáltatás Machine Learning szolgáltatási jogkivonatot biztosít a felhasználó számítási céljához (például Machine Learning Compute). Ezt a tokent a felhasználói számítási cél használja a Machine Learning szolgáltatás visszahívására a Futtatás befejezése után. A hatókör csak a munkaterületre korlátozódik.
 
-[![Hitelesítés Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
+[![Hitelesítés Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication.png#lightbox)
 
 További információ: [Azure Machine learning erőforrások és munkafolyamatok hitelesítésének beállítása](how-to-setup-authentication.md). Ez a cikk a hitelesítéssel kapcsolatos információkat és példákat tartalmaz, beleértve az egyszerű szolgáltatások és az automatizált munkafolyamatok használatát.
 
@@ -42,10 +42,10 @@ További információ: [Azure Machine learning erőforrások és munkafolyamatok
 
 Azure Machine Learning a következő két hitelesítési módszert támogatja a webszolgáltatások esetében: kulcs és jogkivonat. Az egyes webszolgáltatások egyszerre csak egy hitelesítési űrlapot tudnak engedélyezni.
 
-|Hitelesítési módszer|Leírás|Azure Container Instances|AKS|
+|Hitelesítési módszer|Description|Azure Container Instances|AKS|
 |---|---|---|---|
 |Kulcs|A kulcsok statikusak, és nem kell frissíteni. A kulcsok újragenerálása manuálisan végezhető el.|Alapértelmezés szerint letiltva| Alapértelmezés szerint engedélyezett|
-|Jogkivonat|A tokenek a megadott időszak után lejárnak, és frissíteni kell őket.| Nem érhető el| Alapértelmezés szerint letiltva |
+|Jogkivonat|A tokenek a megadott időszak után lejárnak, és frissíteni kell őket.| Nem elérhető| Alapértelmezés szerint letiltva |
 
 A kódokra vonatkozó példákat a [webszolgáltatások hitelesítése című szakaszban](how-to-setup-authentication.md#web-service-authentication)találja.
 
@@ -128,6 +128,8 @@ A `hbi_workspace` jelző szabályozza a Microsoft által diagnosztikai célokra 
 * Biztonságosan továbbítja a Storage-fiók, a tároló-beállításjegyzék és az SSH-fiók hitelesítő adatait a végrehajtási rétegből a kulcstartó használatával a számítási fürtökbe
 * Engedélyezi az IP-szűrést annak érdekében, hogy a mögöttes batch-készletek ne legyenek meghívva a AzureMachineLearningService-től eltérő külső szolgáltatásokkal.
 
+> [!WARNING]
+> A `hbi_workspace` jelző csak akkor állítható be, ha létrehoznak egy munkaterületet. A meglévő munkaterületek esetében nem módosítható.
 
 További információ arról, hogyan működik a titkosítás az Azure-ban: inaktív [Azure-adattitkosítás](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
@@ -263,9 +265,9 @@ Ha olyan szolgáltatásokat használ, mint például az automatizált Machine Le
 
 Érdemes lehet titkosítani az [üzembe helyezett végpontból naplózott diagnosztikai adatokat](how-to-enable-app-insights.md) az Azure Application Insights-példányba.
 
-## <a name="monitoring"></a>Monitorozás
+## <a name="monitoring"></a>Figyelés
 
-### <a name="metrics"></a>Metrikák
+### <a name="metrics"></a>Mérőszámok
 
 Azure Monitor metrikák használatával megtekintheti és figyelheti a Azure Machine Learning munkaterület metrikáit. A [Azure Portal](https://portal.azure.com)válassza ki a munkaterületet, majd válassza a **metrikák**elemet:
 
@@ -317,7 +319,7 @@ A Munkaterületek létrehozása során további erőforrások jönnek létre a f
 
 A felhasználó a munkaterülethez (például az Azure Kubernetes szolgáltatáshoz vagy virtuális gépekhez) kapcsolódó egyéb számítási célokat is kiépítheti, ha szükséges.
 
-[![Munkaterület-munkafolyamat létrehozása](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace-expanded.png#lightbox)
+[![Munkaterület-munkafolyamat létrehozása](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace.png#lightbox)
 
 ### <a name="save-source-code-training-scripts"></a>Forráskód mentése (betanítási parancsfájlok)
 
@@ -325,9 +327,9 @@ Az alábbi ábrán a kód pillanatkép-munkafolyamata látható.
 
 Az Azure Machine Learning munkaterülethez tartozó könyvtárak (kísérletek) a forráskódot tartalmazzák (betanítási parancsfájlok). Ezeket a szkripteket a helyi gépen és a felhőben (az előfizetéséhez tartozó Azure Blob Storage-ban) tárolja a rendszer. A kód pillanatképei a korábbi naplózás végrehajtásához vagy ellenőrzéséhez használatosak.
 
-[![Kód pillanatkép-munkafolyamata](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot-expanded.png#lightbox)
+[![Kód pillanatkép-munkafolyamata](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot.png#lightbox)
 
-### <a name="training"></a>Betanítás
+### <a name="training"></a>Oktatás
 
 Az alábbi ábra a betanítási munkafolyamatot mutatja be.
 
@@ -352,7 +354,7 @@ Mivel Machine Learning Compute felügyelt számítási cél (azaz a Microsoft fe
 
 Az alábbi folyamatábrán ez a lépés akkor következik be, amikor a betanítási cél a futtatási metrikákat a Cosmos DB-adatbázisban lévő tárterületről Azure Machine Learningra írja vissza. Az ügyfelek hívhatják Azure Machine Learning. Machine Learning a Cosmos DB-adatbázisból lekéri a metrikákat, majd visszaküldi azokat az ügyfélnek.
 
-[![Betanítási munkafolyamat](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics-expanded.png#lightbox)
+[![Betanítási munkafolyamat](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics.png#lightbox)
 
 ### <a name="creating-web-services"></a>Webszolgáltatások létrehozása
 
@@ -367,9 +369,9 @@ A részletek a következők:
 * A pontozási kérés részleteit Application Insights tárolja a rendszer, amely a felhasználó előfizetésében található.
 * A telemetria a Microsoft/Azure-előfizetésre is leküldve.
 
-[![Következtetési munkafolyamat](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing-expanded.png#lightbox)
+[![Következtetési munkafolyamat](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Biztonságos Azure Machine Learning webszolgáltatások TLS-vel](how-to-secure-web-service.md)
 * [Webszolgáltatásként üzembe helyezett Machine Learning-modell felhasználása](how-to-consume-web-service.md)

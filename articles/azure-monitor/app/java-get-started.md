@@ -5,11 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: e56ba304d197984110de5127a0f163ac0accf1aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3835f88eb581693d10f68a9a495329466a657a2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537508"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014490"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rövid útmutató: a Application Insights használatának első lépései Java webes projektekben
 
@@ -171,7 +172,7 @@ Kattintson az adott kérelemtípusokra az egyes példányok megtekintéséhez.
 ![Részletezés egy adott minta nézetbe](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Elemzés: Erőteljes lekérdezési nyelv
-Ahogy egyre több adatot gyűjt össze, lekérdezéseket futtathat az adatok összegzéséhez és egyéni példányok megkereséséhez is.  Az [elemzés](../../azure-monitor/app/analytics.md) erőteljes eszköz a teljesítmény és a használat megértéséhez és diagnosztikai célokra is.
+Ahogy egyre több adatot gyűjt össze, lekérdezéseket futtathat az adatok összegzéséhez és egyéni példányok megkereséséhez is.  Az [elemzés](../log-query/log-query-overview.md) erőteljes eszköz a teljesítmény és a használat megértéséhez és diagnosztikai célokra is.
 
 ![Példa elemzésre](./media/java-get-started/0025.png)
 
@@ -263,7 +264,7 @@ További gyűjtendő teljesítményszámlálókat határozhat meg.
   * `tabular`: a teljesítményszámláló-adatok táblázatsor formájában szerepelnek
 
 #### <a name="windows-performance-counters"></a>Windows-teljesítményszámlálók
-Mindegyik [Windows-teljesítményszámláló](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) egy kategória tagja (ugyanúgy, ahogyan a mezők osztályok tagjai). A kategóriák globálisak lehetnek, vagy számozott vagy elnevezett példányokkal rendelkezhetnek.
+Mindegyik [Windows-teljesítményszámláló](/windows/win32/perfctrs/performance-counters-portal) egy kategória tagja (ugyanúgy, ahogyan a mezők osztályok tagjai). A kategóriák globálisak lehetnek, vagy számozott vagy elnevezett példányokkal rendelkezhetnek.
 
 ```XML
     <PerformanceCounters>
@@ -307,7 +308,7 @@ Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy 
 * [Unix-teljesítményszámlálók figyelése](java-collectd.md)
 * [A weboldalak figyelésével](javascript.md) megfigyelheti az oldalbetöltési időket, az AJAX-hívásokat és a böngészőkivételeket.
 * [Egyéni telemetriát](../../azure-monitor/app/api-custom-events-metrics.md) írhat a böngészőben vagy a kiszolgálón való használat nyomon követése érdekében.
-* Az [Elemzések](../../azure-monitor/app/analytics.md) használatával hatékony telemetriai lekérdezéseket hajthat végre az alkalmazásból
+* Az [Elemzések](../log-query/log-query-overview.md) használatával hatékony telemetriai lekérdezéseket hajthat végre az alkalmazásból
 * További információ: [Azure Java-fejlesztőknek](/java/azure).
 
 <!--Link references-->

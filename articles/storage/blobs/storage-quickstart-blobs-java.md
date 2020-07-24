@@ -7,18 +7,23 @@ ms.date: 01/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d30260f8718d061473dfa4b29b7c35e33b27390d
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 41d6457986ac3c97b3e7a19d089e7ce6a15d1f5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871385"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011277"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Gyors útmutató: Blobok kezelése a Java V12 SDK-val
 
 Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti a blobokat a Java használatával. A Blobok olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Feltöltheti, letöltheti és listázhatja a blobokat, és létrehozhatja és törölheti a tárolókat.
 
-[API-referenciák dokumentációja](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)  |  [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)  |  [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+További források:
+
+* [API-referenciadokumentáció](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html)
+* [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
+* [Csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
+* [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

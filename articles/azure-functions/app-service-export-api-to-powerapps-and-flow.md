@@ -4,11 +4,12 @@ description: A App Serviceben üzemeltetett API-k közzététele PowerApps és M
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 8ded1c5fba902adeaeb883894452c00c4ae1d617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83115820"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015085"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure-ban üzemeltetett API exportálása PowerApps és Microsoft Flow
 
@@ -57,7 +58,7 @@ Az Exportálás **expressz** módban való végrehajtásához kövesse az alább
 
 2. Használja a táblázatban megadott beállításokat.
 
-    |Beállítás|Description|
+    |Beállítás|Leírás|
     |--------|------------|
     |**Környezet**|Válassza ki azt a környezetet, amelyre az egyéni összekötőt menteni kívánja. További információkat a [Környezetek áttekintésében](https://powerapps.microsoft.com/tutorials/environments-overview/) találhat.|
     |**Egyéni API neve**|Adjon meg egy nevet, amelyet a PowerApps és a Microsoft Flow-építők látnak majd az összekötők listájában.|
@@ -145,9 +146,9 @@ Az Azure AD használatakor két Azure AD-alkalmazás regisztrálása szükséges
 
 - Az API regisztrálásának konfigurálásához használja a [app Service hitelesítés/engedélyezés](../app-service/configure-authentication-provider-aad.md) funkciót.
 
-- Az összekötő regisztrálásának konfigurálásához kövesse az [Azure ad-alkalmazás hozzáadása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)című témakör lépéseit. A regisztrációhoz delegált hozzáféréssel kell rendelkeznie az API-hoz és a válasz URL-címéhez `https://msmanaged-na.consent.azure-apim.net/redirect` . 
+- Az összekötő regisztrálásának konfigurálásához kövesse az [Azure ad-alkalmazás hozzáadása](../active-directory/develop/quickstart-register-app.md)című témakör lépéseit. A regisztrációhoz delegált hozzáféréssel kell rendelkeznie az API-hoz és a válasz URL-címéhez `https://msmanaged-na.consent.azure-apim.net/redirect` . 
 
-További információkért tekintse meg az Azure AD-beli regisztrációs példákat a [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) és a [Microsoft flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication). Ezek a példák a Azure Resource Manager API-ként használják. Ha követi a lépéseket, cserélje ki az API-t.
+További információkért tekintse meg az Azure AD-beli regisztrációs példákat a [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) és a [Microsoft flow](/connectors/custom-connectors/azure-active-directory-authentication). Ezek a példák a Azure Resource Manager API-ként használják. Ha követi a lépéseket, cserélje ki az API-t.
 
 A következő konfigurációs értékek szükségesek:
 - **Ügyfél-azonosító** – az összekötő Azure ad-regisztrációjának ügyfél-azonosítója
@@ -168,5 +169,3 @@ A következő konfigurációs értékek szükségesek:
 - **Engedélyezési URL** -cím – a OAuth 2,0 engedélyezési URL-címe
 - **Jogkivonat URL-címe** – a OAuth 2,0 token URL-címe
 - **URL-cím frissítése** – a OAuth 2,0 frissítési URL-cím
-
-
