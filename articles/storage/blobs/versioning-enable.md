@@ -6,14 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82884344"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086047"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>BLOB-verziószámozás engedélyezése és kezelése
 
@@ -21,7 +22,7 @@ A Storage-fiókhoz bármikor engedélyezheti vagy letilthatja a blob verziószá
 
 ## <a name="enable-blob-versioning"></a>Blob verziószámozásának engedélyezése
 
-# <a name="azure-portal"></a>[Azure Portalra](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 A blob verziószámozásának engedélyezése a Azure Portalban:
 
@@ -67,7 +68,7 @@ Az erőforrások Azure Portal-sablonokkal való üzembe helyezésével kapcsolat
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>BLOB módosítása új verzió elindításához
 
-A következő mintakód bemutatja, hogyan indíthat el egy új verziót az Azure Storage ügyféloldali kódtár for .NET 12-es verziójának használatával. A példa futtatása előtt győződjön meg arról, hogy engedélyezte a verziószámozást a Storage-fiókhoz.
+A következő mintakód bemutatja, hogyan indíthat el egy új verziót az Azure Storage ügyféloldali kódtár .NET-hez készült [12.5.0-preview. 5-ös](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) vagy újabb verziójával. A példa futtatása előtt győződjön meg arról, hogy engedélyezte a verziószámozást a Storage-fiókhoz.
 
 A példa létrehoz egy blokk blobot, majd frissíti a blob metaadatait. A blob metaadatainak frissítése elindítja egy új verzió létrehozását. A példa lekéri a kezdeti verziót és a jelenlegi verziót, és azt mutatja, hogy csak az aktuális verzió tartalmazza a metaadatokat.
 

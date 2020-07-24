@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ceb58182b34a4eccbed0dc1cdd1c351ae7868da
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85209385"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085911"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
 
@@ -85,7 +85,7 @@ Log Analytics beállítása egy új objektumhoz:
 
 5. Adja meg a beállítások konfigurációjának nevét, majd kattintson a **küldés log Analytics**lehetőségre. A használt névnek nem tartalmazhat szóközt, és meg kell felelnie az [Azure elnevezési konvencióinak](../azure-resource-manager/management/resource-name-rules.md). A naplók részeként kiválaszthatja a Log Analyticsba felvenni kívánt beállításokat, például az ellenőrzőpontot, a hibát, a felügyeletet és így tovább.
 
-6. Kattintson a **Mentés** gombra.
+6. Válassza a **Mentés** lehetőséget.
 
 >[!NOTE]
 >Log Analytics lehetővé teszi az adatok adatfolyamként való továbbítását [Event Hubs](../event-hubs/event-hubs-about.md) vagy archiválását egy Storage-fiókba. A szolgáltatással kapcsolatos további tudnivalókért tekintse meg az [Azure monitoring-adatok továbbítása az Event hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) -ba és az Azure-beli [erőforrás-naplók archiválása a Storage-fiókba](../azure-monitor/platform/resource-logs-collect-storage.md)című
@@ -96,7 +96,7 @@ Log Analytics munkaterületeket a Azure Portal vagy a Azure Monitorban érheti e
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Log Analytics elérése Log Analytics munkaterületen
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. **Log Analytics munkaterület**keresése.
 
@@ -133,52 +133,16 @@ Log Analytics csak a közbenső állapotú jelentések a kapcsolódási tevéken
 
 ## <a name="example-queries"></a>Példa a lekérdezésekre
 
-A következő példák azt mutatják be, hogy a diagnosztikai szolgáltatás hogyan állít elő jelentést a rendszer leggyakoribb tevékenységeihez.
+Az Azure Monitor Log Analytics felhasználói felületén keresztül érheti el például a lekérdezéseket:
+1. Lépjen a Log Analytics munkaterületre, majd válassza a **naplók**lehetőséget. A példaként szolgáló lekérdezés felhasználói felülete automatikusan megjelenik.
+1. Módosítsa a szűrőt **kategóriára**.
+1. Válassza a **Windows virtuális asztal** lehetőséget az elérhető lekérdezések áttekintéséhez.
+1. Válassza a **Futtatás** lehetőséget a kijelölt lekérdezés futtatásához. 
 
-A felhasználók által készített kapcsolatok listájának lekéréséhez futtassa a következő parancsmagot:
+További információ a [Azure Monitor log Analytics mentett lekérdezésekben](../azure-monitor/log-query/saved-queries.md)található minta lekérdezési felületről.
 
-```kusto
-WVDConnections
-| project-away TenantId,SourceSystem
-| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
+A következő lekérdezési lista lehetővé teszi egy adott felhasználó kapcsolatainak vagy problémáinak áttekintését. Ezeket a lekérdezéseket a [log Analytics lekérdezés-szerkesztőben](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)futtathatja. Minden lekérdezésnél cserélje le a helyére a `userupn` megkeresni kívánt felhasználó egyszerű felhasználónevét.
 
-A felhasználók hírcsatorna-tevékenységének megtekintése:
-
-```kusto
-WVDFeeds
-| project-away TenantId,SourceSystem
-| join kind=leftouter (
-    WVDErrors
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
-    ) on CorrelationId
-| join kind=leftouter (
-   WVDCheckpoints
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
-   | mv-apply Checkpoints on
-    (
-        order by todatetime(Checkpoints['Time']) asc
-        | summarize Checkpoints=makelist(Checkpoints)
-    )
-   ) on CorrelationId
-| project-away CorrelationId1, CorrelationId2
-| order by  TimeGenerated desc
-```
 
 Egyetlen felhasználóhoz tartozó összes kapcsolat megkeresése:
 
@@ -199,7 +163,6 @@ WVDConnections
 |sort by TimeGenerated asc, CorrelationId
 |summarize dcount(CorrelationId) by bin(TimeGenerated, 1d)
 ```
-
 
 Munkamenet időtartamának megkeresése felhasználónként:
 
@@ -224,7 +187,7 @@ WVDErrors
 |take 100
 ```
 
-Annak megállapítása, hogy egy adott hiba történt-e:
+Annak megállapítása, hogy adott hiba történt-e a többi felhasználónál:
 
 ```kusto
 WVDErrors
@@ -232,27 +195,7 @@ WVDErrors
 | summarize count(UserName) by CodeSymbolic
 ```
 
-Egy hiba előfordulásának megkeresése az összes felhasználónál:
 
-```kusto
-WVDErrors
-| where ServiceError =="false"
-| summarize usercount = count(UserName) by CodeSymbolic
-| sort by usercount desc
-| render barchart
-```
-
-Az alkalmazások felhasználóinak lekérdezéséhez futtassa a következő lekérdezést:
-
-```kusto
-WVDCheckpoints
-| where TimeGenerated > ago(7d)
-| where Name == "LaunchExecutable"
-| extend App = parse_json(Parameters).filename
-| summarize Usage=count(UserName) by tostring(App)
-| sort by Usage desc
-| render columnchart
-```
 >[!NOTE]
 >- Amikor a felhasználó megnyitja a teljes asztalt, az alkalmazás használata a munkamenetben nem kerül nyomon ellenőrzőpontként a WVDCheckpoints táblában.
 >- A WVDConnections tábla ResourcesAlias oszlopa azt jeleníti meg, hogy a felhasználó egy teljes asztalhoz vagy egy közzétett alkalmazáshoz csatlakozott-e. Az oszlop csak a csatlakozás során megnyíló első alkalmazást jeleníti meg. A felhasználó által megnyitott közzétett alkalmazások követése a WVDCheckpoints-ben történik.

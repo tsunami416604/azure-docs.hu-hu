@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 9a6ee4f5b18c6747796f33bc433d1d40982205a3
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 89a87e1658f413b0a8cd757525450de30277d943
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185007"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086880"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis – Gyakori kérdések
 Ismerje meg az Azure cache-hez készült Redis kapcsolatos gyakori kérdésekre, mintákra és ajánlott eljárásokra adott válaszokat.
@@ -19,7 +19,6 @@ Ismerje meg az Azure cache-hez készült Redis kapcsolatos gyakori kérdésekre,
 ## <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
 Ha a kérdés nem szerepel a listán, tudassa velünk, és segítünk megtalálni a választ.
 
-* A GYIK végén felteheti a kérdéseit, és az Azure cache csapatával és a jelen cikk más tagjaival is foglalkozhat.
 * Ha szélesebb közönséget szeretne elérni, tegye fel kérdéseit a [Microsoft Q&az Azure cache-re vonatkozó kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-cache-redis.html) , és folytassa az Azure cache csapatával és a Közösség más tagjaival.
 * Ha a szolgáltatásra vonatkozó kérést szeretne végezni, küldje el kérelmeit és ötleteit az Azure cache-be a [Redis-felhasználói hanghoz](https://feedback.azure.com/forums/169382-cache).
 * Küldhet e-mailt az [Azure cache külső visszajelzései](mailto:azurecache@microsoft.com)között is.
@@ -43,7 +42,7 @@ A következő gyakori kérdések a Redis készült Azure cache alapfogalmait és
 * [Milyen régióban érdemes megkeresni a gyorsítótárat?](#in-what-region-should-i-locate-my-cache)
 * [Hol találhatók a gyorsítótárazott adataim?](#where-do-my-cached-data-reside)
 * [Mennyit kell fizetnem az Azure cache Redis?](#how-am-i-billed-for-azure-cache-for-redis)
-* [Használhatom az Azure cache-t a Redis Azure Government Cloud, az Azure China Cloud vagy a Microsoft Azure Germany használatával?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
+* [Használhatom az Azure cache-t a Redis Azure Government-felhővel, az Azure China 21Vianet-felhővel vagy Microsoft Azure Germanyával?](#can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany)
 
 ## <a name="development-faqs"></a>Fejlesztői GYIK
 * [Mi a StackExchange. Redis konfigurációs beállításai?](#what-do-the-stackexchangeredis-configuration-options-do)
@@ -73,10 +72,10 @@ Az ebben a szakaszban található gyakori kérdések az általános monitorozás
 * [Miért bontottam le az ügyfelem a gyorsítótárat?](#why-was-my-client-disconnected-from-the-cache)
 
 ## <a name="prior-cache-offering-faqs"></a>Korábbi gyorsítótár-ajánlatok – gyakori kérdések
-* [Melyik Azure cache-ajánlat megfelelő a számomra?](#which-azure-cache-offering-is-right-for-me)
+* [Melyik Azure cache-ajánlatok megfelelőek a számomra?](#which-azure-cache-offerings-is-right-for-me)
 
 ### <a name="what-is-azure-cache-for-redis"></a>Mi az az Azure Cache for Redis?
-A Redis készült Azure cache a népszerű, nyílt forráskódú szoftverek [Redis](https://redis.io/)alapul. Hozzáférést biztosít egy biztonságos, dedikált Azure cache-hez a Microsoft által felügyelt Redis, és az Azure-on belül bármely alkalmazásból elérhető. Részletesebb áttekintést a Azure.com-beli Redis-termékek [Azure cache](https://azure.microsoft.com/services/cache/) -ről szóló oldalán talál.
+A [Redis készült Azure cache](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-overview) a népszerű, nyílt forráskódú szoftverek [Redis](https://redis.io/)alapul. Hozzáférést biztosít egy biztonságos, dedikált Azure cache-hez a Microsoft által felügyelt Redis, és az Azure-on belül bármely alkalmazásból elérhető. Részletesebb áttekintésért tekintse meg az [Azure cache for Redis](https://azure.microsoft.com/services/cache/) termék oldalát.
 
 ### <a name="how-can-i-get-started-with-azure-cache-for-redis"></a>Hogyan szerezhetem be az Azure cache-t a Redis-hez?
 Az Azure cache Redis többféleképpen is elsajátíthatja.
@@ -160,9 +159,9 @@ Ezen funkciók használatához explicit módon konfigurálnia kell az Azure cach
 <a name="cache-billing"></a>
 
 ### <a name="how-am-i-billed-for-azure-cache-for-redis"></a>Mennyit kell fizetnem az Azure cache Redis?
-Az Azure cache for Redis díjszabása [itt](https://azure.microsoft.com/pricing/details/cache/)található. A díjszabás lapon a díjszabás óradíjként szerepel. A gyorsítótárak számlázása percenként történik a gyorsítótár létrehozásának időpontjától egészen a gyorsítótár törlésekor. Nincs lehetőség a gyorsítótár számlázásának leállítására vagy felfüggesztésére.
+Az Azure cache for Redis díjszabása [itt](https://azure.microsoft.com/pricing/details/cache/)található. A díjszabási oldal óradíjas és havi díjszabás szerint sorolja fel az árakat. A gyorsítótárak számlázása percenként történik a gyorsítótár létrehozásának időpontjától egészen a gyorsítótár törlésekor. Nincs lehetőség a gyorsítótár számlázásának leállítására vagy felfüggesztésére.
 
-### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>Használhatom az Azure cache-t a Redis Azure Government Cloud, az Azure China Cloud vagy a Microsoft Azure Germany használatával?
+### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-21vianet-cloud-or-microsoft-azure-germany"></a>Használhatom az Azure cache-t a Redis Azure Government-felhővel, az Azure China 21Vianet-felhővel vagy Microsoft Azure Germanyával?
 Igen, a Redis-hez készült Azure cache Azure Government felhőben, az Azure China 21Vianet-felhőben és Microsoft Azure Germany érhető el. A Redis Azure cache eléréséhez és kezeléséhez használt URL-címek eltérőek ezekben a felhőkben az Azure nyilvános felhővel szemben.
 
 | Felhő   | Redis DNS-utótagja            |
@@ -185,7 +184,7 @@ További információ az Azure cache Redis való használatáról a PowerShell h
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Mi a StackExchange. Redis konfigurációs beállításai?
 A StackExchange. Redis számos lehetőséget kínál. Ez a szakasz néhány gyakori beállításról beszél. További információ a StackExchange. Redis beállításokról: [StackExchange. Redis konfiguráció](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-| ConfigurationOptions | Leírás | Ajánlás |
+| ConfigurationOptions | Description | Javaslat |
 | --- | --- | --- |
 | AbortOnConnectFail |Ha igaz értékre van állítva, a kapcsolat hálózati hiba után nem fog újracsatlakozni. |Állítsa hamis értékre, és hagyja, hogy a StackExchange. Redis automatikusan újracsatlakozik. |
 | ConnectRetry |A kapcsolódási kísérletek megismétlésének száma a kezdeti csatlakozás során. |Útmutatásért tekintse meg az alábbi megjegyzéseket. |
@@ -260,7 +259,7 @@ A [Redis parancsokban](https://redis.io/commands#) felsorolt parancsok bármelyi
 <a name="cache-reference"></a>
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Miért nem rendelkezik az Azure cache for Redis egy MSDN Class Library-hivatkozással, mint a többi Azure-szolgáltatással?
-A Redis Microsoft Azure gyorsítótára a Redis népszerű, nyílt forráskódú Azure cache-re épül. Számos [Redis-ügyfél](https://redis.io/clients) számára elérhető számos programozási nyelvhez. Minden ügyfél saját API-val rendelkezik, amely hívásokat kezdeményez az Azure cache Redis-példányhoz a [Redis parancsok](https://redis.io/commands)használatával.
+A Redis Microsoft Azure gyorsítótára a népszerű, nyílt forráskódú memóriában tárolt adattárban, a Redis-on alapul. Számos [Redis-ügyfél](https://redis.io/clients) számára elérhető számos programozási nyelvhez. Minden ügyfél saját API-val rendelkezik, amely hívásokat kezdeményez az Azure cache Redis-példányhoz a [Redis parancsok](https://redis.io/commands)használatával.
 
 Mivel minden ügyfél eltérő, az MSDN-ben nem találhatók központi osztályok, és mindegyik ügyfél saját dokumentációt tart fenn. A dokumentáción kívül számos oktatóanyag mutatja be, hogyan kezdheti el az Azure cache használatát a Redis különböző nyelveken és gyorsítótár-ügyfeleken. Az oktatóanyagok eléréséhez tekintse meg az [Azure cache használata a Redis](cache-dotnet-how-to-use-azure-redis-cache.md) és a testvéri cikkek a tartalomjegyzékben című cikket.
 
@@ -386,7 +385,7 @@ Az előző példában látható, hogy a olvasóhoz szál esetében hat foglalt s
 
 Vegye figyelembe, hogy a StackExchange. Redis az időtúllépéseket is elérheti, ha a olvasóhoz vagy a munkavégző szálak növekedését szabályozzák.
 
-### <a name="recommendation"></a>Ajánlás
+### <a name="recommendation"></a>Javaslat
 
 Ezeknek az információknak az alapján határozottan azt javasoljuk, hogy az ügyfelek az alapértelmezett értéknél nagyobb értékre állítsa be a olvasóhoz és a feldolgozói szálak minimális konfigurációs értékét. Az értékhez nem biztosítunk egy-egy méretre kiterjedő útmutatást, mivel az egyik alkalmazás megfelelő értéke valószínűleg túl magas vagy alacsony lesz egy másik alkalmazás esetében. Ez a beállítás hatással lehet a bonyolult alkalmazások más részeinek teljesítményére is, így minden ügyfélnek az adott igényeknek megfelelően kell finomítani ezt a beállítást. A megfelelő kiindulási hely 200 vagy 300, majd szükség szerint tesztelhető és csípés.
 
@@ -467,9 +466,9 @@ A gyorsítótár leválasztásának néhány gyakori oka a következő:
   * Az Azure a gyorsítótár üzembe helyezési példányának javítását használta
     * Ez lehet a Redis-kiszolgáló frissítései vagy az általános virtuális gép karbantartása.
 
-### <a name="which-azure-cache-offering-is-right-for-me"></a>Melyik Azure cache-ajánlat megfelelő a számomra?
+### <a name="which-azure-cache-offerings-is-right-for-me"></a>Melyik Azure cache-ajánlatok megfelelőek a számomra?
 > [!IMPORTANT]
-> A tavalyi év [bejelentése](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)szerint az Azure Managed cache Service és az Azure szerepköralapú gyorsítótár szolgáltatás 2016. november 30-án **megszűnt** . Javasoljuk, hogy használja az [Azure cache-t a Redis](https://azure.microsoft.com/services/cache/). Az áttelepítéssel kapcsolatos információkért lásd: [áttelepítés Managed cache Serviceról az Azure cache-be a Redis-hez](cache-migrate-to-redis.md).
+> Az 2016-es [közleménynek](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)megfelelően az Azure Managed cache Service és az Azure szerepköralapú gyorsítótár szolgáltatás a 2016. november 30-án **megszűnt** . Javasoljuk, hogy használja az [Azure cache-t a Redis](https://azure.microsoft.com/services/cache/). Az áttelepítéssel kapcsolatos információkért lásd: [áttelepítés Managed cache Serviceról az Azure cache-be a Redis-hez](cache-migrate-to-redis.md).
 >
 >
 

@@ -14,17 +14,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f34e3a3d1e0245180ce923fc3ec7353ab1a176be
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712292"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086353"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-formátumok és -kodekek
 
 > [!div class="op_single_selector" title1="Válassza ki a használt Media Services verzióját:"]
 > * [2-es verzió](media-services-media-encoder-standard-formats.md)
-> * [3-as verzió](../latest/media-encoder-standard-formats.md)
+> * [3\. verzió](../latest/media-encoder-standard-formats.md)
 
 Ez a dokumentum a leggyakoribb importálási és exportálási fájlformátumok listáját tartalmazza, amelyeket Media Encoder Standard használhat.
 
@@ -38,7 +39,7 @@ Ez a dokumentum a leggyakoribb importálási és exportálási fájlformátumok 
 | Windows Media Video (WMV) / ASP (.wmv, .asf) |Yes |
 | AVI (8 bit-es/10 bit-es, tömörítettlen) (.avi) |Yes |
 | MP4 (.mp4, .m4a, .m4v)/ISMV (.isma, .ismv) |Yes |
-| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) (.dvr-ms) |Yes |
+| [Microsoft Digital Video Recording(DVR-MS)](/previous-versions/windows/desktop/mstv/about-the-dvr-ms-file-format) (.dvr-ms) |Yes |
 | Matroska/WebM (.mkv) |Yes |
 | WAVE/WAV (.wav) |Yes |
 | QuickTime (.mov) |Yes |
@@ -115,4 +116,3 @@ A következő táblázat az exportáláshoz támogatott kodekeket és fájlform�
 [Igény szerinti tartalom kódolása Azure Media Services](media-services-encode-asset.md)
 
 [Kódolás a Media Encoder Standard használatával](media-services-dotnet-encode-with-media-encoder-standard.md)
-

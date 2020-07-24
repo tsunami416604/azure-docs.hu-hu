@@ -7,17 +7,18 @@ ms.date: 05/02/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: 0c0e688c628d553c8b732081f1a8b8debff8846e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79349f9da45a623581c40276c8e69d490c1dd253
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930658"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085554"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Rendszerkép létrehozása és felhasználó által hozzárendelt felügyelt identitás használata az Azure Storage-beli fájlokhoz való hozzáféréshez 
 
 Az Azure rendszerkép-szerkesztő támogatja a parancsfájlok használatát, illetve a fájlok több helyről történő másolását, például a GitHub és az Azure Storage stb. Ezeknek az adatoknak a használatához külsőleg elérhetőnek kell lenniük az Azure-rendszerkép-készítő számára, de az Azure Storage-blobokat SAS-jogkivonatok használatával lehet védelemmel ellátni.
 
-Ez a cikk bemutatja, hogyan hozhat létre testreszabott rendszerképeket az Azure VM rendszerkép-készítő használatával, ahol a szolgáltatás egy [felhasználó által hozzárendelt felügyelt identitással](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) fér hozzá az Azure Storage-ban található fájlokhoz a rendszerkép testreszabásához, anélkül, hogy nyilvánosan elérhetővé kellene tennie a fájlokat, vagy sas-jogkivonatokat kell beállítania.
+Ez a cikk bemutatja, hogyan hozhat létre testreszabott rendszerképeket az Azure VM rendszerkép-készítő használatával, ahol a szolgáltatás egy [felhasználó által hozzárendelt felügyelt identitással](../../active-directory/managed-identities-azure-resources/overview.md) fér hozzá az Azure Storage-ban található fájlokhoz a rendszerkép testreszabásához, anélkül, hogy nyilvánosan elérhetővé kellene tennie a fájlokat, vagy sas-jogkivonatokat kell beállítania.
 
 Az alábbi példában két erőforráscsoport jön létre, amelyeket az egyéni rendszerképhez fog használni, a másik pedig egy, a parancsfájlt tartalmazó Azure Storage-fiókot fog üzemeltetni. Ez valós helyzetet szimulál, ahol előfordulhat, hogy a rendszerkép-szerkesztőn kívül különböző tárolási fiókokban található összetevők vagy képfájlok is létrehozhatók. Létre kell hoznia egy felhasználó által hozzárendelt identitást, majd meg kell adnia az olvasási engedélyeket a parancsfájlhoz, de a fájlhoz nem fog nyilvános hozzáférést adni. Ezután a rendszerhéj-testreszabó használatával letöltheti és futtathatja a szkriptet a Storage-fiókból.
 
@@ -59,7 +60,7 @@ az provider register -n Microsoft.Storage
 ```
 
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Többször is fogjuk használni az adatokat, így az adatok tárolására néhány változót fogunk létrehozni.
 
@@ -94,7 +95,7 @@ az group create -n $strResourceGroup -l $location
 
 Hozzon létre egy felhasználó által hozzárendelt identitást, és állítson be engedélyeket az erőforráscsoporthoz.
 
-A rendszerkép-szerkesztő a megadott [felhasználói identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity) fogja használni a rendszerkép az erőforráscsoporthoz való beadásához. Ebben a példában egy Azure-szerepkör-definíciót hoz létre, amely a rendszerkép terjesztésének részletes műveleteit tartalmazni fogja. A szerepkör-definíció ezután a felhasználó-identitáshoz lesz rendelve.
+A rendszerkép-szerkesztő a megadott [felhasználói identitást](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) fogja használni a rendszerkép az erőforráscsoporthoz való beadásához. Ebben a példában egy Azure-szerepkör-definíciót hoz létre, amely a rendszerkép terjesztésének részletes műveleteit tartalmazni fogja. A szerepkör-definíció ezután a felhasználó-identitáshoz lesz rendelve.
 
 ```console
 # create user assigned identity for image builder to access the storage account where the script is located
@@ -232,7 +233,7 @@ A rendszerképet úgy kell megtekinteni, hogy az SSH-kapcsolatok létrehozása u
 *******************************************************
 ```
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 Ha elkészült, akkor törölheti az erőforrásokat, ha már nincs rájuk szükség.
 

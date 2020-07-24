@@ -6,12 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/30/2019
-ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: e098182c000cbe05df533434a41c55b797ef876f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83683304"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086659"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Kimutatás-átalakítás a leképezési adatfolyamban
 
@@ -19,6 +20,8 @@ ms.locfileid: "83683304"
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 A pivot transzformáció használatával több oszlopot hozhat létre egyetlen oszlop egyedi soraiból. A pivot egy aggregációs átalakítás, ahol kiválaszthatja a Group By Columns és az [összesítő függvények](data-flow-expression-functions.md#aggregate-functions)használatával létrehozott pivot oszlopokat.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4C4YN]
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -68,7 +71,7 @@ Ha meghatározott pivot-kulcs értékek vannak megadva, a rendszer a kimutatásb
 
 A pivot a sorok értékei alapján dinamikusan generálja az új oszlopnevek nevét. Ezeket az új oszlopokat felveheti azokba a metaadatokba, amelyeket később az adatfolyamban lehet hivatkozni. Ehhez használja az [elsodródott](concepts-data-flow-schema-drift.md#map-drifted-columns-quick-action) gyors műveletet az adatelőnézetben. 
 
-![Oszlopok forgatása](media/data-flow/newpivot1.png "Elsodródott pivot oszlopok leképezése")
+![Kimutatás oszlopok alapján](media/data-flow/newpivot1.png "Elsodródott pivot oszlopok leképezése")
 
 ### <a name="sinking-pivoted-columns"></a>Elforgatott oszlopok
 

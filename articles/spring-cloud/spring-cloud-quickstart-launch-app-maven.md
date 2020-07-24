@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: f374e0611b887e2a2c787569d9fe58bc1a5c84e9
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: devx-track-java
+ms.openlocfilehash: 9ae6524dc1d53580d0dc7de1179ccf9db8cebc61
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594066"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086132"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Maven beépülő modullal
 
@@ -47,9 +48,9 @@ Az oktatóanyag elvégzéséhez:
 1. Adja meg a minta alkalmazás **projekt részleteit** a következőképpen:
 
     1. Válassza ki azt az **előfizetést** , amelyhez az alkalmazást társítani kívánja.
-    1. Válasszon ki vagy hozzon létre egy erőforráscsoportot az alkalmazáshoz. Javasoljuk, hogy hozzon létre egy új erőforráscsoportot.  Az alábbi példa egy nevű `myspringservice`új erőforráscsoportot mutat be.
-    1. Adja meg az új Azure Spring Cloud szolgáltatás nevét.  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat. A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.  Az alábbi példában szereplő szolgáltatás neve `contosospringcloud`.
-    1. Válasszon egy helyet az alkalmazás számára a megadott beállítások közül.  Ebben a példában a lehetőséget választjuk `East US`.
+    1. Válasszon ki vagy hozzon létre egy erőforráscsoportot az alkalmazáshoz. Javasoljuk, hogy hozzon létre egy új erőforráscsoportot.  Az alábbi példa egy nevű új erőforráscsoportot mutat be `myspringservice` .
+    1. Adja meg az új Azure Spring Cloud szolgáltatás nevét.  A névnek 4 – 32 karakter hosszúnak kell lennie, és csak kisbetűket, számokat és kötőjeleket tartalmazhat. A szolgáltatás nevének első karakterének betűnek kell lennie, és az utolsó karakternek betűnek vagy számnak kell lennie.  Az alábbi példában szereplő szolgáltatás neve `contosospringcloud` .
+    1. Válasszon egy helyet az alkalmazás számára a megadott beállítások közül.  Ebben a példában a lehetőséget választjuk `East US` .
     1. Az új szolgáltatás összefoglalásának áttekintéséhez válassza a **felülvizsgálat + létrehozás** lehetőséget.  Ha úgy tűnik, hogy minden helyes, válassza a **Létrehozás**lehetőséget.
 
     > [!div class="mx-imgBorder"]
@@ -63,7 +64,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szol
 ## <a name="set-up-your-configuration-server"></a>A konfigurációs kiszolgáló beállítása
 
 1. A szolgáltatás **áttekintése** lapon válassza a **konfigurációs kiszolgáló**lehetőséget.
-1. Az **alapértelmezett adattár** szakaszban állítsa be az **URI** beállítást **https://github.com/Azure-Samples/piggymetrics-config**, majd kattintson az **alkalmaz** gombra a módosítások mentéséhez.
+1. Az **alapértelmezett adattár** szakaszban állítsa be az **URI** beállítást **https://github.com/Azure-Samples/piggymetrics-config** , majd kattintson az **alkalmaz** gombra a módosítások mentéséhez.
 
     > [!div class="mx-imgBorder"]
     > ![Konfigurációs beállítások megadása és alkalmazása](media/maven-qs-apply-config.jpg)
@@ -96,11 +97,11 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szol
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.1.0:config
     ```
 
-    a. Válassza ki a `gateway`modulokat`auth-service`, `account-service`és.
+    a. Válassza ki a modulokat, `gateway` `auth-service` és `account-service` .
 
     b. Válassza ki az előfizetését és az Azure Spring Cloud Service-fürtöt.
 
-    c. A megadott projektek listájában adja meg azt a számot, amely a `gateway` következőnek felel meg:.
+    c. A megadott projektek listájában adja meg azt a számot, amely a következőnek felel meg: `gateway` .
     
     d. Erősítse meg a konfigurációt.
 
@@ -120,7 +121,7 @@ A szolgáltatás üzembe helyezése körülbelül 5 percet vesz igénybe. A szol
 Ebben a rövid útmutatóban egy Spring Cloud-alkalmazást telepített egy Maven-tárházból. Ha többet szeretne megtudni az Azure Spring Cloud-ról, folytassa az alkalmazás telepítésre való előkészítésének oktatóanyagával.
 
 > [!div class="nextstepaction"]
-> [Az Azure Spring Cloud-alkalmazás előkészítése az](spring-cloud-tutorial-prepare-app-deployment.md)
-> Azure-hoz készült[Maven-bővítmények megismeréséhez](https://github.com/microsoft/azure-maven-plugins)
+> [Az Azure Spring Cloud-alkalmazás előkészítése az üzembe helyezéshez](spring-cloud-tutorial-prepare-app-deployment.md) 
+>  [További információ az Azure-beli Maven beépülő moduljairól](https://github.com/microsoft/azure-maven-plugins)
 
 További minták érhetők el a GitHubon: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 15e6cf7adfda995148a75ec21b8d8e5d8a5cab2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c79bca86ba253217012abd24d509d365a076b183
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559072"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086030"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el
 
@@ -34,25 +34,29 @@ Ez a táblázat a blob Storage azon funkcióit sorolja fel, amelyeket a Azure Da
 |Ritkán használt adatok hozzáférési szintje|Általánosan elérhető|Nem támogatott|[Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek](storage-blob-storage-tiers.md)|
 |Események|Általánosan elérhető|Előnézet|[Reagálás Blob Storage-eseményekre](storage-blob-event-overview.md)|
 |Metrikák (klasszikus)|Általánosan elérhető|Nem támogatott|[Azure Storage Analytics-metrikák (klasszikus)](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Metrikák az Azure Monitorban|Általánosan elérhető|Előnézet|[Azure Storage-metrikák a Azure Monitor](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Metrikák az Azure Monitorban|Általánosan elérhető|Előnézet|[Azure Storage-metrikák az Azure Monitorban](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB Storage PowerShell-parancsok|Általánosan elérhető|Előnézet|[Rövid útmutató: Blobok feltöltése, letöltése és listázása a PowerShell-lel](storage-quickstart-blobs-powershell.md)|
 |BLOB Storage – Azure CLI-parancsok|Általánosan elérhető|Előnézet|[Gyors útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel](storage-quickstart-blobs-cli.md)|
-|BLOB Storage API-k|Általánosan elérhető|Előnézet|[Gyors útmutató: Azure Blob Storage ügyféloldali kódtára a .NET-hez](storage-quickstart-blobs-dotnet.md)<br>[Gyors útmutató: Blobok kezelése a Java V12 SDK-val](storage-quickstart-blobs-java.md)<br>[Gyors útmutató: Blobok kezelése a Python V12 SDK-val](storage-quickstart-blobs-python.md)<br>[Gyors útmutató: Blobok kezelése a JavaScript V12 SDK-val Node.js](storage-quickstart-blobs-nodejs.md)|
+|BLOB Storage API-k|Általánosan elérhető|Előnézet|[Rövid útmutató: Az Azure Blob Storage .NET-hez készült ügyféloldali kódtára (v12)](storage-quickstart-blobs-dotnet.md)<br>[Gyors útmutató: Blobok kezelése a Java V12 SDK-val](storage-quickstart-blobs-java.md)<br>[Gyors útmutató: Blobok kezelése a Python V12 SDK-val](storage-quickstart-blobs-python.md)<br>[Gyors útmutató: Blobok kezelése a JavaScript V12 SDK-val Node.js](storage-quickstart-blobs-nodejs.md)|
 |Diagnosztikai naplók|Általánosan elérhető|Előnézet <div role="complementary" aria-labelledby="diagnostic-logging"><sup>1</sup></div> |[Azure Storage Analytics-naplózás](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Archív hozzáférési szint|Általánosan elérhető|Nem támogatott|[Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek](storage-blob-storage-tiers.md)|
 |Bejelentkezés Azure Monitor|Előnézet |Még nem támogatott|[Az Azure Storage figyelése](../common/monitor-storage.md)|
-|Pillanatképek|Előnézet|Még nem támogatott|[BLOB-Pillanatképek](snapshots-overview.md)|
-|Statikus webhelyek|Előnézet|Még nem támogatott|[Statikus webhely üzemeltetése az Azure Storage-ban](storage-blob-static-website.md)|
-|Megváltoztathatatlan tároló|Előnézet|Még nem támogatott|[Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](storage-blob-immutable-storage.md)|
+|Pillanatképek|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Még nem támogatott|[BLOB-Pillanatképek](snapshots-overview.md)|
+|Statikus webhelyek|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Még nem támogatott|[Statikus webhely üzemeltetés az Azure Storage-ban](storage-blob-static-website.md)|
+|Megváltoztathatatlan tároló|Előnézet<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Még nem támogatott|[Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](storage-blob-immutable-storage.md)|
 |Életciklus-kezelési szabályzatok|Előnézet|Még nem támogatott|[Az Azure Blob Storage-életciklus felügyelete](storage-lifecycle-management-concepts.md)|
 |Blobfuse|Előnézet|Még nem támogatott|[BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel](storage-how-to-mount-container-linux.md)|
 |Csatorna módosítása|Még nem támogatott|Még nem támogatott|[A hírcsatornák támogatásának módosítása az Azure Blob Storage-ban](storage-blob-change-feed.md)|
 |Fiók feladatátvétele|Még nem támogatott|Még nem támogatott|[Vész-helyreállítási és-fiók feladatátvétele](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|BLOB Container ACL|Még nem támogatott|Még nem támogatott|[Tároló ACL beállítása](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
+|BLOB Container ACL|Még nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Még nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Tároló ACL beállítása](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |Egyéni tartományok|Még nem támogatott|Még nem támogatott|[Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)|
 |Helyreállítható törlés|Még nem támogatott|Még nem támogatott|[Az Azure Storage-blobok helyreállítható törlése](storage-blob-soft-delete.md)|
 
-<div id="diagnostic-logging"><sup>1</sup> a prémium szintű blokk blob Storage-fiókok esetében a Azure Portal használatával nem engedélyezhető a diagnosztikai naplók (klasszikus). Engedélyezze őket a PowerShell használatával.</div>
+<div id="diagnostic-logging"><sup>1</sup> a prémium szintű blokk blob Storage-fiókok esetében a Azure Portal használatával nem engedélyezhető a diagnosztikai naplók (klasszikus). Engedélyezze őket a PowerShell használatával.</div><br>
+
+<div id="blob-container-ACL"><sup>2</sup> az ACL-eket beállíthatja a tároló gyökérkönyvtárában, a tárolót azonban nem.</div><br>
+
+<div id="preview-form"><sup>3</sup> Ha a pillanatképeket, a nem módosítható tárolókat vagy a statikus webhelyeket Data Lake Storage Gen2 használatával szeretné használni, regisztrálnia kell az előzetes verzióban az <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>űrlap</a>kitöltésével.  </div>
 
 ## <a name="see-also"></a>Lásd még
 

@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a4f7d330db9a4a0d9b435ebe7527e55e37c254e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130222"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086217"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>A Hyper-V virtuális gépek vész-helyreállításának beállítása másodlagos helyre a PowerShell használatával (Resource Manager)
 
@@ -47,8 +47,8 @@ A Virtual Machine Manager előkészítése a következőképpen történik:
 
 Győződjön meg arról, hogy Azure PowerShell készen áll:
 
-- Ha már használja a PowerShellt, frissítsen a 0.8.10 vagy újabb verzióra. [További](/powershell/azureps-cmdlets-docs) információ a PowerShell beállításáról.
-- A PowerShell beállítása és konfigurálása után tekintse át a [szolgáltatás-parancsmagokat](/powershell/azure/overview).
+- Ha már használja a PowerShellt, frissítsen a 0.8.10 vagy újabb verzióra. [További](/powershell/azure/) információ a PowerShell beállításáról.
+- A PowerShell beállítása és konfigurálása után tekintse át a [szolgáltatás-parancsmagokat](/powershell/azure/).
 - Ha többet szeretne megtudni a paraméterek értékeinek, bemenetének és kimenetének a PowerShellben való használatáról, olvassa el az [első lépések](/powershell/azure/get-started-azureps) útmutatóját.
 
 ## <a name="set-up-a-subscription"></a>Előfizetés beállítása
@@ -359,6 +359,6 @@ if($isJobLeftForProcessing)
 }While($isJobLeftForProcessing)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További](/powershell/module/az.recoveryservices) információ a site Recovery Resource Manager PowerShell-parancsmagokkal.

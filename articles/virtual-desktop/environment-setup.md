@@ -1,6 +1,6 @@
 ---
 title: Windows rendszerű virtuális asztali környezet – Azure
-description: A Windows rendszerű virtuális asztali környezet alapvető elemei.
+description: Ismerje meg a Windows rendszerű virtuális asztali környezet, például a gazdagép-készletek és az erőforráscsoportok alapvető elemeit.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d189d5febe54a83cde4fe6cd6aa51e728aa882e6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 802369112d99d5828024a16936dc7458795f22e8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259905"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085894"
 ---
 # <a name="windows-virtual-desktop-environment"></a>A Windows Virtual Desktop környezete
 
@@ -58,7 +58,7 @@ A munkaterület az alkalmazáscsoport logikai csoportosítása a Windows rendsze
 
 Miután hozzárendelte a felhasználókat az alkalmazás csoportjaihoz, csatlakozhatnak a Windows rendszerű virtuális asztali környezethez a Windows rendszerű virtuális asztali ügyfelek bármelyikével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a delegált hozzáférésről és a szerepkörök felhasználókhoz való hozzárendeléséről a [Windows Virtual Desktopban](delegated-access-virtual-desktop.md).
 

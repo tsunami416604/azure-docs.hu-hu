@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f1f564a36a3f0103832bc81bbbc65d2818c03143
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 822d74c6f080a1bb1e5e5af38bdf2c221af16d52
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232008"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086761"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Az Azure Virtual Machines szolgáltatásban SQL Server automatikus javítása (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,7 +51,7 @@ Az automatikus javítás használatához vegye figyelembe a következő előfelt
 
 **Azure PowerShell**:
 
-* [Telepítse a legújabb Azure PowerShell-parancsokat](/powershell/azure/overview) , ha automatikus javítást szeretne konfigurálni a PowerShell-lel.
+* [Telepítse a legújabb Azure PowerShell-parancsokat](/powershell/azure/) , ha automatikus javítást szeretne konfigurálni a PowerShell-lel.
 
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
@@ -63,7 +63,7 @@ Az automatikus javítás használatához vegye figyelembe a következő előfelt
 ## <a name="settings"></a>Beállítások
 Az alábbi táblázat az automatikus javításhoz konfigurálható beállításokat ismerteti. A tényleges konfigurációs lépések attól függően változnak, hogy az Azure Portal vagy az Azure Windows PowerShell-parancsokat használja-e.
 
-| Beállítás | Lehetséges értékek | Leírás |
+| Beállítás | Lehetséges értékek | Description |
 | --- | --- | --- |
 | **Automatikus javítás** |Engedélyezés/letiltás (letiltva) |Engedélyezheti vagy letilthatja az Azure-beli virtuális gépek automatikus javítását. |
 | **Karbantartási ütemezés** |Mindennap, hétfő, kedd, szerda, csütörtök, péntek, szombat, vasárnap |A virtuális géphez tartozó Windows-, SQL Server-és Microsoft-frissítések letöltésének és telepítésének ütemterve. |
@@ -114,7 +114,7 @@ Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceG
 
 A jelen példa alapján a következő táblázat ismerteti a cél Azure-beli virtuális gép gyakorlati hatását:
 
-| Paraméterek | Hatás |
+| Paraméter | Hatás |
 | --- | --- |
 | **DayOfWeek** |A javítások minden csütörtökön telepítve vannak. |
 | **MaintenanceWindowStartingHour** |A frissítés megkezdése 11:00 órakor. |

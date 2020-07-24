@@ -13,11 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf630f6028248d799a3953d25db27a2150602586
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84204769"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087011"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure virtuális hálózatokon található erőforrások névfeloldása
 
@@ -46,8 +47,8 @@ A használt névfeloldási típus attól függ, hogy az erőforrásoknak hogyan 
 | Az egyik virtuális hálózatban található App Service Web Apps névfeloldása egy másik virtuális hálózatban lévő virtuális gépekre. |Az ügyfél által felügyelt DNS-kiszolgálók lekérdezést továbbítanak a virtuális hálózatok között az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
 | A helyszíni számítógépek és szolgáltatások neveinek feloldása az Azure-beli virtuális gépek vagy szerepkör-példányok között. |Ügyfél által felügyelt DNS-kiszolgálók (helyszíni tartományvezérlő, helyi írásvédett tartományvezérlő vagy a zónaletöltés használatával szinkronizált másodlagos DNS-kiszolgáló). Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
 | Az Azure-beli állomásnevek feloldása a helyszíni számítógépekről. |Továbbítsa a lekérdezéseket egy ügyfél által felügyelt DNS-proxykiszolgálóhoz a megfelelő virtuális hálózatban, a proxykiszolgáló lekérdezéseket továbbít az Azure-nak a feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-that-uses-your-own-dns-server). |Csak FQDN |
-| Fordított DNS a belső IP-címekhez. |[Saját DNS-kiszolgálóval](#name-resolution-that-uses-your-own-dns-server) [Azure DNS saját zónák](../dns/private-dns-overview.md) vagy az [Azure által biztosított](#azure-provided-name-resolution) névfeloldás vagy névfeloldás. |Nem értelmezhető |
-| A különböző felhőalapú szolgáltatásokban található virtuális gépek vagy szerepkör-példányok közötti névfeloldás a virtuális hálózatban nem. |Nem alkalmazható. A virtuális hálózatokon kívül nem támogatott a virtuális gépek és a szerepkör-példányok közötti kapcsolat a különböző felhőalapú szolgáltatásokban. |Nem értelmezhető|
+| Fordított DNS a belső IP-címekhez. |[Saját DNS-kiszolgálóval](#name-resolution-that-uses-your-own-dns-server) [Azure DNS saját zónák](../dns/private-dns-overview.md) vagy az [Azure által biztosított](#azure-provided-name-resolution) névfeloldás vagy névfeloldás. |Nem alkalmazható |
+| A különböző felhőalapú szolgáltatásokban található virtuális gépek vagy szerepkör-példányok közötti névfeloldás a virtuális hálózatban nem. |Nem alkalmazható. A virtuális hálózatokon kívül nem támogatott a virtuális gépek és a szerepkör-példányok közötti kapcsolat a különböző felhőalapú szolgáltatásokban. |Nem alkalmazható|
 
 ## <a name="azure-provided-name-resolution"></a>Azure által biztosított névfeloldás
 
@@ -59,7 +60,7 @@ A nyilvános DNS-nevek feloldásával együtt az Azure belső névfeloldást biz
 > A Cloud Services webes és feldolgozói szerepköreinek használatakor a szerepkör-példányok belső IP-címeit is elérheti az Azure Service Management REST API használatával. További információt a [Service Management REST API dokumentációjában](https://msdn.microsoft.com/library/azure/ee460799.aspx)talál. A címe a szerepkör neve és a példány száma alapján történik. 
 >
 
-### <a name="features"></a>Szolgáltatások
+### <a name="features"></a>Funkciók
 
 Az Azure által biztosított névfeloldás a következő funkciókat tartalmazza:
 * Egyszerű használat. Nem igényel konfigurálást.
@@ -176,7 +177,7 @@ Ha az Azure által biztosított névfeloldást használja, az Azure Dynamic Host
 Ha szükséges, a belső DNS-utótagot a PowerShell vagy az API használatával határozhatja meg:
 
 * Azure Resource Manager üzembe helyezési modellben található virtuális hálózatok esetében az utótag a [hálózati adapteren REST API](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces), a [Get-AzNetworkInterface PowerShell-](/powershell/module/az.network/get-aznetworkinterface) parancsmag és az az [Network NIC show](/cli/azure/network/nic#az-network-nic-show) Azure CLI parancs használatával érhető el.
-* A klasszikus üzembe helyezési modellekben az utótag az [üzembe helyezési API](https://msdn.microsoft.com/library/azure/ee460804.aspx) -hívás vagy a [Get-AzureVM-debug](/powershell/module/servicemanagement/azure/get-azurevm) parancsmag használatával érhető el.
+* A klasszikus üzembe helyezési modellekben az utótag az [üzembe helyezési API](https://msdn.microsoft.com/library/azure/ee460804.aspx) -hívás vagy a [Get-AzureVM-debug](/powershell/module/servicemanagement/azure.service/get-azurevm) parancsmag használatával érhető el.
 
 Ha az Azure-ba irányuló lekérdezések továbbítása nem felel meg az igényeinek, meg kell adnia a saját DNS-megoldását. A DNS-megoldásnak a következőket kell tennie:
 
@@ -214,7 +215,7 @@ A Azure Resource Manager üzemi modell használatakor megadhatja a virtuális h�
 > [!NOTE]
 > Ha egyéni DNS-kiszolgálót választ a virtuális hálózatához, meg kell adnia legalább egy DNS-kiszolgáló IP-címét; Ellenkező esetben a virtuális hálózat figyelmen kívül hagyja a konfigurációt, és az Azure által biztosított DNS-t használja helyette.
 
-A klasszikus üzemi modell használatakor megadhatja a virtuális hálózat DNS-kiszolgálóit a Azure Portal vagy a [hálózati konfigurációs fájlban](https://msdn.microsoft.com/library/azure/jj157100). A Cloud Services esetében a DNS-kiszolgálókat a [szolgáltatás konfigurációs fájljával](https://msdn.microsoft.com/library/azure/ee758710) vagy a PowerShell használatával adhatja meg a [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
+A klasszikus üzemi modell használatakor megadhatja a virtuális hálózat DNS-kiszolgálóit a Azure Portal vagy a [hálózati konfigurációs fájlban](https://msdn.microsoft.com/library/azure/jj157100). A Cloud Services esetében a DNS-kiszolgálókat a [szolgáltatás konfigurációs fájljával](https://msdn.microsoft.com/library/azure/ee758710) vagy a PowerShell használatával adhatja meg a [New-AzureVM](/powershell/module/servicemanagement/azure.service/new-azurevm).
 
 > [!NOTE]
 > Ha módosítja egy olyan virtuális hálózat vagy virtuális gép DNS-beállításait, amely már telepítve van, az új DNS-beállítások érvénybe léptetéséhez a DHCP-bérlet megújítását kell végrehajtania a virtuális hálózatban lévő összes érintett virtuális gépen. A Windows operációs rendszert futtató virtuális gépek esetén `ipconfig /renew` közvetlenül a virtuális gépen írhat be. A lépések az operációs rendszertől függően változnak. Tekintse meg az operációs rendszer típusának megfelelő dokumentációt.

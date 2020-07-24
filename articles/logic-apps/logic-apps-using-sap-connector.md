@@ -7,13 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: 01c1a2b3f9455f19877f1b16b7fff5a7c2e77c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8985f951b8ff37beb7a1f63e8200321fc706ce6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85323161"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086608"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás SAP-rendszerekhez az Azure Logic Appsből
 
@@ -133,7 +134,7 @@ Ezek az előfeltételek akkor érvényesek, ha a logikai alkalmazások prémium 
 
   * Ha az SAP-kapcsolat meghiúsul a következő hibaüzenettel: "Kérjük, ellenőrizze a fiók adatait és/vagy engedélyeit, és próbálkozzon újra", előfordulhat, hogy a szerelvény fájljai nem megfelelő helyen találhatók. Győződjön meg arról, hogy a szerelvény fájljait a adatátjáró telepítési mappájába másolta.
 
-    A hibák elhárításához [használja a .net-szerelvény kötési naplójának megjelenítőjét](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), amely lehetővé teszi, hogy a szerelvény fájljai a megfelelő helyen legyenek. Igény szerint a **globális szerelvény-gyorsítótár regisztrációját** is kiválaszthatja az SAP ügyféloldali kódtár telepítésekor.
+    A hibák elhárításához [használja a .net-szerelvény kötési naplójának megjelenítőjét](/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), amely lehetővé teszi, hogy a szerelvény fájljai a megfelelő helyen legyenek. Igény szerint a **globális szerelvény-gyorsítótár regisztrációját** is kiválaszthatja az SAP ügyféloldali kódtár telepítésekor.
 
 <a name="sap-library-versions"></a>
 
@@ -186,7 +187,7 @@ Ez a példa egy logikai alkalmazást használ, amely HTTP-kéréssel aktiválhat
 Azure Logic Apps minden logikai alkalmazásnak egy [eseményindítóval](../logic-apps/logic-apps-overview.md#logic-app-concepts)kell kezdődnie, amely akkor következik be, amikor egy adott esemény történik, vagy ha egy adott feltétel teljesül. A Logic Apps motor létrehoz egy Logic app-példányt, és elindítja az alkalmazás munkafolyamatát.
 
 > [!NOTE]
-> Ha egy logikai alkalmazás IDoc-csomagokat fogad az SAP-ból, a [kérés-trigger](https://docs.microsoft.com/azure/connectors/connectors-native-reqres) nem támogatja az SAP WE60 IDoc dokumentációjában létrehozott "egyszerű" XML-sémát. Az "egyszerű" XML-séma azonban támogatott olyan forgatókönyvek esetén, amelyek üzeneteket küldenek a Logic apps *és az* SAP között. A kérelem triggert az SAP IDoc XML-kódjával használhatja, de az RFC-IDoc nem. Vagy átalakíthatja az XML-t a szükséges formátumba. 
+> Ha egy logikai alkalmazás IDoc-csomagokat fogad az SAP-ból, a [kérés-trigger](../connectors/connectors-native-reqres.md) nem támogatja az SAP WE60 IDoc dokumentációjában létrehozott "egyszerű" XML-sémát. Az "egyszerű" XML-séma azonban támogatott olyan forgatókönyvek esetén, amelyek üzeneteket küldenek a Logic apps *és az* SAP között. A kérelem triggert az SAP IDoc XML-kódjával használhatja, de az RFC-IDoc nem. Vagy átalakíthatja az XML-t a szükséges formátumba. 
 
 Ebben a példában egy Azure-beli végponttal rendelkező logikai alkalmazást hoz létre, így *http post-kéréseket* küldhet a logikai alkalmazásnak. Ha a logikai alkalmazás fogadja ezeket a HTTP-kéréseket, az eseményindító elindít és futtatja a következő lépést a munkafolyamatban.
 
@@ -261,7 +262,7 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
       > [!TIP]
       > Adja meg az **SAP-művelet** értékét a kifejezés-szerkesztőben. Így ugyanazt a műveletet használhatja a különböző típusú üzenetekhez.
 
-      További információ a IDoc-műveletekről: [IDoc-műveletek üzenet-sémái](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
+      További információ a IDoc-műveletekről: [IDoc-műveletek üzenet-sémái](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
 
    1. Kattintson a **beviteli üzenet** szövegmezőbe, hogy megjelenjen a dinamikus tartalmak listája. A listából válassza ki a **törzs** MEZŐT a **http-kérelem fogadása**alatt.
 
@@ -290,6 +291,29 @@ Most adjon hozzá egy válasz műveletet a logikai alkalmazás munkafolyamataiho
    ![SAP-művelet végrehajtása](./media/logic-apps-using-sap-connector/select-sap-body-for-response-action.png)
 
 1. Mentse a logikai alkalmazást.
+
+#### <a name="add-rfc-request-response"></a>RFC-kérelem hozzáadása – válasz
+
+> [!NOTE]
+> Az SAP-trigger IDocs kap a tRFC-en keresztül, amely nem rendelkezik a Response paraméterrel a kialakítás alapján. 
+
+A kérések és válaszok mintáját akkor kell létrehoznia, ha egy távoli függvényhívás (RFC) használatával szeretne válaszokat kapni az SAP ABAP Logic Apps. Ahhoz, hogy IDocs kapjon a logikai alkalmazásban, első lépésként egy [http-kérelmet](../connectors/connectors-native-reqres.md#add-a-response-action) kell megtennie, `200 OK` és nem kell tartalmat tartalmaznia. Ez az ajánlott lépés a tRFC-en keresztüli aszinkron átvitelt azonnal végrehajtja az SAP-LUW, így az SAP CPIC-beszélgetés újra elérhetővé válik. Ezután hozzáadhat további műveleteket a logikai alkalmazásban a kapott IDoc feldolgozásához a további átvitelek blokkolása nélkül.
+
+A kérelem és a válasz minta megvalósításához először fel kell derítenie az RFC-sémát a [ `generate schema` parancs](#generate-schemas-for-artifacts-in-sap)használatával. A létrehozott sémának két lehetséges legfelső csomópontja van: 
+
+1. A kérelem csomópontja, amely az SAP-ból kapott hívás.
+1. A válasz csomópont, amely a válasz az SAP-re.
+
+A következő példában egy kérelem és egy válasz minta jön létre az RFC- `STFC_CONNECTION` modulból. A rendszer elemzi a kérés XML-fájlját egy olyan csomópont-érték kinyeréséhez, amelyben az SAP-kérelmek szerepelnek `<ECHOTEXT>` . A válasz dinamikus értékként szúrja be az aktuális időbélyeget. Hasonló választ kap, ha egy `STFC_CONNECTION` logikai alkalmazásból az SAP-be küld egy RFC-t.
+
+```http
+
+<STFC_CONNECTIONResponse xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <ECHOTEXT>@{first(xpath(xml(triggerBody()?['Content']), '/*[local-name()="STFC_CONNECTION"]/*[local-name()="REQUTEXT"]/text()'))}</ECHOTEXT>
+  <RESPTEXT>Azure Logic Apps @{utcNow()}</RESPTEXT>
+
+
+```
 
 ### <a name="test-your-logic-app"></a>A logikai alkalmazás tesztelése
 
@@ -378,7 +402,7 @@ Ez a példa egy olyan logikai alkalmazást használ, amely akkor aktiválódik, 
 
    ![Több üzenetet fogadó trigger – példa](media/logic-apps-using-sap-connector/example-trigger.png)
 
-   Az SAP-művelettel kapcsolatos további információkért lásd: [IDoc-műveletek üzenet-sémái](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
+   Az SAP-művelettel kapcsolatos további információkért lásd: [IDoc-műveletek üzenet-sémái](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)
 
 1. Most mentse a logikai alkalmazást, így elkezdheti az SAP-rendszerből érkező üzenetek fogadását. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -421,11 +445,11 @@ Ha nem tud IDoc-csomagokat küldeni az SAP-ból a logikai alkalmazás triggerér
 
 <a name="find-extended-error-logs"></a>
 
-#### <a name="find-extended-error-logs"></a>Kiterjesztett hibanapló keresése
+## <a name="find-extended-error-logs"></a>Kiterjesztett hibanapló keresése
 
 A teljes hibaüzeneteket az SAP-adapter kiterjesztett naplófájljaiban találja. 
 
-A helyszíni adatátjárók 2020-es és újabb verzióiban az [alkalmazás beállításaiban engedélyezheti az átjáró naplóit](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app).
+A helyszíni adatátjárók 2020-es és újabb verzióiban az [alkalmazás beállításaiban engedélyezheti az átjáró naplóit](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app).
 
 A helyszíni adatátjárók esetében az április 2020-es és korábbi verzióiban a naplók alapértelmezés szerint le vannak tiltva. A kiterjesztett naplók lekéréséhez kövesse az alábbi lépéseket:
 
@@ -480,7 +504,7 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
 
 #### <a name="create-rfc-destination"></a>RFC-cél létrehozása
 
-1. Az RFC- **kapcsolatok beállításainak konfigurálásához** az SAP-felületén használja az **sm59** -tranzakció kódját (T Code) a **/n** előtaggal.
+1. Az RFC- **kapcsolatok beállításainak konfigurálásához** az SAP-felületen használja az **sm59** -tranzakció kódját (T-Code) a **/n** előtaggal.
 
 1. Válassza a **TCP/IP-kapcsolatok**  >  **Létrehozás**lehetőséget.
 
@@ -500,7 +524,7 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
 
 #### <a name="create-abap-connection"></a>ABAP-kapcsolatok létrehozása
 
-1. Az RFC- **kapcsolatok beállításainak konfigurálásához** az SAP-felületen használja az **sm59*** tranzakciós kódot (T Code) a **/n** előtaggal.
+1. Az RFC- **kapcsolatok beállításainak konfigurálásához** az SAP-felületen használja az **sm59*** tranzakciós kódot (T-Code) a **/n** előtaggal.
 
 1. Válassza ki a **ABAP kapcsolatok**  >  **létrehozása**lehetőséget.
 
@@ -512,7 +536,7 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
 
 #### <a name="create-receiver-port"></a>Fogadó port létrehozása
 
-1. Ha meg szeretné nyitni a IDOC-feldolgozási beállításokban található **portokat** , az SAP-felületen használja az **we21** -tranzakció kódját (T Code) a **/n** előtaggal.
+1. A IDOC- **feldolgozási** beállításokban található portok megnyitásához az SAP-felületen használja az **we21** -tranzakció kódját (T-Code) a **/n** előtaggal.
 
 1. Válassza a **portok**  >  **tranzakciós RFC**-  >  **Létrehozás**lehetőséget.
 
@@ -524,7 +548,7 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
 
 #### <a name="create-sender-port"></a>Feladó portjának létrehozása
 
-1.  Ha meg szeretné nyitni a IDOC-feldolgozási beállításokban található **portokat** , az SAP-felületen használja az **we21** -tranzakció kódját (T Code) a **/n** előtaggal.
+1.  A IDOC- **feldolgozási** beállításokban található portok megnyitásához az SAP-felületen használja az **we21** -tranzakció kódját (T-Code) a **/n** előtaggal.
 
 1. Válassza a **portok**  >  **tranzakciós RFC**-  >  **Létrehozás**lehetőséget.
 
@@ -536,7 +560,7 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
 
 #### <a name="create-logical-system-partner"></a>Logikai rendszerpartner létrehozása
 
-1. Ha meg szeretné nyitni a **"logikai rendszerek" módosítási nézetet: az áttekintő** beállítások az SAP-felületen, használja a **bd54** tranzakciós kódot (T Code).
+1. A **"logikai rendszerek" nézet módosítása: az áttekintő** beállítások az SAP-felületen a **bd54** -tranzakciós kód (T-Code) használatával nyitható meg.
 
 1. Fogadja el a megjelenő figyelmeztető üzenetet: **Vigyázat: a tábla több ügyfél**
 
@@ -552,7 +576,7 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
 
 Éles környezetekben két partneri profilt kell létrehoznia. Az első profil a küldő, amely a szervezet és az SAP-rendszer. A második profil a fogadó, amely a logikai alkalmazás.
 
-1. A **partneri profilok** beállításainak megnyitásához az SAP-felületen használja az **We20** (T Code) a **/n** előtaggal.
+1. A **partneri profilok** beállításainak megnyitásához az SAP-felületen használja az **we20** -tranzakció kódját (T-Code) a **/n** előtaggal.
 
 1. A **partneri profilok**területen válassza az **ls Create partner típusa**lehetőséget  >  **Create**.
 
@@ -580,9 +604,9 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
 
 #### <a name="test-sending-messages"></a>Üzenetek küldésének tesztelése
 
-1. A IDoc- **feldolgozási beállítások tesztelési eszközének** megnyitásához az SAP-felületen használja az **we19** -tranzakció kódját (T Code) a **/n** előtaggal.
+1. A IDoc- **feldolgozási beállítások tesztelési eszközének** megnyitásához az SAP-felületen használja az **we19** -tranzakció kódját (T-Code) a **/n** előtaggal.
 
-1. A **sablon a teszteléshez**területen válassza az **üzenet típusa**lehetőséget, majd írja be az üzenet típusát (például: **cremas**). Válassza a **Létrehozás** lehetőséget.
+1. A **sablon a teszteléshez**területen válassza az **üzenet típusa**lehetőséget, majd írja be az üzenet típusát (például: **cremas**). Kattintson a **Létrehozás** gombra.
 
 1. A **Folytatás**gombra kattintva erősítse meg, hogy **melyik IDoc-típust?** üzenet jelenik meg.
 
@@ -592,7 +616,7 @@ A IDocs SAP-ból logikai alkalmazásba való elküldéséhez a következő minim
 
 1. A kimenő IDoc-feldolgozás indításához válassza a **Folytatás**lehetőséget. A feldolgozás befejezésekor a IDoc az **SAP-rendszerbe vagy külső programba küldött** üzenet jelenik meg.
 
-1.  A feldolgozási hibák kereséséhez használja a **sm58** tranzakciós kódot (T Code) a **/n** előtaggal.
+1.  A feldolgozási hibák kereséséhez használja a **sm58** -tranzakció kódját (T-Code) a **/n** előtaggal.
 
 ## <a name="receive-idoc-packets-from-sap"></a>IDoc-csomagok fogadása az SAP-ból
 
@@ -632,12 +656,262 @@ A minta rövid útmutató sablonjának használatával új logikai alkalmazás l
 
 Ez a példa egy logikai alkalmazást használ, amely HTTP-kéréssel aktiválható. A megadott IDoc és BAPI sémáinak létrehozásához a **séma-létrehozási** SAP-művelet elküld egy kérést egy SAP-rendszernek.
 
-Ez az SAP-művelet egy XML-sémát ad vissza, nem pedig maga az XML-dokumentum tartalmát vagy adatmennyiségét. A válaszban visszaadott sémákat az Azure Resource Manager-összekötő használatával kell feltölteni egy integrációs fiókba. A sémák a következő részeket tartalmazzák:
+Ez az SAP-művelet egy [XML-sémát](#sample-xml-schemas)ad vissza, nem pedig maga az XML-dokumentum tartalmát vagy adatmennyiségét. A válaszban visszaadott sémákat az Azure Resource Manager-összekötő használatával kell feltölteni egy integrációs fiókba. A sémák a következő részeket tartalmazzák:
 
 * A kérelem üzenetének szerkezete. Ezeket az információkat a BAPI listájának megalkotása céljából használhatja `get` .
 * A válaszüzenet szerkezete. Ezekkel az információkkal elemezheti a választ. 
 
 A kérelem üzenetének elküldéséhez használja az általános SAP-művelet **üzenetet küld az SAP**-nek, vagy a **meghívott hívási BAPI** műveleteket.
+
+### <a name="sample-xml-schemas"></a>Minta XML-sémák
+
+Ha megtanulja, hogyan hozhat létre egy XML-sémát a minta dokumentum létrehozásához, tekintse meg a következő mintákat. Ezek a példák bemutatják, hogyan dolgozhat számos típusú hasznos adattal, többek között a következőkkel:
+
+* [RFC-kérelmek](#xml-samples-for-rfc-requests)
+* [BAPI kérelmek](#xml-samples-for-bapi-requests)
+* [IDoc kérelmek](#xml-samples-for-idoc-requests)
+* Egyszerű vagy összetett XML-séma adattípusai
+* Tábla paramétereinek
+* Nem kötelező XML-viselkedés
+
+Az XML-sémát egy opcionális XML-Prolog is elindíthatja. Az SAP-összekötő az XML-Prolog vagy anélkül is működik.
+
+```xml
+
+<?xml version="1.0" encoding="utf-8">
+
+```
+
+#### <a name="xml-samples-for-rfc-requests"></a>RFC-kérelmek XML-mintái
+
+A következő példa egy alapszintű RFC-hívást mutat be. Az RFC neve: `STFC_CONNECTION` . Ez a kérelem az alapértelmezett névteret használja `xmlns=` , azonban névtér-aliasokat is hozzárendelhet és használhat, például: `xmmlns:exampleAlias=` . A névtér értéke a Microsoft-szolgáltatások SAP-ban található összes RFC-dokumentum névtere. A kérelemben van egy egyszerű bemeneti paraméter `<REQUTEXT>` .
+
+```xml
+
+<STFC_CONNECTION xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <REQUTEXT>exampleInput</REQUTEXT>
+</STFC_CONNECTION>
+
+```
+
+Az alábbi példa egy Table paraméterrel rendelkező RFC-hívást mutat be. Ez a példás hívás és a tesztelési RFC-k csoportja az összes SAP-rendszer részeként elérhető. A Table paraméter neve: `TCPICDAT` . A tábla vonaltípusa a `ABAPTEXT` (z), és ez az elem ismétlődik a tábla minden egyes sorában. Ez a példa egyetlen sort tartalmaz, amelynek a neve `LINE` . A Table paraméterrel rendelkező kérelmek tetszőleges számú mezőt tartalmazhatnak, ahol a szám pozitív egész szám (*n*). 
+
+```xml
+
+<STFC_WRITE_TO_TCPIC xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <RESTART_QNAME>exampleQName</RESTART_QNAME>
+    <TCPICDAT>
+      <ABAPTEXT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+        <LINE>exampleFieldInput1</LINE>
+      <ABAPTEXT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+        <LINE>exampleFieldInput2</LINE>
+      <ABAPTEXT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+        <LINE>exampleFieldInput3</LINE>
+      </ABAPTEXT>
+    </TCPICDAT>
+</STFC_WRITE_TO_TCPIC>
+
+```
+
+A következő példa egy olyan RFC-hívás, amely egy olyan Table paramétert tartalmaz, amelynek van egy névtelen mezője. Névtelen mező, ha a mezőhöz nincs hozzárendelve név. Az összetett típusok egy különálló névtérben vannak deklarálva, amelyben a deklaráció új alapértelmezett értéket állít be az aktuális csomóponthoz és annak összes alárendelt eleméhez. A példa a hexadecimális kódot használja `x002F` Escape-karakterként a szimbólumhoz */* , mert ez a szimbólum az SAP-mező nevében van lefoglalva.
+
+```xml
+
+<RFC_XML_TEST_1 xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <IM_XML_TABLE>
+    <RFC_XMLCNT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+      <_x002F_AnonymousField>exampleFieldInput</_x002F_AnonymousField>
+    </RFC_XMLCNT>
+  </IM_XML_TABLE>
+</RFC_XML_TEST_1>
+
+```
+
+A következő példa a névterek előtagjait tartalmazza. Az összes előtagokat egyszerre deklarálhatja, vagy a csomópontok attribútumaiként bármilyen mennyiségű előtagot deklarálhat. Az RFC-névtér aliasa az `ns0` alapszintű típushoz tartozó gyökérként és paraméterekként használható. Vegye figyelembe, hogy az összetett típusok egy másik névtérben vannak deklarálva az RFC-típusoknál az aliassal, a `ns3` normál RFC-névtér helyett az aliassal `ns0` .
+
+```xml
+
+<ns0:BBP_RFC_READ_TABLE xmlns:ns0="http://Microsoft.LobServices.Sap/2007/03/Rfc/" xmlns:ns3="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc/">
+  <ns0:DELIMITER>0</ns0:DELIMITER>
+  <ns0:QUERY_TABLE>KNA1</ns0:QUERY_TABLE>
+  <ns0:ROWCOUNT>250</ns0:ROWCOUNT>
+  <ns0:ROWSKIPS>0</ns0:ROWSKIPS>
+  <ns0:FIELDS>
+    <ns3:RFC_DB_FLD>
+      <ns3:FIELDNAME>KUNNR</ns3:FIELDNAME>
+    </ns3:RFC_DB_FLD>
+  </ns0:FIELDS>
+</ns0:BBP_RFC_READ_TABLE>
+
+```
+
+#### <a name="xml-samples-for-bapi-requests"></a>XML-minták BAPI-kérelmekhez
+
+> [!TIP]
+> Ha a Logic Apps Designer használatával szerkeszti a BAPI-kérelmet, a következő keresési funkciókat használhatja: 
+> 
+> * Válasszon ki egy objektumot a tervezőben az elérhető módszerek legördülő menüjének megjelenítéséhez.
+> * Az üzleti objektumok típusait a kulcsszó alapján szűrheti a BAPI API-hívás által megadott kereshető listával.
+
+> [!NOTE]
+> Az SAP lehetővé teszi, hogy az üzleti objektumok elérhetők legyenek a külső rendszerek számára az RFC-re adott válaszként `RPY_BOR_TREE_INIT` , amely Logic apps a bemeneti szűrő nélküli problémákat. Logic Apps megvizsgálja a kimeneti táblát `BOR_TREE` . A `SHORT_TEXT` mező az üzleti objektumok neveire szolgál. Az SAP által a kimeneti táblában nem visszaadott üzleti objektumok nem érhetők el Logic Apps.
+> Ha egyéni üzleti objektumokat használ, győződjön meg róla, hogy közzéteszi és felszabadítja ezeket az üzleti objektumokat az SAP-ben. Ellenkező esetben az SAP nem sorolja fel az egyéni üzleti objektumokat a kimeneti táblában `BOR_TREE` . Nem férhet hozzá Logic Apps egyéni üzleti objektumaihoz, amíg nem teszi elérhetővé az üzleti objektumokat az SAP-ból. 
+
+A következő példa a BAPI metódust használó bankok listáját kéri le `GETLIST` . Ez a minta egy bank üzleti objektumát tartalmazza `BUS1011` . 
+
+```xml
+
+<GETLIST xmlns="http://Microsoft.LobServices.Sap/2007/03/Bapi/BUS1011">
+  <BANK_CTRY>US</BANK_CTRY>
+  <MAX_ROWS>10</MAX_ROWS>
+</GETLIST>
+
+```
+
+A következő példa egy bank objektumot hoz létre a `CREATE` metódus használatával. Ez a példa ugyanazt az üzleti objektumot használja, mint az előző példában `BUS1011` . Ha a metódus használatával hoz `CREATE` létre egy bankot, ügyeljen arra, hogy véglegesítse a módosításokat, mert ez a módszer alapértelmezés szerint nem véglegesítve van.
+
+> [!TIP]
+> Győződjön meg arról, hogy az XML-dokumentum az SAP-rendszeren konfigurált összes érvényesítési szabályt követi. Ebben a példában például a bank kulcsának ( `<BANK_KEY>` ) Bank-útválasztási számnak, más néven ABA-számnak kell lennie az Egyesült Államokban.
+
+```xml
+
+<CREATE xmlns="http://Microsoft.LobServices.Sap/2007/03/Bapi/BUS1011">
+  <BANK_ADDRESS>
+    <BANK_NAME xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">ExampleBankName</BANK_NAME>
+    <REGION xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">ExampleRegionName</REGION>
+    <STREET xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">ExampleStreetAddress</STREET>
+    <CITY xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">Redmond</CITY>
+  </BANK_ADDRESS>
+  <BANK_COUNTRY>US</BANK_COUNTRY>
+  <BANK_KEY>123456789</BANK_KEY>
+</CREATE>
+
+```
+
+A következő példa beolvas egy bank adatait a bank útválasztási számával, a értékét `<BANK_KEY>` . 
+
+```xml
+
+<GETDETAIL xmlns="http://Microsoft.LobServices.Sap/2007/03/Bapi/BUS1011">
+  <BANK_COUNTRY>US</BANK_COUNTRY>
+  <BANK_KEY>123456789</BANK_KEY>
+</GETDETAIL>
+
+```
+
+#### <a name="xml-samples-for-idoc-requests"></a>XML-minták IDoc-kérelmekhez
+
+Egyszerű SAP IDoc XML-séma létrehozásához használja az **SAP-bejelentkezési** alkalmazást és a T-kódot `WE-60` . Az SAP-dokumentációt a grafikus felhasználói felületen keresztül érheti el, és XSD formátumban hozhatja meg az XML-sémákat a IDoc típusaihoz és bővítményeihez. Az általános SAP-formátumok és-adattartalomok, valamint a beépített párbeszédpanelek magyarázatát az [SAP dokumentációjában](https://help.sap.com/viewer/index)találja.
+
+Ez a példa deklarálja a legfelső szintű csomópontot és a névtereket. A mintakód URI-ja a `http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700/Send` következő konfigurációt deklarálja:
+
+* `/IDoc`a legfelső szintű Megjegyzés az összes IDocs
+* `/3`a rekordtípusok verziója a gyakori szegmensek definícióinak
+* `/ORDERS05`a IDoc típusa
+* `//`üres szegmens, mert nincs IDoc-bővítmény
+* `/700`az SAP verziója
+* `/Send`az adatok SAP-be való küldésének művelete
+
+```xml
+
+<ns0:Send xmlns:ns0="http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700/Send" xmlns:ns3="http://schemas.microsoft.com/2003/10/Serialization" xmlns:ns1="http://Microsoft.LobServices.Sap/2007/03/Types/Idoc/Common/" xmlns:ns2="http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700">
+  <ns0:idocData>
+
+```
+
+Megismételheti a `idocData` csomópontot, hogy egyetlen hívásban küldjön egy köteget a IDocs. Az alábbi példában egyetlen vezérlő rekord, `EDI_DC40` és több adatrekord található.
+
+```xml
+
+<...>
+  <ns0:idocData>
+    <ns2:EDI_DC40>
+      <ns1:TABNAM>EDI_DC40</ns1:TABNAM>
+<...>
+      <ns1:ARCKEY>Cor1908207-5</ns1:ARCKEY>
+    </ns2:EDI_DC40>
+    <ns2:E2EDK01005>
+      <ns2:DATAHEADERCOLUMN_SEGNAM>E23DK01005</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <ns2:CURCY>USD</ns2:CURCY>
+    </ns2:E2EDK01005>
+    <ns2:E2EDK03>
+<...>
+  </ns0:idocData>
+
+```
+
+A következő példa egy minta IDoc-vezérlő rekord, amely az előtagot használja `EDI_DC` . Frissítenie kell az értékeket az SAP-telepítés és a IDoc típusának megfelelően. Előfordulhat például, hogy a IDoc-ügyfél kódja nem `800` . Forduljon az SAP-csapathoz, és győződjön meg róla, hogy a megfelelő értékeket használja az SAP-telepítéshez.
+
+```xml
+
+<ns2:EDI_DC40>
+  <ns:TABNAM>EDI_DC40</ns1:TABNAM>
+  <ns:MANDT>800</ns1:MANDT>
+  <ns:DIRECT>2</ns1:DIRECT>
+  <ns:IDOCTYP>ORDERS05</ns1:IDOCTYP>
+  <ns:CIMTYP></ns1:CIMTYP>
+  <ns:MESTYP>ORDERS</ns1:MESTYP>
+  <ns:STD>X</ns1:STD>
+  <ns:STDVRS>004010</ns1:STDVRS>
+  <ns:STDMES></ns1:STDMES>
+  <ns:SNDPOR>SAPENI</ns1:SNDPOR>
+  <ns:SNDPRT>LS</ns1:SNDPRT>
+  <ns:SNDPFC>AG</ns1:SNDPFC>
+  <ns:SNDPRN>ABAP1PXP1</ns1:SNDPRN>
+  <ns:SNDLAD></ns1:SNDLAD>
+  <ns:RCVPOR>BTSFILE</ns1:RCVPOR>
+  <ns:RCVPRT>LI</ns1:RCVPRT>
+
+```
+
+Az alábbi példa egy egyszerű szegmenseket tartalmazó minta adatrekord. Ez a példa az SAP-dátumformátum használatát használja. Az erős típusú dokumentumok natív XML-formátumú formátumot használhatnak, például: `2020-12-31 23:59:59` .
+
+```xml
+
+<ns2:E2EDK01005>
+  <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDK01005</ns2:DATAHEADERCOLUMN_SEGNAM>
+    <ns2:CURCY>USD</ns2:CURCY>
+    <ns2:BSART>OR</ns2:BSART>
+    <ns2:BELNR>1908207-5</ns2:BELNR>
+    <ns2:ABLAD>CC</ns2:ABLAD>
+  </ns2>
+  <ns2:E2EDK03>
+    <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDK03</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <ns2:IDDAT>002</ns2:IDDAT>
+      <ns2:DATUM>20160611</ns2:DATUM>
+  </ns2:E2EDK03>
+
+```
+
+A következő példa egy csoportosított szegmenseket tartalmazó adatrekord. Ebbe beletartozik egy csoport szülő csomópontja, `E2EDKT1002GRP` és több alárendelt csomópont is, beleértve a és a-t is `E2EDKT1002` `E2EDKT2001` . 
+
+```xml
+
+<ns2:E2EDKT1002GRP>
+  <ns2:E2EDKT1002>
+    <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDKT1002</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <NS2:TDID>ZONE</ns2:TDID>
+  </ns2:E2EDKT1002>
+  <ns2:E2EDKT2001>
+    <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDKT2001</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <ns2:TDLINE>CRSD</ns2:TDLINE>
+  </ns2:E2EDKT2001>
+</ns2:E2EDKT1002GRP>
+
+```
+
+Az ajánlott módszer egy IDoc-azonosító létrehozása a tRFC való használathoz. Ezt a tranzakció-azonosítót beállíthatja az `tid` SAP-összekötő API [IDoc küldése műveletének](https://docs.microsoft.com/connectors/sap/#send-idoc) használatával.
+
+A következő példa egy alternatív módszer a tranzakció azonosítójának megadására, vagy `tid` . Ebben a példában az utolsó adatrekord szegmens csomópontja és a IDoc adatcsomópontja le van zárva. Ezt követően a GUID `guid` azonosítót használja a rendszer a duplikált elemek észlelésére szolgáló tRFC. 
+
+```xml
+
+    </E2STZUM002GRP>
+  </idocData>
+  <guid>8820ea40-5825-4b2f-ac3c-b83adc34321c</guid>
+</Send>
+
+```
 
 ### <a name="add-an-http-request-trigger"></a>HTTP-kérelem triggerének hozzáadása
 
@@ -708,7 +982,7 @@ A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
    ![Két elem megjelenítése](media/logic-apps-using-sap-connector/schema-generator-example.png)
 
-   Az SAP-művelettel kapcsolatos további információkért tekintse meg az [IDoc-műveletek üzenet-sémái](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)című témakört.
+   Az SAP-művelettel kapcsolatos további információkért tekintse meg az [IDoc-műveletek üzenet-sémái](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)című témakört.
 
 1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
 
@@ -867,11 +1141,36 @@ Az alábbi példa a következő mintát mutatja be:
 
    ![IDOC művelet tulajdonságainak küldése](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
 
-1. A tranzakció AZONOSÍTÓjának explicit megerősítéséhez adja hozzá a **tranzakció-azonosító megerősítése** műveletet. Kattintson a **tranzakció-azonosító** mezőbe, hogy megjelenjen a dinamikus tartalmak listája. Ebből a listából válassza ki a **tranzakció-azonosító** értékét, amelyet a **Send IDOC** művelet adott vissza.
+1. A tranzakció AZONOSÍTÓjának explicit megerősítéséhez adja hozzá a **tranzakció-azonosító megerősítése** műveletet, ügyelve arra, hogy [ne küldjön ismétlődő IDocs az SAP-](#avoid-sending-duplicate-idocs)nek. Kattintson a **tranzakció-azonosító** mezőbe, hogy megjelenjen a dinamikus tartalmak listája. Ebből a listából válassza ki a **tranzakció-azonosító** értékét, amelyet a **Send IDOC** művelet adott vissza.
 
    ![Tranzakció-azonosító művelet megerősítése](./media/logic-apps-using-sap-connector/explicit-transaction-id.png)
 
    A lépés futtatása után az aktuális tranzakció mindkét végén meg van jelölve, az SAP-összekötő oldalon és az SAP-rendszer oldalon.
+
+#### <a name="avoid-sending-duplicate-idocs"></a>Ne küldjön ismétlődő IDocs
+
+Ha a logikai alkalmazásból duplikált IDocs küldésével kapcsolatos problémát tapasztal, kövesse az alábbi lépéseket egy olyan karakterlánc-változó létrehozásához, amely IDoc-tranzakciós azonosítóként szolgál. A tranzakció-azonosító létrehozása segít megelőzni az ismétlődő hálózati átviteleket, ha olyan problémák merülnek fel, mint például az ideiglenes kimaradások, a hálózati problémák vagy az elveszett nyugták.
+
+> [!NOTE]
+> Az SAP-rendszerek egy megadott idő elteltével vagy 24 órán belül elfelejtették a tranzakció azonosítóját. Ennek eredményeképpen az SAP soha nem tudja megerősíteni a tranzakció azonosítóját, ha az azonosító vagy a GUID ismeretlen.
+> Ha a tranzakció-azonosító megerősítése sikertelen, akkor ez a hiba azt jelzi, hogy az SAP-rendszerrel való communcation sikertelen volt, mielőtt az SAP elismerte a megerősítést.
+
+1. A Logic Apps Designerben adja hozzá a művelet **inicializálása változót** a logikai alkalmazáshoz. 
+1. A művelet **inicializálása változó**szerkesztőjében adja meg a következő beállításokat. Ezután mentse a módosításokat.
+    1. A **név**mezőben adja meg a változó nevét. Például: `IDOCtransferID`.
+    2. A **Típus mezőben**válassza a **karakterlánc** lehetőséget a változó típusaként.
+    3. Az **érték**mezőben jelölje be a **kezdeti érték megadására** szolgáló szövegmezőt a dinamikus tartalom menü megnyitásához. Válassza a **kifejezések** lapot. A függvények listájában adja meg a függvényt `guid()` . Ezután kattintson **az OK** gombra a módosítások mentéséhez. Az **érték** mező most a `guid()` függvényre van beállítva, amely létrehoz egy GUID azonosítót.
+1. A **változó inicializálása** művelet után adja hozzá a **IDOC küldése**műveletet.
+1. A **IDOC küldő**művelet szerkesztőjében adja meg a következő beállításokat. Ezután mentse a módosításokat.
+    1. A **IDOC típusnál** válassza ki az üzenet típusát, és a **bemeneti IDOC üzenetnél**adja meg az üzenetet.
+    1. Az **SAP**-verziók esetében válassza ki az SAP-konfiguráció értékeit.
+    1. A **rekordtípusok verziójának**kiválasztásához válassza ki az SAP-konfiguráció értékeit.
+    1. A **TID megerősítése**beállításnál válassza a **nem**lehetőséget.
+    1. Válassza az **új paraméter hozzáadása**  >  **tranzakció-azonosító GUID**elemet. A dinamikus tartalom menü megnyitásához kattintson a szövegmezőre. A **változók** lapon válassza ki a létrehozott változó nevét. Például: `IDOCtransferID`.
+1. A **IDOC küldése**művelet címsorán válassza a **...**  >  lehetőséget. **Beállítások**. Az **újrapróbálkozási szabályzat**beállításnál válassza a **nincs**  >  **kész**lehetőséget.
+1. Miután a művelet **elküldte a IDOC**, adja hozzá a **tranzakció-azonosító megerősítése**műveletet.
+1. A **tranzakció-azonosító megerősítése**művelet szerkesztőjében adja meg a következő beállításokat. Ezután mentse a módosításokat.
+    1. A **tranzakció-azonosító**mezőben adja meg újra a változó nevét. Például: `IDOCtransferID`.
 
 ## <a name="known-issues-and-limitations"></a>Ismert problémák és korlátozások
 
@@ -883,7 +1182,7 @@ A felügyelt (nem ISE) SAP-összekötő jelenleg ismert problémái és korláto
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](https://docs.microsoft.com/connectors/sap/).
+Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](/connectors/sap/).
 
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE által címkézett verziója az [ISE-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) használja helyette.

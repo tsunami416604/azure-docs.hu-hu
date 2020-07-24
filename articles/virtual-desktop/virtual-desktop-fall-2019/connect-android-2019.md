@@ -1,5 +1,5 @@
 ---
-title: Kapcsolódás Windowsos virtuális asztalhoz Androidról – Azure
+title: Kapcsolódás a Windows rendszerű virtuális asztalhoz a 2019-es verzió Androidról – Azure
 description: Kapcsolódás a Windows rendszerű virtuális asztalhoz az Android-ügyfél használatával.
 services: virtual-desktop
 author: heidilohr
@@ -8,11 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 802e957c9473276dfa73a3ffd93fdd7c526dbf26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccea4e39146500cb9d3796c4ca99725e2e2ac429
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213244"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087152"
 ---
 # <a name="connect-with-the-android-client"></a>Kapcsolódás az Android-ügyféllel
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 06/17/2020
-ms.openlocfilehash: cea4a43724629793123098084098299e3915be7c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c659bbe3e5f5645bb42b3a9c94a5e5fb7ebe75f0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109661"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086472"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Container-ajánlat létrehozása az Azure Marketplace-en
 
@@ -151,7 +151,7 @@ Az ajánlat rövid leírása. Ez akár 100 karakter hosszú lehet, és a piacté
 
 Az ajánlat részletesebb leírása. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -250,17 +250,17 @@ A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 ### <a name="plan-overview"></a>A terv áttekintése
 
-Ezen a lapon különböző csomag-beállításokat adhat meg ugyanazon az ajánlaton belül. Ezeket a csomagokat korábban SKU-ként, vagy készlet-tartási egységként emlegetik. A csomagok különbözőek lehetnek az elérhető felhőktől, például a globális felhőktől, a kormányzati felhőktől és a csomag által hivatkozott képpel. Ha ajánlatát szeretné kilistázni a kereskedelmi piactéren, be kell állítania legalább egy csomagot.
+Ezen a lapon különböző csomag-beállításokat adhat meg ugyanazon az ajánlaton belül. A (korábban SKU-nak nevezett) csomagok eltérhetnek az elérhető felhőktől, például a globális felhőktől, a kormányzati felhőktől és a csomag által hivatkozott képpel. Ha ajánlatát szeretné kilistázni a kereskedelmi piactéren, be kell állítania legalább egy csomagot.
 
 A csomagok létrehozása után a **terv áttekintése** lap a következőket jeleníti meg:
 
 - Csomag neve
 - Díjszabási modell
-- Felhőbeli rendelkezésre állás (globális vagy kormányzati)
+- Azure-régiók (globális vagy kormányzati)
 - Jelenlegi közzétételi állapot
 - Bármely elérhető művelet
 
-A terv áttekintésében elérhető műveletek a csomag aktuális állapotától függően változnak. Ezek például az alábbi jelentések lehetnek:
+A terv áttekintésében elérhető műveletek a csomag aktuális állapotától függően változnak. Ezek közé tartoznak például az alábbiak:
 
 - **Piszkozat törlése** – ha a terv állapota vázlat.
 - **Eladási terv leállítása** – ha a csomag állapota élőben van közzétéve.
@@ -293,7 +293,7 @@ A Azure Government való [Közzététel](../../azure-government/documentation-go
 
 #### <a name="azure-government-certifications"></a>Azure Government minősítések
 
-Ez a beállítás csak akkor látható, ha **Azure Government** van kiválasztva a **felhő rendelkezésre állása**területen.
+Ez a beállítás csak akkor látható, ha **Azure Government** van kiválasztva az **Azure-régiókban**.
 
 Azure Government szolgáltatások kezelik bizonyos kormányzati előírások és követelmények hatálya alá eső adatmennyiséget. Például: FedRAMP, NIST 800,171 (DIB), ITAR, IRS 1075, DoD L4 és CJIS.
 
@@ -382,7 +382,7 @@ Az összes manifest-címkének (kivéve a legújabb címkét) X. Y **-** vagy x.
 > [!NOTE]
 > Ne feledje, hogy adjon hozzá egy teszt címkét a képhez, hogy a tesztelés során azonosítható legyen a rendszerkép.
 
-## <a name="review-and-publish"></a>Áttekintés és közzététel
+## <a name="review-and-publish"></a>Felülvizsgálat és közzététel
 
 Miután elvégezte az összes szükséges szakaszt, elküldheti azt a felülvizsgálat és közzététel lehetőségre.
 

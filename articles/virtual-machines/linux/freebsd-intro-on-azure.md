@@ -7,11 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: 0825a29b45ea701315a57ff5248731e64e29de32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c7ca47e0fbb9acbac67f2cc9af6e1e7555690046
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261635"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085605"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Bevezetés a FreeBSD Azure-on való használatába
 Ez a cikk áttekintést nyújt a FreeBSD rendszerű virtuális gépek Azure-ban való futtatásáról.
@@ -30,7 +31,7 @@ Az ügynök feladata a FreeBSD virtuális gép és az Azure-háló közötti kom
 A FreeBSD jövőbeli verzióihoz hasonlóan a stratégia is naprakész marad, és hamarosan elérhetővé teszi a legújabb kiadásokat a FreeBSD Release Engineering csapatának közzétételekor.
 
 ### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>FreeBSD-alapú virtuális gép létrehozása az Azure CLI-vel a FreeBSD-n
-Először telepítenie kell az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) -t, de a következő parancsot egy FreeBSD-gépen.
+Először telepítenie kell az [Azure CLI](/cli/azure/get-started-with-azure-cli) -t, de a következő parancsot egy FreeBSD-gépen.
 
 ```bash 
 curl -L https://aka.ms/InstallAzureCli | bash

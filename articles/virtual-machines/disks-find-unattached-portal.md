@@ -7,11 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: ad01155259ea03806f56c6e75b315ff85b606220
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a5e2c368fd956abb98b2b4c9ccd1060677f3e06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84300434"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085758"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Nem csatlakoztatott Azure felügyelt és nem felügyelt lemezek keresése és törlése – Azure Portal
 
@@ -60,4 +61,4 @@ Ha olyan nem felügyelt lemezekkel rendelkezik, amelyek nem csatlakoznak egy vir
 
 Ha szeretné automatikusan megkeresni és törölni a nem csatlakoztatott Storage-fiókokat, tekintse meg a [CLI](linux/find-unattached-disks.md) -vagy [PowerShell](windows/find-unattached-disks.md) -cikkeket.
 
-További információ: Storage- [fiók törlése](../storage/common/storage-account-create.md#delete-a-storage-account) és [árva lemezek azonosítása a PowerShell használatával](https://blogs.technet.microsoft.com/ukplatforms/2018/02/21/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell/)
+További információ: Storage- [fiók törlése](../storage/common/storage-account-create.md#delete-a-storage-account) és [árva lemezek azonosítása a PowerShell használatával](/archive/blogs/ukplatforms/azure-cost-optimisation-series-identify-orphaned-disks-using-powershell)

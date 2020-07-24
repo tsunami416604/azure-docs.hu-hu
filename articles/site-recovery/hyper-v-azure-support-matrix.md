@@ -5,21 +5,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 7/10/2020
+ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: b7551ec01e3401c0636b47a25d83173b6322d06e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 465b0ca3fdc5dd96b03ec7ab53bf453c4cdc083d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86219878"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086166"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>A helyszíni Hyper-V virtuális gépek Azure-ba való vész-helyreállításának támogatási mátrixa
 
-
 Ez a cikk a helyszíni Hyper-V virtuális gépek Azure-ba történő helyreállításának támogatott összetevőit és beállításait foglalja össze [Azure site Recovery](site-recovery-overview.md)használatával.
 
-
+>[!NOTE]
+> A Site Recovery nem helyezi át vagy nem tárolja az ügyféladatokat a célként megadott régióból, amely során a forrásként szolgáló gépekhez a vész-helyreállítás lett beállítva. Az ügyfelek választhatnak egy Recovery Services-tárolót egy másik régióból is. A Recovery Services-tároló metaadatokat tartalmaz, de nincsenek tényleges ügyféladatok.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
@@ -68,11 +68,12 @@ Gazdagép hálózata: IPv4 | Igen | Igen
 Gazdagép hálózata: IPv6 | Nem | Nem
 Vendég virtuálisgép-hálózat: hálózati adapterek összevonása | Nem | Nem
 Vendég virtuálisgép-hálózat: IPv4 | Igen | Igen
-Vendég virtuálisgép-hálózat: IPv6 | Nem | Igen
+Vendég virtuálisgép-hálózat: IPv6 | No | Yes
 Vendég virtuálisgép-hálózat: statikus IP-cím (Windows) | Igen | Igen
 Vendég virtuálisgép-hálózat: statikus IP-cím (Linux) | Nem | Nem
 Vendég VM-hálózat: több hálózati adapter | Igen | Igen
 Https-proxy | Nem | Nem
+Site Recovery szolgáltatáshoz való privát hivatkozás | Igen. [További információ](hybrid-how-to-enable-replication-private-endpoints.md). | Igen. [További információ](hybrid-how-to-enable-replication-private-endpoints.md).
 
 
 
@@ -142,8 +143,8 @@ Prémium szintű Storage | Igen | Igen
 Standard szintű Storage | Igen | Igen
 Importálási/exportálási szolgáltatás | Nem | Nem
 Azure Storage-fiókok engedélyezve tűzfallal | Igen. A cél tárolásához és a gyorsítótárhoz. | Igen. A cél tárolásához és a gyorsítótárhoz.
-Storage-fiók módosítása | Nem. A cél Azure Storage-fiók nem módosítható a replikáció engedélyezése után. A vész-helyreállítási szolgáltatás módosításához tiltsa le, majd engedélyezze újra. | Nem
-Biztonságos átvitel lehetőség | Igen
+Storage-fiók módosítása | Nem. A cél Azure Storage-fiók nem módosítható a replikáció engedélyezése után. A vész-helyreállítási szolgáltatás módosításához tiltsa le, majd engedélyezze újra. | No
+Biztonságos átvitel lehetőség | Yes
 
 
 ## <a name="azure-compute-features"></a>Az Azure számítási funkciói

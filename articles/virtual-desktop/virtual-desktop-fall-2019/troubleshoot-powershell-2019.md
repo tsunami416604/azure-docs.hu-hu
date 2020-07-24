@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali PowerShell – Azure
-description: A PowerShell hibáinak elhárítása a Windows rendszerű virtuális asztali bérlői környezet beállításakor.
+title: Windows rendszerű virtuális asztali PowerShell (Fall 2019) – Azure
+description: A PowerShell hibáinak elhárítása a Windows rendszerű virtuális asztalok (2019-es kiadás) bérlői környezetének beállításakor.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de3933b1686b433a720e78d89bd3e50c0ce5e5dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3171cc54de57b70a18a3f1b9ee3317cf29f79d4b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615499"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085809"
 ---
-# <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop – PowerShell
+# <a name="windows-virtual-desktop-powershell-fall-2019-release"></a>Windows rendszerű virtuális asztali PowerShell (2019-es kiadás)
 
 >[!IMPORTANT]
 >Ez a tartalom a Fall 2019 kiadásra vonatkozik, amely nem támogatja a Windows rendszerű virtuális asztali objektumokat Azure Resource Manager. Ha a Spring 2020 Update szolgáltatásban bevezetett Azure Resource Manager Windows rendszerű virtuális asztali objektumokat szeretne felügyelni, tekintse meg [ezt a cikket](../troubleshoot-powershell.md).

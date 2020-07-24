@@ -15,17 +15,18 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
-ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3b6c9d5835f6d81ab8641d8a43fb7228b6b53ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707599"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085639"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>A rendszergazda felhasználók, SSH és a Linux rendszerű virtuális gépeken található lemezek megkeresése és javítása az Azure CLI-vel való VMAccess-bővítmény használatával
 ## <a name="overview"></a>Áttekintés
 A Linux rendszerű virtuális gépen lévő lemez hibákat jelenít meg. Valahogy alaphelyzetbe állítja a linuxos virtuális gép legfelső szintű jelszavát, vagy véletlenül törölte az SSH titkos kulcsát. Ha az adatközpont napjaiban történt vissza, akkor oda kell vezetnie, majd meg kell nyitnia a KVM-t, hogy lekérje a kiszolgáló konzolját. Tekintse át az Azure VMAccess bővítményt, amely a KVM-kapcsolót használja, amely lehetővé teszi a konzol elérését a Linuxhoz való hozzáférés alaphelyzetbe állításához vagy a lemez szintű karbantartáshoz.
 
-Ebből a cikkből megtudhatja, hogyan használhatja az Azure VMAccess bővítményt a lemezek vizsgálatához és javításához, a felhasználói hozzáférés alaphelyzetbe állításához, a rendszergazdai felhasználói fiókok kezeléséhez, illetve a Linux SSH-konfigurációjának frissítéséhez, ha Azure Resource Manager virtuális gépekként fut. Ha klasszikus virtuális gépeket kell kezelnie – kövesse a [klasszikus VM-dokumentációban](../linux/classic/reset-access-classic.md)található utasításokat. 
+Ebből a cikkből megtudhatja, hogyan használhatja az Azure VMAccess bővítményt a lemezek vizsgálatához és javításához, a felhasználói hozzáférés alaphelyzetbe állításához, a rendszergazdai felhasználói fiókok kezeléséhez, illetve a Linux SSH-konfigurációjának frissítéséhez, ha Azure Resource Manager virtuális gépekként fut. Ha klasszikus virtuális gépeket kell kezelnie – kövesse a [klasszikus VM-dokumentációban](/previous-versions/azure/virtual-machines/linux/classic/reset-access-classic)található utasításokat. 
  
 > [!NOTE]
 > Ha a VMAccess bővítmény használatával állítja alaphelyzetbe a virtuális gép jelszavát a HRE bejelentkezési bővítmény telepítése után, újra kell futtatnia a HRE-bejelentkezési bővítményt, hogy újra engedélyezze a HRE-bejelentkezést a gépen.

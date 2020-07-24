@@ -6,11 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: fbfd52065bc0522668488492de2181f252f86a4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 495847d31682aff64fed3c81b1d5d68cf67dfd38
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81272678"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086439"
 ---
 # <a name="handle-throttling-problems-429---too-many-requests-errors-in-azure-logic-apps"></a>Szabályozási problémák kezelése (429 – "túl sok kérés" hiba) a Azure Logic Apps
 
@@ -76,7 +77,7 @@ A szabályozás ezen a szinten való kezeléséhez a következő lehetőségek k
 
 ## <a name="connector-throttling"></a>Összekötő szabályozása
 
-Mindegyik összekötő saját szabályozási korlátozásokkal rendelkezik, amelyek az összekötő technikai útmutató lapján találhatók meg. Például az Azure Service Bus- [összekötő](https://docs.microsoft.com/connectors/servicebus/) olyan sávszélesség-szabályozási korláttal rendelkezik, amely percenként akár 6 000 hívást tesz lehetővé, míg a SQL Server-összekötő a [Művelet típusától függően eltérő korlátozásokkal](https://docs.microsoft.com/connectors/sql/)rendelkezik.
+Mindegyik összekötő saját szabályozási korlátozásokkal rendelkezik, amelyek az összekötő technikai útmutató lapján találhatók meg. Például az Azure Service Bus- [összekötő](/connectors/servicebus/) olyan sávszélesség-szabályozási korláttal rendelkezik, amely percenként akár 6 000 hívást tesz lehetővé, míg a SQL Server-összekötő a [Művelet típusától függően eltérő korlátozásokkal](/connectors/sql/)rendelkezik.
 
 Egyes eseményindítók és műveletek, például a HTTP, ["újrapróbálkozási szabályzattal"](../logic-apps/logic-apps-exception-handling.md#retry-policies) rendelkeznek, amelyeket testreszabhat az [újrapróbálkozási házirend korlátai](../logic-apps/logic-apps-limits-and-config.md#retry-policy-limits) alapján a kivételek kezelésére. Ez a házirend határozza meg, hogy egy trigger vagy művelet milyen gyakran próbálkozik újra egy kéréssel, ha az eredeti kérelem meghiúsul vagy időtúllépés miatt megszakad, és 408, 429 vagy 5xx választ eredményez. Így ha a szabályozás elindul, és 429 hibát ad vissza, Logic Apps követi az újrapróbálkozási szabályzatot, ahol a támogatott.
 

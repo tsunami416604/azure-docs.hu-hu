@@ -3,17 +3,17 @@ title: Azure rendszerkép-készítő sablon létrehozása (előzetes verzió)
 description: Megtudhatja, hogyan hozhat létre sablont az Azure rendszerkép-készítővel való használatra.
 author: danielsollondon
 ms.author: danis
-ms.date: 06/23/2020
+ms.date: 07/09/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 191f0468a01c98ec60b85ea7aca6333807bf4b80
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: d48153fa747ed9757eb8467eaf1d7c17cde3630e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221204"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085588"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -24,7 +24,7 @@ Ez az alapszintű sablon formátuma:
 ```json
  { 
     "type": "Microsoft.VirtualMachineImages/imageTemplates", 
-    "apiVersion": "2019-05-01-preview", 
+    "apiVersion": "2020-02-14", 
     "location": "<region>", 
     "tags": {
         "<name": "<value>",
@@ -39,9 +39,8 @@ Ez az alapszintű sablon formátuma:
             "vmSize": "<vmSize>",
             "osDiskSizeGB": <sizeInGB>,
             "vnetConfig": {
-                "name": "<vnetName>",
-                "subnetName": "<subnetName>",
-                "resourceGroupName": "<vnetRgName>"
+                "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+                }
             },
         "source": {}, 
         "customize": {}, 
@@ -54,11 +53,11 @@ Ez az alapszintű sablon formátuma:
 
 ## <a name="type-and-api-version"></a>Típus és API-verzió
 
-Az az `type` erőforrástípus, amelynek a következőnek kell lennie: `"Microsoft.VirtualMachineImages/imageTemplates"` . Az az `apiVersion` idő múlásával változik, ahogy az API megváltozik, de az előzetes verziónak kell lennie `"2019-05-01-preview"` .
+Az az `type` erőforrástípus, amelynek a következőnek kell lennie: `"Microsoft.VirtualMachineImages/imageTemplates"` . Az az `apiVersion` idő múlásával változik, ahogy az API megváltozik, de az előzetes verziónak kell lennie `"2020-02-14"` .
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
-    "apiVersion": "2019-05-01-preview",
+    "apiVersion": "2020-02-14",
 ```
 
 ## <a name="location"></a>Hely
@@ -101,9 +100,8 @@ Ha nem ad meg VNET-tulajdonságokat, akkor a rendszerkép-szerkesztő létrehozz
 
 ```json
     "vnetConfig": {
-        "name": "<vnetName>",
-        "subnetName": "<subnetName>",
-        "resourceGroupName": "<vnetRgName>"
+        "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+        }
     }
 ```
 ## <a name="tags"></a>Címkék
@@ -121,9 +119,8 @@ Ez a választható szakasz használható annak biztosítására, hogy a folytat�
 További információ: az [erőforrás-függőségek meghatározása](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
 
 ## <a name="identity"></a>Identitás
-Alapértelmezés szerint a rendszerkép-szerkesztő támogatja a parancsfájlok használatát, vagy több helyről, például a GitHubról vagy az Azure Storage-ból másolt fájlokat. Ezek használatához nyilvánosan elérhetőnek kell lenniük.
 
-Az Ön által meghatározott Azure-felhasználó által hozzárendelt felügyelt identitást is használhat a rendszerkép-készítő Azure Storage-hoz való hozzáférésének engedélyezéséhez, feltéve, hogy az identitás legalább "Storage blob-adatolvasót" kapott az Azure Storage-fiókban. Ez azt jelenti, hogy nem kell a Storage-blobokat külsőleg elérhetővé tenni, vagy beállítani az SAS-jogkivonatokat.
+Kötelező – ahhoz, hogy a rendszerkép-készítő jogosult legyen a képek olvasására/írására, az Azure Storage-ban lévő parancsfájlok olvasására, létre kell hoznia egy Azure-felhasználó által hozzárendelt identitást, amely jogosult az egyes erőforrásokra. A rendszerkép-szerkesztő engedélyeinek működéséről és a vonatkozó lépésekről a [dokumentációban](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)olvashat bővebben.
 
 
 ```json
@@ -135,9 +132,10 @@ Az Ön által meghatározott Azure-felhasználó által hozzárendelt felügyelt
         },
 ```
 
-A teljes példa: [Azure-felhasználó által hozzárendelt felügyelt identitás használata az Azure Storage-beli fájlok eléréséhez](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
-Rendszerkép-készítő támogatás felhasználó által hozzárendelt identitáshoz: • csak egyetlen identitást támogat, a nem támogatja az egyéni tartományneveket
+A rendszerkép-szerkesztő támogatja a felhasználó által hozzárendelt identitást:
+* Csak egyetlen identitást támogat
+* Nem támogatja az egyéni tartományneveket
 
 További információ: [Mi az az Azure-erőforrások felügyelt identitása?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 A szolgáltatás telepítésével kapcsolatos további információkért lásd: [felügyelt identitások konfigurálása](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)Azure-beli virtuális gépeken az Azure CLI használatával.
@@ -153,11 +151,6 @@ Az API-nak szüksége van egy "forrás típusa" elemre, amely meghatározza a re
 
 > [!NOTE]
 > Meglévő egyéni Windows-rendszerképek használatakor a Sysprep-parancsot akár 8 alkalommal is futtathatja egyetlen Windows-lemezképen, további információt a [Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) dokumentációjában talál.
-
-### <a name="iso-source"></a>ISO-forrás
-Ezt a funkciót elavultunk a rendszerkép-szerkesztőből, mivel most már [RHEL a saját előfizetéseit](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos), tekintse át az alábbi ütemterveket:
-    * 31. március 2020 – a RHEL ISO-forrásokkal rendelkező képsablonokat az erőforrás-szolgáltató már el fogja fogadni.
-    * 30. április 2020 – a RHEL ISO-forrásokat tartalmazó képsablonok többé nem lesznek feldolgozva.
 
 ### <a name="platformimage-source"></a>PlatformImage forrása 
 Az Azure Image Builder a Windows Servert és az ügyfelet, valamint a Linux Azure Marketplace-rendszerképeket is támogatja, [itt](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) találja a teljes listát. 
@@ -181,6 +174,21 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 A verzióban a legújabbat is használhatja, a verzió kiértékelése a lemezkép létrehozásakor történik, nem pedig a sablon elküldésekor. Ha ezt a funkciót a megosztott képkatalógus céljával használja, elkerülheti a sablon ismételt elküldését, és elvégezheti a lemezképek összeállítását időközökben, így a képek újra létrejönnek a legfrissebb rendszerképekből.
 
+#### <a name="support-for-market-place-plan-information"></a>A piacra helyezési tervre vonatkozó információk támogatása
+Megadhatja a terv adatait is, például:
+```json
+    "source": {
+        "type": "PlatformImage",
+        "publisher": "RedHat",
+        "offer": "rhel-byos",
+        "sku": "rhel-lvm75",
+        "version": "latest",
+        "planInfo": {
+            "planName": "rhel-lvm75",
+            "planProduct": "rhel-byos",
+            "planPublisher": "redhat"
+       }
+```
 ### <a name="managedimage-source"></a>ManagedImage forrása
 
 A forrás rendszerképét egy általánosított virtuális merevlemez vagy virtuális gép meglévő felügyelt rendszerképeként állítja be. A forrásként felügyelt rendszerképnek támogatott operációs rendszernek kell lennie, és az Azure rendszerkép-készítő sablonnal azonos régióban kell lennie. 
@@ -206,6 +214,7 @@ Beállítja a forrás rendszerképet egy meglévő rendszerkép-verzióra egy me
 ```
 
 A `imageVersionId` ResourceId kell lennie a rendszerkép verziójának. A képverziók listázásához használja [az az SIG rendszerkép-Version List](/cli/azure/sig/image-version#az-sig-image-version-list) lehetőséget.
+
 
 ## <a name="properties-buildtimeoutinminutes"></a>Tulajdonságok: buildTimeoutInMinutes
 
@@ -254,7 +263,9 @@ A használatakor `customize` :
 
  
 A Testreszabás szakasz egy tömb. Az Azure rendszerkép-szerkesztő szekvenciális sorrendben fut a testreszabók között. Bármely testreszabó hibája sikertelen lesz a létrehozási folyamat során. 
- 
+
+> [!NOTE]
+> A beágyazott parancsok megtekinthetők a rendszerkép-sablon definíciójában és Microsoft ügyfélszolgálata a támogatási esetekkel való segítségnyújtás során. Ha bizalmas adatokkal rendelkezik, azt az Azure Storage-ban lévő parancsfájlokba helyezheti át, ahol a hozzáférés hitelesítés szükséges.
  
 ### <a name="shell-customizer"></a>Rendszerhéj-testreszabó
 
@@ -293,7 +304,7 @@ Tulajdonságok testreszabása:
 A felügyelői jogosultságokkal futtatandó parancsokhoz előtaggal kell rendelkeznie `sudo` .
 
 > [!NOTE]
-> Ha a rendszerhéj-testreszabó a RHEL ISO-forrással futtatja, gondoskodnia kell arról, hogy az első testreszabási rendszerhéj a Red Hat jogosultsági kiszolgálóval való regisztrálást a testreszabások előtt is kezelje. A Testreszabás befejeződése után a parancsfájlnak meg kell szüntetnie a jogosultsági kiszolgáló regisztrációját.
+> A beágyazott parancsokat a rendszer a rendszerkép-sablon definíciójának részeként tárolja, ezeket a képek definíciójának kiírásakor láthatja, és a hibaelhárítási célból a Microsoft ügyfélszolgálata is láthatók. Ha bizalmas parancsokkal vagy értékekkel rendelkezik, erősen ajánlott ezeket a parancsfájlokba áthelyezni, és felhasználói identitás használatával hitelesíteni az Azure Storage-ban.
 
 ### <a name="windows-restart-customizer"></a>Windows újraindítási testreszabó 
 Az újraindítási testreszabó lehetővé teszi egy Windows rendszerű virtuális gép újraindítását, és várjon, amíg online állapotba kerül, így olyan szoftvereket telepíthet, amelyek újraindítást igényelnek.  
@@ -485,7 +496,7 @@ runOutputName=<runOutputName>
 
 az resource show \
         --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
-        --api-version=2019-05-01-preview
+        --api-version=2020-02-14
 ```
 
 Kimenet:
@@ -569,13 +580,22 @@ A lemezkép-katalógusba való terjesztés előtt létre kell hoznia egy gyűjte
 Megosztott képtárak tulajdonságainak terjesztése:
 
 - **típus** – sharedImage  
-- **galleryImageId** – a megosztott rendszerkép-Gyűjtemény azonosítója. A formátum:/Subscriptions/ \<subscriptionId> /ResourceGroups/ \<resourceGroupName> /providers/Microsoft.Compute/Galleries/ \<sharedImageGalleryName> /images/ \<imageGalleryName> .
+- **galleryImageId** – a megosztott rendszerkép-katalógus azonosítója, amely két formátumban adható meg:
+    * Automatikus verziószámozás – a Image Builder létrehoz egy monoton verziószámot, ez akkor hasznos, ha meg szeretné őrizni a lemezképek újraépítését ugyanabból a sablonból: a formátum a következő: `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` .
+    * Explicit verziószámozás – a rendszerkép-készítő által használandó verziószámot átadhatja. A formátum:`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+
 - **runOutputName** – a terjesztés azonosítására szolgáló egyedi név.  
 - **artifactTags** – opcionális felhasználó által megadott kulcs érték párok címkéi.
-- **replicationRegions** – a replikálási régiók tömbje. Az egyik régió az a régió, amelyben a katalógus üzembe van helyezve.
- 
+- **replicationRegions** – a replikálási régiók tömbje. Az egyik régió az a régió, amelyben a katalógus üzembe van helyezve. A régiók hozzáadásával növekszik a felépítési idő, mivel a Build nem fejeződött be, amíg a replikáció be nem fejeződik.
+- **excludeFromLatest** (nem kötelező) Ez lehetővé teszi, hogy a létrehozott rendszerkép-verziót ne használja a SIG-definíció legújabb verziójának, az alapértelmezett érték a "false".
+- **tárfióktípus** (nem kötelező) a AIB támogatja az ilyen típusú tárolók megadását a létrehozandó rendszerkép-verzióhoz:
+    * "Standard_LRS"
+    * "Standard_ZRS"
+
+
 > [!NOTE]
-> Az Azure rendszerkép-készítőt egy másik régióban használhatja a katalógusban, de az Azure rendszerkép-készítő szolgáltatásnak át kell vinnie a rendszerképet az adatközpontok között, és ez hosszabb időt vesz igénybe. A rendszerkép-készítő a rendszerképet egy monoton egész szám alapján automatikusan elvégzi, ezért jelenleg nem adható meg. 
+> Ha a Képsablon és a hivatkozott adatok `image definition` nem ugyanazon a helyen találhatók, akkor további időt fog látni a rendszerképek létrehozásához. A rendszerkép-szerkesztő jelenleg nem rendelkezik `location` paraméterrel a rendszerkép-verzió erőforráshoz, ezért a szülőtől veszi át `image definition` . Ha például a rendszerkép definíciója a westus-ben van, és azt szeretné, hogy a rendszerkép verziója replikálva legyen a eastus-re, a rendszer a blobot a westus-be másolja, ebből a rendszerkép-verzió erőforrás a westus-ben, majd a replikálása a eastus. A további replikációs idő elkerüléséhez győződjön meg arról, hogy a `image definition` és a lemezkép sablonja ugyanazon a helyen található.
+
 
 ### <a name="distribute-vhd"></a>Terjesztés: VHD  
 A kimenetet virtuális merevlemezre is kipróbálhatja. Ezután átmásolhatja a VHD-t, és felhasználhatja az Azure MarketPlace-en való közzétételhez, vagy használhatja Azure Stack.  
@@ -608,8 +628,45 @@ az resource show \
 
 > [!NOTE]
 > A virtuális merevlemez létrehozása után a lehető leghamarabb másolja át egy másik helyre. A virtuális merevlemezt az ideiglenes erőforráscsoport tárolja, amely akkor jön létre, amikor a rendszer elküldi a képsablont az Azure rendszerkép-szerkesztő szolgáltatásba. Ha törli a képsablont, akkor elveszíti a VHD-t. 
- 
+
+## <a name="image-template-operations"></a>Rendszerkép-sablon műveletei
+
+### <a name="starting-an-image-build"></a>Rendszerkép létrehozásának indítása
+A Build elindításához a "Run" meghívására van szükség a Képsablon erőforrásán, például a következő `run` parancsokra:
+
+```PowerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Run -Force
+```
+
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Run 
+```
+
+### <a name="cancelling-an-image-build"></a>Rendszerkép-Build megszakítása
+Ha olyan rendszerkép-buildet futtat, amely úgy véli, hogy helytelen, a felhasználói bevitelre vár, vagy ha úgy érzi, hogy soha nem fejeződik be, akkor megszakíthatja a fordítást.
+
+A Build bármikor megszakítható. Ha megkezdődött a terjesztési fázis, akkor továbbra is megszakítható, de az esetlegesen nem befejezett rendszerképeket törölni kell. A Mégse parancs nem várja meg a megszakítás befejeződését, figyelje `lastrunstatus.runstate` a folyamat megszakítását, ezekkel az állapot- [parancsokkal](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status).
+
+
+Példák a `cancel` parancsokra:
+
+```powerShell
+Invoke-AzResourceAction -ResourceName $imageTemplateName -ResourceGroupName $imageResourceGroup -ResourceType Microsoft.VirtualMachineImages/imageTemplates -ApiVersion "2020-02-14" -Action Cancel -Force
+```
+
+```bash
+az resource invoke-action \
+     --resource-group $imageResourceGroup \
+     --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
+     -n helloImageTemplateLinux01 \
+     --action Cancel 
+```
+
 ## <a name="next-steps"></a>További lépések
 
 Az [Azure rendszerkép-készítő githubon](https://github.com/danielsollondon/azvmimagebuilder)különböző forgatókönyvekhez készült minta. JSON fájlok találhatók.
- 

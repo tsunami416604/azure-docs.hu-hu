@@ -5,29 +5,31 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 01/18/2019
-ms.openlocfilehash: e393b6a499ad2b84f25ca1a1c062ca4ef2eec21c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: MaggiePucciEvans
+ms.author: evansma
+ms.date: 07/14/2020
+ms.openlocfilehash: 853aeb03dc1a19c1960709aedf09e71164ed62d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120738"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086370"
 ---
-# <a name="marketplace-rewards"></a>Marketplace-jutalmak
+# <a name="marketplace-rewards"></a>Marketplace Rewards
 
-A Piactéri juttatások célja, hogy támogassa Önt a növekedés adott fázisában, kezdve a tudatosságnövelő tevékenységekkel, amelyek segítenek az első ügyfeleinek beszerzésében. A piactéren való növekedéssel új előnyökkel járhat, amelyek segítenek az ügyfelek átalakításában és az ajánlatok bezárásában. 
+A Piactéri jutalmak támogatják a növekedés adott fázisát, kezdve a tudatosságnövelő tevékenységekkel, amelyek segítenek az első ügyfelek beszerzésében. A kereskedelmi piactéren való növekedéssel új előnyökkel járhat, amelyek segítenek az ügyfelek átalakításában és az ajánlatok bezárásában.
 
-A program létrehoz egy pozitív visszajelzési ciklust: a növekedés minden szakaszának előnyeit úgy tervezték, hogy a következő szakaszra haladjon, ami lehetővé teszi, hogy az üzleti piactért platformként hasznosítsa a Microsoft ügyfeleinek, a Microsoft mezője és a Microsoft csatornáján keresztül. 
+A program létrehoz egy pozitív visszajelzési ciklust: a növekedés minden szakaszának előnyei a következő szakaszra mutatnak, ami lehetővé teszi, hogy a Microsoft ügyfeleinek, a Microsoft és a Microsoft csatornáján keresztül növelje vállalatát, és a kereskedelmi piactért platformként hasznosítsa.
 
 Az Ön által kínált előnyök a következők alapján különböztethetők meg, hogy az ajánlat [lista, próbaverzió vagy Transact](../determine-your-listing-type.md#choose-a-publishing-option).
 
-A jutalmak csapatának egy tagja fogja felvenni Önnel a kapcsolatot, ha az ajánlata életbe lép, a jogosultsága alapján. 
+A jutalmak csapatának egy tagja fogja felvenni Önnel a kapcsolatot, ha az ajánlata életbe lép, a jogosultsága alapján.
 
-A Transact-partnerek esetében, ahogy a Piactéri platformon keresztül növeli a számlázott értékesítést, a magasabb szintű előnyök feloldhatók. 
+A Transact-partnerek esetében, ahogy a Piactéri platformon keresztül növeli a számlázott értékesítést, a magasabb szintű előnyök feloldhatók.
 
-A kirakatokban való közzététel minimális követelménye egy MPNID, így ezek az előnyök minden partner számára elérhetők, függetlenül az MPN kompetenciás állapottól vagy a partner típusától. Minden partner számára lehetővé teszi, hogy platformként növelje üzleti tevékenységét a piactéren. 
+A kirakatokban való közzététel minimális követelménye egy MPNID, így ezek az előnyök minden partner számára elérhetők, függetlenül az MPN kompetenciás állapottól vagy a partner típusától. Minden partner számára lehetővé teszi, hogy platformként növelje üzleti tevékenységét a piactéren.
 
-Támogatást kaphat az Ön számára elérhető erőforrások megismeréséhez és az ajánlott eljárások megvalósításához, amelyeket [saját maga is megtekintheti](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/). 
+Támogatást kaphat az Ön számára elérhető erőforrások megismeréséhez és az ajánlott eljárások megvalósításához, amelyeket [saját maga is megtekintheti](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/).
 
 Tekintse meg a Marketplace jutalmazási programhoz való jogosultságot [itt](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace).
 
@@ -43,15 +45,12 @@ A kezdéshez szükséges lépések egyszerűek:
     1. Adja meg a kapcsolattartó telefonszámát és az előnyben részesített nyelvet. Miután megadta ezeket az adatokat, válassza a **Felhasználó hozzárendelése** lehetőséget.
     1. A marketing-kapcsolattartó frissítése után válassza az **aktiválás** lehetőséget a használni kívánt előnyhez. Az előny aktiválása után a Rewards csapatának egy tagja fel fogja keresni a kapcsolattartót.
 
-**Műszaki előnyök**
+## <a name="technical-benefits"></a>Műszaki előnyök
 
-1. Technikai segítséget kérhet a Felhőbeli és a hibrid megoldások értékesítés előtti, tervezési, üzembe helyezési és alkalmazás-fejlesztési fázisaiban. Ha segítséget szeretne kérni, töltse ki a kérelem űrlapját, majd válassza a **kérelem küldése**lehetőséget.
+1. Technikai támogatást kérhet a Felhőbeli és hibrid megoldások értékesítés előtti, tervezési, üzembe helyezési és alkalmazás-fejlesztési fázisaiban. Ha segítséget szeretne kérni, töltse ki a kérelem űrlapját, majd válassza a **kérelem küldése**lehetőséget.
 2. Az Azure szponzorálási előnyeinek felhasználása e-mailben történik, az előnyök feloldása során.
 
->[!Note]
->Ha az ajánlata több mint négy hetet tartalmaz, és nem kapott üzenetet, ellenőrizze a szervezeten belül, hogy a kérdéses ajánlat tulajdonosa-e, vagy Cloud Partner Portal vagy a partner Centerben. A kommunikációhoz és a következő lépésekhez kell tartoznia.
-
->[!Note] 
->Ha nem tudja megállapítani a tulajdonost, vagy ha a tulajdonos elhagyta a vállalatot, támogatási jegyet emelhet a következő címen: https://aka.ms/marketplacepublishersupport .
+>[!NOTE]
+>Ha az ajánlata több mint négy hetet is tartalmaz, és nem kapott üzenetet, akkor a partner Center webhelyen megtudhatja, hogy ki a cég tulajdonosa az ajánlatnak. A kommunikációhoz és a következő lépésekhez kell tartoznia. Ha nem tudja megállapítani a tulajdonost, vagy ha a tulajdonos elhagyta a vállalatot, nyisson meg egy támogatási jegyet a következő címen: https://aka.ms/marketplacepublishersupport .
 
 Az Ön számára elérhető tevékenységek köre a piactéren kibővíthető ajánlatokkal bővül. Az összes lista az optimalizálási javaslatok és a promóció alapszintű, az erőforrások és az ajánlott eljárások önkiszolgáló e-mail-címének részeként jelenik meg.

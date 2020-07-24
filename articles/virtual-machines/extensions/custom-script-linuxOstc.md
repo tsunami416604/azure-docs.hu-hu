@@ -1,5 +1,5 @@
 ---
-title: Egyéni parancsfájlok futtatása Linux rendszerű virtuális gépeken az Azure-ban
+title: Az egyéni szkriptek bővítményének 1. verziója (elavult) futtatása az Azure-beli Linux rendszerű virtuális gépeken
 description: Linux rendszerű virtuális gépek konfigurációs feladatainak automatizálása az egyéni parancsfájl-bővítmény v1 használatával
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe915fd58f60e4ad5b1e28b51911678ef2f866c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594712"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085707"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Az egyéni Azure script Extension 1. verziójának használata Linux rendszerű virtuális gépekkel
 
@@ -124,9 +124,9 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 | közzétevő | Microsoft. OSTCExtensions | sztring |
 | típus | CustomScriptForLinux | sztring |
 | typeHandlerVersion | 1.5 | int |
-| fileUris (például) | `https://github.com/MyProject/Archive/MyPythonScript.py` | tömb |
+| fileUris (például) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
 | commandToExecute (például) | Python-MyPythonScript.py\<my-param1\> | sztring |
-| enableInternalDNSCheck | igaz | logikai |
+| enableInternalDNSCheck | true | boolean |
 | storageAccountName (például) | examplestorageacct | sztring |
 | storageAccountKey (például) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | sztring |
 
