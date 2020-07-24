@@ -3,12 +3,12 @@ title: Resource Health riasztások létrehozása az Azure Portal használatával
 description: Riasztás létrehozása Azure Portal használatával, amely értesíti Önt, ha az Azure-erőforrások elérhetetlenné válnak.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: b44df4f63fa2ae2bde9be431e2df268144a036fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091572"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Resource Health-riasztások konfigurálása az Azure Portal használatával
 
@@ -45,7 +45,7 @@ Riasztás Resource Health Azure Portal használatával
 1. Az Azure [Portalon](https://portal.azure.com/)válassza a **Service Health**lehetőséget.
 
     ![Service Health kijelölés](./media/resource-health-alert-monitor-guide/service-health-selection.png)
-2. A **Resource Health** szakaszban válassza a **Resource Health**lehetőséget.
+2. A **Resource Health** szakaszban válassza a **Service Health**lehetőséget.
 3. Válassza az **erőforrás hozzáadása állapot riasztás** lehetőséget, és töltse ki a mezőket.
 4. A riasztási cél területen válassza ki azt az **előfizetést**, **erőforrástípust**, **erőforráscsoportot** és **erőforrást** , amelyre vonatkozóan riasztást szeretne kapni.
 
@@ -66,7 +66,7 @@ Riasztás Resource Health Azure Portal használatával
 A rendszer létrehozza a műveletnapló új riasztási szabályát, és egy megerősítő üzenet jelenik meg az ablak jobb felső sarkában.
 Engedélyezheti, letilthatja, szerkesztheti vagy törölheti a szabályokat. További információ a [műveletnapló szabályainak kezeléséről](../azure-monitor/platform/alerts-activity-log.md#view-and-manage-in-the-azure-portal).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Resource Healthról:
 

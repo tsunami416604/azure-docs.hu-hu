@@ -14,15 +14,16 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 465338bb793ad7b4fc406e9d1c073b9dc0dc06c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d632d078db55696dad7bb05e72368b13610b5978
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74034017"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091419"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Transzparens adattitkosítás (TDE) engedélyezése az Azure-beli Stretch Databasehoz
 > [!div class="op_single_selector"]
-> * [Azure Portalra](sql-server-stretch-database-encryption-tde.md)
+> * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >
@@ -36,9 +37,9 @@ Ha engedélyezni szeretné a TDE egy olyan Azure-adatbázishoz, amely a stretch-
 
 1. Nyissa meg az adatbázist a [Azure Portal](https://portal.azure.com)
 2. Az adatbázis panelen kattintson a **Beállítások** gombra.
-3. Az **átlátszó adattitkosítási** lehetőség kiválasztása![][1]
-4. Válassza a **be beállítást,** majd kattintson a **Mentés** gombra.
-   ![][2]
+3. Válassza ki az **átlátszó adattitkosítási** lehetőség ![ képernyőképét a Azure Portal, a beállítások panel látható. Az általános szakaszban transzparens adattitkosítás van kiemelve.][1]
+4. Jelölje be **a be beállítást,** majd kattintson a Azure Portal képernyőkép **mentése**lehetőségre az 
+    ![ átlátszó adattitkosítási panel látható. Az adattitkosítás be van kapcsolva, és a Mentés gomb ki van emelve.][2]
 
 ## <a name="disabling-encryption"></a>Titkosítás letiltása
 Ha le szeretné tiltani egy olyan Azure-adatbázis TDE, amely a stretch-kompatibilis SQL Server-adatbázisból áttelepített adatok tárolására szolgál, tegye a következőket:

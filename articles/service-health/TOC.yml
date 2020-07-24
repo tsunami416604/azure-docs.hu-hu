@@ -24,7 +24,7 @@
 - name: Útmutató
   items:
     - name: Szolgáltatások állapoteseményeire vonatkozó riasztások beállítása
-      href: alerts-activity-log-service-notifications.md
+      href: ./alerts-activity-log-service-notifications-portal.md
     - name: Szolgáltatás állapotára vonatkozó értesítések megtekintése az Azure Portalon
       href: service-notifications.md
     - name: Riasztások küldése külső rendszereknek webhookon keresztül

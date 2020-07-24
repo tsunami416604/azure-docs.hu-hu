@@ -3,11 +3,12 @@ title: Azure szolgáltatás állapotára vonatkozó riasztások küldése a Page
 description: Személyre szabott értesítések beszerzése a PagerDuty-példány szolgáltatás állapotával kapcsolatos eseményekről.
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: bb449a5279f3cea55e6aec2f72edfd11fb26227a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c70af2ad2ded919cda0b174705d1d3245eac627
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77654069"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091538"
 ---
 # <a name="send-azure-service-health-alerts-with-pagerduty-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a PagerDuty webhookok használatával
 
@@ -38,7 +39,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás á
 
 ## <a name="create-an-alert-using-pagerduty-in-the-azure-portal"></a>Riasztás létrehozása a Azure Portal PagerDuty használatával
 ### <a name="for-a-new-action-group"></a>Új műveleti csoport esetén:
-1. Kövesse az 1 – 8. lépést a [riasztás létrehozása a szolgáltatás állapotáról szóló értesítésben egy új műveleti csoportra vonatkozóan a Azure Portal használatával](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+1. Kövesse az 1 – 8. lépést a [riasztás létrehozása a szolgáltatás állapotáról szóló értesítésben egy új műveleti csoportra vonatkozóan a Azure Portal használatával](./alerts-activity-log-service-notifications-portal.md).
 
 1. Definiálás a **műveletek**listájában:
 
@@ -86,5 +87,5 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be az Azure szolgáltatás á
 ## <a name="next-steps"></a>További lépések
 - Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md).
 - Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](../azure-monitor/platform/service-notifications.md).
+- Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](./service-notifications.md).
 - További információ a [műveleti csoportokról](../azure-monitor/platform/action-groups.md).
