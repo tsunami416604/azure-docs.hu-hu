@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: e519010f902e99a3118485b3c8bc57cd47188a1f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 6d1c7a48332aa49bc5c506ceeae287bc3affef16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224553"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074086"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Oracle Database 12c-adatbázis vész-helyreállítása Azure-környezetben
 
@@ -78,7 +78,7 @@ A következőkben az Azure-telepítés összegzése található:
 ![A DR-topológia oldalának képernyőképe](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
 ### <a name="approach-2-site-to-site-vpn"></a>2. módszer: helyek közötti VPN
-A helyek közötti VPN jobb megközelítés. A VPN beállításával kapcsolatos további információkért lásd: [virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal a CLI használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli).
+A helyek közötti VPN jobb megközelítés. A VPN beállításával kapcsolatos további információkért lásd: [virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal a CLI használatával](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md).
 
 #### <a name="topology"></a>Topológia
 
@@ -95,7 +95,7 @@ A következőkben az Azure-telepítés összegzése található:
 
 ![A DR-topológia oldalának képernyőképe](./media/oracle-disaster-recovery/oracle_topology_03.png)
 
-## <a name="additional-reading"></a>További olvasnivaló
+## <a name="additional-reading"></a>További információ
 
 - [Oracle-adatbázis tervezése és implementálása az Azure-ban](oracle-design.md)
 - [Oracle Data Guard konfigurálása](configure-oracle-dataguard.md)
